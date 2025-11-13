@@ -36,7 +36,6 @@ export const RemoveRecordRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type RemoveRecordRequest$Outbound = {
   domain: string;
@@ -57,19 +56,6 @@ export const RemoveRecordRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveRecordRequest$ {
-  /** @deprecated use `RemoveRecordRequest$inboundSchema` instead. */
-  export const inboundSchema = RemoveRecordRequest$inboundSchema;
-  /** @deprecated use `RemoveRecordRequest$outboundSchema` instead. */
-  export const outboundSchema = RemoveRecordRequest$outboundSchema;
-  /** @deprecated use `RemoveRecordRequest$Outbound` instead. */
-  export type Outbound = RemoveRecordRequest$Outbound;
-}
-
 export function removeRecordRequestToJSON(
   removeRecordRequest: RemoveRecordRequest,
 ): string {
@@ -77,7 +63,6 @@ export function removeRecordRequestToJSON(
     RemoveRecordRequest$outboundSchema.parse(removeRecordRequest),
   );
 }
-
 export function removeRecordRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveRecordRequest, SDKValidationError> {
@@ -94,7 +79,6 @@ export const RemoveRecordResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type RemoveRecordResponseBody$Outbound = {};
 
@@ -105,19 +89,6 @@ export const RemoveRecordResponseBody$outboundSchema: z.ZodType<
   RemoveRecordResponseBody
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveRecordResponseBody$ {
-  /** @deprecated use `RemoveRecordResponseBody$inboundSchema` instead. */
-  export const inboundSchema = RemoveRecordResponseBody$inboundSchema;
-  /** @deprecated use `RemoveRecordResponseBody$outboundSchema` instead. */
-  export const outboundSchema = RemoveRecordResponseBody$outboundSchema;
-  /** @deprecated use `RemoveRecordResponseBody$Outbound` instead. */
-  export type Outbound = RemoveRecordResponseBody$Outbound;
-}
-
 export function removeRecordResponseBodyToJSON(
   removeRecordResponseBody: RemoveRecordResponseBody,
 ): string {
@@ -125,7 +96,6 @@ export function removeRecordResponseBodyToJSON(
     RemoveRecordResponseBody$outboundSchema.parse(removeRecordResponseBody),
   );
 }
-
 export function removeRecordResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveRecordResponseBody, SDKValidationError> {

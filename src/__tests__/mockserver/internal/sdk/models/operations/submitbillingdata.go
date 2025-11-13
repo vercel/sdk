@@ -577,7 +577,7 @@ func (o *SubmitBillingDataRequestBody) GetUsage() []Usage {
 
 type SubmitBillingDataRequest struct {
 	IntegrationConfigurationID string                       `pathParam:"style=simple,explode=false,name=integrationConfigurationId"`
-	RequestBody                SubmitBillingDataRequestBody `request:"mediaType=application/json"`
+	Body                       SubmitBillingDataRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *SubmitBillingDataRequest) GetIntegrationConfigurationID() string {
@@ -587,11 +587,11 @@ func (o *SubmitBillingDataRequest) GetIntegrationConfigurationID() string {
 	return o.IntegrationConfigurationID
 }
 
-func (o *SubmitBillingDataRequest) GetRequestBody() SubmitBillingDataRequestBody {
+func (o *SubmitBillingDataRequest) GetBody() SubmitBillingDataRequestBody {
 	if o == nil {
 		return SubmitBillingDataRequestBody{}
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type SubmitBillingDataResponse struct {

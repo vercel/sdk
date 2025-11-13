@@ -83,7 +83,6 @@ export const ListUserEventsRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type ListUserEventsRequest$Outbound = {
   limit?: number | undefined;
@@ -116,19 +115,6 @@ export const ListUserEventsRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListUserEventsRequest$ {
-  /** @deprecated use `ListUserEventsRequest$inboundSchema` instead. */
-  export const inboundSchema = ListUserEventsRequest$inboundSchema;
-  /** @deprecated use `ListUserEventsRequest$outboundSchema` instead. */
-  export const outboundSchema = ListUserEventsRequest$outboundSchema;
-  /** @deprecated use `ListUserEventsRequest$Outbound` instead. */
-  export type Outbound = ListUserEventsRequest$Outbound;
-}
-
 export function listUserEventsRequestToJSON(
   listUserEventsRequest: ListUserEventsRequest,
 ): string {
@@ -136,7 +122,6 @@ export function listUserEventsRequestToJSON(
     ListUserEventsRequest$outboundSchema.parse(listUserEventsRequest),
   );
 }
-
 export function listUserEventsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListUserEventsRequest, SDKValidationError> {
@@ -155,7 +140,6 @@ export const ListUserEventsResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   events: z.array(UserEvent$inboundSchema),
 });
-
 /** @internal */
 export type ListUserEventsResponseBody$Outbound = {
   events: Array<UserEvent$Outbound>;
@@ -170,19 +154,6 @@ export const ListUserEventsResponseBody$outboundSchema: z.ZodType<
   events: z.array(UserEvent$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListUserEventsResponseBody$ {
-  /** @deprecated use `ListUserEventsResponseBody$inboundSchema` instead. */
-  export const inboundSchema = ListUserEventsResponseBody$inboundSchema;
-  /** @deprecated use `ListUserEventsResponseBody$outboundSchema` instead. */
-  export const outboundSchema = ListUserEventsResponseBody$outboundSchema;
-  /** @deprecated use `ListUserEventsResponseBody$Outbound` instead. */
-  export type Outbound = ListUserEventsResponseBody$Outbound;
-}
-
 export function listUserEventsResponseBodyToJSON(
   listUserEventsResponseBody: ListUserEventsResponseBody,
 ): string {
@@ -190,7 +161,6 @@ export function listUserEventsResponseBodyToJSON(
     ListUserEventsResponseBody$outboundSchema.parse(listUserEventsResponseBody),
   );
 }
-
 export function listUserEventsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ListUserEventsResponseBody, SDKValidationError> {

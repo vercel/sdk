@@ -31,9 +31,9 @@ const value: models.GetAllLogDrainsDelivery2 = {
 
 ```typescript
 const value: models.GetAllLogDrainsDelivery3 = {
-  type: "syslog",
+  type: "clickhouse",
   endpoint: "<value>",
-  secret: "<value>",
+  table: "<value>",
 };
 ```
 
@@ -41,16 +41,6 @@ const value: models.GetAllLogDrainsDelivery3 = {
 
 ```typescript
 const value: models.GetAllLogDrainsDelivery4 = {
-  type: "clickhouse",
-  endpoint: "<value>",
-  table: "<value>",
-};
-```
-
-### `models.GetAllLogDrainsDelivery5`
-
-```typescript
-const value: models.GetAllLogDrainsDelivery5 = {
   type: "internal",
   target: "vercel-otel-traces-db",
 };

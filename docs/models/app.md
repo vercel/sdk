@@ -1,6 +1,6 @@
 # App
 
-optional since entries prior to 2025-10-13 do not contain app information
+Note that not all historical events have this field.
 
 ## Example Usage
 
@@ -8,18 +8,14 @@ optional since entries prior to 2025-10-13 do not contain app information
 import { App } from "@vercel/sdk/models/userevent.js";
 
 let value: App = {
-  clientId: "<id>",
+  id: "<id>",
   name: "<value>",
-  clientAuthenticationUsed: {
-    method: "private_key_jwt",
-  },
 };
 ```
 
 ## Fields
 
-| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `clientId`                                                                            | *string*                                                                              | :heavy_check_mark:                                                                    | N/A                                                                                   |
-| `name`                                                                                | *string*                                                                              | :heavy_check_mark:                                                                    | the app's name at the time the event was published (it could have changed since then) |
-| `clientAuthenticationUsed`                                                            | [models.ClientAuthenticationUsed](../models/clientauthenticationused.md)              | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `id`                                                                                   | *string*                                                                               | :heavy_check_mark:                                                                     | The App's ID.                                                                          |
+| `name`                                                                                 | *string*                                                                               | :heavy_check_mark:                                                                     | The App's name at the moment this even was published (it may have changed since then). |

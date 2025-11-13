@@ -90,7 +90,6 @@ export const ReadAccessGroupRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type ReadAccessGroupRequest$Outbound = {
   idOrName: string;
@@ -109,19 +108,6 @@ export const ReadAccessGroupRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ReadAccessGroupRequest$ {
-  /** @deprecated use `ReadAccessGroupRequest$inboundSchema` instead. */
-  export const inboundSchema = ReadAccessGroupRequest$inboundSchema;
-  /** @deprecated use `ReadAccessGroupRequest$outboundSchema` instead. */
-  export const outboundSchema = ReadAccessGroupRequest$outboundSchema;
-  /** @deprecated use `ReadAccessGroupRequest$Outbound` instead. */
-  export type Outbound = ReadAccessGroupRequest$Outbound;
-}
-
 export function readAccessGroupRequestToJSON(
   readAccessGroupRequest: ReadAccessGroupRequest,
 ): string {
@@ -129,7 +115,6 @@ export function readAccessGroupRequestToJSON(
     ReadAccessGroupRequest$outboundSchema.parse(readAccessGroupRequest),
   );
 }
-
 export function readAccessGroupRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ReadAccessGroupRequest, SDKValidationError> {
@@ -144,43 +129,19 @@ export function readAccessGroupRequestFromJSON(
 export const ReadAccessGroupTeamPermissions$inboundSchema: z.ZodNativeEnum<
   typeof ReadAccessGroupTeamPermissions
 > = z.nativeEnum(ReadAccessGroupTeamPermissions);
-
 /** @internal */
 export const ReadAccessGroupTeamPermissions$outboundSchema: z.ZodNativeEnum<
   typeof ReadAccessGroupTeamPermissions
 > = ReadAccessGroupTeamPermissions$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ReadAccessGroupTeamPermissions$ {
-  /** @deprecated use `ReadAccessGroupTeamPermissions$inboundSchema` instead. */
-  export const inboundSchema = ReadAccessGroupTeamPermissions$inboundSchema;
-  /** @deprecated use `ReadAccessGroupTeamPermissions$outboundSchema` instead. */
-  export const outboundSchema = ReadAccessGroupTeamPermissions$outboundSchema;
-}
-
 /** @internal */
 export const ReadAccessGroupEntitlements$inboundSchema: z.ZodNativeEnum<
   typeof ReadAccessGroupEntitlements
 > = z.nativeEnum(ReadAccessGroupEntitlements);
-
 /** @internal */
 export const ReadAccessGroupEntitlements$outboundSchema: z.ZodNativeEnum<
   typeof ReadAccessGroupEntitlements
 > = ReadAccessGroupEntitlements$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ReadAccessGroupEntitlements$ {
-  /** @deprecated use `ReadAccessGroupEntitlements$inboundSchema` instead. */
-  export const inboundSchema = ReadAccessGroupEntitlements$inboundSchema;
-  /** @deprecated use `ReadAccessGroupEntitlements$outboundSchema` instead. */
-  export const outboundSchema = ReadAccessGroupEntitlements$outboundSchema;
-}
 
 /** @internal */
 export const ReadAccessGroupResponseBody$inboundSchema: z.ZodType<
@@ -201,7 +162,6 @@ export const ReadAccessGroupResponseBody$inboundSchema: z.ZodType<
   projectsCount: z.number(),
   teamRoles: z.array(z.string()).optional(),
 });
-
 /** @internal */
 export type ReadAccessGroupResponseBody$Outbound = {
   teamPermissions?: Array<string> | undefined;
@@ -237,19 +197,6 @@ export const ReadAccessGroupResponseBody$outboundSchema: z.ZodType<
   teamRoles: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ReadAccessGroupResponseBody$ {
-  /** @deprecated use `ReadAccessGroupResponseBody$inboundSchema` instead. */
-  export const inboundSchema = ReadAccessGroupResponseBody$inboundSchema;
-  /** @deprecated use `ReadAccessGroupResponseBody$outboundSchema` instead. */
-  export const outboundSchema = ReadAccessGroupResponseBody$outboundSchema;
-  /** @deprecated use `ReadAccessGroupResponseBody$Outbound` instead. */
-  export type Outbound = ReadAccessGroupResponseBody$Outbound;
-}
-
 export function readAccessGroupResponseBodyToJSON(
   readAccessGroupResponseBody: ReadAccessGroupResponseBody,
 ): string {
@@ -259,7 +206,6 @@ export function readAccessGroupResponseBodyToJSON(
     ),
   );
 }
-
 export function readAccessGroupResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ReadAccessGroupResponseBody, SDKValidationError> {

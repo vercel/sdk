@@ -124,7 +124,6 @@ export const GetEdgeConfigBackupRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type GetEdgeConfigBackupRequest$Outbound = {
   edgeConfigId: string;
@@ -145,19 +144,6 @@ export const GetEdgeConfigBackupRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetEdgeConfigBackupRequest$ {
-  /** @deprecated use `GetEdgeConfigBackupRequest$inboundSchema` instead. */
-  export const inboundSchema = GetEdgeConfigBackupRequest$inboundSchema;
-  /** @deprecated use `GetEdgeConfigBackupRequest$outboundSchema` instead. */
-  export const outboundSchema = GetEdgeConfigBackupRequest$outboundSchema;
-  /** @deprecated use `GetEdgeConfigBackupRequest$Outbound` instead. */
-  export type Outbound = GetEdgeConfigBackupRequest$Outbound;
-}
-
 export function getEdgeConfigBackupRequestToJSON(
   getEdgeConfigBackupRequest: GetEdgeConfigBackupRequest,
 ): string {
@@ -165,7 +151,6 @@ export function getEdgeConfigBackupRequestToJSON(
     GetEdgeConfigBackupRequest$outboundSchema.parse(getEdgeConfigBackupRequest),
   );
 }
-
 export function getEdgeConfigBackupRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetEdgeConfigBackupRequest, SDKValidationError> {
@@ -188,7 +173,6 @@ export const ResponseBodyUser$inboundSchema: z.ZodType<
   name: z.string().optional(),
   avatar: z.string().optional(),
 });
-
 /** @internal */
 export type ResponseBodyUser$Outbound = {
   id: string;
@@ -211,19 +195,6 @@ export const ResponseBodyUser$outboundSchema: z.ZodType<
   avatar: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyUser$ {
-  /** @deprecated use `ResponseBodyUser$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyUser$inboundSchema;
-  /** @deprecated use `ResponseBodyUser$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyUser$outboundSchema;
-  /** @deprecated use `ResponseBodyUser$Outbound` instead. */
-  export type Outbound = ResponseBodyUser$Outbound;
-}
-
 export function responseBodyUserToJSON(
   responseBodyUser: ResponseBodyUser,
 ): string {
@@ -231,7 +202,6 @@ export function responseBodyUserToJSON(
     ResponseBodyUser$outboundSchema.parse(responseBodyUser),
   );
 }
-
 export function responseBodyUserFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyUser, SDKValidationError> {
@@ -253,7 +223,6 @@ export const GetEdgeConfigBackupResponseBodyItems$inboundSchema: z.ZodType<
   description: z.string().optional(),
   createdAt: z.number(),
 });
-
 /** @internal */
 export type GetEdgeConfigBackupResponseBodyItems$Outbound = {
   updatedAt: number;
@@ -274,21 +243,6 @@ export const GetEdgeConfigBackupResponseBodyItems$outboundSchema: z.ZodType<
   createdAt: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetEdgeConfigBackupResponseBodyItems$ {
-  /** @deprecated use `GetEdgeConfigBackupResponseBodyItems$inboundSchema` instead. */
-  export const inboundSchema =
-    GetEdgeConfigBackupResponseBodyItems$inboundSchema;
-  /** @deprecated use `GetEdgeConfigBackupResponseBodyItems$outboundSchema` instead. */
-  export const outboundSchema =
-    GetEdgeConfigBackupResponseBodyItems$outboundSchema;
-  /** @deprecated use `GetEdgeConfigBackupResponseBodyItems$Outbound` instead. */
-  export type Outbound = GetEdgeConfigBackupResponseBodyItems$Outbound;
-}
-
 export function getEdgeConfigBackupResponseBodyItemsToJSON(
   getEdgeConfigBackupResponseBodyItems: GetEdgeConfigBackupResponseBodyItems,
 ): string {
@@ -298,7 +252,6 @@ export function getEdgeConfigBackupResponseBodyItemsToJSON(
     ),
   );
 }
-
 export function getEdgeConfigBackupResponseBodyItemsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetEdgeConfigBackupResponseBodyItems, SDKValidationError> {
@@ -323,7 +276,6 @@ export const ResponseBodyBackup$inboundSchema: z.ZodType<
   slug: z.string(),
   updatedAt: z.number(),
 });
-
 /** @internal */
 export type ResponseBodyBackup$Outbound = {
   digest: string;
@@ -346,19 +298,6 @@ export const ResponseBodyBackup$outboundSchema: z.ZodType<
   updatedAt: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyBackup$ {
-  /** @deprecated use `ResponseBodyBackup$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyBackup$inboundSchema;
-  /** @deprecated use `ResponseBodyBackup$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyBackup$outboundSchema;
-  /** @deprecated use `ResponseBodyBackup$Outbound` instead. */
-  export type Outbound = ResponseBodyBackup$Outbound;
-}
-
 export function responseBodyBackupToJSON(
   responseBodyBackup: ResponseBodyBackup,
 ): string {
@@ -366,7 +305,6 @@ export function responseBodyBackupToJSON(
     ResponseBodyBackup$outboundSchema.parse(responseBodyBackup),
   );
 }
-
 export function responseBodyBackupFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyBackup, SDKValidationError> {
@@ -388,7 +326,6 @@ export const ResponseBodyMetadata$inboundSchema: z.ZodType<
   itemsCount: z.number().optional(),
   itemsBytes: z.number().optional(),
 });
-
 /** @internal */
 export type ResponseBodyMetadata$Outbound = {
   updatedAt?: string | undefined;
@@ -409,19 +346,6 @@ export const ResponseBodyMetadata$outboundSchema: z.ZodType<
   itemsBytes: z.number().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyMetadata$ {
-  /** @deprecated use `ResponseBodyMetadata$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyMetadata$inboundSchema;
-  /** @deprecated use `ResponseBodyMetadata$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyMetadata$outboundSchema;
-  /** @deprecated use `ResponseBodyMetadata$Outbound` instead. */
-  export type Outbound = ResponseBodyMetadata$Outbound;
-}
-
 export function responseBodyMetadataToJSON(
   responseBodyMetadata: ResponseBodyMetadata,
 ): string {
@@ -429,7 +353,6 @@ export function responseBodyMetadataToJSON(
     ResponseBodyMetadata$outboundSchema.parse(responseBodyMetadata),
   );
 }
-
 export function responseBodyMetadataFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyMetadata, SDKValidationError> {
@@ -452,7 +375,6 @@ export const GetEdgeConfigBackupResponseBody2$inboundSchema: z.ZodType<
   backup: z.lazy(() => ResponseBodyBackup$inboundSchema),
   metadata: z.lazy(() => ResponseBodyMetadata$inboundSchema),
 });
-
 /** @internal */
 export type GetEdgeConfigBackupResponseBody2$Outbound = {
   user: ResponseBodyUser$Outbound;
@@ -475,19 +397,6 @@ export const GetEdgeConfigBackupResponseBody2$outboundSchema: z.ZodType<
   metadata: z.lazy(() => ResponseBodyMetadata$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetEdgeConfigBackupResponseBody2$ {
-  /** @deprecated use `GetEdgeConfigBackupResponseBody2$inboundSchema` instead. */
-  export const inboundSchema = GetEdgeConfigBackupResponseBody2$inboundSchema;
-  /** @deprecated use `GetEdgeConfigBackupResponseBody2$outboundSchema` instead. */
-  export const outboundSchema = GetEdgeConfigBackupResponseBody2$outboundSchema;
-  /** @deprecated use `GetEdgeConfigBackupResponseBody2$Outbound` instead. */
-  export type Outbound = GetEdgeConfigBackupResponseBody2$Outbound;
-}
-
 export function getEdgeConfigBackupResponseBody2ToJSON(
   getEdgeConfigBackupResponseBody2: GetEdgeConfigBackupResponseBody2,
 ): string {
@@ -497,7 +406,6 @@ export function getEdgeConfigBackupResponseBody2ToJSON(
     ),
   );
 }
-
 export function getEdgeConfigBackupResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetEdgeConfigBackupResponseBody2, SDKValidationError> {
@@ -519,7 +427,6 @@ export const ResponseBodyItems$inboundSchema: z.ZodType<
   description: z.string().optional(),
   createdAt: z.number(),
 });
-
 /** @internal */
 export type ResponseBodyItems$Outbound = {
   updatedAt: number;
@@ -540,19 +447,6 @@ export const ResponseBodyItems$outboundSchema: z.ZodType<
   createdAt: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyItems$ {
-  /** @deprecated use `ResponseBodyItems$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyItems$inboundSchema;
-  /** @deprecated use `ResponseBodyItems$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyItems$outboundSchema;
-  /** @deprecated use `ResponseBodyItems$Outbound` instead. */
-  export type Outbound = ResponseBodyItems$Outbound;
-}
-
 export function responseBodyItemsToJSON(
   responseBodyItems: ResponseBodyItems,
 ): string {
@@ -560,7 +454,6 @@ export function responseBodyItemsToJSON(
     ResponseBodyItems$outboundSchema.parse(responseBodyItems),
   );
 }
-
 export function responseBodyItemsFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyItems, SDKValidationError> {
@@ -579,7 +472,6 @@ export const Backup$inboundSchema: z.ZodType<Backup, z.ZodTypeDef, unknown> = z
     slug: z.string(),
     updatedAt: z.number(),
   });
-
 /** @internal */
 export type Backup$Outbound = {
   digest: string;
@@ -600,23 +492,9 @@ export const Backup$outboundSchema: z.ZodType<
   updatedAt: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Backup$ {
-  /** @deprecated use `Backup$inboundSchema` instead. */
-  export const inboundSchema = Backup$inboundSchema;
-  /** @deprecated use `Backup$outboundSchema` instead. */
-  export const outboundSchema = Backup$outboundSchema;
-  /** @deprecated use `Backup$Outbound` instead. */
-  export type Outbound = Backup$Outbound;
-}
-
 export function backupToJSON(backup: Backup): string {
   return JSON.stringify(Backup$outboundSchema.parse(backup));
 }
-
 export function backupFromJSON(
   jsonString: string,
 ): SafeParseResult<Backup, SDKValidationError> {
@@ -638,7 +516,6 @@ export const GetEdgeConfigBackupResponseBodyMetadata$inboundSchema: z.ZodType<
   itemsCount: z.number().optional(),
   itemsBytes: z.number().optional(),
 });
-
 /** @internal */
 export type GetEdgeConfigBackupResponseBodyMetadata$Outbound = {
   updatedAt?: string | undefined;
@@ -659,21 +536,6 @@ export const GetEdgeConfigBackupResponseBodyMetadata$outboundSchema: z.ZodType<
   itemsBytes: z.number().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetEdgeConfigBackupResponseBodyMetadata$ {
-  /** @deprecated use `GetEdgeConfigBackupResponseBodyMetadata$inboundSchema` instead. */
-  export const inboundSchema =
-    GetEdgeConfigBackupResponseBodyMetadata$inboundSchema;
-  /** @deprecated use `GetEdgeConfigBackupResponseBodyMetadata$outboundSchema` instead. */
-  export const outboundSchema =
-    GetEdgeConfigBackupResponseBodyMetadata$outboundSchema;
-  /** @deprecated use `GetEdgeConfigBackupResponseBodyMetadata$Outbound` instead. */
-  export type Outbound = GetEdgeConfigBackupResponseBodyMetadata$Outbound;
-}
-
 export function getEdgeConfigBackupResponseBodyMetadataToJSON(
   getEdgeConfigBackupResponseBodyMetadata:
     GetEdgeConfigBackupResponseBodyMetadata,
@@ -684,7 +546,6 @@ export function getEdgeConfigBackupResponseBodyMetadataToJSON(
     ),
   );
 }
-
 export function getEdgeConfigBackupResponseBodyMetadataFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -713,7 +574,6 @@ export const GetEdgeConfigBackupResponseBodyUser$inboundSchema: z.ZodType<
   name: z.string().optional(),
   avatar: z.string().optional(),
 });
-
 /** @internal */
 export type GetEdgeConfigBackupResponseBodyUser$Outbound = {
   id: string;
@@ -736,21 +596,6 @@ export const GetEdgeConfigBackupResponseBodyUser$outboundSchema: z.ZodType<
   avatar: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetEdgeConfigBackupResponseBodyUser$ {
-  /** @deprecated use `GetEdgeConfigBackupResponseBodyUser$inboundSchema` instead. */
-  export const inboundSchema =
-    GetEdgeConfigBackupResponseBodyUser$inboundSchema;
-  /** @deprecated use `GetEdgeConfigBackupResponseBodyUser$outboundSchema` instead. */
-  export const outboundSchema =
-    GetEdgeConfigBackupResponseBodyUser$outboundSchema;
-  /** @deprecated use `GetEdgeConfigBackupResponseBodyUser$Outbound` instead. */
-  export type Outbound = GetEdgeConfigBackupResponseBodyUser$Outbound;
-}
-
 export function getEdgeConfigBackupResponseBodyUserToJSON(
   getEdgeConfigBackupResponseBodyUser: GetEdgeConfigBackupResponseBodyUser,
 ): string {
@@ -760,7 +605,6 @@ export function getEdgeConfigBackupResponseBodyUserToJSON(
     ),
   );
 }
-
 export function getEdgeConfigBackupResponseBodyUserFromJSON(
   jsonString: string,
 ): SafeParseResult<GetEdgeConfigBackupResponseBodyUser, SDKValidationError> {
@@ -785,7 +629,6 @@ export const GetEdgeConfigBackupResponseBody1$inboundSchema: z.ZodType<
   user: z.lazy(() => GetEdgeConfigBackupResponseBodyUser$inboundSchema)
     .optional(),
 });
-
 /** @internal */
 export type GetEdgeConfigBackupResponseBody1$Outbound = {
   id: string;
@@ -811,19 +654,6 @@ export const GetEdgeConfigBackupResponseBody1$outboundSchema: z.ZodType<
     .optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetEdgeConfigBackupResponseBody1$ {
-  /** @deprecated use `GetEdgeConfigBackupResponseBody1$inboundSchema` instead. */
-  export const inboundSchema = GetEdgeConfigBackupResponseBody1$inboundSchema;
-  /** @deprecated use `GetEdgeConfigBackupResponseBody1$outboundSchema` instead. */
-  export const outboundSchema = GetEdgeConfigBackupResponseBody1$outboundSchema;
-  /** @deprecated use `GetEdgeConfigBackupResponseBody1$Outbound` instead. */
-  export type Outbound = GetEdgeConfigBackupResponseBody1$Outbound;
-}
-
 export function getEdgeConfigBackupResponseBody1ToJSON(
   getEdgeConfigBackupResponseBody1: GetEdgeConfigBackupResponseBody1,
 ): string {
@@ -833,7 +663,6 @@ export function getEdgeConfigBackupResponseBody1ToJSON(
     ),
   );
 }
-
 export function getEdgeConfigBackupResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetEdgeConfigBackupResponseBody1, SDKValidationError> {
@@ -853,7 +682,6 @@ export const GetEdgeConfigBackupResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => GetEdgeConfigBackupResponseBody2$inboundSchema),
   z.lazy(() => GetEdgeConfigBackupResponseBody1$inboundSchema),
 ]);
-
 /** @internal */
 export type GetEdgeConfigBackupResponseBody$Outbound =
   | GetEdgeConfigBackupResponseBody2$Outbound
@@ -869,19 +697,6 @@ export const GetEdgeConfigBackupResponseBody$outboundSchema: z.ZodType<
   z.lazy(() => GetEdgeConfigBackupResponseBody1$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetEdgeConfigBackupResponseBody$ {
-  /** @deprecated use `GetEdgeConfigBackupResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetEdgeConfigBackupResponseBody$inboundSchema;
-  /** @deprecated use `GetEdgeConfigBackupResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetEdgeConfigBackupResponseBody$outboundSchema;
-  /** @deprecated use `GetEdgeConfigBackupResponseBody$Outbound` instead. */
-  export type Outbound = GetEdgeConfigBackupResponseBody$Outbound;
-}
-
 export function getEdgeConfigBackupResponseBodyToJSON(
   getEdgeConfigBackupResponseBody: GetEdgeConfigBackupResponseBody,
 ): string {
@@ -891,7 +706,6 @@ export function getEdgeConfigBackupResponseBodyToJSON(
     ),
   );
 }
-
 export function getEdgeConfigBackupResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetEdgeConfigBackupResponseBody, SDKValidationError> {

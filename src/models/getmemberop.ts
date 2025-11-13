@@ -42,7 +42,6 @@ export const GetMemberRequest$inboundSchema: z.ZodType<
   integrationConfigurationId: z.string(),
   memberId: z.string(),
 });
-
 /** @internal */
 export type GetMemberRequest$Outbound = {
   integrationConfigurationId: string;
@@ -59,19 +58,6 @@ export const GetMemberRequest$outboundSchema: z.ZodType<
   memberId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetMemberRequest$ {
-  /** @deprecated use `GetMemberRequest$inboundSchema` instead. */
-  export const inboundSchema = GetMemberRequest$inboundSchema;
-  /** @deprecated use `GetMemberRequest$outboundSchema` instead. */
-  export const outboundSchema = GetMemberRequest$outboundSchema;
-  /** @deprecated use `GetMemberRequest$Outbound` instead. */
-  export type Outbound = GetMemberRequest$Outbound;
-}
-
 export function getMemberRequestToJSON(
   getMemberRequest: GetMemberRequest,
 ): string {
@@ -79,7 +65,6 @@ export function getMemberRequestToJSON(
     GetMemberRequest$outboundSchema.parse(getMemberRequest),
   );
 }
-
 export function getMemberRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetMemberRequest, SDKValidationError> {
@@ -94,22 +79,10 @@ export function getMemberRequestFromJSON(
 export const GetMemberRole$inboundSchema: z.ZodNativeEnum<
   typeof GetMemberRole
 > = z.nativeEnum(GetMemberRole);
-
 /** @internal */
 export const GetMemberRole$outboundSchema: z.ZodNativeEnum<
   typeof GetMemberRole
 > = GetMemberRole$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetMemberRole$ {
-  /** @deprecated use `GetMemberRole$inboundSchema` instead. */
-  export const inboundSchema = GetMemberRole$inboundSchema;
-  /** @deprecated use `GetMemberRole$outboundSchema` instead. */
-  export const outboundSchema = GetMemberRole$outboundSchema;
-}
 
 /** @internal */
 export const GetMemberResponseBody$inboundSchema: z.ZodType<
@@ -120,7 +93,6 @@ export const GetMemberResponseBody$inboundSchema: z.ZodType<
   id: z.string(),
   role: GetMemberRole$inboundSchema,
 });
-
 /** @internal */
 export type GetMemberResponseBody$Outbound = {
   id: string;
@@ -137,19 +109,6 @@ export const GetMemberResponseBody$outboundSchema: z.ZodType<
   role: GetMemberRole$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetMemberResponseBody$ {
-  /** @deprecated use `GetMemberResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetMemberResponseBody$inboundSchema;
-  /** @deprecated use `GetMemberResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetMemberResponseBody$outboundSchema;
-  /** @deprecated use `GetMemberResponseBody$Outbound` instead. */
-  export type Outbound = GetMemberResponseBody$Outbound;
-}
-
 export function getMemberResponseBodyToJSON(
   getMemberResponseBody: GetMemberResponseBody,
 ): string {
@@ -157,7 +116,6 @@ export function getMemberResponseBodyToJSON(
     GetMemberResponseBody$outboundSchema.parse(getMemberResponseBody),
   );
 }
-
 export function getMemberResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetMemberResponseBody, SDKValidationError> {

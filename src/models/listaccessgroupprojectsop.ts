@@ -76,7 +76,6 @@ export const ListAccessGroupProjectsRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type ListAccessGroupProjectsRequest$Outbound = {
   idOrName: string;
@@ -99,19 +98,6 @@ export const ListAccessGroupProjectsRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccessGroupProjectsRequest$ {
-  /** @deprecated use `ListAccessGroupProjectsRequest$inboundSchema` instead. */
-  export const inboundSchema = ListAccessGroupProjectsRequest$inboundSchema;
-  /** @deprecated use `ListAccessGroupProjectsRequest$outboundSchema` instead. */
-  export const outboundSchema = ListAccessGroupProjectsRequest$outboundSchema;
-  /** @deprecated use `ListAccessGroupProjectsRequest$Outbound` instead. */
-  export type Outbound = ListAccessGroupProjectsRequest$Outbound;
-}
-
 export function listAccessGroupProjectsRequestToJSON(
   listAccessGroupProjectsRequest: ListAccessGroupProjectsRequest,
 ): string {
@@ -121,7 +107,6 @@ export function listAccessGroupProjectsRequestToJSON(
     ),
   );
 }
-
 export function listAccessGroupProjectsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListAccessGroupProjectsRequest, SDKValidationError> {
@@ -136,22 +121,10 @@ export function listAccessGroupProjectsRequestFromJSON(
 export const ListAccessGroupProjectsRole$inboundSchema: z.ZodNativeEnum<
   typeof ListAccessGroupProjectsRole
 > = z.nativeEnum(ListAccessGroupProjectsRole);
-
 /** @internal */
 export const ListAccessGroupProjectsRole$outboundSchema: z.ZodNativeEnum<
   typeof ListAccessGroupProjectsRole
 > = ListAccessGroupProjectsRole$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccessGroupProjectsRole$ {
-  /** @deprecated use `ListAccessGroupProjectsRole$inboundSchema` instead. */
-  export const inboundSchema = ListAccessGroupProjectsRole$inboundSchema;
-  /** @deprecated use `ListAccessGroupProjectsRole$outboundSchema` instead. */
-  export const outboundSchema = ListAccessGroupProjectsRole$outboundSchema;
-}
 
 /** @internal */
 export const ListAccessGroupProjectsProject$inboundSchema: z.ZodType<
@@ -163,7 +136,6 @@ export const ListAccessGroupProjectsProject$inboundSchema: z.ZodType<
   framework: z.nullable(z.string()).optional(),
   latestDeploymentId: z.string().optional(),
 });
-
 /** @internal */
 export type ListAccessGroupProjectsProject$Outbound = {
   name?: string | undefined;
@@ -182,19 +154,6 @@ export const ListAccessGroupProjectsProject$outboundSchema: z.ZodType<
   latestDeploymentId: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccessGroupProjectsProject$ {
-  /** @deprecated use `ListAccessGroupProjectsProject$inboundSchema` instead. */
-  export const inboundSchema = ListAccessGroupProjectsProject$inboundSchema;
-  /** @deprecated use `ListAccessGroupProjectsProject$outboundSchema` instead. */
-  export const outboundSchema = ListAccessGroupProjectsProject$outboundSchema;
-  /** @deprecated use `ListAccessGroupProjectsProject$Outbound` instead. */
-  export type Outbound = ListAccessGroupProjectsProject$Outbound;
-}
-
 export function listAccessGroupProjectsProjectToJSON(
   listAccessGroupProjectsProject: ListAccessGroupProjectsProject,
 ): string {
@@ -204,7 +163,6 @@ export function listAccessGroupProjectsProjectToJSON(
     ),
   );
 }
-
 export function listAccessGroupProjectsProjectFromJSON(
   jsonString: string,
 ): SafeParseResult<ListAccessGroupProjectsProject, SDKValidationError> {
@@ -227,7 +185,6 @@ export const ListAccessGroupProjectsProjects$inboundSchema: z.ZodType<
   updatedAt: z.string(),
   project: z.lazy(() => ListAccessGroupProjectsProject$inboundSchema),
 });
-
 /** @internal */
 export type ListAccessGroupProjectsProjects$Outbound = {
   projectId: string;
@@ -250,19 +207,6 @@ export const ListAccessGroupProjectsProjects$outboundSchema: z.ZodType<
   project: z.lazy(() => ListAccessGroupProjectsProject$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccessGroupProjectsProjects$ {
-  /** @deprecated use `ListAccessGroupProjectsProjects$inboundSchema` instead. */
-  export const inboundSchema = ListAccessGroupProjectsProjects$inboundSchema;
-  /** @deprecated use `ListAccessGroupProjectsProjects$outboundSchema` instead. */
-  export const outboundSchema = ListAccessGroupProjectsProjects$outboundSchema;
-  /** @deprecated use `ListAccessGroupProjectsProjects$Outbound` instead. */
-  export type Outbound = ListAccessGroupProjectsProjects$Outbound;
-}
-
 export function listAccessGroupProjectsProjectsToJSON(
   listAccessGroupProjectsProjects: ListAccessGroupProjectsProjects,
 ): string {
@@ -272,7 +216,6 @@ export function listAccessGroupProjectsProjectsToJSON(
     ),
   );
 }
-
 export function listAccessGroupProjectsProjectsFromJSON(
   jsonString: string,
 ): SafeParseResult<ListAccessGroupProjectsProjects, SDKValidationError> {
@@ -292,7 +235,6 @@ export const ListAccessGroupProjectsPagination$inboundSchema: z.ZodType<
   count: z.number(),
   next: z.nullable(z.string()),
 });
-
 /** @internal */
 export type ListAccessGroupProjectsPagination$Outbound = {
   count: number;
@@ -309,20 +251,6 @@ export const ListAccessGroupProjectsPagination$outboundSchema: z.ZodType<
   next: z.nullable(z.string()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccessGroupProjectsPagination$ {
-  /** @deprecated use `ListAccessGroupProjectsPagination$inboundSchema` instead. */
-  export const inboundSchema = ListAccessGroupProjectsPagination$inboundSchema;
-  /** @deprecated use `ListAccessGroupProjectsPagination$outboundSchema` instead. */
-  export const outboundSchema =
-    ListAccessGroupProjectsPagination$outboundSchema;
-  /** @deprecated use `ListAccessGroupProjectsPagination$Outbound` instead. */
-  export type Outbound = ListAccessGroupProjectsPagination$Outbound;
-}
-
 export function listAccessGroupProjectsPaginationToJSON(
   listAccessGroupProjectsPagination: ListAccessGroupProjectsPagination,
 ): string {
@@ -332,7 +260,6 @@ export function listAccessGroupProjectsPaginationToJSON(
     ),
   );
 }
-
 export function listAccessGroupProjectsPaginationFromJSON(
   jsonString: string,
 ): SafeParseResult<ListAccessGroupProjectsPagination, SDKValidationError> {
@@ -354,7 +281,6 @@ export const ListAccessGroupProjectsResponseBody$inboundSchema: z.ZodType<
   ),
   pagination: z.lazy(() => ListAccessGroupProjectsPagination$inboundSchema),
 });
-
 /** @internal */
 export type ListAccessGroupProjectsResponseBody$Outbound = {
   projects: Array<ListAccessGroupProjectsProjects$Outbound>;
@@ -373,21 +299,6 @@ export const ListAccessGroupProjectsResponseBody$outboundSchema: z.ZodType<
   pagination: z.lazy(() => ListAccessGroupProjectsPagination$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccessGroupProjectsResponseBody$ {
-  /** @deprecated use `ListAccessGroupProjectsResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    ListAccessGroupProjectsResponseBody$inboundSchema;
-  /** @deprecated use `ListAccessGroupProjectsResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    ListAccessGroupProjectsResponseBody$outboundSchema;
-  /** @deprecated use `ListAccessGroupProjectsResponseBody$Outbound` instead. */
-  export type Outbound = ListAccessGroupProjectsResponseBody$Outbound;
-}
-
 export function listAccessGroupProjectsResponseBodyToJSON(
   listAccessGroupProjectsResponseBody: ListAccessGroupProjectsResponseBody,
 ): string {
@@ -397,7 +308,6 @@ export function listAccessGroupProjectsResponseBodyToJSON(
     ),
   );
 }
-
 export function listAccessGroupProjectsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ListAccessGroupProjectsResponseBody, SDKValidationError> {

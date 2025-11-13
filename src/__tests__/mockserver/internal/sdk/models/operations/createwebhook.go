@@ -284,8 +284,8 @@ type CreateWebhookRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string                  `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody CreateWebhookRequestBody `request:"mediaType=application/json"`
+	Slug *string                  `queryParam:"style=form,explode=true,name=slug"`
+	Body CreateWebhookRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *CreateWebhookRequest) GetTeamID() *string {
@@ -302,11 +302,11 @@ func (o *CreateWebhookRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *CreateWebhookRequest) GetRequestBody() CreateWebhookRequestBody {
+func (o *CreateWebhookRequest) GetBody() CreateWebhookRequestBody {
 	if o == nil {
 		return CreateWebhookRequestBody{}
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 // CreateWebhookEventResponse - The webhooks events

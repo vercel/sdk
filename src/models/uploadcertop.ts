@@ -58,7 +58,6 @@ export const UploadCertRequestBody$inboundSchema: z.ZodType<
   cert: z.string(),
   skipValidation: z.boolean().optional(),
 });
-
 /** @internal */
 export type UploadCertRequestBody$Outbound = {
   ca: string;
@@ -79,19 +78,6 @@ export const UploadCertRequestBody$outboundSchema: z.ZodType<
   skipValidation: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UploadCertRequestBody$ {
-  /** @deprecated use `UploadCertRequestBody$inboundSchema` instead. */
-  export const inboundSchema = UploadCertRequestBody$inboundSchema;
-  /** @deprecated use `UploadCertRequestBody$outboundSchema` instead. */
-  export const outboundSchema = UploadCertRequestBody$outboundSchema;
-  /** @deprecated use `UploadCertRequestBody$Outbound` instead. */
-  export type Outbound = UploadCertRequestBody$Outbound;
-}
-
 export function uploadCertRequestBodyToJSON(
   uploadCertRequestBody: UploadCertRequestBody,
 ): string {
@@ -99,7 +85,6 @@ export function uploadCertRequestBodyToJSON(
     UploadCertRequestBody$outboundSchema.parse(uploadCertRequestBody),
   );
 }
-
 export function uploadCertRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadCertRequestBody, SDKValidationError> {
@@ -124,7 +109,6 @@ export const UploadCertRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type UploadCertRequest$Outbound = {
   teamId?: string | undefined;
@@ -147,19 +131,6 @@ export const UploadCertRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UploadCertRequest$ {
-  /** @deprecated use `UploadCertRequest$inboundSchema` instead. */
-  export const inboundSchema = UploadCertRequest$inboundSchema;
-  /** @deprecated use `UploadCertRequest$outboundSchema` instead. */
-  export const outboundSchema = UploadCertRequest$outboundSchema;
-  /** @deprecated use `UploadCertRequest$Outbound` instead. */
-  export type Outbound = UploadCertRequest$Outbound;
-}
-
 export function uploadCertRequestToJSON(
   uploadCertRequest: UploadCertRequest,
 ): string {
@@ -167,7 +138,6 @@ export function uploadCertRequestToJSON(
     UploadCertRequest$outboundSchema.parse(uploadCertRequest),
   );
 }
-
 export function uploadCertRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadCertRequest, SDKValidationError> {
@@ -190,7 +160,6 @@ export const UploadCertResponseBody$inboundSchema: z.ZodType<
   autoRenew: z.boolean(),
   cns: z.array(z.string()),
 });
-
 /** @internal */
 export type UploadCertResponseBody$Outbound = {
   id: string;
@@ -213,19 +182,6 @@ export const UploadCertResponseBody$outboundSchema: z.ZodType<
   cns: z.array(z.string()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UploadCertResponseBody$ {
-  /** @deprecated use `UploadCertResponseBody$inboundSchema` instead. */
-  export const inboundSchema = UploadCertResponseBody$inboundSchema;
-  /** @deprecated use `UploadCertResponseBody$outboundSchema` instead. */
-  export const outboundSchema = UploadCertResponseBody$outboundSchema;
-  /** @deprecated use `UploadCertResponseBody$Outbound` instead. */
-  export type Outbound = UploadCertResponseBody$Outbound;
-}
-
 export function uploadCertResponseBodyToJSON(
   uploadCertResponseBody: UploadCertResponseBody,
 ): string {
@@ -233,7 +189,6 @@ export function uploadCertResponseBodyToJSON(
     UploadCertResponseBody$outboundSchema.parse(uploadCertResponseBody),
   );
 }
-
 export function uploadCertResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadCertResponseBody, SDKValidationError> {

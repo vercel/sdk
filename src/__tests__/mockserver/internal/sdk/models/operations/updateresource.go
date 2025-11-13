@@ -4,6 +4,7 @@ package operations
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/utils"
@@ -273,6 +274,17 @@ type UpdateResourceNotification struct {
 	Href    *string             `json:"href,omitempty"`
 }
 
+func (u UpdateResourceNotification) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateResourceNotification) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"level", "title"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UpdateResourceNotification) GetLevel() UpdateResourceLevel {
 	if o == nil {
 		return UpdateResourceLevel("")
@@ -301,8 +313,71 @@ func (o *UpdateResourceNotification) GetHref() *string {
 	return o.Href
 }
 
-// UpdateResourceEnvironmentOverrides - A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.
-type UpdateResourceEnvironmentOverrides struct {
+type UpdateResourceNotificationUnionType string
+
+const (
+	UpdateResourceNotificationUnionTypeUpdateResourceNotification UpdateResourceNotificationUnionType = "update_resource_notification"
+	UpdateResourceNotificationUnionTypeStr                        UpdateResourceNotificationUnionType = "str"
+)
+
+type UpdateResourceNotificationUnion struct {
+	UpdateResourceNotification *UpdateResourceNotification `queryParam:"inline"`
+	Str                        *string                     `queryParam:"inline"`
+
+	Type UpdateResourceNotificationUnionType
+}
+
+func CreateUpdateResourceNotificationUnionUpdateResourceNotification(updateResourceNotification UpdateResourceNotification) UpdateResourceNotificationUnion {
+	typ := UpdateResourceNotificationUnionTypeUpdateResourceNotification
+
+	return UpdateResourceNotificationUnion{
+		UpdateResourceNotification: &updateResourceNotification,
+		Type:                       typ,
+	}
+}
+
+func CreateUpdateResourceNotificationUnionStr(str string) UpdateResourceNotificationUnion {
+	typ := UpdateResourceNotificationUnionTypeStr
+
+	return UpdateResourceNotificationUnion{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func (u *UpdateResourceNotificationUnion) UnmarshalJSON(data []byte) error {
+
+	var updateResourceNotification UpdateResourceNotification = UpdateResourceNotification{}
+	if err := utils.UnmarshalJSON(data, &updateResourceNotification, "", true, nil); err == nil {
+		u.UpdateResourceNotification = &updateResourceNotification
+		u.Type = UpdateResourceNotificationUnionTypeUpdateResourceNotification
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = UpdateResourceNotificationUnionTypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateResourceNotificationUnion", string(data))
+}
+
+func (u UpdateResourceNotificationUnion) MarshalJSON() ([]byte, error) {
+	if u.UpdateResourceNotification != nil {
+		return utils.MarshalJSON(u.UpdateResourceNotification, "", true)
+	}
+
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type UpdateResourceNotificationUnion: all fields are null")
+}
+
+// UpdateResourceSecretEnvironmentOverrides - A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.
+type UpdateResourceSecretEnvironmentOverrides struct {
 	// Value used for development environment.
 	Development *string `json:"development,omitempty"`
 	// Value used for preview environment.
@@ -311,21 +386,32 @@ type UpdateResourceEnvironmentOverrides struct {
 	Production *string `json:"production,omitempty"`
 }
 
-func (o *UpdateResourceEnvironmentOverrides) GetDevelopment() *string {
+func (u UpdateResourceSecretEnvironmentOverrides) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateResourceSecretEnvironmentOverrides) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateResourceSecretEnvironmentOverrides) GetDevelopment() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Development
 }
 
-func (o *UpdateResourceEnvironmentOverrides) GetPreview() *string {
+func (o *UpdateResourceSecretEnvironmentOverrides) GetPreview() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Preview
 }
 
-func (o *UpdateResourceEnvironmentOverrides) GetProduction() *string {
+func (o *UpdateResourceSecretEnvironmentOverrides) GetProduction() *string {
 	if o == nil {
 		return nil
 	}
@@ -337,7 +423,18 @@ type UpdateResourceSecret struct {
 	Value  string  `json:"value"`
 	Prefix *string `json:"prefix,omitempty"`
 	// A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.
-	EnvironmentOverrides *UpdateResourceEnvironmentOverrides `json:"environmentOverrides,omitempty"`
+	EnvironmentOverrides *UpdateResourceSecretEnvironmentOverrides `json:"environmentOverrides,omitempty"`
+}
+
+func (u UpdateResourceSecret) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateResourceSecret) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"name", "value"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateResourceSecret) GetName() string {
@@ -361,22 +458,205 @@ func (o *UpdateResourceSecret) GetPrefix() *string {
 	return o.Prefix
 }
 
-func (o *UpdateResourceSecret) GetEnvironmentOverrides() *UpdateResourceEnvironmentOverrides {
+func (o *UpdateResourceSecret) GetEnvironmentOverrides() *UpdateResourceSecretEnvironmentOverrides {
 	if o == nil {
 		return nil
 	}
 	return o.EnvironmentOverrides
 }
 
+type Secrets2 struct {
+	Secrets []UpdateResourceSecret `json:"secrets"`
+	// If true, will only overwrite the provided secrets instead of replacing all secrets.
+	Partial *bool `json:"partial,omitempty"`
+}
+
+func (s Secrets2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *Secrets2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"secrets"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Secrets2) GetSecrets() []UpdateResourceSecret {
+	if o == nil {
+		return []UpdateResourceSecret{}
+	}
+	return o.Secrets
+}
+
+func (o *Secrets2) GetPartial() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Partial
+}
+
+// UpdateResourceEnvironmentOverrides - A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.
+type UpdateResourceEnvironmentOverrides struct {
+	// Value used for development environment.
+	Development *string `json:"development,omitempty"`
+	// Value used for preview environment.
+	Preview *string `json:"preview,omitempty"`
+	// Value used for production environment.
+	Production *string `json:"production,omitempty"`
+}
+
+func (u UpdateResourceEnvironmentOverrides) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateResourceEnvironmentOverrides) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateResourceEnvironmentOverrides) GetDevelopment() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Development
+}
+
+func (o *UpdateResourceEnvironmentOverrides) GetPreview() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Preview
+}
+
+func (o *UpdateResourceEnvironmentOverrides) GetProduction() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Production
+}
+
+type Secrets1 struct {
+	Name   string  `json:"name"`
+	Value  string  `json:"value"`
+	Prefix *string `json:"prefix,omitempty"`
+	// A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.
+	EnvironmentOverrides *UpdateResourceEnvironmentOverrides `json:"environmentOverrides,omitempty"`
+}
+
+func (s Secrets1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *Secrets1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"name", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Secrets1) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *Secrets1) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
+}
+
+func (o *Secrets1) GetPrefix() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Prefix
+}
+
+func (o *Secrets1) GetEnvironmentOverrides() *UpdateResourceEnvironmentOverrides {
+	if o == nil {
+		return nil
+	}
+	return o.EnvironmentOverrides
+}
+
+type SecretsUnionType string
+
+const (
+	SecretsUnionTypeArrayOfSecrets1 SecretsUnionType = "arrayOfSecrets1"
+	SecretsUnionTypeSecrets2        SecretsUnionType = "secrets_2"
+)
+
+type SecretsUnion struct {
+	ArrayOfSecrets1 []Secrets1 `queryParam:"inline"`
+	Secrets2        *Secrets2  `queryParam:"inline"`
+
+	Type SecretsUnionType
+}
+
+func CreateSecretsUnionArrayOfSecrets1(arrayOfSecrets1 []Secrets1) SecretsUnion {
+	typ := SecretsUnionTypeArrayOfSecrets1
+
+	return SecretsUnion{
+		ArrayOfSecrets1: arrayOfSecrets1,
+		Type:            typ,
+	}
+}
+
+func CreateSecretsUnionSecrets2(secrets2 Secrets2) SecretsUnion {
+	typ := SecretsUnionTypeSecrets2
+
+	return SecretsUnion{
+		Secrets2: &secrets2,
+		Type:     typ,
+	}
+}
+
+func (u *SecretsUnion) UnmarshalJSON(data []byte) error {
+
+	var secrets2 Secrets2 = Secrets2{}
+	if err := utils.UnmarshalJSON(data, &secrets2, "", true, nil); err == nil {
+		u.Secrets2 = &secrets2
+		u.Type = SecretsUnionTypeSecrets2
+		return nil
+	}
+
+	var arrayOfSecrets1 []Secrets1 = []Secrets1{}
+	if err := utils.UnmarshalJSON(data, &arrayOfSecrets1, "", true, nil); err == nil {
+		u.ArrayOfSecrets1 = arrayOfSecrets1
+		u.Type = SecretsUnionTypeArrayOfSecrets1
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for SecretsUnion", string(data))
+}
+
+func (u SecretsUnion) MarshalJSON() ([]byte, error) {
+	if u.ArrayOfSecrets1 != nil {
+		return utils.MarshalJSON(u.ArrayOfSecrets1, "", true)
+	}
+
+	if u.Secrets2 != nil {
+		return utils.MarshalJSON(u.Secrets2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type SecretsUnion: all fields are null")
+}
+
 type UpdateResourceRequestBody struct {
-	Ownership    *UpdateResourceOwnership    `json:"ownership,omitempty"`
-	Name         *string                     `json:"name,omitempty"`
-	Status       *UpdateResourceStatus       `json:"status,omitempty"`
-	Metadata     map[string]any              `json:"metadata,omitempty"`
-	BillingPlan  *UpdateResourceBillingPlan  `json:"billingPlan,omitempty"`
-	Notification *UpdateResourceNotification `json:"notification,omitempty"`
-	Extras       map[string]any              `json:"extras,omitempty"`
-	Secrets      []UpdateResourceSecret      `json:"secrets,omitempty"`
+	Ownership    *UpdateResourceOwnership         `json:"ownership,omitempty"`
+	Name         *string                          `json:"name,omitempty"`
+	Status       *UpdateResourceStatus            `json:"status,omitempty"`
+	Metadata     map[string]any                   `json:"metadata,omitempty"`
+	BillingPlan  *UpdateResourceBillingPlan       `json:"billingPlan,omitempty"`
+	Notification *UpdateResourceNotificationUnion `json:"notification,omitempty"`
+	Extras       map[string]any                   `json:"extras,omitempty"`
+	Secrets      *SecretsUnion                    `json:"secrets,omitempty"`
 }
 
 func (o *UpdateResourceRequestBody) GetOwnership() *UpdateResourceOwnership {
@@ -414,7 +694,7 @@ func (o *UpdateResourceRequestBody) GetBillingPlan() *UpdateResourceBillingPlan 
 	return o.BillingPlan
 }
 
-func (o *UpdateResourceRequestBody) GetNotification() *UpdateResourceNotification {
+func (o *UpdateResourceRequestBody) GetNotification() *UpdateResourceNotificationUnion {
 	if o == nil {
 		return nil
 	}
@@ -428,7 +708,7 @@ func (o *UpdateResourceRequestBody) GetExtras() map[string]any {
 	return o.Extras
 }
 
-func (o *UpdateResourceRequestBody) GetSecrets() []UpdateResourceSecret {
+func (o *UpdateResourceRequestBody) GetSecrets() *SecretsUnion {
 	if o == nil {
 		return nil
 	}
@@ -438,7 +718,7 @@ func (o *UpdateResourceRequestBody) GetSecrets() []UpdateResourceSecret {
 type UpdateResourceRequest struct {
 	IntegrationConfigurationID string                     `pathParam:"style=simple,explode=false,name=integrationConfigurationId"`
 	ResourceID                 string                     `pathParam:"style=simple,explode=false,name=resourceId"`
-	RequestBody                *UpdateResourceRequestBody `request:"mediaType=application/json"`
+	Body                       *UpdateResourceRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *UpdateResourceRequest) GetIntegrationConfigurationID() string {
@@ -455,11 +735,11 @@ func (o *UpdateResourceRequest) GetResourceID() string {
 	return o.ResourceID
 }
 
-func (o *UpdateResourceRequest) GetRequestBody() *UpdateResourceRequestBody {
+func (o *UpdateResourceRequest) GetBody() *UpdateResourceRequestBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type UpdateResourceResponseBody struct {

@@ -6,9 +6,8 @@
 import { UpdateDrainDelivery4 } from "@vercel/sdk/models/updatedrainop.js";
 
 let value: UpdateDrainDelivery4 = {
-  type: "clickhouse",
-  endpoint: "<value>",
-  table: "<value>",
+  type: "internal",
+  target: "vercel-otel-traces-db",
 };
 ```
 
@@ -17,5 +16,4 @@ let value: UpdateDrainDelivery4 = {
 | Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
 | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
 | `type`                                                                                                   | [models.UpdateDrainDeliveryDrainsResponse200Type](../models/updatedraindeliverydrainsresponse200type.md) | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
-| `endpoint`                                                                                               | *string*                                                                                                 | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
-| `table`                                                                                                  | *string*                                                                                                 | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
+| `target`                                                                                                 | [models.UpdateDrainDeliveryTarget](../models/updatedraindeliverytarget.md)                               | :heavy_check_mark:                                                                                       | N/A                                                                                                      |

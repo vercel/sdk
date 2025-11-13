@@ -44,22 +44,10 @@ export class InternalServerError extends VercelError {
 export const InternalServerErrorCode$inboundSchema: z.ZodNativeEnum<
   typeof InternalServerErrorCode
 > = z.nativeEnum(InternalServerErrorCode);
-
 /** @internal */
 export const InternalServerErrorCode$outboundSchema: z.ZodNativeEnum<
   typeof InternalServerErrorCode
 > = InternalServerErrorCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InternalServerErrorCode$ {
-  /** @deprecated use `InternalServerErrorCode$inboundSchema` instead. */
-  export const inboundSchema = InternalServerErrorCode$inboundSchema;
-  /** @deprecated use `InternalServerErrorCode$outboundSchema` instead. */
-  export const outboundSchema = InternalServerErrorCode$outboundSchema;
-}
 
 /** @internal */
 export const InternalServerError$inboundSchema: z.ZodType<
@@ -101,16 +89,3 @@ export const InternalServerError$outboundSchema: z.ZodType<
     code: InternalServerErrorCode$outboundSchema,
     message: z.string(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InternalServerError$ {
-  /** @deprecated use `InternalServerError$inboundSchema` instead. */
-  export const inboundSchema = InternalServerError$inboundSchema;
-  /** @deprecated use `InternalServerError$outboundSchema` instead. */
-  export const outboundSchema = InternalServerError$outboundSchema;
-  /** @deprecated use `InternalServerError$Outbound` instead. */
-  export type Outbound = InternalServerError$Outbound;
-}

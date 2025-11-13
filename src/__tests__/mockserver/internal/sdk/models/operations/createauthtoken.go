@@ -29,8 +29,8 @@ type CreateAuthTokenRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string                    `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody CreateAuthTokenRequestBody `request:"mediaType=application/json"`
+	Slug *string                    `queryParam:"style=form,explode=true,name=slug"`
+	Body CreateAuthTokenRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *CreateAuthTokenRequest) GetTeamID() *string {
@@ -47,11 +47,11 @@ func (o *CreateAuthTokenRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *CreateAuthTokenRequest) GetRequestBody() CreateAuthTokenRequestBody {
+func (o *CreateAuthTokenRequest) GetBody() CreateAuthTokenRequestBody {
 	if o == nil {
 		return CreateAuthTokenRequestBody{}
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 // CreateAuthTokenResponseBody - Successful response.

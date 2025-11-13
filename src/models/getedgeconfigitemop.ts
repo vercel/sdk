@@ -31,7 +31,6 @@ export const GetEdgeConfigItemRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type GetEdgeConfigItemRequest$Outbound = {
   edgeConfigId: string;
@@ -52,19 +51,6 @@ export const GetEdgeConfigItemRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetEdgeConfigItemRequest$ {
-  /** @deprecated use `GetEdgeConfigItemRequest$inboundSchema` instead. */
-  export const inboundSchema = GetEdgeConfigItemRequest$inboundSchema;
-  /** @deprecated use `GetEdgeConfigItemRequest$outboundSchema` instead. */
-  export const outboundSchema = GetEdgeConfigItemRequest$outboundSchema;
-  /** @deprecated use `GetEdgeConfigItemRequest$Outbound` instead. */
-  export type Outbound = GetEdgeConfigItemRequest$Outbound;
-}
-
 export function getEdgeConfigItemRequestToJSON(
   getEdgeConfigItemRequest: GetEdgeConfigItemRequest,
 ): string {
@@ -72,7 +58,6 @@ export function getEdgeConfigItemRequestToJSON(
     GetEdgeConfigItemRequest$outboundSchema.parse(getEdgeConfigItemRequest),
   );
 }
-
 export function getEdgeConfigItemRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetEdgeConfigItemRequest, SDKValidationError> {

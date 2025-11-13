@@ -166,9 +166,9 @@ func (o *TransferInDomainRequestBody) GetContactInformation() TransferInDomainCo
 }
 
 type TransferInDomainRequest struct {
-	Domain      string                      `pathParam:"style=simple,explode=false,name=domain"`
-	TeamID      *string                     `queryParam:"style=form,explode=true,name=teamId"`
-	RequestBody TransferInDomainRequestBody `request:"mediaType=application/json"`
+	Domain string                      `pathParam:"style=simple,explode=false,name=domain"`
+	TeamID *string                     `queryParam:"style=form,explode=true,name=teamId"`
+	Body   TransferInDomainRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *TransferInDomainRequest) GetDomain() string {
@@ -185,11 +185,11 @@ func (o *TransferInDomainRequest) GetTeamID() *string {
 	return o.TeamID
 }
 
-func (o *TransferInDomainRequest) GetRequestBody() TransferInDomainRequestBody {
+func (o *TransferInDomainRequest) GetBody() TransferInDomainRequestBody {
 	if o == nil {
 		return TransferInDomainRequestBody{}
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type TransferInDomainMethod string

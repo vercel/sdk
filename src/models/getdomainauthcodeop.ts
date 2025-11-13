@@ -66,7 +66,6 @@ export const GetDomainAuthCodeRequest$inboundSchema: z.ZodType<
   domain: z.string(),
   teamId: z.string().optional(),
 });
-
 /** @internal */
 export type GetDomainAuthCodeRequest$Outbound = {
   domain: string;
@@ -83,19 +82,6 @@ export const GetDomainAuthCodeRequest$outboundSchema: z.ZodType<
   teamId: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDomainAuthCodeRequest$ {
-  /** @deprecated use `GetDomainAuthCodeRequest$inboundSchema` instead. */
-  export const inboundSchema = GetDomainAuthCodeRequest$inboundSchema;
-  /** @deprecated use `GetDomainAuthCodeRequest$outboundSchema` instead. */
-  export const outboundSchema = GetDomainAuthCodeRequest$outboundSchema;
-  /** @deprecated use `GetDomainAuthCodeRequest$Outbound` instead. */
-  export type Outbound = GetDomainAuthCodeRequest$Outbound;
-}
-
 export function getDomainAuthCodeRequestToJSON(
   getDomainAuthCodeRequest: GetDomainAuthCodeRequest,
 ): string {
@@ -103,7 +89,6 @@ export function getDomainAuthCodeRequestToJSON(
     GetDomainAuthCodeRequest$outboundSchema.parse(getDomainAuthCodeRequest),
   );
 }
-
 export function getDomainAuthCodeRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDomainAuthCodeRequest, SDKValidationError> {
@@ -121,7 +106,6 @@ export const GetDomainAuthCodeDomainsRegistrarResponseResponseBody$inboundSchema
     z.ZodTypeDef,
     unknown
   > = z.union([NotAuthorizedForScope$inboundSchema, Forbidden$inboundSchema]);
-
 /** @internal */
 export type GetDomainAuthCodeDomainsRegistrarResponseResponseBody$Outbound =
   | NotAuthorizedForScope$Outbound
@@ -135,22 +119,6 @@ export const GetDomainAuthCodeDomainsRegistrarResponseResponseBody$outboundSchem
     unknown
   > = z.union([NotAuthorizedForScope$outboundSchema, Forbidden$outboundSchema]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDomainAuthCodeDomainsRegistrarResponseResponseBody$ {
-  /** @deprecated use `GetDomainAuthCodeDomainsRegistrarResponseResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    GetDomainAuthCodeDomainsRegistrarResponseResponseBody$inboundSchema;
-  /** @deprecated use `GetDomainAuthCodeDomainsRegistrarResponseResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    GetDomainAuthCodeDomainsRegistrarResponseResponseBody$outboundSchema;
-  /** @deprecated use `GetDomainAuthCodeDomainsRegistrarResponseResponseBody$Outbound` instead. */
-  export type Outbound =
-    GetDomainAuthCodeDomainsRegistrarResponseResponseBody$Outbound;
-}
-
 export function getDomainAuthCodeDomainsRegistrarResponseResponseBodyToJSON(
   getDomainAuthCodeDomainsRegistrarResponseResponseBody:
     GetDomainAuthCodeDomainsRegistrarResponseResponseBody,
@@ -161,7 +129,6 @@ export function getDomainAuthCodeDomainsRegistrarResponseResponseBodyToJSON(
     ),
   );
 }
-
 export function getDomainAuthCodeDomainsRegistrarResponseResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -188,7 +155,6 @@ export const GetDomainAuthCodeDomainsRegistrarResponseBody$inboundSchema:
     DomainNotRegistered$inboundSchema,
     HttpApiDecodeError$inboundSchema,
   ]);
-
 /** @internal */
 export type GetDomainAuthCodeDomainsRegistrarResponseBody$Outbound =
   | DomainNotRegistered$Outbound
@@ -205,21 +171,6 @@ export const GetDomainAuthCodeDomainsRegistrarResponseBody$outboundSchema:
     HttpApiDecodeError$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDomainAuthCodeDomainsRegistrarResponseBody$ {
-  /** @deprecated use `GetDomainAuthCodeDomainsRegistrarResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    GetDomainAuthCodeDomainsRegistrarResponseBody$inboundSchema;
-  /** @deprecated use `GetDomainAuthCodeDomainsRegistrarResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    GetDomainAuthCodeDomainsRegistrarResponseBody$outboundSchema;
-  /** @deprecated use `GetDomainAuthCodeDomainsRegistrarResponseBody$Outbound` instead. */
-  export type Outbound = GetDomainAuthCodeDomainsRegistrarResponseBody$Outbound;
-}
-
 export function getDomainAuthCodeDomainsRegistrarResponseBodyToJSON(
   getDomainAuthCodeDomainsRegistrarResponseBody:
     GetDomainAuthCodeDomainsRegistrarResponseBody,
@@ -230,7 +181,6 @@ export function getDomainAuthCodeDomainsRegistrarResponseBodyToJSON(
     ),
   );
 }
-
 export function getDomainAuthCodeDomainsRegistrarResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -255,7 +205,6 @@ export const GetDomainAuthCodeResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   authCode: z.string(),
 });
-
 /** @internal */
 export type GetDomainAuthCodeResponseBody$Outbound = {
   authCode: string;
@@ -270,19 +219,6 @@ export const GetDomainAuthCodeResponseBody$outboundSchema: z.ZodType<
   authCode: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDomainAuthCodeResponseBody$ {
-  /** @deprecated use `GetDomainAuthCodeResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetDomainAuthCodeResponseBody$inboundSchema;
-  /** @deprecated use `GetDomainAuthCodeResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetDomainAuthCodeResponseBody$outboundSchema;
-  /** @deprecated use `GetDomainAuthCodeResponseBody$Outbound` instead. */
-  export type Outbound = GetDomainAuthCodeResponseBody$Outbound;
-}
-
 export function getDomainAuthCodeResponseBodyToJSON(
   getDomainAuthCodeResponseBody: GetDomainAuthCodeResponseBody,
 ): string {
@@ -292,7 +228,6 @@ export function getDomainAuthCodeResponseBodyToJSON(
     ),
   );
 }
-
 export function getDomainAuthCodeResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDomainAuthCodeResponseBody, SDKValidationError> {

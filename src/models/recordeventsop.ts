@@ -79,41 +79,17 @@ export type RecordEventsRequest = {
 /** @internal */
 export const Source$inboundSchema: z.ZodNativeEnum<typeof Source> = z
   .nativeEnum(Source);
-
 /** @internal */
 export const Source$outboundSchema: z.ZodNativeEnum<typeof Source> =
   Source$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Source$ {
-  /** @deprecated use `Source$inboundSchema` instead. */
-  export const inboundSchema = Source$inboundSchema;
-  /** @deprecated use `Source$outboundSchema` instead. */
-  export const outboundSchema = Source$outboundSchema;
-}
 
 /** @internal */
 export const Event$inboundSchema: z.ZodNativeEnum<typeof Event> = z.nativeEnum(
   Event,
 );
-
 /** @internal */
 export const Event$outboundSchema: z.ZodNativeEnum<typeof Event> =
   Event$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Event$ {
-  /** @deprecated use `Event$inboundSchema` instead. */
-  export const inboundSchema = Event$inboundSchema;
-  /** @deprecated use `Event$outboundSchema` instead. */
-  export const outboundSchema = Event$outboundSchema;
-}
 
 /** @internal */
 export const RequestBody$inboundSchema: z.ZodType<
@@ -127,7 +103,6 @@ export const RequestBody$inboundSchema: z.ZodType<
   hash: z.string(),
   duration: z.number().optional(),
 });
-
 /** @internal */
 export type RequestBody$Outbound = {
   sessionId: string;
@@ -150,23 +125,9 @@ export const RequestBody$outboundSchema: z.ZodType<
   duration: z.number().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestBody$ {
-  /** @deprecated use `RequestBody$inboundSchema` instead. */
-  export const inboundSchema = RequestBody$inboundSchema;
-  /** @deprecated use `RequestBody$outboundSchema` instead. */
-  export const outboundSchema = RequestBody$outboundSchema;
-  /** @deprecated use `RequestBody$Outbound` instead. */
-  export type Outbound = RequestBody$Outbound;
-}
-
 export function requestBodyToJSON(requestBody: RequestBody): string {
   return JSON.stringify(RequestBody$outboundSchema.parse(requestBody));
 }
-
 export function requestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<RequestBody, SDKValidationError> {
@@ -195,7 +156,6 @@ export const RecordEventsRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type RecordEventsRequest$Outbound = {
   "x-artifact-client-ci"?: string | undefined;
@@ -224,19 +184,6 @@ export const RecordEventsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RecordEventsRequest$ {
-  /** @deprecated use `RecordEventsRequest$inboundSchema` instead. */
-  export const inboundSchema = RecordEventsRequest$inboundSchema;
-  /** @deprecated use `RecordEventsRequest$outboundSchema` instead. */
-  export const outboundSchema = RecordEventsRequest$outboundSchema;
-  /** @deprecated use `RecordEventsRequest$Outbound` instead. */
-  export type Outbound = RecordEventsRequest$Outbound;
-}
-
 export function recordEventsRequestToJSON(
   recordEventsRequest: RecordEventsRequest,
 ): string {
@@ -244,7 +191,6 @@ export function recordEventsRequestToJSON(
     RecordEventsRequest$outboundSchema.parse(recordEventsRequest),
   );
 }
-
 export function recordEventsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<RecordEventsRequest, SDKValidationError> {

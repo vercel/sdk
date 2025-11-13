@@ -32,7 +32,6 @@ export const DeleteProjectRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type DeleteProjectRequest$Outbound = {
   idOrName: string;
@@ -51,19 +50,6 @@ export const DeleteProjectRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteProjectRequest$ {
-  /** @deprecated use `DeleteProjectRequest$inboundSchema` instead. */
-  export const inboundSchema = DeleteProjectRequest$inboundSchema;
-  /** @deprecated use `DeleteProjectRequest$outboundSchema` instead. */
-  export const outboundSchema = DeleteProjectRequest$outboundSchema;
-  /** @deprecated use `DeleteProjectRequest$Outbound` instead. */
-  export type Outbound = DeleteProjectRequest$Outbound;
-}
-
 export function deleteProjectRequestToJSON(
   deleteProjectRequest: DeleteProjectRequest,
 ): string {
@@ -71,7 +57,6 @@ export function deleteProjectRequestToJSON(
     DeleteProjectRequest$outboundSchema.parse(deleteProjectRequest),
   );
 }
-
 export function deleteProjectRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteProjectRequest, SDKValidationError> {

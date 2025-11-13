@@ -107,7 +107,6 @@ export const GetConfigurableLogDrainRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type GetConfigurableLogDrainRequest$Outbound = {
   id: string;
@@ -126,19 +125,6 @@ export const GetConfigurableLogDrainRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurableLogDrainRequest$ {
-  /** @deprecated use `GetConfigurableLogDrainRequest$inboundSchema` instead. */
-  export const inboundSchema = GetConfigurableLogDrainRequest$inboundSchema;
-  /** @deprecated use `GetConfigurableLogDrainRequest$outboundSchema` instead. */
-  export const outboundSchema = GetConfigurableLogDrainRequest$outboundSchema;
-  /** @deprecated use `GetConfigurableLogDrainRequest$Outbound` instead. */
-  export type Outbound = GetConfigurableLogDrainRequest$Outbound;
-}
-
 export function getConfigurableLogDrainRequestToJSON(
   getConfigurableLogDrainRequest: GetConfigurableLogDrainRequest,
 ): string {
@@ -148,7 +134,6 @@ export function getConfigurableLogDrainRequestToJSON(
     ),
   );
 }
-
 export function getConfigurableLogDrainRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetConfigurableLogDrainRequest, SDKValidationError> {
@@ -163,22 +148,10 @@ export function getConfigurableLogDrainRequestFromJSON(
 export const GetConfigurableLogDrainFramework$inboundSchema: z.ZodNativeEnum<
   typeof GetConfigurableLogDrainFramework
 > = z.nativeEnum(GetConfigurableLogDrainFramework);
-
 /** @internal */
 export const GetConfigurableLogDrainFramework$outboundSchema: z.ZodNativeEnum<
   typeof GetConfigurableLogDrainFramework
 > = GetConfigurableLogDrainFramework$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurableLogDrainFramework$ {
-  /** @deprecated use `GetConfigurableLogDrainFramework$inboundSchema` instead. */
-  export const inboundSchema = GetConfigurableLogDrainFramework$inboundSchema;
-  /** @deprecated use `GetConfigurableLogDrainFramework$outboundSchema` instead. */
-  export const outboundSchema = GetConfigurableLogDrainFramework$outboundSchema;
-}
 
 /** @internal */
 export const ProjectsMetadata$inboundSchema: z.ZodType<
@@ -192,7 +165,6 @@ export const ProjectsMetadata$inboundSchema: z.ZodType<
     .optional(),
   latestDeployment: z.string().optional(),
 });
-
 /** @internal */
 export type ProjectsMetadata$Outbound = {
   id: string;
@@ -214,19 +186,6 @@ export const ProjectsMetadata$outboundSchema: z.ZodType<
   latestDeployment: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ProjectsMetadata$ {
-  /** @deprecated use `ProjectsMetadata$inboundSchema` instead. */
-  export const inboundSchema = ProjectsMetadata$inboundSchema;
-  /** @deprecated use `ProjectsMetadata$outboundSchema` instead. */
-  export const outboundSchema = ProjectsMetadata$outboundSchema;
-  /** @deprecated use `ProjectsMetadata$Outbound` instead. */
-  export type Outbound = ProjectsMetadata$Outbound;
-}
-
 export function projectsMetadataToJSON(
   projectsMetadata: ProjectsMetadata,
 ): string {
@@ -234,7 +193,6 @@ export function projectsMetadataToJSON(
     ProjectsMetadata$outboundSchema.parse(projectsMetadata),
   );
 }
-
 export function projectsMetadataFromJSON(
   jsonString: string,
 ): SafeParseResult<ProjectsMetadata, SDKValidationError> {
@@ -258,7 +216,6 @@ export const GetConfigurableLogDrainResponseBody$inboundSchema: z.ZodType<
   integrationConfigurationUri: z.string().optional(),
   integrationWebsite: z.string().optional(),
 });
-
 /** @internal */
 export type GetConfigurableLogDrainResponseBody$Outbound = {
   projectsMetadata?: Array<ProjectsMetadata$Outbound> | null | undefined;
@@ -281,21 +238,6 @@ export const GetConfigurableLogDrainResponseBody$outboundSchema: z.ZodType<
   integrationWebsite: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurableLogDrainResponseBody$ {
-  /** @deprecated use `GetConfigurableLogDrainResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurableLogDrainResponseBody$inboundSchema;
-  /** @deprecated use `GetConfigurableLogDrainResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurableLogDrainResponseBody$outboundSchema;
-  /** @deprecated use `GetConfigurableLogDrainResponseBody$Outbound` instead. */
-  export type Outbound = GetConfigurableLogDrainResponseBody$Outbound;
-}
-
 export function getConfigurableLogDrainResponseBodyToJSON(
   getConfigurableLogDrainResponseBody: GetConfigurableLogDrainResponseBody,
 ): string {
@@ -305,7 +247,6 @@ export function getConfigurableLogDrainResponseBodyToJSON(
     ),
   );
 }
-
 export function getConfigurableLogDrainResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetConfigurableLogDrainResponseBody, SDKValidationError> {

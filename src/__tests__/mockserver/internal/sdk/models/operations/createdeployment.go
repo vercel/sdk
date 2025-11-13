@@ -1682,8 +1682,8 @@ type CreateDeploymentRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string                     `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody CreateDeploymentRequestBody `request:"mediaType=application/json"`
+	Slug *string                     `queryParam:"style=form,explode=true,name=slug"`
+	Body CreateDeploymentRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *CreateDeploymentRequest) GetForceNew() *ForceNew {
@@ -1714,11 +1714,11 @@ func (o *CreateDeploymentRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *CreateDeploymentRequest) GetRequestBody() CreateDeploymentRequestBody {
+func (o *CreateDeploymentRequest) GetBody() CreateDeploymentRequestBody {
 	if o == nil {
 		return CreateDeploymentRequestBody{}
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type CreateDeploymentAliasAssignedAtType string
@@ -8547,8 +8547,6 @@ type CreateDeploymentMicrofrontends2 struct {
 	DefaultRoute *string `json:"defaultRoute,omitempty"`
 	// The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
 	GroupIds []string `json:"groupIds"`
-	// Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not.
-	MicrofrontendsAlias2Enabled *bool `json:"microfrontendsAlias2Enabled,omitempty"`
 }
 
 func (c CreateDeploymentMicrofrontends2) MarshalJSON() ([]byte, error) {
@@ -8604,13 +8602,6 @@ func (o *CreateDeploymentMicrofrontends2) GetGroupIds() []string {
 	return o.GroupIds
 }
 
-func (o *CreateDeploymentMicrofrontends2) GetMicrofrontendsAlias2Enabled() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.MicrofrontendsAlias2Enabled
-}
-
 type CreateDeploymentMicrofrontends1 struct {
 	IsDefaultApp *bool `json:"isDefaultApp,omitempty"`
 	// The project name of the default app of this deployment's microfrontends group.
@@ -8619,8 +8610,6 @@ type CreateDeploymentMicrofrontends1 struct {
 	DefaultRoute *string `json:"defaultRoute,omitempty"`
 	// The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
 	GroupIds []string `json:"groupIds"`
-	// Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not.
-	MicrofrontendsAlias2Enabled *bool `json:"microfrontendsAlias2Enabled,omitempty"`
 }
 
 func (c CreateDeploymentMicrofrontends1) MarshalJSON() ([]byte, error) {
@@ -8660,13 +8649,6 @@ func (o *CreateDeploymentMicrofrontends1) GetGroupIds() []string {
 		return []string{}
 	}
 	return o.GroupIds
-}
-
-func (o *CreateDeploymentMicrofrontends1) GetMicrofrontendsAlias2Enabled() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.MicrofrontendsAlias2Enabled
 }
 
 type CreateDeploymentMicrofrontendsUnionType string

@@ -35,8 +35,8 @@ type ApproveRollingReleaseStageRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string                                `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody *ApproveRollingReleaseStageRequestBody `request:"mediaType=application/json"`
+	Slug *string                                `queryParam:"style=form,explode=true,name=slug"`
+	Body *ApproveRollingReleaseStageRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *ApproveRollingReleaseStageRequest) GetIDOrName() string {
@@ -60,11 +60,11 @@ func (o *ApproveRollingReleaseStageRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *ApproveRollingReleaseStageRequest) GetRequestBody() *ApproveRollingReleaseStageRequestBody {
+func (o *ApproveRollingReleaseStageRequest) GetBody() *ApproveRollingReleaseStageRequestBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 // ApproveRollingReleaseStageState - The current state of the rolling release

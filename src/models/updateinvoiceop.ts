@@ -38,22 +38,10 @@ export type UpdateInvoiceRequest = {
 export const RequestBodyAction$inboundSchema: z.ZodNativeEnum<
   typeof RequestBodyAction
 > = z.nativeEnum(RequestBodyAction);
-
 /** @internal */
 export const RequestBodyAction$outboundSchema: z.ZodNativeEnum<
   typeof RequestBodyAction
 > = RequestBodyAction$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestBodyAction$ {
-  /** @deprecated use `RequestBodyAction$inboundSchema` instead. */
-  export const inboundSchema = RequestBodyAction$inboundSchema;
-  /** @deprecated use `RequestBodyAction$outboundSchema` instead. */
-  export const outboundSchema = RequestBodyAction$outboundSchema;
-}
 
 /** @internal */
 export const UpdateInvoiceRequestBody1$inboundSchema: z.ZodType<
@@ -65,7 +53,6 @@ export const UpdateInvoiceRequestBody1$inboundSchema: z.ZodType<
   reason: z.string(),
   total: z.string(),
 });
-
 /** @internal */
 export type UpdateInvoiceRequestBody1$Outbound = {
   action: string;
@@ -84,19 +71,6 @@ export const UpdateInvoiceRequestBody1$outboundSchema: z.ZodType<
   total: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateInvoiceRequestBody1$ {
-  /** @deprecated use `UpdateInvoiceRequestBody1$inboundSchema` instead. */
-  export const inboundSchema = UpdateInvoiceRequestBody1$inboundSchema;
-  /** @deprecated use `UpdateInvoiceRequestBody1$outboundSchema` instead. */
-  export const outboundSchema = UpdateInvoiceRequestBody1$outboundSchema;
-  /** @deprecated use `UpdateInvoiceRequestBody1$Outbound` instead. */
-  export type Outbound = UpdateInvoiceRequestBody1$Outbound;
-}
-
 export function updateInvoiceRequestBody1ToJSON(
   updateInvoiceRequestBody1: UpdateInvoiceRequestBody1,
 ): string {
@@ -104,7 +78,6 @@ export function updateInvoiceRequestBody1ToJSON(
     UpdateInvoiceRequestBody1$outboundSchema.parse(updateInvoiceRequestBody1),
   );
 }
-
 export function updateInvoiceRequestBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateInvoiceRequestBody1, SDKValidationError> {
@@ -121,7 +94,6 @@ export const UpdateInvoiceRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.lazy(() => UpdateInvoiceRequestBody1$inboundSchema);
-
 /** @internal */
 export type UpdateInvoiceRequestBody$Outbound =
   UpdateInvoiceRequestBody1$Outbound;
@@ -133,19 +105,6 @@ export const UpdateInvoiceRequestBody$outboundSchema: z.ZodType<
   UpdateInvoiceRequestBody
 > = z.lazy(() => UpdateInvoiceRequestBody1$outboundSchema);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateInvoiceRequestBody$ {
-  /** @deprecated use `UpdateInvoiceRequestBody$inboundSchema` instead. */
-  export const inboundSchema = UpdateInvoiceRequestBody$inboundSchema;
-  /** @deprecated use `UpdateInvoiceRequestBody$outboundSchema` instead. */
-  export const outboundSchema = UpdateInvoiceRequestBody$outboundSchema;
-  /** @deprecated use `UpdateInvoiceRequestBody$Outbound` instead. */
-  export type Outbound = UpdateInvoiceRequestBody$Outbound;
-}
-
 export function updateInvoiceRequestBodyToJSON(
   updateInvoiceRequestBody: UpdateInvoiceRequestBody,
 ): string {
@@ -153,7 +112,6 @@ export function updateInvoiceRequestBodyToJSON(
     UpdateInvoiceRequestBody$outboundSchema.parse(updateInvoiceRequestBody),
   );
 }
-
 export function updateInvoiceRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateInvoiceRequestBody, SDKValidationError> {
@@ -178,7 +136,6 @@ export const UpdateInvoiceRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type UpdateInvoiceRequest$Outbound = {
   integrationConfigurationId: string;
@@ -201,19 +158,6 @@ export const UpdateInvoiceRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateInvoiceRequest$ {
-  /** @deprecated use `UpdateInvoiceRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateInvoiceRequest$inboundSchema;
-  /** @deprecated use `UpdateInvoiceRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateInvoiceRequest$outboundSchema;
-  /** @deprecated use `UpdateInvoiceRequest$Outbound` instead. */
-  export type Outbound = UpdateInvoiceRequest$Outbound;
-}
-
 export function updateInvoiceRequestToJSON(
   updateInvoiceRequest: UpdateInvoiceRequest,
 ): string {
@@ -221,7 +165,6 @@ export function updateInvoiceRequestToJSON(
     UpdateInvoiceRequest$outboundSchema.parse(updateInvoiceRequest),
   );
 }
-
 export function updateInvoiceRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateInvoiceRequest, SDKValidationError> {

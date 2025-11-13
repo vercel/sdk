@@ -184,8 +184,8 @@ type CreateConfigurableLogDrainRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string                               `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody CreateConfigurableLogDrainRequestBody `request:"mediaType=application/json"`
+	Slug *string                               `queryParam:"style=form,explode=true,name=slug"`
+	Body CreateConfigurableLogDrainRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *CreateConfigurableLogDrainRequest) GetTeamID() *string {
@@ -202,11 +202,11 @@ func (o *CreateConfigurableLogDrainRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *CreateConfigurableLogDrainRequest) GetRequestBody() CreateConfigurableLogDrainRequestBody {
+func (o *CreateConfigurableLogDrainRequest) GetBody() CreateConfigurableLogDrainRequestBody {
 	if o == nil {
 		return CreateConfigurableLogDrainRequestBody{}
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type CreateConfigurableLogDrainResponseBody struct {

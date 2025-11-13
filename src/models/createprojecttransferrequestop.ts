@@ -54,7 +54,6 @@ export const CreateProjectTransferRequestRequestBody$inboundSchema: z.ZodType<
   callbackUrl: z.string().optional(),
   callbackSecret: z.string().optional(),
 });
-
 /** @internal */
 export type CreateProjectTransferRequestRequestBody$Outbound = {
   callbackUrl?: string | undefined;
@@ -71,21 +70,6 @@ export const CreateProjectTransferRequestRequestBody$outboundSchema: z.ZodType<
   callbackSecret: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateProjectTransferRequestRequestBody$ {
-  /** @deprecated use `CreateProjectTransferRequestRequestBody$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateProjectTransferRequestRequestBody$inboundSchema;
-  /** @deprecated use `CreateProjectTransferRequestRequestBody$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateProjectTransferRequestRequestBody$outboundSchema;
-  /** @deprecated use `CreateProjectTransferRequestRequestBody$Outbound` instead. */
-  export type Outbound = CreateProjectTransferRequestRequestBody$Outbound;
-}
-
 export function createProjectTransferRequestRequestBodyToJSON(
   createProjectTransferRequestRequestBody:
     CreateProjectTransferRequestRequestBody,
@@ -96,7 +80,6 @@ export function createProjectTransferRequestRequestBodyToJSON(
     ),
   );
 }
-
 export function createProjectTransferRequestRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -130,7 +113,6 @@ export const CreateProjectTransferRequestRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type CreateProjectTransferRequestRequest$Outbound = {
   idOrName: string;
@@ -157,21 +139,6 @@ export const CreateProjectTransferRequestRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateProjectTransferRequestRequest$ {
-  /** @deprecated use `CreateProjectTransferRequestRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateProjectTransferRequestRequest$inboundSchema;
-  /** @deprecated use `CreateProjectTransferRequestRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateProjectTransferRequestRequest$outboundSchema;
-  /** @deprecated use `CreateProjectTransferRequestRequest$Outbound` instead. */
-  export type Outbound = CreateProjectTransferRequestRequest$Outbound;
-}
-
 export function createProjectTransferRequestRequestToJSON(
   createProjectTransferRequestRequest: CreateProjectTransferRequestRequest,
 ): string {
@@ -181,7 +148,6 @@ export function createProjectTransferRequestRequestToJSON(
     ),
   );
 }
-
 export function createProjectTransferRequestRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateProjectTransferRequestRequest, SDKValidationError> {
@@ -201,7 +167,6 @@ export const CreateProjectTransferRequestResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   code: z.string(),
 });
-
 /** @internal */
 export type CreateProjectTransferRequestResponseBody$Outbound = {
   code: string;
@@ -216,21 +181,6 @@ export const CreateProjectTransferRequestResponseBody$outboundSchema: z.ZodType<
   code: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateProjectTransferRequestResponseBody$ {
-  /** @deprecated use `CreateProjectTransferRequestResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateProjectTransferRequestResponseBody$inboundSchema;
-  /** @deprecated use `CreateProjectTransferRequestResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateProjectTransferRequestResponseBody$outboundSchema;
-  /** @deprecated use `CreateProjectTransferRequestResponseBody$Outbound` instead. */
-  export type Outbound = CreateProjectTransferRequestResponseBody$Outbound;
-}
-
 export function createProjectTransferRequestResponseBodyToJSON(
   createProjectTransferRequestResponseBody:
     CreateProjectTransferRequestResponseBody,
@@ -241,7 +191,6 @@ export function createProjectTransferRequestResponseBodyToJSON(
     ),
   );
 }
-
 export function createProjectTransferRequestResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<

@@ -42,22 +42,10 @@ export class Forbidden extends VercelError {
 export const ForbiddenCode$inboundSchema: z.ZodNativeEnum<
   typeof ForbiddenCode
 > = z.nativeEnum(ForbiddenCode);
-
 /** @internal */
 export const ForbiddenCode$outboundSchema: z.ZodNativeEnum<
   typeof ForbiddenCode
 > = ForbiddenCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ForbiddenCode$ {
-  /** @deprecated use `ForbiddenCode$inboundSchema` instead. */
-  export const inboundSchema = ForbiddenCode$inboundSchema;
-  /** @deprecated use `ForbiddenCode$outboundSchema` instead. */
-  export const outboundSchema = ForbiddenCode$outboundSchema;
-}
 
 /** @internal */
 export const Forbidden$inboundSchema: z.ZodType<
@@ -99,16 +87,3 @@ export const Forbidden$outboundSchema: z.ZodType<
     code: ForbiddenCode$outboundSchema,
     message: z.string(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Forbidden$ {
-  /** @deprecated use `Forbidden$inboundSchema` instead. */
-  export const inboundSchema = Forbidden$inboundSchema;
-  /** @deprecated use `Forbidden$outboundSchema` instead. */
-  export const outboundSchema = Forbidden$outboundSchema;
-  /** @deprecated use `Forbidden$Outbound` instead. */
-  export type Outbound = Forbidden$Outbound;
-}

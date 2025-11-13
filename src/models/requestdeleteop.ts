@@ -55,7 +55,6 @@ export const RequestDeleteReasons$inboundSchema: z.ZodType<
   slug: z.string(),
   description: z.string(),
 });
-
 /** @internal */
 export type RequestDeleteReasons$Outbound = {
   slug: string;
@@ -72,19 +71,6 @@ export const RequestDeleteReasons$outboundSchema: z.ZodType<
   description: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestDeleteReasons$ {
-  /** @deprecated use `RequestDeleteReasons$inboundSchema` instead. */
-  export const inboundSchema = RequestDeleteReasons$inboundSchema;
-  /** @deprecated use `RequestDeleteReasons$outboundSchema` instead. */
-  export const outboundSchema = RequestDeleteReasons$outboundSchema;
-  /** @deprecated use `RequestDeleteReasons$Outbound` instead. */
-  export type Outbound = RequestDeleteReasons$Outbound;
-}
-
 export function requestDeleteReasonsToJSON(
   requestDeleteReasons: RequestDeleteReasons,
 ): string {
@@ -92,7 +78,6 @@ export function requestDeleteReasonsToJSON(
     RequestDeleteReasons$outboundSchema.parse(requestDeleteReasons),
   );
 }
-
 export function requestDeleteReasonsFromJSON(
   jsonString: string,
 ): SafeParseResult<RequestDeleteReasons, SDKValidationError> {
@@ -111,7 +96,6 @@ export const RequestDeleteRequestBody$inboundSchema: z.ZodType<
 > = z.object({
   reasons: z.array(z.lazy(() => RequestDeleteReasons$inboundSchema)).optional(),
 });
-
 /** @internal */
 export type RequestDeleteRequestBody$Outbound = {
   reasons?: Array<RequestDeleteReasons$Outbound> | undefined;
@@ -127,19 +111,6 @@ export const RequestDeleteRequestBody$outboundSchema: z.ZodType<
     .optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestDeleteRequestBody$ {
-  /** @deprecated use `RequestDeleteRequestBody$inboundSchema` instead. */
-  export const inboundSchema = RequestDeleteRequestBody$inboundSchema;
-  /** @deprecated use `RequestDeleteRequestBody$outboundSchema` instead. */
-  export const outboundSchema = RequestDeleteRequestBody$outboundSchema;
-  /** @deprecated use `RequestDeleteRequestBody$Outbound` instead. */
-  export type Outbound = RequestDeleteRequestBody$Outbound;
-}
-
 export function requestDeleteRequestBodyToJSON(
   requestDeleteRequestBody: RequestDeleteRequestBody,
 ): string {
@@ -147,7 +118,6 @@ export function requestDeleteRequestBodyToJSON(
     RequestDeleteRequestBody$outboundSchema.parse(requestDeleteRequestBody),
   );
 }
-
 export function requestDeleteRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<RequestDeleteRequestBody, SDKValidationError> {
@@ -168,7 +138,6 @@ export const RequestDeleteResponseBody$inboundSchema: z.ZodType<
   email: z.string(),
   message: z.string(),
 });
-
 /** @internal */
 export type RequestDeleteResponseBody$Outbound = {
   id: string;
@@ -187,19 +156,6 @@ export const RequestDeleteResponseBody$outboundSchema: z.ZodType<
   message: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestDeleteResponseBody$ {
-  /** @deprecated use `RequestDeleteResponseBody$inboundSchema` instead. */
-  export const inboundSchema = RequestDeleteResponseBody$inboundSchema;
-  /** @deprecated use `RequestDeleteResponseBody$outboundSchema` instead. */
-  export const outboundSchema = RequestDeleteResponseBody$outboundSchema;
-  /** @deprecated use `RequestDeleteResponseBody$Outbound` instead. */
-  export type Outbound = RequestDeleteResponseBody$Outbound;
-}
-
 export function requestDeleteResponseBodyToJSON(
   requestDeleteResponseBody: RequestDeleteResponseBody,
 ): string {
@@ -207,7 +163,6 @@ export function requestDeleteResponseBodyToJSON(
     RequestDeleteResponseBody$outboundSchema.parse(requestDeleteResponseBody),
   );
 }
-
 export function requestDeleteResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<RequestDeleteResponseBody, SDKValidationError> {

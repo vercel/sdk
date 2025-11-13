@@ -63,7 +63,6 @@ export const DeleteDeploymentRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type DeleteDeploymentRequest$Outbound = {
   id: string;
@@ -84,19 +83,6 @@ export const DeleteDeploymentRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteDeploymentRequest$ {
-  /** @deprecated use `DeleteDeploymentRequest$inboundSchema` instead. */
-  export const inboundSchema = DeleteDeploymentRequest$inboundSchema;
-  /** @deprecated use `DeleteDeploymentRequest$outboundSchema` instead. */
-  export const outboundSchema = DeleteDeploymentRequest$outboundSchema;
-  /** @deprecated use `DeleteDeploymentRequest$Outbound` instead. */
-  export type Outbound = DeleteDeploymentRequest$Outbound;
-}
-
 export function deleteDeploymentRequestToJSON(
   deleteDeploymentRequest: DeleteDeploymentRequest,
 ): string {
@@ -104,7 +90,6 @@ export function deleteDeploymentRequestToJSON(
     DeleteDeploymentRequest$outboundSchema.parse(deleteDeploymentRequest),
   );
 }
-
 export function deleteDeploymentRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteDeploymentRequest, SDKValidationError> {
@@ -119,22 +104,10 @@ export function deleteDeploymentRequestFromJSON(
 export const DeleteDeploymentState$inboundSchema: z.ZodNativeEnum<
   typeof DeleteDeploymentState
 > = z.nativeEnum(DeleteDeploymentState);
-
 /** @internal */
 export const DeleteDeploymentState$outboundSchema: z.ZodNativeEnum<
   typeof DeleteDeploymentState
 > = DeleteDeploymentState$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteDeploymentState$ {
-  /** @deprecated use `DeleteDeploymentState$inboundSchema` instead. */
-  export const inboundSchema = DeleteDeploymentState$inboundSchema;
-  /** @deprecated use `DeleteDeploymentState$outboundSchema` instead. */
-  export const outboundSchema = DeleteDeploymentState$outboundSchema;
-}
 
 /** @internal */
 export const DeleteDeploymentResponseBody$inboundSchema: z.ZodType<
@@ -145,7 +118,6 @@ export const DeleteDeploymentResponseBody$inboundSchema: z.ZodType<
   uid: z.string(),
   state: DeleteDeploymentState$inboundSchema,
 });
-
 /** @internal */
 export type DeleteDeploymentResponseBody$Outbound = {
   uid: string;
@@ -162,19 +134,6 @@ export const DeleteDeploymentResponseBody$outboundSchema: z.ZodType<
   state: DeleteDeploymentState$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteDeploymentResponseBody$ {
-  /** @deprecated use `DeleteDeploymentResponseBody$inboundSchema` instead. */
-  export const inboundSchema = DeleteDeploymentResponseBody$inboundSchema;
-  /** @deprecated use `DeleteDeploymentResponseBody$outboundSchema` instead. */
-  export const outboundSchema = DeleteDeploymentResponseBody$outboundSchema;
-  /** @deprecated use `DeleteDeploymentResponseBody$Outbound` instead. */
-  export type Outbound = DeleteDeploymentResponseBody$Outbound;
-}
-
 export function deleteDeploymentResponseBodyToJSON(
   deleteDeploymentResponseBody: DeleteDeploymentResponseBody,
 ): string {
@@ -184,7 +143,6 @@ export function deleteDeploymentResponseBodyToJSON(
     ),
   );
 }
-
 export function deleteDeploymentResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteDeploymentResponseBody, SDKValidationError> {

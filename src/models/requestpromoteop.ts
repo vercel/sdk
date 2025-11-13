@@ -31,7 +31,6 @@ export const RequestPromoteRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type RequestPromoteRequest$Outbound = {
   projectId: string;
@@ -52,19 +51,6 @@ export const RequestPromoteRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestPromoteRequest$ {
-  /** @deprecated use `RequestPromoteRequest$inboundSchema` instead. */
-  export const inboundSchema = RequestPromoteRequest$inboundSchema;
-  /** @deprecated use `RequestPromoteRequest$outboundSchema` instead. */
-  export const outboundSchema = RequestPromoteRequest$outboundSchema;
-  /** @deprecated use `RequestPromoteRequest$Outbound` instead. */
-  export type Outbound = RequestPromoteRequest$Outbound;
-}
-
 export function requestPromoteRequestToJSON(
   requestPromoteRequest: RequestPromoteRequest,
 ): string {
@@ -72,7 +58,6 @@ export function requestPromoteRequestToJSON(
     RequestPromoteRequest$outboundSchema.parse(requestPromoteRequest),
   );
 }
-
 export function requestPromoteRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<RequestPromoteRequest, SDKValidationError> {

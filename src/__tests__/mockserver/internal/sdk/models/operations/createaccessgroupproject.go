@@ -64,8 +64,8 @@ type CreateAccessGroupProjectRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string                             `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody CreateAccessGroupProjectRequestBody `request:"mediaType=application/json"`
+	Slug *string                             `queryParam:"style=form,explode=true,name=slug"`
+	Body CreateAccessGroupProjectRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *CreateAccessGroupProjectRequest) GetAccessGroupIDOrName() string {
@@ -89,11 +89,11 @@ func (o *CreateAccessGroupProjectRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *CreateAccessGroupProjectRequest) GetRequestBody() CreateAccessGroupProjectRequestBody {
+func (o *CreateAccessGroupProjectRequest) GetBody() CreateAccessGroupProjectRequestBody {
 	if o == nil {
 		return CreateAccessGroupProjectRequestBody{}
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type CreateAccessGroupProjectRoleResponse string

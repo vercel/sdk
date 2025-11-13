@@ -50,26 +50,12 @@ export const PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdEx
   > = z.nativeEnum(
     PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdCategory,
   );
-
 /** @internal */
 export const PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdCategory$outboundSchema:
   z.ZodNativeEnum<
     typeof PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdCategory
   > =
     PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdCategory$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdCategory$ {
-  /** @deprecated use `PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdCategory$inboundSchema` instead. */
-  export const inboundSchema =
-    PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdCategory$inboundSchema;
-  /** @deprecated use `PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdCategory$outboundSchema` instead. */
-  export const outboundSchema =
-    PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdCategory$outboundSchema;
-}
 
 /** @internal */
 export const PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequestBody$inboundSchema:
@@ -89,7 +75,6 @@ export const PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdEx
     createdAt: z.number().optional(),
     updatedAt: z.number().optional(),
   });
-
 /** @internal */
 export type PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequestBody$Outbound =
   {
@@ -122,22 +107,6 @@ export const PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdEx
     updatedAt: z.number().optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequestBody$ {
-  /** @deprecated use `PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequestBody$inboundSchema` instead. */
-  export const inboundSchema =
-    PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequestBody$inboundSchema;
-  /** @deprecated use `PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequestBody$outboundSchema` instead. */
-  export const outboundSchema =
-    PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequestBody$outboundSchema;
-  /** @deprecated use `PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequestBody$Outbound` instead. */
-  export type Outbound =
-    PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequestBody$Outbound;
-}
-
 export function patchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequestBodyToJSON(
   patchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequestBody:
     PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequestBody,
@@ -149,7 +118,6 @@ export function patchV1InstallationsIntegrationConfigurationIdResourcesResourceI
       ),
   );
 }
-
 export function patchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -183,7 +151,6 @@ export const PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdEx
       "RequestBody": "requestBody",
     });
   });
-
 /** @internal */
 export type PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest$Outbound =
   {
@@ -214,22 +181,6 @@ export const PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdEx
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest$ {
-  /** @deprecated use `PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest$inboundSchema;
-  /** @deprecated use `PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest$outboundSchema;
-  /** @deprecated use `PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest$Outbound` instead. */
-  export type Outbound =
-    PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest$Outbound;
-}
-
 export function patchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequestToJSON(
   patchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest:
     PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest,
@@ -241,7 +192,6 @@ export function patchV1InstallationsIntegrationConfigurationIdResourcesResourceI
       ),
   );
 }
-
 export function patchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<

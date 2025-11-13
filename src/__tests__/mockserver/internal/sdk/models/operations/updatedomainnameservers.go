@@ -18,9 +18,9 @@ func (o *UpdateDomainNameserversRequestBody) GetNameservers() []string {
 }
 
 type UpdateDomainNameserversRequest struct {
-	Domain      string                             `pathParam:"style=simple,explode=false,name=domain"`
-	TeamID      *string                            `queryParam:"style=form,explode=true,name=teamId"`
-	RequestBody UpdateDomainNameserversRequestBody `request:"mediaType=application/json"`
+	Domain string                             `pathParam:"style=simple,explode=false,name=domain"`
+	TeamID *string                            `queryParam:"style=form,explode=true,name=teamId"`
+	Body   UpdateDomainNameserversRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *UpdateDomainNameserversRequest) GetDomain() string {
@@ -37,11 +37,11 @@ func (o *UpdateDomainNameserversRequest) GetTeamID() *string {
 	return o.TeamID
 }
 
-func (o *UpdateDomainNameserversRequest) GetRequestBody() UpdateDomainNameserversRequestBody {
+func (o *UpdateDomainNameserversRequest) GetBody() UpdateDomainNameserversRequestBody {
 	if o == nil {
 		return UpdateDomainNameserversRequestBody{}
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type UpdateDomainNameserversResponse struct {

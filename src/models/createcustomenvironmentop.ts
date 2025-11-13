@@ -196,22 +196,10 @@ export type CreateCustomEnvironmentResponseBody = {
 export const CreateCustomEnvironmentType$inboundSchema: z.ZodNativeEnum<
   typeof CreateCustomEnvironmentType
 > = z.nativeEnum(CreateCustomEnvironmentType);
-
 /** @internal */
 export const CreateCustomEnvironmentType$outboundSchema: z.ZodNativeEnum<
   typeof CreateCustomEnvironmentType
 > = CreateCustomEnvironmentType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCustomEnvironmentType$ {
-  /** @deprecated use `CreateCustomEnvironmentType$inboundSchema` instead. */
-  export const inboundSchema = CreateCustomEnvironmentType$inboundSchema;
-  /** @deprecated use `CreateCustomEnvironmentType$outboundSchema` instead. */
-  export const outboundSchema = CreateCustomEnvironmentType$outboundSchema;
-}
 
 /** @internal */
 export const BranchMatcher$inboundSchema: z.ZodType<
@@ -222,7 +210,6 @@ export const BranchMatcher$inboundSchema: z.ZodType<
   type: CreateCustomEnvironmentType$inboundSchema,
   pattern: z.string(),
 });
-
 /** @internal */
 export type BranchMatcher$Outbound = {
   type: string;
@@ -239,23 +226,9 @@ export const BranchMatcher$outboundSchema: z.ZodType<
   pattern: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BranchMatcher$ {
-  /** @deprecated use `BranchMatcher$inboundSchema` instead. */
-  export const inboundSchema = BranchMatcher$inboundSchema;
-  /** @deprecated use `BranchMatcher$outboundSchema` instead. */
-  export const outboundSchema = BranchMatcher$outboundSchema;
-  /** @deprecated use `BranchMatcher$Outbound` instead. */
-  export type Outbound = BranchMatcher$Outbound;
-}
-
 export function branchMatcherToJSON(branchMatcher: BranchMatcher): string {
   return JSON.stringify(BranchMatcher$outboundSchema.parse(branchMatcher));
 }
-
 export function branchMatcherFromJSON(
   jsonString: string,
 ): SafeParseResult<BranchMatcher, SDKValidationError> {
@@ -277,7 +250,6 @@ export const CreateCustomEnvironmentRequestBody$inboundSchema: z.ZodType<
   branchMatcher: z.lazy(() => BranchMatcher$inboundSchema).optional(),
   copyEnvVarsFrom: z.string().optional(),
 });
-
 /** @internal */
 export type CreateCustomEnvironmentRequestBody$Outbound = {
   slug?: string | undefined;
@@ -298,20 +270,6 @@ export const CreateCustomEnvironmentRequestBody$outboundSchema: z.ZodType<
   copyEnvVarsFrom: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCustomEnvironmentRequestBody$ {
-  /** @deprecated use `CreateCustomEnvironmentRequestBody$inboundSchema` instead. */
-  export const inboundSchema = CreateCustomEnvironmentRequestBody$inboundSchema;
-  /** @deprecated use `CreateCustomEnvironmentRequestBody$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateCustomEnvironmentRequestBody$outboundSchema;
-  /** @deprecated use `CreateCustomEnvironmentRequestBody$Outbound` instead. */
-  export type Outbound = CreateCustomEnvironmentRequestBody$Outbound;
-}
-
 export function createCustomEnvironmentRequestBodyToJSON(
   createCustomEnvironmentRequestBody: CreateCustomEnvironmentRequestBody,
 ): string {
@@ -321,7 +279,6 @@ export function createCustomEnvironmentRequestBodyToJSON(
     ),
   );
 }
-
 export function createCustomEnvironmentRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateCustomEnvironmentRequestBody, SDKValidationError> {
@@ -349,7 +306,6 @@ export const CreateCustomEnvironmentRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type CreateCustomEnvironmentRequest$Outbound = {
   idOrName: string;
@@ -375,19 +331,6 @@ export const CreateCustomEnvironmentRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCustomEnvironmentRequest$ {
-  /** @deprecated use `CreateCustomEnvironmentRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateCustomEnvironmentRequest$inboundSchema;
-  /** @deprecated use `CreateCustomEnvironmentRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateCustomEnvironmentRequest$outboundSchema;
-  /** @deprecated use `CreateCustomEnvironmentRequest$Outbound` instead. */
-  export type Outbound = CreateCustomEnvironmentRequest$Outbound;
-}
-
 export function createCustomEnvironmentRequestToJSON(
   createCustomEnvironmentRequest: CreateCustomEnvironmentRequest,
 ): string {
@@ -397,7 +340,6 @@ export function createCustomEnvironmentRequestToJSON(
     ),
   );
 }
-
 export function createCustomEnvironmentRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateCustomEnvironmentRequest, SDKValidationError> {
@@ -413,47 +355,19 @@ export const CreateCustomEnvironmentEnvironmentType$inboundSchema:
   z.ZodNativeEnum<typeof CreateCustomEnvironmentEnvironmentType> = z.nativeEnum(
     CreateCustomEnvironmentEnvironmentType,
   );
-
 /** @internal */
 export const CreateCustomEnvironmentEnvironmentType$outboundSchema:
   z.ZodNativeEnum<typeof CreateCustomEnvironmentEnvironmentType> =
     CreateCustomEnvironmentEnvironmentType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCustomEnvironmentEnvironmentType$ {
-  /** @deprecated use `CreateCustomEnvironmentEnvironmentType$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateCustomEnvironmentEnvironmentType$inboundSchema;
-  /** @deprecated use `CreateCustomEnvironmentEnvironmentType$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateCustomEnvironmentEnvironmentType$outboundSchema;
-}
-
 /** @internal */
 export const CreateCustomEnvironmentEnvironmentResponseType$inboundSchema:
   z.ZodNativeEnum<typeof CreateCustomEnvironmentEnvironmentResponseType> = z
     .nativeEnum(CreateCustomEnvironmentEnvironmentResponseType);
-
 /** @internal */
 export const CreateCustomEnvironmentEnvironmentResponseType$outboundSchema:
   z.ZodNativeEnum<typeof CreateCustomEnvironmentEnvironmentResponseType> =
     CreateCustomEnvironmentEnvironmentResponseType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCustomEnvironmentEnvironmentResponseType$ {
-  /** @deprecated use `CreateCustomEnvironmentEnvironmentResponseType$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateCustomEnvironmentEnvironmentResponseType$inboundSchema;
-  /** @deprecated use `CreateCustomEnvironmentEnvironmentResponseType$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateCustomEnvironmentEnvironmentResponseType$outboundSchema;
-}
 
 /** @internal */
 export const CreateCustomEnvironmentBranchMatcher$inboundSchema: z.ZodType<
@@ -464,7 +378,6 @@ export const CreateCustomEnvironmentBranchMatcher$inboundSchema: z.ZodType<
   type: CreateCustomEnvironmentEnvironmentResponseType$inboundSchema,
   pattern: z.string(),
 });
-
 /** @internal */
 export type CreateCustomEnvironmentBranchMatcher$Outbound = {
   type: string;
@@ -481,21 +394,6 @@ export const CreateCustomEnvironmentBranchMatcher$outboundSchema: z.ZodType<
   pattern: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCustomEnvironmentBranchMatcher$ {
-  /** @deprecated use `CreateCustomEnvironmentBranchMatcher$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateCustomEnvironmentBranchMatcher$inboundSchema;
-  /** @deprecated use `CreateCustomEnvironmentBranchMatcher$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateCustomEnvironmentBranchMatcher$outboundSchema;
-  /** @deprecated use `CreateCustomEnvironmentBranchMatcher$Outbound` instead. */
-  export type Outbound = CreateCustomEnvironmentBranchMatcher$Outbound;
-}
-
 export function createCustomEnvironmentBranchMatcherToJSON(
   createCustomEnvironmentBranchMatcher: CreateCustomEnvironmentBranchMatcher,
 ): string {
@@ -505,7 +403,6 @@ export function createCustomEnvironmentBranchMatcherToJSON(
     ),
   );
 }
-
 export function createCustomEnvironmentBranchMatcherFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateCustomEnvironmentBranchMatcher, SDKValidationError> {
@@ -528,7 +425,6 @@ export const CreateCustomEnvironmentVerification$inboundSchema: z.ZodType<
   value: z.string(),
   reason: z.string(),
 });
-
 /** @internal */
 export type CreateCustomEnvironmentVerification$Outbound = {
   type: string;
@@ -549,21 +445,6 @@ export const CreateCustomEnvironmentVerification$outboundSchema: z.ZodType<
   reason: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCustomEnvironmentVerification$ {
-  /** @deprecated use `CreateCustomEnvironmentVerification$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateCustomEnvironmentVerification$inboundSchema;
-  /** @deprecated use `CreateCustomEnvironmentVerification$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateCustomEnvironmentVerification$outboundSchema;
-  /** @deprecated use `CreateCustomEnvironmentVerification$Outbound` instead. */
-  export type Outbound = CreateCustomEnvironmentVerification$Outbound;
-}
-
 export function createCustomEnvironmentVerificationToJSON(
   createCustomEnvironmentVerification: CreateCustomEnvironmentVerification,
 ): string {
@@ -573,7 +454,6 @@ export function createCustomEnvironmentVerificationToJSON(
     ),
   );
 }
-
 export function createCustomEnvironmentVerificationFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateCustomEnvironmentVerification, SDKValidationError> {
@@ -605,7 +485,6 @@ export const CreateCustomEnvironmentDomains$inboundSchema: z.ZodType<
     z.lazy(() => CreateCustomEnvironmentVerification$inboundSchema),
   ).optional(),
 });
-
 /** @internal */
 export type CreateCustomEnvironmentDomains$Outbound = {
   name: string;
@@ -644,19 +523,6 @@ export const CreateCustomEnvironmentDomains$outboundSchema: z.ZodType<
   ).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCustomEnvironmentDomains$ {
-  /** @deprecated use `CreateCustomEnvironmentDomains$inboundSchema` instead. */
-  export const inboundSchema = CreateCustomEnvironmentDomains$inboundSchema;
-  /** @deprecated use `CreateCustomEnvironmentDomains$outboundSchema` instead. */
-  export const outboundSchema = CreateCustomEnvironmentDomains$outboundSchema;
-  /** @deprecated use `CreateCustomEnvironmentDomains$Outbound` instead. */
-  export type Outbound = CreateCustomEnvironmentDomains$Outbound;
-}
-
 export function createCustomEnvironmentDomainsToJSON(
   createCustomEnvironmentDomains: CreateCustomEnvironmentDomains,
 ): string {
@@ -666,7 +532,6 @@ export function createCustomEnvironmentDomainsToJSON(
     ),
   );
 }
-
 export function createCustomEnvironmentDomainsFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateCustomEnvironmentDomains, SDKValidationError> {
@@ -696,7 +561,6 @@ export const CreateCustomEnvironmentResponseBody$inboundSchema: z.ZodType<
   createdAt: z.number(),
   updatedAt: z.number(),
 });
-
 /** @internal */
 export type CreateCustomEnvironmentResponseBody$Outbound = {
   id: string;
@@ -730,21 +594,6 @@ export const CreateCustomEnvironmentResponseBody$outboundSchema: z.ZodType<
   updatedAt: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCustomEnvironmentResponseBody$ {
-  /** @deprecated use `CreateCustomEnvironmentResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateCustomEnvironmentResponseBody$inboundSchema;
-  /** @deprecated use `CreateCustomEnvironmentResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateCustomEnvironmentResponseBody$outboundSchema;
-  /** @deprecated use `CreateCustomEnvironmentResponseBody$Outbound` instead. */
-  export type Outbound = CreateCustomEnvironmentResponseBody$Outbound;
-}
-
 export function createCustomEnvironmentResponseBodyToJSON(
   createCustomEnvironmentResponseBody: CreateCustomEnvironmentResponseBody,
 ): string {
@@ -754,7 +603,6 @@ export function createCustomEnvironmentResponseBodyToJSON(
     ),
   );
 }
-
 export function createCustomEnvironmentResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateCustomEnvironmentResponseBody, SDKValidationError> {

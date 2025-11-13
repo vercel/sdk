@@ -177,8 +177,8 @@ type CreateLogDrainRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string                   `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody CreateLogDrainRequestBody `request:"mediaType=application/json"`
+	Slug *string                   `queryParam:"style=form,explode=true,name=slug"`
+	Body CreateLogDrainRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *CreateLogDrainRequest) GetTeamID() *string {
@@ -195,11 +195,11 @@ func (o *CreateLogDrainRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *CreateLogDrainRequest) GetRequestBody() CreateLogDrainRequestBody {
+func (o *CreateLogDrainRequest) GetBody() CreateLogDrainRequestBody {
 	if o == nil {
 		return CreateLogDrainRequestBody{}
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 // CreateLogDrainDeliveryFormatResponse - The delivery log format
@@ -208,7 +208,6 @@ type CreateLogDrainDeliveryFormatResponse string
 const (
 	CreateLogDrainDeliveryFormatResponseJSON     CreateLogDrainDeliveryFormatResponse = "json"
 	CreateLogDrainDeliveryFormatResponseNdjson   CreateLogDrainDeliveryFormatResponse = "ndjson"
-	CreateLogDrainDeliveryFormatResponseSyslog   CreateLogDrainDeliveryFormatResponse = "syslog"
 	CreateLogDrainDeliveryFormatResponseProtobuf CreateLogDrainDeliveryFormatResponse = "protobuf"
 )
 
@@ -224,8 +223,6 @@ func (e *CreateLogDrainDeliveryFormatResponse) UnmarshalJSON(data []byte) error 
 	case "json":
 		fallthrough
 	case "ndjson":
-		fallthrough
-	case "syslog":
 		fallthrough
 	case "protobuf":
 		*e = CreateLogDrainDeliveryFormatResponse(v)

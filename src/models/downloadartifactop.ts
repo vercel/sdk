@@ -48,7 +48,6 @@ export const DownloadArtifactRequest$inboundSchema: z.ZodType<
     "x-artifact-client-interactive": "xArtifactClientInteractive",
   });
 });
-
 /** @internal */
 export type DownloadArtifactRequest$Outbound = {
   "x-artifact-client-ci"?: string | undefined;
@@ -76,19 +75,6 @@ export const DownloadArtifactRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DownloadArtifactRequest$ {
-  /** @deprecated use `DownloadArtifactRequest$inboundSchema` instead. */
-  export const inboundSchema = DownloadArtifactRequest$inboundSchema;
-  /** @deprecated use `DownloadArtifactRequest$outboundSchema` instead. */
-  export const outboundSchema = DownloadArtifactRequest$outboundSchema;
-  /** @deprecated use `DownloadArtifactRequest$Outbound` instead. */
-  export type Outbound = DownloadArtifactRequest$Outbound;
-}
-
 export function downloadArtifactRequestToJSON(
   downloadArtifactRequest: DownloadArtifactRequest,
 ): string {
@@ -96,7 +82,6 @@ export function downloadArtifactRequestToJSON(
     DownloadArtifactRequest$outboundSchema.parse(downloadArtifactRequest),
   );
 }
-
 export function downloadArtifactRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DownloadArtifactRequest, SDKValidationError> {

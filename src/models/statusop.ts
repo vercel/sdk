@@ -40,7 +40,6 @@ export const StatusRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type StatusRequest$Outbound = {
   teamId?: string | undefined;
@@ -57,23 +56,9 @@ export const StatusRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StatusRequest$ {
-  /** @deprecated use `StatusRequest$inboundSchema` instead. */
-  export const inboundSchema = StatusRequest$inboundSchema;
-  /** @deprecated use `StatusRequest$outboundSchema` instead. */
-  export const outboundSchema = StatusRequest$outboundSchema;
-  /** @deprecated use `StatusRequest$Outbound` instead. */
-  export type Outbound = StatusRequest$Outbound;
-}
-
 export function statusRequestToJSON(statusRequest: StatusRequest): string {
   return JSON.stringify(StatusRequest$outboundSchema.parse(statusRequest));
 }
-
 export function statusRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<StatusRequest, SDKValidationError> {
@@ -87,21 +72,9 @@ export function statusRequestFromJSON(
 /** @internal */
 export const StatusStatus$inboundSchema: z.ZodNativeEnum<typeof StatusStatus> =
   z.nativeEnum(StatusStatus);
-
 /** @internal */
 export const StatusStatus$outboundSchema: z.ZodNativeEnum<typeof StatusStatus> =
   StatusStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StatusStatus$ {
-  /** @deprecated use `StatusStatus$inboundSchema` instead. */
-  export const inboundSchema = StatusStatus$inboundSchema;
-  /** @deprecated use `StatusStatus$outboundSchema` instead. */
-  export const outboundSchema = StatusStatus$outboundSchema;
-}
 
 /** @internal */
 export const StatusResponseBody$inboundSchema: z.ZodType<
@@ -111,7 +84,6 @@ export const StatusResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   status: StatusStatus$inboundSchema,
 });
-
 /** @internal */
 export type StatusResponseBody$Outbound = {
   status: string;
@@ -126,19 +98,6 @@ export const StatusResponseBody$outboundSchema: z.ZodType<
   status: StatusStatus$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StatusResponseBody$ {
-  /** @deprecated use `StatusResponseBody$inboundSchema` instead. */
-  export const inboundSchema = StatusResponseBody$inboundSchema;
-  /** @deprecated use `StatusResponseBody$outboundSchema` instead. */
-  export const outboundSchema = StatusResponseBody$outboundSchema;
-  /** @deprecated use `StatusResponseBody$Outbound` instead. */
-  export type Outbound = StatusResponseBody$Outbound;
-}
-
 export function statusResponseBodyToJSON(
   statusResponseBody: StatusResponseBody,
 ): string {
@@ -146,7 +105,6 @@ export function statusResponseBodyToJSON(
     StatusResponseBody$outboundSchema.parse(statusResponseBody),
   );
 }
-
 export function statusResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<StatusResponseBody, SDKValidationError> {

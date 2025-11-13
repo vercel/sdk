@@ -95,8 +95,8 @@ type AddProjectDomainRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string                     `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody AddProjectDomainRequestBody `request:"mediaType=application/json"`
+	Slug *string                     `queryParam:"style=form,explode=true,name=slug"`
+	Body AddProjectDomainRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *AddProjectDomainRequest) GetIDOrName() string {
@@ -120,11 +120,11 @@ func (o *AddProjectDomainRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *AddProjectDomainRequest) GetRequestBody() AddProjectDomainRequestBody {
+func (o *AddProjectDomainRequest) GetBody() AddProjectDomainRequestBody {
 	if o == nil {
 		return AddProjectDomainRequestBody{}
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 // AddProjectDomainVerification - A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.

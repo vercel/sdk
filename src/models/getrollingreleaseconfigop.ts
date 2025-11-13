@@ -79,7 +79,6 @@ export const GetRollingReleaseConfigRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type GetRollingReleaseConfigRequest$Outbound = {
   idOrName: string;
@@ -98,19 +97,6 @@ export const GetRollingReleaseConfigRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRollingReleaseConfigRequest$ {
-  /** @deprecated use `GetRollingReleaseConfigRequest$inboundSchema` instead. */
-  export const inboundSchema = GetRollingReleaseConfigRequest$inboundSchema;
-  /** @deprecated use `GetRollingReleaseConfigRequest$outboundSchema` instead. */
-  export const outboundSchema = GetRollingReleaseConfigRequest$outboundSchema;
-  /** @deprecated use `GetRollingReleaseConfigRequest$Outbound` instead. */
-  export type Outbound = GetRollingReleaseConfigRequest$Outbound;
-}
-
 export function getRollingReleaseConfigRequestToJSON(
   getRollingReleaseConfigRequest: GetRollingReleaseConfigRequest,
 ): string {
@@ -120,7 +106,6 @@ export function getRollingReleaseConfigRequestToJSON(
     ),
   );
 }
-
 export function getRollingReleaseConfigRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetRollingReleaseConfigRequest, SDKValidationError> {
@@ -142,7 +127,6 @@ export const GetRollingReleaseConfigStages$inboundSchema: z.ZodType<
   duration: z.number().optional(),
   linearShift: z.boolean().optional(),
 });
-
 /** @internal */
 export type GetRollingReleaseConfigStages$Outbound = {
   targetPercentage: number;
@@ -163,19 +147,6 @@ export const GetRollingReleaseConfigStages$outboundSchema: z.ZodType<
   linearShift: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRollingReleaseConfigStages$ {
-  /** @deprecated use `GetRollingReleaseConfigStages$inboundSchema` instead. */
-  export const inboundSchema = GetRollingReleaseConfigStages$inboundSchema;
-  /** @deprecated use `GetRollingReleaseConfigStages$outboundSchema` instead. */
-  export const outboundSchema = GetRollingReleaseConfigStages$outboundSchema;
-  /** @deprecated use `GetRollingReleaseConfigStages$Outbound` instead. */
-  export type Outbound = GetRollingReleaseConfigStages$Outbound;
-}
-
 export function getRollingReleaseConfigStagesToJSON(
   getRollingReleaseConfigStages: GetRollingReleaseConfigStages,
 ): string {
@@ -185,7 +156,6 @@ export function getRollingReleaseConfigStagesToJSON(
     ),
   );
 }
-
 export function getRollingReleaseConfigStagesFromJSON(
   jsonString: string,
 ): SafeParseResult<GetRollingReleaseConfigStages, SDKValidationError> {
@@ -208,7 +178,6 @@ export const GetRollingReleaseConfigRollingRelease$inboundSchema: z.ZodType<
   ).optional(),
   canaryResponseHeader: z.boolean().optional(),
 });
-
 /** @internal */
 export type GetRollingReleaseConfigRollingRelease$Outbound = {
   target: string;
@@ -229,21 +198,6 @@ export const GetRollingReleaseConfigRollingRelease$outboundSchema: z.ZodType<
   canaryResponseHeader: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRollingReleaseConfigRollingRelease$ {
-  /** @deprecated use `GetRollingReleaseConfigRollingRelease$inboundSchema` instead. */
-  export const inboundSchema =
-    GetRollingReleaseConfigRollingRelease$inboundSchema;
-  /** @deprecated use `GetRollingReleaseConfigRollingRelease$outboundSchema` instead. */
-  export const outboundSchema =
-    GetRollingReleaseConfigRollingRelease$outboundSchema;
-  /** @deprecated use `GetRollingReleaseConfigRollingRelease$Outbound` instead. */
-  export type Outbound = GetRollingReleaseConfigRollingRelease$Outbound;
-}
-
 export function getRollingReleaseConfigRollingReleaseToJSON(
   getRollingReleaseConfigRollingRelease: GetRollingReleaseConfigRollingRelease,
 ): string {
@@ -253,7 +207,6 @@ export function getRollingReleaseConfigRollingReleaseToJSON(
     ),
   );
 }
-
 export function getRollingReleaseConfigRollingReleaseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetRollingReleaseConfigRollingRelease, SDKValidationError> {
@@ -275,7 +228,6 @@ export const GetRollingReleaseConfigResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => GetRollingReleaseConfigRollingRelease$inboundSchema),
   ),
 });
-
 /** @internal */
 export type GetRollingReleaseConfigResponseBody$Outbound = {
   rollingRelease: GetRollingReleaseConfigRollingRelease$Outbound | null;
@@ -292,21 +244,6 @@ export const GetRollingReleaseConfigResponseBody$outboundSchema: z.ZodType<
   ),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRollingReleaseConfigResponseBody$ {
-  /** @deprecated use `GetRollingReleaseConfigResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    GetRollingReleaseConfigResponseBody$inboundSchema;
-  /** @deprecated use `GetRollingReleaseConfigResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    GetRollingReleaseConfigResponseBody$outboundSchema;
-  /** @deprecated use `GetRollingReleaseConfigResponseBody$Outbound` instead. */
-  export type Outbound = GetRollingReleaseConfigResponseBody$Outbound;
-}
-
 export function getRollingReleaseConfigResponseBodyToJSON(
   getRollingReleaseConfigResponseBody: GetRollingReleaseConfigResponseBody,
 ): string {
@@ -316,7 +253,6 @@ export function getRollingReleaseConfigResponseBodyToJSON(
     ),
   );
 }
-
 export function getRollingReleaseConfigResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetRollingReleaseConfigResponseBody, SDKValidationError> {

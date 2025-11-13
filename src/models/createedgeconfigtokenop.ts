@@ -38,7 +38,6 @@ export const CreateEdgeConfigTokenRequestBody$inboundSchema: z.ZodType<
 > = z.object({
   label: z.string(),
 });
-
 /** @internal */
 export type CreateEdgeConfigTokenRequestBody$Outbound = {
   label: string;
@@ -53,19 +52,6 @@ export const CreateEdgeConfigTokenRequestBody$outboundSchema: z.ZodType<
   label: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateEdgeConfigTokenRequestBody$ {
-  /** @deprecated use `CreateEdgeConfigTokenRequestBody$inboundSchema` instead. */
-  export const inboundSchema = CreateEdgeConfigTokenRequestBody$inboundSchema;
-  /** @deprecated use `CreateEdgeConfigTokenRequestBody$outboundSchema` instead. */
-  export const outboundSchema = CreateEdgeConfigTokenRequestBody$outboundSchema;
-  /** @deprecated use `CreateEdgeConfigTokenRequestBody$Outbound` instead. */
-  export type Outbound = CreateEdgeConfigTokenRequestBody$Outbound;
-}
-
 export function createEdgeConfigTokenRequestBodyToJSON(
   createEdgeConfigTokenRequestBody: CreateEdgeConfigTokenRequestBody,
 ): string {
@@ -75,7 +61,6 @@ export function createEdgeConfigTokenRequestBodyToJSON(
     ),
   );
 }
-
 export function createEdgeConfigTokenRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateEdgeConfigTokenRequestBody, SDKValidationError> {
@@ -101,7 +86,6 @@ export const CreateEdgeConfigTokenRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type CreateEdgeConfigTokenRequest$Outbound = {
   edgeConfigId: string;
@@ -126,19 +110,6 @@ export const CreateEdgeConfigTokenRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateEdgeConfigTokenRequest$ {
-  /** @deprecated use `CreateEdgeConfigTokenRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateEdgeConfigTokenRequest$inboundSchema;
-  /** @deprecated use `CreateEdgeConfigTokenRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateEdgeConfigTokenRequest$outboundSchema;
-  /** @deprecated use `CreateEdgeConfigTokenRequest$Outbound` instead. */
-  export type Outbound = CreateEdgeConfigTokenRequest$Outbound;
-}
-
 export function createEdgeConfigTokenRequestToJSON(
   createEdgeConfigTokenRequest: CreateEdgeConfigTokenRequest,
 ): string {
@@ -148,7 +119,6 @@ export function createEdgeConfigTokenRequestToJSON(
     ),
   );
 }
-
 export function createEdgeConfigTokenRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateEdgeConfigTokenRequest, SDKValidationError> {
@@ -168,7 +138,6 @@ export const CreateEdgeConfigTokenResponseBody$inboundSchema: z.ZodType<
   token: z.string(),
   id: z.string(),
 });
-
 /** @internal */
 export type CreateEdgeConfigTokenResponseBody$Outbound = {
   token: string;
@@ -185,20 +154,6 @@ export const CreateEdgeConfigTokenResponseBody$outboundSchema: z.ZodType<
   id: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateEdgeConfigTokenResponseBody$ {
-  /** @deprecated use `CreateEdgeConfigTokenResponseBody$inboundSchema` instead. */
-  export const inboundSchema = CreateEdgeConfigTokenResponseBody$inboundSchema;
-  /** @deprecated use `CreateEdgeConfigTokenResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateEdgeConfigTokenResponseBody$outboundSchema;
-  /** @deprecated use `CreateEdgeConfigTokenResponseBody$Outbound` instead. */
-  export type Outbound = CreateEdgeConfigTokenResponseBody$Outbound;
-}
-
 export function createEdgeConfigTokenResponseBodyToJSON(
   createEdgeConfigTokenResponseBody: CreateEdgeConfigTokenResponseBody,
 ): string {
@@ -208,7 +163,6 @@ export function createEdgeConfigTokenResponseBodyToJSON(
     ),
   );
 }
-
 export function createEdgeConfigTokenResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateEdgeConfigTokenResponseBody, SDKValidationError> {

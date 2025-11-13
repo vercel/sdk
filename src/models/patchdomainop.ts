@@ -88,7 +88,6 @@ export const PatchDomainRequestBody2$inboundSchema: z.ZodType<
   op: z.string().optional(),
   destination: z.string().optional(),
 });
-
 /** @internal */
 export type PatchDomainRequestBody2$Outbound = {
   op?: string | undefined;
@@ -105,19 +104,6 @@ export const PatchDomainRequestBody2$outboundSchema: z.ZodType<
   destination: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchDomainRequestBody2$ {
-  /** @deprecated use `PatchDomainRequestBody2$inboundSchema` instead. */
-  export const inboundSchema = PatchDomainRequestBody2$inboundSchema;
-  /** @deprecated use `PatchDomainRequestBody2$outboundSchema` instead. */
-  export const outboundSchema = PatchDomainRequestBody2$outboundSchema;
-  /** @deprecated use `PatchDomainRequestBody2$Outbound` instead. */
-  export type Outbound = PatchDomainRequestBody2$Outbound;
-}
-
 export function patchDomainRequestBody2ToJSON(
   patchDomainRequestBody2: PatchDomainRequestBody2,
 ): string {
@@ -125,7 +111,6 @@ export function patchDomainRequestBody2ToJSON(
     PatchDomainRequestBody2$outboundSchema.parse(patchDomainRequestBody2),
   );
 }
-
 export function patchDomainRequestBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<PatchDomainRequestBody2, SDKValidationError> {
@@ -147,7 +132,6 @@ export const PatchDomainRequestBody1$inboundSchema: z.ZodType<
   customNameservers: z.array(z.string()).optional(),
   zone: z.boolean().optional(),
 });
-
 /** @internal */
 export type PatchDomainRequestBody1$Outbound = {
   op?: string | undefined;
@@ -168,19 +152,6 @@ export const PatchDomainRequestBody1$outboundSchema: z.ZodType<
   zone: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchDomainRequestBody1$ {
-  /** @deprecated use `PatchDomainRequestBody1$inboundSchema` instead. */
-  export const inboundSchema = PatchDomainRequestBody1$inboundSchema;
-  /** @deprecated use `PatchDomainRequestBody1$outboundSchema` instead. */
-  export const outboundSchema = PatchDomainRequestBody1$outboundSchema;
-  /** @deprecated use `PatchDomainRequestBody1$Outbound` instead. */
-  export type Outbound = PatchDomainRequestBody1$Outbound;
-}
-
 export function patchDomainRequestBody1ToJSON(
   patchDomainRequestBody1: PatchDomainRequestBody1,
 ): string {
@@ -188,7 +159,6 @@ export function patchDomainRequestBody1ToJSON(
     PatchDomainRequestBody1$outboundSchema.parse(patchDomainRequestBody1),
   );
 }
-
 export function patchDomainRequestBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<PatchDomainRequestBody1, SDKValidationError> {
@@ -208,7 +178,6 @@ export const PatchDomainRequestBody$inboundSchema: z.ZodType<
   z.lazy(() => PatchDomainRequestBody1$inboundSchema),
   z.lazy(() => PatchDomainRequestBody2$inboundSchema),
 ]);
-
 /** @internal */
 export type PatchDomainRequestBody$Outbound =
   | PatchDomainRequestBody1$Outbound
@@ -224,19 +193,6 @@ export const PatchDomainRequestBody$outboundSchema: z.ZodType<
   z.lazy(() => PatchDomainRequestBody2$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchDomainRequestBody$ {
-  /** @deprecated use `PatchDomainRequestBody$inboundSchema` instead. */
-  export const inboundSchema = PatchDomainRequestBody$inboundSchema;
-  /** @deprecated use `PatchDomainRequestBody$outboundSchema` instead. */
-  export const outboundSchema = PatchDomainRequestBody$outboundSchema;
-  /** @deprecated use `PatchDomainRequestBody$Outbound` instead. */
-  export type Outbound = PatchDomainRequestBody$Outbound;
-}
-
 export function patchDomainRequestBodyToJSON(
   patchDomainRequestBody: PatchDomainRequestBody,
 ): string {
@@ -244,7 +200,6 @@ export function patchDomainRequestBodyToJSON(
     PatchDomainRequestBody$outboundSchema.parse(patchDomainRequestBody),
   );
 }
-
 export function patchDomainRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchDomainRequestBody, SDKValidationError> {
@@ -273,7 +228,6 @@ export const PatchDomainRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type PatchDomainRequest$Outbound = {
   domain: string;
@@ -303,19 +257,6 @@ export const PatchDomainRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchDomainRequest$ {
-  /** @deprecated use `PatchDomainRequest$inboundSchema` instead. */
-  export const inboundSchema = PatchDomainRequest$inboundSchema;
-  /** @deprecated use `PatchDomainRequest$outboundSchema` instead. */
-  export const outboundSchema = PatchDomainRequest$outboundSchema;
-  /** @deprecated use `PatchDomainRequest$Outbound` instead. */
-  export type Outbound = PatchDomainRequest$Outbound;
-}
-
 export function patchDomainRequestToJSON(
   patchDomainRequest: PatchDomainRequest,
 ): string {
@@ -323,7 +264,6 @@ export function patchDomainRequestToJSON(
     PatchDomainRequest$outboundSchema.parse(patchDomainRequest),
   );
 }
-
 export function patchDomainRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchDomainRequest, SDKValidationError> {
@@ -344,7 +284,6 @@ export const PatchDomainResponseBody3$inboundSchema: z.ZodType<
   customNameservers: z.array(z.string()).optional(),
   zone: z.boolean().optional(),
 });
-
 /** @internal */
 export type PatchDomainResponseBody3$Outbound = {
   renew?: boolean | undefined;
@@ -363,19 +302,6 @@ export const PatchDomainResponseBody3$outboundSchema: z.ZodType<
   zone: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchDomainResponseBody3$ {
-  /** @deprecated use `PatchDomainResponseBody3$inboundSchema` instead. */
-  export const inboundSchema = PatchDomainResponseBody3$inboundSchema;
-  /** @deprecated use `PatchDomainResponseBody3$outboundSchema` instead. */
-  export const outboundSchema = PatchDomainResponseBody3$outboundSchema;
-  /** @deprecated use `PatchDomainResponseBody3$Outbound` instead. */
-  export type Outbound = PatchDomainResponseBody3$Outbound;
-}
-
 export function patchDomainResponseBody3ToJSON(
   patchDomainResponseBody3: PatchDomainResponseBody3,
 ): string {
@@ -383,7 +309,6 @@ export function patchDomainResponseBody3ToJSON(
     PatchDomainResponseBody3$outboundSchema.parse(patchDomainResponseBody3),
   );
 }
-
 export function patchDomainResponseBody3FromJSON(
   jsonString: string,
 ): SafeParseResult<PatchDomainResponseBody3, SDKValidationError> {
@@ -403,7 +328,6 @@ export const PatchDomainResponseBody2$inboundSchema: z.ZodType<
   moved: z.boolean(),
   token: z.string(),
 });
-
 /** @internal */
 export type PatchDomainResponseBody2$Outbound = {
   moved: boolean;
@@ -420,19 +344,6 @@ export const PatchDomainResponseBody2$outboundSchema: z.ZodType<
   token: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchDomainResponseBody2$ {
-  /** @deprecated use `PatchDomainResponseBody2$inboundSchema` instead. */
-  export const inboundSchema = PatchDomainResponseBody2$inboundSchema;
-  /** @deprecated use `PatchDomainResponseBody2$outboundSchema` instead. */
-  export const outboundSchema = PatchDomainResponseBody2$outboundSchema;
-  /** @deprecated use `PatchDomainResponseBody2$Outbound` instead. */
-  export type Outbound = PatchDomainResponseBody2$Outbound;
-}
-
 export function patchDomainResponseBody2ToJSON(
   patchDomainResponseBody2: PatchDomainResponseBody2,
 ): string {
@@ -440,7 +351,6 @@ export function patchDomainResponseBody2ToJSON(
     PatchDomainResponseBody2$outboundSchema.parse(patchDomainResponseBody2),
   );
 }
-
 export function patchDomainResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<PatchDomainResponseBody2, SDKValidationError> {
@@ -459,7 +369,6 @@ export const PatchDomainResponseBody1$inboundSchema: z.ZodType<
 > = z.object({
   moved: z.boolean(),
 });
-
 /** @internal */
 export type PatchDomainResponseBody1$Outbound = {
   moved: boolean;
@@ -474,19 +383,6 @@ export const PatchDomainResponseBody1$outboundSchema: z.ZodType<
   moved: z.boolean(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchDomainResponseBody1$ {
-  /** @deprecated use `PatchDomainResponseBody1$inboundSchema` instead. */
-  export const inboundSchema = PatchDomainResponseBody1$inboundSchema;
-  /** @deprecated use `PatchDomainResponseBody1$outboundSchema` instead. */
-  export const outboundSchema = PatchDomainResponseBody1$outboundSchema;
-  /** @deprecated use `PatchDomainResponseBody1$Outbound` instead. */
-  export type Outbound = PatchDomainResponseBody1$Outbound;
-}
-
 export function patchDomainResponseBody1ToJSON(
   patchDomainResponseBody1: PatchDomainResponseBody1,
 ): string {
@@ -494,7 +390,6 @@ export function patchDomainResponseBody1ToJSON(
     PatchDomainResponseBody1$outboundSchema.parse(patchDomainResponseBody1),
   );
 }
-
 export function patchDomainResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<PatchDomainResponseBody1, SDKValidationError> {
@@ -515,7 +410,6 @@ export const PatchDomainResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => PatchDomainResponseBody1$inboundSchema),
   z.lazy(() => PatchDomainResponseBody3$inboundSchema),
 ]);
-
 /** @internal */
 export type PatchDomainResponseBody$Outbound =
   | PatchDomainResponseBody2$Outbound
@@ -533,19 +427,6 @@ export const PatchDomainResponseBody$outboundSchema: z.ZodType<
   z.lazy(() => PatchDomainResponseBody3$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchDomainResponseBody$ {
-  /** @deprecated use `PatchDomainResponseBody$inboundSchema` instead. */
-  export const inboundSchema = PatchDomainResponseBody$inboundSchema;
-  /** @deprecated use `PatchDomainResponseBody$outboundSchema` instead. */
-  export const outboundSchema = PatchDomainResponseBody$outboundSchema;
-  /** @deprecated use `PatchDomainResponseBody$Outbound` instead. */
-  export type Outbound = PatchDomainResponseBody$Outbound;
-}
-
 export function patchDomainResponseBodyToJSON(
   patchDomainResponseBody: PatchDomainResponseBody,
 ): string {
@@ -553,7 +434,6 @@ export function patchDomainResponseBodyToJSON(
     PatchDomainResponseBody$outboundSchema.parse(patchDomainResponseBody),
   );
 }
-
 export function patchDomainResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchDomainResponseBody, SDKValidationError> {

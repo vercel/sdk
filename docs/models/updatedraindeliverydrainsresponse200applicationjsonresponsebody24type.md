@@ -7,11 +7,11 @@ import { UpdateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody24Type }
 
 let value:
   UpdateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody24Type =
-    "clickhouse";
+    "internal";
 ```
 
 ## Values
 
 ```typescript
-"clickhouse"
+"internal"
 ```

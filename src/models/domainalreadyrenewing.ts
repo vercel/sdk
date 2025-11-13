@@ -50,22 +50,10 @@ export class DomainAlreadyRenewing extends VercelError {
 export const DomainAlreadyRenewingCode$inboundSchema: z.ZodNativeEnum<
   typeof DomainAlreadyRenewingCode
 > = z.nativeEnum(DomainAlreadyRenewingCode);
-
 /** @internal */
 export const DomainAlreadyRenewingCode$outboundSchema: z.ZodNativeEnum<
   typeof DomainAlreadyRenewingCode
 > = DomainAlreadyRenewingCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DomainAlreadyRenewingCode$ {
-  /** @deprecated use `DomainAlreadyRenewingCode$inboundSchema` instead. */
-  export const inboundSchema = DomainAlreadyRenewingCode$inboundSchema;
-  /** @deprecated use `DomainAlreadyRenewingCode$outboundSchema` instead. */
-  export const outboundSchema = DomainAlreadyRenewingCode$outboundSchema;
-}
 
 /** @internal */
 export const DomainAlreadyRenewing$inboundSchema: z.ZodType<
@@ -107,16 +95,3 @@ export const DomainAlreadyRenewing$outboundSchema: z.ZodType<
     code: DomainAlreadyRenewingCode$outboundSchema,
     message: z.string(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DomainAlreadyRenewing$ {
-  /** @deprecated use `DomainAlreadyRenewing$inboundSchema` instead. */
-  export const inboundSchema = DomainAlreadyRenewing$inboundSchema;
-  /** @deprecated use `DomainAlreadyRenewing$outboundSchema` instead. */
-  export const outboundSchema = DomainAlreadyRenewing$outboundSchema;
-  /** @deprecated use `DomainAlreadyRenewing$Outbound` instead. */
-  export type Outbound = DomainAlreadyRenewing$Outbound;
-}

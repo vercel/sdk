@@ -417,7 +417,6 @@ export const GetOrderRequest$inboundSchema: z.ZodType<
   orderId: z.string(),
   teamId: z.string().optional(),
 });
-
 /** @internal */
 export type GetOrderRequest$Outbound = {
   orderId: string;
@@ -434,25 +433,11 @@ export const GetOrderRequest$outboundSchema: z.ZodType<
   teamId: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrderRequest$ {
-  /** @deprecated use `GetOrderRequest$inboundSchema` instead. */
-  export const inboundSchema = GetOrderRequest$inboundSchema;
-  /** @deprecated use `GetOrderRequest$outboundSchema` instead. */
-  export const outboundSchema = GetOrderRequest$outboundSchema;
-  /** @deprecated use `GetOrderRequest$Outbound` instead. */
-  export type Outbound = GetOrderRequest$Outbound;
-}
-
 export function getOrderRequestToJSON(
   getOrderRequest: GetOrderRequest,
 ): string {
   return JSON.stringify(GetOrderRequest$outboundSchema.parse(getOrderRequest));
 }
-
 export function getOrderRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetOrderRequest, SDKValidationError> {
@@ -469,7 +454,6 @@ export const GetOrderDomainsRegistrarResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([NotAuthorizedForScope$inboundSchema, Forbidden$inboundSchema]);
-
 /** @internal */
 export type GetOrderDomainsRegistrarResponseBody$Outbound =
   | NotAuthorizedForScope$Outbound
@@ -482,21 +466,6 @@ export const GetOrderDomainsRegistrarResponseBody$outboundSchema: z.ZodType<
   unknown
 > = z.union([NotAuthorizedForScope$outboundSchema, Forbidden$outboundSchema]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrderDomainsRegistrarResponseBody$ {
-  /** @deprecated use `GetOrderDomainsRegistrarResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    GetOrderDomainsRegistrarResponseBody$inboundSchema;
-  /** @deprecated use `GetOrderDomainsRegistrarResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    GetOrderDomainsRegistrarResponseBody$outboundSchema;
-  /** @deprecated use `GetOrderDomainsRegistrarResponseBody$Outbound` instead. */
-  export type Outbound = GetOrderDomainsRegistrarResponseBody$Outbound;
-}
-
 export function getOrderDomainsRegistrarResponseBodyToJSON(
   getOrderDomainsRegistrarResponseBody: GetOrderDomainsRegistrarResponseBody,
 ): string {
@@ -506,7 +475,6 @@ export function getOrderDomainsRegistrarResponseBodyToJSON(
     ),
   );
 }
-
 export function getOrderDomainsRegistrarResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetOrderDomainsRegistrarResponseBody, SDKValidationError> {
@@ -522,46 +490,20 @@ export function getOrderDomainsRegistrarResponseBodyFromJSON(
 export const GetOrderDomainsPurchaseType$inboundSchema: z.ZodNativeEnum<
   typeof GetOrderDomainsPurchaseType
 > = z.nativeEnum(GetOrderDomainsPurchaseType);
-
 /** @internal */
 export const GetOrderDomainsPurchaseType$outboundSchema: z.ZodNativeEnum<
   typeof GetOrderDomainsPurchaseType
 > = GetOrderDomainsPurchaseType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrderDomainsPurchaseType$ {
-  /** @deprecated use `GetOrderDomainsPurchaseType$inboundSchema` instead. */
-  export const inboundSchema = GetOrderDomainsPurchaseType$inboundSchema;
-  /** @deprecated use `GetOrderDomainsPurchaseType$outboundSchema` instead. */
-  export const outboundSchema = GetOrderDomainsPurchaseType$outboundSchema;
-}
 
 /** @internal */
 export const GetOrderDomainsDomainsRegistrarStatus$inboundSchema:
   z.ZodNativeEnum<typeof GetOrderDomainsDomainsRegistrarStatus> = z.nativeEnum(
     GetOrderDomainsDomainsRegistrarStatus,
   );
-
 /** @internal */
 export const GetOrderDomainsDomainsRegistrarStatus$outboundSchema:
   z.ZodNativeEnum<typeof GetOrderDomainsDomainsRegistrarStatus> =
     GetOrderDomainsDomainsRegistrarStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrderDomainsDomainsRegistrarStatus$ {
-  /** @deprecated use `GetOrderDomainsDomainsRegistrarStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    GetOrderDomainsDomainsRegistrarStatus$inboundSchema;
-  /** @deprecated use `GetOrderDomainsDomainsRegistrarStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    GetOrderDomainsDomainsRegistrarStatus$outboundSchema;
-}
 
 /** @internal */
 export const GetOrderErrorDomainsRegistrar2$inboundSchema: z.ZodType<
@@ -572,7 +514,6 @@ export const GetOrderErrorDomainsRegistrar2$inboundSchema: z.ZodType<
   code: z.string(),
   details: z.any().optional(),
 });
-
 /** @internal */
 export type GetOrderErrorDomainsRegistrar2$Outbound = {
   code: string;
@@ -589,19 +530,6 @@ export const GetOrderErrorDomainsRegistrar2$outboundSchema: z.ZodType<
   details: z.any().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrderErrorDomainsRegistrar2$ {
-  /** @deprecated use `GetOrderErrorDomainsRegistrar2$inboundSchema` instead. */
-  export const inboundSchema = GetOrderErrorDomainsRegistrar2$inboundSchema;
-  /** @deprecated use `GetOrderErrorDomainsRegistrar2$outboundSchema` instead. */
-  export const outboundSchema = GetOrderErrorDomainsRegistrar2$outboundSchema;
-  /** @deprecated use `GetOrderErrorDomainsRegistrar2$Outbound` instead. */
-  export type Outbound = GetOrderErrorDomainsRegistrar2$Outbound;
-}
-
 export function getOrderErrorDomainsRegistrar2ToJSON(
   getOrderErrorDomainsRegistrar2: GetOrderErrorDomainsRegistrar2,
 ): string {
@@ -611,7 +539,6 @@ export function getOrderErrorDomainsRegistrar2ToJSON(
     ),
   );
 }
-
 export function getOrderErrorDomainsRegistrar2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetOrderErrorDomainsRegistrar2, SDKValidationError> {
@@ -629,26 +556,12 @@ export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDoma
   > = z.nativeEnum(
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3Code,
   );
-
 /** @internal */
 export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3Code$outboundSchema:
   z.ZodNativeEnum<
     typeof GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3Code
   > =
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3Code$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3Code$ {
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3Code$inboundSchema` instead. */
-  export const inboundSchema =
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3Code$inboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3Code$outboundSchema` instead. */
-  export const outboundSchema =
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3Code$outboundSchema;
-}
 
 /** @internal */
 export const GetOrder1DomainsRegistrar3$inboundSchema: z.ZodType<
@@ -659,7 +572,6 @@ export const GetOrder1DomainsRegistrar3$inboundSchema: z.ZodType<
   code:
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3Code$inboundSchema,
 });
-
 /** @internal */
 export type GetOrder1DomainsRegistrar3$Outbound = {
   code: string;
@@ -675,19 +587,6 @@ export const GetOrder1DomainsRegistrar3$outboundSchema: z.ZodType<
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3Code$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrder1DomainsRegistrar3$ {
-  /** @deprecated use `GetOrder1DomainsRegistrar3$inboundSchema` instead. */
-  export const inboundSchema = GetOrder1DomainsRegistrar3$inboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrar3$outboundSchema` instead. */
-  export const outboundSchema = GetOrder1DomainsRegistrar3$outboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrar3$Outbound` instead. */
-  export type Outbound = GetOrder1DomainsRegistrar3$Outbound;
-}
-
 export function getOrder1DomainsRegistrar3ToJSON(
   getOrder1DomainsRegistrar3: GetOrder1DomainsRegistrar3,
 ): string {
@@ -695,7 +594,6 @@ export function getOrder1DomainsRegistrar3ToJSON(
     GetOrder1DomainsRegistrar3$outboundSchema.parse(getOrder1DomainsRegistrar3),
   );
 }
-
 export function getOrder1DomainsRegistrar3FromJSON(
   jsonString: string,
 ): SafeParseResult<GetOrder1DomainsRegistrar3, SDKValidationError> {
@@ -713,26 +611,12 @@ export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDoma
   > = z.nativeEnum(
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomainsCode,
   );
-
 /** @internal */
 export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomainsCode$outboundSchema:
   z.ZodNativeEnum<
     typeof GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomainsCode
   > =
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomainsCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomainsCode$ {
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomainsCode$inboundSchema` instead. */
-  export const inboundSchema =
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomainsCode$inboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomainsCode$outboundSchema` instead. */
-  export const outboundSchema =
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomainsCode$outboundSchema;
-}
 
 /** @internal */
 export const GetOrder1DomainsRegistrar2$inboundSchema: z.ZodType<
@@ -743,7 +627,6 @@ export const GetOrder1DomainsRegistrar2$inboundSchema: z.ZodType<
   code:
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomainsCode$inboundSchema,
 });
-
 /** @internal */
 export type GetOrder1DomainsRegistrar2$Outbound = {
   code: string;
@@ -759,19 +642,6 @@ export const GetOrder1DomainsRegistrar2$outboundSchema: z.ZodType<
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomainsCode$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrder1DomainsRegistrar2$ {
-  /** @deprecated use `GetOrder1DomainsRegistrar2$inboundSchema` instead. */
-  export const inboundSchema = GetOrder1DomainsRegistrar2$inboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrar2$outboundSchema` instead. */
-  export const outboundSchema = GetOrder1DomainsRegistrar2$outboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrar2$Outbound` instead. */
-  export type Outbound = GetOrder1DomainsRegistrar2$Outbound;
-}
-
 export function getOrder1DomainsRegistrar2ToJSON(
   getOrder1DomainsRegistrar2: GetOrder1DomainsRegistrar2,
 ): string {
@@ -779,7 +649,6 @@ export function getOrder1DomainsRegistrar2ToJSON(
     GetOrder1DomainsRegistrar2$outboundSchema.parse(getOrder1DomainsRegistrar2),
   );
 }
-
 export function getOrder1DomainsRegistrar2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetOrder1DomainsRegistrar2, SDKValidationError> {
@@ -797,26 +666,12 @@ export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyCode
   > = z.nativeEnum(
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyCode,
   );
-
 /** @internal */
 export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyCode$outboundSchema:
   z.ZodNativeEnum<
     typeof GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyCode
   > =
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyCode$ {
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyCode$inboundSchema` instead. */
-  export const inboundSchema =
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyCode$inboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyCode$outboundSchema` instead. */
-  export const outboundSchema =
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyCode$outboundSchema;
-}
 
 /** @internal */
 export const GetOrder1DomainsRegistrarResponse200Details$inboundSchema:
@@ -827,7 +682,6 @@ export const GetOrder1DomainsRegistrarResponse200Details$inboundSchema:
   > = z.object({
     detectedLanguageCode: z.string(),
   });
-
 /** @internal */
 export type GetOrder1DomainsRegistrarResponse200Details$Outbound = {
   detectedLanguageCode: string;
@@ -843,21 +697,6 @@ export const GetOrder1DomainsRegistrarResponse200Details$outboundSchema:
     detectedLanguageCode: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrder1DomainsRegistrarResponse200Details$ {
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse200Details$inboundSchema` instead. */
-  export const inboundSchema =
-    GetOrder1DomainsRegistrarResponse200Details$inboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse200Details$outboundSchema` instead. */
-  export const outboundSchema =
-    GetOrder1DomainsRegistrarResponse200Details$outboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse200Details$Outbound` instead. */
-  export type Outbound = GetOrder1DomainsRegistrarResponse200Details$Outbound;
-}
-
 export function getOrder1DomainsRegistrarResponse200DetailsToJSON(
   getOrder1DomainsRegistrarResponse200Details:
     GetOrder1DomainsRegistrarResponse200Details,
@@ -868,7 +707,6 @@ export function getOrder1DomainsRegistrarResponse200DetailsToJSON(
     ),
   );
 }
-
 export function getOrder1DomainsRegistrarResponse200DetailsFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -897,7 +735,6 @@ export const GetOrder1DomainsRegistrar1$inboundSchema: z.ZodType<
     GetOrder1DomainsRegistrarResponse200Details$inboundSchema
   ),
 });
-
 /** @internal */
 export type GetOrder1DomainsRegistrar1$Outbound = {
   code: string;
@@ -917,19 +754,6 @@ export const GetOrder1DomainsRegistrar1$outboundSchema: z.ZodType<
   ),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrder1DomainsRegistrar1$ {
-  /** @deprecated use `GetOrder1DomainsRegistrar1$inboundSchema` instead. */
-  export const inboundSchema = GetOrder1DomainsRegistrar1$inboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrar1$outboundSchema` instead. */
-  export const outboundSchema = GetOrder1DomainsRegistrar1$outboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrar1$Outbound` instead. */
-  export type Outbound = GetOrder1DomainsRegistrar1$Outbound;
-}
-
 export function getOrder1DomainsRegistrar1ToJSON(
   getOrder1DomainsRegistrar1: GetOrder1DomainsRegistrar1,
 ): string {
@@ -937,7 +761,6 @@ export function getOrder1DomainsRegistrar1ToJSON(
     GetOrder1DomainsRegistrar1$outboundSchema.parse(getOrder1DomainsRegistrar1),
   );
 }
-
 export function getOrder1DomainsRegistrar1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetOrder1DomainsRegistrar1, SDKValidationError> {
@@ -958,7 +781,6 @@ export const GetOrderErrorDomainsRegistrar1$inboundSchema: z.ZodType<
   z.lazy(() => GetOrder1DomainsRegistrar2$inboundSchema),
   z.lazy(() => GetOrder1DomainsRegistrar3$inboundSchema),
 ]);
-
 /** @internal */
 export type GetOrderErrorDomainsRegistrar1$Outbound =
   | GetOrder1DomainsRegistrar1$Outbound
@@ -976,19 +798,6 @@ export const GetOrderErrorDomainsRegistrar1$outboundSchema: z.ZodType<
   z.lazy(() => GetOrder1DomainsRegistrar3$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrderErrorDomainsRegistrar1$ {
-  /** @deprecated use `GetOrderErrorDomainsRegistrar1$inboundSchema` instead. */
-  export const inboundSchema = GetOrderErrorDomainsRegistrar1$inboundSchema;
-  /** @deprecated use `GetOrderErrorDomainsRegistrar1$outboundSchema` instead. */
-  export const outboundSchema = GetOrderErrorDomainsRegistrar1$outboundSchema;
-  /** @deprecated use `GetOrderErrorDomainsRegistrar1$Outbound` instead. */
-  export type Outbound = GetOrderErrorDomainsRegistrar1$Outbound;
-}
-
 export function getOrderErrorDomainsRegistrar1ToJSON(
   getOrderErrorDomainsRegistrar1: GetOrderErrorDomainsRegistrar1,
 ): string {
@@ -998,7 +807,6 @@ export function getOrderErrorDomainsRegistrar1ToJSON(
     ),
   );
 }
-
 export function getOrderErrorDomainsRegistrar1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetOrderErrorDomainsRegistrar1, SDKValidationError> {
@@ -1022,7 +830,6 @@ export const GetOrderDomainsDomainsRegistrarError$inboundSchema: z.ZodType<
     z.lazy(() => GetOrder1DomainsRegistrar3$inboundSchema),
   ]),
 ]);
-
 /** @internal */
 export type GetOrderDomainsDomainsRegistrarError$Outbound =
   | GetOrderErrorDomainsRegistrar2$Outbound
@@ -1044,21 +851,6 @@ export const GetOrderDomainsDomainsRegistrarError$outboundSchema: z.ZodType<
   ]),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrderDomainsDomainsRegistrarError$ {
-  /** @deprecated use `GetOrderDomainsDomainsRegistrarError$inboundSchema` instead. */
-  export const inboundSchema =
-    GetOrderDomainsDomainsRegistrarError$inboundSchema;
-  /** @deprecated use `GetOrderDomainsDomainsRegistrarError$outboundSchema` instead. */
-  export const outboundSchema =
-    GetOrderDomainsDomainsRegistrarError$outboundSchema;
-  /** @deprecated use `GetOrderDomainsDomainsRegistrarError$Outbound` instead. */
-  export type Outbound = GetOrderDomainsDomainsRegistrarError$Outbound;
-}
-
 export function getOrderDomainsDomainsRegistrarErrorToJSON(
   getOrderDomainsDomainsRegistrarError: GetOrderDomainsDomainsRegistrarError,
 ): string {
@@ -1068,7 +860,6 @@ export function getOrderDomainsDomainsRegistrarErrorToJSON(
     ),
   );
 }
-
 export function getOrderDomainsDomainsRegistrarErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<GetOrderDomainsDomainsRegistrarError, SDKValidationError> {
@@ -1101,7 +892,6 @@ export const Domains3$inboundSchema: z.ZodType<
     ]),
   ]).optional(),
 });
-
 /** @internal */
 export type Domains3$Outbound = {
   purchaseType: string;
@@ -1140,23 +930,9 @@ export const Domains3$outboundSchema: z.ZodType<
   ]).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Domains3$ {
-  /** @deprecated use `Domains3$inboundSchema` instead. */
-  export const inboundSchema = Domains3$inboundSchema;
-  /** @deprecated use `Domains3$outboundSchema` instead. */
-  export const outboundSchema = Domains3$outboundSchema;
-  /** @deprecated use `Domains3$Outbound` instead. */
-  export type Outbound = Domains3$Outbound;
-}
-
 export function domains3ToJSON(domains3: Domains3): string {
   return JSON.stringify(Domains3$outboundSchema.parse(domains3));
 }
-
 export function domains3FromJSON(
   jsonString: string,
 ): SafeParseResult<Domains3, SDKValidationError> {
@@ -1171,43 +947,19 @@ export function domains3FromJSON(
 export const DomainsPurchaseType$inboundSchema: z.ZodNativeEnum<
   typeof DomainsPurchaseType
 > = z.nativeEnum(DomainsPurchaseType);
-
 /** @internal */
 export const DomainsPurchaseType$outboundSchema: z.ZodNativeEnum<
   typeof DomainsPurchaseType
 > = DomainsPurchaseType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DomainsPurchaseType$ {
-  /** @deprecated use `DomainsPurchaseType$inboundSchema` instead. */
-  export const inboundSchema = DomainsPurchaseType$inboundSchema;
-  /** @deprecated use `DomainsPurchaseType$outboundSchema` instead. */
-  export const outboundSchema = DomainsPurchaseType$outboundSchema;
-}
-
 /** @internal */
 export const GetOrderDomainsStatus$inboundSchema: z.ZodNativeEnum<
   typeof GetOrderDomainsStatus
 > = z.nativeEnum(GetOrderDomainsStatus);
-
 /** @internal */
 export const GetOrderDomainsStatus$outboundSchema: z.ZodNativeEnum<
   typeof GetOrderDomainsStatus
 > = GetOrderDomainsStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrderDomainsStatus$ {
-  /** @deprecated use `GetOrderDomainsStatus$inboundSchema` instead. */
-  export const inboundSchema = GetOrderDomainsStatus$inboundSchema;
-  /** @deprecated use `GetOrderDomainsStatus$outboundSchema` instead. */
-  export const outboundSchema = GetOrderDomainsStatus$outboundSchema;
-}
 
 /** @internal */
 export const GetOrderError2$inboundSchema: z.ZodType<
@@ -1218,7 +970,6 @@ export const GetOrderError2$inboundSchema: z.ZodType<
   code: z.string(),
   details: z.any().optional(),
 });
-
 /** @internal */
 export type GetOrderError2$Outbound = {
   code: string;
@@ -1235,23 +986,9 @@ export const GetOrderError2$outboundSchema: z.ZodType<
   details: z.any().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrderError2$ {
-  /** @deprecated use `GetOrderError2$inboundSchema` instead. */
-  export const inboundSchema = GetOrderError2$inboundSchema;
-  /** @deprecated use `GetOrderError2$outboundSchema` instead. */
-  export const outboundSchema = GetOrderError2$outboundSchema;
-  /** @deprecated use `GetOrderError2$Outbound` instead. */
-  export type Outbound = GetOrderError2$Outbound;
-}
-
 export function getOrderError2ToJSON(getOrderError2: GetOrderError2): string {
   return JSON.stringify(GetOrderError2$outboundSchema.parse(getOrderError2));
 }
-
 export function getOrderError2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetOrderError2, SDKValidationError> {
@@ -1267,25 +1004,11 @@ export const GetOrder1DomainsRegistrarResponse200ApplicationJSONCode$inboundSche
   z.ZodNativeEnum<
     typeof GetOrder1DomainsRegistrarResponse200ApplicationJSONCode
   > = z.nativeEnum(GetOrder1DomainsRegistrarResponse200ApplicationJSONCode);
-
 /** @internal */
 export const GetOrder1DomainsRegistrarResponse200ApplicationJSONCode$outboundSchema:
   z.ZodNativeEnum<
     typeof GetOrder1DomainsRegistrarResponse200ApplicationJSONCode
   > = GetOrder1DomainsRegistrarResponse200ApplicationJSONCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrder1DomainsRegistrarResponse200ApplicationJSONCode$ {
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse200ApplicationJSONCode$inboundSchema` instead. */
-  export const inboundSchema =
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONCode$inboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse200ApplicationJSONCode$outboundSchema` instead. */
-  export const outboundSchema =
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONCode$outboundSchema;
-}
 
 /** @internal */
 export const GetOrder1DomainsRegistrarResponse2003$inboundSchema: z.ZodType<
@@ -1295,7 +1018,6 @@ export const GetOrder1DomainsRegistrarResponse2003$inboundSchema: z.ZodType<
 > = z.object({
   code: GetOrder1DomainsRegistrarResponse200ApplicationJSONCode$inboundSchema,
 });
-
 /** @internal */
 export type GetOrder1DomainsRegistrarResponse2003$Outbound = {
   code: string;
@@ -1310,21 +1032,6 @@ export const GetOrder1DomainsRegistrarResponse2003$outboundSchema: z.ZodType<
   code: GetOrder1DomainsRegistrarResponse200ApplicationJSONCode$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrder1DomainsRegistrarResponse2003$ {
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse2003$inboundSchema` instead. */
-  export const inboundSchema =
-    GetOrder1DomainsRegistrarResponse2003$inboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse2003$outboundSchema` instead. */
-  export const outboundSchema =
-    GetOrder1DomainsRegistrarResponse2003$outboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse2003$Outbound` instead. */
-  export type Outbound = GetOrder1DomainsRegistrarResponse2003$Outbound;
-}
-
 export function getOrder1DomainsRegistrarResponse2003ToJSON(
   getOrder1DomainsRegistrarResponse2003: GetOrder1DomainsRegistrarResponse2003,
 ): string {
@@ -1334,7 +1041,6 @@ export function getOrder1DomainsRegistrarResponse2003ToJSON(
     ),
   );
 }
-
 export function getOrder1DomainsRegistrarResponse2003FromJSON(
   jsonString: string,
 ): SafeParseResult<GetOrder1DomainsRegistrarResponse2003, SDKValidationError> {
@@ -1350,24 +1056,10 @@ export function getOrder1DomainsRegistrarResponse2003FromJSON(
 export const GetOrder1DomainsRegistrarResponse200Code$inboundSchema:
   z.ZodNativeEnum<typeof GetOrder1DomainsRegistrarResponse200Code> = z
     .nativeEnum(GetOrder1DomainsRegistrarResponse200Code);
-
 /** @internal */
 export const GetOrder1DomainsRegistrarResponse200Code$outboundSchema:
   z.ZodNativeEnum<typeof GetOrder1DomainsRegistrarResponse200Code> =
     GetOrder1DomainsRegistrarResponse200Code$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrder1DomainsRegistrarResponse200Code$ {
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse200Code$inboundSchema` instead. */
-  export const inboundSchema =
-    GetOrder1DomainsRegistrarResponse200Code$inboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse200Code$outboundSchema` instead. */
-  export const outboundSchema =
-    GetOrder1DomainsRegistrarResponse200Code$outboundSchema;
-}
 
 /** @internal */
 export const GetOrder1DomainsRegistrarResponse2002$inboundSchema: z.ZodType<
@@ -1377,7 +1069,6 @@ export const GetOrder1DomainsRegistrarResponse2002$inboundSchema: z.ZodType<
 > = z.object({
   code: GetOrder1DomainsRegistrarResponse200Code$inboundSchema,
 });
-
 /** @internal */
 export type GetOrder1DomainsRegistrarResponse2002$Outbound = {
   code: string;
@@ -1392,21 +1083,6 @@ export const GetOrder1DomainsRegistrarResponse2002$outboundSchema: z.ZodType<
   code: GetOrder1DomainsRegistrarResponse200Code$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrder1DomainsRegistrarResponse2002$ {
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse2002$inboundSchema` instead. */
-  export const inboundSchema =
-    GetOrder1DomainsRegistrarResponse2002$inboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse2002$outboundSchema` instead. */
-  export const outboundSchema =
-    GetOrder1DomainsRegistrarResponse2002$outboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse2002$Outbound` instead. */
-  export type Outbound = GetOrder1DomainsRegistrarResponse2002$Outbound;
-}
-
 export function getOrder1DomainsRegistrarResponse2002ToJSON(
   getOrder1DomainsRegistrarResponse2002: GetOrder1DomainsRegistrarResponse2002,
 ): string {
@@ -1416,7 +1092,6 @@ export function getOrder1DomainsRegistrarResponse2002ToJSON(
     ),
   );
 }
-
 export function getOrder1DomainsRegistrarResponse2002FromJSON(
   jsonString: string,
 ): SafeParseResult<GetOrder1DomainsRegistrarResponse2002, SDKValidationError> {
@@ -1435,26 +1110,12 @@ export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDoma
   > = z.nativeEnum(
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains2Code,
   );
-
 /** @internal */
 export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains2Code$outboundSchema:
   z.ZodNativeEnum<
     typeof GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains2Code
   > =
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains2Code$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains2Code$ {
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains2Code$inboundSchema` instead. */
-  export const inboundSchema =
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains2Code$inboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains2Code$outboundSchema` instead. */
-  export const outboundSchema =
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains2Code$outboundSchema;
-}
 
 /** @internal */
 export const GetOrder1DomainsRegistrarResponseDetails$inboundSchema: z.ZodType<
@@ -1464,7 +1125,6 @@ export const GetOrder1DomainsRegistrarResponseDetails$inboundSchema: z.ZodType<
 > = z.object({
   detectedLanguageCode: z.string(),
 });
-
 /** @internal */
 export type GetOrder1DomainsRegistrarResponseDetails$Outbound = {
   detectedLanguageCode: string;
@@ -1479,21 +1139,6 @@ export const GetOrder1DomainsRegistrarResponseDetails$outboundSchema: z.ZodType<
   detectedLanguageCode: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrder1DomainsRegistrarResponseDetails$ {
-  /** @deprecated use `GetOrder1DomainsRegistrarResponseDetails$inboundSchema` instead. */
-  export const inboundSchema =
-    GetOrder1DomainsRegistrarResponseDetails$inboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrarResponseDetails$outboundSchema` instead. */
-  export const outboundSchema =
-    GetOrder1DomainsRegistrarResponseDetails$outboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrarResponseDetails$Outbound` instead. */
-  export type Outbound = GetOrder1DomainsRegistrarResponseDetails$Outbound;
-}
-
 export function getOrder1DomainsRegistrarResponseDetailsToJSON(
   getOrder1DomainsRegistrarResponseDetails:
     GetOrder1DomainsRegistrarResponseDetails,
@@ -1504,7 +1149,6 @@ export function getOrder1DomainsRegistrarResponseDetailsToJSON(
     ),
   );
 }
-
 export function getOrder1DomainsRegistrarResponseDetailsFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1531,7 +1175,6 @@ export const GetOrder1DomainsRegistrarResponse2001$inboundSchema: z.ZodType<
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains2Code$inboundSchema,
   details: z.lazy(() => GetOrder1DomainsRegistrarResponseDetails$inboundSchema),
 });
-
 /** @internal */
 export type GetOrder1DomainsRegistrarResponse2001$Outbound = {
   code: string;
@@ -1551,21 +1194,6 @@ export const GetOrder1DomainsRegistrarResponse2001$outboundSchema: z.ZodType<
   ),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrder1DomainsRegistrarResponse2001$ {
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse2001$inboundSchema` instead. */
-  export const inboundSchema =
-    GetOrder1DomainsRegistrarResponse2001$inboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse2001$outboundSchema` instead. */
-  export const outboundSchema =
-    GetOrder1DomainsRegistrarResponse2001$outboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse2001$Outbound` instead. */
-  export type Outbound = GetOrder1DomainsRegistrarResponse2001$Outbound;
-}
-
 export function getOrder1DomainsRegistrarResponse2001ToJSON(
   getOrder1DomainsRegistrarResponse2001: GetOrder1DomainsRegistrarResponse2001,
 ): string {
@@ -1575,7 +1203,6 @@ export function getOrder1DomainsRegistrarResponse2001ToJSON(
     ),
   );
 }
-
 export function getOrder1DomainsRegistrarResponse2001FromJSON(
   jsonString: string,
 ): SafeParseResult<GetOrder1DomainsRegistrarResponse2001, SDKValidationError> {
@@ -1597,7 +1224,6 @@ export const GetOrderError1$inboundSchema: z.ZodType<
   z.lazy(() => GetOrder1DomainsRegistrarResponse2002$inboundSchema),
   z.lazy(() => GetOrder1DomainsRegistrarResponse2003$inboundSchema),
 ]);
-
 /** @internal */
 export type GetOrderError1$Outbound =
   | GetOrder1DomainsRegistrarResponse2001$Outbound
@@ -1615,23 +1241,9 @@ export const GetOrderError1$outboundSchema: z.ZodType<
   z.lazy(() => GetOrder1DomainsRegistrarResponse2003$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrderError1$ {
-  /** @deprecated use `GetOrderError1$inboundSchema` instead. */
-  export const inboundSchema = GetOrderError1$inboundSchema;
-  /** @deprecated use `GetOrderError1$outboundSchema` instead. */
-  export const outboundSchema = GetOrderError1$outboundSchema;
-  /** @deprecated use `GetOrderError1$Outbound` instead. */
-  export type Outbound = GetOrderError1$Outbound;
-}
-
 export function getOrderError1ToJSON(getOrderError1: GetOrderError1): string {
   return JSON.stringify(GetOrderError1$outboundSchema.parse(getOrderError1));
 }
-
 export function getOrderError1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetOrderError1, SDKValidationError> {
@@ -1655,7 +1267,6 @@ export const GetOrderDomainsError$inboundSchema: z.ZodType<
     z.lazy(() => GetOrder1DomainsRegistrarResponse2003$inboundSchema),
   ]),
 ]);
-
 /** @internal */
 export type GetOrderDomainsError$Outbound =
   | GetOrderError2$Outbound
@@ -1677,19 +1288,6 @@ export const GetOrderDomainsError$outboundSchema: z.ZodType<
   ]),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrderDomainsError$ {
-  /** @deprecated use `GetOrderDomainsError$inboundSchema` instead. */
-  export const inboundSchema = GetOrderDomainsError$inboundSchema;
-  /** @deprecated use `GetOrderDomainsError$outboundSchema` instead. */
-  export const outboundSchema = GetOrderDomainsError$outboundSchema;
-  /** @deprecated use `GetOrderDomainsError$Outbound` instead. */
-  export type Outbound = GetOrderDomainsError$Outbound;
-}
-
 export function getOrderDomainsErrorToJSON(
   getOrderDomainsError: GetOrderDomainsError,
 ): string {
@@ -1697,7 +1295,6 @@ export function getOrderDomainsErrorToJSON(
     GetOrderDomainsError$outboundSchema.parse(getOrderDomainsError),
   );
 }
-
 export function getOrderDomainsErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<GetOrderDomainsError, SDKValidationError> {
@@ -1728,7 +1325,6 @@ export const Domains2$inboundSchema: z.ZodType<
     ]),
   ]).optional(),
 });
-
 /** @internal */
 export type Domains2$Outbound = {
   purchaseType: string;
@@ -1765,23 +1361,9 @@ export const Domains2$outboundSchema: z.ZodType<
   ]).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Domains2$ {
-  /** @deprecated use `Domains2$inboundSchema` instead. */
-  export const inboundSchema = Domains2$inboundSchema;
-  /** @deprecated use `Domains2$outboundSchema` instead. */
-  export const outboundSchema = Domains2$outboundSchema;
-  /** @deprecated use `Domains2$Outbound` instead. */
-  export type Outbound = Domains2$Outbound;
-}
-
 export function domains2ToJSON(domains2: Domains2): string {
   return JSON.stringify(Domains2$outboundSchema.parse(domains2));
 }
-
 export function domains2FromJSON(
   jsonString: string,
 ): SafeParseResult<Domains2, SDKValidationError> {
@@ -1796,45 +1378,19 @@ export function domains2FromJSON(
 export const GetOrderDomainsDomainsRegistrarPurchaseType$inboundSchema:
   z.ZodNativeEnum<typeof GetOrderDomainsDomainsRegistrarPurchaseType> = z
     .nativeEnum(GetOrderDomainsDomainsRegistrarPurchaseType);
-
 /** @internal */
 export const GetOrderDomainsDomainsRegistrarPurchaseType$outboundSchema:
   z.ZodNativeEnum<typeof GetOrderDomainsDomainsRegistrarPurchaseType> =
     GetOrderDomainsDomainsRegistrarPurchaseType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrderDomainsDomainsRegistrarPurchaseType$ {
-  /** @deprecated use `GetOrderDomainsDomainsRegistrarPurchaseType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetOrderDomainsDomainsRegistrarPurchaseType$inboundSchema;
-  /** @deprecated use `GetOrderDomainsDomainsRegistrarPurchaseType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetOrderDomainsDomainsRegistrarPurchaseType$outboundSchema;
-}
-
 /** @internal */
 export const DomainsStatus$inboundSchema: z.ZodNativeEnum<
   typeof DomainsStatus
 > = z.nativeEnum(DomainsStatus);
-
 /** @internal */
 export const DomainsStatus$outboundSchema: z.ZodNativeEnum<
   typeof DomainsStatus
 > = DomainsStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DomainsStatus$ {
-  /** @deprecated use `DomainsStatus$inboundSchema` instead. */
-  export const inboundSchema = DomainsStatus$inboundSchema;
-  /** @deprecated use `DomainsStatus$outboundSchema` instead. */
-  export const outboundSchema = DomainsStatus$outboundSchema;
-}
 
 /** @internal */
 export const GetOrderErrorDomainsRegistrarResponse2$inboundSchema: z.ZodType<
@@ -1845,7 +1401,6 @@ export const GetOrderErrorDomainsRegistrarResponse2$inboundSchema: z.ZodType<
   code: z.string(),
   details: z.any().optional(),
 });
-
 /** @internal */
 export type GetOrderErrorDomainsRegistrarResponse2$Outbound = {
   code: string;
@@ -1862,21 +1417,6 @@ export const GetOrderErrorDomainsRegistrarResponse2$outboundSchema: z.ZodType<
   details: z.any().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrderErrorDomainsRegistrarResponse2$ {
-  /** @deprecated use `GetOrderErrorDomainsRegistrarResponse2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetOrderErrorDomainsRegistrarResponse2$inboundSchema;
-  /** @deprecated use `GetOrderErrorDomainsRegistrarResponse2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetOrderErrorDomainsRegistrarResponse2$outboundSchema;
-  /** @deprecated use `GetOrderErrorDomainsRegistrarResponse2$Outbound` instead. */
-  export type Outbound = GetOrderErrorDomainsRegistrarResponse2$Outbound;
-}
-
 export function getOrderErrorDomainsRegistrarResponse2ToJSON(
   getOrderErrorDomainsRegistrarResponse2:
     GetOrderErrorDomainsRegistrarResponse2,
@@ -1887,7 +1427,6 @@ export function getOrderErrorDomainsRegistrarResponse2ToJSON(
     ),
   );
 }
-
 export function getOrderErrorDomainsRegistrarResponse2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetOrderErrorDomainsRegistrarResponse2, SDKValidationError> {
@@ -1906,26 +1445,12 @@ export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDoma
   > = z.nativeEnum(
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Error3Code,
   );
-
 /** @internal */
 export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Error3Code$outboundSchema:
   z.ZodNativeEnum<
     typeof GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Error3Code
   > =
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Error3Code$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Error3Code$ {
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Error3Code$inboundSchema` instead. */
-  export const inboundSchema =
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Error3Code$inboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Error3Code$outboundSchema` instead. */
-  export const outboundSchema =
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Error3Code$outboundSchema;
-}
 
 /** @internal */
 export const GetOrder1DomainsRegistrarResponse3$inboundSchema: z.ZodType<
@@ -1936,7 +1461,6 @@ export const GetOrder1DomainsRegistrarResponse3$inboundSchema: z.ZodType<
   code:
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Error3Code$inboundSchema,
 });
-
 /** @internal */
 export type GetOrder1DomainsRegistrarResponse3$Outbound = {
   code: string;
@@ -1952,20 +1476,6 @@ export const GetOrder1DomainsRegistrarResponse3$outboundSchema: z.ZodType<
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Error3Code$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrder1DomainsRegistrarResponse3$ {
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse3$inboundSchema` instead. */
-  export const inboundSchema = GetOrder1DomainsRegistrarResponse3$inboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetOrder1DomainsRegistrarResponse3$outboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse3$Outbound` instead. */
-  export type Outbound = GetOrder1DomainsRegistrarResponse3$Outbound;
-}
-
 export function getOrder1DomainsRegistrarResponse3ToJSON(
   getOrder1DomainsRegistrarResponse3: GetOrder1DomainsRegistrarResponse3,
 ): string {
@@ -1975,7 +1485,6 @@ export function getOrder1DomainsRegistrarResponse3ToJSON(
     ),
   );
 }
-
 export function getOrder1DomainsRegistrarResponse3FromJSON(
   jsonString: string,
 ): SafeParseResult<GetOrder1DomainsRegistrarResponse3, SDKValidationError> {
@@ -1994,26 +1503,12 @@ export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDoma
   > = z.nativeEnum(
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1ErrorCode,
   );
-
 /** @internal */
 export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1ErrorCode$outboundSchema:
   z.ZodNativeEnum<
     typeof GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1ErrorCode
   > =
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1ErrorCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1ErrorCode$ {
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1ErrorCode$inboundSchema` instead. */
-  export const inboundSchema =
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1ErrorCode$inboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1ErrorCode$outboundSchema` instead. */
-  export const outboundSchema =
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1ErrorCode$outboundSchema;
-}
 
 /** @internal */
 export const GetOrder1DomainsRegistrarResponse2$inboundSchema: z.ZodType<
@@ -2024,7 +1519,6 @@ export const GetOrder1DomainsRegistrarResponse2$inboundSchema: z.ZodType<
   code:
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1ErrorCode$inboundSchema,
 });
-
 /** @internal */
 export type GetOrder1DomainsRegistrarResponse2$Outbound = {
   code: string;
@@ -2040,20 +1534,6 @@ export const GetOrder1DomainsRegistrarResponse2$outboundSchema: z.ZodType<
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1ErrorCode$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrder1DomainsRegistrarResponse2$ {
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse2$inboundSchema` instead. */
-  export const inboundSchema = GetOrder1DomainsRegistrarResponse2$inboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetOrder1DomainsRegistrarResponse2$outboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse2$Outbound` instead. */
-  export type Outbound = GetOrder1DomainsRegistrarResponse2$Outbound;
-}
-
 export function getOrder1DomainsRegistrarResponse2ToJSON(
   getOrder1DomainsRegistrarResponse2: GetOrder1DomainsRegistrarResponse2,
 ): string {
@@ -2063,7 +1543,6 @@ export function getOrder1DomainsRegistrarResponse2ToJSON(
     ),
   );
 }
-
 export function getOrder1DomainsRegistrarResponse2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetOrder1DomainsRegistrarResponse2, SDKValidationError> {
@@ -2082,26 +1561,12 @@ export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDoma
   > = z.nativeEnum(
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Code,
   );
-
 /** @internal */
 export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Code$outboundSchema:
   z.ZodNativeEnum<
     typeof GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Code
   > =
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Code$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Code$ {
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Code$inboundSchema` instead. */
-  export const inboundSchema =
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Code$inboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Code$outboundSchema` instead. */
-  export const outboundSchema =
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Code$outboundSchema;
-}
 
 /** @internal */
 export const GetOrder1DomainsRegistrarDetails$inboundSchema: z.ZodType<
@@ -2111,7 +1576,6 @@ export const GetOrder1DomainsRegistrarDetails$inboundSchema: z.ZodType<
 > = z.object({
   detectedLanguageCode: z.string(),
 });
-
 /** @internal */
 export type GetOrder1DomainsRegistrarDetails$Outbound = {
   detectedLanguageCode: string;
@@ -2126,19 +1590,6 @@ export const GetOrder1DomainsRegistrarDetails$outboundSchema: z.ZodType<
   detectedLanguageCode: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrder1DomainsRegistrarDetails$ {
-  /** @deprecated use `GetOrder1DomainsRegistrarDetails$inboundSchema` instead. */
-  export const inboundSchema = GetOrder1DomainsRegistrarDetails$inboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrarDetails$outboundSchema` instead. */
-  export const outboundSchema = GetOrder1DomainsRegistrarDetails$outboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrarDetails$Outbound` instead. */
-  export type Outbound = GetOrder1DomainsRegistrarDetails$Outbound;
-}
-
 export function getOrder1DomainsRegistrarDetailsToJSON(
   getOrder1DomainsRegistrarDetails: GetOrder1DomainsRegistrarDetails,
 ): string {
@@ -2148,7 +1599,6 @@ export function getOrder1DomainsRegistrarDetailsToJSON(
     ),
   );
 }
-
 export function getOrder1DomainsRegistrarDetailsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetOrder1DomainsRegistrarDetails, SDKValidationError> {
@@ -2169,7 +1619,6 @@ export const GetOrder1DomainsRegistrarResponse1$inboundSchema: z.ZodType<
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Code$inboundSchema,
   details: z.lazy(() => GetOrder1DomainsRegistrarDetails$inboundSchema),
 });
-
 /** @internal */
 export type GetOrder1DomainsRegistrarResponse1$Outbound = {
   code: string;
@@ -2187,20 +1636,6 @@ export const GetOrder1DomainsRegistrarResponse1$outboundSchema: z.ZodType<
   details: z.lazy(() => GetOrder1DomainsRegistrarDetails$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrder1DomainsRegistrarResponse1$ {
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse1$inboundSchema` instead. */
-  export const inboundSchema = GetOrder1DomainsRegistrarResponse1$inboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse1$outboundSchema` instead. */
-  export const outboundSchema =
-    GetOrder1DomainsRegistrarResponse1$outboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrarResponse1$Outbound` instead. */
-  export type Outbound = GetOrder1DomainsRegistrarResponse1$Outbound;
-}
-
 export function getOrder1DomainsRegistrarResponse1ToJSON(
   getOrder1DomainsRegistrarResponse1: GetOrder1DomainsRegistrarResponse1,
 ): string {
@@ -2210,7 +1645,6 @@ export function getOrder1DomainsRegistrarResponse1ToJSON(
     ),
   );
 }
-
 export function getOrder1DomainsRegistrarResponse1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetOrder1DomainsRegistrarResponse1, SDKValidationError> {
@@ -2232,7 +1666,6 @@ export const GetOrderErrorDomainsRegistrarResponse1$inboundSchema: z.ZodType<
   z.lazy(() => GetOrder1DomainsRegistrarResponse2$inboundSchema),
   z.lazy(() => GetOrder1DomainsRegistrarResponse3$inboundSchema),
 ]);
-
 /** @internal */
 export type GetOrderErrorDomainsRegistrarResponse1$Outbound =
   | GetOrder1DomainsRegistrarResponse1$Outbound
@@ -2250,21 +1683,6 @@ export const GetOrderErrorDomainsRegistrarResponse1$outboundSchema: z.ZodType<
   z.lazy(() => GetOrder1DomainsRegistrarResponse3$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrderErrorDomainsRegistrarResponse1$ {
-  /** @deprecated use `GetOrderErrorDomainsRegistrarResponse1$inboundSchema` instead. */
-  export const inboundSchema =
-    GetOrderErrorDomainsRegistrarResponse1$inboundSchema;
-  /** @deprecated use `GetOrderErrorDomainsRegistrarResponse1$outboundSchema` instead. */
-  export const outboundSchema =
-    GetOrderErrorDomainsRegistrarResponse1$outboundSchema;
-  /** @deprecated use `GetOrderErrorDomainsRegistrarResponse1$Outbound` instead. */
-  export type Outbound = GetOrderErrorDomainsRegistrarResponse1$Outbound;
-}
-
 export function getOrderErrorDomainsRegistrarResponse1ToJSON(
   getOrderErrorDomainsRegistrarResponse1:
     GetOrderErrorDomainsRegistrarResponse1,
@@ -2275,7 +1693,6 @@ export function getOrderErrorDomainsRegistrarResponse1ToJSON(
     ),
   );
 }
-
 export function getOrderErrorDomainsRegistrarResponse1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetOrderErrorDomainsRegistrarResponse1, SDKValidationError> {
@@ -2300,7 +1717,6 @@ export const DomainsError$inboundSchema: z.ZodType<
     z.lazy(() => GetOrder1DomainsRegistrarResponse3$inboundSchema),
   ]),
 ]);
-
 /** @internal */
 export type DomainsError$Outbound =
   | GetOrderErrorDomainsRegistrarResponse2$Outbound
@@ -2322,23 +1738,9 @@ export const DomainsError$outboundSchema: z.ZodType<
   ]),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DomainsError$ {
-  /** @deprecated use `DomainsError$inboundSchema` instead. */
-  export const inboundSchema = DomainsError$inboundSchema;
-  /** @deprecated use `DomainsError$outboundSchema` instead. */
-  export const outboundSchema = DomainsError$outboundSchema;
-  /** @deprecated use `DomainsError$Outbound` instead. */
-  export type Outbound = DomainsError$Outbound;
-}
-
 export function domainsErrorToJSON(domainsError: DomainsError): string {
   return JSON.stringify(DomainsError$outboundSchema.parse(domainsError));
 }
-
 export function domainsErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<DomainsError, SDKValidationError> {
@@ -2370,7 +1772,6 @@ export const Domains1$inboundSchema: z.ZodType<
     ]),
   ]).optional(),
 });
-
 /** @internal */
 export type Domains1$Outbound = {
   purchaseType: string;
@@ -2409,23 +1810,9 @@ export const Domains1$outboundSchema: z.ZodType<
   ]).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Domains1$ {
-  /** @deprecated use `Domains1$inboundSchema` instead. */
-  export const inboundSchema = Domains1$inboundSchema;
-  /** @deprecated use `Domains1$outboundSchema` instead. */
-  export const outboundSchema = Domains1$outboundSchema;
-  /** @deprecated use `Domains1$Outbound` instead. */
-  export type Outbound = Domains1$Outbound;
-}
-
 export function domains1ToJSON(domains1: Domains1): string {
   return JSON.stringify(Domains1$outboundSchema.parse(domains1));
 }
-
 export function domains1FromJSON(
   jsonString: string,
 ): SafeParseResult<Domains1, SDKValidationError> {
@@ -2446,7 +1833,6 @@ export const GetOrderDomains$inboundSchema: z.ZodType<
   z.lazy(() => Domains3$inboundSchema),
   z.lazy(() => Domains2$inboundSchema),
 ]);
-
 /** @internal */
 export type GetOrderDomains$Outbound =
   | Domains1$Outbound
@@ -2464,25 +1850,11 @@ export const GetOrderDomains$outboundSchema: z.ZodType<
   z.lazy(() => Domains2$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrderDomains$ {
-  /** @deprecated use `GetOrderDomains$inboundSchema` instead. */
-  export const inboundSchema = GetOrderDomains$inboundSchema;
-  /** @deprecated use `GetOrderDomains$outboundSchema` instead. */
-  export const outboundSchema = GetOrderDomains$outboundSchema;
-  /** @deprecated use `GetOrderDomains$Outbound` instead. */
-  export type Outbound = GetOrderDomains$Outbound;
-}
-
 export function getOrderDomainsToJSON(
   getOrderDomains: GetOrderDomains,
 ): string {
   return JSON.stringify(GetOrderDomains$outboundSchema.parse(getOrderDomains));
 }
-
 export function getOrderDomainsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetOrderDomains, SDKValidationError> {
@@ -2497,22 +1869,10 @@ export function getOrderDomainsFromJSON(
 export const GetOrderStatus$inboundSchema: z.ZodNativeEnum<
   typeof GetOrderStatus
 > = z.nativeEnum(GetOrderStatus);
-
 /** @internal */
 export const GetOrderStatus$outboundSchema: z.ZodNativeEnum<
   typeof GetOrderStatus
 > = GetOrderStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrderStatus$ {
-  /** @deprecated use `GetOrderStatus$inboundSchema` instead. */
-  export const inboundSchema = GetOrderStatus$inboundSchema;
-  /** @deprecated use `GetOrderStatus$outboundSchema` instead. */
-  export const outboundSchema = GetOrderStatus$outboundSchema;
-}
 
 /** @internal */
 export const Error2$inboundSchema: z.ZodType<Error2, z.ZodTypeDef, unknown> = z
@@ -2520,7 +1880,6 @@ export const Error2$inboundSchema: z.ZodType<Error2, z.ZodTypeDef, unknown> = z
     code: z.string(),
     details: z.any().optional(),
   });
-
 /** @internal */
 export type Error2$Outbound = {
   code: string;
@@ -2537,23 +1896,9 @@ export const Error2$outboundSchema: z.ZodType<
   details: z.any().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Error2$ {
-  /** @deprecated use `Error2$inboundSchema` instead. */
-  export const inboundSchema = Error2$inboundSchema;
-  /** @deprecated use `Error2$outboundSchema` instead. */
-  export const outboundSchema = Error2$outboundSchema;
-  /** @deprecated use `Error2$Outbound` instead. */
-  export type Outbound = Error2$Outbound;
-}
-
 export function error2ToJSON(error2: Error2): string {
   return JSON.stringify(Error2$outboundSchema.parse(error2));
 }
-
 export function error2FromJSON(
   jsonString: string,
 ): SafeParseResult<Error2, SDKValidationError> {
@@ -2569,31 +1914,16 @@ export const GetOrder1DomainsRegistrarResponseCode$inboundSchema:
   z.ZodNativeEnum<typeof GetOrder1DomainsRegistrarResponseCode> = z.nativeEnum(
     GetOrder1DomainsRegistrarResponseCode,
   );
-
 /** @internal */
 export const GetOrder1DomainsRegistrarResponseCode$outboundSchema:
   z.ZodNativeEnum<typeof GetOrder1DomainsRegistrarResponseCode> =
     GetOrder1DomainsRegistrarResponseCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrder1DomainsRegistrarResponseCode$ {
-  /** @deprecated use `GetOrder1DomainsRegistrarResponseCode$inboundSchema` instead. */
-  export const inboundSchema =
-    GetOrder1DomainsRegistrarResponseCode$inboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrarResponseCode$outboundSchema` instead. */
-  export const outboundSchema =
-    GetOrder1DomainsRegistrarResponseCode$outboundSchema;
-}
 
 /** @internal */
 export const One4$inboundSchema: z.ZodType<One4, z.ZodTypeDef, unknown> = z
   .object({
     code: GetOrder1DomainsRegistrarResponseCode$inboundSchema,
   });
-
 /** @internal */
 export type One4$Outbound = {
   code: string;
@@ -2605,23 +1935,9 @@ export const One4$outboundSchema: z.ZodType<One4$Outbound, z.ZodTypeDef, One4> =
     code: GetOrder1DomainsRegistrarResponseCode$outboundSchema,
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace One4$ {
-  /** @deprecated use `One4$inboundSchema` instead. */
-  export const inboundSchema = One4$inboundSchema;
-  /** @deprecated use `One4$outboundSchema` instead. */
-  export const outboundSchema = One4$outboundSchema;
-  /** @deprecated use `One4$Outbound` instead. */
-  export type Outbound = One4$Outbound;
-}
-
 export function one4ToJSON(one4: One4): string {
   return JSON.stringify(One4$outboundSchema.parse(one4));
 }
-
 export function one4FromJSON(
   jsonString: string,
 ): SafeParseResult<One4, SDKValidationError> {
@@ -2636,22 +1952,10 @@ export function one4FromJSON(
 export const GetOrder1DomainsRegistrarCode$inboundSchema: z.ZodNativeEnum<
   typeof GetOrder1DomainsRegistrarCode
 > = z.nativeEnum(GetOrder1DomainsRegistrarCode);
-
 /** @internal */
 export const GetOrder1DomainsRegistrarCode$outboundSchema: z.ZodNativeEnum<
   typeof GetOrder1DomainsRegistrarCode
 > = GetOrder1DomainsRegistrarCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrder1DomainsRegistrarCode$ {
-  /** @deprecated use `GetOrder1DomainsRegistrarCode$inboundSchema` instead. */
-  export const inboundSchema = GetOrder1DomainsRegistrarCode$inboundSchema;
-  /** @deprecated use `GetOrder1DomainsRegistrarCode$outboundSchema` instead. */
-  export const outboundSchema = GetOrder1DomainsRegistrarCode$outboundSchema;
-}
 
 /** @internal */
 export const OneDetails$inboundSchema: z.ZodType<
@@ -2662,7 +1966,6 @@ export const OneDetails$inboundSchema: z.ZodType<
   expectedPrice: z.number(),
   actualPrice: z.number().optional(),
 });
-
 /** @internal */
 export type OneDetails$Outbound = {
   expectedPrice: number;
@@ -2679,23 +1982,9 @@ export const OneDetails$outboundSchema: z.ZodType<
   actualPrice: z.number().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OneDetails$ {
-  /** @deprecated use `OneDetails$inboundSchema` instead. */
-  export const inboundSchema = OneDetails$inboundSchema;
-  /** @deprecated use `OneDetails$outboundSchema` instead. */
-  export const outboundSchema = OneDetails$outboundSchema;
-  /** @deprecated use `OneDetails$Outbound` instead. */
-  export type Outbound = OneDetails$Outbound;
-}
-
 export function oneDetailsToJSON(oneDetails: OneDetails): string {
   return JSON.stringify(OneDetails$outboundSchema.parse(oneDetails));
 }
-
 export function oneDetailsFromJSON(
   jsonString: string,
 ): SafeParseResult<OneDetails, SDKValidationError> {
@@ -2715,7 +2004,6 @@ export const GetOrder13$inboundSchema: z.ZodType<
   code: GetOrder1DomainsRegistrarCode$inboundSchema,
   details: z.lazy(() => OneDetails$inboundSchema),
 });
-
 /** @internal */
 export type GetOrder13$Outbound = {
   code: string;
@@ -2732,23 +2020,9 @@ export const GetOrder13$outboundSchema: z.ZodType<
   details: z.lazy(() => OneDetails$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrder13$ {
-  /** @deprecated use `GetOrder13$inboundSchema` instead. */
-  export const inboundSchema = GetOrder13$inboundSchema;
-  /** @deprecated use `GetOrder13$outboundSchema` instead. */
-  export const outboundSchema = GetOrder13$outboundSchema;
-  /** @deprecated use `GetOrder13$Outbound` instead. */
-  export type Outbound = GetOrder13$Outbound;
-}
-
 export function getOrder13ToJSON(getOrder13: GetOrder13): string {
   return JSON.stringify(GetOrder13$outboundSchema.parse(getOrder13));
 }
-
 export function getOrder13FromJSON(
   jsonString: string,
 ): SafeParseResult<GetOrder13, SDKValidationError> {
@@ -2763,22 +2037,10 @@ export function getOrder13FromJSON(
 export const GetOrder1Code$inboundSchema: z.ZodNativeEnum<
   typeof GetOrder1Code
 > = z.nativeEnum(GetOrder1Code);
-
 /** @internal */
 export const GetOrder1Code$outboundSchema: z.ZodNativeEnum<
   typeof GetOrder1Code
 > = GetOrder1Code$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrder1Code$ {
-  /** @deprecated use `GetOrder1Code$inboundSchema` instead. */
-  export const inboundSchema = GetOrder1Code$inboundSchema;
-  /** @deprecated use `GetOrder1Code$outboundSchema` instead. */
-  export const outboundSchema = GetOrder1Code$outboundSchema;
-}
 
 /** @internal */
 export const Tlds$inboundSchema: z.ZodType<Tlds, z.ZodTypeDef, unknown> = z
@@ -2786,7 +2048,6 @@ export const Tlds$inboundSchema: z.ZodType<Tlds, z.ZodTypeDef, unknown> = z
     tldName: z.string(),
     endsAt: z.string(),
   });
-
 /** @internal */
 export type Tlds$Outbound = {
   tldName: string;
@@ -2800,23 +2061,9 @@ export const Tlds$outboundSchema: z.ZodType<Tlds$Outbound, z.ZodTypeDef, Tlds> =
     endsAt: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Tlds$ {
-  /** @deprecated use `Tlds$inboundSchema` instead. */
-  export const inboundSchema = Tlds$inboundSchema;
-  /** @deprecated use `Tlds$outboundSchema` instead. */
-  export const outboundSchema = Tlds$outboundSchema;
-  /** @deprecated use `Tlds$Outbound` instead. */
-  export type Outbound = Tlds$Outbound;
-}
-
 export function tldsToJSON(tlds: Tlds): string {
   return JSON.stringify(Tlds$outboundSchema.parse(tlds));
 }
-
 export function tldsFromJSON(
   jsonString: string,
 ): SafeParseResult<Tlds, SDKValidationError> {
@@ -2835,7 +2082,6 @@ export const GetOrder1Details$inboundSchema: z.ZodType<
 > = z.object({
   tlds: z.array(z.lazy(() => Tlds$inboundSchema)),
 });
-
 /** @internal */
 export type GetOrder1Details$Outbound = {
   tlds: Array<Tlds$Outbound>;
@@ -2850,19 +2096,6 @@ export const GetOrder1Details$outboundSchema: z.ZodType<
   tlds: z.array(z.lazy(() => Tlds$outboundSchema)),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrder1Details$ {
-  /** @deprecated use `GetOrder1Details$inboundSchema` instead. */
-  export const inboundSchema = GetOrder1Details$inboundSchema;
-  /** @deprecated use `GetOrder1Details$outboundSchema` instead. */
-  export const outboundSchema = GetOrder1Details$outboundSchema;
-  /** @deprecated use `GetOrder1Details$Outbound` instead. */
-  export type Outbound = GetOrder1Details$Outbound;
-}
-
 export function getOrder1DetailsToJSON(
   getOrder1Details: GetOrder1Details,
 ): string {
@@ -2870,7 +2103,6 @@ export function getOrder1DetailsToJSON(
     GetOrder1Details$outboundSchema.parse(getOrder1Details),
   );
 }
-
 export function getOrder1DetailsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetOrder1Details, SDKValidationError> {
@@ -2890,7 +2122,6 @@ export const GetOrder12$inboundSchema: z.ZodType<
   code: GetOrder1Code$inboundSchema,
   details: z.lazy(() => GetOrder1Details$inboundSchema),
 });
-
 /** @internal */
 export type GetOrder12$Outbound = {
   code: string;
@@ -2907,23 +2138,9 @@ export const GetOrder12$outboundSchema: z.ZodType<
   details: z.lazy(() => GetOrder1Details$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrder12$ {
-  /** @deprecated use `GetOrder12$inboundSchema` instead. */
-  export const inboundSchema = GetOrder12$inboundSchema;
-  /** @deprecated use `GetOrder12$outboundSchema` instead. */
-  export const outboundSchema = GetOrder12$outboundSchema;
-  /** @deprecated use `GetOrder12$Outbound` instead. */
-  export type Outbound = GetOrder12$Outbound;
-}
-
 export function getOrder12ToJSON(getOrder12: GetOrder12): string {
   return JSON.stringify(GetOrder12$outboundSchema.parse(getOrder12));
 }
-
 export function getOrder12FromJSON(
   jsonString: string,
 ): SafeParseResult<GetOrder12, SDKValidationError> {
@@ -2937,21 +2154,9 @@ export function getOrder12FromJSON(
 /** @internal */
 export const OneCode$inboundSchema: z.ZodNativeEnum<typeof OneCode> = z
   .nativeEnum(OneCode);
-
 /** @internal */
 export const OneCode$outboundSchema: z.ZodNativeEnum<typeof OneCode> =
   OneCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OneCode$ {
-  /** @deprecated use `OneCode$inboundSchema` instead. */
-  export const inboundSchema = OneCode$inboundSchema;
-  /** @deprecated use `OneCode$outboundSchema` instead. */
-  export const outboundSchema = OneCode$outboundSchema;
-}
 
 /** @internal */
 export const GetOrder11$inboundSchema: z.ZodType<
@@ -2961,7 +2166,6 @@ export const GetOrder11$inboundSchema: z.ZodType<
 > = z.object({
   code: OneCode$inboundSchema,
 });
-
 /** @internal */
 export type GetOrder11$Outbound = {
   code: string;
@@ -2976,23 +2180,9 @@ export const GetOrder11$outboundSchema: z.ZodType<
   code: OneCode$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrder11$ {
-  /** @deprecated use `GetOrder11$inboundSchema` instead. */
-  export const inboundSchema = GetOrder11$inboundSchema;
-  /** @deprecated use `GetOrder11$outboundSchema` instead. */
-  export const outboundSchema = GetOrder11$outboundSchema;
-  /** @deprecated use `GetOrder11$Outbound` instead. */
-  export type Outbound = GetOrder11$Outbound;
-}
-
 export function getOrder11ToJSON(getOrder11: GetOrder11): string {
   return JSON.stringify(GetOrder11$outboundSchema.parse(getOrder11));
 }
-
 export function getOrder11FromJSON(
   jsonString: string,
 ): SafeParseResult<GetOrder11, SDKValidationError> {
@@ -3011,7 +2201,6 @@ export const Error1$inboundSchema: z.ZodType<Error1, z.ZodTypeDef, unknown> = z
     z.lazy(() => GetOrder11$inboundSchema),
     z.lazy(() => One4$inboundSchema),
   ]);
-
 /** @internal */
 export type Error1$Outbound =
   | GetOrder12$Outbound
@@ -3031,23 +2220,9 @@ export const Error1$outboundSchema: z.ZodType<
   z.lazy(() => One4$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Error1$ {
-  /** @deprecated use `Error1$inboundSchema` instead. */
-  export const inboundSchema = Error1$inboundSchema;
-  /** @deprecated use `Error1$outboundSchema` instead. */
-  export const outboundSchema = Error1$outboundSchema;
-  /** @deprecated use `Error1$Outbound` instead. */
-  export type Outbound = Error1$Outbound;
-}
-
 export function error1ToJSON(error1: Error1): string {
   return JSON.stringify(Error1$outboundSchema.parse(error1));
 }
-
 export function error1FromJSON(
   jsonString: string,
 ): SafeParseResult<Error1, SDKValidationError> {
@@ -3069,7 +2244,6 @@ export const ErrorT$inboundSchema: z.ZodType<ErrorT, z.ZodTypeDef, unknown> = z
       z.lazy(() => One4$inboundSchema),
     ]),
   ]);
-
 /** @internal */
 export type ErrorT$Outbound =
   | Error2$Outbound
@@ -3093,23 +2267,9 @@ export const ErrorT$outboundSchema: z.ZodType<
   ]),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ErrorT$ {
-  /** @deprecated use `ErrorT$inboundSchema` instead. */
-  export const inboundSchema = ErrorT$inboundSchema;
-  /** @deprecated use `ErrorT$outboundSchema` instead. */
-  export const outboundSchema = ErrorT$outboundSchema;
-  /** @deprecated use `ErrorT$Outbound` instead. */
-  export type Outbound = ErrorT$Outbound;
-}
-
 export function errorToJSON(errorT: ErrorT): string {
   return JSON.stringify(ErrorT$outboundSchema.parse(errorT));
 }
-
 export function errorFromJSON(
   jsonString: string,
 ): SafeParseResult<ErrorT, SDKValidationError> {
@@ -3145,7 +2305,6 @@ export const GetOrderResponseBody$inboundSchema: z.ZodType<
     ]),
   ]).optional(),
 });
-
 /** @internal */
 export type GetOrderResponseBody$Outbound = {
   orderId: string;
@@ -3186,19 +2345,6 @@ export const GetOrderResponseBody$outboundSchema: z.ZodType<
   ]).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetOrderResponseBody$ {
-  /** @deprecated use `GetOrderResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetOrderResponseBody$inboundSchema;
-  /** @deprecated use `GetOrderResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetOrderResponseBody$outboundSchema;
-  /** @deprecated use `GetOrderResponseBody$Outbound` instead. */
-  export type Outbound = GetOrderResponseBody$Outbound;
-}
-
 export function getOrderResponseBodyToJSON(
   getOrderResponseBody: GetOrderResponseBody,
 ): string {
@@ -3206,7 +2352,6 @@ export function getOrderResponseBodyToJSON(
     GetOrderResponseBody$outboundSchema.parse(getOrderResponseBody),
   );
 }
-
 export function getOrderResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetOrderResponseBody, SDKValidationError> {

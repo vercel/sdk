@@ -264,22 +264,10 @@ export type UpdateSharedEnvVariableResponseBody = {
 export const UpdateSharedEnvVariableTarget$inboundSchema: z.ZodNativeEnum<
   typeof UpdateSharedEnvVariableTarget
 > = z.nativeEnum(UpdateSharedEnvVariableTarget);
-
 /** @internal */
 export const UpdateSharedEnvVariableTarget$outboundSchema: z.ZodNativeEnum<
   typeof UpdateSharedEnvVariableTarget
 > = UpdateSharedEnvVariableTarget$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateSharedEnvVariableTarget$ {
-  /** @deprecated use `UpdateSharedEnvVariableTarget$inboundSchema` instead. */
-  export const inboundSchema = UpdateSharedEnvVariableTarget$inboundSchema;
-  /** @deprecated use `UpdateSharedEnvVariableTarget$outboundSchema` instead. */
-  export const outboundSchema = UpdateSharedEnvVariableTarget$outboundSchema;
-}
 
 /** @internal */
 export const ProjectIdUpdates$inboundSchema: z.ZodType<
@@ -290,7 +278,6 @@ export const ProjectIdUpdates$inboundSchema: z.ZodType<
   link: z.array(z.string()).optional(),
   unlink: z.array(z.string()).optional(),
 });
-
 /** @internal */
 export type ProjectIdUpdates$Outbound = {
   link?: Array<string> | undefined;
@@ -307,19 +294,6 @@ export const ProjectIdUpdates$outboundSchema: z.ZodType<
   unlink: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ProjectIdUpdates$ {
-  /** @deprecated use `ProjectIdUpdates$inboundSchema` instead. */
-  export const inboundSchema = ProjectIdUpdates$inboundSchema;
-  /** @deprecated use `ProjectIdUpdates$outboundSchema` instead. */
-  export const outboundSchema = ProjectIdUpdates$outboundSchema;
-  /** @deprecated use `ProjectIdUpdates$Outbound` instead. */
-  export type Outbound = ProjectIdUpdates$Outbound;
-}
-
 export function projectIdUpdatesToJSON(
   projectIdUpdates: ProjectIdUpdates,
 ): string {
@@ -327,7 +301,6 @@ export function projectIdUpdatesToJSON(
     ProjectIdUpdates$outboundSchema.parse(projectIdUpdates),
   );
 }
-
 export function projectIdUpdatesFromJSON(
   jsonString: string,
 ): SafeParseResult<ProjectIdUpdates, SDKValidationError> {
@@ -342,22 +315,10 @@ export function projectIdUpdatesFromJSON(
 export const UpdateSharedEnvVariableType$inboundSchema: z.ZodNativeEnum<
   typeof UpdateSharedEnvVariableType
 > = z.nativeEnum(UpdateSharedEnvVariableType);
-
 /** @internal */
 export const UpdateSharedEnvVariableType$outboundSchema: z.ZodNativeEnum<
   typeof UpdateSharedEnvVariableType
 > = UpdateSharedEnvVariableType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateSharedEnvVariableType$ {
-  /** @deprecated use `UpdateSharedEnvVariableType$inboundSchema` instead. */
-  export const inboundSchema = UpdateSharedEnvVariableType$inboundSchema;
-  /** @deprecated use `UpdateSharedEnvVariableType$outboundSchema` instead. */
-  export const outboundSchema = UpdateSharedEnvVariableType$outboundSchema;
-}
 
 /** @internal */
 export const Updates$inboundSchema: z.ZodType<Updates, z.ZodTypeDef, unknown> =
@@ -370,7 +331,6 @@ export const Updates$inboundSchema: z.ZodType<Updates, z.ZodTypeDef, unknown> =
     type: UpdateSharedEnvVariableType$inboundSchema.optional(),
     comment: z.string().optional(),
   });
-
 /** @internal */
 export type Updates$Outbound = {
   key?: string | undefined;
@@ -397,23 +357,9 @@ export const Updates$outboundSchema: z.ZodType<
   comment: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Updates$ {
-  /** @deprecated use `Updates$inboundSchema` instead. */
-  export const inboundSchema = Updates$inboundSchema;
-  /** @deprecated use `Updates$outboundSchema` instead. */
-  export const outboundSchema = Updates$outboundSchema;
-  /** @deprecated use `Updates$Outbound` instead. */
-  export type Outbound = Updates$Outbound;
-}
-
 export function updatesToJSON(updates: Updates): string {
   return JSON.stringify(Updates$outboundSchema.parse(updates));
 }
-
 export function updatesFromJSON(
   jsonString: string,
 ): SafeParseResult<Updates, SDKValidationError> {
@@ -432,7 +378,6 @@ export const UpdateSharedEnvVariableRequestBody$inboundSchema: z.ZodType<
 > = z.object({
   updates: z.record(z.lazy(() => Updates$inboundSchema)),
 });
-
 /** @internal */
 export type UpdateSharedEnvVariableRequestBody$Outbound = {
   updates: { [k: string]: Updates$Outbound };
@@ -447,20 +392,6 @@ export const UpdateSharedEnvVariableRequestBody$outboundSchema: z.ZodType<
   updates: z.record(z.lazy(() => Updates$outboundSchema)),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateSharedEnvVariableRequestBody$ {
-  /** @deprecated use `UpdateSharedEnvVariableRequestBody$inboundSchema` instead. */
-  export const inboundSchema = UpdateSharedEnvVariableRequestBody$inboundSchema;
-  /** @deprecated use `UpdateSharedEnvVariableRequestBody$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateSharedEnvVariableRequestBody$outboundSchema;
-  /** @deprecated use `UpdateSharedEnvVariableRequestBody$Outbound` instead. */
-  export type Outbound = UpdateSharedEnvVariableRequestBody$Outbound;
-}
-
 export function updateSharedEnvVariableRequestBodyToJSON(
   updateSharedEnvVariableRequestBody: UpdateSharedEnvVariableRequestBody,
 ): string {
@@ -470,7 +401,6 @@ export function updateSharedEnvVariableRequestBodyToJSON(
     ),
   );
 }
-
 export function updateSharedEnvVariableRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateSharedEnvVariableRequestBody, SDKValidationError> {
@@ -497,7 +427,6 @@ export const UpdateSharedEnvVariableRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type UpdateSharedEnvVariableRequest$Outbound = {
   teamId?: string | undefined;
@@ -521,19 +450,6 @@ export const UpdateSharedEnvVariableRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateSharedEnvVariableRequest$ {
-  /** @deprecated use `UpdateSharedEnvVariableRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateSharedEnvVariableRequest$inboundSchema;
-  /** @deprecated use `UpdateSharedEnvVariableRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateSharedEnvVariableRequest$outboundSchema;
-  /** @deprecated use `UpdateSharedEnvVariableRequest$Outbound` instead. */
-  export type Outbound = UpdateSharedEnvVariableRequest$Outbound;
-}
-
 export function updateSharedEnvVariableRequestToJSON(
   updateSharedEnvVariableRequest: UpdateSharedEnvVariableRequest,
 ): string {
@@ -543,7 +459,6 @@ export function updateSharedEnvVariableRequestToJSON(
     ),
   );
 }
-
 export function updateSharedEnvVariableRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateSharedEnvVariableRequest, SDKValidationError> {
@@ -559,47 +474,19 @@ export const UpdateSharedEnvVariableEnvironmentType$inboundSchema:
   z.ZodNativeEnum<typeof UpdateSharedEnvVariableEnvironmentType> = z.nativeEnum(
     UpdateSharedEnvVariableEnvironmentType,
   );
-
 /** @internal */
 export const UpdateSharedEnvVariableEnvironmentType$outboundSchema:
   z.ZodNativeEnum<typeof UpdateSharedEnvVariableEnvironmentType> =
     UpdateSharedEnvVariableEnvironmentType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateSharedEnvVariableEnvironmentType$ {
-  /** @deprecated use `UpdateSharedEnvVariableEnvironmentType$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateSharedEnvVariableEnvironmentType$inboundSchema;
-  /** @deprecated use `UpdateSharedEnvVariableEnvironmentType$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateSharedEnvVariableEnvironmentType$outboundSchema;
-}
-
 /** @internal */
 export const UpdateSharedEnvVariableEnvironmentTarget$inboundSchema:
   z.ZodNativeEnum<typeof UpdateSharedEnvVariableEnvironmentTarget> = z
     .nativeEnum(UpdateSharedEnvVariableEnvironmentTarget);
-
 /** @internal */
 export const UpdateSharedEnvVariableEnvironmentTarget$outboundSchema:
   z.ZodNativeEnum<typeof UpdateSharedEnvVariableEnvironmentTarget> =
     UpdateSharedEnvVariableEnvironmentTarget$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateSharedEnvVariableEnvironmentTarget$ {
-  /** @deprecated use `UpdateSharedEnvVariableEnvironmentTarget$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateSharedEnvVariableEnvironmentTarget$inboundSchema;
-  /** @deprecated use `UpdateSharedEnvVariableEnvironmentTarget$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateSharedEnvVariableEnvironmentTarget$outboundSchema;
-}
 
 /** @internal */
 export const Updated$inboundSchema: z.ZodType<Updated, z.ZodTypeDef, unknown> =
@@ -625,7 +512,6 @@ export const Updated$inboundSchema: z.ZodType<Updated, z.ZodTypeDef, unknown> =
     comment: z.string().optional(),
     lastEditedByDisplayName: z.string().optional(),
   });
-
 /** @internal */
 export type Updated$Outbound = {
   created?: string | undefined;
@@ -675,23 +561,9 @@ export const Updated$outboundSchema: z.ZodType<
   lastEditedByDisplayName: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Updated$ {
-  /** @deprecated use `Updated$inboundSchema` instead. */
-  export const inboundSchema = Updated$inboundSchema;
-  /** @deprecated use `Updated$outboundSchema` instead. */
-  export const outboundSchema = Updated$outboundSchema;
-  /** @deprecated use `Updated$Outbound` instead. */
-  export type Outbound = Updated$Outbound;
-}
-
 export function updatedToJSON(updated: Updated): string {
   return JSON.stringify(Updated$outboundSchema.parse(updated));
 }
-
 export function updatedFromJSON(
   jsonString: string,
 ): SafeParseResult<Updated, SDKValidationError> {
@@ -706,22 +578,10 @@ export function updatedFromJSON(
 export const UpdateSharedEnvVariableValue2$inboundSchema: z.ZodNativeEnum<
   typeof UpdateSharedEnvVariableValue2
 > = z.nativeEnum(UpdateSharedEnvVariableValue2);
-
 /** @internal */
 export const UpdateSharedEnvVariableValue2$outboundSchema: z.ZodNativeEnum<
   typeof UpdateSharedEnvVariableValue2
 > = UpdateSharedEnvVariableValue2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateSharedEnvVariableValue2$ {
-  /** @deprecated use `UpdateSharedEnvVariableValue2$inboundSchema` instead. */
-  export const inboundSchema = UpdateSharedEnvVariableValue2$inboundSchema;
-  /** @deprecated use `UpdateSharedEnvVariableValue2$outboundSchema` instead. */
-  export const outboundSchema = UpdateSharedEnvVariableValue2$outboundSchema;
-}
 
 /** @internal */
 export const UpdateSharedEnvVariableValue$inboundSchema: z.ZodType<
@@ -729,7 +589,6 @@ export const UpdateSharedEnvVariableValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.string(), z.array(UpdateSharedEnvVariableValue2$inboundSchema)]);
-
 /** @internal */
 export type UpdateSharedEnvVariableValue$Outbound = string | Array<string>;
 
@@ -743,19 +602,6 @@ export const UpdateSharedEnvVariableValue$outboundSchema: z.ZodType<
   z.array(UpdateSharedEnvVariableValue2$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateSharedEnvVariableValue$ {
-  /** @deprecated use `UpdateSharedEnvVariableValue$inboundSchema` instead. */
-  export const inboundSchema = UpdateSharedEnvVariableValue$inboundSchema;
-  /** @deprecated use `UpdateSharedEnvVariableValue$outboundSchema` instead. */
-  export const outboundSchema = UpdateSharedEnvVariableValue$outboundSchema;
-  /** @deprecated use `UpdateSharedEnvVariableValue$Outbound` instead. */
-  export type Outbound = UpdateSharedEnvVariableValue$Outbound;
-}
-
 export function updateSharedEnvVariableValueToJSON(
   updateSharedEnvVariableValue: UpdateSharedEnvVariableValue,
 ): string {
@@ -765,7 +611,6 @@ export function updateSharedEnvVariableValueToJSON(
     ),
   );
 }
-
 export function updateSharedEnvVariableValueFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateSharedEnvVariableValue, SDKValidationError> {
@@ -780,43 +625,19 @@ export function updateSharedEnvVariableValueFromJSON(
 export const UpdateSharedEnvVariableTarget2$inboundSchema: z.ZodNativeEnum<
   typeof UpdateSharedEnvVariableTarget2
 > = z.nativeEnum(UpdateSharedEnvVariableTarget2);
-
 /** @internal */
 export const UpdateSharedEnvVariableTarget2$outboundSchema: z.ZodNativeEnum<
   typeof UpdateSharedEnvVariableTarget2
 > = UpdateSharedEnvVariableTarget2$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateSharedEnvVariableTarget2$ {
-  /** @deprecated use `UpdateSharedEnvVariableTarget2$inboundSchema` instead. */
-  export const inboundSchema = UpdateSharedEnvVariableTarget2$inboundSchema;
-  /** @deprecated use `UpdateSharedEnvVariableTarget2$outboundSchema` instead. */
-  export const outboundSchema = UpdateSharedEnvVariableTarget2$outboundSchema;
-}
-
 /** @internal */
 export const UpdateSharedEnvVariableTarget1$inboundSchema: z.ZodNativeEnum<
   typeof UpdateSharedEnvVariableTarget1
 > = z.nativeEnum(UpdateSharedEnvVariableTarget1);
-
 /** @internal */
 export const UpdateSharedEnvVariableTarget1$outboundSchema: z.ZodNativeEnum<
   typeof UpdateSharedEnvVariableTarget1
 > = UpdateSharedEnvVariableTarget1$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateSharedEnvVariableTarget1$ {
-  /** @deprecated use `UpdateSharedEnvVariableTarget1$inboundSchema` instead. */
-  export const inboundSchema = UpdateSharedEnvVariableTarget1$inboundSchema;
-  /** @deprecated use `UpdateSharedEnvVariableTarget1$outboundSchema` instead. */
-  export const outboundSchema = UpdateSharedEnvVariableTarget1$outboundSchema;
-}
 
 /** @internal */
 export const UpdateSharedEnvVariableEnvironmentResponseTarget$inboundSchema:
@@ -828,7 +649,6 @@ export const UpdateSharedEnvVariableEnvironmentResponseTarget$inboundSchema:
     z.array(UpdateSharedEnvVariableTarget1$inboundSchema),
     UpdateSharedEnvVariableTarget2$inboundSchema,
   ]);
-
 /** @internal */
 export type UpdateSharedEnvVariableEnvironmentResponseTarget$Outbound =
   | Array<string>
@@ -845,22 +665,6 @@ export const UpdateSharedEnvVariableEnvironmentResponseTarget$outboundSchema:
     UpdateSharedEnvVariableTarget2$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateSharedEnvVariableEnvironmentResponseTarget$ {
-  /** @deprecated use `UpdateSharedEnvVariableEnvironmentResponseTarget$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateSharedEnvVariableEnvironmentResponseTarget$inboundSchema;
-  /** @deprecated use `UpdateSharedEnvVariableEnvironmentResponseTarget$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateSharedEnvVariableEnvironmentResponseTarget$outboundSchema;
-  /** @deprecated use `UpdateSharedEnvVariableEnvironmentResponseTarget$Outbound` instead. */
-  export type Outbound =
-    UpdateSharedEnvVariableEnvironmentResponseTarget$Outbound;
-}
-
 export function updateSharedEnvVariableEnvironmentResponseTargetToJSON(
   updateSharedEnvVariableEnvironmentResponseTarget:
     UpdateSharedEnvVariableEnvironmentResponseTarget,
@@ -871,7 +675,6 @@ export function updateSharedEnvVariableEnvironmentResponseTargetToJSON(
     ),
   );
 }
-
 export function updateSharedEnvVariableEnvironmentResponseTargetFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -912,7 +715,6 @@ export const UpdateSharedEnvVariableError$inboundSchema: z.ZodType<
   ]).optional(),
   project: z.string().optional(),
 });
-
 /** @internal */
 export type UpdateSharedEnvVariableError$Outbound = {
   code: string;
@@ -953,19 +755,6 @@ export const UpdateSharedEnvVariableError$outboundSchema: z.ZodType<
   project: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateSharedEnvVariableError$ {
-  /** @deprecated use `UpdateSharedEnvVariableError$inboundSchema` instead. */
-  export const inboundSchema = UpdateSharedEnvVariableError$inboundSchema;
-  /** @deprecated use `UpdateSharedEnvVariableError$outboundSchema` instead. */
-  export const outboundSchema = UpdateSharedEnvVariableError$outboundSchema;
-  /** @deprecated use `UpdateSharedEnvVariableError$Outbound` instead. */
-  export type Outbound = UpdateSharedEnvVariableError$Outbound;
-}
-
 export function updateSharedEnvVariableErrorToJSON(
   updateSharedEnvVariableError: UpdateSharedEnvVariableError,
 ): string {
@@ -975,7 +764,6 @@ export function updateSharedEnvVariableErrorToJSON(
     ),
   );
 }
-
 export function updateSharedEnvVariableErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateSharedEnvVariableError, SDKValidationError> {
@@ -994,7 +782,6 @@ export const UpdateSharedEnvVariableFailed$inboundSchema: z.ZodType<
 > = z.object({
   error: z.lazy(() => UpdateSharedEnvVariableError$inboundSchema),
 });
-
 /** @internal */
 export type UpdateSharedEnvVariableFailed$Outbound = {
   error: UpdateSharedEnvVariableError$Outbound;
@@ -1009,19 +796,6 @@ export const UpdateSharedEnvVariableFailed$outboundSchema: z.ZodType<
   error: z.lazy(() => UpdateSharedEnvVariableError$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateSharedEnvVariableFailed$ {
-  /** @deprecated use `UpdateSharedEnvVariableFailed$inboundSchema` instead. */
-  export const inboundSchema = UpdateSharedEnvVariableFailed$inboundSchema;
-  /** @deprecated use `UpdateSharedEnvVariableFailed$outboundSchema` instead. */
-  export const outboundSchema = UpdateSharedEnvVariableFailed$outboundSchema;
-  /** @deprecated use `UpdateSharedEnvVariableFailed$Outbound` instead. */
-  export type Outbound = UpdateSharedEnvVariableFailed$Outbound;
-}
-
 export function updateSharedEnvVariableFailedToJSON(
   updateSharedEnvVariableFailed: UpdateSharedEnvVariableFailed,
 ): string {
@@ -1031,7 +805,6 @@ export function updateSharedEnvVariableFailedToJSON(
     ),
   );
 }
-
 export function updateSharedEnvVariableFailedFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateSharedEnvVariableFailed, SDKValidationError> {
@@ -1051,7 +824,6 @@ export const UpdateSharedEnvVariableResponseBody$inboundSchema: z.ZodType<
   updated: z.array(z.lazy(() => Updated$inboundSchema)),
   failed: z.array(z.lazy(() => UpdateSharedEnvVariableFailed$inboundSchema)),
 });
-
 /** @internal */
 export type UpdateSharedEnvVariableResponseBody$Outbound = {
   updated: Array<Updated$Outbound>;
@@ -1068,21 +840,6 @@ export const UpdateSharedEnvVariableResponseBody$outboundSchema: z.ZodType<
   failed: z.array(z.lazy(() => UpdateSharedEnvVariableFailed$outboundSchema)),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateSharedEnvVariableResponseBody$ {
-  /** @deprecated use `UpdateSharedEnvVariableResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateSharedEnvVariableResponseBody$inboundSchema;
-  /** @deprecated use `UpdateSharedEnvVariableResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateSharedEnvVariableResponseBody$outboundSchema;
-  /** @deprecated use `UpdateSharedEnvVariableResponseBody$Outbound` instead. */
-  export type Outbound = UpdateSharedEnvVariableResponseBody$Outbound;
-}
-
 export function updateSharedEnvVariableResponseBodyToJSON(
   updateSharedEnvVariableResponseBody: UpdateSharedEnvVariableResponseBody,
 ): string {
@@ -1092,7 +849,6 @@ export function updateSharedEnvVariableResponseBodyToJSON(
     ),
   );
 }
-
 export function updateSharedEnvVariableResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateSharedEnvVariableResponseBody, SDKValidationError> {

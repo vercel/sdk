@@ -190,8 +190,8 @@ func (o *BuyDomainsRequestBody) GetContactInformation() BuyDomainsContactInforma
 }
 
 type BuyDomainsRequest struct {
-	TeamID      *string               `queryParam:"style=form,explode=true,name=teamId"`
-	RequestBody BuyDomainsRequestBody `request:"mediaType=application/json"`
+	TeamID *string               `queryParam:"style=form,explode=true,name=teamId"`
+	Body   BuyDomainsRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *BuyDomainsRequest) GetTeamID() *string {
@@ -201,11 +201,11 @@ func (o *BuyDomainsRequest) GetTeamID() *string {
 	return o.TeamID
 }
 
-func (o *BuyDomainsRequest) GetRequestBody() BuyDomainsRequestBody {
+func (o *BuyDomainsRequest) GetBody() BuyDomainsRequestBody {
 	if o == nil {
 		return BuyDomainsRequestBody{}
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type BuyDomainsMethod string

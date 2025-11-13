@@ -19,7 +19,6 @@ export const GetSupportedTldsRequest$inboundSchema: z.ZodType<
 > = z.object({
   teamId: z.string().optional(),
 });
-
 /** @internal */
 export type GetSupportedTldsRequest$Outbound = {
   teamId?: string | undefined;
@@ -34,19 +33,6 @@ export const GetSupportedTldsRequest$outboundSchema: z.ZodType<
   teamId: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetSupportedTldsRequest$ {
-  /** @deprecated use `GetSupportedTldsRequest$inboundSchema` instead. */
-  export const inboundSchema = GetSupportedTldsRequest$inboundSchema;
-  /** @deprecated use `GetSupportedTldsRequest$outboundSchema` instead. */
-  export const outboundSchema = GetSupportedTldsRequest$outboundSchema;
-  /** @deprecated use `GetSupportedTldsRequest$Outbound` instead. */
-  export type Outbound = GetSupportedTldsRequest$Outbound;
-}
-
 export function getSupportedTldsRequestToJSON(
   getSupportedTldsRequest: GetSupportedTldsRequest,
 ): string {
@@ -54,7 +40,6 @@ export function getSupportedTldsRequestToJSON(
     GetSupportedTldsRequest$outboundSchema.parse(getSupportedTldsRequest),
   );
 }
-
 export function getSupportedTldsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetSupportedTldsRequest, SDKValidationError> {

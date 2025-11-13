@@ -5,11 +5,11 @@
 ```typescript
 import { GetDrainDeliveryDrainsResponse200Type } from "@vercel/sdk/models/getdrainop.js";
 
-let value: GetDrainDeliveryDrainsResponse200Type = "clickhouse";
+let value: GetDrainDeliveryDrainsResponse200Type = "internal";
 ```
 
 ## Values
 
 ```typescript
-"clickhouse"
+"internal"
 ```

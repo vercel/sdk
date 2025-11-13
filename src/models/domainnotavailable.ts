@@ -48,22 +48,10 @@ export class DomainNotAvailable extends VercelError {
 export const DomainNotAvailableCode$inboundSchema: z.ZodNativeEnum<
   typeof DomainNotAvailableCode
 > = z.nativeEnum(DomainNotAvailableCode);
-
 /** @internal */
 export const DomainNotAvailableCode$outboundSchema: z.ZodNativeEnum<
   typeof DomainNotAvailableCode
 > = DomainNotAvailableCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DomainNotAvailableCode$ {
-  /** @deprecated use `DomainNotAvailableCode$inboundSchema` instead. */
-  export const inboundSchema = DomainNotAvailableCode$inboundSchema;
-  /** @deprecated use `DomainNotAvailableCode$outboundSchema` instead. */
-  export const outboundSchema = DomainNotAvailableCode$outboundSchema;
-}
 
 /** @internal */
 export const DomainNotAvailable$inboundSchema: z.ZodType<
@@ -105,16 +93,3 @@ export const DomainNotAvailable$outboundSchema: z.ZodType<
     code: DomainNotAvailableCode$outboundSchema,
     message: z.string(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DomainNotAvailable$ {
-  /** @deprecated use `DomainNotAvailable$inboundSchema` instead. */
-  export const inboundSchema = DomainNotAvailable$inboundSchema;
-  /** @deprecated use `DomainNotAvailable$outboundSchema` instead. */
-  export const outboundSchema = DomainNotAvailable$outboundSchema;
-  /** @deprecated use `DomainNotAvailable$Outbound` instead. */
-  export type Outbound = DomainNotAvailable$Outbound;
-}

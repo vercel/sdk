@@ -50,7 +50,6 @@ export const ReadAccessGroupProjectRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type ReadAccessGroupProjectRequest$Outbound = {
   accessGroupIdOrName: string;
@@ -71,19 +70,6 @@ export const ReadAccessGroupProjectRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ReadAccessGroupProjectRequest$ {
-  /** @deprecated use `ReadAccessGroupProjectRequest$inboundSchema` instead. */
-  export const inboundSchema = ReadAccessGroupProjectRequest$inboundSchema;
-  /** @deprecated use `ReadAccessGroupProjectRequest$outboundSchema` instead. */
-  export const outboundSchema = ReadAccessGroupProjectRequest$outboundSchema;
-  /** @deprecated use `ReadAccessGroupProjectRequest$Outbound` instead. */
-  export type Outbound = ReadAccessGroupProjectRequest$Outbound;
-}
-
 export function readAccessGroupProjectRequestToJSON(
   readAccessGroupProjectRequest: ReadAccessGroupProjectRequest,
 ): string {
@@ -93,7 +79,6 @@ export function readAccessGroupProjectRequestToJSON(
     ),
   );
 }
-
 export function readAccessGroupProjectRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ReadAccessGroupProjectRequest, SDKValidationError> {
@@ -108,22 +93,10 @@ export function readAccessGroupProjectRequestFromJSON(
 export const ReadAccessGroupProjectRole$inboundSchema: z.ZodNativeEnum<
   typeof ReadAccessGroupProjectRole
 > = z.nativeEnum(ReadAccessGroupProjectRole);
-
 /** @internal */
 export const ReadAccessGroupProjectRole$outboundSchema: z.ZodNativeEnum<
   typeof ReadAccessGroupProjectRole
 > = ReadAccessGroupProjectRole$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ReadAccessGroupProjectRole$ {
-  /** @deprecated use `ReadAccessGroupProjectRole$inboundSchema` instead. */
-  export const inboundSchema = ReadAccessGroupProjectRole$inboundSchema;
-  /** @deprecated use `ReadAccessGroupProjectRole$outboundSchema` instead. */
-  export const outboundSchema = ReadAccessGroupProjectRole$outboundSchema;
-}
 
 /** @internal */
 export const ReadAccessGroupProjectResponseBody$inboundSchema: z.ZodType<
@@ -138,7 +111,6 @@ export const ReadAccessGroupProjectResponseBody$inboundSchema: z.ZodType<
   createdAt: z.string(),
   updatedAt: z.string(),
 });
-
 /** @internal */
 export type ReadAccessGroupProjectResponseBody$Outbound = {
   teamId: string;
@@ -163,20 +135,6 @@ export const ReadAccessGroupProjectResponseBody$outboundSchema: z.ZodType<
   updatedAt: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ReadAccessGroupProjectResponseBody$ {
-  /** @deprecated use `ReadAccessGroupProjectResponseBody$inboundSchema` instead. */
-  export const inboundSchema = ReadAccessGroupProjectResponseBody$inboundSchema;
-  /** @deprecated use `ReadAccessGroupProjectResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    ReadAccessGroupProjectResponseBody$outboundSchema;
-  /** @deprecated use `ReadAccessGroupProjectResponseBody$Outbound` instead. */
-  export type Outbound = ReadAccessGroupProjectResponseBody$Outbound;
-}
-
 export function readAccessGroupProjectResponseBodyToJSON(
   readAccessGroupProjectResponseBody: ReadAccessGroupProjectResponseBody,
 ): string {
@@ -186,7 +144,6 @@ export function readAccessGroupProjectResponseBodyToJSON(
     ),
   );
 }
-
 export function readAccessGroupProjectResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ReadAccessGroupProjectResponseBody, SDKValidationError> {

@@ -169,7 +169,6 @@ export const GetProjectMembersRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type GetProjectMembersRequest$Outbound = {
   idOrName: string;
@@ -196,19 +195,6 @@ export const GetProjectMembersRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectMembersRequest$ {
-  /** @deprecated use `GetProjectMembersRequest$inboundSchema` instead. */
-  export const inboundSchema = GetProjectMembersRequest$inboundSchema;
-  /** @deprecated use `GetProjectMembersRequest$outboundSchema` instead. */
-  export const outboundSchema = GetProjectMembersRequest$outboundSchema;
-  /** @deprecated use `GetProjectMembersRequest$Outbound` instead. */
-  export type Outbound = GetProjectMembersRequest$Outbound;
-}
-
 export function getProjectMembersRequestToJSON(
   getProjectMembersRequest: GetProjectMembersRequest,
 ): string {
@@ -216,7 +202,6 @@ export function getProjectMembersRequestToJSON(
     GetProjectMembersRequest$outboundSchema.parse(getProjectMembersRequest),
   );
 }
-
 export function getProjectMembersRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectMembersRequest, SDKValidationError> {
@@ -231,64 +216,28 @@ export function getProjectMembersRequestFromJSON(
 export const ResponseBodyRole$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyRole
 > = z.nativeEnum(ResponseBodyRole);
-
 /** @internal */
 export const ResponseBodyRole$outboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyRole
 > = ResponseBodyRole$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyRole$ {
-  /** @deprecated use `ResponseBodyRole$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyRole$inboundSchema;
-  /** @deprecated use `ResponseBodyRole$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyRole$outboundSchema;
-}
-
 /** @internal */
 export const ComputedProjectRole$inboundSchema: z.ZodNativeEnum<
   typeof ComputedProjectRole
 > = z.nativeEnum(ComputedProjectRole);
-
 /** @internal */
 export const ComputedProjectRole$outboundSchema: z.ZodNativeEnum<
   typeof ComputedProjectRole
 > = ComputedProjectRole$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ComputedProjectRole$ {
-  /** @deprecated use `ComputedProjectRole$inboundSchema` instead. */
-  export const inboundSchema = ComputedProjectRole$inboundSchema;
-  /** @deprecated use `ComputedProjectRole$outboundSchema` instead. */
-  export const outboundSchema = ComputedProjectRole$outboundSchema;
-}
-
 /** @internal */
 export const ResponseBodyTeamRole$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyTeamRole
 > = z.nativeEnum(ResponseBodyTeamRole);
-
 /** @internal */
 export const ResponseBodyTeamRole$outboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyTeamRole
 > = ResponseBodyTeamRole$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyTeamRole$ {
-  /** @deprecated use `ResponseBodyTeamRole$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyTeamRole$inboundSchema;
-  /** @deprecated use `ResponseBodyTeamRole$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyTeamRole$outboundSchema;
-}
 
 /** @internal */
 export const ResponseBodyMembers$inboundSchema: z.ZodType<
@@ -306,7 +255,6 @@ export const ResponseBodyMembers$inboundSchema: z.ZodType<
   createdAt: z.number(),
   teamRole: ResponseBodyTeamRole$inboundSchema,
 });
-
 /** @internal */
 export type ResponseBodyMembers$Outbound = {
   avatar?: string | undefined;
@@ -337,19 +285,6 @@ export const ResponseBodyMembers$outboundSchema: z.ZodType<
   teamRole: ResponseBodyTeamRole$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyMembers$ {
-  /** @deprecated use `ResponseBodyMembers$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyMembers$inboundSchema;
-  /** @deprecated use `ResponseBodyMembers$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyMembers$outboundSchema;
-  /** @deprecated use `ResponseBodyMembers$Outbound` instead. */
-  export type Outbound = ResponseBodyMembers$Outbound;
-}
-
 export function responseBodyMembersToJSON(
   responseBodyMembers: ResponseBodyMembers,
 ): string {
@@ -357,7 +292,6 @@ export function responseBodyMembersToJSON(
     ResponseBodyMembers$outboundSchema.parse(responseBodyMembers),
   );
 }
-
 export function responseBodyMembersFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyMembers, SDKValidationError> {
@@ -379,7 +313,6 @@ export const GetProjectMembersResponseBodyPagination$inboundSchema: z.ZodType<
   next: z.nullable(z.number()),
   prev: z.nullable(z.number()),
 });
-
 /** @internal */
 export type GetProjectMembersResponseBodyPagination$Outbound = {
   hasNext: boolean;
@@ -400,21 +333,6 @@ export const GetProjectMembersResponseBodyPagination$outboundSchema: z.ZodType<
   prev: z.nullable(z.number()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectMembersResponseBodyPagination$ {
-  /** @deprecated use `GetProjectMembersResponseBodyPagination$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectMembersResponseBodyPagination$inboundSchema;
-  /** @deprecated use `GetProjectMembersResponseBodyPagination$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectMembersResponseBodyPagination$outboundSchema;
-  /** @deprecated use `GetProjectMembersResponseBodyPagination$Outbound` instead. */
-  export type Outbound = GetProjectMembersResponseBodyPagination$Outbound;
-}
-
 export function getProjectMembersResponseBodyPaginationToJSON(
   getProjectMembersResponseBodyPagination:
     GetProjectMembersResponseBodyPagination,
@@ -425,7 +343,6 @@ export function getProjectMembersResponseBodyPaginationToJSON(
     ),
   );
 }
-
 export function getProjectMembersResponseBodyPaginationFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -453,7 +370,6 @@ export const GetProjectMembersResponseBody2$inboundSchema: z.ZodType<
     GetProjectMembersResponseBodyPagination$inboundSchema
   ),
 });
-
 /** @internal */
 export type GetProjectMembersResponseBody2$Outbound = {
   members: Array<ResponseBodyMembers$Outbound>;
@@ -472,19 +388,6 @@ export const GetProjectMembersResponseBody2$outboundSchema: z.ZodType<
   ),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectMembersResponseBody2$ {
-  /** @deprecated use `GetProjectMembersResponseBody2$inboundSchema` instead. */
-  export const inboundSchema = GetProjectMembersResponseBody2$inboundSchema;
-  /** @deprecated use `GetProjectMembersResponseBody2$outboundSchema` instead. */
-  export const outboundSchema = GetProjectMembersResponseBody2$outboundSchema;
-  /** @deprecated use `GetProjectMembersResponseBody2$Outbound` instead. */
-  export type Outbound = GetProjectMembersResponseBody2$Outbound;
-}
-
 export function getProjectMembersResponseBody2ToJSON(
   getProjectMembersResponseBody2: GetProjectMembersResponseBody2,
 ): string {
@@ -494,7 +397,6 @@ export function getProjectMembersResponseBody2ToJSON(
     ),
   );
 }
-
 export function getProjectMembersResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectMembersResponseBody2, SDKValidationError> {
@@ -511,7 +413,6 @@ export const GetProjectMembersResponseBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type GetProjectMembersResponseBody1$Outbound = {};
 
@@ -522,19 +423,6 @@ export const GetProjectMembersResponseBody1$outboundSchema: z.ZodType<
   GetProjectMembersResponseBody1
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectMembersResponseBody1$ {
-  /** @deprecated use `GetProjectMembersResponseBody1$inboundSchema` instead. */
-  export const inboundSchema = GetProjectMembersResponseBody1$inboundSchema;
-  /** @deprecated use `GetProjectMembersResponseBody1$outboundSchema` instead. */
-  export const outboundSchema = GetProjectMembersResponseBody1$outboundSchema;
-  /** @deprecated use `GetProjectMembersResponseBody1$Outbound` instead. */
-  export type Outbound = GetProjectMembersResponseBody1$Outbound;
-}
-
 export function getProjectMembersResponseBody1ToJSON(
   getProjectMembersResponseBody1: GetProjectMembersResponseBody1,
 ): string {
@@ -544,7 +432,6 @@ export function getProjectMembersResponseBody1ToJSON(
     ),
   );
 }
-
 export function getProjectMembersResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectMembersResponseBody1, SDKValidationError> {
@@ -564,7 +451,6 @@ export const GetProjectMembersResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => GetProjectMembersResponseBody2$inboundSchema),
   z.lazy(() => GetProjectMembersResponseBody1$inboundSchema),
 ]);
-
 /** @internal */
 export type GetProjectMembersResponseBody$Outbound =
   | GetProjectMembersResponseBody2$Outbound
@@ -580,19 +466,6 @@ export const GetProjectMembersResponseBody$outboundSchema: z.ZodType<
   z.lazy(() => GetProjectMembersResponseBody1$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectMembersResponseBody$ {
-  /** @deprecated use `GetProjectMembersResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetProjectMembersResponseBody$inboundSchema;
-  /** @deprecated use `GetProjectMembersResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetProjectMembersResponseBody$outboundSchema;
-  /** @deprecated use `GetProjectMembersResponseBody$Outbound` instead. */
-  export type Outbound = GetProjectMembersResponseBody$Outbound;
-}
-
 export function getProjectMembersResponseBodyToJSON(
   getProjectMembersResponseBody: GetProjectMembersResponseBody,
 ): string {
@@ -602,7 +475,6 @@ export function getProjectMembersResponseBodyToJSON(
     ),
   );
 }
-
 export function getProjectMembersResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectMembersResponseBody, SDKValidationError> {

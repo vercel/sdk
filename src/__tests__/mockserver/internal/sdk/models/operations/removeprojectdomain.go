@@ -26,8 +26,8 @@ type RemoveProjectDomainRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string                         `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody *RemoveProjectDomainRequestBody `request:"mediaType=application/json"`
+	Slug *string                         `queryParam:"style=form,explode=true,name=slug"`
+	Body *RemoveProjectDomainRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *RemoveProjectDomainRequest) GetIDOrName() string {
@@ -58,11 +58,11 @@ func (o *RemoveProjectDomainRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *RemoveProjectDomainRequest) GetRequestBody() *RemoveProjectDomainRequestBody {
+func (o *RemoveProjectDomainRequest) GetBody() *RemoveProjectDomainRequestBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 // RemoveProjectDomainResponseBody - The domain was succesfully removed from the project

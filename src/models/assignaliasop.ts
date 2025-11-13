@@ -66,7 +66,6 @@ export const AssignAliasRequestBody$inboundSchema: z.ZodType<
   alias: z.string().optional(),
   redirect: z.nullable(z.string()).optional(),
 });
-
 /** @internal */
 export type AssignAliasRequestBody$Outbound = {
   alias?: string | undefined;
@@ -83,19 +82,6 @@ export const AssignAliasRequestBody$outboundSchema: z.ZodType<
   redirect: z.nullable(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssignAliasRequestBody$ {
-  /** @deprecated use `AssignAliasRequestBody$inboundSchema` instead. */
-  export const inboundSchema = AssignAliasRequestBody$inboundSchema;
-  /** @deprecated use `AssignAliasRequestBody$outboundSchema` instead. */
-  export const outboundSchema = AssignAliasRequestBody$outboundSchema;
-  /** @deprecated use `AssignAliasRequestBody$Outbound` instead. */
-  export type Outbound = AssignAliasRequestBody$Outbound;
-}
-
 export function assignAliasRequestBodyToJSON(
   assignAliasRequestBody: AssignAliasRequestBody,
 ): string {
@@ -103,7 +89,6 @@ export function assignAliasRequestBodyToJSON(
     AssignAliasRequestBody$outboundSchema.parse(assignAliasRequestBody),
   );
 }
-
 export function assignAliasRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<AssignAliasRequestBody, SDKValidationError> {
@@ -129,7 +114,6 @@ export const AssignAliasRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type AssignAliasRequest$Outbound = {
   id: string;
@@ -154,19 +138,6 @@ export const AssignAliasRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssignAliasRequest$ {
-  /** @deprecated use `AssignAliasRequest$inboundSchema` instead. */
-  export const inboundSchema = AssignAliasRequest$inboundSchema;
-  /** @deprecated use `AssignAliasRequest$outboundSchema` instead. */
-  export const outboundSchema = AssignAliasRequest$outboundSchema;
-  /** @deprecated use `AssignAliasRequest$Outbound` instead. */
-  export type Outbound = AssignAliasRequest$Outbound;
-}
-
 export function assignAliasRequestToJSON(
   assignAliasRequest: AssignAliasRequest,
 ): string {
@@ -174,7 +145,6 @@ export function assignAliasRequestToJSON(
     AssignAliasRequest$outboundSchema.parse(assignAliasRequest),
   );
 }
-
 export function assignAliasRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<AssignAliasRequest, SDKValidationError> {
@@ -196,7 +166,6 @@ export const AssignAliasResponseBody$inboundSchema: z.ZodType<
   created: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   oldDeploymentId: z.nullable(z.string()).optional(),
 });
-
 /** @internal */
 export type AssignAliasResponseBody$Outbound = {
   uid: string;
@@ -217,19 +186,6 @@ export const AssignAliasResponseBody$outboundSchema: z.ZodType<
   oldDeploymentId: z.nullable(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssignAliasResponseBody$ {
-  /** @deprecated use `AssignAliasResponseBody$inboundSchema` instead. */
-  export const inboundSchema = AssignAliasResponseBody$inboundSchema;
-  /** @deprecated use `AssignAliasResponseBody$outboundSchema` instead. */
-  export const outboundSchema = AssignAliasResponseBody$outboundSchema;
-  /** @deprecated use `AssignAliasResponseBody$Outbound` instead. */
-  export type Outbound = AssignAliasResponseBody$Outbound;
-}
-
 export function assignAliasResponseBodyToJSON(
   assignAliasResponseBody: AssignAliasResponseBody,
 ): string {
@@ -237,7 +193,6 @@ export function assignAliasResponseBodyToJSON(
     AssignAliasResponseBody$outboundSchema.parse(assignAliasResponseBody),
   );
 }
-
 export function assignAliasResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<AssignAliasResponseBody, SDKValidationError> {

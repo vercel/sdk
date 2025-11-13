@@ -42,21 +42,9 @@ export class Unauthorized extends VercelError {
 export const Code$inboundSchema: z.ZodNativeEnum<typeof Code> = z.nativeEnum(
   Code,
 );
-
 /** @internal */
 export const Code$outboundSchema: z.ZodNativeEnum<typeof Code> =
   Code$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Code$ {
-  /** @deprecated use `Code$inboundSchema` instead. */
-  export const inboundSchema = Code$inboundSchema;
-  /** @deprecated use `Code$outboundSchema` instead. */
-  export const outboundSchema = Code$outboundSchema;
-}
 
 /** @internal */
 export const Unauthorized$inboundSchema: z.ZodType<
@@ -98,16 +86,3 @@ export const Unauthorized$outboundSchema: z.ZodType<
     code: Code$outboundSchema,
     message: z.string(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Unauthorized$ {
-  /** @deprecated use `Unauthorized$inboundSchema` instead. */
-  export const inboundSchema = Unauthorized$inboundSchema;
-  /** @deprecated use `Unauthorized$outboundSchema` instead. */
-  export const outboundSchema = Unauthorized$outboundSchema;
-  /** @deprecated use `Unauthorized$Outbound` instead. */
-  export type Outbound = Unauthorized$Outbound;
-}

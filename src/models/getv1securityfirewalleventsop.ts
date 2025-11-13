@@ -40,7 +40,6 @@ export const GetV1SecurityFirewallEventsRequest$inboundSchema: z.ZodType<
   endTimestamp: z.number().optional(),
   hosts: z.string().optional(),
 });
-
 /** @internal */
 export type GetV1SecurityFirewallEventsRequest$Outbound = {
   projectId: string;
@@ -61,20 +60,6 @@ export const GetV1SecurityFirewallEventsRequest$outboundSchema: z.ZodType<
   hosts: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetV1SecurityFirewallEventsRequest$ {
-  /** @deprecated use `GetV1SecurityFirewallEventsRequest$inboundSchema` instead. */
-  export const inboundSchema = GetV1SecurityFirewallEventsRequest$inboundSchema;
-  /** @deprecated use `GetV1SecurityFirewallEventsRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    GetV1SecurityFirewallEventsRequest$outboundSchema;
-  /** @deprecated use `GetV1SecurityFirewallEventsRequest$Outbound` instead. */
-  export type Outbound = GetV1SecurityFirewallEventsRequest$Outbound;
-}
-
 export function getV1SecurityFirewallEventsRequestToJSON(
   getV1SecurityFirewallEventsRequest: GetV1SecurityFirewallEventsRequest,
 ): string {
@@ -84,7 +69,6 @@ export function getV1SecurityFirewallEventsRequestToJSON(
     ),
   );
 }
-
 export function getV1SecurityFirewallEventsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetV1SecurityFirewallEventsRequest, SDKValidationError> {
@@ -112,7 +96,6 @@ export const Actions$inboundSchema: z.ZodType<Actions, z.ZodTypeDef, unknown> =
       "public_ip": "publicIp",
     });
   });
-
 /** @internal */
 export type Actions$Outbound = {
   startTime: string;
@@ -144,23 +127,9 @@ export const Actions$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Actions$ {
-  /** @deprecated use `Actions$inboundSchema` instead. */
-  export const inboundSchema = Actions$inboundSchema;
-  /** @deprecated use `Actions$outboundSchema` instead. */
-  export const outboundSchema = Actions$outboundSchema;
-  /** @deprecated use `Actions$Outbound` instead. */
-  export type Outbound = Actions$Outbound;
-}
-
 export function actionsToJSON(actions: Actions): string {
   return JSON.stringify(Actions$outboundSchema.parse(actions));
 }
-
 export function actionsFromJSON(
   jsonString: string,
 ): SafeParseResult<Actions, SDKValidationError> {
@@ -179,7 +148,6 @@ export const GetV1SecurityFirewallEventsResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   actions: z.array(z.lazy(() => Actions$inboundSchema)),
 });
-
 /** @internal */
 export type GetV1SecurityFirewallEventsResponseBody$Outbound = {
   actions: Array<Actions$Outbound>;
@@ -194,21 +162,6 @@ export const GetV1SecurityFirewallEventsResponseBody$outboundSchema: z.ZodType<
   actions: z.array(z.lazy(() => Actions$outboundSchema)),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetV1SecurityFirewallEventsResponseBody$ {
-  /** @deprecated use `GetV1SecurityFirewallEventsResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    GetV1SecurityFirewallEventsResponseBody$inboundSchema;
-  /** @deprecated use `GetV1SecurityFirewallEventsResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    GetV1SecurityFirewallEventsResponseBody$outboundSchema;
-  /** @deprecated use `GetV1SecurityFirewallEventsResponseBody$Outbound` instead. */
-  export type Outbound = GetV1SecurityFirewallEventsResponseBody$Outbound;
-}
-
 export function getV1SecurityFirewallEventsResponseBodyToJSON(
   getV1SecurityFirewallEventsResponseBody:
     GetV1SecurityFirewallEventsResponseBody,
@@ -219,7 +172,6 @@ export function getV1SecurityFirewallEventsResponseBodyToJSON(
     ),
   );
 }
-
 export function getV1SecurityFirewallEventsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<

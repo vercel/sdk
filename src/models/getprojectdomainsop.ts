@@ -222,100 +222,40 @@ export type GetProjectDomainsResponseBody =
 /** @internal */
 export const Production$inboundSchema: z.ZodNativeEnum<typeof Production> = z
   .nativeEnum(Production);
-
 /** @internal */
 export const Production$outboundSchema: z.ZodNativeEnum<typeof Production> =
   Production$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Production$ {
-  /** @deprecated use `Production$inboundSchema` instead. */
-  export const inboundSchema = Production$inboundSchema;
-  /** @deprecated use `Production$outboundSchema` instead. */
-  export const outboundSchema = Production$outboundSchema;
-}
 
 /** @internal */
 export const QueryParamTarget$inboundSchema: z.ZodNativeEnum<
   typeof QueryParamTarget
 > = z.nativeEnum(QueryParamTarget);
-
 /** @internal */
 export const QueryParamTarget$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamTarget
 > = QueryParamTarget$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace QueryParamTarget$ {
-  /** @deprecated use `QueryParamTarget$inboundSchema` instead. */
-  export const inboundSchema = QueryParamTarget$inboundSchema;
-  /** @deprecated use `QueryParamTarget$outboundSchema` instead. */
-  export const outboundSchema = QueryParamTarget$outboundSchema;
-}
-
 /** @internal */
 export const Redirects$inboundSchema: z.ZodNativeEnum<typeof Redirects> = z
   .nativeEnum(Redirects);
-
 /** @internal */
 export const Redirects$outboundSchema: z.ZodNativeEnum<typeof Redirects> =
   Redirects$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Redirects$ {
-  /** @deprecated use `Redirects$inboundSchema` instead. */
-  export const inboundSchema = Redirects$inboundSchema;
-  /** @deprecated use `Redirects$outboundSchema` instead. */
-  export const outboundSchema = Redirects$outboundSchema;
-}
-
 /** @internal */
 export const Verified$inboundSchema: z.ZodNativeEnum<typeof Verified> = z
   .nativeEnum(Verified);
-
 /** @internal */
 export const Verified$outboundSchema: z.ZodNativeEnum<typeof Verified> =
   Verified$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Verified$ {
-  /** @deprecated use `Verified$inboundSchema` instead. */
-  export const inboundSchema = Verified$inboundSchema;
-  /** @deprecated use `Verified$outboundSchema` instead. */
-  export const outboundSchema = Verified$outboundSchema;
-}
 
 /** @internal */
 export const Order$inboundSchema: z.ZodNativeEnum<typeof Order> = z.nativeEnum(
   Order,
 );
-
 /** @internal */
 export const Order$outboundSchema: z.ZodNativeEnum<typeof Order> =
   Order$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Order$ {
-  /** @deprecated use `Order$inboundSchema` instead. */
-  export const inboundSchema = Order$inboundSchema;
-  /** @deprecated use `Order$outboundSchema` instead. */
-  export const outboundSchema = Order$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectDomainsRequest$inboundSchema: z.ZodType<
@@ -338,7 +278,6 @@ export const GetProjectDomainsRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type GetProjectDomainsRequest$Outbound = {
   idOrName: string;
@@ -379,19 +318,6 @@ export const GetProjectDomainsRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectDomainsRequest$ {
-  /** @deprecated use `GetProjectDomainsRequest$inboundSchema` instead. */
-  export const inboundSchema = GetProjectDomainsRequest$inboundSchema;
-  /** @deprecated use `GetProjectDomainsRequest$outboundSchema` instead. */
-  export const outboundSchema = GetProjectDomainsRequest$outboundSchema;
-  /** @deprecated use `GetProjectDomainsRequest$Outbound` instead. */
-  export type Outbound = GetProjectDomainsRequest$Outbound;
-}
-
 export function getProjectDomainsRequestToJSON(
   getProjectDomainsRequest: GetProjectDomainsRequest,
 ): string {
@@ -399,7 +325,6 @@ export function getProjectDomainsRequestToJSON(
     GetProjectDomainsRequest$outboundSchema.parse(getProjectDomainsRequest),
   );
 }
-
 export function getProjectDomainsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectDomainsRequest, SDKValidationError> {
@@ -421,7 +346,6 @@ export const GetProjectDomainsResponseBodyVerification$inboundSchema: z.ZodType<
   value: z.string(),
   reason: z.string(),
 });
-
 /** @internal */
 export type GetProjectDomainsResponseBodyVerification$Outbound = {
   type: string;
@@ -443,21 +367,6 @@ export const GetProjectDomainsResponseBodyVerification$outboundSchema:
     reason: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectDomainsResponseBodyVerification$ {
-  /** @deprecated use `GetProjectDomainsResponseBodyVerification$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectDomainsResponseBodyVerification$inboundSchema;
-  /** @deprecated use `GetProjectDomainsResponseBodyVerification$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectDomainsResponseBodyVerification$outboundSchema;
-  /** @deprecated use `GetProjectDomainsResponseBodyVerification$Outbound` instead. */
-  export type Outbound = GetProjectDomainsResponseBodyVerification$Outbound;
-}
-
 export function getProjectDomainsResponseBodyVerificationToJSON(
   getProjectDomainsResponseBodyVerification:
     GetProjectDomainsResponseBodyVerification,
@@ -468,7 +377,6 @@ export function getProjectDomainsResponseBodyVerificationToJSON(
     ),
   );
 }
-
 export function getProjectDomainsResponseBodyVerificationFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -505,7 +413,6 @@ export const GetProjectDomainsResponseBodyDomains$inboundSchema: z.ZodType<
     z.lazy(() => GetProjectDomainsResponseBodyVerification$inboundSchema),
   ).optional(),
 });
-
 /** @internal */
 export type GetProjectDomainsResponseBodyDomains$Outbound = {
   name: string;
@@ -544,21 +451,6 @@ export const GetProjectDomainsResponseBodyDomains$outboundSchema: z.ZodType<
   ).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectDomainsResponseBodyDomains$ {
-  /** @deprecated use `GetProjectDomainsResponseBodyDomains$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectDomainsResponseBodyDomains$inboundSchema;
-  /** @deprecated use `GetProjectDomainsResponseBodyDomains$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectDomainsResponseBodyDomains$outboundSchema;
-  /** @deprecated use `GetProjectDomainsResponseBodyDomains$Outbound` instead. */
-  export type Outbound = GetProjectDomainsResponseBodyDomains$Outbound;
-}
-
 export function getProjectDomainsResponseBodyDomainsToJSON(
   getProjectDomainsResponseBodyDomains: GetProjectDomainsResponseBodyDomains,
 ): string {
@@ -568,7 +460,6 @@ export function getProjectDomainsResponseBodyDomainsToJSON(
     ),
   );
 }
-
 export function getProjectDomainsResponseBodyDomainsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectDomainsResponseBodyDomains, SDKValidationError> {
@@ -591,7 +482,6 @@ export const GetProjectDomainsResponseBody2$inboundSchema: z.ZodType<
   ),
   pagination: Pagination$inboundSchema,
 });
-
 /** @internal */
 export type GetProjectDomainsResponseBody2$Outbound = {
   domains: Array<GetProjectDomainsResponseBodyDomains$Outbound>;
@@ -610,19 +500,6 @@ export const GetProjectDomainsResponseBody2$outboundSchema: z.ZodType<
   pagination: Pagination$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectDomainsResponseBody2$ {
-  /** @deprecated use `GetProjectDomainsResponseBody2$inboundSchema` instead. */
-  export const inboundSchema = GetProjectDomainsResponseBody2$inboundSchema;
-  /** @deprecated use `GetProjectDomainsResponseBody2$outboundSchema` instead. */
-  export const outboundSchema = GetProjectDomainsResponseBody2$outboundSchema;
-  /** @deprecated use `GetProjectDomainsResponseBody2$Outbound` instead. */
-  export type Outbound = GetProjectDomainsResponseBody2$Outbound;
-}
-
 export function getProjectDomainsResponseBody2ToJSON(
   getProjectDomainsResponseBody2: GetProjectDomainsResponseBody2,
 ): string {
@@ -632,7 +509,6 @@ export function getProjectDomainsResponseBody2ToJSON(
     ),
   );
 }
-
 export function getProjectDomainsResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectDomainsResponseBody2, SDKValidationError> {
@@ -654,7 +530,6 @@ export const ResponseBodyVerification$inboundSchema: z.ZodType<
   value: z.string(),
   reason: z.string(),
 });
-
 /** @internal */
 export type ResponseBodyVerification$Outbound = {
   type: string;
@@ -675,19 +550,6 @@ export const ResponseBodyVerification$outboundSchema: z.ZodType<
   reason: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyVerification$ {
-  /** @deprecated use `ResponseBodyVerification$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyVerification$inboundSchema;
-  /** @deprecated use `ResponseBodyVerification$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyVerification$outboundSchema;
-  /** @deprecated use `ResponseBodyVerification$Outbound` instead. */
-  export type Outbound = ResponseBodyVerification$Outbound;
-}
-
 export function responseBodyVerificationToJSON(
   responseBodyVerification: ResponseBodyVerification,
 ): string {
@@ -695,7 +557,6 @@ export function responseBodyVerificationToJSON(
     ResponseBodyVerification$outboundSchema.parse(responseBodyVerification),
   );
 }
-
 export function responseBodyVerificationFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyVerification, SDKValidationError> {
@@ -725,7 +586,6 @@ export const ResponseBodyDomains$inboundSchema: z.ZodType<
   verification: z.array(z.lazy(() => ResponseBodyVerification$inboundSchema))
     .optional(),
 });
-
 /** @internal */
 export type ResponseBodyDomains$Outbound = {
   name: string;
@@ -761,19 +621,6 @@ export const ResponseBodyDomains$outboundSchema: z.ZodType<
     .optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyDomains$ {
-  /** @deprecated use `ResponseBodyDomains$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyDomains$inboundSchema;
-  /** @deprecated use `ResponseBodyDomains$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyDomains$outboundSchema;
-  /** @deprecated use `ResponseBodyDomains$Outbound` instead. */
-  export type Outbound = ResponseBodyDomains$Outbound;
-}
-
 export function responseBodyDomainsToJSON(
   responseBodyDomains: ResponseBodyDomains,
 ): string {
@@ -781,7 +628,6 @@ export function responseBodyDomainsToJSON(
     ResponseBodyDomains$outboundSchema.parse(responseBodyDomains),
   );
 }
-
 export function responseBodyDomainsFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyDomains, SDKValidationError> {
@@ -802,7 +648,6 @@ export const GetProjectDomainsResponseBodyPagination$inboundSchema: z.ZodType<
   next: z.nullable(z.number()),
   prev: z.nullable(z.number()),
 });
-
 /** @internal */
 export type GetProjectDomainsResponseBodyPagination$Outbound = {
   count: number;
@@ -821,21 +666,6 @@ export const GetProjectDomainsResponseBodyPagination$outboundSchema: z.ZodType<
   prev: z.nullable(z.number()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectDomainsResponseBodyPagination$ {
-  /** @deprecated use `GetProjectDomainsResponseBodyPagination$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectDomainsResponseBodyPagination$inboundSchema;
-  /** @deprecated use `GetProjectDomainsResponseBodyPagination$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectDomainsResponseBodyPagination$outboundSchema;
-  /** @deprecated use `GetProjectDomainsResponseBodyPagination$Outbound` instead. */
-  export type Outbound = GetProjectDomainsResponseBodyPagination$Outbound;
-}
-
 export function getProjectDomainsResponseBodyPaginationToJSON(
   getProjectDomainsResponseBodyPagination:
     GetProjectDomainsResponseBodyPagination,
@@ -846,7 +676,6 @@ export function getProjectDomainsResponseBodyPaginationToJSON(
     ),
   );
 }
-
 export function getProjectDomainsResponseBodyPaginationFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -874,7 +703,6 @@ export const GetProjectDomainsResponseBody1$inboundSchema: z.ZodType<
     GetProjectDomainsResponseBodyPagination$inboundSchema
   ),
 });
-
 /** @internal */
 export type GetProjectDomainsResponseBody1$Outbound = {
   domains: Array<ResponseBodyDomains$Outbound>;
@@ -893,19 +721,6 @@ export const GetProjectDomainsResponseBody1$outboundSchema: z.ZodType<
   ),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectDomainsResponseBody1$ {
-  /** @deprecated use `GetProjectDomainsResponseBody1$inboundSchema` instead. */
-  export const inboundSchema = GetProjectDomainsResponseBody1$inboundSchema;
-  /** @deprecated use `GetProjectDomainsResponseBody1$outboundSchema` instead. */
-  export const outboundSchema = GetProjectDomainsResponseBody1$outboundSchema;
-  /** @deprecated use `GetProjectDomainsResponseBody1$Outbound` instead. */
-  export type Outbound = GetProjectDomainsResponseBody1$Outbound;
-}
-
 export function getProjectDomainsResponseBody1ToJSON(
   getProjectDomainsResponseBody1: GetProjectDomainsResponseBody1,
 ): string {
@@ -915,7 +730,6 @@ export function getProjectDomainsResponseBody1ToJSON(
     ),
   );
 }
-
 export function getProjectDomainsResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectDomainsResponseBody1, SDKValidationError> {
@@ -935,7 +749,6 @@ export const GetProjectDomainsResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => GetProjectDomainsResponseBody1$inboundSchema),
   z.lazy(() => GetProjectDomainsResponseBody2$inboundSchema),
 ]);
-
 /** @internal */
 export type GetProjectDomainsResponseBody$Outbound =
   | GetProjectDomainsResponseBody1$Outbound
@@ -951,19 +764,6 @@ export const GetProjectDomainsResponseBody$outboundSchema: z.ZodType<
   z.lazy(() => GetProjectDomainsResponseBody2$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectDomainsResponseBody$ {
-  /** @deprecated use `GetProjectDomainsResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetProjectDomainsResponseBody$inboundSchema;
-  /** @deprecated use `GetProjectDomainsResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetProjectDomainsResponseBody$outboundSchema;
-  /** @deprecated use `GetProjectDomainsResponseBody$Outbound` instead. */
-  export type Outbound = GetProjectDomainsResponseBody$Outbound;
-}
-
 export function getProjectDomainsResponseBodyToJSON(
   getProjectDomainsResponseBody: GetProjectDomainsResponseBody,
 ): string {
@@ -973,7 +773,6 @@ export function getProjectDomainsResponseBodyToJSON(
     ),
   );
 }
-
 export function getProjectDomainsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectDomainsResponseBody, SDKValidationError> {

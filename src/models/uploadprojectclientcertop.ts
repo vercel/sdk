@@ -68,7 +68,6 @@ export const UploadProjectClientCertRequestBody$inboundSchema: z.ZodType<
   origin: z.string().optional(),
   skipValidation: z.boolean().optional(),
 });
-
 /** @internal */
 export type UploadProjectClientCertRequestBody$Outbound = {
   cert: string;
@@ -91,20 +90,6 @@ export const UploadProjectClientCertRequestBody$outboundSchema: z.ZodType<
   skipValidation: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UploadProjectClientCertRequestBody$ {
-  /** @deprecated use `UploadProjectClientCertRequestBody$inboundSchema` instead. */
-  export const inboundSchema = UploadProjectClientCertRequestBody$inboundSchema;
-  /** @deprecated use `UploadProjectClientCertRequestBody$outboundSchema` instead. */
-  export const outboundSchema =
-    UploadProjectClientCertRequestBody$outboundSchema;
-  /** @deprecated use `UploadProjectClientCertRequestBody$Outbound` instead. */
-  export type Outbound = UploadProjectClientCertRequestBody$Outbound;
-}
-
 export function uploadProjectClientCertRequestBodyToJSON(
   uploadProjectClientCertRequestBody: UploadProjectClientCertRequestBody,
 ): string {
@@ -114,7 +99,6 @@ export function uploadProjectClientCertRequestBodyToJSON(
     ),
   );
 }
-
 export function uploadProjectClientCertRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectClientCertRequestBody, SDKValidationError> {
@@ -142,7 +126,6 @@ export const UploadProjectClientCertRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type UploadProjectClientCertRequest$Outbound = {
   idOrName: string;
@@ -168,19 +151,6 @@ export const UploadProjectClientCertRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UploadProjectClientCertRequest$ {
-  /** @deprecated use `UploadProjectClientCertRequest$inboundSchema` instead. */
-  export const inboundSchema = UploadProjectClientCertRequest$inboundSchema;
-  /** @deprecated use `UploadProjectClientCertRequest$outboundSchema` instead. */
-  export const outboundSchema = UploadProjectClientCertRequest$outboundSchema;
-  /** @deprecated use `UploadProjectClientCertRequest$Outbound` instead. */
-  export type Outbound = UploadProjectClientCertRequest$Outbound;
-}
-
 export function uploadProjectClientCertRequestToJSON(
   uploadProjectClientCertRequest: UploadProjectClientCertRequest,
 ): string {
@@ -190,7 +160,6 @@ export function uploadProjectClientCertRequestToJSON(
     ),
   );
 }
-
 export function uploadProjectClientCertRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectClientCertRequest, SDKValidationError> {
@@ -211,7 +180,6 @@ export const UploadProjectClientCertResponseBody$inboundSchema: z.ZodType<
   origin: z.string(),
   certId: z.string(),
 });
-
 /** @internal */
 export type UploadProjectClientCertResponseBody$Outbound = {
   updated: boolean;
@@ -230,21 +198,6 @@ export const UploadProjectClientCertResponseBody$outboundSchema: z.ZodType<
   certId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UploadProjectClientCertResponseBody$ {
-  /** @deprecated use `UploadProjectClientCertResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    UploadProjectClientCertResponseBody$inboundSchema;
-  /** @deprecated use `UploadProjectClientCertResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    UploadProjectClientCertResponseBody$outboundSchema;
-  /** @deprecated use `UploadProjectClientCertResponseBody$Outbound` instead. */
-  export type Outbound = UploadProjectClientCertResponseBody$Outbound;
-}
-
 export function uploadProjectClientCertResponseBodyToJSON(
   uploadProjectClientCertResponseBody: UploadProjectClientCertResponseBody,
 ): string {
@@ -254,7 +207,6 @@ export function uploadProjectClientCertResponseBodyToJSON(
     ),
   );
 }
-
 export function uploadProjectClientCertResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadProjectClientCertResponseBody, SDKValidationError> {

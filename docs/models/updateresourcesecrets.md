@@ -1,21 +1,19 @@
 # UpdateResourceSecrets
 
-## Example Usage
+
+## Supported Types
+
+### `models.Secrets1[]`
 
 ```typescript
-import { UpdateResourceSecrets } from "@vercel/sdk/models/updateresourceop.js";
+const value: models.Secrets1[] = [];
+```
 
-let value: UpdateResourceSecrets = {
-  name: "<value>",
-  value: "<value>",
+### `models.Secrets2`
+
+```typescript
+const value: models.Secrets2 = {
+  secrets: [],
 };
 ```
 
-## Fields
-
-| Field                                                                                                                                                                                                                                               | Type                                                                                                                                                                                                                                                | Required                                                                                                                                                                                                                                            | Description                                                                                                                                                                                                                                         |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `name`                                                                                                                                                                                                                                              | *string*                                                                                                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                                                                                                  | N/A                                                                                                                                                                                                                                                 |
-| `value`                                                                                                                                                                                                                                             | *string*                                                                                                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                                                                                                  | N/A                                                                                                                                                                                                                                                 |
-| `prefix`                                                                                                                                                                                                                                            | *string*                                                                                                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                                                                                  | N/A                                                                                                                                                                                                                                                 |
-| `environmentOverrides`                                                                                                                                                                                                                              | [models.UpdateResourceEnvironmentOverrides](../models/updateresourceenvironmentoverrides.md)                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                                                                                                                  | A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment. |

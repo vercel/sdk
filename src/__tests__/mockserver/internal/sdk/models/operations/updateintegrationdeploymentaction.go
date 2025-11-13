@@ -180,7 +180,7 @@ type UpdateIntegrationDeploymentActionRequest struct {
 	IntegrationConfigurationID string                                        `pathParam:"style=simple,explode=false,name=integrationConfigurationId"`
 	ResourceID                 string                                        `pathParam:"style=simple,explode=false,name=resourceId"`
 	Action                     string                                        `pathParam:"style=simple,explode=false,name=action"`
-	RequestBody                *UpdateIntegrationDeploymentActionRequestBody `request:"mediaType=application/json"`
+	Body                       *UpdateIntegrationDeploymentActionRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *UpdateIntegrationDeploymentActionRequest) GetDeploymentID() string {
@@ -211,11 +211,11 @@ func (o *UpdateIntegrationDeploymentActionRequest) GetAction() string {
 	return o.Action
 }
 
-func (o *UpdateIntegrationDeploymentActionRequest) GetRequestBody() *UpdateIntegrationDeploymentActionRequestBody {
+func (o *UpdateIntegrationDeploymentActionRequest) GetBody() *UpdateIntegrationDeploymentActionRequestBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type UpdateIntegrationDeploymentActionResponse struct {

@@ -78,16 +78,3 @@ export const HttpApiDecodeError$outboundSchema: z.ZodType<
     issues: z.array(Issue$outboundSchema),
     message: z.string(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HttpApiDecodeError$ {
-  /** @deprecated use `HttpApiDecodeError$inboundSchema` instead. */
-  export const inboundSchema = HttpApiDecodeError$inboundSchema;
-  /** @deprecated use `HttpApiDecodeError$outboundSchema` instead. */
-  export const outboundSchema = HttpApiDecodeError$outboundSchema;
-  /** @deprecated use `HttpApiDecodeError$Outbound` instead. */
-  export type Outbound = HttpApiDecodeError$Outbound;
-}

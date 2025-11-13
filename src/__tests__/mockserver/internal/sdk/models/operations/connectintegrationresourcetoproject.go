@@ -23,8 +23,8 @@ type ConnectIntegrationResourceToProjectRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string                                         `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody *ConnectIntegrationResourceToProjectRequestBody `request:"mediaType=application/json"`
+	Slug *string                                         `queryParam:"style=form,explode=true,name=slug"`
+	Body *ConnectIntegrationResourceToProjectRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *ConnectIntegrationResourceToProjectRequest) GetIntegrationConfigurationID() string {
@@ -55,11 +55,11 @@ func (o *ConnectIntegrationResourceToProjectRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *ConnectIntegrationResourceToProjectRequest) GetRequestBody() *ConnectIntegrationResourceToProjectRequestBody {
+func (o *ConnectIntegrationResourceToProjectRequest) GetBody() *ConnectIntegrationResourceToProjectRequestBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type ConnectIntegrationResourceToProjectResponse struct {

@@ -79,7 +79,6 @@ export const Utm$inboundSchema: z.ZodType<Utm, z.ZodTypeDef, unknown> = z
     utmCampaign: z.string().optional(),
     utmTerm: z.string().optional(),
   });
-
 /** @internal */
 export type Utm$Outbound = {
   utmSource?: string | undefined;
@@ -97,23 +96,9 @@ export const Utm$outboundSchema: z.ZodType<Utm$Outbound, z.ZodTypeDef, Utm> = z
     utmTerm: z.string().optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Utm$ {
-  /** @deprecated use `Utm$inboundSchema` instead. */
-  export const inboundSchema = Utm$inboundSchema;
-  /** @deprecated use `Utm$outboundSchema` instead. */
-  export const outboundSchema = Utm$outboundSchema;
-  /** @deprecated use `Utm$Outbound` instead. */
-  export type Outbound = Utm$Outbound;
-}
-
 export function utmToJSON(utm: Utm): string {
   return JSON.stringify(Utm$outboundSchema.parse(utm));
 }
-
 export function utmFromJSON(
   jsonString: string,
 ): SafeParseResult<Utm, SDKValidationError> {
@@ -135,7 +120,6 @@ export const Attribution$inboundSchema: z.ZodType<
   pageBeforeConversionPage: z.string().optional(),
   utm: z.lazy(() => Utm$inboundSchema).optional(),
 });
-
 /** @internal */
 export type Attribution$Outbound = {
   sessionReferrer?: string | undefined;
@@ -156,23 +140,9 @@ export const Attribution$outboundSchema: z.ZodType<
   utm: z.lazy(() => Utm$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Attribution$ {
-  /** @deprecated use `Attribution$inboundSchema` instead. */
-  export const inboundSchema = Attribution$inboundSchema;
-  /** @deprecated use `Attribution$outboundSchema` instead. */
-  export const outboundSchema = Attribution$outboundSchema;
-  /** @deprecated use `Attribution$Outbound` instead. */
-  export type Outbound = Attribution$Outbound;
-}
-
 export function attributionToJSON(attribution: Attribution): string {
   return JSON.stringify(Attribution$outboundSchema.parse(attribution));
 }
-
 export function attributionFromJSON(
   jsonString: string,
 ): SafeParseResult<Attribution, SDKValidationError> {
@@ -193,7 +163,6 @@ export const CreateTeamRequestBody$inboundSchema: z.ZodType<
   name: z.string().optional(),
   attribution: z.lazy(() => Attribution$inboundSchema).optional(),
 });
-
 /** @internal */
 export type CreateTeamRequestBody$Outbound = {
   slug: string;
@@ -212,19 +181,6 @@ export const CreateTeamRequestBody$outboundSchema: z.ZodType<
   attribution: z.lazy(() => Attribution$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateTeamRequestBody$ {
-  /** @deprecated use `CreateTeamRequestBody$inboundSchema` instead. */
-  export const inboundSchema = CreateTeamRequestBody$inboundSchema;
-  /** @deprecated use `CreateTeamRequestBody$outboundSchema` instead. */
-  export const outboundSchema = CreateTeamRequestBody$outboundSchema;
-  /** @deprecated use `CreateTeamRequestBody$Outbound` instead. */
-  export type Outbound = CreateTeamRequestBody$Outbound;
-}
-
 export function createTeamRequestBodyToJSON(
   createTeamRequestBody: CreateTeamRequestBody,
 ): string {
@@ -232,7 +188,6 @@ export function createTeamRequestBodyToJSON(
     CreateTeamRequestBody$outboundSchema.parse(createTeamRequestBody),
   );
 }
-
 export function createTeamRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateTeamRequestBody, SDKValidationError> {
@@ -252,7 +207,6 @@ export const CreateTeamResponseBody$inboundSchema: z.ZodType<
   id: z.string(),
   slug: z.string(),
 });
-
 /** @internal */
 export type CreateTeamResponseBody$Outbound = {
   id: string;
@@ -269,19 +223,6 @@ export const CreateTeamResponseBody$outboundSchema: z.ZodType<
   slug: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateTeamResponseBody$ {
-  /** @deprecated use `CreateTeamResponseBody$inboundSchema` instead. */
-  export const inboundSchema = CreateTeamResponseBody$inboundSchema;
-  /** @deprecated use `CreateTeamResponseBody$outboundSchema` instead. */
-  export const outboundSchema = CreateTeamResponseBody$outboundSchema;
-  /** @deprecated use `CreateTeamResponseBody$Outbound` instead. */
-  export type Outbound = CreateTeamResponseBody$Outbound;
-}
-
 export function createTeamResponseBodyToJSON(
   createTeamResponseBody: CreateTeamResponseBody,
 ): string {
@@ -289,7 +230,6 @@ export function createTeamResponseBodyToJSON(
     CreateTeamResponseBody$outboundSchema.parse(createTeamResponseBody),
   );
 }
-
 export function createTeamResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateTeamResponseBody, SDKValidationError> {

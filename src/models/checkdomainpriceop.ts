@@ -59,22 +59,10 @@ export type CheckDomainPriceResponseBody = {
 export const QueryParamType$inboundSchema: z.ZodNativeEnum<
   typeof QueryParamType
 > = z.nativeEnum(QueryParamType);
-
 /** @internal */
 export const QueryParamType$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamType
 > = QueryParamType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace QueryParamType$ {
-  /** @deprecated use `QueryParamType$inboundSchema` instead. */
-  export const inboundSchema = QueryParamType$inboundSchema;
-  /** @deprecated use `QueryParamType$outboundSchema` instead. */
-  export const outboundSchema = QueryParamType$outboundSchema;
-}
 
 /** @internal */
 export const CheckDomainPriceRequest$inboundSchema: z.ZodType<
@@ -87,7 +75,6 @@ export const CheckDomainPriceRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type CheckDomainPriceRequest$Outbound = {
   name: string;
@@ -108,19 +95,6 @@ export const CheckDomainPriceRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CheckDomainPriceRequest$ {
-  /** @deprecated use `CheckDomainPriceRequest$inboundSchema` instead. */
-  export const inboundSchema = CheckDomainPriceRequest$inboundSchema;
-  /** @deprecated use `CheckDomainPriceRequest$outboundSchema` instead. */
-  export const outboundSchema = CheckDomainPriceRequest$outboundSchema;
-  /** @deprecated use `CheckDomainPriceRequest$Outbound` instead. */
-  export type Outbound = CheckDomainPriceRequest$Outbound;
-}
-
 export function checkDomainPriceRequestToJSON(
   checkDomainPriceRequest: CheckDomainPriceRequest,
 ): string {
@@ -128,7 +102,6 @@ export function checkDomainPriceRequestToJSON(
     CheckDomainPriceRequest$outboundSchema.parse(checkDomainPriceRequest),
   );
 }
-
 export function checkDomainPriceRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CheckDomainPriceRequest, SDKValidationError> {
@@ -148,7 +121,6 @@ export const CheckDomainPriceResponseBody$inboundSchema: z.ZodType<
   price: z.number(),
   period: z.number(),
 });
-
 /** @internal */
 export type CheckDomainPriceResponseBody$Outbound = {
   price: number;
@@ -165,19 +137,6 @@ export const CheckDomainPriceResponseBody$outboundSchema: z.ZodType<
   period: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CheckDomainPriceResponseBody$ {
-  /** @deprecated use `CheckDomainPriceResponseBody$inboundSchema` instead. */
-  export const inboundSchema = CheckDomainPriceResponseBody$inboundSchema;
-  /** @deprecated use `CheckDomainPriceResponseBody$outboundSchema` instead. */
-  export const outboundSchema = CheckDomainPriceResponseBody$outboundSchema;
-  /** @deprecated use `CheckDomainPriceResponseBody$Outbound` instead. */
-  export type Outbound = CheckDomainPriceResponseBody$Outbound;
-}
-
 export function checkDomainPriceResponseBodyToJSON(
   checkDomainPriceResponseBody: CheckDomainPriceResponseBody,
 ): string {
@@ -187,7 +146,6 @@ export function checkDomainPriceResponseBodyToJSON(
     ),
   );
 }
-
 export function checkDomainPriceResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CheckDomainPriceResponseBody, SDKValidationError> {

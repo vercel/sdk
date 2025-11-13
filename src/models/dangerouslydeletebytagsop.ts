@@ -44,7 +44,6 @@ export const DangerouslyDeleteByTagsTags$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.array(z.string()), z.string()]);
-
 /** @internal */
 export type DangerouslyDeleteByTagsTags$Outbound = Array<string> | string;
 
@@ -55,19 +54,6 @@ export const DangerouslyDeleteByTagsTags$outboundSchema: z.ZodType<
   DangerouslyDeleteByTagsTags
 > = z.union([z.array(z.string()), z.string()]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DangerouslyDeleteByTagsTags$ {
-  /** @deprecated use `DangerouslyDeleteByTagsTags$inboundSchema` instead. */
-  export const inboundSchema = DangerouslyDeleteByTagsTags$inboundSchema;
-  /** @deprecated use `DangerouslyDeleteByTagsTags$outboundSchema` instead. */
-  export const outboundSchema = DangerouslyDeleteByTagsTags$outboundSchema;
-  /** @deprecated use `DangerouslyDeleteByTagsTags$Outbound` instead. */
-  export type Outbound = DangerouslyDeleteByTagsTags$Outbound;
-}
-
 export function dangerouslyDeleteByTagsTagsToJSON(
   dangerouslyDeleteByTagsTags: DangerouslyDeleteByTagsTags,
 ): string {
@@ -77,7 +63,6 @@ export function dangerouslyDeleteByTagsTagsToJSON(
     ),
   );
 }
-
 export function dangerouslyDeleteByTagsTagsFromJSON(
   jsonString: string,
 ): SafeParseResult<DangerouslyDeleteByTagsTags, SDKValidationError> {
@@ -92,22 +77,10 @@ export function dangerouslyDeleteByTagsTagsFromJSON(
 export const DangerouslyDeleteByTagsTarget$inboundSchema: z.ZodNativeEnum<
   typeof DangerouslyDeleteByTagsTarget
 > = z.nativeEnum(DangerouslyDeleteByTagsTarget);
-
 /** @internal */
 export const DangerouslyDeleteByTagsTarget$outboundSchema: z.ZodNativeEnum<
   typeof DangerouslyDeleteByTagsTarget
 > = DangerouslyDeleteByTagsTarget$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DangerouslyDeleteByTagsTarget$ {
-  /** @deprecated use `DangerouslyDeleteByTagsTarget$inboundSchema` instead. */
-  export const inboundSchema = DangerouslyDeleteByTagsTarget$inboundSchema;
-  /** @deprecated use `DangerouslyDeleteByTagsTarget$outboundSchema` instead. */
-  export const outboundSchema = DangerouslyDeleteByTagsTarget$outboundSchema;
-}
 
 /** @internal */
 export const DangerouslyDeleteByTagsRequestBody$inboundSchema: z.ZodType<
@@ -119,7 +92,6 @@ export const DangerouslyDeleteByTagsRequestBody$inboundSchema: z.ZodType<
   tags: z.union([z.array(z.string()), z.string()]),
   target: DangerouslyDeleteByTagsTarget$inboundSchema.optional(),
 });
-
 /** @internal */
 export type DangerouslyDeleteByTagsRequestBody$Outbound = {
   revalidationDeadlineSeconds?: number | undefined;
@@ -138,20 +110,6 @@ export const DangerouslyDeleteByTagsRequestBody$outboundSchema: z.ZodType<
   target: DangerouslyDeleteByTagsTarget$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DangerouslyDeleteByTagsRequestBody$ {
-  /** @deprecated use `DangerouslyDeleteByTagsRequestBody$inboundSchema` instead. */
-  export const inboundSchema = DangerouslyDeleteByTagsRequestBody$inboundSchema;
-  /** @deprecated use `DangerouslyDeleteByTagsRequestBody$outboundSchema` instead. */
-  export const outboundSchema =
-    DangerouslyDeleteByTagsRequestBody$outboundSchema;
-  /** @deprecated use `DangerouslyDeleteByTagsRequestBody$Outbound` instead. */
-  export type Outbound = DangerouslyDeleteByTagsRequestBody$Outbound;
-}
-
 export function dangerouslyDeleteByTagsRequestBodyToJSON(
   dangerouslyDeleteByTagsRequestBody: DangerouslyDeleteByTagsRequestBody,
 ): string {
@@ -161,7 +119,6 @@ export function dangerouslyDeleteByTagsRequestBodyToJSON(
     ),
   );
 }
-
 export function dangerouslyDeleteByTagsRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<DangerouslyDeleteByTagsRequestBody, SDKValidationError> {
@@ -189,7 +146,6 @@ export const DangerouslyDeleteByTagsRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type DangerouslyDeleteByTagsRequest$Outbound = {
   projectIdOrName: string;
@@ -215,19 +171,6 @@ export const DangerouslyDeleteByTagsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DangerouslyDeleteByTagsRequest$ {
-  /** @deprecated use `DangerouslyDeleteByTagsRequest$inboundSchema` instead. */
-  export const inboundSchema = DangerouslyDeleteByTagsRequest$inboundSchema;
-  /** @deprecated use `DangerouslyDeleteByTagsRequest$outboundSchema` instead. */
-  export const outboundSchema = DangerouslyDeleteByTagsRequest$outboundSchema;
-  /** @deprecated use `DangerouslyDeleteByTagsRequest$Outbound` instead. */
-  export type Outbound = DangerouslyDeleteByTagsRequest$Outbound;
-}
-
 export function dangerouslyDeleteByTagsRequestToJSON(
   dangerouslyDeleteByTagsRequest: DangerouslyDeleteByTagsRequest,
 ): string {
@@ -237,7 +180,6 @@ export function dangerouslyDeleteByTagsRequestToJSON(
     ),
   );
 }
-
 export function dangerouslyDeleteByTagsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DangerouslyDeleteByTagsRequest, SDKValidationError> {

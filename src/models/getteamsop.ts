@@ -63,7 +63,6 @@ export const GetTeamsRequest$inboundSchema: z.ZodType<
   since: z.number().optional(),
   until: z.number().optional(),
 });
-
 /** @internal */
 export type GetTeamsRequest$Outbound = {
   limit?: number | undefined;
@@ -82,25 +81,11 @@ export const GetTeamsRequest$outboundSchema: z.ZodType<
   until: z.number().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTeamsRequest$ {
-  /** @deprecated use `GetTeamsRequest$inboundSchema` instead. */
-  export const inboundSchema = GetTeamsRequest$inboundSchema;
-  /** @deprecated use `GetTeamsRequest$outboundSchema` instead. */
-  export const outboundSchema = GetTeamsRequest$outboundSchema;
-  /** @deprecated use `GetTeamsRequest$Outbound` instead. */
-  export type Outbound = GetTeamsRequest$Outbound;
-}
-
 export function getTeamsRequestToJSON(
   getTeamsRequest: GetTeamsRequest,
 ): string {
   return JSON.stringify(GetTeamsRequest$outboundSchema.parse(getTeamsRequest));
 }
-
 export function getTeamsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamsRequest, SDKValidationError> {
@@ -117,7 +102,6 @@ export const GetTeamsTeams$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([Team$inboundSchema, TeamLimited$inboundSchema]);
-
 /** @internal */
 export type GetTeamsTeams$Outbound = Team$Outbound | TeamLimited$Outbound;
 
@@ -128,23 +112,9 @@ export const GetTeamsTeams$outboundSchema: z.ZodType<
   GetTeamsTeams
 > = z.union([Team$outboundSchema, TeamLimited$outboundSchema]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTeamsTeams$ {
-  /** @deprecated use `GetTeamsTeams$inboundSchema` instead. */
-  export const inboundSchema = GetTeamsTeams$inboundSchema;
-  /** @deprecated use `GetTeamsTeams$outboundSchema` instead. */
-  export const outboundSchema = GetTeamsTeams$outboundSchema;
-  /** @deprecated use `GetTeamsTeams$Outbound` instead. */
-  export type Outbound = GetTeamsTeams$Outbound;
-}
-
 export function getTeamsTeamsToJSON(getTeamsTeams: GetTeamsTeams): string {
   return JSON.stringify(GetTeamsTeams$outboundSchema.parse(getTeamsTeams));
 }
-
 export function getTeamsTeamsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamsTeams, SDKValidationError> {
@@ -164,7 +134,6 @@ export const GetTeamsResponseBody$inboundSchema: z.ZodType<
   teams: z.array(z.union([Team$inboundSchema, TeamLimited$inboundSchema])),
   pagination: Pagination$inboundSchema,
 });
-
 /** @internal */
 export type GetTeamsResponseBody$Outbound = {
   teams: Array<Team$Outbound | TeamLimited$Outbound>;
@@ -181,19 +150,6 @@ export const GetTeamsResponseBody$outboundSchema: z.ZodType<
   pagination: Pagination$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTeamsResponseBody$ {
-  /** @deprecated use `GetTeamsResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetTeamsResponseBody$inboundSchema;
-  /** @deprecated use `GetTeamsResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetTeamsResponseBody$outboundSchema;
-  /** @deprecated use `GetTeamsResponseBody$Outbound` instead. */
-  export type Outbound = GetTeamsResponseBody$Outbound;
-}
-
 export function getTeamsResponseBodyToJSON(
   getTeamsResponseBody: GetTeamsResponseBody,
 ): string {
@@ -201,7 +157,6 @@ export function getTeamsResponseBodyToJSON(
     GetTeamsResponseBody$outboundSchema.parse(getTeamsResponseBody),
   );
 }
-
 export function getTeamsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamsResponseBody, SDKValidationError> {

@@ -84,7 +84,6 @@ export const UploadArtifactRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type UploadArtifactRequest$Outbound = {
   "Content-Length": number;
@@ -129,19 +128,6 @@ export const UploadArtifactRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UploadArtifactRequest$ {
-  /** @deprecated use `UploadArtifactRequest$inboundSchema` instead. */
-  export const inboundSchema = UploadArtifactRequest$inboundSchema;
-  /** @deprecated use `UploadArtifactRequest$outboundSchema` instead. */
-  export const outboundSchema = UploadArtifactRequest$outboundSchema;
-  /** @deprecated use `UploadArtifactRequest$Outbound` instead. */
-  export type Outbound = UploadArtifactRequest$Outbound;
-}
-
 export function uploadArtifactRequestToJSON(
   uploadArtifactRequest: UploadArtifactRequest,
 ): string {
@@ -149,7 +135,6 @@ export function uploadArtifactRequestToJSON(
     UploadArtifactRequest$outboundSchema.parse(uploadArtifactRequest),
   );
 }
-
 export function uploadArtifactRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadArtifactRequest, SDKValidationError> {
@@ -168,7 +153,6 @@ export const UploadArtifactResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   urls: z.array(z.string()),
 });
-
 /** @internal */
 export type UploadArtifactResponseBody$Outbound = {
   urls: Array<string>;
@@ -183,19 +167,6 @@ export const UploadArtifactResponseBody$outboundSchema: z.ZodType<
   urls: z.array(z.string()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UploadArtifactResponseBody$ {
-  /** @deprecated use `UploadArtifactResponseBody$inboundSchema` instead. */
-  export const inboundSchema = UploadArtifactResponseBody$inboundSchema;
-  /** @deprecated use `UploadArtifactResponseBody$outboundSchema` instead. */
-  export const outboundSchema = UploadArtifactResponseBody$outboundSchema;
-  /** @deprecated use `UploadArtifactResponseBody$Outbound` instead. */
-  export type Outbound = UploadArtifactResponseBody$Outbound;
-}
-
 export function uploadArtifactResponseBodyToJSON(
   uploadArtifactResponseBody: UploadArtifactResponseBody,
 ): string {
@@ -203,7 +174,6 @@ export function uploadArtifactResponseBodyToJSON(
     UploadArtifactResponseBody$outboundSchema.parse(uploadArtifactResponseBody),
   );
 }
-
 export function uploadArtifactResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadArtifactResponseBody, SDKValidationError> {

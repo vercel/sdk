@@ -5798,6 +5798,7 @@ type GetProjectsPermissions struct {
 	ProjectEnvVarsProduction                 []components.ACLAction `json:"projectEnvVarsProduction,omitempty"`
 	ProjectEnvVarsUnownedByIntegration       []components.ACLAction `json:"projectEnvVarsUnownedByIntegration,omitempty"`
 	ProjectFlags                             []components.ACLAction `json:"projectFlags,omitempty"`
+	ProjectFlagsProduction                   []components.ACLAction `json:"projectFlagsProduction,omitempty"`
 	ProjectFromV0                            []components.ACLAction `json:"projectFromV0,omitempty"`
 	ProjectID                                []components.ACLAction `json:"projectId,omitempty"`
 	ProjectIntegrationConfiguration          []components.ACLAction `json:"projectIntegrationConfiguration,omitempty"`
@@ -7173,6 +7174,13 @@ func (o *GetProjectsPermissions) GetProjectFlags() []components.ACLAction {
 		return nil
 	}
 	return o.ProjectFlags
+}
+
+func (o *GetProjectsPermissions) GetProjectFlagsProduction() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectFlagsProduction
 }
 
 func (o *GetProjectsPermissions) GetProjectFromV0() []components.ACLAction {
@@ -10779,6 +10787,7 @@ type GetProjectsProject struct {
 	V0                                   *bool                                       `json:"v0,omitempty"`
 	Abuse                                *GetProjectsAbuse                           `json:"abuse,omitempty"`
 	InternalRoutes                       []GetProjectsInternalRouteUnion             `json:"internalRoutes,omitempty"`
+	HasDeployments                       *bool                                       `json:"hasDeployments,omitempty"`
 	DismissedToasts                      []GetProjectsDismissedToast                 `json:"dismissedToasts,omitempty"`
 }
 
@@ -11319,6 +11328,13 @@ func (o *GetProjectsProject) GetInternalRoutes() []GetProjectsInternalRouteUnion
 		return nil
 	}
 	return o.InternalRoutes
+}
+
+func (o *GetProjectsProject) GetHasDeployments() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasDeployments
 }
 
 func (o *GetProjectsProject) GetDismissedToasts() []GetProjectsDismissedToast {

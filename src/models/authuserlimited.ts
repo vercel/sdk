@@ -55,7 +55,6 @@ export const AuthUserLimited$inboundSchema: z.ZodType<
   avatar: z.nullable(z.string()),
   defaultTeamId: z.nullable(z.string()),
 });
-
 /** @internal */
 export type AuthUserLimited$Outbound = {
   limited: boolean;
@@ -82,25 +81,11 @@ export const AuthUserLimited$outboundSchema: z.ZodType<
   defaultTeamId: z.nullable(z.string()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AuthUserLimited$ {
-  /** @deprecated use `AuthUserLimited$inboundSchema` instead. */
-  export const inboundSchema = AuthUserLimited$inboundSchema;
-  /** @deprecated use `AuthUserLimited$outboundSchema` instead. */
-  export const outboundSchema = AuthUserLimited$outboundSchema;
-  /** @deprecated use `AuthUserLimited$Outbound` instead. */
-  export type Outbound = AuthUserLimited$Outbound;
-}
-
 export function authUserLimitedToJSON(
   authUserLimited: AuthUserLimited,
 ): string {
   return JSON.stringify(AuthUserLimited$outboundSchema.parse(authUserLimited));
 }
-
 export function authUserLimitedFromJSON(
   jsonString: string,
 ): SafeParseResult<AuthUserLimited, SDKValidationError> {

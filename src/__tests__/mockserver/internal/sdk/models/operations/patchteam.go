@@ -698,8 +698,8 @@ type PatchTeamRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID string `pathParam:"style=simple,explode=false,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string              `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody PatchTeamRequestBody `request:"mediaType=application/json"`
+	Slug *string              `queryParam:"style=form,explode=true,name=slug"`
+	Body PatchTeamRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *PatchTeamRequest) GetTeamID() string {
@@ -716,11 +716,11 @@ func (o *PatchTeamRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *PatchTeamRequest) GetRequestBody() PatchTeamRequestBody {
+func (o *PatchTeamRequest) GetBody() PatchTeamRequestBody {
 	if o == nil {
 		return PatchTeamRequestBody{}
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type PatchTeamResponse struct {

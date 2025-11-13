@@ -45,7 +45,6 @@ export const DeleteProjectClientCertRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type DeleteProjectClientCertRequest$Outbound = {
   idOrName: string;
@@ -66,19 +65,6 @@ export const DeleteProjectClientCertRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteProjectClientCertRequest$ {
-  /** @deprecated use `DeleteProjectClientCertRequest$inboundSchema` instead. */
-  export const inboundSchema = DeleteProjectClientCertRequest$inboundSchema;
-  /** @deprecated use `DeleteProjectClientCertRequest$outboundSchema` instead. */
-  export const outboundSchema = DeleteProjectClientCertRequest$outboundSchema;
-  /** @deprecated use `DeleteProjectClientCertRequest$Outbound` instead. */
-  export type Outbound = DeleteProjectClientCertRequest$Outbound;
-}
-
 export function deleteProjectClientCertRequestToJSON(
   deleteProjectClientCertRequest: DeleteProjectClientCertRequest,
 ): string {
@@ -88,7 +74,6 @@ export function deleteProjectClientCertRequestToJSON(
     ),
   );
 }
-
 export function deleteProjectClientCertRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteProjectClientCertRequest, SDKValidationError> {
@@ -108,7 +93,6 @@ export const DeleteProjectClientCertResponseBody$inboundSchema: z.ZodType<
   origin: z.string(),
   certId: z.string(),
 });
-
 /** @internal */
 export type DeleteProjectClientCertResponseBody$Outbound = {
   origin: string;
@@ -125,21 +109,6 @@ export const DeleteProjectClientCertResponseBody$outboundSchema: z.ZodType<
   certId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteProjectClientCertResponseBody$ {
-  /** @deprecated use `DeleteProjectClientCertResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    DeleteProjectClientCertResponseBody$inboundSchema;
-  /** @deprecated use `DeleteProjectClientCertResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    DeleteProjectClientCertResponseBody$outboundSchema;
-  /** @deprecated use `DeleteProjectClientCertResponseBody$Outbound` instead. */
-  export type Outbound = DeleteProjectClientCertResponseBody$Outbound;
-}
-
 export function deleteProjectClientCertResponseBodyToJSON(
   deleteProjectClientCertResponseBody: DeleteProjectClientCertResponseBody,
 ): string {
@@ -149,7 +118,6 @@ export function deleteProjectClientCertResponseBodyToJSON(
     ),
   );
 }
-
 export function deleteProjectClientCertResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteProjectClientCertResponseBody, SDKValidationError> {

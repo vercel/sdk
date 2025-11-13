@@ -60,7 +60,6 @@ export const RemoveBypassIpRequestBody2$inboundSchema: z.ZodType<
   allSources: z.boolean().optional(),
   note: z.string().optional(),
 });
-
 /** @internal */
 export type RemoveBypassIpRequestBody2$Outbound = {
   domain?: string | undefined;
@@ -83,19 +82,6 @@ export const RemoveBypassIpRequestBody2$outboundSchema: z.ZodType<
   note: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveBypassIpRequestBody2$ {
-  /** @deprecated use `RemoveBypassIpRequestBody2$inboundSchema` instead. */
-  export const inboundSchema = RemoveBypassIpRequestBody2$inboundSchema;
-  /** @deprecated use `RemoveBypassIpRequestBody2$outboundSchema` instead. */
-  export const outboundSchema = RemoveBypassIpRequestBody2$outboundSchema;
-  /** @deprecated use `RemoveBypassIpRequestBody2$Outbound` instead. */
-  export type Outbound = RemoveBypassIpRequestBody2$Outbound;
-}
-
 export function removeBypassIpRequestBody2ToJSON(
   removeBypassIpRequestBody2: RemoveBypassIpRequestBody2,
 ): string {
@@ -103,7 +89,6 @@ export function removeBypassIpRequestBody2ToJSON(
     RemoveBypassIpRequestBody2$outboundSchema.parse(removeBypassIpRequestBody2),
   );
 }
-
 export function removeBypassIpRequestBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveBypassIpRequestBody2, SDKValidationError> {
@@ -126,7 +111,6 @@ export const RemoveBypassIpRequestBody1$inboundSchema: z.ZodType<
   allSources: z.boolean().optional(),
   note: z.string().optional(),
 });
-
 /** @internal */
 export type RemoveBypassIpRequestBody1$Outbound = {
   domain: string;
@@ -149,19 +133,6 @@ export const RemoveBypassIpRequestBody1$outboundSchema: z.ZodType<
   note: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveBypassIpRequestBody1$ {
-  /** @deprecated use `RemoveBypassIpRequestBody1$inboundSchema` instead. */
-  export const inboundSchema = RemoveBypassIpRequestBody1$inboundSchema;
-  /** @deprecated use `RemoveBypassIpRequestBody1$outboundSchema` instead. */
-  export const outboundSchema = RemoveBypassIpRequestBody1$outboundSchema;
-  /** @deprecated use `RemoveBypassIpRequestBody1$Outbound` instead. */
-  export type Outbound = RemoveBypassIpRequestBody1$Outbound;
-}
-
 export function removeBypassIpRequestBody1ToJSON(
   removeBypassIpRequestBody1: RemoveBypassIpRequestBody1,
 ): string {
@@ -169,7 +140,6 @@ export function removeBypassIpRequestBody1ToJSON(
     RemoveBypassIpRequestBody1$outboundSchema.parse(removeBypassIpRequestBody1),
   );
 }
-
 export function removeBypassIpRequestBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveBypassIpRequestBody1, SDKValidationError> {
@@ -189,7 +159,6 @@ export const RemoveBypassIpRequestBody$inboundSchema: z.ZodType<
   z.lazy(() => RemoveBypassIpRequestBody1$inboundSchema),
   z.lazy(() => RemoveBypassIpRequestBody2$inboundSchema),
 ]);
-
 /** @internal */
 export type RemoveBypassIpRequestBody$Outbound =
   | RemoveBypassIpRequestBody1$Outbound
@@ -205,19 +174,6 @@ export const RemoveBypassIpRequestBody$outboundSchema: z.ZodType<
   z.lazy(() => RemoveBypassIpRequestBody2$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveBypassIpRequestBody$ {
-  /** @deprecated use `RemoveBypassIpRequestBody$inboundSchema` instead. */
-  export const inboundSchema = RemoveBypassIpRequestBody$inboundSchema;
-  /** @deprecated use `RemoveBypassIpRequestBody$outboundSchema` instead. */
-  export const outboundSchema = RemoveBypassIpRequestBody$outboundSchema;
-  /** @deprecated use `RemoveBypassIpRequestBody$Outbound` instead. */
-  export type Outbound = RemoveBypassIpRequestBody$Outbound;
-}
-
 export function removeBypassIpRequestBodyToJSON(
   removeBypassIpRequestBody: RemoveBypassIpRequestBody,
 ): string {
@@ -225,7 +181,6 @@ export function removeBypassIpRequestBodyToJSON(
     RemoveBypassIpRequestBody$outboundSchema.parse(removeBypassIpRequestBody),
   );
 }
-
 export function removeBypassIpRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveBypassIpRequestBody, SDKValidationError> {
@@ -254,7 +209,6 @@ export const RemoveBypassIpRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type RemoveBypassIpRequest$Outbound = {
   projectId: string;
@@ -285,19 +239,6 @@ export const RemoveBypassIpRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveBypassIpRequest$ {
-  /** @deprecated use `RemoveBypassIpRequest$inboundSchema` instead. */
-  export const inboundSchema = RemoveBypassIpRequest$inboundSchema;
-  /** @deprecated use `RemoveBypassIpRequest$outboundSchema` instead. */
-  export const outboundSchema = RemoveBypassIpRequest$outboundSchema;
-  /** @deprecated use `RemoveBypassIpRequest$Outbound` instead. */
-  export type Outbound = RemoveBypassIpRequest$Outbound;
-}
-
 export function removeBypassIpRequestToJSON(
   removeBypassIpRequest: RemoveBypassIpRequest,
 ): string {
@@ -305,7 +246,6 @@ export function removeBypassIpRequestToJSON(
     RemoveBypassIpRequest$outboundSchema.parse(removeBypassIpRequest),
   );
 }
-
 export function removeBypassIpRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveBypassIpRequest, SDKValidationError> {
@@ -324,7 +264,6 @@ export const RemoveBypassIpResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   ok: z.boolean(),
 });
-
 /** @internal */
 export type RemoveBypassIpResponseBody$Outbound = {
   ok: boolean;
@@ -339,19 +278,6 @@ export const RemoveBypassIpResponseBody$outboundSchema: z.ZodType<
   ok: z.boolean(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveBypassIpResponseBody$ {
-  /** @deprecated use `RemoveBypassIpResponseBody$inboundSchema` instead. */
-  export const inboundSchema = RemoveBypassIpResponseBody$inboundSchema;
-  /** @deprecated use `RemoveBypassIpResponseBody$outboundSchema` instead. */
-  export const outboundSchema = RemoveBypassIpResponseBody$outboundSchema;
-  /** @deprecated use `RemoveBypassIpResponseBody$Outbound` instead. */
-  export type Outbound = RemoveBypassIpResponseBody$Outbound;
-}
-
 export function removeBypassIpResponseBodyToJSON(
   removeBypassIpResponseBody: RemoveBypassIpResponseBody,
 ): string {
@@ -359,7 +285,6 @@ export function removeBypassIpResponseBodyToJSON(
     RemoveBypassIpResponseBody$outboundSchema.parse(removeBypassIpResponseBody),
   );
 }
-
 export function removeBypassIpResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveBypassIpResponseBody, SDKValidationError> {

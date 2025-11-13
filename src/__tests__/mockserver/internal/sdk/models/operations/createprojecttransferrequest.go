@@ -33,8 +33,8 @@ type CreateProjectTransferRequestRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string                                  `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody *CreateProjectTransferRequestRequestBody `request:"mediaType=application/json"`
+	Slug *string                                  `queryParam:"style=form,explode=true,name=slug"`
+	Body *CreateProjectTransferRequestRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *CreateProjectTransferRequestRequest) GetIDOrName() string {
@@ -58,11 +58,11 @@ func (o *CreateProjectTransferRequestRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *CreateProjectTransferRequestRequest) GetRequestBody() *CreateProjectTransferRequestRequestBody {
+func (o *CreateProjectTransferRequestRequest) GetBody() *CreateProjectTransferRequestRequestBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 // CreateProjectTransferRequestResponseBody - The project transfer request has been initiated successfully.

@@ -5,18 +5,11 @@
 ```typescript
 import { NextAcceptedPermissionSets } from "@vercel/sdk/models/userevent.js";
 
-let value: NextAcceptedPermissionSets = {
-  userPermissionSet: {
-    type: "list",
-    items: {
-      type: {},
-    },
-  },
-};
+let value: NextAcceptedPermissionSets = {};
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `userPermissionSet`                                                      | [models.PayloadUserPermissionSet](../models/payloaduserpermissionset.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `userPermissionSet`                                                        | [models.PayloadUserPermissionSet](../models/payloaduserpermissionset.md)[] | :heavy_minus_sign:                                                         | N/A                                                                        |

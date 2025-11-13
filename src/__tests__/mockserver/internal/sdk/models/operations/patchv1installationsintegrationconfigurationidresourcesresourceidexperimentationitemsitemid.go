@@ -105,7 +105,7 @@ type PatchV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperiment
 	IntegrationConfigurationID string                                                                                                  `pathParam:"style=simple,explode=false,name=integrationConfigurationId"`
 	ResourceID                 string                                                                                                  `pathParam:"style=simple,explode=false,name=resourceId"`
 	ItemID                     string                                                                                                  `pathParam:"style=simple,explode=false,name=itemId"`
-	RequestBody                *PatchV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItemIDRequestBody `request:"mediaType=application/json"`
+	Body                       *PatchV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItemIDRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *PatchV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItemIDRequest) GetIntegrationConfigurationID() string {
@@ -129,11 +129,11 @@ func (o *PatchV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperi
 	return o.ItemID
 }
 
-func (o *PatchV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItemIDRequest) GetRequestBody() *PatchV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItemIDRequestBody {
+func (o *PatchV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItemIDRequest) GetBody() *PatchV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItemIDRequestBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type PatchV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItemIDResponse struct {

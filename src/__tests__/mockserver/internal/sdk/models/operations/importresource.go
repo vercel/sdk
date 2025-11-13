@@ -446,7 +446,7 @@ func (o *ImportResourceRequestBody) GetSecrets() []ImportResourceSecret {
 type ImportResourceRequest struct {
 	IntegrationConfigurationID string                     `pathParam:"style=simple,explode=false,name=integrationConfigurationId"`
 	ResourceID                 string                     `pathParam:"style=simple,explode=false,name=resourceId"`
-	RequestBody                *ImportResourceRequestBody `request:"mediaType=application/json"`
+	Body                       *ImportResourceRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *ImportResourceRequest) GetIntegrationConfigurationID() string {
@@ -463,11 +463,11 @@ func (o *ImportResourceRequest) GetResourceID() string {
 	return o.ResourceID
 }
 
-func (o *ImportResourceRequest) GetRequestBody() *ImportResourceRequestBody {
+func (o *ImportResourceRequest) GetBody() *ImportResourceRequestBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type ImportResourceResponseBody struct {

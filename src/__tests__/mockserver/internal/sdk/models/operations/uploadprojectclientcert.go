@@ -60,8 +60,8 @@ type UploadProjectClientCertRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string                             `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody *UploadProjectClientCertRequestBody `request:"mediaType=application/json"`
+	Slug *string                             `queryParam:"style=form,explode=true,name=slug"`
+	Body *UploadProjectClientCertRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *UploadProjectClientCertRequest) GetIDOrName() string {
@@ -85,11 +85,11 @@ func (o *UploadProjectClientCertRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *UploadProjectClientCertRequest) GetRequestBody() *UploadProjectClientCertRequestBody {
+func (o *UploadProjectClientCertRequest) GetBody() *UploadProjectClientCertRequestBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 // UploadProjectClientCertResponseBody - Client certificate uploaded successfully

@@ -157,7 +157,6 @@ export const ListDeploymentAliasesRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type ListDeploymentAliasesRequest$Outbound = {
   id: string;
@@ -176,19 +175,6 @@ export const ListDeploymentAliasesRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListDeploymentAliasesRequest$ {
-  /** @deprecated use `ListDeploymentAliasesRequest$inboundSchema` instead. */
-  export const inboundSchema = ListDeploymentAliasesRequest$inboundSchema;
-  /** @deprecated use `ListDeploymentAliasesRequest$outboundSchema` instead. */
-  export const outboundSchema = ListDeploymentAliasesRequest$outboundSchema;
-  /** @deprecated use `ListDeploymentAliasesRequest$Outbound` instead. */
-  export type Outbound = ListDeploymentAliasesRequest$Outbound;
-}
-
 export function listDeploymentAliasesRequestToJSON(
   listDeploymentAliasesRequest: ListDeploymentAliasesRequest,
 ): string {
@@ -198,7 +184,6 @@ export function listDeploymentAliasesRequestToJSON(
     ),
   );
 }
-
 export function listDeploymentAliasesRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListDeploymentAliasesRequest, SDKValidationError> {
@@ -216,26 +201,12 @@ export const ListDeploymentAliasesProtectionBypassAliasesResponse200Scope$inboun
   > = z.nativeEnum(
     ListDeploymentAliasesProtectionBypassAliasesResponse200Scope,
   );
-
 /** @internal */
 export const ListDeploymentAliasesProtectionBypassAliasesResponse200Scope$outboundSchema:
   z.ZodNativeEnum<
     typeof ListDeploymentAliasesProtectionBypassAliasesResponse200Scope
   > =
     ListDeploymentAliasesProtectionBypassAliasesResponse200Scope$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListDeploymentAliasesProtectionBypassAliasesResponse200Scope$ {
-  /** @deprecated use `ListDeploymentAliasesProtectionBypassAliasesResponse200Scope$inboundSchema` instead. */
-  export const inboundSchema =
-    ListDeploymentAliasesProtectionBypassAliasesResponse200Scope$inboundSchema;
-  /** @deprecated use `ListDeploymentAliasesProtectionBypassAliasesResponse200Scope$outboundSchema` instead. */
-  export const outboundSchema =
-    ListDeploymentAliasesProtectionBypassAliasesResponse200Scope$outboundSchema;
-}
 
 /** @internal */
 export const ListDeploymentAliasesProtectionBypass4$inboundSchema: z.ZodType<
@@ -249,7 +220,6 @@ export const ListDeploymentAliasesProtectionBypass4$inboundSchema: z.ZodType<
   scope:
     ListDeploymentAliasesProtectionBypassAliasesResponse200Scope$inboundSchema,
 });
-
 /** @internal */
 export type ListDeploymentAliasesProtectionBypass4$Outbound = {
   createdAt: number;
@@ -271,21 +241,6 @@ export const ListDeploymentAliasesProtectionBypass4$outboundSchema: z.ZodType<
     ListDeploymentAliasesProtectionBypassAliasesResponse200Scope$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListDeploymentAliasesProtectionBypass4$ {
-  /** @deprecated use `ListDeploymentAliasesProtectionBypass4$inboundSchema` instead. */
-  export const inboundSchema =
-    ListDeploymentAliasesProtectionBypass4$inboundSchema;
-  /** @deprecated use `ListDeploymentAliasesProtectionBypass4$outboundSchema` instead. */
-  export const outboundSchema =
-    ListDeploymentAliasesProtectionBypass4$outboundSchema;
-  /** @deprecated use `ListDeploymentAliasesProtectionBypass4$Outbound` instead. */
-  export type Outbound = ListDeploymentAliasesProtectionBypass4$Outbound;
-}
-
 export function listDeploymentAliasesProtectionBypass4ToJSON(
   listDeploymentAliasesProtectionBypass4:
     ListDeploymentAliasesProtectionBypass4,
@@ -296,7 +251,6 @@ export function listDeploymentAliasesProtectionBypass4ToJSON(
     ),
   );
 }
-
 export function listDeploymentAliasesProtectionBypass4FromJSON(
   jsonString: string,
 ): SafeParseResult<ListDeploymentAliasesProtectionBypass4, SDKValidationError> {
@@ -313,25 +267,11 @@ export const ListDeploymentAliasesProtectionBypassAliasesResponseScope$inboundSc
   z.ZodNativeEnum<
     typeof ListDeploymentAliasesProtectionBypassAliasesResponseScope
   > = z.nativeEnum(ListDeploymentAliasesProtectionBypassAliasesResponseScope);
-
 /** @internal */
 export const ListDeploymentAliasesProtectionBypassAliasesResponseScope$outboundSchema:
   z.ZodNativeEnum<
     typeof ListDeploymentAliasesProtectionBypassAliasesResponseScope
   > = ListDeploymentAliasesProtectionBypassAliasesResponseScope$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListDeploymentAliasesProtectionBypassAliasesResponseScope$ {
-  /** @deprecated use `ListDeploymentAliasesProtectionBypassAliasesResponseScope$inboundSchema` instead. */
-  export const inboundSchema =
-    ListDeploymentAliasesProtectionBypassAliasesResponseScope$inboundSchema;
-  /** @deprecated use `ListDeploymentAliasesProtectionBypassAliasesResponseScope$outboundSchema` instead. */
-  export const outboundSchema =
-    ListDeploymentAliasesProtectionBypassAliasesResponseScope$outboundSchema;
-}
 
 /** @internal */
 export const ListDeploymentAliasesProtectionBypass3$inboundSchema: z.ZodType<
@@ -344,7 +284,6 @@ export const ListDeploymentAliasesProtectionBypass3$inboundSchema: z.ZodType<
   scope:
     ListDeploymentAliasesProtectionBypassAliasesResponseScope$inboundSchema,
 });
-
 /** @internal */
 export type ListDeploymentAliasesProtectionBypass3$Outbound = {
   createdAt: number;
@@ -364,21 +303,6 @@ export const ListDeploymentAliasesProtectionBypass3$outboundSchema: z.ZodType<
     ListDeploymentAliasesProtectionBypassAliasesResponseScope$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListDeploymentAliasesProtectionBypass3$ {
-  /** @deprecated use `ListDeploymentAliasesProtectionBypass3$inboundSchema` instead. */
-  export const inboundSchema =
-    ListDeploymentAliasesProtectionBypass3$inboundSchema;
-  /** @deprecated use `ListDeploymentAliasesProtectionBypass3$outboundSchema` instead. */
-  export const outboundSchema =
-    ListDeploymentAliasesProtectionBypass3$outboundSchema;
-  /** @deprecated use `ListDeploymentAliasesProtectionBypass3$Outbound` instead. */
-  export type Outbound = ListDeploymentAliasesProtectionBypass3$Outbound;
-}
-
 export function listDeploymentAliasesProtectionBypass3ToJSON(
   listDeploymentAliasesProtectionBypass3:
     ListDeploymentAliasesProtectionBypass3,
@@ -389,7 +313,6 @@ export function listDeploymentAliasesProtectionBypass3ToJSON(
     ),
   );
 }
-
 export function listDeploymentAliasesProtectionBypass3FromJSON(
   jsonString: string,
 ): SafeParseResult<ListDeploymentAliasesProtectionBypass3, SDKValidationError> {
@@ -405,47 +328,19 @@ export function listDeploymentAliasesProtectionBypass3FromJSON(
 export const ListDeploymentAliasesProtectionBypassAccess$inboundSchema:
   z.ZodNativeEnum<typeof ListDeploymentAliasesProtectionBypassAccess> = z
     .nativeEnum(ListDeploymentAliasesProtectionBypassAccess);
-
 /** @internal */
 export const ListDeploymentAliasesProtectionBypassAccess$outboundSchema:
   z.ZodNativeEnum<typeof ListDeploymentAliasesProtectionBypassAccess> =
     ListDeploymentAliasesProtectionBypassAccess$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListDeploymentAliasesProtectionBypassAccess$ {
-  /** @deprecated use `ListDeploymentAliasesProtectionBypassAccess$inboundSchema` instead. */
-  export const inboundSchema =
-    ListDeploymentAliasesProtectionBypassAccess$inboundSchema;
-  /** @deprecated use `ListDeploymentAliasesProtectionBypassAccess$outboundSchema` instead. */
-  export const outboundSchema =
-    ListDeploymentAliasesProtectionBypassAccess$outboundSchema;
-}
-
 /** @internal */
 export const ListDeploymentAliasesProtectionBypassAliasesScope$inboundSchema:
   z.ZodNativeEnum<typeof ListDeploymentAliasesProtectionBypassAliasesScope> = z
     .nativeEnum(ListDeploymentAliasesProtectionBypassAliasesScope);
-
 /** @internal */
 export const ListDeploymentAliasesProtectionBypassAliasesScope$outboundSchema:
   z.ZodNativeEnum<typeof ListDeploymentAliasesProtectionBypassAliasesScope> =
     ListDeploymentAliasesProtectionBypassAliasesScope$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListDeploymentAliasesProtectionBypassAliasesScope$ {
-  /** @deprecated use `ListDeploymentAliasesProtectionBypassAliasesScope$inboundSchema` instead. */
-  export const inboundSchema =
-    ListDeploymentAliasesProtectionBypassAliasesScope$inboundSchema;
-  /** @deprecated use `ListDeploymentAliasesProtectionBypassAliasesScope$outboundSchema` instead. */
-  export const outboundSchema =
-    ListDeploymentAliasesProtectionBypassAliasesScope$outboundSchema;
-}
 
 /** @internal */
 export const ListDeploymentAliasesProtectionBypass2$inboundSchema: z.ZodType<
@@ -459,7 +354,6 @@ export const ListDeploymentAliasesProtectionBypass2$inboundSchema: z.ZodType<
   access: ListDeploymentAliasesProtectionBypassAccess$inboundSchema,
   scope: ListDeploymentAliasesProtectionBypassAliasesScope$inboundSchema,
 });
-
 /** @internal */
 export type ListDeploymentAliasesProtectionBypass2$Outbound = {
   createdAt: number;
@@ -482,21 +376,6 @@ export const ListDeploymentAliasesProtectionBypass2$outboundSchema: z.ZodType<
   scope: ListDeploymentAliasesProtectionBypassAliasesScope$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListDeploymentAliasesProtectionBypass2$ {
-  /** @deprecated use `ListDeploymentAliasesProtectionBypass2$inboundSchema` instead. */
-  export const inboundSchema =
-    ListDeploymentAliasesProtectionBypass2$inboundSchema;
-  /** @deprecated use `ListDeploymentAliasesProtectionBypass2$outboundSchema` instead. */
-  export const outboundSchema =
-    ListDeploymentAliasesProtectionBypass2$outboundSchema;
-  /** @deprecated use `ListDeploymentAliasesProtectionBypass2$Outbound` instead. */
-  export type Outbound = ListDeploymentAliasesProtectionBypass2$Outbound;
-}
-
 export function listDeploymentAliasesProtectionBypass2ToJSON(
   listDeploymentAliasesProtectionBypass2:
     ListDeploymentAliasesProtectionBypass2,
@@ -507,7 +386,6 @@ export function listDeploymentAliasesProtectionBypass2ToJSON(
     ),
   );
 }
-
 export function listDeploymentAliasesProtectionBypass2FromJSON(
   jsonString: string,
 ): SafeParseResult<ListDeploymentAliasesProtectionBypass2, SDKValidationError> {
@@ -523,24 +401,10 @@ export function listDeploymentAliasesProtectionBypass2FromJSON(
 export const ListDeploymentAliasesProtectionBypassScope$inboundSchema:
   z.ZodNativeEnum<typeof ListDeploymentAliasesProtectionBypassScope> = z
     .nativeEnum(ListDeploymentAliasesProtectionBypassScope);
-
 /** @internal */
 export const ListDeploymentAliasesProtectionBypassScope$outboundSchema:
   z.ZodNativeEnum<typeof ListDeploymentAliasesProtectionBypassScope> =
     ListDeploymentAliasesProtectionBypassScope$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListDeploymentAliasesProtectionBypassScope$ {
-  /** @deprecated use `ListDeploymentAliasesProtectionBypassScope$inboundSchema` instead. */
-  export const inboundSchema =
-    ListDeploymentAliasesProtectionBypassScope$inboundSchema;
-  /** @deprecated use `ListDeploymentAliasesProtectionBypassScope$outboundSchema` instead. */
-  export const outboundSchema =
-    ListDeploymentAliasesProtectionBypassScope$outboundSchema;
-}
 
 /** @internal */
 export const ListDeploymentAliasesProtectionBypass1$inboundSchema: z.ZodType<
@@ -553,7 +417,6 @@ export const ListDeploymentAliasesProtectionBypass1$inboundSchema: z.ZodType<
   scope: ListDeploymentAliasesProtectionBypassScope$inboundSchema,
   expires: z.number().optional(),
 });
-
 /** @internal */
 export type ListDeploymentAliasesProtectionBypass1$Outbound = {
   createdAt: number;
@@ -574,21 +437,6 @@ export const ListDeploymentAliasesProtectionBypass1$outboundSchema: z.ZodType<
   expires: z.number().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListDeploymentAliasesProtectionBypass1$ {
-  /** @deprecated use `ListDeploymentAliasesProtectionBypass1$inboundSchema` instead. */
-  export const inboundSchema =
-    ListDeploymentAliasesProtectionBypass1$inboundSchema;
-  /** @deprecated use `ListDeploymentAliasesProtectionBypass1$outboundSchema` instead. */
-  export const outboundSchema =
-    ListDeploymentAliasesProtectionBypass1$outboundSchema;
-  /** @deprecated use `ListDeploymentAliasesProtectionBypass1$Outbound` instead. */
-  export type Outbound = ListDeploymentAliasesProtectionBypass1$Outbound;
-}
-
 export function listDeploymentAliasesProtectionBypass1ToJSON(
   listDeploymentAliasesProtectionBypass1:
     ListDeploymentAliasesProtectionBypass1,
@@ -599,7 +447,6 @@ export function listDeploymentAliasesProtectionBypass1ToJSON(
     ),
   );
 }
-
 export function listDeploymentAliasesProtectionBypass1FromJSON(
   jsonString: string,
 ): SafeParseResult<ListDeploymentAliasesProtectionBypass1, SDKValidationError> {
@@ -622,7 +469,6 @@ export const ListDeploymentAliasesProtectionBypass$inboundSchema: z.ZodType<
   z.lazy(() => ListDeploymentAliasesProtectionBypass1$inboundSchema),
   z.lazy(() => ListDeploymentAliasesProtectionBypass3$inboundSchema),
 ]);
-
 /** @internal */
 export type ListDeploymentAliasesProtectionBypass$Outbound =
   | ListDeploymentAliasesProtectionBypass2$Outbound
@@ -642,21 +488,6 @@ export const ListDeploymentAliasesProtectionBypass$outboundSchema: z.ZodType<
   z.lazy(() => ListDeploymentAliasesProtectionBypass3$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListDeploymentAliasesProtectionBypass$ {
-  /** @deprecated use `ListDeploymentAliasesProtectionBypass$inboundSchema` instead. */
-  export const inboundSchema =
-    ListDeploymentAliasesProtectionBypass$inboundSchema;
-  /** @deprecated use `ListDeploymentAliasesProtectionBypass$outboundSchema` instead. */
-  export const outboundSchema =
-    ListDeploymentAliasesProtectionBypass$outboundSchema;
-  /** @deprecated use `ListDeploymentAliasesProtectionBypass$Outbound` instead. */
-  export type Outbound = ListDeploymentAliasesProtectionBypass$Outbound;
-}
-
 export function listDeploymentAliasesProtectionBypassToJSON(
   listDeploymentAliasesProtectionBypass: ListDeploymentAliasesProtectionBypass,
 ): string {
@@ -666,7 +497,6 @@ export function listDeploymentAliasesProtectionBypassToJSON(
     ),
   );
 }
-
 export function listDeploymentAliasesProtectionBypassFromJSON(
   jsonString: string,
 ): SafeParseResult<ListDeploymentAliasesProtectionBypass, SDKValidationError> {
@@ -694,7 +524,6 @@ export const Aliases$inboundSchema: z.ZodType<Aliases, z.ZodTypeDef, unknown> =
       ]),
     ).optional(),
   });
-
 /** @internal */
 export type Aliases$Outbound = {
   uid: string;
@@ -730,23 +559,9 @@ export const Aliases$outboundSchema: z.ZodType<
   ).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Aliases$ {
-  /** @deprecated use `Aliases$inboundSchema` instead. */
-  export const inboundSchema = Aliases$inboundSchema;
-  /** @deprecated use `Aliases$outboundSchema` instead. */
-  export const outboundSchema = Aliases$outboundSchema;
-  /** @deprecated use `Aliases$Outbound` instead. */
-  export type Outbound = Aliases$Outbound;
-}
-
 export function aliasesToJSON(aliases: Aliases): string {
   return JSON.stringify(Aliases$outboundSchema.parse(aliases));
 }
-
 export function aliasesFromJSON(
   jsonString: string,
 ): SafeParseResult<Aliases, SDKValidationError> {
@@ -765,7 +580,6 @@ export const ListDeploymentAliasesResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   aliases: z.array(z.lazy(() => Aliases$inboundSchema)),
 });
-
 /** @internal */
 export type ListDeploymentAliasesResponseBody$Outbound = {
   aliases: Array<Aliases$Outbound>;
@@ -780,20 +594,6 @@ export const ListDeploymentAliasesResponseBody$outboundSchema: z.ZodType<
   aliases: z.array(z.lazy(() => Aliases$outboundSchema)),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListDeploymentAliasesResponseBody$ {
-  /** @deprecated use `ListDeploymentAliasesResponseBody$inboundSchema` instead. */
-  export const inboundSchema = ListDeploymentAliasesResponseBody$inboundSchema;
-  /** @deprecated use `ListDeploymentAliasesResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    ListDeploymentAliasesResponseBody$outboundSchema;
-  /** @deprecated use `ListDeploymentAliasesResponseBody$Outbound` instead. */
-  export type Outbound = ListDeploymentAliasesResponseBody$Outbound;
-}
-
 export function listDeploymentAliasesResponseBodyToJSON(
   listDeploymentAliasesResponseBody: ListDeploymentAliasesResponseBody,
 ): string {
@@ -803,7 +603,6 @@ export function listDeploymentAliasesResponseBodyToJSON(
     ),
   );
 }
-
 export function listDeploymentAliasesResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ListDeploymentAliasesResponseBody, SDKValidationError> {

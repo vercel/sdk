@@ -97,7 +97,6 @@ export const DeleteSharedEnvVariableRequestBody$inboundSchema: z.ZodType<
 > = z.object({
   ids: z.array(z.string()),
 });
-
 /** @internal */
 export type DeleteSharedEnvVariableRequestBody$Outbound = {
   ids: Array<string>;
@@ -112,20 +111,6 @@ export const DeleteSharedEnvVariableRequestBody$outboundSchema: z.ZodType<
   ids: z.array(z.string()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteSharedEnvVariableRequestBody$ {
-  /** @deprecated use `DeleteSharedEnvVariableRequestBody$inboundSchema` instead. */
-  export const inboundSchema = DeleteSharedEnvVariableRequestBody$inboundSchema;
-  /** @deprecated use `DeleteSharedEnvVariableRequestBody$outboundSchema` instead. */
-  export const outboundSchema =
-    DeleteSharedEnvVariableRequestBody$outboundSchema;
-  /** @deprecated use `DeleteSharedEnvVariableRequestBody$Outbound` instead. */
-  export type Outbound = DeleteSharedEnvVariableRequestBody$Outbound;
-}
-
 export function deleteSharedEnvVariableRequestBodyToJSON(
   deleteSharedEnvVariableRequestBody: DeleteSharedEnvVariableRequestBody,
 ): string {
@@ -135,7 +120,6 @@ export function deleteSharedEnvVariableRequestBodyToJSON(
     ),
   );
 }
-
 export function deleteSharedEnvVariableRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteSharedEnvVariableRequestBody, SDKValidationError> {
@@ -162,7 +146,6 @@ export const DeleteSharedEnvVariableRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type DeleteSharedEnvVariableRequest$Outbound = {
   teamId?: string | undefined;
@@ -186,19 +169,6 @@ export const DeleteSharedEnvVariableRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteSharedEnvVariableRequest$ {
-  /** @deprecated use `DeleteSharedEnvVariableRequest$inboundSchema` instead. */
-  export const inboundSchema = DeleteSharedEnvVariableRequest$inboundSchema;
-  /** @deprecated use `DeleteSharedEnvVariableRequest$outboundSchema` instead. */
-  export const outboundSchema = DeleteSharedEnvVariableRequest$outboundSchema;
-  /** @deprecated use `DeleteSharedEnvVariableRequest$Outbound` instead. */
-  export type Outbound = DeleteSharedEnvVariableRequest$Outbound;
-}
-
 export function deleteSharedEnvVariableRequestToJSON(
   deleteSharedEnvVariableRequest: DeleteSharedEnvVariableRequest,
 ): string {
@@ -208,7 +178,6 @@ export function deleteSharedEnvVariableRequestToJSON(
     ),
   );
 }
-
 export function deleteSharedEnvVariableRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteSharedEnvVariableRequest, SDKValidationError> {
@@ -223,22 +192,10 @@ export function deleteSharedEnvVariableRequestFromJSON(
 export const DeleteSharedEnvVariableValue2$inboundSchema: z.ZodNativeEnum<
   typeof DeleteSharedEnvVariableValue2
 > = z.nativeEnum(DeleteSharedEnvVariableValue2);
-
 /** @internal */
 export const DeleteSharedEnvVariableValue2$outboundSchema: z.ZodNativeEnum<
   typeof DeleteSharedEnvVariableValue2
 > = DeleteSharedEnvVariableValue2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteSharedEnvVariableValue2$ {
-  /** @deprecated use `DeleteSharedEnvVariableValue2$inboundSchema` instead. */
-  export const inboundSchema = DeleteSharedEnvVariableValue2$inboundSchema;
-  /** @deprecated use `DeleteSharedEnvVariableValue2$outboundSchema` instead. */
-  export const outboundSchema = DeleteSharedEnvVariableValue2$outboundSchema;
-}
 
 /** @internal */
 export const DeleteSharedEnvVariableValue$inboundSchema: z.ZodType<
@@ -246,7 +203,6 @@ export const DeleteSharedEnvVariableValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.string(), z.array(DeleteSharedEnvVariableValue2$inboundSchema)]);
-
 /** @internal */
 export type DeleteSharedEnvVariableValue$Outbound = string | Array<string>;
 
@@ -260,19 +216,6 @@ export const DeleteSharedEnvVariableValue$outboundSchema: z.ZodType<
   z.array(DeleteSharedEnvVariableValue2$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteSharedEnvVariableValue$ {
-  /** @deprecated use `DeleteSharedEnvVariableValue$inboundSchema` instead. */
-  export const inboundSchema = DeleteSharedEnvVariableValue$inboundSchema;
-  /** @deprecated use `DeleteSharedEnvVariableValue$outboundSchema` instead. */
-  export const outboundSchema = DeleteSharedEnvVariableValue$outboundSchema;
-  /** @deprecated use `DeleteSharedEnvVariableValue$Outbound` instead. */
-  export type Outbound = DeleteSharedEnvVariableValue$Outbound;
-}
-
 export function deleteSharedEnvVariableValueToJSON(
   deleteSharedEnvVariableValue: DeleteSharedEnvVariableValue,
 ): string {
@@ -282,7 +225,6 @@ export function deleteSharedEnvVariableValueToJSON(
     ),
   );
 }
-
 export function deleteSharedEnvVariableValueFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteSharedEnvVariableValue, SDKValidationError> {
@@ -297,43 +239,19 @@ export function deleteSharedEnvVariableValueFromJSON(
 export const DeleteSharedEnvVariableTarget2$inboundSchema: z.ZodNativeEnum<
   typeof DeleteSharedEnvVariableTarget2
 > = z.nativeEnum(DeleteSharedEnvVariableTarget2);
-
 /** @internal */
 export const DeleteSharedEnvVariableTarget2$outboundSchema: z.ZodNativeEnum<
   typeof DeleteSharedEnvVariableTarget2
 > = DeleteSharedEnvVariableTarget2$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteSharedEnvVariableTarget2$ {
-  /** @deprecated use `DeleteSharedEnvVariableTarget2$inboundSchema` instead. */
-  export const inboundSchema = DeleteSharedEnvVariableTarget2$inboundSchema;
-  /** @deprecated use `DeleteSharedEnvVariableTarget2$outboundSchema` instead. */
-  export const outboundSchema = DeleteSharedEnvVariableTarget2$outboundSchema;
-}
-
 /** @internal */
 export const DeleteSharedEnvVariableTarget1$inboundSchema: z.ZodNativeEnum<
   typeof DeleteSharedEnvVariableTarget1
 > = z.nativeEnum(DeleteSharedEnvVariableTarget1);
-
 /** @internal */
 export const DeleteSharedEnvVariableTarget1$outboundSchema: z.ZodNativeEnum<
   typeof DeleteSharedEnvVariableTarget1
 > = DeleteSharedEnvVariableTarget1$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteSharedEnvVariableTarget1$ {
-  /** @deprecated use `DeleteSharedEnvVariableTarget1$inboundSchema` instead. */
-  export const inboundSchema = DeleteSharedEnvVariableTarget1$inboundSchema;
-  /** @deprecated use `DeleteSharedEnvVariableTarget1$outboundSchema` instead. */
-  export const outboundSchema = DeleteSharedEnvVariableTarget1$outboundSchema;
-}
 
 /** @internal */
 export const DeleteSharedEnvVariableTarget$inboundSchema: z.ZodType<
@@ -344,7 +262,6 @@ export const DeleteSharedEnvVariableTarget$inboundSchema: z.ZodType<
   z.array(DeleteSharedEnvVariableTarget1$inboundSchema),
   DeleteSharedEnvVariableTarget2$inboundSchema,
 ]);
-
 /** @internal */
 export type DeleteSharedEnvVariableTarget$Outbound = Array<string> | string;
 
@@ -358,19 +275,6 @@ export const DeleteSharedEnvVariableTarget$outboundSchema: z.ZodType<
   DeleteSharedEnvVariableTarget2$outboundSchema,
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteSharedEnvVariableTarget$ {
-  /** @deprecated use `DeleteSharedEnvVariableTarget$inboundSchema` instead. */
-  export const inboundSchema = DeleteSharedEnvVariableTarget$inboundSchema;
-  /** @deprecated use `DeleteSharedEnvVariableTarget$outboundSchema` instead. */
-  export const outboundSchema = DeleteSharedEnvVariableTarget$outboundSchema;
-  /** @deprecated use `DeleteSharedEnvVariableTarget$Outbound` instead. */
-  export type Outbound = DeleteSharedEnvVariableTarget$Outbound;
-}
-
 export function deleteSharedEnvVariableTargetToJSON(
   deleteSharedEnvVariableTarget: DeleteSharedEnvVariableTarget,
 ): string {
@@ -380,7 +284,6 @@ export function deleteSharedEnvVariableTargetToJSON(
     ),
   );
 }
-
 export function deleteSharedEnvVariableTargetFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteSharedEnvVariableTarget, SDKValidationError> {
@@ -415,7 +318,6 @@ export const DeleteSharedEnvVariableError$inboundSchema: z.ZodType<
   ]).optional(),
   project: z.string().optional(),
 });
-
 /** @internal */
 export type DeleteSharedEnvVariableError$Outbound = {
   code: string;
@@ -456,19 +358,6 @@ export const DeleteSharedEnvVariableError$outboundSchema: z.ZodType<
   project: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteSharedEnvVariableError$ {
-  /** @deprecated use `DeleteSharedEnvVariableError$inboundSchema` instead. */
-  export const inboundSchema = DeleteSharedEnvVariableError$inboundSchema;
-  /** @deprecated use `DeleteSharedEnvVariableError$outboundSchema` instead. */
-  export const outboundSchema = DeleteSharedEnvVariableError$outboundSchema;
-  /** @deprecated use `DeleteSharedEnvVariableError$Outbound` instead. */
-  export type Outbound = DeleteSharedEnvVariableError$Outbound;
-}
-
 export function deleteSharedEnvVariableErrorToJSON(
   deleteSharedEnvVariableError: DeleteSharedEnvVariableError,
 ): string {
@@ -478,7 +367,6 @@ export function deleteSharedEnvVariableErrorToJSON(
     ),
   );
 }
-
 export function deleteSharedEnvVariableErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteSharedEnvVariableError, SDKValidationError> {
@@ -497,7 +385,6 @@ export const DeleteSharedEnvVariableFailed$inboundSchema: z.ZodType<
 > = z.object({
   error: z.lazy(() => DeleteSharedEnvVariableError$inboundSchema),
 });
-
 /** @internal */
 export type DeleteSharedEnvVariableFailed$Outbound = {
   error: DeleteSharedEnvVariableError$Outbound;
@@ -512,19 +399,6 @@ export const DeleteSharedEnvVariableFailed$outboundSchema: z.ZodType<
   error: z.lazy(() => DeleteSharedEnvVariableError$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteSharedEnvVariableFailed$ {
-  /** @deprecated use `DeleteSharedEnvVariableFailed$inboundSchema` instead. */
-  export const inboundSchema = DeleteSharedEnvVariableFailed$inboundSchema;
-  /** @deprecated use `DeleteSharedEnvVariableFailed$outboundSchema` instead. */
-  export const outboundSchema = DeleteSharedEnvVariableFailed$outboundSchema;
-  /** @deprecated use `DeleteSharedEnvVariableFailed$Outbound` instead. */
-  export type Outbound = DeleteSharedEnvVariableFailed$Outbound;
-}
-
 export function deleteSharedEnvVariableFailedToJSON(
   deleteSharedEnvVariableFailed: DeleteSharedEnvVariableFailed,
 ): string {
@@ -534,7 +408,6 @@ export function deleteSharedEnvVariableFailedToJSON(
     ),
   );
 }
-
 export function deleteSharedEnvVariableFailedFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteSharedEnvVariableFailed, SDKValidationError> {
@@ -554,7 +427,6 @@ export const DeleteSharedEnvVariableResponseBody$inboundSchema: z.ZodType<
   deleted: z.array(z.string()),
   failed: z.array(z.lazy(() => DeleteSharedEnvVariableFailed$inboundSchema)),
 });
-
 /** @internal */
 export type DeleteSharedEnvVariableResponseBody$Outbound = {
   deleted: Array<string>;
@@ -571,21 +443,6 @@ export const DeleteSharedEnvVariableResponseBody$outboundSchema: z.ZodType<
   failed: z.array(z.lazy(() => DeleteSharedEnvVariableFailed$outboundSchema)),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteSharedEnvVariableResponseBody$ {
-  /** @deprecated use `DeleteSharedEnvVariableResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    DeleteSharedEnvVariableResponseBody$inboundSchema;
-  /** @deprecated use `DeleteSharedEnvVariableResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    DeleteSharedEnvVariableResponseBody$outboundSchema;
-  /** @deprecated use `DeleteSharedEnvVariableResponseBody$Outbound` instead. */
-  export type Outbound = DeleteSharedEnvVariableResponseBody$Outbound;
-}
-
 export function deleteSharedEnvVariableResponseBodyToJSON(
   deleteSharedEnvVariableResponseBody: DeleteSharedEnvVariableResponseBody,
 ): string {
@@ -595,7 +452,6 @@ export function deleteSharedEnvVariableResponseBodyToJSON(
     ),
   );
 }
-
 export function deleteSharedEnvVariableResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteSharedEnvVariableResponseBody, SDKValidationError> {

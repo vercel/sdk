@@ -97,61 +97,25 @@ export type InvitedTeamMember = {
 export const Role$inboundSchema: z.ZodNativeEnum<typeof Role> = z.nativeEnum(
   Role,
 );
-
 /** @internal */
 export const Role$outboundSchema: z.ZodNativeEnum<typeof Role> =
   Role$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Role$ {
-  /** @deprecated use `Role$inboundSchema` instead. */
-  export const inboundSchema = Role$inboundSchema;
-  /** @deprecated use `Role$outboundSchema` instead. */
-  export const outboundSchema = Role$outboundSchema;
-}
-
 /** @internal */
 export const TeamRoles$inboundSchema: z.ZodNativeEnum<typeof TeamRoles> = z
   .nativeEnum(TeamRoles);
-
 /** @internal */
 export const TeamRoles$outboundSchema: z.ZodNativeEnum<typeof TeamRoles> =
   TeamRoles$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TeamRoles$ {
-  /** @deprecated use `TeamRoles$inboundSchema` instead. */
-  export const inboundSchema = TeamRoles$inboundSchema;
-  /** @deprecated use `TeamRoles$outboundSchema` instead. */
-  export const outboundSchema = TeamRoles$outboundSchema;
-}
 
 /** @internal */
 export const TeamPermissions$inboundSchema: z.ZodNativeEnum<
   typeof TeamPermissions
 > = z.nativeEnum(TeamPermissions);
-
 /** @internal */
 export const TeamPermissions$outboundSchema: z.ZodNativeEnum<
   typeof TeamPermissions
 > = TeamPermissions$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TeamPermissions$ {
-  /** @deprecated use `TeamPermissions$inboundSchema` instead. */
-  export const inboundSchema = TeamPermissions$inboundSchema;
-  /** @deprecated use `TeamPermissions$outboundSchema` instead. */
-  export const outboundSchema = TeamPermissions$outboundSchema;
-}
 
 /** @internal */
 export const InvitedTeamMember$inboundSchema: z.ZodType<
@@ -166,7 +130,6 @@ export const InvitedTeamMember$inboundSchema: z.ZodType<
   teamRoles: z.array(TeamRoles$inboundSchema).optional(),
   teamPermissions: z.array(TeamPermissions$inboundSchema).optional(),
 });
-
 /** @internal */
 export type InvitedTeamMember$Outbound = {
   uid: string;
@@ -191,19 +154,6 @@ export const InvitedTeamMember$outboundSchema: z.ZodType<
   teamPermissions: z.array(TeamPermissions$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InvitedTeamMember$ {
-  /** @deprecated use `InvitedTeamMember$inboundSchema` instead. */
-  export const inboundSchema = InvitedTeamMember$inboundSchema;
-  /** @deprecated use `InvitedTeamMember$outboundSchema` instead. */
-  export const outboundSchema = InvitedTeamMember$outboundSchema;
-  /** @deprecated use `InvitedTeamMember$Outbound` instead. */
-  export type Outbound = InvitedTeamMember$Outbound;
-}
-
 export function invitedTeamMemberToJSON(
   invitedTeamMember: InvitedTeamMember,
 ): string {
@@ -211,7 +161,6 @@ export function invitedTeamMemberToJSON(
     InvitedTeamMember$outboundSchema.parse(invitedTeamMember),
   );
 }
-
 export function invitedTeamMemberFromJSON(
   jsonString: string,
 ): SafeParseResult<InvitedTeamMember, SDKValidationError> {

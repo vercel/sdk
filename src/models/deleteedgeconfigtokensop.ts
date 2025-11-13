@@ -33,7 +33,6 @@ export const DeleteEdgeConfigTokensRequestBody$inboundSchema: z.ZodType<
 > = z.object({
   tokens: z.array(z.string()),
 });
-
 /** @internal */
 export type DeleteEdgeConfigTokensRequestBody$Outbound = {
   tokens: Array<string>;
@@ -48,20 +47,6 @@ export const DeleteEdgeConfigTokensRequestBody$outboundSchema: z.ZodType<
   tokens: z.array(z.string()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteEdgeConfigTokensRequestBody$ {
-  /** @deprecated use `DeleteEdgeConfigTokensRequestBody$inboundSchema` instead. */
-  export const inboundSchema = DeleteEdgeConfigTokensRequestBody$inboundSchema;
-  /** @deprecated use `DeleteEdgeConfigTokensRequestBody$outboundSchema` instead. */
-  export const outboundSchema =
-    DeleteEdgeConfigTokensRequestBody$outboundSchema;
-  /** @deprecated use `DeleteEdgeConfigTokensRequestBody$Outbound` instead. */
-  export type Outbound = DeleteEdgeConfigTokensRequestBody$Outbound;
-}
-
 export function deleteEdgeConfigTokensRequestBodyToJSON(
   deleteEdgeConfigTokensRequestBody: DeleteEdgeConfigTokensRequestBody,
 ): string {
@@ -71,7 +56,6 @@ export function deleteEdgeConfigTokensRequestBodyToJSON(
     ),
   );
 }
-
 export function deleteEdgeConfigTokensRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteEdgeConfigTokensRequestBody, SDKValidationError> {
@@ -97,7 +81,6 @@ export const DeleteEdgeConfigTokensRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type DeleteEdgeConfigTokensRequest$Outbound = {
   edgeConfigId: string;
@@ -122,19 +105,6 @@ export const DeleteEdgeConfigTokensRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteEdgeConfigTokensRequest$ {
-  /** @deprecated use `DeleteEdgeConfigTokensRequest$inboundSchema` instead. */
-  export const inboundSchema = DeleteEdgeConfigTokensRequest$inboundSchema;
-  /** @deprecated use `DeleteEdgeConfigTokensRequest$outboundSchema` instead. */
-  export const outboundSchema = DeleteEdgeConfigTokensRequest$outboundSchema;
-  /** @deprecated use `DeleteEdgeConfigTokensRequest$Outbound` instead. */
-  export type Outbound = DeleteEdgeConfigTokensRequest$Outbound;
-}
-
 export function deleteEdgeConfigTokensRequestToJSON(
   deleteEdgeConfigTokensRequest: DeleteEdgeConfigTokensRequest,
 ): string {
@@ -144,7 +114,6 @@ export function deleteEdgeConfigTokensRequestToJSON(
     ),
   );
 }
-
 export function deleteEdgeConfigTokensRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteEdgeConfigTokensRequest, SDKValidationError> {

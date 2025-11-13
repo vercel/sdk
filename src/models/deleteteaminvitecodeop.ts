@@ -37,7 +37,6 @@ export const DeleteTeamInviteCodeRequest$inboundSchema: z.ZodType<
   inviteId: z.string(),
   teamId: z.string(),
 });
-
 /** @internal */
 export type DeleteTeamInviteCodeRequest$Outbound = {
   inviteId: string;
@@ -54,19 +53,6 @@ export const DeleteTeamInviteCodeRequest$outboundSchema: z.ZodType<
   teamId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteTeamInviteCodeRequest$ {
-  /** @deprecated use `DeleteTeamInviteCodeRequest$inboundSchema` instead. */
-  export const inboundSchema = DeleteTeamInviteCodeRequest$inboundSchema;
-  /** @deprecated use `DeleteTeamInviteCodeRequest$outboundSchema` instead. */
-  export const outboundSchema = DeleteTeamInviteCodeRequest$outboundSchema;
-  /** @deprecated use `DeleteTeamInviteCodeRequest$Outbound` instead. */
-  export type Outbound = DeleteTeamInviteCodeRequest$Outbound;
-}
-
 export function deleteTeamInviteCodeRequestToJSON(
   deleteTeamInviteCodeRequest: DeleteTeamInviteCodeRequest,
 ): string {
@@ -76,7 +62,6 @@ export function deleteTeamInviteCodeRequestToJSON(
     ),
   );
 }
-
 export function deleteTeamInviteCodeRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteTeamInviteCodeRequest, SDKValidationError> {
@@ -95,7 +80,6 @@ export const DeleteTeamInviteCodeResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
 });
-
 /** @internal */
 export type DeleteTeamInviteCodeResponseBody$Outbound = {
   id: string;
@@ -110,19 +94,6 @@ export const DeleteTeamInviteCodeResponseBody$outboundSchema: z.ZodType<
   id: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteTeamInviteCodeResponseBody$ {
-  /** @deprecated use `DeleteTeamInviteCodeResponseBody$inboundSchema` instead. */
-  export const inboundSchema = DeleteTeamInviteCodeResponseBody$inboundSchema;
-  /** @deprecated use `DeleteTeamInviteCodeResponseBody$outboundSchema` instead. */
-  export const outboundSchema = DeleteTeamInviteCodeResponseBody$outboundSchema;
-  /** @deprecated use `DeleteTeamInviteCodeResponseBody$Outbound` instead. */
-  export type Outbound = DeleteTeamInviteCodeResponseBody$Outbound;
-}
-
 export function deleteTeamInviteCodeResponseBodyToJSON(
   deleteTeamInviteCodeResponseBody: DeleteTeamInviteCodeResponseBody,
 ): string {
@@ -132,7 +103,6 @@ export function deleteTeamInviteCodeResponseBodyToJSON(
     ),
   );
 }
-
 export function deleteTeamInviteCodeResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteTeamInviteCodeResponseBody, SDKValidationError> {

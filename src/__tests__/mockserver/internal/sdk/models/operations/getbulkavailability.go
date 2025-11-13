@@ -19,8 +19,8 @@ func (o *GetBulkAvailabilityRequestBody) GetDomains() []string {
 }
 
 type GetBulkAvailabilityRequest struct {
-	TeamID      *string                        `queryParam:"style=form,explode=true,name=teamId"`
-	RequestBody GetBulkAvailabilityRequestBody `request:"mediaType=application/json"`
+	TeamID *string                        `queryParam:"style=form,explode=true,name=teamId"`
+	Body   GetBulkAvailabilityRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *GetBulkAvailabilityRequest) GetTeamID() *string {
@@ -30,11 +30,11 @@ func (o *GetBulkAvailabilityRequest) GetTeamID() *string {
 	return o.TeamID
 }
 
-func (o *GetBulkAvailabilityRequest) GetRequestBody() GetBulkAvailabilityRequestBody {
+func (o *GetBulkAvailabilityRequest) GetBody() GetBulkAvailabilityRequestBody {
 	if o == nil {
 		return GetBulkAvailabilityRequestBody{}
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type GetBulkAvailabilityResult struct {

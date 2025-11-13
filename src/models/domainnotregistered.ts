@@ -50,22 +50,10 @@ export class DomainNotRegistered extends VercelError {
 export const DomainNotRegisteredCode$inboundSchema: z.ZodNativeEnum<
   typeof DomainNotRegisteredCode
 > = z.nativeEnum(DomainNotRegisteredCode);
-
 /** @internal */
 export const DomainNotRegisteredCode$outboundSchema: z.ZodNativeEnum<
   typeof DomainNotRegisteredCode
 > = DomainNotRegisteredCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DomainNotRegisteredCode$ {
-  /** @deprecated use `DomainNotRegisteredCode$inboundSchema` instead. */
-  export const inboundSchema = DomainNotRegisteredCode$inboundSchema;
-  /** @deprecated use `DomainNotRegisteredCode$outboundSchema` instead. */
-  export const outboundSchema = DomainNotRegisteredCode$outboundSchema;
-}
 
 /** @internal */
 export const DomainNotRegistered$inboundSchema: z.ZodType<
@@ -107,16 +95,3 @@ export const DomainNotRegistered$outboundSchema: z.ZodType<
     code: DomainNotRegisteredCode$outboundSchema,
     message: z.string(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DomainNotRegistered$ {
-  /** @deprecated use `DomainNotRegistered$inboundSchema` instead. */
-  export const inboundSchema = DomainNotRegistered$inboundSchema;
-  /** @deprecated use `DomainNotRegistered$outboundSchema` instead. */
-  export const outboundSchema = DomainNotRegistered$outboundSchema;
-  /** @deprecated use `DomainNotRegistered$Outbound` instead. */
-  export type Outbound = DomainNotRegistered$Outbound;
-}

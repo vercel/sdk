@@ -102,22 +102,10 @@ export type CreateAccessGroupResponseBody = {
 export const CreateAccessGroupRole$inboundSchema: z.ZodNativeEnum<
   typeof CreateAccessGroupRole
 > = z.nativeEnum(CreateAccessGroupRole);
-
 /** @internal */
 export const CreateAccessGroupRole$outboundSchema: z.ZodNativeEnum<
   typeof CreateAccessGroupRole
 > = CreateAccessGroupRole$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAccessGroupRole$ {
-  /** @deprecated use `CreateAccessGroupRole$inboundSchema` instead. */
-  export const inboundSchema = CreateAccessGroupRole$inboundSchema;
-  /** @deprecated use `CreateAccessGroupRole$outboundSchema` instead. */
-  export const outboundSchema = CreateAccessGroupRole$outboundSchema;
-}
 
 /** @internal */
 export const CreateAccessGroupProjects$inboundSchema: z.ZodType<
@@ -128,7 +116,6 @@ export const CreateAccessGroupProjects$inboundSchema: z.ZodType<
   projectId: z.string(),
   role: z.nullable(CreateAccessGroupRole$inboundSchema),
 });
-
 /** @internal */
 export type CreateAccessGroupProjects$Outbound = {
   projectId: string;
@@ -145,19 +132,6 @@ export const CreateAccessGroupProjects$outboundSchema: z.ZodType<
   role: z.nullable(CreateAccessGroupRole$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAccessGroupProjects$ {
-  /** @deprecated use `CreateAccessGroupProjects$inboundSchema` instead. */
-  export const inboundSchema = CreateAccessGroupProjects$inboundSchema;
-  /** @deprecated use `CreateAccessGroupProjects$outboundSchema` instead. */
-  export const outboundSchema = CreateAccessGroupProjects$outboundSchema;
-  /** @deprecated use `CreateAccessGroupProjects$Outbound` instead. */
-  export type Outbound = CreateAccessGroupProjects$Outbound;
-}
-
 export function createAccessGroupProjectsToJSON(
   createAccessGroupProjects: CreateAccessGroupProjects,
 ): string {
@@ -165,7 +139,6 @@ export function createAccessGroupProjectsToJSON(
     CreateAccessGroupProjects$outboundSchema.parse(createAccessGroupProjects),
   );
 }
-
 export function createAccessGroupProjectsFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateAccessGroupProjects, SDKValidationError> {
@@ -187,7 +160,6 @@ export const CreateAccessGroupRequestBody$inboundSchema: z.ZodType<
     .optional(),
   membersToAdd: z.array(z.string()).optional(),
 });
-
 /** @internal */
 export type CreateAccessGroupRequestBody$Outbound = {
   name: string;
@@ -207,19 +179,6 @@ export const CreateAccessGroupRequestBody$outboundSchema: z.ZodType<
   membersToAdd: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAccessGroupRequestBody$ {
-  /** @deprecated use `CreateAccessGroupRequestBody$inboundSchema` instead. */
-  export const inboundSchema = CreateAccessGroupRequestBody$inboundSchema;
-  /** @deprecated use `CreateAccessGroupRequestBody$outboundSchema` instead. */
-  export const outboundSchema = CreateAccessGroupRequestBody$outboundSchema;
-  /** @deprecated use `CreateAccessGroupRequestBody$Outbound` instead. */
-  export type Outbound = CreateAccessGroupRequestBody$Outbound;
-}
-
 export function createAccessGroupRequestBodyToJSON(
   createAccessGroupRequestBody: CreateAccessGroupRequestBody,
 ): string {
@@ -229,7 +188,6 @@ export function createAccessGroupRequestBodyToJSON(
     ),
   );
 }
-
 export function createAccessGroupRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateAccessGroupRequestBody, SDKValidationError> {
@@ -254,7 +212,6 @@ export const CreateAccessGroupRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type CreateAccessGroupRequest$Outbound = {
   teamId?: string | undefined;
@@ -277,19 +234,6 @@ export const CreateAccessGroupRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAccessGroupRequest$ {
-  /** @deprecated use `CreateAccessGroupRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateAccessGroupRequest$inboundSchema;
-  /** @deprecated use `CreateAccessGroupRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateAccessGroupRequest$outboundSchema;
-  /** @deprecated use `CreateAccessGroupRequest$Outbound` instead. */
-  export type Outbound = CreateAccessGroupRequest$Outbound;
-}
-
 export function createAccessGroupRequestToJSON(
   createAccessGroupRequest: CreateAccessGroupRequest,
 ): string {
@@ -297,7 +241,6 @@ export function createAccessGroupRequestToJSON(
     CreateAccessGroupRequest$outboundSchema.parse(createAccessGroupRequest),
   );
 }
-
 export function createAccessGroupRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateAccessGroupRequest, SDKValidationError> {
@@ -312,22 +255,10 @@ export function createAccessGroupRequestFromJSON(
 export const CreateAccessGroupEntitlements$inboundSchema: z.ZodNativeEnum<
   typeof CreateAccessGroupEntitlements
 > = z.nativeEnum(CreateAccessGroupEntitlements);
-
 /** @internal */
 export const CreateAccessGroupEntitlements$outboundSchema: z.ZodNativeEnum<
   typeof CreateAccessGroupEntitlements
 > = CreateAccessGroupEntitlements$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAccessGroupEntitlements$ {
-  /** @deprecated use `CreateAccessGroupEntitlements$inboundSchema` instead. */
-  export const inboundSchema = CreateAccessGroupEntitlements$inboundSchema;
-  /** @deprecated use `CreateAccessGroupEntitlements$outboundSchema` instead. */
-  export const outboundSchema = CreateAccessGroupEntitlements$outboundSchema;
-}
 
 /** @internal */
 export const CreateAccessGroupResponseBody$inboundSchema: z.ZodType<
@@ -346,7 +277,6 @@ export const CreateAccessGroupResponseBody$inboundSchema: z.ZodType<
   teamRoles: z.array(z.string()).optional(),
   teamPermissions: z.array(z.string()).optional(),
 });
-
 /** @internal */
 export type CreateAccessGroupResponseBody$Outbound = {
   entitlements: Array<string>;
@@ -379,19 +309,6 @@ export const CreateAccessGroupResponseBody$outboundSchema: z.ZodType<
   teamPermissions: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAccessGroupResponseBody$ {
-  /** @deprecated use `CreateAccessGroupResponseBody$inboundSchema` instead. */
-  export const inboundSchema = CreateAccessGroupResponseBody$inboundSchema;
-  /** @deprecated use `CreateAccessGroupResponseBody$outboundSchema` instead. */
-  export const outboundSchema = CreateAccessGroupResponseBody$outboundSchema;
-  /** @deprecated use `CreateAccessGroupResponseBody$Outbound` instead. */
-  export type Outbound = CreateAccessGroupResponseBody$Outbound;
-}
-
 export function createAccessGroupResponseBodyToJSON(
   createAccessGroupResponseBody: CreateAccessGroupResponseBody,
 ): string {
@@ -401,7 +318,6 @@ export function createAccessGroupResponseBodyToJSON(
     ),
   );
 }
-
 export function createAccessGroupResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateAccessGroupResponseBody, SDKValidationError> {

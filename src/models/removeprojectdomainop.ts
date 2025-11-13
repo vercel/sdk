@@ -48,7 +48,6 @@ export const RemoveProjectDomainRequestBody$inboundSchema: z.ZodType<
 > = z.object({
   removeRedirects: z.boolean().optional(),
 });
-
 /** @internal */
 export type RemoveProjectDomainRequestBody$Outbound = {
   removeRedirects?: boolean | undefined;
@@ -63,19 +62,6 @@ export const RemoveProjectDomainRequestBody$outboundSchema: z.ZodType<
   removeRedirects: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectDomainRequestBody$ {
-  /** @deprecated use `RemoveProjectDomainRequestBody$inboundSchema` instead. */
-  export const inboundSchema = RemoveProjectDomainRequestBody$inboundSchema;
-  /** @deprecated use `RemoveProjectDomainRequestBody$outboundSchema` instead. */
-  export const outboundSchema = RemoveProjectDomainRequestBody$outboundSchema;
-  /** @deprecated use `RemoveProjectDomainRequestBody$Outbound` instead. */
-  export type Outbound = RemoveProjectDomainRequestBody$Outbound;
-}
-
 export function removeProjectDomainRequestBodyToJSON(
   removeProjectDomainRequestBody: RemoveProjectDomainRequestBody,
 ): string {
@@ -85,7 +71,6 @@ export function removeProjectDomainRequestBodyToJSON(
     ),
   );
 }
-
 export function removeProjectDomainRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectDomainRequestBody, SDKValidationError> {
@@ -113,7 +98,6 @@ export const RemoveProjectDomainRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type RemoveProjectDomainRequest$Outbound = {
   idOrName: string;
@@ -141,19 +125,6 @@ export const RemoveProjectDomainRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectDomainRequest$ {
-  /** @deprecated use `RemoveProjectDomainRequest$inboundSchema` instead. */
-  export const inboundSchema = RemoveProjectDomainRequest$inboundSchema;
-  /** @deprecated use `RemoveProjectDomainRequest$outboundSchema` instead. */
-  export const outboundSchema = RemoveProjectDomainRequest$outboundSchema;
-  /** @deprecated use `RemoveProjectDomainRequest$Outbound` instead. */
-  export type Outbound = RemoveProjectDomainRequest$Outbound;
-}
-
 export function removeProjectDomainRequestToJSON(
   removeProjectDomainRequest: RemoveProjectDomainRequest,
 ): string {
@@ -161,7 +132,6 @@ export function removeProjectDomainRequestToJSON(
     RemoveProjectDomainRequest$outboundSchema.parse(removeProjectDomainRequest),
   );
 }
-
 export function removeProjectDomainRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectDomainRequest, SDKValidationError> {
@@ -178,7 +148,6 @@ export const RemoveProjectDomainResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type RemoveProjectDomainResponseBody$Outbound = {};
 
@@ -189,19 +158,6 @@ export const RemoveProjectDomainResponseBody$outboundSchema: z.ZodType<
   RemoveProjectDomainResponseBody
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectDomainResponseBody$ {
-  /** @deprecated use `RemoveProjectDomainResponseBody$inboundSchema` instead. */
-  export const inboundSchema = RemoveProjectDomainResponseBody$inboundSchema;
-  /** @deprecated use `RemoveProjectDomainResponseBody$outboundSchema` instead. */
-  export const outboundSchema = RemoveProjectDomainResponseBody$outboundSchema;
-  /** @deprecated use `RemoveProjectDomainResponseBody$Outbound` instead. */
-  export type Outbound = RemoveProjectDomainResponseBody$Outbound;
-}
-
 export function removeProjectDomainResponseBodyToJSON(
   removeProjectDomainResponseBody: RemoveProjectDomainResponseBody,
 ): string {
@@ -211,7 +167,6 @@ export function removeProjectDomainResponseBodyToJSON(
     ),
   );
 }
-
 export function removeProjectDomainResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectDomainResponseBody, SDKValidationError> {

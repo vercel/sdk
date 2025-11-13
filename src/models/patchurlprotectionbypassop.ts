@@ -151,45 +151,19 @@ export type PatchUrlProtectionBypassRequest = {
 export const RequestBodyScope$inboundSchema: z.ZodNativeEnum<
   typeof RequestBodyScope
 > = z.nativeEnum(RequestBodyScope);
-
 /** @internal */
 export const RequestBodyScope$outboundSchema: z.ZodNativeEnum<
   typeof RequestBodyScope
 > = RequestBodyScope$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestBodyScope$ {
-  /** @deprecated use `RequestBodyScope$inboundSchema` instead. */
-  export const inboundSchema = RequestBodyScope$inboundSchema;
-  /** @deprecated use `RequestBodyScope$outboundSchema` instead. */
-  export const outboundSchema = RequestBodyScope$outboundSchema;
-}
-
 /** @internal */
 export const PatchUrlProtectionBypassRequestBodyAction$inboundSchema:
   z.ZodNativeEnum<typeof PatchUrlProtectionBypassRequestBodyAction> = z
     .nativeEnum(PatchUrlProtectionBypassRequestBodyAction);
-
 /** @internal */
 export const PatchUrlProtectionBypassRequestBodyAction$outboundSchema:
   z.ZodNativeEnum<typeof PatchUrlProtectionBypassRequestBodyAction> =
     PatchUrlProtectionBypassRequestBodyAction$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchUrlProtectionBypassRequestBodyAction$ {
-  /** @deprecated use `PatchUrlProtectionBypassRequestBodyAction$inboundSchema` instead. */
-  export const inboundSchema =
-    PatchUrlProtectionBypassRequestBodyAction$inboundSchema;
-  /** @deprecated use `PatchUrlProtectionBypassRequestBodyAction$outboundSchema` instead. */
-  export const outboundSchema =
-    PatchUrlProtectionBypassRequestBodyAction$outboundSchema;
-}
 
 /** @internal */
 export const Override$inboundSchema: z.ZodType<
@@ -200,7 +174,6 @@ export const Override$inboundSchema: z.ZodType<
   scope: RequestBodyScope$inboundSchema,
   action: PatchUrlProtectionBypassRequestBodyAction$inboundSchema,
 });
-
 /** @internal */
 export type Override$Outbound = {
   scope: string;
@@ -217,23 +190,9 @@ export const Override$outboundSchema: z.ZodType<
   action: PatchUrlProtectionBypassRequestBodyAction$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Override$ {
-  /** @deprecated use `Override$inboundSchema` instead. */
-  export const inboundSchema = Override$inboundSchema;
-  /** @deprecated use `Override$outboundSchema` instead. */
-  export const outboundSchema = Override$outboundSchema;
-  /** @deprecated use `Override$Outbound` instead. */
-  export type Outbound = Override$Outbound;
-}
-
 export function overrideToJSON(override: Override): string {
   return JSON.stringify(Override$outboundSchema.parse(override));
 }
-
 export function overrideFromJSON(
   jsonString: string,
 ): SafeParseResult<Override, SDKValidationError> {
@@ -252,7 +211,6 @@ export const PatchUrlProtectionBypassRequestBody3$inboundSchema: z.ZodType<
 > = z.object({
   override: z.lazy(() => Override$inboundSchema),
 });
-
 /** @internal */
 export type PatchUrlProtectionBypassRequestBody3$Outbound = {
   override: Override$Outbound;
@@ -267,21 +225,6 @@ export const PatchUrlProtectionBypassRequestBody3$outboundSchema: z.ZodType<
   override: z.lazy(() => Override$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchUrlProtectionBypassRequestBody3$ {
-  /** @deprecated use `PatchUrlProtectionBypassRequestBody3$inboundSchema` instead. */
-  export const inboundSchema =
-    PatchUrlProtectionBypassRequestBody3$inboundSchema;
-  /** @deprecated use `PatchUrlProtectionBypassRequestBody3$outboundSchema` instead. */
-  export const outboundSchema =
-    PatchUrlProtectionBypassRequestBody3$outboundSchema;
-  /** @deprecated use `PatchUrlProtectionBypassRequestBody3$Outbound` instead. */
-  export type Outbound = PatchUrlProtectionBypassRequestBody3$Outbound;
-}
-
 export function patchUrlProtectionBypassRequestBody3ToJSON(
   patchUrlProtectionBypassRequestBody3: PatchUrlProtectionBypassRequestBody3,
 ): string {
@@ -291,7 +234,6 @@ export function patchUrlProtectionBypassRequestBody3ToJSON(
     ),
   );
 }
-
 export function patchUrlProtectionBypassRequestBody3FromJSON(
   jsonString: string,
 ): SafeParseResult<PatchUrlProtectionBypassRequestBody3, SDKValidationError> {
@@ -306,21 +248,9 @@ export function patchUrlProtectionBypassRequestBody3FromJSON(
 /** @internal */
 export const ScopeAccess$inboundSchema: z.ZodNativeEnum<typeof ScopeAccess> = z
   .nativeEnum(ScopeAccess);
-
 /** @internal */
 export const ScopeAccess$outboundSchema: z.ZodNativeEnum<typeof ScopeAccess> =
   ScopeAccess$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ScopeAccess$ {
-  /** @deprecated use `ScopeAccess$inboundSchema` instead. */
-  export const inboundSchema = ScopeAccess$inboundSchema;
-  /** @deprecated use `ScopeAccess$outboundSchema` instead. */
-  export const outboundSchema = ScopeAccess$outboundSchema;
-}
 
 /** @internal */
 export const Scope2$inboundSchema: z.ZodType<Scope2, z.ZodTypeDef, unknown> = z
@@ -329,7 +259,6 @@ export const Scope2$inboundSchema: z.ZodType<Scope2, z.ZodTypeDef, unknown> = z
     email: z.string(),
     access: ScopeAccess$inboundSchema,
   });
-
 /** @internal */
 export type Scope2$Outbound = {
   userId?: string | undefined;
@@ -348,23 +277,9 @@ export const Scope2$outboundSchema: z.ZodType<
   access: ScopeAccess$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Scope2$ {
-  /** @deprecated use `Scope2$inboundSchema` instead. */
-  export const inboundSchema = Scope2$inboundSchema;
-  /** @deprecated use `Scope2$outboundSchema` instead. */
-  export const outboundSchema = Scope2$outboundSchema;
-  /** @deprecated use `Scope2$Outbound` instead. */
-  export type Outbound = Scope2$Outbound;
-}
-
 export function scope2ToJSON(scope2: Scope2): string {
   return JSON.stringify(Scope2$outboundSchema.parse(scope2));
 }
-
 export function scope2FromJSON(
   jsonString: string,
 ): SafeParseResult<Scope2, SDKValidationError> {
@@ -378,21 +293,9 @@ export function scope2FromJSON(
 /** @internal */
 export const Access$inboundSchema: z.ZodNativeEnum<typeof Access> = z
   .nativeEnum(Access);
-
 /** @internal */
 export const Access$outboundSchema: z.ZodNativeEnum<typeof Access> =
   Access$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Access$ {
-  /** @deprecated use `Access$inboundSchema` instead. */
-  export const inboundSchema = Access$inboundSchema;
-  /** @deprecated use `Access$outboundSchema` instead. */
-  export const outboundSchema = Access$outboundSchema;
-}
 
 /** @internal */
 export const Scope1$inboundSchema: z.ZodType<Scope1, z.ZodTypeDef, unknown> = z
@@ -401,7 +304,6 @@ export const Scope1$inboundSchema: z.ZodType<Scope1, z.ZodTypeDef, unknown> = z
     email: z.string().optional(),
     access: Access$inboundSchema,
   });
-
 /** @internal */
 export type Scope1$Outbound = {
   userId: string;
@@ -420,23 +322,9 @@ export const Scope1$outboundSchema: z.ZodType<
   access: Access$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Scope1$ {
-  /** @deprecated use `Scope1$inboundSchema` instead. */
-  export const inboundSchema = Scope1$inboundSchema;
-  /** @deprecated use `Scope1$outboundSchema` instead. */
-  export const outboundSchema = Scope1$outboundSchema;
-  /** @deprecated use `Scope1$Outbound` instead. */
-  export type Outbound = Scope1$Outbound;
-}
-
 export function scope1ToJSON(scope1: Scope1): string {
   return JSON.stringify(Scope1$outboundSchema.parse(scope1));
 }
-
 export function scope1FromJSON(
   jsonString: string,
 ): SafeParseResult<Scope1, SDKValidationError> {
@@ -453,7 +341,6 @@ export const Scope$inboundSchema: z.ZodType<Scope, z.ZodTypeDef, unknown> = z
     z.lazy(() => Scope1$inboundSchema),
     z.lazy(() => Scope2$inboundSchema),
   ]);
-
 /** @internal */
 export type Scope$Outbound = Scope1$Outbound | Scope2$Outbound;
 
@@ -467,23 +354,9 @@ export const Scope$outboundSchema: z.ZodType<
   z.lazy(() => Scope2$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Scope$ {
-  /** @deprecated use `Scope$inboundSchema` instead. */
-  export const inboundSchema = Scope$inboundSchema;
-  /** @deprecated use `Scope$outboundSchema` instead. */
-  export const outboundSchema = Scope$outboundSchema;
-  /** @deprecated use `Scope$Outbound` instead. */
-  export type Outbound = Scope$Outbound;
-}
-
 export function scopeToJSON(scope: Scope): string {
   return JSON.stringify(Scope$outboundSchema.parse(scope));
 }
-
 export function scopeFromJSON(
   jsonString: string,
 ): SafeParseResult<Scope, SDKValidationError> {
@@ -505,7 +378,6 @@ export const PatchUrlProtectionBypassRequestBody2$inboundSchema: z.ZodType<
     z.lazy(() => Scope2$inboundSchema),
   ]),
 });
-
 /** @internal */
 export type PatchUrlProtectionBypassRequestBody2$Outbound = {
   scope: Scope1$Outbound | Scope2$Outbound;
@@ -523,21 +395,6 @@ export const PatchUrlProtectionBypassRequestBody2$outboundSchema: z.ZodType<
   ]),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchUrlProtectionBypassRequestBody2$ {
-  /** @deprecated use `PatchUrlProtectionBypassRequestBody2$inboundSchema` instead. */
-  export const inboundSchema =
-    PatchUrlProtectionBypassRequestBody2$inboundSchema;
-  /** @deprecated use `PatchUrlProtectionBypassRequestBody2$outboundSchema` instead. */
-  export const outboundSchema =
-    PatchUrlProtectionBypassRequestBody2$outboundSchema;
-  /** @deprecated use `PatchUrlProtectionBypassRequestBody2$Outbound` instead. */
-  export type Outbound = PatchUrlProtectionBypassRequestBody2$Outbound;
-}
-
 export function patchUrlProtectionBypassRequestBody2ToJSON(
   patchUrlProtectionBypassRequestBody2: PatchUrlProtectionBypassRequestBody2,
 ): string {
@@ -547,7 +404,6 @@ export function patchUrlProtectionBypassRequestBody2ToJSON(
     ),
   );
 }
-
 export function patchUrlProtectionBypassRequestBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<PatchUrlProtectionBypassRequestBody2, SDKValidationError> {
@@ -568,7 +424,6 @@ export const RequestBodyRevoke$inboundSchema: z.ZodType<
   secret: z.string(),
   regenerate: z.boolean(),
 });
-
 /** @internal */
 export type RequestBodyRevoke$Outbound = {
   secret: string;
@@ -585,19 +440,6 @@ export const RequestBodyRevoke$outboundSchema: z.ZodType<
   regenerate: z.boolean(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestBodyRevoke$ {
-  /** @deprecated use `RequestBodyRevoke$inboundSchema` instead. */
-  export const inboundSchema = RequestBodyRevoke$inboundSchema;
-  /** @deprecated use `RequestBodyRevoke$outboundSchema` instead. */
-  export const outboundSchema = RequestBodyRevoke$outboundSchema;
-  /** @deprecated use `RequestBodyRevoke$Outbound` instead. */
-  export type Outbound = RequestBodyRevoke$Outbound;
-}
-
 export function requestBodyRevokeToJSON(
   requestBodyRevoke: RequestBodyRevoke,
 ): string {
@@ -605,7 +447,6 @@ export function requestBodyRevokeToJSON(
     RequestBodyRevoke$outboundSchema.parse(requestBodyRevoke),
   );
 }
-
 export function requestBodyRevokeFromJSON(
   jsonString: string,
 ): SafeParseResult<RequestBodyRevoke, SDKValidationError> {
@@ -625,7 +466,6 @@ export const PatchUrlProtectionBypassRequestBody1$inboundSchema: z.ZodType<
   ttl: z.number().optional(),
   revoke: z.lazy(() => RequestBodyRevoke$inboundSchema).optional(),
 });
-
 /** @internal */
 export type PatchUrlProtectionBypassRequestBody1$Outbound = {
   ttl?: number | undefined;
@@ -642,21 +482,6 @@ export const PatchUrlProtectionBypassRequestBody1$outboundSchema: z.ZodType<
   revoke: z.lazy(() => RequestBodyRevoke$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchUrlProtectionBypassRequestBody1$ {
-  /** @deprecated use `PatchUrlProtectionBypassRequestBody1$inboundSchema` instead. */
-  export const inboundSchema =
-    PatchUrlProtectionBypassRequestBody1$inboundSchema;
-  /** @deprecated use `PatchUrlProtectionBypassRequestBody1$outboundSchema` instead. */
-  export const outboundSchema =
-    PatchUrlProtectionBypassRequestBody1$outboundSchema;
-  /** @deprecated use `PatchUrlProtectionBypassRequestBody1$Outbound` instead. */
-  export type Outbound = PatchUrlProtectionBypassRequestBody1$Outbound;
-}
-
 export function patchUrlProtectionBypassRequestBody1ToJSON(
   patchUrlProtectionBypassRequestBody1: PatchUrlProtectionBypassRequestBody1,
 ): string {
@@ -666,7 +491,6 @@ export function patchUrlProtectionBypassRequestBody1ToJSON(
     ),
   );
 }
-
 export function patchUrlProtectionBypassRequestBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<PatchUrlProtectionBypassRequestBody1, SDKValidationError> {
@@ -688,7 +512,6 @@ export const PatchUrlProtectionBypassRequestBody$inboundSchema: z.ZodType<
   z.lazy(() => PatchUrlProtectionBypassRequestBody3$inboundSchema),
   z.lazy(() => PatchUrlProtectionBypassRequestBody1$inboundSchema),
 ]);
-
 /** @internal */
 export type PatchUrlProtectionBypassRequestBody$Outbound =
   | PatchUrlProtectionBypassRequestBody2$Outbound
@@ -706,21 +529,6 @@ export const PatchUrlProtectionBypassRequestBody$outboundSchema: z.ZodType<
   z.lazy(() => PatchUrlProtectionBypassRequestBody1$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchUrlProtectionBypassRequestBody$ {
-  /** @deprecated use `PatchUrlProtectionBypassRequestBody$inboundSchema` instead. */
-  export const inboundSchema =
-    PatchUrlProtectionBypassRequestBody$inboundSchema;
-  /** @deprecated use `PatchUrlProtectionBypassRequestBody$outboundSchema` instead. */
-  export const outboundSchema =
-    PatchUrlProtectionBypassRequestBody$outboundSchema;
-  /** @deprecated use `PatchUrlProtectionBypassRequestBody$Outbound` instead. */
-  export type Outbound = PatchUrlProtectionBypassRequestBody$Outbound;
-}
-
 export function patchUrlProtectionBypassRequestBodyToJSON(
   patchUrlProtectionBypassRequestBody: PatchUrlProtectionBypassRequestBody,
 ): string {
@@ -730,7 +538,6 @@ export function patchUrlProtectionBypassRequestBodyToJSON(
     ),
   );
 }
-
 export function patchUrlProtectionBypassRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchUrlProtectionBypassRequestBody, SDKValidationError> {
@@ -761,7 +568,6 @@ export const PatchUrlProtectionBypassRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type PatchUrlProtectionBypassRequest$Outbound = {
   id: string;
@@ -794,19 +600,6 @@ export const PatchUrlProtectionBypassRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchUrlProtectionBypassRequest$ {
-  /** @deprecated use `PatchUrlProtectionBypassRequest$inboundSchema` instead. */
-  export const inboundSchema = PatchUrlProtectionBypassRequest$inboundSchema;
-  /** @deprecated use `PatchUrlProtectionBypassRequest$outboundSchema` instead. */
-  export const outboundSchema = PatchUrlProtectionBypassRequest$outboundSchema;
-  /** @deprecated use `PatchUrlProtectionBypassRequest$Outbound` instead. */
-  export type Outbound = PatchUrlProtectionBypassRequest$Outbound;
-}
-
 export function patchUrlProtectionBypassRequestToJSON(
   patchUrlProtectionBypassRequest: PatchUrlProtectionBypassRequest,
 ): string {
@@ -816,7 +609,6 @@ export function patchUrlProtectionBypassRequestToJSON(
     ),
   );
 }
-
 export function patchUrlProtectionBypassRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchUrlProtectionBypassRequest, SDKValidationError> {

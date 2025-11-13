@@ -29,7 +29,6 @@ export const DeleteDrainRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type DeleteDrainRequest$Outbound = {
   id: string;
@@ -48,19 +47,6 @@ export const DeleteDrainRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteDrainRequest$ {
-  /** @deprecated use `DeleteDrainRequest$inboundSchema` instead. */
-  export const inboundSchema = DeleteDrainRequest$inboundSchema;
-  /** @deprecated use `DeleteDrainRequest$outboundSchema` instead. */
-  export const outboundSchema = DeleteDrainRequest$outboundSchema;
-  /** @deprecated use `DeleteDrainRequest$Outbound` instead. */
-  export type Outbound = DeleteDrainRequest$Outbound;
-}
-
 export function deleteDrainRequestToJSON(
   deleteDrainRequest: DeleteDrainRequest,
 ): string {
@@ -68,7 +54,6 @@ export function deleteDrainRequestToJSON(
     DeleteDrainRequest$outboundSchema.parse(deleteDrainRequest),
   );
 }
-
 export function deleteDrainRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteDrainRequest, SDKValidationError> {

@@ -26,7 +26,6 @@ export const FlagJSONValue$inboundSchema: z.ZodType<
   z.array(z.nullable(z.lazy(() => FlagJSONValue$inboundSchema))),
   z.record(z.nullable(z.lazy(() => FlagJSONValue$inboundSchema))),
 ]);
-
 /** @internal */
 export type FlagJSONValue$Outbound =
   | string
@@ -48,23 +47,9 @@ export const FlagJSONValue$outboundSchema: z.ZodType<
   z.record(z.nullable(z.lazy(() => FlagJSONValue$outboundSchema))),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FlagJSONValue$ {
-  /** @deprecated use `FlagJSONValue$inboundSchema` instead. */
-  export const inboundSchema = FlagJSONValue$inboundSchema;
-  /** @deprecated use `FlagJSONValue$outboundSchema` instead. */
-  export const outboundSchema = FlagJSONValue$outboundSchema;
-  /** @deprecated use `FlagJSONValue$Outbound` instead. */
-  export type Outbound = FlagJSONValue$Outbound;
-}
-
 export function flagJSONValueToJSON(flagJSONValue: FlagJSONValue): string {
   return JSON.stringify(FlagJSONValue$outboundSchema.parse(flagJSONValue));
 }
-
 export function flagJSONValueFromJSON(
   jsonString: string,
 ): SafeParseResult<FlagJSONValue, SDKValidationError> {

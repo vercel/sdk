@@ -11,6 +11,10 @@ import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
+  DomainCannotBeTransferedOutUntil,
+  DomainCannotBeTransferedOutUntil$inboundSchema,
+} from "../models/domaincannotbetransferedoutuntil.js";
+import {
   DomainNotFound,
   DomainNotFound$inboundSchema,
 } from "../models/domainnotfound.js";
@@ -66,6 +70,7 @@ export function domainsRegistrarGetDomainAuthCode(
     | Unauthorized
     | GetDomainAuthCodeDomainsRegistrarResponseResponseBody
     | DomainNotFound
+    | DomainCannotBeTransferedOutUntil
     | TooManyRequests
     | InternalServerError
     | VercelError
@@ -97,6 +102,7 @@ async function $do(
       | Unauthorized
       | GetDomainAuthCodeDomainsRegistrarResponseResponseBody
       | DomainNotFound
+      | DomainCannotBeTransferedOutUntil
       | TooManyRequests
       | InternalServerError
       | VercelError
@@ -178,7 +184,7 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["400", "401", "403", "404", "429", "4XX", "500", "5XX"],
+    errorCodes: ["400", "401", "403", "404", "409", "429", "4XX", "500", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -197,6 +203,7 @@ async function $do(
     | Unauthorized
     | GetDomainAuthCodeDomainsRegistrarResponseResponseBody
     | DomainNotFound
+    | DomainCannotBeTransferedOutUntil
     | TooManyRequests
     | InternalServerError
     | VercelError
@@ -216,6 +223,7 @@ async function $do(
       GetDomainAuthCodeDomainsRegistrarResponseResponseBody$inboundSchema,
     ),
     M.jsonErr(404, DomainNotFound$inboundSchema),
+    M.jsonErr(409, DomainCannotBeTransferedOutUntil$inboundSchema),
     M.jsonErr(429, TooManyRequests$inboundSchema),
     M.jsonErr(500, InternalServerError$inboundSchema),
     M.fail("4XX"),

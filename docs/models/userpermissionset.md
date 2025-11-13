@@ -5,17 +5,11 @@
 ```typescript
 import { UserPermissionSet } from "@vercel/sdk/models/userevent.js";
 
-let value: UserPermissionSet = {
-  type: "list",
-  items: {
-    type: {},
-  },
-};
+let value: UserPermissionSet = "read:user";
 ```
 
-## Fields
+## Values
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `type`                                                                 | [models.UserEventPayload157Type](../models/usereventpayload157type.md) | :heavy_check_mark:                                                     | N/A                                                                    |
-| `items`                                                                | [models.Items](../models/items.md)                                     | :heavy_check_mark:                                                     | N/A                                                                    |
+```typescript
+"read:user"
+```

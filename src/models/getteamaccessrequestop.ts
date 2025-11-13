@@ -117,7 +117,6 @@ export const GetTeamAccessRequestRequest$inboundSchema: z.ZodType<
   userId: z.string(),
   teamId: z.string(),
 });
-
 /** @internal */
 export type GetTeamAccessRequestRequest$Outbound = {
   userId: string;
@@ -134,19 +133,6 @@ export const GetTeamAccessRequestRequest$outboundSchema: z.ZodType<
   teamId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTeamAccessRequestRequest$ {
-  /** @deprecated use `GetTeamAccessRequestRequest$inboundSchema` instead. */
-  export const inboundSchema = GetTeamAccessRequestRequest$inboundSchema;
-  /** @deprecated use `GetTeamAccessRequestRequest$outboundSchema` instead. */
-  export const outboundSchema = GetTeamAccessRequestRequest$outboundSchema;
-  /** @deprecated use `GetTeamAccessRequestRequest$Outbound` instead. */
-  export type Outbound = GetTeamAccessRequestRequest$Outbound;
-}
-
 export function getTeamAccessRequestRequestToJSON(
   getTeamAccessRequestRequest: GetTeamAccessRequestRequest,
 ): string {
@@ -156,7 +142,6 @@ export function getTeamAccessRequestRequestToJSON(
     ),
   );
 }
-
 export function getTeamAccessRequestRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamAccessRequestRequest, SDKValidationError> {
@@ -171,22 +156,10 @@ export function getTeamAccessRequestRequestFromJSON(
 export const GetTeamAccessRequestOrigin$inboundSchema: z.ZodNativeEnum<
   typeof GetTeamAccessRequestOrigin
 > = z.nativeEnum(GetTeamAccessRequestOrigin);
-
 /** @internal */
 export const GetTeamAccessRequestOrigin$outboundSchema: z.ZodNativeEnum<
   typeof GetTeamAccessRequestOrigin
 > = GetTeamAccessRequestOrigin$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTeamAccessRequestOrigin$ {
-  /** @deprecated use `GetTeamAccessRequestOrigin$inboundSchema` instead. */
-  export const inboundSchema = GetTeamAccessRequestOrigin$inboundSchema;
-  /** @deprecated use `GetTeamAccessRequestOrigin$outboundSchema` instead. */
-  export const outboundSchema = GetTeamAccessRequestOrigin$outboundSchema;
-}
 
 /** @internal */
 export const GetTeamAccessRequestGitUserId$inboundSchema: z.ZodType<
@@ -194,7 +167,6 @@ export const GetTeamAccessRequestGitUserId$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.string(), z.number()]);
-
 /** @internal */
 export type GetTeamAccessRequestGitUserId$Outbound = string | number;
 
@@ -205,19 +177,6 @@ export const GetTeamAccessRequestGitUserId$outboundSchema: z.ZodType<
   GetTeamAccessRequestGitUserId
 > = z.union([z.string(), z.number()]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTeamAccessRequestGitUserId$ {
-  /** @deprecated use `GetTeamAccessRequestGitUserId$inboundSchema` instead. */
-  export const inboundSchema = GetTeamAccessRequestGitUserId$inboundSchema;
-  /** @deprecated use `GetTeamAccessRequestGitUserId$outboundSchema` instead. */
-  export const outboundSchema = GetTeamAccessRequestGitUserId$outboundSchema;
-  /** @deprecated use `GetTeamAccessRequestGitUserId$Outbound` instead. */
-  export type Outbound = GetTeamAccessRequestGitUserId$Outbound;
-}
-
 export function getTeamAccessRequestGitUserIdToJSON(
   getTeamAccessRequestGitUserId: GetTeamAccessRequestGitUserId,
 ): string {
@@ -227,7 +186,6 @@ export function getTeamAccessRequestGitUserIdToJSON(
     ),
   );
 }
-
 export function getTeamAccessRequestGitUserIdFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamAccessRequestGitUserId, SDKValidationError> {
@@ -256,7 +214,6 @@ export const GetTeamAccessRequestJoinedFrom$inboundSchema: z.ZodType<
   dsyncUserId: z.string().optional(),
   dsyncConnectedAt: z.number().optional(),
 });
-
 /** @internal */
 export type GetTeamAccessRequestJoinedFrom$Outbound = {
   origin: string;
@@ -291,19 +248,6 @@ export const GetTeamAccessRequestJoinedFrom$outboundSchema: z.ZodType<
   dsyncConnectedAt: z.number().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTeamAccessRequestJoinedFrom$ {
-  /** @deprecated use `GetTeamAccessRequestJoinedFrom$inboundSchema` instead. */
-  export const inboundSchema = GetTeamAccessRequestJoinedFrom$inboundSchema;
-  /** @deprecated use `GetTeamAccessRequestJoinedFrom$outboundSchema` instead. */
-  export const outboundSchema = GetTeamAccessRequestJoinedFrom$outboundSchema;
-  /** @deprecated use `GetTeamAccessRequestJoinedFrom$Outbound` instead. */
-  export type Outbound = GetTeamAccessRequestJoinedFrom$Outbound;
-}
-
 export function getTeamAccessRequestJoinedFromToJSON(
   getTeamAccessRequestJoinedFrom: GetTeamAccessRequestJoinedFrom,
 ): string {
@@ -313,7 +257,6 @@ export function getTeamAccessRequestJoinedFromToJSON(
     ),
   );
 }
-
 export function getTeamAccessRequestJoinedFromFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamAccessRequestJoinedFrom, SDKValidationError> {
@@ -332,7 +275,6 @@ export const GetTeamAccessRequestGithub$inboundSchema: z.ZodType<
 > = z.object({
   login: z.string().optional(),
 });
-
 /** @internal */
 export type GetTeamAccessRequestGithub$Outbound = {
   login?: string | undefined;
@@ -347,19 +289,6 @@ export const GetTeamAccessRequestGithub$outboundSchema: z.ZodType<
   login: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTeamAccessRequestGithub$ {
-  /** @deprecated use `GetTeamAccessRequestGithub$inboundSchema` instead. */
-  export const inboundSchema = GetTeamAccessRequestGithub$inboundSchema;
-  /** @deprecated use `GetTeamAccessRequestGithub$outboundSchema` instead. */
-  export const outboundSchema = GetTeamAccessRequestGithub$outboundSchema;
-  /** @deprecated use `GetTeamAccessRequestGithub$Outbound` instead. */
-  export type Outbound = GetTeamAccessRequestGithub$Outbound;
-}
-
 export function getTeamAccessRequestGithubToJSON(
   getTeamAccessRequestGithub: GetTeamAccessRequestGithub,
 ): string {
@@ -367,7 +296,6 @@ export function getTeamAccessRequestGithubToJSON(
     GetTeamAccessRequestGithub$outboundSchema.parse(getTeamAccessRequestGithub),
   );
 }
-
 export function getTeamAccessRequestGithubFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamAccessRequestGithub, SDKValidationError> {
@@ -386,7 +314,6 @@ export const GetTeamAccessRequestGitlab$inboundSchema: z.ZodType<
 > = z.object({
   login: z.string().optional(),
 });
-
 /** @internal */
 export type GetTeamAccessRequestGitlab$Outbound = {
   login?: string | undefined;
@@ -401,19 +328,6 @@ export const GetTeamAccessRequestGitlab$outboundSchema: z.ZodType<
   login: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTeamAccessRequestGitlab$ {
-  /** @deprecated use `GetTeamAccessRequestGitlab$inboundSchema` instead. */
-  export const inboundSchema = GetTeamAccessRequestGitlab$inboundSchema;
-  /** @deprecated use `GetTeamAccessRequestGitlab$outboundSchema` instead. */
-  export const outboundSchema = GetTeamAccessRequestGitlab$outboundSchema;
-  /** @deprecated use `GetTeamAccessRequestGitlab$Outbound` instead. */
-  export type Outbound = GetTeamAccessRequestGitlab$Outbound;
-}
-
 export function getTeamAccessRequestGitlabToJSON(
   getTeamAccessRequestGitlab: GetTeamAccessRequestGitlab,
 ): string {
@@ -421,7 +335,6 @@ export function getTeamAccessRequestGitlabToJSON(
     GetTeamAccessRequestGitlab$outboundSchema.parse(getTeamAccessRequestGitlab),
   );
 }
-
 export function getTeamAccessRequestGitlabFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamAccessRequestGitlab, SDKValidationError> {
@@ -440,7 +353,6 @@ export const GetTeamAccessRequestBitbucket$inboundSchema: z.ZodType<
 > = z.object({
   login: z.string().optional(),
 });
-
 /** @internal */
 export type GetTeamAccessRequestBitbucket$Outbound = {
   login?: string | undefined;
@@ -455,19 +367,6 @@ export const GetTeamAccessRequestBitbucket$outboundSchema: z.ZodType<
   login: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTeamAccessRequestBitbucket$ {
-  /** @deprecated use `GetTeamAccessRequestBitbucket$inboundSchema` instead. */
-  export const inboundSchema = GetTeamAccessRequestBitbucket$inboundSchema;
-  /** @deprecated use `GetTeamAccessRequestBitbucket$outboundSchema` instead. */
-  export const outboundSchema = GetTeamAccessRequestBitbucket$outboundSchema;
-  /** @deprecated use `GetTeamAccessRequestBitbucket$Outbound` instead. */
-  export type Outbound = GetTeamAccessRequestBitbucket$Outbound;
-}
-
 export function getTeamAccessRequestBitbucketToJSON(
   getTeamAccessRequestBitbucket: GetTeamAccessRequestBitbucket,
 ): string {
@@ -477,7 +376,6 @@ export function getTeamAccessRequestBitbucketToJSON(
     ),
   );
 }
-
 export function getTeamAccessRequestBitbucketFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamAccessRequestBitbucket, SDKValidationError> {
@@ -505,7 +403,6 @@ export const GetTeamAccessRequestResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => GetTeamAccessRequestBitbucket$inboundSchema),
   ),
 });
-
 /** @internal */
 export type GetTeamAccessRequestResponseBody$Outbound = {
   teamSlug: string;
@@ -536,19 +433,6 @@ export const GetTeamAccessRequestResponseBody$outboundSchema: z.ZodType<
   ),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTeamAccessRequestResponseBody$ {
-  /** @deprecated use `GetTeamAccessRequestResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetTeamAccessRequestResponseBody$inboundSchema;
-  /** @deprecated use `GetTeamAccessRequestResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetTeamAccessRequestResponseBody$outboundSchema;
-  /** @deprecated use `GetTeamAccessRequestResponseBody$Outbound` instead. */
-  export type Outbound = GetTeamAccessRequestResponseBody$Outbound;
-}
-
 export function getTeamAccessRequestResponseBodyToJSON(
   getTeamAccessRequestResponseBody: GetTeamAccessRequestResponseBody,
 ): string {
@@ -558,7 +442,6 @@ export function getTeamAccessRequestResponseBodyToJSON(
     ),
   );
 }
-
 export function getTeamAccessRequestResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamAccessRequestResponseBody, SDKValidationError> {

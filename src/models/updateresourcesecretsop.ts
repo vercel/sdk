@@ -61,7 +61,6 @@ export const UpdateResourceSecretsEnvironmentOverrides$inboundSchema: z.ZodType<
   preview: z.string().optional(),
   production: z.string().optional(),
 });
-
 /** @internal */
 export type UpdateResourceSecretsEnvironmentOverrides$Outbound = {
   development?: string | undefined;
@@ -81,21 +80,6 @@ export const UpdateResourceSecretsEnvironmentOverrides$outboundSchema:
     production: z.string().optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateResourceSecretsEnvironmentOverrides$ {
-  /** @deprecated use `UpdateResourceSecretsEnvironmentOverrides$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateResourceSecretsEnvironmentOverrides$inboundSchema;
-  /** @deprecated use `UpdateResourceSecretsEnvironmentOverrides$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateResourceSecretsEnvironmentOverrides$outboundSchema;
-  /** @deprecated use `UpdateResourceSecretsEnvironmentOverrides$Outbound` instead. */
-  export type Outbound = UpdateResourceSecretsEnvironmentOverrides$Outbound;
-}
-
 export function updateResourceSecretsEnvironmentOverridesToJSON(
   updateResourceSecretsEnvironmentOverrides:
     UpdateResourceSecretsEnvironmentOverrides,
@@ -106,7 +90,6 @@ export function updateResourceSecretsEnvironmentOverridesToJSON(
     ),
   );
 }
-
 export function updateResourceSecretsEnvironmentOverridesFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -136,7 +119,6 @@ export const UpdateResourceSecretsSecrets$inboundSchema: z.ZodType<
     UpdateResourceSecretsEnvironmentOverrides$inboundSchema
   ).optional(),
 });
-
 /** @internal */
 export type UpdateResourceSecretsSecrets$Outbound = {
   name: string;
@@ -161,19 +143,6 @@ export const UpdateResourceSecretsSecrets$outboundSchema: z.ZodType<
   ).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateResourceSecretsSecrets$ {
-  /** @deprecated use `UpdateResourceSecretsSecrets$inboundSchema` instead. */
-  export const inboundSchema = UpdateResourceSecretsSecrets$inboundSchema;
-  /** @deprecated use `UpdateResourceSecretsSecrets$outboundSchema` instead. */
-  export const outboundSchema = UpdateResourceSecretsSecrets$outboundSchema;
-  /** @deprecated use `UpdateResourceSecretsSecrets$Outbound` instead. */
-  export type Outbound = UpdateResourceSecretsSecrets$Outbound;
-}
-
 export function updateResourceSecretsSecretsToJSON(
   updateResourceSecretsSecrets: UpdateResourceSecretsSecrets,
 ): string {
@@ -183,7 +152,6 @@ export function updateResourceSecretsSecretsToJSON(
     ),
   );
 }
-
 export function updateResourceSecretsSecretsFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateResourceSecretsSecrets, SDKValidationError> {
@@ -203,7 +171,6 @@ export const UpdateResourceSecretsRequestBody$inboundSchema: z.ZodType<
   secrets: z.array(z.lazy(() => UpdateResourceSecretsSecrets$inboundSchema)),
   partial: z.boolean().optional(),
 });
-
 /** @internal */
 export type UpdateResourceSecretsRequestBody$Outbound = {
   secrets: Array<UpdateResourceSecretsSecrets$Outbound>;
@@ -220,19 +187,6 @@ export const UpdateResourceSecretsRequestBody$outboundSchema: z.ZodType<
   partial: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateResourceSecretsRequestBody$ {
-  /** @deprecated use `UpdateResourceSecretsRequestBody$inboundSchema` instead. */
-  export const inboundSchema = UpdateResourceSecretsRequestBody$inboundSchema;
-  /** @deprecated use `UpdateResourceSecretsRequestBody$outboundSchema` instead. */
-  export const outboundSchema = UpdateResourceSecretsRequestBody$outboundSchema;
-  /** @deprecated use `UpdateResourceSecretsRequestBody$Outbound` instead. */
-  export type Outbound = UpdateResourceSecretsRequestBody$Outbound;
-}
-
 export function updateResourceSecretsRequestBodyToJSON(
   updateResourceSecretsRequestBody: UpdateResourceSecretsRequestBody,
 ): string {
@@ -242,7 +196,6 @@ export function updateResourceSecretsRequestBodyToJSON(
     ),
   );
 }
-
 export function updateResourceSecretsRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateResourceSecretsRequestBody, SDKValidationError> {
@@ -268,7 +221,6 @@ export const UpdateResourceSecretsRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type UpdateResourceSecretsRequest$Outbound = {
   integrationConfigurationId: string;
@@ -293,19 +245,6 @@ export const UpdateResourceSecretsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateResourceSecretsRequest$ {
-  /** @deprecated use `UpdateResourceSecretsRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateResourceSecretsRequest$inboundSchema;
-  /** @deprecated use `UpdateResourceSecretsRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateResourceSecretsRequest$outboundSchema;
-  /** @deprecated use `UpdateResourceSecretsRequest$Outbound` instead. */
-  export type Outbound = UpdateResourceSecretsRequest$Outbound;
-}
-
 export function updateResourceSecretsRequestToJSON(
   updateResourceSecretsRequest: UpdateResourceSecretsRequest,
 ): string {
@@ -315,7 +254,6 @@ export function updateResourceSecretsRequestToJSON(
     ),
   );
 }
-
 export function updateResourceSecretsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateResourceSecretsRequest, SDKValidationError> {

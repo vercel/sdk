@@ -46,8 +46,8 @@ type DeleteTeamRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID string `pathParam:"style=simple,explode=false,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string               `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody DeleteTeamRequestBody `request:"mediaType=application/json"`
+	Slug *string               `queryParam:"style=form,explode=true,name=slug"`
+	Body DeleteTeamRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *DeleteTeamRequest) GetNewDefaultTeamID() *string {
@@ -71,11 +71,11 @@ func (o *DeleteTeamRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *DeleteTeamRequest) GetRequestBody() DeleteTeamRequestBody {
+func (o *DeleteTeamRequest) GetBody() DeleteTeamRequestBody {
 	if o == nil {
 		return DeleteTeamRequestBody{}
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 // DeleteTeamResponseBody - The Team was successfully deleted

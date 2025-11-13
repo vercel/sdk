@@ -332,42 +332,18 @@ export type GetConfigurationsResponseBody =
 export const View$inboundSchema: z.ZodNativeEnum<typeof View> = z.nativeEnum(
   View,
 );
-
 /** @internal */
 export const View$outboundSchema: z.ZodNativeEnum<typeof View> =
   View$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace View$ {
-  /** @deprecated use `View$inboundSchema` instead. */
-  export const inboundSchema = View$inboundSchema;
-  /** @deprecated use `View$outboundSchema` instead. */
-  export const outboundSchema = View$outboundSchema;
-}
 
 /** @internal */
 export const InstallationType$inboundSchema: z.ZodNativeEnum<
   typeof InstallationType
 > = z.nativeEnum(InstallationType);
-
 /** @internal */
 export const InstallationType$outboundSchema: z.ZodNativeEnum<
   typeof InstallationType
 > = InstallationType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InstallationType$ {
-  /** @deprecated use `InstallationType$inboundSchema` instead. */
-  export const inboundSchema = InstallationType$inboundSchema;
-  /** @deprecated use `InstallationType$outboundSchema` instead. */
-  export const outboundSchema = InstallationType$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationsRequest$inboundSchema: z.ZodType<
@@ -381,7 +357,6 @@ export const GetConfigurationsRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type GetConfigurationsRequest$Outbound = {
   view: string;
@@ -404,19 +379,6 @@ export const GetConfigurationsRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationsRequest$ {
-  /** @deprecated use `GetConfigurationsRequest$inboundSchema` instead. */
-  export const inboundSchema = GetConfigurationsRequest$inboundSchema;
-  /** @deprecated use `GetConfigurationsRequest$outboundSchema` instead. */
-  export const outboundSchema = GetConfigurationsRequest$outboundSchema;
-  /** @deprecated use `GetConfigurationsRequest$Outbound` instead. */
-  export type Outbound = GetConfigurationsRequest$Outbound;
-}
-
 export function getConfigurationsRequestToJSON(
   getConfigurationsRequest: GetConfigurationsRequest,
 ): string {
@@ -424,7 +386,6 @@ export function getConfigurationsRequestToJSON(
     GetConfigurationsRequest$outboundSchema.parse(getConfigurationsRequest),
   );
 }
-
 export function getConfigurationsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetConfigurationsRequest, SDKValidationError> {
@@ -438,21 +399,9 @@ export function getConfigurationsRequestFromJSON(
 /** @internal */
 export const TagIds$inboundSchema: z.ZodNativeEnum<typeof TagIds> = z
   .nativeEnum(TagIds);
-
 /** @internal */
 export const TagIds$outboundSchema: z.ZodNativeEnum<typeof TagIds> =
   TagIds$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TagIds$ {
-  /** @deprecated use `TagIds$inboundSchema` instead. */
-  export const inboundSchema = TagIds$inboundSchema;
-  /** @deprecated use `TagIds$outboundSchema` instead. */
-  export const outboundSchema = TagIds$outboundSchema;
-}
 
 /** @internal */
 export const ResponseBodyIntegration$inboundSchema: z.ZodType<
@@ -467,7 +416,6 @@ export const ResponseBodyIntegration$inboundSchema: z.ZodType<
   assignedBetaLabelAt: z.number().optional(),
   tagIds: z.array(TagIds$inboundSchema).optional(),
 });
-
 /** @internal */
 export type ResponseBodyIntegration$Outbound = {
   name: string;
@@ -492,19 +440,6 @@ export const ResponseBodyIntegration$outboundSchema: z.ZodType<
   tagIds: z.array(TagIds$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyIntegration$ {
-  /** @deprecated use `ResponseBodyIntegration$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyIntegration$inboundSchema;
-  /** @deprecated use `ResponseBodyIntegration$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyIntegration$outboundSchema;
-  /** @deprecated use `ResponseBodyIntegration$Outbound` instead. */
-  export type Outbound = ResponseBodyIntegration$Outbound;
-}
-
 export function responseBodyIntegrationToJSON(
   responseBodyIntegration: ResponseBodyIntegration,
 ): string {
@@ -512,7 +447,6 @@ export function responseBodyIntegrationToJSON(
     ResponseBodyIntegration$outboundSchema.parse(responseBodyIntegration),
   );
 }
-
 export function responseBodyIntegrationFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyIntegration, SDKValidationError> {
@@ -527,95 +461,39 @@ export function responseBodyIntegrationFromJSON(
 export const GetConfigurationsResponseBodyIntegrationsSource$inboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationsResponseBodyIntegrationsSource> = z
     .nativeEnum(GetConfigurationsResponseBodyIntegrationsSource);
-
 /** @internal */
 export const GetConfigurationsResponseBodyIntegrationsSource$outboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationsResponseBodyIntegrationsSource> =
     GetConfigurationsResponseBodyIntegrationsSource$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationsResponseBodyIntegrationsSource$ {
-  /** @deprecated use `GetConfigurationsResponseBodyIntegrationsSource$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationsResponseBodyIntegrationsSource$inboundSchema;
-  /** @deprecated use `GetConfigurationsResponseBodyIntegrationsSource$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationsResponseBodyIntegrationsSource$outboundSchema;
-}
-
 /** @internal */
 export const GetConfigurationsResponseBodyIntegrationsType$inboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationsResponseBodyIntegrationsType> = z
     .nativeEnum(GetConfigurationsResponseBodyIntegrationsType);
-
 /** @internal */
 export const GetConfigurationsResponseBodyIntegrationsType$outboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationsResponseBodyIntegrationsType> =
     GetConfigurationsResponseBodyIntegrationsType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationsResponseBodyIntegrationsType$ {
-  /** @deprecated use `GetConfigurationsResponseBodyIntegrationsType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationsResponseBodyIntegrationsType$inboundSchema;
-  /** @deprecated use `GetConfigurationsResponseBodyIntegrationsType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationsResponseBodyIntegrationsType$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationsResponseBodyIntegrationsDisabledReason$inboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationsResponseBodyIntegrationsDisabledReason
   > = z.nativeEnum(GetConfigurationsResponseBodyIntegrationsDisabledReason);
-
 /** @internal */
 export const GetConfigurationsResponseBodyIntegrationsDisabledReason$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationsResponseBodyIntegrationsDisabledReason
   > = GetConfigurationsResponseBodyIntegrationsDisabledReason$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationsResponseBodyIntegrationsDisabledReason$ {
-  /** @deprecated use `GetConfigurationsResponseBodyIntegrationsDisabledReason$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationsResponseBodyIntegrationsDisabledReason$inboundSchema;
-  /** @deprecated use `GetConfigurationsResponseBodyIntegrationsDisabledReason$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationsResponseBodyIntegrationsDisabledReason$outboundSchema;
-}
-
 /** @internal */
 export const GetConfigurationsResponseBodyInstallationType$inboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationsResponseBodyInstallationType> = z
     .nativeEnum(GetConfigurationsResponseBodyInstallationType);
-
 /** @internal */
 export const GetConfigurationsResponseBodyInstallationType$outboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationsResponseBodyInstallationType> =
     GetConfigurationsResponseBodyInstallationType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationsResponseBodyInstallationType$ {
-  /** @deprecated use `GetConfigurationsResponseBodyInstallationType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationsResponseBodyInstallationType$inboundSchema;
-  /** @deprecated use `GetConfigurationsResponseBodyInstallationType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationsResponseBodyInstallationType$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationsResponseBody2$inboundSchema: z.ZodType<
@@ -647,7 +525,6 @@ export const GetConfigurationsResponseBody2$inboundSchema: z.ZodType<
   installationType: GetConfigurationsResponseBodyInstallationType$inboundSchema
     .optional(),
 });
-
 /** @internal */
 export type GetConfigurationsResponseBody2$Outbound = {
   integration: ResponseBodyIntegration$Outbound;
@@ -702,19 +579,6 @@ export const GetConfigurationsResponseBody2$outboundSchema: z.ZodType<
     .optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationsResponseBody2$ {
-  /** @deprecated use `GetConfigurationsResponseBody2$inboundSchema` instead. */
-  export const inboundSchema = GetConfigurationsResponseBody2$inboundSchema;
-  /** @deprecated use `GetConfigurationsResponseBody2$outboundSchema` instead. */
-  export const outboundSchema = GetConfigurationsResponseBody2$outboundSchema;
-  /** @deprecated use `GetConfigurationsResponseBody2$Outbound` instead. */
-  export type Outbound = GetConfigurationsResponseBody2$Outbound;
-}
-
 export function getConfigurationsResponseBody2ToJSON(
   getConfigurationsResponseBody2: GetConfigurationsResponseBody2,
 ): string {
@@ -724,7 +588,6 @@ export function getConfigurationsResponseBody2ToJSON(
     ),
   );
 }
-
 export function getConfigurationsResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetConfigurationsResponseBody2, SDKValidationError> {
@@ -739,90 +602,37 @@ export function getConfigurationsResponseBody2FromJSON(
 export const GetConfigurationsResponseBodySource$inboundSchema: z.ZodNativeEnum<
   typeof GetConfigurationsResponseBodySource
 > = z.nativeEnum(GetConfigurationsResponseBodySource);
-
 /** @internal */
 export const GetConfigurationsResponseBodySource$outboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationsResponseBodySource> =
     GetConfigurationsResponseBodySource$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationsResponseBodySource$ {
-  /** @deprecated use `GetConfigurationsResponseBodySource$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationsResponseBodySource$inboundSchema;
-  /** @deprecated use `GetConfigurationsResponseBodySource$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationsResponseBodySource$outboundSchema;
-}
-
 /** @internal */
 export const GetConfigurationsResponseBodyType$inboundSchema: z.ZodNativeEnum<
   typeof GetConfigurationsResponseBodyType
 > = z.nativeEnum(GetConfigurationsResponseBodyType);
-
 /** @internal */
 export const GetConfigurationsResponseBodyType$outboundSchema: z.ZodNativeEnum<
   typeof GetConfigurationsResponseBodyType
 > = GetConfigurationsResponseBodyType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationsResponseBodyType$ {
-  /** @deprecated use `GetConfigurationsResponseBodyType$inboundSchema` instead. */
-  export const inboundSchema = GetConfigurationsResponseBodyType$inboundSchema;
-  /** @deprecated use `GetConfigurationsResponseBodyType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationsResponseBodyType$outboundSchema;
-}
-
 /** @internal */
 export const GetConfigurationsResponseBodyDisabledReason$inboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationsResponseBodyDisabledReason> = z
     .nativeEnum(GetConfigurationsResponseBodyDisabledReason);
-
 /** @internal */
 export const GetConfigurationsResponseBodyDisabledReason$outboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationsResponseBodyDisabledReason> =
     GetConfigurationsResponseBodyDisabledReason$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationsResponseBodyDisabledReason$ {
-  /** @deprecated use `GetConfigurationsResponseBodyDisabledReason$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationsResponseBodyDisabledReason$inboundSchema;
-  /** @deprecated use `GetConfigurationsResponseBodyDisabledReason$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationsResponseBodyDisabledReason$outboundSchema;
-}
-
 /** @internal */
 export const ResponseBodyInstallationType$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyInstallationType
 > = z.nativeEnum(ResponseBodyInstallationType);
-
 /** @internal */
 export const ResponseBodyInstallationType$outboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyInstallationType
 > = ResponseBodyInstallationType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyInstallationType$ {
-  /** @deprecated use `ResponseBodyInstallationType$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyInstallationType$inboundSchema;
-  /** @deprecated use `ResponseBodyInstallationType$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyInstallationType$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationsResponseBody1$inboundSchema: z.ZodType<
@@ -850,7 +660,6 @@ export const GetConfigurationsResponseBody1$inboundSchema: z.ZodType<
     .optional(),
   installationType: ResponseBodyInstallationType$inboundSchema.optional(),
 });
-
 /** @internal */
 export type GetConfigurationsResponseBody1$Outbound = {
   completedAt?: number | undefined;
@@ -900,19 +709,6 @@ export const GetConfigurationsResponseBody1$outboundSchema: z.ZodType<
   installationType: ResponseBodyInstallationType$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationsResponseBody1$ {
-  /** @deprecated use `GetConfigurationsResponseBody1$inboundSchema` instead. */
-  export const inboundSchema = GetConfigurationsResponseBody1$inboundSchema;
-  /** @deprecated use `GetConfigurationsResponseBody1$outboundSchema` instead. */
-  export const outboundSchema = GetConfigurationsResponseBody1$outboundSchema;
-  /** @deprecated use `GetConfigurationsResponseBody1$Outbound` instead. */
-  export type Outbound = GetConfigurationsResponseBody1$Outbound;
-}
-
 export function getConfigurationsResponseBody1ToJSON(
   getConfigurationsResponseBody1: GetConfigurationsResponseBody1,
 ): string {
@@ -922,7 +718,6 @@ export function getConfigurationsResponseBody1ToJSON(
     ),
   );
 }
-
 export function getConfigurationsResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetConfigurationsResponseBody1, SDKValidationError> {
@@ -942,7 +737,6 @@ export const GetConfigurationsResponseBody$inboundSchema: z.ZodType<
   z.array(z.lazy(() => GetConfigurationsResponseBody1$inboundSchema)),
   z.array(z.lazy(() => GetConfigurationsResponseBody2$inboundSchema)),
 ]);
-
 /** @internal */
 export type GetConfigurationsResponseBody$Outbound =
   | Array<GetConfigurationsResponseBody1$Outbound>
@@ -958,19 +752,6 @@ export const GetConfigurationsResponseBody$outboundSchema: z.ZodType<
   z.array(z.lazy(() => GetConfigurationsResponseBody2$outboundSchema)),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationsResponseBody$ {
-  /** @deprecated use `GetConfigurationsResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetConfigurationsResponseBody$inboundSchema;
-  /** @deprecated use `GetConfigurationsResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetConfigurationsResponseBody$outboundSchema;
-  /** @deprecated use `GetConfigurationsResponseBody$Outbound` instead. */
-  export type Outbound = GetConfigurationsResponseBody$Outbound;
-}
-
 export function getConfigurationsResponseBodyToJSON(
   getConfigurationsResponseBody: GetConfigurationsResponseBody,
 ): string {
@@ -980,7 +761,6 @@ export function getConfigurationsResponseBodyToJSON(
     ),
   );
 }
-
 export function getConfigurationsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetConfigurationsResponseBody, SDKValidationError> {

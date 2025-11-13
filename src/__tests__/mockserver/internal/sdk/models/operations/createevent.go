@@ -203,7 +203,7 @@ func (o *CreateEventRequestBody) GetEvent() Event {
 
 type CreateEventRequest struct {
 	IntegrationConfigurationID string                 `pathParam:"style=simple,explode=false,name=integrationConfigurationId"`
-	RequestBody                CreateEventRequestBody `request:"mediaType=application/json"`
+	Body                       CreateEventRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *CreateEventRequest) GetIntegrationConfigurationID() string {
@@ -213,11 +213,11 @@ func (o *CreateEventRequest) GetIntegrationConfigurationID() string {
 	return o.IntegrationConfigurationID
 }
 
-func (o *CreateEventRequest) GetRequestBody() CreateEventRequestBody {
+func (o *CreateEventRequest) GetBody() CreateEventRequestBody {
 	if o == nil {
 		return CreateEventRequestBody{}
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type CreateEventResponse struct {

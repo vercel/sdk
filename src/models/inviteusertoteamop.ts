@@ -68,43 +68,19 @@ export type InviteUserToTeamRequestBody = {
 export const InviteUserToTeamRole$inboundSchema: z.ZodNativeEnum<
   typeof InviteUserToTeamRole
 > = z.nativeEnum(InviteUserToTeamRole);
-
 /** @internal */
 export const InviteUserToTeamRole$outboundSchema: z.ZodNativeEnum<
   typeof InviteUserToTeamRole
 > = InviteUserToTeamRole$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InviteUserToTeamRole$ {
-  /** @deprecated use `InviteUserToTeamRole$inboundSchema` instead. */
-  export const inboundSchema = InviteUserToTeamRole$inboundSchema;
-  /** @deprecated use `InviteUserToTeamRole$outboundSchema` instead. */
-  export const outboundSchema = InviteUserToTeamRole$outboundSchema;
-}
-
 /** @internal */
 export const InviteUserToTeamTeamsRole$inboundSchema: z.ZodNativeEnum<
   typeof InviteUserToTeamTeamsRole
 > = z.nativeEnum(InviteUserToTeamTeamsRole);
-
 /** @internal */
 export const InviteUserToTeamTeamsRole$outboundSchema: z.ZodNativeEnum<
   typeof InviteUserToTeamTeamsRole
 > = InviteUserToTeamTeamsRole$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InviteUserToTeamTeamsRole$ {
-  /** @deprecated use `InviteUserToTeamTeamsRole$inboundSchema` instead. */
-  export const inboundSchema = InviteUserToTeamTeamsRole$inboundSchema;
-  /** @deprecated use `InviteUserToTeamTeamsRole$outboundSchema` instead. */
-  export const outboundSchema = InviteUserToTeamTeamsRole$outboundSchema;
-}
 
 /** @internal */
 export const InviteUserToTeamProjects$inboundSchema: z.ZodType<
@@ -115,7 +91,6 @@ export const InviteUserToTeamProjects$inboundSchema: z.ZodType<
   projectId: z.string(),
   role: InviteUserToTeamTeamsRole$inboundSchema,
 });
-
 /** @internal */
 export type InviteUserToTeamProjects$Outbound = {
   projectId: string;
@@ -132,19 +107,6 @@ export const InviteUserToTeamProjects$outboundSchema: z.ZodType<
   role: InviteUserToTeamTeamsRole$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InviteUserToTeamProjects$ {
-  /** @deprecated use `InviteUserToTeamProjects$inboundSchema` instead. */
-  export const inboundSchema = InviteUserToTeamProjects$inboundSchema;
-  /** @deprecated use `InviteUserToTeamProjects$outboundSchema` instead. */
-  export const outboundSchema = InviteUserToTeamProjects$outboundSchema;
-  /** @deprecated use `InviteUserToTeamProjects$Outbound` instead. */
-  export type Outbound = InviteUserToTeamProjects$Outbound;
-}
-
 export function inviteUserToTeamProjectsToJSON(
   inviteUserToTeamProjects: InviteUserToTeamProjects,
 ): string {
@@ -152,7 +114,6 @@ export function inviteUserToTeamProjectsToJSON(
     InviteUserToTeamProjects$outboundSchema.parse(inviteUserToTeamProjects),
   );
 }
-
 export function inviteUserToTeamProjectsFromJSON(
   jsonString: string,
 ): SafeParseResult<InviteUserToTeamProjects, SDKValidationError> {
@@ -174,7 +135,6 @@ export const InviteUserToTeamRequestBody$inboundSchema: z.ZodType<
   projects: z.array(z.lazy(() => InviteUserToTeamProjects$inboundSchema))
     .optional(),
 });
-
 /** @internal */
 export type InviteUserToTeamRequestBody$Outbound = {
   email: string;
@@ -194,19 +154,6 @@ export const InviteUserToTeamRequestBody$outboundSchema: z.ZodType<
     .optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InviteUserToTeamRequestBody$ {
-  /** @deprecated use `InviteUserToTeamRequestBody$inboundSchema` instead. */
-  export const inboundSchema = InviteUserToTeamRequestBody$inboundSchema;
-  /** @deprecated use `InviteUserToTeamRequestBody$outboundSchema` instead. */
-  export const outboundSchema = InviteUserToTeamRequestBody$outboundSchema;
-  /** @deprecated use `InviteUserToTeamRequestBody$Outbound` instead. */
-  export type Outbound = InviteUserToTeamRequestBody$Outbound;
-}
-
 export function inviteUserToTeamRequestBodyToJSON(
   inviteUserToTeamRequestBody: InviteUserToTeamRequestBody,
 ): string {
@@ -216,7 +163,6 @@ export function inviteUserToTeamRequestBodyToJSON(
     ),
   );
 }
-
 export function inviteUserToTeamRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<InviteUserToTeamRequestBody, SDKValidationError> {

@@ -32,7 +32,6 @@ export const UnpauseProjectRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type UnpauseProjectRequest$Outbound = {
   projectId: string;
@@ -51,19 +50,6 @@ export const UnpauseProjectRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnpauseProjectRequest$ {
-  /** @deprecated use `UnpauseProjectRequest$inboundSchema` instead. */
-  export const inboundSchema = UnpauseProjectRequest$inboundSchema;
-  /** @deprecated use `UnpauseProjectRequest$outboundSchema` instead. */
-  export const outboundSchema = UnpauseProjectRequest$outboundSchema;
-  /** @deprecated use `UnpauseProjectRequest$Outbound` instead. */
-  export type Outbound = UnpauseProjectRequest$Outbound;
-}
-
 export function unpauseProjectRequestToJSON(
   unpauseProjectRequest: UnpauseProjectRequest,
 ): string {
@@ -71,7 +57,6 @@ export function unpauseProjectRequestToJSON(
     UnpauseProjectRequest$outboundSchema.parse(unpauseProjectRequest),
   );
 }
-
 export function unpauseProjectRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UnpauseProjectRequest, SDKValidationError> {

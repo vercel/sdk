@@ -82,7 +82,6 @@ export const ListAccessGroupMembersRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type ListAccessGroupMembersRequest$Outbound = {
   idOrName: string;
@@ -107,19 +106,6 @@ export const ListAccessGroupMembersRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccessGroupMembersRequest$ {
-  /** @deprecated use `ListAccessGroupMembersRequest$inboundSchema` instead. */
-  export const inboundSchema = ListAccessGroupMembersRequest$inboundSchema;
-  /** @deprecated use `ListAccessGroupMembersRequest$outboundSchema` instead. */
-  export const outboundSchema = ListAccessGroupMembersRequest$outboundSchema;
-  /** @deprecated use `ListAccessGroupMembersRequest$Outbound` instead. */
-  export type Outbound = ListAccessGroupMembersRequest$Outbound;
-}
-
 export function listAccessGroupMembersRequestToJSON(
   listAccessGroupMembersRequest: ListAccessGroupMembersRequest,
 ): string {
@@ -129,7 +115,6 @@ export function listAccessGroupMembersRequestToJSON(
     ),
   );
 }
-
 export function listAccessGroupMembersRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListAccessGroupMembersRequest, SDKValidationError> {
@@ -144,22 +129,10 @@ export function listAccessGroupMembersRequestFromJSON(
 export const ListAccessGroupMembersTeamRole$inboundSchema: z.ZodNativeEnum<
   typeof ListAccessGroupMembersTeamRole
 > = z.nativeEnum(ListAccessGroupMembersTeamRole);
-
 /** @internal */
 export const ListAccessGroupMembersTeamRole$outboundSchema: z.ZodNativeEnum<
   typeof ListAccessGroupMembersTeamRole
 > = ListAccessGroupMembersTeamRole$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccessGroupMembersTeamRole$ {
-  /** @deprecated use `ListAccessGroupMembersTeamRole$inboundSchema` instead. */
-  export const inboundSchema = ListAccessGroupMembersTeamRole$inboundSchema;
-  /** @deprecated use `ListAccessGroupMembersTeamRole$outboundSchema` instead. */
-  export const outboundSchema = ListAccessGroupMembersTeamRole$outboundSchema;
-}
 
 /** @internal */
 export const Members$inboundSchema: z.ZodType<Members, z.ZodTypeDef, unknown> =
@@ -172,7 +145,6 @@ export const Members$inboundSchema: z.ZodType<Members, z.ZodTypeDef, unknown> =
     createdAt: z.string().optional(),
     teamRole: ListAccessGroupMembersTeamRole$inboundSchema,
   });
-
 /** @internal */
 export type Members$Outbound = {
   avatar?: string | undefined;
@@ -199,23 +171,9 @@ export const Members$outboundSchema: z.ZodType<
   teamRole: ListAccessGroupMembersTeamRole$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Members$ {
-  /** @deprecated use `Members$inboundSchema` instead. */
-  export const inboundSchema = Members$inboundSchema;
-  /** @deprecated use `Members$outboundSchema` instead. */
-  export const outboundSchema = Members$outboundSchema;
-  /** @deprecated use `Members$Outbound` instead. */
-  export type Outbound = Members$Outbound;
-}
-
 export function membersToJSON(members: Members): string {
   return JSON.stringify(Members$outboundSchema.parse(members));
 }
-
 export function membersFromJSON(
   jsonString: string,
 ): SafeParseResult<Members, SDKValidationError> {
@@ -235,7 +193,6 @@ export const ListAccessGroupMembersPagination$inboundSchema: z.ZodType<
   count: z.number(),
   next: z.nullable(z.string()),
 });
-
 /** @internal */
 export type ListAccessGroupMembersPagination$Outbound = {
   count: number;
@@ -252,19 +209,6 @@ export const ListAccessGroupMembersPagination$outboundSchema: z.ZodType<
   next: z.nullable(z.string()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccessGroupMembersPagination$ {
-  /** @deprecated use `ListAccessGroupMembersPagination$inboundSchema` instead. */
-  export const inboundSchema = ListAccessGroupMembersPagination$inboundSchema;
-  /** @deprecated use `ListAccessGroupMembersPagination$outboundSchema` instead. */
-  export const outboundSchema = ListAccessGroupMembersPagination$outboundSchema;
-  /** @deprecated use `ListAccessGroupMembersPagination$Outbound` instead. */
-  export type Outbound = ListAccessGroupMembersPagination$Outbound;
-}
-
 export function listAccessGroupMembersPaginationToJSON(
   listAccessGroupMembersPagination: ListAccessGroupMembersPagination,
 ): string {
@@ -274,7 +218,6 @@ export function listAccessGroupMembersPaginationToJSON(
     ),
   );
 }
-
 export function listAccessGroupMembersPaginationFromJSON(
   jsonString: string,
 ): SafeParseResult<ListAccessGroupMembersPagination, SDKValidationError> {
@@ -294,7 +237,6 @@ export const ListAccessGroupMembersResponseBody$inboundSchema: z.ZodType<
   members: z.array(z.lazy(() => Members$inboundSchema)),
   pagination: z.lazy(() => ListAccessGroupMembersPagination$inboundSchema),
 });
-
 /** @internal */
 export type ListAccessGroupMembersResponseBody$Outbound = {
   members: Array<Members$Outbound>;
@@ -311,20 +253,6 @@ export const ListAccessGroupMembersResponseBody$outboundSchema: z.ZodType<
   pagination: z.lazy(() => ListAccessGroupMembersPagination$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccessGroupMembersResponseBody$ {
-  /** @deprecated use `ListAccessGroupMembersResponseBody$inboundSchema` instead. */
-  export const inboundSchema = ListAccessGroupMembersResponseBody$inboundSchema;
-  /** @deprecated use `ListAccessGroupMembersResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    ListAccessGroupMembersResponseBody$outboundSchema;
-  /** @deprecated use `ListAccessGroupMembersResponseBody$Outbound` instead. */
-  export type Outbound = ListAccessGroupMembersResponseBody$Outbound;
-}
-
 export function listAccessGroupMembersResponseBodyToJSON(
   listAccessGroupMembersResponseBody: ListAccessGroupMembersResponseBody,
 ): string {
@@ -334,7 +262,6 @@ export function listAccessGroupMembersResponseBodyToJSON(
     ),
   );
 }
-
 export function listAccessGroupMembersResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ListAccessGroupMembersResponseBody, SDKValidationError> {

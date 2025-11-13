@@ -41,7 +41,6 @@ export const UpdateAttackChallengeModeRequestBody$inboundSchema: z.ZodType<
   attackModeEnabled: z.boolean(),
   attackModeActiveUntil: z.nullable(z.number()).optional(),
 });
-
 /** @internal */
 export type UpdateAttackChallengeModeRequestBody$Outbound = {
   projectId: string;
@@ -60,21 +59,6 @@ export const UpdateAttackChallengeModeRequestBody$outboundSchema: z.ZodType<
   attackModeActiveUntil: z.nullable(z.number()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateAttackChallengeModeRequestBody$ {
-  /** @deprecated use `UpdateAttackChallengeModeRequestBody$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateAttackChallengeModeRequestBody$inboundSchema;
-  /** @deprecated use `UpdateAttackChallengeModeRequestBody$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateAttackChallengeModeRequestBody$outboundSchema;
-  /** @deprecated use `UpdateAttackChallengeModeRequestBody$Outbound` instead. */
-  export type Outbound = UpdateAttackChallengeModeRequestBody$Outbound;
-}
-
 export function updateAttackChallengeModeRequestBodyToJSON(
   updateAttackChallengeModeRequestBody: UpdateAttackChallengeModeRequestBody,
 ): string {
@@ -84,7 +68,6 @@ export function updateAttackChallengeModeRequestBodyToJSON(
     ),
   );
 }
-
 export function updateAttackChallengeModeRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateAttackChallengeModeRequestBody, SDKValidationError> {
@@ -110,7 +93,6 @@ export const UpdateAttackChallengeModeRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type UpdateAttackChallengeModeRequest$Outbound = {
   teamId?: string | undefined;
@@ -135,19 +117,6 @@ export const UpdateAttackChallengeModeRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateAttackChallengeModeRequest$ {
-  /** @deprecated use `UpdateAttackChallengeModeRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateAttackChallengeModeRequest$inboundSchema;
-  /** @deprecated use `UpdateAttackChallengeModeRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateAttackChallengeModeRequest$outboundSchema;
-  /** @deprecated use `UpdateAttackChallengeModeRequest$Outbound` instead. */
-  export type Outbound = UpdateAttackChallengeModeRequest$Outbound;
-}
-
 export function updateAttackChallengeModeRequestToJSON(
   updateAttackChallengeModeRequest: UpdateAttackChallengeModeRequest,
 ): string {
@@ -157,7 +126,6 @@ export function updateAttackChallengeModeRequestToJSON(
     ),
   );
 }
-
 export function updateAttackChallengeModeRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateAttackChallengeModeRequest, SDKValidationError> {
@@ -177,7 +145,6 @@ export const UpdateAttackChallengeModeResponseBody$inboundSchema: z.ZodType<
   attackModeEnabled: z.boolean(),
   attackModeUpdatedAt: z.number(),
 });
-
 /** @internal */
 export type UpdateAttackChallengeModeResponseBody$Outbound = {
   attackModeEnabled: boolean;
@@ -194,21 +161,6 @@ export const UpdateAttackChallengeModeResponseBody$outboundSchema: z.ZodType<
   attackModeUpdatedAt: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateAttackChallengeModeResponseBody$ {
-  /** @deprecated use `UpdateAttackChallengeModeResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateAttackChallengeModeResponseBody$inboundSchema;
-  /** @deprecated use `UpdateAttackChallengeModeResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateAttackChallengeModeResponseBody$outboundSchema;
-  /** @deprecated use `UpdateAttackChallengeModeResponseBody$Outbound` instead. */
-  export type Outbound = UpdateAttackChallengeModeResponseBody$Outbound;
-}
-
 export function updateAttackChallengeModeResponseBodyToJSON(
   updateAttackChallengeModeResponseBody: UpdateAttackChallengeModeResponseBody,
 ): string {
@@ -218,7 +170,6 @@ export function updateAttackChallengeModeResponseBodyToJSON(
     ),
   );
 }
-
 export function updateAttackChallengeModeResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateAttackChallengeModeResponseBody, SDKValidationError> {

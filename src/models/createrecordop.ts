@@ -514,24 +514,10 @@ export type CreateRecordResponseBody =
 export const CreateRecordRequestBodyDnsRequest10Type$inboundSchema:
   z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest10Type> = z
     .nativeEnum(CreateRecordRequestBodyDnsRequest10Type);
-
 /** @internal */
 export const CreateRecordRequestBodyDnsRequest10Type$outboundSchema:
   z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest10Type> =
     CreateRecordRequestBodyDnsRequest10Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateRecordRequestBodyDnsRequest10Type$ {
-  /** @deprecated use `CreateRecordRequestBodyDnsRequest10Type$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateRecordRequestBodyDnsRequest10Type$inboundSchema;
-  /** @deprecated use `CreateRecordRequestBodyDnsRequest10Type$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateRecordRequestBodyDnsRequest10Type$outboundSchema;
-}
 
 /** @internal */
 export const RequestBodyHttps$inboundSchema: z.ZodType<
@@ -543,7 +529,6 @@ export const RequestBodyHttps$inboundSchema: z.ZodType<
   target: z.string(),
   params: z.string().optional(),
 });
-
 /** @internal */
 export type RequestBodyHttps$Outbound = {
   priority: number | null;
@@ -562,19 +547,6 @@ export const RequestBodyHttps$outboundSchema: z.ZodType<
   params: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestBodyHttps$ {
-  /** @deprecated use `RequestBodyHttps$inboundSchema` instead. */
-  export const inboundSchema = RequestBodyHttps$inboundSchema;
-  /** @deprecated use `RequestBodyHttps$outboundSchema` instead. */
-  export const outboundSchema = RequestBodyHttps$outboundSchema;
-  /** @deprecated use `RequestBodyHttps$Outbound` instead. */
-  export type Outbound = RequestBodyHttps$Outbound;
-}
-
 export function requestBodyHttpsToJSON(
   requestBodyHttps: RequestBodyHttps,
 ): string {
@@ -582,7 +554,6 @@ export function requestBodyHttpsToJSON(
     RequestBodyHttps$outboundSchema.parse(requestBodyHttps),
   );
 }
-
 export function requestBodyHttpsFromJSON(
   jsonString: string,
 ): SafeParseResult<RequestBodyHttps, SDKValidationError> {
@@ -604,7 +575,6 @@ export const RequestBody10$inboundSchema: z.ZodType<
   https: z.lazy(() => RequestBodyHttps$inboundSchema),
   comment: z.string().optional(),
 });
-
 /** @internal */
 export type RequestBody10$Outbound = {
   type: string;
@@ -625,23 +595,9 @@ export const RequestBody10$outboundSchema: z.ZodType<
   comment: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestBody10$ {
-  /** @deprecated use `RequestBody10$inboundSchema` instead. */
-  export const inboundSchema = RequestBody10$inboundSchema;
-  /** @deprecated use `RequestBody10$outboundSchema` instead. */
-  export const outboundSchema = RequestBody10$outboundSchema;
-  /** @deprecated use `RequestBody10$Outbound` instead. */
-  export type Outbound = RequestBody10$Outbound;
-}
-
 export function requestBody10ToJSON(requestBody10: RequestBody10): string {
   return JSON.stringify(RequestBody10$outboundSchema.parse(requestBody10));
 }
-
 export function requestBody10FromJSON(
   jsonString: string,
 ): SafeParseResult<RequestBody10, SDKValidationError> {
@@ -657,24 +613,10 @@ export const CreateRecordRequestBodyDnsRequest9Type$inboundSchema:
   z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest9Type> = z.nativeEnum(
     CreateRecordRequestBodyDnsRequest9Type,
   );
-
 /** @internal */
 export const CreateRecordRequestBodyDnsRequest9Type$outboundSchema:
   z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest9Type> =
     CreateRecordRequestBodyDnsRequest9Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateRecordRequestBodyDnsRequest9Type$ {
-  /** @deprecated use `CreateRecordRequestBodyDnsRequest9Type$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateRecordRequestBodyDnsRequest9Type$inboundSchema;
-  /** @deprecated use `CreateRecordRequestBodyDnsRequest9Type$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateRecordRequestBodyDnsRequest9Type$outboundSchema;
-}
 
 /** @internal */
 export const RequestBody9$inboundSchema: z.ZodType<
@@ -688,7 +630,6 @@ export const RequestBody9$inboundSchema: z.ZodType<
   value: z.string().optional(),
   comment: z.string().optional(),
 });
-
 /** @internal */
 export type RequestBody9$Outbound = {
   name: string;
@@ -711,23 +652,9 @@ export const RequestBody9$outboundSchema: z.ZodType<
   comment: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestBody9$ {
-  /** @deprecated use `RequestBody9$inboundSchema` instead. */
-  export const inboundSchema = RequestBody9$inboundSchema;
-  /** @deprecated use `RequestBody9$outboundSchema` instead. */
-  export const outboundSchema = RequestBody9$outboundSchema;
-  /** @deprecated use `RequestBody9$Outbound` instead. */
-  export type Outbound = RequestBody9$Outbound;
-}
-
 export function requestBody9ToJSON(requestBody9: RequestBody9): string {
   return JSON.stringify(RequestBody9$outboundSchema.parse(requestBody9));
 }
-
 export function requestBody9FromJSON(
   jsonString: string,
 ): SafeParseResult<RequestBody9, SDKValidationError> {
@@ -743,24 +670,10 @@ export const CreateRecordRequestBodyDnsRequest8Type$inboundSchema:
   z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest8Type> = z.nativeEnum(
     CreateRecordRequestBodyDnsRequest8Type,
   );
-
 /** @internal */
 export const CreateRecordRequestBodyDnsRequest8Type$outboundSchema:
   z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest8Type> =
     CreateRecordRequestBodyDnsRequest8Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateRecordRequestBodyDnsRequest8Type$ {
-  /** @deprecated use `CreateRecordRequestBodyDnsRequest8Type$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateRecordRequestBodyDnsRequest8Type$inboundSchema;
-  /** @deprecated use `CreateRecordRequestBodyDnsRequest8Type$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateRecordRequestBodyDnsRequest8Type$outboundSchema;
-}
 
 /** @internal */
 export const RequestBody8$inboundSchema: z.ZodType<
@@ -773,7 +686,6 @@ export const RequestBody8$inboundSchema: z.ZodType<
   value: z.string(),
   comment: z.string().optional(),
 });
-
 /** @internal */
 export type RequestBody8$Outbound = {
   type: string;
@@ -794,23 +706,9 @@ export const RequestBody8$outboundSchema: z.ZodType<
   comment: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestBody8$ {
-  /** @deprecated use `RequestBody8$inboundSchema` instead. */
-  export const inboundSchema = RequestBody8$inboundSchema;
-  /** @deprecated use `RequestBody8$outboundSchema` instead. */
-  export const outboundSchema = RequestBody8$outboundSchema;
-  /** @deprecated use `RequestBody8$Outbound` instead. */
-  export type Outbound = RequestBody8$Outbound;
-}
-
 export function requestBody8ToJSON(requestBody8: RequestBody8): string {
   return JSON.stringify(RequestBody8$outboundSchema.parse(requestBody8));
 }
-
 export function requestBody8FromJSON(
   jsonString: string,
 ): SafeParseResult<RequestBody8, SDKValidationError> {
@@ -826,24 +724,10 @@ export const CreateRecordRequestBodyDnsRequest7Type$inboundSchema:
   z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest7Type> = z.nativeEnum(
     CreateRecordRequestBodyDnsRequest7Type,
   );
-
 /** @internal */
 export const CreateRecordRequestBodyDnsRequest7Type$outboundSchema:
   z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest7Type> =
     CreateRecordRequestBodyDnsRequest7Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateRecordRequestBodyDnsRequest7Type$ {
-  /** @deprecated use `CreateRecordRequestBodyDnsRequest7Type$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateRecordRequestBodyDnsRequest7Type$inboundSchema;
-  /** @deprecated use `CreateRecordRequestBodyDnsRequest7Type$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateRecordRequestBodyDnsRequest7Type$outboundSchema;
-}
 
 /** @internal */
 export const RequestBodySrv$inboundSchema: z.ZodType<
@@ -856,7 +740,6 @@ export const RequestBodySrv$inboundSchema: z.ZodType<
   port: z.nullable(z.number()),
   target: z.string(),
 });
-
 /** @internal */
 export type RequestBodySrv$Outbound = {
   priority: number | null;
@@ -877,23 +760,9 @@ export const RequestBodySrv$outboundSchema: z.ZodType<
   target: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestBodySrv$ {
-  /** @deprecated use `RequestBodySrv$inboundSchema` instead. */
-  export const inboundSchema = RequestBodySrv$inboundSchema;
-  /** @deprecated use `RequestBodySrv$outboundSchema` instead. */
-  export const outboundSchema = RequestBodySrv$outboundSchema;
-  /** @deprecated use `RequestBodySrv$Outbound` instead. */
-  export type Outbound = RequestBodySrv$Outbound;
-}
-
 export function requestBodySrvToJSON(requestBodySrv: RequestBodySrv): string {
   return JSON.stringify(RequestBodySrv$outboundSchema.parse(requestBodySrv));
 }
-
 export function requestBodySrvFromJSON(
   jsonString: string,
 ): SafeParseResult<RequestBodySrv, SDKValidationError> {
@@ -915,7 +784,6 @@ export const RequestBody7$inboundSchema: z.ZodType<
   srv: z.lazy(() => RequestBodySrv$inboundSchema),
   comment: z.string().optional(),
 });
-
 /** @internal */
 export type RequestBody7$Outbound = {
   type: string;
@@ -936,23 +804,9 @@ export const RequestBody7$outboundSchema: z.ZodType<
   comment: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestBody7$ {
-  /** @deprecated use `RequestBody7$inboundSchema` instead. */
-  export const inboundSchema = RequestBody7$inboundSchema;
-  /** @deprecated use `RequestBody7$outboundSchema` instead. */
-  export const outboundSchema = RequestBody7$outboundSchema;
-  /** @deprecated use `RequestBody7$Outbound` instead. */
-  export type Outbound = RequestBody7$Outbound;
-}
-
 export function requestBody7ToJSON(requestBody7: RequestBody7): string {
   return JSON.stringify(RequestBody7$outboundSchema.parse(requestBody7));
 }
-
 export function requestBody7FromJSON(
   jsonString: string,
 ): SafeParseResult<RequestBody7, SDKValidationError> {
@@ -968,24 +822,10 @@ export const CreateRecordRequestBodyDnsRequest6Type$inboundSchema:
   z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest6Type> = z.nativeEnum(
     CreateRecordRequestBodyDnsRequest6Type,
   );
-
 /** @internal */
 export const CreateRecordRequestBodyDnsRequest6Type$outboundSchema:
   z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest6Type> =
     CreateRecordRequestBodyDnsRequest6Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateRecordRequestBodyDnsRequest6Type$ {
-  /** @deprecated use `CreateRecordRequestBodyDnsRequest6Type$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateRecordRequestBodyDnsRequest6Type$inboundSchema;
-  /** @deprecated use `CreateRecordRequestBodyDnsRequest6Type$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateRecordRequestBodyDnsRequest6Type$outboundSchema;
-}
 
 /** @internal */
 export const RequestBody6$inboundSchema: z.ZodType<
@@ -1000,7 +840,6 @@ export const RequestBody6$inboundSchema: z.ZodType<
   mxPriority: z.number(),
   comment: z.string().optional(),
 });
-
 /** @internal */
 export type RequestBody6$Outbound = {
   name: string;
@@ -1025,23 +864,9 @@ export const RequestBody6$outboundSchema: z.ZodType<
   comment: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestBody6$ {
-  /** @deprecated use `RequestBody6$inboundSchema` instead. */
-  export const inboundSchema = RequestBody6$inboundSchema;
-  /** @deprecated use `RequestBody6$outboundSchema` instead. */
-  export const outboundSchema = RequestBody6$outboundSchema;
-  /** @deprecated use `RequestBody6$Outbound` instead. */
-  export type Outbound = RequestBody6$Outbound;
-}
-
 export function requestBody6ToJSON(requestBody6: RequestBody6): string {
   return JSON.stringify(RequestBody6$outboundSchema.parse(requestBody6));
 }
-
 export function requestBody6FromJSON(
   jsonString: string,
 ): SafeParseResult<RequestBody6, SDKValidationError> {
@@ -1057,24 +882,10 @@ export const CreateRecordRequestBodyDnsRequest5Type$inboundSchema:
   z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest5Type> = z.nativeEnum(
     CreateRecordRequestBodyDnsRequest5Type,
   );
-
 /** @internal */
 export const CreateRecordRequestBodyDnsRequest5Type$outboundSchema:
   z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest5Type> =
     CreateRecordRequestBodyDnsRequest5Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateRecordRequestBodyDnsRequest5Type$ {
-  /** @deprecated use `CreateRecordRequestBodyDnsRequest5Type$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateRecordRequestBodyDnsRequest5Type$inboundSchema;
-  /** @deprecated use `CreateRecordRequestBodyDnsRequest5Type$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateRecordRequestBodyDnsRequest5Type$outboundSchema;
-}
 
 /** @internal */
 export const RequestBody5$inboundSchema: z.ZodType<
@@ -1088,7 +899,6 @@ export const RequestBody5$inboundSchema: z.ZodType<
   value: z.string().optional(),
   comment: z.string().optional(),
 });
-
 /** @internal */
 export type RequestBody5$Outbound = {
   name: string;
@@ -1111,23 +921,9 @@ export const RequestBody5$outboundSchema: z.ZodType<
   comment: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestBody5$ {
-  /** @deprecated use `RequestBody5$inboundSchema` instead. */
-  export const inboundSchema = RequestBody5$inboundSchema;
-  /** @deprecated use `RequestBody5$outboundSchema` instead. */
-  export const outboundSchema = RequestBody5$outboundSchema;
-  /** @deprecated use `RequestBody5$Outbound` instead. */
-  export type Outbound = RequestBody5$Outbound;
-}
-
 export function requestBody5ToJSON(requestBody5: RequestBody5): string {
   return JSON.stringify(RequestBody5$outboundSchema.parse(requestBody5));
 }
-
 export function requestBody5FromJSON(
   jsonString: string,
 ): SafeParseResult<RequestBody5, SDKValidationError> {
@@ -1143,24 +939,10 @@ export const CreateRecordRequestBodyDnsRequestType$inboundSchema:
   z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequestType> = z.nativeEnum(
     CreateRecordRequestBodyDnsRequestType,
   );
-
 /** @internal */
 export const CreateRecordRequestBodyDnsRequestType$outboundSchema:
   z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequestType> =
     CreateRecordRequestBodyDnsRequestType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateRecordRequestBodyDnsRequestType$ {
-  /** @deprecated use `CreateRecordRequestBodyDnsRequestType$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateRecordRequestBodyDnsRequestType$inboundSchema;
-  /** @deprecated use `CreateRecordRequestBodyDnsRequestType$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateRecordRequestBodyDnsRequestType$outboundSchema;
-}
 
 /** @internal */
 export const RequestBody4$inboundSchema: z.ZodType<
@@ -1174,7 +956,6 @@ export const RequestBody4$inboundSchema: z.ZodType<
   value: z.string(),
   comment: z.string().optional(),
 });
-
 /** @internal */
 export type RequestBody4$Outbound = {
   name: string;
@@ -1197,23 +978,9 @@ export const RequestBody4$outboundSchema: z.ZodType<
   comment: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestBody4$ {
-  /** @deprecated use `RequestBody4$inboundSchema` instead. */
-  export const inboundSchema = RequestBody4$inboundSchema;
-  /** @deprecated use `RequestBody4$outboundSchema` instead. */
-  export const outboundSchema = RequestBody4$outboundSchema;
-  /** @deprecated use `RequestBody4$Outbound` instead. */
-  export type Outbound = RequestBody4$Outbound;
-}
-
 export function requestBody4ToJSON(requestBody4: RequestBody4): string {
   return JSON.stringify(RequestBody4$outboundSchema.parse(requestBody4));
 }
-
 export function requestBody4FromJSON(
   jsonString: string,
 ): SafeParseResult<RequestBody4, SDKValidationError> {
@@ -1228,22 +995,10 @@ export function requestBody4FromJSON(
 export const CreateRecordRequestBodyDnsType$inboundSchema: z.ZodNativeEnum<
   typeof CreateRecordRequestBodyDnsType
 > = z.nativeEnum(CreateRecordRequestBodyDnsType);
-
 /** @internal */
 export const CreateRecordRequestBodyDnsType$outboundSchema: z.ZodNativeEnum<
   typeof CreateRecordRequestBodyDnsType
 > = CreateRecordRequestBodyDnsType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateRecordRequestBodyDnsType$ {
-  /** @deprecated use `CreateRecordRequestBodyDnsType$inboundSchema` instead. */
-  export const inboundSchema = CreateRecordRequestBodyDnsType$inboundSchema;
-  /** @deprecated use `CreateRecordRequestBodyDnsType$outboundSchema` instead. */
-  export const outboundSchema = CreateRecordRequestBodyDnsType$outboundSchema;
-}
 
 /** @internal */
 export const RequestBody3$inboundSchema: z.ZodType<
@@ -1257,7 +1012,6 @@ export const RequestBody3$inboundSchema: z.ZodType<
   value: z.string(),
   comment: z.string().optional(),
 });
-
 /** @internal */
 export type RequestBody3$Outbound = {
   name: string;
@@ -1280,23 +1034,9 @@ export const RequestBody3$outboundSchema: z.ZodType<
   comment: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestBody3$ {
-  /** @deprecated use `RequestBody3$inboundSchema` instead. */
-  export const inboundSchema = RequestBody3$inboundSchema;
-  /** @deprecated use `RequestBody3$outboundSchema` instead. */
-  export const outboundSchema = RequestBody3$outboundSchema;
-  /** @deprecated use `RequestBody3$Outbound` instead. */
-  export type Outbound = RequestBody3$Outbound;
-}
-
 export function requestBody3ToJSON(requestBody3: RequestBody3): string {
   return JSON.stringify(RequestBody3$outboundSchema.parse(requestBody3));
 }
-
 export function requestBody3FromJSON(
   jsonString: string,
 ): SafeParseResult<RequestBody3, SDKValidationError> {
@@ -1311,22 +1051,10 @@ export function requestBody3FromJSON(
 export const CreateRecordRequestBodyType$inboundSchema: z.ZodNativeEnum<
   typeof CreateRecordRequestBodyType
 > = z.nativeEnum(CreateRecordRequestBodyType);
-
 /** @internal */
 export const CreateRecordRequestBodyType$outboundSchema: z.ZodNativeEnum<
   typeof CreateRecordRequestBodyType
 > = CreateRecordRequestBodyType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateRecordRequestBodyType$ {
-  /** @deprecated use `CreateRecordRequestBodyType$inboundSchema` instead. */
-  export const inboundSchema = CreateRecordRequestBodyType$inboundSchema;
-  /** @deprecated use `CreateRecordRequestBodyType$outboundSchema` instead. */
-  export const outboundSchema = CreateRecordRequestBodyType$outboundSchema;
-}
 
 /** @internal */
 export const RequestBody2$inboundSchema: z.ZodType<
@@ -1340,7 +1068,6 @@ export const RequestBody2$inboundSchema: z.ZodType<
   value: z.string(),
   comment: z.string().optional(),
 });
-
 /** @internal */
 export type RequestBody2$Outbound = {
   name: string;
@@ -1363,23 +1090,9 @@ export const RequestBody2$outboundSchema: z.ZodType<
   comment: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestBody2$ {
-  /** @deprecated use `RequestBody2$inboundSchema` instead. */
-  export const inboundSchema = RequestBody2$inboundSchema;
-  /** @deprecated use `RequestBody2$outboundSchema` instead. */
-  export const outboundSchema = RequestBody2$outboundSchema;
-  /** @deprecated use `RequestBody2$Outbound` instead. */
-  export type Outbound = RequestBody2$Outbound;
-}
-
 export function requestBody2ToJSON(requestBody2: RequestBody2): string {
   return JSON.stringify(RequestBody2$outboundSchema.parse(requestBody2));
 }
-
 export function requestBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<RequestBody2, SDKValidationError> {
@@ -1394,22 +1107,10 @@ export function requestBody2FromJSON(
 export const RequestBodyType$inboundSchema: z.ZodNativeEnum<
   typeof RequestBodyType
 > = z.nativeEnum(RequestBodyType);
-
 /** @internal */
 export const RequestBodyType$outboundSchema: z.ZodNativeEnum<
   typeof RequestBodyType
 > = RequestBodyType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestBodyType$ {
-  /** @deprecated use `RequestBodyType$inboundSchema` instead. */
-  export const inboundSchema = RequestBodyType$inboundSchema;
-  /** @deprecated use `RequestBodyType$outboundSchema` instead. */
-  export const outboundSchema = RequestBodyType$outboundSchema;
-}
 
 /** @internal */
 export const RequestBody1$inboundSchema: z.ZodType<
@@ -1423,7 +1124,6 @@ export const RequestBody1$inboundSchema: z.ZodType<
   value: z.string(),
   comment: z.string().optional(),
 });
-
 /** @internal */
 export type RequestBody1$Outbound = {
   name: string;
@@ -1446,23 +1146,9 @@ export const RequestBody1$outboundSchema: z.ZodType<
   comment: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestBody1$ {
-  /** @deprecated use `RequestBody1$inboundSchema` instead. */
-  export const inboundSchema = RequestBody1$inboundSchema;
-  /** @deprecated use `RequestBody1$outboundSchema` instead. */
-  export const outboundSchema = RequestBody1$outboundSchema;
-  /** @deprecated use `RequestBody1$Outbound` instead. */
-  export type Outbound = RequestBody1$Outbound;
-}
-
 export function requestBody1ToJSON(requestBody1: RequestBody1): string {
   return JSON.stringify(RequestBody1$outboundSchema.parse(requestBody1));
 }
-
 export function requestBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<RequestBody1, SDKValidationError> {
@@ -1490,7 +1176,6 @@ export const CreateRecordRequestBody$inboundSchema: z.ZodType<
   z.lazy(() => RequestBody9$inboundSchema),
   z.lazy(() => RequestBody10$inboundSchema),
 ]);
-
 /** @internal */
 export type CreateRecordRequestBody$Outbound =
   | RequestBody6$Outbound
@@ -1522,19 +1207,6 @@ export const CreateRecordRequestBody$outboundSchema: z.ZodType<
   z.lazy(() => RequestBody10$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateRecordRequestBody$ {
-  /** @deprecated use `CreateRecordRequestBody$inboundSchema` instead. */
-  export const inboundSchema = CreateRecordRequestBody$inboundSchema;
-  /** @deprecated use `CreateRecordRequestBody$outboundSchema` instead. */
-  export const outboundSchema = CreateRecordRequestBody$outboundSchema;
-  /** @deprecated use `CreateRecordRequestBody$Outbound` instead. */
-  export type Outbound = CreateRecordRequestBody$Outbound;
-}
-
 export function createRecordRequestBodyToJSON(
   createRecordRequestBody: CreateRecordRequestBody,
 ): string {
@@ -1542,7 +1214,6 @@ export function createRecordRequestBodyToJSON(
     CreateRecordRequestBody$outboundSchema.parse(createRecordRequestBody),
   );
 }
-
 export function createRecordRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateRecordRequestBody, SDKValidationError> {
@@ -1579,7 +1250,6 @@ export const CreateRecordRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type CreateRecordRequest$Outbound = {
   domain: string;
@@ -1625,19 +1295,6 @@ export const CreateRecordRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateRecordRequest$ {
-  /** @deprecated use `CreateRecordRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateRecordRequest$inboundSchema;
-  /** @deprecated use `CreateRecordRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateRecordRequest$outboundSchema;
-  /** @deprecated use `CreateRecordRequest$Outbound` instead. */
-  export type Outbound = CreateRecordRequest$Outbound;
-}
-
 export function createRecordRequestToJSON(
   createRecordRequest: CreateRecordRequest,
 ): string {
@@ -1645,7 +1302,6 @@ export function createRecordRequestToJSON(
     CreateRecordRequest$outboundSchema.parse(createRecordRequest),
   );
 }
-
 export function createRecordRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateRecordRequest, SDKValidationError> {
@@ -1664,7 +1320,6 @@ export const CreateRecordResponseBody2$inboundSchema: z.ZodType<
 > = z.object({
   uid: z.string(),
 });
-
 /** @internal */
 export type CreateRecordResponseBody2$Outbound = {
   uid: string;
@@ -1679,19 +1334,6 @@ export const CreateRecordResponseBody2$outboundSchema: z.ZodType<
   uid: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateRecordResponseBody2$ {
-  /** @deprecated use `CreateRecordResponseBody2$inboundSchema` instead. */
-  export const inboundSchema = CreateRecordResponseBody2$inboundSchema;
-  /** @deprecated use `CreateRecordResponseBody2$outboundSchema` instead. */
-  export const outboundSchema = CreateRecordResponseBody2$outboundSchema;
-  /** @deprecated use `CreateRecordResponseBody2$Outbound` instead. */
-  export type Outbound = CreateRecordResponseBody2$Outbound;
-}
-
 export function createRecordResponseBody2ToJSON(
   createRecordResponseBody2: CreateRecordResponseBody2,
 ): string {
@@ -1699,7 +1341,6 @@ export function createRecordResponseBody2ToJSON(
     CreateRecordResponseBody2$outboundSchema.parse(createRecordResponseBody2),
   );
 }
-
 export function createRecordResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<CreateRecordResponseBody2, SDKValidationError> {
@@ -1719,7 +1360,6 @@ export const CreateRecordResponseBody1$inboundSchema: z.ZodType<
   uid: z.string(),
   updated: z.number(),
 });
-
 /** @internal */
 export type CreateRecordResponseBody1$Outbound = {
   uid: string;
@@ -1736,19 +1376,6 @@ export const CreateRecordResponseBody1$outboundSchema: z.ZodType<
   updated: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateRecordResponseBody1$ {
-  /** @deprecated use `CreateRecordResponseBody1$inboundSchema` instead. */
-  export const inboundSchema = CreateRecordResponseBody1$inboundSchema;
-  /** @deprecated use `CreateRecordResponseBody1$outboundSchema` instead. */
-  export const outboundSchema = CreateRecordResponseBody1$outboundSchema;
-  /** @deprecated use `CreateRecordResponseBody1$Outbound` instead. */
-  export type Outbound = CreateRecordResponseBody1$Outbound;
-}
-
 export function createRecordResponseBody1ToJSON(
   createRecordResponseBody1: CreateRecordResponseBody1,
 ): string {
@@ -1756,7 +1383,6 @@ export function createRecordResponseBody1ToJSON(
     CreateRecordResponseBody1$outboundSchema.parse(createRecordResponseBody1),
   );
 }
-
 export function createRecordResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<CreateRecordResponseBody1, SDKValidationError> {
@@ -1776,7 +1402,6 @@ export const CreateRecordResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => CreateRecordResponseBody1$inboundSchema),
   z.lazy(() => CreateRecordResponseBody2$inboundSchema),
 ]);
-
 /** @internal */
 export type CreateRecordResponseBody$Outbound =
   | CreateRecordResponseBody1$Outbound
@@ -1792,19 +1417,6 @@ export const CreateRecordResponseBody$outboundSchema: z.ZodType<
   z.lazy(() => CreateRecordResponseBody2$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateRecordResponseBody$ {
-  /** @deprecated use `CreateRecordResponseBody$inboundSchema` instead. */
-  export const inboundSchema = CreateRecordResponseBody$inboundSchema;
-  /** @deprecated use `CreateRecordResponseBody$outboundSchema` instead. */
-  export const outboundSchema = CreateRecordResponseBody$outboundSchema;
-  /** @deprecated use `CreateRecordResponseBody$Outbound` instead. */
-  export type Outbound = CreateRecordResponseBody$Outbound;
-}
-
 export function createRecordResponseBodyToJSON(
   createRecordResponseBody: CreateRecordResponseBody,
 ): string {
@@ -1812,7 +1424,6 @@ export function createRecordResponseBodyToJSON(
     CreateRecordResponseBody$outboundSchema.parse(createRecordResponseBody),
   );
 }
-
 export function createRecordResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateRecordResponseBody, SDKValidationError> {

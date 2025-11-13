@@ -19,4 +19,3 @@ let value: Prev = {
 | `name`                | *string*              | :heavy_check_mark:    | N/A                   |
 | `slug`                | *string*              | :heavy_check_mark:    | N/A                   |
 | `fallbackEnvironment` | *string*              | :heavy_check_mark:    | N/A                   |
-| `enableMfeAliases`    | *boolean*             | :heavy_minus_sign:    | N/A                   |

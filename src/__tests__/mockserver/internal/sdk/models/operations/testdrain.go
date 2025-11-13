@@ -21,44 +21,6 @@ func (o *TestDrainSchemas) GetVersion() string {
 	return o.Version
 }
 
-type TestDrainDelivery3 struct {
-	Type     string `json:"type"`
-	Endpoint string `json:"endpoint"`
-	Secret   string `json:"secret"`
-}
-
-func (t TestDrainDelivery3) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(t, "", false)
-}
-
-func (t *TestDrainDelivery3) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"type", "endpoint", "secret"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *TestDrainDelivery3) GetType() string {
-	if o == nil {
-		return ""
-	}
-	return o.Type
-}
-
-func (o *TestDrainDelivery3) GetEndpoint() string {
-	if o == nil {
-		return ""
-	}
-	return o.Endpoint
-}
-
-func (o *TestDrainDelivery3) GetSecret() string {
-	if o == nil {
-		return ""
-	}
-	return o.Secret
-}
-
 type TestDrainEndpoint struct {
 	Traces string `json:"traces"`
 }
@@ -321,13 +283,11 @@ type TestDrainDeliveryUnionType string
 const (
 	TestDrainDeliveryUnionTypeTestDrainDelivery1 TestDrainDeliveryUnionType = "testDrain_delivery_1"
 	TestDrainDeliveryUnionTypeTestDrainDelivery2 TestDrainDeliveryUnionType = "testDrain_delivery_2"
-	TestDrainDeliveryUnionTypeTestDrainDelivery3 TestDrainDeliveryUnionType = "testDrain_delivery_3"
 )
 
 type TestDrainDeliveryUnion struct {
 	TestDrainDelivery1 *TestDrainDelivery1 `queryParam:"inline"`
 	TestDrainDelivery2 *TestDrainDelivery2 `queryParam:"inline"`
-	TestDrainDelivery3 *TestDrainDelivery3 `queryParam:"inline"`
 
 	Type TestDrainDeliveryUnionType
 }
@@ -350,15 +310,6 @@ func CreateTestDrainDeliveryUnionTestDrainDelivery2(testDrainDelivery2 TestDrain
 	}
 }
 
-func CreateTestDrainDeliveryUnionTestDrainDelivery3(testDrainDelivery3 TestDrainDelivery3) TestDrainDeliveryUnion {
-	typ := TestDrainDeliveryUnionTypeTestDrainDelivery3
-
-	return TestDrainDeliveryUnion{
-		TestDrainDelivery3: &testDrainDelivery3,
-		Type:               typ,
-	}
-}
-
 func (u *TestDrainDeliveryUnion) UnmarshalJSON(data []byte) error {
 
 	var testDrainDelivery1 TestDrainDelivery1 = TestDrainDelivery1{}
@@ -375,13 +326,6 @@ func (u *TestDrainDeliveryUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var testDrainDelivery3 TestDrainDelivery3 = TestDrainDelivery3{}
-	if err := utils.UnmarshalJSON(data, &testDrainDelivery3, "", true, nil); err == nil {
-		u.TestDrainDelivery3 = &testDrainDelivery3
-		u.Type = TestDrainDeliveryUnionTypeTestDrainDelivery3
-		return nil
-	}
-
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for TestDrainDeliveryUnion", string(data))
 }
 
@@ -392,10 +336,6 @@ func (u TestDrainDeliveryUnion) MarshalJSON() ([]byte, error) {
 
 	if u.TestDrainDelivery2 != nil {
 		return utils.MarshalJSON(u.TestDrainDelivery2, "", true)
-	}
-
-	if u.TestDrainDelivery3 != nil {
-		return utils.MarshalJSON(u.TestDrainDelivery3, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type TestDrainDeliveryUnion: all fields are null")
@@ -424,8 +364,8 @@ type TestDrainRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string               `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody *TestDrainRequestBody `request:"mediaType=application/json"`
+	Slug *string               `queryParam:"style=form,explode=true,name=slug"`
+	Body *TestDrainRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *TestDrainRequest) GetTeamID() *string {
@@ -442,11 +382,11 @@ func (o *TestDrainRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *TestDrainRequest) GetRequestBody() *TestDrainRequestBody {
+func (o *TestDrainRequest) GetBody() *TestDrainRequestBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type TestDrainResponseBody2 struct {

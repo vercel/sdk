@@ -32,7 +32,6 @@ export const PauseProjectRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type PauseProjectRequest$Outbound = {
   projectId: string;
@@ -51,19 +50,6 @@ export const PauseProjectRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PauseProjectRequest$ {
-  /** @deprecated use `PauseProjectRequest$inboundSchema` instead. */
-  export const inboundSchema = PauseProjectRequest$inboundSchema;
-  /** @deprecated use `PauseProjectRequest$outboundSchema` instead. */
-  export const outboundSchema = PauseProjectRequest$outboundSchema;
-  /** @deprecated use `PauseProjectRequest$Outbound` instead. */
-  export type Outbound = PauseProjectRequest$Outbound;
-}
-
 export function pauseProjectRequestToJSON(
   pauseProjectRequest: PauseProjectRequest,
 ): string {
@@ -71,7 +57,6 @@ export function pauseProjectRequestToJSON(
     PauseProjectRequest$outboundSchema.parse(pauseProjectRequest),
   );
 }
-
 export function pauseProjectRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<PauseProjectRequest, SDKValidationError> {

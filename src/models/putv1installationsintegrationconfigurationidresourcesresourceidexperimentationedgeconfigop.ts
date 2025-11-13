@@ -31,8 +31,8 @@ export type PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExper
 
 export const PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose =
   {
-    Experimentation: "experimentation",
     Flags: "flags",
+    Experimentation: "experimentation",
   } as const;
 export type PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose =
   ClosedEnum<
@@ -61,7 +61,6 @@ export const PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExpe
   > = z.object({
     data: z.record(z.any()),
   });
-
 /** @internal */
 export type PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequestBody$Outbound =
   {
@@ -78,22 +77,6 @@ export const PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExpe
     data: z.record(z.any()),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequestBody$ {
-  /** @deprecated use `PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequestBody$inboundSchema` instead. */
-  export const inboundSchema =
-    PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequestBody$inboundSchema;
-  /** @deprecated use `PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequestBody$outboundSchema` instead. */
-  export const outboundSchema =
-    PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequestBody$outboundSchema;
-  /** @deprecated use `PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequestBody$Outbound` instead. */
-  export type Outbound =
-    PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequestBody$Outbound;
-}
-
 export function putV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequestBodyToJSON(
   putV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequestBody:
     PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequestBody,
@@ -105,7 +88,6 @@ export function putV1InstallationsIntegrationConfigurationIdResourcesResourceIdE
       ),
   );
 }
-
 export function putV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -138,7 +120,6 @@ export const PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExpe
       "RequestBody": "requestBody",
     });
   });
-
 /** @internal */
 export type PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest$Outbound =
   {
@@ -167,22 +148,6 @@ export const PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExpe
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest$ {
-  /** @deprecated use `PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest$inboundSchema;
-  /** @deprecated use `PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest$outboundSchema;
-  /** @deprecated use `PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest$Outbound` instead. */
-  export type Outbound =
-    PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest$Outbound;
-}
-
 export function putV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequestToJSON(
   putV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest:
     PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest,
@@ -194,7 +159,6 @@ export function putV1InstallationsIntegrationConfigurationIdResourcesResourceIdE
       ),
   );
 }
-
 export function putV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -217,26 +181,12 @@ export const PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExpe
   > = z.nativeEnum(
     PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose,
   );
-
 /** @internal */
 export const PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$outboundSchema:
   z.ZodNativeEnum<
     typeof PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose
   > =
     PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$ {
-  /** @deprecated use `PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$inboundSchema` instead. */
-  export const inboundSchema =
-    PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$inboundSchema;
-  /** @deprecated use `PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$outboundSchema` instead. */
-  export const outboundSchema =
-    PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$outboundSchema;
-}
 
 /** @internal */
 export const PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody$inboundSchema:
@@ -252,7 +202,6 @@ export const PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExpe
       PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$inboundSchema
         .optional(),
   });
-
 /** @internal */
 export type PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody$Outbound =
   {
@@ -277,22 +226,6 @@ export const PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExpe
         .optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody$ {
-  /** @deprecated use `PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody$inboundSchema;
-  /** @deprecated use `PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody$outboundSchema;
-  /** @deprecated use `PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody$Outbound` instead. */
-  export type Outbound =
-    PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody$Outbound;
-}
-
 export function putV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBodyToJSON(
   putV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody:
     PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody,
@@ -304,7 +237,6 @@ export function putV1InstallationsIntegrationConfigurationIdResourcesResourceIdE
       ),
   );
 }
-
 export function putV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<

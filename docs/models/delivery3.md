@@ -6,16 +6,16 @@
 import { Delivery3 } from "@vercel/sdk/models/createdrainop.js";
 
 let value: Delivery3 = {
-  type: "<value>",
+  type: "clickhouse",
   endpoint: "<value>",
-  secret: "<value>",
+  table: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *string*           | :heavy_check_mark: | N/A                |
-| `endpoint`         | *string*           | :heavy_check_mark: | N/A                |
-| `secret`           | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `type`                                                                             | [models.CreateDrainDeliveryDrainsType](../models/createdraindeliverydrainstype.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `endpoint`                                                                         | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `table`                                                                            | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |

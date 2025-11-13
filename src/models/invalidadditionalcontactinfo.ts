@@ -50,22 +50,10 @@ export class InvalidAdditionalContactInfo extends VercelError {
 export const InvalidAdditionalContactInfoCode$inboundSchema: z.ZodNativeEnum<
   typeof InvalidAdditionalContactInfoCode
 > = z.nativeEnum(InvalidAdditionalContactInfoCode);
-
 /** @internal */
 export const InvalidAdditionalContactInfoCode$outboundSchema: z.ZodNativeEnum<
   typeof InvalidAdditionalContactInfoCode
 > = InvalidAdditionalContactInfoCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InvalidAdditionalContactInfoCode$ {
-  /** @deprecated use `InvalidAdditionalContactInfoCode$inboundSchema` instead. */
-  export const inboundSchema = InvalidAdditionalContactInfoCode$inboundSchema;
-  /** @deprecated use `InvalidAdditionalContactInfoCode$outboundSchema` instead. */
-  export const outboundSchema = InvalidAdditionalContactInfoCode$outboundSchema;
-}
 
 /** @internal */
 export const InvalidAdditionalContactInfo$inboundSchema: z.ZodType<
@@ -107,16 +95,3 @@ export const InvalidAdditionalContactInfo$outboundSchema: z.ZodType<
     code: InvalidAdditionalContactInfoCode$outboundSchema,
     message: z.string(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InvalidAdditionalContactInfo$ {
-  /** @deprecated use `InvalidAdditionalContactInfo$inboundSchema` instead. */
-  export const inboundSchema = InvalidAdditionalContactInfo$inboundSchema;
-  /** @deprecated use `InvalidAdditionalContactInfo$outboundSchema` instead. */
-  export const outboundSchema = InvalidAdditionalContactInfo$outboundSchema;
-  /** @deprecated use `InvalidAdditionalContactInfo$Outbound` instead. */
-  export type Outbound = InvalidAdditionalContactInfo$Outbound;
-}

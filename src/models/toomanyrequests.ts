@@ -62,22 +62,10 @@ export class TooManyRequests extends VercelError {
 export const TooManyRequestsCode$inboundSchema: z.ZodNativeEnum<
   typeof TooManyRequestsCode
 > = z.nativeEnum(TooManyRequestsCode);
-
 /** @internal */
 export const TooManyRequestsCode$outboundSchema: z.ZodNativeEnum<
   typeof TooManyRequestsCode
 > = TooManyRequestsCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TooManyRequestsCode$ {
-  /** @deprecated use `TooManyRequestsCode$inboundSchema` instead. */
-  export const inboundSchema = TooManyRequestsCode$inboundSchema;
-  /** @deprecated use `TooManyRequestsCode$outboundSchema` instead. */
-  export const outboundSchema = TooManyRequestsCode$outboundSchema;
-}
 
 /** @internal */
 export const RetryAfter$inboundSchema: z.ZodType<
@@ -88,7 +76,6 @@ export const RetryAfter$inboundSchema: z.ZodType<
   value: z.number(),
   str: z.string(),
 });
-
 /** @internal */
 export type RetryAfter$Outbound = {
   value: number;
@@ -105,23 +92,9 @@ export const RetryAfter$outboundSchema: z.ZodType<
   str: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RetryAfter$ {
-  /** @deprecated use `RetryAfter$inboundSchema` instead. */
-  export const inboundSchema = RetryAfter$inboundSchema;
-  /** @deprecated use `RetryAfter$outboundSchema` instead. */
-  export const outboundSchema = RetryAfter$outboundSchema;
-  /** @deprecated use `RetryAfter$Outbound` instead. */
-  export type Outbound = RetryAfter$Outbound;
-}
-
 export function retryAfterToJSON(retryAfter: RetryAfter): string {
   return JSON.stringify(RetryAfter$outboundSchema.parse(retryAfter));
 }
-
 export function retryAfterFromJSON(
   jsonString: string,
 ): SafeParseResult<RetryAfter, SDKValidationError> {
@@ -139,7 +112,6 @@ export const Limit$inboundSchema: z.ZodType<Limit, z.ZodTypeDef, unknown> = z
     remaining: z.number(),
     reset: z.number(),
   });
-
 /** @internal */
 export type Limit$Outbound = {
   total: number;
@@ -158,23 +130,9 @@ export const Limit$outboundSchema: z.ZodType<
   reset: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Limit$ {
-  /** @deprecated use `Limit$inboundSchema` instead. */
-  export const inboundSchema = Limit$inboundSchema;
-  /** @deprecated use `Limit$outboundSchema` instead. */
-  export const outboundSchema = Limit$outboundSchema;
-  /** @deprecated use `Limit$Outbound` instead. */
-  export type Outbound = Limit$Outbound;
-}
-
 export function limitToJSON(limit: Limit): string {
   return JSON.stringify(Limit$outboundSchema.parse(limit));
 }
-
 export function limitFromJSON(
   jsonString: string,
 ): SafeParseResult<Limit, SDKValidationError> {
@@ -231,16 +189,3 @@ export const TooManyRequests$outboundSchema: z.ZodType<
     retryAfter: z.lazy(() => RetryAfter$outboundSchema),
     limit: z.lazy(() => Limit$outboundSchema),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TooManyRequests$ {
-  /** @deprecated use `TooManyRequests$inboundSchema` instead. */
-  export const inboundSchema = TooManyRequests$inboundSchema;
-  /** @deprecated use `TooManyRequests$outboundSchema` instead. */
-  export const outboundSchema = TooManyRequests$outboundSchema;
-  /** @deprecated use `TooManyRequests$Outbound` instead. */
-  export type Outbound = TooManyRequests$Outbound;
-}

@@ -163,8 +163,8 @@ type PatchDomainRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string                `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody PatchDomainRequestBody `request:"mediaType=application/json"`
+	Slug *string                `queryParam:"style=form,explode=true,name=slug"`
+	Body PatchDomainRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *PatchDomainRequest) GetDomain() string {
@@ -188,11 +188,11 @@ func (o *PatchDomainRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *PatchDomainRequest) GetRequestBody() PatchDomainRequestBody {
+func (o *PatchDomainRequest) GetBody() PatchDomainRequestBody {
 	if o == nil {
 		return PatchDomainRequestBody{}
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type PatchDomainResponseBody3 struct {

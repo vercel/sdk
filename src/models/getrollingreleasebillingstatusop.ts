@@ -99,7 +99,6 @@ export const GetRollingReleaseBillingStatusRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type GetRollingReleaseBillingStatusRequest$Outbound = {
   idOrName: string;
@@ -118,21 +117,6 @@ export const GetRollingReleaseBillingStatusRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRollingReleaseBillingStatusRequest$ {
-  /** @deprecated use `GetRollingReleaseBillingStatusRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    GetRollingReleaseBillingStatusRequest$inboundSchema;
-  /** @deprecated use `GetRollingReleaseBillingStatusRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    GetRollingReleaseBillingStatusRequest$outboundSchema;
-  /** @deprecated use `GetRollingReleaseBillingStatusRequest$Outbound` instead. */
-  export type Outbound = GetRollingReleaseBillingStatusRequest$Outbound;
-}
-
 export function getRollingReleaseBillingStatusRequestToJSON(
   getRollingReleaseBillingStatusRequest: GetRollingReleaseBillingStatusRequest,
 ): string {
@@ -142,7 +126,6 @@ export function getRollingReleaseBillingStatusRequestToJSON(
     ),
   );
 }
-
 export function getRollingReleaseBillingStatusRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetRollingReleaseBillingStatusRequest, SDKValidationError> {
@@ -161,26 +144,12 @@ export const GetRollingReleaseBillingStatusResponseBodyRollingReleaseResponseRea
   > = z.nativeEnum(
     GetRollingReleaseBillingStatusResponseBodyRollingReleaseResponseReason,
   );
-
 /** @internal */
 export const GetRollingReleaseBillingStatusResponseBodyRollingReleaseResponseReason$outboundSchema:
   z.ZodNativeEnum<
     typeof GetRollingReleaseBillingStatusResponseBodyRollingReleaseResponseReason
   > =
     GetRollingReleaseBillingStatusResponseBodyRollingReleaseResponseReason$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRollingReleaseBillingStatusResponseBodyRollingReleaseResponseReason$ {
-  /** @deprecated use `GetRollingReleaseBillingStatusResponseBodyRollingReleaseResponseReason$inboundSchema` instead. */
-  export const inboundSchema =
-    GetRollingReleaseBillingStatusResponseBodyRollingReleaseResponseReason$inboundSchema;
-  /** @deprecated use `GetRollingReleaseBillingStatusResponseBodyRollingReleaseResponseReason$outboundSchema` instead. */
-  export const outboundSchema =
-    GetRollingReleaseBillingStatusResponseBodyRollingReleaseResponseReason$outboundSchema;
-}
 
 /** @internal */
 export const ResponseBody4$inboundSchema: z.ZodType<
@@ -193,7 +162,6 @@ export const ResponseBody4$inboundSchema: z.ZodType<
     GetRollingReleaseBillingStatusResponseBodyRollingReleaseResponseReason$inboundSchema,
   message: z.string(),
 });
-
 /** @internal */
 export type ResponseBody4$Outbound = {
   availableSlots: number;
@@ -213,23 +181,9 @@ export const ResponseBody4$outboundSchema: z.ZodType<
   message: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBody4$ {
-  /** @deprecated use `ResponseBody4$inboundSchema` instead. */
-  export const inboundSchema = ResponseBody4$inboundSchema;
-  /** @deprecated use `ResponseBody4$outboundSchema` instead. */
-  export const outboundSchema = ResponseBody4$outboundSchema;
-  /** @deprecated use `ResponseBody4$Outbound` instead. */
-  export type Outbound = ResponseBody4$Outbound;
-}
-
 export function responseBody4ToJSON(responseBody4: ResponseBody4): string {
   return JSON.stringify(ResponseBody4$outboundSchema.parse(responseBody4));
 }
-
 export function responseBody4FromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBody4, SDKValidationError> {
@@ -247,26 +201,12 @@ export const GetRollingReleaseBillingStatusResponseBodyRollingReleaseReason$inbo
   > = z.nativeEnum(
     GetRollingReleaseBillingStatusResponseBodyRollingReleaseReason,
   );
-
 /** @internal */
 export const GetRollingReleaseBillingStatusResponseBodyRollingReleaseReason$outboundSchema:
   z.ZodNativeEnum<
     typeof GetRollingReleaseBillingStatusResponseBodyRollingReleaseReason
   > =
     GetRollingReleaseBillingStatusResponseBodyRollingReleaseReason$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRollingReleaseBillingStatusResponseBodyRollingReleaseReason$ {
-  /** @deprecated use `GetRollingReleaseBillingStatusResponseBodyRollingReleaseReason$inboundSchema` instead. */
-  export const inboundSchema =
-    GetRollingReleaseBillingStatusResponseBodyRollingReleaseReason$inboundSchema;
-  /** @deprecated use `GetRollingReleaseBillingStatusResponseBodyRollingReleaseReason$outboundSchema` instead. */
-  export const outboundSchema =
-    GetRollingReleaseBillingStatusResponseBodyRollingReleaseReason$outboundSchema;
-}
 
 /** @internal */
 export const GetRollingReleaseBillingStatusResponseBody3$inboundSchema:
@@ -281,7 +221,6 @@ export const GetRollingReleaseBillingStatusResponseBody3$inboundSchema:
     message: z.string(),
     enabledProjects: z.array(z.string()),
   });
-
 /** @internal */
 export type GetRollingReleaseBillingStatusResponseBody3$Outbound = {
   availableSlots: number;
@@ -304,21 +243,6 @@ export const GetRollingReleaseBillingStatusResponseBody3$outboundSchema:
     enabledProjects: z.array(z.string()),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRollingReleaseBillingStatusResponseBody3$ {
-  /** @deprecated use `GetRollingReleaseBillingStatusResponseBody3$inboundSchema` instead. */
-  export const inboundSchema =
-    GetRollingReleaseBillingStatusResponseBody3$inboundSchema;
-  /** @deprecated use `GetRollingReleaseBillingStatusResponseBody3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetRollingReleaseBillingStatusResponseBody3$outboundSchema;
-  /** @deprecated use `GetRollingReleaseBillingStatusResponseBody3$Outbound` instead. */
-  export type Outbound = GetRollingReleaseBillingStatusResponseBody3$Outbound;
-}
-
 export function getRollingReleaseBillingStatusResponseBody3ToJSON(
   getRollingReleaseBillingStatusResponseBody3:
     GetRollingReleaseBillingStatusResponseBody3,
@@ -329,7 +253,6 @@ export function getRollingReleaseBillingStatusResponseBody3ToJSON(
     ),
   );
 }
-
 export function getRollingReleaseBillingStatusResponseBody3FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -350,45 +273,19 @@ export function getRollingReleaseBillingStatusResponseBody3FromJSON(
 export const AvailableSlots$inboundSchema: z.ZodNativeEnum<
   typeof AvailableSlots
 > = z.nativeEnum(AvailableSlots);
-
 /** @internal */
 export const AvailableSlots$outboundSchema: z.ZodNativeEnum<
   typeof AvailableSlots
 > = AvailableSlots$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AvailableSlots$ {
-  /** @deprecated use `AvailableSlots$inboundSchema` instead. */
-  export const inboundSchema = AvailableSlots$inboundSchema;
-  /** @deprecated use `AvailableSlots$outboundSchema` instead. */
-  export const outboundSchema = AvailableSlots$outboundSchema;
-}
-
 /** @internal */
 export const GetRollingReleaseBillingStatusResponseBodyReason$inboundSchema:
   z.ZodNativeEnum<typeof GetRollingReleaseBillingStatusResponseBodyReason> = z
     .nativeEnum(GetRollingReleaseBillingStatusResponseBodyReason);
-
 /** @internal */
 export const GetRollingReleaseBillingStatusResponseBodyReason$outboundSchema:
   z.ZodNativeEnum<typeof GetRollingReleaseBillingStatusResponseBodyReason> =
     GetRollingReleaseBillingStatusResponseBodyReason$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRollingReleaseBillingStatusResponseBodyReason$ {
-  /** @deprecated use `GetRollingReleaseBillingStatusResponseBodyReason$inboundSchema` instead. */
-  export const inboundSchema =
-    GetRollingReleaseBillingStatusResponseBodyReason$inboundSchema;
-  /** @deprecated use `GetRollingReleaseBillingStatusResponseBodyReason$outboundSchema` instead. */
-  export const outboundSchema =
-    GetRollingReleaseBillingStatusResponseBodyReason$outboundSchema;
-}
 
 /** @internal */
 export const GetRollingReleaseBillingStatusResponseBody2$inboundSchema:
@@ -401,7 +298,6 @@ export const GetRollingReleaseBillingStatusResponseBody2$inboundSchema:
     reason: GetRollingReleaseBillingStatusResponseBodyReason$inboundSchema,
     message: z.string(),
   });
-
 /** @internal */
 export type GetRollingReleaseBillingStatusResponseBody2$Outbound = {
   availableSlots: string;
@@ -421,21 +317,6 @@ export const GetRollingReleaseBillingStatusResponseBody2$outboundSchema:
     message: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRollingReleaseBillingStatusResponseBody2$ {
-  /** @deprecated use `GetRollingReleaseBillingStatusResponseBody2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetRollingReleaseBillingStatusResponseBody2$inboundSchema;
-  /** @deprecated use `GetRollingReleaseBillingStatusResponseBody2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetRollingReleaseBillingStatusResponseBody2$outboundSchema;
-  /** @deprecated use `GetRollingReleaseBillingStatusResponseBody2$Outbound` instead. */
-  export type Outbound = GetRollingReleaseBillingStatusResponseBody2$Outbound;
-}
-
 export function getRollingReleaseBillingStatusResponseBody2ToJSON(
   getRollingReleaseBillingStatusResponseBody2:
     GetRollingReleaseBillingStatusResponseBody2,
@@ -446,7 +327,6 @@ export function getRollingReleaseBillingStatusResponseBody2ToJSON(
     ),
   );
 }
-
 export function getRollingReleaseBillingStatusResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -467,22 +347,10 @@ export function getRollingReleaseBillingStatusResponseBody2FromJSON(
 export const ResponseBodyReason$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyReason
 > = z.nativeEnum(ResponseBodyReason);
-
 /** @internal */
 export const ResponseBodyReason$outboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyReason
 > = ResponseBodyReason$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyReason$ {
-  /** @deprecated use `ResponseBodyReason$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyReason$inboundSchema;
-  /** @deprecated use `ResponseBodyReason$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyReason$outboundSchema;
-}
 
 /** @internal */
 export const GetRollingReleaseBillingStatusResponseBody1$inboundSchema:
@@ -495,7 +363,6 @@ export const GetRollingReleaseBillingStatusResponseBody1$inboundSchema:
     reason: ResponseBodyReason$inboundSchema,
     message: z.string(),
   });
-
 /** @internal */
 export type GetRollingReleaseBillingStatusResponseBody1$Outbound = {
   availableSlots: number;
@@ -515,21 +382,6 @@ export const GetRollingReleaseBillingStatusResponseBody1$outboundSchema:
     message: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRollingReleaseBillingStatusResponseBody1$ {
-  /** @deprecated use `GetRollingReleaseBillingStatusResponseBody1$inboundSchema` instead. */
-  export const inboundSchema =
-    GetRollingReleaseBillingStatusResponseBody1$inboundSchema;
-  /** @deprecated use `GetRollingReleaseBillingStatusResponseBody1$outboundSchema` instead. */
-  export const outboundSchema =
-    GetRollingReleaseBillingStatusResponseBody1$outboundSchema;
-  /** @deprecated use `GetRollingReleaseBillingStatusResponseBody1$Outbound` instead. */
-  export type Outbound = GetRollingReleaseBillingStatusResponseBody1$Outbound;
-}
-
 export function getRollingReleaseBillingStatusResponseBody1ToJSON(
   getRollingReleaseBillingStatusResponseBody1:
     GetRollingReleaseBillingStatusResponseBody1,
@@ -540,7 +392,6 @@ export function getRollingReleaseBillingStatusResponseBody1ToJSON(
     ),
   );
 }
-
 export function getRollingReleaseBillingStatusResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -566,7 +417,6 @@ export const GetRollingReleaseBillingStatusResponseBody$inboundSchema:
       z.lazy(() => GetRollingReleaseBillingStatusResponseBody2$inboundSchema),
       z.lazy(() => ResponseBody4$inboundSchema),
     ]);
-
 /** @internal */
 export type GetRollingReleaseBillingStatusResponseBody$Outbound =
   | GetRollingReleaseBillingStatusResponseBody3$Outbound
@@ -587,21 +437,6 @@ export const GetRollingReleaseBillingStatusResponseBody$outboundSchema:
     z.lazy(() => ResponseBody4$outboundSchema),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRollingReleaseBillingStatusResponseBody$ {
-  /** @deprecated use `GetRollingReleaseBillingStatusResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    GetRollingReleaseBillingStatusResponseBody$inboundSchema;
-  /** @deprecated use `GetRollingReleaseBillingStatusResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    GetRollingReleaseBillingStatusResponseBody$outboundSchema;
-  /** @deprecated use `GetRollingReleaseBillingStatusResponseBody$Outbound` instead. */
-  export type Outbound = GetRollingReleaseBillingStatusResponseBody$Outbound;
-}
-
 export function getRollingReleaseBillingStatusResponseBodyToJSON(
   getRollingReleaseBillingStatusResponseBody:
     GetRollingReleaseBillingStatusResponseBody,
@@ -612,7 +447,6 @@ export function getRollingReleaseBillingStatusResponseBodyToJSON(
     ),
   );
 }
-
 export function getRollingReleaseBillingStatusResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<

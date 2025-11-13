@@ -33,13 +33,3 @@ const value: models.TestDrainDelivery2 = {
 };
 ```
 
-### `models.TestDrainDelivery3`
-
-```typescript
-const value: models.TestDrainDelivery3 = {
-  type: "<value>",
-  endpoint: "<value>",
-  secret: "<value>",
-};
-```
-

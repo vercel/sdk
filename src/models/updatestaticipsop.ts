@@ -81,7 +81,6 @@ export const UpdateStaticIpsRequestBody2$inboundSchema: z.ZodType<
   builds: z.boolean().optional(),
   regions: z.array(z.string()),
 });
-
 /** @internal */
 export type UpdateStaticIpsRequestBody2$Outbound = {
   builds?: boolean | undefined;
@@ -98,19 +97,6 @@ export const UpdateStaticIpsRequestBody2$outboundSchema: z.ZodType<
   regions: z.array(z.string()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateStaticIpsRequestBody2$ {
-  /** @deprecated use `UpdateStaticIpsRequestBody2$inboundSchema` instead. */
-  export const inboundSchema = UpdateStaticIpsRequestBody2$inboundSchema;
-  /** @deprecated use `UpdateStaticIpsRequestBody2$outboundSchema` instead. */
-  export const outboundSchema = UpdateStaticIpsRequestBody2$outboundSchema;
-  /** @deprecated use `UpdateStaticIpsRequestBody2$Outbound` instead. */
-  export type Outbound = UpdateStaticIpsRequestBody2$Outbound;
-}
-
 export function updateStaticIpsRequestBody2ToJSON(
   updateStaticIpsRequestBody2: UpdateStaticIpsRequestBody2,
 ): string {
@@ -120,7 +106,6 @@ export function updateStaticIpsRequestBody2ToJSON(
     ),
   );
 }
-
 export function updateStaticIpsRequestBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateStaticIpsRequestBody2, SDKValidationError> {
@@ -140,7 +125,6 @@ export const UpdateStaticIpsRequestBody1$inboundSchema: z.ZodType<
   builds: z.boolean(),
   regions: z.array(z.string()).optional(),
 });
-
 /** @internal */
 export type UpdateStaticIpsRequestBody1$Outbound = {
   builds: boolean;
@@ -157,19 +141,6 @@ export const UpdateStaticIpsRequestBody1$outboundSchema: z.ZodType<
   regions: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateStaticIpsRequestBody1$ {
-  /** @deprecated use `UpdateStaticIpsRequestBody1$inboundSchema` instead. */
-  export const inboundSchema = UpdateStaticIpsRequestBody1$inboundSchema;
-  /** @deprecated use `UpdateStaticIpsRequestBody1$outboundSchema` instead. */
-  export const outboundSchema = UpdateStaticIpsRequestBody1$outboundSchema;
-  /** @deprecated use `UpdateStaticIpsRequestBody1$Outbound` instead. */
-  export type Outbound = UpdateStaticIpsRequestBody1$Outbound;
-}
-
 export function updateStaticIpsRequestBody1ToJSON(
   updateStaticIpsRequestBody1: UpdateStaticIpsRequestBody1,
 ): string {
@@ -179,7 +150,6 @@ export function updateStaticIpsRequestBody1ToJSON(
     ),
   );
 }
-
 export function updateStaticIpsRequestBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateStaticIpsRequestBody1, SDKValidationError> {
@@ -199,7 +169,6 @@ export const UpdateStaticIpsRequestBody$inboundSchema: z.ZodType<
   z.lazy(() => UpdateStaticIpsRequestBody1$inboundSchema),
   z.lazy(() => UpdateStaticIpsRequestBody2$inboundSchema),
 ]);
-
 /** @internal */
 export type UpdateStaticIpsRequestBody$Outbound =
   | UpdateStaticIpsRequestBody1$Outbound
@@ -215,19 +184,6 @@ export const UpdateStaticIpsRequestBody$outboundSchema: z.ZodType<
   z.lazy(() => UpdateStaticIpsRequestBody2$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateStaticIpsRequestBody$ {
-  /** @deprecated use `UpdateStaticIpsRequestBody$inboundSchema` instead. */
-  export const inboundSchema = UpdateStaticIpsRequestBody$inboundSchema;
-  /** @deprecated use `UpdateStaticIpsRequestBody$outboundSchema` instead. */
-  export const outboundSchema = UpdateStaticIpsRequestBody$outboundSchema;
-  /** @deprecated use `UpdateStaticIpsRequestBody$Outbound` instead. */
-  export type Outbound = UpdateStaticIpsRequestBody$Outbound;
-}
-
 export function updateStaticIpsRequestBodyToJSON(
   updateStaticIpsRequestBody: UpdateStaticIpsRequestBody,
 ): string {
@@ -235,7 +191,6 @@ export function updateStaticIpsRequestBodyToJSON(
     UpdateStaticIpsRequestBody$outboundSchema.parse(updateStaticIpsRequestBody),
   );
 }
-
 export function updateStaticIpsRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateStaticIpsRequestBody, SDKValidationError> {
@@ -264,7 +219,6 @@ export const UpdateStaticIpsRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type UpdateStaticIpsRequest$Outbound = {
   idOrName: string;
@@ -295,19 +249,6 @@ export const UpdateStaticIpsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateStaticIpsRequest$ {
-  /** @deprecated use `UpdateStaticIpsRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateStaticIpsRequest$inboundSchema;
-  /** @deprecated use `UpdateStaticIpsRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateStaticIpsRequest$outboundSchema;
-  /** @deprecated use `UpdateStaticIpsRequest$Outbound` instead. */
-  export type Outbound = UpdateStaticIpsRequest$Outbound;
-}
-
 export function updateStaticIpsRequestToJSON(
   updateStaticIpsRequest: UpdateStaticIpsRequest,
 ): string {
@@ -315,7 +256,6 @@ export function updateStaticIpsRequestToJSON(
     UpdateStaticIpsRequest$outboundSchema.parse(updateStaticIpsRequest),
   );
 }
-
 export function updateStaticIpsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateStaticIpsRequest, SDKValidationError> {
@@ -330,22 +270,10 @@ export function updateStaticIpsRequestFromJSON(
 export const UpdateStaticIpsEnvId2$inboundSchema: z.ZodNativeEnum<
   typeof UpdateStaticIpsEnvId2
 > = z.nativeEnum(UpdateStaticIpsEnvId2);
-
 /** @internal */
 export const UpdateStaticIpsEnvId2$outboundSchema: z.ZodNativeEnum<
   typeof UpdateStaticIpsEnvId2
 > = UpdateStaticIpsEnvId2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateStaticIpsEnvId2$ {
-  /** @deprecated use `UpdateStaticIpsEnvId2$inboundSchema` instead. */
-  export const inboundSchema = UpdateStaticIpsEnvId2$inboundSchema;
-  /** @deprecated use `UpdateStaticIpsEnvId2$outboundSchema` instead. */
-  export const outboundSchema = UpdateStaticIpsEnvId2$outboundSchema;
-}
 
 /** @internal */
 export const UpdateStaticIpsEnvId$inboundSchema: z.ZodType<
@@ -353,7 +281,6 @@ export const UpdateStaticIpsEnvId$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.string(), UpdateStaticIpsEnvId2$inboundSchema]);
-
 /** @internal */
 export type UpdateStaticIpsEnvId$Outbound = string | string;
 
@@ -364,19 +291,6 @@ export const UpdateStaticIpsEnvId$outboundSchema: z.ZodType<
   UpdateStaticIpsEnvId
 > = z.union([z.string(), UpdateStaticIpsEnvId2$outboundSchema]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateStaticIpsEnvId$ {
-  /** @deprecated use `UpdateStaticIpsEnvId$inboundSchema` instead. */
-  export const inboundSchema = UpdateStaticIpsEnvId$inboundSchema;
-  /** @deprecated use `UpdateStaticIpsEnvId$outboundSchema` instead. */
-  export const outboundSchema = UpdateStaticIpsEnvId$outboundSchema;
-  /** @deprecated use `UpdateStaticIpsEnvId$Outbound` instead. */
-  export type Outbound = UpdateStaticIpsEnvId$Outbound;
-}
-
 export function updateStaticIpsEnvIdToJSON(
   updateStaticIpsEnvId: UpdateStaticIpsEnvId,
 ): string {
@@ -384,7 +298,6 @@ export function updateStaticIpsEnvIdToJSON(
     UpdateStaticIpsEnvId$outboundSchema.parse(updateStaticIpsEnvId),
   );
 }
-
 export function updateStaticIpsEnvIdFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateStaticIpsEnvId, SDKValidationError> {
@@ -404,7 +317,6 @@ export const UpdateStaticIpsAws$inboundSchema: z.ZodType<
   subnetIds: z.array(z.string()),
   securityGroupId: z.string(),
 });
-
 /** @internal */
 export type UpdateStaticIpsAws$Outbound = {
   subnetIds: Array<string>;
@@ -421,19 +333,6 @@ export const UpdateStaticIpsAws$outboundSchema: z.ZodType<
   securityGroupId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateStaticIpsAws$ {
-  /** @deprecated use `UpdateStaticIpsAws$inboundSchema` instead. */
-  export const inboundSchema = UpdateStaticIpsAws$inboundSchema;
-  /** @deprecated use `UpdateStaticIpsAws$outboundSchema` instead. */
-  export const outboundSchema = UpdateStaticIpsAws$outboundSchema;
-  /** @deprecated use `UpdateStaticIpsAws$Outbound` instead. */
-  export type Outbound = UpdateStaticIpsAws$Outbound;
-}
-
 export function updateStaticIpsAwsToJSON(
   updateStaticIpsAws: UpdateStaticIpsAws,
 ): string {
@@ -441,7 +340,6 @@ export function updateStaticIpsAwsToJSON(
     UpdateStaticIpsAws$outboundSchema.parse(updateStaticIpsAws),
   );
 }
-
 export function updateStaticIpsAwsFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateStaticIpsAws, SDKValidationError> {
@@ -467,7 +365,6 @@ export const UpdateStaticIpsResponseBody$inboundSchema: z.ZodType<
   createdAt: z.number(),
   updatedAt: z.number(),
 });
-
 /** @internal */
 export type UpdateStaticIpsResponseBody$Outbound = {
   envId: string | string;
@@ -496,19 +393,6 @@ export const UpdateStaticIpsResponseBody$outboundSchema: z.ZodType<
   updatedAt: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateStaticIpsResponseBody$ {
-  /** @deprecated use `UpdateStaticIpsResponseBody$inboundSchema` instead. */
-  export const inboundSchema = UpdateStaticIpsResponseBody$inboundSchema;
-  /** @deprecated use `UpdateStaticIpsResponseBody$outboundSchema` instead. */
-  export const outboundSchema = UpdateStaticIpsResponseBody$outboundSchema;
-  /** @deprecated use `UpdateStaticIpsResponseBody$Outbound` instead. */
-  export type Outbound = UpdateStaticIpsResponseBody$Outbound;
-}
-
 export function updateStaticIpsResponseBodyToJSON(
   updateStaticIpsResponseBody: UpdateStaticIpsResponseBody,
 ): string {
@@ -518,7 +402,6 @@ export function updateStaticIpsResponseBodyToJSON(
     ),
   );
 }
-
 export function updateStaticIpsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateStaticIpsResponseBody, SDKValidationError> {

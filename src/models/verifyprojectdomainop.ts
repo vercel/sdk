@@ -59,7 +59,6 @@ export const VerifyProjectDomainRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type VerifyProjectDomainRequest$Outbound = {
   idOrName: string;
@@ -80,19 +79,6 @@ export const VerifyProjectDomainRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace VerifyProjectDomainRequest$ {
-  /** @deprecated use `VerifyProjectDomainRequest$inboundSchema` instead. */
-  export const inboundSchema = VerifyProjectDomainRequest$inboundSchema;
-  /** @deprecated use `VerifyProjectDomainRequest$outboundSchema` instead. */
-  export const outboundSchema = VerifyProjectDomainRequest$outboundSchema;
-  /** @deprecated use `VerifyProjectDomainRequest$Outbound` instead. */
-  export type Outbound = VerifyProjectDomainRequest$Outbound;
-}
-
 export function verifyProjectDomainRequestToJSON(
   verifyProjectDomainRequest: VerifyProjectDomainRequest,
 ): string {
@@ -100,7 +86,6 @@ export function verifyProjectDomainRequestToJSON(
     VerifyProjectDomainRequest$outboundSchema.parse(verifyProjectDomainRequest),
   );
 }
-
 export function verifyProjectDomainRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<VerifyProjectDomainRequest, SDKValidationError> {
@@ -128,7 +113,6 @@ export const VerifyProjectDomainResponseBody$inboundSchema: z.ZodType<
   createdAt: z.number().optional(),
   verified: z.boolean(),
 });
-
 /** @internal */
 export type VerifyProjectDomainResponseBody$Outbound = {
   name: string;
@@ -161,19 +145,6 @@ export const VerifyProjectDomainResponseBody$outboundSchema: z.ZodType<
   verified: z.boolean(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace VerifyProjectDomainResponseBody$ {
-  /** @deprecated use `VerifyProjectDomainResponseBody$inboundSchema` instead. */
-  export const inboundSchema = VerifyProjectDomainResponseBody$inboundSchema;
-  /** @deprecated use `VerifyProjectDomainResponseBody$outboundSchema` instead. */
-  export const outboundSchema = VerifyProjectDomainResponseBody$outboundSchema;
-  /** @deprecated use `VerifyProjectDomainResponseBody$Outbound` instead. */
-  export type Outbound = VerifyProjectDomainResponseBody$Outbound;
-}
-
 export function verifyProjectDomainResponseBodyToJSON(
   verifyProjectDomainResponseBody: VerifyProjectDomainResponseBody,
 ): string {
@@ -183,7 +154,6 @@ export function verifyProjectDomainResponseBodyToJSON(
     ),
   );
 }
-
 export function verifyProjectDomainResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<VerifyProjectDomainResponseBody, SDKValidationError> {

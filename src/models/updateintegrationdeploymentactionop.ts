@@ -49,24 +49,10 @@ export type UpdateIntegrationDeploymentActionRequest = {
 export const UpdateIntegrationDeploymentActionStatus$inboundSchema:
   z.ZodNativeEnum<typeof UpdateIntegrationDeploymentActionStatus> = z
     .nativeEnum(UpdateIntegrationDeploymentActionStatus);
-
 /** @internal */
 export const UpdateIntegrationDeploymentActionStatus$outboundSchema:
   z.ZodNativeEnum<typeof UpdateIntegrationDeploymentActionStatus> =
     UpdateIntegrationDeploymentActionStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateIntegrationDeploymentActionStatus$ {
-  /** @deprecated use `UpdateIntegrationDeploymentActionStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateIntegrationDeploymentActionStatus$inboundSchema;
-  /** @deprecated use `UpdateIntegrationDeploymentActionStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateIntegrationDeploymentActionStatus$outboundSchema;
-}
 
 /** @internal */
 export const Secrets$inboundSchema: z.ZodType<Secrets, z.ZodTypeDef, unknown> =
@@ -74,7 +60,6 @@ export const Secrets$inboundSchema: z.ZodType<Secrets, z.ZodTypeDef, unknown> =
     name: z.string(),
     value: z.string(),
   });
-
 /** @internal */
 export type Secrets$Outbound = {
   name: string;
@@ -91,23 +76,9 @@ export const Secrets$outboundSchema: z.ZodType<
   value: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Secrets$ {
-  /** @deprecated use `Secrets$inboundSchema` instead. */
-  export const inboundSchema = Secrets$inboundSchema;
-  /** @deprecated use `Secrets$outboundSchema` instead. */
-  export const outboundSchema = Secrets$outboundSchema;
-  /** @deprecated use `Secrets$Outbound` instead. */
-  export type Outbound = Secrets$Outbound;
-}
-
 export function secretsToJSON(secrets: Secrets): string {
   return JSON.stringify(Secrets$outboundSchema.parse(secrets));
 }
-
 export function secretsFromJSON(
   jsonString: string,
 ): SafeParseResult<Secrets, SDKValidationError> {
@@ -127,7 +98,6 @@ export const Outcomes1$inboundSchema: z.ZodType<
   kind: z.string(),
   secrets: z.array(z.lazy(() => Secrets$inboundSchema)),
 });
-
 /** @internal */
 export type Outcomes1$Outbound = {
   kind: string;
@@ -144,23 +114,9 @@ export const Outcomes1$outboundSchema: z.ZodType<
   secrets: z.array(z.lazy(() => Secrets$outboundSchema)),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Outcomes1$ {
-  /** @deprecated use `Outcomes1$inboundSchema` instead. */
-  export const inboundSchema = Outcomes1$inboundSchema;
-  /** @deprecated use `Outcomes1$outboundSchema` instead. */
-  export const outboundSchema = Outcomes1$outboundSchema;
-  /** @deprecated use `Outcomes1$Outbound` instead. */
-  export type Outbound = Outcomes1$Outbound;
-}
-
 export function outcomes1ToJSON(outcomes1: Outcomes1): string {
   return JSON.stringify(Outcomes1$outboundSchema.parse(outcomes1));
 }
-
 export function outcomes1FromJSON(
   jsonString: string,
 ): SafeParseResult<Outcomes1, SDKValidationError> {
@@ -177,7 +133,6 @@ export const Outcomes$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.lazy(() => Outcomes1$inboundSchema);
-
 /** @internal */
 export type Outcomes$Outbound = Outcomes1$Outbound;
 
@@ -188,23 +143,9 @@ export const Outcomes$outboundSchema: z.ZodType<
   Outcomes
 > = z.lazy(() => Outcomes1$outboundSchema);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Outcomes$ {
-  /** @deprecated use `Outcomes$inboundSchema` instead. */
-  export const inboundSchema = Outcomes$inboundSchema;
-  /** @deprecated use `Outcomes$outboundSchema` instead. */
-  export const outboundSchema = Outcomes$outboundSchema;
-  /** @deprecated use `Outcomes$Outbound` instead. */
-  export type Outbound = Outcomes$Outbound;
-}
-
 export function outcomesToJSON(outcomes: Outcomes): string {
   return JSON.stringify(Outcomes$outboundSchema.parse(outcomes));
 }
-
 export function outcomesFromJSON(
   jsonString: string,
 ): SafeParseResult<Outcomes, SDKValidationError> {
@@ -227,7 +168,6 @@ export const UpdateIntegrationDeploymentActionRequestBody$inboundSchema:
     statusUrl: z.string().optional(),
     outcomes: z.array(z.lazy(() => Outcomes1$inboundSchema)).optional(),
   });
-
 /** @internal */
 export type UpdateIntegrationDeploymentActionRequestBody$Outbound = {
   status?: string | undefined;
@@ -249,21 +189,6 @@ export const UpdateIntegrationDeploymentActionRequestBody$outboundSchema:
     outcomes: z.array(z.lazy(() => Outcomes1$outboundSchema)).optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateIntegrationDeploymentActionRequestBody$ {
-  /** @deprecated use `UpdateIntegrationDeploymentActionRequestBody$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateIntegrationDeploymentActionRequestBody$inboundSchema;
-  /** @deprecated use `UpdateIntegrationDeploymentActionRequestBody$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateIntegrationDeploymentActionRequestBody$outboundSchema;
-  /** @deprecated use `UpdateIntegrationDeploymentActionRequestBody$Outbound` instead. */
-  export type Outbound = UpdateIntegrationDeploymentActionRequestBody$Outbound;
-}
-
 export function updateIntegrationDeploymentActionRequestBodyToJSON(
   updateIntegrationDeploymentActionRequestBody:
     UpdateIntegrationDeploymentActionRequestBody,
@@ -274,7 +199,6 @@ export function updateIntegrationDeploymentActionRequestBodyToJSON(
     ),
   );
 }
-
 export function updateIntegrationDeploymentActionRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -309,7 +233,6 @@ export const UpdateIntegrationDeploymentActionRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type UpdateIntegrationDeploymentActionRequest$Outbound = {
   deploymentId: string;
@@ -340,21 +263,6 @@ export const UpdateIntegrationDeploymentActionRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateIntegrationDeploymentActionRequest$ {
-  /** @deprecated use `UpdateIntegrationDeploymentActionRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateIntegrationDeploymentActionRequest$inboundSchema;
-  /** @deprecated use `UpdateIntegrationDeploymentActionRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateIntegrationDeploymentActionRequest$outboundSchema;
-  /** @deprecated use `UpdateIntegrationDeploymentActionRequest$Outbound` instead. */
-  export type Outbound = UpdateIntegrationDeploymentActionRequest$Outbound;
-}
-
 export function updateIntegrationDeploymentActionRequestToJSON(
   updateIntegrationDeploymentActionRequest:
     UpdateIntegrationDeploymentActionRequest,
@@ -365,7 +273,6 @@ export function updateIntegrationDeploymentActionRequestToJSON(
     ),
   );
 }
-
 export function updateIntegrationDeploymentActionRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<

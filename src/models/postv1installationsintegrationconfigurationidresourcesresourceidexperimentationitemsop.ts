@@ -47,21 +47,9 @@ export type PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExpe
 /** @internal */
 export const Category$inboundSchema: z.ZodNativeEnum<typeof Category> = z
   .nativeEnum(Category);
-
 /** @internal */
 export const Category$outboundSchema: z.ZodNativeEnum<typeof Category> =
   Category$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Category$ {
-  /** @deprecated use `Category$inboundSchema` instead. */
-  export const inboundSchema = Category$inboundSchema;
-  /** @deprecated use `Category$outboundSchema` instead. */
-  export const outboundSchema = Category$outboundSchema;
-}
 
 /** @internal */
 export const PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItems$inboundSchema:
@@ -80,7 +68,6 @@ export const PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExp
     createdAt: z.number().optional(),
     updatedAt: z.number().optional(),
   });
-
 /** @internal */
 export type PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItems$Outbound =
   {
@@ -113,22 +100,6 @@ export const PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExp
     updatedAt: z.number().optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItems$ {
-  /** @deprecated use `PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItems$inboundSchema` instead. */
-  export const inboundSchema =
-    PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItems$inboundSchema;
-  /** @deprecated use `PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItems$outboundSchema` instead. */
-  export const outboundSchema =
-    PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItems$outboundSchema;
-  /** @deprecated use `PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItems$Outbound` instead. */
-  export type Outbound =
-    PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItems$Outbound;
-}
-
 export function postV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemsToJSON(
   postV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItems:
     PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItems,
@@ -140,7 +111,6 @@ export function postV1InstallationsIntegrationConfigurationIdResourcesResourceId
       ),
   );
 }
-
 export function postV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemsFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -169,7 +139,6 @@ export const PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExp
       ),
     ),
   });
-
 /** @internal */
 export type PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequestBody$Outbound =
   {
@@ -192,22 +161,6 @@ export const PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExp
     ),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequestBody$ {
-  /** @deprecated use `PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequestBody$inboundSchema` instead. */
-  export const inboundSchema =
-    PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequestBody$inboundSchema;
-  /** @deprecated use `PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequestBody$outboundSchema` instead. */
-  export const outboundSchema =
-    PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequestBody$outboundSchema;
-  /** @deprecated use `PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequestBody$Outbound` instead. */
-  export type Outbound =
-    PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequestBody$Outbound;
-}
-
 export function postV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequestBodyToJSON(
   postV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequestBody:
     PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequestBody,
@@ -219,7 +172,6 @@ export function postV1InstallationsIntegrationConfigurationIdResourcesResourceId
       ),
   );
 }
-
 export function postV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -252,7 +204,6 @@ export const PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExp
       "RequestBody": "requestBody",
     });
   });
-
 /** @internal */
 export type PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequest$Outbound =
   {
@@ -281,22 +232,6 @@ export const PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExp
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequest$ {
-  /** @deprecated use `PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequest$inboundSchema;
-  /** @deprecated use `PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequest$outboundSchema;
-  /** @deprecated use `PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequest$Outbound` instead. */
-  export type Outbound =
-    PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequest$Outbound;
-}
-
 export function postV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequestToJSON(
   postV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequest:
     PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequest,
@@ -308,7 +243,6 @@ export function postV1InstallationsIntegrationConfigurationIdResourcesResourceId
       ),
   );
 }
-
 export function postV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<

@@ -394,7 +394,6 @@ export const ApproveRollingReleaseStageRequestBody$inboundSchema: z.ZodType<
   nextStageIndex: z.number(),
   canaryDeploymentId: z.string(),
 });
-
 /** @internal */
 export type ApproveRollingReleaseStageRequestBody$Outbound = {
   nextStageIndex: number;
@@ -411,21 +410,6 @@ export const ApproveRollingReleaseStageRequestBody$outboundSchema: z.ZodType<
   canaryDeploymentId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApproveRollingReleaseStageRequestBody$ {
-  /** @deprecated use `ApproveRollingReleaseStageRequestBody$inboundSchema` instead. */
-  export const inboundSchema =
-    ApproveRollingReleaseStageRequestBody$inboundSchema;
-  /** @deprecated use `ApproveRollingReleaseStageRequestBody$outboundSchema` instead. */
-  export const outboundSchema =
-    ApproveRollingReleaseStageRequestBody$outboundSchema;
-  /** @deprecated use `ApproveRollingReleaseStageRequestBody$Outbound` instead. */
-  export type Outbound = ApproveRollingReleaseStageRequestBody$Outbound;
-}
-
 export function approveRollingReleaseStageRequestBodyToJSON(
   approveRollingReleaseStageRequestBody: ApproveRollingReleaseStageRequestBody,
 ): string {
@@ -435,7 +419,6 @@ export function approveRollingReleaseStageRequestBodyToJSON(
     ),
   );
 }
-
 export function approveRollingReleaseStageRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ApproveRollingReleaseStageRequestBody, SDKValidationError> {
@@ -463,7 +446,6 @@ export const ApproveRollingReleaseStageRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type ApproveRollingReleaseStageRequest$Outbound = {
   idOrName: string;
@@ -490,20 +472,6 @@ export const ApproveRollingReleaseStageRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApproveRollingReleaseStageRequest$ {
-  /** @deprecated use `ApproveRollingReleaseStageRequest$inboundSchema` instead. */
-  export const inboundSchema = ApproveRollingReleaseStageRequest$inboundSchema;
-  /** @deprecated use `ApproveRollingReleaseStageRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    ApproveRollingReleaseStageRequest$outboundSchema;
-  /** @deprecated use `ApproveRollingReleaseStageRequest$Outbound` instead. */
-  export type Outbound = ApproveRollingReleaseStageRequest$Outbound;
-}
-
 export function approveRollingReleaseStageRequestToJSON(
   approveRollingReleaseStageRequest: ApproveRollingReleaseStageRequest,
 ): string {
@@ -513,7 +481,6 @@ export function approveRollingReleaseStageRequestToJSON(
     ),
   );
 }
-
 export function approveRollingReleaseStageRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ApproveRollingReleaseStageRequest, SDKValidationError> {
@@ -528,88 +495,38 @@ export function approveRollingReleaseStageRequestFromJSON(
 export const ApproveRollingReleaseStageState$inboundSchema: z.ZodNativeEnum<
   typeof ApproveRollingReleaseStageState
 > = z.nativeEnum(ApproveRollingReleaseStageState);
-
 /** @internal */
 export const ApproveRollingReleaseStageState$outboundSchema: z.ZodNativeEnum<
   typeof ApproveRollingReleaseStageState
 > = ApproveRollingReleaseStageState$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApproveRollingReleaseStageState$ {
-  /** @deprecated use `ApproveRollingReleaseStageState$inboundSchema` instead. */
-  export const inboundSchema = ApproveRollingReleaseStageState$inboundSchema;
-  /** @deprecated use `ApproveRollingReleaseStageState$outboundSchema` instead. */
-  export const outboundSchema = ApproveRollingReleaseStageState$outboundSchema;
-}
-
 /** @internal */
 export const ApproveRollingReleaseStageTarget$inboundSchema: z.ZodNativeEnum<
   typeof ApproveRollingReleaseStageTarget
 > = z.nativeEnum(ApproveRollingReleaseStageTarget);
-
 /** @internal */
 export const ApproveRollingReleaseStageTarget$outboundSchema: z.ZodNativeEnum<
   typeof ApproveRollingReleaseStageTarget
 > = ApproveRollingReleaseStageTarget$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApproveRollingReleaseStageTarget$ {
-  /** @deprecated use `ApproveRollingReleaseStageTarget$inboundSchema` instead. */
-  export const inboundSchema = ApproveRollingReleaseStageTarget$inboundSchema;
-  /** @deprecated use `ApproveRollingReleaseStageTarget$outboundSchema` instead. */
-  export const outboundSchema = ApproveRollingReleaseStageTarget$outboundSchema;
-}
-
 /** @internal */
 export const ApproveRollingReleaseStageSource$inboundSchema: z.ZodNativeEnum<
   typeof ApproveRollingReleaseStageSource
 > = z.nativeEnum(ApproveRollingReleaseStageSource);
-
 /** @internal */
 export const ApproveRollingReleaseStageSource$outboundSchema: z.ZodNativeEnum<
   typeof ApproveRollingReleaseStageSource
 > = ApproveRollingReleaseStageSource$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApproveRollingReleaseStageSource$ {
-  /** @deprecated use `ApproveRollingReleaseStageSource$inboundSchema` instead. */
-  export const inboundSchema = ApproveRollingReleaseStageSource$inboundSchema;
-  /** @deprecated use `ApproveRollingReleaseStageSource$outboundSchema` instead. */
-  export const outboundSchema = ApproveRollingReleaseStageSource$outboundSchema;
-}
 
 /** @internal */
 export const ApproveRollingReleaseStageReadyState$inboundSchema:
   z.ZodNativeEnum<typeof ApproveRollingReleaseStageReadyState> = z.nativeEnum(
     ApproveRollingReleaseStageReadyState,
   );
-
 /** @internal */
 export const ApproveRollingReleaseStageReadyState$outboundSchema:
   z.ZodNativeEnum<typeof ApproveRollingReleaseStageReadyState> =
     ApproveRollingReleaseStageReadyState$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApproveRollingReleaseStageReadyState$ {
-  /** @deprecated use `ApproveRollingReleaseStageReadyState$inboundSchema` instead. */
-  export const inboundSchema =
-    ApproveRollingReleaseStageReadyState$inboundSchema;
-  /** @deprecated use `ApproveRollingReleaseStageReadyState$outboundSchema` instead. */
-  export const outboundSchema =
-    ApproveRollingReleaseStageReadyState$outboundSchema;
-}
 
 /** @internal */
 export const ApproveRollingReleaseStageCurrentDeployment$inboundSchema:
@@ -628,7 +545,6 @@ export const ApproveRollingReleaseStageCurrentDeployment$inboundSchema:
     readyState: ApproveRollingReleaseStageReadyState$inboundSchema,
     readyStateAt: z.number().optional(),
   });
-
 /** @internal */
 export type ApproveRollingReleaseStageCurrentDeployment$Outbound = {
   id: string;
@@ -659,21 +575,6 @@ export const ApproveRollingReleaseStageCurrentDeployment$outboundSchema:
     readyStateAt: z.number().optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApproveRollingReleaseStageCurrentDeployment$ {
-  /** @deprecated use `ApproveRollingReleaseStageCurrentDeployment$inboundSchema` instead. */
-  export const inboundSchema =
-    ApproveRollingReleaseStageCurrentDeployment$inboundSchema;
-  /** @deprecated use `ApproveRollingReleaseStageCurrentDeployment$outboundSchema` instead. */
-  export const outboundSchema =
-    ApproveRollingReleaseStageCurrentDeployment$outboundSchema;
-  /** @deprecated use `ApproveRollingReleaseStageCurrentDeployment$Outbound` instead. */
-  export type Outbound = ApproveRollingReleaseStageCurrentDeployment$Outbound;
-}
-
 export function approveRollingReleaseStageCurrentDeploymentToJSON(
   approveRollingReleaseStageCurrentDeployment:
     ApproveRollingReleaseStageCurrentDeployment,
@@ -684,7 +585,6 @@ export function approveRollingReleaseStageCurrentDeploymentToJSON(
     ),
   );
 }
-
 export function approveRollingReleaseStageCurrentDeploymentFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -705,70 +605,28 @@ export function approveRollingReleaseStageCurrentDeploymentFromJSON(
 export const ApproveRollingReleaseStageRollingReleaseTarget$inboundSchema:
   z.ZodNativeEnum<typeof ApproveRollingReleaseStageRollingReleaseTarget> = z
     .nativeEnum(ApproveRollingReleaseStageRollingReleaseTarget);
-
 /** @internal */
 export const ApproveRollingReleaseStageRollingReleaseTarget$outboundSchema:
   z.ZodNativeEnum<typeof ApproveRollingReleaseStageRollingReleaseTarget> =
     ApproveRollingReleaseStageRollingReleaseTarget$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApproveRollingReleaseStageRollingReleaseTarget$ {
-  /** @deprecated use `ApproveRollingReleaseStageRollingReleaseTarget$inboundSchema` instead. */
-  export const inboundSchema =
-    ApproveRollingReleaseStageRollingReleaseTarget$inboundSchema;
-  /** @deprecated use `ApproveRollingReleaseStageRollingReleaseTarget$outboundSchema` instead. */
-  export const outboundSchema =
-    ApproveRollingReleaseStageRollingReleaseTarget$outboundSchema;
-}
-
 /** @internal */
 export const ApproveRollingReleaseStageRollingReleaseSource$inboundSchema:
   z.ZodNativeEnum<typeof ApproveRollingReleaseStageRollingReleaseSource> = z
     .nativeEnum(ApproveRollingReleaseStageRollingReleaseSource);
-
 /** @internal */
 export const ApproveRollingReleaseStageRollingReleaseSource$outboundSchema:
   z.ZodNativeEnum<typeof ApproveRollingReleaseStageRollingReleaseSource> =
     ApproveRollingReleaseStageRollingReleaseSource$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApproveRollingReleaseStageRollingReleaseSource$ {
-  /** @deprecated use `ApproveRollingReleaseStageRollingReleaseSource$inboundSchema` instead. */
-  export const inboundSchema =
-    ApproveRollingReleaseStageRollingReleaseSource$inboundSchema;
-  /** @deprecated use `ApproveRollingReleaseStageRollingReleaseSource$outboundSchema` instead. */
-  export const outboundSchema =
-    ApproveRollingReleaseStageRollingReleaseSource$outboundSchema;
-}
-
 /** @internal */
 export const ApproveRollingReleaseStageRollingReleaseReadyState$inboundSchema:
   z.ZodNativeEnum<typeof ApproveRollingReleaseStageRollingReleaseReadyState> = z
     .nativeEnum(ApproveRollingReleaseStageRollingReleaseReadyState);
-
 /** @internal */
 export const ApproveRollingReleaseStageRollingReleaseReadyState$outboundSchema:
   z.ZodNativeEnum<typeof ApproveRollingReleaseStageRollingReleaseReadyState> =
     ApproveRollingReleaseStageRollingReleaseReadyState$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApproveRollingReleaseStageRollingReleaseReadyState$ {
-  /** @deprecated use `ApproveRollingReleaseStageRollingReleaseReadyState$inboundSchema` instead. */
-  export const inboundSchema =
-    ApproveRollingReleaseStageRollingReleaseReadyState$inboundSchema;
-  /** @deprecated use `ApproveRollingReleaseStageRollingReleaseReadyState$outboundSchema` instead. */
-  export const outboundSchema =
-    ApproveRollingReleaseStageRollingReleaseReadyState$outboundSchema;
-}
 
 /** @internal */
 export const ApproveRollingReleaseStageCanaryDeployment$inboundSchema:
@@ -787,7 +645,6 @@ export const ApproveRollingReleaseStageCanaryDeployment$inboundSchema:
         ApproveRollingReleaseStageRollingReleaseReadyState$inboundSchema,
       readyStateAt: z.number().optional(),
     });
-
 /** @internal */
 export type ApproveRollingReleaseStageCanaryDeployment$Outbound = {
   id: string;
@@ -821,21 +678,6 @@ export const ApproveRollingReleaseStageCanaryDeployment$outboundSchema:
     readyStateAt: z.number().optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApproveRollingReleaseStageCanaryDeployment$ {
-  /** @deprecated use `ApproveRollingReleaseStageCanaryDeployment$inboundSchema` instead. */
-  export const inboundSchema =
-    ApproveRollingReleaseStageCanaryDeployment$inboundSchema;
-  /** @deprecated use `ApproveRollingReleaseStageCanaryDeployment$outboundSchema` instead. */
-  export const outboundSchema =
-    ApproveRollingReleaseStageCanaryDeployment$outboundSchema;
-  /** @deprecated use `ApproveRollingReleaseStageCanaryDeployment$Outbound` instead. */
-  export type Outbound = ApproveRollingReleaseStageCanaryDeployment$Outbound;
-}
-
 export function approveRollingReleaseStageCanaryDeploymentToJSON(
   approveRollingReleaseStageCanaryDeployment:
     ApproveRollingReleaseStageCanaryDeployment,
@@ -846,7 +688,6 @@ export function approveRollingReleaseStageCanaryDeploymentToJSON(
     ),
   );
 }
-
 export function approveRollingReleaseStageCanaryDeploymentFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -867,24 +708,10 @@ export function approveRollingReleaseStageCanaryDeploymentFromJSON(
 export const ApproveRollingReleaseStageAdvancementType$inboundSchema:
   z.ZodNativeEnum<typeof ApproveRollingReleaseStageAdvancementType> = z
     .nativeEnum(ApproveRollingReleaseStageAdvancementType);
-
 /** @internal */
 export const ApproveRollingReleaseStageAdvancementType$outboundSchema:
   z.ZodNativeEnum<typeof ApproveRollingReleaseStageAdvancementType> =
     ApproveRollingReleaseStageAdvancementType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApproveRollingReleaseStageAdvancementType$ {
-  /** @deprecated use `ApproveRollingReleaseStageAdvancementType$inboundSchema` instead. */
-  export const inboundSchema =
-    ApproveRollingReleaseStageAdvancementType$inboundSchema;
-  /** @deprecated use `ApproveRollingReleaseStageAdvancementType$outboundSchema` instead. */
-  export const outboundSchema =
-    ApproveRollingReleaseStageAdvancementType$outboundSchema;
-}
 
 /** @internal */
 export const ApproveRollingReleaseStageStages$inboundSchema: z.ZodType<
@@ -899,7 +726,6 @@ export const ApproveRollingReleaseStageStages$inboundSchema: z.ZodType<
   duration: z.nullable(z.number()),
   linearShift: z.boolean().optional(),
 });
-
 /** @internal */
 export type ApproveRollingReleaseStageStages$Outbound = {
   index: number;
@@ -924,19 +750,6 @@ export const ApproveRollingReleaseStageStages$outboundSchema: z.ZodType<
   linearShift: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApproveRollingReleaseStageStages$ {
-  /** @deprecated use `ApproveRollingReleaseStageStages$inboundSchema` instead. */
-  export const inboundSchema = ApproveRollingReleaseStageStages$inboundSchema;
-  /** @deprecated use `ApproveRollingReleaseStageStages$outboundSchema` instead. */
-  export const outboundSchema = ApproveRollingReleaseStageStages$outboundSchema;
-  /** @deprecated use `ApproveRollingReleaseStageStages$Outbound` instead. */
-  export type Outbound = ApproveRollingReleaseStageStages$Outbound;
-}
-
 export function approveRollingReleaseStageStagesToJSON(
   approveRollingReleaseStageStages: ApproveRollingReleaseStageStages,
 ): string {
@@ -946,7 +759,6 @@ export function approveRollingReleaseStageStagesToJSON(
     ),
   );
 }
-
 export function approveRollingReleaseStageStagesFromJSON(
   jsonString: string,
 ): SafeParseResult<ApproveRollingReleaseStageStages, SDKValidationError> {
@@ -970,7 +782,6 @@ export const ApproveRollingReleaseStageActiveStage$inboundSchema: z.ZodType<
   duration: z.nullable(z.number()),
   linearShift: z.boolean().optional(),
 });
-
 /** @internal */
 export type ApproveRollingReleaseStageActiveStage$Outbound = {
   index: number;
@@ -995,21 +806,6 @@ export const ApproveRollingReleaseStageActiveStage$outboundSchema: z.ZodType<
   linearShift: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApproveRollingReleaseStageActiveStage$ {
-  /** @deprecated use `ApproveRollingReleaseStageActiveStage$inboundSchema` instead. */
-  export const inboundSchema =
-    ApproveRollingReleaseStageActiveStage$inboundSchema;
-  /** @deprecated use `ApproveRollingReleaseStageActiveStage$outboundSchema` instead. */
-  export const outboundSchema =
-    ApproveRollingReleaseStageActiveStage$outboundSchema;
-  /** @deprecated use `ApproveRollingReleaseStageActiveStage$Outbound` instead. */
-  export type Outbound = ApproveRollingReleaseStageActiveStage$Outbound;
-}
-
 export function approveRollingReleaseStageActiveStageToJSON(
   approveRollingReleaseStageActiveStage: ApproveRollingReleaseStageActiveStage,
 ): string {
@@ -1019,7 +815,6 @@ export function approveRollingReleaseStageActiveStageToJSON(
     ),
   );
 }
-
 export function approveRollingReleaseStageActiveStageFromJSON(
   jsonString: string,
 ): SafeParseResult<ApproveRollingReleaseStageActiveStage, SDKValidationError> {
@@ -1044,7 +839,6 @@ export const ApproveRollingReleaseStageNextStage$inboundSchema: z.ZodType<
   duration: z.nullable(z.number()),
   linearShift: z.boolean().optional(),
 });
-
 /** @internal */
 export type ApproveRollingReleaseStageNextStage$Outbound = {
   index: number;
@@ -1069,21 +863,6 @@ export const ApproveRollingReleaseStageNextStage$outboundSchema: z.ZodType<
   linearShift: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApproveRollingReleaseStageNextStage$ {
-  /** @deprecated use `ApproveRollingReleaseStageNextStage$inboundSchema` instead. */
-  export const inboundSchema =
-    ApproveRollingReleaseStageNextStage$inboundSchema;
-  /** @deprecated use `ApproveRollingReleaseStageNextStage$outboundSchema` instead. */
-  export const outboundSchema =
-    ApproveRollingReleaseStageNextStage$outboundSchema;
-  /** @deprecated use `ApproveRollingReleaseStageNextStage$Outbound` instead. */
-  export type Outbound = ApproveRollingReleaseStageNextStage$Outbound;
-}
-
 export function approveRollingReleaseStageNextStageToJSON(
   approveRollingReleaseStageNextStage: ApproveRollingReleaseStageNextStage,
 ): string {
@@ -1093,7 +872,6 @@ export function approveRollingReleaseStageNextStageToJSON(
     ),
   );
 }
-
 export function approveRollingReleaseStageNextStageFromJSON(
   jsonString: string,
 ): SafeParseResult<ApproveRollingReleaseStageNextStage, SDKValidationError> {
@@ -1130,7 +908,6 @@ export const ApproveRollingReleaseStageRollingRelease$inboundSchema: z.ZodType<
   startedAt: z.number(),
   updatedAt: z.number(),
 });
-
 /** @internal */
 export type ApproveRollingReleaseStageRollingRelease$Outbound = {
   state: string;
@@ -1175,21 +952,6 @@ export const ApproveRollingReleaseStageRollingRelease$outboundSchema: z.ZodType<
   updatedAt: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApproveRollingReleaseStageRollingRelease$ {
-  /** @deprecated use `ApproveRollingReleaseStageRollingRelease$inboundSchema` instead. */
-  export const inboundSchema =
-    ApproveRollingReleaseStageRollingRelease$inboundSchema;
-  /** @deprecated use `ApproveRollingReleaseStageRollingRelease$outboundSchema` instead. */
-  export const outboundSchema =
-    ApproveRollingReleaseStageRollingRelease$outboundSchema;
-  /** @deprecated use `ApproveRollingReleaseStageRollingRelease$Outbound` instead. */
-  export type Outbound = ApproveRollingReleaseStageRollingRelease$Outbound;
-}
-
 export function approveRollingReleaseStageRollingReleaseToJSON(
   approveRollingReleaseStageRollingRelease:
     ApproveRollingReleaseStageRollingRelease,
@@ -1200,7 +962,6 @@ export function approveRollingReleaseStageRollingReleaseToJSON(
     ),
   );
 }
-
 export function approveRollingReleaseStageRollingReleaseFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1227,7 +988,6 @@ export const ApproveRollingReleaseStageResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => ApproveRollingReleaseStageRollingRelease$inboundSchema),
   ),
 });
-
 /** @internal */
 export type ApproveRollingReleaseStageResponseBody$Outbound = {
   rollingRelease: ApproveRollingReleaseStageRollingRelease$Outbound | null;
@@ -1244,21 +1004,6 @@ export const ApproveRollingReleaseStageResponseBody$outboundSchema: z.ZodType<
   ),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApproveRollingReleaseStageResponseBody$ {
-  /** @deprecated use `ApproveRollingReleaseStageResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    ApproveRollingReleaseStageResponseBody$inboundSchema;
-  /** @deprecated use `ApproveRollingReleaseStageResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    ApproveRollingReleaseStageResponseBody$outboundSchema;
-  /** @deprecated use `ApproveRollingReleaseStageResponseBody$Outbound` instead. */
-  export type Outbound = ApproveRollingReleaseStageResponseBody$Outbound;
-}
-
 export function approveRollingReleaseStageResponseBodyToJSON(
   approveRollingReleaseStageResponseBody:
     ApproveRollingReleaseStageResponseBody,
@@ -1269,7 +1014,6 @@ export function approveRollingReleaseStageResponseBodyToJSON(
     ),
   );
 }
-
 export function approveRollingReleaseStageResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ApproveRollingReleaseStageResponseBody, SDKValidationError> {

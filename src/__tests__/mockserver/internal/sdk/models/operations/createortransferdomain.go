@@ -244,8 +244,8 @@ type CreateOrTransferDomainRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string                            `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody *CreateOrTransferDomainRequestBody `request:"mediaType=application/json"`
+	Slug *string                            `queryParam:"style=form,explode=true,name=slug"`
+	Body *CreateOrTransferDomainRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *CreateOrTransferDomainRequest) GetTeamID() *string {
@@ -262,11 +262,11 @@ func (o *CreateOrTransferDomainRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *CreateOrTransferDomainRequest) GetRequestBody() *CreateOrTransferDomainRequestBody {
+func (o *CreateOrTransferDomainRequest) GetBody() *CreateOrTransferDomainRequestBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 // CreateOrTransferDomainCreator - An object containing information of the domain creator, including the user's id, username, and email.

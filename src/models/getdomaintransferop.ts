@@ -101,7 +101,6 @@ export const GetDomainTransferRequest$inboundSchema: z.ZodType<
   slug: z.string().optional(),
   domain: z.string(),
 });
-
 /** @internal */
 export type GetDomainTransferRequest$Outbound = {
   teamId?: string | undefined;
@@ -120,19 +119,6 @@ export const GetDomainTransferRequest$outboundSchema: z.ZodType<
   domain: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDomainTransferRequest$ {
-  /** @deprecated use `GetDomainTransferRequest$inboundSchema` instead. */
-  export const inboundSchema = GetDomainTransferRequest$inboundSchema;
-  /** @deprecated use `GetDomainTransferRequest$outboundSchema` instead. */
-  export const outboundSchema = GetDomainTransferRequest$outboundSchema;
-  /** @deprecated use `GetDomainTransferRequest$Outbound` instead. */
-  export type Outbound = GetDomainTransferRequest$Outbound;
-}
-
 export function getDomainTransferRequestToJSON(
   getDomainTransferRequest: GetDomainTransferRequest,
 ): string {
@@ -140,7 +126,6 @@ export function getDomainTransferRequestToJSON(
     GetDomainTransferRequest$outboundSchema.parse(getDomainTransferRequest),
   );
 }
-
 export function getDomainTransferRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDomainTransferRequest, SDKValidationError> {
@@ -155,45 +140,19 @@ export function getDomainTransferRequestFromJSON(
 export const ResponseBodyTransferPolicy$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyTransferPolicy
 > = z.nativeEnum(ResponseBodyTransferPolicy);
-
 /** @internal */
 export const ResponseBodyTransferPolicy$outboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyTransferPolicy
 > = ResponseBodyTransferPolicy$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyTransferPolicy$ {
-  /** @deprecated use `ResponseBodyTransferPolicy$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyTransferPolicy$inboundSchema;
-  /** @deprecated use `ResponseBodyTransferPolicy$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyTransferPolicy$outboundSchema;
-}
-
 /** @internal */
 export const GetDomainTransferResponseBodyStatus$inboundSchema: z.ZodNativeEnum<
   typeof GetDomainTransferResponseBodyStatus
 > = z.nativeEnum(GetDomainTransferResponseBodyStatus);
-
 /** @internal */
 export const GetDomainTransferResponseBodyStatus$outboundSchema:
   z.ZodNativeEnum<typeof GetDomainTransferResponseBodyStatus> =
     GetDomainTransferResponseBodyStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDomainTransferResponseBodyStatus$ {
-  /** @deprecated use `GetDomainTransferResponseBodyStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    GetDomainTransferResponseBodyStatus$inboundSchema;
-  /** @deprecated use `GetDomainTransferResponseBodyStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    GetDomainTransferResponseBodyStatus$outboundSchema;
-}
 
 /** @internal */
 export const GetDomainTransferResponseBody2$inboundSchema: z.ZodType<
@@ -206,7 +165,6 @@ export const GetDomainTransferResponseBody2$inboundSchema: z.ZodType<
   reason: z.string(),
   status: GetDomainTransferResponseBodyStatus$inboundSchema,
 });
-
 /** @internal */
 export type GetDomainTransferResponseBody2$Outbound = {
   transferable: boolean;
@@ -227,19 +185,6 @@ export const GetDomainTransferResponseBody2$outboundSchema: z.ZodType<
   status: GetDomainTransferResponseBodyStatus$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDomainTransferResponseBody2$ {
-  /** @deprecated use `GetDomainTransferResponseBody2$inboundSchema` instead. */
-  export const inboundSchema = GetDomainTransferResponseBody2$inboundSchema;
-  /** @deprecated use `GetDomainTransferResponseBody2$outboundSchema` instead. */
-  export const outboundSchema = GetDomainTransferResponseBody2$outboundSchema;
-  /** @deprecated use `GetDomainTransferResponseBody2$Outbound` instead. */
-  export type Outbound = GetDomainTransferResponseBody2$Outbound;
-}
-
 export function getDomainTransferResponseBody2ToJSON(
   getDomainTransferResponseBody2: GetDomainTransferResponseBody2,
 ): string {
@@ -249,7 +194,6 @@ export function getDomainTransferResponseBody2ToJSON(
     ),
   );
 }
-
 export function getDomainTransferResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetDomainTransferResponseBody2, SDKValidationError> {
@@ -264,22 +208,10 @@ export function getDomainTransferResponseBody2FromJSON(
 export const TransferPolicy$inboundSchema: z.ZodNativeEnum<
   typeof TransferPolicy
 > = z.nativeEnum(TransferPolicy);
-
 /** @internal */
 export const TransferPolicy$outboundSchema: z.ZodNativeEnum<
   typeof TransferPolicy
 > = TransferPolicy$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TransferPolicy$ {
-  /** @deprecated use `TransferPolicy$inboundSchema` instead. */
-  export const inboundSchema = TransferPolicy$inboundSchema;
-  /** @deprecated use `TransferPolicy$outboundSchema` instead. */
-  export const outboundSchema = TransferPolicy$outboundSchema;
-}
 
 /** @internal */
 export const GetDomainTransferResponseBody1$inboundSchema: z.ZodType<
@@ -292,7 +224,6 @@ export const GetDomainTransferResponseBody1$inboundSchema: z.ZodType<
   transferable: z.boolean(),
   transferPolicy: TransferPolicy$inboundSchema,
 });
-
 /** @internal */
 export type GetDomainTransferResponseBody1$Outbound = {
   reason: string;
@@ -313,19 +244,6 @@ export const GetDomainTransferResponseBody1$outboundSchema: z.ZodType<
   transferPolicy: TransferPolicy$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDomainTransferResponseBody1$ {
-  /** @deprecated use `GetDomainTransferResponseBody1$inboundSchema` instead. */
-  export const inboundSchema = GetDomainTransferResponseBody1$inboundSchema;
-  /** @deprecated use `GetDomainTransferResponseBody1$outboundSchema` instead. */
-  export const outboundSchema = GetDomainTransferResponseBody1$outboundSchema;
-  /** @deprecated use `GetDomainTransferResponseBody1$Outbound` instead. */
-  export type Outbound = GetDomainTransferResponseBody1$Outbound;
-}
-
 export function getDomainTransferResponseBody1ToJSON(
   getDomainTransferResponseBody1: GetDomainTransferResponseBody1,
 ): string {
@@ -335,7 +253,6 @@ export function getDomainTransferResponseBody1ToJSON(
     ),
   );
 }
-
 export function getDomainTransferResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetDomainTransferResponseBody1, SDKValidationError> {
@@ -355,7 +272,6 @@ export const GetDomainTransferResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => GetDomainTransferResponseBody1$inboundSchema),
   z.lazy(() => GetDomainTransferResponseBody2$inboundSchema),
 ]);
-
 /** @internal */
 export type GetDomainTransferResponseBody$Outbound =
   | GetDomainTransferResponseBody1$Outbound
@@ -371,19 +287,6 @@ export const GetDomainTransferResponseBody$outboundSchema: z.ZodType<
   z.lazy(() => GetDomainTransferResponseBody2$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDomainTransferResponseBody$ {
-  /** @deprecated use `GetDomainTransferResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetDomainTransferResponseBody$inboundSchema;
-  /** @deprecated use `GetDomainTransferResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetDomainTransferResponseBody$outboundSchema;
-  /** @deprecated use `GetDomainTransferResponseBody$Outbound` instead. */
-  export type Outbound = GetDomainTransferResponseBody$Outbound;
-}
-
 export function getDomainTransferResponseBodyToJSON(
   getDomainTransferResponseBody: GetDomainTransferResponseBody,
 ): string {
@@ -393,7 +296,6 @@ export function getDomainTransferResponseBodyToJSON(
     ),
   );
 }
-
 export function getDomainTransferResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDomainTransferResponseBody, SDKValidationError> {

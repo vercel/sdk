@@ -6,11 +6,11 @@
 import { GetDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type } from "@vercel/sdk/models/getdrainop.js";
 
 let value: GetDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type =
-  "otlphttp";
+  "clickhouse";
 ```
 
 ## Values
 
 ```typescript
-"otlphttp"
+"clickhouse"
 ```

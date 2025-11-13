@@ -28,8 +28,8 @@ type RemoveCustomEnvironmentRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string                             `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody *RemoveCustomEnvironmentRequestBody `request:"mediaType=application/json"`
+	Slug *string                             `queryParam:"style=form,explode=true,name=slug"`
+	Body *RemoveCustomEnvironmentRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *RemoveCustomEnvironmentRequest) GetIDOrName() string {
@@ -60,11 +60,11 @@ func (o *RemoveCustomEnvironmentRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *RemoveCustomEnvironmentRequest) GetRequestBody() *RemoveCustomEnvironmentRequestBody {
+func (o *RemoveCustomEnvironmentRequest) GetBody() *RemoveCustomEnvironmentRequestBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 // RemoveCustomEnvironmentType - The type of environment (production, preview, or development)

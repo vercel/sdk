@@ -219,7 +219,6 @@ export const Period$inboundSchema: z.ZodType<Period, z.ZodTypeDef, unknown> = z
     start: z.string().datetime({ offset: true }).transform(v => new Date(v)),
     end: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   });
-
 /** @internal */
 export type Period$Outbound = {
   start: string;
@@ -236,23 +235,9 @@ export const Period$outboundSchema: z.ZodType<
   end: z.date().transform(v => v.toISOString()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Period$ {
-  /** @deprecated use `Period$inboundSchema` instead. */
-  export const inboundSchema = Period$inboundSchema;
-  /** @deprecated use `Period$outboundSchema` instead. */
-  export const outboundSchema = Period$outboundSchema;
-  /** @deprecated use `Period$Outbound` instead. */
-  export type Outbound = Period$Outbound;
-}
-
 export function periodToJSON(period: Period): string {
   return JSON.stringify(Period$outboundSchema.parse(period));
 }
-
 export function periodFromJSON(
   jsonString: string,
 ): SafeParseResult<Period, SDKValidationError> {
@@ -282,7 +267,6 @@ export const BillingItems$inboundSchema: z.ZodType<
   units: z.string(),
   total: z.string(),
 });
-
 /** @internal */
 export type BillingItems$Outbound = {
   billingPlanId: string;
@@ -315,23 +299,9 @@ export const BillingItems$outboundSchema: z.ZodType<
   total: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BillingItems$ {
-  /** @deprecated use `BillingItems$inboundSchema` instead. */
-  export const inboundSchema = BillingItems$inboundSchema;
-  /** @deprecated use `BillingItems$outboundSchema` instead. */
-  export const outboundSchema = BillingItems$outboundSchema;
-  /** @deprecated use `BillingItems$Outbound` instead. */
-  export type Outbound = BillingItems$Outbound;
-}
-
 export function billingItemsToJSON(billingItems: BillingItems): string {
   return JSON.stringify(BillingItems$outboundSchema.parse(billingItems));
 }
-
 export function billingItemsFromJSON(
   jsonString: string,
 ): SafeParseResult<BillingItems, SDKValidationError> {
@@ -358,7 +328,6 @@ export const Discounts$inboundSchema: z.ZodType<
   details: z.string().optional(),
   amount: z.string(),
 });
-
 /** @internal */
 export type Discounts$Outbound = {
   billingPlanId: string;
@@ -385,23 +354,9 @@ export const Discounts$outboundSchema: z.ZodType<
   amount: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Discounts$ {
-  /** @deprecated use `Discounts$inboundSchema` instead. */
-  export const inboundSchema = Discounts$inboundSchema;
-  /** @deprecated use `Discounts$outboundSchema` instead. */
-  export const outboundSchema = Discounts$outboundSchema;
-  /** @deprecated use `Discounts$Outbound` instead. */
-  export type Outbound = Discounts$Outbound;
-}
-
 export function discountsToJSON(discounts: Discounts): string {
   return JSON.stringify(Discounts$outboundSchema.parse(discounts));
 }
-
 export function discountsFromJSON(
   jsonString: string,
 ): SafeParseResult<Discounts, SDKValidationError> {
@@ -421,7 +376,6 @@ export const Billing2$inboundSchema: z.ZodType<
   items: z.array(z.lazy(() => BillingItems$inboundSchema)),
   discounts: z.array(z.lazy(() => Discounts$inboundSchema)).optional(),
 });
-
 /** @internal */
 export type Billing2$Outbound = {
   items: Array<BillingItems$Outbound>;
@@ -438,23 +392,9 @@ export const Billing2$outboundSchema: z.ZodType<
   discounts: z.array(z.lazy(() => Discounts$outboundSchema)).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Billing2$ {
-  /** @deprecated use `Billing2$inboundSchema` instead. */
-  export const inboundSchema = Billing2$inboundSchema;
-  /** @deprecated use `Billing2$outboundSchema` instead. */
-  export const outboundSchema = Billing2$outboundSchema;
-  /** @deprecated use `Billing2$Outbound` instead. */
-  export type Outbound = Billing2$Outbound;
-}
-
 export function billing2ToJSON(billing2: Billing2): string {
   return JSON.stringify(Billing2$outboundSchema.parse(billing2));
 }
-
 export function billing2FromJSON(
   jsonString: string,
 ): SafeParseResult<Billing2, SDKValidationError> {
@@ -484,7 +424,6 @@ export const Billing1$inboundSchema: z.ZodType<
   units: z.string(),
   total: z.string(),
 });
-
 /** @internal */
 export type Billing1$Outbound = {
   billingPlanId: string;
@@ -517,23 +456,9 @@ export const Billing1$outboundSchema: z.ZodType<
   total: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Billing1$ {
-  /** @deprecated use `Billing1$inboundSchema` instead. */
-  export const inboundSchema = Billing1$inboundSchema;
-  /** @deprecated use `Billing1$outboundSchema` instead. */
-  export const outboundSchema = Billing1$outboundSchema;
-  /** @deprecated use `Billing1$Outbound` instead. */
-  export type Outbound = Billing1$Outbound;
-}
-
 export function billing1ToJSON(billing1: Billing1): string {
   return JSON.stringify(Billing1$outboundSchema.parse(billing1));
 }
-
 export function billing1FromJSON(
   jsonString: string,
 ): SafeParseResult<Billing1, SDKValidationError> {
@@ -553,7 +478,6 @@ export const SubmitBillingDataBilling$inboundSchema: z.ZodType<
   z.lazy(() => Billing2$inboundSchema),
   z.array(z.lazy(() => Billing1$inboundSchema)),
 ]);
-
 /** @internal */
 export type SubmitBillingDataBilling$Outbound =
   | Billing2$Outbound
@@ -569,19 +493,6 @@ export const SubmitBillingDataBilling$outboundSchema: z.ZodType<
   z.array(z.lazy(() => Billing1$outboundSchema)),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SubmitBillingDataBilling$ {
-  /** @deprecated use `SubmitBillingDataBilling$inboundSchema` instead. */
-  export const inboundSchema = SubmitBillingDataBilling$inboundSchema;
-  /** @deprecated use `SubmitBillingDataBilling$outboundSchema` instead. */
-  export const outboundSchema = SubmitBillingDataBilling$outboundSchema;
-  /** @deprecated use `SubmitBillingDataBilling$Outbound` instead. */
-  export type Outbound = SubmitBillingDataBilling$Outbound;
-}
-
 export function submitBillingDataBillingToJSON(
   submitBillingDataBilling: SubmitBillingDataBilling,
 ): string {
@@ -589,7 +500,6 @@ export function submitBillingDataBillingToJSON(
     SubmitBillingDataBilling$outboundSchema.parse(submitBillingDataBilling),
   );
 }
-
 export function submitBillingDataBillingFromJSON(
   jsonString: string,
 ): SafeParseResult<SubmitBillingDataBilling, SDKValidationError> {
@@ -604,22 +514,10 @@ export function submitBillingDataBillingFromJSON(
 export const SubmitBillingDataType$inboundSchema: z.ZodNativeEnum<
   typeof SubmitBillingDataType
 > = z.nativeEnum(SubmitBillingDataType);
-
 /** @internal */
 export const SubmitBillingDataType$outboundSchema: z.ZodNativeEnum<
   typeof SubmitBillingDataType
 > = SubmitBillingDataType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SubmitBillingDataType$ {
-  /** @deprecated use `SubmitBillingDataType$inboundSchema` instead. */
-  export const inboundSchema = SubmitBillingDataType$inboundSchema;
-  /** @deprecated use `SubmitBillingDataType$outboundSchema` instead. */
-  export const outboundSchema = SubmitBillingDataType$outboundSchema;
-}
 
 /** @internal */
 export const Usage$inboundSchema: z.ZodType<Usage, z.ZodTypeDef, unknown> = z
@@ -632,7 +530,6 @@ export const Usage$inboundSchema: z.ZodType<Usage, z.ZodTypeDef, unknown> = z
     periodValue: z.number(),
     planValue: z.number().optional(),
   });
-
 /** @internal */
 export type Usage$Outbound = {
   resourceId?: string | undefined;
@@ -659,23 +556,9 @@ export const Usage$outboundSchema: z.ZodType<
   planValue: z.number().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Usage$ {
-  /** @deprecated use `Usage$inboundSchema` instead. */
-  export const inboundSchema = Usage$inboundSchema;
-  /** @deprecated use `Usage$outboundSchema` instead. */
-  export const outboundSchema = Usage$outboundSchema;
-  /** @deprecated use `Usage$Outbound` instead. */
-  export type Outbound = Usage$Outbound;
-}
-
 export function usageToJSON(usage: Usage): string {
   return JSON.stringify(Usage$outboundSchema.parse(usage));
 }
-
 export function usageFromJSON(
   jsonString: string,
 ): SafeParseResult<Usage, SDKValidationError> {
@@ -701,7 +584,6 @@ export const SubmitBillingDataRequestBody$inboundSchema: z.ZodType<
   ]),
   usage: z.array(z.lazy(() => Usage$inboundSchema)),
 });
-
 /** @internal */
 export type SubmitBillingDataRequestBody$Outbound = {
   timestamp: string;
@@ -727,19 +609,6 @@ export const SubmitBillingDataRequestBody$outboundSchema: z.ZodType<
   usage: z.array(z.lazy(() => Usage$outboundSchema)),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SubmitBillingDataRequestBody$ {
-  /** @deprecated use `SubmitBillingDataRequestBody$inboundSchema` instead. */
-  export const inboundSchema = SubmitBillingDataRequestBody$inboundSchema;
-  /** @deprecated use `SubmitBillingDataRequestBody$outboundSchema` instead. */
-  export const outboundSchema = SubmitBillingDataRequestBody$outboundSchema;
-  /** @deprecated use `SubmitBillingDataRequestBody$Outbound` instead. */
-  export type Outbound = SubmitBillingDataRequestBody$Outbound;
-}
-
 export function submitBillingDataRequestBodyToJSON(
   submitBillingDataRequestBody: SubmitBillingDataRequestBody,
 ): string {
@@ -749,7 +618,6 @@ export function submitBillingDataRequestBodyToJSON(
     ),
   );
 }
-
 export function submitBillingDataRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<SubmitBillingDataRequestBody, SDKValidationError> {
@@ -773,7 +641,6 @@ export const SubmitBillingDataRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type SubmitBillingDataRequest$Outbound = {
   integrationConfigurationId: string;
@@ -794,19 +661,6 @@ export const SubmitBillingDataRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SubmitBillingDataRequest$ {
-  /** @deprecated use `SubmitBillingDataRequest$inboundSchema` instead. */
-  export const inboundSchema = SubmitBillingDataRequest$inboundSchema;
-  /** @deprecated use `SubmitBillingDataRequest$outboundSchema` instead. */
-  export const outboundSchema = SubmitBillingDataRequest$outboundSchema;
-  /** @deprecated use `SubmitBillingDataRequest$Outbound` instead. */
-  export type Outbound = SubmitBillingDataRequest$Outbound;
-}
-
 export function submitBillingDataRequestToJSON(
   submitBillingDataRequest: SubmitBillingDataRequest,
 ): string {
@@ -814,7 +668,6 @@ export function submitBillingDataRequestToJSON(
     SubmitBillingDataRequest$outboundSchema.parse(submitBillingDataRequest),
   );
 }
-
 export function submitBillingDataRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<SubmitBillingDataRequest, SDKValidationError> {

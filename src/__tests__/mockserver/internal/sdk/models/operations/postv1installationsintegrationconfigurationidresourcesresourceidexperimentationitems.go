@@ -123,7 +123,7 @@ func (o *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperim
 type PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsRequest struct {
 	IntegrationConfigurationID string                                                                                           `pathParam:"style=simple,explode=false,name=integrationConfigurationId"`
 	ResourceID                 string                                                                                           `pathParam:"style=simple,explode=false,name=resourceId"`
-	RequestBody                *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsRequestBody `request:"mediaType=application/json"`
+	Body                       *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsRequest) GetIntegrationConfigurationID() string {
@@ -140,11 +140,11 @@ func (o *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperim
 	return o.ResourceID
 }
 
-func (o *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsRequest) GetRequestBody() *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsRequestBody {
+func (o *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsRequest) GetBody() *PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsRequestBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type PostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsResponse struct {

@@ -5,11 +5,11 @@
 ```typescript
 import { GetAllLogDrainsDeliveryLogDrainsResponseType } from "@vercel/sdk/models/getalllogdrainsop.js";
 
-let value: GetAllLogDrainsDeliveryLogDrainsResponseType = "clickhouse";
+let value: GetAllLogDrainsDeliveryLogDrainsResponseType = "internal";
 ```
 
 ## Values
 
 ```typescript
-"clickhouse"
+"internal"
 ```

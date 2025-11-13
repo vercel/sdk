@@ -99,22 +99,10 @@ export type PatchEdgeConfigItemsResponseBody = {
 export const PatchEdgeConfigItems1Operation$inboundSchema: z.ZodNativeEnum<
   typeof PatchEdgeConfigItems1Operation
 > = z.nativeEnum(PatchEdgeConfigItems1Operation);
-
 /** @internal */
 export const PatchEdgeConfigItems1Operation$outboundSchema: z.ZodNativeEnum<
   typeof PatchEdgeConfigItems1Operation
 > = PatchEdgeConfigItems1Operation$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchEdgeConfigItems1Operation$ {
-  /** @deprecated use `PatchEdgeConfigItems1Operation$inboundSchema` instead. */
-  export const inboundSchema = PatchEdgeConfigItems1Operation$inboundSchema;
-  /** @deprecated use `PatchEdgeConfigItems1Operation$outboundSchema` instead. */
-  export const outboundSchema = PatchEdgeConfigItems1Operation$outboundSchema;
-}
 
 /** @internal */
 export const PatchEdgeConfigItems1Description$inboundSchema: z.ZodType<
@@ -122,7 +110,6 @@ export const PatchEdgeConfigItems1Description$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.string(), z.any()]);
-
 /** @internal */
 export type PatchEdgeConfigItems1Description$Outbound = string | any;
 
@@ -133,19 +120,6 @@ export const PatchEdgeConfigItems1Description$outboundSchema: z.ZodType<
   PatchEdgeConfigItems1Description
 > = z.union([z.string(), z.any()]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchEdgeConfigItems1Description$ {
-  /** @deprecated use `PatchEdgeConfigItems1Description$inboundSchema` instead. */
-  export const inboundSchema = PatchEdgeConfigItems1Description$inboundSchema;
-  /** @deprecated use `PatchEdgeConfigItems1Description$outboundSchema` instead. */
-  export const outboundSchema = PatchEdgeConfigItems1Description$outboundSchema;
-  /** @deprecated use `PatchEdgeConfigItems1Description$Outbound` instead. */
-  export type Outbound = PatchEdgeConfigItems1Description$Outbound;
-}
-
 export function patchEdgeConfigItems1DescriptionToJSON(
   patchEdgeConfigItems1Description: PatchEdgeConfigItems1Description,
 ): string {
@@ -155,7 +129,6 @@ export function patchEdgeConfigItems1DescriptionToJSON(
     ),
   );
 }
-
 export function patchEdgeConfigItems1DescriptionFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchEdgeConfigItems1Description, SDKValidationError> {
@@ -177,7 +150,6 @@ export const PatchEdgeConfigItems13$inboundSchema: z.ZodType<
   value: z.nullable(z.any()).optional(),
   description: z.nullable(z.union([z.string(), z.any()])).optional(),
 });
-
 /** @internal */
 export type PatchEdgeConfigItems13$Outbound = {
   operation: string;
@@ -198,19 +170,6 @@ export const PatchEdgeConfigItems13$outboundSchema: z.ZodType<
   description: z.nullable(z.union([z.string(), z.any()])).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchEdgeConfigItems13$ {
-  /** @deprecated use `PatchEdgeConfigItems13$inboundSchema` instead. */
-  export const inboundSchema = PatchEdgeConfigItems13$inboundSchema;
-  /** @deprecated use `PatchEdgeConfigItems13$outboundSchema` instead. */
-  export const outboundSchema = PatchEdgeConfigItems13$outboundSchema;
-  /** @deprecated use `PatchEdgeConfigItems13$Outbound` instead. */
-  export type Outbound = PatchEdgeConfigItems13$Outbound;
-}
-
 export function patchEdgeConfigItems13ToJSON(
   patchEdgeConfigItems13: PatchEdgeConfigItems13,
 ): string {
@@ -218,7 +177,6 @@ export function patchEdgeConfigItems13ToJSON(
     PatchEdgeConfigItems13$outboundSchema.parse(patchEdgeConfigItems13),
   );
 }
-
 export function patchEdgeConfigItems13FromJSON(
   jsonString: string,
 ): SafeParseResult<PatchEdgeConfigItems13, SDKValidationError> {
@@ -232,21 +190,9 @@ export function patchEdgeConfigItems13FromJSON(
 /** @internal */
 export const OneOperation$inboundSchema: z.ZodNativeEnum<typeof OneOperation> =
   z.nativeEnum(OneOperation);
-
 /** @internal */
 export const OneOperation$outboundSchema: z.ZodNativeEnum<typeof OneOperation> =
   OneOperation$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OneOperation$ {
-  /** @deprecated use `OneOperation$inboundSchema` instead. */
-  export const inboundSchema = OneOperation$inboundSchema;
-  /** @deprecated use `OneOperation$outboundSchema` instead. */
-  export const outboundSchema = OneOperation$outboundSchema;
-}
 
 /** @internal */
 export const OneDescription$inboundSchema: z.ZodType<
@@ -254,7 +200,6 @@ export const OneDescription$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.string(), z.any()]);
-
 /** @internal */
 export type OneDescription$Outbound = string | any;
 
@@ -265,23 +210,9 @@ export const OneDescription$outboundSchema: z.ZodType<
   OneDescription
 > = z.union([z.string(), z.any()]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OneDescription$ {
-  /** @deprecated use `OneDescription$inboundSchema` instead. */
-  export const inboundSchema = OneDescription$inboundSchema;
-  /** @deprecated use `OneDescription$outboundSchema` instead. */
-  export const outboundSchema = OneDescription$outboundSchema;
-  /** @deprecated use `OneDescription$Outbound` instead. */
-  export type Outbound = OneDescription$Outbound;
-}
-
 export function oneDescriptionToJSON(oneDescription: OneDescription): string {
   return JSON.stringify(OneDescription$outboundSchema.parse(oneDescription));
 }
-
 export function oneDescriptionFromJSON(
   jsonString: string,
 ): SafeParseResult<OneDescription, SDKValidationError> {
@@ -303,7 +234,6 @@ export const PatchEdgeConfigItems12$inboundSchema: z.ZodType<
   value: z.nullable(z.any()).optional(),
   description: z.nullable(z.union([z.string(), z.any()])).optional(),
 });
-
 /** @internal */
 export type PatchEdgeConfigItems12$Outbound = {
   operation: string;
@@ -324,19 +254,6 @@ export const PatchEdgeConfigItems12$outboundSchema: z.ZodType<
   description: z.nullable(z.union([z.string(), z.any()])).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchEdgeConfigItems12$ {
-  /** @deprecated use `PatchEdgeConfigItems12$inboundSchema` instead. */
-  export const inboundSchema = PatchEdgeConfigItems12$inboundSchema;
-  /** @deprecated use `PatchEdgeConfigItems12$outboundSchema` instead. */
-  export const outboundSchema = PatchEdgeConfigItems12$outboundSchema;
-  /** @deprecated use `PatchEdgeConfigItems12$Outbound` instead. */
-  export type Outbound = PatchEdgeConfigItems12$Outbound;
-}
-
 export function patchEdgeConfigItems12ToJSON(
   patchEdgeConfigItems12: PatchEdgeConfigItems12,
 ): string {
@@ -344,7 +261,6 @@ export function patchEdgeConfigItems12ToJSON(
     PatchEdgeConfigItems12$outboundSchema.parse(patchEdgeConfigItems12),
   );
 }
-
 export function patchEdgeConfigItems12FromJSON(
   jsonString: string,
 ): SafeParseResult<PatchEdgeConfigItems12, SDKValidationError> {
@@ -358,21 +274,9 @@ export function patchEdgeConfigItems12FromJSON(
 /** @internal */
 export const Operation$inboundSchema: z.ZodNativeEnum<typeof Operation> = z
   .nativeEnum(Operation);
-
 /** @internal */
 export const Operation$outboundSchema: z.ZodNativeEnum<typeof Operation> =
   Operation$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Operation$ {
-  /** @deprecated use `Operation$inboundSchema` instead. */
-  export const inboundSchema = Operation$inboundSchema;
-  /** @deprecated use `Operation$outboundSchema` instead. */
-  export const outboundSchema = Operation$outboundSchema;
-}
 
 /** @internal */
 export const Description$inboundSchema: z.ZodType<
@@ -380,7 +284,6 @@ export const Description$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.string(), z.any()]);
-
 /** @internal */
 export type Description$Outbound = string | any;
 
@@ -391,23 +294,9 @@ export const Description$outboundSchema: z.ZodType<
   Description
 > = z.union([z.string(), z.any()]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Description$ {
-  /** @deprecated use `Description$inboundSchema` instead. */
-  export const inboundSchema = Description$inboundSchema;
-  /** @deprecated use `Description$outboundSchema` instead. */
-  export const outboundSchema = Description$outboundSchema;
-  /** @deprecated use `Description$Outbound` instead. */
-  export type Outbound = Description$Outbound;
-}
-
 export function descriptionToJSON(description: Description): string {
   return JSON.stringify(Description$outboundSchema.parse(description));
 }
-
 export function descriptionFromJSON(
   jsonString: string,
 ): SafeParseResult<Description, SDKValidationError> {
@@ -429,7 +318,6 @@ export const PatchEdgeConfigItems11$inboundSchema: z.ZodType<
   value: z.nullable(z.any()).optional(),
   description: z.nullable(z.union([z.string(), z.any()])).optional(),
 });
-
 /** @internal */
 export type PatchEdgeConfigItems11$Outbound = {
   operation: string;
@@ -450,19 +338,6 @@ export const PatchEdgeConfigItems11$outboundSchema: z.ZodType<
   description: z.nullable(z.union([z.string(), z.any()])).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchEdgeConfigItems11$ {
-  /** @deprecated use `PatchEdgeConfigItems11$inboundSchema` instead. */
-  export const inboundSchema = PatchEdgeConfigItems11$inboundSchema;
-  /** @deprecated use `PatchEdgeConfigItems11$outboundSchema` instead. */
-  export const outboundSchema = PatchEdgeConfigItems11$outboundSchema;
-  /** @deprecated use `PatchEdgeConfigItems11$Outbound` instead. */
-  export type Outbound = PatchEdgeConfigItems11$Outbound;
-}
-
 export function patchEdgeConfigItems11ToJSON(
   patchEdgeConfigItems11: PatchEdgeConfigItems11,
 ): string {
@@ -470,7 +345,6 @@ export function patchEdgeConfigItems11ToJSON(
     PatchEdgeConfigItems11$outboundSchema.parse(patchEdgeConfigItems11),
   );
 }
-
 export function patchEdgeConfigItems11FromJSON(
   jsonString: string,
 ): SafeParseResult<PatchEdgeConfigItems11, SDKValidationError> {
@@ -488,7 +362,6 @@ export const Items1$inboundSchema: z.ZodType<Items1, z.ZodTypeDef, unknown> = z
     z.lazy(() => PatchEdgeConfigItems12$inboundSchema),
     z.lazy(() => PatchEdgeConfigItems13$inboundSchema),
   ]);
-
 /** @internal */
 export type Items1$Outbound =
   | PatchEdgeConfigItems11$Outbound
@@ -506,23 +379,9 @@ export const Items1$outboundSchema: z.ZodType<
   z.lazy(() => PatchEdgeConfigItems13$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Items1$ {
-  /** @deprecated use `Items1$inboundSchema` instead. */
-  export const inboundSchema = Items1$inboundSchema;
-  /** @deprecated use `Items1$outboundSchema` instead. */
-  export const outboundSchema = Items1$outboundSchema;
-  /** @deprecated use `Items1$Outbound` instead. */
-  export type Outbound = Items1$Outbound;
-}
-
 export function items1ToJSON(items1: Items1): string {
   return JSON.stringify(Items1$outboundSchema.parse(items1));
 }
-
 export function items1FromJSON(
   jsonString: string,
 ): SafeParseResult<Items1, SDKValidationError> {
@@ -543,7 +402,6 @@ export const PatchEdgeConfigItemsItems$inboundSchema: z.ZodType<
   z.lazy(() => PatchEdgeConfigItems12$inboundSchema),
   z.lazy(() => PatchEdgeConfigItems13$inboundSchema),
 ]);
-
 /** @internal */
 export type PatchEdgeConfigItemsItems$Outbound =
   | PatchEdgeConfigItems11$Outbound
@@ -561,19 +419,6 @@ export const PatchEdgeConfigItemsItems$outboundSchema: z.ZodType<
   z.lazy(() => PatchEdgeConfigItems13$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchEdgeConfigItemsItems$ {
-  /** @deprecated use `PatchEdgeConfigItemsItems$inboundSchema` instead. */
-  export const inboundSchema = PatchEdgeConfigItemsItems$inboundSchema;
-  /** @deprecated use `PatchEdgeConfigItemsItems$outboundSchema` instead. */
-  export const outboundSchema = PatchEdgeConfigItemsItems$outboundSchema;
-  /** @deprecated use `PatchEdgeConfigItemsItems$Outbound` instead. */
-  export type Outbound = PatchEdgeConfigItemsItems$Outbound;
-}
-
 export function patchEdgeConfigItemsItemsToJSON(
   patchEdgeConfigItemsItems: PatchEdgeConfigItemsItems,
 ): string {
@@ -581,7 +426,6 @@ export function patchEdgeConfigItemsItemsToJSON(
     PatchEdgeConfigItemsItems$outboundSchema.parse(patchEdgeConfigItemsItems),
   );
 }
-
 export function patchEdgeConfigItemsItemsFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchEdgeConfigItemsItems, SDKValidationError> {
@@ -606,7 +450,6 @@ export const PatchEdgeConfigItemsRequestBody$inboundSchema: z.ZodType<
     ]),
   ),
 });
-
 /** @internal */
 export type PatchEdgeConfigItemsRequestBody$Outbound = {
   items: Array<
@@ -631,19 +474,6 @@ export const PatchEdgeConfigItemsRequestBody$outboundSchema: z.ZodType<
   ),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchEdgeConfigItemsRequestBody$ {
-  /** @deprecated use `PatchEdgeConfigItemsRequestBody$inboundSchema` instead. */
-  export const inboundSchema = PatchEdgeConfigItemsRequestBody$inboundSchema;
-  /** @deprecated use `PatchEdgeConfigItemsRequestBody$outboundSchema` instead. */
-  export const outboundSchema = PatchEdgeConfigItemsRequestBody$outboundSchema;
-  /** @deprecated use `PatchEdgeConfigItemsRequestBody$Outbound` instead. */
-  export type Outbound = PatchEdgeConfigItemsRequestBody$Outbound;
-}
-
 export function patchEdgeConfigItemsRequestBodyToJSON(
   patchEdgeConfigItemsRequestBody: PatchEdgeConfigItemsRequestBody,
 ): string {
@@ -653,7 +483,6 @@ export function patchEdgeConfigItemsRequestBodyToJSON(
     ),
   );
 }
-
 export function patchEdgeConfigItemsRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchEdgeConfigItemsRequestBody, SDKValidationError> {
@@ -680,7 +509,6 @@ export const PatchEdgeConfigItemsRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type PatchEdgeConfigItemsRequest$Outbound = {
   edgeConfigId: string;
@@ -706,19 +534,6 @@ export const PatchEdgeConfigItemsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchEdgeConfigItemsRequest$ {
-  /** @deprecated use `PatchEdgeConfigItemsRequest$inboundSchema` instead. */
-  export const inboundSchema = PatchEdgeConfigItemsRequest$inboundSchema;
-  /** @deprecated use `PatchEdgeConfigItemsRequest$outboundSchema` instead. */
-  export const outboundSchema = PatchEdgeConfigItemsRequest$outboundSchema;
-  /** @deprecated use `PatchEdgeConfigItemsRequest$Outbound` instead. */
-  export type Outbound = PatchEdgeConfigItemsRequest$Outbound;
-}
-
 export function patchEdgeConfigItemsRequestToJSON(
   patchEdgeConfigItemsRequest: PatchEdgeConfigItemsRequest,
 ): string {
@@ -728,7 +543,6 @@ export function patchEdgeConfigItemsRequestToJSON(
     ),
   );
 }
-
 export function patchEdgeConfigItemsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchEdgeConfigItemsRequest, SDKValidationError> {
@@ -747,7 +561,6 @@ export const PatchEdgeConfigItemsResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   status: z.string(),
 });
-
 /** @internal */
 export type PatchEdgeConfigItemsResponseBody$Outbound = {
   status: string;
@@ -762,19 +575,6 @@ export const PatchEdgeConfigItemsResponseBody$outboundSchema: z.ZodType<
   status: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchEdgeConfigItemsResponseBody$ {
-  /** @deprecated use `PatchEdgeConfigItemsResponseBody$inboundSchema` instead. */
-  export const inboundSchema = PatchEdgeConfigItemsResponseBody$inboundSchema;
-  /** @deprecated use `PatchEdgeConfigItemsResponseBody$outboundSchema` instead. */
-  export const outboundSchema = PatchEdgeConfigItemsResponseBody$outboundSchema;
-  /** @deprecated use `PatchEdgeConfigItemsResponseBody$Outbound` instead. */
-  export type Outbound = PatchEdgeConfigItemsResponseBody$Outbound;
-}
-
 export function patchEdgeConfigItemsResponseBodyToJSON(
   patchEdgeConfigItemsResponseBody: PatchEdgeConfigItemsResponseBody,
 ): string {
@@ -784,7 +584,6 @@ export function patchEdgeConfigItemsResponseBodyToJSON(
     ),
   );
 }
-
 export function patchEdgeConfigItemsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchEdgeConfigItemsResponseBody, SDKValidationError> {

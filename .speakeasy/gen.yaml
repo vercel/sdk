@@ -22,12 +22,13 @@ generation:
     hoistGlobalSecurity: true
   schemas:
     allOfMergeStrategy: shallowMerge
+  requestBodyFieldName: ""
   tests:
     generateTests: true
     generateNewTests: true
     skipResponseBodyAssertions: false
 typescript:
-  version: 1.17.0
+  version: 1.17.1
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -35,6 +36,7 @@ typescript:
     peerDependencies: {}
   additionalPackageJSON: {}
   additionalScripts: {}
+  alwaysIncludeInboundAndOutbound: false
   author: Speakeasy
   baseErrorName: VercelError
   clientServerStatusCodesAsErrors: true
@@ -44,6 +46,7 @@ typescript:
   enableMCPServer: true
   enableReactQuery: false
   enumFormat: union
+  exportZodModelNamespace: false
   flattenGlobalSecurity: true
   flatteningOrder: body-first
   generateExamples: true
@@ -66,6 +69,7 @@ typescript:
   responseFormat: flat
   sseFlatResponse: false
   templateVersion: v2
+  unionStrategy: left-to-right
   usageSDKInitImports: []
   useIndexModules: false
   zodVersion: v3

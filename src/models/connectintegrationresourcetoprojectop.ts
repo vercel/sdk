@@ -35,7 +35,6 @@ export const ConnectIntegrationResourceToProjectRequestBody$inboundSchema:
   > = z.object({
     projectId: z.string(),
   });
-
 /** @internal */
 export type ConnectIntegrationResourceToProjectRequestBody$Outbound = {
   projectId: string;
@@ -51,22 +50,6 @@ export const ConnectIntegrationResourceToProjectRequestBody$outboundSchema:
     projectId: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ConnectIntegrationResourceToProjectRequestBody$ {
-  /** @deprecated use `ConnectIntegrationResourceToProjectRequestBody$inboundSchema` instead. */
-  export const inboundSchema =
-    ConnectIntegrationResourceToProjectRequestBody$inboundSchema;
-  /** @deprecated use `ConnectIntegrationResourceToProjectRequestBody$outboundSchema` instead. */
-  export const outboundSchema =
-    ConnectIntegrationResourceToProjectRequestBody$outboundSchema;
-  /** @deprecated use `ConnectIntegrationResourceToProjectRequestBody$Outbound` instead. */
-  export type Outbound =
-    ConnectIntegrationResourceToProjectRequestBody$Outbound;
-}
-
 export function connectIntegrationResourceToProjectRequestBodyToJSON(
   connectIntegrationResourceToProjectRequestBody:
     ConnectIntegrationResourceToProjectRequestBody,
@@ -77,7 +60,6 @@ export function connectIntegrationResourceToProjectRequestBodyToJSON(
     ),
   );
 }
-
 export function connectIntegrationResourceToProjectRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -110,7 +92,6 @@ export const ConnectIntegrationResourceToProjectRequest$inboundSchema:
         "RequestBody": "requestBody",
       });
     });
-
 /** @internal */
 export type ConnectIntegrationResourceToProjectRequest$Outbound = {
   integrationConfigurationId: string;
@@ -142,21 +123,6 @@ export const ConnectIntegrationResourceToProjectRequest$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ConnectIntegrationResourceToProjectRequest$ {
-  /** @deprecated use `ConnectIntegrationResourceToProjectRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    ConnectIntegrationResourceToProjectRequest$inboundSchema;
-  /** @deprecated use `ConnectIntegrationResourceToProjectRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    ConnectIntegrationResourceToProjectRequest$outboundSchema;
-  /** @deprecated use `ConnectIntegrationResourceToProjectRequest$Outbound` instead. */
-  export type Outbound = ConnectIntegrationResourceToProjectRequest$Outbound;
-}
-
 export function connectIntegrationResourceToProjectRequestToJSON(
   connectIntegrationResourceToProjectRequest:
     ConnectIntegrationResourceToProjectRequest,
@@ -167,7 +133,6 @@ export function connectIntegrationResourceToProjectRequestToJSON(
     ),
   );
 }
-
 export function connectIntegrationResourceToProjectRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<

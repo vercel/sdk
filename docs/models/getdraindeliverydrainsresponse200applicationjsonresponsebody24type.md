@@ -6,11 +6,11 @@
 import { GetDrainDeliveryDrainsResponse200ApplicationJSONResponseBody24Type } from "@vercel/sdk/models/getdrainop.js";
 
 let value: GetDrainDeliveryDrainsResponse200ApplicationJSONResponseBody24Type =
-  "clickhouse";
+  "internal";
 ```
 
 ## Values
 
 ```typescript
-"clickhouse"
+"internal"
 ```

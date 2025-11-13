@@ -68,7 +68,6 @@ export const DeleteTeamReasons$inboundSchema: z.ZodType<
   slug: z.string(),
   description: z.string(),
 });
-
 /** @internal */
 export type DeleteTeamReasons$Outbound = {
   slug: string;
@@ -85,19 +84,6 @@ export const DeleteTeamReasons$outboundSchema: z.ZodType<
   description: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteTeamReasons$ {
-  /** @deprecated use `DeleteTeamReasons$inboundSchema` instead. */
-  export const inboundSchema = DeleteTeamReasons$inboundSchema;
-  /** @deprecated use `DeleteTeamReasons$outboundSchema` instead. */
-  export const outboundSchema = DeleteTeamReasons$outboundSchema;
-  /** @deprecated use `DeleteTeamReasons$Outbound` instead. */
-  export type Outbound = DeleteTeamReasons$Outbound;
-}
-
 export function deleteTeamReasonsToJSON(
   deleteTeamReasons: DeleteTeamReasons,
 ): string {
@@ -105,7 +91,6 @@ export function deleteTeamReasonsToJSON(
     DeleteTeamReasons$outboundSchema.parse(deleteTeamReasons),
   );
 }
-
 export function deleteTeamReasonsFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteTeamReasons, SDKValidationError> {
@@ -124,7 +109,6 @@ export const DeleteTeamRequestBody$inboundSchema: z.ZodType<
 > = z.object({
   reasons: z.array(z.lazy(() => DeleteTeamReasons$inboundSchema)).optional(),
 });
-
 /** @internal */
 export type DeleteTeamRequestBody$Outbound = {
   reasons?: Array<DeleteTeamReasons$Outbound> | undefined;
@@ -139,19 +123,6 @@ export const DeleteTeamRequestBody$outboundSchema: z.ZodType<
   reasons: z.array(z.lazy(() => DeleteTeamReasons$outboundSchema)).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteTeamRequestBody$ {
-  /** @deprecated use `DeleteTeamRequestBody$inboundSchema` instead. */
-  export const inboundSchema = DeleteTeamRequestBody$inboundSchema;
-  /** @deprecated use `DeleteTeamRequestBody$outboundSchema` instead. */
-  export const outboundSchema = DeleteTeamRequestBody$outboundSchema;
-  /** @deprecated use `DeleteTeamRequestBody$Outbound` instead. */
-  export type Outbound = DeleteTeamRequestBody$Outbound;
-}
-
 export function deleteTeamRequestBodyToJSON(
   deleteTeamRequestBody: DeleteTeamRequestBody,
 ): string {
@@ -159,7 +130,6 @@ export function deleteTeamRequestBodyToJSON(
     DeleteTeamRequestBody$outboundSchema.parse(deleteTeamRequestBody),
   );
 }
-
 export function deleteTeamRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteTeamRequestBody, SDKValidationError> {
@@ -185,7 +155,6 @@ export const DeleteTeamRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type DeleteTeamRequest$Outbound = {
   newDefaultTeamId?: string | undefined;
@@ -210,19 +179,6 @@ export const DeleteTeamRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteTeamRequest$ {
-  /** @deprecated use `DeleteTeamRequest$inboundSchema` instead. */
-  export const inboundSchema = DeleteTeamRequest$inboundSchema;
-  /** @deprecated use `DeleteTeamRequest$outboundSchema` instead. */
-  export const outboundSchema = DeleteTeamRequest$outboundSchema;
-  /** @deprecated use `DeleteTeamRequest$Outbound` instead. */
-  export type Outbound = DeleteTeamRequest$Outbound;
-}
-
 export function deleteTeamRequestToJSON(
   deleteTeamRequest: DeleteTeamRequest,
 ): string {
@@ -230,7 +186,6 @@ export function deleteTeamRequestToJSON(
     DeleteTeamRequest$outboundSchema.parse(deleteTeamRequest),
   );
 }
-
 export function deleteTeamRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteTeamRequest, SDKValidationError> {
@@ -250,7 +205,6 @@ export const DeleteTeamResponseBody$inboundSchema: z.ZodType<
   id: z.string(),
   newDefaultTeamIdError: z.boolean().optional(),
 });
-
 /** @internal */
 export type DeleteTeamResponseBody$Outbound = {
   id: string;
@@ -267,19 +221,6 @@ export const DeleteTeamResponseBody$outboundSchema: z.ZodType<
   newDefaultTeamIdError: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteTeamResponseBody$ {
-  /** @deprecated use `DeleteTeamResponseBody$inboundSchema` instead. */
-  export const inboundSchema = DeleteTeamResponseBody$inboundSchema;
-  /** @deprecated use `DeleteTeamResponseBody$outboundSchema` instead. */
-  export const outboundSchema = DeleteTeamResponseBody$outboundSchema;
-  /** @deprecated use `DeleteTeamResponseBody$Outbound` instead. */
-  export type Outbound = DeleteTeamResponseBody$Outbound;
-}
-
 export function deleteTeamResponseBodyToJSON(
   deleteTeamResponseBody: DeleteTeamResponseBody,
 ): string {
@@ -287,7 +228,6 @@ export function deleteTeamResponseBodyToJSON(
     DeleteTeamResponseBody$outboundSchema.parse(deleteTeamResponseBody),
   );
 }
-
 export function deleteTeamResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteTeamResponseBody, SDKValidationError> {

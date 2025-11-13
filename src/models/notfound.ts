@@ -41,21 +41,9 @@ export class NotFound extends VercelError {
 /** @internal */
 export const NotFoundCode$inboundSchema: z.ZodNativeEnum<typeof NotFoundCode> =
   z.nativeEnum(NotFoundCode);
-
 /** @internal */
 export const NotFoundCode$outboundSchema: z.ZodNativeEnum<typeof NotFoundCode> =
   NotFoundCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace NotFoundCode$ {
-  /** @deprecated use `NotFoundCode$inboundSchema` instead. */
-  export const inboundSchema = NotFoundCode$inboundSchema;
-  /** @deprecated use `NotFoundCode$outboundSchema` instead. */
-  export const outboundSchema = NotFoundCode$outboundSchema;
-}
 
 /** @internal */
 export const NotFound$inboundSchema: z.ZodType<
@@ -97,16 +85,3 @@ export const NotFound$outboundSchema: z.ZodType<
     code: NotFoundCode$outboundSchema,
     message: z.string(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace NotFound$ {
-  /** @deprecated use `NotFound$inboundSchema` instead. */
-  export const inboundSchema = NotFound$inboundSchema;
-  /** @deprecated use `NotFound$outboundSchema` instead. */
-  export const outboundSchema = NotFound$outboundSchema;
-  /** @deprecated use `NotFound$Outbound` instead. */
-  export type Outbound = NotFound$Outbound;
-}

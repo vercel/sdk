@@ -204,7 +204,6 @@ export const TransferInDomainContactInformation$inboundSchema: z.ZodType<
   companyName: z.string().optional(),
   fax: z.string().optional(),
 });
-
 /** @internal */
 export type TransferInDomainContactInformation$Outbound = {
   firstName: string;
@@ -241,20 +240,6 @@ export const TransferInDomainContactInformation$outboundSchema: z.ZodType<
   fax: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TransferInDomainContactInformation$ {
-  /** @deprecated use `TransferInDomainContactInformation$inboundSchema` instead. */
-  export const inboundSchema = TransferInDomainContactInformation$inboundSchema;
-  /** @deprecated use `TransferInDomainContactInformation$outboundSchema` instead. */
-  export const outboundSchema =
-    TransferInDomainContactInformation$outboundSchema;
-  /** @deprecated use `TransferInDomainContactInformation$Outbound` instead. */
-  export type Outbound = TransferInDomainContactInformation$Outbound;
-}
-
 export function transferInDomainContactInformationToJSON(
   transferInDomainContactInformation: TransferInDomainContactInformation,
 ): string {
@@ -264,7 +249,6 @@ export function transferInDomainContactInformationToJSON(
     ),
   );
 }
-
 export function transferInDomainContactInformationFromJSON(
   jsonString: string,
 ): SafeParseResult<TransferInDomainContactInformation, SDKValidationError> {
@@ -290,7 +274,6 @@ export const TransferInDomainRequestBody$inboundSchema: z.ZodType<
     TransferInDomainContactInformation$inboundSchema
   ),
 });
-
 /** @internal */
 export type TransferInDomainRequestBody$Outbound = {
   authCode: string;
@@ -315,19 +298,6 @@ export const TransferInDomainRequestBody$outboundSchema: z.ZodType<
   ),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TransferInDomainRequestBody$ {
-  /** @deprecated use `TransferInDomainRequestBody$inboundSchema` instead. */
-  export const inboundSchema = TransferInDomainRequestBody$inboundSchema;
-  /** @deprecated use `TransferInDomainRequestBody$outboundSchema` instead. */
-  export const outboundSchema = TransferInDomainRequestBody$outboundSchema;
-  /** @deprecated use `TransferInDomainRequestBody$Outbound` instead. */
-  export type Outbound = TransferInDomainRequestBody$Outbound;
-}
-
 export function transferInDomainRequestBodyToJSON(
   transferInDomainRequestBody: TransferInDomainRequestBody,
 ): string {
@@ -337,7 +307,6 @@ export function transferInDomainRequestBodyToJSON(
     ),
   );
 }
-
 export function transferInDomainRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<TransferInDomainRequestBody, SDKValidationError> {
@@ -362,7 +331,6 @@ export const TransferInDomainRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type TransferInDomainRequest$Outbound = {
   domain: string;
@@ -385,19 +353,6 @@ export const TransferInDomainRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TransferInDomainRequest$ {
-  /** @deprecated use `TransferInDomainRequest$inboundSchema` instead. */
-  export const inboundSchema = TransferInDomainRequest$inboundSchema;
-  /** @deprecated use `TransferInDomainRequest$outboundSchema` instead. */
-  export const outboundSchema = TransferInDomainRequest$outboundSchema;
-  /** @deprecated use `TransferInDomainRequest$Outbound` instead. */
-  export type Outbound = TransferInDomainRequest$Outbound;
-}
-
 export function transferInDomainRequestToJSON(
   transferInDomainRequest: TransferInDomainRequest,
 ): string {
@@ -405,7 +360,6 @@ export function transferInDomainRequestToJSON(
     TransferInDomainRequest$outboundSchema.parse(transferInDomainRequest),
   );
 }
-
 export function transferInDomainRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<TransferInDomainRequest, SDKValidationError> {
@@ -423,7 +377,6 @@ export const TransferInDomainDomainsRegistrarResponseResponseBody$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([NotAuthorizedForScope$inboundSchema, Forbidden$inboundSchema]);
-
 /** @internal */
 export type TransferInDomainDomainsRegistrarResponseResponseBody$Outbound =
   | NotAuthorizedForScope$Outbound
@@ -437,22 +390,6 @@ export const TransferInDomainDomainsRegistrarResponseResponseBody$outboundSchema
     unknown
   > = z.union([NotAuthorizedForScope$outboundSchema, Forbidden$outboundSchema]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TransferInDomainDomainsRegistrarResponseResponseBody$ {
-  /** @deprecated use `TransferInDomainDomainsRegistrarResponseResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    TransferInDomainDomainsRegistrarResponseResponseBody$inboundSchema;
-  /** @deprecated use `TransferInDomainDomainsRegistrarResponseResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    TransferInDomainDomainsRegistrarResponseResponseBody$outboundSchema;
-  /** @deprecated use `TransferInDomainDomainsRegistrarResponseResponseBody$Outbound` instead. */
-  export type Outbound =
-    TransferInDomainDomainsRegistrarResponseResponseBody$Outbound;
-}
-
 export function transferInDomainDomainsRegistrarResponseResponseBodyToJSON(
   transferInDomainDomainsRegistrarResponseResponseBody:
     TransferInDomainDomainsRegistrarResponseResponseBody,
@@ -463,7 +400,6 @@ export function transferInDomainDomainsRegistrarResponseResponseBodyToJSON(
     ),
   );
 }
-
 export function transferInDomainDomainsRegistrarResponseResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -496,7 +432,6 @@ export const TransferInDomainDomainsRegistrarResponseBody$inboundSchema:
     TldNotSupported$inboundSchema,
     HttpApiDecodeError$inboundSchema,
   ]);
-
 /** @internal */
 export type TransferInDomainDomainsRegistrarResponseBody$Outbound =
   | BadRequest$Outbound
@@ -525,21 +460,6 @@ export const TransferInDomainDomainsRegistrarResponseBody$outboundSchema:
     HttpApiDecodeError$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TransferInDomainDomainsRegistrarResponseBody$ {
-  /** @deprecated use `TransferInDomainDomainsRegistrarResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    TransferInDomainDomainsRegistrarResponseBody$inboundSchema;
-  /** @deprecated use `TransferInDomainDomainsRegistrarResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    TransferInDomainDomainsRegistrarResponseBody$outboundSchema;
-  /** @deprecated use `TransferInDomainDomainsRegistrarResponseBody$Outbound` instead. */
-  export type Outbound = TransferInDomainDomainsRegistrarResponseBody$Outbound;
-}
-
 export function transferInDomainDomainsRegistrarResponseBodyToJSON(
   transferInDomainDomainsRegistrarResponseBody:
     TransferInDomainDomainsRegistrarResponseBody,
@@ -550,7 +470,6 @@ export function transferInDomainDomainsRegistrarResponseBodyToJSON(
     ),
   );
 }
-
 export function transferInDomainDomainsRegistrarResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -571,22 +490,10 @@ export function transferInDomainDomainsRegistrarResponseBodyFromJSON(
 export const TransferInDomainMethod$inboundSchema: z.ZodNativeEnum<
   typeof TransferInDomainMethod
 > = z.nativeEnum(TransferInDomainMethod);
-
 /** @internal */
 export const TransferInDomainMethod$outboundSchema: z.ZodNativeEnum<
   typeof TransferInDomainMethod
 > = TransferInDomainMethod$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TransferInDomainMethod$ {
-  /** @deprecated use `TransferInDomainMethod$inboundSchema` instead. */
-  export const inboundSchema = TransferInDomainMethod$inboundSchema;
-  /** @deprecated use `TransferInDomainMethod$outboundSchema` instead. */
-  export const outboundSchema = TransferInDomainMethod$outboundSchema;
-}
 
 /** @internal */
 export const TransferInDomainLinks$inboundSchema: z.ZodType<
@@ -597,7 +504,6 @@ export const TransferInDomainLinks$inboundSchema: z.ZodType<
   href: z.string(),
   method: TransferInDomainMethod$inboundSchema,
 });
-
 /** @internal */
 export type TransferInDomainLinks$Outbound = {
   href: string;
@@ -614,19 +520,6 @@ export const TransferInDomainLinks$outboundSchema: z.ZodType<
   method: TransferInDomainMethod$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TransferInDomainLinks$ {
-  /** @deprecated use `TransferInDomainLinks$inboundSchema` instead. */
-  export const inboundSchema = TransferInDomainLinks$inboundSchema;
-  /** @deprecated use `TransferInDomainLinks$outboundSchema` instead. */
-  export const outboundSchema = TransferInDomainLinks$outboundSchema;
-  /** @deprecated use `TransferInDomainLinks$Outbound` instead. */
-  export type Outbound = TransferInDomainLinks$Outbound;
-}
-
 export function transferInDomainLinksToJSON(
   transferInDomainLinks: TransferInDomainLinks,
 ): string {
@@ -634,7 +527,6 @@ export function transferInDomainLinksToJSON(
     TransferInDomainLinks$outboundSchema.parse(transferInDomainLinks),
   );
 }
-
 export function transferInDomainLinksFromJSON(
   jsonString: string,
 ): SafeParseResult<TransferInDomainLinks, SDKValidationError> {
@@ -658,7 +550,6 @@ export const TransferInDomainResponseBody$inboundSchema: z.ZodType<
     "_links": "links",
   });
 });
-
 /** @internal */
 export type TransferInDomainResponseBody$Outbound = {
   orderId: string;
@@ -679,19 +570,6 @@ export const TransferInDomainResponseBody$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TransferInDomainResponseBody$ {
-  /** @deprecated use `TransferInDomainResponseBody$inboundSchema` instead. */
-  export const inboundSchema = TransferInDomainResponseBody$inboundSchema;
-  /** @deprecated use `TransferInDomainResponseBody$outboundSchema` instead. */
-  export const outboundSchema = TransferInDomainResponseBody$outboundSchema;
-  /** @deprecated use `TransferInDomainResponseBody$Outbound` instead. */
-  export type Outbound = TransferInDomainResponseBody$Outbound;
-}
-
 export function transferInDomainResponseBodyToJSON(
   transferInDomainResponseBody: TransferInDomainResponseBody,
 ): string {
@@ -701,7 +579,6 @@ export function transferInDomainResponseBodyToJSON(
     ),
   );
 }
-
 export function transferInDomainResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<TransferInDomainResponseBody, SDKValidationError> {

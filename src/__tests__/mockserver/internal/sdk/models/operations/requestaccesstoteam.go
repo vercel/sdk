@@ -185,8 +185,8 @@ func (o *RequestAccessToTeamRequestBody) GetJoinedFrom() RequestAccessToTeamJoin
 }
 
 type RequestAccessToTeamRequest struct {
-	TeamID      string                         `pathParam:"style=simple,explode=false,name=teamId"`
-	RequestBody RequestAccessToTeamRequestBody `request:"mediaType=application/json"`
+	TeamID string                         `pathParam:"style=simple,explode=false,name=teamId"`
+	Body   RequestAccessToTeamRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *RequestAccessToTeamRequest) GetTeamID() string {
@@ -196,11 +196,11 @@ func (o *RequestAccessToTeamRequest) GetTeamID() string {
 	return o.TeamID
 }
 
-func (o *RequestAccessToTeamRequest) GetRequestBody() RequestAccessToTeamRequestBody {
+func (o *RequestAccessToTeamRequest) GetBody() RequestAccessToTeamRequestBody {
 	if o == nil {
 		return RequestAccessToTeamRequestBody{}
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type RequestAccessToTeamOriginResponse string

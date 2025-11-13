@@ -257,12 +257,12 @@ export type GetConfigurationProductsType = ClosedEnum<
   typeof GetConfigurationProductsType
 >;
 
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt647543 =
+export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt649981 =
   {};
 
 export type PropertiesValue = {
-  atBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt647543;
+  atBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt649981;
 };
 
 export const GetConfigurationProductsDisabled3 = {
@@ -331,28 +331,28 @@ export type GetConfigurationProductsPropertiesIntegrationsResponse200Application
     typeof GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiControl
   >;
 
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt647543 =
+export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt649981 =
   {};
 
 export type GetConfigurationProductsPropertiesIntegrationsMinLength = {
-  atBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt647543;
+  atBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt649981;
 };
 
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt647543 =
+export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt649981 =
   {};
 
 export type GetConfigurationProductsPropertiesIntegrationsMaxLength = {
-  atBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt647543;
+  atBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt649981;
 };
 
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt647543 =
+export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt649981 =
   {};
 
 export type GetConfigurationProductsPropertiesIntegrationsPattern = {
-  atBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt647543;
+  atBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt649981;
 };
 
 export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3 =
@@ -497,28 +497,28 @@ export type GetConfigurationProductsPropertiesIntegrationsResponse200Application
     typeof GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8Type
   >;
 
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt647543 =
+export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt649981 =
   {};
 
 export type GetConfigurationProductsPropertiesIntegrationsResponseMinLength = {
-  atBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt647543;
+  atBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt649981;
 };
 
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt647543 =
+export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt649981 =
   {};
 
 export type GetConfigurationProductsPropertiesIntegrationsResponseMaxLength = {
-  atBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt647543;
+  atBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt649981;
 };
 
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt647543 =
+export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt649981 =
   {};
 
 export type GetConfigurationProductsPropertiesIntegrationsResponsePattern = {
-  atBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt647543;
+  atBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt649981;
 };
 
 export type GetConfigurationProductsPropertiesIntegrationsItems = {
@@ -538,12 +538,12 @@ export type GetConfigurationProductsPropertiesIntegrationsItems = {
   enum?: Array<string> | undefined;
 };
 
-export type GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt647543 =
+export type GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt649981 =
   {};
 
 export type GetConfigurationProductsUiOptionsValue = {
-  atBRANDAt647543:
-    GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt647543;
+  atBRANDAt649981:
+    GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt649981;
 };
 
 export const GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson3 =
@@ -600,10 +600,10 @@ export type GetConfigurationProductsUiOptions3 = {
     | undefined;
 };
 
-export type GetConfigurationProductsUiOptionsAtBRANDAt647543 = {};
+export type GetConfigurationProductsUiOptionsAtBRANDAt649981 = {};
 
 export type GetConfigurationProductsUiOptions2 = {
-  atBRANDAt647543: GetConfigurationProductsUiOptionsAtBRANDAt647543;
+  atBRANDAt649981: GetConfigurationProductsUiOptionsAtBRANDAt649981;
 };
 
 export const GetConfigurationProductsDisabledIntegrationsResponse2003 = {
@@ -733,20 +733,20 @@ export type GetConfigurationProductsPropertiesIntegrationsResponse200Application
     expr: string;
   };
 
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt647543 =
+export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt649981 =
   {};
 
 export type Default = {
-  atBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt647543;
+  atBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt649981;
 };
 
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt647543 =
+export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt649981 =
   {};
 
 export type Example = {
-  atBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt647543;
+  atBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt649981;
 };
 
 export type Properties8 = {
@@ -809,10 +809,10 @@ export type GetConfigurationProductsPropertiesIntegrationsResponse200Application
     typeof GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiControl
   >;
 
-export type GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt647543 = {};
+export type GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt649981 = {};
 
 export type UiOptionsValue = {
-  atBRANDAt647543: GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt647543;
+  atBRANDAt649981: GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt649981;
 };
 
 export const GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3 =
@@ -869,10 +869,10 @@ export type UiOptions3 = {
     | undefined;
 };
 
-export type UiOptionsAtBRANDAt647543 = {};
+export type UiOptionsAtBRANDAt649981 = {};
 
 export type UiOptions2 = {
-  atBRANDAt647543: UiOptionsAtBRANDAt647543;
+  atBRANDAt649981: UiOptionsAtBRANDAt649981;
 };
 
 export const GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody3 =
@@ -935,28 +935,28 @@ export type GetConfigurationProductsPropertiesUiOptions =
   | UiOptions2
   | UiOptions3;
 
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt647543 =
+export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt649981 =
   {};
 
 export type GetConfigurationProductsPropertiesMinLength = {
-  atBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt647543;
+  atBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt649981;
 };
 
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt647543 =
+export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt649981 =
   {};
 
 export type GetConfigurationProductsPropertiesMaxLength = {
-  atBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt647543;
+  atBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt649981;
 };
 
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt647543 =
+export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt649981 =
   {};
 
 export type GetConfigurationProductsPropertiesPattern = {
-  atBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt647543;
+  atBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt649981;
 };
 
 export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody3 =
@@ -1098,30 +1098,30 @@ export type GetConfigurationProductsPropertiesIntegrationsResponse200Application
     typeof GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6Type
   >;
 
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt647543 =
+export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt649981 =
   {};
 
 export type GetConfigurationProductsPropertiesIntegrationsResponse200MinLength =
   {
-    atBRANDAt647543:
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt647543;
+    atBRANDAt649981:
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt649981;
   };
 
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt647543 =
+export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt649981 =
   {};
 
 export type GetConfigurationProductsPropertiesIntegrationsResponse200MaxLength =
   {
-    atBRANDAt647543:
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt647543;
+    atBRANDAt649981:
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt649981;
   };
 
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt647543 =
+export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt649981 =
   {};
 
 export type GetConfigurationProductsPropertiesIntegrationsResponse200Pattern = {
-  atBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt647543;
+  atBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt649981;
 };
 
 export type GetConfigurationProductsPropertiesItems = {
@@ -1366,27 +1366,27 @@ export type UiOptions = {
     | undefined;
 };
 
-export type GetConfigurationProductsPropertiesIntegrationsAtBRANDAt647543 = {};
+export type GetConfigurationProductsPropertiesIntegrationsAtBRANDAt649981 = {};
 
 export type PropertiesMinLength = {
-  atBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsAtBRANDAt647543;
+  atBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsAtBRANDAt649981;
 };
 
-export type GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt647543 =
+export type GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt649981 =
   {};
 
 export type PropertiesMaxLength = {
-  atBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt647543;
+  atBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt649981;
 };
 
-export type GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt647543 =
+export type GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt649981 =
   {};
 
 export type PropertiesPattern = {
-  atBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt647543;
+  atBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt649981;
 };
 
 export const GetConfigurationProductsUiReadOnlyIntegrationsResponse2003 = {
@@ -1835,22 +1835,22 @@ export const UiControl = {
 } as const;
 export type UiControl = ClosedEnum<typeof UiControl>;
 
-export type AtBRANDAt647543 = {};
+export type AtBRANDAt649981 = {};
 
 export type MinLength = {
-  atBRANDAt647543: AtBRANDAt647543;
+  atBRANDAt649981: AtBRANDAt649981;
 };
 
-export type PropertiesAtBRANDAt647543 = {};
+export type PropertiesAtBRANDAt649981 = {};
 
 export type MaxLength = {
-  atBRANDAt647543: PropertiesAtBRANDAt647543;
+  atBRANDAt649981: PropertiesAtBRANDAt649981;
 };
 
-export type GetConfigurationProductsPropertiesAtBRANDAt647543 = {};
+export type GetConfigurationProductsPropertiesAtBRANDAt649981 = {};
 
 export type Pattern = {
-  atBRANDAt647543: GetConfigurationProductsPropertiesAtBRANDAt647543;
+  atBRANDAt649981: GetConfigurationProductsPropertiesAtBRANDAt649981;
 };
 
 export const UiReadOnly3 = {
@@ -1985,7 +1985,6 @@ export const GetConfigurationProductsRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type GetConfigurationProductsRequest$Outbound = {
   id: string;
@@ -2004,19 +2003,6 @@ export const GetConfigurationProductsRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsRequest$ {
-  /** @deprecated use `GetConfigurationProductsRequest$inboundSchema` instead. */
-  export const inboundSchema = GetConfigurationProductsRequest$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsRequest$outboundSchema` instead. */
-  export const outboundSchema = GetConfigurationProductsRequest$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsRequest$Outbound` instead. */
-  export type Outbound = GetConfigurationProductsRequest$Outbound;
-}
-
 export function getConfigurationProductsRequestToJSON(
   getConfigurationProductsRequest: GetConfigurationProductsRequest,
 ): string {
@@ -2026,7 +2012,6 @@ export function getConfigurationProductsRequestToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetConfigurationProductsRequest, SDKValidationError> {
@@ -2041,22 +2026,10 @@ export function getConfigurationProductsRequestFromJSON(
 export const GetConfigurationProductsStatus$inboundSchema: z.ZodNativeEnum<
   typeof GetConfigurationProductsStatus
 > = z.nativeEnum(GetConfigurationProductsStatus);
-
 /** @internal */
 export const GetConfigurationProductsStatus$outboundSchema: z.ZodNativeEnum<
   typeof GetConfigurationProductsStatus
 > = GetConfigurationProductsStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsStatus$ {
-  /** @deprecated use `GetConfigurationProductsStatus$inboundSchema` instead. */
-  export const inboundSchema = GetConfigurationProductsStatus$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsStatus$outboundSchema` instead. */
-  export const outboundSchema = GetConfigurationProductsStatus$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsRepl$inboundSchema: z.ZodType<
@@ -2068,7 +2041,6 @@ export const GetConfigurationProductsRepl$inboundSchema: z.ZodType<
   supportsReadOnlyMode: z.boolean(),
   welcomeMessage: z.string().optional(),
 });
-
 /** @internal */
 export type GetConfigurationProductsRepl$Outbound = {
   enabled: boolean;
@@ -2087,19 +2059,6 @@ export const GetConfigurationProductsRepl$outboundSchema: z.ZodType<
   welcomeMessage: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsRepl$ {
-  /** @deprecated use `GetConfigurationProductsRepl$inboundSchema` instead. */
-  export const inboundSchema = GetConfigurationProductsRepl$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsRepl$outboundSchema` instead. */
-  export const outboundSchema = GetConfigurationProductsRepl$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsRepl$Outbound` instead. */
-  export type Outbound = GetConfigurationProductsRepl$Outbound;
-}
-
 export function getConfigurationProductsReplToJSON(
   getConfigurationProductsRepl: GetConfigurationProductsRepl,
 ): string {
@@ -2109,7 +2068,6 @@ export function getConfigurationProductsReplToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsReplFromJSON(
   jsonString: string,
 ): SafeParseResult<GetConfigurationProductsRepl, SDKValidationError> {
@@ -2126,7 +2084,6 @@ export const Storage$inboundSchema: z.ZodType<Storage, z.ZodTypeDef, unknown> =
     status: GetConfigurationProductsStatus$inboundSchema,
     repl: z.lazy(() => GetConfigurationProductsRepl$inboundSchema).optional(),
   });
-
 /** @internal */
 export type Storage$Outbound = {
   status: string;
@@ -2143,23 +2100,9 @@ export const Storage$outboundSchema: z.ZodType<
   repl: z.lazy(() => GetConfigurationProductsRepl$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Storage$ {
-  /** @deprecated use `Storage$inboundSchema` instead. */
-  export const inboundSchema = Storage$inboundSchema;
-  /** @deprecated use `Storage$outboundSchema` instead. */
-  export const outboundSchema = Storage$outboundSchema;
-  /** @deprecated use `Storage$Outbound` instead. */
-  export type Outbound = Storage$Outbound;
-}
-
 export function storageToJSON(storage: Storage): string {
   return JSON.stringify(Storage$outboundSchema.parse(storage));
 }
-
 export function storageFromJSON(
   jsonString: string,
 ): SafeParseResult<Storage, SDKValidationError> {
@@ -2174,24 +2117,10 @@ export function storageFromJSON(
 export const GetConfigurationProductsIntegrationsStatus$inboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationProductsIntegrationsStatus> = z
     .nativeEnum(GetConfigurationProductsIntegrationsStatus);
-
 /** @internal */
 export const GetConfigurationProductsIntegrationsStatus$outboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationProductsIntegrationsStatus> =
     GetConfigurationProductsIntegrationsStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsIntegrationsStatus$ {
-  /** @deprecated use `GetConfigurationProductsIntegrationsStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsIntegrationsStatus$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsIntegrationsStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsIntegrationsStatus$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsExperimentation$inboundSchema: z.ZodType<
@@ -2202,7 +2131,6 @@ export const GetConfigurationProductsExperimentation$inboundSchema: z.ZodType<
   status: GetConfigurationProductsIntegrationsStatus$inboundSchema,
   edgeConfigSyncingSupport: z.boolean().optional(),
 });
-
 /** @internal */
 export type GetConfigurationProductsExperimentation$Outbound = {
   status: string;
@@ -2219,21 +2147,6 @@ export const GetConfigurationProductsExperimentation$outboundSchema: z.ZodType<
   edgeConfigSyncingSupport: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsExperimentation$ {
-  /** @deprecated use `GetConfigurationProductsExperimentation$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsExperimentation$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsExperimentation$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsExperimentation$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsExperimentation$Outbound` instead. */
-  export type Outbound = GetConfigurationProductsExperimentation$Outbound;
-}
-
 export function getConfigurationProductsExperimentationToJSON(
   getConfigurationProductsExperimentation:
     GetConfigurationProductsExperimentation,
@@ -2244,7 +2157,6 @@ export function getConfigurationProductsExperimentationToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsExperimentationFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2265,30 +2177,15 @@ export function getConfigurationProductsExperimentationFromJSON(
 export const GetConfigurationProductsIntegrationsResponseStatus$inboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationProductsIntegrationsResponseStatus> = z
     .nativeEnum(GetConfigurationProductsIntegrationsResponseStatus);
-
 /** @internal */
 export const GetConfigurationProductsIntegrationsResponseStatus$outboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationProductsIntegrationsResponseStatus> =
     GetConfigurationProductsIntegrationsResponseStatus$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsIntegrationsResponseStatus$ {
-  /** @deprecated use `GetConfigurationProductsIntegrationsResponseStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsIntegrationsResponseStatus$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsIntegrationsResponseStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsIntegrationsResponseStatus$outboundSchema;
-}
-
 /** @internal */
 export const Ai$inboundSchema: z.ZodType<Ai, z.ZodTypeDef, unknown> = z.object({
   status: GetConfigurationProductsIntegrationsResponseStatus$inboundSchema,
 });
-
 /** @internal */
 export type Ai$Outbound = {
   status: string;
@@ -2300,23 +2197,9 @@ export const Ai$outboundSchema: z.ZodType<Ai$Outbound, z.ZodTypeDef, Ai> = z
     status: GetConfigurationProductsIntegrationsResponseStatus$outboundSchema,
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Ai$ {
-  /** @deprecated use `Ai$inboundSchema` instead. */
-  export const inboundSchema = Ai$inboundSchema;
-  /** @deprecated use `Ai$outboundSchema` instead. */
-  export const outboundSchema = Ai$outboundSchema;
-  /** @deprecated use `Ai$Outbound` instead. */
-  export type Outbound = Ai$Outbound;
-}
-
 export function aiToJSON(ai: Ai): string {
   return JSON.stringify(Ai$outboundSchema.parse(ai));
 }
-
 export function aiFromJSON(
   jsonString: string,
 ): SafeParseResult<Ai, SDKValidationError> {
@@ -2332,25 +2215,11 @@ export const GetConfigurationProductsIntegrationsResponse200Status$inboundSchema
   z.ZodNativeEnum<
     typeof GetConfigurationProductsIntegrationsResponse200Status
   > = z.nativeEnum(GetConfigurationProductsIntegrationsResponse200Status);
-
 /** @internal */
 export const GetConfigurationProductsIntegrationsResponse200Status$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsIntegrationsResponse200Status
   > = GetConfigurationProductsIntegrationsResponse200Status$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsIntegrationsResponse200Status$ {
-  /** @deprecated use `GetConfigurationProductsIntegrationsResponse200Status$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsIntegrationsResponse200Status$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsIntegrationsResponse200Status$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsIntegrationsResponse200Status$outboundSchema;
-}
 
 /** @internal */
 export const Authentication$inboundSchema: z.ZodType<
@@ -2360,7 +2229,6 @@ export const Authentication$inboundSchema: z.ZodType<
 > = z.object({
   status: GetConfigurationProductsIntegrationsResponse200Status$inboundSchema,
 });
-
 /** @internal */
 export type Authentication$Outbound = {
   status: string;
@@ -2375,23 +2243,9 @@ export const Authentication$outboundSchema: z.ZodType<
   status: GetConfigurationProductsIntegrationsResponse200Status$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Authentication$ {
-  /** @deprecated use `Authentication$inboundSchema` instead. */
-  export const inboundSchema = Authentication$inboundSchema;
-  /** @deprecated use `Authentication$outboundSchema` instead. */
-  export const outboundSchema = Authentication$outboundSchema;
-  /** @deprecated use `Authentication$Outbound` instead. */
-  export type Outbound = Authentication$Outbound;
-}
-
 export function authenticationToJSON(authentication: Authentication): string {
   return JSON.stringify(Authentication$outboundSchema.parse(authentication));
 }
-
 export function authenticationFromJSON(
   jsonString: string,
 ): SafeParseResult<Authentication, SDKValidationError> {
@@ -2409,26 +2263,12 @@ export const GetConfigurationProductsIntegrationsResponse200ApplicationJSONStatu
   > = z.nativeEnum(
     GetConfigurationProductsIntegrationsResponse200ApplicationJSONStatus,
   );
-
 /** @internal */
 export const GetConfigurationProductsIntegrationsResponse200ApplicationJSONStatus$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsIntegrationsResponse200ApplicationJSONStatus
   > =
     GetConfigurationProductsIntegrationsResponse200ApplicationJSONStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsIntegrationsResponse200ApplicationJSONStatus$ {
-  /** @deprecated use `GetConfigurationProductsIntegrationsResponse200ApplicationJSONStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsIntegrationsResponse200ApplicationJSONStatus$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsIntegrationsResponse200ApplicationJSONStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsIntegrationsResponse200ApplicationJSONStatus$outboundSchema;
-}
 
 /** @internal */
 export const Observability$inboundSchema: z.ZodType<
@@ -2439,7 +2279,6 @@ export const Observability$inboundSchema: z.ZodType<
   status:
     GetConfigurationProductsIntegrationsResponse200ApplicationJSONStatus$inboundSchema,
 });
-
 /** @internal */
 export type Observability$Outbound = {
   status: string;
@@ -2455,23 +2294,9 @@ export const Observability$outboundSchema: z.ZodType<
     GetConfigurationProductsIntegrationsResponse200ApplicationJSONStatus$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Observability$ {
-  /** @deprecated use `Observability$inboundSchema` instead. */
-  export const inboundSchema = Observability$inboundSchema;
-  /** @deprecated use `Observability$outboundSchema` instead. */
-  export const outboundSchema = Observability$outboundSchema;
-  /** @deprecated use `Observability$Outbound` instead. */
-  export type Outbound = Observability$Outbound;
-}
-
 export function observabilityToJSON(observability: Observability): string {
   return JSON.stringify(Observability$outboundSchema.parse(observability));
 }
-
 export function observabilityFromJSON(
   jsonString: string,
 ): SafeParseResult<Observability, SDKValidationError> {
@@ -2489,7 +2314,6 @@ export const GetConfigurationProductsIntegrationsResponse200ApplicationJSONRespo
   > = z.nativeEnum(
     GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyStatus,
   );
-
 /** @internal */
 export const GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyStatus$outboundSchema:
   z.ZodNativeEnum<
@@ -2497,26 +2321,12 @@ export const GetConfigurationProductsIntegrationsResponse200ApplicationJSONRespo
   > =
     GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyStatus$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyStatus$ {
-  /** @deprecated use `GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyStatus$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyStatus$outboundSchema;
-}
-
 /** @internal */
 export const Video$inboundSchema: z.ZodType<Video, z.ZodTypeDef, unknown> = z
   .object({
     status:
       GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyStatus$inboundSchema,
   });
-
 /** @internal */
 export type Video$Outbound = {
   status: string;
@@ -2532,23 +2342,9 @@ export const Video$outboundSchema: z.ZodType<
     GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyStatus$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Video$ {
-  /** @deprecated use `Video$inboundSchema` instead. */
-  export const inboundSchema = Video$inboundSchema;
-  /** @deprecated use `Video$outboundSchema` instead. */
-  export const outboundSchema = Video$outboundSchema;
-  /** @deprecated use `Video$Outbound` instead. */
-  export type Outbound = Video$Outbound;
-}
-
 export function videoToJSON(video: Video): string {
   return JSON.stringify(Video$outboundSchema.parse(video));
 }
-
 export function videoFromJSON(
   jsonString: string,
 ): SafeParseResult<Video, SDKValidationError> {
@@ -2566,26 +2362,12 @@ export const GetConfigurationProductsIntegrationsResponse200ApplicationJSONRespo
   > = z.nativeEnum(
     GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsStatus,
   );
-
 /** @internal */
 export const GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsStatus$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsStatus
   > =
     GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsStatus$ {
-  /** @deprecated use `GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsStatus$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsStatus$outboundSchema;
-}
 
 /** @internal */
 export const Workflow$inboundSchema: z.ZodType<
@@ -2596,7 +2378,6 @@ export const Workflow$inboundSchema: z.ZodType<
   status:
     GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsStatus$inboundSchema,
 });
-
 /** @internal */
 export type Workflow$Outbound = {
   status: string;
@@ -2612,23 +2393,9 @@ export const Workflow$outboundSchema: z.ZodType<
     GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsStatus$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Workflow$ {
-  /** @deprecated use `Workflow$inboundSchema` instead. */
-  export const inboundSchema = Workflow$inboundSchema;
-  /** @deprecated use `Workflow$outboundSchema` instead. */
-  export const outboundSchema = Workflow$outboundSchema;
-  /** @deprecated use `Workflow$Outbound` instead. */
-  export type Outbound = Workflow$Outbound;
-}
-
 export function workflowToJSON(workflow: Workflow): string {
   return JSON.stringify(Workflow$outboundSchema.parse(workflow));
 }
-
 export function workflowFromJSON(
   jsonString: string,
 ): SafeParseResult<Workflow, SDKValidationError> {
@@ -2646,26 +2413,12 @@ export const GetConfigurationProductsIntegrationsResponse200ApplicationJSONRespo
   > = z.nativeEnum(
     GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsStatus,
   );
-
 /** @internal */
 export const GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsStatus$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsStatus
   > =
     GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsStatus$ {
-  /** @deprecated use `GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsStatus$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsStatus$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsChecks$inboundSchema: z.ZodType<
@@ -2676,7 +2429,6 @@ export const GetConfigurationProductsChecks$inboundSchema: z.ZodType<
   status:
     GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsStatus$inboundSchema,
 });
-
 /** @internal */
 export type GetConfigurationProductsChecks$Outbound = {
   status: string;
@@ -2692,19 +2444,6 @@ export const GetConfigurationProductsChecks$outboundSchema: z.ZodType<
     GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsStatus$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsChecks$ {
-  /** @deprecated use `GetConfigurationProductsChecks$inboundSchema` instead. */
-  export const inboundSchema = GetConfigurationProductsChecks$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsChecks$outboundSchema` instead. */
-  export const outboundSchema = GetConfigurationProductsChecks$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsChecks$Outbound` instead. */
-  export type Outbound = GetConfigurationProductsChecks$Outbound;
-}
-
 export function getConfigurationProductsChecksToJSON(
   getConfigurationProductsChecks: GetConfigurationProductsChecks,
 ): string {
@@ -2714,7 +2453,6 @@ export function getConfigurationProductsChecksToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsChecksFromJSON(
   jsonString: string,
 ): SafeParseResult<GetConfigurationProductsChecks, SDKValidationError> {
@@ -2732,7 +2470,6 @@ export const GetConfigurationProductsIntegrationsResponse200ApplicationJSONRespo
   > = z.nativeEnum(
     GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsLogDrainStatus,
   );
-
 /** @internal */
 export const GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsLogDrainStatus$outboundSchema:
   z.ZodNativeEnum<
@@ -2740,37 +2477,12 @@ export const GetConfigurationProductsIntegrationsResponse200ApplicationJSONRespo
   > =
     GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsLogDrainStatus$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsLogDrainStatus$ {
-  /** @deprecated use `GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsLogDrainStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsLogDrainStatus$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsLogDrainStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsLogDrainStatus$outboundSchema;
-}
-
 /** @internal */
 export const Format$inboundSchema: z.ZodNativeEnum<typeof Format> = z
   .nativeEnum(Format);
-
 /** @internal */
 export const Format$outboundSchema: z.ZodNativeEnum<typeof Format> =
   Format$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Format$ {
-  /** @deprecated use `Format$inboundSchema` instead. */
-  export const inboundSchema = Format$inboundSchema;
-  /** @deprecated use `Format$outboundSchema` instead. */
-  export const outboundSchema = Format$outboundSchema;
-}
 
 /** @internal */
 export const LogDrain$inboundSchema: z.ZodType<
@@ -2784,7 +2496,6 @@ export const LogDrain$inboundSchema: z.ZodType<
   headers: z.record(z.string()).optional(),
   format: Format$inboundSchema,
 });
-
 /** @internal */
 export type LogDrain$Outbound = {
   status: string;
@@ -2806,23 +2517,9 @@ export const LogDrain$outboundSchema: z.ZodType<
   format: Format$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LogDrain$ {
-  /** @deprecated use `LogDrain$inboundSchema` instead. */
-  export const inboundSchema = LogDrain$inboundSchema;
-  /** @deprecated use `LogDrain$outboundSchema` instead. */
-  export const outboundSchema = LogDrain$outboundSchema;
-  /** @deprecated use `LogDrain$Outbound` instead. */
-  export type Outbound = LogDrain$Outbound;
-}
-
 export function logDrainToJSON(logDrain: LogDrain): string {
   return JSON.stringify(LogDrain$outboundSchema.parse(logDrain));
 }
-
 export function logDrainFromJSON(
   jsonString: string,
 ): SafeParseResult<LogDrain, SDKValidationError> {
@@ -2840,7 +2537,6 @@ export const GetConfigurationProductsIntegrationsResponse200ApplicationJSONRespo
   > = z.nativeEnum(
     GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsTraceDrainStatus,
   );
-
 /** @internal */
 export const GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsTraceDrainStatus$outboundSchema:
   z.ZodNativeEnum<
@@ -2848,39 +2544,14 @@ export const GetConfigurationProductsIntegrationsResponse200ApplicationJSONRespo
   > =
     GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsTraceDrainStatus$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsTraceDrainStatus$ {
-  /** @deprecated use `GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsTraceDrainStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsTraceDrainStatus$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsTraceDrainStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsTraceDrainStatus$outboundSchema;
-}
-
 /** @internal */
 export const GetConfigurationProductsFormat$inboundSchema: z.ZodNativeEnum<
   typeof GetConfigurationProductsFormat
 > = z.nativeEnum(GetConfigurationProductsFormat);
-
 /** @internal */
 export const GetConfigurationProductsFormat$outboundSchema: z.ZodNativeEnum<
   typeof GetConfigurationProductsFormat
 > = GetConfigurationProductsFormat$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsFormat$ {
-  /** @deprecated use `GetConfigurationProductsFormat$inboundSchema` instead. */
-  export const inboundSchema = GetConfigurationProductsFormat$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsFormat$outboundSchema` instead. */
-  export const outboundSchema = GetConfigurationProductsFormat$outboundSchema;
-}
 
 /** @internal */
 export const TraceDrain$inboundSchema: z.ZodType<
@@ -2894,7 +2565,6 @@ export const TraceDrain$inboundSchema: z.ZodType<
   headers: z.record(z.string()).optional(),
   format: GetConfigurationProductsFormat$inboundSchema,
 });
-
 /** @internal */
 export type TraceDrain$Outbound = {
   status: string;
@@ -2916,23 +2586,9 @@ export const TraceDrain$outboundSchema: z.ZodType<
   format: GetConfigurationProductsFormat$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TraceDrain$ {
-  /** @deprecated use `TraceDrain$inboundSchema` instead. */
-  export const inboundSchema = TraceDrain$inboundSchema;
-  /** @deprecated use `TraceDrain$outboundSchema` instead. */
-  export const outboundSchema = TraceDrain$outboundSchema;
-  /** @deprecated use `TraceDrain$Outbound` instead. */
-  export type Outbound = TraceDrain$Outbound;
-}
-
 export function traceDrainToJSON(traceDrain: TraceDrain): string {
   return JSON.stringify(TraceDrain$outboundSchema.parse(traceDrain));
 }
-
 export function traceDrainFromJSON(
   jsonString: string,
 ): SafeParseResult<TraceDrain, SDKValidationError> {
@@ -2950,26 +2606,12 @@ export const GetConfigurationProductsIntegrationsResponse200ApplicationJSONRespo
   > = z.nativeEnum(
     GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsMessagingStatus,
   );
-
 /** @internal */
 export const GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsMessagingStatus$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsMessagingStatus
   > =
     GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsMessagingStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsMessagingStatus$ {
-  /** @deprecated use `GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsMessagingStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsMessagingStatus$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsMessagingStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsMessagingStatus$outboundSchema;
-}
 
 /** @internal */
 export const Messaging$inboundSchema: z.ZodType<
@@ -2980,7 +2622,6 @@ export const Messaging$inboundSchema: z.ZodType<
   status:
     GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsMessagingStatus$inboundSchema,
 });
-
 /** @internal */
 export type Messaging$Outbound = {
   status: string;
@@ -2996,23 +2637,9 @@ export const Messaging$outboundSchema: z.ZodType<
     GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsMessagingStatus$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Messaging$ {
-  /** @deprecated use `Messaging$inboundSchema` instead. */
-  export const inboundSchema = Messaging$inboundSchema;
-  /** @deprecated use `Messaging$outboundSchema` instead. */
-  export const outboundSchema = Messaging$outboundSchema;
-  /** @deprecated use `Messaging$Outbound` instead. */
-  export type Outbound = Messaging$Outbound;
-}
-
 export function messagingToJSON(messaging: Messaging): string {
   return JSON.stringify(Messaging$outboundSchema.parse(messaging));
 }
-
 export function messagingFromJSON(
   jsonString: string,
 ): SafeParseResult<Messaging, SDKValidationError> {
@@ -3030,7 +2657,6 @@ export const GetConfigurationProductsIntegrationsResponse200ApplicationJSONRespo
   > = z.nativeEnum(
     GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsOtherStatus,
   );
-
 /** @internal */
 export const GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsOtherStatus$outboundSchema:
   z.ZodNativeEnum<
@@ -3038,26 +2664,12 @@ export const GetConfigurationProductsIntegrationsResponse200ApplicationJSONRespo
   > =
     GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsOtherStatus$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsOtherStatus$ {
-  /** @deprecated use `GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsOtherStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsOtherStatus$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsOtherStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsOtherStatus$outboundSchema;
-}
-
 /** @internal */
 export const Other$inboundSchema: z.ZodType<Other, z.ZodTypeDef, unknown> = z
   .object({
     status:
       GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsOtherStatus$inboundSchema,
   });
-
 /** @internal */
 export type Other$Outbound = {
   status: string;
@@ -3073,23 +2685,9 @@ export const Other$outboundSchema: z.ZodType<
     GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsOtherStatus$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Other$ {
-  /** @deprecated use `Other$inboundSchema` instead. */
-  export const inboundSchema = Other$inboundSchema;
-  /** @deprecated use `Other$outboundSchema` instead. */
-  export const outboundSchema = Other$outboundSchema;
-  /** @deprecated use `Other$Outbound` instead. */
-  export type Outbound = Other$Outbound;
-}
-
 export function otherToJSON(other: Other): string {
   return JSON.stringify(Other$outboundSchema.parse(other));
 }
-
 export function otherFromJSON(
   jsonString: string,
 ): SafeParseResult<Other, SDKValidationError> {
@@ -3121,7 +2719,6 @@ export const Protocols$inboundSchema: z.ZodType<
   messaging: z.lazy(() => Messaging$inboundSchema).optional(),
   other: z.lazy(() => Other$inboundSchema).optional(),
 });
-
 /** @internal */
 export type Protocols$Outbound = {
   storage?: Storage$Outbound | undefined;
@@ -3163,23 +2760,9 @@ export const Protocols$outboundSchema: z.ZodType<
   other: z.lazy(() => Other$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Protocols$ {
-  /** @deprecated use `Protocols$inboundSchema` instead. */
-  export const inboundSchema = Protocols$inboundSchema;
-  /** @deprecated use `Protocols$outboundSchema` instead. */
-  export const outboundSchema = Protocols$outboundSchema;
-  /** @deprecated use `Protocols$Outbound` instead. */
-  export type Outbound = Protocols$Outbound;
-}
-
 export function protocolsToJSON(protocols: Protocols): string {
   return JSON.stringify(Protocols$outboundSchema.parse(protocols));
 }
-
 export function protocolsFromJSON(
   jsonString: string,
 ): SafeParseResult<Protocols, SDKValidationError> {
@@ -3194,104 +2777,62 @@ export function protocolsFromJSON(
 export const PrimaryProtocol$inboundSchema: z.ZodNativeEnum<
   typeof PrimaryProtocol
 > = z.nativeEnum(PrimaryProtocol);
-
 /** @internal */
 export const PrimaryProtocol$outboundSchema: z.ZodNativeEnum<
   typeof PrimaryProtocol
 > = PrimaryProtocol$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PrimaryProtocol$ {
-  /** @deprecated use `PrimaryProtocol$inboundSchema` instead. */
-  export const inboundSchema = PrimaryProtocol$inboundSchema;
-  /** @deprecated use `PrimaryProtocol$outboundSchema` instead. */
-  export const outboundSchema = PrimaryProtocol$outboundSchema;
-}
-
 /** @internal */
 export const GetConfigurationProductsType$inboundSchema: z.ZodNativeEnum<
   typeof GetConfigurationProductsType
 > = z.nativeEnum(GetConfigurationProductsType);
-
 /** @internal */
 export const GetConfigurationProductsType$outboundSchema: z.ZodNativeEnum<
   typeof GetConfigurationProductsType
 > = GetConfigurationProductsType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsType$ {
-  /** @deprecated use `GetConfigurationProductsType$inboundSchema` instead. */
-  export const inboundSchema = GetConfigurationProductsType$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsType$outboundSchema` instead. */
-  export const outboundSchema = GetConfigurationProductsType$outboundSchema;
-}
-
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt647543$inboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt649981$inboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt647543,
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt649981,
     z.ZodTypeDef,
     unknown
   > = z.object({});
-
 /** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt647543$Outbound =
+export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt649981$Outbound =
   {};
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt647543$outboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt649981$outboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt647543$Outbound,
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt649981$Outbound,
     z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt647543
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt649981
   > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt647543$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt647543$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt647543$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt647543$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt647543$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt647543$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt647543$Outbound;
-}
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt647543ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt647543,
+export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt649981ToJSON(
+  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt649981,
 ): string {
   return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt647543$outboundSchema
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt649981$outboundSchema
       .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt647543,
+        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt649981,
       ),
   );
 }
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt647543FromJSON(
+export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt649981FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt647543,
+  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt649981,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt647543$inboundSchema
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt649981$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt647543' from JSON`,
+    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt649981' from JSON`,
   );
 }
 
@@ -3301,19 +2842,18 @@ export const PropertiesValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "__@BRAND@647543": z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt647543$inboundSchema
+  "__@BRAND@649981": z.lazy(() =>
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt649981$inboundSchema
   ),
 }).transform((v) => {
   return remap$(v, {
-    "__@BRAND@647543": "atBRANDAt647543",
+    "__@BRAND@649981": "atBRANDAt649981",
   });
 });
-
 /** @internal */
 export type PropertiesValue$Outbound = {
-  "__@BRAND@647543":
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt647543$Outbound;
+  "__@BRAND@649981":
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt649981$Outbound;
 };
 
 /** @internal */
@@ -3322,34 +2862,20 @@ export const PropertiesValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PropertiesValue
 > = z.object({
-  atBRANDAt647543: z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt647543$outboundSchema
+  atBRANDAt649981: z.lazy(() =>
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt649981$outboundSchema
   ),
 }).transform((v) => {
   return remap$(v, {
-    atBRANDAt647543: "__@BRAND@647543",
+    atBRANDAt649981: "__@BRAND@649981",
   });
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PropertiesValue$ {
-  /** @deprecated use `PropertiesValue$inboundSchema` instead. */
-  export const inboundSchema = PropertiesValue$inboundSchema;
-  /** @deprecated use `PropertiesValue$outboundSchema` instead. */
-  export const outboundSchema = PropertiesValue$outboundSchema;
-  /** @deprecated use `PropertiesValue$Outbound` instead. */
-  export type Outbound = PropertiesValue$Outbound;
-}
 
 export function propertiesValueToJSON(
   propertiesValue: PropertiesValue,
 ): string {
   return JSON.stringify(PropertiesValue$outboundSchema.parse(propertiesValue));
 }
-
 export function propertiesValueFromJSON(
   jsonString: string,
 ): SafeParseResult<PropertiesValue, SDKValidationError> {
@@ -3364,23 +2890,10 @@ export function propertiesValueFromJSON(
 export const GetConfigurationProductsDisabled3$inboundSchema: z.ZodNativeEnum<
   typeof GetConfigurationProductsDisabled3
 > = z.nativeEnum(GetConfigurationProductsDisabled3);
-
 /** @internal */
 export const GetConfigurationProductsDisabled3$outboundSchema: z.ZodNativeEnum<
   typeof GetConfigurationProductsDisabled3
 > = GetConfigurationProductsDisabled3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsDisabled3$ {
-  /** @deprecated use `GetConfigurationProductsDisabled3$inboundSchema` instead. */
-  export const inboundSchema = GetConfigurationProductsDisabled3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsDisabled3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsDisabled3$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsDisabled2$inboundSchema: z.ZodType<
@@ -3390,7 +2903,6 @@ export const GetConfigurationProductsDisabled2$inboundSchema: z.ZodType<
 > = z.object({
   expr: z.string(),
 });
-
 /** @internal */
 export type GetConfigurationProductsDisabled2$Outbound = {
   expr: string;
@@ -3405,20 +2917,6 @@ export const GetConfigurationProductsDisabled2$outboundSchema: z.ZodType<
   expr: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsDisabled2$ {
-  /** @deprecated use `GetConfigurationProductsDisabled2$inboundSchema` instead. */
-  export const inboundSchema = GetConfigurationProductsDisabled2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsDisabled2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsDisabled2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsDisabled2$Outbound` instead. */
-  export type Outbound = GetConfigurationProductsDisabled2$Outbound;
-}
-
 export function getConfigurationProductsDisabled2ToJSON(
   getConfigurationProductsDisabled2: GetConfigurationProductsDisabled2,
 ): string {
@@ -3428,7 +2926,6 @@ export function getConfigurationProductsDisabled2ToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsDisabled2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetConfigurationProductsDisabled2, SDKValidationError> {
@@ -3449,7 +2946,6 @@ export const PropertiesDisabled$inboundSchema: z.ZodType<
   z.boolean(),
   GetConfigurationProductsDisabled3$inboundSchema,
 ]);
-
 /** @internal */
 export type PropertiesDisabled$Outbound =
   | GetConfigurationProductsDisabled2$Outbound
@@ -3467,19 +2963,6 @@ export const PropertiesDisabled$outboundSchema: z.ZodType<
   GetConfigurationProductsDisabled3$outboundSchema,
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PropertiesDisabled$ {
-  /** @deprecated use `PropertiesDisabled$inboundSchema` instead. */
-  export const inboundSchema = PropertiesDisabled$inboundSchema;
-  /** @deprecated use `PropertiesDisabled$outboundSchema` instead. */
-  export const outboundSchema = PropertiesDisabled$outboundSchema;
-  /** @deprecated use `PropertiesDisabled$Outbound` instead. */
-  export type Outbound = PropertiesDisabled$Outbound;
-}
-
 export function propertiesDisabledToJSON(
   propertiesDisabled: PropertiesDisabled,
 ): string {
@@ -3487,7 +2970,6 @@ export function propertiesDisabledToJSON(
     PropertiesDisabled$outboundSchema.parse(propertiesDisabled),
   );
 }
-
 export function propertiesDisabledFromJSON(
   jsonString: string,
 ): SafeParseResult<PropertiesDisabled, SDKValidationError> {
@@ -3502,22 +2984,10 @@ export function propertiesDisabledFromJSON(
 export const GetConfigurationProductsHidden3$inboundSchema: z.ZodNativeEnum<
   typeof GetConfigurationProductsHidden3
 > = z.nativeEnum(GetConfigurationProductsHidden3);
-
 /** @internal */
 export const GetConfigurationProductsHidden3$outboundSchema: z.ZodNativeEnum<
   typeof GetConfigurationProductsHidden3
 > = GetConfigurationProductsHidden3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsHidden3$ {
-  /** @deprecated use `GetConfigurationProductsHidden3$inboundSchema` instead. */
-  export const inboundSchema = GetConfigurationProductsHidden3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsHidden3$outboundSchema` instead. */
-  export const outboundSchema = GetConfigurationProductsHidden3$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsHidden2$inboundSchema: z.ZodType<
@@ -3527,7 +2997,6 @@ export const GetConfigurationProductsHidden2$inboundSchema: z.ZodType<
 > = z.object({
   expr: z.string(),
 });
-
 /** @internal */
 export type GetConfigurationProductsHidden2$Outbound = {
   expr: string;
@@ -3542,19 +3011,6 @@ export const GetConfigurationProductsHidden2$outboundSchema: z.ZodType<
   expr: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsHidden2$ {
-  /** @deprecated use `GetConfigurationProductsHidden2$inboundSchema` instead. */
-  export const inboundSchema = GetConfigurationProductsHidden2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsHidden2$outboundSchema` instead. */
-  export const outboundSchema = GetConfigurationProductsHidden2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsHidden2$Outbound` instead. */
-  export type Outbound = GetConfigurationProductsHidden2$Outbound;
-}
-
 export function getConfigurationProductsHidden2ToJSON(
   getConfigurationProductsHidden2: GetConfigurationProductsHidden2,
 ): string {
@@ -3564,7 +3020,6 @@ export function getConfigurationProductsHidden2ToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsHidden2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetConfigurationProductsHidden2, SDKValidationError> {
@@ -3585,7 +3040,6 @@ export const PropertiesHidden$inboundSchema: z.ZodType<
   z.boolean(),
   GetConfigurationProductsHidden3$inboundSchema,
 ]);
-
 /** @internal */
 export type PropertiesHidden$Outbound =
   | GetConfigurationProductsHidden2$Outbound
@@ -3603,19 +3057,6 @@ export const PropertiesHidden$outboundSchema: z.ZodType<
   GetConfigurationProductsHidden3$outboundSchema,
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PropertiesHidden$ {
-  /** @deprecated use `PropertiesHidden$inboundSchema` instead. */
-  export const inboundSchema = PropertiesHidden$inboundSchema;
-  /** @deprecated use `PropertiesHidden$outboundSchema` instead. */
-  export const outboundSchema = PropertiesHidden$outboundSchema;
-  /** @deprecated use `PropertiesHidden$Outbound` instead. */
-  export type Outbound = PropertiesHidden$Outbound;
-}
-
 export function propertiesHiddenToJSON(
   propertiesHidden: PropertiesHidden,
 ): string {
@@ -3623,7 +3064,6 @@ export function propertiesHiddenToJSON(
     PropertiesHidden$outboundSchema.parse(propertiesHidden),
   );
 }
-
 export function propertiesHiddenFromJSON(
   jsonString: string,
 ): SafeParseResult<PropertiesHidden, SDKValidationError> {
@@ -3652,7 +3092,6 @@ export const Properties10$inboundSchema: z.ZodType<
     GetConfigurationProductsHidden3$inboundSchema,
   ]).optional(),
 });
-
 /** @internal */
 export type Properties10$Outbound = {
   value: PropertiesValue$Outbound;
@@ -3687,23 +3126,9 @@ export const Properties10$outboundSchema: z.ZodType<
   ]).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Properties10$ {
-  /** @deprecated use `Properties10$inboundSchema` instead. */
-  export const inboundSchema = Properties10$inboundSchema;
-  /** @deprecated use `Properties10$outboundSchema` instead. */
-  export const outboundSchema = Properties10$outboundSchema;
-  /** @deprecated use `Properties10$Outbound` instead. */
-  export type Outbound = Properties10$Outbound;
-}
-
 export function properties10ToJSON(properties10: Properties10): string {
   return JSON.stringify(Properties10$outboundSchema.parse(properties10));
 }
-
 export function properties10FromJSON(
   jsonString: string,
 ): SafeParseResult<Properties10, SDKValidationError> {
@@ -3721,26 +3146,12 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
   > = z.nativeEnum(
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaType,
   );
-
 /** @internal */
 export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaType$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaType
   > =
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaType$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaType$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaType$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiControl$inboundSchema:
@@ -3749,7 +3160,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
   > = z.nativeEnum(
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiControl,
   );
-
 /** @internal */
 export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiControl$outboundSchema:
   z.ZodNativeEnum<
@@ -3757,79 +3167,48 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
   > =
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiControl$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiControl$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiControl$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiControl$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiControl$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiControl$outboundSchema;
-}
-
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt647543$inboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt649981$inboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt647543,
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt649981,
     z.ZodTypeDef,
     unknown
   > = z.object({});
-
 /** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt647543$Outbound =
+export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt649981$Outbound =
   {};
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt647543$outboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt649981$outboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt647543$Outbound,
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt649981$Outbound,
     z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt647543
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt649981
   > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt647543$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt647543$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt647543$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt647543$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt647543$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt647543$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt647543$Outbound;
-}
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt647543ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt647543,
+export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt649981ToJSON(
+  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt649981,
 ): string {
   return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt647543$outboundSchema
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt649981$outboundSchema
       .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt647543,
+        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt649981,
       ),
   );
 }
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt647543FromJSON(
+export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt649981FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt647543,
+  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt649981,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt647543$inboundSchema
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt649981$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt647543' from JSON`,
+    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt649981' from JSON`,
   );
 }
 
@@ -3840,19 +3219,18 @@ export const GetConfigurationProductsPropertiesIntegrationsMinLength$inboundSche
     z.ZodTypeDef,
     unknown
   > = z.object({
-    "__@BRAND@647543": z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt647543$inboundSchema
+    "__@BRAND@649981": z.lazy(() =>
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt649981$inboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      "__@BRAND@647543": "atBRANDAt647543",
+      "__@BRAND@649981": "atBRANDAt649981",
     });
   });
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsMinLength$Outbound = {
-  "__@BRAND@647543":
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt647543$Outbound;
+  "__@BRAND@649981":
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt649981$Outbound;
 };
 
 /** @internal */
@@ -3862,30 +3240,14 @@ export const GetConfigurationProductsPropertiesIntegrationsMinLength$outboundSch
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsMinLength
   > = z.object({
-    atBRANDAt647543: z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt647543$outboundSchema
+    atBRANDAt649981: z.lazy(() =>
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt649981$outboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      atBRANDAt647543: "__@BRAND@647543",
+      atBRANDAt649981: "__@BRAND@649981",
     });
   });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsMinLength$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsMinLength$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsMinLength$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsMinLength$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsMinLength$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsMinLength$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsMinLength$Outbound;
-}
 
 export function getConfigurationProductsPropertiesIntegrationsMinLengthToJSON(
   getConfigurationProductsPropertiesIntegrationsMinLength:
@@ -3896,7 +3258,6 @@ export function getConfigurationProductsPropertiesIntegrationsMinLengthToJSON(
       .parse(getConfigurationProductsPropertiesIntegrationsMinLength),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsMinLengthFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -3913,65 +3274,47 @@ export function getConfigurationProductsPropertiesIntegrationsMinLengthFromJSON(
 }
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt647543$inboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt649981$inboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt647543,
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt649981,
     z.ZodTypeDef,
     unknown
   > = z.object({});
-
 /** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt647543$Outbound =
+export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt649981$Outbound =
   {};
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt647543$outboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt649981$outboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt647543$Outbound,
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt649981$Outbound,
     z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt647543
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt649981
   > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt647543$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt647543$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt647543$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt647543$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt647543$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt647543$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt647543$Outbound;
-}
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt647543ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt647543,
+export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt649981ToJSON(
+  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt649981,
 ): string {
   return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt647543$outboundSchema
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt649981$outboundSchema
       .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt647543,
+        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt649981,
       ),
   );
 }
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt647543FromJSON(
+export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt649981FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt647543,
+  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt649981,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt647543$inboundSchema
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt649981$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt647543' from JSON`,
+    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt649981' from JSON`,
   );
 }
 
@@ -3982,19 +3325,18 @@ export const GetConfigurationProductsPropertiesIntegrationsMaxLength$inboundSche
     z.ZodTypeDef,
     unknown
   > = z.object({
-    "__@BRAND@647543": z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt647543$inboundSchema
+    "__@BRAND@649981": z.lazy(() =>
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt649981$inboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      "__@BRAND@647543": "atBRANDAt647543",
+      "__@BRAND@649981": "atBRANDAt649981",
     });
   });
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsMaxLength$Outbound = {
-  "__@BRAND@647543":
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt647543$Outbound;
+  "__@BRAND@649981":
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt649981$Outbound;
 };
 
 /** @internal */
@@ -4004,30 +3346,14 @@ export const GetConfigurationProductsPropertiesIntegrationsMaxLength$outboundSch
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsMaxLength
   > = z.object({
-    atBRANDAt647543: z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt647543$outboundSchema
+    atBRANDAt649981: z.lazy(() =>
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt649981$outboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      atBRANDAt647543: "__@BRAND@647543",
+      atBRANDAt649981: "__@BRAND@649981",
     });
   });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsMaxLength$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsMaxLength$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsMaxLength$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsMaxLength$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsMaxLength$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsMaxLength$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsMaxLength$Outbound;
-}
 
 export function getConfigurationProductsPropertiesIntegrationsMaxLengthToJSON(
   getConfigurationProductsPropertiesIntegrationsMaxLength:
@@ -4038,7 +3364,6 @@ export function getConfigurationProductsPropertiesIntegrationsMaxLengthToJSON(
       .parse(getConfigurationProductsPropertiesIntegrationsMaxLength),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsMaxLengthFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -4055,65 +3380,47 @@ export function getConfigurationProductsPropertiesIntegrationsMaxLengthFromJSON(
 }
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt647543$inboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt649981$inboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt647543,
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt649981,
     z.ZodTypeDef,
     unknown
   > = z.object({});
-
 /** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt647543$Outbound =
+export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt649981$Outbound =
   {};
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt647543$outboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt649981$outboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt647543$Outbound,
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt649981$Outbound,
     z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt647543
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt649981
   > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt647543$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt647543$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt647543$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt647543$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt647543$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt647543$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt647543$Outbound;
-}
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt647543ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt647543,
+export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt649981ToJSON(
+  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt649981,
 ): string {
   return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt647543$outboundSchema
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt649981$outboundSchema
       .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt647543,
+        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt649981,
       ),
   );
 }
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt647543FromJSON(
+export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt649981FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt647543,
+  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt649981,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt647543$inboundSchema
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt649981$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt647543' from JSON`,
+    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt649981' from JSON`,
   );
 }
 
@@ -4124,19 +3431,18 @@ export const GetConfigurationProductsPropertiesIntegrationsPattern$inboundSchema
     z.ZodTypeDef,
     unknown
   > = z.object({
-    "__@BRAND@647543": z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt647543$inboundSchema
+    "__@BRAND@649981": z.lazy(() =>
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt649981$inboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      "__@BRAND@647543": "atBRANDAt647543",
+      "__@BRAND@649981": "atBRANDAt649981",
     });
   });
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsPattern$Outbound = {
-  "__@BRAND@647543":
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt647543$Outbound;
+  "__@BRAND@649981":
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt649981$Outbound;
 };
 
 /** @internal */
@@ -4146,30 +3452,14 @@ export const GetConfigurationProductsPropertiesIntegrationsPattern$outboundSchem
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsPattern
   > = z.object({
-    atBRANDAt647543: z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt647543$outboundSchema
+    atBRANDAt649981: z.lazy(() =>
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt649981$outboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      atBRANDAt647543: "__@BRAND@647543",
+      atBRANDAt649981: "__@BRAND@649981",
     });
   });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsPattern$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsPattern$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsPattern$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsPattern$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsPattern$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsPattern$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsPattern$Outbound;
-}
 
 export function getConfigurationProductsPropertiesIntegrationsPatternToJSON(
   getConfigurationProductsPropertiesIntegrationsPattern:
@@ -4181,7 +3471,6 @@ export function getConfigurationProductsPropertiesIntegrationsPatternToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsPatternFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -4205,26 +3494,12 @@ export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200Applicatio
   > = z.nativeEnum(
     GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3,
   );
-
 /** @internal */
 export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3
   > =
     GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$ {
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$inboundSchema:
@@ -4235,7 +3510,6 @@ export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200Applicatio
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$Outbound =
   {
@@ -4252,22 +3526,6 @@ export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200Applicatio
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$ {
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$Outbound;
-}
-
 export function getConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2ToJSON(
   getConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2:
     GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2,
@@ -4279,7 +3537,6 @@ export function getConfigurationProductsUiReadOnlyIntegrationsResponse200Applica
       ),
   );
 }
-
 export function getConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -4308,7 +3565,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     z.boolean(),
     GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$inboundSchema,
   ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiReadOnly$Outbound =
   | GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$Outbound
@@ -4329,22 +3585,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiReadOnly$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiReadOnly$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiReadOnly$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiReadOnly$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiReadOnly$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiReadOnly$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiReadOnly$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiReadOnlyToJSON(
   getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiReadOnly:
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiReadOnly,
@@ -4356,7 +3596,6 @@ export function getConfigurationProductsPropertiesIntegrationsResponse200Applica
       ),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiReadOnlyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -4379,26 +3618,12 @@ export const GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJ
   > = z.nativeEnum(
     GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3,
   );
-
 /** @internal */
 export const GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3
   > =
     GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$ {
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$inboundSchema:
@@ -4409,7 +3634,6 @@ export const GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJ
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$Outbound =
   {
@@ -4426,22 +3650,6 @@ export const GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJ
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$ {
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$Outbound;
-}
-
 export function getConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2ToJSON(
   getConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2:
     GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2,
@@ -4453,7 +3661,6 @@ export function getConfigurationProductsUiHiddenIntegrationsResponse200Applicati
       ),
   );
 }
-
 export function getConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -4482,7 +3689,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     z.boolean(),
     GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$inboundSchema,
   ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiHidden$Outbound =
   | GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$Outbound
@@ -4503,22 +3709,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiHidden$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiHidden$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiHidden$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiHidden$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiHidden$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiHidden$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiHidden$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiHiddenToJSON(
   getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiHidden:
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiHidden,
@@ -4530,7 +3720,6 @@ export function getConfigurationProductsPropertiesIntegrationsResponse200Applica
       ),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiHiddenFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -4553,26 +3742,12 @@ export const GetConfigurationProductsUiDisabledIntegrationsResponse200Applicatio
   > = z.nativeEnum(
     GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3,
   );
-
 /** @internal */
 export const GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3
   > =
     GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$ {
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$inboundSchema:
@@ -4583,7 +3758,6 @@ export const GetConfigurationProductsUiDisabledIntegrationsResponse200Applicatio
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$Outbound =
   {
@@ -4600,22 +3774,6 @@ export const GetConfigurationProductsUiDisabledIntegrationsResponse200Applicatio
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$ {
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$Outbound;
-}
-
 export function getConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2ToJSON(
   getConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2:
     GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2,
@@ -4627,7 +3785,6 @@ export function getConfigurationProductsUiDisabledIntegrationsResponse200Applica
       ),
   );
 }
-
 export function getConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -4656,7 +3813,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     z.boolean(),
     GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$inboundSchema,
   ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiDisabled$Outbound =
   | GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$Outbound
@@ -4677,22 +3833,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiDisabled$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiDisabled$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiDisabled$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiDisabled$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiDisabled$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiDisabled$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiDisabled$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiDisabledToJSON(
   getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiDisabled:
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiDisabled,
@@ -4704,7 +3844,6 @@ export function getConfigurationProductsPropertiesIntegrationsResponse200Applica
       ),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiDisabledFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -4729,7 +3868,6 @@ export const GetConfigurationProductsUiDescriptionIntegrationsResponse200Applica
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$Outbound =
   {
@@ -4746,22 +3884,6 @@ export const GetConfigurationProductsUiDescriptionIntegrationsResponse200Applica
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$ {
-  /** @deprecated use `GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$Outbound;
-}
-
 export function getConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2ToJSON(
   getConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2:
     GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2,
@@ -4773,7 +3895,6 @@ export function getConfigurationProductsUiDescriptionIntegrationsResponse200Appl
       ),
   );
 }
-
 export function getConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -4801,7 +3922,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     ),
     z.string(),
   ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiDescription$Outbound =
   | GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$Outbound
@@ -4820,22 +3940,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     z.string(),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiDescription$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiDescription$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiDescription$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiDescription$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiDescription$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiDescription$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiDescription$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiDescriptionToJSON(
   getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiDescription:
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiDescription,
@@ -4847,7 +3951,6 @@ export function getConfigurationProductsPropertiesIntegrationsResponse200Applica
       ),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiDescriptionFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -4872,7 +3975,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiFormattedValue$Outbound =
   {
@@ -4889,22 +3991,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiFormattedValue$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiFormattedValue$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiFormattedValue$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiFormattedValue$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiFormattedValue$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiFormattedValue$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiFormattedValue$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiFormattedValueToJSON(
   getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiFormattedValue:
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiFormattedValue,
@@ -4916,7 +4002,6 @@ export function getConfigurationProductsPropertiesIntegrationsResponse200Applica
       ),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiFormattedValueFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -4998,7 +4083,6 @@ export const Properties9$inboundSchema: z.ZodType<
     "ui:placeholder": "uiPlaceholder",
   });
 });
-
 /** @internal */
 export type Properties9$Outbound = {
   type: string;
@@ -5108,23 +4192,9 @@ export const Properties9$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Properties9$ {
-  /** @deprecated use `Properties9$inboundSchema` instead. */
-  export const inboundSchema = Properties9$inboundSchema;
-  /** @deprecated use `Properties9$outboundSchema` instead. */
-  export const outboundSchema = Properties9$outboundSchema;
-  /** @deprecated use `Properties9$Outbound` instead. */
-  export type Outbound = Properties9$Outbound;
-}
-
 export function properties9ToJSON(properties9: Properties9): string {
   return JSON.stringify(Properties9$outboundSchema.parse(properties9));
 }
-
 export function properties9FromJSON(
   jsonString: string,
 ): SafeParseResult<Properties9, SDKValidationError> {
@@ -5142,26 +4212,12 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
   > = z.nativeEnum(
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsType,
   );
-
 /** @internal */
 export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsType$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsType
   > =
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsType$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsType$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsType$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiControl$inboundSchema:
@@ -5170,26 +4226,12 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
   > = z.nativeEnum(
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiControl,
   );
-
 /** @internal */
 export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiControl$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiControl
   > =
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiControl$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiControl$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiControl$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiControl$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiControl$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiControl$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8Type$inboundSchema:
@@ -5198,7 +4240,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
   > = z.nativeEnum(
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8Type,
   );
-
 /** @internal */
 export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8Type$outboundSchema:
   z.ZodNativeEnum<
@@ -5206,79 +4247,48 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
   > =
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8Type$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8Type$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8Type$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8Type$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8Type$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8Type$outboundSchema;
-}
-
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt647543$inboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt649981$inboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt647543,
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt649981,
     z.ZodTypeDef,
     unknown
   > = z.object({});
-
 /** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt647543$Outbound =
+export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt649981$Outbound =
   {};
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt647543$outboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt649981$outboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt647543$Outbound,
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt649981$Outbound,
     z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt647543
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt649981
   > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt647543$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt647543$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt647543$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt647543$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt647543$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt647543$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt647543$Outbound;
-}
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt647543ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt647543,
+export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt649981ToJSON(
+  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt649981,
 ): string {
   return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt647543$outboundSchema
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt649981$outboundSchema
       .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt647543,
+        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt649981,
       ),
   );
 }
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt647543FromJSON(
+export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt649981FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt647543,
+  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt649981,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt647543$inboundSchema
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt649981$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt647543' from JSON`,
+    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt649981' from JSON`,
   );
 }
 
@@ -5289,20 +4299,19 @@ export const GetConfigurationProductsPropertiesIntegrationsResponseMinLength$inb
     z.ZodTypeDef,
     unknown
   > = z.object({
-    "__@BRAND@647543": z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt647543$inboundSchema
+    "__@BRAND@649981": z.lazy(() =>
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt649981$inboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      "__@BRAND@647543": "atBRANDAt647543",
+      "__@BRAND@649981": "atBRANDAt649981",
     });
   });
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponseMinLength$Outbound =
   {
-    "__@BRAND@647543":
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt647543$Outbound;
+    "__@BRAND@649981":
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt649981$Outbound;
   };
 
 /** @internal */
@@ -5312,30 +4321,14 @@ export const GetConfigurationProductsPropertiesIntegrationsResponseMinLength$out
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsResponseMinLength
   > = z.object({
-    atBRANDAt647543: z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt647543$outboundSchema
+    atBRANDAt649981: z.lazy(() =>
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt649981$outboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      atBRANDAt647543: "__@BRAND@647543",
+      atBRANDAt649981: "__@BRAND@649981",
     });
   });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponseMinLength$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponseMinLength$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponseMinLength$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponseMinLength$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponseMinLength$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponseMinLength$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponseMinLength$Outbound;
-}
 
 export function getConfigurationProductsPropertiesIntegrationsResponseMinLengthToJSON(
   getConfigurationProductsPropertiesIntegrationsResponseMinLength:
@@ -5346,7 +4339,6 @@ export function getConfigurationProductsPropertiesIntegrationsResponseMinLengthT
       .parse(getConfigurationProductsPropertiesIntegrationsResponseMinLength),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsResponseMinLengthFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -5363,65 +4355,47 @@ export function getConfigurationProductsPropertiesIntegrationsResponseMinLengthF
 }
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt647543$inboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt649981$inboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt647543,
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt649981,
     z.ZodTypeDef,
     unknown
   > = z.object({});
-
 /** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt647543$Outbound =
+export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt649981$Outbound =
   {};
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt647543$outboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt649981$outboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt647543$Outbound,
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt649981$Outbound,
     z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt647543
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt649981
   > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt647543$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt647543$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt647543$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt647543$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt647543$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt647543$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt647543$Outbound;
-}
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt647543ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt647543,
+export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt649981ToJSON(
+  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt649981,
 ): string {
   return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt647543$outboundSchema
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt649981$outboundSchema
       .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt647543,
+        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt649981,
       ),
   );
 }
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt647543FromJSON(
+export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt649981FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt647543,
+  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt649981,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt647543$inboundSchema
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt649981$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt647543' from JSON`,
+    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt649981' from JSON`,
   );
 }
 
@@ -5432,20 +4406,19 @@ export const GetConfigurationProductsPropertiesIntegrationsResponseMaxLength$inb
     z.ZodTypeDef,
     unknown
   > = z.object({
-    "__@BRAND@647543": z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt647543$inboundSchema
+    "__@BRAND@649981": z.lazy(() =>
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt649981$inboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      "__@BRAND@647543": "atBRANDAt647543",
+      "__@BRAND@649981": "atBRANDAt649981",
     });
   });
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponseMaxLength$Outbound =
   {
-    "__@BRAND@647543":
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt647543$Outbound;
+    "__@BRAND@649981":
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt649981$Outbound;
   };
 
 /** @internal */
@@ -5455,30 +4428,14 @@ export const GetConfigurationProductsPropertiesIntegrationsResponseMaxLength$out
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsResponseMaxLength
   > = z.object({
-    atBRANDAt647543: z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt647543$outboundSchema
+    atBRANDAt649981: z.lazy(() =>
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt649981$outboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      atBRANDAt647543: "__@BRAND@647543",
+      atBRANDAt649981: "__@BRAND@649981",
     });
   });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponseMaxLength$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponseMaxLength$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponseMaxLength$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponseMaxLength$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponseMaxLength$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponseMaxLength$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponseMaxLength$Outbound;
-}
 
 export function getConfigurationProductsPropertiesIntegrationsResponseMaxLengthToJSON(
   getConfigurationProductsPropertiesIntegrationsResponseMaxLength:
@@ -5489,7 +4446,6 @@ export function getConfigurationProductsPropertiesIntegrationsResponseMaxLengthT
       .parse(getConfigurationProductsPropertiesIntegrationsResponseMaxLength),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsResponseMaxLengthFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -5506,65 +4462,47 @@ export function getConfigurationProductsPropertiesIntegrationsResponseMaxLengthF
 }
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt647543$inboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt649981$inboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt647543,
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt649981,
     z.ZodTypeDef,
     unknown
   > = z.object({});
-
 /** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt647543$Outbound =
+export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt649981$Outbound =
   {};
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt647543$outboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt649981$outboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt647543$Outbound,
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt649981$Outbound,
     z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt647543
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt649981
   > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt647543$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt647543$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt647543$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt647543$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt647543$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt647543$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt647543$Outbound;
-}
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt647543ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt647543,
+export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt649981ToJSON(
+  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt649981,
 ): string {
   return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt647543$outboundSchema
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt649981$outboundSchema
       .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt647543,
+        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt649981,
       ),
   );
 }
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt647543FromJSON(
+export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt649981FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt647543,
+  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt649981,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt647543$inboundSchema
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt649981$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt647543' from JSON`,
+    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt649981' from JSON`,
   );
 }
 
@@ -5575,20 +4513,19 @@ export const GetConfigurationProductsPropertiesIntegrationsResponsePattern$inbou
     z.ZodTypeDef,
     unknown
   > = z.object({
-    "__@BRAND@647543": z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt647543$inboundSchema
+    "__@BRAND@649981": z.lazy(() =>
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt649981$inboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      "__@BRAND@647543": "atBRANDAt647543",
+      "__@BRAND@649981": "atBRANDAt649981",
     });
   });
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponsePattern$Outbound =
   {
-    "__@BRAND@647543":
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt647543$Outbound;
+    "__@BRAND@649981":
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt649981$Outbound;
   };
 
 /** @internal */
@@ -5598,30 +4535,14 @@ export const GetConfigurationProductsPropertiesIntegrationsResponsePattern$outbo
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsResponsePattern
   > = z.object({
-    atBRANDAt647543: z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt647543$outboundSchema
+    atBRANDAt649981: z.lazy(() =>
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt649981$outboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      atBRANDAt647543: "__@BRAND@647543",
+      atBRANDAt649981: "__@BRAND@649981",
     });
   });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponsePattern$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponsePattern$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponsePattern$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponsePattern$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponsePattern$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponsePattern$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponsePattern$Outbound;
-}
 
 export function getConfigurationProductsPropertiesIntegrationsResponsePatternToJSON(
   getConfigurationProductsPropertiesIntegrationsResponsePattern:
@@ -5632,7 +4553,6 @@ export function getConfigurationProductsPropertiesIntegrationsResponsePatternToJ
       .parse(getConfigurationProductsPropertiesIntegrationsResponsePattern),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsResponsePatternFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -5670,7 +4590,6 @@ export const GetConfigurationProductsPropertiesIntegrationsItems$inboundSchema:
     default: z.string().optional(),
     enum: z.array(z.string()).optional(),
   });
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsItems$Outbound = {
   type: string;
@@ -5711,22 +4630,6 @@ export const GetConfigurationProductsPropertiesIntegrationsItems$outboundSchema:
     enum: z.array(z.string()).optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsItems$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsItems$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsItems$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsItems$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsItems$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsItems$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsItems$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsItemsToJSON(
   getConfigurationProductsPropertiesIntegrationsItems:
     GetConfigurationProductsPropertiesIntegrationsItems,
@@ -5737,7 +4640,6 @@ export function getConfigurationProductsPropertiesIntegrationsItemsToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsItemsFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -5755,65 +4657,47 @@ export function getConfigurationProductsPropertiesIntegrationsItemsFromJSON(
 }
 
 /** @internal */
-export const GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt647543$inboundSchema:
+export const GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt649981$inboundSchema:
   z.ZodType<
-    GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt647543,
+    GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt649981,
     z.ZodTypeDef,
     unknown
   > = z.object({});
-
 /** @internal */
-export type GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt647543$Outbound =
+export type GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt649981$Outbound =
   {};
 
 /** @internal */
-export const GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt647543$outboundSchema:
+export const GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt649981$outboundSchema:
   z.ZodType<
-    GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt647543$Outbound,
+    GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt649981$Outbound,
     z.ZodTypeDef,
-    GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt647543
+    GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt649981
   > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt647543$ {
-  /** @deprecated use `GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt647543$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt647543$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt647543$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt647543$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt647543$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt647543$Outbound;
-}
-
-export function getConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt647543ToJSON(
-  getConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt647543:
-    GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt647543,
+export function getConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt649981ToJSON(
+  getConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt649981:
+    GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt649981,
 ): string {
   return JSON.stringify(
-    GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt647543$outboundSchema
+    GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt649981$outboundSchema
       .parse(
-        getConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt647543,
+        getConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt649981,
       ),
   );
 }
-
-export function getConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt647543FromJSON(
+export function getConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt649981FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt647543,
+  GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt649981,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt647543$inboundSchema
+      GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt649981$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt647543' from JSON`,
+    `Failed to parse 'GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt649981' from JSON`,
   );
 }
 
@@ -5823,19 +4707,18 @@ export const GetConfigurationProductsUiOptionsValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "__@BRAND@647543": z.lazy(() =>
-    GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt647543$inboundSchema
+  "__@BRAND@649981": z.lazy(() =>
+    GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt649981$inboundSchema
   ),
 }).transform((v) => {
   return remap$(v, {
-    "__@BRAND@647543": "atBRANDAt647543",
+    "__@BRAND@649981": "atBRANDAt649981",
   });
 });
-
 /** @internal */
 export type GetConfigurationProductsUiOptionsValue$Outbound = {
-  "__@BRAND@647543":
-    GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt647543$Outbound;
+  "__@BRAND@649981":
+    GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt649981$Outbound;
 };
 
 /** @internal */
@@ -5844,29 +4727,14 @@ export const GetConfigurationProductsUiOptionsValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetConfigurationProductsUiOptionsValue
 > = z.object({
-  atBRANDAt647543: z.lazy(() =>
-    GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt647543$outboundSchema
+  atBRANDAt649981: z.lazy(() =>
+    GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt649981$outboundSchema
   ),
 }).transform((v) => {
   return remap$(v, {
-    atBRANDAt647543: "__@BRAND@647543",
+    atBRANDAt649981: "__@BRAND@649981",
   });
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiOptionsValue$ {
-  /** @deprecated use `GetConfigurationProductsUiOptionsValue$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiOptionsValue$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiOptionsValue$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiOptionsValue$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiOptionsValue$Outbound` instead. */
-  export type Outbound = GetConfigurationProductsUiOptionsValue$Outbound;
-}
 
 export function getConfigurationProductsUiOptionsValueToJSON(
   getConfigurationProductsUiOptionsValue:
@@ -5878,7 +4746,6 @@ export function getConfigurationProductsUiOptionsValueToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsUiOptionsValueFromJSON(
   jsonString: string,
 ): SafeParseResult<GetConfigurationProductsUiOptionsValue, SDKValidationError> {
@@ -5897,26 +4764,12 @@ export const GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJ
   > = z.nativeEnum(
     GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson3,
   );
-
 /** @internal */
 export const GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson3$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson3
   > =
     GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson3$ {
-  /** @deprecated use `GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson3$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson3$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson2$inboundSchema:
@@ -5927,7 +4780,6 @@ export const GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJ
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson2$Outbound =
   {
@@ -5944,22 +4796,6 @@ export const GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJ
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson2$ {
-  /** @deprecated use `GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson2$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson2$Outbound;
-}
-
 export function getConfigurationProductsDisabledIntegrationsResponse200ApplicationJSON2ToJSON(
   getConfigurationProductsDisabledIntegrationsResponse200ApplicationJson2:
     GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson2,
@@ -5971,7 +4807,6 @@ export function getConfigurationProductsDisabledIntegrationsResponse200Applicati
       ),
   );
 }
-
 export function getConfigurationProductsDisabledIntegrationsResponse200ApplicationJSON2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -6000,7 +4835,6 @@ export const GetConfigurationProductsUiOptionsIntegrationsResponseDisabled$inbou
     z.boolean(),
     GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson3$inboundSchema,
   ]);
-
 /** @internal */
 export type GetConfigurationProductsUiOptionsIntegrationsResponseDisabled$Outbound =
   | GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson2$Outbound
@@ -6021,22 +4855,6 @@ export const GetConfigurationProductsUiOptionsIntegrationsResponseDisabled$outbo
     GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson3$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiOptionsIntegrationsResponseDisabled$ {
-  /** @deprecated use `GetConfigurationProductsUiOptionsIntegrationsResponseDisabled$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiOptionsIntegrationsResponseDisabled$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiOptionsIntegrationsResponseDisabled$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiOptionsIntegrationsResponseDisabled$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiOptionsIntegrationsResponseDisabled$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiOptionsIntegrationsResponseDisabled$Outbound;
-}
-
 export function getConfigurationProductsUiOptionsIntegrationsResponseDisabledToJSON(
   getConfigurationProductsUiOptionsIntegrationsResponseDisabled:
     GetConfigurationProductsUiOptionsIntegrationsResponseDisabled,
@@ -6046,7 +4864,6 @@ export function getConfigurationProductsUiOptionsIntegrationsResponseDisabledToJ
       .parse(getConfigurationProductsUiOptionsIntegrationsResponseDisabled),
   );
 }
-
 export function getConfigurationProductsUiOptionsIntegrationsResponseDisabledFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -6069,26 +4886,12 @@ export const GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJso
   > = z.nativeEnum(
     GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson3,
   );
-
 /** @internal */
 export const GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson3$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson3
   > =
     GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson3$ {
-  /** @deprecated use `GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson3$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson3$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson2$inboundSchema:
@@ -6099,7 +4902,6 @@ export const GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJso
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson2$Outbound =
   {
@@ -6116,22 +4918,6 @@ export const GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJso
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson2$ {
-  /** @deprecated use `GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson2$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson2$Outbound;
-}
-
 export function getConfigurationProductsHiddenIntegrationsResponse200ApplicationJSON2ToJSON(
   getConfigurationProductsHiddenIntegrationsResponse200ApplicationJson2:
     GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson2,
@@ -6143,7 +4929,6 @@ export function getConfigurationProductsHiddenIntegrationsResponse200Application
       ),
   );
 }
-
 export function getConfigurationProductsHiddenIntegrationsResponse200ApplicationJSON2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -6172,7 +4957,6 @@ export const GetConfigurationProductsUiOptionsIntegrationsResponseHidden$inbound
     z.boolean(),
     GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson3$inboundSchema,
   ]);
-
 /** @internal */
 export type GetConfigurationProductsUiOptionsIntegrationsResponseHidden$Outbound =
   | GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson2$Outbound
@@ -6193,22 +4977,6 @@ export const GetConfigurationProductsUiOptionsIntegrationsResponseHidden$outboun
     GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson3$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiOptionsIntegrationsResponseHidden$ {
-  /** @deprecated use `GetConfigurationProductsUiOptionsIntegrationsResponseHidden$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiOptionsIntegrationsResponseHidden$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiOptionsIntegrationsResponseHidden$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiOptionsIntegrationsResponseHidden$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiOptionsIntegrationsResponseHidden$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiOptionsIntegrationsResponseHidden$Outbound;
-}
-
 export function getConfigurationProductsUiOptionsIntegrationsResponseHiddenToJSON(
   getConfigurationProductsUiOptionsIntegrationsResponseHidden:
     GetConfigurationProductsUiOptionsIntegrationsResponseHidden,
@@ -6218,7 +4986,6 @@ export function getConfigurationProductsUiOptionsIntegrationsResponseHiddenToJSO
       .parse(getConfigurationProductsUiOptionsIntegrationsResponseHidden),
   );
 }
-
 export function getConfigurationProductsUiOptionsIntegrationsResponseHiddenFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -6256,7 +5023,6 @@ export const GetConfigurationProductsUiOptions3$inboundSchema: z.ZodType<
     GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson3$inboundSchema,
   ]).optional(),
 });
-
 /** @internal */
 export type GetConfigurationProductsUiOptions3$Outbound = {
   value: GetConfigurationProductsUiOptionsValue$Outbound;
@@ -6295,20 +5061,6 @@ export const GetConfigurationProductsUiOptions3$outboundSchema: z.ZodType<
   ]).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiOptions3$ {
-  /** @deprecated use `GetConfigurationProductsUiOptions3$inboundSchema` instead. */
-  export const inboundSchema = GetConfigurationProductsUiOptions3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiOptions3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiOptions3$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiOptions3$Outbound` instead. */
-  export type Outbound = GetConfigurationProductsUiOptions3$Outbound;
-}
-
 export function getConfigurationProductsUiOptions3ToJSON(
   getConfigurationProductsUiOptions3: GetConfigurationProductsUiOptions3,
 ): string {
@@ -6318,7 +5070,6 @@ export function getConfigurationProductsUiOptions3ToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsUiOptions3FromJSON(
   jsonString: string,
 ): SafeParseResult<GetConfigurationProductsUiOptions3, SDKValidationError> {
@@ -6331,64 +5082,46 @@ export function getConfigurationProductsUiOptions3FromJSON(
 }
 
 /** @internal */
-export const GetConfigurationProductsUiOptionsAtBRANDAt647543$inboundSchema:
+export const GetConfigurationProductsUiOptionsAtBRANDAt649981$inboundSchema:
   z.ZodType<
-    GetConfigurationProductsUiOptionsAtBRANDAt647543,
+    GetConfigurationProductsUiOptionsAtBRANDAt649981,
     z.ZodTypeDef,
     unknown
   > = z.object({});
+/** @internal */
+export type GetConfigurationProductsUiOptionsAtBRANDAt649981$Outbound = {};
 
 /** @internal */
-export type GetConfigurationProductsUiOptionsAtBRANDAt647543$Outbound = {};
-
-/** @internal */
-export const GetConfigurationProductsUiOptionsAtBRANDAt647543$outboundSchema:
+export const GetConfigurationProductsUiOptionsAtBRANDAt649981$outboundSchema:
   z.ZodType<
-    GetConfigurationProductsUiOptionsAtBRANDAt647543$Outbound,
+    GetConfigurationProductsUiOptionsAtBRANDAt649981$Outbound,
     z.ZodTypeDef,
-    GetConfigurationProductsUiOptionsAtBRANDAt647543
+    GetConfigurationProductsUiOptionsAtBRANDAt649981
   > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiOptionsAtBRANDAt647543$ {
-  /** @deprecated use `GetConfigurationProductsUiOptionsAtBRANDAt647543$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiOptionsAtBRANDAt647543$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiOptionsAtBRANDAt647543$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiOptionsAtBRANDAt647543$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiOptionsAtBRANDAt647543$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiOptionsAtBRANDAt647543$Outbound;
-}
-
-export function getConfigurationProductsUiOptionsAtBRANDAt647543ToJSON(
-  getConfigurationProductsUiOptionsAtBRANDAt647543:
-    GetConfigurationProductsUiOptionsAtBRANDAt647543,
+export function getConfigurationProductsUiOptionsAtBRANDAt649981ToJSON(
+  getConfigurationProductsUiOptionsAtBRANDAt649981:
+    GetConfigurationProductsUiOptionsAtBRANDAt649981,
 ): string {
   return JSON.stringify(
-    GetConfigurationProductsUiOptionsAtBRANDAt647543$outboundSchema.parse(
-      getConfigurationProductsUiOptionsAtBRANDAt647543,
+    GetConfigurationProductsUiOptionsAtBRANDAt649981$outboundSchema.parse(
+      getConfigurationProductsUiOptionsAtBRANDAt649981,
     ),
   );
 }
-
-export function getConfigurationProductsUiOptionsAtBRANDAt647543FromJSON(
+export function getConfigurationProductsUiOptionsAtBRANDAt649981FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetConfigurationProductsUiOptionsAtBRANDAt647543,
+  GetConfigurationProductsUiOptionsAtBRANDAt649981,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetConfigurationProductsUiOptionsAtBRANDAt647543$inboundSchema.parse(
+      GetConfigurationProductsUiOptionsAtBRANDAt649981$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'GetConfigurationProductsUiOptionsAtBRANDAt647543' from JSON`,
+    `Failed to parse 'GetConfigurationProductsUiOptionsAtBRANDAt649981' from JSON`,
   );
 }
 
@@ -6398,18 +5131,17 @@ export const GetConfigurationProductsUiOptions2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "__@BRAND@647543": z.lazy(() =>
-    GetConfigurationProductsUiOptionsAtBRANDAt647543$inboundSchema
+  "__@BRAND@649981": z.lazy(() =>
+    GetConfigurationProductsUiOptionsAtBRANDAt649981$inboundSchema
   ),
 }).transform((v) => {
   return remap$(v, {
-    "__@BRAND@647543": "atBRANDAt647543",
+    "__@BRAND@649981": "atBRANDAt649981",
   });
 });
-
 /** @internal */
 export type GetConfigurationProductsUiOptions2$Outbound = {
-  "__@BRAND@647543": GetConfigurationProductsUiOptionsAtBRANDAt647543$Outbound;
+  "__@BRAND@649981": GetConfigurationProductsUiOptionsAtBRANDAt649981$Outbound;
 };
 
 /** @internal */
@@ -6418,28 +5150,14 @@ export const GetConfigurationProductsUiOptions2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetConfigurationProductsUiOptions2
 > = z.object({
-  atBRANDAt647543: z.lazy(() =>
-    GetConfigurationProductsUiOptionsAtBRANDAt647543$outboundSchema
+  atBRANDAt649981: z.lazy(() =>
+    GetConfigurationProductsUiOptionsAtBRANDAt649981$outboundSchema
   ),
 }).transform((v) => {
   return remap$(v, {
-    atBRANDAt647543: "__@BRAND@647543",
+    atBRANDAt649981: "__@BRAND@649981",
   });
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiOptions2$ {
-  /** @deprecated use `GetConfigurationProductsUiOptions2$inboundSchema` instead. */
-  export const inboundSchema = GetConfigurationProductsUiOptions2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiOptions2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiOptions2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiOptions2$Outbound` instead. */
-  export type Outbound = GetConfigurationProductsUiOptions2$Outbound;
-}
 
 export function getConfigurationProductsUiOptions2ToJSON(
   getConfigurationProductsUiOptions2: GetConfigurationProductsUiOptions2,
@@ -6450,7 +5168,6 @@ export function getConfigurationProductsUiOptions2ToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsUiOptions2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetConfigurationProductsUiOptions2, SDKValidationError> {
@@ -6467,25 +5184,11 @@ export const GetConfigurationProductsDisabledIntegrationsResponse2003$inboundSch
   z.ZodNativeEnum<
     typeof GetConfigurationProductsDisabledIntegrationsResponse2003
   > = z.nativeEnum(GetConfigurationProductsDisabledIntegrationsResponse2003);
-
 /** @internal */
 export const GetConfigurationProductsDisabledIntegrationsResponse2003$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsDisabledIntegrationsResponse2003
   > = GetConfigurationProductsDisabledIntegrationsResponse2003$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsDisabledIntegrationsResponse2003$ {
-  /** @deprecated use `GetConfigurationProductsDisabledIntegrationsResponse2003$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsDisabledIntegrationsResponse2003$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsDisabledIntegrationsResponse2003$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsDisabledIntegrationsResponse2003$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsDisabledIntegrationsResponse2002$inboundSchema:
@@ -6496,7 +5199,6 @@ export const GetConfigurationProductsDisabledIntegrationsResponse2002$inboundSch
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsDisabledIntegrationsResponse2002$Outbound =
   {
@@ -6513,22 +5215,6 @@ export const GetConfigurationProductsDisabledIntegrationsResponse2002$outboundSc
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsDisabledIntegrationsResponse2002$ {
-  /** @deprecated use `GetConfigurationProductsDisabledIntegrationsResponse2002$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsDisabledIntegrationsResponse2002$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsDisabledIntegrationsResponse2002$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsDisabledIntegrationsResponse2002$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsDisabledIntegrationsResponse2002$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsDisabledIntegrationsResponse2002$Outbound;
-}
-
 export function getConfigurationProductsDisabledIntegrationsResponse2002ToJSON(
   getConfigurationProductsDisabledIntegrationsResponse2002:
     GetConfigurationProductsDisabledIntegrationsResponse2002,
@@ -6538,7 +5224,6 @@ export function getConfigurationProductsDisabledIntegrationsResponse2002ToJSON(
       .parse(getConfigurationProductsDisabledIntegrationsResponse2002),
   );
 }
-
 export function getConfigurationProductsDisabledIntegrationsResponse2002FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -6567,7 +5252,6 @@ export const GetConfigurationProductsUiOptionsIntegrationsDisabled$inboundSchema
     z.boolean(),
     GetConfigurationProductsDisabledIntegrationsResponse2003$inboundSchema,
   ]);
-
 /** @internal */
 export type GetConfigurationProductsUiOptionsIntegrationsDisabled$Outbound =
   | GetConfigurationProductsDisabledIntegrationsResponse2002$Outbound
@@ -6588,22 +5272,6 @@ export const GetConfigurationProductsUiOptionsIntegrationsDisabled$outboundSchem
     GetConfigurationProductsDisabledIntegrationsResponse2003$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiOptionsIntegrationsDisabled$ {
-  /** @deprecated use `GetConfigurationProductsUiOptionsIntegrationsDisabled$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiOptionsIntegrationsDisabled$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiOptionsIntegrationsDisabled$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiOptionsIntegrationsDisabled$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiOptionsIntegrationsDisabled$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiOptionsIntegrationsDisabled$Outbound;
-}
-
 export function getConfigurationProductsUiOptionsIntegrationsDisabledToJSON(
   getConfigurationProductsUiOptionsIntegrationsDisabled:
     GetConfigurationProductsUiOptionsIntegrationsDisabled,
@@ -6614,7 +5282,6 @@ export function getConfigurationProductsUiOptionsIntegrationsDisabledToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsUiOptionsIntegrationsDisabledFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -6636,25 +5303,11 @@ export const GetConfigurationProductsHiddenIntegrationsResponse2003$inboundSchem
   z.ZodNativeEnum<
     typeof GetConfigurationProductsHiddenIntegrationsResponse2003
   > = z.nativeEnum(GetConfigurationProductsHiddenIntegrationsResponse2003);
-
 /** @internal */
 export const GetConfigurationProductsHiddenIntegrationsResponse2003$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsHiddenIntegrationsResponse2003
   > = GetConfigurationProductsHiddenIntegrationsResponse2003$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsHiddenIntegrationsResponse2003$ {
-  /** @deprecated use `GetConfigurationProductsHiddenIntegrationsResponse2003$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsHiddenIntegrationsResponse2003$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsHiddenIntegrationsResponse2003$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsHiddenIntegrationsResponse2003$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsHiddenIntegrationsResponse2002$inboundSchema:
@@ -6665,7 +5318,6 @@ export const GetConfigurationProductsHiddenIntegrationsResponse2002$inboundSchem
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsHiddenIntegrationsResponse2002$Outbound = {
   expr: string;
@@ -6681,22 +5333,6 @@ export const GetConfigurationProductsHiddenIntegrationsResponse2002$outboundSche
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsHiddenIntegrationsResponse2002$ {
-  /** @deprecated use `GetConfigurationProductsHiddenIntegrationsResponse2002$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsHiddenIntegrationsResponse2002$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsHiddenIntegrationsResponse2002$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsHiddenIntegrationsResponse2002$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsHiddenIntegrationsResponse2002$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsHiddenIntegrationsResponse2002$Outbound;
-}
-
 export function getConfigurationProductsHiddenIntegrationsResponse2002ToJSON(
   getConfigurationProductsHiddenIntegrationsResponse2002:
     GetConfigurationProductsHiddenIntegrationsResponse2002,
@@ -6707,7 +5343,6 @@ export function getConfigurationProductsHiddenIntegrationsResponse2002ToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsHiddenIntegrationsResponse2002FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -6736,7 +5371,6 @@ export const GetConfigurationProductsUiOptionsIntegrationsHidden$inboundSchema:
     z.boolean(),
     GetConfigurationProductsHiddenIntegrationsResponse2003$inboundSchema,
   ]);
-
 /** @internal */
 export type GetConfigurationProductsUiOptionsIntegrationsHidden$Outbound =
   | GetConfigurationProductsHiddenIntegrationsResponse2002$Outbound
@@ -6757,22 +5391,6 @@ export const GetConfigurationProductsUiOptionsIntegrationsHidden$outboundSchema:
     GetConfigurationProductsHiddenIntegrationsResponse2003$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiOptionsIntegrationsHidden$ {
-  /** @deprecated use `GetConfigurationProductsUiOptionsIntegrationsHidden$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiOptionsIntegrationsHidden$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiOptionsIntegrationsHidden$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiOptionsIntegrationsHidden$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiOptionsIntegrationsHidden$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiOptionsIntegrationsHidden$Outbound;
-}
-
 export function getConfigurationProductsUiOptionsIntegrationsHiddenToJSON(
   getConfigurationProductsUiOptionsIntegrationsHidden:
     GetConfigurationProductsUiOptionsIntegrationsHidden,
@@ -6783,7 +5401,6 @@ export function getConfigurationProductsUiOptionsIntegrationsHiddenToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsUiOptionsIntegrationsHiddenFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -6823,7 +5440,6 @@ export const GetConfigurationProductsUiOptions1$inboundSchema: z.ZodType<
     GetConfigurationProductsHiddenIntegrationsResponse2003$inboundSchema,
   ]).optional(),
 });
-
 /** @internal */
 export type GetConfigurationProductsUiOptions1$Outbound = {
   value: string;
@@ -6864,20 +5480,6 @@ export const GetConfigurationProductsUiOptions1$outboundSchema: z.ZodType<
   ]).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiOptions1$ {
-  /** @deprecated use `GetConfigurationProductsUiOptions1$inboundSchema` instead. */
-  export const inboundSchema = GetConfigurationProductsUiOptions1$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiOptions1$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiOptions1$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiOptions1$Outbound` instead. */
-  export type Outbound = GetConfigurationProductsUiOptions1$Outbound;
-}
-
 export function getConfigurationProductsUiOptions1ToJSON(
   getConfigurationProductsUiOptions1: GetConfigurationProductsUiOptions1,
 ): string {
@@ -6887,7 +5489,6 @@ export function getConfigurationProductsUiOptions1ToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsUiOptions1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetConfigurationProductsUiOptions1, SDKValidationError> {
@@ -6910,7 +5511,6 @@ export const GetConfigurationProductsPropertiesIntegrationsUiOptions$inboundSche
     z.lazy(() => GetConfigurationProductsUiOptions2$inboundSchema),
     z.lazy(() => GetConfigurationProductsUiOptions3$inboundSchema),
   ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsUiOptions$Outbound =
   | GetConfigurationProductsUiOptions1$Outbound
@@ -6929,22 +5529,6 @@ export const GetConfigurationProductsPropertiesIntegrationsUiOptions$outboundSch
     z.lazy(() => GetConfigurationProductsUiOptions3$outboundSchema),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsUiOptions$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsUiOptions$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsUiOptions$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsUiOptions$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsUiOptions$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsUiOptions$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsUiOptions$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsUiOptionsToJSON(
   getConfigurationProductsPropertiesIntegrationsUiOptions:
     GetConfigurationProductsPropertiesIntegrationsUiOptions,
@@ -6954,7 +5538,6 @@ export function getConfigurationProductsPropertiesIntegrationsUiOptionsToJSON(
       .parse(getConfigurationProductsPropertiesIntegrationsUiOptions),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsUiOptionsFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -6977,26 +5560,12 @@ export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200Applicatio
   > = z.nativeEnum(
     GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts3,
   );
-
 /** @internal */
 export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts3$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts3
   > =
     GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts3$ {
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts3$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema:
@@ -7007,7 +5576,6 @@ export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200Applicatio
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts2$Outbound =
   {
@@ -7024,22 +5592,6 @@ export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200Applicatio
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts2$ {
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts2$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts2$Outbound;
-}
-
 export function getConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts2ToJSON(
   getConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts2:
     GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts2,
@@ -7051,7 +5603,6 @@ export function getConfigurationProductsUiReadOnlyIntegrationsResponse200Applica
       ),
   );
 }
-
 export function getConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -7080,7 +5631,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     z.boolean(),
     GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema,
   ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiReadOnly$Outbound =
   | GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts2$Outbound
@@ -7101,22 +5651,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts3$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiReadOnly$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiReadOnly$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiReadOnly$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiReadOnly$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiReadOnly$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiReadOnly$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiReadOnly$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiReadOnlyToJSON(
   getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiReadOnly:
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiReadOnly,
@@ -7128,7 +5662,6 @@ export function getConfigurationProductsPropertiesIntegrationsResponse200Applica
       ),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiReadOnlyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -7151,26 +5684,12 @@ export const GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJ
   > = z.nativeEnum(
     GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts3,
   );
-
 /** @internal */
 export const GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts3$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts3
   > =
     GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts3$ {
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts3$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema:
@@ -7181,7 +5700,6 @@ export const GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJ
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2$Outbound =
   {
@@ -7198,22 +5716,6 @@ export const GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJ
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2$ {
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2$Outbound;
-}
-
 export function getConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2ToJSON(
   getConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2:
     GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2,
@@ -7225,7 +5727,6 @@ export function getConfigurationProductsUiHiddenIntegrationsResponse200Applicati
       ),
   );
 }
-
 export function getConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -7254,7 +5755,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     z.boolean(),
     GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema,
   ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiHidden$Outbound =
   | GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2$Outbound
@@ -7275,22 +5775,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts3$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiHidden$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiHidden$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiHidden$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiHidden$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiHidden$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiHidden$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiHidden$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiHiddenToJSON(
   getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiHidden:
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiHidden,
@@ -7302,7 +5786,6 @@ export function getConfigurationProductsPropertiesIntegrationsResponse200Applica
       ),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiHiddenFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -7325,26 +5808,12 @@ export const GetConfigurationProductsUiDisabledIntegrationsResponse200Applicatio
   > = z.nativeEnum(
     GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3,
   );
-
 /** @internal */
 export const GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3
   > =
     GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3$ {
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema:
@@ -7355,7 +5824,6 @@ export const GetConfigurationProductsUiDisabledIntegrationsResponse200Applicatio
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2$Outbound =
   {
@@ -7372,22 +5840,6 @@ export const GetConfigurationProductsUiDisabledIntegrationsResponse200Applicatio
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2$ {
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2$Outbound;
-}
-
 export function getConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2ToJSON(
   getConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2:
     GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2,
@@ -7399,7 +5851,6 @@ export function getConfigurationProductsUiDisabledIntegrationsResponse200Applica
       ),
   );
 }
-
 export function getConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -7428,7 +5879,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     z.boolean(),
     GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema,
   ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDisabled$Outbound =
   | GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2$Outbound
@@ -7449,22 +5899,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDisabled$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDisabled$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDisabled$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDisabled$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDisabled$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDisabled$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDisabled$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDisabledToJSON(
   getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDisabled:
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDisabled,
@@ -7476,7 +5910,6 @@ export function getConfigurationProductsPropertiesIntegrationsResponse200Applica
       ),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDisabledFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -7501,7 +5934,6 @@ export const GetConfigurationProductsUiDescriptionIntegrationsResponse200Applica
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProducts2$Outbound =
   {
@@ -7518,22 +5950,6 @@ export const GetConfigurationProductsUiDescriptionIntegrationsResponse200Applica
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProducts2$ {
-  /** @deprecated use `GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProducts2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProducts2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProducts2$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProducts2$Outbound;
-}
-
 export function getConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProducts2ToJSON(
   getConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProducts2:
     GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProducts2,
@@ -7545,7 +5961,6 @@ export function getConfigurationProductsUiDescriptionIntegrationsResponse200Appl
       ),
   );
 }
-
 export function getConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProducts2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -7573,7 +5988,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     ),
     z.string(),
   ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDescription$Outbound =
   | GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProducts2$Outbound
@@ -7592,22 +6006,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     z.string(),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDescription$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDescription$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDescription$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDescription$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDescription$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDescription$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDescription$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDescriptionToJSON(
   getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDescription:
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDescription,
@@ -7619,7 +6017,6 @@ export function getConfigurationProductsPropertiesIntegrationsResponse200Applica
       ),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDescriptionFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -7644,7 +6041,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiFormattedValue$Outbound =
   {
@@ -7661,22 +6057,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiFormattedValue$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiFormattedValue$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiFormattedValue$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiFormattedValue$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiFormattedValue$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiFormattedValue$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiFormattedValue$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiFormattedValueToJSON(
   getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiFormattedValue:
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiFormattedValue,
@@ -7688,7 +6068,6 @@ export function getConfigurationProductsPropertiesIntegrationsResponse200Applica
       ),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiFormattedValueFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -7705,84 +6084,65 @@ export function getConfigurationProductsPropertiesIntegrationsResponse200Applica
 }
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt647543$inboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt649981$inboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt647543,
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt649981,
     z.ZodTypeDef,
     unknown
   > = z.object({});
-
 /** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt647543$Outbound =
+export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt649981$Outbound =
   {};
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt647543$outboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt649981$outboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt647543$Outbound,
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt649981$Outbound,
     z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt647543
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt649981
   > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt647543$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt647543$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt647543$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt647543$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt647543$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt647543$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt647543$Outbound;
-}
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt647543ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt647543,
+export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt649981ToJSON(
+  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt649981,
 ): string {
   return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt647543$outboundSchema
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt649981$outboundSchema
       .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt647543,
+        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt649981,
       ),
   );
 }
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt647543FromJSON(
+export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt649981FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt647543,
+  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt649981,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt647543$inboundSchema
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt649981$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt647543' from JSON`,
+    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt649981' from JSON`,
   );
 }
 
 /** @internal */
 export const Default$inboundSchema: z.ZodType<Default, z.ZodTypeDef, unknown> =
   z.object({
-    "__@BRAND@647543": z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt647543$inboundSchema
+    "__@BRAND@649981": z.lazy(() =>
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt649981$inboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      "__@BRAND@647543": "atBRANDAt647543",
+      "__@BRAND@649981": "atBRANDAt649981",
     });
   });
-
 /** @internal */
 export type Default$Outbound = {
-  "__@BRAND@647543":
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt647543$Outbound;
+  "__@BRAND@649981":
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt649981$Outbound;
 };
 
 /** @internal */
@@ -7791,32 +6151,18 @@ export const Default$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Default
 > = z.object({
-  atBRANDAt647543: z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt647543$outboundSchema
+  atBRANDAt649981: z.lazy(() =>
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt649981$outboundSchema
   ),
 }).transform((v) => {
   return remap$(v, {
-    atBRANDAt647543: "__@BRAND@647543",
+    atBRANDAt649981: "__@BRAND@649981",
   });
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Default$ {
-  /** @deprecated use `Default$inboundSchema` instead. */
-  export const inboundSchema = Default$inboundSchema;
-  /** @deprecated use `Default$outboundSchema` instead. */
-  export const outboundSchema = Default$outboundSchema;
-  /** @deprecated use `Default$Outbound` instead. */
-  export type Outbound = Default$Outbound;
-}
 
 export function defaultToJSON(value: Default): string {
   return JSON.stringify(Default$outboundSchema.parse(value));
 }
-
 export function defaultFromJSON(
   jsonString: string,
 ): SafeParseResult<Default, SDKValidationError> {
@@ -7828,84 +6174,65 @@ export function defaultFromJSON(
 }
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt647543$inboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt649981$inboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt647543,
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt649981,
     z.ZodTypeDef,
     unknown
   > = z.object({});
-
 /** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt647543$Outbound =
+export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt649981$Outbound =
   {};
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt647543$outboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt649981$outboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt647543$Outbound,
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt649981$Outbound,
     z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt647543
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt649981
   > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt647543$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt647543$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt647543$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt647543$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt647543$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt647543$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt647543$Outbound;
-}
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt647543ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt647543,
+export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt649981ToJSON(
+  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt649981,
 ): string {
   return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt647543$outboundSchema
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt649981$outboundSchema
       .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt647543,
+        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt649981,
       ),
   );
 }
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt647543FromJSON(
+export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt649981FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt647543,
+  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt649981,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt647543$inboundSchema
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt649981$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt647543' from JSON`,
+    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt649981' from JSON`,
   );
 }
 
 /** @internal */
 export const Example$inboundSchema: z.ZodType<Example, z.ZodTypeDef, unknown> =
   z.object({
-    "__@BRAND@647543": z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt647543$inboundSchema
+    "__@BRAND@649981": z.lazy(() =>
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt649981$inboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      "__@BRAND@647543": "atBRANDAt647543",
+      "__@BRAND@649981": "atBRANDAt649981",
     });
   });
-
 /** @internal */
 export type Example$Outbound = {
-  "__@BRAND@647543":
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt647543$Outbound;
+  "__@BRAND@649981":
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt649981$Outbound;
 };
 
 /** @internal */
@@ -7914,32 +6241,18 @@ export const Example$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Example
 > = z.object({
-  atBRANDAt647543: z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt647543$outboundSchema
+  atBRANDAt649981: z.lazy(() =>
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt649981$outboundSchema
   ),
 }).transform((v) => {
   return remap$(v, {
-    atBRANDAt647543: "__@BRAND@647543",
+    atBRANDAt649981: "__@BRAND@649981",
   });
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Example$ {
-  /** @deprecated use `Example$inboundSchema` instead. */
-  export const inboundSchema = Example$inboundSchema;
-  /** @deprecated use `Example$outboundSchema` instead. */
-  export const outboundSchema = Example$outboundSchema;
-  /** @deprecated use `Example$Outbound` instead. */
-  export type Outbound = Example$Outbound;
-}
 
 export function exampleToJSON(example: Example): string {
   return JSON.stringify(Example$outboundSchema.parse(example));
 }
-
 export function exampleFromJSON(
   jsonString: string,
 ): SafeParseResult<Example, SDKValidationError> {
@@ -8020,7 +6333,6 @@ export const Properties8$inboundSchema: z.ZodType<
     "ui:placeholder": "uiPlaceholder",
   });
 });
-
 /** @internal */
 export type Properties8$Outbound = {
   type: string;
@@ -8133,23 +6445,9 @@ export const Properties8$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Properties8$ {
-  /** @deprecated use `Properties8$inboundSchema` instead. */
-  export const inboundSchema = Properties8$inboundSchema;
-  /** @deprecated use `Properties8$outboundSchema` instead. */
-  export const outboundSchema = Properties8$outboundSchema;
-  /** @deprecated use `Properties8$Outbound` instead. */
-  export type Outbound = Properties8$Outbound;
-}
-
 export function properties8ToJSON(properties8: Properties8): string {
   return JSON.stringify(Properties8$outboundSchema.parse(properties8));
 }
-
 export function properties8FromJSON(
   jsonString: string,
 ): SafeParseResult<Properties8, SDKValidationError> {
@@ -8167,26 +6465,12 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
   > = z.nativeEnum(
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyType,
   );
-
 /** @internal */
 export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyType$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyType
   > =
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyType$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyType$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyType$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiControl$inboundSchema:
@@ -8195,7 +6479,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
   > = z.nativeEnum(
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiControl,
   );
-
 /** @internal */
 export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiControl$outboundSchema:
   z.ZodNativeEnum<
@@ -8203,77 +6486,46 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
   > =
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiControl$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiControl$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiControl$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiControl$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiControl$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiControl$outboundSchema;
-}
-
 /** @internal */
-export const GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt647543$inboundSchema:
+export const GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt649981$inboundSchema:
   z.ZodType<
-    GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt647543,
+    GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt649981,
     z.ZodTypeDef,
     unknown
   > = z.object({});
-
 /** @internal */
-export type GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt647543$Outbound =
+export type GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt649981$Outbound =
   {};
 
 /** @internal */
-export const GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt647543$outboundSchema:
+export const GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt649981$outboundSchema:
   z.ZodType<
-    GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt647543$Outbound,
+    GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt649981$Outbound,
     z.ZodTypeDef,
-    GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt647543
+    GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt649981
   > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt647543$ {
-  /** @deprecated use `GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt647543$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt647543$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt647543$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt647543$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt647543$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt647543$Outbound;
-}
-
-export function getConfigurationProductsUiOptionsIntegrationsAtBRANDAt647543ToJSON(
-  getConfigurationProductsUiOptionsIntegrationsAtBRANDAt647543:
-    GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt647543,
+export function getConfigurationProductsUiOptionsIntegrationsAtBRANDAt649981ToJSON(
+  getConfigurationProductsUiOptionsIntegrationsAtBRANDAt649981:
+    GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt649981,
 ): string {
   return JSON.stringify(
-    GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt647543$outboundSchema
-      .parse(getConfigurationProductsUiOptionsIntegrationsAtBRANDAt647543),
+    GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt649981$outboundSchema
+      .parse(getConfigurationProductsUiOptionsIntegrationsAtBRANDAt649981),
   );
 }
-
-export function getConfigurationProductsUiOptionsIntegrationsAtBRANDAt647543FromJSON(
+export function getConfigurationProductsUiOptionsIntegrationsAtBRANDAt649981FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt647543,
+  GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt649981,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt647543$inboundSchema
+      GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt649981$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt647543' from JSON`,
+    `Failed to parse 'GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt649981' from JSON`,
   );
 }
 
@@ -8283,19 +6535,18 @@ export const UiOptionsValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "__@BRAND@647543": z.lazy(() =>
-    GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt647543$inboundSchema
+  "__@BRAND@649981": z.lazy(() =>
+    GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt649981$inboundSchema
   ),
 }).transform((v) => {
   return remap$(v, {
-    "__@BRAND@647543": "atBRANDAt647543",
+    "__@BRAND@649981": "atBRANDAt649981",
   });
 });
-
 /** @internal */
 export type UiOptionsValue$Outbound = {
-  "__@BRAND@647543":
-    GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt647543$Outbound;
+  "__@BRAND@649981":
+    GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt649981$Outbound;
 };
 
 /** @internal */
@@ -8304,32 +6555,18 @@ export const UiOptionsValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UiOptionsValue
 > = z.object({
-  atBRANDAt647543: z.lazy(() =>
-    GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt647543$outboundSchema
+  atBRANDAt649981: z.lazy(() =>
+    GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt649981$outboundSchema
   ),
 }).transform((v) => {
   return remap$(v, {
-    atBRANDAt647543: "__@BRAND@647543",
+    atBRANDAt649981: "__@BRAND@649981",
   });
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UiOptionsValue$ {
-  /** @deprecated use `UiOptionsValue$inboundSchema` instead. */
-  export const inboundSchema = UiOptionsValue$inboundSchema;
-  /** @deprecated use `UiOptionsValue$outboundSchema` instead. */
-  export const outboundSchema = UiOptionsValue$outboundSchema;
-  /** @deprecated use `UiOptionsValue$Outbound` instead. */
-  export type Outbound = UiOptionsValue$Outbound;
-}
 
 export function uiOptionsValueToJSON(uiOptionsValue: UiOptionsValue): string {
   return JSON.stringify(UiOptionsValue$outboundSchema.parse(uiOptionsValue));
 }
-
 export function uiOptionsValueFromJSON(
   jsonString: string,
 ): SafeParseResult<UiOptionsValue, SDKValidationError> {
@@ -8347,26 +6584,12 @@ export const GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJ
   > = z.nativeEnum(
     GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3,
   );
-
 /** @internal */
 export const GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3
   > =
     GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3$ {
-  /** @deprecated use `GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema:
@@ -8377,7 +6600,6 @@ export const GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJ
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2$Outbound =
   {
@@ -8394,22 +6616,6 @@ export const GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJ
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2$ {
-  /** @deprecated use `GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2$Outbound;
-}
-
 export function getConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2ToJSON(
   getConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2:
     GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2,
@@ -8421,7 +6627,6 @@ export function getConfigurationProductsDisabledIntegrationsResponse200Applicati
       ),
   );
 }
-
 export function getConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -8449,7 +6654,6 @@ export const GetConfigurationProductsUiOptionsDisabled$inboundSchema: z.ZodType<
   z.boolean(),
   GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema,
 ]);
-
 /** @internal */
 export type GetConfigurationProductsUiOptionsDisabled$Outbound =
   | GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2$Outbound
@@ -8470,21 +6674,6 @@ export const GetConfigurationProductsUiOptionsDisabled$outboundSchema:
     GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiOptionsDisabled$ {
-  /** @deprecated use `GetConfigurationProductsUiOptionsDisabled$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiOptionsDisabled$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiOptionsDisabled$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiOptionsDisabled$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiOptionsDisabled$Outbound` instead. */
-  export type Outbound = GetConfigurationProductsUiOptionsDisabled$Outbound;
-}
-
 export function getConfigurationProductsUiOptionsDisabledToJSON(
   getConfigurationProductsUiOptionsDisabled:
     GetConfigurationProductsUiOptionsDisabled,
@@ -8495,7 +6684,6 @@ export function getConfigurationProductsUiOptionsDisabledToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsUiOptionsDisabledFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -8519,26 +6707,12 @@ export const GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSO
   > = z.nativeEnum(
     GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts3,
   );
-
 /** @internal */
 export const GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts3$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts3
   > =
     GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts3$ {
-  /** @deprecated use `GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts3$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema:
@@ -8549,7 +6723,6 @@ export const GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSO
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2$Outbound =
   {
@@ -8566,22 +6739,6 @@ export const GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSO
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2$ {
-  /** @deprecated use `GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2$Outbound;
-}
-
 export function getConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2ToJSON(
   getConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2:
     GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2,
@@ -8593,7 +6750,6 @@ export function getConfigurationProductsHiddenIntegrationsResponse200Application
       ),
   );
 }
-
 export function getConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -8621,7 +6777,6 @@ export const GetConfigurationProductsUiOptionsHidden$inboundSchema: z.ZodType<
   z.boolean(),
   GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema,
 ]);
-
 /** @internal */
 export type GetConfigurationProductsUiOptionsHidden$Outbound =
   | GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2$Outbound
@@ -8641,21 +6796,6 @@ export const GetConfigurationProductsUiOptionsHidden$outboundSchema: z.ZodType<
   GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts3$outboundSchema,
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiOptionsHidden$ {
-  /** @deprecated use `GetConfigurationProductsUiOptionsHidden$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiOptionsHidden$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiOptionsHidden$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiOptionsHidden$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiOptionsHidden$Outbound` instead. */
-  export type Outbound = GetConfigurationProductsUiOptionsHidden$Outbound;
-}
-
 export function getConfigurationProductsUiOptionsHiddenToJSON(
   getConfigurationProductsUiOptionsHidden:
     GetConfigurationProductsUiOptionsHidden,
@@ -8666,7 +6806,6 @@ export function getConfigurationProductsUiOptionsHiddenToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsUiOptionsHiddenFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -8705,7 +6844,6 @@ export const UiOptions3$inboundSchema: z.ZodType<
     GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema,
   ]).optional(),
 });
-
 /** @internal */
 export type UiOptions3$Outbound = {
   value: UiOptionsValue$Outbound;
@@ -8744,23 +6882,9 @@ export const UiOptions3$outboundSchema: z.ZodType<
   ]).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UiOptions3$ {
-  /** @deprecated use `UiOptions3$inboundSchema` instead. */
-  export const inboundSchema = UiOptions3$inboundSchema;
-  /** @deprecated use `UiOptions3$outboundSchema` instead. */
-  export const outboundSchema = UiOptions3$outboundSchema;
-  /** @deprecated use `UiOptions3$Outbound` instead. */
-  export type Outbound = UiOptions3$Outbound;
-}
-
 export function uiOptions3ToJSON(uiOptions3: UiOptions3): string {
   return JSON.stringify(UiOptions3$outboundSchema.parse(uiOptions3));
 }
-
 export function uiOptions3FromJSON(
   jsonString: string,
 ): SafeParseResult<UiOptions3, SDKValidationError> {
@@ -8772,50 +6896,35 @@ export function uiOptions3FromJSON(
 }
 
 /** @internal */
-export const UiOptionsAtBRANDAt647543$inboundSchema: z.ZodType<
-  UiOptionsAtBRANDAt647543,
+export const UiOptionsAtBRANDAt649981$inboundSchema: z.ZodType<
+  UiOptionsAtBRANDAt649981,
   z.ZodTypeDef,
   unknown
 > = z.object({});
+/** @internal */
+export type UiOptionsAtBRANDAt649981$Outbound = {};
 
 /** @internal */
-export type UiOptionsAtBRANDAt647543$Outbound = {};
-
-/** @internal */
-export const UiOptionsAtBRANDAt647543$outboundSchema: z.ZodType<
-  UiOptionsAtBRANDAt647543$Outbound,
+export const UiOptionsAtBRANDAt649981$outboundSchema: z.ZodType<
+  UiOptionsAtBRANDAt649981$Outbound,
   z.ZodTypeDef,
-  UiOptionsAtBRANDAt647543
+  UiOptionsAtBRANDAt649981
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UiOptionsAtBRANDAt647543$ {
-  /** @deprecated use `UiOptionsAtBRANDAt647543$inboundSchema` instead. */
-  export const inboundSchema = UiOptionsAtBRANDAt647543$inboundSchema;
-  /** @deprecated use `UiOptionsAtBRANDAt647543$outboundSchema` instead. */
-  export const outboundSchema = UiOptionsAtBRANDAt647543$outboundSchema;
-  /** @deprecated use `UiOptionsAtBRANDAt647543$Outbound` instead. */
-  export type Outbound = UiOptionsAtBRANDAt647543$Outbound;
-}
-
-export function uiOptionsAtBRANDAt647543ToJSON(
-  uiOptionsAtBRANDAt647543: UiOptionsAtBRANDAt647543,
+export function uiOptionsAtBRANDAt649981ToJSON(
+  uiOptionsAtBRANDAt649981: UiOptionsAtBRANDAt649981,
 ): string {
   return JSON.stringify(
-    UiOptionsAtBRANDAt647543$outboundSchema.parse(uiOptionsAtBRANDAt647543),
+    UiOptionsAtBRANDAt649981$outboundSchema.parse(uiOptionsAtBRANDAt649981),
   );
 }
-
-export function uiOptionsAtBRANDAt647543FromJSON(
+export function uiOptionsAtBRANDAt649981FromJSON(
   jsonString: string,
-): SafeParseResult<UiOptionsAtBRANDAt647543, SDKValidationError> {
+): SafeParseResult<UiOptionsAtBRANDAt649981, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UiOptionsAtBRANDAt647543$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UiOptionsAtBRANDAt647543' from JSON`,
+    (x) => UiOptionsAtBRANDAt649981$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UiOptionsAtBRANDAt649981' from JSON`,
   );
 }
 
@@ -8825,16 +6934,15 @@ export const UiOptions2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "__@BRAND@647543": z.lazy(() => UiOptionsAtBRANDAt647543$inboundSchema),
+  "__@BRAND@649981": z.lazy(() => UiOptionsAtBRANDAt649981$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
-    "__@BRAND@647543": "atBRANDAt647543",
+    "__@BRAND@649981": "atBRANDAt649981",
   });
 });
-
 /** @internal */
 export type UiOptions2$Outbound = {
-  "__@BRAND@647543": UiOptionsAtBRANDAt647543$Outbound;
+  "__@BRAND@649981": UiOptionsAtBRANDAt649981$Outbound;
 };
 
 /** @internal */
@@ -8843,30 +6951,16 @@ export const UiOptions2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UiOptions2
 > = z.object({
-  atBRANDAt647543: z.lazy(() => UiOptionsAtBRANDAt647543$outboundSchema),
+  atBRANDAt649981: z.lazy(() => UiOptionsAtBRANDAt649981$outboundSchema),
 }).transform((v) => {
   return remap$(v, {
-    atBRANDAt647543: "__@BRAND@647543",
+    atBRANDAt649981: "__@BRAND@649981",
   });
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UiOptions2$ {
-  /** @deprecated use `UiOptions2$inboundSchema` instead. */
-  export const inboundSchema = UiOptions2$inboundSchema;
-  /** @deprecated use `UiOptions2$outboundSchema` instead. */
-  export const outboundSchema = UiOptions2$outboundSchema;
-  /** @deprecated use `UiOptions2$Outbound` instead. */
-  export type Outbound = UiOptions2$Outbound;
-}
 
 export function uiOptions2ToJSON(uiOptions2: UiOptions2): string {
   return JSON.stringify(UiOptions2$outboundSchema.parse(uiOptions2));
 }
-
 export function uiOptions2FromJSON(
   jsonString: string,
 ): SafeParseResult<UiOptions2, SDKValidationError> {
@@ -8884,26 +6978,12 @@ export const GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJ
   > = z.nativeEnum(
     GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody3,
   );
-
 /** @internal */
 export const GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody3$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody3
   > =
     GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody3$ {
-  /** @deprecated use `GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody3$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema:
@@ -8914,7 +6994,6 @@ export const GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJ
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody2$Outbound =
   {
@@ -8931,22 +7010,6 @@ export const GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJ
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody2$ {
-  /** @deprecated use `GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody2$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody2$Outbound;
-}
-
 export function getConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody2ToJSON(
   getConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody2:
     GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody2,
@@ -8958,7 +7021,6 @@ export function getConfigurationProductsDisabledIntegrationsResponse200Applicati
       ),
   );
 }
-
 export function getConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -8986,7 +7048,6 @@ export const UiOptionsDisabled$inboundSchema: z.ZodType<
   z.boolean(),
   GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
 ]);
-
 /** @internal */
 export type UiOptionsDisabled$Outbound =
   | GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody2$Outbound
@@ -9006,19 +7067,6 @@ export const UiOptionsDisabled$outboundSchema: z.ZodType<
   GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody3$outboundSchema,
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UiOptionsDisabled$ {
-  /** @deprecated use `UiOptionsDisabled$inboundSchema` instead. */
-  export const inboundSchema = UiOptionsDisabled$inboundSchema;
-  /** @deprecated use `UiOptionsDisabled$outboundSchema` instead. */
-  export const outboundSchema = UiOptionsDisabled$outboundSchema;
-  /** @deprecated use `UiOptionsDisabled$Outbound` instead. */
-  export type Outbound = UiOptionsDisabled$Outbound;
-}
-
 export function uiOptionsDisabledToJSON(
   uiOptionsDisabled: UiOptionsDisabled,
 ): string {
@@ -9026,7 +7074,6 @@ export function uiOptionsDisabledToJSON(
     UiOptionsDisabled$outboundSchema.parse(uiOptionsDisabled),
   );
 }
-
 export function uiOptionsDisabledFromJSON(
   jsonString: string,
 ): SafeParseResult<UiOptionsDisabled, SDKValidationError> {
@@ -9044,26 +7091,12 @@ export const GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSO
   > = z.nativeEnum(
     GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody3,
   );
-
 /** @internal */
 export const GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody3$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody3
   > =
     GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody3$ {
-  /** @deprecated use `GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody3$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema:
@@ -9074,7 +7107,6 @@ export const GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSO
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody2$Outbound =
   {
@@ -9091,22 +7123,6 @@ export const GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSO
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody2$ {
-  /** @deprecated use `GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody2$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody2$Outbound;
-}
-
 export function getConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody2ToJSON(
   getConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody2:
     GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody2,
@@ -9118,7 +7134,6 @@ export function getConfigurationProductsHiddenIntegrationsResponse200Application
       ),
   );
 }
-
 export function getConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -9146,7 +7161,6 @@ export const UiOptionsHidden$inboundSchema: z.ZodType<
   z.boolean(),
   GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
 ]);
-
 /** @internal */
 export type UiOptionsHidden$Outbound =
   | GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody2$Outbound
@@ -9166,25 +7180,11 @@ export const UiOptionsHidden$outboundSchema: z.ZodType<
   GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody3$outboundSchema,
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UiOptionsHidden$ {
-  /** @deprecated use `UiOptionsHidden$inboundSchema` instead. */
-  export const inboundSchema = UiOptionsHidden$inboundSchema;
-  /** @deprecated use `UiOptionsHidden$outboundSchema` instead. */
-  export const outboundSchema = UiOptionsHidden$outboundSchema;
-  /** @deprecated use `UiOptionsHidden$Outbound` instead. */
-  export type Outbound = UiOptionsHidden$Outbound;
-}
-
 export function uiOptionsHiddenToJSON(
   uiOptionsHidden: UiOptionsHidden,
 ): string {
   return JSON.stringify(UiOptionsHidden$outboundSchema.parse(uiOptionsHidden));
 }
-
 export function uiOptionsHiddenFromJSON(
   jsonString: string,
 ): SafeParseResult<UiOptionsHidden, SDKValidationError> {
@@ -9218,7 +7218,6 @@ export const UiOptions1$inboundSchema: z.ZodType<
     GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
   ]).optional(),
 });
-
 /** @internal */
 export type UiOptions1$Outbound = {
   value: string;
@@ -9259,23 +7258,9 @@ export const UiOptions1$outboundSchema: z.ZodType<
   ]).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UiOptions1$ {
-  /** @deprecated use `UiOptions1$inboundSchema` instead. */
-  export const inboundSchema = UiOptions1$inboundSchema;
-  /** @deprecated use `UiOptions1$outboundSchema` instead. */
-  export const outboundSchema = UiOptions1$outboundSchema;
-  /** @deprecated use `UiOptions1$Outbound` instead. */
-  export type Outbound = UiOptions1$Outbound;
-}
-
 export function uiOptions1ToJSON(uiOptions1: UiOptions1): string {
   return JSON.stringify(UiOptions1$outboundSchema.parse(uiOptions1));
 }
-
 export function uiOptions1FromJSON(
   jsonString: string,
 ): SafeParseResult<UiOptions1, SDKValidationError> {
@@ -9297,7 +7282,6 @@ export const GetConfigurationProductsPropertiesUiOptions$inboundSchema:
     z.lazy(() => UiOptions2$inboundSchema),
     z.lazy(() => UiOptions3$inboundSchema),
   ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesUiOptions$Outbound =
   | UiOptions1$Outbound
@@ -9316,21 +7300,6 @@ export const GetConfigurationProductsPropertiesUiOptions$outboundSchema:
     z.lazy(() => UiOptions3$outboundSchema),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesUiOptions$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesUiOptions$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesUiOptions$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesUiOptions$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesUiOptions$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesUiOptions$Outbound` instead. */
-  export type Outbound = GetConfigurationProductsPropertiesUiOptions$Outbound;
-}
-
 export function getConfigurationProductsPropertiesUiOptionsToJSON(
   getConfigurationProductsPropertiesUiOptions:
     GetConfigurationProductsPropertiesUiOptions,
@@ -9341,7 +7310,6 @@ export function getConfigurationProductsPropertiesUiOptionsToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsPropertiesUiOptionsFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -9359,65 +7327,47 @@ export function getConfigurationProductsPropertiesUiOptionsFromJSON(
 }
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt647543$inboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt649981$inboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt647543,
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt649981,
     z.ZodTypeDef,
     unknown
   > = z.object({});
-
 /** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt647543$Outbound =
+export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt649981$Outbound =
   {};
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt647543$outboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt649981$outboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt647543$Outbound,
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt649981$Outbound,
     z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt647543
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt649981
   > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt647543$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt647543$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt647543$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt647543$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt647543$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt647543$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt647543$Outbound;
-}
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt647543ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt647543,
+export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt649981ToJSON(
+  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt649981,
 ): string {
   return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt647543$outboundSchema
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt649981$outboundSchema
       .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt647543,
+        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt649981,
       ),
   );
 }
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt647543FromJSON(
+export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt649981FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt647543,
+  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt649981,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt647543$inboundSchema
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt649981$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt647543' from JSON`,
+    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt649981' from JSON`,
   );
 }
 
@@ -9428,19 +7378,18 @@ export const GetConfigurationProductsPropertiesMinLength$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    "__@BRAND@647543": z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt647543$inboundSchema
+    "__@BRAND@649981": z.lazy(() =>
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt649981$inboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      "__@BRAND@647543": "atBRANDAt647543",
+      "__@BRAND@649981": "atBRANDAt649981",
     });
   });
-
 /** @internal */
 export type GetConfigurationProductsPropertiesMinLength$Outbound = {
-  "__@BRAND@647543":
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt647543$Outbound;
+  "__@BRAND@649981":
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt649981$Outbound;
 };
 
 /** @internal */
@@ -9450,29 +7399,14 @@ export const GetConfigurationProductsPropertiesMinLength$outboundSchema:
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesMinLength
   > = z.object({
-    atBRANDAt647543: z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt647543$outboundSchema
+    atBRANDAt649981: z.lazy(() =>
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt649981$outboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      atBRANDAt647543: "__@BRAND@647543",
+      atBRANDAt649981: "__@BRAND@649981",
     });
   });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesMinLength$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesMinLength$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesMinLength$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesMinLength$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesMinLength$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesMinLength$Outbound` instead. */
-  export type Outbound = GetConfigurationProductsPropertiesMinLength$Outbound;
-}
 
 export function getConfigurationProductsPropertiesMinLengthToJSON(
   getConfigurationProductsPropertiesMinLength:
@@ -9484,7 +7418,6 @@ export function getConfigurationProductsPropertiesMinLengthToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsPropertiesMinLengthFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -9502,65 +7435,47 @@ export function getConfigurationProductsPropertiesMinLengthFromJSON(
 }
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt647543$inboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt649981$inboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt647543,
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt649981,
     z.ZodTypeDef,
     unknown
   > = z.object({});
-
 /** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt647543$Outbound =
+export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt649981$Outbound =
   {};
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt647543$outboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt649981$outboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt647543$Outbound,
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt649981$Outbound,
     z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt647543
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt649981
   > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt647543$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt647543$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt647543$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt647543$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt647543$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt647543$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt647543$Outbound;
-}
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt647543ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt647543,
+export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt649981ToJSON(
+  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt649981,
 ): string {
   return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt647543$outboundSchema
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt649981$outboundSchema
       .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt647543,
+        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt649981,
       ),
   );
 }
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt647543FromJSON(
+export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt649981FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt647543,
+  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt649981,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt647543$inboundSchema
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt649981$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt647543' from JSON`,
+    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt649981' from JSON`,
   );
 }
 
@@ -9571,19 +7486,18 @@ export const GetConfigurationProductsPropertiesMaxLength$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    "__@BRAND@647543": z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt647543$inboundSchema
+    "__@BRAND@649981": z.lazy(() =>
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt649981$inboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      "__@BRAND@647543": "atBRANDAt647543",
+      "__@BRAND@649981": "atBRANDAt649981",
     });
   });
-
 /** @internal */
 export type GetConfigurationProductsPropertiesMaxLength$Outbound = {
-  "__@BRAND@647543":
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt647543$Outbound;
+  "__@BRAND@649981":
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt649981$Outbound;
 };
 
 /** @internal */
@@ -9593,29 +7507,14 @@ export const GetConfigurationProductsPropertiesMaxLength$outboundSchema:
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesMaxLength
   > = z.object({
-    atBRANDAt647543: z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt647543$outboundSchema
+    atBRANDAt649981: z.lazy(() =>
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt649981$outboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      atBRANDAt647543: "__@BRAND@647543",
+      atBRANDAt649981: "__@BRAND@649981",
     });
   });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesMaxLength$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesMaxLength$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesMaxLength$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesMaxLength$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesMaxLength$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesMaxLength$Outbound` instead. */
-  export type Outbound = GetConfigurationProductsPropertiesMaxLength$Outbound;
-}
 
 export function getConfigurationProductsPropertiesMaxLengthToJSON(
   getConfigurationProductsPropertiesMaxLength:
@@ -9627,7 +7526,6 @@ export function getConfigurationProductsPropertiesMaxLengthToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsPropertiesMaxLengthFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -9645,65 +7543,47 @@ export function getConfigurationProductsPropertiesMaxLengthFromJSON(
 }
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt647543$inboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt649981$inboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt647543,
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt649981,
     z.ZodTypeDef,
     unknown
   > = z.object({});
-
 /** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt647543$Outbound =
+export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt649981$Outbound =
   {};
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt647543$outboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt649981$outboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt647543$Outbound,
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt649981$Outbound,
     z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt647543
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt649981
   > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt647543$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt647543$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt647543$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt647543$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt647543$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt647543$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt647543$Outbound;
-}
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt647543ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt647543,
+export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt649981ToJSON(
+  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt649981,
 ): string {
   return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt647543$outboundSchema
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt649981$outboundSchema
       .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt647543,
+        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt649981,
       ),
   );
 }
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt647543FromJSON(
+export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt649981FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt647543,
+  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt649981,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt647543$inboundSchema
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt649981$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt647543' from JSON`,
+    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt649981' from JSON`,
   );
 }
 
@@ -9713,19 +7593,18 @@ export const GetConfigurationProductsPropertiesPattern$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "__@BRAND@647543": z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt647543$inboundSchema
+  "__@BRAND@649981": z.lazy(() =>
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt649981$inboundSchema
   ),
 }).transform((v) => {
   return remap$(v, {
-    "__@BRAND@647543": "atBRANDAt647543",
+    "__@BRAND@649981": "atBRANDAt649981",
   });
 });
-
 /** @internal */
 export type GetConfigurationProductsPropertiesPattern$Outbound = {
-  "__@BRAND@647543":
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt647543$Outbound;
+  "__@BRAND@649981":
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt649981$Outbound;
 };
 
 /** @internal */
@@ -9735,29 +7614,14 @@ export const GetConfigurationProductsPropertiesPattern$outboundSchema:
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesPattern
   > = z.object({
-    atBRANDAt647543: z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt647543$outboundSchema
+    atBRANDAt649981: z.lazy(() =>
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt649981$outboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      atBRANDAt647543: "__@BRAND@647543",
+      atBRANDAt649981: "__@BRAND@649981",
     });
   });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesPattern$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesPattern$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesPattern$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesPattern$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesPattern$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesPattern$Outbound` instead. */
-  export type Outbound = GetConfigurationProductsPropertiesPattern$Outbound;
-}
 
 export function getConfigurationProductsPropertiesPatternToJSON(
   getConfigurationProductsPropertiesPattern:
@@ -9769,7 +7633,6 @@ export function getConfigurationProductsPropertiesPatternToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsPropertiesPatternFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -9793,26 +7656,12 @@ export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200Applicatio
   > = z.nativeEnum(
     GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody3,
   );
-
 /** @internal */
 export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody3$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody3
   > =
     GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody3$ {
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody3$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema:
@@ -9823,7 +7672,6 @@ export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200Applicatio
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody2$Outbound =
   {
@@ -9840,22 +7688,6 @@ export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200Applicatio
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody2$ {
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody2$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody2$Outbound;
-}
-
 export function getConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody2ToJSON(
   getConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody2:
     GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody2,
@@ -9867,7 +7699,6 @@ export function getConfigurationProductsUiReadOnlyIntegrationsResponse200Applica
       ),
   );
 }
-
 export function getConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -9896,7 +7727,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     z.boolean(),
     GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
   ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiReadOnly$Outbound =
   | GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody2$Outbound
@@ -9917,22 +7747,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody3$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiReadOnly$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiReadOnly$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiReadOnly$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiReadOnly$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiReadOnly$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiReadOnly$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiReadOnly$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiReadOnlyToJSON(
   getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiReadOnly:
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiReadOnly,
@@ -9944,7 +7758,6 @@ export function getConfigurationProductsPropertiesIntegrationsResponse200Applica
       ),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiReadOnlyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -9967,26 +7780,12 @@ export const GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJ
   > = z.nativeEnum(
     GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody3,
   );
-
 /** @internal */
 export const GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody3$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody3
   > =
     GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody3$ {
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody3$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema:
@@ -9997,7 +7796,6 @@ export const GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJ
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody2$Outbound =
   {
@@ -10014,22 +7812,6 @@ export const GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJ
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody2$ {
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody2$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody2$Outbound;
-}
-
 export function getConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody2ToJSON(
   getConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody2:
     GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody2,
@@ -10041,7 +7823,6 @@ export function getConfigurationProductsUiHiddenIntegrationsResponse200Applicati
       ),
   );
 }
-
 export function getConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -10070,7 +7851,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     z.boolean(),
     GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
   ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiHidden$Outbound =
   | GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody2$Outbound
@@ -10091,22 +7871,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody3$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiHidden$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiHidden$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiHidden$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiHidden$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiHidden$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiHidden$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiHidden$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiHiddenToJSON(
   getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiHidden:
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiHidden,
@@ -10118,7 +7882,6 @@ export function getConfigurationProductsPropertiesIntegrationsResponse200Applica
       ),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiHiddenFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -10141,26 +7904,12 @@ export const GetConfigurationProductsUiDisabledIntegrationsResponse200Applicatio
   > = z.nativeEnum(
     GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody3,
   );
-
 /** @internal */
 export const GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody3$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody3
   > =
     GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody3$ {
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody3$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema:
@@ -10171,7 +7920,6 @@ export const GetConfigurationProductsUiDisabledIntegrationsResponse200Applicatio
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody2$Outbound =
   {
@@ -10188,22 +7936,6 @@ export const GetConfigurationProductsUiDisabledIntegrationsResponse200Applicatio
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody2$ {
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody2$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody2$Outbound;
-}
-
 export function getConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody2ToJSON(
   getConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody2:
     GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody2,
@@ -10215,7 +7947,6 @@ export function getConfigurationProductsUiDisabledIntegrationsResponse200Applica
       ),
   );
 }
-
 export function getConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -10244,7 +7975,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     z.boolean(),
     GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
   ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiDisabled$Outbound =
   | GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody2$Outbound
@@ -10265,22 +7995,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody3$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiDisabled$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiDisabled$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiDisabled$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiDisabled$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiDisabled$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiDisabled$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiDisabled$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiDisabledToJSON(
   getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiDisabled:
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiDisabled,
@@ -10292,7 +8006,6 @@ export function getConfigurationProductsPropertiesIntegrationsResponse200Applica
       ),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiDisabledFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -10317,7 +8030,6 @@ export const GetConfigurationProductsUiDescriptionIntegrationsResponse200Applica
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBody2$Outbound =
   {
@@ -10334,22 +8046,6 @@ export const GetConfigurationProductsUiDescriptionIntegrationsResponse200Applica
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBody2$ {
-  /** @deprecated use `GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBody2$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBody2$Outbound;
-}
-
 export function getConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBody2ToJSON(
   getConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBody2:
     GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBody2,
@@ -10361,7 +8057,6 @@ export function getConfigurationProductsUiDescriptionIntegrationsResponse200Appl
       ),
   );
 }
-
 export function getConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -10389,7 +8084,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     ),
     z.string(),
   ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiDescription$Outbound =
   | GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBody2$Outbound
@@ -10408,22 +8102,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     z.string(),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiDescription$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiDescription$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiDescription$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiDescription$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiDescription$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiDescription$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiDescription$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiDescriptionToJSON(
   getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiDescription:
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiDescription,
@@ -10435,7 +8113,6 @@ export function getConfigurationProductsPropertiesIntegrationsResponse200Applica
       ),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiDescriptionFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -10460,7 +8137,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiFormattedValue$Outbound =
   {
@@ -10477,22 +8153,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiFormattedValue$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiFormattedValue$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiFormattedValue$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiFormattedValue$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiFormattedValue$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiFormattedValue$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiFormattedValue$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiFormattedValueToJSON(
   getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiFormattedValue:
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiFormattedValue,
@@ -10504,7 +8164,6 @@ export function getConfigurationProductsPropertiesIntegrationsResponse200Applica
       ),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiFormattedValueFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -10593,7 +8252,6 @@ export const Properties7$inboundSchema: z.ZodType<
     "ui:placeholder": "uiPlaceholder",
   });
 });
-
 /** @internal */
 export type Properties7$Outbound = {
   type: string;
@@ -10708,23 +8366,9 @@ export const Properties7$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Properties7$ {
-  /** @deprecated use `Properties7$inboundSchema` instead. */
-  export const inboundSchema = Properties7$inboundSchema;
-  /** @deprecated use `Properties7$outboundSchema` instead. */
-  export const outboundSchema = Properties7$outboundSchema;
-  /** @deprecated use `Properties7$Outbound` instead. */
-  export type Outbound = Properties7$Outbound;
-}
-
 export function properties7ToJSON(properties7: Properties7): string {
   return JSON.stringify(Properties7$outboundSchema.parse(properties7));
 }
-
 export function properties7FromJSON(
   jsonString: string,
 ): SafeParseResult<Properties7, SDKValidationError> {
@@ -10742,26 +8386,12 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
   > = z.nativeEnum(
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONType,
   );
-
 /** @internal */
 export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONType$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONType
   > =
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONType$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONType$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONType$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsPropertiesIntegrationsResponse200UiControl$inboundSchema:
@@ -10770,26 +8400,12 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200UiControl$
   > = z.nativeEnum(
     GetConfigurationProductsPropertiesIntegrationsResponse200UiControl,
   );
-
 /** @internal */
 export const GetConfigurationProductsPropertiesIntegrationsResponse200UiControl$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsPropertiesIntegrationsResponse200UiControl
   > =
     GetConfigurationProductsPropertiesIntegrationsResponse200UiControl$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200UiControl$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200UiControl$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200UiControl$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200UiControl$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200UiControl$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6Type$inboundSchema:
@@ -10798,7 +8414,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
   > = z.nativeEnum(
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6Type,
   );
-
 /** @internal */
 export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6Type$outboundSchema:
   z.ZodNativeEnum<
@@ -10806,79 +8421,48 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
   > =
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6Type$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6Type$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6Type$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6Type$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6Type$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6Type$outboundSchema;
-}
-
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt647543$inboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt649981$inboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt647543,
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt649981,
     z.ZodTypeDef,
     unknown
   > = z.object({});
-
 /** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt647543$Outbound =
+export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt649981$Outbound =
   {};
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt647543$outboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt649981$outboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt647543$Outbound,
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt649981$Outbound,
     z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt647543
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt649981
   > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt647543$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt647543$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt647543$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt647543$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt647543$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt647543$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt647543$Outbound;
-}
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt647543ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt647543,
+export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt649981ToJSON(
+  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt649981,
 ): string {
   return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt647543$outboundSchema
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt649981$outboundSchema
       .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt647543,
+        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt649981,
       ),
   );
 }
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt647543FromJSON(
+export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt649981FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt647543,
+  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt649981,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt647543$inboundSchema
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt649981$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt647543' from JSON`,
+    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt649981' from JSON`,
   );
 }
 
@@ -10889,20 +8473,19 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200MinLength$
     z.ZodTypeDef,
     unknown
   > = z.object({
-    "__@BRAND@647543": z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt647543$inboundSchema
+    "__@BRAND@649981": z.lazy(() =>
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt649981$inboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      "__@BRAND@647543": "atBRANDAt647543",
+      "__@BRAND@649981": "atBRANDAt649981",
     });
   });
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponse200MinLength$Outbound =
   {
-    "__@BRAND@647543":
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt647543$Outbound;
+    "__@BRAND@649981":
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt649981$Outbound;
   };
 
 /** @internal */
@@ -10912,30 +8495,14 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200MinLength$
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsResponse200MinLength
   > = z.object({
-    atBRANDAt647543: z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt647543$outboundSchema
+    atBRANDAt649981: z.lazy(() =>
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt649981$outboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      atBRANDAt647543: "__@BRAND@647543",
+      atBRANDAt649981: "__@BRAND@649981",
     });
   });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200MinLength$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200MinLength$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200MinLength$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200MinLength$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200MinLength$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200MinLength$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200MinLength$Outbound;
-}
 
 export function getConfigurationProductsPropertiesIntegrationsResponse200MinLengthToJSON(
   getConfigurationProductsPropertiesIntegrationsResponse200MinLength:
@@ -10948,7 +8515,6 @@ export function getConfigurationProductsPropertiesIntegrationsResponse200MinLeng
       ),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200MinLengthFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -10965,65 +8531,47 @@ export function getConfigurationProductsPropertiesIntegrationsResponse200MinLeng
 }
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt647543$inboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt649981$inboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt647543,
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt649981,
     z.ZodTypeDef,
     unknown
   > = z.object({});
-
 /** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt647543$Outbound =
+export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt649981$Outbound =
   {};
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt647543$outboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt649981$outboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt647543$Outbound,
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt649981$Outbound,
     z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt647543
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt649981
   > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt647543$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt647543$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt647543$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt647543$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt647543$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt647543$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt647543$Outbound;
-}
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt647543ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt647543,
+export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt649981ToJSON(
+  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt649981,
 ): string {
   return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt647543$outboundSchema
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt649981$outboundSchema
       .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt647543,
+        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt649981,
       ),
   );
 }
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt647543FromJSON(
+export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt649981FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt647543,
+  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt649981,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt647543$inboundSchema
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt649981$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt647543' from JSON`,
+    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt649981' from JSON`,
   );
 }
 
@@ -11034,20 +8582,19 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200MaxLength$
     z.ZodTypeDef,
     unknown
   > = z.object({
-    "__@BRAND@647543": z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt647543$inboundSchema
+    "__@BRAND@649981": z.lazy(() =>
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt649981$inboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      "__@BRAND@647543": "atBRANDAt647543",
+      "__@BRAND@649981": "atBRANDAt649981",
     });
   });
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponse200MaxLength$Outbound =
   {
-    "__@BRAND@647543":
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt647543$Outbound;
+    "__@BRAND@649981":
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt649981$Outbound;
   };
 
 /** @internal */
@@ -11057,30 +8604,14 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200MaxLength$
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsResponse200MaxLength
   > = z.object({
-    atBRANDAt647543: z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt647543$outboundSchema
+    atBRANDAt649981: z.lazy(() =>
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt649981$outboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      atBRANDAt647543: "__@BRAND@647543",
+      atBRANDAt649981: "__@BRAND@649981",
     });
   });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200MaxLength$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200MaxLength$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200MaxLength$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200MaxLength$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200MaxLength$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200MaxLength$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200MaxLength$Outbound;
-}
 
 export function getConfigurationProductsPropertiesIntegrationsResponse200MaxLengthToJSON(
   getConfigurationProductsPropertiesIntegrationsResponse200MaxLength:
@@ -11093,7 +8624,6 @@ export function getConfigurationProductsPropertiesIntegrationsResponse200MaxLeng
       ),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200MaxLengthFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -11110,65 +8640,47 @@ export function getConfigurationProductsPropertiesIntegrationsResponse200MaxLeng
 }
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt647543$inboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt649981$inboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt647543,
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt649981,
     z.ZodTypeDef,
     unknown
   > = z.object({});
-
 /** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt647543$Outbound =
+export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt649981$Outbound =
   {};
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt647543$outboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt649981$outboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt647543$Outbound,
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt649981$Outbound,
     z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt647543
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt649981
   > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt647543$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt647543$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt647543$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt647543$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt647543$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt647543$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt647543$Outbound;
-}
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt647543ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt647543,
+export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt649981ToJSON(
+  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt649981,
 ): string {
   return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt647543$outboundSchema
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt649981$outboundSchema
       .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt647543,
+        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt649981,
       ),
   );
 }
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt647543FromJSON(
+export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt649981FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt647543,
+  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt649981,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt647543$inboundSchema
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt649981$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt647543' from JSON`,
+    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt649981' from JSON`,
   );
 }
 
@@ -11179,20 +8691,19 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Pattern$in
     z.ZodTypeDef,
     unknown
   > = z.object({
-    "__@BRAND@647543": z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt647543$inboundSchema
+    "__@BRAND@649981": z.lazy(() =>
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt649981$inboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      "__@BRAND@647543": "atBRANDAt647543",
+      "__@BRAND@649981": "atBRANDAt649981",
     });
   });
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponse200Pattern$Outbound =
   {
-    "__@BRAND@647543":
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt647543$Outbound;
+    "__@BRAND@649981":
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt649981$Outbound;
   };
 
 /** @internal */
@@ -11202,30 +8713,14 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Pattern$ou
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsResponse200Pattern
   > = z.object({
-    atBRANDAt647543: z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt647543$outboundSchema
+    atBRANDAt649981: z.lazy(() =>
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt649981$outboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      atBRANDAt647543: "__@BRAND@647543",
+      atBRANDAt649981: "__@BRAND@649981",
     });
   });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200Pattern$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200Pattern$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200Pattern$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200Pattern$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200Pattern$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200Pattern$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200Pattern$Outbound;
-}
 
 export function getConfigurationProductsPropertiesIntegrationsResponse200PatternToJSON(
   getConfigurationProductsPropertiesIntegrationsResponse200Pattern:
@@ -11236,7 +8731,6 @@ export function getConfigurationProductsPropertiesIntegrationsResponse200Pattern
       .parse(getConfigurationProductsPropertiesIntegrationsResponse200Pattern),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200PatternFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -11273,7 +8767,6 @@ export const GetConfigurationProductsPropertiesItems$inboundSchema: z.ZodType<
   default: z.string().optional(),
   enum: z.array(z.string()).optional(),
 });
-
 /** @internal */
 export type GetConfigurationProductsPropertiesItems$Outbound = {
   type: string;
@@ -11313,21 +8806,6 @@ export const GetConfigurationProductsPropertiesItems$outboundSchema: z.ZodType<
   enum: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesItems$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesItems$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesItems$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesItems$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesItems$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesItems$Outbound` instead. */
-  export type Outbound = GetConfigurationProductsPropertiesItems$Outbound;
-}
-
 export function getConfigurationProductsPropertiesItemsToJSON(
   getConfigurationProductsPropertiesItems:
     GetConfigurationProductsPropertiesItems,
@@ -11338,7 +8816,6 @@ export function getConfigurationProductsPropertiesItemsToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsPropertiesItemsFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -11360,25 +8837,11 @@ export const GetConfigurationProductsDisabledIntegrationsResponse3$inboundSchema
   z.ZodNativeEnum<
     typeof GetConfigurationProductsDisabledIntegrationsResponse3
   > = z.nativeEnum(GetConfigurationProductsDisabledIntegrationsResponse3);
-
 /** @internal */
 export const GetConfigurationProductsDisabledIntegrationsResponse3$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsDisabledIntegrationsResponse3
   > = GetConfigurationProductsDisabledIntegrationsResponse3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsDisabledIntegrationsResponse3$ {
-  /** @deprecated use `GetConfigurationProductsDisabledIntegrationsResponse3$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsDisabledIntegrationsResponse3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsDisabledIntegrationsResponse3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsDisabledIntegrationsResponse3$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsDisabledIntegrationsResponse2$inboundSchema:
@@ -11389,7 +8852,6 @@ export const GetConfigurationProductsDisabledIntegrationsResponse2$inboundSchema
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsDisabledIntegrationsResponse2$Outbound = {
   expr: string;
@@ -11405,22 +8867,6 @@ export const GetConfigurationProductsDisabledIntegrationsResponse2$outboundSchem
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsDisabledIntegrationsResponse2$ {
-  /** @deprecated use `GetConfigurationProductsDisabledIntegrationsResponse2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsDisabledIntegrationsResponse2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsDisabledIntegrationsResponse2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsDisabledIntegrationsResponse2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsDisabledIntegrationsResponse2$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsDisabledIntegrationsResponse2$Outbound;
-}
-
 export function getConfigurationProductsDisabledIntegrationsResponse2ToJSON(
   getConfigurationProductsDisabledIntegrationsResponse2:
     GetConfigurationProductsDisabledIntegrationsResponse2,
@@ -11431,7 +8877,6 @@ export function getConfigurationProductsDisabledIntegrationsResponse2ToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsDisabledIntegrationsResponse2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -11461,7 +8906,6 @@ export const GetConfigurationProductsPropertiesIntegrationsDisabled$inboundSchem
     z.boolean(),
     GetConfigurationProductsDisabledIntegrationsResponse3$inboundSchema,
   ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsDisabled$Outbound =
   | GetConfigurationProductsDisabledIntegrationsResponse2$Outbound
@@ -11482,22 +8926,6 @@ export const GetConfigurationProductsPropertiesIntegrationsDisabled$outboundSche
     GetConfigurationProductsDisabledIntegrationsResponse3$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsDisabled$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsDisabled$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsDisabled$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsDisabled$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsDisabled$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsDisabled$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsDisabled$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsDisabledToJSON(
   getConfigurationProductsPropertiesIntegrationsDisabled:
     GetConfigurationProductsPropertiesIntegrationsDisabled,
@@ -11508,7 +8936,6 @@ export function getConfigurationProductsPropertiesIntegrationsDisabledToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsDisabledFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -11528,24 +8955,10 @@ export function getConfigurationProductsPropertiesIntegrationsDisabledFromJSON(
 export const GetConfigurationProductsHiddenIntegrationsResponse3$inboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationProductsHiddenIntegrationsResponse3> =
     z.nativeEnum(GetConfigurationProductsHiddenIntegrationsResponse3);
-
 /** @internal */
 export const GetConfigurationProductsHiddenIntegrationsResponse3$outboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationProductsHiddenIntegrationsResponse3> =
     GetConfigurationProductsHiddenIntegrationsResponse3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsHiddenIntegrationsResponse3$ {
-  /** @deprecated use `GetConfigurationProductsHiddenIntegrationsResponse3$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsHiddenIntegrationsResponse3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsHiddenIntegrationsResponse3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsHiddenIntegrationsResponse3$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsHiddenIntegrationsResponse2$inboundSchema:
@@ -11556,7 +8969,6 @@ export const GetConfigurationProductsHiddenIntegrationsResponse2$inboundSchema:
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsHiddenIntegrationsResponse2$Outbound = {
   expr: string;
@@ -11572,22 +8984,6 @@ export const GetConfigurationProductsHiddenIntegrationsResponse2$outboundSchema:
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsHiddenIntegrationsResponse2$ {
-  /** @deprecated use `GetConfigurationProductsHiddenIntegrationsResponse2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsHiddenIntegrationsResponse2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsHiddenIntegrationsResponse2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsHiddenIntegrationsResponse2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsHiddenIntegrationsResponse2$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsHiddenIntegrationsResponse2$Outbound;
-}
-
 export function getConfigurationProductsHiddenIntegrationsResponse2ToJSON(
   getConfigurationProductsHiddenIntegrationsResponse2:
     GetConfigurationProductsHiddenIntegrationsResponse2,
@@ -11598,7 +8994,6 @@ export function getConfigurationProductsHiddenIntegrationsResponse2ToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsHiddenIntegrationsResponse2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -11628,7 +9023,6 @@ export const GetConfigurationProductsPropertiesIntegrationsHidden$inboundSchema:
     z.boolean(),
     GetConfigurationProductsHiddenIntegrationsResponse3$inboundSchema,
   ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsHidden$Outbound =
   | GetConfigurationProductsHiddenIntegrationsResponse2$Outbound
@@ -11649,22 +9043,6 @@ export const GetConfigurationProductsPropertiesIntegrationsHidden$outboundSchema
     GetConfigurationProductsHiddenIntegrationsResponse3$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsHidden$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsHidden$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsHidden$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsHidden$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsHidden$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsHidden$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsHidden$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsHiddenToJSON(
   getConfigurationProductsPropertiesIntegrationsHidden:
     GetConfigurationProductsPropertiesIntegrationsHidden,
@@ -11675,7 +9053,6 @@ export function getConfigurationProductsPropertiesIntegrationsHiddenToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsHiddenFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -11715,7 +9092,6 @@ export const PropertiesUiOptions$inboundSchema: z.ZodType<
     GetConfigurationProductsHiddenIntegrationsResponse3$inboundSchema,
   ]).optional(),
 });
-
 /** @internal */
 export type PropertiesUiOptions$Outbound = {
   value: string;
@@ -11756,19 +9132,6 @@ export const PropertiesUiOptions$outboundSchema: z.ZodType<
   ]).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PropertiesUiOptions$ {
-  /** @deprecated use `PropertiesUiOptions$inboundSchema` instead. */
-  export const inboundSchema = PropertiesUiOptions$inboundSchema;
-  /** @deprecated use `PropertiesUiOptions$outboundSchema` instead. */
-  export const outboundSchema = PropertiesUiOptions$outboundSchema;
-  /** @deprecated use `PropertiesUiOptions$Outbound` instead. */
-  export type Outbound = PropertiesUiOptions$Outbound;
-}
-
 export function propertiesUiOptionsToJSON(
   propertiesUiOptions: PropertiesUiOptions,
 ): string {
@@ -11776,7 +9139,6 @@ export function propertiesUiOptionsToJSON(
     PropertiesUiOptions$outboundSchema.parse(propertiesUiOptions),
   );
 }
-
 export function propertiesUiOptionsFromJSON(
   jsonString: string,
 ): SafeParseResult<PropertiesUiOptions, SDKValidationError> {
@@ -11794,26 +9156,12 @@ export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200Applicatio
   > = z.nativeEnum(
     GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson3,
   );
-
 /** @internal */
 export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson3$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson3
   > =
     GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson3$ {
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson3$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson3$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson2$inboundSchema:
@@ -11824,7 +9172,6 @@ export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200Applicatio
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson2$Outbound =
   {
@@ -11841,22 +9188,6 @@ export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200Applicatio
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson2$ {
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson2$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson2$Outbound;
-}
-
 export function getConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSON2ToJSON(
   getConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson2:
     GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson2,
@@ -11868,7 +9199,6 @@ export function getConfigurationProductsUiReadOnlyIntegrationsResponse200Applica
       ),
   );
 }
-
 export function getConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSON2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -11897,7 +9227,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200UiReadOnly
     z.boolean(),
     GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson3$inboundSchema,
   ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponse200UiReadOnly$Outbound =
   | GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson2$Outbound
@@ -11918,22 +9247,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200UiReadOnly
     GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson3$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200UiReadOnly$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200UiReadOnly$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200UiReadOnly$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200UiReadOnly$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200UiReadOnly$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200UiReadOnly$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200UiReadOnly$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200UiReadOnlyToJSON(
   getConfigurationProductsPropertiesIntegrationsResponse200UiReadOnly:
     GetConfigurationProductsPropertiesIntegrationsResponse200UiReadOnly,
@@ -11945,7 +9258,6 @@ export function getConfigurationProductsPropertiesIntegrationsResponse200UiReadO
       ),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200UiReadOnlyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -11968,26 +9280,12 @@ export const GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJ
   > = z.nativeEnum(
     GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson3,
   );
-
 /** @internal */
 export const GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson3$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson3
   > =
     GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson3$ {
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson3$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson3$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson2$inboundSchema:
@@ -11998,7 +9296,6 @@ export const GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJ
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson2$Outbound =
   {
@@ -12015,22 +9312,6 @@ export const GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJ
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson2$ {
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson2$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson2$Outbound;
-}
-
 export function getConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSON2ToJSON(
   getConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson2:
     GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson2,
@@ -12042,7 +9323,6 @@ export function getConfigurationProductsUiHiddenIntegrationsResponse200Applicati
       ),
   );
 }
-
 export function getConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSON2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -12071,7 +9351,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200UiHidden$i
     z.boolean(),
     GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson3$inboundSchema,
   ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponse200UiHidden$Outbound =
   | GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson2$Outbound
@@ -12092,22 +9371,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200UiHidden$o
     GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson3$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200UiHidden$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200UiHidden$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200UiHidden$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200UiHidden$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200UiHidden$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200UiHidden$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200UiHidden$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200UiHiddenToJSON(
   getConfigurationProductsPropertiesIntegrationsResponse200UiHidden:
     GetConfigurationProductsPropertiesIntegrationsResponse200UiHidden,
@@ -12117,7 +9380,6 @@ export function getConfigurationProductsPropertiesIntegrationsResponse200UiHidde
       .parse(getConfigurationProductsPropertiesIntegrationsResponse200UiHidden),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200UiHiddenFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -12140,26 +9402,12 @@ export const GetConfigurationProductsUiDisabledIntegrationsResponse200Applicatio
   > = z.nativeEnum(
     GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson3,
   );
-
 /** @internal */
 export const GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson3$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson3
   > =
     GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson3$ {
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson3$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson3$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson2$inboundSchema:
@@ -12170,7 +9418,6 @@ export const GetConfigurationProductsUiDisabledIntegrationsResponse200Applicatio
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson2$Outbound =
   {
@@ -12187,22 +9434,6 @@ export const GetConfigurationProductsUiDisabledIntegrationsResponse200Applicatio
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson2$ {
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson2$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson2$Outbound;
-}
-
 export function getConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSON2ToJSON(
   getConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson2:
     GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson2,
@@ -12214,7 +9445,6 @@ export function getConfigurationProductsUiDisabledIntegrationsResponse200Applica
       ),
   );
 }
-
 export function getConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSON2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -12243,7 +9473,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200UiDisabled
     z.boolean(),
     GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson3$inboundSchema,
   ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponse200UiDisabled$Outbound =
   | GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson2$Outbound
@@ -12264,22 +9493,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200UiDisabled
     GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson3$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200UiDisabled$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200UiDisabled$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200UiDisabled$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200UiDisabled$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200UiDisabled$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200UiDisabled$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200UiDisabled$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200UiDisabledToJSON(
   getConfigurationProductsPropertiesIntegrationsResponse200UiDisabled:
     GetConfigurationProductsPropertiesIntegrationsResponse200UiDisabled,
@@ -12291,7 +9504,6 @@ export function getConfigurationProductsPropertiesIntegrationsResponse200UiDisab
       ),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200UiDisabledFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -12316,7 +9528,6 @@ export const GetConfigurationProductsUiDescriptionIntegrationsResponse200Applica
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2$Outbound =
   {
@@ -12333,22 +9544,6 @@ export const GetConfigurationProductsUiDescriptionIntegrationsResponse200Applica
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2$ {
-  /** @deprecated use `GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2$Outbound;
-}
-
 export function getConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSON2ToJSON(
   getConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2:
     GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2,
@@ -12360,7 +9555,6 @@ export function getConfigurationProductsUiDescriptionIntegrationsResponse200Appl
       ),
   );
 }
-
 export function getConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSON2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -12388,7 +9582,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200UiDescript
     ),
     z.string(),
   ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponse200UiDescription$Outbound =
   | GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2$Outbound
@@ -12407,22 +9600,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200UiDescript
     z.string(),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200UiDescription$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200UiDescription$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200UiDescription$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200UiDescription$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200UiDescription$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200UiDescription$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200UiDescription$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200UiDescriptionToJSON(
   getConfigurationProductsPropertiesIntegrationsResponse200UiDescription:
     GetConfigurationProductsPropertiesIntegrationsResponse200UiDescription,
@@ -12434,7 +9611,6 @@ export function getConfigurationProductsPropertiesIntegrationsResponse200UiDescr
       ),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200UiDescriptionFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -12459,7 +9635,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200UiFormatte
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValue$Outbound =
   {
@@ -12476,22 +9651,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200UiFormatte
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValue$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValue$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValue$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValue$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValue$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValue$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValue$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValueToJSON(
   getConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValue:
     GetConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValue,
@@ -12503,7 +9662,6 @@ export function getConfigurationProductsPropertiesIntegrationsResponse200UiForma
       ),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValueFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -12581,7 +9739,6 @@ export const Properties6$inboundSchema: z.ZodType<
     "ui:placeholder": "uiPlaceholder",
   });
 });
-
 /** @internal */
 export type Properties6$Outbound = {
   type: string;
@@ -12682,23 +9839,9 @@ export const Properties6$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Properties6$ {
-  /** @deprecated use `Properties6$inboundSchema` instead. */
-  export const inboundSchema = Properties6$inboundSchema;
-  /** @deprecated use `Properties6$outboundSchema` instead. */
-  export const outboundSchema = Properties6$outboundSchema;
-  /** @deprecated use `Properties6$Outbound` instead. */
-  export type Outbound = Properties6$Outbound;
-}
-
 export function properties6ToJSON(properties6: Properties6): string {
   return JSON.stringify(Properties6$outboundSchema.parse(properties6));
 }
-
 export function properties6FromJSON(
   jsonString: string,
 ): SafeParseResult<Properties6, SDKValidationError> {
@@ -12716,26 +9859,12 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Type$inbou
   > = z.nativeEnum(
     GetConfigurationProductsPropertiesIntegrationsResponse200Type,
   );
-
 /** @internal */
 export const GetConfigurationProductsPropertiesIntegrationsResponse200Type$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsPropertiesIntegrationsResponse200Type
   > =
     GetConfigurationProductsPropertiesIntegrationsResponse200Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200Type$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200Type$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200Type$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200Type$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200Type$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsPropertiesIntegrationsResponseUiControl$inboundSchema:
@@ -12744,7 +9873,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponseUiControl$inb
   > = z.nativeEnum(
     GetConfigurationProductsPropertiesIntegrationsResponseUiControl,
   );
-
 /** @internal */
 export const GetConfigurationProductsPropertiesIntegrationsResponseUiControl$outboundSchema:
   z.ZodNativeEnum<
@@ -12752,41 +9880,14 @@ export const GetConfigurationProductsPropertiesIntegrationsResponseUiControl$out
   > =
     GetConfigurationProductsPropertiesIntegrationsResponseUiControl$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponseUiControl$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponseUiControl$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponseUiControl$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponseUiControl$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponseUiControl$outboundSchema;
-}
-
 /** @internal */
 export const GetConfigurationProductsDisabledIntegrations3$inboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationProductsDisabledIntegrations3> = z
     .nativeEnum(GetConfigurationProductsDisabledIntegrations3);
-
 /** @internal */
 export const GetConfigurationProductsDisabledIntegrations3$outboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationProductsDisabledIntegrations3> =
     GetConfigurationProductsDisabledIntegrations3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsDisabledIntegrations3$ {
-  /** @deprecated use `GetConfigurationProductsDisabledIntegrations3$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsDisabledIntegrations3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsDisabledIntegrations3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsDisabledIntegrations3$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsDisabledIntegrations2$inboundSchema:
@@ -12797,7 +9898,6 @@ export const GetConfigurationProductsDisabledIntegrations2$inboundSchema:
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsDisabledIntegrations2$Outbound = {
   expr: string;
@@ -12813,21 +9913,6 @@ export const GetConfigurationProductsDisabledIntegrations2$outboundSchema:
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsDisabledIntegrations2$ {
-  /** @deprecated use `GetConfigurationProductsDisabledIntegrations2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsDisabledIntegrations2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsDisabledIntegrations2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsDisabledIntegrations2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsDisabledIntegrations2$Outbound` instead. */
-  export type Outbound = GetConfigurationProductsDisabledIntegrations2$Outbound;
-}
-
 export function getConfigurationProductsDisabledIntegrations2ToJSON(
   getConfigurationProductsDisabledIntegrations2:
     GetConfigurationProductsDisabledIntegrations2,
@@ -12838,7 +9923,6 @@ export function getConfigurationProductsDisabledIntegrations2ToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsDisabledIntegrations2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -12863,7 +9947,6 @@ export const GetConfigurationProductsPropertiesDisabled$inboundSchema:
       z.boolean(),
       GetConfigurationProductsDisabledIntegrations3$inboundSchema,
     ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesDisabled$Outbound =
   | GetConfigurationProductsDisabledIntegrations2$Outbound
@@ -12882,21 +9965,6 @@ export const GetConfigurationProductsPropertiesDisabled$outboundSchema:
     GetConfigurationProductsDisabledIntegrations3$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesDisabled$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesDisabled$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesDisabled$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesDisabled$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesDisabled$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesDisabled$Outbound` instead. */
-  export type Outbound = GetConfigurationProductsPropertiesDisabled$Outbound;
-}
-
 export function getConfigurationProductsPropertiesDisabledToJSON(
   getConfigurationProductsPropertiesDisabled:
     GetConfigurationProductsPropertiesDisabled,
@@ -12907,7 +9975,6 @@ export function getConfigurationProductsPropertiesDisabledToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsPropertiesDisabledFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -12928,24 +9995,10 @@ export function getConfigurationProductsPropertiesDisabledFromJSON(
 export const GetConfigurationProductsHiddenIntegrations3$inboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationProductsHiddenIntegrations3> = z
     .nativeEnum(GetConfigurationProductsHiddenIntegrations3);
-
 /** @internal */
 export const GetConfigurationProductsHiddenIntegrations3$outboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationProductsHiddenIntegrations3> =
     GetConfigurationProductsHiddenIntegrations3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsHiddenIntegrations3$ {
-  /** @deprecated use `GetConfigurationProductsHiddenIntegrations3$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsHiddenIntegrations3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsHiddenIntegrations3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsHiddenIntegrations3$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsHiddenIntegrations2$inboundSchema:
@@ -12956,7 +10009,6 @@ export const GetConfigurationProductsHiddenIntegrations2$inboundSchema:
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsHiddenIntegrations2$Outbound = {
   expr: string;
@@ -12972,21 +10024,6 @@ export const GetConfigurationProductsHiddenIntegrations2$outboundSchema:
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsHiddenIntegrations2$ {
-  /** @deprecated use `GetConfigurationProductsHiddenIntegrations2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsHiddenIntegrations2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsHiddenIntegrations2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsHiddenIntegrations2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsHiddenIntegrations2$Outbound` instead. */
-  export type Outbound = GetConfigurationProductsHiddenIntegrations2$Outbound;
-}
-
 export function getConfigurationProductsHiddenIntegrations2ToJSON(
   getConfigurationProductsHiddenIntegrations2:
     GetConfigurationProductsHiddenIntegrations2,
@@ -12997,7 +10034,6 @@ export function getConfigurationProductsHiddenIntegrations2ToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsHiddenIntegrations2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -13024,7 +10060,6 @@ export const GetConfigurationProductsPropertiesHidden$inboundSchema: z.ZodType<
   z.boolean(),
   GetConfigurationProductsHiddenIntegrations3$inboundSchema,
 ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesHidden$Outbound =
   | GetConfigurationProductsHiddenIntegrations2$Outbound
@@ -13042,21 +10077,6 @@ export const GetConfigurationProductsPropertiesHidden$outboundSchema: z.ZodType<
   GetConfigurationProductsHiddenIntegrations3$outboundSchema,
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesHidden$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesHidden$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesHidden$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesHidden$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesHidden$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesHidden$Outbound` instead. */
-  export type Outbound = GetConfigurationProductsPropertiesHidden$Outbound;
-}
-
 export function getConfigurationProductsPropertiesHiddenToJSON(
   getConfigurationProductsPropertiesHidden:
     GetConfigurationProductsPropertiesHidden,
@@ -13067,7 +10087,6 @@ export function getConfigurationProductsPropertiesHiddenToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsPropertiesHiddenFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -13103,7 +10122,6 @@ export const UiOptions$inboundSchema: z.ZodType<
     GetConfigurationProductsHiddenIntegrations3$inboundSchema,
   ]).optional(),
 });
-
 /** @internal */
 export type UiOptions$Outbound = {
   value: string;
@@ -13140,23 +10158,9 @@ export const UiOptions$outboundSchema: z.ZodType<
   ]).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UiOptions$ {
-  /** @deprecated use `UiOptions$inboundSchema` instead. */
-  export const inboundSchema = UiOptions$inboundSchema;
-  /** @deprecated use `UiOptions$outboundSchema` instead. */
-  export const outboundSchema = UiOptions$outboundSchema;
-  /** @deprecated use `UiOptions$Outbound` instead. */
-  export type Outbound = UiOptions$Outbound;
-}
-
 export function uiOptionsToJSON(uiOptions: UiOptions): string {
   return JSON.stringify(UiOptions$outboundSchema.parse(uiOptions));
 }
-
 export function uiOptionsFromJSON(
   jsonString: string,
 ): SafeParseResult<UiOptions, SDKValidationError> {
@@ -13168,63 +10172,45 @@ export function uiOptionsFromJSON(
 }
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsAtBRANDAt647543$inboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsAtBRANDAt649981$inboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsAtBRANDAt647543,
+    GetConfigurationProductsPropertiesIntegrationsAtBRANDAt649981,
     z.ZodTypeDef,
     unknown
   > = z.object({});
-
 /** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsAtBRANDAt647543$Outbound =
+export type GetConfigurationProductsPropertiesIntegrationsAtBRANDAt649981$Outbound =
   {};
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsAtBRANDAt647543$outboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsAtBRANDAt649981$outboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsAtBRANDAt647543$Outbound,
+    GetConfigurationProductsPropertiesIntegrationsAtBRANDAt649981$Outbound,
     z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsAtBRANDAt647543
+    GetConfigurationProductsPropertiesIntegrationsAtBRANDAt649981
   > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsAtBRANDAt647543$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsAtBRANDAt647543$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsAtBRANDAt647543$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsAtBRANDAt647543$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsAtBRANDAt647543$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsAtBRANDAt647543$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsAtBRANDAt647543$Outbound;
-}
-
-export function getConfigurationProductsPropertiesIntegrationsAtBRANDAt647543ToJSON(
-  getConfigurationProductsPropertiesIntegrationsAtBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsAtBRANDAt647543,
+export function getConfigurationProductsPropertiesIntegrationsAtBRANDAt649981ToJSON(
+  getConfigurationProductsPropertiesIntegrationsAtBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsAtBRANDAt649981,
 ): string {
   return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsAtBRANDAt647543$outboundSchema
-      .parse(getConfigurationProductsPropertiesIntegrationsAtBRANDAt647543),
+    GetConfigurationProductsPropertiesIntegrationsAtBRANDAt649981$outboundSchema
+      .parse(getConfigurationProductsPropertiesIntegrationsAtBRANDAt649981),
   );
 }
-
-export function getConfigurationProductsPropertiesIntegrationsAtBRANDAt647543FromJSON(
+export function getConfigurationProductsPropertiesIntegrationsAtBRANDAt649981FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsAtBRANDAt647543,
+  GetConfigurationProductsPropertiesIntegrationsAtBRANDAt649981,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetConfigurationProductsPropertiesIntegrationsAtBRANDAt647543$inboundSchema
+      GetConfigurationProductsPropertiesIntegrationsAtBRANDAt649981$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsAtBRANDAt647543' from JSON`,
+    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsAtBRANDAt649981' from JSON`,
   );
 }
 
@@ -13234,19 +10220,18 @@ export const PropertiesMinLength$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "__@BRAND@647543": z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsAtBRANDAt647543$inboundSchema
+  "__@BRAND@649981": z.lazy(() =>
+    GetConfigurationProductsPropertiesIntegrationsAtBRANDAt649981$inboundSchema
   ),
 }).transform((v) => {
   return remap$(v, {
-    "__@BRAND@647543": "atBRANDAt647543",
+    "__@BRAND@649981": "atBRANDAt649981",
   });
 });
-
 /** @internal */
 export type PropertiesMinLength$Outbound = {
-  "__@BRAND@647543":
-    GetConfigurationProductsPropertiesIntegrationsAtBRANDAt647543$Outbound;
+  "__@BRAND@649981":
+    GetConfigurationProductsPropertiesIntegrationsAtBRANDAt649981$Outbound;
 };
 
 /** @internal */
@@ -13255,27 +10240,14 @@ export const PropertiesMinLength$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PropertiesMinLength
 > = z.object({
-  atBRANDAt647543: z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsAtBRANDAt647543$outboundSchema
+  atBRANDAt649981: z.lazy(() =>
+    GetConfigurationProductsPropertiesIntegrationsAtBRANDAt649981$outboundSchema
   ),
 }).transform((v) => {
   return remap$(v, {
-    atBRANDAt647543: "__@BRAND@647543",
+    atBRANDAt649981: "__@BRAND@649981",
   });
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PropertiesMinLength$ {
-  /** @deprecated use `PropertiesMinLength$inboundSchema` instead. */
-  export const inboundSchema = PropertiesMinLength$inboundSchema;
-  /** @deprecated use `PropertiesMinLength$outboundSchema` instead. */
-  export const outboundSchema = PropertiesMinLength$outboundSchema;
-  /** @deprecated use `PropertiesMinLength$Outbound` instead. */
-  export type Outbound = PropertiesMinLength$Outbound;
-}
 
 export function propertiesMinLengthToJSON(
   propertiesMinLength: PropertiesMinLength,
@@ -13284,7 +10256,6 @@ export function propertiesMinLengthToJSON(
     PropertiesMinLength$outboundSchema.parse(propertiesMinLength),
   );
 }
-
 export function propertiesMinLengthFromJSON(
   jsonString: string,
 ): SafeParseResult<PropertiesMinLength, SDKValidationError> {
@@ -13296,65 +10267,47 @@ export function propertiesMinLengthFromJSON(
 }
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt647543$inboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt649981$inboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt647543,
+    GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt649981,
     z.ZodTypeDef,
     unknown
   > = z.object({});
-
 /** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt647543$Outbound =
+export type GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt649981$Outbound =
   {};
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt647543$outboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt649981$outboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt647543$Outbound,
+    GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt649981$Outbound,
     z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt647543
+    GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt649981
   > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt647543$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt647543$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt647543$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt647543$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt647543$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt647543$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt647543$Outbound;
-}
-
-export function getConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt647543ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt647543,
+export function getConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt649981ToJSON(
+  getConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt649981,
 ): string {
   return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt647543$outboundSchema
+    GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt649981$outboundSchema
       .parse(
-        getConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt647543,
+        getConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt649981,
       ),
   );
 }
-
-export function getConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt647543FromJSON(
+export function getConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt649981FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt647543,
+  GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt649981,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt647543$inboundSchema
+      GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt649981$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt647543' from JSON`,
+    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt649981' from JSON`,
   );
 }
 
@@ -13364,19 +10317,18 @@ export const PropertiesMaxLength$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "__@BRAND@647543": z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt647543$inboundSchema
+  "__@BRAND@649981": z.lazy(() =>
+    GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt649981$inboundSchema
   ),
 }).transform((v) => {
   return remap$(v, {
-    "__@BRAND@647543": "atBRANDAt647543",
+    "__@BRAND@649981": "atBRANDAt649981",
   });
 });
-
 /** @internal */
 export type PropertiesMaxLength$Outbound = {
-  "__@BRAND@647543":
-    GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt647543$Outbound;
+  "__@BRAND@649981":
+    GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt649981$Outbound;
 };
 
 /** @internal */
@@ -13385,27 +10337,14 @@ export const PropertiesMaxLength$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PropertiesMaxLength
 > = z.object({
-  atBRANDAt647543: z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt647543$outboundSchema
+  atBRANDAt649981: z.lazy(() =>
+    GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt649981$outboundSchema
   ),
 }).transform((v) => {
   return remap$(v, {
-    atBRANDAt647543: "__@BRAND@647543",
+    atBRANDAt649981: "__@BRAND@649981",
   });
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PropertiesMaxLength$ {
-  /** @deprecated use `PropertiesMaxLength$inboundSchema` instead. */
-  export const inboundSchema = PropertiesMaxLength$inboundSchema;
-  /** @deprecated use `PropertiesMaxLength$outboundSchema` instead. */
-  export const outboundSchema = PropertiesMaxLength$outboundSchema;
-  /** @deprecated use `PropertiesMaxLength$Outbound` instead. */
-  export type Outbound = PropertiesMaxLength$Outbound;
-}
 
 export function propertiesMaxLengthToJSON(
   propertiesMaxLength: PropertiesMaxLength,
@@ -13414,7 +10353,6 @@ export function propertiesMaxLengthToJSON(
     PropertiesMaxLength$outboundSchema.parse(propertiesMaxLength),
   );
 }
-
 export function propertiesMaxLengthFromJSON(
   jsonString: string,
 ): SafeParseResult<PropertiesMaxLength, SDKValidationError> {
@@ -13426,65 +10364,47 @@ export function propertiesMaxLengthFromJSON(
 }
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt647543$inboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt649981$inboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt647543,
+    GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt649981,
     z.ZodTypeDef,
     unknown
   > = z.object({});
-
 /** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt647543$Outbound =
+export type GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt649981$Outbound =
   {};
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt647543$outboundSchema:
+export const GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt649981$outboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt647543$Outbound,
+    GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt649981$Outbound,
     z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt647543
+    GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt649981
   > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt647543$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt647543$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt647543$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt647543$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt647543$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt647543$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt647543$Outbound;
-}
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt647543ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt647543:
-    GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt647543,
+export function getConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt649981ToJSON(
+  getConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt649981:
+    GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt649981,
 ): string {
   return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt647543$outboundSchema
+    GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt649981$outboundSchema
       .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt647543,
+        getConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt649981,
       ),
   );
 }
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt647543FromJSON(
+export function getConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt649981FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt647543,
+  GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt649981,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt647543$inboundSchema
+      GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt649981$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt647543' from JSON`,
+    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt649981' from JSON`,
   );
 }
 
@@ -13494,19 +10414,18 @@ export const PropertiesPattern$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "__@BRAND@647543": z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt647543$inboundSchema
+  "__@BRAND@649981": z.lazy(() =>
+    GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt649981$inboundSchema
   ),
 }).transform((v) => {
   return remap$(v, {
-    "__@BRAND@647543": "atBRANDAt647543",
+    "__@BRAND@649981": "atBRANDAt649981",
   });
 });
-
 /** @internal */
 export type PropertiesPattern$Outbound = {
-  "__@BRAND@647543":
-    GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt647543$Outbound;
+  "__@BRAND@649981":
+    GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt649981$Outbound;
 };
 
 /** @internal */
@@ -13515,27 +10434,14 @@ export const PropertiesPattern$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PropertiesPattern
 > = z.object({
-  atBRANDAt647543: z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt647543$outboundSchema
+  atBRANDAt649981: z.lazy(() =>
+    GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt649981$outboundSchema
   ),
 }).transform((v) => {
   return remap$(v, {
-    atBRANDAt647543: "__@BRAND@647543",
+    atBRANDAt649981: "__@BRAND@649981",
   });
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PropertiesPattern$ {
-  /** @deprecated use `PropertiesPattern$inboundSchema` instead. */
-  export const inboundSchema = PropertiesPattern$inboundSchema;
-  /** @deprecated use `PropertiesPattern$outboundSchema` instead. */
-  export const outboundSchema = PropertiesPattern$outboundSchema;
-  /** @deprecated use `PropertiesPattern$Outbound` instead. */
-  export type Outbound = PropertiesPattern$Outbound;
-}
 
 export function propertiesPatternToJSON(
   propertiesPattern: PropertiesPattern,
@@ -13544,7 +10450,6 @@ export function propertiesPatternToJSON(
     PropertiesPattern$outboundSchema.parse(propertiesPattern),
   );
 }
-
 export function propertiesPatternFromJSON(
   jsonString: string,
 ): SafeParseResult<PropertiesPattern, SDKValidationError> {
@@ -13560,25 +10465,11 @@ export const GetConfigurationProductsUiReadOnlyIntegrationsResponse2003$inboundS
   z.ZodNativeEnum<
     typeof GetConfigurationProductsUiReadOnlyIntegrationsResponse2003
   > = z.nativeEnum(GetConfigurationProductsUiReadOnlyIntegrationsResponse2003);
-
 /** @internal */
 export const GetConfigurationProductsUiReadOnlyIntegrationsResponse2003$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsUiReadOnlyIntegrationsResponse2003
   > = GetConfigurationProductsUiReadOnlyIntegrationsResponse2003$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiReadOnlyIntegrationsResponse2003$ {
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrationsResponse2003$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse2003$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrationsResponse2003$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse2003$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsUiReadOnlyIntegrationsResponse2002$inboundSchema:
@@ -13589,7 +10480,6 @@ export const GetConfigurationProductsUiReadOnlyIntegrationsResponse2002$inboundS
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsUiReadOnlyIntegrationsResponse2002$Outbound =
   {
@@ -13606,22 +10496,6 @@ export const GetConfigurationProductsUiReadOnlyIntegrationsResponse2002$outbound
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiReadOnlyIntegrationsResponse2002$ {
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrationsResponse2002$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse2002$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrationsResponse2002$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse2002$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrationsResponse2002$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse2002$Outbound;
-}
-
 export function getConfigurationProductsUiReadOnlyIntegrationsResponse2002ToJSON(
   getConfigurationProductsUiReadOnlyIntegrationsResponse2002:
     GetConfigurationProductsUiReadOnlyIntegrationsResponse2002,
@@ -13631,7 +10505,6 @@ export function getConfigurationProductsUiReadOnlyIntegrationsResponse2002ToJSON
       .parse(getConfigurationProductsUiReadOnlyIntegrationsResponse2002),
   );
 }
-
 export function getConfigurationProductsUiReadOnlyIntegrationsResponse2002FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -13660,7 +10533,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponseUiReadOnly$in
     z.boolean(),
     GetConfigurationProductsUiReadOnlyIntegrationsResponse2003$inboundSchema,
   ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponseUiReadOnly$Outbound =
   | GetConfigurationProductsUiReadOnlyIntegrationsResponse2002$Outbound
@@ -13681,22 +10553,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponseUiReadOnly$ou
     GetConfigurationProductsUiReadOnlyIntegrationsResponse2003$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponseUiReadOnly$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponseUiReadOnly$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponseUiReadOnly$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponseUiReadOnly$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponseUiReadOnly$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponseUiReadOnly$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponseUiReadOnly$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsResponseUiReadOnlyToJSON(
   getConfigurationProductsPropertiesIntegrationsResponseUiReadOnly:
     GetConfigurationProductsPropertiesIntegrationsResponseUiReadOnly,
@@ -13706,7 +10562,6 @@ export function getConfigurationProductsPropertiesIntegrationsResponseUiReadOnly
       .parse(getConfigurationProductsPropertiesIntegrationsResponseUiReadOnly),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsResponseUiReadOnlyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -13727,25 +10582,11 @@ export const GetConfigurationProductsUiHiddenIntegrationsResponse2003$inboundSch
   z.ZodNativeEnum<
     typeof GetConfigurationProductsUiHiddenIntegrationsResponse2003
   > = z.nativeEnum(GetConfigurationProductsUiHiddenIntegrationsResponse2003);
-
 /** @internal */
 export const GetConfigurationProductsUiHiddenIntegrationsResponse2003$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsUiHiddenIntegrationsResponse2003
   > = GetConfigurationProductsUiHiddenIntegrationsResponse2003$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiHiddenIntegrationsResponse2003$ {
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrationsResponse2003$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiHiddenIntegrationsResponse2003$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrationsResponse2003$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiHiddenIntegrationsResponse2003$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsUiHiddenIntegrationsResponse2002$inboundSchema:
@@ -13756,7 +10597,6 @@ export const GetConfigurationProductsUiHiddenIntegrationsResponse2002$inboundSch
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsUiHiddenIntegrationsResponse2002$Outbound =
   {
@@ -13773,22 +10613,6 @@ export const GetConfigurationProductsUiHiddenIntegrationsResponse2002$outboundSc
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiHiddenIntegrationsResponse2002$ {
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrationsResponse2002$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiHiddenIntegrationsResponse2002$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrationsResponse2002$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiHiddenIntegrationsResponse2002$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrationsResponse2002$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiHiddenIntegrationsResponse2002$Outbound;
-}
-
 export function getConfigurationProductsUiHiddenIntegrationsResponse2002ToJSON(
   getConfigurationProductsUiHiddenIntegrationsResponse2002:
     GetConfigurationProductsUiHiddenIntegrationsResponse2002,
@@ -13798,7 +10622,6 @@ export function getConfigurationProductsUiHiddenIntegrationsResponse2002ToJSON(
       .parse(getConfigurationProductsUiHiddenIntegrationsResponse2002),
   );
 }
-
 export function getConfigurationProductsUiHiddenIntegrationsResponse2002FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -13827,7 +10650,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponseUiHidden$inbo
     z.boolean(),
     GetConfigurationProductsUiHiddenIntegrationsResponse2003$inboundSchema,
   ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponseUiHidden$Outbound =
   | GetConfigurationProductsUiHiddenIntegrationsResponse2002$Outbound
@@ -13848,22 +10670,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponseUiHidden$outb
     GetConfigurationProductsUiHiddenIntegrationsResponse2003$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponseUiHidden$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponseUiHidden$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponseUiHidden$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponseUiHidden$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponseUiHidden$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponseUiHidden$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponseUiHidden$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsResponseUiHiddenToJSON(
   getConfigurationProductsPropertiesIntegrationsResponseUiHidden:
     GetConfigurationProductsPropertiesIntegrationsResponseUiHidden,
@@ -13873,7 +10679,6 @@ export function getConfigurationProductsPropertiesIntegrationsResponseUiHiddenTo
       .parse(getConfigurationProductsPropertiesIntegrationsResponseUiHidden),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsResponseUiHiddenFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -13894,25 +10699,11 @@ export const GetConfigurationProductsUiDisabledIntegrationsResponse2003$inboundS
   z.ZodNativeEnum<
     typeof GetConfigurationProductsUiDisabledIntegrationsResponse2003
   > = z.nativeEnum(GetConfigurationProductsUiDisabledIntegrationsResponse2003);
-
 /** @internal */
 export const GetConfigurationProductsUiDisabledIntegrationsResponse2003$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsUiDisabledIntegrationsResponse2003
   > = GetConfigurationProductsUiDisabledIntegrationsResponse2003$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiDisabledIntegrationsResponse2003$ {
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrationsResponse2003$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiDisabledIntegrationsResponse2003$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrationsResponse2003$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiDisabledIntegrationsResponse2003$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsUiDisabledIntegrationsResponse2002$inboundSchema:
@@ -13923,7 +10714,6 @@ export const GetConfigurationProductsUiDisabledIntegrationsResponse2002$inboundS
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsUiDisabledIntegrationsResponse2002$Outbound =
   {
@@ -13940,22 +10730,6 @@ export const GetConfigurationProductsUiDisabledIntegrationsResponse2002$outbound
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiDisabledIntegrationsResponse2002$ {
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrationsResponse2002$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiDisabledIntegrationsResponse2002$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrationsResponse2002$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiDisabledIntegrationsResponse2002$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrationsResponse2002$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiDisabledIntegrationsResponse2002$Outbound;
-}
-
 export function getConfigurationProductsUiDisabledIntegrationsResponse2002ToJSON(
   getConfigurationProductsUiDisabledIntegrationsResponse2002:
     GetConfigurationProductsUiDisabledIntegrationsResponse2002,
@@ -13965,7 +10739,6 @@ export function getConfigurationProductsUiDisabledIntegrationsResponse2002ToJSON
       .parse(getConfigurationProductsUiDisabledIntegrationsResponse2002),
   );
 }
-
 export function getConfigurationProductsUiDisabledIntegrationsResponse2002FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -13994,7 +10767,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponseUiDisabled$in
     z.boolean(),
     GetConfigurationProductsUiDisabledIntegrationsResponse2003$inboundSchema,
   ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponseUiDisabled$Outbound =
   | GetConfigurationProductsUiDisabledIntegrationsResponse2002$Outbound
@@ -14015,22 +10787,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponseUiDisabled$ou
     GetConfigurationProductsUiDisabledIntegrationsResponse2003$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponseUiDisabled$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponseUiDisabled$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponseUiDisabled$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponseUiDisabled$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponseUiDisabled$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponseUiDisabled$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponseUiDisabled$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsResponseUiDisabledToJSON(
   getConfigurationProductsPropertiesIntegrationsResponseUiDisabled:
     GetConfigurationProductsPropertiesIntegrationsResponseUiDisabled,
@@ -14040,7 +10796,6 @@ export function getConfigurationProductsPropertiesIntegrationsResponseUiDisabled
       .parse(getConfigurationProductsPropertiesIntegrationsResponseUiDisabled),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsResponseUiDisabledFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -14065,7 +10820,6 @@ export const GetConfigurationProductsUiDescriptionIntegrationsResponse2002$inbou
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsUiDescriptionIntegrationsResponse2002$Outbound =
   {
@@ -14082,22 +10836,6 @@ export const GetConfigurationProductsUiDescriptionIntegrationsResponse2002$outbo
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiDescriptionIntegrationsResponse2002$ {
-  /** @deprecated use `GetConfigurationProductsUiDescriptionIntegrationsResponse2002$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiDescriptionIntegrationsResponse2002$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDescriptionIntegrationsResponse2002$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiDescriptionIntegrationsResponse2002$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDescriptionIntegrationsResponse2002$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiDescriptionIntegrationsResponse2002$Outbound;
-}
-
 export function getConfigurationProductsUiDescriptionIntegrationsResponse2002ToJSON(
   getConfigurationProductsUiDescriptionIntegrationsResponse2002:
     GetConfigurationProductsUiDescriptionIntegrationsResponse2002,
@@ -14107,7 +10845,6 @@ export function getConfigurationProductsUiDescriptionIntegrationsResponse2002ToJ
       .parse(getConfigurationProductsUiDescriptionIntegrationsResponse2002),
   );
 }
-
 export function getConfigurationProductsUiDescriptionIntegrationsResponse2002FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -14135,7 +10872,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponseUiDescription
     ),
     z.string(),
   ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponseUiDescription$Outbound =
   | GetConfigurationProductsUiDescriptionIntegrationsResponse2002$Outbound
@@ -14154,22 +10890,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponseUiDescription
     z.string(),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponseUiDescription$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponseUiDescription$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponseUiDescription$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponseUiDescription$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponseUiDescription$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponseUiDescription$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponseUiDescription$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsResponseUiDescriptionToJSON(
   getConfigurationProductsPropertiesIntegrationsResponseUiDescription:
     GetConfigurationProductsPropertiesIntegrationsResponseUiDescription,
@@ -14181,7 +10901,6 @@ export function getConfigurationProductsPropertiesIntegrationsResponseUiDescript
       ),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsResponseUiDescriptionFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -14206,7 +10925,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponseUiFormattedVa
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponseUiFormattedValue$Outbound =
   {
@@ -14223,22 +10941,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponseUiFormattedVa
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponseUiFormattedValue$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponseUiFormattedValue$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponseUiFormattedValue$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponseUiFormattedValue$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponseUiFormattedValue$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponseUiFormattedValue$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsResponseUiFormattedValue$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsResponseUiFormattedValueToJSON(
   getConfigurationProductsPropertiesIntegrationsResponseUiFormattedValue:
     GetConfigurationProductsPropertiesIntegrationsResponseUiFormattedValue,
@@ -14250,7 +10952,6 @@ export function getConfigurationProductsPropertiesIntegrationsResponseUiFormatte
       ),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsResponseUiFormattedValueFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -14328,7 +11029,6 @@ export const Properties5$inboundSchema: z.ZodType<
     "ui:placeholder": "uiPlaceholder",
   });
 });
-
 /** @internal */
 export type Properties5$Outbound = {
   type: string;
@@ -14429,23 +11129,9 @@ export const Properties5$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Properties5$ {
-  /** @deprecated use `Properties5$inboundSchema` instead. */
-  export const inboundSchema = Properties5$inboundSchema;
-  /** @deprecated use `Properties5$outboundSchema` instead. */
-  export const outboundSchema = Properties5$outboundSchema;
-  /** @deprecated use `Properties5$Outbound` instead. */
-  export type Outbound = Properties5$Outbound;
-}
-
 export function properties5ToJSON(properties5: Properties5): string {
   return JSON.stringify(Properties5$outboundSchema.parse(properties5));
 }
-
 export function properties5FromJSON(
   jsonString: string,
 ): SafeParseResult<Properties5, SDKValidationError> {
@@ -14461,50 +11147,22 @@ export const GetConfigurationProductsPropertiesIntegrationsResponseType$inboundS
   z.ZodNativeEnum<
     typeof GetConfigurationProductsPropertiesIntegrationsResponseType
   > = z.nativeEnum(GetConfigurationProductsPropertiesIntegrationsResponseType);
-
 /** @internal */
 export const GetConfigurationProductsPropertiesIntegrationsResponseType$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsPropertiesIntegrationsResponseType
   > = GetConfigurationProductsPropertiesIntegrationsResponseType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponseType$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponseType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponseType$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponseType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponseType$outboundSchema;
-}
-
 /** @internal */
 export const GetConfigurationProductsPropertiesIntegrationsUiControl$inboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsPropertiesIntegrationsUiControl
   > = z.nativeEnum(GetConfigurationProductsPropertiesIntegrationsUiControl);
-
 /** @internal */
 export const GetConfigurationProductsPropertiesIntegrationsUiControl$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsPropertiesIntegrationsUiControl
   > = GetConfigurationProductsPropertiesIntegrationsUiControl$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsUiControl$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsUiControl$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsUiControl$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsUiControl$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsUiControl$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema4Type$inboundSchema:
@@ -14513,26 +11171,12 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
   > = z.nativeEnum(
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema4Type,
   );
-
 /** @internal */
 export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema4Type$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema4Type
   > =
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema4Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema4Type$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema4Type$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema4Type$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema4Type$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema4Type$outboundSchema;
-}
 
 /** @internal */
 export const PropertiesItems$inboundSchema: z.ZodType<
@@ -14549,7 +11193,6 @@ export const PropertiesItems$inboundSchema: z.ZodType<
   exclusiveMaximum: z.number().optional(),
   default: z.number().optional(),
 });
-
 /** @internal */
 export type PropertiesItems$Outbound = {
   type: string;
@@ -14577,25 +11220,11 @@ export const PropertiesItems$outboundSchema: z.ZodType<
   default: z.number().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PropertiesItems$ {
-  /** @deprecated use `PropertiesItems$inboundSchema` instead. */
-  export const inboundSchema = PropertiesItems$inboundSchema;
-  /** @deprecated use `PropertiesItems$outboundSchema` instead. */
-  export const outboundSchema = PropertiesItems$outboundSchema;
-  /** @deprecated use `PropertiesItems$Outbound` instead. */
-  export type Outbound = PropertiesItems$Outbound;
-}
-
 export function propertiesItemsToJSON(
   propertiesItems: PropertiesItems,
 ): string {
   return JSON.stringify(PropertiesItems$outboundSchema.parse(propertiesItems));
 }
-
 export function propertiesItemsFromJSON(
   jsonString: string,
 ): SafeParseResult<PropertiesItems, SDKValidationError> {
@@ -14611,25 +11240,11 @@ export const GetConfigurationProductsUiReadOnlyIntegrationsResponse3$inboundSche
   z.ZodNativeEnum<
     typeof GetConfigurationProductsUiReadOnlyIntegrationsResponse3
   > = z.nativeEnum(GetConfigurationProductsUiReadOnlyIntegrationsResponse3);
-
 /** @internal */
 export const GetConfigurationProductsUiReadOnlyIntegrationsResponse3$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsUiReadOnlyIntegrationsResponse3
   > = GetConfigurationProductsUiReadOnlyIntegrationsResponse3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiReadOnlyIntegrationsResponse3$ {
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrationsResponse3$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrationsResponse3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse3$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsUiReadOnlyIntegrationsResponse2$inboundSchema:
@@ -14640,7 +11255,6 @@ export const GetConfigurationProductsUiReadOnlyIntegrationsResponse2$inboundSche
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsUiReadOnlyIntegrationsResponse2$Outbound = {
   expr: string;
@@ -14656,22 +11270,6 @@ export const GetConfigurationProductsUiReadOnlyIntegrationsResponse2$outboundSch
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiReadOnlyIntegrationsResponse2$ {
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrationsResponse2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrationsResponse2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrationsResponse2$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse2$Outbound;
-}
-
 export function getConfigurationProductsUiReadOnlyIntegrationsResponse2ToJSON(
   getConfigurationProductsUiReadOnlyIntegrationsResponse2:
     GetConfigurationProductsUiReadOnlyIntegrationsResponse2,
@@ -14681,7 +11279,6 @@ export function getConfigurationProductsUiReadOnlyIntegrationsResponse2ToJSON(
       .parse(getConfigurationProductsUiReadOnlyIntegrationsResponse2),
   );
 }
-
 export function getConfigurationProductsUiReadOnlyIntegrationsResponse2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -14710,7 +11307,6 @@ export const GetConfigurationProductsPropertiesIntegrationsUiReadOnly$inboundSch
     z.boolean(),
     GetConfigurationProductsUiReadOnlyIntegrationsResponse3$inboundSchema,
   ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsUiReadOnly$Outbound =
   | GetConfigurationProductsUiReadOnlyIntegrationsResponse2$Outbound
@@ -14731,22 +11327,6 @@ export const GetConfigurationProductsPropertiesIntegrationsUiReadOnly$outboundSc
     GetConfigurationProductsUiReadOnlyIntegrationsResponse3$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsUiReadOnly$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsUiReadOnly$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsUiReadOnly$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsUiReadOnly$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsUiReadOnly$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsUiReadOnly$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsUiReadOnly$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsUiReadOnlyToJSON(
   getConfigurationProductsPropertiesIntegrationsUiReadOnly:
     GetConfigurationProductsPropertiesIntegrationsUiReadOnly,
@@ -14756,7 +11336,6 @@ export function getConfigurationProductsPropertiesIntegrationsUiReadOnlyToJSON(
       .parse(getConfigurationProductsPropertiesIntegrationsUiReadOnly),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsUiReadOnlyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -14777,25 +11356,11 @@ export const GetConfigurationProductsUiHiddenIntegrationsResponse3$inboundSchema
   z.ZodNativeEnum<
     typeof GetConfigurationProductsUiHiddenIntegrationsResponse3
   > = z.nativeEnum(GetConfigurationProductsUiHiddenIntegrationsResponse3);
-
 /** @internal */
 export const GetConfigurationProductsUiHiddenIntegrationsResponse3$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsUiHiddenIntegrationsResponse3
   > = GetConfigurationProductsUiHiddenIntegrationsResponse3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiHiddenIntegrationsResponse3$ {
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrationsResponse3$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiHiddenIntegrationsResponse3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrationsResponse3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiHiddenIntegrationsResponse3$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsUiHiddenIntegrationsResponse2$inboundSchema:
@@ -14806,7 +11371,6 @@ export const GetConfigurationProductsUiHiddenIntegrationsResponse2$inboundSchema
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsUiHiddenIntegrationsResponse2$Outbound = {
   expr: string;
@@ -14822,22 +11386,6 @@ export const GetConfigurationProductsUiHiddenIntegrationsResponse2$outboundSchem
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiHiddenIntegrationsResponse2$ {
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrationsResponse2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiHiddenIntegrationsResponse2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrationsResponse2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiHiddenIntegrationsResponse2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrationsResponse2$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiHiddenIntegrationsResponse2$Outbound;
-}
-
 export function getConfigurationProductsUiHiddenIntegrationsResponse2ToJSON(
   getConfigurationProductsUiHiddenIntegrationsResponse2:
     GetConfigurationProductsUiHiddenIntegrationsResponse2,
@@ -14848,7 +11396,6 @@ export function getConfigurationProductsUiHiddenIntegrationsResponse2ToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsUiHiddenIntegrationsResponse2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -14878,7 +11425,6 @@ export const GetConfigurationProductsPropertiesIntegrationsUiHidden$inboundSchem
     z.boolean(),
     GetConfigurationProductsUiHiddenIntegrationsResponse3$inboundSchema,
   ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsUiHidden$Outbound =
   | GetConfigurationProductsUiHiddenIntegrationsResponse2$Outbound
@@ -14899,22 +11445,6 @@ export const GetConfigurationProductsPropertiesIntegrationsUiHidden$outboundSche
     GetConfigurationProductsUiHiddenIntegrationsResponse3$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsUiHidden$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsUiHidden$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsUiHidden$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsUiHidden$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsUiHidden$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsUiHidden$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsUiHidden$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsUiHiddenToJSON(
   getConfigurationProductsPropertiesIntegrationsUiHidden:
     GetConfigurationProductsPropertiesIntegrationsUiHidden,
@@ -14925,7 +11455,6 @@ export function getConfigurationProductsPropertiesIntegrationsUiHiddenToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsUiHiddenFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -14946,25 +11475,11 @@ export const GetConfigurationProductsUiDisabledIntegrationsResponse3$inboundSche
   z.ZodNativeEnum<
     typeof GetConfigurationProductsUiDisabledIntegrationsResponse3
   > = z.nativeEnum(GetConfigurationProductsUiDisabledIntegrationsResponse3);
-
 /** @internal */
 export const GetConfigurationProductsUiDisabledIntegrationsResponse3$outboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsUiDisabledIntegrationsResponse3
   > = GetConfigurationProductsUiDisabledIntegrationsResponse3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiDisabledIntegrationsResponse3$ {
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrationsResponse3$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiDisabledIntegrationsResponse3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrationsResponse3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiDisabledIntegrationsResponse3$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsUiDisabledIntegrationsResponse2$inboundSchema:
@@ -14975,7 +11490,6 @@ export const GetConfigurationProductsUiDisabledIntegrationsResponse2$inboundSche
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsUiDisabledIntegrationsResponse2$Outbound = {
   expr: string;
@@ -14991,22 +11505,6 @@ export const GetConfigurationProductsUiDisabledIntegrationsResponse2$outboundSch
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiDisabledIntegrationsResponse2$ {
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrationsResponse2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiDisabledIntegrationsResponse2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrationsResponse2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiDisabledIntegrationsResponse2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrationsResponse2$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiDisabledIntegrationsResponse2$Outbound;
-}
-
 export function getConfigurationProductsUiDisabledIntegrationsResponse2ToJSON(
   getConfigurationProductsUiDisabledIntegrationsResponse2:
     GetConfigurationProductsUiDisabledIntegrationsResponse2,
@@ -15016,7 +11514,6 @@ export function getConfigurationProductsUiDisabledIntegrationsResponse2ToJSON(
       .parse(getConfigurationProductsUiDisabledIntegrationsResponse2),
   );
 }
-
 export function getConfigurationProductsUiDisabledIntegrationsResponse2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -15045,7 +11542,6 @@ export const GetConfigurationProductsPropertiesIntegrationsUiDisabled$inboundSch
     z.boolean(),
     GetConfigurationProductsUiDisabledIntegrationsResponse3$inboundSchema,
   ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsUiDisabled$Outbound =
   | GetConfigurationProductsUiDisabledIntegrationsResponse2$Outbound
@@ -15066,22 +11562,6 @@ export const GetConfigurationProductsPropertiesIntegrationsUiDisabled$outboundSc
     GetConfigurationProductsUiDisabledIntegrationsResponse3$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsUiDisabled$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsUiDisabled$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsUiDisabled$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsUiDisabled$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsUiDisabled$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsUiDisabled$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsUiDisabled$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsUiDisabledToJSON(
   getConfigurationProductsPropertiesIntegrationsUiDisabled:
     GetConfigurationProductsPropertiesIntegrationsUiDisabled,
@@ -15091,7 +11571,6 @@ export function getConfigurationProductsPropertiesIntegrationsUiDisabledToJSON(
       .parse(getConfigurationProductsPropertiesIntegrationsUiDisabled),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsUiDisabledFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -15116,7 +11595,6 @@ export const GetConfigurationProductsUiDescriptionIntegrationsResponse2$inboundS
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsUiDescriptionIntegrationsResponse2$Outbound =
   {
@@ -15133,22 +11611,6 @@ export const GetConfigurationProductsUiDescriptionIntegrationsResponse2$outbound
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiDescriptionIntegrationsResponse2$ {
-  /** @deprecated use `GetConfigurationProductsUiDescriptionIntegrationsResponse2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiDescriptionIntegrationsResponse2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDescriptionIntegrationsResponse2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiDescriptionIntegrationsResponse2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDescriptionIntegrationsResponse2$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiDescriptionIntegrationsResponse2$Outbound;
-}
-
 export function getConfigurationProductsUiDescriptionIntegrationsResponse2ToJSON(
   getConfigurationProductsUiDescriptionIntegrationsResponse2:
     GetConfigurationProductsUiDescriptionIntegrationsResponse2,
@@ -15158,7 +11620,6 @@ export function getConfigurationProductsUiDescriptionIntegrationsResponse2ToJSON
       .parse(getConfigurationProductsUiDescriptionIntegrationsResponse2),
   );
 }
-
 export function getConfigurationProductsUiDescriptionIntegrationsResponse2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -15186,7 +11647,6 @@ export const GetConfigurationProductsPropertiesIntegrationsUiDescription$inbound
     ),
     z.string(),
   ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsUiDescription$Outbound =
   | GetConfigurationProductsUiDescriptionIntegrationsResponse2$Outbound
@@ -15205,22 +11665,6 @@ export const GetConfigurationProductsPropertiesIntegrationsUiDescription$outboun
     z.string(),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsUiDescription$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsUiDescription$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsUiDescription$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsUiDescription$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsUiDescription$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsUiDescription$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsUiDescription$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsUiDescriptionToJSON(
   getConfigurationProductsPropertiesIntegrationsUiDescription:
     GetConfigurationProductsPropertiesIntegrationsUiDescription,
@@ -15230,7 +11674,6 @@ export function getConfigurationProductsPropertiesIntegrationsUiDescriptionToJSO
       .parse(getConfigurationProductsPropertiesIntegrationsUiDescription),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsUiDescriptionFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -15255,7 +11698,6 @@ export const GetConfigurationProductsPropertiesIntegrationsUiFormattedValue$inbo
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsUiFormattedValue$Outbound =
   {
@@ -15272,22 +11714,6 @@ export const GetConfigurationProductsPropertiesIntegrationsUiFormattedValue$outb
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsUiFormattedValue$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsUiFormattedValue$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsUiFormattedValue$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsUiFormattedValue$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsUiFormattedValue$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsUiFormattedValue$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesIntegrationsUiFormattedValue$Outbound;
-}
-
 export function getConfigurationProductsPropertiesIntegrationsUiFormattedValueToJSON(
   getConfigurationProductsPropertiesIntegrationsUiFormattedValue:
     GetConfigurationProductsPropertiesIntegrationsUiFormattedValue,
@@ -15297,7 +11723,6 @@ export function getConfigurationProductsPropertiesIntegrationsUiFormattedValueTo
       .parse(getConfigurationProductsPropertiesIntegrationsUiFormattedValue),
   );
 }
-
 export function getConfigurationProductsPropertiesIntegrationsUiFormattedValueFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -15372,7 +11797,6 @@ export const Properties4$inboundSchema: z.ZodType<
     "ui:formatted-value": "uiFormattedValue",
   });
 });
-
 /** @internal */
 export type Properties4$Outbound = {
   type: string;
@@ -15468,23 +11892,9 @@ export const Properties4$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Properties4$ {
-  /** @deprecated use `Properties4$inboundSchema` instead. */
-  export const inboundSchema = Properties4$inboundSchema;
-  /** @deprecated use `Properties4$outboundSchema` instead. */
-  export const outboundSchema = Properties4$outboundSchema;
-  /** @deprecated use `Properties4$Outbound` instead. */
-  export type Outbound = Properties4$Outbound;
-}
-
 export function properties4ToJSON(properties4: Properties4): string {
   return JSON.stringify(Properties4$outboundSchema.parse(properties4));
 }
-
 export function properties4FromJSON(
   jsonString: string,
 ): SafeParseResult<Properties4, SDKValidationError> {
@@ -15499,70 +11909,28 @@ export function properties4FromJSON(
 export const GetConfigurationProductsPropertiesIntegrationsType$inboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationProductsPropertiesIntegrationsType> = z
     .nativeEnum(GetConfigurationProductsPropertiesIntegrationsType);
-
 /** @internal */
 export const GetConfigurationProductsPropertiesIntegrationsType$outboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationProductsPropertiesIntegrationsType> =
     GetConfigurationProductsPropertiesIntegrationsType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesIntegrationsType$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsType$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesIntegrationsType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesIntegrationsType$outboundSchema;
-}
-
 /** @internal */
 export const GetConfigurationProductsPropertiesUiControl$inboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationProductsPropertiesUiControl> = z
     .nativeEnum(GetConfigurationProductsPropertiesUiControl);
-
 /** @internal */
 export const GetConfigurationProductsPropertiesUiControl$outboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationProductsPropertiesUiControl> =
     GetConfigurationProductsPropertiesUiControl$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesUiControl$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesUiControl$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesUiControl$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesUiControl$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesUiControl$outboundSchema;
-}
-
 /** @internal */
 export const GetConfigurationProductsUiReadOnlyIntegrations3$inboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationProductsUiReadOnlyIntegrations3> = z
     .nativeEnum(GetConfigurationProductsUiReadOnlyIntegrations3);
-
 /** @internal */
 export const GetConfigurationProductsUiReadOnlyIntegrations3$outboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationProductsUiReadOnlyIntegrations3> =
     GetConfigurationProductsUiReadOnlyIntegrations3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiReadOnlyIntegrations3$ {
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrations3$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiReadOnlyIntegrations3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrations3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiReadOnlyIntegrations3$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsUiReadOnlyIntegrations2$inboundSchema:
@@ -15573,7 +11941,6 @@ export const GetConfigurationProductsUiReadOnlyIntegrations2$inboundSchema:
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsUiReadOnlyIntegrations2$Outbound = {
   expr: string;
@@ -15589,22 +11956,6 @@ export const GetConfigurationProductsUiReadOnlyIntegrations2$outboundSchema:
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiReadOnlyIntegrations2$ {
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrations2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiReadOnlyIntegrations2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrations2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiReadOnlyIntegrations2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiReadOnlyIntegrations2$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiReadOnlyIntegrations2$Outbound;
-}
-
 export function getConfigurationProductsUiReadOnlyIntegrations2ToJSON(
   getConfigurationProductsUiReadOnlyIntegrations2:
     GetConfigurationProductsUiReadOnlyIntegrations2,
@@ -15615,7 +11966,6 @@ export function getConfigurationProductsUiReadOnlyIntegrations2ToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsUiReadOnlyIntegrations2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -15643,7 +11993,6 @@ export const GetConfigurationProductsPropertiesUiReadOnly$inboundSchema:
     z.boolean(),
     GetConfigurationProductsUiReadOnlyIntegrations3$inboundSchema,
   ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesUiReadOnly$Outbound =
   | GetConfigurationProductsUiReadOnlyIntegrations2$Outbound
@@ -15664,21 +12013,6 @@ export const GetConfigurationProductsPropertiesUiReadOnly$outboundSchema:
     GetConfigurationProductsUiReadOnlyIntegrations3$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesUiReadOnly$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesUiReadOnly$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesUiReadOnly$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesUiReadOnly$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesUiReadOnly$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesUiReadOnly$Outbound` instead. */
-  export type Outbound = GetConfigurationProductsPropertiesUiReadOnly$Outbound;
-}
-
 export function getConfigurationProductsPropertiesUiReadOnlyToJSON(
   getConfigurationProductsPropertiesUiReadOnly:
     GetConfigurationProductsPropertiesUiReadOnly,
@@ -15689,7 +12023,6 @@ export function getConfigurationProductsPropertiesUiReadOnlyToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsPropertiesUiReadOnlyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -15710,24 +12043,10 @@ export function getConfigurationProductsPropertiesUiReadOnlyFromJSON(
 export const GetConfigurationProductsUiHiddenIntegrations3$inboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationProductsUiHiddenIntegrations3> = z
     .nativeEnum(GetConfigurationProductsUiHiddenIntegrations3);
-
 /** @internal */
 export const GetConfigurationProductsUiHiddenIntegrations3$outboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationProductsUiHiddenIntegrations3> =
     GetConfigurationProductsUiHiddenIntegrations3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiHiddenIntegrations3$ {
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrations3$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiHiddenIntegrations3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrations3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiHiddenIntegrations3$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsUiHiddenIntegrations2$inboundSchema:
@@ -15738,7 +12057,6 @@ export const GetConfigurationProductsUiHiddenIntegrations2$inboundSchema:
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsUiHiddenIntegrations2$Outbound = {
   expr: string;
@@ -15754,21 +12072,6 @@ export const GetConfigurationProductsUiHiddenIntegrations2$outboundSchema:
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiHiddenIntegrations2$ {
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrations2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiHiddenIntegrations2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrations2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiHiddenIntegrations2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiHiddenIntegrations2$Outbound` instead. */
-  export type Outbound = GetConfigurationProductsUiHiddenIntegrations2$Outbound;
-}
-
 export function getConfigurationProductsUiHiddenIntegrations2ToJSON(
   getConfigurationProductsUiHiddenIntegrations2:
     GetConfigurationProductsUiHiddenIntegrations2,
@@ -15779,7 +12082,6 @@ export function getConfigurationProductsUiHiddenIntegrations2ToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsUiHiddenIntegrations2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -15804,7 +12106,6 @@ export const GetConfigurationProductsPropertiesUiHidden$inboundSchema:
       z.boolean(),
       GetConfigurationProductsUiHiddenIntegrations3$inboundSchema,
     ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesUiHidden$Outbound =
   | GetConfigurationProductsUiHiddenIntegrations2$Outbound
@@ -15823,21 +12124,6 @@ export const GetConfigurationProductsPropertiesUiHidden$outboundSchema:
     GetConfigurationProductsUiHiddenIntegrations3$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesUiHidden$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesUiHidden$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesUiHidden$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesUiHidden$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesUiHidden$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesUiHidden$Outbound` instead. */
-  export type Outbound = GetConfigurationProductsPropertiesUiHidden$Outbound;
-}
-
 export function getConfigurationProductsPropertiesUiHiddenToJSON(
   getConfigurationProductsPropertiesUiHidden:
     GetConfigurationProductsPropertiesUiHidden,
@@ -15848,7 +12134,6 @@ export function getConfigurationProductsPropertiesUiHiddenToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsPropertiesUiHiddenFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -15869,24 +12154,10 @@ export function getConfigurationProductsPropertiesUiHiddenFromJSON(
 export const GetConfigurationProductsUiDisabledIntegrations3$inboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationProductsUiDisabledIntegrations3> = z
     .nativeEnum(GetConfigurationProductsUiDisabledIntegrations3);
-
 /** @internal */
 export const GetConfigurationProductsUiDisabledIntegrations3$outboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationProductsUiDisabledIntegrations3> =
     GetConfigurationProductsUiDisabledIntegrations3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiDisabledIntegrations3$ {
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrations3$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiDisabledIntegrations3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrations3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiDisabledIntegrations3$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsUiDisabledIntegrations2$inboundSchema:
@@ -15897,7 +12168,6 @@ export const GetConfigurationProductsUiDisabledIntegrations2$inboundSchema:
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsUiDisabledIntegrations2$Outbound = {
   expr: string;
@@ -15913,22 +12183,6 @@ export const GetConfigurationProductsUiDisabledIntegrations2$outboundSchema:
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiDisabledIntegrations2$ {
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrations2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiDisabledIntegrations2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrations2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiDisabledIntegrations2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDisabledIntegrations2$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiDisabledIntegrations2$Outbound;
-}
-
 export function getConfigurationProductsUiDisabledIntegrations2ToJSON(
   getConfigurationProductsUiDisabledIntegrations2:
     GetConfigurationProductsUiDisabledIntegrations2,
@@ -15939,7 +12193,6 @@ export function getConfigurationProductsUiDisabledIntegrations2ToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsUiDisabledIntegrations2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -15967,7 +12220,6 @@ export const GetConfigurationProductsPropertiesUiDisabled$inboundSchema:
     z.boolean(),
     GetConfigurationProductsUiDisabledIntegrations3$inboundSchema,
   ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesUiDisabled$Outbound =
   | GetConfigurationProductsUiDisabledIntegrations2$Outbound
@@ -15988,21 +12240,6 @@ export const GetConfigurationProductsPropertiesUiDisabled$outboundSchema:
     GetConfigurationProductsUiDisabledIntegrations3$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesUiDisabled$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesUiDisabled$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesUiDisabled$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesUiDisabled$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesUiDisabled$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesUiDisabled$Outbound` instead. */
-  export type Outbound = GetConfigurationProductsPropertiesUiDisabled$Outbound;
-}
-
 export function getConfigurationProductsPropertiesUiDisabledToJSON(
   getConfigurationProductsPropertiesUiDisabled:
     GetConfigurationProductsPropertiesUiDisabled,
@@ -16013,7 +12250,6 @@ export function getConfigurationProductsPropertiesUiDisabledToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsPropertiesUiDisabledFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -16039,7 +12275,6 @@ export const GetConfigurationProductsUiDescriptionIntegrations2$inboundSchema:
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsUiDescriptionIntegrations2$Outbound = {
   expr: string;
@@ -16055,22 +12290,6 @@ export const GetConfigurationProductsUiDescriptionIntegrations2$outboundSchema:
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiDescriptionIntegrations2$ {
-  /** @deprecated use `GetConfigurationProductsUiDescriptionIntegrations2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiDescriptionIntegrations2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDescriptionIntegrations2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiDescriptionIntegrations2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDescriptionIntegrations2$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsUiDescriptionIntegrations2$Outbound;
-}
-
 export function getConfigurationProductsUiDescriptionIntegrations2ToJSON(
   getConfigurationProductsUiDescriptionIntegrations2:
     GetConfigurationProductsUiDescriptionIntegrations2,
@@ -16081,7 +12300,6 @@ export function getConfigurationProductsUiDescriptionIntegrations2ToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsUiDescriptionIntegrations2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -16110,7 +12328,6 @@ export const GetConfigurationProductsPropertiesUiDescription$inboundSchema:
     ),
     z.string(),
   ]);
-
 /** @internal */
 export type GetConfigurationProductsPropertiesUiDescription$Outbound =
   | GetConfigurationProductsUiDescriptionIntegrations2$Outbound
@@ -16129,22 +12346,6 @@ export const GetConfigurationProductsPropertiesUiDescription$outboundSchema:
     z.string(),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesUiDescription$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesUiDescription$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesUiDescription$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesUiDescription$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesUiDescription$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesUiDescription$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesUiDescription$Outbound;
-}
-
 export function getConfigurationProductsPropertiesUiDescriptionToJSON(
   getConfigurationProductsPropertiesUiDescription:
     GetConfigurationProductsPropertiesUiDescription,
@@ -16155,7 +12356,6 @@ export function getConfigurationProductsPropertiesUiDescriptionToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsPropertiesUiDescriptionFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -16181,7 +12381,6 @@ export const GetConfigurationProductsPropertiesUiFormattedValue$inboundSchema:
   > = z.object({
     expr: z.string(),
   });
-
 /** @internal */
 export type GetConfigurationProductsPropertiesUiFormattedValue$Outbound = {
   expr: string;
@@ -16197,22 +12396,6 @@ export const GetConfigurationProductsPropertiesUiFormattedValue$outboundSchema:
     expr: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesUiFormattedValue$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesUiFormattedValue$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesUiFormattedValue$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesUiFormattedValue$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesUiFormattedValue$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesUiFormattedValue$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesUiFormattedValue$Outbound;
-}
-
 export function getConfigurationProductsPropertiesUiFormattedValueToJSON(
   getConfigurationProductsPropertiesUiFormattedValue:
     GetConfigurationProductsPropertiesUiFormattedValue,
@@ -16223,7 +12406,6 @@ export function getConfigurationProductsPropertiesUiFormattedValueToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsPropertiesUiFormattedValueFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -16286,7 +12468,6 @@ export const Properties3$inboundSchema: z.ZodType<
     "ui:formatted-value": "uiFormattedValue",
   });
 });
-
 /** @internal */
 export type Properties3$Outbound = {
   type: string;
@@ -16369,23 +12550,9 @@ export const Properties3$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Properties3$ {
-  /** @deprecated use `Properties3$inboundSchema` instead. */
-  export const inboundSchema = Properties3$inboundSchema;
-  /** @deprecated use `Properties3$outboundSchema` instead. */
-  export const outboundSchema = Properties3$outboundSchema;
-  /** @deprecated use `Properties3$Outbound` instead. */
-  export type Outbound = Properties3$Outbound;
-}
-
 export function properties3ToJSON(properties3: Properties3): string {
   return JSON.stringify(Properties3$outboundSchema.parse(properties3));
 }
-
 export function properties3FromJSON(
   jsonString: string,
 ): SafeParseResult<Properties3, SDKValidationError> {
@@ -16401,68 +12568,28 @@ export const GetConfigurationProductsPropertiesType$inboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationProductsPropertiesType> = z.nativeEnum(
     GetConfigurationProductsPropertiesType,
   );
-
 /** @internal */
 export const GetConfigurationProductsPropertiesType$outboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationProductsPropertiesType> =
     GetConfigurationProductsPropertiesType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesType$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesType$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesType$outboundSchema;
-}
-
 /** @internal */
 export const PropertiesUiControl$inboundSchema: z.ZodNativeEnum<
   typeof PropertiesUiControl
 > = z.nativeEnum(PropertiesUiControl);
-
 /** @internal */
 export const PropertiesUiControl$outboundSchema: z.ZodNativeEnum<
   typeof PropertiesUiControl
 > = PropertiesUiControl$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PropertiesUiControl$ {
-  /** @deprecated use `PropertiesUiControl$inboundSchema` instead. */
-  export const inboundSchema = PropertiesUiControl$inboundSchema;
-  /** @deprecated use `PropertiesUiControl$outboundSchema` instead. */
-  export const outboundSchema = PropertiesUiControl$outboundSchema;
-}
-
 /** @internal */
 export const GetConfigurationProductsUiReadOnly3$inboundSchema: z.ZodNativeEnum<
   typeof GetConfigurationProductsUiReadOnly3
 > = z.nativeEnum(GetConfigurationProductsUiReadOnly3);
-
 /** @internal */
 export const GetConfigurationProductsUiReadOnly3$outboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationProductsUiReadOnly3> =
     GetConfigurationProductsUiReadOnly3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiReadOnly3$ {
-  /** @deprecated use `GetConfigurationProductsUiReadOnly3$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiReadOnly3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiReadOnly3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiReadOnly3$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsUiReadOnly2$inboundSchema: z.ZodType<
@@ -16472,7 +12599,6 @@ export const GetConfigurationProductsUiReadOnly2$inboundSchema: z.ZodType<
 > = z.object({
   expr: z.string(),
 });
-
 /** @internal */
 export type GetConfigurationProductsUiReadOnly2$Outbound = {
   expr: string;
@@ -16487,21 +12613,6 @@ export const GetConfigurationProductsUiReadOnly2$outboundSchema: z.ZodType<
   expr: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiReadOnly2$ {
-  /** @deprecated use `GetConfigurationProductsUiReadOnly2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiReadOnly2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiReadOnly2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiReadOnly2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiReadOnly2$Outbound` instead. */
-  export type Outbound = GetConfigurationProductsUiReadOnly2$Outbound;
-}
-
 export function getConfigurationProductsUiReadOnly2ToJSON(
   getConfigurationProductsUiReadOnly2: GetConfigurationProductsUiReadOnly2,
 ): string {
@@ -16511,7 +12622,6 @@ export function getConfigurationProductsUiReadOnly2ToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsUiReadOnly2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetConfigurationProductsUiReadOnly2, SDKValidationError> {
@@ -16533,7 +12643,6 @@ export const PropertiesUiReadOnly$inboundSchema: z.ZodType<
   z.boolean(),
   GetConfigurationProductsUiReadOnly3$inboundSchema,
 ]);
-
 /** @internal */
 export type PropertiesUiReadOnly$Outbound =
   | GetConfigurationProductsUiReadOnly2$Outbound
@@ -16551,19 +12660,6 @@ export const PropertiesUiReadOnly$outboundSchema: z.ZodType<
   GetConfigurationProductsUiReadOnly3$outboundSchema,
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PropertiesUiReadOnly$ {
-  /** @deprecated use `PropertiesUiReadOnly$inboundSchema` instead. */
-  export const inboundSchema = PropertiesUiReadOnly$inboundSchema;
-  /** @deprecated use `PropertiesUiReadOnly$outboundSchema` instead. */
-  export const outboundSchema = PropertiesUiReadOnly$outboundSchema;
-  /** @deprecated use `PropertiesUiReadOnly$Outbound` instead. */
-  export type Outbound = PropertiesUiReadOnly$Outbound;
-}
-
 export function propertiesUiReadOnlyToJSON(
   propertiesUiReadOnly: PropertiesUiReadOnly,
 ): string {
@@ -16571,7 +12667,6 @@ export function propertiesUiReadOnlyToJSON(
     PropertiesUiReadOnly$outboundSchema.parse(propertiesUiReadOnly),
   );
 }
-
 export function propertiesUiReadOnlyFromJSON(
   jsonString: string,
 ): SafeParseResult<PropertiesUiReadOnly, SDKValidationError> {
@@ -16586,23 +12681,10 @@ export function propertiesUiReadOnlyFromJSON(
 export const GetConfigurationProductsUiHidden3$inboundSchema: z.ZodNativeEnum<
   typeof GetConfigurationProductsUiHidden3
 > = z.nativeEnum(GetConfigurationProductsUiHidden3);
-
 /** @internal */
 export const GetConfigurationProductsUiHidden3$outboundSchema: z.ZodNativeEnum<
   typeof GetConfigurationProductsUiHidden3
 > = GetConfigurationProductsUiHidden3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiHidden3$ {
-  /** @deprecated use `GetConfigurationProductsUiHidden3$inboundSchema` instead. */
-  export const inboundSchema = GetConfigurationProductsUiHidden3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiHidden3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiHidden3$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsUiHidden2$inboundSchema: z.ZodType<
@@ -16612,7 +12694,6 @@ export const GetConfigurationProductsUiHidden2$inboundSchema: z.ZodType<
 > = z.object({
   expr: z.string(),
 });
-
 /** @internal */
 export type GetConfigurationProductsUiHidden2$Outbound = {
   expr: string;
@@ -16627,20 +12708,6 @@ export const GetConfigurationProductsUiHidden2$outboundSchema: z.ZodType<
   expr: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiHidden2$ {
-  /** @deprecated use `GetConfigurationProductsUiHidden2$inboundSchema` instead. */
-  export const inboundSchema = GetConfigurationProductsUiHidden2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiHidden2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiHidden2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiHidden2$Outbound` instead. */
-  export type Outbound = GetConfigurationProductsUiHidden2$Outbound;
-}
-
 export function getConfigurationProductsUiHidden2ToJSON(
   getConfigurationProductsUiHidden2: GetConfigurationProductsUiHidden2,
 ): string {
@@ -16650,7 +12717,6 @@ export function getConfigurationProductsUiHidden2ToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsUiHidden2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetConfigurationProductsUiHidden2, SDKValidationError> {
@@ -16671,7 +12737,6 @@ export const PropertiesUiHidden$inboundSchema: z.ZodType<
   z.boolean(),
   GetConfigurationProductsUiHidden3$inboundSchema,
 ]);
-
 /** @internal */
 export type PropertiesUiHidden$Outbound =
   | GetConfigurationProductsUiHidden2$Outbound
@@ -16689,19 +12754,6 @@ export const PropertiesUiHidden$outboundSchema: z.ZodType<
   GetConfigurationProductsUiHidden3$outboundSchema,
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PropertiesUiHidden$ {
-  /** @deprecated use `PropertiesUiHidden$inboundSchema` instead. */
-  export const inboundSchema = PropertiesUiHidden$inboundSchema;
-  /** @deprecated use `PropertiesUiHidden$outboundSchema` instead. */
-  export const outboundSchema = PropertiesUiHidden$outboundSchema;
-  /** @deprecated use `PropertiesUiHidden$Outbound` instead. */
-  export type Outbound = PropertiesUiHidden$Outbound;
-}
-
 export function propertiesUiHiddenToJSON(
   propertiesUiHidden: PropertiesUiHidden,
 ): string {
@@ -16709,7 +12761,6 @@ export function propertiesUiHiddenToJSON(
     PropertiesUiHidden$outboundSchema.parse(propertiesUiHidden),
   );
 }
-
 export function propertiesUiHiddenFromJSON(
   jsonString: string,
 ): SafeParseResult<PropertiesUiHidden, SDKValidationError> {
@@ -16724,24 +12775,10 @@ export function propertiesUiHiddenFromJSON(
 export const GetConfigurationProductsUiDisabled3$inboundSchema: z.ZodNativeEnum<
   typeof GetConfigurationProductsUiDisabled3
 > = z.nativeEnum(GetConfigurationProductsUiDisabled3);
-
 /** @internal */
 export const GetConfigurationProductsUiDisabled3$outboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationProductsUiDisabled3> =
     GetConfigurationProductsUiDisabled3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiDisabled3$ {
-  /** @deprecated use `GetConfigurationProductsUiDisabled3$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiDisabled3$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDisabled3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiDisabled3$outboundSchema;
-}
 
 /** @internal */
 export const GetConfigurationProductsUiDisabled2$inboundSchema: z.ZodType<
@@ -16751,7 +12788,6 @@ export const GetConfigurationProductsUiDisabled2$inboundSchema: z.ZodType<
 > = z.object({
   expr: z.string(),
 });
-
 /** @internal */
 export type GetConfigurationProductsUiDisabled2$Outbound = {
   expr: string;
@@ -16766,21 +12802,6 @@ export const GetConfigurationProductsUiDisabled2$outboundSchema: z.ZodType<
   expr: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiDisabled2$ {
-  /** @deprecated use `GetConfigurationProductsUiDisabled2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiDisabled2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDisabled2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiDisabled2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDisabled2$Outbound` instead. */
-  export type Outbound = GetConfigurationProductsUiDisabled2$Outbound;
-}
-
 export function getConfigurationProductsUiDisabled2ToJSON(
   getConfigurationProductsUiDisabled2: GetConfigurationProductsUiDisabled2,
 ): string {
@@ -16790,7 +12811,6 @@ export function getConfigurationProductsUiDisabled2ToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsUiDisabled2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetConfigurationProductsUiDisabled2, SDKValidationError> {
@@ -16812,7 +12832,6 @@ export const PropertiesUiDisabled$inboundSchema: z.ZodType<
   z.boolean(),
   GetConfigurationProductsUiDisabled3$inboundSchema,
 ]);
-
 /** @internal */
 export type PropertiesUiDisabled$Outbound =
   | GetConfigurationProductsUiDisabled2$Outbound
@@ -16830,19 +12849,6 @@ export const PropertiesUiDisabled$outboundSchema: z.ZodType<
   GetConfigurationProductsUiDisabled3$outboundSchema,
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PropertiesUiDisabled$ {
-  /** @deprecated use `PropertiesUiDisabled$inboundSchema` instead. */
-  export const inboundSchema = PropertiesUiDisabled$inboundSchema;
-  /** @deprecated use `PropertiesUiDisabled$outboundSchema` instead. */
-  export const outboundSchema = PropertiesUiDisabled$outboundSchema;
-  /** @deprecated use `PropertiesUiDisabled$Outbound` instead. */
-  export type Outbound = PropertiesUiDisabled$Outbound;
-}
-
 export function propertiesUiDisabledToJSON(
   propertiesUiDisabled: PropertiesUiDisabled,
 ): string {
@@ -16850,7 +12856,6 @@ export function propertiesUiDisabledToJSON(
     PropertiesUiDisabled$outboundSchema.parse(propertiesUiDisabled),
   );
 }
-
 export function propertiesUiDisabledFromJSON(
   jsonString: string,
 ): SafeParseResult<PropertiesUiDisabled, SDKValidationError> {
@@ -16869,7 +12874,6 @@ export const GetConfigurationProductsUiDescription2$inboundSchema: z.ZodType<
 > = z.object({
   expr: z.string(),
 });
-
 /** @internal */
 export type GetConfigurationProductsUiDescription2$Outbound = {
   expr: string;
@@ -16884,21 +12888,6 @@ export const GetConfigurationProductsUiDescription2$outboundSchema: z.ZodType<
   expr: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsUiDescription2$ {
-  /** @deprecated use `GetConfigurationProductsUiDescription2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsUiDescription2$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDescription2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsUiDescription2$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsUiDescription2$Outbound` instead. */
-  export type Outbound = GetConfigurationProductsUiDescription2$Outbound;
-}
-
 export function getConfigurationProductsUiDescription2ToJSON(
   getConfigurationProductsUiDescription2:
     GetConfigurationProductsUiDescription2,
@@ -16909,7 +12898,6 @@ export function getConfigurationProductsUiDescription2ToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsUiDescription2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetConfigurationProductsUiDescription2, SDKValidationError> {
@@ -16930,7 +12918,6 @@ export const PropertiesUiDescription$inboundSchema: z.ZodType<
   z.lazy(() => GetConfigurationProductsUiDescription2$inboundSchema),
   z.string(),
 ]);
-
 /** @internal */
 export type PropertiesUiDescription$Outbound =
   | GetConfigurationProductsUiDescription2$Outbound
@@ -16946,19 +12933,6 @@ export const PropertiesUiDescription$outboundSchema: z.ZodType<
   z.string(),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PropertiesUiDescription$ {
-  /** @deprecated use `PropertiesUiDescription$inboundSchema` instead. */
-  export const inboundSchema = PropertiesUiDescription$inboundSchema;
-  /** @deprecated use `PropertiesUiDescription$outboundSchema` instead. */
-  export const outboundSchema = PropertiesUiDescription$outboundSchema;
-  /** @deprecated use `PropertiesUiDescription$Outbound` instead. */
-  export type Outbound = PropertiesUiDescription$Outbound;
-}
-
 export function propertiesUiDescriptionToJSON(
   propertiesUiDescription: PropertiesUiDescription,
 ): string {
@@ -16966,7 +12940,6 @@ export function propertiesUiDescriptionToJSON(
     PropertiesUiDescription$outboundSchema.parse(propertiesUiDescription),
   );
 }
-
 export function propertiesUiDescriptionFromJSON(
   jsonString: string,
 ): SafeParseResult<PropertiesUiDescription, SDKValidationError> {
@@ -16985,7 +12958,6 @@ export const PropertiesUiFormattedValue$inboundSchema: z.ZodType<
 > = z.object({
   expr: z.string(),
 });
-
 /** @internal */
 export type PropertiesUiFormattedValue$Outbound = {
   expr: string;
@@ -17000,19 +12972,6 @@ export const PropertiesUiFormattedValue$outboundSchema: z.ZodType<
   expr: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PropertiesUiFormattedValue$ {
-  /** @deprecated use `PropertiesUiFormattedValue$inboundSchema` instead. */
-  export const inboundSchema = PropertiesUiFormattedValue$inboundSchema;
-  /** @deprecated use `PropertiesUiFormattedValue$outboundSchema` instead. */
-  export const outboundSchema = PropertiesUiFormattedValue$outboundSchema;
-  /** @deprecated use `PropertiesUiFormattedValue$Outbound` instead. */
-  export type Outbound = PropertiesUiFormattedValue$Outbound;
-}
-
 export function propertiesUiFormattedValueToJSON(
   propertiesUiFormattedValue: PropertiesUiFormattedValue,
 ): string {
@@ -17020,7 +12979,6 @@ export function propertiesUiFormattedValueToJSON(
     PropertiesUiFormattedValue$outboundSchema.parse(propertiesUiFormattedValue),
   );
 }
-
 export function propertiesUiFormattedValueFromJSON(
   jsonString: string,
 ): SafeParseResult<PropertiesUiFormattedValue, SDKValidationError> {
@@ -17080,7 +13038,6 @@ export const Properties2$inboundSchema: z.ZodType<
     "ui:placeholder": "uiPlaceholder",
   });
 });
-
 /** @internal */
 export type Properties2$Outbound = {
   type: string;
@@ -17165,23 +13122,9 @@ export const Properties2$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Properties2$ {
-  /** @deprecated use `Properties2$inboundSchema` instead. */
-  export const inboundSchema = Properties2$inboundSchema;
-  /** @deprecated use `Properties2$outboundSchema` instead. */
-  export const outboundSchema = Properties2$outboundSchema;
-  /** @deprecated use `Properties2$Outbound` instead. */
-  export type Outbound = Properties2$Outbound;
-}
-
 export function properties2ToJSON(properties2: Properties2): string {
   return JSON.stringify(Properties2$outboundSchema.parse(properties2));
 }
-
 export function properties2FromJSON(
   jsonString: string,
 ): SafeParseResult<Properties2, SDKValidationError> {
@@ -17196,85 +13139,46 @@ export function properties2FromJSON(
 export const PropertiesType$inboundSchema: z.ZodNativeEnum<
   typeof PropertiesType
 > = z.nativeEnum(PropertiesType);
-
 /** @internal */
 export const PropertiesType$outboundSchema: z.ZodNativeEnum<
   typeof PropertiesType
 > = PropertiesType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PropertiesType$ {
-  /** @deprecated use `PropertiesType$inboundSchema` instead. */
-  export const inboundSchema = PropertiesType$inboundSchema;
-  /** @deprecated use `PropertiesType$outboundSchema` instead. */
-  export const outboundSchema = PropertiesType$outboundSchema;
-}
-
 /** @internal */
 export const UiControl$inboundSchema: z.ZodNativeEnum<typeof UiControl> = z
   .nativeEnum(UiControl);
-
 /** @internal */
 export const UiControl$outboundSchema: z.ZodNativeEnum<typeof UiControl> =
   UiControl$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UiControl$ {
-  /** @deprecated use `UiControl$inboundSchema` instead. */
-  export const inboundSchema = UiControl$inboundSchema;
-  /** @deprecated use `UiControl$outboundSchema` instead. */
-  export const outboundSchema = UiControl$outboundSchema;
-}
-
 /** @internal */
-export const AtBRANDAt647543$inboundSchema: z.ZodType<
-  AtBRANDAt647543,
+export const AtBRANDAt649981$inboundSchema: z.ZodType<
+  AtBRANDAt649981,
   z.ZodTypeDef,
   unknown
 > = z.object({});
+/** @internal */
+export type AtBRANDAt649981$Outbound = {};
 
 /** @internal */
-export type AtBRANDAt647543$Outbound = {};
-
-/** @internal */
-export const AtBRANDAt647543$outboundSchema: z.ZodType<
-  AtBRANDAt647543$Outbound,
+export const AtBRANDAt649981$outboundSchema: z.ZodType<
+  AtBRANDAt649981$Outbound,
   z.ZodTypeDef,
-  AtBRANDAt647543
+  AtBRANDAt649981
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AtBRANDAt647543$ {
-  /** @deprecated use `AtBRANDAt647543$inboundSchema` instead. */
-  export const inboundSchema = AtBRANDAt647543$inboundSchema;
-  /** @deprecated use `AtBRANDAt647543$outboundSchema` instead. */
-  export const outboundSchema = AtBRANDAt647543$outboundSchema;
-  /** @deprecated use `AtBRANDAt647543$Outbound` instead. */
-  export type Outbound = AtBRANDAt647543$Outbound;
-}
-
-export function atBRANDAt647543ToJSON(
-  atBRANDAt647543: AtBRANDAt647543,
+export function atBRANDAt649981ToJSON(
+  atBRANDAt649981: AtBRANDAt649981,
 ): string {
-  return JSON.stringify(AtBRANDAt647543$outboundSchema.parse(atBRANDAt647543));
+  return JSON.stringify(AtBRANDAt649981$outboundSchema.parse(atBRANDAt649981));
 }
-
-export function atBRANDAt647543FromJSON(
+export function atBRANDAt649981FromJSON(
   jsonString: string,
-): SafeParseResult<AtBRANDAt647543, SDKValidationError> {
+): SafeParseResult<AtBRANDAt649981, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => AtBRANDAt647543$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtBRANDAt647543' from JSON`,
+    (x) => AtBRANDAt649981$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtBRANDAt649981' from JSON`,
   );
 }
 
@@ -17284,16 +13188,15 @@ export const MinLength$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "__@BRAND@647543": z.lazy(() => AtBRANDAt647543$inboundSchema),
+  "__@BRAND@649981": z.lazy(() => AtBRANDAt649981$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
-    "__@BRAND@647543": "atBRANDAt647543",
+    "__@BRAND@649981": "atBRANDAt649981",
   });
 });
-
 /** @internal */
 export type MinLength$Outbound = {
-  "__@BRAND@647543": AtBRANDAt647543$Outbound;
+  "__@BRAND@649981": AtBRANDAt649981$Outbound;
 };
 
 /** @internal */
@@ -17302,30 +13205,16 @@ export const MinLength$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   MinLength
 > = z.object({
-  atBRANDAt647543: z.lazy(() => AtBRANDAt647543$outboundSchema),
+  atBRANDAt649981: z.lazy(() => AtBRANDAt649981$outboundSchema),
 }).transform((v) => {
   return remap$(v, {
-    atBRANDAt647543: "__@BRAND@647543",
+    atBRANDAt649981: "__@BRAND@649981",
   });
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MinLength$ {
-  /** @deprecated use `MinLength$inboundSchema` instead. */
-  export const inboundSchema = MinLength$inboundSchema;
-  /** @deprecated use `MinLength$outboundSchema` instead. */
-  export const outboundSchema = MinLength$outboundSchema;
-  /** @deprecated use `MinLength$Outbound` instead. */
-  export type Outbound = MinLength$Outbound;
-}
 
 export function minLengthToJSON(minLength: MinLength): string {
   return JSON.stringify(MinLength$outboundSchema.parse(minLength));
 }
-
 export function minLengthFromJSON(
   jsonString: string,
 ): SafeParseResult<MinLength, SDKValidationError> {
@@ -17337,50 +13226,35 @@ export function minLengthFromJSON(
 }
 
 /** @internal */
-export const PropertiesAtBRANDAt647543$inboundSchema: z.ZodType<
-  PropertiesAtBRANDAt647543,
+export const PropertiesAtBRANDAt649981$inboundSchema: z.ZodType<
+  PropertiesAtBRANDAt649981,
   z.ZodTypeDef,
   unknown
 > = z.object({});
+/** @internal */
+export type PropertiesAtBRANDAt649981$Outbound = {};
 
 /** @internal */
-export type PropertiesAtBRANDAt647543$Outbound = {};
-
-/** @internal */
-export const PropertiesAtBRANDAt647543$outboundSchema: z.ZodType<
-  PropertiesAtBRANDAt647543$Outbound,
+export const PropertiesAtBRANDAt649981$outboundSchema: z.ZodType<
+  PropertiesAtBRANDAt649981$Outbound,
   z.ZodTypeDef,
-  PropertiesAtBRANDAt647543
+  PropertiesAtBRANDAt649981
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PropertiesAtBRANDAt647543$ {
-  /** @deprecated use `PropertiesAtBRANDAt647543$inboundSchema` instead. */
-  export const inboundSchema = PropertiesAtBRANDAt647543$inboundSchema;
-  /** @deprecated use `PropertiesAtBRANDAt647543$outboundSchema` instead. */
-  export const outboundSchema = PropertiesAtBRANDAt647543$outboundSchema;
-  /** @deprecated use `PropertiesAtBRANDAt647543$Outbound` instead. */
-  export type Outbound = PropertiesAtBRANDAt647543$Outbound;
-}
-
-export function propertiesAtBRANDAt647543ToJSON(
-  propertiesAtBRANDAt647543: PropertiesAtBRANDAt647543,
+export function propertiesAtBRANDAt649981ToJSON(
+  propertiesAtBRANDAt649981: PropertiesAtBRANDAt649981,
 ): string {
   return JSON.stringify(
-    PropertiesAtBRANDAt647543$outboundSchema.parse(propertiesAtBRANDAt647543),
+    PropertiesAtBRANDAt649981$outboundSchema.parse(propertiesAtBRANDAt649981),
   );
 }
-
-export function propertiesAtBRANDAt647543FromJSON(
+export function propertiesAtBRANDAt649981FromJSON(
   jsonString: string,
-): SafeParseResult<PropertiesAtBRANDAt647543, SDKValidationError> {
+): SafeParseResult<PropertiesAtBRANDAt649981, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PropertiesAtBRANDAt647543$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PropertiesAtBRANDAt647543' from JSON`,
+    (x) => PropertiesAtBRANDAt649981$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PropertiesAtBRANDAt649981' from JSON`,
   );
 }
 
@@ -17390,16 +13264,15 @@ export const MaxLength$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "__@BRAND@647543": z.lazy(() => PropertiesAtBRANDAt647543$inboundSchema),
+  "__@BRAND@649981": z.lazy(() => PropertiesAtBRANDAt649981$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
-    "__@BRAND@647543": "atBRANDAt647543",
+    "__@BRAND@649981": "atBRANDAt649981",
   });
 });
-
 /** @internal */
 export type MaxLength$Outbound = {
-  "__@BRAND@647543": PropertiesAtBRANDAt647543$Outbound;
+  "__@BRAND@649981": PropertiesAtBRANDAt649981$Outbound;
 };
 
 /** @internal */
@@ -17408,30 +13281,16 @@ export const MaxLength$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   MaxLength
 > = z.object({
-  atBRANDAt647543: z.lazy(() => PropertiesAtBRANDAt647543$outboundSchema),
+  atBRANDAt649981: z.lazy(() => PropertiesAtBRANDAt649981$outboundSchema),
 }).transform((v) => {
   return remap$(v, {
-    atBRANDAt647543: "__@BRAND@647543",
+    atBRANDAt649981: "__@BRAND@649981",
   });
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MaxLength$ {
-  /** @deprecated use `MaxLength$inboundSchema` instead. */
-  export const inboundSchema = MaxLength$inboundSchema;
-  /** @deprecated use `MaxLength$outboundSchema` instead. */
-  export const outboundSchema = MaxLength$outboundSchema;
-  /** @deprecated use `MaxLength$Outbound` instead. */
-  export type Outbound = MaxLength$Outbound;
-}
 
 export function maxLengthToJSON(maxLength: MaxLength): string {
   return JSON.stringify(MaxLength$outboundSchema.parse(maxLength));
 }
-
 export function maxLengthFromJSON(
   jsonString: string,
 ): SafeParseResult<MaxLength, SDKValidationError> {
@@ -17443,82 +13302,63 @@ export function maxLengthFromJSON(
 }
 
 /** @internal */
-export const GetConfigurationProductsPropertiesAtBRANDAt647543$inboundSchema:
+export const GetConfigurationProductsPropertiesAtBRANDAt649981$inboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesAtBRANDAt647543,
+    GetConfigurationProductsPropertiesAtBRANDAt649981,
     z.ZodTypeDef,
     unknown
   > = z.object({});
+/** @internal */
+export type GetConfigurationProductsPropertiesAtBRANDAt649981$Outbound = {};
 
 /** @internal */
-export type GetConfigurationProductsPropertiesAtBRANDAt647543$Outbound = {};
-
-/** @internal */
-export const GetConfigurationProductsPropertiesAtBRANDAt647543$outboundSchema:
+export const GetConfigurationProductsPropertiesAtBRANDAt649981$outboundSchema:
   z.ZodType<
-    GetConfigurationProductsPropertiesAtBRANDAt647543$Outbound,
+    GetConfigurationProductsPropertiesAtBRANDAt649981$Outbound,
     z.ZodTypeDef,
-    GetConfigurationProductsPropertiesAtBRANDAt647543
+    GetConfigurationProductsPropertiesAtBRANDAt649981
   > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsPropertiesAtBRANDAt647543$ {
-  /** @deprecated use `GetConfigurationProductsPropertiesAtBRANDAt647543$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsPropertiesAtBRANDAt647543$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesAtBRANDAt647543$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsPropertiesAtBRANDAt647543$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsPropertiesAtBRANDAt647543$Outbound` instead. */
-  export type Outbound =
-    GetConfigurationProductsPropertiesAtBRANDAt647543$Outbound;
-}
-
-export function getConfigurationProductsPropertiesAtBRANDAt647543ToJSON(
-  getConfigurationProductsPropertiesAtBRANDAt647543:
-    GetConfigurationProductsPropertiesAtBRANDAt647543,
+export function getConfigurationProductsPropertiesAtBRANDAt649981ToJSON(
+  getConfigurationProductsPropertiesAtBRANDAt649981:
+    GetConfigurationProductsPropertiesAtBRANDAt649981,
 ): string {
   return JSON.stringify(
-    GetConfigurationProductsPropertiesAtBRANDAt647543$outboundSchema.parse(
-      getConfigurationProductsPropertiesAtBRANDAt647543,
+    GetConfigurationProductsPropertiesAtBRANDAt649981$outboundSchema.parse(
+      getConfigurationProductsPropertiesAtBRANDAt649981,
     ),
   );
 }
-
-export function getConfigurationProductsPropertiesAtBRANDAt647543FromJSON(
+export function getConfigurationProductsPropertiesAtBRANDAt649981FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetConfigurationProductsPropertiesAtBRANDAt647543,
+  GetConfigurationProductsPropertiesAtBRANDAt649981,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetConfigurationProductsPropertiesAtBRANDAt647543$inboundSchema.parse(
+      GetConfigurationProductsPropertiesAtBRANDAt649981$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'GetConfigurationProductsPropertiesAtBRANDAt647543' from JSON`,
+    `Failed to parse 'GetConfigurationProductsPropertiesAtBRANDAt649981' from JSON`,
   );
 }
 
 /** @internal */
 export const Pattern$inboundSchema: z.ZodType<Pattern, z.ZodTypeDef, unknown> =
   z.object({
-    "__@BRAND@647543": z.lazy(() =>
-      GetConfigurationProductsPropertiesAtBRANDAt647543$inboundSchema
+    "__@BRAND@649981": z.lazy(() =>
+      GetConfigurationProductsPropertiesAtBRANDAt649981$inboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      "__@BRAND@647543": "atBRANDAt647543",
+      "__@BRAND@649981": "atBRANDAt649981",
     });
   });
-
 /** @internal */
 export type Pattern$Outbound = {
-  "__@BRAND@647543": GetConfigurationProductsPropertiesAtBRANDAt647543$Outbound;
+  "__@BRAND@649981": GetConfigurationProductsPropertiesAtBRANDAt649981$Outbound;
 };
 
 /** @internal */
@@ -17527,32 +13367,18 @@ export const Pattern$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Pattern
 > = z.object({
-  atBRANDAt647543: z.lazy(() =>
-    GetConfigurationProductsPropertiesAtBRANDAt647543$outboundSchema
+  atBRANDAt649981: z.lazy(() =>
+    GetConfigurationProductsPropertiesAtBRANDAt649981$outboundSchema
   ),
 }).transform((v) => {
   return remap$(v, {
-    atBRANDAt647543: "__@BRAND@647543",
+    atBRANDAt649981: "__@BRAND@649981",
   });
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Pattern$ {
-  /** @deprecated use `Pattern$inboundSchema` instead. */
-  export const inboundSchema = Pattern$inboundSchema;
-  /** @deprecated use `Pattern$outboundSchema` instead. */
-  export const outboundSchema = Pattern$outboundSchema;
-  /** @deprecated use `Pattern$Outbound` instead. */
-  export type Outbound = Pattern$Outbound;
-}
 
 export function patternToJSON(pattern: Pattern): string {
   return JSON.stringify(Pattern$outboundSchema.parse(pattern));
 }
-
 export function patternFromJSON(
   jsonString: string,
 ): SafeParseResult<Pattern, SDKValidationError> {
@@ -17566,21 +13392,9 @@ export function patternFromJSON(
 /** @internal */
 export const UiReadOnly3$inboundSchema: z.ZodNativeEnum<typeof UiReadOnly3> = z
   .nativeEnum(UiReadOnly3);
-
 /** @internal */
 export const UiReadOnly3$outboundSchema: z.ZodNativeEnum<typeof UiReadOnly3> =
   UiReadOnly3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UiReadOnly3$ {
-  /** @deprecated use `UiReadOnly3$inboundSchema` instead. */
-  export const inboundSchema = UiReadOnly3$inboundSchema;
-  /** @deprecated use `UiReadOnly3$outboundSchema` instead. */
-  export const outboundSchema = UiReadOnly3$outboundSchema;
-}
 
 /** @internal */
 export const UiReadOnly2$inboundSchema: z.ZodType<
@@ -17590,7 +13404,6 @@ export const UiReadOnly2$inboundSchema: z.ZodType<
 > = z.object({
   expr: z.string(),
 });
-
 /** @internal */
 export type UiReadOnly2$Outbound = {
   expr: string;
@@ -17605,23 +13418,9 @@ export const UiReadOnly2$outboundSchema: z.ZodType<
   expr: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UiReadOnly2$ {
-  /** @deprecated use `UiReadOnly2$inboundSchema` instead. */
-  export const inboundSchema = UiReadOnly2$inboundSchema;
-  /** @deprecated use `UiReadOnly2$outboundSchema` instead. */
-  export const outboundSchema = UiReadOnly2$outboundSchema;
-  /** @deprecated use `UiReadOnly2$Outbound` instead. */
-  export type Outbound = UiReadOnly2$Outbound;
-}
-
 export function uiReadOnly2ToJSON(uiReadOnly2: UiReadOnly2): string {
   return JSON.stringify(UiReadOnly2$outboundSchema.parse(uiReadOnly2));
 }
-
 export function uiReadOnly2FromJSON(
   jsonString: string,
 ): SafeParseResult<UiReadOnly2, SDKValidationError> {
@@ -17642,7 +13441,6 @@ export const UiReadOnly$inboundSchema: z.ZodType<
   z.boolean(),
   UiReadOnly3$inboundSchema,
 ]);
-
 /** @internal */
 export type UiReadOnly$Outbound = UiReadOnly2$Outbound | boolean | string;
 
@@ -17657,23 +13455,9 @@ export const UiReadOnly$outboundSchema: z.ZodType<
   UiReadOnly3$outboundSchema,
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UiReadOnly$ {
-  /** @deprecated use `UiReadOnly$inboundSchema` instead. */
-  export const inboundSchema = UiReadOnly$inboundSchema;
-  /** @deprecated use `UiReadOnly$outboundSchema` instead. */
-  export const outboundSchema = UiReadOnly$outboundSchema;
-  /** @deprecated use `UiReadOnly$Outbound` instead. */
-  export type Outbound = UiReadOnly$Outbound;
-}
-
 export function uiReadOnlyToJSON(uiReadOnly: UiReadOnly): string {
   return JSON.stringify(UiReadOnly$outboundSchema.parse(uiReadOnly));
 }
-
 export function uiReadOnlyFromJSON(
   jsonString: string,
 ): SafeParseResult<UiReadOnly, SDKValidationError> {
@@ -17687,21 +13471,9 @@ export function uiReadOnlyFromJSON(
 /** @internal */
 export const UiHidden3$inboundSchema: z.ZodNativeEnum<typeof UiHidden3> = z
   .nativeEnum(UiHidden3);
-
 /** @internal */
 export const UiHidden3$outboundSchema: z.ZodNativeEnum<typeof UiHidden3> =
   UiHidden3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UiHidden3$ {
-  /** @deprecated use `UiHidden3$inboundSchema` instead. */
-  export const inboundSchema = UiHidden3$inboundSchema;
-  /** @deprecated use `UiHidden3$outboundSchema` instead. */
-  export const outboundSchema = UiHidden3$outboundSchema;
-}
 
 /** @internal */
 export const UiHidden2$inboundSchema: z.ZodType<
@@ -17711,7 +13483,6 @@ export const UiHidden2$inboundSchema: z.ZodType<
 > = z.object({
   expr: z.string(),
 });
-
 /** @internal */
 export type UiHidden2$Outbound = {
   expr: string;
@@ -17726,23 +13497,9 @@ export const UiHidden2$outboundSchema: z.ZodType<
   expr: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UiHidden2$ {
-  /** @deprecated use `UiHidden2$inboundSchema` instead. */
-  export const inboundSchema = UiHidden2$inboundSchema;
-  /** @deprecated use `UiHidden2$outboundSchema` instead. */
-  export const outboundSchema = UiHidden2$outboundSchema;
-  /** @deprecated use `UiHidden2$Outbound` instead. */
-  export type Outbound = UiHidden2$Outbound;
-}
-
 export function uiHidden2ToJSON(uiHidden2: UiHidden2): string {
   return JSON.stringify(UiHidden2$outboundSchema.parse(uiHidden2));
 }
-
 export function uiHidden2FromJSON(
   jsonString: string,
 ): SafeParseResult<UiHidden2, SDKValidationError> {
@@ -17763,7 +13520,6 @@ export const UiHidden$inboundSchema: z.ZodType<
   z.boolean(),
   UiHidden3$inboundSchema,
 ]);
-
 /** @internal */
 export type UiHidden$Outbound = UiHidden2$Outbound | boolean | string;
 
@@ -17778,23 +13534,9 @@ export const UiHidden$outboundSchema: z.ZodType<
   UiHidden3$outboundSchema,
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UiHidden$ {
-  /** @deprecated use `UiHidden$inboundSchema` instead. */
-  export const inboundSchema = UiHidden$inboundSchema;
-  /** @deprecated use `UiHidden$outboundSchema` instead. */
-  export const outboundSchema = UiHidden$outboundSchema;
-  /** @deprecated use `UiHidden$Outbound` instead. */
-  export type Outbound = UiHidden$Outbound;
-}
-
 export function uiHiddenToJSON(uiHidden: UiHidden): string {
   return JSON.stringify(UiHidden$outboundSchema.parse(uiHidden));
 }
-
 export function uiHiddenFromJSON(
   jsonString: string,
 ): SafeParseResult<UiHidden, SDKValidationError> {
@@ -17808,21 +13550,9 @@ export function uiHiddenFromJSON(
 /** @internal */
 export const UiDisabled3$inboundSchema: z.ZodNativeEnum<typeof UiDisabled3> = z
   .nativeEnum(UiDisabled3);
-
 /** @internal */
 export const UiDisabled3$outboundSchema: z.ZodNativeEnum<typeof UiDisabled3> =
   UiDisabled3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UiDisabled3$ {
-  /** @deprecated use `UiDisabled3$inboundSchema` instead. */
-  export const inboundSchema = UiDisabled3$inboundSchema;
-  /** @deprecated use `UiDisabled3$outboundSchema` instead. */
-  export const outboundSchema = UiDisabled3$outboundSchema;
-}
 
 /** @internal */
 export const UiDisabled2$inboundSchema: z.ZodType<
@@ -17832,7 +13562,6 @@ export const UiDisabled2$inboundSchema: z.ZodType<
 > = z.object({
   expr: z.string(),
 });
-
 /** @internal */
 export type UiDisabled2$Outbound = {
   expr: string;
@@ -17847,23 +13576,9 @@ export const UiDisabled2$outboundSchema: z.ZodType<
   expr: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UiDisabled2$ {
-  /** @deprecated use `UiDisabled2$inboundSchema` instead. */
-  export const inboundSchema = UiDisabled2$inboundSchema;
-  /** @deprecated use `UiDisabled2$outboundSchema` instead. */
-  export const outboundSchema = UiDisabled2$outboundSchema;
-  /** @deprecated use `UiDisabled2$Outbound` instead. */
-  export type Outbound = UiDisabled2$Outbound;
-}
-
 export function uiDisabled2ToJSON(uiDisabled2: UiDisabled2): string {
   return JSON.stringify(UiDisabled2$outboundSchema.parse(uiDisabled2));
 }
-
 export function uiDisabled2FromJSON(
   jsonString: string,
 ): SafeParseResult<UiDisabled2, SDKValidationError> {
@@ -17884,7 +13599,6 @@ export const UiDisabled$inboundSchema: z.ZodType<
   z.boolean(),
   UiDisabled3$inboundSchema,
 ]);
-
 /** @internal */
 export type UiDisabled$Outbound = UiDisabled2$Outbound | boolean | string;
 
@@ -17899,23 +13613,9 @@ export const UiDisabled$outboundSchema: z.ZodType<
   UiDisabled3$outboundSchema,
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UiDisabled$ {
-  /** @deprecated use `UiDisabled$inboundSchema` instead. */
-  export const inboundSchema = UiDisabled$inboundSchema;
-  /** @deprecated use `UiDisabled$outboundSchema` instead. */
-  export const outboundSchema = UiDisabled$outboundSchema;
-  /** @deprecated use `UiDisabled$Outbound` instead. */
-  export type Outbound = UiDisabled$Outbound;
-}
-
 export function uiDisabledToJSON(uiDisabled: UiDisabled): string {
   return JSON.stringify(UiDisabled$outboundSchema.parse(uiDisabled));
 }
-
 export function uiDisabledFromJSON(
   jsonString: string,
 ): SafeParseResult<UiDisabled, SDKValidationError> {
@@ -17934,7 +13634,6 @@ export const UiDescription2$inboundSchema: z.ZodType<
 > = z.object({
   expr: z.string(),
 });
-
 /** @internal */
 export type UiDescription2$Outbound = {
   expr: string;
@@ -17949,23 +13648,9 @@ export const UiDescription2$outboundSchema: z.ZodType<
   expr: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UiDescription2$ {
-  /** @deprecated use `UiDescription2$inboundSchema` instead. */
-  export const inboundSchema = UiDescription2$inboundSchema;
-  /** @deprecated use `UiDescription2$outboundSchema` instead. */
-  export const outboundSchema = UiDescription2$outboundSchema;
-  /** @deprecated use `UiDescription2$Outbound` instead. */
-  export type Outbound = UiDescription2$Outbound;
-}
-
 export function uiDescription2ToJSON(uiDescription2: UiDescription2): string {
   return JSON.stringify(UiDescription2$outboundSchema.parse(uiDescription2));
 }
-
 export function uiDescription2FromJSON(
   jsonString: string,
 ): SafeParseResult<UiDescription2, SDKValidationError> {
@@ -17982,7 +13667,6 @@ export const UiDescription$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.lazy(() => UiDescription2$inboundSchema), z.string()]);
-
 /** @internal */
 export type UiDescription$Outbound = UiDescription2$Outbound | string;
 
@@ -17993,23 +13677,9 @@ export const UiDescription$outboundSchema: z.ZodType<
   UiDescription
 > = z.union([z.lazy(() => UiDescription2$outboundSchema), z.string()]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UiDescription$ {
-  /** @deprecated use `UiDescription$inboundSchema` instead. */
-  export const inboundSchema = UiDescription$inboundSchema;
-  /** @deprecated use `UiDescription$outboundSchema` instead. */
-  export const outboundSchema = UiDescription$outboundSchema;
-  /** @deprecated use `UiDescription$Outbound` instead. */
-  export type Outbound = UiDescription$Outbound;
-}
-
 export function uiDescriptionToJSON(uiDescription: UiDescription): string {
   return JSON.stringify(UiDescription$outboundSchema.parse(uiDescription));
 }
-
 export function uiDescriptionFromJSON(
   jsonString: string,
 ): SafeParseResult<UiDescription, SDKValidationError> {
@@ -18028,7 +13698,6 @@ export const UiFormattedValue$inboundSchema: z.ZodType<
 > = z.object({
   expr: z.string(),
 });
-
 /** @internal */
 export type UiFormattedValue$Outbound = {
   expr: string;
@@ -18043,19 +13712,6 @@ export const UiFormattedValue$outboundSchema: z.ZodType<
   expr: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UiFormattedValue$ {
-  /** @deprecated use `UiFormattedValue$inboundSchema` instead. */
-  export const inboundSchema = UiFormattedValue$inboundSchema;
-  /** @deprecated use `UiFormattedValue$outboundSchema` instead. */
-  export const outboundSchema = UiFormattedValue$outboundSchema;
-  /** @deprecated use `UiFormattedValue$Outbound` instead. */
-  export type Outbound = UiFormattedValue$Outbound;
-}
-
 export function uiFormattedValueToJSON(
   uiFormattedValue: UiFormattedValue,
 ): string {
@@ -18063,7 +13719,6 @@ export function uiFormattedValueToJSON(
     UiFormattedValue$outboundSchema.parse(uiFormattedValue),
   );
 }
-
 export function uiFormattedValueFromJSON(
   jsonString: string,
 ): SafeParseResult<UiFormattedValue, SDKValidationError> {
@@ -18122,7 +13777,6 @@ export const Properties1$inboundSchema: z.ZodType<
     "ui:placeholder": "uiPlaceholder",
   });
 });
-
 /** @internal */
 export type Properties1$Outbound = {
   type: string;
@@ -18191,23 +13845,9 @@ export const Properties1$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Properties1$ {
-  /** @deprecated use `Properties1$inboundSchema` instead. */
-  export const inboundSchema = Properties1$inboundSchema;
-  /** @deprecated use `Properties1$outboundSchema` instead. */
-  export const outboundSchema = Properties1$outboundSchema;
-  /** @deprecated use `Properties1$Outbound` instead. */
-  export type Outbound = Properties1$Outbound;
-}
-
 export function properties1ToJSON(properties1: Properties1): string {
   return JSON.stringify(Properties1$outboundSchema.parse(properties1));
 }
-
 export function properties1FromJSON(
   jsonString: string,
 ): SafeParseResult<Properties1, SDKValidationError> {
@@ -18235,7 +13875,6 @@ export const Properties$inboundSchema: z.ZodType<
   z.lazy(() => Properties9$inboundSchema),
   z.lazy(() => Properties10$inboundSchema),
 ]);
-
 /** @internal */
 export type Properties$Outbound =
   | Properties4$Outbound
@@ -18267,23 +13906,9 @@ export const Properties$outboundSchema: z.ZodType<
   z.lazy(() => Properties10$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Properties$ {
-  /** @deprecated use `Properties$inboundSchema` instead. */
-  export const inboundSchema = Properties$inboundSchema;
-  /** @deprecated use `Properties$outboundSchema` instead. */
-  export const outboundSchema = Properties$outboundSchema;
-  /** @deprecated use `Properties$Outbound` instead. */
-  export type Outbound = Properties$Outbound;
-}
-
 export function propertiesToJSON(properties: Properties): string {
   return JSON.stringify(Properties$outboundSchema.parse(properties));
 }
-
 export function propertiesFromJSON(
   jsonString: string,
 ): SafeParseResult<Properties, SDKValidationError> {
@@ -18317,7 +13942,6 @@ export const MetadataSchema$inboundSchema: z.ZodType<
   ),
   required: z.array(z.string()).optional(),
 });
-
 /** @internal */
 export type MetadataSchema$Outbound = {
   type: string;
@@ -18361,23 +13985,9 @@ export const MetadataSchema$outboundSchema: z.ZodType<
   required: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MetadataSchema$ {
-  /** @deprecated use `MetadataSchema$inboundSchema` instead. */
-  export const inboundSchema = MetadataSchema$inboundSchema;
-  /** @deprecated use `MetadataSchema$outboundSchema` instead. */
-  export const outboundSchema = MetadataSchema$outboundSchema;
-  /** @deprecated use `MetadataSchema$Outbound` instead. */
-  export type Outbound = MetadataSchema$Outbound;
-}
-
 export function metadataSchemaToJSON(metadataSchema: MetadataSchema): string {
   return JSON.stringify(MetadataSchema$outboundSchema.parse(metadataSchema));
 }
-
 export function metadataSchemaFromJSON(
   jsonString: string,
 ): SafeParseResult<MetadataSchema, SDKValidationError> {
@@ -18401,7 +14011,6 @@ export const Products$inboundSchema: z.ZodType<
   primaryProtocol: PrimaryProtocol$inboundSchema.optional(),
   metadataSchema: z.lazy(() => MetadataSchema$inboundSchema),
 });
-
 /** @internal */
 export type Products$Outbound = {
   id: string;
@@ -18426,23 +14035,9 @@ export const Products$outboundSchema: z.ZodType<
   metadataSchema: z.lazy(() => MetadataSchema$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Products$ {
-  /** @deprecated use `Products$inboundSchema` instead. */
-  export const inboundSchema = Products$inboundSchema;
-  /** @deprecated use `Products$outboundSchema` instead. */
-  export const outboundSchema = Products$outboundSchema;
-  /** @deprecated use `Products$Outbound` instead. */
-  export type Outbound = Products$Outbound;
-}
-
 export function productsToJSON(products: Products): string {
   return JSON.stringify(Products$outboundSchema.parse(products));
 }
-
 export function productsFromJSON(
   jsonString: string,
 ): SafeParseResult<Products, SDKValidationError> {
@@ -18463,7 +14058,6 @@ export const Integration$inboundSchema: z.ZodType<
   slug: z.string(),
   name: z.string(),
 });
-
 /** @internal */
 export type Integration$Outbound = {
   id: string;
@@ -18482,23 +14076,9 @@ export const Integration$outboundSchema: z.ZodType<
   name: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Integration$ {
-  /** @deprecated use `Integration$inboundSchema` instead. */
-  export const inboundSchema = Integration$inboundSchema;
-  /** @deprecated use `Integration$outboundSchema` instead. */
-  export const outboundSchema = Integration$outboundSchema;
-  /** @deprecated use `Integration$Outbound` instead. */
-  export type Outbound = Integration$Outbound;
-}
-
 export function integrationToJSON(integration: Integration): string {
   return JSON.stringify(Integration$outboundSchema.parse(integration));
 }
-
 export function integrationFromJSON(
   jsonString: string,
 ): SafeParseResult<Integration, SDKValidationError> {
@@ -18517,7 +14097,6 @@ export const GetConfigurationProductsConfiguration$inboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
 });
-
 /** @internal */
 export type GetConfigurationProductsConfiguration$Outbound = {
   id: string;
@@ -18532,21 +14111,6 @@ export const GetConfigurationProductsConfiguration$outboundSchema: z.ZodType<
   id: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsConfiguration$ {
-  /** @deprecated use `GetConfigurationProductsConfiguration$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsConfiguration$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsConfiguration$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsConfiguration$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsConfiguration$Outbound` instead. */
-  export type Outbound = GetConfigurationProductsConfiguration$Outbound;
-}
-
 export function getConfigurationProductsConfigurationToJSON(
   getConfigurationProductsConfiguration: GetConfigurationProductsConfiguration,
 ): string {
@@ -18556,7 +14120,6 @@ export function getConfigurationProductsConfigurationToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsConfigurationFromJSON(
   jsonString: string,
 ): SafeParseResult<GetConfigurationProductsConfiguration, SDKValidationError> {
@@ -18580,7 +14143,6 @@ export const GetConfigurationProductsResponseBody$inboundSchema: z.ZodType<
     GetConfigurationProductsConfiguration$inboundSchema
   ),
 });
-
 /** @internal */
 export type GetConfigurationProductsResponseBody$Outbound = {
   products: Array<Products$Outbound>;
@@ -18601,21 +14163,6 @@ export const GetConfigurationProductsResponseBody$outboundSchema: z.ZodType<
   ),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationProductsResponseBody$ {
-  /** @deprecated use `GetConfigurationProductsResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationProductsResponseBody$inboundSchema;
-  /** @deprecated use `GetConfigurationProductsResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationProductsResponseBody$outboundSchema;
-  /** @deprecated use `GetConfigurationProductsResponseBody$Outbound` instead. */
-  export type Outbound = GetConfigurationProductsResponseBody$Outbound;
-}
-
 export function getConfigurationProductsResponseBodyToJSON(
   getConfigurationProductsResponseBody: GetConfigurationProductsResponseBody,
 ): string {
@@ -18625,7 +14172,6 @@ export function getConfigurationProductsResponseBodyToJSON(
     ),
   );
 }
-
 export function getConfigurationProductsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetConfigurationProductsResponseBody, SDKValidationError> {

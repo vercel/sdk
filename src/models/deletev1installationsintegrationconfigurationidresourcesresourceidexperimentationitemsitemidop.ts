@@ -25,7 +25,6 @@ export const DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdE
     resourceId: z.string(),
     itemId: z.string(),
   });
-
 /** @internal */
 export type DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest$Outbound =
   {
@@ -46,22 +45,6 @@ export const DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdE
     itemId: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest$ {
-  /** @deprecated use `DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest$inboundSchema;
-  /** @deprecated use `DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest$outboundSchema;
-  /** @deprecated use `DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest$Outbound` instead. */
-  export type Outbound =
-    DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest$Outbound;
-}
-
 export function deleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequestToJSON(
   deleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest:
     DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest,
@@ -73,7 +56,6 @@ export function deleteV1InstallationsIntegrationConfigurationIdResourcesResource
       ),
   );
 }
-
 export function deleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<

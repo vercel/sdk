@@ -44,7 +44,6 @@ export const BatchRemoveProjectEnvRequestBody$inboundSchema: z.ZodType<
 > = z.object({
   ids: z.array(z.string()),
 });
-
 /** @internal */
 export type BatchRemoveProjectEnvRequestBody$Outbound = {
   ids: Array<string>;
@@ -59,19 +58,6 @@ export const BatchRemoveProjectEnvRequestBody$outboundSchema: z.ZodType<
   ids: z.array(z.string()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BatchRemoveProjectEnvRequestBody$ {
-  /** @deprecated use `BatchRemoveProjectEnvRequestBody$inboundSchema` instead. */
-  export const inboundSchema = BatchRemoveProjectEnvRequestBody$inboundSchema;
-  /** @deprecated use `BatchRemoveProjectEnvRequestBody$outboundSchema` instead. */
-  export const outboundSchema = BatchRemoveProjectEnvRequestBody$outboundSchema;
-  /** @deprecated use `BatchRemoveProjectEnvRequestBody$Outbound` instead. */
-  export type Outbound = BatchRemoveProjectEnvRequestBody$Outbound;
-}
-
 export function batchRemoveProjectEnvRequestBodyToJSON(
   batchRemoveProjectEnvRequestBody: BatchRemoveProjectEnvRequestBody,
 ): string {
@@ -81,7 +67,6 @@ export function batchRemoveProjectEnvRequestBodyToJSON(
     ),
   );
 }
-
 export function batchRemoveProjectEnvRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<BatchRemoveProjectEnvRequestBody, SDKValidationError> {
@@ -108,7 +93,6 @@ export const BatchRemoveProjectEnvRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type BatchRemoveProjectEnvRequest$Outbound = {
   idOrName: string;
@@ -134,19 +118,6 @@ export const BatchRemoveProjectEnvRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BatchRemoveProjectEnvRequest$ {
-  /** @deprecated use `BatchRemoveProjectEnvRequest$inboundSchema` instead. */
-  export const inboundSchema = BatchRemoveProjectEnvRequest$inboundSchema;
-  /** @deprecated use `BatchRemoveProjectEnvRequest$outboundSchema` instead. */
-  export const outboundSchema = BatchRemoveProjectEnvRequest$outboundSchema;
-  /** @deprecated use `BatchRemoveProjectEnvRequest$Outbound` instead. */
-  export type Outbound = BatchRemoveProjectEnvRequest$Outbound;
-}
-
 export function batchRemoveProjectEnvRequestToJSON(
   batchRemoveProjectEnvRequest: BatchRemoveProjectEnvRequest,
 ): string {
@@ -156,7 +127,6 @@ export function batchRemoveProjectEnvRequestToJSON(
     ),
   );
 }
-
 export function batchRemoveProjectEnvRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<BatchRemoveProjectEnvRequest, SDKValidationError> {
@@ -176,7 +146,6 @@ export const BatchRemoveProjectEnvResponseBody$inboundSchema: z.ZodType<
   deleted: z.number(),
   ids: z.array(z.string()),
 });
-
 /** @internal */
 export type BatchRemoveProjectEnvResponseBody$Outbound = {
   deleted: number;
@@ -193,20 +162,6 @@ export const BatchRemoveProjectEnvResponseBody$outboundSchema: z.ZodType<
   ids: z.array(z.string()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BatchRemoveProjectEnvResponseBody$ {
-  /** @deprecated use `BatchRemoveProjectEnvResponseBody$inboundSchema` instead. */
-  export const inboundSchema = BatchRemoveProjectEnvResponseBody$inboundSchema;
-  /** @deprecated use `BatchRemoveProjectEnvResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    BatchRemoveProjectEnvResponseBody$outboundSchema;
-  /** @deprecated use `BatchRemoveProjectEnvResponseBody$Outbound` instead. */
-  export type Outbound = BatchRemoveProjectEnvResponseBody$Outbound;
-}
-
 export function batchRemoveProjectEnvResponseBodyToJSON(
   batchRemoveProjectEnvResponseBody: BatchRemoveProjectEnvResponseBody,
 ): string {
@@ -216,7 +171,6 @@ export function batchRemoveProjectEnvResponseBodyToJSON(
     ),
   );
 }
-
 export function batchRemoveProjectEnvResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<BatchRemoveProjectEnvResponseBody, SDKValidationError> {

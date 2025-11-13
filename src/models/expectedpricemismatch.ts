@@ -50,22 +50,10 @@ export class ExpectedPriceMismatch extends VercelError {
 export const ExpectedPriceMismatchCode$inboundSchema: z.ZodNativeEnum<
   typeof ExpectedPriceMismatchCode
 > = z.nativeEnum(ExpectedPriceMismatchCode);
-
 /** @internal */
 export const ExpectedPriceMismatchCode$outboundSchema: z.ZodNativeEnum<
   typeof ExpectedPriceMismatchCode
 > = ExpectedPriceMismatchCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ExpectedPriceMismatchCode$ {
-  /** @deprecated use `ExpectedPriceMismatchCode$inboundSchema` instead. */
-  export const inboundSchema = ExpectedPriceMismatchCode$inboundSchema;
-  /** @deprecated use `ExpectedPriceMismatchCode$outboundSchema` instead. */
-  export const outboundSchema = ExpectedPriceMismatchCode$outboundSchema;
-}
 
 /** @internal */
 export const ExpectedPriceMismatch$inboundSchema: z.ZodType<
@@ -107,16 +95,3 @@ export const ExpectedPriceMismatch$outboundSchema: z.ZodType<
     code: ExpectedPriceMismatchCode$outboundSchema,
     message: z.string(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ExpectedPriceMismatch$ {
-  /** @deprecated use `ExpectedPriceMismatch$inboundSchema` instead. */
-  export const inboundSchema = ExpectedPriceMismatch$inboundSchema;
-  /** @deprecated use `ExpectedPriceMismatch$outboundSchema` instead. */
-  export const outboundSchema = ExpectedPriceMismatch$outboundSchema;
-  /** @deprecated use `ExpectedPriceMismatch$Outbound` instead. */
-  export type Outbound = ExpectedPriceMismatch$Outbound;
-}

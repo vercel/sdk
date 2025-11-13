@@ -311,7 +311,6 @@ export const RequestBodyEvs$inboundSchema: z.ZodType<
   value: z.string(),
   comment: z.string().optional(),
 });
-
 /** @internal */
 export type RequestBodyEvs$Outbound = {
   key: string;
@@ -330,23 +329,9 @@ export const RequestBodyEvs$outboundSchema: z.ZodType<
   comment: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestBodyEvs$ {
-  /** @deprecated use `RequestBodyEvs$inboundSchema` instead. */
-  export const inboundSchema = RequestBodyEvs$inboundSchema;
-  /** @deprecated use `RequestBodyEvs$outboundSchema` instead. */
-  export const outboundSchema = RequestBodyEvs$outboundSchema;
-  /** @deprecated use `RequestBodyEvs$Outbound` instead. */
-  export type Outbound = RequestBodyEvs$Outbound;
-}
-
 export function requestBodyEvsToJSON(requestBodyEvs: RequestBodyEvs): string {
   return JSON.stringify(RequestBodyEvs$outboundSchema.parse(requestBodyEvs));
 }
-
 export function requestBodyEvsFromJSON(
   jsonString: string,
 ): SafeParseResult<RequestBodyEvs, SDKValidationError> {
@@ -361,47 +346,19 @@ export function requestBodyEvsFromJSON(
 export const CreateSharedEnvVariableRequestBodyEnvironmentType$inboundSchema:
   z.ZodNativeEnum<typeof CreateSharedEnvVariableRequestBodyEnvironmentType> = z
     .nativeEnum(CreateSharedEnvVariableRequestBodyEnvironmentType);
-
 /** @internal */
 export const CreateSharedEnvVariableRequestBodyEnvironmentType$outboundSchema:
   z.ZodNativeEnum<typeof CreateSharedEnvVariableRequestBodyEnvironmentType> =
     CreateSharedEnvVariableRequestBodyEnvironmentType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateSharedEnvVariableRequestBodyEnvironmentType$ {
-  /** @deprecated use `CreateSharedEnvVariableRequestBodyEnvironmentType$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateSharedEnvVariableRequestBodyEnvironmentType$inboundSchema;
-  /** @deprecated use `CreateSharedEnvVariableRequestBodyEnvironmentType$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateSharedEnvVariableRequestBodyEnvironmentType$outboundSchema;
-}
-
 /** @internal */
 export const CreateSharedEnvVariableRequestBodyTarget$inboundSchema:
   z.ZodNativeEnum<typeof CreateSharedEnvVariableRequestBodyTarget> = z
     .nativeEnum(CreateSharedEnvVariableRequestBodyTarget);
-
 /** @internal */
 export const CreateSharedEnvVariableRequestBodyTarget$outboundSchema:
   z.ZodNativeEnum<typeof CreateSharedEnvVariableRequestBodyTarget> =
     CreateSharedEnvVariableRequestBodyTarget$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateSharedEnvVariableRequestBodyTarget$ {
-  /** @deprecated use `CreateSharedEnvVariableRequestBodyTarget$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateSharedEnvVariableRequestBodyTarget$inboundSchema;
-  /** @deprecated use `CreateSharedEnvVariableRequestBodyTarget$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateSharedEnvVariableRequestBodyTarget$outboundSchema;
-}
 
 /** @internal */
 export const CreateSharedEnvVariableRequestBody2$inboundSchema: z.ZodType<
@@ -416,7 +373,6 @@ export const CreateSharedEnvVariableRequestBody2$inboundSchema: z.ZodType<
     .optional(),
   projectId: z.array(z.string()).optional(),
 });
-
 /** @internal */
 export type CreateSharedEnvVariableRequestBody2$Outbound = {
   evs: Array<RequestBodyEvs$Outbound>;
@@ -439,21 +395,6 @@ export const CreateSharedEnvVariableRequestBody2$outboundSchema: z.ZodType<
   projectId: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateSharedEnvVariableRequestBody2$ {
-  /** @deprecated use `CreateSharedEnvVariableRequestBody2$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateSharedEnvVariableRequestBody2$inboundSchema;
-  /** @deprecated use `CreateSharedEnvVariableRequestBody2$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateSharedEnvVariableRequestBody2$outboundSchema;
-  /** @deprecated use `CreateSharedEnvVariableRequestBody2$Outbound` instead. */
-  export type Outbound = CreateSharedEnvVariableRequestBody2$Outbound;
-}
-
 export function createSharedEnvVariableRequestBody2ToJSON(
   createSharedEnvVariableRequestBody2: CreateSharedEnvVariableRequestBody2,
 ): string {
@@ -463,7 +404,6 @@ export function createSharedEnvVariableRequestBody2ToJSON(
     ),
   );
 }
-
 export function createSharedEnvVariableRequestBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<CreateSharedEnvVariableRequestBody2, SDKValidationError> {
@@ -482,7 +422,6 @@ export const Evs$inboundSchema: z.ZodType<Evs, z.ZodTypeDef, unknown> = z
     value: z.string(),
     comment: z.string().optional(),
   });
-
 /** @internal */
 export type Evs$Outbound = {
   key: string;
@@ -498,23 +437,9 @@ export const Evs$outboundSchema: z.ZodType<Evs$Outbound, z.ZodTypeDef, Evs> = z
     comment: z.string().optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Evs$ {
-  /** @deprecated use `Evs$inboundSchema` instead. */
-  export const inboundSchema = Evs$inboundSchema;
-  /** @deprecated use `Evs$outboundSchema` instead. */
-  export const outboundSchema = Evs$outboundSchema;
-  /** @deprecated use `Evs$Outbound` instead. */
-  export type Outbound = Evs$Outbound;
-}
-
 export function evsToJSON(evs: Evs): string {
   return JSON.stringify(Evs$outboundSchema.parse(evs));
 }
-
 export function evsFromJSON(
   jsonString: string,
 ): SafeParseResult<Evs, SDKValidationError> {
@@ -530,45 +455,19 @@ export const CreateSharedEnvVariableRequestBodyType$inboundSchema:
   z.ZodNativeEnum<typeof CreateSharedEnvVariableRequestBodyType> = z.nativeEnum(
     CreateSharedEnvVariableRequestBodyType,
   );
-
 /** @internal */
 export const CreateSharedEnvVariableRequestBodyType$outboundSchema:
   z.ZodNativeEnum<typeof CreateSharedEnvVariableRequestBodyType> =
     CreateSharedEnvVariableRequestBodyType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateSharedEnvVariableRequestBodyType$ {
-  /** @deprecated use `CreateSharedEnvVariableRequestBodyType$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateSharedEnvVariableRequestBodyType$inboundSchema;
-  /** @deprecated use `CreateSharedEnvVariableRequestBodyType$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateSharedEnvVariableRequestBodyType$outboundSchema;
-}
-
 /** @internal */
 export const RequestBodyTarget$inboundSchema: z.ZodNativeEnum<
   typeof RequestBodyTarget
 > = z.nativeEnum(RequestBodyTarget);
-
 /** @internal */
 export const RequestBodyTarget$outboundSchema: z.ZodNativeEnum<
   typeof RequestBodyTarget
 > = RequestBodyTarget$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestBodyTarget$ {
-  /** @deprecated use `RequestBodyTarget$inboundSchema` instead. */
-  export const inboundSchema = RequestBodyTarget$inboundSchema;
-  /** @deprecated use `RequestBodyTarget$outboundSchema` instead. */
-  export const outboundSchema = RequestBodyTarget$outboundSchema;
-}
 
 /** @internal */
 export const CreateSharedEnvVariableRequestBody1$inboundSchema: z.ZodType<
@@ -581,7 +480,6 @@ export const CreateSharedEnvVariableRequestBody1$inboundSchema: z.ZodType<
   target: z.array(RequestBodyTarget$inboundSchema),
   projectId: z.array(z.string()).optional(),
 });
-
 /** @internal */
 export type CreateSharedEnvVariableRequestBody1$Outbound = {
   evs: Array<Evs$Outbound>;
@@ -602,21 +500,6 @@ export const CreateSharedEnvVariableRequestBody1$outboundSchema: z.ZodType<
   projectId: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateSharedEnvVariableRequestBody1$ {
-  /** @deprecated use `CreateSharedEnvVariableRequestBody1$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateSharedEnvVariableRequestBody1$inboundSchema;
-  /** @deprecated use `CreateSharedEnvVariableRequestBody1$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateSharedEnvVariableRequestBody1$outboundSchema;
-  /** @deprecated use `CreateSharedEnvVariableRequestBody1$Outbound` instead. */
-  export type Outbound = CreateSharedEnvVariableRequestBody1$Outbound;
-}
-
 export function createSharedEnvVariableRequestBody1ToJSON(
   createSharedEnvVariableRequestBody1: CreateSharedEnvVariableRequestBody1,
 ): string {
@@ -626,7 +509,6 @@ export function createSharedEnvVariableRequestBody1ToJSON(
     ),
   );
 }
-
 export function createSharedEnvVariableRequestBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<CreateSharedEnvVariableRequestBody1, SDKValidationError> {
@@ -647,7 +529,6 @@ export const CreateSharedEnvVariableRequestBody$inboundSchema: z.ZodType<
   z.lazy(() => CreateSharedEnvVariableRequestBody1$inboundSchema),
   z.lazy(() => CreateSharedEnvVariableRequestBody2$inboundSchema),
 ]);
-
 /** @internal */
 export type CreateSharedEnvVariableRequestBody$Outbound =
   | CreateSharedEnvVariableRequestBody1$Outbound
@@ -663,20 +544,6 @@ export const CreateSharedEnvVariableRequestBody$outboundSchema: z.ZodType<
   z.lazy(() => CreateSharedEnvVariableRequestBody2$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateSharedEnvVariableRequestBody$ {
-  /** @deprecated use `CreateSharedEnvVariableRequestBody$inboundSchema` instead. */
-  export const inboundSchema = CreateSharedEnvVariableRequestBody$inboundSchema;
-  /** @deprecated use `CreateSharedEnvVariableRequestBody$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateSharedEnvVariableRequestBody$outboundSchema;
-  /** @deprecated use `CreateSharedEnvVariableRequestBody$Outbound` instead. */
-  export type Outbound = CreateSharedEnvVariableRequestBody$Outbound;
-}
-
 export function createSharedEnvVariableRequestBodyToJSON(
   createSharedEnvVariableRequestBody: CreateSharedEnvVariableRequestBody,
 ): string {
@@ -686,7 +553,6 @@ export function createSharedEnvVariableRequestBodyToJSON(
     ),
   );
 }
-
 export function createSharedEnvVariableRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateSharedEnvVariableRequestBody, SDKValidationError> {
@@ -715,7 +581,6 @@ export const CreateSharedEnvVariableRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type CreateSharedEnvVariableRequest$Outbound = {
   teamId?: string | undefined;
@@ -744,19 +609,6 @@ export const CreateSharedEnvVariableRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateSharedEnvVariableRequest$ {
-  /** @deprecated use `CreateSharedEnvVariableRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateSharedEnvVariableRequest$inboundSchema;
-  /** @deprecated use `CreateSharedEnvVariableRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateSharedEnvVariableRequest$outboundSchema;
-  /** @deprecated use `CreateSharedEnvVariableRequest$Outbound` instead. */
-  export type Outbound = CreateSharedEnvVariableRequest$Outbound;
-}
-
 export function createSharedEnvVariableRequestToJSON(
   createSharedEnvVariableRequest: CreateSharedEnvVariableRequest,
 ): string {
@@ -766,7 +618,6 @@ export function createSharedEnvVariableRequestToJSON(
     ),
   );
 }
-
 export function createSharedEnvVariableRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateSharedEnvVariableRequest, SDKValidationError> {
@@ -781,43 +632,19 @@ export function createSharedEnvVariableRequestFromJSON(
 export const CreateSharedEnvVariableType$inboundSchema: z.ZodNativeEnum<
   typeof CreateSharedEnvVariableType
 > = z.nativeEnum(CreateSharedEnvVariableType);
-
 /** @internal */
 export const CreateSharedEnvVariableType$outboundSchema: z.ZodNativeEnum<
   typeof CreateSharedEnvVariableType
 > = CreateSharedEnvVariableType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateSharedEnvVariableType$ {
-  /** @deprecated use `CreateSharedEnvVariableType$inboundSchema` instead. */
-  export const inboundSchema = CreateSharedEnvVariableType$inboundSchema;
-  /** @deprecated use `CreateSharedEnvVariableType$outboundSchema` instead. */
-  export const outboundSchema = CreateSharedEnvVariableType$outboundSchema;
-}
-
 /** @internal */
 export const CreateSharedEnvVariableTarget$inboundSchema: z.ZodNativeEnum<
   typeof CreateSharedEnvVariableTarget
 > = z.nativeEnum(CreateSharedEnvVariableTarget);
-
 /** @internal */
 export const CreateSharedEnvVariableTarget$outboundSchema: z.ZodNativeEnum<
   typeof CreateSharedEnvVariableTarget
 > = CreateSharedEnvVariableTarget$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateSharedEnvVariableTarget$ {
-  /** @deprecated use `CreateSharedEnvVariableTarget$inboundSchema` instead. */
-  export const inboundSchema = CreateSharedEnvVariableTarget$inboundSchema;
-  /** @deprecated use `CreateSharedEnvVariableTarget$outboundSchema` instead. */
-  export const outboundSchema = CreateSharedEnvVariableTarget$outboundSchema;
-}
 
 /** @internal */
 export const Created$inboundSchema: z.ZodType<Created, z.ZodTypeDef, unknown> =
@@ -842,7 +669,6 @@ export const Created$inboundSchema: z.ZodType<Created, z.ZodTypeDef, unknown> =
     comment: z.string().optional(),
     lastEditedByDisplayName: z.string().optional(),
   });
-
 /** @internal */
 export type Created$Outbound = {
   created?: string | undefined;
@@ -891,23 +717,9 @@ export const Created$outboundSchema: z.ZodType<
   lastEditedByDisplayName: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Created$ {
-  /** @deprecated use `Created$inboundSchema` instead. */
-  export const inboundSchema = Created$inboundSchema;
-  /** @deprecated use `Created$outboundSchema` instead. */
-  export const outboundSchema = Created$outboundSchema;
-  /** @deprecated use `Created$Outbound` instead. */
-  export type Outbound = Created$Outbound;
-}
-
 export function createdToJSON(created: Created): string {
   return JSON.stringify(Created$outboundSchema.parse(created));
 }
-
 export function createdFromJSON(
   jsonString: string,
 ): SafeParseResult<Created, SDKValidationError> {
@@ -921,21 +733,9 @@ export function createdFromJSON(
 /** @internal */
 export const Value2$inboundSchema: z.ZodNativeEnum<typeof Value2> = z
   .nativeEnum(Value2);
-
 /** @internal */
 export const Value2$outboundSchema: z.ZodNativeEnum<typeof Value2> =
   Value2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Value2$ {
-  /** @deprecated use `Value2$inboundSchema` instead. */
-  export const inboundSchema = Value2$inboundSchema;
-  /** @deprecated use `Value2$outboundSchema` instead. */
-  export const outboundSchema = Value2$outboundSchema;
-}
 
 /** @internal */
 export const CreateSharedEnvVariableValue$inboundSchema: z.ZodType<
@@ -943,7 +743,6 @@ export const CreateSharedEnvVariableValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.string(), z.array(Value2$inboundSchema)]);
-
 /** @internal */
 export type CreateSharedEnvVariableValue$Outbound = string | Array<string>;
 
@@ -954,19 +753,6 @@ export const CreateSharedEnvVariableValue$outboundSchema: z.ZodType<
   CreateSharedEnvVariableValue
 > = z.union([z.string(), z.array(Value2$outboundSchema)]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateSharedEnvVariableValue$ {
-  /** @deprecated use `CreateSharedEnvVariableValue$inboundSchema` instead. */
-  export const inboundSchema = CreateSharedEnvVariableValue$inboundSchema;
-  /** @deprecated use `CreateSharedEnvVariableValue$outboundSchema` instead. */
-  export const outboundSchema = CreateSharedEnvVariableValue$outboundSchema;
-  /** @deprecated use `CreateSharedEnvVariableValue$Outbound` instead. */
-  export type Outbound = CreateSharedEnvVariableValue$Outbound;
-}
-
 export function createSharedEnvVariableValueToJSON(
   createSharedEnvVariableValue: CreateSharedEnvVariableValue,
 ): string {
@@ -976,7 +762,6 @@ export function createSharedEnvVariableValueToJSON(
     ),
   );
 }
-
 export function createSharedEnvVariableValueFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateSharedEnvVariableValue, SDKValidationError> {
@@ -991,43 +776,19 @@ export function createSharedEnvVariableValueFromJSON(
 export const CreateSharedEnvVariableTarget2$inboundSchema: z.ZodNativeEnum<
   typeof CreateSharedEnvVariableTarget2
 > = z.nativeEnum(CreateSharedEnvVariableTarget2);
-
 /** @internal */
 export const CreateSharedEnvVariableTarget2$outboundSchema: z.ZodNativeEnum<
   typeof CreateSharedEnvVariableTarget2
 > = CreateSharedEnvVariableTarget2$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateSharedEnvVariableTarget2$ {
-  /** @deprecated use `CreateSharedEnvVariableTarget2$inboundSchema` instead. */
-  export const inboundSchema = CreateSharedEnvVariableTarget2$inboundSchema;
-  /** @deprecated use `CreateSharedEnvVariableTarget2$outboundSchema` instead. */
-  export const outboundSchema = CreateSharedEnvVariableTarget2$outboundSchema;
-}
-
 /** @internal */
 export const CreateSharedEnvVariableTarget1$inboundSchema: z.ZodNativeEnum<
   typeof CreateSharedEnvVariableTarget1
 > = z.nativeEnum(CreateSharedEnvVariableTarget1);
-
 /** @internal */
 export const CreateSharedEnvVariableTarget1$outboundSchema: z.ZodNativeEnum<
   typeof CreateSharedEnvVariableTarget1
 > = CreateSharedEnvVariableTarget1$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateSharedEnvVariableTarget1$ {
-  /** @deprecated use `CreateSharedEnvVariableTarget1$inboundSchema` instead. */
-  export const inboundSchema = CreateSharedEnvVariableTarget1$inboundSchema;
-  /** @deprecated use `CreateSharedEnvVariableTarget1$outboundSchema` instead. */
-  export const outboundSchema = CreateSharedEnvVariableTarget1$outboundSchema;
-}
 
 /** @internal */
 export const CreateSharedEnvVariableEnvironmentTarget$inboundSchema: z.ZodType<
@@ -1038,7 +799,6 @@ export const CreateSharedEnvVariableEnvironmentTarget$inboundSchema: z.ZodType<
   z.array(CreateSharedEnvVariableTarget1$inboundSchema),
   CreateSharedEnvVariableTarget2$inboundSchema,
 ]);
-
 /** @internal */
 export type CreateSharedEnvVariableEnvironmentTarget$Outbound =
   | Array<string>
@@ -1054,21 +814,6 @@ export const CreateSharedEnvVariableEnvironmentTarget$outboundSchema: z.ZodType<
   CreateSharedEnvVariableTarget2$outboundSchema,
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateSharedEnvVariableEnvironmentTarget$ {
-  /** @deprecated use `CreateSharedEnvVariableEnvironmentTarget$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateSharedEnvVariableEnvironmentTarget$inboundSchema;
-  /** @deprecated use `CreateSharedEnvVariableEnvironmentTarget$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateSharedEnvVariableEnvironmentTarget$outboundSchema;
-  /** @deprecated use `CreateSharedEnvVariableEnvironmentTarget$Outbound` instead. */
-  export type Outbound = CreateSharedEnvVariableEnvironmentTarget$Outbound;
-}
-
 export function createSharedEnvVariableEnvironmentTargetToJSON(
   createSharedEnvVariableEnvironmentTarget:
     CreateSharedEnvVariableEnvironmentTarget,
@@ -1079,7 +824,6 @@ export function createSharedEnvVariableEnvironmentTargetToJSON(
     ),
   );
 }
-
 export function createSharedEnvVariableEnvironmentTargetFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1117,7 +861,6 @@ export const CreateSharedEnvVariableError$inboundSchema: z.ZodType<
   ]).optional(),
   project: z.string().optional(),
 });
-
 /** @internal */
 export type CreateSharedEnvVariableError$Outbound = {
   code: string;
@@ -1155,19 +898,6 @@ export const CreateSharedEnvVariableError$outboundSchema: z.ZodType<
   project: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateSharedEnvVariableError$ {
-  /** @deprecated use `CreateSharedEnvVariableError$inboundSchema` instead. */
-  export const inboundSchema = CreateSharedEnvVariableError$inboundSchema;
-  /** @deprecated use `CreateSharedEnvVariableError$outboundSchema` instead. */
-  export const outboundSchema = CreateSharedEnvVariableError$outboundSchema;
-  /** @deprecated use `CreateSharedEnvVariableError$Outbound` instead. */
-  export type Outbound = CreateSharedEnvVariableError$Outbound;
-}
-
 export function createSharedEnvVariableErrorToJSON(
   createSharedEnvVariableError: CreateSharedEnvVariableError,
 ): string {
@@ -1177,7 +907,6 @@ export function createSharedEnvVariableErrorToJSON(
     ),
   );
 }
-
 export function createSharedEnvVariableErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateSharedEnvVariableError, SDKValidationError> {
@@ -1193,7 +922,6 @@ export const Failed$inboundSchema: z.ZodType<Failed, z.ZodTypeDef, unknown> = z
   .object({
     error: z.lazy(() => CreateSharedEnvVariableError$inboundSchema),
   });
-
 /** @internal */
 export type Failed$Outbound = {
   error: CreateSharedEnvVariableError$Outbound;
@@ -1208,23 +936,9 @@ export const Failed$outboundSchema: z.ZodType<
   error: z.lazy(() => CreateSharedEnvVariableError$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Failed$ {
-  /** @deprecated use `Failed$inboundSchema` instead. */
-  export const inboundSchema = Failed$inboundSchema;
-  /** @deprecated use `Failed$outboundSchema` instead. */
-  export const outboundSchema = Failed$outboundSchema;
-  /** @deprecated use `Failed$Outbound` instead. */
-  export type Outbound = Failed$Outbound;
-}
-
 export function failedToJSON(failed: Failed): string {
   return JSON.stringify(Failed$outboundSchema.parse(failed));
 }
-
 export function failedFromJSON(
   jsonString: string,
 ): SafeParseResult<Failed, SDKValidationError> {
@@ -1244,7 +958,6 @@ export const CreateSharedEnvVariableResponseBody$inboundSchema: z.ZodType<
   created: z.array(z.lazy(() => Created$inboundSchema)),
   failed: z.array(z.lazy(() => Failed$inboundSchema)),
 });
-
 /** @internal */
 export type CreateSharedEnvVariableResponseBody$Outbound = {
   created: Array<Created$Outbound>;
@@ -1261,21 +974,6 @@ export const CreateSharedEnvVariableResponseBody$outboundSchema: z.ZodType<
   failed: z.array(z.lazy(() => Failed$outboundSchema)),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateSharedEnvVariableResponseBody$ {
-  /** @deprecated use `CreateSharedEnvVariableResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateSharedEnvVariableResponseBody$inboundSchema;
-  /** @deprecated use `CreateSharedEnvVariableResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateSharedEnvVariableResponseBody$outboundSchema;
-  /** @deprecated use `CreateSharedEnvVariableResponseBody$Outbound` instead. */
-  export type Outbound = CreateSharedEnvVariableResponseBody$Outbound;
-}
-
 export function createSharedEnvVariableResponseBodyToJSON(
   createSharedEnvVariableResponseBody: CreateSharedEnvVariableResponseBody,
 ): string {
@@ -1285,7 +983,6 @@ export function createSharedEnvVariableResponseBodyToJSON(
     ),
   );
 }
-
 export function createSharedEnvVariableResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateSharedEnvVariableResponseBody, SDKValidationError> {

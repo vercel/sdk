@@ -117,7 +117,6 @@ export const AddBypassIpRequestBody2$inboundSchema: z.ZodType<
   ttl: z.number().optional(),
   note: z.string().optional(),
 });
-
 /** @internal */
 export type AddBypassIpRequestBody2$Outbound = {
   domain?: string | undefined;
@@ -142,19 +141,6 @@ export const AddBypassIpRequestBody2$outboundSchema: z.ZodType<
   note: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AddBypassIpRequestBody2$ {
-  /** @deprecated use `AddBypassIpRequestBody2$inboundSchema` instead. */
-  export const inboundSchema = AddBypassIpRequestBody2$inboundSchema;
-  /** @deprecated use `AddBypassIpRequestBody2$outboundSchema` instead. */
-  export const outboundSchema = AddBypassIpRequestBody2$outboundSchema;
-  /** @deprecated use `AddBypassIpRequestBody2$Outbound` instead. */
-  export type Outbound = AddBypassIpRequestBody2$Outbound;
-}
-
 export function addBypassIpRequestBody2ToJSON(
   addBypassIpRequestBody2: AddBypassIpRequestBody2,
 ): string {
@@ -162,7 +148,6 @@ export function addBypassIpRequestBody2ToJSON(
     AddBypassIpRequestBody2$outboundSchema.parse(addBypassIpRequestBody2),
   );
 }
-
 export function addBypassIpRequestBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<AddBypassIpRequestBody2, SDKValidationError> {
@@ -186,7 +171,6 @@ export const AddBypassIpRequestBody1$inboundSchema: z.ZodType<
   ttl: z.number().optional(),
   note: z.string().optional(),
 });
-
 /** @internal */
 export type AddBypassIpRequestBody1$Outbound = {
   domain: string;
@@ -211,19 +195,6 @@ export const AddBypassIpRequestBody1$outboundSchema: z.ZodType<
   note: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AddBypassIpRequestBody1$ {
-  /** @deprecated use `AddBypassIpRequestBody1$inboundSchema` instead. */
-  export const inboundSchema = AddBypassIpRequestBody1$inboundSchema;
-  /** @deprecated use `AddBypassIpRequestBody1$outboundSchema` instead. */
-  export const outboundSchema = AddBypassIpRequestBody1$outboundSchema;
-  /** @deprecated use `AddBypassIpRequestBody1$Outbound` instead. */
-  export type Outbound = AddBypassIpRequestBody1$Outbound;
-}
-
 export function addBypassIpRequestBody1ToJSON(
   addBypassIpRequestBody1: AddBypassIpRequestBody1,
 ): string {
@@ -231,7 +202,6 @@ export function addBypassIpRequestBody1ToJSON(
     AddBypassIpRequestBody1$outboundSchema.parse(addBypassIpRequestBody1),
   );
 }
-
 export function addBypassIpRequestBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<AddBypassIpRequestBody1, SDKValidationError> {
@@ -251,7 +221,6 @@ export const AddBypassIpRequestBody$inboundSchema: z.ZodType<
   z.lazy(() => AddBypassIpRequestBody1$inboundSchema),
   z.lazy(() => AddBypassIpRequestBody2$inboundSchema),
 ]);
-
 /** @internal */
 export type AddBypassIpRequestBody$Outbound =
   | AddBypassIpRequestBody1$Outbound
@@ -267,19 +236,6 @@ export const AddBypassIpRequestBody$outboundSchema: z.ZodType<
   z.lazy(() => AddBypassIpRequestBody2$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AddBypassIpRequestBody$ {
-  /** @deprecated use `AddBypassIpRequestBody$inboundSchema` instead. */
-  export const inboundSchema = AddBypassIpRequestBody$inboundSchema;
-  /** @deprecated use `AddBypassIpRequestBody$outboundSchema` instead. */
-  export const outboundSchema = AddBypassIpRequestBody$outboundSchema;
-  /** @deprecated use `AddBypassIpRequestBody$Outbound` instead. */
-  export type Outbound = AddBypassIpRequestBody$Outbound;
-}
-
 export function addBypassIpRequestBodyToJSON(
   addBypassIpRequestBody: AddBypassIpRequestBody,
 ): string {
@@ -287,7 +243,6 @@ export function addBypassIpRequestBodyToJSON(
     AddBypassIpRequestBody$outboundSchema.parse(addBypassIpRequestBody),
   );
 }
-
 export function addBypassIpRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<AddBypassIpRequestBody, SDKValidationError> {
@@ -316,7 +271,6 @@ export const AddBypassIpRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type AddBypassIpRequest$Outbound = {
   projectId: string;
@@ -347,19 +301,6 @@ export const AddBypassIpRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AddBypassIpRequest$ {
-  /** @deprecated use `AddBypassIpRequest$inboundSchema` instead. */
-  export const inboundSchema = AddBypassIpRequest$inboundSchema;
-  /** @deprecated use `AddBypassIpRequest$outboundSchema` instead. */
-  export const outboundSchema = AddBypassIpRequest$outboundSchema;
-  /** @deprecated use `AddBypassIpRequest$Outbound` instead. */
-  export type Outbound = AddBypassIpRequest$Outbound;
-}
-
 export function addBypassIpRequestToJSON(
   addBypassIpRequest: AddBypassIpRequest,
 ): string {
@@ -367,7 +308,6 @@ export function addBypassIpRequestToJSON(
     AddBypassIpRequest$outboundSchema.parse(addBypassIpRequest),
   );
 }
-
 export function addBypassIpRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<AddBypassIpRequest, SDKValidationError> {
@@ -382,22 +322,10 @@ export function addBypassIpRequestFromJSON(
 export const ResponseBodyAction$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyAction
 > = z.nativeEnum(ResponseBodyAction);
-
 /** @internal */
 export const ResponseBodyAction$outboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyAction
 > = ResponseBodyAction$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyAction$ {
-  /** @deprecated use `ResponseBodyAction$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyAction$inboundSchema;
-  /** @deprecated use `ResponseBodyAction$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyAction$outboundSchema;
-}
 
 /** @internal */
 export const AddBypassIpResponseBodyResult$inboundSchema: z.ZodType<
@@ -437,7 +365,6 @@ export const AddBypassIpResponseBodyResult$inboundSchema: z.ZodType<
     "ExpiresAt": "expiresAt",
   });
 });
-
 /** @internal */
 export type AddBypassIpResponseBodyResult$Outbound = {
   OwnerId: string;
@@ -495,19 +422,6 @@ export const AddBypassIpResponseBodyResult$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AddBypassIpResponseBodyResult$ {
-  /** @deprecated use `AddBypassIpResponseBodyResult$inboundSchema` instead. */
-  export const inboundSchema = AddBypassIpResponseBodyResult$inboundSchema;
-  /** @deprecated use `AddBypassIpResponseBodyResult$outboundSchema` instead. */
-  export const outboundSchema = AddBypassIpResponseBodyResult$outboundSchema;
-  /** @deprecated use `AddBypassIpResponseBodyResult$Outbound` instead. */
-  export type Outbound = AddBypassIpResponseBodyResult$Outbound;
-}
-
 export function addBypassIpResponseBodyResultToJSON(
   addBypassIpResponseBodyResult: AddBypassIpResponseBodyResult,
 ): string {
@@ -517,7 +431,6 @@ export function addBypassIpResponseBodyResultToJSON(
     ),
   );
 }
-
 export function addBypassIpResponseBodyResultFromJSON(
   jsonString: string,
 ): SafeParseResult<AddBypassIpResponseBodyResult, SDKValidationError> {
@@ -538,7 +451,6 @@ export const AddBypassIpResponseBody2$inboundSchema: z.ZodType<
   result: z.array(z.lazy(() => AddBypassIpResponseBodyResult$inboundSchema))
     .optional(),
 });
-
 /** @internal */
 export type AddBypassIpResponseBody2$Outbound = {
   ok: boolean;
@@ -556,19 +468,6 @@ export const AddBypassIpResponseBody2$outboundSchema: z.ZodType<
     .optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AddBypassIpResponseBody2$ {
-  /** @deprecated use `AddBypassIpResponseBody2$inboundSchema` instead. */
-  export const inboundSchema = AddBypassIpResponseBody2$inboundSchema;
-  /** @deprecated use `AddBypassIpResponseBody2$outboundSchema` instead. */
-  export const outboundSchema = AddBypassIpResponseBody2$outboundSchema;
-  /** @deprecated use `AddBypassIpResponseBody2$Outbound` instead. */
-  export type Outbound = AddBypassIpResponseBody2$Outbound;
-}
-
 export function addBypassIpResponseBody2ToJSON(
   addBypassIpResponseBody2: AddBypassIpResponseBody2,
 ): string {
@@ -576,7 +475,6 @@ export function addBypassIpResponseBody2ToJSON(
     AddBypassIpResponseBody2$outboundSchema.parse(addBypassIpResponseBody2),
   );
 }
-
 export function addBypassIpResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<AddBypassIpResponseBody2, SDKValidationError> {
@@ -611,7 +509,6 @@ export const ResponseBodyResult$inboundSchema: z.ZodType<
     "IsProjectRule": "isProjectRule",
   });
 });
-
 /** @internal */
 export type ResponseBodyResult$Outbound = {
   OwnerId: string;
@@ -648,19 +545,6 @@ export const ResponseBodyResult$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyResult$ {
-  /** @deprecated use `ResponseBodyResult$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyResult$inboundSchema;
-  /** @deprecated use `ResponseBodyResult$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyResult$outboundSchema;
-  /** @deprecated use `ResponseBodyResult$Outbound` instead. */
-  export type Outbound = ResponseBodyResult$Outbound;
-}
-
 export function responseBodyResultToJSON(
   responseBodyResult: ResponseBodyResult,
 ): string {
@@ -668,7 +552,6 @@ export function responseBodyResultToJSON(
     ResponseBodyResult$outboundSchema.parse(responseBodyResult),
   );
 }
-
 export function responseBodyResultFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyResult, SDKValidationError> {
@@ -689,7 +572,6 @@ export const AddBypassIpResponseBody1$inboundSchema: z.ZodType<
   result: z.array(z.lazy(() => ResponseBodyResult$inboundSchema)),
   pagination: z.nullable(z.any()).optional(),
 });
-
 /** @internal */
 export type AddBypassIpResponseBody1$Outbound = {
   ok: boolean;
@@ -708,19 +590,6 @@ export const AddBypassIpResponseBody1$outboundSchema: z.ZodType<
   pagination: z.nullable(z.any()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AddBypassIpResponseBody1$ {
-  /** @deprecated use `AddBypassIpResponseBody1$inboundSchema` instead. */
-  export const inboundSchema = AddBypassIpResponseBody1$inboundSchema;
-  /** @deprecated use `AddBypassIpResponseBody1$outboundSchema` instead. */
-  export const outboundSchema = AddBypassIpResponseBody1$outboundSchema;
-  /** @deprecated use `AddBypassIpResponseBody1$Outbound` instead. */
-  export type Outbound = AddBypassIpResponseBody1$Outbound;
-}
-
 export function addBypassIpResponseBody1ToJSON(
   addBypassIpResponseBody1: AddBypassIpResponseBody1,
 ): string {
@@ -728,7 +597,6 @@ export function addBypassIpResponseBody1ToJSON(
     AddBypassIpResponseBody1$outboundSchema.parse(addBypassIpResponseBody1),
   );
 }
-
 export function addBypassIpResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<AddBypassIpResponseBody1, SDKValidationError> {
@@ -748,7 +616,6 @@ export const AddBypassIpResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => AddBypassIpResponseBody1$inboundSchema),
   z.lazy(() => AddBypassIpResponseBody2$inboundSchema),
 ]);
-
 /** @internal */
 export type AddBypassIpResponseBody$Outbound =
   | AddBypassIpResponseBody1$Outbound
@@ -764,19 +631,6 @@ export const AddBypassIpResponseBody$outboundSchema: z.ZodType<
   z.lazy(() => AddBypassIpResponseBody2$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AddBypassIpResponseBody$ {
-  /** @deprecated use `AddBypassIpResponseBody$inboundSchema` instead. */
-  export const inboundSchema = AddBypassIpResponseBody$inboundSchema;
-  /** @deprecated use `AddBypassIpResponseBody$outboundSchema` instead. */
-  export const outboundSchema = AddBypassIpResponseBody$outboundSchema;
-  /** @deprecated use `AddBypassIpResponseBody$Outbound` instead. */
-  export type Outbound = AddBypassIpResponseBody$Outbound;
-}
-
 export function addBypassIpResponseBodyToJSON(
   addBypassIpResponseBody: AddBypassIpResponseBody,
 ): string {
@@ -784,7 +638,6 @@ export function addBypassIpResponseBodyToJSON(
     AddBypassIpResponseBody$outboundSchema.parse(addBypassIpResponseBody),
   );
 }
-
 export function addBypassIpResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<AddBypassIpResponseBody, SDKValidationError> {

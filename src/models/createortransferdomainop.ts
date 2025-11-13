@@ -214,7 +214,6 @@ export const CreateOrTransferDomainRequestBody3$inboundSchema: z.ZodType<
   authCode: z.string().optional(),
   expectedPrice: z.number().optional(),
 });
-
 /** @internal */
 export type CreateOrTransferDomainRequestBody3$Outbound = {
   name: string;
@@ -235,20 +234,6 @@ export const CreateOrTransferDomainRequestBody3$outboundSchema: z.ZodType<
   expectedPrice: z.number().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateOrTransferDomainRequestBody3$ {
-  /** @deprecated use `CreateOrTransferDomainRequestBody3$inboundSchema` instead. */
-  export const inboundSchema = CreateOrTransferDomainRequestBody3$inboundSchema;
-  /** @deprecated use `CreateOrTransferDomainRequestBody3$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateOrTransferDomainRequestBody3$outboundSchema;
-  /** @deprecated use `CreateOrTransferDomainRequestBody3$Outbound` instead. */
-  export type Outbound = CreateOrTransferDomainRequestBody3$Outbound;
-}
-
 export function createOrTransferDomainRequestBody3ToJSON(
   createOrTransferDomainRequestBody3: CreateOrTransferDomainRequestBody3,
 ): string {
@@ -258,7 +243,6 @@ export function createOrTransferDomainRequestBody3ToJSON(
     ),
   );
 }
-
 export function createOrTransferDomainRequestBody3FromJSON(
   jsonString: string,
 ): SafeParseResult<CreateOrTransferDomainRequestBody3, SDKValidationError> {
@@ -280,7 +264,6 @@ export const CreateOrTransferDomainRequestBody2$inboundSchema: z.ZodType<
   method: z.string(),
   token: z.string().optional(),
 });
-
 /** @internal */
 export type CreateOrTransferDomainRequestBody2$Outbound = {
   name: string;
@@ -299,20 +282,6 @@ export const CreateOrTransferDomainRequestBody2$outboundSchema: z.ZodType<
   token: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateOrTransferDomainRequestBody2$ {
-  /** @deprecated use `CreateOrTransferDomainRequestBody2$inboundSchema` instead. */
-  export const inboundSchema = CreateOrTransferDomainRequestBody2$inboundSchema;
-  /** @deprecated use `CreateOrTransferDomainRequestBody2$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateOrTransferDomainRequestBody2$outboundSchema;
-  /** @deprecated use `CreateOrTransferDomainRequestBody2$Outbound` instead. */
-  export type Outbound = CreateOrTransferDomainRequestBody2$Outbound;
-}
-
 export function createOrTransferDomainRequestBody2ToJSON(
   createOrTransferDomainRequestBody2: CreateOrTransferDomainRequestBody2,
 ): string {
@@ -322,7 +291,6 @@ export function createOrTransferDomainRequestBody2ToJSON(
     ),
   );
 }
-
 export function createOrTransferDomainRequestBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<CreateOrTransferDomainRequestBody2, SDKValidationError> {
@@ -345,7 +313,6 @@ export const CreateOrTransferDomainRequestBody1$inboundSchema: z.ZodType<
   zone: z.boolean().optional(),
   method: z.string().optional(),
 });
-
 /** @internal */
 export type CreateOrTransferDomainRequestBody1$Outbound = {
   name: string;
@@ -366,20 +333,6 @@ export const CreateOrTransferDomainRequestBody1$outboundSchema: z.ZodType<
   method: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateOrTransferDomainRequestBody1$ {
-  /** @deprecated use `CreateOrTransferDomainRequestBody1$inboundSchema` instead. */
-  export const inboundSchema = CreateOrTransferDomainRequestBody1$inboundSchema;
-  /** @deprecated use `CreateOrTransferDomainRequestBody1$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateOrTransferDomainRequestBody1$outboundSchema;
-  /** @deprecated use `CreateOrTransferDomainRequestBody1$Outbound` instead. */
-  export type Outbound = CreateOrTransferDomainRequestBody1$Outbound;
-}
-
 export function createOrTransferDomainRequestBody1ToJSON(
   createOrTransferDomainRequestBody1: CreateOrTransferDomainRequestBody1,
 ): string {
@@ -389,7 +342,6 @@ export function createOrTransferDomainRequestBody1ToJSON(
     ),
   );
 }
-
 export function createOrTransferDomainRequestBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<CreateOrTransferDomainRequestBody1, SDKValidationError> {
@@ -411,7 +363,6 @@ export const CreateOrTransferDomainRequestBody$inboundSchema: z.ZodType<
   z.lazy(() => CreateOrTransferDomainRequestBody3$inboundSchema),
   z.lazy(() => CreateOrTransferDomainRequestBody1$inboundSchema),
 ]);
-
 /** @internal */
 export type CreateOrTransferDomainRequestBody$Outbound =
   | CreateOrTransferDomainRequestBody2$Outbound
@@ -429,20 +380,6 @@ export const CreateOrTransferDomainRequestBody$outboundSchema: z.ZodType<
   z.lazy(() => CreateOrTransferDomainRequestBody1$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateOrTransferDomainRequestBody$ {
-  /** @deprecated use `CreateOrTransferDomainRequestBody$inboundSchema` instead. */
-  export const inboundSchema = CreateOrTransferDomainRequestBody$inboundSchema;
-  /** @deprecated use `CreateOrTransferDomainRequestBody$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateOrTransferDomainRequestBody$outboundSchema;
-  /** @deprecated use `CreateOrTransferDomainRequestBody$Outbound` instead. */
-  export type Outbound = CreateOrTransferDomainRequestBody$Outbound;
-}
-
 export function createOrTransferDomainRequestBodyToJSON(
   createOrTransferDomainRequestBody: CreateOrTransferDomainRequestBody,
 ): string {
@@ -452,7 +389,6 @@ export function createOrTransferDomainRequestBodyToJSON(
     ),
   );
 }
-
 export function createOrTransferDomainRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateOrTransferDomainRequestBody, SDKValidationError> {
@@ -481,7 +417,6 @@ export const CreateOrTransferDomainRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type CreateOrTransferDomainRequest$Outbound = {
   teamId?: string | undefined;
@@ -512,19 +447,6 @@ export const CreateOrTransferDomainRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateOrTransferDomainRequest$ {
-  /** @deprecated use `CreateOrTransferDomainRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateOrTransferDomainRequest$inboundSchema;
-  /** @deprecated use `CreateOrTransferDomainRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateOrTransferDomainRequest$outboundSchema;
-  /** @deprecated use `CreateOrTransferDomainRequest$Outbound` instead. */
-  export type Outbound = CreateOrTransferDomainRequest$Outbound;
-}
-
 export function createOrTransferDomainRequestToJSON(
   createOrTransferDomainRequest: CreateOrTransferDomainRequest,
 ): string {
@@ -534,7 +456,6 @@ export function createOrTransferDomainRequestToJSON(
     ),
   );
 }
-
 export function createOrTransferDomainRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateOrTransferDomainRequest, SDKValidationError> {
@@ -557,7 +478,6 @@ export const CreateOrTransferDomainCreator$inboundSchema: z.ZodType<
   isDomainReseller: z.boolean().optional(),
   id: z.string(),
 });
-
 /** @internal */
 export type CreateOrTransferDomainCreator$Outbound = {
   username: string;
@@ -580,19 +500,6 @@ export const CreateOrTransferDomainCreator$outboundSchema: z.ZodType<
   id: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateOrTransferDomainCreator$ {
-  /** @deprecated use `CreateOrTransferDomainCreator$inboundSchema` instead. */
-  export const inboundSchema = CreateOrTransferDomainCreator$inboundSchema;
-  /** @deprecated use `CreateOrTransferDomainCreator$outboundSchema` instead. */
-  export const outboundSchema = CreateOrTransferDomainCreator$outboundSchema;
-  /** @deprecated use `CreateOrTransferDomainCreator$Outbound` instead. */
-  export type Outbound = CreateOrTransferDomainCreator$Outbound;
-}
-
 export function createOrTransferDomainCreatorToJSON(
   createOrTransferDomainCreator: CreateOrTransferDomainCreator,
 ): string {
@@ -602,7 +509,6 @@ export function createOrTransferDomainCreatorToJSON(
     ),
   );
 }
-
 export function createOrTransferDomainCreatorFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateOrTransferDomainCreator, SDKValidationError> {
@@ -617,44 +523,19 @@ export function createOrTransferDomainCreatorFromJSON(
 export const CreateOrTransferDomainRegistrar$inboundSchema: z.ZodNativeEnum<
   typeof CreateOrTransferDomainRegistrar
 > = z.nativeEnum(CreateOrTransferDomainRegistrar);
-
 /** @internal */
 export const CreateOrTransferDomainRegistrar$outboundSchema: z.ZodNativeEnum<
   typeof CreateOrTransferDomainRegistrar
 > = CreateOrTransferDomainRegistrar$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateOrTransferDomainRegistrar$ {
-  /** @deprecated use `CreateOrTransferDomainRegistrar$inboundSchema` instead. */
-  export const inboundSchema = CreateOrTransferDomainRegistrar$inboundSchema;
-  /** @deprecated use `CreateOrTransferDomainRegistrar$outboundSchema` instead. */
-  export const outboundSchema = CreateOrTransferDomainRegistrar$outboundSchema;
-}
-
 /** @internal */
 export const CreateOrTransferDomainServiceType$inboundSchema: z.ZodNativeEnum<
   typeof CreateOrTransferDomainServiceType
 > = z.nativeEnum(CreateOrTransferDomainServiceType);
-
 /** @internal */
 export const CreateOrTransferDomainServiceType$outboundSchema: z.ZodNativeEnum<
   typeof CreateOrTransferDomainServiceType
 > = CreateOrTransferDomainServiceType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateOrTransferDomainServiceType$ {
-  /** @deprecated use `CreateOrTransferDomainServiceType$inboundSchema` instead. */
-  export const inboundSchema = CreateOrTransferDomainServiceType$inboundSchema;
-  /** @deprecated use `CreateOrTransferDomainServiceType$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateOrTransferDomainServiceType$outboundSchema;
-}
 
 /** @internal */
 export const CreateOrTransferDomainDomain$inboundSchema: z.ZodType<
@@ -681,7 +562,6 @@ export const CreateOrTransferDomainDomain$inboundSchema: z.ZodType<
   userId: z.string(),
   teamId: z.nullable(z.string()),
 });
-
 /** @internal */
 export type CreateOrTransferDomainDomain$Outbound = {
   verified: boolean;
@@ -730,19 +610,6 @@ export const CreateOrTransferDomainDomain$outboundSchema: z.ZodType<
   teamId: z.nullable(z.string()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateOrTransferDomainDomain$ {
-  /** @deprecated use `CreateOrTransferDomainDomain$inboundSchema` instead. */
-  export const inboundSchema = CreateOrTransferDomainDomain$inboundSchema;
-  /** @deprecated use `CreateOrTransferDomainDomain$outboundSchema` instead. */
-  export const outboundSchema = CreateOrTransferDomainDomain$outboundSchema;
-  /** @deprecated use `CreateOrTransferDomainDomain$Outbound` instead. */
-  export type Outbound = CreateOrTransferDomainDomain$Outbound;
-}
-
 export function createOrTransferDomainDomainToJSON(
   createOrTransferDomainDomain: CreateOrTransferDomainDomain,
 ): string {
@@ -752,7 +619,6 @@ export function createOrTransferDomainDomainToJSON(
     ),
   );
 }
-
 export function createOrTransferDomainDomainFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateOrTransferDomainDomain, SDKValidationError> {
@@ -771,7 +637,6 @@ export const CreateOrTransferDomainResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   domain: z.lazy(() => CreateOrTransferDomainDomain$inboundSchema),
 });
-
 /** @internal */
 export type CreateOrTransferDomainResponseBody$Outbound = {
   domain: CreateOrTransferDomainDomain$Outbound;
@@ -786,20 +651,6 @@ export const CreateOrTransferDomainResponseBody$outboundSchema: z.ZodType<
   domain: z.lazy(() => CreateOrTransferDomainDomain$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateOrTransferDomainResponseBody$ {
-  /** @deprecated use `CreateOrTransferDomainResponseBody$inboundSchema` instead. */
-  export const inboundSchema = CreateOrTransferDomainResponseBody$inboundSchema;
-  /** @deprecated use `CreateOrTransferDomainResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateOrTransferDomainResponseBody$outboundSchema;
-  /** @deprecated use `CreateOrTransferDomainResponseBody$Outbound` instead. */
-  export type Outbound = CreateOrTransferDomainResponseBody$Outbound;
-}
-
 export function createOrTransferDomainResponseBodyToJSON(
   createOrTransferDomainResponseBody: CreateOrTransferDomainResponseBody,
 ): string {
@@ -809,7 +660,6 @@ export function createOrTransferDomainResponseBodyToJSON(
     ),
   );
 }
-
 export function createOrTransferDomainResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateOrTransferDomainResponseBody, SDKValidationError> {

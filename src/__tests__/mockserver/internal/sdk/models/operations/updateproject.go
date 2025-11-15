@@ -6887,6 +6887,7 @@ type UpdateProjectPermissions struct {
 	Repository                               []components.ACLAction `json:"repository,omitempty"`
 	SamlConfig                               []components.ACLAction `json:"samlConfig,omitempty"`
 	Secret                                   []components.ACLAction `json:"secret,omitempty"`
+	SecurityPlusConfiguration                []components.ACLAction `json:"securityPlusConfiguration,omitempty"`
 	SensitiveEnvironmentVariablePolicy       []components.ACLAction `json:"sensitiveEnvironmentVariablePolicy,omitempty"`
 	SharedEnvVars                            []components.ACLAction `json:"sharedEnvVars,omitempty"`
 	SharedEnvVarsProduction                  []components.ACLAction `json:"sharedEnvVarsProduction,omitempty"`
@@ -7843,6 +7844,13 @@ func (o *UpdateProjectPermissions) GetSecret() []components.ACLAction {
 		return nil
 	}
 	return o.Secret
+}
+
+func (o *UpdateProjectPermissions) GetSecurityPlusConfiguration() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.SecurityPlusConfiguration
 }
 
 func (o *UpdateProjectPermissions) GetSensitiveEnvironmentVariablePolicy() []components.ACLAction {

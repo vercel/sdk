@@ -1239,6 +1239,7 @@ type GetDeploymentsDeployment struct {
 	OomReport *GetDeploymentsOomReport `json:"oomReport,omitempty"`
 	// Deployment can be used for instant rollback
 	IsRollbackCandidate *bool `json:"isRollbackCandidate,omitempty"`
+	Prebuilt            *bool `json:"prebuilt,omitempty"`
 	// The project settings which was used for this deployment
 	ProjectSettings *GetDeploymentsProjectSettings `json:"projectSettings,omitempty"`
 	// The flag saying if Secure Compute network is used for builds
@@ -1463,6 +1464,13 @@ func (o *GetDeploymentsDeployment) GetIsRollbackCandidate() *bool {
 		return nil
 	}
 	return o.IsRollbackCandidate
+}
+
+func (o *GetDeploymentsDeployment) GetPrebuilt() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Prebuilt
 }
 
 func (o *GetDeploymentsDeployment) GetProjectSettings() *GetDeploymentsProjectSettings {

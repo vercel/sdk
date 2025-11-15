@@ -77,11 +77,9 @@ func testCreateLogDrainCreateLogDrain0(w http.ResponseWriter, req *http.Request)
 		},
 		Branch:       types.String("feature/*"),
 		SamplingRate: types.Float64(0.5),
-		Source: operations.CreateCreateLogDrainSourceUnionCreateLogDrainSourceIntegration(
-			operations.CreateLogDrainSourceIntegration{
-				Kind:                       operations.CreateLogDrainKindIntegrationIntegration,
-				IntegrationID:              "<id>",
-				IntegrationConfigurationID: "<id>",
+		Source: operations.CreateCreateLogDrainSourceUnionCreateLogDrainSourceSelfServed(
+			operations.CreateLogDrainSourceSelfServed{
+				Kind: operations.CreateLogDrainKindSelfServedSelfServed,
 			},
 		),
 	}

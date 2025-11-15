@@ -14,4 +14,4 @@ let value: SiftRoute = {
 
 | Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
 | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `name`                                                               | [models.UserEventPayload66Name](../models/usereventpayload66name.md) | :heavy_check_mark:                                                   | N/A                                                                  |
+| `name`                                                               | [models.UserEventPayload67Name](../models/usereventpayload67name.md) | :heavy_check_mark:                                                   | N/A                                                                  |

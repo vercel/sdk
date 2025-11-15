@@ -544,6 +544,7 @@ export type Deployments = {
    * Deployment can be used for instant rollback
    */
   isRollbackCandidate?: boolean | null | undefined;
+  prebuilt?: boolean | undefined;
   /**
    * The project settings which was used for this deployment
    */
@@ -1323,6 +1324,7 @@ export const Deployments$inboundSchema: z.ZodType<
   errorMessage: z.nullable(z.string()).optional(),
   oomReport: GetDeploymentsOomReport$inboundSchema.optional(),
   isRollbackCandidate: z.nullable(z.boolean()).optional(),
+  prebuilt: z.boolean().optional(),
   projectSettings: z.lazy(() => GetDeploymentsProjectSettings$inboundSchema)
     .optional(),
   connectBuildsEnabled: z.boolean().optional(),
@@ -1365,6 +1367,7 @@ export type Deployments$Outbound = {
   errorMessage?: string | null | undefined;
   oomReport?: string | undefined;
   isRollbackCandidate?: boolean | null | undefined;
+  prebuilt?: boolean | undefined;
   projectSettings?: GetDeploymentsProjectSettings$Outbound | undefined;
   connectBuildsEnabled?: boolean | undefined;
   connectConfigurationId?: string | undefined;
@@ -1411,6 +1414,7 @@ export const Deployments$outboundSchema: z.ZodType<
   errorMessage: z.nullable(z.string()).optional(),
   oomReport: GetDeploymentsOomReport$outboundSchema.optional(),
   isRollbackCandidate: z.nullable(z.boolean()).optional(),
+  prebuilt: z.boolean().optional(),
   projectSettings: z.lazy(() => GetDeploymentsProjectSettings$outboundSchema)
     .optional(),
   connectBuildsEnabled: z.boolean().optional(),

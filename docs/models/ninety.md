@@ -8,13 +8,30 @@ The payload of the event, if requested.
 import { Ninety } from "@vercel/sdk/models/userevent.js";
 
 let value: Ninety = {
-  projectId: "<id>",
+  team: {
+    id: "<id>",
+    name: "<value>",
+  },
+  project: {
+    id: "<id>",
+    oldConnectConfigurations: null,
+    newConnectConfigurations: [
+      {
+        envId: "<id>",
+        connectConfigurationId: "<id>",
+        passive: true,
+        buildsEnabled: false,
+        createdAt: 5463.76,
+        updatedAt: 2696.76,
+      },
+    ],
+  },
 };
 ```
 
 ## Fields
 
-| Field                                        | Type                                         | Required                                     | Description                                  |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| `projectId`                                  | *string*                                     | :heavy_check_mark:                           | N/A                                          |
-| `reasonCode`                                 | [models.ReasonCode](../models/reasoncode.md) | :heavy_minus_sign:                           | N/A                                          |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `team`                                                                     | [models.UserEventPayload90Team](../models/usereventpayload90team.md)       | :heavy_check_mark:                                                         | N/A                                                                        |
+| `project`                                                                  | [models.UserEventPayload90Project](../models/usereventpayload90project.md) | :heavy_check_mark:                                                         | N/A                                                                        |

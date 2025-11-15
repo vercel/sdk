@@ -11,9 +11,6 @@ let value: OneHundredAndTwo = {
   team: {
     id: "<id>",
   },
-  previousRule: {
-    email: "Fabiola89@yahoo.com",
-  },
 };
 ```
 
@@ -22,4 +19,5 @@ let value: OneHundredAndTwo = {
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | `team`                                                                 | [models.UserEventPayload102Team](../models/usereventpayload102team.md) | :heavy_check_mark:                                                     | N/A                                                                    |
-| `previousRule`                                                         | [models.PayloadPreviousRule](../models/payloadpreviousrule.md)         | :heavy_check_mark:                                                     | N/A                                                                    |
+| `previousRule`                                                         | [models.PreviousRule](../models/previousrule.md)                       | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `nextRule`                                                             | [models.NextRule](../models/nextrule.md)                               | :heavy_minus_sign:                                                     | N/A                                                                    |

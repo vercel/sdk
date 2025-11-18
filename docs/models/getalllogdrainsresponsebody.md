@@ -26,7 +26,9 @@ const value: models.GetAllLogDrainsResponseBody1 = {
 
 ```typescript
 const value: models.GetAllLogDrainsResponseBody2[] = [
-  {},
+  {
+    createdFrom: "<value>",
+  },
 ];
 ```
 

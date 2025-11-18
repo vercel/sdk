@@ -7,11 +7,17 @@ import { MoveProjectDomainRequestBody } from "@vercel/sdk/models/moveprojectdoma
 
 let value: MoveProjectDomainRequestBody = {
   projectId: "<id>",
+  gitBranch: null,
+  redirect: "foobar.com",
+  redirectStatusCode: 307,
 };
 ```
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `projectId`                          | *string*                             | :heavy_check_mark:                   | The unique target project identifier |
+| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    | Example                                                                                        |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `projectId`                                                                                    | *string*                                                                                       | :heavy_check_mark:                                                                             | The unique target project identifier                                                           |                                                                                                |
+| `gitBranch`                                                                                    | *string*                                                                                       | :heavy_minus_sign:                                                                             | Git branch to link the project domain                                                          | <nil>                                                                                          |
+| `redirect`                                                                                     | *string*                                                                                       | :heavy_minus_sign:                                                                             | Target destination domain for redirect                                                         | foobar.com                                                                                     |
+| `redirectStatusCode`                                                                           | [models.MoveProjectDomainRedirectStatusCode](../models/moveprojectdomainredirectstatuscode.md) | :heavy_minus_sign:                                                                             | Status code for domain redirect                                                                | 307                                                                                            |

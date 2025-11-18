@@ -8,14 +8,14 @@ The payload of the event, if requested.
 import { EightyEight } from "@vercel/sdk/models/userevent.js";
 
 let value: EightyEight = {
-  name: "<value>",
-  ownerId: "<id>",
+  projectName: "<value>",
+  action: "regenerated",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `projectName`                                                            | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `action`                                                                 | [models.UserEventPayload88Action](../models/usereventpayload88action.md) | :heavy_check_mark:                                                       | N/A                                                                      |

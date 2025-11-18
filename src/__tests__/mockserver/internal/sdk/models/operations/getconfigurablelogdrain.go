@@ -264,10 +264,34 @@ func (o *GetConfigurableLogDrainProjectsMetadatum) GetLatestDeployment() *string
 }
 
 type GetConfigurableLogDrainResponseBody struct {
+	CreatedFrom                 string                                     `json:"createdFrom"`
+	ClientID                    *string                                    `json:"clientId,omitempty"`
+	ConfigurationID             *string                                    `json:"configurationId,omitempty"`
 	ProjectsMetadata            []GetConfigurableLogDrainProjectsMetadatum `json:"projectsMetadata,omitempty"`
 	IntegrationIcon             *string                                    `json:"integrationIcon,omitempty"`
 	IntegrationConfigurationURI *string                                    `json:"integrationConfigurationUri,omitempty"`
 	IntegrationWebsite          *string                                    `json:"integrationWebsite,omitempty"`
+}
+
+func (o *GetConfigurableLogDrainResponseBody) GetCreatedFrom() string {
+	if o == nil {
+		return ""
+	}
+	return o.CreatedFrom
+}
+
+func (o *GetConfigurableLogDrainResponseBody) GetClientID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ClientID
+}
+
+func (o *GetConfigurableLogDrainResponseBody) GetConfigurationID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ConfigurationID
 }
 
 func (o *GetConfigurableLogDrainResponseBody) GetProjectsMetadata() []GetConfigurableLogDrainProjectsMetadatum {

@@ -204,7 +204,21 @@ test("Environment Update Shared Env Variable", async () => {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
     requestBody: {
-      updates: {},
+      updates: {
+        "env_2WjyKQmM8ZnGcJsPWMrHRHrE": {
+          key: "API_URL",
+          value: "https://api.vercel.com",
+          target: [
+            "production",
+            "preview",
+          ],
+          projectIdUpdates: {
+            link: [
+              "prj_2WjyKQmM8ZnGcJsPWMrHRHrE",
+            ],
+          },
+        },
+      },
     },
   });
   expect(result).toBeDefined();

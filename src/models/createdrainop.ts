@@ -192,14 +192,6 @@ export type CreateDrainRequest = {
   requestBody?: CreateDrainRequestBody | undefined;
 };
 
-export const ResponseBodyCreatedFrom = {
-  SelfServed: "self-served",
-  Integration: "integration",
-} as const;
-export type ResponseBodyCreatedFrom = ClosedEnum<
-  typeof ResponseBodyCreatedFrom
->;
-
 export type CreateDrainResponseBodyLog = {};
 
 export type ResponseBodyTrace = {};
@@ -502,82 +494,34 @@ export type CreateDrainFilterV21 = {
 
 export type ResponseBodyFilterV2 = CreateDrainFilterV22 | CreateDrainFilterV21;
 
-export const CreateDrainResponseBodyFramework = {
-  Blitzjs: "blitzjs",
-  Nextjs: "nextjs",
-  Gatsby: "gatsby",
-  Remix: "remix",
-  ReactRouter: "react-router",
-  Astro: "astro",
-  Hexo: "hexo",
-  Eleventy: "eleventy",
-  Docusaurus2: "docusaurus-2",
-  Docusaurus: "docusaurus",
-  Preact: "preact",
-  Solidstart1: "solidstart-1",
-  Solidstart: "solidstart",
-  Dojo: "dojo",
-  Ember: "ember",
-  Vue: "vue",
-  Scully: "scully",
-  IonicAngular: "ionic-angular",
-  Angular: "angular",
-  Polymer: "polymer",
-  Svelte: "svelte",
-  Sveltekit: "sveltekit",
-  Sveltekit1: "sveltekit-1",
-  IonicReact: "ionic-react",
-  CreateReactApp: "create-react-app",
-  Gridsome: "gridsome",
-  Umijs: "umijs",
-  Sapper: "sapper",
-  Saber: "saber",
-  Stencil: "stencil",
-  Nuxtjs: "nuxtjs",
-  Redwoodjs: "redwoodjs",
-  Hugo: "hugo",
-  Jekyll: "jekyll",
-  Brunch: "brunch",
-  Middleman: "middleman",
-  Zola: "zola",
-  Hydrogen: "hydrogen",
-  Vite: "vite",
-  TanstackStart: "tanstack-start",
-  Vitepress: "vitepress",
-  Vuepress: "vuepress",
-  Parcel: "parcel",
-  Fastapi: "fastapi",
-  Flask: "flask",
-  Fasthtml: "fasthtml",
-  SanityV3: "sanity-v3",
-  Sanity: "sanity",
-  Storybook: "storybook",
-  Nitro: "nitro",
-  Hono: "hono",
-  Express: "express",
-  H3: "h3",
-  Nestjs: "nestjs",
-  Elysia: "elysia",
-  Fastify: "fastify",
-  Xmcp: "xmcp",
+export const ProjectAccessAccess = {
+  Some: "some",
 } as const;
-export type CreateDrainResponseBodyFramework = ClosedEnum<
-  typeof CreateDrainResponseBodyFramework
+export type ProjectAccessAccess = ClosedEnum<typeof ProjectAccessAccess>;
+
+export type ProjectAccess2 = {
+  access: ProjectAccessAccess;
+  projectIds: Array<string>;
+};
+
+export const CreateDrainProjectAccessAccess = {
+  All: "all",
+} as const;
+export type CreateDrainProjectAccessAccess = ClosedEnum<
+  typeof CreateDrainProjectAccessAccess
 >;
 
-export type CreateDrainResponseBodyProjectsMetadata = {
-  id: string;
-  name: string;
-  framework?: CreateDrainResponseBodyFramework | null | undefined;
-  latestDeployment?: string | undefined;
+export type ProjectAccess1 = {
+  access: CreateDrainProjectAccessAccess;
 };
+
+export type ProjectAccess = ProjectAccess2 | ProjectAccess1;
 
 export type CreateDrainResponseBody2 = {
   id: string;
   ownerId: string;
   name: string;
   createdAt: number;
-  createdFrom?: ResponseBodyCreatedFrom | undefined;
   updatedAt: number;
   projectIds?: Array<string> | undefined;
   schemas?: CreateDrainResponseBodySchemas | undefined;
@@ -594,24 +538,14 @@ export type CreateDrainResponseBody2 = {
   disabledReason?: ResponseBodyDisabledReason | undefined;
   disabledBy?: string | undefined;
   firstErrorTimestamp?: number | undefined;
-  configurationId?: string | undefined;
-  clientId?: string | undefined;
   source: CreateDrainSourceDrains2 | CreateDrainSourceDrains1;
   filter?: string | undefined;
   filterV2?: CreateDrainFilterV22 | CreateDrainFilterV21 | undefined;
   integrationIcon?: string | undefined;
   integrationConfigurationUri?: string | undefined;
   integrationWebsite?: string | undefined;
-  projectsMetadata?: Array<CreateDrainResponseBodyProjectsMetadata> | undefined;
+  projectAccess?: ProjectAccess2 | ProjectAccess1 | undefined;
 };
-
-export const CreateDrainResponseBodyCreatedFrom = {
-  SelfServed: "self-served",
-  Integration: "integration",
-} as const;
-export type CreateDrainResponseBodyCreatedFrom = ClosedEnum<
-  typeof CreateDrainResponseBodyCreatedFrom
->;
 
 export type ResponseBodyLog = {};
 
@@ -896,7 +830,6 @@ export type CreateDrainResponseBody1 = {
   ownerId: string;
   name: string;
   createdAt: number;
-  createdFrom?: CreateDrainResponseBodyCreatedFrom | undefined;
   updatedAt: number;
   projectIds?: Array<string> | undefined;
   schemas?: ResponseBodySchemas | undefined;
@@ -913,8 +846,6 @@ export type CreateDrainResponseBody1 = {
   disabledReason?: DisabledReason | undefined;
   disabledBy?: string | undefined;
   firstErrorTimestamp?: number | undefined;
-  configurationId?: string | undefined;
-  clientId?: string | undefined;
   source: CreateDrainSource2 | CreateDrainSource1;
   filter?: string | undefined;
   filterV2?: FilterV22 | FilterV21 | undefined;
@@ -1938,15 +1869,6 @@ export function createDrainRequestFromJSON(
     `Failed to parse 'CreateDrainRequest' from JSON`,
   );
 }
-
-/** @internal */
-export const ResponseBodyCreatedFrom$inboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyCreatedFrom
-> = z.nativeEnum(ResponseBodyCreatedFrom);
-/** @internal */
-export const ResponseBodyCreatedFrom$outboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyCreatedFrom
-> = ResponseBodyCreatedFrom$inboundSchema;
 
 /** @internal */
 export const CreateDrainResponseBodyLog$inboundSchema: z.ZodType<
@@ -3427,70 +3349,130 @@ export function responseBodyFilterV2FromJSON(
 }
 
 /** @internal */
-export const CreateDrainResponseBodyFramework$inboundSchema: z.ZodNativeEnum<
-  typeof CreateDrainResponseBodyFramework
-> = z.nativeEnum(CreateDrainResponseBodyFramework);
+export const ProjectAccessAccess$inboundSchema: z.ZodNativeEnum<
+  typeof ProjectAccessAccess
+> = z.nativeEnum(ProjectAccessAccess);
 /** @internal */
-export const CreateDrainResponseBodyFramework$outboundSchema: z.ZodNativeEnum<
-  typeof CreateDrainResponseBodyFramework
-> = CreateDrainResponseBodyFramework$inboundSchema;
+export const ProjectAccessAccess$outboundSchema: z.ZodNativeEnum<
+  typeof ProjectAccessAccess
+> = ProjectAccessAccess$inboundSchema;
 
 /** @internal */
-export const CreateDrainResponseBodyProjectsMetadata$inboundSchema: z.ZodType<
-  CreateDrainResponseBodyProjectsMetadata,
+export const ProjectAccess2$inboundSchema: z.ZodType<
+  ProjectAccess2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
-  framework: z.nullable(CreateDrainResponseBodyFramework$inboundSchema)
-    .optional(),
-  latestDeployment: z.string().optional(),
+  access: ProjectAccessAccess$inboundSchema,
+  projectIds: z.array(z.string()),
 });
 /** @internal */
-export type CreateDrainResponseBodyProjectsMetadata$Outbound = {
-  id: string;
-  name: string;
-  framework?: string | null | undefined;
-  latestDeployment?: string | undefined;
+export type ProjectAccess2$Outbound = {
+  access: string;
+  projectIds: Array<string>;
 };
 
 /** @internal */
-export const CreateDrainResponseBodyProjectsMetadata$outboundSchema: z.ZodType<
-  CreateDrainResponseBodyProjectsMetadata$Outbound,
+export const ProjectAccess2$outboundSchema: z.ZodType<
+  ProjectAccess2$Outbound,
   z.ZodTypeDef,
-  CreateDrainResponseBodyProjectsMetadata
+  ProjectAccess2
 > = z.object({
-  id: z.string(),
-  name: z.string(),
-  framework: z.nullable(CreateDrainResponseBodyFramework$outboundSchema)
-    .optional(),
-  latestDeployment: z.string().optional(),
+  access: ProjectAccessAccess$outboundSchema,
+  projectIds: z.array(z.string()),
 });
 
-export function createDrainResponseBodyProjectsMetadataToJSON(
-  createDrainResponseBodyProjectsMetadata:
-    CreateDrainResponseBodyProjectsMetadata,
-): string {
-  return JSON.stringify(
-    CreateDrainResponseBodyProjectsMetadata$outboundSchema.parse(
-      createDrainResponseBodyProjectsMetadata,
-    ),
-  );
+export function projectAccess2ToJSON(projectAccess2: ProjectAccess2): string {
+  return JSON.stringify(ProjectAccess2$outboundSchema.parse(projectAccess2));
 }
-export function createDrainResponseBodyProjectsMetadataFromJSON(
+export function projectAccess2FromJSON(
   jsonString: string,
-): SafeParseResult<
-  CreateDrainResponseBodyProjectsMetadata,
-  SDKValidationError
-> {
+): SafeParseResult<ProjectAccess2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      CreateDrainResponseBodyProjectsMetadata$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'CreateDrainResponseBodyProjectsMetadata' from JSON`,
+    (x) => ProjectAccess2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ProjectAccess2' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDrainProjectAccessAccess$inboundSchema: z.ZodNativeEnum<
+  typeof CreateDrainProjectAccessAccess
+> = z.nativeEnum(CreateDrainProjectAccessAccess);
+/** @internal */
+export const CreateDrainProjectAccessAccess$outboundSchema: z.ZodNativeEnum<
+  typeof CreateDrainProjectAccessAccess
+> = CreateDrainProjectAccessAccess$inboundSchema;
+
+/** @internal */
+export const ProjectAccess1$inboundSchema: z.ZodType<
+  ProjectAccess1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  access: CreateDrainProjectAccessAccess$inboundSchema,
+});
+/** @internal */
+export type ProjectAccess1$Outbound = {
+  access: string;
+};
+
+/** @internal */
+export const ProjectAccess1$outboundSchema: z.ZodType<
+  ProjectAccess1$Outbound,
+  z.ZodTypeDef,
+  ProjectAccess1
+> = z.object({
+  access: CreateDrainProjectAccessAccess$outboundSchema,
+});
+
+export function projectAccess1ToJSON(projectAccess1: ProjectAccess1): string {
+  return JSON.stringify(ProjectAccess1$outboundSchema.parse(projectAccess1));
+}
+export function projectAccess1FromJSON(
+  jsonString: string,
+): SafeParseResult<ProjectAccess1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ProjectAccess1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ProjectAccess1' from JSON`,
+  );
+}
+
+/** @internal */
+export const ProjectAccess$inboundSchema: z.ZodType<
+  ProjectAccess,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => ProjectAccess2$inboundSchema),
+  z.lazy(() => ProjectAccess1$inboundSchema),
+]);
+/** @internal */
+export type ProjectAccess$Outbound =
+  | ProjectAccess2$Outbound
+  | ProjectAccess1$Outbound;
+
+/** @internal */
+export const ProjectAccess$outboundSchema: z.ZodType<
+  ProjectAccess$Outbound,
+  z.ZodTypeDef,
+  ProjectAccess
+> = z.union([
+  z.lazy(() => ProjectAccess2$outboundSchema),
+  z.lazy(() => ProjectAccess1$outboundSchema),
+]);
+
+export function projectAccessToJSON(projectAccess: ProjectAccess): string {
+  return JSON.stringify(ProjectAccess$outboundSchema.parse(projectAccess));
+}
+export function projectAccessFromJSON(
+  jsonString: string,
+): SafeParseResult<ProjectAccess, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ProjectAccess$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ProjectAccess' from JSON`,
   );
 }
 
@@ -3504,7 +3486,6 @@ export const CreateDrainResponseBody2$inboundSchema: z.ZodType<
   ownerId: z.string(),
   name: z.string(),
   createdAt: z.number(),
-  createdFrom: ResponseBodyCreatedFrom$inboundSchema.optional(),
   updatedAt: z.number(),
   projectIds: z.array(z.string()).optional(),
   schemas: z.lazy(() => CreateDrainResponseBodySchemas$inboundSchema)
@@ -3523,8 +3504,6 @@ export const CreateDrainResponseBody2$inboundSchema: z.ZodType<
   disabledReason: ResponseBodyDisabledReason$inboundSchema.optional(),
   disabledBy: z.string().optional(),
   firstErrorTimestamp: z.number().optional(),
-  configurationId: z.string().optional(),
-  clientId: z.string().optional(),
   source: z.union([
     z.lazy(() => CreateDrainSourceDrains2$inboundSchema),
     z.lazy(() => CreateDrainSourceDrains1$inboundSchema),
@@ -3537,9 +3516,10 @@ export const CreateDrainResponseBody2$inboundSchema: z.ZodType<
   integrationIcon: z.string().optional(),
   integrationConfigurationUri: z.string().optional(),
   integrationWebsite: z.string().optional(),
-  projectsMetadata: z.array(
-    z.lazy(() => CreateDrainResponseBodyProjectsMetadata$inboundSchema),
-  ).optional(),
+  projectAccess: z.union([
+    z.lazy(() => ProjectAccess2$inboundSchema),
+    z.lazy(() => ProjectAccess1$inboundSchema),
+  ]).optional(),
 });
 /** @internal */
 export type CreateDrainResponseBody2$Outbound = {
@@ -3547,7 +3527,6 @@ export type CreateDrainResponseBody2$Outbound = {
   ownerId: string;
   name: string;
   createdAt: number;
-  createdFrom?: string | undefined;
   updatedAt: number;
   projectIds?: Array<string> | undefined;
   schemas?: CreateDrainResponseBodySchemas$Outbound | undefined;
@@ -3564,8 +3543,6 @@ export type CreateDrainResponseBody2$Outbound = {
   disabledReason?: string | undefined;
   disabledBy?: string | undefined;
   firstErrorTimestamp?: number | undefined;
-  configurationId?: string | undefined;
-  clientId?: string | undefined;
   source: CreateDrainSourceDrains2$Outbound | CreateDrainSourceDrains1$Outbound;
   filter?: string | undefined;
   filterV2?:
@@ -3575,9 +3552,7 @@ export type CreateDrainResponseBody2$Outbound = {
   integrationIcon?: string | undefined;
   integrationConfigurationUri?: string | undefined;
   integrationWebsite?: string | undefined;
-  projectsMetadata?:
-    | Array<CreateDrainResponseBodyProjectsMetadata$Outbound>
-    | undefined;
+  projectAccess?: ProjectAccess2$Outbound | ProjectAccess1$Outbound | undefined;
 };
 
 /** @internal */
@@ -3590,7 +3565,6 @@ export const CreateDrainResponseBody2$outboundSchema: z.ZodType<
   ownerId: z.string(),
   name: z.string(),
   createdAt: z.number(),
-  createdFrom: ResponseBodyCreatedFrom$outboundSchema.optional(),
   updatedAt: z.number(),
   projectIds: z.array(z.string()).optional(),
   schemas: z.lazy(() => CreateDrainResponseBodySchemas$outboundSchema)
@@ -3610,8 +3584,6 @@ export const CreateDrainResponseBody2$outboundSchema: z.ZodType<
   disabledReason: ResponseBodyDisabledReason$outboundSchema.optional(),
   disabledBy: z.string().optional(),
   firstErrorTimestamp: z.number().optional(),
-  configurationId: z.string().optional(),
-  clientId: z.string().optional(),
   source: z.union([
     z.lazy(() => CreateDrainSourceDrains2$outboundSchema),
     z.lazy(() => CreateDrainSourceDrains1$outboundSchema),
@@ -3624,9 +3596,10 @@ export const CreateDrainResponseBody2$outboundSchema: z.ZodType<
   integrationIcon: z.string().optional(),
   integrationConfigurationUri: z.string().optional(),
   integrationWebsite: z.string().optional(),
-  projectsMetadata: z.array(
-    z.lazy(() => CreateDrainResponseBodyProjectsMetadata$outboundSchema),
-  ).optional(),
+  projectAccess: z.union([
+    z.lazy(() => ProjectAccess2$outboundSchema),
+    z.lazy(() => ProjectAccess1$outboundSchema),
+  ]).optional(),
 });
 
 export function createDrainResponseBody2ToJSON(
@@ -3645,15 +3618,6 @@ export function createDrainResponseBody2FromJSON(
     `Failed to parse 'CreateDrainResponseBody2' from JSON`,
   );
 }
-
-/** @internal */
-export const CreateDrainResponseBodyCreatedFrom$inboundSchema: z.ZodNativeEnum<
-  typeof CreateDrainResponseBodyCreatedFrom
-> = z.nativeEnum(CreateDrainResponseBodyCreatedFrom);
-/** @internal */
-export const CreateDrainResponseBodyCreatedFrom$outboundSchema: z.ZodNativeEnum<
-  typeof CreateDrainResponseBodyCreatedFrom
-> = CreateDrainResponseBodyCreatedFrom$inboundSchema;
 
 /** @internal */
 export const ResponseBodyLog$inboundSchema: z.ZodType<
@@ -5006,7 +4970,6 @@ export const CreateDrainResponseBody1$inboundSchema: z.ZodType<
   ownerId: z.string(),
   name: z.string(),
   createdAt: z.number(),
-  createdFrom: CreateDrainResponseBodyCreatedFrom$inboundSchema.optional(),
   updatedAt: z.number(),
   projectIds: z.array(z.string()).optional(),
   schemas: z.lazy(() => ResponseBodySchemas$inboundSchema).optional(),
@@ -5024,8 +4987,6 @@ export const CreateDrainResponseBody1$inboundSchema: z.ZodType<
   disabledReason: DisabledReason$inboundSchema.optional(),
   disabledBy: z.string().optional(),
   firstErrorTimestamp: z.number().optional(),
-  configurationId: z.string().optional(),
-  clientId: z.string().optional(),
   source: z.union([
     z.lazy(() => CreateDrainSource2$inboundSchema),
     z.lazy(() => CreateDrainSource1$inboundSchema),
@@ -5042,7 +5003,6 @@ export type CreateDrainResponseBody1$Outbound = {
   ownerId: string;
   name: string;
   createdAt: number;
-  createdFrom?: string | undefined;
   updatedAt: number;
   projectIds?: Array<string> | undefined;
   schemas?: ResponseBodySchemas$Outbound | undefined;
@@ -5059,8 +5019,6 @@ export type CreateDrainResponseBody1$Outbound = {
   disabledReason?: string | undefined;
   disabledBy?: string | undefined;
   firstErrorTimestamp?: number | undefined;
-  configurationId?: string | undefined;
-  clientId?: string | undefined;
   source: CreateDrainSource2$Outbound | CreateDrainSource1$Outbound;
   filter?: string | undefined;
   filterV2?: FilterV22$Outbound | FilterV21$Outbound | undefined;
@@ -5076,7 +5034,6 @@ export const CreateDrainResponseBody1$outboundSchema: z.ZodType<
   ownerId: z.string(),
   name: z.string(),
   createdAt: z.number(),
-  createdFrom: CreateDrainResponseBodyCreatedFrom$outboundSchema.optional(),
   updatedAt: z.number(),
   projectIds: z.array(z.string()).optional(),
   schemas: z.lazy(() => ResponseBodySchemas$outboundSchema).optional(),
@@ -5094,8 +5051,6 @@ export const CreateDrainResponseBody1$outboundSchema: z.ZodType<
   disabledReason: DisabledReason$outboundSchema.optional(),
   disabledBy: z.string().optional(),
   firstErrorTimestamp: z.number().optional(),
-  configurationId: z.string().optional(),
-  clientId: z.string().optional(),
   source: z.union([
     z.lazy(() => CreateDrainSource2$outboundSchema),
     z.lazy(() => CreateDrainSource1$outboundSchema),

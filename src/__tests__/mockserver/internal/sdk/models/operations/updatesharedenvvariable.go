@@ -40,7 +40,7 @@ func (e *UpdatesTarget) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// ProjectIDUpdates - Incrementally update project associations without specifying the full list
+// ProjectIDUpdates - Incrementally update project linking without specifying the full list
 type ProjectIDUpdates struct {
 	// Project IDs to add to this environment variable
 	Link []string `json:"link,omitempty"`
@@ -98,7 +98,7 @@ type Updates struct {
 	Target []UpdatesTarget `json:"target,omitempty"`
 	// Associate a Shared Environment Variable to projects.
 	ProjectID []string `json:"projectId,omitempty"`
-	// Incrementally update project associations without specifying the full list
+	// Incrementally update project linking without specifying the full list
 	ProjectIDUpdates *ProjectIDUpdates `json:"projectIdUpdates,omitempty"`
 	// The new type of the Shared Environment Variable
 	Type *UpdatesType `json:"type,omitempty"`
@@ -156,6 +156,7 @@ func (o *Updates) GetComment() *string {
 }
 
 type UpdateSharedEnvVariableRequestBody struct {
+	// An object where each key is an environment variable ID (not the key name) and the value is the update to apply
 	Updates map[string]Updates `json:"updates"`
 }
 

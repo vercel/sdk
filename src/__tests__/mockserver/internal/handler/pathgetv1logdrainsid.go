@@ -45,7 +45,9 @@ func testGetConfigurableLogDrainGetConfigurableLogDrain0(w http.ResponseWriter, 
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody *operations.GetConfigurableLogDrainResponseBody = &operations.GetConfigurableLogDrainResponseBody{}
+	var respBody *operations.GetConfigurableLogDrainResponseBody = &operations.GetConfigurableLogDrainResponseBody{
+		CreatedFrom: "<value>",
+	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

@@ -91,6 +91,9 @@ export type ProjectsMetadata = {
 };
 
 export type GetConfigurableLogDrainResponseBody = {
+  createdFrom: string;
+  clientId?: string | undefined;
+  configurationId?: string | undefined;
   projectsMetadata?: Array<ProjectsMetadata> | null | undefined;
   integrationIcon?: string | undefined;
   integrationConfigurationUri?: string | undefined;
@@ -209,6 +212,9 @@ export const GetConfigurableLogDrainResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  createdFrom: z.string(),
+  clientId: z.string().optional(),
+  configurationId: z.string().optional(),
   projectsMetadata: z.nullable(
     z.array(z.lazy(() => ProjectsMetadata$inboundSchema)),
   ).optional(),
@@ -218,6 +224,9 @@ export const GetConfigurableLogDrainResponseBody$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type GetConfigurableLogDrainResponseBody$Outbound = {
+  createdFrom: string;
+  clientId?: string | undefined;
+  configurationId?: string | undefined;
   projectsMetadata?: Array<ProjectsMetadata$Outbound> | null | undefined;
   integrationIcon?: string | undefined;
   integrationConfigurationUri?: string | undefined;
@@ -230,6 +239,9 @@ export const GetConfigurableLogDrainResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetConfigurableLogDrainResponseBody
 > = z.object({
+  createdFrom: z.string(),
+  clientId: z.string().optional(),
+  configurationId: z.string().optional(),
   projectsMetadata: z.nullable(
     z.array(z.lazy(() => ProjectsMetadata$outboundSchema)),
   ).optional(),

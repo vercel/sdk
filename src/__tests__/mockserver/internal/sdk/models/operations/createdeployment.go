@@ -8976,7 +8976,8 @@ type CreateDeploymentResponseBody struct {
 	// If set it overrides the `projectSettings.nodeVersion` for this deployment.
 	NodeVersion *CreateDeploymentNodeVersionLambdas `json:"nodeVersion,omitempty"`
 	// The public project information associated with the deployment.
-	Project *CreateDeploymentProject `json:"project,omitempty"`
+	Project  *CreateDeploymentProject `json:"project,omitempty"`
+	Prebuilt *bool                    `json:"prebuilt,omitempty"`
 	// Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
 	ReadySubstate *CreateDeploymentReadySubstate `json:"readySubstate,omitempty"`
 	// The regions the deployment exists in
@@ -9418,6 +9419,13 @@ func (o *CreateDeploymentResponseBody) GetProject() *CreateDeploymentProject {
 		return nil
 	}
 	return o.Project
+}
+
+func (o *CreateDeploymentResponseBody) GetPrebuilt() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Prebuilt
 }
 
 func (o *CreateDeploymentResponseBody) GetReadySubstate() *CreateDeploymentReadySubstate {

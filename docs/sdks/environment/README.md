@@ -215,7 +215,19 @@ async function run() {
     slug: "my-team-url-slug",
     requestBody: {
       updates: {
-
+        "env_2WjyKQmM8ZnGcJsPWMrHRHrE": {
+          key: "API_URL",
+          value: "https://api.vercel.com",
+          target: [
+            "production",
+            "preview",
+          ],
+          projectIdUpdates: {
+            link: [
+              "prj_2WjyKQmM8ZnGcJsPWMrHRHrE",
+            ],
+          },
+        },
       },
     },
   });
@@ -246,7 +258,19 @@ async function run() {
     slug: "my-team-url-slug",
     requestBody: {
       updates: {
-  
+        "env_2WjyKQmM8ZnGcJsPWMrHRHrE": {
+          key: "API_URL",
+          value: "https://api.vercel.com",
+          target: [
+            "production",
+            "preview",
+          ],
+          projectIdUpdates: {
+            link: [
+              "prj_2WjyKQmM8ZnGcJsPWMrHRHrE",
+            ],
+          },
+        },
       },
     },
   });

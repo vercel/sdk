@@ -3144,7 +3144,8 @@ type Lambdas2 struct {
 	// If set it overrides the `projectSettings.nodeVersion` for this deployment.
 	NodeVersion *GetDeploymentNodeVersion2 `json:"nodeVersion,omitempty"`
 	// The public project information associated with the deployment.
-	Project *GetDeploymentProject2 `json:"project,omitempty"`
+	Project  *GetDeploymentProject2 `json:"project,omitempty"`
+	Prebuilt *bool                  `json:"prebuilt,omitempty"`
 	// Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
 	ReadySubstate *GetDeploymentReadySubstate2 `json:"readySubstate,omitempty"`
 	// The regions the deployment exists in
@@ -3488,6 +3489,13 @@ func (o *Lambdas2) GetProject() *GetDeploymentProject2 {
 		return nil
 	}
 	return o.Project
+}
+
+func (o *Lambdas2) GetPrebuilt() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Prebuilt
 }
 
 func (o *Lambdas2) GetReadySubstate() *GetDeploymentReadySubstate2 {
@@ -11061,7 +11069,8 @@ type Lambdas1 struct {
 	// If set it overrides the `projectSettings.nodeVersion` for this deployment.
 	NodeVersion *GetDeploymentNodeVersion1 `json:"nodeVersion,omitempty"`
 	// The public project information associated with the deployment.
-	Project *GetDeploymentProject1 `json:"project,omitempty"`
+	Project  *GetDeploymentProject1 `json:"project,omitempty"`
+	Prebuilt *bool                  `json:"prebuilt,omitempty"`
 	// Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
 	ReadySubstate *GetDeploymentReadySubstate1 `json:"readySubstate,omitempty"`
 	// The regions the deployment exists in
@@ -11514,6 +11523,13 @@ func (o *Lambdas1) GetProject() *GetDeploymentProject1 {
 		return nil
 	}
 	return o.Project
+}
+
+func (o *Lambdas1) GetPrebuilt() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Prebuilt
 }
 
 func (o *Lambdas1) GetReadySubstate() *GetDeploymentReadySubstate1 {

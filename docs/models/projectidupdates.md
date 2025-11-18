@@ -1,6 +1,6 @@
 # ProjectIdUpdates
 
-Incrementally update project associations without specifying the full list
+Incrementally update project linking without specifying the full list
 
 ## Example Usage
 

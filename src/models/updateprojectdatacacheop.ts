@@ -1509,6 +1509,7 @@ export type UpdateProjectDataCachePermissions = {
   repository?: Array<ACLAction> | undefined;
   samlConfig?: Array<ACLAction> | undefined;
   secret?: Array<ACLAction> | undefined;
+  securityPlusConfiguration?: Array<ACLAction> | undefined;
   sensitiveEnvironmentVariablePolicy?: Array<ACLAction> | undefined;
   sharedEnvVars?: Array<ACLAction> | undefined;
   sharedEnvVarsProduction?: Array<ACLAction> | undefined;
@@ -7012,6 +7013,7 @@ export const UpdateProjectDataCachePermissions$inboundSchema: z.ZodType<
   repository: z.array(ACLAction$inboundSchema).optional(),
   samlConfig: z.array(ACLAction$inboundSchema).optional(),
   secret: z.array(ACLAction$inboundSchema).optional(),
+  securityPlusConfiguration: z.array(ACLAction$inboundSchema).optional(),
   sensitiveEnvironmentVariablePolicy: z.array(ACLAction$inboundSchema)
     .optional(),
   sharedEnvVars: z.array(ACLAction$inboundSchema).optional(),
@@ -7242,6 +7244,7 @@ export type UpdateProjectDataCachePermissions$Outbound = {
   repository?: Array<string> | undefined;
   samlConfig?: Array<string> | undefined;
   secret?: Array<string> | undefined;
+  securityPlusConfiguration?: Array<string> | undefined;
   sensitiveEnvironmentVariablePolicy?: Array<string> | undefined;
   sharedEnvVars?: Array<string> | undefined;
   sharedEnvVarsProduction?: Array<string> | undefined;
@@ -7472,6 +7475,7 @@ export const UpdateProjectDataCachePermissions$outboundSchema: z.ZodType<
   repository: z.array(ACLAction$outboundSchema).optional(),
   samlConfig: z.array(ACLAction$outboundSchema).optional(),
   secret: z.array(ACLAction$outboundSchema).optional(),
+  securityPlusConfiguration: z.array(ACLAction$outboundSchema).optional(),
   sensitiveEnvironmentVariablePolicy: z.array(ACLAction$outboundSchema)
     .optional(),
   sharedEnvVars: z.array(ACLAction$outboundSchema).optional(),

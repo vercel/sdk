@@ -823,6 +823,7 @@ export type GetDeploymentResponseBody2 = {
    * The public project information associated with the deployment.
    */
   project?: GetDeploymentResponseBodyProject | undefined;
+  prebuilt?: boolean | undefined;
   /**
    * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
    */
@@ -2420,6 +2421,7 @@ export type GetDeploymentResponseBody1 = {
    * The public project information associated with the deployment.
    */
   project?: ResponseBodyProject | undefined;
+  prebuilt?: boolean | undefined;
   /**
    * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
    */
@@ -4803,6 +4805,7 @@ export const GetDeploymentResponseBody2$inboundSchema: z.ZodType<
   nodeVersion: GetDeploymentResponseBodyNodeVersion$inboundSchema.optional(),
   project: z.lazy(() => GetDeploymentResponseBodyProject$inboundSchema)
     .optional(),
+  prebuilt: z.boolean().optional(),
   readySubstate: GetDeploymentResponseBodyReadySubstate$inboundSchema
     .optional(),
   regions: z.array(z.string()),
@@ -4882,6 +4885,7 @@ export type GetDeploymentResponseBody2$Outbound = {
   originCacheRegion?: string | undefined;
   nodeVersion?: string | undefined;
   project?: GetDeploymentResponseBodyProject$Outbound | undefined;
+  prebuilt?: boolean | undefined;
   readySubstate?: string | undefined;
   regions: Array<string>;
   softDeletedByRetention?: boolean | undefined;
@@ -4971,6 +4975,7 @@ export const GetDeploymentResponseBody2$outboundSchema: z.ZodType<
   nodeVersion: GetDeploymentResponseBodyNodeVersion$outboundSchema.optional(),
   project: z.lazy(() => GetDeploymentResponseBodyProject$outboundSchema)
     .optional(),
+  prebuilt: z.boolean().optional(),
   readySubstate: GetDeploymentResponseBodyReadySubstate$outboundSchema
     .optional(),
   regions: z.array(z.string()),
@@ -10500,6 +10505,7 @@ export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
   originCacheRegion: z.string().optional(),
   nodeVersion: ResponseBodyNodeVersion$inboundSchema.optional(),
   project: z.lazy(() => ResponseBodyProject$inboundSchema).optional(),
+  prebuilt: z.boolean().optional(),
   readySubstate: ResponseBodyReadySubstate$inboundSchema.optional(),
   regions: z.array(z.string()),
   softDeletedByRetention: z.boolean().optional(),
@@ -10631,6 +10637,7 @@ export type GetDeploymentResponseBody1$Outbound = {
   originCacheRegion?: string | undefined;
   nodeVersion?: string | undefined;
   project?: ResponseBodyProject$Outbound | undefined;
+  prebuilt?: boolean | undefined;
   readySubstate?: string | undefined;
   regions: Array<string>;
   softDeletedByRetention?: boolean | undefined;
@@ -10767,6 +10774,7 @@ export const GetDeploymentResponseBody1$outboundSchema: z.ZodType<
   originCacheRegion: z.string().optional(),
   nodeVersion: ResponseBodyNodeVersion$outboundSchema.optional(),
   project: z.lazy(() => ResponseBodyProject$outboundSchema).optional(),
+  prebuilt: z.boolean().optional(),
   readySubstate: ResponseBodyReadySubstate$outboundSchema.optional(),
   regions: z.array(z.string()),
   softDeletedByRetention: z.boolean().optional(),

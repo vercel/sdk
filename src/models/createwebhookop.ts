@@ -47,6 +47,7 @@ export const Events = {
   IntegrationConfigurationRemoved: "integration-configuration.removed",
   IntegrationConfigurationScopeChangeConfirmed:
     "integration-configuration.scope-change-confirmed",
+  IntegrationConfigurationTransferred: "integration-configuration.transferred",
   IntegrationResourceProjectConnected: "integration-resource.project-connected",
   IntegrationResourceProjectDisconnected:
     "integration-resource.project-disconnected",
@@ -152,6 +153,7 @@ export const CreateWebhookEvents = {
   IntegrationConfigurationRemoved: "integration-configuration.removed",
   IntegrationConfigurationScopeChangeConfirmed:
     "integration-configuration.scope-change-confirmed",
+  IntegrationConfigurationTransferred: "integration-configuration.transferred",
   IntegrationResourceProjectConnected: "integration-resource.project-connected",
   IntegrationResourceProjectDisconnected:
     "integration-resource.project-disconnected",

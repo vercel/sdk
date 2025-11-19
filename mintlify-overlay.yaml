@@ -27,4 +27,7 @@ actions:
       type: "string"  
   # Property describe is not valid in openapi spec and breaks mintlify generation
   - target: "$..schema.describe"
+    remove: true
+  # Property $id is not valid and breaks mintlify linting when it appears in response schemas
+  - target: '$.paths..responses..schema.properties..["$id"]'
     remove: true      

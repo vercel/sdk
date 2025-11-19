@@ -46,6 +46,7 @@ const (
 	CreateWebhookEventRequestIntegrationConfigurationPermissionUpgraded         CreateWebhookEventRequest = "integration-configuration.permission-upgraded"
 	CreateWebhookEventRequestIntegrationConfigurationRemoved                    CreateWebhookEventRequest = "integration-configuration.removed"
 	CreateWebhookEventRequestIntegrationConfigurationScopeChangeConfirmed       CreateWebhookEventRequest = "integration-configuration.scope-change-confirmed"
+	CreateWebhookEventRequestIntegrationConfigurationTransferred                CreateWebhookEventRequest = "integration-configuration.transferred"
 	CreateWebhookEventRequestIntegrationResourceProjectConnected                CreateWebhookEventRequest = "integration-resource.project-connected"
 	CreateWebhookEventRequestIntegrationResourceProjectDisconnected             CreateWebhookEventRequest = "integration-resource.project-disconnected"
 	CreateWebhookEventRequestProjectCreated                                     CreateWebhookEventRequest = "project.created"
@@ -166,6 +167,8 @@ func (e *CreateWebhookEventRequest) UnmarshalJSON(data []byte) error {
 	case "integration-configuration.removed":
 		fallthrough
 	case "integration-configuration.scope-change-confirmed":
+		fallthrough
+	case "integration-configuration.transferred":
 		fallthrough
 	case "integration-resource.project-connected":
 		fallthrough
@@ -348,6 +351,7 @@ const (
 	CreateWebhookEventResponseIntegrationConfigurationPermissionUpgraded         CreateWebhookEventResponse = "integration-configuration.permission-upgraded"
 	CreateWebhookEventResponseIntegrationConfigurationRemoved                    CreateWebhookEventResponse = "integration-configuration.removed"
 	CreateWebhookEventResponseIntegrationConfigurationScopeChangeConfirmed       CreateWebhookEventResponse = "integration-configuration.scope-change-confirmed"
+	CreateWebhookEventResponseIntegrationConfigurationTransferred                CreateWebhookEventResponse = "integration-configuration.transferred"
 	CreateWebhookEventResponseIntegrationResourceProjectConnected                CreateWebhookEventResponse = "integration-resource.project-connected"
 	CreateWebhookEventResponseIntegrationResourceProjectDisconnected             CreateWebhookEventResponse = "integration-resource.project-disconnected"
 	CreateWebhookEventResponseProjectCreated                                     CreateWebhookEventResponse = "project.created"
@@ -468,6 +472,8 @@ func (e *CreateWebhookEventResponse) UnmarshalJSON(data []byte) error {
 	case "integration-configuration.removed":
 		fallthrough
 	case "integration-configuration.scope-change-confirmed":
+		fallthrough
+	case "integration-configuration.transferred":
 		fallthrough
 	case "integration-resource.project-connected":
 		fallthrough

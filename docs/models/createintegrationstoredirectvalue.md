@@ -6,7 +6,7 @@
 import { CreateIntegrationStoreDirectValue } from "@vercel/sdk/models/createintegrationstoredirectop.js";
 
 let value: CreateIntegrationStoreDirectValue = {
-  atBRANDAt8804: {},
+  atBRANDAt8805: {},
 };
 ```
 
@@ -14,4 +14,4 @@ let value: CreateIntegrationStoreDirectValue = {
 
 | Field                                              | Type                                               | Required                                           | Description                                        |
 | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `atBRANDAt8804`                                    | [models.AtBRANDAt8804](../models/atbrandat8804.md) | :heavy_check_mark:                                 | N/A                                                |
+| `atBRANDAt8805`                                    | [models.AtBRANDAt8805](../models/atbrandat8805.md) | :heavy_check_mark:                                 | N/A                                                |

@@ -100,9 +100,7 @@ test("Logdrains Get Integration Log Drains", async () => {
       branch: "feature/*",
       samplingRate: 0.5,
       source: {
-        kind: "integration",
-        integrationId: "<id>",
-        integrationConfigurationId: "<id>",
+        kind: "self-served",
       },
     },
   ]);
@@ -155,9 +153,7 @@ test("Logdrains Create Log Drain", async () => {
     branch: "feature/*",
     samplingRate: 0.5,
     source: {
-      kind: "integration",
-      integrationId: "<id>",
-      integrationConfigurationId: "<id>",
+      kind: "self-served",
     },
   });
 });
@@ -193,7 +189,9 @@ test("Logdrains Get Configurable Log Drain", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
+  expect(result).toEqual({
+    createdFrom: "<value>",
+  });
 });
 
 test("Logdrains Get All Log Drains", async () => {

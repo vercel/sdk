@@ -1989,6 +1989,7 @@ export type CreateDeploymentResponseBody = {
    * The public project information associated with the deployment.
    */
   project?: CreateDeploymentProject | undefined;
+  prebuilt?: boolean | undefined;
   /**
    * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
    */
@@ -8128,6 +8129,7 @@ export const CreateDeploymentResponseBody$inboundSchema: z.ZodType<
   originCacheRegion: z.string().optional(),
   nodeVersion: CreateDeploymentNodeVersion$inboundSchema.optional(),
   project: z.lazy(() => CreateDeploymentProject$inboundSchema).optional(),
+  prebuilt: z.boolean().optional(),
   readySubstate: ReadySubstate$inboundSchema.optional(),
   regions: z.array(z.string()),
   softDeletedByRetention: z.boolean().optional(),
@@ -8254,6 +8256,7 @@ export type CreateDeploymentResponseBody$Outbound = {
   originCacheRegion?: string | undefined;
   nodeVersion?: string | undefined;
   project?: CreateDeploymentProject$Outbound | undefined;
+  prebuilt?: boolean | undefined;
   readySubstate?: string | undefined;
   regions: Array<string>;
   softDeletedByRetention?: boolean | undefined;
@@ -8373,6 +8376,7 @@ export const CreateDeploymentResponseBody$outboundSchema: z.ZodType<
   originCacheRegion: z.string().optional(),
   nodeVersion: CreateDeploymentNodeVersion$outboundSchema.optional(),
   project: z.lazy(() => CreateDeploymentProject$outboundSchema).optional(),
+  prebuilt: z.boolean().optional(),
   readySubstate: ReadySubstate$outboundSchema.optional(),
   regions: z.array(z.string()),
   softDeletedByRetention: z.boolean().optional(),

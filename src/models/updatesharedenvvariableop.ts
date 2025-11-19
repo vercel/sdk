@@ -19,7 +19,7 @@ export type UpdateSharedEnvVariableTarget = ClosedEnum<
 >;
 
 /**
- * Incrementally update project associations without specifying the full list
+ * Incrementally update project linking without specifying the full list
  */
 export type ProjectIdUpdates = {
   /**
@@ -64,7 +64,7 @@ export type Updates = {
    */
   projectId?: Array<string> | undefined;
   /**
-   * Incrementally update project associations without specifying the full list
+   * Incrementally update project linking without specifying the full list
    */
   projectIdUpdates?: ProjectIdUpdates | undefined;
   /**
@@ -78,6 +78,9 @@ export type Updates = {
 };
 
 export type UpdateSharedEnvVariableRequestBody = {
+  /**
+   * An object where each key is an environment variable ID (not the key name) and the value is the update to apply
+   */
   updates: { [k: string]: Updates };
 };
 

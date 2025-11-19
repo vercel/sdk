@@ -7,27 +7,18 @@ import { UpdateSharedEnvVariableRequestBody } from "@vercel/sdk/models/updatesha
 
 let value: UpdateSharedEnvVariableRequestBody = {
   updates: {
-    "key": {
+    "env_2WjyKQmM8ZnGcJsPWMrHRHrE": {
       key: "API_URL",
       value: "https://api.vercel.com",
       target: [
         "production",
         "preview",
       ],
-      projectId: [
-        "prj_2WjyKQmM8ZnGcJsPWMrHRHrE",
-        "prj_2WjyKQmM8ZnGcJsPWMrHRCRV",
-      ],
       projectIdUpdates: {
         link: [
           "prj_2WjyKQmM8ZnGcJsPWMrHRHrE",
         ],
-        unlink: [
-          "prj_2WjyKQmM8ZnGcJsPWMrHRCRV",
-        ],
       },
-      type: "encrypted",
-      comment: "database connection string for production",
     },
   },
 };
@@ -35,6 +26,6 @@ let value: UpdateSharedEnvVariableRequestBody = {
 
 ## Fields
 
-| Field                                                  | Type                                                   | Required                                               | Description                                            |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `updates`                                              | Record<string, [models.Updates](../models/updates.md)> | :heavy_check_mark:                                     | N/A                                                    |
+| Field                                                                                                                                                                                                  | Type                                                                                                                                                                                                   | Required                                                                                                                                                                                               | Description                                                                                                                                                                                            | Example                                                                                                                                                                                                |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `updates`                                                                                                                                                                                              | Record<string, [models.Updates](../models/updates.md)>                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                                                     | An object where each key is an environment variable ID (not the key name) and the value is the update to apply                                                                                         | {<br/>"env_2WjyKQmM8ZnGcJsPWMrHRHrE": {<br/>"key": "API_URL",<br/>"value": "https://api.vercel.com",<br/>"target": [<br/>"production",<br/>"preview"<br/>],<br/>"projectIdUpdates": {<br/>"link": [<br/>"prj_2WjyKQmM8ZnGcJsPWMrHRHrE"<br/>]<br/>}<br/>}<br/>} |

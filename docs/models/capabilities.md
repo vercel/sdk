@@ -13,6 +13,7 @@ let value: Capabilities = {};
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `mcp`              | *boolean*          | :heavy_minus_sign: | N/A                |
+| `mcpReadonly`      | *boolean*          | :heavy_minus_sign: | N/A                |
 | `sso`              | *boolean*          | :heavy_minus_sign: | N/A                |
 | `billable`         | *boolean*          | :heavy_minus_sign: | N/A                |
 | `transferable`     | *boolean*          | :heavy_minus_sign: | N/A                |

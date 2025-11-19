@@ -22,14 +22,6 @@ export type GetDrainsRequest = {
   slug?: string | undefined;
 };
 
-export const GetDrainsDrainsCreatedFrom = {
-  SelfServed: "self-served",
-  Integration: "integration",
-} as const;
-export type GetDrainsDrainsCreatedFrom = ClosedEnum<
-  typeof GetDrainsDrainsCreatedFrom
->;
-
 export type GetDrainsDrainsLog = {};
 
 export type GetDrainsDrainsTrace = {};
@@ -335,80 +327,38 @@ export type GetDrainsDrainsFilterV2 =
   | GetDrainsFilterV2Drains2
   | GetDrainsFilterV2Drains1;
 
-export const DrainsFramework = {
-  Blitzjs: "blitzjs",
-  Nextjs: "nextjs",
-  Gatsby: "gatsby",
-  Remix: "remix",
-  ReactRouter: "react-router",
-  Astro: "astro",
-  Hexo: "hexo",
-  Eleventy: "eleventy",
-  Docusaurus2: "docusaurus-2",
-  Docusaurus: "docusaurus",
-  Preact: "preact",
-  Solidstart1: "solidstart-1",
-  Solidstart: "solidstart",
-  Dojo: "dojo",
-  Ember: "ember",
-  Vue: "vue",
-  Scully: "scully",
-  IonicAngular: "ionic-angular",
-  Angular: "angular",
-  Polymer: "polymer",
-  Svelte: "svelte",
-  Sveltekit: "sveltekit",
-  Sveltekit1: "sveltekit-1",
-  IonicReact: "ionic-react",
-  CreateReactApp: "create-react-app",
-  Gridsome: "gridsome",
-  Umijs: "umijs",
-  Sapper: "sapper",
-  Saber: "saber",
-  Stencil: "stencil",
-  Nuxtjs: "nuxtjs",
-  Redwoodjs: "redwoodjs",
-  Hugo: "hugo",
-  Jekyll: "jekyll",
-  Brunch: "brunch",
-  Middleman: "middleman",
-  Zola: "zola",
-  Hydrogen: "hydrogen",
-  Vite: "vite",
-  TanstackStart: "tanstack-start",
-  Vitepress: "vitepress",
-  Vuepress: "vuepress",
-  Parcel: "parcel",
-  Fastapi: "fastapi",
-  Flask: "flask",
-  Fasthtml: "fasthtml",
-  SanityV3: "sanity-v3",
-  Sanity: "sanity",
-  Storybook: "storybook",
-  Nitro: "nitro",
-  Hono: "hono",
-  Express: "express",
-  H3: "h3",
-  Nestjs: "nestjs",
-  Elysia: "elysia",
-  Fastify: "fastify",
-  Xmcp: "xmcp",
+export const GetDrainsProjectAccessDrainsAccess = {
+  Some: "some",
 } as const;
-export type DrainsFramework = ClosedEnum<typeof DrainsFramework>;
+export type GetDrainsProjectAccessDrainsAccess = ClosedEnum<
+  typeof GetDrainsProjectAccessDrainsAccess
+>;
 
-export type DrainsProjectsMetadata = {
-  id: string;
-  name: string;
-  framework?: DrainsFramework | null | undefined;
-  latestDeployment?: string | undefined;
+export type GetDrainsProjectAccess2 = {
+  access: GetDrainsProjectAccessDrainsAccess;
+  projectIds: Array<string>;
 };
+
+export const GetDrainsProjectAccessAccess = {
+  All: "all",
+} as const;
+export type GetDrainsProjectAccessAccess = ClosedEnum<
+  typeof GetDrainsProjectAccessAccess
+>;
+
+export type GetDrainsProjectAccess1 = {
+  access: GetDrainsProjectAccessAccess;
+};
+
+export type DrainsProjectAccess =
+  | GetDrainsProjectAccess2
+  | GetDrainsProjectAccess1;
 
 export type Drains2 = {
   id: string;
   ownerId: string;
   name: string;
   createdAt: number;
-  createdFrom?: GetDrainsDrainsCreatedFrom | undefined;
   updatedAt: number;
   projectIds?: Array<string> | undefined;
   schemas?: GetDrainsDrainsSchemas | undefined;
@@ -425,22 +375,14 @@ export type Drains2 = {
   disabledReason?: GetDrainsDrainsDisabledReason | undefined;
   disabledBy?: string | undefined;
   firstErrorTimestamp?: number | undefined;
-  configurationId?: string | undefined;
-  clientId?: string | undefined;
   source: GetDrainsSourceDrains2 | GetDrainsSourceDrains1;
   filter?: string | undefined;
   filterV2?: GetDrainsFilterV2Drains2 | GetDrainsFilterV2Drains1 | undefined;
   integrationIcon?: string | undefined;
   integrationConfigurationUri?: string | undefined;
   integrationWebsite?: string | undefined;
-  projectsMetadata?: Array<DrainsProjectsMetadata> | undefined;
+  projectAccess?: GetDrainsProjectAccess2 | GetDrainsProjectAccess1 | undefined;
 };
-
-export const DrainsCreatedFrom = {
-  SelfServed: "self-served",
-  Integration: "integration",
-} as const;
-export type DrainsCreatedFrom = ClosedEnum<typeof DrainsCreatedFrom>;
 
 export type DrainsLog = {};
 
@@ -723,7 +665,6 @@ export type Drains1 = {
   ownerId: string;
   name: string;
   createdAt: number;
-  createdFrom?: DrainsCreatedFrom | undefined;
   updatedAt: number;
   projectIds?: Array<string> | undefined;
   schemas?: DrainsSchemas | undefined;
@@ -740,8 +681,6 @@ export type Drains1 = {
   disabledReason?: DrainsDisabledReason | undefined;
   disabledBy?: string | undefined;
   firstErrorTimestamp?: number | undefined;
-  configurationId?: string | undefined;
-  clientId?: string | undefined;
   source: GetDrainsSource2 | GetDrainsSource1;
   filter?: string | undefined;
   filterV2?: GetDrainsFilterV22 | GetDrainsFilterV21 | undefined;
@@ -800,15 +739,6 @@ export function getDrainsRequestFromJSON(
     `Failed to parse 'GetDrainsRequest' from JSON`,
   );
 }
-
-/** @internal */
-export const GetDrainsDrainsCreatedFrom$inboundSchema: z.ZodNativeEnum<
-  typeof GetDrainsDrainsCreatedFrom
-> = z.nativeEnum(GetDrainsDrainsCreatedFrom);
-/** @internal */
-export const GetDrainsDrainsCreatedFrom$outboundSchema: z.ZodNativeEnum<
-  typeof GetDrainsDrainsCreatedFrom
-> = GetDrainsDrainsCreatedFrom$inboundSchema;
 
 /** @internal */
 export const GetDrainsDrainsLog$inboundSchema: z.ZodType<
@@ -2272,59 +2202,142 @@ export function getDrainsDrainsFilterV2FromJSON(
 }
 
 /** @internal */
-export const DrainsFramework$inboundSchema: z.ZodNativeEnum<
-  typeof DrainsFramework
-> = z.nativeEnum(DrainsFramework);
+export const GetDrainsProjectAccessDrainsAccess$inboundSchema: z.ZodNativeEnum<
+  typeof GetDrainsProjectAccessDrainsAccess
+> = z.nativeEnum(GetDrainsProjectAccessDrainsAccess);
 /** @internal */
-export const DrainsFramework$outboundSchema: z.ZodNativeEnum<
-  typeof DrainsFramework
-> = DrainsFramework$inboundSchema;
+export const GetDrainsProjectAccessDrainsAccess$outboundSchema: z.ZodNativeEnum<
+  typeof GetDrainsProjectAccessDrainsAccess
+> = GetDrainsProjectAccessDrainsAccess$inboundSchema;
 
 /** @internal */
-export const DrainsProjectsMetadata$inboundSchema: z.ZodType<
-  DrainsProjectsMetadata,
+export const GetDrainsProjectAccess2$inboundSchema: z.ZodType<
+  GetDrainsProjectAccess2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
-  framework: z.nullable(DrainsFramework$inboundSchema).optional(),
-  latestDeployment: z.string().optional(),
+  access: GetDrainsProjectAccessDrainsAccess$inboundSchema,
+  projectIds: z.array(z.string()),
 });
 /** @internal */
-export type DrainsProjectsMetadata$Outbound = {
-  id: string;
-  name: string;
-  framework?: string | null | undefined;
-  latestDeployment?: string | undefined;
+export type GetDrainsProjectAccess2$Outbound = {
+  access: string;
+  projectIds: Array<string>;
 };
 
 /** @internal */
-export const DrainsProjectsMetadata$outboundSchema: z.ZodType<
-  DrainsProjectsMetadata$Outbound,
+export const GetDrainsProjectAccess2$outboundSchema: z.ZodType<
+  GetDrainsProjectAccess2$Outbound,
   z.ZodTypeDef,
-  DrainsProjectsMetadata
+  GetDrainsProjectAccess2
 > = z.object({
-  id: z.string(),
-  name: z.string(),
-  framework: z.nullable(DrainsFramework$outboundSchema).optional(),
-  latestDeployment: z.string().optional(),
+  access: GetDrainsProjectAccessDrainsAccess$outboundSchema,
+  projectIds: z.array(z.string()),
 });
 
-export function drainsProjectsMetadataToJSON(
-  drainsProjectsMetadata: DrainsProjectsMetadata,
+export function getDrainsProjectAccess2ToJSON(
+  getDrainsProjectAccess2: GetDrainsProjectAccess2,
 ): string {
   return JSON.stringify(
-    DrainsProjectsMetadata$outboundSchema.parse(drainsProjectsMetadata),
+    GetDrainsProjectAccess2$outboundSchema.parse(getDrainsProjectAccess2),
   );
 }
-export function drainsProjectsMetadataFromJSON(
+export function getDrainsProjectAccess2FromJSON(
   jsonString: string,
-): SafeParseResult<DrainsProjectsMetadata, SDKValidationError> {
+): SafeParseResult<GetDrainsProjectAccess2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => DrainsProjectsMetadata$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DrainsProjectsMetadata' from JSON`,
+    (x) => GetDrainsProjectAccess2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDrainsProjectAccess2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDrainsProjectAccessAccess$inboundSchema: z.ZodNativeEnum<
+  typeof GetDrainsProjectAccessAccess
+> = z.nativeEnum(GetDrainsProjectAccessAccess);
+/** @internal */
+export const GetDrainsProjectAccessAccess$outboundSchema: z.ZodNativeEnum<
+  typeof GetDrainsProjectAccessAccess
+> = GetDrainsProjectAccessAccess$inboundSchema;
+
+/** @internal */
+export const GetDrainsProjectAccess1$inboundSchema: z.ZodType<
+  GetDrainsProjectAccess1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  access: GetDrainsProjectAccessAccess$inboundSchema,
+});
+/** @internal */
+export type GetDrainsProjectAccess1$Outbound = {
+  access: string;
+};
+
+/** @internal */
+export const GetDrainsProjectAccess1$outboundSchema: z.ZodType<
+  GetDrainsProjectAccess1$Outbound,
+  z.ZodTypeDef,
+  GetDrainsProjectAccess1
+> = z.object({
+  access: GetDrainsProjectAccessAccess$outboundSchema,
+});
+
+export function getDrainsProjectAccess1ToJSON(
+  getDrainsProjectAccess1: GetDrainsProjectAccess1,
+): string {
+  return JSON.stringify(
+    GetDrainsProjectAccess1$outboundSchema.parse(getDrainsProjectAccess1),
+  );
+}
+export function getDrainsProjectAccess1FromJSON(
+  jsonString: string,
+): SafeParseResult<GetDrainsProjectAccess1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDrainsProjectAccess1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDrainsProjectAccess1' from JSON`,
+  );
+}
+
+/** @internal */
+export const DrainsProjectAccess$inboundSchema: z.ZodType<
+  DrainsProjectAccess,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => GetDrainsProjectAccess2$inboundSchema),
+  z.lazy(() => GetDrainsProjectAccess1$inboundSchema),
+]);
+/** @internal */
+export type DrainsProjectAccess$Outbound =
+  | GetDrainsProjectAccess2$Outbound
+  | GetDrainsProjectAccess1$Outbound;
+
+/** @internal */
+export const DrainsProjectAccess$outboundSchema: z.ZodType<
+  DrainsProjectAccess$Outbound,
+  z.ZodTypeDef,
+  DrainsProjectAccess
+> = z.union([
+  z.lazy(() => GetDrainsProjectAccess2$outboundSchema),
+  z.lazy(() => GetDrainsProjectAccess1$outboundSchema),
+]);
+
+export function drainsProjectAccessToJSON(
+  drainsProjectAccess: DrainsProjectAccess,
+): string {
+  return JSON.stringify(
+    DrainsProjectAccess$outboundSchema.parse(drainsProjectAccess),
+  );
+}
+export function drainsProjectAccessFromJSON(
+  jsonString: string,
+): SafeParseResult<DrainsProjectAccess, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DrainsProjectAccess$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DrainsProjectAccess' from JSON`,
   );
 }
 
@@ -2335,7 +2348,6 @@ export const Drains2$inboundSchema: z.ZodType<Drains2, z.ZodTypeDef, unknown> =
     ownerId: z.string(),
     name: z.string(),
     createdAt: z.number(),
-    createdFrom: GetDrainsDrainsCreatedFrom$inboundSchema.optional(),
     updatedAt: z.number(),
     projectIds: z.array(z.string()).optional(),
     schemas: z.lazy(() => GetDrainsDrainsSchemas$inboundSchema).optional(),
@@ -2353,8 +2365,6 @@ export const Drains2$inboundSchema: z.ZodType<Drains2, z.ZodTypeDef, unknown> =
     disabledReason: GetDrainsDrainsDisabledReason$inboundSchema.optional(),
     disabledBy: z.string().optional(),
     firstErrorTimestamp: z.number().optional(),
-    configurationId: z.string().optional(),
-    clientId: z.string().optional(),
     source: z.union([
       z.lazy(() => GetDrainsSourceDrains2$inboundSchema),
       z.lazy(() => GetDrainsSourceDrains1$inboundSchema),
@@ -2367,9 +2377,10 @@ export const Drains2$inboundSchema: z.ZodType<Drains2, z.ZodTypeDef, unknown> =
     integrationIcon: z.string().optional(),
     integrationConfigurationUri: z.string().optional(),
     integrationWebsite: z.string().optional(),
-    projectsMetadata: z.array(
-      z.lazy(() => DrainsProjectsMetadata$inboundSchema),
-    ).optional(),
+    projectAccess: z.union([
+      z.lazy(() => GetDrainsProjectAccess2$inboundSchema),
+      z.lazy(() => GetDrainsProjectAccess1$inboundSchema),
+    ]).optional(),
   });
 /** @internal */
 export type Drains2$Outbound = {
@@ -2377,7 +2388,6 @@ export type Drains2$Outbound = {
   ownerId: string;
   name: string;
   createdAt: number;
-  createdFrom?: string | undefined;
   updatedAt: number;
   projectIds?: Array<string> | undefined;
   schemas?: GetDrainsDrainsSchemas$Outbound | undefined;
@@ -2394,8 +2404,6 @@ export type Drains2$Outbound = {
   disabledReason?: string | undefined;
   disabledBy?: string | undefined;
   firstErrorTimestamp?: number | undefined;
-  configurationId?: string | undefined;
-  clientId?: string | undefined;
   source: GetDrainsSourceDrains2$Outbound | GetDrainsSourceDrains1$Outbound;
   filter?: string | undefined;
   filterV2?:
@@ -2405,7 +2413,10 @@ export type Drains2$Outbound = {
   integrationIcon?: string | undefined;
   integrationConfigurationUri?: string | undefined;
   integrationWebsite?: string | undefined;
-  projectsMetadata?: Array<DrainsProjectsMetadata$Outbound> | undefined;
+  projectAccess?:
+    | GetDrainsProjectAccess2$Outbound
+    | GetDrainsProjectAccess1$Outbound
+    | undefined;
 };
 
 /** @internal */
@@ -2418,7 +2429,6 @@ export const Drains2$outboundSchema: z.ZodType<
   ownerId: z.string(),
   name: z.string(),
   createdAt: z.number(),
-  createdFrom: GetDrainsDrainsCreatedFrom$outboundSchema.optional(),
   updatedAt: z.number(),
   projectIds: z.array(z.string()).optional(),
   schemas: z.lazy(() => GetDrainsDrainsSchemas$outboundSchema).optional(),
@@ -2436,8 +2446,6 @@ export const Drains2$outboundSchema: z.ZodType<
   disabledReason: GetDrainsDrainsDisabledReason$outboundSchema.optional(),
   disabledBy: z.string().optional(),
   firstErrorTimestamp: z.number().optional(),
-  configurationId: z.string().optional(),
-  clientId: z.string().optional(),
   source: z.union([
     z.lazy(() => GetDrainsSourceDrains2$outboundSchema),
     z.lazy(() => GetDrainsSourceDrains1$outboundSchema),
@@ -2450,8 +2458,10 @@ export const Drains2$outboundSchema: z.ZodType<
   integrationIcon: z.string().optional(),
   integrationConfigurationUri: z.string().optional(),
   integrationWebsite: z.string().optional(),
-  projectsMetadata: z.array(z.lazy(() => DrainsProjectsMetadata$outboundSchema))
-    .optional(),
+  projectAccess: z.union([
+    z.lazy(() => GetDrainsProjectAccess2$outboundSchema),
+    z.lazy(() => GetDrainsProjectAccess1$outboundSchema),
+  ]).optional(),
 });
 
 export function drains2ToJSON(drains2: Drains2): string {
@@ -2466,15 +2476,6 @@ export function drains2FromJSON(
     `Failed to parse 'Drains2' from JSON`,
   );
 }
-
-/** @internal */
-export const DrainsCreatedFrom$inboundSchema: z.ZodNativeEnum<
-  typeof DrainsCreatedFrom
-> = z.nativeEnum(DrainsCreatedFrom);
-/** @internal */
-export const DrainsCreatedFrom$outboundSchema: z.ZodNativeEnum<
-  typeof DrainsCreatedFrom
-> = DrainsCreatedFrom$inboundSchema;
 
 /** @internal */
 export const DrainsLog$inboundSchema: z.ZodType<
@@ -3836,7 +3837,6 @@ export const Drains1$inboundSchema: z.ZodType<Drains1, z.ZodTypeDef, unknown> =
     ownerId: z.string(),
     name: z.string(),
     createdAt: z.number(),
-    createdFrom: DrainsCreatedFrom$inboundSchema.optional(),
     updatedAt: z.number(),
     projectIds: z.array(z.string()).optional(),
     schemas: z.lazy(() => DrainsSchemas$inboundSchema).optional(),
@@ -3853,8 +3853,6 @@ export const Drains1$inboundSchema: z.ZodType<Drains1, z.ZodTypeDef, unknown> =
     disabledReason: DrainsDisabledReason$inboundSchema.optional(),
     disabledBy: z.string().optional(),
     firstErrorTimestamp: z.number().optional(),
-    configurationId: z.string().optional(),
-    clientId: z.string().optional(),
     source: z.union([
       z.lazy(() => GetDrainsSource2$inboundSchema),
       z.lazy(() => GetDrainsSource1$inboundSchema),
@@ -3871,7 +3869,6 @@ export type Drains1$Outbound = {
   ownerId: string;
   name: string;
   createdAt: number;
-  createdFrom?: string | undefined;
   updatedAt: number;
   projectIds?: Array<string> | undefined;
   schemas?: DrainsSchemas$Outbound | undefined;
@@ -3888,8 +3885,6 @@ export type Drains1$Outbound = {
   disabledReason?: string | undefined;
   disabledBy?: string | undefined;
   firstErrorTimestamp?: number | undefined;
-  configurationId?: string | undefined;
-  clientId?: string | undefined;
   source: GetDrainsSource2$Outbound | GetDrainsSource1$Outbound;
   filter?: string | undefined;
   filterV2?:
@@ -3908,7 +3903,6 @@ export const Drains1$outboundSchema: z.ZodType<
   ownerId: z.string(),
   name: z.string(),
   createdAt: z.number(),
-  createdFrom: DrainsCreatedFrom$outboundSchema.optional(),
   updatedAt: z.number(),
   projectIds: z.array(z.string()).optional(),
   schemas: z.lazy(() => DrainsSchemas$outboundSchema).optional(),
@@ -3925,8 +3919,6 @@ export const Drains1$outboundSchema: z.ZodType<
   disabledReason: DrainsDisabledReason$outboundSchema.optional(),
   disabledBy: z.string().optional(),
   firstErrorTimestamp: z.number().optional(),
-  configurationId: z.string().optional(),
-  clientId: z.string().optional(),
   source: z.union([
     z.lazy(() => GetDrainsSource2$outboundSchema),
     z.lazy(() => GetDrainsSource1$outboundSchema),

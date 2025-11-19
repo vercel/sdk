@@ -1206,32 +1206,6 @@ func (o *UpdateDrainRequest) GetBody() *UpdateDrainRequestBody {
 	return o.Body
 }
 
-type UpdateDrainCreatedFrom2 string
-
-const (
-	UpdateDrainCreatedFrom2SelfServed  UpdateDrainCreatedFrom2 = "self-served"
-	UpdateDrainCreatedFrom2Integration UpdateDrainCreatedFrom2 = "integration"
-)
-
-func (e UpdateDrainCreatedFrom2) ToPointer() *UpdateDrainCreatedFrom2 {
-	return &e
-}
-func (e *UpdateDrainCreatedFrom2) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "self-served":
-		fallthrough
-	case "integration":
-		*e = UpdateDrainCreatedFrom2(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateDrainCreatedFrom2: %v", v)
-	}
-}
-
 type UpdateDrainSchemasLog2 struct {
 }
 
@@ -2884,241 +2858,165 @@ func (u UpdateDrainFilterV2Union2) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type UpdateDrainFilterV2Union2: all fields are null")
 }
 
-type UpdateDrainFramework string
+type UpdateDrainAccessSome string
 
 const (
-	UpdateDrainFrameworkBlitzjs        UpdateDrainFramework = "blitzjs"
-	UpdateDrainFrameworkNextjs         UpdateDrainFramework = "nextjs"
-	UpdateDrainFrameworkGatsby         UpdateDrainFramework = "gatsby"
-	UpdateDrainFrameworkRemix          UpdateDrainFramework = "remix"
-	UpdateDrainFrameworkReactRouter    UpdateDrainFramework = "react-router"
-	UpdateDrainFrameworkAstro          UpdateDrainFramework = "astro"
-	UpdateDrainFrameworkHexo           UpdateDrainFramework = "hexo"
-	UpdateDrainFrameworkEleventy       UpdateDrainFramework = "eleventy"
-	UpdateDrainFrameworkDocusaurus2    UpdateDrainFramework = "docusaurus-2"
-	UpdateDrainFrameworkDocusaurus     UpdateDrainFramework = "docusaurus"
-	UpdateDrainFrameworkPreact         UpdateDrainFramework = "preact"
-	UpdateDrainFrameworkSolidstart1    UpdateDrainFramework = "solidstart-1"
-	UpdateDrainFrameworkSolidstart     UpdateDrainFramework = "solidstart"
-	UpdateDrainFrameworkDojo           UpdateDrainFramework = "dojo"
-	UpdateDrainFrameworkEmber          UpdateDrainFramework = "ember"
-	UpdateDrainFrameworkVue            UpdateDrainFramework = "vue"
-	UpdateDrainFrameworkScully         UpdateDrainFramework = "scully"
-	UpdateDrainFrameworkIonicAngular   UpdateDrainFramework = "ionic-angular"
-	UpdateDrainFrameworkAngular        UpdateDrainFramework = "angular"
-	UpdateDrainFrameworkPolymer        UpdateDrainFramework = "polymer"
-	UpdateDrainFrameworkSvelte         UpdateDrainFramework = "svelte"
-	UpdateDrainFrameworkSveltekit      UpdateDrainFramework = "sveltekit"
-	UpdateDrainFrameworkSveltekit1     UpdateDrainFramework = "sveltekit-1"
-	UpdateDrainFrameworkIonicReact     UpdateDrainFramework = "ionic-react"
-	UpdateDrainFrameworkCreateReactApp UpdateDrainFramework = "create-react-app"
-	UpdateDrainFrameworkGridsome       UpdateDrainFramework = "gridsome"
-	UpdateDrainFrameworkUmijs          UpdateDrainFramework = "umijs"
-	UpdateDrainFrameworkSapper         UpdateDrainFramework = "sapper"
-	UpdateDrainFrameworkSaber          UpdateDrainFramework = "saber"
-	UpdateDrainFrameworkStencil        UpdateDrainFramework = "stencil"
-	UpdateDrainFrameworkNuxtjs         UpdateDrainFramework = "nuxtjs"
-	UpdateDrainFrameworkRedwoodjs      UpdateDrainFramework = "redwoodjs"
-	UpdateDrainFrameworkHugo           UpdateDrainFramework = "hugo"
-	UpdateDrainFrameworkJekyll         UpdateDrainFramework = "jekyll"
-	UpdateDrainFrameworkBrunch         UpdateDrainFramework = "brunch"
-	UpdateDrainFrameworkMiddleman      UpdateDrainFramework = "middleman"
-	UpdateDrainFrameworkZola           UpdateDrainFramework = "zola"
-	UpdateDrainFrameworkHydrogen       UpdateDrainFramework = "hydrogen"
-	UpdateDrainFrameworkVite           UpdateDrainFramework = "vite"
-	UpdateDrainFrameworkTanstackStart  UpdateDrainFramework = "tanstack-start"
-	UpdateDrainFrameworkVitepress      UpdateDrainFramework = "vitepress"
-	UpdateDrainFrameworkVuepress       UpdateDrainFramework = "vuepress"
-	UpdateDrainFrameworkParcel         UpdateDrainFramework = "parcel"
-	UpdateDrainFrameworkFastapi        UpdateDrainFramework = "fastapi"
-	UpdateDrainFrameworkFlask          UpdateDrainFramework = "flask"
-	UpdateDrainFrameworkFasthtml       UpdateDrainFramework = "fasthtml"
-	UpdateDrainFrameworkSanityV3       UpdateDrainFramework = "sanity-v3"
-	UpdateDrainFrameworkSanity         UpdateDrainFramework = "sanity"
-	UpdateDrainFrameworkStorybook      UpdateDrainFramework = "storybook"
-	UpdateDrainFrameworkNitro          UpdateDrainFramework = "nitro"
-	UpdateDrainFrameworkHono           UpdateDrainFramework = "hono"
-	UpdateDrainFrameworkExpress        UpdateDrainFramework = "express"
-	UpdateDrainFrameworkH3             UpdateDrainFramework = "h3"
-	UpdateDrainFrameworkNestjs         UpdateDrainFramework = "nestjs"
-	UpdateDrainFrameworkElysia         UpdateDrainFramework = "elysia"
-	UpdateDrainFrameworkFastify        UpdateDrainFramework = "fastify"
-	UpdateDrainFrameworkXmcp           UpdateDrainFramework = "xmcp"
+	UpdateDrainAccessSomeSome UpdateDrainAccessSome = "some"
 )
 
-func (e UpdateDrainFramework) ToPointer() *UpdateDrainFramework {
+func (e UpdateDrainAccessSome) ToPointer() *UpdateDrainAccessSome {
 	return &e
 }
-func (e *UpdateDrainFramework) UnmarshalJSON(data []byte) error {
+func (e *UpdateDrainAccessSome) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
-	case "blitzjs":
-		fallthrough
-	case "nextjs":
-		fallthrough
-	case "gatsby":
-		fallthrough
-	case "remix":
-		fallthrough
-	case "react-router":
-		fallthrough
-	case "astro":
-		fallthrough
-	case "hexo":
-		fallthrough
-	case "eleventy":
-		fallthrough
-	case "docusaurus-2":
-		fallthrough
-	case "docusaurus":
-		fallthrough
-	case "preact":
-		fallthrough
-	case "solidstart-1":
-		fallthrough
-	case "solidstart":
-		fallthrough
-	case "dojo":
-		fallthrough
-	case "ember":
-		fallthrough
-	case "vue":
-		fallthrough
-	case "scully":
-		fallthrough
-	case "ionic-angular":
-		fallthrough
-	case "angular":
-		fallthrough
-	case "polymer":
-		fallthrough
-	case "svelte":
-		fallthrough
-	case "sveltekit":
-		fallthrough
-	case "sveltekit-1":
-		fallthrough
-	case "ionic-react":
-		fallthrough
-	case "create-react-app":
-		fallthrough
-	case "gridsome":
-		fallthrough
-	case "umijs":
-		fallthrough
-	case "sapper":
-		fallthrough
-	case "saber":
-		fallthrough
-	case "stencil":
-		fallthrough
-	case "nuxtjs":
-		fallthrough
-	case "redwoodjs":
-		fallthrough
-	case "hugo":
-		fallthrough
-	case "jekyll":
-		fallthrough
-	case "brunch":
-		fallthrough
-	case "middleman":
-		fallthrough
-	case "zola":
-		fallthrough
-	case "hydrogen":
-		fallthrough
-	case "vite":
-		fallthrough
-	case "tanstack-start":
-		fallthrough
-	case "vitepress":
-		fallthrough
-	case "vuepress":
-		fallthrough
-	case "parcel":
-		fallthrough
-	case "fastapi":
-		fallthrough
-	case "flask":
-		fallthrough
-	case "fasthtml":
-		fallthrough
-	case "sanity-v3":
-		fallthrough
-	case "sanity":
-		fallthrough
-	case "storybook":
-		fallthrough
-	case "nitro":
-		fallthrough
-	case "hono":
-		fallthrough
-	case "express":
-		fallthrough
-	case "h3":
-		fallthrough
-	case "nestjs":
-		fallthrough
-	case "elysia":
-		fallthrough
-	case "fastify":
-		fallthrough
-	case "xmcp":
-		*e = UpdateDrainFramework(v)
+	case "some":
+		*e = UpdateDrainAccessSome(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateDrainFramework: %v", v)
+		return fmt.Errorf("invalid value for UpdateDrainAccessSome: %v", v)
 	}
 }
 
-type UpdateDrainProjectsMetadatum struct {
-	ID               string                `json:"id"`
-	Name             string                `json:"name"`
-	Framework        *UpdateDrainFramework `json:"framework,omitempty"`
-	LatestDeployment *string               `json:"latestDeployment,omitempty"`
+type UpdateDrainProjectAccessSome struct {
+	Access     UpdateDrainAccessSome `json:"access"`
+	ProjectIds []string              `json:"projectIds"`
 }
 
-func (u UpdateDrainProjectsMetadatum) MarshalJSON() ([]byte, error) {
+func (u UpdateDrainProjectAccessSome) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(u, "", false)
 }
 
-func (u *UpdateDrainProjectsMetadatum) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id", "name"}); err != nil {
+func (u *UpdateDrainProjectAccessSome) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"access", "projectIds"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *UpdateDrainProjectsMetadatum) GetID() string {
+func (o *UpdateDrainProjectAccessSome) GetAccess() UpdateDrainAccessSome {
 	if o == nil {
-		return ""
+		return UpdateDrainAccessSome("")
 	}
-	return o.ID
+	return o.Access
 }
 
-func (o *UpdateDrainProjectsMetadatum) GetName() string {
+func (o *UpdateDrainProjectAccessSome) GetProjectIds() []string {
 	if o == nil {
-		return ""
+		return []string{}
 	}
-	return o.Name
+	return o.ProjectIds
 }
 
-func (o *UpdateDrainProjectsMetadatum) GetFramework() *UpdateDrainFramework {
+type UpdateDrainAccessAll string
+
+const (
+	UpdateDrainAccessAllAll UpdateDrainAccessAll = "all"
+)
+
+func (e UpdateDrainAccessAll) ToPointer() *UpdateDrainAccessAll {
+	return &e
+}
+func (e *UpdateDrainAccessAll) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "all":
+		*e = UpdateDrainAccessAll(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateDrainAccessAll: %v", v)
+	}
+}
+
+type UpdateDrainProjectAccessAll struct {
+	Access UpdateDrainAccessAll `json:"access"`
+}
+
+func (u UpdateDrainProjectAccessAll) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateDrainProjectAccessAll) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"access"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateDrainProjectAccessAll) GetAccess() UpdateDrainAccessAll {
 	if o == nil {
+		return UpdateDrainAccessAll("")
+	}
+	return o.Access
+}
+
+type UpdateDrainProjectAccessUnionType string
+
+const (
+	UpdateDrainProjectAccessUnionTypeUpdateDrainProjectAccessAll  UpdateDrainProjectAccessUnionType = "updateDrain_projectAccess_All"
+	UpdateDrainProjectAccessUnionTypeUpdateDrainProjectAccessSome UpdateDrainProjectAccessUnionType = "updateDrain_projectAccess_Some"
+)
+
+type UpdateDrainProjectAccessUnion struct {
+	UpdateDrainProjectAccessAll  *UpdateDrainProjectAccessAll  `queryParam:"inline"`
+	UpdateDrainProjectAccessSome *UpdateDrainProjectAccessSome `queryParam:"inline"`
+
+	Type UpdateDrainProjectAccessUnionType
+}
+
+func CreateUpdateDrainProjectAccessUnionUpdateDrainProjectAccessAll(updateDrainProjectAccessAll UpdateDrainProjectAccessAll) UpdateDrainProjectAccessUnion {
+	typ := UpdateDrainProjectAccessUnionTypeUpdateDrainProjectAccessAll
+
+	return UpdateDrainProjectAccessUnion{
+		UpdateDrainProjectAccessAll: &updateDrainProjectAccessAll,
+		Type:                        typ,
+	}
+}
+
+func CreateUpdateDrainProjectAccessUnionUpdateDrainProjectAccessSome(updateDrainProjectAccessSome UpdateDrainProjectAccessSome) UpdateDrainProjectAccessUnion {
+	typ := UpdateDrainProjectAccessUnionTypeUpdateDrainProjectAccessSome
+
+	return UpdateDrainProjectAccessUnion{
+		UpdateDrainProjectAccessSome: &updateDrainProjectAccessSome,
+		Type:                         typ,
+	}
+}
+
+func (u *UpdateDrainProjectAccessUnion) UnmarshalJSON(data []byte) error {
+
+	var updateDrainProjectAccessSome UpdateDrainProjectAccessSome = UpdateDrainProjectAccessSome{}
+	if err := utils.UnmarshalJSON(data, &updateDrainProjectAccessSome, "", true, nil); err == nil {
+		u.UpdateDrainProjectAccessSome = &updateDrainProjectAccessSome
+		u.Type = UpdateDrainProjectAccessUnionTypeUpdateDrainProjectAccessSome
 		return nil
 	}
-	return o.Framework
-}
 
-func (o *UpdateDrainProjectsMetadatum) GetLatestDeployment() *string {
-	if o == nil {
+	var updateDrainProjectAccessAll UpdateDrainProjectAccessAll = UpdateDrainProjectAccessAll{}
+	if err := utils.UnmarshalJSON(data, &updateDrainProjectAccessAll, "", true, nil); err == nil {
+		u.UpdateDrainProjectAccessAll = &updateDrainProjectAccessAll
+		u.Type = UpdateDrainProjectAccessUnionTypeUpdateDrainProjectAccessAll
 		return nil
 	}
-	return o.LatestDeployment
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateDrainProjectAccessUnion", string(data))
+}
+
+func (u UpdateDrainProjectAccessUnion) MarshalJSON() ([]byte, error) {
+	if u.UpdateDrainProjectAccessAll != nil {
+		return utils.MarshalJSON(u.UpdateDrainProjectAccessAll, "", true)
+	}
+
+	if u.UpdateDrainProjectAccessSome != nil {
+		return utils.MarshalJSON(u.UpdateDrainProjectAccessSome, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type UpdateDrainProjectAccessUnion: all fields are null")
 }
 
 type UpdateDrainResponseBody2 struct {
@@ -3126,7 +3024,6 @@ type UpdateDrainResponseBody2 struct {
 	OwnerID                     string                              `json:"ownerId"`
 	Name                        string                              `json:"name"`
 	CreatedAt                   float64                             `json:"createdAt"`
-	CreatedFrom                 *UpdateDrainCreatedFrom2            `json:"createdFrom,omitempty"`
 	UpdatedAt                   float64                             `json:"updatedAt"`
 	ProjectIds                  []string                            `json:"projectIds,omitempty"`
 	Schemas                     *UpdateDrainSchemasResponse2        `json:"schemas,omitempty"`
@@ -3138,15 +3035,13 @@ type UpdateDrainResponseBody2 struct {
 	DisabledReason              *UpdateDrainDisabledReason2         `json:"disabledReason,omitempty"`
 	DisabledBy                  *string                             `json:"disabledBy,omitempty"`
 	FirstErrorTimestamp         *float64                            `json:"firstErrorTimestamp,omitempty"`
-	ConfigurationID             *string                             `json:"configurationId,omitempty"`
-	ClientID                    *string                             `json:"clientId,omitempty"`
 	Source                      UpdateDrainResponseBodySourceUnion2 `json:"source"`
 	Filter                      *string                             `json:"filter,omitempty"`
 	FilterV2                    *UpdateDrainFilterV2Union2          `json:"filterV2,omitempty"`
 	IntegrationIcon             *string                             `json:"integrationIcon,omitempty"`
 	IntegrationConfigurationURI *string                             `json:"integrationConfigurationUri,omitempty"`
 	IntegrationWebsite          *string                             `json:"integrationWebsite,omitempty"`
-	ProjectsMetadata            []UpdateDrainProjectsMetadatum      `json:"projectsMetadata,omitempty"`
+	ProjectAccess               *UpdateDrainProjectAccessUnion      `json:"projectAccess,omitempty"`
 }
 
 func (u UpdateDrainResponseBody2) MarshalJSON() ([]byte, error) {
@@ -3186,13 +3081,6 @@ func (o *UpdateDrainResponseBody2) GetCreatedAt() float64 {
 		return 0.0
 	}
 	return o.CreatedAt
-}
-
-func (o *UpdateDrainResponseBody2) GetCreatedFrom() *UpdateDrainCreatedFrom2 {
-	if o == nil {
-		return nil
-	}
-	return o.CreatedFrom
 }
 
 func (o *UpdateDrainResponseBody2) GetUpdatedAt() float64 {
@@ -3272,20 +3160,6 @@ func (o *UpdateDrainResponseBody2) GetFirstErrorTimestamp() *float64 {
 	return o.FirstErrorTimestamp
 }
 
-func (o *UpdateDrainResponseBody2) GetConfigurationID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ConfigurationID
-}
-
-func (o *UpdateDrainResponseBody2) GetClientID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ClientID
-}
-
 func (o *UpdateDrainResponseBody2) GetSource() UpdateDrainResponseBodySourceUnion2 {
 	if o == nil {
 		return UpdateDrainResponseBodySourceUnion2{}
@@ -3328,37 +3202,11 @@ func (o *UpdateDrainResponseBody2) GetIntegrationWebsite() *string {
 	return o.IntegrationWebsite
 }
 
-func (o *UpdateDrainResponseBody2) GetProjectsMetadata() []UpdateDrainProjectsMetadatum {
+func (o *UpdateDrainResponseBody2) GetProjectAccess() *UpdateDrainProjectAccessUnion {
 	if o == nil {
 		return nil
 	}
-	return o.ProjectsMetadata
-}
-
-type UpdateDrainCreatedFrom1 string
-
-const (
-	UpdateDrainCreatedFrom1SelfServed  UpdateDrainCreatedFrom1 = "self-served"
-	UpdateDrainCreatedFrom1Integration UpdateDrainCreatedFrom1 = "integration"
-)
-
-func (e UpdateDrainCreatedFrom1) ToPointer() *UpdateDrainCreatedFrom1 {
-	return &e
-}
-func (e *UpdateDrainCreatedFrom1) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "self-served":
-		fallthrough
-	case "integration":
-		*e = UpdateDrainCreatedFrom1(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateDrainCreatedFrom1: %v", v)
-	}
+	return o.ProjectAccess
 }
 
 type UpdateDrainSchemasLog1 struct {
@@ -5018,7 +4866,6 @@ type UpdateDrainResponseBody1 struct {
 	OwnerID             string                              `json:"ownerId"`
 	Name                string                              `json:"name"`
 	CreatedAt           float64                             `json:"createdAt"`
-	CreatedFrom         *UpdateDrainCreatedFrom1            `json:"createdFrom,omitempty"`
 	UpdatedAt           float64                             `json:"updatedAt"`
 	ProjectIds          []string                            `json:"projectIds,omitempty"`
 	Schemas             *UpdateDrainSchemasResponse1        `json:"schemas,omitempty"`
@@ -5030,8 +4877,6 @@ type UpdateDrainResponseBody1 struct {
 	DisabledReason      *UpdateDrainDisabledReason1         `json:"disabledReason,omitempty"`
 	DisabledBy          *string                             `json:"disabledBy,omitempty"`
 	FirstErrorTimestamp *float64                            `json:"firstErrorTimestamp,omitempty"`
-	ConfigurationID     *string                             `json:"configurationId,omitempty"`
-	ClientID            *string                             `json:"clientId,omitempty"`
 	Source              UpdateDrainResponseBodySourceUnion1 `json:"source"`
 	Filter              *string                             `json:"filter,omitempty"`
 	FilterV2            *UpdateDrainFilterV2Union1          `json:"filterV2,omitempty"`
@@ -5074,13 +4919,6 @@ func (o *UpdateDrainResponseBody1) GetCreatedAt() float64 {
 		return 0.0
 	}
 	return o.CreatedAt
-}
-
-func (o *UpdateDrainResponseBody1) GetCreatedFrom() *UpdateDrainCreatedFrom1 {
-	if o == nil {
-		return nil
-	}
-	return o.CreatedFrom
 }
 
 func (o *UpdateDrainResponseBody1) GetUpdatedAt() float64 {
@@ -5158,20 +4996,6 @@ func (o *UpdateDrainResponseBody1) GetFirstErrorTimestamp() *float64 {
 		return nil
 	}
 	return o.FirstErrorTimestamp
-}
-
-func (o *UpdateDrainResponseBody1) GetConfigurationID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ConfigurationID
-}
-
-func (o *UpdateDrainResponseBody1) GetClientID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ClientID
 }
 
 func (o *UpdateDrainResponseBody1) GetSource() UpdateDrainResponseBodySourceUnion1 {

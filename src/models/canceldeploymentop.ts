@@ -1589,6 +1589,7 @@ export type CancelDeploymentResponseBody = {
    * The public project information associated with the deployment.
    */
   project?: CancelDeploymentProject | undefined;
+  prebuilt?: boolean | undefined;
   /**
    * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
    */
@@ -7107,6 +7108,7 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
   originCacheRegion: z.string().optional(),
   nodeVersion: CancelDeploymentNodeVersion$inboundSchema.optional(),
   project: z.lazy(() => CancelDeploymentProject$inboundSchema).optional(),
+  prebuilt: z.boolean().optional(),
   readyState: CancelDeploymentReadyState$inboundSchema,
   readySubstate: CancelDeploymentReadySubstate$inboundSchema.optional(),
   regions: z.array(z.string()),
@@ -7235,6 +7237,7 @@ export type CancelDeploymentResponseBody$Outbound = {
   originCacheRegion?: string | undefined;
   nodeVersion?: string | undefined;
   project?: CancelDeploymentProject$Outbound | undefined;
+  prebuilt?: boolean | undefined;
   readyState: string;
   readySubstate?: string | undefined;
   regions: Array<string>;
@@ -7372,6 +7375,7 @@ export const CancelDeploymentResponseBody$outboundSchema: z.ZodType<
   originCacheRegion: z.string().optional(),
   nodeVersion: CancelDeploymentNodeVersion$outboundSchema.optional(),
   project: z.lazy(() => CancelDeploymentProject$outboundSchema).optional(),
+  prebuilt: z.boolean().optional(),
   readyState: CancelDeploymentReadyState$outboundSchema,
   readySubstate: CancelDeploymentReadySubstate$outboundSchema.optional(),
   regions: z.array(z.string()),

@@ -39,32 +39,6 @@ func (o *GetDrainRequest) GetSlug() *string {
 	return o.Slug
 }
 
-type GetDrainCreatedFrom2 string
-
-const (
-	GetDrainCreatedFrom2SelfServed  GetDrainCreatedFrom2 = "self-served"
-	GetDrainCreatedFrom2Integration GetDrainCreatedFrom2 = "integration"
-)
-
-func (e GetDrainCreatedFrom2) ToPointer() *GetDrainCreatedFrom2 {
-	return &e
-}
-func (e *GetDrainCreatedFrom2) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "self-served":
-		fallthrough
-	case "integration":
-		*e = GetDrainCreatedFrom2(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetDrainCreatedFrom2: %v", v)
-	}
-}
-
 type GetDrainSchemasLog2 struct {
 }
 
@@ -1717,241 +1691,165 @@ func (u GetDrainFilterV2Union2) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type GetDrainFilterV2Union2: all fields are null")
 }
 
-type GetDrainFramework string
+type GetDrainAccessSome string
 
 const (
-	GetDrainFrameworkBlitzjs        GetDrainFramework = "blitzjs"
-	GetDrainFrameworkNextjs         GetDrainFramework = "nextjs"
-	GetDrainFrameworkGatsby         GetDrainFramework = "gatsby"
-	GetDrainFrameworkRemix          GetDrainFramework = "remix"
-	GetDrainFrameworkReactRouter    GetDrainFramework = "react-router"
-	GetDrainFrameworkAstro          GetDrainFramework = "astro"
-	GetDrainFrameworkHexo           GetDrainFramework = "hexo"
-	GetDrainFrameworkEleventy       GetDrainFramework = "eleventy"
-	GetDrainFrameworkDocusaurus2    GetDrainFramework = "docusaurus-2"
-	GetDrainFrameworkDocusaurus     GetDrainFramework = "docusaurus"
-	GetDrainFrameworkPreact         GetDrainFramework = "preact"
-	GetDrainFrameworkSolidstart1    GetDrainFramework = "solidstart-1"
-	GetDrainFrameworkSolidstart     GetDrainFramework = "solidstart"
-	GetDrainFrameworkDojo           GetDrainFramework = "dojo"
-	GetDrainFrameworkEmber          GetDrainFramework = "ember"
-	GetDrainFrameworkVue            GetDrainFramework = "vue"
-	GetDrainFrameworkScully         GetDrainFramework = "scully"
-	GetDrainFrameworkIonicAngular   GetDrainFramework = "ionic-angular"
-	GetDrainFrameworkAngular        GetDrainFramework = "angular"
-	GetDrainFrameworkPolymer        GetDrainFramework = "polymer"
-	GetDrainFrameworkSvelte         GetDrainFramework = "svelte"
-	GetDrainFrameworkSveltekit      GetDrainFramework = "sveltekit"
-	GetDrainFrameworkSveltekit1     GetDrainFramework = "sveltekit-1"
-	GetDrainFrameworkIonicReact     GetDrainFramework = "ionic-react"
-	GetDrainFrameworkCreateReactApp GetDrainFramework = "create-react-app"
-	GetDrainFrameworkGridsome       GetDrainFramework = "gridsome"
-	GetDrainFrameworkUmijs          GetDrainFramework = "umijs"
-	GetDrainFrameworkSapper         GetDrainFramework = "sapper"
-	GetDrainFrameworkSaber          GetDrainFramework = "saber"
-	GetDrainFrameworkStencil        GetDrainFramework = "stencil"
-	GetDrainFrameworkNuxtjs         GetDrainFramework = "nuxtjs"
-	GetDrainFrameworkRedwoodjs      GetDrainFramework = "redwoodjs"
-	GetDrainFrameworkHugo           GetDrainFramework = "hugo"
-	GetDrainFrameworkJekyll         GetDrainFramework = "jekyll"
-	GetDrainFrameworkBrunch         GetDrainFramework = "brunch"
-	GetDrainFrameworkMiddleman      GetDrainFramework = "middleman"
-	GetDrainFrameworkZola           GetDrainFramework = "zola"
-	GetDrainFrameworkHydrogen       GetDrainFramework = "hydrogen"
-	GetDrainFrameworkVite           GetDrainFramework = "vite"
-	GetDrainFrameworkTanstackStart  GetDrainFramework = "tanstack-start"
-	GetDrainFrameworkVitepress      GetDrainFramework = "vitepress"
-	GetDrainFrameworkVuepress       GetDrainFramework = "vuepress"
-	GetDrainFrameworkParcel         GetDrainFramework = "parcel"
-	GetDrainFrameworkFastapi        GetDrainFramework = "fastapi"
-	GetDrainFrameworkFlask          GetDrainFramework = "flask"
-	GetDrainFrameworkFasthtml       GetDrainFramework = "fasthtml"
-	GetDrainFrameworkSanityV3       GetDrainFramework = "sanity-v3"
-	GetDrainFrameworkSanity         GetDrainFramework = "sanity"
-	GetDrainFrameworkStorybook      GetDrainFramework = "storybook"
-	GetDrainFrameworkNitro          GetDrainFramework = "nitro"
-	GetDrainFrameworkHono           GetDrainFramework = "hono"
-	GetDrainFrameworkExpress        GetDrainFramework = "express"
-	GetDrainFrameworkH3             GetDrainFramework = "h3"
-	GetDrainFrameworkNestjs         GetDrainFramework = "nestjs"
-	GetDrainFrameworkElysia         GetDrainFramework = "elysia"
-	GetDrainFrameworkFastify        GetDrainFramework = "fastify"
-	GetDrainFrameworkXmcp           GetDrainFramework = "xmcp"
+	GetDrainAccessSomeSome GetDrainAccessSome = "some"
 )
 
-func (e GetDrainFramework) ToPointer() *GetDrainFramework {
+func (e GetDrainAccessSome) ToPointer() *GetDrainAccessSome {
 	return &e
 }
-func (e *GetDrainFramework) UnmarshalJSON(data []byte) error {
+func (e *GetDrainAccessSome) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
-	case "blitzjs":
-		fallthrough
-	case "nextjs":
-		fallthrough
-	case "gatsby":
-		fallthrough
-	case "remix":
-		fallthrough
-	case "react-router":
-		fallthrough
-	case "astro":
-		fallthrough
-	case "hexo":
-		fallthrough
-	case "eleventy":
-		fallthrough
-	case "docusaurus-2":
-		fallthrough
-	case "docusaurus":
-		fallthrough
-	case "preact":
-		fallthrough
-	case "solidstart-1":
-		fallthrough
-	case "solidstart":
-		fallthrough
-	case "dojo":
-		fallthrough
-	case "ember":
-		fallthrough
-	case "vue":
-		fallthrough
-	case "scully":
-		fallthrough
-	case "ionic-angular":
-		fallthrough
-	case "angular":
-		fallthrough
-	case "polymer":
-		fallthrough
-	case "svelte":
-		fallthrough
-	case "sveltekit":
-		fallthrough
-	case "sveltekit-1":
-		fallthrough
-	case "ionic-react":
-		fallthrough
-	case "create-react-app":
-		fallthrough
-	case "gridsome":
-		fallthrough
-	case "umijs":
-		fallthrough
-	case "sapper":
-		fallthrough
-	case "saber":
-		fallthrough
-	case "stencil":
-		fallthrough
-	case "nuxtjs":
-		fallthrough
-	case "redwoodjs":
-		fallthrough
-	case "hugo":
-		fallthrough
-	case "jekyll":
-		fallthrough
-	case "brunch":
-		fallthrough
-	case "middleman":
-		fallthrough
-	case "zola":
-		fallthrough
-	case "hydrogen":
-		fallthrough
-	case "vite":
-		fallthrough
-	case "tanstack-start":
-		fallthrough
-	case "vitepress":
-		fallthrough
-	case "vuepress":
-		fallthrough
-	case "parcel":
-		fallthrough
-	case "fastapi":
-		fallthrough
-	case "flask":
-		fallthrough
-	case "fasthtml":
-		fallthrough
-	case "sanity-v3":
-		fallthrough
-	case "sanity":
-		fallthrough
-	case "storybook":
-		fallthrough
-	case "nitro":
-		fallthrough
-	case "hono":
-		fallthrough
-	case "express":
-		fallthrough
-	case "h3":
-		fallthrough
-	case "nestjs":
-		fallthrough
-	case "elysia":
-		fallthrough
-	case "fastify":
-		fallthrough
-	case "xmcp":
-		*e = GetDrainFramework(v)
+	case "some":
+		*e = GetDrainAccessSome(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetDrainFramework: %v", v)
+		return fmt.Errorf("invalid value for GetDrainAccessSome: %v", v)
 	}
 }
 
-type GetDrainProjectsMetadatum struct {
-	ID               string             `json:"id"`
-	Name             string             `json:"name"`
-	Framework        *GetDrainFramework `json:"framework,omitempty"`
-	LatestDeployment *string            `json:"latestDeployment,omitempty"`
+type GetDrainProjectAccessSome struct {
+	Access     GetDrainAccessSome `json:"access"`
+	ProjectIds []string           `json:"projectIds"`
 }
 
-func (g GetDrainProjectsMetadatum) MarshalJSON() ([]byte, error) {
+func (g GetDrainProjectAccessSome) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(g, "", false)
 }
 
-func (g *GetDrainProjectsMetadatum) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "name"}); err != nil {
+func (g *GetDrainProjectAccessSome) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"access", "projectIds"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *GetDrainProjectsMetadatum) GetID() string {
+func (o *GetDrainProjectAccessSome) GetAccess() GetDrainAccessSome {
 	if o == nil {
-		return ""
+		return GetDrainAccessSome("")
 	}
-	return o.ID
+	return o.Access
 }
 
-func (o *GetDrainProjectsMetadatum) GetName() string {
+func (o *GetDrainProjectAccessSome) GetProjectIds() []string {
 	if o == nil {
-		return ""
+		return []string{}
 	}
-	return o.Name
+	return o.ProjectIds
 }
 
-func (o *GetDrainProjectsMetadatum) GetFramework() *GetDrainFramework {
+type GetDrainAccessAll string
+
+const (
+	GetDrainAccessAllAll GetDrainAccessAll = "all"
+)
+
+func (e GetDrainAccessAll) ToPointer() *GetDrainAccessAll {
+	return &e
+}
+func (e *GetDrainAccessAll) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "all":
+		*e = GetDrainAccessAll(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDrainAccessAll: %v", v)
+	}
+}
+
+type GetDrainProjectAccessAll struct {
+	Access GetDrainAccessAll `json:"access"`
+}
+
+func (g GetDrainProjectAccessAll) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDrainProjectAccessAll) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"access"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetDrainProjectAccessAll) GetAccess() GetDrainAccessAll {
 	if o == nil {
+		return GetDrainAccessAll("")
+	}
+	return o.Access
+}
+
+type GetDrainProjectAccessUnionType string
+
+const (
+	GetDrainProjectAccessUnionTypeGetDrainProjectAccessAll  GetDrainProjectAccessUnionType = "getDrain_projectAccess_All"
+	GetDrainProjectAccessUnionTypeGetDrainProjectAccessSome GetDrainProjectAccessUnionType = "getDrain_projectAccess_Some"
+)
+
+type GetDrainProjectAccessUnion struct {
+	GetDrainProjectAccessAll  *GetDrainProjectAccessAll  `queryParam:"inline"`
+	GetDrainProjectAccessSome *GetDrainProjectAccessSome `queryParam:"inline"`
+
+	Type GetDrainProjectAccessUnionType
+}
+
+func CreateGetDrainProjectAccessUnionGetDrainProjectAccessAll(getDrainProjectAccessAll GetDrainProjectAccessAll) GetDrainProjectAccessUnion {
+	typ := GetDrainProjectAccessUnionTypeGetDrainProjectAccessAll
+
+	return GetDrainProjectAccessUnion{
+		GetDrainProjectAccessAll: &getDrainProjectAccessAll,
+		Type:                     typ,
+	}
+}
+
+func CreateGetDrainProjectAccessUnionGetDrainProjectAccessSome(getDrainProjectAccessSome GetDrainProjectAccessSome) GetDrainProjectAccessUnion {
+	typ := GetDrainProjectAccessUnionTypeGetDrainProjectAccessSome
+
+	return GetDrainProjectAccessUnion{
+		GetDrainProjectAccessSome: &getDrainProjectAccessSome,
+		Type:                      typ,
+	}
+}
+
+func (u *GetDrainProjectAccessUnion) UnmarshalJSON(data []byte) error {
+
+	var getDrainProjectAccessSome GetDrainProjectAccessSome = GetDrainProjectAccessSome{}
+	if err := utils.UnmarshalJSON(data, &getDrainProjectAccessSome, "", true, nil); err == nil {
+		u.GetDrainProjectAccessSome = &getDrainProjectAccessSome
+		u.Type = GetDrainProjectAccessUnionTypeGetDrainProjectAccessSome
 		return nil
 	}
-	return o.Framework
-}
 
-func (o *GetDrainProjectsMetadatum) GetLatestDeployment() *string {
-	if o == nil {
+	var getDrainProjectAccessAll GetDrainProjectAccessAll = GetDrainProjectAccessAll{}
+	if err := utils.UnmarshalJSON(data, &getDrainProjectAccessAll, "", true, nil); err == nil {
+		u.GetDrainProjectAccessAll = &getDrainProjectAccessAll
+		u.Type = GetDrainProjectAccessUnionTypeGetDrainProjectAccessAll
 		return nil
 	}
-	return o.LatestDeployment
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetDrainProjectAccessUnion", string(data))
+}
+
+func (u GetDrainProjectAccessUnion) MarshalJSON() ([]byte, error) {
+	if u.GetDrainProjectAccessAll != nil {
+		return utils.MarshalJSON(u.GetDrainProjectAccessAll, "", true)
+	}
+
+	if u.GetDrainProjectAccessSome != nil {
+		return utils.MarshalJSON(u.GetDrainProjectAccessSome, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetDrainProjectAccessUnion: all fields are null")
 }
 
 type GetDrainResponseBody2 struct {
@@ -1959,7 +1857,6 @@ type GetDrainResponseBody2 struct {
 	OwnerID                     string                      `json:"ownerId"`
 	Name                        string                      `json:"name"`
 	CreatedAt                   float64                     `json:"createdAt"`
-	CreatedFrom                 *GetDrainCreatedFrom2       `json:"createdFrom,omitempty"`
 	UpdatedAt                   float64                     `json:"updatedAt"`
 	ProjectIds                  []string                    `json:"projectIds,omitempty"`
 	Schemas                     *GetDrainSchemas2           `json:"schemas,omitempty"`
@@ -1971,15 +1868,13 @@ type GetDrainResponseBody2 struct {
 	DisabledReason              *GetDrainDisabledReason2    `json:"disabledReason,omitempty"`
 	DisabledBy                  *string                     `json:"disabledBy,omitempty"`
 	FirstErrorTimestamp         *float64                    `json:"firstErrorTimestamp,omitempty"`
-	ConfigurationID             *string                     `json:"configurationId,omitempty"`
-	ClientID                    *string                     `json:"clientId,omitempty"`
 	Source                      GetDrainSourceUnion2        `json:"source"`
 	Filter                      *string                     `json:"filter,omitempty"`
 	FilterV2                    *GetDrainFilterV2Union2     `json:"filterV2,omitempty"`
 	IntegrationIcon             *string                     `json:"integrationIcon,omitempty"`
 	IntegrationConfigurationURI *string                     `json:"integrationConfigurationUri,omitempty"`
 	IntegrationWebsite          *string                     `json:"integrationWebsite,omitempty"`
-	ProjectsMetadata            []GetDrainProjectsMetadatum `json:"projectsMetadata,omitempty"`
+	ProjectAccess               *GetDrainProjectAccessUnion `json:"projectAccess,omitempty"`
 }
 
 func (g GetDrainResponseBody2) MarshalJSON() ([]byte, error) {
@@ -2019,13 +1914,6 @@ func (o *GetDrainResponseBody2) GetCreatedAt() float64 {
 		return 0.0
 	}
 	return o.CreatedAt
-}
-
-func (o *GetDrainResponseBody2) GetCreatedFrom() *GetDrainCreatedFrom2 {
-	if o == nil {
-		return nil
-	}
-	return o.CreatedFrom
 }
 
 func (o *GetDrainResponseBody2) GetUpdatedAt() float64 {
@@ -2105,20 +1993,6 @@ func (o *GetDrainResponseBody2) GetFirstErrorTimestamp() *float64 {
 	return o.FirstErrorTimestamp
 }
 
-func (o *GetDrainResponseBody2) GetConfigurationID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ConfigurationID
-}
-
-func (o *GetDrainResponseBody2) GetClientID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ClientID
-}
-
 func (o *GetDrainResponseBody2) GetSource() GetDrainSourceUnion2 {
 	if o == nil {
 		return GetDrainSourceUnion2{}
@@ -2161,37 +2035,11 @@ func (o *GetDrainResponseBody2) GetIntegrationWebsite() *string {
 	return o.IntegrationWebsite
 }
 
-func (o *GetDrainResponseBody2) GetProjectsMetadata() []GetDrainProjectsMetadatum {
+func (o *GetDrainResponseBody2) GetProjectAccess() *GetDrainProjectAccessUnion {
 	if o == nil {
 		return nil
 	}
-	return o.ProjectsMetadata
-}
-
-type GetDrainCreatedFrom1 string
-
-const (
-	GetDrainCreatedFrom1SelfServed  GetDrainCreatedFrom1 = "self-served"
-	GetDrainCreatedFrom1Integration GetDrainCreatedFrom1 = "integration"
-)
-
-func (e GetDrainCreatedFrom1) ToPointer() *GetDrainCreatedFrom1 {
-	return &e
-}
-func (e *GetDrainCreatedFrom1) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "self-served":
-		fallthrough
-	case "integration":
-		*e = GetDrainCreatedFrom1(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetDrainCreatedFrom1: %v", v)
-	}
+	return o.ProjectAccess
 }
 
 type GetDrainSchemasLog1 struct {
@@ -3851,7 +3699,6 @@ type GetDrainResponseBody1 struct {
 	OwnerID             string                   `json:"ownerId"`
 	Name                string                   `json:"name"`
 	CreatedAt           float64                  `json:"createdAt"`
-	CreatedFrom         *GetDrainCreatedFrom1    `json:"createdFrom,omitempty"`
 	UpdatedAt           float64                  `json:"updatedAt"`
 	ProjectIds          []string                 `json:"projectIds,omitempty"`
 	Schemas             *GetDrainSchemas1        `json:"schemas,omitempty"`
@@ -3863,8 +3710,6 @@ type GetDrainResponseBody1 struct {
 	DisabledReason      *GetDrainDisabledReason1 `json:"disabledReason,omitempty"`
 	DisabledBy          *string                  `json:"disabledBy,omitempty"`
 	FirstErrorTimestamp *float64                 `json:"firstErrorTimestamp,omitempty"`
-	ConfigurationID     *string                  `json:"configurationId,omitempty"`
-	ClientID            *string                  `json:"clientId,omitempty"`
 	Source              GetDrainSourceUnion1     `json:"source"`
 	Filter              *string                  `json:"filter,omitempty"`
 	FilterV2            *GetDrainFilterV2Union1  `json:"filterV2,omitempty"`
@@ -3907,13 +3752,6 @@ func (o *GetDrainResponseBody1) GetCreatedAt() float64 {
 		return 0.0
 	}
 	return o.CreatedAt
-}
-
-func (o *GetDrainResponseBody1) GetCreatedFrom() *GetDrainCreatedFrom1 {
-	if o == nil {
-		return nil
-	}
-	return o.CreatedFrom
 }
 
 func (o *GetDrainResponseBody1) GetUpdatedAt() float64 {
@@ -3991,20 +3829,6 @@ func (o *GetDrainResponseBody1) GetFirstErrorTimestamp() *float64 {
 		return nil
 	}
 	return o.FirstErrorTimestamp
-}
-
-func (o *GetDrainResponseBody1) GetConfigurationID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ConfigurationID
-}
-
-func (o *GetDrainResponseBody1) GetClientID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ClientID
 }
 
 func (o *GetDrainResponseBody1) GetSource() GetDrainSourceUnion1 {

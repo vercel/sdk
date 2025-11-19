@@ -3,12 +3,53 @@
 package operations
 
 import (
+	"encoding/json"
+	"fmt"
 	"mockserver/internal/sdk/models/components"
 )
+
+// MoveProjectDomainRedirectStatusCode - Status code for domain redirect
+type MoveProjectDomainRedirectStatusCode int64
+
+const (
+	MoveProjectDomainRedirectStatusCodeThreeHundredAndOne   MoveProjectDomainRedirectStatusCode = 301
+	MoveProjectDomainRedirectStatusCodeThreeHundredAndTwo   MoveProjectDomainRedirectStatusCode = 302
+	MoveProjectDomainRedirectStatusCodeThreeHundredAndSeven MoveProjectDomainRedirectStatusCode = 307
+	MoveProjectDomainRedirectStatusCodeThreeHundredAndEight MoveProjectDomainRedirectStatusCode = 308
+)
+
+func (e MoveProjectDomainRedirectStatusCode) ToPointer() *MoveProjectDomainRedirectStatusCode {
+	return &e
+}
+func (e *MoveProjectDomainRedirectStatusCode) UnmarshalJSON(data []byte) error {
+	var v int64
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case 301:
+		fallthrough
+	case 302:
+		fallthrough
+	case 307:
+		fallthrough
+	case 308:
+		*e = MoveProjectDomainRedirectStatusCode(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for MoveProjectDomainRedirectStatusCode: %v", v)
+	}
+}
 
 type MoveProjectDomainRequestBody struct {
 	// The unique target project identifier
 	ProjectID string `json:"projectId"`
+	// Git branch to link the project domain
+	GitBranch *string `json:"gitBranch,omitempty"`
+	// Target destination domain for redirect
+	Redirect *string `json:"redirect,omitempty"`
+	// Status code for domain redirect
+	RedirectStatusCode *MoveProjectDomainRedirectStatusCode `json:"redirectStatusCode,omitempty"`
 }
 
 func (o *MoveProjectDomainRequestBody) GetProjectID() string {
@@ -16,6 +57,27 @@ func (o *MoveProjectDomainRequestBody) GetProjectID() string {
 		return ""
 	}
 	return o.ProjectID
+}
+
+func (o *MoveProjectDomainRequestBody) GetGitBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GitBranch
+}
+
+func (o *MoveProjectDomainRequestBody) GetRedirect() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Redirect
+}
+
+func (o *MoveProjectDomainRequestBody) GetRedirectStatusCode() *MoveProjectDomainRedirectStatusCode {
+	if o == nil {
+		return nil
+	}
+	return o.RedirectStatusCode
 }
 
 type MoveProjectDomainRequest struct {

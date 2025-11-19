@@ -886,6 +886,12 @@ async function run() {
     domain: "www.example.com",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
+    requestBody: {
+      projectId: "<id>",
+      gitBranch: null,
+      redirect: "foobar.com",
+      redirectStatusCode: 307,
+    },
   });
 
   console.log(result);
@@ -914,6 +920,12 @@ async function run() {
     domain: "www.example.com",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
+    requestBody: {
+      projectId: "<id>",
+      gitBranch: null,
+      redirect: "foobar.com",
+      redirectStatusCode: 307,
+    },
   });
   if (res.ok) {
     const { value: result } = res;

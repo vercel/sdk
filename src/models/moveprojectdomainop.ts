@@ -5,14 +5,43 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
+import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+/**
+ * Status code for domain redirect
+ */
+export const MoveProjectDomainRedirectStatusCode = {
+  ThreeHundredAndOne: 301,
+  ThreeHundredAndTwo: 302,
+  ThreeHundredAndSeven: 307,
+  ThreeHundredAndEight: 308,
+} as const;
+/**
+ * Status code for domain redirect
+ */
+export type MoveProjectDomainRedirectStatusCode = ClosedEnum<
+  typeof MoveProjectDomainRedirectStatusCode
+>;
 
 export type MoveProjectDomainRequestBody = {
   /**
    * The unique target project identifier
    */
   projectId: string;
+  /**
+   * Git branch to link the project domain
+   */
+  gitBranch?: string | null | undefined;
+  /**
+   * Target destination domain for redirect
+   */
+  redirect?: string | null | undefined;
+  /**
+   * Status code for domain redirect
+   */
+  redirectStatusCode?: MoveProjectDomainRedirectStatusCode | null | undefined;
 };
 
 export type MoveProjectDomainRequest = {
@@ -69,16 +98,33 @@ export type MoveProjectDomainResponseBody = {
 };
 
 /** @internal */
+export const MoveProjectDomainRedirectStatusCode$inboundSchema: z.ZodNativeEnum<
+  typeof MoveProjectDomainRedirectStatusCode
+> = z.nativeEnum(MoveProjectDomainRedirectStatusCode);
+/** @internal */
+export const MoveProjectDomainRedirectStatusCode$outboundSchema:
+  z.ZodNativeEnum<typeof MoveProjectDomainRedirectStatusCode> =
+    MoveProjectDomainRedirectStatusCode$inboundSchema;
+
+/** @internal */
 export const MoveProjectDomainRequestBody$inboundSchema: z.ZodType<
   MoveProjectDomainRequestBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
   projectId: z.string(),
+  gitBranch: z.nullable(z.string()).optional(),
+  redirect: z.nullable(z.string()).optional(),
+  redirectStatusCode: z.nullable(
+    MoveProjectDomainRedirectStatusCode$inboundSchema,
+  ).optional(),
 });
 /** @internal */
 export type MoveProjectDomainRequestBody$Outbound = {
   projectId: string;
+  gitBranch?: string | null | undefined;
+  redirect?: string | null | undefined;
+  redirectStatusCode?: number | null | undefined;
 };
 
 /** @internal */
@@ -88,6 +134,11 @@ export const MoveProjectDomainRequestBody$outboundSchema: z.ZodType<
   MoveProjectDomainRequestBody
 > = z.object({
   projectId: z.string(),
+  gitBranch: z.nullable(z.string()).optional(),
+  redirect: z.nullable(z.string()).optional(),
+  redirectStatusCode: z.nullable(
+    MoveProjectDomainRedirectStatusCode$outboundSchema,
+  ).optional(),
 });
 
 export function moveProjectDomainRequestBodyToJSON(

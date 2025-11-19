@@ -8,12 +8,12 @@ The payload of the event, if requested.
 import { OneHundredAndFourteen } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndFourteen = {
-  slug: "<value>",
+  storeType: "redis",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `slug`             | *string*           | :heavy_check_mark: | N/A                |
+| Field                                      | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `storeType`                                | [models.StoreType](../models/storetype.md) | :heavy_check_mark:                         | N/A                                        |

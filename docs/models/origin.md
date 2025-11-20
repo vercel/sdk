@@ -5,11 +5,11 @@
 ```typescript
 import { Origin } from "@vercel/sdk/models/team.js";
 
-let value: Origin = "link";
+let value: Origin = "saml";
 ```
 
 ## Values
 
 ```typescript
-"link" | "saml" | "mail" | "import" | "teams" | "github" | "gitlab" | "bitbucket" | "dsync" | "feedback" | "organization-teams"
+"saml" | "gitlab" | "bitbucket" | "github" | "link" | "mail" | "import" | "teams" | "dsync" | "feedback" | "organization-teams"
 ```

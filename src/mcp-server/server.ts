@@ -95,7 +95,9 @@ import { tool$drainsGetDrain } from "./tools/drainsGetDrain.js";
 import { tool$drainsGetDrains } from "./tools/drainsGetDrains.js";
 import { tool$drainsTestDrain } from "./tools/drainsTestDrain.js";
 import { tool$drainsUpdateDrain } from "./tools/drainsUpdateDrain.js";
+import { tool$edgeCacheDangerouslyDeleteBySrcImages } from "./tools/edgeCacheDangerouslyDeleteBySrcImages.js";
 import { tool$edgeCacheDangerouslyDeleteByTags } from "./tools/edgeCacheDangerouslyDeleteByTags.js";
+import { tool$edgeCacheInvalidateBySrcImages } from "./tools/edgeCacheInvalidateBySrcImages.js";
 import { tool$edgeCacheInvalidateByTags } from "./tools/edgeCacheInvalidateByTags.js";
 import { tool$edgeConfigCreateEdgeConfig } from "./tools/edgeConfigCreateEdgeConfig.js";
 import { tool$edgeConfigCreateEdgeConfigToken } from "./tools/edgeConfigCreateEdgeConfigToken.js";
@@ -240,7 +242,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.17.3",
+    version: "1.17.4",
   });
 
   const client = new VercelCore({
@@ -381,6 +383,8 @@ export function createMCPServer(deps: {
   tool(tool$drainsTestDrain);
   tool(tool$edgeCacheInvalidateByTags);
   tool(tool$edgeCacheDangerouslyDeleteByTags);
+  tool(tool$edgeCacheInvalidateBySrcImages);
+  tool(tool$edgeCacheDangerouslyDeleteBySrcImages);
   tool(tool$edgeConfigGetEdgeConfigs);
   tool(tool$edgeConfigCreateEdgeConfig);
   tool(tool$edgeConfigGetEdgeConfig);

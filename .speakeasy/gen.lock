@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 86e64473b9db18e2ca0a64ae5568b31d
+  docChecksum: eb09a349a8e7af1db7a1db3f4e2d106c
   docVersion: 0.0.1
   speakeasyVersion: 1.658.2
   generationVersion: 2.755.9
-  releaseVersion: 1.17.3
-  configChecksum: 7ffe3682d90f287f0c9448f6bcd0ff60
+  releaseVersion: 1.17.4
+  configChecksum: 802211b85e030572f71b0c4ba5e99d19
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -1278,6 +1278,8 @@ generatedFiles:
   - docs/models/customenvironments.md
   - docs/models/customenvironmenttype.md
   - docs/models/customenvironmentverification.md
+  - docs/models/dangerouslydeletebysrcimagesrequest.md
+  - docs/models/dangerouslydeletebysrcimagesrequestbody.md
   - docs/models/dangerouslydeletebytagsrequest.md
   - docs/models/dangerouslydeletebytagsrequestbody.md
   - docs/models/dangerouslydeletebytagstags.md
@@ -3249,6 +3251,8 @@ generatedFiles:
   - docs/models/internalservererrorcode.md
   - docs/models/invalidadditionalcontactinfo.md
   - docs/models/invalidadditionalcontactinfocode.md
+  - docs/models/invalidatebysrcimagesrequest.md
+  - docs/models/invalidatebysrcimagesrequestbody.md
   - docs/models/invalidatebytagsrequest.md
   - docs/models/invalidatebytagsrequestbody.md
   - docs/models/invalidatebytagstarget.md
@@ -5656,6 +5660,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/createsharedenvvariable.go
   - src/__tests__/mockserver/internal/sdk/models/operations/createteam.go
   - src/__tests__/mockserver/internal/sdk/models/operations/createwebhook.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/dangerouslydeletebysrcimages.go
   - src/__tests__/mockserver/internal/sdk/models/operations/dangerouslydeletebytags.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteaccessgroup.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteaccessgroupproject.go
@@ -5755,6 +5760,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/getwebhooks.go
   - src/__tests__/mockserver/internal/sdk/models/operations/headv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfig.go
   - src/__tests__/mockserver/internal/sdk/models/operations/importresource.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/invalidatebysrcimages.go
   - src/__tests__/mockserver/internal/sdk/models/operations/invalidatebytags.go
   - src/__tests__/mockserver/internal/sdk/models/operations/inviteusertoteam.go
   - src/__tests__/mockserver/internal/sdk/models/operations/issuecert.go
@@ -5981,7 +5987,9 @@ generatedFiles:
   - src/funcs/drainsGetDrains.ts
   - src/funcs/drainsTestDrain.ts
   - src/funcs/drainsUpdateDrain.ts
+  - src/funcs/edgeCacheDangerouslyDeleteBySrcImages.ts
   - src/funcs/edgeCacheDangerouslyDeleteByTags.ts
+  - src/funcs/edgeCacheInvalidateBySrcImages.ts
   - src/funcs/edgeCacheInvalidateByTags.ts
   - src/funcs/edgeConfigCreateEdgeConfig.ts
   - src/funcs/edgeConfigCreateEdgeConfigToken.ts
@@ -6228,7 +6236,9 @@ generatedFiles:
   - src/mcp-server/tools/drainsGetDrains.ts
   - src/mcp-server/tools/drainsTestDrain.ts
   - src/mcp-server/tools/drainsUpdateDrain.ts
+  - src/mcp-server/tools/edgeCacheDangerouslyDeleteBySrcImages.ts
   - src/mcp-server/tools/edgeCacheDangerouslyDeleteByTags.ts
+  - src/mcp-server/tools/edgeCacheInvalidateBySrcImages.ts
   - src/mcp-server/tools/edgeCacheInvalidateByTags.ts
   - src/mcp-server/tools/edgeConfigCreateEdgeConfig.ts
   - src/mcp-server/tools/edgeConfigCreateEdgeConfigToken.ts
@@ -6406,6 +6416,7 @@ generatedFiles:
   - src/models/createsharedenvvariableop.ts
   - src/models/createteamop.ts
   - src/models/createwebhookop.ts
+  - src/models/dangerouslydeletebysrcimagesop.ts
   - src/models/dangerouslydeletebytagsop.ts
   - src/models/deleteaccessgroupop.ts
   - src/models/deleteaccessgroupprojectop.ts
@@ -6526,6 +6537,7 @@ generatedFiles:
   - src/models/importresourceop.ts
   - src/models/internalservererror.ts
   - src/models/invalidadditionalcontactinfo.ts
+  - src/models/invalidatebysrcimagesop.ts
   - src/models/invalidatebytagsop.ts
   - src/models/invitedteammember.ts
   - src/models/inviteusertoteamop.ts
@@ -9229,7 +9241,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"creatorId": "R6efeCJQ2HKXywuasPDc0fOWB", "updatedAt": 1611796915677, "emailDomain": "example.com", "saml": {"connection": {"type": "OktaSAML", "status": "linked", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "inviteCode": "hasihf9e89", "description": "Our mission is to make cloud computing accessible to everyone.", "stagingPrefix": "<value>", "previewDeploymentSuffix": "example.dev", "platform": true, "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": false, "role": "SECURITY", "createdAt": 1519.81, "created": 619.38}, "createdAt": 1630748523395}
+          application/json: {"creatorId": "R6efeCJQ2HKXywuasPDc0fOWB", "updatedAt": 1611796915677, "emailDomain": "example.com", "saml": {"connection": {"status": "linked", "type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "inviteCode": "hasihf9e89", "description": "Our mission is to make cloud computing accessible to everyone.", "stagingPrefix": "<value>", "previewDeploymentSuffix": "example.dev", "platform": true, "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": false, "role": "SECURITY", "createdAt": 1519.81, "created": 619.38}, "createdAt": 1630748523395}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -9247,7 +9259,7 @@ examples:
         application/json: {"description": "Our mission is to make cloud computing accessible to everyone", "emailDomain": "example.com", "name": "My Team", "previewDeploymentSuffix": "example.dev", "regenerateInviteCode": true, "saml": {"enforced": true}, "slug": "my-team", "enablePreviewFeedback": "on", "enableProductionFeedback": "on", "sensitiveEnvironmentVariablePolicy": "on", "remoteCaching": {"enabled": true}, "hideIpAddresses": false, "hideIpAddressesInLogDrains": false, "defaultExpirationSettings": {"expiration": "1y", "expirationProduction": "1y", "expirationCanceled": "1y", "expirationErrored": "1y"}}
       responses:
         "200":
-          application/json: {"creatorId": "R6efeCJQ2HKXywuasPDc0fOWB", "updatedAt": 1611796915677, "emailDomain": "example.com", "saml": {"connection": {"type": "OktaSAML", "status": "linked", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "inviteCode": "hasihf9e89", "description": "Our mission is to make cloud computing accessible to everyone.", "stagingPrefix": "<value>", "previewDeploymentSuffix": "example.dev", "platform": true, "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "role": "CONTRIBUTOR", "createdAt": 6209.44, "created": 5994.92}, "createdAt": 1630748523395}
+          application/json: {"creatorId": "R6efeCJQ2HKXywuasPDc0fOWB", "updatedAt": 1611796915677, "emailDomain": "example.com", "saml": {"connection": {"status": "linked", "type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "inviteCode": "hasihf9e89", "description": "Our mission is to make cloud computing accessible to everyone.", "stagingPrefix": "<value>", "previewDeploymentSuffix": "example.dev", "platform": true, "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "role": "CONTRIBUTOR", "createdAt": 6209.44, "created": 5994.92}, "createdAt": 1630748523395}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -10482,6 +10494,20 @@ examples:
       responses:
         "200":
           application/json: {"origin": "<value>", "certId": "<id>"}
+  invalidateBySrcImages:
+    speakeasy-default-invalidate-by-src-images:
+      parameters:
+        query:
+          projectIdOrName: "<value>"
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+  dangerouslyDeleteBySrcImages:
+    speakeasy-default-dangerously-delete-by-src-images:
+      parameters:
+        query:
+          projectIdOrName: "<value>"
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
 examplesVersion: 1.0.2
 generatedTests:
   readAccessGroup: "2025-04-29T14:51:46-05:00"
@@ -10692,5 +10718,5 @@ generatedTests:
   inviteUserToTeam: "2025-11-05T00:09:03Z"
 releaseNotes: |
   ## Typescript SDK Changes Detected:
-  * `vercel.integrations.getConfigurationProducts()`:  `response.products.[].metadataSchema.properties.{}` **Changed** **Breaking** :warning:
-  * `vercel.integrations.createIntegrationStoreDirect()`:  `response.store.product` **Changed** **Breaking** :warning:
+  * `vercel.edgeCache.invalidateBySrcImages()`: **Added**
+  * `vercel.edgeCache.dangerouslyDeleteBySrcImages()`: **Added**

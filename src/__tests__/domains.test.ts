@@ -130,7 +130,7 @@ test("Domains Get Domain Config", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
-    configuredBy: "CNAME",
+    configuredBy: null,
     acceptedChallenges: [
       "http-01",
     ],

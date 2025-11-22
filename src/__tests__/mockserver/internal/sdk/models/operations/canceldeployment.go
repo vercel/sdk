@@ -6775,55 +6775,6 @@ func (u CancelDeploymentFlagsUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type CancelDeploymentFlagsUnion: all fields are null")
 }
 
-// CancelDeploymentApplications - A map of the other applications that are part of this group. Only defined on the default application. The field is set after deployments have been created, so can be undefined, but should be there for a successful deployment. Note: this field will be removed when MFE alias routing is fully rolled out.
-type CancelDeploymentApplications struct {
-	IsDefaultApp *bool `json:"isDefaultApp,omitempty"`
-	// This is the production alias, it will always show the most up to date of each application.
-	ProductionHost string `json:"productionHost"`
-	// Use the fixed deploymentAlias and deploymentHost so that the microfrontend preview stays in sync with the deployment. These are only present for mono-repos when a single commit creates multiple deployments. If they are not present, productionHost will be used.
-	DeploymentAlias *string `json:"deploymentAlias,omitempty"`
-	DeploymentHost  *string `json:"deploymentHost,omitempty"`
-}
-
-func (c CancelDeploymentApplications) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CancelDeploymentApplications) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"productionHost"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *CancelDeploymentApplications) GetIsDefaultApp() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.IsDefaultApp
-}
-
-func (o *CancelDeploymentApplications) GetProductionHost() string {
-	if o == nil {
-		return ""
-	}
-	return o.ProductionHost
-}
-
-func (o *CancelDeploymentApplications) GetDeploymentAlias() *string {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentAlias
-}
-
-func (o *CancelDeploymentApplications) GetDeploymentHost() *string {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentHost
-}
-
 // CancelDeploymentMfeConfigUploadState - The result of the microfrontends config upload during deployment creation / build. Only set for default app deployments. The config upload is attempted during deployment create, and then again during the build. If the config is not in the root directory, or the deployment is prebuilt, the config cannot be uploaded during deployment create. The upload during deployment build finds the config even if it's not in the root directory, as it has access to all files. Uploading the config during create is ideal, as then all child deployments are guaranteed to have access to the default app deployment config even if the default app has not yet started building. If the config is not uploaded, the child app will show as building until the config has been uploaded during the default app build. - `success` - The config was uploaded successfully, either when the deployment was created or during the build. - `waiting_on_build` - The config could not be uploaded during deployment create, will be attempted again during the build. - `no_config` - No config was found. Only set once the build has not found the config in any of the deployment's files. - `undefined` - Legacy deployments, or there was an error uploading the config during deployment create.
 type CancelDeploymentMfeConfigUploadState string
 
@@ -6856,8 +6807,6 @@ func (e *CancelDeploymentMfeConfigUploadState) UnmarshalJSON(data []byte) error 
 
 type CancelDeploymentMicrofrontends2 struct {
 	IsDefaultApp bool `json:"isDefaultApp"`
-	// A map of the other applications that are part of this group. Only defined on the default application. The field is set after deployments have been created, so can be undefined, but should be there for a successful deployment. Note: this field will be removed when MFE alias routing is fully rolled out.
-	Applications map[string]CancelDeploymentApplications `json:"applications,omitempty"`
 	// The result of the microfrontends config upload during deployment creation / build. Only set for default app deployments. The config upload is attempted during deployment create, and then again during the build. If the config is not in the root directory, or the deployment is prebuilt, the config cannot be uploaded during deployment create. The upload during deployment build finds the config even if it's not in the root directory, as it has access to all files. Uploading the config during create is ideal, as then all child deployments are guaranteed to have access to the default app deployment config even if the default app has not yet started building. If the config is not uploaded, the child app will show as building until the config has been uploaded during the default app build. - `success` - The config was uploaded successfully, either when the deployment was created or during the build. - `waiting_on_build` - The config could not be uploaded during deployment create, will be attempted again during the build. - `no_config` - No config was found. Only set once the build has not found the config in any of the deployment's files. - `undefined` - Legacy deployments, or there was an error uploading the config during deployment create.
 	MfeConfigUploadState *CancelDeploymentMfeConfigUploadState `json:"mfeConfigUploadState,omitempty"`
 	// The project name of the default app of this deployment's microfrontends group.
@@ -6884,13 +6833,6 @@ func (o *CancelDeploymentMicrofrontends2) GetIsDefaultApp() bool {
 		return false
 	}
 	return o.IsDefaultApp
-}
-
-func (o *CancelDeploymentMicrofrontends2) GetApplications() map[string]CancelDeploymentApplications {
-	if o == nil {
-		return nil
-	}
-	return o.Applications
 }
 
 func (o *CancelDeploymentMicrofrontends2) GetMfeConfigUploadState() *CancelDeploymentMfeConfigUploadState {

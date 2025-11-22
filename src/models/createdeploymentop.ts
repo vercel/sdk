@@ -1731,22 +1731,6 @@ export type Flags1 = {
 export type Flags = Flags1 | Array<Flags2>;
 
 /**
- * A map of the other applications that are part of this group. Only defined on the default application. The field is set after deployments have been created, so can be undefined, but should be there for a successful deployment. Note: this field will be removed when MFE alias routing is fully rolled out.
- */
-export type CreateDeploymentMicrofrontendsApplications = {
-  isDefaultApp?: boolean | undefined;
-  /**
-   * This is the production alias, it will always show the most up to date of each application.
-   */
-  productionHost: string;
-  /**
-   * Use the fixed deploymentAlias and deploymentHost so that the microfrontend preview stays in sync with the deployment. These are only present for mono-repos when a single commit creates multiple deployments. If they are not present, productionHost will be used.
-   */
-  deploymentAlias?: string | undefined;
-  deploymentHost?: string | undefined;
-};
-
-/**
  * The result of the microfrontends config upload during deployment creation / build. Only set for default app deployments. The config upload is attempted during deployment create, and then again during the build. If the config is not in the root directory, or the deployment is prebuilt, the config cannot be uploaded during deployment create. The upload during deployment build finds the config even if it's not in the root directory, as it has access to all files. Uploading the config during create is ideal, as then all child deployments are guaranteed to have access to the default app deployment config even if the default app has not yet started building. If the config is not uploaded, the child app will show as building until the config has been uploaded during the default app build. - `success` - The config was uploaded successfully, either when the deployment was created or during the build. - `waiting_on_build` - The config could not be uploaded during deployment create, will be attempted again during the build. - `no_config` - No config was found. Only set once the build has not found the config in any of the deployment's files. - `undefined` - Legacy deployments, or there was an error uploading the config during deployment create.
  */
 export const MfeConfigUploadState = {
@@ -1761,12 +1745,6 @@ export type MfeConfigUploadState = ClosedEnum<typeof MfeConfigUploadState>;
 
 export type CreateDeploymentMicrofrontends2 = {
   isDefaultApp: boolean;
-  /**
-   * A map of the other applications that are part of this group. Only defined on the default application. The field is set after deployments have been created, so can be undefined, but should be there for a successful deployment. Note: this field will be removed when MFE alias routing is fully rolled out.
-   */
-  applications?:
-    | { [k: string]: CreateDeploymentMicrofrontendsApplications }
-    | undefined;
   /**
    * The result of the microfrontends config upload during deployment creation / build. Only set for default app deployments. The config upload is attempted during deployment create, and then again during the build. If the config is not in the root directory, or the deployment is prebuilt, the config cannot be uploaded during deployment create. The upload during deployment build finds the config even if it's not in the root directory, as it has access to all files. Uploading the config during create is ideal, as then all child deployments are guaranteed to have access to the default app deployment config even if the default app has not yet started building. If the config is not uploaded, the child app will show as building until the config has been uploaded during the default app build. - `success` - The config was uploaded successfully, either when the deployment was created or during the build. - `waiting_on_build` - The config could not be uploaded during deployment create, will be attempted again during the build. - `no_config` - No config was found. Only set once the build has not found the config in any of the deployment's files. - `undefined` - Legacy deployments, or there was an error uploading the config during deployment create.
    */
@@ -7662,62 +7640,6 @@ export function flagsFromJSON(
 }
 
 /** @internal */
-export const CreateDeploymentMicrofrontendsApplications$inboundSchema:
-  z.ZodType<CreateDeploymentMicrofrontendsApplications, z.ZodTypeDef, unknown> =
-    z.object({
-      isDefaultApp: z.boolean().optional(),
-      productionHost: z.string(),
-      deploymentAlias: z.string().optional(),
-      deploymentHost: z.string().optional(),
-    });
-/** @internal */
-export type CreateDeploymentMicrofrontendsApplications$Outbound = {
-  isDefaultApp?: boolean | undefined;
-  productionHost: string;
-  deploymentAlias?: string | undefined;
-  deploymentHost?: string | undefined;
-};
-
-/** @internal */
-export const CreateDeploymentMicrofrontendsApplications$outboundSchema:
-  z.ZodType<
-    CreateDeploymentMicrofrontendsApplications$Outbound,
-    z.ZodTypeDef,
-    CreateDeploymentMicrofrontendsApplications
-  > = z.object({
-    isDefaultApp: z.boolean().optional(),
-    productionHost: z.string(),
-    deploymentAlias: z.string().optional(),
-    deploymentHost: z.string().optional(),
-  });
-
-export function createDeploymentMicrofrontendsApplicationsToJSON(
-  createDeploymentMicrofrontendsApplications:
-    CreateDeploymentMicrofrontendsApplications,
-): string {
-  return JSON.stringify(
-    CreateDeploymentMicrofrontendsApplications$outboundSchema.parse(
-      createDeploymentMicrofrontendsApplications,
-    ),
-  );
-}
-export function createDeploymentMicrofrontendsApplicationsFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  CreateDeploymentMicrofrontendsApplications,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateDeploymentMicrofrontendsApplications$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'CreateDeploymentMicrofrontendsApplications' from JSON`,
-  );
-}
-
-/** @internal */
 export const MfeConfigUploadState$inboundSchema: z.ZodNativeEnum<
   typeof MfeConfigUploadState
 > = z.nativeEnum(MfeConfigUploadState);
@@ -7733,9 +7655,6 @@ export const CreateDeploymentMicrofrontends2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   isDefaultApp: z.boolean(),
-  applications: z.record(
-    z.lazy(() => CreateDeploymentMicrofrontendsApplications$inboundSchema),
-  ).optional(),
   mfeConfigUploadState: MfeConfigUploadState$inboundSchema.optional(),
   defaultAppProjectName: z.string(),
   defaultRoute: z.string().optional(),
@@ -7744,9 +7663,6 @@ export const CreateDeploymentMicrofrontends2$inboundSchema: z.ZodType<
 /** @internal */
 export type CreateDeploymentMicrofrontends2$Outbound = {
   isDefaultApp: boolean;
-  applications?: {
-    [k: string]: CreateDeploymentMicrofrontendsApplications$Outbound;
-  } | undefined;
   mfeConfigUploadState?: string | undefined;
   defaultAppProjectName: string;
   defaultRoute?: string | undefined;
@@ -7760,9 +7676,6 @@ export const CreateDeploymentMicrofrontends2$outboundSchema: z.ZodType<
   CreateDeploymentMicrofrontends2
 > = z.object({
   isDefaultApp: z.boolean(),
-  applications: z.record(
-    z.lazy(() => CreateDeploymentMicrofrontendsApplications$outboundSchema),
-  ).optional(),
   mfeConfigUploadState: MfeConfigUploadState$outboundSchema.optional(),
   defaultAppProjectName: z.string(),
   defaultRoute: z.string().optional(),

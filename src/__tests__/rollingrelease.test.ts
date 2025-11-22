@@ -362,8 +362,8 @@ test("Rolling Release Get Rolling Release Billing Status", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
-    availableSlots: "unlimited",
-    reason: "unlimited_slots",
+    availableSlots: 3106.09,
+    reason: "available_slots",
     message: "<value>",
   });
 });

@@ -28,7 +28,7 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: false
 typescript:
-  version: 1.17.4
+  version: 1.17.5
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -49,6 +49,7 @@ typescript:
   exportZodModelNamespace: false
   flattenGlobalSecurity: true
   flatteningOrder: body-first
+  forwardCompatibleEnumsByDefault: false
   generateExamples: true
   imports:
     option: openapi
@@ -60,6 +61,7 @@ typescript:
       webhooks: models
   inputModelSuffix: input
   jsonpath: legacy
+  laxMode: strict
   maxMethodParams: 0
   methodArguments: require-security-and-request
   modelPropertyCasing: camel

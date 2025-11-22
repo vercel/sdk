@@ -57,7 +57,9 @@ func (e *GetMemberRole) UnmarshalJSON(data []byte) error {
 type GetMemberResponseBody struct {
 	ID string `json:"id"`
 	// "The `ADMIN` role, by default, is provided to users capable of installing integrations, while the `USER` role can be granted to Vercel users with the Vercel `Billing` or Vercel `Viewer` role, which are considered to be Read-Only roles."
-	Role GetMemberRole `json:"role"`
+	Role         GetMemberRole `json:"role"`
+	GlobalUserID *string       `json:"globalUserId,omitempty"`
+	UserEmail    *string       `json:"userEmail,omitempty"`
 }
 
 func (o *GetMemberResponseBody) GetID() string {
@@ -72,6 +74,20 @@ func (o *GetMemberResponseBody) GetRole() GetMemberRole {
 		return GetMemberRole("")
 	}
 	return o.Role
+}
+
+func (o *GetMemberResponseBody) GetGlobalUserID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GlobalUserID
+}
+
+func (o *GetMemberResponseBody) GetUserEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UserEmail
 }
 
 type GetMemberResponse struct {

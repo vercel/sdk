@@ -7,7 +7,7 @@ import { Properties10 } from "@vercel/sdk/models/getconfigurationproductsop.js";
 
 let value: Properties10 = {
   value: {
-    atBRANDAt666792: {},
+    atBRANDAt670050: {},
   },
 };
 ```

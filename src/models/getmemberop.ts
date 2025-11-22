@@ -31,6 +31,8 @@ export type GetMemberResponseBody = {
    * "The `ADMIN` role, by default, is provided to users capable of installing integrations, while the `USER` role can be granted to Vercel users with the Vercel `Billing` or Vercel `Viewer` role, which are considered to be Read-Only roles."
    */
   role: GetMemberRole;
+  globalUserId?: string | undefined;
+  userEmail?: string | undefined;
 };
 
 /** @internal */
@@ -92,11 +94,15 @@ export const GetMemberResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   role: GetMemberRole$inboundSchema,
+  globalUserId: z.string().optional(),
+  userEmail: z.string().optional(),
 });
 /** @internal */
 export type GetMemberResponseBody$Outbound = {
   id: string;
   role: string;
+  globalUserId?: string | undefined;
+  userEmail?: string | undefined;
 };
 
 /** @internal */
@@ -107,6 +113,8 @@ export const GetMemberResponseBody$outboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   role: GetMemberRole$outboundSchema,
+  globalUserId: z.string().optional(),
+  userEmail: z.string().optional(),
 });
 
 export function getMemberResponseBodyToJSON(

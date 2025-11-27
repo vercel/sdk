@@ -47,6 +47,8 @@ type TeamLimitedConnection struct {
 	ConnectedAt float64 `json:"connectedAt"`
 	// Timestamp (in milliseconds) of when the last webhook event was received from WorkOS.
 	LastReceivedWebhookEvent *float64 `json:"lastReceivedWebhookEvent,omitempty"`
+	// Timestamp (in milliseconds) of when the last directory sync was performed.
+	LastSyncedAt *float64 `json:"lastSyncedAt,omitempty"`
 }
 
 func (t TeamLimitedConnection) MarshalJSON() ([]byte, error) {
@@ -95,6 +97,13 @@ func (o *TeamLimitedConnection) GetLastReceivedWebhookEvent() *float64 {
 	return o.LastReceivedWebhookEvent
 }
 
+func (o *TeamLimitedConnection) GetLastSyncedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.LastSyncedAt
+}
+
 // TeamLimitedDirectory - Information for the Directory Sync configuration.
 type TeamLimitedDirectory struct {
 	// The Identity Provider "type", for example Okta.
@@ -105,6 +114,8 @@ type TeamLimitedDirectory struct {
 	ConnectedAt float64 `json:"connectedAt"`
 	// Timestamp (in milliseconds) of when the last webhook event was received from WorkOS.
 	LastReceivedWebhookEvent *float64 `json:"lastReceivedWebhookEvent,omitempty"`
+	// Timestamp (in milliseconds) of when the last directory sync was performed.
+	LastSyncedAt *float64 `json:"lastSyncedAt,omitempty"`
 }
 
 func (t TeamLimitedDirectory) MarshalJSON() ([]byte, error) {
@@ -144,6 +155,13 @@ func (o *TeamLimitedDirectory) GetLastReceivedWebhookEvent() *float64 {
 		return nil
 	}
 	return o.LastReceivedWebhookEvent
+}
+
+func (o *TeamLimitedDirectory) GetLastSyncedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.LastSyncedAt
 }
 
 // TeamLimitedSaml - When "Single Sign-On (SAML)" is configured, this object contains information that allows the client-side to identify whether or not this Team has SAML enforced.

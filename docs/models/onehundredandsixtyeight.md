@@ -8,23 +8,14 @@ The payload of the event, if requested.
 import { OneHundredAndSixtyEight } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndSixtyEight = {
-  team: {
-    id: "<id>",
-    name: "<value>",
-  },
-  configuration: {
-    id: "<id>",
-  },
-  peering: {
-    id: "<id>",
-  },
+  appName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `team`                                                                                   | [models.UserEventPayload168Team](../models/usereventpayload168team.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `configuration`                                                                          | [models.UserEventPayload168Configuration](../models/usereventpayload168configuration.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `peering`                                                                                | [models.PayloadPeering](../models/payloadpeering.md)                                     | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `appName`             | *string*              | :heavy_check_mark:    | N/A                   |
+| `appId`               | *string*              | :heavy_minus_sign:    | N/A                   |
+| `secretLastFourChars` | *string*              | :heavy_minus_sign:    | N/A                   |

@@ -38,6 +38,10 @@ export type TeamLimitedConnection = {
    * Timestamp (in milliseconds) of when the last webhook event was received from WorkOS.
    */
   lastReceivedWebhookEvent?: number | undefined;
+  /**
+   * Timestamp (in milliseconds) of when the last directory sync was performed.
+   */
+  lastSyncedAt?: number | undefined;
 };
 
 /**
@@ -60,6 +64,10 @@ export type TeamLimitedDirectory = {
    * Timestamp (in milliseconds) of when the last webhook event was received from WorkOS.
    */
   lastReceivedWebhookEvent?: number | undefined;
+  /**
+   * Timestamp (in milliseconds) of when the last directory sync was performed.
+   */
+  lastSyncedAt?: number | undefined;
 };
 
 /**
@@ -228,6 +236,7 @@ export const TeamLimitedConnection$inboundSchema: z.ZodType<
   state: z.string(),
   connectedAt: z.number(),
   lastReceivedWebhookEvent: z.number().optional(),
+  lastSyncedAt: z.number().optional(),
 });
 /** @internal */
 export type TeamLimitedConnection$Outbound = {
@@ -236,6 +245,7 @@ export type TeamLimitedConnection$Outbound = {
   state: string;
   connectedAt: number;
   lastReceivedWebhookEvent?: number | undefined;
+  lastSyncedAt?: number | undefined;
 };
 
 /** @internal */
@@ -249,6 +259,7 @@ export const TeamLimitedConnection$outboundSchema: z.ZodType<
   state: z.string(),
   connectedAt: z.number(),
   lastReceivedWebhookEvent: z.number().optional(),
+  lastSyncedAt: z.number().optional(),
 });
 
 export function teamLimitedConnectionToJSON(
@@ -278,6 +289,7 @@ export const TeamLimitedDirectory$inboundSchema: z.ZodType<
   state: z.string(),
   connectedAt: z.number(),
   lastReceivedWebhookEvent: z.number().optional(),
+  lastSyncedAt: z.number().optional(),
 });
 /** @internal */
 export type TeamLimitedDirectory$Outbound = {
@@ -285,6 +297,7 @@ export type TeamLimitedDirectory$Outbound = {
   state: string;
   connectedAt: number;
   lastReceivedWebhookEvent?: number | undefined;
+  lastSyncedAt?: number | undefined;
 };
 
 /** @internal */
@@ -297,6 +310,7 @@ export const TeamLimitedDirectory$outboundSchema: z.ZodType<
   state: z.string(),
   connectedAt: z.number(),
   lastReceivedWebhookEvent: z.number().optional(),
+  lastSyncedAt: z.number().optional(),
 });
 
 export function teamLimitedDirectoryToJSON(

@@ -5783,6 +5783,7 @@ type CancelDeploymentTransform struct {
 	Op     CancelDeploymentOp            `json:"op"`
 	Target CancelDeploymentRouteTarget   `json:"target"`
 	Args   *CancelDeploymentArgs         `json:"args,omitempty"`
+	Env    []string                      `json:"env,omitempty"`
 }
 
 func (c CancelDeploymentTransform) MarshalJSON() ([]byte, error) {
@@ -5822,6 +5823,13 @@ func (o *CancelDeploymentTransform) GetArgs() *CancelDeploymentArgs {
 		return nil
 	}
 	return o.Args
+}
+
+func (o *CancelDeploymentTransform) GetEnv() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Env
 }
 
 type CancelDeploymentLocale struct {

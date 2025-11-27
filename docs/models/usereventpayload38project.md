@@ -6,7 +6,7 @@
 import { UserEventPayload38Project } from "@vercel/sdk/models/userevent.js";
 
 let value: UserEventPayload38Project = {
-  name: "<value>",
+  id: "<id>",
 };
 ```
 
@@ -14,4 +14,5 @@ let value: UserEventPayload38Project = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_minus_sign: | N/A                |

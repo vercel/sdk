@@ -8,10 +8,18 @@ The payload of the event, if requested.
 import { OneHundredAndSixtyOne } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndSixtyOne = {
-  appName: "<value>",
-  nextScopes: [
-    "email",
-  ],
+  project: {
+    id: "<id>",
+    name: "<value>",
+  },
+  prev: {
+    project: {},
+  },
+  group: {
+    id: "<id>",
+    slug: "<value>",
+    name: "<value>",
+  },
 };
 ```
 
@@ -19,8 +27,6 @@ let value: OneHundredAndSixtyOne = {
 
 | Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `appName`                                                                    | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `appId`                                                                      | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `nextScopes`                                                                 | [models.NextScopes](../models/nextscopes.md)[]                               | :heavy_check_mark:                                                           | N/A                                                                          |
-| `nextPermissions`                                                            | [models.NextPermissions](../models/nextpermissions.md)[]                     | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `nextAcceptedPermissionSets`                                                 | [models.NextAcceptedPermissionSets](../models/nextacceptedpermissionsets.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `project`                                                                    | [models.UserEventPayload161Project](../models/usereventpayload161project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| `prev`                                                                       | [models.PayloadPrev](../models/payloadprev.md)                               | :heavy_check_mark:                                                           | N/A                                                                          |
+| `group`                                                                      | [models.PayloadGroup](../models/payloadgroup.md)                             | :heavy_check_mark:                                                           | N/A                                                                          |

@@ -8,17 +8,16 @@ The payload of the event, if requested.
 import { Four } from "@vercel/sdk/models/userevent.js";
 
 let value: Four = {
-  author: "<value>",
-  accessGroup: {
-    id: "<id>",
-    name: "<value>",
-  },
+  action: "read",
+  environment: [],
 };
 ```
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `author`                                                     | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `accessGroup`                                                | [models.PayloadAccessGroup](../models/payloadaccessgroup.md) | :heavy_check_mark:                                           | N/A                                                          |
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `action`                                                             | [models.UserEventPayloadAction](../models/usereventpayloadaction.md) | :heavy_check_mark:                                                   | N/A                                                                  |
+| `projectName`                                                        | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `projectId`                                                          | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `environment`                                                        | *string*[]                                                           | :heavy_check_mark:                                                   | N/A                                                                  |

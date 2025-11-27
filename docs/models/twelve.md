@@ -7,17 +7,13 @@ The payload of the event, if requested.
 ```typescript
 import { Twelve } from "@vercel/sdk/models/userevent.js";
 
-let value: Twelve = {
-  projectName: "<value>",
-  alias: "<value>",
-  action: "created",
-};
+let value: Twelve = {};
 ```
 
 ## Fields
 
-| Field                                              | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `projectName`                                      | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
-| `alias`                                            | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
-| `action`                                           | [models.PayloadAction](../models/payloadaction.md) | :heavy_check_mark:                                 | N/A                                                |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `alias`            | *string*           | :heavy_minus_sign: | N/A                |
+| `userId`           | *string*           | :heavy_minus_sign: | N/A                |
+| `username`         | *string*           | :heavy_minus_sign: | N/A                |

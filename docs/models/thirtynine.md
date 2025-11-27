@@ -8,23 +8,21 @@ The payload of the event, if requested.
 import { ThirtyNine } from "@vercel/sdk/models/userevent.js";
 
 let value: ThirtyNine = {
-  url: "https://handy-negotiation.org/",
+  team: {
+    id: "<id>",
+    name: "<value>",
+  },
+  configuration: {
+    id: "<id>",
+  },
+  newName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `name`                                                     | *string*                                                   | :heavy_minus_sign:                                         | N/A                                                        |
-| `alias`                                                    | *string*[]                                                 | :heavy_minus_sign:                                         | N/A                                                        |
-| `target`                                                   | *string*                                                   | :heavy_minus_sign:                                         | N/A                                                        |
-| `deployment`                                               | [models.PayloadDeployment](../models/payloaddeployment.md) | :heavy_minus_sign:                                         | N/A                                                        |
-| `url`                                                      | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `forced`                                                   | *boolean*                                                  | :heavy_minus_sign:                                         | N/A                                                        |
-| `deploymentId`                                             | *string*                                                   | :heavy_minus_sign:                                         | N/A                                                        |
-| `plan`                                                     | *string*                                                   | :heavy_minus_sign:                                         | N/A                                                        |
-| `project`                                                  | *string*                                                   | :heavy_minus_sign:                                         | N/A                                                        |
-| `projectId`                                                | *string*                                                   | :heavy_minus_sign:                                         | N/A                                                        |
-| `regions`                                                  | *string*[]                                                 | :heavy_minus_sign:                                         | N/A                                                        |
-| `type`                                                     | *string*                                                   | :heavy_minus_sign:                                         | N/A                                                        |
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `team`                                                                                 | [models.UserEventPayload39Team](../models/usereventpayload39team.md)                   | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `configuration`                                                                        | [models.UserEventPayload39Configuration](../models/usereventpayload39configuration.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `newName`                                                                              | *string*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    |

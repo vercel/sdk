@@ -14,12 +14,14 @@ let value: Saml = {
     state: "active",
     connectedAt: 1611796915677,
     lastReceivedWebhookEvent: 1611796915677,
+    lastSyncedAt: 1611796915677,
   },
   directory: {
     type: "OktaSAML",
     state: "active",
     connectedAt: 1611796915677,
     lastReceivedWebhookEvent: 1611796915677,
+    lastSyncedAt: 1611796915677,
   },
   enforced: false,
 };

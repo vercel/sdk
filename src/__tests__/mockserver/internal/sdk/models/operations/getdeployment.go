@@ -9524,6 +9524,7 @@ type GetDeploymentTransform struct {
 	Op     GetDeploymentOp            `json:"op"`
 	Target GetDeploymentRouteTarget   `json:"target"`
 	Args   *GetDeploymentArgs         `json:"args,omitempty"`
+	Env    []string                   `json:"env,omitempty"`
 }
 
 func (g GetDeploymentTransform) MarshalJSON() ([]byte, error) {
@@ -9563,6 +9564,13 @@ func (o *GetDeploymentTransform) GetArgs() *GetDeploymentArgs {
 		return nil
 	}
 	return o.Args
+}
+
+func (o *GetDeploymentTransform) GetEnv() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Env
 }
 
 type GetDeploymentLocale struct {

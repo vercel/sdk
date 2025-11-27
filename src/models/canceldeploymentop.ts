@@ -1169,6 +1169,7 @@ export type RoutesTransforms = {
   op: RoutesOp;
   target: CancelDeploymentRoutesTarget;
   args?: string | Array<string> | undefined;
+  env?: Array<string> | undefined;
 };
 
 export type RoutesLocale = {
@@ -5874,6 +5875,7 @@ export const RoutesTransforms$inboundSchema: z.ZodType<
   op: RoutesOp$inboundSchema,
   target: z.lazy(() => CancelDeploymentRoutesTarget$inboundSchema),
   args: z.union([z.string(), z.array(z.string())]).optional(),
+  env: z.array(z.string()).optional(),
 });
 /** @internal */
 export type RoutesTransforms$Outbound = {
@@ -5881,6 +5883,7 @@ export type RoutesTransforms$Outbound = {
   op: string;
   target: CancelDeploymentRoutesTarget$Outbound;
   args?: string | Array<string> | undefined;
+  env?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -5893,6 +5896,7 @@ export const RoutesTransforms$outboundSchema: z.ZodType<
   op: RoutesOp$outboundSchema,
   target: z.lazy(() => CancelDeploymentRoutesTarget$outboundSchema),
   args: z.union([z.string(), z.array(z.string())]).optional(),
+  env: z.array(z.string()).optional(),
 });
 
 export function routesTransformsToJSON(

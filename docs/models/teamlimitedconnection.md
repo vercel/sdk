@@ -13,6 +13,7 @@ let value: TeamLimitedConnection = {
   state: "active",
   connectedAt: 1611796915677,
   lastReceivedWebhookEvent: 1611796915677,
+  lastSyncedAt: 1611796915677,
 };
 ```
 
@@ -25,3 +26,4 @@ let value: TeamLimitedConnection = {
 | `state`                                                                              | *string*                                                                             | :heavy_check_mark:                                                                   | Current state of the connection.                                                     | active                                                                               |
 | `connectedAt`                                                                        | *number*                                                                             | :heavy_check_mark:                                                                   | Timestamp (in milliseconds) of when the configuration was connected.                 | 1611796915677                                                                        |
 | `lastReceivedWebhookEvent`                                                           | *number*                                                                             | :heavy_minus_sign:                                                                   | Timestamp (in milliseconds) of when the last webhook event was received from WorkOS. | 1611796915677                                                                        |
+| `lastSyncedAt`                                                                       | *number*                                                                             | :heavy_minus_sign:                                                                   | Timestamp (in milliseconds) of when the last directory sync was performed.           | 1611796915677                                                                        |

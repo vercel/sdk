@@ -11,5 +11,5 @@ let value: Action = "unarchived";
 ## Values
 
 ```typescript
-"created" | "updated" | "deleted" | "archived" | "unarchived"
+"deleted" | "created" | "updated" | "archived" | "unarchived"
 ```

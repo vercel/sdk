@@ -9,8 +9,7 @@ import { FiftyOne } from "@vercel/sdk/models/userevent.js";
 
 let value: FiftyOne = {
   name: "<value>",
-  destinationId: "<id>",
-  destinationName: "<value>",
+  cdnEnabled: false,
 };
 ```
 
@@ -19,5 +18,4 @@ let value: FiftyOne = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `destinationId`    | *string*           | :heavy_check_mark: | N/A                |
-| `destinationName`  | *string*           | :heavy_check_mark: | N/A                |
+| `cdnEnabled`       | *boolean*          | :heavy_check_mark: | N/A                |

@@ -8,14 +8,16 @@ The payload of the event, if requested.
 import { OneHundred } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundred = {
-  instances: 7642.14,
-  url: "https://spirited-birdbath.name",
+  projectId: "<id>",
+  projectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `instances`        | *number*           | :heavy_check_mark: | N/A                |
-| `url`              | *string*           | :heavy_check_mark: | N/A                |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `projectId`           | *string*              | :heavy_check_mark:    | N/A                   |
+| `projectName`         | *string*              | :heavy_check_mark:    | N/A                   |
+| `buildMachineType`    | *string*              | :heavy_minus_sign:    | N/A                   |
+| `oldBuildMachineType` | *string*              | :heavy_minus_sign:    | N/A                   |

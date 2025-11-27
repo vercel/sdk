@@ -8,7 +8,12 @@ The payload of the event, if requested.
 import { TwentyTwo } from "@vercel/sdk/models/userevent.js";
 
 let value: TwentyTwo = {
-  id: "<id>",
+  project: {
+    id: "<id>",
+    name: "<value>",
+  },
+  bulkRedirectsLimit: 9328.11,
+  prevBulkRedirectsLimit: 3590.62,
 };
 ```
 
@@ -16,6 +21,6 @@ let value: TwentyTwo = {
 
 | Field                                                | Type                                                 | Required                                             | Description                                          |
 | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `id`                                                 | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
-| `oldTeam`                                            | [models.PayloadOldTeam](../models/payloadoldteam.md) | :heavy_minus_sign:                                   | N/A                                                  |
-| `newTeam`                                            | [models.PayloadNewTeam](../models/payloadnewteam.md) | :heavy_minus_sign:                                   | N/A                                                  |
+| `project`                                            | [models.PayloadProject](../models/payloadproject.md) | :heavy_check_mark:                                   | N/A                                                  |
+| `bulkRedirectsLimit`                                 | *number*                                             | :heavy_check_mark:                                   | N/A                                                  |
+| `prevBulkRedirectsLimit`                             | *number*                                             | :heavy_check_mark:                                   | N/A                                                  |

@@ -8,16 +8,12 @@ The payload of the event, if requested.
 import { OneHundredAndFiftySeven } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndFiftySeven = {
-  projectId: "<id>",
-  projectName: "<value>",
+  action: "disable",
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `projectId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `projectName`                                                          | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `projectWebAnalytics`                                                  | [models.ProjectWebAnalytics](../models/projectwebanalytics.md)         | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `prevProjectWebAnalytics`                                              | [models.PrevProjectWebAnalytics](../models/prevprojectwebanalytics.md) | :heavy_minus_sign:                                                     | N/A                                                                    |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `action`                                                                   | [models.UserEventPayload157Action](../models/usereventpayload157action.md) | :heavy_check_mark:                                                         | N/A                                                                        |

@@ -8,17 +8,15 @@ The payload of the event, if requested.
 import { SixtyFive } from "@vercel/sdk/models/userevent.js";
 
 let value: SixtyFive = {
-  projectId: "<id>",
-  attackModeEnabled: false,
+  enabled: false,
+  updatedAt: 3227.67,
 };
 ```
 
 ## Fields
 
-| Field                       | Type                        | Required                    | Description                 |
-| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
-| `projectId`                 | *string*                    | :heavy_check_mark:          | N/A                         |
-| `prevAttackModeEnabled`     | *boolean*                   | :heavy_minus_sign:          | N/A                         |
-| `prevAttackModeActiveUntil` | *number*                    | :heavy_minus_sign:          | N/A                         |
-| `attackModeEnabled`         | *boolean*                   | :heavy_check_mark:          | N/A                         |
-| `attackModeActiveUntil`     | *number*                    | :heavy_minus_sign:          | N/A                         |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
+| `updatedAt`        | *number*           | :heavy_check_mark: | N/A                |
+| `firstEnabledAt`   | *number*           | :heavy_minus_sign: | N/A                |

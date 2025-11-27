@@ -40,6 +40,10 @@ export type Connection = {
    * Timestamp (in milliseconds) of when the last webhook event was received from WorkOS.
    */
   lastReceivedWebhookEvent?: number | undefined;
+  /**
+   * Timestamp (in milliseconds) of when the last directory sync was performed.
+   */
+  lastSyncedAt?: number | undefined;
 };
 
 /**
@@ -62,6 +66,10 @@ export type Directory = {
    * Timestamp (in milliseconds) of when the last webhook event was received from WorkOS.
    */
   lastReceivedWebhookEvent?: number | undefined;
+  /**
+   * Timestamp (in milliseconds) of when the last directory sync was performed.
+   */
+  lastSyncedAt?: number | undefined;
 };
 
 /**
@@ -544,6 +552,7 @@ export const Connection$inboundSchema: z.ZodType<
   state: z.string(),
   connectedAt: z.number(),
   lastReceivedWebhookEvent: z.number().optional(),
+  lastSyncedAt: z.number().optional(),
 });
 /** @internal */
 export type Connection$Outbound = {
@@ -552,6 +561,7 @@ export type Connection$Outbound = {
   state: string;
   connectedAt: number;
   lastReceivedWebhookEvent?: number | undefined;
+  lastSyncedAt?: number | undefined;
 };
 
 /** @internal */
@@ -565,6 +575,7 @@ export const Connection$outboundSchema: z.ZodType<
   state: z.string(),
   connectedAt: z.number(),
   lastReceivedWebhookEvent: z.number().optional(),
+  lastSyncedAt: z.number().optional(),
 });
 
 export function connectionToJSON(connection: Connection): string {
@@ -590,6 +601,7 @@ export const Directory$inboundSchema: z.ZodType<
   state: z.string(),
   connectedAt: z.number(),
   lastReceivedWebhookEvent: z.number().optional(),
+  lastSyncedAt: z.number().optional(),
 });
 /** @internal */
 export type Directory$Outbound = {
@@ -597,6 +609,7 @@ export type Directory$Outbound = {
   state: string;
   connectedAt: number;
   lastReceivedWebhookEvent?: number | undefined;
+  lastSyncedAt?: number | undefined;
 };
 
 /** @internal */
@@ -609,6 +622,7 @@ export const Directory$outboundSchema: z.ZodType<
   state: z.string(),
   connectedAt: z.number(),
   lastReceivedWebhookEvent: z.number().optional(),
+  lastSyncedAt: z.number().optional(),
 });
 
 export function directoryToJSON(directory: Directory): string {

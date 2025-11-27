@@ -8,7 +8,12 @@ The payload of the event, if requested.
 import { SeventyFour } from "@vercel/sdk/models/userevent.js";
 
 let value: SeventyFour = {
-  logDrainUrl: "https://joyous-responsibility.name",
+  integrationId: "<id>",
+  configurationId: "<id>",
+  integrationSlug: "<value>",
+  integrationName: "<value>",
+  ownerId: "<id>",
+  billingPlanId: "<id>",
 };
 ```
 
@@ -16,5 +21,10 @@ let value: SeventyFour = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `logDrainUrl`      | *string*           | :heavy_check_mark: | N/A                |
-| `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |
+| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
+| `configurationId`  | *string*           | :heavy_check_mark: | N/A                |
+| `integrationSlug`  | *string*           | :heavy_check_mark: | N/A                |
+| `integrationName`  | *string*           | :heavy_check_mark: | N/A                |
+| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
+| `billingPlanId`    | *string*           | :heavy_check_mark: | N/A                |
+| `billingPlanName`  | *string*           | :heavy_minus_sign: | N/A                |

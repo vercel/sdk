@@ -8,18 +8,16 @@ The payload of the event, if requested.
 import { OneHundredAndFour } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndFour = {
-  team: {
-    id: "<id>",
-  },
-  previousRule: {
-    email: "Rhiannon_Johnston@hotmail.com",
-  },
+  gitProvider: "<value>",
+  gitProviderGroupDescriptor: "<value>",
+  gitScope: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `team`                                                                 | [models.UserEventPayload104Team](../models/usereventpayload104team.md) | :heavy_check_mark:                                                     | N/A                                                                    |
-| `previousRule`                                                         | [models.PayloadPreviousRule](../models/payloadpreviousrule.md)         | :heavy_check_mark:                                                     | N/A                                                                    |
+| Field                        | Type                         | Required                     | Description                  |
+| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
+| `gitProvider`                | *string*                     | :heavy_check_mark:           | N/A                          |
+| `gitProviderGroupDescriptor` | *string*                     | :heavy_check_mark:           | N/A                          |
+| `gitScope`                   | *string*                     | :heavy_check_mark:           | N/A                          |

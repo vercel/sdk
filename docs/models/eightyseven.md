@@ -8,14 +8,15 @@ The payload of the event, if requested.
 import { EightySeven } from "@vercel/sdk/models/userevent.js";
 
 let value: EightySeven = {
-  projectName: "<value>",
+  projectId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `projectName`                                                  | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
-| `optionsAllowlist`                                             | [models.OptionsAllowlist](../models/optionsallowlist.md)       | :heavy_minus_sign:                                             | N/A                                                            |
-| `oldOptionsAllowlist`                                          | [models.OldOptionsAllowlist](../models/oldoptionsallowlist.md) | :heavy_minus_sign:                                             | N/A                                                            |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `projectName`          | *string*               | :heavy_minus_sign:     | N/A                    |
+| `projectId`            | *string*               | :heavy_check_mark:     | N/A                    |
+| `projectAnalytics`     | Record<string, *any*>  | :heavy_minus_sign:     | N/A                    |
+| `prevProjectAnalytics` | Record<string, *any*>  | :heavy_minus_sign:     | N/A                    |

@@ -8,14 +8,17 @@ The payload of the event, if requested.
 import { TwentyThree } from "@vercel/sdk/models/userevent.js";
 
 let value: TwentyThree = {
-  src: "<value>",
-  dst: "<value>",
+  project: {
+    id: "<id>",
+    name: "<value>",
+  },
+  versionId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `src`              | *string*           | :heavy_check_mark: | N/A                |
-| `dst`              | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `project`                                                              | [models.UserEventPayloadProject](../models/usereventpayloadproject.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `versionId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |

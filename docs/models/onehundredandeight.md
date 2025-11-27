@@ -8,18 +8,16 @@ The payload of the event, if requested.
 import { OneHundredAndEight } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndEight = {
-  scalingRules: {},
-  min: 1326.14,
-  max: 9964.98,
-  url: "https://shy-bug.biz",
+  team: {
+    id: "<id>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `scalingRules`                                                   | Record<string, [models.ScalingRules](../models/scalingrules.md)> | :heavy_check_mark:                                               | N/A                                                              |
-| `min`                                                            | *number*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `max`                                                            | *number*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `url`                                                            | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `team`                                                                 | [models.UserEventPayload108Team](../models/usereventpayload108team.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `previousRule`                                                         | [models.PreviousRule](../models/previousrule.md)                       | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `nextRule`                                                             | [models.NextRule](../models/nextrule.md)                               | :heavy_minus_sign:                                                     | N/A                                                                    |

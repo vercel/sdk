@@ -22,7 +22,10 @@ let value: ListUserEventsResponseBody = {
       createdAt: 1632859321020,
       userId: "zTuNVUXEAvvnNN3IaqinkyMw",
       principalId: "<id>",
-      payload: {},
+      payload: {
+        src: "<value>",
+        dst: "<value>",
+      },
     },
   ],
 };

@@ -7,12 +7,13 @@ The payload of the event, if requested.
 ```typescript
 import { OneHundredAndThirtyFive } from "@vercel/sdk/models/userevent.js";
 
-let value: OneHundredAndThirtyFive = {};
+let value: OneHundredAndThirtyFive = {
+  mfaEnabled: false,
+};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `price`            | *number*           | :heavy_minus_sign: | N/A                |
-| `currency`         | *string*           | :heavy_minus_sign: | N/A                |
+| `mfaEnabled`       | *boolean*          | :heavy_check_mark: | N/A                |

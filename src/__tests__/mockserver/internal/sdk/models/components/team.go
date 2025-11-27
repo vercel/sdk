@@ -43,6 +43,8 @@ type TeamConnection struct {
 	ConnectedAt float64 `json:"connectedAt"`
 	// Timestamp (in milliseconds) of when the last webhook event was received from WorkOS.
 	LastReceivedWebhookEvent *float64 `json:"lastReceivedWebhookEvent,omitempty"`
+	// Timestamp (in milliseconds) of when the last directory sync was performed.
+	LastSyncedAt *float64 `json:"lastSyncedAt,omitempty"`
 }
 
 func (t TeamConnection) MarshalJSON() ([]byte, error) {
@@ -91,6 +93,13 @@ func (o *TeamConnection) GetLastReceivedWebhookEvent() *float64 {
 	return o.LastReceivedWebhookEvent
 }
 
+func (o *TeamConnection) GetLastSyncedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.LastSyncedAt
+}
+
 // TeamDirectory - Information for the Directory Sync configuration.
 type TeamDirectory struct {
 	// The Identity Provider "type", for example Okta.
@@ -101,6 +110,8 @@ type TeamDirectory struct {
 	ConnectedAt float64 `json:"connectedAt"`
 	// Timestamp (in milliseconds) of when the last webhook event was received from WorkOS.
 	LastReceivedWebhookEvent *float64 `json:"lastReceivedWebhookEvent,omitempty"`
+	// Timestamp (in milliseconds) of when the last directory sync was performed.
+	LastSyncedAt *float64 `json:"lastSyncedAt,omitempty"`
 }
 
 func (t TeamDirectory) MarshalJSON() ([]byte, error) {
@@ -140,6 +151,13 @@ func (o *TeamDirectory) GetLastReceivedWebhookEvent() *float64 {
 		return nil
 	}
 	return o.LastReceivedWebhookEvent
+}
+
+func (o *TeamDirectory) GetLastSyncedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.LastSyncedAt
 }
 
 // DefaultRedirectURI - The default redirect URI to use after successful SAML authentication.

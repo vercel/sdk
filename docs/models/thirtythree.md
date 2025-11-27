@@ -8,23 +8,14 @@ The payload of the event, if requested.
 import { ThirtyThree } from "@vercel/sdk/models/userevent.js";
 
 let value: ThirtyThree = {
-  team: {
-    id: "<id>",
-    name: "<value>",
-  },
-  configuration: {
-    id: "<id>",
-  },
-  project: {
-    id: "<id>",
-  },
+  status: "<value>",
+  suffix: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `team`                                                                             | [models.UserEventPayloadTeam](../models/usereventpayloadteam.md)                   | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `configuration`                                                                    | [models.UserEventPayloadConfiguration](../models/usereventpayloadconfiguration.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `project`                                                                          | [models.UserEventPayload33Project](../models/usereventpayload33project.md)         | :heavy_check_mark:                                                                 | N/A                                                                                |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `status`           | *string*           | :heavy_check_mark: | N/A                |
+| `suffix`           | *string*           | :heavy_check_mark: | N/A                |

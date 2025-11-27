@@ -9,8 +9,9 @@ import { FiftyTwo } from "@vercel/sdk/models/userevent.js";
 
 let value: FiftyTwo = {
   name: "<value>",
-  destinationId: "<id>",
-  destinationName: "<value>",
+  userId: "<id>",
+  teamId: "<id>",
+  ownerName: "<value>",
 };
 ```
 
@@ -19,5 +20,6 @@ let value: FiftyTwo = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `destinationId`    | *string*           | :heavy_check_mark: | N/A                |
-| `destinationName`  | *string*           | :heavy_check_mark: | N/A                |
+| `userId`           | *string*           | :heavy_check_mark: | N/A                |
+| `teamId`           | *string*           | :heavy_check_mark: | N/A                |
+| `ownerName`        | *string*           | :heavy_check_mark: | N/A                |

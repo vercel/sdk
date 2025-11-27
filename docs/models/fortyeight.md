@@ -8,14 +8,20 @@ The payload of the event, if requested.
 import { FortyEight } from "@vercel/sdk/models/userevent.js";
 
 let value: FortyEight = {
+  id: "<id>",
+  value: "<value>",
   name: "<value>",
+  domain: "silky-excess.name",
+  type: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `name`                                                                     | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `oldTeam`                                                                  | [models.UserEventPayload48OldTeam](../models/usereventpayload48oldteam.md) | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `newTeam`                                                                  | [models.UserEventPayload48NewTeam](../models/usereventpayload48newteam.md) | :heavy_minus_sign:                                                         | N/A                                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `value`            | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `domain`           | *string*           | :heavy_check_mark: | N/A                |
+| `type`             | *string*           | :heavy_check_mark: | N/A                |

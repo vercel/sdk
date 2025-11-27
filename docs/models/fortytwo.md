@@ -8,11 +8,8 @@ The payload of the event, if requested.
 import { FortyTwo } from "@vercel/sdk/models/userevent.js";
 
 let value: FortyTwo = {
-  id: "<id>",
-  value: "<value>",
-  name: "<value>",
-  domain: "digital-pantyhose.biz",
-  type: "<value>",
+  bitbucketEmail: "<value>",
+  bitbucketLogin: "<value>",
 };
 ```
 
@@ -20,9 +17,6 @@ let value: FortyTwo = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
-| `value`            | *string*           | :heavy_check_mark: | N/A                |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `type`             | *string*           | :heavy_check_mark: | N/A                |
-| `mxPriority`       | *number*           | :heavy_minus_sign: | N/A                |
+| `bitbucketEmail`   | *string*           | :heavy_check_mark: | N/A                |
+| `bitbucketLogin`   | *string*           | :heavy_check_mark: | N/A                |
+| `bitbucketName`    | *string*           | :heavy_minus_sign: | N/A                |

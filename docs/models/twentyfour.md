@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { TwentyFour } from "@vercel/sdk/models/userevent.js";
 
 let value: TwentyFour = {
-  id: "<id>",
+  custom: false,
 };
 ```
 
@@ -16,6 +16,7 @@ let value: TwentyFour = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
 | `cn`               | *string*           | :heavy_minus_sign: | N/A                |
 | `cns`              | *string*[]         | :heavy_minus_sign: | N/A                |
+| `custom`           | *boolean*          | :heavy_check_mark: | N/A                |
+| `id`               | *string*           | :heavy_minus_sign: | N/A                |

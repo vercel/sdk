@@ -7,16 +7,12 @@ The payload of the event, if requested.
 ```typescript
 import { OneHundredAndForty } from "@vercel/sdk/models/userevent.js";
 
-let value: OneHundredAndForty = {
-  projectName: "<value>",
-  destinationAccountName: "<value>",
-};
+let value: OneHundredAndForty = {};
 ```
 
 ## Fields
 
-| Field                    | Type                     | Required                 | Description              |
-| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-| `projectName`            | *string*                 | :heavy_check_mark:       | N/A                      |
-| `destinationAccountName` | *string*                 | :heavy_check_mark:       | N/A                      |
-| `transferId`             | *string*                 | :heavy_minus_sign:       | N/A                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `price`            | *number*           | :heavy_minus_sign: | N/A                |
+| `currency`         | *string*           | :heavy_minus_sign: | N/A                |

@@ -9,15 +9,16 @@ import { OneHundredAndSixtyFive } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndSixtyFive = {
   appName: "<value>",
+  scopes: [],
 };
 ```
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `appName`                            | *string*                             | :heavy_check_mark:                   | N/A                                  |
-| `appId`                              | *string*                             | :heavy_minus_sign:                   | N/A                                  |
-| `installationId`                     | *string*                             | :heavy_minus_sign:                   | N/A                                  |
-| `before`                             | [models.Before](../models/before.md) | :heavy_minus_sign:                   | N/A                                  |
-| `after`                              | [models.After](../models/after.md)   | :heavy_minus_sign:                   | N/A                                  |
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `appName`                                                            | *string*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
+| `appId`                                                              | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `scopes`                                                             | [models.PayloadScopes](../models/payloadscopes.md)[]                 | :heavy_check_mark:                                                   | N/A                                                                  |
+| `permissions`                                                        | [models.Permissions](../models/permissions.md)[]                     | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `acceptedPermissionSets`                                             | [models.AcceptedPermissionSets](../models/acceptedpermissionsets.md) | :heavy_minus_sign:                                                   | N/A                                                                  |

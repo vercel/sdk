@@ -8,16 +8,20 @@ The payload of the event, if requested.
 import { OneHundredAndFortyNine } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndFortyNine = {
-  edgeConfigId: "<id>",
-  edgeConfigSlug: "<value>",
-  edgeConfigDigest: "<value>",
+  project: {
+    name: "<value>",
+  },
+  removedMembership: {
+    role: "PROJECT_DEVELOPER",
+    uid: "<id>",
+    createdAt: 6605.72,
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `edgeConfigId`     | *string*           | :heavy_check_mark: | N/A                |
-| `edgeConfigSlug`   | *string*           | :heavy_check_mark: | N/A                |
-| `edgeConfigDigest` | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `project`                                                                    | [models.UserEventPayload149Project](../models/usereventpayload149project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| `removedMembership`                                                          | [models.RemovedMembership](../models/removedmembership.md)                   | :heavy_check_mark:                                                           | N/A                                                                          |

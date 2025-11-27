@@ -5,11 +5,11 @@
 ```typescript
 import { UserEventPayloadAction } from "@vercel/sdk/models/userevent.js";
 
-let value: UserEventPayloadAction = "challenge";
+let value: UserEventPayloadAction = "read";
 ```
 
 ## Values
 
 ```typescript
-"log" | "challenge" | "deny"
+"read"
 ```

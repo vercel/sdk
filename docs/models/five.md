@@ -10,17 +10,13 @@ import { Five } from "@vercel/sdk/models/userevent.js";
 let value: Five = {
   accessGroup: {
     id: "<id>",
-  },
-  user: {
-    id: "<id>",
+    name: "<value>",
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `accessGroup`                                                                  | [models.UserEventPayloadAccessGroup](../models/usereventpayloadaccessgroup.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `user`                                                                         | [models.PayloadUser](../models/payloaduser.md)                                 | :heavy_check_mark:                                                             | N/A                                                                            |
-| `directoryType`                                                                | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `accessGroup`                                  | [models.AccessGroup](../models/accessgroup.md) | :heavy_check_mark:                             | N/A                                            |

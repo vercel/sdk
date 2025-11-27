@@ -8,16 +8,21 @@ The payload of the event, if requested.
 import { EightySix } from "@vercel/sdk/models/userevent.js";
 
 let value: EightySix = {
-  projectName: "<value>",
+  projectId: "<id>",
+  projectAnalytics: {
+    id: "<id>",
+    disabledAt: 6510.39,
+    enabledAt: 3421.27,
+  },
+  prevProjectAnalytics: null,
 };
 ```
 
 ## Fields
 
-| Field                                              | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `projectName`                                      | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
-| `trustedIps`                                       | [models.TrustedIps](../models/trustedips.md)       | :heavy_minus_sign:                                 | N/A                                                |
-| `oldTrustedIps`                                    | [models.OldTrustedIps](../models/oldtrustedips.md) | :heavy_minus_sign:                                 | N/A                                                |
-| `addedAddresses`                                   | *string*[]                                         | :heavy_minus_sign:                                 | N/A                                                |
-| `removedAddresses`                                 | *string*[]                                         | :heavy_minus_sign:                                 | N/A                                                |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `projectName`                                                    | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
+| `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `projectAnalytics`                                               | [models.ProjectAnalytics](../models/projectanalytics.md)         | :heavy_check_mark:                                               | N/A                                                              |
+| `prevProjectAnalytics`                                           | [models.PrevProjectAnalytics](../models/prevprojectanalytics.md) | :heavy_check_mark:                                               | N/A                                                              |

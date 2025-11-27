@@ -7,11 +7,18 @@ The payload of the event, if requested.
 ```typescript
 import { OneHundredAndTwentySeven } from "@vercel/sdk/models/userevent.js";
 
-let value: OneHundredAndTwentySeven = {};
+let value: OneHundredAndTwentySeven = {
+  entitlement: "<value>",
+  user: {
+    id: "<id>",
+    username: "Avery.Kovacek",
+  },
+};
 ```
 
 ## Fields
 
 | Field                                                            | Type                                                             | Required                                                         | Description                                                      |
 | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `remoteCaching`                                                  | [models.PayloadRemoteCaching](../models/payloadremotecaching.md) | :heavy_minus_sign:                                               | Represents configuration for remote caching                      |
+| `entitlement`                                                    | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `user`                                                           | [models.UserEventPayloadUser](../models/usereventpayloaduser.md) | :heavy_check_mark:                                               | N/A                                                              |

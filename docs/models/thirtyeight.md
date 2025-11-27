@@ -8,24 +8,23 @@ The payload of the event, if requested.
 import { ThirtyEight } from "@vercel/sdk/models/userevent.js";
 
 let value: ThirtyEight = {
-  project: {
+  team: {
+    id: "<id>",
     name: "<value>",
   },
-  job: {
-    deployHook: {
-      createdAt: 3393.49,
-      id: "<id>",
-      name: "<value>",
-      ref: "<value>",
-    },
-    state: "Massachusetts",
+  configuration: {
+    id: "<id>",
+  },
+  project: {
+    id: "<id>",
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `project`                                                                  | [models.UserEventPayload38Project](../models/usereventpayload38project.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `job`                                                                      | [models.Job](../models/job.md)                                             | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `team`                                                                                 | [models.UserEventPayloadTeam](../models/usereventpayloadteam.md)                       | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `configuration`                                                                        | [models.UserEventPayload38Configuration](../models/usereventpayload38configuration.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `project`                                                                              | [models.UserEventPayload38Project](../models/usereventpayload38project.md)             | :heavy_check_mark:                                                                     | N/A                                                                                    |

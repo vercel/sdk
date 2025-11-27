@@ -8,17 +8,17 @@ The payload of the event, if requested.
 import { OneHundredAndTwentyTwo } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndTwentyTwo = {
-  entitlement: "<value>",
-  user: {
-    id: "<id>",
-    username: "Nathan_Ortiz",
-  },
+  slug: "<value>",
+  teamId: "<id>",
+  by: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `entitlement`                                                    | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `user`                                                           | [models.UserEventPayloadUser](../models/usereventpayloaduser.md) | :heavy_check_mark:                                               | N/A                                                              |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `slug`                                   | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| `teamId`                                 | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| `by`                                     | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| `reasons`                                | [models.Reasons](../models/reasons.md)[] | :heavy_minus_sign:                       | N/A                                      |

@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { Payload2 } from "@vercel/sdk/models/userevent.js";
 
 let value: Payload2 = {
-  action: "created",
+  action: "deleted",
   id: "<id>",
   slug: "<value>",
   projectId: "<id>",
@@ -23,3 +23,4 @@ let value: Payload2 = {
 | `id`                                 | *string*                             | :heavy_check_mark:                   | N/A                                  |
 | `slug`                               | *string*                             | :heavy_check_mark:                   | N/A                                  |
 | `projectId`                          | *string*                             | :heavy_check_mark:                   | N/A                                  |
+| `projectName`                        | *string*                             | :heavy_minus_sign:                   | N/A                                  |

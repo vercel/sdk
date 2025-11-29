@@ -5,8 +5,8 @@ management:
   docVersion: 0.0.1
   speakeasyVersion: 1.660.0
   generationVersion: 2.760.2
-  releaseVersion: 1.17.7
-  configChecksum: e3f84717f051410adb0d58e16cb75719
+  releaseVersion: 1.18.1
+  configChecksum: 96957fd9920164f8f495e4ce3c3ad8e4
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -10724,15 +10724,3 @@ generatedTests:
   getProjectClientCerts: "2025-10-27T19:04:15Z"
   deleteProjectClientCert: "2025-11-05T00:09:03Z"
   inviteUserToTeam: "2025-11-05T00:09:03Z"
-releaseNotes: |
-  ## Typescript SDK Changes Detected:
-  * `vercel.integrations.getConfigurationProducts()`:  `response.products.[].metadataSchema.properties.{}` **Changed** **Breaking** :warning:
-  * `vercel.integrations.createIntegrationStoreDirect()`:  `response.store.product` **Changed** **Breaking** :warning:
-  * `vercel.user.listUserEvents()`:  `response.events.[].payload` **Changed** **Breaking** :warning:
-  * `vercel.deployments.getDeployment()`:  `response.[1].routes.[].[1].transforms.[].env` **Added**
-  * `vercel.deployments.createDeployment()`:  `response.routes.[].[1].transforms.[].env` **Added**
-  * `vercel.deployments.cancelDeployment()`:  `response.routes.[].[1].transforms.[].env` **Added**
-  * `vercel.marketplace.importResource()`:  `error.status[429]` **Added**
-  * `vercel.teams.getTeam()`:  `response.saml` **Changed**
-  * `vercel.teams.patchTeam()`:  `response.saml` **Changed**
-  * `vercel.teams.getTeams()`:  `response.teams.[]` **Changed**

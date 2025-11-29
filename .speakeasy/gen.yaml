@@ -28,7 +28,7 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: false
 typescript:
-  version: 1.17.7
+  version: 1.18.1
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -51,6 +51,7 @@ typescript:
   flatteningOrder: body-first
   formStringArrayEncodeMode: encoded-string
   forwardCompatibleEnumsByDefault: false
+  forwardCompatibleUnionsByDefault: "false"
   generateExamples: true
   imports:
     option: openapi
@@ -68,6 +69,7 @@ typescript:
   methodArguments: require-security-and-request
   modelPropertyCasing: camel
   moduleFormat: esm
+  multipartArrayFormat: legacy
   outputModelSuffix: output
   packageName: '@vercel/sdk'
   responseFormat: flat

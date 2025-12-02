@@ -13,7 +13,7 @@ let value: GetAllLogDrainsFilterLogDrains2 = {
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `type`                                                                     | [models.GetAllLogDrainsFilterType](../models/getalllogdrainsfiltertype.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `text`                                                                     | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `type`             | *"odata"*          | :heavy_check_mark: | N/A                |
+| `text`             | *string*           | :heavy_check_mark: | N/A                |

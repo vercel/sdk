@@ -14,8 +14,8 @@ let value: ProtectionBypass2 = {
 
 ## Fields
 
-| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `createdAt`                                                        | *number*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
-| `createdBy`                                                        | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
-| `scope`                                                            | [models.ProtectionBypassScope](../models/protectionbypassscope.md) | :heavy_check_mark:                                                 | N/A                                                                |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `createdAt`           | *number*              | :heavy_check_mark:    | N/A                   |
+| `createdBy`           | *string*              | :heavy_check_mark:    | N/A                   |
+| `scope`               | *"automation-bypass"* | :heavy_check_mark:    | N/A                   |

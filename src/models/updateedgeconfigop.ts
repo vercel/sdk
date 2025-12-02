@@ -5,7 +5,6 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
-import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
@@ -37,27 +36,13 @@ export type UpdateEdgeConfigTransfer = {
 
 export type UpdateEdgeConfigSchema = {};
 
-export const UpdateEdgeConfigPurposeEdgeConfigType = {
-  Experimentation: "experimentation",
-} as const;
-export type UpdateEdgeConfigPurposeEdgeConfigType = ClosedEnum<
-  typeof UpdateEdgeConfigPurposeEdgeConfigType
->;
-
 export type UpdateEdgeConfigPurpose2 = {
-  type: UpdateEdgeConfigPurposeEdgeConfigType;
+  type: "experimentation";
   resourceId: string;
 };
 
-export const UpdateEdgeConfigPurposeType = {
-  Flags: "flags",
-} as const;
-export type UpdateEdgeConfigPurposeType = ClosedEnum<
-  typeof UpdateEdgeConfigPurposeType
->;
-
 export type UpdateEdgeConfigPurpose1 = {
-  type: UpdateEdgeConfigPurposeType;
+  type: "flags";
   projectId: string;
 };
 
@@ -269,27 +254,17 @@ export function updateEdgeConfigSchemaFromJSON(
 }
 
 /** @internal */
-export const UpdateEdgeConfigPurposeEdgeConfigType$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateEdgeConfigPurposeEdgeConfigType> = z.nativeEnum(
-    UpdateEdgeConfigPurposeEdgeConfigType,
-  );
-/** @internal */
-export const UpdateEdgeConfigPurposeEdgeConfigType$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateEdgeConfigPurposeEdgeConfigType> =
-    UpdateEdgeConfigPurposeEdgeConfigType$inboundSchema;
-
-/** @internal */
 export const UpdateEdgeConfigPurpose2$inboundSchema: z.ZodType<
   UpdateEdgeConfigPurpose2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: UpdateEdgeConfigPurposeEdgeConfigType$inboundSchema,
+  type: z.literal("experimentation"),
   resourceId: z.string(),
 });
 /** @internal */
 export type UpdateEdgeConfigPurpose2$Outbound = {
-  type: string;
+  type: "experimentation";
   resourceId: string;
 };
 
@@ -299,7 +274,7 @@ export const UpdateEdgeConfigPurpose2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateEdgeConfigPurpose2
 > = z.object({
-  type: UpdateEdgeConfigPurposeEdgeConfigType$outboundSchema,
+  type: z.literal("experimentation"),
   resourceId: z.string(),
 });
 
@@ -321,26 +296,17 @@ export function updateEdgeConfigPurpose2FromJSON(
 }
 
 /** @internal */
-export const UpdateEdgeConfigPurposeType$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateEdgeConfigPurposeType
-> = z.nativeEnum(UpdateEdgeConfigPurposeType);
-/** @internal */
-export const UpdateEdgeConfigPurposeType$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateEdgeConfigPurposeType
-> = UpdateEdgeConfigPurposeType$inboundSchema;
-
-/** @internal */
 export const UpdateEdgeConfigPurpose1$inboundSchema: z.ZodType<
   UpdateEdgeConfigPurpose1,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: UpdateEdgeConfigPurposeType$inboundSchema,
+  type: z.literal("flags"),
   projectId: z.string(),
 });
 /** @internal */
 export type UpdateEdgeConfigPurpose1$Outbound = {
-  type: string;
+  type: "flags";
   projectId: string;
 };
 
@@ -350,7 +316,7 @@ export const UpdateEdgeConfigPurpose1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateEdgeConfigPurpose1
 > = z.object({
-  type: UpdateEdgeConfigPurposeType$outboundSchema,
+  type: z.literal("flags"),
   projectId: z.string(),
 });
 

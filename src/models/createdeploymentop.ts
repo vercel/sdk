@@ -1434,13 +1434,6 @@ export type CreateDeploymentHas2 = {
   value?: string | CreateDeploymentValue2 | undefined;
 };
 
-export const CreateDeploymentHasType = {
-  Host: "host",
-} as const;
-export type CreateDeploymentHasType = ClosedEnum<
-  typeof CreateDeploymentHasType
->;
-
 export type Eq = string | number;
 
 export type CreateDeploymentValueDeploymentsResponse2002 = {
@@ -1462,11 +1455,15 @@ export type CreateDeploymentHasValue =
   | CreateDeploymentValueDeploymentsResponse2002;
 
 export type CreateDeploymentHas1 = {
-  type: CreateDeploymentHasType;
+  type: "host";
   value: string | CreateDeploymentValueDeploymentsResponse2002;
 };
 
-export type RoutesHas = CreateDeploymentHas1 | CreateDeploymentHas2;
+export type RoutesHas =
+  | CreateDeploymentHas1
+  | (CreateDeploymentHas2 & { type: "header" })
+  | (CreateDeploymentHas2 & { type: "cookie" })
+  | (CreateDeploymentHas2 & { type: "query" });
 
 export const CreateDeploymentMissingType = {
   Header: "header",
@@ -1503,11 +1500,6 @@ export type Missing2 = {
   value?: string | CreateDeploymentValueDeploymentsResponse2 | undefined;
 };
 
-export const MissingType = {
-  Host: "host",
-} as const;
-export type MissingType = ClosedEnum<typeof MissingType>;
-
 export type CreateDeploymentValueEq = string | number;
 
 export type CreateDeploymentValueDeployments2 = {
@@ -1527,11 +1519,15 @@ export type CreateDeploymentValueDeployments2 = {
 export type MissingValue = string | CreateDeploymentValueDeployments2;
 
 export type Missing1 = {
-  type: MissingType;
+  type: "host";
   value: string | CreateDeploymentValueDeployments2;
 };
 
-export type Missing = Missing1 | Missing2;
+export type Missing =
+  | Missing1
+  | (Missing2 & { type: "header" })
+  | (Missing2 & { type: "cookie" })
+  | (Missing2 & { type: "query" });
 
 export const RoutesAction = {
   Challenge: "challenge",
@@ -1606,8 +1602,22 @@ export type Routes1 = {
   check?: boolean | undefined;
   important?: boolean | undefined;
   status?: number | undefined;
-  has?: Array<CreateDeploymentHas1 | CreateDeploymentHas2> | undefined;
-  missing?: Array<Missing1 | Missing2> | undefined;
+  has?:
+    | Array<
+      | CreateDeploymentHas1
+      | (CreateDeploymentHas2 & { type: "header" })
+      | (CreateDeploymentHas2 & { type: "cookie" })
+      | (CreateDeploymentHas2 & { type: "query" })
+    >
+    | undefined;
+  missing?:
+    | Array<
+      | Missing1
+      | (Missing2 & { type: "header" })
+      | (Missing2 & { type: "cookie" })
+      | (Missing2 & { type: "query" })
+    >
+    | undefined;
   mitigate?: RoutesMitigate | undefined;
   transforms?: Array<CreateDeploymentRoutesTransforms> | undefined;
   locale?: Locale | undefined;
@@ -1627,13 +1637,6 @@ export type Routes1 = {
 
 export type Routes = Routes3 | Routes1 | Routes2;
 
-export const CreateDeploymentGitRepoDeploymentsType = {
-  Bitbucket: "bitbucket",
-} as const;
-export type CreateDeploymentGitRepoDeploymentsType = ClosedEnum<
-  typeof CreateDeploymentGitRepoDeploymentsType
->;
-
 export const CreateDeploymentGitRepoOwnerType = {
   Team: "team",
   User: "user",
@@ -1646,7 +1649,7 @@ export type GitRepo3 = {
   owner: string;
   repoUuid: string;
   slug: string;
-  type: CreateDeploymentGitRepoDeploymentsType;
+  type: "bitbucket";
   workspaceUuid: string;
   path: string;
   defaultBranch: string;
@@ -1654,13 +1657,6 @@ export type GitRepo3 = {
   private: boolean;
   ownerType: CreateDeploymentGitRepoOwnerType;
 };
-
-export const CreateDeploymentGitRepoType = {
-  Github: "github",
-} as const;
-export type CreateDeploymentGitRepoType = ClosedEnum<
-  typeof CreateDeploymentGitRepoType
->;
 
 export const GitRepoOwnerType = {
   Team: "team",
@@ -1672,7 +1668,7 @@ export type GitRepo2 = {
   org: string;
   repo: string;
   repoId: number;
-  type: CreateDeploymentGitRepoType;
+  type: "github";
   repoOwnerId: number;
   path: string;
   defaultBranch: string;
@@ -1680,11 +1676,6 @@ export type GitRepo2 = {
   private: boolean;
   ownerType: GitRepoOwnerType;
 };
-
-export const GitRepoType = {
-  Gitlab: "gitlab",
-} as const;
-export type GitRepoType = ClosedEnum<typeof GitRepoType>;
 
 export const OwnerType = {
   Team: "team",
@@ -1695,7 +1686,7 @@ export type OwnerType = ClosedEnum<typeof OwnerType>;
 export type GitRepo1 = {
   namespace: string;
   projectId: number;
-  type: GitRepoType;
+  type: "gitlab";
   url: string;
   path: string;
   defaultBranch: string;
@@ -1704,7 +1695,7 @@ export type GitRepo1 = {
   ownerType: OwnerType;
 };
 
-export type GitRepo = GitRepo2 | GitRepo3 | GitRepo1;
+export type GitRepo = GitRepo1 | GitRepo2 | GitRepo3;
 
 /**
  * Flags defined in the Build Output API, used by this deployment. Primarily used by the Toolbar to know about the used flags.
@@ -2016,7 +2007,7 @@ export type CreateDeploymentResponseBody = {
    */
   passiveConnectConfigurationId?: string | undefined;
   routes: Array<Routes3 | Routes1 | Routes2> | null;
-  gitRepo?: GitRepo2 | GitRepo3 | GitRepo1 | null | undefined;
+  gitRepo?: GitRepo1 | GitRepo2 | GitRepo3 | null | undefined;
   flags?: Flags1 | Array<Flags2> | undefined;
   microfrontends?:
     | CreateDeploymentMicrofrontends2
@@ -6061,15 +6052,6 @@ export function createDeploymentHas2FromJSON(
 }
 
 /** @internal */
-export const CreateDeploymentHasType$inboundSchema: z.ZodNativeEnum<
-  typeof CreateDeploymentHasType
-> = z.nativeEnum(CreateDeploymentHasType);
-/** @internal */
-export const CreateDeploymentHasType$outboundSchema: z.ZodNativeEnum<
-  typeof CreateDeploymentHasType
-> = CreateDeploymentHasType$inboundSchema;
-
-/** @internal */
 export const Eq$inboundSchema: z.ZodType<Eq, z.ZodTypeDef, unknown> = z.union([
   z.string(),
   z.number(),
@@ -6221,7 +6203,7 @@ export const CreateDeploymentHas1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: CreateDeploymentHasType$inboundSchema,
+  type: z.literal("host"),
   value: z.union([
     z.string(),
     z.lazy(() => CreateDeploymentValueDeploymentsResponse2002$inboundSchema),
@@ -6229,7 +6211,7 @@ export const CreateDeploymentHas1$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type CreateDeploymentHas1$Outbound = {
-  type: string;
+  type: "host";
   value: string | CreateDeploymentValueDeploymentsResponse2002$Outbound;
 };
 
@@ -6239,7 +6221,7 @@ export const CreateDeploymentHas1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateDeploymentHas1
 > = z.object({
-  type: CreateDeploymentHasType$outboundSchema,
+  type: z.literal("host"),
   value: z.union([
     z.string(),
     z.lazy(() => CreateDeploymentValueDeploymentsResponse2002$outboundSchema),
@@ -6270,12 +6252,22 @@ export const RoutesHas$inboundSchema: z.ZodType<
   unknown
 > = z.union([
   z.lazy(() => CreateDeploymentHas1$inboundSchema),
-  z.lazy(() => CreateDeploymentHas2$inboundSchema),
+  z.lazy(() => CreateDeploymentHas2$inboundSchema).and(
+    z.object({ type: z.literal("header") }),
+  ),
+  z.lazy(() => CreateDeploymentHas2$inboundSchema).and(
+    z.object({ type: z.literal("cookie") }),
+  ),
+  z.lazy(() => CreateDeploymentHas2$inboundSchema).and(
+    z.object({ type: z.literal("query") }),
+  ),
 ]);
 /** @internal */
 export type RoutesHas$Outbound =
   | CreateDeploymentHas1$Outbound
-  | CreateDeploymentHas2$Outbound;
+  | (CreateDeploymentHas2$Outbound & { type: "header" })
+  | (CreateDeploymentHas2$Outbound & { type: "cookie" })
+  | (CreateDeploymentHas2$Outbound & { type: "query" });
 
 /** @internal */
 export const RoutesHas$outboundSchema: z.ZodType<
@@ -6284,7 +6276,15 @@ export const RoutesHas$outboundSchema: z.ZodType<
   RoutesHas
 > = z.union([
   z.lazy(() => CreateDeploymentHas1$outboundSchema),
-  z.lazy(() => CreateDeploymentHas2$outboundSchema),
+  z.lazy(() => CreateDeploymentHas2$outboundSchema).and(
+    z.object({ type: z.literal("header") }),
+  ),
+  z.lazy(() => CreateDeploymentHas2$outboundSchema).and(
+    z.object({ type: z.literal("cookie") }),
+  ),
+  z.lazy(() => CreateDeploymentHas2$outboundSchema).and(
+    z.object({ type: z.literal("query") }),
+  ),
 ]);
 
 export function routesHasToJSON(routesHas: RoutesHas): string {
@@ -6518,13 +6518,6 @@ export function missing2FromJSON(
 }
 
 /** @internal */
-export const MissingType$inboundSchema: z.ZodNativeEnum<typeof MissingType> = z
-  .nativeEnum(MissingType);
-/** @internal */
-export const MissingType$outboundSchema: z.ZodNativeEnum<typeof MissingType> =
-  MissingType$inboundSchema;
-
-/** @internal */
 export const CreateDeploymentValueEq$inboundSchema: z.ZodType<
   CreateDeploymentValueEq,
   z.ZodTypeDef,
@@ -6671,7 +6664,7 @@ export const Missing1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: MissingType$inboundSchema,
+  type: z.literal("host"),
   value: z.union([
     z.string(),
     z.lazy(() => CreateDeploymentValueDeployments2$inboundSchema),
@@ -6679,7 +6672,7 @@ export const Missing1$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type Missing1$Outbound = {
-  type: string;
+  type: "host";
   value: string | CreateDeploymentValueDeployments2$Outbound;
 };
 
@@ -6689,7 +6682,7 @@ export const Missing1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Missing1
 > = z.object({
-  type: MissingType$outboundSchema,
+  type: z.literal("host"),
   value: z.union([
     z.string(),
     z.lazy(() => CreateDeploymentValueDeployments2$outboundSchema),
@@ -6713,10 +6706,22 @@ export function missing1FromJSON(
 export const Missing$inboundSchema: z.ZodType<Missing, z.ZodTypeDef, unknown> =
   z.union([
     z.lazy(() => Missing1$inboundSchema),
-    z.lazy(() => Missing2$inboundSchema),
+    z.lazy(() => Missing2$inboundSchema).and(
+      z.object({ type: z.literal("header") }),
+    ),
+    z.lazy(() => Missing2$inboundSchema).and(
+      z.object({ type: z.literal("cookie") }),
+    ),
+    z.lazy(() => Missing2$inboundSchema).and(
+      z.object({ type: z.literal("query") }),
+    ),
   ]);
 /** @internal */
-export type Missing$Outbound = Missing1$Outbound | Missing2$Outbound;
+export type Missing$Outbound =
+  | Missing1$Outbound
+  | (Missing2$Outbound & { type: "header" })
+  | (Missing2$Outbound & { type: "cookie" })
+  | (Missing2$Outbound & { type: "query" });
 
 /** @internal */
 export const Missing$outboundSchema: z.ZodType<
@@ -6725,7 +6730,15 @@ export const Missing$outboundSchema: z.ZodType<
   Missing
 > = z.union([
   z.lazy(() => Missing1$outboundSchema),
-  z.lazy(() => Missing2$outboundSchema),
+  z.lazy(() => Missing2$outboundSchema).and(
+    z.object({ type: z.literal("header") }),
+  ),
+  z.lazy(() => Missing2$outboundSchema).and(
+    z.object({ type: z.literal("cookie") }),
+  ),
+  z.lazy(() => Missing2$outboundSchema).and(
+    z.object({ type: z.literal("query") }),
+  ),
 ]);
 
 export function missingToJSON(missing: Missing): string {
@@ -7072,13 +7085,29 @@ export const Routes1$inboundSchema: z.ZodType<Routes1, z.ZodTypeDef, unknown> =
     has: z.array(
       z.union([
         z.lazy(() => CreateDeploymentHas1$inboundSchema),
-        z.lazy(() => CreateDeploymentHas2$inboundSchema),
+        z.lazy(() =>
+          CreateDeploymentHas2$inboundSchema
+        ).and(z.object({ type: z.literal("header") })),
+        z.lazy(() =>
+          CreateDeploymentHas2$inboundSchema
+        ).and(z.object({ type: z.literal("cookie") })),
+        z.lazy(() =>
+          CreateDeploymentHas2$inboundSchema
+        ).and(z.object({ type: z.literal("query") })),
       ]),
     ).optional(),
     missing: z.array(
       z.union([
         z.lazy(() => Missing1$inboundSchema),
-        z.lazy(() => Missing2$inboundSchema),
+        z.lazy(() =>
+          Missing2$inboundSchema
+        ).and(z.object({ type: z.literal("header") })),
+        z.lazy(() =>
+          Missing2$inboundSchema
+        ).and(z.object({ type: z.literal("cookie") })),
+        z.lazy(() =>
+          Missing2$inboundSchema
+        ).and(z.object({ type: z.literal("query") })),
       ]),
     ).optional(),
     mitigate: z.lazy(() => RoutesMitigate$inboundSchema).optional(),
@@ -7103,9 +7132,21 @@ export type Routes1$Outbound = {
   important?: boolean | undefined;
   status?: number | undefined;
   has?:
-    | Array<CreateDeploymentHas1$Outbound | CreateDeploymentHas2$Outbound>
+    | Array<
+      | CreateDeploymentHas1$Outbound
+      | (CreateDeploymentHas2$Outbound & { type: "header" })
+      | (CreateDeploymentHas2$Outbound & { type: "cookie" })
+      | (CreateDeploymentHas2$Outbound & { type: "query" })
+    >
     | undefined;
-  missing?: Array<Missing1$Outbound | Missing2$Outbound> | undefined;
+  missing?:
+    | Array<
+      | Missing1$Outbound
+      | (Missing2$Outbound & { type: "header" })
+      | (Missing2$Outbound & { type: "cookie" })
+      | (Missing2$Outbound & { type: "query" })
+    >
+    | undefined;
   mitigate?: RoutesMitigate$Outbound | undefined;
   transforms?: Array<CreateDeploymentRoutesTransforms$Outbound> | undefined;
   locale?: Locale$Outbound | undefined;
@@ -7133,13 +7174,29 @@ export const Routes1$outboundSchema: z.ZodType<
   has: z.array(
     z.union([
       z.lazy(() => CreateDeploymentHas1$outboundSchema),
-      z.lazy(() => CreateDeploymentHas2$outboundSchema),
+      z.lazy(() =>
+        CreateDeploymentHas2$outboundSchema
+      ).and(z.object({ type: z.literal("header") })),
+      z.lazy(() =>
+        CreateDeploymentHas2$outboundSchema
+      ).and(z.object({ type: z.literal("cookie") })),
+      z.lazy(() =>
+        CreateDeploymentHas2$outboundSchema
+      ).and(z.object({ type: z.literal("query") })),
     ]),
   ).optional(),
   missing: z.array(
     z.union([
       z.lazy(() => Missing1$outboundSchema),
-      z.lazy(() => Missing2$outboundSchema),
+      z.lazy(() =>
+        Missing2$outboundSchema
+      ).and(z.object({ type: z.literal("header") })),
+      z.lazy(() =>
+        Missing2$outboundSchema
+      ).and(z.object({ type: z.literal("cookie") })),
+      z.lazy(() =>
+        Missing2$outboundSchema
+      ).and(z.object({ type: z.literal("query") })),
     ]),
   ).optional(),
   mitigate: z.lazy(() => RoutesMitigate$outboundSchema).optional(),
@@ -7203,16 +7260,6 @@ export function routesFromJSON(
 }
 
 /** @internal */
-export const CreateDeploymentGitRepoDeploymentsType$inboundSchema:
-  z.ZodNativeEnum<typeof CreateDeploymentGitRepoDeploymentsType> = z.nativeEnum(
-    CreateDeploymentGitRepoDeploymentsType,
-  );
-/** @internal */
-export const CreateDeploymentGitRepoDeploymentsType$outboundSchema:
-  z.ZodNativeEnum<typeof CreateDeploymentGitRepoDeploymentsType> =
-    CreateDeploymentGitRepoDeploymentsType$inboundSchema;
-
-/** @internal */
 export const CreateDeploymentGitRepoOwnerType$inboundSchema: z.ZodNativeEnum<
   typeof CreateDeploymentGitRepoOwnerType
 > = z.nativeEnum(CreateDeploymentGitRepoOwnerType);
@@ -7230,7 +7277,7 @@ export const GitRepo3$inboundSchema: z.ZodType<
   owner: z.string(),
   repoUuid: z.string(),
   slug: z.string(),
-  type: CreateDeploymentGitRepoDeploymentsType$inboundSchema,
+  type: z.literal("bitbucket"),
   workspaceUuid: z.string(),
   path: z.string(),
   defaultBranch: z.string(),
@@ -7243,7 +7290,7 @@ export type GitRepo3$Outbound = {
   owner: string;
   repoUuid: string;
   slug: string;
-  type: string;
+  type: "bitbucket";
   workspaceUuid: string;
   path: string;
   defaultBranch: string;
@@ -7261,7 +7308,7 @@ export const GitRepo3$outboundSchema: z.ZodType<
   owner: z.string(),
   repoUuid: z.string(),
   slug: z.string(),
-  type: CreateDeploymentGitRepoDeploymentsType$outboundSchema,
+  type: z.literal("bitbucket"),
   workspaceUuid: z.string(),
   path: z.string(),
   defaultBranch: z.string(),
@@ -7284,15 +7331,6 @@ export function gitRepo3FromJSON(
 }
 
 /** @internal */
-export const CreateDeploymentGitRepoType$inboundSchema: z.ZodNativeEnum<
-  typeof CreateDeploymentGitRepoType
-> = z.nativeEnum(CreateDeploymentGitRepoType);
-/** @internal */
-export const CreateDeploymentGitRepoType$outboundSchema: z.ZodNativeEnum<
-  typeof CreateDeploymentGitRepoType
-> = CreateDeploymentGitRepoType$inboundSchema;
-
-/** @internal */
 export const GitRepoOwnerType$inboundSchema: z.ZodNativeEnum<
   typeof GitRepoOwnerType
 > = z.nativeEnum(GitRepoOwnerType);
@@ -7310,7 +7348,7 @@ export const GitRepo2$inboundSchema: z.ZodType<
   org: z.string(),
   repo: z.string(),
   repoId: z.number(),
-  type: CreateDeploymentGitRepoType$inboundSchema,
+  type: z.literal("github"),
   repoOwnerId: z.number(),
   path: z.string(),
   defaultBranch: z.string(),
@@ -7323,7 +7361,7 @@ export type GitRepo2$Outbound = {
   org: string;
   repo: string;
   repoId: number;
-  type: string;
+  type: "github";
   repoOwnerId: number;
   path: string;
   defaultBranch: string;
@@ -7341,7 +7379,7 @@ export const GitRepo2$outboundSchema: z.ZodType<
   org: z.string(),
   repo: z.string(),
   repoId: z.number(),
-  type: CreateDeploymentGitRepoType$outboundSchema,
+  type: z.literal("github"),
   repoOwnerId: z.number(),
   path: z.string(),
   defaultBranch: z.string(),
@@ -7364,13 +7402,6 @@ export function gitRepo2FromJSON(
 }
 
 /** @internal */
-export const GitRepoType$inboundSchema: z.ZodNativeEnum<typeof GitRepoType> = z
-  .nativeEnum(GitRepoType);
-/** @internal */
-export const GitRepoType$outboundSchema: z.ZodNativeEnum<typeof GitRepoType> =
-  GitRepoType$inboundSchema;
-
-/** @internal */
 export const OwnerType$inboundSchema: z.ZodNativeEnum<typeof OwnerType> = z
   .nativeEnum(OwnerType);
 /** @internal */
@@ -7385,7 +7416,7 @@ export const GitRepo1$inboundSchema: z.ZodType<
 > = z.object({
   namespace: z.string(),
   projectId: z.number(),
-  type: GitRepoType$inboundSchema,
+  type: z.literal("gitlab"),
   url: z.string(),
   path: z.string(),
   defaultBranch: z.string(),
@@ -7397,7 +7428,7 @@ export const GitRepo1$inboundSchema: z.ZodType<
 export type GitRepo1$Outbound = {
   namespace: string;
   projectId: number;
-  type: string;
+  type: "gitlab";
   url: string;
   path: string;
   defaultBranch: string;
@@ -7414,7 +7445,7 @@ export const GitRepo1$outboundSchema: z.ZodType<
 > = z.object({
   namespace: z.string(),
   projectId: z.number(),
-  type: GitRepoType$outboundSchema,
+  type: z.literal("gitlab"),
   url: z.string(),
   path: z.string(),
   defaultBranch: z.string(),
@@ -7439,15 +7470,15 @@ export function gitRepo1FromJSON(
 /** @internal */
 export const GitRepo$inboundSchema: z.ZodType<GitRepo, z.ZodTypeDef, unknown> =
   z.union([
+    z.lazy(() => GitRepo1$inboundSchema),
     z.lazy(() => GitRepo2$inboundSchema),
     z.lazy(() => GitRepo3$inboundSchema),
-    z.lazy(() => GitRepo1$inboundSchema),
   ]);
 /** @internal */
 export type GitRepo$Outbound =
+  | GitRepo1$Outbound
   | GitRepo2$Outbound
-  | GitRepo3$Outbound
-  | GitRepo1$Outbound;
+  | GitRepo3$Outbound;
 
 /** @internal */
 export const GitRepo$outboundSchema: z.ZodType<
@@ -7455,9 +7486,9 @@ export const GitRepo$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GitRepo
 > = z.union([
+  z.lazy(() => GitRepo1$outboundSchema),
   z.lazy(() => GitRepo2$outboundSchema),
   z.lazy(() => GitRepo3$outboundSchema),
-  z.lazy(() => GitRepo1$outboundSchema),
 ]);
 
 export function gitRepoToJSON(gitRepo: GitRepo): string {
@@ -8078,9 +8109,9 @@ export const CreateDeploymentResponseBody$inboundSchema: z.ZodType<
   ),
   gitRepo: z.nullable(
     z.union([
+      z.lazy(() => GitRepo1$inboundSchema),
       z.lazy(() => GitRepo2$inboundSchema),
       z.lazy(() => GitRepo3$inboundSchema),
-      z.lazy(() => GitRepo1$inboundSchema),
     ]),
   ).optional(),
   flags: z.union([
@@ -8195,9 +8226,9 @@ export type CreateDeploymentResponseBody$Outbound = {
   passiveConnectConfigurationId?: string | undefined;
   routes: Array<Routes3$Outbound | Routes1$Outbound | Routes2$Outbound> | null;
   gitRepo?:
+    | GitRepo1$Outbound
     | GitRepo2$Outbound
     | GitRepo3$Outbound
-    | GitRepo1$Outbound
     | null
     | undefined;
   flags?: Flags1$Outbound | Array<Flags2$Outbound> | undefined;
@@ -8325,9 +8356,9 @@ export const CreateDeploymentResponseBody$outboundSchema: z.ZodType<
   ),
   gitRepo: z.nullable(
     z.union([
+      z.lazy(() => GitRepo1$outboundSchema),
       z.lazy(() => GitRepo2$outboundSchema),
       z.lazy(() => GitRepo3$outboundSchema),
-      z.lazy(() => GitRepo1$outboundSchema),
     ]),
   ).optional(),
   flags: z.union([

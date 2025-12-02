@@ -21,3 +21,21 @@ const value: models.CancelDeploymentHas2 = {
 };
 ```
 
+### `models.CancelDeploymentHas2`
+
+```typescript
+const value: models.CancelDeploymentHas2 = {
+  type: "query",
+  key: "<key>",
+};
+```
+
+### `models.CancelDeploymentHas2`
+
+```typescript
+const value: models.CancelDeploymentHas2 = {
+  type: "query",
+  key: "<key>",
+};
+```
+

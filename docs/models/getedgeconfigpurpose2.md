@@ -13,7 +13,7 @@ let value: GetEdgeConfigPurpose2 = {
 
 ## Fields
 
-| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `type`                                                                                       | [models.GetEdgeConfigPurposeEdgeConfigType](../models/getedgeconfigpurposeedgeconfigtype.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |
-| `resourceId`                                                                                 | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `type`              | *"experimentation"* | :heavy_check_mark:  | N/A                 |
+| `resourceId`        | *string*            | :heavy_check_mark:  | N/A                 |

@@ -14,8 +14,8 @@ let value: GetRollingReleaseBillingStatusResponseBody1 = {
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `availableSlots`                                             | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `reason`                                                     | [models.ResponseBodyReason](../models/responsebodyreason.md) | :heavy_check_mark:                                           | N/A                                                          |
-| `message`                                                    | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `availableSlots`       | *number*               | :heavy_check_mark:     | N/A                    |
+| `reason`               | *"plan_not_supported"* | :heavy_check_mark:     | N/A                    |
+| `message`              | *string*               | :heavy_check_mark:     | N/A                    |

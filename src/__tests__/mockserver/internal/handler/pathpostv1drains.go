@@ -58,7 +58,7 @@ func testCreateDrainCreateDrain0(w http.ResponseWriter, req *http.Request) {
 			Name:      "<value>",
 			CreatedAt: 3665.73,
 			UpdatedAt: 3681.88,
-			Source: operations.CreateCreateDrainResponseBodySourceUnion1CreateDrainSourceSelfServed1(
+			Source: operations.CreateCreateDrainResponseBodySourceUnion1SelfServed(
 				operations.CreateDrainSourceSelfServed1{
 					Kind: operations.CreateDrainKindSelfServed1SelfServed,
 				},

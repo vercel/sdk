@@ -6349,8 +6349,10 @@ func (o *CreateDeploymentHasHost) GetValue() CreateDeploymentHasValueUnion1 {
 type CreateDeploymentHasUnionType string
 
 const (
-	CreateDeploymentHasUnionTypeCreateDeploymentHasHost CreateDeploymentHasUnionType = "createDeployment_has_Host"
-	CreateDeploymentHasUnionTypeCreateDeploymentHas     CreateDeploymentHasUnionType = "createDeployment_has"
+	CreateDeploymentHasUnionTypeHost   CreateDeploymentHasUnionType = "host"
+	CreateDeploymentHasUnionTypeHeader CreateDeploymentHasUnionType = "header"
+	CreateDeploymentHasUnionTypeCookie CreateDeploymentHasUnionType = "cookie"
+	CreateDeploymentHasUnionTypeQuery  CreateDeploymentHasUnionType = "query"
 )
 
 type CreateDeploymentHasUnion struct {
@@ -6360,37 +6362,101 @@ type CreateDeploymentHasUnion struct {
 	Type CreateDeploymentHasUnionType
 }
 
-func CreateCreateDeploymentHasUnionCreateDeploymentHasHost(createDeploymentHasHost CreateDeploymentHasHost) CreateDeploymentHasUnion {
-	typ := CreateDeploymentHasUnionTypeCreateDeploymentHasHost
+func CreateCreateDeploymentHasUnionHost(host CreateDeploymentHasHost) CreateDeploymentHasUnion {
+	typ := CreateDeploymentHasUnionTypeHost
+
+	typStr := CreateDeploymentHasTypeHost(typ)
+	host.Type = typStr
 
 	return CreateDeploymentHasUnion{
-		CreateDeploymentHasHost: &createDeploymentHasHost,
+		CreateDeploymentHasHost: &host,
 		Type:                    typ,
 	}
 }
 
-func CreateCreateDeploymentHasUnionCreateDeploymentHas(createDeploymentHas CreateDeploymentHas) CreateDeploymentHasUnion {
-	typ := CreateDeploymentHasUnionTypeCreateDeploymentHas
+func CreateCreateDeploymentHasUnionHeader(header CreateDeploymentHas) CreateDeploymentHasUnion {
+	typ := CreateDeploymentHasUnionTypeHeader
+
+	typStr := CreateDeploymentHasType(typ)
+	header.Type = typStr
 
 	return CreateDeploymentHasUnion{
-		CreateDeploymentHas: &createDeploymentHas,
+		CreateDeploymentHas: &header,
+		Type:                typ,
+	}
+}
+
+func CreateCreateDeploymentHasUnionCookie(cookie CreateDeploymentHas) CreateDeploymentHasUnion {
+	typ := CreateDeploymentHasUnionTypeCookie
+
+	typStr := CreateDeploymentHasType(typ)
+	cookie.Type = typStr
+
+	return CreateDeploymentHasUnion{
+		CreateDeploymentHas: &cookie,
+		Type:                typ,
+	}
+}
+
+func CreateCreateDeploymentHasUnionQuery(query CreateDeploymentHas) CreateDeploymentHasUnion {
+	typ := CreateDeploymentHasUnionTypeQuery
+
+	typStr := CreateDeploymentHasType(typ)
+	query.Type = typStr
+
+	return CreateDeploymentHasUnion{
+		CreateDeploymentHas: &query,
 		Type:                typ,
 	}
 }
 
 func (u *CreateDeploymentHasUnion) UnmarshalJSON(data []byte) error {
 
-	var createDeploymentHasHost CreateDeploymentHasHost = CreateDeploymentHasHost{}
-	if err := utils.UnmarshalJSON(data, &createDeploymentHasHost, "", true, nil); err == nil {
-		u.CreateDeploymentHasHost = &createDeploymentHasHost
-		u.Type = CreateDeploymentHasUnionTypeCreateDeploymentHasHost
-		return nil
+	type discriminator struct {
+		Type string `json:"type"`
 	}
 
-	var createDeploymentHas CreateDeploymentHas = CreateDeploymentHas{}
-	if err := utils.UnmarshalJSON(data, &createDeploymentHas, "", true, nil); err == nil {
-		u.CreateDeploymentHas = &createDeploymentHas
-		u.Type = CreateDeploymentHasUnionTypeCreateDeploymentHas
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Type {
+	case "host":
+		createDeploymentHasHost := new(CreateDeploymentHasHost)
+		if err := utils.UnmarshalJSON(data, &createDeploymentHasHost, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == host) type CreateDeploymentHasHost within CreateDeploymentHasUnion: %w", string(data), err)
+		}
+
+		u.CreateDeploymentHasHost = createDeploymentHasHost
+		u.Type = CreateDeploymentHasUnionTypeHost
+		return nil
+	case "header":
+		createDeploymentHas := new(CreateDeploymentHas)
+		if err := utils.UnmarshalJSON(data, &createDeploymentHas, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == header) type CreateDeploymentHas within CreateDeploymentHasUnion: %w", string(data), err)
+		}
+
+		u.CreateDeploymentHas = createDeploymentHas
+		u.Type = CreateDeploymentHasUnionTypeHeader
+		return nil
+	case "cookie":
+		createDeploymentHas := new(CreateDeploymentHas)
+		if err := utils.UnmarshalJSON(data, &createDeploymentHas, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == cookie) type CreateDeploymentHas within CreateDeploymentHasUnion: %w", string(data), err)
+		}
+
+		u.CreateDeploymentHas = createDeploymentHas
+		u.Type = CreateDeploymentHasUnionTypeCookie
+		return nil
+	case "query":
+		createDeploymentHas := new(CreateDeploymentHas)
+		if err := utils.UnmarshalJSON(data, &createDeploymentHas, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == query) type CreateDeploymentHas within CreateDeploymentHasUnion: %w", string(data), err)
+		}
+
+		u.CreateDeploymentHas = createDeploymentHas
+		u.Type = CreateDeploymentHasUnionTypeQuery
 		return nil
 	}
 
@@ -6988,8 +7054,10 @@ func (o *CreateDeploymentMissingHost) GetValue() CreateDeploymentMissingValueUni
 type CreateDeploymentMissingUnionType string
 
 const (
-	CreateDeploymentMissingUnionTypeCreateDeploymentMissingHost CreateDeploymentMissingUnionType = "createDeployment_missing_Host"
-	CreateDeploymentMissingUnionTypeCreateDeploymentMissing     CreateDeploymentMissingUnionType = "createDeployment_missing"
+	CreateDeploymentMissingUnionTypeHost   CreateDeploymentMissingUnionType = "host"
+	CreateDeploymentMissingUnionTypeHeader CreateDeploymentMissingUnionType = "header"
+	CreateDeploymentMissingUnionTypeCookie CreateDeploymentMissingUnionType = "cookie"
+	CreateDeploymentMissingUnionTypeQuery  CreateDeploymentMissingUnionType = "query"
 )
 
 type CreateDeploymentMissingUnion struct {
@@ -6999,37 +7067,101 @@ type CreateDeploymentMissingUnion struct {
 	Type CreateDeploymentMissingUnionType
 }
 
-func CreateCreateDeploymentMissingUnionCreateDeploymentMissingHost(createDeploymentMissingHost CreateDeploymentMissingHost) CreateDeploymentMissingUnion {
-	typ := CreateDeploymentMissingUnionTypeCreateDeploymentMissingHost
+func CreateCreateDeploymentMissingUnionHost(host CreateDeploymentMissingHost) CreateDeploymentMissingUnion {
+	typ := CreateDeploymentMissingUnionTypeHost
+
+	typStr := CreateDeploymentMissingTypeHost(typ)
+	host.Type = typStr
 
 	return CreateDeploymentMissingUnion{
-		CreateDeploymentMissingHost: &createDeploymentMissingHost,
+		CreateDeploymentMissingHost: &host,
 		Type:                        typ,
 	}
 }
 
-func CreateCreateDeploymentMissingUnionCreateDeploymentMissing(createDeploymentMissing CreateDeploymentMissing) CreateDeploymentMissingUnion {
-	typ := CreateDeploymentMissingUnionTypeCreateDeploymentMissing
+func CreateCreateDeploymentMissingUnionHeader(header CreateDeploymentMissing) CreateDeploymentMissingUnion {
+	typ := CreateDeploymentMissingUnionTypeHeader
+
+	typStr := CreateDeploymentMissingType(typ)
+	header.Type = typStr
 
 	return CreateDeploymentMissingUnion{
-		CreateDeploymentMissing: &createDeploymentMissing,
+		CreateDeploymentMissing: &header,
+		Type:                    typ,
+	}
+}
+
+func CreateCreateDeploymentMissingUnionCookie(cookie CreateDeploymentMissing) CreateDeploymentMissingUnion {
+	typ := CreateDeploymentMissingUnionTypeCookie
+
+	typStr := CreateDeploymentMissingType(typ)
+	cookie.Type = typStr
+
+	return CreateDeploymentMissingUnion{
+		CreateDeploymentMissing: &cookie,
+		Type:                    typ,
+	}
+}
+
+func CreateCreateDeploymentMissingUnionQuery(query CreateDeploymentMissing) CreateDeploymentMissingUnion {
+	typ := CreateDeploymentMissingUnionTypeQuery
+
+	typStr := CreateDeploymentMissingType(typ)
+	query.Type = typStr
+
+	return CreateDeploymentMissingUnion{
+		CreateDeploymentMissing: &query,
 		Type:                    typ,
 	}
 }
 
 func (u *CreateDeploymentMissingUnion) UnmarshalJSON(data []byte) error {
 
-	var createDeploymentMissingHost CreateDeploymentMissingHost = CreateDeploymentMissingHost{}
-	if err := utils.UnmarshalJSON(data, &createDeploymentMissingHost, "", true, nil); err == nil {
-		u.CreateDeploymentMissingHost = &createDeploymentMissingHost
-		u.Type = CreateDeploymentMissingUnionTypeCreateDeploymentMissingHost
-		return nil
+	type discriminator struct {
+		Type string `json:"type"`
 	}
 
-	var createDeploymentMissing CreateDeploymentMissing = CreateDeploymentMissing{}
-	if err := utils.UnmarshalJSON(data, &createDeploymentMissing, "", true, nil); err == nil {
-		u.CreateDeploymentMissing = &createDeploymentMissing
-		u.Type = CreateDeploymentMissingUnionTypeCreateDeploymentMissing
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Type {
+	case "host":
+		createDeploymentMissingHost := new(CreateDeploymentMissingHost)
+		if err := utils.UnmarshalJSON(data, &createDeploymentMissingHost, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == host) type CreateDeploymentMissingHost within CreateDeploymentMissingUnion: %w", string(data), err)
+		}
+
+		u.CreateDeploymentMissingHost = createDeploymentMissingHost
+		u.Type = CreateDeploymentMissingUnionTypeHost
+		return nil
+	case "header":
+		createDeploymentMissing := new(CreateDeploymentMissing)
+		if err := utils.UnmarshalJSON(data, &createDeploymentMissing, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == header) type CreateDeploymentMissing within CreateDeploymentMissingUnion: %w", string(data), err)
+		}
+
+		u.CreateDeploymentMissing = createDeploymentMissing
+		u.Type = CreateDeploymentMissingUnionTypeHeader
+		return nil
+	case "cookie":
+		createDeploymentMissing := new(CreateDeploymentMissing)
+		if err := utils.UnmarshalJSON(data, &createDeploymentMissing, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == cookie) type CreateDeploymentMissing within CreateDeploymentMissingUnion: %w", string(data), err)
+		}
+
+		u.CreateDeploymentMissing = createDeploymentMissing
+		u.Type = CreateDeploymentMissingUnionTypeCookie
+		return nil
+	case "query":
+		createDeploymentMissing := new(CreateDeploymentMissing)
+		if err := utils.UnmarshalJSON(data, &createDeploymentMissing, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == query) type CreateDeploymentMissing within CreateDeploymentMissingUnion: %w", string(data), err)
+		}
+
+		u.CreateDeploymentMissing = createDeploymentMissing
+		u.Type = CreateDeploymentMissingUnionTypeQuery
 		return nil
 	}
 
@@ -8213,9 +8345,9 @@ func (o *CreateDeploymentGitRepoGitlab) GetOwnerType() CreateDeploymentOwnerType
 type CreateDeploymentGitRepoUnionType string
 
 const (
-	CreateDeploymentGitRepoUnionTypeCreateDeploymentGitRepoGitlab    CreateDeploymentGitRepoUnionType = "createDeployment_gitRepo_Gitlab"
-	CreateDeploymentGitRepoUnionTypeCreateDeploymentGitRepoGithub    CreateDeploymentGitRepoUnionType = "createDeployment_gitRepo_Github"
-	CreateDeploymentGitRepoUnionTypeCreateDeploymentGitRepoBitbucket CreateDeploymentGitRepoUnionType = "createDeployment_gitRepo_Bitbucket"
+	CreateDeploymentGitRepoUnionTypeGitlab    CreateDeploymentGitRepoUnionType = "gitlab"
+	CreateDeploymentGitRepoUnionTypeGithub    CreateDeploymentGitRepoUnionType = "github"
+	CreateDeploymentGitRepoUnionTypeBitbucket CreateDeploymentGitRepoUnionType = "bitbucket"
 )
 
 type CreateDeploymentGitRepoUnion struct {
@@ -8226,53 +8358,80 @@ type CreateDeploymentGitRepoUnion struct {
 	Type CreateDeploymentGitRepoUnionType
 }
 
-func CreateCreateDeploymentGitRepoUnionCreateDeploymentGitRepoGitlab(createDeploymentGitRepoGitlab CreateDeploymentGitRepoGitlab) CreateDeploymentGitRepoUnion {
-	typ := CreateDeploymentGitRepoUnionTypeCreateDeploymentGitRepoGitlab
+func CreateCreateDeploymentGitRepoUnionGitlab(gitlab CreateDeploymentGitRepoGitlab) CreateDeploymentGitRepoUnion {
+	typ := CreateDeploymentGitRepoUnionTypeGitlab
+
+	typStr := CreateDeploymentGitRepoTypeGitlab(typ)
+	gitlab.Type = typStr
 
 	return CreateDeploymentGitRepoUnion{
-		CreateDeploymentGitRepoGitlab: &createDeploymentGitRepoGitlab,
+		CreateDeploymentGitRepoGitlab: &gitlab,
 		Type:                          typ,
 	}
 }
 
-func CreateCreateDeploymentGitRepoUnionCreateDeploymentGitRepoGithub(createDeploymentGitRepoGithub CreateDeploymentGitRepoGithub) CreateDeploymentGitRepoUnion {
-	typ := CreateDeploymentGitRepoUnionTypeCreateDeploymentGitRepoGithub
+func CreateCreateDeploymentGitRepoUnionGithub(github CreateDeploymentGitRepoGithub) CreateDeploymentGitRepoUnion {
+	typ := CreateDeploymentGitRepoUnionTypeGithub
+
+	typStr := CreateDeploymentGitRepoTypeGithub(typ)
+	github.Type = typStr
 
 	return CreateDeploymentGitRepoUnion{
-		CreateDeploymentGitRepoGithub: &createDeploymentGitRepoGithub,
+		CreateDeploymentGitRepoGithub: &github,
 		Type:                          typ,
 	}
 }
 
-func CreateCreateDeploymentGitRepoUnionCreateDeploymentGitRepoBitbucket(createDeploymentGitRepoBitbucket CreateDeploymentGitRepoBitbucket) CreateDeploymentGitRepoUnion {
-	typ := CreateDeploymentGitRepoUnionTypeCreateDeploymentGitRepoBitbucket
+func CreateCreateDeploymentGitRepoUnionBitbucket(bitbucket CreateDeploymentGitRepoBitbucket) CreateDeploymentGitRepoUnion {
+	typ := CreateDeploymentGitRepoUnionTypeBitbucket
+
+	typStr := CreateDeploymentGitRepoTypeBitbucket(typ)
+	bitbucket.Type = typStr
 
 	return CreateDeploymentGitRepoUnion{
-		CreateDeploymentGitRepoBitbucket: &createDeploymentGitRepoBitbucket,
+		CreateDeploymentGitRepoBitbucket: &bitbucket,
 		Type:                             typ,
 	}
 }
 
 func (u *CreateDeploymentGitRepoUnion) UnmarshalJSON(data []byte) error {
 
-	var createDeploymentGitRepoGithub CreateDeploymentGitRepoGithub = CreateDeploymentGitRepoGithub{}
-	if err := utils.UnmarshalJSON(data, &createDeploymentGitRepoGithub, "", true, nil); err == nil {
-		u.CreateDeploymentGitRepoGithub = &createDeploymentGitRepoGithub
-		u.Type = CreateDeploymentGitRepoUnionTypeCreateDeploymentGitRepoGithub
-		return nil
+	type discriminator struct {
+		Type string `json:"type"`
 	}
 
-	var createDeploymentGitRepoBitbucket CreateDeploymentGitRepoBitbucket = CreateDeploymentGitRepoBitbucket{}
-	if err := utils.UnmarshalJSON(data, &createDeploymentGitRepoBitbucket, "", true, nil); err == nil {
-		u.CreateDeploymentGitRepoBitbucket = &createDeploymentGitRepoBitbucket
-		u.Type = CreateDeploymentGitRepoUnionTypeCreateDeploymentGitRepoBitbucket
-		return nil
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
 	}
 
-	var createDeploymentGitRepoGitlab CreateDeploymentGitRepoGitlab = CreateDeploymentGitRepoGitlab{}
-	if err := utils.UnmarshalJSON(data, &createDeploymentGitRepoGitlab, "", true, nil); err == nil {
-		u.CreateDeploymentGitRepoGitlab = &createDeploymentGitRepoGitlab
-		u.Type = CreateDeploymentGitRepoUnionTypeCreateDeploymentGitRepoGitlab
+	switch dis.Type {
+	case "gitlab":
+		createDeploymentGitRepoGitlab := new(CreateDeploymentGitRepoGitlab)
+		if err := utils.UnmarshalJSON(data, &createDeploymentGitRepoGitlab, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == gitlab) type CreateDeploymentGitRepoGitlab within CreateDeploymentGitRepoUnion: %w", string(data), err)
+		}
+
+		u.CreateDeploymentGitRepoGitlab = createDeploymentGitRepoGitlab
+		u.Type = CreateDeploymentGitRepoUnionTypeGitlab
+		return nil
+	case "github":
+		createDeploymentGitRepoGithub := new(CreateDeploymentGitRepoGithub)
+		if err := utils.UnmarshalJSON(data, &createDeploymentGitRepoGithub, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == github) type CreateDeploymentGitRepoGithub within CreateDeploymentGitRepoUnion: %w", string(data), err)
+		}
+
+		u.CreateDeploymentGitRepoGithub = createDeploymentGitRepoGithub
+		u.Type = CreateDeploymentGitRepoUnionTypeGithub
+		return nil
+	case "bitbucket":
+		createDeploymentGitRepoBitbucket := new(CreateDeploymentGitRepoBitbucket)
+		if err := utils.UnmarshalJSON(data, &createDeploymentGitRepoBitbucket, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == bitbucket) type CreateDeploymentGitRepoBitbucket within CreateDeploymentGitRepoUnion: %w", string(data), err)
+		}
+
+		u.CreateDeploymentGitRepoBitbucket = createDeploymentGitRepoBitbucket
+		u.Type = CreateDeploymentGitRepoUnionTypeBitbucket
 		return nil
 	}
 
@@ -9523,6 +9682,27 @@ func (o *CreateDeploymentResponseBody) GetGitRepo() *CreateDeploymentGitRepoUnio
 		return nil
 	}
 	return o.GitRepo
+}
+
+func (o *CreateDeploymentResponseBody) GetGitRepoGitlab() *CreateDeploymentGitRepoGitlab {
+	if v := o.GetGitRepo(); v != nil {
+		return v.CreateDeploymentGitRepoGitlab
+	}
+	return nil
+}
+
+func (o *CreateDeploymentResponseBody) GetGitRepoGithub() *CreateDeploymentGitRepoGithub {
+	if v := o.GetGitRepo(); v != nil {
+		return v.CreateDeploymentGitRepoGithub
+	}
+	return nil
+}
+
+func (o *CreateDeploymentResponseBody) GetGitRepoBitbucket() *CreateDeploymentGitRepoBitbucket {
+	if v := o.GetGitRepo(); v != nil {
+		return v.CreateDeploymentGitRepoBitbucket
+	}
+	return nil
 }
 
 func (o *CreateDeploymentResponseBody) GetFlags() *CreateDeploymentFlagsUnion {

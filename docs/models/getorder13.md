@@ -15,7 +15,7 @@ let value: GetOrder13 = {
 
 ## Fields
 
-| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `code`                                                                             | [models.GetOrder1DomainsRegistrarCode](../models/getorder1domainsregistrarcode.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `details`                                                                          | [models.OneDetails](../models/onedetails.md)                                       | :heavy_check_mark:                                                                 | N/A                                                                                |
+| Field                                        | Type                                         | Required                                     | Description                                  |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| `code`                                       | *"price-mismatch"*                           | :heavy_check_mark:                           | N/A                                          |
+| `details`                                    | [models.OneDetails](../models/onedetails.md) | :heavy_check_mark:                           | N/A                                          |

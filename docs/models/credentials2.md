@@ -14,8 +14,8 @@ let value: Credentials2 = {
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `type`                                                                   | [models.UserEventCredentialsType](../models/usereventcredentialstype.md) | :heavy_check_mark:                                                       | N/A                                                                      |
-| `host`                                                                   | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
-| `id`                                                                     | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| Field                        | Type                         | Required                     | Description                  |
+| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
+| `type`                       | *"github-oauth-custom-host"* | :heavy_check_mark:           | N/A                          |
+| `host`                       | *string*                     | :heavy_check_mark:           | N/A                          |
+| `id`                         | *string*                     | :heavy_check_mark:           | N/A                          |

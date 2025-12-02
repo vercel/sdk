@@ -3,23 +3,17 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../types/enums.js";
 import { VercelError } from "./vercelerror.js";
-
-export const ForbiddenCode = {
-  Forbidden: "forbidden",
-} as const;
-export type ForbiddenCode = ClosedEnum<typeof ForbiddenCode>;
 
 export type ForbiddenData = {
   status: number;
-  code: ForbiddenCode;
+  code: "forbidden";
   message: string;
 };
 
 export class Forbidden extends VercelError {
   status: number;
-  code: ForbiddenCode;
+  code: "forbidden";
 
   /** The original data that was passed to this error instance. */
   data$: ForbiddenData;
@@ -39,22 +33,13 @@ export class Forbidden extends VercelError {
 }
 
 /** @internal */
-export const ForbiddenCode$inboundSchema: z.ZodNativeEnum<
-  typeof ForbiddenCode
-> = z.nativeEnum(ForbiddenCode);
-/** @internal */
-export const ForbiddenCode$outboundSchema: z.ZodNativeEnum<
-  typeof ForbiddenCode
-> = ForbiddenCode$inboundSchema;
-
-/** @internal */
 export const Forbidden$inboundSchema: z.ZodType<
   Forbidden,
   z.ZodTypeDef,
   unknown
 > = z.object({
   status: z.number(),
-  code: ForbiddenCode$inboundSchema,
+  code: z.literal("forbidden"),
   message: z.string(),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
@@ -71,7 +56,7 @@ export const Forbidden$inboundSchema: z.ZodType<
 /** @internal */
 export type Forbidden$Outbound = {
   status: number;
-  code: string;
+  code: "forbidden";
   message: string;
 };
 
@@ -84,6 +69,6 @@ export const Forbidden$outboundSchema: z.ZodType<
   .transform(v => v.data$)
   .pipe(z.object({
     status: z.number(),
-    code: ForbiddenCode$outboundSchema,
+    code: z.literal("forbidden"),
     message: z.string(),
   }));

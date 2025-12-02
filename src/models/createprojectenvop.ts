@@ -280,236 +280,85 @@ export type CreateProjectEnvCreatedType = ClosedEnum<
   typeof CreateProjectEnvCreatedType
 >;
 
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated215Type =
-  {
-    FlagsConnectionString: "flags-connection-string",
-  } as const;
-export type CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated215Type =
-  ClosedEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated215Type
-  >;
-
 export type CreateProjectEnvContentHintProjects15 = {
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated215Type;
+  type: "flags-connection-string";
   projectId: string;
 };
 
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated214Type =
-  {
-    IntegrationStoreSecret: "integration-store-secret",
-  } as const;
-export type CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated214Type =
-  ClosedEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated214Type
-  >;
-
 export type CreateProjectEnvContentHintProjects14 = {
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated214Type;
+  type: "integration-store-secret";
   storeId: string;
   integrationId: string;
   integrationProductId: string;
   integrationConfigurationId: string;
 };
 
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated213Type =
-  {
-    PostgresUrlNoSsl: "postgres-url-no-ssl",
-  } as const;
-export type CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated213Type =
-  ClosedEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated213Type
-  >;
-
 export type CreateProjectEnvContentHintProjects13 = {
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated213Type;
+  type: "postgres-url-no-ssl";
   storeId: string;
 };
-
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated212Type =
-  {
-    PostgresDatabase: "postgres-database",
-  } as const;
-export type CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated212Type =
-  ClosedEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated212Type
-  >;
 
 export type CreateProjectEnvContentHintProjects12 = {
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated212Type;
+  type: "postgres-database";
   storeId: string;
 };
-
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated211Type =
-  {
-    PostgresPassword: "postgres-password",
-  } as const;
-export type CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated211Type =
-  ClosedEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated211Type
-  >;
 
 export type CreateProjectEnvContentHintProjects11 = {
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated211Type;
+  type: "postgres-password";
   storeId: string;
 };
-
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated210Type =
-  {
-    PostgresHost: "postgres-host",
-  } as const;
-export type CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated210Type =
-  ClosedEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated210Type
-  >;
 
 export type CreateProjectEnvContentHintProjects10 = {
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated210Type;
+  type: "postgres-host";
   storeId: string;
 };
-
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated29Type =
-  {
-    PostgresUser: "postgres-user",
-  } as const;
-export type CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated29Type =
-  ClosedEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated29Type
-  >;
 
 export type CreateProjectEnvContentHintProjects9 = {
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated29Type;
+  type: "postgres-user";
   storeId: string;
 };
-
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated28Type =
-  {
-    PostgresPrismaUrl: "postgres-prisma-url",
-  } as const;
-export type CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated28Type =
-  ClosedEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated28Type
-  >;
 
 export type CreateProjectEnvContentHintProjects8 = {
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated28Type;
+  type: "postgres-prisma-url";
   storeId: string;
 };
-
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated27Type =
-  {
-    PostgresUrlNonPooling: "postgres-url-non-pooling",
-  } as const;
-export type CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated27Type =
-  ClosedEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated27Type
-  >;
 
 export type CreateProjectEnvContentHintProjects7 = {
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated27Type;
+  type: "postgres-url-non-pooling";
   storeId: string;
 };
-
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated26Type =
-  {
-    PostgresUrl: "postgres-url",
-  } as const;
-export type CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated26Type =
-  ClosedEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated26Type
-  >;
 
 export type CreateProjectEnvContentHintProjects6 = {
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated26Type;
+  type: "postgres-url";
   storeId: string;
 };
-
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated25Type =
-  {
-    BlobReadWriteToken: "blob-read-write-token",
-  } as const;
-export type CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated25Type =
-  ClosedEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated25Type
-  >;
 
 export type CreateProjectEnvContentHintProjects5 = {
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated25Type;
+  type: "blob-read-write-token";
   storeId: string;
 };
-
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated24Type =
-  {
-    RedisRestApiReadOnlyToken: "redis-rest-api-read-only-token",
-  } as const;
-export type CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated24Type =
-  ClosedEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated24Type
-  >;
 
 export type CreateProjectEnvContentHintProjects4 = {
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated24Type;
+  type: "redis-rest-api-read-only-token";
   storeId: string;
 };
-
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated23Type =
-  {
-    RedisRestApiToken: "redis-rest-api-token",
-  } as const;
-export type CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated23Type =
-  ClosedEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated23Type
-  >;
 
 export type CreateProjectEnvContentHintProjects3 = {
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated23Type;
+  type: "redis-rest-api-token";
   storeId: string;
 };
-
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated22Type =
-  {
-    RedisRestApiUrl: "redis-rest-api-url",
-  } as const;
-export type CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated22Type =
-  ClosedEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated22Type
-  >;
 
 export type CreateProjectEnvContentHintProjects2 = {
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated22Type;
+  type: "redis-rest-api-url";
   storeId: string;
 };
 
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated2Type =
-  {
-    RedisUrl: "redis-url",
-  } as const;
-export type CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated2Type =
-  ClosedEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated2Type
-  >;
-
 export type CreateProjectEnvContentHintProjects1 = {
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated2Type;
+  type: "redis-url";
   storeId: string;
 };
 
 export type CreateProjectEnvCreatedContentHint =
-  | CreateProjectEnvContentHintProjects14
   | CreateProjectEnvContentHintProjects1
   | CreateProjectEnvContentHintProjects2
   | CreateProjectEnvContentHintProjects3
@@ -523,6 +372,7 @@ export type CreateProjectEnvCreatedContentHint =
   | CreateProjectEnvContentHintProjects11
   | CreateProjectEnvContentHintProjects12
   | CreateProjectEnvContentHintProjects13
+  | CreateProjectEnvContentHintProjects14
   | CreateProjectEnvContentHintProjects15;
 
 export const CreateProjectEnvCreatedProjectsResponseType = {
@@ -564,7 +414,6 @@ export type Created2 = {
   edgeConfigId?: string | null | undefined;
   edgeConfigTokenId?: string | null | undefined;
   contentHint?:
-    | CreateProjectEnvContentHintProjects14
     | CreateProjectEnvContentHintProjects1
     | CreateProjectEnvContentHintProjects2
     | CreateProjectEnvContentHintProjects3
@@ -578,6 +427,7 @@ export type Created2 = {
     | CreateProjectEnvContentHintProjects11
     | CreateProjectEnvContentHintProjects12
     | CreateProjectEnvContentHintProjects13
+    | CreateProjectEnvContentHintProjects14
     | CreateProjectEnvContentHintProjects15
     | null
     | undefined;
@@ -624,223 +474,85 @@ export const CreatedType = {
 } as const;
 export type CreatedType = ClosedEnum<typeof CreatedType>;
 
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated115Type =
-  {
-    FlagsConnectionString: "flags-connection-string",
-  } as const;
-export type CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated115Type =
-  ClosedEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated115Type
-  >;
-
 export type CreateProjectEnvContentHint15 = {
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated115Type;
+  type: "flags-connection-string";
   projectId: string;
 };
 
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated114Type =
-  {
-    IntegrationStoreSecret: "integration-store-secret",
-  } as const;
-export type CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated114Type =
-  ClosedEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated114Type
-  >;
-
 export type CreateProjectEnvContentHint14 = {
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated114Type;
+  type: "integration-store-secret";
   storeId: string;
   integrationId: string;
   integrationProductId: string;
   integrationConfigurationId: string;
 };
 
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated113Type =
-  {
-    PostgresUrlNoSsl: "postgres-url-no-ssl",
-  } as const;
-export type CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated113Type =
-  ClosedEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated113Type
-  >;
-
 export type CreateProjectEnvContentHint13 = {
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated113Type;
+  type: "postgres-url-no-ssl";
   storeId: string;
 };
-
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated112Type =
-  {
-    PostgresDatabase: "postgres-database",
-  } as const;
-export type CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated112Type =
-  ClosedEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated112Type
-  >;
 
 export type CreateProjectEnvContentHint12 = {
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated112Type;
+  type: "postgres-database";
   storeId: string;
 };
-
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated111Type =
-  {
-    PostgresPassword: "postgres-password",
-  } as const;
-export type CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated111Type =
-  ClosedEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated111Type
-  >;
 
 export type CreateProjectEnvContentHint11 = {
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated111Type;
+  type: "postgres-password";
   storeId: string;
 };
-
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated110Type =
-  {
-    PostgresHost: "postgres-host",
-  } as const;
-export type CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated110Type =
-  ClosedEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated110Type
-  >;
 
 export type CreateProjectEnvContentHint10 = {
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated110Type;
+  type: "postgres-host";
   storeId: string;
 };
-
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated19Type =
-  {
-    PostgresUser: "postgres-user",
-  } as const;
-export type CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated19Type =
-  ClosedEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated19Type
-  >;
 
 export type CreateProjectEnvContentHint9 = {
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated19Type;
+  type: "postgres-user";
   storeId: string;
 };
-
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated1Type =
-  {
-    PostgresPrismaUrl: "postgres-prisma-url",
-  } as const;
-export type CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated1Type =
-  ClosedEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated1Type
-  >;
 
 export type CreateProjectEnvContentHint8 = {
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated1Type;
+  type: "postgres-prisma-url";
   storeId: string;
 };
-
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreatedType =
-  {
-    PostgresUrlNonPooling: "postgres-url-non-pooling",
-  } as const;
-export type CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreatedType =
-  ClosedEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreatedType
-  >;
 
 export type CreateProjectEnvContentHint7 = {
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreatedType;
+  type: "postgres-url-non-pooling";
   storeId: string;
 };
-
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyType =
-  {
-    PostgresUrl: "postgres-url",
-  } as const;
-export type CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyType =
-  ClosedEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyType
-  >;
 
 export type CreateProjectEnvContentHint6 = {
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyType;
+  type: "postgres-url";
   storeId: string;
 };
-
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONType =
-  {
-    BlobReadWriteToken: "blob-read-write-token",
-  } as const;
-export type CreateProjectEnvContentHintProjectsResponse201ApplicationJSONType =
-  ClosedEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONType
-  >;
 
 export type CreateProjectEnvContentHint5 = {
-  type: CreateProjectEnvContentHintProjectsResponse201ApplicationJSONType;
+  type: "blob-read-write-token";
   storeId: string;
 };
-
-export const CreateProjectEnvContentHintProjectsResponse201Type = {
-  RedisRestApiReadOnlyToken: "redis-rest-api-read-only-token",
-} as const;
-export type CreateProjectEnvContentHintProjectsResponse201Type = ClosedEnum<
-  typeof CreateProjectEnvContentHintProjectsResponse201Type
->;
 
 export type CreateProjectEnvContentHint4 = {
-  type: CreateProjectEnvContentHintProjectsResponse201Type;
+  type: "redis-rest-api-read-only-token";
   storeId: string;
 };
-
-export const CreateProjectEnvContentHintProjectsResponseType = {
-  RedisRestApiToken: "redis-rest-api-token",
-} as const;
-export type CreateProjectEnvContentHintProjectsResponseType = ClosedEnum<
-  typeof CreateProjectEnvContentHintProjectsResponseType
->;
 
 export type CreateProjectEnvContentHint3 = {
-  type: CreateProjectEnvContentHintProjectsResponseType;
+  type: "redis-rest-api-token";
   storeId: string;
 };
-
-export const CreateProjectEnvContentHintProjectsType = {
-  RedisRestApiUrl: "redis-rest-api-url",
-} as const;
-export type CreateProjectEnvContentHintProjectsType = ClosedEnum<
-  typeof CreateProjectEnvContentHintProjectsType
->;
 
 export type CreateProjectEnvContentHint2 = {
-  type: CreateProjectEnvContentHintProjectsType;
+  type: "redis-rest-api-url";
   storeId: string;
 };
 
-export const CreateProjectEnvContentHintType = {
-  RedisUrl: "redis-url",
-} as const;
-export type CreateProjectEnvContentHintType = ClosedEnum<
-  typeof CreateProjectEnvContentHintType
->;
-
 export type CreateProjectEnvContentHint1 = {
-  type: CreateProjectEnvContentHintType;
+  type: "redis-url";
   storeId: string;
 };
 
 export type CreatedContentHint =
-  | CreateProjectEnvContentHint14
   | CreateProjectEnvContentHint1
   | CreateProjectEnvContentHint2
   | CreateProjectEnvContentHint3
@@ -854,6 +566,7 @@ export type CreatedContentHint =
   | CreateProjectEnvContentHint11
   | CreateProjectEnvContentHint12
   | CreateProjectEnvContentHint13
+  | CreateProjectEnvContentHint14
   | CreateProjectEnvContentHint15;
 
 export const CreateProjectEnvCreatedProjectsType = {
@@ -895,7 +608,6 @@ export type Created1 = {
   edgeConfigId?: string | null | undefined;
   edgeConfigTokenId?: string | null | undefined;
   contentHint?:
-    | CreateProjectEnvContentHint14
     | CreateProjectEnvContentHint1
     | CreateProjectEnvContentHint2
     | CreateProjectEnvContentHint3
@@ -909,6 +621,7 @@ export type Created1 = {
     | CreateProjectEnvContentHint11
     | CreateProjectEnvContentHint12
     | CreateProjectEnvContentHint13
+    | CreateProjectEnvContentHint14
     | CreateProjectEnvContentHint15
     | null
     | undefined;
@@ -1545,32 +1258,17 @@ export const CreateProjectEnvCreatedType$outboundSchema: z.ZodNativeEnum<
 > = CreateProjectEnvCreatedType$inboundSchema;
 
 /** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated215Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated215Type
-  > = z.nativeEnum(
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated215Type,
-  );
-/** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated215Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated215Type
-  > =
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated215Type$inboundSchema;
-
-/** @internal */
 export const CreateProjectEnvContentHintProjects15$inboundSchema: z.ZodType<
   CreateProjectEnvContentHintProjects15,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated215Type$inboundSchema,
+  type: z.literal("flags-connection-string"),
   projectId: z.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHintProjects15$Outbound = {
-  type: string;
+  type: "flags-connection-string";
   projectId: string;
 };
 
@@ -1580,8 +1278,7 @@ export const CreateProjectEnvContentHintProjects15$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvContentHintProjects15
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated215Type$outboundSchema,
+  type: z.literal("flags-connection-string"),
   projectId: z.string(),
 });
 
@@ -1606,27 +1303,12 @@ export function createProjectEnvContentHintProjects15FromJSON(
 }
 
 /** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated214Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated214Type
-  > = z.nativeEnum(
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated214Type,
-  );
-/** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated214Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated214Type
-  > =
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated214Type$inboundSchema;
-
-/** @internal */
 export const CreateProjectEnvContentHintProjects14$inboundSchema: z.ZodType<
   CreateProjectEnvContentHintProjects14,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated214Type$inboundSchema,
+  type: z.literal("integration-store-secret"),
   storeId: z.string(),
   integrationId: z.string(),
   integrationProductId: z.string(),
@@ -1634,7 +1316,7 @@ export const CreateProjectEnvContentHintProjects14$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type CreateProjectEnvContentHintProjects14$Outbound = {
-  type: string;
+  type: "integration-store-secret";
   storeId: string;
   integrationId: string;
   integrationProductId: string;
@@ -1647,8 +1329,7 @@ export const CreateProjectEnvContentHintProjects14$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvContentHintProjects14
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated214Type$outboundSchema,
+  type: z.literal("integration-store-secret"),
   storeId: z.string(),
   integrationId: z.string(),
   integrationProductId: z.string(),
@@ -1676,32 +1357,17 @@ export function createProjectEnvContentHintProjects14FromJSON(
 }
 
 /** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated213Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated213Type
-  > = z.nativeEnum(
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated213Type,
-  );
-/** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated213Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated213Type
-  > =
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated213Type$inboundSchema;
-
-/** @internal */
 export const CreateProjectEnvContentHintProjects13$inboundSchema: z.ZodType<
   CreateProjectEnvContentHintProjects13,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated213Type$inboundSchema,
+  type: z.literal("postgres-url-no-ssl"),
   storeId: z.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHintProjects13$Outbound = {
-  type: string;
+  type: "postgres-url-no-ssl";
   storeId: string;
 };
 
@@ -1711,8 +1377,7 @@ export const CreateProjectEnvContentHintProjects13$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvContentHintProjects13
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated213Type$outboundSchema,
+  type: z.literal("postgres-url-no-ssl"),
   storeId: z.string(),
 });
 
@@ -1737,32 +1402,17 @@ export function createProjectEnvContentHintProjects13FromJSON(
 }
 
 /** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated212Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated212Type
-  > = z.nativeEnum(
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated212Type,
-  );
-/** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated212Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated212Type
-  > =
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated212Type$inboundSchema;
-
-/** @internal */
 export const CreateProjectEnvContentHintProjects12$inboundSchema: z.ZodType<
   CreateProjectEnvContentHintProjects12,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated212Type$inboundSchema,
+  type: z.literal("postgres-database"),
   storeId: z.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHintProjects12$Outbound = {
-  type: string;
+  type: "postgres-database";
   storeId: string;
 };
 
@@ -1772,8 +1422,7 @@ export const CreateProjectEnvContentHintProjects12$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvContentHintProjects12
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated212Type$outboundSchema,
+  type: z.literal("postgres-database"),
   storeId: z.string(),
 });
 
@@ -1798,32 +1447,17 @@ export function createProjectEnvContentHintProjects12FromJSON(
 }
 
 /** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated211Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated211Type
-  > = z.nativeEnum(
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated211Type,
-  );
-/** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated211Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated211Type
-  > =
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated211Type$inboundSchema;
-
-/** @internal */
 export const CreateProjectEnvContentHintProjects11$inboundSchema: z.ZodType<
   CreateProjectEnvContentHintProjects11,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated211Type$inboundSchema,
+  type: z.literal("postgres-password"),
   storeId: z.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHintProjects11$Outbound = {
-  type: string;
+  type: "postgres-password";
   storeId: string;
 };
 
@@ -1833,8 +1467,7 @@ export const CreateProjectEnvContentHintProjects11$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvContentHintProjects11
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated211Type$outboundSchema,
+  type: z.literal("postgres-password"),
   storeId: z.string(),
 });
 
@@ -1859,32 +1492,17 @@ export function createProjectEnvContentHintProjects11FromJSON(
 }
 
 /** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated210Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated210Type
-  > = z.nativeEnum(
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated210Type,
-  );
-/** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated210Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated210Type
-  > =
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated210Type$inboundSchema;
-
-/** @internal */
 export const CreateProjectEnvContentHintProjects10$inboundSchema: z.ZodType<
   CreateProjectEnvContentHintProjects10,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated210Type$inboundSchema,
+  type: z.literal("postgres-host"),
   storeId: z.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHintProjects10$Outbound = {
-  type: string;
+  type: "postgres-host";
   storeId: string;
 };
 
@@ -1894,8 +1512,7 @@ export const CreateProjectEnvContentHintProjects10$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvContentHintProjects10
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated210Type$outboundSchema,
+  type: z.literal("postgres-host"),
   storeId: z.string(),
 });
 
@@ -1920,32 +1537,17 @@ export function createProjectEnvContentHintProjects10FromJSON(
 }
 
 /** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated29Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated29Type
-  > = z.nativeEnum(
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated29Type,
-  );
-/** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated29Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated29Type
-  > =
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated29Type$inboundSchema;
-
-/** @internal */
 export const CreateProjectEnvContentHintProjects9$inboundSchema: z.ZodType<
   CreateProjectEnvContentHintProjects9,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated29Type$inboundSchema,
+  type: z.literal("postgres-user"),
   storeId: z.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHintProjects9$Outbound = {
-  type: string;
+  type: "postgres-user";
   storeId: string;
 };
 
@@ -1955,8 +1557,7 @@ export const CreateProjectEnvContentHintProjects9$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvContentHintProjects9
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated29Type$outboundSchema,
+  type: z.literal("postgres-user"),
   storeId: z.string(),
 });
 
@@ -1981,32 +1582,17 @@ export function createProjectEnvContentHintProjects9FromJSON(
 }
 
 /** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated28Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated28Type
-  > = z.nativeEnum(
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated28Type,
-  );
-/** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated28Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated28Type
-  > =
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated28Type$inboundSchema;
-
-/** @internal */
 export const CreateProjectEnvContentHintProjects8$inboundSchema: z.ZodType<
   CreateProjectEnvContentHintProjects8,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated28Type$inboundSchema,
+  type: z.literal("postgres-prisma-url"),
   storeId: z.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHintProjects8$Outbound = {
-  type: string;
+  type: "postgres-prisma-url";
   storeId: string;
 };
 
@@ -2016,8 +1602,7 @@ export const CreateProjectEnvContentHintProjects8$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvContentHintProjects8
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated28Type$outboundSchema,
+  type: z.literal("postgres-prisma-url"),
   storeId: z.string(),
 });
 
@@ -2042,32 +1627,17 @@ export function createProjectEnvContentHintProjects8FromJSON(
 }
 
 /** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated27Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated27Type
-  > = z.nativeEnum(
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated27Type,
-  );
-/** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated27Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated27Type
-  > =
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated27Type$inboundSchema;
-
-/** @internal */
 export const CreateProjectEnvContentHintProjects7$inboundSchema: z.ZodType<
   CreateProjectEnvContentHintProjects7,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated27Type$inboundSchema,
+  type: z.literal("postgres-url-non-pooling"),
   storeId: z.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHintProjects7$Outbound = {
-  type: string;
+  type: "postgres-url-non-pooling";
   storeId: string;
 };
 
@@ -2077,8 +1647,7 @@ export const CreateProjectEnvContentHintProjects7$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvContentHintProjects7
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated27Type$outboundSchema,
+  type: z.literal("postgres-url-non-pooling"),
   storeId: z.string(),
 });
 
@@ -2103,32 +1672,17 @@ export function createProjectEnvContentHintProjects7FromJSON(
 }
 
 /** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated26Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated26Type
-  > = z.nativeEnum(
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated26Type,
-  );
-/** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated26Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated26Type
-  > =
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated26Type$inboundSchema;
-
-/** @internal */
 export const CreateProjectEnvContentHintProjects6$inboundSchema: z.ZodType<
   CreateProjectEnvContentHintProjects6,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated26Type$inboundSchema,
+  type: z.literal("postgres-url"),
   storeId: z.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHintProjects6$Outbound = {
-  type: string;
+  type: "postgres-url";
   storeId: string;
 };
 
@@ -2138,8 +1692,7 @@ export const CreateProjectEnvContentHintProjects6$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvContentHintProjects6
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated26Type$outboundSchema,
+  type: z.literal("postgres-url"),
   storeId: z.string(),
 });
 
@@ -2164,32 +1717,17 @@ export function createProjectEnvContentHintProjects6FromJSON(
 }
 
 /** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated25Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated25Type
-  > = z.nativeEnum(
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated25Type,
-  );
-/** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated25Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated25Type
-  > =
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated25Type$inboundSchema;
-
-/** @internal */
 export const CreateProjectEnvContentHintProjects5$inboundSchema: z.ZodType<
   CreateProjectEnvContentHintProjects5,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated25Type$inboundSchema,
+  type: z.literal("blob-read-write-token"),
   storeId: z.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHintProjects5$Outbound = {
-  type: string;
+  type: "blob-read-write-token";
   storeId: string;
 };
 
@@ -2199,8 +1737,7 @@ export const CreateProjectEnvContentHintProjects5$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvContentHintProjects5
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated25Type$outboundSchema,
+  type: z.literal("blob-read-write-token"),
   storeId: z.string(),
 });
 
@@ -2225,32 +1762,17 @@ export function createProjectEnvContentHintProjects5FromJSON(
 }
 
 /** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated24Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated24Type
-  > = z.nativeEnum(
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated24Type,
-  );
-/** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated24Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated24Type
-  > =
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated24Type$inboundSchema;
-
-/** @internal */
 export const CreateProjectEnvContentHintProjects4$inboundSchema: z.ZodType<
   CreateProjectEnvContentHintProjects4,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated24Type$inboundSchema,
+  type: z.literal("redis-rest-api-read-only-token"),
   storeId: z.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHintProjects4$Outbound = {
-  type: string;
+  type: "redis-rest-api-read-only-token";
   storeId: string;
 };
 
@@ -2260,8 +1782,7 @@ export const CreateProjectEnvContentHintProjects4$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvContentHintProjects4
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated24Type$outboundSchema,
+  type: z.literal("redis-rest-api-read-only-token"),
   storeId: z.string(),
 });
 
@@ -2286,32 +1807,17 @@ export function createProjectEnvContentHintProjects4FromJSON(
 }
 
 /** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated23Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated23Type
-  > = z.nativeEnum(
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated23Type,
-  );
-/** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated23Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated23Type
-  > =
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated23Type$inboundSchema;
-
-/** @internal */
 export const CreateProjectEnvContentHintProjects3$inboundSchema: z.ZodType<
   CreateProjectEnvContentHintProjects3,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated23Type$inboundSchema,
+  type: z.literal("redis-rest-api-token"),
   storeId: z.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHintProjects3$Outbound = {
-  type: string;
+  type: "redis-rest-api-token";
   storeId: string;
 };
 
@@ -2321,8 +1827,7 @@ export const CreateProjectEnvContentHintProjects3$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvContentHintProjects3
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated23Type$outboundSchema,
+  type: z.literal("redis-rest-api-token"),
   storeId: z.string(),
 });
 
@@ -2347,32 +1852,17 @@ export function createProjectEnvContentHintProjects3FromJSON(
 }
 
 /** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated22Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated22Type
-  > = z.nativeEnum(
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated22Type,
-  );
-/** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated22Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated22Type
-  > =
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated22Type$inboundSchema;
-
-/** @internal */
 export const CreateProjectEnvContentHintProjects2$inboundSchema: z.ZodType<
   CreateProjectEnvContentHintProjects2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated22Type$inboundSchema,
+  type: z.literal("redis-rest-api-url"),
   storeId: z.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHintProjects2$Outbound = {
-  type: string;
+  type: "redis-rest-api-url";
   storeId: string;
 };
 
@@ -2382,8 +1872,7 @@ export const CreateProjectEnvContentHintProjects2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvContentHintProjects2
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated22Type$outboundSchema,
+  type: z.literal("redis-rest-api-url"),
   storeId: z.string(),
 });
 
@@ -2408,32 +1897,17 @@ export function createProjectEnvContentHintProjects2FromJSON(
 }
 
 /** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated2Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated2Type
-  > = z.nativeEnum(
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated2Type,
-  );
-/** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated2Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated2Type
-  > =
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated2Type$inboundSchema;
-
-/** @internal */
 export const CreateProjectEnvContentHintProjects1$inboundSchema: z.ZodType<
   CreateProjectEnvContentHintProjects1,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated2Type$inboundSchema,
+  type: z.literal("redis-url"),
   storeId: z.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHintProjects1$Outbound = {
-  type: string;
+  type: "redis-url";
   storeId: string;
 };
 
@@ -2443,8 +1917,7 @@ export const CreateProjectEnvContentHintProjects1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvContentHintProjects1
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated2Type$outboundSchema,
+  type: z.literal("redis-url"),
   storeId: z.string(),
 });
 
@@ -2474,7 +1947,6 @@ export const CreateProjectEnvCreatedContentHint$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CreateProjectEnvContentHintProjects14$inboundSchema),
   z.lazy(() => CreateProjectEnvContentHintProjects1$inboundSchema),
   z.lazy(() => CreateProjectEnvContentHintProjects2$inboundSchema),
   z.lazy(() => CreateProjectEnvContentHintProjects3$inboundSchema),
@@ -2488,11 +1960,11 @@ export const CreateProjectEnvCreatedContentHint$inboundSchema: z.ZodType<
   z.lazy(() => CreateProjectEnvContentHintProjects11$inboundSchema),
   z.lazy(() => CreateProjectEnvContentHintProjects12$inboundSchema),
   z.lazy(() => CreateProjectEnvContentHintProjects13$inboundSchema),
+  z.lazy(() => CreateProjectEnvContentHintProjects14$inboundSchema),
   z.lazy(() => CreateProjectEnvContentHintProjects15$inboundSchema),
 ]);
 /** @internal */
 export type CreateProjectEnvCreatedContentHint$Outbound =
-  | CreateProjectEnvContentHintProjects14$Outbound
   | CreateProjectEnvContentHintProjects1$Outbound
   | CreateProjectEnvContentHintProjects2$Outbound
   | CreateProjectEnvContentHintProjects3$Outbound
@@ -2506,6 +1978,7 @@ export type CreateProjectEnvCreatedContentHint$Outbound =
   | CreateProjectEnvContentHintProjects11$Outbound
   | CreateProjectEnvContentHintProjects12$Outbound
   | CreateProjectEnvContentHintProjects13$Outbound
+  | CreateProjectEnvContentHintProjects14$Outbound
   | CreateProjectEnvContentHintProjects15$Outbound;
 
 /** @internal */
@@ -2514,7 +1987,6 @@ export const CreateProjectEnvCreatedContentHint$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvCreatedContentHint
 > = z.union([
-  z.lazy(() => CreateProjectEnvContentHintProjects14$outboundSchema),
   z.lazy(() => CreateProjectEnvContentHintProjects1$outboundSchema),
   z.lazy(() => CreateProjectEnvContentHintProjects2$outboundSchema),
   z.lazy(() => CreateProjectEnvContentHintProjects3$outboundSchema),
@@ -2528,6 +2000,7 @@ export const CreateProjectEnvCreatedContentHint$outboundSchema: z.ZodType<
   z.lazy(() => CreateProjectEnvContentHintProjects11$outboundSchema),
   z.lazy(() => CreateProjectEnvContentHintProjects12$outboundSchema),
   z.lazy(() => CreateProjectEnvContentHintProjects13$outboundSchema),
+  z.lazy(() => CreateProjectEnvContentHintProjects14$outboundSchema),
   z.lazy(() => CreateProjectEnvContentHintProjects15$outboundSchema),
 ]);
 
@@ -2637,7 +2110,6 @@ export const Created2$inboundSchema: z.ZodType<
   edgeConfigTokenId: z.nullable(z.string()).optional(),
   contentHint: z.nullable(
     z.union([
-      z.lazy(() => CreateProjectEnvContentHintProjects14$inboundSchema),
       z.lazy(() => CreateProjectEnvContentHintProjects1$inboundSchema),
       z.lazy(() => CreateProjectEnvContentHintProjects2$inboundSchema),
       z.lazy(() => CreateProjectEnvContentHintProjects3$inboundSchema),
@@ -2651,6 +2123,7 @@ export const Created2$inboundSchema: z.ZodType<
       z.lazy(() => CreateProjectEnvContentHintProjects11$inboundSchema),
       z.lazy(() => CreateProjectEnvContentHintProjects12$inboundSchema),
       z.lazy(() => CreateProjectEnvContentHintProjects13$inboundSchema),
+      z.lazy(() => CreateProjectEnvContentHintProjects14$inboundSchema),
       z.lazy(() => CreateProjectEnvContentHintProjects15$inboundSchema),
     ]),
   ).optional(),
@@ -2680,7 +2153,6 @@ export type Created2$Outbound = {
   edgeConfigId?: string | null | undefined;
   edgeConfigTokenId?: string | null | undefined;
   contentHint?:
-    | CreateProjectEnvContentHintProjects14$Outbound
     | CreateProjectEnvContentHintProjects1$Outbound
     | CreateProjectEnvContentHintProjects2$Outbound
     | CreateProjectEnvContentHintProjects3$Outbound
@@ -2694,6 +2166,7 @@ export type Created2$Outbound = {
     | CreateProjectEnvContentHintProjects11$Outbound
     | CreateProjectEnvContentHintProjects12$Outbound
     | CreateProjectEnvContentHintProjects13$Outbound
+    | CreateProjectEnvContentHintProjects14$Outbound
     | CreateProjectEnvContentHintProjects15$Outbound
     | null
     | undefined;
@@ -2733,7 +2206,6 @@ export const Created2$outboundSchema: z.ZodType<
   edgeConfigTokenId: z.nullable(z.string()).optional(),
   contentHint: z.nullable(
     z.union([
-      z.lazy(() => CreateProjectEnvContentHintProjects14$outboundSchema),
       z.lazy(() => CreateProjectEnvContentHintProjects1$outboundSchema),
       z.lazy(() => CreateProjectEnvContentHintProjects2$outboundSchema),
       z.lazy(() => CreateProjectEnvContentHintProjects3$outboundSchema),
@@ -2747,6 +2219,7 @@ export const Created2$outboundSchema: z.ZodType<
       z.lazy(() => CreateProjectEnvContentHintProjects11$outboundSchema),
       z.lazy(() => CreateProjectEnvContentHintProjects12$outboundSchema),
       z.lazy(() => CreateProjectEnvContentHintProjects13$outboundSchema),
+      z.lazy(() => CreateProjectEnvContentHintProjects14$outboundSchema),
       z.lazy(() => CreateProjectEnvContentHintProjects15$outboundSchema),
     ]),
   ).optional(),
@@ -2832,32 +2305,17 @@ export const CreatedType$outboundSchema: z.ZodNativeEnum<typeof CreatedType> =
   CreatedType$inboundSchema;
 
 /** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated115Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated115Type
-  > = z.nativeEnum(
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated115Type,
-  );
-/** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated115Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated115Type
-  > =
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated115Type$inboundSchema;
-
-/** @internal */
 export const CreateProjectEnvContentHint15$inboundSchema: z.ZodType<
   CreateProjectEnvContentHint15,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated115Type$inboundSchema,
+  type: z.literal("flags-connection-string"),
   projectId: z.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHint15$Outbound = {
-  type: string;
+  type: "flags-connection-string";
   projectId: string;
 };
 
@@ -2867,8 +2325,7 @@ export const CreateProjectEnvContentHint15$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvContentHint15
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated115Type$outboundSchema,
+  type: z.literal("flags-connection-string"),
   projectId: z.string(),
 });
 
@@ -2892,27 +2349,12 @@ export function createProjectEnvContentHint15FromJSON(
 }
 
 /** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated114Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated114Type
-  > = z.nativeEnum(
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated114Type,
-  );
-/** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated114Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated114Type
-  > =
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated114Type$inboundSchema;
-
-/** @internal */
 export const CreateProjectEnvContentHint14$inboundSchema: z.ZodType<
   CreateProjectEnvContentHint14,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated114Type$inboundSchema,
+  type: z.literal("integration-store-secret"),
   storeId: z.string(),
   integrationId: z.string(),
   integrationProductId: z.string(),
@@ -2920,7 +2362,7 @@ export const CreateProjectEnvContentHint14$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type CreateProjectEnvContentHint14$Outbound = {
-  type: string;
+  type: "integration-store-secret";
   storeId: string;
   integrationId: string;
   integrationProductId: string;
@@ -2933,8 +2375,7 @@ export const CreateProjectEnvContentHint14$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvContentHint14
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated114Type$outboundSchema,
+  type: z.literal("integration-store-secret"),
   storeId: z.string(),
   integrationId: z.string(),
   integrationProductId: z.string(),
@@ -2961,32 +2402,17 @@ export function createProjectEnvContentHint14FromJSON(
 }
 
 /** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated113Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated113Type
-  > = z.nativeEnum(
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated113Type,
-  );
-/** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated113Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated113Type
-  > =
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated113Type$inboundSchema;
-
-/** @internal */
 export const CreateProjectEnvContentHint13$inboundSchema: z.ZodType<
   CreateProjectEnvContentHint13,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated113Type$inboundSchema,
+  type: z.literal("postgres-url-no-ssl"),
   storeId: z.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHint13$Outbound = {
-  type: string;
+  type: "postgres-url-no-ssl";
   storeId: string;
 };
 
@@ -2996,8 +2422,7 @@ export const CreateProjectEnvContentHint13$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvContentHint13
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated113Type$outboundSchema,
+  type: z.literal("postgres-url-no-ssl"),
   storeId: z.string(),
 });
 
@@ -3021,32 +2446,17 @@ export function createProjectEnvContentHint13FromJSON(
 }
 
 /** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated112Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated112Type
-  > = z.nativeEnum(
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated112Type,
-  );
-/** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated112Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated112Type
-  > =
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated112Type$inboundSchema;
-
-/** @internal */
 export const CreateProjectEnvContentHint12$inboundSchema: z.ZodType<
   CreateProjectEnvContentHint12,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated112Type$inboundSchema,
+  type: z.literal("postgres-database"),
   storeId: z.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHint12$Outbound = {
-  type: string;
+  type: "postgres-database";
   storeId: string;
 };
 
@@ -3056,8 +2466,7 @@ export const CreateProjectEnvContentHint12$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvContentHint12
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated112Type$outboundSchema,
+  type: z.literal("postgres-database"),
   storeId: z.string(),
 });
 
@@ -3081,32 +2490,17 @@ export function createProjectEnvContentHint12FromJSON(
 }
 
 /** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated111Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated111Type
-  > = z.nativeEnum(
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated111Type,
-  );
-/** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated111Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated111Type
-  > =
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated111Type$inboundSchema;
-
-/** @internal */
 export const CreateProjectEnvContentHint11$inboundSchema: z.ZodType<
   CreateProjectEnvContentHint11,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated111Type$inboundSchema,
+  type: z.literal("postgres-password"),
   storeId: z.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHint11$Outbound = {
-  type: string;
+  type: "postgres-password";
   storeId: string;
 };
 
@@ -3116,8 +2510,7 @@ export const CreateProjectEnvContentHint11$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvContentHint11
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated111Type$outboundSchema,
+  type: z.literal("postgres-password"),
   storeId: z.string(),
 });
 
@@ -3141,32 +2534,17 @@ export function createProjectEnvContentHint11FromJSON(
 }
 
 /** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated110Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated110Type
-  > = z.nativeEnum(
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated110Type,
-  );
-/** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated110Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated110Type
-  > =
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated110Type$inboundSchema;
-
-/** @internal */
 export const CreateProjectEnvContentHint10$inboundSchema: z.ZodType<
   CreateProjectEnvContentHint10,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated110Type$inboundSchema,
+  type: z.literal("postgres-host"),
   storeId: z.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHint10$Outbound = {
-  type: string;
+  type: "postgres-host";
   storeId: string;
 };
 
@@ -3176,8 +2554,7 @@ export const CreateProjectEnvContentHint10$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvContentHint10
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated110Type$outboundSchema,
+  type: z.literal("postgres-host"),
   storeId: z.string(),
 });
 
@@ -3201,32 +2578,17 @@ export function createProjectEnvContentHint10FromJSON(
 }
 
 /** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated19Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated19Type
-  > = z.nativeEnum(
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated19Type,
-  );
-/** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated19Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated19Type
-  > =
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated19Type$inboundSchema;
-
-/** @internal */
 export const CreateProjectEnvContentHint9$inboundSchema: z.ZodType<
   CreateProjectEnvContentHint9,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated19Type$inboundSchema,
+  type: z.literal("postgres-user"),
   storeId: z.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHint9$Outbound = {
-  type: string;
+  type: "postgres-user";
   storeId: string;
 };
 
@@ -3236,8 +2598,7 @@ export const CreateProjectEnvContentHint9$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvContentHint9
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated19Type$outboundSchema,
+  type: z.literal("postgres-user"),
   storeId: z.string(),
 });
 
@@ -3261,32 +2622,17 @@ export function createProjectEnvContentHint9FromJSON(
 }
 
 /** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated1Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated1Type
-  > = z.nativeEnum(
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated1Type,
-  );
-/** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated1Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated1Type
-  > =
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated1Type$inboundSchema;
-
-/** @internal */
 export const CreateProjectEnvContentHint8$inboundSchema: z.ZodType<
   CreateProjectEnvContentHint8,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated1Type$inboundSchema,
+  type: z.literal("postgres-prisma-url"),
   storeId: z.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHint8$Outbound = {
-  type: string;
+  type: "postgres-prisma-url";
   storeId: string;
 };
 
@@ -3296,8 +2642,7 @@ export const CreateProjectEnvContentHint8$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvContentHint8
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreated1Type$outboundSchema,
+  type: z.literal("postgres-prisma-url"),
   storeId: z.string(),
 });
 
@@ -3321,32 +2666,17 @@ export function createProjectEnvContentHint8FromJSON(
 }
 
 /** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreatedType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreatedType
-  > = z.nativeEnum(
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreatedType,
-  );
-/** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreatedType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreatedType
-  > =
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreatedType$inboundSchema;
-
-/** @internal */
 export const CreateProjectEnvContentHint7$inboundSchema: z.ZodType<
   CreateProjectEnvContentHint7,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreatedType$inboundSchema,
+  type: z.literal("postgres-url-non-pooling"),
   storeId: z.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHint7$Outbound = {
-  type: string;
+  type: "postgres-url-non-pooling";
   storeId: string;
 };
 
@@ -3356,8 +2686,7 @@ export const CreateProjectEnvContentHint7$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvContentHint7
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyCreatedType$outboundSchema,
+  type: z.literal("postgres-url-non-pooling"),
   storeId: z.string(),
 });
 
@@ -3381,32 +2710,17 @@ export function createProjectEnvContentHint7FromJSON(
 }
 
 /** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyType
-  > = z.nativeEnum(
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyType,
-  );
-/** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyType
-  > =
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyType$inboundSchema;
-
-/** @internal */
 export const CreateProjectEnvContentHint6$inboundSchema: z.ZodType<
   CreateProjectEnvContentHint6,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyType$inboundSchema,
+  type: z.literal("postgres-url"),
   storeId: z.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHint6$Outbound = {
-  type: string;
+  type: "postgres-url";
   storeId: string;
 };
 
@@ -3416,8 +2730,7 @@ export const CreateProjectEnvContentHint6$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvContentHint6
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONResponseBodyType$outboundSchema,
+  type: z.literal("postgres-url"),
   storeId: z.string(),
 });
 
@@ -3441,32 +2754,17 @@ export function createProjectEnvContentHint6FromJSON(
 }
 
 /** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONType
-  > = z.nativeEnum(
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONType,
-  );
-/** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201ApplicationJSONType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectEnvContentHintProjectsResponse201ApplicationJSONType
-  > =
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONType$inboundSchema;
-
-/** @internal */
 export const CreateProjectEnvContentHint5$inboundSchema: z.ZodType<
   CreateProjectEnvContentHint5,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONType$inboundSchema,
+  type: z.literal("blob-read-write-token"),
   storeId: z.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHint5$Outbound = {
-  type: string;
+  type: "blob-read-write-token";
   storeId: string;
 };
 
@@ -3476,8 +2774,7 @@ export const CreateProjectEnvContentHint5$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvContentHint5
 > = z.object({
-  type:
-    CreateProjectEnvContentHintProjectsResponse201ApplicationJSONType$outboundSchema,
+  type: z.literal("blob-read-write-token"),
   storeId: z.string(),
 });
 
@@ -3501,26 +2798,17 @@ export function createProjectEnvContentHint5FromJSON(
 }
 
 /** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201Type$inboundSchema:
-  z.ZodNativeEnum<typeof CreateProjectEnvContentHintProjectsResponse201Type> = z
-    .nativeEnum(CreateProjectEnvContentHintProjectsResponse201Type);
-/** @internal */
-export const CreateProjectEnvContentHintProjectsResponse201Type$outboundSchema:
-  z.ZodNativeEnum<typeof CreateProjectEnvContentHintProjectsResponse201Type> =
-    CreateProjectEnvContentHintProjectsResponse201Type$inboundSchema;
-
-/** @internal */
 export const CreateProjectEnvContentHint4$inboundSchema: z.ZodType<
   CreateProjectEnvContentHint4,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: CreateProjectEnvContentHintProjectsResponse201Type$inboundSchema,
+  type: z.literal("redis-rest-api-read-only-token"),
   storeId: z.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHint4$Outbound = {
-  type: string;
+  type: "redis-rest-api-read-only-token";
   storeId: string;
 };
 
@@ -3530,7 +2818,7 @@ export const CreateProjectEnvContentHint4$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvContentHint4
 > = z.object({
-  type: CreateProjectEnvContentHintProjectsResponse201Type$outboundSchema,
+  type: z.literal("redis-rest-api-read-only-token"),
   storeId: z.string(),
 });
 
@@ -3554,26 +2842,17 @@ export function createProjectEnvContentHint4FromJSON(
 }
 
 /** @internal */
-export const CreateProjectEnvContentHintProjectsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof CreateProjectEnvContentHintProjectsResponseType> = z
-    .nativeEnum(CreateProjectEnvContentHintProjectsResponseType);
-/** @internal */
-export const CreateProjectEnvContentHintProjectsResponseType$outboundSchema:
-  z.ZodNativeEnum<typeof CreateProjectEnvContentHintProjectsResponseType> =
-    CreateProjectEnvContentHintProjectsResponseType$inboundSchema;
-
-/** @internal */
 export const CreateProjectEnvContentHint3$inboundSchema: z.ZodType<
   CreateProjectEnvContentHint3,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: CreateProjectEnvContentHintProjectsResponseType$inboundSchema,
+  type: z.literal("redis-rest-api-token"),
   storeId: z.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHint3$Outbound = {
-  type: string;
+  type: "redis-rest-api-token";
   storeId: string;
 };
 
@@ -3583,7 +2862,7 @@ export const CreateProjectEnvContentHint3$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvContentHint3
 > = z.object({
-  type: CreateProjectEnvContentHintProjectsResponseType$outboundSchema,
+  type: z.literal("redis-rest-api-token"),
   storeId: z.string(),
 });
 
@@ -3607,26 +2886,17 @@ export function createProjectEnvContentHint3FromJSON(
 }
 
 /** @internal */
-export const CreateProjectEnvContentHintProjectsType$inboundSchema:
-  z.ZodNativeEnum<typeof CreateProjectEnvContentHintProjectsType> = z
-    .nativeEnum(CreateProjectEnvContentHintProjectsType);
-/** @internal */
-export const CreateProjectEnvContentHintProjectsType$outboundSchema:
-  z.ZodNativeEnum<typeof CreateProjectEnvContentHintProjectsType> =
-    CreateProjectEnvContentHintProjectsType$inboundSchema;
-
-/** @internal */
 export const CreateProjectEnvContentHint2$inboundSchema: z.ZodType<
   CreateProjectEnvContentHint2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: CreateProjectEnvContentHintProjectsType$inboundSchema,
+  type: z.literal("redis-rest-api-url"),
   storeId: z.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHint2$Outbound = {
-  type: string;
+  type: "redis-rest-api-url";
   storeId: string;
 };
 
@@ -3636,7 +2906,7 @@ export const CreateProjectEnvContentHint2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvContentHint2
 > = z.object({
-  type: CreateProjectEnvContentHintProjectsType$outboundSchema,
+  type: z.literal("redis-rest-api-url"),
   storeId: z.string(),
 });
 
@@ -3660,26 +2930,17 @@ export function createProjectEnvContentHint2FromJSON(
 }
 
 /** @internal */
-export const CreateProjectEnvContentHintType$inboundSchema: z.ZodNativeEnum<
-  typeof CreateProjectEnvContentHintType
-> = z.nativeEnum(CreateProjectEnvContentHintType);
-/** @internal */
-export const CreateProjectEnvContentHintType$outboundSchema: z.ZodNativeEnum<
-  typeof CreateProjectEnvContentHintType
-> = CreateProjectEnvContentHintType$inboundSchema;
-
-/** @internal */
 export const CreateProjectEnvContentHint1$inboundSchema: z.ZodType<
   CreateProjectEnvContentHint1,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: CreateProjectEnvContentHintType$inboundSchema,
+  type: z.literal("redis-url"),
   storeId: z.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHint1$Outbound = {
-  type: string;
+  type: "redis-url";
   storeId: string;
 };
 
@@ -3689,7 +2950,7 @@ export const CreateProjectEnvContentHint1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvContentHint1
 > = z.object({
-  type: CreateProjectEnvContentHintType$outboundSchema,
+  type: z.literal("redis-url"),
   storeId: z.string(),
 });
 
@@ -3718,7 +2979,6 @@ export const CreatedContentHint$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CreateProjectEnvContentHint14$inboundSchema),
   z.lazy(() => CreateProjectEnvContentHint1$inboundSchema),
   z.lazy(() => CreateProjectEnvContentHint2$inboundSchema),
   z.lazy(() => CreateProjectEnvContentHint3$inboundSchema),
@@ -3732,11 +2992,11 @@ export const CreatedContentHint$inboundSchema: z.ZodType<
   z.lazy(() => CreateProjectEnvContentHint11$inboundSchema),
   z.lazy(() => CreateProjectEnvContentHint12$inboundSchema),
   z.lazy(() => CreateProjectEnvContentHint13$inboundSchema),
+  z.lazy(() => CreateProjectEnvContentHint14$inboundSchema),
   z.lazy(() => CreateProjectEnvContentHint15$inboundSchema),
 ]);
 /** @internal */
 export type CreatedContentHint$Outbound =
-  | CreateProjectEnvContentHint14$Outbound
   | CreateProjectEnvContentHint1$Outbound
   | CreateProjectEnvContentHint2$Outbound
   | CreateProjectEnvContentHint3$Outbound
@@ -3750,6 +3010,7 @@ export type CreatedContentHint$Outbound =
   | CreateProjectEnvContentHint11$Outbound
   | CreateProjectEnvContentHint12$Outbound
   | CreateProjectEnvContentHint13$Outbound
+  | CreateProjectEnvContentHint14$Outbound
   | CreateProjectEnvContentHint15$Outbound;
 
 /** @internal */
@@ -3758,7 +3019,6 @@ export const CreatedContentHint$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreatedContentHint
 > = z.union([
-  z.lazy(() => CreateProjectEnvContentHint14$outboundSchema),
   z.lazy(() => CreateProjectEnvContentHint1$outboundSchema),
   z.lazy(() => CreateProjectEnvContentHint2$outboundSchema),
   z.lazy(() => CreateProjectEnvContentHint3$outboundSchema),
@@ -3772,6 +3032,7 @@ export const CreatedContentHint$outboundSchema: z.ZodType<
   z.lazy(() => CreateProjectEnvContentHint11$outboundSchema),
   z.lazy(() => CreateProjectEnvContentHint12$outboundSchema),
   z.lazy(() => CreateProjectEnvContentHint13$outboundSchema),
+  z.lazy(() => CreateProjectEnvContentHint14$outboundSchema),
   z.lazy(() => CreateProjectEnvContentHint15$outboundSchema),
 ]);
 
@@ -3870,7 +3131,6 @@ export const Created1$inboundSchema: z.ZodType<
   edgeConfigTokenId: z.nullable(z.string()).optional(),
   contentHint: z.nullable(
     z.union([
-      z.lazy(() => CreateProjectEnvContentHint14$inboundSchema),
       z.lazy(() => CreateProjectEnvContentHint1$inboundSchema),
       z.lazy(() => CreateProjectEnvContentHint2$inboundSchema),
       z.lazy(() => CreateProjectEnvContentHint3$inboundSchema),
@@ -3884,6 +3144,7 @@ export const Created1$inboundSchema: z.ZodType<
       z.lazy(() => CreateProjectEnvContentHint11$inboundSchema),
       z.lazy(() => CreateProjectEnvContentHint12$inboundSchema),
       z.lazy(() => CreateProjectEnvContentHint13$inboundSchema),
+      z.lazy(() => CreateProjectEnvContentHint14$inboundSchema),
       z.lazy(() => CreateProjectEnvContentHint15$inboundSchema),
     ]),
   ).optional(),
@@ -3913,7 +3174,6 @@ export type Created1$Outbound = {
   edgeConfigId?: string | null | undefined;
   edgeConfigTokenId?: string | null | undefined;
   contentHint?:
-    | CreateProjectEnvContentHint14$Outbound
     | CreateProjectEnvContentHint1$Outbound
     | CreateProjectEnvContentHint2$Outbound
     | CreateProjectEnvContentHint3$Outbound
@@ -3927,6 +3187,7 @@ export type Created1$Outbound = {
     | CreateProjectEnvContentHint11$Outbound
     | CreateProjectEnvContentHint12$Outbound
     | CreateProjectEnvContentHint13$Outbound
+    | CreateProjectEnvContentHint14$Outbound
     | CreateProjectEnvContentHint15$Outbound
     | null
     | undefined;
@@ -3963,7 +3224,6 @@ export const Created1$outboundSchema: z.ZodType<
   edgeConfigTokenId: z.nullable(z.string()).optional(),
   contentHint: z.nullable(
     z.union([
-      z.lazy(() => CreateProjectEnvContentHint14$outboundSchema),
       z.lazy(() => CreateProjectEnvContentHint1$outboundSchema),
       z.lazy(() => CreateProjectEnvContentHint2$outboundSchema),
       z.lazy(() => CreateProjectEnvContentHint3$outboundSchema),
@@ -3977,6 +3237,7 @@ export const Created1$outboundSchema: z.ZodType<
       z.lazy(() => CreateProjectEnvContentHint11$outboundSchema),
       z.lazy(() => CreateProjectEnvContentHint12$outboundSchema),
       z.lazy(() => CreateProjectEnvContentHint13$outboundSchema),
+      z.lazy(() => CreateProjectEnvContentHint14$outboundSchema),
       z.lazy(() => CreateProjectEnvContentHint15$outboundSchema),
     ]),
   ).optional(),

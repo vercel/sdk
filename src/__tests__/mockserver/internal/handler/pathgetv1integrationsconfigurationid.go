@@ -53,7 +53,7 @@ func testGetConfigurationGetConfiguration0(w http.ResponseWriter, req *http.Requ
 				Level: operations.GetConfigurationLevelWarn,
 				Title: "<value>",
 			},
-			TransferRequest: operations.CreateTransferRequestTransferRequestTransferFromMarketplace(
+			TransferRequest: operations.CreateTransferRequestTransferFromMarketplace(
 				operations.TransferRequestTransferFromMarketplace{
 					Kind:       operations.KindTransferFromMarketplaceTransferFromMarketplace,
 					RequestID:  "<id>",

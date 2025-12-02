@@ -1652,21 +1652,21 @@ func (o *GetProjectsContentHintRedisURL) GetStoreID() string {
 type GetProjectsContentHintUnionType string
 
 const (
-	GetProjectsContentHintUnionTypeGetProjectsContentHintRedisURL                  GetProjectsContentHintUnionType = "getProjects_contentHint_RedisURL"
-	GetProjectsContentHintUnionTypeGetProjectsContentHintRedisRestAPIURL           GetProjectsContentHintUnionType = "getProjects_contentHint_RedisRestAPIURL"
-	GetProjectsContentHintUnionTypeGetProjectsContentHintRedisRestAPIToken         GetProjectsContentHintUnionType = "getProjects_contentHint_RedisRestAPIToken"
-	GetProjectsContentHintUnionTypeGetProjectsContentHintRedisRestAPIReadOnlyToken GetProjectsContentHintUnionType = "getProjects_contentHint_RedisRestAPIReadOnlyToken"
-	GetProjectsContentHintUnionTypeGetProjectsContentHintBlobReadWriteToken        GetProjectsContentHintUnionType = "getProjects_contentHint_BlobReadWriteToken"
-	GetProjectsContentHintUnionTypeGetProjectsContentHintPostgresURL               GetProjectsContentHintUnionType = "getProjects_contentHint_PostgresURL"
-	GetProjectsContentHintUnionTypeGetProjectsContentHintPostgresURLNonPooling     GetProjectsContentHintUnionType = "getProjects_contentHint_PostgresURLNonPooling"
-	GetProjectsContentHintUnionTypeGetProjectsContentHintPostgresPrismaURL         GetProjectsContentHintUnionType = "getProjects_contentHint_PostgresPrismaURL"
-	GetProjectsContentHintUnionTypeGetProjectsContentHintPostgresUser              GetProjectsContentHintUnionType = "getProjects_contentHint_PostgresUser"
-	GetProjectsContentHintUnionTypeGetProjectsContentHintPostgresHost              GetProjectsContentHintUnionType = "getProjects_contentHint_PostgresHost"
-	GetProjectsContentHintUnionTypeGetProjectsContentHintPostgresPassword          GetProjectsContentHintUnionType = "getProjects_contentHint_PostgresPassword"
-	GetProjectsContentHintUnionTypeGetProjectsContentHintPostgresDatabase          GetProjectsContentHintUnionType = "getProjects_contentHint_PostgresDatabase"
-	GetProjectsContentHintUnionTypeGetProjectsContentHintPostgresURLNoSsl          GetProjectsContentHintUnionType = "getProjects_contentHint_PostgresURLNoSsl"
-	GetProjectsContentHintUnionTypeGetProjectsContentHintIntegrationStoreSecret    GetProjectsContentHintUnionType = "getProjects_contentHint_IntegrationStoreSecret"
-	GetProjectsContentHintUnionTypeGetProjectsContentHintFlagsConnectionString     GetProjectsContentHintUnionType = "getProjects_contentHint_FlagsConnectionString"
+	GetProjectsContentHintUnionTypeRedisURL                  GetProjectsContentHintUnionType = "redis-url"
+	GetProjectsContentHintUnionTypeRedisRestAPIURL           GetProjectsContentHintUnionType = "redis-rest-api-url"
+	GetProjectsContentHintUnionTypeRedisRestAPIToken         GetProjectsContentHintUnionType = "redis-rest-api-token"
+	GetProjectsContentHintUnionTypeRedisRestAPIReadOnlyToken GetProjectsContentHintUnionType = "redis-rest-api-read-only-token"
+	GetProjectsContentHintUnionTypeBlobReadWriteToken        GetProjectsContentHintUnionType = "blob-read-write-token"
+	GetProjectsContentHintUnionTypePostgresURL               GetProjectsContentHintUnionType = "postgres-url"
+	GetProjectsContentHintUnionTypePostgresURLNonPooling     GetProjectsContentHintUnionType = "postgres-url-non-pooling"
+	GetProjectsContentHintUnionTypePostgresPrismaURL         GetProjectsContentHintUnionType = "postgres-prisma-url"
+	GetProjectsContentHintUnionTypePostgresUser              GetProjectsContentHintUnionType = "postgres-user"
+	GetProjectsContentHintUnionTypePostgresHost              GetProjectsContentHintUnionType = "postgres-host"
+	GetProjectsContentHintUnionTypePostgresPassword          GetProjectsContentHintUnionType = "postgres-password"
+	GetProjectsContentHintUnionTypePostgresDatabase          GetProjectsContentHintUnionType = "postgres-database"
+	GetProjectsContentHintUnionTypePostgresURLNoSsl          GetProjectsContentHintUnionType = "postgres-url-no-ssl"
+	GetProjectsContentHintUnionTypeIntegrationStoreSecret    GetProjectsContentHintUnionType = "integration-store-secret"
+	GetProjectsContentHintUnionTypeFlagsConnectionString     GetProjectsContentHintUnionType = "flags-connection-string"
 )
 
 type GetProjectsContentHintUnion struct {
@@ -1689,245 +1689,332 @@ type GetProjectsContentHintUnion struct {
 	Type GetProjectsContentHintUnionType
 }
 
-func CreateGetProjectsContentHintUnionGetProjectsContentHintRedisURL(getProjectsContentHintRedisURL GetProjectsContentHintRedisURL) GetProjectsContentHintUnion {
-	typ := GetProjectsContentHintUnionTypeGetProjectsContentHintRedisURL
+func CreateGetProjectsContentHintUnionRedisURL(redisURL GetProjectsContentHintRedisURL) GetProjectsContentHintUnion {
+	typ := GetProjectsContentHintUnionTypeRedisURL
+
+	typStr := GetProjectsTypeRedisURL(typ)
+	redisURL.Type = typStr
 
 	return GetProjectsContentHintUnion{
-		GetProjectsContentHintRedisURL: &getProjectsContentHintRedisURL,
+		GetProjectsContentHintRedisURL: &redisURL,
 		Type:                           typ,
 	}
 }
 
-func CreateGetProjectsContentHintUnionGetProjectsContentHintRedisRestAPIURL(getProjectsContentHintRedisRestAPIURL GetProjectsContentHintRedisRestAPIURL) GetProjectsContentHintUnion {
-	typ := GetProjectsContentHintUnionTypeGetProjectsContentHintRedisRestAPIURL
+func CreateGetProjectsContentHintUnionRedisRestAPIURL(redisRestAPIURL GetProjectsContentHintRedisRestAPIURL) GetProjectsContentHintUnion {
+	typ := GetProjectsContentHintUnionTypeRedisRestAPIURL
+
+	typStr := GetProjectsTypeRedisRestAPIURL(typ)
+	redisRestAPIURL.Type = typStr
 
 	return GetProjectsContentHintUnion{
-		GetProjectsContentHintRedisRestAPIURL: &getProjectsContentHintRedisRestAPIURL,
+		GetProjectsContentHintRedisRestAPIURL: &redisRestAPIURL,
 		Type:                                  typ,
 	}
 }
 
-func CreateGetProjectsContentHintUnionGetProjectsContentHintRedisRestAPIToken(getProjectsContentHintRedisRestAPIToken GetProjectsContentHintRedisRestAPIToken) GetProjectsContentHintUnion {
-	typ := GetProjectsContentHintUnionTypeGetProjectsContentHintRedisRestAPIToken
+func CreateGetProjectsContentHintUnionRedisRestAPIToken(redisRestAPIToken GetProjectsContentHintRedisRestAPIToken) GetProjectsContentHintUnion {
+	typ := GetProjectsContentHintUnionTypeRedisRestAPIToken
+
+	typStr := GetProjectsTypeRedisRestAPIToken(typ)
+	redisRestAPIToken.Type = typStr
 
 	return GetProjectsContentHintUnion{
-		GetProjectsContentHintRedisRestAPIToken: &getProjectsContentHintRedisRestAPIToken,
+		GetProjectsContentHintRedisRestAPIToken: &redisRestAPIToken,
 		Type:                                    typ,
 	}
 }
 
-func CreateGetProjectsContentHintUnionGetProjectsContentHintRedisRestAPIReadOnlyToken(getProjectsContentHintRedisRestAPIReadOnlyToken GetProjectsContentHintRedisRestAPIReadOnlyToken) GetProjectsContentHintUnion {
-	typ := GetProjectsContentHintUnionTypeGetProjectsContentHintRedisRestAPIReadOnlyToken
+func CreateGetProjectsContentHintUnionRedisRestAPIReadOnlyToken(redisRestAPIReadOnlyToken GetProjectsContentHintRedisRestAPIReadOnlyToken) GetProjectsContentHintUnion {
+	typ := GetProjectsContentHintUnionTypeRedisRestAPIReadOnlyToken
+
+	typStr := GetProjectsTypeRedisRestAPIReadOnlyToken(typ)
+	redisRestAPIReadOnlyToken.Type = typStr
 
 	return GetProjectsContentHintUnion{
-		GetProjectsContentHintRedisRestAPIReadOnlyToken: &getProjectsContentHintRedisRestAPIReadOnlyToken,
+		GetProjectsContentHintRedisRestAPIReadOnlyToken: &redisRestAPIReadOnlyToken,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectsContentHintUnionGetProjectsContentHintBlobReadWriteToken(getProjectsContentHintBlobReadWriteToken GetProjectsContentHintBlobReadWriteToken) GetProjectsContentHintUnion {
-	typ := GetProjectsContentHintUnionTypeGetProjectsContentHintBlobReadWriteToken
+func CreateGetProjectsContentHintUnionBlobReadWriteToken(blobReadWriteToken GetProjectsContentHintBlobReadWriteToken) GetProjectsContentHintUnion {
+	typ := GetProjectsContentHintUnionTypeBlobReadWriteToken
+
+	typStr := GetProjectsTypeBlobReadWriteToken(typ)
+	blobReadWriteToken.Type = typStr
 
 	return GetProjectsContentHintUnion{
-		GetProjectsContentHintBlobReadWriteToken: &getProjectsContentHintBlobReadWriteToken,
+		GetProjectsContentHintBlobReadWriteToken: &blobReadWriteToken,
 		Type:                                     typ,
 	}
 }
 
-func CreateGetProjectsContentHintUnionGetProjectsContentHintPostgresURL(getProjectsContentHintPostgresURL GetProjectsContentHintPostgresURL) GetProjectsContentHintUnion {
-	typ := GetProjectsContentHintUnionTypeGetProjectsContentHintPostgresURL
+func CreateGetProjectsContentHintUnionPostgresURL(postgresURL GetProjectsContentHintPostgresURL) GetProjectsContentHintUnion {
+	typ := GetProjectsContentHintUnionTypePostgresURL
+
+	typStr := GetProjectsTypePostgresURL(typ)
+	postgresURL.Type = typStr
 
 	return GetProjectsContentHintUnion{
-		GetProjectsContentHintPostgresURL: &getProjectsContentHintPostgresURL,
+		GetProjectsContentHintPostgresURL: &postgresURL,
 		Type:                              typ,
 	}
 }
 
-func CreateGetProjectsContentHintUnionGetProjectsContentHintPostgresURLNonPooling(getProjectsContentHintPostgresURLNonPooling GetProjectsContentHintPostgresURLNonPooling) GetProjectsContentHintUnion {
-	typ := GetProjectsContentHintUnionTypeGetProjectsContentHintPostgresURLNonPooling
+func CreateGetProjectsContentHintUnionPostgresURLNonPooling(postgresURLNonPooling GetProjectsContentHintPostgresURLNonPooling) GetProjectsContentHintUnion {
+	typ := GetProjectsContentHintUnionTypePostgresURLNonPooling
+
+	typStr := GetProjectsTypePostgresURLNonPooling(typ)
+	postgresURLNonPooling.Type = typStr
 
 	return GetProjectsContentHintUnion{
-		GetProjectsContentHintPostgresURLNonPooling: &getProjectsContentHintPostgresURLNonPooling,
+		GetProjectsContentHintPostgresURLNonPooling: &postgresURLNonPooling,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectsContentHintUnionGetProjectsContentHintPostgresPrismaURL(getProjectsContentHintPostgresPrismaURL GetProjectsContentHintPostgresPrismaURL) GetProjectsContentHintUnion {
-	typ := GetProjectsContentHintUnionTypeGetProjectsContentHintPostgresPrismaURL
+func CreateGetProjectsContentHintUnionPostgresPrismaURL(postgresPrismaURL GetProjectsContentHintPostgresPrismaURL) GetProjectsContentHintUnion {
+	typ := GetProjectsContentHintUnionTypePostgresPrismaURL
+
+	typStr := GetProjectsTypePostgresPrismaURL(typ)
+	postgresPrismaURL.Type = typStr
 
 	return GetProjectsContentHintUnion{
-		GetProjectsContentHintPostgresPrismaURL: &getProjectsContentHintPostgresPrismaURL,
+		GetProjectsContentHintPostgresPrismaURL: &postgresPrismaURL,
 		Type:                                    typ,
 	}
 }
 
-func CreateGetProjectsContentHintUnionGetProjectsContentHintPostgresUser(getProjectsContentHintPostgresUser GetProjectsContentHintPostgresUser) GetProjectsContentHintUnion {
-	typ := GetProjectsContentHintUnionTypeGetProjectsContentHintPostgresUser
+func CreateGetProjectsContentHintUnionPostgresUser(postgresUser GetProjectsContentHintPostgresUser) GetProjectsContentHintUnion {
+	typ := GetProjectsContentHintUnionTypePostgresUser
+
+	typStr := GetProjectsTypePostgresUser(typ)
+	postgresUser.Type = typStr
 
 	return GetProjectsContentHintUnion{
-		GetProjectsContentHintPostgresUser: &getProjectsContentHintPostgresUser,
+		GetProjectsContentHintPostgresUser: &postgresUser,
 		Type:                               typ,
 	}
 }
 
-func CreateGetProjectsContentHintUnionGetProjectsContentHintPostgresHost(getProjectsContentHintPostgresHost GetProjectsContentHintPostgresHost) GetProjectsContentHintUnion {
-	typ := GetProjectsContentHintUnionTypeGetProjectsContentHintPostgresHost
+func CreateGetProjectsContentHintUnionPostgresHost(postgresHost GetProjectsContentHintPostgresHost) GetProjectsContentHintUnion {
+	typ := GetProjectsContentHintUnionTypePostgresHost
+
+	typStr := GetProjectsTypePostgresHost(typ)
+	postgresHost.Type = typStr
 
 	return GetProjectsContentHintUnion{
-		GetProjectsContentHintPostgresHost: &getProjectsContentHintPostgresHost,
+		GetProjectsContentHintPostgresHost: &postgresHost,
 		Type:                               typ,
 	}
 }
 
-func CreateGetProjectsContentHintUnionGetProjectsContentHintPostgresPassword(getProjectsContentHintPostgresPassword GetProjectsContentHintPostgresPassword) GetProjectsContentHintUnion {
-	typ := GetProjectsContentHintUnionTypeGetProjectsContentHintPostgresPassword
+func CreateGetProjectsContentHintUnionPostgresPassword(postgresPassword GetProjectsContentHintPostgresPassword) GetProjectsContentHintUnion {
+	typ := GetProjectsContentHintUnionTypePostgresPassword
+
+	typStr := GetProjectsTypePostgresPassword(typ)
+	postgresPassword.Type = typStr
 
 	return GetProjectsContentHintUnion{
-		GetProjectsContentHintPostgresPassword: &getProjectsContentHintPostgresPassword,
+		GetProjectsContentHintPostgresPassword: &postgresPassword,
 		Type:                                   typ,
 	}
 }
 
-func CreateGetProjectsContentHintUnionGetProjectsContentHintPostgresDatabase(getProjectsContentHintPostgresDatabase GetProjectsContentHintPostgresDatabase) GetProjectsContentHintUnion {
-	typ := GetProjectsContentHintUnionTypeGetProjectsContentHintPostgresDatabase
+func CreateGetProjectsContentHintUnionPostgresDatabase(postgresDatabase GetProjectsContentHintPostgresDatabase) GetProjectsContentHintUnion {
+	typ := GetProjectsContentHintUnionTypePostgresDatabase
+
+	typStr := GetProjectsTypePostgresDatabase(typ)
+	postgresDatabase.Type = typStr
 
 	return GetProjectsContentHintUnion{
-		GetProjectsContentHintPostgresDatabase: &getProjectsContentHintPostgresDatabase,
+		GetProjectsContentHintPostgresDatabase: &postgresDatabase,
 		Type:                                   typ,
 	}
 }
 
-func CreateGetProjectsContentHintUnionGetProjectsContentHintPostgresURLNoSsl(getProjectsContentHintPostgresURLNoSsl GetProjectsContentHintPostgresURLNoSsl) GetProjectsContentHintUnion {
-	typ := GetProjectsContentHintUnionTypeGetProjectsContentHintPostgresURLNoSsl
+func CreateGetProjectsContentHintUnionPostgresURLNoSsl(postgresURLNoSsl GetProjectsContentHintPostgresURLNoSsl) GetProjectsContentHintUnion {
+	typ := GetProjectsContentHintUnionTypePostgresURLNoSsl
+
+	typStr := GetProjectsTypePostgresURLNoSsl(typ)
+	postgresURLNoSsl.Type = typStr
 
 	return GetProjectsContentHintUnion{
-		GetProjectsContentHintPostgresURLNoSsl: &getProjectsContentHintPostgresURLNoSsl,
+		GetProjectsContentHintPostgresURLNoSsl: &postgresURLNoSsl,
 		Type:                                   typ,
 	}
 }
 
-func CreateGetProjectsContentHintUnionGetProjectsContentHintIntegrationStoreSecret(getProjectsContentHintIntegrationStoreSecret GetProjectsContentHintIntegrationStoreSecret) GetProjectsContentHintUnion {
-	typ := GetProjectsContentHintUnionTypeGetProjectsContentHintIntegrationStoreSecret
+func CreateGetProjectsContentHintUnionIntegrationStoreSecret(integrationStoreSecret GetProjectsContentHintIntegrationStoreSecret) GetProjectsContentHintUnion {
+	typ := GetProjectsContentHintUnionTypeIntegrationStoreSecret
+
+	typStr := GetProjectsTypeIntegrationStoreSecret(typ)
+	integrationStoreSecret.Type = typStr
 
 	return GetProjectsContentHintUnion{
-		GetProjectsContentHintIntegrationStoreSecret: &getProjectsContentHintIntegrationStoreSecret,
+		GetProjectsContentHintIntegrationStoreSecret: &integrationStoreSecret,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectsContentHintUnionGetProjectsContentHintFlagsConnectionString(getProjectsContentHintFlagsConnectionString GetProjectsContentHintFlagsConnectionString) GetProjectsContentHintUnion {
-	typ := GetProjectsContentHintUnionTypeGetProjectsContentHintFlagsConnectionString
+func CreateGetProjectsContentHintUnionFlagsConnectionString(flagsConnectionString GetProjectsContentHintFlagsConnectionString) GetProjectsContentHintUnion {
+	typ := GetProjectsContentHintUnionTypeFlagsConnectionString
+
+	typStr := GetProjectsTypeFlagsConnectionString(typ)
+	flagsConnectionString.Type = typStr
 
 	return GetProjectsContentHintUnion{
-		GetProjectsContentHintFlagsConnectionString: &getProjectsContentHintFlagsConnectionString,
+		GetProjectsContentHintFlagsConnectionString: &flagsConnectionString,
 		Type: typ,
 	}
 }
 
 func (u *GetProjectsContentHintUnion) UnmarshalJSON(data []byte) error {
 
-	var getProjectsContentHintIntegrationStoreSecret GetProjectsContentHintIntegrationStoreSecret = GetProjectsContentHintIntegrationStoreSecret{}
-	if err := utils.UnmarshalJSON(data, &getProjectsContentHintIntegrationStoreSecret, "", true, nil); err == nil {
-		u.GetProjectsContentHintIntegrationStoreSecret = &getProjectsContentHintIntegrationStoreSecret
-		u.Type = GetProjectsContentHintUnionTypeGetProjectsContentHintIntegrationStoreSecret
-		return nil
+	type discriminator struct {
+		Type string `json:"type"`
 	}
 
-	var getProjectsContentHintRedisURL GetProjectsContentHintRedisURL = GetProjectsContentHintRedisURL{}
-	if err := utils.UnmarshalJSON(data, &getProjectsContentHintRedisURL, "", true, nil); err == nil {
-		u.GetProjectsContentHintRedisURL = &getProjectsContentHintRedisURL
-		u.Type = GetProjectsContentHintUnionTypeGetProjectsContentHintRedisURL
-		return nil
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
 	}
 
-	var getProjectsContentHintRedisRestAPIURL GetProjectsContentHintRedisRestAPIURL = GetProjectsContentHintRedisRestAPIURL{}
-	if err := utils.UnmarshalJSON(data, &getProjectsContentHintRedisRestAPIURL, "", true, nil); err == nil {
-		u.GetProjectsContentHintRedisRestAPIURL = &getProjectsContentHintRedisRestAPIURL
-		u.Type = GetProjectsContentHintUnionTypeGetProjectsContentHintRedisRestAPIURL
-		return nil
-	}
+	switch dis.Type {
+	case "redis-url":
+		getProjectsContentHintRedisURL := new(GetProjectsContentHintRedisURL)
+		if err := utils.UnmarshalJSON(data, &getProjectsContentHintRedisURL, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-url) type GetProjectsContentHintRedisURL within GetProjectsContentHintUnion: %w", string(data), err)
+		}
 
-	var getProjectsContentHintRedisRestAPIToken GetProjectsContentHintRedisRestAPIToken = GetProjectsContentHintRedisRestAPIToken{}
-	if err := utils.UnmarshalJSON(data, &getProjectsContentHintRedisRestAPIToken, "", true, nil); err == nil {
-		u.GetProjectsContentHintRedisRestAPIToken = &getProjectsContentHintRedisRestAPIToken
-		u.Type = GetProjectsContentHintUnionTypeGetProjectsContentHintRedisRestAPIToken
+		u.GetProjectsContentHintRedisURL = getProjectsContentHintRedisURL
+		u.Type = GetProjectsContentHintUnionTypeRedisURL
 		return nil
-	}
+	case "redis-rest-api-url":
+		getProjectsContentHintRedisRestAPIURL := new(GetProjectsContentHintRedisRestAPIURL)
+		if err := utils.UnmarshalJSON(data, &getProjectsContentHintRedisRestAPIURL, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-rest-api-url) type GetProjectsContentHintRedisRestAPIURL within GetProjectsContentHintUnion: %w", string(data), err)
+		}
 
-	var getProjectsContentHintRedisRestAPIReadOnlyToken GetProjectsContentHintRedisRestAPIReadOnlyToken = GetProjectsContentHintRedisRestAPIReadOnlyToken{}
-	if err := utils.UnmarshalJSON(data, &getProjectsContentHintRedisRestAPIReadOnlyToken, "", true, nil); err == nil {
-		u.GetProjectsContentHintRedisRestAPIReadOnlyToken = &getProjectsContentHintRedisRestAPIReadOnlyToken
-		u.Type = GetProjectsContentHintUnionTypeGetProjectsContentHintRedisRestAPIReadOnlyToken
+		u.GetProjectsContentHintRedisRestAPIURL = getProjectsContentHintRedisRestAPIURL
+		u.Type = GetProjectsContentHintUnionTypeRedisRestAPIURL
 		return nil
-	}
+	case "redis-rest-api-token":
+		getProjectsContentHintRedisRestAPIToken := new(GetProjectsContentHintRedisRestAPIToken)
+		if err := utils.UnmarshalJSON(data, &getProjectsContentHintRedisRestAPIToken, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-rest-api-token) type GetProjectsContentHintRedisRestAPIToken within GetProjectsContentHintUnion: %w", string(data), err)
+		}
 
-	var getProjectsContentHintBlobReadWriteToken GetProjectsContentHintBlobReadWriteToken = GetProjectsContentHintBlobReadWriteToken{}
-	if err := utils.UnmarshalJSON(data, &getProjectsContentHintBlobReadWriteToken, "", true, nil); err == nil {
-		u.GetProjectsContentHintBlobReadWriteToken = &getProjectsContentHintBlobReadWriteToken
-		u.Type = GetProjectsContentHintUnionTypeGetProjectsContentHintBlobReadWriteToken
+		u.GetProjectsContentHintRedisRestAPIToken = getProjectsContentHintRedisRestAPIToken
+		u.Type = GetProjectsContentHintUnionTypeRedisRestAPIToken
 		return nil
-	}
+	case "redis-rest-api-read-only-token":
+		getProjectsContentHintRedisRestAPIReadOnlyToken := new(GetProjectsContentHintRedisRestAPIReadOnlyToken)
+		if err := utils.UnmarshalJSON(data, &getProjectsContentHintRedisRestAPIReadOnlyToken, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-rest-api-read-only-token) type GetProjectsContentHintRedisRestAPIReadOnlyToken within GetProjectsContentHintUnion: %w", string(data), err)
+		}
 
-	var getProjectsContentHintPostgresURL GetProjectsContentHintPostgresURL = GetProjectsContentHintPostgresURL{}
-	if err := utils.UnmarshalJSON(data, &getProjectsContentHintPostgresURL, "", true, nil); err == nil {
-		u.GetProjectsContentHintPostgresURL = &getProjectsContentHintPostgresURL
-		u.Type = GetProjectsContentHintUnionTypeGetProjectsContentHintPostgresURL
+		u.GetProjectsContentHintRedisRestAPIReadOnlyToken = getProjectsContentHintRedisRestAPIReadOnlyToken
+		u.Type = GetProjectsContentHintUnionTypeRedisRestAPIReadOnlyToken
 		return nil
-	}
+	case "blob-read-write-token":
+		getProjectsContentHintBlobReadWriteToken := new(GetProjectsContentHintBlobReadWriteToken)
+		if err := utils.UnmarshalJSON(data, &getProjectsContentHintBlobReadWriteToken, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == blob-read-write-token) type GetProjectsContentHintBlobReadWriteToken within GetProjectsContentHintUnion: %w", string(data), err)
+		}
 
-	var getProjectsContentHintPostgresURLNonPooling GetProjectsContentHintPostgresURLNonPooling = GetProjectsContentHintPostgresURLNonPooling{}
-	if err := utils.UnmarshalJSON(data, &getProjectsContentHintPostgresURLNonPooling, "", true, nil); err == nil {
-		u.GetProjectsContentHintPostgresURLNonPooling = &getProjectsContentHintPostgresURLNonPooling
-		u.Type = GetProjectsContentHintUnionTypeGetProjectsContentHintPostgresURLNonPooling
+		u.GetProjectsContentHintBlobReadWriteToken = getProjectsContentHintBlobReadWriteToken
+		u.Type = GetProjectsContentHintUnionTypeBlobReadWriteToken
 		return nil
-	}
+	case "postgres-url":
+		getProjectsContentHintPostgresURL := new(GetProjectsContentHintPostgresURL)
+		if err := utils.UnmarshalJSON(data, &getProjectsContentHintPostgresURL, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-url) type GetProjectsContentHintPostgresURL within GetProjectsContentHintUnion: %w", string(data), err)
+		}
 
-	var getProjectsContentHintPostgresPrismaURL GetProjectsContentHintPostgresPrismaURL = GetProjectsContentHintPostgresPrismaURL{}
-	if err := utils.UnmarshalJSON(data, &getProjectsContentHintPostgresPrismaURL, "", true, nil); err == nil {
-		u.GetProjectsContentHintPostgresPrismaURL = &getProjectsContentHintPostgresPrismaURL
-		u.Type = GetProjectsContentHintUnionTypeGetProjectsContentHintPostgresPrismaURL
+		u.GetProjectsContentHintPostgresURL = getProjectsContentHintPostgresURL
+		u.Type = GetProjectsContentHintUnionTypePostgresURL
 		return nil
-	}
+	case "postgres-url-non-pooling":
+		getProjectsContentHintPostgresURLNonPooling := new(GetProjectsContentHintPostgresURLNonPooling)
+		if err := utils.UnmarshalJSON(data, &getProjectsContentHintPostgresURLNonPooling, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-url-non-pooling) type GetProjectsContentHintPostgresURLNonPooling within GetProjectsContentHintUnion: %w", string(data), err)
+		}
 
-	var getProjectsContentHintPostgresUser GetProjectsContentHintPostgresUser = GetProjectsContentHintPostgresUser{}
-	if err := utils.UnmarshalJSON(data, &getProjectsContentHintPostgresUser, "", true, nil); err == nil {
-		u.GetProjectsContentHintPostgresUser = &getProjectsContentHintPostgresUser
-		u.Type = GetProjectsContentHintUnionTypeGetProjectsContentHintPostgresUser
+		u.GetProjectsContentHintPostgresURLNonPooling = getProjectsContentHintPostgresURLNonPooling
+		u.Type = GetProjectsContentHintUnionTypePostgresURLNonPooling
 		return nil
-	}
+	case "postgres-prisma-url":
+		getProjectsContentHintPostgresPrismaURL := new(GetProjectsContentHintPostgresPrismaURL)
+		if err := utils.UnmarshalJSON(data, &getProjectsContentHintPostgresPrismaURL, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-prisma-url) type GetProjectsContentHintPostgresPrismaURL within GetProjectsContentHintUnion: %w", string(data), err)
+		}
 
-	var getProjectsContentHintPostgresHost GetProjectsContentHintPostgresHost = GetProjectsContentHintPostgresHost{}
-	if err := utils.UnmarshalJSON(data, &getProjectsContentHintPostgresHost, "", true, nil); err == nil {
-		u.GetProjectsContentHintPostgresHost = &getProjectsContentHintPostgresHost
-		u.Type = GetProjectsContentHintUnionTypeGetProjectsContentHintPostgresHost
+		u.GetProjectsContentHintPostgresPrismaURL = getProjectsContentHintPostgresPrismaURL
+		u.Type = GetProjectsContentHintUnionTypePostgresPrismaURL
 		return nil
-	}
+	case "postgres-user":
+		getProjectsContentHintPostgresUser := new(GetProjectsContentHintPostgresUser)
+		if err := utils.UnmarshalJSON(data, &getProjectsContentHintPostgresUser, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-user) type GetProjectsContentHintPostgresUser within GetProjectsContentHintUnion: %w", string(data), err)
+		}
 
-	var getProjectsContentHintPostgresPassword GetProjectsContentHintPostgresPassword = GetProjectsContentHintPostgresPassword{}
-	if err := utils.UnmarshalJSON(data, &getProjectsContentHintPostgresPassword, "", true, nil); err == nil {
-		u.GetProjectsContentHintPostgresPassword = &getProjectsContentHintPostgresPassword
-		u.Type = GetProjectsContentHintUnionTypeGetProjectsContentHintPostgresPassword
+		u.GetProjectsContentHintPostgresUser = getProjectsContentHintPostgresUser
+		u.Type = GetProjectsContentHintUnionTypePostgresUser
 		return nil
-	}
+	case "postgres-host":
+		getProjectsContentHintPostgresHost := new(GetProjectsContentHintPostgresHost)
+		if err := utils.UnmarshalJSON(data, &getProjectsContentHintPostgresHost, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-host) type GetProjectsContentHintPostgresHost within GetProjectsContentHintUnion: %w", string(data), err)
+		}
 
-	var getProjectsContentHintPostgresDatabase GetProjectsContentHintPostgresDatabase = GetProjectsContentHintPostgresDatabase{}
-	if err := utils.UnmarshalJSON(data, &getProjectsContentHintPostgresDatabase, "", true, nil); err == nil {
-		u.GetProjectsContentHintPostgresDatabase = &getProjectsContentHintPostgresDatabase
-		u.Type = GetProjectsContentHintUnionTypeGetProjectsContentHintPostgresDatabase
+		u.GetProjectsContentHintPostgresHost = getProjectsContentHintPostgresHost
+		u.Type = GetProjectsContentHintUnionTypePostgresHost
 		return nil
-	}
+	case "postgres-password":
+		getProjectsContentHintPostgresPassword := new(GetProjectsContentHintPostgresPassword)
+		if err := utils.UnmarshalJSON(data, &getProjectsContentHintPostgresPassword, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-password) type GetProjectsContentHintPostgresPassword within GetProjectsContentHintUnion: %w", string(data), err)
+		}
 
-	var getProjectsContentHintPostgresURLNoSsl GetProjectsContentHintPostgresURLNoSsl = GetProjectsContentHintPostgresURLNoSsl{}
-	if err := utils.UnmarshalJSON(data, &getProjectsContentHintPostgresURLNoSsl, "", true, nil); err == nil {
-		u.GetProjectsContentHintPostgresURLNoSsl = &getProjectsContentHintPostgresURLNoSsl
-		u.Type = GetProjectsContentHintUnionTypeGetProjectsContentHintPostgresURLNoSsl
+		u.GetProjectsContentHintPostgresPassword = getProjectsContentHintPostgresPassword
+		u.Type = GetProjectsContentHintUnionTypePostgresPassword
 		return nil
-	}
+	case "postgres-database":
+		getProjectsContentHintPostgresDatabase := new(GetProjectsContentHintPostgresDatabase)
+		if err := utils.UnmarshalJSON(data, &getProjectsContentHintPostgresDatabase, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-database) type GetProjectsContentHintPostgresDatabase within GetProjectsContentHintUnion: %w", string(data), err)
+		}
 
-	var getProjectsContentHintFlagsConnectionString GetProjectsContentHintFlagsConnectionString = GetProjectsContentHintFlagsConnectionString{}
-	if err := utils.UnmarshalJSON(data, &getProjectsContentHintFlagsConnectionString, "", true, nil); err == nil {
-		u.GetProjectsContentHintFlagsConnectionString = &getProjectsContentHintFlagsConnectionString
-		u.Type = GetProjectsContentHintUnionTypeGetProjectsContentHintFlagsConnectionString
+		u.GetProjectsContentHintPostgresDatabase = getProjectsContentHintPostgresDatabase
+		u.Type = GetProjectsContentHintUnionTypePostgresDatabase
+		return nil
+	case "postgres-url-no-ssl":
+		getProjectsContentHintPostgresURLNoSsl := new(GetProjectsContentHintPostgresURLNoSsl)
+		if err := utils.UnmarshalJSON(data, &getProjectsContentHintPostgresURLNoSsl, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-url-no-ssl) type GetProjectsContentHintPostgresURLNoSsl within GetProjectsContentHintUnion: %w", string(data), err)
+		}
+
+		u.GetProjectsContentHintPostgresURLNoSsl = getProjectsContentHintPostgresURLNoSsl
+		u.Type = GetProjectsContentHintUnionTypePostgresURLNoSsl
+		return nil
+	case "integration-store-secret":
+		getProjectsContentHintIntegrationStoreSecret := new(GetProjectsContentHintIntegrationStoreSecret)
+		if err := utils.UnmarshalJSON(data, &getProjectsContentHintIntegrationStoreSecret, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == integration-store-secret) type GetProjectsContentHintIntegrationStoreSecret within GetProjectsContentHintUnion: %w", string(data), err)
+		}
+
+		u.GetProjectsContentHintIntegrationStoreSecret = getProjectsContentHintIntegrationStoreSecret
+		u.Type = GetProjectsContentHintUnionTypeIntegrationStoreSecret
+		return nil
+	case "flags-connection-string":
+		getProjectsContentHintFlagsConnectionString := new(GetProjectsContentHintFlagsConnectionString)
+		if err := utils.UnmarshalJSON(data, &getProjectsContentHintFlagsConnectionString, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == flags-connection-string) type GetProjectsContentHintFlagsConnectionString within GetProjectsContentHintUnion: %w", string(data), err)
+		}
+
+		u.GetProjectsContentHintFlagsConnectionString = getProjectsContentHintFlagsConnectionString
+		u.Type = GetProjectsContentHintUnionTypeFlagsConnectionString
 		return nil
 	}
 
@@ -2184,6 +2271,111 @@ func (o *GetProjectsEnv) GetContentHint() *GetProjectsContentHintUnion {
 		return nil
 	}
 	return o.ContentHint
+}
+
+func (o *GetProjectsEnv) GetContentHintRedisURL() *GetProjectsContentHintRedisURL {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectsContentHintRedisURL
+	}
+	return nil
+}
+
+func (o *GetProjectsEnv) GetContentHintRedisRestAPIURL() *GetProjectsContentHintRedisRestAPIURL {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectsContentHintRedisRestAPIURL
+	}
+	return nil
+}
+
+func (o *GetProjectsEnv) GetContentHintRedisRestAPIToken() *GetProjectsContentHintRedisRestAPIToken {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectsContentHintRedisRestAPIToken
+	}
+	return nil
+}
+
+func (o *GetProjectsEnv) GetContentHintRedisRestAPIReadOnlyToken() *GetProjectsContentHintRedisRestAPIReadOnlyToken {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectsContentHintRedisRestAPIReadOnlyToken
+	}
+	return nil
+}
+
+func (o *GetProjectsEnv) GetContentHintBlobReadWriteToken() *GetProjectsContentHintBlobReadWriteToken {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectsContentHintBlobReadWriteToken
+	}
+	return nil
+}
+
+func (o *GetProjectsEnv) GetContentHintPostgresURL() *GetProjectsContentHintPostgresURL {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectsContentHintPostgresURL
+	}
+	return nil
+}
+
+func (o *GetProjectsEnv) GetContentHintPostgresURLNonPooling() *GetProjectsContentHintPostgresURLNonPooling {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectsContentHintPostgresURLNonPooling
+	}
+	return nil
+}
+
+func (o *GetProjectsEnv) GetContentHintPostgresPrismaURL() *GetProjectsContentHintPostgresPrismaURL {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectsContentHintPostgresPrismaURL
+	}
+	return nil
+}
+
+func (o *GetProjectsEnv) GetContentHintPostgresUser() *GetProjectsContentHintPostgresUser {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectsContentHintPostgresUser
+	}
+	return nil
+}
+
+func (o *GetProjectsEnv) GetContentHintPostgresHost() *GetProjectsContentHintPostgresHost {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectsContentHintPostgresHost
+	}
+	return nil
+}
+
+func (o *GetProjectsEnv) GetContentHintPostgresPassword() *GetProjectsContentHintPostgresPassword {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectsContentHintPostgresPassword
+	}
+	return nil
+}
+
+func (o *GetProjectsEnv) GetContentHintPostgresDatabase() *GetProjectsContentHintPostgresDatabase {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectsContentHintPostgresDatabase
+	}
+	return nil
+}
+
+func (o *GetProjectsEnv) GetContentHintPostgresURLNoSsl() *GetProjectsContentHintPostgresURLNoSsl {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectsContentHintPostgresURLNoSsl
+	}
+	return nil
+}
+
+func (o *GetProjectsEnv) GetContentHintIntegrationStoreSecret() *GetProjectsContentHintIntegrationStoreSecret {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectsContentHintIntegrationStoreSecret
+	}
+	return nil
+}
+
+func (o *GetProjectsEnv) GetContentHintFlagsConnectionString() *GetProjectsContentHintFlagsConnectionString {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectsContentHintFlagsConnectionString
+	}
+	return nil
 }
 
 func (o *GetProjectsEnv) GetInternalContentHint() *GetProjectsInternalContentHint {
@@ -3940,11 +4132,11 @@ func (o *GetProjectsLinkGithub) GetProductionBranch() string {
 type GetProjectsLinkUnionType string
 
 const (
-	GetProjectsLinkUnionTypeGetProjectsLinkGithub           GetProjectsLinkUnionType = "getProjects_link_Github"
-	GetProjectsLinkUnionTypeGetProjectsLinkGithubLimited    GetProjectsLinkUnionType = "getProjects_link_GithubLimited"
-	GetProjectsLinkUnionTypeGetProjectsLinkGithubCustomHost GetProjectsLinkUnionType = "getProjects_link_GithubCustomHost"
-	GetProjectsLinkUnionTypeGetProjectsLinkGitlab           GetProjectsLinkUnionType = "getProjects_link_Gitlab"
-	GetProjectsLinkUnionTypeGetProjectsLinkBitbucket        GetProjectsLinkUnionType = "getProjects_link_Bitbucket"
+	GetProjectsLinkUnionTypeGithub           GetProjectsLinkUnionType = "github"
+	GetProjectsLinkUnionTypeGithubLimited    GetProjectsLinkUnionType = "github-limited"
+	GetProjectsLinkUnionTypeGithubCustomHost GetProjectsLinkUnionType = "github-custom-host"
+	GetProjectsLinkUnionTypeGitlab           GetProjectsLinkUnionType = "gitlab"
+	GetProjectsLinkUnionTypeBitbucket        GetProjectsLinkUnionType = "bitbucket"
 )
 
 type GetProjectsLinkUnion struct {
@@ -3957,85 +4149,122 @@ type GetProjectsLinkUnion struct {
 	Type GetProjectsLinkUnionType
 }
 
-func CreateGetProjectsLinkUnionGetProjectsLinkGithub(getProjectsLinkGithub GetProjectsLinkGithub) GetProjectsLinkUnion {
-	typ := GetProjectsLinkUnionTypeGetProjectsLinkGithub
+func CreateGetProjectsLinkUnionGithub(github GetProjectsLinkGithub) GetProjectsLinkUnion {
+	typ := GetProjectsLinkUnionTypeGithub
+
+	typStr := GetProjectsTypeGithub(typ)
+	github.Type = typStr
 
 	return GetProjectsLinkUnion{
-		GetProjectsLinkGithub: &getProjectsLinkGithub,
+		GetProjectsLinkGithub: &github,
 		Type:                  typ,
 	}
 }
 
-func CreateGetProjectsLinkUnionGetProjectsLinkGithubLimited(getProjectsLinkGithubLimited GetProjectsLinkGithubLimited) GetProjectsLinkUnion {
-	typ := GetProjectsLinkUnionTypeGetProjectsLinkGithubLimited
+func CreateGetProjectsLinkUnionGithubLimited(githubLimited GetProjectsLinkGithubLimited) GetProjectsLinkUnion {
+	typ := GetProjectsLinkUnionTypeGithubLimited
+
+	typStr := GetProjectsTypeGithubLimited(typ)
+	githubLimited.Type = typStr
 
 	return GetProjectsLinkUnion{
-		GetProjectsLinkGithubLimited: &getProjectsLinkGithubLimited,
+		GetProjectsLinkGithubLimited: &githubLimited,
 		Type:                         typ,
 	}
 }
 
-func CreateGetProjectsLinkUnionGetProjectsLinkGithubCustomHost(getProjectsLinkGithubCustomHost GetProjectsLinkGithubCustomHost) GetProjectsLinkUnion {
-	typ := GetProjectsLinkUnionTypeGetProjectsLinkGithubCustomHost
+func CreateGetProjectsLinkUnionGithubCustomHost(githubCustomHost GetProjectsLinkGithubCustomHost) GetProjectsLinkUnion {
+	typ := GetProjectsLinkUnionTypeGithubCustomHost
+
+	typStr := GetProjectsTypeGithubCustomHost(typ)
+	githubCustomHost.Type = typStr
 
 	return GetProjectsLinkUnion{
-		GetProjectsLinkGithubCustomHost: &getProjectsLinkGithubCustomHost,
+		GetProjectsLinkGithubCustomHost: &githubCustomHost,
 		Type:                            typ,
 	}
 }
 
-func CreateGetProjectsLinkUnionGetProjectsLinkGitlab(getProjectsLinkGitlab GetProjectsLinkGitlab) GetProjectsLinkUnion {
-	typ := GetProjectsLinkUnionTypeGetProjectsLinkGitlab
+func CreateGetProjectsLinkUnionGitlab(gitlab GetProjectsLinkGitlab) GetProjectsLinkUnion {
+	typ := GetProjectsLinkUnionTypeGitlab
+
+	typStr := GetProjectsTypeGitlab(typ)
+	gitlab.Type = typStr
 
 	return GetProjectsLinkUnion{
-		GetProjectsLinkGitlab: &getProjectsLinkGitlab,
+		GetProjectsLinkGitlab: &gitlab,
 		Type:                  typ,
 	}
 }
 
-func CreateGetProjectsLinkUnionGetProjectsLinkBitbucket(getProjectsLinkBitbucket GetProjectsLinkBitbucket) GetProjectsLinkUnion {
-	typ := GetProjectsLinkUnionTypeGetProjectsLinkBitbucket
+func CreateGetProjectsLinkUnionBitbucket(bitbucket GetProjectsLinkBitbucket) GetProjectsLinkUnion {
+	typ := GetProjectsLinkUnionTypeBitbucket
+
+	typStr := GetProjectsTypeBitbucket(typ)
+	bitbucket.Type = typStr
 
 	return GetProjectsLinkUnion{
-		GetProjectsLinkBitbucket: &getProjectsLinkBitbucket,
+		GetProjectsLinkBitbucket: &bitbucket,
 		Type:                     typ,
 	}
 }
 
 func (u *GetProjectsLinkUnion) UnmarshalJSON(data []byte) error {
 
-	var getProjectsLinkGitlab GetProjectsLinkGitlab = GetProjectsLinkGitlab{}
-	if err := utils.UnmarshalJSON(data, &getProjectsLinkGitlab, "", true, nil); err == nil {
-		u.GetProjectsLinkGitlab = &getProjectsLinkGitlab
-		u.Type = GetProjectsLinkUnionTypeGetProjectsLinkGitlab
-		return nil
+	type discriminator struct {
+		Type string `json:"type"`
 	}
 
-	var getProjectsLinkBitbucket GetProjectsLinkBitbucket = GetProjectsLinkBitbucket{}
-	if err := utils.UnmarshalJSON(data, &getProjectsLinkBitbucket, "", true, nil); err == nil {
-		u.GetProjectsLinkBitbucket = &getProjectsLinkBitbucket
-		u.Type = GetProjectsLinkUnionTypeGetProjectsLinkBitbucket
-		return nil
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
 	}
 
-	var getProjectsLinkGithubCustomHost GetProjectsLinkGithubCustomHost = GetProjectsLinkGithubCustomHost{}
-	if err := utils.UnmarshalJSON(data, &getProjectsLinkGithubCustomHost, "", true, nil); err == nil {
-		u.GetProjectsLinkGithubCustomHost = &getProjectsLinkGithubCustomHost
-		u.Type = GetProjectsLinkUnionTypeGetProjectsLinkGithubCustomHost
-		return nil
-	}
+	switch dis.Type {
+	case "github":
+		getProjectsLinkGithub := new(GetProjectsLinkGithub)
+		if err := utils.UnmarshalJSON(data, &getProjectsLinkGithub, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == github) type GetProjectsLinkGithub within GetProjectsLinkUnion: %w", string(data), err)
+		}
 
-	var getProjectsLinkGithub GetProjectsLinkGithub = GetProjectsLinkGithub{}
-	if err := utils.UnmarshalJSON(data, &getProjectsLinkGithub, "", true, nil); err == nil {
-		u.GetProjectsLinkGithub = &getProjectsLinkGithub
-		u.Type = GetProjectsLinkUnionTypeGetProjectsLinkGithub
+		u.GetProjectsLinkGithub = getProjectsLinkGithub
+		u.Type = GetProjectsLinkUnionTypeGithub
 		return nil
-	}
+	case "github-limited":
+		getProjectsLinkGithubLimited := new(GetProjectsLinkGithubLimited)
+		if err := utils.UnmarshalJSON(data, &getProjectsLinkGithubLimited, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == github-limited) type GetProjectsLinkGithubLimited within GetProjectsLinkUnion: %w", string(data), err)
+		}
 
-	var getProjectsLinkGithubLimited GetProjectsLinkGithubLimited = GetProjectsLinkGithubLimited{}
-	if err := utils.UnmarshalJSON(data, &getProjectsLinkGithubLimited, "", true, nil); err == nil {
-		u.GetProjectsLinkGithubLimited = &getProjectsLinkGithubLimited
-		u.Type = GetProjectsLinkUnionTypeGetProjectsLinkGithubLimited
+		u.GetProjectsLinkGithubLimited = getProjectsLinkGithubLimited
+		u.Type = GetProjectsLinkUnionTypeGithubLimited
+		return nil
+	case "github-custom-host":
+		getProjectsLinkGithubCustomHost := new(GetProjectsLinkGithubCustomHost)
+		if err := utils.UnmarshalJSON(data, &getProjectsLinkGithubCustomHost, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == github-custom-host) type GetProjectsLinkGithubCustomHost within GetProjectsLinkUnion: %w", string(data), err)
+		}
+
+		u.GetProjectsLinkGithubCustomHost = getProjectsLinkGithubCustomHost
+		u.Type = GetProjectsLinkUnionTypeGithubCustomHost
+		return nil
+	case "gitlab":
+		getProjectsLinkGitlab := new(GetProjectsLinkGitlab)
+		if err := utils.UnmarshalJSON(data, &getProjectsLinkGitlab, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == gitlab) type GetProjectsLinkGitlab within GetProjectsLinkUnion: %w", string(data), err)
+		}
+
+		u.GetProjectsLinkGitlab = getProjectsLinkGitlab
+		u.Type = GetProjectsLinkUnionTypeGitlab
+		return nil
+	case "bitbucket":
+		getProjectsLinkBitbucket := new(GetProjectsLinkBitbucket)
+		if err := utils.UnmarshalJSON(data, &getProjectsLinkBitbucket, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == bitbucket) type GetProjectsLinkBitbucket within GetProjectsLinkUnion: %w", string(data), err)
+		}
+
+		u.GetProjectsLinkBitbucket = getProjectsLinkBitbucket
+		u.Type = GetProjectsLinkUnionTypeBitbucket
 		return nil
 	}
 
@@ -7616,8 +7845,8 @@ func (o *GetProjectsProtectionBypassIntegrationAutomationBypass) GetConfiguratio
 type GetProjectsProtectionBypassUnionType string
 
 const (
-	GetProjectsProtectionBypassUnionTypeGetProjectsProtectionBypassIntegrationAutomationBypass GetProjectsProtectionBypassUnionType = "getProjects_protectionBypass_IntegrationAutomationBypass"
-	GetProjectsProtectionBypassUnionTypeGetProjectsProtectionBypassAutomationBypass            GetProjectsProtectionBypassUnionType = "getProjects_protectionBypass_AutomationBypass"
+	GetProjectsProtectionBypassUnionTypeIntegrationAutomationBypass GetProjectsProtectionBypassUnionType = "integration-automation-bypass"
+	GetProjectsProtectionBypassUnionTypeAutomationBypass            GetProjectsProtectionBypassUnionType = "automation-bypass"
 )
 
 type GetProjectsProtectionBypassUnion struct {
@@ -7627,37 +7856,59 @@ type GetProjectsProtectionBypassUnion struct {
 	Type GetProjectsProtectionBypassUnionType
 }
 
-func CreateGetProjectsProtectionBypassUnionGetProjectsProtectionBypassIntegrationAutomationBypass(getProjectsProtectionBypassIntegrationAutomationBypass GetProjectsProtectionBypassIntegrationAutomationBypass) GetProjectsProtectionBypassUnion {
-	typ := GetProjectsProtectionBypassUnionTypeGetProjectsProtectionBypassIntegrationAutomationBypass
+func CreateGetProjectsProtectionBypassUnionIntegrationAutomationBypass(integrationAutomationBypass GetProjectsProtectionBypassIntegrationAutomationBypass) GetProjectsProtectionBypassUnion {
+	typ := GetProjectsProtectionBypassUnionTypeIntegrationAutomationBypass
+
+	typStr := GetProjectsScopeIntegrationAutomationBypass(typ)
+	integrationAutomationBypass.Scope = typStr
 
 	return GetProjectsProtectionBypassUnion{
-		GetProjectsProtectionBypassIntegrationAutomationBypass: &getProjectsProtectionBypassIntegrationAutomationBypass,
+		GetProjectsProtectionBypassIntegrationAutomationBypass: &integrationAutomationBypass,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectsProtectionBypassUnionGetProjectsProtectionBypassAutomationBypass(getProjectsProtectionBypassAutomationBypass GetProjectsProtectionBypassAutomationBypass) GetProjectsProtectionBypassUnion {
-	typ := GetProjectsProtectionBypassUnionTypeGetProjectsProtectionBypassAutomationBypass
+func CreateGetProjectsProtectionBypassUnionAutomationBypass(automationBypass GetProjectsProtectionBypassAutomationBypass) GetProjectsProtectionBypassUnion {
+	typ := GetProjectsProtectionBypassUnionTypeAutomationBypass
+
+	typStr := GetProjectsScopeAutomationBypass(typ)
+	automationBypass.Scope = typStr
 
 	return GetProjectsProtectionBypassUnion{
-		GetProjectsProtectionBypassAutomationBypass: &getProjectsProtectionBypassAutomationBypass,
+		GetProjectsProtectionBypassAutomationBypass: &automationBypass,
 		Type: typ,
 	}
 }
 
 func (u *GetProjectsProtectionBypassUnion) UnmarshalJSON(data []byte) error {
 
-	var getProjectsProtectionBypassIntegrationAutomationBypass GetProjectsProtectionBypassIntegrationAutomationBypass = GetProjectsProtectionBypassIntegrationAutomationBypass{}
-	if err := utils.UnmarshalJSON(data, &getProjectsProtectionBypassIntegrationAutomationBypass, "", true, nil); err == nil {
-		u.GetProjectsProtectionBypassIntegrationAutomationBypass = &getProjectsProtectionBypassIntegrationAutomationBypass
-		u.Type = GetProjectsProtectionBypassUnionTypeGetProjectsProtectionBypassIntegrationAutomationBypass
-		return nil
+	type discriminator struct {
+		Scope string `json:"scope"`
 	}
 
-	var getProjectsProtectionBypassAutomationBypass GetProjectsProtectionBypassAutomationBypass = GetProjectsProtectionBypassAutomationBypass{}
-	if err := utils.UnmarshalJSON(data, &getProjectsProtectionBypassAutomationBypass, "", true, nil); err == nil {
-		u.GetProjectsProtectionBypassAutomationBypass = &getProjectsProtectionBypassAutomationBypass
-		u.Type = GetProjectsProtectionBypassUnionTypeGetProjectsProtectionBypassAutomationBypass
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Scope {
+	case "integration-automation-bypass":
+		getProjectsProtectionBypassIntegrationAutomationBypass := new(GetProjectsProtectionBypassIntegrationAutomationBypass)
+		if err := utils.UnmarshalJSON(data, &getProjectsProtectionBypassIntegrationAutomationBypass, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Scope == integration-automation-bypass) type GetProjectsProtectionBypassIntegrationAutomationBypass within GetProjectsProtectionBypassUnion: %w", string(data), err)
+		}
+
+		u.GetProjectsProtectionBypassIntegrationAutomationBypass = getProjectsProtectionBypassIntegrationAutomationBypass
+		u.Type = GetProjectsProtectionBypassUnionTypeIntegrationAutomationBypass
+		return nil
+	case "automation-bypass":
+		getProjectsProtectionBypassAutomationBypass := new(GetProjectsProtectionBypassAutomationBypass)
+		if err := utils.UnmarshalJSON(data, &getProjectsProtectionBypassAutomationBypass, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Scope == automation-bypass) type GetProjectsProtectionBypassAutomationBypass within GetProjectsProtectionBypassUnion: %w", string(data), err)
+		}
+
+		u.GetProjectsProtectionBypassAutomationBypass = getProjectsProtectionBypassAutomationBypass
+		u.Type = GetProjectsProtectionBypassUnionTypeAutomationBypass
 		return nil
 	}
 
@@ -8744,8 +8995,8 @@ func (o *GetProjectsBlockHistoryHasXVercelIPCountry2) GetValue() GetProjectsBloc
 type GetProjectsBlockHistoryHasUnion2Type string
 
 const (
-	GetProjectsBlockHistoryHasUnion2TypeGetProjectsBlockHistoryHasXVercelIPCountry2 GetProjectsBlockHistoryHasUnion2Type = "getProjects_blockHistory_has_XVercelIPCountry_2"
-	GetProjectsBlockHistoryHasUnion2TypeGetProjectsBlockHistoryHasHost2             GetProjectsBlockHistoryHasUnion2Type = "getProjects_blockHistory_has_Host_2"
+	GetProjectsBlockHistoryHasUnion2TypeHeader GetProjectsBlockHistoryHasUnion2Type = "header"
+	GetProjectsBlockHistoryHasUnion2TypeHost   GetProjectsBlockHistoryHasUnion2Type = "host"
 )
 
 type GetProjectsBlockHistoryHasUnion2 struct {
@@ -8755,37 +9006,59 @@ type GetProjectsBlockHistoryHasUnion2 struct {
 	Type GetProjectsBlockHistoryHasUnion2Type
 }
 
-func CreateGetProjectsBlockHistoryHasUnion2GetProjectsBlockHistoryHasXVercelIPCountry2(getProjectsBlockHistoryHasXVercelIPCountry2 GetProjectsBlockHistoryHasXVercelIPCountry2) GetProjectsBlockHistoryHasUnion2 {
-	typ := GetProjectsBlockHistoryHasUnion2TypeGetProjectsBlockHistoryHasXVercelIPCountry2
+func CreateGetProjectsBlockHistoryHasUnion2Header(header GetProjectsBlockHistoryHasXVercelIPCountry2) GetProjectsBlockHistoryHasUnion2 {
+	typ := GetProjectsBlockHistoryHasUnion2TypeHeader
+
+	typStr := GetProjectsBlockHistoryTypeHeader2(typ)
+	header.Type = typStr
 
 	return GetProjectsBlockHistoryHasUnion2{
-		GetProjectsBlockHistoryHasXVercelIPCountry2: &getProjectsBlockHistoryHasXVercelIPCountry2,
+		GetProjectsBlockHistoryHasXVercelIPCountry2: &header,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectsBlockHistoryHasUnion2GetProjectsBlockHistoryHasHost2(getProjectsBlockHistoryHasHost2 GetProjectsBlockHistoryHasHost2) GetProjectsBlockHistoryHasUnion2 {
-	typ := GetProjectsBlockHistoryHasUnion2TypeGetProjectsBlockHistoryHasHost2
+func CreateGetProjectsBlockHistoryHasUnion2Host(host GetProjectsBlockHistoryHasHost2) GetProjectsBlockHistoryHasUnion2 {
+	typ := GetProjectsBlockHistoryHasUnion2TypeHost
+
+	typStr := GetProjectsBlockHistoryTypeHost2(typ)
+	host.Type = typStr
 
 	return GetProjectsBlockHistoryHasUnion2{
-		GetProjectsBlockHistoryHasHost2: &getProjectsBlockHistoryHasHost2,
+		GetProjectsBlockHistoryHasHost2: &host,
 		Type:                            typ,
 	}
 }
 
 func (u *GetProjectsBlockHistoryHasUnion2) UnmarshalJSON(data []byte) error {
 
-	var getProjectsBlockHistoryHasXVercelIPCountry2 GetProjectsBlockHistoryHasXVercelIPCountry2 = GetProjectsBlockHistoryHasXVercelIPCountry2{}
-	if err := utils.UnmarshalJSON(data, &getProjectsBlockHistoryHasXVercelIPCountry2, "", true, nil); err == nil {
-		u.GetProjectsBlockHistoryHasXVercelIPCountry2 = &getProjectsBlockHistoryHasXVercelIPCountry2
-		u.Type = GetProjectsBlockHistoryHasUnion2TypeGetProjectsBlockHistoryHasXVercelIPCountry2
-		return nil
+	type discriminator struct {
+		Type string `json:"type"`
 	}
 
-	var getProjectsBlockHistoryHasHost2 GetProjectsBlockHistoryHasHost2 = GetProjectsBlockHistoryHasHost2{}
-	if err := utils.UnmarshalJSON(data, &getProjectsBlockHistoryHasHost2, "", true, nil); err == nil {
-		u.GetProjectsBlockHistoryHasHost2 = &getProjectsBlockHistoryHasHost2
-		u.Type = GetProjectsBlockHistoryHasUnion2TypeGetProjectsBlockHistoryHasHost2
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Type {
+	case "header":
+		getProjectsBlockHistoryHasXVercelIPCountry2 := new(GetProjectsBlockHistoryHasXVercelIPCountry2)
+		if err := utils.UnmarshalJSON(data, &getProjectsBlockHistoryHasXVercelIPCountry2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == header) type GetProjectsBlockHistoryHasXVercelIPCountry2 within GetProjectsBlockHistoryHasUnion2: %w", string(data), err)
+		}
+
+		u.GetProjectsBlockHistoryHasXVercelIPCountry2 = getProjectsBlockHistoryHasXVercelIPCountry2
+		u.Type = GetProjectsBlockHistoryHasUnion2TypeHeader
+		return nil
+	case "host":
+		getProjectsBlockHistoryHasHost2 := new(GetProjectsBlockHistoryHasHost2)
+		if err := utils.UnmarshalJSON(data, &getProjectsBlockHistoryHasHost2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == host) type GetProjectsBlockHistoryHasHost2 within GetProjectsBlockHistoryHasUnion2: %w", string(data), err)
+		}
+
+		u.GetProjectsBlockHistoryHasHost2 = getProjectsBlockHistoryHasHost2
+		u.Type = GetProjectsBlockHistoryHasUnion2TypeHost
 		return nil
 	}
 
@@ -9265,8 +9538,8 @@ func (o *GetProjectsBlockHistoryHasXVercelIPCountry1) GetValue() GetProjectsBloc
 type GetProjectsBlockHistoryHasUnion1Type string
 
 const (
-	GetProjectsBlockHistoryHasUnion1TypeGetProjectsBlockHistoryHasXVercelIPCountry1 GetProjectsBlockHistoryHasUnion1Type = "getProjects_blockHistory_has_XVercelIPCountry_1"
-	GetProjectsBlockHistoryHasUnion1TypeGetProjectsBlockHistoryHasHost1             GetProjectsBlockHistoryHasUnion1Type = "getProjects_blockHistory_has_Host_1"
+	GetProjectsBlockHistoryHasUnion1TypeHeader GetProjectsBlockHistoryHasUnion1Type = "header"
+	GetProjectsBlockHistoryHasUnion1TypeHost   GetProjectsBlockHistoryHasUnion1Type = "host"
 )
 
 type GetProjectsBlockHistoryHasUnion1 struct {
@@ -9276,37 +9549,59 @@ type GetProjectsBlockHistoryHasUnion1 struct {
 	Type GetProjectsBlockHistoryHasUnion1Type
 }
 
-func CreateGetProjectsBlockHistoryHasUnion1GetProjectsBlockHistoryHasXVercelIPCountry1(getProjectsBlockHistoryHasXVercelIPCountry1 GetProjectsBlockHistoryHasXVercelIPCountry1) GetProjectsBlockHistoryHasUnion1 {
-	typ := GetProjectsBlockHistoryHasUnion1TypeGetProjectsBlockHistoryHasXVercelIPCountry1
+func CreateGetProjectsBlockHistoryHasUnion1Header(header GetProjectsBlockHistoryHasXVercelIPCountry1) GetProjectsBlockHistoryHasUnion1 {
+	typ := GetProjectsBlockHistoryHasUnion1TypeHeader
+
+	typStr := GetProjectsBlockHistoryTypeHeader1(typ)
+	header.Type = typStr
 
 	return GetProjectsBlockHistoryHasUnion1{
-		GetProjectsBlockHistoryHasXVercelIPCountry1: &getProjectsBlockHistoryHasXVercelIPCountry1,
+		GetProjectsBlockHistoryHasXVercelIPCountry1: &header,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectsBlockHistoryHasUnion1GetProjectsBlockHistoryHasHost1(getProjectsBlockHistoryHasHost1 GetProjectsBlockHistoryHasHost1) GetProjectsBlockHistoryHasUnion1 {
-	typ := GetProjectsBlockHistoryHasUnion1TypeGetProjectsBlockHistoryHasHost1
+func CreateGetProjectsBlockHistoryHasUnion1Host(host GetProjectsBlockHistoryHasHost1) GetProjectsBlockHistoryHasUnion1 {
+	typ := GetProjectsBlockHistoryHasUnion1TypeHost
+
+	typStr := GetProjectsBlockHistoryTypeHost1(typ)
+	host.Type = typStr
 
 	return GetProjectsBlockHistoryHasUnion1{
-		GetProjectsBlockHistoryHasHost1: &getProjectsBlockHistoryHasHost1,
+		GetProjectsBlockHistoryHasHost1: &host,
 		Type:                            typ,
 	}
 }
 
 func (u *GetProjectsBlockHistoryHasUnion1) UnmarshalJSON(data []byte) error {
 
-	var getProjectsBlockHistoryHasXVercelIPCountry1 GetProjectsBlockHistoryHasXVercelIPCountry1 = GetProjectsBlockHistoryHasXVercelIPCountry1{}
-	if err := utils.UnmarshalJSON(data, &getProjectsBlockHistoryHasXVercelIPCountry1, "", true, nil); err == nil {
-		u.GetProjectsBlockHistoryHasXVercelIPCountry1 = &getProjectsBlockHistoryHasXVercelIPCountry1
-		u.Type = GetProjectsBlockHistoryHasUnion1TypeGetProjectsBlockHistoryHasXVercelIPCountry1
-		return nil
+	type discriminator struct {
+		Type string `json:"type"`
 	}
 
-	var getProjectsBlockHistoryHasHost1 GetProjectsBlockHistoryHasHost1 = GetProjectsBlockHistoryHasHost1{}
-	if err := utils.UnmarshalJSON(data, &getProjectsBlockHistoryHasHost1, "", true, nil); err == nil {
-		u.GetProjectsBlockHistoryHasHost1 = &getProjectsBlockHistoryHasHost1
-		u.Type = GetProjectsBlockHistoryHasUnion1TypeGetProjectsBlockHistoryHasHost1
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Type {
+	case "header":
+		getProjectsBlockHistoryHasXVercelIPCountry1 := new(GetProjectsBlockHistoryHasXVercelIPCountry1)
+		if err := utils.UnmarshalJSON(data, &getProjectsBlockHistoryHasXVercelIPCountry1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == header) type GetProjectsBlockHistoryHasXVercelIPCountry1 within GetProjectsBlockHistoryHasUnion1: %w", string(data), err)
+		}
+
+		u.GetProjectsBlockHistoryHasXVercelIPCountry1 = getProjectsBlockHistoryHasXVercelIPCountry1
+		u.Type = GetProjectsBlockHistoryHasUnion1TypeHeader
+		return nil
+	case "host":
+		getProjectsBlockHistoryHasHost1 := new(GetProjectsBlockHistoryHasHost1)
+		if err := utils.UnmarshalJSON(data, &getProjectsBlockHistoryHasHost1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == host) type GetProjectsBlockHistoryHasHost1 within GetProjectsBlockHistoryHasUnion1: %w", string(data), err)
+		}
+
+		u.GetProjectsBlockHistoryHasHost1 = getProjectsBlockHistoryHasHost1
+		u.Type = GetProjectsBlockHistoryHasUnion1TypeHost
 		return nil
 	}
 
@@ -9768,10 +10063,10 @@ func (o *GetProjectsBlockHistoryBlocked) GetIsCascading() *bool {
 type GetProjectsBlockHistoryUnionType string
 
 const (
-	GetProjectsBlockHistoryUnionTypeGetProjectsBlockHistoryBlocked        GetProjectsBlockHistoryUnionType = "getProjects_blockHistory_Blocked"
-	GetProjectsBlockHistoryUnionTypeGetProjectsBlockHistoryUnblocked      GetProjectsBlockHistoryUnionType = "getProjects_blockHistory_Unblocked"
-	GetProjectsBlockHistoryUnionTypeGetProjectsBlockHistoryRouteBlocked   GetProjectsBlockHistoryUnionType = "getProjects_blockHistory_RouteBlocked"
-	GetProjectsBlockHistoryUnionTypeGetProjectsBlockHistoryRouteUnblocked GetProjectsBlockHistoryUnionType = "getProjects_blockHistory_RouteUnblocked"
+	GetProjectsBlockHistoryUnionTypeBlocked        GetProjectsBlockHistoryUnionType = "blocked"
+	GetProjectsBlockHistoryUnionTypeUnblocked      GetProjectsBlockHistoryUnionType = "unblocked"
+	GetProjectsBlockHistoryUnionTypeRouteBlocked   GetProjectsBlockHistoryUnionType = "route-blocked"
+	GetProjectsBlockHistoryUnionTypeRouteUnblocked GetProjectsBlockHistoryUnionType = "route-unblocked"
 )
 
 type GetProjectsBlockHistoryUnion struct {
@@ -9783,69 +10078,101 @@ type GetProjectsBlockHistoryUnion struct {
 	Type GetProjectsBlockHistoryUnionType
 }
 
-func CreateGetProjectsBlockHistoryUnionGetProjectsBlockHistoryBlocked(getProjectsBlockHistoryBlocked GetProjectsBlockHistoryBlocked) GetProjectsBlockHistoryUnion {
-	typ := GetProjectsBlockHistoryUnionTypeGetProjectsBlockHistoryBlocked
+func CreateGetProjectsBlockHistoryUnionBlocked(blocked GetProjectsBlockHistoryBlocked) GetProjectsBlockHistoryUnion {
+	typ := GetProjectsBlockHistoryUnionTypeBlocked
+
+	typStr := GetProjectsBlockHistoryActionBlocked(typ)
+	blocked.Action = typStr
 
 	return GetProjectsBlockHistoryUnion{
-		GetProjectsBlockHistoryBlocked: &getProjectsBlockHistoryBlocked,
+		GetProjectsBlockHistoryBlocked: &blocked,
 		Type:                           typ,
 	}
 }
 
-func CreateGetProjectsBlockHistoryUnionGetProjectsBlockHistoryUnblocked(getProjectsBlockHistoryUnblocked GetProjectsBlockHistoryUnblocked) GetProjectsBlockHistoryUnion {
-	typ := GetProjectsBlockHistoryUnionTypeGetProjectsBlockHistoryUnblocked
+func CreateGetProjectsBlockHistoryUnionUnblocked(unblocked GetProjectsBlockHistoryUnblocked) GetProjectsBlockHistoryUnion {
+	typ := GetProjectsBlockHistoryUnionTypeUnblocked
+
+	typStr := GetProjectsActionUnblocked(typ)
+	unblocked.Action = typStr
 
 	return GetProjectsBlockHistoryUnion{
-		GetProjectsBlockHistoryUnblocked: &getProjectsBlockHistoryUnblocked,
+		GetProjectsBlockHistoryUnblocked: &unblocked,
 		Type:                             typ,
 	}
 }
 
-func CreateGetProjectsBlockHistoryUnionGetProjectsBlockHistoryRouteBlocked(getProjectsBlockHistoryRouteBlocked GetProjectsBlockHistoryRouteBlocked) GetProjectsBlockHistoryUnion {
-	typ := GetProjectsBlockHistoryUnionTypeGetProjectsBlockHistoryRouteBlocked
+func CreateGetProjectsBlockHistoryUnionRouteBlocked(routeBlocked GetProjectsBlockHistoryRouteBlocked) GetProjectsBlockHistoryUnion {
+	typ := GetProjectsBlockHistoryUnionTypeRouteBlocked
+
+	typStr := GetProjectsActionRouteBlocked(typ)
+	routeBlocked.Action = typStr
 
 	return GetProjectsBlockHistoryUnion{
-		GetProjectsBlockHistoryRouteBlocked: &getProjectsBlockHistoryRouteBlocked,
+		GetProjectsBlockHistoryRouteBlocked: &routeBlocked,
 		Type:                                typ,
 	}
 }
 
-func CreateGetProjectsBlockHistoryUnionGetProjectsBlockHistoryRouteUnblocked(getProjectsBlockHistoryRouteUnblocked GetProjectsBlockHistoryRouteUnblocked) GetProjectsBlockHistoryUnion {
-	typ := GetProjectsBlockHistoryUnionTypeGetProjectsBlockHistoryRouteUnblocked
+func CreateGetProjectsBlockHistoryUnionRouteUnblocked(routeUnblocked GetProjectsBlockHistoryRouteUnblocked) GetProjectsBlockHistoryUnion {
+	typ := GetProjectsBlockHistoryUnionTypeRouteUnblocked
+
+	typStr := GetProjectsActionRouteUnblocked(typ)
+	routeUnblocked.Action = typStr
 
 	return GetProjectsBlockHistoryUnion{
-		GetProjectsBlockHistoryRouteUnblocked: &getProjectsBlockHistoryRouteUnblocked,
+		GetProjectsBlockHistoryRouteUnblocked: &routeUnblocked,
 		Type:                                  typ,
 	}
 }
 
 func (u *GetProjectsBlockHistoryUnion) UnmarshalJSON(data []byte) error {
 
-	var getProjectsBlockHistoryBlocked GetProjectsBlockHistoryBlocked = GetProjectsBlockHistoryBlocked{}
-	if err := utils.UnmarshalJSON(data, &getProjectsBlockHistoryBlocked, "", true, nil); err == nil {
-		u.GetProjectsBlockHistoryBlocked = &getProjectsBlockHistoryBlocked
-		u.Type = GetProjectsBlockHistoryUnionTypeGetProjectsBlockHistoryBlocked
-		return nil
+	type discriminator struct {
+		Action string `json:"action"`
 	}
 
-	var getProjectsBlockHistoryRouteBlocked GetProjectsBlockHistoryRouteBlocked = GetProjectsBlockHistoryRouteBlocked{}
-	if err := utils.UnmarshalJSON(data, &getProjectsBlockHistoryRouteBlocked, "", true, nil); err == nil {
-		u.GetProjectsBlockHistoryRouteBlocked = &getProjectsBlockHistoryRouteBlocked
-		u.Type = GetProjectsBlockHistoryUnionTypeGetProjectsBlockHistoryRouteBlocked
-		return nil
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
 	}
 
-	var getProjectsBlockHistoryRouteUnblocked GetProjectsBlockHistoryRouteUnblocked = GetProjectsBlockHistoryRouteUnblocked{}
-	if err := utils.UnmarshalJSON(data, &getProjectsBlockHistoryRouteUnblocked, "", true, nil); err == nil {
-		u.GetProjectsBlockHistoryRouteUnblocked = &getProjectsBlockHistoryRouteUnblocked
-		u.Type = GetProjectsBlockHistoryUnionTypeGetProjectsBlockHistoryRouteUnblocked
-		return nil
-	}
+	switch dis.Action {
+	case "blocked":
+		getProjectsBlockHistoryBlocked := new(GetProjectsBlockHistoryBlocked)
+		if err := utils.UnmarshalJSON(data, &getProjectsBlockHistoryBlocked, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Action == blocked) type GetProjectsBlockHistoryBlocked within GetProjectsBlockHistoryUnion: %w", string(data), err)
+		}
 
-	var getProjectsBlockHistoryUnblocked GetProjectsBlockHistoryUnblocked = GetProjectsBlockHistoryUnblocked{}
-	if err := utils.UnmarshalJSON(data, &getProjectsBlockHistoryUnblocked, "", true, nil); err == nil {
-		u.GetProjectsBlockHistoryUnblocked = &getProjectsBlockHistoryUnblocked
-		u.Type = GetProjectsBlockHistoryUnionTypeGetProjectsBlockHistoryUnblocked
+		u.GetProjectsBlockHistoryBlocked = getProjectsBlockHistoryBlocked
+		u.Type = GetProjectsBlockHistoryUnionTypeBlocked
+		return nil
+	case "unblocked":
+		getProjectsBlockHistoryUnblocked := new(GetProjectsBlockHistoryUnblocked)
+		if err := utils.UnmarshalJSON(data, &getProjectsBlockHistoryUnblocked, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Action == unblocked) type GetProjectsBlockHistoryUnblocked within GetProjectsBlockHistoryUnion: %w", string(data), err)
+		}
+
+		u.GetProjectsBlockHistoryUnblocked = getProjectsBlockHistoryUnblocked
+		u.Type = GetProjectsBlockHistoryUnionTypeUnblocked
+		return nil
+	case "route-blocked":
+		getProjectsBlockHistoryRouteBlocked := new(GetProjectsBlockHistoryRouteBlocked)
+		if err := utils.UnmarshalJSON(data, &getProjectsBlockHistoryRouteBlocked, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Action == route-blocked) type GetProjectsBlockHistoryRouteBlocked within GetProjectsBlockHistoryUnion: %w", string(data), err)
+		}
+
+		u.GetProjectsBlockHistoryRouteBlocked = getProjectsBlockHistoryRouteBlocked
+		u.Type = GetProjectsBlockHistoryUnionTypeRouteBlocked
+		return nil
+	case "route-unblocked":
+		getProjectsBlockHistoryRouteUnblocked := new(GetProjectsBlockHistoryRouteUnblocked)
+		if err := utils.UnmarshalJSON(data, &getProjectsBlockHistoryRouteUnblocked, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Action == route-unblocked) type GetProjectsBlockHistoryRouteUnblocked within GetProjectsBlockHistoryUnion: %w", string(data), err)
+		}
+
+		u.GetProjectsBlockHistoryRouteUnblocked = getProjectsBlockHistoryRouteUnblocked
+		u.Type = GetProjectsBlockHistoryUnionTypeRouteUnblocked
 		return nil
 	}
 
@@ -10107,8 +10434,8 @@ func (o *GetProjectsInternalRouteHasXVercelIPCountry) GetValue() GetProjectsInte
 type GetProjectsInternalRouteHasUnionType string
 
 const (
-	GetProjectsInternalRouteHasUnionTypeGetProjectsInternalRouteHasXVercelIPCountry GetProjectsInternalRouteHasUnionType = "getProjects_internalRoute_has_XVercelIPCountry"
-	GetProjectsInternalRouteHasUnionTypeGetProjectsInternalRouteHasHost             GetProjectsInternalRouteHasUnionType = "getProjects_internalRoute_has_Host"
+	GetProjectsInternalRouteHasUnionTypeHeader GetProjectsInternalRouteHasUnionType = "header"
+	GetProjectsInternalRouteHasUnionTypeHost   GetProjectsInternalRouteHasUnionType = "host"
 )
 
 type GetProjectsInternalRouteHasUnion struct {
@@ -10118,37 +10445,59 @@ type GetProjectsInternalRouteHasUnion struct {
 	Type GetProjectsInternalRouteHasUnionType
 }
 
-func CreateGetProjectsInternalRouteHasUnionGetProjectsInternalRouteHasXVercelIPCountry(getProjectsInternalRouteHasXVercelIPCountry GetProjectsInternalRouteHasXVercelIPCountry) GetProjectsInternalRouteHasUnion {
-	typ := GetProjectsInternalRouteHasUnionTypeGetProjectsInternalRouteHasXVercelIPCountry
+func CreateGetProjectsInternalRouteHasUnionHeader(header GetProjectsInternalRouteHasXVercelIPCountry) GetProjectsInternalRouteHasUnion {
+	typ := GetProjectsInternalRouteHasUnionTypeHeader
+
+	typStr := GetProjectsInternalRouteTypeHeader(typ)
+	header.Type = typStr
 
 	return GetProjectsInternalRouteHasUnion{
-		GetProjectsInternalRouteHasXVercelIPCountry: &getProjectsInternalRouteHasXVercelIPCountry,
+		GetProjectsInternalRouteHasXVercelIPCountry: &header,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectsInternalRouteHasUnionGetProjectsInternalRouteHasHost(getProjectsInternalRouteHasHost GetProjectsInternalRouteHasHost) GetProjectsInternalRouteHasUnion {
-	typ := GetProjectsInternalRouteHasUnionTypeGetProjectsInternalRouteHasHost
+func CreateGetProjectsInternalRouteHasUnionHost(host GetProjectsInternalRouteHasHost) GetProjectsInternalRouteHasUnion {
+	typ := GetProjectsInternalRouteHasUnionTypeHost
+
+	typStr := GetProjectsInternalRouteTypeHost(typ)
+	host.Type = typStr
 
 	return GetProjectsInternalRouteHasUnion{
-		GetProjectsInternalRouteHasHost: &getProjectsInternalRouteHasHost,
+		GetProjectsInternalRouteHasHost: &host,
 		Type:                            typ,
 	}
 }
 
 func (u *GetProjectsInternalRouteHasUnion) UnmarshalJSON(data []byte) error {
 
-	var getProjectsInternalRouteHasXVercelIPCountry GetProjectsInternalRouteHasXVercelIPCountry = GetProjectsInternalRouteHasXVercelIPCountry{}
-	if err := utils.UnmarshalJSON(data, &getProjectsInternalRouteHasXVercelIPCountry, "", true, nil); err == nil {
-		u.GetProjectsInternalRouteHasXVercelIPCountry = &getProjectsInternalRouteHasXVercelIPCountry
-		u.Type = GetProjectsInternalRouteHasUnionTypeGetProjectsInternalRouteHasXVercelIPCountry
-		return nil
+	type discriminator struct {
+		Type string `json:"type"`
 	}
 
-	var getProjectsInternalRouteHasHost GetProjectsInternalRouteHasHost = GetProjectsInternalRouteHasHost{}
-	if err := utils.UnmarshalJSON(data, &getProjectsInternalRouteHasHost, "", true, nil); err == nil {
-		u.GetProjectsInternalRouteHasHost = &getProjectsInternalRouteHasHost
-		u.Type = GetProjectsInternalRouteHasUnionTypeGetProjectsInternalRouteHasHost
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Type {
+	case "header":
+		getProjectsInternalRouteHasXVercelIPCountry := new(GetProjectsInternalRouteHasXVercelIPCountry)
+		if err := utils.UnmarshalJSON(data, &getProjectsInternalRouteHasXVercelIPCountry, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == header) type GetProjectsInternalRouteHasXVercelIPCountry within GetProjectsInternalRouteHasUnion: %w", string(data), err)
+		}
+
+		u.GetProjectsInternalRouteHasXVercelIPCountry = getProjectsInternalRouteHasXVercelIPCountry
+		u.Type = GetProjectsInternalRouteHasUnionTypeHeader
+		return nil
+	case "host":
+		getProjectsInternalRouteHasHost := new(GetProjectsInternalRouteHasHost)
+		if err := utils.UnmarshalJSON(data, &getProjectsInternalRouteHasHost, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == host) type GetProjectsInternalRouteHasHost within GetProjectsInternalRouteHasUnion: %w", string(data), err)
+		}
+
+		u.GetProjectsInternalRouteHasHost = getProjectsInternalRouteHasHost
+		u.Type = GetProjectsInternalRouteHasUnionTypeHost
 		return nil
 	}
 
@@ -11000,6 +11349,41 @@ func (o *GetProjectsProject) GetLink() *GetProjectsLinkUnion {
 		return nil
 	}
 	return o.Link
+}
+
+func (o *GetProjectsProject) GetLinkGithub() *GetProjectsLinkGithub {
+	if v := o.GetLink(); v != nil {
+		return v.GetProjectsLinkGithub
+	}
+	return nil
+}
+
+func (o *GetProjectsProject) GetLinkGithubLimited() *GetProjectsLinkGithubLimited {
+	if v := o.GetLink(); v != nil {
+		return v.GetProjectsLinkGithubLimited
+	}
+	return nil
+}
+
+func (o *GetProjectsProject) GetLinkGithubCustomHost() *GetProjectsLinkGithubCustomHost {
+	if v := o.GetLink(); v != nil {
+		return v.GetProjectsLinkGithubCustomHost
+	}
+	return nil
+}
+
+func (o *GetProjectsProject) GetLinkGitlab() *GetProjectsLinkGitlab {
+	if v := o.GetLink(); v != nil {
+		return v.GetProjectsLinkGitlab
+	}
+	return nil
+}
+
+func (o *GetProjectsProject) GetLinkBitbucket() *GetProjectsLinkBitbucket {
+	if v := o.GetLink(); v != nil {
+		return v.GetProjectsLinkBitbucket
+	}
+	return nil
 }
 
 func (o *GetProjectsProject) GetMicrofrontends() *GetProjectsMicrofrontendsUnion {

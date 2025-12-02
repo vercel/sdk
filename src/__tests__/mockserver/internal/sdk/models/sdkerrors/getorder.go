@@ -13,8 +13,8 @@ import (
 type GetOrderForbiddenType string
 
 const (
-	GetOrderForbiddenTypeNotAuthorizedForScopeError GetOrderForbiddenType = "NotAuthorizedForScope_error"
-	GetOrderForbiddenTypeForbiddenError             GetOrderForbiddenType = "Forbidden_error"
+	GetOrderForbiddenTypeNotAuthorizedForScope GetOrderForbiddenType = "not_authorized_for_scope"
+	GetOrderForbiddenTypeForbidden             GetOrderForbiddenType = "forbidden"
 )
 
 // GetOrderForbidden - NotAuthorizedForScope
@@ -29,37 +29,53 @@ type GetOrderForbidden struct {
 
 var _ error = &GetOrderForbidden{}
 
-func CreateGetOrderForbiddenNotAuthorizedForScopeError(notAuthorizedForScopeError NotAuthorizedForScopeError) GetOrderForbidden {
-	typ := GetOrderForbiddenTypeNotAuthorizedForScopeError
+func CreateGetOrderForbiddenNotAuthorizedForScope(notAuthorizedForScope NotAuthorizedForScopeError) GetOrderForbidden {
+	typ := GetOrderForbiddenTypeNotAuthorizedForScope
 
 	return GetOrderForbidden{
-		NotAuthorizedForScopeError: &notAuthorizedForScopeError,
+		NotAuthorizedForScopeError: &notAuthorizedForScope,
 		Type:                       typ,
 	}
 }
 
-func CreateGetOrderForbiddenForbiddenError(forbiddenError ForbiddenError) GetOrderForbidden {
-	typ := GetOrderForbiddenTypeForbiddenError
+func CreateGetOrderForbiddenForbidden(forbidden ForbiddenError) GetOrderForbidden {
+	typ := GetOrderForbiddenTypeForbidden
 
 	return GetOrderForbidden{
-		ForbiddenError: &forbiddenError,
+		ForbiddenError: &forbidden,
 		Type:           typ,
 	}
 }
 
 func (u *GetOrderForbidden) UnmarshalJSON(data []byte) error {
 
-	var notAuthorizedForScopeError NotAuthorizedForScopeError = NotAuthorizedForScopeError{}
-	if err := utils.UnmarshalJSON(data, &notAuthorizedForScopeError, "", true, nil); err == nil {
-		u.NotAuthorizedForScopeError = &notAuthorizedForScopeError
-		u.Type = GetOrderForbiddenTypeNotAuthorizedForScopeError
-		return nil
+	type discriminator struct {
+		Code string `json:"code"`
 	}
 
-	var forbiddenError ForbiddenError = ForbiddenError{}
-	if err := utils.UnmarshalJSON(data, &forbiddenError, "", true, nil); err == nil {
-		u.ForbiddenError = &forbiddenError
-		u.Type = GetOrderForbiddenTypeForbiddenError
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Code {
+	case "not_authorized_for_scope":
+		notAuthorizedForScopeError := new(NotAuthorizedForScopeError)
+		if err := utils.UnmarshalJSON(data, &notAuthorizedForScopeError, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == not_authorized_for_scope) type NotAuthorizedForScopeError within GetOrderForbidden: %w", string(data), err)
+		}
+
+		u.NotAuthorizedForScopeError = notAuthorizedForScopeError
+		u.Type = GetOrderForbiddenTypeNotAuthorizedForScope
+		return nil
+	case "forbidden":
+		forbiddenError := new(ForbiddenError)
+		if err := utils.UnmarshalJSON(data, &forbiddenError, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == forbidden) type ForbiddenError within GetOrderForbidden: %w", string(data), err)
+		}
+
+		u.ForbiddenError = forbiddenError
+		u.Type = GetOrderForbiddenTypeForbidden
 		return nil
 	}
 
@@ -80,10 +96,10 @@ func (u GetOrderForbidden) MarshalJSON() ([]byte, error) {
 
 func (u GetOrderForbidden) Error() string {
 	switch u.Type {
-	case GetOrderForbiddenTypeNotAuthorizedForScopeError:
+	case GetOrderForbiddenTypeNotAuthorizedForScope:
 		data, _ := json.Marshal(u.NotAuthorizedForScopeError)
 		return string(data)
-	case GetOrderForbiddenTypeForbiddenError:
+	case GetOrderForbiddenTypeForbidden:
 		data, _ := json.Marshal(u.ForbiddenError)
 		return string(data)
 	default:

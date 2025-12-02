@@ -176,20 +176,13 @@ export type ResponseBodyNotification = {
   href?: string | undefined;
 };
 
-export const GetConfigurationTransferRequestKind = {
-  TransferFromMarketplace: "transfer-from-marketplace",
-} as const;
-export type GetConfigurationTransferRequestKind = ClosedEnum<
-  typeof GetConfigurationTransferRequestKind
->;
-
 export type TransferRequestRequester = {
   name: string;
   email?: string | undefined;
 };
 
 export type TransferRequest2 = {
-  kind: GetConfigurationTransferRequestKind;
+  kind: "transfer-from-marketplace";
   requestId: string;
   transferId: string;
   requester: TransferRequestRequester;
@@ -201,11 +194,6 @@ export type TransferRequest2 = {
   approvedBy?: string | undefined;
   authorizationId?: string | undefined;
 };
-
-export const TransferRequestKind = {
-  TransferToMarketplace: "transfer-to-marketplace",
-} as const;
-export type TransferRequestKind = ClosedEnum<typeof TransferRequestKind>;
 
 export const TransferRequestType = {
   Subscription: "subscription",
@@ -235,7 +223,7 @@ export type Requester = {
 };
 
 export type TransferRequest1 = {
-  kind: TransferRequestKind;
+  kind: "transfer-to-marketplace";
   metadata?: { [k: string]: any } | undefined;
   billingPlan?: TransferRequestBillingPlan | undefined;
   requestId: string;
@@ -639,15 +627,6 @@ export function responseBodyNotificationFromJSON(
 }
 
 /** @internal */
-export const GetConfigurationTransferRequestKind$inboundSchema: z.ZodNativeEnum<
-  typeof GetConfigurationTransferRequestKind
-> = z.nativeEnum(GetConfigurationTransferRequestKind);
-/** @internal */
-export const GetConfigurationTransferRequestKind$outboundSchema:
-  z.ZodNativeEnum<typeof GetConfigurationTransferRequestKind> =
-    GetConfigurationTransferRequestKind$inboundSchema;
-
-/** @internal */
 export const TransferRequestRequester$inboundSchema: z.ZodType<
   TransferRequestRequester,
   z.ZodTypeDef,
@@ -695,7 +674,7 @@ export const TransferRequest2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  kind: GetConfigurationTransferRequestKind$inboundSchema,
+  kind: z.literal("transfer-from-marketplace"),
   requestId: z.string(),
   transferId: z.string(),
   requester: z.lazy(() => TransferRequestRequester$inboundSchema),
@@ -709,7 +688,7 @@ export const TransferRequest2$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type TransferRequest2$Outbound = {
-  kind: string;
+  kind: "transfer-from-marketplace";
   requestId: string;
   transferId: string;
   requester: TransferRequestRequester$Outbound;
@@ -728,7 +707,7 @@ export const TransferRequest2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TransferRequest2
 > = z.object({
-  kind: GetConfigurationTransferRequestKind$outboundSchema,
+  kind: z.literal("transfer-from-marketplace"),
   requestId: z.string(),
   transferId: z.string(),
   requester: z.lazy(() => TransferRequestRequester$outboundSchema),
@@ -757,15 +736,6 @@ export function transferRequest2FromJSON(
     `Failed to parse 'TransferRequest2' from JSON`,
   );
 }
-
-/** @internal */
-export const TransferRequestKind$inboundSchema: z.ZodNativeEnum<
-  typeof TransferRequestKind
-> = z.nativeEnum(TransferRequestKind);
-/** @internal */
-export const TransferRequestKind$outboundSchema: z.ZodNativeEnum<
-  typeof TransferRequestKind
-> = TransferRequestKind$inboundSchema;
 
 /** @internal */
 export const TransferRequestType$inboundSchema: z.ZodNativeEnum<
@@ -886,7 +856,7 @@ export const TransferRequest1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  kind: TransferRequestKind$inboundSchema,
+  kind: z.literal("transfer-to-marketplace"),
   metadata: z.record(z.any()).optional(),
   billingPlan: z.lazy(() => TransferRequestBillingPlan$inboundSchema)
     .optional(),
@@ -903,7 +873,7 @@ export const TransferRequest1$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type TransferRequest1$Outbound = {
-  kind: string;
+  kind: "transfer-to-marketplace";
   metadata?: { [k: string]: any } | undefined;
   billingPlan?: TransferRequestBillingPlan$Outbound | undefined;
   requestId: string;
@@ -924,7 +894,7 @@ export const TransferRequest1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TransferRequest1
 > = z.object({
-  kind: TransferRequestKind$outboundSchema,
+  kind: z.literal("transfer-to-marketplace"),
   metadata: z.record(z.any()).optional(),
   billingPlan: z.lazy(() => TransferRequestBillingPlan$outboundSchema)
     .optional(),

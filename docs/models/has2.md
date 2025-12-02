@@ -15,7 +15,7 @@ let value: Has2 = {
 
 ## Fields
 
-| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `type`                                                                             | [models.UpdateProjectDataCacheHasType](../models/updateprojectdatacachehastype.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `value`                                                                            | [models.HasValue](../models/hasvalue.md)                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `type`                                   | *"host"*                                 | :heavy_check_mark:                       | N/A                                      |
+| `value`                                  | [models.HasValue](../models/hasvalue.md) | :heavy_check_mark:                       | N/A                                      |

@@ -453,8 +453,8 @@ func (o *CreateLogDrainSourceSelfServed) GetKind() CreateLogDrainKindSelfServed 
 type CreateLogDrainSourceUnionType string
 
 const (
-	CreateLogDrainSourceUnionTypeCreateLogDrainSourceSelfServed  CreateLogDrainSourceUnionType = "createLogDrain_source_SelfServed"
-	CreateLogDrainSourceUnionTypeCreateLogDrainSourceIntegration CreateLogDrainSourceUnionType = "createLogDrain_source_Integration"
+	CreateLogDrainSourceUnionTypeSelfServed  CreateLogDrainSourceUnionType = "self-served"
+	CreateLogDrainSourceUnionTypeIntegration CreateLogDrainSourceUnionType = "integration"
 )
 
 type CreateLogDrainSourceUnion struct {
@@ -464,37 +464,59 @@ type CreateLogDrainSourceUnion struct {
 	Type CreateLogDrainSourceUnionType
 }
 
-func CreateCreateLogDrainSourceUnionCreateLogDrainSourceSelfServed(createLogDrainSourceSelfServed CreateLogDrainSourceSelfServed) CreateLogDrainSourceUnion {
-	typ := CreateLogDrainSourceUnionTypeCreateLogDrainSourceSelfServed
+func CreateCreateLogDrainSourceUnionSelfServed(selfServed CreateLogDrainSourceSelfServed) CreateLogDrainSourceUnion {
+	typ := CreateLogDrainSourceUnionTypeSelfServed
+
+	typStr := CreateLogDrainKindSelfServed(typ)
+	selfServed.Kind = typStr
 
 	return CreateLogDrainSourceUnion{
-		CreateLogDrainSourceSelfServed: &createLogDrainSourceSelfServed,
+		CreateLogDrainSourceSelfServed: &selfServed,
 		Type:                           typ,
 	}
 }
 
-func CreateCreateLogDrainSourceUnionCreateLogDrainSourceIntegration(createLogDrainSourceIntegration CreateLogDrainSourceIntegration) CreateLogDrainSourceUnion {
-	typ := CreateLogDrainSourceUnionTypeCreateLogDrainSourceIntegration
+func CreateCreateLogDrainSourceUnionIntegration(integration CreateLogDrainSourceIntegration) CreateLogDrainSourceUnion {
+	typ := CreateLogDrainSourceUnionTypeIntegration
+
+	typStr := CreateLogDrainKindIntegration(typ)
+	integration.Kind = typStr
 
 	return CreateLogDrainSourceUnion{
-		CreateLogDrainSourceIntegration: &createLogDrainSourceIntegration,
+		CreateLogDrainSourceIntegration: &integration,
 		Type:                            typ,
 	}
 }
 
 func (u *CreateLogDrainSourceUnion) UnmarshalJSON(data []byte) error {
 
-	var createLogDrainSourceIntegration CreateLogDrainSourceIntegration = CreateLogDrainSourceIntegration{}
-	if err := utils.UnmarshalJSON(data, &createLogDrainSourceIntegration, "", true, nil); err == nil {
-		u.CreateLogDrainSourceIntegration = &createLogDrainSourceIntegration
-		u.Type = CreateLogDrainSourceUnionTypeCreateLogDrainSourceIntegration
-		return nil
+	type discriminator struct {
+		Kind string `json:"kind"`
 	}
 
-	var createLogDrainSourceSelfServed CreateLogDrainSourceSelfServed = CreateLogDrainSourceSelfServed{}
-	if err := utils.UnmarshalJSON(data, &createLogDrainSourceSelfServed, "", true, nil); err == nil {
-		u.CreateLogDrainSourceSelfServed = &createLogDrainSourceSelfServed
-		u.Type = CreateLogDrainSourceUnionTypeCreateLogDrainSourceSelfServed
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Kind {
+	case "self-served":
+		createLogDrainSourceSelfServed := new(CreateLogDrainSourceSelfServed)
+		if err := utils.UnmarshalJSON(data, &createLogDrainSourceSelfServed, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Kind == self-served) type CreateLogDrainSourceSelfServed within CreateLogDrainSourceUnion: %w", string(data), err)
+		}
+
+		u.CreateLogDrainSourceSelfServed = createLogDrainSourceSelfServed
+		u.Type = CreateLogDrainSourceUnionTypeSelfServed
+		return nil
+	case "integration":
+		createLogDrainSourceIntegration := new(CreateLogDrainSourceIntegration)
+		if err := utils.UnmarshalJSON(data, &createLogDrainSourceIntegration, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Kind == integration) type CreateLogDrainSourceIntegration within CreateLogDrainSourceUnion: %w", string(data), err)
+		}
+
+		u.CreateLogDrainSourceIntegration = createLogDrainSourceIntegration
+		u.Type = CreateLogDrainSourceUnionTypeIntegration
 		return nil
 	}
 
@@ -666,6 +688,14 @@ func (o *CreateLogDrainResponseBody) GetSource() CreateLogDrainSourceUnion {
 		return CreateLogDrainSourceUnion{}
 	}
 	return o.Source
+}
+
+func (o *CreateLogDrainResponseBody) GetSourceSelfServed() *CreateLogDrainSourceSelfServed {
+	return o.GetSource().CreateLogDrainSourceSelfServed
+}
+
+func (o *CreateLogDrainResponseBody) GetSourceIntegration() *CreateLogDrainSourceIntegration {
+	return o.GetSource().CreateLogDrainSourceIntegration
 }
 
 type CreateLogDrainResponse struct {

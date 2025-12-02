@@ -29,15 +29,8 @@ export type GetOrderRequest = {
  * NotAuthorizedForScope
  */
 export type GetOrderDomainsRegistrarResponseBody =
-  | NotAuthorizedForScope
+  | (NotAuthorizedForScope & { code: "not_authorized_for_scope" })
   | Forbidden;
-
-export const GetOrderDomainsPurchaseType = {
-  Transfer: "transfer",
-} as const;
-export type GetOrderDomainsPurchaseType = ClosedEnum<
-  typeof GetOrderDomainsPurchaseType
->;
 
 export const GetOrderDomainsDomainsRegistrarStatus = {
   Pending: "pending",
@@ -55,49 +48,20 @@ export type GetOrderErrorDomainsRegistrar2 = {
   details?: any | undefined;
 };
 
-export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3Code =
-  {
-    ClaimsNoticeRequired: "claims-notice-required",
-  } as const;
-export type GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3Code =
-  ClosedEnum<
-    typeof GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3Code
-  >;
-
 export type GetOrder1DomainsRegistrar3 = {
-  code:
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3Code;
+  code: "claims-notice-required";
 };
-
-export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomainsCode =
-  {
-    ClientTransferProhibited: "client-transfer-prohibited",
-  } as const;
-export type GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomainsCode =
-  ClosedEnum<
-    typeof GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomainsCode
-  >;
 
 export type GetOrder1DomainsRegistrar2 = {
-  code:
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomainsCode;
+  code: "client-transfer-prohibited";
 };
-
-export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyCode =
-  {
-    UnsupportedLanguageCode: "unsupported-language-code",
-  } as const;
-export type GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyCode =
-  ClosedEnum<
-    typeof GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyCode
-  >;
 
 export type GetOrder1DomainsRegistrarResponse200Details = {
   detectedLanguageCode: string;
 };
 
 export type GetOrder1DomainsRegistrar1 = {
-  code: GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyCode;
+  code: "unsupported-language-code";
   details: GetOrder1DomainsRegistrarResponse200Details;
 };
 
@@ -113,7 +77,7 @@ export type GetOrderDomainsDomainsRegistrarError =
   | GetOrder1DomainsRegistrar3;
 
 export type Domains3 = {
-  purchaseType: GetOrderDomainsPurchaseType;
+  purchaseType: "transfer";
   autoRenew: boolean;
   /**
    * The number of years the domain is being transferred for.
@@ -133,11 +97,6 @@ export type Domains3 = {
     | undefined;
 };
 
-export const DomainsPurchaseType = {
-  Renewal: "renewal",
-} as const;
-export type DomainsPurchaseType = ClosedEnum<typeof DomainsPurchaseType>;
-
 export const GetOrderDomainsStatus = {
   Pending: "pending",
   Completed: "completed",
@@ -152,43 +111,20 @@ export type GetOrderError2 = {
   details?: any | undefined;
 };
 
-export const GetOrder1DomainsRegistrarResponse200ApplicationJSONCode = {
-  ClaimsNoticeRequired: "claims-notice-required",
-} as const;
-export type GetOrder1DomainsRegistrarResponse200ApplicationJSONCode =
-  ClosedEnum<typeof GetOrder1DomainsRegistrarResponse200ApplicationJSONCode>;
-
 export type GetOrder1DomainsRegistrarResponse2003 = {
-  code: GetOrder1DomainsRegistrarResponse200ApplicationJSONCode;
+  code: "claims-notice-required";
 };
-
-export const GetOrder1DomainsRegistrarResponse200Code = {
-  ClientTransferProhibited: "client-transfer-prohibited",
-} as const;
-export type GetOrder1DomainsRegistrarResponse200Code = ClosedEnum<
-  typeof GetOrder1DomainsRegistrarResponse200Code
->;
 
 export type GetOrder1DomainsRegistrarResponse2002 = {
-  code: GetOrder1DomainsRegistrarResponse200Code;
+  code: "client-transfer-prohibited";
 };
-
-export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains2Code =
-  {
-    UnsupportedLanguageCode: "unsupported-language-code",
-  } as const;
-export type GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains2Code =
-  ClosedEnum<
-    typeof GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains2Code
-  >;
 
 export type GetOrder1DomainsRegistrarResponseDetails = {
   detectedLanguageCode: string;
 };
 
 export type GetOrder1DomainsRegistrarResponse2001 = {
-  code:
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains2Code;
+  code: "unsupported-language-code";
   details: GetOrder1DomainsRegistrarResponseDetails;
 };
 
@@ -204,7 +140,7 @@ export type GetOrderDomainsError =
   | GetOrder1DomainsRegistrarResponse2003;
 
 export type Domains2 = {
-  purchaseType: DomainsPurchaseType;
+  purchaseType: "renewal";
   /**
    * The number of years the domain is being renewed for.
    */
@@ -223,13 +159,6 @@ export type Domains2 = {
     | undefined;
 };
 
-export const GetOrderDomainsDomainsRegistrarPurchaseType = {
-  Purchase: "purchase",
-} as const;
-export type GetOrderDomainsDomainsRegistrarPurchaseType = ClosedEnum<
-  typeof GetOrderDomainsDomainsRegistrarPurchaseType
->;
-
 export const DomainsStatus = {
   Pending: "pending",
   Completed: "completed",
@@ -244,50 +173,20 @@ export type GetOrderErrorDomainsRegistrarResponse2 = {
   details?: any | undefined;
 };
 
-export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Error3Code =
-  {
-    ClaimsNoticeRequired: "claims-notice-required",
-  } as const;
-export type GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Error3Code =
-  ClosedEnum<
-    typeof GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Error3Code
-  >;
-
 export type GetOrder1DomainsRegistrarResponse3 = {
-  code:
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Error3Code;
+  code: "claims-notice-required";
 };
-
-export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1ErrorCode =
-  {
-    ClientTransferProhibited: "client-transfer-prohibited",
-  } as const;
-export type GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1ErrorCode =
-  ClosedEnum<
-    typeof GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1ErrorCode
-  >;
 
 export type GetOrder1DomainsRegistrarResponse2 = {
-  code:
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1ErrorCode;
+  code: "client-transfer-prohibited";
 };
-
-export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Code =
-  {
-    UnsupportedLanguageCode: "unsupported-language-code",
-  } as const;
-export type GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Code =
-  ClosedEnum<
-    typeof GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Code
-  >;
 
 export type GetOrder1DomainsRegistrarDetails = {
   detectedLanguageCode: string;
 };
 
 export type GetOrder1DomainsRegistrarResponse1 = {
-  code:
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Code;
+  code: "unsupported-language-code";
   details: GetOrder1DomainsRegistrarDetails;
 };
 
@@ -303,7 +202,7 @@ export type DomainsError =
   | GetOrder1DomainsRegistrarResponse3;
 
 export type Domains1 = {
-  purchaseType: GetOrderDomainsDomainsRegistrarPurchaseType;
+  purchaseType: "purchase";
   autoRenew: boolean;
   /**
    * The number of years the domain is being purchased for.
@@ -323,7 +222,7 @@ export type Domains1 = {
     | undefined;
 };
 
-export type GetOrderDomains = Domains1 | Domains3 | Domains2;
+export type GetOrderDomains = Domains1 | Domains2 | Domains3;
 
 export const GetOrderStatus = {
   Draft: "draft",
@@ -338,23 +237,9 @@ export type Error2 = {
   details?: any | undefined;
 };
 
-export const GetOrder1DomainsRegistrarResponseCode = {
-  UnexpectedError: "unexpected-error",
-} as const;
-export type GetOrder1DomainsRegistrarResponseCode = ClosedEnum<
-  typeof GetOrder1DomainsRegistrarResponseCode
->;
-
 export type One4 = {
-  code: GetOrder1DomainsRegistrarResponseCode;
+  code: "unexpected-error";
 };
-
-export const GetOrder1DomainsRegistrarCode = {
-  PriceMismatch: "price-mismatch",
-} as const;
-export type GetOrder1DomainsRegistrarCode = ClosedEnum<
-  typeof GetOrder1DomainsRegistrarCode
->;
 
 export type OneDetails = {
   expectedPrice: number;
@@ -362,14 +247,9 @@ export type OneDetails = {
 };
 
 export type GetOrder13 = {
-  code: GetOrder1DomainsRegistrarCode;
+  code: "price-mismatch";
   details: OneDetails;
 };
-
-export const GetOrder1Code = {
-  TldOutage: "tld-outage",
-} as const;
-export type GetOrder1Code = ClosedEnum<typeof GetOrder1Code>;
 
 export type Tlds = {
   tldName: string;
@@ -381,31 +261,26 @@ export type GetOrder1Details = {
 };
 
 export type GetOrder12 = {
-  code: GetOrder1Code;
+  code: "tld-outage";
   details: GetOrder1Details;
 };
 
-export const OneCode = {
-  PaymentFailed: "payment-failed",
-} as const;
-export type OneCode = ClosedEnum<typeof OneCode>;
-
 export type GetOrder11 = {
-  code: OneCode;
+  code: "payment-failed";
 };
 
-export type Error1 = GetOrder12 | GetOrder13 | GetOrder11 | One4;
+export type Error1 = GetOrder11 | GetOrder12 | GetOrder13 | One4;
 
-export type ErrorT = Error2 | GetOrder12 | GetOrder13 | GetOrder11 | One4;
+export type ErrorT = Error2 | GetOrder11 | GetOrder12 | GetOrder13 | One4;
 
 /**
  * Success
  */
 export type GetOrderResponseBody = {
   orderId: string;
-  domains: Array<Domains1 | Domains3 | Domains2>;
+  domains: Array<Domains1 | Domains2 | Domains3>;
   status: GetOrderStatus;
-  error?: Error2 | GetOrder12 | GetOrder13 | GetOrder11 | One4 | undefined;
+  error?: Error2 | GetOrder11 | GetOrder12 | GetOrder13 | One4 | undefined;
 };
 
 /** @internal */
@@ -453,10 +328,15 @@ export const GetOrderDomainsRegistrarResponseBody$inboundSchema: z.ZodType<
   GetOrderDomainsRegistrarResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([NotAuthorizedForScope$inboundSchema, Forbidden$inboundSchema]);
+> = z.union([
+  NotAuthorizedForScope$inboundSchema.and(
+    z.object({ code: z.literal("not_authorized_for_scope") }),
+  ),
+  Forbidden$inboundSchema,
+]);
 /** @internal */
 export type GetOrderDomainsRegistrarResponseBody$Outbound =
-  | NotAuthorizedForScope$Outbound
+  | (NotAuthorizedForScope$Outbound & { code: "not_authorized_for_scope" })
   | Forbidden$Outbound;
 
 /** @internal */
@@ -464,7 +344,12 @@ export const GetOrderDomainsRegistrarResponseBody$outboundSchema: z.ZodType<
   GetOrderDomainsRegistrarResponseBody$Outbound,
   z.ZodTypeDef,
   unknown
-> = z.union([NotAuthorizedForScope$outboundSchema, Forbidden$outboundSchema]);
+> = z.union([
+  NotAuthorizedForScope$outboundSchema.and(
+    z.object({ code: z.literal("not_authorized_for_scope") }),
+  ),
+  Forbidden$outboundSchema,
+]);
 
 export function getOrderDomainsRegistrarResponseBodyToJSON(
   getOrderDomainsRegistrarResponseBody: GetOrderDomainsRegistrarResponseBody,
@@ -485,15 +370,6 @@ export function getOrderDomainsRegistrarResponseBodyFromJSON(
     `Failed to parse 'GetOrderDomainsRegistrarResponseBody' from JSON`,
   );
 }
-
-/** @internal */
-export const GetOrderDomainsPurchaseType$inboundSchema: z.ZodNativeEnum<
-  typeof GetOrderDomainsPurchaseType
-> = z.nativeEnum(GetOrderDomainsPurchaseType);
-/** @internal */
-export const GetOrderDomainsPurchaseType$outboundSchema: z.ZodNativeEnum<
-  typeof GetOrderDomainsPurchaseType
-> = GetOrderDomainsPurchaseType$inboundSchema;
 
 /** @internal */
 export const GetOrderDomainsDomainsRegistrarStatus$inboundSchema:
@@ -550,31 +426,16 @@ export function getOrderErrorDomainsRegistrar2FromJSON(
 }
 
 /** @internal */
-export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3Code$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3Code
-  > = z.nativeEnum(
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3Code,
-  );
-/** @internal */
-export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3Code$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3Code
-  > =
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3Code$inboundSchema;
-
-/** @internal */
 export const GetOrder1DomainsRegistrar3$inboundSchema: z.ZodType<
   GetOrder1DomainsRegistrar3,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  code:
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3Code$inboundSchema,
+  code: z.literal("claims-notice-required"),
 });
 /** @internal */
 export type GetOrder1DomainsRegistrar3$Outbound = {
-  code: string;
+  code: "claims-notice-required";
 };
 
 /** @internal */
@@ -583,8 +444,7 @@ export const GetOrder1DomainsRegistrar3$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetOrder1DomainsRegistrar3
 > = z.object({
-  code:
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3Code$outboundSchema,
+  code: z.literal("claims-notice-required"),
 });
 
 export function getOrder1DomainsRegistrar3ToJSON(
@@ -605,31 +465,16 @@ export function getOrder1DomainsRegistrar3FromJSON(
 }
 
 /** @internal */
-export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomainsCode$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomainsCode
-  > = z.nativeEnum(
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomainsCode,
-  );
-/** @internal */
-export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomainsCode$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomainsCode
-  > =
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomainsCode$inboundSchema;
-
-/** @internal */
 export const GetOrder1DomainsRegistrar2$inboundSchema: z.ZodType<
   GetOrder1DomainsRegistrar2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  code:
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomainsCode$inboundSchema,
+  code: z.literal("client-transfer-prohibited"),
 });
 /** @internal */
 export type GetOrder1DomainsRegistrar2$Outbound = {
-  code: string;
+  code: "client-transfer-prohibited";
 };
 
 /** @internal */
@@ -638,8 +483,7 @@ export const GetOrder1DomainsRegistrar2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetOrder1DomainsRegistrar2
 > = z.object({
-  code:
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomainsCode$outboundSchema,
+  code: z.literal("client-transfer-prohibited"),
 });
 
 export function getOrder1DomainsRegistrar2ToJSON(
@@ -658,20 +502,6 @@ export function getOrder1DomainsRegistrar2FromJSON(
     `Failed to parse 'GetOrder1DomainsRegistrar2' from JSON`,
   );
 }
-
-/** @internal */
-export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyCode$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyCode
-  > = z.nativeEnum(
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyCode,
-  );
-/** @internal */
-export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyCode$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyCode
-  > =
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyCode$inboundSchema;
 
 /** @internal */
 export const GetOrder1DomainsRegistrarResponse200Details$inboundSchema:
@@ -729,15 +559,14 @@ export const GetOrder1DomainsRegistrar1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  code:
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyCode$inboundSchema,
+  code: z.literal("unsupported-language-code"),
   details: z.lazy(() =>
     GetOrder1DomainsRegistrarResponse200Details$inboundSchema
   ),
 });
 /** @internal */
 export type GetOrder1DomainsRegistrar1$Outbound = {
-  code: string;
+  code: "unsupported-language-code";
   details: GetOrder1DomainsRegistrarResponse200Details$Outbound;
 };
 
@@ -747,8 +576,7 @@ export const GetOrder1DomainsRegistrar1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetOrder1DomainsRegistrar1
 > = z.object({
-  code:
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyCode$outboundSchema,
+  code: z.literal("unsupported-language-code"),
   details: z.lazy(() =>
     GetOrder1DomainsRegistrarResponse200Details$outboundSchema
   ),
@@ -877,7 +705,7 @@ export const Domains3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  purchaseType: GetOrderDomainsPurchaseType$inboundSchema,
+  purchaseType: z.literal("transfer"),
   autoRenew: z.boolean(),
   years: z.number(),
   domainName: z.string(),
@@ -894,7 +722,7 @@ export const Domains3$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type Domains3$Outbound = {
-  purchaseType: string;
+  purchaseType: "transfer";
   autoRenew: boolean;
   years: number;
   domainName: string;
@@ -914,7 +742,7 @@ export const Domains3$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Domains3
 > = z.object({
-  purchaseType: GetOrderDomainsPurchaseType$outboundSchema,
+  purchaseType: z.literal("transfer"),
   autoRenew: z.boolean(),
   years: z.number(),
   domainName: z.string(),
@@ -942,15 +770,6 @@ export function domains3FromJSON(
     `Failed to parse 'Domains3' from JSON`,
   );
 }
-
-/** @internal */
-export const DomainsPurchaseType$inboundSchema: z.ZodNativeEnum<
-  typeof DomainsPurchaseType
-> = z.nativeEnum(DomainsPurchaseType);
-/** @internal */
-export const DomainsPurchaseType$outboundSchema: z.ZodNativeEnum<
-  typeof DomainsPurchaseType
-> = DomainsPurchaseType$inboundSchema;
 
 /** @internal */
 export const GetOrderDomainsStatus$inboundSchema: z.ZodNativeEnum<
@@ -1000,27 +819,16 @@ export function getOrderError2FromJSON(
 }
 
 /** @internal */
-export const GetOrder1DomainsRegistrarResponse200ApplicationJSONCode$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetOrder1DomainsRegistrarResponse200ApplicationJSONCode
-  > = z.nativeEnum(GetOrder1DomainsRegistrarResponse200ApplicationJSONCode);
-/** @internal */
-export const GetOrder1DomainsRegistrarResponse200ApplicationJSONCode$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetOrder1DomainsRegistrarResponse200ApplicationJSONCode
-  > = GetOrder1DomainsRegistrarResponse200ApplicationJSONCode$inboundSchema;
-
-/** @internal */
 export const GetOrder1DomainsRegistrarResponse2003$inboundSchema: z.ZodType<
   GetOrder1DomainsRegistrarResponse2003,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  code: GetOrder1DomainsRegistrarResponse200ApplicationJSONCode$inboundSchema,
+  code: z.literal("claims-notice-required"),
 });
 /** @internal */
 export type GetOrder1DomainsRegistrarResponse2003$Outbound = {
-  code: string;
+  code: "claims-notice-required";
 };
 
 /** @internal */
@@ -1029,7 +837,7 @@ export const GetOrder1DomainsRegistrarResponse2003$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetOrder1DomainsRegistrarResponse2003
 > = z.object({
-  code: GetOrder1DomainsRegistrarResponse200ApplicationJSONCode$outboundSchema,
+  code: z.literal("claims-notice-required"),
 });
 
 export function getOrder1DomainsRegistrarResponse2003ToJSON(
@@ -1053,25 +861,16 @@ export function getOrder1DomainsRegistrarResponse2003FromJSON(
 }
 
 /** @internal */
-export const GetOrder1DomainsRegistrarResponse200Code$inboundSchema:
-  z.ZodNativeEnum<typeof GetOrder1DomainsRegistrarResponse200Code> = z
-    .nativeEnum(GetOrder1DomainsRegistrarResponse200Code);
-/** @internal */
-export const GetOrder1DomainsRegistrarResponse200Code$outboundSchema:
-  z.ZodNativeEnum<typeof GetOrder1DomainsRegistrarResponse200Code> =
-    GetOrder1DomainsRegistrarResponse200Code$inboundSchema;
-
-/** @internal */
 export const GetOrder1DomainsRegistrarResponse2002$inboundSchema: z.ZodType<
   GetOrder1DomainsRegistrarResponse2002,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  code: GetOrder1DomainsRegistrarResponse200Code$inboundSchema,
+  code: z.literal("client-transfer-prohibited"),
 });
 /** @internal */
 export type GetOrder1DomainsRegistrarResponse2002$Outbound = {
-  code: string;
+  code: "client-transfer-prohibited";
 };
 
 /** @internal */
@@ -1080,7 +879,7 @@ export const GetOrder1DomainsRegistrarResponse2002$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetOrder1DomainsRegistrarResponse2002
 > = z.object({
-  code: GetOrder1DomainsRegistrarResponse200Code$outboundSchema,
+  code: z.literal("client-transfer-prohibited"),
 });
 
 export function getOrder1DomainsRegistrarResponse2002ToJSON(
@@ -1102,20 +901,6 @@ export function getOrder1DomainsRegistrarResponse2002FromJSON(
     `Failed to parse 'GetOrder1DomainsRegistrarResponse2002' from JSON`,
   );
 }
-
-/** @internal */
-export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains2Code$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains2Code
-  > = z.nativeEnum(
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains2Code,
-  );
-/** @internal */
-export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains2Code$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains2Code
-  > =
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains2Code$inboundSchema;
 
 /** @internal */
 export const GetOrder1DomainsRegistrarResponseDetails$inboundSchema: z.ZodType<
@@ -1171,13 +956,12 @@ export const GetOrder1DomainsRegistrarResponse2001$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  code:
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains2Code$inboundSchema,
+  code: z.literal("unsupported-language-code"),
   details: z.lazy(() => GetOrder1DomainsRegistrarResponseDetails$inboundSchema),
 });
 /** @internal */
 export type GetOrder1DomainsRegistrarResponse2001$Outbound = {
-  code: string;
+  code: "unsupported-language-code";
   details: GetOrder1DomainsRegistrarResponseDetails$Outbound;
 };
 
@@ -1187,8 +971,7 @@ export const GetOrder1DomainsRegistrarResponse2001$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetOrder1DomainsRegistrarResponse2001
 > = z.object({
-  code:
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains2Code$outboundSchema,
+  code: z.literal("unsupported-language-code"),
   details: z.lazy(() =>
     GetOrder1DomainsRegistrarResponseDetails$outboundSchema
   ),
@@ -1311,7 +1094,7 @@ export const Domains2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  purchaseType: DomainsPurchaseType$inboundSchema,
+  purchaseType: z.literal("renewal"),
   years: z.number(),
   domainName: z.string(),
   status: GetOrderDomainsStatus$inboundSchema,
@@ -1327,7 +1110,7 @@ export const Domains2$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type Domains2$Outbound = {
-  purchaseType: string;
+  purchaseType: "renewal";
   years: number;
   domainName: string;
   status: string;
@@ -1346,7 +1129,7 @@ export const Domains2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Domains2
 > = z.object({
-  purchaseType: DomainsPurchaseType$outboundSchema,
+  purchaseType: z.literal("renewal"),
   years: z.number(),
   domainName: z.string(),
   status: GetOrderDomainsStatus$outboundSchema,
@@ -1373,15 +1156,6 @@ export function domains2FromJSON(
     `Failed to parse 'Domains2' from JSON`,
   );
 }
-
-/** @internal */
-export const GetOrderDomainsDomainsRegistrarPurchaseType$inboundSchema:
-  z.ZodNativeEnum<typeof GetOrderDomainsDomainsRegistrarPurchaseType> = z
-    .nativeEnum(GetOrderDomainsDomainsRegistrarPurchaseType);
-/** @internal */
-export const GetOrderDomainsDomainsRegistrarPurchaseType$outboundSchema:
-  z.ZodNativeEnum<typeof GetOrderDomainsDomainsRegistrarPurchaseType> =
-    GetOrderDomainsDomainsRegistrarPurchaseType$inboundSchema;
 
 /** @internal */
 export const DomainsStatus$inboundSchema: z.ZodNativeEnum<
@@ -1439,31 +1213,16 @@ export function getOrderErrorDomainsRegistrarResponse2FromJSON(
 }
 
 /** @internal */
-export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Error3Code$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Error3Code
-  > = z.nativeEnum(
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Error3Code,
-  );
-/** @internal */
-export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Error3Code$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Error3Code
-  > =
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Error3Code$inboundSchema;
-
-/** @internal */
 export const GetOrder1DomainsRegistrarResponse3$inboundSchema: z.ZodType<
   GetOrder1DomainsRegistrarResponse3,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  code:
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Error3Code$inboundSchema,
+  code: z.literal("claims-notice-required"),
 });
 /** @internal */
 export type GetOrder1DomainsRegistrarResponse3$Outbound = {
-  code: string;
+  code: "claims-notice-required";
 };
 
 /** @internal */
@@ -1472,8 +1231,7 @@ export const GetOrder1DomainsRegistrarResponse3$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetOrder1DomainsRegistrarResponse3
 > = z.object({
-  code:
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Error3Code$outboundSchema,
+  code: z.literal("claims-notice-required"),
 });
 
 export function getOrder1DomainsRegistrarResponse3ToJSON(
@@ -1497,31 +1255,16 @@ export function getOrder1DomainsRegistrarResponse3FromJSON(
 }
 
 /** @internal */
-export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1ErrorCode$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1ErrorCode
-  > = z.nativeEnum(
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1ErrorCode,
-  );
-/** @internal */
-export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1ErrorCode$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1ErrorCode
-  > =
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1ErrorCode$inboundSchema;
-
-/** @internal */
 export const GetOrder1DomainsRegistrarResponse2$inboundSchema: z.ZodType<
   GetOrder1DomainsRegistrarResponse2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  code:
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1ErrorCode$inboundSchema,
+  code: z.literal("client-transfer-prohibited"),
 });
 /** @internal */
 export type GetOrder1DomainsRegistrarResponse2$Outbound = {
-  code: string;
+  code: "client-transfer-prohibited";
 };
 
 /** @internal */
@@ -1530,8 +1273,7 @@ export const GetOrder1DomainsRegistrarResponse2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetOrder1DomainsRegistrarResponse2
 > = z.object({
-  code:
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1ErrorCode$outboundSchema,
+  code: z.literal("client-transfer-prohibited"),
 });
 
 export function getOrder1DomainsRegistrarResponse2ToJSON(
@@ -1553,20 +1295,6 @@ export function getOrder1DomainsRegistrarResponse2FromJSON(
     `Failed to parse 'GetOrder1DomainsRegistrarResponse2' from JSON`,
   );
 }
-
-/** @internal */
-export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Code$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Code
-  > = z.nativeEnum(
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Code,
-  );
-/** @internal */
-export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Code$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Code
-  > =
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Code$inboundSchema;
 
 /** @internal */
 export const GetOrder1DomainsRegistrarDetails$inboundSchema: z.ZodType<
@@ -1615,13 +1343,12 @@ export const GetOrder1DomainsRegistrarResponse1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  code:
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Code$inboundSchema,
+  code: z.literal("unsupported-language-code"),
   details: z.lazy(() => GetOrder1DomainsRegistrarDetails$inboundSchema),
 });
 /** @internal */
 export type GetOrder1DomainsRegistrarResponse1$Outbound = {
-  code: string;
+  code: "unsupported-language-code";
   details: GetOrder1DomainsRegistrarDetails$Outbound;
 };
 
@@ -1631,8 +1358,7 @@ export const GetOrder1DomainsRegistrarResponse1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetOrder1DomainsRegistrarResponse1
 > = z.object({
-  code:
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Code$outboundSchema,
+  code: z.literal("unsupported-language-code"),
   details: z.lazy(() => GetOrder1DomainsRegistrarDetails$outboundSchema),
 });
 
@@ -1757,7 +1483,7 @@ export const Domains1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  purchaseType: GetOrderDomainsDomainsRegistrarPurchaseType$inboundSchema,
+  purchaseType: z.literal("purchase"),
   autoRenew: z.boolean(),
   years: z.number(),
   domainName: z.string(),
@@ -1774,7 +1500,7 @@ export const Domains1$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type Domains1$Outbound = {
-  purchaseType: string;
+  purchaseType: "purchase";
   autoRenew: boolean;
   years: number;
   domainName: string;
@@ -1794,7 +1520,7 @@ export const Domains1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Domains1
 > = z.object({
-  purchaseType: GetOrderDomainsDomainsRegistrarPurchaseType$outboundSchema,
+  purchaseType: z.literal("purchase"),
   autoRenew: z.boolean(),
   years: z.number(),
   domainName: z.string(),
@@ -1830,14 +1556,14 @@ export const GetOrderDomains$inboundSchema: z.ZodType<
   unknown
 > = z.union([
   z.lazy(() => Domains1$inboundSchema),
-  z.lazy(() => Domains3$inboundSchema),
   z.lazy(() => Domains2$inboundSchema),
+  z.lazy(() => Domains3$inboundSchema),
 ]);
 /** @internal */
 export type GetOrderDomains$Outbound =
   | Domains1$Outbound
-  | Domains3$Outbound
-  | Domains2$Outbound;
+  | Domains2$Outbound
+  | Domains3$Outbound;
 
 /** @internal */
 export const GetOrderDomains$outboundSchema: z.ZodType<
@@ -1846,8 +1572,8 @@ export const GetOrderDomains$outboundSchema: z.ZodType<
   GetOrderDomains
 > = z.union([
   z.lazy(() => Domains1$outboundSchema),
-  z.lazy(() => Domains3$outboundSchema),
   z.lazy(() => Domains2$outboundSchema),
+  z.lazy(() => Domains3$outboundSchema),
 ]);
 
 export function getOrderDomainsToJSON(
@@ -1910,29 +1636,19 @@ export function error2FromJSON(
 }
 
 /** @internal */
-export const GetOrder1DomainsRegistrarResponseCode$inboundSchema:
-  z.ZodNativeEnum<typeof GetOrder1DomainsRegistrarResponseCode> = z.nativeEnum(
-    GetOrder1DomainsRegistrarResponseCode,
-  );
-/** @internal */
-export const GetOrder1DomainsRegistrarResponseCode$outboundSchema:
-  z.ZodNativeEnum<typeof GetOrder1DomainsRegistrarResponseCode> =
-    GetOrder1DomainsRegistrarResponseCode$inboundSchema;
-
-/** @internal */
 export const One4$inboundSchema: z.ZodType<One4, z.ZodTypeDef, unknown> = z
   .object({
-    code: GetOrder1DomainsRegistrarResponseCode$inboundSchema,
+    code: z.literal("unexpected-error"),
   });
 /** @internal */
 export type One4$Outbound = {
-  code: string;
+  code: "unexpected-error";
 };
 
 /** @internal */
 export const One4$outboundSchema: z.ZodType<One4$Outbound, z.ZodTypeDef, One4> =
   z.object({
-    code: GetOrder1DomainsRegistrarResponseCode$outboundSchema,
+    code: z.literal("unexpected-error"),
   });
 
 export function one4ToJSON(one4: One4): string {
@@ -1947,15 +1663,6 @@ export function one4FromJSON(
     `Failed to parse 'One4' from JSON`,
   );
 }
-
-/** @internal */
-export const GetOrder1DomainsRegistrarCode$inboundSchema: z.ZodNativeEnum<
-  typeof GetOrder1DomainsRegistrarCode
-> = z.nativeEnum(GetOrder1DomainsRegistrarCode);
-/** @internal */
-export const GetOrder1DomainsRegistrarCode$outboundSchema: z.ZodNativeEnum<
-  typeof GetOrder1DomainsRegistrarCode
-> = GetOrder1DomainsRegistrarCode$inboundSchema;
 
 /** @internal */
 export const OneDetails$inboundSchema: z.ZodType<
@@ -2001,12 +1708,12 @@ export const GetOrder13$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  code: GetOrder1DomainsRegistrarCode$inboundSchema,
+  code: z.literal("price-mismatch"),
   details: z.lazy(() => OneDetails$inboundSchema),
 });
 /** @internal */
 export type GetOrder13$Outbound = {
-  code: string;
+  code: "price-mismatch";
   details: OneDetails$Outbound;
 };
 
@@ -2016,7 +1723,7 @@ export const GetOrder13$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetOrder13
 > = z.object({
-  code: GetOrder1DomainsRegistrarCode$outboundSchema,
+  code: z.literal("price-mismatch"),
   details: z.lazy(() => OneDetails$outboundSchema),
 });
 
@@ -2032,15 +1739,6 @@ export function getOrder13FromJSON(
     `Failed to parse 'GetOrder13' from JSON`,
   );
 }
-
-/** @internal */
-export const GetOrder1Code$inboundSchema: z.ZodNativeEnum<
-  typeof GetOrder1Code
-> = z.nativeEnum(GetOrder1Code);
-/** @internal */
-export const GetOrder1Code$outboundSchema: z.ZodNativeEnum<
-  typeof GetOrder1Code
-> = GetOrder1Code$inboundSchema;
 
 /** @internal */
 export const Tlds$inboundSchema: z.ZodType<Tlds, z.ZodTypeDef, unknown> = z
@@ -2119,12 +1817,12 @@ export const GetOrder12$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  code: GetOrder1Code$inboundSchema,
+  code: z.literal("tld-outage"),
   details: z.lazy(() => GetOrder1Details$inboundSchema),
 });
 /** @internal */
 export type GetOrder12$Outbound = {
-  code: string;
+  code: "tld-outage";
   details: GetOrder1Details$Outbound;
 };
 
@@ -2134,7 +1832,7 @@ export const GetOrder12$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetOrder12
 > = z.object({
-  code: GetOrder1Code$outboundSchema,
+  code: z.literal("tld-outage"),
   details: z.lazy(() => GetOrder1Details$outboundSchema),
 });
 
@@ -2152,23 +1850,16 @@ export function getOrder12FromJSON(
 }
 
 /** @internal */
-export const OneCode$inboundSchema: z.ZodNativeEnum<typeof OneCode> = z
-  .nativeEnum(OneCode);
-/** @internal */
-export const OneCode$outboundSchema: z.ZodNativeEnum<typeof OneCode> =
-  OneCode$inboundSchema;
-
-/** @internal */
 export const GetOrder11$inboundSchema: z.ZodType<
   GetOrder11,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  code: OneCode$inboundSchema,
+  code: z.literal("payment-failed"),
 });
 /** @internal */
 export type GetOrder11$Outbound = {
-  code: string;
+  code: "payment-failed";
 };
 
 /** @internal */
@@ -2177,7 +1868,7 @@ export const GetOrder11$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetOrder11
 > = z.object({
-  code: OneCode$outboundSchema,
+  code: z.literal("payment-failed"),
 });
 
 export function getOrder11ToJSON(getOrder11: GetOrder11): string {
@@ -2196,16 +1887,16 @@ export function getOrder11FromJSON(
 /** @internal */
 export const Error1$inboundSchema: z.ZodType<Error1, z.ZodTypeDef, unknown> = z
   .union([
+    z.lazy(() => GetOrder11$inboundSchema),
     z.lazy(() => GetOrder12$inboundSchema),
     z.lazy(() => GetOrder13$inboundSchema),
-    z.lazy(() => GetOrder11$inboundSchema),
     z.lazy(() => One4$inboundSchema),
   ]);
 /** @internal */
 export type Error1$Outbound =
+  | GetOrder11$Outbound
   | GetOrder12$Outbound
   | GetOrder13$Outbound
-  | GetOrder11$Outbound
   | One4$Outbound;
 
 /** @internal */
@@ -2214,9 +1905,9 @@ export const Error1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Error1
 > = z.union([
+  z.lazy(() => GetOrder11$outboundSchema),
   z.lazy(() => GetOrder12$outboundSchema),
   z.lazy(() => GetOrder13$outboundSchema),
-  z.lazy(() => GetOrder11$outboundSchema),
   z.lazy(() => One4$outboundSchema),
 ]);
 
@@ -2238,18 +1929,18 @@ export const ErrorT$inboundSchema: z.ZodType<ErrorT, z.ZodTypeDef, unknown> = z
   .union([
     z.lazy(() => Error2$inboundSchema),
     z.union([
+      z.lazy(() => GetOrder11$inboundSchema),
       z.lazy(() => GetOrder12$inboundSchema),
       z.lazy(() => GetOrder13$inboundSchema),
-      z.lazy(() => GetOrder11$inboundSchema),
       z.lazy(() => One4$inboundSchema),
     ]),
   ]);
 /** @internal */
 export type ErrorT$Outbound =
   | Error2$Outbound
+  | GetOrder11$Outbound
   | GetOrder12$Outbound
   | GetOrder13$Outbound
-  | GetOrder11$Outbound
   | One4$Outbound;
 
 /** @internal */
@@ -2260,9 +1951,9 @@ export const ErrorT$outboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => Error2$outboundSchema),
   z.union([
+    z.lazy(() => GetOrder11$outboundSchema),
     z.lazy(() => GetOrder12$outboundSchema),
     z.lazy(() => GetOrder13$outboundSchema),
-    z.lazy(() => GetOrder11$outboundSchema),
     z.lazy(() => One4$outboundSchema),
   ]),
 ]);
@@ -2290,17 +1981,17 @@ export const GetOrderResponseBody$inboundSchema: z.ZodType<
   domains: z.array(
     z.union([
       z.lazy(() => Domains1$inboundSchema),
-      z.lazy(() => Domains3$inboundSchema),
       z.lazy(() => Domains2$inboundSchema),
+      z.lazy(() => Domains3$inboundSchema),
     ]),
   ),
   status: GetOrderStatus$inboundSchema,
   error: z.union([
     z.lazy(() => Error2$inboundSchema),
     z.union([
+      z.lazy(() => GetOrder11$inboundSchema),
       z.lazy(() => GetOrder12$inboundSchema),
       z.lazy(() => GetOrder13$inboundSchema),
-      z.lazy(() => GetOrder11$inboundSchema),
       z.lazy(() => One4$inboundSchema),
     ]),
   ]).optional(),
@@ -2308,13 +1999,13 @@ export const GetOrderResponseBody$inboundSchema: z.ZodType<
 /** @internal */
 export type GetOrderResponseBody$Outbound = {
   orderId: string;
-  domains: Array<Domains1$Outbound | Domains3$Outbound | Domains2$Outbound>;
+  domains: Array<Domains1$Outbound | Domains2$Outbound | Domains3$Outbound>;
   status: string;
   error?:
     | Error2$Outbound
+    | GetOrder11$Outbound
     | GetOrder12$Outbound
     | GetOrder13$Outbound
-    | GetOrder11$Outbound
     | One4$Outbound
     | undefined;
 };
@@ -2329,17 +2020,17 @@ export const GetOrderResponseBody$outboundSchema: z.ZodType<
   domains: z.array(
     z.union([
       z.lazy(() => Domains1$outboundSchema),
-      z.lazy(() => Domains3$outboundSchema),
       z.lazy(() => Domains2$outboundSchema),
+      z.lazy(() => Domains3$outboundSchema),
     ]),
   ),
   status: GetOrderStatus$outboundSchema,
   error: z.union([
     z.lazy(() => Error2$outboundSchema),
     z.union([
+      z.lazy(() => GetOrder11$outboundSchema),
       z.lazy(() => GetOrder12$outboundSchema),
       z.lazy(() => GetOrder13$outboundSchema),
-      z.lazy(() => GetOrder11$outboundSchema),
       z.lazy(() => One4$outboundSchema),
     ]),
   ]).optional(),

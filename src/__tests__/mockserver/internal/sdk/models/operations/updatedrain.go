@@ -1926,10 +1926,10 @@ func (o *UpdateDrainDeliveryHTTP2) GetSecret() *UpdateDrainSecretUnion3 {
 type UpdateDrainDeliveryResponseUnion2Type string
 
 const (
-	UpdateDrainDeliveryResponseUnion2TypeUpdateDrainDeliveryHTTP2               UpdateDrainDeliveryResponseUnion2Type = "updateDrain_delivery_HTTP_2"
-	UpdateDrainDeliveryResponseUnion2TypeUpdateDrainDeliveryOtlphttp2           UpdateDrainDeliveryResponseUnion2Type = "updateDrain_delivery_Otlphttp_2"
-	UpdateDrainDeliveryResponseUnion2TypeUpdateDrainDeliveryClickhouse2         UpdateDrainDeliveryResponseUnion2Type = "updateDrain_delivery_Clickhouse_2"
-	UpdateDrainDeliveryResponseUnion2TypeUpdateDrainDeliveryVercelOtelTracesDb2 UpdateDrainDeliveryResponseUnion2Type = "updateDrain_delivery_VercelOtelTracesDb_2"
+	UpdateDrainDeliveryResponseUnion2TypeHTTP       UpdateDrainDeliveryResponseUnion2Type = "http"
+	UpdateDrainDeliveryResponseUnion2TypeOtlphttp   UpdateDrainDeliveryResponseUnion2Type = "otlphttp"
+	UpdateDrainDeliveryResponseUnion2TypeClickhouse UpdateDrainDeliveryResponseUnion2Type = "clickhouse"
+	UpdateDrainDeliveryResponseUnion2TypeInternal   UpdateDrainDeliveryResponseUnion2Type = "internal"
 )
 
 type UpdateDrainDeliveryResponseUnion2 struct {
@@ -1941,69 +1941,101 @@ type UpdateDrainDeliveryResponseUnion2 struct {
 	Type UpdateDrainDeliveryResponseUnion2Type
 }
 
-func CreateUpdateDrainDeliveryResponseUnion2UpdateDrainDeliveryHTTP2(updateDrainDeliveryHTTP2 UpdateDrainDeliveryHTTP2) UpdateDrainDeliveryResponseUnion2 {
-	typ := UpdateDrainDeliveryResponseUnion2TypeUpdateDrainDeliveryHTTP2
+func CreateUpdateDrainDeliveryResponseUnion2HTTP(http UpdateDrainDeliveryHTTP2) UpdateDrainDeliveryResponseUnion2 {
+	typ := UpdateDrainDeliveryResponseUnion2TypeHTTP
+
+	typStr := UpdateDrainTypeHTTP2(typ)
+	http.Type = typStr
 
 	return UpdateDrainDeliveryResponseUnion2{
-		UpdateDrainDeliveryHTTP2: &updateDrainDeliveryHTTP2,
+		UpdateDrainDeliveryHTTP2: &http,
 		Type:                     typ,
 	}
 }
 
-func CreateUpdateDrainDeliveryResponseUnion2UpdateDrainDeliveryOtlphttp2(updateDrainDeliveryOtlphttp2 UpdateDrainDeliveryOtlphttp2) UpdateDrainDeliveryResponseUnion2 {
-	typ := UpdateDrainDeliveryResponseUnion2TypeUpdateDrainDeliveryOtlphttp2
+func CreateUpdateDrainDeliveryResponseUnion2Otlphttp(otlphttp UpdateDrainDeliveryOtlphttp2) UpdateDrainDeliveryResponseUnion2 {
+	typ := UpdateDrainDeliveryResponseUnion2TypeOtlphttp
+
+	typStr := UpdateDrainTypeOtlphttp2(typ)
+	otlphttp.Type = typStr
 
 	return UpdateDrainDeliveryResponseUnion2{
-		UpdateDrainDeliveryOtlphttp2: &updateDrainDeliveryOtlphttp2,
+		UpdateDrainDeliveryOtlphttp2: &otlphttp,
 		Type:                         typ,
 	}
 }
 
-func CreateUpdateDrainDeliveryResponseUnion2UpdateDrainDeliveryClickhouse2(updateDrainDeliveryClickhouse2 UpdateDrainDeliveryClickhouse2) UpdateDrainDeliveryResponseUnion2 {
-	typ := UpdateDrainDeliveryResponseUnion2TypeUpdateDrainDeliveryClickhouse2
+func CreateUpdateDrainDeliveryResponseUnion2Clickhouse(clickhouse UpdateDrainDeliveryClickhouse2) UpdateDrainDeliveryResponseUnion2 {
+	typ := UpdateDrainDeliveryResponseUnion2TypeClickhouse
+
+	typStr := UpdateDrainTypeClickhouse2(typ)
+	clickhouse.Type = typStr
 
 	return UpdateDrainDeliveryResponseUnion2{
-		UpdateDrainDeliveryClickhouse2: &updateDrainDeliveryClickhouse2,
+		UpdateDrainDeliveryClickhouse2: &clickhouse,
 		Type:                           typ,
 	}
 }
 
-func CreateUpdateDrainDeliveryResponseUnion2UpdateDrainDeliveryVercelOtelTracesDb2(updateDrainDeliveryVercelOtelTracesDb2 UpdateDrainDeliveryVercelOtelTracesDb2) UpdateDrainDeliveryResponseUnion2 {
-	typ := UpdateDrainDeliveryResponseUnion2TypeUpdateDrainDeliveryVercelOtelTracesDb2
+func CreateUpdateDrainDeliveryResponseUnion2Internal(internal UpdateDrainDeliveryVercelOtelTracesDb2) UpdateDrainDeliveryResponseUnion2 {
+	typ := UpdateDrainDeliveryResponseUnion2TypeInternal
+
+	typStr := UpdateDrainTypeInternal2(typ)
+	internal.Type = typStr
 
 	return UpdateDrainDeliveryResponseUnion2{
-		UpdateDrainDeliveryVercelOtelTracesDb2: &updateDrainDeliveryVercelOtelTracesDb2,
+		UpdateDrainDeliveryVercelOtelTracesDb2: &internal,
 		Type:                                   typ,
 	}
 }
 
 func (u *UpdateDrainDeliveryResponseUnion2) UnmarshalJSON(data []byte) error {
 
-	var updateDrainDeliveryHTTP2 UpdateDrainDeliveryHTTP2 = UpdateDrainDeliveryHTTP2{}
-	if err := utils.UnmarshalJSON(data, &updateDrainDeliveryHTTP2, "", true, nil); err == nil {
-		u.UpdateDrainDeliveryHTTP2 = &updateDrainDeliveryHTTP2
-		u.Type = UpdateDrainDeliveryResponseUnion2TypeUpdateDrainDeliveryHTTP2
-		return nil
+	type discriminator struct {
+		Type string `json:"type"`
 	}
 
-	var updateDrainDeliveryOtlphttp2 UpdateDrainDeliveryOtlphttp2 = UpdateDrainDeliveryOtlphttp2{}
-	if err := utils.UnmarshalJSON(data, &updateDrainDeliveryOtlphttp2, "", true, nil); err == nil {
-		u.UpdateDrainDeliveryOtlphttp2 = &updateDrainDeliveryOtlphttp2
-		u.Type = UpdateDrainDeliveryResponseUnion2TypeUpdateDrainDeliveryOtlphttp2
-		return nil
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
 	}
 
-	var updateDrainDeliveryClickhouse2 UpdateDrainDeliveryClickhouse2 = UpdateDrainDeliveryClickhouse2{}
-	if err := utils.UnmarshalJSON(data, &updateDrainDeliveryClickhouse2, "", true, nil); err == nil {
-		u.UpdateDrainDeliveryClickhouse2 = &updateDrainDeliveryClickhouse2
-		u.Type = UpdateDrainDeliveryResponseUnion2TypeUpdateDrainDeliveryClickhouse2
-		return nil
-	}
+	switch dis.Type {
+	case "http":
+		updateDrainDeliveryHTTP2 := new(UpdateDrainDeliveryHTTP2)
+		if err := utils.UnmarshalJSON(data, &updateDrainDeliveryHTTP2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == http) type UpdateDrainDeliveryHTTP2 within UpdateDrainDeliveryResponseUnion2: %w", string(data), err)
+		}
 
-	var updateDrainDeliveryVercelOtelTracesDb2 UpdateDrainDeliveryVercelOtelTracesDb2 = UpdateDrainDeliveryVercelOtelTracesDb2{}
-	if err := utils.UnmarshalJSON(data, &updateDrainDeliveryVercelOtelTracesDb2, "", true, nil); err == nil {
-		u.UpdateDrainDeliveryVercelOtelTracesDb2 = &updateDrainDeliveryVercelOtelTracesDb2
-		u.Type = UpdateDrainDeliveryResponseUnion2TypeUpdateDrainDeliveryVercelOtelTracesDb2
+		u.UpdateDrainDeliveryHTTP2 = updateDrainDeliveryHTTP2
+		u.Type = UpdateDrainDeliveryResponseUnion2TypeHTTP
+		return nil
+	case "otlphttp":
+		updateDrainDeliveryOtlphttp2 := new(UpdateDrainDeliveryOtlphttp2)
+		if err := utils.UnmarshalJSON(data, &updateDrainDeliveryOtlphttp2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == otlphttp) type UpdateDrainDeliveryOtlphttp2 within UpdateDrainDeliveryResponseUnion2: %w", string(data), err)
+		}
+
+		u.UpdateDrainDeliveryOtlphttp2 = updateDrainDeliveryOtlphttp2
+		u.Type = UpdateDrainDeliveryResponseUnion2TypeOtlphttp
+		return nil
+	case "clickhouse":
+		updateDrainDeliveryClickhouse2 := new(UpdateDrainDeliveryClickhouse2)
+		if err := utils.UnmarshalJSON(data, &updateDrainDeliveryClickhouse2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == clickhouse) type UpdateDrainDeliveryClickhouse2 within UpdateDrainDeliveryResponseUnion2: %w", string(data), err)
+		}
+
+		u.UpdateDrainDeliveryClickhouse2 = updateDrainDeliveryClickhouse2
+		u.Type = UpdateDrainDeliveryResponseUnion2TypeClickhouse
+		return nil
+	case "internal":
+		updateDrainDeliveryVercelOtelTracesDb2 := new(UpdateDrainDeliveryVercelOtelTracesDb2)
+		if err := utils.UnmarshalJSON(data, &updateDrainDeliveryVercelOtelTracesDb2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == internal) type UpdateDrainDeliveryVercelOtelTracesDb2 within UpdateDrainDeliveryResponseUnion2: %w", string(data), err)
+		}
+
+		u.UpdateDrainDeliveryVercelOtelTracesDb2 = updateDrainDeliveryVercelOtelTracesDb2
+		u.Type = UpdateDrainDeliveryResponseUnion2TypeInternal
 		return nil
 	}
 
@@ -2311,8 +2343,8 @@ func (o *UpdateDrainSourceSelfServed2) GetKind() UpdateDrainKindSelfServed2 {
 type UpdateDrainResponseBodySourceUnion2Type string
 
 const (
-	UpdateDrainResponseBodySourceUnion2TypeUpdateDrainSourceSelfServed2  UpdateDrainResponseBodySourceUnion2Type = "updateDrain_source_SelfServed_2"
-	UpdateDrainResponseBodySourceUnion2TypeUpdateDrainSourceIntegration2 UpdateDrainResponseBodySourceUnion2Type = "updateDrain_source_Integration_2"
+	UpdateDrainResponseBodySourceUnion2TypeSelfServed  UpdateDrainResponseBodySourceUnion2Type = "self-served"
+	UpdateDrainResponseBodySourceUnion2TypeIntegration UpdateDrainResponseBodySourceUnion2Type = "integration"
 )
 
 type UpdateDrainResponseBodySourceUnion2 struct {
@@ -2322,37 +2354,59 @@ type UpdateDrainResponseBodySourceUnion2 struct {
 	Type UpdateDrainResponseBodySourceUnion2Type
 }
 
-func CreateUpdateDrainResponseBodySourceUnion2UpdateDrainSourceSelfServed2(updateDrainSourceSelfServed2 UpdateDrainSourceSelfServed2) UpdateDrainResponseBodySourceUnion2 {
-	typ := UpdateDrainResponseBodySourceUnion2TypeUpdateDrainSourceSelfServed2
+func CreateUpdateDrainResponseBodySourceUnion2SelfServed(selfServed UpdateDrainSourceSelfServed2) UpdateDrainResponseBodySourceUnion2 {
+	typ := UpdateDrainResponseBodySourceUnion2TypeSelfServed
+
+	typStr := UpdateDrainKindSelfServed2(typ)
+	selfServed.Kind = typStr
 
 	return UpdateDrainResponseBodySourceUnion2{
-		UpdateDrainSourceSelfServed2: &updateDrainSourceSelfServed2,
+		UpdateDrainSourceSelfServed2: &selfServed,
 		Type:                         typ,
 	}
 }
 
-func CreateUpdateDrainResponseBodySourceUnion2UpdateDrainSourceIntegration2(updateDrainSourceIntegration2 UpdateDrainSourceIntegration2) UpdateDrainResponseBodySourceUnion2 {
-	typ := UpdateDrainResponseBodySourceUnion2TypeUpdateDrainSourceIntegration2
+func CreateUpdateDrainResponseBodySourceUnion2Integration(integration UpdateDrainSourceIntegration2) UpdateDrainResponseBodySourceUnion2 {
+	typ := UpdateDrainResponseBodySourceUnion2TypeIntegration
+
+	typStr := UpdateDrainKindIntegration2(typ)
+	integration.Kind = typStr
 
 	return UpdateDrainResponseBodySourceUnion2{
-		UpdateDrainSourceIntegration2: &updateDrainSourceIntegration2,
+		UpdateDrainSourceIntegration2: &integration,
 		Type:                          typ,
 	}
 }
 
 func (u *UpdateDrainResponseBodySourceUnion2) UnmarshalJSON(data []byte) error {
 
-	var updateDrainSourceIntegration2 UpdateDrainSourceIntegration2 = UpdateDrainSourceIntegration2{}
-	if err := utils.UnmarshalJSON(data, &updateDrainSourceIntegration2, "", true, nil); err == nil {
-		u.UpdateDrainSourceIntegration2 = &updateDrainSourceIntegration2
-		u.Type = UpdateDrainResponseBodySourceUnion2TypeUpdateDrainSourceIntegration2
-		return nil
+	type discriminator struct {
+		Kind string `json:"kind"`
 	}
 
-	var updateDrainSourceSelfServed2 UpdateDrainSourceSelfServed2 = UpdateDrainSourceSelfServed2{}
-	if err := utils.UnmarshalJSON(data, &updateDrainSourceSelfServed2, "", true, nil); err == nil {
-		u.UpdateDrainSourceSelfServed2 = &updateDrainSourceSelfServed2
-		u.Type = UpdateDrainResponseBodySourceUnion2TypeUpdateDrainSourceSelfServed2
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Kind {
+	case "self-served":
+		updateDrainSourceSelfServed2 := new(UpdateDrainSourceSelfServed2)
+		if err := utils.UnmarshalJSON(data, &updateDrainSourceSelfServed2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Kind == self-served) type UpdateDrainSourceSelfServed2 within UpdateDrainResponseBodySourceUnion2: %w", string(data), err)
+		}
+
+		u.UpdateDrainSourceSelfServed2 = updateDrainSourceSelfServed2
+		u.Type = UpdateDrainResponseBodySourceUnion2TypeSelfServed
+		return nil
+	case "integration":
+		updateDrainSourceIntegration2 := new(UpdateDrainSourceIntegration2)
+		if err := utils.UnmarshalJSON(data, &updateDrainSourceIntegration2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Kind == integration) type UpdateDrainSourceIntegration2 within UpdateDrainResponseBodySourceUnion2: %w", string(data), err)
+		}
+
+		u.UpdateDrainSourceIntegration2 = updateDrainSourceIntegration2
+		u.Type = UpdateDrainResponseBodySourceUnion2TypeIntegration
 		return nil
 	}
 
@@ -2660,8 +2714,8 @@ func (o *UpdateDrainFilterBasic2) GetDeployment() *UpdateDrainFilterV2Deployment
 type UpdateDrainFilterResponseUnion2Type string
 
 const (
-	UpdateDrainFilterResponseUnion2TypeUpdateDrainFilterBasic2 UpdateDrainFilterResponseUnion2Type = "updateDrain_filter_Basic_2"
-	UpdateDrainFilterResponseUnion2TypeUpdateDrainFilterOdata2 UpdateDrainFilterResponseUnion2Type = "updateDrain_filter_Odata_2"
+	UpdateDrainFilterResponseUnion2TypeBasic UpdateDrainFilterResponseUnion2Type = "basic"
+	UpdateDrainFilterResponseUnion2TypeOdata UpdateDrainFilterResponseUnion2Type = "odata"
 )
 
 type UpdateDrainFilterResponseUnion2 struct {
@@ -2671,37 +2725,59 @@ type UpdateDrainFilterResponseUnion2 struct {
 	Type UpdateDrainFilterResponseUnion2Type
 }
 
-func CreateUpdateDrainFilterResponseUnion2UpdateDrainFilterBasic2(updateDrainFilterBasic2 UpdateDrainFilterBasic2) UpdateDrainFilterResponseUnion2 {
-	typ := UpdateDrainFilterResponseUnion2TypeUpdateDrainFilterBasic2
+func CreateUpdateDrainFilterResponseUnion2Basic(basic UpdateDrainFilterBasic2) UpdateDrainFilterResponseUnion2 {
+	typ := UpdateDrainFilterResponseUnion2TypeBasic
+
+	typStr := UpdateDrainTypeBasic2(typ)
+	basic.Type = typStr
 
 	return UpdateDrainFilterResponseUnion2{
-		UpdateDrainFilterBasic2: &updateDrainFilterBasic2,
+		UpdateDrainFilterBasic2: &basic,
 		Type:                    typ,
 	}
 }
 
-func CreateUpdateDrainFilterResponseUnion2UpdateDrainFilterOdata2(updateDrainFilterOdata2 UpdateDrainFilterOdata2) UpdateDrainFilterResponseUnion2 {
-	typ := UpdateDrainFilterResponseUnion2TypeUpdateDrainFilterOdata2
+func CreateUpdateDrainFilterResponseUnion2Odata(odata UpdateDrainFilterOdata2) UpdateDrainFilterResponseUnion2 {
+	typ := UpdateDrainFilterResponseUnion2TypeOdata
+
+	typStr := UpdateDrainTypeOdata2(typ)
+	odata.Type = typStr
 
 	return UpdateDrainFilterResponseUnion2{
-		UpdateDrainFilterOdata2: &updateDrainFilterOdata2,
+		UpdateDrainFilterOdata2: &odata,
 		Type:                    typ,
 	}
 }
 
 func (u *UpdateDrainFilterResponseUnion2) UnmarshalJSON(data []byte) error {
 
-	var updateDrainFilterOdata2 UpdateDrainFilterOdata2 = UpdateDrainFilterOdata2{}
-	if err := utils.UnmarshalJSON(data, &updateDrainFilterOdata2, "", true, nil); err == nil {
-		u.UpdateDrainFilterOdata2 = &updateDrainFilterOdata2
-		u.Type = UpdateDrainFilterResponseUnion2TypeUpdateDrainFilterOdata2
-		return nil
+	type discriminator struct {
+		Type string `json:"type"`
 	}
 
-	var updateDrainFilterBasic2 UpdateDrainFilterBasic2 = UpdateDrainFilterBasic2{}
-	if err := utils.UnmarshalJSON(data, &updateDrainFilterBasic2, "", true, nil); err == nil {
-		u.UpdateDrainFilterBasic2 = &updateDrainFilterBasic2
-		u.Type = UpdateDrainFilterResponseUnion2TypeUpdateDrainFilterBasic2
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Type {
+	case "basic":
+		updateDrainFilterBasic2 := new(UpdateDrainFilterBasic2)
+		if err := utils.UnmarshalJSON(data, &updateDrainFilterBasic2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == basic) type UpdateDrainFilterBasic2 within UpdateDrainFilterResponseUnion2: %w", string(data), err)
+		}
+
+		u.UpdateDrainFilterBasic2 = updateDrainFilterBasic2
+		u.Type = UpdateDrainFilterResponseUnion2TypeBasic
+		return nil
+	case "odata":
+		updateDrainFilterOdata2 := new(UpdateDrainFilterOdata2)
+		if err := utils.UnmarshalJSON(data, &updateDrainFilterOdata2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == odata) type UpdateDrainFilterOdata2 within UpdateDrainFilterResponseUnion2: %w", string(data), err)
+		}
+
+		u.UpdateDrainFilterOdata2 = updateDrainFilterOdata2
+		u.Type = UpdateDrainFilterResponseUnion2TypeOdata
 		return nil
 	}
 
@@ -2748,6 +2824,14 @@ func (o *UpdateDrainFilterV2V22) GetFilter() UpdateDrainFilterResponseUnion2 {
 		return UpdateDrainFilterResponseUnion2{}
 	}
 	return o.Filter
+}
+
+func (o *UpdateDrainFilterV2V22) GetFilterBasic() *UpdateDrainFilterBasic2 {
+	return o.GetFilter().UpdateDrainFilterBasic2
+}
+
+func (o *UpdateDrainFilterV2V22) GetFilterOdata() *UpdateDrainFilterOdata2 {
+	return o.GetFilter().UpdateDrainFilterOdata2
 }
 
 type UpdateDrainVersionV12 string
@@ -2798,8 +2882,8 @@ func (o *UpdateDrainFilterV2V12) GetVersion() UpdateDrainVersionV12 {
 type UpdateDrainFilterV2Union2Type string
 
 const (
-	UpdateDrainFilterV2Union2TypeUpdateDrainFilterV2V12 UpdateDrainFilterV2Union2Type = "updateDrain_filterV2_V1_2"
-	UpdateDrainFilterV2Union2TypeUpdateDrainFilterV2V22 UpdateDrainFilterV2Union2Type = "updateDrain_filterV2_V2_2"
+	UpdateDrainFilterV2Union2TypeV1 UpdateDrainFilterV2Union2Type = "v1"
+	UpdateDrainFilterV2Union2TypeV2 UpdateDrainFilterV2Union2Type = "v2"
 )
 
 type UpdateDrainFilterV2Union2 struct {
@@ -2809,37 +2893,59 @@ type UpdateDrainFilterV2Union2 struct {
 	Type UpdateDrainFilterV2Union2Type
 }
 
-func CreateUpdateDrainFilterV2Union2UpdateDrainFilterV2V12(updateDrainFilterV2V12 UpdateDrainFilterV2V12) UpdateDrainFilterV2Union2 {
-	typ := UpdateDrainFilterV2Union2TypeUpdateDrainFilterV2V12
+func CreateUpdateDrainFilterV2Union2V1(v1 UpdateDrainFilterV2V12) UpdateDrainFilterV2Union2 {
+	typ := UpdateDrainFilterV2Union2TypeV1
+
+	typStr := UpdateDrainVersionV12(typ)
+	v1.Version = typStr
 
 	return UpdateDrainFilterV2Union2{
-		UpdateDrainFilterV2V12: &updateDrainFilterV2V12,
+		UpdateDrainFilterV2V12: &v1,
 		Type:                   typ,
 	}
 }
 
-func CreateUpdateDrainFilterV2Union2UpdateDrainFilterV2V22(updateDrainFilterV2V22 UpdateDrainFilterV2V22) UpdateDrainFilterV2Union2 {
-	typ := UpdateDrainFilterV2Union2TypeUpdateDrainFilterV2V22
+func CreateUpdateDrainFilterV2Union2V2(v2 UpdateDrainFilterV2V22) UpdateDrainFilterV2Union2 {
+	typ := UpdateDrainFilterV2Union2TypeV2
+
+	typStr := UpdateDrainVersionV22(typ)
+	v2.Version = typStr
 
 	return UpdateDrainFilterV2Union2{
-		UpdateDrainFilterV2V22: &updateDrainFilterV2V22,
+		UpdateDrainFilterV2V22: &v2,
 		Type:                   typ,
 	}
 }
 
 func (u *UpdateDrainFilterV2Union2) UnmarshalJSON(data []byte) error {
 
-	var updateDrainFilterV2V22 UpdateDrainFilterV2V22 = UpdateDrainFilterV2V22{}
-	if err := utils.UnmarshalJSON(data, &updateDrainFilterV2V22, "", true, nil); err == nil {
-		u.UpdateDrainFilterV2V22 = &updateDrainFilterV2V22
-		u.Type = UpdateDrainFilterV2Union2TypeUpdateDrainFilterV2V22
-		return nil
+	type discriminator struct {
+		Version string `json:"version"`
 	}
 
-	var updateDrainFilterV2V12 UpdateDrainFilterV2V12 = UpdateDrainFilterV2V12{}
-	if err := utils.UnmarshalJSON(data, &updateDrainFilterV2V12, "", true, nil); err == nil {
-		u.UpdateDrainFilterV2V12 = &updateDrainFilterV2V12
-		u.Type = UpdateDrainFilterV2Union2TypeUpdateDrainFilterV2V12
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Version {
+	case "v1":
+		updateDrainFilterV2V12 := new(UpdateDrainFilterV2V12)
+		if err := utils.UnmarshalJSON(data, &updateDrainFilterV2V12, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Version == v1) type UpdateDrainFilterV2V12 within UpdateDrainFilterV2Union2: %w", string(data), err)
+		}
+
+		u.UpdateDrainFilterV2V12 = updateDrainFilterV2V12
+		u.Type = UpdateDrainFilterV2Union2TypeV1
+		return nil
+	case "v2":
+		updateDrainFilterV2V22 := new(UpdateDrainFilterV2V22)
+		if err := utils.UnmarshalJSON(data, &updateDrainFilterV2V22, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Version == v2) type UpdateDrainFilterV2V22 within UpdateDrainFilterV2Union2: %w", string(data), err)
+		}
+
+		u.UpdateDrainFilterV2V22 = updateDrainFilterV2V22
+		u.Type = UpdateDrainFilterV2Union2TypeV2
 		return nil
 	}
 
@@ -2959,8 +3065,8 @@ func (o *UpdateDrainProjectAccessAll) GetAccess() UpdateDrainAccessAll {
 type UpdateDrainProjectAccessUnionType string
 
 const (
-	UpdateDrainProjectAccessUnionTypeUpdateDrainProjectAccessAll  UpdateDrainProjectAccessUnionType = "updateDrain_projectAccess_All"
-	UpdateDrainProjectAccessUnionTypeUpdateDrainProjectAccessSome UpdateDrainProjectAccessUnionType = "updateDrain_projectAccess_Some"
+	UpdateDrainProjectAccessUnionTypeAll  UpdateDrainProjectAccessUnionType = "all"
+	UpdateDrainProjectAccessUnionTypeSome UpdateDrainProjectAccessUnionType = "some"
 )
 
 type UpdateDrainProjectAccessUnion struct {
@@ -2970,37 +3076,59 @@ type UpdateDrainProjectAccessUnion struct {
 	Type UpdateDrainProjectAccessUnionType
 }
 
-func CreateUpdateDrainProjectAccessUnionUpdateDrainProjectAccessAll(updateDrainProjectAccessAll UpdateDrainProjectAccessAll) UpdateDrainProjectAccessUnion {
-	typ := UpdateDrainProjectAccessUnionTypeUpdateDrainProjectAccessAll
+func CreateUpdateDrainProjectAccessUnionAll(all UpdateDrainProjectAccessAll) UpdateDrainProjectAccessUnion {
+	typ := UpdateDrainProjectAccessUnionTypeAll
+
+	typStr := UpdateDrainAccessAll(typ)
+	all.Access = typStr
 
 	return UpdateDrainProjectAccessUnion{
-		UpdateDrainProjectAccessAll: &updateDrainProjectAccessAll,
+		UpdateDrainProjectAccessAll: &all,
 		Type:                        typ,
 	}
 }
 
-func CreateUpdateDrainProjectAccessUnionUpdateDrainProjectAccessSome(updateDrainProjectAccessSome UpdateDrainProjectAccessSome) UpdateDrainProjectAccessUnion {
-	typ := UpdateDrainProjectAccessUnionTypeUpdateDrainProjectAccessSome
+func CreateUpdateDrainProjectAccessUnionSome(some UpdateDrainProjectAccessSome) UpdateDrainProjectAccessUnion {
+	typ := UpdateDrainProjectAccessUnionTypeSome
+
+	typStr := UpdateDrainAccessSome(typ)
+	some.Access = typStr
 
 	return UpdateDrainProjectAccessUnion{
-		UpdateDrainProjectAccessSome: &updateDrainProjectAccessSome,
+		UpdateDrainProjectAccessSome: &some,
 		Type:                         typ,
 	}
 }
 
 func (u *UpdateDrainProjectAccessUnion) UnmarshalJSON(data []byte) error {
 
-	var updateDrainProjectAccessSome UpdateDrainProjectAccessSome = UpdateDrainProjectAccessSome{}
-	if err := utils.UnmarshalJSON(data, &updateDrainProjectAccessSome, "", true, nil); err == nil {
-		u.UpdateDrainProjectAccessSome = &updateDrainProjectAccessSome
-		u.Type = UpdateDrainProjectAccessUnionTypeUpdateDrainProjectAccessSome
-		return nil
+	type discriminator struct {
+		Access string `json:"access"`
 	}
 
-	var updateDrainProjectAccessAll UpdateDrainProjectAccessAll = UpdateDrainProjectAccessAll{}
-	if err := utils.UnmarshalJSON(data, &updateDrainProjectAccessAll, "", true, nil); err == nil {
-		u.UpdateDrainProjectAccessAll = &updateDrainProjectAccessAll
-		u.Type = UpdateDrainProjectAccessUnionTypeUpdateDrainProjectAccessAll
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Access {
+	case "all":
+		updateDrainProjectAccessAll := new(UpdateDrainProjectAccessAll)
+		if err := utils.UnmarshalJSON(data, &updateDrainProjectAccessAll, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Access == all) type UpdateDrainProjectAccessAll within UpdateDrainProjectAccessUnion: %w", string(data), err)
+		}
+
+		u.UpdateDrainProjectAccessAll = updateDrainProjectAccessAll
+		u.Type = UpdateDrainProjectAccessUnionTypeAll
+		return nil
+	case "some":
+		updateDrainProjectAccessSome := new(UpdateDrainProjectAccessSome)
+		if err := utils.UnmarshalJSON(data, &updateDrainProjectAccessSome, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Access == some) type UpdateDrainProjectAccessSome within UpdateDrainProjectAccessUnion: %w", string(data), err)
+		}
+
+		u.UpdateDrainProjectAccessSome = updateDrainProjectAccessSome
+		u.Type = UpdateDrainProjectAccessUnionTypeSome
 		return nil
 	}
 
@@ -3111,6 +3239,34 @@ func (o *UpdateDrainResponseBody2) GetDelivery() *UpdateDrainDeliveryResponseUni
 	return o.Delivery
 }
 
+func (o *UpdateDrainResponseBody2) GetDeliveryHTTP() *UpdateDrainDeliveryHTTP2 {
+	if v := o.GetDelivery(); v != nil {
+		return v.UpdateDrainDeliveryHTTP2
+	}
+	return nil
+}
+
+func (o *UpdateDrainResponseBody2) GetDeliveryOtlphttp() *UpdateDrainDeliveryOtlphttp2 {
+	if v := o.GetDelivery(); v != nil {
+		return v.UpdateDrainDeliveryOtlphttp2
+	}
+	return nil
+}
+
+func (o *UpdateDrainResponseBody2) GetDeliveryClickhouse() *UpdateDrainDeliveryClickhouse2 {
+	if v := o.GetDelivery(); v != nil {
+		return v.UpdateDrainDeliveryClickhouse2
+	}
+	return nil
+}
+
+func (o *UpdateDrainResponseBody2) GetDeliveryInternal() *UpdateDrainDeliveryVercelOtelTracesDb2 {
+	if v := o.GetDelivery(); v != nil {
+		return v.UpdateDrainDeliveryVercelOtelTracesDb2
+	}
+	return nil
+}
+
 func (o *UpdateDrainResponseBody2) GetSampling() []UpdateDrainSamplingResponse2 {
 	if o == nil {
 		return nil
@@ -3167,6 +3323,14 @@ func (o *UpdateDrainResponseBody2) GetSource() UpdateDrainResponseBodySourceUnio
 	return o.Source
 }
 
+func (o *UpdateDrainResponseBody2) GetSourceSelfServed() *UpdateDrainSourceSelfServed2 {
+	return o.GetSource().UpdateDrainSourceSelfServed2
+}
+
+func (o *UpdateDrainResponseBody2) GetSourceIntegration() *UpdateDrainSourceIntegration2 {
+	return o.GetSource().UpdateDrainSourceIntegration2
+}
+
 func (o *UpdateDrainResponseBody2) GetFilter() *string {
 	if o == nil {
 		return nil
@@ -3179,6 +3343,20 @@ func (o *UpdateDrainResponseBody2) GetFilterV2() *UpdateDrainFilterV2Union2 {
 		return nil
 	}
 	return o.FilterV2
+}
+
+func (o *UpdateDrainResponseBody2) GetFilterV2V1() *UpdateDrainFilterV2V12 {
+	if v := o.GetFilterV2(); v != nil {
+		return v.UpdateDrainFilterV2V12
+	}
+	return nil
+}
+
+func (o *UpdateDrainResponseBody2) GetFilterV2V2() *UpdateDrainFilterV2V22 {
+	if v := o.GetFilterV2(); v != nil {
+		return v.UpdateDrainFilterV2V22
+	}
+	return nil
 }
 
 func (o *UpdateDrainResponseBody2) GetIntegrationIcon() *string {
@@ -3207,6 +3385,20 @@ func (o *UpdateDrainResponseBody2) GetProjectAccess() *UpdateDrainProjectAccessU
 		return nil
 	}
 	return o.ProjectAccess
+}
+
+func (o *UpdateDrainResponseBody2) GetProjectAccessAll() *UpdateDrainProjectAccessAll {
+	if v := o.GetProjectAccess(); v != nil {
+		return v.UpdateDrainProjectAccessAll
+	}
+	return nil
+}
+
+func (o *UpdateDrainResponseBody2) GetProjectAccessSome() *UpdateDrainProjectAccessSome {
+	if v := o.GetProjectAccess(); v != nil {
+		return v.UpdateDrainProjectAccessSome
+	}
+	return nil
 }
 
 type UpdateDrainSchemasLog1 struct {
@@ -3929,10 +4121,10 @@ func (o *UpdateDrainDeliveryHTTP1) GetSecret() *UpdateDrainSecretUnion1 {
 type UpdateDrainDeliveryResponseUnion1Type string
 
 const (
-	UpdateDrainDeliveryResponseUnion1TypeUpdateDrainDeliveryHTTP1               UpdateDrainDeliveryResponseUnion1Type = "updateDrain_delivery_HTTP_1"
-	UpdateDrainDeliveryResponseUnion1TypeUpdateDrainDeliveryOtlphttp1           UpdateDrainDeliveryResponseUnion1Type = "updateDrain_delivery_Otlphttp_1"
-	UpdateDrainDeliveryResponseUnion1TypeUpdateDrainDeliveryClickhouse1         UpdateDrainDeliveryResponseUnion1Type = "updateDrain_delivery_Clickhouse_1"
-	UpdateDrainDeliveryResponseUnion1TypeUpdateDrainDeliveryVercelOtelTracesDb1 UpdateDrainDeliveryResponseUnion1Type = "updateDrain_delivery_VercelOtelTracesDb_1"
+	UpdateDrainDeliveryResponseUnion1TypeHTTP       UpdateDrainDeliveryResponseUnion1Type = "http"
+	UpdateDrainDeliveryResponseUnion1TypeOtlphttp   UpdateDrainDeliveryResponseUnion1Type = "otlphttp"
+	UpdateDrainDeliveryResponseUnion1TypeClickhouse UpdateDrainDeliveryResponseUnion1Type = "clickhouse"
+	UpdateDrainDeliveryResponseUnion1TypeInternal   UpdateDrainDeliveryResponseUnion1Type = "internal"
 )
 
 type UpdateDrainDeliveryResponseUnion1 struct {
@@ -3944,69 +4136,101 @@ type UpdateDrainDeliveryResponseUnion1 struct {
 	Type UpdateDrainDeliveryResponseUnion1Type
 }
 
-func CreateUpdateDrainDeliveryResponseUnion1UpdateDrainDeliveryHTTP1(updateDrainDeliveryHTTP1 UpdateDrainDeliveryHTTP1) UpdateDrainDeliveryResponseUnion1 {
-	typ := UpdateDrainDeliveryResponseUnion1TypeUpdateDrainDeliveryHTTP1
+func CreateUpdateDrainDeliveryResponseUnion1HTTP(http UpdateDrainDeliveryHTTP1) UpdateDrainDeliveryResponseUnion1 {
+	typ := UpdateDrainDeliveryResponseUnion1TypeHTTP
+
+	typStr := UpdateDrainTypeHTTP1(typ)
+	http.Type = typStr
 
 	return UpdateDrainDeliveryResponseUnion1{
-		UpdateDrainDeliveryHTTP1: &updateDrainDeliveryHTTP1,
+		UpdateDrainDeliveryHTTP1: &http,
 		Type:                     typ,
 	}
 }
 
-func CreateUpdateDrainDeliveryResponseUnion1UpdateDrainDeliveryOtlphttp1(updateDrainDeliveryOtlphttp1 UpdateDrainDeliveryOtlphttp1) UpdateDrainDeliveryResponseUnion1 {
-	typ := UpdateDrainDeliveryResponseUnion1TypeUpdateDrainDeliveryOtlphttp1
+func CreateUpdateDrainDeliveryResponseUnion1Otlphttp(otlphttp UpdateDrainDeliveryOtlphttp1) UpdateDrainDeliveryResponseUnion1 {
+	typ := UpdateDrainDeliveryResponseUnion1TypeOtlphttp
+
+	typStr := UpdateDrainTypeOtlphttp1(typ)
+	otlphttp.Type = typStr
 
 	return UpdateDrainDeliveryResponseUnion1{
-		UpdateDrainDeliveryOtlphttp1: &updateDrainDeliveryOtlphttp1,
+		UpdateDrainDeliveryOtlphttp1: &otlphttp,
 		Type:                         typ,
 	}
 }
 
-func CreateUpdateDrainDeliveryResponseUnion1UpdateDrainDeliveryClickhouse1(updateDrainDeliveryClickhouse1 UpdateDrainDeliveryClickhouse1) UpdateDrainDeliveryResponseUnion1 {
-	typ := UpdateDrainDeliveryResponseUnion1TypeUpdateDrainDeliveryClickhouse1
+func CreateUpdateDrainDeliveryResponseUnion1Clickhouse(clickhouse UpdateDrainDeliveryClickhouse1) UpdateDrainDeliveryResponseUnion1 {
+	typ := UpdateDrainDeliveryResponseUnion1TypeClickhouse
+
+	typStr := UpdateDrainTypeClickhouse1(typ)
+	clickhouse.Type = typStr
 
 	return UpdateDrainDeliveryResponseUnion1{
-		UpdateDrainDeliveryClickhouse1: &updateDrainDeliveryClickhouse1,
+		UpdateDrainDeliveryClickhouse1: &clickhouse,
 		Type:                           typ,
 	}
 }
 
-func CreateUpdateDrainDeliveryResponseUnion1UpdateDrainDeliveryVercelOtelTracesDb1(updateDrainDeliveryVercelOtelTracesDb1 UpdateDrainDeliveryVercelOtelTracesDb1) UpdateDrainDeliveryResponseUnion1 {
-	typ := UpdateDrainDeliveryResponseUnion1TypeUpdateDrainDeliveryVercelOtelTracesDb1
+func CreateUpdateDrainDeliveryResponseUnion1Internal(internal UpdateDrainDeliveryVercelOtelTracesDb1) UpdateDrainDeliveryResponseUnion1 {
+	typ := UpdateDrainDeliveryResponseUnion1TypeInternal
+
+	typStr := UpdateDrainTypeInternal1(typ)
+	internal.Type = typStr
 
 	return UpdateDrainDeliveryResponseUnion1{
-		UpdateDrainDeliveryVercelOtelTracesDb1: &updateDrainDeliveryVercelOtelTracesDb1,
+		UpdateDrainDeliveryVercelOtelTracesDb1: &internal,
 		Type:                                   typ,
 	}
 }
 
 func (u *UpdateDrainDeliveryResponseUnion1) UnmarshalJSON(data []byte) error {
 
-	var updateDrainDeliveryHTTP1 UpdateDrainDeliveryHTTP1 = UpdateDrainDeliveryHTTP1{}
-	if err := utils.UnmarshalJSON(data, &updateDrainDeliveryHTTP1, "", true, nil); err == nil {
-		u.UpdateDrainDeliveryHTTP1 = &updateDrainDeliveryHTTP1
-		u.Type = UpdateDrainDeliveryResponseUnion1TypeUpdateDrainDeliveryHTTP1
-		return nil
+	type discriminator struct {
+		Type string `json:"type"`
 	}
 
-	var updateDrainDeliveryOtlphttp1 UpdateDrainDeliveryOtlphttp1 = UpdateDrainDeliveryOtlphttp1{}
-	if err := utils.UnmarshalJSON(data, &updateDrainDeliveryOtlphttp1, "", true, nil); err == nil {
-		u.UpdateDrainDeliveryOtlphttp1 = &updateDrainDeliveryOtlphttp1
-		u.Type = UpdateDrainDeliveryResponseUnion1TypeUpdateDrainDeliveryOtlphttp1
-		return nil
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
 	}
 
-	var updateDrainDeliveryClickhouse1 UpdateDrainDeliveryClickhouse1 = UpdateDrainDeliveryClickhouse1{}
-	if err := utils.UnmarshalJSON(data, &updateDrainDeliveryClickhouse1, "", true, nil); err == nil {
-		u.UpdateDrainDeliveryClickhouse1 = &updateDrainDeliveryClickhouse1
-		u.Type = UpdateDrainDeliveryResponseUnion1TypeUpdateDrainDeliveryClickhouse1
-		return nil
-	}
+	switch dis.Type {
+	case "http":
+		updateDrainDeliveryHTTP1 := new(UpdateDrainDeliveryHTTP1)
+		if err := utils.UnmarshalJSON(data, &updateDrainDeliveryHTTP1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == http) type UpdateDrainDeliveryHTTP1 within UpdateDrainDeliveryResponseUnion1: %w", string(data), err)
+		}
 
-	var updateDrainDeliveryVercelOtelTracesDb1 UpdateDrainDeliveryVercelOtelTracesDb1 = UpdateDrainDeliveryVercelOtelTracesDb1{}
-	if err := utils.UnmarshalJSON(data, &updateDrainDeliveryVercelOtelTracesDb1, "", true, nil); err == nil {
-		u.UpdateDrainDeliveryVercelOtelTracesDb1 = &updateDrainDeliveryVercelOtelTracesDb1
-		u.Type = UpdateDrainDeliveryResponseUnion1TypeUpdateDrainDeliveryVercelOtelTracesDb1
+		u.UpdateDrainDeliveryHTTP1 = updateDrainDeliveryHTTP1
+		u.Type = UpdateDrainDeliveryResponseUnion1TypeHTTP
+		return nil
+	case "otlphttp":
+		updateDrainDeliveryOtlphttp1 := new(UpdateDrainDeliveryOtlphttp1)
+		if err := utils.UnmarshalJSON(data, &updateDrainDeliveryOtlphttp1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == otlphttp) type UpdateDrainDeliveryOtlphttp1 within UpdateDrainDeliveryResponseUnion1: %w", string(data), err)
+		}
+
+		u.UpdateDrainDeliveryOtlphttp1 = updateDrainDeliveryOtlphttp1
+		u.Type = UpdateDrainDeliveryResponseUnion1TypeOtlphttp
+		return nil
+	case "clickhouse":
+		updateDrainDeliveryClickhouse1 := new(UpdateDrainDeliveryClickhouse1)
+		if err := utils.UnmarshalJSON(data, &updateDrainDeliveryClickhouse1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == clickhouse) type UpdateDrainDeliveryClickhouse1 within UpdateDrainDeliveryResponseUnion1: %w", string(data), err)
+		}
+
+		u.UpdateDrainDeliveryClickhouse1 = updateDrainDeliveryClickhouse1
+		u.Type = UpdateDrainDeliveryResponseUnion1TypeClickhouse
+		return nil
+	case "internal":
+		updateDrainDeliveryVercelOtelTracesDb1 := new(UpdateDrainDeliveryVercelOtelTracesDb1)
+		if err := utils.UnmarshalJSON(data, &updateDrainDeliveryVercelOtelTracesDb1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == internal) type UpdateDrainDeliveryVercelOtelTracesDb1 within UpdateDrainDeliveryResponseUnion1: %w", string(data), err)
+		}
+
+		u.UpdateDrainDeliveryVercelOtelTracesDb1 = updateDrainDeliveryVercelOtelTracesDb1
+		u.Type = UpdateDrainDeliveryResponseUnion1TypeInternal
 		return nil
 	}
 
@@ -4314,8 +4538,8 @@ func (o *UpdateDrainSourceSelfServed1) GetKind() UpdateDrainKindSelfServed1 {
 type UpdateDrainResponseBodySourceUnion1Type string
 
 const (
-	UpdateDrainResponseBodySourceUnion1TypeUpdateDrainSourceSelfServed1  UpdateDrainResponseBodySourceUnion1Type = "updateDrain_source_SelfServed_1"
-	UpdateDrainResponseBodySourceUnion1TypeUpdateDrainSourceIntegration1 UpdateDrainResponseBodySourceUnion1Type = "updateDrain_source_Integration_1"
+	UpdateDrainResponseBodySourceUnion1TypeSelfServed  UpdateDrainResponseBodySourceUnion1Type = "self-served"
+	UpdateDrainResponseBodySourceUnion1TypeIntegration UpdateDrainResponseBodySourceUnion1Type = "integration"
 )
 
 type UpdateDrainResponseBodySourceUnion1 struct {
@@ -4325,37 +4549,59 @@ type UpdateDrainResponseBodySourceUnion1 struct {
 	Type UpdateDrainResponseBodySourceUnion1Type
 }
 
-func CreateUpdateDrainResponseBodySourceUnion1UpdateDrainSourceSelfServed1(updateDrainSourceSelfServed1 UpdateDrainSourceSelfServed1) UpdateDrainResponseBodySourceUnion1 {
-	typ := UpdateDrainResponseBodySourceUnion1TypeUpdateDrainSourceSelfServed1
+func CreateUpdateDrainResponseBodySourceUnion1SelfServed(selfServed UpdateDrainSourceSelfServed1) UpdateDrainResponseBodySourceUnion1 {
+	typ := UpdateDrainResponseBodySourceUnion1TypeSelfServed
+
+	typStr := UpdateDrainKindSelfServed1(typ)
+	selfServed.Kind = typStr
 
 	return UpdateDrainResponseBodySourceUnion1{
-		UpdateDrainSourceSelfServed1: &updateDrainSourceSelfServed1,
+		UpdateDrainSourceSelfServed1: &selfServed,
 		Type:                         typ,
 	}
 }
 
-func CreateUpdateDrainResponseBodySourceUnion1UpdateDrainSourceIntegration1(updateDrainSourceIntegration1 UpdateDrainSourceIntegration1) UpdateDrainResponseBodySourceUnion1 {
-	typ := UpdateDrainResponseBodySourceUnion1TypeUpdateDrainSourceIntegration1
+func CreateUpdateDrainResponseBodySourceUnion1Integration(integration UpdateDrainSourceIntegration1) UpdateDrainResponseBodySourceUnion1 {
+	typ := UpdateDrainResponseBodySourceUnion1TypeIntegration
+
+	typStr := UpdateDrainKindIntegration1(typ)
+	integration.Kind = typStr
 
 	return UpdateDrainResponseBodySourceUnion1{
-		UpdateDrainSourceIntegration1: &updateDrainSourceIntegration1,
+		UpdateDrainSourceIntegration1: &integration,
 		Type:                          typ,
 	}
 }
 
 func (u *UpdateDrainResponseBodySourceUnion1) UnmarshalJSON(data []byte) error {
 
-	var updateDrainSourceIntegration1 UpdateDrainSourceIntegration1 = UpdateDrainSourceIntegration1{}
-	if err := utils.UnmarshalJSON(data, &updateDrainSourceIntegration1, "", true, nil); err == nil {
-		u.UpdateDrainSourceIntegration1 = &updateDrainSourceIntegration1
-		u.Type = UpdateDrainResponseBodySourceUnion1TypeUpdateDrainSourceIntegration1
-		return nil
+	type discriminator struct {
+		Kind string `json:"kind"`
 	}
 
-	var updateDrainSourceSelfServed1 UpdateDrainSourceSelfServed1 = UpdateDrainSourceSelfServed1{}
-	if err := utils.UnmarshalJSON(data, &updateDrainSourceSelfServed1, "", true, nil); err == nil {
-		u.UpdateDrainSourceSelfServed1 = &updateDrainSourceSelfServed1
-		u.Type = UpdateDrainResponseBodySourceUnion1TypeUpdateDrainSourceSelfServed1
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Kind {
+	case "self-served":
+		updateDrainSourceSelfServed1 := new(UpdateDrainSourceSelfServed1)
+		if err := utils.UnmarshalJSON(data, &updateDrainSourceSelfServed1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Kind == self-served) type UpdateDrainSourceSelfServed1 within UpdateDrainResponseBodySourceUnion1: %w", string(data), err)
+		}
+
+		u.UpdateDrainSourceSelfServed1 = updateDrainSourceSelfServed1
+		u.Type = UpdateDrainResponseBodySourceUnion1TypeSelfServed
+		return nil
+	case "integration":
+		updateDrainSourceIntegration1 := new(UpdateDrainSourceIntegration1)
+		if err := utils.UnmarshalJSON(data, &updateDrainSourceIntegration1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Kind == integration) type UpdateDrainSourceIntegration1 within UpdateDrainResponseBodySourceUnion1: %w", string(data), err)
+		}
+
+		u.UpdateDrainSourceIntegration1 = updateDrainSourceIntegration1
+		u.Type = UpdateDrainResponseBodySourceUnion1TypeIntegration
 		return nil
 	}
 
@@ -4663,8 +4909,8 @@ func (o *UpdateDrainFilterBasic1) GetDeployment() *UpdateDrainFilterV2Deployment
 type UpdateDrainFilterResponseUnion1Type string
 
 const (
-	UpdateDrainFilterResponseUnion1TypeUpdateDrainFilterBasic1 UpdateDrainFilterResponseUnion1Type = "updateDrain_filter_Basic_1"
-	UpdateDrainFilterResponseUnion1TypeUpdateDrainFilterOdata1 UpdateDrainFilterResponseUnion1Type = "updateDrain_filter_Odata_1"
+	UpdateDrainFilterResponseUnion1TypeBasic UpdateDrainFilterResponseUnion1Type = "basic"
+	UpdateDrainFilterResponseUnion1TypeOdata UpdateDrainFilterResponseUnion1Type = "odata"
 )
 
 type UpdateDrainFilterResponseUnion1 struct {
@@ -4674,37 +4920,59 @@ type UpdateDrainFilterResponseUnion1 struct {
 	Type UpdateDrainFilterResponseUnion1Type
 }
 
-func CreateUpdateDrainFilterResponseUnion1UpdateDrainFilterBasic1(updateDrainFilterBasic1 UpdateDrainFilterBasic1) UpdateDrainFilterResponseUnion1 {
-	typ := UpdateDrainFilterResponseUnion1TypeUpdateDrainFilterBasic1
+func CreateUpdateDrainFilterResponseUnion1Basic(basic UpdateDrainFilterBasic1) UpdateDrainFilterResponseUnion1 {
+	typ := UpdateDrainFilterResponseUnion1TypeBasic
+
+	typStr := UpdateDrainTypeBasic1(typ)
+	basic.Type = typStr
 
 	return UpdateDrainFilterResponseUnion1{
-		UpdateDrainFilterBasic1: &updateDrainFilterBasic1,
+		UpdateDrainFilterBasic1: &basic,
 		Type:                    typ,
 	}
 }
 
-func CreateUpdateDrainFilterResponseUnion1UpdateDrainFilterOdata1(updateDrainFilterOdata1 UpdateDrainFilterOdata1) UpdateDrainFilterResponseUnion1 {
-	typ := UpdateDrainFilterResponseUnion1TypeUpdateDrainFilterOdata1
+func CreateUpdateDrainFilterResponseUnion1Odata(odata UpdateDrainFilterOdata1) UpdateDrainFilterResponseUnion1 {
+	typ := UpdateDrainFilterResponseUnion1TypeOdata
+
+	typStr := UpdateDrainTypeOdata1(typ)
+	odata.Type = typStr
 
 	return UpdateDrainFilterResponseUnion1{
-		UpdateDrainFilterOdata1: &updateDrainFilterOdata1,
+		UpdateDrainFilterOdata1: &odata,
 		Type:                    typ,
 	}
 }
 
 func (u *UpdateDrainFilterResponseUnion1) UnmarshalJSON(data []byte) error {
 
-	var updateDrainFilterOdata1 UpdateDrainFilterOdata1 = UpdateDrainFilterOdata1{}
-	if err := utils.UnmarshalJSON(data, &updateDrainFilterOdata1, "", true, nil); err == nil {
-		u.UpdateDrainFilterOdata1 = &updateDrainFilterOdata1
-		u.Type = UpdateDrainFilterResponseUnion1TypeUpdateDrainFilterOdata1
-		return nil
+	type discriminator struct {
+		Type string `json:"type"`
 	}
 
-	var updateDrainFilterBasic1 UpdateDrainFilterBasic1 = UpdateDrainFilterBasic1{}
-	if err := utils.UnmarshalJSON(data, &updateDrainFilterBasic1, "", true, nil); err == nil {
-		u.UpdateDrainFilterBasic1 = &updateDrainFilterBasic1
-		u.Type = UpdateDrainFilterResponseUnion1TypeUpdateDrainFilterBasic1
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Type {
+	case "basic":
+		updateDrainFilterBasic1 := new(UpdateDrainFilterBasic1)
+		if err := utils.UnmarshalJSON(data, &updateDrainFilterBasic1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == basic) type UpdateDrainFilterBasic1 within UpdateDrainFilterResponseUnion1: %w", string(data), err)
+		}
+
+		u.UpdateDrainFilterBasic1 = updateDrainFilterBasic1
+		u.Type = UpdateDrainFilterResponseUnion1TypeBasic
+		return nil
+	case "odata":
+		updateDrainFilterOdata1 := new(UpdateDrainFilterOdata1)
+		if err := utils.UnmarshalJSON(data, &updateDrainFilterOdata1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == odata) type UpdateDrainFilterOdata1 within UpdateDrainFilterResponseUnion1: %w", string(data), err)
+		}
+
+		u.UpdateDrainFilterOdata1 = updateDrainFilterOdata1
+		u.Type = UpdateDrainFilterResponseUnion1TypeOdata
 		return nil
 	}
 
@@ -4751,6 +5019,14 @@ func (o *UpdateDrainFilterV2V21) GetFilter() UpdateDrainFilterResponseUnion1 {
 		return UpdateDrainFilterResponseUnion1{}
 	}
 	return o.Filter
+}
+
+func (o *UpdateDrainFilterV2V21) GetFilterBasic() *UpdateDrainFilterBasic1 {
+	return o.GetFilter().UpdateDrainFilterBasic1
+}
+
+func (o *UpdateDrainFilterV2V21) GetFilterOdata() *UpdateDrainFilterOdata1 {
+	return o.GetFilter().UpdateDrainFilterOdata1
 }
 
 type UpdateDrainVersionV11 string
@@ -4801,8 +5077,8 @@ func (o *UpdateDrainFilterV2V11) GetVersion() UpdateDrainVersionV11 {
 type UpdateDrainFilterV2Union1Type string
 
 const (
-	UpdateDrainFilterV2Union1TypeUpdateDrainFilterV2V11 UpdateDrainFilterV2Union1Type = "updateDrain_filterV2_V1_1"
-	UpdateDrainFilterV2Union1TypeUpdateDrainFilterV2V21 UpdateDrainFilterV2Union1Type = "updateDrain_filterV2_V2_1"
+	UpdateDrainFilterV2Union1TypeV1 UpdateDrainFilterV2Union1Type = "v1"
+	UpdateDrainFilterV2Union1TypeV2 UpdateDrainFilterV2Union1Type = "v2"
 )
 
 type UpdateDrainFilterV2Union1 struct {
@@ -4812,37 +5088,59 @@ type UpdateDrainFilterV2Union1 struct {
 	Type UpdateDrainFilterV2Union1Type
 }
 
-func CreateUpdateDrainFilterV2Union1UpdateDrainFilterV2V11(updateDrainFilterV2V11 UpdateDrainFilterV2V11) UpdateDrainFilterV2Union1 {
-	typ := UpdateDrainFilterV2Union1TypeUpdateDrainFilterV2V11
+func CreateUpdateDrainFilterV2Union1V1(v1 UpdateDrainFilterV2V11) UpdateDrainFilterV2Union1 {
+	typ := UpdateDrainFilterV2Union1TypeV1
+
+	typStr := UpdateDrainVersionV11(typ)
+	v1.Version = typStr
 
 	return UpdateDrainFilterV2Union1{
-		UpdateDrainFilterV2V11: &updateDrainFilterV2V11,
+		UpdateDrainFilterV2V11: &v1,
 		Type:                   typ,
 	}
 }
 
-func CreateUpdateDrainFilterV2Union1UpdateDrainFilterV2V21(updateDrainFilterV2V21 UpdateDrainFilterV2V21) UpdateDrainFilterV2Union1 {
-	typ := UpdateDrainFilterV2Union1TypeUpdateDrainFilterV2V21
+func CreateUpdateDrainFilterV2Union1V2(v2 UpdateDrainFilterV2V21) UpdateDrainFilterV2Union1 {
+	typ := UpdateDrainFilterV2Union1TypeV2
+
+	typStr := UpdateDrainVersionV21(typ)
+	v2.Version = typStr
 
 	return UpdateDrainFilterV2Union1{
-		UpdateDrainFilterV2V21: &updateDrainFilterV2V21,
+		UpdateDrainFilterV2V21: &v2,
 		Type:                   typ,
 	}
 }
 
 func (u *UpdateDrainFilterV2Union1) UnmarshalJSON(data []byte) error {
 
-	var updateDrainFilterV2V21 UpdateDrainFilterV2V21 = UpdateDrainFilterV2V21{}
-	if err := utils.UnmarshalJSON(data, &updateDrainFilterV2V21, "", true, nil); err == nil {
-		u.UpdateDrainFilterV2V21 = &updateDrainFilterV2V21
-		u.Type = UpdateDrainFilterV2Union1TypeUpdateDrainFilterV2V21
-		return nil
+	type discriminator struct {
+		Version string `json:"version"`
 	}
 
-	var updateDrainFilterV2V11 UpdateDrainFilterV2V11 = UpdateDrainFilterV2V11{}
-	if err := utils.UnmarshalJSON(data, &updateDrainFilterV2V11, "", true, nil); err == nil {
-		u.UpdateDrainFilterV2V11 = &updateDrainFilterV2V11
-		u.Type = UpdateDrainFilterV2Union1TypeUpdateDrainFilterV2V11
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Version {
+	case "v1":
+		updateDrainFilterV2V11 := new(UpdateDrainFilterV2V11)
+		if err := utils.UnmarshalJSON(data, &updateDrainFilterV2V11, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Version == v1) type UpdateDrainFilterV2V11 within UpdateDrainFilterV2Union1: %w", string(data), err)
+		}
+
+		u.UpdateDrainFilterV2V11 = updateDrainFilterV2V11
+		u.Type = UpdateDrainFilterV2Union1TypeV1
+		return nil
+	case "v2":
+		updateDrainFilterV2V21 := new(UpdateDrainFilterV2V21)
+		if err := utils.UnmarshalJSON(data, &updateDrainFilterV2V21, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Version == v2) type UpdateDrainFilterV2V21 within UpdateDrainFilterV2Union1: %w", string(data), err)
+		}
+
+		u.UpdateDrainFilterV2V21 = updateDrainFilterV2V21
+		u.Type = UpdateDrainFilterV2Union1TypeV2
 		return nil
 	}
 
@@ -4949,6 +5247,34 @@ func (o *UpdateDrainResponseBody1) GetDelivery() *UpdateDrainDeliveryResponseUni
 	return o.Delivery
 }
 
+func (o *UpdateDrainResponseBody1) GetDeliveryHTTP() *UpdateDrainDeliveryHTTP1 {
+	if v := o.GetDelivery(); v != nil {
+		return v.UpdateDrainDeliveryHTTP1
+	}
+	return nil
+}
+
+func (o *UpdateDrainResponseBody1) GetDeliveryOtlphttp() *UpdateDrainDeliveryOtlphttp1 {
+	if v := o.GetDelivery(); v != nil {
+		return v.UpdateDrainDeliveryOtlphttp1
+	}
+	return nil
+}
+
+func (o *UpdateDrainResponseBody1) GetDeliveryClickhouse() *UpdateDrainDeliveryClickhouse1 {
+	if v := o.GetDelivery(); v != nil {
+		return v.UpdateDrainDeliveryClickhouse1
+	}
+	return nil
+}
+
+func (o *UpdateDrainResponseBody1) GetDeliveryInternal() *UpdateDrainDeliveryVercelOtelTracesDb1 {
+	if v := o.GetDelivery(); v != nil {
+		return v.UpdateDrainDeliveryVercelOtelTracesDb1
+	}
+	return nil
+}
+
 func (o *UpdateDrainResponseBody1) GetSampling() []UpdateDrainSamplingResponse1 {
 	if o == nil {
 		return nil
@@ -5005,6 +5331,14 @@ func (o *UpdateDrainResponseBody1) GetSource() UpdateDrainResponseBodySourceUnio
 	return o.Source
 }
 
+func (o *UpdateDrainResponseBody1) GetSourceSelfServed() *UpdateDrainSourceSelfServed1 {
+	return o.GetSource().UpdateDrainSourceSelfServed1
+}
+
+func (o *UpdateDrainResponseBody1) GetSourceIntegration() *UpdateDrainSourceIntegration1 {
+	return o.GetSource().UpdateDrainSourceIntegration1
+}
+
 func (o *UpdateDrainResponseBody1) GetFilter() *string {
 	if o == nil {
 		return nil
@@ -5017,6 +5351,20 @@ func (o *UpdateDrainResponseBody1) GetFilterV2() *UpdateDrainFilterV2Union1 {
 		return nil
 	}
 	return o.FilterV2
+}
+
+func (o *UpdateDrainResponseBody1) GetFilterV2V1() *UpdateDrainFilterV2V11 {
+	if v := o.GetFilterV2(); v != nil {
+		return v.UpdateDrainFilterV2V11
+	}
+	return nil
+}
+
+func (o *UpdateDrainResponseBody1) GetFilterV2V2() *UpdateDrainFilterV2V21 {
+	if v := o.GetFilterV2(); v != nil {
+		return v.UpdateDrainFilterV2V21
+	}
+	return nil
 }
 
 type UpdateDrainResponseBodyType string

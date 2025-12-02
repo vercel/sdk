@@ -13,7 +13,7 @@ let value: CreateProjectEnvContentHint2 = {
 
 ## Fields
 
-| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
-| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| `type`                                                                                                 | [models.CreateProjectEnvContentHintProjectsType](../models/createprojectenvcontenthintprojectstype.md) | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
-| `storeId`                                                                                              | *string*                                                                                               | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `type`                 | *"redis-rest-api-url"* | :heavy_check_mark:     | N/A                    |
+| `storeId`              | *string*               | :heavy_check_mark:     | N/A                    |

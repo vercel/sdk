@@ -53,7 +53,7 @@ func testGetDrainGetDrain0(w http.ResponseWriter, req *http.Request) {
 			Name:      "<value>",
 			CreatedAt: 1182.63,
 			UpdatedAt: 7579.11,
-			Source: operations.CreateGetDrainSourceUnion1GetDrainSourceIntegration1(
+			Source: operations.CreateGetDrainSourceUnion1Integration(
 				operations.GetDrainSourceIntegration1{
 					Kind:                       operations.GetDrainKindIntegration1Integration,
 					IntegrationID:              "<id>",

@@ -285,9 +285,9 @@ func (o *ErrorUnsupportedLanguageCode3) GetDetails() DomainDetails3 {
 type DomainErrorUnion5Type string
 
 const (
-	DomainErrorUnion5TypeErrorUnsupportedLanguageCode3  DomainErrorUnion5Type = "error_UnsupportedLanguageCode_3"
-	DomainErrorUnion5TypeErrorClientTransferProhibited3 DomainErrorUnion5Type = "error_ClientTransferProhibited_3"
-	DomainErrorUnion5TypeErrorClaimsNoticeRequired3     DomainErrorUnion5Type = "error_ClaimsNoticeRequired_3"
+	DomainErrorUnion5TypeUnsupportedLanguageCode  DomainErrorUnion5Type = "unsupported-language-code"
+	DomainErrorUnion5TypeClientTransferProhibited DomainErrorUnion5Type = "client-transfer-prohibited"
+	DomainErrorUnion5TypeClaimsNoticeRequired     DomainErrorUnion5Type = "claims-notice-required"
 )
 
 type DomainErrorUnion5 struct {
@@ -298,53 +298,80 @@ type DomainErrorUnion5 struct {
 	Type DomainErrorUnion5Type
 }
 
-func CreateDomainErrorUnion5ErrorUnsupportedLanguageCode3(errorUnsupportedLanguageCode3 ErrorUnsupportedLanguageCode3) DomainErrorUnion5 {
-	typ := DomainErrorUnion5TypeErrorUnsupportedLanguageCode3
+func CreateDomainErrorUnion5UnsupportedLanguageCode(unsupportedLanguageCode ErrorUnsupportedLanguageCode3) DomainErrorUnion5 {
+	typ := DomainErrorUnion5TypeUnsupportedLanguageCode
+
+	typStr := CodeUnsupportedLanguageCode3(typ)
+	unsupportedLanguageCode.Code = typStr
 
 	return DomainErrorUnion5{
-		ErrorUnsupportedLanguageCode3: &errorUnsupportedLanguageCode3,
+		ErrorUnsupportedLanguageCode3: &unsupportedLanguageCode,
 		Type:                          typ,
 	}
 }
 
-func CreateDomainErrorUnion5ErrorClientTransferProhibited3(errorClientTransferProhibited3 ErrorClientTransferProhibited3) DomainErrorUnion5 {
-	typ := DomainErrorUnion5TypeErrorClientTransferProhibited3
+func CreateDomainErrorUnion5ClientTransferProhibited(clientTransferProhibited ErrorClientTransferProhibited3) DomainErrorUnion5 {
+	typ := DomainErrorUnion5TypeClientTransferProhibited
+
+	typStr := CodeClientTransferProhibited3(typ)
+	clientTransferProhibited.Code = typStr
 
 	return DomainErrorUnion5{
-		ErrorClientTransferProhibited3: &errorClientTransferProhibited3,
+		ErrorClientTransferProhibited3: &clientTransferProhibited,
 		Type:                           typ,
 	}
 }
 
-func CreateDomainErrorUnion5ErrorClaimsNoticeRequired3(errorClaimsNoticeRequired3 ErrorClaimsNoticeRequired3) DomainErrorUnion5 {
-	typ := DomainErrorUnion5TypeErrorClaimsNoticeRequired3
+func CreateDomainErrorUnion5ClaimsNoticeRequired(claimsNoticeRequired ErrorClaimsNoticeRequired3) DomainErrorUnion5 {
+	typ := DomainErrorUnion5TypeClaimsNoticeRequired
+
+	typStr := CodeClaimsNoticeRequired3(typ)
+	claimsNoticeRequired.Code = typStr
 
 	return DomainErrorUnion5{
-		ErrorClaimsNoticeRequired3: &errorClaimsNoticeRequired3,
+		ErrorClaimsNoticeRequired3: &claimsNoticeRequired,
 		Type:                       typ,
 	}
 }
 
 func (u *DomainErrorUnion5) UnmarshalJSON(data []byte) error {
 
-	var errorUnsupportedLanguageCode3 ErrorUnsupportedLanguageCode3 = ErrorUnsupportedLanguageCode3{}
-	if err := utils.UnmarshalJSON(data, &errorUnsupportedLanguageCode3, "", true, nil); err == nil {
-		u.ErrorUnsupportedLanguageCode3 = &errorUnsupportedLanguageCode3
-		u.Type = DomainErrorUnion5TypeErrorUnsupportedLanguageCode3
-		return nil
+	type discriminator struct {
+		Code string `json:"code"`
 	}
 
-	var errorClientTransferProhibited3 ErrorClientTransferProhibited3 = ErrorClientTransferProhibited3{}
-	if err := utils.UnmarshalJSON(data, &errorClientTransferProhibited3, "", true, nil); err == nil {
-		u.ErrorClientTransferProhibited3 = &errorClientTransferProhibited3
-		u.Type = DomainErrorUnion5TypeErrorClientTransferProhibited3
-		return nil
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
 	}
 
-	var errorClaimsNoticeRequired3 ErrorClaimsNoticeRequired3 = ErrorClaimsNoticeRequired3{}
-	if err := utils.UnmarshalJSON(data, &errorClaimsNoticeRequired3, "", true, nil); err == nil {
-		u.ErrorClaimsNoticeRequired3 = &errorClaimsNoticeRequired3
-		u.Type = DomainErrorUnion5TypeErrorClaimsNoticeRequired3
+	switch dis.Code {
+	case "unsupported-language-code":
+		errorUnsupportedLanguageCode3 := new(ErrorUnsupportedLanguageCode3)
+		if err := utils.UnmarshalJSON(data, &errorUnsupportedLanguageCode3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == unsupported-language-code) type ErrorUnsupportedLanguageCode3 within DomainErrorUnion5: %w", string(data), err)
+		}
+
+		u.ErrorUnsupportedLanguageCode3 = errorUnsupportedLanguageCode3
+		u.Type = DomainErrorUnion5TypeUnsupportedLanguageCode
+		return nil
+	case "client-transfer-prohibited":
+		errorClientTransferProhibited3 := new(ErrorClientTransferProhibited3)
+		if err := utils.UnmarshalJSON(data, &errorClientTransferProhibited3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == client-transfer-prohibited) type ErrorClientTransferProhibited3 within DomainErrorUnion5: %w", string(data), err)
+		}
+
+		u.ErrorClientTransferProhibited3 = errorClientTransferProhibited3
+		u.Type = DomainErrorUnion5TypeClientTransferProhibited
+		return nil
+	case "claims-notice-required":
+		errorClaimsNoticeRequired3 := new(ErrorClaimsNoticeRequired3)
+		if err := utils.UnmarshalJSON(data, &errorClaimsNoticeRequired3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == claims-notice-required) type ErrorClaimsNoticeRequired3 within DomainErrorUnion5: %w", string(data), err)
+		}
+
+		u.ErrorClaimsNoticeRequired3 = errorClaimsNoticeRequired3
+		u.Type = DomainErrorUnion5TypeClaimsNoticeRequired
 		return nil
 	}
 
@@ -758,9 +785,9 @@ func (o *ErrorUnsupportedLanguageCode2) GetDetails() DomainDetails2 {
 type DomainErrorUnion3Type string
 
 const (
-	DomainErrorUnion3TypeErrorUnsupportedLanguageCode2  DomainErrorUnion3Type = "error_UnsupportedLanguageCode_2"
-	DomainErrorUnion3TypeErrorClientTransferProhibited2 DomainErrorUnion3Type = "error_ClientTransferProhibited_2"
-	DomainErrorUnion3TypeErrorClaimsNoticeRequired2     DomainErrorUnion3Type = "error_ClaimsNoticeRequired_2"
+	DomainErrorUnion3TypeUnsupportedLanguageCode  DomainErrorUnion3Type = "unsupported-language-code"
+	DomainErrorUnion3TypeClientTransferProhibited DomainErrorUnion3Type = "client-transfer-prohibited"
+	DomainErrorUnion3TypeClaimsNoticeRequired     DomainErrorUnion3Type = "claims-notice-required"
 )
 
 type DomainErrorUnion3 struct {
@@ -771,53 +798,80 @@ type DomainErrorUnion3 struct {
 	Type DomainErrorUnion3Type
 }
 
-func CreateDomainErrorUnion3ErrorUnsupportedLanguageCode2(errorUnsupportedLanguageCode2 ErrorUnsupportedLanguageCode2) DomainErrorUnion3 {
-	typ := DomainErrorUnion3TypeErrorUnsupportedLanguageCode2
+func CreateDomainErrorUnion3UnsupportedLanguageCode(unsupportedLanguageCode ErrorUnsupportedLanguageCode2) DomainErrorUnion3 {
+	typ := DomainErrorUnion3TypeUnsupportedLanguageCode
+
+	typStr := CodeUnsupportedLanguageCode2(typ)
+	unsupportedLanguageCode.Code = typStr
 
 	return DomainErrorUnion3{
-		ErrorUnsupportedLanguageCode2: &errorUnsupportedLanguageCode2,
+		ErrorUnsupportedLanguageCode2: &unsupportedLanguageCode,
 		Type:                          typ,
 	}
 }
 
-func CreateDomainErrorUnion3ErrorClientTransferProhibited2(errorClientTransferProhibited2 ErrorClientTransferProhibited2) DomainErrorUnion3 {
-	typ := DomainErrorUnion3TypeErrorClientTransferProhibited2
+func CreateDomainErrorUnion3ClientTransferProhibited(clientTransferProhibited ErrorClientTransferProhibited2) DomainErrorUnion3 {
+	typ := DomainErrorUnion3TypeClientTransferProhibited
+
+	typStr := CodeClientTransferProhibited2(typ)
+	clientTransferProhibited.Code = typStr
 
 	return DomainErrorUnion3{
-		ErrorClientTransferProhibited2: &errorClientTransferProhibited2,
+		ErrorClientTransferProhibited2: &clientTransferProhibited,
 		Type:                           typ,
 	}
 }
 
-func CreateDomainErrorUnion3ErrorClaimsNoticeRequired2(errorClaimsNoticeRequired2 ErrorClaimsNoticeRequired2) DomainErrorUnion3 {
-	typ := DomainErrorUnion3TypeErrorClaimsNoticeRequired2
+func CreateDomainErrorUnion3ClaimsNoticeRequired(claimsNoticeRequired ErrorClaimsNoticeRequired2) DomainErrorUnion3 {
+	typ := DomainErrorUnion3TypeClaimsNoticeRequired
+
+	typStr := CodeClaimsNoticeRequired2(typ)
+	claimsNoticeRequired.Code = typStr
 
 	return DomainErrorUnion3{
-		ErrorClaimsNoticeRequired2: &errorClaimsNoticeRequired2,
+		ErrorClaimsNoticeRequired2: &claimsNoticeRequired,
 		Type:                       typ,
 	}
 }
 
 func (u *DomainErrorUnion3) UnmarshalJSON(data []byte) error {
 
-	var errorUnsupportedLanguageCode2 ErrorUnsupportedLanguageCode2 = ErrorUnsupportedLanguageCode2{}
-	if err := utils.UnmarshalJSON(data, &errorUnsupportedLanguageCode2, "", true, nil); err == nil {
-		u.ErrorUnsupportedLanguageCode2 = &errorUnsupportedLanguageCode2
-		u.Type = DomainErrorUnion3TypeErrorUnsupportedLanguageCode2
-		return nil
+	type discriminator struct {
+		Code string `json:"code"`
 	}
 
-	var errorClientTransferProhibited2 ErrorClientTransferProhibited2 = ErrorClientTransferProhibited2{}
-	if err := utils.UnmarshalJSON(data, &errorClientTransferProhibited2, "", true, nil); err == nil {
-		u.ErrorClientTransferProhibited2 = &errorClientTransferProhibited2
-		u.Type = DomainErrorUnion3TypeErrorClientTransferProhibited2
-		return nil
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
 	}
 
-	var errorClaimsNoticeRequired2 ErrorClaimsNoticeRequired2 = ErrorClaimsNoticeRequired2{}
-	if err := utils.UnmarshalJSON(data, &errorClaimsNoticeRequired2, "", true, nil); err == nil {
-		u.ErrorClaimsNoticeRequired2 = &errorClaimsNoticeRequired2
-		u.Type = DomainErrorUnion3TypeErrorClaimsNoticeRequired2
+	switch dis.Code {
+	case "unsupported-language-code":
+		errorUnsupportedLanguageCode2 := new(ErrorUnsupportedLanguageCode2)
+		if err := utils.UnmarshalJSON(data, &errorUnsupportedLanguageCode2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == unsupported-language-code) type ErrorUnsupportedLanguageCode2 within DomainErrorUnion3: %w", string(data), err)
+		}
+
+		u.ErrorUnsupportedLanguageCode2 = errorUnsupportedLanguageCode2
+		u.Type = DomainErrorUnion3TypeUnsupportedLanguageCode
+		return nil
+	case "client-transfer-prohibited":
+		errorClientTransferProhibited2 := new(ErrorClientTransferProhibited2)
+		if err := utils.UnmarshalJSON(data, &errorClientTransferProhibited2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == client-transfer-prohibited) type ErrorClientTransferProhibited2 within DomainErrorUnion3: %w", string(data), err)
+		}
+
+		u.ErrorClientTransferProhibited2 = errorClientTransferProhibited2
+		u.Type = DomainErrorUnion3TypeClientTransferProhibited
+		return nil
+	case "claims-notice-required":
+		errorClaimsNoticeRequired2 := new(ErrorClaimsNoticeRequired2)
+		if err := utils.UnmarshalJSON(data, &errorClaimsNoticeRequired2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == claims-notice-required) type ErrorClaimsNoticeRequired2 within DomainErrorUnion3: %w", string(data), err)
+		}
+
+		u.ErrorClaimsNoticeRequired2 = errorClaimsNoticeRequired2
+		u.Type = DomainErrorUnion3TypeClaimsNoticeRequired
 		return nil
 	}
 
@@ -1223,9 +1277,9 @@ func (o *ErrorUnsupportedLanguageCode1) GetDetails() DomainDetails1 {
 type DomainErrorUnion1Type string
 
 const (
-	DomainErrorUnion1TypeErrorUnsupportedLanguageCode1  DomainErrorUnion1Type = "error_UnsupportedLanguageCode_1"
-	DomainErrorUnion1TypeErrorClientTransferProhibited1 DomainErrorUnion1Type = "error_ClientTransferProhibited_1"
-	DomainErrorUnion1TypeErrorClaimsNoticeRequired1     DomainErrorUnion1Type = "error_ClaimsNoticeRequired_1"
+	DomainErrorUnion1TypeUnsupportedLanguageCode  DomainErrorUnion1Type = "unsupported-language-code"
+	DomainErrorUnion1TypeClientTransferProhibited DomainErrorUnion1Type = "client-transfer-prohibited"
+	DomainErrorUnion1TypeClaimsNoticeRequired     DomainErrorUnion1Type = "claims-notice-required"
 )
 
 type DomainErrorUnion1 struct {
@@ -1236,53 +1290,80 @@ type DomainErrorUnion1 struct {
 	Type DomainErrorUnion1Type
 }
 
-func CreateDomainErrorUnion1ErrorUnsupportedLanguageCode1(errorUnsupportedLanguageCode1 ErrorUnsupportedLanguageCode1) DomainErrorUnion1 {
-	typ := DomainErrorUnion1TypeErrorUnsupportedLanguageCode1
+func CreateDomainErrorUnion1UnsupportedLanguageCode(unsupportedLanguageCode ErrorUnsupportedLanguageCode1) DomainErrorUnion1 {
+	typ := DomainErrorUnion1TypeUnsupportedLanguageCode
+
+	typStr := CodeUnsupportedLanguageCode1(typ)
+	unsupportedLanguageCode.Code = typStr
 
 	return DomainErrorUnion1{
-		ErrorUnsupportedLanguageCode1: &errorUnsupportedLanguageCode1,
+		ErrorUnsupportedLanguageCode1: &unsupportedLanguageCode,
 		Type:                          typ,
 	}
 }
 
-func CreateDomainErrorUnion1ErrorClientTransferProhibited1(errorClientTransferProhibited1 ErrorClientTransferProhibited1) DomainErrorUnion1 {
-	typ := DomainErrorUnion1TypeErrorClientTransferProhibited1
+func CreateDomainErrorUnion1ClientTransferProhibited(clientTransferProhibited ErrorClientTransferProhibited1) DomainErrorUnion1 {
+	typ := DomainErrorUnion1TypeClientTransferProhibited
+
+	typStr := CodeClientTransferProhibited1(typ)
+	clientTransferProhibited.Code = typStr
 
 	return DomainErrorUnion1{
-		ErrorClientTransferProhibited1: &errorClientTransferProhibited1,
+		ErrorClientTransferProhibited1: &clientTransferProhibited,
 		Type:                           typ,
 	}
 }
 
-func CreateDomainErrorUnion1ErrorClaimsNoticeRequired1(errorClaimsNoticeRequired1 ErrorClaimsNoticeRequired1) DomainErrorUnion1 {
-	typ := DomainErrorUnion1TypeErrorClaimsNoticeRequired1
+func CreateDomainErrorUnion1ClaimsNoticeRequired(claimsNoticeRequired ErrorClaimsNoticeRequired1) DomainErrorUnion1 {
+	typ := DomainErrorUnion1TypeClaimsNoticeRequired
+
+	typStr := CodeClaimsNoticeRequired1(typ)
+	claimsNoticeRequired.Code = typStr
 
 	return DomainErrorUnion1{
-		ErrorClaimsNoticeRequired1: &errorClaimsNoticeRequired1,
+		ErrorClaimsNoticeRequired1: &claimsNoticeRequired,
 		Type:                       typ,
 	}
 }
 
 func (u *DomainErrorUnion1) UnmarshalJSON(data []byte) error {
 
-	var errorUnsupportedLanguageCode1 ErrorUnsupportedLanguageCode1 = ErrorUnsupportedLanguageCode1{}
-	if err := utils.UnmarshalJSON(data, &errorUnsupportedLanguageCode1, "", true, nil); err == nil {
-		u.ErrorUnsupportedLanguageCode1 = &errorUnsupportedLanguageCode1
-		u.Type = DomainErrorUnion1TypeErrorUnsupportedLanguageCode1
-		return nil
+	type discriminator struct {
+		Code string `json:"code"`
 	}
 
-	var errorClientTransferProhibited1 ErrorClientTransferProhibited1 = ErrorClientTransferProhibited1{}
-	if err := utils.UnmarshalJSON(data, &errorClientTransferProhibited1, "", true, nil); err == nil {
-		u.ErrorClientTransferProhibited1 = &errorClientTransferProhibited1
-		u.Type = DomainErrorUnion1TypeErrorClientTransferProhibited1
-		return nil
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
 	}
 
-	var errorClaimsNoticeRequired1 ErrorClaimsNoticeRequired1 = ErrorClaimsNoticeRequired1{}
-	if err := utils.UnmarshalJSON(data, &errorClaimsNoticeRequired1, "", true, nil); err == nil {
-		u.ErrorClaimsNoticeRequired1 = &errorClaimsNoticeRequired1
-		u.Type = DomainErrorUnion1TypeErrorClaimsNoticeRequired1
+	switch dis.Code {
+	case "unsupported-language-code":
+		errorUnsupportedLanguageCode1 := new(ErrorUnsupportedLanguageCode1)
+		if err := utils.UnmarshalJSON(data, &errorUnsupportedLanguageCode1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == unsupported-language-code) type ErrorUnsupportedLanguageCode1 within DomainErrorUnion1: %w", string(data), err)
+		}
+
+		u.ErrorUnsupportedLanguageCode1 = errorUnsupportedLanguageCode1
+		u.Type = DomainErrorUnion1TypeUnsupportedLanguageCode
+		return nil
+	case "client-transfer-prohibited":
+		errorClientTransferProhibited1 := new(ErrorClientTransferProhibited1)
+		if err := utils.UnmarshalJSON(data, &errorClientTransferProhibited1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == client-transfer-prohibited) type ErrorClientTransferProhibited1 within DomainErrorUnion1: %w", string(data), err)
+		}
+
+		u.ErrorClientTransferProhibited1 = errorClientTransferProhibited1
+		u.Type = DomainErrorUnion1TypeClientTransferProhibited
+		return nil
+	case "claims-notice-required":
+		errorClaimsNoticeRequired1 := new(ErrorClaimsNoticeRequired1)
+		if err := utils.UnmarshalJSON(data, &errorClaimsNoticeRequired1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == claims-notice-required) type ErrorClaimsNoticeRequired1 within DomainErrorUnion1: %w", string(data), err)
+		}
+
+		u.ErrorClaimsNoticeRequired1 = errorClaimsNoticeRequired1
+		u.Type = DomainErrorUnion1TypeClaimsNoticeRequired
 		return nil
 	}
 
@@ -1443,9 +1524,9 @@ func (o *DomainPurchase) GetError() *DomainErrorUnion2 {
 type GetOrderDomainUnionType string
 
 const (
-	GetOrderDomainUnionTypeDomainPurchase GetOrderDomainUnionType = "domain_Purchase"
-	GetOrderDomainUnionTypeDomainRenewal  GetOrderDomainUnionType = "domain_Renewal"
-	GetOrderDomainUnionTypeDomainTransfer GetOrderDomainUnionType = "domain_Transfer"
+	GetOrderDomainUnionTypePurchase GetOrderDomainUnionType = "purchase"
+	GetOrderDomainUnionTypeRenewal  GetOrderDomainUnionType = "renewal"
+	GetOrderDomainUnionTypeTransfer GetOrderDomainUnionType = "transfer"
 )
 
 type GetOrderDomainUnion struct {
@@ -1456,53 +1537,80 @@ type GetOrderDomainUnion struct {
 	Type GetOrderDomainUnionType
 }
 
-func CreateGetOrderDomainUnionDomainPurchase(domainPurchase DomainPurchase) GetOrderDomainUnion {
-	typ := GetOrderDomainUnionTypeDomainPurchase
+func CreateGetOrderDomainUnionPurchase(purchase DomainPurchase) GetOrderDomainUnion {
+	typ := GetOrderDomainUnionTypePurchase
+
+	typStr := PurchaseTypePurchase(typ)
+	purchase.PurchaseType = typStr
 
 	return GetOrderDomainUnion{
-		DomainPurchase: &domainPurchase,
+		DomainPurchase: &purchase,
 		Type:           typ,
 	}
 }
 
-func CreateGetOrderDomainUnionDomainRenewal(domainRenewal DomainRenewal) GetOrderDomainUnion {
-	typ := GetOrderDomainUnionTypeDomainRenewal
+func CreateGetOrderDomainUnionRenewal(renewal DomainRenewal) GetOrderDomainUnion {
+	typ := GetOrderDomainUnionTypeRenewal
+
+	typStr := PurchaseTypeRenewal(typ)
+	renewal.PurchaseType = typStr
 
 	return GetOrderDomainUnion{
-		DomainRenewal: &domainRenewal,
+		DomainRenewal: &renewal,
 		Type:          typ,
 	}
 }
 
-func CreateGetOrderDomainUnionDomainTransfer(domainTransfer DomainTransfer) GetOrderDomainUnion {
-	typ := GetOrderDomainUnionTypeDomainTransfer
+func CreateGetOrderDomainUnionTransfer(transfer DomainTransfer) GetOrderDomainUnion {
+	typ := GetOrderDomainUnionTypeTransfer
+
+	typStr := PurchaseTypeTransfer(typ)
+	transfer.PurchaseType = typStr
 
 	return GetOrderDomainUnion{
-		DomainTransfer: &domainTransfer,
+		DomainTransfer: &transfer,
 		Type:           typ,
 	}
 }
 
 func (u *GetOrderDomainUnion) UnmarshalJSON(data []byte) error {
 
-	var domainPurchase DomainPurchase = DomainPurchase{}
-	if err := utils.UnmarshalJSON(data, &domainPurchase, "", true, nil); err == nil {
-		u.DomainPurchase = &domainPurchase
-		u.Type = GetOrderDomainUnionTypeDomainPurchase
-		return nil
+	type discriminator struct {
+		PurchaseType string `json:"purchaseType"`
 	}
 
-	var domainTransfer DomainTransfer = DomainTransfer{}
-	if err := utils.UnmarshalJSON(data, &domainTransfer, "", true, nil); err == nil {
-		u.DomainTransfer = &domainTransfer
-		u.Type = GetOrderDomainUnionTypeDomainTransfer
-		return nil
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
 	}
 
-	var domainRenewal DomainRenewal = DomainRenewal{}
-	if err := utils.UnmarshalJSON(data, &domainRenewal, "", true, nil); err == nil {
-		u.DomainRenewal = &domainRenewal
-		u.Type = GetOrderDomainUnionTypeDomainRenewal
+	switch dis.PurchaseType {
+	case "purchase":
+		domainPurchase := new(DomainPurchase)
+		if err := utils.UnmarshalJSON(data, &domainPurchase, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (PurchaseType == purchase) type DomainPurchase within GetOrderDomainUnion: %w", string(data), err)
+		}
+
+		u.DomainPurchase = domainPurchase
+		u.Type = GetOrderDomainUnionTypePurchase
+		return nil
+	case "renewal":
+		domainRenewal := new(DomainRenewal)
+		if err := utils.UnmarshalJSON(data, &domainRenewal, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (PurchaseType == renewal) type DomainRenewal within GetOrderDomainUnion: %w", string(data), err)
+		}
+
+		u.DomainRenewal = domainRenewal
+		u.Type = GetOrderDomainUnionTypeRenewal
+		return nil
+	case "transfer":
+		domainTransfer := new(DomainTransfer)
+		if err := utils.UnmarshalJSON(data, &domainTransfer, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (PurchaseType == transfer) type DomainTransfer within GetOrderDomainUnion: %w", string(data), err)
+		}
+
+		u.DomainTransfer = domainTransfer
+		u.Type = GetOrderDomainUnionTypeTransfer
 		return nil
 	}
 
@@ -1868,10 +1976,10 @@ func (o *ErrorPaymentFailed) GetCode() CodePaymentFailed {
 type ErrorUnion1Type string
 
 const (
-	ErrorUnion1TypeErrorPaymentFailed   ErrorUnion1Type = "error_PaymentFailed"
-	ErrorUnion1TypeErrorTldOutage       ErrorUnion1Type = "error_TldOutage"
-	ErrorUnion1TypeErrorPriceMismatch   ErrorUnion1Type = "error_PriceMismatch"
-	ErrorUnion1TypeErrorUnexpectedError ErrorUnion1Type = "error_UnexpectedError"
+	ErrorUnion1TypePaymentFailed   ErrorUnion1Type = "payment-failed"
+	ErrorUnion1TypeTldOutage       ErrorUnion1Type = "tld-outage"
+	ErrorUnion1TypePriceMismatch   ErrorUnion1Type = "price-mismatch"
+	ErrorUnion1TypeUnexpectedError ErrorUnion1Type = "unexpected-error"
 )
 
 type ErrorUnion1 struct {
@@ -1883,69 +1991,101 @@ type ErrorUnion1 struct {
 	Type ErrorUnion1Type
 }
 
-func CreateErrorUnion1ErrorPaymentFailed(errorPaymentFailed ErrorPaymentFailed) ErrorUnion1 {
-	typ := ErrorUnion1TypeErrorPaymentFailed
+func CreateErrorUnion1PaymentFailed(paymentFailed ErrorPaymentFailed) ErrorUnion1 {
+	typ := ErrorUnion1TypePaymentFailed
+
+	typStr := CodePaymentFailed(typ)
+	paymentFailed.Code = typStr
 
 	return ErrorUnion1{
-		ErrorPaymentFailed: &errorPaymentFailed,
+		ErrorPaymentFailed: &paymentFailed,
 		Type:               typ,
 	}
 }
 
-func CreateErrorUnion1ErrorTldOutage(errorTldOutage ErrorTldOutage) ErrorUnion1 {
-	typ := ErrorUnion1TypeErrorTldOutage
+func CreateErrorUnion1TldOutage(tldOutage ErrorTldOutage) ErrorUnion1 {
+	typ := ErrorUnion1TypeTldOutage
+
+	typStr := CodeTldOutage(typ)
+	tldOutage.Code = typStr
 
 	return ErrorUnion1{
-		ErrorTldOutage: &errorTldOutage,
+		ErrorTldOutage: &tldOutage,
 		Type:           typ,
 	}
 }
 
-func CreateErrorUnion1ErrorPriceMismatch(errorPriceMismatch ErrorPriceMismatch) ErrorUnion1 {
-	typ := ErrorUnion1TypeErrorPriceMismatch
+func CreateErrorUnion1PriceMismatch(priceMismatch ErrorPriceMismatch) ErrorUnion1 {
+	typ := ErrorUnion1TypePriceMismatch
+
+	typStr := CodePriceMismatch(typ)
+	priceMismatch.Code = typStr
 
 	return ErrorUnion1{
-		ErrorPriceMismatch: &errorPriceMismatch,
+		ErrorPriceMismatch: &priceMismatch,
 		Type:               typ,
 	}
 }
 
-func CreateErrorUnion1ErrorUnexpectedError(errorUnexpectedError ErrorUnexpectedError) ErrorUnion1 {
-	typ := ErrorUnion1TypeErrorUnexpectedError
+func CreateErrorUnion1UnexpectedError(unexpectedError ErrorUnexpectedError) ErrorUnion1 {
+	typ := ErrorUnion1TypeUnexpectedError
+
+	typStr := CodeUnexpectedError(typ)
+	unexpectedError.Code = typStr
 
 	return ErrorUnion1{
-		ErrorUnexpectedError: &errorUnexpectedError,
+		ErrorUnexpectedError: &unexpectedError,
 		Type:                 typ,
 	}
 }
 
 func (u *ErrorUnion1) UnmarshalJSON(data []byte) error {
 
-	var errorTldOutage ErrorTldOutage = ErrorTldOutage{}
-	if err := utils.UnmarshalJSON(data, &errorTldOutage, "", true, nil); err == nil {
-		u.ErrorTldOutage = &errorTldOutage
-		u.Type = ErrorUnion1TypeErrorTldOutage
-		return nil
+	type discriminator struct {
+		Code string `json:"code"`
 	}
 
-	var errorPriceMismatch ErrorPriceMismatch = ErrorPriceMismatch{}
-	if err := utils.UnmarshalJSON(data, &errorPriceMismatch, "", true, nil); err == nil {
-		u.ErrorPriceMismatch = &errorPriceMismatch
-		u.Type = ErrorUnion1TypeErrorPriceMismatch
-		return nil
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
 	}
 
-	var errorPaymentFailed ErrorPaymentFailed = ErrorPaymentFailed{}
-	if err := utils.UnmarshalJSON(data, &errorPaymentFailed, "", true, nil); err == nil {
-		u.ErrorPaymentFailed = &errorPaymentFailed
-		u.Type = ErrorUnion1TypeErrorPaymentFailed
-		return nil
-	}
+	switch dis.Code {
+	case "payment-failed":
+		errorPaymentFailed := new(ErrorPaymentFailed)
+		if err := utils.UnmarshalJSON(data, &errorPaymentFailed, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == payment-failed) type ErrorPaymentFailed within ErrorUnion1: %w", string(data), err)
+		}
 
-	var errorUnexpectedError ErrorUnexpectedError = ErrorUnexpectedError{}
-	if err := utils.UnmarshalJSON(data, &errorUnexpectedError, "", true, nil); err == nil {
-		u.ErrorUnexpectedError = &errorUnexpectedError
-		u.Type = ErrorUnion1TypeErrorUnexpectedError
+		u.ErrorPaymentFailed = errorPaymentFailed
+		u.Type = ErrorUnion1TypePaymentFailed
+		return nil
+	case "tld-outage":
+		errorTldOutage := new(ErrorTldOutage)
+		if err := utils.UnmarshalJSON(data, &errorTldOutage, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == tld-outage) type ErrorTldOutage within ErrorUnion1: %w", string(data), err)
+		}
+
+		u.ErrorTldOutage = errorTldOutage
+		u.Type = ErrorUnion1TypeTldOutage
+		return nil
+	case "price-mismatch":
+		errorPriceMismatch := new(ErrorPriceMismatch)
+		if err := utils.UnmarshalJSON(data, &errorPriceMismatch, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == price-mismatch) type ErrorPriceMismatch within ErrorUnion1: %w", string(data), err)
+		}
+
+		u.ErrorPriceMismatch = errorPriceMismatch
+		u.Type = ErrorUnion1TypePriceMismatch
+		return nil
+	case "unexpected-error":
+		errorUnexpectedError := new(ErrorUnexpectedError)
+		if err := utils.UnmarshalJSON(data, &errorUnexpectedError, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == unexpected-error) type ErrorUnexpectedError within ErrorUnion1: %w", string(data), err)
+		}
+
+		u.ErrorUnexpectedError = errorUnexpectedError
+		u.Type = ErrorUnion1TypeUnexpectedError
 		return nil
 	}
 

@@ -13,7 +13,7 @@ let value: GetDeploymentHas1 = {
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `type`                                                           | [models.GetDeploymentHasType](../models/getdeploymenthastype.md) | :heavy_check_mark:                                               | N/A                                                              |
-| `value`                                                          | *models.GetDeploymentHasValue*                                   | :heavy_check_mark:                                               | N/A                                                              |
+| Field                          | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `type`                         | *"host"*                       | :heavy_check_mark:             | N/A                            |
+| `value`                        | *models.GetDeploymentHasValue* | :heavy_check_mark:             | N/A                            |

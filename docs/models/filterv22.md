@@ -16,7 +16,7 @@ let value: FilterV22 = {
 
 ## Fields
 
-| Field                                                  | Type                                                   | Required                                               | Description                                            |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `version`                                              | [models.FilterV2Version](../models/filterv2version.md) | :heavy_check_mark:                                     | N/A                                                    |
-| `filter`                                               | *models.FilterV2Filter*                                | :heavy_check_mark:                                     | N/A                                                    |
+| Field                   | Type                    | Required                | Description             |
+| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
+| `version`               | *"v2"*                  | :heavy_check_mark:      | N/A                     |
+| `filter`                | *models.FilterV2Filter* | :heavy_check_mark:      | N/A                     |

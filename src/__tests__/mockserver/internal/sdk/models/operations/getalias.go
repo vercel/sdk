@@ -448,10 +448,10 @@ func (o *GetAliasProtectionBypassShareableLink) GetExpires() *float64 {
 type GetAliasProtectionBypassUnionType string
 
 const (
-	GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassShareableLink           GetAliasProtectionBypassUnionType = "getAlias_protectionBypass_ShareableLink"
-	GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassUser                    GetAliasProtectionBypassUnionType = "getAlias_protectionBypass_User"
-	GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassAliasProtectionOverride GetAliasProtectionBypassUnionType = "getAlias_protectionBypass_AliasProtectionOverride"
-	GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassEmailInvite             GetAliasProtectionBypassUnionType = "getAlias_protectionBypass_EmailInvite"
+	GetAliasProtectionBypassUnionTypeShareableLink           GetAliasProtectionBypassUnionType = "shareable-link"
+	GetAliasProtectionBypassUnionTypeUser                    GetAliasProtectionBypassUnionType = "user"
+	GetAliasProtectionBypassUnionTypeAliasProtectionOverride GetAliasProtectionBypassUnionType = "alias-protection-override"
+	GetAliasProtectionBypassUnionTypeEmailInvite             GetAliasProtectionBypassUnionType = "email_invite"
 )
 
 type GetAliasProtectionBypassUnion struct {
@@ -463,69 +463,101 @@ type GetAliasProtectionBypassUnion struct {
 	Type GetAliasProtectionBypassUnionType
 }
 
-func CreateGetAliasProtectionBypassUnionGetAliasProtectionBypassShareableLink(getAliasProtectionBypassShareableLink GetAliasProtectionBypassShareableLink) GetAliasProtectionBypassUnion {
-	typ := GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassShareableLink
+func CreateGetAliasProtectionBypassUnionShareableLink(shareableLink GetAliasProtectionBypassShareableLink) GetAliasProtectionBypassUnion {
+	typ := GetAliasProtectionBypassUnionTypeShareableLink
+
+	typStr := GetAliasScopeShareableLink(typ)
+	shareableLink.Scope = typStr
 
 	return GetAliasProtectionBypassUnion{
-		GetAliasProtectionBypassShareableLink: &getAliasProtectionBypassShareableLink,
+		GetAliasProtectionBypassShareableLink: &shareableLink,
 		Type:                                  typ,
 	}
 }
 
-func CreateGetAliasProtectionBypassUnionGetAliasProtectionBypassUser(getAliasProtectionBypassUser GetAliasProtectionBypassUser) GetAliasProtectionBypassUnion {
-	typ := GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassUser
+func CreateGetAliasProtectionBypassUnionUser(user GetAliasProtectionBypassUser) GetAliasProtectionBypassUnion {
+	typ := GetAliasProtectionBypassUnionTypeUser
+
+	typStr := GetAliasScopeUser(typ)
+	user.Scope = typStr
 
 	return GetAliasProtectionBypassUnion{
-		GetAliasProtectionBypassUser: &getAliasProtectionBypassUser,
+		GetAliasProtectionBypassUser: &user,
 		Type:                         typ,
 	}
 }
 
-func CreateGetAliasProtectionBypassUnionGetAliasProtectionBypassAliasProtectionOverride(getAliasProtectionBypassAliasProtectionOverride GetAliasProtectionBypassAliasProtectionOverride) GetAliasProtectionBypassUnion {
-	typ := GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassAliasProtectionOverride
+func CreateGetAliasProtectionBypassUnionAliasProtectionOverride(aliasProtectionOverride GetAliasProtectionBypassAliasProtectionOverride) GetAliasProtectionBypassUnion {
+	typ := GetAliasProtectionBypassUnionTypeAliasProtectionOverride
+
+	typStr := GetAliasScopeAliasProtectionOverride(typ)
+	aliasProtectionOverride.Scope = typStr
 
 	return GetAliasProtectionBypassUnion{
-		GetAliasProtectionBypassAliasProtectionOverride: &getAliasProtectionBypassAliasProtectionOverride,
+		GetAliasProtectionBypassAliasProtectionOverride: &aliasProtectionOverride,
 		Type: typ,
 	}
 }
 
-func CreateGetAliasProtectionBypassUnionGetAliasProtectionBypassEmailInvite(getAliasProtectionBypassEmailInvite GetAliasProtectionBypassEmailInvite) GetAliasProtectionBypassUnion {
-	typ := GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassEmailInvite
+func CreateGetAliasProtectionBypassUnionEmailInvite(emailInvite GetAliasProtectionBypassEmailInvite) GetAliasProtectionBypassUnion {
+	typ := GetAliasProtectionBypassUnionTypeEmailInvite
+
+	typStr := GetAliasScopeEmailInvite(typ)
+	emailInvite.Scope = typStr
 
 	return GetAliasProtectionBypassUnion{
-		GetAliasProtectionBypassEmailInvite: &getAliasProtectionBypassEmailInvite,
+		GetAliasProtectionBypassEmailInvite: &emailInvite,
 		Type:                                typ,
 	}
 }
 
 func (u *GetAliasProtectionBypassUnion) UnmarshalJSON(data []byte) error {
 
-	var getAliasProtectionBypassUser GetAliasProtectionBypassUser = GetAliasProtectionBypassUser{}
-	if err := utils.UnmarshalJSON(data, &getAliasProtectionBypassUser, "", true, nil); err == nil {
-		u.GetAliasProtectionBypassUser = &getAliasProtectionBypassUser
-		u.Type = GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassUser
-		return nil
+	type discriminator struct {
+		Scope string `json:"scope"`
 	}
 
-	var getAliasProtectionBypassEmailInvite GetAliasProtectionBypassEmailInvite = GetAliasProtectionBypassEmailInvite{}
-	if err := utils.UnmarshalJSON(data, &getAliasProtectionBypassEmailInvite, "", true, nil); err == nil {
-		u.GetAliasProtectionBypassEmailInvite = &getAliasProtectionBypassEmailInvite
-		u.Type = GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassEmailInvite
-		return nil
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
 	}
 
-	var getAliasProtectionBypassShareableLink GetAliasProtectionBypassShareableLink = GetAliasProtectionBypassShareableLink{}
-	if err := utils.UnmarshalJSON(data, &getAliasProtectionBypassShareableLink, "", true, nil); err == nil {
-		u.GetAliasProtectionBypassShareableLink = &getAliasProtectionBypassShareableLink
-		u.Type = GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassShareableLink
-		return nil
-	}
+	switch dis.Scope {
+	case "shareable-link":
+		getAliasProtectionBypassShareableLink := new(GetAliasProtectionBypassShareableLink)
+		if err := utils.UnmarshalJSON(data, &getAliasProtectionBypassShareableLink, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Scope == shareable-link) type GetAliasProtectionBypassShareableLink within GetAliasProtectionBypassUnion: %w", string(data), err)
+		}
 
-	var getAliasProtectionBypassAliasProtectionOverride GetAliasProtectionBypassAliasProtectionOverride = GetAliasProtectionBypassAliasProtectionOverride{}
-	if err := utils.UnmarshalJSON(data, &getAliasProtectionBypassAliasProtectionOverride, "", true, nil); err == nil {
-		u.GetAliasProtectionBypassAliasProtectionOverride = &getAliasProtectionBypassAliasProtectionOverride
-		u.Type = GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassAliasProtectionOverride
+		u.GetAliasProtectionBypassShareableLink = getAliasProtectionBypassShareableLink
+		u.Type = GetAliasProtectionBypassUnionTypeShareableLink
+		return nil
+	case "user":
+		getAliasProtectionBypassUser := new(GetAliasProtectionBypassUser)
+		if err := utils.UnmarshalJSON(data, &getAliasProtectionBypassUser, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Scope == user) type GetAliasProtectionBypassUser within GetAliasProtectionBypassUnion: %w", string(data), err)
+		}
+
+		u.GetAliasProtectionBypassUser = getAliasProtectionBypassUser
+		u.Type = GetAliasProtectionBypassUnionTypeUser
+		return nil
+	case "alias-protection-override":
+		getAliasProtectionBypassAliasProtectionOverride := new(GetAliasProtectionBypassAliasProtectionOverride)
+		if err := utils.UnmarshalJSON(data, &getAliasProtectionBypassAliasProtectionOverride, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Scope == alias-protection-override) type GetAliasProtectionBypassAliasProtectionOverride within GetAliasProtectionBypassUnion: %w", string(data), err)
+		}
+
+		u.GetAliasProtectionBypassAliasProtectionOverride = getAliasProtectionBypassAliasProtectionOverride
+		u.Type = GetAliasProtectionBypassUnionTypeAliasProtectionOverride
+		return nil
+	case "email_invite":
+		getAliasProtectionBypassEmailInvite := new(GetAliasProtectionBypassEmailInvite)
+		if err := utils.UnmarshalJSON(data, &getAliasProtectionBypassEmailInvite, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Scope == email_invite) type GetAliasProtectionBypassEmailInvite within GetAliasProtectionBypassUnion: %w", string(data), err)
+		}
+
+		u.GetAliasProtectionBypassEmailInvite = getAliasProtectionBypassEmailInvite
+		u.Type = GetAliasProtectionBypassUnionTypeEmailInvite
 		return nil
 	}
 

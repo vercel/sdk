@@ -118,15 +118,6 @@ export type GetAllLogDrainsDrainsLogDrainsSchemas = {
   speedInsights?: GetAllLogDrainsDrainsSpeedInsights | undefined;
 };
 
-export const GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBody1Type =
-  {
-    Internal: "internal",
-  } as const;
-export type GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBody1Type =
-  ClosedEnum<
-    typeof GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBody1Type
-  >;
-
 export const GetAllLogDrainsDeliveryTarget = {
   VercelOtelTracesDb: "vercel-otel-traces-db",
 } as const;
@@ -135,34 +126,15 @@ export type GetAllLogDrainsDeliveryTarget = ClosedEnum<
 >;
 
 export type GetAllLogDrainsDelivery4 = {
-  type:
-    GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBody1Type;
+  type: "internal";
   target: GetAllLogDrainsDeliveryTarget;
 };
 
-export const GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBodyType =
-  {
-    Clickhouse: "clickhouse",
-  } as const;
-export type GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBodyType =
-  ClosedEnum<
-    typeof GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBodyType
-  >;
-
 export type GetAllLogDrainsDelivery3 = {
-  type:
-    GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBodyType;
+  type: "clickhouse";
   endpoint: string;
   table: string;
 };
-
-export const GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONType = {
-  Otlphttp: "otlphttp",
-} as const;
-export type GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONType =
-  ClosedEnum<
-    typeof GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONType
-  >;
 
 export type GetAllLogDrainsDeliveryLogDrainsEndpoint = {
   traces: string;
@@ -192,19 +164,12 @@ export type GetAllLogDrainsDeliveryLogDrainsSecret =
   | string;
 
 export type GetAllLogDrainsDelivery2 = {
-  type: GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONType;
+  type: "otlphttp";
   endpoint: GetAllLogDrainsDeliveryLogDrainsEndpoint;
   encoding: GetAllLogDrainsDeliveryLogDrainsResponseEncoding;
   headers: { [k: string]: string };
   secret?: GetAllLogDrainsSecretLogDrainsResponse2 | string | undefined;
 };
-
-export const GetAllLogDrainsDeliveryLogDrainsResponse200Type = {
-  Http: "http",
-} as const;
-export type GetAllLogDrainsDeliveryLogDrainsResponse200Type = ClosedEnum<
-  typeof GetAllLogDrainsDeliveryLogDrainsResponse200Type
->;
 
 export const GetAllLogDrainsDeliveryLogDrainsEncoding = {
   Json: "json",
@@ -238,7 +203,7 @@ export type GetAllLogDrainsDeliverySecret =
   | string;
 
 export type GetAllLogDrainsDelivery1 = {
-  type: GetAllLogDrainsDeliveryLogDrainsResponse200Type;
+  type: "http";
   endpoint: string;
   encoding: GetAllLogDrainsDeliveryLogDrainsEncoding;
   compression?: GetAllLogDrainsDeliveryLogDrainsCompression | undefined;
@@ -293,61 +258,26 @@ export type GetAllLogDrainsDrainsLogDrainsDisabledReason = ClosedEnum<
   typeof GetAllLogDrainsDrainsLogDrainsDisabledReason
 >;
 
-export const GetAllLogDrainsSourceLogDrainsKind = {
-  Integration: "integration",
-} as const;
-export type GetAllLogDrainsSourceLogDrainsKind = ClosedEnum<
-  typeof GetAllLogDrainsSourceLogDrainsKind
->;
-
 export type GetAllLogDrainsSource2 = {
-  kind: GetAllLogDrainsSourceLogDrainsKind;
+  kind: "integration";
   resourceId?: string | undefined;
   externalResourceId?: string | undefined;
   integrationId: string;
   integrationConfigurationId: string;
 };
 
-export const GetAllLogDrainsSourceKind = {
-  SelfServed: "self-served",
-} as const;
-export type GetAllLogDrainsSourceKind = ClosedEnum<
-  typeof GetAllLogDrainsSourceKind
->;
-
 export type GetAllLogDrainsSource1 = {
-  kind: GetAllLogDrainsSourceKind;
+  kind: "self-served";
 };
 
 export type GetAllLogDrainsDrainsSource =
-  | GetAllLogDrainsSource2
-  | GetAllLogDrainsSource1;
-
-export const GetAllLogDrainsFilterV2LogDrainsVersion = {
-  V2: "v2",
-} as const;
-export type GetAllLogDrainsFilterV2LogDrainsVersion = ClosedEnum<
-  typeof GetAllLogDrainsFilterV2LogDrainsVersion
->;
-
-export const GetAllLogDrainsFilterLogDrainsResponseType = {
-  Odata: "odata",
-} as const;
-export type GetAllLogDrainsFilterLogDrainsResponseType = ClosedEnum<
-  typeof GetAllLogDrainsFilterLogDrainsResponseType
->;
+  | GetAllLogDrainsSource1
+  | GetAllLogDrainsSource2;
 
 export type GetAllLogDrainsFilter2 = {
-  type: GetAllLogDrainsFilterLogDrainsResponseType;
+  type: "odata";
   text: string;
 };
-
-export const GetAllLogDrainsFilterLogDrainsType = {
-  Basic: "basic",
-} as const;
-export type GetAllLogDrainsFilterLogDrainsType = ClosedEnum<
-  typeof GetAllLogDrainsFilterLogDrainsType
->;
 
 export type GetAllLogDrainsFilterProject = {
   ids?: Array<string> | undefined;
@@ -384,62 +314,41 @@ export type GetAllLogDrainsFilterLogDrainsDeployment = {
 };
 
 export type GetAllLogDrainsFilter1 = {
-  type: GetAllLogDrainsFilterLogDrainsType;
+  type: "basic";
   project?: GetAllLogDrainsFilterProject | undefined;
   log?: GetAllLogDrainsFilterLog | undefined;
   deployment?: GetAllLogDrainsFilterLogDrainsDeployment | undefined;
 };
 
 export type GetAllLogDrainsFilterV2LogDrainsFilter =
-  | GetAllLogDrainsFilter2
-  | GetAllLogDrainsFilter1;
+  | GetAllLogDrainsFilter1
+  | GetAllLogDrainsFilter2;
 
 export type GetAllLogDrainsFilterV22 = {
-  version: GetAllLogDrainsFilterV2LogDrainsVersion;
-  filter: GetAllLogDrainsFilter2 | GetAllLogDrainsFilter1;
+  version: "v2";
+  filter: GetAllLogDrainsFilter1 | GetAllLogDrainsFilter2;
 };
 
-export const GetAllLogDrainsFilterV2Version = {
-  V1: "v1",
-} as const;
-export type GetAllLogDrainsFilterV2Version = ClosedEnum<
-  typeof GetAllLogDrainsFilterV2Version
->;
-
 export type GetAllLogDrainsFilterV21 = {
-  version: GetAllLogDrainsFilterV2Version;
+  version: "v1";
 };
 
 export type GetAllLogDrainsDrainsLogDrainsFilterV2 =
-  | GetAllLogDrainsFilterV22
-  | GetAllLogDrainsFilterV21;
-
-export const GetAllLogDrainsProjectAccessLogDrainsAccess = {
-  Some: "some",
-} as const;
-export type GetAllLogDrainsProjectAccessLogDrainsAccess = ClosedEnum<
-  typeof GetAllLogDrainsProjectAccessLogDrainsAccess
->;
+  | GetAllLogDrainsFilterV21
+  | GetAllLogDrainsFilterV22;
 
 export type GetAllLogDrainsProjectAccess2 = {
-  access: GetAllLogDrainsProjectAccessLogDrainsAccess;
+  access: "some";
   projectIds: Array<string>;
 };
 
-export const GetAllLogDrainsProjectAccessAccess = {
-  All: "all",
-} as const;
-export type GetAllLogDrainsProjectAccessAccess = ClosedEnum<
-  typeof GetAllLogDrainsProjectAccessAccess
->;
-
 export type GetAllLogDrainsProjectAccess1 = {
-  access: GetAllLogDrainsProjectAccessAccess;
+  access: "all";
 };
 
 export type GetAllLogDrainsDrainsProjectAccess =
-  | GetAllLogDrainsProjectAccess2
-  | GetAllLogDrainsProjectAccess1;
+  | GetAllLogDrainsProjectAccess1
+  | GetAllLogDrainsProjectAccess2;
 
 export type GetAllLogDrainsDrains2 = {
   id: string;
@@ -462,15 +371,15 @@ export type GetAllLogDrainsDrains2 = {
   disabledReason?: GetAllLogDrainsDrainsLogDrainsDisabledReason | undefined;
   disabledBy?: string | undefined;
   firstErrorTimestamp?: number | undefined;
-  source: GetAllLogDrainsSource2 | GetAllLogDrainsSource1;
+  source: GetAllLogDrainsSource1 | GetAllLogDrainsSource2;
   filter?: string | undefined;
-  filterV2?: GetAllLogDrainsFilterV22 | GetAllLogDrainsFilterV21 | undefined;
+  filterV2?: GetAllLogDrainsFilterV21 | GetAllLogDrainsFilterV22 | undefined;
   integrationIcon?: string | undefined;
   integrationConfigurationUri?: string | undefined;
   integrationWebsite?: string | undefined;
   projectAccess?:
-    | GetAllLogDrainsProjectAccess2
     | GetAllLogDrainsProjectAccess1
+    | GetAllLogDrainsProjectAccess2
     | undefined;
 };
 
@@ -489,13 +398,6 @@ export type GetAllLogDrainsDrainsSchemas = {
   speedInsights?: GetAllLogDrainsDrainsLogDrainsSpeedInsights | undefined;
 };
 
-export const GetAllLogDrainsDeliveryLogDrainsResponseType = {
-  Internal: "internal",
-} as const;
-export type GetAllLogDrainsDeliveryLogDrainsResponseType = ClosedEnum<
-  typeof GetAllLogDrainsDeliveryLogDrainsResponseType
->;
-
 export const GetAllLogDrainsDeliveryLogDrainsTarget = {
   VercelOtelTracesDb: "vercel-otel-traces-db",
 } as const;
@@ -504,29 +406,15 @@ export type GetAllLogDrainsDeliveryLogDrainsTarget = ClosedEnum<
 >;
 
 export type GetAllLogDrainsDeliveryLogDrains4 = {
-  type: GetAllLogDrainsDeliveryLogDrainsResponseType;
+  type: "internal";
   target: GetAllLogDrainsDeliveryLogDrainsTarget;
 };
 
-export const GetAllLogDrainsDeliveryLogDrainsType = {
-  Clickhouse: "clickhouse",
-} as const;
-export type GetAllLogDrainsDeliveryLogDrainsType = ClosedEnum<
-  typeof GetAllLogDrainsDeliveryLogDrainsType
->;
-
 export type GetAllLogDrainsDeliveryLogDrains3 = {
-  type: GetAllLogDrainsDeliveryLogDrainsType;
+  type: "clickhouse";
   endpoint: string;
   table: string;
 };
-
-export const GetAllLogDrainsDeliveryType = {
-  Otlphttp: "otlphttp",
-} as const;
-export type GetAllLogDrainsDeliveryType = ClosedEnum<
-  typeof GetAllLogDrainsDeliveryType
->;
 
 export type GetAllLogDrainsDeliveryEndpoint = {
   traces: string;
@@ -556,21 +444,12 @@ export type GetAllLogDrainsDeliveryLogDrainsResponse200Secret =
   | string;
 
 export type GetAllLogDrainsDeliveryLogDrains2 = {
-  type: GetAllLogDrainsDeliveryType;
+  type: "otlphttp";
   endpoint: GetAllLogDrainsDeliveryEndpoint;
   encoding: GetAllLogDrainsDeliveryEncoding;
   headers: { [k: string]: string };
   secret?: GetAllLogDrainsSecret2 | string | undefined;
 };
-
-export const GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBody1DrainsType =
-  {
-    Http: "http",
-  } as const;
-export type GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBody1DrainsType =
-  ClosedEnum<
-    typeof GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBody1DrainsType
-  >;
 
 export const GetAllLogDrainsDeliveryLogDrainsResponse200Encoding = {
   Json: "json",
@@ -604,8 +483,7 @@ export type GetAllLogDrainsDeliveryLogDrainsResponseSecret =
   | string;
 
 export type GetAllLogDrainsDeliveryLogDrains1 = {
-  type:
-    GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBody1DrainsType;
+  type: "http";
   endpoint: string;
   encoding: GetAllLogDrainsDeliveryLogDrainsResponse200Encoding;
   compression?: GetAllLogDrainsDeliveryCompression | undefined;
@@ -660,61 +538,26 @@ export type GetAllLogDrainsDrainsDisabledReason = ClosedEnum<
   typeof GetAllLogDrainsDrainsDisabledReason
 >;
 
-export const GetAllLogDrainsSourceLogDrainsResponse200Kind = {
-  Integration: "integration",
-} as const;
-export type GetAllLogDrainsSourceLogDrainsResponse200Kind = ClosedEnum<
-  typeof GetAllLogDrainsSourceLogDrainsResponse200Kind
->;
-
 export type GetAllLogDrainsSourceLogDrains2 = {
-  kind: GetAllLogDrainsSourceLogDrainsResponse200Kind;
+  kind: "integration";
   resourceId?: string | undefined;
   externalResourceId?: string | undefined;
   integrationId: string;
   integrationConfigurationId: string;
 };
 
-export const GetAllLogDrainsSourceLogDrainsResponseKind = {
-  SelfServed: "self-served",
-} as const;
-export type GetAllLogDrainsSourceLogDrainsResponseKind = ClosedEnum<
-  typeof GetAllLogDrainsSourceLogDrainsResponseKind
->;
-
 export type GetAllLogDrainsSourceLogDrains1 = {
-  kind: GetAllLogDrainsSourceLogDrainsResponseKind;
+  kind: "self-served";
 };
 
 export type GetAllLogDrainsDrainsLogDrainsSource =
-  | GetAllLogDrainsSourceLogDrains2
-  | GetAllLogDrainsSourceLogDrains1;
-
-export const GetAllLogDrainsFilterV2LogDrainsResponse200Version = {
-  V2: "v2",
-} as const;
-export type GetAllLogDrainsFilterV2LogDrainsResponse200Version = ClosedEnum<
-  typeof GetAllLogDrainsFilterV2LogDrainsResponse200Version
->;
-
-export const GetAllLogDrainsFilterType = {
-  Odata: "odata",
-} as const;
-export type GetAllLogDrainsFilterType = ClosedEnum<
-  typeof GetAllLogDrainsFilterType
->;
+  | GetAllLogDrainsSourceLogDrains1
+  | GetAllLogDrainsSourceLogDrains2;
 
 export type GetAllLogDrainsFilterLogDrains2 = {
-  type: GetAllLogDrainsFilterType;
+  type: "odata";
   text: string;
 };
-
-export const GetAllLogDrainsFilterLogDrainsResponse200Type = {
-  Basic: "basic",
-} as const;
-export type GetAllLogDrainsFilterLogDrainsResponse200Type = ClosedEnum<
-  typeof GetAllLogDrainsFilterLogDrainsResponse200Type
->;
 
 export type GetAllLogDrainsFilterLogDrainsProject = {
   ids?: Array<string> | undefined;
@@ -751,35 +594,28 @@ export type GetAllLogDrainsFilterDeployment = {
 };
 
 export type GetAllLogDrainsFilterLogDrains1 = {
-  type: GetAllLogDrainsFilterLogDrainsResponse200Type;
+  type: "basic";
   project?: GetAllLogDrainsFilterLogDrainsProject | undefined;
   log?: GetAllLogDrainsFilterLogDrainsLog | undefined;
   deployment?: GetAllLogDrainsFilterDeployment | undefined;
 };
 
 export type GetAllLogDrainsFilterV2Filter =
-  | GetAllLogDrainsFilterLogDrains2
-  | GetAllLogDrainsFilterLogDrains1;
+  | GetAllLogDrainsFilterLogDrains1
+  | GetAllLogDrainsFilterLogDrains2;
 
 export type GetAllLogDrainsFilterV2LogDrains2 = {
-  version: GetAllLogDrainsFilterV2LogDrainsResponse200Version;
-  filter: GetAllLogDrainsFilterLogDrains2 | GetAllLogDrainsFilterLogDrains1;
+  version: "v2";
+  filter: GetAllLogDrainsFilterLogDrains1 | GetAllLogDrainsFilterLogDrains2;
 };
 
-export const GetAllLogDrainsFilterV2LogDrainsResponseVersion = {
-  V1: "v1",
-} as const;
-export type GetAllLogDrainsFilterV2LogDrainsResponseVersion = ClosedEnum<
-  typeof GetAllLogDrainsFilterV2LogDrainsResponseVersion
->;
-
 export type GetAllLogDrainsFilterV2LogDrains1 = {
-  version: GetAllLogDrainsFilterV2LogDrainsResponseVersion;
+  version: "v1";
 };
 
 export type GetAllLogDrainsDrainsFilterV2 =
-  | GetAllLogDrainsFilterV2LogDrains2
-  | GetAllLogDrainsFilterV2LogDrains1;
+  | GetAllLogDrainsFilterV2LogDrains1
+  | GetAllLogDrainsFilterV2LogDrains2;
 
 export type GetAllLogDrainsDrains1 = {
   id: string;
@@ -802,11 +638,11 @@ export type GetAllLogDrainsDrains1 = {
   disabledReason?: GetAllLogDrainsDrainsDisabledReason | undefined;
   disabledBy?: string | undefined;
   firstErrorTimestamp?: number | undefined;
-  source: GetAllLogDrainsSourceLogDrains2 | GetAllLogDrainsSourceLogDrains1;
+  source: GetAllLogDrainsSourceLogDrains1 | GetAllLogDrainsSourceLogDrains2;
   filter?: string | undefined;
   filterV2?:
-    | GetAllLogDrainsFilterV2LogDrains2
     | GetAllLogDrainsFilterV2LogDrains1
+    | GetAllLogDrainsFilterV2LogDrains2
     | undefined;
 };
 
@@ -1210,20 +1046,6 @@ export function getAllLogDrainsDrainsLogDrainsSchemasFromJSON(
 }
 
 /** @internal */
-export const GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBody1Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBody1Type
-  > = z.nativeEnum(
-    GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBody1Type,
-  );
-/** @internal */
-export const GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBody1Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBody1Type
-  > =
-    GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBody1Type$inboundSchema;
-
-/** @internal */
 export const GetAllLogDrainsDeliveryTarget$inboundSchema: z.ZodNativeEnum<
   typeof GetAllLogDrainsDeliveryTarget
 > = z.nativeEnum(GetAllLogDrainsDeliveryTarget);
@@ -1238,13 +1060,12 @@ export const GetAllLogDrainsDelivery4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBody1Type$inboundSchema,
+  type: z.literal("internal"),
   target: GetAllLogDrainsDeliveryTarget$inboundSchema,
 });
 /** @internal */
 export type GetAllLogDrainsDelivery4$Outbound = {
-  type: string;
+  type: "internal";
   target: string;
 };
 
@@ -1254,8 +1075,7 @@ export const GetAllLogDrainsDelivery4$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsDelivery4
 > = z.object({
-  type:
-    GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBody1Type$outboundSchema,
+  type: z.literal("internal"),
   target: GetAllLogDrainsDeliveryTarget$outboundSchema,
 });
 
@@ -1277,33 +1097,18 @@ export function getAllLogDrainsDelivery4FromJSON(
 }
 
 /** @internal */
-export const GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBodyType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBodyType
-  > = z.nativeEnum(
-    GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBodyType,
-  );
-/** @internal */
-export const GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBodyType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBodyType
-  > =
-    GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBodyType$inboundSchema;
-
-/** @internal */
 export const GetAllLogDrainsDelivery3$inboundSchema: z.ZodType<
   GetAllLogDrainsDelivery3,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBodyType$inboundSchema,
+  type: z.literal("clickhouse"),
   endpoint: z.string(),
   table: z.string(),
 });
 /** @internal */
 export type GetAllLogDrainsDelivery3$Outbound = {
-  type: string;
+  type: "clickhouse";
   endpoint: string;
   table: string;
 };
@@ -1314,8 +1119,7 @@ export const GetAllLogDrainsDelivery3$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsDelivery3
 > = z.object({
-  type:
-    GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBodyType$outboundSchema,
+  type: z.literal("clickhouse"),
   endpoint: z.string(),
   table: z.string(),
 });
@@ -1336,20 +1140,6 @@ export function getAllLogDrainsDelivery3FromJSON(
     `Failed to parse 'GetAllLogDrainsDelivery3' from JSON`,
   );
 }
-
-/** @internal */
-export const GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONType
-  > = z.nativeEnum(
-    GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONType,
-  );
-/** @internal */
-export const GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONType
-  > =
-    GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONType$inboundSchema;
 
 /** @internal */
 export const GetAllLogDrainsDeliveryLogDrainsEndpoint$inboundSchema: z.ZodType<
@@ -1516,8 +1306,7 @@ export const GetAllLogDrainsDelivery2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONType$inboundSchema,
+  type: z.literal("otlphttp"),
   endpoint: z.lazy(() =>
     GetAllLogDrainsDeliveryLogDrainsEndpoint$inboundSchema
   ),
@@ -1530,7 +1319,7 @@ export const GetAllLogDrainsDelivery2$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type GetAllLogDrainsDelivery2$Outbound = {
-  type: string;
+  type: "otlphttp";
   endpoint: GetAllLogDrainsDeliveryLogDrainsEndpoint$Outbound;
   encoding: string;
   headers: { [k: string]: string };
@@ -1546,8 +1335,7 @@ export const GetAllLogDrainsDelivery2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsDelivery2
 > = z.object({
-  type:
-    GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONType$outboundSchema,
+  type: z.literal("otlphttp"),
   endpoint: z.lazy(() =>
     GetAllLogDrainsDeliveryLogDrainsEndpoint$outboundSchema
   ),
@@ -1575,15 +1363,6 @@ export function getAllLogDrainsDelivery2FromJSON(
     `Failed to parse 'GetAllLogDrainsDelivery2' from JSON`,
   );
 }
-
-/** @internal */
-export const GetAllLogDrainsDeliveryLogDrainsResponse200Type$inboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsDeliveryLogDrainsResponse200Type> = z
-    .nativeEnum(GetAllLogDrainsDeliveryLogDrainsResponse200Type);
-/** @internal */
-export const GetAllLogDrainsDeliveryLogDrainsResponse200Type$outboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsDeliveryLogDrainsResponse200Type> =
-    GetAllLogDrainsDeliveryLogDrainsResponse200Type$inboundSchema;
 
 /** @internal */
 export const GetAllLogDrainsDeliveryLogDrainsEncoding$inboundSchema:
@@ -1702,7 +1481,7 @@ export const GetAllLogDrainsDelivery1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: GetAllLogDrainsDeliveryLogDrainsResponse200Type$inboundSchema,
+  type: z.literal("http"),
   endpoint: z.string(),
   encoding: GetAllLogDrainsDeliveryLogDrainsEncoding$inboundSchema,
   compression: GetAllLogDrainsDeliveryLogDrainsCompression$inboundSchema
@@ -1715,7 +1494,7 @@ export const GetAllLogDrainsDelivery1$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type GetAllLogDrainsDelivery1$Outbound = {
-  type: string;
+  type: "http";
   endpoint: string;
   encoding: string;
   compression?: string | undefined;
@@ -1729,7 +1508,7 @@ export const GetAllLogDrainsDelivery1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsDelivery1
 > = z.object({
-  type: GetAllLogDrainsDeliveryLogDrainsResponse200Type$outboundSchema,
+  type: z.literal("http"),
   endpoint: z.string(),
   encoding: GetAllLogDrainsDeliveryLogDrainsEncoding$outboundSchema,
   compression: GetAllLogDrainsDeliveryLogDrainsCompression$outboundSchema
@@ -1898,21 +1677,12 @@ export const GetAllLogDrainsDrainsLogDrainsDisabledReason$outboundSchema:
     GetAllLogDrainsDrainsLogDrainsDisabledReason$inboundSchema;
 
 /** @internal */
-export const GetAllLogDrainsSourceLogDrainsKind$inboundSchema: z.ZodNativeEnum<
-  typeof GetAllLogDrainsSourceLogDrainsKind
-> = z.nativeEnum(GetAllLogDrainsSourceLogDrainsKind);
-/** @internal */
-export const GetAllLogDrainsSourceLogDrainsKind$outboundSchema: z.ZodNativeEnum<
-  typeof GetAllLogDrainsSourceLogDrainsKind
-> = GetAllLogDrainsSourceLogDrainsKind$inboundSchema;
-
-/** @internal */
 export const GetAllLogDrainsSource2$inboundSchema: z.ZodType<
   GetAllLogDrainsSource2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  kind: GetAllLogDrainsSourceLogDrainsKind$inboundSchema,
+  kind: z.literal("integration"),
   resourceId: z.string().optional(),
   externalResourceId: z.string().optional(),
   integrationId: z.string(),
@@ -1920,7 +1690,7 @@ export const GetAllLogDrainsSource2$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type GetAllLogDrainsSource2$Outbound = {
-  kind: string;
+  kind: "integration";
   resourceId?: string | undefined;
   externalResourceId?: string | undefined;
   integrationId: string;
@@ -1933,7 +1703,7 @@ export const GetAllLogDrainsSource2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsSource2
 > = z.object({
-  kind: GetAllLogDrainsSourceLogDrainsKind$outboundSchema,
+  kind: z.literal("integration"),
   resourceId: z.string().optional(),
   externalResourceId: z.string().optional(),
   integrationId: z.string(),
@@ -1958,25 +1728,16 @@ export function getAllLogDrainsSource2FromJSON(
 }
 
 /** @internal */
-export const GetAllLogDrainsSourceKind$inboundSchema: z.ZodNativeEnum<
-  typeof GetAllLogDrainsSourceKind
-> = z.nativeEnum(GetAllLogDrainsSourceKind);
-/** @internal */
-export const GetAllLogDrainsSourceKind$outboundSchema: z.ZodNativeEnum<
-  typeof GetAllLogDrainsSourceKind
-> = GetAllLogDrainsSourceKind$inboundSchema;
-
-/** @internal */
 export const GetAllLogDrainsSource1$inboundSchema: z.ZodType<
   GetAllLogDrainsSource1,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  kind: GetAllLogDrainsSourceKind$inboundSchema,
+  kind: z.literal("self-served"),
 });
 /** @internal */
 export type GetAllLogDrainsSource1$Outbound = {
-  kind: string;
+  kind: "self-served";
 };
 
 /** @internal */
@@ -1985,7 +1746,7 @@ export const GetAllLogDrainsSource1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsSource1
 > = z.object({
-  kind: GetAllLogDrainsSourceKind$outboundSchema,
+  kind: z.literal("self-served"),
 });
 
 export function getAllLogDrainsSource1ToJSON(
@@ -2011,13 +1772,13 @@ export const GetAllLogDrainsDrainsSource$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => GetAllLogDrainsSource2$inboundSchema),
   z.lazy(() => GetAllLogDrainsSource1$inboundSchema),
+  z.lazy(() => GetAllLogDrainsSource2$inboundSchema),
 ]);
 /** @internal */
 export type GetAllLogDrainsDrainsSource$Outbound =
-  | GetAllLogDrainsSource2$Outbound
-  | GetAllLogDrainsSource1$Outbound;
+  | GetAllLogDrainsSource1$Outbound
+  | GetAllLogDrainsSource2$Outbound;
 
 /** @internal */
 export const GetAllLogDrainsDrainsSource$outboundSchema: z.ZodType<
@@ -2025,8 +1786,8 @@ export const GetAllLogDrainsDrainsSource$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsDrainsSource
 > = z.union([
-  z.lazy(() => GetAllLogDrainsSource2$outboundSchema),
   z.lazy(() => GetAllLogDrainsSource1$outboundSchema),
+  z.lazy(() => GetAllLogDrainsSource2$outboundSchema),
 ]);
 
 export function getAllLogDrainsDrainsSourceToJSON(
@@ -2049,35 +1810,17 @@ export function getAllLogDrainsDrainsSourceFromJSON(
 }
 
 /** @internal */
-export const GetAllLogDrainsFilterV2LogDrainsVersion$inboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsFilterV2LogDrainsVersion> = z
-    .nativeEnum(GetAllLogDrainsFilterV2LogDrainsVersion);
-/** @internal */
-export const GetAllLogDrainsFilterV2LogDrainsVersion$outboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsFilterV2LogDrainsVersion> =
-    GetAllLogDrainsFilterV2LogDrainsVersion$inboundSchema;
-
-/** @internal */
-export const GetAllLogDrainsFilterLogDrainsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsFilterLogDrainsResponseType> = z
-    .nativeEnum(GetAllLogDrainsFilterLogDrainsResponseType);
-/** @internal */
-export const GetAllLogDrainsFilterLogDrainsResponseType$outboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsFilterLogDrainsResponseType> =
-    GetAllLogDrainsFilterLogDrainsResponseType$inboundSchema;
-
-/** @internal */
 export const GetAllLogDrainsFilter2$inboundSchema: z.ZodType<
   GetAllLogDrainsFilter2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: GetAllLogDrainsFilterLogDrainsResponseType$inboundSchema,
+  type: z.literal("odata"),
   text: z.string(),
 });
 /** @internal */
 export type GetAllLogDrainsFilter2$Outbound = {
-  type: string;
+  type: "odata";
   text: string;
 };
 
@@ -2087,7 +1830,7 @@ export const GetAllLogDrainsFilter2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsFilter2
 > = z.object({
-  type: GetAllLogDrainsFilterLogDrainsResponseType$outboundSchema,
+  type: z.literal("odata"),
   text: z.string(),
 });
 
@@ -2107,15 +1850,6 @@ export function getAllLogDrainsFilter2FromJSON(
     `Failed to parse 'GetAllLogDrainsFilter2' from JSON`,
   );
 }
-
-/** @internal */
-export const GetAllLogDrainsFilterLogDrainsType$inboundSchema: z.ZodNativeEnum<
-  typeof GetAllLogDrainsFilterLogDrainsType
-> = z.nativeEnum(GetAllLogDrainsFilterLogDrainsType);
-/** @internal */
-export const GetAllLogDrainsFilterLogDrainsType$outboundSchema: z.ZodNativeEnum<
-  typeof GetAllLogDrainsFilterLogDrainsType
-> = GetAllLogDrainsFilterLogDrainsType$inboundSchema;
 
 /** @internal */
 export const GetAllLogDrainsFilterProject$inboundSchema: z.ZodType<
@@ -2287,7 +2021,7 @@ export const GetAllLogDrainsFilter1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: GetAllLogDrainsFilterLogDrainsType$inboundSchema,
+  type: z.literal("basic"),
   project: z.lazy(() => GetAllLogDrainsFilterProject$inboundSchema).optional(),
   log: z.lazy(() => GetAllLogDrainsFilterLog$inboundSchema).optional(),
   deployment: z.lazy(() =>
@@ -2296,7 +2030,7 @@ export const GetAllLogDrainsFilter1$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type GetAllLogDrainsFilter1$Outbound = {
-  type: string;
+  type: "basic";
   project?: GetAllLogDrainsFilterProject$Outbound | undefined;
   log?: GetAllLogDrainsFilterLog$Outbound | undefined;
   deployment?: GetAllLogDrainsFilterLogDrainsDeployment$Outbound | undefined;
@@ -2308,7 +2042,7 @@ export const GetAllLogDrainsFilter1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsFilter1
 > = z.object({
-  type: GetAllLogDrainsFilterLogDrainsType$outboundSchema,
+  type: z.literal("basic"),
   project: z.lazy(() => GetAllLogDrainsFilterProject$outboundSchema).optional(),
   log: z.lazy(() => GetAllLogDrainsFilterLog$outboundSchema).optional(),
   deployment: z.lazy(() =>
@@ -2339,13 +2073,13 @@ export const GetAllLogDrainsFilterV2LogDrainsFilter$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => GetAllLogDrainsFilter2$inboundSchema),
   z.lazy(() => GetAllLogDrainsFilter1$inboundSchema),
+  z.lazy(() => GetAllLogDrainsFilter2$inboundSchema),
 ]);
 /** @internal */
 export type GetAllLogDrainsFilterV2LogDrainsFilter$Outbound =
-  | GetAllLogDrainsFilter2$Outbound
-  | GetAllLogDrainsFilter1$Outbound;
+  | GetAllLogDrainsFilter1$Outbound
+  | GetAllLogDrainsFilter2$Outbound;
 
 /** @internal */
 export const GetAllLogDrainsFilterV2LogDrainsFilter$outboundSchema: z.ZodType<
@@ -2353,8 +2087,8 @@ export const GetAllLogDrainsFilterV2LogDrainsFilter$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsFilterV2LogDrainsFilter
 > = z.union([
-  z.lazy(() => GetAllLogDrainsFilter2$outboundSchema),
   z.lazy(() => GetAllLogDrainsFilter1$outboundSchema),
+  z.lazy(() => GetAllLogDrainsFilter2$outboundSchema),
 ]);
 
 export function getAllLogDrainsFilterV2LogDrainsFilterToJSON(
@@ -2384,16 +2118,16 @@ export const GetAllLogDrainsFilterV22$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  version: GetAllLogDrainsFilterV2LogDrainsVersion$inboundSchema,
+  version: z.literal("v2"),
   filter: z.union([
-    z.lazy(() => GetAllLogDrainsFilter2$inboundSchema),
     z.lazy(() => GetAllLogDrainsFilter1$inboundSchema),
+    z.lazy(() => GetAllLogDrainsFilter2$inboundSchema),
   ]),
 });
 /** @internal */
 export type GetAllLogDrainsFilterV22$Outbound = {
-  version: string;
-  filter: GetAllLogDrainsFilter2$Outbound | GetAllLogDrainsFilter1$Outbound;
+  version: "v2";
+  filter: GetAllLogDrainsFilter1$Outbound | GetAllLogDrainsFilter2$Outbound;
 };
 
 /** @internal */
@@ -2402,10 +2136,10 @@ export const GetAllLogDrainsFilterV22$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsFilterV22
 > = z.object({
-  version: GetAllLogDrainsFilterV2LogDrainsVersion$outboundSchema,
+  version: z.literal("v2"),
   filter: z.union([
-    z.lazy(() => GetAllLogDrainsFilter2$outboundSchema),
     z.lazy(() => GetAllLogDrainsFilter1$outboundSchema),
+    z.lazy(() => GetAllLogDrainsFilter2$outboundSchema),
   ]),
 });
 
@@ -2427,25 +2161,16 @@ export function getAllLogDrainsFilterV22FromJSON(
 }
 
 /** @internal */
-export const GetAllLogDrainsFilterV2Version$inboundSchema: z.ZodNativeEnum<
-  typeof GetAllLogDrainsFilterV2Version
-> = z.nativeEnum(GetAllLogDrainsFilterV2Version);
-/** @internal */
-export const GetAllLogDrainsFilterV2Version$outboundSchema: z.ZodNativeEnum<
-  typeof GetAllLogDrainsFilterV2Version
-> = GetAllLogDrainsFilterV2Version$inboundSchema;
-
-/** @internal */
 export const GetAllLogDrainsFilterV21$inboundSchema: z.ZodType<
   GetAllLogDrainsFilterV21,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  version: GetAllLogDrainsFilterV2Version$inboundSchema,
+  version: z.literal("v1"),
 });
 /** @internal */
 export type GetAllLogDrainsFilterV21$Outbound = {
-  version: string;
+  version: "v1";
 };
 
 /** @internal */
@@ -2454,7 +2179,7 @@ export const GetAllLogDrainsFilterV21$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsFilterV21
 > = z.object({
-  version: GetAllLogDrainsFilterV2Version$outboundSchema,
+  version: z.literal("v1"),
 });
 
 export function getAllLogDrainsFilterV21ToJSON(
@@ -2480,13 +2205,13 @@ export const GetAllLogDrainsDrainsLogDrainsFilterV2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => GetAllLogDrainsFilterV22$inboundSchema),
   z.lazy(() => GetAllLogDrainsFilterV21$inboundSchema),
+  z.lazy(() => GetAllLogDrainsFilterV22$inboundSchema),
 ]);
 /** @internal */
 export type GetAllLogDrainsDrainsLogDrainsFilterV2$Outbound =
-  | GetAllLogDrainsFilterV22$Outbound
-  | GetAllLogDrainsFilterV21$Outbound;
+  | GetAllLogDrainsFilterV21$Outbound
+  | GetAllLogDrainsFilterV22$Outbound;
 
 /** @internal */
 export const GetAllLogDrainsDrainsLogDrainsFilterV2$outboundSchema: z.ZodType<
@@ -2494,8 +2219,8 @@ export const GetAllLogDrainsDrainsLogDrainsFilterV2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsDrainsLogDrainsFilterV2
 > = z.union([
-  z.lazy(() => GetAllLogDrainsFilterV22$outboundSchema),
   z.lazy(() => GetAllLogDrainsFilterV21$outboundSchema),
+  z.lazy(() => GetAllLogDrainsFilterV22$outboundSchema),
 ]);
 
 export function getAllLogDrainsDrainsLogDrainsFilterV2ToJSON(
@@ -2520,26 +2245,17 @@ export function getAllLogDrainsDrainsLogDrainsFilterV2FromJSON(
 }
 
 /** @internal */
-export const GetAllLogDrainsProjectAccessLogDrainsAccess$inboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsProjectAccessLogDrainsAccess> = z
-    .nativeEnum(GetAllLogDrainsProjectAccessLogDrainsAccess);
-/** @internal */
-export const GetAllLogDrainsProjectAccessLogDrainsAccess$outboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsProjectAccessLogDrainsAccess> =
-    GetAllLogDrainsProjectAccessLogDrainsAccess$inboundSchema;
-
-/** @internal */
 export const GetAllLogDrainsProjectAccess2$inboundSchema: z.ZodType<
   GetAllLogDrainsProjectAccess2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  access: GetAllLogDrainsProjectAccessLogDrainsAccess$inboundSchema,
+  access: z.literal("some"),
   projectIds: z.array(z.string()),
 });
 /** @internal */
 export type GetAllLogDrainsProjectAccess2$Outbound = {
-  access: string;
+  access: "some";
   projectIds: Array<string>;
 };
 
@@ -2549,7 +2265,7 @@ export const GetAllLogDrainsProjectAccess2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsProjectAccess2
 > = z.object({
-  access: GetAllLogDrainsProjectAccessLogDrainsAccess$outboundSchema,
+  access: z.literal("some"),
   projectIds: z.array(z.string()),
 });
 
@@ -2573,25 +2289,16 @@ export function getAllLogDrainsProjectAccess2FromJSON(
 }
 
 /** @internal */
-export const GetAllLogDrainsProjectAccessAccess$inboundSchema: z.ZodNativeEnum<
-  typeof GetAllLogDrainsProjectAccessAccess
-> = z.nativeEnum(GetAllLogDrainsProjectAccessAccess);
-/** @internal */
-export const GetAllLogDrainsProjectAccessAccess$outboundSchema: z.ZodNativeEnum<
-  typeof GetAllLogDrainsProjectAccessAccess
-> = GetAllLogDrainsProjectAccessAccess$inboundSchema;
-
-/** @internal */
 export const GetAllLogDrainsProjectAccess1$inboundSchema: z.ZodType<
   GetAllLogDrainsProjectAccess1,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  access: GetAllLogDrainsProjectAccessAccess$inboundSchema,
+  access: z.literal("all"),
 });
 /** @internal */
 export type GetAllLogDrainsProjectAccess1$Outbound = {
-  access: string;
+  access: "all";
 };
 
 /** @internal */
@@ -2600,7 +2307,7 @@ export const GetAllLogDrainsProjectAccess1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsProjectAccess1
 > = z.object({
-  access: GetAllLogDrainsProjectAccessAccess$outboundSchema,
+  access: z.literal("all"),
 });
 
 export function getAllLogDrainsProjectAccess1ToJSON(
@@ -2628,13 +2335,13 @@ export const GetAllLogDrainsDrainsProjectAccess$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => GetAllLogDrainsProjectAccess2$inboundSchema),
   z.lazy(() => GetAllLogDrainsProjectAccess1$inboundSchema),
+  z.lazy(() => GetAllLogDrainsProjectAccess2$inboundSchema),
 ]);
 /** @internal */
 export type GetAllLogDrainsDrainsProjectAccess$Outbound =
-  | GetAllLogDrainsProjectAccess2$Outbound
-  | GetAllLogDrainsProjectAccess1$Outbound;
+  | GetAllLogDrainsProjectAccess1$Outbound
+  | GetAllLogDrainsProjectAccess2$Outbound;
 
 /** @internal */
 export const GetAllLogDrainsDrainsProjectAccess$outboundSchema: z.ZodType<
@@ -2642,8 +2349,8 @@ export const GetAllLogDrainsDrainsProjectAccess$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsDrainsProjectAccess
 > = z.union([
-  z.lazy(() => GetAllLogDrainsProjectAccess2$outboundSchema),
   z.lazy(() => GetAllLogDrainsProjectAccess1$outboundSchema),
+  z.lazy(() => GetAllLogDrainsProjectAccess2$outboundSchema),
 ]);
 
 export function getAllLogDrainsDrainsProjectAccessToJSON(
@@ -2697,20 +2404,20 @@ export const GetAllLogDrainsDrains2$inboundSchema: z.ZodType<
   disabledBy: z.string().optional(),
   firstErrorTimestamp: z.number().optional(),
   source: z.union([
-    z.lazy(() => GetAllLogDrainsSource2$inboundSchema),
     z.lazy(() => GetAllLogDrainsSource1$inboundSchema),
+    z.lazy(() => GetAllLogDrainsSource2$inboundSchema),
   ]),
   filter: z.string().optional(),
   filterV2: z.union([
-    z.lazy(() => GetAllLogDrainsFilterV22$inboundSchema),
     z.lazy(() => GetAllLogDrainsFilterV21$inboundSchema),
+    z.lazy(() => GetAllLogDrainsFilterV22$inboundSchema),
   ]).optional(),
   integrationIcon: z.string().optional(),
   integrationConfigurationUri: z.string().optional(),
   integrationWebsite: z.string().optional(),
   projectAccess: z.union([
-    z.lazy(() => GetAllLogDrainsProjectAccess2$inboundSchema),
     z.lazy(() => GetAllLogDrainsProjectAccess1$inboundSchema),
+    z.lazy(() => GetAllLogDrainsProjectAccess2$inboundSchema),
   ]).optional(),
 });
 /** @internal */
@@ -2735,18 +2442,18 @@ export type GetAllLogDrainsDrains2$Outbound = {
   disabledReason?: string | undefined;
   disabledBy?: string | undefined;
   firstErrorTimestamp?: number | undefined;
-  source: GetAllLogDrainsSource2$Outbound | GetAllLogDrainsSource1$Outbound;
+  source: GetAllLogDrainsSource1$Outbound | GetAllLogDrainsSource2$Outbound;
   filter?: string | undefined;
   filterV2?:
-    | GetAllLogDrainsFilterV22$Outbound
     | GetAllLogDrainsFilterV21$Outbound
+    | GetAllLogDrainsFilterV22$Outbound
     | undefined;
   integrationIcon?: string | undefined;
   integrationConfigurationUri?: string | undefined;
   integrationWebsite?: string | undefined;
   projectAccess?:
-    | GetAllLogDrainsProjectAccess2$Outbound
     | GetAllLogDrainsProjectAccess1$Outbound
+    | GetAllLogDrainsProjectAccess2$Outbound
     | undefined;
 };
 
@@ -2781,20 +2488,20 @@ export const GetAllLogDrainsDrains2$outboundSchema: z.ZodType<
   disabledBy: z.string().optional(),
   firstErrorTimestamp: z.number().optional(),
   source: z.union([
-    z.lazy(() => GetAllLogDrainsSource2$outboundSchema),
     z.lazy(() => GetAllLogDrainsSource1$outboundSchema),
+    z.lazy(() => GetAllLogDrainsSource2$outboundSchema),
   ]),
   filter: z.string().optional(),
   filterV2: z.union([
-    z.lazy(() => GetAllLogDrainsFilterV22$outboundSchema),
     z.lazy(() => GetAllLogDrainsFilterV21$outboundSchema),
+    z.lazy(() => GetAllLogDrainsFilterV22$outboundSchema),
   ]).optional(),
   integrationIcon: z.string().optional(),
   integrationConfigurationUri: z.string().optional(),
   integrationWebsite: z.string().optional(),
   projectAccess: z.union([
-    z.lazy(() => GetAllLogDrainsProjectAccess2$outboundSchema),
     z.lazy(() => GetAllLogDrainsProjectAccess1$outboundSchema),
+    z.lazy(() => GetAllLogDrainsProjectAccess2$outboundSchema),
   ]).optional(),
 });
 
@@ -3035,15 +2742,6 @@ export function getAllLogDrainsDrainsSchemasFromJSON(
 }
 
 /** @internal */
-export const GetAllLogDrainsDeliveryLogDrainsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsDeliveryLogDrainsResponseType> = z
-    .nativeEnum(GetAllLogDrainsDeliveryLogDrainsResponseType);
-/** @internal */
-export const GetAllLogDrainsDeliveryLogDrainsResponseType$outboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsDeliveryLogDrainsResponseType> =
-    GetAllLogDrainsDeliveryLogDrainsResponseType$inboundSchema;
-
-/** @internal */
 export const GetAllLogDrainsDeliveryLogDrainsTarget$inboundSchema:
   z.ZodNativeEnum<typeof GetAllLogDrainsDeliveryLogDrainsTarget> = z.nativeEnum(
     GetAllLogDrainsDeliveryLogDrainsTarget,
@@ -3059,12 +2757,12 @@ export const GetAllLogDrainsDeliveryLogDrains4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: GetAllLogDrainsDeliveryLogDrainsResponseType$inboundSchema,
+  type: z.literal("internal"),
   target: GetAllLogDrainsDeliveryLogDrainsTarget$inboundSchema,
 });
 /** @internal */
 export type GetAllLogDrainsDeliveryLogDrains4$Outbound = {
-  type: string;
+  type: "internal";
   target: string;
 };
 
@@ -3074,7 +2772,7 @@ export const GetAllLogDrainsDeliveryLogDrains4$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsDeliveryLogDrains4
 > = z.object({
-  type: GetAllLogDrainsDeliveryLogDrainsResponseType$outboundSchema,
+  type: z.literal("internal"),
   target: GetAllLogDrainsDeliveryLogDrainsTarget$outboundSchema,
 });
 
@@ -3098,28 +2796,18 @@ export function getAllLogDrainsDeliveryLogDrains4FromJSON(
 }
 
 /** @internal */
-export const GetAllLogDrainsDeliveryLogDrainsType$inboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsDeliveryLogDrainsType> = z.nativeEnum(
-    GetAllLogDrainsDeliveryLogDrainsType,
-  );
-/** @internal */
-export const GetAllLogDrainsDeliveryLogDrainsType$outboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsDeliveryLogDrainsType> =
-    GetAllLogDrainsDeliveryLogDrainsType$inboundSchema;
-
-/** @internal */
 export const GetAllLogDrainsDeliveryLogDrains3$inboundSchema: z.ZodType<
   GetAllLogDrainsDeliveryLogDrains3,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: GetAllLogDrainsDeliveryLogDrainsType$inboundSchema,
+  type: z.literal("clickhouse"),
   endpoint: z.string(),
   table: z.string(),
 });
 /** @internal */
 export type GetAllLogDrainsDeliveryLogDrains3$Outbound = {
-  type: string;
+  type: "clickhouse";
   endpoint: string;
   table: string;
 };
@@ -3130,7 +2818,7 @@ export const GetAllLogDrainsDeliveryLogDrains3$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsDeliveryLogDrains3
 > = z.object({
-  type: GetAllLogDrainsDeliveryLogDrainsType$outboundSchema,
+  type: z.literal("clickhouse"),
   endpoint: z.string(),
   table: z.string(),
 });
@@ -3153,15 +2841,6 @@ export function getAllLogDrainsDeliveryLogDrains3FromJSON(
     `Failed to parse 'GetAllLogDrainsDeliveryLogDrains3' from JSON`,
   );
 }
-
-/** @internal */
-export const GetAllLogDrainsDeliveryType$inboundSchema: z.ZodNativeEnum<
-  typeof GetAllLogDrainsDeliveryType
-> = z.nativeEnum(GetAllLogDrainsDeliveryType);
-/** @internal */
-export const GetAllLogDrainsDeliveryType$outboundSchema: z.ZodNativeEnum<
-  typeof GetAllLogDrainsDeliveryType
-> = GetAllLogDrainsDeliveryType$inboundSchema;
 
 /** @internal */
 export const GetAllLogDrainsDeliveryEndpoint$inboundSchema: z.ZodType<
@@ -3316,7 +2995,7 @@ export const GetAllLogDrainsDeliveryLogDrains2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: GetAllLogDrainsDeliveryType$inboundSchema,
+  type: z.literal("otlphttp"),
   endpoint: z.lazy(() => GetAllLogDrainsDeliveryEndpoint$inboundSchema),
   encoding: GetAllLogDrainsDeliveryEncoding$inboundSchema,
   headers: z.record(z.string()),
@@ -3327,7 +3006,7 @@ export const GetAllLogDrainsDeliveryLogDrains2$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type GetAllLogDrainsDeliveryLogDrains2$Outbound = {
-  type: string;
+  type: "otlphttp";
   endpoint: GetAllLogDrainsDeliveryEndpoint$Outbound;
   encoding: string;
   headers: { [k: string]: string };
@@ -3340,7 +3019,7 @@ export const GetAllLogDrainsDeliveryLogDrains2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsDeliveryLogDrains2
 > = z.object({
-  type: GetAllLogDrainsDeliveryType$outboundSchema,
+  type: z.literal("otlphttp"),
   endpoint: z.lazy(() => GetAllLogDrainsDeliveryEndpoint$outboundSchema),
   encoding: GetAllLogDrainsDeliveryEncoding$outboundSchema,
   headers: z.record(z.string()),
@@ -3368,20 +3047,6 @@ export function getAllLogDrainsDeliveryLogDrains2FromJSON(
     `Failed to parse 'GetAllLogDrainsDeliveryLogDrains2' from JSON`,
   );
 }
-
-/** @internal */
-export const GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBody1DrainsType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBody1DrainsType
-  > = z.nativeEnum(
-    GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBody1DrainsType,
-  );
-/** @internal */
-export const GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBody1DrainsType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBody1DrainsType
-  > =
-    GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBody1DrainsType$inboundSchema;
 
 /** @internal */
 export const GetAllLogDrainsDeliveryLogDrainsResponse200Encoding$inboundSchema:
@@ -3515,8 +3180,7 @@ export const GetAllLogDrainsDeliveryLogDrains1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBody1DrainsType$inboundSchema,
+  type: z.literal("http"),
   endpoint: z.string(),
   encoding: GetAllLogDrainsDeliveryLogDrainsResponse200Encoding$inboundSchema,
   compression: GetAllLogDrainsDeliveryCompression$inboundSchema.optional(),
@@ -3528,7 +3192,7 @@ export const GetAllLogDrainsDeliveryLogDrains1$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type GetAllLogDrainsDeliveryLogDrains1$Outbound = {
-  type: string;
+  type: "http";
   endpoint: string;
   encoding: string;
   compression?: string | undefined;
@@ -3545,8 +3209,7 @@ export const GetAllLogDrainsDeliveryLogDrains1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsDeliveryLogDrains1
 > = z.object({
-  type:
-    GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBody1DrainsType$outboundSchema,
+  type: z.literal("http"),
   endpoint: z.string(),
   encoding: GetAllLogDrainsDeliveryLogDrainsResponse200Encoding$outboundSchema,
   compression: GetAllLogDrainsDeliveryCompression$outboundSchema.optional(),
@@ -3713,21 +3376,12 @@ export const GetAllLogDrainsDrainsDisabledReason$outboundSchema:
     GetAllLogDrainsDrainsDisabledReason$inboundSchema;
 
 /** @internal */
-export const GetAllLogDrainsSourceLogDrainsResponse200Kind$inboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsSourceLogDrainsResponse200Kind> = z
-    .nativeEnum(GetAllLogDrainsSourceLogDrainsResponse200Kind);
-/** @internal */
-export const GetAllLogDrainsSourceLogDrainsResponse200Kind$outboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsSourceLogDrainsResponse200Kind> =
-    GetAllLogDrainsSourceLogDrainsResponse200Kind$inboundSchema;
-
-/** @internal */
 export const GetAllLogDrainsSourceLogDrains2$inboundSchema: z.ZodType<
   GetAllLogDrainsSourceLogDrains2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  kind: GetAllLogDrainsSourceLogDrainsResponse200Kind$inboundSchema,
+  kind: z.literal("integration"),
   resourceId: z.string().optional(),
   externalResourceId: z.string().optional(),
   integrationId: z.string(),
@@ -3735,7 +3389,7 @@ export const GetAllLogDrainsSourceLogDrains2$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type GetAllLogDrainsSourceLogDrains2$Outbound = {
-  kind: string;
+  kind: "integration";
   resourceId?: string | undefined;
   externalResourceId?: string | undefined;
   integrationId: string;
@@ -3748,7 +3402,7 @@ export const GetAllLogDrainsSourceLogDrains2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsSourceLogDrains2
 > = z.object({
-  kind: GetAllLogDrainsSourceLogDrainsResponse200Kind$outboundSchema,
+  kind: z.literal("integration"),
   resourceId: z.string().optional(),
   externalResourceId: z.string().optional(),
   integrationId: z.string(),
@@ -3775,25 +3429,16 @@ export function getAllLogDrainsSourceLogDrains2FromJSON(
 }
 
 /** @internal */
-export const GetAllLogDrainsSourceLogDrainsResponseKind$inboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsSourceLogDrainsResponseKind> = z
-    .nativeEnum(GetAllLogDrainsSourceLogDrainsResponseKind);
-/** @internal */
-export const GetAllLogDrainsSourceLogDrainsResponseKind$outboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsSourceLogDrainsResponseKind> =
-    GetAllLogDrainsSourceLogDrainsResponseKind$inboundSchema;
-
-/** @internal */
 export const GetAllLogDrainsSourceLogDrains1$inboundSchema: z.ZodType<
   GetAllLogDrainsSourceLogDrains1,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  kind: GetAllLogDrainsSourceLogDrainsResponseKind$inboundSchema,
+  kind: z.literal("self-served"),
 });
 /** @internal */
 export type GetAllLogDrainsSourceLogDrains1$Outbound = {
-  kind: string;
+  kind: "self-served";
 };
 
 /** @internal */
@@ -3802,7 +3447,7 @@ export const GetAllLogDrainsSourceLogDrains1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsSourceLogDrains1
 > = z.object({
-  kind: GetAllLogDrainsSourceLogDrainsResponseKind$outboundSchema,
+  kind: z.literal("self-served"),
 });
 
 export function getAllLogDrainsSourceLogDrains1ToJSON(
@@ -3830,13 +3475,13 @@ export const GetAllLogDrainsDrainsLogDrainsSource$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => GetAllLogDrainsSourceLogDrains2$inboundSchema),
   z.lazy(() => GetAllLogDrainsSourceLogDrains1$inboundSchema),
+  z.lazy(() => GetAllLogDrainsSourceLogDrains2$inboundSchema),
 ]);
 /** @internal */
 export type GetAllLogDrainsDrainsLogDrainsSource$Outbound =
-  | GetAllLogDrainsSourceLogDrains2$Outbound
-  | GetAllLogDrainsSourceLogDrains1$Outbound;
+  | GetAllLogDrainsSourceLogDrains1$Outbound
+  | GetAllLogDrainsSourceLogDrains2$Outbound;
 
 /** @internal */
 export const GetAllLogDrainsDrainsLogDrainsSource$outboundSchema: z.ZodType<
@@ -3844,8 +3489,8 @@ export const GetAllLogDrainsDrainsLogDrainsSource$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsDrainsLogDrainsSource
 > = z.union([
-  z.lazy(() => GetAllLogDrainsSourceLogDrains2$outboundSchema),
   z.lazy(() => GetAllLogDrainsSourceLogDrains1$outboundSchema),
+  z.lazy(() => GetAllLogDrainsSourceLogDrains2$outboundSchema),
 ]);
 
 export function getAllLogDrainsDrainsLogDrainsSourceToJSON(
@@ -3869,35 +3514,17 @@ export function getAllLogDrainsDrainsLogDrainsSourceFromJSON(
 }
 
 /** @internal */
-export const GetAllLogDrainsFilterV2LogDrainsResponse200Version$inboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsFilterV2LogDrainsResponse200Version> = z
-    .nativeEnum(GetAllLogDrainsFilterV2LogDrainsResponse200Version);
-/** @internal */
-export const GetAllLogDrainsFilterV2LogDrainsResponse200Version$outboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsFilterV2LogDrainsResponse200Version> =
-    GetAllLogDrainsFilterV2LogDrainsResponse200Version$inboundSchema;
-
-/** @internal */
-export const GetAllLogDrainsFilterType$inboundSchema: z.ZodNativeEnum<
-  typeof GetAllLogDrainsFilterType
-> = z.nativeEnum(GetAllLogDrainsFilterType);
-/** @internal */
-export const GetAllLogDrainsFilterType$outboundSchema: z.ZodNativeEnum<
-  typeof GetAllLogDrainsFilterType
-> = GetAllLogDrainsFilterType$inboundSchema;
-
-/** @internal */
 export const GetAllLogDrainsFilterLogDrains2$inboundSchema: z.ZodType<
   GetAllLogDrainsFilterLogDrains2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: GetAllLogDrainsFilterType$inboundSchema,
+  type: z.literal("odata"),
   text: z.string(),
 });
 /** @internal */
 export type GetAllLogDrainsFilterLogDrains2$Outbound = {
-  type: string;
+  type: "odata";
   text: string;
 };
 
@@ -3907,7 +3534,7 @@ export const GetAllLogDrainsFilterLogDrains2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsFilterLogDrains2
 > = z.object({
-  type: GetAllLogDrainsFilterType$outboundSchema,
+  type: z.literal("odata"),
   text: z.string(),
 });
 
@@ -3929,15 +3556,6 @@ export function getAllLogDrainsFilterLogDrains2FromJSON(
     `Failed to parse 'GetAllLogDrainsFilterLogDrains2' from JSON`,
   );
 }
-
-/** @internal */
-export const GetAllLogDrainsFilterLogDrainsResponse200Type$inboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsFilterLogDrainsResponse200Type> = z
-    .nativeEnum(GetAllLogDrainsFilterLogDrainsResponse200Type);
-/** @internal */
-export const GetAllLogDrainsFilterLogDrainsResponse200Type$outboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsFilterLogDrainsResponse200Type> =
-    GetAllLogDrainsFilterLogDrainsResponse200Type$inboundSchema;
 
 /** @internal */
 export const GetAllLogDrainsFilterLogDrainsProject$inboundSchema: z.ZodType<
@@ -4100,7 +3718,7 @@ export const GetAllLogDrainsFilterLogDrains1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: GetAllLogDrainsFilterLogDrainsResponse200Type$inboundSchema,
+  type: z.literal("basic"),
   project: z.lazy(() => GetAllLogDrainsFilterLogDrainsProject$inboundSchema)
     .optional(),
   log: z.lazy(() => GetAllLogDrainsFilterLogDrainsLog$inboundSchema).optional(),
@@ -4109,7 +3727,7 @@ export const GetAllLogDrainsFilterLogDrains1$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type GetAllLogDrainsFilterLogDrains1$Outbound = {
-  type: string;
+  type: "basic";
   project?: GetAllLogDrainsFilterLogDrainsProject$Outbound | undefined;
   log?: GetAllLogDrainsFilterLogDrainsLog$Outbound | undefined;
   deployment?: GetAllLogDrainsFilterDeployment$Outbound | undefined;
@@ -4121,7 +3739,7 @@ export const GetAllLogDrainsFilterLogDrains1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsFilterLogDrains1
 > = z.object({
-  type: GetAllLogDrainsFilterLogDrainsResponse200Type$outboundSchema,
+  type: z.literal("basic"),
   project: z.lazy(() => GetAllLogDrainsFilterLogDrainsProject$outboundSchema)
     .optional(),
   log: z.lazy(() => GetAllLogDrainsFilterLogDrainsLog$outboundSchema)
@@ -4155,13 +3773,13 @@ export const GetAllLogDrainsFilterV2Filter$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => GetAllLogDrainsFilterLogDrains2$inboundSchema),
   z.lazy(() => GetAllLogDrainsFilterLogDrains1$inboundSchema),
+  z.lazy(() => GetAllLogDrainsFilterLogDrains2$inboundSchema),
 ]);
 /** @internal */
 export type GetAllLogDrainsFilterV2Filter$Outbound =
-  | GetAllLogDrainsFilterLogDrains2$Outbound
-  | GetAllLogDrainsFilterLogDrains1$Outbound;
+  | GetAllLogDrainsFilterLogDrains1$Outbound
+  | GetAllLogDrainsFilterLogDrains2$Outbound;
 
 /** @internal */
 export const GetAllLogDrainsFilterV2Filter$outboundSchema: z.ZodType<
@@ -4169,8 +3787,8 @@ export const GetAllLogDrainsFilterV2Filter$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsFilterV2Filter
 > = z.union([
-  z.lazy(() => GetAllLogDrainsFilterLogDrains2$outboundSchema),
   z.lazy(() => GetAllLogDrainsFilterLogDrains1$outboundSchema),
+  z.lazy(() => GetAllLogDrainsFilterLogDrains2$outboundSchema),
 ]);
 
 export function getAllLogDrainsFilterV2FilterToJSON(
@@ -4198,18 +3816,18 @@ export const GetAllLogDrainsFilterV2LogDrains2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  version: GetAllLogDrainsFilterV2LogDrainsResponse200Version$inboundSchema,
+  version: z.literal("v2"),
   filter: z.union([
-    z.lazy(() => GetAllLogDrainsFilterLogDrains2$inboundSchema),
     z.lazy(() => GetAllLogDrainsFilterLogDrains1$inboundSchema),
+    z.lazy(() => GetAllLogDrainsFilterLogDrains2$inboundSchema),
   ]),
 });
 /** @internal */
 export type GetAllLogDrainsFilterV2LogDrains2$Outbound = {
-  version: string;
+  version: "v2";
   filter:
-    | GetAllLogDrainsFilterLogDrains2$Outbound
-    | GetAllLogDrainsFilterLogDrains1$Outbound;
+    | GetAllLogDrainsFilterLogDrains1$Outbound
+    | GetAllLogDrainsFilterLogDrains2$Outbound;
 };
 
 /** @internal */
@@ -4218,10 +3836,10 @@ export const GetAllLogDrainsFilterV2LogDrains2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsFilterV2LogDrains2
 > = z.object({
-  version: GetAllLogDrainsFilterV2LogDrainsResponse200Version$outboundSchema,
+  version: z.literal("v2"),
   filter: z.union([
-    z.lazy(() => GetAllLogDrainsFilterLogDrains2$outboundSchema),
     z.lazy(() => GetAllLogDrainsFilterLogDrains1$outboundSchema),
+    z.lazy(() => GetAllLogDrainsFilterLogDrains2$outboundSchema),
   ]),
 });
 
@@ -4245,25 +3863,16 @@ export function getAllLogDrainsFilterV2LogDrains2FromJSON(
 }
 
 /** @internal */
-export const GetAllLogDrainsFilterV2LogDrainsResponseVersion$inboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsFilterV2LogDrainsResponseVersion> = z
-    .nativeEnum(GetAllLogDrainsFilterV2LogDrainsResponseVersion);
-/** @internal */
-export const GetAllLogDrainsFilterV2LogDrainsResponseVersion$outboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsFilterV2LogDrainsResponseVersion> =
-    GetAllLogDrainsFilterV2LogDrainsResponseVersion$inboundSchema;
-
-/** @internal */
 export const GetAllLogDrainsFilterV2LogDrains1$inboundSchema: z.ZodType<
   GetAllLogDrainsFilterV2LogDrains1,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  version: GetAllLogDrainsFilterV2LogDrainsResponseVersion$inboundSchema,
+  version: z.literal("v1"),
 });
 /** @internal */
 export type GetAllLogDrainsFilterV2LogDrains1$Outbound = {
-  version: string;
+  version: "v1";
 };
 
 /** @internal */
@@ -4272,7 +3881,7 @@ export const GetAllLogDrainsFilterV2LogDrains1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsFilterV2LogDrains1
 > = z.object({
-  version: GetAllLogDrainsFilterV2LogDrainsResponseVersion$outboundSchema,
+  version: z.literal("v1"),
 });
 
 export function getAllLogDrainsFilterV2LogDrains1ToJSON(
@@ -4300,13 +3909,13 @@ export const GetAllLogDrainsDrainsFilterV2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => GetAllLogDrainsFilterV2LogDrains2$inboundSchema),
   z.lazy(() => GetAllLogDrainsFilterV2LogDrains1$inboundSchema),
+  z.lazy(() => GetAllLogDrainsFilterV2LogDrains2$inboundSchema),
 ]);
 /** @internal */
 export type GetAllLogDrainsDrainsFilterV2$Outbound =
-  | GetAllLogDrainsFilterV2LogDrains2$Outbound
-  | GetAllLogDrainsFilterV2LogDrains1$Outbound;
+  | GetAllLogDrainsFilterV2LogDrains1$Outbound
+  | GetAllLogDrainsFilterV2LogDrains2$Outbound;
 
 /** @internal */
 export const GetAllLogDrainsDrainsFilterV2$outboundSchema: z.ZodType<
@@ -4314,8 +3923,8 @@ export const GetAllLogDrainsDrainsFilterV2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsDrainsFilterV2
 > = z.union([
-  z.lazy(() => GetAllLogDrainsFilterV2LogDrains2$outboundSchema),
   z.lazy(() => GetAllLogDrainsFilterV2LogDrains1$outboundSchema),
+  z.lazy(() => GetAllLogDrainsFilterV2LogDrains2$outboundSchema),
 ]);
 
 export function getAllLogDrainsDrainsFilterV2ToJSON(
@@ -4365,13 +3974,13 @@ export const GetAllLogDrainsDrains1$inboundSchema: z.ZodType<
   disabledBy: z.string().optional(),
   firstErrorTimestamp: z.number().optional(),
   source: z.union([
-    z.lazy(() => GetAllLogDrainsSourceLogDrains2$inboundSchema),
     z.lazy(() => GetAllLogDrainsSourceLogDrains1$inboundSchema),
+    z.lazy(() => GetAllLogDrainsSourceLogDrains2$inboundSchema),
   ]),
   filter: z.string().optional(),
   filterV2: z.union([
-    z.lazy(() => GetAllLogDrainsFilterV2LogDrains2$inboundSchema),
     z.lazy(() => GetAllLogDrainsFilterV2LogDrains1$inboundSchema),
+    z.lazy(() => GetAllLogDrainsFilterV2LogDrains2$inboundSchema),
   ]).optional(),
 });
 /** @internal */
@@ -4397,12 +4006,12 @@ export type GetAllLogDrainsDrains1$Outbound = {
   disabledBy?: string | undefined;
   firstErrorTimestamp?: number | undefined;
   source:
-    | GetAllLogDrainsSourceLogDrains2$Outbound
-    | GetAllLogDrainsSourceLogDrains1$Outbound;
+    | GetAllLogDrainsSourceLogDrains1$Outbound
+    | GetAllLogDrainsSourceLogDrains2$Outbound;
   filter?: string | undefined;
   filterV2?:
-    | GetAllLogDrainsFilterV2LogDrains2$Outbound
     | GetAllLogDrainsFilterV2LogDrains1$Outbound
+    | GetAllLogDrainsFilterV2LogDrains2$Outbound
     | undefined;
 };
 
@@ -4434,13 +4043,13 @@ export const GetAllLogDrainsDrains1$outboundSchema: z.ZodType<
   disabledBy: z.string().optional(),
   firstErrorTimestamp: z.number().optional(),
   source: z.union([
-    z.lazy(() => GetAllLogDrainsSourceLogDrains2$outboundSchema),
     z.lazy(() => GetAllLogDrainsSourceLogDrains1$outboundSchema),
+    z.lazy(() => GetAllLogDrainsSourceLogDrains2$outboundSchema),
   ]),
   filter: z.string().optional(),
   filterV2: z.union([
-    z.lazy(() => GetAllLogDrainsFilterV2LogDrains2$outboundSchema),
     z.lazy(() => GetAllLogDrainsFilterV2LogDrains1$outboundSchema),
+    z.lazy(() => GetAllLogDrainsFilterV2LogDrains2$outboundSchema),
   ]).optional(),
 });
 

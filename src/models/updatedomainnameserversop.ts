@@ -46,7 +46,7 @@ export type UpdateDomainNameserversRequest = {
  * NotAuthorizedForScope
  */
 export type UpdateDomainNameserversDomainsRegistrarResponseBody =
-  | NotAuthorizedForScope
+  | (NotAuthorizedForScope & { code: "not_authorized_for_scope" })
   | Forbidden;
 
 /**
@@ -159,10 +159,15 @@ export const UpdateDomainNameserversDomainsRegistrarResponseBody$inboundSchema:
     UpdateDomainNameserversDomainsRegistrarResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.union([NotAuthorizedForScope$inboundSchema, Forbidden$inboundSchema]);
+  > = z.union([
+    NotAuthorizedForScope$inboundSchema.and(
+      z.object({ code: z.literal("not_authorized_for_scope") }),
+    ),
+    Forbidden$inboundSchema,
+  ]);
 /** @internal */
 export type UpdateDomainNameserversDomainsRegistrarResponseBody$Outbound =
-  | NotAuthorizedForScope$Outbound
+  | (NotAuthorizedForScope$Outbound & { code: "not_authorized_for_scope" })
   | Forbidden$Outbound;
 
 /** @internal */
@@ -171,7 +176,12 @@ export const UpdateDomainNameserversDomainsRegistrarResponseBody$outboundSchema:
     UpdateDomainNameserversDomainsRegistrarResponseBody$Outbound,
     z.ZodTypeDef,
     unknown
-  > = z.union([NotAuthorizedForScope$outboundSchema, Forbidden$outboundSchema]);
+  > = z.union([
+    NotAuthorizedForScope$outboundSchema.and(
+      z.object({ code: z.literal("not_authorized_for_scope") }),
+    ),
+    Forbidden$outboundSchema,
+  ]);
 
 export function updateDomainNameserversDomainsRegistrarResponseBodyToJSON(
   updateDomainNameserversDomainsRegistrarResponseBody:

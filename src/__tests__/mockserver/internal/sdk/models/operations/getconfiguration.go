@@ -892,8 +892,8 @@ func (o *TransferRequestTransferToMarketplace) GetAuthorizationID() *string {
 type TransferRequestUnionType string
 
 const (
-	TransferRequestUnionTypeTransferRequestTransferToMarketplace   TransferRequestUnionType = "transferRequest_TransferToMarketplace"
-	TransferRequestUnionTypeTransferRequestTransferFromMarketplace TransferRequestUnionType = "transferRequest_TransferFromMarketplace"
+	TransferRequestUnionTypeTransferToMarketplace   TransferRequestUnionType = "transfer-to-marketplace"
+	TransferRequestUnionTypeTransferFromMarketplace TransferRequestUnionType = "transfer-from-marketplace"
 )
 
 type TransferRequest struct {
@@ -903,37 +903,59 @@ type TransferRequest struct {
 	Type TransferRequestUnionType
 }
 
-func CreateTransferRequestTransferRequestTransferToMarketplace(transferRequestTransferToMarketplace TransferRequestTransferToMarketplace) TransferRequest {
-	typ := TransferRequestUnionTypeTransferRequestTransferToMarketplace
+func CreateTransferRequestTransferToMarketplace(transferToMarketplace TransferRequestTransferToMarketplace) TransferRequest {
+	typ := TransferRequestUnionTypeTransferToMarketplace
+
+	typStr := KindTransferToMarketplace(typ)
+	transferToMarketplace.Kind = typStr
 
 	return TransferRequest{
-		TransferRequestTransferToMarketplace: &transferRequestTransferToMarketplace,
+		TransferRequestTransferToMarketplace: &transferToMarketplace,
 		Type:                                 typ,
 	}
 }
 
-func CreateTransferRequestTransferRequestTransferFromMarketplace(transferRequestTransferFromMarketplace TransferRequestTransferFromMarketplace) TransferRequest {
-	typ := TransferRequestUnionTypeTransferRequestTransferFromMarketplace
+func CreateTransferRequestTransferFromMarketplace(transferFromMarketplace TransferRequestTransferFromMarketplace) TransferRequest {
+	typ := TransferRequestUnionTypeTransferFromMarketplace
+
+	typStr := KindTransferFromMarketplace(typ)
+	transferFromMarketplace.Kind = typStr
 
 	return TransferRequest{
-		TransferRequestTransferFromMarketplace: &transferRequestTransferFromMarketplace,
+		TransferRequestTransferFromMarketplace: &transferFromMarketplace,
 		Type:                                   typ,
 	}
 }
 
 func (u *TransferRequest) UnmarshalJSON(data []byte) error {
 
-	var transferRequestTransferToMarketplace TransferRequestTransferToMarketplace = TransferRequestTransferToMarketplace{}
-	if err := utils.UnmarshalJSON(data, &transferRequestTransferToMarketplace, "", true, nil); err == nil {
-		u.TransferRequestTransferToMarketplace = &transferRequestTransferToMarketplace
-		u.Type = TransferRequestUnionTypeTransferRequestTransferToMarketplace
-		return nil
+	type discriminator struct {
+		Kind string `json:"kind"`
 	}
 
-	var transferRequestTransferFromMarketplace TransferRequestTransferFromMarketplace = TransferRequestTransferFromMarketplace{}
-	if err := utils.UnmarshalJSON(data, &transferRequestTransferFromMarketplace, "", true, nil); err == nil {
-		u.TransferRequestTransferFromMarketplace = &transferRequestTransferFromMarketplace
-		u.Type = TransferRequestUnionTypeTransferRequestTransferFromMarketplace
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Kind {
+	case "transfer-to-marketplace":
+		transferRequestTransferToMarketplace := new(TransferRequestTransferToMarketplace)
+		if err := utils.UnmarshalJSON(data, &transferRequestTransferToMarketplace, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Kind == transfer-to-marketplace) type TransferRequestTransferToMarketplace within TransferRequest: %w", string(data), err)
+		}
+
+		u.TransferRequestTransferToMarketplace = transferRequestTransferToMarketplace
+		u.Type = TransferRequestUnionTypeTransferToMarketplace
+		return nil
+	case "transfer-from-marketplace":
+		transferRequestTransferFromMarketplace := new(TransferRequestTransferFromMarketplace)
+		if err := utils.UnmarshalJSON(data, &transferRequestTransferFromMarketplace, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Kind == transfer-from-marketplace) type TransferRequestTransferFromMarketplace within TransferRequest: %w", string(data), err)
+		}
+
+		u.TransferRequestTransferFromMarketplace = transferRequestTransferFromMarketplace
+		u.Type = TransferRequestUnionTypeTransferFromMarketplace
 		return nil
 	}
 
@@ -1148,6 +1170,14 @@ func (o *GetConfigurationIntegrationConfiguration1) GetTransferRequest() Transfe
 		return TransferRequest{}
 	}
 	return o.TransferRequest
+}
+
+func (o *GetConfigurationIntegrationConfiguration1) GetTransferRequestTransferToMarketplace() *TransferRequestTransferToMarketplace {
+	return o.GetTransferRequest().TransferRequestTransferToMarketplace
+}
+
+func (o *GetConfigurationIntegrationConfiguration1) GetTransferRequestTransferFromMarketplace() *TransferRequestTransferFromMarketplace {
+	return o.GetTransferRequest().TransferRequestTransferFromMarketplace
 }
 
 func (o *GetConfigurationIntegrationConfiguration1) GetProjects() []string {

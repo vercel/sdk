@@ -282,8 +282,8 @@ func (o *GetIntegrationLogDrainsSourceSelfServed) GetKind() GetIntegrationLogDra
 type GetIntegrationLogDrainsSourceUnionType string
 
 const (
-	GetIntegrationLogDrainsSourceUnionTypeGetIntegrationLogDrainsSourceSelfServed  GetIntegrationLogDrainsSourceUnionType = "getIntegrationLogDrains_source_SelfServed"
-	GetIntegrationLogDrainsSourceUnionTypeGetIntegrationLogDrainsSourceIntegration GetIntegrationLogDrainsSourceUnionType = "getIntegrationLogDrains_source_Integration"
+	GetIntegrationLogDrainsSourceUnionTypeSelfServed  GetIntegrationLogDrainsSourceUnionType = "self-served"
+	GetIntegrationLogDrainsSourceUnionTypeIntegration GetIntegrationLogDrainsSourceUnionType = "integration"
 )
 
 type GetIntegrationLogDrainsSourceUnion struct {
@@ -293,37 +293,59 @@ type GetIntegrationLogDrainsSourceUnion struct {
 	Type GetIntegrationLogDrainsSourceUnionType
 }
 
-func CreateGetIntegrationLogDrainsSourceUnionGetIntegrationLogDrainsSourceSelfServed(getIntegrationLogDrainsSourceSelfServed GetIntegrationLogDrainsSourceSelfServed) GetIntegrationLogDrainsSourceUnion {
-	typ := GetIntegrationLogDrainsSourceUnionTypeGetIntegrationLogDrainsSourceSelfServed
+func CreateGetIntegrationLogDrainsSourceUnionSelfServed(selfServed GetIntegrationLogDrainsSourceSelfServed) GetIntegrationLogDrainsSourceUnion {
+	typ := GetIntegrationLogDrainsSourceUnionTypeSelfServed
+
+	typStr := GetIntegrationLogDrainsKindSelfServed(typ)
+	selfServed.Kind = typStr
 
 	return GetIntegrationLogDrainsSourceUnion{
-		GetIntegrationLogDrainsSourceSelfServed: &getIntegrationLogDrainsSourceSelfServed,
+		GetIntegrationLogDrainsSourceSelfServed: &selfServed,
 		Type:                                    typ,
 	}
 }
 
-func CreateGetIntegrationLogDrainsSourceUnionGetIntegrationLogDrainsSourceIntegration(getIntegrationLogDrainsSourceIntegration GetIntegrationLogDrainsSourceIntegration) GetIntegrationLogDrainsSourceUnion {
-	typ := GetIntegrationLogDrainsSourceUnionTypeGetIntegrationLogDrainsSourceIntegration
+func CreateGetIntegrationLogDrainsSourceUnionIntegration(integration GetIntegrationLogDrainsSourceIntegration) GetIntegrationLogDrainsSourceUnion {
+	typ := GetIntegrationLogDrainsSourceUnionTypeIntegration
+
+	typStr := GetIntegrationLogDrainsKindIntegration(typ)
+	integration.Kind = typStr
 
 	return GetIntegrationLogDrainsSourceUnion{
-		GetIntegrationLogDrainsSourceIntegration: &getIntegrationLogDrainsSourceIntegration,
+		GetIntegrationLogDrainsSourceIntegration: &integration,
 		Type:                                     typ,
 	}
 }
 
 func (u *GetIntegrationLogDrainsSourceUnion) UnmarshalJSON(data []byte) error {
 
-	var getIntegrationLogDrainsSourceIntegration GetIntegrationLogDrainsSourceIntegration = GetIntegrationLogDrainsSourceIntegration{}
-	if err := utils.UnmarshalJSON(data, &getIntegrationLogDrainsSourceIntegration, "", true, nil); err == nil {
-		u.GetIntegrationLogDrainsSourceIntegration = &getIntegrationLogDrainsSourceIntegration
-		u.Type = GetIntegrationLogDrainsSourceUnionTypeGetIntegrationLogDrainsSourceIntegration
-		return nil
+	type discriminator struct {
+		Kind string `json:"kind"`
 	}
 
-	var getIntegrationLogDrainsSourceSelfServed GetIntegrationLogDrainsSourceSelfServed = GetIntegrationLogDrainsSourceSelfServed{}
-	if err := utils.UnmarshalJSON(data, &getIntegrationLogDrainsSourceSelfServed, "", true, nil); err == nil {
-		u.GetIntegrationLogDrainsSourceSelfServed = &getIntegrationLogDrainsSourceSelfServed
-		u.Type = GetIntegrationLogDrainsSourceUnionTypeGetIntegrationLogDrainsSourceSelfServed
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Kind {
+	case "self-served":
+		getIntegrationLogDrainsSourceSelfServed := new(GetIntegrationLogDrainsSourceSelfServed)
+		if err := utils.UnmarshalJSON(data, &getIntegrationLogDrainsSourceSelfServed, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Kind == self-served) type GetIntegrationLogDrainsSourceSelfServed within GetIntegrationLogDrainsSourceUnion: %w", string(data), err)
+		}
+
+		u.GetIntegrationLogDrainsSourceSelfServed = getIntegrationLogDrainsSourceSelfServed
+		u.Type = GetIntegrationLogDrainsSourceUnionTypeSelfServed
+		return nil
+	case "integration":
+		getIntegrationLogDrainsSourceIntegration := new(GetIntegrationLogDrainsSourceIntegration)
+		if err := utils.UnmarshalJSON(data, &getIntegrationLogDrainsSourceIntegration, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Kind == integration) type GetIntegrationLogDrainsSourceIntegration within GetIntegrationLogDrainsSourceUnion: %w", string(data), err)
+		}
+
+		u.GetIntegrationLogDrainsSourceIntegration = getIntegrationLogDrainsSourceIntegration
+		u.Type = GetIntegrationLogDrainsSourceUnionTypeIntegration
 		return nil
 	}
 
@@ -494,6 +516,14 @@ func (o *GetIntegrationLogDrainsResponseBody) GetSource() GetIntegrationLogDrain
 		return GetIntegrationLogDrainsSourceUnion{}
 	}
 	return o.Source
+}
+
+func (o *GetIntegrationLogDrainsResponseBody) GetSourceSelfServed() *GetIntegrationLogDrainsSourceSelfServed {
+	return o.GetSource().GetIntegrationLogDrainsSourceSelfServed
+}
+
+func (o *GetIntegrationLogDrainsResponseBody) GetSourceIntegration() *GetIntegrationLogDrainsSourceIntegration {
+	return o.GetSource().GetIntegrationLogDrainsSourceIntegration
 }
 
 type GetIntegrationLogDrainsResponse struct {

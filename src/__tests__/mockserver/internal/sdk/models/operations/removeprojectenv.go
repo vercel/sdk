@@ -1036,21 +1036,21 @@ func (o *RemoveProjectEnvContentHintRedisURL3) GetStoreID() string {
 type RemoveProjectEnvContentHintUnion3Type string
 
 const (
-	RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintRedisURL3                  RemoveProjectEnvContentHintUnion3Type = "removeProjectEnv_contentHint_RedisURL_3"
-	RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintRedisRestAPIURL3           RemoveProjectEnvContentHintUnion3Type = "removeProjectEnv_contentHint_RedisRestAPIURL_3"
-	RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintRedisRestAPIToken3         RemoveProjectEnvContentHintUnion3Type = "removeProjectEnv_contentHint_RedisRestAPIToken_3"
-	RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintRedisRestAPIReadOnlyToken3 RemoveProjectEnvContentHintUnion3Type = "removeProjectEnv_contentHint_RedisRestAPIReadOnlyToken_3"
-	RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintBlobReadWriteToken3        RemoveProjectEnvContentHintUnion3Type = "removeProjectEnv_contentHint_BlobReadWriteToken_3"
-	RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresURL3               RemoveProjectEnvContentHintUnion3Type = "removeProjectEnv_contentHint_PostgresURL_3"
-	RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresURLNonPooling3     RemoveProjectEnvContentHintUnion3Type = "removeProjectEnv_contentHint_PostgresURLNonPooling_3"
-	RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresPrismaURL3         RemoveProjectEnvContentHintUnion3Type = "removeProjectEnv_contentHint_PostgresPrismaURL_3"
-	RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresUser3              RemoveProjectEnvContentHintUnion3Type = "removeProjectEnv_contentHint_PostgresUser_3"
-	RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresHost3              RemoveProjectEnvContentHintUnion3Type = "removeProjectEnv_contentHint_PostgresHost_3"
-	RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresPassword3          RemoveProjectEnvContentHintUnion3Type = "removeProjectEnv_contentHint_PostgresPassword_3"
-	RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresDatabase3          RemoveProjectEnvContentHintUnion3Type = "removeProjectEnv_contentHint_PostgresDatabase_3"
-	RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresURLNoSsl3          RemoveProjectEnvContentHintUnion3Type = "removeProjectEnv_contentHint_PostgresURLNoSsl_3"
-	RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintIntegrationStoreSecret3    RemoveProjectEnvContentHintUnion3Type = "removeProjectEnv_contentHint_IntegrationStoreSecret_3"
-	RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintFlagsConnectionString3     RemoveProjectEnvContentHintUnion3Type = "removeProjectEnv_contentHint_FlagsConnectionString_3"
+	RemoveProjectEnvContentHintUnion3TypeRedisURL                  RemoveProjectEnvContentHintUnion3Type = "redis-url"
+	RemoveProjectEnvContentHintUnion3TypeRedisRestAPIURL           RemoveProjectEnvContentHintUnion3Type = "redis-rest-api-url"
+	RemoveProjectEnvContentHintUnion3TypeRedisRestAPIToken         RemoveProjectEnvContentHintUnion3Type = "redis-rest-api-token"
+	RemoveProjectEnvContentHintUnion3TypeRedisRestAPIReadOnlyToken RemoveProjectEnvContentHintUnion3Type = "redis-rest-api-read-only-token"
+	RemoveProjectEnvContentHintUnion3TypeBlobReadWriteToken        RemoveProjectEnvContentHintUnion3Type = "blob-read-write-token"
+	RemoveProjectEnvContentHintUnion3TypePostgresURL               RemoveProjectEnvContentHintUnion3Type = "postgres-url"
+	RemoveProjectEnvContentHintUnion3TypePostgresURLNonPooling     RemoveProjectEnvContentHintUnion3Type = "postgres-url-non-pooling"
+	RemoveProjectEnvContentHintUnion3TypePostgresPrismaURL         RemoveProjectEnvContentHintUnion3Type = "postgres-prisma-url"
+	RemoveProjectEnvContentHintUnion3TypePostgresUser              RemoveProjectEnvContentHintUnion3Type = "postgres-user"
+	RemoveProjectEnvContentHintUnion3TypePostgresHost              RemoveProjectEnvContentHintUnion3Type = "postgres-host"
+	RemoveProjectEnvContentHintUnion3TypePostgresPassword          RemoveProjectEnvContentHintUnion3Type = "postgres-password"
+	RemoveProjectEnvContentHintUnion3TypePostgresDatabase          RemoveProjectEnvContentHintUnion3Type = "postgres-database"
+	RemoveProjectEnvContentHintUnion3TypePostgresURLNoSsl          RemoveProjectEnvContentHintUnion3Type = "postgres-url-no-ssl"
+	RemoveProjectEnvContentHintUnion3TypeIntegrationStoreSecret    RemoveProjectEnvContentHintUnion3Type = "integration-store-secret"
+	RemoveProjectEnvContentHintUnion3TypeFlagsConnectionString     RemoveProjectEnvContentHintUnion3Type = "flags-connection-string"
 )
 
 type RemoveProjectEnvContentHintUnion3 struct {
@@ -1073,245 +1073,332 @@ type RemoveProjectEnvContentHintUnion3 struct {
 	Type RemoveProjectEnvContentHintUnion3Type
 }
 
-func CreateRemoveProjectEnvContentHintUnion3RemoveProjectEnvContentHintRedisURL3(removeProjectEnvContentHintRedisURL3 RemoveProjectEnvContentHintRedisURL3) RemoveProjectEnvContentHintUnion3 {
-	typ := RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintRedisURL3
+func CreateRemoveProjectEnvContentHintUnion3RedisURL(redisURL RemoveProjectEnvContentHintRedisURL3) RemoveProjectEnvContentHintUnion3 {
+	typ := RemoveProjectEnvContentHintUnion3TypeRedisURL
+
+	typStr := RemoveProjectEnvTypeRedisURL3(typ)
+	redisURL.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion3{
-		RemoveProjectEnvContentHintRedisURL3: &removeProjectEnvContentHintRedisURL3,
+		RemoveProjectEnvContentHintRedisURL3: &redisURL,
 		Type:                                 typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion3RemoveProjectEnvContentHintRedisRestAPIURL3(removeProjectEnvContentHintRedisRestAPIURL3 RemoveProjectEnvContentHintRedisRestAPIURL3) RemoveProjectEnvContentHintUnion3 {
-	typ := RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintRedisRestAPIURL3
+func CreateRemoveProjectEnvContentHintUnion3RedisRestAPIURL(redisRestAPIURL RemoveProjectEnvContentHintRedisRestAPIURL3) RemoveProjectEnvContentHintUnion3 {
+	typ := RemoveProjectEnvContentHintUnion3TypeRedisRestAPIURL
+
+	typStr := RemoveProjectEnvTypeRedisRestAPIURL3(typ)
+	redisRestAPIURL.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion3{
-		RemoveProjectEnvContentHintRedisRestAPIURL3: &removeProjectEnvContentHintRedisRestAPIURL3,
+		RemoveProjectEnvContentHintRedisRestAPIURL3: &redisRestAPIURL,
 		Type: typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion3RemoveProjectEnvContentHintRedisRestAPIToken3(removeProjectEnvContentHintRedisRestAPIToken3 RemoveProjectEnvContentHintRedisRestAPIToken3) RemoveProjectEnvContentHintUnion3 {
-	typ := RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintRedisRestAPIToken3
+func CreateRemoveProjectEnvContentHintUnion3RedisRestAPIToken(redisRestAPIToken RemoveProjectEnvContentHintRedisRestAPIToken3) RemoveProjectEnvContentHintUnion3 {
+	typ := RemoveProjectEnvContentHintUnion3TypeRedisRestAPIToken
+
+	typStr := RemoveProjectEnvTypeRedisRestAPIToken3(typ)
+	redisRestAPIToken.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion3{
-		RemoveProjectEnvContentHintRedisRestAPIToken3: &removeProjectEnvContentHintRedisRestAPIToken3,
+		RemoveProjectEnvContentHintRedisRestAPIToken3: &redisRestAPIToken,
 		Type: typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion3RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken3(removeProjectEnvContentHintRedisRestAPIReadOnlyToken3 RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken3) RemoveProjectEnvContentHintUnion3 {
-	typ := RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintRedisRestAPIReadOnlyToken3
+func CreateRemoveProjectEnvContentHintUnion3RedisRestAPIReadOnlyToken(redisRestAPIReadOnlyToken RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken3) RemoveProjectEnvContentHintUnion3 {
+	typ := RemoveProjectEnvContentHintUnion3TypeRedisRestAPIReadOnlyToken
+
+	typStr := RemoveProjectEnvTypeRedisRestAPIReadOnlyToken3(typ)
+	redisRestAPIReadOnlyToken.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion3{
-		RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken3: &removeProjectEnvContentHintRedisRestAPIReadOnlyToken3,
+		RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken3: &redisRestAPIReadOnlyToken,
 		Type: typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion3RemoveProjectEnvContentHintBlobReadWriteToken3(removeProjectEnvContentHintBlobReadWriteToken3 RemoveProjectEnvContentHintBlobReadWriteToken3) RemoveProjectEnvContentHintUnion3 {
-	typ := RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintBlobReadWriteToken3
+func CreateRemoveProjectEnvContentHintUnion3BlobReadWriteToken(blobReadWriteToken RemoveProjectEnvContentHintBlobReadWriteToken3) RemoveProjectEnvContentHintUnion3 {
+	typ := RemoveProjectEnvContentHintUnion3TypeBlobReadWriteToken
+
+	typStr := RemoveProjectEnvTypeBlobReadWriteToken3(typ)
+	blobReadWriteToken.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion3{
-		RemoveProjectEnvContentHintBlobReadWriteToken3: &removeProjectEnvContentHintBlobReadWriteToken3,
+		RemoveProjectEnvContentHintBlobReadWriteToken3: &blobReadWriteToken,
 		Type: typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion3RemoveProjectEnvContentHintPostgresURL3(removeProjectEnvContentHintPostgresURL3 RemoveProjectEnvContentHintPostgresURL3) RemoveProjectEnvContentHintUnion3 {
-	typ := RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresURL3
+func CreateRemoveProjectEnvContentHintUnion3PostgresURL(postgresURL RemoveProjectEnvContentHintPostgresURL3) RemoveProjectEnvContentHintUnion3 {
+	typ := RemoveProjectEnvContentHintUnion3TypePostgresURL
+
+	typStr := RemoveProjectEnvTypePostgresURL3(typ)
+	postgresURL.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion3{
-		RemoveProjectEnvContentHintPostgresURL3: &removeProjectEnvContentHintPostgresURL3,
+		RemoveProjectEnvContentHintPostgresURL3: &postgresURL,
 		Type:                                    typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion3RemoveProjectEnvContentHintPostgresURLNonPooling3(removeProjectEnvContentHintPostgresURLNonPooling3 RemoveProjectEnvContentHintPostgresURLNonPooling3) RemoveProjectEnvContentHintUnion3 {
-	typ := RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresURLNonPooling3
+func CreateRemoveProjectEnvContentHintUnion3PostgresURLNonPooling(postgresURLNonPooling RemoveProjectEnvContentHintPostgresURLNonPooling3) RemoveProjectEnvContentHintUnion3 {
+	typ := RemoveProjectEnvContentHintUnion3TypePostgresURLNonPooling
+
+	typStr := RemoveProjectEnvTypePostgresURLNonPooling3(typ)
+	postgresURLNonPooling.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion3{
-		RemoveProjectEnvContentHintPostgresURLNonPooling3: &removeProjectEnvContentHintPostgresURLNonPooling3,
+		RemoveProjectEnvContentHintPostgresURLNonPooling3: &postgresURLNonPooling,
 		Type: typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion3RemoveProjectEnvContentHintPostgresPrismaURL3(removeProjectEnvContentHintPostgresPrismaURL3 RemoveProjectEnvContentHintPostgresPrismaURL3) RemoveProjectEnvContentHintUnion3 {
-	typ := RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresPrismaURL3
+func CreateRemoveProjectEnvContentHintUnion3PostgresPrismaURL(postgresPrismaURL RemoveProjectEnvContentHintPostgresPrismaURL3) RemoveProjectEnvContentHintUnion3 {
+	typ := RemoveProjectEnvContentHintUnion3TypePostgresPrismaURL
+
+	typStr := RemoveProjectEnvTypePostgresPrismaURL3(typ)
+	postgresPrismaURL.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion3{
-		RemoveProjectEnvContentHintPostgresPrismaURL3: &removeProjectEnvContentHintPostgresPrismaURL3,
+		RemoveProjectEnvContentHintPostgresPrismaURL3: &postgresPrismaURL,
 		Type: typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion3RemoveProjectEnvContentHintPostgresUser3(removeProjectEnvContentHintPostgresUser3 RemoveProjectEnvContentHintPostgresUser3) RemoveProjectEnvContentHintUnion3 {
-	typ := RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresUser3
+func CreateRemoveProjectEnvContentHintUnion3PostgresUser(postgresUser RemoveProjectEnvContentHintPostgresUser3) RemoveProjectEnvContentHintUnion3 {
+	typ := RemoveProjectEnvContentHintUnion3TypePostgresUser
+
+	typStr := RemoveProjectEnvTypePostgresUser3(typ)
+	postgresUser.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion3{
-		RemoveProjectEnvContentHintPostgresUser3: &removeProjectEnvContentHintPostgresUser3,
+		RemoveProjectEnvContentHintPostgresUser3: &postgresUser,
 		Type:                                     typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion3RemoveProjectEnvContentHintPostgresHost3(removeProjectEnvContentHintPostgresHost3 RemoveProjectEnvContentHintPostgresHost3) RemoveProjectEnvContentHintUnion3 {
-	typ := RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresHost3
+func CreateRemoveProjectEnvContentHintUnion3PostgresHost(postgresHost RemoveProjectEnvContentHintPostgresHost3) RemoveProjectEnvContentHintUnion3 {
+	typ := RemoveProjectEnvContentHintUnion3TypePostgresHost
+
+	typStr := RemoveProjectEnvTypePostgresHost3(typ)
+	postgresHost.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion3{
-		RemoveProjectEnvContentHintPostgresHost3: &removeProjectEnvContentHintPostgresHost3,
+		RemoveProjectEnvContentHintPostgresHost3: &postgresHost,
 		Type:                                     typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion3RemoveProjectEnvContentHintPostgresPassword3(removeProjectEnvContentHintPostgresPassword3 RemoveProjectEnvContentHintPostgresPassword3) RemoveProjectEnvContentHintUnion3 {
-	typ := RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresPassword3
+func CreateRemoveProjectEnvContentHintUnion3PostgresPassword(postgresPassword RemoveProjectEnvContentHintPostgresPassword3) RemoveProjectEnvContentHintUnion3 {
+	typ := RemoveProjectEnvContentHintUnion3TypePostgresPassword
+
+	typStr := RemoveProjectEnvTypePostgresPassword3(typ)
+	postgresPassword.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion3{
-		RemoveProjectEnvContentHintPostgresPassword3: &removeProjectEnvContentHintPostgresPassword3,
+		RemoveProjectEnvContentHintPostgresPassword3: &postgresPassword,
 		Type: typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion3RemoveProjectEnvContentHintPostgresDatabase3(removeProjectEnvContentHintPostgresDatabase3 RemoveProjectEnvContentHintPostgresDatabase3) RemoveProjectEnvContentHintUnion3 {
-	typ := RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresDatabase3
+func CreateRemoveProjectEnvContentHintUnion3PostgresDatabase(postgresDatabase RemoveProjectEnvContentHintPostgresDatabase3) RemoveProjectEnvContentHintUnion3 {
+	typ := RemoveProjectEnvContentHintUnion3TypePostgresDatabase
+
+	typStr := RemoveProjectEnvTypePostgresDatabase3(typ)
+	postgresDatabase.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion3{
-		RemoveProjectEnvContentHintPostgresDatabase3: &removeProjectEnvContentHintPostgresDatabase3,
+		RemoveProjectEnvContentHintPostgresDatabase3: &postgresDatabase,
 		Type: typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion3RemoveProjectEnvContentHintPostgresURLNoSsl3(removeProjectEnvContentHintPostgresURLNoSsl3 RemoveProjectEnvContentHintPostgresURLNoSsl3) RemoveProjectEnvContentHintUnion3 {
-	typ := RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresURLNoSsl3
+func CreateRemoveProjectEnvContentHintUnion3PostgresURLNoSsl(postgresURLNoSsl RemoveProjectEnvContentHintPostgresURLNoSsl3) RemoveProjectEnvContentHintUnion3 {
+	typ := RemoveProjectEnvContentHintUnion3TypePostgresURLNoSsl
+
+	typStr := RemoveProjectEnvTypePostgresURLNoSsl3(typ)
+	postgresURLNoSsl.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion3{
-		RemoveProjectEnvContentHintPostgresURLNoSsl3: &removeProjectEnvContentHintPostgresURLNoSsl3,
+		RemoveProjectEnvContentHintPostgresURLNoSsl3: &postgresURLNoSsl,
 		Type: typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion3RemoveProjectEnvContentHintIntegrationStoreSecret3(removeProjectEnvContentHintIntegrationStoreSecret3 RemoveProjectEnvContentHintIntegrationStoreSecret3) RemoveProjectEnvContentHintUnion3 {
-	typ := RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintIntegrationStoreSecret3
+func CreateRemoveProjectEnvContentHintUnion3IntegrationStoreSecret(integrationStoreSecret RemoveProjectEnvContentHintIntegrationStoreSecret3) RemoveProjectEnvContentHintUnion3 {
+	typ := RemoveProjectEnvContentHintUnion3TypeIntegrationStoreSecret
+
+	typStr := RemoveProjectEnvTypeIntegrationStoreSecret3(typ)
+	integrationStoreSecret.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion3{
-		RemoveProjectEnvContentHintIntegrationStoreSecret3: &removeProjectEnvContentHintIntegrationStoreSecret3,
+		RemoveProjectEnvContentHintIntegrationStoreSecret3: &integrationStoreSecret,
 		Type: typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion3RemoveProjectEnvContentHintFlagsConnectionString3(removeProjectEnvContentHintFlagsConnectionString3 RemoveProjectEnvContentHintFlagsConnectionString3) RemoveProjectEnvContentHintUnion3 {
-	typ := RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintFlagsConnectionString3
+func CreateRemoveProjectEnvContentHintUnion3FlagsConnectionString(flagsConnectionString RemoveProjectEnvContentHintFlagsConnectionString3) RemoveProjectEnvContentHintUnion3 {
+	typ := RemoveProjectEnvContentHintUnion3TypeFlagsConnectionString
+
+	typStr := RemoveProjectEnvTypeFlagsConnectionString3(typ)
+	flagsConnectionString.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion3{
-		RemoveProjectEnvContentHintFlagsConnectionString3: &removeProjectEnvContentHintFlagsConnectionString3,
+		RemoveProjectEnvContentHintFlagsConnectionString3: &flagsConnectionString,
 		Type: typ,
 	}
 }
 
 func (u *RemoveProjectEnvContentHintUnion3) UnmarshalJSON(data []byte) error {
 
-	var removeProjectEnvContentHintIntegrationStoreSecret3 RemoveProjectEnvContentHintIntegrationStoreSecret3 = RemoveProjectEnvContentHintIntegrationStoreSecret3{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintIntegrationStoreSecret3, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintIntegrationStoreSecret3 = &removeProjectEnvContentHintIntegrationStoreSecret3
-		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintIntegrationStoreSecret3
-		return nil
+	type discriminator struct {
+		Type string `json:"type"`
 	}
 
-	var removeProjectEnvContentHintRedisURL3 RemoveProjectEnvContentHintRedisURL3 = RemoveProjectEnvContentHintRedisURL3{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisURL3, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintRedisURL3 = &removeProjectEnvContentHintRedisURL3
-		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintRedisURL3
-		return nil
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
 	}
 
-	var removeProjectEnvContentHintRedisRestAPIURL3 RemoveProjectEnvContentHintRedisRestAPIURL3 = RemoveProjectEnvContentHintRedisRestAPIURL3{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIURL3, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintRedisRestAPIURL3 = &removeProjectEnvContentHintRedisRestAPIURL3
-		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintRedisRestAPIURL3
-		return nil
-	}
+	switch dis.Type {
+	case "redis-url":
+		removeProjectEnvContentHintRedisURL3 := new(RemoveProjectEnvContentHintRedisURL3)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisURL3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-url) type RemoveProjectEnvContentHintRedisURL3 within RemoveProjectEnvContentHintUnion3: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintRedisRestAPIToken3 RemoveProjectEnvContentHintRedisRestAPIToken3 = RemoveProjectEnvContentHintRedisRestAPIToken3{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIToken3, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintRedisRestAPIToken3 = &removeProjectEnvContentHintRedisRestAPIToken3
-		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintRedisRestAPIToken3
+		u.RemoveProjectEnvContentHintRedisURL3 = removeProjectEnvContentHintRedisURL3
+		u.Type = RemoveProjectEnvContentHintUnion3TypeRedisURL
 		return nil
-	}
+	case "redis-rest-api-url":
+		removeProjectEnvContentHintRedisRestAPIURL3 := new(RemoveProjectEnvContentHintRedisRestAPIURL3)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIURL3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-rest-api-url) type RemoveProjectEnvContentHintRedisRestAPIURL3 within RemoveProjectEnvContentHintUnion3: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintRedisRestAPIReadOnlyToken3 RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken3 = RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken3{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIReadOnlyToken3, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken3 = &removeProjectEnvContentHintRedisRestAPIReadOnlyToken3
-		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintRedisRestAPIReadOnlyToken3
+		u.RemoveProjectEnvContentHintRedisRestAPIURL3 = removeProjectEnvContentHintRedisRestAPIURL3
+		u.Type = RemoveProjectEnvContentHintUnion3TypeRedisRestAPIURL
 		return nil
-	}
+	case "redis-rest-api-token":
+		removeProjectEnvContentHintRedisRestAPIToken3 := new(RemoveProjectEnvContentHintRedisRestAPIToken3)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIToken3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-rest-api-token) type RemoveProjectEnvContentHintRedisRestAPIToken3 within RemoveProjectEnvContentHintUnion3: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintBlobReadWriteToken3 RemoveProjectEnvContentHintBlobReadWriteToken3 = RemoveProjectEnvContentHintBlobReadWriteToken3{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintBlobReadWriteToken3, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintBlobReadWriteToken3 = &removeProjectEnvContentHintBlobReadWriteToken3
-		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintBlobReadWriteToken3
+		u.RemoveProjectEnvContentHintRedisRestAPIToken3 = removeProjectEnvContentHintRedisRestAPIToken3
+		u.Type = RemoveProjectEnvContentHintUnion3TypeRedisRestAPIToken
 		return nil
-	}
+	case "redis-rest-api-read-only-token":
+		removeProjectEnvContentHintRedisRestAPIReadOnlyToken3 := new(RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken3)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIReadOnlyToken3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-rest-api-read-only-token) type RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken3 within RemoveProjectEnvContentHintUnion3: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintPostgresURL3 RemoveProjectEnvContentHintPostgresURL3 = RemoveProjectEnvContentHintPostgresURL3{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURL3, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintPostgresURL3 = &removeProjectEnvContentHintPostgresURL3
-		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresURL3
+		u.RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken3 = removeProjectEnvContentHintRedisRestAPIReadOnlyToken3
+		u.Type = RemoveProjectEnvContentHintUnion3TypeRedisRestAPIReadOnlyToken
 		return nil
-	}
+	case "blob-read-write-token":
+		removeProjectEnvContentHintBlobReadWriteToken3 := new(RemoveProjectEnvContentHintBlobReadWriteToken3)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintBlobReadWriteToken3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == blob-read-write-token) type RemoveProjectEnvContentHintBlobReadWriteToken3 within RemoveProjectEnvContentHintUnion3: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintPostgresURLNonPooling3 RemoveProjectEnvContentHintPostgresURLNonPooling3 = RemoveProjectEnvContentHintPostgresURLNonPooling3{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURLNonPooling3, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintPostgresURLNonPooling3 = &removeProjectEnvContentHintPostgresURLNonPooling3
-		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresURLNonPooling3
+		u.RemoveProjectEnvContentHintBlobReadWriteToken3 = removeProjectEnvContentHintBlobReadWriteToken3
+		u.Type = RemoveProjectEnvContentHintUnion3TypeBlobReadWriteToken
 		return nil
-	}
+	case "postgres-url":
+		removeProjectEnvContentHintPostgresURL3 := new(RemoveProjectEnvContentHintPostgresURL3)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURL3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-url) type RemoveProjectEnvContentHintPostgresURL3 within RemoveProjectEnvContentHintUnion3: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintPostgresPrismaURL3 RemoveProjectEnvContentHintPostgresPrismaURL3 = RemoveProjectEnvContentHintPostgresPrismaURL3{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresPrismaURL3, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintPostgresPrismaURL3 = &removeProjectEnvContentHintPostgresPrismaURL3
-		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresPrismaURL3
+		u.RemoveProjectEnvContentHintPostgresURL3 = removeProjectEnvContentHintPostgresURL3
+		u.Type = RemoveProjectEnvContentHintUnion3TypePostgresURL
 		return nil
-	}
+	case "postgres-url-non-pooling":
+		removeProjectEnvContentHintPostgresURLNonPooling3 := new(RemoveProjectEnvContentHintPostgresURLNonPooling3)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURLNonPooling3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-url-non-pooling) type RemoveProjectEnvContentHintPostgresURLNonPooling3 within RemoveProjectEnvContentHintUnion3: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintPostgresUser3 RemoveProjectEnvContentHintPostgresUser3 = RemoveProjectEnvContentHintPostgresUser3{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresUser3, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintPostgresUser3 = &removeProjectEnvContentHintPostgresUser3
-		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresUser3
+		u.RemoveProjectEnvContentHintPostgresURLNonPooling3 = removeProjectEnvContentHintPostgresURLNonPooling3
+		u.Type = RemoveProjectEnvContentHintUnion3TypePostgresURLNonPooling
 		return nil
-	}
+	case "postgres-prisma-url":
+		removeProjectEnvContentHintPostgresPrismaURL3 := new(RemoveProjectEnvContentHintPostgresPrismaURL3)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresPrismaURL3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-prisma-url) type RemoveProjectEnvContentHintPostgresPrismaURL3 within RemoveProjectEnvContentHintUnion3: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintPostgresHost3 RemoveProjectEnvContentHintPostgresHost3 = RemoveProjectEnvContentHintPostgresHost3{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresHost3, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintPostgresHost3 = &removeProjectEnvContentHintPostgresHost3
-		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresHost3
+		u.RemoveProjectEnvContentHintPostgresPrismaURL3 = removeProjectEnvContentHintPostgresPrismaURL3
+		u.Type = RemoveProjectEnvContentHintUnion3TypePostgresPrismaURL
 		return nil
-	}
+	case "postgres-user":
+		removeProjectEnvContentHintPostgresUser3 := new(RemoveProjectEnvContentHintPostgresUser3)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresUser3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-user) type RemoveProjectEnvContentHintPostgresUser3 within RemoveProjectEnvContentHintUnion3: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintPostgresPassword3 RemoveProjectEnvContentHintPostgresPassword3 = RemoveProjectEnvContentHintPostgresPassword3{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresPassword3, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintPostgresPassword3 = &removeProjectEnvContentHintPostgresPassword3
-		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresPassword3
+		u.RemoveProjectEnvContentHintPostgresUser3 = removeProjectEnvContentHintPostgresUser3
+		u.Type = RemoveProjectEnvContentHintUnion3TypePostgresUser
 		return nil
-	}
+	case "postgres-host":
+		removeProjectEnvContentHintPostgresHost3 := new(RemoveProjectEnvContentHintPostgresHost3)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresHost3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-host) type RemoveProjectEnvContentHintPostgresHost3 within RemoveProjectEnvContentHintUnion3: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintPostgresDatabase3 RemoveProjectEnvContentHintPostgresDatabase3 = RemoveProjectEnvContentHintPostgresDatabase3{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresDatabase3, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintPostgresDatabase3 = &removeProjectEnvContentHintPostgresDatabase3
-		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresDatabase3
+		u.RemoveProjectEnvContentHintPostgresHost3 = removeProjectEnvContentHintPostgresHost3
+		u.Type = RemoveProjectEnvContentHintUnion3TypePostgresHost
 		return nil
-	}
+	case "postgres-password":
+		removeProjectEnvContentHintPostgresPassword3 := new(RemoveProjectEnvContentHintPostgresPassword3)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresPassword3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-password) type RemoveProjectEnvContentHintPostgresPassword3 within RemoveProjectEnvContentHintUnion3: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintPostgresURLNoSsl3 RemoveProjectEnvContentHintPostgresURLNoSsl3 = RemoveProjectEnvContentHintPostgresURLNoSsl3{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURLNoSsl3, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintPostgresURLNoSsl3 = &removeProjectEnvContentHintPostgresURLNoSsl3
-		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresURLNoSsl3
+		u.RemoveProjectEnvContentHintPostgresPassword3 = removeProjectEnvContentHintPostgresPassword3
+		u.Type = RemoveProjectEnvContentHintUnion3TypePostgresPassword
 		return nil
-	}
+	case "postgres-database":
+		removeProjectEnvContentHintPostgresDatabase3 := new(RemoveProjectEnvContentHintPostgresDatabase3)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresDatabase3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-database) type RemoveProjectEnvContentHintPostgresDatabase3 within RemoveProjectEnvContentHintUnion3: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintFlagsConnectionString3 RemoveProjectEnvContentHintFlagsConnectionString3 = RemoveProjectEnvContentHintFlagsConnectionString3{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintFlagsConnectionString3, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintFlagsConnectionString3 = &removeProjectEnvContentHintFlagsConnectionString3
-		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintFlagsConnectionString3
+		u.RemoveProjectEnvContentHintPostgresDatabase3 = removeProjectEnvContentHintPostgresDatabase3
+		u.Type = RemoveProjectEnvContentHintUnion3TypePostgresDatabase
+		return nil
+	case "postgres-url-no-ssl":
+		removeProjectEnvContentHintPostgresURLNoSsl3 := new(RemoveProjectEnvContentHintPostgresURLNoSsl3)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURLNoSsl3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-url-no-ssl) type RemoveProjectEnvContentHintPostgresURLNoSsl3 within RemoveProjectEnvContentHintUnion3: %w", string(data), err)
+		}
+
+		u.RemoveProjectEnvContentHintPostgresURLNoSsl3 = removeProjectEnvContentHintPostgresURLNoSsl3
+		u.Type = RemoveProjectEnvContentHintUnion3TypePostgresURLNoSsl
+		return nil
+	case "integration-store-secret":
+		removeProjectEnvContentHintIntegrationStoreSecret3 := new(RemoveProjectEnvContentHintIntegrationStoreSecret3)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintIntegrationStoreSecret3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == integration-store-secret) type RemoveProjectEnvContentHintIntegrationStoreSecret3 within RemoveProjectEnvContentHintUnion3: %w", string(data), err)
+		}
+
+		u.RemoveProjectEnvContentHintIntegrationStoreSecret3 = removeProjectEnvContentHintIntegrationStoreSecret3
+		u.Type = RemoveProjectEnvContentHintUnion3TypeIntegrationStoreSecret
+		return nil
+	case "flags-connection-string":
+		removeProjectEnvContentHintFlagsConnectionString3 := new(RemoveProjectEnvContentHintFlagsConnectionString3)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintFlagsConnectionString3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == flags-connection-string) type RemoveProjectEnvContentHintFlagsConnectionString3 within RemoveProjectEnvContentHintUnion3: %w", string(data), err)
+		}
+
+		u.RemoveProjectEnvContentHintFlagsConnectionString3 = removeProjectEnvContentHintFlagsConnectionString3
+		u.Type = RemoveProjectEnvContentHintUnion3TypeFlagsConnectionString
 		return nil
 	}
 
@@ -1590,6 +1677,111 @@ func (o *RemoveProjectEnvResponseBody3) GetContentHint() *RemoveProjectEnvConten
 		return nil
 	}
 	return o.ContentHint
+}
+
+func (o *RemoveProjectEnvResponseBody3) GetContentHintRedisURL() *RemoveProjectEnvContentHintRedisURL3 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintRedisURL3
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody3) GetContentHintRedisRestAPIURL() *RemoveProjectEnvContentHintRedisRestAPIURL3 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintRedisRestAPIURL3
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody3) GetContentHintRedisRestAPIToken() *RemoveProjectEnvContentHintRedisRestAPIToken3 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintRedisRestAPIToken3
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody3) GetContentHintRedisRestAPIReadOnlyToken() *RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken3 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken3
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody3) GetContentHintBlobReadWriteToken() *RemoveProjectEnvContentHintBlobReadWriteToken3 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintBlobReadWriteToken3
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody3) GetContentHintPostgresURL() *RemoveProjectEnvContentHintPostgresURL3 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintPostgresURL3
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody3) GetContentHintPostgresURLNonPooling() *RemoveProjectEnvContentHintPostgresURLNonPooling3 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintPostgresURLNonPooling3
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody3) GetContentHintPostgresPrismaURL() *RemoveProjectEnvContentHintPostgresPrismaURL3 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintPostgresPrismaURL3
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody3) GetContentHintPostgresUser() *RemoveProjectEnvContentHintPostgresUser3 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintPostgresUser3
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody3) GetContentHintPostgresHost() *RemoveProjectEnvContentHintPostgresHost3 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintPostgresHost3
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody3) GetContentHintPostgresPassword() *RemoveProjectEnvContentHintPostgresPassword3 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintPostgresPassword3
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody3) GetContentHintPostgresDatabase() *RemoveProjectEnvContentHintPostgresDatabase3 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintPostgresDatabase3
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody3) GetContentHintPostgresURLNoSsl() *RemoveProjectEnvContentHintPostgresURLNoSsl3 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintPostgresURLNoSsl3
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody3) GetContentHintIntegrationStoreSecret() *RemoveProjectEnvContentHintIntegrationStoreSecret3 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintIntegrationStoreSecret3
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody3) GetContentHintFlagsConnectionString() *RemoveProjectEnvContentHintFlagsConnectionString3 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintFlagsConnectionString3
+	}
+	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody3) GetInternalContentHint() *RemoveProjectEnvInternalContentHint3 {
@@ -2591,21 +2783,21 @@ func (o *RemoveProjectEnvContentHintRedisURL2) GetStoreID() string {
 type RemoveProjectEnvContentHintUnion2Type string
 
 const (
-	RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintRedisURL2                  RemoveProjectEnvContentHintUnion2Type = "removeProjectEnv_contentHint_RedisURL_2"
-	RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintRedisRestAPIURL2           RemoveProjectEnvContentHintUnion2Type = "removeProjectEnv_contentHint_RedisRestAPIURL_2"
-	RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintRedisRestAPIToken2         RemoveProjectEnvContentHintUnion2Type = "removeProjectEnv_contentHint_RedisRestAPIToken_2"
-	RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintRedisRestAPIReadOnlyToken2 RemoveProjectEnvContentHintUnion2Type = "removeProjectEnv_contentHint_RedisRestAPIReadOnlyToken_2"
-	RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintBlobReadWriteToken2        RemoveProjectEnvContentHintUnion2Type = "removeProjectEnv_contentHint_BlobReadWriteToken_2"
-	RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresURL2               RemoveProjectEnvContentHintUnion2Type = "removeProjectEnv_contentHint_PostgresURL_2"
-	RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresURLNonPooling2     RemoveProjectEnvContentHintUnion2Type = "removeProjectEnv_contentHint_PostgresURLNonPooling_2"
-	RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresPrismaURL2         RemoveProjectEnvContentHintUnion2Type = "removeProjectEnv_contentHint_PostgresPrismaURL_2"
-	RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresUser2              RemoveProjectEnvContentHintUnion2Type = "removeProjectEnv_contentHint_PostgresUser_2"
-	RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresHost2              RemoveProjectEnvContentHintUnion2Type = "removeProjectEnv_contentHint_PostgresHost_2"
-	RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresPassword2          RemoveProjectEnvContentHintUnion2Type = "removeProjectEnv_contentHint_PostgresPassword_2"
-	RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresDatabase2          RemoveProjectEnvContentHintUnion2Type = "removeProjectEnv_contentHint_PostgresDatabase_2"
-	RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresURLNoSsl2          RemoveProjectEnvContentHintUnion2Type = "removeProjectEnv_contentHint_PostgresURLNoSsl_2"
-	RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintIntegrationStoreSecret2    RemoveProjectEnvContentHintUnion2Type = "removeProjectEnv_contentHint_IntegrationStoreSecret_2"
-	RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintFlagsConnectionString2     RemoveProjectEnvContentHintUnion2Type = "removeProjectEnv_contentHint_FlagsConnectionString_2"
+	RemoveProjectEnvContentHintUnion2TypeRedisURL                  RemoveProjectEnvContentHintUnion2Type = "redis-url"
+	RemoveProjectEnvContentHintUnion2TypeRedisRestAPIURL           RemoveProjectEnvContentHintUnion2Type = "redis-rest-api-url"
+	RemoveProjectEnvContentHintUnion2TypeRedisRestAPIToken         RemoveProjectEnvContentHintUnion2Type = "redis-rest-api-token"
+	RemoveProjectEnvContentHintUnion2TypeRedisRestAPIReadOnlyToken RemoveProjectEnvContentHintUnion2Type = "redis-rest-api-read-only-token"
+	RemoveProjectEnvContentHintUnion2TypeBlobReadWriteToken        RemoveProjectEnvContentHintUnion2Type = "blob-read-write-token"
+	RemoveProjectEnvContentHintUnion2TypePostgresURL               RemoveProjectEnvContentHintUnion2Type = "postgres-url"
+	RemoveProjectEnvContentHintUnion2TypePostgresURLNonPooling     RemoveProjectEnvContentHintUnion2Type = "postgres-url-non-pooling"
+	RemoveProjectEnvContentHintUnion2TypePostgresPrismaURL         RemoveProjectEnvContentHintUnion2Type = "postgres-prisma-url"
+	RemoveProjectEnvContentHintUnion2TypePostgresUser              RemoveProjectEnvContentHintUnion2Type = "postgres-user"
+	RemoveProjectEnvContentHintUnion2TypePostgresHost              RemoveProjectEnvContentHintUnion2Type = "postgres-host"
+	RemoveProjectEnvContentHintUnion2TypePostgresPassword          RemoveProjectEnvContentHintUnion2Type = "postgres-password"
+	RemoveProjectEnvContentHintUnion2TypePostgresDatabase          RemoveProjectEnvContentHintUnion2Type = "postgres-database"
+	RemoveProjectEnvContentHintUnion2TypePostgresURLNoSsl          RemoveProjectEnvContentHintUnion2Type = "postgres-url-no-ssl"
+	RemoveProjectEnvContentHintUnion2TypeIntegrationStoreSecret    RemoveProjectEnvContentHintUnion2Type = "integration-store-secret"
+	RemoveProjectEnvContentHintUnion2TypeFlagsConnectionString     RemoveProjectEnvContentHintUnion2Type = "flags-connection-string"
 )
 
 type RemoveProjectEnvContentHintUnion2 struct {
@@ -2628,245 +2820,332 @@ type RemoveProjectEnvContentHintUnion2 struct {
 	Type RemoveProjectEnvContentHintUnion2Type
 }
 
-func CreateRemoveProjectEnvContentHintUnion2RemoveProjectEnvContentHintRedisURL2(removeProjectEnvContentHintRedisURL2 RemoveProjectEnvContentHintRedisURL2) RemoveProjectEnvContentHintUnion2 {
-	typ := RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintRedisURL2
+func CreateRemoveProjectEnvContentHintUnion2RedisURL(redisURL RemoveProjectEnvContentHintRedisURL2) RemoveProjectEnvContentHintUnion2 {
+	typ := RemoveProjectEnvContentHintUnion2TypeRedisURL
+
+	typStr := RemoveProjectEnvTypeRedisURL2(typ)
+	redisURL.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion2{
-		RemoveProjectEnvContentHintRedisURL2: &removeProjectEnvContentHintRedisURL2,
+		RemoveProjectEnvContentHintRedisURL2: &redisURL,
 		Type:                                 typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion2RemoveProjectEnvContentHintRedisRestAPIURL2(removeProjectEnvContentHintRedisRestAPIURL2 RemoveProjectEnvContentHintRedisRestAPIURL2) RemoveProjectEnvContentHintUnion2 {
-	typ := RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintRedisRestAPIURL2
+func CreateRemoveProjectEnvContentHintUnion2RedisRestAPIURL(redisRestAPIURL RemoveProjectEnvContentHintRedisRestAPIURL2) RemoveProjectEnvContentHintUnion2 {
+	typ := RemoveProjectEnvContentHintUnion2TypeRedisRestAPIURL
+
+	typStr := RemoveProjectEnvTypeRedisRestAPIURL2(typ)
+	redisRestAPIURL.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion2{
-		RemoveProjectEnvContentHintRedisRestAPIURL2: &removeProjectEnvContentHintRedisRestAPIURL2,
+		RemoveProjectEnvContentHintRedisRestAPIURL2: &redisRestAPIURL,
 		Type: typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion2RemoveProjectEnvContentHintRedisRestAPIToken2(removeProjectEnvContentHintRedisRestAPIToken2 RemoveProjectEnvContentHintRedisRestAPIToken2) RemoveProjectEnvContentHintUnion2 {
-	typ := RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintRedisRestAPIToken2
+func CreateRemoveProjectEnvContentHintUnion2RedisRestAPIToken(redisRestAPIToken RemoveProjectEnvContentHintRedisRestAPIToken2) RemoveProjectEnvContentHintUnion2 {
+	typ := RemoveProjectEnvContentHintUnion2TypeRedisRestAPIToken
+
+	typStr := RemoveProjectEnvTypeRedisRestAPIToken2(typ)
+	redisRestAPIToken.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion2{
-		RemoveProjectEnvContentHintRedisRestAPIToken2: &removeProjectEnvContentHintRedisRestAPIToken2,
+		RemoveProjectEnvContentHintRedisRestAPIToken2: &redisRestAPIToken,
 		Type: typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion2RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken2(removeProjectEnvContentHintRedisRestAPIReadOnlyToken2 RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken2) RemoveProjectEnvContentHintUnion2 {
-	typ := RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintRedisRestAPIReadOnlyToken2
+func CreateRemoveProjectEnvContentHintUnion2RedisRestAPIReadOnlyToken(redisRestAPIReadOnlyToken RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken2) RemoveProjectEnvContentHintUnion2 {
+	typ := RemoveProjectEnvContentHintUnion2TypeRedisRestAPIReadOnlyToken
+
+	typStr := RemoveProjectEnvTypeRedisRestAPIReadOnlyToken2(typ)
+	redisRestAPIReadOnlyToken.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion2{
-		RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken2: &removeProjectEnvContentHintRedisRestAPIReadOnlyToken2,
+		RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken2: &redisRestAPIReadOnlyToken,
 		Type: typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion2RemoveProjectEnvContentHintBlobReadWriteToken2(removeProjectEnvContentHintBlobReadWriteToken2 RemoveProjectEnvContentHintBlobReadWriteToken2) RemoveProjectEnvContentHintUnion2 {
-	typ := RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintBlobReadWriteToken2
+func CreateRemoveProjectEnvContentHintUnion2BlobReadWriteToken(blobReadWriteToken RemoveProjectEnvContentHintBlobReadWriteToken2) RemoveProjectEnvContentHintUnion2 {
+	typ := RemoveProjectEnvContentHintUnion2TypeBlobReadWriteToken
+
+	typStr := RemoveProjectEnvTypeBlobReadWriteToken2(typ)
+	blobReadWriteToken.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion2{
-		RemoveProjectEnvContentHintBlobReadWriteToken2: &removeProjectEnvContentHintBlobReadWriteToken2,
+		RemoveProjectEnvContentHintBlobReadWriteToken2: &blobReadWriteToken,
 		Type: typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion2RemoveProjectEnvContentHintPostgresURL2(removeProjectEnvContentHintPostgresURL2 RemoveProjectEnvContentHintPostgresURL2) RemoveProjectEnvContentHintUnion2 {
-	typ := RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresURL2
+func CreateRemoveProjectEnvContentHintUnion2PostgresURL(postgresURL RemoveProjectEnvContentHintPostgresURL2) RemoveProjectEnvContentHintUnion2 {
+	typ := RemoveProjectEnvContentHintUnion2TypePostgresURL
+
+	typStr := RemoveProjectEnvTypePostgresURL2(typ)
+	postgresURL.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion2{
-		RemoveProjectEnvContentHintPostgresURL2: &removeProjectEnvContentHintPostgresURL2,
+		RemoveProjectEnvContentHintPostgresURL2: &postgresURL,
 		Type:                                    typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion2RemoveProjectEnvContentHintPostgresURLNonPooling2(removeProjectEnvContentHintPostgresURLNonPooling2 RemoveProjectEnvContentHintPostgresURLNonPooling2) RemoveProjectEnvContentHintUnion2 {
-	typ := RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresURLNonPooling2
+func CreateRemoveProjectEnvContentHintUnion2PostgresURLNonPooling(postgresURLNonPooling RemoveProjectEnvContentHintPostgresURLNonPooling2) RemoveProjectEnvContentHintUnion2 {
+	typ := RemoveProjectEnvContentHintUnion2TypePostgresURLNonPooling
+
+	typStr := RemoveProjectEnvTypePostgresURLNonPooling2(typ)
+	postgresURLNonPooling.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion2{
-		RemoveProjectEnvContentHintPostgresURLNonPooling2: &removeProjectEnvContentHintPostgresURLNonPooling2,
+		RemoveProjectEnvContentHintPostgresURLNonPooling2: &postgresURLNonPooling,
 		Type: typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion2RemoveProjectEnvContentHintPostgresPrismaURL2(removeProjectEnvContentHintPostgresPrismaURL2 RemoveProjectEnvContentHintPostgresPrismaURL2) RemoveProjectEnvContentHintUnion2 {
-	typ := RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresPrismaURL2
+func CreateRemoveProjectEnvContentHintUnion2PostgresPrismaURL(postgresPrismaURL RemoveProjectEnvContentHintPostgresPrismaURL2) RemoveProjectEnvContentHintUnion2 {
+	typ := RemoveProjectEnvContentHintUnion2TypePostgresPrismaURL
+
+	typStr := RemoveProjectEnvTypePostgresPrismaURL2(typ)
+	postgresPrismaURL.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion2{
-		RemoveProjectEnvContentHintPostgresPrismaURL2: &removeProjectEnvContentHintPostgresPrismaURL2,
+		RemoveProjectEnvContentHintPostgresPrismaURL2: &postgresPrismaURL,
 		Type: typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion2RemoveProjectEnvContentHintPostgresUser2(removeProjectEnvContentHintPostgresUser2 RemoveProjectEnvContentHintPostgresUser2) RemoveProjectEnvContentHintUnion2 {
-	typ := RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresUser2
+func CreateRemoveProjectEnvContentHintUnion2PostgresUser(postgresUser RemoveProjectEnvContentHintPostgresUser2) RemoveProjectEnvContentHintUnion2 {
+	typ := RemoveProjectEnvContentHintUnion2TypePostgresUser
+
+	typStr := RemoveProjectEnvTypePostgresUser2(typ)
+	postgresUser.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion2{
-		RemoveProjectEnvContentHintPostgresUser2: &removeProjectEnvContentHintPostgresUser2,
+		RemoveProjectEnvContentHintPostgresUser2: &postgresUser,
 		Type:                                     typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion2RemoveProjectEnvContentHintPostgresHost2(removeProjectEnvContentHintPostgresHost2 RemoveProjectEnvContentHintPostgresHost2) RemoveProjectEnvContentHintUnion2 {
-	typ := RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresHost2
+func CreateRemoveProjectEnvContentHintUnion2PostgresHost(postgresHost RemoveProjectEnvContentHintPostgresHost2) RemoveProjectEnvContentHintUnion2 {
+	typ := RemoveProjectEnvContentHintUnion2TypePostgresHost
+
+	typStr := RemoveProjectEnvTypePostgresHost2(typ)
+	postgresHost.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion2{
-		RemoveProjectEnvContentHintPostgresHost2: &removeProjectEnvContentHintPostgresHost2,
+		RemoveProjectEnvContentHintPostgresHost2: &postgresHost,
 		Type:                                     typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion2RemoveProjectEnvContentHintPostgresPassword2(removeProjectEnvContentHintPostgresPassword2 RemoveProjectEnvContentHintPostgresPassword2) RemoveProjectEnvContentHintUnion2 {
-	typ := RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresPassword2
+func CreateRemoveProjectEnvContentHintUnion2PostgresPassword(postgresPassword RemoveProjectEnvContentHintPostgresPassword2) RemoveProjectEnvContentHintUnion2 {
+	typ := RemoveProjectEnvContentHintUnion2TypePostgresPassword
+
+	typStr := RemoveProjectEnvTypePostgresPassword2(typ)
+	postgresPassword.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion2{
-		RemoveProjectEnvContentHintPostgresPassword2: &removeProjectEnvContentHintPostgresPassword2,
+		RemoveProjectEnvContentHintPostgresPassword2: &postgresPassword,
 		Type: typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion2RemoveProjectEnvContentHintPostgresDatabase2(removeProjectEnvContentHintPostgresDatabase2 RemoveProjectEnvContentHintPostgresDatabase2) RemoveProjectEnvContentHintUnion2 {
-	typ := RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresDatabase2
+func CreateRemoveProjectEnvContentHintUnion2PostgresDatabase(postgresDatabase RemoveProjectEnvContentHintPostgresDatabase2) RemoveProjectEnvContentHintUnion2 {
+	typ := RemoveProjectEnvContentHintUnion2TypePostgresDatabase
+
+	typStr := RemoveProjectEnvTypePostgresDatabase2(typ)
+	postgresDatabase.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion2{
-		RemoveProjectEnvContentHintPostgresDatabase2: &removeProjectEnvContentHintPostgresDatabase2,
+		RemoveProjectEnvContentHintPostgresDatabase2: &postgresDatabase,
 		Type: typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion2RemoveProjectEnvContentHintPostgresURLNoSsl2(removeProjectEnvContentHintPostgresURLNoSsl2 RemoveProjectEnvContentHintPostgresURLNoSsl2) RemoveProjectEnvContentHintUnion2 {
-	typ := RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresURLNoSsl2
+func CreateRemoveProjectEnvContentHintUnion2PostgresURLNoSsl(postgresURLNoSsl RemoveProjectEnvContentHintPostgresURLNoSsl2) RemoveProjectEnvContentHintUnion2 {
+	typ := RemoveProjectEnvContentHintUnion2TypePostgresURLNoSsl
+
+	typStr := RemoveProjectEnvTypePostgresURLNoSsl2(typ)
+	postgresURLNoSsl.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion2{
-		RemoveProjectEnvContentHintPostgresURLNoSsl2: &removeProjectEnvContentHintPostgresURLNoSsl2,
+		RemoveProjectEnvContentHintPostgresURLNoSsl2: &postgresURLNoSsl,
 		Type: typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion2RemoveProjectEnvContentHintIntegrationStoreSecret2(removeProjectEnvContentHintIntegrationStoreSecret2 RemoveProjectEnvContentHintIntegrationStoreSecret2) RemoveProjectEnvContentHintUnion2 {
-	typ := RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintIntegrationStoreSecret2
+func CreateRemoveProjectEnvContentHintUnion2IntegrationStoreSecret(integrationStoreSecret RemoveProjectEnvContentHintIntegrationStoreSecret2) RemoveProjectEnvContentHintUnion2 {
+	typ := RemoveProjectEnvContentHintUnion2TypeIntegrationStoreSecret
+
+	typStr := RemoveProjectEnvTypeIntegrationStoreSecret2(typ)
+	integrationStoreSecret.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion2{
-		RemoveProjectEnvContentHintIntegrationStoreSecret2: &removeProjectEnvContentHintIntegrationStoreSecret2,
+		RemoveProjectEnvContentHintIntegrationStoreSecret2: &integrationStoreSecret,
 		Type: typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion2RemoveProjectEnvContentHintFlagsConnectionString2(removeProjectEnvContentHintFlagsConnectionString2 RemoveProjectEnvContentHintFlagsConnectionString2) RemoveProjectEnvContentHintUnion2 {
-	typ := RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintFlagsConnectionString2
+func CreateRemoveProjectEnvContentHintUnion2FlagsConnectionString(flagsConnectionString RemoveProjectEnvContentHintFlagsConnectionString2) RemoveProjectEnvContentHintUnion2 {
+	typ := RemoveProjectEnvContentHintUnion2TypeFlagsConnectionString
+
+	typStr := RemoveProjectEnvTypeFlagsConnectionString2(typ)
+	flagsConnectionString.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion2{
-		RemoveProjectEnvContentHintFlagsConnectionString2: &removeProjectEnvContentHintFlagsConnectionString2,
+		RemoveProjectEnvContentHintFlagsConnectionString2: &flagsConnectionString,
 		Type: typ,
 	}
 }
 
 func (u *RemoveProjectEnvContentHintUnion2) UnmarshalJSON(data []byte) error {
 
-	var removeProjectEnvContentHintIntegrationStoreSecret2 RemoveProjectEnvContentHintIntegrationStoreSecret2 = RemoveProjectEnvContentHintIntegrationStoreSecret2{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintIntegrationStoreSecret2, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintIntegrationStoreSecret2 = &removeProjectEnvContentHintIntegrationStoreSecret2
-		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintIntegrationStoreSecret2
-		return nil
+	type discriminator struct {
+		Type string `json:"type"`
 	}
 
-	var removeProjectEnvContentHintRedisURL2 RemoveProjectEnvContentHintRedisURL2 = RemoveProjectEnvContentHintRedisURL2{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisURL2, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintRedisURL2 = &removeProjectEnvContentHintRedisURL2
-		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintRedisURL2
-		return nil
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
 	}
 
-	var removeProjectEnvContentHintRedisRestAPIURL2 RemoveProjectEnvContentHintRedisRestAPIURL2 = RemoveProjectEnvContentHintRedisRestAPIURL2{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIURL2, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintRedisRestAPIURL2 = &removeProjectEnvContentHintRedisRestAPIURL2
-		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintRedisRestAPIURL2
-		return nil
-	}
+	switch dis.Type {
+	case "redis-url":
+		removeProjectEnvContentHintRedisURL2 := new(RemoveProjectEnvContentHintRedisURL2)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisURL2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-url) type RemoveProjectEnvContentHintRedisURL2 within RemoveProjectEnvContentHintUnion2: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintRedisRestAPIToken2 RemoveProjectEnvContentHintRedisRestAPIToken2 = RemoveProjectEnvContentHintRedisRestAPIToken2{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIToken2, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintRedisRestAPIToken2 = &removeProjectEnvContentHintRedisRestAPIToken2
-		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintRedisRestAPIToken2
+		u.RemoveProjectEnvContentHintRedisURL2 = removeProjectEnvContentHintRedisURL2
+		u.Type = RemoveProjectEnvContentHintUnion2TypeRedisURL
 		return nil
-	}
+	case "redis-rest-api-url":
+		removeProjectEnvContentHintRedisRestAPIURL2 := new(RemoveProjectEnvContentHintRedisRestAPIURL2)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIURL2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-rest-api-url) type RemoveProjectEnvContentHintRedisRestAPIURL2 within RemoveProjectEnvContentHintUnion2: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintRedisRestAPIReadOnlyToken2 RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken2 = RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken2{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIReadOnlyToken2, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken2 = &removeProjectEnvContentHintRedisRestAPIReadOnlyToken2
-		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintRedisRestAPIReadOnlyToken2
+		u.RemoveProjectEnvContentHintRedisRestAPIURL2 = removeProjectEnvContentHintRedisRestAPIURL2
+		u.Type = RemoveProjectEnvContentHintUnion2TypeRedisRestAPIURL
 		return nil
-	}
+	case "redis-rest-api-token":
+		removeProjectEnvContentHintRedisRestAPIToken2 := new(RemoveProjectEnvContentHintRedisRestAPIToken2)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIToken2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-rest-api-token) type RemoveProjectEnvContentHintRedisRestAPIToken2 within RemoveProjectEnvContentHintUnion2: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintBlobReadWriteToken2 RemoveProjectEnvContentHintBlobReadWriteToken2 = RemoveProjectEnvContentHintBlobReadWriteToken2{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintBlobReadWriteToken2, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintBlobReadWriteToken2 = &removeProjectEnvContentHintBlobReadWriteToken2
-		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintBlobReadWriteToken2
+		u.RemoveProjectEnvContentHintRedisRestAPIToken2 = removeProjectEnvContentHintRedisRestAPIToken2
+		u.Type = RemoveProjectEnvContentHintUnion2TypeRedisRestAPIToken
 		return nil
-	}
+	case "redis-rest-api-read-only-token":
+		removeProjectEnvContentHintRedisRestAPIReadOnlyToken2 := new(RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken2)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIReadOnlyToken2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-rest-api-read-only-token) type RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken2 within RemoveProjectEnvContentHintUnion2: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintPostgresURL2 RemoveProjectEnvContentHintPostgresURL2 = RemoveProjectEnvContentHintPostgresURL2{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURL2, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintPostgresURL2 = &removeProjectEnvContentHintPostgresURL2
-		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresURL2
+		u.RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken2 = removeProjectEnvContentHintRedisRestAPIReadOnlyToken2
+		u.Type = RemoveProjectEnvContentHintUnion2TypeRedisRestAPIReadOnlyToken
 		return nil
-	}
+	case "blob-read-write-token":
+		removeProjectEnvContentHintBlobReadWriteToken2 := new(RemoveProjectEnvContentHintBlobReadWriteToken2)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintBlobReadWriteToken2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == blob-read-write-token) type RemoveProjectEnvContentHintBlobReadWriteToken2 within RemoveProjectEnvContentHintUnion2: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintPostgresURLNonPooling2 RemoveProjectEnvContentHintPostgresURLNonPooling2 = RemoveProjectEnvContentHintPostgresURLNonPooling2{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURLNonPooling2, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintPostgresURLNonPooling2 = &removeProjectEnvContentHintPostgresURLNonPooling2
-		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresURLNonPooling2
+		u.RemoveProjectEnvContentHintBlobReadWriteToken2 = removeProjectEnvContentHintBlobReadWriteToken2
+		u.Type = RemoveProjectEnvContentHintUnion2TypeBlobReadWriteToken
 		return nil
-	}
+	case "postgres-url":
+		removeProjectEnvContentHintPostgresURL2 := new(RemoveProjectEnvContentHintPostgresURL2)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURL2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-url) type RemoveProjectEnvContentHintPostgresURL2 within RemoveProjectEnvContentHintUnion2: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintPostgresPrismaURL2 RemoveProjectEnvContentHintPostgresPrismaURL2 = RemoveProjectEnvContentHintPostgresPrismaURL2{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresPrismaURL2, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintPostgresPrismaURL2 = &removeProjectEnvContentHintPostgresPrismaURL2
-		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresPrismaURL2
+		u.RemoveProjectEnvContentHintPostgresURL2 = removeProjectEnvContentHintPostgresURL2
+		u.Type = RemoveProjectEnvContentHintUnion2TypePostgresURL
 		return nil
-	}
+	case "postgres-url-non-pooling":
+		removeProjectEnvContentHintPostgresURLNonPooling2 := new(RemoveProjectEnvContentHintPostgresURLNonPooling2)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURLNonPooling2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-url-non-pooling) type RemoveProjectEnvContentHintPostgresURLNonPooling2 within RemoveProjectEnvContentHintUnion2: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintPostgresUser2 RemoveProjectEnvContentHintPostgresUser2 = RemoveProjectEnvContentHintPostgresUser2{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresUser2, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintPostgresUser2 = &removeProjectEnvContentHintPostgresUser2
-		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresUser2
+		u.RemoveProjectEnvContentHintPostgresURLNonPooling2 = removeProjectEnvContentHintPostgresURLNonPooling2
+		u.Type = RemoveProjectEnvContentHintUnion2TypePostgresURLNonPooling
 		return nil
-	}
+	case "postgres-prisma-url":
+		removeProjectEnvContentHintPostgresPrismaURL2 := new(RemoveProjectEnvContentHintPostgresPrismaURL2)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresPrismaURL2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-prisma-url) type RemoveProjectEnvContentHintPostgresPrismaURL2 within RemoveProjectEnvContentHintUnion2: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintPostgresHost2 RemoveProjectEnvContentHintPostgresHost2 = RemoveProjectEnvContentHintPostgresHost2{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresHost2, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintPostgresHost2 = &removeProjectEnvContentHintPostgresHost2
-		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresHost2
+		u.RemoveProjectEnvContentHintPostgresPrismaURL2 = removeProjectEnvContentHintPostgresPrismaURL2
+		u.Type = RemoveProjectEnvContentHintUnion2TypePostgresPrismaURL
 		return nil
-	}
+	case "postgres-user":
+		removeProjectEnvContentHintPostgresUser2 := new(RemoveProjectEnvContentHintPostgresUser2)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresUser2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-user) type RemoveProjectEnvContentHintPostgresUser2 within RemoveProjectEnvContentHintUnion2: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintPostgresPassword2 RemoveProjectEnvContentHintPostgresPassword2 = RemoveProjectEnvContentHintPostgresPassword2{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresPassword2, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintPostgresPassword2 = &removeProjectEnvContentHintPostgresPassword2
-		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresPassword2
+		u.RemoveProjectEnvContentHintPostgresUser2 = removeProjectEnvContentHintPostgresUser2
+		u.Type = RemoveProjectEnvContentHintUnion2TypePostgresUser
 		return nil
-	}
+	case "postgres-host":
+		removeProjectEnvContentHintPostgresHost2 := new(RemoveProjectEnvContentHintPostgresHost2)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresHost2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-host) type RemoveProjectEnvContentHintPostgresHost2 within RemoveProjectEnvContentHintUnion2: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintPostgresDatabase2 RemoveProjectEnvContentHintPostgresDatabase2 = RemoveProjectEnvContentHintPostgresDatabase2{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresDatabase2, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintPostgresDatabase2 = &removeProjectEnvContentHintPostgresDatabase2
-		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresDatabase2
+		u.RemoveProjectEnvContentHintPostgresHost2 = removeProjectEnvContentHintPostgresHost2
+		u.Type = RemoveProjectEnvContentHintUnion2TypePostgresHost
 		return nil
-	}
+	case "postgres-password":
+		removeProjectEnvContentHintPostgresPassword2 := new(RemoveProjectEnvContentHintPostgresPassword2)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresPassword2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-password) type RemoveProjectEnvContentHintPostgresPassword2 within RemoveProjectEnvContentHintUnion2: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintPostgresURLNoSsl2 RemoveProjectEnvContentHintPostgresURLNoSsl2 = RemoveProjectEnvContentHintPostgresURLNoSsl2{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURLNoSsl2, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintPostgresURLNoSsl2 = &removeProjectEnvContentHintPostgresURLNoSsl2
-		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresURLNoSsl2
+		u.RemoveProjectEnvContentHintPostgresPassword2 = removeProjectEnvContentHintPostgresPassword2
+		u.Type = RemoveProjectEnvContentHintUnion2TypePostgresPassword
 		return nil
-	}
+	case "postgres-database":
+		removeProjectEnvContentHintPostgresDatabase2 := new(RemoveProjectEnvContentHintPostgresDatabase2)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresDatabase2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-database) type RemoveProjectEnvContentHintPostgresDatabase2 within RemoveProjectEnvContentHintUnion2: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintFlagsConnectionString2 RemoveProjectEnvContentHintFlagsConnectionString2 = RemoveProjectEnvContentHintFlagsConnectionString2{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintFlagsConnectionString2, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintFlagsConnectionString2 = &removeProjectEnvContentHintFlagsConnectionString2
-		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintFlagsConnectionString2
+		u.RemoveProjectEnvContentHintPostgresDatabase2 = removeProjectEnvContentHintPostgresDatabase2
+		u.Type = RemoveProjectEnvContentHintUnion2TypePostgresDatabase
+		return nil
+	case "postgres-url-no-ssl":
+		removeProjectEnvContentHintPostgresURLNoSsl2 := new(RemoveProjectEnvContentHintPostgresURLNoSsl2)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURLNoSsl2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-url-no-ssl) type RemoveProjectEnvContentHintPostgresURLNoSsl2 within RemoveProjectEnvContentHintUnion2: %w", string(data), err)
+		}
+
+		u.RemoveProjectEnvContentHintPostgresURLNoSsl2 = removeProjectEnvContentHintPostgresURLNoSsl2
+		u.Type = RemoveProjectEnvContentHintUnion2TypePostgresURLNoSsl
+		return nil
+	case "integration-store-secret":
+		removeProjectEnvContentHintIntegrationStoreSecret2 := new(RemoveProjectEnvContentHintIntegrationStoreSecret2)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintIntegrationStoreSecret2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == integration-store-secret) type RemoveProjectEnvContentHintIntegrationStoreSecret2 within RemoveProjectEnvContentHintUnion2: %w", string(data), err)
+		}
+
+		u.RemoveProjectEnvContentHintIntegrationStoreSecret2 = removeProjectEnvContentHintIntegrationStoreSecret2
+		u.Type = RemoveProjectEnvContentHintUnion2TypeIntegrationStoreSecret
+		return nil
+	case "flags-connection-string":
+		removeProjectEnvContentHintFlagsConnectionString2 := new(RemoveProjectEnvContentHintFlagsConnectionString2)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintFlagsConnectionString2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == flags-connection-string) type RemoveProjectEnvContentHintFlagsConnectionString2 within RemoveProjectEnvContentHintUnion2: %w", string(data), err)
+		}
+
+		u.RemoveProjectEnvContentHintFlagsConnectionString2 = removeProjectEnvContentHintFlagsConnectionString2
+		u.Type = RemoveProjectEnvContentHintUnion2TypeFlagsConnectionString
 		return nil
 	}
 
@@ -3153,6 +3432,111 @@ func (o *RemoveProjectEnvResponseBody2) GetContentHint() *RemoveProjectEnvConten
 		return nil
 	}
 	return o.ContentHint
+}
+
+func (o *RemoveProjectEnvResponseBody2) GetContentHintRedisURL() *RemoveProjectEnvContentHintRedisURL2 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintRedisURL2
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody2) GetContentHintRedisRestAPIURL() *RemoveProjectEnvContentHintRedisRestAPIURL2 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintRedisRestAPIURL2
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody2) GetContentHintRedisRestAPIToken() *RemoveProjectEnvContentHintRedisRestAPIToken2 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintRedisRestAPIToken2
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody2) GetContentHintRedisRestAPIReadOnlyToken() *RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken2 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken2
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody2) GetContentHintBlobReadWriteToken() *RemoveProjectEnvContentHintBlobReadWriteToken2 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintBlobReadWriteToken2
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody2) GetContentHintPostgresURL() *RemoveProjectEnvContentHintPostgresURL2 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintPostgresURL2
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody2) GetContentHintPostgresURLNonPooling() *RemoveProjectEnvContentHintPostgresURLNonPooling2 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintPostgresURLNonPooling2
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody2) GetContentHintPostgresPrismaURL() *RemoveProjectEnvContentHintPostgresPrismaURL2 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintPostgresPrismaURL2
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody2) GetContentHintPostgresUser() *RemoveProjectEnvContentHintPostgresUser2 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintPostgresUser2
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody2) GetContentHintPostgresHost() *RemoveProjectEnvContentHintPostgresHost2 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintPostgresHost2
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody2) GetContentHintPostgresPassword() *RemoveProjectEnvContentHintPostgresPassword2 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintPostgresPassword2
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody2) GetContentHintPostgresDatabase() *RemoveProjectEnvContentHintPostgresDatabase2 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintPostgresDatabase2
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody2) GetContentHintPostgresURLNoSsl() *RemoveProjectEnvContentHintPostgresURLNoSsl2 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintPostgresURLNoSsl2
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody2) GetContentHintIntegrationStoreSecret() *RemoveProjectEnvContentHintIntegrationStoreSecret2 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintIntegrationStoreSecret2
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody2) GetContentHintFlagsConnectionString() *RemoveProjectEnvContentHintFlagsConnectionString2 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintFlagsConnectionString2
+	}
+	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody2) GetInternalContentHint() *RemoveProjectEnvInternalContentHint2 {
@@ -4154,21 +4538,21 @@ func (o *RemoveProjectEnvContentHintRedisURL1) GetStoreID() string {
 type RemoveProjectEnvContentHintUnion1Type string
 
 const (
-	RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintRedisURL1                  RemoveProjectEnvContentHintUnion1Type = "removeProjectEnv_contentHint_RedisURL_1"
-	RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintRedisRestAPIURL1           RemoveProjectEnvContentHintUnion1Type = "removeProjectEnv_contentHint_RedisRestAPIURL_1"
-	RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintRedisRestAPIToken1         RemoveProjectEnvContentHintUnion1Type = "removeProjectEnv_contentHint_RedisRestAPIToken_1"
-	RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintRedisRestAPIReadOnlyToken1 RemoveProjectEnvContentHintUnion1Type = "removeProjectEnv_contentHint_RedisRestAPIReadOnlyToken_1"
-	RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintBlobReadWriteToken1        RemoveProjectEnvContentHintUnion1Type = "removeProjectEnv_contentHint_BlobReadWriteToken_1"
-	RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresURL1               RemoveProjectEnvContentHintUnion1Type = "removeProjectEnv_contentHint_PostgresURL_1"
-	RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresURLNonPooling1     RemoveProjectEnvContentHintUnion1Type = "removeProjectEnv_contentHint_PostgresURLNonPooling_1"
-	RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresPrismaURL1         RemoveProjectEnvContentHintUnion1Type = "removeProjectEnv_contentHint_PostgresPrismaURL_1"
-	RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresUser1              RemoveProjectEnvContentHintUnion1Type = "removeProjectEnv_contentHint_PostgresUser_1"
-	RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresHost1              RemoveProjectEnvContentHintUnion1Type = "removeProjectEnv_contentHint_PostgresHost_1"
-	RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresPassword1          RemoveProjectEnvContentHintUnion1Type = "removeProjectEnv_contentHint_PostgresPassword_1"
-	RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresDatabase1          RemoveProjectEnvContentHintUnion1Type = "removeProjectEnv_contentHint_PostgresDatabase_1"
-	RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresURLNoSsl1          RemoveProjectEnvContentHintUnion1Type = "removeProjectEnv_contentHint_PostgresURLNoSsl_1"
-	RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintIntegrationStoreSecret1    RemoveProjectEnvContentHintUnion1Type = "removeProjectEnv_contentHint_IntegrationStoreSecret_1"
-	RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintFlagsConnectionString1     RemoveProjectEnvContentHintUnion1Type = "removeProjectEnv_contentHint_FlagsConnectionString_1"
+	RemoveProjectEnvContentHintUnion1TypeRedisURL                  RemoveProjectEnvContentHintUnion1Type = "redis-url"
+	RemoveProjectEnvContentHintUnion1TypeRedisRestAPIURL           RemoveProjectEnvContentHintUnion1Type = "redis-rest-api-url"
+	RemoveProjectEnvContentHintUnion1TypeRedisRestAPIToken         RemoveProjectEnvContentHintUnion1Type = "redis-rest-api-token"
+	RemoveProjectEnvContentHintUnion1TypeRedisRestAPIReadOnlyToken RemoveProjectEnvContentHintUnion1Type = "redis-rest-api-read-only-token"
+	RemoveProjectEnvContentHintUnion1TypeBlobReadWriteToken        RemoveProjectEnvContentHintUnion1Type = "blob-read-write-token"
+	RemoveProjectEnvContentHintUnion1TypePostgresURL               RemoveProjectEnvContentHintUnion1Type = "postgres-url"
+	RemoveProjectEnvContentHintUnion1TypePostgresURLNonPooling     RemoveProjectEnvContentHintUnion1Type = "postgres-url-non-pooling"
+	RemoveProjectEnvContentHintUnion1TypePostgresPrismaURL         RemoveProjectEnvContentHintUnion1Type = "postgres-prisma-url"
+	RemoveProjectEnvContentHintUnion1TypePostgresUser              RemoveProjectEnvContentHintUnion1Type = "postgres-user"
+	RemoveProjectEnvContentHintUnion1TypePostgresHost              RemoveProjectEnvContentHintUnion1Type = "postgres-host"
+	RemoveProjectEnvContentHintUnion1TypePostgresPassword          RemoveProjectEnvContentHintUnion1Type = "postgres-password"
+	RemoveProjectEnvContentHintUnion1TypePostgresDatabase          RemoveProjectEnvContentHintUnion1Type = "postgres-database"
+	RemoveProjectEnvContentHintUnion1TypePostgresURLNoSsl          RemoveProjectEnvContentHintUnion1Type = "postgres-url-no-ssl"
+	RemoveProjectEnvContentHintUnion1TypeIntegrationStoreSecret    RemoveProjectEnvContentHintUnion1Type = "integration-store-secret"
+	RemoveProjectEnvContentHintUnion1TypeFlagsConnectionString     RemoveProjectEnvContentHintUnion1Type = "flags-connection-string"
 )
 
 type RemoveProjectEnvContentHintUnion1 struct {
@@ -4191,245 +4575,332 @@ type RemoveProjectEnvContentHintUnion1 struct {
 	Type RemoveProjectEnvContentHintUnion1Type
 }
 
-func CreateRemoveProjectEnvContentHintUnion1RemoveProjectEnvContentHintRedisURL1(removeProjectEnvContentHintRedisURL1 RemoveProjectEnvContentHintRedisURL1) RemoveProjectEnvContentHintUnion1 {
-	typ := RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintRedisURL1
+func CreateRemoveProjectEnvContentHintUnion1RedisURL(redisURL RemoveProjectEnvContentHintRedisURL1) RemoveProjectEnvContentHintUnion1 {
+	typ := RemoveProjectEnvContentHintUnion1TypeRedisURL
+
+	typStr := RemoveProjectEnvTypeRedisURL1(typ)
+	redisURL.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion1{
-		RemoveProjectEnvContentHintRedisURL1: &removeProjectEnvContentHintRedisURL1,
+		RemoveProjectEnvContentHintRedisURL1: &redisURL,
 		Type:                                 typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion1RemoveProjectEnvContentHintRedisRestAPIURL1(removeProjectEnvContentHintRedisRestAPIURL1 RemoveProjectEnvContentHintRedisRestAPIURL1) RemoveProjectEnvContentHintUnion1 {
-	typ := RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintRedisRestAPIURL1
+func CreateRemoveProjectEnvContentHintUnion1RedisRestAPIURL(redisRestAPIURL RemoveProjectEnvContentHintRedisRestAPIURL1) RemoveProjectEnvContentHintUnion1 {
+	typ := RemoveProjectEnvContentHintUnion1TypeRedisRestAPIURL
+
+	typStr := RemoveProjectEnvTypeRedisRestAPIURL1(typ)
+	redisRestAPIURL.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion1{
-		RemoveProjectEnvContentHintRedisRestAPIURL1: &removeProjectEnvContentHintRedisRestAPIURL1,
+		RemoveProjectEnvContentHintRedisRestAPIURL1: &redisRestAPIURL,
 		Type: typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion1RemoveProjectEnvContentHintRedisRestAPIToken1(removeProjectEnvContentHintRedisRestAPIToken1 RemoveProjectEnvContentHintRedisRestAPIToken1) RemoveProjectEnvContentHintUnion1 {
-	typ := RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintRedisRestAPIToken1
+func CreateRemoveProjectEnvContentHintUnion1RedisRestAPIToken(redisRestAPIToken RemoveProjectEnvContentHintRedisRestAPIToken1) RemoveProjectEnvContentHintUnion1 {
+	typ := RemoveProjectEnvContentHintUnion1TypeRedisRestAPIToken
+
+	typStr := RemoveProjectEnvTypeRedisRestAPIToken1(typ)
+	redisRestAPIToken.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion1{
-		RemoveProjectEnvContentHintRedisRestAPIToken1: &removeProjectEnvContentHintRedisRestAPIToken1,
+		RemoveProjectEnvContentHintRedisRestAPIToken1: &redisRestAPIToken,
 		Type: typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion1RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken1(removeProjectEnvContentHintRedisRestAPIReadOnlyToken1 RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken1) RemoveProjectEnvContentHintUnion1 {
-	typ := RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintRedisRestAPIReadOnlyToken1
+func CreateRemoveProjectEnvContentHintUnion1RedisRestAPIReadOnlyToken(redisRestAPIReadOnlyToken RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken1) RemoveProjectEnvContentHintUnion1 {
+	typ := RemoveProjectEnvContentHintUnion1TypeRedisRestAPIReadOnlyToken
+
+	typStr := RemoveProjectEnvTypeRedisRestAPIReadOnlyToken1(typ)
+	redisRestAPIReadOnlyToken.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion1{
-		RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken1: &removeProjectEnvContentHintRedisRestAPIReadOnlyToken1,
+		RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken1: &redisRestAPIReadOnlyToken,
 		Type: typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion1RemoveProjectEnvContentHintBlobReadWriteToken1(removeProjectEnvContentHintBlobReadWriteToken1 RemoveProjectEnvContentHintBlobReadWriteToken1) RemoveProjectEnvContentHintUnion1 {
-	typ := RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintBlobReadWriteToken1
+func CreateRemoveProjectEnvContentHintUnion1BlobReadWriteToken(blobReadWriteToken RemoveProjectEnvContentHintBlobReadWriteToken1) RemoveProjectEnvContentHintUnion1 {
+	typ := RemoveProjectEnvContentHintUnion1TypeBlobReadWriteToken
+
+	typStr := RemoveProjectEnvTypeBlobReadWriteToken1(typ)
+	blobReadWriteToken.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion1{
-		RemoveProjectEnvContentHintBlobReadWriteToken1: &removeProjectEnvContentHintBlobReadWriteToken1,
+		RemoveProjectEnvContentHintBlobReadWriteToken1: &blobReadWriteToken,
 		Type: typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion1RemoveProjectEnvContentHintPostgresURL1(removeProjectEnvContentHintPostgresURL1 RemoveProjectEnvContentHintPostgresURL1) RemoveProjectEnvContentHintUnion1 {
-	typ := RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresURL1
+func CreateRemoveProjectEnvContentHintUnion1PostgresURL(postgresURL RemoveProjectEnvContentHintPostgresURL1) RemoveProjectEnvContentHintUnion1 {
+	typ := RemoveProjectEnvContentHintUnion1TypePostgresURL
+
+	typStr := RemoveProjectEnvTypePostgresURL1(typ)
+	postgresURL.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion1{
-		RemoveProjectEnvContentHintPostgresURL1: &removeProjectEnvContentHintPostgresURL1,
+		RemoveProjectEnvContentHintPostgresURL1: &postgresURL,
 		Type:                                    typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion1RemoveProjectEnvContentHintPostgresURLNonPooling1(removeProjectEnvContentHintPostgresURLNonPooling1 RemoveProjectEnvContentHintPostgresURLNonPooling1) RemoveProjectEnvContentHintUnion1 {
-	typ := RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresURLNonPooling1
+func CreateRemoveProjectEnvContentHintUnion1PostgresURLNonPooling(postgresURLNonPooling RemoveProjectEnvContentHintPostgresURLNonPooling1) RemoveProjectEnvContentHintUnion1 {
+	typ := RemoveProjectEnvContentHintUnion1TypePostgresURLNonPooling
+
+	typStr := RemoveProjectEnvTypePostgresURLNonPooling1(typ)
+	postgresURLNonPooling.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion1{
-		RemoveProjectEnvContentHintPostgresURLNonPooling1: &removeProjectEnvContentHintPostgresURLNonPooling1,
+		RemoveProjectEnvContentHintPostgresURLNonPooling1: &postgresURLNonPooling,
 		Type: typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion1RemoveProjectEnvContentHintPostgresPrismaURL1(removeProjectEnvContentHintPostgresPrismaURL1 RemoveProjectEnvContentHintPostgresPrismaURL1) RemoveProjectEnvContentHintUnion1 {
-	typ := RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresPrismaURL1
+func CreateRemoveProjectEnvContentHintUnion1PostgresPrismaURL(postgresPrismaURL RemoveProjectEnvContentHintPostgresPrismaURL1) RemoveProjectEnvContentHintUnion1 {
+	typ := RemoveProjectEnvContentHintUnion1TypePostgresPrismaURL
+
+	typStr := RemoveProjectEnvTypePostgresPrismaURL1(typ)
+	postgresPrismaURL.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion1{
-		RemoveProjectEnvContentHintPostgresPrismaURL1: &removeProjectEnvContentHintPostgresPrismaURL1,
+		RemoveProjectEnvContentHintPostgresPrismaURL1: &postgresPrismaURL,
 		Type: typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion1RemoveProjectEnvContentHintPostgresUser1(removeProjectEnvContentHintPostgresUser1 RemoveProjectEnvContentHintPostgresUser1) RemoveProjectEnvContentHintUnion1 {
-	typ := RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresUser1
+func CreateRemoveProjectEnvContentHintUnion1PostgresUser(postgresUser RemoveProjectEnvContentHintPostgresUser1) RemoveProjectEnvContentHintUnion1 {
+	typ := RemoveProjectEnvContentHintUnion1TypePostgresUser
+
+	typStr := RemoveProjectEnvTypePostgresUser1(typ)
+	postgresUser.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion1{
-		RemoveProjectEnvContentHintPostgresUser1: &removeProjectEnvContentHintPostgresUser1,
+		RemoveProjectEnvContentHintPostgresUser1: &postgresUser,
 		Type:                                     typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion1RemoveProjectEnvContentHintPostgresHost1(removeProjectEnvContentHintPostgresHost1 RemoveProjectEnvContentHintPostgresHost1) RemoveProjectEnvContentHintUnion1 {
-	typ := RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresHost1
+func CreateRemoveProjectEnvContentHintUnion1PostgresHost(postgresHost RemoveProjectEnvContentHintPostgresHost1) RemoveProjectEnvContentHintUnion1 {
+	typ := RemoveProjectEnvContentHintUnion1TypePostgresHost
+
+	typStr := RemoveProjectEnvTypePostgresHost1(typ)
+	postgresHost.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion1{
-		RemoveProjectEnvContentHintPostgresHost1: &removeProjectEnvContentHintPostgresHost1,
+		RemoveProjectEnvContentHintPostgresHost1: &postgresHost,
 		Type:                                     typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion1RemoveProjectEnvContentHintPostgresPassword1(removeProjectEnvContentHintPostgresPassword1 RemoveProjectEnvContentHintPostgresPassword1) RemoveProjectEnvContentHintUnion1 {
-	typ := RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresPassword1
+func CreateRemoveProjectEnvContentHintUnion1PostgresPassword(postgresPassword RemoveProjectEnvContentHintPostgresPassword1) RemoveProjectEnvContentHintUnion1 {
+	typ := RemoveProjectEnvContentHintUnion1TypePostgresPassword
+
+	typStr := RemoveProjectEnvTypePostgresPassword1(typ)
+	postgresPassword.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion1{
-		RemoveProjectEnvContentHintPostgresPassword1: &removeProjectEnvContentHintPostgresPassword1,
+		RemoveProjectEnvContentHintPostgresPassword1: &postgresPassword,
 		Type: typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion1RemoveProjectEnvContentHintPostgresDatabase1(removeProjectEnvContentHintPostgresDatabase1 RemoveProjectEnvContentHintPostgresDatabase1) RemoveProjectEnvContentHintUnion1 {
-	typ := RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresDatabase1
+func CreateRemoveProjectEnvContentHintUnion1PostgresDatabase(postgresDatabase RemoveProjectEnvContentHintPostgresDatabase1) RemoveProjectEnvContentHintUnion1 {
+	typ := RemoveProjectEnvContentHintUnion1TypePostgresDatabase
+
+	typStr := RemoveProjectEnvTypePostgresDatabase1(typ)
+	postgresDatabase.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion1{
-		RemoveProjectEnvContentHintPostgresDatabase1: &removeProjectEnvContentHintPostgresDatabase1,
+		RemoveProjectEnvContentHintPostgresDatabase1: &postgresDatabase,
 		Type: typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion1RemoveProjectEnvContentHintPostgresURLNoSsl1(removeProjectEnvContentHintPostgresURLNoSsl1 RemoveProjectEnvContentHintPostgresURLNoSsl1) RemoveProjectEnvContentHintUnion1 {
-	typ := RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresURLNoSsl1
+func CreateRemoveProjectEnvContentHintUnion1PostgresURLNoSsl(postgresURLNoSsl RemoveProjectEnvContentHintPostgresURLNoSsl1) RemoveProjectEnvContentHintUnion1 {
+	typ := RemoveProjectEnvContentHintUnion1TypePostgresURLNoSsl
+
+	typStr := RemoveProjectEnvTypePostgresURLNoSsl1(typ)
+	postgresURLNoSsl.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion1{
-		RemoveProjectEnvContentHintPostgresURLNoSsl1: &removeProjectEnvContentHintPostgresURLNoSsl1,
+		RemoveProjectEnvContentHintPostgresURLNoSsl1: &postgresURLNoSsl,
 		Type: typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion1RemoveProjectEnvContentHintIntegrationStoreSecret1(removeProjectEnvContentHintIntegrationStoreSecret1 RemoveProjectEnvContentHintIntegrationStoreSecret1) RemoveProjectEnvContentHintUnion1 {
-	typ := RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintIntegrationStoreSecret1
+func CreateRemoveProjectEnvContentHintUnion1IntegrationStoreSecret(integrationStoreSecret RemoveProjectEnvContentHintIntegrationStoreSecret1) RemoveProjectEnvContentHintUnion1 {
+	typ := RemoveProjectEnvContentHintUnion1TypeIntegrationStoreSecret
+
+	typStr := RemoveProjectEnvTypeIntegrationStoreSecret1(typ)
+	integrationStoreSecret.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion1{
-		RemoveProjectEnvContentHintIntegrationStoreSecret1: &removeProjectEnvContentHintIntegrationStoreSecret1,
+		RemoveProjectEnvContentHintIntegrationStoreSecret1: &integrationStoreSecret,
 		Type: typ,
 	}
 }
 
-func CreateRemoveProjectEnvContentHintUnion1RemoveProjectEnvContentHintFlagsConnectionString1(removeProjectEnvContentHintFlagsConnectionString1 RemoveProjectEnvContentHintFlagsConnectionString1) RemoveProjectEnvContentHintUnion1 {
-	typ := RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintFlagsConnectionString1
+func CreateRemoveProjectEnvContentHintUnion1FlagsConnectionString(flagsConnectionString RemoveProjectEnvContentHintFlagsConnectionString1) RemoveProjectEnvContentHintUnion1 {
+	typ := RemoveProjectEnvContentHintUnion1TypeFlagsConnectionString
+
+	typStr := RemoveProjectEnvTypeFlagsConnectionString1(typ)
+	flagsConnectionString.Type = typStr
 
 	return RemoveProjectEnvContentHintUnion1{
-		RemoveProjectEnvContentHintFlagsConnectionString1: &removeProjectEnvContentHintFlagsConnectionString1,
+		RemoveProjectEnvContentHintFlagsConnectionString1: &flagsConnectionString,
 		Type: typ,
 	}
 }
 
 func (u *RemoveProjectEnvContentHintUnion1) UnmarshalJSON(data []byte) error {
 
-	var removeProjectEnvContentHintIntegrationStoreSecret1 RemoveProjectEnvContentHintIntegrationStoreSecret1 = RemoveProjectEnvContentHintIntegrationStoreSecret1{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintIntegrationStoreSecret1, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintIntegrationStoreSecret1 = &removeProjectEnvContentHintIntegrationStoreSecret1
-		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintIntegrationStoreSecret1
-		return nil
+	type discriminator struct {
+		Type string `json:"type"`
 	}
 
-	var removeProjectEnvContentHintRedisURL1 RemoveProjectEnvContentHintRedisURL1 = RemoveProjectEnvContentHintRedisURL1{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisURL1, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintRedisURL1 = &removeProjectEnvContentHintRedisURL1
-		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintRedisURL1
-		return nil
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
 	}
 
-	var removeProjectEnvContentHintRedisRestAPIURL1 RemoveProjectEnvContentHintRedisRestAPIURL1 = RemoveProjectEnvContentHintRedisRestAPIURL1{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIURL1, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintRedisRestAPIURL1 = &removeProjectEnvContentHintRedisRestAPIURL1
-		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintRedisRestAPIURL1
-		return nil
-	}
+	switch dis.Type {
+	case "redis-url":
+		removeProjectEnvContentHintRedisURL1 := new(RemoveProjectEnvContentHintRedisURL1)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisURL1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-url) type RemoveProjectEnvContentHintRedisURL1 within RemoveProjectEnvContentHintUnion1: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintRedisRestAPIToken1 RemoveProjectEnvContentHintRedisRestAPIToken1 = RemoveProjectEnvContentHintRedisRestAPIToken1{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIToken1, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintRedisRestAPIToken1 = &removeProjectEnvContentHintRedisRestAPIToken1
-		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintRedisRestAPIToken1
+		u.RemoveProjectEnvContentHintRedisURL1 = removeProjectEnvContentHintRedisURL1
+		u.Type = RemoveProjectEnvContentHintUnion1TypeRedisURL
 		return nil
-	}
+	case "redis-rest-api-url":
+		removeProjectEnvContentHintRedisRestAPIURL1 := new(RemoveProjectEnvContentHintRedisRestAPIURL1)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIURL1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-rest-api-url) type RemoveProjectEnvContentHintRedisRestAPIURL1 within RemoveProjectEnvContentHintUnion1: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintRedisRestAPIReadOnlyToken1 RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken1 = RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken1{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIReadOnlyToken1, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken1 = &removeProjectEnvContentHintRedisRestAPIReadOnlyToken1
-		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintRedisRestAPIReadOnlyToken1
+		u.RemoveProjectEnvContentHintRedisRestAPIURL1 = removeProjectEnvContentHintRedisRestAPIURL1
+		u.Type = RemoveProjectEnvContentHintUnion1TypeRedisRestAPIURL
 		return nil
-	}
+	case "redis-rest-api-token":
+		removeProjectEnvContentHintRedisRestAPIToken1 := new(RemoveProjectEnvContentHintRedisRestAPIToken1)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIToken1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-rest-api-token) type RemoveProjectEnvContentHintRedisRestAPIToken1 within RemoveProjectEnvContentHintUnion1: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintBlobReadWriteToken1 RemoveProjectEnvContentHintBlobReadWriteToken1 = RemoveProjectEnvContentHintBlobReadWriteToken1{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintBlobReadWriteToken1, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintBlobReadWriteToken1 = &removeProjectEnvContentHintBlobReadWriteToken1
-		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintBlobReadWriteToken1
+		u.RemoveProjectEnvContentHintRedisRestAPIToken1 = removeProjectEnvContentHintRedisRestAPIToken1
+		u.Type = RemoveProjectEnvContentHintUnion1TypeRedisRestAPIToken
 		return nil
-	}
+	case "redis-rest-api-read-only-token":
+		removeProjectEnvContentHintRedisRestAPIReadOnlyToken1 := new(RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken1)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIReadOnlyToken1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-rest-api-read-only-token) type RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken1 within RemoveProjectEnvContentHintUnion1: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintPostgresURL1 RemoveProjectEnvContentHintPostgresURL1 = RemoveProjectEnvContentHintPostgresURL1{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURL1, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintPostgresURL1 = &removeProjectEnvContentHintPostgresURL1
-		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresURL1
+		u.RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken1 = removeProjectEnvContentHintRedisRestAPIReadOnlyToken1
+		u.Type = RemoveProjectEnvContentHintUnion1TypeRedisRestAPIReadOnlyToken
 		return nil
-	}
+	case "blob-read-write-token":
+		removeProjectEnvContentHintBlobReadWriteToken1 := new(RemoveProjectEnvContentHintBlobReadWriteToken1)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintBlobReadWriteToken1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == blob-read-write-token) type RemoveProjectEnvContentHintBlobReadWriteToken1 within RemoveProjectEnvContentHintUnion1: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintPostgresURLNonPooling1 RemoveProjectEnvContentHintPostgresURLNonPooling1 = RemoveProjectEnvContentHintPostgresURLNonPooling1{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURLNonPooling1, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintPostgresURLNonPooling1 = &removeProjectEnvContentHintPostgresURLNonPooling1
-		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresURLNonPooling1
+		u.RemoveProjectEnvContentHintBlobReadWriteToken1 = removeProjectEnvContentHintBlobReadWriteToken1
+		u.Type = RemoveProjectEnvContentHintUnion1TypeBlobReadWriteToken
 		return nil
-	}
+	case "postgres-url":
+		removeProjectEnvContentHintPostgresURL1 := new(RemoveProjectEnvContentHintPostgresURL1)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURL1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-url) type RemoveProjectEnvContentHintPostgresURL1 within RemoveProjectEnvContentHintUnion1: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintPostgresPrismaURL1 RemoveProjectEnvContentHintPostgresPrismaURL1 = RemoveProjectEnvContentHintPostgresPrismaURL1{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresPrismaURL1, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintPostgresPrismaURL1 = &removeProjectEnvContentHintPostgresPrismaURL1
-		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresPrismaURL1
+		u.RemoveProjectEnvContentHintPostgresURL1 = removeProjectEnvContentHintPostgresURL1
+		u.Type = RemoveProjectEnvContentHintUnion1TypePostgresURL
 		return nil
-	}
+	case "postgres-url-non-pooling":
+		removeProjectEnvContentHintPostgresURLNonPooling1 := new(RemoveProjectEnvContentHintPostgresURLNonPooling1)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURLNonPooling1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-url-non-pooling) type RemoveProjectEnvContentHintPostgresURLNonPooling1 within RemoveProjectEnvContentHintUnion1: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintPostgresUser1 RemoveProjectEnvContentHintPostgresUser1 = RemoveProjectEnvContentHintPostgresUser1{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresUser1, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintPostgresUser1 = &removeProjectEnvContentHintPostgresUser1
-		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresUser1
+		u.RemoveProjectEnvContentHintPostgresURLNonPooling1 = removeProjectEnvContentHintPostgresURLNonPooling1
+		u.Type = RemoveProjectEnvContentHintUnion1TypePostgresURLNonPooling
 		return nil
-	}
+	case "postgres-prisma-url":
+		removeProjectEnvContentHintPostgresPrismaURL1 := new(RemoveProjectEnvContentHintPostgresPrismaURL1)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresPrismaURL1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-prisma-url) type RemoveProjectEnvContentHintPostgresPrismaURL1 within RemoveProjectEnvContentHintUnion1: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintPostgresHost1 RemoveProjectEnvContentHintPostgresHost1 = RemoveProjectEnvContentHintPostgresHost1{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresHost1, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintPostgresHost1 = &removeProjectEnvContentHintPostgresHost1
-		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresHost1
+		u.RemoveProjectEnvContentHintPostgresPrismaURL1 = removeProjectEnvContentHintPostgresPrismaURL1
+		u.Type = RemoveProjectEnvContentHintUnion1TypePostgresPrismaURL
 		return nil
-	}
+	case "postgres-user":
+		removeProjectEnvContentHintPostgresUser1 := new(RemoveProjectEnvContentHintPostgresUser1)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresUser1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-user) type RemoveProjectEnvContentHintPostgresUser1 within RemoveProjectEnvContentHintUnion1: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintPostgresPassword1 RemoveProjectEnvContentHintPostgresPassword1 = RemoveProjectEnvContentHintPostgresPassword1{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresPassword1, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintPostgresPassword1 = &removeProjectEnvContentHintPostgresPassword1
-		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresPassword1
+		u.RemoveProjectEnvContentHintPostgresUser1 = removeProjectEnvContentHintPostgresUser1
+		u.Type = RemoveProjectEnvContentHintUnion1TypePostgresUser
 		return nil
-	}
+	case "postgres-host":
+		removeProjectEnvContentHintPostgresHost1 := new(RemoveProjectEnvContentHintPostgresHost1)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresHost1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-host) type RemoveProjectEnvContentHintPostgresHost1 within RemoveProjectEnvContentHintUnion1: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintPostgresDatabase1 RemoveProjectEnvContentHintPostgresDatabase1 = RemoveProjectEnvContentHintPostgresDatabase1{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresDatabase1, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintPostgresDatabase1 = &removeProjectEnvContentHintPostgresDatabase1
-		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresDatabase1
+		u.RemoveProjectEnvContentHintPostgresHost1 = removeProjectEnvContentHintPostgresHost1
+		u.Type = RemoveProjectEnvContentHintUnion1TypePostgresHost
 		return nil
-	}
+	case "postgres-password":
+		removeProjectEnvContentHintPostgresPassword1 := new(RemoveProjectEnvContentHintPostgresPassword1)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresPassword1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-password) type RemoveProjectEnvContentHintPostgresPassword1 within RemoveProjectEnvContentHintUnion1: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintPostgresURLNoSsl1 RemoveProjectEnvContentHintPostgresURLNoSsl1 = RemoveProjectEnvContentHintPostgresURLNoSsl1{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURLNoSsl1, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintPostgresURLNoSsl1 = &removeProjectEnvContentHintPostgresURLNoSsl1
-		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresURLNoSsl1
+		u.RemoveProjectEnvContentHintPostgresPassword1 = removeProjectEnvContentHintPostgresPassword1
+		u.Type = RemoveProjectEnvContentHintUnion1TypePostgresPassword
 		return nil
-	}
+	case "postgres-database":
+		removeProjectEnvContentHintPostgresDatabase1 := new(RemoveProjectEnvContentHintPostgresDatabase1)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresDatabase1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-database) type RemoveProjectEnvContentHintPostgresDatabase1 within RemoveProjectEnvContentHintUnion1: %w", string(data), err)
+		}
 
-	var removeProjectEnvContentHintFlagsConnectionString1 RemoveProjectEnvContentHintFlagsConnectionString1 = RemoveProjectEnvContentHintFlagsConnectionString1{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintFlagsConnectionString1, "", true, nil); err == nil {
-		u.RemoveProjectEnvContentHintFlagsConnectionString1 = &removeProjectEnvContentHintFlagsConnectionString1
-		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintFlagsConnectionString1
+		u.RemoveProjectEnvContentHintPostgresDatabase1 = removeProjectEnvContentHintPostgresDatabase1
+		u.Type = RemoveProjectEnvContentHintUnion1TypePostgresDatabase
+		return nil
+	case "postgres-url-no-ssl":
+		removeProjectEnvContentHintPostgresURLNoSsl1 := new(RemoveProjectEnvContentHintPostgresURLNoSsl1)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURLNoSsl1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-url-no-ssl) type RemoveProjectEnvContentHintPostgresURLNoSsl1 within RemoveProjectEnvContentHintUnion1: %w", string(data), err)
+		}
+
+		u.RemoveProjectEnvContentHintPostgresURLNoSsl1 = removeProjectEnvContentHintPostgresURLNoSsl1
+		u.Type = RemoveProjectEnvContentHintUnion1TypePostgresURLNoSsl
+		return nil
+	case "integration-store-secret":
+		removeProjectEnvContentHintIntegrationStoreSecret1 := new(RemoveProjectEnvContentHintIntegrationStoreSecret1)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintIntegrationStoreSecret1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == integration-store-secret) type RemoveProjectEnvContentHintIntegrationStoreSecret1 within RemoveProjectEnvContentHintUnion1: %w", string(data), err)
+		}
+
+		u.RemoveProjectEnvContentHintIntegrationStoreSecret1 = removeProjectEnvContentHintIntegrationStoreSecret1
+		u.Type = RemoveProjectEnvContentHintUnion1TypeIntegrationStoreSecret
+		return nil
+	case "flags-connection-string":
+		removeProjectEnvContentHintFlagsConnectionString1 := new(RemoveProjectEnvContentHintFlagsConnectionString1)
+		if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintFlagsConnectionString1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == flags-connection-string) type RemoveProjectEnvContentHintFlagsConnectionString1 within RemoveProjectEnvContentHintUnion1: %w", string(data), err)
+		}
+
+		u.RemoveProjectEnvContentHintFlagsConnectionString1 = removeProjectEnvContentHintFlagsConnectionString1
+		u.Type = RemoveProjectEnvContentHintUnion1TypeFlagsConnectionString
 		return nil
 	}
 
@@ -4708,6 +5179,111 @@ func (o *RemoveProjectEnvResponseBody1) GetContentHint() *RemoveProjectEnvConten
 		return nil
 	}
 	return o.ContentHint
+}
+
+func (o *RemoveProjectEnvResponseBody1) GetContentHintRedisURL() *RemoveProjectEnvContentHintRedisURL1 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintRedisURL1
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody1) GetContentHintRedisRestAPIURL() *RemoveProjectEnvContentHintRedisRestAPIURL1 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintRedisRestAPIURL1
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody1) GetContentHintRedisRestAPIToken() *RemoveProjectEnvContentHintRedisRestAPIToken1 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintRedisRestAPIToken1
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody1) GetContentHintRedisRestAPIReadOnlyToken() *RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken1 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken1
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody1) GetContentHintBlobReadWriteToken() *RemoveProjectEnvContentHintBlobReadWriteToken1 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintBlobReadWriteToken1
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody1) GetContentHintPostgresURL() *RemoveProjectEnvContentHintPostgresURL1 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintPostgresURL1
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody1) GetContentHintPostgresURLNonPooling() *RemoveProjectEnvContentHintPostgresURLNonPooling1 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintPostgresURLNonPooling1
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody1) GetContentHintPostgresPrismaURL() *RemoveProjectEnvContentHintPostgresPrismaURL1 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintPostgresPrismaURL1
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody1) GetContentHintPostgresUser() *RemoveProjectEnvContentHintPostgresUser1 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintPostgresUser1
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody1) GetContentHintPostgresHost() *RemoveProjectEnvContentHintPostgresHost1 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintPostgresHost1
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody1) GetContentHintPostgresPassword() *RemoveProjectEnvContentHintPostgresPassword1 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintPostgresPassword1
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody1) GetContentHintPostgresDatabase() *RemoveProjectEnvContentHintPostgresDatabase1 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintPostgresDatabase1
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody1) GetContentHintPostgresURLNoSsl() *RemoveProjectEnvContentHintPostgresURLNoSsl1 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintPostgresURLNoSsl1
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody1) GetContentHintIntegrationStoreSecret() *RemoveProjectEnvContentHintIntegrationStoreSecret1 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintIntegrationStoreSecret1
+	}
+	return nil
+}
+
+func (o *RemoveProjectEnvResponseBody1) GetContentHintFlagsConnectionString() *RemoveProjectEnvContentHintFlagsConnectionString1 {
+	if v := o.GetContentHint(); v != nil {
+		return v.RemoveProjectEnvContentHintFlagsConnectionString1
+	}
+	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody1) GetInternalContentHint() *RemoveProjectEnvInternalContentHint1 {

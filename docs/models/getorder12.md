@@ -22,5 +22,5 @@ let value: GetOrder12 = {
 
 | Field                                                    | Type                                                     | Required                                                 | Description                                              |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `code`                                                   | [models.GetOrder1Code](../models/getorder1code.md)       | :heavy_check_mark:                                       | N/A                                                      |
+| `code`                                                   | *"tld-outage"*                                           | :heavy_check_mark:                                       | N/A                                                      |
 | `details`                                                | [models.GetOrder1Details](../models/getorder1details.md) | :heavy_check_mark:                                       | N/A                                                      |

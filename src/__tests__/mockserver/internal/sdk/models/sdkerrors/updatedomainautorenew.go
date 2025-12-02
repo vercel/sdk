@@ -13,8 +13,8 @@ import (
 type UpdateDomainAutoRenewForbiddenType string
 
 const (
-	UpdateDomainAutoRenewForbiddenTypeNotAuthorizedForScopeError UpdateDomainAutoRenewForbiddenType = "NotAuthorizedForScope_error"
-	UpdateDomainAutoRenewForbiddenTypeForbiddenError             UpdateDomainAutoRenewForbiddenType = "Forbidden_error"
+	UpdateDomainAutoRenewForbiddenTypeNotAuthorizedForScope UpdateDomainAutoRenewForbiddenType = "not_authorized_for_scope"
+	UpdateDomainAutoRenewForbiddenTypeForbidden             UpdateDomainAutoRenewForbiddenType = "forbidden"
 )
 
 // UpdateDomainAutoRenewForbidden - NotAuthorizedForScope
@@ -29,37 +29,53 @@ type UpdateDomainAutoRenewForbidden struct {
 
 var _ error = &UpdateDomainAutoRenewForbidden{}
 
-func CreateUpdateDomainAutoRenewForbiddenNotAuthorizedForScopeError(notAuthorizedForScopeError NotAuthorizedForScopeError) UpdateDomainAutoRenewForbidden {
-	typ := UpdateDomainAutoRenewForbiddenTypeNotAuthorizedForScopeError
+func CreateUpdateDomainAutoRenewForbiddenNotAuthorizedForScope(notAuthorizedForScope NotAuthorizedForScopeError) UpdateDomainAutoRenewForbidden {
+	typ := UpdateDomainAutoRenewForbiddenTypeNotAuthorizedForScope
 
 	return UpdateDomainAutoRenewForbidden{
-		NotAuthorizedForScopeError: &notAuthorizedForScopeError,
+		NotAuthorizedForScopeError: &notAuthorizedForScope,
 		Type:                       typ,
 	}
 }
 
-func CreateUpdateDomainAutoRenewForbiddenForbiddenError(forbiddenError ForbiddenError) UpdateDomainAutoRenewForbidden {
-	typ := UpdateDomainAutoRenewForbiddenTypeForbiddenError
+func CreateUpdateDomainAutoRenewForbiddenForbidden(forbidden ForbiddenError) UpdateDomainAutoRenewForbidden {
+	typ := UpdateDomainAutoRenewForbiddenTypeForbidden
 
 	return UpdateDomainAutoRenewForbidden{
-		ForbiddenError: &forbiddenError,
+		ForbiddenError: &forbidden,
 		Type:           typ,
 	}
 }
 
 func (u *UpdateDomainAutoRenewForbidden) UnmarshalJSON(data []byte) error {
 
-	var notAuthorizedForScopeError NotAuthorizedForScopeError = NotAuthorizedForScopeError{}
-	if err := utils.UnmarshalJSON(data, &notAuthorizedForScopeError, "", true, nil); err == nil {
-		u.NotAuthorizedForScopeError = &notAuthorizedForScopeError
-		u.Type = UpdateDomainAutoRenewForbiddenTypeNotAuthorizedForScopeError
-		return nil
+	type discriminator struct {
+		Code string `json:"code"`
 	}
 
-	var forbiddenError ForbiddenError = ForbiddenError{}
-	if err := utils.UnmarshalJSON(data, &forbiddenError, "", true, nil); err == nil {
-		u.ForbiddenError = &forbiddenError
-		u.Type = UpdateDomainAutoRenewForbiddenTypeForbiddenError
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Code {
+	case "not_authorized_for_scope":
+		notAuthorizedForScopeError := new(NotAuthorizedForScopeError)
+		if err := utils.UnmarshalJSON(data, &notAuthorizedForScopeError, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == not_authorized_for_scope) type NotAuthorizedForScopeError within UpdateDomainAutoRenewForbidden: %w", string(data), err)
+		}
+
+		u.NotAuthorizedForScopeError = notAuthorizedForScopeError
+		u.Type = UpdateDomainAutoRenewForbiddenTypeNotAuthorizedForScope
+		return nil
+	case "forbidden":
+		forbiddenError := new(ForbiddenError)
+		if err := utils.UnmarshalJSON(data, &forbiddenError, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == forbidden) type ForbiddenError within UpdateDomainAutoRenewForbidden: %w", string(data), err)
+		}
+
+		u.ForbiddenError = forbiddenError
+		u.Type = UpdateDomainAutoRenewForbiddenTypeForbidden
 		return nil
 	}
 
@@ -80,10 +96,10 @@ func (u UpdateDomainAutoRenewForbidden) MarshalJSON() ([]byte, error) {
 
 func (u UpdateDomainAutoRenewForbidden) Error() string {
 	switch u.Type {
-	case UpdateDomainAutoRenewForbiddenTypeNotAuthorizedForScopeError:
+	case UpdateDomainAutoRenewForbiddenTypeNotAuthorizedForScope:
 		data, _ := json.Marshal(u.NotAuthorizedForScopeError)
 		return string(data)
-	case UpdateDomainAutoRenewForbiddenTypeForbiddenError:
+	case UpdateDomainAutoRenewForbiddenTypeForbidden:
 		data, _ := json.Marshal(u.ForbiddenError)
 		return string(data)
 	default:

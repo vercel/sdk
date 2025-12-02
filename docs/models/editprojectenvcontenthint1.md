@@ -13,7 +13,7 @@ let value: EditProjectEnvContentHint1 = {
 
 ## Fields
 
-| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `type`                                                                             | [models.EditProjectEnvContentHintType](../models/editprojectenvcontenthinttype.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `storeId`                                                                          | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `type`             | *"redis-url"*      | :heavy_check_mark: | N/A                |
+| `storeId`          | *string*           | :heavy_check_mark: | N/A                |

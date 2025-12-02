@@ -350,10 +350,10 @@ func (o *ListDeploymentAliasesProtectionBypassShareableLink) GetExpires() *float
 type ListDeploymentAliasesProtectionBypassUnionType string
 
 const (
-	ListDeploymentAliasesProtectionBypassUnionTypeListDeploymentAliasesProtectionBypassShareableLink           ListDeploymentAliasesProtectionBypassUnionType = "listDeploymentAliases_protectionBypass_ShareableLink"
-	ListDeploymentAliasesProtectionBypassUnionTypeListDeploymentAliasesProtectionBypassUser                    ListDeploymentAliasesProtectionBypassUnionType = "listDeploymentAliases_protectionBypass_User"
-	ListDeploymentAliasesProtectionBypassUnionTypeListDeploymentAliasesProtectionBypassAliasProtectionOverride ListDeploymentAliasesProtectionBypassUnionType = "listDeploymentAliases_protectionBypass_AliasProtectionOverride"
-	ListDeploymentAliasesProtectionBypassUnionTypeListDeploymentAliasesProtectionBypassEmailInvite             ListDeploymentAliasesProtectionBypassUnionType = "listDeploymentAliases_protectionBypass_EmailInvite"
+	ListDeploymentAliasesProtectionBypassUnionTypeShareableLink           ListDeploymentAliasesProtectionBypassUnionType = "shareable-link"
+	ListDeploymentAliasesProtectionBypassUnionTypeUser                    ListDeploymentAliasesProtectionBypassUnionType = "user"
+	ListDeploymentAliasesProtectionBypassUnionTypeAliasProtectionOverride ListDeploymentAliasesProtectionBypassUnionType = "alias-protection-override"
+	ListDeploymentAliasesProtectionBypassUnionTypeEmailInvite             ListDeploymentAliasesProtectionBypassUnionType = "email_invite"
 )
 
 type ListDeploymentAliasesProtectionBypassUnion struct {
@@ -365,69 +365,101 @@ type ListDeploymentAliasesProtectionBypassUnion struct {
 	Type ListDeploymentAliasesProtectionBypassUnionType
 }
 
-func CreateListDeploymentAliasesProtectionBypassUnionListDeploymentAliasesProtectionBypassShareableLink(listDeploymentAliasesProtectionBypassShareableLink ListDeploymentAliasesProtectionBypassShareableLink) ListDeploymentAliasesProtectionBypassUnion {
-	typ := ListDeploymentAliasesProtectionBypassUnionTypeListDeploymentAliasesProtectionBypassShareableLink
+func CreateListDeploymentAliasesProtectionBypassUnionShareableLink(shareableLink ListDeploymentAliasesProtectionBypassShareableLink) ListDeploymentAliasesProtectionBypassUnion {
+	typ := ListDeploymentAliasesProtectionBypassUnionTypeShareableLink
+
+	typStr := ListDeploymentAliasesScopeShareableLink(typ)
+	shareableLink.Scope = typStr
 
 	return ListDeploymentAliasesProtectionBypassUnion{
-		ListDeploymentAliasesProtectionBypassShareableLink: &listDeploymentAliasesProtectionBypassShareableLink,
+		ListDeploymentAliasesProtectionBypassShareableLink: &shareableLink,
 		Type: typ,
 	}
 }
 
-func CreateListDeploymentAliasesProtectionBypassUnionListDeploymentAliasesProtectionBypassUser(listDeploymentAliasesProtectionBypassUser ListDeploymentAliasesProtectionBypassUser) ListDeploymentAliasesProtectionBypassUnion {
-	typ := ListDeploymentAliasesProtectionBypassUnionTypeListDeploymentAliasesProtectionBypassUser
+func CreateListDeploymentAliasesProtectionBypassUnionUser(user ListDeploymentAliasesProtectionBypassUser) ListDeploymentAliasesProtectionBypassUnion {
+	typ := ListDeploymentAliasesProtectionBypassUnionTypeUser
+
+	typStr := ListDeploymentAliasesScopeUser(typ)
+	user.Scope = typStr
 
 	return ListDeploymentAliasesProtectionBypassUnion{
-		ListDeploymentAliasesProtectionBypassUser: &listDeploymentAliasesProtectionBypassUser,
+		ListDeploymentAliasesProtectionBypassUser: &user,
 		Type: typ,
 	}
 }
 
-func CreateListDeploymentAliasesProtectionBypassUnionListDeploymentAliasesProtectionBypassAliasProtectionOverride(listDeploymentAliasesProtectionBypassAliasProtectionOverride ListDeploymentAliasesProtectionBypassAliasProtectionOverride) ListDeploymentAliasesProtectionBypassUnion {
-	typ := ListDeploymentAliasesProtectionBypassUnionTypeListDeploymentAliasesProtectionBypassAliasProtectionOverride
+func CreateListDeploymentAliasesProtectionBypassUnionAliasProtectionOverride(aliasProtectionOverride ListDeploymentAliasesProtectionBypassAliasProtectionOverride) ListDeploymentAliasesProtectionBypassUnion {
+	typ := ListDeploymentAliasesProtectionBypassUnionTypeAliasProtectionOverride
+
+	typStr := ListDeploymentAliasesScopeAliasProtectionOverride(typ)
+	aliasProtectionOverride.Scope = typStr
 
 	return ListDeploymentAliasesProtectionBypassUnion{
-		ListDeploymentAliasesProtectionBypassAliasProtectionOverride: &listDeploymentAliasesProtectionBypassAliasProtectionOverride,
+		ListDeploymentAliasesProtectionBypassAliasProtectionOverride: &aliasProtectionOverride,
 		Type: typ,
 	}
 }
 
-func CreateListDeploymentAliasesProtectionBypassUnionListDeploymentAliasesProtectionBypassEmailInvite(listDeploymentAliasesProtectionBypassEmailInvite ListDeploymentAliasesProtectionBypassEmailInvite) ListDeploymentAliasesProtectionBypassUnion {
-	typ := ListDeploymentAliasesProtectionBypassUnionTypeListDeploymentAliasesProtectionBypassEmailInvite
+func CreateListDeploymentAliasesProtectionBypassUnionEmailInvite(emailInvite ListDeploymentAliasesProtectionBypassEmailInvite) ListDeploymentAliasesProtectionBypassUnion {
+	typ := ListDeploymentAliasesProtectionBypassUnionTypeEmailInvite
+
+	typStr := ListDeploymentAliasesScopeEmailInvite(typ)
+	emailInvite.Scope = typStr
 
 	return ListDeploymentAliasesProtectionBypassUnion{
-		ListDeploymentAliasesProtectionBypassEmailInvite: &listDeploymentAliasesProtectionBypassEmailInvite,
+		ListDeploymentAliasesProtectionBypassEmailInvite: &emailInvite,
 		Type: typ,
 	}
 }
 
 func (u *ListDeploymentAliasesProtectionBypassUnion) UnmarshalJSON(data []byte) error {
 
-	var listDeploymentAliasesProtectionBypassUser ListDeploymentAliasesProtectionBypassUser = ListDeploymentAliasesProtectionBypassUser{}
-	if err := utils.UnmarshalJSON(data, &listDeploymentAliasesProtectionBypassUser, "", true, nil); err == nil {
-		u.ListDeploymentAliasesProtectionBypassUser = &listDeploymentAliasesProtectionBypassUser
-		u.Type = ListDeploymentAliasesProtectionBypassUnionTypeListDeploymentAliasesProtectionBypassUser
-		return nil
+	type discriminator struct {
+		Scope string `json:"scope"`
 	}
 
-	var listDeploymentAliasesProtectionBypassEmailInvite ListDeploymentAliasesProtectionBypassEmailInvite = ListDeploymentAliasesProtectionBypassEmailInvite{}
-	if err := utils.UnmarshalJSON(data, &listDeploymentAliasesProtectionBypassEmailInvite, "", true, nil); err == nil {
-		u.ListDeploymentAliasesProtectionBypassEmailInvite = &listDeploymentAliasesProtectionBypassEmailInvite
-		u.Type = ListDeploymentAliasesProtectionBypassUnionTypeListDeploymentAliasesProtectionBypassEmailInvite
-		return nil
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
 	}
 
-	var listDeploymentAliasesProtectionBypassShareableLink ListDeploymentAliasesProtectionBypassShareableLink = ListDeploymentAliasesProtectionBypassShareableLink{}
-	if err := utils.UnmarshalJSON(data, &listDeploymentAliasesProtectionBypassShareableLink, "", true, nil); err == nil {
-		u.ListDeploymentAliasesProtectionBypassShareableLink = &listDeploymentAliasesProtectionBypassShareableLink
-		u.Type = ListDeploymentAliasesProtectionBypassUnionTypeListDeploymentAliasesProtectionBypassShareableLink
-		return nil
-	}
+	switch dis.Scope {
+	case "shareable-link":
+		listDeploymentAliasesProtectionBypassShareableLink := new(ListDeploymentAliasesProtectionBypassShareableLink)
+		if err := utils.UnmarshalJSON(data, &listDeploymentAliasesProtectionBypassShareableLink, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Scope == shareable-link) type ListDeploymentAliasesProtectionBypassShareableLink within ListDeploymentAliasesProtectionBypassUnion: %w", string(data), err)
+		}
 
-	var listDeploymentAliasesProtectionBypassAliasProtectionOverride ListDeploymentAliasesProtectionBypassAliasProtectionOverride = ListDeploymentAliasesProtectionBypassAliasProtectionOverride{}
-	if err := utils.UnmarshalJSON(data, &listDeploymentAliasesProtectionBypassAliasProtectionOverride, "", true, nil); err == nil {
-		u.ListDeploymentAliasesProtectionBypassAliasProtectionOverride = &listDeploymentAliasesProtectionBypassAliasProtectionOverride
-		u.Type = ListDeploymentAliasesProtectionBypassUnionTypeListDeploymentAliasesProtectionBypassAliasProtectionOverride
+		u.ListDeploymentAliasesProtectionBypassShareableLink = listDeploymentAliasesProtectionBypassShareableLink
+		u.Type = ListDeploymentAliasesProtectionBypassUnionTypeShareableLink
+		return nil
+	case "user":
+		listDeploymentAliasesProtectionBypassUser := new(ListDeploymentAliasesProtectionBypassUser)
+		if err := utils.UnmarshalJSON(data, &listDeploymentAliasesProtectionBypassUser, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Scope == user) type ListDeploymentAliasesProtectionBypassUser within ListDeploymentAliasesProtectionBypassUnion: %w", string(data), err)
+		}
+
+		u.ListDeploymentAliasesProtectionBypassUser = listDeploymentAliasesProtectionBypassUser
+		u.Type = ListDeploymentAliasesProtectionBypassUnionTypeUser
+		return nil
+	case "alias-protection-override":
+		listDeploymentAliasesProtectionBypassAliasProtectionOverride := new(ListDeploymentAliasesProtectionBypassAliasProtectionOverride)
+		if err := utils.UnmarshalJSON(data, &listDeploymentAliasesProtectionBypassAliasProtectionOverride, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Scope == alias-protection-override) type ListDeploymentAliasesProtectionBypassAliasProtectionOverride within ListDeploymentAliasesProtectionBypassUnion: %w", string(data), err)
+		}
+
+		u.ListDeploymentAliasesProtectionBypassAliasProtectionOverride = listDeploymentAliasesProtectionBypassAliasProtectionOverride
+		u.Type = ListDeploymentAliasesProtectionBypassUnionTypeAliasProtectionOverride
+		return nil
+	case "email_invite":
+		listDeploymentAliasesProtectionBypassEmailInvite := new(ListDeploymentAliasesProtectionBypassEmailInvite)
+		if err := utils.UnmarshalJSON(data, &listDeploymentAliasesProtectionBypassEmailInvite, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Scope == email_invite) type ListDeploymentAliasesProtectionBypassEmailInvite within ListDeploymentAliasesProtectionBypassUnion: %w", string(data), err)
+		}
+
+		u.ListDeploymentAliasesProtectionBypassEmailInvite = listDeploymentAliasesProtectionBypassEmailInvite
+		u.Type = ListDeploymentAliasesProtectionBypassUnionTypeEmailInvite
 		return nil
 	}
 

@@ -13,8 +13,8 @@ import (
 type UpdateDomainNameserversForbiddenType string
 
 const (
-	UpdateDomainNameserversForbiddenTypeNotAuthorizedForScopeError UpdateDomainNameserversForbiddenType = "NotAuthorizedForScope_error"
-	UpdateDomainNameserversForbiddenTypeForbiddenError             UpdateDomainNameserversForbiddenType = "Forbidden_error"
+	UpdateDomainNameserversForbiddenTypeNotAuthorizedForScope UpdateDomainNameserversForbiddenType = "not_authorized_for_scope"
+	UpdateDomainNameserversForbiddenTypeForbidden             UpdateDomainNameserversForbiddenType = "forbidden"
 )
 
 // UpdateDomainNameserversForbidden - NotAuthorizedForScope
@@ -29,37 +29,53 @@ type UpdateDomainNameserversForbidden struct {
 
 var _ error = &UpdateDomainNameserversForbidden{}
 
-func CreateUpdateDomainNameserversForbiddenNotAuthorizedForScopeError(notAuthorizedForScopeError NotAuthorizedForScopeError) UpdateDomainNameserversForbidden {
-	typ := UpdateDomainNameserversForbiddenTypeNotAuthorizedForScopeError
+func CreateUpdateDomainNameserversForbiddenNotAuthorizedForScope(notAuthorizedForScope NotAuthorizedForScopeError) UpdateDomainNameserversForbidden {
+	typ := UpdateDomainNameserversForbiddenTypeNotAuthorizedForScope
 
 	return UpdateDomainNameserversForbidden{
-		NotAuthorizedForScopeError: &notAuthorizedForScopeError,
+		NotAuthorizedForScopeError: &notAuthorizedForScope,
 		Type:                       typ,
 	}
 }
 
-func CreateUpdateDomainNameserversForbiddenForbiddenError(forbiddenError ForbiddenError) UpdateDomainNameserversForbidden {
-	typ := UpdateDomainNameserversForbiddenTypeForbiddenError
+func CreateUpdateDomainNameserversForbiddenForbidden(forbidden ForbiddenError) UpdateDomainNameserversForbidden {
+	typ := UpdateDomainNameserversForbiddenTypeForbidden
 
 	return UpdateDomainNameserversForbidden{
-		ForbiddenError: &forbiddenError,
+		ForbiddenError: &forbidden,
 		Type:           typ,
 	}
 }
 
 func (u *UpdateDomainNameserversForbidden) UnmarshalJSON(data []byte) error {
 
-	var notAuthorizedForScopeError NotAuthorizedForScopeError = NotAuthorizedForScopeError{}
-	if err := utils.UnmarshalJSON(data, &notAuthorizedForScopeError, "", true, nil); err == nil {
-		u.NotAuthorizedForScopeError = &notAuthorizedForScopeError
-		u.Type = UpdateDomainNameserversForbiddenTypeNotAuthorizedForScopeError
-		return nil
+	type discriminator struct {
+		Code string `json:"code"`
 	}
 
-	var forbiddenError ForbiddenError = ForbiddenError{}
-	if err := utils.UnmarshalJSON(data, &forbiddenError, "", true, nil); err == nil {
-		u.ForbiddenError = &forbiddenError
-		u.Type = UpdateDomainNameserversForbiddenTypeForbiddenError
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Code {
+	case "not_authorized_for_scope":
+		notAuthorizedForScopeError := new(NotAuthorizedForScopeError)
+		if err := utils.UnmarshalJSON(data, &notAuthorizedForScopeError, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == not_authorized_for_scope) type NotAuthorizedForScopeError within UpdateDomainNameserversForbidden: %w", string(data), err)
+		}
+
+		u.NotAuthorizedForScopeError = notAuthorizedForScopeError
+		u.Type = UpdateDomainNameserversForbiddenTypeNotAuthorizedForScope
+		return nil
+	case "forbidden":
+		forbiddenError := new(ForbiddenError)
+		if err := utils.UnmarshalJSON(data, &forbiddenError, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == forbidden) type ForbiddenError within UpdateDomainNameserversForbidden: %w", string(data), err)
+		}
+
+		u.ForbiddenError = forbiddenError
+		u.Type = UpdateDomainNameserversForbiddenTypeForbidden
 		return nil
 	}
 
@@ -80,10 +96,10 @@ func (u UpdateDomainNameserversForbidden) MarshalJSON() ([]byte, error) {
 
 func (u UpdateDomainNameserversForbidden) Error() string {
 	switch u.Type {
-	case UpdateDomainNameserversForbiddenTypeNotAuthorizedForScopeError:
+	case UpdateDomainNameserversForbiddenTypeNotAuthorizedForScope:
 		data, _ := json.Marshal(u.NotAuthorizedForScopeError)
 		return string(data)
-	case UpdateDomainNameserversForbiddenTypeForbiddenError:
+	case UpdateDomainNameserversForbiddenTypeForbidden:
 		data, _ := json.Marshal(u.ForbiddenError)
 		return string(data)
 	default:

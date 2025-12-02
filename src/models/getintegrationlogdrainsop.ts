@@ -79,31 +79,21 @@ export type GetIntegrationLogDrainsEnvironments = ClosedEnum<
   typeof GetIntegrationLogDrainsEnvironments
 >;
 
-export const SourceKind = {
-  Integration: "integration",
-} as const;
-export type SourceKind = ClosedEnum<typeof SourceKind>;
-
 export type GetIntegrationLogDrainsSource2 = {
-  kind: SourceKind;
+  kind: "integration";
   resourceId?: string | undefined;
   externalResourceId?: string | undefined;
   integrationId: string;
   integrationConfigurationId: string;
 };
 
-export const Kind = {
-  SelfServed: "self-served",
-} as const;
-export type Kind = ClosedEnum<typeof Kind>;
-
 export type GetIntegrationLogDrainsSource1 = {
-  kind: Kind;
+  kind: "self-served";
 };
 
 export type GetIntegrationLogDrainsSource =
-  | GetIntegrationLogDrainsSource2
-  | GetIntegrationLogDrainsSource1;
+  | GetIntegrationLogDrainsSource1
+  | GetIntegrationLogDrainsSource2;
 
 export type GetIntegrationLogDrainsResponseBody = {
   /**
@@ -167,7 +157,7 @@ export type GetIntegrationLogDrainsResponseBody = {
    * The sampling rate of log drain
    */
   samplingRate?: number | undefined;
-  source: GetIntegrationLogDrainsSource2 | GetIntegrationLogDrainsSource1;
+  source: GetIntegrationLogDrainsSource1 | GetIntegrationLogDrainsSource2;
 };
 
 /** @internal */
@@ -250,19 +240,12 @@ export const GetIntegrationLogDrainsEnvironments$outboundSchema:
     GetIntegrationLogDrainsEnvironments$inboundSchema;
 
 /** @internal */
-export const SourceKind$inboundSchema: z.ZodNativeEnum<typeof SourceKind> = z
-  .nativeEnum(SourceKind);
-/** @internal */
-export const SourceKind$outboundSchema: z.ZodNativeEnum<typeof SourceKind> =
-  SourceKind$inboundSchema;
-
-/** @internal */
 export const GetIntegrationLogDrainsSource2$inboundSchema: z.ZodType<
   GetIntegrationLogDrainsSource2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  kind: SourceKind$inboundSchema,
+  kind: z.literal("integration"),
   resourceId: z.string().optional(),
   externalResourceId: z.string().optional(),
   integrationId: z.string(),
@@ -270,7 +253,7 @@ export const GetIntegrationLogDrainsSource2$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type GetIntegrationLogDrainsSource2$Outbound = {
-  kind: string;
+  kind: "integration";
   resourceId?: string | undefined;
   externalResourceId?: string | undefined;
   integrationId: string;
@@ -283,7 +266,7 @@ export const GetIntegrationLogDrainsSource2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetIntegrationLogDrainsSource2
 > = z.object({
-  kind: SourceKind$outboundSchema,
+  kind: z.literal("integration"),
   resourceId: z.string().optional(),
   externalResourceId: z.string().optional(),
   integrationId: z.string(),
@@ -310,24 +293,16 @@ export function getIntegrationLogDrainsSource2FromJSON(
 }
 
 /** @internal */
-export const Kind$inboundSchema: z.ZodNativeEnum<typeof Kind> = z.nativeEnum(
-  Kind,
-);
-/** @internal */
-export const Kind$outboundSchema: z.ZodNativeEnum<typeof Kind> =
-  Kind$inboundSchema;
-
-/** @internal */
 export const GetIntegrationLogDrainsSource1$inboundSchema: z.ZodType<
   GetIntegrationLogDrainsSource1,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  kind: Kind$inboundSchema,
+  kind: z.literal("self-served"),
 });
 /** @internal */
 export type GetIntegrationLogDrainsSource1$Outbound = {
-  kind: string;
+  kind: "self-served";
 };
 
 /** @internal */
@@ -336,7 +311,7 @@ export const GetIntegrationLogDrainsSource1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetIntegrationLogDrainsSource1
 > = z.object({
-  kind: Kind$outboundSchema,
+  kind: z.literal("self-served"),
 });
 
 export function getIntegrationLogDrainsSource1ToJSON(
@@ -364,13 +339,13 @@ export const GetIntegrationLogDrainsSource$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => GetIntegrationLogDrainsSource2$inboundSchema),
   z.lazy(() => GetIntegrationLogDrainsSource1$inboundSchema),
+  z.lazy(() => GetIntegrationLogDrainsSource2$inboundSchema),
 ]);
 /** @internal */
 export type GetIntegrationLogDrainsSource$Outbound =
-  | GetIntegrationLogDrainsSource2$Outbound
-  | GetIntegrationLogDrainsSource1$Outbound;
+  | GetIntegrationLogDrainsSource1$Outbound
+  | GetIntegrationLogDrainsSource2$Outbound;
 
 /** @internal */
 export const GetIntegrationLogDrainsSource$outboundSchema: z.ZodType<
@@ -378,8 +353,8 @@ export const GetIntegrationLogDrainsSource$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetIntegrationLogDrainsSource
 > = z.union([
-  z.lazy(() => GetIntegrationLogDrainsSource2$outboundSchema),
   z.lazy(() => GetIntegrationLogDrainsSource1$outboundSchema),
+  z.lazy(() => GetIntegrationLogDrainsSource2$outboundSchema),
 ]);
 
 export function getIntegrationLogDrainsSourceToJSON(
@@ -426,8 +401,8 @@ export const GetIntegrationLogDrainsResponseBody$inboundSchema: z.ZodType<
   branch: z.string().optional(),
   samplingRate: z.number().optional(),
   source: z.union([
-    z.lazy(() => GetIntegrationLogDrainsSource2$inboundSchema),
     z.lazy(() => GetIntegrationLogDrainsSource1$inboundSchema),
+    z.lazy(() => GetIntegrationLogDrainsSource2$inboundSchema),
   ]),
 });
 /** @internal */
@@ -449,8 +424,8 @@ export type GetIntegrationLogDrainsResponseBody$Outbound = {
   branch?: string | undefined;
   samplingRate?: number | undefined;
   source:
-    | GetIntegrationLogDrainsSource2$Outbound
-    | GetIntegrationLogDrainsSource1$Outbound;
+    | GetIntegrationLogDrainsSource1$Outbound
+    | GetIntegrationLogDrainsSource2$Outbound;
 };
 
 /** @internal */
@@ -478,8 +453,8 @@ export const GetIntegrationLogDrainsResponseBody$outboundSchema: z.ZodType<
   branch: z.string().optional(),
   samplingRate: z.number().optional(),
   source: z.union([
-    z.lazy(() => GetIntegrationLogDrainsSource2$outboundSchema),
     z.lazy(() => GetIntegrationLogDrainsSource1$outboundSchema),
+    z.lazy(() => GetIntegrationLogDrainsSource2$outboundSchema),
   ]),
 });
 

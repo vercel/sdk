@@ -634,222 +634,85 @@ export const UpdateProjectType = {
 } as const;
 export type UpdateProjectType = ClosedEnum<typeof UpdateProjectType>;
 
-export const UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv15Type =
-  {
-    FlagsConnectionString: "flags-connection-string",
-  } as const;
-export type UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv15Type =
-  ClosedEnum<
-    typeof UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv15Type
-  >;
-
 export type UpdateProjectContentHint15 = {
-  type:
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv15Type;
+  type: "flags-connection-string";
   projectId: string;
 };
 
-export const UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv14Type =
-  {
-    IntegrationStoreSecret: "integration-store-secret",
-  } as const;
-export type UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv14Type =
-  ClosedEnum<
-    typeof UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv14Type
-  >;
-
 export type UpdateProjectContentHint14 = {
-  type:
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv14Type;
+  type: "integration-store-secret";
   storeId: string;
   integrationId: string;
   integrationProductId: string;
   integrationConfigurationId: string;
 };
 
-export const UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv13Type =
-  {
-    PostgresUrlNoSsl: "postgres-url-no-ssl",
-  } as const;
-export type UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv13Type =
-  ClosedEnum<
-    typeof UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv13Type
-  >;
-
 export type UpdateProjectContentHint13 = {
-  type:
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv13Type;
+  type: "postgres-url-no-ssl";
   storeId: string;
 };
-
-export const UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv12Type =
-  {
-    PostgresDatabase: "postgres-database",
-  } as const;
-export type UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv12Type =
-  ClosedEnum<
-    typeof UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv12Type
-  >;
 
 export type UpdateProjectContentHint12 = {
-  type:
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv12Type;
+  type: "postgres-database";
   storeId: string;
 };
-
-export const UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv11Type =
-  {
-    PostgresPassword: "postgres-password",
-  } as const;
-export type UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv11Type =
-  ClosedEnum<
-    typeof UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv11Type
-  >;
 
 export type UpdateProjectContentHint11 = {
-  type:
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv11Type;
+  type: "postgres-password";
   storeId: string;
 };
-
-export const UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv10Type =
-  {
-    PostgresHost: "postgres-host",
-  } as const;
-export type UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv10Type =
-  ClosedEnum<
-    typeof UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv10Type
-  >;
 
 export type UpdateProjectContentHint10 = {
-  type:
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv10Type;
+  type: "postgres-host";
   storeId: string;
 };
-
-export const UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv9Type =
-  {
-    PostgresUser: "postgres-user",
-  } as const;
-export type UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv9Type =
-  ClosedEnum<
-    typeof UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv9Type
-  >;
 
 export type UpdateProjectContentHint9 = {
-  type:
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv9Type;
+  type: "postgres-user";
   storeId: string;
 };
-
-export const UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv8Type =
-  {
-    PostgresPrismaUrl: "postgres-prisma-url",
-  } as const;
-export type UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv8Type =
-  ClosedEnum<
-    typeof UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv8Type
-  >;
 
 export type UpdateProjectContentHint8 = {
-  type:
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv8Type;
+  type: "postgres-prisma-url";
   storeId: string;
 };
-
-export const UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnvType =
-  {
-    PostgresUrlNonPooling: "postgres-url-non-pooling",
-  } as const;
-export type UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnvType =
-  ClosedEnum<
-    typeof UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnvType
-  >;
 
 export type UpdateProjectContentHint7 = {
-  type:
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnvType;
+  type: "postgres-url-non-pooling";
   storeId: string;
 };
-
-export const UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyType =
-  {
-    PostgresUrl: "postgres-url",
-  } as const;
-export type UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyType =
-  ClosedEnum<
-    typeof UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyType
-  >;
 
 export type UpdateProjectContentHint6 = {
-  type:
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyType;
+  type: "postgres-url";
   storeId: string;
 };
-
-export const UpdateProjectContentHintProjectsResponse200ApplicationJSONType = {
-  BlobReadWriteToken: "blob-read-write-token",
-} as const;
-export type UpdateProjectContentHintProjectsResponse200ApplicationJSONType =
-  ClosedEnum<
-    typeof UpdateProjectContentHintProjectsResponse200ApplicationJSONType
-  >;
 
 export type UpdateProjectContentHint5 = {
-  type: UpdateProjectContentHintProjectsResponse200ApplicationJSONType;
+  type: "blob-read-write-token";
   storeId: string;
 };
-
-export const UpdateProjectContentHintProjectsResponse200Type = {
-  RedisRestApiReadOnlyToken: "redis-rest-api-read-only-token",
-} as const;
-export type UpdateProjectContentHintProjectsResponse200Type = ClosedEnum<
-  typeof UpdateProjectContentHintProjectsResponse200Type
->;
 
 export type UpdateProjectContentHint4 = {
-  type: UpdateProjectContentHintProjectsResponse200Type;
+  type: "redis-rest-api-read-only-token";
   storeId: string;
 };
-
-export const UpdateProjectContentHintProjectsResponseType = {
-  RedisRestApiToken: "redis-rest-api-token",
-} as const;
-export type UpdateProjectContentHintProjectsResponseType = ClosedEnum<
-  typeof UpdateProjectContentHintProjectsResponseType
->;
 
 export type UpdateProjectContentHint3 = {
-  type: UpdateProjectContentHintProjectsResponseType;
+  type: "redis-rest-api-token";
   storeId: string;
 };
-
-export const UpdateProjectContentHintProjectsType = {
-  RedisRestApiUrl: "redis-rest-api-url",
-} as const;
-export type UpdateProjectContentHintProjectsType = ClosedEnum<
-  typeof UpdateProjectContentHintProjectsType
->;
 
 export type UpdateProjectContentHint2 = {
-  type: UpdateProjectContentHintProjectsType;
+  type: "redis-rest-api-url";
   storeId: string;
 };
 
-export const UpdateProjectContentHintType = {
-  RedisUrl: "redis-url",
-} as const;
-export type UpdateProjectContentHintType = ClosedEnum<
-  typeof UpdateProjectContentHintType
->;
-
 export type UpdateProjectContentHint1 = {
-  type: UpdateProjectContentHintType;
+  type: "redis-url";
   storeId: string;
 };
 
 export type UpdateProjectContentHint =
-  | UpdateProjectContentHint14
   | UpdateProjectContentHint1
   | UpdateProjectContentHint2
   | UpdateProjectContentHint3
@@ -863,6 +726,7 @@ export type UpdateProjectContentHint =
   | UpdateProjectContentHint11
   | UpdateProjectContentHint12
   | UpdateProjectContentHint13
+  | UpdateProjectContentHint14
   | UpdateProjectContentHint15;
 
 export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodyType = {
@@ -905,7 +769,6 @@ export type UpdateProjectEnv = {
   edgeConfigId?: string | null | undefined;
   edgeConfigTokenId?: string | null | undefined;
   contentHint?:
-    | UpdateProjectContentHint14
     | UpdateProjectContentHint1
     | UpdateProjectContentHint2
     | UpdateProjectContentHint3
@@ -919,6 +782,7 @@ export type UpdateProjectEnv = {
     | UpdateProjectContentHint11
     | UpdateProjectContentHint12
     | UpdateProjectContentHint13
+    | UpdateProjectContentHint14
     | UpdateProjectContentHint15
     | null
     | undefined;
@@ -1279,12 +1143,6 @@ export type UpdateProjectLatestDeployments = {
   withCache?: boolean | undefined;
 };
 
-export const UpdateProjectLinkProjectsResponse200ApplicationJSONType = {
-  Bitbucket: "bitbucket",
-} as const;
-export type UpdateProjectLinkProjectsResponse200ApplicationJSONType =
-  ClosedEnum<typeof UpdateProjectLinkProjectsResponse200ApplicationJSONType>;
-
 export type UpdateProjectLinkProjectsResponse200ApplicationJSONDeployHooks = {
   createdAt?: number | undefined;
   id: string;
@@ -1297,7 +1155,7 @@ export type UpdateProjectLink5 = {
   name: string;
   slug: string;
   owner: string;
-  type: UpdateProjectLinkProjectsResponse200ApplicationJSONType;
+  type: "bitbucket";
   uuid: string;
   workspaceUuid: string;
   createdAt?: number | undefined;
@@ -1309,13 +1167,6 @@ export type UpdateProjectLink5 = {
   sourceless?: boolean | undefined;
   productionBranch: string;
 };
-
-export const UpdateProjectLinkProjectsResponse200Type = {
-  Gitlab: "gitlab",
-} as const;
-export type UpdateProjectLinkProjectsResponse200Type = ClosedEnum<
-  typeof UpdateProjectLinkProjectsResponse200Type
->;
 
 export type UpdateProjectLinkProjectsResponse200DeployHooks = {
   createdAt?: number | undefined;
@@ -1335,7 +1186,7 @@ export type UpdateProjectLink4 = {
    */
   projectOwnerId?: number | undefined;
   projectUrl: string;
-  type: UpdateProjectLinkProjectsResponse200Type;
+  type: "gitlab";
   createdAt?: number | undefined;
   deployHooks: Array<UpdateProjectLinkProjectsResponse200DeployHooks>;
   gitCredentialId: string;
@@ -1343,13 +1194,6 @@ export type UpdateProjectLink4 = {
   sourceless?: boolean | undefined;
   productionBranch: string;
 };
-
-export const UpdateProjectLinkProjectsResponseType = {
-  GithubCustomHost: "github-custom-host",
-} as const;
-export type UpdateProjectLinkProjectsResponseType = ClosedEnum<
-  typeof UpdateProjectLinkProjectsResponseType
->;
 
 export type UpdateProjectLinkProjectsResponseDeployHooks = {
   createdAt?: number | undefined;
@@ -1367,7 +1211,7 @@ export type UpdateProjectLink3 = {
   repoOwnerId?: number | undefined;
   repo?: string | undefined;
   repoId?: number | undefined;
-  type: UpdateProjectLinkProjectsResponseType;
+  type: "github-custom-host";
   host: string;
   createdAt?: number | undefined;
   deployHooks: Array<UpdateProjectLinkProjectsResponseDeployHooks>;
@@ -1376,13 +1220,6 @@ export type UpdateProjectLink3 = {
   sourceless?: boolean | undefined;
   productionBranch: string;
 };
-
-export const UpdateProjectLinkProjectsType = {
-  GithubLimited: "github-limited",
-} as const;
-export type UpdateProjectLinkProjectsType = ClosedEnum<
-  typeof UpdateProjectLinkProjectsType
->;
 
 export type UpdateProjectLinkProjectsDeployHooks = {
   createdAt?: number | undefined;
@@ -1393,7 +1230,7 @@ export type UpdateProjectLinkProjectsDeployHooks = {
 };
 
 export type UpdateProjectLink2 = {
-  type: UpdateProjectLinkProjectsType;
+  type: "github-limited";
   repo?: string | undefined;
   repoId?: number | undefined;
   createdAt?: number | undefined;
@@ -1408,11 +1245,6 @@ export type UpdateProjectLink2 = {
   sourceless?: boolean | undefined;
   productionBranch: string;
 };
-
-export const UpdateProjectLinkType = {
-  Github: "github",
-} as const;
-export type UpdateProjectLinkType = ClosedEnum<typeof UpdateProjectLinkType>;
 
 export type UpdateProjectLinkDeployHooks = {
   createdAt?: number | undefined;
@@ -1430,7 +1262,7 @@ export type UpdateProjectLink1 = {
   repoOwnerId?: number | undefined;
   repo?: string | undefined;
   repoId?: number | undefined;
-  type: UpdateProjectLinkType;
+  type: "github";
   createdAt?: number | undefined;
   deployHooks: Array<UpdateProjectLinkDeployHooks>;
   gitCredentialId: string;
@@ -1440,11 +1272,11 @@ export type UpdateProjectLink1 = {
 };
 
 export type UpdateProjectLink =
-  | UpdateProjectLink4
-  | UpdateProjectLink5
-  | UpdateProjectLink3
   | UpdateProjectLink1
-  | UpdateProjectLink2;
+  | UpdateProjectLink2
+  | UpdateProjectLink3
+  | UpdateProjectLink4
+  | UpdateProjectLink5;
 
 export type UpdateProjectMicrofrontends3 = {
   updatedAt: number;
@@ -2094,30 +1926,16 @@ export type UpdateProjectLastAliasRequest = {
   type: UpdateProjectProjectsResponse200ApplicationJSONType;
 };
 
-export const UpdateProjectProtectionBypassProjectsScope = {
-  AutomationBypass: "automation-bypass",
-} as const;
-export type UpdateProjectProtectionBypassProjectsScope = ClosedEnum<
-  typeof UpdateProjectProtectionBypassProjectsScope
->;
-
 export type UpdateProjectProtectionBypass2 = {
   createdAt: number;
   createdBy: string;
-  scope: UpdateProjectProtectionBypassProjectsScope;
+  scope: "automation-bypass";
 };
-
-export const UpdateProjectProtectionBypassScope = {
-  IntegrationAutomationBypass: "integration-automation-bypass",
-} as const;
-export type UpdateProjectProtectionBypassScope = ClosedEnum<
-  typeof UpdateProjectProtectionBypassScope
->;
 
 export type UpdateProjectProtectionBypass1 = {
   createdAt: number;
   createdBy: string;
-  scope: UpdateProjectProtectionBypassScope;
+  scope: "integration-automation-bypass";
   integrationId: string;
   configurationId: string;
 };
@@ -2352,35 +2170,14 @@ export type UpdateProjectBlock = {
   isCascading?: boolean | undefined;
 };
 
-export const UpdateProjectBlockHistoryProjectsResponse200Action = {
-  RouteUnblocked: "route-unblocked",
-} as const;
-export type UpdateProjectBlockHistoryProjectsResponse200Action = ClosedEnum<
-  typeof UpdateProjectBlockHistoryProjectsResponse200Action
->;
-
-export const UpdateProjectHasProjectsResponse200Type = {
-  Host: "host",
-} as const;
-export type UpdateProjectHasProjectsResponse200Type = ClosedEnum<
-  typeof UpdateProjectHasProjectsResponse200Type
->;
-
 export type UpdateProjectHasProjectsResponse200Value = {
   eq: string;
 };
 
 export type UpdateProjectHasProjects2 = {
-  type: UpdateProjectHasProjectsResponse200Type;
+  type: "host";
   value: UpdateProjectHasProjectsResponse200Value;
 };
-
-export const UpdateProjectHasProjectsResponseType = {
-  Header: "header",
-} as const;
-export type UpdateProjectHasProjectsResponseType = ClosedEnum<
-  typeof UpdateProjectHasProjectsResponseType
->;
 
 export const UpdateProjectHasProjectsKey = {
   XVercelIpCountry: "x-vercel-ip-country",
@@ -2394,7 +2191,7 @@ export type UpdateProjectHasProjectsResponseValue = {
 };
 
 export type UpdateProjectHasProjects1 = {
-  type: UpdateProjectHasProjectsResponseType;
+  type: "header";
   key: UpdateProjectHasProjectsKey;
   value: UpdateProjectHasProjectsResponseValue;
 };
@@ -2430,7 +2227,7 @@ export type UpdateProjectBlockHistoryProjectsRoute =
   | UpdateProjectRouteProjects2;
 
 export type UpdateProjectBlockHistory4 = {
-  action: UpdateProjectBlockHistoryProjectsResponse200Action;
+  action: "route-unblocked";
   route: UpdateProjectRouteProjects1 | UpdateProjectRouteProjects2;
   statusCode?: number | undefined;
   createdAt: number;
@@ -2440,38 +2237,15 @@ export type UpdateProjectBlockHistory4 = {
   isCascading?: boolean | undefined;
 };
 
-export const UpdateProjectBlockHistoryProjectsResponseAction = {
-  RouteBlocked: "route-blocked",
-} as const;
-export type UpdateProjectBlockHistoryProjectsResponseAction = ClosedEnum<
-  typeof UpdateProjectBlockHistoryProjectsResponseAction
->;
-
-export const UpdateProjectHasProjectsResponse200ApplicationJSONResponseBodyType =
-  {
-    Host: "host",
-  } as const;
-export type UpdateProjectHasProjectsResponse200ApplicationJSONResponseBodyType =
-  ClosedEnum<
-    typeof UpdateProjectHasProjectsResponse200ApplicationJSONResponseBodyType
-  >;
-
 export type UpdateProjectHasProjectsResponse200ApplicationJSONResponseBodyValue =
   {
     eq: string;
   };
 
 export type UpdateProjectHasProjectsResponse2 = {
-  type: UpdateProjectHasProjectsResponse200ApplicationJSONResponseBodyType;
+  type: "host";
   value: UpdateProjectHasProjectsResponse200ApplicationJSONResponseBodyValue;
 };
-
-export const UpdateProjectHasProjectsResponse200ApplicationJSONType = {
-  Header: "header",
-} as const;
-export type UpdateProjectHasProjectsResponse200ApplicationJSONType = ClosedEnum<
-  typeof UpdateProjectHasProjectsResponse200ApplicationJSONType
->;
 
 export const UpdateProjectHasProjectsResponseKey = {
   XVercelIpCountry: "x-vercel-ip-country",
@@ -2485,7 +2259,7 @@ export type UpdateProjectHasProjectsResponse200ApplicationJSONValue = {
 };
 
 export type UpdateProjectHasProjectsResponse1 = {
-  type: UpdateProjectHasProjectsResponse200ApplicationJSONType;
+  type: "header";
   key: UpdateProjectHasProjectsResponseKey;
   value: UpdateProjectHasProjectsResponse200ApplicationJSONValue;
 };
@@ -2523,7 +2297,7 @@ export type UpdateProjectBlockHistoryRoute =
   | UpdateProjectRoute2;
 
 export type UpdateProjectBlockHistory3 = {
-  action: UpdateProjectBlockHistoryProjectsResponseAction;
+  action: "route-blocked";
   route: UpdateProjectRoute1 | UpdateProjectRoute2;
   reason: string;
   createdAt: number;
@@ -2533,15 +2307,8 @@ export type UpdateProjectBlockHistory3 = {
   isCascading?: boolean | undefined;
 };
 
-export const UpdateProjectBlockHistoryProjectsAction = {
-  Unblocked: "unblocked",
-} as const;
-export type UpdateProjectBlockHistoryProjectsAction = ClosedEnum<
-  typeof UpdateProjectBlockHistoryProjectsAction
->;
-
 export type UpdateProjectBlockHistory2 = {
-  action: UpdateProjectBlockHistoryProjectsAction;
+  action: "unblocked";
   createdAt: number;
   caseId?: string | undefined;
   actor?: string | undefined;
@@ -2549,15 +2316,8 @@ export type UpdateProjectBlockHistory2 = {
   isCascading?: boolean | undefined;
 };
 
-export const UpdateProjectBlockHistoryAction = {
-  Blocked: "blocked",
-} as const;
-export type UpdateProjectBlockHistoryAction = ClosedEnum<
-  typeof UpdateProjectBlockHistoryAction
->;
-
 export type UpdateProjectBlockHistory1 = {
-  action: UpdateProjectBlockHistoryAction;
+  action: "blocked";
   reason: string;
   statusCode: number;
   createdAt: number;
@@ -2569,9 +2329,9 @@ export type UpdateProjectBlockHistory1 = {
 
 export type UpdateProjectBlockHistory =
   | UpdateProjectBlockHistory1
+  | UpdateProjectBlockHistory2
   | UpdateProjectBlockHistory3
-  | UpdateProjectBlockHistory4
-  | UpdateProjectBlockHistory2;
+  | UpdateProjectBlockHistory4;
 
 export type UpdateProjectAbuse = {
   scanner?: string | undefined;
@@ -2581,34 +2341,22 @@ export type UpdateProjectAbuse = {
   blockHistory?:
     | Array<
       | UpdateProjectBlockHistory1
+      | UpdateProjectBlockHistory2
       | UpdateProjectBlockHistory3
       | UpdateProjectBlockHistory4
-      | UpdateProjectBlockHistory2
     >
     | undefined;
   interstitial?: boolean | undefined;
 };
-
-export const UpdateProjectHasProjectsType = {
-  Host: "host",
-} as const;
-export type UpdateProjectHasProjectsType = ClosedEnum<
-  typeof UpdateProjectHasProjectsType
->;
 
 export type UpdateProjectHasProjectsValue = {
   eq: string;
 };
 
 export type UpdateProjectHas2 = {
-  type: UpdateProjectHasProjectsType;
+  type: "host";
   value: UpdateProjectHasProjectsValue;
 };
-
-export const UpdateProjectHasType = {
-  Header: "header",
-} as const;
-export type UpdateProjectHasType = ClosedEnum<typeof UpdateProjectHasType>;
 
 export const UpdateProjectHasKey = {
   XVercelIpCountry: "x-vercel-ip-country",
@@ -2620,7 +2368,7 @@ export type UpdateProjectHasValue = {
 };
 
 export type UpdateProjectHas1 = {
-  type: UpdateProjectHasType;
+  type: "header";
   key: UpdateProjectHasKey;
   value: UpdateProjectHasValue;
 };
@@ -2725,11 +2473,11 @@ export type UpdateProjectResponseBody = {
   ipBuckets?: Array<UpdateProjectIpBuckets> | undefined;
   latestDeployments?: Array<UpdateProjectLatestDeployments> | undefined;
   link?:
-    | UpdateProjectLink4
-    | UpdateProjectLink5
-    | UpdateProjectLink3
     | UpdateProjectLink1
     | UpdateProjectLink2
+    | UpdateProjectLink3
+    | UpdateProjectLink4
+    | UpdateProjectLink5
     | undefined;
   microfrontends?:
     | UpdateProjectMicrofrontends1
@@ -4257,32 +4005,17 @@ export const UpdateProjectType$outboundSchema: z.ZodNativeEnum<
 > = UpdateProjectType$inboundSchema;
 
 /** @internal */
-export const UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv15Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv15Type
-  > = z.nativeEnum(
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv15Type,
-  );
-/** @internal */
-export const UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv15Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv15Type
-  > =
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv15Type$inboundSchema;
-
-/** @internal */
 export const UpdateProjectContentHint15$inboundSchema: z.ZodType<
   UpdateProjectContentHint15,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv15Type$inboundSchema,
+  type: z.literal("flags-connection-string"),
   projectId: z.string(),
 });
 /** @internal */
 export type UpdateProjectContentHint15$Outbound = {
-  type: string;
+  type: "flags-connection-string";
   projectId: string;
 };
 
@@ -4292,8 +4025,7 @@ export const UpdateProjectContentHint15$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectContentHint15
 > = z.object({
-  type:
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv15Type$outboundSchema,
+  type: z.literal("flags-connection-string"),
   projectId: z.string(),
 });
 
@@ -4315,27 +4047,12 @@ export function updateProjectContentHint15FromJSON(
 }
 
 /** @internal */
-export const UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv14Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv14Type
-  > = z.nativeEnum(
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv14Type,
-  );
-/** @internal */
-export const UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv14Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv14Type
-  > =
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv14Type$inboundSchema;
-
-/** @internal */
 export const UpdateProjectContentHint14$inboundSchema: z.ZodType<
   UpdateProjectContentHint14,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv14Type$inboundSchema,
+  type: z.literal("integration-store-secret"),
   storeId: z.string(),
   integrationId: z.string(),
   integrationProductId: z.string(),
@@ -4343,7 +4060,7 @@ export const UpdateProjectContentHint14$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type UpdateProjectContentHint14$Outbound = {
-  type: string;
+  type: "integration-store-secret";
   storeId: string;
   integrationId: string;
   integrationProductId: string;
@@ -4356,8 +4073,7 @@ export const UpdateProjectContentHint14$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectContentHint14
 > = z.object({
-  type:
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv14Type$outboundSchema,
+  type: z.literal("integration-store-secret"),
   storeId: z.string(),
   integrationId: z.string(),
   integrationProductId: z.string(),
@@ -4382,32 +4098,17 @@ export function updateProjectContentHint14FromJSON(
 }
 
 /** @internal */
-export const UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv13Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv13Type
-  > = z.nativeEnum(
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv13Type,
-  );
-/** @internal */
-export const UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv13Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv13Type
-  > =
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv13Type$inboundSchema;
-
-/** @internal */
 export const UpdateProjectContentHint13$inboundSchema: z.ZodType<
   UpdateProjectContentHint13,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv13Type$inboundSchema,
+  type: z.literal("postgres-url-no-ssl"),
   storeId: z.string(),
 });
 /** @internal */
 export type UpdateProjectContentHint13$Outbound = {
-  type: string;
+  type: "postgres-url-no-ssl";
   storeId: string;
 };
 
@@ -4417,8 +4118,7 @@ export const UpdateProjectContentHint13$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectContentHint13
 > = z.object({
-  type:
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv13Type$outboundSchema,
+  type: z.literal("postgres-url-no-ssl"),
   storeId: z.string(),
 });
 
@@ -4440,32 +4140,17 @@ export function updateProjectContentHint13FromJSON(
 }
 
 /** @internal */
-export const UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv12Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv12Type
-  > = z.nativeEnum(
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv12Type,
-  );
-/** @internal */
-export const UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv12Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv12Type
-  > =
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv12Type$inboundSchema;
-
-/** @internal */
 export const UpdateProjectContentHint12$inboundSchema: z.ZodType<
   UpdateProjectContentHint12,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv12Type$inboundSchema,
+  type: z.literal("postgres-database"),
   storeId: z.string(),
 });
 /** @internal */
 export type UpdateProjectContentHint12$Outbound = {
-  type: string;
+  type: "postgres-database";
   storeId: string;
 };
 
@@ -4475,8 +4160,7 @@ export const UpdateProjectContentHint12$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectContentHint12
 > = z.object({
-  type:
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv12Type$outboundSchema,
+  type: z.literal("postgres-database"),
   storeId: z.string(),
 });
 
@@ -4498,32 +4182,17 @@ export function updateProjectContentHint12FromJSON(
 }
 
 /** @internal */
-export const UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv11Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv11Type
-  > = z.nativeEnum(
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv11Type,
-  );
-/** @internal */
-export const UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv11Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv11Type
-  > =
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv11Type$inboundSchema;
-
-/** @internal */
 export const UpdateProjectContentHint11$inboundSchema: z.ZodType<
   UpdateProjectContentHint11,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv11Type$inboundSchema,
+  type: z.literal("postgres-password"),
   storeId: z.string(),
 });
 /** @internal */
 export type UpdateProjectContentHint11$Outbound = {
-  type: string;
+  type: "postgres-password";
   storeId: string;
 };
 
@@ -4533,8 +4202,7 @@ export const UpdateProjectContentHint11$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectContentHint11
 > = z.object({
-  type:
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv11Type$outboundSchema,
+  type: z.literal("postgres-password"),
   storeId: z.string(),
 });
 
@@ -4556,32 +4224,17 @@ export function updateProjectContentHint11FromJSON(
 }
 
 /** @internal */
-export const UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv10Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv10Type
-  > = z.nativeEnum(
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv10Type,
-  );
-/** @internal */
-export const UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv10Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv10Type
-  > =
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv10Type$inboundSchema;
-
-/** @internal */
 export const UpdateProjectContentHint10$inboundSchema: z.ZodType<
   UpdateProjectContentHint10,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv10Type$inboundSchema,
+  type: z.literal("postgres-host"),
   storeId: z.string(),
 });
 /** @internal */
 export type UpdateProjectContentHint10$Outbound = {
-  type: string;
+  type: "postgres-host";
   storeId: string;
 };
 
@@ -4591,8 +4244,7 @@ export const UpdateProjectContentHint10$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectContentHint10
 > = z.object({
-  type:
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv10Type$outboundSchema,
+  type: z.literal("postgres-host"),
   storeId: z.string(),
 });
 
@@ -4614,32 +4266,17 @@ export function updateProjectContentHint10FromJSON(
 }
 
 /** @internal */
-export const UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv9Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv9Type
-  > = z.nativeEnum(
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv9Type,
-  );
-/** @internal */
-export const UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv9Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv9Type
-  > =
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv9Type$inboundSchema;
-
-/** @internal */
 export const UpdateProjectContentHint9$inboundSchema: z.ZodType<
   UpdateProjectContentHint9,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv9Type$inboundSchema,
+  type: z.literal("postgres-user"),
   storeId: z.string(),
 });
 /** @internal */
 export type UpdateProjectContentHint9$Outbound = {
-  type: string;
+  type: "postgres-user";
   storeId: string;
 };
 
@@ -4649,8 +4286,7 @@ export const UpdateProjectContentHint9$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectContentHint9
 > = z.object({
-  type:
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv9Type$outboundSchema,
+  type: z.literal("postgres-user"),
   storeId: z.string(),
 });
 
@@ -4672,32 +4308,17 @@ export function updateProjectContentHint9FromJSON(
 }
 
 /** @internal */
-export const UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv8Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv8Type
-  > = z.nativeEnum(
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv8Type,
-  );
-/** @internal */
-export const UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv8Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv8Type
-  > =
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv8Type$inboundSchema;
-
-/** @internal */
 export const UpdateProjectContentHint8$inboundSchema: z.ZodType<
   UpdateProjectContentHint8,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv8Type$inboundSchema,
+  type: z.literal("postgres-prisma-url"),
   storeId: z.string(),
 });
 /** @internal */
 export type UpdateProjectContentHint8$Outbound = {
-  type: string;
+  type: "postgres-prisma-url";
   storeId: string;
 };
 
@@ -4707,8 +4328,7 @@ export const UpdateProjectContentHint8$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectContentHint8
 > = z.object({
-  type:
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnv8Type$outboundSchema,
+  type: z.literal("postgres-prisma-url"),
   storeId: z.string(),
 });
 
@@ -4730,32 +4350,17 @@ export function updateProjectContentHint8FromJSON(
 }
 
 /** @internal */
-export const UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnvType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnvType
-  > = z.nativeEnum(
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnvType,
-  );
-/** @internal */
-export const UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnvType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnvType
-  > =
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnvType$inboundSchema;
-
-/** @internal */
 export const UpdateProjectContentHint7$inboundSchema: z.ZodType<
   UpdateProjectContentHint7,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnvType$inboundSchema,
+  type: z.literal("postgres-url-non-pooling"),
   storeId: z.string(),
 });
 /** @internal */
 export type UpdateProjectContentHint7$Outbound = {
-  type: string;
+  type: "postgres-url-non-pooling";
   storeId: string;
 };
 
@@ -4765,8 +4370,7 @@ export const UpdateProjectContentHint7$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectContentHint7
 > = z.object({
-  type:
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyEnvType$outboundSchema,
+  type: z.literal("postgres-url-non-pooling"),
   storeId: z.string(),
 });
 
@@ -4788,32 +4392,17 @@ export function updateProjectContentHint7FromJSON(
 }
 
 /** @internal */
-export const UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyType
-  > = z.nativeEnum(
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyType,
-  );
-/** @internal */
-export const UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyType
-  > =
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema;
-
-/** @internal */
 export const UpdateProjectContentHint6$inboundSchema: z.ZodType<
   UpdateProjectContentHint6,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema,
+  type: z.literal("postgres-url"),
   storeId: z.string(),
 });
 /** @internal */
 export type UpdateProjectContentHint6$Outbound = {
-  type: string;
+  type: "postgres-url";
   storeId: string;
 };
 
@@ -4823,8 +4412,7 @@ export const UpdateProjectContentHint6$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectContentHint6
 > = z.object({
-  type:
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONResponseBodyType$outboundSchema,
+  type: z.literal("postgres-url"),
   storeId: z.string(),
 });
 
@@ -4846,32 +4434,17 @@ export function updateProjectContentHint6FromJSON(
 }
 
 /** @internal */
-export const UpdateProjectContentHintProjectsResponse200ApplicationJSONType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectContentHintProjectsResponse200ApplicationJSONType
-  > = z.nativeEnum(
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONType,
-  );
-/** @internal */
-export const UpdateProjectContentHintProjectsResponse200ApplicationJSONType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectContentHintProjectsResponse200ApplicationJSONType
-  > =
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONType$inboundSchema;
-
-/** @internal */
 export const UpdateProjectContentHint5$inboundSchema: z.ZodType<
   UpdateProjectContentHint5,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONType$inboundSchema,
+  type: z.literal("blob-read-write-token"),
   storeId: z.string(),
 });
 /** @internal */
 export type UpdateProjectContentHint5$Outbound = {
-  type: string;
+  type: "blob-read-write-token";
   storeId: string;
 };
 
@@ -4881,8 +4454,7 @@ export const UpdateProjectContentHint5$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectContentHint5
 > = z.object({
-  type:
-    UpdateProjectContentHintProjectsResponse200ApplicationJSONType$outboundSchema,
+  type: z.literal("blob-read-write-token"),
   storeId: z.string(),
 });
 
@@ -4904,26 +4476,17 @@ export function updateProjectContentHint5FromJSON(
 }
 
 /** @internal */
-export const UpdateProjectContentHintProjectsResponse200Type$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectContentHintProjectsResponse200Type> = z
-    .nativeEnum(UpdateProjectContentHintProjectsResponse200Type);
-/** @internal */
-export const UpdateProjectContentHintProjectsResponse200Type$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectContentHintProjectsResponse200Type> =
-    UpdateProjectContentHintProjectsResponse200Type$inboundSchema;
-
-/** @internal */
 export const UpdateProjectContentHint4$inboundSchema: z.ZodType<
   UpdateProjectContentHint4,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: UpdateProjectContentHintProjectsResponse200Type$inboundSchema,
+  type: z.literal("redis-rest-api-read-only-token"),
   storeId: z.string(),
 });
 /** @internal */
 export type UpdateProjectContentHint4$Outbound = {
-  type: string;
+  type: "redis-rest-api-read-only-token";
   storeId: string;
 };
 
@@ -4933,7 +4496,7 @@ export const UpdateProjectContentHint4$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectContentHint4
 > = z.object({
-  type: UpdateProjectContentHintProjectsResponse200Type$outboundSchema,
+  type: z.literal("redis-rest-api-read-only-token"),
   storeId: z.string(),
 });
 
@@ -4955,26 +4518,17 @@ export function updateProjectContentHint4FromJSON(
 }
 
 /** @internal */
-export const UpdateProjectContentHintProjectsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectContentHintProjectsResponseType> = z
-    .nativeEnum(UpdateProjectContentHintProjectsResponseType);
-/** @internal */
-export const UpdateProjectContentHintProjectsResponseType$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectContentHintProjectsResponseType> =
-    UpdateProjectContentHintProjectsResponseType$inboundSchema;
-
-/** @internal */
 export const UpdateProjectContentHint3$inboundSchema: z.ZodType<
   UpdateProjectContentHint3,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: UpdateProjectContentHintProjectsResponseType$inboundSchema,
+  type: z.literal("redis-rest-api-token"),
   storeId: z.string(),
 });
 /** @internal */
 export type UpdateProjectContentHint3$Outbound = {
-  type: string;
+  type: "redis-rest-api-token";
   storeId: string;
 };
 
@@ -4984,7 +4538,7 @@ export const UpdateProjectContentHint3$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectContentHint3
 > = z.object({
-  type: UpdateProjectContentHintProjectsResponseType$outboundSchema,
+  type: z.literal("redis-rest-api-token"),
   storeId: z.string(),
 });
 
@@ -5006,27 +4560,17 @@ export function updateProjectContentHint3FromJSON(
 }
 
 /** @internal */
-export const UpdateProjectContentHintProjectsType$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectContentHintProjectsType> = z.nativeEnum(
-    UpdateProjectContentHintProjectsType,
-  );
-/** @internal */
-export const UpdateProjectContentHintProjectsType$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectContentHintProjectsType> =
-    UpdateProjectContentHintProjectsType$inboundSchema;
-
-/** @internal */
 export const UpdateProjectContentHint2$inboundSchema: z.ZodType<
   UpdateProjectContentHint2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: UpdateProjectContentHintProjectsType$inboundSchema,
+  type: z.literal("redis-rest-api-url"),
   storeId: z.string(),
 });
 /** @internal */
 export type UpdateProjectContentHint2$Outbound = {
-  type: string;
+  type: "redis-rest-api-url";
   storeId: string;
 };
 
@@ -5036,7 +4580,7 @@ export const UpdateProjectContentHint2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectContentHint2
 > = z.object({
-  type: UpdateProjectContentHintProjectsType$outboundSchema,
+  type: z.literal("redis-rest-api-url"),
   storeId: z.string(),
 });
 
@@ -5058,26 +4602,17 @@ export function updateProjectContentHint2FromJSON(
 }
 
 /** @internal */
-export const UpdateProjectContentHintType$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectContentHintType
-> = z.nativeEnum(UpdateProjectContentHintType);
-/** @internal */
-export const UpdateProjectContentHintType$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectContentHintType
-> = UpdateProjectContentHintType$inboundSchema;
-
-/** @internal */
 export const UpdateProjectContentHint1$inboundSchema: z.ZodType<
   UpdateProjectContentHint1,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: UpdateProjectContentHintType$inboundSchema,
+  type: z.literal("redis-url"),
   storeId: z.string(),
 });
 /** @internal */
 export type UpdateProjectContentHint1$Outbound = {
-  type: string;
+  type: "redis-url";
   storeId: string;
 };
 
@@ -5087,7 +4622,7 @@ export const UpdateProjectContentHint1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectContentHint1
 > = z.object({
-  type: UpdateProjectContentHintType$outboundSchema,
+  type: z.literal("redis-url"),
   storeId: z.string(),
 });
 
@@ -5114,7 +4649,6 @@ export const UpdateProjectContentHint$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => UpdateProjectContentHint14$inboundSchema),
   z.lazy(() => UpdateProjectContentHint1$inboundSchema),
   z.lazy(() => UpdateProjectContentHint2$inboundSchema),
   z.lazy(() => UpdateProjectContentHint3$inboundSchema),
@@ -5128,11 +4662,11 @@ export const UpdateProjectContentHint$inboundSchema: z.ZodType<
   z.lazy(() => UpdateProjectContentHint11$inboundSchema),
   z.lazy(() => UpdateProjectContentHint12$inboundSchema),
   z.lazy(() => UpdateProjectContentHint13$inboundSchema),
+  z.lazy(() => UpdateProjectContentHint14$inboundSchema),
   z.lazy(() => UpdateProjectContentHint15$inboundSchema),
 ]);
 /** @internal */
 export type UpdateProjectContentHint$Outbound =
-  | UpdateProjectContentHint14$Outbound
   | UpdateProjectContentHint1$Outbound
   | UpdateProjectContentHint2$Outbound
   | UpdateProjectContentHint3$Outbound
@@ -5146,6 +4680,7 @@ export type UpdateProjectContentHint$Outbound =
   | UpdateProjectContentHint11$Outbound
   | UpdateProjectContentHint12$Outbound
   | UpdateProjectContentHint13$Outbound
+  | UpdateProjectContentHint14$Outbound
   | UpdateProjectContentHint15$Outbound;
 
 /** @internal */
@@ -5154,7 +4689,6 @@ export const UpdateProjectContentHint$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectContentHint
 > = z.union([
-  z.lazy(() => UpdateProjectContentHint14$outboundSchema),
   z.lazy(() => UpdateProjectContentHint1$outboundSchema),
   z.lazy(() => UpdateProjectContentHint2$outboundSchema),
   z.lazy(() => UpdateProjectContentHint3$outboundSchema),
@@ -5168,6 +4702,7 @@ export const UpdateProjectContentHint$outboundSchema: z.ZodType<
   z.lazy(() => UpdateProjectContentHint11$outboundSchema),
   z.lazy(() => UpdateProjectContentHint12$outboundSchema),
   z.lazy(() => UpdateProjectContentHint13$outboundSchema),
+  z.lazy(() => UpdateProjectContentHint14$outboundSchema),
   z.lazy(() => UpdateProjectContentHint15$outboundSchema),
 ]);
 
@@ -5273,7 +4808,6 @@ export const UpdateProjectEnv$inboundSchema: z.ZodType<
   edgeConfigTokenId: z.nullable(z.string()).optional(),
   contentHint: z.nullable(
     z.union([
-      z.lazy(() => UpdateProjectContentHint14$inboundSchema),
       z.lazy(() => UpdateProjectContentHint1$inboundSchema),
       z.lazy(() => UpdateProjectContentHint2$inboundSchema),
       z.lazy(() => UpdateProjectContentHint3$inboundSchema),
@@ -5287,6 +4821,7 @@ export const UpdateProjectEnv$inboundSchema: z.ZodType<
       z.lazy(() => UpdateProjectContentHint11$inboundSchema),
       z.lazy(() => UpdateProjectContentHint12$inboundSchema),
       z.lazy(() => UpdateProjectContentHint13$inboundSchema),
+      z.lazy(() => UpdateProjectContentHint14$inboundSchema),
       z.lazy(() => UpdateProjectContentHint15$inboundSchema),
     ]),
   ).optional(),
@@ -5315,7 +4850,6 @@ export type UpdateProjectEnv$Outbound = {
   edgeConfigId?: string | null | undefined;
   edgeConfigTokenId?: string | null | undefined;
   contentHint?:
-    | UpdateProjectContentHint14$Outbound
     | UpdateProjectContentHint1$Outbound
     | UpdateProjectContentHint2$Outbound
     | UpdateProjectContentHint3$Outbound
@@ -5329,6 +4863,7 @@ export type UpdateProjectEnv$Outbound = {
     | UpdateProjectContentHint11$Outbound
     | UpdateProjectContentHint12$Outbound
     | UpdateProjectContentHint13$Outbound
+    | UpdateProjectContentHint14$Outbound
     | UpdateProjectContentHint15$Outbound
     | null
     | undefined;
@@ -5365,7 +4900,6 @@ export const UpdateProjectEnv$outboundSchema: z.ZodType<
   edgeConfigTokenId: z.nullable(z.string()).optional(),
   contentHint: z.nullable(
     z.union([
-      z.lazy(() => UpdateProjectContentHint14$outboundSchema),
       z.lazy(() => UpdateProjectContentHint1$outboundSchema),
       z.lazy(() => UpdateProjectContentHint2$outboundSchema),
       z.lazy(() => UpdateProjectContentHint3$outboundSchema),
@@ -5379,6 +4913,7 @@ export const UpdateProjectEnv$outboundSchema: z.ZodType<
       z.lazy(() => UpdateProjectContentHint11$outboundSchema),
       z.lazy(() => UpdateProjectContentHint12$outboundSchema),
       z.lazy(() => UpdateProjectContentHint13$outboundSchema),
+      z.lazy(() => UpdateProjectContentHint14$outboundSchema),
       z.lazy(() => UpdateProjectContentHint15$outboundSchema),
     ]),
   ).optional(),
@@ -6228,17 +5763,6 @@ export function updateProjectLatestDeploymentsFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectLinkProjectsResponse200ApplicationJSONType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectLinkProjectsResponse200ApplicationJSONType
-  > = z.nativeEnum(UpdateProjectLinkProjectsResponse200ApplicationJSONType);
-/** @internal */
-export const UpdateProjectLinkProjectsResponse200ApplicationJSONType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectLinkProjectsResponse200ApplicationJSONType
-  > = UpdateProjectLinkProjectsResponse200ApplicationJSONType$inboundSchema;
-
-/** @internal */
 export const UpdateProjectLinkProjectsResponse200ApplicationJSONDeployHooks$inboundSchema:
   z.ZodType<
     UpdateProjectLinkProjectsResponse200ApplicationJSONDeployHooks,
@@ -6308,7 +5832,7 @@ export const UpdateProjectLink5$inboundSchema: z.ZodType<
   name: z.string(),
   slug: z.string(),
   owner: z.string(),
-  type: UpdateProjectLinkProjectsResponse200ApplicationJSONType$inboundSchema,
+  type: z.literal("bitbucket"),
   uuid: z.string(),
   workspaceUuid: z.string(),
   createdAt: z.number().optional(),
@@ -6327,7 +5851,7 @@ export type UpdateProjectLink5$Outbound = {
   name: string;
   slug: string;
   owner: string;
-  type: string;
+  type: "bitbucket";
   uuid: string;
   workspaceUuid: string;
   createdAt?: number | undefined;
@@ -6349,7 +5873,7 @@ export const UpdateProjectLink5$outboundSchema: z.ZodType<
   name: z.string(),
   slug: z.string(),
   owner: z.string(),
-  type: UpdateProjectLinkProjectsResponse200ApplicationJSONType$outboundSchema,
+  type: z.literal("bitbucket"),
   uuid: z.string(),
   workspaceUuid: z.string(),
   createdAt: z.number().optional(),
@@ -6380,15 +5904,6 @@ export function updateProjectLink5FromJSON(
     `Failed to parse 'UpdateProjectLink5' from JSON`,
   );
 }
-
-/** @internal */
-export const UpdateProjectLinkProjectsResponse200Type$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectLinkProjectsResponse200Type> = z
-    .nativeEnum(UpdateProjectLinkProjectsResponse200Type);
-/** @internal */
-export const UpdateProjectLinkProjectsResponse200Type$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectLinkProjectsResponse200Type> =
-    UpdateProjectLinkProjectsResponse200Type$inboundSchema;
 
 /** @internal */
 export const UpdateProjectLinkProjectsResponse200DeployHooks$inboundSchema:
@@ -6464,7 +5979,7 @@ export const UpdateProjectLink4$inboundSchema: z.ZodType<
   projectNamespace: z.string(),
   projectOwnerId: z.number().optional(),
   projectUrl: z.string(),
-  type: UpdateProjectLinkProjectsResponse200Type$inboundSchema,
+  type: z.literal("gitlab"),
   createdAt: z.number().optional(),
   deployHooks: z.array(
     z.lazy(() => UpdateProjectLinkProjectsResponse200DeployHooks$inboundSchema),
@@ -6482,7 +5997,7 @@ export type UpdateProjectLink4$Outbound = {
   projectNamespace: string;
   projectOwnerId?: number | undefined;
   projectUrl: string;
-  type: string;
+  type: "gitlab";
   createdAt?: number | undefined;
   deployHooks: Array<UpdateProjectLinkProjectsResponse200DeployHooks$Outbound>;
   gitCredentialId: string;
@@ -6503,7 +6018,7 @@ export const UpdateProjectLink4$outboundSchema: z.ZodType<
   projectNamespace: z.string(),
   projectOwnerId: z.number().optional(),
   projectUrl: z.string(),
-  type: UpdateProjectLinkProjectsResponse200Type$outboundSchema,
+  type: z.literal("gitlab"),
   createdAt: z.number().optional(),
   deployHooks: z.array(
     z.lazy(() =>
@@ -6532,16 +6047,6 @@ export function updateProjectLink4FromJSON(
     `Failed to parse 'UpdateProjectLink4' from JSON`,
   );
 }
-
-/** @internal */
-export const UpdateProjectLinkProjectsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectLinkProjectsResponseType> = z.nativeEnum(
-    UpdateProjectLinkProjectsResponseType,
-  );
-/** @internal */
-export const UpdateProjectLinkProjectsResponseType$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectLinkProjectsResponseType> =
-    UpdateProjectLinkProjectsResponseType$inboundSchema;
 
 /** @internal */
 export const UpdateProjectLinkProjectsResponseDeployHooks$inboundSchema:
@@ -6615,7 +6120,7 @@ export const UpdateProjectLink3$inboundSchema: z.ZodType<
   repoOwnerId: z.number().optional(),
   repo: z.string().optional(),
   repoId: z.number().optional(),
-  type: UpdateProjectLinkProjectsResponseType$inboundSchema,
+  type: z.literal("github-custom-host"),
   host: z.string(),
   createdAt: z.number().optional(),
   deployHooks: z.array(
@@ -6632,7 +6137,7 @@ export type UpdateProjectLink3$Outbound = {
   repoOwnerId?: number | undefined;
   repo?: string | undefined;
   repoId?: number | undefined;
-  type: string;
+  type: "github-custom-host";
   host: string;
   createdAt?: number | undefined;
   deployHooks: Array<UpdateProjectLinkProjectsResponseDeployHooks$Outbound>;
@@ -6652,7 +6157,7 @@ export const UpdateProjectLink3$outboundSchema: z.ZodType<
   repoOwnerId: z.number().optional(),
   repo: z.string().optional(),
   repoId: z.number().optional(),
-  type: UpdateProjectLinkProjectsResponseType$outboundSchema,
+  type: z.literal("github-custom-host"),
   host: z.string(),
   createdAt: z.number().optional(),
   deployHooks: z.array(
@@ -6680,15 +6185,6 @@ export function updateProjectLink3FromJSON(
     `Failed to parse 'UpdateProjectLink3' from JSON`,
   );
 }
-
-/** @internal */
-export const UpdateProjectLinkProjectsType$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectLinkProjectsType
-> = z.nativeEnum(UpdateProjectLinkProjectsType);
-/** @internal */
-export const UpdateProjectLinkProjectsType$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectLinkProjectsType
-> = UpdateProjectLinkProjectsType$inboundSchema;
 
 /** @internal */
 export const UpdateProjectLinkProjectsDeployHooks$inboundSchema: z.ZodType<
@@ -6750,7 +6246,7 @@ export const UpdateProjectLink2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: UpdateProjectLinkProjectsType$inboundSchema,
+  type: z.literal("github-limited"),
   repo: z.string().optional(),
   repoId: z.number().optional(),
   createdAt: z.number().optional(),
@@ -6766,7 +6262,7 @@ export const UpdateProjectLink2$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type UpdateProjectLink2$Outbound = {
-  type: string;
+  type: "github-limited";
   repo?: string | undefined;
   repoId?: number | undefined;
   createdAt?: number | undefined;
@@ -6785,7 +6281,7 @@ export const UpdateProjectLink2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectLink2
 > = z.object({
-  type: UpdateProjectLinkProjectsType$outboundSchema,
+  type: z.literal("github-limited"),
   repo: z.string().optional(),
   repoId: z.number().optional(),
   createdAt: z.number().optional(),
@@ -6816,15 +6312,6 @@ export function updateProjectLink2FromJSON(
     `Failed to parse 'UpdateProjectLink2' from JSON`,
   );
 }
-
-/** @internal */
-export const UpdateProjectLinkType$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectLinkType
-> = z.nativeEnum(UpdateProjectLinkType);
-/** @internal */
-export const UpdateProjectLinkType$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectLinkType
-> = UpdateProjectLinkType$inboundSchema;
 
 /** @internal */
 export const UpdateProjectLinkDeployHooks$inboundSchema: z.ZodType<
@@ -6889,7 +6376,7 @@ export const UpdateProjectLink1$inboundSchema: z.ZodType<
   repoOwnerId: z.number().optional(),
   repo: z.string().optional(),
   repoId: z.number().optional(),
-  type: UpdateProjectLinkType$inboundSchema,
+  type: z.literal("github"),
   createdAt: z.number().optional(),
   deployHooks: z.array(
     z.lazy(() => UpdateProjectLinkDeployHooks$inboundSchema),
@@ -6905,7 +6392,7 @@ export type UpdateProjectLink1$Outbound = {
   repoOwnerId?: number | undefined;
   repo?: string | undefined;
   repoId?: number | undefined;
-  type: string;
+  type: "github";
   createdAt?: number | undefined;
   deployHooks: Array<UpdateProjectLinkDeployHooks$Outbound>;
   gitCredentialId: string;
@@ -6924,7 +6411,7 @@ export const UpdateProjectLink1$outboundSchema: z.ZodType<
   repoOwnerId: z.number().optional(),
   repo: z.string().optional(),
   repoId: z.number().optional(),
-  type: UpdateProjectLinkType$outboundSchema,
+  type: z.literal("github"),
   createdAt: z.number().optional(),
   deployHooks: z.array(
     z.lazy(() => UpdateProjectLinkDeployHooks$outboundSchema),
@@ -6958,19 +6445,19 @@ export const UpdateProjectLink$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => UpdateProjectLink4$inboundSchema),
-  z.lazy(() => UpdateProjectLink5$inboundSchema),
-  z.lazy(() => UpdateProjectLink3$inboundSchema),
   z.lazy(() => UpdateProjectLink1$inboundSchema),
   z.lazy(() => UpdateProjectLink2$inboundSchema),
+  z.lazy(() => UpdateProjectLink3$inboundSchema),
+  z.lazy(() => UpdateProjectLink4$inboundSchema),
+  z.lazy(() => UpdateProjectLink5$inboundSchema),
 ]);
 /** @internal */
 export type UpdateProjectLink$Outbound =
-  | UpdateProjectLink4$Outbound
-  | UpdateProjectLink5$Outbound
-  | UpdateProjectLink3$Outbound
   | UpdateProjectLink1$Outbound
-  | UpdateProjectLink2$Outbound;
+  | UpdateProjectLink2$Outbound
+  | UpdateProjectLink3$Outbound
+  | UpdateProjectLink4$Outbound
+  | UpdateProjectLink5$Outbound;
 
 /** @internal */
 export const UpdateProjectLink$outboundSchema: z.ZodType<
@@ -6978,11 +6465,11 @@ export const UpdateProjectLink$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectLink
 > = z.union([
-  z.lazy(() => UpdateProjectLink4$outboundSchema),
-  z.lazy(() => UpdateProjectLink5$outboundSchema),
-  z.lazy(() => UpdateProjectLink3$outboundSchema),
   z.lazy(() => UpdateProjectLink1$outboundSchema),
   z.lazy(() => UpdateProjectLink2$outboundSchema),
+  z.lazy(() => UpdateProjectLink3$outboundSchema),
+  z.lazy(() => UpdateProjectLink4$outboundSchema),
+  z.lazy(() => UpdateProjectLink5$outboundSchema),
 ]);
 
 export function updateProjectLinkToJSON(
@@ -9140,15 +8627,6 @@ export function updateProjectLastAliasRequestFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectProtectionBypassProjectsScope$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectProtectionBypassProjectsScope> = z
-    .nativeEnum(UpdateProjectProtectionBypassProjectsScope);
-/** @internal */
-export const UpdateProjectProtectionBypassProjectsScope$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectProtectionBypassProjectsScope> =
-    UpdateProjectProtectionBypassProjectsScope$inboundSchema;
-
-/** @internal */
 export const UpdateProjectProtectionBypass2$inboundSchema: z.ZodType<
   UpdateProjectProtectionBypass2,
   z.ZodTypeDef,
@@ -9156,13 +8634,13 @@ export const UpdateProjectProtectionBypass2$inboundSchema: z.ZodType<
 > = z.object({
   createdAt: z.number(),
   createdBy: z.string(),
-  scope: UpdateProjectProtectionBypassProjectsScope$inboundSchema,
+  scope: z.literal("automation-bypass"),
 });
 /** @internal */
 export type UpdateProjectProtectionBypass2$Outbound = {
   createdAt: number;
   createdBy: string;
-  scope: string;
+  scope: "automation-bypass";
 };
 
 /** @internal */
@@ -9173,7 +8651,7 @@ export const UpdateProjectProtectionBypass2$outboundSchema: z.ZodType<
 > = z.object({
   createdAt: z.number(),
   createdBy: z.string(),
-  scope: UpdateProjectProtectionBypassProjectsScope$outboundSchema,
+  scope: z.literal("automation-bypass"),
 });
 
 export function updateProjectProtectionBypass2ToJSON(
@@ -9196,15 +8674,6 @@ export function updateProjectProtectionBypass2FromJSON(
 }
 
 /** @internal */
-export const UpdateProjectProtectionBypassScope$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectProtectionBypassScope
-> = z.nativeEnum(UpdateProjectProtectionBypassScope);
-/** @internal */
-export const UpdateProjectProtectionBypassScope$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectProtectionBypassScope
-> = UpdateProjectProtectionBypassScope$inboundSchema;
-
-/** @internal */
 export const UpdateProjectProtectionBypass1$inboundSchema: z.ZodType<
   UpdateProjectProtectionBypass1,
   z.ZodTypeDef,
@@ -9212,7 +8681,7 @@ export const UpdateProjectProtectionBypass1$inboundSchema: z.ZodType<
 > = z.object({
   createdAt: z.number(),
   createdBy: z.string(),
-  scope: UpdateProjectProtectionBypassScope$inboundSchema,
+  scope: z.literal("integration-automation-bypass"),
   integrationId: z.string(),
   configurationId: z.string(),
 });
@@ -9220,7 +8689,7 @@ export const UpdateProjectProtectionBypass1$inboundSchema: z.ZodType<
 export type UpdateProjectProtectionBypass1$Outbound = {
   createdAt: number;
   createdBy: string;
-  scope: string;
+  scope: "integration-automation-bypass";
   integrationId: string;
   configurationId: string;
 };
@@ -9233,7 +8702,7 @@ export const UpdateProjectProtectionBypass1$outboundSchema: z.ZodType<
 > = z.object({
   createdAt: z.number(),
   createdBy: z.string(),
-  scope: UpdateProjectProtectionBypassScope$outboundSchema,
+  scope: z.literal("integration-automation-bypass"),
   integrationId: z.string(),
   configurationId: z.string(),
 });
@@ -10174,24 +9643,6 @@ export function updateProjectBlockFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectBlockHistoryProjectsResponse200Action$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectBlockHistoryProjectsResponse200Action> = z
-    .nativeEnum(UpdateProjectBlockHistoryProjectsResponse200Action);
-/** @internal */
-export const UpdateProjectBlockHistoryProjectsResponse200Action$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectBlockHistoryProjectsResponse200Action> =
-    UpdateProjectBlockHistoryProjectsResponse200Action$inboundSchema;
-
-/** @internal */
-export const UpdateProjectHasProjectsResponse200Type$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectHasProjectsResponse200Type> = z
-    .nativeEnum(UpdateProjectHasProjectsResponse200Type);
-/** @internal */
-export const UpdateProjectHasProjectsResponse200Type$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectHasProjectsResponse200Type> =
-    UpdateProjectHasProjectsResponse200Type$inboundSchema;
-
-/** @internal */
 export const UpdateProjectHasProjectsResponse200Value$inboundSchema: z.ZodType<
   UpdateProjectHasProjectsResponse200Value,
   z.ZodTypeDef,
@@ -10245,12 +9696,12 @@ export const UpdateProjectHasProjects2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: UpdateProjectHasProjectsResponse200Type$inboundSchema,
+  type: z.literal("host"),
   value: z.lazy(() => UpdateProjectHasProjectsResponse200Value$inboundSchema),
 });
 /** @internal */
 export type UpdateProjectHasProjects2$Outbound = {
-  type: string;
+  type: "host";
   value: UpdateProjectHasProjectsResponse200Value$Outbound;
 };
 
@@ -10260,7 +9711,7 @@ export const UpdateProjectHasProjects2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectHasProjects2
 > = z.object({
-  type: UpdateProjectHasProjectsResponse200Type$outboundSchema,
+  type: z.literal("host"),
   value: z.lazy(() => UpdateProjectHasProjectsResponse200Value$outboundSchema),
 });
 
@@ -10280,16 +9731,6 @@ export function updateProjectHasProjects2FromJSON(
     `Failed to parse 'UpdateProjectHasProjects2' from JSON`,
   );
 }
-
-/** @internal */
-export const UpdateProjectHasProjectsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectHasProjectsResponseType> = z.nativeEnum(
-    UpdateProjectHasProjectsResponseType,
-  );
-/** @internal */
-export const UpdateProjectHasProjectsResponseType$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectHasProjectsResponseType> =
-    UpdateProjectHasProjectsResponseType$inboundSchema;
 
 /** @internal */
 export const UpdateProjectHasProjectsKey$inboundSchema: z.ZodNativeEnum<
@@ -10348,13 +9789,13 @@ export const UpdateProjectHasProjects1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: UpdateProjectHasProjectsResponseType$inboundSchema,
+  type: z.literal("header"),
   key: UpdateProjectHasProjectsKey$inboundSchema,
   value: z.lazy(() => UpdateProjectHasProjectsResponseValue$inboundSchema),
 });
 /** @internal */
 export type UpdateProjectHasProjects1$Outbound = {
-  type: string;
+  type: "header";
   key: string;
   value: UpdateProjectHasProjectsResponseValue$Outbound;
 };
@@ -10365,7 +9806,7 @@ export const UpdateProjectHasProjects1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectHasProjects1
 > = z.object({
-  type: UpdateProjectHasProjectsResponseType$outboundSchema,
+  type: z.literal("header"),
   key: UpdateProjectHasProjectsKey$outboundSchema,
   value: z.lazy(() => UpdateProjectHasProjectsResponseValue$outboundSchema),
 });
@@ -10635,7 +10076,7 @@ export const UpdateProjectBlockHistory4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  action: UpdateProjectBlockHistoryProjectsResponse200Action$inboundSchema,
+  action: z.literal("route-unblocked"),
   route: z.union([
     z.lazy(() => UpdateProjectRouteProjects1$inboundSchema),
     z.lazy(() => UpdateProjectRouteProjects2$inboundSchema),
@@ -10649,7 +10090,7 @@ export const UpdateProjectBlockHistory4$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type UpdateProjectBlockHistory4$Outbound = {
-  action: string;
+  action: "route-unblocked";
   route:
     | UpdateProjectRouteProjects1$Outbound
     | UpdateProjectRouteProjects2$Outbound;
@@ -10667,7 +10108,7 @@ export const UpdateProjectBlockHistory4$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectBlockHistory4
 > = z.object({
-  action: UpdateProjectBlockHistoryProjectsResponse200Action$outboundSchema,
+  action: z.literal("route-unblocked"),
   route: z.union([
     z.lazy(() => UpdateProjectRouteProjects1$outboundSchema),
     z.lazy(() => UpdateProjectRouteProjects2$outboundSchema),
@@ -10696,29 +10137,6 @@ export function updateProjectBlockHistory4FromJSON(
     `Failed to parse 'UpdateProjectBlockHistory4' from JSON`,
   );
 }
-
-/** @internal */
-export const UpdateProjectBlockHistoryProjectsResponseAction$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectBlockHistoryProjectsResponseAction> = z
-    .nativeEnum(UpdateProjectBlockHistoryProjectsResponseAction);
-/** @internal */
-export const UpdateProjectBlockHistoryProjectsResponseAction$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectBlockHistoryProjectsResponseAction> =
-    UpdateProjectBlockHistoryProjectsResponseAction$inboundSchema;
-
-/** @internal */
-export const UpdateProjectHasProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectHasProjectsResponse200ApplicationJSONResponseBodyType
-  > = z.nativeEnum(
-    UpdateProjectHasProjectsResponse200ApplicationJSONResponseBodyType,
-  );
-/** @internal */
-export const UpdateProjectHasProjectsResponse200ApplicationJSONResponseBodyType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectHasProjectsResponse200ApplicationJSONResponseBodyType
-  > =
-    UpdateProjectHasProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema;
 
 /** @internal */
 export const UpdateProjectHasProjectsResponse200ApplicationJSONResponseBodyValue$inboundSchema:
@@ -10777,15 +10195,14 @@ export const UpdateProjectHasProjectsResponse2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    UpdateProjectHasProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema,
+  type: z.literal("host"),
   value: z.lazy(() =>
     UpdateProjectHasProjectsResponse200ApplicationJSONResponseBodyValue$inboundSchema
   ),
 });
 /** @internal */
 export type UpdateProjectHasProjectsResponse2$Outbound = {
-  type: string;
+  type: "host";
   value:
     UpdateProjectHasProjectsResponse200ApplicationJSONResponseBodyValue$Outbound;
 };
@@ -10796,8 +10213,7 @@ export const UpdateProjectHasProjectsResponse2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectHasProjectsResponse2
 > = z.object({
-  type:
-    UpdateProjectHasProjectsResponse200ApplicationJSONResponseBodyType$outboundSchema,
+  type: z.literal("host"),
   value: z.lazy(() =>
     UpdateProjectHasProjectsResponse200ApplicationJSONResponseBodyValue$outboundSchema
   ),
@@ -10821,17 +10237,6 @@ export function updateProjectHasProjectsResponse2FromJSON(
     `Failed to parse 'UpdateProjectHasProjectsResponse2' from JSON`,
   );
 }
-
-/** @internal */
-export const UpdateProjectHasProjectsResponse200ApplicationJSONType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectHasProjectsResponse200ApplicationJSONType
-  > = z.nativeEnum(UpdateProjectHasProjectsResponse200ApplicationJSONType);
-/** @internal */
-export const UpdateProjectHasProjectsResponse200ApplicationJSONType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectHasProjectsResponse200ApplicationJSONType
-  > = UpdateProjectHasProjectsResponse200ApplicationJSONType$inboundSchema;
 
 /** @internal */
 export const UpdateProjectHasProjectsResponseKey$inboundSchema: z.ZodNativeEnum<
@@ -10896,7 +10301,7 @@ export const UpdateProjectHasProjectsResponse1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: UpdateProjectHasProjectsResponse200ApplicationJSONType$inboundSchema,
+  type: z.literal("header"),
   key: UpdateProjectHasProjectsResponseKey$inboundSchema,
   value: z.lazy(() =>
     UpdateProjectHasProjectsResponse200ApplicationJSONValue$inboundSchema
@@ -10904,7 +10309,7 @@ export const UpdateProjectHasProjectsResponse1$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type UpdateProjectHasProjectsResponse1$Outbound = {
-  type: string;
+  type: "header";
   key: string;
   value: UpdateProjectHasProjectsResponse200ApplicationJSONValue$Outbound;
 };
@@ -10915,7 +10320,7 @@ export const UpdateProjectHasProjectsResponse1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectHasProjectsResponse1
 > = z.object({
-  type: UpdateProjectHasProjectsResponse200ApplicationJSONType$outboundSchema,
+  type: z.literal("header"),
   key: UpdateProjectHasProjectsResponseKey$outboundSchema,
   value: z.lazy(() =>
     UpdateProjectHasProjectsResponse200ApplicationJSONValue$outboundSchema
@@ -11179,7 +10584,7 @@ export const UpdateProjectBlockHistory3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  action: UpdateProjectBlockHistoryProjectsResponseAction$inboundSchema,
+  action: z.literal("route-blocked"),
   route: z.union([
     z.lazy(() => UpdateProjectRoute1$inboundSchema),
     z.lazy(() => UpdateProjectRoute2$inboundSchema),
@@ -11193,7 +10598,7 @@ export const UpdateProjectBlockHistory3$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type UpdateProjectBlockHistory3$Outbound = {
-  action: string;
+  action: "route-blocked";
   route: UpdateProjectRoute1$Outbound | UpdateProjectRoute2$Outbound;
   reason: string;
   createdAt: number;
@@ -11209,7 +10614,7 @@ export const UpdateProjectBlockHistory3$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectBlockHistory3
 > = z.object({
-  action: UpdateProjectBlockHistoryProjectsResponseAction$outboundSchema,
+  action: z.literal("route-blocked"),
   route: z.union([
     z.lazy(() => UpdateProjectRoute1$outboundSchema),
     z.lazy(() => UpdateProjectRoute2$outboundSchema),
@@ -11240,21 +10645,12 @@ export function updateProjectBlockHistory3FromJSON(
 }
 
 /** @internal */
-export const UpdateProjectBlockHistoryProjectsAction$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectBlockHistoryProjectsAction> = z
-    .nativeEnum(UpdateProjectBlockHistoryProjectsAction);
-/** @internal */
-export const UpdateProjectBlockHistoryProjectsAction$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectBlockHistoryProjectsAction> =
-    UpdateProjectBlockHistoryProjectsAction$inboundSchema;
-
-/** @internal */
 export const UpdateProjectBlockHistory2$inboundSchema: z.ZodType<
   UpdateProjectBlockHistory2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  action: UpdateProjectBlockHistoryProjectsAction$inboundSchema,
+  action: z.literal("unblocked"),
   createdAt: z.number(),
   caseId: z.string().optional(),
   actor: z.string().optional(),
@@ -11263,7 +10659,7 @@ export const UpdateProjectBlockHistory2$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type UpdateProjectBlockHistory2$Outbound = {
-  action: string;
+  action: "unblocked";
   createdAt: number;
   caseId?: string | undefined;
   actor?: string | undefined;
@@ -11277,7 +10673,7 @@ export const UpdateProjectBlockHistory2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectBlockHistory2
 > = z.object({
-  action: UpdateProjectBlockHistoryProjectsAction$outboundSchema,
+  action: z.literal("unblocked"),
   createdAt: z.number(),
   caseId: z.string().optional(),
   actor: z.string().optional(),
@@ -11303,21 +10699,12 @@ export function updateProjectBlockHistory2FromJSON(
 }
 
 /** @internal */
-export const UpdateProjectBlockHistoryAction$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectBlockHistoryAction
-> = z.nativeEnum(UpdateProjectBlockHistoryAction);
-/** @internal */
-export const UpdateProjectBlockHistoryAction$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectBlockHistoryAction
-> = UpdateProjectBlockHistoryAction$inboundSchema;
-
-/** @internal */
 export const UpdateProjectBlockHistory1$inboundSchema: z.ZodType<
   UpdateProjectBlockHistory1,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  action: UpdateProjectBlockHistoryAction$inboundSchema,
+  action: z.literal("blocked"),
   reason: z.string(),
   statusCode: z.number(),
   createdAt: z.number(),
@@ -11328,7 +10715,7 @@ export const UpdateProjectBlockHistory1$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type UpdateProjectBlockHistory1$Outbound = {
-  action: string;
+  action: "blocked";
   reason: string;
   statusCode: number;
   createdAt: number;
@@ -11344,7 +10731,7 @@ export const UpdateProjectBlockHistory1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectBlockHistory1
 > = z.object({
-  action: UpdateProjectBlockHistoryAction$outboundSchema,
+  action: z.literal("blocked"),
   reason: z.string(),
   statusCode: z.number(),
   createdAt: z.number(),
@@ -11378,16 +10765,16 @@ export const UpdateProjectBlockHistory$inboundSchema: z.ZodType<
   unknown
 > = z.union([
   z.lazy(() => UpdateProjectBlockHistory1$inboundSchema),
+  z.lazy(() => UpdateProjectBlockHistory2$inboundSchema),
   z.lazy(() => UpdateProjectBlockHistory3$inboundSchema),
   z.lazy(() => UpdateProjectBlockHistory4$inboundSchema),
-  z.lazy(() => UpdateProjectBlockHistory2$inboundSchema),
 ]);
 /** @internal */
 export type UpdateProjectBlockHistory$Outbound =
   | UpdateProjectBlockHistory1$Outbound
+  | UpdateProjectBlockHistory2$Outbound
   | UpdateProjectBlockHistory3$Outbound
-  | UpdateProjectBlockHistory4$Outbound
-  | UpdateProjectBlockHistory2$Outbound;
+  | UpdateProjectBlockHistory4$Outbound;
 
 /** @internal */
 export const UpdateProjectBlockHistory$outboundSchema: z.ZodType<
@@ -11396,9 +10783,9 @@ export const UpdateProjectBlockHistory$outboundSchema: z.ZodType<
   UpdateProjectBlockHistory
 > = z.union([
   z.lazy(() => UpdateProjectBlockHistory1$outboundSchema),
+  z.lazy(() => UpdateProjectBlockHistory2$outboundSchema),
   z.lazy(() => UpdateProjectBlockHistory3$outboundSchema),
   z.lazy(() => UpdateProjectBlockHistory4$outboundSchema),
-  z.lazy(() => UpdateProjectBlockHistory2$outboundSchema),
 ]);
 
 export function updateProjectBlockHistoryToJSON(
@@ -11431,9 +10818,9 @@ export const UpdateProjectAbuse$inboundSchema: z.ZodType<
   blockHistory: z.array(
     z.union([
       z.lazy(() => UpdateProjectBlockHistory1$inboundSchema),
+      z.lazy(() => UpdateProjectBlockHistory2$inboundSchema),
       z.lazy(() => UpdateProjectBlockHistory3$inboundSchema),
       z.lazy(() => UpdateProjectBlockHistory4$inboundSchema),
-      z.lazy(() => UpdateProjectBlockHistory2$inboundSchema),
     ]),
   ).optional(),
   interstitial: z.boolean().optional(),
@@ -11447,9 +10834,9 @@ export type UpdateProjectAbuse$Outbound = {
   blockHistory?:
     | Array<
       | UpdateProjectBlockHistory1$Outbound
+      | UpdateProjectBlockHistory2$Outbound
       | UpdateProjectBlockHistory3$Outbound
       | UpdateProjectBlockHistory4$Outbound
-      | UpdateProjectBlockHistory2$Outbound
     >
     | undefined;
   interstitial?: boolean | undefined;
@@ -11468,9 +10855,9 @@ export const UpdateProjectAbuse$outboundSchema: z.ZodType<
   blockHistory: z.array(
     z.union([
       z.lazy(() => UpdateProjectBlockHistory1$outboundSchema),
+      z.lazy(() => UpdateProjectBlockHistory2$outboundSchema),
       z.lazy(() => UpdateProjectBlockHistory3$outboundSchema),
       z.lazy(() => UpdateProjectBlockHistory4$outboundSchema),
-      z.lazy(() => UpdateProjectBlockHistory2$outboundSchema),
     ]),
   ).optional(),
   interstitial: z.boolean().optional(),
@@ -11492,15 +10879,6 @@ export function updateProjectAbuseFromJSON(
     `Failed to parse 'UpdateProjectAbuse' from JSON`,
   );
 }
-
-/** @internal */
-export const UpdateProjectHasProjectsType$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectHasProjectsType
-> = z.nativeEnum(UpdateProjectHasProjectsType);
-/** @internal */
-export const UpdateProjectHasProjectsType$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectHasProjectsType
-> = UpdateProjectHasProjectsType$inboundSchema;
 
 /** @internal */
 export const UpdateProjectHasProjectsValue$inboundSchema: z.ZodType<
@@ -11549,12 +10927,12 @@ export const UpdateProjectHas2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: UpdateProjectHasProjectsType$inboundSchema,
+  type: z.literal("host"),
   value: z.lazy(() => UpdateProjectHasProjectsValue$inboundSchema),
 });
 /** @internal */
 export type UpdateProjectHas2$Outbound = {
-  type: string;
+  type: "host";
   value: UpdateProjectHasProjectsValue$Outbound;
 };
 
@@ -11564,7 +10942,7 @@ export const UpdateProjectHas2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectHas2
 > = z.object({
-  type: UpdateProjectHasProjectsType$outboundSchema,
+  type: z.literal("host"),
   value: z.lazy(() => UpdateProjectHasProjectsValue$outboundSchema),
 });
 
@@ -11584,15 +10962,6 @@ export function updateProjectHas2FromJSON(
     `Failed to parse 'UpdateProjectHas2' from JSON`,
   );
 }
-
-/** @internal */
-export const UpdateProjectHasType$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectHasType
-> = z.nativeEnum(UpdateProjectHasType);
-/** @internal */
-export const UpdateProjectHasType$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectHasType
-> = UpdateProjectHasType$inboundSchema;
 
 /** @internal */
 export const UpdateProjectHasKey$inboundSchema: z.ZodNativeEnum<
@@ -11648,13 +11017,13 @@ export const UpdateProjectHas1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: UpdateProjectHasType$inboundSchema,
+  type: z.literal("header"),
   key: UpdateProjectHasKey$inboundSchema,
   value: z.lazy(() => UpdateProjectHasValue$inboundSchema),
 });
 /** @internal */
 export type UpdateProjectHas1$Outbound = {
-  type: string;
+  type: "header";
   key: string;
   value: UpdateProjectHasValue$Outbound;
 };
@@ -11665,7 +11034,7 @@ export const UpdateProjectHas1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectHas1
 > = z.object({
-  type: UpdateProjectHasType$outboundSchema,
+  type: z.literal("header"),
   key: UpdateProjectHasKey$outboundSchema,
   value: z.lazy(() => UpdateProjectHasValue$outboundSchema),
 });
@@ -12207,11 +11576,11 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => UpdateProjectLatestDeployments$inboundSchema),
   ).optional(),
   link: z.union([
-    z.lazy(() => UpdateProjectLink4$inboundSchema),
-    z.lazy(() => UpdateProjectLink5$inboundSchema),
-    z.lazy(() => UpdateProjectLink3$inboundSchema),
     z.lazy(() => UpdateProjectLink1$inboundSchema),
     z.lazy(() => UpdateProjectLink2$inboundSchema),
+    z.lazy(() => UpdateProjectLink3$inboundSchema),
+    z.lazy(() => UpdateProjectLink4$inboundSchema),
+    z.lazy(() => UpdateProjectLink5$inboundSchema),
   ]).optional(),
   microfrontends: z.union([
     z.lazy(() => UpdateProjectMicrofrontends1$inboundSchema),
@@ -12352,11 +11721,11 @@ export type UpdateProjectResponseBody$Outbound = {
     | Array<UpdateProjectLatestDeployments$Outbound>
     | undefined;
   link?:
-    | UpdateProjectLink4$Outbound
-    | UpdateProjectLink5$Outbound
-    | UpdateProjectLink3$Outbound
     | UpdateProjectLink1$Outbound
     | UpdateProjectLink2$Outbound
+    | UpdateProjectLink3$Outbound
+    | UpdateProjectLink4$Outbound
+    | UpdateProjectLink5$Outbound
     | undefined;
   microfrontends?:
     | UpdateProjectMicrofrontends1$Outbound
@@ -12487,11 +11856,11 @@ export const UpdateProjectResponseBody$outboundSchema: z.ZodType<
     z.lazy(() => UpdateProjectLatestDeployments$outboundSchema),
   ).optional(),
   link: z.union([
-    z.lazy(() => UpdateProjectLink4$outboundSchema),
-    z.lazy(() => UpdateProjectLink5$outboundSchema),
-    z.lazy(() => UpdateProjectLink3$outboundSchema),
     z.lazy(() => UpdateProjectLink1$outboundSchema),
     z.lazy(() => UpdateProjectLink2$outboundSchema),
+    z.lazy(() => UpdateProjectLink3$outboundSchema),
+    z.lazy(() => UpdateProjectLink4$outboundSchema),
+    z.lazy(() => UpdateProjectLink5$outboundSchema),
   ]).optional(),
   microfrontends: z.union([
     z.lazy(() => UpdateProjectMicrofrontends1$outboundSchema),

@@ -759,10 +759,10 @@ func (o *GetDrainDeliveryHTTP2) GetSecret() *GetDrainSecretUnion3 {
 type GetDrainDeliveryUnion2Type string
 
 const (
-	GetDrainDeliveryUnion2TypeGetDrainDeliveryHTTP2               GetDrainDeliveryUnion2Type = "getDrain_delivery_HTTP_2"
-	GetDrainDeliveryUnion2TypeGetDrainDeliveryOtlphttp2           GetDrainDeliveryUnion2Type = "getDrain_delivery_Otlphttp_2"
-	GetDrainDeliveryUnion2TypeGetDrainDeliveryClickhouse2         GetDrainDeliveryUnion2Type = "getDrain_delivery_Clickhouse_2"
-	GetDrainDeliveryUnion2TypeGetDrainDeliveryVercelOtelTracesDb2 GetDrainDeliveryUnion2Type = "getDrain_delivery_VercelOtelTracesDb_2"
+	GetDrainDeliveryUnion2TypeHTTP       GetDrainDeliveryUnion2Type = "http"
+	GetDrainDeliveryUnion2TypeOtlphttp   GetDrainDeliveryUnion2Type = "otlphttp"
+	GetDrainDeliveryUnion2TypeClickhouse GetDrainDeliveryUnion2Type = "clickhouse"
+	GetDrainDeliveryUnion2TypeInternal   GetDrainDeliveryUnion2Type = "internal"
 )
 
 type GetDrainDeliveryUnion2 struct {
@@ -774,69 +774,101 @@ type GetDrainDeliveryUnion2 struct {
 	Type GetDrainDeliveryUnion2Type
 }
 
-func CreateGetDrainDeliveryUnion2GetDrainDeliveryHTTP2(getDrainDeliveryHTTP2 GetDrainDeliveryHTTP2) GetDrainDeliveryUnion2 {
-	typ := GetDrainDeliveryUnion2TypeGetDrainDeliveryHTTP2
+func CreateGetDrainDeliveryUnion2HTTP(http GetDrainDeliveryHTTP2) GetDrainDeliveryUnion2 {
+	typ := GetDrainDeliveryUnion2TypeHTTP
+
+	typStr := GetDrainTypeHTTP2(typ)
+	http.Type = typStr
 
 	return GetDrainDeliveryUnion2{
-		GetDrainDeliveryHTTP2: &getDrainDeliveryHTTP2,
+		GetDrainDeliveryHTTP2: &http,
 		Type:                  typ,
 	}
 }
 
-func CreateGetDrainDeliveryUnion2GetDrainDeliveryOtlphttp2(getDrainDeliveryOtlphttp2 GetDrainDeliveryOtlphttp2) GetDrainDeliveryUnion2 {
-	typ := GetDrainDeliveryUnion2TypeGetDrainDeliveryOtlphttp2
+func CreateGetDrainDeliveryUnion2Otlphttp(otlphttp GetDrainDeliveryOtlphttp2) GetDrainDeliveryUnion2 {
+	typ := GetDrainDeliveryUnion2TypeOtlphttp
+
+	typStr := GetDrainTypeOtlphttp2(typ)
+	otlphttp.Type = typStr
 
 	return GetDrainDeliveryUnion2{
-		GetDrainDeliveryOtlphttp2: &getDrainDeliveryOtlphttp2,
+		GetDrainDeliveryOtlphttp2: &otlphttp,
 		Type:                      typ,
 	}
 }
 
-func CreateGetDrainDeliveryUnion2GetDrainDeliveryClickhouse2(getDrainDeliveryClickhouse2 GetDrainDeliveryClickhouse2) GetDrainDeliveryUnion2 {
-	typ := GetDrainDeliveryUnion2TypeGetDrainDeliveryClickhouse2
+func CreateGetDrainDeliveryUnion2Clickhouse(clickhouse GetDrainDeliveryClickhouse2) GetDrainDeliveryUnion2 {
+	typ := GetDrainDeliveryUnion2TypeClickhouse
+
+	typStr := GetDrainTypeClickhouse2(typ)
+	clickhouse.Type = typStr
 
 	return GetDrainDeliveryUnion2{
-		GetDrainDeliveryClickhouse2: &getDrainDeliveryClickhouse2,
+		GetDrainDeliveryClickhouse2: &clickhouse,
 		Type:                        typ,
 	}
 }
 
-func CreateGetDrainDeliveryUnion2GetDrainDeliveryVercelOtelTracesDb2(getDrainDeliveryVercelOtelTracesDb2 GetDrainDeliveryVercelOtelTracesDb2) GetDrainDeliveryUnion2 {
-	typ := GetDrainDeliveryUnion2TypeGetDrainDeliveryVercelOtelTracesDb2
+func CreateGetDrainDeliveryUnion2Internal(internal GetDrainDeliveryVercelOtelTracesDb2) GetDrainDeliveryUnion2 {
+	typ := GetDrainDeliveryUnion2TypeInternal
+
+	typStr := GetDrainTypeInternal2(typ)
+	internal.Type = typStr
 
 	return GetDrainDeliveryUnion2{
-		GetDrainDeliveryVercelOtelTracesDb2: &getDrainDeliveryVercelOtelTracesDb2,
+		GetDrainDeliveryVercelOtelTracesDb2: &internal,
 		Type:                                typ,
 	}
 }
 
 func (u *GetDrainDeliveryUnion2) UnmarshalJSON(data []byte) error {
 
-	var getDrainDeliveryHTTP2 GetDrainDeliveryHTTP2 = GetDrainDeliveryHTTP2{}
-	if err := utils.UnmarshalJSON(data, &getDrainDeliveryHTTP2, "", true, nil); err == nil {
-		u.GetDrainDeliveryHTTP2 = &getDrainDeliveryHTTP2
-		u.Type = GetDrainDeliveryUnion2TypeGetDrainDeliveryHTTP2
-		return nil
+	type discriminator struct {
+		Type string `json:"type"`
 	}
 
-	var getDrainDeliveryOtlphttp2 GetDrainDeliveryOtlphttp2 = GetDrainDeliveryOtlphttp2{}
-	if err := utils.UnmarshalJSON(data, &getDrainDeliveryOtlphttp2, "", true, nil); err == nil {
-		u.GetDrainDeliveryOtlphttp2 = &getDrainDeliveryOtlphttp2
-		u.Type = GetDrainDeliveryUnion2TypeGetDrainDeliveryOtlphttp2
-		return nil
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
 	}
 
-	var getDrainDeliveryClickhouse2 GetDrainDeliveryClickhouse2 = GetDrainDeliveryClickhouse2{}
-	if err := utils.UnmarshalJSON(data, &getDrainDeliveryClickhouse2, "", true, nil); err == nil {
-		u.GetDrainDeliveryClickhouse2 = &getDrainDeliveryClickhouse2
-		u.Type = GetDrainDeliveryUnion2TypeGetDrainDeliveryClickhouse2
-		return nil
-	}
+	switch dis.Type {
+	case "http":
+		getDrainDeliveryHTTP2 := new(GetDrainDeliveryHTTP2)
+		if err := utils.UnmarshalJSON(data, &getDrainDeliveryHTTP2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == http) type GetDrainDeliveryHTTP2 within GetDrainDeliveryUnion2: %w", string(data), err)
+		}
 
-	var getDrainDeliveryVercelOtelTracesDb2 GetDrainDeliveryVercelOtelTracesDb2 = GetDrainDeliveryVercelOtelTracesDb2{}
-	if err := utils.UnmarshalJSON(data, &getDrainDeliveryVercelOtelTracesDb2, "", true, nil); err == nil {
-		u.GetDrainDeliveryVercelOtelTracesDb2 = &getDrainDeliveryVercelOtelTracesDb2
-		u.Type = GetDrainDeliveryUnion2TypeGetDrainDeliveryVercelOtelTracesDb2
+		u.GetDrainDeliveryHTTP2 = getDrainDeliveryHTTP2
+		u.Type = GetDrainDeliveryUnion2TypeHTTP
+		return nil
+	case "otlphttp":
+		getDrainDeliveryOtlphttp2 := new(GetDrainDeliveryOtlphttp2)
+		if err := utils.UnmarshalJSON(data, &getDrainDeliveryOtlphttp2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == otlphttp) type GetDrainDeliveryOtlphttp2 within GetDrainDeliveryUnion2: %w", string(data), err)
+		}
+
+		u.GetDrainDeliveryOtlphttp2 = getDrainDeliveryOtlphttp2
+		u.Type = GetDrainDeliveryUnion2TypeOtlphttp
+		return nil
+	case "clickhouse":
+		getDrainDeliveryClickhouse2 := new(GetDrainDeliveryClickhouse2)
+		if err := utils.UnmarshalJSON(data, &getDrainDeliveryClickhouse2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == clickhouse) type GetDrainDeliveryClickhouse2 within GetDrainDeliveryUnion2: %w", string(data), err)
+		}
+
+		u.GetDrainDeliveryClickhouse2 = getDrainDeliveryClickhouse2
+		u.Type = GetDrainDeliveryUnion2TypeClickhouse
+		return nil
+	case "internal":
+		getDrainDeliveryVercelOtelTracesDb2 := new(GetDrainDeliveryVercelOtelTracesDb2)
+		if err := utils.UnmarshalJSON(data, &getDrainDeliveryVercelOtelTracesDb2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == internal) type GetDrainDeliveryVercelOtelTracesDb2 within GetDrainDeliveryUnion2: %w", string(data), err)
+		}
+
+		u.GetDrainDeliveryVercelOtelTracesDb2 = getDrainDeliveryVercelOtelTracesDb2
+		u.Type = GetDrainDeliveryUnion2TypeInternal
 		return nil
 	}
 
@@ -1144,8 +1176,8 @@ func (o *GetDrainSourceSelfServed2) GetKind() GetDrainKindSelfServed2 {
 type GetDrainSourceUnion2Type string
 
 const (
-	GetDrainSourceUnion2TypeGetDrainSourceSelfServed2  GetDrainSourceUnion2Type = "getDrain_source_SelfServed_2"
-	GetDrainSourceUnion2TypeGetDrainSourceIntegration2 GetDrainSourceUnion2Type = "getDrain_source_Integration_2"
+	GetDrainSourceUnion2TypeSelfServed  GetDrainSourceUnion2Type = "self-served"
+	GetDrainSourceUnion2TypeIntegration GetDrainSourceUnion2Type = "integration"
 )
 
 type GetDrainSourceUnion2 struct {
@@ -1155,37 +1187,59 @@ type GetDrainSourceUnion2 struct {
 	Type GetDrainSourceUnion2Type
 }
 
-func CreateGetDrainSourceUnion2GetDrainSourceSelfServed2(getDrainSourceSelfServed2 GetDrainSourceSelfServed2) GetDrainSourceUnion2 {
-	typ := GetDrainSourceUnion2TypeGetDrainSourceSelfServed2
+func CreateGetDrainSourceUnion2SelfServed(selfServed GetDrainSourceSelfServed2) GetDrainSourceUnion2 {
+	typ := GetDrainSourceUnion2TypeSelfServed
+
+	typStr := GetDrainKindSelfServed2(typ)
+	selfServed.Kind = typStr
 
 	return GetDrainSourceUnion2{
-		GetDrainSourceSelfServed2: &getDrainSourceSelfServed2,
+		GetDrainSourceSelfServed2: &selfServed,
 		Type:                      typ,
 	}
 }
 
-func CreateGetDrainSourceUnion2GetDrainSourceIntegration2(getDrainSourceIntegration2 GetDrainSourceIntegration2) GetDrainSourceUnion2 {
-	typ := GetDrainSourceUnion2TypeGetDrainSourceIntegration2
+func CreateGetDrainSourceUnion2Integration(integration GetDrainSourceIntegration2) GetDrainSourceUnion2 {
+	typ := GetDrainSourceUnion2TypeIntegration
+
+	typStr := GetDrainKindIntegration2(typ)
+	integration.Kind = typStr
 
 	return GetDrainSourceUnion2{
-		GetDrainSourceIntegration2: &getDrainSourceIntegration2,
+		GetDrainSourceIntegration2: &integration,
 		Type:                       typ,
 	}
 }
 
 func (u *GetDrainSourceUnion2) UnmarshalJSON(data []byte) error {
 
-	var getDrainSourceIntegration2 GetDrainSourceIntegration2 = GetDrainSourceIntegration2{}
-	if err := utils.UnmarshalJSON(data, &getDrainSourceIntegration2, "", true, nil); err == nil {
-		u.GetDrainSourceIntegration2 = &getDrainSourceIntegration2
-		u.Type = GetDrainSourceUnion2TypeGetDrainSourceIntegration2
-		return nil
+	type discriminator struct {
+		Kind string `json:"kind"`
 	}
 
-	var getDrainSourceSelfServed2 GetDrainSourceSelfServed2 = GetDrainSourceSelfServed2{}
-	if err := utils.UnmarshalJSON(data, &getDrainSourceSelfServed2, "", true, nil); err == nil {
-		u.GetDrainSourceSelfServed2 = &getDrainSourceSelfServed2
-		u.Type = GetDrainSourceUnion2TypeGetDrainSourceSelfServed2
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Kind {
+	case "self-served":
+		getDrainSourceSelfServed2 := new(GetDrainSourceSelfServed2)
+		if err := utils.UnmarshalJSON(data, &getDrainSourceSelfServed2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Kind == self-served) type GetDrainSourceSelfServed2 within GetDrainSourceUnion2: %w", string(data), err)
+		}
+
+		u.GetDrainSourceSelfServed2 = getDrainSourceSelfServed2
+		u.Type = GetDrainSourceUnion2TypeSelfServed
+		return nil
+	case "integration":
+		getDrainSourceIntegration2 := new(GetDrainSourceIntegration2)
+		if err := utils.UnmarshalJSON(data, &getDrainSourceIntegration2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Kind == integration) type GetDrainSourceIntegration2 within GetDrainSourceUnion2: %w", string(data), err)
+		}
+
+		u.GetDrainSourceIntegration2 = getDrainSourceIntegration2
+		u.Type = GetDrainSourceUnion2TypeIntegration
 		return nil
 	}
 
@@ -1493,8 +1547,8 @@ func (o *GetDrainFilterBasic2) GetDeployment() *GetDrainDeployment2 {
 type GetDrainFilterUnion2Type string
 
 const (
-	GetDrainFilterUnion2TypeGetDrainFilterBasic2 GetDrainFilterUnion2Type = "getDrain_filter_Basic_2"
-	GetDrainFilterUnion2TypeGetDrainFilterOdata2 GetDrainFilterUnion2Type = "getDrain_filter_Odata_2"
+	GetDrainFilterUnion2TypeBasic GetDrainFilterUnion2Type = "basic"
+	GetDrainFilterUnion2TypeOdata GetDrainFilterUnion2Type = "odata"
 )
 
 type GetDrainFilterUnion2 struct {
@@ -1504,37 +1558,59 @@ type GetDrainFilterUnion2 struct {
 	Type GetDrainFilterUnion2Type
 }
 
-func CreateGetDrainFilterUnion2GetDrainFilterBasic2(getDrainFilterBasic2 GetDrainFilterBasic2) GetDrainFilterUnion2 {
-	typ := GetDrainFilterUnion2TypeGetDrainFilterBasic2
+func CreateGetDrainFilterUnion2Basic(basic GetDrainFilterBasic2) GetDrainFilterUnion2 {
+	typ := GetDrainFilterUnion2TypeBasic
+
+	typStr := GetDrainTypeBasic2(typ)
+	basic.Type = typStr
 
 	return GetDrainFilterUnion2{
-		GetDrainFilterBasic2: &getDrainFilterBasic2,
+		GetDrainFilterBasic2: &basic,
 		Type:                 typ,
 	}
 }
 
-func CreateGetDrainFilterUnion2GetDrainFilterOdata2(getDrainFilterOdata2 GetDrainFilterOdata2) GetDrainFilterUnion2 {
-	typ := GetDrainFilterUnion2TypeGetDrainFilterOdata2
+func CreateGetDrainFilterUnion2Odata(odata GetDrainFilterOdata2) GetDrainFilterUnion2 {
+	typ := GetDrainFilterUnion2TypeOdata
+
+	typStr := GetDrainTypeOdata2(typ)
+	odata.Type = typStr
 
 	return GetDrainFilterUnion2{
-		GetDrainFilterOdata2: &getDrainFilterOdata2,
+		GetDrainFilterOdata2: &odata,
 		Type:                 typ,
 	}
 }
 
 func (u *GetDrainFilterUnion2) UnmarshalJSON(data []byte) error {
 
-	var getDrainFilterOdata2 GetDrainFilterOdata2 = GetDrainFilterOdata2{}
-	if err := utils.UnmarshalJSON(data, &getDrainFilterOdata2, "", true, nil); err == nil {
-		u.GetDrainFilterOdata2 = &getDrainFilterOdata2
-		u.Type = GetDrainFilterUnion2TypeGetDrainFilterOdata2
-		return nil
+	type discriminator struct {
+		Type string `json:"type"`
 	}
 
-	var getDrainFilterBasic2 GetDrainFilterBasic2 = GetDrainFilterBasic2{}
-	if err := utils.UnmarshalJSON(data, &getDrainFilterBasic2, "", true, nil); err == nil {
-		u.GetDrainFilterBasic2 = &getDrainFilterBasic2
-		u.Type = GetDrainFilterUnion2TypeGetDrainFilterBasic2
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Type {
+	case "basic":
+		getDrainFilterBasic2 := new(GetDrainFilterBasic2)
+		if err := utils.UnmarshalJSON(data, &getDrainFilterBasic2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == basic) type GetDrainFilterBasic2 within GetDrainFilterUnion2: %w", string(data), err)
+		}
+
+		u.GetDrainFilterBasic2 = getDrainFilterBasic2
+		u.Type = GetDrainFilterUnion2TypeBasic
+		return nil
+	case "odata":
+		getDrainFilterOdata2 := new(GetDrainFilterOdata2)
+		if err := utils.UnmarshalJSON(data, &getDrainFilterOdata2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == odata) type GetDrainFilterOdata2 within GetDrainFilterUnion2: %w", string(data), err)
+		}
+
+		u.GetDrainFilterOdata2 = getDrainFilterOdata2
+		u.Type = GetDrainFilterUnion2TypeOdata
 		return nil
 	}
 
@@ -1581,6 +1657,14 @@ func (o *GetDrainFilterV2V22) GetFilter() GetDrainFilterUnion2 {
 		return GetDrainFilterUnion2{}
 	}
 	return o.Filter
+}
+
+func (o *GetDrainFilterV2V22) GetFilterBasic() *GetDrainFilterBasic2 {
+	return o.GetFilter().GetDrainFilterBasic2
+}
+
+func (o *GetDrainFilterV2V22) GetFilterOdata() *GetDrainFilterOdata2 {
+	return o.GetFilter().GetDrainFilterOdata2
 }
 
 type GetDrainVersionV12 string
@@ -1631,8 +1715,8 @@ func (o *GetDrainFilterV2V12) GetVersion() GetDrainVersionV12 {
 type GetDrainFilterV2Union2Type string
 
 const (
-	GetDrainFilterV2Union2TypeGetDrainFilterV2V12 GetDrainFilterV2Union2Type = "getDrain_filterV2_V1_2"
-	GetDrainFilterV2Union2TypeGetDrainFilterV2V22 GetDrainFilterV2Union2Type = "getDrain_filterV2_V2_2"
+	GetDrainFilterV2Union2TypeV1 GetDrainFilterV2Union2Type = "v1"
+	GetDrainFilterV2Union2TypeV2 GetDrainFilterV2Union2Type = "v2"
 )
 
 type GetDrainFilterV2Union2 struct {
@@ -1642,37 +1726,59 @@ type GetDrainFilterV2Union2 struct {
 	Type GetDrainFilterV2Union2Type
 }
 
-func CreateGetDrainFilterV2Union2GetDrainFilterV2V12(getDrainFilterV2V12 GetDrainFilterV2V12) GetDrainFilterV2Union2 {
-	typ := GetDrainFilterV2Union2TypeGetDrainFilterV2V12
+func CreateGetDrainFilterV2Union2V1(v1 GetDrainFilterV2V12) GetDrainFilterV2Union2 {
+	typ := GetDrainFilterV2Union2TypeV1
+
+	typStr := GetDrainVersionV12(typ)
+	v1.Version = typStr
 
 	return GetDrainFilterV2Union2{
-		GetDrainFilterV2V12: &getDrainFilterV2V12,
+		GetDrainFilterV2V12: &v1,
 		Type:                typ,
 	}
 }
 
-func CreateGetDrainFilterV2Union2GetDrainFilterV2V22(getDrainFilterV2V22 GetDrainFilterV2V22) GetDrainFilterV2Union2 {
-	typ := GetDrainFilterV2Union2TypeGetDrainFilterV2V22
+func CreateGetDrainFilterV2Union2V2(v2 GetDrainFilterV2V22) GetDrainFilterV2Union2 {
+	typ := GetDrainFilterV2Union2TypeV2
+
+	typStr := GetDrainVersionV22(typ)
+	v2.Version = typStr
 
 	return GetDrainFilterV2Union2{
-		GetDrainFilterV2V22: &getDrainFilterV2V22,
+		GetDrainFilterV2V22: &v2,
 		Type:                typ,
 	}
 }
 
 func (u *GetDrainFilterV2Union2) UnmarshalJSON(data []byte) error {
 
-	var getDrainFilterV2V22 GetDrainFilterV2V22 = GetDrainFilterV2V22{}
-	if err := utils.UnmarshalJSON(data, &getDrainFilterV2V22, "", true, nil); err == nil {
-		u.GetDrainFilterV2V22 = &getDrainFilterV2V22
-		u.Type = GetDrainFilterV2Union2TypeGetDrainFilterV2V22
-		return nil
+	type discriminator struct {
+		Version string `json:"version"`
 	}
 
-	var getDrainFilterV2V12 GetDrainFilterV2V12 = GetDrainFilterV2V12{}
-	if err := utils.UnmarshalJSON(data, &getDrainFilterV2V12, "", true, nil); err == nil {
-		u.GetDrainFilterV2V12 = &getDrainFilterV2V12
-		u.Type = GetDrainFilterV2Union2TypeGetDrainFilterV2V12
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Version {
+	case "v1":
+		getDrainFilterV2V12 := new(GetDrainFilterV2V12)
+		if err := utils.UnmarshalJSON(data, &getDrainFilterV2V12, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Version == v1) type GetDrainFilterV2V12 within GetDrainFilterV2Union2: %w", string(data), err)
+		}
+
+		u.GetDrainFilterV2V12 = getDrainFilterV2V12
+		u.Type = GetDrainFilterV2Union2TypeV1
+		return nil
+	case "v2":
+		getDrainFilterV2V22 := new(GetDrainFilterV2V22)
+		if err := utils.UnmarshalJSON(data, &getDrainFilterV2V22, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Version == v2) type GetDrainFilterV2V22 within GetDrainFilterV2Union2: %w", string(data), err)
+		}
+
+		u.GetDrainFilterV2V22 = getDrainFilterV2V22
+		u.Type = GetDrainFilterV2Union2TypeV2
 		return nil
 	}
 
@@ -1792,8 +1898,8 @@ func (o *GetDrainProjectAccessAll) GetAccess() GetDrainAccessAll {
 type GetDrainProjectAccessUnionType string
 
 const (
-	GetDrainProjectAccessUnionTypeGetDrainProjectAccessAll  GetDrainProjectAccessUnionType = "getDrain_projectAccess_All"
-	GetDrainProjectAccessUnionTypeGetDrainProjectAccessSome GetDrainProjectAccessUnionType = "getDrain_projectAccess_Some"
+	GetDrainProjectAccessUnionTypeAll  GetDrainProjectAccessUnionType = "all"
+	GetDrainProjectAccessUnionTypeSome GetDrainProjectAccessUnionType = "some"
 )
 
 type GetDrainProjectAccessUnion struct {
@@ -1803,37 +1909,59 @@ type GetDrainProjectAccessUnion struct {
 	Type GetDrainProjectAccessUnionType
 }
 
-func CreateGetDrainProjectAccessUnionGetDrainProjectAccessAll(getDrainProjectAccessAll GetDrainProjectAccessAll) GetDrainProjectAccessUnion {
-	typ := GetDrainProjectAccessUnionTypeGetDrainProjectAccessAll
+func CreateGetDrainProjectAccessUnionAll(all GetDrainProjectAccessAll) GetDrainProjectAccessUnion {
+	typ := GetDrainProjectAccessUnionTypeAll
+
+	typStr := GetDrainAccessAll(typ)
+	all.Access = typStr
 
 	return GetDrainProjectAccessUnion{
-		GetDrainProjectAccessAll: &getDrainProjectAccessAll,
+		GetDrainProjectAccessAll: &all,
 		Type:                     typ,
 	}
 }
 
-func CreateGetDrainProjectAccessUnionGetDrainProjectAccessSome(getDrainProjectAccessSome GetDrainProjectAccessSome) GetDrainProjectAccessUnion {
-	typ := GetDrainProjectAccessUnionTypeGetDrainProjectAccessSome
+func CreateGetDrainProjectAccessUnionSome(some GetDrainProjectAccessSome) GetDrainProjectAccessUnion {
+	typ := GetDrainProjectAccessUnionTypeSome
+
+	typStr := GetDrainAccessSome(typ)
+	some.Access = typStr
 
 	return GetDrainProjectAccessUnion{
-		GetDrainProjectAccessSome: &getDrainProjectAccessSome,
+		GetDrainProjectAccessSome: &some,
 		Type:                      typ,
 	}
 }
 
 func (u *GetDrainProjectAccessUnion) UnmarshalJSON(data []byte) error {
 
-	var getDrainProjectAccessSome GetDrainProjectAccessSome = GetDrainProjectAccessSome{}
-	if err := utils.UnmarshalJSON(data, &getDrainProjectAccessSome, "", true, nil); err == nil {
-		u.GetDrainProjectAccessSome = &getDrainProjectAccessSome
-		u.Type = GetDrainProjectAccessUnionTypeGetDrainProjectAccessSome
-		return nil
+	type discriminator struct {
+		Access string `json:"access"`
 	}
 
-	var getDrainProjectAccessAll GetDrainProjectAccessAll = GetDrainProjectAccessAll{}
-	if err := utils.UnmarshalJSON(data, &getDrainProjectAccessAll, "", true, nil); err == nil {
-		u.GetDrainProjectAccessAll = &getDrainProjectAccessAll
-		u.Type = GetDrainProjectAccessUnionTypeGetDrainProjectAccessAll
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Access {
+	case "all":
+		getDrainProjectAccessAll := new(GetDrainProjectAccessAll)
+		if err := utils.UnmarshalJSON(data, &getDrainProjectAccessAll, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Access == all) type GetDrainProjectAccessAll within GetDrainProjectAccessUnion: %w", string(data), err)
+		}
+
+		u.GetDrainProjectAccessAll = getDrainProjectAccessAll
+		u.Type = GetDrainProjectAccessUnionTypeAll
+		return nil
+	case "some":
+		getDrainProjectAccessSome := new(GetDrainProjectAccessSome)
+		if err := utils.UnmarshalJSON(data, &getDrainProjectAccessSome, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Access == some) type GetDrainProjectAccessSome within GetDrainProjectAccessUnion: %w", string(data), err)
+		}
+
+		u.GetDrainProjectAccessSome = getDrainProjectAccessSome
+		u.Type = GetDrainProjectAccessUnionTypeSome
 		return nil
 	}
 
@@ -1944,6 +2072,34 @@ func (o *GetDrainResponseBody2) GetDelivery() *GetDrainDeliveryUnion2 {
 	return o.Delivery
 }
 
+func (o *GetDrainResponseBody2) GetDeliveryHTTP() *GetDrainDeliveryHTTP2 {
+	if v := o.GetDelivery(); v != nil {
+		return v.GetDrainDeliveryHTTP2
+	}
+	return nil
+}
+
+func (o *GetDrainResponseBody2) GetDeliveryOtlphttp() *GetDrainDeliveryOtlphttp2 {
+	if v := o.GetDelivery(); v != nil {
+		return v.GetDrainDeliveryOtlphttp2
+	}
+	return nil
+}
+
+func (o *GetDrainResponseBody2) GetDeliveryClickhouse() *GetDrainDeliveryClickhouse2 {
+	if v := o.GetDelivery(); v != nil {
+		return v.GetDrainDeliveryClickhouse2
+	}
+	return nil
+}
+
+func (o *GetDrainResponseBody2) GetDeliveryInternal() *GetDrainDeliveryVercelOtelTracesDb2 {
+	if v := o.GetDelivery(); v != nil {
+		return v.GetDrainDeliveryVercelOtelTracesDb2
+	}
+	return nil
+}
+
 func (o *GetDrainResponseBody2) GetSampling() []GetDrainSampling2 {
 	if o == nil {
 		return nil
@@ -2000,6 +2156,14 @@ func (o *GetDrainResponseBody2) GetSource() GetDrainSourceUnion2 {
 	return o.Source
 }
 
+func (o *GetDrainResponseBody2) GetSourceSelfServed() *GetDrainSourceSelfServed2 {
+	return o.GetSource().GetDrainSourceSelfServed2
+}
+
+func (o *GetDrainResponseBody2) GetSourceIntegration() *GetDrainSourceIntegration2 {
+	return o.GetSource().GetDrainSourceIntegration2
+}
+
 func (o *GetDrainResponseBody2) GetFilter() *string {
 	if o == nil {
 		return nil
@@ -2012,6 +2176,20 @@ func (o *GetDrainResponseBody2) GetFilterV2() *GetDrainFilterV2Union2 {
 		return nil
 	}
 	return o.FilterV2
+}
+
+func (o *GetDrainResponseBody2) GetFilterV2V1() *GetDrainFilterV2V12 {
+	if v := o.GetFilterV2(); v != nil {
+		return v.GetDrainFilterV2V12
+	}
+	return nil
+}
+
+func (o *GetDrainResponseBody2) GetFilterV2V2() *GetDrainFilterV2V22 {
+	if v := o.GetFilterV2(); v != nil {
+		return v.GetDrainFilterV2V22
+	}
+	return nil
 }
 
 func (o *GetDrainResponseBody2) GetIntegrationIcon() *string {
@@ -2040,6 +2218,20 @@ func (o *GetDrainResponseBody2) GetProjectAccess() *GetDrainProjectAccessUnion {
 		return nil
 	}
 	return o.ProjectAccess
+}
+
+func (o *GetDrainResponseBody2) GetProjectAccessAll() *GetDrainProjectAccessAll {
+	if v := o.GetProjectAccess(); v != nil {
+		return v.GetDrainProjectAccessAll
+	}
+	return nil
+}
+
+func (o *GetDrainResponseBody2) GetProjectAccessSome() *GetDrainProjectAccessSome {
+	if v := o.GetProjectAccess(); v != nil {
+		return v.GetDrainProjectAccessSome
+	}
+	return nil
 }
 
 type GetDrainSchemasLog1 struct {
@@ -2762,10 +2954,10 @@ func (o *GetDrainDeliveryHTTP1) GetSecret() *GetDrainSecretUnion1 {
 type GetDrainDeliveryUnion1Type string
 
 const (
-	GetDrainDeliveryUnion1TypeGetDrainDeliveryHTTP1               GetDrainDeliveryUnion1Type = "getDrain_delivery_HTTP_1"
-	GetDrainDeliveryUnion1TypeGetDrainDeliveryOtlphttp1           GetDrainDeliveryUnion1Type = "getDrain_delivery_Otlphttp_1"
-	GetDrainDeliveryUnion1TypeGetDrainDeliveryClickhouse1         GetDrainDeliveryUnion1Type = "getDrain_delivery_Clickhouse_1"
-	GetDrainDeliveryUnion1TypeGetDrainDeliveryVercelOtelTracesDb1 GetDrainDeliveryUnion1Type = "getDrain_delivery_VercelOtelTracesDb_1"
+	GetDrainDeliveryUnion1TypeHTTP       GetDrainDeliveryUnion1Type = "http"
+	GetDrainDeliveryUnion1TypeOtlphttp   GetDrainDeliveryUnion1Type = "otlphttp"
+	GetDrainDeliveryUnion1TypeClickhouse GetDrainDeliveryUnion1Type = "clickhouse"
+	GetDrainDeliveryUnion1TypeInternal   GetDrainDeliveryUnion1Type = "internal"
 )
 
 type GetDrainDeliveryUnion1 struct {
@@ -2777,69 +2969,101 @@ type GetDrainDeliveryUnion1 struct {
 	Type GetDrainDeliveryUnion1Type
 }
 
-func CreateGetDrainDeliveryUnion1GetDrainDeliveryHTTP1(getDrainDeliveryHTTP1 GetDrainDeliveryHTTP1) GetDrainDeliveryUnion1 {
-	typ := GetDrainDeliveryUnion1TypeGetDrainDeliveryHTTP1
+func CreateGetDrainDeliveryUnion1HTTP(http GetDrainDeliveryHTTP1) GetDrainDeliveryUnion1 {
+	typ := GetDrainDeliveryUnion1TypeHTTP
+
+	typStr := GetDrainTypeHTTP1(typ)
+	http.Type = typStr
 
 	return GetDrainDeliveryUnion1{
-		GetDrainDeliveryHTTP1: &getDrainDeliveryHTTP1,
+		GetDrainDeliveryHTTP1: &http,
 		Type:                  typ,
 	}
 }
 
-func CreateGetDrainDeliveryUnion1GetDrainDeliveryOtlphttp1(getDrainDeliveryOtlphttp1 GetDrainDeliveryOtlphttp1) GetDrainDeliveryUnion1 {
-	typ := GetDrainDeliveryUnion1TypeGetDrainDeliveryOtlphttp1
+func CreateGetDrainDeliveryUnion1Otlphttp(otlphttp GetDrainDeliveryOtlphttp1) GetDrainDeliveryUnion1 {
+	typ := GetDrainDeliveryUnion1TypeOtlphttp
+
+	typStr := GetDrainTypeOtlphttp1(typ)
+	otlphttp.Type = typStr
 
 	return GetDrainDeliveryUnion1{
-		GetDrainDeliveryOtlphttp1: &getDrainDeliveryOtlphttp1,
+		GetDrainDeliveryOtlphttp1: &otlphttp,
 		Type:                      typ,
 	}
 }
 
-func CreateGetDrainDeliveryUnion1GetDrainDeliveryClickhouse1(getDrainDeliveryClickhouse1 GetDrainDeliveryClickhouse1) GetDrainDeliveryUnion1 {
-	typ := GetDrainDeliveryUnion1TypeGetDrainDeliveryClickhouse1
+func CreateGetDrainDeliveryUnion1Clickhouse(clickhouse GetDrainDeliveryClickhouse1) GetDrainDeliveryUnion1 {
+	typ := GetDrainDeliveryUnion1TypeClickhouse
+
+	typStr := GetDrainTypeClickhouse1(typ)
+	clickhouse.Type = typStr
 
 	return GetDrainDeliveryUnion1{
-		GetDrainDeliveryClickhouse1: &getDrainDeliveryClickhouse1,
+		GetDrainDeliveryClickhouse1: &clickhouse,
 		Type:                        typ,
 	}
 }
 
-func CreateGetDrainDeliveryUnion1GetDrainDeliveryVercelOtelTracesDb1(getDrainDeliveryVercelOtelTracesDb1 GetDrainDeliveryVercelOtelTracesDb1) GetDrainDeliveryUnion1 {
-	typ := GetDrainDeliveryUnion1TypeGetDrainDeliveryVercelOtelTracesDb1
+func CreateGetDrainDeliveryUnion1Internal(internal GetDrainDeliveryVercelOtelTracesDb1) GetDrainDeliveryUnion1 {
+	typ := GetDrainDeliveryUnion1TypeInternal
+
+	typStr := GetDrainTypeInternal1(typ)
+	internal.Type = typStr
 
 	return GetDrainDeliveryUnion1{
-		GetDrainDeliveryVercelOtelTracesDb1: &getDrainDeliveryVercelOtelTracesDb1,
+		GetDrainDeliveryVercelOtelTracesDb1: &internal,
 		Type:                                typ,
 	}
 }
 
 func (u *GetDrainDeliveryUnion1) UnmarshalJSON(data []byte) error {
 
-	var getDrainDeliveryHTTP1 GetDrainDeliveryHTTP1 = GetDrainDeliveryHTTP1{}
-	if err := utils.UnmarshalJSON(data, &getDrainDeliveryHTTP1, "", true, nil); err == nil {
-		u.GetDrainDeliveryHTTP1 = &getDrainDeliveryHTTP1
-		u.Type = GetDrainDeliveryUnion1TypeGetDrainDeliveryHTTP1
-		return nil
+	type discriminator struct {
+		Type string `json:"type"`
 	}
 
-	var getDrainDeliveryOtlphttp1 GetDrainDeliveryOtlphttp1 = GetDrainDeliveryOtlphttp1{}
-	if err := utils.UnmarshalJSON(data, &getDrainDeliveryOtlphttp1, "", true, nil); err == nil {
-		u.GetDrainDeliveryOtlphttp1 = &getDrainDeliveryOtlphttp1
-		u.Type = GetDrainDeliveryUnion1TypeGetDrainDeliveryOtlphttp1
-		return nil
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
 	}
 
-	var getDrainDeliveryClickhouse1 GetDrainDeliveryClickhouse1 = GetDrainDeliveryClickhouse1{}
-	if err := utils.UnmarshalJSON(data, &getDrainDeliveryClickhouse1, "", true, nil); err == nil {
-		u.GetDrainDeliveryClickhouse1 = &getDrainDeliveryClickhouse1
-		u.Type = GetDrainDeliveryUnion1TypeGetDrainDeliveryClickhouse1
-		return nil
-	}
+	switch dis.Type {
+	case "http":
+		getDrainDeliveryHTTP1 := new(GetDrainDeliveryHTTP1)
+		if err := utils.UnmarshalJSON(data, &getDrainDeliveryHTTP1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == http) type GetDrainDeliveryHTTP1 within GetDrainDeliveryUnion1: %w", string(data), err)
+		}
 
-	var getDrainDeliveryVercelOtelTracesDb1 GetDrainDeliveryVercelOtelTracesDb1 = GetDrainDeliveryVercelOtelTracesDb1{}
-	if err := utils.UnmarshalJSON(data, &getDrainDeliveryVercelOtelTracesDb1, "", true, nil); err == nil {
-		u.GetDrainDeliveryVercelOtelTracesDb1 = &getDrainDeliveryVercelOtelTracesDb1
-		u.Type = GetDrainDeliveryUnion1TypeGetDrainDeliveryVercelOtelTracesDb1
+		u.GetDrainDeliveryHTTP1 = getDrainDeliveryHTTP1
+		u.Type = GetDrainDeliveryUnion1TypeHTTP
+		return nil
+	case "otlphttp":
+		getDrainDeliveryOtlphttp1 := new(GetDrainDeliveryOtlphttp1)
+		if err := utils.UnmarshalJSON(data, &getDrainDeliveryOtlphttp1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == otlphttp) type GetDrainDeliveryOtlphttp1 within GetDrainDeliveryUnion1: %w", string(data), err)
+		}
+
+		u.GetDrainDeliveryOtlphttp1 = getDrainDeliveryOtlphttp1
+		u.Type = GetDrainDeliveryUnion1TypeOtlphttp
+		return nil
+	case "clickhouse":
+		getDrainDeliveryClickhouse1 := new(GetDrainDeliveryClickhouse1)
+		if err := utils.UnmarshalJSON(data, &getDrainDeliveryClickhouse1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == clickhouse) type GetDrainDeliveryClickhouse1 within GetDrainDeliveryUnion1: %w", string(data), err)
+		}
+
+		u.GetDrainDeliveryClickhouse1 = getDrainDeliveryClickhouse1
+		u.Type = GetDrainDeliveryUnion1TypeClickhouse
+		return nil
+	case "internal":
+		getDrainDeliveryVercelOtelTracesDb1 := new(GetDrainDeliveryVercelOtelTracesDb1)
+		if err := utils.UnmarshalJSON(data, &getDrainDeliveryVercelOtelTracesDb1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == internal) type GetDrainDeliveryVercelOtelTracesDb1 within GetDrainDeliveryUnion1: %w", string(data), err)
+		}
+
+		u.GetDrainDeliveryVercelOtelTracesDb1 = getDrainDeliveryVercelOtelTracesDb1
+		u.Type = GetDrainDeliveryUnion1TypeInternal
 		return nil
 	}
 
@@ -3147,8 +3371,8 @@ func (o *GetDrainSourceSelfServed1) GetKind() GetDrainKindSelfServed1 {
 type GetDrainSourceUnion1Type string
 
 const (
-	GetDrainSourceUnion1TypeGetDrainSourceSelfServed1  GetDrainSourceUnion1Type = "getDrain_source_SelfServed_1"
-	GetDrainSourceUnion1TypeGetDrainSourceIntegration1 GetDrainSourceUnion1Type = "getDrain_source_Integration_1"
+	GetDrainSourceUnion1TypeSelfServed  GetDrainSourceUnion1Type = "self-served"
+	GetDrainSourceUnion1TypeIntegration GetDrainSourceUnion1Type = "integration"
 )
 
 type GetDrainSourceUnion1 struct {
@@ -3158,37 +3382,59 @@ type GetDrainSourceUnion1 struct {
 	Type GetDrainSourceUnion1Type
 }
 
-func CreateGetDrainSourceUnion1GetDrainSourceSelfServed1(getDrainSourceSelfServed1 GetDrainSourceSelfServed1) GetDrainSourceUnion1 {
-	typ := GetDrainSourceUnion1TypeGetDrainSourceSelfServed1
+func CreateGetDrainSourceUnion1SelfServed(selfServed GetDrainSourceSelfServed1) GetDrainSourceUnion1 {
+	typ := GetDrainSourceUnion1TypeSelfServed
+
+	typStr := GetDrainKindSelfServed1(typ)
+	selfServed.Kind = typStr
 
 	return GetDrainSourceUnion1{
-		GetDrainSourceSelfServed1: &getDrainSourceSelfServed1,
+		GetDrainSourceSelfServed1: &selfServed,
 		Type:                      typ,
 	}
 }
 
-func CreateGetDrainSourceUnion1GetDrainSourceIntegration1(getDrainSourceIntegration1 GetDrainSourceIntegration1) GetDrainSourceUnion1 {
-	typ := GetDrainSourceUnion1TypeGetDrainSourceIntegration1
+func CreateGetDrainSourceUnion1Integration(integration GetDrainSourceIntegration1) GetDrainSourceUnion1 {
+	typ := GetDrainSourceUnion1TypeIntegration
+
+	typStr := GetDrainKindIntegration1(typ)
+	integration.Kind = typStr
 
 	return GetDrainSourceUnion1{
-		GetDrainSourceIntegration1: &getDrainSourceIntegration1,
+		GetDrainSourceIntegration1: &integration,
 		Type:                       typ,
 	}
 }
 
 func (u *GetDrainSourceUnion1) UnmarshalJSON(data []byte) error {
 
-	var getDrainSourceIntegration1 GetDrainSourceIntegration1 = GetDrainSourceIntegration1{}
-	if err := utils.UnmarshalJSON(data, &getDrainSourceIntegration1, "", true, nil); err == nil {
-		u.GetDrainSourceIntegration1 = &getDrainSourceIntegration1
-		u.Type = GetDrainSourceUnion1TypeGetDrainSourceIntegration1
-		return nil
+	type discriminator struct {
+		Kind string `json:"kind"`
 	}
 
-	var getDrainSourceSelfServed1 GetDrainSourceSelfServed1 = GetDrainSourceSelfServed1{}
-	if err := utils.UnmarshalJSON(data, &getDrainSourceSelfServed1, "", true, nil); err == nil {
-		u.GetDrainSourceSelfServed1 = &getDrainSourceSelfServed1
-		u.Type = GetDrainSourceUnion1TypeGetDrainSourceSelfServed1
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Kind {
+	case "self-served":
+		getDrainSourceSelfServed1 := new(GetDrainSourceSelfServed1)
+		if err := utils.UnmarshalJSON(data, &getDrainSourceSelfServed1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Kind == self-served) type GetDrainSourceSelfServed1 within GetDrainSourceUnion1: %w", string(data), err)
+		}
+
+		u.GetDrainSourceSelfServed1 = getDrainSourceSelfServed1
+		u.Type = GetDrainSourceUnion1TypeSelfServed
+		return nil
+	case "integration":
+		getDrainSourceIntegration1 := new(GetDrainSourceIntegration1)
+		if err := utils.UnmarshalJSON(data, &getDrainSourceIntegration1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Kind == integration) type GetDrainSourceIntegration1 within GetDrainSourceUnion1: %w", string(data), err)
+		}
+
+		u.GetDrainSourceIntegration1 = getDrainSourceIntegration1
+		u.Type = GetDrainSourceUnion1TypeIntegration
 		return nil
 	}
 
@@ -3496,8 +3742,8 @@ func (o *GetDrainFilterBasic1) GetDeployment() *GetDrainDeployment1 {
 type GetDrainFilterUnion1Type string
 
 const (
-	GetDrainFilterUnion1TypeGetDrainFilterBasic1 GetDrainFilterUnion1Type = "getDrain_filter_Basic_1"
-	GetDrainFilterUnion1TypeGetDrainFilterOdata1 GetDrainFilterUnion1Type = "getDrain_filter_Odata_1"
+	GetDrainFilterUnion1TypeBasic GetDrainFilterUnion1Type = "basic"
+	GetDrainFilterUnion1TypeOdata GetDrainFilterUnion1Type = "odata"
 )
 
 type GetDrainFilterUnion1 struct {
@@ -3507,37 +3753,59 @@ type GetDrainFilterUnion1 struct {
 	Type GetDrainFilterUnion1Type
 }
 
-func CreateGetDrainFilterUnion1GetDrainFilterBasic1(getDrainFilterBasic1 GetDrainFilterBasic1) GetDrainFilterUnion1 {
-	typ := GetDrainFilterUnion1TypeGetDrainFilterBasic1
+func CreateGetDrainFilterUnion1Basic(basic GetDrainFilterBasic1) GetDrainFilterUnion1 {
+	typ := GetDrainFilterUnion1TypeBasic
+
+	typStr := GetDrainTypeBasic1(typ)
+	basic.Type = typStr
 
 	return GetDrainFilterUnion1{
-		GetDrainFilterBasic1: &getDrainFilterBasic1,
+		GetDrainFilterBasic1: &basic,
 		Type:                 typ,
 	}
 }
 
-func CreateGetDrainFilterUnion1GetDrainFilterOdata1(getDrainFilterOdata1 GetDrainFilterOdata1) GetDrainFilterUnion1 {
-	typ := GetDrainFilterUnion1TypeGetDrainFilterOdata1
+func CreateGetDrainFilterUnion1Odata(odata GetDrainFilterOdata1) GetDrainFilterUnion1 {
+	typ := GetDrainFilterUnion1TypeOdata
+
+	typStr := GetDrainTypeOdata1(typ)
+	odata.Type = typStr
 
 	return GetDrainFilterUnion1{
-		GetDrainFilterOdata1: &getDrainFilterOdata1,
+		GetDrainFilterOdata1: &odata,
 		Type:                 typ,
 	}
 }
 
 func (u *GetDrainFilterUnion1) UnmarshalJSON(data []byte) error {
 
-	var getDrainFilterOdata1 GetDrainFilterOdata1 = GetDrainFilterOdata1{}
-	if err := utils.UnmarshalJSON(data, &getDrainFilterOdata1, "", true, nil); err == nil {
-		u.GetDrainFilterOdata1 = &getDrainFilterOdata1
-		u.Type = GetDrainFilterUnion1TypeGetDrainFilterOdata1
-		return nil
+	type discriminator struct {
+		Type string `json:"type"`
 	}
 
-	var getDrainFilterBasic1 GetDrainFilterBasic1 = GetDrainFilterBasic1{}
-	if err := utils.UnmarshalJSON(data, &getDrainFilterBasic1, "", true, nil); err == nil {
-		u.GetDrainFilterBasic1 = &getDrainFilterBasic1
-		u.Type = GetDrainFilterUnion1TypeGetDrainFilterBasic1
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Type {
+	case "basic":
+		getDrainFilterBasic1 := new(GetDrainFilterBasic1)
+		if err := utils.UnmarshalJSON(data, &getDrainFilterBasic1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == basic) type GetDrainFilterBasic1 within GetDrainFilterUnion1: %w", string(data), err)
+		}
+
+		u.GetDrainFilterBasic1 = getDrainFilterBasic1
+		u.Type = GetDrainFilterUnion1TypeBasic
+		return nil
+	case "odata":
+		getDrainFilterOdata1 := new(GetDrainFilterOdata1)
+		if err := utils.UnmarshalJSON(data, &getDrainFilterOdata1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == odata) type GetDrainFilterOdata1 within GetDrainFilterUnion1: %w", string(data), err)
+		}
+
+		u.GetDrainFilterOdata1 = getDrainFilterOdata1
+		u.Type = GetDrainFilterUnion1TypeOdata
 		return nil
 	}
 
@@ -3584,6 +3852,14 @@ func (o *GetDrainFilterV2V21) GetFilter() GetDrainFilterUnion1 {
 		return GetDrainFilterUnion1{}
 	}
 	return o.Filter
+}
+
+func (o *GetDrainFilterV2V21) GetFilterBasic() *GetDrainFilterBasic1 {
+	return o.GetFilter().GetDrainFilterBasic1
+}
+
+func (o *GetDrainFilterV2V21) GetFilterOdata() *GetDrainFilterOdata1 {
+	return o.GetFilter().GetDrainFilterOdata1
 }
 
 type GetDrainVersionV11 string
@@ -3634,8 +3910,8 @@ func (o *GetDrainFilterV2V11) GetVersion() GetDrainVersionV11 {
 type GetDrainFilterV2Union1Type string
 
 const (
-	GetDrainFilterV2Union1TypeGetDrainFilterV2V11 GetDrainFilterV2Union1Type = "getDrain_filterV2_V1_1"
-	GetDrainFilterV2Union1TypeGetDrainFilterV2V21 GetDrainFilterV2Union1Type = "getDrain_filterV2_V2_1"
+	GetDrainFilterV2Union1TypeV1 GetDrainFilterV2Union1Type = "v1"
+	GetDrainFilterV2Union1TypeV2 GetDrainFilterV2Union1Type = "v2"
 )
 
 type GetDrainFilterV2Union1 struct {
@@ -3645,37 +3921,59 @@ type GetDrainFilterV2Union1 struct {
 	Type GetDrainFilterV2Union1Type
 }
 
-func CreateGetDrainFilterV2Union1GetDrainFilterV2V11(getDrainFilterV2V11 GetDrainFilterV2V11) GetDrainFilterV2Union1 {
-	typ := GetDrainFilterV2Union1TypeGetDrainFilterV2V11
+func CreateGetDrainFilterV2Union1V1(v1 GetDrainFilterV2V11) GetDrainFilterV2Union1 {
+	typ := GetDrainFilterV2Union1TypeV1
+
+	typStr := GetDrainVersionV11(typ)
+	v1.Version = typStr
 
 	return GetDrainFilterV2Union1{
-		GetDrainFilterV2V11: &getDrainFilterV2V11,
+		GetDrainFilterV2V11: &v1,
 		Type:                typ,
 	}
 }
 
-func CreateGetDrainFilterV2Union1GetDrainFilterV2V21(getDrainFilterV2V21 GetDrainFilterV2V21) GetDrainFilterV2Union1 {
-	typ := GetDrainFilterV2Union1TypeGetDrainFilterV2V21
+func CreateGetDrainFilterV2Union1V2(v2 GetDrainFilterV2V21) GetDrainFilterV2Union1 {
+	typ := GetDrainFilterV2Union1TypeV2
+
+	typStr := GetDrainVersionV21(typ)
+	v2.Version = typStr
 
 	return GetDrainFilterV2Union1{
-		GetDrainFilterV2V21: &getDrainFilterV2V21,
+		GetDrainFilterV2V21: &v2,
 		Type:                typ,
 	}
 }
 
 func (u *GetDrainFilterV2Union1) UnmarshalJSON(data []byte) error {
 
-	var getDrainFilterV2V21 GetDrainFilterV2V21 = GetDrainFilterV2V21{}
-	if err := utils.UnmarshalJSON(data, &getDrainFilterV2V21, "", true, nil); err == nil {
-		u.GetDrainFilterV2V21 = &getDrainFilterV2V21
-		u.Type = GetDrainFilterV2Union1TypeGetDrainFilterV2V21
-		return nil
+	type discriminator struct {
+		Version string `json:"version"`
 	}
 
-	var getDrainFilterV2V11 GetDrainFilterV2V11 = GetDrainFilterV2V11{}
-	if err := utils.UnmarshalJSON(data, &getDrainFilterV2V11, "", true, nil); err == nil {
-		u.GetDrainFilterV2V11 = &getDrainFilterV2V11
-		u.Type = GetDrainFilterV2Union1TypeGetDrainFilterV2V11
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Version {
+	case "v1":
+		getDrainFilterV2V11 := new(GetDrainFilterV2V11)
+		if err := utils.UnmarshalJSON(data, &getDrainFilterV2V11, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Version == v1) type GetDrainFilterV2V11 within GetDrainFilterV2Union1: %w", string(data), err)
+		}
+
+		u.GetDrainFilterV2V11 = getDrainFilterV2V11
+		u.Type = GetDrainFilterV2Union1TypeV1
+		return nil
+	case "v2":
+		getDrainFilterV2V21 := new(GetDrainFilterV2V21)
+		if err := utils.UnmarshalJSON(data, &getDrainFilterV2V21, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Version == v2) type GetDrainFilterV2V21 within GetDrainFilterV2Union1: %w", string(data), err)
+		}
+
+		u.GetDrainFilterV2V21 = getDrainFilterV2V21
+		u.Type = GetDrainFilterV2Union1TypeV2
 		return nil
 	}
 
@@ -3782,6 +4080,34 @@ func (o *GetDrainResponseBody1) GetDelivery() *GetDrainDeliveryUnion1 {
 	return o.Delivery
 }
 
+func (o *GetDrainResponseBody1) GetDeliveryHTTP() *GetDrainDeliveryHTTP1 {
+	if v := o.GetDelivery(); v != nil {
+		return v.GetDrainDeliveryHTTP1
+	}
+	return nil
+}
+
+func (o *GetDrainResponseBody1) GetDeliveryOtlphttp() *GetDrainDeliveryOtlphttp1 {
+	if v := o.GetDelivery(); v != nil {
+		return v.GetDrainDeliveryOtlphttp1
+	}
+	return nil
+}
+
+func (o *GetDrainResponseBody1) GetDeliveryClickhouse() *GetDrainDeliveryClickhouse1 {
+	if v := o.GetDelivery(); v != nil {
+		return v.GetDrainDeliveryClickhouse1
+	}
+	return nil
+}
+
+func (o *GetDrainResponseBody1) GetDeliveryInternal() *GetDrainDeliveryVercelOtelTracesDb1 {
+	if v := o.GetDelivery(); v != nil {
+		return v.GetDrainDeliveryVercelOtelTracesDb1
+	}
+	return nil
+}
+
 func (o *GetDrainResponseBody1) GetSampling() []GetDrainSampling1 {
 	if o == nil {
 		return nil
@@ -3838,6 +4164,14 @@ func (o *GetDrainResponseBody1) GetSource() GetDrainSourceUnion1 {
 	return o.Source
 }
 
+func (o *GetDrainResponseBody1) GetSourceSelfServed() *GetDrainSourceSelfServed1 {
+	return o.GetSource().GetDrainSourceSelfServed1
+}
+
+func (o *GetDrainResponseBody1) GetSourceIntegration() *GetDrainSourceIntegration1 {
+	return o.GetSource().GetDrainSourceIntegration1
+}
+
 func (o *GetDrainResponseBody1) GetFilter() *string {
 	if o == nil {
 		return nil
@@ -3850,6 +4184,20 @@ func (o *GetDrainResponseBody1) GetFilterV2() *GetDrainFilterV2Union1 {
 		return nil
 	}
 	return o.FilterV2
+}
+
+func (o *GetDrainResponseBody1) GetFilterV2V1() *GetDrainFilterV2V11 {
+	if v := o.GetFilterV2(); v != nil {
+		return v.GetDrainFilterV2V11
+	}
+	return nil
+}
+
+func (o *GetDrainResponseBody1) GetFilterV2V2() *GetDrainFilterV2V21 {
+	if v := o.GetFilterV2(); v != nil {
+		return v.GetDrainFilterV2V21
+	}
+	return nil
 }
 
 type GetDrainResponseBodyType string

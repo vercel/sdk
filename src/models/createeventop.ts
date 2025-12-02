@@ -5,17 +5,11 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
-import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export const CreateEventEventType = {
-  ResourceUpdated: "resource.updated",
-} as const;
-export type CreateEventEventType = ClosedEnum<typeof CreateEventEventType>;
-
 export type Event2 = {
-  type: CreateEventEventType;
+  type: "resource.updated";
   /**
    * Partner-provided product slug or id
    */
@@ -26,23 +20,18 @@ export type Event2 = {
   resourceId: string;
 };
 
-export const EventType = {
-  InstallationUpdated: "installation.updated",
-} as const;
-export type EventType = ClosedEnum<typeof EventType>;
-
 export type Event1 = {
-  type: EventType;
+  type: "installation.updated";
   /**
    * The installation-level billing plan ID
    */
   billingPlanId?: string | undefined;
 };
 
-export type CreateEventEvent = Event2 | Event1;
+export type CreateEventEvent = Event1 | Event2;
 
 export type CreateEventRequestBody = {
-  event: Event2 | Event1;
+  event: Event1 | Event2;
 };
 
 export type CreateEventRequest = {
@@ -51,24 +40,15 @@ export type CreateEventRequest = {
 };
 
 /** @internal */
-export const CreateEventEventType$inboundSchema: z.ZodNativeEnum<
-  typeof CreateEventEventType
-> = z.nativeEnum(CreateEventEventType);
-/** @internal */
-export const CreateEventEventType$outboundSchema: z.ZodNativeEnum<
-  typeof CreateEventEventType
-> = CreateEventEventType$inboundSchema;
-
-/** @internal */
 export const Event2$inboundSchema: z.ZodType<Event2, z.ZodTypeDef, unknown> = z
   .object({
-    type: CreateEventEventType$inboundSchema,
+    type: z.literal("resource.updated"),
     productId: z.string().optional(),
     resourceId: z.string(),
   });
 /** @internal */
 export type Event2$Outbound = {
-  type: string;
+  type: "resource.updated";
   productId?: string | undefined;
   resourceId: string;
 };
@@ -79,7 +59,7 @@ export const Event2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Event2
 > = z.object({
-  type: CreateEventEventType$outboundSchema,
+  type: z.literal("resource.updated"),
   productId: z.string().optional(),
   resourceId: z.string(),
 });
@@ -98,21 +78,14 @@ export function event2FromJSON(
 }
 
 /** @internal */
-export const EventType$inboundSchema: z.ZodNativeEnum<typeof EventType> = z
-  .nativeEnum(EventType);
-/** @internal */
-export const EventType$outboundSchema: z.ZodNativeEnum<typeof EventType> =
-  EventType$inboundSchema;
-
-/** @internal */
 export const Event1$inboundSchema: z.ZodType<Event1, z.ZodTypeDef, unknown> = z
   .object({
-    type: EventType$inboundSchema,
+    type: z.literal("installation.updated"),
     billingPlanId: z.string().optional(),
   });
 /** @internal */
 export type Event1$Outbound = {
-  type: string;
+  type: "installation.updated";
   billingPlanId?: string | undefined;
 };
 
@@ -122,7 +95,7 @@ export const Event1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Event1
 > = z.object({
-  type: EventType$outboundSchema,
+  type: z.literal("installation.updated"),
   billingPlanId: z.string().optional(),
 });
 
@@ -145,11 +118,11 @@ export const CreateEventEvent$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => Event2$inboundSchema),
   z.lazy(() => Event1$inboundSchema),
+  z.lazy(() => Event2$inboundSchema),
 ]);
 /** @internal */
-export type CreateEventEvent$Outbound = Event2$Outbound | Event1$Outbound;
+export type CreateEventEvent$Outbound = Event1$Outbound | Event2$Outbound;
 
 /** @internal */
 export const CreateEventEvent$outboundSchema: z.ZodType<
@@ -157,8 +130,8 @@ export const CreateEventEvent$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateEventEvent
 > = z.union([
-  z.lazy(() => Event2$outboundSchema),
   z.lazy(() => Event1$outboundSchema),
+  z.lazy(() => Event2$outboundSchema),
 ]);
 
 export function createEventEventToJSON(
@@ -185,13 +158,13 @@ export const CreateEventRequestBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   event: z.union([
-    z.lazy(() => Event2$inboundSchema),
     z.lazy(() => Event1$inboundSchema),
+    z.lazy(() => Event2$inboundSchema),
   ]),
 });
 /** @internal */
 export type CreateEventRequestBody$Outbound = {
-  event: Event2$Outbound | Event1$Outbound;
+  event: Event1$Outbound | Event2$Outbound;
 };
 
 /** @internal */
@@ -201,8 +174,8 @@ export const CreateEventRequestBody$outboundSchema: z.ZodType<
   CreateEventRequestBody
 > = z.object({
   event: z.union([
-    z.lazy(() => Event2$outboundSchema),
     z.lazy(() => Event1$outboundSchema),
+    z.lazy(() => Event2$outboundSchema),
   ]),
 });
 

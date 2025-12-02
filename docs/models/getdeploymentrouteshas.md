@@ -21,3 +21,21 @@ const value: models.GetDeploymentHas2 = {
 };
 ```
 
+### `models.GetDeploymentHas2`
+
+```typescript
+const value: models.GetDeploymentHas2 = {
+  type: "cookie",
+  key: "<key>",
+};
+```
+
+### `models.GetDeploymentHas2`
+
+```typescript
+const value: models.GetDeploymentHas2 = {
+  type: "cookie",
+  key: "<key>",
+};
+```
+

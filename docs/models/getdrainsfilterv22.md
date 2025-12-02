@@ -15,7 +15,7 @@ let value: GetDrainsFilterV22 = {
 
 ## Fields
 
-| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `version`                                                                            | [models.GetDrainsFilterV2DrainsVersion](../models/getdrainsfilterv2drainsversion.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |
-| `filter`                                                                             | *models.GetDrainsFilterV2Filter*                                                     | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| Field                            | Type                             | Required                         | Description                      |
+| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
+| `version`                        | *"v2"*                           | :heavy_check_mark:               | N/A                              |
+| `filter`                         | *models.GetDrainsFilterV2Filter* | :heavy_check_mark:               | N/A                              |

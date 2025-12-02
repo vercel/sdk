@@ -13,8 +13,8 @@ import (
 type GetDomainTransferInForbiddenType string
 
 const (
-	GetDomainTransferInForbiddenTypeNotAuthorizedForScopeError GetDomainTransferInForbiddenType = "NotAuthorizedForScope_error"
-	GetDomainTransferInForbiddenTypeForbiddenError             GetDomainTransferInForbiddenType = "Forbidden_error"
+	GetDomainTransferInForbiddenTypeNotAuthorizedForScope GetDomainTransferInForbiddenType = "not_authorized_for_scope"
+	GetDomainTransferInForbiddenTypeForbidden             GetDomainTransferInForbiddenType = "forbidden"
 )
 
 // GetDomainTransferInForbidden - NotAuthorizedForScope
@@ -29,37 +29,53 @@ type GetDomainTransferInForbidden struct {
 
 var _ error = &GetDomainTransferInForbidden{}
 
-func CreateGetDomainTransferInForbiddenNotAuthorizedForScopeError(notAuthorizedForScopeError NotAuthorizedForScopeError) GetDomainTransferInForbidden {
-	typ := GetDomainTransferInForbiddenTypeNotAuthorizedForScopeError
+func CreateGetDomainTransferInForbiddenNotAuthorizedForScope(notAuthorizedForScope NotAuthorizedForScopeError) GetDomainTransferInForbidden {
+	typ := GetDomainTransferInForbiddenTypeNotAuthorizedForScope
 
 	return GetDomainTransferInForbidden{
-		NotAuthorizedForScopeError: &notAuthorizedForScopeError,
+		NotAuthorizedForScopeError: &notAuthorizedForScope,
 		Type:                       typ,
 	}
 }
 
-func CreateGetDomainTransferInForbiddenForbiddenError(forbiddenError ForbiddenError) GetDomainTransferInForbidden {
-	typ := GetDomainTransferInForbiddenTypeForbiddenError
+func CreateGetDomainTransferInForbiddenForbidden(forbidden ForbiddenError) GetDomainTransferInForbidden {
+	typ := GetDomainTransferInForbiddenTypeForbidden
 
 	return GetDomainTransferInForbidden{
-		ForbiddenError: &forbiddenError,
+		ForbiddenError: &forbidden,
 		Type:           typ,
 	}
 }
 
 func (u *GetDomainTransferInForbidden) UnmarshalJSON(data []byte) error {
 
-	var notAuthorizedForScopeError NotAuthorizedForScopeError = NotAuthorizedForScopeError{}
-	if err := utils.UnmarshalJSON(data, &notAuthorizedForScopeError, "", true, nil); err == nil {
-		u.NotAuthorizedForScopeError = &notAuthorizedForScopeError
-		u.Type = GetDomainTransferInForbiddenTypeNotAuthorizedForScopeError
-		return nil
+	type discriminator struct {
+		Code string `json:"code"`
 	}
 
-	var forbiddenError ForbiddenError = ForbiddenError{}
-	if err := utils.UnmarshalJSON(data, &forbiddenError, "", true, nil); err == nil {
-		u.ForbiddenError = &forbiddenError
-		u.Type = GetDomainTransferInForbiddenTypeForbiddenError
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Code {
+	case "not_authorized_for_scope":
+		notAuthorizedForScopeError := new(NotAuthorizedForScopeError)
+		if err := utils.UnmarshalJSON(data, &notAuthorizedForScopeError, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == not_authorized_for_scope) type NotAuthorizedForScopeError within GetDomainTransferInForbidden: %w", string(data), err)
+		}
+
+		u.NotAuthorizedForScopeError = notAuthorizedForScopeError
+		u.Type = GetDomainTransferInForbiddenTypeNotAuthorizedForScope
+		return nil
+	case "forbidden":
+		forbiddenError := new(ForbiddenError)
+		if err := utils.UnmarshalJSON(data, &forbiddenError, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == forbidden) type ForbiddenError within GetDomainTransferInForbidden: %w", string(data), err)
+		}
+
+		u.ForbiddenError = forbiddenError
+		u.Type = GetDomainTransferInForbiddenTypeForbidden
 		return nil
 	}
 
@@ -80,10 +96,10 @@ func (u GetDomainTransferInForbidden) MarshalJSON() ([]byte, error) {
 
 func (u GetDomainTransferInForbidden) Error() string {
 	switch u.Type {
-	case GetDomainTransferInForbiddenTypeNotAuthorizedForScopeError:
+	case GetDomainTransferInForbiddenTypeNotAuthorizedForScope:
 		data, _ := json.Marshal(u.NotAuthorizedForScopeError)
 		return string(data)
-	case GetDomainTransferInForbiddenTypeForbiddenError:
+	case GetDomainTransferInForbiddenTypeForbidden:
 		data, _ := json.Marshal(u.ForbiddenError)
 		return string(data)
 	default:

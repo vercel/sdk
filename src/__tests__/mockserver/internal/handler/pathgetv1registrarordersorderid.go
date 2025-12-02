@@ -48,7 +48,7 @@ func testGetOrderGetOrder0(w http.ResponseWriter, req *http.Request) {
 	var respBody *operations.GetOrderResponseBody = &operations.GetOrderResponseBody{
 		OrderID: "<id>",
 		Domains: []operations.GetOrderDomainUnion{
-			operations.CreateGetOrderDomainUnionDomainRenewal(
+			operations.CreateGetOrderDomainUnionRenewal(
 				operations.DomainRenewal{
 					PurchaseType: operations.PurchaseTypeRenewalRenewal,
 					Years:        3271.32,

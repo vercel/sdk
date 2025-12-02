@@ -17,7 +17,7 @@ let value: Scopes1 = {
 
 | Field                                            | Type                                             | Required                                         | Description                                      |
 | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `type`                                           | [models.ScopesType](../models/scopestype.md)     | :heavy_check_mark:                               | N/A                                              |
+| `type`                                           | *"user"*                                         | :heavy_check_mark:                               | N/A                                              |
 | `sudo`                                           | [models.Sudo](../models/sudo.md)                 | :heavy_minus_sign:                               | N/A                                              |
 | `origin`                                         | [models.ScopesOrigin](../models/scopesorigin.md) | :heavy_minus_sign:                               | N/A                                              |
 | `createdAt`                                      | *number*                                         | :heavy_check_mark:                               | N/A                                              |

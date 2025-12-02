@@ -4668,8 +4668,10 @@ func (o *CancelDeploymentHasHost) GetValue() CancelDeploymentHasValueUnion1 {
 type CancelDeploymentHasUnionType string
 
 const (
-	CancelDeploymentHasUnionTypeCancelDeploymentHasHost CancelDeploymentHasUnionType = "cancelDeployment_has_Host"
-	CancelDeploymentHasUnionTypeCancelDeploymentHas     CancelDeploymentHasUnionType = "cancelDeployment_has"
+	CancelDeploymentHasUnionTypeHost   CancelDeploymentHasUnionType = "host"
+	CancelDeploymentHasUnionTypeHeader CancelDeploymentHasUnionType = "header"
+	CancelDeploymentHasUnionTypeCookie CancelDeploymentHasUnionType = "cookie"
+	CancelDeploymentHasUnionTypeQuery  CancelDeploymentHasUnionType = "query"
 )
 
 type CancelDeploymentHasUnion struct {
@@ -4679,37 +4681,101 @@ type CancelDeploymentHasUnion struct {
 	Type CancelDeploymentHasUnionType
 }
 
-func CreateCancelDeploymentHasUnionCancelDeploymentHasHost(cancelDeploymentHasHost CancelDeploymentHasHost) CancelDeploymentHasUnion {
-	typ := CancelDeploymentHasUnionTypeCancelDeploymentHasHost
+func CreateCancelDeploymentHasUnionHost(host CancelDeploymentHasHost) CancelDeploymentHasUnion {
+	typ := CancelDeploymentHasUnionTypeHost
+
+	typStr := CancelDeploymentHasTypeHost(typ)
+	host.Type = typStr
 
 	return CancelDeploymentHasUnion{
-		CancelDeploymentHasHost: &cancelDeploymentHasHost,
+		CancelDeploymentHasHost: &host,
 		Type:                    typ,
 	}
 }
 
-func CreateCancelDeploymentHasUnionCancelDeploymentHas(cancelDeploymentHas CancelDeploymentHas) CancelDeploymentHasUnion {
-	typ := CancelDeploymentHasUnionTypeCancelDeploymentHas
+func CreateCancelDeploymentHasUnionHeader(header CancelDeploymentHas) CancelDeploymentHasUnion {
+	typ := CancelDeploymentHasUnionTypeHeader
+
+	typStr := CancelDeploymentHasType(typ)
+	header.Type = typStr
 
 	return CancelDeploymentHasUnion{
-		CancelDeploymentHas: &cancelDeploymentHas,
+		CancelDeploymentHas: &header,
+		Type:                typ,
+	}
+}
+
+func CreateCancelDeploymentHasUnionCookie(cookie CancelDeploymentHas) CancelDeploymentHasUnion {
+	typ := CancelDeploymentHasUnionTypeCookie
+
+	typStr := CancelDeploymentHasType(typ)
+	cookie.Type = typStr
+
+	return CancelDeploymentHasUnion{
+		CancelDeploymentHas: &cookie,
+		Type:                typ,
+	}
+}
+
+func CreateCancelDeploymentHasUnionQuery(query CancelDeploymentHas) CancelDeploymentHasUnion {
+	typ := CancelDeploymentHasUnionTypeQuery
+
+	typStr := CancelDeploymentHasType(typ)
+	query.Type = typStr
+
+	return CancelDeploymentHasUnion{
+		CancelDeploymentHas: &query,
 		Type:                typ,
 	}
 }
 
 func (u *CancelDeploymentHasUnion) UnmarshalJSON(data []byte) error {
 
-	var cancelDeploymentHasHost CancelDeploymentHasHost = CancelDeploymentHasHost{}
-	if err := utils.UnmarshalJSON(data, &cancelDeploymentHasHost, "", true, nil); err == nil {
-		u.CancelDeploymentHasHost = &cancelDeploymentHasHost
-		u.Type = CancelDeploymentHasUnionTypeCancelDeploymentHasHost
-		return nil
+	type discriminator struct {
+		Type string `json:"type"`
 	}
 
-	var cancelDeploymentHas CancelDeploymentHas = CancelDeploymentHas{}
-	if err := utils.UnmarshalJSON(data, &cancelDeploymentHas, "", true, nil); err == nil {
-		u.CancelDeploymentHas = &cancelDeploymentHas
-		u.Type = CancelDeploymentHasUnionTypeCancelDeploymentHas
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Type {
+	case "host":
+		cancelDeploymentHasHost := new(CancelDeploymentHasHost)
+		if err := utils.UnmarshalJSON(data, &cancelDeploymentHasHost, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == host) type CancelDeploymentHasHost within CancelDeploymentHasUnion: %w", string(data), err)
+		}
+
+		u.CancelDeploymentHasHost = cancelDeploymentHasHost
+		u.Type = CancelDeploymentHasUnionTypeHost
+		return nil
+	case "header":
+		cancelDeploymentHas := new(CancelDeploymentHas)
+		if err := utils.UnmarshalJSON(data, &cancelDeploymentHas, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == header) type CancelDeploymentHas within CancelDeploymentHasUnion: %w", string(data), err)
+		}
+
+		u.CancelDeploymentHas = cancelDeploymentHas
+		u.Type = CancelDeploymentHasUnionTypeHeader
+		return nil
+	case "cookie":
+		cancelDeploymentHas := new(CancelDeploymentHas)
+		if err := utils.UnmarshalJSON(data, &cancelDeploymentHas, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == cookie) type CancelDeploymentHas within CancelDeploymentHasUnion: %w", string(data), err)
+		}
+
+		u.CancelDeploymentHas = cancelDeploymentHas
+		u.Type = CancelDeploymentHasUnionTypeCookie
+		return nil
+	case "query":
+		cancelDeploymentHas := new(CancelDeploymentHas)
+		if err := utils.UnmarshalJSON(data, &cancelDeploymentHas, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == query) type CancelDeploymentHas within CancelDeploymentHasUnion: %w", string(data), err)
+		}
+
+		u.CancelDeploymentHas = cancelDeploymentHas
+		u.Type = CancelDeploymentHasUnionTypeQuery
 		return nil
 	}
 
@@ -5307,8 +5373,10 @@ func (o *CancelDeploymentMissingHost) GetValue() CancelDeploymentMissingValueUni
 type CancelDeploymentMissingUnionType string
 
 const (
-	CancelDeploymentMissingUnionTypeCancelDeploymentMissingHost CancelDeploymentMissingUnionType = "cancelDeployment_missing_Host"
-	CancelDeploymentMissingUnionTypeCancelDeploymentMissing     CancelDeploymentMissingUnionType = "cancelDeployment_missing"
+	CancelDeploymentMissingUnionTypeHost   CancelDeploymentMissingUnionType = "host"
+	CancelDeploymentMissingUnionTypeHeader CancelDeploymentMissingUnionType = "header"
+	CancelDeploymentMissingUnionTypeCookie CancelDeploymentMissingUnionType = "cookie"
+	CancelDeploymentMissingUnionTypeQuery  CancelDeploymentMissingUnionType = "query"
 )
 
 type CancelDeploymentMissingUnion struct {
@@ -5318,37 +5386,101 @@ type CancelDeploymentMissingUnion struct {
 	Type CancelDeploymentMissingUnionType
 }
 
-func CreateCancelDeploymentMissingUnionCancelDeploymentMissingHost(cancelDeploymentMissingHost CancelDeploymentMissingHost) CancelDeploymentMissingUnion {
-	typ := CancelDeploymentMissingUnionTypeCancelDeploymentMissingHost
+func CreateCancelDeploymentMissingUnionHost(host CancelDeploymentMissingHost) CancelDeploymentMissingUnion {
+	typ := CancelDeploymentMissingUnionTypeHost
+
+	typStr := CancelDeploymentMissingTypeHost(typ)
+	host.Type = typStr
 
 	return CancelDeploymentMissingUnion{
-		CancelDeploymentMissingHost: &cancelDeploymentMissingHost,
+		CancelDeploymentMissingHost: &host,
 		Type:                        typ,
 	}
 }
 
-func CreateCancelDeploymentMissingUnionCancelDeploymentMissing(cancelDeploymentMissing CancelDeploymentMissing) CancelDeploymentMissingUnion {
-	typ := CancelDeploymentMissingUnionTypeCancelDeploymentMissing
+func CreateCancelDeploymentMissingUnionHeader(header CancelDeploymentMissing) CancelDeploymentMissingUnion {
+	typ := CancelDeploymentMissingUnionTypeHeader
+
+	typStr := CancelDeploymentMissingType(typ)
+	header.Type = typStr
 
 	return CancelDeploymentMissingUnion{
-		CancelDeploymentMissing: &cancelDeploymentMissing,
+		CancelDeploymentMissing: &header,
+		Type:                    typ,
+	}
+}
+
+func CreateCancelDeploymentMissingUnionCookie(cookie CancelDeploymentMissing) CancelDeploymentMissingUnion {
+	typ := CancelDeploymentMissingUnionTypeCookie
+
+	typStr := CancelDeploymentMissingType(typ)
+	cookie.Type = typStr
+
+	return CancelDeploymentMissingUnion{
+		CancelDeploymentMissing: &cookie,
+		Type:                    typ,
+	}
+}
+
+func CreateCancelDeploymentMissingUnionQuery(query CancelDeploymentMissing) CancelDeploymentMissingUnion {
+	typ := CancelDeploymentMissingUnionTypeQuery
+
+	typStr := CancelDeploymentMissingType(typ)
+	query.Type = typStr
+
+	return CancelDeploymentMissingUnion{
+		CancelDeploymentMissing: &query,
 		Type:                    typ,
 	}
 }
 
 func (u *CancelDeploymentMissingUnion) UnmarshalJSON(data []byte) error {
 
-	var cancelDeploymentMissingHost CancelDeploymentMissingHost = CancelDeploymentMissingHost{}
-	if err := utils.UnmarshalJSON(data, &cancelDeploymentMissingHost, "", true, nil); err == nil {
-		u.CancelDeploymentMissingHost = &cancelDeploymentMissingHost
-		u.Type = CancelDeploymentMissingUnionTypeCancelDeploymentMissingHost
-		return nil
+	type discriminator struct {
+		Type string `json:"type"`
 	}
 
-	var cancelDeploymentMissing CancelDeploymentMissing = CancelDeploymentMissing{}
-	if err := utils.UnmarshalJSON(data, &cancelDeploymentMissing, "", true, nil); err == nil {
-		u.CancelDeploymentMissing = &cancelDeploymentMissing
-		u.Type = CancelDeploymentMissingUnionTypeCancelDeploymentMissing
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Type {
+	case "host":
+		cancelDeploymentMissingHost := new(CancelDeploymentMissingHost)
+		if err := utils.UnmarshalJSON(data, &cancelDeploymentMissingHost, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == host) type CancelDeploymentMissingHost within CancelDeploymentMissingUnion: %w", string(data), err)
+		}
+
+		u.CancelDeploymentMissingHost = cancelDeploymentMissingHost
+		u.Type = CancelDeploymentMissingUnionTypeHost
+		return nil
+	case "header":
+		cancelDeploymentMissing := new(CancelDeploymentMissing)
+		if err := utils.UnmarshalJSON(data, &cancelDeploymentMissing, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == header) type CancelDeploymentMissing within CancelDeploymentMissingUnion: %w", string(data), err)
+		}
+
+		u.CancelDeploymentMissing = cancelDeploymentMissing
+		u.Type = CancelDeploymentMissingUnionTypeHeader
+		return nil
+	case "cookie":
+		cancelDeploymentMissing := new(CancelDeploymentMissing)
+		if err := utils.UnmarshalJSON(data, &cancelDeploymentMissing, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == cookie) type CancelDeploymentMissing within CancelDeploymentMissingUnion: %w", string(data), err)
+		}
+
+		u.CancelDeploymentMissing = cancelDeploymentMissing
+		u.Type = CancelDeploymentMissingUnionTypeCookie
+		return nil
+	case "query":
+		cancelDeploymentMissing := new(CancelDeploymentMissing)
+		if err := utils.UnmarshalJSON(data, &cancelDeploymentMissing, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == query) type CancelDeploymentMissing within CancelDeploymentMissingUnion: %w", string(data), err)
+		}
+
+		u.CancelDeploymentMissing = cancelDeploymentMissing
+		u.Type = CancelDeploymentMissingUnionTypeQuery
 		return nil
 	}
 
@@ -6532,9 +6664,9 @@ func (o *CancelDeploymentGitRepoGitlab) GetOwnerType() CancelDeploymentOwnerType
 type CancelDeploymentGitRepoUnionType string
 
 const (
-	CancelDeploymentGitRepoUnionTypeCancelDeploymentGitRepoGitlab    CancelDeploymentGitRepoUnionType = "cancelDeployment_gitRepo_Gitlab"
-	CancelDeploymentGitRepoUnionTypeCancelDeploymentGitRepoGithub    CancelDeploymentGitRepoUnionType = "cancelDeployment_gitRepo_Github"
-	CancelDeploymentGitRepoUnionTypeCancelDeploymentGitRepoBitbucket CancelDeploymentGitRepoUnionType = "cancelDeployment_gitRepo_Bitbucket"
+	CancelDeploymentGitRepoUnionTypeGitlab    CancelDeploymentGitRepoUnionType = "gitlab"
+	CancelDeploymentGitRepoUnionTypeGithub    CancelDeploymentGitRepoUnionType = "github"
+	CancelDeploymentGitRepoUnionTypeBitbucket CancelDeploymentGitRepoUnionType = "bitbucket"
 )
 
 type CancelDeploymentGitRepoUnion struct {
@@ -6545,53 +6677,80 @@ type CancelDeploymentGitRepoUnion struct {
 	Type CancelDeploymentGitRepoUnionType
 }
 
-func CreateCancelDeploymentGitRepoUnionCancelDeploymentGitRepoGitlab(cancelDeploymentGitRepoGitlab CancelDeploymentGitRepoGitlab) CancelDeploymentGitRepoUnion {
-	typ := CancelDeploymentGitRepoUnionTypeCancelDeploymentGitRepoGitlab
+func CreateCancelDeploymentGitRepoUnionGitlab(gitlab CancelDeploymentGitRepoGitlab) CancelDeploymentGitRepoUnion {
+	typ := CancelDeploymentGitRepoUnionTypeGitlab
+
+	typStr := CancelDeploymentGitRepoTypeGitlab(typ)
+	gitlab.Type = typStr
 
 	return CancelDeploymentGitRepoUnion{
-		CancelDeploymentGitRepoGitlab: &cancelDeploymentGitRepoGitlab,
+		CancelDeploymentGitRepoGitlab: &gitlab,
 		Type:                          typ,
 	}
 }
 
-func CreateCancelDeploymentGitRepoUnionCancelDeploymentGitRepoGithub(cancelDeploymentGitRepoGithub CancelDeploymentGitRepoGithub) CancelDeploymentGitRepoUnion {
-	typ := CancelDeploymentGitRepoUnionTypeCancelDeploymentGitRepoGithub
+func CreateCancelDeploymentGitRepoUnionGithub(github CancelDeploymentGitRepoGithub) CancelDeploymentGitRepoUnion {
+	typ := CancelDeploymentGitRepoUnionTypeGithub
+
+	typStr := CancelDeploymentGitRepoTypeGithub(typ)
+	github.Type = typStr
 
 	return CancelDeploymentGitRepoUnion{
-		CancelDeploymentGitRepoGithub: &cancelDeploymentGitRepoGithub,
+		CancelDeploymentGitRepoGithub: &github,
 		Type:                          typ,
 	}
 }
 
-func CreateCancelDeploymentGitRepoUnionCancelDeploymentGitRepoBitbucket(cancelDeploymentGitRepoBitbucket CancelDeploymentGitRepoBitbucket) CancelDeploymentGitRepoUnion {
-	typ := CancelDeploymentGitRepoUnionTypeCancelDeploymentGitRepoBitbucket
+func CreateCancelDeploymentGitRepoUnionBitbucket(bitbucket CancelDeploymentGitRepoBitbucket) CancelDeploymentGitRepoUnion {
+	typ := CancelDeploymentGitRepoUnionTypeBitbucket
+
+	typStr := CancelDeploymentGitRepoTypeBitbucket(typ)
+	bitbucket.Type = typStr
 
 	return CancelDeploymentGitRepoUnion{
-		CancelDeploymentGitRepoBitbucket: &cancelDeploymentGitRepoBitbucket,
+		CancelDeploymentGitRepoBitbucket: &bitbucket,
 		Type:                             typ,
 	}
 }
 
 func (u *CancelDeploymentGitRepoUnion) UnmarshalJSON(data []byte) error {
 
-	var cancelDeploymentGitRepoGithub CancelDeploymentGitRepoGithub = CancelDeploymentGitRepoGithub{}
-	if err := utils.UnmarshalJSON(data, &cancelDeploymentGitRepoGithub, "", true, nil); err == nil {
-		u.CancelDeploymentGitRepoGithub = &cancelDeploymentGitRepoGithub
-		u.Type = CancelDeploymentGitRepoUnionTypeCancelDeploymentGitRepoGithub
-		return nil
+	type discriminator struct {
+		Type string `json:"type"`
 	}
 
-	var cancelDeploymentGitRepoBitbucket CancelDeploymentGitRepoBitbucket = CancelDeploymentGitRepoBitbucket{}
-	if err := utils.UnmarshalJSON(data, &cancelDeploymentGitRepoBitbucket, "", true, nil); err == nil {
-		u.CancelDeploymentGitRepoBitbucket = &cancelDeploymentGitRepoBitbucket
-		u.Type = CancelDeploymentGitRepoUnionTypeCancelDeploymentGitRepoBitbucket
-		return nil
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
 	}
 
-	var cancelDeploymentGitRepoGitlab CancelDeploymentGitRepoGitlab = CancelDeploymentGitRepoGitlab{}
-	if err := utils.UnmarshalJSON(data, &cancelDeploymentGitRepoGitlab, "", true, nil); err == nil {
-		u.CancelDeploymentGitRepoGitlab = &cancelDeploymentGitRepoGitlab
-		u.Type = CancelDeploymentGitRepoUnionTypeCancelDeploymentGitRepoGitlab
+	switch dis.Type {
+	case "gitlab":
+		cancelDeploymentGitRepoGitlab := new(CancelDeploymentGitRepoGitlab)
+		if err := utils.UnmarshalJSON(data, &cancelDeploymentGitRepoGitlab, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == gitlab) type CancelDeploymentGitRepoGitlab within CancelDeploymentGitRepoUnion: %w", string(data), err)
+		}
+
+		u.CancelDeploymentGitRepoGitlab = cancelDeploymentGitRepoGitlab
+		u.Type = CancelDeploymentGitRepoUnionTypeGitlab
+		return nil
+	case "github":
+		cancelDeploymentGitRepoGithub := new(CancelDeploymentGitRepoGithub)
+		if err := utils.UnmarshalJSON(data, &cancelDeploymentGitRepoGithub, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == github) type CancelDeploymentGitRepoGithub within CancelDeploymentGitRepoUnion: %w", string(data), err)
+		}
+
+		u.CancelDeploymentGitRepoGithub = cancelDeploymentGitRepoGithub
+		u.Type = CancelDeploymentGitRepoUnionTypeGithub
+		return nil
+	case "bitbucket":
+		cancelDeploymentGitRepoBitbucket := new(CancelDeploymentGitRepoBitbucket)
+		if err := utils.UnmarshalJSON(data, &cancelDeploymentGitRepoBitbucket, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == bitbucket) type CancelDeploymentGitRepoBitbucket within CancelDeploymentGitRepoUnion: %w", string(data), err)
+		}
+
+		u.CancelDeploymentGitRepoBitbucket = cancelDeploymentGitRepoBitbucket
+		u.Type = CancelDeploymentGitRepoUnionTypeBitbucket
 		return nil
 	}
 
@@ -7842,6 +8001,27 @@ func (o *CancelDeploymentResponseBody) GetGitRepo() *CancelDeploymentGitRepoUnio
 		return nil
 	}
 	return o.GitRepo
+}
+
+func (o *CancelDeploymentResponseBody) GetGitRepoGitlab() *CancelDeploymentGitRepoGitlab {
+	if v := o.GetGitRepo(); v != nil {
+		return v.CancelDeploymentGitRepoGitlab
+	}
+	return nil
+}
+
+func (o *CancelDeploymentResponseBody) GetGitRepoGithub() *CancelDeploymentGitRepoGithub {
+	if v := o.GetGitRepo(); v != nil {
+		return v.CancelDeploymentGitRepoGithub
+	}
+	return nil
+}
+
+func (o *CancelDeploymentResponseBody) GetGitRepoBitbucket() *CancelDeploymentGitRepoBitbucket {
+	if v := o.GetGitRepo(); v != nil {
+		return v.CancelDeploymentGitRepoBitbucket
+	}
+	return nil
 }
 
 func (o *CancelDeploymentResponseBody) GetFlags() *CancelDeploymentFlagsUnion {

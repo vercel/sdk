@@ -17,7 +17,7 @@ let value: GetDrainProjectAccess2 = {
 
 ## Fields
 
-| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `access`                                                                                   | [models.GetDrainProjectAccessDrainsAccess](../models/getdrainprojectaccessdrainsaccess.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
-| `projectIds`                                                                               | *string*[]                                                                                 | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `access`           | *"some"*           | :heavy_check_mark: | N/A                |
+| `projectIds`       | *string*[]         | :heavy_check_mark: | N/A                |

@@ -171,7 +171,7 @@ export type BuyDomainsRequest = {
  * NotAuthorizedForScope
  */
 export type BuyDomainsDomainsRegistrarResponseResponseBody =
-  | NotAuthorizedForScope
+  | (NotAuthorizedForScope & { code: "not_authorized_for_scope" })
   | Forbidden;
 
 /**
@@ -460,10 +460,15 @@ export const BuyDomainsDomainsRegistrarResponseResponseBody$inboundSchema:
     BuyDomainsDomainsRegistrarResponseResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.union([NotAuthorizedForScope$inboundSchema, Forbidden$inboundSchema]);
+  > = z.union([
+    NotAuthorizedForScope$inboundSchema.and(
+      z.object({ code: z.literal("not_authorized_for_scope") }),
+    ),
+    Forbidden$inboundSchema,
+  ]);
 /** @internal */
 export type BuyDomainsDomainsRegistrarResponseResponseBody$Outbound =
-  | NotAuthorizedForScope$Outbound
+  | (NotAuthorizedForScope$Outbound & { code: "not_authorized_for_scope" })
   | Forbidden$Outbound;
 
 /** @internal */
@@ -472,7 +477,12 @@ export const BuyDomainsDomainsRegistrarResponseResponseBody$outboundSchema:
     BuyDomainsDomainsRegistrarResponseResponseBody$Outbound,
     z.ZodTypeDef,
     unknown
-  > = z.union([NotAuthorizedForScope$outboundSchema, Forbidden$outboundSchema]);
+  > = z.union([
+    NotAuthorizedForScope$outboundSchema.and(
+      z.object({ code: z.literal("not_authorized_for_scope") }),
+    ),
+    Forbidden$outboundSchema,
+  ]);
 
 export function buyDomainsDomainsRegistrarResponseResponseBodyToJSON(
   buyDomainsDomainsRegistrarResponseResponseBody:

@@ -14,8 +14,8 @@ let value: GetDrainDelivery3 = {
 
 ## Fields
 
-| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `type`                                                                                       | [models.GetDrainDeliveryDrainsResponseType](../models/getdraindeliverydrainsresponsetype.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |
-| `endpoint`                                                                                   | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
-| `table`                                                                                      | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `type`             | *"clickhouse"*     | :heavy_check_mark: | N/A                |
+| `endpoint`         | *string*           | :heavy_check_mark: | N/A                |
+| `table`            | *string*           | :heavy_check_mark: | N/A                |

@@ -21,3 +21,21 @@ const value: models.CancelDeploymentMissing2 = {
 };
 ```
 
+### `models.CancelDeploymentMissing2`
+
+```typescript
+const value: models.CancelDeploymentMissing2 = {
+  type: "header",
+  key: "<key>",
+};
+```
+
+### `models.CancelDeploymentMissing2`
+
+```typescript
+const value: models.CancelDeploymentMissing2 = {
+  type: "header",
+  key: "<key>",
+};
+```
+

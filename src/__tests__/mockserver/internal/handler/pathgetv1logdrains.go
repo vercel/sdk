@@ -56,7 +56,7 @@ func testGetAllLogDrainsGetAllLogDrains0(w http.ResponseWriter, req *http.Reques
 						Name:      "<value>",
 						CreatedAt: 7495.57,
 						UpdatedAt: 4759.82,
-						Source: operations.CreateGetAllLogDrainsSourceUnion1GetAllLogDrainsSourceSelfServed1(
+						Source: operations.CreateGetAllLogDrainsSourceUnion1SelfServed(
 							operations.GetAllLogDrainsSourceSelfServed1{
 								Kind: operations.GetAllLogDrainsKindSelfServed1SelfServed,
 							},

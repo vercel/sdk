@@ -5,7 +5,6 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
-import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
@@ -37,25 +36,13 @@ export type CreateEdgeConfigTransfer = {
 
 export type CreateEdgeConfigSchema = {};
 
-export const CreateEdgeConfigPurposeType = {
-  Experimentation: "experimentation",
-} as const;
-export type CreateEdgeConfigPurposeType = ClosedEnum<
-  typeof CreateEdgeConfigPurposeType
->;
-
 export type Purpose2 = {
-  type: CreateEdgeConfigPurposeType;
+  type: "experimentation";
   resourceId: string;
 };
 
-export const PurposeType = {
-  Flags: "flags",
-} as const;
-export type PurposeType = ClosedEnum<typeof PurposeType>;
-
 export type Purpose1 = {
-  type: PurposeType;
+  type: "flags";
   projectId: string;
 };
 
@@ -265,26 +252,17 @@ export function createEdgeConfigSchemaFromJSON(
 }
 
 /** @internal */
-export const CreateEdgeConfigPurposeType$inboundSchema: z.ZodNativeEnum<
-  typeof CreateEdgeConfigPurposeType
-> = z.nativeEnum(CreateEdgeConfigPurposeType);
-/** @internal */
-export const CreateEdgeConfigPurposeType$outboundSchema: z.ZodNativeEnum<
-  typeof CreateEdgeConfigPurposeType
-> = CreateEdgeConfigPurposeType$inboundSchema;
-
-/** @internal */
 export const Purpose2$inboundSchema: z.ZodType<
   Purpose2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: CreateEdgeConfigPurposeType$inboundSchema,
+  type: z.literal("experimentation"),
   resourceId: z.string(),
 });
 /** @internal */
 export type Purpose2$Outbound = {
-  type: string;
+  type: "experimentation";
   resourceId: string;
 };
 
@@ -294,7 +272,7 @@ export const Purpose2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Purpose2
 > = z.object({
-  type: CreateEdgeConfigPurposeType$outboundSchema,
+  type: z.literal("experimentation"),
   resourceId: z.string(),
 });
 
@@ -312,24 +290,17 @@ export function purpose2FromJSON(
 }
 
 /** @internal */
-export const PurposeType$inboundSchema: z.ZodNativeEnum<typeof PurposeType> = z
-  .nativeEnum(PurposeType);
-/** @internal */
-export const PurposeType$outboundSchema: z.ZodNativeEnum<typeof PurposeType> =
-  PurposeType$inboundSchema;
-
-/** @internal */
 export const Purpose1$inboundSchema: z.ZodType<
   Purpose1,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: PurposeType$inboundSchema,
+  type: z.literal("flags"),
   projectId: z.string(),
 });
 /** @internal */
 export type Purpose1$Outbound = {
-  type: string;
+  type: "flags";
   projectId: string;
 };
 
@@ -339,7 +310,7 @@ export const Purpose1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Purpose1
 > = z.object({
-  type: PurposeType$outboundSchema,
+  type: z.literal("flags"),
   projectId: z.string(),
 });
 

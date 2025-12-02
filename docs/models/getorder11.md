@@ -12,6 +12,6 @@ let value: GetOrder11 = {
 
 ## Fields
 
-| Field                                  | Type                                   | Required                               | Description                            |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| `code`                                 | [models.OneCode](../models/onecode.md) | :heavy_check_mark:                     | N/A                                    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `code`             | *"payment-failed"* | :heavy_check_mark: | N/A                |

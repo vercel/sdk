@@ -21,3 +21,21 @@ const value: models.GetDeploymentMissing2 = {
 };
 ```
 
+### `models.GetDeploymentMissing2`
+
+```typescript
+const value: models.GetDeploymentMissing2 = {
+  type: "header",
+  key: "<key>",
+};
+```
+
+### `models.GetDeploymentMissing2`
+
+```typescript
+const value: models.GetDeploymentMissing2 = {
+  type: "header",
+  key: "<key>",
+};
+```
+

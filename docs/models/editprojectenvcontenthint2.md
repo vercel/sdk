@@ -13,7 +13,7 @@ let value: EditProjectEnvContentHint2 = {
 
 ## Fields
 
-| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
-| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `type`                                                                                             | [models.EditProjectEnvContentHintProjectsType](../models/editprojectenvcontenthintprojectstype.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |
-| `storeId`                                                                                          | *string*                                                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `type`                 | *"redis-rest-api-url"* | :heavy_check_mark:     | N/A                    |
+| `storeId`              | *string*               | :heavy_check_mark:     | N/A                    |

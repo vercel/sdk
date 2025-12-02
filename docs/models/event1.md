@@ -12,7 +12,7 @@ let value: Event1 = {
 
 ## Fields
 
-| Field                                      | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `type`                                     | [models.EventType](../models/eventtype.md) | :heavy_check_mark:                         | N/A                                        |
-| `billingPlanId`                            | *string*                                   | :heavy_minus_sign:                         | The installation-level billing plan ID     |
+| Field                                  | Type                                   | Required                               | Description                            |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `type`                                 | *"installation.updated"*               | :heavy_check_mark:                     | N/A                                    |
+| `billingPlanId`                        | *string*                               | :heavy_minus_sign:                     | The installation-level billing plan ID |

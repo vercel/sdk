@@ -2568,15 +2568,8 @@ export type PayloadBilling = {
   plan: Plan;
 };
 
-export const UserEventCredentialsType = {
-  GithubOauthCustomHost: "github-oauth-custom-host",
-} as const;
-export type UserEventCredentialsType = ClosedEnum<
-  typeof UserEventCredentialsType
->;
-
 export type Credentials2 = {
-  type: UserEventCredentialsType;
+  type: "github-oauth-custom-host";
   host: string;
   id: string;
 };
@@ -2596,7 +2589,14 @@ export type Credentials1 = {
   id: string;
 };
 
-export type Credentials = Credentials2 | Credentials1;
+export type Credentials =
+  | (Credentials1 & { type: "gitlab" })
+  | (Credentials1 & { type: "bitbucket" })
+  | (Credentials1 & { type: "google" })
+  | (Credentials1 & { type: "apple" })
+  | (Credentials1 & { type: "github-oauth" })
+  | (Credentials1 & { type: "github-oauth-limited" })
+  | Credentials2;
 
 export type PayloadDataCache = {
   excessBillingEnabled?: boolean | undefined;
@@ -3651,7 +3651,17 @@ export type NewOwner = {
   blockReason?: string | undefined;
   created?: number | undefined;
   createdAt: number;
-  credentials?: Array<Credentials2 | Credentials1> | undefined;
+  credentials?:
+    | Array<
+      | (Credentials1 & { type: "gitlab" })
+      | (Credentials1 & { type: "bitbucket" })
+      | (Credentials1 & { type: "google" })
+      | (Credentials1 & { type: "apple" })
+      | (Credentials1 & { type: "github-oauth" })
+      | (Credentials1 & { type: "github-oauth-limited" })
+      | Credentials2
+    >
+    | undefined;
   customerId?: string | null | undefined;
   orbCustomerId?: string | null | undefined;
   dataCache?: PayloadDataCache | undefined;
@@ -15816,27 +15826,18 @@ export function payloadBillingFromJSON(
 }
 
 /** @internal */
-export const UserEventCredentialsType$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventCredentialsType
-> = z.nativeEnum(UserEventCredentialsType);
-/** @internal */
-export const UserEventCredentialsType$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventCredentialsType
-> = UserEventCredentialsType$inboundSchema;
-
-/** @internal */
 export const Credentials2$inboundSchema: z.ZodType<
   Credentials2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: UserEventCredentialsType$inboundSchema,
+  type: z.literal("github-oauth-custom-host"),
   host: z.string(),
   id: z.string(),
 });
 /** @internal */
 export type Credentials2$Outbound = {
-  type: string;
+  type: "github-oauth-custom-host";
   host: string;
   id: string;
 };
@@ -15847,7 +15848,7 @@ export const Credentials2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Credentials2
 > = z.object({
-  type: UserEventCredentialsType$outboundSchema,
+  type: z.literal("github-oauth-custom-host"),
   host: z.string(),
   id: z.string(),
 });
@@ -15918,13 +15919,35 @@ export const Credentials$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
+  z.lazy(() => Credentials1$inboundSchema).and(
+    z.object({ type: z.literal("gitlab") }),
+  ),
+  z.lazy(() => Credentials1$inboundSchema).and(
+    z.object({ type: z.literal("bitbucket") }),
+  ),
+  z.lazy(() => Credentials1$inboundSchema).and(
+    z.object({ type: z.literal("google") }),
+  ),
+  z.lazy(() => Credentials1$inboundSchema).and(
+    z.object({ type: z.literal("apple") }),
+  ),
+  z.lazy(() => Credentials1$inboundSchema).and(
+    z.object({ type: z.literal("github-oauth") }),
+  ),
+  z.lazy(() => Credentials1$inboundSchema).and(
+    z.object({ type: z.literal("github-oauth-limited") }),
+  ),
   z.lazy(() => Credentials2$inboundSchema),
-  z.lazy(() => Credentials1$inboundSchema),
 ]);
 /** @internal */
 export type Credentials$Outbound =
-  | Credentials2$Outbound
-  | Credentials1$Outbound;
+  | (Credentials1$Outbound & { type: "gitlab" })
+  | (Credentials1$Outbound & { type: "bitbucket" })
+  | (Credentials1$Outbound & { type: "google" })
+  | (Credentials1$Outbound & { type: "apple" })
+  | (Credentials1$Outbound & { type: "github-oauth" })
+  | (Credentials1$Outbound & { type: "github-oauth-limited" })
+  | Credentials2$Outbound;
 
 /** @internal */
 export const Credentials$outboundSchema: z.ZodType<
@@ -15932,8 +15955,25 @@ export const Credentials$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Credentials
 > = z.union([
+  z.lazy(() => Credentials1$outboundSchema).and(
+    z.object({ type: z.literal("gitlab") }),
+  ),
+  z.lazy(() => Credentials1$outboundSchema).and(
+    z.object({ type: z.literal("bitbucket") }),
+  ),
+  z.lazy(() => Credentials1$outboundSchema).and(
+    z.object({ type: z.literal("google") }),
+  ),
+  z.lazy(() => Credentials1$outboundSchema).and(
+    z.object({ type: z.literal("apple") }),
+  ),
+  z.lazy(() => Credentials1$outboundSchema).and(
+    z.object({ type: z.literal("github-oauth") }),
+  ),
+  z.lazy(() => Credentials1$outboundSchema).and(
+    z.object({ type: z.literal("github-oauth-limited") }),
+  ),
   z.lazy(() => Credentials2$outboundSchema),
-  z.lazy(() => Credentials1$outboundSchema),
 ]);
 
 export function credentialsToJSON(credentials: Credentials): string {
@@ -20198,8 +20238,25 @@ export const NewOwner$inboundSchema: z.ZodType<
   createdAt: z.number(),
   credentials: z.array(
     z.union([
+      z.lazy(() => Credentials1$inboundSchema).and(
+        z.object({ type: z.literal("gitlab") }),
+      ),
+      z.lazy(() => Credentials1$inboundSchema).and(
+        z.object({ type: z.literal("bitbucket") }),
+      ),
+      z.lazy(() => Credentials1$inboundSchema).and(
+        z.object({ type: z.literal("google") }),
+      ),
+      z.lazy(() => Credentials1$inboundSchema).and(
+        z.object({ type: z.literal("apple") }),
+      ),
+      z.lazy(() => Credentials1$inboundSchema).and(
+        z.object({ type: z.literal("github-oauth") }),
+      ),
+      z.lazy(() => Credentials1$inboundSchema).and(
+        z.object({ type: z.literal("github-oauth-limited") }),
+      ),
       z.lazy(() => Credentials2$inboundSchema),
-      z.lazy(() => Credentials1$inboundSchema),
     ]),
   ).optional(),
   customerId: z.nullable(z.string()).optional(),
@@ -20292,7 +20349,15 @@ export type NewOwner$Outbound = {
   created?: number | undefined;
   createdAt: number;
   credentials?:
-    | Array<Credentials2$Outbound | Credentials1$Outbound>
+    | Array<
+      | (Credentials1$Outbound & { type: "gitlab" })
+      | (Credentials1$Outbound & { type: "bitbucket" })
+      | (Credentials1$Outbound & { type: "google" })
+      | (Credentials1$Outbound & { type: "apple" })
+      | (Credentials1$Outbound & { type: "github-oauth" })
+      | (Credentials1$Outbound & { type: "github-oauth-limited" })
+      | Credentials2$Outbound
+    >
     | undefined;
   customerId?: string | null | undefined;
   orbCustomerId?: string | null | undefined;
@@ -20382,8 +20447,25 @@ export const NewOwner$outboundSchema: z.ZodType<
   createdAt: z.number(),
   credentials: z.array(
     z.union([
+      z.lazy(() => Credentials1$outboundSchema).and(
+        z.object({ type: z.literal("gitlab") }),
+      ),
+      z.lazy(() => Credentials1$outboundSchema).and(
+        z.object({ type: z.literal("bitbucket") }),
+      ),
+      z.lazy(() => Credentials1$outboundSchema).and(
+        z.object({ type: z.literal("google") }),
+      ),
+      z.lazy(() => Credentials1$outboundSchema).and(
+        z.object({ type: z.literal("apple") }),
+      ),
+      z.lazy(() => Credentials1$outboundSchema).and(
+        z.object({ type: z.literal("github-oauth") }),
+      ),
+      z.lazy(() => Credentials1$outboundSchema).and(
+        z.object({ type: z.literal("github-oauth-limited") }),
+      ),
       z.lazy(() => Credentials2$outboundSchema),
-      z.lazy(() => Credentials1$outboundSchema),
     ]),
   ).optional(),
   customerId: z.nullable(z.string()).optional(),

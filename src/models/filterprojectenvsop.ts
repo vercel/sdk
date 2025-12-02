@@ -98,236 +98,85 @@ export type FilterProjectEnvsResponseBodyProjectsResponse200Type = ClosedEnum<
   typeof FilterProjectEnvsResponseBodyProjectsResponse200Type
 >;
 
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs15Type =
-  {
-    FlagsConnectionString: "flags-connection-string",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs15Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs15Type
-  >;
-
 export type FilterProjectEnvsContentHintProjectsResponse15 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs15Type;
+  type: "flags-connection-string";
   projectId: string;
 };
 
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs14Type =
-  {
-    IntegrationStoreSecret: "integration-store-secret",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs14Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs14Type
-  >;
-
 export type FilterProjectEnvsContentHintProjectsResponse14 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs14Type;
+  type: "integration-store-secret";
   storeId: string;
   integrationId: string;
   integrationProductId: string;
   integrationConfigurationId: string;
 };
 
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs13Type =
-  {
-    PostgresUrlNoSsl: "postgres-url-no-ssl",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs13Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs13Type
-  >;
-
 export type FilterProjectEnvsContentHintProjectsResponse13 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs13Type;
+  type: "postgres-url-no-ssl";
   storeId: string;
 };
-
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs12Type =
-  {
-    PostgresDatabase: "postgres-database",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs12Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs12Type
-  >;
 
 export type FilterProjectEnvsContentHintProjectsResponse12 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs12Type;
+  type: "postgres-database";
   storeId: string;
 };
-
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs11Type =
-  {
-    PostgresPassword: "postgres-password",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs11Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs11Type
-  >;
 
 export type FilterProjectEnvsContentHintProjectsResponse11 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs11Type;
+  type: "postgres-password";
   storeId: string;
 };
-
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs10Type =
-  {
-    PostgresHost: "postgres-host",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs10Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs10Type
-  >;
 
 export type FilterProjectEnvsContentHintProjectsResponse10 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs10Type;
+  type: "postgres-host";
   storeId: string;
 };
-
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs9Type =
-  {
-    PostgresUser: "postgres-user",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs9Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs9Type
-  >;
 
 export type FilterProjectEnvsContentHintProjectsResponse9 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs9Type;
+  type: "postgres-user";
   storeId: string;
 };
-
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs8Type =
-  {
-    PostgresPrismaUrl: "postgres-prisma-url",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs8Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs8Type
-  >;
 
 export type FilterProjectEnvsContentHintProjectsResponse8 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs8Type;
+  type: "postgres-prisma-url";
   storeId: string;
 };
-
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs7Type =
-  {
-    PostgresUrlNonPooling: "postgres-url-non-pooling",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs7Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs7Type
-  >;
 
 export type FilterProjectEnvsContentHintProjectsResponse7 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs7Type;
+  type: "postgres-url-non-pooling";
   storeId: string;
 };
-
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs6Type =
-  {
-    PostgresUrl: "postgres-url",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs6Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs6Type
-  >;
 
 export type FilterProjectEnvsContentHintProjectsResponse6 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs6Type;
+  type: "postgres-url";
   storeId: string;
 };
-
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs5Type =
-  {
-    BlobReadWriteToken: "blob-read-write-token",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs5Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs5Type
-  >;
 
 export type FilterProjectEnvsContentHintProjectsResponse5 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs5Type;
+  type: "blob-read-write-token";
   storeId: string;
 };
-
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs4Type =
-  {
-    RedisRestApiReadOnlyToken: "redis-rest-api-read-only-token",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs4Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs4Type
-  >;
 
 export type FilterProjectEnvsContentHintProjectsResponse4 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs4Type;
+  type: "redis-rest-api-read-only-token";
   storeId: string;
 };
-
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs3Type =
-  {
-    RedisRestApiToken: "redis-rest-api-token",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs3Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs3Type
-  >;
 
 export type FilterProjectEnvsContentHintProjectsResponse3 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs3Type;
+  type: "redis-rest-api-token";
   storeId: string;
 };
-
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3EnvsType =
-  {
-    RedisRestApiUrl: "redis-rest-api-url",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3EnvsType =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3EnvsType
-  >;
 
 export type FilterProjectEnvsContentHintProjectsResponse2 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3EnvsType;
+  type: "redis-rest-api-url";
   storeId: string;
 };
 
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Type =
-  {
-    RedisUrl: "redis-url",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Type
-  >;
-
 export type FilterProjectEnvsContentHintProjectsResponse1 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Type;
+  type: "redis-url";
   storeId: string;
 };
 
 export type FilterProjectEnvsResponseBodyProjectsContentHint =
-  | FilterProjectEnvsContentHintProjectsResponse14
   | FilterProjectEnvsContentHintProjectsResponse1
   | FilterProjectEnvsContentHintProjectsResponse2
   | FilterProjectEnvsContentHintProjectsResponse3
@@ -341,6 +190,7 @@ export type FilterProjectEnvsResponseBodyProjectsContentHint =
   | FilterProjectEnvsContentHintProjectsResponse11
   | FilterProjectEnvsContentHintProjectsResponse12
   | FilterProjectEnvsContentHintProjectsResponse13
+  | FilterProjectEnvsContentHintProjectsResponse14
   | FilterProjectEnvsContentHintProjectsResponse15;
 
 export const FilterProjectEnvsResponseBodyProjectsResponse200ApplicationJson3Type =
@@ -387,7 +237,6 @@ export type ResponseBodyEnvs = {
   edgeConfigId?: string | null | undefined;
   edgeConfigTokenId?: string | null | undefined;
   contentHint?:
-    | FilterProjectEnvsContentHintProjectsResponse14
     | FilterProjectEnvsContentHintProjectsResponse1
     | FilterProjectEnvsContentHintProjectsResponse2
     | FilterProjectEnvsContentHintProjectsResponse3
@@ -401,6 +250,7 @@ export type ResponseBodyEnvs = {
     | FilterProjectEnvsContentHintProjectsResponse11
     | FilterProjectEnvsContentHintProjectsResponse12
     | FilterProjectEnvsContentHintProjectsResponse13
+    | FilterProjectEnvsContentHintProjectsResponse14
     | FilterProjectEnvsContentHintProjectsResponse15
     | null
     | undefined;
@@ -456,236 +306,85 @@ export type FilterProjectEnvsResponseBodyProjectsResponseType = ClosedEnum<
   typeof FilterProjectEnvsResponseBodyProjectsResponseType
 >;
 
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs15Type =
-  {
-    FlagsConnectionString: "flags-connection-string",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs15Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs15Type
-  >;
-
 export type FilterProjectEnvsContentHintProjects15 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs15Type;
+  type: "flags-connection-string";
   projectId: string;
 };
 
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs14Type =
-  {
-    IntegrationStoreSecret: "integration-store-secret",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs14Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs14Type
-  >;
-
 export type FilterProjectEnvsContentHintProjects14 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs14Type;
+  type: "integration-store-secret";
   storeId: string;
   integrationId: string;
   integrationProductId: string;
   integrationConfigurationId: string;
 };
 
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs13Type =
-  {
-    PostgresUrlNoSsl: "postgres-url-no-ssl",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs13Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs13Type
-  >;
-
 export type FilterProjectEnvsContentHintProjects13 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs13Type;
+  type: "postgres-url-no-ssl";
   storeId: string;
 };
-
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs12Type =
-  {
-    PostgresDatabase: "postgres-database",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs12Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs12Type
-  >;
 
 export type FilterProjectEnvsContentHintProjects12 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs12Type;
+  type: "postgres-database";
   storeId: string;
 };
-
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs11Type =
-  {
-    PostgresPassword: "postgres-password",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs11Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs11Type
-  >;
 
 export type FilterProjectEnvsContentHintProjects11 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs11Type;
+  type: "postgres-password";
   storeId: string;
 };
-
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs10Type =
-  {
-    PostgresHost: "postgres-host",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs10Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs10Type
-  >;
 
 export type FilterProjectEnvsContentHintProjects10 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs10Type;
+  type: "postgres-host";
   storeId: string;
 };
-
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs9Type =
-  {
-    PostgresUser: "postgres-user",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs9Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs9Type
-  >;
 
 export type FilterProjectEnvsContentHintProjects9 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs9Type;
+  type: "postgres-user";
   storeId: string;
 };
-
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs8Type =
-  {
-    PostgresPrismaUrl: "postgres-prisma-url",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs8Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs8Type
-  >;
 
 export type FilterProjectEnvsContentHintProjects8 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs8Type;
+  type: "postgres-prisma-url";
   storeId: string;
 };
-
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs7Type =
-  {
-    PostgresUrlNonPooling: "postgres-url-non-pooling",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs7Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs7Type
-  >;
 
 export type FilterProjectEnvsContentHintProjects7 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs7Type;
+  type: "postgres-url-non-pooling";
   storeId: string;
 };
-
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs6Type =
-  {
-    PostgresUrl: "postgres-url",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs6Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs6Type
-  >;
 
 export type FilterProjectEnvsContentHintProjects6 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs6Type;
+  type: "postgres-url";
   storeId: string;
 };
-
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs5Type =
-  {
-    BlobReadWriteToken: "blob-read-write-token",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs5Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs5Type
-  >;
 
 export type FilterProjectEnvsContentHintProjects5 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs5Type;
+  type: "blob-read-write-token";
   storeId: string;
 };
-
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs4Type =
-  {
-    RedisRestApiReadOnlyToken: "redis-rest-api-read-only-token",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs4Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs4Type
-  >;
 
 export type FilterProjectEnvsContentHintProjects4 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs4Type;
+  type: "redis-rest-api-read-only-token";
   storeId: string;
 };
-
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs3Type =
-  {
-    RedisRestApiToken: "redis-rest-api-token",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs3Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs3Type
-  >;
 
 export type FilterProjectEnvsContentHintProjects3 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs3Type;
+  type: "redis-rest-api-token";
   storeId: string;
 };
-
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2EnvsType =
-  {
-    RedisRestApiUrl: "redis-rest-api-url",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2EnvsType =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2EnvsType
-  >;
 
 export type FilterProjectEnvsContentHintProjects2 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2EnvsType;
+  type: "redis-rest-api-url";
   storeId: string;
 };
 
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Type =
-  {
-    RedisUrl: "redis-url",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Type
-  >;
-
 export type FilterProjectEnvsContentHintProjects1 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Type;
+  type: "redis-url";
   storeId: string;
 };
 
 export type FilterProjectEnvsResponseBodyContentHint =
-  | FilterProjectEnvsContentHintProjects14
   | FilterProjectEnvsContentHintProjects1
   | FilterProjectEnvsContentHintProjects2
   | FilterProjectEnvsContentHintProjects3
@@ -699,6 +398,7 @@ export type FilterProjectEnvsResponseBodyContentHint =
   | FilterProjectEnvsContentHintProjects11
   | FilterProjectEnvsContentHintProjects12
   | FilterProjectEnvsContentHintProjects13
+  | FilterProjectEnvsContentHintProjects14
   | FilterProjectEnvsContentHintProjects15;
 
 export const FilterProjectEnvsResponseBodyProjectsResponse200ApplicationJSONType =
@@ -745,7 +445,6 @@ export type Envs = {
   edgeConfigId?: string | null | undefined;
   edgeConfigTokenId?: string | null | undefined;
   contentHint?:
-    | FilterProjectEnvsContentHintProjects14
     | FilterProjectEnvsContentHintProjects1
     | FilterProjectEnvsContentHintProjects2
     | FilterProjectEnvsContentHintProjects3
@@ -759,6 +458,7 @@ export type Envs = {
     | FilterProjectEnvsContentHintProjects11
     | FilterProjectEnvsContentHintProjects12
     | FilterProjectEnvsContentHintProjects13
+    | FilterProjectEnvsContentHintProjects14
     | FilterProjectEnvsContentHintProjects15
     | null
     | undefined;
@@ -815,223 +515,85 @@ export type FilterProjectEnvsResponseBodyType = ClosedEnum<
   typeof FilterProjectEnvsResponseBodyType
 >;
 
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody115Type =
-  {
-    FlagsConnectionString: "flags-connection-string",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody115Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody115Type
-  >;
-
 export type FilterProjectEnvsContentHint15 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody115Type;
+  type: "flags-connection-string";
   projectId: string;
 };
 
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody114Type =
-  {
-    IntegrationStoreSecret: "integration-store-secret",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody114Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody114Type
-  >;
-
 export type FilterProjectEnvsContentHint14 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody114Type;
+  type: "integration-store-secret";
   storeId: string;
   integrationId: string;
   integrationProductId: string;
   integrationConfigurationId: string;
 };
 
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody113Type =
-  {
-    PostgresUrlNoSsl: "postgres-url-no-ssl",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody113Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody113Type
-  >;
-
 export type FilterProjectEnvsContentHint13 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody113Type;
+  type: "postgres-url-no-ssl";
   storeId: string;
 };
-
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody112Type =
-  {
-    PostgresDatabase: "postgres-database",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody112Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody112Type
-  >;
 
 export type FilterProjectEnvsContentHint12 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody112Type;
+  type: "postgres-database";
   storeId: string;
 };
-
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody111Type =
-  {
-    PostgresPassword: "postgres-password",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody111Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody111Type
-  >;
 
 export type FilterProjectEnvsContentHint11 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody111Type;
+  type: "postgres-password";
   storeId: string;
 };
-
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody110Type =
-  {
-    PostgresHost: "postgres-host",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody110Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody110Type
-  >;
 
 export type FilterProjectEnvsContentHint10 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody110Type;
+  type: "postgres-host";
   storeId: string;
 };
-
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody19Type =
-  {
-    PostgresUser: "postgres-user",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody19Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody19Type
-  >;
 
 export type FilterProjectEnvsContentHint9 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody19Type;
+  type: "postgres-user";
   storeId: string;
 };
-
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody18Type =
-  {
-    PostgresPrismaUrl: "postgres-prisma-url",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody18Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody18Type
-  >;
 
 export type FilterProjectEnvsContentHint8 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody18Type;
+  type: "postgres-prisma-url";
   storeId: string;
 };
-
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody1Type =
-  {
-    PostgresUrlNonPooling: "postgres-url-non-pooling",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody1Type =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody1Type
-  >;
 
 export type FilterProjectEnvsContentHint7 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody1Type;
+  type: "postgres-url-non-pooling";
   storeId: string;
 };
-
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBodyType =
-  {
-    PostgresUrl: "postgres-url",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBodyType =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBodyType
-  >;
 
 export type FilterProjectEnvsContentHint6 = {
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBodyType;
+  type: "postgres-url";
   storeId: string;
 };
-
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONType =
-  {
-    BlobReadWriteToken: "blob-read-write-token",
-  } as const;
-export type FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONType =
-  ClosedEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONType
-  >;
 
 export type FilterProjectEnvsContentHint5 = {
-  type: FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONType;
+  type: "blob-read-write-token";
   storeId: string;
 };
-
-export const FilterProjectEnvsContentHintProjectsResponse200Type = {
-  RedisRestApiReadOnlyToken: "redis-rest-api-read-only-token",
-} as const;
-export type FilterProjectEnvsContentHintProjectsResponse200Type = ClosedEnum<
-  typeof FilterProjectEnvsContentHintProjectsResponse200Type
->;
 
 export type FilterProjectEnvsContentHint4 = {
-  type: FilterProjectEnvsContentHintProjectsResponse200Type;
+  type: "redis-rest-api-read-only-token";
   storeId: string;
 };
-
-export const FilterProjectEnvsContentHintProjectsResponseType = {
-  RedisRestApiToken: "redis-rest-api-token",
-} as const;
-export type FilterProjectEnvsContentHintProjectsResponseType = ClosedEnum<
-  typeof FilterProjectEnvsContentHintProjectsResponseType
->;
 
 export type FilterProjectEnvsContentHint3 = {
-  type: FilterProjectEnvsContentHintProjectsResponseType;
+  type: "redis-rest-api-token";
   storeId: string;
 };
-
-export const FilterProjectEnvsContentHintProjectsType = {
-  RedisRestApiUrl: "redis-rest-api-url",
-} as const;
-export type FilterProjectEnvsContentHintProjectsType = ClosedEnum<
-  typeof FilterProjectEnvsContentHintProjectsType
->;
 
 export type FilterProjectEnvsContentHint2 = {
-  type: FilterProjectEnvsContentHintProjectsType;
+  type: "redis-rest-api-url";
   storeId: string;
 };
 
-export const FilterProjectEnvsContentHintType = {
-  RedisUrl: "redis-url",
-} as const;
-export type FilterProjectEnvsContentHintType = ClosedEnum<
-  typeof FilterProjectEnvsContentHintType
->;
-
 export type FilterProjectEnvsContentHint1 = {
-  type: FilterProjectEnvsContentHintType;
+  type: "redis-url";
   storeId: string;
 };
 
 export type ResponseBodyContentHint =
-  | FilterProjectEnvsContentHint14
   | FilterProjectEnvsContentHint1
   | FilterProjectEnvsContentHint2
   | FilterProjectEnvsContentHint3
@@ -1045,6 +607,7 @@ export type ResponseBodyContentHint =
   | FilterProjectEnvsContentHint11
   | FilterProjectEnvsContentHint12
   | FilterProjectEnvsContentHint13
+  | FilterProjectEnvsContentHint14
   | FilterProjectEnvsContentHint15;
 
 export const FilterProjectEnvsResponseBodyProjectsType = {
@@ -1089,7 +652,6 @@ export type FilterProjectEnvsResponseBody1 = {
   edgeConfigId?: string | null | undefined;
   edgeConfigTokenId?: string | null | undefined;
   contentHint?:
-    | FilterProjectEnvsContentHint14
     | FilterProjectEnvsContentHint1
     | FilterProjectEnvsContentHint2
     | FilterProjectEnvsContentHint3
@@ -1103,6 +665,7 @@ export type FilterProjectEnvsResponseBody1 = {
     | FilterProjectEnvsContentHint11
     | FilterProjectEnvsContentHint12
     | FilterProjectEnvsContentHint13
+    | FilterProjectEnvsContentHint14
     | FilterProjectEnvsContentHint15
     | null
     | undefined;
@@ -1270,33 +833,18 @@ export const FilterProjectEnvsResponseBodyProjectsResponse200Type$outboundSchema
     FilterProjectEnvsResponseBodyProjectsResponse200Type$inboundSchema;
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs15Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs15Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs15Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs15Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs15Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs15Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHintProjectsResponse15$inboundSchema:
   z.ZodType<
     FilterProjectEnvsContentHintProjectsResponse15,
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type:
-      FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs15Type$inboundSchema,
+    type: z.literal("flags-connection-string"),
     projectId: z.string(),
   });
 /** @internal */
 export type FilterProjectEnvsContentHintProjectsResponse15$Outbound = {
-  type: string;
+  type: "flags-connection-string";
   projectId: string;
 };
 
@@ -1307,8 +855,7 @@ export const FilterProjectEnvsContentHintProjectsResponse15$outboundSchema:
     z.ZodTypeDef,
     FilterProjectEnvsContentHintProjectsResponse15
   > = z.object({
-    type:
-      FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs15Type$outboundSchema,
+    type: z.literal("flags-connection-string"),
     projectId: z.string(),
   });
 
@@ -1339,28 +886,13 @@ export function filterProjectEnvsContentHintProjectsResponse15FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs14Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs14Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs14Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs14Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs14Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs14Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHintProjectsResponse14$inboundSchema:
   z.ZodType<
     FilterProjectEnvsContentHintProjectsResponse14,
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type:
-      FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs14Type$inboundSchema,
+    type: z.literal("integration-store-secret"),
     storeId: z.string(),
     integrationId: z.string(),
     integrationProductId: z.string(),
@@ -1368,7 +900,7 @@ export const FilterProjectEnvsContentHintProjectsResponse14$inboundSchema:
   });
 /** @internal */
 export type FilterProjectEnvsContentHintProjectsResponse14$Outbound = {
-  type: string;
+  type: "integration-store-secret";
   storeId: string;
   integrationId: string;
   integrationProductId: string;
@@ -1382,8 +914,7 @@ export const FilterProjectEnvsContentHintProjectsResponse14$outboundSchema:
     z.ZodTypeDef,
     FilterProjectEnvsContentHintProjectsResponse14
   > = z.object({
-    type:
-      FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs14Type$outboundSchema,
+    type: z.literal("integration-store-secret"),
     storeId: z.string(),
     integrationId: z.string(),
     integrationProductId: z.string(),
@@ -1417,33 +948,18 @@ export function filterProjectEnvsContentHintProjectsResponse14FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs13Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs13Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs13Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs13Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs13Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs13Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHintProjectsResponse13$inboundSchema:
   z.ZodType<
     FilterProjectEnvsContentHintProjectsResponse13,
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type:
-      FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs13Type$inboundSchema,
+    type: z.literal("postgres-url-no-ssl"),
     storeId: z.string(),
   });
 /** @internal */
 export type FilterProjectEnvsContentHintProjectsResponse13$Outbound = {
-  type: string;
+  type: "postgres-url-no-ssl";
   storeId: string;
 };
 
@@ -1454,8 +970,7 @@ export const FilterProjectEnvsContentHintProjectsResponse13$outboundSchema:
     z.ZodTypeDef,
     FilterProjectEnvsContentHintProjectsResponse13
   > = z.object({
-    type:
-      FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs13Type$outboundSchema,
+    type: z.literal("postgres-url-no-ssl"),
     storeId: z.string(),
   });
 
@@ -1486,33 +1001,18 @@ export function filterProjectEnvsContentHintProjectsResponse13FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs12Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs12Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs12Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs12Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs12Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs12Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHintProjectsResponse12$inboundSchema:
   z.ZodType<
     FilterProjectEnvsContentHintProjectsResponse12,
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type:
-      FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs12Type$inboundSchema,
+    type: z.literal("postgres-database"),
     storeId: z.string(),
   });
 /** @internal */
 export type FilterProjectEnvsContentHintProjectsResponse12$Outbound = {
-  type: string;
+  type: "postgres-database";
   storeId: string;
 };
 
@@ -1523,8 +1023,7 @@ export const FilterProjectEnvsContentHintProjectsResponse12$outboundSchema:
     z.ZodTypeDef,
     FilterProjectEnvsContentHintProjectsResponse12
   > = z.object({
-    type:
-      FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs12Type$outboundSchema,
+    type: z.literal("postgres-database"),
     storeId: z.string(),
   });
 
@@ -1555,33 +1054,18 @@ export function filterProjectEnvsContentHintProjectsResponse12FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs11Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs11Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs11Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs11Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs11Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs11Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHintProjectsResponse11$inboundSchema:
   z.ZodType<
     FilterProjectEnvsContentHintProjectsResponse11,
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type:
-      FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs11Type$inboundSchema,
+    type: z.literal("postgres-password"),
     storeId: z.string(),
   });
 /** @internal */
 export type FilterProjectEnvsContentHintProjectsResponse11$Outbound = {
-  type: string;
+  type: "postgres-password";
   storeId: string;
 };
 
@@ -1592,8 +1076,7 @@ export const FilterProjectEnvsContentHintProjectsResponse11$outboundSchema:
     z.ZodTypeDef,
     FilterProjectEnvsContentHintProjectsResponse11
   > = z.object({
-    type:
-      FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs11Type$outboundSchema,
+    type: z.literal("postgres-password"),
     storeId: z.string(),
   });
 
@@ -1624,33 +1107,18 @@ export function filterProjectEnvsContentHintProjectsResponse11FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs10Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs10Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs10Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs10Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs10Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs10Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHintProjectsResponse10$inboundSchema:
   z.ZodType<
     FilterProjectEnvsContentHintProjectsResponse10,
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type:
-      FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs10Type$inboundSchema,
+    type: z.literal("postgres-host"),
     storeId: z.string(),
   });
 /** @internal */
 export type FilterProjectEnvsContentHintProjectsResponse10$Outbound = {
-  type: string;
+  type: "postgres-host";
   storeId: string;
 };
 
@@ -1661,8 +1129,7 @@ export const FilterProjectEnvsContentHintProjectsResponse10$outboundSchema:
     z.ZodTypeDef,
     FilterProjectEnvsContentHintProjectsResponse10
   > = z.object({
-    type:
-      FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs10Type$outboundSchema,
+    type: z.literal("postgres-host"),
     storeId: z.string(),
   });
 
@@ -1693,33 +1160,18 @@ export function filterProjectEnvsContentHintProjectsResponse10FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs9Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs9Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs9Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs9Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs9Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs9Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHintProjectsResponse9$inboundSchema:
   z.ZodType<
     FilterProjectEnvsContentHintProjectsResponse9,
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type:
-      FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs9Type$inboundSchema,
+    type: z.literal("postgres-user"),
     storeId: z.string(),
   });
 /** @internal */
 export type FilterProjectEnvsContentHintProjectsResponse9$Outbound = {
-  type: string;
+  type: "postgres-user";
   storeId: string;
 };
 
@@ -1730,8 +1182,7 @@ export const FilterProjectEnvsContentHintProjectsResponse9$outboundSchema:
     z.ZodTypeDef,
     FilterProjectEnvsContentHintProjectsResponse9
   > = z.object({
-    type:
-      FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs9Type$outboundSchema,
+    type: z.literal("postgres-user"),
     storeId: z.string(),
   });
 
@@ -1762,33 +1213,18 @@ export function filterProjectEnvsContentHintProjectsResponse9FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs8Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs8Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs8Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs8Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs8Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs8Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHintProjectsResponse8$inboundSchema:
   z.ZodType<
     FilterProjectEnvsContentHintProjectsResponse8,
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type:
-      FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs8Type$inboundSchema,
+    type: z.literal("postgres-prisma-url"),
     storeId: z.string(),
   });
 /** @internal */
 export type FilterProjectEnvsContentHintProjectsResponse8$Outbound = {
-  type: string;
+  type: "postgres-prisma-url";
   storeId: string;
 };
 
@@ -1799,8 +1235,7 @@ export const FilterProjectEnvsContentHintProjectsResponse8$outboundSchema:
     z.ZodTypeDef,
     FilterProjectEnvsContentHintProjectsResponse8
   > = z.object({
-    type:
-      FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs8Type$outboundSchema,
+    type: z.literal("postgres-prisma-url"),
     storeId: z.string(),
   });
 
@@ -1831,33 +1266,18 @@ export function filterProjectEnvsContentHintProjectsResponse8FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs7Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs7Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs7Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs7Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs7Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs7Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHintProjectsResponse7$inboundSchema:
   z.ZodType<
     FilterProjectEnvsContentHintProjectsResponse7,
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type:
-      FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs7Type$inboundSchema,
+    type: z.literal("postgres-url-non-pooling"),
     storeId: z.string(),
   });
 /** @internal */
 export type FilterProjectEnvsContentHintProjectsResponse7$Outbound = {
-  type: string;
+  type: "postgres-url-non-pooling";
   storeId: string;
 };
 
@@ -1868,8 +1288,7 @@ export const FilterProjectEnvsContentHintProjectsResponse7$outboundSchema:
     z.ZodTypeDef,
     FilterProjectEnvsContentHintProjectsResponse7
   > = z.object({
-    type:
-      FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs7Type$outboundSchema,
+    type: z.literal("postgres-url-non-pooling"),
     storeId: z.string(),
   });
 
@@ -1900,33 +1319,18 @@ export function filterProjectEnvsContentHintProjectsResponse7FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs6Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs6Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs6Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs6Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs6Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs6Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHintProjectsResponse6$inboundSchema:
   z.ZodType<
     FilterProjectEnvsContentHintProjectsResponse6,
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type:
-      FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs6Type$inboundSchema,
+    type: z.literal("postgres-url"),
     storeId: z.string(),
   });
 /** @internal */
 export type FilterProjectEnvsContentHintProjectsResponse6$Outbound = {
-  type: string;
+  type: "postgres-url";
   storeId: string;
 };
 
@@ -1937,8 +1341,7 @@ export const FilterProjectEnvsContentHintProjectsResponse6$outboundSchema:
     z.ZodTypeDef,
     FilterProjectEnvsContentHintProjectsResponse6
   > = z.object({
-    type:
-      FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs6Type$outboundSchema,
+    type: z.literal("postgres-url"),
     storeId: z.string(),
   });
 
@@ -1969,33 +1372,18 @@ export function filterProjectEnvsContentHintProjectsResponse6FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs5Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs5Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs5Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs5Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs5Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs5Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHintProjectsResponse5$inboundSchema:
   z.ZodType<
     FilterProjectEnvsContentHintProjectsResponse5,
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type:
-      FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs5Type$inboundSchema,
+    type: z.literal("blob-read-write-token"),
     storeId: z.string(),
   });
 /** @internal */
 export type FilterProjectEnvsContentHintProjectsResponse5$Outbound = {
-  type: string;
+  type: "blob-read-write-token";
   storeId: string;
 };
 
@@ -2006,8 +1394,7 @@ export const FilterProjectEnvsContentHintProjectsResponse5$outboundSchema:
     z.ZodTypeDef,
     FilterProjectEnvsContentHintProjectsResponse5
   > = z.object({
-    type:
-      FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs5Type$outboundSchema,
+    type: z.literal("blob-read-write-token"),
     storeId: z.string(),
   });
 
@@ -2038,33 +1425,18 @@ export function filterProjectEnvsContentHintProjectsResponse5FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs4Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs4Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs4Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs4Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs4Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs4Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHintProjectsResponse4$inboundSchema:
   z.ZodType<
     FilterProjectEnvsContentHintProjectsResponse4,
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type:
-      FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs4Type$inboundSchema,
+    type: z.literal("redis-rest-api-read-only-token"),
     storeId: z.string(),
   });
 /** @internal */
 export type FilterProjectEnvsContentHintProjectsResponse4$Outbound = {
-  type: string;
+  type: "redis-rest-api-read-only-token";
   storeId: string;
 };
 
@@ -2075,8 +1447,7 @@ export const FilterProjectEnvsContentHintProjectsResponse4$outboundSchema:
     z.ZodTypeDef,
     FilterProjectEnvsContentHintProjectsResponse4
   > = z.object({
-    type:
-      FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs4Type$outboundSchema,
+    type: z.literal("redis-rest-api-read-only-token"),
     storeId: z.string(),
   });
 
@@ -2107,33 +1478,18 @@ export function filterProjectEnvsContentHintProjectsResponse4FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs3Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs3Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs3Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs3Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs3Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs3Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHintProjectsResponse3$inboundSchema:
   z.ZodType<
     FilterProjectEnvsContentHintProjectsResponse3,
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type:
-      FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs3Type$inboundSchema,
+    type: z.literal("redis-rest-api-token"),
     storeId: z.string(),
   });
 /** @internal */
 export type FilterProjectEnvsContentHintProjectsResponse3$Outbound = {
-  type: string;
+  type: "redis-rest-api-token";
   storeId: string;
 };
 
@@ -2144,8 +1500,7 @@ export const FilterProjectEnvsContentHintProjectsResponse3$outboundSchema:
     z.ZodTypeDef,
     FilterProjectEnvsContentHintProjectsResponse3
   > = z.object({
-    type:
-      FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Envs3Type$outboundSchema,
+    type: z.literal("redis-rest-api-token"),
     storeId: z.string(),
   });
 
@@ -2176,33 +1531,18 @@ export function filterProjectEnvsContentHintProjectsResponse3FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3EnvsType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3EnvsType
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3EnvsType,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3EnvsType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3EnvsType
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3EnvsType$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHintProjectsResponse2$inboundSchema:
   z.ZodType<
     FilterProjectEnvsContentHintProjectsResponse2,
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type:
-      FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3EnvsType$inboundSchema,
+    type: z.literal("redis-rest-api-url"),
     storeId: z.string(),
   });
 /** @internal */
 export type FilterProjectEnvsContentHintProjectsResponse2$Outbound = {
-  type: string;
+  type: "redis-rest-api-url";
   storeId: string;
 };
 
@@ -2213,8 +1553,7 @@ export const FilterProjectEnvsContentHintProjectsResponse2$outboundSchema:
     z.ZodTypeDef,
     FilterProjectEnvsContentHintProjectsResponse2
   > = z.object({
-    type:
-      FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3EnvsType$outboundSchema,
+    type: z.literal("redis-rest-api-url"),
     storeId: z.string(),
   });
 
@@ -2245,33 +1584,18 @@ export function filterProjectEnvsContentHintProjectsResponse2FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHintProjectsResponse1$inboundSchema:
   z.ZodType<
     FilterProjectEnvsContentHintProjectsResponse1,
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type:
-      FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Type$inboundSchema,
+    type: z.literal("redis-url"),
     storeId: z.string(),
   });
 /** @internal */
 export type FilterProjectEnvsContentHintProjectsResponse1$Outbound = {
-  type: string;
+  type: "redis-url";
   storeId: string;
 };
 
@@ -2282,8 +1606,7 @@ export const FilterProjectEnvsContentHintProjectsResponse1$outboundSchema:
     z.ZodTypeDef,
     FilterProjectEnvsContentHintProjectsResponse1
   > = z.object({
-    type:
-      FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody3Type$outboundSchema,
+    type: z.literal("redis-url"),
     storeId: z.string(),
   });
 
@@ -2320,7 +1643,6 @@ export const FilterProjectEnvsResponseBodyProjectsContentHint$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([
-    z.lazy(() => FilterProjectEnvsContentHintProjectsResponse14$inboundSchema),
     z.lazy(() => FilterProjectEnvsContentHintProjectsResponse1$inboundSchema),
     z.lazy(() => FilterProjectEnvsContentHintProjectsResponse2$inboundSchema),
     z.lazy(() => FilterProjectEnvsContentHintProjectsResponse3$inboundSchema),
@@ -2334,11 +1656,11 @@ export const FilterProjectEnvsResponseBodyProjectsContentHint$inboundSchema:
     z.lazy(() => FilterProjectEnvsContentHintProjectsResponse11$inboundSchema),
     z.lazy(() => FilterProjectEnvsContentHintProjectsResponse12$inboundSchema),
     z.lazy(() => FilterProjectEnvsContentHintProjectsResponse13$inboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHintProjectsResponse14$inboundSchema),
     z.lazy(() => FilterProjectEnvsContentHintProjectsResponse15$inboundSchema),
   ]);
 /** @internal */
 export type FilterProjectEnvsResponseBodyProjectsContentHint$Outbound =
-  | FilterProjectEnvsContentHintProjectsResponse14$Outbound
   | FilterProjectEnvsContentHintProjectsResponse1$Outbound
   | FilterProjectEnvsContentHintProjectsResponse2$Outbound
   | FilterProjectEnvsContentHintProjectsResponse3$Outbound
@@ -2352,6 +1674,7 @@ export type FilterProjectEnvsResponseBodyProjectsContentHint$Outbound =
   | FilterProjectEnvsContentHintProjectsResponse11$Outbound
   | FilterProjectEnvsContentHintProjectsResponse12$Outbound
   | FilterProjectEnvsContentHintProjectsResponse13$Outbound
+  | FilterProjectEnvsContentHintProjectsResponse14$Outbound
   | FilterProjectEnvsContentHintProjectsResponse15$Outbound;
 
 /** @internal */
@@ -2361,7 +1684,6 @@ export const FilterProjectEnvsResponseBodyProjectsContentHint$outboundSchema:
     z.ZodTypeDef,
     FilterProjectEnvsResponseBodyProjectsContentHint
   > = z.union([
-    z.lazy(() => FilterProjectEnvsContentHintProjectsResponse14$outboundSchema),
     z.lazy(() => FilterProjectEnvsContentHintProjectsResponse1$outboundSchema),
     z.lazy(() => FilterProjectEnvsContentHintProjectsResponse2$outboundSchema),
     z.lazy(() => FilterProjectEnvsContentHintProjectsResponse3$outboundSchema),
@@ -2375,6 +1697,7 @@ export const FilterProjectEnvsResponseBodyProjectsContentHint$outboundSchema:
     z.lazy(() => FilterProjectEnvsContentHintProjectsResponse11$outboundSchema),
     z.lazy(() => FilterProjectEnvsContentHintProjectsResponse12$outboundSchema),
     z.lazy(() => FilterProjectEnvsContentHintProjectsResponse13$outboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHintProjectsResponse14$outboundSchema),
     z.lazy(() => FilterProjectEnvsContentHintProjectsResponse15$outboundSchema),
   ]);
 
@@ -2499,11 +1822,10 @@ export const ResponseBodyEnvs$inboundSchema: z.ZodType<
   edgeConfigTokenId: z.nullable(z.string()).optional(),
   contentHint: z.nullable(
     z.union([
-      z.lazy(() =>
-        FilterProjectEnvsContentHintProjectsResponse14$inboundSchema
-      ),
       z.lazy(() => FilterProjectEnvsContentHintProjectsResponse1$inboundSchema),
-      z.lazy(() => FilterProjectEnvsContentHintProjectsResponse2$inboundSchema),
+      z.lazy(() =>
+        FilterProjectEnvsContentHintProjectsResponse2$inboundSchema
+      ),
       z.lazy(() => FilterProjectEnvsContentHintProjectsResponse3$inboundSchema),
       z.lazy(() => FilterProjectEnvsContentHintProjectsResponse4$inboundSchema),
       z.lazy(() => FilterProjectEnvsContentHintProjectsResponse5$inboundSchema),
@@ -2522,6 +1844,9 @@ export const ResponseBodyEnvs$inboundSchema: z.ZodType<
       ),
       z.lazy(() =>
         FilterProjectEnvsContentHintProjectsResponse13$inboundSchema
+      ),
+      z.lazy(() =>
+        FilterProjectEnvsContentHintProjectsResponse14$inboundSchema
       ),
       z.lazy(() =>
         FilterProjectEnvsContentHintProjectsResponse15$inboundSchema
@@ -2556,7 +1881,6 @@ export type ResponseBodyEnvs$Outbound = {
   edgeConfigId?: string | null | undefined;
   edgeConfigTokenId?: string | null | undefined;
   contentHint?:
-    | FilterProjectEnvsContentHintProjectsResponse14$Outbound
     | FilterProjectEnvsContentHintProjectsResponse1$Outbound
     | FilterProjectEnvsContentHintProjectsResponse2$Outbound
     | FilterProjectEnvsContentHintProjectsResponse3$Outbound
@@ -2570,6 +1894,7 @@ export type ResponseBodyEnvs$Outbound = {
     | FilterProjectEnvsContentHintProjectsResponse11$Outbound
     | FilterProjectEnvsContentHintProjectsResponse12$Outbound
     | FilterProjectEnvsContentHintProjectsResponse13$Outbound
+    | FilterProjectEnvsContentHintProjectsResponse14$Outbound
     | FilterProjectEnvsContentHintProjectsResponse15$Outbound
     | null
     | undefined;
@@ -2610,9 +1935,6 @@ export const ResponseBodyEnvs$outboundSchema: z.ZodType<
   contentHint: z.nullable(
     z.union([
       z.lazy(() =>
-        FilterProjectEnvsContentHintProjectsResponse14$outboundSchema
-      ),
-      z.lazy(() =>
         FilterProjectEnvsContentHintProjectsResponse1$outboundSchema
       ),
       z.lazy(() =>
@@ -2650,6 +1972,9 @@ export const ResponseBodyEnvs$outboundSchema: z.ZodType<
       ),
       z.lazy(() =>
         FilterProjectEnvsContentHintProjectsResponse13$outboundSchema
+      ),
+      z.lazy(() =>
+        FilterProjectEnvsContentHintProjectsResponse14$outboundSchema
       ),
       z.lazy(() =>
         FilterProjectEnvsContentHintProjectsResponse15$outboundSchema
@@ -2804,32 +2129,17 @@ export const FilterProjectEnvsResponseBodyProjectsResponseType$outboundSchema:
     FilterProjectEnvsResponseBodyProjectsResponseType$inboundSchema;
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs15Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs15Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs15Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs15Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs15Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs15Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHintProjects15$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHintProjects15,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs15Type$inboundSchema,
+  type: z.literal("flags-connection-string"),
   projectId: z.string(),
 });
 /** @internal */
 export type FilterProjectEnvsContentHintProjects15$Outbound = {
-  type: string;
+  type: "flags-connection-string";
   projectId: string;
 };
 
@@ -2839,8 +2149,7 @@ export const FilterProjectEnvsContentHintProjects15$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FilterProjectEnvsContentHintProjects15
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs15Type$outboundSchema,
+  type: z.literal("flags-connection-string"),
   projectId: z.string(),
 });
 
@@ -2866,27 +2175,12 @@ export function filterProjectEnvsContentHintProjects15FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs14Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs14Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs14Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs14Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs14Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs14Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHintProjects14$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHintProjects14,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs14Type$inboundSchema,
+  type: z.literal("integration-store-secret"),
   storeId: z.string(),
   integrationId: z.string(),
   integrationProductId: z.string(),
@@ -2894,7 +2188,7 @@ export const FilterProjectEnvsContentHintProjects14$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type FilterProjectEnvsContentHintProjects14$Outbound = {
-  type: string;
+  type: "integration-store-secret";
   storeId: string;
   integrationId: string;
   integrationProductId: string;
@@ -2907,8 +2201,7 @@ export const FilterProjectEnvsContentHintProjects14$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FilterProjectEnvsContentHintProjects14
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs14Type$outboundSchema,
+  type: z.literal("integration-store-secret"),
   storeId: z.string(),
   integrationId: z.string(),
   integrationProductId: z.string(),
@@ -2937,32 +2230,17 @@ export function filterProjectEnvsContentHintProjects14FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs13Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs13Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs13Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs13Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs13Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs13Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHintProjects13$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHintProjects13,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs13Type$inboundSchema,
+  type: z.literal("postgres-url-no-ssl"),
   storeId: z.string(),
 });
 /** @internal */
 export type FilterProjectEnvsContentHintProjects13$Outbound = {
-  type: string;
+  type: "postgres-url-no-ssl";
   storeId: string;
 };
 
@@ -2972,8 +2250,7 @@ export const FilterProjectEnvsContentHintProjects13$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FilterProjectEnvsContentHintProjects13
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs13Type$outboundSchema,
+  type: z.literal("postgres-url-no-ssl"),
   storeId: z.string(),
 });
 
@@ -2999,32 +2276,17 @@ export function filterProjectEnvsContentHintProjects13FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs12Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs12Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs12Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs12Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs12Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs12Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHintProjects12$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHintProjects12,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs12Type$inboundSchema,
+  type: z.literal("postgres-database"),
   storeId: z.string(),
 });
 /** @internal */
 export type FilterProjectEnvsContentHintProjects12$Outbound = {
-  type: string;
+  type: "postgres-database";
   storeId: string;
 };
 
@@ -3034,8 +2296,7 @@ export const FilterProjectEnvsContentHintProjects12$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FilterProjectEnvsContentHintProjects12
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs12Type$outboundSchema,
+  type: z.literal("postgres-database"),
   storeId: z.string(),
 });
 
@@ -3061,32 +2322,17 @@ export function filterProjectEnvsContentHintProjects12FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs11Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs11Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs11Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs11Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs11Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs11Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHintProjects11$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHintProjects11,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs11Type$inboundSchema,
+  type: z.literal("postgres-password"),
   storeId: z.string(),
 });
 /** @internal */
 export type FilterProjectEnvsContentHintProjects11$Outbound = {
-  type: string;
+  type: "postgres-password";
   storeId: string;
 };
 
@@ -3096,8 +2342,7 @@ export const FilterProjectEnvsContentHintProjects11$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FilterProjectEnvsContentHintProjects11
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs11Type$outboundSchema,
+  type: z.literal("postgres-password"),
   storeId: z.string(),
 });
 
@@ -3123,32 +2368,17 @@ export function filterProjectEnvsContentHintProjects11FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs10Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs10Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs10Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs10Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs10Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs10Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHintProjects10$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHintProjects10,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs10Type$inboundSchema,
+  type: z.literal("postgres-host"),
   storeId: z.string(),
 });
 /** @internal */
 export type FilterProjectEnvsContentHintProjects10$Outbound = {
-  type: string;
+  type: "postgres-host";
   storeId: string;
 };
 
@@ -3158,8 +2388,7 @@ export const FilterProjectEnvsContentHintProjects10$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FilterProjectEnvsContentHintProjects10
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs10Type$outboundSchema,
+  type: z.literal("postgres-host"),
   storeId: z.string(),
 });
 
@@ -3185,32 +2414,17 @@ export function filterProjectEnvsContentHintProjects10FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs9Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs9Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs9Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs9Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs9Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs9Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHintProjects9$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHintProjects9,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs9Type$inboundSchema,
+  type: z.literal("postgres-user"),
   storeId: z.string(),
 });
 /** @internal */
 export type FilterProjectEnvsContentHintProjects9$Outbound = {
-  type: string;
+  type: "postgres-user";
   storeId: string;
 };
 
@@ -3220,8 +2434,7 @@ export const FilterProjectEnvsContentHintProjects9$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FilterProjectEnvsContentHintProjects9
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs9Type$outboundSchema,
+  type: z.literal("postgres-user"),
   storeId: z.string(),
 });
 
@@ -3246,32 +2459,17 @@ export function filterProjectEnvsContentHintProjects9FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs8Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs8Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs8Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs8Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs8Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs8Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHintProjects8$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHintProjects8,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs8Type$inboundSchema,
+  type: z.literal("postgres-prisma-url"),
   storeId: z.string(),
 });
 /** @internal */
 export type FilterProjectEnvsContentHintProjects8$Outbound = {
-  type: string;
+  type: "postgres-prisma-url";
   storeId: string;
 };
 
@@ -3281,8 +2479,7 @@ export const FilterProjectEnvsContentHintProjects8$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FilterProjectEnvsContentHintProjects8
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs8Type$outboundSchema,
+  type: z.literal("postgres-prisma-url"),
   storeId: z.string(),
 });
 
@@ -3307,32 +2504,17 @@ export function filterProjectEnvsContentHintProjects8FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs7Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs7Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs7Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs7Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs7Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs7Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHintProjects7$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHintProjects7,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs7Type$inboundSchema,
+  type: z.literal("postgres-url-non-pooling"),
   storeId: z.string(),
 });
 /** @internal */
 export type FilterProjectEnvsContentHintProjects7$Outbound = {
-  type: string;
+  type: "postgres-url-non-pooling";
   storeId: string;
 };
 
@@ -3342,8 +2524,7 @@ export const FilterProjectEnvsContentHintProjects7$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FilterProjectEnvsContentHintProjects7
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs7Type$outboundSchema,
+  type: z.literal("postgres-url-non-pooling"),
   storeId: z.string(),
 });
 
@@ -3368,32 +2549,17 @@ export function filterProjectEnvsContentHintProjects7FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs6Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs6Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs6Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs6Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs6Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs6Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHintProjects6$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHintProjects6,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs6Type$inboundSchema,
+  type: z.literal("postgres-url"),
   storeId: z.string(),
 });
 /** @internal */
 export type FilterProjectEnvsContentHintProjects6$Outbound = {
-  type: string;
+  type: "postgres-url";
   storeId: string;
 };
 
@@ -3403,8 +2569,7 @@ export const FilterProjectEnvsContentHintProjects6$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FilterProjectEnvsContentHintProjects6
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs6Type$outboundSchema,
+  type: z.literal("postgres-url"),
   storeId: z.string(),
 });
 
@@ -3429,32 +2594,17 @@ export function filterProjectEnvsContentHintProjects6FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs5Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs5Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs5Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs5Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs5Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs5Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHintProjects5$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHintProjects5,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs5Type$inboundSchema,
+  type: z.literal("blob-read-write-token"),
   storeId: z.string(),
 });
 /** @internal */
 export type FilterProjectEnvsContentHintProjects5$Outbound = {
-  type: string;
+  type: "blob-read-write-token";
   storeId: string;
 };
 
@@ -3464,8 +2614,7 @@ export const FilterProjectEnvsContentHintProjects5$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FilterProjectEnvsContentHintProjects5
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs5Type$outboundSchema,
+  type: z.literal("blob-read-write-token"),
   storeId: z.string(),
 });
 
@@ -3490,32 +2639,17 @@ export function filterProjectEnvsContentHintProjects5FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs4Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs4Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs4Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs4Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs4Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs4Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHintProjects4$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHintProjects4,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs4Type$inboundSchema,
+  type: z.literal("redis-rest-api-read-only-token"),
   storeId: z.string(),
 });
 /** @internal */
 export type FilterProjectEnvsContentHintProjects4$Outbound = {
-  type: string;
+  type: "redis-rest-api-read-only-token";
   storeId: string;
 };
 
@@ -3525,8 +2659,7 @@ export const FilterProjectEnvsContentHintProjects4$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FilterProjectEnvsContentHintProjects4
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs4Type$outboundSchema,
+  type: z.literal("redis-rest-api-read-only-token"),
   storeId: z.string(),
 });
 
@@ -3551,32 +2684,17 @@ export function filterProjectEnvsContentHintProjects4FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs3Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs3Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs3Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs3Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs3Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs3Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHintProjects3$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHintProjects3,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs3Type$inboundSchema,
+  type: z.literal("redis-rest-api-token"),
   storeId: z.string(),
 });
 /** @internal */
 export type FilterProjectEnvsContentHintProjects3$Outbound = {
-  type: string;
+  type: "redis-rest-api-token";
   storeId: string;
 };
 
@@ -3586,8 +2704,7 @@ export const FilterProjectEnvsContentHintProjects3$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FilterProjectEnvsContentHintProjects3
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Envs3Type$outboundSchema,
+  type: z.literal("redis-rest-api-token"),
   storeId: z.string(),
 });
 
@@ -3612,32 +2729,17 @@ export function filterProjectEnvsContentHintProjects3FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2EnvsType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2EnvsType
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2EnvsType,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2EnvsType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2EnvsType
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2EnvsType$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHintProjects2$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHintProjects2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2EnvsType$inboundSchema,
+  type: z.literal("redis-rest-api-url"),
   storeId: z.string(),
 });
 /** @internal */
 export type FilterProjectEnvsContentHintProjects2$Outbound = {
-  type: string;
+  type: "redis-rest-api-url";
   storeId: string;
 };
 
@@ -3647,8 +2749,7 @@ export const FilterProjectEnvsContentHintProjects2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FilterProjectEnvsContentHintProjects2
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2EnvsType$outboundSchema,
+  type: z.literal("redis-rest-api-url"),
   storeId: z.string(),
 });
 
@@ -3673,32 +2774,17 @@ export function filterProjectEnvsContentHintProjects2FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHintProjects1$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHintProjects1,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Type$inboundSchema,
+  type: z.literal("redis-url"),
   storeId: z.string(),
 });
 /** @internal */
 export type FilterProjectEnvsContentHintProjects1$Outbound = {
-  type: string;
+  type: "redis-url";
   storeId: string;
 };
 
@@ -3708,8 +2794,7 @@ export const FilterProjectEnvsContentHintProjects1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FilterProjectEnvsContentHintProjects1
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody2Type$outboundSchema,
+  type: z.literal("redis-url"),
   storeId: z.string(),
 });
 
@@ -3739,7 +2824,6 @@ export const FilterProjectEnvsResponseBodyContentHint$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => FilterProjectEnvsContentHintProjects14$inboundSchema),
   z.lazy(() => FilterProjectEnvsContentHintProjects1$inboundSchema),
   z.lazy(() => FilterProjectEnvsContentHintProjects2$inboundSchema),
   z.lazy(() => FilterProjectEnvsContentHintProjects3$inboundSchema),
@@ -3753,11 +2837,11 @@ export const FilterProjectEnvsResponseBodyContentHint$inboundSchema: z.ZodType<
   z.lazy(() => FilterProjectEnvsContentHintProjects11$inboundSchema),
   z.lazy(() => FilterProjectEnvsContentHintProjects12$inboundSchema),
   z.lazy(() => FilterProjectEnvsContentHintProjects13$inboundSchema),
+  z.lazy(() => FilterProjectEnvsContentHintProjects14$inboundSchema),
   z.lazy(() => FilterProjectEnvsContentHintProjects15$inboundSchema),
 ]);
 /** @internal */
 export type FilterProjectEnvsResponseBodyContentHint$Outbound =
-  | FilterProjectEnvsContentHintProjects14$Outbound
   | FilterProjectEnvsContentHintProjects1$Outbound
   | FilterProjectEnvsContentHintProjects2$Outbound
   | FilterProjectEnvsContentHintProjects3$Outbound
@@ -3771,6 +2855,7 @@ export type FilterProjectEnvsResponseBodyContentHint$Outbound =
   | FilterProjectEnvsContentHintProjects11$Outbound
   | FilterProjectEnvsContentHintProjects12$Outbound
   | FilterProjectEnvsContentHintProjects13$Outbound
+  | FilterProjectEnvsContentHintProjects14$Outbound
   | FilterProjectEnvsContentHintProjects15$Outbound;
 
 /** @internal */
@@ -3779,7 +2864,6 @@ export const FilterProjectEnvsResponseBodyContentHint$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FilterProjectEnvsResponseBodyContentHint
 > = z.union([
-  z.lazy(() => FilterProjectEnvsContentHintProjects14$outboundSchema),
   z.lazy(() => FilterProjectEnvsContentHintProjects1$outboundSchema),
   z.lazy(() => FilterProjectEnvsContentHintProjects2$outboundSchema),
   z.lazy(() => FilterProjectEnvsContentHintProjects3$outboundSchema),
@@ -3793,6 +2877,7 @@ export const FilterProjectEnvsResponseBodyContentHint$outboundSchema: z.ZodType<
   z.lazy(() => FilterProjectEnvsContentHintProjects11$outboundSchema),
   z.lazy(() => FilterProjectEnvsContentHintProjects12$outboundSchema),
   z.lazy(() => FilterProjectEnvsContentHintProjects13$outboundSchema),
+  z.lazy(() => FilterProjectEnvsContentHintProjects14$outboundSchema),
   z.lazy(() => FilterProjectEnvsContentHintProjects15$outboundSchema),
 ]);
 
@@ -3915,7 +3000,6 @@ export const Envs$inboundSchema: z.ZodType<Envs, z.ZodTypeDef, unknown> = z
     edgeConfigTokenId: z.nullable(z.string()).optional(),
     contentHint: z.nullable(
       z.union([
-        z.lazy(() => FilterProjectEnvsContentHintProjects14$inboundSchema),
         z.lazy(() => FilterProjectEnvsContentHintProjects1$inboundSchema),
         z.lazy(() => FilterProjectEnvsContentHintProjects2$inboundSchema),
         z.lazy(() => FilterProjectEnvsContentHintProjects3$inboundSchema),
@@ -3929,6 +3013,7 @@ export const Envs$inboundSchema: z.ZodType<Envs, z.ZodTypeDef, unknown> = z
         z.lazy(() => FilterProjectEnvsContentHintProjects11$inboundSchema),
         z.lazy(() => FilterProjectEnvsContentHintProjects12$inboundSchema),
         z.lazy(() => FilterProjectEnvsContentHintProjects13$inboundSchema),
+        z.lazy(() => FilterProjectEnvsContentHintProjects14$inboundSchema),
         z.lazy(() => FilterProjectEnvsContentHintProjects15$inboundSchema),
       ]),
     ).optional(),
@@ -3960,7 +3045,6 @@ export type Envs$Outbound = {
   edgeConfigId?: string | null | undefined;
   edgeConfigTokenId?: string | null | undefined;
   contentHint?:
-    | FilterProjectEnvsContentHintProjects14$Outbound
     | FilterProjectEnvsContentHintProjects1$Outbound
     | FilterProjectEnvsContentHintProjects2$Outbound
     | FilterProjectEnvsContentHintProjects3$Outbound
@@ -3974,6 +3058,7 @@ export type Envs$Outbound = {
     | FilterProjectEnvsContentHintProjects11$Outbound
     | FilterProjectEnvsContentHintProjects12$Outbound
     | FilterProjectEnvsContentHintProjects13$Outbound
+    | FilterProjectEnvsContentHintProjects14$Outbound
     | FilterProjectEnvsContentHintProjects15$Outbound
     | null
     | undefined;
@@ -4010,7 +3095,6 @@ export const Envs$outboundSchema: z.ZodType<Envs$Outbound, z.ZodTypeDef, Envs> =
     edgeConfigTokenId: z.nullable(z.string()).optional(),
     contentHint: z.nullable(
       z.union([
-        z.lazy(() => FilterProjectEnvsContentHintProjects14$outboundSchema),
         z.lazy(() => FilterProjectEnvsContentHintProjects1$outboundSchema),
         z.lazy(() => FilterProjectEnvsContentHintProjects2$outboundSchema),
         z.lazy(() => FilterProjectEnvsContentHintProjects3$outboundSchema),
@@ -4024,6 +3108,7 @@ export const Envs$outboundSchema: z.ZodType<Envs$Outbound, z.ZodTypeDef, Envs> =
         z.lazy(() => FilterProjectEnvsContentHintProjects11$outboundSchema),
         z.lazy(() => FilterProjectEnvsContentHintProjects12$outboundSchema),
         z.lazy(() => FilterProjectEnvsContentHintProjects13$outboundSchema),
+        z.lazy(() => FilterProjectEnvsContentHintProjects14$outboundSchema),
         z.lazy(() => FilterProjectEnvsContentHintProjects15$outboundSchema),
       ]),
     ).optional(),
@@ -4166,32 +3251,17 @@ export const FilterProjectEnvsResponseBodyType$outboundSchema: z.ZodNativeEnum<
 > = FilterProjectEnvsResponseBodyType$inboundSchema;
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody115Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody115Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody115Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody115Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody115Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody115Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHint15$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHint15,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody115Type$inboundSchema,
+  type: z.literal("flags-connection-string"),
   projectId: z.string(),
 });
 /** @internal */
 export type FilterProjectEnvsContentHint15$Outbound = {
-  type: string;
+  type: "flags-connection-string";
   projectId: string;
 };
 
@@ -4201,8 +3271,7 @@ export const FilterProjectEnvsContentHint15$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FilterProjectEnvsContentHint15
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody115Type$outboundSchema,
+  type: z.literal("flags-connection-string"),
   projectId: z.string(),
 });
 
@@ -4226,27 +3295,12 @@ export function filterProjectEnvsContentHint15FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody114Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody114Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody114Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody114Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody114Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody114Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHint14$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHint14,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody114Type$inboundSchema,
+  type: z.literal("integration-store-secret"),
   storeId: z.string(),
   integrationId: z.string(),
   integrationProductId: z.string(),
@@ -4254,7 +3308,7 @@ export const FilterProjectEnvsContentHint14$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type FilterProjectEnvsContentHint14$Outbound = {
-  type: string;
+  type: "integration-store-secret";
   storeId: string;
   integrationId: string;
   integrationProductId: string;
@@ -4267,8 +3321,7 @@ export const FilterProjectEnvsContentHint14$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FilterProjectEnvsContentHint14
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody114Type$outboundSchema,
+  type: z.literal("integration-store-secret"),
   storeId: z.string(),
   integrationId: z.string(),
   integrationProductId: z.string(),
@@ -4295,32 +3348,17 @@ export function filterProjectEnvsContentHint14FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody113Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody113Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody113Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody113Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody113Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody113Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHint13$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHint13,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody113Type$inboundSchema,
+  type: z.literal("postgres-url-no-ssl"),
   storeId: z.string(),
 });
 /** @internal */
 export type FilterProjectEnvsContentHint13$Outbound = {
-  type: string;
+  type: "postgres-url-no-ssl";
   storeId: string;
 };
 
@@ -4330,8 +3368,7 @@ export const FilterProjectEnvsContentHint13$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FilterProjectEnvsContentHint13
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody113Type$outboundSchema,
+  type: z.literal("postgres-url-no-ssl"),
   storeId: z.string(),
 });
 
@@ -4355,32 +3392,17 @@ export function filterProjectEnvsContentHint13FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody112Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody112Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody112Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody112Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody112Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody112Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHint12$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHint12,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody112Type$inboundSchema,
+  type: z.literal("postgres-database"),
   storeId: z.string(),
 });
 /** @internal */
 export type FilterProjectEnvsContentHint12$Outbound = {
-  type: string;
+  type: "postgres-database";
   storeId: string;
 };
 
@@ -4390,8 +3412,7 @@ export const FilterProjectEnvsContentHint12$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FilterProjectEnvsContentHint12
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody112Type$outboundSchema,
+  type: z.literal("postgres-database"),
   storeId: z.string(),
 });
 
@@ -4415,32 +3436,17 @@ export function filterProjectEnvsContentHint12FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody111Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody111Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody111Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody111Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody111Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody111Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHint11$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHint11,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody111Type$inboundSchema,
+  type: z.literal("postgres-password"),
   storeId: z.string(),
 });
 /** @internal */
 export type FilterProjectEnvsContentHint11$Outbound = {
-  type: string;
+  type: "postgres-password";
   storeId: string;
 };
 
@@ -4450,8 +3456,7 @@ export const FilterProjectEnvsContentHint11$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FilterProjectEnvsContentHint11
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody111Type$outboundSchema,
+  type: z.literal("postgres-password"),
   storeId: z.string(),
 });
 
@@ -4475,32 +3480,17 @@ export function filterProjectEnvsContentHint11FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody110Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody110Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody110Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody110Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody110Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody110Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHint10$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHint10,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody110Type$inboundSchema,
+  type: z.literal("postgres-host"),
   storeId: z.string(),
 });
 /** @internal */
 export type FilterProjectEnvsContentHint10$Outbound = {
-  type: string;
+  type: "postgres-host";
   storeId: string;
 };
 
@@ -4510,8 +3500,7 @@ export const FilterProjectEnvsContentHint10$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FilterProjectEnvsContentHint10
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody110Type$outboundSchema,
+  type: z.literal("postgres-host"),
   storeId: z.string(),
 });
 
@@ -4535,32 +3524,17 @@ export function filterProjectEnvsContentHint10FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody19Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody19Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody19Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody19Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody19Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody19Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHint9$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHint9,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody19Type$inboundSchema,
+  type: z.literal("postgres-user"),
   storeId: z.string(),
 });
 /** @internal */
 export type FilterProjectEnvsContentHint9$Outbound = {
-  type: string;
+  type: "postgres-user";
   storeId: string;
 };
 
@@ -4570,8 +3544,7 @@ export const FilterProjectEnvsContentHint9$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FilterProjectEnvsContentHint9
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody19Type$outboundSchema,
+  type: z.literal("postgres-user"),
   storeId: z.string(),
 });
 
@@ -4595,32 +3568,17 @@ export function filterProjectEnvsContentHint9FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody18Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody18Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody18Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody18Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody18Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody18Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHint8$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHint8,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody18Type$inboundSchema,
+  type: z.literal("postgres-prisma-url"),
   storeId: z.string(),
 });
 /** @internal */
 export type FilterProjectEnvsContentHint8$Outbound = {
-  type: string;
+  type: "postgres-prisma-url";
   storeId: string;
 };
 
@@ -4630,8 +3588,7 @@ export const FilterProjectEnvsContentHint8$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FilterProjectEnvsContentHint8
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody18Type$outboundSchema,
+  type: z.literal("postgres-prisma-url"),
   storeId: z.string(),
 });
 
@@ -4655,32 +3612,17 @@ export function filterProjectEnvsContentHint8FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody1Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody1Type
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody1Type,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody1Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody1Type
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody1Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHint7$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHint7,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody1Type$inboundSchema,
+  type: z.literal("postgres-url-non-pooling"),
   storeId: z.string(),
 });
 /** @internal */
 export type FilterProjectEnvsContentHint7$Outbound = {
-  type: string;
+  type: "postgres-url-non-pooling";
   storeId: string;
 };
 
@@ -4690,8 +3632,7 @@ export const FilterProjectEnvsContentHint7$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FilterProjectEnvsContentHint7
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBody1Type$outboundSchema,
+  type: z.literal("postgres-url-non-pooling"),
   storeId: z.string(),
 });
 
@@ -4715,32 +3656,17 @@ export function filterProjectEnvsContentHint7FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBodyType
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBodyType,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBodyType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBodyType
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHint6$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHint6,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema,
+  type: z.literal("postgres-url"),
   storeId: z.string(),
 });
 /** @internal */
 export type FilterProjectEnvsContentHint6$Outbound = {
-  type: string;
+  type: "postgres-url";
   storeId: string;
 };
 
@@ -4750,8 +3676,7 @@ export const FilterProjectEnvsContentHint6$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FilterProjectEnvsContentHint6
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONResponseBodyType$outboundSchema,
+  type: z.literal("postgres-url"),
   storeId: z.string(),
 });
 
@@ -4775,32 +3700,17 @@ export function filterProjectEnvsContentHint6FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONType
-  > = z.nativeEnum(
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONType,
-  );
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONType
-  > =
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONType$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHint5$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHint5,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONType$inboundSchema,
+  type: z.literal("blob-read-write-token"),
   storeId: z.string(),
 });
 /** @internal */
 export type FilterProjectEnvsContentHint5$Outbound = {
-  type: string;
+  type: "blob-read-write-token";
   storeId: string;
 };
 
@@ -4810,8 +3720,7 @@ export const FilterProjectEnvsContentHint5$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FilterProjectEnvsContentHint5
 > = z.object({
-  type:
-    FilterProjectEnvsContentHintProjectsResponse200ApplicationJSONType$outboundSchema,
+  type: z.literal("blob-read-write-token"),
   storeId: z.string(),
 });
 
@@ -4835,26 +3744,17 @@ export function filterProjectEnvsContentHint5FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200Type$inboundSchema:
-  z.ZodNativeEnum<typeof FilterProjectEnvsContentHintProjectsResponse200Type> =
-    z.nativeEnum(FilterProjectEnvsContentHintProjectsResponse200Type);
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponse200Type$outboundSchema:
-  z.ZodNativeEnum<typeof FilterProjectEnvsContentHintProjectsResponse200Type> =
-    FilterProjectEnvsContentHintProjectsResponse200Type$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHint4$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHint4,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: FilterProjectEnvsContentHintProjectsResponse200Type$inboundSchema,
+  type: z.literal("redis-rest-api-read-only-token"),
   storeId: z.string(),
 });
 /** @internal */
 export type FilterProjectEnvsContentHint4$Outbound = {
-  type: string;
+  type: "redis-rest-api-read-only-token";
   storeId: string;
 };
 
@@ -4864,7 +3764,7 @@ export const FilterProjectEnvsContentHint4$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FilterProjectEnvsContentHint4
 > = z.object({
-  type: FilterProjectEnvsContentHintProjectsResponse200Type$outboundSchema,
+  type: z.literal("redis-rest-api-read-only-token"),
   storeId: z.string(),
 });
 
@@ -4888,26 +3788,17 @@ export function filterProjectEnvsContentHint4FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof FilterProjectEnvsContentHintProjectsResponseType> = z
-    .nativeEnum(FilterProjectEnvsContentHintProjectsResponseType);
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsResponseType$outboundSchema:
-  z.ZodNativeEnum<typeof FilterProjectEnvsContentHintProjectsResponseType> =
-    FilterProjectEnvsContentHintProjectsResponseType$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHint3$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHint3,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: FilterProjectEnvsContentHintProjectsResponseType$inboundSchema,
+  type: z.literal("redis-rest-api-token"),
   storeId: z.string(),
 });
 /** @internal */
 export type FilterProjectEnvsContentHint3$Outbound = {
-  type: string;
+  type: "redis-rest-api-token";
   storeId: string;
 };
 
@@ -4917,7 +3808,7 @@ export const FilterProjectEnvsContentHint3$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FilterProjectEnvsContentHint3
 > = z.object({
-  type: FilterProjectEnvsContentHintProjectsResponseType$outboundSchema,
+  type: z.literal("redis-rest-api-token"),
   storeId: z.string(),
 });
 
@@ -4941,26 +3832,17 @@ export function filterProjectEnvsContentHint3FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintProjectsType$inboundSchema:
-  z.ZodNativeEnum<typeof FilterProjectEnvsContentHintProjectsType> = z
-    .nativeEnum(FilterProjectEnvsContentHintProjectsType);
-/** @internal */
-export const FilterProjectEnvsContentHintProjectsType$outboundSchema:
-  z.ZodNativeEnum<typeof FilterProjectEnvsContentHintProjectsType> =
-    FilterProjectEnvsContentHintProjectsType$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHint2$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHint2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: FilterProjectEnvsContentHintProjectsType$inboundSchema,
+  type: z.literal("redis-rest-api-url"),
   storeId: z.string(),
 });
 /** @internal */
 export type FilterProjectEnvsContentHint2$Outbound = {
-  type: string;
+  type: "redis-rest-api-url";
   storeId: string;
 };
 
@@ -4970,7 +3852,7 @@ export const FilterProjectEnvsContentHint2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FilterProjectEnvsContentHint2
 > = z.object({
-  type: FilterProjectEnvsContentHintProjectsType$outboundSchema,
+  type: z.literal("redis-rest-api-url"),
   storeId: z.string(),
 });
 
@@ -4994,26 +3876,17 @@ export function filterProjectEnvsContentHint2FromJSON(
 }
 
 /** @internal */
-export const FilterProjectEnvsContentHintType$inboundSchema: z.ZodNativeEnum<
-  typeof FilterProjectEnvsContentHintType
-> = z.nativeEnum(FilterProjectEnvsContentHintType);
-/** @internal */
-export const FilterProjectEnvsContentHintType$outboundSchema: z.ZodNativeEnum<
-  typeof FilterProjectEnvsContentHintType
-> = FilterProjectEnvsContentHintType$inboundSchema;
-
-/** @internal */
 export const FilterProjectEnvsContentHint1$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHint1,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: FilterProjectEnvsContentHintType$inboundSchema,
+  type: z.literal("redis-url"),
   storeId: z.string(),
 });
 /** @internal */
 export type FilterProjectEnvsContentHint1$Outbound = {
-  type: string;
+  type: "redis-url";
   storeId: string;
 };
 
@@ -5023,7 +3896,7 @@ export const FilterProjectEnvsContentHint1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FilterProjectEnvsContentHint1
 > = z.object({
-  type: FilterProjectEnvsContentHintType$outboundSchema,
+  type: z.literal("redis-url"),
   storeId: z.string(),
 });
 
@@ -5052,7 +3925,6 @@ export const ResponseBodyContentHint$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => FilterProjectEnvsContentHint14$inboundSchema),
   z.lazy(() => FilterProjectEnvsContentHint1$inboundSchema),
   z.lazy(() => FilterProjectEnvsContentHint2$inboundSchema),
   z.lazy(() => FilterProjectEnvsContentHint3$inboundSchema),
@@ -5066,11 +3938,11 @@ export const ResponseBodyContentHint$inboundSchema: z.ZodType<
   z.lazy(() => FilterProjectEnvsContentHint11$inboundSchema),
   z.lazy(() => FilterProjectEnvsContentHint12$inboundSchema),
   z.lazy(() => FilterProjectEnvsContentHint13$inboundSchema),
+  z.lazy(() => FilterProjectEnvsContentHint14$inboundSchema),
   z.lazy(() => FilterProjectEnvsContentHint15$inboundSchema),
 ]);
 /** @internal */
 export type ResponseBodyContentHint$Outbound =
-  | FilterProjectEnvsContentHint14$Outbound
   | FilterProjectEnvsContentHint1$Outbound
   | FilterProjectEnvsContentHint2$Outbound
   | FilterProjectEnvsContentHint3$Outbound
@@ -5084,6 +3956,7 @@ export type ResponseBodyContentHint$Outbound =
   | FilterProjectEnvsContentHint11$Outbound
   | FilterProjectEnvsContentHint12$Outbound
   | FilterProjectEnvsContentHint13$Outbound
+  | FilterProjectEnvsContentHint14$Outbound
   | FilterProjectEnvsContentHint15$Outbound;
 
 /** @internal */
@@ -5092,7 +3965,6 @@ export const ResponseBodyContentHint$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ResponseBodyContentHint
 > = z.union([
-  z.lazy(() => FilterProjectEnvsContentHint14$outboundSchema),
   z.lazy(() => FilterProjectEnvsContentHint1$outboundSchema),
   z.lazy(() => FilterProjectEnvsContentHint2$outboundSchema),
   z.lazy(() => FilterProjectEnvsContentHint3$outboundSchema),
@@ -5106,6 +3978,7 @@ export const ResponseBodyContentHint$outboundSchema: z.ZodType<
   z.lazy(() => FilterProjectEnvsContentHint11$outboundSchema),
   z.lazy(() => FilterProjectEnvsContentHint12$outboundSchema),
   z.lazy(() => FilterProjectEnvsContentHint13$outboundSchema),
+  z.lazy(() => FilterProjectEnvsContentHint14$outboundSchema),
   z.lazy(() => FilterProjectEnvsContentHint15$outboundSchema),
 ]);
 
@@ -5206,7 +4079,6 @@ export const FilterProjectEnvsResponseBody1$inboundSchema: z.ZodType<
   edgeConfigTokenId: z.nullable(z.string()).optional(),
   contentHint: z.nullable(
     z.union([
-      z.lazy(() => FilterProjectEnvsContentHint14$inboundSchema),
       z.lazy(() => FilterProjectEnvsContentHint1$inboundSchema),
       z.lazy(() => FilterProjectEnvsContentHint2$inboundSchema),
       z.lazy(() => FilterProjectEnvsContentHint3$inboundSchema),
@@ -5220,6 +4092,7 @@ export const FilterProjectEnvsResponseBody1$inboundSchema: z.ZodType<
       z.lazy(() => FilterProjectEnvsContentHint11$inboundSchema),
       z.lazy(() => FilterProjectEnvsContentHint12$inboundSchema),
       z.lazy(() => FilterProjectEnvsContentHint13$inboundSchema),
+      z.lazy(() => FilterProjectEnvsContentHint14$inboundSchema),
       z.lazy(() => FilterProjectEnvsContentHint15$inboundSchema),
     ]),
   ).optional(),
@@ -5249,7 +4122,6 @@ export type FilterProjectEnvsResponseBody1$Outbound = {
   edgeConfigId?: string | null | undefined;
   edgeConfigTokenId?: string | null | undefined;
   contentHint?:
-    | FilterProjectEnvsContentHint14$Outbound
     | FilterProjectEnvsContentHint1$Outbound
     | FilterProjectEnvsContentHint2$Outbound
     | FilterProjectEnvsContentHint3$Outbound
@@ -5263,6 +4135,7 @@ export type FilterProjectEnvsResponseBody1$Outbound = {
     | FilterProjectEnvsContentHint11$Outbound
     | FilterProjectEnvsContentHint12$Outbound
     | FilterProjectEnvsContentHint13$Outbound
+    | FilterProjectEnvsContentHint14$Outbound
     | FilterProjectEnvsContentHint15$Outbound
     | null
     | undefined;
@@ -5302,7 +4175,6 @@ export const FilterProjectEnvsResponseBody1$outboundSchema: z.ZodType<
   edgeConfigTokenId: z.nullable(z.string()).optional(),
   contentHint: z.nullable(
     z.union([
-      z.lazy(() => FilterProjectEnvsContentHint14$outboundSchema),
       z.lazy(() => FilterProjectEnvsContentHint1$outboundSchema),
       z.lazy(() => FilterProjectEnvsContentHint2$outboundSchema),
       z.lazy(() => FilterProjectEnvsContentHint3$outboundSchema),
@@ -5316,6 +4188,7 @@ export const FilterProjectEnvsResponseBody1$outboundSchema: z.ZodType<
       z.lazy(() => FilterProjectEnvsContentHint11$outboundSchema),
       z.lazy(() => FilterProjectEnvsContentHint12$outboundSchema),
       z.lazy(() => FilterProjectEnvsContentHint13$outboundSchema),
+      z.lazy(() => FilterProjectEnvsContentHint14$outboundSchema),
       z.lazy(() => FilterProjectEnvsContentHint15$outboundSchema),
     ]),
   ).optional(),

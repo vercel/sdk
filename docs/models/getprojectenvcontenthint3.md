@@ -13,7 +13,7 @@ let value: GetProjectEnvContentHint3 = {
 
 ## Fields
 
-| Field                                                                                                            | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
-| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                           | [models.GetProjectEnvContentHintProjectsResponseType](../models/getprojectenvcontenthintprojectsresponsetype.md) | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
-| `storeId`                                                                                                        | *string*                                                                                                         | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
+| Field                    | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `type`                   | *"redis-rest-api-token"* | :heavy_check_mark:       | N/A                      |
+| `storeId`                | *string*                 | :heavy_check_mark:       | N/A                      |

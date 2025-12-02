@@ -13,7 +13,7 @@ let value: Missing1 = {
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `type`                                         | [models.MissingType](../models/missingtype.md) | :heavy_check_mark:                             | N/A                                            |
-| `value`                                        | *models.MissingValue*                          | :heavy_check_mark:                             | N/A                                            |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `type`                | *"host"*              | :heavy_check_mark:    | N/A                   |
+| `value`               | *models.MissingValue* | :heavy_check_mark:    | N/A                   |

@@ -998,21 +998,21 @@ func (o *GetProjectEnvContentHintRedisURL3) GetStoreID() string {
 type GetProjectEnvContentHintUnion3Type string
 
 const (
-	GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintRedisURL3                  GetProjectEnvContentHintUnion3Type = "getProjectEnv_contentHint_RedisURL_3"
-	GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintRedisRestAPIURL3           GetProjectEnvContentHintUnion3Type = "getProjectEnv_contentHint_RedisRestAPIURL_3"
-	GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintRedisRestAPIToken3         GetProjectEnvContentHintUnion3Type = "getProjectEnv_contentHint_RedisRestAPIToken_3"
-	GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintRedisRestAPIReadOnlyToken3 GetProjectEnvContentHintUnion3Type = "getProjectEnv_contentHint_RedisRestAPIReadOnlyToken_3"
-	GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintBlobReadWriteToken3        GetProjectEnvContentHintUnion3Type = "getProjectEnv_contentHint_BlobReadWriteToken_3"
-	GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresURL3               GetProjectEnvContentHintUnion3Type = "getProjectEnv_contentHint_PostgresURL_3"
-	GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresURLNonPooling3     GetProjectEnvContentHintUnion3Type = "getProjectEnv_contentHint_PostgresURLNonPooling_3"
-	GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresPrismaURL3         GetProjectEnvContentHintUnion3Type = "getProjectEnv_contentHint_PostgresPrismaURL_3"
-	GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresUser3              GetProjectEnvContentHintUnion3Type = "getProjectEnv_contentHint_PostgresUser_3"
-	GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresHost3              GetProjectEnvContentHintUnion3Type = "getProjectEnv_contentHint_PostgresHost_3"
-	GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresPassword3          GetProjectEnvContentHintUnion3Type = "getProjectEnv_contentHint_PostgresPassword_3"
-	GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresDatabase3          GetProjectEnvContentHintUnion3Type = "getProjectEnv_contentHint_PostgresDatabase_3"
-	GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresURLNoSsl3          GetProjectEnvContentHintUnion3Type = "getProjectEnv_contentHint_PostgresURLNoSsl_3"
-	GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintIntegrationStoreSecret3    GetProjectEnvContentHintUnion3Type = "getProjectEnv_contentHint_IntegrationStoreSecret_3"
-	GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintFlagsConnectionString3     GetProjectEnvContentHintUnion3Type = "getProjectEnv_contentHint_FlagsConnectionString_3"
+	GetProjectEnvContentHintUnion3TypeRedisURL                  GetProjectEnvContentHintUnion3Type = "redis-url"
+	GetProjectEnvContentHintUnion3TypeRedisRestAPIURL           GetProjectEnvContentHintUnion3Type = "redis-rest-api-url"
+	GetProjectEnvContentHintUnion3TypeRedisRestAPIToken         GetProjectEnvContentHintUnion3Type = "redis-rest-api-token"
+	GetProjectEnvContentHintUnion3TypeRedisRestAPIReadOnlyToken GetProjectEnvContentHintUnion3Type = "redis-rest-api-read-only-token"
+	GetProjectEnvContentHintUnion3TypeBlobReadWriteToken        GetProjectEnvContentHintUnion3Type = "blob-read-write-token"
+	GetProjectEnvContentHintUnion3TypePostgresURL               GetProjectEnvContentHintUnion3Type = "postgres-url"
+	GetProjectEnvContentHintUnion3TypePostgresURLNonPooling     GetProjectEnvContentHintUnion3Type = "postgres-url-non-pooling"
+	GetProjectEnvContentHintUnion3TypePostgresPrismaURL         GetProjectEnvContentHintUnion3Type = "postgres-prisma-url"
+	GetProjectEnvContentHintUnion3TypePostgresUser              GetProjectEnvContentHintUnion3Type = "postgres-user"
+	GetProjectEnvContentHintUnion3TypePostgresHost              GetProjectEnvContentHintUnion3Type = "postgres-host"
+	GetProjectEnvContentHintUnion3TypePostgresPassword          GetProjectEnvContentHintUnion3Type = "postgres-password"
+	GetProjectEnvContentHintUnion3TypePostgresDatabase          GetProjectEnvContentHintUnion3Type = "postgres-database"
+	GetProjectEnvContentHintUnion3TypePostgresURLNoSsl          GetProjectEnvContentHintUnion3Type = "postgres-url-no-ssl"
+	GetProjectEnvContentHintUnion3TypeIntegrationStoreSecret    GetProjectEnvContentHintUnion3Type = "integration-store-secret"
+	GetProjectEnvContentHintUnion3TypeFlagsConnectionString     GetProjectEnvContentHintUnion3Type = "flags-connection-string"
 )
 
 type GetProjectEnvContentHintUnion3 struct {
@@ -1035,245 +1035,332 @@ type GetProjectEnvContentHintUnion3 struct {
 	Type GetProjectEnvContentHintUnion3Type
 }
 
-func CreateGetProjectEnvContentHintUnion3GetProjectEnvContentHintRedisURL3(getProjectEnvContentHintRedisURL3 GetProjectEnvContentHintRedisURL3) GetProjectEnvContentHintUnion3 {
-	typ := GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintRedisURL3
+func CreateGetProjectEnvContentHintUnion3RedisURL(redisURL GetProjectEnvContentHintRedisURL3) GetProjectEnvContentHintUnion3 {
+	typ := GetProjectEnvContentHintUnion3TypeRedisURL
+
+	typStr := GetProjectEnvTypeRedisURL3(typ)
+	redisURL.Type = typStr
 
 	return GetProjectEnvContentHintUnion3{
-		GetProjectEnvContentHintRedisURL3: &getProjectEnvContentHintRedisURL3,
+		GetProjectEnvContentHintRedisURL3: &redisURL,
 		Type:                              typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion3GetProjectEnvContentHintRedisRestAPIURL3(getProjectEnvContentHintRedisRestAPIURL3 GetProjectEnvContentHintRedisRestAPIURL3) GetProjectEnvContentHintUnion3 {
-	typ := GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintRedisRestAPIURL3
+func CreateGetProjectEnvContentHintUnion3RedisRestAPIURL(redisRestAPIURL GetProjectEnvContentHintRedisRestAPIURL3) GetProjectEnvContentHintUnion3 {
+	typ := GetProjectEnvContentHintUnion3TypeRedisRestAPIURL
+
+	typStr := GetProjectEnvTypeRedisRestAPIURL3(typ)
+	redisRestAPIURL.Type = typStr
 
 	return GetProjectEnvContentHintUnion3{
-		GetProjectEnvContentHintRedisRestAPIURL3: &getProjectEnvContentHintRedisRestAPIURL3,
+		GetProjectEnvContentHintRedisRestAPIURL3: &redisRestAPIURL,
 		Type:                                     typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion3GetProjectEnvContentHintRedisRestAPIToken3(getProjectEnvContentHintRedisRestAPIToken3 GetProjectEnvContentHintRedisRestAPIToken3) GetProjectEnvContentHintUnion3 {
-	typ := GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintRedisRestAPIToken3
+func CreateGetProjectEnvContentHintUnion3RedisRestAPIToken(redisRestAPIToken GetProjectEnvContentHintRedisRestAPIToken3) GetProjectEnvContentHintUnion3 {
+	typ := GetProjectEnvContentHintUnion3TypeRedisRestAPIToken
+
+	typStr := GetProjectEnvTypeRedisRestAPIToken3(typ)
+	redisRestAPIToken.Type = typStr
 
 	return GetProjectEnvContentHintUnion3{
-		GetProjectEnvContentHintRedisRestAPIToken3: &getProjectEnvContentHintRedisRestAPIToken3,
+		GetProjectEnvContentHintRedisRestAPIToken3: &redisRestAPIToken,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion3GetProjectEnvContentHintRedisRestAPIReadOnlyToken3(getProjectEnvContentHintRedisRestAPIReadOnlyToken3 GetProjectEnvContentHintRedisRestAPIReadOnlyToken3) GetProjectEnvContentHintUnion3 {
-	typ := GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintRedisRestAPIReadOnlyToken3
+func CreateGetProjectEnvContentHintUnion3RedisRestAPIReadOnlyToken(redisRestAPIReadOnlyToken GetProjectEnvContentHintRedisRestAPIReadOnlyToken3) GetProjectEnvContentHintUnion3 {
+	typ := GetProjectEnvContentHintUnion3TypeRedisRestAPIReadOnlyToken
+
+	typStr := GetProjectEnvTypeRedisRestAPIReadOnlyToken3(typ)
+	redisRestAPIReadOnlyToken.Type = typStr
 
 	return GetProjectEnvContentHintUnion3{
-		GetProjectEnvContentHintRedisRestAPIReadOnlyToken3: &getProjectEnvContentHintRedisRestAPIReadOnlyToken3,
+		GetProjectEnvContentHintRedisRestAPIReadOnlyToken3: &redisRestAPIReadOnlyToken,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion3GetProjectEnvContentHintBlobReadWriteToken3(getProjectEnvContentHintBlobReadWriteToken3 GetProjectEnvContentHintBlobReadWriteToken3) GetProjectEnvContentHintUnion3 {
-	typ := GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintBlobReadWriteToken3
+func CreateGetProjectEnvContentHintUnion3BlobReadWriteToken(blobReadWriteToken GetProjectEnvContentHintBlobReadWriteToken3) GetProjectEnvContentHintUnion3 {
+	typ := GetProjectEnvContentHintUnion3TypeBlobReadWriteToken
+
+	typStr := GetProjectEnvTypeBlobReadWriteToken3(typ)
+	blobReadWriteToken.Type = typStr
 
 	return GetProjectEnvContentHintUnion3{
-		GetProjectEnvContentHintBlobReadWriteToken3: &getProjectEnvContentHintBlobReadWriteToken3,
+		GetProjectEnvContentHintBlobReadWriteToken3: &blobReadWriteToken,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion3GetProjectEnvContentHintPostgresURL3(getProjectEnvContentHintPostgresURL3 GetProjectEnvContentHintPostgresURL3) GetProjectEnvContentHintUnion3 {
-	typ := GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresURL3
+func CreateGetProjectEnvContentHintUnion3PostgresURL(postgresURL GetProjectEnvContentHintPostgresURL3) GetProjectEnvContentHintUnion3 {
+	typ := GetProjectEnvContentHintUnion3TypePostgresURL
+
+	typStr := GetProjectEnvTypePostgresURL3(typ)
+	postgresURL.Type = typStr
 
 	return GetProjectEnvContentHintUnion3{
-		GetProjectEnvContentHintPostgresURL3: &getProjectEnvContentHintPostgresURL3,
+		GetProjectEnvContentHintPostgresURL3: &postgresURL,
 		Type:                                 typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion3GetProjectEnvContentHintPostgresURLNonPooling3(getProjectEnvContentHintPostgresURLNonPooling3 GetProjectEnvContentHintPostgresURLNonPooling3) GetProjectEnvContentHintUnion3 {
-	typ := GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresURLNonPooling3
+func CreateGetProjectEnvContentHintUnion3PostgresURLNonPooling(postgresURLNonPooling GetProjectEnvContentHintPostgresURLNonPooling3) GetProjectEnvContentHintUnion3 {
+	typ := GetProjectEnvContentHintUnion3TypePostgresURLNonPooling
+
+	typStr := GetProjectEnvTypePostgresURLNonPooling3(typ)
+	postgresURLNonPooling.Type = typStr
 
 	return GetProjectEnvContentHintUnion3{
-		GetProjectEnvContentHintPostgresURLNonPooling3: &getProjectEnvContentHintPostgresURLNonPooling3,
+		GetProjectEnvContentHintPostgresURLNonPooling3: &postgresURLNonPooling,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion3GetProjectEnvContentHintPostgresPrismaURL3(getProjectEnvContentHintPostgresPrismaURL3 GetProjectEnvContentHintPostgresPrismaURL3) GetProjectEnvContentHintUnion3 {
-	typ := GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresPrismaURL3
+func CreateGetProjectEnvContentHintUnion3PostgresPrismaURL(postgresPrismaURL GetProjectEnvContentHintPostgresPrismaURL3) GetProjectEnvContentHintUnion3 {
+	typ := GetProjectEnvContentHintUnion3TypePostgresPrismaURL
+
+	typStr := GetProjectEnvTypePostgresPrismaURL3(typ)
+	postgresPrismaURL.Type = typStr
 
 	return GetProjectEnvContentHintUnion3{
-		GetProjectEnvContentHintPostgresPrismaURL3: &getProjectEnvContentHintPostgresPrismaURL3,
+		GetProjectEnvContentHintPostgresPrismaURL3: &postgresPrismaURL,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion3GetProjectEnvContentHintPostgresUser3(getProjectEnvContentHintPostgresUser3 GetProjectEnvContentHintPostgresUser3) GetProjectEnvContentHintUnion3 {
-	typ := GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresUser3
+func CreateGetProjectEnvContentHintUnion3PostgresUser(postgresUser GetProjectEnvContentHintPostgresUser3) GetProjectEnvContentHintUnion3 {
+	typ := GetProjectEnvContentHintUnion3TypePostgresUser
+
+	typStr := GetProjectEnvTypePostgresUser3(typ)
+	postgresUser.Type = typStr
 
 	return GetProjectEnvContentHintUnion3{
-		GetProjectEnvContentHintPostgresUser3: &getProjectEnvContentHintPostgresUser3,
+		GetProjectEnvContentHintPostgresUser3: &postgresUser,
 		Type:                                  typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion3GetProjectEnvContentHintPostgresHost3(getProjectEnvContentHintPostgresHost3 GetProjectEnvContentHintPostgresHost3) GetProjectEnvContentHintUnion3 {
-	typ := GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresHost3
+func CreateGetProjectEnvContentHintUnion3PostgresHost(postgresHost GetProjectEnvContentHintPostgresHost3) GetProjectEnvContentHintUnion3 {
+	typ := GetProjectEnvContentHintUnion3TypePostgresHost
+
+	typStr := GetProjectEnvTypePostgresHost3(typ)
+	postgresHost.Type = typStr
 
 	return GetProjectEnvContentHintUnion3{
-		GetProjectEnvContentHintPostgresHost3: &getProjectEnvContentHintPostgresHost3,
+		GetProjectEnvContentHintPostgresHost3: &postgresHost,
 		Type:                                  typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion3GetProjectEnvContentHintPostgresPassword3(getProjectEnvContentHintPostgresPassword3 GetProjectEnvContentHintPostgresPassword3) GetProjectEnvContentHintUnion3 {
-	typ := GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresPassword3
+func CreateGetProjectEnvContentHintUnion3PostgresPassword(postgresPassword GetProjectEnvContentHintPostgresPassword3) GetProjectEnvContentHintUnion3 {
+	typ := GetProjectEnvContentHintUnion3TypePostgresPassword
+
+	typStr := GetProjectEnvTypePostgresPassword3(typ)
+	postgresPassword.Type = typStr
 
 	return GetProjectEnvContentHintUnion3{
-		GetProjectEnvContentHintPostgresPassword3: &getProjectEnvContentHintPostgresPassword3,
+		GetProjectEnvContentHintPostgresPassword3: &postgresPassword,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion3GetProjectEnvContentHintPostgresDatabase3(getProjectEnvContentHintPostgresDatabase3 GetProjectEnvContentHintPostgresDatabase3) GetProjectEnvContentHintUnion3 {
-	typ := GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresDatabase3
+func CreateGetProjectEnvContentHintUnion3PostgresDatabase(postgresDatabase GetProjectEnvContentHintPostgresDatabase3) GetProjectEnvContentHintUnion3 {
+	typ := GetProjectEnvContentHintUnion3TypePostgresDatabase
+
+	typStr := GetProjectEnvTypePostgresDatabase3(typ)
+	postgresDatabase.Type = typStr
 
 	return GetProjectEnvContentHintUnion3{
-		GetProjectEnvContentHintPostgresDatabase3: &getProjectEnvContentHintPostgresDatabase3,
+		GetProjectEnvContentHintPostgresDatabase3: &postgresDatabase,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion3GetProjectEnvContentHintPostgresURLNoSsl3(getProjectEnvContentHintPostgresURLNoSsl3 GetProjectEnvContentHintPostgresURLNoSsl3) GetProjectEnvContentHintUnion3 {
-	typ := GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresURLNoSsl3
+func CreateGetProjectEnvContentHintUnion3PostgresURLNoSsl(postgresURLNoSsl GetProjectEnvContentHintPostgresURLNoSsl3) GetProjectEnvContentHintUnion3 {
+	typ := GetProjectEnvContentHintUnion3TypePostgresURLNoSsl
+
+	typStr := GetProjectEnvTypePostgresURLNoSsl3(typ)
+	postgresURLNoSsl.Type = typStr
 
 	return GetProjectEnvContentHintUnion3{
-		GetProjectEnvContentHintPostgresURLNoSsl3: &getProjectEnvContentHintPostgresURLNoSsl3,
+		GetProjectEnvContentHintPostgresURLNoSsl3: &postgresURLNoSsl,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion3GetProjectEnvContentHintIntegrationStoreSecret3(getProjectEnvContentHintIntegrationStoreSecret3 GetProjectEnvContentHintIntegrationStoreSecret3) GetProjectEnvContentHintUnion3 {
-	typ := GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintIntegrationStoreSecret3
+func CreateGetProjectEnvContentHintUnion3IntegrationStoreSecret(integrationStoreSecret GetProjectEnvContentHintIntegrationStoreSecret3) GetProjectEnvContentHintUnion3 {
+	typ := GetProjectEnvContentHintUnion3TypeIntegrationStoreSecret
+
+	typStr := GetProjectEnvTypeIntegrationStoreSecret3(typ)
+	integrationStoreSecret.Type = typStr
 
 	return GetProjectEnvContentHintUnion3{
-		GetProjectEnvContentHintIntegrationStoreSecret3: &getProjectEnvContentHintIntegrationStoreSecret3,
+		GetProjectEnvContentHintIntegrationStoreSecret3: &integrationStoreSecret,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion3GetProjectEnvContentHintFlagsConnectionString3(getProjectEnvContentHintFlagsConnectionString3 GetProjectEnvContentHintFlagsConnectionString3) GetProjectEnvContentHintUnion3 {
-	typ := GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintFlagsConnectionString3
+func CreateGetProjectEnvContentHintUnion3FlagsConnectionString(flagsConnectionString GetProjectEnvContentHintFlagsConnectionString3) GetProjectEnvContentHintUnion3 {
+	typ := GetProjectEnvContentHintUnion3TypeFlagsConnectionString
+
+	typStr := GetProjectEnvTypeFlagsConnectionString3(typ)
+	flagsConnectionString.Type = typStr
 
 	return GetProjectEnvContentHintUnion3{
-		GetProjectEnvContentHintFlagsConnectionString3: &getProjectEnvContentHintFlagsConnectionString3,
+		GetProjectEnvContentHintFlagsConnectionString3: &flagsConnectionString,
 		Type: typ,
 	}
 }
 
 func (u *GetProjectEnvContentHintUnion3) UnmarshalJSON(data []byte) error {
 
-	var getProjectEnvContentHintIntegrationStoreSecret3 GetProjectEnvContentHintIntegrationStoreSecret3 = GetProjectEnvContentHintIntegrationStoreSecret3{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintIntegrationStoreSecret3, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintIntegrationStoreSecret3 = &getProjectEnvContentHintIntegrationStoreSecret3
-		u.Type = GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintIntegrationStoreSecret3
-		return nil
+	type discriminator struct {
+		Type string `json:"type"`
 	}
 
-	var getProjectEnvContentHintRedisURL3 GetProjectEnvContentHintRedisURL3 = GetProjectEnvContentHintRedisURL3{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisURL3, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintRedisURL3 = &getProjectEnvContentHintRedisURL3
-		u.Type = GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintRedisURL3
-		return nil
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
 	}
 
-	var getProjectEnvContentHintRedisRestAPIURL3 GetProjectEnvContentHintRedisRestAPIURL3 = GetProjectEnvContentHintRedisRestAPIURL3{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisRestAPIURL3, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintRedisRestAPIURL3 = &getProjectEnvContentHintRedisRestAPIURL3
-		u.Type = GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintRedisRestAPIURL3
-		return nil
-	}
+	switch dis.Type {
+	case "redis-url":
+		getProjectEnvContentHintRedisURL3 := new(GetProjectEnvContentHintRedisURL3)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisURL3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-url) type GetProjectEnvContentHintRedisURL3 within GetProjectEnvContentHintUnion3: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintRedisRestAPIToken3 GetProjectEnvContentHintRedisRestAPIToken3 = GetProjectEnvContentHintRedisRestAPIToken3{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisRestAPIToken3, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintRedisRestAPIToken3 = &getProjectEnvContentHintRedisRestAPIToken3
-		u.Type = GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintRedisRestAPIToken3
+		u.GetProjectEnvContentHintRedisURL3 = getProjectEnvContentHintRedisURL3
+		u.Type = GetProjectEnvContentHintUnion3TypeRedisURL
 		return nil
-	}
+	case "redis-rest-api-url":
+		getProjectEnvContentHintRedisRestAPIURL3 := new(GetProjectEnvContentHintRedisRestAPIURL3)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisRestAPIURL3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-rest-api-url) type GetProjectEnvContentHintRedisRestAPIURL3 within GetProjectEnvContentHintUnion3: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintRedisRestAPIReadOnlyToken3 GetProjectEnvContentHintRedisRestAPIReadOnlyToken3 = GetProjectEnvContentHintRedisRestAPIReadOnlyToken3{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisRestAPIReadOnlyToken3, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintRedisRestAPIReadOnlyToken3 = &getProjectEnvContentHintRedisRestAPIReadOnlyToken3
-		u.Type = GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintRedisRestAPIReadOnlyToken3
+		u.GetProjectEnvContentHintRedisRestAPIURL3 = getProjectEnvContentHintRedisRestAPIURL3
+		u.Type = GetProjectEnvContentHintUnion3TypeRedisRestAPIURL
 		return nil
-	}
+	case "redis-rest-api-token":
+		getProjectEnvContentHintRedisRestAPIToken3 := new(GetProjectEnvContentHintRedisRestAPIToken3)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisRestAPIToken3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-rest-api-token) type GetProjectEnvContentHintRedisRestAPIToken3 within GetProjectEnvContentHintUnion3: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintBlobReadWriteToken3 GetProjectEnvContentHintBlobReadWriteToken3 = GetProjectEnvContentHintBlobReadWriteToken3{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintBlobReadWriteToken3, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintBlobReadWriteToken3 = &getProjectEnvContentHintBlobReadWriteToken3
-		u.Type = GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintBlobReadWriteToken3
+		u.GetProjectEnvContentHintRedisRestAPIToken3 = getProjectEnvContentHintRedisRestAPIToken3
+		u.Type = GetProjectEnvContentHintUnion3TypeRedisRestAPIToken
 		return nil
-	}
+	case "redis-rest-api-read-only-token":
+		getProjectEnvContentHintRedisRestAPIReadOnlyToken3 := new(GetProjectEnvContentHintRedisRestAPIReadOnlyToken3)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisRestAPIReadOnlyToken3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-rest-api-read-only-token) type GetProjectEnvContentHintRedisRestAPIReadOnlyToken3 within GetProjectEnvContentHintUnion3: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintPostgresURL3 GetProjectEnvContentHintPostgresURL3 = GetProjectEnvContentHintPostgresURL3{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresURL3, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintPostgresURL3 = &getProjectEnvContentHintPostgresURL3
-		u.Type = GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresURL3
+		u.GetProjectEnvContentHintRedisRestAPIReadOnlyToken3 = getProjectEnvContentHintRedisRestAPIReadOnlyToken3
+		u.Type = GetProjectEnvContentHintUnion3TypeRedisRestAPIReadOnlyToken
 		return nil
-	}
+	case "blob-read-write-token":
+		getProjectEnvContentHintBlobReadWriteToken3 := new(GetProjectEnvContentHintBlobReadWriteToken3)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintBlobReadWriteToken3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == blob-read-write-token) type GetProjectEnvContentHintBlobReadWriteToken3 within GetProjectEnvContentHintUnion3: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintPostgresURLNonPooling3 GetProjectEnvContentHintPostgresURLNonPooling3 = GetProjectEnvContentHintPostgresURLNonPooling3{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresURLNonPooling3, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintPostgresURLNonPooling3 = &getProjectEnvContentHintPostgresURLNonPooling3
-		u.Type = GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresURLNonPooling3
+		u.GetProjectEnvContentHintBlobReadWriteToken3 = getProjectEnvContentHintBlobReadWriteToken3
+		u.Type = GetProjectEnvContentHintUnion3TypeBlobReadWriteToken
 		return nil
-	}
+	case "postgres-url":
+		getProjectEnvContentHintPostgresURL3 := new(GetProjectEnvContentHintPostgresURL3)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresURL3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-url) type GetProjectEnvContentHintPostgresURL3 within GetProjectEnvContentHintUnion3: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintPostgresPrismaURL3 GetProjectEnvContentHintPostgresPrismaURL3 = GetProjectEnvContentHintPostgresPrismaURL3{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresPrismaURL3, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintPostgresPrismaURL3 = &getProjectEnvContentHintPostgresPrismaURL3
-		u.Type = GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresPrismaURL3
+		u.GetProjectEnvContentHintPostgresURL3 = getProjectEnvContentHintPostgresURL3
+		u.Type = GetProjectEnvContentHintUnion3TypePostgresURL
 		return nil
-	}
+	case "postgres-url-non-pooling":
+		getProjectEnvContentHintPostgresURLNonPooling3 := new(GetProjectEnvContentHintPostgresURLNonPooling3)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresURLNonPooling3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-url-non-pooling) type GetProjectEnvContentHintPostgresURLNonPooling3 within GetProjectEnvContentHintUnion3: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintPostgresUser3 GetProjectEnvContentHintPostgresUser3 = GetProjectEnvContentHintPostgresUser3{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresUser3, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintPostgresUser3 = &getProjectEnvContentHintPostgresUser3
-		u.Type = GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresUser3
+		u.GetProjectEnvContentHintPostgresURLNonPooling3 = getProjectEnvContentHintPostgresURLNonPooling3
+		u.Type = GetProjectEnvContentHintUnion3TypePostgresURLNonPooling
 		return nil
-	}
+	case "postgres-prisma-url":
+		getProjectEnvContentHintPostgresPrismaURL3 := new(GetProjectEnvContentHintPostgresPrismaURL3)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresPrismaURL3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-prisma-url) type GetProjectEnvContentHintPostgresPrismaURL3 within GetProjectEnvContentHintUnion3: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintPostgresHost3 GetProjectEnvContentHintPostgresHost3 = GetProjectEnvContentHintPostgresHost3{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresHost3, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintPostgresHost3 = &getProjectEnvContentHintPostgresHost3
-		u.Type = GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresHost3
+		u.GetProjectEnvContentHintPostgresPrismaURL3 = getProjectEnvContentHintPostgresPrismaURL3
+		u.Type = GetProjectEnvContentHintUnion3TypePostgresPrismaURL
 		return nil
-	}
+	case "postgres-user":
+		getProjectEnvContentHintPostgresUser3 := new(GetProjectEnvContentHintPostgresUser3)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresUser3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-user) type GetProjectEnvContentHintPostgresUser3 within GetProjectEnvContentHintUnion3: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintPostgresPassword3 GetProjectEnvContentHintPostgresPassword3 = GetProjectEnvContentHintPostgresPassword3{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresPassword3, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintPostgresPassword3 = &getProjectEnvContentHintPostgresPassword3
-		u.Type = GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresPassword3
+		u.GetProjectEnvContentHintPostgresUser3 = getProjectEnvContentHintPostgresUser3
+		u.Type = GetProjectEnvContentHintUnion3TypePostgresUser
 		return nil
-	}
+	case "postgres-host":
+		getProjectEnvContentHintPostgresHost3 := new(GetProjectEnvContentHintPostgresHost3)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresHost3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-host) type GetProjectEnvContentHintPostgresHost3 within GetProjectEnvContentHintUnion3: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintPostgresDatabase3 GetProjectEnvContentHintPostgresDatabase3 = GetProjectEnvContentHintPostgresDatabase3{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresDatabase3, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintPostgresDatabase3 = &getProjectEnvContentHintPostgresDatabase3
-		u.Type = GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresDatabase3
+		u.GetProjectEnvContentHintPostgresHost3 = getProjectEnvContentHintPostgresHost3
+		u.Type = GetProjectEnvContentHintUnion3TypePostgresHost
 		return nil
-	}
+	case "postgres-password":
+		getProjectEnvContentHintPostgresPassword3 := new(GetProjectEnvContentHintPostgresPassword3)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresPassword3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-password) type GetProjectEnvContentHintPostgresPassword3 within GetProjectEnvContentHintUnion3: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintPostgresURLNoSsl3 GetProjectEnvContentHintPostgresURLNoSsl3 = GetProjectEnvContentHintPostgresURLNoSsl3{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresURLNoSsl3, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintPostgresURLNoSsl3 = &getProjectEnvContentHintPostgresURLNoSsl3
-		u.Type = GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintPostgresURLNoSsl3
+		u.GetProjectEnvContentHintPostgresPassword3 = getProjectEnvContentHintPostgresPassword3
+		u.Type = GetProjectEnvContentHintUnion3TypePostgresPassword
 		return nil
-	}
+	case "postgres-database":
+		getProjectEnvContentHintPostgresDatabase3 := new(GetProjectEnvContentHintPostgresDatabase3)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresDatabase3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-database) type GetProjectEnvContentHintPostgresDatabase3 within GetProjectEnvContentHintUnion3: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintFlagsConnectionString3 GetProjectEnvContentHintFlagsConnectionString3 = GetProjectEnvContentHintFlagsConnectionString3{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintFlagsConnectionString3, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintFlagsConnectionString3 = &getProjectEnvContentHintFlagsConnectionString3
-		u.Type = GetProjectEnvContentHintUnion3TypeGetProjectEnvContentHintFlagsConnectionString3
+		u.GetProjectEnvContentHintPostgresDatabase3 = getProjectEnvContentHintPostgresDatabase3
+		u.Type = GetProjectEnvContentHintUnion3TypePostgresDatabase
+		return nil
+	case "postgres-url-no-ssl":
+		getProjectEnvContentHintPostgresURLNoSsl3 := new(GetProjectEnvContentHintPostgresURLNoSsl3)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresURLNoSsl3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-url-no-ssl) type GetProjectEnvContentHintPostgresURLNoSsl3 within GetProjectEnvContentHintUnion3: %w", string(data), err)
+		}
+
+		u.GetProjectEnvContentHintPostgresURLNoSsl3 = getProjectEnvContentHintPostgresURLNoSsl3
+		u.Type = GetProjectEnvContentHintUnion3TypePostgresURLNoSsl
+		return nil
+	case "integration-store-secret":
+		getProjectEnvContentHintIntegrationStoreSecret3 := new(GetProjectEnvContentHintIntegrationStoreSecret3)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintIntegrationStoreSecret3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == integration-store-secret) type GetProjectEnvContentHintIntegrationStoreSecret3 within GetProjectEnvContentHintUnion3: %w", string(data), err)
+		}
+
+		u.GetProjectEnvContentHintIntegrationStoreSecret3 = getProjectEnvContentHintIntegrationStoreSecret3
+		u.Type = GetProjectEnvContentHintUnion3TypeIntegrationStoreSecret
+		return nil
+	case "flags-connection-string":
+		getProjectEnvContentHintFlagsConnectionString3 := new(GetProjectEnvContentHintFlagsConnectionString3)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintFlagsConnectionString3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == flags-connection-string) type GetProjectEnvContentHintFlagsConnectionString3 within GetProjectEnvContentHintUnion3: %w", string(data), err)
+		}
+
+		u.GetProjectEnvContentHintFlagsConnectionString3 = getProjectEnvContentHintFlagsConnectionString3
+		u.Type = GetProjectEnvContentHintUnion3TypeFlagsConnectionString
 		return nil
 	}
 
@@ -1544,6 +1631,111 @@ func (o *GetProjectEnvResponseBody3) GetContentHint() *GetProjectEnvContentHintU
 		return nil
 	}
 	return o.ContentHint
+}
+
+func (o *GetProjectEnvResponseBody3) GetContentHintRedisURL() *GetProjectEnvContentHintRedisURL3 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintRedisURL3
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody3) GetContentHintRedisRestAPIURL() *GetProjectEnvContentHintRedisRestAPIURL3 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintRedisRestAPIURL3
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody3) GetContentHintRedisRestAPIToken() *GetProjectEnvContentHintRedisRestAPIToken3 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintRedisRestAPIToken3
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody3) GetContentHintRedisRestAPIReadOnlyToken() *GetProjectEnvContentHintRedisRestAPIReadOnlyToken3 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintRedisRestAPIReadOnlyToken3
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody3) GetContentHintBlobReadWriteToken() *GetProjectEnvContentHintBlobReadWriteToken3 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintBlobReadWriteToken3
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody3) GetContentHintPostgresURL() *GetProjectEnvContentHintPostgresURL3 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintPostgresURL3
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody3) GetContentHintPostgresURLNonPooling() *GetProjectEnvContentHintPostgresURLNonPooling3 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintPostgresURLNonPooling3
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody3) GetContentHintPostgresPrismaURL() *GetProjectEnvContentHintPostgresPrismaURL3 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintPostgresPrismaURL3
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody3) GetContentHintPostgresUser() *GetProjectEnvContentHintPostgresUser3 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintPostgresUser3
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody3) GetContentHintPostgresHost() *GetProjectEnvContentHintPostgresHost3 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintPostgresHost3
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody3) GetContentHintPostgresPassword() *GetProjectEnvContentHintPostgresPassword3 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintPostgresPassword3
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody3) GetContentHintPostgresDatabase() *GetProjectEnvContentHintPostgresDatabase3 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintPostgresDatabase3
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody3) GetContentHintPostgresURLNoSsl() *GetProjectEnvContentHintPostgresURLNoSsl3 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintPostgresURLNoSsl3
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody3) GetContentHintIntegrationStoreSecret() *GetProjectEnvContentHintIntegrationStoreSecret3 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintIntegrationStoreSecret3
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody3) GetContentHintFlagsConnectionString() *GetProjectEnvContentHintFlagsConnectionString3 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintFlagsConnectionString3
+	}
+	return nil
 }
 
 func (o *GetProjectEnvResponseBody3) GetInternalContentHint() *GetProjectEnvInternalContentHint3 {
@@ -2545,21 +2737,21 @@ func (o *GetProjectEnvContentHintRedisURL2) GetStoreID() string {
 type GetProjectEnvContentHintUnion2Type string
 
 const (
-	GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintRedisURL2                  GetProjectEnvContentHintUnion2Type = "getProjectEnv_contentHint_RedisURL_2"
-	GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintRedisRestAPIURL2           GetProjectEnvContentHintUnion2Type = "getProjectEnv_contentHint_RedisRestAPIURL_2"
-	GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintRedisRestAPIToken2         GetProjectEnvContentHintUnion2Type = "getProjectEnv_contentHint_RedisRestAPIToken_2"
-	GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintRedisRestAPIReadOnlyToken2 GetProjectEnvContentHintUnion2Type = "getProjectEnv_contentHint_RedisRestAPIReadOnlyToken_2"
-	GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintBlobReadWriteToken2        GetProjectEnvContentHintUnion2Type = "getProjectEnv_contentHint_BlobReadWriteToken_2"
-	GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresURL2               GetProjectEnvContentHintUnion2Type = "getProjectEnv_contentHint_PostgresURL_2"
-	GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresURLNonPooling2     GetProjectEnvContentHintUnion2Type = "getProjectEnv_contentHint_PostgresURLNonPooling_2"
-	GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresPrismaURL2         GetProjectEnvContentHintUnion2Type = "getProjectEnv_contentHint_PostgresPrismaURL_2"
-	GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresUser2              GetProjectEnvContentHintUnion2Type = "getProjectEnv_contentHint_PostgresUser_2"
-	GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresHost2              GetProjectEnvContentHintUnion2Type = "getProjectEnv_contentHint_PostgresHost_2"
-	GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresPassword2          GetProjectEnvContentHintUnion2Type = "getProjectEnv_contentHint_PostgresPassword_2"
-	GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresDatabase2          GetProjectEnvContentHintUnion2Type = "getProjectEnv_contentHint_PostgresDatabase_2"
-	GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresURLNoSsl2          GetProjectEnvContentHintUnion2Type = "getProjectEnv_contentHint_PostgresURLNoSsl_2"
-	GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintIntegrationStoreSecret2    GetProjectEnvContentHintUnion2Type = "getProjectEnv_contentHint_IntegrationStoreSecret_2"
-	GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintFlagsConnectionString2     GetProjectEnvContentHintUnion2Type = "getProjectEnv_contentHint_FlagsConnectionString_2"
+	GetProjectEnvContentHintUnion2TypeRedisURL                  GetProjectEnvContentHintUnion2Type = "redis-url"
+	GetProjectEnvContentHintUnion2TypeRedisRestAPIURL           GetProjectEnvContentHintUnion2Type = "redis-rest-api-url"
+	GetProjectEnvContentHintUnion2TypeRedisRestAPIToken         GetProjectEnvContentHintUnion2Type = "redis-rest-api-token"
+	GetProjectEnvContentHintUnion2TypeRedisRestAPIReadOnlyToken GetProjectEnvContentHintUnion2Type = "redis-rest-api-read-only-token"
+	GetProjectEnvContentHintUnion2TypeBlobReadWriteToken        GetProjectEnvContentHintUnion2Type = "blob-read-write-token"
+	GetProjectEnvContentHintUnion2TypePostgresURL               GetProjectEnvContentHintUnion2Type = "postgres-url"
+	GetProjectEnvContentHintUnion2TypePostgresURLNonPooling     GetProjectEnvContentHintUnion2Type = "postgres-url-non-pooling"
+	GetProjectEnvContentHintUnion2TypePostgresPrismaURL         GetProjectEnvContentHintUnion2Type = "postgres-prisma-url"
+	GetProjectEnvContentHintUnion2TypePostgresUser              GetProjectEnvContentHintUnion2Type = "postgres-user"
+	GetProjectEnvContentHintUnion2TypePostgresHost              GetProjectEnvContentHintUnion2Type = "postgres-host"
+	GetProjectEnvContentHintUnion2TypePostgresPassword          GetProjectEnvContentHintUnion2Type = "postgres-password"
+	GetProjectEnvContentHintUnion2TypePostgresDatabase          GetProjectEnvContentHintUnion2Type = "postgres-database"
+	GetProjectEnvContentHintUnion2TypePostgresURLNoSsl          GetProjectEnvContentHintUnion2Type = "postgres-url-no-ssl"
+	GetProjectEnvContentHintUnion2TypeIntegrationStoreSecret    GetProjectEnvContentHintUnion2Type = "integration-store-secret"
+	GetProjectEnvContentHintUnion2TypeFlagsConnectionString     GetProjectEnvContentHintUnion2Type = "flags-connection-string"
 )
 
 type GetProjectEnvContentHintUnion2 struct {
@@ -2582,245 +2774,332 @@ type GetProjectEnvContentHintUnion2 struct {
 	Type GetProjectEnvContentHintUnion2Type
 }
 
-func CreateGetProjectEnvContentHintUnion2GetProjectEnvContentHintRedisURL2(getProjectEnvContentHintRedisURL2 GetProjectEnvContentHintRedisURL2) GetProjectEnvContentHintUnion2 {
-	typ := GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintRedisURL2
+func CreateGetProjectEnvContentHintUnion2RedisURL(redisURL GetProjectEnvContentHintRedisURL2) GetProjectEnvContentHintUnion2 {
+	typ := GetProjectEnvContentHintUnion2TypeRedisURL
+
+	typStr := GetProjectEnvTypeRedisURL2(typ)
+	redisURL.Type = typStr
 
 	return GetProjectEnvContentHintUnion2{
-		GetProjectEnvContentHintRedisURL2: &getProjectEnvContentHintRedisURL2,
+		GetProjectEnvContentHintRedisURL2: &redisURL,
 		Type:                              typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion2GetProjectEnvContentHintRedisRestAPIURL2(getProjectEnvContentHintRedisRestAPIURL2 GetProjectEnvContentHintRedisRestAPIURL2) GetProjectEnvContentHintUnion2 {
-	typ := GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintRedisRestAPIURL2
+func CreateGetProjectEnvContentHintUnion2RedisRestAPIURL(redisRestAPIURL GetProjectEnvContentHintRedisRestAPIURL2) GetProjectEnvContentHintUnion2 {
+	typ := GetProjectEnvContentHintUnion2TypeRedisRestAPIURL
+
+	typStr := GetProjectEnvTypeRedisRestAPIURL2(typ)
+	redisRestAPIURL.Type = typStr
 
 	return GetProjectEnvContentHintUnion2{
-		GetProjectEnvContentHintRedisRestAPIURL2: &getProjectEnvContentHintRedisRestAPIURL2,
+		GetProjectEnvContentHintRedisRestAPIURL2: &redisRestAPIURL,
 		Type:                                     typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion2GetProjectEnvContentHintRedisRestAPIToken2(getProjectEnvContentHintRedisRestAPIToken2 GetProjectEnvContentHintRedisRestAPIToken2) GetProjectEnvContentHintUnion2 {
-	typ := GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintRedisRestAPIToken2
+func CreateGetProjectEnvContentHintUnion2RedisRestAPIToken(redisRestAPIToken GetProjectEnvContentHintRedisRestAPIToken2) GetProjectEnvContentHintUnion2 {
+	typ := GetProjectEnvContentHintUnion2TypeRedisRestAPIToken
+
+	typStr := GetProjectEnvTypeRedisRestAPIToken2(typ)
+	redisRestAPIToken.Type = typStr
 
 	return GetProjectEnvContentHintUnion2{
-		GetProjectEnvContentHintRedisRestAPIToken2: &getProjectEnvContentHintRedisRestAPIToken2,
+		GetProjectEnvContentHintRedisRestAPIToken2: &redisRestAPIToken,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion2GetProjectEnvContentHintRedisRestAPIReadOnlyToken2(getProjectEnvContentHintRedisRestAPIReadOnlyToken2 GetProjectEnvContentHintRedisRestAPIReadOnlyToken2) GetProjectEnvContentHintUnion2 {
-	typ := GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintRedisRestAPIReadOnlyToken2
+func CreateGetProjectEnvContentHintUnion2RedisRestAPIReadOnlyToken(redisRestAPIReadOnlyToken GetProjectEnvContentHintRedisRestAPIReadOnlyToken2) GetProjectEnvContentHintUnion2 {
+	typ := GetProjectEnvContentHintUnion2TypeRedisRestAPIReadOnlyToken
+
+	typStr := GetProjectEnvTypeRedisRestAPIReadOnlyToken2(typ)
+	redisRestAPIReadOnlyToken.Type = typStr
 
 	return GetProjectEnvContentHintUnion2{
-		GetProjectEnvContentHintRedisRestAPIReadOnlyToken2: &getProjectEnvContentHintRedisRestAPIReadOnlyToken2,
+		GetProjectEnvContentHintRedisRestAPIReadOnlyToken2: &redisRestAPIReadOnlyToken,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion2GetProjectEnvContentHintBlobReadWriteToken2(getProjectEnvContentHintBlobReadWriteToken2 GetProjectEnvContentHintBlobReadWriteToken2) GetProjectEnvContentHintUnion2 {
-	typ := GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintBlobReadWriteToken2
+func CreateGetProjectEnvContentHintUnion2BlobReadWriteToken(blobReadWriteToken GetProjectEnvContentHintBlobReadWriteToken2) GetProjectEnvContentHintUnion2 {
+	typ := GetProjectEnvContentHintUnion2TypeBlobReadWriteToken
+
+	typStr := GetProjectEnvTypeBlobReadWriteToken2(typ)
+	blobReadWriteToken.Type = typStr
 
 	return GetProjectEnvContentHintUnion2{
-		GetProjectEnvContentHintBlobReadWriteToken2: &getProjectEnvContentHintBlobReadWriteToken2,
+		GetProjectEnvContentHintBlobReadWriteToken2: &blobReadWriteToken,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion2GetProjectEnvContentHintPostgresURL2(getProjectEnvContentHintPostgresURL2 GetProjectEnvContentHintPostgresURL2) GetProjectEnvContentHintUnion2 {
-	typ := GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresURL2
+func CreateGetProjectEnvContentHintUnion2PostgresURL(postgresURL GetProjectEnvContentHintPostgresURL2) GetProjectEnvContentHintUnion2 {
+	typ := GetProjectEnvContentHintUnion2TypePostgresURL
+
+	typStr := GetProjectEnvTypePostgresURL2(typ)
+	postgresURL.Type = typStr
 
 	return GetProjectEnvContentHintUnion2{
-		GetProjectEnvContentHintPostgresURL2: &getProjectEnvContentHintPostgresURL2,
+		GetProjectEnvContentHintPostgresURL2: &postgresURL,
 		Type:                                 typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion2GetProjectEnvContentHintPostgresURLNonPooling2(getProjectEnvContentHintPostgresURLNonPooling2 GetProjectEnvContentHintPostgresURLNonPooling2) GetProjectEnvContentHintUnion2 {
-	typ := GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresURLNonPooling2
+func CreateGetProjectEnvContentHintUnion2PostgresURLNonPooling(postgresURLNonPooling GetProjectEnvContentHintPostgresURLNonPooling2) GetProjectEnvContentHintUnion2 {
+	typ := GetProjectEnvContentHintUnion2TypePostgresURLNonPooling
+
+	typStr := GetProjectEnvTypePostgresURLNonPooling2(typ)
+	postgresURLNonPooling.Type = typStr
 
 	return GetProjectEnvContentHintUnion2{
-		GetProjectEnvContentHintPostgresURLNonPooling2: &getProjectEnvContentHintPostgresURLNonPooling2,
+		GetProjectEnvContentHintPostgresURLNonPooling2: &postgresURLNonPooling,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion2GetProjectEnvContentHintPostgresPrismaURL2(getProjectEnvContentHintPostgresPrismaURL2 GetProjectEnvContentHintPostgresPrismaURL2) GetProjectEnvContentHintUnion2 {
-	typ := GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresPrismaURL2
+func CreateGetProjectEnvContentHintUnion2PostgresPrismaURL(postgresPrismaURL GetProjectEnvContentHintPostgresPrismaURL2) GetProjectEnvContentHintUnion2 {
+	typ := GetProjectEnvContentHintUnion2TypePostgresPrismaURL
+
+	typStr := GetProjectEnvTypePostgresPrismaURL2(typ)
+	postgresPrismaURL.Type = typStr
 
 	return GetProjectEnvContentHintUnion2{
-		GetProjectEnvContentHintPostgresPrismaURL2: &getProjectEnvContentHintPostgresPrismaURL2,
+		GetProjectEnvContentHintPostgresPrismaURL2: &postgresPrismaURL,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion2GetProjectEnvContentHintPostgresUser2(getProjectEnvContentHintPostgresUser2 GetProjectEnvContentHintPostgresUser2) GetProjectEnvContentHintUnion2 {
-	typ := GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresUser2
+func CreateGetProjectEnvContentHintUnion2PostgresUser(postgresUser GetProjectEnvContentHintPostgresUser2) GetProjectEnvContentHintUnion2 {
+	typ := GetProjectEnvContentHintUnion2TypePostgresUser
+
+	typStr := GetProjectEnvTypePostgresUser2(typ)
+	postgresUser.Type = typStr
 
 	return GetProjectEnvContentHintUnion2{
-		GetProjectEnvContentHintPostgresUser2: &getProjectEnvContentHintPostgresUser2,
+		GetProjectEnvContentHintPostgresUser2: &postgresUser,
 		Type:                                  typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion2GetProjectEnvContentHintPostgresHost2(getProjectEnvContentHintPostgresHost2 GetProjectEnvContentHintPostgresHost2) GetProjectEnvContentHintUnion2 {
-	typ := GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresHost2
+func CreateGetProjectEnvContentHintUnion2PostgresHost(postgresHost GetProjectEnvContentHintPostgresHost2) GetProjectEnvContentHintUnion2 {
+	typ := GetProjectEnvContentHintUnion2TypePostgresHost
+
+	typStr := GetProjectEnvTypePostgresHost2(typ)
+	postgresHost.Type = typStr
 
 	return GetProjectEnvContentHintUnion2{
-		GetProjectEnvContentHintPostgresHost2: &getProjectEnvContentHintPostgresHost2,
+		GetProjectEnvContentHintPostgresHost2: &postgresHost,
 		Type:                                  typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion2GetProjectEnvContentHintPostgresPassword2(getProjectEnvContentHintPostgresPassword2 GetProjectEnvContentHintPostgresPassword2) GetProjectEnvContentHintUnion2 {
-	typ := GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresPassword2
+func CreateGetProjectEnvContentHintUnion2PostgresPassword(postgresPassword GetProjectEnvContentHintPostgresPassword2) GetProjectEnvContentHintUnion2 {
+	typ := GetProjectEnvContentHintUnion2TypePostgresPassword
+
+	typStr := GetProjectEnvTypePostgresPassword2(typ)
+	postgresPassword.Type = typStr
 
 	return GetProjectEnvContentHintUnion2{
-		GetProjectEnvContentHintPostgresPassword2: &getProjectEnvContentHintPostgresPassword2,
+		GetProjectEnvContentHintPostgresPassword2: &postgresPassword,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion2GetProjectEnvContentHintPostgresDatabase2(getProjectEnvContentHintPostgresDatabase2 GetProjectEnvContentHintPostgresDatabase2) GetProjectEnvContentHintUnion2 {
-	typ := GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresDatabase2
+func CreateGetProjectEnvContentHintUnion2PostgresDatabase(postgresDatabase GetProjectEnvContentHintPostgresDatabase2) GetProjectEnvContentHintUnion2 {
+	typ := GetProjectEnvContentHintUnion2TypePostgresDatabase
+
+	typStr := GetProjectEnvTypePostgresDatabase2(typ)
+	postgresDatabase.Type = typStr
 
 	return GetProjectEnvContentHintUnion2{
-		GetProjectEnvContentHintPostgresDatabase2: &getProjectEnvContentHintPostgresDatabase2,
+		GetProjectEnvContentHintPostgresDatabase2: &postgresDatabase,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion2GetProjectEnvContentHintPostgresURLNoSsl2(getProjectEnvContentHintPostgresURLNoSsl2 GetProjectEnvContentHintPostgresURLNoSsl2) GetProjectEnvContentHintUnion2 {
-	typ := GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresURLNoSsl2
+func CreateGetProjectEnvContentHintUnion2PostgresURLNoSsl(postgresURLNoSsl GetProjectEnvContentHintPostgresURLNoSsl2) GetProjectEnvContentHintUnion2 {
+	typ := GetProjectEnvContentHintUnion2TypePostgresURLNoSsl
+
+	typStr := GetProjectEnvTypePostgresURLNoSsl2(typ)
+	postgresURLNoSsl.Type = typStr
 
 	return GetProjectEnvContentHintUnion2{
-		GetProjectEnvContentHintPostgresURLNoSsl2: &getProjectEnvContentHintPostgresURLNoSsl2,
+		GetProjectEnvContentHintPostgresURLNoSsl2: &postgresURLNoSsl,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion2GetProjectEnvContentHintIntegrationStoreSecret2(getProjectEnvContentHintIntegrationStoreSecret2 GetProjectEnvContentHintIntegrationStoreSecret2) GetProjectEnvContentHintUnion2 {
-	typ := GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintIntegrationStoreSecret2
+func CreateGetProjectEnvContentHintUnion2IntegrationStoreSecret(integrationStoreSecret GetProjectEnvContentHintIntegrationStoreSecret2) GetProjectEnvContentHintUnion2 {
+	typ := GetProjectEnvContentHintUnion2TypeIntegrationStoreSecret
+
+	typStr := GetProjectEnvTypeIntegrationStoreSecret2(typ)
+	integrationStoreSecret.Type = typStr
 
 	return GetProjectEnvContentHintUnion2{
-		GetProjectEnvContentHintIntegrationStoreSecret2: &getProjectEnvContentHintIntegrationStoreSecret2,
+		GetProjectEnvContentHintIntegrationStoreSecret2: &integrationStoreSecret,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion2GetProjectEnvContentHintFlagsConnectionString2(getProjectEnvContentHintFlagsConnectionString2 GetProjectEnvContentHintFlagsConnectionString2) GetProjectEnvContentHintUnion2 {
-	typ := GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintFlagsConnectionString2
+func CreateGetProjectEnvContentHintUnion2FlagsConnectionString(flagsConnectionString GetProjectEnvContentHintFlagsConnectionString2) GetProjectEnvContentHintUnion2 {
+	typ := GetProjectEnvContentHintUnion2TypeFlagsConnectionString
+
+	typStr := GetProjectEnvTypeFlagsConnectionString2(typ)
+	flagsConnectionString.Type = typStr
 
 	return GetProjectEnvContentHintUnion2{
-		GetProjectEnvContentHintFlagsConnectionString2: &getProjectEnvContentHintFlagsConnectionString2,
+		GetProjectEnvContentHintFlagsConnectionString2: &flagsConnectionString,
 		Type: typ,
 	}
 }
 
 func (u *GetProjectEnvContentHintUnion2) UnmarshalJSON(data []byte) error {
 
-	var getProjectEnvContentHintIntegrationStoreSecret2 GetProjectEnvContentHintIntegrationStoreSecret2 = GetProjectEnvContentHintIntegrationStoreSecret2{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintIntegrationStoreSecret2, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintIntegrationStoreSecret2 = &getProjectEnvContentHintIntegrationStoreSecret2
-		u.Type = GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintIntegrationStoreSecret2
-		return nil
+	type discriminator struct {
+		Type string `json:"type"`
 	}
 
-	var getProjectEnvContentHintRedisURL2 GetProjectEnvContentHintRedisURL2 = GetProjectEnvContentHintRedisURL2{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisURL2, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintRedisURL2 = &getProjectEnvContentHintRedisURL2
-		u.Type = GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintRedisURL2
-		return nil
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
 	}
 
-	var getProjectEnvContentHintRedisRestAPIURL2 GetProjectEnvContentHintRedisRestAPIURL2 = GetProjectEnvContentHintRedisRestAPIURL2{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisRestAPIURL2, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintRedisRestAPIURL2 = &getProjectEnvContentHintRedisRestAPIURL2
-		u.Type = GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintRedisRestAPIURL2
-		return nil
-	}
+	switch dis.Type {
+	case "redis-url":
+		getProjectEnvContentHintRedisURL2 := new(GetProjectEnvContentHintRedisURL2)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisURL2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-url) type GetProjectEnvContentHintRedisURL2 within GetProjectEnvContentHintUnion2: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintRedisRestAPIToken2 GetProjectEnvContentHintRedisRestAPIToken2 = GetProjectEnvContentHintRedisRestAPIToken2{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisRestAPIToken2, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintRedisRestAPIToken2 = &getProjectEnvContentHintRedisRestAPIToken2
-		u.Type = GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintRedisRestAPIToken2
+		u.GetProjectEnvContentHintRedisURL2 = getProjectEnvContentHintRedisURL2
+		u.Type = GetProjectEnvContentHintUnion2TypeRedisURL
 		return nil
-	}
+	case "redis-rest-api-url":
+		getProjectEnvContentHintRedisRestAPIURL2 := new(GetProjectEnvContentHintRedisRestAPIURL2)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisRestAPIURL2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-rest-api-url) type GetProjectEnvContentHintRedisRestAPIURL2 within GetProjectEnvContentHintUnion2: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintRedisRestAPIReadOnlyToken2 GetProjectEnvContentHintRedisRestAPIReadOnlyToken2 = GetProjectEnvContentHintRedisRestAPIReadOnlyToken2{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisRestAPIReadOnlyToken2, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintRedisRestAPIReadOnlyToken2 = &getProjectEnvContentHintRedisRestAPIReadOnlyToken2
-		u.Type = GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintRedisRestAPIReadOnlyToken2
+		u.GetProjectEnvContentHintRedisRestAPIURL2 = getProjectEnvContentHintRedisRestAPIURL2
+		u.Type = GetProjectEnvContentHintUnion2TypeRedisRestAPIURL
 		return nil
-	}
+	case "redis-rest-api-token":
+		getProjectEnvContentHintRedisRestAPIToken2 := new(GetProjectEnvContentHintRedisRestAPIToken2)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisRestAPIToken2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-rest-api-token) type GetProjectEnvContentHintRedisRestAPIToken2 within GetProjectEnvContentHintUnion2: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintBlobReadWriteToken2 GetProjectEnvContentHintBlobReadWriteToken2 = GetProjectEnvContentHintBlobReadWriteToken2{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintBlobReadWriteToken2, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintBlobReadWriteToken2 = &getProjectEnvContentHintBlobReadWriteToken2
-		u.Type = GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintBlobReadWriteToken2
+		u.GetProjectEnvContentHintRedisRestAPIToken2 = getProjectEnvContentHintRedisRestAPIToken2
+		u.Type = GetProjectEnvContentHintUnion2TypeRedisRestAPIToken
 		return nil
-	}
+	case "redis-rest-api-read-only-token":
+		getProjectEnvContentHintRedisRestAPIReadOnlyToken2 := new(GetProjectEnvContentHintRedisRestAPIReadOnlyToken2)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisRestAPIReadOnlyToken2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-rest-api-read-only-token) type GetProjectEnvContentHintRedisRestAPIReadOnlyToken2 within GetProjectEnvContentHintUnion2: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintPostgresURL2 GetProjectEnvContentHintPostgresURL2 = GetProjectEnvContentHintPostgresURL2{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresURL2, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintPostgresURL2 = &getProjectEnvContentHintPostgresURL2
-		u.Type = GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresURL2
+		u.GetProjectEnvContentHintRedisRestAPIReadOnlyToken2 = getProjectEnvContentHintRedisRestAPIReadOnlyToken2
+		u.Type = GetProjectEnvContentHintUnion2TypeRedisRestAPIReadOnlyToken
 		return nil
-	}
+	case "blob-read-write-token":
+		getProjectEnvContentHintBlobReadWriteToken2 := new(GetProjectEnvContentHintBlobReadWriteToken2)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintBlobReadWriteToken2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == blob-read-write-token) type GetProjectEnvContentHintBlobReadWriteToken2 within GetProjectEnvContentHintUnion2: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintPostgresURLNonPooling2 GetProjectEnvContentHintPostgresURLNonPooling2 = GetProjectEnvContentHintPostgresURLNonPooling2{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresURLNonPooling2, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintPostgresURLNonPooling2 = &getProjectEnvContentHintPostgresURLNonPooling2
-		u.Type = GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresURLNonPooling2
+		u.GetProjectEnvContentHintBlobReadWriteToken2 = getProjectEnvContentHintBlobReadWriteToken2
+		u.Type = GetProjectEnvContentHintUnion2TypeBlobReadWriteToken
 		return nil
-	}
+	case "postgres-url":
+		getProjectEnvContentHintPostgresURL2 := new(GetProjectEnvContentHintPostgresURL2)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresURL2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-url) type GetProjectEnvContentHintPostgresURL2 within GetProjectEnvContentHintUnion2: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintPostgresPrismaURL2 GetProjectEnvContentHintPostgresPrismaURL2 = GetProjectEnvContentHintPostgresPrismaURL2{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresPrismaURL2, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintPostgresPrismaURL2 = &getProjectEnvContentHintPostgresPrismaURL2
-		u.Type = GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresPrismaURL2
+		u.GetProjectEnvContentHintPostgresURL2 = getProjectEnvContentHintPostgresURL2
+		u.Type = GetProjectEnvContentHintUnion2TypePostgresURL
 		return nil
-	}
+	case "postgres-url-non-pooling":
+		getProjectEnvContentHintPostgresURLNonPooling2 := new(GetProjectEnvContentHintPostgresURLNonPooling2)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresURLNonPooling2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-url-non-pooling) type GetProjectEnvContentHintPostgresURLNonPooling2 within GetProjectEnvContentHintUnion2: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintPostgresUser2 GetProjectEnvContentHintPostgresUser2 = GetProjectEnvContentHintPostgresUser2{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresUser2, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintPostgresUser2 = &getProjectEnvContentHintPostgresUser2
-		u.Type = GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresUser2
+		u.GetProjectEnvContentHintPostgresURLNonPooling2 = getProjectEnvContentHintPostgresURLNonPooling2
+		u.Type = GetProjectEnvContentHintUnion2TypePostgresURLNonPooling
 		return nil
-	}
+	case "postgres-prisma-url":
+		getProjectEnvContentHintPostgresPrismaURL2 := new(GetProjectEnvContentHintPostgresPrismaURL2)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresPrismaURL2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-prisma-url) type GetProjectEnvContentHintPostgresPrismaURL2 within GetProjectEnvContentHintUnion2: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintPostgresHost2 GetProjectEnvContentHintPostgresHost2 = GetProjectEnvContentHintPostgresHost2{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresHost2, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintPostgresHost2 = &getProjectEnvContentHintPostgresHost2
-		u.Type = GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresHost2
+		u.GetProjectEnvContentHintPostgresPrismaURL2 = getProjectEnvContentHintPostgresPrismaURL2
+		u.Type = GetProjectEnvContentHintUnion2TypePostgresPrismaURL
 		return nil
-	}
+	case "postgres-user":
+		getProjectEnvContentHintPostgresUser2 := new(GetProjectEnvContentHintPostgresUser2)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresUser2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-user) type GetProjectEnvContentHintPostgresUser2 within GetProjectEnvContentHintUnion2: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintPostgresPassword2 GetProjectEnvContentHintPostgresPassword2 = GetProjectEnvContentHintPostgresPassword2{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresPassword2, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintPostgresPassword2 = &getProjectEnvContentHintPostgresPassword2
-		u.Type = GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresPassword2
+		u.GetProjectEnvContentHintPostgresUser2 = getProjectEnvContentHintPostgresUser2
+		u.Type = GetProjectEnvContentHintUnion2TypePostgresUser
 		return nil
-	}
+	case "postgres-host":
+		getProjectEnvContentHintPostgresHost2 := new(GetProjectEnvContentHintPostgresHost2)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresHost2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-host) type GetProjectEnvContentHintPostgresHost2 within GetProjectEnvContentHintUnion2: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintPostgresDatabase2 GetProjectEnvContentHintPostgresDatabase2 = GetProjectEnvContentHintPostgresDatabase2{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresDatabase2, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintPostgresDatabase2 = &getProjectEnvContentHintPostgresDatabase2
-		u.Type = GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresDatabase2
+		u.GetProjectEnvContentHintPostgresHost2 = getProjectEnvContentHintPostgresHost2
+		u.Type = GetProjectEnvContentHintUnion2TypePostgresHost
 		return nil
-	}
+	case "postgres-password":
+		getProjectEnvContentHintPostgresPassword2 := new(GetProjectEnvContentHintPostgresPassword2)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresPassword2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-password) type GetProjectEnvContentHintPostgresPassword2 within GetProjectEnvContentHintUnion2: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintPostgresURLNoSsl2 GetProjectEnvContentHintPostgresURLNoSsl2 = GetProjectEnvContentHintPostgresURLNoSsl2{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresURLNoSsl2, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintPostgresURLNoSsl2 = &getProjectEnvContentHintPostgresURLNoSsl2
-		u.Type = GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintPostgresURLNoSsl2
+		u.GetProjectEnvContentHintPostgresPassword2 = getProjectEnvContentHintPostgresPassword2
+		u.Type = GetProjectEnvContentHintUnion2TypePostgresPassword
 		return nil
-	}
+	case "postgres-database":
+		getProjectEnvContentHintPostgresDatabase2 := new(GetProjectEnvContentHintPostgresDatabase2)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresDatabase2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-database) type GetProjectEnvContentHintPostgresDatabase2 within GetProjectEnvContentHintUnion2: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintFlagsConnectionString2 GetProjectEnvContentHintFlagsConnectionString2 = GetProjectEnvContentHintFlagsConnectionString2{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintFlagsConnectionString2, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintFlagsConnectionString2 = &getProjectEnvContentHintFlagsConnectionString2
-		u.Type = GetProjectEnvContentHintUnion2TypeGetProjectEnvContentHintFlagsConnectionString2
+		u.GetProjectEnvContentHintPostgresDatabase2 = getProjectEnvContentHintPostgresDatabase2
+		u.Type = GetProjectEnvContentHintUnion2TypePostgresDatabase
+		return nil
+	case "postgres-url-no-ssl":
+		getProjectEnvContentHintPostgresURLNoSsl2 := new(GetProjectEnvContentHintPostgresURLNoSsl2)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresURLNoSsl2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-url-no-ssl) type GetProjectEnvContentHintPostgresURLNoSsl2 within GetProjectEnvContentHintUnion2: %w", string(data), err)
+		}
+
+		u.GetProjectEnvContentHintPostgresURLNoSsl2 = getProjectEnvContentHintPostgresURLNoSsl2
+		u.Type = GetProjectEnvContentHintUnion2TypePostgresURLNoSsl
+		return nil
+	case "integration-store-secret":
+		getProjectEnvContentHintIntegrationStoreSecret2 := new(GetProjectEnvContentHintIntegrationStoreSecret2)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintIntegrationStoreSecret2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == integration-store-secret) type GetProjectEnvContentHintIntegrationStoreSecret2 within GetProjectEnvContentHintUnion2: %w", string(data), err)
+		}
+
+		u.GetProjectEnvContentHintIntegrationStoreSecret2 = getProjectEnvContentHintIntegrationStoreSecret2
+		u.Type = GetProjectEnvContentHintUnion2TypeIntegrationStoreSecret
+		return nil
+	case "flags-connection-string":
+		getProjectEnvContentHintFlagsConnectionString2 := new(GetProjectEnvContentHintFlagsConnectionString2)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintFlagsConnectionString2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == flags-connection-string) type GetProjectEnvContentHintFlagsConnectionString2 within GetProjectEnvContentHintUnion2: %w", string(data), err)
+		}
+
+		u.GetProjectEnvContentHintFlagsConnectionString2 = getProjectEnvContentHintFlagsConnectionString2
+		u.Type = GetProjectEnvContentHintUnion2TypeFlagsConnectionString
 		return nil
 	}
 
@@ -3099,6 +3378,111 @@ func (o *GetProjectEnvResponseBody2) GetContentHint() *GetProjectEnvContentHintU
 		return nil
 	}
 	return o.ContentHint
+}
+
+func (o *GetProjectEnvResponseBody2) GetContentHintRedisURL() *GetProjectEnvContentHintRedisURL2 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintRedisURL2
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody2) GetContentHintRedisRestAPIURL() *GetProjectEnvContentHintRedisRestAPIURL2 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintRedisRestAPIURL2
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody2) GetContentHintRedisRestAPIToken() *GetProjectEnvContentHintRedisRestAPIToken2 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintRedisRestAPIToken2
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody2) GetContentHintRedisRestAPIReadOnlyToken() *GetProjectEnvContentHintRedisRestAPIReadOnlyToken2 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintRedisRestAPIReadOnlyToken2
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody2) GetContentHintBlobReadWriteToken() *GetProjectEnvContentHintBlobReadWriteToken2 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintBlobReadWriteToken2
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody2) GetContentHintPostgresURL() *GetProjectEnvContentHintPostgresURL2 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintPostgresURL2
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody2) GetContentHintPostgresURLNonPooling() *GetProjectEnvContentHintPostgresURLNonPooling2 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintPostgresURLNonPooling2
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody2) GetContentHintPostgresPrismaURL() *GetProjectEnvContentHintPostgresPrismaURL2 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintPostgresPrismaURL2
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody2) GetContentHintPostgresUser() *GetProjectEnvContentHintPostgresUser2 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintPostgresUser2
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody2) GetContentHintPostgresHost() *GetProjectEnvContentHintPostgresHost2 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintPostgresHost2
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody2) GetContentHintPostgresPassword() *GetProjectEnvContentHintPostgresPassword2 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintPostgresPassword2
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody2) GetContentHintPostgresDatabase() *GetProjectEnvContentHintPostgresDatabase2 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintPostgresDatabase2
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody2) GetContentHintPostgresURLNoSsl() *GetProjectEnvContentHintPostgresURLNoSsl2 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintPostgresURLNoSsl2
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody2) GetContentHintIntegrationStoreSecret() *GetProjectEnvContentHintIntegrationStoreSecret2 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintIntegrationStoreSecret2
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody2) GetContentHintFlagsConnectionString() *GetProjectEnvContentHintFlagsConnectionString2 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintFlagsConnectionString2
+	}
+	return nil
 }
 
 func (o *GetProjectEnvResponseBody2) GetInternalContentHint() *GetProjectEnvInternalContentHint2 {
@@ -4100,21 +4484,21 @@ func (o *GetProjectEnvContentHintRedisURL1) GetStoreID() string {
 type GetProjectEnvContentHintUnion1Type string
 
 const (
-	GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintRedisURL1                  GetProjectEnvContentHintUnion1Type = "getProjectEnv_contentHint_RedisURL_1"
-	GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintRedisRestAPIURL1           GetProjectEnvContentHintUnion1Type = "getProjectEnv_contentHint_RedisRestAPIURL_1"
-	GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintRedisRestAPIToken1         GetProjectEnvContentHintUnion1Type = "getProjectEnv_contentHint_RedisRestAPIToken_1"
-	GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintRedisRestAPIReadOnlyToken1 GetProjectEnvContentHintUnion1Type = "getProjectEnv_contentHint_RedisRestAPIReadOnlyToken_1"
-	GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintBlobReadWriteToken1        GetProjectEnvContentHintUnion1Type = "getProjectEnv_contentHint_BlobReadWriteToken_1"
-	GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresURL1               GetProjectEnvContentHintUnion1Type = "getProjectEnv_contentHint_PostgresURL_1"
-	GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresURLNonPooling1     GetProjectEnvContentHintUnion1Type = "getProjectEnv_contentHint_PostgresURLNonPooling_1"
-	GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresPrismaURL1         GetProjectEnvContentHintUnion1Type = "getProjectEnv_contentHint_PostgresPrismaURL_1"
-	GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresUser1              GetProjectEnvContentHintUnion1Type = "getProjectEnv_contentHint_PostgresUser_1"
-	GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresHost1              GetProjectEnvContentHintUnion1Type = "getProjectEnv_contentHint_PostgresHost_1"
-	GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresPassword1          GetProjectEnvContentHintUnion1Type = "getProjectEnv_contentHint_PostgresPassword_1"
-	GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresDatabase1          GetProjectEnvContentHintUnion1Type = "getProjectEnv_contentHint_PostgresDatabase_1"
-	GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresURLNoSsl1          GetProjectEnvContentHintUnion1Type = "getProjectEnv_contentHint_PostgresURLNoSsl_1"
-	GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintIntegrationStoreSecret1    GetProjectEnvContentHintUnion1Type = "getProjectEnv_contentHint_IntegrationStoreSecret_1"
-	GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintFlagsConnectionString1     GetProjectEnvContentHintUnion1Type = "getProjectEnv_contentHint_FlagsConnectionString_1"
+	GetProjectEnvContentHintUnion1TypeRedisURL                  GetProjectEnvContentHintUnion1Type = "redis-url"
+	GetProjectEnvContentHintUnion1TypeRedisRestAPIURL           GetProjectEnvContentHintUnion1Type = "redis-rest-api-url"
+	GetProjectEnvContentHintUnion1TypeRedisRestAPIToken         GetProjectEnvContentHintUnion1Type = "redis-rest-api-token"
+	GetProjectEnvContentHintUnion1TypeRedisRestAPIReadOnlyToken GetProjectEnvContentHintUnion1Type = "redis-rest-api-read-only-token"
+	GetProjectEnvContentHintUnion1TypeBlobReadWriteToken        GetProjectEnvContentHintUnion1Type = "blob-read-write-token"
+	GetProjectEnvContentHintUnion1TypePostgresURL               GetProjectEnvContentHintUnion1Type = "postgres-url"
+	GetProjectEnvContentHintUnion1TypePostgresURLNonPooling     GetProjectEnvContentHintUnion1Type = "postgres-url-non-pooling"
+	GetProjectEnvContentHintUnion1TypePostgresPrismaURL         GetProjectEnvContentHintUnion1Type = "postgres-prisma-url"
+	GetProjectEnvContentHintUnion1TypePostgresUser              GetProjectEnvContentHintUnion1Type = "postgres-user"
+	GetProjectEnvContentHintUnion1TypePostgresHost              GetProjectEnvContentHintUnion1Type = "postgres-host"
+	GetProjectEnvContentHintUnion1TypePostgresPassword          GetProjectEnvContentHintUnion1Type = "postgres-password"
+	GetProjectEnvContentHintUnion1TypePostgresDatabase          GetProjectEnvContentHintUnion1Type = "postgres-database"
+	GetProjectEnvContentHintUnion1TypePostgresURLNoSsl          GetProjectEnvContentHintUnion1Type = "postgres-url-no-ssl"
+	GetProjectEnvContentHintUnion1TypeIntegrationStoreSecret    GetProjectEnvContentHintUnion1Type = "integration-store-secret"
+	GetProjectEnvContentHintUnion1TypeFlagsConnectionString     GetProjectEnvContentHintUnion1Type = "flags-connection-string"
 )
 
 type GetProjectEnvContentHintUnion1 struct {
@@ -4137,245 +4521,332 @@ type GetProjectEnvContentHintUnion1 struct {
 	Type GetProjectEnvContentHintUnion1Type
 }
 
-func CreateGetProjectEnvContentHintUnion1GetProjectEnvContentHintRedisURL1(getProjectEnvContentHintRedisURL1 GetProjectEnvContentHintRedisURL1) GetProjectEnvContentHintUnion1 {
-	typ := GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintRedisURL1
+func CreateGetProjectEnvContentHintUnion1RedisURL(redisURL GetProjectEnvContentHintRedisURL1) GetProjectEnvContentHintUnion1 {
+	typ := GetProjectEnvContentHintUnion1TypeRedisURL
+
+	typStr := GetProjectEnvTypeRedisURL1(typ)
+	redisURL.Type = typStr
 
 	return GetProjectEnvContentHintUnion1{
-		GetProjectEnvContentHintRedisURL1: &getProjectEnvContentHintRedisURL1,
+		GetProjectEnvContentHintRedisURL1: &redisURL,
 		Type:                              typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion1GetProjectEnvContentHintRedisRestAPIURL1(getProjectEnvContentHintRedisRestAPIURL1 GetProjectEnvContentHintRedisRestAPIURL1) GetProjectEnvContentHintUnion1 {
-	typ := GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintRedisRestAPIURL1
+func CreateGetProjectEnvContentHintUnion1RedisRestAPIURL(redisRestAPIURL GetProjectEnvContentHintRedisRestAPIURL1) GetProjectEnvContentHintUnion1 {
+	typ := GetProjectEnvContentHintUnion1TypeRedisRestAPIURL
+
+	typStr := GetProjectEnvTypeRedisRestAPIURL1(typ)
+	redisRestAPIURL.Type = typStr
 
 	return GetProjectEnvContentHintUnion1{
-		GetProjectEnvContentHintRedisRestAPIURL1: &getProjectEnvContentHintRedisRestAPIURL1,
+		GetProjectEnvContentHintRedisRestAPIURL1: &redisRestAPIURL,
 		Type:                                     typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion1GetProjectEnvContentHintRedisRestAPIToken1(getProjectEnvContentHintRedisRestAPIToken1 GetProjectEnvContentHintRedisRestAPIToken1) GetProjectEnvContentHintUnion1 {
-	typ := GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintRedisRestAPIToken1
+func CreateGetProjectEnvContentHintUnion1RedisRestAPIToken(redisRestAPIToken GetProjectEnvContentHintRedisRestAPIToken1) GetProjectEnvContentHintUnion1 {
+	typ := GetProjectEnvContentHintUnion1TypeRedisRestAPIToken
+
+	typStr := GetProjectEnvTypeRedisRestAPIToken1(typ)
+	redisRestAPIToken.Type = typStr
 
 	return GetProjectEnvContentHintUnion1{
-		GetProjectEnvContentHintRedisRestAPIToken1: &getProjectEnvContentHintRedisRestAPIToken1,
+		GetProjectEnvContentHintRedisRestAPIToken1: &redisRestAPIToken,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion1GetProjectEnvContentHintRedisRestAPIReadOnlyToken1(getProjectEnvContentHintRedisRestAPIReadOnlyToken1 GetProjectEnvContentHintRedisRestAPIReadOnlyToken1) GetProjectEnvContentHintUnion1 {
-	typ := GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintRedisRestAPIReadOnlyToken1
+func CreateGetProjectEnvContentHintUnion1RedisRestAPIReadOnlyToken(redisRestAPIReadOnlyToken GetProjectEnvContentHintRedisRestAPIReadOnlyToken1) GetProjectEnvContentHintUnion1 {
+	typ := GetProjectEnvContentHintUnion1TypeRedisRestAPIReadOnlyToken
+
+	typStr := GetProjectEnvTypeRedisRestAPIReadOnlyToken1(typ)
+	redisRestAPIReadOnlyToken.Type = typStr
 
 	return GetProjectEnvContentHintUnion1{
-		GetProjectEnvContentHintRedisRestAPIReadOnlyToken1: &getProjectEnvContentHintRedisRestAPIReadOnlyToken1,
+		GetProjectEnvContentHintRedisRestAPIReadOnlyToken1: &redisRestAPIReadOnlyToken,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion1GetProjectEnvContentHintBlobReadWriteToken1(getProjectEnvContentHintBlobReadWriteToken1 GetProjectEnvContentHintBlobReadWriteToken1) GetProjectEnvContentHintUnion1 {
-	typ := GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintBlobReadWriteToken1
+func CreateGetProjectEnvContentHintUnion1BlobReadWriteToken(blobReadWriteToken GetProjectEnvContentHintBlobReadWriteToken1) GetProjectEnvContentHintUnion1 {
+	typ := GetProjectEnvContentHintUnion1TypeBlobReadWriteToken
+
+	typStr := GetProjectEnvTypeBlobReadWriteToken1(typ)
+	blobReadWriteToken.Type = typStr
 
 	return GetProjectEnvContentHintUnion1{
-		GetProjectEnvContentHintBlobReadWriteToken1: &getProjectEnvContentHintBlobReadWriteToken1,
+		GetProjectEnvContentHintBlobReadWriteToken1: &blobReadWriteToken,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion1GetProjectEnvContentHintPostgresURL1(getProjectEnvContentHintPostgresURL1 GetProjectEnvContentHintPostgresURL1) GetProjectEnvContentHintUnion1 {
-	typ := GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresURL1
+func CreateGetProjectEnvContentHintUnion1PostgresURL(postgresURL GetProjectEnvContentHintPostgresURL1) GetProjectEnvContentHintUnion1 {
+	typ := GetProjectEnvContentHintUnion1TypePostgresURL
+
+	typStr := GetProjectEnvTypePostgresURL1(typ)
+	postgresURL.Type = typStr
 
 	return GetProjectEnvContentHintUnion1{
-		GetProjectEnvContentHintPostgresURL1: &getProjectEnvContentHintPostgresURL1,
+		GetProjectEnvContentHintPostgresURL1: &postgresURL,
 		Type:                                 typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion1GetProjectEnvContentHintPostgresURLNonPooling1(getProjectEnvContentHintPostgresURLNonPooling1 GetProjectEnvContentHintPostgresURLNonPooling1) GetProjectEnvContentHintUnion1 {
-	typ := GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresURLNonPooling1
+func CreateGetProjectEnvContentHintUnion1PostgresURLNonPooling(postgresURLNonPooling GetProjectEnvContentHintPostgresURLNonPooling1) GetProjectEnvContentHintUnion1 {
+	typ := GetProjectEnvContentHintUnion1TypePostgresURLNonPooling
+
+	typStr := GetProjectEnvTypePostgresURLNonPooling1(typ)
+	postgresURLNonPooling.Type = typStr
 
 	return GetProjectEnvContentHintUnion1{
-		GetProjectEnvContentHintPostgresURLNonPooling1: &getProjectEnvContentHintPostgresURLNonPooling1,
+		GetProjectEnvContentHintPostgresURLNonPooling1: &postgresURLNonPooling,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion1GetProjectEnvContentHintPostgresPrismaURL1(getProjectEnvContentHintPostgresPrismaURL1 GetProjectEnvContentHintPostgresPrismaURL1) GetProjectEnvContentHintUnion1 {
-	typ := GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresPrismaURL1
+func CreateGetProjectEnvContentHintUnion1PostgresPrismaURL(postgresPrismaURL GetProjectEnvContentHintPostgresPrismaURL1) GetProjectEnvContentHintUnion1 {
+	typ := GetProjectEnvContentHintUnion1TypePostgresPrismaURL
+
+	typStr := GetProjectEnvTypePostgresPrismaURL1(typ)
+	postgresPrismaURL.Type = typStr
 
 	return GetProjectEnvContentHintUnion1{
-		GetProjectEnvContentHintPostgresPrismaURL1: &getProjectEnvContentHintPostgresPrismaURL1,
+		GetProjectEnvContentHintPostgresPrismaURL1: &postgresPrismaURL,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion1GetProjectEnvContentHintPostgresUser1(getProjectEnvContentHintPostgresUser1 GetProjectEnvContentHintPostgresUser1) GetProjectEnvContentHintUnion1 {
-	typ := GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresUser1
+func CreateGetProjectEnvContentHintUnion1PostgresUser(postgresUser GetProjectEnvContentHintPostgresUser1) GetProjectEnvContentHintUnion1 {
+	typ := GetProjectEnvContentHintUnion1TypePostgresUser
+
+	typStr := GetProjectEnvTypePostgresUser1(typ)
+	postgresUser.Type = typStr
 
 	return GetProjectEnvContentHintUnion1{
-		GetProjectEnvContentHintPostgresUser1: &getProjectEnvContentHintPostgresUser1,
+		GetProjectEnvContentHintPostgresUser1: &postgresUser,
 		Type:                                  typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion1GetProjectEnvContentHintPostgresHost1(getProjectEnvContentHintPostgresHost1 GetProjectEnvContentHintPostgresHost1) GetProjectEnvContentHintUnion1 {
-	typ := GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresHost1
+func CreateGetProjectEnvContentHintUnion1PostgresHost(postgresHost GetProjectEnvContentHintPostgresHost1) GetProjectEnvContentHintUnion1 {
+	typ := GetProjectEnvContentHintUnion1TypePostgresHost
+
+	typStr := GetProjectEnvTypePostgresHost1(typ)
+	postgresHost.Type = typStr
 
 	return GetProjectEnvContentHintUnion1{
-		GetProjectEnvContentHintPostgresHost1: &getProjectEnvContentHintPostgresHost1,
+		GetProjectEnvContentHintPostgresHost1: &postgresHost,
 		Type:                                  typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion1GetProjectEnvContentHintPostgresPassword1(getProjectEnvContentHintPostgresPassword1 GetProjectEnvContentHintPostgresPassword1) GetProjectEnvContentHintUnion1 {
-	typ := GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresPassword1
+func CreateGetProjectEnvContentHintUnion1PostgresPassword(postgresPassword GetProjectEnvContentHintPostgresPassword1) GetProjectEnvContentHintUnion1 {
+	typ := GetProjectEnvContentHintUnion1TypePostgresPassword
+
+	typStr := GetProjectEnvTypePostgresPassword1(typ)
+	postgresPassword.Type = typStr
 
 	return GetProjectEnvContentHintUnion1{
-		GetProjectEnvContentHintPostgresPassword1: &getProjectEnvContentHintPostgresPassword1,
+		GetProjectEnvContentHintPostgresPassword1: &postgresPassword,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion1GetProjectEnvContentHintPostgresDatabase1(getProjectEnvContentHintPostgresDatabase1 GetProjectEnvContentHintPostgresDatabase1) GetProjectEnvContentHintUnion1 {
-	typ := GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresDatabase1
+func CreateGetProjectEnvContentHintUnion1PostgresDatabase(postgresDatabase GetProjectEnvContentHintPostgresDatabase1) GetProjectEnvContentHintUnion1 {
+	typ := GetProjectEnvContentHintUnion1TypePostgresDatabase
+
+	typStr := GetProjectEnvTypePostgresDatabase1(typ)
+	postgresDatabase.Type = typStr
 
 	return GetProjectEnvContentHintUnion1{
-		GetProjectEnvContentHintPostgresDatabase1: &getProjectEnvContentHintPostgresDatabase1,
+		GetProjectEnvContentHintPostgresDatabase1: &postgresDatabase,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion1GetProjectEnvContentHintPostgresURLNoSsl1(getProjectEnvContentHintPostgresURLNoSsl1 GetProjectEnvContentHintPostgresURLNoSsl1) GetProjectEnvContentHintUnion1 {
-	typ := GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresURLNoSsl1
+func CreateGetProjectEnvContentHintUnion1PostgresURLNoSsl(postgresURLNoSsl GetProjectEnvContentHintPostgresURLNoSsl1) GetProjectEnvContentHintUnion1 {
+	typ := GetProjectEnvContentHintUnion1TypePostgresURLNoSsl
+
+	typStr := GetProjectEnvTypePostgresURLNoSsl1(typ)
+	postgresURLNoSsl.Type = typStr
 
 	return GetProjectEnvContentHintUnion1{
-		GetProjectEnvContentHintPostgresURLNoSsl1: &getProjectEnvContentHintPostgresURLNoSsl1,
+		GetProjectEnvContentHintPostgresURLNoSsl1: &postgresURLNoSsl,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion1GetProjectEnvContentHintIntegrationStoreSecret1(getProjectEnvContentHintIntegrationStoreSecret1 GetProjectEnvContentHintIntegrationStoreSecret1) GetProjectEnvContentHintUnion1 {
-	typ := GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintIntegrationStoreSecret1
+func CreateGetProjectEnvContentHintUnion1IntegrationStoreSecret(integrationStoreSecret GetProjectEnvContentHintIntegrationStoreSecret1) GetProjectEnvContentHintUnion1 {
+	typ := GetProjectEnvContentHintUnion1TypeIntegrationStoreSecret
+
+	typStr := GetProjectEnvTypeIntegrationStoreSecret1(typ)
+	integrationStoreSecret.Type = typStr
 
 	return GetProjectEnvContentHintUnion1{
-		GetProjectEnvContentHintIntegrationStoreSecret1: &getProjectEnvContentHintIntegrationStoreSecret1,
+		GetProjectEnvContentHintIntegrationStoreSecret1: &integrationStoreSecret,
 		Type: typ,
 	}
 }
 
-func CreateGetProjectEnvContentHintUnion1GetProjectEnvContentHintFlagsConnectionString1(getProjectEnvContentHintFlagsConnectionString1 GetProjectEnvContentHintFlagsConnectionString1) GetProjectEnvContentHintUnion1 {
-	typ := GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintFlagsConnectionString1
+func CreateGetProjectEnvContentHintUnion1FlagsConnectionString(flagsConnectionString GetProjectEnvContentHintFlagsConnectionString1) GetProjectEnvContentHintUnion1 {
+	typ := GetProjectEnvContentHintUnion1TypeFlagsConnectionString
+
+	typStr := GetProjectEnvTypeFlagsConnectionString1(typ)
+	flagsConnectionString.Type = typStr
 
 	return GetProjectEnvContentHintUnion1{
-		GetProjectEnvContentHintFlagsConnectionString1: &getProjectEnvContentHintFlagsConnectionString1,
+		GetProjectEnvContentHintFlagsConnectionString1: &flagsConnectionString,
 		Type: typ,
 	}
 }
 
 func (u *GetProjectEnvContentHintUnion1) UnmarshalJSON(data []byte) error {
 
-	var getProjectEnvContentHintIntegrationStoreSecret1 GetProjectEnvContentHintIntegrationStoreSecret1 = GetProjectEnvContentHintIntegrationStoreSecret1{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintIntegrationStoreSecret1, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintIntegrationStoreSecret1 = &getProjectEnvContentHintIntegrationStoreSecret1
-		u.Type = GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintIntegrationStoreSecret1
-		return nil
+	type discriminator struct {
+		Type string `json:"type"`
 	}
 
-	var getProjectEnvContentHintRedisURL1 GetProjectEnvContentHintRedisURL1 = GetProjectEnvContentHintRedisURL1{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisURL1, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintRedisURL1 = &getProjectEnvContentHintRedisURL1
-		u.Type = GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintRedisURL1
-		return nil
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
 	}
 
-	var getProjectEnvContentHintRedisRestAPIURL1 GetProjectEnvContentHintRedisRestAPIURL1 = GetProjectEnvContentHintRedisRestAPIURL1{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisRestAPIURL1, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintRedisRestAPIURL1 = &getProjectEnvContentHintRedisRestAPIURL1
-		u.Type = GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintRedisRestAPIURL1
-		return nil
-	}
+	switch dis.Type {
+	case "redis-url":
+		getProjectEnvContentHintRedisURL1 := new(GetProjectEnvContentHintRedisURL1)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisURL1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-url) type GetProjectEnvContentHintRedisURL1 within GetProjectEnvContentHintUnion1: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintRedisRestAPIToken1 GetProjectEnvContentHintRedisRestAPIToken1 = GetProjectEnvContentHintRedisRestAPIToken1{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisRestAPIToken1, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintRedisRestAPIToken1 = &getProjectEnvContentHintRedisRestAPIToken1
-		u.Type = GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintRedisRestAPIToken1
+		u.GetProjectEnvContentHintRedisURL1 = getProjectEnvContentHintRedisURL1
+		u.Type = GetProjectEnvContentHintUnion1TypeRedisURL
 		return nil
-	}
+	case "redis-rest-api-url":
+		getProjectEnvContentHintRedisRestAPIURL1 := new(GetProjectEnvContentHintRedisRestAPIURL1)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisRestAPIURL1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-rest-api-url) type GetProjectEnvContentHintRedisRestAPIURL1 within GetProjectEnvContentHintUnion1: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintRedisRestAPIReadOnlyToken1 GetProjectEnvContentHintRedisRestAPIReadOnlyToken1 = GetProjectEnvContentHintRedisRestAPIReadOnlyToken1{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisRestAPIReadOnlyToken1, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintRedisRestAPIReadOnlyToken1 = &getProjectEnvContentHintRedisRestAPIReadOnlyToken1
-		u.Type = GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintRedisRestAPIReadOnlyToken1
+		u.GetProjectEnvContentHintRedisRestAPIURL1 = getProjectEnvContentHintRedisRestAPIURL1
+		u.Type = GetProjectEnvContentHintUnion1TypeRedisRestAPIURL
 		return nil
-	}
+	case "redis-rest-api-token":
+		getProjectEnvContentHintRedisRestAPIToken1 := new(GetProjectEnvContentHintRedisRestAPIToken1)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisRestAPIToken1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-rest-api-token) type GetProjectEnvContentHintRedisRestAPIToken1 within GetProjectEnvContentHintUnion1: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintBlobReadWriteToken1 GetProjectEnvContentHintBlobReadWriteToken1 = GetProjectEnvContentHintBlobReadWriteToken1{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintBlobReadWriteToken1, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintBlobReadWriteToken1 = &getProjectEnvContentHintBlobReadWriteToken1
-		u.Type = GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintBlobReadWriteToken1
+		u.GetProjectEnvContentHintRedisRestAPIToken1 = getProjectEnvContentHintRedisRestAPIToken1
+		u.Type = GetProjectEnvContentHintUnion1TypeRedisRestAPIToken
 		return nil
-	}
+	case "redis-rest-api-read-only-token":
+		getProjectEnvContentHintRedisRestAPIReadOnlyToken1 := new(GetProjectEnvContentHintRedisRestAPIReadOnlyToken1)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintRedisRestAPIReadOnlyToken1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-rest-api-read-only-token) type GetProjectEnvContentHintRedisRestAPIReadOnlyToken1 within GetProjectEnvContentHintUnion1: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintPostgresURL1 GetProjectEnvContentHintPostgresURL1 = GetProjectEnvContentHintPostgresURL1{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresURL1, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintPostgresURL1 = &getProjectEnvContentHintPostgresURL1
-		u.Type = GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresURL1
+		u.GetProjectEnvContentHintRedisRestAPIReadOnlyToken1 = getProjectEnvContentHintRedisRestAPIReadOnlyToken1
+		u.Type = GetProjectEnvContentHintUnion1TypeRedisRestAPIReadOnlyToken
 		return nil
-	}
+	case "blob-read-write-token":
+		getProjectEnvContentHintBlobReadWriteToken1 := new(GetProjectEnvContentHintBlobReadWriteToken1)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintBlobReadWriteToken1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == blob-read-write-token) type GetProjectEnvContentHintBlobReadWriteToken1 within GetProjectEnvContentHintUnion1: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintPostgresURLNonPooling1 GetProjectEnvContentHintPostgresURLNonPooling1 = GetProjectEnvContentHintPostgresURLNonPooling1{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresURLNonPooling1, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintPostgresURLNonPooling1 = &getProjectEnvContentHintPostgresURLNonPooling1
-		u.Type = GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresURLNonPooling1
+		u.GetProjectEnvContentHintBlobReadWriteToken1 = getProjectEnvContentHintBlobReadWriteToken1
+		u.Type = GetProjectEnvContentHintUnion1TypeBlobReadWriteToken
 		return nil
-	}
+	case "postgres-url":
+		getProjectEnvContentHintPostgresURL1 := new(GetProjectEnvContentHintPostgresURL1)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresURL1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-url) type GetProjectEnvContentHintPostgresURL1 within GetProjectEnvContentHintUnion1: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintPostgresPrismaURL1 GetProjectEnvContentHintPostgresPrismaURL1 = GetProjectEnvContentHintPostgresPrismaURL1{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresPrismaURL1, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintPostgresPrismaURL1 = &getProjectEnvContentHintPostgresPrismaURL1
-		u.Type = GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresPrismaURL1
+		u.GetProjectEnvContentHintPostgresURL1 = getProjectEnvContentHintPostgresURL1
+		u.Type = GetProjectEnvContentHintUnion1TypePostgresURL
 		return nil
-	}
+	case "postgres-url-non-pooling":
+		getProjectEnvContentHintPostgresURLNonPooling1 := new(GetProjectEnvContentHintPostgresURLNonPooling1)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresURLNonPooling1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-url-non-pooling) type GetProjectEnvContentHintPostgresURLNonPooling1 within GetProjectEnvContentHintUnion1: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintPostgresUser1 GetProjectEnvContentHintPostgresUser1 = GetProjectEnvContentHintPostgresUser1{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresUser1, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintPostgresUser1 = &getProjectEnvContentHintPostgresUser1
-		u.Type = GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresUser1
+		u.GetProjectEnvContentHintPostgresURLNonPooling1 = getProjectEnvContentHintPostgresURLNonPooling1
+		u.Type = GetProjectEnvContentHintUnion1TypePostgresURLNonPooling
 		return nil
-	}
+	case "postgres-prisma-url":
+		getProjectEnvContentHintPostgresPrismaURL1 := new(GetProjectEnvContentHintPostgresPrismaURL1)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresPrismaURL1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-prisma-url) type GetProjectEnvContentHintPostgresPrismaURL1 within GetProjectEnvContentHintUnion1: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintPostgresHost1 GetProjectEnvContentHintPostgresHost1 = GetProjectEnvContentHintPostgresHost1{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresHost1, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintPostgresHost1 = &getProjectEnvContentHintPostgresHost1
-		u.Type = GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresHost1
+		u.GetProjectEnvContentHintPostgresPrismaURL1 = getProjectEnvContentHintPostgresPrismaURL1
+		u.Type = GetProjectEnvContentHintUnion1TypePostgresPrismaURL
 		return nil
-	}
+	case "postgres-user":
+		getProjectEnvContentHintPostgresUser1 := new(GetProjectEnvContentHintPostgresUser1)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresUser1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-user) type GetProjectEnvContentHintPostgresUser1 within GetProjectEnvContentHintUnion1: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintPostgresPassword1 GetProjectEnvContentHintPostgresPassword1 = GetProjectEnvContentHintPostgresPassword1{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresPassword1, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintPostgresPassword1 = &getProjectEnvContentHintPostgresPassword1
-		u.Type = GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresPassword1
+		u.GetProjectEnvContentHintPostgresUser1 = getProjectEnvContentHintPostgresUser1
+		u.Type = GetProjectEnvContentHintUnion1TypePostgresUser
 		return nil
-	}
+	case "postgres-host":
+		getProjectEnvContentHintPostgresHost1 := new(GetProjectEnvContentHintPostgresHost1)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresHost1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-host) type GetProjectEnvContentHintPostgresHost1 within GetProjectEnvContentHintUnion1: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintPostgresDatabase1 GetProjectEnvContentHintPostgresDatabase1 = GetProjectEnvContentHintPostgresDatabase1{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresDatabase1, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintPostgresDatabase1 = &getProjectEnvContentHintPostgresDatabase1
-		u.Type = GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresDatabase1
+		u.GetProjectEnvContentHintPostgresHost1 = getProjectEnvContentHintPostgresHost1
+		u.Type = GetProjectEnvContentHintUnion1TypePostgresHost
 		return nil
-	}
+	case "postgres-password":
+		getProjectEnvContentHintPostgresPassword1 := new(GetProjectEnvContentHintPostgresPassword1)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresPassword1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-password) type GetProjectEnvContentHintPostgresPassword1 within GetProjectEnvContentHintUnion1: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintPostgresURLNoSsl1 GetProjectEnvContentHintPostgresURLNoSsl1 = GetProjectEnvContentHintPostgresURLNoSsl1{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresURLNoSsl1, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintPostgresURLNoSsl1 = &getProjectEnvContentHintPostgresURLNoSsl1
-		u.Type = GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintPostgresURLNoSsl1
+		u.GetProjectEnvContentHintPostgresPassword1 = getProjectEnvContentHintPostgresPassword1
+		u.Type = GetProjectEnvContentHintUnion1TypePostgresPassword
 		return nil
-	}
+	case "postgres-database":
+		getProjectEnvContentHintPostgresDatabase1 := new(GetProjectEnvContentHintPostgresDatabase1)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresDatabase1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-database) type GetProjectEnvContentHintPostgresDatabase1 within GetProjectEnvContentHintUnion1: %w", string(data), err)
+		}
 
-	var getProjectEnvContentHintFlagsConnectionString1 GetProjectEnvContentHintFlagsConnectionString1 = GetProjectEnvContentHintFlagsConnectionString1{}
-	if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintFlagsConnectionString1, "", true, nil); err == nil {
-		u.GetProjectEnvContentHintFlagsConnectionString1 = &getProjectEnvContentHintFlagsConnectionString1
-		u.Type = GetProjectEnvContentHintUnion1TypeGetProjectEnvContentHintFlagsConnectionString1
+		u.GetProjectEnvContentHintPostgresDatabase1 = getProjectEnvContentHintPostgresDatabase1
+		u.Type = GetProjectEnvContentHintUnion1TypePostgresDatabase
+		return nil
+	case "postgres-url-no-ssl":
+		getProjectEnvContentHintPostgresURLNoSsl1 := new(GetProjectEnvContentHintPostgresURLNoSsl1)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintPostgresURLNoSsl1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == postgres-url-no-ssl) type GetProjectEnvContentHintPostgresURLNoSsl1 within GetProjectEnvContentHintUnion1: %w", string(data), err)
+		}
+
+		u.GetProjectEnvContentHintPostgresURLNoSsl1 = getProjectEnvContentHintPostgresURLNoSsl1
+		u.Type = GetProjectEnvContentHintUnion1TypePostgresURLNoSsl
+		return nil
+	case "integration-store-secret":
+		getProjectEnvContentHintIntegrationStoreSecret1 := new(GetProjectEnvContentHintIntegrationStoreSecret1)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintIntegrationStoreSecret1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == integration-store-secret) type GetProjectEnvContentHintIntegrationStoreSecret1 within GetProjectEnvContentHintUnion1: %w", string(data), err)
+		}
+
+		u.GetProjectEnvContentHintIntegrationStoreSecret1 = getProjectEnvContentHintIntegrationStoreSecret1
+		u.Type = GetProjectEnvContentHintUnion1TypeIntegrationStoreSecret
+		return nil
+	case "flags-connection-string":
+		getProjectEnvContentHintFlagsConnectionString1 := new(GetProjectEnvContentHintFlagsConnectionString1)
+		if err := utils.UnmarshalJSON(data, &getProjectEnvContentHintFlagsConnectionString1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == flags-connection-string) type GetProjectEnvContentHintFlagsConnectionString1 within GetProjectEnvContentHintUnion1: %w", string(data), err)
+		}
+
+		u.GetProjectEnvContentHintFlagsConnectionString1 = getProjectEnvContentHintFlagsConnectionString1
+		u.Type = GetProjectEnvContentHintUnion1TypeFlagsConnectionString
 		return nil
 	}
 
@@ -4638,6 +5109,111 @@ func (o *GetProjectEnvResponseBody1) GetContentHint() *GetProjectEnvContentHintU
 		return nil
 	}
 	return o.ContentHint
+}
+
+func (o *GetProjectEnvResponseBody1) GetContentHintRedisURL() *GetProjectEnvContentHintRedisURL1 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintRedisURL1
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody1) GetContentHintRedisRestAPIURL() *GetProjectEnvContentHintRedisRestAPIURL1 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintRedisRestAPIURL1
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody1) GetContentHintRedisRestAPIToken() *GetProjectEnvContentHintRedisRestAPIToken1 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintRedisRestAPIToken1
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody1) GetContentHintRedisRestAPIReadOnlyToken() *GetProjectEnvContentHintRedisRestAPIReadOnlyToken1 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintRedisRestAPIReadOnlyToken1
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody1) GetContentHintBlobReadWriteToken() *GetProjectEnvContentHintBlobReadWriteToken1 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintBlobReadWriteToken1
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody1) GetContentHintPostgresURL() *GetProjectEnvContentHintPostgresURL1 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintPostgresURL1
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody1) GetContentHintPostgresURLNonPooling() *GetProjectEnvContentHintPostgresURLNonPooling1 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintPostgresURLNonPooling1
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody1) GetContentHintPostgresPrismaURL() *GetProjectEnvContentHintPostgresPrismaURL1 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintPostgresPrismaURL1
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody1) GetContentHintPostgresUser() *GetProjectEnvContentHintPostgresUser1 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintPostgresUser1
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody1) GetContentHintPostgresHost() *GetProjectEnvContentHintPostgresHost1 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintPostgresHost1
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody1) GetContentHintPostgresPassword() *GetProjectEnvContentHintPostgresPassword1 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintPostgresPassword1
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody1) GetContentHintPostgresDatabase() *GetProjectEnvContentHintPostgresDatabase1 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintPostgresDatabase1
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody1) GetContentHintPostgresURLNoSsl() *GetProjectEnvContentHintPostgresURLNoSsl1 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintPostgresURLNoSsl1
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody1) GetContentHintIntegrationStoreSecret() *GetProjectEnvContentHintIntegrationStoreSecret1 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintIntegrationStoreSecret1
+	}
+	return nil
+}
+
+func (o *GetProjectEnvResponseBody1) GetContentHintFlagsConnectionString() *GetProjectEnvContentHintFlagsConnectionString1 {
+	if v := o.GetContentHint(); v != nil {
+		return v.GetProjectEnvContentHintFlagsConnectionString1
+	}
+	return nil
 }
 
 func (o *GetProjectEnvResponseBody1) GetInternalContentHint() *GetProjectEnvInternalContentHint1 {

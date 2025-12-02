@@ -16,7 +16,7 @@ let value: CreateDrainFilterV22 = {
 
 ## Fields
 
-| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `version`                                                                                | [models.CreateDrainFilterV2DrainsVersion](../models/createdrainfilterv2drainsversion.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `filter`                                                                                 | *models.CreateDrainFilterV2Filter*                                                       | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| Field                              | Type                               | Required                           | Description                        |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| `version`                          | *"v2"*                             | :heavy_check_mark:                 | N/A                                |
+| `filter`                           | *models.CreateDrainFilterV2Filter* | :heavy_check_mark:                 | N/A                                |

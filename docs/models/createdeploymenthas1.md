@@ -13,7 +13,7 @@ let value: CreateDeploymentHas1 = {
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `type`                                                                 | [models.CreateDeploymentHasType](../models/createdeploymenthastype.md) | :heavy_check_mark:                                                     | N/A                                                                    |
-| `value`                                                                | *models.CreateDeploymentHasValue*                                      | :heavy_check_mark:                                                     | N/A                                                                    |
+| Field                             | Type                              | Required                          | Description                       |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `type`                            | *"host"*                          | :heavy_check_mark:                | N/A                               |
+| `value`                           | *models.CreateDeploymentHasValue* | :heavy_check_mark:                | N/A                               |

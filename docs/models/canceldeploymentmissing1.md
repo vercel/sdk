@@ -13,7 +13,7 @@ let value: CancelDeploymentMissing1 = {
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `type`                                                                         | [models.CancelDeploymentMissingType](../models/canceldeploymentmissingtype.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `value`                                                                        | *models.CancelDeploymentMissingValue*                                          | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                                 | Type                                  | Required                              | Description                           |
+| ------------------------------------- | ------------------------------------- | ------------------------------------- | ------------------------------------- |
+| `type`                                | *"host"*                              | :heavy_check_mark:                    | N/A                                   |
+| `value`                               | *models.CancelDeploymentMissingValue* | :heavy_check_mark:                    | N/A                                   |

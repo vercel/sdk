@@ -1010,13 +1010,6 @@ export type CancelDeploymentHas2 = {
   value?: string | CancelDeploymentValueDeployments2 | undefined;
 };
 
-export const CancelDeploymentHasType = {
-  Host: "host",
-} as const;
-export type CancelDeploymentHasType = ClosedEnum<
-  typeof CancelDeploymentHasType
->;
-
 export type CancelDeploymentValueEq = string | number;
 
 export type CancelDeploymentValue2 = {
@@ -1036,13 +1029,15 @@ export type CancelDeploymentValue2 = {
 export type CancelDeploymentHasValue = string | CancelDeploymentValue2;
 
 export type CancelDeploymentHas1 = {
-  type: CancelDeploymentHasType;
+  type: "host";
   value: string | CancelDeploymentValue2;
 };
 
 export type CancelDeploymentRoutesHas =
   | CancelDeploymentHas1
-  | CancelDeploymentHas2;
+  | (CancelDeploymentHas2 & { type: "header" })
+  | (CancelDeploymentHas2 & { type: "cookie" })
+  | (CancelDeploymentHas2 & { type: "query" });
 
 export const CancelDeploymentMissingDeploymentsType = {
   Header: "header",
@@ -1079,13 +1074,6 @@ export type CancelDeploymentMissing2 = {
   value?: string | CancelDeploymentValueDeploymentsResponse2002 | undefined;
 };
 
-export const CancelDeploymentMissingType = {
-  Host: "host",
-} as const;
-export type CancelDeploymentMissingType = ClosedEnum<
-  typeof CancelDeploymentMissingType
->;
-
 export type CancelDeploymentValueDeploymentsResponseEq = string | number;
 
 export type CancelDeploymentValueDeploymentsResponse2 = {
@@ -1107,11 +1095,15 @@ export type CancelDeploymentMissingValue =
   | CancelDeploymentValueDeploymentsResponse2;
 
 export type CancelDeploymentMissing1 = {
-  type: CancelDeploymentMissingType;
+  type: "host";
   value: string | CancelDeploymentValueDeploymentsResponse2;
 };
 
-export type RoutesMissing = CancelDeploymentMissing1 | CancelDeploymentMissing2;
+export type RoutesMissing =
+  | CancelDeploymentMissing1
+  | (CancelDeploymentMissing2 & { type: "header" })
+  | (CancelDeploymentMissing2 & { type: "cookie" })
+  | (CancelDeploymentMissing2 & { type: "query" });
 
 export const CancelDeploymentRoutesAction = {
   Challenge: "challenge",
@@ -1188,9 +1180,21 @@ export type CancelDeploymentRoutes1 = {
   check?: boolean | undefined;
   important?: boolean | undefined;
   status?: number | undefined;
-  has?: Array<CancelDeploymentHas1 | CancelDeploymentHas2> | undefined;
+  has?:
+    | Array<
+      | CancelDeploymentHas1
+      | (CancelDeploymentHas2 & { type: "header" })
+      | (CancelDeploymentHas2 & { type: "cookie" })
+      | (CancelDeploymentHas2 & { type: "query" })
+    >
+    | undefined;
   missing?:
-    | Array<CancelDeploymentMissing1 | CancelDeploymentMissing2>
+    | Array<
+      | CancelDeploymentMissing1
+      | (CancelDeploymentMissing2 & { type: "header" })
+      | (CancelDeploymentMissing2 & { type: "cookie" })
+      | (CancelDeploymentMissing2 & { type: "query" })
+    >
     | undefined;
   mitigate?: CancelDeploymentRoutesMitigate | undefined;
   transforms?: Array<RoutesTransforms> | undefined;
@@ -1214,13 +1218,6 @@ export type CancelDeploymentRoutes =
   | CancelDeploymentRoutes1
   | CancelDeploymentRoutes2;
 
-export const CancelDeploymentGitRepoDeploymentsResponseType = {
-  Bitbucket: "bitbucket",
-} as const;
-export type CancelDeploymentGitRepoDeploymentsResponseType = ClosedEnum<
-  typeof CancelDeploymentGitRepoDeploymentsResponseType
->;
-
 export const CancelDeploymentGitRepoDeploymentsResponseOwnerType = {
   Team: "team",
   User: "user",
@@ -1233,7 +1230,7 @@ export type CancelDeploymentGitRepo3 = {
   owner: string;
   repoUuid: string;
   slug: string;
-  type: CancelDeploymentGitRepoDeploymentsResponseType;
+  type: "bitbucket";
   workspaceUuid: string;
   path: string;
   defaultBranch: string;
@@ -1241,13 +1238,6 @@ export type CancelDeploymentGitRepo3 = {
   private: boolean;
   ownerType: CancelDeploymentGitRepoDeploymentsResponseOwnerType;
 };
-
-export const CancelDeploymentGitRepoDeploymentsType = {
-  Github: "github",
-} as const;
-export type CancelDeploymentGitRepoDeploymentsType = ClosedEnum<
-  typeof CancelDeploymentGitRepoDeploymentsType
->;
 
 export const CancelDeploymentGitRepoDeploymentsOwnerType = {
   Team: "team",
@@ -1261,7 +1251,7 @@ export type CancelDeploymentGitRepo2 = {
   org: string;
   repo: string;
   repoId: number;
-  type: CancelDeploymentGitRepoDeploymentsType;
+  type: "github";
   repoOwnerId: number;
   path: string;
   defaultBranch: string;
@@ -1269,13 +1259,6 @@ export type CancelDeploymentGitRepo2 = {
   private: boolean;
   ownerType: CancelDeploymentGitRepoDeploymentsOwnerType;
 };
-
-export const CancelDeploymentGitRepoType = {
-  Gitlab: "gitlab",
-} as const;
-export type CancelDeploymentGitRepoType = ClosedEnum<
-  typeof CancelDeploymentGitRepoType
->;
 
 export const CancelDeploymentGitRepoOwnerType = {
   Team: "team",
@@ -1288,7 +1271,7 @@ export type CancelDeploymentGitRepoOwnerType = ClosedEnum<
 export type CancelDeploymentGitRepo1 = {
   namespace: string;
   projectId: number;
-  type: CancelDeploymentGitRepoType;
+  type: "gitlab";
   url: string;
   path: string;
   defaultBranch: string;
@@ -1298,9 +1281,9 @@ export type CancelDeploymentGitRepo1 = {
 };
 
 export type CancelDeploymentGitRepo =
+  | CancelDeploymentGitRepo1
   | CancelDeploymentGitRepo2
-  | CancelDeploymentGitRepo3
-  | CancelDeploymentGitRepo1;
+  | CancelDeploymentGitRepo3;
 
 /**
  * Flags defined in the Build Output API, used by this deployment. Primarily used by the Toolbar to know about the used flags.
@@ -1630,9 +1613,9 @@ export type CancelDeploymentResponseBody = {
     >
     | null;
   gitRepo?:
+    | CancelDeploymentGitRepo1
     | CancelDeploymentGitRepo2
     | CancelDeploymentGitRepo3
-    | CancelDeploymentGitRepo1
     | null
     | undefined;
   flags?: CancelDeploymentFlags1 | Array<CancelDeploymentFlags2> | undefined;
@@ -4862,15 +4845,6 @@ export function cancelDeploymentHas2FromJSON(
 }
 
 /** @internal */
-export const CancelDeploymentHasType$inboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentHasType
-> = z.nativeEnum(CancelDeploymentHasType);
-/** @internal */
-export const CancelDeploymentHasType$outboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentHasType
-> = CancelDeploymentHasType$inboundSchema;
-
-/** @internal */
 export const CancelDeploymentValueEq$inboundSchema: z.ZodType<
   CancelDeploymentValueEq,
   z.ZodTypeDef,
@@ -5013,7 +4987,7 @@ export const CancelDeploymentHas1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: CancelDeploymentHasType$inboundSchema,
+  type: z.literal("host"),
   value: z.union([
     z.string(),
     z.lazy(() => CancelDeploymentValue2$inboundSchema),
@@ -5021,7 +4995,7 @@ export const CancelDeploymentHas1$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type CancelDeploymentHas1$Outbound = {
-  type: string;
+  type: "host";
   value: string | CancelDeploymentValue2$Outbound;
 };
 
@@ -5031,7 +5005,7 @@ export const CancelDeploymentHas1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CancelDeploymentHas1
 > = z.object({
-  type: CancelDeploymentHasType$outboundSchema,
+  type: z.literal("host"),
   value: z.union([
     z.string(),
     z.lazy(() => CancelDeploymentValue2$outboundSchema),
@@ -5062,12 +5036,22 @@ export const CancelDeploymentRoutesHas$inboundSchema: z.ZodType<
   unknown
 > = z.union([
   z.lazy(() => CancelDeploymentHas1$inboundSchema),
-  z.lazy(() => CancelDeploymentHas2$inboundSchema),
+  z.lazy(() => CancelDeploymentHas2$inboundSchema).and(
+    z.object({ type: z.literal("header") }),
+  ),
+  z.lazy(() => CancelDeploymentHas2$inboundSchema).and(
+    z.object({ type: z.literal("cookie") }),
+  ),
+  z.lazy(() => CancelDeploymentHas2$inboundSchema).and(
+    z.object({ type: z.literal("query") }),
+  ),
 ]);
 /** @internal */
 export type CancelDeploymentRoutesHas$Outbound =
   | CancelDeploymentHas1$Outbound
-  | CancelDeploymentHas2$Outbound;
+  | (CancelDeploymentHas2$Outbound & { type: "header" })
+  | (CancelDeploymentHas2$Outbound & { type: "cookie" })
+  | (CancelDeploymentHas2$Outbound & { type: "query" });
 
 /** @internal */
 export const CancelDeploymentRoutesHas$outboundSchema: z.ZodType<
@@ -5076,7 +5060,15 @@ export const CancelDeploymentRoutesHas$outboundSchema: z.ZodType<
   CancelDeploymentRoutesHas
 > = z.union([
   z.lazy(() => CancelDeploymentHas1$outboundSchema),
-  z.lazy(() => CancelDeploymentHas2$outboundSchema),
+  z.lazy(() => CancelDeploymentHas2$outboundSchema).and(
+    z.object({ type: z.literal("header") }),
+  ),
+  z.lazy(() => CancelDeploymentHas2$outboundSchema).and(
+    z.object({ type: z.literal("cookie") }),
+  ),
+  z.lazy(() => CancelDeploymentHas2$outboundSchema).and(
+    z.object({ type: z.literal("query") }),
+  ),
 ]);
 
 export function cancelDeploymentRoutesHasToJSON(
@@ -5337,15 +5329,6 @@ export function cancelDeploymentMissing2FromJSON(
 }
 
 /** @internal */
-export const CancelDeploymentMissingType$inboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentMissingType
-> = z.nativeEnum(CancelDeploymentMissingType);
-/** @internal */
-export const CancelDeploymentMissingType$outboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentMissingType
-> = CancelDeploymentMissingType$inboundSchema;
-
-/** @internal */
 export const CancelDeploymentValueDeploymentsResponseEq$inboundSchema:
   z.ZodType<CancelDeploymentValueDeploymentsResponseEq, z.ZodTypeDef, unknown> =
     z.union([z.string(), z.number()]);
@@ -5516,7 +5499,7 @@ export const CancelDeploymentMissing1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: CancelDeploymentMissingType$inboundSchema,
+  type: z.literal("host"),
   value: z.union([
     z.string(),
     z.lazy(() => CancelDeploymentValueDeploymentsResponse2$inboundSchema),
@@ -5524,7 +5507,7 @@ export const CancelDeploymentMissing1$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type CancelDeploymentMissing1$Outbound = {
-  type: string;
+  type: "host";
   value: string | CancelDeploymentValueDeploymentsResponse2$Outbound;
 };
 
@@ -5534,7 +5517,7 @@ export const CancelDeploymentMissing1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CancelDeploymentMissing1
 > = z.object({
-  type: CancelDeploymentMissingType$outboundSchema,
+  type: z.literal("host"),
   value: z.union([
     z.string(),
     z.lazy(() => CancelDeploymentValueDeploymentsResponse2$outboundSchema),
@@ -5565,12 +5548,22 @@ export const RoutesMissing$inboundSchema: z.ZodType<
   unknown
 > = z.union([
   z.lazy(() => CancelDeploymentMissing1$inboundSchema),
-  z.lazy(() => CancelDeploymentMissing2$inboundSchema),
+  z.lazy(() => CancelDeploymentMissing2$inboundSchema).and(
+    z.object({ type: z.literal("header") }),
+  ),
+  z.lazy(() => CancelDeploymentMissing2$inboundSchema).and(
+    z.object({ type: z.literal("cookie") }),
+  ),
+  z.lazy(() => CancelDeploymentMissing2$inboundSchema).and(
+    z.object({ type: z.literal("query") }),
+  ),
 ]);
 /** @internal */
 export type RoutesMissing$Outbound =
   | CancelDeploymentMissing1$Outbound
-  | CancelDeploymentMissing2$Outbound;
+  | (CancelDeploymentMissing2$Outbound & { type: "header" })
+  | (CancelDeploymentMissing2$Outbound & { type: "cookie" })
+  | (CancelDeploymentMissing2$Outbound & { type: "query" });
 
 /** @internal */
 export const RoutesMissing$outboundSchema: z.ZodType<
@@ -5579,7 +5572,15 @@ export const RoutesMissing$outboundSchema: z.ZodType<
   RoutesMissing
 > = z.union([
   z.lazy(() => CancelDeploymentMissing1$outboundSchema),
-  z.lazy(() => CancelDeploymentMissing2$outboundSchema),
+  z.lazy(() => CancelDeploymentMissing2$outboundSchema).and(
+    z.object({ type: z.literal("header") }),
+  ),
+  z.lazy(() => CancelDeploymentMissing2$outboundSchema).and(
+    z.object({ type: z.literal("cookie") }),
+  ),
+  z.lazy(() => CancelDeploymentMissing2$outboundSchema).and(
+    z.object({ type: z.literal("query") }),
+  ),
 ]);
 
 export function routesMissingToJSON(routesMissing: RoutesMissing): string {
@@ -5973,13 +5974,29 @@ export const CancelDeploymentRoutes1$inboundSchema: z.ZodType<
   has: z.array(
     z.union([
       z.lazy(() => CancelDeploymentHas1$inboundSchema),
-      z.lazy(() => CancelDeploymentHas2$inboundSchema),
+      z.lazy(() =>
+        CancelDeploymentHas2$inboundSchema
+      ).and(z.object({ type: z.literal("header") })),
+      z.lazy(() =>
+        CancelDeploymentHas2$inboundSchema
+      ).and(z.object({ type: z.literal("cookie") })),
+      z.lazy(() =>
+        CancelDeploymentHas2$inboundSchema
+      ).and(z.object({ type: z.literal("query") })),
     ]),
   ).optional(),
   missing: z.array(
     z.union([
       z.lazy(() => CancelDeploymentMissing1$inboundSchema),
-      z.lazy(() => CancelDeploymentMissing2$inboundSchema),
+      z.lazy(() =>
+        CancelDeploymentMissing2$inboundSchema
+      ).and(z.object({ type: z.literal("header") })),
+      z.lazy(() =>
+        CancelDeploymentMissing2$inboundSchema
+      ).and(z.object({ type: z.literal("cookie") })),
+      z.lazy(() =>
+        CancelDeploymentMissing2$inboundSchema
+      ).and(z.object({ type: z.literal("query") })),
     ]),
   ).optional(),
   mitigate: z.lazy(() => CancelDeploymentRoutesMitigate$inboundSchema)
@@ -6003,11 +6020,19 @@ export type CancelDeploymentRoutes1$Outbound = {
   important?: boolean | undefined;
   status?: number | undefined;
   has?:
-    | Array<CancelDeploymentHas1$Outbound | CancelDeploymentHas2$Outbound>
+    | Array<
+      | CancelDeploymentHas1$Outbound
+      | (CancelDeploymentHas2$Outbound & { type: "header" })
+      | (CancelDeploymentHas2$Outbound & { type: "cookie" })
+      | (CancelDeploymentHas2$Outbound & { type: "query" })
+    >
     | undefined;
   missing?:
     | Array<
-      CancelDeploymentMissing1$Outbound | CancelDeploymentMissing2$Outbound
+      | CancelDeploymentMissing1$Outbound
+      | (CancelDeploymentMissing2$Outbound & { type: "header" })
+      | (CancelDeploymentMissing2$Outbound & { type: "cookie" })
+      | (CancelDeploymentMissing2$Outbound & { type: "query" })
     >
     | undefined;
   mitigate?: CancelDeploymentRoutesMitigate$Outbound | undefined;
@@ -6037,13 +6062,29 @@ export const CancelDeploymentRoutes1$outboundSchema: z.ZodType<
   has: z.array(
     z.union([
       z.lazy(() => CancelDeploymentHas1$outboundSchema),
-      z.lazy(() => CancelDeploymentHas2$outboundSchema),
+      z.lazy(() =>
+        CancelDeploymentHas2$outboundSchema
+      ).and(z.object({ type: z.literal("header") })),
+      z.lazy(() =>
+        CancelDeploymentHas2$outboundSchema
+      ).and(z.object({ type: z.literal("cookie") })),
+      z.lazy(() =>
+        CancelDeploymentHas2$outboundSchema
+      ).and(z.object({ type: z.literal("query") })),
     ]),
   ).optional(),
   missing: z.array(
     z.union([
       z.lazy(() => CancelDeploymentMissing1$outboundSchema),
-      z.lazy(() => CancelDeploymentMissing2$outboundSchema),
+      z.lazy(() =>
+        CancelDeploymentMissing2$outboundSchema
+      ).and(z.object({ type: z.literal("header") })),
+      z.lazy(() =>
+        CancelDeploymentMissing2$outboundSchema
+      ).and(z.object({ type: z.literal("cookie") })),
+      z.lazy(() =>
+        CancelDeploymentMissing2$outboundSchema
+      ).and(z.object({ type: z.literal("query") })),
     ]),
   ).optional(),
   mitigate: z.lazy(() => CancelDeploymentRoutesMitigate$outboundSchema)
@@ -6117,15 +6158,6 @@ export function cancelDeploymentRoutesFromJSON(
 }
 
 /** @internal */
-export const CancelDeploymentGitRepoDeploymentsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof CancelDeploymentGitRepoDeploymentsResponseType> = z
-    .nativeEnum(CancelDeploymentGitRepoDeploymentsResponseType);
-/** @internal */
-export const CancelDeploymentGitRepoDeploymentsResponseType$outboundSchema:
-  z.ZodNativeEnum<typeof CancelDeploymentGitRepoDeploymentsResponseType> =
-    CancelDeploymentGitRepoDeploymentsResponseType$inboundSchema;
-
-/** @internal */
 export const CancelDeploymentGitRepoDeploymentsResponseOwnerType$inboundSchema:
   z.ZodNativeEnum<typeof CancelDeploymentGitRepoDeploymentsResponseOwnerType> =
     z.nativeEnum(CancelDeploymentGitRepoDeploymentsResponseOwnerType);
@@ -6143,7 +6175,7 @@ export const CancelDeploymentGitRepo3$inboundSchema: z.ZodType<
   owner: z.string(),
   repoUuid: z.string(),
   slug: z.string(),
-  type: CancelDeploymentGitRepoDeploymentsResponseType$inboundSchema,
+  type: z.literal("bitbucket"),
   workspaceUuid: z.string(),
   path: z.string(),
   defaultBranch: z.string(),
@@ -6156,7 +6188,7 @@ export type CancelDeploymentGitRepo3$Outbound = {
   owner: string;
   repoUuid: string;
   slug: string;
-  type: string;
+  type: "bitbucket";
   workspaceUuid: string;
   path: string;
   defaultBranch: string;
@@ -6174,7 +6206,7 @@ export const CancelDeploymentGitRepo3$outboundSchema: z.ZodType<
   owner: z.string(),
   repoUuid: z.string(),
   slug: z.string(),
-  type: CancelDeploymentGitRepoDeploymentsResponseType$outboundSchema,
+  type: z.literal("bitbucket"),
   workspaceUuid: z.string(),
   path: z.string(),
   defaultBranch: z.string(),
@@ -6201,16 +6233,6 @@ export function cancelDeploymentGitRepo3FromJSON(
 }
 
 /** @internal */
-export const CancelDeploymentGitRepoDeploymentsType$inboundSchema:
-  z.ZodNativeEnum<typeof CancelDeploymentGitRepoDeploymentsType> = z.nativeEnum(
-    CancelDeploymentGitRepoDeploymentsType,
-  );
-/** @internal */
-export const CancelDeploymentGitRepoDeploymentsType$outboundSchema:
-  z.ZodNativeEnum<typeof CancelDeploymentGitRepoDeploymentsType> =
-    CancelDeploymentGitRepoDeploymentsType$inboundSchema;
-
-/** @internal */
 export const CancelDeploymentGitRepoDeploymentsOwnerType$inboundSchema:
   z.ZodNativeEnum<typeof CancelDeploymentGitRepoDeploymentsOwnerType> = z
     .nativeEnum(CancelDeploymentGitRepoDeploymentsOwnerType);
@@ -6228,7 +6250,7 @@ export const CancelDeploymentGitRepo2$inboundSchema: z.ZodType<
   org: z.string(),
   repo: z.string(),
   repoId: z.number(),
-  type: CancelDeploymentGitRepoDeploymentsType$inboundSchema,
+  type: z.literal("github"),
   repoOwnerId: z.number(),
   path: z.string(),
   defaultBranch: z.string(),
@@ -6241,7 +6263,7 @@ export type CancelDeploymentGitRepo2$Outbound = {
   org: string;
   repo: string;
   repoId: number;
-  type: string;
+  type: "github";
   repoOwnerId: number;
   path: string;
   defaultBranch: string;
@@ -6259,7 +6281,7 @@ export const CancelDeploymentGitRepo2$outboundSchema: z.ZodType<
   org: z.string(),
   repo: z.string(),
   repoId: z.number(),
-  type: CancelDeploymentGitRepoDeploymentsType$outboundSchema,
+  type: z.literal("github"),
   repoOwnerId: z.number(),
   path: z.string(),
   defaultBranch: z.string(),
@@ -6286,15 +6308,6 @@ export function cancelDeploymentGitRepo2FromJSON(
 }
 
 /** @internal */
-export const CancelDeploymentGitRepoType$inboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentGitRepoType
-> = z.nativeEnum(CancelDeploymentGitRepoType);
-/** @internal */
-export const CancelDeploymentGitRepoType$outboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentGitRepoType
-> = CancelDeploymentGitRepoType$inboundSchema;
-
-/** @internal */
 export const CancelDeploymentGitRepoOwnerType$inboundSchema: z.ZodNativeEnum<
   typeof CancelDeploymentGitRepoOwnerType
 > = z.nativeEnum(CancelDeploymentGitRepoOwnerType);
@@ -6311,7 +6324,7 @@ export const CancelDeploymentGitRepo1$inboundSchema: z.ZodType<
 > = z.object({
   namespace: z.string(),
   projectId: z.number(),
-  type: CancelDeploymentGitRepoType$inboundSchema,
+  type: z.literal("gitlab"),
   url: z.string(),
   path: z.string(),
   defaultBranch: z.string(),
@@ -6323,7 +6336,7 @@ export const CancelDeploymentGitRepo1$inboundSchema: z.ZodType<
 export type CancelDeploymentGitRepo1$Outbound = {
   namespace: string;
   projectId: number;
-  type: string;
+  type: "gitlab";
   url: string;
   path: string;
   defaultBranch: string;
@@ -6340,7 +6353,7 @@ export const CancelDeploymentGitRepo1$outboundSchema: z.ZodType<
 > = z.object({
   namespace: z.string(),
   projectId: z.number(),
-  type: CancelDeploymentGitRepoType$outboundSchema,
+  type: z.literal("gitlab"),
   url: z.string(),
   path: z.string(),
   defaultBranch: z.string(),
@@ -6372,15 +6385,15 @@ export const CancelDeploymentGitRepo$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
+  z.lazy(() => CancelDeploymentGitRepo1$inboundSchema),
   z.lazy(() => CancelDeploymentGitRepo2$inboundSchema),
   z.lazy(() => CancelDeploymentGitRepo3$inboundSchema),
-  z.lazy(() => CancelDeploymentGitRepo1$inboundSchema),
 ]);
 /** @internal */
 export type CancelDeploymentGitRepo$Outbound =
+  | CancelDeploymentGitRepo1$Outbound
   | CancelDeploymentGitRepo2$Outbound
-  | CancelDeploymentGitRepo3$Outbound
-  | CancelDeploymentGitRepo1$Outbound;
+  | CancelDeploymentGitRepo3$Outbound;
 
 /** @internal */
 export const CancelDeploymentGitRepo$outboundSchema: z.ZodType<
@@ -6388,9 +6401,9 @@ export const CancelDeploymentGitRepo$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CancelDeploymentGitRepo
 > = z.union([
+  z.lazy(() => CancelDeploymentGitRepo1$outboundSchema),
   z.lazy(() => CancelDeploymentGitRepo2$outboundSchema),
   z.lazy(() => CancelDeploymentGitRepo3$outboundSchema),
-  z.lazy(() => CancelDeploymentGitRepo1$outboundSchema),
 ]);
 
 export function cancelDeploymentGitRepoToJSON(
@@ -7072,9 +7085,9 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
   ),
   gitRepo: z.nullable(
     z.union([
+      z.lazy(() => CancelDeploymentGitRepo1$inboundSchema),
       z.lazy(() => CancelDeploymentGitRepo2$inboundSchema),
       z.lazy(() => CancelDeploymentGitRepo3$inboundSchema),
-      z.lazy(() => CancelDeploymentGitRepo1$inboundSchema),
     ]),
   ).optional(),
   flags: z.union([
@@ -7198,9 +7211,9 @@ export type CancelDeploymentResponseBody$Outbound = {
     >
     | null;
   gitRepo?:
+    | CancelDeploymentGitRepo1$Outbound
     | CancelDeploymentGitRepo2$Outbound
     | CancelDeploymentGitRepo3$Outbound
-    | CancelDeploymentGitRepo1$Outbound
     | null
     | undefined;
   flags?:
@@ -7339,9 +7352,9 @@ export const CancelDeploymentResponseBody$outboundSchema: z.ZodType<
   ),
   gitRepo: z.nullable(
     z.union([
+      z.lazy(() => CancelDeploymentGitRepo1$outboundSchema),
       z.lazy(() => CancelDeploymentGitRepo2$outboundSchema),
       z.lazy(() => CancelDeploymentGitRepo3$outboundSchema),
-      z.lazy(() => CancelDeploymentGitRepo1$outboundSchema),
     ]),
   ).optional(),
   flags: z.union([

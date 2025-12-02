@@ -12,6 +12,6 @@ let value: UpdateDrainSourceDrainsResponse1 = {
 
 ## Fields
 
-| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `kind`                                                                                         | [models.UpdateDrainSourceDrainsResponseKind](../models/updatedrainsourcedrainsresponsekind.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `kind`             | *"self-served"*    | :heavy_check_mark: | N/A                |

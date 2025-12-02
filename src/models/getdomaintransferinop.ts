@@ -29,7 +29,7 @@ export type GetDomainTransferInRequest = {
  * NotAuthorizedForScope
  */
 export type GetDomainTransferInDomainsRegistrarResponseBody =
-  | NotAuthorizedForScope
+  | (NotAuthorizedForScope & { code: "not_authorized_for_scope" })
   | Forbidden;
 
 export const GetDomainTransferInStatus = {
@@ -105,10 +105,15 @@ export const GetDomainTransferInDomainsRegistrarResponseBody$inboundSchema:
     GetDomainTransferInDomainsRegistrarResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.union([NotAuthorizedForScope$inboundSchema, Forbidden$inboundSchema]);
+  > = z.union([
+    NotAuthorizedForScope$inboundSchema.and(
+      z.object({ code: z.literal("not_authorized_for_scope") }),
+    ),
+    Forbidden$inboundSchema,
+  ]);
 /** @internal */
 export type GetDomainTransferInDomainsRegistrarResponseBody$Outbound =
-  | NotAuthorizedForScope$Outbound
+  | (NotAuthorizedForScope$Outbound & { code: "not_authorized_for_scope" })
   | Forbidden$Outbound;
 
 /** @internal */
@@ -117,7 +122,12 @@ export const GetDomainTransferInDomainsRegistrarResponseBody$outboundSchema:
     GetDomainTransferInDomainsRegistrarResponseBody$Outbound,
     z.ZodTypeDef,
     unknown
-  > = z.union([NotAuthorizedForScope$outboundSchema, Forbidden$outboundSchema]);
+  > = z.union([
+    NotAuthorizedForScope$outboundSchema.and(
+      z.object({ code: z.literal("not_authorized_for_scope") }),
+    ),
+    Forbidden$outboundSchema,
+  ]);
 
 export function getDomainTransferInDomainsRegistrarResponseBodyToJSON(
   getDomainTransferInDomainsRegistrarResponseBody:

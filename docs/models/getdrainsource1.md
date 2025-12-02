@@ -12,6 +12,6 @@ let value: GetDrainSource1 = {
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `kind`                                                       | [models.GetDrainSourceKind](../models/getdrainsourcekind.md) | :heavy_check_mark:                                           | N/A                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `kind`             | *"self-served"*    | :heavy_check_mark: | N/A                |

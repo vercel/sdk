@@ -11529,8 +11529,13 @@ func (o *Credential) GetID() string {
 type CredentialUnionType string
 
 const (
-	CredentialUnionTypeCredential                      CredentialUnionType = "credential"
-	CredentialUnionTypeCredentialGithubOauthCustomHost CredentialUnionType = "credential_GithubOauthCustomHost"
+	CredentialUnionTypeGitlab                CredentialUnionType = "gitlab"
+	CredentialUnionTypeBitbucket             CredentialUnionType = "bitbucket"
+	CredentialUnionTypeGoogle                CredentialUnionType = "google"
+	CredentialUnionTypeApple                 CredentialUnionType = "apple"
+	CredentialUnionTypeGithubOauth           CredentialUnionType = "github-oauth"
+	CredentialUnionTypeGithubOauthLimited    CredentialUnionType = "github-oauth-limited"
+	CredentialUnionTypeGithubOauthCustomHost CredentialUnionType = "github-oauth-custom-host"
 )
 
 type CredentialUnion struct {
@@ -11540,37 +11545,164 @@ type CredentialUnion struct {
 	Type CredentialUnionType
 }
 
-func CreateCredentialUnionCredential(credential Credential) CredentialUnion {
-	typ := CredentialUnionTypeCredential
+func CreateCredentialUnionGitlab(gitlab Credential) CredentialUnion {
+	typ := CredentialUnionTypeGitlab
+
+	typStr := CredentialType(typ)
+	gitlab.Type = typStr
 
 	return CredentialUnion{
-		Credential: &credential,
+		Credential: &gitlab,
 		Type:       typ,
 	}
 }
 
-func CreateCredentialUnionCredentialGithubOauthCustomHost(credentialGithubOauthCustomHost CredentialGithubOauthCustomHost) CredentialUnion {
-	typ := CredentialUnionTypeCredentialGithubOauthCustomHost
+func CreateCredentialUnionBitbucket(bitbucket Credential) CredentialUnion {
+	typ := CredentialUnionTypeBitbucket
+
+	typStr := CredentialType(typ)
+	bitbucket.Type = typStr
 
 	return CredentialUnion{
-		CredentialGithubOauthCustomHost: &credentialGithubOauthCustomHost,
+		Credential: &bitbucket,
+		Type:       typ,
+	}
+}
+
+func CreateCredentialUnionGoogle(google Credential) CredentialUnion {
+	typ := CredentialUnionTypeGoogle
+
+	typStr := CredentialType(typ)
+	google.Type = typStr
+
+	return CredentialUnion{
+		Credential: &google,
+		Type:       typ,
+	}
+}
+
+func CreateCredentialUnionApple(apple Credential) CredentialUnion {
+	typ := CredentialUnionTypeApple
+
+	typStr := CredentialType(typ)
+	apple.Type = typStr
+
+	return CredentialUnion{
+		Credential: &apple,
+		Type:       typ,
+	}
+}
+
+func CreateCredentialUnionGithubOauth(githubOauth Credential) CredentialUnion {
+	typ := CredentialUnionTypeGithubOauth
+
+	typStr := CredentialType(typ)
+	githubOauth.Type = typStr
+
+	return CredentialUnion{
+		Credential: &githubOauth,
+		Type:       typ,
+	}
+}
+
+func CreateCredentialUnionGithubOauthLimited(githubOauthLimited Credential) CredentialUnion {
+	typ := CredentialUnionTypeGithubOauthLimited
+
+	typStr := CredentialType(typ)
+	githubOauthLimited.Type = typStr
+
+	return CredentialUnion{
+		Credential: &githubOauthLimited,
+		Type:       typ,
+	}
+}
+
+func CreateCredentialUnionGithubOauthCustomHost(githubOauthCustomHost CredentialGithubOauthCustomHost) CredentialUnion {
+	typ := CredentialUnionTypeGithubOauthCustomHost
+
+	typStr := TypeGithubOauthCustomHost(typ)
+	githubOauthCustomHost.Type = typStr
+
+	return CredentialUnion{
+		CredentialGithubOauthCustomHost: &githubOauthCustomHost,
 		Type:                            typ,
 	}
 }
 
 func (u *CredentialUnion) UnmarshalJSON(data []byte) error {
 
-	var credentialGithubOauthCustomHost CredentialGithubOauthCustomHost = CredentialGithubOauthCustomHost{}
-	if err := utils.UnmarshalJSON(data, &credentialGithubOauthCustomHost, "", true, nil); err == nil {
-		u.CredentialGithubOauthCustomHost = &credentialGithubOauthCustomHost
-		u.Type = CredentialUnionTypeCredentialGithubOauthCustomHost
-		return nil
+	type discriminator struct {
+		Type string `json:"type"`
 	}
 
-	var credential Credential = Credential{}
-	if err := utils.UnmarshalJSON(data, &credential, "", true, nil); err == nil {
-		u.Credential = &credential
-		u.Type = CredentialUnionTypeCredential
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Type {
+	case "gitlab":
+		credential := new(Credential)
+		if err := utils.UnmarshalJSON(data, &credential, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == gitlab) type Credential within CredentialUnion: %w", string(data), err)
+		}
+
+		u.Credential = credential
+		u.Type = CredentialUnionTypeGitlab
+		return nil
+	case "bitbucket":
+		credential := new(Credential)
+		if err := utils.UnmarshalJSON(data, &credential, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == bitbucket) type Credential within CredentialUnion: %w", string(data), err)
+		}
+
+		u.Credential = credential
+		u.Type = CredentialUnionTypeBitbucket
+		return nil
+	case "google":
+		credential := new(Credential)
+		if err := utils.UnmarshalJSON(data, &credential, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == google) type Credential within CredentialUnion: %w", string(data), err)
+		}
+
+		u.Credential = credential
+		u.Type = CredentialUnionTypeGoogle
+		return nil
+	case "apple":
+		credential := new(Credential)
+		if err := utils.UnmarshalJSON(data, &credential, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == apple) type Credential within CredentialUnion: %w", string(data), err)
+		}
+
+		u.Credential = credential
+		u.Type = CredentialUnionTypeApple
+		return nil
+	case "github-oauth":
+		credential := new(Credential)
+		if err := utils.UnmarshalJSON(data, &credential, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == github-oauth) type Credential within CredentialUnion: %w", string(data), err)
+		}
+
+		u.Credential = credential
+		u.Type = CredentialUnionTypeGithubOauth
+		return nil
+	case "github-oauth-limited":
+		credential := new(Credential)
+		if err := utils.UnmarshalJSON(data, &credential, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == github-oauth-limited) type Credential within CredentialUnion: %w", string(data), err)
+		}
+
+		u.Credential = credential
+		u.Type = CredentialUnionTypeGithubOauthLimited
+		return nil
+	case "github-oauth-custom-host":
+		credentialGithubOauthCustomHost := new(CredentialGithubOauthCustomHost)
+		if err := utils.UnmarshalJSON(data, &credentialGithubOauthCustomHost, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == github-oauth-custom-host) type CredentialGithubOauthCustomHost within CredentialUnion: %w", string(data), err)
+		}
+
+		u.CredentialGithubOauthCustomHost = credentialGithubOauthCustomHost
+		u.Type = CredentialUnionTypeGithubOauthCustomHost
 		return nil
 	}
 

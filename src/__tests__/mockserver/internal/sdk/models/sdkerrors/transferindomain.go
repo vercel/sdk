@@ -13,8 +13,8 @@ import (
 type TransferInDomainForbiddenType string
 
 const (
-	TransferInDomainForbiddenTypeNotAuthorizedForScopeError TransferInDomainForbiddenType = "NotAuthorizedForScope_error"
-	TransferInDomainForbiddenTypeForbiddenError             TransferInDomainForbiddenType = "Forbidden_error"
+	TransferInDomainForbiddenTypeNotAuthorizedForScope TransferInDomainForbiddenType = "not_authorized_for_scope"
+	TransferInDomainForbiddenTypeForbidden             TransferInDomainForbiddenType = "forbidden"
 )
 
 // TransferInDomainForbidden - NotAuthorizedForScope
@@ -29,37 +29,53 @@ type TransferInDomainForbidden struct {
 
 var _ error = &TransferInDomainForbidden{}
 
-func CreateTransferInDomainForbiddenNotAuthorizedForScopeError(notAuthorizedForScopeError NotAuthorizedForScopeError) TransferInDomainForbidden {
-	typ := TransferInDomainForbiddenTypeNotAuthorizedForScopeError
+func CreateTransferInDomainForbiddenNotAuthorizedForScope(notAuthorizedForScope NotAuthorizedForScopeError) TransferInDomainForbidden {
+	typ := TransferInDomainForbiddenTypeNotAuthorizedForScope
 
 	return TransferInDomainForbidden{
-		NotAuthorizedForScopeError: &notAuthorizedForScopeError,
+		NotAuthorizedForScopeError: &notAuthorizedForScope,
 		Type:                       typ,
 	}
 }
 
-func CreateTransferInDomainForbiddenForbiddenError(forbiddenError ForbiddenError) TransferInDomainForbidden {
-	typ := TransferInDomainForbiddenTypeForbiddenError
+func CreateTransferInDomainForbiddenForbidden(forbidden ForbiddenError) TransferInDomainForbidden {
+	typ := TransferInDomainForbiddenTypeForbidden
 
 	return TransferInDomainForbidden{
-		ForbiddenError: &forbiddenError,
+		ForbiddenError: &forbidden,
 		Type:           typ,
 	}
 }
 
 func (u *TransferInDomainForbidden) UnmarshalJSON(data []byte) error {
 
-	var notAuthorizedForScopeError NotAuthorizedForScopeError = NotAuthorizedForScopeError{}
-	if err := utils.UnmarshalJSON(data, &notAuthorizedForScopeError, "", true, nil); err == nil {
-		u.NotAuthorizedForScopeError = &notAuthorizedForScopeError
-		u.Type = TransferInDomainForbiddenTypeNotAuthorizedForScopeError
-		return nil
+	type discriminator struct {
+		Code string `json:"code"`
 	}
 
-	var forbiddenError ForbiddenError = ForbiddenError{}
-	if err := utils.UnmarshalJSON(data, &forbiddenError, "", true, nil); err == nil {
-		u.ForbiddenError = &forbiddenError
-		u.Type = TransferInDomainForbiddenTypeForbiddenError
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Code {
+	case "not_authorized_for_scope":
+		notAuthorizedForScopeError := new(NotAuthorizedForScopeError)
+		if err := utils.UnmarshalJSON(data, &notAuthorizedForScopeError, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == not_authorized_for_scope) type NotAuthorizedForScopeError within TransferInDomainForbidden: %w", string(data), err)
+		}
+
+		u.NotAuthorizedForScopeError = notAuthorizedForScopeError
+		u.Type = TransferInDomainForbiddenTypeNotAuthorizedForScope
+		return nil
+	case "forbidden":
+		forbiddenError := new(ForbiddenError)
+		if err := utils.UnmarshalJSON(data, &forbiddenError, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == forbidden) type ForbiddenError within TransferInDomainForbidden: %w", string(data), err)
+		}
+
+		u.ForbiddenError = forbiddenError
+		u.Type = TransferInDomainForbiddenTypeForbidden
 		return nil
 	}
 
@@ -80,10 +96,10 @@ func (u TransferInDomainForbidden) MarshalJSON() ([]byte, error) {
 
 func (u TransferInDomainForbidden) Error() string {
 	switch u.Type {
-	case TransferInDomainForbiddenTypeNotAuthorizedForScopeError:
+	case TransferInDomainForbiddenTypeNotAuthorizedForScope:
 		data, _ := json.Marshal(u.NotAuthorizedForScopeError)
 		return string(data)
-	case TransferInDomainForbiddenTypeForbiddenError:
+	case TransferInDomainForbiddenTypeForbidden:
 		data, _ := json.Marshal(u.ForbiddenError)
 		return string(data)
 	default:

@@ -5,7 +5,6 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
-import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
@@ -60,29 +59,16 @@ export type UpdateProjectProtectionBypassRequest = {
   requestBody: UpdateProjectProtectionBypassRequestBody;
 };
 
-export const UpdateProjectProtectionBypassProtectionBypassProjectsScope = {
-  AutomationBypass: "automation-bypass",
-} as const;
-export type UpdateProjectProtectionBypassProtectionBypassProjectsScope =
-  ClosedEnum<typeof UpdateProjectProtectionBypassProtectionBypassProjectsScope>;
-
 export type UpdateProjectProtectionBypassProtectionBypass2 = {
   createdAt: number;
   createdBy: string;
-  scope: UpdateProjectProtectionBypassProtectionBypassProjectsScope;
+  scope: "automation-bypass";
 };
-
-export const UpdateProjectProtectionBypassProtectionBypassScope = {
-  IntegrationAutomationBypass: "integration-automation-bypass",
-} as const;
-export type UpdateProjectProtectionBypassProtectionBypassScope = ClosedEnum<
-  typeof UpdateProjectProtectionBypassProtectionBypassScope
->;
 
 export type UpdateProjectProtectionBypassProtectionBypass1 = {
   createdAt: number;
   createdBy: string;
-  scope: UpdateProjectProtectionBypassProtectionBypassScope;
+  scope: "integration-automation-bypass";
   integrationId: string;
   configurationId: string;
 };
@@ -284,17 +270,6 @@ export function updateProjectProtectionBypassRequestFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectProtectionBypassProtectionBypassProjectsScope$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectProtectionBypassProtectionBypassProjectsScope
-  > = z.nativeEnum(UpdateProjectProtectionBypassProtectionBypassProjectsScope);
-/** @internal */
-export const UpdateProjectProtectionBypassProtectionBypassProjectsScope$outboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectProtectionBypassProtectionBypassProjectsScope
-  > = UpdateProjectProtectionBypassProtectionBypassProjectsScope$inboundSchema;
-
-/** @internal */
 export const UpdateProjectProtectionBypassProtectionBypass2$inboundSchema:
   z.ZodType<
     UpdateProjectProtectionBypassProtectionBypass2,
@@ -303,14 +278,13 @@ export const UpdateProjectProtectionBypassProtectionBypass2$inboundSchema:
   > = z.object({
     createdAt: z.number(),
     createdBy: z.string(),
-    scope:
-      UpdateProjectProtectionBypassProtectionBypassProjectsScope$inboundSchema,
+    scope: z.literal("automation-bypass"),
   });
 /** @internal */
 export type UpdateProjectProtectionBypassProtectionBypass2$Outbound = {
   createdAt: number;
   createdBy: string;
-  scope: string;
+  scope: "automation-bypass";
 };
 
 /** @internal */
@@ -322,8 +296,7 @@ export const UpdateProjectProtectionBypassProtectionBypass2$outboundSchema:
   > = z.object({
     createdAt: z.number(),
     createdBy: z.string(),
-    scope:
-      UpdateProjectProtectionBypassProtectionBypassProjectsScope$outboundSchema,
+    scope: z.literal("automation-bypass"),
   });
 
 export function updateProjectProtectionBypassProtectionBypass2ToJSON(
@@ -353,15 +326,6 @@ export function updateProjectProtectionBypassProtectionBypass2FromJSON(
 }
 
 /** @internal */
-export const UpdateProjectProtectionBypassProtectionBypassScope$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectProtectionBypassProtectionBypassScope> = z
-    .nativeEnum(UpdateProjectProtectionBypassProtectionBypassScope);
-/** @internal */
-export const UpdateProjectProtectionBypassProtectionBypassScope$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectProtectionBypassProtectionBypassScope> =
-    UpdateProjectProtectionBypassProtectionBypassScope$inboundSchema;
-
-/** @internal */
 export const UpdateProjectProtectionBypassProtectionBypass1$inboundSchema:
   z.ZodType<
     UpdateProjectProtectionBypassProtectionBypass1,
@@ -370,7 +334,7 @@ export const UpdateProjectProtectionBypassProtectionBypass1$inboundSchema:
   > = z.object({
     createdAt: z.number(),
     createdBy: z.string(),
-    scope: UpdateProjectProtectionBypassProtectionBypassScope$inboundSchema,
+    scope: z.literal("integration-automation-bypass"),
     integrationId: z.string(),
     configurationId: z.string(),
   });
@@ -378,7 +342,7 @@ export const UpdateProjectProtectionBypassProtectionBypass1$inboundSchema:
 export type UpdateProjectProtectionBypassProtectionBypass1$Outbound = {
   createdAt: number;
   createdBy: string;
-  scope: string;
+  scope: "integration-automation-bypass";
   integrationId: string;
   configurationId: string;
 };
@@ -392,7 +356,7 @@ export const UpdateProjectProtectionBypassProtectionBypass1$outboundSchema:
   > = z.object({
     createdAt: z.number(),
     createdBy: z.string(),
-    scope: UpdateProjectProtectionBypassProtectionBypassScope$outboundSchema,
+    scope: z.literal("integration-automation-bypass"),
     integrationId: z.string(),
     configurationId: z.string(),
   });

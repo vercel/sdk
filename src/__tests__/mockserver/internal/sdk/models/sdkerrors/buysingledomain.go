@@ -13,8 +13,8 @@ import (
 type BuySingleDomainForbiddenType string
 
 const (
-	BuySingleDomainForbiddenTypeNotAuthorizedForScopeError BuySingleDomainForbiddenType = "NotAuthorizedForScope_error"
-	BuySingleDomainForbiddenTypeForbiddenError             BuySingleDomainForbiddenType = "Forbidden_error"
+	BuySingleDomainForbiddenTypeNotAuthorizedForScope BuySingleDomainForbiddenType = "not_authorized_for_scope"
+	BuySingleDomainForbiddenTypeForbidden             BuySingleDomainForbiddenType = "forbidden"
 )
 
 // BuySingleDomainForbidden - NotAuthorizedForScope
@@ -29,37 +29,53 @@ type BuySingleDomainForbidden struct {
 
 var _ error = &BuySingleDomainForbidden{}
 
-func CreateBuySingleDomainForbiddenNotAuthorizedForScopeError(notAuthorizedForScopeError NotAuthorizedForScopeError) BuySingleDomainForbidden {
-	typ := BuySingleDomainForbiddenTypeNotAuthorizedForScopeError
+func CreateBuySingleDomainForbiddenNotAuthorizedForScope(notAuthorizedForScope NotAuthorizedForScopeError) BuySingleDomainForbidden {
+	typ := BuySingleDomainForbiddenTypeNotAuthorizedForScope
 
 	return BuySingleDomainForbidden{
-		NotAuthorizedForScopeError: &notAuthorizedForScopeError,
+		NotAuthorizedForScopeError: &notAuthorizedForScope,
 		Type:                       typ,
 	}
 }
 
-func CreateBuySingleDomainForbiddenForbiddenError(forbiddenError ForbiddenError) BuySingleDomainForbidden {
-	typ := BuySingleDomainForbiddenTypeForbiddenError
+func CreateBuySingleDomainForbiddenForbidden(forbidden ForbiddenError) BuySingleDomainForbidden {
+	typ := BuySingleDomainForbiddenTypeForbidden
 
 	return BuySingleDomainForbidden{
-		ForbiddenError: &forbiddenError,
+		ForbiddenError: &forbidden,
 		Type:           typ,
 	}
 }
 
 func (u *BuySingleDomainForbidden) UnmarshalJSON(data []byte) error {
 
-	var notAuthorizedForScopeError NotAuthorizedForScopeError = NotAuthorizedForScopeError{}
-	if err := utils.UnmarshalJSON(data, &notAuthorizedForScopeError, "", true, nil); err == nil {
-		u.NotAuthorizedForScopeError = &notAuthorizedForScopeError
-		u.Type = BuySingleDomainForbiddenTypeNotAuthorizedForScopeError
-		return nil
+	type discriminator struct {
+		Code string `json:"code"`
 	}
 
-	var forbiddenError ForbiddenError = ForbiddenError{}
-	if err := utils.UnmarshalJSON(data, &forbiddenError, "", true, nil); err == nil {
-		u.ForbiddenError = &forbiddenError
-		u.Type = BuySingleDomainForbiddenTypeForbiddenError
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Code {
+	case "not_authorized_for_scope":
+		notAuthorizedForScopeError := new(NotAuthorizedForScopeError)
+		if err := utils.UnmarshalJSON(data, &notAuthorizedForScopeError, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == not_authorized_for_scope) type NotAuthorizedForScopeError within BuySingleDomainForbidden: %w", string(data), err)
+		}
+
+		u.NotAuthorizedForScopeError = notAuthorizedForScopeError
+		u.Type = BuySingleDomainForbiddenTypeNotAuthorizedForScope
+		return nil
+	case "forbidden":
+		forbiddenError := new(ForbiddenError)
+		if err := utils.UnmarshalJSON(data, &forbiddenError, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == forbidden) type ForbiddenError within BuySingleDomainForbidden: %w", string(data), err)
+		}
+
+		u.ForbiddenError = forbiddenError
+		u.Type = BuySingleDomainForbiddenTypeForbidden
 		return nil
 	}
 
@@ -80,10 +96,10 @@ func (u BuySingleDomainForbidden) MarshalJSON() ([]byte, error) {
 
 func (u BuySingleDomainForbidden) Error() string {
 	switch u.Type {
-	case BuySingleDomainForbiddenTypeNotAuthorizedForScopeError:
+	case BuySingleDomainForbiddenTypeNotAuthorizedForScope:
 		data, _ := json.Marshal(u.NotAuthorizedForScopeError)
 		return string(data)
-	case BuySingleDomainForbiddenTypeForbiddenError:
+	case BuySingleDomainForbiddenTypeForbidden:
 		data, _ := json.Marshal(u.ForbiddenError)
 		return string(data)
 	default:

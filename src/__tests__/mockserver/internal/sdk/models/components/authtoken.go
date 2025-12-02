@@ -347,8 +347,8 @@ func (o *ScopeUser) GetExpiresAt() *float64 {
 type ScopeType string
 
 const (
-	ScopeTypeScopeUser ScopeType = "scope_User"
-	ScopeTypeScopeTeam ScopeType = "scope_Team"
+	ScopeTypeUser ScopeType = "user"
+	ScopeTypeTeam ScopeType = "team"
 )
 
 type Scope struct {
@@ -358,37 +358,59 @@ type Scope struct {
 	Type ScopeType
 }
 
-func CreateScopeScopeUser(scopeUser ScopeUser) Scope {
-	typ := ScopeTypeScopeUser
+func CreateScopeUser(user ScopeUser) Scope {
+	typ := ScopeTypeUser
+
+	typStr := AuthTokenTypeUser(typ)
+	user.Type = typStr
 
 	return Scope{
-		ScopeUser: &scopeUser,
+		ScopeUser: &user,
 		Type:      typ,
 	}
 }
 
-func CreateScopeScopeTeam(scopeTeam ScopeTeam) Scope {
-	typ := ScopeTypeScopeTeam
+func CreateScopeTeam(team ScopeTeam) Scope {
+	typ := ScopeTypeTeam
+
+	typStr := TypeTeam(typ)
+	team.Type = typStr
 
 	return Scope{
-		ScopeTeam: &scopeTeam,
+		ScopeTeam: &team,
 		Type:      typ,
 	}
 }
 
 func (u *Scope) UnmarshalJSON(data []byte) error {
 
-	var scopeTeam ScopeTeam = ScopeTeam{}
-	if err := utils.UnmarshalJSON(data, &scopeTeam, "", true, nil); err == nil {
-		u.ScopeTeam = &scopeTeam
-		u.Type = ScopeTypeScopeTeam
-		return nil
+	type discriminator struct {
+		Type string `json:"type"`
 	}
 
-	var scopeUser ScopeUser = ScopeUser{}
-	if err := utils.UnmarshalJSON(data, &scopeUser, "", true, nil); err == nil {
-		u.ScopeUser = &scopeUser
-		u.Type = ScopeTypeScopeUser
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Type {
+	case "user":
+		scopeUser := new(ScopeUser)
+		if err := utils.UnmarshalJSON(data, &scopeUser, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == user) type ScopeUser within Scope: %w", string(data), err)
+		}
+
+		u.ScopeUser = scopeUser
+		u.Type = ScopeTypeUser
+		return nil
+	case "team":
+		scopeTeam := new(ScopeTeam)
+		if err := utils.UnmarshalJSON(data, &scopeTeam, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == team) type ScopeTeam within Scope: %w", string(data), err)
+		}
+
+		u.ScopeTeam = scopeTeam
+		u.Type = ScopeTypeTeam
 		return nil
 	}
 

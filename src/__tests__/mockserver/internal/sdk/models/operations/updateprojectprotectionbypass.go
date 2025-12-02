@@ -245,8 +245,8 @@ func (o *UpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypas
 type UpdateProjectProtectionBypassProtectionBypassUnionType string
 
 const (
-	UpdateProjectProtectionBypassProtectionBypassUnionTypeUpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass UpdateProjectProtectionBypassProtectionBypassUnionType = "updateProjectProtectionBypass_protectionBypass_IntegrationAutomationBypass"
-	UpdateProjectProtectionBypassProtectionBypassUnionTypeUpdateProjectProtectionBypassProtectionBypassAutomationBypass            UpdateProjectProtectionBypassProtectionBypassUnionType = "updateProjectProtectionBypass_protectionBypass_AutomationBypass"
+	UpdateProjectProtectionBypassProtectionBypassUnionTypeIntegrationAutomationBypass UpdateProjectProtectionBypassProtectionBypassUnionType = "integration-automation-bypass"
+	UpdateProjectProtectionBypassProtectionBypassUnionTypeAutomationBypass            UpdateProjectProtectionBypassProtectionBypassUnionType = "automation-bypass"
 )
 
 type UpdateProjectProtectionBypassProtectionBypassUnion struct {
@@ -256,37 +256,59 @@ type UpdateProjectProtectionBypassProtectionBypassUnion struct {
 	Type UpdateProjectProtectionBypassProtectionBypassUnionType
 }
 
-func CreateUpdateProjectProtectionBypassProtectionBypassUnionUpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass(updateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass UpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass) UpdateProjectProtectionBypassProtectionBypassUnion {
-	typ := UpdateProjectProtectionBypassProtectionBypassUnionTypeUpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass
+func CreateUpdateProjectProtectionBypassProtectionBypassUnionIntegrationAutomationBypass(integrationAutomationBypass UpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass) UpdateProjectProtectionBypassProtectionBypassUnion {
+	typ := UpdateProjectProtectionBypassProtectionBypassUnionTypeIntegrationAutomationBypass
+
+	typStr := UpdateProjectProtectionBypassScopeIntegrationAutomationBypass(typ)
+	integrationAutomationBypass.Scope = typStr
 
 	return UpdateProjectProtectionBypassProtectionBypassUnion{
-		UpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass: &updateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass,
+		UpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass: &integrationAutomationBypass,
 		Type: typ,
 	}
 }
 
-func CreateUpdateProjectProtectionBypassProtectionBypassUnionUpdateProjectProtectionBypassProtectionBypassAutomationBypass(updateProjectProtectionBypassProtectionBypassAutomationBypass UpdateProjectProtectionBypassProtectionBypassAutomationBypass) UpdateProjectProtectionBypassProtectionBypassUnion {
-	typ := UpdateProjectProtectionBypassProtectionBypassUnionTypeUpdateProjectProtectionBypassProtectionBypassAutomationBypass
+func CreateUpdateProjectProtectionBypassProtectionBypassUnionAutomationBypass(automationBypass UpdateProjectProtectionBypassProtectionBypassAutomationBypass) UpdateProjectProtectionBypassProtectionBypassUnion {
+	typ := UpdateProjectProtectionBypassProtectionBypassUnionTypeAutomationBypass
+
+	typStr := UpdateProjectProtectionBypassScopeAutomationBypass(typ)
+	automationBypass.Scope = typStr
 
 	return UpdateProjectProtectionBypassProtectionBypassUnion{
-		UpdateProjectProtectionBypassProtectionBypassAutomationBypass: &updateProjectProtectionBypassProtectionBypassAutomationBypass,
+		UpdateProjectProtectionBypassProtectionBypassAutomationBypass: &automationBypass,
 		Type: typ,
 	}
 }
 
 func (u *UpdateProjectProtectionBypassProtectionBypassUnion) UnmarshalJSON(data []byte) error {
 
-	var updateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass UpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass = UpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass{}
-	if err := utils.UnmarshalJSON(data, &updateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass, "", true, nil); err == nil {
-		u.UpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass = &updateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass
-		u.Type = UpdateProjectProtectionBypassProtectionBypassUnionTypeUpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass
-		return nil
+	type discriminator struct {
+		Scope string `json:"scope"`
 	}
 
-	var updateProjectProtectionBypassProtectionBypassAutomationBypass UpdateProjectProtectionBypassProtectionBypassAutomationBypass = UpdateProjectProtectionBypassProtectionBypassAutomationBypass{}
-	if err := utils.UnmarshalJSON(data, &updateProjectProtectionBypassProtectionBypassAutomationBypass, "", true, nil); err == nil {
-		u.UpdateProjectProtectionBypassProtectionBypassAutomationBypass = &updateProjectProtectionBypassProtectionBypassAutomationBypass
-		u.Type = UpdateProjectProtectionBypassProtectionBypassUnionTypeUpdateProjectProtectionBypassProtectionBypassAutomationBypass
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Scope {
+	case "integration-automation-bypass":
+		updateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass := new(UpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass)
+		if err := utils.UnmarshalJSON(data, &updateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Scope == integration-automation-bypass) type UpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass within UpdateProjectProtectionBypassProtectionBypassUnion: %w", string(data), err)
+		}
+
+		u.UpdateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass = updateProjectProtectionBypassProtectionBypassIntegrationAutomationBypass
+		u.Type = UpdateProjectProtectionBypassProtectionBypassUnionTypeIntegrationAutomationBypass
+		return nil
+	case "automation-bypass":
+		updateProjectProtectionBypassProtectionBypassAutomationBypass := new(UpdateProjectProtectionBypassProtectionBypassAutomationBypass)
+		if err := utils.UnmarshalJSON(data, &updateProjectProtectionBypassProtectionBypassAutomationBypass, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Scope == automation-bypass) type UpdateProjectProtectionBypassProtectionBypassAutomationBypass within UpdateProjectProtectionBypassProtectionBypassUnion: %w", string(data), err)
+		}
+
+		u.UpdateProjectProtectionBypassProtectionBypassAutomationBypass = updateProjectProtectionBypassProtectionBypassAutomationBypass
+		u.Type = UpdateProjectProtectionBypassProtectionBypassUnionTypeAutomationBypass
 		return nil
 	}
 

@@ -75,13 +75,6 @@ export type GetAliasDeployment = {
   meta?: string | undefined;
 };
 
-export const GetAliasProtectionBypassAliasesResponse200Scope = {
-  EmailInvite: "email_invite",
-} as const;
-export type GetAliasProtectionBypassAliasesResponse200Scope = ClosedEnum<
-  typeof GetAliasProtectionBypassAliasesResponse200Scope
->;
-
 /**
  * The protection bypass for the alias
  */
@@ -89,15 +82,8 @@ export type ProtectionBypass4 = {
   createdAt: number;
   lastUpdatedAt: number;
   lastUpdatedBy: string;
-  scope: GetAliasProtectionBypassAliasesResponse200Scope;
+  scope: "email_invite";
 };
-
-export const GetAliasProtectionBypassAliasesResponseScope = {
-  AliasProtectionOverride: "alias-protection-override",
-} as const;
-export type GetAliasProtectionBypassAliasesResponseScope = ClosedEnum<
-  typeof GetAliasProtectionBypassAliasesResponseScope
->;
 
 /**
  * The protection bypass for the alias
@@ -105,7 +91,7 @@ export type GetAliasProtectionBypassAliasesResponseScope = ClosedEnum<
 export type ProtectionBypass3 = {
   createdAt: number;
   createdBy: string;
-  scope: GetAliasProtectionBypassAliasesResponseScope;
+  scope: "alias-protection-override";
 };
 
 export const ProtectionBypassAccess = {
@@ -113,13 +99,6 @@ export const ProtectionBypassAccess = {
   Granted: "granted",
 } as const;
 export type ProtectionBypassAccess = ClosedEnum<typeof ProtectionBypassAccess>;
-
-export const GetAliasProtectionBypassAliasesScope = {
-  User: "user",
-} as const;
-export type GetAliasProtectionBypassAliasesScope = ClosedEnum<
-  typeof GetAliasProtectionBypassAliasesScope
->;
 
 /**
  * The protection bypass for the alias
@@ -129,15 +108,8 @@ export type GetAliasProtectionBypass2 = {
   lastUpdatedAt: number;
   lastUpdatedBy: string;
   access: ProtectionBypassAccess;
-  scope: GetAliasProtectionBypassAliasesScope;
+  scope: "user";
 };
-
-export const GetAliasProtectionBypassScope = {
-  ShareableLink: "shareable-link",
-} as const;
-export type GetAliasProtectionBypassScope = ClosedEnum<
-  typeof GetAliasProtectionBypassScope
->;
 
 /**
  * The protection bypass for the alias
@@ -145,15 +117,15 @@ export type GetAliasProtectionBypassScope = ClosedEnum<
 export type GetAliasProtectionBypass1 = {
   createdAt: number;
   createdBy: string;
-  scope: GetAliasProtectionBypassScope;
+  scope: "shareable-link";
   expires?: number | undefined;
 };
 
 export type GetAliasProtectionBypass =
-  | GetAliasProtectionBypass2
-  | ProtectionBypass4
   | GetAliasProtectionBypass1
-  | ProtectionBypass3;
+  | GetAliasProtectionBypass2
+  | ProtectionBypass3
+  | ProtectionBypass4;
 
 export type DefaultApp = {
   projectId: string;
@@ -288,10 +260,10 @@ export type GetAliasResponseBody = {
    */
   protectionBypass?: {
     [k: string]:
-      | GetAliasProtectionBypass2
-      | ProtectionBypass4
       | GetAliasProtectionBypass1
-      | ProtectionBypass3;
+      | GetAliasProtectionBypass2
+      | ProtectionBypass3
+      | ProtectionBypass4;
   } | undefined;
   /**
    * The microfrontends for the alias including the routing configuration
@@ -443,15 +415,6 @@ export function getAliasDeploymentFromJSON(
 }
 
 /** @internal */
-export const GetAliasProtectionBypassAliasesResponse200Scope$inboundSchema:
-  z.ZodNativeEnum<typeof GetAliasProtectionBypassAliasesResponse200Scope> = z
-    .nativeEnum(GetAliasProtectionBypassAliasesResponse200Scope);
-/** @internal */
-export const GetAliasProtectionBypassAliasesResponse200Scope$outboundSchema:
-  z.ZodNativeEnum<typeof GetAliasProtectionBypassAliasesResponse200Scope> =
-    GetAliasProtectionBypassAliasesResponse200Scope$inboundSchema;
-
-/** @internal */
 export const ProtectionBypass4$inboundSchema: z.ZodType<
   ProtectionBypass4,
   z.ZodTypeDef,
@@ -460,14 +423,14 @@ export const ProtectionBypass4$inboundSchema: z.ZodType<
   createdAt: z.number(),
   lastUpdatedAt: z.number(),
   lastUpdatedBy: z.string(),
-  scope: GetAliasProtectionBypassAliasesResponse200Scope$inboundSchema,
+  scope: z.literal("email_invite"),
 });
 /** @internal */
 export type ProtectionBypass4$Outbound = {
   createdAt: number;
   lastUpdatedAt: number;
   lastUpdatedBy: string;
-  scope: string;
+  scope: "email_invite";
 };
 
 /** @internal */
@@ -479,7 +442,7 @@ export const ProtectionBypass4$outboundSchema: z.ZodType<
   createdAt: z.number(),
   lastUpdatedAt: z.number(),
   lastUpdatedBy: z.string(),
-  scope: GetAliasProtectionBypassAliasesResponse200Scope$outboundSchema,
+  scope: z.literal("email_invite"),
 });
 
 export function protectionBypass4ToJSON(
@@ -500,15 +463,6 @@ export function protectionBypass4FromJSON(
 }
 
 /** @internal */
-export const GetAliasProtectionBypassAliasesResponseScope$inboundSchema:
-  z.ZodNativeEnum<typeof GetAliasProtectionBypassAliasesResponseScope> = z
-    .nativeEnum(GetAliasProtectionBypassAliasesResponseScope);
-/** @internal */
-export const GetAliasProtectionBypassAliasesResponseScope$outboundSchema:
-  z.ZodNativeEnum<typeof GetAliasProtectionBypassAliasesResponseScope> =
-    GetAliasProtectionBypassAliasesResponseScope$inboundSchema;
-
-/** @internal */
 export const ProtectionBypass3$inboundSchema: z.ZodType<
   ProtectionBypass3,
   z.ZodTypeDef,
@@ -516,13 +470,13 @@ export const ProtectionBypass3$inboundSchema: z.ZodType<
 > = z.object({
   createdAt: z.number(),
   createdBy: z.string(),
-  scope: GetAliasProtectionBypassAliasesResponseScope$inboundSchema,
+  scope: z.literal("alias-protection-override"),
 });
 /** @internal */
 export type ProtectionBypass3$Outbound = {
   createdAt: number;
   createdBy: string;
-  scope: string;
+  scope: "alias-protection-override";
 };
 
 /** @internal */
@@ -533,7 +487,7 @@ export const ProtectionBypass3$outboundSchema: z.ZodType<
 > = z.object({
   createdAt: z.number(),
   createdBy: z.string(),
-  scope: GetAliasProtectionBypassAliasesResponseScope$outboundSchema,
+  scope: z.literal("alias-protection-override"),
 });
 
 export function protectionBypass3ToJSON(
@@ -563,16 +517,6 @@ export const ProtectionBypassAccess$outboundSchema: z.ZodNativeEnum<
 > = ProtectionBypassAccess$inboundSchema;
 
 /** @internal */
-export const GetAliasProtectionBypassAliasesScope$inboundSchema:
-  z.ZodNativeEnum<typeof GetAliasProtectionBypassAliasesScope> = z.nativeEnum(
-    GetAliasProtectionBypassAliasesScope,
-  );
-/** @internal */
-export const GetAliasProtectionBypassAliasesScope$outboundSchema:
-  z.ZodNativeEnum<typeof GetAliasProtectionBypassAliasesScope> =
-    GetAliasProtectionBypassAliasesScope$inboundSchema;
-
-/** @internal */
 export const GetAliasProtectionBypass2$inboundSchema: z.ZodType<
   GetAliasProtectionBypass2,
   z.ZodTypeDef,
@@ -582,7 +526,7 @@ export const GetAliasProtectionBypass2$inboundSchema: z.ZodType<
   lastUpdatedAt: z.number(),
   lastUpdatedBy: z.string(),
   access: ProtectionBypassAccess$inboundSchema,
-  scope: GetAliasProtectionBypassAliasesScope$inboundSchema,
+  scope: z.literal("user"),
 });
 /** @internal */
 export type GetAliasProtectionBypass2$Outbound = {
@@ -590,7 +534,7 @@ export type GetAliasProtectionBypass2$Outbound = {
   lastUpdatedAt: number;
   lastUpdatedBy: string;
   access: string;
-  scope: string;
+  scope: "user";
 };
 
 /** @internal */
@@ -603,7 +547,7 @@ export const GetAliasProtectionBypass2$outboundSchema: z.ZodType<
   lastUpdatedAt: z.number(),
   lastUpdatedBy: z.string(),
   access: ProtectionBypassAccess$outboundSchema,
-  scope: GetAliasProtectionBypassAliasesScope$outboundSchema,
+  scope: z.literal("user"),
 });
 
 export function getAliasProtectionBypass2ToJSON(
@@ -624,15 +568,6 @@ export function getAliasProtectionBypass2FromJSON(
 }
 
 /** @internal */
-export const GetAliasProtectionBypassScope$inboundSchema: z.ZodNativeEnum<
-  typeof GetAliasProtectionBypassScope
-> = z.nativeEnum(GetAliasProtectionBypassScope);
-/** @internal */
-export const GetAliasProtectionBypassScope$outboundSchema: z.ZodNativeEnum<
-  typeof GetAliasProtectionBypassScope
-> = GetAliasProtectionBypassScope$inboundSchema;
-
-/** @internal */
 export const GetAliasProtectionBypass1$inboundSchema: z.ZodType<
   GetAliasProtectionBypass1,
   z.ZodTypeDef,
@@ -640,14 +575,14 @@ export const GetAliasProtectionBypass1$inboundSchema: z.ZodType<
 > = z.object({
   createdAt: z.number(),
   createdBy: z.string(),
-  scope: GetAliasProtectionBypassScope$inboundSchema,
+  scope: z.literal("shareable-link"),
   expires: z.number().optional(),
 });
 /** @internal */
 export type GetAliasProtectionBypass1$Outbound = {
   createdAt: number;
   createdBy: string;
-  scope: string;
+  scope: "shareable-link";
   expires?: number | undefined;
 };
 
@@ -659,7 +594,7 @@ export const GetAliasProtectionBypass1$outboundSchema: z.ZodType<
 > = z.object({
   createdAt: z.number(),
   createdBy: z.string(),
-  scope: GetAliasProtectionBypassScope$outboundSchema,
+  scope: z.literal("shareable-link"),
   expires: z.number().optional(),
 });
 
@@ -686,17 +621,17 @@ export const GetAliasProtectionBypass$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => GetAliasProtectionBypass2$inboundSchema),
-  z.lazy(() => ProtectionBypass4$inboundSchema),
   z.lazy(() => GetAliasProtectionBypass1$inboundSchema),
+  z.lazy(() => GetAliasProtectionBypass2$inboundSchema),
   z.lazy(() => ProtectionBypass3$inboundSchema),
+  z.lazy(() => ProtectionBypass4$inboundSchema),
 ]);
 /** @internal */
 export type GetAliasProtectionBypass$Outbound =
-  | GetAliasProtectionBypass2$Outbound
-  | ProtectionBypass4$Outbound
   | GetAliasProtectionBypass1$Outbound
-  | ProtectionBypass3$Outbound;
+  | GetAliasProtectionBypass2$Outbound
+  | ProtectionBypass3$Outbound
+  | ProtectionBypass4$Outbound;
 
 /** @internal */
 export const GetAliasProtectionBypass$outboundSchema: z.ZodType<
@@ -704,10 +639,10 @@ export const GetAliasProtectionBypass$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAliasProtectionBypass
 > = z.union([
-  z.lazy(() => GetAliasProtectionBypass2$outboundSchema),
-  z.lazy(() => ProtectionBypass4$outboundSchema),
   z.lazy(() => GetAliasProtectionBypass1$outboundSchema),
+  z.lazy(() => GetAliasProtectionBypass2$outboundSchema),
   z.lazy(() => ProtectionBypass3$outboundSchema),
+  z.lazy(() => ProtectionBypass4$outboundSchema),
 ]);
 
 export function getAliasProtectionBypassToJSON(
@@ -1004,10 +939,10 @@ export const GetAliasResponseBody$inboundSchema: z.ZodType<
   updatedAt: z.number().optional(),
   protectionBypass: z.record(
     z.union([
-      z.lazy(() => GetAliasProtectionBypass2$inboundSchema),
-      z.lazy(() => ProtectionBypass4$inboundSchema),
       z.lazy(() => GetAliasProtectionBypass1$inboundSchema),
+      z.lazy(() => GetAliasProtectionBypass2$inboundSchema),
       z.lazy(() => ProtectionBypass3$inboundSchema),
+      z.lazy(() => ProtectionBypass4$inboundSchema),
     ]),
   ).optional(),
   microfrontends: z.lazy(() => GetAliasMicrofrontends$inboundSchema).optional(),
@@ -1028,10 +963,10 @@ export type GetAliasResponseBody$Outbound = {
   updatedAt?: number | undefined;
   protectionBypass?: {
     [k: string]:
-      | GetAliasProtectionBypass2$Outbound
-      | ProtectionBypass4$Outbound
       | GetAliasProtectionBypass1$Outbound
-      | ProtectionBypass3$Outbound;
+      | GetAliasProtectionBypass2$Outbound
+      | ProtectionBypass3$Outbound
+      | ProtectionBypass4$Outbound;
   } | undefined;
   microfrontends?: GetAliasMicrofrontends$Outbound | undefined;
 };
@@ -1056,10 +991,10 @@ export const GetAliasResponseBody$outboundSchema: z.ZodType<
   updatedAt: z.number().optional(),
   protectionBypass: z.record(
     z.union([
-      z.lazy(() => GetAliasProtectionBypass2$outboundSchema),
-      z.lazy(() => ProtectionBypass4$outboundSchema),
       z.lazy(() => GetAliasProtectionBypass1$outboundSchema),
+      z.lazy(() => GetAliasProtectionBypass2$outboundSchema),
       z.lazy(() => ProtectionBypass3$outboundSchema),
+      z.lazy(() => ProtectionBypass4$outboundSchema),
     ]),
   ).optional(),
   microfrontends: z.lazy(() => GetAliasMicrofrontends$outboundSchema)

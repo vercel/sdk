@@ -1230,6 +1230,7 @@ export type UpdateProjectDataCachePermissions = {
   accessGroup?: Array<ACLAction> | undefined;
   agent?: Array<ACLAction> | undefined;
   alerts?: Array<ACLAction> | undefined;
+  alertRules?: Array<ACLAction> | undefined;
   aliasGlobal?: Array<ACLAction> | undefined;
   analyticsSampling?: Array<ACLAction> | undefined;
   analyticsUsage?: Array<ACLAction> | undefined;
@@ -6400,6 +6401,7 @@ export const UpdateProjectDataCachePermissions$inboundSchema: z.ZodType<
   accessGroup: z.array(ACLAction$inboundSchema).optional(),
   agent: z.array(ACLAction$inboundSchema).optional(),
   alerts: z.array(ACLAction$inboundSchema).optional(),
+  alertRules: z.array(ACLAction$inboundSchema).optional(),
   aliasGlobal: z.array(ACLAction$inboundSchema).optional(),
   analyticsSampling: z.array(ACLAction$inboundSchema).optional(),
   analyticsUsage: z.array(ACLAction$inboundSchema).optional(),
@@ -6633,6 +6635,7 @@ export type UpdateProjectDataCachePermissions$Outbound = {
   accessGroup?: Array<string> | undefined;
   agent?: Array<string> | undefined;
   alerts?: Array<string> | undefined;
+  alertRules?: Array<string> | undefined;
   aliasGlobal?: Array<string> | undefined;
   analyticsSampling?: Array<string> | undefined;
   analyticsUsage?: Array<string> | undefined;
@@ -6860,6 +6863,7 @@ export const UpdateProjectDataCachePermissions$outboundSchema: z.ZodType<
   accessGroup: z.array(ACLAction$outboundSchema).optional(),
   agent: z.array(ACLAction$outboundSchema).optional(),
   alerts: z.array(ACLAction$outboundSchema).optional(),
+  alertRules: z.array(ACLAction$outboundSchema).optional(),
   aliasGlobal: z.array(ACLAction$outboundSchema).optional(),
   analyticsSampling: z.array(ACLAction$outboundSchema).optional(),
   analyticsUsage: z.array(ACLAction$outboundSchema).optional(),

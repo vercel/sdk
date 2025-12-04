@@ -6339,7 +6339,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"store":{"projectsMetadata":[{"id":"<id>","projectId":"<id>","name":"<value>","environments":[],"envVarPrefix":"<value>","environmentVariables":["<value 1>","<value 2>"]}],"usageQuotaExceeded":true,"status":"available","externalResourceId":"<id>","product":{"value":{"__@BRAND@8825":{}}},"secrets":[]}}
+              {"store":{"projectsMetadata":[{"id":"<id>","projectId":"<id>","name":"<value>","environments":[],"envVarPrefix":"<value>","environmentVariables":["<value 1>","<value 2>"]}],"usageQuotaExceeded":true,"status":"available","externalResourceId":"<id>","product":{"value":{"__@BRAND@8831":{}}},"secrets":[]}}
             type: simple
     x-speakeasy-test-group: integrations
     x-speakeasy-test-rebuild: true
@@ -6846,7 +6846,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"drains":[{"id":"<id>","ownerId":"<id>","name":"<value>","createdAt":7495.57,"updatedAt":4759.82,"source":{"kind":"self-served"}}]}
+              {"drains":[{"id":"<id>","ownerId":"<id>","name":"<value>","createdAt":7495.57,"updatedAt":4759.82,"schemas":{},"delivery":{"type":"internal","target":"vercel-otel-traces-db"},"source":{"kind":"self-served"}}]}
             type: simple
     x-speakeasy-test-group: logDrains
     x-speakeasy-test-rebuild: true
@@ -6892,7 +6892,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"id":"<id>","ownerId":"<id>","name":"<value>","createdAt":3665.73,"updatedAt":3681.88,"source":{"kind":"self-served"}}
+              {"id":"<id>","ownerId":"<id>","name":"<value>","createdAt":3665.73,"updatedAt":3681.88,"schemas":{},"delivery":{"type":"otlphttp","endpoint":{"traces":"<value>"},"encoding":"json","headers":{"key":"<value>"}},"source":{"kind":"self-served"}}
             type: simple
     x-speakeasy-test-group: drains
     x-speakeasy-test-rebuild: true
@@ -6938,7 +6938,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"id":"<id>","ownerId":"<id>","name":"<value>","createdAt":1182.63,"updatedAt":7579.11,"source":{"kind":"integration","integrationId":"<id>","integrationConfigurationId":"<id>"}}
+              {"id":"<id>","ownerId":"<id>","name":"<value>","createdAt":1182.63,"updatedAt":7579.11,"schemas":{},"delivery":{"type":"http","endpoint":"<value>","encoding":"ndjson","headers":{"key":"<value>","key1":"<value>","key2":"<value>"}},"source":{"kind":"integration","integrationId":"<id>","integrationConfigurationId":"<id>"}}
             type: simple
     x-speakeasy-test-group: drains
     x-speakeasy-test-rebuild: true
@@ -6961,7 +6961,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"id":"<id>","ownerId":"<id>","name":"<value>","createdAt":7781.81,"updatedAt":8087.89,"source":{"kind":"integration","integrationId":"<id>","integrationConfigurationId":"<id>"}}
+              {"id":"<id>","ownerId":"<id>","name":"<value>","createdAt":7781.81,"updatedAt":8087.89,"schemas":{},"delivery":{"type":"internal","target":"vercel-otel-traces-db"},"source":{"kind":"integration","integrationId":"<id>","integrationConfigurationId":"<id>"}}
             type: simple
     x-speakeasy-test-group: drains
     x-speakeasy-test-rebuild: true

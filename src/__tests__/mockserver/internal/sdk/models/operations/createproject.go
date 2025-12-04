@@ -6521,6 +6521,7 @@ type CreateProjectPermissions struct {
 	AccessGroup                              []components.ACLAction `json:"accessGroup,omitempty"`
 	Agent                                    []components.ACLAction `json:"agent,omitempty"`
 	Alerts                                   []components.ACLAction `json:"alerts,omitempty"`
+	AlertRules                               []components.ACLAction `json:"alertRules,omitempty"`
 	AliasGlobal                              []components.ACLAction `json:"aliasGlobal,omitempty"`
 	AnalyticsSampling                        []components.ACLAction `json:"analyticsSampling,omitempty"`
 	AnalyticsUsage                           []components.ACLAction `json:"analyticsUsage,omitempty"`
@@ -6788,6 +6789,13 @@ func (o *CreateProjectPermissions) GetAlerts() []components.ACLAction {
 		return nil
 	}
 	return o.Alerts
+}
+
+func (o *CreateProjectPermissions) GetAlertRules() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.AlertRules
 }
 
 func (o *CreateProjectPermissions) GetAliasGlobal() []components.ACLAction {

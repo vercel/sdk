@@ -109,6 +109,7 @@ async function $do(
   const query = encodeFormQuery({
     "metadata": payload.metadata,
     "slug": payload.slug,
+    "source": payload.source,
     "teamId": payload.teamId,
   });
 

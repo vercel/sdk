@@ -21,6 +21,9 @@ import {
 
 export type GetTldPriceRequest = {
   tld: string;
+  /**
+   * The number of years to get the price for. If not provided, the minimum number of years for the TLD will be used.
+   */
   years?: string | undefined;
   teamId?: string | undefined;
 };
@@ -32,6 +35,12 @@ export type GetTldPriceDomainsRegistrarResponseBody =
   | TldNotSupported
   | HttpApiDecodeError;
 
+export type PurchasePrice = number | string;
+
+export type RenewalPrice = number | string;
+
+export type TransferPrice = number | string;
+
 /**
  * Success
  */
@@ -40,18 +49,9 @@ export type GetTldPriceResponseBody = {
    * The number of years the returned price is for.
    */
   years: number;
-  /**
-   * The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
-   */
-  purchasePrice: number | null;
-  /**
-   * The base TLD price for renewing a domain for the given number of years. If null, the TLD does not support renewing domains for the given number of years.
-   */
-  renewalPrice: number | null;
-  /**
-   * The base TLD price for transferring a domain in for the given number of years. If null, the TLD does not support transferring domains in for the given number of years.
-   */
-  transferPrice: number | null;
+  purchasePrice: number | string;
+  renewalPrice: number | string;
+  transferPrice: number | string;
 };
 
 /** @internal */
@@ -147,22 +147,109 @@ export function getTldPriceDomainsRegistrarResponseBodyFromJSON(
 }
 
 /** @internal */
+export const PurchasePrice$inboundSchema: z.ZodType<
+  PurchasePrice,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.number(), z.string()]);
+/** @internal */
+export type PurchasePrice$Outbound = number | string;
+
+/** @internal */
+export const PurchasePrice$outboundSchema: z.ZodType<
+  PurchasePrice$Outbound,
+  z.ZodTypeDef,
+  PurchasePrice
+> = z.union([z.number(), z.string()]);
+
+export function purchasePriceToJSON(purchasePrice: PurchasePrice): string {
+  return JSON.stringify(PurchasePrice$outboundSchema.parse(purchasePrice));
+}
+export function purchasePriceFromJSON(
+  jsonString: string,
+): SafeParseResult<PurchasePrice, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PurchasePrice$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PurchasePrice' from JSON`,
+  );
+}
+
+/** @internal */
+export const RenewalPrice$inboundSchema: z.ZodType<
+  RenewalPrice,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.number(), z.string()]);
+/** @internal */
+export type RenewalPrice$Outbound = number | string;
+
+/** @internal */
+export const RenewalPrice$outboundSchema: z.ZodType<
+  RenewalPrice$Outbound,
+  z.ZodTypeDef,
+  RenewalPrice
+> = z.union([z.number(), z.string()]);
+
+export function renewalPriceToJSON(renewalPrice: RenewalPrice): string {
+  return JSON.stringify(RenewalPrice$outboundSchema.parse(renewalPrice));
+}
+export function renewalPriceFromJSON(
+  jsonString: string,
+): SafeParseResult<RenewalPrice, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RenewalPrice$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RenewalPrice' from JSON`,
+  );
+}
+
+/** @internal */
+export const TransferPrice$inboundSchema: z.ZodType<
+  TransferPrice,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.number(), z.string()]);
+/** @internal */
+export type TransferPrice$Outbound = number | string;
+
+/** @internal */
+export const TransferPrice$outboundSchema: z.ZodType<
+  TransferPrice$Outbound,
+  z.ZodTypeDef,
+  TransferPrice
+> = z.union([z.number(), z.string()]);
+
+export function transferPriceToJSON(transferPrice: TransferPrice): string {
+  return JSON.stringify(TransferPrice$outboundSchema.parse(transferPrice));
+}
+export function transferPriceFromJSON(
+  jsonString: string,
+): SafeParseResult<TransferPrice, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TransferPrice$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TransferPrice' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetTldPriceResponseBody$inboundSchema: z.ZodType<
   GetTldPriceResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
   years: z.number(),
-  purchasePrice: z.nullable(z.number()),
-  renewalPrice: z.nullable(z.number()),
-  transferPrice: z.nullable(z.number()),
+  purchasePrice: z.union([z.number(), z.string()]),
+  renewalPrice: z.union([z.number(), z.string()]),
+  transferPrice: z.union([z.number(), z.string()]),
 });
 /** @internal */
 export type GetTldPriceResponseBody$Outbound = {
   years: number;
-  purchasePrice: number | null;
-  renewalPrice: number | null;
-  transferPrice: number | null;
+  purchasePrice: number | string;
+  renewalPrice: number | string;
+  transferPrice: number | string;
 };
 
 /** @internal */
@@ -172,9 +259,9 @@ export const GetTldPriceResponseBody$outboundSchema: z.ZodType<
   GetTldPriceResponseBody
 > = z.object({
   years: z.number(),
-  purchasePrice: z.nullable(z.number()),
-  renewalPrice: z.nullable(z.number()),
-  transferPrice: z.nullable(z.number()),
+  purchasePrice: z.union([z.number(), z.string()]),
+  renewalPrice: z.union([z.number(), z.string()]),
+  transferPrice: z.union([z.number(), z.string()]),
 });
 
 export function getTldPriceResponseBodyToJSON(

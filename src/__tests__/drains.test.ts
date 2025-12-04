@@ -26,6 +26,17 @@ test("Drains Create Drain", async () => {
     name: "<value>",
     createdAt: 3665.73,
     updatedAt: 3681.88,
+    schemas: {},
+    delivery: {
+      type: "otlphttp",
+      endpoint: {
+        traces: "<value>",
+      },
+      encoding: "json",
+      headers: {
+        "key": "<value>",
+      },
+    },
     source: {
       kind: "self-served",
     },
@@ -72,6 +83,17 @@ test("Drains Get Drain", async () => {
     name: "<value>",
     createdAt: 1182.63,
     updatedAt: 7579.11,
+    schemas: {},
+    delivery: {
+      type: "http",
+      endpoint: "<value>",
+      encoding: "ndjson",
+      headers: {
+        "key": "<value>",
+        "key1": "<value>",
+        "key2": "<value>",
+      },
+    },
     source: {
       kind: "integration",
       integrationId: "<id>",
@@ -101,6 +123,11 @@ test("Drains Update Drain", async () => {
     name: "<value>",
     createdAt: 7781.81,
     updatedAt: 8087.89,
+    schemas: {},
+    delivery: {
+      type: "internal",
+      target: "vercel-otel-traces-db",
+    },
     source: {
       kind: "integration",
       integrationId: "<id>",

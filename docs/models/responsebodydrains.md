@@ -19,10 +19,13 @@ const value: models.GetAllLogDrainsDrains2[] = [
     name: "<value>",
     createdAt: 7250.96,
     updatedAt: 5978.89,
+    schemas: {},
+    delivery: {
+      type: "internal",
+      target: "vercel-otel-traces-db",
+    },
     source: {
-      kind: "integration",
-      integrationId: "<id>",
-      integrationConfigurationId: "<id>",
+      kind: "self-served",
     },
   },
 ];

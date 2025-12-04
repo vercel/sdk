@@ -40,42 +40,6 @@ func (o *GetConfigurationRequest) GetSlug() *string {
 	return o.Slug
 }
 
-// GetConfigurationSource2 - Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
-type GetConfigurationSource2 string
-
-const (
-	GetConfigurationSource2Marketplace    GetConfigurationSource2 = "marketplace"
-	GetConfigurationSource2DeployButton   GetConfigurationSource2 = "deploy-button"
-	GetConfigurationSource2External       GetConfigurationSource2 = "external"
-	GetConfigurationSource2V0             GetConfigurationSource2 = "v0"
-	GetConfigurationSource2ResourceClaims GetConfigurationSource2 = "resource-claims"
-)
-
-func (e GetConfigurationSource2) ToPointer() *GetConfigurationSource2 {
-	return &e
-}
-func (e *GetConfigurationSource2) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "marketplace":
-		fallthrough
-	case "deploy-button":
-		fallthrough
-	case "external":
-		fallthrough
-	case "v0":
-		fallthrough
-	case "resource-claims":
-		*e = GetConfigurationSource2(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetConfigurationSource2: %v", v)
-	}
-}
-
 type GetConfigurationTypeIntegrationConfiguration2 string
 
 const (
@@ -179,7 +143,7 @@ type GetConfigurationIntegrationConfiguration2 struct {
 	// When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access.
 	Projects []string `json:"projects,omitempty"`
 	// Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
-	Source *GetConfigurationSource2 `json:"source,omitempty"`
+	Source *string `json:"source,omitempty"`
 	// The slug of the integration the configuration is created for.
 	Slug string `json:"slug"`
 	// When the configuration was created for a team, this will show the ID of the team.
@@ -255,7 +219,7 @@ func (o *GetConfigurationIntegrationConfiguration2) GetProjects() []string {
 	return o.Projects
 }
 
-func (o *GetConfigurationIntegrationConfiguration2) GetSource() *GetConfigurationSource2 {
+func (o *GetConfigurationIntegrationConfiguration2) GetSource() *string {
 	if o == nil {
 		return nil
 	}
@@ -1012,42 +976,6 @@ func (e *GetConfigurationDisabledReason1) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// GetConfigurationSource1 - Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
-type GetConfigurationSource1 string
-
-const (
-	GetConfigurationSource1Marketplace    GetConfigurationSource1 = "marketplace"
-	GetConfigurationSource1DeployButton   GetConfigurationSource1 = "deploy-button"
-	GetConfigurationSource1External       GetConfigurationSource1 = "external"
-	GetConfigurationSource1V0             GetConfigurationSource1 = "v0"
-	GetConfigurationSource1ResourceClaims GetConfigurationSource1 = "resource-claims"
-)
-
-func (e GetConfigurationSource1) ToPointer() *GetConfigurationSource1 {
-	return &e
-}
-func (e *GetConfigurationSource1) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "marketplace":
-		fallthrough
-	case "deploy-button":
-		fallthrough
-	case "external":
-		fallthrough
-	case "v0":
-		fallthrough
-	case "resource-claims":
-		*e = GetConfigurationSource1(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetConfigurationSource1: %v", v)
-	}
-}
-
 // GetConfigurationInstallationType1 - Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
 type GetConfigurationInstallationType1 string
 
@@ -1129,8 +1057,8 @@ type GetConfigurationIntegrationConfiguration1 struct {
 	DisabledAt     *float64                         `json:"disabledAt,omitempty"`
 	DisabledReason *GetConfigurationDisabledReason1 `json:"disabledReason,omitempty"`
 	// Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
-	Source                    *GetConfigurationSource1 `json:"source,omitempty"`
-	CanConfigureOpenTelemetry *bool                    `json:"canConfigureOpenTelemetry,omitempty"`
+	Source                    *string `json:"source,omitempty"`
+	CanConfigureOpenTelemetry *bool   `json:"canConfigureOpenTelemetry,omitempty"`
 	// Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
 	InstallationType *GetConfigurationInstallationType1 `json:"installationType,omitempty"`
 	// A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.
@@ -1271,7 +1199,7 @@ func (o *GetConfigurationIntegrationConfiguration1) GetDisabledReason() *GetConf
 	return o.DisabledReason
 }
 
-func (o *GetConfigurationIntegrationConfiguration1) GetSource() *GetConfigurationSource1 {
+func (o *GetConfigurationIntegrationConfiguration1) GetSource() *string {
 	if o == nil {
 		return nil
 	}

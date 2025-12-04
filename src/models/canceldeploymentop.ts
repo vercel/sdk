@@ -42,6 +42,21 @@ export type CancelDeploymentBuilds = {
   config?: { [k: string]: any } | undefined;
 };
 
+export const CancelDeploymentDeploymentsNodeVersion = {
+  TwentyFourDotX: "24.x",
+  TwentyTwoDotX: "22.x",
+  TwentyDotX: "20.x",
+  EighteenDotX: "18.x",
+  SixteenDotX: "16.x",
+  FourteenDotX: "14.x",
+  TwelveDotX: "12.x",
+  TenDotX: "10.x",
+  EightDot10DotX: "8.10.x",
+} as const;
+export type CancelDeploymentDeploymentsNodeVersion = ClosedEnum<
+  typeof CancelDeploymentDeploymentsNodeVersion
+>;
+
 export const CancelDeploymentFramework = {
   Blitzjs: "blitzjs",
   Nextjs: "nextjs",
@@ -123,6 +138,7 @@ export type CancelDeploymentWebAnalytics = {
 };
 
 export type CancelDeploymentProjectSettings = {
+  nodeVersion?: CancelDeploymentDeploymentsNodeVersion | undefined;
   buildCommand?: string | null | undefined;
   devCommand?: string | null | undefined;
   framework?: CancelDeploymentFramework | null | undefined;
@@ -1795,6 +1811,16 @@ export function cancelDeploymentBuildsFromJSON(
 }
 
 /** @internal */
+export const CancelDeploymentDeploymentsNodeVersion$inboundSchema:
+  z.ZodNativeEnum<typeof CancelDeploymentDeploymentsNodeVersion> = z.nativeEnum(
+    CancelDeploymentDeploymentsNodeVersion,
+  );
+/** @internal */
+export const CancelDeploymentDeploymentsNodeVersion$outboundSchema:
+  z.ZodNativeEnum<typeof CancelDeploymentDeploymentsNodeVersion> =
+    CancelDeploymentDeploymentsNodeVersion$inboundSchema;
+
+/** @internal */
 export const CancelDeploymentFramework$inboundSchema: z.ZodNativeEnum<
   typeof CancelDeploymentFramework
 > = z.nativeEnum(CancelDeploymentFramework);
@@ -1918,6 +1944,7 @@ export const CancelDeploymentProjectSettings$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  nodeVersion: CancelDeploymentDeploymentsNodeVersion$inboundSchema.optional(),
   buildCommand: z.nullable(z.string()).optional(),
   devCommand: z.nullable(z.string()).optional(),
   framework: z.nullable(CancelDeploymentFramework$inboundSchema).optional(),
@@ -1931,6 +1958,7 @@ export const CancelDeploymentProjectSettings$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type CancelDeploymentProjectSettings$Outbound = {
+  nodeVersion?: string | undefined;
   buildCommand?: string | null | undefined;
   devCommand?: string | null | undefined;
   framework?: string | null | undefined;
@@ -1947,6 +1975,7 @@ export const CancelDeploymentProjectSettings$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CancelDeploymentProjectSettings
 > = z.object({
+  nodeVersion: CancelDeploymentDeploymentsNodeVersion$outboundSchema.optional(),
   buildCommand: z.nullable(z.string()).optional(),
   devCommand: z.nullable(z.string()).optional(),
   framework: z.nullable(CancelDeploymentFramework$outboundSchema).optional(),

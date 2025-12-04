@@ -3,11 +3,15 @@
 package operations
 
 import (
+	"errors"
+	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/utils"
 )
 
 type GetTldPriceRequest struct {
-	Tld    string  `pathParam:"style=simple,explode=false,name=tld"`
+	Tld string `pathParam:"style=simple,explode=false,name=tld"`
+	// The number of years to get the price for. If not provided, the minimum number of years for the TLD will be used.
 	Years  *string `queryParam:"style=form,explode=true,name=years"`
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 }
@@ -33,16 +37,202 @@ func (o *GetTldPriceRequest) GetTeamID() *string {
 	return o.TeamID
 }
 
+type GetTldPricePurchasePriceType string
+
+const (
+	GetTldPricePurchasePriceTypeNumber GetTldPricePurchasePriceType = "number"
+	GetTldPricePurchasePriceTypeStr    GetTldPricePurchasePriceType = "str"
+)
+
+type GetTldPricePurchasePrice struct {
+	Number *float64 `queryParam:"inline"`
+	Str    *string  `queryParam:"inline"`
+
+	Type GetTldPricePurchasePriceType
+}
+
+func CreateGetTldPricePurchasePriceNumber(number float64) GetTldPricePurchasePrice {
+	typ := GetTldPricePurchasePriceTypeNumber
+
+	return GetTldPricePurchasePrice{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func CreateGetTldPricePurchasePriceStr(str string) GetTldPricePurchasePrice {
+	typ := GetTldPricePurchasePriceTypeStr
+
+	return GetTldPricePurchasePrice{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func (u *GetTldPricePurchasePrice) UnmarshalJSON(data []byte) error {
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
+		u.Number = &number
+		u.Type = GetTldPricePurchasePriceTypeNumber
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = GetTldPricePurchasePriceTypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetTldPricePurchasePrice", string(data))
+}
+
+func (u GetTldPricePurchasePrice) MarshalJSON() ([]byte, error) {
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetTldPricePurchasePrice: all fields are null")
+}
+
+type GetTldPriceRenewalPriceType string
+
+const (
+	GetTldPriceRenewalPriceTypeNumber GetTldPriceRenewalPriceType = "number"
+	GetTldPriceRenewalPriceTypeStr    GetTldPriceRenewalPriceType = "str"
+)
+
+type GetTldPriceRenewalPrice struct {
+	Number *float64 `queryParam:"inline"`
+	Str    *string  `queryParam:"inline"`
+
+	Type GetTldPriceRenewalPriceType
+}
+
+func CreateGetTldPriceRenewalPriceNumber(number float64) GetTldPriceRenewalPrice {
+	typ := GetTldPriceRenewalPriceTypeNumber
+
+	return GetTldPriceRenewalPrice{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func CreateGetTldPriceRenewalPriceStr(str string) GetTldPriceRenewalPrice {
+	typ := GetTldPriceRenewalPriceTypeStr
+
+	return GetTldPriceRenewalPrice{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func (u *GetTldPriceRenewalPrice) UnmarshalJSON(data []byte) error {
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
+		u.Number = &number
+		u.Type = GetTldPriceRenewalPriceTypeNumber
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = GetTldPriceRenewalPriceTypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetTldPriceRenewalPrice", string(data))
+}
+
+func (u GetTldPriceRenewalPrice) MarshalJSON() ([]byte, error) {
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetTldPriceRenewalPrice: all fields are null")
+}
+
+type GetTldPriceTransferPriceType string
+
+const (
+	GetTldPriceTransferPriceTypeNumber GetTldPriceTransferPriceType = "number"
+	GetTldPriceTransferPriceTypeStr    GetTldPriceTransferPriceType = "str"
+)
+
+type GetTldPriceTransferPrice struct {
+	Number *float64 `queryParam:"inline"`
+	Str    *string  `queryParam:"inline"`
+
+	Type GetTldPriceTransferPriceType
+}
+
+func CreateGetTldPriceTransferPriceNumber(number float64) GetTldPriceTransferPrice {
+	typ := GetTldPriceTransferPriceTypeNumber
+
+	return GetTldPriceTransferPrice{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func CreateGetTldPriceTransferPriceStr(str string) GetTldPriceTransferPrice {
+	typ := GetTldPriceTransferPriceTypeStr
+
+	return GetTldPriceTransferPrice{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func (u *GetTldPriceTransferPrice) UnmarshalJSON(data []byte) error {
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
+		u.Number = &number
+		u.Type = GetTldPriceTransferPriceTypeNumber
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = GetTldPriceTransferPriceTypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetTldPriceTransferPrice", string(data))
+}
+
+func (u GetTldPriceTransferPrice) MarshalJSON() ([]byte, error) {
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetTldPriceTransferPrice: all fields are null")
+}
+
 // GetTldPriceResponseBody - Success
 type GetTldPriceResponseBody struct {
 	// The number of years the returned price is for.
-	Years float64 `json:"years"`
-	// The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
-	PurchasePrice *float64 `json:"purchasePrice"`
-	// The base TLD price for renewing a domain for the given number of years. If null, the TLD does not support renewing domains for the given number of years.
-	RenewalPrice *float64 `json:"renewalPrice"`
-	// The base TLD price for transferring a domain in for the given number of years. If null, the TLD does not support transferring domains in for the given number of years.
-	TransferPrice *float64 `json:"transferPrice"`
+	Years         float64                  `json:"years"`
+	PurchasePrice GetTldPricePurchasePrice `json:"purchasePrice"`
+	RenewalPrice  GetTldPriceRenewalPrice  `json:"renewalPrice"`
+	TransferPrice GetTldPriceTransferPrice `json:"transferPrice"`
 }
 
 func (o *GetTldPriceResponseBody) GetYears() float64 {
@@ -52,23 +242,23 @@ func (o *GetTldPriceResponseBody) GetYears() float64 {
 	return o.Years
 }
 
-func (o *GetTldPriceResponseBody) GetPurchasePrice() *float64 {
+func (o *GetTldPriceResponseBody) GetPurchasePrice() GetTldPricePurchasePrice {
 	if o == nil {
-		return nil
+		return GetTldPricePurchasePrice{}
 	}
 	return o.PurchasePrice
 }
 
-func (o *GetTldPriceResponseBody) GetRenewalPrice() *float64 {
+func (o *GetTldPriceResponseBody) GetRenewalPrice() GetTldPriceRenewalPrice {
 	if o == nil {
-		return nil
+		return GetTldPriceRenewalPrice{}
 	}
 	return o.RenewalPrice
 }
 
-func (o *GetTldPriceResponseBody) GetTransferPrice() *float64 {
+func (o *GetTldPriceResponseBody) GetTransferPrice() GetTldPriceTransferPrice {
 	if o == nil {
-		return nil
+		return GetTldPriceTransferPrice{}
 	}
 	return o.TransferPrice
 }

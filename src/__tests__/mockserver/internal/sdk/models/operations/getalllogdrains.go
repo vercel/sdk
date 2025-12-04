@@ -2321,8 +2321,8 @@ type GetAllLogDrainsDrains2 struct {
 	CreatedAt                   float64                            `json:"createdAt"`
 	UpdatedAt                   float64                            `json:"updatedAt"`
 	ProjectIds                  []string                           `json:"projectIds,omitempty"`
-	Schemas                     *GetAllLogDrainsSchemas2           `json:"schemas,omitempty"`
-	Delivery                    *GetAllLogDrainsDeliveryUnion2     `json:"delivery,omitempty"`
+	Schemas                     GetAllLogDrainsSchemas2            `json:"schemas"`
+	Delivery                    GetAllLogDrainsDeliveryUnion2      `json:"delivery"`
 	Sampling                    []GetAllLogDrainsSampling2         `json:"sampling,omitempty"`
 	TeamID                      *string                            `json:"teamId,omitempty"`
 	Status                      *GetAllLogDrainsStatus2            `json:"status,omitempty"`
@@ -2344,7 +2344,7 @@ func (g GetAllLogDrainsDrains2) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetAllLogDrainsDrains2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "ownerId", "name", "createdAt", "updatedAt", "source"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "ownerId", "name", "createdAt", "updatedAt", "schemas", "delivery", "source"}); err != nil {
 		return err
 	}
 	return nil
@@ -2392,46 +2392,34 @@ func (o *GetAllLogDrainsDrains2) GetProjectIds() []string {
 	return o.ProjectIds
 }
 
-func (o *GetAllLogDrainsDrains2) GetSchemas() *GetAllLogDrainsSchemas2 {
+func (o *GetAllLogDrainsDrains2) GetSchemas() GetAllLogDrainsSchemas2 {
 	if o == nil {
-		return nil
+		return GetAllLogDrainsSchemas2{}
 	}
 	return o.Schemas
 }
 
-func (o *GetAllLogDrainsDrains2) GetDelivery() *GetAllLogDrainsDeliveryUnion2 {
+func (o *GetAllLogDrainsDrains2) GetDelivery() GetAllLogDrainsDeliveryUnion2 {
 	if o == nil {
-		return nil
+		return GetAllLogDrainsDeliveryUnion2{}
 	}
 	return o.Delivery
 }
 
 func (o *GetAllLogDrainsDrains2) GetDeliveryHTTP() *GetAllLogDrainsDeliveryHTTP2 {
-	if v := o.GetDelivery(); v != nil {
-		return v.GetAllLogDrainsDeliveryHTTP2
-	}
-	return nil
+	return o.GetDelivery().GetAllLogDrainsDeliveryHTTP2
 }
 
 func (o *GetAllLogDrainsDrains2) GetDeliveryOtlphttp() *GetAllLogDrainsDeliveryOtlphttp2 {
-	if v := o.GetDelivery(); v != nil {
-		return v.GetAllLogDrainsDeliveryOtlphttp2
-	}
-	return nil
+	return o.GetDelivery().GetAllLogDrainsDeliveryOtlphttp2
 }
 
 func (o *GetAllLogDrainsDrains2) GetDeliveryClickhouse() *GetAllLogDrainsDeliveryClickhouse2 {
-	if v := o.GetDelivery(); v != nil {
-		return v.GetAllLogDrainsDeliveryClickhouse2
-	}
-	return nil
+	return o.GetDelivery().GetAllLogDrainsDeliveryClickhouse2
 }
 
 func (o *GetAllLogDrainsDrains2) GetDeliveryInternal() *GetAllLogDrainsDeliveryVercelOtelTracesDb2 {
-	if v := o.GetDelivery(); v != nil {
-		return v.GetAllLogDrainsDeliveryVercelOtelTracesDb2
-	}
-	return nil
+	return o.GetDelivery().GetAllLogDrainsDeliveryVercelOtelTracesDb2
 }
 
 func (o *GetAllLogDrainsDrains2) GetSampling() []GetAllLogDrainsSampling2 {
@@ -4333,8 +4321,8 @@ type GetAllLogDrainsDrains1 struct {
 	CreatedAt           float64                         `json:"createdAt"`
 	UpdatedAt           float64                         `json:"updatedAt"`
 	ProjectIds          []string                        `json:"projectIds,omitempty"`
-	Schemas             *GetAllLogDrainsSchemas1        `json:"schemas,omitempty"`
-	Delivery            *GetAllLogDrainsDeliveryUnion1  `json:"delivery,omitempty"`
+	Schemas             GetAllLogDrainsSchemas1         `json:"schemas"`
+	Delivery            GetAllLogDrainsDeliveryUnion1   `json:"delivery"`
 	Sampling            []GetAllLogDrainsSampling1      `json:"sampling,omitempty"`
 	TeamID              *string                         `json:"teamId,omitempty"`
 	Status              *GetAllLogDrainsStatus1         `json:"status,omitempty"`
@@ -4352,7 +4340,7 @@ func (g GetAllLogDrainsDrains1) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetAllLogDrainsDrains1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "ownerId", "name", "createdAt", "updatedAt", "source"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "ownerId", "name", "createdAt", "updatedAt", "schemas", "delivery", "source"}); err != nil {
 		return err
 	}
 	return nil
@@ -4400,46 +4388,34 @@ func (o *GetAllLogDrainsDrains1) GetProjectIds() []string {
 	return o.ProjectIds
 }
 
-func (o *GetAllLogDrainsDrains1) GetSchemas() *GetAllLogDrainsSchemas1 {
+func (o *GetAllLogDrainsDrains1) GetSchemas() GetAllLogDrainsSchemas1 {
 	if o == nil {
-		return nil
+		return GetAllLogDrainsSchemas1{}
 	}
 	return o.Schemas
 }
 
-func (o *GetAllLogDrainsDrains1) GetDelivery() *GetAllLogDrainsDeliveryUnion1 {
+func (o *GetAllLogDrainsDrains1) GetDelivery() GetAllLogDrainsDeliveryUnion1 {
 	if o == nil {
-		return nil
+		return GetAllLogDrainsDeliveryUnion1{}
 	}
 	return o.Delivery
 }
 
 func (o *GetAllLogDrainsDrains1) GetDeliveryHTTP() *GetAllLogDrainsDeliveryHTTP1 {
-	if v := o.GetDelivery(); v != nil {
-		return v.GetAllLogDrainsDeliveryHTTP1
-	}
-	return nil
+	return o.GetDelivery().GetAllLogDrainsDeliveryHTTP1
 }
 
 func (o *GetAllLogDrainsDrains1) GetDeliveryOtlphttp() *GetAllLogDrainsDeliveryOtlphttp1 {
-	if v := o.GetDelivery(); v != nil {
-		return v.GetAllLogDrainsDeliveryOtlphttp1
-	}
-	return nil
+	return o.GetDelivery().GetAllLogDrainsDeliveryOtlphttp1
 }
 
 func (o *GetAllLogDrainsDrains1) GetDeliveryClickhouse() *GetAllLogDrainsDeliveryClickhouse1 {
-	if v := o.GetDelivery(); v != nil {
-		return v.GetAllLogDrainsDeliveryClickhouse1
-	}
-	return nil
+	return o.GetDelivery().GetAllLogDrainsDeliveryClickhouse1
 }
 
 func (o *GetAllLogDrainsDrains1) GetDeliveryInternal() *GetAllLogDrainsDeliveryVercelOtelTracesDb1 {
-	if v := o.GetDelivery(); v != nil {
-		return v.GetAllLogDrainsDeliveryVercelOtelTracesDb1
-	}
-	return nil
+	return o.GetDelivery().GetAllLogDrainsDeliveryVercelOtelTracesDb1
 }
 
 func (o *GetAllLogDrainsDrains1) GetSampling() []GetAllLogDrainsSampling1 {

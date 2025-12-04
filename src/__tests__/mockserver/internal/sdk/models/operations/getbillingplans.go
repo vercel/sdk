@@ -12,6 +12,7 @@ type GetBillingPlansRequest struct {
 	IntegrationIDOrSlug string  `pathParam:"style=simple,explode=false,name=integrationIdOrSlug"`
 	ProductIDOrSlug     string  `pathParam:"style=simple,explode=false,name=productIdOrSlug"`
 	Metadata            *string `queryParam:"style=form,explode=true,name=metadata"`
+	Source              *string `queryParam:"style=form,explode=true,name=source"`
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
@@ -37,6 +38,13 @@ func (o *GetBillingPlansRequest) GetMetadata() *string {
 		return nil
 	}
 	return o.Metadata
+}
+
+func (o *GetBillingPlansRequest) GetSource() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Source
 }
 
 func (o *GetBillingPlansRequest) GetTeamID() *string {

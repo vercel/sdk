@@ -3684,6 +3684,53 @@ func (o *GetDeploymentBuild2) GetConfig() map[string]any {
 	return o.Config
 }
 
+type GetDeploymentProjectSettingsNodeVersion string
+
+const (
+	GetDeploymentProjectSettingsNodeVersionTwentyFourDotX GetDeploymentProjectSettingsNodeVersion = "24.x"
+	GetDeploymentProjectSettingsNodeVersionTwentyTwoDotX  GetDeploymentProjectSettingsNodeVersion = "22.x"
+	GetDeploymentProjectSettingsNodeVersionTwentyDotX     GetDeploymentProjectSettingsNodeVersion = "20.x"
+	GetDeploymentProjectSettingsNodeVersionEighteenDotX   GetDeploymentProjectSettingsNodeVersion = "18.x"
+	GetDeploymentProjectSettingsNodeVersionSixteenDotX    GetDeploymentProjectSettingsNodeVersion = "16.x"
+	GetDeploymentProjectSettingsNodeVersionFourteenDotX   GetDeploymentProjectSettingsNodeVersion = "14.x"
+	GetDeploymentProjectSettingsNodeVersionTwelveDotX     GetDeploymentProjectSettingsNodeVersion = "12.x"
+	GetDeploymentProjectSettingsNodeVersionTenDotX        GetDeploymentProjectSettingsNodeVersion = "10.x"
+	GetDeploymentProjectSettingsNodeVersionEightDot10DotX GetDeploymentProjectSettingsNodeVersion = "8.10.x"
+)
+
+func (e GetDeploymentProjectSettingsNodeVersion) ToPointer() *GetDeploymentProjectSettingsNodeVersion {
+	return &e
+}
+func (e *GetDeploymentProjectSettingsNodeVersion) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "24.x":
+		fallthrough
+	case "22.x":
+		fallthrough
+	case "20.x":
+		fallthrough
+	case "18.x":
+		fallthrough
+	case "16.x":
+		fallthrough
+	case "14.x":
+		fallthrough
+	case "12.x":
+		fallthrough
+	case "10.x":
+		fallthrough
+	case "8.10.x":
+		*e = GetDeploymentProjectSettingsNodeVersion(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentProjectSettingsNodeVersion: %v", v)
+	}
+}
+
 type GetDeploymentFramework string
 
 const (
@@ -3992,14 +4039,15 @@ func (o *GetDeploymentWebAnalytics) GetHasData() *bool {
 }
 
 type GetDeploymentProjectSettings struct {
-	BuildCommand                *string                     `json:"buildCommand,omitempty"`
-	DevCommand                  *string                     `json:"devCommand,omitempty"`
-	Framework                   *GetDeploymentFramework     `json:"framework,omitempty"`
-	CommandForIgnoringBuildStep *string                     `json:"commandForIgnoringBuildStep,omitempty"`
-	InstallCommand              *string                     `json:"installCommand,omitempty"`
-	OutputDirectory             *string                     `json:"outputDirectory,omitempty"`
-	SpeedInsights               *GetDeploymentSpeedInsights `json:"speedInsights,omitempty"`
-	WebAnalytics                *GetDeploymentWebAnalytics  `json:"webAnalytics,omitempty"`
+	NodeVersion                 *GetDeploymentProjectSettingsNodeVersion `json:"nodeVersion,omitempty"`
+	BuildCommand                *string                                  `json:"buildCommand,omitempty"`
+	DevCommand                  *string                                  `json:"devCommand,omitempty"`
+	Framework                   *GetDeploymentFramework                  `json:"framework,omitempty"`
+	CommandForIgnoringBuildStep *string                                  `json:"commandForIgnoringBuildStep,omitempty"`
+	InstallCommand              *string                                  `json:"installCommand,omitempty"`
+	OutputDirectory             *string                                  `json:"outputDirectory,omitempty"`
+	SpeedInsights               *GetDeploymentSpeedInsights              `json:"speedInsights,omitempty"`
+	WebAnalytics                *GetDeploymentWebAnalytics               `json:"webAnalytics,omitempty"`
 }
 
 func (g GetDeploymentProjectSettings) MarshalJSON() ([]byte, error) {
@@ -4011,6 +4059,13 @@ func (g *GetDeploymentProjectSettings) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
+}
+
+func (o *GetDeploymentProjectSettings) GetNodeVersion() *GetDeploymentProjectSettingsNodeVersion {
+	if o == nil {
+		return nil
+	}
+	return o.NodeVersion
 }
 
 func (o *GetDeploymentProjectSettings) GetBuildCommand() *string {

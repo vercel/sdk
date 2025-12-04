@@ -5800,12 +5800,97 @@ func (o *UserEventReason) GetDescription() string {
 	return o.Description
 }
 
+type RemovedUsersRole2 string
+
+const (
+	RemovedUsersRole2Owner         RemovedUsersRole2 = "OWNER"
+	RemovedUsersRole2Member        RemovedUsersRole2 = "MEMBER"
+	RemovedUsersRole2Developer     RemovedUsersRole2 = "DEVELOPER"
+	RemovedUsersRole2Security      RemovedUsersRole2 = "SECURITY"
+	RemovedUsersRole2Billing       RemovedUsersRole2 = "BILLING"
+	RemovedUsersRole2Viewer        RemovedUsersRole2 = "VIEWER"
+	RemovedUsersRole2ViewerForPlus RemovedUsersRole2 = "VIEWER_FOR_PLUS"
+	RemovedUsersRole2Contributor   RemovedUsersRole2 = "CONTRIBUTOR"
+)
+
+func (e RemovedUsersRole2) ToPointer() *RemovedUsersRole2 {
+	return &e
+}
+func (e *RemovedUsersRole2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "OWNER":
+		fallthrough
+	case "MEMBER":
+		fallthrough
+	case "DEVELOPER":
+		fallthrough
+	case "SECURITY":
+		fallthrough
+	case "BILLING":
+		fallthrough
+	case "VIEWER":
+		fallthrough
+	case "VIEWER_FOR_PLUS":
+		fallthrough
+	case "CONTRIBUTOR":
+		*e = RemovedUsersRole2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RemovedUsersRole2: %v", v)
+	}
+}
+
+type RemovedUsers2 struct {
+	Role        RemovedUsersRole2 `json:"role"`
+	Confirmed   bool              `json:"confirmed"`
+	ConfirmedAt *float64          `json:"confirmedAt,omitempty"`
+}
+
+func (r RemovedUsers2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemovedUsers2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"role", "confirmed"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *RemovedUsers2) GetRole() RemovedUsersRole2 {
+	if o == nil {
+		return RemovedUsersRole2("")
+	}
+	return o.Role
+}
+
+func (o *RemovedUsers2) GetConfirmed() bool {
+	if o == nil {
+		return false
+	}
+	return o.Confirmed
+}
+
+func (o *RemovedUsers2) GetConfirmedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.ConfirmedAt
+}
+
 // Payload121 - The payload of the event, if requested.
 type Payload121 struct {
-	Slug    string            `json:"slug"`
-	TeamID  string            `json:"teamId"`
-	By      string            `json:"by"`
-	Reasons []UserEventReason `json:"reasons,omitempty"`
+	Slug               string                   `json:"slug"`
+	TeamID             string                   `json:"teamId"`
+	By                 string                   `json:"by"`
+	Reasons            []UserEventReason        `json:"reasons,omitempty"`
+	RemovedUsers       map[string]RemovedUsers2 `json:"removedUsers,omitempty"`
+	RemovedMemberCount *float64                 `json:"removedMemberCount,omitempty"`
+	Timestamp          *float64                 `json:"timestamp,omitempty"`
 }
 
 func (p Payload121) MarshalJSON() ([]byte, error) {
@@ -5845,6 +5930,27 @@ func (o *Payload121) GetReasons() []UserEventReason {
 		return nil
 	}
 	return o.Reasons
+}
+
+func (o *Payload121) GetRemovedUsers() map[string]RemovedUsers2 {
+	if o == nil {
+		return nil
+	}
+	return o.RemovedUsers
+}
+
+func (o *Payload121) GetRemovedMemberCount() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RemovedMemberCount
+}
+
+func (o *Payload121) GetTimestamp() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Timestamp
 }
 
 // Payload120 - The payload of the event, if requested.
@@ -9689,23 +9795,23 @@ func (o *Payload84) GetBranch() string {
 	return o.Branch
 }
 
-type RemovedUsersRole string
+type RemovedUsersRole1 string
 
 const (
-	RemovedUsersRoleOwner         RemovedUsersRole = "OWNER"
-	RemovedUsersRoleMember        RemovedUsersRole = "MEMBER"
-	RemovedUsersRoleDeveloper     RemovedUsersRole = "DEVELOPER"
-	RemovedUsersRoleSecurity      RemovedUsersRole = "SECURITY"
-	RemovedUsersRoleBilling       RemovedUsersRole = "BILLING"
-	RemovedUsersRoleViewer        RemovedUsersRole = "VIEWER"
-	RemovedUsersRoleViewerForPlus RemovedUsersRole = "VIEWER_FOR_PLUS"
-	RemovedUsersRoleContributor   RemovedUsersRole = "CONTRIBUTOR"
+	RemovedUsersRole1Owner         RemovedUsersRole1 = "OWNER"
+	RemovedUsersRole1Member        RemovedUsersRole1 = "MEMBER"
+	RemovedUsersRole1Developer     RemovedUsersRole1 = "DEVELOPER"
+	RemovedUsersRole1Security      RemovedUsersRole1 = "SECURITY"
+	RemovedUsersRole1Billing       RemovedUsersRole1 = "BILLING"
+	RemovedUsersRole1Viewer        RemovedUsersRole1 = "VIEWER"
+	RemovedUsersRole1ViewerForPlus RemovedUsersRole1 = "VIEWER_FOR_PLUS"
+	RemovedUsersRole1Contributor   RemovedUsersRole1 = "CONTRIBUTOR"
 )
 
-func (e RemovedUsersRole) ToPointer() *RemovedUsersRole {
+func (e RemovedUsersRole1) ToPointer() *RemovedUsersRole1 {
 	return &e
 }
-func (e *RemovedUsersRole) UnmarshalJSON(data []byte) error {
+func (e *RemovedUsersRole1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -9726,10 +9832,10 @@ func (e *RemovedUsersRole) UnmarshalJSON(data []byte) error {
 	case "VIEWER_FOR_PLUS":
 		fallthrough
 	case "CONTRIBUTOR":
-		*e = RemovedUsersRole(v)
+		*e = RemovedUsersRole1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RemovedUsersRole: %v", v)
+		return fmt.Errorf("invalid value for RemovedUsersRole1: %v", v)
 	}
 }
 
@@ -9951,46 +10057,46 @@ func (o *RemovedUsersJoinedFrom) GetDsyncConnectedAt() *float64 {
 	return o.DsyncConnectedAt
 }
 
-type RemovedUsers struct {
-	Role        RemovedUsersRole        `json:"role"`
+type RemovedUsers1 struct {
+	Role        RemovedUsersRole1       `json:"role"`
 	Confirmed   bool                    `json:"confirmed"`
 	ConfirmedAt *float64                `json:"confirmedAt,omitempty"`
 	JoinedFrom  *RemovedUsersJoinedFrom `json:"joinedFrom,omitempty"`
 }
 
-func (r RemovedUsers) MarshalJSON() ([]byte, error) {
+func (r RemovedUsers1) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(r, "", false)
 }
 
-func (r *RemovedUsers) UnmarshalJSON(data []byte) error {
+func (r *RemovedUsers1) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"role", "confirmed"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *RemovedUsers) GetRole() RemovedUsersRole {
+func (o *RemovedUsers1) GetRole() RemovedUsersRole1 {
 	if o == nil {
-		return RemovedUsersRole("")
+		return RemovedUsersRole1("")
 	}
 	return o.Role
 }
 
-func (o *RemovedUsers) GetConfirmed() bool {
+func (o *RemovedUsers1) GetConfirmed() bool {
 	if o == nil {
 		return false
 	}
 	return o.Confirmed
 }
 
-func (o *RemovedUsers) GetConfirmedAt() *float64 {
+func (o *RemovedUsers1) GetConfirmedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.ConfirmedAt
 }
 
-func (o *RemovedUsers) GetJoinedFrom() *RemovedUsersJoinedFrom {
+func (o *RemovedUsers1) GetJoinedFrom() *RemovedUsersJoinedFrom {
 	if o == nil {
 		return nil
 	}
@@ -9999,18 +10105,18 @@ func (o *RemovedUsers) GetJoinedFrom() *RemovedUsersJoinedFrom {
 
 // Payload83 - The payload of the event, if requested.
 type Payload83 struct {
-	Plan               string                  `json:"plan"`
-	RemovedUsers       map[string]RemovedUsers `json:"removedUsers,omitempty"`
-	PrevPlan           *string                 `json:"prevPlan,omitempty"`
-	PriorPlan          *string                 `json:"priorPlan,omitempty"`
-	IsDowngrade        *bool                   `json:"isDowngrade,omitempty"`
-	UserAgent          *string                 `json:"userAgent,omitempty"`
-	IsReactivate       *bool                   `json:"isReactivate,omitempty"`
-	IsTrialUpgrade     *bool                   `json:"isTrialUpgrade,omitempty"`
-	Automated          *bool                   `json:"automated,omitempty"`
-	Reason             *string                 `json:"reason,omitempty"`
-	Timestamp          *float64                `json:"timestamp,omitempty"`
-	RemovedMemberCount *float64                `json:"removedMemberCount,omitempty"`
+	Plan               string                   `json:"plan"`
+	RemovedUsers       map[string]RemovedUsers1 `json:"removedUsers,omitempty"`
+	PrevPlan           *string                  `json:"prevPlan,omitempty"`
+	PriorPlan          *string                  `json:"priorPlan,omitempty"`
+	IsDowngrade        *bool                    `json:"isDowngrade,omitempty"`
+	UserAgent          *string                  `json:"userAgent,omitempty"`
+	IsReactivate       *bool                    `json:"isReactivate,omitempty"`
+	IsTrialUpgrade     *bool                    `json:"isTrialUpgrade,omitempty"`
+	Automated          *bool                    `json:"automated,omitempty"`
+	Reason             *string                  `json:"reason,omitempty"`
+	Timestamp          *float64                 `json:"timestamp,omitempty"`
+	RemovedMemberCount *float64                 `json:"removedMemberCount,omitempty"`
 }
 
 func (p Payload83) MarshalJSON() ([]byte, error) {
@@ -10031,7 +10137,7 @@ func (o *Payload83) GetPlan() string {
 	return o.Plan
 }
 
-func (o *Payload83) GetRemovedUsers() map[string]RemovedUsers {
+func (o *Payload83) GetRemovedUsers() map[string]RemovedUsers1 {
 	if o == nil {
 		return nil
 	}

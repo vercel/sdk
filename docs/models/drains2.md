@@ -11,8 +11,21 @@ let value: Drains2 = {
   name: "<value>",
   createdAt: 7356.26,
   updatedAt: 7249.52,
+  schemas: {},
+  delivery: {
+    type: "http",
+    endpoint: "<value>",
+    encoding: "json",
+    headers: {
+      "key": "<value>",
+      "key1": "<value>",
+      "key2": "<value>",
+    },
+  },
   source: {
-    kind: "self-served",
+    kind: "integration",
+    integrationId: "<id>",
+    integrationConfigurationId: "<id>",
   },
 };
 ```
@@ -27,8 +40,8 @@ let value: Drains2 = {
 | `createdAt`                                                                        | *number*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `updatedAt`                                                                        | *number*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `projectIds`                                                                       | *string*[]                                                                         | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `schemas`                                                                          | [models.GetDrainsDrainsSchemas](../models/getdrainsdrainsschemas.md)               | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `delivery`                                                                         | *models.GetDrainsDrainsDelivery*                                                   | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `schemas`                                                                          | [models.GetDrainsDrainsSchemas](../models/getdrainsdrainsschemas.md)               | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `delivery`                                                                         | *models.GetDrainsDrainsDelivery*                                                   | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `sampling`                                                                         | [models.GetDrainsDrainsSampling](../models/getdrainsdrainssampling.md)[]           | :heavy_minus_sign:                                                                 | N/A                                                                                |
 | `teamId`                                                                           | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
 | `status`                                                                           | [models.GetDrainsDrainsStatus](../models/getdrainsdrainsstatus.md)                 | :heavy_minus_sign:                                                                 | N/A                                                                                |

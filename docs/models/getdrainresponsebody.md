@@ -12,10 +12,13 @@ const value: models.GetDrainResponseBody1 = {
   name: "<value>",
   createdAt: 5261.65,
   updatedAt: 5879.78,
+  schemas: {},
+  delivery: {
+    type: "internal",
+    target: "vercel-otel-traces-db",
+  },
   source: {
-    kind: "integration",
-    integrationId: "<id>",
-    integrationConfigurationId: "<id>",
+    kind: "self-served",
   },
 };
 ```
@@ -29,10 +32,13 @@ const value: models.GetDrainResponseBody2 = {
   name: "<value>",
   createdAt: 9964.39,
   updatedAt: 908.45,
+  schemas: {},
+  delivery: {
+    type: "internal",
+    target: "vercel-otel-traces-db",
+  },
   source: {
-    kind: "integration",
-    integrationId: "<id>",
-    integrationConfigurationId: "<id>",
+    kind: "self-served",
   },
 };
 ```

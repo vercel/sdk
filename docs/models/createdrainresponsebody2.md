@@ -11,6 +11,12 @@ let value: CreateDrainResponseBody2 = {
   name: "<value>",
   createdAt: 8513.2,
   updatedAt: 8458.35,
+  schemas: {},
+  delivery: {
+    type: "clickhouse",
+    endpoint: "<value>",
+    table: "<value>",
+  },
   source: {
     kind: "integration",
     integrationId: "<id>",
@@ -29,8 +35,8 @@ let value: CreateDrainResponseBody2 = {
 | `createdAt`                                                                                    | *number*                                                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            |
 | `updatedAt`                                                                                    | *number*                                                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            |
 | `projectIds`                                                                                   | *string*[]                                                                                     | :heavy_minus_sign:                                                                             | N/A                                                                                            |
-| `schemas`                                                                                      | [models.CreateDrainResponseBodySchemas](../models/createdrainresponsebodyschemas.md)           | :heavy_minus_sign:                                                                             | N/A                                                                                            |
-| `delivery`                                                                                     | *models.CreateDrainResponseBodyDelivery*                                                       | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `schemas`                                                                                      | [models.CreateDrainResponseBodySchemas](../models/createdrainresponsebodyschemas.md)           | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `delivery`                                                                                     | *models.CreateDrainResponseBodyDelivery*                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            |
 | `sampling`                                                                                     | [models.CreateDrainResponseBodySampling](../models/createdrainresponsebodysampling.md)[]       | :heavy_minus_sign:                                                                             | N/A                                                                                            |
 | `teamId`                                                                                       | *string*                                                                                       | :heavy_minus_sign:                                                                             | N/A                                                                                            |
 | `status`                                                                                       | [models.CreateDrainResponseBodyDrainsStatus](../models/createdrainresponsebodydrainsstatus.md) | :heavy_minus_sign:                                                                             | N/A                                                                                            |

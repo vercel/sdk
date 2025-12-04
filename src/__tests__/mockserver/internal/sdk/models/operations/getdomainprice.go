@@ -3,11 +3,15 @@
 package operations
 
 import (
+	"errors"
+	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/utils"
 )
 
 type GetDomainPriceRequest struct {
-	Domain string  `pathParam:"style=simple,explode=false,name=domain"`
+	Domain string `pathParam:"style=simple,explode=false,name=domain"`
+	// The number of years to get the price for. If not provided, the minimum number of years for the TLD will be used.
 	Years  *string `queryParam:"style=form,explode=true,name=years"`
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 }
@@ -33,15 +37,201 @@ func (o *GetDomainPriceRequest) GetTeamID() *string {
 	return o.TeamID
 }
 
+type GetDomainPricePurchasePriceType string
+
+const (
+	GetDomainPricePurchasePriceTypeNumber GetDomainPricePurchasePriceType = "number"
+	GetDomainPricePurchasePriceTypeStr    GetDomainPricePurchasePriceType = "str"
+)
+
+type GetDomainPricePurchasePrice struct {
+	Number *float64 `queryParam:"inline"`
+	Str    *string  `queryParam:"inline"`
+
+	Type GetDomainPricePurchasePriceType
+}
+
+func CreateGetDomainPricePurchasePriceNumber(number float64) GetDomainPricePurchasePrice {
+	typ := GetDomainPricePurchasePriceTypeNumber
+
+	return GetDomainPricePurchasePrice{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func CreateGetDomainPricePurchasePriceStr(str string) GetDomainPricePurchasePrice {
+	typ := GetDomainPricePurchasePriceTypeStr
+
+	return GetDomainPricePurchasePrice{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func (u *GetDomainPricePurchasePrice) UnmarshalJSON(data []byte) error {
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
+		u.Number = &number
+		u.Type = GetDomainPricePurchasePriceTypeNumber
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = GetDomainPricePurchasePriceTypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetDomainPricePurchasePrice", string(data))
+}
+
+func (u GetDomainPricePurchasePrice) MarshalJSON() ([]byte, error) {
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetDomainPricePurchasePrice: all fields are null")
+}
+
+type GetDomainPriceRenewalPriceType string
+
+const (
+	GetDomainPriceRenewalPriceTypeNumber GetDomainPriceRenewalPriceType = "number"
+	GetDomainPriceRenewalPriceTypeStr    GetDomainPriceRenewalPriceType = "str"
+)
+
+type GetDomainPriceRenewalPrice struct {
+	Number *float64 `queryParam:"inline"`
+	Str    *string  `queryParam:"inline"`
+
+	Type GetDomainPriceRenewalPriceType
+}
+
+func CreateGetDomainPriceRenewalPriceNumber(number float64) GetDomainPriceRenewalPrice {
+	typ := GetDomainPriceRenewalPriceTypeNumber
+
+	return GetDomainPriceRenewalPrice{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func CreateGetDomainPriceRenewalPriceStr(str string) GetDomainPriceRenewalPrice {
+	typ := GetDomainPriceRenewalPriceTypeStr
+
+	return GetDomainPriceRenewalPrice{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func (u *GetDomainPriceRenewalPrice) UnmarshalJSON(data []byte) error {
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
+		u.Number = &number
+		u.Type = GetDomainPriceRenewalPriceTypeNumber
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = GetDomainPriceRenewalPriceTypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetDomainPriceRenewalPrice", string(data))
+}
+
+func (u GetDomainPriceRenewalPrice) MarshalJSON() ([]byte, error) {
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetDomainPriceRenewalPrice: all fields are null")
+}
+
+type GetDomainPriceTransferPriceType string
+
+const (
+	GetDomainPriceTransferPriceTypeNumber GetDomainPriceTransferPriceType = "number"
+	GetDomainPriceTransferPriceTypeStr    GetDomainPriceTransferPriceType = "str"
+)
+
+type GetDomainPriceTransferPrice struct {
+	Number *float64 `queryParam:"inline"`
+	Str    *string  `queryParam:"inline"`
+
+	Type GetDomainPriceTransferPriceType
+}
+
+func CreateGetDomainPriceTransferPriceNumber(number float64) GetDomainPriceTransferPrice {
+	typ := GetDomainPriceTransferPriceTypeNumber
+
+	return GetDomainPriceTransferPrice{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func CreateGetDomainPriceTransferPriceStr(str string) GetDomainPriceTransferPrice {
+	typ := GetDomainPriceTransferPriceTypeStr
+
+	return GetDomainPriceTransferPrice{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func (u *GetDomainPriceTransferPrice) UnmarshalJSON(data []byte) error {
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
+		u.Number = &number
+		u.Type = GetDomainPriceTransferPriceTypeNumber
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = GetDomainPriceTransferPriceTypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetDomainPriceTransferPrice", string(data))
+}
+
+func (u GetDomainPriceTransferPrice) MarshalJSON() ([]byte, error) {
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetDomainPriceTransferPrice: all fields are null")
+}
+
 // GetDomainPriceResponseBody - Success
 type GetDomainPriceResponseBody struct {
-	Years float64 `json:"years"`
-	// The price for purchasing this domain for the given number of years. If null, the domain is not available for purchase for the given number of years.
-	PurchasePrice *float64 `json:"purchasePrice"`
-	// The price for renewing this domain for the given number of years. If null, the domain cannot be renewed for the given number of years.
-	RenewalPrice *float64 `json:"renewalPrice"`
-	// The price for transferring this domain in for the given number of years. If null, the domain cannot be transferred in for the given number of years.
-	TransferPrice *float64 `json:"transferPrice"`
+	Years         float64                     `json:"years"`
+	PurchasePrice GetDomainPricePurchasePrice `json:"purchasePrice"`
+	RenewalPrice  GetDomainPriceRenewalPrice  `json:"renewalPrice"`
+	TransferPrice GetDomainPriceTransferPrice `json:"transferPrice"`
 }
 
 func (o *GetDomainPriceResponseBody) GetYears() float64 {
@@ -51,23 +241,23 @@ func (o *GetDomainPriceResponseBody) GetYears() float64 {
 	return o.Years
 }
 
-func (o *GetDomainPriceResponseBody) GetPurchasePrice() *float64 {
+func (o *GetDomainPriceResponseBody) GetPurchasePrice() GetDomainPricePurchasePrice {
 	if o == nil {
-		return nil
+		return GetDomainPricePurchasePrice{}
 	}
 	return o.PurchasePrice
 }
 
-func (o *GetDomainPriceResponseBody) GetRenewalPrice() *float64 {
+func (o *GetDomainPriceResponseBody) GetRenewalPrice() GetDomainPriceRenewalPrice {
 	if o == nil {
-		return nil
+		return GetDomainPriceRenewalPrice{}
 	}
 	return o.RenewalPrice
 }
 
-func (o *GetDomainPriceResponseBody) GetTransferPrice() *float64 {
+func (o *GetDomainPriceResponseBody) GetTransferPrice() GetDomainPriceTransferPrice {
 	if o == nil {
-		return nil
+		return GetDomainPriceTransferPrice{}
 	}
 	return o.TransferPrice
 }

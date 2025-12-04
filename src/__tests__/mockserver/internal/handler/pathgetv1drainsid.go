@@ -53,6 +53,19 @@ func testGetDrainGetDrain0(w http.ResponseWriter, req *http.Request) {
 			Name:      "<value>",
 			CreatedAt: 1182.63,
 			UpdatedAt: 7579.11,
+			Schemas:   operations.GetDrainSchemas1{},
+			Delivery: operations.CreateGetDrainDeliveryUnion1HTTP(
+				operations.GetDrainDeliveryHTTP1{
+					Type:     operations.GetDrainTypeHTTP1HTTP,
+					Endpoint: "<value>",
+					Encoding: operations.GetDrainEncoding1Ndjson,
+					Headers: map[string]string{
+						"key":  "<value>",
+						"key1": "<value>",
+						"key2": "<value>",
+					},
+				},
+			),
 			Source: operations.CreateGetDrainSourceUnion1Integration(
 				operations.GetDrainSourceIntegration1{
 					Kind:                       operations.GetDrainKindIntegration1Integration,

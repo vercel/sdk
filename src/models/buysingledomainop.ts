@@ -84,7 +84,7 @@ export type ContactInformation = {
    */
   lastName: string;
   /**
-   * a non empty string
+   * A valid RFC 5322 email address
    */
   email: string;
   /**
@@ -135,9 +135,6 @@ export type BuySingleDomainRequestBody = {
    * The number of years to purchase the domain for.
    */
   years: number;
-  /**
-   * The expected price for the domain. Use the [Get price data for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-price-data-for-a-domain) endpoint to retrieve the price data for a domain.
-   */
   expectedPrice: number;
   /**
    * The contact information for the domain. Some TLDs require additional contact information. Use the [Get contact info schema](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-contact-info-schema) endpoint to retrieve the required fields.

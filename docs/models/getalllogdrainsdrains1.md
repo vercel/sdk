@@ -11,6 +11,13 @@ let value: GetAllLogDrainsDrains1 = {
   name: "<value>",
   createdAt: 1886.51,
   updatedAt: 4820.62,
+  schemas: {},
+  delivery: {
+    type: "http",
+    endpoint: "<value>",
+    encoding: "ndjson",
+    headers: {},
+  },
   source: {
     kind: "self-served",
   },
@@ -27,8 +34,8 @@ let value: GetAllLogDrainsDrains1 = {
 | `createdAt`                                                                                      | *number*                                                                                         | :heavy_check_mark:                                                                               | N/A                                                                                              |
 | `updatedAt`                                                                                      | *number*                                                                                         | :heavy_check_mark:                                                                               | N/A                                                                                              |
 | `projectIds`                                                                                     | *string*[]                                                                                       | :heavy_minus_sign:                                                                               | N/A                                                                                              |
-| `schemas`                                                                                        | [models.GetAllLogDrainsDrainsSchemas](../models/getalllogdrainsdrainsschemas.md)                 | :heavy_minus_sign:                                                                               | N/A                                                                                              |
-| `delivery`                                                                                       | *models.GetAllLogDrainsDrainsDelivery*                                                           | :heavy_minus_sign:                                                                               | N/A                                                                                              |
+| `schemas`                                                                                        | [models.GetAllLogDrainsDrainsSchemas](../models/getalllogdrainsdrainsschemas.md)                 | :heavy_check_mark:                                                                               | N/A                                                                                              |
+| `delivery`                                                                                       | *models.GetAllLogDrainsDrainsDelivery*                                                           | :heavy_check_mark:                                                                               | N/A                                                                                              |
 | `sampling`                                                                                       | [models.GetAllLogDrainsDrainsSampling](../models/getalllogdrainsdrainssampling.md)[]             | :heavy_minus_sign:                                                                               | N/A                                                                                              |
 | `teamId`                                                                                         | *string*                                                                                         | :heavy_minus_sign:                                                                               | N/A                                                                                              |
 | `status`                                                                                         | [models.GetAllLogDrainsDrainsLogDrainsStatus](../models/getalllogdrainsdrainslogdrainsstatus.md) | :heavy_minus_sign:                                                                               | N/A                                                                                              |

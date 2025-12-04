@@ -58,6 +58,13 @@ func testUpdateDrainUpdateDrain0(w http.ResponseWriter, req *http.Request) {
 			Name:      "<value>",
 			CreatedAt: 7781.81,
 			UpdatedAt: 8087.89,
+			Schemas:   operations.UpdateDrainSchemasResponse1{},
+			Delivery: operations.CreateUpdateDrainDeliveryResponseUnion1Internal(
+				operations.UpdateDrainDeliveryVercelOtelTracesDb1{
+					Type:   operations.UpdateDrainTypeInternal1Internal,
+					Target: operations.UpdateDrainTarget1VercelOtelTracesDb,
+				},
+			),
 			Source: operations.CreateUpdateDrainResponseBodySourceUnion1Integration(
 				operations.UpdateDrainSourceIntegration1{
 					Kind:                       operations.UpdateDrainKindIntegration1Integration,

@@ -149,6 +149,14 @@ export type GetInvoiceResponseBody = {
    */
   period: GetInvoicePeriod;
   /**
+   * Moment the invoice was paid. ISO 8601 timestamp.
+   */
+  paidAt?: string | undefined;
+  /**
+   * Most recent moment the invoice was refunded. ISO 8601 timestamp.
+   */
+  refundedAt?: string | undefined;
+  /**
    * Additional memo for the invoice.
    */
   memo?: string | undefined;
@@ -409,6 +417,8 @@ export const GetInvoiceResponseBody$inboundSchema: z.ZodType<
   invoiceNumber: z.string().optional(),
   invoiceDate: z.string(),
   period: z.lazy(() => GetInvoicePeriod$inboundSchema),
+  paidAt: z.string().optional(),
+  refundedAt: z.string().optional(),
   memo: z.string().optional(),
   items: z.array(z.lazy(() => GetInvoiceItems$inboundSchema)),
   discounts: z.array(z.lazy(() => GetInvoiceDiscounts$inboundSchema))
@@ -428,6 +438,8 @@ export type GetInvoiceResponseBody$Outbound = {
   invoiceNumber?: string | undefined;
   invoiceDate: string;
   period: GetInvoicePeriod$Outbound;
+  paidAt?: string | undefined;
+  refundedAt?: string | undefined;
   memo?: string | undefined;
   items: Array<GetInvoiceItems$Outbound>;
   discounts?: Array<GetInvoiceDiscounts$Outbound> | undefined;
@@ -451,6 +463,8 @@ export const GetInvoiceResponseBody$outboundSchema: z.ZodType<
   invoiceNumber: z.string().optional(),
   invoiceDate: z.string(),
   period: z.lazy(() => GetInvoicePeriod$outboundSchema),
+  paidAt: z.string().optional(),
+  refundedAt: z.string().optional(),
   memo: z.string().optional(),
   items: z.array(z.lazy(() => GetInvoiceItems$outboundSchema)),
   discounts: z.array(z.lazy(() => GetInvoiceDiscounts$outboundSchema))

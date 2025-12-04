@@ -11,6 +11,12 @@ let value: UpdateDrainResponseBody1 = {
   name: "<value>",
   createdAt: 2996.75,
   updatedAt: 9500.11,
+  schemas: {},
+  delivery: {
+    type: "clickhouse",
+    endpoint: "<value>",
+    table: "<value>",
+  },
   source: {
     kind: "integration",
     integrationId: "<id>",
@@ -29,8 +35,8 @@ let value: UpdateDrainResponseBody1 = {
 | `createdAt`                                                                                        | *number*                                                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |
 | `updatedAt`                                                                                        | *number*                                                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |
 | `projectIds`                                                                                       | *string*[]                                                                                         | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
-| `schemas`                                                                                          | [models.UpdateDrainResponseBodySchemas](../models/updatedrainresponsebodyschemas.md)               | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
-| `delivery`                                                                                         | *models.UpdateDrainResponseBodyDelivery*                                                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `schemas`                                                                                          | [models.UpdateDrainResponseBodySchemas](../models/updatedrainresponsebodyschemas.md)               | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `delivery`                                                                                         | *models.UpdateDrainResponseBodyDelivery*                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |
 | `sampling`                                                                                         | [models.UpdateDrainResponseBodySampling](../models/updatedrainresponsebodysampling.md)[]           | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `teamId`                                                                                           | *string*                                                                                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `status`                                                                                           | [models.UpdateDrainResponseBodyStatus](../models/updatedrainresponsebodystatus.md)                 | :heavy_minus_sign:                                                                                 | N/A                                                                                                |

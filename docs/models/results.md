@@ -13,7 +13,7 @@ let value: Results = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `available`        | *boolean*          | :heavy_check_mark: | N/A                |
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `domain`            | *string*            | :heavy_check_mark:  | A valid domain name |
+| `available`         | *boolean*           | :heavy_check_mark:  | N/A                 |

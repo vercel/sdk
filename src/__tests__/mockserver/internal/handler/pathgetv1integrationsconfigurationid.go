@@ -82,7 +82,7 @@ func testGetConfigurationGetConfiguration0(w http.ResponseWriter, req *http.Requ
 				"read-write:log-drain",
 			},
 			DisabledAt:        types.Float64(1558531915505),
-			Source:            operations.GetConfigurationSource1Marketplace.ToPointer(),
+			Source:            types.String("marketplace"),
 			DeleteRequestedAt: types.Float64(1558531915505),
 			Type:              operations.GetConfigurationTypeIntegrationConfiguration1IntegrationConfiguration,
 			DeletedAt:         types.Float64(1558531915505),

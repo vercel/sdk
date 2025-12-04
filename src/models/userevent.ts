@@ -977,15 +977,17 @@ export type UserEventPayload148Project = {
   id?: string | undefined;
 };
 
-export const UserEventPayloadRole = {
+export const UserEventPayload148Role = {
   Admin: "ADMIN",
   ProjectDeveloper: "PROJECT_DEVELOPER",
   ProjectViewer: "PROJECT_VIEWER",
 } as const;
-export type UserEventPayloadRole = ClosedEnum<typeof UserEventPayloadRole>;
+export type UserEventPayload148Role = ClosedEnum<
+  typeof UserEventPayload148Role
+>;
 
 export type ProjectMembership = {
-  role: UserEventPayloadRole;
+  role: UserEventPayload148Role;
   uid: string;
   createdAt: number;
   username?: string | undefined;
@@ -1315,6 +1317,26 @@ export type Reasons = {
   description: string;
 };
 
+export const UserEventPayload122Role = {
+  Owner: "OWNER",
+  Member: "MEMBER",
+  Developer: "DEVELOPER",
+  Security: "SECURITY",
+  Billing: "BILLING",
+  Viewer: "VIEWER",
+  ViewerForPlus: "VIEWER_FOR_PLUS",
+  Contributor: "CONTRIBUTOR",
+} as const;
+export type UserEventPayload122Role = ClosedEnum<
+  typeof UserEventPayload122Role
+>;
+
+export type PayloadRemovedUsers = {
+  role: UserEventPayload122Role;
+  confirmed: boolean;
+  confirmedAt?: number | undefined;
+};
+
 /**
  * The payload of the event, if requested.
  */
@@ -1323,6 +1345,9 @@ export type OneHundredAndTwentyTwo = {
   teamId: string;
   by: string;
   reasons?: Array<Reasons> | undefined;
+  removedUsers?: { [k: string]: PayloadRemovedUsers } | undefined;
+  removedMemberCount?: number | undefined;
+  timestamp?: number | undefined;
 };
 
 /**
@@ -2224,7 +2249,7 @@ export type EightyFive = {
   branch: string;
 };
 
-export const UserEventPayload84Role = {
+export const UserEventPayloadRole = {
   Owner: "OWNER",
   Member: "MEMBER",
   Developer: "DEVELOPER",
@@ -2234,7 +2259,7 @@ export const UserEventPayload84Role = {
   ViewerForPlus: "VIEWER_FOR_PLUS",
   Contributor: "CONTRIBUTOR",
 } as const;
-export type UserEventPayload84Role = ClosedEnum<typeof UserEventPayload84Role>;
+export type UserEventPayloadRole = ClosedEnum<typeof UserEventPayloadRole>;
 
 export const PayloadOrigin = {
   Teams: "teams",
@@ -2268,7 +2293,7 @@ export type PayloadJoinedFrom = {
 };
 
 export type RemovedUsers = {
-  role: UserEventPayload84Role;
+  role: UserEventPayloadRole;
   confirmed: boolean;
   confirmedAt?: number | undefined;
   joinedFrom?: PayloadJoinedFrom | undefined;
@@ -9264,13 +9289,13 @@ export function userEventPayload148ProjectFromJSON(
 }
 
 /** @internal */
-export const UserEventPayloadRole$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayloadRole
-> = z.nativeEnum(UserEventPayloadRole);
+export const UserEventPayload148Role$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload148Role
+> = z.nativeEnum(UserEventPayload148Role);
 /** @internal */
-export const UserEventPayloadRole$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayloadRole
-> = UserEventPayloadRole$inboundSchema;
+export const UserEventPayload148Role$outboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload148Role
+> = UserEventPayload148Role$inboundSchema;
 
 /** @internal */
 export const ProjectMembership$inboundSchema: z.ZodType<
@@ -9278,7 +9303,7 @@ export const ProjectMembership$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  role: UserEventPayloadRole$inboundSchema,
+  role: UserEventPayload148Role$inboundSchema,
   uid: z.string(),
   createdAt: z.number(),
   username: z.string().optional(),
@@ -9297,7 +9322,7 @@ export const ProjectMembership$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ProjectMembership
 > = z.object({
-  role: UserEventPayloadRole$outboundSchema,
+  role: UserEventPayload148Role$outboundSchema,
   uid: z.string(),
   createdAt: z.number(),
   username: z.string().optional(),
@@ -10904,6 +10929,60 @@ export function reasonsFromJSON(
 }
 
 /** @internal */
+export const UserEventPayload122Role$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload122Role
+> = z.nativeEnum(UserEventPayload122Role);
+/** @internal */
+export const UserEventPayload122Role$outboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload122Role
+> = UserEventPayload122Role$inboundSchema;
+
+/** @internal */
+export const PayloadRemovedUsers$inboundSchema: z.ZodType<
+  PayloadRemovedUsers,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  role: UserEventPayload122Role$inboundSchema,
+  confirmed: z.boolean(),
+  confirmedAt: z.number().optional(),
+});
+/** @internal */
+export type PayloadRemovedUsers$Outbound = {
+  role: string;
+  confirmed: boolean;
+  confirmedAt?: number | undefined;
+};
+
+/** @internal */
+export const PayloadRemovedUsers$outboundSchema: z.ZodType<
+  PayloadRemovedUsers$Outbound,
+  z.ZodTypeDef,
+  PayloadRemovedUsers
+> = z.object({
+  role: UserEventPayload122Role$outboundSchema,
+  confirmed: z.boolean(),
+  confirmedAt: z.number().optional(),
+});
+
+export function payloadRemovedUsersToJSON(
+  payloadRemovedUsers: PayloadRemovedUsers,
+): string {
+  return JSON.stringify(
+    PayloadRemovedUsers$outboundSchema.parse(payloadRemovedUsers),
+  );
+}
+export function payloadRemovedUsersFromJSON(
+  jsonString: string,
+): SafeParseResult<PayloadRemovedUsers, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PayloadRemovedUsers$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PayloadRemovedUsers' from JSON`,
+  );
+}
+
+/** @internal */
 export const OneHundredAndTwentyTwo$inboundSchema: z.ZodType<
   OneHundredAndTwentyTwo,
   z.ZodTypeDef,
@@ -10913,6 +10992,10 @@ export const OneHundredAndTwentyTwo$inboundSchema: z.ZodType<
   teamId: z.string(),
   by: z.string(),
   reasons: z.array(z.lazy(() => Reasons$inboundSchema)).optional(),
+  removedUsers: z.record(z.lazy(() => PayloadRemovedUsers$inboundSchema))
+    .optional(),
+  removedMemberCount: z.number().optional(),
+  timestamp: z.number().optional(),
 });
 /** @internal */
 export type OneHundredAndTwentyTwo$Outbound = {
@@ -10920,6 +11003,9 @@ export type OneHundredAndTwentyTwo$Outbound = {
   teamId: string;
   by: string;
   reasons?: Array<Reasons$Outbound> | undefined;
+  removedUsers?: { [k: string]: PayloadRemovedUsers$Outbound } | undefined;
+  removedMemberCount?: number | undefined;
+  timestamp?: number | undefined;
 };
 
 /** @internal */
@@ -10932,6 +11018,10 @@ export const OneHundredAndTwentyTwo$outboundSchema: z.ZodType<
   teamId: z.string(),
   by: z.string(),
   reasons: z.array(z.lazy(() => Reasons$outboundSchema)).optional(),
+  removedUsers: z.record(z.lazy(() => PayloadRemovedUsers$outboundSchema))
+    .optional(),
+  removedMemberCount: z.number().optional(),
+  timestamp: z.number().optional(),
 });
 
 export function oneHundredAndTwentyTwoToJSON(
@@ -14463,13 +14553,13 @@ export function eightyFiveFromJSON(
 }
 
 /** @internal */
-export const UserEventPayload84Role$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload84Role
-> = z.nativeEnum(UserEventPayload84Role);
+export const UserEventPayloadRole$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayloadRole
+> = z.nativeEnum(UserEventPayloadRole);
 /** @internal */
-export const UserEventPayload84Role$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload84Role
-> = UserEventPayload84Role$inboundSchema;
+export const UserEventPayloadRole$outboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayloadRole
+> = UserEventPayloadRole$inboundSchema;
 
 /** @internal */
 export const PayloadOrigin$inboundSchema: z.ZodNativeEnum<
@@ -14588,7 +14678,7 @@ export const RemovedUsers$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  role: UserEventPayload84Role$inboundSchema,
+  role: UserEventPayloadRole$inboundSchema,
   confirmed: z.boolean(),
   confirmedAt: z.number().optional(),
   joinedFrom: z.lazy(() => PayloadJoinedFrom$inboundSchema).optional(),
@@ -14607,7 +14697,7 @@ export const RemovedUsers$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RemovedUsers
 > = z.object({
-  role: UserEventPayload84Role$outboundSchema,
+  role: UserEventPayloadRole$outboundSchema,
   confirmed: z.boolean(),
   confirmedAt: z.number().optional(),
   joinedFrom: z.lazy(() => PayloadJoinedFrom$outboundSchema).optional(),

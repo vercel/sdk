@@ -21,6 +21,9 @@ export type GetBulkAvailabilityRequest = {
 };
 
 export type Results = {
+  /**
+   * A valid domain name
+   */
   domain: string;
   available: boolean;
 };

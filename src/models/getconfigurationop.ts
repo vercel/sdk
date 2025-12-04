@@ -23,23 +23,6 @@ export type GetConfigurationRequest = {
   slug?: string | undefined;
 };
 
-/**
- * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
- */
-export const GetConfigurationResponseBodyIntegrationsSource = {
-  Marketplace: "marketplace",
-  DeployButton: "deploy-button",
-  External: "external",
-  V0: "v0",
-  ResourceClaims: "resource-claims",
-} as const;
-/**
- * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
- */
-export type GetConfigurationResponseBodyIntegrationsSource = ClosedEnum<
-  typeof GetConfigurationResponseBodyIntegrationsSource
->;
-
 export const GetConfigurationResponseBodyIntegrationsType = {
   IntegrationConfiguration: "integration-configuration",
 } as const;
@@ -103,7 +86,7 @@ export type GetConfigurationResponseBody2 = {
   /**
    * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
    */
-  source?: GetConfigurationResponseBodyIntegrationsSource | undefined;
+  source?: string | undefined;
   /**
    * The slug of the integration the configuration is created for.
    */
@@ -253,23 +236,6 @@ export type GetConfigurationResponseBodyDisabledReason = ClosedEnum<
 >;
 
 /**
- * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
- */
-export const GetConfigurationResponseBodySource = {
-  Marketplace: "marketplace",
-  DeployButton: "deploy-button",
-  External: "external",
-  V0: "v0",
-  ResourceClaims: "resource-claims",
-} as const;
-/**
- * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
- */
-export type GetConfigurationResponseBodySource = ClosedEnum<
-  typeof GetConfigurationResponseBodySource
->;
-
-/**
  * Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
  */
 export const GetConfigurationResponseBodyInstallationType = {
@@ -349,7 +315,7 @@ export type GetConfigurationResponseBody1 = {
   /**
    * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
    */
-  source?: GetConfigurationResponseBodySource | undefined;
+  source?: string | undefined;
   canConfigureOpenTelemetry?: boolean | undefined;
   /**
    * Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
@@ -419,15 +385,6 @@ export function getConfigurationRequestFromJSON(
 }
 
 /** @internal */
-export const GetConfigurationResponseBodyIntegrationsSource$inboundSchema:
-  z.ZodNativeEnum<typeof GetConfigurationResponseBodyIntegrationsSource> = z
-    .nativeEnum(GetConfigurationResponseBodyIntegrationsSource);
-/** @internal */
-export const GetConfigurationResponseBodyIntegrationsSource$outboundSchema:
-  z.ZodNativeEnum<typeof GetConfigurationResponseBodyIntegrationsSource> =
-    GetConfigurationResponseBodyIntegrationsSource$inboundSchema;
-
-/** @internal */
 export const GetConfigurationResponseBodyIntegrationsType$inboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationResponseBodyIntegrationsType> = z
     .nativeEnum(GetConfigurationResponseBodyIntegrationsType);
@@ -470,8 +427,7 @@ export const GetConfigurationResponseBody2$inboundSchema: z.ZodType<
   integrationId: z.string(),
   ownerId: z.string(),
   projects: z.array(z.string()).optional(),
-  source: GetConfigurationResponseBodyIntegrationsSource$inboundSchema
-    .optional(),
+  source: z.string().optional(),
   slug: z.string(),
   teamId: z.nullable(z.string()).optional(),
   type: GetConfigurationResponseBodyIntegrationsType$inboundSchema,
@@ -522,8 +478,7 @@ export const GetConfigurationResponseBody2$outboundSchema: z.ZodType<
   integrationId: z.string(),
   ownerId: z.string(),
   projects: z.array(z.string()).optional(),
-  source: GetConfigurationResponseBodyIntegrationsSource$outboundSchema
-    .optional(),
+  source: z.string().optional(),
   slug: z.string(),
   teamId: z.nullable(z.string()).optional(),
   type: GetConfigurationResponseBodyIntegrationsType$outboundSchema,
@@ -976,15 +931,6 @@ export const GetConfigurationResponseBodyDisabledReason$outboundSchema:
     GetConfigurationResponseBodyDisabledReason$inboundSchema;
 
 /** @internal */
-export const GetConfigurationResponseBodySource$inboundSchema: z.ZodNativeEnum<
-  typeof GetConfigurationResponseBodySource
-> = z.nativeEnum(GetConfigurationResponseBodySource);
-/** @internal */
-export const GetConfigurationResponseBodySource$outboundSchema: z.ZodNativeEnum<
-  typeof GetConfigurationResponseBodySource
-> = GetConfigurationResponseBodySource$inboundSchema;
-
-/** @internal */
 export const GetConfigurationResponseBodyInstallationType$inboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationResponseBodyInstallationType> = z
     .nativeEnum(GetConfigurationResponseBodyInstallationType);
@@ -1028,7 +974,7 @@ export const GetConfigurationResponseBody1$inboundSchema: z.ZodType<
   disabledAt: z.number().optional(),
   disabledReason: GetConfigurationResponseBodyDisabledReason$inboundSchema
     .optional(),
-  source: GetConfigurationResponseBodySource$inboundSchema.optional(),
+  source: z.string().optional(),
   canConfigureOpenTelemetry: z.boolean().optional(),
   installationType: GetConfigurationResponseBodyInstallationType$inboundSchema
     .optional(),
@@ -1088,7 +1034,7 @@ export const GetConfigurationResponseBody1$outboundSchema: z.ZodType<
   disabledAt: z.number().optional(),
   disabledReason: GetConfigurationResponseBodyDisabledReason$outboundSchema
     .optional(),
-  source: GetConfigurationResponseBodySource$outboundSchema.optional(),
+  source: z.string().optional(),
   canConfigureOpenTelemetry: z.boolean().optional(),
   installationType: GetConfigurationResponseBodyInstallationType$outboundSchema
     .optional(),

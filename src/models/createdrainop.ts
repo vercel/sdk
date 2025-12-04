@@ -441,13 +441,12 @@ export type CreateDrainResponseBody2 = {
   createdAt: number;
   updatedAt: number;
   projectIds?: Array<string> | undefined;
-  schemas?: CreateDrainResponseBodySchemas | undefined;
-  delivery?:
+  schemas: CreateDrainResponseBodySchemas;
+  delivery:
     | CreateDrainDeliveryDrains1
     | CreateDrainDeliveryDrains2
     | CreateDrainDelivery3
-    | CreateDrainDelivery4
-    | undefined;
+    | CreateDrainDelivery4;
   sampling?: Array<CreateDrainResponseBodySampling> | undefined;
   teamId?: string | null | undefined;
   status?: CreateDrainResponseBodyDrainsStatus | undefined;
@@ -687,13 +686,8 @@ export type CreateDrainResponseBody1 = {
   createdAt: number;
   updatedAt: number;
   projectIds?: Array<string> | undefined;
-  schemas?: ResponseBodySchemas | undefined;
-  delivery?:
-    | CreateDrainDelivery1
-    | CreateDrainDelivery2
-    | Delivery3
-    | Delivery4
-    | undefined;
+  schemas: ResponseBodySchemas;
+  delivery: CreateDrainDelivery1 | CreateDrainDelivery2 | Delivery3 | Delivery4;
   sampling?: Array<ResponseBodySampling> | undefined;
   teamId?: string | null | undefined;
   status?: CreateDrainResponseBodyStatus | undefined;
@@ -3219,14 +3213,13 @@ export const CreateDrainResponseBody2$inboundSchema: z.ZodType<
   createdAt: z.number(),
   updatedAt: z.number(),
   projectIds: z.array(z.string()).optional(),
-  schemas: z.lazy(() => CreateDrainResponseBodySchemas$inboundSchema)
-    .optional(),
+  schemas: z.lazy(() => CreateDrainResponseBodySchemas$inboundSchema),
   delivery: z.union([
     z.lazy(() => CreateDrainDeliveryDrains1$inboundSchema),
     z.lazy(() => CreateDrainDeliveryDrains2$inboundSchema),
     z.lazy(() => CreateDrainDelivery3$inboundSchema),
     z.lazy(() => CreateDrainDelivery4$inboundSchema),
-  ]).optional(),
+  ]),
   sampling: z.array(z.lazy(() => CreateDrainResponseBodySampling$inboundSchema))
     .optional(),
   teamId: z.nullable(z.string()).optional(),
@@ -3260,13 +3253,12 @@ export type CreateDrainResponseBody2$Outbound = {
   createdAt: number;
   updatedAt: number;
   projectIds?: Array<string> | undefined;
-  schemas?: CreateDrainResponseBodySchemas$Outbound | undefined;
-  delivery?:
+  schemas: CreateDrainResponseBodySchemas$Outbound;
+  delivery:
     | CreateDrainDeliveryDrains1$Outbound
     | CreateDrainDeliveryDrains2$Outbound
     | CreateDrainDelivery3$Outbound
-    | CreateDrainDelivery4$Outbound
-    | undefined;
+    | CreateDrainDelivery4$Outbound;
   sampling?: Array<CreateDrainResponseBodySampling$Outbound> | undefined;
   teamId?: string | null | undefined;
   status?: string | undefined;
@@ -3298,14 +3290,13 @@ export const CreateDrainResponseBody2$outboundSchema: z.ZodType<
   createdAt: z.number(),
   updatedAt: z.number(),
   projectIds: z.array(z.string()).optional(),
-  schemas: z.lazy(() => CreateDrainResponseBodySchemas$outboundSchema)
-    .optional(),
+  schemas: z.lazy(() => CreateDrainResponseBodySchemas$outboundSchema),
   delivery: z.union([
     z.lazy(() => CreateDrainDeliveryDrains1$outboundSchema),
     z.lazy(() => CreateDrainDeliveryDrains2$outboundSchema),
     z.lazy(() => CreateDrainDelivery3$outboundSchema),
     z.lazy(() => CreateDrainDelivery4$outboundSchema),
-  ]).optional(),
+  ]),
   sampling: z.array(
     z.lazy(() => CreateDrainResponseBodySampling$outboundSchema),
   ).optional(),
@@ -4615,13 +4606,13 @@ export const CreateDrainResponseBody1$inboundSchema: z.ZodType<
   createdAt: z.number(),
   updatedAt: z.number(),
   projectIds: z.array(z.string()).optional(),
-  schemas: z.lazy(() => ResponseBodySchemas$inboundSchema).optional(),
+  schemas: z.lazy(() => ResponseBodySchemas$inboundSchema),
   delivery: z.union([
     z.lazy(() => CreateDrainDelivery1$inboundSchema),
     z.lazy(() => CreateDrainDelivery2$inboundSchema),
     z.lazy(() => Delivery3$inboundSchema),
     z.lazy(() => Delivery4$inboundSchema),
-  ]).optional(),
+  ]),
   sampling: z.array(z.lazy(() => ResponseBodySampling$inboundSchema))
     .optional(),
   teamId: z.nullable(z.string()).optional(),
@@ -4648,13 +4639,12 @@ export type CreateDrainResponseBody1$Outbound = {
   createdAt: number;
   updatedAt: number;
   projectIds?: Array<string> | undefined;
-  schemas?: ResponseBodySchemas$Outbound | undefined;
-  delivery?:
+  schemas: ResponseBodySchemas$Outbound;
+  delivery:
     | CreateDrainDelivery1$Outbound
     | CreateDrainDelivery2$Outbound
     | Delivery3$Outbound
-    | Delivery4$Outbound
-    | undefined;
+    | Delivery4$Outbound;
   sampling?: Array<ResponseBodySampling$Outbound> | undefined;
   teamId?: string | null | undefined;
   status?: string | undefined;
@@ -4679,13 +4669,13 @@ export const CreateDrainResponseBody1$outboundSchema: z.ZodType<
   createdAt: z.number(),
   updatedAt: z.number(),
   projectIds: z.array(z.string()).optional(),
-  schemas: z.lazy(() => ResponseBodySchemas$outboundSchema).optional(),
+  schemas: z.lazy(() => ResponseBodySchemas$outboundSchema),
   delivery: z.union([
     z.lazy(() => CreateDrainDelivery1$outboundSchema),
     z.lazy(() => CreateDrainDelivery2$outboundSchema),
     z.lazy(() => Delivery3$outboundSchema),
     z.lazy(() => Delivery4$outboundSchema),
-  ]).optional(),
+  ]),
   sampling: z.array(z.lazy(() => ResponseBodySampling$outboundSchema))
     .optional(),
   teamId: z.nullable(z.string()).optional(),

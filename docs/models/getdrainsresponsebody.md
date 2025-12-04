@@ -13,10 +13,14 @@ let value: GetDrainsResponseBody = {
       name: "<value>",
       createdAt: 639.21,
       updatedAt: 2576.2,
+      schemas: {},
+      delivery: {
+        type: "clickhouse",
+        endpoint: "<value>",
+        table: "<value>",
+      },
       source: {
-        kind: "integration",
-        integrationId: "<id>",
-        integrationConfigurationId: "<id>",
+        kind: "self-served",
       },
     },
   ],

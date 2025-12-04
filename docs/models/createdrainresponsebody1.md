@@ -11,6 +11,11 @@ let value: CreateDrainResponseBody1 = {
   name: "<value>",
   createdAt: 9104.12,
   updatedAt: 815.09,
+  schemas: {},
+  delivery: {
+    type: "internal",
+    target: "vercel-otel-traces-db",
+  },
   source: {
     kind: "integration",
     integrationId: "<id>",
@@ -29,8 +34,8 @@ let value: CreateDrainResponseBody1 = {
 | `createdAt`                                                                        | *number*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `updatedAt`                                                                        | *number*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `projectIds`                                                                       | *string*[]                                                                         | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `schemas`                                                                          | [models.ResponseBodySchemas](../models/responsebodyschemas.md)                     | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `delivery`                                                                         | *models.ResponseBodyDelivery*                                                      | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `schemas`                                                                          | [models.ResponseBodySchemas](../models/responsebodyschemas.md)                     | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `delivery`                                                                         | *models.ResponseBodyDelivery*                                                      | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `sampling`                                                                         | [models.ResponseBodySampling](../models/responsebodysampling.md)[]                 | :heavy_minus_sign:                                                                 | N/A                                                                                |
 | `teamId`                                                                           | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
 | `status`                                                                           | [models.CreateDrainResponseBodyStatus](../models/createdrainresponsebodystatus.md) | :heavy_minus_sign:                                                                 | N/A                                                                                |

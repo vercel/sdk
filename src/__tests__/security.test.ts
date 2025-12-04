@@ -318,7 +318,17 @@ test("Security Get Bypass Ip", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
-    result: [],
+    result: [
+      {
+        ownerId: "<id>",
+        id: "<id>",
+        domain: "perky-making.info",
+        ip: "9df8:bbce:110c:bdfb:ab2e:3eb9:5bac:0ddd",
+        createdAt: "1733915638461",
+        updatedAt: "1735662108592",
+        updatedAtHour: "<value>",
+      },
+    ],
   });
 });
 

@@ -141,6 +141,53 @@ func (o *CancelDeploymentBuild2) GetConfig() map[string]any {
 	return o.Config
 }
 
+type CancelDeploymentProjectSettingsNodeVersion string
+
+const (
+	CancelDeploymentProjectSettingsNodeVersionTwentyFourDotX CancelDeploymentProjectSettingsNodeVersion = "24.x"
+	CancelDeploymentProjectSettingsNodeVersionTwentyTwoDotX  CancelDeploymentProjectSettingsNodeVersion = "22.x"
+	CancelDeploymentProjectSettingsNodeVersionTwentyDotX     CancelDeploymentProjectSettingsNodeVersion = "20.x"
+	CancelDeploymentProjectSettingsNodeVersionEighteenDotX   CancelDeploymentProjectSettingsNodeVersion = "18.x"
+	CancelDeploymentProjectSettingsNodeVersionSixteenDotX    CancelDeploymentProjectSettingsNodeVersion = "16.x"
+	CancelDeploymentProjectSettingsNodeVersionFourteenDotX   CancelDeploymentProjectSettingsNodeVersion = "14.x"
+	CancelDeploymentProjectSettingsNodeVersionTwelveDotX     CancelDeploymentProjectSettingsNodeVersion = "12.x"
+	CancelDeploymentProjectSettingsNodeVersionTenDotX        CancelDeploymentProjectSettingsNodeVersion = "10.x"
+	CancelDeploymentProjectSettingsNodeVersionEightDot10DotX CancelDeploymentProjectSettingsNodeVersion = "8.10.x"
+)
+
+func (e CancelDeploymentProjectSettingsNodeVersion) ToPointer() *CancelDeploymentProjectSettingsNodeVersion {
+	return &e
+}
+func (e *CancelDeploymentProjectSettingsNodeVersion) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "24.x":
+		fallthrough
+	case "22.x":
+		fallthrough
+	case "20.x":
+		fallthrough
+	case "18.x":
+		fallthrough
+	case "16.x":
+		fallthrough
+	case "14.x":
+		fallthrough
+	case "12.x":
+		fallthrough
+	case "10.x":
+		fallthrough
+	case "8.10.x":
+		*e = CancelDeploymentProjectSettingsNodeVersion(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentProjectSettingsNodeVersion: %v", v)
+	}
+}
+
 type CancelDeploymentFramework string
 
 const (
@@ -427,14 +474,22 @@ func (o *CancelDeploymentWebAnalytics) GetHasData() *bool {
 }
 
 type CancelDeploymentProjectSettings struct {
-	BuildCommand                *string                        `json:"buildCommand,omitempty"`
-	DevCommand                  *string                        `json:"devCommand,omitempty"`
-	Framework                   *CancelDeploymentFramework     `json:"framework,omitempty"`
-	CommandForIgnoringBuildStep *string                        `json:"commandForIgnoringBuildStep,omitempty"`
-	InstallCommand              *string                        `json:"installCommand,omitempty"`
-	OutputDirectory             *string                        `json:"outputDirectory,omitempty"`
-	SpeedInsights               *CancelDeploymentSpeedInsights `json:"speedInsights,omitempty"`
-	WebAnalytics                *CancelDeploymentWebAnalytics  `json:"webAnalytics,omitempty"`
+	NodeVersion                 *CancelDeploymentProjectSettingsNodeVersion `json:"nodeVersion,omitempty"`
+	BuildCommand                *string                                     `json:"buildCommand,omitempty"`
+	DevCommand                  *string                                     `json:"devCommand,omitempty"`
+	Framework                   *CancelDeploymentFramework                  `json:"framework,omitempty"`
+	CommandForIgnoringBuildStep *string                                     `json:"commandForIgnoringBuildStep,omitempty"`
+	InstallCommand              *string                                     `json:"installCommand,omitempty"`
+	OutputDirectory             *string                                     `json:"outputDirectory,omitempty"`
+	SpeedInsights               *CancelDeploymentSpeedInsights              `json:"speedInsights,omitempty"`
+	WebAnalytics                *CancelDeploymentWebAnalytics               `json:"webAnalytics,omitempty"`
+}
+
+func (o *CancelDeploymentProjectSettings) GetNodeVersion() *CancelDeploymentProjectSettingsNodeVersion {
+	if o == nil {
+		return nil
+	}
+	return o.NodeVersion
 }
 
 func (o *CancelDeploymentProjectSettings) GetBuildCommand() *string {

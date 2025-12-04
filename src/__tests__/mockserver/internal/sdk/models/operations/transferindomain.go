@@ -13,7 +13,7 @@ type TransferInDomainContactInformation struct {
 	FirstName string `json:"firstName"`
 	// a non empty string
 	LastName string `json:"lastName"`
-	// a non empty string
+	// A valid RFC 5322 email address
 	Email string `json:"email"`
 	// A valid E.164 phone number
 	Phone string `json:"phone"`
@@ -120,12 +120,12 @@ func (o *TransferInDomainContactInformation) GetFax() *string {
 }
 
 type TransferInDomainRequestBody struct {
+	// The auth code for the domain. You must obtain this code from the losing registrar.
 	AuthCode string `json:"authCode"`
 	// Whether the domain should be auto-renewed before it expires. This can be configured later through the Vercel Dashboard or the [Update auto-renew for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/update-auto-renew-for-a-domain) endpoint.
 	AutoRenew bool `json:"autoRenew"`
 	// The number of years to renew the domain for once it is transferred in. This must be a valid number of transfer years for the TLD.
-	Years float64 `json:"years"`
-	// The expected price for the domain. Use the [Get price data for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-price-data-for-a-domain) endpoint to retrieve the price data for a domain.
+	Years              float64                            `json:"years"`
 	ExpectedPrice      float64                            `json:"expectedPrice"`
 	ContactInformation TransferInDomainContactInformation `json:"contactInformation"`
 }

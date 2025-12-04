@@ -13,7 +13,7 @@ type RenewDomainContactInformation struct {
 	FirstName string `json:"firstName"`
 	// a non empty string
 	LastName string `json:"lastName"`
-	// a non empty string
+	// A valid RFC 5322 email address
 	Email string `json:"email"`
 	// A valid E.164 phone number
 	Phone string `json:"phone"`
@@ -121,8 +121,7 @@ func (o *RenewDomainContactInformation) GetFax() *string {
 
 type RenewDomainRequestBody struct {
 	// The number of years to renew the domain for.
-	Years float64 `json:"years"`
-	// The expected price for the domain. Use the [Get price data for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-price-data-for-a-domain) endpoint to retrieve the price data for a domain.
+	Years              float64                        `json:"years"`
 	ExpectedPrice      float64                        `json:"expectedPrice"`
 	ContactInformation *RenewDomainContactInformation `json:"contactInformation,omitempty"`
 }

@@ -56,6 +56,8 @@ export const GetWebhookEvents = {
   EdgeConfigDeleted: "edge-config.deleted",
   EdgeConfigItemsUpdated: "edge-config.items.updated",
   FirewallAttack: "firewall.attack",
+  FirewallSystemRuleAnomaly: "firewall.system-rule-anomaly",
+  FirewallCustomRuleAnomaly: "firewall.custom-rule-anomaly",
   IntegrationConfigurationPermissionUpgraded:
     "integration-configuration.permission-upgraded",
   IntegrationConfigurationRemoved: "integration-configuration.removed",

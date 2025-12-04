@@ -486,6 +486,21 @@ export type Builds = {
   config?: { [k: string]: any } | undefined;
 };
 
+export const CreateDeploymentDeploymentsNodeVersion = {
+  TwentyFourDotX: "24.x",
+  TwentyTwoDotX: "22.x",
+  TwentyDotX: "20.x",
+  EighteenDotX: "18.x",
+  SixteenDotX: "16.x",
+  FourteenDotX: "14.x",
+  TwelveDotX: "12.x",
+  TenDotX: "10.x",
+  EightDot10DotX: "8.10.x",
+} as const;
+export type CreateDeploymentDeploymentsNodeVersion = ClosedEnum<
+  typeof CreateDeploymentDeploymentsNodeVersion
+>;
+
 export const CreateDeploymentFramework = {
   Blitzjs: "blitzjs",
   Nextjs: "nextjs",
@@ -567,6 +582,7 @@ export type CreateDeploymentWebAnalytics = {
 };
 
 export type CreateDeploymentProjectSettings = {
+  nodeVersion?: CreateDeploymentDeploymentsNodeVersion | undefined;
   buildCommand?: string | null | undefined;
   devCommand?: string | null | undefined;
   framework?: CreateDeploymentFramework | null | undefined;
@@ -3107,6 +3123,16 @@ export function buildsFromJSON(
 }
 
 /** @internal */
+export const CreateDeploymentDeploymentsNodeVersion$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDeploymentDeploymentsNodeVersion> = z.nativeEnum(
+    CreateDeploymentDeploymentsNodeVersion,
+  );
+/** @internal */
+export const CreateDeploymentDeploymentsNodeVersion$outboundSchema:
+  z.ZodNativeEnum<typeof CreateDeploymentDeploymentsNodeVersion> =
+    CreateDeploymentDeploymentsNodeVersion$inboundSchema;
+
+/** @internal */
 export const CreateDeploymentFramework$inboundSchema: z.ZodNativeEnum<
   typeof CreateDeploymentFramework
 > = z.nativeEnum(CreateDeploymentFramework);
@@ -3230,6 +3256,7 @@ export const CreateDeploymentProjectSettings$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  nodeVersion: CreateDeploymentDeploymentsNodeVersion$inboundSchema.optional(),
   buildCommand: z.nullable(z.string()).optional(),
   devCommand: z.nullable(z.string()).optional(),
   framework: z.nullable(CreateDeploymentFramework$inboundSchema).optional(),
@@ -3243,6 +3270,7 @@ export const CreateDeploymentProjectSettings$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type CreateDeploymentProjectSettings$Outbound = {
+  nodeVersion?: string | undefined;
   buildCommand?: string | null | undefined;
   devCommand?: string | null | undefined;
   framework?: string | null | undefined;
@@ -3259,6 +3287,7 @@ export const CreateDeploymentProjectSettings$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateDeploymentProjectSettings
 > = z.object({
+  nodeVersion: CreateDeploymentDeploymentsNodeVersion$outboundSchema.optional(),
   buildCommand: z.nullable(z.string()).optional(),
   devCommand: z.nullable(z.string()).optional(),
   framework: z.nullable(CreateDeploymentFramework$outboundSchema).optional(),

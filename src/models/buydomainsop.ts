@@ -82,6 +82,9 @@ import {
 } from "./toomanydomains.js";
 
 export type Domains = {
+  /**
+   * A valid domain name
+   */
   domainName: string;
   /**
    * Whether the domain should be auto-renewed before it expires. This can be configured later through the Vercel Dashboard or the [Update auto-renew for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/update-auto-renew-for-a-domain) endpoint.
@@ -91,9 +94,6 @@ export type Domains = {
    * The number of years to purchase the domain for.
    */
   years: number;
-  /**
-   * The expected price for the domain. Use the [Get price data for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-price-data-for-a-domain) endpoint to retrieve the price data for a domain.
-   */
   expectedPrice: number;
 };
 
@@ -112,7 +112,7 @@ export type BuyDomainsContactInformation = {
    */
   lastName: string;
   /**
-   * a non empty string
+   * A valid RFC 5322 email address
    */
   email: string;
   /**

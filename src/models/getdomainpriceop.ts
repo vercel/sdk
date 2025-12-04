@@ -33,6 +33,9 @@ import {
 
 export type GetDomainPriceRequest = {
   domain: string;
+  /**
+   * The number of years to get the price for. If not provided, the minimum number of years for the TLD will be used.
+   */
   years?: string | undefined;
   teamId?: string | undefined;
 };
@@ -46,23 +49,20 @@ export type GetDomainPriceDomainsRegistrarResponseBody =
   | TldNotSupported
   | HttpApiDecodeError;
 
+export type GetDomainPricePurchasePrice = number | string;
+
+export type GetDomainPriceRenewalPrice = number | string;
+
+export type GetDomainPriceTransferPrice = number | string;
+
 /**
  * Success
  */
 export type GetDomainPriceResponseBody = {
   years: number;
-  /**
-   * The price for purchasing this domain for the given number of years. If null, the domain is not available for purchase for the given number of years.
-   */
-  purchasePrice: number | null;
-  /**
-   * The price for renewing this domain for the given number of years. If null, the domain cannot be renewed for the given number of years.
-   */
-  renewalPrice: number | null;
-  /**
-   * The price for transferring this domain in for the given number of years. If null, the domain cannot be transferred in for the given number of years.
-   */
-  transferPrice: number | null;
+  purchasePrice: number | string;
+  renewalPrice: number | string;
+  transferPrice: number | string;
 };
 
 /** @internal */
@@ -166,22 +166,125 @@ export function getDomainPriceDomainsRegistrarResponseBodyFromJSON(
 }
 
 /** @internal */
+export const GetDomainPricePurchasePrice$inboundSchema: z.ZodType<
+  GetDomainPricePurchasePrice,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.number(), z.string()]);
+/** @internal */
+export type GetDomainPricePurchasePrice$Outbound = number | string;
+
+/** @internal */
+export const GetDomainPricePurchasePrice$outboundSchema: z.ZodType<
+  GetDomainPricePurchasePrice$Outbound,
+  z.ZodTypeDef,
+  GetDomainPricePurchasePrice
+> = z.union([z.number(), z.string()]);
+
+export function getDomainPricePurchasePriceToJSON(
+  getDomainPricePurchasePrice: GetDomainPricePurchasePrice,
+): string {
+  return JSON.stringify(
+    GetDomainPricePurchasePrice$outboundSchema.parse(
+      getDomainPricePurchasePrice,
+    ),
+  );
+}
+export function getDomainPricePurchasePriceFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDomainPricePurchasePrice, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDomainPricePurchasePrice$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDomainPricePurchasePrice' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDomainPriceRenewalPrice$inboundSchema: z.ZodType<
+  GetDomainPriceRenewalPrice,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.number(), z.string()]);
+/** @internal */
+export type GetDomainPriceRenewalPrice$Outbound = number | string;
+
+/** @internal */
+export const GetDomainPriceRenewalPrice$outboundSchema: z.ZodType<
+  GetDomainPriceRenewalPrice$Outbound,
+  z.ZodTypeDef,
+  GetDomainPriceRenewalPrice
+> = z.union([z.number(), z.string()]);
+
+export function getDomainPriceRenewalPriceToJSON(
+  getDomainPriceRenewalPrice: GetDomainPriceRenewalPrice,
+): string {
+  return JSON.stringify(
+    GetDomainPriceRenewalPrice$outboundSchema.parse(getDomainPriceRenewalPrice),
+  );
+}
+export function getDomainPriceRenewalPriceFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDomainPriceRenewalPrice, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDomainPriceRenewalPrice$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDomainPriceRenewalPrice' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDomainPriceTransferPrice$inboundSchema: z.ZodType<
+  GetDomainPriceTransferPrice,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.number(), z.string()]);
+/** @internal */
+export type GetDomainPriceTransferPrice$Outbound = number | string;
+
+/** @internal */
+export const GetDomainPriceTransferPrice$outboundSchema: z.ZodType<
+  GetDomainPriceTransferPrice$Outbound,
+  z.ZodTypeDef,
+  GetDomainPriceTransferPrice
+> = z.union([z.number(), z.string()]);
+
+export function getDomainPriceTransferPriceToJSON(
+  getDomainPriceTransferPrice: GetDomainPriceTransferPrice,
+): string {
+  return JSON.stringify(
+    GetDomainPriceTransferPrice$outboundSchema.parse(
+      getDomainPriceTransferPrice,
+    ),
+  );
+}
+export function getDomainPriceTransferPriceFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDomainPriceTransferPrice, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDomainPriceTransferPrice$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDomainPriceTransferPrice' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetDomainPriceResponseBody$inboundSchema: z.ZodType<
   GetDomainPriceResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
   years: z.number(),
-  purchasePrice: z.nullable(z.number()),
-  renewalPrice: z.nullable(z.number()),
-  transferPrice: z.nullable(z.number()),
+  purchasePrice: z.union([z.number(), z.string()]),
+  renewalPrice: z.union([z.number(), z.string()]),
+  transferPrice: z.union([z.number(), z.string()]),
 });
 /** @internal */
 export type GetDomainPriceResponseBody$Outbound = {
   years: number;
-  purchasePrice: number | null;
-  renewalPrice: number | null;
-  transferPrice: number | null;
+  purchasePrice: number | string;
+  renewalPrice: number | string;
+  transferPrice: number | string;
 };
 
 /** @internal */
@@ -191,9 +294,9 @@ export const GetDomainPriceResponseBody$outboundSchema: z.ZodType<
   GetDomainPriceResponseBody
 > = z.object({
   years: z.number(),
-  purchasePrice: z.nullable(z.number()),
-  renewalPrice: z.nullable(z.number()),
-  transferPrice: z.nullable(z.number()),
+  purchasePrice: z.union([z.number(), z.string()]),
+  renewalPrice: z.union([z.number(), z.string()]),
+  transferPrice: z.union([z.number(), z.string()]),
 });
 
 export function getDomainPriceResponseBodyToJSON(

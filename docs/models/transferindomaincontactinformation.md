@@ -24,7 +24,7 @@ let value: TransferInDomainContactInformation = {
 | --------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
 | `firstName`                             | *string*                                | :heavy_check_mark:                      | a non empty string                      |
 | `lastName`                              | *string*                                | :heavy_check_mark:                      | a non empty string                      |
-| `email`                                 | *string*                                | :heavy_check_mark:                      | a non empty string                      |
+| `email`                                 | *string*                                | :heavy_check_mark:                      | A valid RFC 5322 email address          |
 | `phone`                                 | *string*                                | :heavy_check_mark:                      | A valid E.164 phone number              |
 | `address1`                              | *string*                                | :heavy_check_mark:                      | a non empty string                      |
 | `address2`                              | *string*                                | :heavy_minus_sign:                      | a non empty string                      |

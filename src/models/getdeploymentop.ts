@@ -871,6 +871,21 @@ export type ResponseBodyBuilds = {
   config?: { [k: string]: any } | undefined;
 };
 
+export const GetDeploymentResponseBodyDeploymentsNodeVersion = {
+  TwentyFourDotX: "24.x",
+  TwentyTwoDotX: "22.x",
+  TwentyDotX: "20.x",
+  EighteenDotX: "18.x",
+  SixteenDotX: "16.x",
+  FourteenDotX: "14.x",
+  TwelveDotX: "12.x",
+  TenDotX: "10.x",
+  EightDot10DotX: "8.10.x",
+} as const;
+export type GetDeploymentResponseBodyDeploymentsNodeVersion = ClosedEnum<
+  typeof GetDeploymentResponseBodyDeploymentsNodeVersion
+>;
+
 export const ResponseBodyFramework = {
   Blitzjs: "blitzjs",
   Nextjs: "nextjs",
@@ -950,6 +965,7 @@ export type ResponseBodyWebAnalytics = {
 };
 
 export type ResponseBodyProjectSettings = {
+  nodeVersion?: GetDeploymentResponseBodyDeploymentsNodeVersion | undefined;
   buildCommand?: string | null | undefined;
   devCommand?: string | null | undefined;
   framework?: ResponseBodyFramework | null | undefined;
@@ -5093,6 +5109,15 @@ export function responseBodyBuildsFromJSON(
 }
 
 /** @internal */
+export const GetDeploymentResponseBodyDeploymentsNodeVersion$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsNodeVersion> = z
+    .nativeEnum(GetDeploymentResponseBodyDeploymentsNodeVersion);
+/** @internal */
+export const GetDeploymentResponseBodyDeploymentsNodeVersion$outboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsNodeVersion> =
+    GetDeploymentResponseBodyDeploymentsNodeVersion$inboundSchema;
+
+/** @internal */
 export const ResponseBodyFramework$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyFramework
 > = z.nativeEnum(ResponseBodyFramework);
@@ -5212,6 +5237,8 @@ export const ResponseBodyProjectSettings$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  nodeVersion: GetDeploymentResponseBodyDeploymentsNodeVersion$inboundSchema
+    .optional(),
   buildCommand: z.nullable(z.string()).optional(),
   devCommand: z.nullable(z.string()).optional(),
   framework: z.nullable(ResponseBodyFramework$inboundSchema).optional(),
@@ -5224,6 +5251,7 @@ export const ResponseBodyProjectSettings$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type ResponseBodyProjectSettings$Outbound = {
+  nodeVersion?: string | undefined;
   buildCommand?: string | null | undefined;
   devCommand?: string | null | undefined;
   framework?: string | null | undefined;
@@ -5240,6 +5268,8 @@ export const ResponseBodyProjectSettings$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ResponseBodyProjectSettings
 > = z.object({
+  nodeVersion: GetDeploymentResponseBodyDeploymentsNodeVersion$outboundSchema
+    .optional(),
   buildCommand: z.nullable(z.string()).optional(),
   devCommand: z.nullable(z.string()).optional(),
   framework: z.nullable(ResponseBodyFramework$outboundSchema).optional(),

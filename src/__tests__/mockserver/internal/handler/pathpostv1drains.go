@@ -58,6 +58,19 @@ func testCreateDrainCreateDrain0(w http.ResponseWriter, req *http.Request) {
 			Name:      "<value>",
 			CreatedAt: 3665.73,
 			UpdatedAt: 3681.88,
+			Schemas:   operations.CreateDrainSchemasResponse1{},
+			Delivery: operations.CreateCreateDrainDeliveryResponseUnion1Otlphttp(
+				operations.CreateDrainDeliveryOtlphttp1{
+					Type: operations.CreateDrainTypeOtlphttp1Otlphttp,
+					Endpoint: operations.CreateDrainEndpointResponse1{
+						Traces: "<value>",
+					},
+					Encoding: operations.CreateDrainEncodingResponse2JSON,
+					Headers: map[string]string{
+						"key": "<value>",
+					},
+				},
+			),
 			Source: operations.CreateCreateDrainResponseBodySourceUnion1SelfServed(
 				operations.CreateDrainSourceSelfServed1{
 					Kind: operations.CreateDrainKindSelfServed1SelfServed,

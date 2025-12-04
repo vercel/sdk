@@ -8,7 +8,6 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/operations"
-	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
@@ -47,10 +46,16 @@ func testGetTldPriceGetTldPrice0(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 	var respBody *operations.GetTldPriceResponseBody = &operations.GetTldPriceResponseBody{
-		Years:         8935.16,
-		PurchasePrice: types.Float64(6287.26),
-		RenewalPrice:  types.Float64(7886.17),
-		TransferPrice: types.Float64(1743.63),
+		Years: 8935.16,
+		PurchasePrice: operations.CreateGetTldPricePurchasePriceNumber(
+			6287.26,
+		),
+		RenewalPrice: operations.CreateGetTldPriceRenewalPriceNumber(
+			7886.17,
+		),
+		TransferPrice: operations.CreateGetTldPriceTransferPriceNumber(
+			1743.63,
+		),
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

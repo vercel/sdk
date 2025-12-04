@@ -461,12 +461,12 @@ type DomainTransfer struct {
 	PurchaseType PurchaseTypeTransfer `json:"purchaseType"`
 	AutoRenew    bool                 `json:"autoRenew"`
 	// The number of years the domain is being transferred for.
-	Years      float64       `json:"years"`
-	DomainName string        `json:"domainName"`
-	Status     DomainStatus3 `json:"status"`
-	// The price for the domain.
-	Price float64            `json:"price"`
-	Error *DomainErrorUnion6 `json:"error,omitempty"`
+	Years float64 `json:"years"`
+	// A valid domain name
+	DomainName string             `json:"domainName"`
+	Status     DomainStatus3      `json:"status"`
+	Price      float64            `json:"price"`
+	Error      *DomainErrorUnion6 `json:"error,omitempty"`
 }
 
 func (d DomainTransfer) MarshalJSON() ([]byte, error) {
@@ -960,12 +960,12 @@ func (u DomainErrorUnion4) MarshalJSON() ([]byte, error) {
 type DomainRenewal struct {
 	PurchaseType PurchaseTypeRenewal `json:"purchaseType"`
 	// The number of years the domain is being renewed for.
-	Years      float64       `json:"years"`
-	DomainName string        `json:"domainName"`
-	Status     DomainStatus2 `json:"status"`
-	// The price for the domain.
-	Price float64            `json:"price"`
-	Error *DomainErrorUnion4 `json:"error,omitempty"`
+	Years float64 `json:"years"`
+	// A valid domain name
+	DomainName string             `json:"domainName"`
+	Status     DomainStatus2      `json:"status"`
+	Price      float64            `json:"price"`
+	Error      *DomainErrorUnion4 `json:"error,omitempty"`
 }
 
 func (d DomainRenewal) MarshalJSON() ([]byte, error) {
@@ -1453,12 +1453,12 @@ type DomainPurchase struct {
 	PurchaseType PurchaseTypePurchase `json:"purchaseType"`
 	AutoRenew    bool                 `json:"autoRenew"`
 	// The number of years the domain is being purchased for.
-	Years      float64       `json:"years"`
-	DomainName string        `json:"domainName"`
-	Status     DomainStatus1 `json:"status"`
-	// The price for the domain.
-	Price float64            `json:"price"`
-	Error *DomainErrorUnion2 `json:"error,omitempty"`
+	Years float64 `json:"years"`
+	// A valid domain name
+	DomainName string             `json:"domainName"`
+	Status     DomainStatus1      `json:"status"`
+	Price      float64            `json:"price"`
+	Error      *DomainErrorUnion2 `json:"error,omitempty"`
 }
 
 func (d DomainPurchase) MarshalJSON() ([]byte, error) {

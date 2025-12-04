@@ -73,7 +73,7 @@ export type RenewDomainContactInformation = {
    */
   lastName: string;
   /**
-   * a non empty string
+   * A valid RFC 5322 email address
    */
   email: string;
   /**
@@ -119,9 +119,6 @@ export type RenewDomainRequestBody = {
    * The number of years to renew the domain for.
    */
   years: number;
-  /**
-   * The expected price for the domain. Use the [Get price data for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-price-data-for-a-domain) endpoint to retrieve the price data for a domain.
-   */
   expectedPrice: number;
   contactInformation?: RenewDomainContactInformation | undefined;
 };

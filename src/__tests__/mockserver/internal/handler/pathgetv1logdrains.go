@@ -56,6 +56,13 @@ func testGetAllLogDrainsGetAllLogDrains0(w http.ResponseWriter, req *http.Reques
 						Name:      "<value>",
 						CreatedAt: 7495.57,
 						UpdatedAt: 4759.82,
+						Schemas:   operations.GetAllLogDrainsSchemas1{},
+						Delivery: operations.CreateGetAllLogDrainsDeliveryUnion1Internal(
+							operations.GetAllLogDrainsDeliveryVercelOtelTracesDb1{
+								Type:   operations.GetAllLogDrainsTypeInternal1Internal,
+								Target: operations.GetAllLogDrainsTarget1VercelOtelTracesDb,
+							},
+						),
 						Source: operations.CreateGetAllLogDrainsSourceUnion1SelfServed(
 							operations.GetAllLogDrainsSourceSelfServed1{
 								Kind: operations.GetAllLogDrainsKindSelfServed1SelfServed,

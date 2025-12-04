@@ -11,10 +11,13 @@ let value: GetDrainResponseBody1 = {
   name: "<value>",
   createdAt: 5261.65,
   updatedAt: 5879.78,
+  schemas: {},
+  delivery: {
+    type: "internal",
+    target: "vercel-otel-traces-db",
+  },
   source: {
-    kind: "integration",
-    integrationId: "<id>",
-    integrationConfigurationId: "<id>",
+    kind: "self-served",
   },
 };
 ```
@@ -29,8 +32,8 @@ let value: GetDrainResponseBody1 = {
 | `createdAt`                                                                                  | *number*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
 | `updatedAt`                                                                                  | *number*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
 | `projectIds`                                                                                 | *string*[]                                                                                   | :heavy_minus_sign:                                                                           | N/A                                                                                          |
-| `schemas`                                                                                    | [models.GetDrainResponseBodySchemas](../models/getdrainresponsebodyschemas.md)               | :heavy_minus_sign:                                                                           | N/A                                                                                          |
-| `delivery`                                                                                   | *models.GetDrainResponseBodyDelivery*                                                        | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| `schemas`                                                                                    | [models.GetDrainResponseBodySchemas](../models/getdrainresponsebodyschemas.md)               | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| `delivery`                                                                                   | *models.GetDrainResponseBodyDelivery*                                                        | :heavy_check_mark:                                                                           | N/A                                                                                          |
 | `sampling`                                                                                   | [models.GetDrainResponseBodySampling](../models/getdrainresponsebodysampling.md)[]           | :heavy_minus_sign:                                                                           | N/A                                                                                          |
 | `teamId`                                                                                     | *string*                                                                                     | :heavy_minus_sign:                                                                           | N/A                                                                                          |
 | `status`                                                                                     | [models.GetDrainResponseBodyStatus](../models/getdrainresponsebodystatus.md)                 | :heavy_minus_sign:                                                                           | N/A                                                                                          |

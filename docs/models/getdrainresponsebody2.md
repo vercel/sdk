@@ -11,10 +11,13 @@ let value: GetDrainResponseBody2 = {
   name: "<value>",
   createdAt: 9964.39,
   updatedAt: 908.45,
+  schemas: {},
+  delivery: {
+    type: "internal",
+    target: "vercel-otel-traces-db",
+  },
   source: {
-    kind: "integration",
-    integrationId: "<id>",
-    integrationConfigurationId: "<id>",
+    kind: "self-served",
   },
 };
 ```
@@ -29,8 +32,8 @@ let value: GetDrainResponseBody2 = {
 | `createdAt`                                                                                              | *number*                                                                                                 | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
 | `updatedAt`                                                                                              | *number*                                                                                                 | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
 | `projectIds`                                                                                             | *string*[]                                                                                               | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
-| `schemas`                                                                                                | [models.GetDrainResponseBodyDrainsSchemas](../models/getdrainresponsebodydrainsschemas.md)               | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
-| `delivery`                                                                                               | *models.GetDrainResponseBodyDrainsDelivery*                                                              | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
+| `schemas`                                                                                                | [models.GetDrainResponseBodyDrainsSchemas](../models/getdrainresponsebodydrainsschemas.md)               | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
+| `delivery`                                                                                               | *models.GetDrainResponseBodyDrainsDelivery*                                                              | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
 | `sampling`                                                                                               | [models.GetDrainResponseBodyDrainsSampling](../models/getdrainresponsebodydrainssampling.md)[]           | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
 | `teamId`                                                                                                 | *string*                                                                                                 | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
 | `status`                                                                                                 | [models.GetDrainResponseBodyDrainsStatus](../models/getdrainresponsebodydrainsstatus.md)                 | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |

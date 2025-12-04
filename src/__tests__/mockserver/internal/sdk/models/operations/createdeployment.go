@@ -1822,6 +1822,53 @@ func (o *CreateDeploymentBuild2) GetConfig() map[string]any {
 	return o.Config
 }
 
+type CreateDeploymentProjectSettingsNodeVersionLambdas string
+
+const (
+	CreateDeploymentProjectSettingsNodeVersionLambdasTwentyFourDotX CreateDeploymentProjectSettingsNodeVersionLambdas = "24.x"
+	CreateDeploymentProjectSettingsNodeVersionLambdasTwentyTwoDotX  CreateDeploymentProjectSettingsNodeVersionLambdas = "22.x"
+	CreateDeploymentProjectSettingsNodeVersionLambdasTwentyDotX     CreateDeploymentProjectSettingsNodeVersionLambdas = "20.x"
+	CreateDeploymentProjectSettingsNodeVersionLambdasEighteenDotX   CreateDeploymentProjectSettingsNodeVersionLambdas = "18.x"
+	CreateDeploymentProjectSettingsNodeVersionLambdasSixteenDotX    CreateDeploymentProjectSettingsNodeVersionLambdas = "16.x"
+	CreateDeploymentProjectSettingsNodeVersionLambdasFourteenDotX   CreateDeploymentProjectSettingsNodeVersionLambdas = "14.x"
+	CreateDeploymentProjectSettingsNodeVersionLambdasTwelveDotX     CreateDeploymentProjectSettingsNodeVersionLambdas = "12.x"
+	CreateDeploymentProjectSettingsNodeVersionLambdasTenDotX        CreateDeploymentProjectSettingsNodeVersionLambdas = "10.x"
+	CreateDeploymentProjectSettingsNodeVersionLambdasEightDot10DotX CreateDeploymentProjectSettingsNodeVersionLambdas = "8.10.x"
+)
+
+func (e CreateDeploymentProjectSettingsNodeVersionLambdas) ToPointer() *CreateDeploymentProjectSettingsNodeVersionLambdas {
+	return &e
+}
+func (e *CreateDeploymentProjectSettingsNodeVersionLambdas) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "24.x":
+		fallthrough
+	case "22.x":
+		fallthrough
+	case "20.x":
+		fallthrough
+	case "18.x":
+		fallthrough
+	case "16.x":
+		fallthrough
+	case "14.x":
+		fallthrough
+	case "12.x":
+		fallthrough
+	case "10.x":
+		fallthrough
+	case "8.10.x":
+		*e = CreateDeploymentProjectSettingsNodeVersionLambdas(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateDeploymentProjectSettingsNodeVersionLambdas: %v", v)
+	}
+}
+
 type CreateDeploymentFrameworkLambdas string
 
 const (
@@ -2108,14 +2155,22 @@ func (o *CreateDeploymentWebAnalytics) GetHasData() *bool {
 }
 
 type CreateDeploymentProjectSettingsLambdas struct {
-	BuildCommand                *string                           `json:"buildCommand,omitempty"`
-	DevCommand                  *string                           `json:"devCommand,omitempty"`
-	Framework                   *CreateDeploymentFrameworkLambdas `json:"framework,omitempty"`
-	CommandForIgnoringBuildStep *string                           `json:"commandForIgnoringBuildStep,omitempty"`
-	InstallCommand              *string                           `json:"installCommand,omitempty"`
-	OutputDirectory             *string                           `json:"outputDirectory,omitempty"`
-	SpeedInsights               *CreateDeploymentSpeedInsights    `json:"speedInsights,omitempty"`
-	WebAnalytics                *CreateDeploymentWebAnalytics     `json:"webAnalytics,omitempty"`
+	NodeVersion                 *CreateDeploymentProjectSettingsNodeVersionLambdas `json:"nodeVersion,omitempty"`
+	BuildCommand                *string                                            `json:"buildCommand,omitempty"`
+	DevCommand                  *string                                            `json:"devCommand,omitempty"`
+	Framework                   *CreateDeploymentFrameworkLambdas                  `json:"framework,omitempty"`
+	CommandForIgnoringBuildStep *string                                            `json:"commandForIgnoringBuildStep,omitempty"`
+	InstallCommand              *string                                            `json:"installCommand,omitempty"`
+	OutputDirectory             *string                                            `json:"outputDirectory,omitempty"`
+	SpeedInsights               *CreateDeploymentSpeedInsights                     `json:"speedInsights,omitempty"`
+	WebAnalytics                *CreateDeploymentWebAnalytics                      `json:"webAnalytics,omitempty"`
+}
+
+func (o *CreateDeploymentProjectSettingsLambdas) GetNodeVersion() *CreateDeploymentProjectSettingsNodeVersionLambdas {
+	if o == nil {
+		return nil
+	}
+	return o.NodeVersion
 }
 
 func (o *CreateDeploymentProjectSettingsLambdas) GetBuildCommand() *string {

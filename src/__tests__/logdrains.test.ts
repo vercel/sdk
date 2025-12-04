@@ -66,9 +66,7 @@ test("Logdrains Get Integration Log Drains", async () => {
       branch: "feature/*",
       samplingRate: 0.5,
       source: {
-        kind: "integration",
-        integrationId: "<id>",
-        integrationConfigurationId: "<id>",
+        kind: "self-served",
       },
     },
     {
@@ -100,9 +98,7 @@ test("Logdrains Get Integration Log Drains", async () => {
       branch: "feature/*",
       samplingRate: 0.5,
       source: {
-        kind: "integration",
-        integrationId: "<id>",
-        integrationConfigurationId: "<id>",
+        kind: "self-served",
       },
     },
   ]);
@@ -220,6 +216,11 @@ test("Logdrains Get All Log Drains", async () => {
         name: "<value>",
         createdAt: 7495.57,
         updatedAt: 4759.82,
+        schemas: {},
+        delivery: {
+          type: "internal",
+          target: "vercel-otel-traces-db",
+        },
         source: {
           kind: "self-served",
         },

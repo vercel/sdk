@@ -78,23 +78,6 @@ export type ResponseBodyIntegration = {
   tagIds?: Array<TagIds> | undefined;
 };
 
-/**
- * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
- */
-export const GetConfigurationsResponseBodyIntegrationsSource = {
-  Marketplace: "marketplace",
-  DeployButton: "deploy-button",
-  External: "external",
-  V0: "v0",
-  ResourceClaims: "resource-claims",
-} as const;
-/**
- * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
- */
-export type GetConfigurationsResponseBodyIntegrationsSource = ClosedEnum<
-  typeof GetConfigurationsResponseBodyIntegrationsSource
->;
-
 export const GetConfigurationsResponseBodyIntegrationsType = {
   IntegrationConfiguration: "integration-configuration",
 } as const;
@@ -156,7 +139,7 @@ export type GetConfigurationsResponseBody2 = {
   /**
    * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
    */
-  source?: GetConfigurationsResponseBodyIntegrationsSource | undefined;
+  source?: string | undefined;
   /**
    * The slug of the integration the configuration is created for.
    */
@@ -198,23 +181,6 @@ export type GetConfigurationsResponseBody2 = {
    */
   installationType?: GetConfigurationsResponseBodyInstallationType | undefined;
 };
-
-/**
- * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
- */
-export const GetConfigurationsResponseBodySource = {
-  Marketplace: "marketplace",
-  DeployButton: "deploy-button",
-  External: "external",
-  V0: "v0",
-  ResourceClaims: "resource-claims",
-} as const;
-/**
- * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
- */
-export type GetConfigurationsResponseBodySource = ClosedEnum<
-  typeof GetConfigurationsResponseBodySource
->;
 
 export const GetConfigurationsResponseBodyType = {
   IntegrationConfiguration: "integration-configuration",
@@ -280,7 +246,7 @@ export type GetConfigurationsResponseBody1 = {
   /**
    * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
    */
-  source?: GetConfigurationsResponseBodySource | undefined;
+  source?: string | undefined;
   /**
    * The slug of the integration the configuration is created for.
    */
@@ -458,15 +424,6 @@ export function responseBodyIntegrationFromJSON(
 }
 
 /** @internal */
-export const GetConfigurationsResponseBodyIntegrationsSource$inboundSchema:
-  z.ZodNativeEnum<typeof GetConfigurationsResponseBodyIntegrationsSource> = z
-    .nativeEnum(GetConfigurationsResponseBodyIntegrationsSource);
-/** @internal */
-export const GetConfigurationsResponseBodyIntegrationsSource$outboundSchema:
-  z.ZodNativeEnum<typeof GetConfigurationsResponseBodyIntegrationsSource> =
-    GetConfigurationsResponseBodyIntegrationsSource$inboundSchema;
-
-/** @internal */
 export const GetConfigurationsResponseBodyIntegrationsType$inboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationsResponseBodyIntegrationsType> = z
     .nativeEnum(GetConfigurationsResponseBodyIntegrationsType);
@@ -508,8 +465,7 @@ export const GetConfigurationsResponseBody2$inboundSchema: z.ZodType<
   integrationId: z.string(),
   ownerId: z.string(),
   projects: z.array(z.string()).optional(),
-  source: GetConfigurationsResponseBodyIntegrationsSource$inboundSchema
-    .optional(),
+  source: z.string().optional(),
   slug: z.string(),
   teamId: z.nullable(z.string()).optional(),
   type: GetConfigurationsResponseBodyIntegrationsType$inboundSchema,
@@ -561,8 +517,7 @@ export const GetConfigurationsResponseBody2$outboundSchema: z.ZodType<
   integrationId: z.string(),
   ownerId: z.string(),
   projects: z.array(z.string()).optional(),
-  source: GetConfigurationsResponseBodyIntegrationsSource$outboundSchema
-    .optional(),
+  source: z.string().optional(),
   slug: z.string(),
   teamId: z.nullable(z.string()).optional(),
   type: GetConfigurationsResponseBodyIntegrationsType$outboundSchema,
@@ -597,15 +552,6 @@ export function getConfigurationsResponseBody2FromJSON(
     `Failed to parse 'GetConfigurationsResponseBody2' from JSON`,
   );
 }
-
-/** @internal */
-export const GetConfigurationsResponseBodySource$inboundSchema: z.ZodNativeEnum<
-  typeof GetConfigurationsResponseBodySource
-> = z.nativeEnum(GetConfigurationsResponseBodySource);
-/** @internal */
-export const GetConfigurationsResponseBodySource$outboundSchema:
-  z.ZodNativeEnum<typeof GetConfigurationsResponseBodySource> =
-    GetConfigurationsResponseBodySource$inboundSchema;
 
 /** @internal */
 export const GetConfigurationsResponseBodyType$inboundSchema: z.ZodNativeEnum<
@@ -646,7 +592,7 @@ export const GetConfigurationsResponseBody1$inboundSchema: z.ZodType<
   integrationId: z.string().optional(),
   ownerId: z.string().optional(),
   projects: z.array(z.string()).optional(),
-  source: GetConfigurationsResponseBodySource$inboundSchema.optional(),
+  source: z.string().optional(),
   slug: z.string().optional(),
   teamId: z.nullable(z.string()).optional(),
   type: GetConfigurationsResponseBodyType$inboundSchema.optional(),
@@ -694,7 +640,7 @@ export const GetConfigurationsResponseBody1$outboundSchema: z.ZodType<
   integrationId: z.string().optional(),
   ownerId: z.string().optional(),
   projects: z.array(z.string()).optional(),
-  source: GetConfigurationsResponseBodySource$outboundSchema.optional(),
+  source: z.string().optional(),
   slug: z.string().optional(),
   teamId: z.nullable(z.string()).optional(),
   type: GetConfigurationsResponseBodyType$outboundSchema.optional(),

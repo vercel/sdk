@@ -83,11 +83,11 @@ export type Domains3 = {
    * The number of years the domain is being transferred for.
    */
   years: number;
+  /**
+   * A valid domain name
+   */
   domainName: string;
   status: GetOrderDomainsDomainsRegistrarStatus;
-  /**
-   * The price for the domain.
-   */
   price: number;
   error?:
     | GetOrderErrorDomainsRegistrar2
@@ -145,11 +145,11 @@ export type Domains2 = {
    * The number of years the domain is being renewed for.
    */
   years: number;
+  /**
+   * A valid domain name
+   */
   domainName: string;
   status: GetOrderDomainsStatus;
-  /**
-   * The price for the domain.
-   */
   price: number;
   error?:
     | GetOrderError2
@@ -208,11 +208,11 @@ export type Domains1 = {
    * The number of years the domain is being purchased for.
    */
   years: number;
+  /**
+   * A valid domain name
+   */
   domainName: string;
   status: DomainsStatus;
-  /**
-   * The price for the domain.
-   */
   price: number;
   error?:
     | GetOrderErrorDomainsRegistrarResponse2

@@ -124,7 +124,7 @@ test("Integrations Create Integration Store Direct", async () => {
       externalResourceId: "<id>",
       product: {
         value: {
-          atBRANDAt8825: {},
+          atBRANDAt8831: {},
         },
       },
       secrets: [],

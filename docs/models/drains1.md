@@ -11,8 +11,17 @@ let value: Drains1 = {
   name: "<value>",
   createdAt: 9071.91,
   updatedAt: 1734.08,
+  schemas: {},
+  delivery: {
+    type: "http",
+    endpoint: "<value>",
+    encoding: "ndjson",
+    headers: {},
+  },
   source: {
-    kind: "self-served",
+    kind: "integration",
+    integrationId: "<id>",
+    integrationConfigurationId: "<id>",
   },
 };
 ```
@@ -27,8 +36,8 @@ let value: Drains1 = {
 | `createdAt`                                                      | *number*                                                         | :heavy_check_mark:                                               | N/A                                                              |
 | `updatedAt`                                                      | *number*                                                         | :heavy_check_mark:                                               | N/A                                                              |
 | `projectIds`                                                     | *string*[]                                                       | :heavy_minus_sign:                                               | N/A                                                              |
-| `schemas`                                                        | [models.DrainsSchemas](../models/drainsschemas.md)               | :heavy_minus_sign:                                               | N/A                                                              |
-| `delivery`                                                       | *models.DrainsDelivery*                                          | :heavy_minus_sign:                                               | N/A                                                              |
+| `schemas`                                                        | [models.DrainsSchemas](../models/drainsschemas.md)               | :heavy_check_mark:                                               | N/A                                                              |
+| `delivery`                                                       | *models.DrainsDelivery*                                          | :heavy_check_mark:                                               | N/A                                                              |
 | `sampling`                                                       | [models.DrainsSampling](../models/drainssampling.md)[]           | :heavy_minus_sign:                                               | N/A                                                              |
 | `teamId`                                                         | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
 | `status`                                                         | [models.DrainsStatus](../models/drainsstatus.md)                 | :heavy_minus_sign:                                               | N/A                                                              |

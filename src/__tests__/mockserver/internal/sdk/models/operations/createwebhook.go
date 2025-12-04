@@ -43,6 +43,8 @@ const (
 	CreateWebhookEventRequestEdgeConfigDeleted                                  CreateWebhookEventRequest = "edge-config.deleted"
 	CreateWebhookEventRequestEdgeConfigItemsUpdated                             CreateWebhookEventRequest = "edge-config.items.updated"
 	CreateWebhookEventRequestFirewallAttack                                     CreateWebhookEventRequest = "firewall.attack"
+	CreateWebhookEventRequestFirewallSystemRuleAnomaly                          CreateWebhookEventRequest = "firewall.system-rule-anomaly"
+	CreateWebhookEventRequestFirewallCustomRuleAnomaly                          CreateWebhookEventRequest = "firewall.custom-rule-anomaly"
 	CreateWebhookEventRequestIntegrationConfigurationPermissionUpgraded         CreateWebhookEventRequest = "integration-configuration.permission-upgraded"
 	CreateWebhookEventRequestIntegrationConfigurationRemoved                    CreateWebhookEventRequest = "integration-configuration.removed"
 	CreateWebhookEventRequestIntegrationConfigurationScopeChangeConfirmed       CreateWebhookEventRequest = "integration-configuration.scope-change-confirmed"
@@ -161,6 +163,10 @@ func (e *CreateWebhookEventRequest) UnmarshalJSON(data []byte) error {
 	case "edge-config.items.updated":
 		fallthrough
 	case "firewall.attack":
+		fallthrough
+	case "firewall.system-rule-anomaly":
+		fallthrough
+	case "firewall.custom-rule-anomaly":
 		fallthrough
 	case "integration-configuration.permission-upgraded":
 		fallthrough
@@ -348,6 +354,8 @@ const (
 	CreateWebhookEventResponseEdgeConfigDeleted                                  CreateWebhookEventResponse = "edge-config.deleted"
 	CreateWebhookEventResponseEdgeConfigItemsUpdated                             CreateWebhookEventResponse = "edge-config.items.updated"
 	CreateWebhookEventResponseFirewallAttack                                     CreateWebhookEventResponse = "firewall.attack"
+	CreateWebhookEventResponseFirewallSystemRuleAnomaly                          CreateWebhookEventResponse = "firewall.system-rule-anomaly"
+	CreateWebhookEventResponseFirewallCustomRuleAnomaly                          CreateWebhookEventResponse = "firewall.custom-rule-anomaly"
 	CreateWebhookEventResponseIntegrationConfigurationPermissionUpgraded         CreateWebhookEventResponse = "integration-configuration.permission-upgraded"
 	CreateWebhookEventResponseIntegrationConfigurationRemoved                    CreateWebhookEventResponse = "integration-configuration.removed"
 	CreateWebhookEventResponseIntegrationConfigurationScopeChangeConfirmed       CreateWebhookEventResponse = "integration-configuration.scope-change-confirmed"
@@ -466,6 +474,10 @@ func (e *CreateWebhookEventResponse) UnmarshalJSON(data []byte) error {
 	case "edge-config.items.updated":
 		fallthrough
 	case "firewall.attack":
+		fallthrough
+	case "firewall.system-rule-anomaly":
+		fallthrough
+	case "firewall.custom-rule-anomaly":
 		fallthrough
 	case "integration-configuration.permission-upgraded":
 		fallthrough

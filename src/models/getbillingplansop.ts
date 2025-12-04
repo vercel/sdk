@@ -12,6 +12,7 @@ export type GetBillingPlansRequest = {
   integrationIdOrSlug: string;
   productIdOrSlug: string;
   metadata?: string | undefined;
+  source?: string | undefined;
   /**
    * The Team identifier to perform the request on behalf of.
    */
@@ -82,6 +83,7 @@ export const GetBillingPlansRequest$inboundSchema: z.ZodType<
   integrationIdOrSlug: z.string(),
   productIdOrSlug: z.string(),
   metadata: z.string().optional(),
+  source: z.string().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
@@ -90,6 +92,7 @@ export type GetBillingPlansRequest$Outbound = {
   integrationIdOrSlug: string;
   productIdOrSlug: string;
   metadata?: string | undefined;
+  source?: string | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
 };
@@ -103,6 +106,7 @@ export const GetBillingPlansRequest$outboundSchema: z.ZodType<
   integrationIdOrSlug: z.string(),
   productIdOrSlug: z.string(),
   metadata: z.string().optional(),
+  source: z.string().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });

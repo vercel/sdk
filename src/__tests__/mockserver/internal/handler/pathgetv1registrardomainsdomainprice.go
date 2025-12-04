@@ -8,7 +8,6 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/operations"
-	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
@@ -47,10 +46,16 @@ func testGetDomainPriceGetDomainPrice0(w http.ResponseWriter, req *http.Request)
 		return
 	}
 	var respBody *operations.GetDomainPriceResponseBody = &operations.GetDomainPriceResponseBody{
-		Years:         40.44,
-		PurchasePrice: types.Float64(7574.42),
-		RenewalPrice:  types.Float64(1523.71),
-		TransferPrice: types.Float64(2786.9),
+		Years: 40.44,
+		PurchasePrice: operations.CreateGetDomainPricePurchasePriceNumber(
+			7574.42,
+		),
+		RenewalPrice: operations.CreateGetDomainPriceRenewalPriceNumber(
+			1523.71,
+		),
+		TransferPrice: operations.CreateGetDomainPriceTransferPriceNumber(
+			2786.9,
+		),
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

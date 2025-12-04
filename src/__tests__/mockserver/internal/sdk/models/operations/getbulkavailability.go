@@ -38,6 +38,7 @@ func (o *GetBulkAvailabilityRequest) GetBody() GetBulkAvailabilityRequestBody {
 }
 
 type GetBulkAvailabilityResult struct {
+	// A valid domain name
 	Domain    string `json:"domain"`
 	Available bool   `json:"available"`
 }

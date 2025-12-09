@@ -10,7 +10,6 @@ import { domainsDeleteDomain } from "../funcs/domainsDeleteDomain.js";
 import { domainsGetDomain } from "../funcs/domainsGetDomain.js";
 import { domainsGetDomainConfig } from "../funcs/domainsGetDomainConfig.js";
 import { domainsGetDomains } from "../funcs/domainsGetDomains.js";
-import { domainsGetDomainTransfer } from "../funcs/domainsGetDomainTransfer.js";
 import { domainsPatchDomain } from "../funcs/domainsPatchDomain.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import { BuyDomainRequest, BuyDomainResponse } from "../models/buydomainop.js";
@@ -42,10 +41,6 @@ import {
   GetDomainsRequest,
   GetDomainsResponseBody,
 } from "../models/getdomainsop.js";
-import {
-  GetDomainTransferRequest,
-  GetDomainTransferResponseBody,
-} from "../models/getdomaintransferop.js";
 import {
   PatchDomainRequest,
   PatchDomainResponseBody,
@@ -98,23 +93,6 @@ export class Domains extends ClientSDK {
     options?: RequestOptions,
   ): Promise<CheckDomainStatusResponseBody> {
     return unwrapAsync(domainsCheckDomainStatus(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Get domain transfer info (deprecated)
-   *
-   * @remarks
-   * This endpoint is deprecated and replaced with the endpoint [Get a domain's transfer status](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-a-domains-transfer-status). Fetch domain transfer availability or transfer status if a transfer is in progress.
-   */
-  async getDomainTransfer(
-    request: GetDomainTransferRequest,
-    options?: RequestOptions,
-  ): Promise<GetDomainTransferResponseBody> {
-    return unwrapAsync(domainsGetDomainTransfer(
       this,
       request,
       options,

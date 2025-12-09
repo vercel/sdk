@@ -1,5 +1,4 @@
 # RollingRelease
-(*rollingRelease*)
 
 ## Overview
 

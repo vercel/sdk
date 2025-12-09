@@ -1,5 +1,4 @@
 # Drains
-(*drains*)
 
 ## Overview
 

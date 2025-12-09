@@ -6,7 +6,7 @@
 import { ResponseBodyNotification } from "@vercel/sdk/models/getconfigurationop.js";
 
 let value: ResponseBodyNotification = {
-  level: "warn",
+  level: "info",
   title: "<value>",
 };
 ```

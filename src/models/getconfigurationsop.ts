@@ -78,6 +78,25 @@ export type ResponseBodyIntegration = {
   tagIds?: Array<TagIds> | undefined;
 };
 
+/**
+ * The configuration status. Optional. If not defined, assume 'ready'.
+ */
+export const GetConfigurationsResponseBodyIntegrationsStatus = {
+  Pending: "pending",
+  Ready: "ready",
+  Onboarding: "onboarding",
+  Suspended: "suspended",
+  Resumed: "resumed",
+  Error: "error",
+  Uninstalled: "uninstalled",
+} as const;
+/**
+ * The configuration status. Optional. If not defined, assume 'ready'.
+ */
+export type GetConfigurationsResponseBodyIntegrationsStatus = ClosedEnum<
+  typeof GetConfigurationsResponseBodyIntegrationsStatus
+>;
+
 export const GetConfigurationsResponseBodyIntegrationsType = {
   IntegrationConfiguration: "integration-configuration",
 } as const;
@@ -133,6 +152,14 @@ export type GetConfigurationsResponseBody2 = {
    */
   ownerId: string;
   /**
+   * The configuration status. Optional. If not defined, assume 'ready'.
+   */
+  status?: GetConfigurationsResponseBodyIntegrationsStatus | undefined;
+  /**
+   * An external identifier defined by the integration vendor.
+   */
+  externalId?: string | undefined;
+  /**
    * When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access.
    */
   projects?: Array<string> | undefined;
@@ -181,6 +208,25 @@ export type GetConfigurationsResponseBody2 = {
    */
   installationType?: GetConfigurationsResponseBodyInstallationType | undefined;
 };
+
+/**
+ * The configuration status. Optional. If not defined, assume 'ready'.
+ */
+export const GetConfigurationsResponseBodyStatus = {
+  Pending: "pending",
+  Ready: "ready",
+  Onboarding: "onboarding",
+  Suspended: "suspended",
+  Resumed: "resumed",
+  Error: "error",
+  Uninstalled: "uninstalled",
+} as const;
+/**
+ * The configuration status. Optional. If not defined, assume 'ready'.
+ */
+export type GetConfigurationsResponseBodyStatus = ClosedEnum<
+  typeof GetConfigurationsResponseBodyStatus
+>;
 
 export const GetConfigurationsResponseBodyType = {
   IntegrationConfiguration: "integration-configuration",
@@ -239,6 +285,14 @@ export type GetConfigurationsResponseBody1 = {
    * The user or team ID that owns the configuration
    */
   ownerId?: string | undefined;
+  /**
+   * The configuration status. Optional. If not defined, assume 'ready'.
+   */
+  status?: GetConfigurationsResponseBodyStatus | undefined;
+  /**
+   * An external identifier defined by the integration vendor.
+   */
+  externalId?: string | undefined;
   /**
    * When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access.
    */
@@ -424,6 +478,15 @@ export function responseBodyIntegrationFromJSON(
 }
 
 /** @internal */
+export const GetConfigurationsResponseBodyIntegrationsStatus$inboundSchema:
+  z.ZodNativeEnum<typeof GetConfigurationsResponseBodyIntegrationsStatus> = z
+    .nativeEnum(GetConfigurationsResponseBodyIntegrationsStatus);
+/** @internal */
+export const GetConfigurationsResponseBodyIntegrationsStatus$outboundSchema:
+  z.ZodNativeEnum<typeof GetConfigurationsResponseBodyIntegrationsStatus> =
+    GetConfigurationsResponseBodyIntegrationsStatus$inboundSchema;
+
+/** @internal */
 export const GetConfigurationsResponseBodyIntegrationsType$inboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationsResponseBodyIntegrationsType> = z
     .nativeEnum(GetConfigurationsResponseBodyIntegrationsType);
@@ -464,6 +527,9 @@ export const GetConfigurationsResponseBody2$inboundSchema: z.ZodType<
   id: z.string(),
   integrationId: z.string(),
   ownerId: z.string(),
+  status: GetConfigurationsResponseBodyIntegrationsStatus$inboundSchema
+    .optional(),
+  externalId: z.string().optional(),
   projects: z.array(z.string()).optional(),
   source: z.string().optional(),
   slug: z.string(),
@@ -489,6 +555,8 @@ export type GetConfigurationsResponseBody2$Outbound = {
   id: string;
   integrationId: string;
   ownerId: string;
+  status?: string | undefined;
+  externalId?: string | undefined;
   projects?: Array<string> | undefined;
   source?: string | undefined;
   slug: string;
@@ -516,6 +584,9 @@ export const GetConfigurationsResponseBody2$outboundSchema: z.ZodType<
   id: z.string(),
   integrationId: z.string(),
   ownerId: z.string(),
+  status: GetConfigurationsResponseBodyIntegrationsStatus$outboundSchema
+    .optional(),
+  externalId: z.string().optional(),
   projects: z.array(z.string()).optional(),
   source: z.string().optional(),
   slug: z.string(),
@@ -552,6 +623,15 @@ export function getConfigurationsResponseBody2FromJSON(
     `Failed to parse 'GetConfigurationsResponseBody2' from JSON`,
   );
 }
+
+/** @internal */
+export const GetConfigurationsResponseBodyStatus$inboundSchema: z.ZodNativeEnum<
+  typeof GetConfigurationsResponseBodyStatus
+> = z.nativeEnum(GetConfigurationsResponseBodyStatus);
+/** @internal */
+export const GetConfigurationsResponseBodyStatus$outboundSchema:
+  z.ZodNativeEnum<typeof GetConfigurationsResponseBodyStatus> =
+    GetConfigurationsResponseBodyStatus$inboundSchema;
 
 /** @internal */
 export const GetConfigurationsResponseBodyType$inboundSchema: z.ZodNativeEnum<
@@ -591,6 +671,8 @@ export const GetConfigurationsResponseBody1$inboundSchema: z.ZodType<
   id: z.string().optional(),
   integrationId: z.string().optional(),
   ownerId: z.string().optional(),
+  status: GetConfigurationsResponseBodyStatus$inboundSchema.optional(),
+  externalId: z.string().optional(),
   projects: z.array(z.string()).optional(),
   source: z.string().optional(),
   slug: z.string().optional(),
@@ -613,6 +695,8 @@ export type GetConfigurationsResponseBody1$Outbound = {
   id?: string | undefined;
   integrationId?: string | undefined;
   ownerId?: string | undefined;
+  status?: string | undefined;
+  externalId?: string | undefined;
   projects?: Array<string> | undefined;
   source?: string | undefined;
   slug?: string | undefined;
@@ -639,6 +723,8 @@ export const GetConfigurationsResponseBody1$outboundSchema: z.ZodType<
   id: z.string().optional(),
   integrationId: z.string().optional(),
   ownerId: z.string().optional(),
+  status: GetConfigurationsResponseBodyStatus$outboundSchema.optional(),
+  externalId: z.string().optional(),
   projects: z.array(z.string()).optional(),
   source: z.string().optional(),
   slug: z.string().optional(),

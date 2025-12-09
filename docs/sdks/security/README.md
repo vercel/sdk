@@ -1,5 +1,4 @@
 # Security
-(*security*)
 
 ## Overview
 

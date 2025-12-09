@@ -10,6 +10,7 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetBillingPlansRequest = {
   integrationIdOrSlug: string;
+  integrationConfigurationId?: string | undefined;
   productIdOrSlug: string;
   metadata?: string | undefined;
   source?: string | undefined;
@@ -81,6 +82,7 @@ export const GetBillingPlansRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   integrationIdOrSlug: z.string(),
+  integrationConfigurationId: z.string().optional(),
   productIdOrSlug: z.string(),
   metadata: z.string().optional(),
   source: z.string().optional(),
@@ -90,6 +92,7 @@ export const GetBillingPlansRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type GetBillingPlansRequest$Outbound = {
   integrationIdOrSlug: string;
+  integrationConfigurationId?: string | undefined;
   productIdOrSlug: string;
   metadata?: string | undefined;
   source?: string | undefined;
@@ -104,6 +107,7 @@ export const GetBillingPlansRequest$outboundSchema: z.ZodType<
   GetBillingPlansRequest
 > = z.object({
   integrationIdOrSlug: z.string(),
+  integrationConfigurationId: z.string().optional(),
   productIdOrSlug: z.string(),
   metadata: z.string().optional(),
   source: z.string().optional(),

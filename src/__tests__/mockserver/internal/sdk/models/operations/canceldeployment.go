@@ -3717,16 +3717,16 @@ func (e *CancelDeploymentType) UnmarshalJSON(data []byte) error {
 }
 
 type CancelDeploymentOidcTokenClaims struct {
-	Iss         string `json:"iss"`
-	Sub         string `json:"sub"`
-	Scope       string `json:"scope"`
-	Aud         string `json:"aud"`
-	Owner       string `json:"owner"`
-	OwnerID     string `json:"owner_id"`
-	Project     string `json:"project"`
-	ProjectID   string `json:"project_id"`
-	Environment string `json:"environment"`
-	Plan        string `json:"plan"`
+	Iss         string  `json:"iss"`
+	Sub         string  `json:"sub"`
+	Scope       string  `json:"scope"`
+	Aud         string  `json:"aud"`
+	Owner       string  `json:"owner"`
+	OwnerID     string  `json:"owner_id"`
+	Project     string  `json:"project"`
+	ProjectID   string  `json:"project_id"`
+	Environment string  `json:"environment"`
+	Plan        *string `json:"plan,omitempty"`
 }
 
 func (o *CancelDeploymentOidcTokenClaims) GetIss() string {
@@ -3792,9 +3792,9 @@ func (o *CancelDeploymentOidcTokenClaims) GetEnvironment() string {
 	return o.Environment
 }
 
-func (o *CancelDeploymentOidcTokenClaims) GetPlan() string {
+func (o *CancelDeploymentOidcTokenClaims) GetPlan() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.Plan
 }

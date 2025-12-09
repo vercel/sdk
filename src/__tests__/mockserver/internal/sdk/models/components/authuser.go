@@ -498,6 +498,8 @@ type AuthUserResourceConfig struct {
 	BuildMachine *AuthUserBuildMachine `json:"buildMachine,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	Security *AuthUserSecurity `json:"security,omitempty"`
+	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
+	BulkRedirectsFreeLimitOverride *float64 `json:"bulkRedirectsFreeLimitOverride,omitempty"`
 }
 
 func (a AuthUserResourceConfig) MarshalJSON() ([]byte, error) {
@@ -698,6 +700,13 @@ func (o *AuthUserResourceConfig) GetSecurity() *AuthUserSecurity {
 		return nil
 	}
 	return o.Security
+}
+
+func (o *AuthUserResourceConfig) GetBulkRedirectsFreeLimitOverride() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BulkRedirectsFreeLimitOverride
 }
 
 type AuthUserViewPreference string

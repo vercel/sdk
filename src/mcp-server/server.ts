@@ -72,7 +72,6 @@ import { tool$domainsDeleteDomain } from "./tools/domainsDeleteDomain.js";
 import { tool$domainsGetDomain } from "./tools/domainsGetDomain.js";
 import { tool$domainsGetDomainConfig } from "./tools/domainsGetDomainConfig.js";
 import { tool$domainsGetDomains } from "./tools/domainsGetDomains.js";
-import { tool$domainsGetDomainTransfer } from "./tools/domainsGetDomainTransfer.js";
 import { tool$domainsPatchDomain } from "./tools/domainsPatchDomain.js";
 import { tool$domainsRegistrarBuyDomains } from "./tools/domainsRegistrarBuyDomains.js";
 import { tool$domainsRegistrarBuySingleDomain } from "./tools/domainsRegistrarBuySingleDomain.js";
@@ -242,7 +241,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.18.1",
+    version: "1.18.2",
   });
 
   const client = new VercelCore({
@@ -342,7 +341,6 @@ export function createMCPServer(deps: {
   tool(tool$domainsBuyDomain);
   tool(tool$domainsCheckDomainPrice);
   tool(tool$domainsCheckDomainStatus);
-  tool(tool$domainsGetDomainTransfer);
   tool(tool$domainsGetDomainConfig);
   tool(tool$domainsGetDomain);
   tool(tool$domainsGetDomains);

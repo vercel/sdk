@@ -7,7 +7,10 @@
 
 ```typescript
 const value: models.GetOrderErrorDomainsRegistrarResponse1 = {
-  code: "claims-notice-required",
+  code: "cannot-transfer-in-until",
+  details: {
+    numDaysUntilTransferrable: 5850.03,
+  },
 };
 ```
 

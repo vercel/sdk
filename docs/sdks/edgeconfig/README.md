@@ -1,5 +1,4 @@
 # EdgeConfig
-(*edgeConfig*)
 
 ## Overview
 

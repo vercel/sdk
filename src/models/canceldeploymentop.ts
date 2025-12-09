@@ -889,7 +889,7 @@ export type CancelDeploymentOidcTokenClaims = {
   project: string;
   projectId: string;
   environment: string;
-  plan: string;
+  plan?: string | undefined;
 };
 
 export type CancelDeploymentCrons = {
@@ -4307,7 +4307,7 @@ export const CancelDeploymentOidcTokenClaims$inboundSchema: z.ZodType<
   project: z.string(),
   project_id: z.string(),
   environment: z.string(),
-  plan: z.string(),
+  plan: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     "owner_id": "ownerId",
@@ -4325,7 +4325,7 @@ export type CancelDeploymentOidcTokenClaims$Outbound = {
   project: string;
   project_id: string;
   environment: string;
-  plan: string;
+  plan?: string | undefined;
 };
 
 /** @internal */
@@ -4343,7 +4343,7 @@ export const CancelDeploymentOidcTokenClaims$outboundSchema: z.ZodType<
   project: z.string(),
   projectId: z.string(),
   environment: z.string(),
-  plan: z.string(),
+  plan: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     ownerId: "owner_id",

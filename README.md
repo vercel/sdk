@@ -285,7 +285,7 @@ run();
 <details open>
 <summary>Available methods</summary>
 
-### [accessGroups](docs/sdks/accessgroups/README.md)
+### [AccessGroups](docs/sdks/accessgroups/README.md)
 
 * [readAccessGroup](docs/sdks/accessgroups/README.md#readaccessgroup) - Reads an access group
 * [updateAccessGroup](docs/sdks/accessgroups/README.md#updateaccessgroup) - Update an access group
@@ -299,7 +299,7 @@ run();
 * [updateAccessGroupProject](docs/sdks/accessgroups/README.md#updateaccessgroupproject) - Update an access group project
 * [deleteAccessGroupProject](docs/sdks/accessgroups/README.md#deleteaccessgroupproject) - Delete an access group project
 
-### [aliases](docs/sdks/aliases/README.md)
+### [Aliases](docs/sdks/aliases/README.md)
 
 * [listDeploymentAliases](docs/sdks/aliases/README.md#listdeploymentaliases) - List Deployment Aliases
 * [assignAlias](docs/sdks/aliases/README.md#assignalias) - Assign an Alias
@@ -308,7 +308,7 @@ run();
 * [deleteAlias](docs/sdks/aliases/README.md#deletealias) - Delete an Alias
 * [patchUrlProtectionBypass](docs/sdks/aliases/README.md#patchurlprotectionbypass) - Update the protection bypass for a URL
 
-### [artifacts](docs/sdks/artifacts/README.md)
+### [Artifacts](docs/sdks/artifacts/README.md)
 
 * [recordEvents](docs/sdks/artifacts/README.md#recordevents) - Record an artifacts cache usage event
 * [status](docs/sdks/artifacts/README.md#status) - Get status of Remote Caching for this principal
@@ -317,7 +317,7 @@ run();
 * [artifactExists](docs/sdks/artifacts/README.md#artifactexists) - Check if a cache artifact exists
 * [artifactQuery](docs/sdks/artifacts/README.md#artifactquery) - Query information about an artifact
 
-### [authentication](docs/sdks/authentication/README.md)
+### [Authentication](docs/sdks/authentication/README.md)
 
 * [exchangeSsoToken](docs/sdks/authentication/README.md#exchangessotoken) - SSO Token Exchange
 * [listAuthTokens](docs/sdks/authentication/README.md#listauthtokens) - List Auth Tokens
@@ -325,14 +325,14 @@ run();
 * [getAuthToken](docs/sdks/authentication/README.md#getauthtoken) - Get Auth Token Metadata
 * [deleteAuthToken](docs/sdks/authentication/README.md#deleteauthtoken) - Delete an authentication token
 
-### [certs](docs/sdks/certs/README.md)
+### [Certs](docs/sdks/certs/README.md)
 
 * [getCertById](docs/sdks/certs/README.md#getcertbyid) - Get cert by id
 * [removeCert](docs/sdks/certs/README.md#removecert) - Remove cert
 * [issueCert](docs/sdks/certs/README.md#issuecert) - Issue a new cert
 * [uploadCert](docs/sdks/certs/README.md#uploadcert) - Upload a cert
 
-### [checks](docs/sdks/checks/README.md)
+### [Checks](docs/sdks/checks/README.md)
 
 * [createCheck](docs/sdks/checks/README.md#createcheck) - Creates a new Check
 * [getAllChecks](docs/sdks/checks/README.md#getallchecks) - Retrieve a list of all checks
@@ -340,11 +340,11 @@ run();
 * [updateCheck](docs/sdks/checks/README.md#updatecheck) - Update a check
 * [rerequestCheck](docs/sdks/checks/README.md#rerequestcheck) - Rerequest a check
 
-### [connect](docs/sdks/connect/README.md)
+### [Connect](docs/sdks/connect/README.md)
 
 * [updateStaticIps](docs/sdks/connect/README.md#updatestaticips) - Configures Static IPs for a project
 
-### [deployments](docs/sdks/deployments/README.md)
+### [Deployments](docs/sdks/deployments/README.md)
 
 * [getDeploymentEvents](docs/sdks/deployments/README.md#getdeploymentevents) - Get deployment events
 * [updateIntegrationDeploymentAction](docs/sdks/deployments/README.md#updateintegrationdeploymentaction) - Update deployment integration action
@@ -357,19 +357,18 @@ run();
 * [getDeployments](docs/sdks/deployments/README.md#getdeployments) - List deployments
 * [deleteDeployment](docs/sdks/deployments/README.md#deletedeployment) - Delete a Deployment
 
-### [dns](docs/sdks/dns/README.md)
+### [Dns](docs/sdks/dns/README.md)
 
 * [getRecords](docs/sdks/dns/README.md#getrecords) - List existing DNS records
 * [createRecord](docs/sdks/dns/README.md#createrecord) - Create a DNS record
 * [updateRecord](docs/sdks/dns/README.md#updaterecord) - Update an existing DNS record
 * [removeRecord](docs/sdks/dns/README.md#removerecord) - Delete a DNS record
 
-### [domains](docs/sdks/domains/README.md)
+### [Domains](docs/sdks/domains/README.md)
 
 * [buyDomain](docs/sdks/domains/README.md#buydomain) - Purchase a domain (deprecated)
 * [checkDomainPrice](docs/sdks/domains/README.md#checkdomainprice) - Check the price for a domain (deprecated)
 * [checkDomainStatus](docs/sdks/domains/README.md#checkdomainstatus) - Check a Domain Availability (deprecated)
-* [getDomainTransfer](docs/sdks/domains/README.md#getdomaintransfer) - Get domain transfer info (deprecated)
 * [getDomainConfig](docs/sdks/domains/README.md#getdomainconfig) - Get a Domain's configuration
 * [getDomain](docs/sdks/domains/README.md#getdomain) - Get Information for a Single Domain
 * [getDomains](docs/sdks/domains/README.md#getdomains) - List all the domains
@@ -377,7 +376,7 @@ run();
 * [patchDomain](docs/sdks/domains/README.md#patchdomain) - Update or move apex domain
 * [deleteDomain](docs/sdks/domains/README.md#deletedomain) - Remove a domain by name
 
-### [domainsRegistrar](docs/sdks/domainsregistrar/README.md)
+### [DomainsRegistrar](docs/sdks/domainsregistrar/README.md)
 
 * [getSupportedTlds](docs/sdks/domainsregistrar/README.md#getsupportedtlds) - Get supported TLDs
 * [getTldPrice](docs/sdks/domainsregistrar/README.md#gettldprice) - Get TLD price data
@@ -395,7 +394,7 @@ run();
 * [getContactInfoSchema](docs/sdks/domainsregistrar/README.md#getcontactinfoschema) - Get contact info schema
 * [getOrder](docs/sdks/domainsregistrar/README.md#getorder) - Get a domain order
 
-### [drains](docs/sdks/drains/README.md)
+### [Drains](docs/sdks/drains/README.md)
 
 * [createDrain](docs/sdks/drains/README.md#createdrain) - Create a new Drain
 * [getDrains](docs/sdks/drains/README.md#getdrains) - Retrieve a list of all Drains
@@ -404,14 +403,14 @@ run();
 * [updateDrain](docs/sdks/drains/README.md#updatedrain) - Update an existing Drain
 * [testDrain](docs/sdks/drains/README.md#testdrain) - Validate Drain delivery configuration
 
-### [edgeCache](docs/sdks/edgecache/README.md)
+### [EdgeCache](docs/sdks/edgecache/README.md)
 
 * [invalidateByTags](docs/sdks/edgecache/README.md#invalidatebytags) - Invalidate by tag
 * [dangerouslyDeleteByTags](docs/sdks/edgecache/README.md#dangerouslydeletebytags) - Dangerously delete by tag
 * [invalidateBySrcImages](docs/sdks/edgecache/README.md#invalidatebysrcimages) - Invalidate by source image
 * [dangerouslyDeleteBySrcImages](docs/sdks/edgecache/README.md#dangerouslydeletebysrcimages) - Dangerously delete by source image
 
-### [edgeConfig](docs/sdks/edgeconfig/README.md)
+### [EdgeConfig](docs/sdks/edgeconfig/README.md)
 
 * [getEdgeConfigs](docs/sdks/edgeconfig/README.md#getedgeconfigs) - Get Edge Configs
 * [createEdgeConfig](docs/sdks/edgeconfig/README.md#createedgeconfig) - Create an Edge Config
@@ -431,7 +430,7 @@ run();
 * [getEdgeConfigBackup](docs/sdks/edgeconfig/README.md#getedgeconfigbackup) - Get Edge Config backup
 * [getEdgeConfigBackups](docs/sdks/edgeconfig/README.md#getedgeconfigbackups) - Get Edge Config backups
 
-### [environment](docs/sdks/environment/README.md)
+### [Environment](docs/sdks/environment/README.md)
 
 * [createSharedEnvVariable](docs/sdks/environment/README.md#createsharedenvvariable) - Create one or more shared environment variables
 * [listSharedEnvVariable](docs/sdks/environment/README.md#listsharedenvvariable) - Lists all Shared Environment Variables for a team
@@ -445,7 +444,7 @@ run();
 * [updateCustomEnvironment](docs/sdks/environment/README.md#updatecustomenvironment) - Update a custom environment
 * [removeCustomEnvironment](docs/sdks/environment/README.md#removecustomenvironment) - Remove a custom environment
 
-### [integrations](docs/sdks/integrations/README.md)
+### [Integrations](docs/sdks/integrations/README.md)
 
 * [updateIntegrationDeploymentAction](docs/sdks/integrations/README.md#updateintegrationdeploymentaction) - Update deployment integration action
 * [getBillingPlans](docs/sdks/integrations/README.md#getbillingplans) - List integration billing plans
@@ -456,7 +455,7 @@ run();
 * [getConfigurationProducts](docs/sdks/integrations/README.md#getconfigurationproducts) - List products for integration configuration
 * [createIntegrationStoreDirect](docs/sdks/integrations/README.md#createintegrationstoredirect) - Create integration store (free and paid plans)
 
-### [logDrains](docs/sdks/logdrains/README.md)
+### [LogDrains](docs/sdks/logdrains/README.md)
 
 * [getConfigurableLogDrain](docs/sdks/logdrains/README.md#getconfigurablelogdrain) - Retrieves a Configurable Log Drain (deprecated)
 * [deleteConfigurableLogDrain](docs/sdks/logdrains/README.md#deleteconfigurablelogdrain) - Deletes a Configurable Log Drain (deprecated)
@@ -466,11 +465,11 @@ run();
 * [createLogDrain](docs/sdks/logdrains/README.md#createlogdrain) - Creates a new Integration Log Drain (deprecated)
 * [deleteIntegrationLogDrain](docs/sdks/logdrains/README.md#deleteintegrationlogdrain) - Deletes the Integration log drain with the provided `id` (deprecated)
 
-### [logs](docs/sdks/logs/README.md)
+### [Logs](docs/sdks/logs/README.md)
 
 * [getRuntimeLogs](docs/sdks/logs/README.md#getruntimelogs) - Get logs for a deployment
 
-### [marketplace](docs/sdks/marketplace/README.md)
+### [Marketplace](docs/sdks/marketplace/README.md)
 
 * [updateInstallation](docs/sdks/marketplace/README.md#updateinstallation) - Update Installation
 * [getAccountInfo](docs/sdks/marketplace/README.md#getaccountinfo) - Get Account Information
@@ -495,13 +494,13 @@ run();
 * [createInstallationIntegrationEdgeConfig](docs/sdks/marketplace/README.md#createinstallationintegrationedgeconfig) - Get the data of a user-provided Edge Config
 * [updateInstallationIntegrationEdgeConfig](docs/sdks/marketplace/README.md#updateinstallationintegrationedgeconfig) - Push data into a user-provided Edge Config
 
-### [projectMembers](docs/sdks/projectmembers/README.md)
+### [ProjectMembers](docs/sdks/projectmembers/README.md)
 
 * [getProjectMembers](docs/sdks/projectmembers/README.md#getprojectmembers) - List project members
 * [addProjectMember](docs/sdks/projectmembers/README.md#addprojectmember) - Adds a new member to a project.
 * [removeProjectMember](docs/sdks/projectmembers/README.md#removeprojectmember) - Remove a Project Member
 
-### [projects](docs/sdks/projects/README.md)
+### [Projects](docs/sdks/projects/README.md)
 
 * [updateProjectDataCache](docs/sdks/projects/README.md#updateprojectdatacache) - Update the data cache feature
 * [getProjects](docs/sdks/projects/README.md#getprojects) - Retrieve a list of projects
@@ -532,7 +531,7 @@ run();
 * [pauseProject](docs/sdks/projects/README.md#pauseproject) - Pause a project
 * [unpauseProject](docs/sdks/projects/README.md#unpauseproject) - Unpause a project
 
-### [rollingRelease](docs/sdks/rollingrelease/README.md)
+### [RollingRelease](docs/sdks/rollingrelease/README.md)
 
 * [getRollingReleaseBillingStatus](docs/sdks/rollingrelease/README.md#getrollingreleasebillingstatus) - Get rolling release billing status
 * [getRollingReleaseConfig](docs/sdks/rollingrelease/README.md#getrollingreleaseconfig) - Get rolling release configuration
@@ -542,7 +541,7 @@ run();
 * [approveRollingReleaseStage](docs/sdks/rollingrelease/README.md#approverollingreleasestage) - Update the active rolling release to the next stage for a project
 * [completeRollingRelease](docs/sdks/rollingrelease/README.md#completerollingrelease) - Complete the rolling release for the project
 
-### [security](docs/sdks/security/README.md)
+### [Security](docs/sdks/security/README.md)
 
 * [updateAttackChallengeMode](docs/sdks/security/README.md#updateattackchallengemode) - Update Attack Challenge mode
 * [putFirewallConfig](docs/sdks/security/README.md#putfirewallconfig) - Put Firewall Configuration
@@ -554,11 +553,11 @@ run();
 * [removeBypassIp](docs/sdks/security/README.md#removebypassip) - Remove System Bypass Rule
 * [getV1SecurityFirewallEvents](docs/sdks/security/README.md#getv1securityfirewallevents) - Read Firewall Actions by Project
 
-### [staticIps](docs/sdks/staticips/README.md)
+### [StaticIps](docs/sdks/staticips/README.md)
 
 * [updateStaticIps](docs/sdks/staticips/README.md#updatestaticips) - Configures Static IPs for a project
 
-### [teams](docs/sdks/teams/README.md)
+### [Teams](docs/sdks/teams/README.md)
 
 * [getTeamMembers](docs/sdks/teams/README.md#getteammembers) - List team members
 * [inviteUserToTeam](docs/sdks/teams/README.md#inviteusertoteam) - Invite a user
@@ -574,13 +573,13 @@ run();
 * [deleteTeam](docs/sdks/teams/README.md#deleteteam) - Delete a Team
 * [deleteTeamInviteCode](docs/sdks/teams/README.md#deleteteaminvitecode) - Delete a Team invite code
 
-### [user](docs/sdks/user/README.md)
+### [User](docs/sdks/user/README.md)
 
 * [listUserEvents](docs/sdks/user/README.md#listuserevents) - List User Events
 * [getAuthUser](docs/sdks/user/README.md#getauthuser) - Get the User
 * [requestDelete](docs/sdks/user/README.md#requestdelete) - Delete User Account
 
-### [webhooks](docs/sdks/webhooks/README.md)
+### [Webhooks](docs/sdks/webhooks/README.md)
 
 * [createWebhook](docs/sdks/webhooks/README.md#createwebhook) - Creates a webhook
 * [getWebhooks](docs/sdks/webhooks/README.md#getwebhooks) - Get a list of webhooks
@@ -666,7 +665,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`domainsGetDomain`](docs/sdks/domains/README.md#getdomain) - Get Information for a Single Domain
 - [`domainsGetDomainConfig`](docs/sdks/domains/README.md#getdomainconfig) - Get a Domain's configuration
 - [`domainsGetDomains`](docs/sdks/domains/README.md#getdomains) - List all the domains
-- [`domainsGetDomainTransfer`](docs/sdks/domains/README.md#getdomaintransfer) - Get domain transfer info (deprecated)
 - [`domainsPatchDomain`](docs/sdks/domains/README.md#patchdomain) - Update or move apex domain
 - [`domainsRegistrarBuyDomains`](docs/sdks/domainsregistrar/README.md#buydomains) - Buy multiple domains
 - [`domainsRegistrarBuySingleDomain`](docs/sdks/domainsregistrar/README.md#buysingledomain) - Buy a domain
@@ -1013,30 +1011,30 @@ run();
 
 
 **Inherit from [`VercelError`](./src/models/vercelerror.ts)**:
-* [`HttpApiDecodeError`](./src/models/httpapidecodeerror.ts): The request did not match the expected schema. Status code `400`. Applicable to 15 of 221 methods.*
-* [`Unauthorized`](./src/models/unauthorized.ts): Unauthorized. Status code `401`. Applicable to 15 of 221 methods.*
-* [`NotAuthorizedForScope`](./src/models/notauthorizedforscope.ts): NotAuthorizedForScope. Status code `403`. Applicable to 15 of 221 methods.*
-* [`TooManyRequests`](./src/models/toomanyrequests.ts): TooManyRequests. Status code `429`. Applicable to 15 of 221 methods.*
-* [`InternalServerError`](./src/models/internalservererror.ts): InternalServerError. Status code `500`. Applicable to 15 of 221 methods.*
-* [`Forbidden`](./src/models/forbidden.ts): NotAuthorizedForScope. Status code `403`. Applicable to 9 of 221 methods.*
-* [`TldNotSupported`](./src/models/tldnotsupported.ts): The TLD is not currently supported. Status code `400`. Applicable to 6 of 221 methods.*
-* [`DomainTooShort`](./src/models/domaintooshort.ts): The domain name (excluding the TLD) is too short. Status code `400`. Applicable to 5 of 221 methods.*
-* [`BadRequest`](./src/models/badrequest.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 221 methods.*
-* [`DomainNotRegistered`](./src/models/domainnotregistered.ts): The domain is not registered with Vercel. Status code `400`. Applicable to 4 of 221 methods.*
-* [`ExpectedPriceMismatch`](./src/models/expectedpricemismatch.ts): The expected price passed does not match the actual price. Status code `400`. Applicable to 4 of 221 methods.*
-* [`DomainNotAvailable`](./src/models/domainnotavailable.ts): The domain is not available. Status code `400`. Applicable to 4 of 221 methods.*
-* [`DomainNotFound`](./src/models/domainnotfound.ts): The domain was not found in our system. Status code `404`. Applicable to 4 of 221 methods.*
-* [`NotFound`](./src/models/notfound.ts): NotFound. Status code `404`. Applicable to 3 of 221 methods.*
-* [`OrderTooExpensive`](./src/models/ordertooexpensive.ts): The total price of the order is too high. Status code `400`. Applicable to 2 of 221 methods.*
-* [`InvalidAdditionalContactInfo`](./src/models/invalidadditionalcontactinfo.ts): Additional contact information provided for the TLD is invalid. Status code `400`. Applicable to 2 of 221 methods.*
-* [`AdditionalContactInfoRequired`](./src/models/additionalcontactinforequired.ts): Additional contact information is required for the TLD. Status code `400`. Applicable to 2 of 221 methods.*
-* [`TooManyDomains`](./src/models/toomanydomains.ts): The number of domains in the order is too high. Status code `400`. Applicable to 1 of 221 methods.*
-* [`DuplicateDomains`](./src/models/duplicatedomains.ts): Duplicate domains were provided. Status code `400`. Applicable to 1 of 221 methods.*
-* [`DomainAlreadyOwned`](./src/models/domainalreadyowned.ts): The domain is already owned by another team or user. Status code `400`. Applicable to 1 of 221 methods.*
-* [`DNSSECEnabled`](./src/models/dnssecenabled.ts): The operation cannot be completed because DNSSEC is enabled for the domain. Status code `400`. Applicable to 1 of 221 methods.*
-* [`DomainAlreadyRenewing`](./src/models/domainalreadyrenewing.ts): The domain is already renewing. Status code `400`. Applicable to 1 of 221 methods.*
-* [`DomainNotRenewable`](./src/models/domainnotrenewable.ts): The domain is not renewable. Status code `400`. Applicable to 1 of 221 methods.*
-* [`DomainCannotBeTransferedOutUntil`](./src/models/domaincannotbetransferedoutuntil.ts): The domain cannot be transfered out until the specified date. Status code `409`. Applicable to 1 of 221 methods.*
+* [`HttpApiDecodeError`](./src/models/httpapidecodeerror.ts): The request did not match the expected schema. Status code `400`. Applicable to 15 of 220 methods.*
+* [`Unauthorized`](./src/models/unauthorized.ts): Unauthorized. Status code `401`. Applicable to 15 of 220 methods.*
+* [`NotAuthorizedForScope`](./src/models/notauthorizedforscope.ts): NotAuthorizedForScope. Status code `403`. Applicable to 15 of 220 methods.*
+* [`TooManyRequests`](./src/models/toomanyrequests.ts): TooManyRequests. Status code `429`. Applicable to 15 of 220 methods.*
+* [`InternalServerError`](./src/models/internalservererror.ts): InternalServerError. Status code `500`. Applicable to 15 of 220 methods.*
+* [`Forbidden`](./src/models/forbidden.ts): NotAuthorizedForScope. Status code `403`. Applicable to 9 of 220 methods.*
+* [`TldNotSupported`](./src/models/tldnotsupported.ts): The TLD is not currently supported. Status code `400`. Applicable to 6 of 220 methods.*
+* [`DomainTooShort`](./src/models/domaintooshort.ts): The domain name (excluding the TLD) is too short. Status code `400`. Applicable to 5 of 220 methods.*
+* [`BadRequest`](./src/models/badrequest.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 220 methods.*
+* [`DomainNotRegistered`](./src/models/domainnotregistered.ts): The domain is not registered with Vercel. Status code `400`. Applicable to 4 of 220 methods.*
+* [`ExpectedPriceMismatch`](./src/models/expectedpricemismatch.ts): The expected price passed does not match the actual price. Status code `400`. Applicable to 4 of 220 methods.*
+* [`DomainNotAvailable`](./src/models/domainnotavailable.ts): The domain is not available. Status code `400`. Applicable to 4 of 220 methods.*
+* [`DomainNotFound`](./src/models/domainnotfound.ts): The domain was not found in our system. Status code `404`. Applicable to 4 of 220 methods.*
+* [`NotFound`](./src/models/notfound.ts): NotFound. Status code `404`. Applicable to 3 of 220 methods.*
+* [`OrderTooExpensive`](./src/models/ordertooexpensive.ts): The total price of the order is too high. Status code `400`. Applicable to 2 of 220 methods.*
+* [`InvalidAdditionalContactInfo`](./src/models/invalidadditionalcontactinfo.ts): Additional contact information provided for the TLD is invalid. Status code `400`. Applicable to 2 of 220 methods.*
+* [`AdditionalContactInfoRequired`](./src/models/additionalcontactinforequired.ts): Additional contact information is required for the TLD. Status code `400`. Applicable to 2 of 220 methods.*
+* [`TooManyDomains`](./src/models/toomanydomains.ts): The number of domains in the order is too high. Status code `400`. Applicable to 1 of 220 methods.*
+* [`DuplicateDomains`](./src/models/duplicatedomains.ts): Duplicate domains were provided. Status code `400`. Applicable to 1 of 220 methods.*
+* [`DomainAlreadyOwned`](./src/models/domainalreadyowned.ts): The domain is already owned by another team or user. Status code `400`. Applicable to 1 of 220 methods.*
+* [`DNSSECEnabled`](./src/models/dnssecenabled.ts): The operation cannot be completed because DNSSEC is enabled for the domain. Status code `400`. Applicable to 1 of 220 methods.*
+* [`DomainAlreadyRenewing`](./src/models/domainalreadyrenewing.ts): The domain is already renewing. Status code `400`. Applicable to 1 of 220 methods.*
+* [`DomainNotRenewable`](./src/models/domainnotrenewable.ts): The domain is not renewable. Status code `400`. Applicable to 1 of 220 methods.*
+* [`DomainCannotBeTransferedOutUntil`](./src/models/domaincannotbetransferedoutuntil.ts): The domain cannot be transfered out until the specified date. Status code `409`. Applicable to 1 of 220 methods.*
 * [`ResponseValidationError`](./src/models/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>

@@ -5064,8 +5064,41 @@ func (e *GetProjectsSsoProtectionDeploymentType) UnmarshalJSON(data []byte) erro
 	}
 }
 
+type GetProjectsCve55182MigrationAppliedFrom string
+
+const (
+	GetProjectsCve55182MigrationAppliedFromPreview                          GetProjectsCve55182MigrationAppliedFrom = "preview"
+	GetProjectsCve55182MigrationAppliedFromAll                              GetProjectsCve55182MigrationAppliedFrom = "all"
+	GetProjectsCve55182MigrationAppliedFromProdDeploymentUrlsAndAllPreviews GetProjectsCve55182MigrationAppliedFrom = "prod_deployment_urls_and_all_previews"
+	GetProjectsCve55182MigrationAppliedFromAllExceptCustomDomains           GetProjectsCve55182MigrationAppliedFrom = "all_except_custom_domains"
+)
+
+func (e GetProjectsCve55182MigrationAppliedFrom) ToPointer() *GetProjectsCve55182MigrationAppliedFrom {
+	return &e
+}
+func (e *GetProjectsCve55182MigrationAppliedFrom) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "preview":
+		fallthrough
+	case "all":
+		fallthrough
+	case "prod_deployment_urls_and_all_previews":
+		fallthrough
+	case "all_except_custom_domains":
+		*e = GetProjectsCve55182MigrationAppliedFrom(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetProjectsCve55182MigrationAppliedFrom: %v", v)
+	}
+}
+
 type GetProjectsSsoProtection struct {
-	DeploymentType GetProjectsSsoProtectionDeploymentType `json:"deploymentType"`
+	DeploymentType               GetProjectsSsoProtectionDeploymentType   `json:"deploymentType"`
+	Cve55182MigrationAppliedFrom *GetProjectsCve55182MigrationAppliedFrom `json:"cve55182MigrationAppliedFrom,omitempty"`
 }
 
 func (o *GetProjectsSsoProtection) GetDeploymentType() GetProjectsSsoProtectionDeploymentType {
@@ -5073,6 +5106,13 @@ func (o *GetProjectsSsoProtection) GetDeploymentType() GetProjectsSsoProtectionD
 		return GetProjectsSsoProtectionDeploymentType("")
 	}
 	return o.DeploymentType
+}
+
+func (o *GetProjectsSsoProtection) GetCve55182MigrationAppliedFrom() *GetProjectsCve55182MigrationAppliedFrom {
+	if o == nil {
+		return nil
+	}
+	return o.Cve55182MigrationAppliedFrom
 }
 
 type GetProjectsAliasAssignedType string
@@ -5340,16 +5380,16 @@ func (o *GetProjectsCreator) GetUsername() string {
 }
 
 type GetProjectsOidcTokenClaims struct {
-	Iss         string `json:"iss"`
-	Sub         string `json:"sub"`
-	Scope       string `json:"scope"`
-	Aud         string `json:"aud"`
-	Owner       string `json:"owner"`
-	OwnerID     string `json:"owner_id"`
-	Project     string `json:"project"`
-	ProjectID   string `json:"project_id"`
-	Environment string `json:"environment"`
-	Plan        string `json:"plan"`
+	Iss         string  `json:"iss"`
+	Sub         string  `json:"sub"`
+	Scope       string  `json:"scope"`
+	Aud         string  `json:"aud"`
+	Owner       string  `json:"owner"`
+	OwnerID     string  `json:"owner_id"`
+	Project     string  `json:"project"`
+	ProjectID   string  `json:"project_id"`
+	Environment string  `json:"environment"`
+	Plan        *string `json:"plan,omitempty"`
 }
 
 func (o *GetProjectsOidcTokenClaims) GetIss() string {
@@ -5415,9 +5455,9 @@ func (o *GetProjectsOidcTokenClaims) GetEnvironment() string {
 	return o.Environment
 }
 
-func (o *GetProjectsOidcTokenClaims) GetPlan() string {
+func (o *GetProjectsOidcTokenClaims) GetPlan() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.Plan
 }
@@ -11074,6 +11114,7 @@ func (o *GetProjectsDismissedToast) GetValue() *GetProjectsValueUnion {
 type GetProjectsProject struct {
 	AccountID                        string                            `json:"accountId"`
 	Analytics                        *GetProjectsAnalytics             `json:"analytics,omitempty"`
+	AppliedCve55182Migration         *bool                             `json:"appliedCve55182Migration,omitempty"`
 	SpeedInsights                    *GetProjectsSpeedInsights         `json:"speedInsights,omitempty"`
 	AutoExposeSystemEnvs             *bool                             `json:"autoExposeSystemEnvs,omitempty"`
 	AutoAssignCustomDomains          *bool                             `json:"autoAssignCustomDomains,omitempty"`
@@ -11120,6 +11161,7 @@ type GetProjectsProject struct {
 	ServerlessFunctionZeroConfigFailover *bool                                       `json:"serverlessFunctionZeroConfigFailover,omitempty"`
 	SkewProtectionBoundaryAt             *float64                                    `json:"skewProtectionBoundaryAt,omitempty"`
 	SkewProtectionMaxAge                 *float64                                    `json:"skewProtectionMaxAge,omitempty"`
+	SkewProtectionAllowedDomains         []string                                    `json:"skewProtectionAllowedDomains,omitempty"`
 	SkipGitConnectDuringLink             *bool                                       `json:"skipGitConnectDuringLink,omitempty"`
 	StaticIps                            *GetProjectsStaticIps                       `json:"staticIps,omitempty"`
 	SourceFilesOutsideRootDirectory      *bool                                       `json:"sourceFilesOutsideRootDirectory,omitempty"`
@@ -11168,6 +11210,13 @@ func (o *GetProjectsProject) GetAnalytics() *GetProjectsAnalytics {
 		return nil
 	}
 	return o.Analytics
+}
+
+func (o *GetProjectsProject) GetAppliedCve55182Migration() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.AppliedCve55182Migration
 }
 
 func (o *GetProjectsProject) GetSpeedInsights() *GetProjectsSpeedInsights {
@@ -11504,6 +11553,13 @@ func (o *GetProjectsProject) GetSkewProtectionMaxAge() *float64 {
 		return nil
 	}
 	return o.SkewProtectionMaxAge
+}
+
+func (o *GetProjectsProject) GetSkewProtectionAllowedDomains() []string {
+	if o == nil {
+		return nil
+	}
+	return o.SkewProtectionAllowedDomains
 }
 
 func (o *GetProjectsProject) GetSkipGitConnectDuringLink() *bool {

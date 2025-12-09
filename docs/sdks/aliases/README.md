@@ -1,5 +1,4 @@
 # Aliases
-(*aliases*)
 
 ## Overview
 

@@ -30,3 +30,14 @@ const value: models.GetOrder1DomainsRegistrarResponse3 = {
 };
 ```
 
+### `models.GetOrder1DomainsRegistrarResponse4`
+
+```typescript
+const value: models.GetOrder1DomainsRegistrarResponse4 = {
+  code: "cannot-transfer-in-until",
+  details: {
+    numDaysUntilTransferrable: 5850.03,
+  },
+};
+```
+

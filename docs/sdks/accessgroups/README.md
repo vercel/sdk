@@ -1,5 +1,4 @@
 # AccessGroups
-(*accessGroups*)
 
 ## Overview
 

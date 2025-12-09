@@ -6,7 +6,7 @@
 import { UiOptionsValue } from "@vercel/sdk/models/getconfigurationproductsop.js";
 
 let value: UiOptionsValue = {
-  atBRANDAt547006: {},
+  atBRANDAt547391: {},
 };
 ```
 
@@ -14,4 +14,4 @@ let value: UiOptionsValue = {
 
 | Field                                                                                                                                            | Type                                                                                                                                             | Required                                                                                                                                         | Description                                                                                                                                      |
 | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `atBRANDAt547006`                                                                                                                                | [models.GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt547006](../models/getconfigurationproductsuioptionsintegrationsatbrandat547006.md) | :heavy_check_mark:                                                                                                                               | N/A                                                                                                                                              |
+| `atBRANDAt547391`                                                                                                                                | [models.GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt547391](../models/getconfigurationproductsuioptionsintegrationsatbrandat547391.md) | :heavy_check_mark:                                                                                                                               | N/A                                                                                                                                              |

@@ -701,6 +701,8 @@ type CreateProjectRequestBody struct {
 	EnableProductionFeedback *bool `json:"enableProductionFeedback,omitempty"`
 	// Specifies whether preview deployments are disabled for this project.
 	PreviewDeploymentsDisabled *bool `json:"previewDeploymentsDisabled,omitempty"`
+	// Custom domain suffix for preview deployments. Takes precedence over team-level suffix. Must be a domain owned by the team.
+	PreviewDeploymentSuffix *string `json:"previewDeploymentSuffix,omitempty"`
 	// The build command for this project. When `null` is used this value will be automatically detected
 	BuildCommand                *string `json:"buildCommand,omitempty"`
 	CommandForIgnoringBuildStep *string `json:"commandForIgnoringBuildStep,omitempty"`
@@ -759,6 +761,13 @@ func (o *CreateProjectRequestBody) GetPreviewDeploymentsDisabled() *bool {
 		return nil
 	}
 	return o.PreviewDeploymentsDisabled
+}
+
+func (o *CreateProjectRequestBody) GetPreviewDeploymentSuffix() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PreviewDeploymentSuffix
 }
 
 func (o *CreateProjectRequestBody) GetBuildCommand() *string {
@@ -5743,8 +5752,41 @@ func (e *CreateProjectSsoProtectionDeploymentTypeResponse) UnmarshalJSON(data []
 	}
 }
 
+type CreateProjectCve55182MigrationAppliedFrom string
+
+const (
+	CreateProjectCve55182MigrationAppliedFromPreview                          CreateProjectCve55182MigrationAppliedFrom = "preview"
+	CreateProjectCve55182MigrationAppliedFromAll                              CreateProjectCve55182MigrationAppliedFrom = "all"
+	CreateProjectCve55182MigrationAppliedFromProdDeploymentUrlsAndAllPreviews CreateProjectCve55182MigrationAppliedFrom = "prod_deployment_urls_and_all_previews"
+	CreateProjectCve55182MigrationAppliedFromAllExceptCustomDomains           CreateProjectCve55182MigrationAppliedFrom = "all_except_custom_domains"
+)
+
+func (e CreateProjectCve55182MigrationAppliedFrom) ToPointer() *CreateProjectCve55182MigrationAppliedFrom {
+	return &e
+}
+func (e *CreateProjectCve55182MigrationAppliedFrom) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "preview":
+		fallthrough
+	case "all":
+		fallthrough
+	case "prod_deployment_urls_and_all_previews":
+		fallthrough
+	case "all_except_custom_domains":
+		*e = CreateProjectCve55182MigrationAppliedFrom(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectCve55182MigrationAppliedFrom: %v", v)
+	}
+}
+
 type CreateProjectSsoProtectionResponse struct {
-	DeploymentType CreateProjectSsoProtectionDeploymentTypeResponse `json:"deploymentType"`
+	DeploymentType               CreateProjectSsoProtectionDeploymentTypeResponse `json:"deploymentType"`
+	Cve55182MigrationAppliedFrom *CreateProjectCve55182MigrationAppliedFrom       `json:"cve55182MigrationAppliedFrom,omitempty"`
 }
 
 func (o *CreateProjectSsoProtectionResponse) GetDeploymentType() CreateProjectSsoProtectionDeploymentTypeResponse {
@@ -5752,6 +5794,13 @@ func (o *CreateProjectSsoProtectionResponse) GetDeploymentType() CreateProjectSs
 		return CreateProjectSsoProtectionDeploymentTypeResponse("")
 	}
 	return o.DeploymentType
+}
+
+func (o *CreateProjectSsoProtectionResponse) GetCve55182MigrationAppliedFrom() *CreateProjectCve55182MigrationAppliedFrom {
+	if o == nil {
+		return nil
+	}
+	return o.Cve55182MigrationAppliedFrom
 }
 
 type CreateProjectAliasAssignedType string
@@ -6019,16 +6068,16 @@ func (o *CreateProjectCreator) GetUsername() string {
 }
 
 type CreateProjectOidcTokenClaims struct {
-	Iss         string `json:"iss"`
-	Sub         string `json:"sub"`
-	Scope       string `json:"scope"`
-	Aud         string `json:"aud"`
-	Owner       string `json:"owner"`
-	OwnerID     string `json:"owner_id"`
-	Project     string `json:"project"`
-	ProjectID   string `json:"project_id"`
-	Environment string `json:"environment"`
-	Plan        string `json:"plan"`
+	Iss         string  `json:"iss"`
+	Sub         string  `json:"sub"`
+	Scope       string  `json:"scope"`
+	Aud         string  `json:"aud"`
+	Owner       string  `json:"owner"`
+	OwnerID     string  `json:"owner_id"`
+	Project     string  `json:"project"`
+	ProjectID   string  `json:"project_id"`
+	Environment string  `json:"environment"`
+	Plan        *string `json:"plan,omitempty"`
 }
 
 func (o *CreateProjectOidcTokenClaims) GetIss() string {
@@ -6094,9 +6143,9 @@ func (o *CreateProjectOidcTokenClaims) GetEnvironment() string {
 	return o.Environment
 }
 
-func (o *CreateProjectOidcTokenClaims) GetPlan() string {
+func (o *CreateProjectOidcTokenClaims) GetPlan() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.Plan
 }
@@ -11754,6 +11803,7 @@ func (o *CreateProjectDismissedToast) GetValue() *CreateProjectValueUnion {
 type CreateProjectResponseBody struct {
 	AccountID                        string                              `json:"accountId"`
 	Analytics                        *CreateProjectAnalytics             `json:"analytics,omitempty"`
+	AppliedCve55182Migration         *bool                               `json:"appliedCve55182Migration,omitempty"`
 	SpeedInsights                    *CreateProjectSpeedInsights         `json:"speedInsights,omitempty"`
 	AutoExposeSystemEnvs             *bool                               `json:"autoExposeSystemEnvs,omitempty"`
 	AutoAssignCustomDomains          *bool                               `json:"autoAssignCustomDomains,omitempty"`
@@ -11800,6 +11850,7 @@ type CreateProjectResponseBody struct {
 	ServerlessFunctionZeroConfigFailover *bool                                         `json:"serverlessFunctionZeroConfigFailover,omitempty"`
 	SkewProtectionBoundaryAt             *float64                                      `json:"skewProtectionBoundaryAt,omitempty"`
 	SkewProtectionMaxAge                 *float64                                      `json:"skewProtectionMaxAge,omitempty"`
+	SkewProtectionAllowedDomains         []string                                      `json:"skewProtectionAllowedDomains,omitempty"`
 	SkipGitConnectDuringLink             *bool                                         `json:"skipGitConnectDuringLink,omitempty"`
 	StaticIps                            *CreateProjectStaticIps                       `json:"staticIps,omitempty"`
 	SourceFilesOutsideRootDirectory      *bool                                         `json:"sourceFilesOutsideRootDirectory,omitempty"`
@@ -11848,6 +11899,13 @@ func (o *CreateProjectResponseBody) GetAnalytics() *CreateProjectAnalytics {
 		return nil
 	}
 	return o.Analytics
+}
+
+func (o *CreateProjectResponseBody) GetAppliedCve55182Migration() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.AppliedCve55182Migration
 }
 
 func (o *CreateProjectResponseBody) GetSpeedInsights() *CreateProjectSpeedInsights {
@@ -12184,6 +12242,13 @@ func (o *CreateProjectResponseBody) GetSkewProtectionMaxAge() *float64 {
 		return nil
 	}
 	return o.SkewProtectionMaxAge
+}
+
+func (o *CreateProjectResponseBody) GetSkewProtectionAllowedDomains() []string {
+	if o == nil {
+		return nil
+	}
+	return o.SkewProtectionAllowedDomains
 }
 
 func (o *CreateProjectResponseBody) GetSkipGitConnectDuringLink() *bool {

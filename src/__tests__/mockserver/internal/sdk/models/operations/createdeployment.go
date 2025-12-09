@@ -5398,16 +5398,16 @@ func (e *CreateDeploymentTargetEnum) UnmarshalJSON(data []byte) error {
 }
 
 type CreateDeploymentOidcTokenClaims struct {
-	Iss         string `json:"iss"`
-	Sub         string `json:"sub"`
-	Scope       string `json:"scope"`
-	Aud         string `json:"aud"`
-	Owner       string `json:"owner"`
-	OwnerID     string `json:"owner_id"`
-	Project     string `json:"project"`
-	ProjectID   string `json:"project_id"`
-	Environment string `json:"environment"`
-	Plan        string `json:"plan"`
+	Iss         string  `json:"iss"`
+	Sub         string  `json:"sub"`
+	Scope       string  `json:"scope"`
+	Aud         string  `json:"aud"`
+	Owner       string  `json:"owner"`
+	OwnerID     string  `json:"owner_id"`
+	Project     string  `json:"project"`
+	ProjectID   string  `json:"project_id"`
+	Environment string  `json:"environment"`
+	Plan        *string `json:"plan,omitempty"`
 }
 
 func (o *CreateDeploymentOidcTokenClaims) GetIss() string {
@@ -5473,9 +5473,9 @@ func (o *CreateDeploymentOidcTokenClaims) GetEnvironment() string {
 	return o.Environment
 }
 
-func (o *CreateDeploymentOidcTokenClaims) GetPlan() string {
+func (o *CreateDeploymentOidcTokenClaims) GetPlan() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.Plan
 }

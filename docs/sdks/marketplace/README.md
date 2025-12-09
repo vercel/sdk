@@ -1,5 +1,4 @@
 # Marketplace
-(*marketplace*)
 
 ## Overview
 

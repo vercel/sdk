@@ -107,6 +107,7 @@ async function $do(
   )(pathParams);
 
   const query = encodeFormQuery({
+    "integrationConfigurationId": payload.integrationConfigurationId,
     "metadata": payload.metadata,
     "slug": payload.slug,
     "source": payload.source,

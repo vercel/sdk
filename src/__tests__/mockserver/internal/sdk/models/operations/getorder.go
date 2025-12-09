@@ -117,6 +117,81 @@ func (o *DomainError3) GetDetails() any {
 	return o.Details
 }
 
+type CodeCannotTransferInUntil3 string
+
+const (
+	CodeCannotTransferInUntil3CannotTransferInUntil CodeCannotTransferInUntil3 = "cannot-transfer-in-until"
+)
+
+func (e CodeCannotTransferInUntil3) ToPointer() *CodeCannotTransferInUntil3 {
+	return &e
+}
+func (e *CodeCannotTransferInUntil3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "cannot-transfer-in-until":
+		*e = CodeCannotTransferInUntil3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CodeCannotTransferInUntil3: %v", v)
+	}
+}
+
+type DomainDetails6 struct {
+	NumDaysUntilTransferrable float64 `json:"numDaysUntilTransferrable"`
+}
+
+func (d DomainDetails6) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DomainDetails6) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"numDaysUntilTransferrable"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DomainDetails6) GetNumDaysUntilTransferrable() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.NumDaysUntilTransferrable
+}
+
+type ErrorCannotTransferInUntil3 struct {
+	Code    CodeCannotTransferInUntil3 `json:"code"`
+	Details DomainDetails6             `json:"details"`
+}
+
+func (e ErrorCannotTransferInUntil3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *ErrorCannotTransferInUntil3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"code", "details"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ErrorCannotTransferInUntil3) GetCode() CodeCannotTransferInUntil3 {
+	if o == nil {
+		return CodeCannotTransferInUntil3("")
+	}
+	return o.Code
+}
+
+func (o *ErrorCannotTransferInUntil3) GetDetails() DomainDetails6 {
+	if o == nil {
+		return DomainDetails6{}
+	}
+	return o.Details
+}
+
 type CodeClaimsNoticeRequired3 string
 
 const (
@@ -230,22 +305,22 @@ func (e *CodeUnsupportedLanguageCode3) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type DomainDetails3 struct {
+type DomainDetails5 struct {
 	DetectedLanguageCode string `json:"detectedLanguageCode"`
 }
 
-func (d DomainDetails3) MarshalJSON() ([]byte, error) {
+func (d DomainDetails5) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(d, "", false)
 }
 
-func (d *DomainDetails3) UnmarshalJSON(data []byte) error {
+func (d *DomainDetails5) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"detectedLanguageCode"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *DomainDetails3) GetDetectedLanguageCode() string {
+func (o *DomainDetails5) GetDetectedLanguageCode() string {
 	if o == nil {
 		return ""
 	}
@@ -254,7 +329,7 @@ func (o *DomainDetails3) GetDetectedLanguageCode() string {
 
 type ErrorUnsupportedLanguageCode3 struct {
 	Code    CodeUnsupportedLanguageCode3 `json:"code"`
-	Details DomainDetails3               `json:"details"`
+	Details DomainDetails5               `json:"details"`
 }
 
 func (e ErrorUnsupportedLanguageCode3) MarshalJSON() ([]byte, error) {
@@ -275,9 +350,9 @@ func (o *ErrorUnsupportedLanguageCode3) GetCode() CodeUnsupportedLanguageCode3 {
 	return o.Code
 }
 
-func (o *ErrorUnsupportedLanguageCode3) GetDetails() DomainDetails3 {
+func (o *ErrorUnsupportedLanguageCode3) GetDetails() DomainDetails5 {
 	if o == nil {
-		return DomainDetails3{}
+		return DomainDetails5{}
 	}
 	return o.Details
 }
@@ -288,12 +363,14 @@ const (
 	DomainErrorUnion5TypeUnsupportedLanguageCode  DomainErrorUnion5Type = "unsupported-language-code"
 	DomainErrorUnion5TypeClientTransferProhibited DomainErrorUnion5Type = "client-transfer-prohibited"
 	DomainErrorUnion5TypeClaimsNoticeRequired     DomainErrorUnion5Type = "claims-notice-required"
+	DomainErrorUnion5TypeCannotTransferInUntil    DomainErrorUnion5Type = "cannot-transfer-in-until"
 )
 
 type DomainErrorUnion5 struct {
 	ErrorUnsupportedLanguageCode3  *ErrorUnsupportedLanguageCode3  `queryParam:"inline"`
 	ErrorClientTransferProhibited3 *ErrorClientTransferProhibited3 `queryParam:"inline"`
 	ErrorClaimsNoticeRequired3     *ErrorClaimsNoticeRequired3     `queryParam:"inline"`
+	ErrorCannotTransferInUntil3    *ErrorCannotTransferInUntil3    `queryParam:"inline"`
 
 	Type DomainErrorUnion5Type
 }
@@ -331,6 +408,18 @@ func CreateDomainErrorUnion5ClaimsNoticeRequired(claimsNoticeRequired ErrorClaim
 	return DomainErrorUnion5{
 		ErrorClaimsNoticeRequired3: &claimsNoticeRequired,
 		Type:                       typ,
+	}
+}
+
+func CreateDomainErrorUnion5CannotTransferInUntil(cannotTransferInUntil ErrorCannotTransferInUntil3) DomainErrorUnion5 {
+	typ := DomainErrorUnion5TypeCannotTransferInUntil
+
+	typStr := CodeCannotTransferInUntil3(typ)
+	cannotTransferInUntil.Code = typStr
+
+	return DomainErrorUnion5{
+		ErrorCannotTransferInUntil3: &cannotTransferInUntil,
+		Type:                        typ,
 	}
 }
 
@@ -373,6 +462,15 @@ func (u *DomainErrorUnion5) UnmarshalJSON(data []byte) error {
 		u.ErrorClaimsNoticeRequired3 = errorClaimsNoticeRequired3
 		u.Type = DomainErrorUnion5TypeClaimsNoticeRequired
 		return nil
+	case "cannot-transfer-in-until":
+		errorCannotTransferInUntil3 := new(ErrorCannotTransferInUntil3)
+		if err := utils.UnmarshalJSON(data, &errorCannotTransferInUntil3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == cannot-transfer-in-until) type ErrorCannotTransferInUntil3 within DomainErrorUnion5: %w", string(data), err)
+		}
+
+		u.ErrorCannotTransferInUntil3 = errorCannotTransferInUntil3
+		u.Type = DomainErrorUnion5TypeCannotTransferInUntil
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for DomainErrorUnion5", string(data))
@@ -389,6 +487,10 @@ func (u DomainErrorUnion5) MarshalJSON() ([]byte, error) {
 
 	if u.ErrorClaimsNoticeRequired3 != nil {
 		return utils.MarshalJSON(u.ErrorClaimsNoticeRequired3, "", true)
+	}
+
+	if u.ErrorCannotTransferInUntil3 != nil {
+		return utils.MarshalJSON(u.ErrorCannotTransferInUntil3, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type DomainErrorUnion5: all fields are null")
@@ -617,6 +719,81 @@ func (o *DomainError2) GetDetails() any {
 	return o.Details
 }
 
+type CodeCannotTransferInUntil2 string
+
+const (
+	CodeCannotTransferInUntil2CannotTransferInUntil CodeCannotTransferInUntil2 = "cannot-transfer-in-until"
+)
+
+func (e CodeCannotTransferInUntil2) ToPointer() *CodeCannotTransferInUntil2 {
+	return &e
+}
+func (e *CodeCannotTransferInUntil2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "cannot-transfer-in-until":
+		*e = CodeCannotTransferInUntil2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CodeCannotTransferInUntil2: %v", v)
+	}
+}
+
+type DomainDetails4 struct {
+	NumDaysUntilTransferrable float64 `json:"numDaysUntilTransferrable"`
+}
+
+func (d DomainDetails4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DomainDetails4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"numDaysUntilTransferrable"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DomainDetails4) GetNumDaysUntilTransferrable() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.NumDaysUntilTransferrable
+}
+
+type ErrorCannotTransferInUntil2 struct {
+	Code    CodeCannotTransferInUntil2 `json:"code"`
+	Details DomainDetails4             `json:"details"`
+}
+
+func (e ErrorCannotTransferInUntil2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *ErrorCannotTransferInUntil2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"code", "details"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ErrorCannotTransferInUntil2) GetCode() CodeCannotTransferInUntil2 {
+	if o == nil {
+		return CodeCannotTransferInUntil2("")
+	}
+	return o.Code
+}
+
+func (o *ErrorCannotTransferInUntil2) GetDetails() DomainDetails4 {
+	if o == nil {
+		return DomainDetails4{}
+	}
+	return o.Details
+}
+
 type CodeClaimsNoticeRequired2 string
 
 const (
@@ -730,22 +907,22 @@ func (e *CodeUnsupportedLanguageCode2) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type DomainDetails2 struct {
+type DomainDetails3 struct {
 	DetectedLanguageCode string `json:"detectedLanguageCode"`
 }
 
-func (d DomainDetails2) MarshalJSON() ([]byte, error) {
+func (d DomainDetails3) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(d, "", false)
 }
 
-func (d *DomainDetails2) UnmarshalJSON(data []byte) error {
+func (d *DomainDetails3) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"detectedLanguageCode"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *DomainDetails2) GetDetectedLanguageCode() string {
+func (o *DomainDetails3) GetDetectedLanguageCode() string {
 	if o == nil {
 		return ""
 	}
@@ -754,7 +931,7 @@ func (o *DomainDetails2) GetDetectedLanguageCode() string {
 
 type ErrorUnsupportedLanguageCode2 struct {
 	Code    CodeUnsupportedLanguageCode2 `json:"code"`
-	Details DomainDetails2               `json:"details"`
+	Details DomainDetails3               `json:"details"`
 }
 
 func (e ErrorUnsupportedLanguageCode2) MarshalJSON() ([]byte, error) {
@@ -775,9 +952,9 @@ func (o *ErrorUnsupportedLanguageCode2) GetCode() CodeUnsupportedLanguageCode2 {
 	return o.Code
 }
 
-func (o *ErrorUnsupportedLanguageCode2) GetDetails() DomainDetails2 {
+func (o *ErrorUnsupportedLanguageCode2) GetDetails() DomainDetails3 {
 	if o == nil {
-		return DomainDetails2{}
+		return DomainDetails3{}
 	}
 	return o.Details
 }
@@ -788,12 +965,14 @@ const (
 	DomainErrorUnion3TypeUnsupportedLanguageCode  DomainErrorUnion3Type = "unsupported-language-code"
 	DomainErrorUnion3TypeClientTransferProhibited DomainErrorUnion3Type = "client-transfer-prohibited"
 	DomainErrorUnion3TypeClaimsNoticeRequired     DomainErrorUnion3Type = "claims-notice-required"
+	DomainErrorUnion3TypeCannotTransferInUntil    DomainErrorUnion3Type = "cannot-transfer-in-until"
 )
 
 type DomainErrorUnion3 struct {
 	ErrorUnsupportedLanguageCode2  *ErrorUnsupportedLanguageCode2  `queryParam:"inline"`
 	ErrorClientTransferProhibited2 *ErrorClientTransferProhibited2 `queryParam:"inline"`
 	ErrorClaimsNoticeRequired2     *ErrorClaimsNoticeRequired2     `queryParam:"inline"`
+	ErrorCannotTransferInUntil2    *ErrorCannotTransferInUntil2    `queryParam:"inline"`
 
 	Type DomainErrorUnion3Type
 }
@@ -831,6 +1010,18 @@ func CreateDomainErrorUnion3ClaimsNoticeRequired(claimsNoticeRequired ErrorClaim
 	return DomainErrorUnion3{
 		ErrorClaimsNoticeRequired2: &claimsNoticeRequired,
 		Type:                       typ,
+	}
+}
+
+func CreateDomainErrorUnion3CannotTransferInUntil(cannotTransferInUntil ErrorCannotTransferInUntil2) DomainErrorUnion3 {
+	typ := DomainErrorUnion3TypeCannotTransferInUntil
+
+	typStr := CodeCannotTransferInUntil2(typ)
+	cannotTransferInUntil.Code = typStr
+
+	return DomainErrorUnion3{
+		ErrorCannotTransferInUntil2: &cannotTransferInUntil,
+		Type:                        typ,
 	}
 }
 
@@ -873,6 +1064,15 @@ func (u *DomainErrorUnion3) UnmarshalJSON(data []byte) error {
 		u.ErrorClaimsNoticeRequired2 = errorClaimsNoticeRequired2
 		u.Type = DomainErrorUnion3TypeClaimsNoticeRequired
 		return nil
+	case "cannot-transfer-in-until":
+		errorCannotTransferInUntil2 := new(ErrorCannotTransferInUntil2)
+		if err := utils.UnmarshalJSON(data, &errorCannotTransferInUntil2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == cannot-transfer-in-until) type ErrorCannotTransferInUntil2 within DomainErrorUnion3: %w", string(data), err)
+		}
+
+		u.ErrorCannotTransferInUntil2 = errorCannotTransferInUntil2
+		u.Type = DomainErrorUnion3TypeCannotTransferInUntil
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for DomainErrorUnion3", string(data))
@@ -889,6 +1089,10 @@ func (u DomainErrorUnion3) MarshalJSON() ([]byte, error) {
 
 	if u.ErrorClaimsNoticeRequired2 != nil {
 		return utils.MarshalJSON(u.ErrorClaimsNoticeRequired2, "", true)
+	}
+
+	if u.ErrorCannotTransferInUntil2 != nil {
+		return utils.MarshalJSON(u.ErrorCannotTransferInUntil2, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type DomainErrorUnion3: all fields are null")
@@ -1109,6 +1313,81 @@ func (o *DomainError1) GetDetails() any {
 	return o.Details
 }
 
+type CodeCannotTransferInUntil1 string
+
+const (
+	CodeCannotTransferInUntil1CannotTransferInUntil CodeCannotTransferInUntil1 = "cannot-transfer-in-until"
+)
+
+func (e CodeCannotTransferInUntil1) ToPointer() *CodeCannotTransferInUntil1 {
+	return &e
+}
+func (e *CodeCannotTransferInUntil1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "cannot-transfer-in-until":
+		*e = CodeCannotTransferInUntil1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CodeCannotTransferInUntil1: %v", v)
+	}
+}
+
+type DomainDetails2 struct {
+	NumDaysUntilTransferrable float64 `json:"numDaysUntilTransferrable"`
+}
+
+func (d DomainDetails2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DomainDetails2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"numDaysUntilTransferrable"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DomainDetails2) GetNumDaysUntilTransferrable() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.NumDaysUntilTransferrable
+}
+
+type ErrorCannotTransferInUntil1 struct {
+	Code    CodeCannotTransferInUntil1 `json:"code"`
+	Details DomainDetails2             `json:"details"`
+}
+
+func (e ErrorCannotTransferInUntil1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *ErrorCannotTransferInUntil1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"code", "details"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ErrorCannotTransferInUntil1) GetCode() CodeCannotTransferInUntil1 {
+	if o == nil {
+		return CodeCannotTransferInUntil1("")
+	}
+	return o.Code
+}
+
+func (o *ErrorCannotTransferInUntil1) GetDetails() DomainDetails2 {
+	if o == nil {
+		return DomainDetails2{}
+	}
+	return o.Details
+}
+
 type CodeClaimsNoticeRequired1 string
 
 const (
@@ -1280,12 +1559,14 @@ const (
 	DomainErrorUnion1TypeUnsupportedLanguageCode  DomainErrorUnion1Type = "unsupported-language-code"
 	DomainErrorUnion1TypeClientTransferProhibited DomainErrorUnion1Type = "client-transfer-prohibited"
 	DomainErrorUnion1TypeClaimsNoticeRequired     DomainErrorUnion1Type = "claims-notice-required"
+	DomainErrorUnion1TypeCannotTransferInUntil    DomainErrorUnion1Type = "cannot-transfer-in-until"
 )
 
 type DomainErrorUnion1 struct {
 	ErrorUnsupportedLanguageCode1  *ErrorUnsupportedLanguageCode1  `queryParam:"inline"`
 	ErrorClientTransferProhibited1 *ErrorClientTransferProhibited1 `queryParam:"inline"`
 	ErrorClaimsNoticeRequired1     *ErrorClaimsNoticeRequired1     `queryParam:"inline"`
+	ErrorCannotTransferInUntil1    *ErrorCannotTransferInUntil1    `queryParam:"inline"`
 
 	Type DomainErrorUnion1Type
 }
@@ -1323,6 +1604,18 @@ func CreateDomainErrorUnion1ClaimsNoticeRequired(claimsNoticeRequired ErrorClaim
 	return DomainErrorUnion1{
 		ErrorClaimsNoticeRequired1: &claimsNoticeRequired,
 		Type:                       typ,
+	}
+}
+
+func CreateDomainErrorUnion1CannotTransferInUntil(cannotTransferInUntil ErrorCannotTransferInUntil1) DomainErrorUnion1 {
+	typ := DomainErrorUnion1TypeCannotTransferInUntil
+
+	typStr := CodeCannotTransferInUntil1(typ)
+	cannotTransferInUntil.Code = typStr
+
+	return DomainErrorUnion1{
+		ErrorCannotTransferInUntil1: &cannotTransferInUntil,
+		Type:                        typ,
 	}
 }
 
@@ -1365,6 +1658,15 @@ func (u *DomainErrorUnion1) UnmarshalJSON(data []byte) error {
 		u.ErrorClaimsNoticeRequired1 = errorClaimsNoticeRequired1
 		u.Type = DomainErrorUnion1TypeClaimsNoticeRequired
 		return nil
+	case "cannot-transfer-in-until":
+		errorCannotTransferInUntil1 := new(ErrorCannotTransferInUntil1)
+		if err := utils.UnmarshalJSON(data, &errorCannotTransferInUntil1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == cannot-transfer-in-until) type ErrorCannotTransferInUntil1 within DomainErrorUnion1: %w", string(data), err)
+		}
+
+		u.ErrorCannotTransferInUntil1 = errorCannotTransferInUntil1
+		u.Type = DomainErrorUnion1TypeCannotTransferInUntil
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for DomainErrorUnion1", string(data))
@@ -1381,6 +1683,10 @@ func (u DomainErrorUnion1) MarshalJSON() ([]byte, error) {
 
 	if u.ErrorClaimsNoticeRequired1 != nil {
 		return utils.MarshalJSON(u.ErrorClaimsNoticeRequired1, "", true)
+	}
+
+	if u.ErrorCannotTransferInUntil1 != nil {
+		return utils.MarshalJSON(u.ErrorCannotTransferInUntil1, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type DomainErrorUnion1: all fields are null")

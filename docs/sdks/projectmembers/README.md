@@ -1,5 +1,4 @@
 # ProjectMembers
-(*projectMembers*)
 
 ## Overview
 

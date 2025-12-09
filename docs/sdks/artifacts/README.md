@@ -1,5 +1,4 @@
 # Artifacts
-(*artifacts*)
 
 ## Overview
 

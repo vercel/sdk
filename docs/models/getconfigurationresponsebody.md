@@ -11,7 +11,7 @@ The configuration with the provided id
 const value: models.GetConfigurationResponseBody1 = {
   projectSelection: "all",
   notification: {
-    level: "info",
+    level: "error",
     title: "<value>",
   },
   transferRequest: {

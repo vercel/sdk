@@ -616,7 +616,7 @@ export type UpdateProjectDataCacheProjectsOidcTokenClaims = {
   project: string;
   projectId: string;
   environment: string;
-  plan: string;
+  plan?: string | undefined;
 };
 
 export const UpdateProjectDataCacheProjectsPlan = {
@@ -1056,8 +1056,22 @@ export type UpdateProjectDataCacheDeploymentType = ClosedEnum<
   typeof UpdateProjectDataCacheDeploymentType
 >;
 
+export const UpdateProjectDataCacheCve55182MigrationAppliedFrom = {
+  Preview: "preview",
+  All: "all",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  AllExceptCustomDomains: "all_except_custom_domains",
+} as const;
+export type UpdateProjectDataCacheCve55182MigrationAppliedFrom = ClosedEnum<
+  typeof UpdateProjectDataCacheCve55182MigrationAppliedFrom
+>;
+
 export type UpdateProjectDataCacheSsoProtection = {
   deploymentType: UpdateProjectDataCacheDeploymentType;
+  cve55182MigrationAppliedFrom?:
+    | UpdateProjectDataCacheCve55182MigrationAppliedFrom
+    | null
+    | undefined;
 };
 
 export type UpdateProjectDataCacheAliasAssigned = number | boolean;
@@ -1139,7 +1153,7 @@ export type UpdateProjectDataCacheOidcTokenClaims = {
   project: string;
   projectId: string;
   environment: string;
-  plan: string;
+  plan?: string | undefined;
 };
 
 export const UpdateProjectDataCachePlan = {
@@ -1962,6 +1976,7 @@ export type UpdateProjectDataCacheDismissedToasts = {
 export type UpdateProjectDataCacheResponseBody = {
   accountId: string;
   analytics?: Analytics | undefined;
+  appliedCve55182Migration?: boolean | undefined;
   speedInsights?: SpeedInsights | undefined;
   autoExposeSystemEnvs?: boolean | undefined;
   autoAssignCustomDomains?: boolean | undefined;
@@ -2024,6 +2039,7 @@ export type UpdateProjectDataCacheResponseBody = {
   serverlessFunctionZeroConfigFailover?: boolean | undefined;
   skewProtectionBoundaryAt?: number | undefined;
   skewProtectionMaxAge?: number | undefined;
+  skewProtectionAllowedDomains?: Array<string> | undefined;
   skipGitConnectDuringLink?: boolean | undefined;
   staticIps?: UpdateProjectDataCacheStaticIps | undefined;
   sourceFilesOutsideRootDirectory?: boolean | undefined;
@@ -4156,7 +4172,7 @@ export const UpdateProjectDataCacheProjectsOidcTokenClaims$inboundSchema:
     project: z.string(),
     project_id: z.string(),
     environment: z.string(),
-    plan: z.string(),
+    plan: z.string().optional(),
   }).transform((v) => {
     return remap$(v, {
       "owner_id": "ownerId",
@@ -4174,7 +4190,7 @@ export type UpdateProjectDataCacheProjectsOidcTokenClaims$Outbound = {
   project: string;
   project_id: string;
   environment: string;
-  plan: string;
+  plan?: string | undefined;
 };
 
 /** @internal */
@@ -4193,7 +4209,7 @@ export const UpdateProjectDataCacheProjectsOidcTokenClaims$outboundSchema:
     project: z.string(),
     projectId: z.string(),
     environment: z.string(),
-    plan: z.string(),
+    plan: z.string().optional(),
   }).transform((v) => {
     return remap$(v, {
       ownerId: "owner_id",
@@ -5804,16 +5820,29 @@ export const UpdateProjectDataCacheDeploymentType$outboundSchema:
     UpdateProjectDataCacheDeploymentType$inboundSchema;
 
 /** @internal */
+export const UpdateProjectDataCacheCve55182MigrationAppliedFrom$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectDataCacheCve55182MigrationAppliedFrom> = z
+    .nativeEnum(UpdateProjectDataCacheCve55182MigrationAppliedFrom);
+/** @internal */
+export const UpdateProjectDataCacheCve55182MigrationAppliedFrom$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectDataCacheCve55182MigrationAppliedFrom> =
+    UpdateProjectDataCacheCve55182MigrationAppliedFrom$inboundSchema;
+
+/** @internal */
 export const UpdateProjectDataCacheSsoProtection$inboundSchema: z.ZodType<
   UpdateProjectDataCacheSsoProtection,
   z.ZodTypeDef,
   unknown
 > = z.object({
   deploymentType: UpdateProjectDataCacheDeploymentType$inboundSchema,
+  cve55182MigrationAppliedFrom: z.nullable(
+    UpdateProjectDataCacheCve55182MigrationAppliedFrom$inboundSchema,
+  ).optional(),
 });
 /** @internal */
 export type UpdateProjectDataCacheSsoProtection$Outbound = {
   deploymentType: string;
+  cve55182MigrationAppliedFrom?: string | null | undefined;
 };
 
 /** @internal */
@@ -5823,6 +5852,9 @@ export const UpdateProjectDataCacheSsoProtection$outboundSchema: z.ZodType<
   UpdateProjectDataCacheSsoProtection
 > = z.object({
   deploymentType: UpdateProjectDataCacheDeploymentType$outboundSchema,
+  cve55182MigrationAppliedFrom: z.nullable(
+    UpdateProjectDataCacheCve55182MigrationAppliedFrom$outboundSchema,
+  ).optional(),
 });
 
 export function updateProjectDataCacheSsoProtectionToJSON(
@@ -6128,7 +6160,7 @@ export const UpdateProjectDataCacheOidcTokenClaims$inboundSchema: z.ZodType<
   project: z.string(),
   project_id: z.string(),
   environment: z.string(),
-  plan: z.string(),
+  plan: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     "owner_id": "ownerId",
@@ -6146,7 +6178,7 @@ export type UpdateProjectDataCacheOidcTokenClaims$Outbound = {
   project: string;
   project_id: string;
   environment: string;
-  plan: string;
+  plan?: string | undefined;
 };
 
 /** @internal */
@@ -6164,7 +6196,7 @@ export const UpdateProjectDataCacheOidcTokenClaims$outboundSchema: z.ZodType<
   project: z.string(),
   projectId: z.string(),
   environment: z.string(),
-  plan: z.string(),
+  plan: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     ownerId: "owner_id",
@@ -10035,6 +10067,7 @@ export const UpdateProjectDataCacheResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   accountId: z.string(),
   analytics: z.lazy(() => Analytics$inboundSchema).optional(),
+  appliedCve55182Migration: z.boolean().optional(),
   speedInsights: z.lazy(() => SpeedInsights$inboundSchema).optional(),
   autoExposeSystemEnvs: z.boolean().optional(),
   autoAssignCustomDomains: z.boolean().optional(),
@@ -10109,6 +10142,7 @@ export const UpdateProjectDataCacheResponseBody$inboundSchema: z.ZodType<
   serverlessFunctionZeroConfigFailover: z.boolean().optional(),
   skewProtectionBoundaryAt: z.number().optional(),
   skewProtectionMaxAge: z.number().optional(),
+  skewProtectionAllowedDomains: z.array(z.string()).optional(),
   skipGitConnectDuringLink: z.boolean().optional(),
   staticIps: z.lazy(() => UpdateProjectDataCacheStaticIps$inboundSchema)
     .optional(),
@@ -10175,6 +10209,7 @@ export const UpdateProjectDataCacheResponseBody$inboundSchema: z.ZodType<
 export type UpdateProjectDataCacheResponseBody$Outbound = {
   accountId: string;
   analytics?: Analytics$Outbound | undefined;
+  appliedCve55182Migration?: boolean | undefined;
   speedInsights?: SpeedInsights$Outbound | undefined;
   autoExposeSystemEnvs?: boolean | undefined;
   autoAssignCustomDomains?: boolean | undefined;
@@ -10237,6 +10272,7 @@ export type UpdateProjectDataCacheResponseBody$Outbound = {
   serverlessFunctionZeroConfigFailover?: boolean | undefined;
   skewProtectionBoundaryAt?: number | undefined;
   skewProtectionMaxAge?: number | undefined;
+  skewProtectionAllowedDomains?: Array<string> | undefined;
   skipGitConnectDuringLink?: boolean | undefined;
   staticIps?: UpdateProjectDataCacheStaticIps$Outbound | undefined;
   sourceFilesOutsideRootDirectory?: boolean | undefined;
@@ -10290,6 +10326,7 @@ export const UpdateProjectDataCacheResponseBody$outboundSchema: z.ZodType<
 > = z.object({
   accountId: z.string(),
   analytics: z.lazy(() => Analytics$outboundSchema).optional(),
+  appliedCve55182Migration: z.boolean().optional(),
   speedInsights: z.lazy(() => SpeedInsights$outboundSchema).optional(),
   autoExposeSystemEnvs: z.boolean().optional(),
   autoAssignCustomDomains: z.boolean().optional(),
@@ -10364,6 +10401,7 @@ export const UpdateProjectDataCacheResponseBody$outboundSchema: z.ZodType<
   serverlessFunctionZeroConfigFailover: z.boolean().optional(),
   skewProtectionBoundaryAt: z.number().optional(),
   skewProtectionMaxAge: z.number().optional(),
+  skewProtectionAllowedDomains: z.array(z.string()).optional(),
   skipGitConnectDuringLink: z.boolean().optional(),
   staticIps: z.lazy(() => UpdateProjectDataCacheStaticIps$outboundSchema)
     .optional(),

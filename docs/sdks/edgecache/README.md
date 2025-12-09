@@ -1,5 +1,4 @@
 # EdgeCache
-(*edgeCache*)
 
 ## Overview
 

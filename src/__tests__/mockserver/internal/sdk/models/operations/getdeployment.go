@@ -2986,16 +2986,16 @@ func (e *GetDeploymentTargetEnum2) UnmarshalJSON(data []byte) error {
 }
 
 type GetDeploymentOidcTokenClaims2 struct {
-	Iss         string `json:"iss"`
-	Sub         string `json:"sub"`
-	Scope       string `json:"scope"`
-	Aud         string `json:"aud"`
-	Owner       string `json:"owner"`
-	OwnerID     string `json:"owner_id"`
-	Project     string `json:"project"`
-	ProjectID   string `json:"project_id"`
-	Environment string `json:"environment"`
-	Plan        string `json:"plan"`
+	Iss         string  `json:"iss"`
+	Sub         string  `json:"sub"`
+	Scope       string  `json:"scope"`
+	Aud         string  `json:"aud"`
+	Owner       string  `json:"owner"`
+	OwnerID     string  `json:"owner_id"`
+	Project     string  `json:"project"`
+	ProjectID   string  `json:"project_id"`
+	Environment string  `json:"environment"`
+	Plan        *string `json:"plan,omitempty"`
 }
 
 func (g GetDeploymentOidcTokenClaims2) MarshalJSON() ([]byte, error) {
@@ -3003,7 +3003,7 @@ func (g GetDeploymentOidcTokenClaims2) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetDeploymentOidcTokenClaims2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"iss", "sub", "scope", "aud", "owner", "owner_id", "project", "project_id", "environment", "plan"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"iss", "sub", "scope", "aud", "owner", "owner_id", "project", "project_id", "environment"}); err != nil {
 		return err
 	}
 	return nil
@@ -3072,9 +3072,9 @@ func (o *GetDeploymentOidcTokenClaims2) GetEnvironment() string {
 	return o.Environment
 }
 
-func (o *GetDeploymentOidcTokenClaims2) GetPlan() string {
+func (o *GetDeploymentOidcTokenClaims2) GetPlan() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.Plan
 }
@@ -7414,16 +7414,16 @@ func (e *GetDeploymentTargetEnum1) UnmarshalJSON(data []byte) error {
 }
 
 type GetDeploymentOidcTokenClaims1 struct {
-	Iss         string `json:"iss"`
-	Sub         string `json:"sub"`
-	Scope       string `json:"scope"`
-	Aud         string `json:"aud"`
-	Owner       string `json:"owner"`
-	OwnerID     string `json:"owner_id"`
-	Project     string `json:"project"`
-	ProjectID   string `json:"project_id"`
-	Environment string `json:"environment"`
-	Plan        string `json:"plan"`
+	Iss         string  `json:"iss"`
+	Sub         string  `json:"sub"`
+	Scope       string  `json:"scope"`
+	Aud         string  `json:"aud"`
+	Owner       string  `json:"owner"`
+	OwnerID     string  `json:"owner_id"`
+	Project     string  `json:"project"`
+	ProjectID   string  `json:"project_id"`
+	Environment string  `json:"environment"`
+	Plan        *string `json:"plan,omitempty"`
 }
 
 func (g GetDeploymentOidcTokenClaims1) MarshalJSON() ([]byte, error) {
@@ -7431,7 +7431,7 @@ func (g GetDeploymentOidcTokenClaims1) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetDeploymentOidcTokenClaims1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"iss", "sub", "scope", "aud", "owner", "owner_id", "project", "project_id", "environment", "plan"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"iss", "sub", "scope", "aud", "owner", "owner_id", "project", "project_id", "environment"}); err != nil {
 		return err
 	}
 	return nil
@@ -7500,9 +7500,9 @@ func (o *GetDeploymentOidcTokenClaims1) GetEnvironment() string {
 	return o.Environment
 }
 
-func (o *GetDeploymentOidcTokenClaims1) GetPlan() string {
+func (o *GetDeploymentOidcTokenClaims1) GetPlan() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.Plan
 }

@@ -1,5 +1,4 @@
 # StaticIps
-(*staticIps*)
 
 ## Overview
 

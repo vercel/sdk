@@ -23,6 +23,25 @@ export type GetConfigurationRequest = {
   slug?: string | undefined;
 };
 
+/**
+ * The configuration status. Optional. If not defined, assume 'ready'.
+ */
+export const GetConfigurationResponseBodyIntegrationsStatus = {
+  Pending: "pending",
+  Ready: "ready",
+  Onboarding: "onboarding",
+  Suspended: "suspended",
+  Resumed: "resumed",
+  Error: "error",
+  Uninstalled: "uninstalled",
+} as const;
+/**
+ * The configuration status. Optional. If not defined, assume 'ready'.
+ */
+export type GetConfigurationResponseBodyIntegrationsStatus = ClosedEnum<
+  typeof GetConfigurationResponseBodyIntegrationsStatus
+>;
+
 export const GetConfigurationResponseBodyIntegrationsType = {
   IntegrationConfiguration: "integration-configuration",
 } as const;
@@ -79,6 +98,14 @@ export type GetConfigurationResponseBody2 = {
    * The user or team ID that owns the configuration
    */
   ownerId: string;
+  /**
+   * The configuration status. Optional. If not defined, assume 'ready'.
+   */
+  status?: GetConfigurationResponseBodyIntegrationsStatus | undefined;
+  /**
+   * An external identifier defined by the integration vendor.
+   */
+  externalId?: string | undefined;
   /**
    * When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access.
    */
@@ -144,9 +171,9 @@ export const ProjectSelection = {
 export type ProjectSelection = ClosedEnum<typeof ProjectSelection>;
 
 export const GetConfigurationResponseBodyLevel = {
+  Error: "error",
   Info: "info",
   Warn: "warn",
-  Error: "error",
 } as const;
 export type GetConfigurationResponseBodyLevel = ClosedEnum<
   typeof GetConfigurationResponseBodyLevel
@@ -249,6 +276,25 @@ export type GetConfigurationResponseBodyInstallationType = ClosedEnum<
   typeof GetConfigurationResponseBodyInstallationType
 >;
 
+/**
+ * The configuration status. Optional. If not defined, assume 'ready'.
+ */
+export const GetConfigurationResponseBodyStatus = {
+  Pending: "pending",
+  Ready: "ready",
+  Onboarding: "onboarding",
+  Suspended: "suspended",
+  Resumed: "resumed",
+  Error: "error",
+  Uninstalled: "uninstalled",
+} as const;
+/**
+ * The configuration status. Optional. If not defined, assume 'ready'.
+ */
+export type GetConfigurationResponseBodyStatus = ClosedEnum<
+  typeof GetConfigurationResponseBodyStatus
+>;
+
 export const GetConfigurationResponseBodyType = {
   IntegrationConfiguration: "integration-configuration",
 } as const;
@@ -325,6 +371,14 @@ export type GetConfigurationResponseBody1 = {
    * A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.
    */
   deleteRequestedAt?: number | null | undefined;
+  /**
+   * The configuration status. Optional. If not defined, assume 'ready'.
+   */
+  status?: GetConfigurationResponseBodyStatus | undefined;
+  /**
+   * An external identifier defined by the integration vendor.
+   */
+  externalId?: string | undefined;
   type: GetConfigurationResponseBodyType;
   /**
    * A timestamp that tells you when the configuration was deleted.
@@ -385,6 +439,15 @@ export function getConfigurationRequestFromJSON(
 }
 
 /** @internal */
+export const GetConfigurationResponseBodyIntegrationsStatus$inboundSchema:
+  z.ZodNativeEnum<typeof GetConfigurationResponseBodyIntegrationsStatus> = z
+    .nativeEnum(GetConfigurationResponseBodyIntegrationsStatus);
+/** @internal */
+export const GetConfigurationResponseBodyIntegrationsStatus$outboundSchema:
+  z.ZodNativeEnum<typeof GetConfigurationResponseBodyIntegrationsStatus> =
+    GetConfigurationResponseBodyIntegrationsStatus$inboundSchema;
+
+/** @internal */
 export const GetConfigurationResponseBodyIntegrationsType$inboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationResponseBodyIntegrationsType> = z
     .nativeEnum(GetConfigurationResponseBodyIntegrationsType);
@@ -426,6 +489,9 @@ export const GetConfigurationResponseBody2$inboundSchema: z.ZodType<
   id: z.string(),
   integrationId: z.string(),
   ownerId: z.string(),
+  status: GetConfigurationResponseBodyIntegrationsStatus$inboundSchema
+    .optional(),
+  externalId: z.string().optional(),
   projects: z.array(z.string()).optional(),
   source: z.string().optional(),
   slug: z.string(),
@@ -451,6 +517,8 @@ export type GetConfigurationResponseBody2$Outbound = {
   id: string;
   integrationId: string;
   ownerId: string;
+  status?: string | undefined;
+  externalId?: string | undefined;
   projects?: Array<string> | undefined;
   source?: string | undefined;
   slug: string;
@@ -477,6 +545,9 @@ export const GetConfigurationResponseBody2$outboundSchema: z.ZodType<
   id: z.string(),
   integrationId: z.string(),
   ownerId: z.string(),
+  status: GetConfigurationResponseBodyIntegrationsStatus$outboundSchema
+    .optional(),
+  externalId: z.string().optional(),
   projects: z.array(z.string()).optional(),
   source: z.string().optional(),
   slug: z.string(),
@@ -940,6 +1011,15 @@ export const GetConfigurationResponseBodyInstallationType$outboundSchema:
     GetConfigurationResponseBodyInstallationType$inboundSchema;
 
 /** @internal */
+export const GetConfigurationResponseBodyStatus$inboundSchema: z.ZodNativeEnum<
+  typeof GetConfigurationResponseBodyStatus
+> = z.nativeEnum(GetConfigurationResponseBodyStatus);
+/** @internal */
+export const GetConfigurationResponseBodyStatus$outboundSchema: z.ZodNativeEnum<
+  typeof GetConfigurationResponseBodyStatus
+> = GetConfigurationResponseBodyStatus$inboundSchema;
+
+/** @internal */
 export const GetConfigurationResponseBodyType$inboundSchema: z.ZodNativeEnum<
   typeof GetConfigurationResponseBodyType
 > = z.nativeEnum(GetConfigurationResponseBodyType);
@@ -979,6 +1059,8 @@ export const GetConfigurationResponseBody1$inboundSchema: z.ZodType<
   installationType: GetConfigurationResponseBodyInstallationType$inboundSchema
     .optional(),
   deleteRequestedAt: z.nullable(z.number()).optional(),
+  status: GetConfigurationResponseBodyStatus$inboundSchema.optional(),
+  externalId: z.string().optional(),
   type: GetConfigurationResponseBodyType$inboundSchema,
   deletedAt: z.nullable(z.number()).optional(),
 });
@@ -1004,6 +1086,8 @@ export type GetConfigurationResponseBody1$Outbound = {
   canConfigureOpenTelemetry?: boolean | undefined;
   installationType?: string | undefined;
   deleteRequestedAt?: number | null | undefined;
+  status?: string | undefined;
+  externalId?: string | undefined;
   type: string;
   deletedAt?: number | null | undefined;
 };
@@ -1039,6 +1123,8 @@ export const GetConfigurationResponseBody1$outboundSchema: z.ZodType<
   installationType: GetConfigurationResponseBodyInstallationType$outboundSchema
     .optional(),
   deleteRequestedAt: z.nullable(z.number()).optional(),
+  status: GetConfigurationResponseBodyStatus$outboundSchema.optional(),
+  externalId: z.string().optional(),
   type: GetConfigurationResponseBodyType$outboundSchema,
   deletedAt: z.nullable(z.number()).optional(),
 });

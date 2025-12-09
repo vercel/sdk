@@ -5887,6 +5887,7 @@ type Payload121 struct {
 	Slug               string                   `json:"slug"`
 	TeamID             string                   `json:"teamId"`
 	By                 string                   `json:"by"`
+	ByUID              *string                  `json:"byUid,omitempty"`
 	Reasons            []UserEventReason        `json:"reasons,omitempty"`
 	RemovedUsers       map[string]RemovedUsers2 `json:"removedUsers,omitempty"`
 	RemovedMemberCount *float64                 `json:"removedMemberCount,omitempty"`
@@ -5923,6 +5924,13 @@ func (o *Payload121) GetBy() string {
 		return ""
 	}
 	return o.By
+}
+
+func (o *Payload121) GetByUID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ByUID
 }
 
 func (o *Payload121) GetReasons() []UserEventReason {
@@ -8519,6 +8527,7 @@ const (
 	Action5Enabled     Action5 = "enabled"
 	Action5Disabled    Action5 = "disabled"
 	Action5Regenerated Action5 = "regenerated"
+	Action5Updated     Action5 = "updated"
 )
 
 func (e Action5) ToPointer() *Action5 {
@@ -8535,6 +8544,8 @@ func (e *Action5) UnmarshalJSON(data []byte) error {
 	case "disabled":
 		fallthrough
 	case "regenerated":
+		fallthrough
+	case "updated":
 		*e = Action5(v)
 		return nil
 	default:
@@ -8546,6 +8557,7 @@ func (e *Action5) UnmarshalJSON(data []byte) error {
 type Payload92 struct {
 	ProjectName string  `json:"projectName"`
 	Action      Action5 `json:"action"`
+	EnvVarName  *string `json:"envVarName,omitempty"`
 }
 
 func (p Payload92) MarshalJSON() ([]byte, error) {
@@ -8571,6 +8583,13 @@ func (o *Payload92) GetAction() Action5 {
 		return Action5("")
 	}
 	return o.Action
+}
+
+func (o *Payload92) GetEnvVarName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.EnvVarName
 }
 
 type OptionsAllowlistPath struct {
@@ -9226,8 +9245,41 @@ func (e *SsoProtectionDeploymentType) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type SsoProtectionCve55182MigrationAppliedFrom string
+
+const (
+	SsoProtectionCve55182MigrationAppliedFromAll                              SsoProtectionCve55182MigrationAppliedFrom = "all"
+	SsoProtectionCve55182MigrationAppliedFromPreview                          SsoProtectionCve55182MigrationAppliedFrom = "preview"
+	SsoProtectionCve55182MigrationAppliedFromProdDeploymentUrlsAndAllPreviews SsoProtectionCve55182MigrationAppliedFrom = "prod_deployment_urls_and_all_previews"
+	SsoProtectionCve55182MigrationAppliedFromAllExceptCustomDomains           SsoProtectionCve55182MigrationAppliedFrom = "all_except_custom_domains"
+)
+
+func (e SsoProtectionCve55182MigrationAppliedFrom) ToPointer() *SsoProtectionCve55182MigrationAppliedFrom {
+	return &e
+}
+func (e *SsoProtectionCve55182MigrationAppliedFrom) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "all":
+		fallthrough
+	case "preview":
+		fallthrough
+	case "prod_deployment_urls_and_all_previews":
+		fallthrough
+	case "all_except_custom_domains":
+		*e = SsoProtectionCve55182MigrationAppliedFrom(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for SsoProtectionCve55182MigrationAppliedFrom: %v", v)
+	}
+}
+
 type UserEventSsoProtection struct {
-	DeploymentType SsoProtectionDeploymentType `json:"deploymentType"`
+	DeploymentType               SsoProtectionDeploymentType                `json:"deploymentType"`
+	Cve55182MigrationAppliedFrom *SsoProtectionCve55182MigrationAppliedFrom `json:"cve55182MigrationAppliedFrom,omitempty"`
 }
 
 func (u UserEventSsoProtection) MarshalJSON() ([]byte, error) {
@@ -9246,6 +9298,13 @@ func (o *UserEventSsoProtection) GetDeploymentType() SsoProtectionDeploymentType
 		return SsoProtectionDeploymentType("")
 	}
 	return o.DeploymentType
+}
+
+func (o *UserEventSsoProtection) GetCve55182MigrationAppliedFrom() *SsoProtectionCve55182MigrationAppliedFrom {
+	if o == nil {
+		return nil
+	}
+	return o.Cve55182MigrationAppliedFrom
 }
 
 type SsoProtectionType string
@@ -9375,8 +9434,41 @@ func (e *OldSsoProtectionDeploymentType) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type OldSsoProtectionCve55182MigrationAppliedFrom string
+
+const (
+	OldSsoProtectionCve55182MigrationAppliedFromAll                              OldSsoProtectionCve55182MigrationAppliedFrom = "all"
+	OldSsoProtectionCve55182MigrationAppliedFromPreview                          OldSsoProtectionCve55182MigrationAppliedFrom = "preview"
+	OldSsoProtectionCve55182MigrationAppliedFromProdDeploymentUrlsAndAllPreviews OldSsoProtectionCve55182MigrationAppliedFrom = "prod_deployment_urls_and_all_previews"
+	OldSsoProtectionCve55182MigrationAppliedFromAllExceptCustomDomains           OldSsoProtectionCve55182MigrationAppliedFrom = "all_except_custom_domains"
+)
+
+func (e OldSsoProtectionCve55182MigrationAppliedFrom) ToPointer() *OldSsoProtectionCve55182MigrationAppliedFrom {
+	return &e
+}
+func (e *OldSsoProtectionCve55182MigrationAppliedFrom) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "all":
+		fallthrough
+	case "preview":
+		fallthrough
+	case "prod_deployment_urls_and_all_previews":
+		fallthrough
+	case "all_except_custom_domains":
+		*e = OldSsoProtectionCve55182MigrationAppliedFrom(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for OldSsoProtectionCve55182MigrationAppliedFrom: %v", v)
+	}
+}
+
 type OldSsoProtection struct {
-	DeploymentType OldSsoProtectionDeploymentType `json:"deploymentType"`
+	DeploymentType               OldSsoProtectionDeploymentType                `json:"deploymentType"`
+	Cve55182MigrationAppliedFrom *OldSsoProtectionCve55182MigrationAppliedFrom `json:"cve55182MigrationAppliedFrom,omitempty"`
 }
 
 func (o OldSsoProtection) MarshalJSON() ([]byte, error) {
@@ -9395,6 +9487,13 @@ func (o *OldSsoProtection) GetDeploymentType() OldSsoProtectionDeploymentType {
 		return OldSsoProtectionDeploymentType("")
 	}
 	return o.DeploymentType
+}
+
+func (o *OldSsoProtection) GetCve55182MigrationAppliedFrom() *OldSsoProtectionCve55182MigrationAppliedFrom {
+	if o == nil {
+		return nil
+	}
+	return o.Cve55182MigrationAppliedFrom
 }
 
 type OldSsoProtectionUnionType string
@@ -11364,6 +11463,8 @@ type Abuse struct {
 	GitLineageBlocksDry *float64 `json:"gitLineageBlocksDry,omitempty"`
 	// Since November 2021. Guides the abuse scanner in build container.
 	Scanner *string `json:"scanner,omitempty"`
+	// Since December 2025. UTC timestamp string of when an auto-unblock is scheduled. Format: "Wed, 03 Dec 2025 20:32:13 GMT"
+	ScheduledUnblockAt *string `json:"scheduledUnblockAt,omitempty"`
 	// Since November 2021
 	UpdatedAt           float64 `json:"updatedAt"`
 	CreationUserAgent   *string `json:"creationUserAgent,omitempty"`
@@ -11422,6 +11523,13 @@ func (o *Abuse) GetScanner() *string {
 		return nil
 	}
 	return o.Scanner
+}
+
+func (o *Abuse) GetScheduledUnblockAt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ScheduledUnblockAt
 }
 
 func (o *Abuse) GetUpdatedAt() float64 {
@@ -12495,6 +12603,7 @@ type UserEventResourceConfig struct {
 	CustomEnvironmentsPerProject    *float64                    `json:"customEnvironmentsPerProject,omitempty"`
 	BuildMachine                    *UserEventBuildMachine      `json:"buildMachine,omitempty"`
 	Security                        *UserEventSecurity          `json:"security,omitempty"`
+	BulkRedirectsFreeLimitOverride  *float64                    `json:"bulkRedirectsFreeLimitOverride,omitempty"`
 }
 
 func (u UserEventResourceConfig) MarshalJSON() ([]byte, error) {
@@ -12695,6 +12804,13 @@ func (o *UserEventResourceConfig) GetSecurity() *UserEventSecurity {
 		return nil
 	}
 	return o.Security
+}
+
+func (o *UserEventResourceConfig) GetBulkRedirectsFreeLimitOverride() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BulkRedirectsFreeLimitOverride
 }
 
 type ResourceLimits struct {

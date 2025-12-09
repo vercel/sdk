@@ -1,5 +1,4 @@
 # Domains
-(*domains*)
 
 ## Overview
 
@@ -8,7 +7,6 @@
 * [buyDomain](#buydomain) - Purchase a domain (deprecated)
 * [checkDomainPrice](#checkdomainprice) - Check the price for a domain (deprecated)
 * [checkDomainStatus](#checkdomainstatus) - Check a Domain Availability (deprecated)
-* [getDomainTransfer](#getdomaintransfer) - Get domain transfer info (deprecated)
 * [getDomainConfig](#getdomainconfig) - Get a Domain's configuration
 * [getDomain](#getdomain) - Get Information for a Single Domain
 * [getDomains](#getdomains) - List all the domains
@@ -270,83 +268,6 @@ run();
 ### Response
 
 **Promise\<[models.CheckDomainStatusResponseBody](../../models/checkdomainstatusresponsebody.md)\>**
-
-### Errors
-
-| Error Type      | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| models.SDKError | 4XX, 5XX        | \*/\*           |
-
-## getDomainTransfer
-
-This endpoint is deprecated and replaced with the endpoint [Get a domain's transfer status](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-a-domains-transfer-status). Fetch domain transfer availability or transfer status if a transfer is in progress.
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="getDomainTransfer" method="get" path="/v1/domains/{domain}/registry" -->
-```typescript
-import { Vercel } from "@vercel/sdk";
-
-const vercel = new Vercel({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const result = await vercel.domains.getDomainTransfer({
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-    domain: "example.com",
-  });
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { VercelCore } from "@vercel/sdk/core.js";
-import { domainsGetDomainTransfer } from "@vercel/sdk/funcs/domainsGetDomainTransfer.js";
-
-// Use `VercelCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const vercel = new VercelCore({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const res = await domainsGetDomainTransfer(vercel, {
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-    domain: "example.com",
-  });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("domainsGetDomainTransfer failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.GetDomainTransferRequest](../../models/getdomaintransferrequest.md)                                                                                                    | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[models.GetDomainTransferResponseBody](../../models/getdomaintransferresponsebody.md)\>**
 
 ### Errors
 

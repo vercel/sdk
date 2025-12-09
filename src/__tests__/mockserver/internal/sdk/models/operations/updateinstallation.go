@@ -10,6 +10,47 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+type UpdateInstallationStatus string
+
+const (
+	UpdateInstallationStatusReady       UpdateInstallationStatus = "ready"
+	UpdateInstallationStatusPending     UpdateInstallationStatus = "pending"
+	UpdateInstallationStatusOnboarding  UpdateInstallationStatus = "onboarding"
+	UpdateInstallationStatusSuspended   UpdateInstallationStatus = "suspended"
+	UpdateInstallationStatusResumed     UpdateInstallationStatus = "resumed"
+	UpdateInstallationStatusUninstalled UpdateInstallationStatus = "uninstalled"
+	UpdateInstallationStatusError       UpdateInstallationStatus = "error"
+)
+
+func (e UpdateInstallationStatus) ToPointer() *UpdateInstallationStatus {
+	return &e
+}
+func (e *UpdateInstallationStatus) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "ready":
+		fallthrough
+	case "pending":
+		fallthrough
+	case "onboarding":
+		fallthrough
+	case "suspended":
+		fallthrough
+	case "resumed":
+		fallthrough
+	case "uninstalled":
+		fallthrough
+	case "error":
+		*e = UpdateInstallationStatus(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateInstallationStatus: %v", v)
+	}
+}
+
 type UpdateInstallationType string
 
 const (
@@ -308,9 +349,25 @@ func (u UpdateInstallationNotificationUnion) MarshalJSON() ([]byte, error) {
 }
 
 type UpdateInstallationRequestBody struct {
+	Status      *UpdateInstallationStatus      `json:"status,omitempty"`
+	ExternalID  *string                        `json:"externalId,omitempty"`
 	BillingPlan *UpdateInstallationBillingPlan `json:"billingPlan,omitempty"`
 	// A notification to display to your customer. Send `null` to clear the current notification.
 	Notification *UpdateInstallationNotificationUnion `json:"notification,omitempty"`
+}
+
+func (o *UpdateInstallationRequestBody) GetStatus() *UpdateInstallationStatus {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *UpdateInstallationRequestBody) GetExternalID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ExternalID
 }
 
 func (o *UpdateInstallationRequestBody) GetBillingPlan() *UpdateInstallationBillingPlan {

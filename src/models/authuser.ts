@@ -278,6 +278,10 @@ export type AuthUserResourceConfig = {
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
   security?: AuthUserSecurity | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  bulkRedirectsFreeLimitOverride?: number | undefined;
 };
 
 export const ViewPreference = {
@@ -761,6 +765,7 @@ export const AuthUserResourceConfig$inboundSchema: z.ZodType<
   customEnvironmentsPerProject: z.number().optional(),
   buildMachine: z.lazy(() => BuildMachine$inboundSchema).optional(),
   security: z.lazy(() => AuthUserSecurity$inboundSchema).optional(),
+  bulkRedirectsFreeLimitOverride: z.number().optional(),
 });
 /** @internal */
 export type AuthUserResourceConfig$Outbound = {
@@ -791,6 +796,7 @@ export type AuthUserResourceConfig$Outbound = {
   customEnvironmentsPerProject?: number | undefined;
   buildMachine?: BuildMachine$Outbound | undefined;
   security?: AuthUserSecurity$Outbound | undefined;
+  bulkRedirectsFreeLimitOverride?: number | undefined;
 };
 
 /** @internal */
@@ -827,6 +833,7 @@ export const AuthUserResourceConfig$outboundSchema: z.ZodType<
   customEnvironmentsPerProject: z.number().optional(),
   buildMachine: z.lazy(() => BuildMachine$outboundSchema).optional(),
   security: z.lazy(() => AuthUserSecurity$outboundSchema).optional(),
+  bulkRedirectsFreeLimitOverride: z.number().optional(),
 });
 
 export function authUserResourceConfigToJSON(

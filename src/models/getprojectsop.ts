@@ -679,7 +679,7 @@ export type GetProjectsOidcTokenClaims = {
   project: string;
   projectId: string;
   environment: string;
-  plan: string;
+  plan?: string | undefined;
 };
 
 export const GetProjectsPlan = {
@@ -1119,8 +1119,22 @@ export type GetProjectsDeploymentType = ClosedEnum<
   typeof GetProjectsDeploymentType
 >;
 
+export const GetProjectsCve55182MigrationAppliedFrom = {
+  Preview: "preview",
+  All: "all",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  AllExceptCustomDomains: "all_except_custom_domains",
+} as const;
+export type GetProjectsCve55182MigrationAppliedFrom = ClosedEnum<
+  typeof GetProjectsCve55182MigrationAppliedFrom
+>;
+
 export type GetProjectsSsoProtection = {
   deploymentType: GetProjectsDeploymentType;
+  cve55182MigrationAppliedFrom?:
+    | GetProjectsCve55182MigrationAppliedFrom
+    | null
+    | undefined;
 };
 
 export type GetProjectsProjectsAliasAssigned = number | boolean;
@@ -1201,7 +1215,7 @@ export type GetProjectsProjectsOidcTokenClaims = {
   project: string;
   projectId: string;
   environment: string;
-  plan: string;
+  plan?: string | undefined;
 };
 
 export const GetProjectsProjectsPlan = {
@@ -2030,6 +2044,7 @@ export type GetProjectsDismissedToasts = {
 export type GetProjectsProjects = {
   accountId: string;
   analytics?: GetProjectsAnalytics | undefined;
+  appliedCve55182Migration?: boolean | undefined;
   speedInsights?: GetProjectsSpeedInsights | undefined;
   autoExposeSystemEnvs?: boolean | undefined;
   autoAssignCustomDomains?: boolean | undefined;
@@ -2095,6 +2110,7 @@ export type GetProjectsProjects = {
   serverlessFunctionZeroConfigFailover?: boolean | undefined;
   skewProtectionBoundaryAt?: number | undefined;
   skewProtectionMaxAge?: number | undefined;
+  skewProtectionAllowedDomains?: Array<string> | undefined;
   skipGitConnectDuringLink?: boolean | undefined;
   staticIps?: GetProjectsStaticIps | undefined;
   sourceFilesOutsideRootDirectory?: boolean | undefined;
@@ -4293,7 +4309,7 @@ export const GetProjectsOidcTokenClaims$inboundSchema: z.ZodType<
   project: z.string(),
   project_id: z.string(),
   environment: z.string(),
-  plan: z.string(),
+  plan: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     "owner_id": "ownerId",
@@ -4311,7 +4327,7 @@ export type GetProjectsOidcTokenClaims$Outbound = {
   project: string;
   project_id: string;
   environment: string;
-  plan: string;
+  plan?: string | undefined;
 };
 
 /** @internal */
@@ -4329,7 +4345,7 @@ export const GetProjectsOidcTokenClaims$outboundSchema: z.ZodType<
   project: z.string(),
   projectId: z.string(),
   environment: z.string(),
-  plan: z.string(),
+  plan: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     ownerId: "owner_id",
@@ -5951,16 +5967,29 @@ export const GetProjectsDeploymentType$outboundSchema: z.ZodNativeEnum<
 > = GetProjectsDeploymentType$inboundSchema;
 
 /** @internal */
+export const GetProjectsCve55182MigrationAppliedFrom$inboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsCve55182MigrationAppliedFrom> = z
+    .nativeEnum(GetProjectsCve55182MigrationAppliedFrom);
+/** @internal */
+export const GetProjectsCve55182MigrationAppliedFrom$outboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsCve55182MigrationAppliedFrom> =
+    GetProjectsCve55182MigrationAppliedFrom$inboundSchema;
+
+/** @internal */
 export const GetProjectsSsoProtection$inboundSchema: z.ZodType<
   GetProjectsSsoProtection,
   z.ZodTypeDef,
   unknown
 > = z.object({
   deploymentType: GetProjectsDeploymentType$inboundSchema,
+  cve55182MigrationAppliedFrom: z.nullable(
+    GetProjectsCve55182MigrationAppliedFrom$inboundSchema,
+  ).optional(),
 });
 /** @internal */
 export type GetProjectsSsoProtection$Outbound = {
   deploymentType: string;
+  cve55182MigrationAppliedFrom?: string | null | undefined;
 };
 
 /** @internal */
@@ -5970,6 +5999,9 @@ export const GetProjectsSsoProtection$outboundSchema: z.ZodType<
   GetProjectsSsoProtection
 > = z.object({
   deploymentType: GetProjectsDeploymentType$outboundSchema,
+  cve55182MigrationAppliedFrom: z.nullable(
+    GetProjectsCve55182MigrationAppliedFrom$outboundSchema,
+  ).optional(),
 });
 
 export function getProjectsSsoProtectionToJSON(
@@ -6264,7 +6296,7 @@ export const GetProjectsProjectsOidcTokenClaims$inboundSchema: z.ZodType<
   project: z.string(),
   project_id: z.string(),
   environment: z.string(),
-  plan: z.string(),
+  plan: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     "owner_id": "ownerId",
@@ -6282,7 +6314,7 @@ export type GetProjectsProjectsOidcTokenClaims$Outbound = {
   project: string;
   project_id: string;
   environment: string;
-  plan: string;
+  plan?: string | undefined;
 };
 
 /** @internal */
@@ -6300,7 +6332,7 @@ export const GetProjectsProjectsOidcTokenClaims$outboundSchema: z.ZodType<
   project: z.string(),
   projectId: z.string(),
   environment: z.string(),
-  plan: z.string(),
+  plan: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     ownerId: "owner_id",
@@ -10217,6 +10249,7 @@ export const GetProjectsProjects$inboundSchema: z.ZodType<
 > = z.object({
   accountId: z.string(),
   analytics: z.lazy(() => GetProjectsAnalytics$inboundSchema).optional(),
+  appliedCve55182Migration: z.boolean().optional(),
   speedInsights: z.lazy(() => GetProjectsSpeedInsights$inboundSchema)
     .optional(),
   autoExposeSystemEnvs: z.boolean().optional(),
@@ -10290,6 +10323,7 @@ export const GetProjectsProjects$inboundSchema: z.ZodType<
   serverlessFunctionZeroConfigFailover: z.boolean().optional(),
   skewProtectionBoundaryAt: z.number().optional(),
   skewProtectionMaxAge: z.number().optional(),
+  skewProtectionAllowedDomains: z.array(z.string()).optional(),
   skipGitConnectDuringLink: z.boolean().optional(),
   staticIps: z.lazy(() => GetProjectsStaticIps$inboundSchema).optional(),
   sourceFilesOutsideRootDirectory: z.boolean().optional(),
@@ -10355,6 +10389,7 @@ export const GetProjectsProjects$inboundSchema: z.ZodType<
 export type GetProjectsProjects$Outbound = {
   accountId: string;
   analytics?: GetProjectsAnalytics$Outbound | undefined;
+  appliedCve55182Migration?: boolean | undefined;
   speedInsights?: GetProjectsSpeedInsights$Outbound | undefined;
   autoExposeSystemEnvs?: boolean | undefined;
   autoAssignCustomDomains?: boolean | undefined;
@@ -10419,6 +10454,7 @@ export type GetProjectsProjects$Outbound = {
   serverlessFunctionZeroConfigFailover?: boolean | undefined;
   skewProtectionBoundaryAt?: number | undefined;
   skewProtectionMaxAge?: number | undefined;
+  skewProtectionAllowedDomains?: Array<string> | undefined;
   skipGitConnectDuringLink?: boolean | undefined;
   staticIps?: GetProjectsStaticIps$Outbound | undefined;
   sourceFilesOutsideRootDirectory?: boolean | undefined;
@@ -10478,6 +10514,7 @@ export const GetProjectsProjects$outboundSchema: z.ZodType<
 > = z.object({
   accountId: z.string(),
   analytics: z.lazy(() => GetProjectsAnalytics$outboundSchema).optional(),
+  appliedCve55182Migration: z.boolean().optional(),
   speedInsights: z.lazy(() => GetProjectsSpeedInsights$outboundSchema)
     .optional(),
   autoExposeSystemEnvs: z.boolean().optional(),
@@ -10551,6 +10588,7 @@ export const GetProjectsProjects$outboundSchema: z.ZodType<
   serverlessFunctionZeroConfigFailover: z.boolean().optional(),
   skewProtectionBoundaryAt: z.number().optional(),
   skewProtectionMaxAge: z.number().optional(),
+  skewProtectionAllowedDomains: z.array(z.string()).optional(),
   skipGitConnectDuringLink: z.boolean().optional(),
   staticIps: z.lazy(() => GetProjectsStaticIps$outboundSchema).optional(),
   sourceFilesOutsideRootDirectory: z.boolean().optional(),

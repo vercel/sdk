@@ -1098,6 +1098,8 @@ type UpdateProjectRequestBody struct {
 	SkewProtectionBoundaryAt *int64 `json:"skewProtectionBoundaryAt,omitempty"`
 	// Deployments created before this rolling window have Skew Protection disabled. Value is in seconds to match \"revalidate\" fields.
 	SkewProtectionMaxAge *int64 `json:"skewProtectionMaxAge,omitempty"`
+	// Cross-site domains allowed to fetch skew-protected assets (hostnames, optionally with leading wildcard like *.example.com).
+	SkewProtectionAllowedDomains []string `json:"skewProtectionAllowedDomains,omitempty"`
 	// Opts-out of the message prompting a CLI user to connect a Git repository in `vercel link`.
 	//
 	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -1294,6 +1296,13 @@ func (o *UpdateProjectRequestBody) GetSkewProtectionMaxAge() *int64 {
 		return nil
 	}
 	return o.SkewProtectionMaxAge
+}
+
+func (o *UpdateProjectRequestBody) GetSkewProtectionAllowedDomains() []string {
+	if o == nil {
+		return nil
+	}
+	return o.SkewProtectionAllowedDomains
 }
 
 func (o *UpdateProjectRequestBody) GetSkipGitConnectDuringLink() *bool {
@@ -6223,8 +6232,41 @@ func (e *UpdateProjectSsoProtectionDeploymentTypeResponse) UnmarshalJSON(data []
 	}
 }
 
+type UpdateProjectCve55182MigrationAppliedFrom string
+
+const (
+	UpdateProjectCve55182MigrationAppliedFromPreview                          UpdateProjectCve55182MigrationAppliedFrom = "preview"
+	UpdateProjectCve55182MigrationAppliedFromAll                              UpdateProjectCve55182MigrationAppliedFrom = "all"
+	UpdateProjectCve55182MigrationAppliedFromProdDeploymentUrlsAndAllPreviews UpdateProjectCve55182MigrationAppliedFrom = "prod_deployment_urls_and_all_previews"
+	UpdateProjectCve55182MigrationAppliedFromAllExceptCustomDomains           UpdateProjectCve55182MigrationAppliedFrom = "all_except_custom_domains"
+)
+
+func (e UpdateProjectCve55182MigrationAppliedFrom) ToPointer() *UpdateProjectCve55182MigrationAppliedFrom {
+	return &e
+}
+func (e *UpdateProjectCve55182MigrationAppliedFrom) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "preview":
+		fallthrough
+	case "all":
+		fallthrough
+	case "prod_deployment_urls_and_all_previews":
+		fallthrough
+	case "all_except_custom_domains":
+		*e = UpdateProjectCve55182MigrationAppliedFrom(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectCve55182MigrationAppliedFrom: %v", v)
+	}
+}
+
 type UpdateProjectSsoProtectionResponse struct {
-	DeploymentType UpdateProjectSsoProtectionDeploymentTypeResponse `json:"deploymentType"`
+	DeploymentType               UpdateProjectSsoProtectionDeploymentTypeResponse `json:"deploymentType"`
+	Cve55182MigrationAppliedFrom *UpdateProjectCve55182MigrationAppliedFrom       `json:"cve55182MigrationAppliedFrom,omitempty"`
 }
 
 func (o *UpdateProjectSsoProtectionResponse) GetDeploymentType() UpdateProjectSsoProtectionDeploymentTypeResponse {
@@ -6232,6 +6274,13 @@ func (o *UpdateProjectSsoProtectionResponse) GetDeploymentType() UpdateProjectSs
 		return UpdateProjectSsoProtectionDeploymentTypeResponse("")
 	}
 	return o.DeploymentType
+}
+
+func (o *UpdateProjectSsoProtectionResponse) GetCve55182MigrationAppliedFrom() *UpdateProjectCve55182MigrationAppliedFrom {
+	if o == nil {
+		return nil
+	}
+	return o.Cve55182MigrationAppliedFrom
 }
 
 type UpdateProjectAliasAssignedType string
@@ -6499,16 +6548,16 @@ func (o *UpdateProjectCreator) GetUsername() string {
 }
 
 type UpdateProjectOidcTokenClaims struct {
-	Iss         string `json:"iss"`
-	Sub         string `json:"sub"`
-	Scope       string `json:"scope"`
-	Aud         string `json:"aud"`
-	Owner       string `json:"owner"`
-	OwnerID     string `json:"owner_id"`
-	Project     string `json:"project"`
-	ProjectID   string `json:"project_id"`
-	Environment string `json:"environment"`
-	Plan        string `json:"plan"`
+	Iss         string  `json:"iss"`
+	Sub         string  `json:"sub"`
+	Scope       string  `json:"scope"`
+	Aud         string  `json:"aud"`
+	Owner       string  `json:"owner"`
+	OwnerID     string  `json:"owner_id"`
+	Project     string  `json:"project"`
+	ProjectID   string  `json:"project_id"`
+	Environment string  `json:"environment"`
+	Plan        *string `json:"plan,omitempty"`
 }
 
 func (o *UpdateProjectOidcTokenClaims) GetIss() string {
@@ -6574,9 +6623,9 @@ func (o *UpdateProjectOidcTokenClaims) GetEnvironment() string {
 	return o.Environment
 }
 
-func (o *UpdateProjectOidcTokenClaims) GetPlan() string {
+func (o *UpdateProjectOidcTokenClaims) GetPlan() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.Plan
 }
@@ -12234,6 +12283,7 @@ func (o *UpdateProjectDismissedToastResponse) GetValue() *UpdateProjectValueUnio
 type UpdateProjectResponseBody struct {
 	AccountID                        string                                      `json:"accountId"`
 	Analytics                        *UpdateProjectAnalytics                     `json:"analytics,omitempty"`
+	AppliedCve55182Migration         *bool                                       `json:"appliedCve55182Migration,omitempty"`
 	SpeedInsights                    *UpdateProjectSpeedInsights                 `json:"speedInsights,omitempty"`
 	AutoExposeSystemEnvs             *bool                                       `json:"autoExposeSystemEnvs,omitempty"`
 	AutoAssignCustomDomains          *bool                                       `json:"autoAssignCustomDomains,omitempty"`
@@ -12280,6 +12330,7 @@ type UpdateProjectResponseBody struct {
 	ServerlessFunctionZeroConfigFailover *bool                                         `json:"serverlessFunctionZeroConfigFailover,omitempty"`
 	SkewProtectionBoundaryAt             *float64                                      `json:"skewProtectionBoundaryAt,omitempty"`
 	SkewProtectionMaxAge                 *float64                                      `json:"skewProtectionMaxAge,omitempty"`
+	SkewProtectionAllowedDomains         []string                                      `json:"skewProtectionAllowedDomains,omitempty"`
 	SkipGitConnectDuringLink             *bool                                         `json:"skipGitConnectDuringLink,omitempty"`
 	StaticIps                            *UpdateProjectStaticIpsResponse               `json:"staticIps,omitempty"`
 	SourceFilesOutsideRootDirectory      *bool                                         `json:"sourceFilesOutsideRootDirectory,omitempty"`
@@ -12328,6 +12379,13 @@ func (o *UpdateProjectResponseBody) GetAnalytics() *UpdateProjectAnalytics {
 		return nil
 	}
 	return o.Analytics
+}
+
+func (o *UpdateProjectResponseBody) GetAppliedCve55182Migration() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.AppliedCve55182Migration
 }
 
 func (o *UpdateProjectResponseBody) GetSpeedInsights() *UpdateProjectSpeedInsights {
@@ -12664,6 +12722,13 @@ func (o *UpdateProjectResponseBody) GetSkewProtectionMaxAge() *float64 {
 		return nil
 	}
 	return o.SkewProtectionMaxAge
+}
+
+func (o *UpdateProjectResponseBody) GetSkewProtectionAllowedDomains() []string {
+	if o == nil {
+		return nil
+	}
+	return o.SkewProtectionAllowedDomains
 }
 
 func (o *UpdateProjectResponseBody) GetSkipGitConnectDuringLink() *bool {

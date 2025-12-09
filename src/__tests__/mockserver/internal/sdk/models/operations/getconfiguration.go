@@ -40,6 +40,48 @@ func (o *GetConfigurationRequest) GetSlug() *string {
 	return o.Slug
 }
 
+// GetConfigurationStatus2 - The configuration status. Optional. If not defined, assume 'ready'.
+type GetConfigurationStatus2 string
+
+const (
+	GetConfigurationStatus2Pending     GetConfigurationStatus2 = "pending"
+	GetConfigurationStatus2Ready       GetConfigurationStatus2 = "ready"
+	GetConfigurationStatus2Onboarding  GetConfigurationStatus2 = "onboarding"
+	GetConfigurationStatus2Suspended   GetConfigurationStatus2 = "suspended"
+	GetConfigurationStatus2Resumed     GetConfigurationStatus2 = "resumed"
+	GetConfigurationStatus2Error       GetConfigurationStatus2 = "error"
+	GetConfigurationStatus2Uninstalled GetConfigurationStatus2 = "uninstalled"
+)
+
+func (e GetConfigurationStatus2) ToPointer() *GetConfigurationStatus2 {
+	return &e
+}
+func (e *GetConfigurationStatus2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "pending":
+		fallthrough
+	case "ready":
+		fallthrough
+	case "onboarding":
+		fallthrough
+	case "suspended":
+		fallthrough
+	case "resumed":
+		fallthrough
+	case "error":
+		fallthrough
+	case "uninstalled":
+		*e = GetConfigurationStatus2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetConfigurationStatus2: %v", v)
+	}
+}
+
 type GetConfigurationTypeIntegrationConfiguration2 string
 
 const (
@@ -140,6 +182,10 @@ type GetConfigurationIntegrationConfiguration2 struct {
 	IntegrationID string `json:"integrationId"`
 	// The user or team ID that owns the configuration
 	OwnerID string `json:"ownerId"`
+	// The configuration status. Optional. If not defined, assume 'ready'.
+	Status *GetConfigurationStatus2 `json:"status,omitempty"`
+	// An external identifier defined by the integration vendor.
+	ExternalID *string `json:"externalId,omitempty"`
 	// When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access.
 	Projects []string `json:"projects,omitempty"`
 	// Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
@@ -210,6 +256,20 @@ func (o *GetConfigurationIntegrationConfiguration2) GetOwnerID() string {
 		return ""
 	}
 	return o.OwnerID
+}
+
+func (o *GetConfigurationIntegrationConfiguration2) GetStatus() *GetConfigurationStatus2 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *GetConfigurationIntegrationConfiguration2) GetExternalID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ExternalID
 }
 
 func (o *GetConfigurationIntegrationConfiguration2) GetProjects() []string {
@@ -333,9 +393,9 @@ func (e *ProjectSelection) UnmarshalJSON(data []byte) error {
 type GetConfigurationLevel string
 
 const (
+	GetConfigurationLevelError GetConfigurationLevel = "error"
 	GetConfigurationLevelInfo  GetConfigurationLevel = "info"
 	GetConfigurationLevelWarn  GetConfigurationLevel = "warn"
-	GetConfigurationLevelError GetConfigurationLevel = "error"
 )
 
 func (e GetConfigurationLevel) ToPointer() *GetConfigurationLevel {
@@ -347,11 +407,11 @@ func (e *GetConfigurationLevel) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "error":
+		fallthrough
 	case "info":
 		fallthrough
 	case "warn":
-		fallthrough
-	case "error":
 		*e = GetConfigurationLevel(v)
 		return nil
 	default:
@@ -1003,6 +1063,48 @@ func (e *GetConfigurationInstallationType1) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// GetConfigurationStatus1 - The configuration status. Optional. If not defined, assume 'ready'.
+type GetConfigurationStatus1 string
+
+const (
+	GetConfigurationStatus1Pending     GetConfigurationStatus1 = "pending"
+	GetConfigurationStatus1Ready       GetConfigurationStatus1 = "ready"
+	GetConfigurationStatus1Onboarding  GetConfigurationStatus1 = "onboarding"
+	GetConfigurationStatus1Suspended   GetConfigurationStatus1 = "suspended"
+	GetConfigurationStatus1Resumed     GetConfigurationStatus1 = "resumed"
+	GetConfigurationStatus1Error       GetConfigurationStatus1 = "error"
+	GetConfigurationStatus1Uninstalled GetConfigurationStatus1 = "uninstalled"
+)
+
+func (e GetConfigurationStatus1) ToPointer() *GetConfigurationStatus1 {
+	return &e
+}
+func (e *GetConfigurationStatus1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "pending":
+		fallthrough
+	case "ready":
+		fallthrough
+	case "onboarding":
+		fallthrough
+	case "suspended":
+		fallthrough
+	case "resumed":
+		fallthrough
+	case "error":
+		fallthrough
+	case "uninstalled":
+		*e = GetConfigurationStatus1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetConfigurationStatus1: %v", v)
+	}
+}
+
 type GetConfigurationTypeIntegrationConfiguration1 string
 
 const (
@@ -1062,8 +1164,12 @@ type GetConfigurationIntegrationConfiguration1 struct {
 	// Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
 	InstallationType *GetConfigurationInstallationType1 `json:"installationType,omitempty"`
 	// A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.
-	DeleteRequestedAt *float64                                      `json:"deleteRequestedAt,omitempty"`
-	Type              GetConfigurationTypeIntegrationConfiguration1 `json:"type"`
+	DeleteRequestedAt *float64 `json:"deleteRequestedAt,omitempty"`
+	// The configuration status. Optional. If not defined, assume 'ready'.
+	Status *GetConfigurationStatus1 `json:"status,omitempty"`
+	// An external identifier defined by the integration vendor.
+	ExternalID *string                                       `json:"externalId,omitempty"`
+	Type       GetConfigurationTypeIntegrationConfiguration1 `json:"type"`
 	// A timestamp that tells you when the configuration was deleted.
 	DeletedAt *float64 `json:"deletedAt,omitempty"`
 }
@@ -1225,6 +1331,20 @@ func (o *GetConfigurationIntegrationConfiguration1) GetDeleteRequestedAt() *floa
 		return nil
 	}
 	return o.DeleteRequestedAt
+}
+
+func (o *GetConfigurationIntegrationConfiguration1) GetStatus() *GetConfigurationStatus1 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *GetConfigurationIntegrationConfiguration1) GetExternalID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ExternalID
 }
 
 func (o *GetConfigurationIntegrationConfiguration1) GetType() GetConfigurationTypeIntegrationConfiguration1 {

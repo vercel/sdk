@@ -1,5 +1,4 @@
 # Connect
-(*connect*)
 
 ## Overview
 

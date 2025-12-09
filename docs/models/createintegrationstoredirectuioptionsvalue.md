@@ -6,7 +6,7 @@
 import { CreateIntegrationStoreDirectUiOptionsValue } from "@vercel/sdk/models/createintegrationstoredirectop.js";
 
 let value: CreateIntegrationStoreDirectUiOptionsValue = {
-  atBRANDAt8831: {},
+  atBRANDAt8845: {},
 };
 ```
 
@@ -14,4 +14,4 @@ let value: CreateIntegrationStoreDirectUiOptionsValue = {
 
 | Field                                                                                                                        | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
 | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `atBRANDAt8831`                                                                                                              | [models.CreateIntegrationStoreDirectUiOptionsAtBRANDAt8831](../models/createintegrationstoredirectuioptionsatbrandat8831.md) | :heavy_check_mark:                                                                                                           | N/A                                                                                                                          |
+| `atBRANDAt8845`                                                                                                              | [models.CreateIntegrationStoreDirectUiOptionsAtBRANDAt8845](../models/createintegrationstoredirectuioptionsatbrandat8845.md) | :heavy_check_mark:                                                                                                           | N/A                                                                                                                          |

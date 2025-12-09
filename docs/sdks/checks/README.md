@@ -1,5 +1,4 @@
 # Checks
-(*checks*)
 
 ## Overview
 

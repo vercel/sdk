@@ -695,7 +695,7 @@ export type GetDeploymentResponseBodyOidcTokenClaims = {
   project: string;
   projectId: string;
   environment: string;
-  plan: string;
+  plan?: string | undefined;
 };
 
 /**
@@ -1716,7 +1716,7 @@ export type ResponseBodyOidcTokenClaims = {
   project: string;
   projectId: string;
   environment: string;
-  plan: string;
+  plan?: string | undefined;
 };
 
 export const ResponseBodyPlan = {
@@ -4642,7 +4642,7 @@ export const GetDeploymentResponseBodyOidcTokenClaims$inboundSchema: z.ZodType<
   project: z.string(),
   project_id: z.string(),
   environment: z.string(),
-  plan: z.string(),
+  plan: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     "owner_id": "ownerId",
@@ -4660,7 +4660,7 @@ export type GetDeploymentResponseBodyOidcTokenClaims$Outbound = {
   project: string;
   project_id: string;
   environment: string;
-  plan: string;
+  plan?: string | undefined;
 };
 
 /** @internal */
@@ -4678,7 +4678,7 @@ export const GetDeploymentResponseBodyOidcTokenClaims$outboundSchema: z.ZodType<
   project: z.string(),
   projectId: z.string(),
   environment: z.string(),
-  plan: z.string(),
+  plan: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     ownerId: "owner_id",
@@ -7711,7 +7711,7 @@ export const ResponseBodyOidcTokenClaims$inboundSchema: z.ZodType<
   project: z.string(),
   project_id: z.string(),
   environment: z.string(),
-  plan: z.string(),
+  plan: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     "owner_id": "ownerId",
@@ -7729,7 +7729,7 @@ export type ResponseBodyOidcTokenClaims$Outbound = {
   project: string;
   project_id: string;
   environment: string;
-  plan: string;
+  plan?: string | undefined;
 };
 
 /** @internal */
@@ -7747,7 +7747,7 @@ export const ResponseBodyOidcTokenClaims$outboundSchema: z.ZodType<
   project: z.string(),
   projectId: z.string(),
   environment: z.string(),
-  plan: z.string(),
+  plan: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     ownerId: "owner_id",

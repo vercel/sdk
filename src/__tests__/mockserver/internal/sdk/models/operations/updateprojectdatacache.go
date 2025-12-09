@@ -4887,8 +4887,41 @@ func (e *UpdateProjectDataCacheSsoProtectionDeploymentType) UnmarshalJSON(data [
 	}
 }
 
+type UpdateProjectDataCacheCve55182MigrationAppliedFrom string
+
+const (
+	UpdateProjectDataCacheCve55182MigrationAppliedFromPreview                          UpdateProjectDataCacheCve55182MigrationAppliedFrom = "preview"
+	UpdateProjectDataCacheCve55182MigrationAppliedFromAll                              UpdateProjectDataCacheCve55182MigrationAppliedFrom = "all"
+	UpdateProjectDataCacheCve55182MigrationAppliedFromProdDeploymentUrlsAndAllPreviews UpdateProjectDataCacheCve55182MigrationAppliedFrom = "prod_deployment_urls_and_all_previews"
+	UpdateProjectDataCacheCve55182MigrationAppliedFromAllExceptCustomDomains           UpdateProjectDataCacheCve55182MigrationAppliedFrom = "all_except_custom_domains"
+)
+
+func (e UpdateProjectDataCacheCve55182MigrationAppliedFrom) ToPointer() *UpdateProjectDataCacheCve55182MigrationAppliedFrom {
+	return &e
+}
+func (e *UpdateProjectDataCacheCve55182MigrationAppliedFrom) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "preview":
+		fallthrough
+	case "all":
+		fallthrough
+	case "prod_deployment_urls_and_all_previews":
+		fallthrough
+	case "all_except_custom_domains":
+		*e = UpdateProjectDataCacheCve55182MigrationAppliedFrom(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectDataCacheCve55182MigrationAppliedFrom: %v", v)
+	}
+}
+
 type UpdateProjectDataCacheSsoProtection struct {
-	DeploymentType UpdateProjectDataCacheSsoProtectionDeploymentType `json:"deploymentType"`
+	DeploymentType               UpdateProjectDataCacheSsoProtectionDeploymentType   `json:"deploymentType"`
+	Cve55182MigrationAppliedFrom *UpdateProjectDataCacheCve55182MigrationAppliedFrom `json:"cve55182MigrationAppliedFrom,omitempty"`
 }
 
 func (o *UpdateProjectDataCacheSsoProtection) GetDeploymentType() UpdateProjectDataCacheSsoProtectionDeploymentType {
@@ -4896,6 +4929,13 @@ func (o *UpdateProjectDataCacheSsoProtection) GetDeploymentType() UpdateProjectD
 		return UpdateProjectDataCacheSsoProtectionDeploymentType("")
 	}
 	return o.DeploymentType
+}
+
+func (o *UpdateProjectDataCacheSsoProtection) GetCve55182MigrationAppliedFrom() *UpdateProjectDataCacheCve55182MigrationAppliedFrom {
+	if o == nil {
+		return nil
+	}
+	return o.Cve55182MigrationAppliedFrom
 }
 
 type UpdateProjectDataCacheAliasAssignedType string
@@ -5163,16 +5203,16 @@ func (o *UpdateProjectDataCacheCreator) GetUsername() string {
 }
 
 type UpdateProjectDataCacheOidcTokenClaims struct {
-	Iss         string `json:"iss"`
-	Sub         string `json:"sub"`
-	Scope       string `json:"scope"`
-	Aud         string `json:"aud"`
-	Owner       string `json:"owner"`
-	OwnerID     string `json:"owner_id"`
-	Project     string `json:"project"`
-	ProjectID   string `json:"project_id"`
-	Environment string `json:"environment"`
-	Plan        string `json:"plan"`
+	Iss         string  `json:"iss"`
+	Sub         string  `json:"sub"`
+	Scope       string  `json:"scope"`
+	Aud         string  `json:"aud"`
+	Owner       string  `json:"owner"`
+	OwnerID     string  `json:"owner_id"`
+	Project     string  `json:"project"`
+	ProjectID   string  `json:"project_id"`
+	Environment string  `json:"environment"`
+	Plan        *string `json:"plan,omitempty"`
 }
 
 func (o *UpdateProjectDataCacheOidcTokenClaims) GetIss() string {
@@ -5238,9 +5278,9 @@ func (o *UpdateProjectDataCacheOidcTokenClaims) GetEnvironment() string {
 	return o.Environment
 }
 
-func (o *UpdateProjectDataCacheOidcTokenClaims) GetPlan() string {
+func (o *UpdateProjectDataCacheOidcTokenClaims) GetPlan() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.Plan
 }
@@ -10897,6 +10937,7 @@ func (o *UpdateProjectDataCacheDismissedToast) GetValue() *UpdateProjectDataCach
 type UpdateProjectDataCacheResponseBody struct {
 	AccountID                        string                                       `json:"accountId"`
 	Analytics                        *UpdateProjectDataCacheAnalytics             `json:"analytics,omitempty"`
+	AppliedCve55182Migration         *bool                                        `json:"appliedCve55182Migration,omitempty"`
 	SpeedInsights                    *UpdateProjectDataCacheSpeedInsights         `json:"speedInsights,omitempty"`
 	AutoExposeSystemEnvs             *bool                                        `json:"autoExposeSystemEnvs,omitempty"`
 	AutoAssignCustomDomains          *bool                                        `json:"autoAssignCustomDomains,omitempty"`
@@ -10943,6 +10984,7 @@ type UpdateProjectDataCacheResponseBody struct {
 	ServerlessFunctionZeroConfigFailover *bool                                                  `json:"serverlessFunctionZeroConfigFailover,omitempty"`
 	SkewProtectionBoundaryAt             *float64                                               `json:"skewProtectionBoundaryAt,omitempty"`
 	SkewProtectionMaxAge                 *float64                                               `json:"skewProtectionMaxAge,omitempty"`
+	SkewProtectionAllowedDomains         []string                                               `json:"skewProtectionAllowedDomains,omitempty"`
 	SkipGitConnectDuringLink             *bool                                                  `json:"skipGitConnectDuringLink,omitempty"`
 	StaticIps                            *UpdateProjectDataCacheStaticIps                       `json:"staticIps,omitempty"`
 	SourceFilesOutsideRootDirectory      *bool                                                  `json:"sourceFilesOutsideRootDirectory,omitempty"`
@@ -10991,6 +11033,13 @@ func (o *UpdateProjectDataCacheResponseBody) GetAnalytics() *UpdateProjectDataCa
 		return nil
 	}
 	return o.Analytics
+}
+
+func (o *UpdateProjectDataCacheResponseBody) GetAppliedCve55182Migration() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.AppliedCve55182Migration
 }
 
 func (o *UpdateProjectDataCacheResponseBody) GetSpeedInsights() *UpdateProjectDataCacheSpeedInsights {
@@ -11327,6 +11376,13 @@ func (o *UpdateProjectDataCacheResponseBody) GetSkewProtectionMaxAge() *float64 
 		return nil
 	}
 	return o.SkewProtectionMaxAge
+}
+
+func (o *UpdateProjectDataCacheResponseBody) GetSkewProtectionAllowedDomains() []string {
+	if o == nil {
+		return nil
+	}
+	return o.SkewProtectionAllowedDomains
 }
 
 func (o *UpdateProjectDataCacheResponseBody) GetSkipGitConnectDuringLink() *bool {

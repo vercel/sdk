@@ -12,6 +12,7 @@ let value: SsoProtection1 = {
 
 ## Fields
 
-| Field                                                | Type                                                 | Required                                             | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `deploymentType`                                     | [models.DeploymentType](../models/deploymenttype.md) | :heavy_check_mark:                                   | N/A                                                  |
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `deploymentType`                                                                 | [models.DeploymentType](../models/deploymenttype.md)                             | :heavy_check_mark:                                                               | N/A                                                                              |
+| `cve55182MigrationAppliedFrom`                                                   | [models.Cve55182MigrationAppliedFrom](../models/cve55182migrationappliedfrom.md) | :heavy_minus_sign:                                                               | N/A                                                                              |

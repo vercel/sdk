@@ -1,5 +1,4 @@
 # DomainsRegistrar
-(*domainsRegistrar*)
 
 ## Overview
 

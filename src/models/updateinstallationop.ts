@@ -12,6 +12,19 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
+export const UpdateInstallationStatus = {
+  Ready: "ready",
+  Pending: "pending",
+  Onboarding: "onboarding",
+  Suspended: "suspended",
+  Resumed: "resumed",
+  Uninstalled: "uninstalled",
+  Error: "error",
+} as const;
+export type UpdateInstallationStatus = ClosedEnum<
+  typeof UpdateInstallationStatus
+>;
+
 export const UpdateInstallationType = {
   Prepayment: "prepayment",
   Subscription: "subscription",
@@ -61,6 +74,8 @@ export type Notification1 = {
 export type Notification = Notification1 | string;
 
 export type UpdateInstallationRequestBody = {
+  status?: UpdateInstallationStatus | undefined;
+  externalId?: string | undefined;
   billingPlan?: BillingPlan | undefined;
   /**
    * A notification to display to your customer. Send `null` to clear the current notification.
@@ -72,6 +87,15 @@ export type UpdateInstallationRequest = {
   integrationConfigurationId: string;
   requestBody?: UpdateInstallationRequestBody | undefined;
 };
+
+/** @internal */
+export const UpdateInstallationStatus$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateInstallationStatus
+> = z.nativeEnum(UpdateInstallationStatus);
+/** @internal */
+export const UpdateInstallationStatus$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateInstallationStatus
+> = UpdateInstallationStatus$inboundSchema;
 
 /** @internal */
 export const UpdateInstallationType$inboundSchema: z.ZodNativeEnum<
@@ -320,12 +344,16 @@ export const UpdateInstallationRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  status: UpdateInstallationStatus$inboundSchema.optional(),
+  externalId: z.string().optional(),
   billingPlan: z.lazy(() => BillingPlan$inboundSchema).optional(),
   notification: z.union([z.lazy(() => Notification1$inboundSchema), z.string()])
     .optional(),
 });
 /** @internal */
 export type UpdateInstallationRequestBody$Outbound = {
+  status?: string | undefined;
+  externalId?: string | undefined;
   billingPlan?: BillingPlan$Outbound | undefined;
   notification?: Notification1$Outbound | string | undefined;
 };
@@ -336,6 +364,8 @@ export const UpdateInstallationRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateInstallationRequestBody
 > = z.object({
+  status: UpdateInstallationStatus$outboundSchema.optional(),
+  externalId: z.string().optional(),
   billingPlan: z.lazy(() => BillingPlan$outboundSchema).optional(),
   notification: z.union([
     z.lazy(() => Notification1$outboundSchema),

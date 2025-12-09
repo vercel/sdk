@@ -274,6 +274,48 @@ func (o *GetConfigurationsIntegration) GetTagIds() []TagID {
 	return o.TagIds
 }
 
+// GetConfigurationsStatus2 - The configuration status. Optional. If not defined, assume 'ready'.
+type GetConfigurationsStatus2 string
+
+const (
+	GetConfigurationsStatus2Pending     GetConfigurationsStatus2 = "pending"
+	GetConfigurationsStatus2Ready       GetConfigurationsStatus2 = "ready"
+	GetConfigurationsStatus2Onboarding  GetConfigurationsStatus2 = "onboarding"
+	GetConfigurationsStatus2Suspended   GetConfigurationsStatus2 = "suspended"
+	GetConfigurationsStatus2Resumed     GetConfigurationsStatus2 = "resumed"
+	GetConfigurationsStatus2Error       GetConfigurationsStatus2 = "error"
+	GetConfigurationsStatus2Uninstalled GetConfigurationsStatus2 = "uninstalled"
+)
+
+func (e GetConfigurationsStatus2) ToPointer() *GetConfigurationsStatus2 {
+	return &e
+}
+func (e *GetConfigurationsStatus2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "pending":
+		fallthrough
+	case "ready":
+		fallthrough
+	case "onboarding":
+		fallthrough
+	case "suspended":
+		fallthrough
+	case "resumed":
+		fallthrough
+	case "error":
+		fallthrough
+	case "uninstalled":
+		*e = GetConfigurationsStatus2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetConfigurationsStatus2: %v", v)
+	}
+}
+
 type GetConfigurationsType2 string
 
 const (
@@ -374,6 +416,10 @@ type GetConfigurationsIntegrationConfiguration2 struct {
 	IntegrationID string `json:"integrationId"`
 	// The user or team ID that owns the configuration
 	OwnerID string `json:"ownerId"`
+	// The configuration status. Optional. If not defined, assume 'ready'.
+	Status *GetConfigurationsStatus2 `json:"status,omitempty"`
+	// An external identifier defined by the integration vendor.
+	ExternalID *string `json:"externalId,omitempty"`
 	// When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access.
 	Projects []string `json:"projects,omitempty"`
 	// Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
@@ -451,6 +497,20 @@ func (o *GetConfigurationsIntegrationConfiguration2) GetOwnerID() string {
 		return ""
 	}
 	return o.OwnerID
+}
+
+func (o *GetConfigurationsIntegrationConfiguration2) GetStatus() *GetConfigurationsStatus2 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *GetConfigurationsIntegrationConfiguration2) GetExternalID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ExternalID
 }
 
 func (o *GetConfigurationsIntegrationConfiguration2) GetProjects() []string {
@@ -542,6 +602,48 @@ func (o *GetConfigurationsIntegrationConfiguration2) GetInstallationType() *GetC
 		return nil
 	}
 	return o.InstallationType
+}
+
+// GetConfigurationsStatus1 - The configuration status. Optional. If not defined, assume 'ready'.
+type GetConfigurationsStatus1 string
+
+const (
+	GetConfigurationsStatus1Pending     GetConfigurationsStatus1 = "pending"
+	GetConfigurationsStatus1Ready       GetConfigurationsStatus1 = "ready"
+	GetConfigurationsStatus1Onboarding  GetConfigurationsStatus1 = "onboarding"
+	GetConfigurationsStatus1Suspended   GetConfigurationsStatus1 = "suspended"
+	GetConfigurationsStatus1Resumed     GetConfigurationsStatus1 = "resumed"
+	GetConfigurationsStatus1Error       GetConfigurationsStatus1 = "error"
+	GetConfigurationsStatus1Uninstalled GetConfigurationsStatus1 = "uninstalled"
+)
+
+func (e GetConfigurationsStatus1) ToPointer() *GetConfigurationsStatus1 {
+	return &e
+}
+func (e *GetConfigurationsStatus1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "pending":
+		fallthrough
+	case "ready":
+		fallthrough
+	case "onboarding":
+		fallthrough
+	case "suspended":
+		fallthrough
+	case "resumed":
+		fallthrough
+	case "error":
+		fallthrough
+	case "uninstalled":
+		*e = GetConfigurationsStatus1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetConfigurationsStatus1: %v", v)
+	}
 }
 
 type GetConfigurationsType1 string
@@ -644,6 +746,10 @@ type GetConfigurationsIntegrationConfiguration1 struct {
 	IntegrationID *string `json:"integrationId,omitempty"`
 	// The user or team ID that owns the configuration
 	OwnerID *string `json:"ownerId,omitempty"`
+	// The configuration status. Optional. If not defined, assume 'ready'.
+	Status *GetConfigurationsStatus1 `json:"status,omitempty"`
+	// An external identifier defined by the integration vendor.
+	ExternalID *string `json:"externalId,omitempty"`
 	// When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access.
 	Projects []string `json:"projects,omitempty"`
 	// Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
@@ -714,6 +820,20 @@ func (o *GetConfigurationsIntegrationConfiguration1) GetOwnerID() *string {
 		return nil
 	}
 	return o.OwnerID
+}
+
+func (o *GetConfigurationsIntegrationConfiguration1) GetStatus() *GetConfigurationsStatus1 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *GetConfigurationsIntegrationConfiguration1) GetExternalID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ExternalID
 }
 
 func (o *GetConfigurationsIntegrationConfiguration1) GetProjects() []string {

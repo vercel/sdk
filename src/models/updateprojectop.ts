@@ -438,6 +438,10 @@ export type UpdateProjectRequestBody = {
    */
   skewProtectionMaxAge?: number | undefined;
   /**
+   * Cross-site domains allowed to fetch skew-protected assets (hostnames, optionally with leading wildcard like *.example.com).
+   */
+  skewProtectionAllowedDomains?: Array<string> | undefined;
+  /**
    * Opts-out of the message prompting a CLI user to connect a Git repository in `vercel link`.
    *
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -1063,7 +1067,7 @@ export type UpdateProjectOidcTokenClaims = {
   project: string;
   projectId: string;
   environment: string;
-  plan: string;
+  plan?: string | undefined;
 };
 
 export const UpdateProjectPlan = {
@@ -1509,8 +1513,22 @@ export type UpdateProjectProjectsResponseDeploymentType = ClosedEnum<
   typeof UpdateProjectProjectsResponseDeploymentType
 >;
 
+export const UpdateProjectCve55182MigrationAppliedFrom = {
+  Preview: "preview",
+  All: "all",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  AllExceptCustomDomains: "all_except_custom_domains",
+} as const;
+export type UpdateProjectCve55182MigrationAppliedFrom = ClosedEnum<
+  typeof UpdateProjectCve55182MigrationAppliedFrom
+>;
+
 export type UpdateProjectProjectsSsoProtection = {
   deploymentType: UpdateProjectProjectsResponseDeploymentType;
+  cve55182MigrationAppliedFrom?:
+    | UpdateProjectCve55182MigrationAppliedFrom
+    | null
+    | undefined;
 };
 
 export type UpdateProjectProjectsAliasAssigned = number | boolean;
@@ -1591,7 +1609,7 @@ export type UpdateProjectProjectsOidcTokenClaims = {
   project: string;
   projectId: string;
   environment: string;
-  plan: string;
+  plan?: string | undefined;
 };
 
 export const UpdateProjectProjectsPlan = {
@@ -2441,6 +2459,7 @@ export type UpdateProjectProjectsDismissedToasts = {
 export type UpdateProjectResponseBody = {
   accountId: string;
   analytics?: UpdateProjectAnalytics | undefined;
+  appliedCve55182Migration?: boolean | undefined;
   speedInsights?: UpdateProjectSpeedInsights | undefined;
   autoExposeSystemEnvs?: boolean | undefined;
   autoAssignCustomDomains?: boolean | undefined;
@@ -2509,6 +2528,7 @@ export type UpdateProjectResponseBody = {
   serverlessFunctionZeroConfigFailover?: boolean | undefined;
   skewProtectionBoundaryAt?: number | undefined;
   skewProtectionMaxAge?: number | undefined;
+  skewProtectionAllowedDomains?: Array<string> | undefined;
   skipGitConnectDuringLink?: boolean | undefined;
   staticIps?: UpdateProjectProjectsStaticIps | undefined;
   sourceFilesOutsideRootDirectory?: boolean | undefined;
@@ -3298,6 +3318,7 @@ export const UpdateProjectRequestBody$inboundSchema: z.ZodType<
   serverlessFunctionZeroConfigFailover: z.boolean().optional(),
   skewProtectionBoundaryAt: z.number().int().optional(),
   skewProtectionMaxAge: z.number().int().optional(),
+  skewProtectionAllowedDomains: z.array(z.string()).optional(),
   skipGitConnectDuringLink: z.boolean().optional(),
   sourceFilesOutsideRootDirectory: z.boolean().optional(),
   enablePreviewFeedback: z.nullable(z.boolean()).optional(),
@@ -3350,6 +3371,7 @@ export type UpdateProjectRequestBody$Outbound = {
   serverlessFunctionZeroConfigFailover?: boolean | undefined;
   skewProtectionBoundaryAt?: number | undefined;
   skewProtectionMaxAge?: number | undefined;
+  skewProtectionAllowedDomains?: Array<string> | undefined;
   skipGitConnectDuringLink?: boolean | undefined;
   sourceFilesOutsideRootDirectory?: boolean | undefined;
   enablePreviewFeedback?: boolean | null | undefined;
@@ -3402,6 +3424,7 @@ export const UpdateProjectRequestBody$outboundSchema: z.ZodType<
   serverlessFunctionZeroConfigFailover: z.boolean().optional(),
   skewProtectionBoundaryAt: z.number().int().optional(),
   skewProtectionMaxAge: z.number().int().optional(),
+  skewProtectionAllowedDomains: z.array(z.string()).optional(),
   skipGitConnectDuringLink: z.boolean().optional(),
   sourceFilesOutsideRootDirectory: z.boolean().optional(),
   enablePreviewFeedback: z.nullable(z.boolean()).optional(),
@@ -5512,7 +5535,7 @@ export const UpdateProjectOidcTokenClaims$inboundSchema: z.ZodType<
   project: z.string(),
   project_id: z.string(),
   environment: z.string(),
-  plan: z.string(),
+  plan: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     "owner_id": "ownerId",
@@ -5530,7 +5553,7 @@ export type UpdateProjectOidcTokenClaims$Outbound = {
   project: string;
   project_id: string;
   environment: string;
-  plan: string;
+  plan?: string | undefined;
 };
 
 /** @internal */
@@ -5548,7 +5571,7 @@ export const UpdateProjectOidcTokenClaims$outboundSchema: z.ZodType<
   project: z.string(),
   projectId: z.string(),
   environment: z.string(),
-  plan: z.string(),
+  plan: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     ownerId: "owner_id",
@@ -7215,16 +7238,29 @@ export const UpdateProjectProjectsResponseDeploymentType$outboundSchema:
     UpdateProjectProjectsResponseDeploymentType$inboundSchema;
 
 /** @internal */
+export const UpdateProjectCve55182MigrationAppliedFrom$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectCve55182MigrationAppliedFrom> = z
+    .nativeEnum(UpdateProjectCve55182MigrationAppliedFrom);
+/** @internal */
+export const UpdateProjectCve55182MigrationAppliedFrom$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectCve55182MigrationAppliedFrom> =
+    UpdateProjectCve55182MigrationAppliedFrom$inboundSchema;
+
+/** @internal */
 export const UpdateProjectProjectsSsoProtection$inboundSchema: z.ZodType<
   UpdateProjectProjectsSsoProtection,
   z.ZodTypeDef,
   unknown
 > = z.object({
   deploymentType: UpdateProjectProjectsResponseDeploymentType$inboundSchema,
+  cve55182MigrationAppliedFrom: z.nullable(
+    UpdateProjectCve55182MigrationAppliedFrom$inboundSchema,
+  ).optional(),
 });
 /** @internal */
 export type UpdateProjectProjectsSsoProtection$Outbound = {
   deploymentType: string;
+  cve55182MigrationAppliedFrom?: string | null | undefined;
 };
 
 /** @internal */
@@ -7234,6 +7270,9 @@ export const UpdateProjectProjectsSsoProtection$outboundSchema: z.ZodType<
   UpdateProjectProjectsSsoProtection
 > = z.object({
   deploymentType: UpdateProjectProjectsResponseDeploymentType$outboundSchema,
+  cve55182MigrationAppliedFrom: z.nullable(
+    UpdateProjectCve55182MigrationAppliedFrom$outboundSchema,
+  ).optional(),
 });
 
 export function updateProjectProjectsSsoProtectionToJSON(
@@ -7536,7 +7575,7 @@ export const UpdateProjectProjectsOidcTokenClaims$inboundSchema: z.ZodType<
   project: z.string(),
   project_id: z.string(),
   environment: z.string(),
-  plan: z.string(),
+  plan: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     "owner_id": "ownerId",
@@ -7554,7 +7593,7 @@ export type UpdateProjectProjectsOidcTokenClaims$Outbound = {
   project: string;
   project_id: string;
   environment: string;
-  plan: string;
+  plan?: string | undefined;
 };
 
 /** @internal */
@@ -7572,7 +7611,7 @@ export const UpdateProjectProjectsOidcTokenClaims$outboundSchema: z.ZodType<
   project: z.string(),
   projectId: z.string(),
   environment: z.string(),
-  plan: z.string(),
+  plan: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     ownerId: "owner_id",
@@ -11542,6 +11581,7 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   accountId: z.string(),
   analytics: z.lazy(() => UpdateProjectAnalytics$inboundSchema).optional(),
+  appliedCve55182Migration: z.boolean().optional(),
   speedInsights: z.lazy(() => UpdateProjectSpeedInsights$inboundSchema)
     .optional(),
   autoExposeSystemEnvs: z.boolean().optional(),
@@ -11618,6 +11658,7 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
   serverlessFunctionZeroConfigFailover: z.boolean().optional(),
   skewProtectionBoundaryAt: z.number().optional(),
   skewProtectionMaxAge: z.number().optional(),
+  skewProtectionAllowedDomains: z.array(z.string()).optional(),
   skipGitConnectDuringLink: z.boolean().optional(),
   staticIps: z.lazy(() => UpdateProjectProjectsStaticIps$inboundSchema)
     .optional(),
@@ -11688,6 +11729,7 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
 export type UpdateProjectResponseBody$Outbound = {
   accountId: string;
   analytics?: UpdateProjectAnalytics$Outbound | undefined;
+  appliedCve55182Migration?: boolean | undefined;
   speedInsights?: UpdateProjectSpeedInsights$Outbound | undefined;
   autoExposeSystemEnvs?: boolean | undefined;
   autoAssignCustomDomains?: boolean | undefined;
@@ -11757,6 +11799,7 @@ export type UpdateProjectResponseBody$Outbound = {
   serverlessFunctionZeroConfigFailover?: boolean | undefined;
   skewProtectionBoundaryAt?: number | undefined;
   skewProtectionMaxAge?: number | undefined;
+  skewProtectionAllowedDomains?: Array<string> | undefined;
   skipGitConnectDuringLink?: boolean | undefined;
   staticIps?: UpdateProjectProjectsStaticIps$Outbound | undefined;
   sourceFilesOutsideRootDirectory?: boolean | undefined;
@@ -11822,6 +11865,7 @@ export const UpdateProjectResponseBody$outboundSchema: z.ZodType<
 > = z.object({
   accountId: z.string(),
   analytics: z.lazy(() => UpdateProjectAnalytics$outboundSchema).optional(),
+  appliedCve55182Migration: z.boolean().optional(),
   speedInsights: z.lazy(() => UpdateProjectSpeedInsights$outboundSchema)
     .optional(),
   autoExposeSystemEnvs: z.boolean().optional(),
@@ -11898,6 +11942,7 @@ export const UpdateProjectResponseBody$outboundSchema: z.ZodType<
   serverlessFunctionZeroConfigFailover: z.boolean().optional(),
   skewProtectionBoundaryAt: z.number().optional(),
   skewProtectionMaxAge: z.number().optional(),
+  skewProtectionAllowedDomains: z.array(z.string()).optional(),
   skipGitConnectDuringLink: z.boolean().optional(),
   staticIps: z.lazy(() => UpdateProjectProjectsStaticIps$outboundSchema)
     .optional(),

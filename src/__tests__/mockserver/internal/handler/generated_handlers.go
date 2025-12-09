@@ -49,7 +49,6 @@ func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/access-groups/{idOrName}/projects", pathGetV1AccessGroupsIDOrNameProjects(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/deployments/{deploymentId}/checks", pathGetV1DeploymentsDeploymentIDChecks(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/deployments/{deploymentId}/checks/{checkId}", pathGetV1DeploymentsDeploymentIDChecksCheckID(dir, rt)),
-		NewGeneratedHandler(ctx, http.MethodGet, "/v1/domains/{domain}/registry", pathGetV1DomainsDomainRegistry(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/drains", pathGetV1Drains(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/drains/{id}", pathGetV1DrainsID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/edge-config", pathGetV1EdgeConfig(dir, rt)),

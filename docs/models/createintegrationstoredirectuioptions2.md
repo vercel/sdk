@@ -6,7 +6,7 @@
 import { CreateIntegrationStoreDirectUiOptions2 } from "@vercel/sdk/models/createintegrationstoredirectop.js";
 
 let value: CreateIntegrationStoreDirectUiOptions2 = {
-  atBRANDAt8831: {},
+  atBRANDAt8845: {},
 };
 ```
 
@@ -14,4 +14,4 @@ let value: CreateIntegrationStoreDirectUiOptions2 = {
 
 | Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
 | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `atBRANDAt8831`                                                      | [models.UiOptionsAtBRANDAt8831](../models/uioptionsatbrandat8831.md) | :heavy_check_mark:                                                   | N/A                                                                  |
+| `atBRANDAt8845`                                                      | [models.UiOptionsAtBRANDAt8845](../models/uioptionsatbrandat8845.md) | :heavy_check_mark:                                                   | N/A                                                                  |

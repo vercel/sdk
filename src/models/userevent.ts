@@ -1344,6 +1344,7 @@ export type OneHundredAndTwentyTwo = {
   slug: string;
   teamId: string;
   by: string;
+  byUid?: string | undefined;
   reasons?: Array<Reasons> | undefined;
   removedUsers?: { [k: string]: PayloadRemovedUsers } | undefined;
   removedMemberCount?: number | undefined;
@@ -2010,6 +2011,7 @@ export const UserEventPayload93Action = {
   Enabled: "enabled",
   Disabled: "disabled",
   Regenerated: "regenerated",
+  Updated: "updated",
 } as const;
 export type UserEventPayload93Action = ClosedEnum<
   typeof UserEventPayload93Action
@@ -2021,6 +2023,7 @@ export type UserEventPayload93Action = ClosedEnum<
 export type NinetyThree = {
   projectName: string;
   action: UserEventPayload93Action;
+  envVarName?: string | undefined;
 };
 
 export type Paths = {
@@ -2154,8 +2157,22 @@ export const DeploymentType = {
 } as const;
 export type DeploymentType = ClosedEnum<typeof DeploymentType>;
 
+export const Cve55182MigrationAppliedFrom = {
+  All: "all",
+  Preview: "preview",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  AllExceptCustomDomains: "all_except_custom_domains",
+} as const;
+export type Cve55182MigrationAppliedFrom = ClosedEnum<
+  typeof Cve55182MigrationAppliedFrom
+>;
+
 export type SsoProtection1 = {
   deploymentType: DeploymentType;
+  cve55182MigrationAppliedFrom?:
+    | Cve55182MigrationAppliedFrom
+    | null
+    | undefined;
 };
 
 export type PayloadSsoProtection = SsoProtection1 | SsoProtection2;
@@ -2178,8 +2195,22 @@ export type OldSsoProtectionDeploymentType = ClosedEnum<
   typeof OldSsoProtectionDeploymentType
 >;
 
+export const OldSsoProtectionCve55182MigrationAppliedFrom = {
+  All: "all",
+  Preview: "preview",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  AllExceptCustomDomains: "all_except_custom_domains",
+} as const;
+export type OldSsoProtectionCve55182MigrationAppliedFrom = ClosedEnum<
+  typeof OldSsoProtectionCve55182MigrationAppliedFrom
+>;
+
 export type OldSsoProtection1 = {
   deploymentType: OldSsoProtectionDeploymentType;
+  cve55182MigrationAppliedFrom?:
+    | OldSsoProtectionCve55182MigrationAppliedFrom
+    | null
+    | undefined;
 };
 
 export type OldSsoProtection = OldSsoProtection1 | OldSsoProtection2;
@@ -2574,6 +2605,10 @@ export type Abuse = {
    */
   scanner?: string | undefined;
   /**
+   * Since December 2025. UTC timestamp string of when an auto-unblock is scheduled. Format: "Wed, 03 Dec 2025 20:32:13 GMT"
+   */
+  scheduledUnblockAt?: string | undefined;
+  /**
    * Since November 2021
    */
   updatedAt: number;
@@ -2737,6 +2772,7 @@ export type PayloadResourceConfig = {
   customEnvironmentsPerProject?: number | undefined;
   buildMachine?: PayloadBuildMachine | undefined;
   security?: PayloadSecurity | undefined;
+  bulkRedirectsFreeLimitOverride?: number | undefined;
 };
 
 export type ResourceLimits = {
@@ -10991,6 +11027,7 @@ export const OneHundredAndTwentyTwo$inboundSchema: z.ZodType<
   slug: z.string(),
   teamId: z.string(),
   by: z.string(),
+  byUid: z.string().optional(),
   reasons: z.array(z.lazy(() => Reasons$inboundSchema)).optional(),
   removedUsers: z.record(z.lazy(() => PayloadRemovedUsers$inboundSchema))
     .optional(),
@@ -11002,6 +11039,7 @@ export type OneHundredAndTwentyTwo$Outbound = {
   slug: string;
   teamId: string;
   by: string;
+  byUid?: string | undefined;
   reasons?: Array<Reasons$Outbound> | undefined;
   removedUsers?: { [k: string]: PayloadRemovedUsers$Outbound } | undefined;
   removedMemberCount?: number | undefined;
@@ -11017,6 +11055,7 @@ export const OneHundredAndTwentyTwo$outboundSchema: z.ZodType<
   slug: z.string(),
   teamId: z.string(),
   by: z.string(),
+  byUid: z.string().optional(),
   reasons: z.array(z.lazy(() => Reasons$outboundSchema)).optional(),
   removedUsers: z.record(z.lazy(() => PayloadRemovedUsers$outboundSchema))
     .optional(),
@@ -13482,11 +13521,13 @@ export const NinetyThree$inboundSchema: z.ZodType<
 > = z.object({
   projectName: z.string(),
   action: UserEventPayload93Action$inboundSchema,
+  envVarName: z.string().optional(),
 });
 /** @internal */
 export type NinetyThree$Outbound = {
   projectName: string;
   action: string;
+  envVarName?: string | undefined;
 };
 
 /** @internal */
@@ -13497,6 +13538,7 @@ export const NinetyThree$outboundSchema: z.ZodType<
 > = z.object({
   projectName: z.string(),
   action: UserEventPayload93Action$outboundSchema,
+  envVarName: z.string().optional(),
 });
 
 export function ninetyThreeToJSON(ninetyThree: NinetyThree): string {
@@ -14040,16 +14082,29 @@ export const DeploymentType$outboundSchema: z.ZodNativeEnum<
 > = DeploymentType$inboundSchema;
 
 /** @internal */
+export const Cve55182MigrationAppliedFrom$inboundSchema: z.ZodNativeEnum<
+  typeof Cve55182MigrationAppliedFrom
+> = z.nativeEnum(Cve55182MigrationAppliedFrom);
+/** @internal */
+export const Cve55182MigrationAppliedFrom$outboundSchema: z.ZodNativeEnum<
+  typeof Cve55182MigrationAppliedFrom
+> = Cve55182MigrationAppliedFrom$inboundSchema;
+
+/** @internal */
 export const SsoProtection1$inboundSchema: z.ZodType<
   SsoProtection1,
   z.ZodTypeDef,
   unknown
 > = z.object({
   deploymentType: DeploymentType$inboundSchema,
+  cve55182MigrationAppliedFrom: z.nullable(
+    Cve55182MigrationAppliedFrom$inboundSchema,
+  ).optional(),
 });
 /** @internal */
 export type SsoProtection1$Outbound = {
   deploymentType: string;
+  cve55182MigrationAppliedFrom?: string | null | undefined;
 };
 
 /** @internal */
@@ -14059,6 +14114,9 @@ export const SsoProtection1$outboundSchema: z.ZodType<
   SsoProtection1
 > = z.object({
   deploymentType: DeploymentType$outboundSchema,
+  cve55182MigrationAppliedFrom: z.nullable(
+    Cve55182MigrationAppliedFrom$outboundSchema,
+  ).optional(),
 });
 
 export function ssoProtection1ToJSON(ssoProtection1: SsoProtection1): string {
@@ -14132,16 +14190,29 @@ export const OldSsoProtectionDeploymentType$outboundSchema: z.ZodNativeEnum<
 > = OldSsoProtectionDeploymentType$inboundSchema;
 
 /** @internal */
+export const OldSsoProtectionCve55182MigrationAppliedFrom$inboundSchema:
+  z.ZodNativeEnum<typeof OldSsoProtectionCve55182MigrationAppliedFrom> = z
+    .nativeEnum(OldSsoProtectionCve55182MigrationAppliedFrom);
+/** @internal */
+export const OldSsoProtectionCve55182MigrationAppliedFrom$outboundSchema:
+  z.ZodNativeEnum<typeof OldSsoProtectionCve55182MigrationAppliedFrom> =
+    OldSsoProtectionCve55182MigrationAppliedFrom$inboundSchema;
+
+/** @internal */
 export const OldSsoProtection1$inboundSchema: z.ZodType<
   OldSsoProtection1,
   z.ZodTypeDef,
   unknown
 > = z.object({
   deploymentType: OldSsoProtectionDeploymentType$inboundSchema,
+  cve55182MigrationAppliedFrom: z.nullable(
+    OldSsoProtectionCve55182MigrationAppliedFrom$inboundSchema,
+  ).optional(),
 });
 /** @internal */
 export type OldSsoProtection1$Outbound = {
   deploymentType: string;
+  cve55182MigrationAppliedFrom?: string | null | undefined;
 };
 
 /** @internal */
@@ -14151,6 +14222,9 @@ export const OldSsoProtection1$outboundSchema: z.ZodType<
   OldSsoProtection1
 > = z.object({
   deploymentType: OldSsoProtectionDeploymentType$outboundSchema,
+  cve55182MigrationAppliedFrom: z.nullable(
+    OldSsoProtectionCve55182MigrationAppliedFrom$outboundSchema,
+  ).optional(),
 });
 
 export function oldSsoProtection1ToJSON(
@@ -15822,6 +15896,7 @@ export const Abuse$inboundSchema: z.ZodType<Abuse, z.ZodTypeDef, unknown> = z
     gitLineageBlocks: z.number().optional(),
     gitLineageBlocksDry: z.number().optional(),
     scanner: z.string().optional(),
+    scheduledUnblockAt: z.string().optional(),
     updatedAt: z.number(),
     creationUserAgent: z.string().optional(),
     creationIp: z.string().optional(),
@@ -15835,6 +15910,7 @@ export type Abuse$Outbound = {
   gitLineageBlocks?: number | undefined;
   gitLineageBlocksDry?: number | undefined;
   scanner?: string | undefined;
+  scheduledUnblockAt?: string | undefined;
   updatedAt: number;
   creationUserAgent?: string | undefined;
   creationIp?: string | undefined;
@@ -15853,6 +15929,7 @@ export const Abuse$outboundSchema: z.ZodType<
   gitLineageBlocks: z.number().optional(),
   gitLineageBlocksDry: z.number().optional(),
   scanner: z.string().optional(),
+  scheduledUnblockAt: z.string().optional(),
   updatedAt: z.number(),
   creationUserAgent: z.string().optional(),
   creationIp: z.string().optional(),
@@ -16702,6 +16779,7 @@ export const PayloadResourceConfig$inboundSchema: z.ZodType<
   customEnvironmentsPerProject: z.number().optional(),
   buildMachine: z.lazy(() => PayloadBuildMachine$inboundSchema).optional(),
   security: z.lazy(() => PayloadSecurity$inboundSchema).optional(),
+  bulkRedirectsFreeLimitOverride: z.number().optional(),
 });
 /** @internal */
 export type PayloadResourceConfig$Outbound = {
@@ -16732,6 +16810,7 @@ export type PayloadResourceConfig$Outbound = {
   customEnvironmentsPerProject?: number | undefined;
   buildMachine?: PayloadBuildMachine$Outbound | undefined;
   security?: PayloadSecurity$Outbound | undefined;
+  bulkRedirectsFreeLimitOverride?: number | undefined;
 };
 
 /** @internal */
@@ -16768,6 +16847,7 @@ export const PayloadResourceConfig$outboundSchema: z.ZodType<
   customEnvironmentsPerProject: z.number().optional(),
   buildMachine: z.lazy(() => PayloadBuildMachine$outboundSchema).optional(),
   security: z.lazy(() => PayloadSecurity$outboundSchema).optional(),
+  bulkRedirectsFreeLimitOverride: z.number().optional(),
 });
 
 export function payloadResourceConfigToJSON(

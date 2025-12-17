@@ -109,47 +109,34 @@ test("Security Put Firewall Config", async () => {
           active: true,
           conditionGroup: [
             {
-              conditions: [
-                {
-                  type: "target_path",
-                  op: "pre",
-                },
-              ],
-            },
-            {
-              conditions: [
-                {
-                  type: "target_path",
-                  op: "pre",
-                },
-              ],
+              conditions: [],
             },
           ],
           action: {},
+          valid: false,
+          validationErrors: [
+            "<value 1>",
+            "<value 2>",
+            "<value 3>",
+          ],
         },
         {
           id: "<id>",
           name: "<value>",
-          active: true,
+          active: false,
           conditionGroup: [
             {
               conditions: [
                 {
-                  type: "target_path",
-                  op: "pre",
-                },
-              ],
-            },
-            {
-              conditions: [
-                {
-                  type: "target_path",
-                  op: "pre",
+                  type: "bot_name",
+                  op: "re",
                 },
               ],
             },
           ],
           action: {},
+          valid: true,
+          validationErrors: null,
         },
       ],
       ips: [],
@@ -260,17 +247,15 @@ test("Security Get Firewall Config", async () => {
           {
             conditions: [
               {
-                type: "header",
-                op: "ex",
-              },
-              {
-                type: "header",
-                op: "ex",
+                type: "ja4_digest",
+                op: "sub",
               },
             ],
           },
         ],
         action: {},
+        valid: false,
+        validationErrors: [],
       },
     ],
     ips: [
@@ -322,10 +307,10 @@ test("Security Get Bypass Ip", async () => {
       {
         ownerId: "<id>",
         id: "<id>",
-        domain: "second-newsletter.name",
-        ip: "165.112.228.246",
-        createdAt: "1716245811354",
-        updatedAt: "1735671604252",
+        domain: "corrupt-unblinking.name",
+        ip: "67.198.116.145",
+        createdAt: "1704746155127",
+        updatedAt: "1735656563089",
         updatedAtHour: "<value>",
       },
     ],

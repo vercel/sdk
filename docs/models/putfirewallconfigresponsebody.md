@@ -63,13 +63,17 @@ let value: PutFirewallConfigResponseBody = {
       {
         id: "<id>",
         name: "<value>",
-        active: false,
+        active: true,
         conditionGroup: [],
         action: {},
+        valid: true,
+        validationErrors: "<value>",
       },
     ],
     ips: [],
-    changes: [],
+    changes: [
+      {},
+    ],
   },
 };
 ```

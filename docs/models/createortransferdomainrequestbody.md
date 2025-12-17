@@ -23,14 +23,3 @@ const value: models.CreateOrTransferDomainRequestBody2 = {
 };
 ```
 
-### `models.CreateOrTransferDomainRequestBody3`
-
-```typescript
-const value: models.CreateOrTransferDomainRequestBody3 = {
-  name: "example.com",
-  method: "add",
-  authCode: "fdhfr820ad#@FAdlj$$",
-  expectedPrice: 8,
-};
-```
-

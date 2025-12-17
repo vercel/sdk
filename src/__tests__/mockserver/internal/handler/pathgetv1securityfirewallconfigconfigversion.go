@@ -98,27 +98,18 @@ func testGetFirewallConfigGetFirewallConfig0(w http.ResponseWriter, req *http.Re
 				Action: operations.GetFirewallConfigJavaActionDeny,
 			},
 		},
-		Rules: []operations.GetFirewallConfigRule{
-			operations.GetFirewallConfigRule{
-				ID:     "<id>",
-				Name:   "<value>",
-				Active: false,
-				ConditionGroup: []operations.GetFirewallConfigConditionGroup{
-					operations.GetFirewallConfigConditionGroup{
-						Conditions: []operations.GetFirewallConfigCondition{
-							operations.GetFirewallConfigCondition{
-								Type: operations.GetFirewallConfigTypeHeader,
-								Op:   operations.GetFirewallConfigOpEx,
-							},
-							operations.GetFirewallConfigCondition{
-								Type: operations.GetFirewallConfigTypeHeader,
-								Op:   operations.GetFirewallConfigOpEx,
-							},
-						},
-					},
+		Rules: []operations.GetFirewallConfigRuleUnion{
+			operations.CreateGetFirewallConfigRuleUnionGetFirewallConfigRule2(
+				operations.GetFirewallConfigRule2{
+					ID:               "<id>",
+					Name:             "<value>",
+					Active:           false,
+					ConditionGroup:   []operations.GetFirewallConfigConditionGroup2{},
+					Action:           operations.GetFirewallConfigRuleAction2{},
+					Valid:            true,
+					ValidationErrors: []string{},
 				},
-				Action: operations.GetFirewallConfigRuleAction{},
-			},
+			),
 		},
 		Ips: []operations.GetFirewallConfigIP{
 			operations.GetFirewallConfigIP{

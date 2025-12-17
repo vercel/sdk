@@ -1000,6 +1000,18 @@ export type GetProjectsBuildMachineType = ClosedEnum<
   typeof GetProjectsBuildMachineType
 >;
 
+export const GetProjectsConfiguration = {
+  SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
+  WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
+} as const;
+export type GetProjectsConfiguration = ClosedEnum<
+  typeof GetProjectsConfiguration
+>;
+
+export type GetProjectsBuildQueue = {
+  configuration?: GetProjectsConfiguration | undefined;
+};
+
 export type GetProjectsResourceConfig = {
   elasticConcurrencyEnabled?: boolean | undefined;
   fluid?: boolean | undefined;
@@ -1009,6 +1021,7 @@ export type GetProjectsResourceConfig = {
   functionZeroConfigFailover?: boolean | undefined;
   buildMachineType?: GetProjectsBuildMachineType | undefined;
   isNSNBDisabled?: boolean | undefined;
+  buildQueue?: GetProjectsBuildQueue | undefined;
 };
 
 /**
@@ -1090,6 +1103,18 @@ export type GetProjectsProjectsBuildMachineType = ClosedEnum<
   typeof GetProjectsProjectsBuildMachineType
 >;
 
+export const GetProjectsProjectsConfiguration = {
+  SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
+  WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
+} as const;
+export type GetProjectsProjectsConfiguration = ClosedEnum<
+  typeof GetProjectsProjectsConfiguration
+>;
+
+export type GetProjectsProjectsBuildQueue = {
+  configuration?: GetProjectsProjectsConfiguration | undefined;
+};
+
 export type GetProjectsDefaultResourceConfig = {
   elasticConcurrencyEnabled?: boolean | undefined;
   fluid?: boolean | undefined;
@@ -1101,6 +1126,7 @@ export type GetProjectsDefaultResourceConfig = {
   functionZeroConfigFailover?: boolean | undefined;
   buildMachineType?: GetProjectsProjectsBuildMachineType | undefined;
   isNSNBDisabled?: boolean | undefined;
+  buildQueue?: GetProjectsProjectsBuildQueue | undefined;
 };
 
 export type GetProjectsStaticIps = {
@@ -1540,7 +1566,7 @@ export type GetProjectsProjectsResponse200ApplicationJSONType = ClosedEnum<
 >;
 
 export type GetProjectsLastAliasRequest = {
-  fromDeploymentId: string;
+  fromDeploymentId: string | null;
   toDeploymentId: string;
   /**
    * If rolling back from a rolling release, fromDeploymentId captures the "base" of that rolling release, and fromRollingReleaseId captures the "target" of that rolling release.
@@ -1555,6 +1581,14 @@ export type GetProjectsProtectionBypass2 = {
   createdAt: number;
   createdBy: string;
   scope: "automation-bypass";
+  /**
+   * When there was only one bypass, it was automatically set as an env var on deployments. With multiple bypasses, there is always one bypass that is selected as the default, and gets set as an env var on deployments. As this is a new field, undefined means that the bypass is the env var. If there are any automation bypasses, exactly one must be the env var.
+   */
+  isEnvVar?: boolean | undefined;
+  /**
+   * Optional note about the bypass to be displayed in the UI
+   */
+  note?: string | undefined;
 };
 
 export type GetProjectsProtectionBypass1 = {
@@ -2041,6 +2075,21 @@ export type GetProjectsDismissedToasts = {
   value: GetProjectsValue4 | string | number | boolean | null;
 };
 
+export type GetProjectsCveShield = {
+  /**
+   * True if the CVE Shield has been enabled. Otherwise false.
+   */
+  enabled: boolean;
+  /**
+   * CVE threshold. It can range between 1 and 10.
+   */
+  threshold?: number | undefined;
+  /**
+   * List of CVE that we want to protect against.
+   */
+  cveList?: Array<string> | undefined;
+};
+
 export type GetProjectsProjects = {
   accountId: string;
   analytics?: GetProjectsAnalytics | undefined;
@@ -2153,6 +2202,7 @@ export type GetProjectsProjects = {
     | undefined;
   hasDeployments?: boolean | undefined;
   dismissedToasts?: Array<GetProjectsDismissedToasts> | undefined;
+  cveShield?: GetProjectsCveShield | undefined;
 };
 
 /**
@@ -5622,6 +5672,54 @@ export const GetProjectsBuildMachineType$outboundSchema: z.ZodNativeEnum<
 > = GetProjectsBuildMachineType$inboundSchema;
 
 /** @internal */
+export const GetProjectsConfiguration$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsConfiguration
+> = z.nativeEnum(GetProjectsConfiguration);
+/** @internal */
+export const GetProjectsConfiguration$outboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsConfiguration
+> = GetProjectsConfiguration$inboundSchema;
+
+/** @internal */
+export const GetProjectsBuildQueue$inboundSchema: z.ZodType<
+  GetProjectsBuildQueue,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  configuration: GetProjectsConfiguration$inboundSchema.optional(),
+});
+/** @internal */
+export type GetProjectsBuildQueue$Outbound = {
+  configuration?: string | undefined;
+};
+
+/** @internal */
+export const GetProjectsBuildQueue$outboundSchema: z.ZodType<
+  GetProjectsBuildQueue$Outbound,
+  z.ZodTypeDef,
+  GetProjectsBuildQueue
+> = z.object({
+  configuration: GetProjectsConfiguration$outboundSchema.optional(),
+});
+
+export function getProjectsBuildQueueToJSON(
+  getProjectsBuildQueue: GetProjectsBuildQueue,
+): string {
+  return JSON.stringify(
+    GetProjectsBuildQueue$outboundSchema.parse(getProjectsBuildQueue),
+  );
+}
+export function getProjectsBuildQueueFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsBuildQueue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsBuildQueue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsBuildQueue' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetProjectsResourceConfig$inboundSchema: z.ZodType<
   GetProjectsResourceConfig,
   z.ZodTypeDef,
@@ -5636,6 +5734,7 @@ export const GetProjectsResourceConfig$inboundSchema: z.ZodType<
   functionZeroConfigFailover: z.boolean().optional(),
   buildMachineType: GetProjectsBuildMachineType$inboundSchema.optional(),
   isNSNBDisabled: z.boolean().optional(),
+  buildQueue: z.lazy(() => GetProjectsBuildQueue$inboundSchema).optional(),
 });
 /** @internal */
 export type GetProjectsResourceConfig$Outbound = {
@@ -5647,6 +5746,7 @@ export type GetProjectsResourceConfig$Outbound = {
   functionZeroConfigFailover?: boolean | undefined;
   buildMachineType?: string | undefined;
   isNSNBDisabled?: boolean | undefined;
+  buildQueue?: GetProjectsBuildQueue$Outbound | undefined;
 };
 
 /** @internal */
@@ -5664,6 +5764,7 @@ export const GetProjectsResourceConfig$outboundSchema: z.ZodType<
   functionZeroConfigFailover: z.boolean().optional(),
   buildMachineType: GetProjectsBuildMachineType$outboundSchema.optional(),
   isNSNBDisabled: z.boolean().optional(),
+  buildQueue: z.lazy(() => GetProjectsBuildQueue$outboundSchema).optional(),
 });
 
 export function getProjectsResourceConfigToJSON(
@@ -5847,6 +5948,56 @@ export const GetProjectsProjectsBuildMachineType$outboundSchema:
     GetProjectsProjectsBuildMachineType$inboundSchema;
 
 /** @internal */
+export const GetProjectsProjectsConfiguration$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsProjectsConfiguration
+> = z.nativeEnum(GetProjectsProjectsConfiguration);
+/** @internal */
+export const GetProjectsProjectsConfiguration$outboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsProjectsConfiguration
+> = GetProjectsProjectsConfiguration$inboundSchema;
+
+/** @internal */
+export const GetProjectsProjectsBuildQueue$inboundSchema: z.ZodType<
+  GetProjectsProjectsBuildQueue,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  configuration: GetProjectsProjectsConfiguration$inboundSchema.optional(),
+});
+/** @internal */
+export type GetProjectsProjectsBuildQueue$Outbound = {
+  configuration?: string | undefined;
+};
+
+/** @internal */
+export const GetProjectsProjectsBuildQueue$outboundSchema: z.ZodType<
+  GetProjectsProjectsBuildQueue$Outbound,
+  z.ZodTypeDef,
+  GetProjectsProjectsBuildQueue
+> = z.object({
+  configuration: GetProjectsProjectsConfiguration$outboundSchema.optional(),
+});
+
+export function getProjectsProjectsBuildQueueToJSON(
+  getProjectsProjectsBuildQueue: GetProjectsProjectsBuildQueue,
+): string {
+  return JSON.stringify(
+    GetProjectsProjectsBuildQueue$outboundSchema.parse(
+      getProjectsProjectsBuildQueue,
+    ),
+  );
+}
+export function getProjectsProjectsBuildQueueFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsProjectsBuildQueue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsProjectsBuildQueue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsProjectsBuildQueue' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetProjectsDefaultResourceConfig$inboundSchema: z.ZodType<
   GetProjectsDefaultResourceConfig,
   z.ZodTypeDef,
@@ -5862,6 +6013,8 @@ export const GetProjectsDefaultResourceConfig$inboundSchema: z.ZodType<
   buildMachineType: GetProjectsProjectsBuildMachineType$inboundSchema
     .optional(),
   isNSNBDisabled: z.boolean().optional(),
+  buildQueue: z.lazy(() => GetProjectsProjectsBuildQueue$inboundSchema)
+    .optional(),
 });
 /** @internal */
 export type GetProjectsDefaultResourceConfig$Outbound = {
@@ -5873,6 +6026,7 @@ export type GetProjectsDefaultResourceConfig$Outbound = {
   functionZeroConfigFailover?: boolean | undefined;
   buildMachineType?: string | undefined;
   isNSNBDisabled?: boolean | undefined;
+  buildQueue?: GetProjectsProjectsBuildQueue$Outbound | undefined;
 };
 
 /** @internal */
@@ -5891,6 +6045,8 @@ export const GetProjectsDefaultResourceConfig$outboundSchema: z.ZodType<
   buildMachineType: GetProjectsProjectsBuildMachineType$outboundSchema
     .optional(),
   isNSNBDisabled: z.boolean().optional(),
+  buildQueue: z.lazy(() => GetProjectsProjectsBuildQueue$outboundSchema)
+    .optional(),
 });
 
 export function getProjectsDefaultResourceConfigToJSON(
@@ -7335,7 +7491,7 @@ export const GetProjectsLastAliasRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  fromDeploymentId: z.string(),
+  fromDeploymentId: z.nullable(z.string()),
   toDeploymentId: z.string(),
   fromRollingReleaseId: z.string().optional(),
   jobStatus: GetProjectsJobStatus$inboundSchema,
@@ -7344,7 +7500,7 @@ export const GetProjectsLastAliasRequest$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type GetProjectsLastAliasRequest$Outbound = {
-  fromDeploymentId: string;
+  fromDeploymentId: string | null;
   toDeploymentId: string;
   fromRollingReleaseId?: string | undefined;
   jobStatus: string;
@@ -7358,7 +7514,7 @@ export const GetProjectsLastAliasRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetProjectsLastAliasRequest
 > = z.object({
-  fromDeploymentId: z.string(),
+  fromDeploymentId: z.nullable(z.string()),
   toDeploymentId: z.string(),
   fromRollingReleaseId: z.string().optional(),
   jobStatus: GetProjectsJobStatus$outboundSchema,
@@ -7394,12 +7550,16 @@ export const GetProjectsProtectionBypass2$inboundSchema: z.ZodType<
   createdAt: z.number(),
   createdBy: z.string(),
   scope: z.literal("automation-bypass"),
+  isEnvVar: z.boolean().optional(),
+  note: z.string().optional(),
 });
 /** @internal */
 export type GetProjectsProtectionBypass2$Outbound = {
   createdAt: number;
   createdBy: string;
   scope: "automation-bypass";
+  isEnvVar?: boolean | undefined;
+  note?: string | undefined;
 };
 
 /** @internal */
@@ -7411,6 +7571,8 @@ export const GetProjectsProtectionBypass2$outboundSchema: z.ZodType<
   createdAt: z.number(),
   createdBy: z.string(),
   scope: z.literal("automation-bypass"),
+  isEnvVar: z.boolean().optional(),
+  note: z.string().optional(),
 });
 
 export function getProjectsProtectionBypass2ToJSON(
@@ -10242,6 +10404,51 @@ export function getProjectsDismissedToastsFromJSON(
 }
 
 /** @internal */
+export const GetProjectsCveShield$inboundSchema: z.ZodType<
+  GetProjectsCveShield,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabled: z.boolean(),
+  threshold: z.number().optional(),
+  cveList: z.array(z.string()).optional(),
+});
+/** @internal */
+export type GetProjectsCveShield$Outbound = {
+  enabled: boolean;
+  threshold?: number | undefined;
+  cveList?: Array<string> | undefined;
+};
+
+/** @internal */
+export const GetProjectsCveShield$outboundSchema: z.ZodType<
+  GetProjectsCveShield$Outbound,
+  z.ZodTypeDef,
+  GetProjectsCveShield
+> = z.object({
+  enabled: z.boolean(),
+  threshold: z.number().optional(),
+  cveList: z.array(z.string()).optional(),
+});
+
+export function getProjectsCveShieldToJSON(
+  getProjectsCveShield: GetProjectsCveShield,
+): string {
+  return JSON.stringify(
+    GetProjectsCveShield$outboundSchema.parse(getProjectsCveShield),
+  );
+}
+export function getProjectsCveShieldFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsCveShield, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsCveShield$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsCveShield' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetProjectsProjects$inboundSchema: z.ZodType<
   GetProjectsProjects,
   z.ZodTypeDef,
@@ -10384,6 +10591,7 @@ export const GetProjectsProjects$inboundSchema: z.ZodType<
   dismissedToasts: z.array(
     z.lazy(() => GetProjectsDismissedToasts$inboundSchema),
   ).optional(),
+  cveShield: z.lazy(() => GetProjectsCveShield$inboundSchema).optional(),
 });
 /** @internal */
 export type GetProjectsProjects$Outbound = {
@@ -10504,6 +10712,7 @@ export type GetProjectsProjects$Outbound = {
     | undefined;
   hasDeployments?: boolean | undefined;
   dismissedToasts?: Array<GetProjectsDismissedToasts$Outbound> | undefined;
+  cveShield?: GetProjectsCveShield$Outbound | undefined;
 };
 
 /** @internal */
@@ -10649,6 +10858,7 @@ export const GetProjectsProjects$outboundSchema: z.ZodType<
   dismissedToasts: z.array(
     z.lazy(() => GetProjectsDismissedToasts$outboundSchema),
   ).optional(),
+  cveShield: z.lazy(() => GetProjectsCveShield$outboundSchema).optional(),
 });
 
 export function getProjectsProjectsToJSON(

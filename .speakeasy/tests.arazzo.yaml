@@ -6339,7 +6339,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"store":{"projectsMetadata":[{"id":"<id>","projectId":"<id>","name":"<value>","environments":[],"envVarPrefix":"<value>","environmentVariables":["<value 1>","<value 2>"]}],"usageQuotaExceeded":true,"status":"available","externalResourceId":"<id>","product":{"value":{"__@BRAND@8845":{}}},"secrets":[]}}
+              {"store":{"projectsMetadata":[{"id":"<id>","projectId":"<id>","name":"<value>","environments":[],"envVarPrefix":"<value>","environmentVariables":["<value 1>","<value 2>"]}],"usageQuotaExceeded":true,"status":"available","externalResourceId":"<id>","product":{"value":{"__@BRAND@8895":{}}},"secrets":[]}}
             type: simple
     x-speakeasy-test-group: integrations
     x-speakeasy-test-rebuild: true
@@ -7256,6 +7256,141 @@ workflows:
           - context: $response.body
             condition: |
               {"uid":"kr1PsOIzqEL5Xg6M4VZcZosf","username":"john-doe","email":"john@user.co","role":"MEMBER","teamRoles":["MEMBER"],"teamPermissions":["CreateProject"]}
+            type: simple
+    x-speakeasy-test-group: teams
+    x-speakeasy-test-rebuild: true
+  - workflowId: put_/v1/bulk-redirects
+    steps:
+      - stepId: test
+        operationId: put_/v1/bulk-redirects
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"alias":"<value>","version":{"id":"<id>","key":"<key>","lastModified":8885.75,"createdBy":"<value>"}}
+            type: simple
+    x-speakeasy-test-group: Vercel
+    x-speakeasy-test-rebuild: true
+  - workflowId: get_/v1/bulk-redirects
+    steps:
+      - stepId: test
+        operationId: get_/v1/bulk-redirects
+        parameters:
+          - name: projectId
+            in: query
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"redirects":[{"destination":"<value>","source":"<value>"}],"pagination":{"page":6667.14,"per_page":8650.59,"numPages":8888.83}}
+            type: simple
+    x-speakeasy-test-group: Vercel
+    x-speakeasy-test-rebuild: true
+  - workflowId: delete_/v1/bulk-redirects
+    steps:
+      - stepId: test
+        operationId: delete_/v1/bulk-redirects
+        parameters:
+          - name: projectId
+            in: query
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"alias":null,"version":{"id":"<id>","key":"<key>","lastModified":7414.09,"createdBy":"<value>"}}
+            type: simple
+    x-speakeasy-test-group: Vercel
+    x-speakeasy-test-rebuild: true
+  - workflowId: patch_/v1/bulk-redirects
+    steps:
+      - stepId: test
+        operationId: patch_/v1/bulk-redirects
+        parameters:
+          - name: projectId
+            in: query
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"alias":"<value>","version":{"id":"<id>","key":"<key>","lastModified":3750.92,"createdBy":"<value>"}}
+            type: simple
+    x-speakeasy-test-group: Vercel
+    x-speakeasy-test-rebuild: true
+  - workflowId: post_/v1/bulk-redirects/restore
+    steps:
+      - stepId: test
+        operationId: post_/v1/bulk-redirects/restore
+        parameters:
+          - name: projectId
+            in: query
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"version":{"id":"<id>","key":"<key>","lastModified":7169.03,"createdBy":"<value>"},"restored":["<value 1>","<value 2>","<value 3>"],"failedToRestore":[]}
+            type: simple
+    x-speakeasy-test-group: Vercel
+    x-speakeasy-test-rebuild: true
+  - workflowId: get_/v1/bulk-redirects/versions
+    steps:
+      - stepId: test
+        operationId: get_/v1/bulk-redirects/versions
+        parameters:
+          - name: projectId
+            in: query
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"versions":[{"id":"<id>","key":"<key>","lastModified":994.47,"createdBy":"<value>"}]}
+            type: simple
+    x-speakeasy-test-group: Vercel
+    x-speakeasy-test-rebuild: true
+  - workflowId: post_/v1/bulk-redirects/versions
+    steps:
+      - stepId: test
+        operationId: post_/v1/bulk-redirects/versions
+        parameters:
+          - name: projectId
+            in: query
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"version":{"id":"<id>","key":"<key>","lastModified":9507.66,"createdBy":"<value>"}}
+            type: simple
+    x-speakeasy-test-group: Vercel
+    x-speakeasy-test-rebuild: true
+  - workflowId: postTeamDsyncRoles
+    steps:
+      - stepId: test
+        operationId: postTeamDsyncRoles
+        parameters:
+          - name: teamId
+            in: path
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"ok":true}
             type: simple
     x-speakeasy-test-group: teams
     x-speakeasy-test-rebuild: true

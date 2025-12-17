@@ -10,45 +10,45 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type Roles struct {
+type PatchTeamRoles struct {
 	AccessGroupID string `json:"accessGroupId"`
 }
 
-func (r Roles) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(r, "", false)
+func (p PatchTeamRoles) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
 }
 
-func (r *Roles) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"accessGroupId"}); err != nil {
+func (p *PatchTeamRoles) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"accessGroupId"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Roles) GetAccessGroupID() string {
+func (o *PatchTeamRoles) GetAccessGroupID() string {
 	if o == nil {
 		return ""
 	}
 	return o.AccessGroupID
 }
 
-type RolesEnum string
+type PatchTeamRolesEnum string
 
 const (
-	RolesEnumOwner         RolesEnum = "OWNER"
-	RolesEnumMember        RolesEnum = "MEMBER"
-	RolesEnumDeveloper     RolesEnum = "DEVELOPER"
-	RolesEnumSecurity      RolesEnum = "SECURITY"
-	RolesEnumBilling       RolesEnum = "BILLING"
-	RolesEnumViewer        RolesEnum = "VIEWER"
-	RolesEnumViewerForPlus RolesEnum = "VIEWER_FOR_PLUS"
-	RolesEnumContributor   RolesEnum = "CONTRIBUTOR"
+	PatchTeamRolesEnumOwner         PatchTeamRolesEnum = "OWNER"
+	PatchTeamRolesEnumMember        PatchTeamRolesEnum = "MEMBER"
+	PatchTeamRolesEnumDeveloper     PatchTeamRolesEnum = "DEVELOPER"
+	PatchTeamRolesEnumSecurity      PatchTeamRolesEnum = "SECURITY"
+	PatchTeamRolesEnumBilling       PatchTeamRolesEnum = "BILLING"
+	PatchTeamRolesEnumViewer        PatchTeamRolesEnum = "VIEWER"
+	PatchTeamRolesEnumViewerForPlus PatchTeamRolesEnum = "VIEWER_FOR_PLUS"
+	PatchTeamRolesEnumContributor   PatchTeamRolesEnum = "CONTRIBUTOR"
 )
 
-func (e RolesEnum) ToPointer() *RolesEnum {
+func (e PatchTeamRolesEnum) ToPointer() *PatchTeamRolesEnum {
 	return &e
 }
-func (e *RolesEnum) UnmarshalJSON(data []byte) error {
+func (e *PatchTeamRolesEnum) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -69,81 +69,81 @@ func (e *RolesEnum) UnmarshalJSON(data []byte) error {
 	case "VIEWER_FOR_PLUS":
 		fallthrough
 	case "CONTRIBUTOR":
-		*e = RolesEnum(v)
+		*e = PatchTeamRolesEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RolesEnum: %v", v)
+		return fmt.Errorf("invalid value for PatchTeamRolesEnum: %v", v)
 	}
 }
 
-type RolesUnionType string
+type PatchTeamRolesUnionType string
 
 const (
-	RolesUnionTypeRolesEnum RolesUnionType = "roles_enum"
-	RolesUnionTypeRoles     RolesUnionType = "roles"
+	PatchTeamRolesUnionTypePatchTeamRolesEnum PatchTeamRolesUnionType = "patchTeam_roles_enum"
+	PatchTeamRolesUnionTypePatchTeamRoles     PatchTeamRolesUnionType = "patchTeam_roles"
 )
 
-type RolesUnion struct {
-	RolesEnum *RolesEnum `queryParam:"inline"`
-	Roles     *Roles     `queryParam:"inline"`
+type PatchTeamRolesUnion struct {
+	PatchTeamRolesEnum *PatchTeamRolesEnum `queryParam:"inline"`
+	PatchTeamRoles     *PatchTeamRoles     `queryParam:"inline"`
 
-	Type RolesUnionType
+	Type PatchTeamRolesUnionType
 }
 
-func CreateRolesUnionRolesEnum(rolesEnum RolesEnum) RolesUnion {
-	typ := RolesUnionTypeRolesEnum
+func CreatePatchTeamRolesUnionPatchTeamRolesEnum(patchTeamRolesEnum PatchTeamRolesEnum) PatchTeamRolesUnion {
+	typ := PatchTeamRolesUnionTypePatchTeamRolesEnum
 
-	return RolesUnion{
-		RolesEnum: &rolesEnum,
-		Type:      typ,
+	return PatchTeamRolesUnion{
+		PatchTeamRolesEnum: &patchTeamRolesEnum,
+		Type:               typ,
 	}
 }
 
-func CreateRolesUnionRoles(roles Roles) RolesUnion {
-	typ := RolesUnionTypeRoles
+func CreatePatchTeamRolesUnionPatchTeamRoles(patchTeamRoles PatchTeamRoles) PatchTeamRolesUnion {
+	typ := PatchTeamRolesUnionTypePatchTeamRoles
 
-	return RolesUnion{
-		Roles: &roles,
-		Type:  typ,
+	return PatchTeamRolesUnion{
+		PatchTeamRoles: &patchTeamRoles,
+		Type:           typ,
 	}
 }
 
-func (u *RolesUnion) UnmarshalJSON(data []byte) error {
+func (u *PatchTeamRolesUnion) UnmarshalJSON(data []byte) error {
 
-	var roles Roles = Roles{}
-	if err := utils.UnmarshalJSON(data, &roles, "", true, nil); err == nil {
-		u.Roles = &roles
-		u.Type = RolesUnionTypeRoles
+	var patchTeamRoles PatchTeamRoles = PatchTeamRoles{}
+	if err := utils.UnmarshalJSON(data, &patchTeamRoles, "", true, nil); err == nil {
+		u.PatchTeamRoles = &patchTeamRoles
+		u.Type = PatchTeamRolesUnionTypePatchTeamRoles
 		return nil
 	}
 
-	var rolesEnum RolesEnum = RolesEnum("")
-	if err := utils.UnmarshalJSON(data, &rolesEnum, "", true, nil); err == nil {
-		u.RolesEnum = &rolesEnum
-		u.Type = RolesUnionTypeRolesEnum
+	var patchTeamRolesEnum PatchTeamRolesEnum = PatchTeamRolesEnum("")
+	if err := utils.UnmarshalJSON(data, &patchTeamRolesEnum, "", true, nil); err == nil {
+		u.PatchTeamRolesEnum = &patchTeamRolesEnum
+		u.Type = PatchTeamRolesUnionTypePatchTeamRolesEnum
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for RolesUnion", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PatchTeamRolesUnion", string(data))
 }
 
-func (u RolesUnion) MarshalJSON() ([]byte, error) {
-	if u.RolesEnum != nil {
-		return utils.MarshalJSON(u.RolesEnum, "", true)
+func (u PatchTeamRolesUnion) MarshalJSON() ([]byte, error) {
+	if u.PatchTeamRolesEnum != nil {
+		return utils.MarshalJSON(u.PatchTeamRolesEnum, "", true)
 	}
 
-	if u.Roles != nil {
-		return utils.MarshalJSON(u.Roles, "", true)
+	if u.PatchTeamRoles != nil {
+		return utils.MarshalJSON(u.PatchTeamRoles, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type RolesUnion: all fields are null")
+	return nil, errors.New("could not marshal union type PatchTeamRolesUnion: all fields are null")
 }
 
 type Saml struct {
 	// Require that members of the team use SAML Single Sign-On.
 	Enforced *bool `json:"enforced,omitempty"`
 	// Directory groups to role or access group mappings.
-	Roles map[string]RolesUnion `json:"roles,omitempty"`
+	Roles map[string]PatchTeamRolesUnion `json:"roles,omitempty"`
 }
 
 func (o *Saml) GetEnforced() *bool {
@@ -153,7 +153,7 @@ func (o *Saml) GetEnforced() *bool {
 	return o.Enforced
 }
 
-func (o *Saml) GetRoles() map[string]RolesUnion {
+func (o *Saml) GetRoles() map[string]PatchTeamRolesUnion {
 	if o == nil {
 		return nil
 	}

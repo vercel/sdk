@@ -1,0 +1,27 @@
+# PutFirewallConfigRulesRateLimit
+
+## Example Usage
+
+```typescript
+import { PutFirewallConfigRulesRateLimit } from "@vercel/sdk/models/putfirewallconfigop.js";
+
+let value: PutFirewallConfigRulesRateLimit = {
+  algo: "token_bucket",
+  window: 6893.98,
+  limit: 7124.36,
+  keys: [
+    "<value 1>",
+    "<value 2>",
+  ],
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                                        | Type                                                                                                                                                                         | Required                                                                                                                                                                     | Description                                                                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `algo`                                                                                                                                                                       | [models.PutFirewallConfigRulesAlgo](../models/putfirewallconfigrulesalgo.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                           | N/A                                                                                                                                                                          |
+| `window`                                                                                                                                                                     | *number*                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                           | N/A                                                                                                                                                                          |
+| `limit`                                                                                                                                                                      | *number*                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                           | N/A                                                                                                                                                                          |
+| `keys`                                                                                                                                                                       | *string*[]                                                                                                                                                                   | :heavy_check_mark:                                                                                                                                                           | N/A                                                                                                                                                                          |
+| `action`                                                                                                                                                                     | [models.PutFirewallConfigRulesSecurityResponse200ApplicationJSONResponseBodyAction](../models/putfirewallconfigrulessecurityresponse200applicationjsonresponsebodyaction.md) | :heavy_minus_sign:                                                                                                                                                           | N/A                                                                                                                                                                          |

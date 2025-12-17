@@ -4705,6 +4705,43 @@ func (e *GetProjectsResourceConfigBuildMachineType) UnmarshalJSON(data []byte) e
 	}
 }
 
+type GetProjectsResourceConfigConfiguration string
+
+const (
+	GetProjectsResourceConfigConfigurationSkipNamespaceQueue    GetProjectsResourceConfigConfiguration = "SKIP_NAMESPACE_QUEUE"
+	GetProjectsResourceConfigConfigurationWaitForNamespaceQueue GetProjectsResourceConfigConfiguration = "WAIT_FOR_NAMESPACE_QUEUE"
+)
+
+func (e GetProjectsResourceConfigConfiguration) ToPointer() *GetProjectsResourceConfigConfiguration {
+	return &e
+}
+func (e *GetProjectsResourceConfigConfiguration) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "SKIP_NAMESPACE_QUEUE":
+		fallthrough
+	case "WAIT_FOR_NAMESPACE_QUEUE":
+		*e = GetProjectsResourceConfigConfiguration(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetProjectsResourceConfigConfiguration: %v", v)
+	}
+}
+
+type GetProjectsResourceConfigBuildQueue struct {
+	Configuration *GetProjectsResourceConfigConfiguration `json:"configuration,omitempty"`
+}
+
+func (o *GetProjectsResourceConfigBuildQueue) GetConfiguration() *GetProjectsResourceConfigConfiguration {
+	if o == nil {
+		return nil
+	}
+	return o.Configuration
+}
+
 type GetProjectsResourceConfig struct {
 	ElasticConcurrencyEnabled  *bool                                               `json:"elasticConcurrencyEnabled,omitempty"`
 	Fluid                      *bool                                               `json:"fluid,omitempty"`
@@ -4714,6 +4751,7 @@ type GetProjectsResourceConfig struct {
 	FunctionZeroConfigFailover *bool                                               `json:"functionZeroConfigFailover,omitempty"`
 	BuildMachineType           *GetProjectsResourceConfigBuildMachineType          `json:"buildMachineType,omitempty"`
 	IsNSNBDisabled             *bool                                               `json:"isNSNBDisabled,omitempty"`
+	BuildQueue                 *GetProjectsResourceConfigBuildQueue                `json:"buildQueue,omitempty"`
 }
 
 func (o *GetProjectsResourceConfig) GetElasticConcurrencyEnabled() *bool {
@@ -4770,6 +4808,13 @@ func (o *GetProjectsResourceConfig) GetIsNSNBDisabled() *bool {
 		return nil
 	}
 	return o.IsNSNBDisabled
+}
+
+func (o *GetProjectsResourceConfig) GetBuildQueue() *GetProjectsResourceConfigBuildQueue {
+	if o == nil {
+		return nil
+	}
+	return o.BuildQueue
 }
 
 // GetProjectsRollbackDescription - Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback.
@@ -4938,6 +4983,43 @@ func (e *GetProjectsDefaultResourceConfigBuildMachineType) UnmarshalJSON(data []
 	}
 }
 
+type GetProjectsDefaultResourceConfigConfiguration string
+
+const (
+	GetProjectsDefaultResourceConfigConfigurationSkipNamespaceQueue    GetProjectsDefaultResourceConfigConfiguration = "SKIP_NAMESPACE_QUEUE"
+	GetProjectsDefaultResourceConfigConfigurationWaitForNamespaceQueue GetProjectsDefaultResourceConfigConfiguration = "WAIT_FOR_NAMESPACE_QUEUE"
+)
+
+func (e GetProjectsDefaultResourceConfigConfiguration) ToPointer() *GetProjectsDefaultResourceConfigConfiguration {
+	return &e
+}
+func (e *GetProjectsDefaultResourceConfigConfiguration) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "SKIP_NAMESPACE_QUEUE":
+		fallthrough
+	case "WAIT_FOR_NAMESPACE_QUEUE":
+		*e = GetProjectsDefaultResourceConfigConfiguration(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetProjectsDefaultResourceConfigConfiguration: %v", v)
+	}
+}
+
+type GetProjectsDefaultResourceConfigBuildQueue struct {
+	Configuration *GetProjectsDefaultResourceConfigConfiguration `json:"configuration,omitempty"`
+}
+
+func (o *GetProjectsDefaultResourceConfigBuildQueue) GetConfiguration() *GetProjectsDefaultResourceConfigConfiguration {
+	if o == nil {
+		return nil
+	}
+	return o.Configuration
+}
+
 type GetProjectsDefaultResourceConfig struct {
 	ElasticConcurrencyEnabled  *bool                                                      `json:"elasticConcurrencyEnabled,omitempty"`
 	Fluid                      *bool                                                      `json:"fluid,omitempty"`
@@ -4947,6 +5029,7 @@ type GetProjectsDefaultResourceConfig struct {
 	FunctionZeroConfigFailover *bool                                                      `json:"functionZeroConfigFailover,omitempty"`
 	BuildMachineType           *GetProjectsDefaultResourceConfigBuildMachineType          `json:"buildMachineType,omitempty"`
 	IsNSNBDisabled             *bool                                                      `json:"isNSNBDisabled,omitempty"`
+	BuildQueue                 *GetProjectsDefaultResourceConfigBuildQueue                `json:"buildQueue,omitempty"`
 }
 
 func (o *GetProjectsDefaultResourceConfig) GetElasticConcurrencyEnabled() *bool {
@@ -5003,6 +5086,13 @@ func (o *GetProjectsDefaultResourceConfig) GetIsNSNBDisabled() *bool {
 		return nil
 	}
 	return o.IsNSNBDisabled
+}
+
+func (o *GetProjectsDefaultResourceConfig) GetBuildQueue() *GetProjectsDefaultResourceConfigBuildQueue {
+	if o == nil {
+		return nil
+	}
+	return o.BuildQueue
 }
 
 type GetProjectsStaticIps struct {
@@ -7701,8 +7791,8 @@ func (e *GetProjectsLastAliasRequestType) UnmarshalJSON(data []byte) error {
 }
 
 type GetProjectsLastAliasRequest struct {
-	FromDeploymentID string `json:"fromDeploymentId"`
-	ToDeploymentID   string `json:"toDeploymentId"`
+	FromDeploymentID *string `json:"fromDeploymentId"`
+	ToDeploymentID   string  `json:"toDeploymentId"`
 	// If rolling back from a rolling release, fromDeploymentId captures the "base" of that rolling release, and fromRollingReleaseId captures the "target" of that rolling release.
 	FromRollingReleaseID *string                         `json:"fromRollingReleaseId,omitempty"`
 	JobStatus            GetProjectsJobStatus            `json:"jobStatus"`
@@ -7710,9 +7800,9 @@ type GetProjectsLastAliasRequest struct {
 	Type                 GetProjectsLastAliasRequestType `json:"type"`
 }
 
-func (o *GetProjectsLastAliasRequest) GetFromDeploymentID() string {
+func (o *GetProjectsLastAliasRequest) GetFromDeploymentID() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.FromDeploymentID
 }
@@ -7779,6 +7869,10 @@ type GetProjectsProtectionBypassAutomationBypass struct {
 	CreatedAt float64                          `json:"createdAt"`
 	CreatedBy string                           `json:"createdBy"`
 	Scope     GetProjectsScopeAutomationBypass `json:"scope"`
+	// When there was only one bypass, it was automatically set as an env var on deployments. With multiple bypasses, there is always one bypass that is selected as the default, and gets set as an env var on deployments. As this is a new field, undefined means that the bypass is the env var. If there are any automation bypasses, exactly one must be the env var.
+	IsEnvVar *bool `json:"isEnvVar,omitempty"`
+	// Optional note about the bypass to be displayed in the UI
+	Note *string `json:"note,omitempty"`
 }
 
 func (g GetProjectsProtectionBypassAutomationBypass) MarshalJSON() ([]byte, error) {
@@ -7811,6 +7905,20 @@ func (o *GetProjectsProtectionBypassAutomationBypass) GetScope() GetProjectsScop
 		return GetProjectsScopeAutomationBypass("")
 	}
 	return o.Scope
+}
+
+func (o *GetProjectsProtectionBypassAutomationBypass) GetIsEnvVar() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsEnvVar
+}
+
+func (o *GetProjectsProtectionBypassAutomationBypass) GetNote() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Note
 }
 
 type GetProjectsScopeIntegrationAutomationBypass string
@@ -11111,6 +11219,36 @@ func (o *GetProjectsDismissedToast) GetValue() *GetProjectsValueUnion {
 	return o.Value
 }
 
+type GetProjectsCveShield struct {
+	// True if the CVE Shield has been enabled. Otherwise false.
+	Enabled bool `json:"enabled"`
+	// CVE threshold. It can range between 1 and 10.
+	Threshold *float64 `json:"threshold,omitempty"`
+	// List of CVE that we want to protect against.
+	CveList []string `json:"cveList,omitempty"`
+}
+
+func (o *GetProjectsCveShield) GetEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.Enabled
+}
+
+func (o *GetProjectsCveShield) GetThreshold() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Threshold
+}
+
+func (o *GetProjectsCveShield) GetCveList() []string {
+	if o == nil {
+		return nil
+	}
+	return o.CveList
+}
+
 type GetProjectsProject struct {
 	AccountID                        string                            `json:"accountId"`
 	Analytics                        *GetProjectsAnalytics             `json:"analytics,omitempty"`
@@ -11196,6 +11334,7 @@ type GetProjectsProject struct {
 	InternalRoutes                       []GetProjectsInternalRouteUnion             `json:"internalRoutes,omitempty"`
 	HasDeployments                       *bool                                       `json:"hasDeployments,omitempty"`
 	DismissedToasts                      []GetProjectsDismissedToast                 `json:"dismissedToasts,omitempty"`
+	CveShield                            *GetProjectsCveShield                       `json:"cveShield,omitempty"`
 }
 
 func (o *GetProjectsProject) GetAccountID() string {
@@ -11798,6 +11937,13 @@ func (o *GetProjectsProject) GetDismissedToasts() []GetProjectsDismissedToast {
 		return nil
 	}
 	return o.DismissedToasts
+}
+
+func (o *GetProjectsProject) GetCveShield() *GetProjectsCveShield {
+	if o == nil {
+		return nil
+	}
+	return o.CveShield
 }
 
 // GetProjectsPagination - This object contains information related to the pagination of the current request using continuation tokens. Since CosmosDB doesn't support going to previous pages, only count and next are provided.

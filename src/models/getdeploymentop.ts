@@ -295,6 +295,22 @@ export type GetDeploymentResponseBodyChecksConclusion = ClosedEnum<
   typeof GetDeploymentResponseBodyChecksConclusion
 >;
 
+export type ResponseBodyCve = {
+  id: string;
+  score: number;
+  description?: string | undefined;
+  link?: string | undefined;
+};
+
+/**
+ * Since December 2025 - Temporary for Christmas hackathon 2025 CVE vulnerabilities found during build, only populated when CVE Shield is enabled and vulnerabilities are detected. Only accessible when CveShieldEnabled feature flag is enabled
+ */
+export type ResponseBodyCveVulnerabilities = {
+  packageName: string;
+  packageVersion: string;
+  cve: ResponseBodyCve;
+};
+
 export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody215Type =
   {
     Bitbucket: "bitbucket",
@@ -788,6 +804,10 @@ export type GetDeploymentResponseBody2 = {
    */
   defaultRoute?: string | undefined;
   canceledAt?: number | undefined;
+  /**
+   * Since December 2025 - Temporary for Christmas hackathon 2025 CVE vulnerabilities found during build, only populated when CVE Shield is enabled and vulnerabilities are detected. Only accessible when CveShieldEnabled feature flag is enabled
+   */
+  cveVulnerabilities?: Array<ResponseBodyCveVulnerabilities> | undefined;
   errorCode?: string | undefined;
   errorLink?: string | undefined;
   errorMessage?: string | null | undefined;
@@ -1331,6 +1351,22 @@ export const ResponseBodyChecksConclusion = {
 export type ResponseBodyChecksConclusion = ClosedEnum<
   typeof ResponseBodyChecksConclusion
 >;
+
+export type GetDeploymentResponseBodyCve = {
+  id: string;
+  score: number;
+  description?: string | undefined;
+  link?: string | undefined;
+};
+
+/**
+ * Since December 2025 - Temporary for Christmas hackathon 2025 CVE vulnerabilities found during build, only populated when CVE Shield is enabled and vulnerabilities are detected. Only accessible when CveShieldEnabled feature flag is enabled
+ */
+export type GetDeploymentResponseBodyCveVulnerabilities = {
+  packageName: string;
+  packageVersion: string;
+  cve: GetDeploymentResponseBodyCve;
+};
 
 export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody115Type =
   {
@@ -2041,6 +2077,7 @@ export type GetDeploymentRoutes1 = {
     | undefined;
   mitigate?: GetDeploymentRoutesMitigate | undefined;
   transforms?: Array<GetDeploymentRoutesTransforms> | undefined;
+  env?: Array<string> | undefined;
   locale?: GetDeploymentRoutesLocale | undefined;
   /**
    * A middleware key within the `output` key under the build result. Overrides a `middleware` definition.
@@ -2368,6 +2405,12 @@ export type GetDeploymentResponseBody1 = {
    */
   defaultRoute?: string | undefined;
   canceledAt?: number | undefined;
+  /**
+   * Since December 2025 - Temporary for Christmas hackathon 2025 CVE vulnerabilities found during build, only populated when CVE Shield is enabled and vulnerabilities are detected. Only accessible when CveShieldEnabled feature flag is enabled
+   */
+  cveVulnerabilities?:
+    | Array<GetDeploymentResponseBodyCveVulnerabilities>
+    | undefined;
   errorCode?: string | undefined;
   errorLink?: string | undefined;
   errorMessage?: string | null | undefined;
@@ -3246,6 +3289,99 @@ export const GetDeploymentResponseBodyChecksConclusion$inboundSchema:
 export const GetDeploymentResponseBodyChecksConclusion$outboundSchema:
   z.ZodNativeEnum<typeof GetDeploymentResponseBodyChecksConclusion> =
     GetDeploymentResponseBodyChecksConclusion$inboundSchema;
+
+/** @internal */
+export const ResponseBodyCve$inboundSchema: z.ZodType<
+  ResponseBodyCve,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  score: z.number(),
+  description: z.string().optional(),
+  link: z.string().optional(),
+});
+/** @internal */
+export type ResponseBodyCve$Outbound = {
+  id: string;
+  score: number;
+  description?: string | undefined;
+  link?: string | undefined;
+};
+
+/** @internal */
+export const ResponseBodyCve$outboundSchema: z.ZodType<
+  ResponseBodyCve$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyCve
+> = z.object({
+  id: z.string(),
+  score: z.number(),
+  description: z.string().optional(),
+  link: z.string().optional(),
+});
+
+export function responseBodyCveToJSON(
+  responseBodyCve: ResponseBodyCve,
+): string {
+  return JSON.stringify(ResponseBodyCve$outboundSchema.parse(responseBodyCve));
+}
+export function responseBodyCveFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyCve, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyCve$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyCve' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyCveVulnerabilities$inboundSchema: z.ZodType<
+  ResponseBodyCveVulnerabilities,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  packageName: z.string(),
+  packageVersion: z.string(),
+  cve: z.lazy(() => ResponseBodyCve$inboundSchema),
+});
+/** @internal */
+export type ResponseBodyCveVulnerabilities$Outbound = {
+  packageName: string;
+  packageVersion: string;
+  cve: ResponseBodyCve$Outbound;
+};
+
+/** @internal */
+export const ResponseBodyCveVulnerabilities$outboundSchema: z.ZodType<
+  ResponseBodyCveVulnerabilities$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyCveVulnerabilities
+> = z.object({
+  packageName: z.string(),
+  packageVersion: z.string(),
+  cve: z.lazy(() => ResponseBodyCve$outboundSchema),
+});
+
+export function responseBodyCveVulnerabilitiesToJSON(
+  responseBodyCveVulnerabilities: ResponseBodyCveVulnerabilities,
+): string {
+  return JSON.stringify(
+    ResponseBodyCveVulnerabilities$outboundSchema.parse(
+      responseBodyCveVulnerabilities,
+    ),
+  );
+}
+export function responseBodyCveVulnerabilitiesFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyCveVulnerabilities, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyCveVulnerabilities$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyCveVulnerabilities' from JSON`,
+  );
+}
 
 /** @internal */
 export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody215Type$inboundSchema:
@@ -4760,6 +4896,9 @@ export const GetDeploymentResponseBody2$inboundSchema: z.ZodType<
   deletedAt: z.nullable(z.number()).optional(),
   defaultRoute: z.string().optional(),
   canceledAt: z.number().optional(),
+  cveVulnerabilities: z.array(
+    z.lazy(() => ResponseBodyCveVulnerabilities$inboundSchema),
+  ).optional(),
   errorCode: z.string().optional(),
   errorLink: z.string().optional(),
   errorMessage: z.nullable(z.string()).optional(),
@@ -4841,6 +4980,9 @@ export type GetDeploymentResponseBody2$Outbound = {
   deletedAt?: number | null | undefined;
   defaultRoute?: string | undefined;
   canceledAt?: number | undefined;
+  cveVulnerabilities?:
+    | Array<ResponseBodyCveVulnerabilities$Outbound>
+    | undefined;
   errorCode?: string | undefined;
   errorLink?: string | undefined;
   errorMessage?: string | null | undefined;
@@ -4930,6 +5072,9 @@ export const GetDeploymentResponseBody2$outboundSchema: z.ZodType<
   deletedAt: z.nullable(z.number()).optional(),
   defaultRoute: z.string().optional(),
   canceledAt: z.number().optional(),
+  cveVulnerabilities: z.array(
+    z.lazy(() => ResponseBodyCveVulnerabilities$outboundSchema),
+  ).optional(),
   errorCode: z.string().optional(),
   errorLink: z.string().optional(),
   errorMessage: z.nullable(z.string()).optional(),
@@ -6315,6 +6460,112 @@ export const ResponseBodyChecksConclusion$inboundSchema: z.ZodNativeEnum<
 export const ResponseBodyChecksConclusion$outboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyChecksConclusion
 > = ResponseBodyChecksConclusion$inboundSchema;
+
+/** @internal */
+export const GetDeploymentResponseBodyCve$inboundSchema: z.ZodType<
+  GetDeploymentResponseBodyCve,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  score: z.number(),
+  description: z.string().optional(),
+  link: z.string().optional(),
+});
+/** @internal */
+export type GetDeploymentResponseBodyCve$Outbound = {
+  id: string;
+  score: number;
+  description?: string | undefined;
+  link?: string | undefined;
+};
+
+/** @internal */
+export const GetDeploymentResponseBodyCve$outboundSchema: z.ZodType<
+  GetDeploymentResponseBodyCve$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentResponseBodyCve
+> = z.object({
+  id: z.string(),
+  score: z.number(),
+  description: z.string().optional(),
+  link: z.string().optional(),
+});
+
+export function getDeploymentResponseBodyCveToJSON(
+  getDeploymentResponseBodyCve: GetDeploymentResponseBodyCve,
+): string {
+  return JSON.stringify(
+    GetDeploymentResponseBodyCve$outboundSchema.parse(
+      getDeploymentResponseBodyCve,
+    ),
+  );
+}
+export function getDeploymentResponseBodyCveFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentResponseBodyCve, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentResponseBodyCve$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentResponseBodyCve' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentResponseBodyCveVulnerabilities$inboundSchema:
+  z.ZodType<
+    GetDeploymentResponseBodyCveVulnerabilities,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    packageName: z.string(),
+    packageVersion: z.string(),
+    cve: z.lazy(() => GetDeploymentResponseBodyCve$inboundSchema),
+  });
+/** @internal */
+export type GetDeploymentResponseBodyCveVulnerabilities$Outbound = {
+  packageName: string;
+  packageVersion: string;
+  cve: GetDeploymentResponseBodyCve$Outbound;
+};
+
+/** @internal */
+export const GetDeploymentResponseBodyCveVulnerabilities$outboundSchema:
+  z.ZodType<
+    GetDeploymentResponseBodyCveVulnerabilities$Outbound,
+    z.ZodTypeDef,
+    GetDeploymentResponseBodyCveVulnerabilities
+  > = z.object({
+    packageName: z.string(),
+    packageVersion: z.string(),
+    cve: z.lazy(() => GetDeploymentResponseBodyCve$outboundSchema),
+  });
+
+export function getDeploymentResponseBodyCveVulnerabilitiesToJSON(
+  getDeploymentResponseBodyCveVulnerabilities:
+    GetDeploymentResponseBodyCveVulnerabilities,
+): string {
+  return JSON.stringify(
+    GetDeploymentResponseBodyCveVulnerabilities$outboundSchema.parse(
+      getDeploymentResponseBodyCveVulnerabilities,
+    ),
+  );
+}
+export function getDeploymentResponseBodyCveVulnerabilitiesFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentResponseBodyCveVulnerabilities,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentResponseBodyCveVulnerabilities$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentResponseBodyCveVulnerabilities' from JSON`,
+  );
+}
 
 /** @internal */
 export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody115Type$inboundSchema:
@@ -9421,6 +9672,7 @@ export const GetDeploymentRoutes1$inboundSchema: z.ZodType<
   mitigate: z.lazy(() => GetDeploymentRoutesMitigate$inboundSchema).optional(),
   transforms: z.array(z.lazy(() => GetDeploymentRoutesTransforms$inboundSchema))
     .optional(),
+  env: z.array(z.string()).optional(),
   locale: z.lazy(() => GetDeploymentRoutesLocale$inboundSchema).optional(),
   middlewarePath: z.string().optional(),
   middlewareRawSrc: z.array(z.string()).optional(),
@@ -9456,6 +9708,7 @@ export type GetDeploymentRoutes1$Outbound = {
     | undefined;
   mitigate?: GetDeploymentRoutesMitigate$Outbound | undefined;
   transforms?: Array<GetDeploymentRoutesTransforms$Outbound> | undefined;
+  env?: Array<string> | undefined;
   locale?: GetDeploymentRoutesLocale$Outbound | undefined;
   middlewarePath?: string | undefined;
   middlewareRawSrc?: Array<string> | undefined;
@@ -9510,6 +9763,7 @@ export const GetDeploymentRoutes1$outboundSchema: z.ZodType<
   transforms: z.array(
     z.lazy(() => GetDeploymentRoutesTransforms$outboundSchema),
   ).optional(),
+  env: z.array(z.string()).optional(),
   locale: z.lazy(() => GetDeploymentRoutesLocale$outboundSchema).optional(),
   middlewarePath: z.string().optional(),
   middlewareRawSrc: z.array(z.string()).optional(),
@@ -10445,6 +10699,9 @@ export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
   deletedAt: z.nullable(z.number()).optional(),
   defaultRoute: z.string().optional(),
   canceledAt: z.number().optional(),
+  cveVulnerabilities: z.array(
+    z.lazy(() => GetDeploymentResponseBodyCveVulnerabilities$inboundSchema),
+  ).optional(),
   errorCode: z.string().optional(),
   errorLink: z.string().optional(),
   errorMessage: z.nullable(z.string()).optional(),
@@ -10577,6 +10834,9 @@ export type GetDeploymentResponseBody1$Outbound = {
   deletedAt?: number | null | undefined;
   defaultRoute?: string | undefined;
   canceledAt?: number | undefined;
+  cveVulnerabilities?:
+    | Array<GetDeploymentResponseBodyCveVulnerabilities$Outbound>
+    | undefined;
   errorCode?: string | undefined;
   errorLink?: string | undefined;
   errorMessage?: string | null | undefined;
@@ -10714,6 +10974,9 @@ export const GetDeploymentResponseBody1$outboundSchema: z.ZodType<
   deletedAt: z.nullable(z.number()).optional(),
   defaultRoute: z.string().optional(),
   canceledAt: z.number().optional(),
+  cveVulnerabilities: z.array(
+    z.lazy(() => GetDeploymentResponseBodyCveVulnerabilities$outboundSchema),
+  ).optional(),
   errorCode: z.string().optional(),
   errorLink: z.string().optional(),
   errorMessage: z.nullable(z.string()).optional(),

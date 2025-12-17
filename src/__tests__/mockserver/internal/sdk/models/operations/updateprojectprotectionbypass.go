@@ -36,6 +36,8 @@ func (o *UpdateProjectProtectionBypassRevoke) GetRegenerate() bool {
 type Generate struct {
 	// Optional value of the secret to generate, don't send it for oauth2 tokens
 	Secret *string `json:"secret,omitempty"`
+	// Note to be displayed in the UI for this bypass
+	Note *string `json:"note,omitempty"`
 }
 
 func (o *Generate) GetSecret() *string {
@@ -45,11 +47,51 @@ func (o *Generate) GetSecret() *string {
 	return o.Secret
 }
 
+func (o *Generate) GetNote() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Note
+}
+
+// Update an existing bypass
+type Update struct {
+	// Automation bypass to updated
+	Secret string `json:"secret"`
+	// Whether or not this bypass is set as the VERCEL_AUTOMATION_BYPASS_SECRET environment variable on deployments
+	IsEnvVar *bool `json:"isEnvVar,omitempty"`
+	// Note to be displayed in the UI for this bypass
+	Note *string `json:"note,omitempty"`
+}
+
+func (o *Update) GetSecret() string {
+	if o == nil {
+		return ""
+	}
+	return o.Secret
+}
+
+func (o *Update) GetIsEnvVar() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsEnvVar
+}
+
+func (o *Update) GetNote() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Note
+}
+
 type UpdateProjectProtectionBypassRequestBody struct {
 	// Optional instructions for revoking and regenerating a automation bypass
 	Revoke *UpdateProjectProtectionBypassRevoke `json:"revoke,omitempty"`
 	// Generate a new secret. If neither generate or revoke are provided, a new random secret will be generated.
 	Generate *Generate `json:"generate,omitempty"`
+	// Update an existing bypass
+	Update *Update `json:"update,omitempty"`
 }
 
 func (o *UpdateProjectProtectionBypassRequestBody) GetRevoke() *UpdateProjectProtectionBypassRevoke {
@@ -64,6 +106,13 @@ func (o *UpdateProjectProtectionBypassRequestBody) GetGenerate() *Generate {
 		return nil
 	}
 	return o.Generate
+}
+
+func (o *UpdateProjectProtectionBypassRequestBody) GetUpdate() *Update {
+	if o == nil {
+		return nil
+	}
+	return o.Update
 }
 
 type UpdateProjectProtectionBypassRequest struct {
@@ -131,6 +180,10 @@ type UpdateProjectProtectionBypassProtectionBypassAutomationBypass struct {
 	CreatedAt float64                                            `json:"createdAt"`
 	CreatedBy string                                             `json:"createdBy"`
 	Scope     UpdateProjectProtectionBypassScopeAutomationBypass `json:"scope"`
+	// When there was only one bypass, it was automatically set as an env var on deployments. With multiple bypasses, there is always one bypass that is selected as the default, and gets set as an env var on deployments. As this is a new field, undefined means that the bypass is the env var. If there are any automation bypasses, exactly one must be the env var.
+	IsEnvVar *bool `json:"isEnvVar,omitempty"`
+	// Optional note about the bypass to be displayed in the UI
+	Note *string `json:"note,omitempty"`
 }
 
 func (u UpdateProjectProtectionBypassProtectionBypassAutomationBypass) MarshalJSON() ([]byte, error) {
@@ -163,6 +216,20 @@ func (o *UpdateProjectProtectionBypassProtectionBypassAutomationBypass) GetScope
 		return UpdateProjectProtectionBypassScopeAutomationBypass("")
 	}
 	return o.Scope
+}
+
+func (o *UpdateProjectProtectionBypassProtectionBypassAutomationBypass) GetIsEnvVar() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsEnvVar
+}
+
+func (o *UpdateProjectProtectionBypassProtectionBypassAutomationBypass) GetNote() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Note
 }
 
 type UpdateProjectProtectionBypassScopeIntegrationAutomationBypass string

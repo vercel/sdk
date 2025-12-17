@@ -82,14 +82,14 @@ export type AccessGroups = {
   teamRoles?: Array<string> | undefined;
 };
 
-export type ResponseBodyPagination = {
+export type ListAccessGroupsResponseBodyPagination = {
   count: number;
   next: string | null;
 };
 
 export type ListAccessGroupsResponseBody2 = {
   accessGroups: Array<AccessGroups>;
-  pagination: ResponseBodyPagination;
+  pagination: ListAccessGroupsResponseBodyPagination;
 };
 
 export type ListAccessGroupsResponseBody1 = {};
@@ -230,8 +230,8 @@ export function accessGroupsFromJSON(
 }
 
 /** @internal */
-export const ResponseBodyPagination$inboundSchema: z.ZodType<
-  ResponseBodyPagination,
+export const ListAccessGroupsResponseBodyPagination$inboundSchema: z.ZodType<
+  ListAccessGroupsResponseBodyPagination,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -239,35 +239,39 @@ export const ResponseBodyPagination$inboundSchema: z.ZodType<
   next: z.nullable(z.string()),
 });
 /** @internal */
-export type ResponseBodyPagination$Outbound = {
+export type ListAccessGroupsResponseBodyPagination$Outbound = {
   count: number;
   next: string | null;
 };
 
 /** @internal */
-export const ResponseBodyPagination$outboundSchema: z.ZodType<
-  ResponseBodyPagination$Outbound,
+export const ListAccessGroupsResponseBodyPagination$outboundSchema: z.ZodType<
+  ListAccessGroupsResponseBodyPagination$Outbound,
   z.ZodTypeDef,
-  ResponseBodyPagination
+  ListAccessGroupsResponseBodyPagination
 > = z.object({
   count: z.number(),
   next: z.nullable(z.string()),
 });
 
-export function responseBodyPaginationToJSON(
-  responseBodyPagination: ResponseBodyPagination,
+export function listAccessGroupsResponseBodyPaginationToJSON(
+  listAccessGroupsResponseBodyPagination:
+    ListAccessGroupsResponseBodyPagination,
 ): string {
   return JSON.stringify(
-    ResponseBodyPagination$outboundSchema.parse(responseBodyPagination),
+    ListAccessGroupsResponseBodyPagination$outboundSchema.parse(
+      listAccessGroupsResponseBodyPagination,
+    ),
   );
 }
-export function responseBodyPaginationFromJSON(
+export function listAccessGroupsResponseBodyPaginationFromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBodyPagination, SDKValidationError> {
+): SafeParseResult<ListAccessGroupsResponseBodyPagination, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ResponseBodyPagination$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyPagination' from JSON`,
+    (x) =>
+      ListAccessGroupsResponseBodyPagination$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAccessGroupsResponseBodyPagination' from JSON`,
   );
 }
 
@@ -278,12 +282,14 @@ export const ListAccessGroupsResponseBody2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   accessGroups: z.array(z.lazy(() => AccessGroups$inboundSchema)),
-  pagination: z.lazy(() => ResponseBodyPagination$inboundSchema),
+  pagination: z.lazy(() =>
+    ListAccessGroupsResponseBodyPagination$inboundSchema
+  ),
 });
 /** @internal */
 export type ListAccessGroupsResponseBody2$Outbound = {
   accessGroups: Array<AccessGroups$Outbound>;
-  pagination: ResponseBodyPagination$Outbound;
+  pagination: ListAccessGroupsResponseBodyPagination$Outbound;
 };
 
 /** @internal */
@@ -293,7 +299,9 @@ export const ListAccessGroupsResponseBody2$outboundSchema: z.ZodType<
   ListAccessGroupsResponseBody2
 > = z.object({
   accessGroups: z.array(z.lazy(() => AccessGroups$outboundSchema)),
-  pagination: z.lazy(() => ResponseBodyPagination$outboundSchema),
+  pagination: z.lazy(() =>
+    ListAccessGroupsResponseBodyPagination$outboundSchema
+  ),
 });
 
 export function listAccessGroupsResponseBody2ToJSON(

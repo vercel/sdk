@@ -17,7 +17,7 @@ let value: UserEvent = {
   payload: {
     project: {
       name: "<value>",
-      role: "PROJECT_VIEWER",
+      role: "PROJECT_DEVELOPER",
       invitedUserName: "<value>",
     },
   },

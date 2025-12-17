@@ -4,49 +4,12 @@
 
 import { assert, expect, it, test } from "vitest";
 import { Vercel } from "../index.js";
-import { BuyDomainResponseBody } from "../models/buydomainop.js";
 import { createTestHTTPClient } from "./testclient.js";
 
-test("Domains Buy Domain", async () => {
-  const testHttpClient = createTestHTTPClient("buyDomain");
-
-  const vercel = new Vercel({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  const result = await vercel.domains.buyDomain({
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-    requestBody: {
-      name: "example.com",
-      expectedPrice: 10,
-      renew: true,
-      country: "US",
-      orgName: "Acme Inc.",
-      firstName: "Jane",
-      lastName: "Doe",
-      address1: "340 S Lemon Ave Suite 4133",
-      city: "San Francisco",
-      state: "CA",
-      postalCode: "91789",
-      phone: "+1.4158551452",
-      email: "jane.doe@someplace.com",
-    },
-  });
-  expect(result).toBeDefined();
-  expect(result as BuyDomainResponseBody).toEqual({
-    domain: {
-      uid: "<id>",
-      ns: [
-        "<value 1>",
-      ],
-      verified: true,
-      created: 6683.9,
-      pending: true,
-    },
-  });
+it.skip("Domains Buy Domain", async () => {
+  assert.fail(
+    "incomplete test found please make sure to address the following errors: [`workflow step buyDomain.test referencing operation buyDomain not found in document`]",
+  );
 });
 
 test("Domains Check Domain Price", async () => {

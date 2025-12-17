@@ -935,6 +935,18 @@ export type UpdateProjectDataCacheProjectsBuildMachineType = ClosedEnum<
   typeof UpdateProjectDataCacheProjectsBuildMachineType
 >;
 
+export const UpdateProjectDataCacheProjectsConfiguration = {
+  SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
+  WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
+} as const;
+export type UpdateProjectDataCacheProjectsConfiguration = ClosedEnum<
+  typeof UpdateProjectDataCacheProjectsConfiguration
+>;
+
+export type UpdateProjectDataCacheProjectsBuildQueue = {
+  configuration?: UpdateProjectDataCacheProjectsConfiguration | undefined;
+};
+
 export type UpdateProjectDataCacheResourceConfig = {
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
@@ -946,6 +958,7 @@ export type UpdateProjectDataCacheResourceConfig = {
   elasticConcurrencyEnabled?: boolean | undefined;
   buildMachineType?: UpdateProjectDataCacheProjectsBuildMachineType | undefined;
   isNSNBDisabled?: boolean | undefined;
+  buildQueue?: UpdateProjectDataCacheProjectsBuildQueue | undefined;
 };
 
 /**
@@ -1027,6 +1040,18 @@ export type UpdateProjectDataCacheBuildMachineType = ClosedEnum<
   typeof UpdateProjectDataCacheBuildMachineType
 >;
 
+export const UpdateProjectDataCacheConfiguration = {
+  SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
+  WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
+} as const;
+export type UpdateProjectDataCacheConfiguration = ClosedEnum<
+  typeof UpdateProjectDataCacheConfiguration
+>;
+
+export type UpdateProjectDataCacheBuildQueue = {
+  configuration?: UpdateProjectDataCacheConfiguration | undefined;
+};
+
 export type DefaultResourceConfig = {
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
@@ -1038,6 +1063,7 @@ export type DefaultResourceConfig = {
   elasticConcurrencyEnabled?: boolean | undefined;
   buildMachineType?: UpdateProjectDataCacheBuildMachineType | undefined;
   isNSNBDisabled?: boolean | undefined;
+  buildQueue?: UpdateProjectDataCacheBuildQueue | undefined;
 };
 
 export type UpdateProjectDataCacheStaticIps = {
@@ -1478,7 +1504,7 @@ export type UpdateProjectDataCacheProjectsResponse200Type = ClosedEnum<
 >;
 
 export type LastAliasRequest = {
-  fromDeploymentId: string;
+  fromDeploymentId: string | null;
   toDeploymentId: string;
   /**
    * If rolling back from a rolling release, fromDeploymentId captures the "base" of that rolling release, and fromRollingReleaseId captures the "target" of that rolling release.
@@ -1493,6 +1519,14 @@ export type ProtectionBypass2 = {
   createdAt: number;
   createdBy: string;
   scope: "automation-bypass";
+  /**
+   * When there was only one bypass, it was automatically set as an env var on deployments. With multiple bypasses, there is always one bypass that is selected as the default, and gets set as an env var on deployments. As this is a new field, undefined means that the bypass is the env var. If there are any automation bypasses, exactly one must be the env var.
+   */
+  isEnvVar?: boolean | undefined;
+  /**
+   * Optional note about the bypass to be displayed in the UI
+   */
+  note?: string | undefined;
 };
 
 export type ProtectionBypass1 = {
@@ -1598,20 +1632,6 @@ export type UpdateProjectDataCacheWebAnalytics = {
   hasData?: boolean | undefined;
 };
 
-export const UpdateProjectDataCacheProjectsResponseAction = {
-  Log: "log",
-  Challenge: "challenge",
-  Deny: "deny",
-} as const;
-export type UpdateProjectDataCacheProjectsResponseAction = ClosedEnum<
-  typeof UpdateProjectDataCacheProjectsResponseAction
->;
-
-export type BotFilter = {
-  active: boolean;
-  action?: UpdateProjectDataCacheProjectsResponseAction | undefined;
-};
-
 export const UpdateProjectDataCacheProjectsResponse200Action = {
   Log: "log",
   Challenge: "challenge",
@@ -1621,7 +1641,7 @@ export type UpdateProjectDataCacheProjectsResponse200Action = ClosedEnum<
   typeof UpdateProjectDataCacheProjectsResponse200Action
 >;
 
-export type UpdateProjectDataCacheAiBots = {
+export type BotFilter = {
   active: boolean;
   action?: UpdateProjectDataCacheProjectsResponse200Action | undefined;
 };
@@ -1636,11 +1656,25 @@ export type UpdateProjectDataCacheProjectsResponse200ApplicationJSONAction =
     typeof UpdateProjectDataCacheProjectsResponse200ApplicationJSONAction
   >;
 
-export type UpdateProjectDataCacheOwasp = {
+export type UpdateProjectDataCacheAiBots = {
   active: boolean;
   action?:
     | UpdateProjectDataCacheProjectsResponse200ApplicationJSONAction
     | undefined;
+};
+
+export const UpdateProjectDataCacheProjectsResponseAction = {
+  Log: "log",
+  Challenge: "challenge",
+  Deny: "deny",
+} as const;
+export type UpdateProjectDataCacheProjectsResponseAction = ClosedEnum<
+  typeof UpdateProjectDataCacheProjectsResponseAction
+>;
+
+export type UpdateProjectDataCacheOwasp = {
+  active: boolean;
+  action?: UpdateProjectDataCacheProjectsResponseAction | undefined;
 };
 
 export type UpdateProjectDataCacheManagedRules = {
@@ -1973,6 +2007,21 @@ export type UpdateProjectDataCacheDismissedToasts = {
   value: Value4 | string | number | boolean | null;
 };
 
+export type CveShield = {
+  /**
+   * True if the CVE Shield has been enabled. Otherwise false.
+   */
+  enabled: boolean;
+  /**
+   * CVE threshold. It can range between 1 and 10.
+   */
+  threshold?: number | undefined;
+  /**
+   * List of CVE that we want to protect against.
+   */
+  cveList?: Array<string> | undefined;
+};
+
 export type UpdateProjectDataCacheResponseBody = {
   accountId: string;
   analytics?: Analytics | undefined;
@@ -2076,6 +2125,7 @@ export type UpdateProjectDataCacheResponseBody = {
   internalRoutes?: Array<InternalRoutes1 | InternalRoutes2> | undefined;
   hasDeployments?: boolean | undefined;
   dismissedToasts?: Array<UpdateProjectDataCacheDismissedToasts> | undefined;
+  cveShield?: CveShield | undefined;
 };
 
 /** @internal */
@@ -5481,6 +5531,65 @@ export const UpdateProjectDataCacheProjectsBuildMachineType$outboundSchema:
     UpdateProjectDataCacheProjectsBuildMachineType$inboundSchema;
 
 /** @internal */
+export const UpdateProjectDataCacheProjectsConfiguration$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectDataCacheProjectsConfiguration> = z
+    .nativeEnum(UpdateProjectDataCacheProjectsConfiguration);
+/** @internal */
+export const UpdateProjectDataCacheProjectsConfiguration$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectDataCacheProjectsConfiguration> =
+    UpdateProjectDataCacheProjectsConfiguration$inboundSchema;
+
+/** @internal */
+export const UpdateProjectDataCacheProjectsBuildQueue$inboundSchema: z.ZodType<
+  UpdateProjectDataCacheProjectsBuildQueue,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  configuration: UpdateProjectDataCacheProjectsConfiguration$inboundSchema
+    .optional(),
+});
+/** @internal */
+export type UpdateProjectDataCacheProjectsBuildQueue$Outbound = {
+  configuration?: string | undefined;
+};
+
+/** @internal */
+export const UpdateProjectDataCacheProjectsBuildQueue$outboundSchema: z.ZodType<
+  UpdateProjectDataCacheProjectsBuildQueue$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectDataCacheProjectsBuildQueue
+> = z.object({
+  configuration: UpdateProjectDataCacheProjectsConfiguration$outboundSchema
+    .optional(),
+});
+
+export function updateProjectDataCacheProjectsBuildQueueToJSON(
+  updateProjectDataCacheProjectsBuildQueue:
+    UpdateProjectDataCacheProjectsBuildQueue,
+): string {
+  return JSON.stringify(
+    UpdateProjectDataCacheProjectsBuildQueue$outboundSchema.parse(
+      updateProjectDataCacheProjectsBuildQueue,
+    ),
+  );
+}
+export function updateProjectDataCacheProjectsBuildQueueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateProjectDataCacheProjectsBuildQueue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateProjectDataCacheProjectsBuildQueue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateProjectDataCacheProjectsBuildQueue' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateProjectDataCacheResourceConfig$inboundSchema: z.ZodType<
   UpdateProjectDataCacheResourceConfig,
   z.ZodTypeDef,
@@ -5497,6 +5606,9 @@ export const UpdateProjectDataCacheResourceConfig$inboundSchema: z.ZodType<
   buildMachineType: UpdateProjectDataCacheProjectsBuildMachineType$inboundSchema
     .optional(),
   isNSNBDisabled: z.boolean().optional(),
+  buildQueue: z.lazy(() =>
+    UpdateProjectDataCacheProjectsBuildQueue$inboundSchema
+  ).optional(),
 });
 /** @internal */
 export type UpdateProjectDataCacheResourceConfig$Outbound = {
@@ -5508,6 +5620,7 @@ export type UpdateProjectDataCacheResourceConfig$Outbound = {
   elasticConcurrencyEnabled?: boolean | undefined;
   buildMachineType?: string | undefined;
   isNSNBDisabled?: boolean | undefined;
+  buildQueue?: UpdateProjectDataCacheProjectsBuildQueue$Outbound | undefined;
 };
 
 /** @internal */
@@ -5527,6 +5640,9 @@ export const UpdateProjectDataCacheResourceConfig$outboundSchema: z.ZodType<
   buildMachineType:
     UpdateProjectDataCacheProjectsBuildMachineType$outboundSchema.optional(),
   isNSNBDisabled: z.boolean().optional(),
+  buildQueue: z.lazy(() =>
+    UpdateProjectDataCacheProjectsBuildQueue$outboundSchema
+  ).optional(),
 });
 
 export function updateProjectDataCacheResourceConfigToJSON(
@@ -5699,6 +5815,56 @@ export const UpdateProjectDataCacheBuildMachineType$outboundSchema:
     UpdateProjectDataCacheBuildMachineType$inboundSchema;
 
 /** @internal */
+export const UpdateProjectDataCacheConfiguration$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectDataCacheConfiguration
+> = z.nativeEnum(UpdateProjectDataCacheConfiguration);
+/** @internal */
+export const UpdateProjectDataCacheConfiguration$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectDataCacheConfiguration> =
+    UpdateProjectDataCacheConfiguration$inboundSchema;
+
+/** @internal */
+export const UpdateProjectDataCacheBuildQueue$inboundSchema: z.ZodType<
+  UpdateProjectDataCacheBuildQueue,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  configuration: UpdateProjectDataCacheConfiguration$inboundSchema.optional(),
+});
+/** @internal */
+export type UpdateProjectDataCacheBuildQueue$Outbound = {
+  configuration?: string | undefined;
+};
+
+/** @internal */
+export const UpdateProjectDataCacheBuildQueue$outboundSchema: z.ZodType<
+  UpdateProjectDataCacheBuildQueue$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectDataCacheBuildQueue
+> = z.object({
+  configuration: UpdateProjectDataCacheConfiguration$outboundSchema.optional(),
+});
+
+export function updateProjectDataCacheBuildQueueToJSON(
+  updateProjectDataCacheBuildQueue: UpdateProjectDataCacheBuildQueue,
+): string {
+  return JSON.stringify(
+    UpdateProjectDataCacheBuildQueue$outboundSchema.parse(
+      updateProjectDataCacheBuildQueue,
+    ),
+  );
+}
+export function updateProjectDataCacheBuildQueueFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectDataCacheBuildQueue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectDataCacheBuildQueue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectDataCacheBuildQueue' from JSON`,
+  );
+}
+
+/** @internal */
 export const DefaultResourceConfig$inboundSchema: z.ZodType<
   DefaultResourceConfig,
   z.ZodTypeDef,
@@ -5714,6 +5880,8 @@ export const DefaultResourceConfig$inboundSchema: z.ZodType<
   buildMachineType: UpdateProjectDataCacheBuildMachineType$inboundSchema
     .optional(),
   isNSNBDisabled: z.boolean().optional(),
+  buildQueue: z.lazy(() => UpdateProjectDataCacheBuildQueue$inboundSchema)
+    .optional(),
 });
 /** @internal */
 export type DefaultResourceConfig$Outbound = {
@@ -5725,6 +5893,7 @@ export type DefaultResourceConfig$Outbound = {
   elasticConcurrencyEnabled?: boolean | undefined;
   buildMachineType?: string | undefined;
   isNSNBDisabled?: boolean | undefined;
+  buildQueue?: UpdateProjectDataCacheBuildQueue$Outbound | undefined;
 };
 
 /** @internal */
@@ -5743,6 +5912,8 @@ export const DefaultResourceConfig$outboundSchema: z.ZodType<
   buildMachineType: UpdateProjectDataCacheBuildMachineType$outboundSchema
     .optional(),
   isNSNBDisabled: z.boolean().optional(),
+  buildQueue: z.lazy(() => UpdateProjectDataCacheBuildQueue$outboundSchema)
+    .optional(),
 });
 
 export function defaultResourceConfigToJSON(
@@ -7196,7 +7367,7 @@ export const LastAliasRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  fromDeploymentId: z.string(),
+  fromDeploymentId: z.nullable(z.string()),
   toDeploymentId: z.string(),
   fromRollingReleaseId: z.string().optional(),
   jobStatus: JobStatus$inboundSchema,
@@ -7205,7 +7376,7 @@ export const LastAliasRequest$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type LastAliasRequest$Outbound = {
-  fromDeploymentId: string;
+  fromDeploymentId: string | null;
   toDeploymentId: string;
   fromRollingReleaseId?: string | undefined;
   jobStatus: string;
@@ -7219,7 +7390,7 @@ export const LastAliasRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   LastAliasRequest
 > = z.object({
-  fromDeploymentId: z.string(),
+  fromDeploymentId: z.nullable(z.string()),
   toDeploymentId: z.string(),
   fromRollingReleaseId: z.string().optional(),
   jobStatus: JobStatus$outboundSchema,
@@ -7253,12 +7424,16 @@ export const ProtectionBypass2$inboundSchema: z.ZodType<
   createdAt: z.number(),
   createdBy: z.string(),
   scope: z.literal("automation-bypass"),
+  isEnvVar: z.boolean().optional(),
+  note: z.string().optional(),
 });
 /** @internal */
 export type ProtectionBypass2$Outbound = {
   createdAt: number;
   createdBy: string;
   scope: "automation-bypass";
+  isEnvVar?: boolean | undefined;
+  note?: string | undefined;
 };
 
 /** @internal */
@@ -7270,6 +7445,8 @@ export const ProtectionBypass2$outboundSchema: z.ZodType<
   createdAt: z.number(),
   createdBy: z.string(),
   scope: z.literal("automation-bypass"),
+  isEnvVar: z.boolean().optional(),
+  note: z.string().optional(),
 });
 
 export function protectionBypass2ToJSON(
@@ -7730,13 +7907,13 @@ export function updateProjectDataCacheWebAnalyticsFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectDataCacheProjectsResponseAction$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectDataCacheProjectsResponseAction> = z
-    .nativeEnum(UpdateProjectDataCacheProjectsResponseAction);
+export const UpdateProjectDataCacheProjectsResponse200Action$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectDataCacheProjectsResponse200Action> = z
+    .nativeEnum(UpdateProjectDataCacheProjectsResponse200Action);
 /** @internal */
-export const UpdateProjectDataCacheProjectsResponseAction$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectDataCacheProjectsResponseAction> =
-    UpdateProjectDataCacheProjectsResponseAction$inboundSchema;
+export const UpdateProjectDataCacheProjectsResponse200Action$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectDataCacheProjectsResponse200Action> =
+    UpdateProjectDataCacheProjectsResponse200Action$inboundSchema;
 
 /** @internal */
 export const BotFilter$inboundSchema: z.ZodType<
@@ -7745,7 +7922,8 @@ export const BotFilter$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   active: z.boolean(),
-  action: UpdateProjectDataCacheProjectsResponseAction$inboundSchema.optional(),
+  action: UpdateProjectDataCacheProjectsResponse200Action$inboundSchema
+    .optional(),
 });
 /** @internal */
 export type BotFilter$Outbound = {
@@ -7760,7 +7938,7 @@ export const BotFilter$outboundSchema: z.ZodType<
   BotFilter
 > = z.object({
   active: z.boolean(),
-  action: UpdateProjectDataCacheProjectsResponseAction$outboundSchema
+  action: UpdateProjectDataCacheProjectsResponse200Action$outboundSchema
     .optional(),
 });
 
@@ -7778,13 +7956,18 @@ export function botFilterFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectDataCacheProjectsResponse200Action$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectDataCacheProjectsResponse200Action> = z
-    .nativeEnum(UpdateProjectDataCacheProjectsResponse200Action);
+export const UpdateProjectDataCacheProjectsResponse200ApplicationJSONAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateProjectDataCacheProjectsResponse200ApplicationJSONAction
+  > = z.nativeEnum(
+    UpdateProjectDataCacheProjectsResponse200ApplicationJSONAction,
+  );
 /** @internal */
-export const UpdateProjectDataCacheProjectsResponse200Action$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectDataCacheProjectsResponse200Action> =
-    UpdateProjectDataCacheProjectsResponse200Action$inboundSchema;
+export const UpdateProjectDataCacheProjectsResponse200ApplicationJSONAction$outboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateProjectDataCacheProjectsResponse200ApplicationJSONAction
+  > =
+    UpdateProjectDataCacheProjectsResponse200ApplicationJSONAction$inboundSchema;
 
 /** @internal */
 export const UpdateProjectDataCacheAiBots$inboundSchema: z.ZodType<
@@ -7793,8 +7976,9 @@ export const UpdateProjectDataCacheAiBots$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   active: z.boolean(),
-  action: UpdateProjectDataCacheProjectsResponse200Action$inboundSchema
-    .optional(),
+  action:
+    UpdateProjectDataCacheProjectsResponse200ApplicationJSONAction$inboundSchema
+      .optional(),
 });
 /** @internal */
 export type UpdateProjectDataCacheAiBots$Outbound = {
@@ -7809,8 +7993,9 @@ export const UpdateProjectDataCacheAiBots$outboundSchema: z.ZodType<
   UpdateProjectDataCacheAiBots
 > = z.object({
   active: z.boolean(),
-  action: UpdateProjectDataCacheProjectsResponse200Action$outboundSchema
-    .optional(),
+  action:
+    UpdateProjectDataCacheProjectsResponse200ApplicationJSONAction$outboundSchema
+      .optional(),
 });
 
 export function updateProjectDataCacheAiBotsToJSON(
@@ -7833,18 +8018,13 @@ export function updateProjectDataCacheAiBotsFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectDataCacheProjectsResponse200ApplicationJSONAction$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectDataCacheProjectsResponse200ApplicationJSONAction
-  > = z.nativeEnum(
-    UpdateProjectDataCacheProjectsResponse200ApplicationJSONAction,
-  );
+export const UpdateProjectDataCacheProjectsResponseAction$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectDataCacheProjectsResponseAction> = z
+    .nativeEnum(UpdateProjectDataCacheProjectsResponseAction);
 /** @internal */
-export const UpdateProjectDataCacheProjectsResponse200ApplicationJSONAction$outboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectDataCacheProjectsResponse200ApplicationJSONAction
-  > =
-    UpdateProjectDataCacheProjectsResponse200ApplicationJSONAction$inboundSchema;
+export const UpdateProjectDataCacheProjectsResponseAction$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectDataCacheProjectsResponseAction> =
+    UpdateProjectDataCacheProjectsResponseAction$inboundSchema;
 
 /** @internal */
 export const UpdateProjectDataCacheOwasp$inboundSchema: z.ZodType<
@@ -7853,9 +8033,7 @@ export const UpdateProjectDataCacheOwasp$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   active: z.boolean(),
-  action:
-    UpdateProjectDataCacheProjectsResponse200ApplicationJSONAction$inboundSchema
-      .optional(),
+  action: UpdateProjectDataCacheProjectsResponseAction$inboundSchema.optional(),
 });
 /** @internal */
 export type UpdateProjectDataCacheOwasp$Outbound = {
@@ -7870,9 +8048,8 @@ export const UpdateProjectDataCacheOwasp$outboundSchema: z.ZodType<
   UpdateProjectDataCacheOwasp
 > = z.object({
   active: z.boolean(),
-  action:
-    UpdateProjectDataCacheProjectsResponse200ApplicationJSONAction$outboundSchema
-      .optional(),
+  action: UpdateProjectDataCacheProjectsResponseAction$outboundSchema
+    .optional(),
 });
 
 export function updateProjectDataCacheOwaspToJSON(
@@ -10060,6 +10237,47 @@ export function updateProjectDataCacheDismissedToastsFromJSON(
 }
 
 /** @internal */
+export const CveShield$inboundSchema: z.ZodType<
+  CveShield,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabled: z.boolean(),
+  threshold: z.number().optional(),
+  cveList: z.array(z.string()).optional(),
+});
+/** @internal */
+export type CveShield$Outbound = {
+  enabled: boolean;
+  threshold?: number | undefined;
+  cveList?: Array<string> | undefined;
+};
+
+/** @internal */
+export const CveShield$outboundSchema: z.ZodType<
+  CveShield$Outbound,
+  z.ZodTypeDef,
+  CveShield
+> = z.object({
+  enabled: z.boolean(),
+  threshold: z.number().optional(),
+  cveList: z.array(z.string()).optional(),
+});
+
+export function cveShieldToJSON(cveShield: CveShield): string {
+  return JSON.stringify(CveShield$outboundSchema.parse(cveShield));
+}
+export function cveShieldFromJSON(
+  jsonString: string,
+): SafeParseResult<CveShield, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CveShield$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CveShield' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateProjectDataCacheResponseBody$inboundSchema: z.ZodType<
   UpdateProjectDataCacheResponseBody,
   z.ZodTypeDef,
@@ -10204,6 +10422,7 @@ export const UpdateProjectDataCacheResponseBody$inboundSchema: z.ZodType<
   dismissedToasts: z.array(
     z.lazy(() => UpdateProjectDataCacheDismissedToasts$inboundSchema),
   ).optional(),
+  cveShield: z.lazy(() => CveShield$inboundSchema).optional(),
 });
 /** @internal */
 export type UpdateProjectDataCacheResponseBody$Outbound = {
@@ -10316,6 +10535,7 @@ export type UpdateProjectDataCacheResponseBody$Outbound = {
   dismissedToasts?:
     | Array<UpdateProjectDataCacheDismissedToasts$Outbound>
     | undefined;
+  cveShield?: CveShield$Outbound | undefined;
 };
 
 /** @internal */
@@ -10466,6 +10686,7 @@ export const UpdateProjectDataCacheResponseBody$outboundSchema: z.ZodType<
   dismissedToasts: z.array(
     z.lazy(() => UpdateProjectDataCacheDismissedToasts$outboundSchema),
   ).optional(),
+  cveShield: z.lazy(() => CveShield$outboundSchema).optional(),
 });
 
 export function updateProjectDataCacheResponseBodyToJSON(

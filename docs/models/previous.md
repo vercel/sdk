@@ -9,7 +9,7 @@ let value: Previous = {
   project: {
     id: "<id>",
     staticIps: {
-      enabled: true,
+      enabled: false,
     },
   },
 };
@@ -19,4 +19,4 @@ let value: Previous = {
 
 | Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `project`                                                                                  | [models.UserEventPayload99PreviousProject](../models/usereventpayload99previousproject.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `project`                                                                                  | [models.UserEventPayload98PreviousProject](../models/usereventpayload98previousproject.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |

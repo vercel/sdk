@@ -951,6 +951,91 @@ func (e *GetDeploymentChecksConclusion2) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type GetDeploymentCve2 struct {
+	ID          string  `json:"id"`
+	Score       float64 `json:"score"`
+	Description *string `json:"description,omitempty"`
+	Link        *string `json:"link,omitempty"`
+}
+
+func (g GetDeploymentCve2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentCve2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "score"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetDeploymentCve2) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *GetDeploymentCve2) GetScore() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Score
+}
+
+func (o *GetDeploymentCve2) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *GetDeploymentCve2) GetLink() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Link
+}
+
+// GetDeploymentCveVulnerability2 - Since December 2025 - Temporary for Christmas hackathon 2025 CVE vulnerabilities found during build, only populated when CVE Shield is enabled and vulnerabilities are detected. Only accessible when CveShieldEnabled feature flag is enabled
+type GetDeploymentCveVulnerability2 struct {
+	PackageName    string            `json:"packageName"`
+	PackageVersion string            `json:"packageVersion"`
+	Cve            GetDeploymentCve2 `json:"cve"`
+}
+
+func (g GetDeploymentCveVulnerability2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentCveVulnerability2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"packageName", "packageVersion", "cve"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetDeploymentCveVulnerability2) GetPackageName() string {
+	if o == nil {
+		return ""
+	}
+	return o.PackageName
+}
+
+func (o *GetDeploymentCveVulnerability2) GetPackageVersion() string {
+	if o == nil {
+		return ""
+	}
+	return o.PackageVersion
+}
+
+func (o *GetDeploymentCveVulnerability2) GetCve() GetDeploymentCve2 {
+	if o == nil {
+		return GetDeploymentCve2{}
+	}
+	return o.Cve
+}
+
 type GetDeploymentGitSourceTypeBitbucket6 string
 
 const (
@@ -3132,10 +3217,12 @@ type Lambdas2 struct {
 	// Computed field that is only available for deployments with a microfrontend configuration.
 	DefaultRoute *string  `json:"defaultRoute,omitempty"`
 	CanceledAt   *float64 `json:"canceledAt,omitempty"`
-	ErrorCode    *string  `json:"errorCode,omitempty"`
-	ErrorLink    *string  `json:"errorLink,omitempty"`
-	ErrorMessage *string  `json:"errorMessage,omitempty"`
-	ErrorStep    *string  `json:"errorStep,omitempty"`
+	// Since December 2025 - Temporary for Christmas hackathon 2025 CVE vulnerabilities found during build, only populated when CVE Shield is enabled and vulnerabilities are detected. Only accessible when CveShieldEnabled feature flag is enabled
+	CveVulnerabilities []GetDeploymentCveVulnerability2 `json:"cveVulnerabilities,omitempty"`
+	ErrorCode          *string                          `json:"errorCode,omitempty"`
+	ErrorLink          *string                          `json:"errorLink,omitempty"`
+	ErrorMessage       *string                          `json:"errorMessage,omitempty"`
+	ErrorStep          *string                          `json:"errorStep,omitempty"`
 	// Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service
 	PassiveRegions    []string                      `json:"passiveRegions,omitempty"`
 	GitSource         *GetDeploymentGitSourceUnion2 `json:"gitSource,omitempty"`
@@ -3419,6 +3506,13 @@ func (o *Lambdas2) GetCanceledAt() *float64 {
 		return nil
 	}
 	return o.CanceledAt
+}
+
+func (o *Lambdas2) GetCveVulnerabilities() []GetDeploymentCveVulnerability2 {
+	if o == nil {
+		return nil
+	}
+	return o.CveVulnerabilities
 }
 
 func (o *Lambdas2) GetErrorCode() *string {
@@ -5377,6 +5471,91 @@ func (e *GetDeploymentChecksConclusion1) UnmarshalJSON(data []byte) error {
 	default:
 		return fmt.Errorf("invalid value for GetDeploymentChecksConclusion1: %v", v)
 	}
+}
+
+type GetDeploymentCve1 struct {
+	ID          string  `json:"id"`
+	Score       float64 `json:"score"`
+	Description *string `json:"description,omitempty"`
+	Link        *string `json:"link,omitempty"`
+}
+
+func (g GetDeploymentCve1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentCve1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "score"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetDeploymentCve1) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *GetDeploymentCve1) GetScore() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Score
+}
+
+func (o *GetDeploymentCve1) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *GetDeploymentCve1) GetLink() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Link
+}
+
+// GetDeploymentCveVulnerability1 - Since December 2025 - Temporary for Christmas hackathon 2025 CVE vulnerabilities found during build, only populated when CVE Shield is enabled and vulnerabilities are detected. Only accessible when CveShieldEnabled feature flag is enabled
+type GetDeploymentCveVulnerability1 struct {
+	PackageName    string            `json:"packageName"`
+	PackageVersion string            `json:"packageVersion"`
+	Cve            GetDeploymentCve1 `json:"cve"`
+}
+
+func (g GetDeploymentCveVulnerability1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentCveVulnerability1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"packageName", "packageVersion", "cve"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetDeploymentCveVulnerability1) GetPackageName() string {
+	if o == nil {
+		return ""
+	}
+	return o.PackageName
+}
+
+func (o *GetDeploymentCveVulnerability1) GetPackageVersion() string {
+	if o == nil {
+		return ""
+	}
+	return o.PackageVersion
+}
+
+func (o *GetDeploymentCveVulnerability1) GetCve() GetDeploymentCve1 {
+	if o == nil {
+		return GetDeploymentCve1{}
+	}
+	return o.Cve
 }
 
 type GetDeploymentGitSourceTypeBitbucket3 string
@@ -9805,6 +9984,7 @@ type GetDeploymentRoute1 struct {
 	Missing       []GetDeploymentMissingUnion `json:"missing,omitempty"`
 	Mitigate      *GetDeploymentMitigate      `json:"mitigate,omitempty"`
 	Transforms    []GetDeploymentTransform    `json:"transforms,omitempty"`
+	Env           []string                    `json:"env,omitempty"`
 	Locale        *GetDeploymentLocale        `json:"locale,omitempty"`
 	// A middleware key within the `output` key under the build result. Overrides a `middleware` definition.
 	MiddlewarePath *string `json:"middlewarePath,omitempty"`
@@ -9921,6 +10101,13 @@ func (o *GetDeploymentRoute1) GetTransforms() []GetDeploymentTransform {
 		return nil
 	}
 	return o.Transforms
+}
+
+func (o *GetDeploymentRoute1) GetEnv() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Env
 }
 
 func (o *GetDeploymentRoute1) GetLocale() *GetDeploymentLocale {
@@ -11221,10 +11408,12 @@ type Lambdas1 struct {
 	// Computed field that is only available for deployments with a microfrontend configuration.
 	DefaultRoute *string  `json:"defaultRoute,omitempty"`
 	CanceledAt   *float64 `json:"canceledAt,omitempty"`
-	ErrorCode    *string  `json:"errorCode,omitempty"`
-	ErrorLink    *string  `json:"errorLink,omitempty"`
-	ErrorMessage *string  `json:"errorMessage,omitempty"`
-	ErrorStep    *string  `json:"errorStep,omitempty"`
+	// Since December 2025 - Temporary for Christmas hackathon 2025 CVE vulnerabilities found during build, only populated when CVE Shield is enabled and vulnerabilities are detected. Only accessible when CveShieldEnabled feature flag is enabled
+	CveVulnerabilities []GetDeploymentCveVulnerability1 `json:"cveVulnerabilities,omitempty"`
+	ErrorCode          *string                          `json:"errorCode,omitempty"`
+	ErrorLink          *string                          `json:"errorLink,omitempty"`
+	ErrorMessage       *string                          `json:"errorMessage,omitempty"`
+	ErrorStep          *string                          `json:"errorStep,omitempty"`
 	// Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service
 	PassiveRegions    []string                      `json:"passiveRegions,omitempty"`
 	GitSource         *GetDeploymentGitSourceUnion1 `json:"gitSource,omitempty"`
@@ -11617,6 +11806,13 @@ func (o *Lambdas1) GetCanceledAt() *float64 {
 		return nil
 	}
 	return o.CanceledAt
+}
+
+func (o *Lambdas1) GetCveVulnerabilities() []GetDeploymentCveVulnerability1 {
+	if o == nil {
+		return nil
+	}
+	return o.CveVulnerabilities
 }
 
 func (o *Lambdas1) GetErrorCode() *string {

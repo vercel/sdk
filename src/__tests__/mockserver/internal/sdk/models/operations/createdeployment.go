@@ -3374,6 +3374,69 @@ func (e *CreateDeploymentChecksConclusion) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type CreateDeploymentCve struct {
+	ID          string  `json:"id"`
+	Score       float64 `json:"score"`
+	Description *string `json:"description,omitempty"`
+	Link        *string `json:"link,omitempty"`
+}
+
+func (o *CreateDeploymentCve) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *CreateDeploymentCve) GetScore() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Score
+}
+
+func (o *CreateDeploymentCve) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *CreateDeploymentCve) GetLink() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Link
+}
+
+// CreateDeploymentCveVulnerability - Since December 2025 - Temporary for Christmas hackathon 2025 CVE vulnerabilities found during build, only populated when CVE Shield is enabled and vulnerabilities are detected. Only accessible when CveShieldEnabled feature flag is enabled
+type CreateDeploymentCveVulnerability struct {
+	PackageName    string              `json:"packageName"`
+	PackageVersion string              `json:"packageVersion"`
+	Cve            CreateDeploymentCve `json:"cve"`
+}
+
+func (o *CreateDeploymentCveVulnerability) GetPackageName() string {
+	if o == nil {
+		return ""
+	}
+	return o.PackageName
+}
+
+func (o *CreateDeploymentCveVulnerability) GetPackageVersion() string {
+	if o == nil {
+		return ""
+	}
+	return o.PackageVersion
+}
+
+func (o *CreateDeploymentCveVulnerability) GetCve() CreateDeploymentCve {
+	if o == nil {
+		return CreateDeploymentCve{}
+	}
+	return o.Cve
+}
+
 type CreateDeploymentGitSourceTypeLambdasBitbucket3 string
 
 const (
@@ -7745,6 +7808,7 @@ type CreateDeploymentRoute1 struct {
 	Missing       []CreateDeploymentMissingUnion `json:"missing,omitempty"`
 	Mitigate      *CreateDeploymentMitigate      `json:"mitigate,omitempty"`
 	Transforms    []CreateDeploymentTransform    `json:"transforms,omitempty"`
+	Env           []string                       `json:"env,omitempty"`
 	Locale        *CreateDeploymentLocale        `json:"locale,omitempty"`
 	// A middleware key within the `output` key under the build result. Overrides a `middleware` definition.
 	MiddlewarePath *string `json:"middlewarePath,omitempty"`
@@ -7861,6 +7925,13 @@ func (o *CreateDeploymentRoute1) GetTransforms() []CreateDeploymentTransform {
 		return nil
 	}
 	return o.Transforms
+}
+
+func (o *CreateDeploymentRoute1) GetEnv() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Env
 }
 
 func (o *CreateDeploymentRoute1) GetLocale() *CreateDeploymentLocale {
@@ -9128,10 +9199,12 @@ type CreateDeploymentResponseBody struct {
 	// Computed field that is only available for deployments with a microfrontend configuration.
 	DefaultRoute *string  `json:"defaultRoute,omitempty"`
 	CanceledAt   *float64 `json:"canceledAt,omitempty"`
-	ErrorCode    *string  `json:"errorCode,omitempty"`
-	ErrorLink    *string  `json:"errorLink,omitempty"`
-	ErrorMessage *string  `json:"errorMessage,omitempty"`
-	ErrorStep    *string  `json:"errorStep,omitempty"`
+	// Since December 2025 - Temporary for Christmas hackathon 2025 CVE vulnerabilities found during build, only populated when CVE Shield is enabled and vulnerabilities are detected. Only accessible when CveShieldEnabled feature flag is enabled
+	CveVulnerabilities []CreateDeploymentCveVulnerability `json:"cveVulnerabilities,omitempty"`
+	ErrorCode          *string                            `json:"errorCode,omitempty"`
+	ErrorLink          *string                            `json:"errorLink,omitempty"`
+	ErrorMessage       *string                            `json:"errorMessage,omitempty"`
+	ErrorStep          *string                            `json:"errorStep,omitempty"`
 	// Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service
 	PassiveRegions    []string                               `json:"passiveRegions,omitempty"`
 	GitSource         *CreateDeploymentGitSourceLambdasUnion `json:"gitSource,omitempty"`
@@ -9513,6 +9586,13 @@ func (o *CreateDeploymentResponseBody) GetCanceledAt() *float64 {
 		return nil
 	}
 	return o.CanceledAt
+}
+
+func (o *CreateDeploymentResponseBody) GetCveVulnerabilities() []CreateDeploymentCveVulnerability {
+	if o == nil {
+		return nil
+	}
+	return o.CveVulnerabilities
 }
 
 func (o *CreateDeploymentResponseBody) GetErrorCode() *string {

@@ -483,6 +483,22 @@ export type CancelDeploymentChecksConclusion = ClosedEnum<
   typeof CancelDeploymentChecksConclusion
 >;
 
+export type CancelDeploymentCve = {
+  id: string;
+  score: number;
+  description?: string | undefined;
+  link?: string | undefined;
+};
+
+/**
+ * Since December 2025 - Temporary for Christmas hackathon 2025 CVE vulnerabilities found during build, only populated when CVE Shield is enabled and vulnerabilities are detected. Only accessible when CveShieldEnabled feature flag is enabled
+ */
+export type CancelDeploymentCveVulnerabilities = {
+  packageName: string;
+  packageVersion: string;
+  cve: CancelDeploymentCve;
+};
+
 export const CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody15Type =
   {
     Bitbucket: "bitbucket",
@@ -1214,6 +1230,7 @@ export type CancelDeploymentRoutes1 = {
     | undefined;
   mitigate?: CancelDeploymentRoutesMitigate | undefined;
   transforms?: Array<RoutesTransforms> | undefined;
+  env?: Array<string> | undefined;
   locale?: RoutesLocale | undefined;
   /**
    * A middleware key within the `output` key under the build result. Overrides a `middleware` definition.
@@ -1530,6 +1547,10 @@ export type CancelDeploymentResponseBody = {
    */
   defaultRoute?: string | undefined;
   canceledAt?: number | undefined;
+  /**
+   * Since December 2025 - Temporary for Christmas hackathon 2025 CVE vulnerabilities found during build, only populated when CVE Shield is enabled and vulnerabilities are detected. Only accessible when CveShieldEnabled feature flag is enabled
+   */
+  cveVulnerabilities?: Array<CancelDeploymentCveVulnerabilities> | undefined;
   errorCode?: string | undefined;
   errorLink?: string | undefined;
   errorMessage?: string | null | undefined;
@@ -2974,6 +2995,102 @@ export const CancelDeploymentChecksConclusion$inboundSchema: z.ZodNativeEnum<
 export const CancelDeploymentChecksConclusion$outboundSchema: z.ZodNativeEnum<
   typeof CancelDeploymentChecksConclusion
 > = CancelDeploymentChecksConclusion$inboundSchema;
+
+/** @internal */
+export const CancelDeploymentCve$inboundSchema: z.ZodType<
+  CancelDeploymentCve,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  score: z.number(),
+  description: z.string().optional(),
+  link: z.string().optional(),
+});
+/** @internal */
+export type CancelDeploymentCve$Outbound = {
+  id: string;
+  score: number;
+  description?: string | undefined;
+  link?: string | undefined;
+};
+
+/** @internal */
+export const CancelDeploymentCve$outboundSchema: z.ZodType<
+  CancelDeploymentCve$Outbound,
+  z.ZodTypeDef,
+  CancelDeploymentCve
+> = z.object({
+  id: z.string(),
+  score: z.number(),
+  description: z.string().optional(),
+  link: z.string().optional(),
+});
+
+export function cancelDeploymentCveToJSON(
+  cancelDeploymentCve: CancelDeploymentCve,
+): string {
+  return JSON.stringify(
+    CancelDeploymentCve$outboundSchema.parse(cancelDeploymentCve),
+  );
+}
+export function cancelDeploymentCveFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelDeploymentCve, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelDeploymentCve$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentCve' from JSON`,
+  );
+}
+
+/** @internal */
+export const CancelDeploymentCveVulnerabilities$inboundSchema: z.ZodType<
+  CancelDeploymentCveVulnerabilities,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  packageName: z.string(),
+  packageVersion: z.string(),
+  cve: z.lazy(() => CancelDeploymentCve$inboundSchema),
+});
+/** @internal */
+export type CancelDeploymentCveVulnerabilities$Outbound = {
+  packageName: string;
+  packageVersion: string;
+  cve: CancelDeploymentCve$Outbound;
+};
+
+/** @internal */
+export const CancelDeploymentCveVulnerabilities$outboundSchema: z.ZodType<
+  CancelDeploymentCveVulnerabilities$Outbound,
+  z.ZodTypeDef,
+  CancelDeploymentCveVulnerabilities
+> = z.object({
+  packageName: z.string(),
+  packageVersion: z.string(),
+  cve: z.lazy(() => CancelDeploymentCve$outboundSchema),
+});
+
+export function cancelDeploymentCveVulnerabilitiesToJSON(
+  cancelDeploymentCveVulnerabilities: CancelDeploymentCveVulnerabilities,
+): string {
+  return JSON.stringify(
+    CancelDeploymentCveVulnerabilities$outboundSchema.parse(
+      cancelDeploymentCveVulnerabilities,
+    ),
+  );
+}
+export function cancelDeploymentCveVulnerabilitiesFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelDeploymentCveVulnerabilities, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelDeploymentCveVulnerabilities$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentCveVulnerabilities' from JSON`,
+  );
+}
 
 /** @internal */
 export const CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody15Type$inboundSchema:
@@ -6031,6 +6148,7 @@ export const CancelDeploymentRoutes1$inboundSchema: z.ZodType<
   mitigate: z.lazy(() => CancelDeploymentRoutesMitigate$inboundSchema)
     .optional(),
   transforms: z.array(z.lazy(() => RoutesTransforms$inboundSchema)).optional(),
+  env: z.array(z.string()).optional(),
   locale: z.lazy(() => RoutesLocale$inboundSchema).optional(),
   middlewarePath: z.string().optional(),
   middlewareRawSrc: z.array(z.string()).optional(),
@@ -6066,6 +6184,7 @@ export type CancelDeploymentRoutes1$Outbound = {
     | undefined;
   mitigate?: CancelDeploymentRoutesMitigate$Outbound | undefined;
   transforms?: Array<RoutesTransforms$Outbound> | undefined;
+  env?: Array<string> | undefined;
   locale?: RoutesLocale$Outbound | undefined;
   middlewarePath?: string | undefined;
   middlewareRawSrc?: Array<string> | undefined;
@@ -6119,6 +6238,7 @@ export const CancelDeploymentRoutes1$outboundSchema: z.ZodType<
   mitigate: z.lazy(() => CancelDeploymentRoutesMitigate$outboundSchema)
     .optional(),
   transforms: z.array(z.lazy(() => RoutesTransforms$outboundSchema)).optional(),
+  env: z.array(z.string()).optional(),
   locale: z.lazy(() => RoutesLocale$outboundSchema).optional(),
   middlewarePath: z.string().optional(),
   middlewareRawSrc: z.array(z.string()).optional(),
@@ -7051,6 +7171,9 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
   deletedAt: z.nullable(z.number()).optional(),
   defaultRoute: z.string().optional(),
   canceledAt: z.number().optional(),
+  cveVulnerabilities: z.array(
+    z.lazy(() => CancelDeploymentCveVulnerabilities$inboundSchema),
+  ).optional(),
   errorCode: z.string().optional(),
   errorLink: z.string().optional(),
   errorMessage: z.nullable(z.string()).optional(),
@@ -7180,6 +7303,9 @@ export type CancelDeploymentResponseBody$Outbound = {
   deletedAt?: number | null | undefined;
   defaultRoute?: string | undefined;
   canceledAt?: number | undefined;
+  cveVulnerabilities?:
+    | Array<CancelDeploymentCveVulnerabilities$Outbound>
+    | undefined;
   errorCode?: string | undefined;
   errorLink?: string | undefined;
   errorMessage?: string | null | undefined;
@@ -7318,6 +7444,9 @@ export const CancelDeploymentResponseBody$outboundSchema: z.ZodType<
   deletedAt: z.nullable(z.number()).optional(),
   defaultRoute: z.string().optional(),
   canceledAt: z.number().optional(),
+  cveVulnerabilities: z.array(
+    z.lazy(() => CancelDeploymentCveVulnerabilities$outboundSchema),
+  ).optional(),
   errorCode: z.string().optional(),
   errorLink: z.string().optional(),
   errorMessage: z.nullable(z.string()).optional(),

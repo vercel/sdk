@@ -58,6 +58,7 @@ export const GetWebhookEvents = {
   FirewallAttack: "firewall.attack",
   FirewallSystemRuleAnomaly: "firewall.system-rule-anomaly",
   FirewallCustomRuleAnomaly: "firewall.custom-rule-anomaly",
+  AlertsTriggered: "alerts.triggered",
   IntegrationConfigurationPermissionUpgraded:
     "integration-configuration.permission-upgraded",
   IntegrationConfigurationRemoved: "integration-configuration.removed",
@@ -105,7 +106,7 @@ export const GetWebhookEvents = {
   ObservabilityAnomalyError: "observability.anomaly-error",
   ObservabilityUsageAnomaly: "observability.usage-anomaly",
   ObservabilityErrorAnomaly: "observability.error-anomaly",
-  ObservabilityAnomalyBotId: "observability.anomaly-botId",
+  BotidAnomaly: "botid.anomaly",
   TestWebhook: "test-webhook",
 } as const;
 /**

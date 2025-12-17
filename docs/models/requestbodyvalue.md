@@ -12,7 +12,7 @@ let value: RequestBodyValue = {
     {
       conditions: [
         {
-          type: "target_path",
+          type: "route",
           op: "re",
         },
       ],
@@ -31,3 +31,5 @@ let value: RequestBodyValue = {
 | `active`                                                                                                                           | *boolean*                                                                                                                          | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
 | `conditionGroup`                                                                                                                   | [models.RequestBodyConditionGroup](../models/requestbodyconditiongroup.md)[]                                                       | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
 | `action`                                                                                                                           | [models.UpdateFirewallConfigRequestBodySecurityRequest2Action](../models/updatefirewallconfigrequestbodysecurityrequest2action.md) | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| `valid`                                                                                                                            | *boolean*                                                                                                                          | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
+| `validationErrors`                                                                                                                 | *models.RequestBodyValidationErrors*                                                                                               | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |

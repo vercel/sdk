@@ -3,11 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyPagination } from "@vercel/sdk/models/listaccessgroupsop.js";
+import { ResponseBodyPagination } from "@vercel/sdk/models/getv1bulkredirectsop.js";
 
 let value: ResponseBodyPagination = {
-  count: 727.21,
-  next: "<value>",
+  page: 727.21,
+  perPage: 4167.55,
+  numPages: 3178.73,
 };
 ```
 
@@ -15,5 +16,6 @@ let value: ResponseBodyPagination = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `count`            | *number*           | :heavy_check_mark: | N/A                |
-| `next`             | *string*           | :heavy_check_mark: | N/A                |
+| `page`             | *number*           | :heavy_check_mark: | N/A                |
+| `perPage`          | *number*           | :heavy_check_mark: | N/A                |
+| `numPages`         | *number*           | :heavy_check_mark: | N/A                |

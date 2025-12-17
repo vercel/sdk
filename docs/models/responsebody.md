@@ -12,10 +12,10 @@ const value: models.ResponseBody1 = {
 };
 ```
 
-### `models.ResponseBody2`
+### `models.ArtifactQueryResponseBody2`
 
 ```typescript
-const value: models.ResponseBody2 = {
+const value: models.ArtifactQueryResponseBody2 = {
   error: {
     message: "<value>",
   },

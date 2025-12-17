@@ -4,7 +4,6 @@
 
 ### Available Operations
 
-* [buyDomain](#buydomain) - Purchase a domain (deprecated)
 * [checkDomainPrice](#checkdomainprice) - Check the price for a domain (deprecated)
 * [checkDomainStatus](#checkdomainstatus) - Check a Domain Availability (deprecated)
 * [getDomainConfig](#getdomainconfig) - Get a Domain's configuration
@@ -13,111 +12,6 @@
 * [createOrTransferDomain](#createortransferdomain) - Add an existing domain to the Vercel platform
 * [patchDomain](#patchdomain) - Update or move apex domain
 * [deleteDomain](#deletedomain) - Remove a domain by name
-
-## buyDomain
-
-This endpoint is deprecated and replaced with the endpoint [Buy a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-a-domain). Purchases the specified domain.
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="buyDomain" method="post" path="/v5/domains/buy" -->
-```typescript
-import { Vercel } from "@vercel/sdk";
-
-const vercel = new Vercel({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const result = await vercel.domains.buyDomain({
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-    requestBody: {
-      name: "example.com",
-      expectedPrice: 10,
-      renew: true,
-      country: "US",
-      orgName: "Acme Inc.",
-      firstName: "Jane",
-      lastName: "Doe",
-      address1: "340 S Lemon Ave Suite 4133",
-      city: "San Francisco",
-      state: "CA",
-      postalCode: "91789",
-      phone: "+1.4158551452",
-      email: "jane.doe@someplace.com",
-    },
-  });
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { VercelCore } from "@vercel/sdk/core.js";
-import { domainsBuyDomain } from "@vercel/sdk/funcs/domainsBuyDomain.js";
-
-// Use `VercelCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const vercel = new VercelCore({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const res = await domainsBuyDomain(vercel, {
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-    requestBody: {
-      name: "example.com",
-      expectedPrice: 10,
-      renew: true,
-      country: "US",
-      orgName: "Acme Inc.",
-      firstName: "Jane",
-      lastName: "Doe",
-      address1: "340 S Lemon Ave Suite 4133",
-      city: "San Francisco",
-      state: "CA",
-      postalCode: "91789",
-      phone: "+1.4158551452",
-      email: "jane.doe@someplace.com",
-    },
-  });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("domainsBuyDomain failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.BuyDomainRequest](../../models/buydomainrequest.md)                                                                                                                    | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[models.BuyDomainResponse](../../models/buydomainresponse.md)\>**
-
-### Errors
-
-| Error Type      | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## checkDomainPrice
 

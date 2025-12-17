@@ -103,6 +103,18 @@ export type UpdateProjectBuildMachineType = ClosedEnum<
   typeof UpdateProjectBuildMachineType
 >;
 
+export const UpdateProjectConfiguration = {
+  SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
+  WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
+} as const;
+export type UpdateProjectConfiguration = ClosedEnum<
+  typeof UpdateProjectConfiguration
+>;
+
+export type UpdateProjectBuildQueue = {
+  configuration?: UpdateProjectConfiguration | undefined;
+};
+
 export const UpdateProjectFunctionDefaultMemoryType = {
   StandardLegacy: "standard_legacy",
   Standard: "standard",
@@ -117,6 +129,7 @@ export type UpdateProjectFunctionDefaultMemoryType = ClosedEnum<
  */
 export type UpdateProjectResourceConfig = {
   buildMachineType?: UpdateProjectBuildMachineType | undefined;
+  buildQueue?: UpdateProjectBuildQueue | undefined;
   fluid?: boolean | undefined;
   /**
    * The regions to deploy Vercel Functions to for this project
@@ -1392,6 +1405,18 @@ export type UpdateProjectProjectsBuildMachineType = ClosedEnum<
   typeof UpdateProjectProjectsBuildMachineType
 >;
 
+export const UpdateProjectProjectsConfiguration = {
+  SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
+  WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
+} as const;
+export type UpdateProjectProjectsConfiguration = ClosedEnum<
+  typeof UpdateProjectProjectsConfiguration
+>;
+
+export type UpdateProjectProjectsBuildQueue = {
+  configuration?: UpdateProjectProjectsConfiguration | undefined;
+};
+
 export type UpdateProjectProjectsResourceConfig = {
   elasticConcurrencyEnabled?: boolean | undefined;
   fluid?: boolean | undefined;
@@ -1403,6 +1428,7 @@ export type UpdateProjectProjectsResourceConfig = {
   functionZeroConfigFailover?: boolean | undefined;
   buildMachineType?: UpdateProjectProjectsBuildMachineType | undefined;
   isNSNBDisabled?: boolean | undefined;
+  buildQueue?: UpdateProjectProjectsBuildQueue | undefined;
 };
 
 /**
@@ -1484,6 +1510,18 @@ export type UpdateProjectProjectsResponseBuildMachineType = ClosedEnum<
   typeof UpdateProjectProjectsResponseBuildMachineType
 >;
 
+export const UpdateProjectProjectsResponseConfiguration = {
+  SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
+  WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
+} as const;
+export type UpdateProjectProjectsResponseConfiguration = ClosedEnum<
+  typeof UpdateProjectProjectsResponseConfiguration
+>;
+
+export type UpdateProjectProjectsResponseBuildQueue = {
+  configuration?: UpdateProjectProjectsResponseConfiguration | undefined;
+};
+
 export type UpdateProjectDefaultResourceConfig = {
   elasticConcurrencyEnabled?: boolean | undefined;
   fluid?: boolean | undefined;
@@ -1495,6 +1533,7 @@ export type UpdateProjectDefaultResourceConfig = {
   functionZeroConfigFailover?: boolean | undefined;
   buildMachineType?: UpdateProjectProjectsResponseBuildMachineType | undefined;
   isNSNBDisabled?: boolean | undefined;
+  buildQueue?: UpdateProjectProjectsResponseBuildQueue | undefined;
 };
 
 export type UpdateProjectProjectsStaticIps = {
@@ -1934,7 +1973,7 @@ export type UpdateProjectProjectsResponse200ApplicationJSONType = ClosedEnum<
 >;
 
 export type UpdateProjectLastAliasRequest = {
-  fromDeploymentId: string;
+  fromDeploymentId: string | null;
   toDeploymentId: string;
   /**
    * If rolling back from a rolling release, fromDeploymentId captures the "base" of that rolling release, and fromRollingReleaseId captures the "target" of that rolling release.
@@ -1949,6 +1988,14 @@ export type UpdateProjectProtectionBypass2 = {
   createdAt: number;
   createdBy: string;
   scope: "automation-bypass";
+  /**
+   * When there was only one bypass, it was automatically set as an env var on deployments. With multiple bypasses, there is always one bypass that is selected as the default, and gets set as an env var on deployments. As this is a new field, undefined means that the bypass is the env var. If there are any automation bypasses, exactly one must be the env var.
+   */
+  isEnvVar?: boolean | undefined;
+  /**
+   * Optional note about the bypass to be displayed in the UI
+   */
+  note?: string | undefined;
 };
 
 export type UpdateProjectProtectionBypass1 = {
@@ -2453,6 +2500,21 @@ export type UpdateProjectProjectsDismissedToasts = {
   value: UpdateProjectValue4 | string | number | boolean | null;
 };
 
+export type UpdateProjectCveShield = {
+  /**
+   * True if the CVE Shield has been enabled. Otherwise false.
+   */
+  enabled: boolean;
+  /**
+   * CVE threshold. It can range between 1 and 10.
+   */
+  threshold?: number | undefined;
+  /**
+   * List of CVE that we want to protect against.
+   */
+  cveList?: Array<string> | undefined;
+};
+
 /**
  * The project was successfully updated
  */
@@ -2573,6 +2635,7 @@ export type UpdateProjectResponseBody = {
     | undefined;
   hasDeployments?: boolean | undefined;
   dismissedToasts?: Array<UpdateProjectProjectsDismissedToasts> | undefined;
+  cveShield?: UpdateProjectCveShield | undefined;
 };
 
 /** @internal */
@@ -2603,6 +2666,54 @@ export const UpdateProjectBuildMachineType$outboundSchema: z.ZodNativeEnum<
 > = UpdateProjectBuildMachineType$inboundSchema;
 
 /** @internal */
+export const UpdateProjectConfiguration$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectConfiguration
+> = z.nativeEnum(UpdateProjectConfiguration);
+/** @internal */
+export const UpdateProjectConfiguration$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectConfiguration
+> = UpdateProjectConfiguration$inboundSchema;
+
+/** @internal */
+export const UpdateProjectBuildQueue$inboundSchema: z.ZodType<
+  UpdateProjectBuildQueue,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  configuration: UpdateProjectConfiguration$inboundSchema.optional(),
+});
+/** @internal */
+export type UpdateProjectBuildQueue$Outbound = {
+  configuration?: string | undefined;
+};
+
+/** @internal */
+export const UpdateProjectBuildQueue$outboundSchema: z.ZodType<
+  UpdateProjectBuildQueue$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectBuildQueue
+> = z.object({
+  configuration: UpdateProjectConfiguration$outboundSchema.optional(),
+});
+
+export function updateProjectBuildQueueToJSON(
+  updateProjectBuildQueue: UpdateProjectBuildQueue,
+): string {
+  return JSON.stringify(
+    UpdateProjectBuildQueue$outboundSchema.parse(updateProjectBuildQueue),
+  );
+}
+export function updateProjectBuildQueueFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectBuildQueue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectBuildQueue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectBuildQueue' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateProjectFunctionDefaultMemoryType$inboundSchema:
   z.ZodNativeEnum<typeof UpdateProjectFunctionDefaultMemoryType> = z.nativeEnum(
     UpdateProjectFunctionDefaultMemoryType,
@@ -2619,6 +2730,7 @@ export const UpdateProjectResourceConfig$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   buildMachineType: UpdateProjectBuildMachineType$inboundSchema.optional(),
+  buildQueue: z.lazy(() => UpdateProjectBuildQueue$inboundSchema).optional(),
   fluid: z.boolean().optional(),
   functionDefaultRegions: z.array(z.string()).optional(),
   functionDefaultTimeout: z.number().optional(),
@@ -2631,6 +2743,7 @@ export const UpdateProjectResourceConfig$inboundSchema: z.ZodType<
 /** @internal */
 export type UpdateProjectResourceConfig$Outbound = {
   buildMachineType?: string | undefined;
+  buildQueue?: UpdateProjectBuildQueue$Outbound | undefined;
   fluid?: boolean | undefined;
   functionDefaultRegions?: Array<string> | undefined;
   functionDefaultTimeout?: number | undefined;
@@ -2647,6 +2760,7 @@ export const UpdateProjectResourceConfig$outboundSchema: z.ZodType<
   UpdateProjectResourceConfig
 > = z.object({
   buildMachineType: UpdateProjectBuildMachineType$outboundSchema.optional(),
+  buildQueue: z.lazy(() => UpdateProjectBuildQueue$outboundSchema).optional(),
   fluid: z.boolean().optional(),
   functionDefaultRegions: z.array(z.string()).optional(),
   functionDefaultTimeout: z.number().optional(),
@@ -6879,6 +6993,56 @@ export const UpdateProjectProjectsBuildMachineType$outboundSchema:
     UpdateProjectProjectsBuildMachineType$inboundSchema;
 
 /** @internal */
+export const UpdateProjectProjectsConfiguration$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectProjectsConfiguration
+> = z.nativeEnum(UpdateProjectProjectsConfiguration);
+/** @internal */
+export const UpdateProjectProjectsConfiguration$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectProjectsConfiguration
+> = UpdateProjectProjectsConfiguration$inboundSchema;
+
+/** @internal */
+export const UpdateProjectProjectsBuildQueue$inboundSchema: z.ZodType<
+  UpdateProjectProjectsBuildQueue,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  configuration: UpdateProjectProjectsConfiguration$inboundSchema.optional(),
+});
+/** @internal */
+export type UpdateProjectProjectsBuildQueue$Outbound = {
+  configuration?: string | undefined;
+};
+
+/** @internal */
+export const UpdateProjectProjectsBuildQueue$outboundSchema: z.ZodType<
+  UpdateProjectProjectsBuildQueue$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectProjectsBuildQueue
+> = z.object({
+  configuration: UpdateProjectProjectsConfiguration$outboundSchema.optional(),
+});
+
+export function updateProjectProjectsBuildQueueToJSON(
+  updateProjectProjectsBuildQueue: UpdateProjectProjectsBuildQueue,
+): string {
+  return JSON.stringify(
+    UpdateProjectProjectsBuildQueue$outboundSchema.parse(
+      updateProjectProjectsBuildQueue,
+    ),
+  );
+}
+export function updateProjectProjectsBuildQueueFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectProjectsBuildQueue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectProjectsBuildQueue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectProjectsBuildQueue' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateProjectProjectsResourceConfig$inboundSchema: z.ZodType<
   UpdateProjectProjectsResourceConfig,
   z.ZodTypeDef,
@@ -6894,6 +7058,8 @@ export const UpdateProjectProjectsResourceConfig$inboundSchema: z.ZodType<
   buildMachineType: UpdateProjectProjectsBuildMachineType$inboundSchema
     .optional(),
   isNSNBDisabled: z.boolean().optional(),
+  buildQueue: z.lazy(() => UpdateProjectProjectsBuildQueue$inboundSchema)
+    .optional(),
 });
 /** @internal */
 export type UpdateProjectProjectsResourceConfig$Outbound = {
@@ -6905,6 +7071,7 @@ export type UpdateProjectProjectsResourceConfig$Outbound = {
   functionZeroConfigFailover?: boolean | undefined;
   buildMachineType?: string | undefined;
   isNSNBDisabled?: boolean | undefined;
+  buildQueue?: UpdateProjectProjectsBuildQueue$Outbound | undefined;
 };
 
 /** @internal */
@@ -6923,6 +7090,8 @@ export const UpdateProjectProjectsResourceConfig$outboundSchema: z.ZodType<
   buildMachineType: UpdateProjectProjectsBuildMachineType$outboundSchema
     .optional(),
   isNSNBDisabled: z.boolean().optional(),
+  buildQueue: z.lazy(() => UpdateProjectProjectsBuildQueue$outboundSchema)
+    .optional(),
 });
 
 export function updateProjectProjectsResourceConfigToJSON(
@@ -7113,6 +7282,65 @@ export const UpdateProjectProjectsResponseBuildMachineType$outboundSchema:
     UpdateProjectProjectsResponseBuildMachineType$inboundSchema;
 
 /** @internal */
+export const UpdateProjectProjectsResponseConfiguration$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectProjectsResponseConfiguration> = z
+    .nativeEnum(UpdateProjectProjectsResponseConfiguration);
+/** @internal */
+export const UpdateProjectProjectsResponseConfiguration$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectProjectsResponseConfiguration> =
+    UpdateProjectProjectsResponseConfiguration$inboundSchema;
+
+/** @internal */
+export const UpdateProjectProjectsResponseBuildQueue$inboundSchema: z.ZodType<
+  UpdateProjectProjectsResponseBuildQueue,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  configuration: UpdateProjectProjectsResponseConfiguration$inboundSchema
+    .optional(),
+});
+/** @internal */
+export type UpdateProjectProjectsResponseBuildQueue$Outbound = {
+  configuration?: string | undefined;
+};
+
+/** @internal */
+export const UpdateProjectProjectsResponseBuildQueue$outboundSchema: z.ZodType<
+  UpdateProjectProjectsResponseBuildQueue$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectProjectsResponseBuildQueue
+> = z.object({
+  configuration: UpdateProjectProjectsResponseConfiguration$outboundSchema
+    .optional(),
+});
+
+export function updateProjectProjectsResponseBuildQueueToJSON(
+  updateProjectProjectsResponseBuildQueue:
+    UpdateProjectProjectsResponseBuildQueue,
+): string {
+  return JSON.stringify(
+    UpdateProjectProjectsResponseBuildQueue$outboundSchema.parse(
+      updateProjectProjectsResponseBuildQueue,
+    ),
+  );
+}
+export function updateProjectProjectsResponseBuildQueueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateProjectProjectsResponseBuildQueue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateProjectProjectsResponseBuildQueue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateProjectProjectsResponseBuildQueue' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateProjectDefaultResourceConfig$inboundSchema: z.ZodType<
   UpdateProjectDefaultResourceConfig,
   z.ZodTypeDef,
@@ -7129,6 +7357,9 @@ export const UpdateProjectDefaultResourceConfig$inboundSchema: z.ZodType<
   buildMachineType: UpdateProjectProjectsResponseBuildMachineType$inboundSchema
     .optional(),
   isNSNBDisabled: z.boolean().optional(),
+  buildQueue: z.lazy(() =>
+    UpdateProjectProjectsResponseBuildQueue$inboundSchema
+  ).optional(),
 });
 /** @internal */
 export type UpdateProjectDefaultResourceConfig$Outbound = {
@@ -7140,6 +7371,7 @@ export type UpdateProjectDefaultResourceConfig$Outbound = {
   functionZeroConfigFailover?: boolean | undefined;
   buildMachineType?: string | undefined;
   isNSNBDisabled?: boolean | undefined;
+  buildQueue?: UpdateProjectProjectsResponseBuildQueue$Outbound | undefined;
 };
 
 /** @internal */
@@ -7159,6 +7391,9 @@ export const UpdateProjectDefaultResourceConfig$outboundSchema: z.ZodType<
   buildMachineType: UpdateProjectProjectsResponseBuildMachineType$outboundSchema
     .optional(),
   isNSNBDisabled: z.boolean().optional(),
+  buildQueue: z.lazy(() =>
+    UpdateProjectProjectsResponseBuildQueue$outboundSchema
+  ).optional(),
 });
 
 export function updateProjectDefaultResourceConfigToJSON(
@@ -8619,7 +8854,7 @@ export const UpdateProjectLastAliasRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  fromDeploymentId: z.string(),
+  fromDeploymentId: z.nullable(z.string()),
   toDeploymentId: z.string(),
   fromRollingReleaseId: z.string().optional(),
   jobStatus: UpdateProjectJobStatus$inboundSchema,
@@ -8628,7 +8863,7 @@ export const UpdateProjectLastAliasRequest$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type UpdateProjectLastAliasRequest$Outbound = {
-  fromDeploymentId: string;
+  fromDeploymentId: string | null;
   toDeploymentId: string;
   fromRollingReleaseId?: string | undefined;
   jobStatus: string;
@@ -8642,7 +8877,7 @@ export const UpdateProjectLastAliasRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectLastAliasRequest
 > = z.object({
-  fromDeploymentId: z.string(),
+  fromDeploymentId: z.nullable(z.string()),
   toDeploymentId: z.string(),
   fromRollingReleaseId: z.string().optional(),
   jobStatus: UpdateProjectJobStatus$outboundSchema,
@@ -8678,12 +8913,16 @@ export const UpdateProjectProtectionBypass2$inboundSchema: z.ZodType<
   createdAt: z.number(),
   createdBy: z.string(),
   scope: z.literal("automation-bypass"),
+  isEnvVar: z.boolean().optional(),
+  note: z.string().optional(),
 });
 /** @internal */
 export type UpdateProjectProtectionBypass2$Outbound = {
   createdAt: number;
   createdBy: string;
   scope: "automation-bypass";
+  isEnvVar?: boolean | undefined;
+  note?: string | undefined;
 };
 
 /** @internal */
@@ -8695,6 +8934,8 @@ export const UpdateProjectProtectionBypass2$outboundSchema: z.ZodType<
   createdAt: z.number(),
   createdBy: z.string(),
   scope: z.literal("automation-bypass"),
+  isEnvVar: z.boolean().optional(),
+  note: z.string().optional(),
 });
 
 export function updateProjectProtectionBypass2ToJSON(
@@ -11574,6 +11815,51 @@ export function updateProjectProjectsDismissedToastsFromJSON(
 }
 
 /** @internal */
+export const UpdateProjectCveShield$inboundSchema: z.ZodType<
+  UpdateProjectCveShield,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabled: z.boolean(),
+  threshold: z.number().optional(),
+  cveList: z.array(z.string()).optional(),
+});
+/** @internal */
+export type UpdateProjectCveShield$Outbound = {
+  enabled: boolean;
+  threshold?: number | undefined;
+  cveList?: Array<string> | undefined;
+};
+
+/** @internal */
+export const UpdateProjectCveShield$outboundSchema: z.ZodType<
+  UpdateProjectCveShield$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectCveShield
+> = z.object({
+  enabled: z.boolean(),
+  threshold: z.number().optional(),
+  cveList: z.array(z.string()).optional(),
+});
+
+export function updateProjectCveShieldToJSON(
+  updateProjectCveShield: UpdateProjectCveShield,
+): string {
+  return JSON.stringify(
+    UpdateProjectCveShield$outboundSchema.parse(updateProjectCveShield),
+  );
+}
+export function updateProjectCveShieldFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectCveShield, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectCveShield$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectCveShield' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
   UpdateProjectResponseBody,
   z.ZodTypeDef,
@@ -11724,6 +12010,7 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
   dismissedToasts: z.array(
     z.lazy(() => UpdateProjectProjectsDismissedToasts$inboundSchema),
   ).optional(),
+  cveShield: z.lazy(() => UpdateProjectCveShield$inboundSchema).optional(),
 });
 /** @internal */
 export type UpdateProjectResponseBody$Outbound = {
@@ -11855,6 +12142,7 @@ export type UpdateProjectResponseBody$Outbound = {
   dismissedToasts?:
     | Array<UpdateProjectProjectsDismissedToasts$Outbound>
     | undefined;
+  cveShield?: UpdateProjectCveShield$Outbound | undefined;
 };
 
 /** @internal */
@@ -12008,6 +12296,7 @@ export const UpdateProjectResponseBody$outboundSchema: z.ZodType<
   dismissedToasts: z.array(
     z.lazy(() => UpdateProjectProjectsDismissedToasts$outboundSchema),
   ).optional(),
+  cveShield: z.lazy(() => UpdateProjectCveShield$outboundSchema).optional(),
 });
 
 export function updateProjectResponseBodyToJSON(

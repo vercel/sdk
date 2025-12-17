@@ -75,6 +75,7 @@ const (
 	GetWebhookEventFirewallAttack                                     GetWebhookEvent = "firewall.attack"
 	GetWebhookEventFirewallSystemRuleAnomaly                          GetWebhookEvent = "firewall.system-rule-anomaly"
 	GetWebhookEventFirewallCustomRuleAnomaly                          GetWebhookEvent = "firewall.custom-rule-anomaly"
+	GetWebhookEventAlertsTriggered                                    GetWebhookEvent = "alerts.triggered"
 	GetWebhookEventIntegrationConfigurationPermissionUpgraded         GetWebhookEvent = "integration-configuration.permission-upgraded"
 	GetWebhookEventIntegrationConfigurationRemoved                    GetWebhookEvent = "integration-configuration.removed"
 	GetWebhookEventIntegrationConfigurationScopeChangeConfirmed       GetWebhookEvent = "integration-configuration.scope-change-confirmed"
@@ -117,7 +118,7 @@ const (
 	GetWebhookEventObservabilityAnomalyError                          GetWebhookEvent = "observability.anomaly-error"
 	GetWebhookEventObservabilityUsageAnomaly                          GetWebhookEvent = "observability.usage-anomaly"
 	GetWebhookEventObservabilityErrorAnomaly                          GetWebhookEvent = "observability.error-anomaly"
-	GetWebhookEventObservabilityAnomalyBotId                          GetWebhookEvent = "observability.anomaly-botId"
+	GetWebhookEventBotidAnomaly                                       GetWebhookEvent = "botid.anomaly"
 	GetWebhookEventTestWebhook                                        GetWebhookEvent = "test-webhook"
 )
 
@@ -197,6 +198,8 @@ func (e *GetWebhookEvent) UnmarshalJSON(data []byte) error {
 	case "firewall.system-rule-anomaly":
 		fallthrough
 	case "firewall.custom-rule-anomaly":
+		fallthrough
+	case "alerts.triggered":
 		fallthrough
 	case "integration-configuration.permission-upgraded":
 		fallthrough
@@ -282,7 +285,7 @@ func (e *GetWebhookEvent) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "observability.error-anomaly":
 		fallthrough
-	case "observability.anomaly-botId":
+	case "botid.anomaly":
 		fallthrough
 	case "test-webhook":
 		*e = GetWebhookEvent(v)

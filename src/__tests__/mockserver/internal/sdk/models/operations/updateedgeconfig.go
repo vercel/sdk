@@ -285,7 +285,9 @@ type UpdateEdgeConfigResponseBody struct {
 	CreatedAt float64  `json:"createdAt"`
 	UpdatedAt float64  `json:"updatedAt"`
 	DeletedAt *float64 `json:"deletedAt,omitempty"`
-	ID        string   `json:"id"`
+	// The ID of the user who created the Edge Config, optional because it is not always set.
+	CreatedBy *string `json:"createdBy,omitempty"`
+	ID        string  `json:"id"`
 	// Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
 	Slug    string `json:"slug"`
 	OwnerID string `json:"ownerId"`
@@ -319,6 +321,13 @@ func (o *UpdateEdgeConfigResponseBody) GetDeletedAt() *float64 {
 		return nil
 	}
 	return o.DeletedAt
+}
+
+func (o *UpdateEdgeConfigResponseBody) GetCreatedBy() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedBy
 }
 
 func (o *UpdateEdgeConfigResponseBody) GetID() string {

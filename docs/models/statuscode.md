@@ -1,19 +1,17 @@
 # StatusCode
 
-HTTP status code range to filter events by.
-
 
 ## Supported Types
 
 ### `number`
 
 ```typescript
-const value: number = 5;
+const value: number = 1284.03;
 ```
 
 ### `string`
 
 ```typescript
-const value: string = "5xx";
+const value: string = "<value>";
 ```
 

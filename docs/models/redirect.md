@@ -1,20 +1,24 @@
 # Redirect
 
+The redirect object to edit. The source field is used to match the redirect to modify.
 
-## Supported Types
-
-### `models.Redirect1`
+## Example Usage
 
 ```typescript
-const value: models.Redirect1 = {
-  location: "<value>",
-  permanent: false,
+import { Redirect } from "@vercel/sdk/models/patchv1bulkredirectsop.js";
+
+let value: Redirect = {
+  source: "<value>",
 };
 ```
 
-### `any`
+## Fields
 
-```typescript
-const value: any = "<value>";
-```
-
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `source`           | *string*           | :heavy_check_mark: | N/A                |
+| `destination`      | *string*           | :heavy_minus_sign: | N/A                |
+| `statusCode`       | *number*           | :heavy_minus_sign: | N/A                |
+| `permanent`        | *boolean*          | :heavy_minus_sign: | N/A                |
+| `caseSensitive`    | *boolean*          | :heavy_minus_sign: | N/A                |
+| `query`            | *boolean*          | :heavy_minus_sign: | N/A                |

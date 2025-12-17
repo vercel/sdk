@@ -646,6 +646,8 @@ const (
 	PutFirewallConfigTypeRequestJa4Digest        PutFirewallConfigTypeRequest = "ja4_digest"
 	PutFirewallConfigTypeRequestJa3Digest        PutFirewallConfigTypeRequest = "ja3_digest"
 	PutFirewallConfigTypeRequestRateLimitAPIID   PutFirewallConfigTypeRequest = "rate_limit_api_id"
+	PutFirewallConfigTypeRequestBotName          PutFirewallConfigTypeRequest = "bot_name"
+	PutFirewallConfigTypeRequestBotCategory      PutFirewallConfigTypeRequest = "bot_category"
 )
 
 func (e PutFirewallConfigTypeRequest) ToPointer() *PutFirewallConfigTypeRequest {
@@ -702,6 +704,10 @@ func (e *PutFirewallConfigTypeRequest) UnmarshalJSON(data []byte) error {
 	case "ja3_digest":
 		fallthrough
 	case "rate_limit_api_id":
+		fallthrough
+	case "bot_name":
+		fallthrough
+	case "bot_category":
 		*e = PutFirewallConfigTypeRequest(v)
 		return nil
 	default:
@@ -1334,13 +1340,78 @@ func (o *RuleActionRequest) GetMitigate() *PutFirewallConfigMitigateRequest {
 	return o.Mitigate
 }
 
+type PutFirewallConfigValidationErrorsType string
+
+const (
+	PutFirewallConfigValidationErrorsTypeStr        PutFirewallConfigValidationErrorsType = "str"
+	PutFirewallConfigValidationErrorsTypeArrayOfStr PutFirewallConfigValidationErrorsType = "arrayOfStr"
+)
+
+type PutFirewallConfigValidationErrors struct {
+	Str        *string  `queryParam:"inline"`
+	ArrayOfStr []string `queryParam:"inline"`
+
+	Type PutFirewallConfigValidationErrorsType
+}
+
+func CreatePutFirewallConfigValidationErrorsStr(str string) PutFirewallConfigValidationErrors {
+	typ := PutFirewallConfigValidationErrorsTypeStr
+
+	return PutFirewallConfigValidationErrors{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreatePutFirewallConfigValidationErrorsArrayOfStr(arrayOfStr []string) PutFirewallConfigValidationErrors {
+	typ := PutFirewallConfigValidationErrorsTypeArrayOfStr
+
+	return PutFirewallConfigValidationErrors{
+		ArrayOfStr: arrayOfStr,
+		Type:       typ,
+	}
+}
+
+func (u *PutFirewallConfigValidationErrors) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = PutFirewallConfigValidationErrorsTypeStr
+		return nil
+	}
+
+	var arrayOfStr []string = []string{}
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
+		u.ArrayOfStr = arrayOfStr
+		u.Type = PutFirewallConfigValidationErrorsTypeArrayOfStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PutFirewallConfigValidationErrors", string(data))
+}
+
+func (u PutFirewallConfigValidationErrors) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.ArrayOfStr != nil {
+		return utils.MarshalJSON(u.ArrayOfStr, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type PutFirewallConfigValidationErrors: all fields are null")
+}
+
 type RuleRequest struct {
-	ID             *string                                  `json:"id,omitempty"`
-	Name           string                                   `json:"name"`
-	Description    *string                                  `json:"description,omitempty"`
-	Active         bool                                     `json:"active"`
-	ConditionGroup []PutFirewallConfigConditionGroupRequest `json:"conditionGroup"`
-	Action         RuleActionRequest                        `json:"action"`
+	ID               *string                                  `json:"id,omitempty"`
+	Name             string                                   `json:"name"`
+	Description      *string                                  `json:"description,omitempty"`
+	Active           bool                                     `json:"active"`
+	ConditionGroup   []PutFirewallConfigConditionGroupRequest `json:"conditionGroup"`
+	Action           RuleActionRequest                        `json:"action"`
+	Valid            *bool                                    `json:"valid,omitempty"`
+	ValidationErrors *PutFirewallConfigValidationErrors       `json:"validationErrors,omitempty"`
 }
 
 func (o *RuleRequest) GetID() *string {
@@ -1383,6 +1454,20 @@ func (o *RuleRequest) GetAction() RuleActionRequest {
 		return RuleActionRequest{}
 	}
 	return o.Action
+}
+
+func (o *RuleRequest) GetValid() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Valid
+}
+
+func (o *RuleRequest) GetValidationErrors() *PutFirewallConfigValidationErrors {
+	if o == nil {
+		return nil
+	}
+	return o.ValidationErrors
 }
 
 type IPActionRequest string
@@ -2158,39 +2243,41 @@ func (o *ActiveCrs) GetJava() ActiveJava {
 	return o.Java
 }
 
-type ActiveType string
+type ActiveType2 string
 
 const (
-	ActiveTypeHost             ActiveType = "host"
-	ActiveTypePath             ActiveType = "path"
-	ActiveTypeMethod           ActiveType = "method"
-	ActiveTypeHeader           ActiveType = "header"
-	ActiveTypeQuery            ActiveType = "query"
-	ActiveTypeCookie           ActiveType = "cookie"
-	ActiveTypeTargetPath       ActiveType = "target_path"
-	ActiveTypeRoute            ActiveType = "route"
-	ActiveTypeRawPath          ActiveType = "raw_path"
-	ActiveTypeIPAddress        ActiveType = "ip_address"
-	ActiveTypeProtocol         ActiveType = "protocol"
-	ActiveTypeRegion           ActiveType = "region"
-	ActiveTypeScheme           ActiveType = "scheme"
-	ActiveTypeEnvironment      ActiveType = "environment"
-	ActiveTypeUserAgent        ActiveType = "user_agent"
-	ActiveTypeGeoContinent     ActiveType = "geo_continent"
-	ActiveTypeGeoCountry       ActiveType = "geo_country"
-	ActiveTypeGeoCountryRegion ActiveType = "geo_country_region"
-	ActiveTypeGeoCity          ActiveType = "geo_city"
-	ActiveTypeGeoAsNumber      ActiveType = "geo_as_number"
-	ActiveTypeJa4Digest        ActiveType = "ja4_digest"
-	ActiveTypeJa3Digest        ActiveType = "ja3_digest"
-	ActiveTypeRateLimitAPIID   ActiveType = "rate_limit_api_id"
-	ActiveTypeServerAction     ActiveType = "server_action"
+	ActiveType2Host             ActiveType2 = "host"
+	ActiveType2Path             ActiveType2 = "path"
+	ActiveType2Method           ActiveType2 = "method"
+	ActiveType2Header           ActiveType2 = "header"
+	ActiveType2Query            ActiveType2 = "query"
+	ActiveType2Cookie           ActiveType2 = "cookie"
+	ActiveType2TargetPath       ActiveType2 = "target_path"
+	ActiveType2Route            ActiveType2 = "route"
+	ActiveType2RawPath          ActiveType2 = "raw_path"
+	ActiveType2IPAddress        ActiveType2 = "ip_address"
+	ActiveType2Protocol         ActiveType2 = "protocol"
+	ActiveType2Region           ActiveType2 = "region"
+	ActiveType2Scheme           ActiveType2 = "scheme"
+	ActiveType2Environment      ActiveType2 = "environment"
+	ActiveType2UserAgent        ActiveType2 = "user_agent"
+	ActiveType2GeoContinent     ActiveType2 = "geo_continent"
+	ActiveType2GeoCountry       ActiveType2 = "geo_country"
+	ActiveType2GeoCountryRegion ActiveType2 = "geo_country_region"
+	ActiveType2GeoCity          ActiveType2 = "geo_city"
+	ActiveType2GeoAsNumber      ActiveType2 = "geo_as_number"
+	ActiveType2Ja4Digest        ActiveType2 = "ja4_digest"
+	ActiveType2Ja3Digest        ActiveType2 = "ja3_digest"
+	ActiveType2RateLimitAPIID   ActiveType2 = "rate_limit_api_id"
+	ActiveType2ServerAction     ActiveType2 = "server_action"
+	ActiveType2BotName          ActiveType2 = "bot_name"
+	ActiveType2BotCategory      ActiveType2 = "bot_category"
 )
 
-func (e ActiveType) ToPointer() *ActiveType {
+func (e ActiveType2) ToPointer() *ActiveType2 {
 	return &e
 }
-func (e *ActiveType) UnmarshalJSON(data []byte) error {
+func (e *ActiveType2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2243,36 +2330,40 @@ func (e *ActiveType) UnmarshalJSON(data []byte) error {
 	case "rate_limit_api_id":
 		fallthrough
 	case "server_action":
-		*e = ActiveType(v)
+		fallthrough
+	case "bot_name":
+		fallthrough
+	case "bot_category":
+		*e = ActiveType2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ActiveType: %v", v)
+		return fmt.Errorf("invalid value for ActiveType2: %v", v)
 	}
 }
 
-type ActiveOp string
+type ActiveOp2 string
 
 const (
-	ActiveOpRe   ActiveOp = "re"
-	ActiveOpEq   ActiveOp = "eq"
-	ActiveOpEx   ActiveOp = "ex"
-	ActiveOpInc  ActiveOp = "inc"
-	ActiveOpPre  ActiveOp = "pre"
-	ActiveOpSuf  ActiveOp = "suf"
-	ActiveOpSub  ActiveOp = "sub"
-	ActiveOpGt   ActiveOp = "gt"
-	ActiveOpGte  ActiveOp = "gte"
-	ActiveOpLt   ActiveOp = "lt"
-	ActiveOpLte  ActiveOp = "lte"
-	ActiveOpNex  ActiveOp = "nex"
-	ActiveOpNinc ActiveOp = "ninc"
-	ActiveOpNeq  ActiveOp = "neq"
+	ActiveOp2Re   ActiveOp2 = "re"
+	ActiveOp2Eq   ActiveOp2 = "eq"
+	ActiveOp2Ex   ActiveOp2 = "ex"
+	ActiveOp2Inc  ActiveOp2 = "inc"
+	ActiveOp2Pre  ActiveOp2 = "pre"
+	ActiveOp2Suf  ActiveOp2 = "suf"
+	ActiveOp2Sub  ActiveOp2 = "sub"
+	ActiveOp2Gt   ActiveOp2 = "gt"
+	ActiveOp2Gte  ActiveOp2 = "gte"
+	ActiveOp2Lt   ActiveOp2 = "lt"
+	ActiveOp2Lte  ActiveOp2 = "lte"
+	ActiveOp2Nex  ActiveOp2 = "nex"
+	ActiveOp2Ninc ActiveOp2 = "ninc"
+	ActiveOp2Neq  ActiveOp2 = "neq"
 )
 
-func (e ActiveOp) ToPointer() *ActiveOp {
+func (e ActiveOp2) ToPointer() *ActiveOp2 {
 	return &e
 }
-func (e *ActiveOp) UnmarshalJSON(data []byte) error {
+func (e *ActiveOp2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2305,83 +2396,83 @@ func (e *ActiveOp) UnmarshalJSON(data []byte) error {
 	case "ninc":
 		fallthrough
 	case "neq":
-		*e = ActiveOp(v)
+		*e = ActiveOp2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ActiveOp: %v", v)
+		return fmt.Errorf("invalid value for ActiveOp2: %v", v)
 	}
 }
 
-type ActiveValueType string
+type ActiveValue2Type string
 
 const (
-	ActiveValueTypeStr        ActiveValueType = "str"
-	ActiveValueTypeNumber     ActiveValueType = "number"
-	ActiveValueTypeArrayOfStr ActiveValueType = "arrayOfStr"
+	ActiveValue2TypeStr        ActiveValue2Type = "str"
+	ActiveValue2TypeNumber     ActiveValue2Type = "number"
+	ActiveValue2TypeArrayOfStr ActiveValue2Type = "arrayOfStr"
 )
 
-type ActiveValue struct {
+type ActiveValue2 struct {
 	Str        *string  `queryParam:"inline"`
 	Number     *float64 `queryParam:"inline"`
 	ArrayOfStr []string `queryParam:"inline"`
 
-	Type ActiveValueType
+	Type ActiveValue2Type
 }
 
-func CreateActiveValueStr(str string) ActiveValue {
-	typ := ActiveValueTypeStr
+func CreateActiveValue2Str(str string) ActiveValue2 {
+	typ := ActiveValue2TypeStr
 
-	return ActiveValue{
+	return ActiveValue2{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateActiveValueNumber(number float64) ActiveValue {
-	typ := ActiveValueTypeNumber
+func CreateActiveValue2Number(number float64) ActiveValue2 {
+	typ := ActiveValue2TypeNumber
 
-	return ActiveValue{
+	return ActiveValue2{
 		Number: &number,
 		Type:   typ,
 	}
 }
 
-func CreateActiveValueArrayOfStr(arrayOfStr []string) ActiveValue {
-	typ := ActiveValueTypeArrayOfStr
+func CreateActiveValue2ArrayOfStr(arrayOfStr []string) ActiveValue2 {
+	typ := ActiveValue2TypeArrayOfStr
 
-	return ActiveValue{
+	return ActiveValue2{
 		ArrayOfStr: arrayOfStr,
 		Type:       typ,
 	}
 }
 
-func (u *ActiveValue) UnmarshalJSON(data []byte) error {
+func (u *ActiveValue2) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
-		u.Type = ActiveValueTypeStr
+		u.Type = ActiveValue2TypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
 	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
-		u.Type = ActiveValueTypeNumber
+		u.Type = ActiveValue2TypeNumber
 		return nil
 	}
 
 	var arrayOfStr []string = []string{}
 	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
 		u.ArrayOfStr = arrayOfStr
-		u.Type = ActiveValueTypeArrayOfStr
+		u.Type = ActiveValue2TypeArrayOfStr
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ActiveValue", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ActiveValue2", string(data))
 }
 
-func (u ActiveValue) MarshalJSON() ([]byte, error) {
+func (u ActiveValue2) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
@@ -2394,78 +2485,100 @@ func (u ActiveValue) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.ArrayOfStr, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type ActiveValue: all fields are null")
+	return nil, errors.New("could not marshal union type ActiveValue2: all fields are null")
 }
 
-type ActiveCondition struct {
-	Type  ActiveType   `json:"type"`
-	Op    ActiveOp     `json:"op"`
-	Neg   *bool        `json:"neg,omitempty"`
-	Key   *string      `json:"key,omitempty"`
-	Value *ActiveValue `json:"value,omitempty"`
+type ActiveCondition2 struct {
+	Type  ActiveType2   `json:"type"`
+	Op    ActiveOp2     `json:"op"`
+	Neg   *bool         `json:"neg,omitempty"`
+	Key   *string       `json:"key,omitempty"`
+	Value *ActiveValue2 `json:"value,omitempty"`
 }
 
-func (o *ActiveCondition) GetType() ActiveType {
+func (a ActiveCondition2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *ActiveCondition2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "op"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ActiveCondition2) GetType() ActiveType2 {
 	if o == nil {
-		return ActiveType("")
+		return ActiveType2("")
 	}
 	return o.Type
 }
 
-func (o *ActiveCondition) GetOp() ActiveOp {
+func (o *ActiveCondition2) GetOp() ActiveOp2 {
 	if o == nil {
-		return ActiveOp("")
+		return ActiveOp2("")
 	}
 	return o.Op
 }
 
-func (o *ActiveCondition) GetNeg() *bool {
+func (o *ActiveCondition2) GetNeg() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Neg
 }
 
-func (o *ActiveCondition) GetKey() *string {
+func (o *ActiveCondition2) GetKey() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Key
 }
 
-func (o *ActiveCondition) GetValue() *ActiveValue {
+func (o *ActiveCondition2) GetValue() *ActiveValue2 {
 	if o == nil {
 		return nil
 	}
 	return o.Value
 }
 
-type ActiveConditionGroup struct {
-	Conditions []ActiveCondition `json:"conditions"`
+type ActiveConditionGroup2 struct {
+	Conditions []ActiveCondition2 `json:"conditions"`
 }
 
-func (o *ActiveConditionGroup) GetConditions() []ActiveCondition {
+func (a ActiveConditionGroup2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *ActiveConditionGroup2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"conditions"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ActiveConditionGroup2) GetConditions() []ActiveCondition2 {
 	if o == nil {
-		return []ActiveCondition{}
+		return []ActiveCondition2{}
 	}
 	return o.Conditions
 }
 
-type ActiveMitigateAction string
+type ActiveMitigateAction2 string
 
 const (
-	ActiveMitigateActionDeny      ActiveMitigateAction = "deny"
-	ActiveMitigateActionLog       ActiveMitigateAction = "log"
-	ActiveMitigateActionChallenge ActiveMitigateAction = "challenge"
-	ActiveMitigateActionBypass    ActiveMitigateAction = "bypass"
-	ActiveMitigateActionRateLimit ActiveMitigateAction = "rate_limit"
-	ActiveMitigateActionRedirect  ActiveMitigateAction = "redirect"
+	ActiveMitigateAction2Deny      ActiveMitigateAction2 = "deny"
+	ActiveMitigateAction2Log       ActiveMitigateAction2 = "log"
+	ActiveMitigateAction2Challenge ActiveMitigateAction2 = "challenge"
+	ActiveMitigateAction2Bypass    ActiveMitigateAction2 = "bypass"
+	ActiveMitigateAction2RateLimit ActiveMitigateAction2 = "rate_limit"
+	ActiveMitigateAction2Redirect  ActiveMitigateAction2 = "redirect"
 )
 
-func (e ActiveMitigateAction) ToPointer() *ActiveMitigateAction {
+func (e ActiveMitigateAction2) ToPointer() *ActiveMitigateAction2 {
 	return &e
 }
-func (e *ActiveMitigateAction) UnmarshalJSON(data []byte) error {
+func (e *ActiveMitigateAction2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2482,24 +2595,24 @@ func (e *ActiveMitigateAction) UnmarshalJSON(data []byte) error {
 	case "rate_limit":
 		fallthrough
 	case "redirect":
-		*e = ActiveMitigateAction(v)
+		*e = ActiveMitigateAction2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ActiveMitigateAction: %v", v)
+		return fmt.Errorf("invalid value for ActiveMitigateAction2: %v", v)
 	}
 }
 
-type ActiveAlgo string
+type ActiveAlgo2 string
 
 const (
-	ActiveAlgoFixedWindow ActiveAlgo = "fixed_window"
-	ActiveAlgoTokenBucket ActiveAlgo = "token_bucket"
+	ActiveAlgo2FixedWindow ActiveAlgo2 = "fixed_window"
+	ActiveAlgo2TokenBucket ActiveAlgo2 = "token_bucket"
 )
 
-func (e ActiveAlgo) ToPointer() *ActiveAlgo {
+func (e ActiveAlgo2) ToPointer() *ActiveAlgo2 {
 	return &e
 }
-func (e *ActiveAlgo) UnmarshalJSON(data []byte) error {
+func (e *ActiveAlgo2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2508,26 +2621,26 @@ func (e *ActiveAlgo) UnmarshalJSON(data []byte) error {
 	case "fixed_window":
 		fallthrough
 	case "token_bucket":
-		*e = ActiveAlgo(v)
+		*e = ActiveAlgo2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ActiveAlgo: %v", v)
+		return fmt.Errorf("invalid value for ActiveAlgo2: %v", v)
 	}
 }
 
-type ActiveRateLimitAction string
+type ActiveRateLimitAction2 string
 
 const (
-	ActiveRateLimitActionDeny      ActiveRateLimitAction = "deny"
-	ActiveRateLimitActionLog       ActiveRateLimitAction = "log"
-	ActiveRateLimitActionChallenge ActiveRateLimitAction = "challenge"
-	ActiveRateLimitActionRateLimit ActiveRateLimitAction = "rate_limit"
+	ActiveRateLimitAction2Deny      ActiveRateLimitAction2 = "deny"
+	ActiveRateLimitAction2Log       ActiveRateLimitAction2 = "log"
+	ActiveRateLimitAction2Challenge ActiveRateLimitAction2 = "challenge"
+	ActiveRateLimitAction2RateLimit ActiveRateLimitAction2 = "rate_limit"
 )
 
-func (e ActiveRateLimitAction) ToPointer() *ActiveRateLimitAction {
+func (e ActiveRateLimitAction2) ToPointer() *ActiveRateLimitAction2 {
 	return &e
 }
-func (e *ActiveRateLimitAction) UnmarshalJSON(data []byte) error {
+func (e *ActiveRateLimitAction2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2540,178 +2653,967 @@ func (e *ActiveRateLimitAction) UnmarshalJSON(data []byte) error {
 	case "challenge":
 		fallthrough
 	case "rate_limit":
-		*e = ActiveRateLimitAction(v)
+		*e = ActiveRateLimitAction2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ActiveRateLimitAction: %v", v)
+		return fmt.Errorf("invalid value for ActiveRateLimitAction2: %v", v)
 	}
 }
 
-type ActiveRateLimit struct {
-	Algo   ActiveAlgo             `json:"algo"`
-	Window float64                `json:"window"`
-	Limit  float64                `json:"limit"`
-	Keys   []string               `json:"keys"`
-	Action *ActiveRateLimitAction `json:"action,omitempty"`
+type ActiveRateLimit2 struct {
+	Algo   ActiveAlgo2             `json:"algo"`
+	Window float64                 `json:"window"`
+	Limit  float64                 `json:"limit"`
+	Keys   []string                `json:"keys"`
+	Action *ActiveRateLimitAction2 `json:"action,omitempty"`
 }
 
-func (o *ActiveRateLimit) GetAlgo() ActiveAlgo {
+func (a ActiveRateLimit2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *ActiveRateLimit2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"algo", "window", "limit", "keys"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ActiveRateLimit2) GetAlgo() ActiveAlgo2 {
 	if o == nil {
-		return ActiveAlgo("")
+		return ActiveAlgo2("")
 	}
 	return o.Algo
 }
 
-func (o *ActiveRateLimit) GetWindow() float64 {
+func (o *ActiveRateLimit2) GetWindow() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Window
 }
 
-func (o *ActiveRateLimit) GetLimit() float64 {
+func (o *ActiveRateLimit2) GetLimit() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Limit
 }
 
-func (o *ActiveRateLimit) GetKeys() []string {
+func (o *ActiveRateLimit2) GetKeys() []string {
 	if o == nil {
 		return []string{}
 	}
 	return o.Keys
 }
 
-func (o *ActiveRateLimit) GetAction() *ActiveRateLimitAction {
+func (o *ActiveRateLimit2) GetAction() *ActiveRateLimitAction2 {
 	if o == nil {
 		return nil
 	}
 	return o.Action
 }
 
-type ActiveRedirect struct {
+type ActiveRedirect2 struct {
 	Location  string `json:"location"`
 	Permanent bool   `json:"permanent"`
 }
 
-func (o *ActiveRedirect) GetLocation() string {
+func (a ActiveRedirect2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *ActiveRedirect2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"location", "permanent"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ActiveRedirect2) GetLocation() string {
 	if o == nil {
 		return ""
 	}
 	return o.Location
 }
 
-func (o *ActiveRedirect) GetPermanent() bool {
+func (o *ActiveRedirect2) GetPermanent() bool {
 	if o == nil {
 		return false
 	}
 	return o.Permanent
 }
 
-type ActiveMitigate struct {
-	Action         ActiveMitigateAction `json:"action"`
-	RateLimit      *ActiveRateLimit     `json:"rateLimit,omitempty"`
-	Redirect       *ActiveRedirect      `json:"redirect,omitempty"`
-	ActionDuration *string              `json:"actionDuration,omitempty"`
-	BypassSystem   *bool                `json:"bypassSystem,omitempty"`
+type ActiveMitigate2 struct {
+	Action         ActiveMitigateAction2 `json:"action"`
+	RateLimit      *ActiveRateLimit2     `json:"rateLimit,omitempty"`
+	Redirect       *ActiveRedirect2      `json:"redirect,omitempty"`
+	ActionDuration *string               `json:"actionDuration,omitempty"`
+	BypassSystem   *bool                 `json:"bypassSystem,omitempty"`
 }
 
-func (o *ActiveMitigate) GetAction() ActiveMitigateAction {
+func (a ActiveMitigate2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *ActiveMitigate2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"action"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ActiveMitigate2) GetAction() ActiveMitigateAction2 {
 	if o == nil {
-		return ActiveMitigateAction("")
+		return ActiveMitigateAction2("")
 	}
 	return o.Action
 }
 
-func (o *ActiveMitigate) GetRateLimit() *ActiveRateLimit {
+func (o *ActiveMitigate2) GetRateLimit() *ActiveRateLimit2 {
 	if o == nil {
 		return nil
 	}
 	return o.RateLimit
 }
 
-func (o *ActiveMitigate) GetRedirect() *ActiveRedirect {
+func (o *ActiveMitigate2) GetRedirect() *ActiveRedirect2 {
 	if o == nil {
 		return nil
 	}
 	return o.Redirect
 }
 
-func (o *ActiveMitigate) GetActionDuration() *string {
+func (o *ActiveMitigate2) GetActionDuration() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ActionDuration
 }
 
-func (o *ActiveMitigate) GetBypassSystem() *bool {
+func (o *ActiveMitigate2) GetBypassSystem() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.BypassSystem
 }
 
-type ActiveRuleAction struct {
-	Mitigate *ActiveMitigate `json:"mitigate,omitempty"`
+type RuleActiveAction2 struct {
+	Mitigate *ActiveMitigate2 `json:"mitigate,omitempty"`
 }
 
-func (o *ActiveRuleAction) GetMitigate() *ActiveMitigate {
+func (r RuleActiveAction2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RuleActiveAction2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *RuleActiveAction2) GetMitigate() *ActiveMitigate2 {
 	if o == nil {
 		return nil
 	}
 	return o.Mitigate
 }
 
-type ActiveRule struct {
-	ID             string                 `json:"id"`
-	Name           string                 `json:"name"`
-	Description    *string                `json:"description,omitempty"`
-	Active         bool                   `json:"active"`
-	ConditionGroup []ActiveConditionGroup `json:"conditionGroup"`
-	Action         ActiveRuleAction       `json:"action"`
+type RuleActive2 struct {
+	ID               string                  `json:"id"`
+	Name             string                  `json:"name"`
+	Description      *string                 `json:"description,omitempty"`
+	Active           bool                    `json:"active"`
+	ConditionGroup   []ActiveConditionGroup2 `json:"conditionGroup"`
+	Action           RuleActiveAction2       `json:"action"`
+	Valid            bool                    `json:"valid"`
+	ValidationErrors []string                `json:"validationErrors"`
 }
 
-func (o *ActiveRule) GetID() string {
+func (r RuleActive2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RuleActive2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"id", "name", "active", "conditionGroup", "action", "valid", "validationErrors"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *RuleActive2) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *ActiveRule) GetName() string {
+func (o *RuleActive2) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *ActiveRule) GetDescription() *string {
+func (o *RuleActive2) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *ActiveRule) GetActive() bool {
+func (o *RuleActive2) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *ActiveRule) GetConditionGroup() []ActiveConditionGroup {
+func (o *RuleActive2) GetConditionGroup() []ActiveConditionGroup2 {
 	if o == nil {
-		return []ActiveConditionGroup{}
+		return []ActiveConditionGroup2{}
 	}
 	return o.ConditionGroup
 }
 
-func (o *ActiveRule) GetAction() ActiveRuleAction {
+func (o *RuleActive2) GetAction() RuleActiveAction2 {
 	if o == nil {
-		return ActiveRuleAction{}
+		return RuleActiveAction2{}
 	}
 	return o.Action
+}
+
+func (o *RuleActive2) GetValid() bool {
+	if o == nil {
+		return false
+	}
+	return o.Valid
+}
+
+func (o *RuleActive2) GetValidationErrors() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.ValidationErrors
+}
+
+type ActiveType1 string
+
+const (
+	ActiveType1Host             ActiveType1 = "host"
+	ActiveType1Path             ActiveType1 = "path"
+	ActiveType1Method           ActiveType1 = "method"
+	ActiveType1Header           ActiveType1 = "header"
+	ActiveType1Query            ActiveType1 = "query"
+	ActiveType1Cookie           ActiveType1 = "cookie"
+	ActiveType1TargetPath       ActiveType1 = "target_path"
+	ActiveType1Route            ActiveType1 = "route"
+	ActiveType1RawPath          ActiveType1 = "raw_path"
+	ActiveType1IPAddress        ActiveType1 = "ip_address"
+	ActiveType1Protocol         ActiveType1 = "protocol"
+	ActiveType1Region           ActiveType1 = "region"
+	ActiveType1Scheme           ActiveType1 = "scheme"
+	ActiveType1Environment      ActiveType1 = "environment"
+	ActiveType1UserAgent        ActiveType1 = "user_agent"
+	ActiveType1GeoContinent     ActiveType1 = "geo_continent"
+	ActiveType1GeoCountry       ActiveType1 = "geo_country"
+	ActiveType1GeoCountryRegion ActiveType1 = "geo_country_region"
+	ActiveType1GeoCity          ActiveType1 = "geo_city"
+	ActiveType1GeoAsNumber      ActiveType1 = "geo_as_number"
+	ActiveType1Ja4Digest        ActiveType1 = "ja4_digest"
+	ActiveType1Ja3Digest        ActiveType1 = "ja3_digest"
+	ActiveType1RateLimitAPIID   ActiveType1 = "rate_limit_api_id"
+	ActiveType1ServerAction     ActiveType1 = "server_action"
+	ActiveType1BotName          ActiveType1 = "bot_name"
+	ActiveType1BotCategory      ActiveType1 = "bot_category"
+)
+
+func (e ActiveType1) ToPointer() *ActiveType1 {
+	return &e
+}
+func (e *ActiveType1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "host":
+		fallthrough
+	case "path":
+		fallthrough
+	case "method":
+		fallthrough
+	case "header":
+		fallthrough
+	case "query":
+		fallthrough
+	case "cookie":
+		fallthrough
+	case "target_path":
+		fallthrough
+	case "route":
+		fallthrough
+	case "raw_path":
+		fallthrough
+	case "ip_address":
+		fallthrough
+	case "protocol":
+		fallthrough
+	case "region":
+		fallthrough
+	case "scheme":
+		fallthrough
+	case "environment":
+		fallthrough
+	case "user_agent":
+		fallthrough
+	case "geo_continent":
+		fallthrough
+	case "geo_country":
+		fallthrough
+	case "geo_country_region":
+		fallthrough
+	case "geo_city":
+		fallthrough
+	case "geo_as_number":
+		fallthrough
+	case "ja4_digest":
+		fallthrough
+	case "ja3_digest":
+		fallthrough
+	case "rate_limit_api_id":
+		fallthrough
+	case "server_action":
+		fallthrough
+	case "bot_name":
+		fallthrough
+	case "bot_category":
+		*e = ActiveType1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ActiveType1: %v", v)
+	}
+}
+
+type ActiveOp1 string
+
+const (
+	ActiveOp1Re   ActiveOp1 = "re"
+	ActiveOp1Eq   ActiveOp1 = "eq"
+	ActiveOp1Ex   ActiveOp1 = "ex"
+	ActiveOp1Inc  ActiveOp1 = "inc"
+	ActiveOp1Pre  ActiveOp1 = "pre"
+	ActiveOp1Suf  ActiveOp1 = "suf"
+	ActiveOp1Sub  ActiveOp1 = "sub"
+	ActiveOp1Gt   ActiveOp1 = "gt"
+	ActiveOp1Gte  ActiveOp1 = "gte"
+	ActiveOp1Lt   ActiveOp1 = "lt"
+	ActiveOp1Lte  ActiveOp1 = "lte"
+	ActiveOp1Nex  ActiveOp1 = "nex"
+	ActiveOp1Ninc ActiveOp1 = "ninc"
+	ActiveOp1Neq  ActiveOp1 = "neq"
+)
+
+func (e ActiveOp1) ToPointer() *ActiveOp1 {
+	return &e
+}
+func (e *ActiveOp1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "re":
+		fallthrough
+	case "eq":
+		fallthrough
+	case "ex":
+		fallthrough
+	case "inc":
+		fallthrough
+	case "pre":
+		fallthrough
+	case "suf":
+		fallthrough
+	case "sub":
+		fallthrough
+	case "gt":
+		fallthrough
+	case "gte":
+		fallthrough
+	case "lt":
+		fallthrough
+	case "lte":
+		fallthrough
+	case "nex":
+		fallthrough
+	case "ninc":
+		fallthrough
+	case "neq":
+		*e = ActiveOp1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ActiveOp1: %v", v)
+	}
+}
+
+type ActiveValue1Type string
+
+const (
+	ActiveValue1TypeStr        ActiveValue1Type = "str"
+	ActiveValue1TypeNumber     ActiveValue1Type = "number"
+	ActiveValue1TypeArrayOfStr ActiveValue1Type = "arrayOfStr"
+)
+
+type ActiveValue1 struct {
+	Str        *string  `queryParam:"inline"`
+	Number     *float64 `queryParam:"inline"`
+	ArrayOfStr []string `queryParam:"inline"`
+
+	Type ActiveValue1Type
+}
+
+func CreateActiveValue1Str(str string) ActiveValue1 {
+	typ := ActiveValue1TypeStr
+
+	return ActiveValue1{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateActiveValue1Number(number float64) ActiveValue1 {
+	typ := ActiveValue1TypeNumber
+
+	return ActiveValue1{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func CreateActiveValue1ArrayOfStr(arrayOfStr []string) ActiveValue1 {
+	typ := ActiveValue1TypeArrayOfStr
+
+	return ActiveValue1{
+		ArrayOfStr: arrayOfStr,
+		Type:       typ,
+	}
+}
+
+func (u *ActiveValue1) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = ActiveValue1TypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
+		u.Number = &number
+		u.Type = ActiveValue1TypeNumber
+		return nil
+	}
+
+	var arrayOfStr []string = []string{}
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
+		u.ArrayOfStr = arrayOfStr
+		u.Type = ActiveValue1TypeArrayOfStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ActiveValue1", string(data))
+}
+
+func (u ActiveValue1) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	if u.ArrayOfStr != nil {
+		return utils.MarshalJSON(u.ArrayOfStr, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type ActiveValue1: all fields are null")
+}
+
+type ActiveCondition1 struct {
+	Type  ActiveType1   `json:"type"`
+	Op    ActiveOp1     `json:"op"`
+	Neg   *bool         `json:"neg,omitempty"`
+	Key   *string       `json:"key,omitempty"`
+	Value *ActiveValue1 `json:"value,omitempty"`
+}
+
+func (a ActiveCondition1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *ActiveCondition1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"type", "op"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ActiveCondition1) GetType() ActiveType1 {
+	if o == nil {
+		return ActiveType1("")
+	}
+	return o.Type
+}
+
+func (o *ActiveCondition1) GetOp() ActiveOp1 {
+	if o == nil {
+		return ActiveOp1("")
+	}
+	return o.Op
+}
+
+func (o *ActiveCondition1) GetNeg() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Neg
+}
+
+func (o *ActiveCondition1) GetKey() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Key
+}
+
+func (o *ActiveCondition1) GetValue() *ActiveValue1 {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}
+
+type ActiveConditionGroup1 struct {
+	Conditions []ActiveCondition1 `json:"conditions"`
+}
+
+func (a ActiveConditionGroup1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *ActiveConditionGroup1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"conditions"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ActiveConditionGroup1) GetConditions() []ActiveCondition1 {
+	if o == nil {
+		return []ActiveCondition1{}
+	}
+	return o.Conditions
+}
+
+type ActiveMitigateAction1 string
+
+const (
+	ActiveMitigateAction1Deny      ActiveMitigateAction1 = "deny"
+	ActiveMitigateAction1Log       ActiveMitigateAction1 = "log"
+	ActiveMitigateAction1Challenge ActiveMitigateAction1 = "challenge"
+	ActiveMitigateAction1Bypass    ActiveMitigateAction1 = "bypass"
+	ActiveMitigateAction1RateLimit ActiveMitigateAction1 = "rate_limit"
+	ActiveMitigateAction1Redirect  ActiveMitigateAction1 = "redirect"
+)
+
+func (e ActiveMitigateAction1) ToPointer() *ActiveMitigateAction1 {
+	return &e
+}
+func (e *ActiveMitigateAction1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "deny":
+		fallthrough
+	case "log":
+		fallthrough
+	case "challenge":
+		fallthrough
+	case "bypass":
+		fallthrough
+	case "rate_limit":
+		fallthrough
+	case "redirect":
+		*e = ActiveMitigateAction1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ActiveMitigateAction1: %v", v)
+	}
+}
+
+type ActiveAlgo1 string
+
+const (
+	ActiveAlgo1FixedWindow ActiveAlgo1 = "fixed_window"
+	ActiveAlgo1TokenBucket ActiveAlgo1 = "token_bucket"
+)
+
+func (e ActiveAlgo1) ToPointer() *ActiveAlgo1 {
+	return &e
+}
+func (e *ActiveAlgo1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "fixed_window":
+		fallthrough
+	case "token_bucket":
+		*e = ActiveAlgo1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ActiveAlgo1: %v", v)
+	}
+}
+
+type ActiveRateLimitAction1 string
+
+const (
+	ActiveRateLimitAction1Deny      ActiveRateLimitAction1 = "deny"
+	ActiveRateLimitAction1Log       ActiveRateLimitAction1 = "log"
+	ActiveRateLimitAction1Challenge ActiveRateLimitAction1 = "challenge"
+	ActiveRateLimitAction1RateLimit ActiveRateLimitAction1 = "rate_limit"
+)
+
+func (e ActiveRateLimitAction1) ToPointer() *ActiveRateLimitAction1 {
+	return &e
+}
+func (e *ActiveRateLimitAction1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "deny":
+		fallthrough
+	case "log":
+		fallthrough
+	case "challenge":
+		fallthrough
+	case "rate_limit":
+		*e = ActiveRateLimitAction1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ActiveRateLimitAction1: %v", v)
+	}
+}
+
+type ActiveRateLimit1 struct {
+	Algo   ActiveAlgo1             `json:"algo"`
+	Window float64                 `json:"window"`
+	Limit  float64                 `json:"limit"`
+	Keys   []string                `json:"keys"`
+	Action *ActiveRateLimitAction1 `json:"action,omitempty"`
+}
+
+func (a ActiveRateLimit1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *ActiveRateLimit1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"algo", "window", "limit", "keys"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ActiveRateLimit1) GetAlgo() ActiveAlgo1 {
+	if o == nil {
+		return ActiveAlgo1("")
+	}
+	return o.Algo
+}
+
+func (o *ActiveRateLimit1) GetWindow() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Window
+}
+
+func (o *ActiveRateLimit1) GetLimit() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Limit
+}
+
+func (o *ActiveRateLimit1) GetKeys() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.Keys
+}
+
+func (o *ActiveRateLimit1) GetAction() *ActiveRateLimitAction1 {
+	if o == nil {
+		return nil
+	}
+	return o.Action
+}
+
+type ActiveRedirect1 struct {
+	Location  string `json:"location"`
+	Permanent bool   `json:"permanent"`
+}
+
+func (a ActiveRedirect1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *ActiveRedirect1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"location", "permanent"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ActiveRedirect1) GetLocation() string {
+	if o == nil {
+		return ""
+	}
+	return o.Location
+}
+
+func (o *ActiveRedirect1) GetPermanent() bool {
+	if o == nil {
+		return false
+	}
+	return o.Permanent
+}
+
+type ActiveMitigate1 struct {
+	Action         ActiveMitigateAction1 `json:"action"`
+	RateLimit      *ActiveRateLimit1     `json:"rateLimit,omitempty"`
+	Redirect       *ActiveRedirect1      `json:"redirect,omitempty"`
+	ActionDuration *string               `json:"actionDuration,omitempty"`
+	BypassSystem   *bool                 `json:"bypassSystem,omitempty"`
+}
+
+func (a ActiveMitigate1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *ActiveMitigate1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"action"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ActiveMitigate1) GetAction() ActiveMitigateAction1 {
+	if o == nil {
+		return ActiveMitigateAction1("")
+	}
+	return o.Action
+}
+
+func (o *ActiveMitigate1) GetRateLimit() *ActiveRateLimit1 {
+	if o == nil {
+		return nil
+	}
+	return o.RateLimit
+}
+
+func (o *ActiveMitigate1) GetRedirect() *ActiveRedirect1 {
+	if o == nil {
+		return nil
+	}
+	return o.Redirect
+}
+
+func (o *ActiveMitigate1) GetActionDuration() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ActionDuration
+}
+
+func (o *ActiveMitigate1) GetBypassSystem() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.BypassSystem
+}
+
+type RuleActiveAction1 struct {
+	Mitigate *ActiveMitigate1 `json:"mitigate,omitempty"`
+}
+
+func (r RuleActiveAction1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RuleActiveAction1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *RuleActiveAction1) GetMitigate() *ActiveMitigate1 {
+	if o == nil {
+		return nil
+	}
+	return o.Mitigate
+}
+
+type RuleActive1 struct {
+	ID               string                  `json:"id"`
+	Name             string                  `json:"name"`
+	Description      *string                 `json:"description,omitempty"`
+	Active           bool                    `json:"active"`
+	ConditionGroup   []ActiveConditionGroup1 `json:"conditionGroup"`
+	Action           RuleActiveAction1       `json:"action"`
+	Valid            bool                    `json:"valid"`
+	ValidationErrors any                     `json:"validationErrors"`
+}
+
+func (r RuleActive1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RuleActive1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"id", "name", "active", "conditionGroup", "action", "valid", "validationErrors"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *RuleActive1) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *RuleActive1) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *RuleActive1) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *RuleActive1) GetActive() bool {
+	if o == nil {
+		return false
+	}
+	return o.Active
+}
+
+func (o *RuleActive1) GetConditionGroup() []ActiveConditionGroup1 {
+	if o == nil {
+		return []ActiveConditionGroup1{}
+	}
+	return o.ConditionGroup
+}
+
+func (o *RuleActive1) GetAction() RuleActiveAction1 {
+	if o == nil {
+		return RuleActiveAction1{}
+	}
+	return o.Action
+}
+
+func (o *RuleActive1) GetValid() bool {
+	if o == nil {
+		return false
+	}
+	return o.Valid
+}
+
+func (o *RuleActive1) GetValidationErrors() any {
+	if o == nil {
+		return nil
+	}
+	return o.ValidationErrors
+}
+
+type ActiveRuleUnionType string
+
+const (
+	ActiveRuleUnionTypeRuleActive1 ActiveRuleUnionType = "rule_active_1"
+	ActiveRuleUnionTypeRuleActive2 ActiveRuleUnionType = "rule_active_2"
+)
+
+type ActiveRuleUnion struct {
+	RuleActive1 *RuleActive1 `queryParam:"inline"`
+	RuleActive2 *RuleActive2 `queryParam:"inline"`
+
+	Type ActiveRuleUnionType
+}
+
+func CreateActiveRuleUnionRuleActive1(ruleActive1 RuleActive1) ActiveRuleUnion {
+	typ := ActiveRuleUnionTypeRuleActive1
+
+	return ActiveRuleUnion{
+		RuleActive1: &ruleActive1,
+		Type:        typ,
+	}
+}
+
+func CreateActiveRuleUnionRuleActive2(ruleActive2 RuleActive2) ActiveRuleUnion {
+	typ := ActiveRuleUnionTypeRuleActive2
+
+	return ActiveRuleUnion{
+		RuleActive2: &ruleActive2,
+		Type:        typ,
+	}
+}
+
+func (u *ActiveRuleUnion) UnmarshalJSON(data []byte) error {
+
+	var ruleActive1 RuleActive1 = RuleActive1{}
+	if err := utils.UnmarshalJSON(data, &ruleActive1, "", true, nil); err == nil {
+		u.RuleActive1 = &ruleActive1
+		u.Type = ActiveRuleUnionTypeRuleActive1
+		return nil
+	}
+
+	var ruleActive2 RuleActive2 = RuleActive2{}
+	if err := utils.UnmarshalJSON(data, &ruleActive2, "", true, nil); err == nil {
+		u.RuleActive2 = &ruleActive2
+		u.Type = ActiveRuleUnionTypeRuleActive2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ActiveRuleUnion", string(data))
+}
+
+func (u ActiveRuleUnion) MarshalJSON() ([]byte, error) {
+	if u.RuleActive1 != nil {
+		return utils.MarshalJSON(u.RuleActive1, "", true)
+	}
+
+	if u.RuleActive2 != nil {
+		return utils.MarshalJSON(u.RuleActive2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type ActiveRuleUnion: all fields are null")
 }
 
 type ActiveIPAction string
@@ -3044,7 +3946,7 @@ type Active struct {
 	FirewallEnabled bool    `json:"firewallEnabled"`
 	// Custom Ruleset
 	Crs          ActiveCrs                      `json:"crs"`
-	Rules        []ActiveRule                   `json:"rules"`
+	Rules        []ActiveRuleUnion              `json:"rules"`
 	Ips          []ActiveIP                     `json:"ips"`
 	Changes      []PutFirewallConfigChange      `json:"changes"`
 	ManagedRules *PutFirewallConfigManagedRules `json:"managedRules,omitempty"`
@@ -3100,9 +4002,9 @@ func (o *Active) GetCrs() ActiveCrs {
 	return o.Crs
 }
 
-func (o *Active) GetRules() []ActiveRule {
+func (o *Active) GetRules() []ActiveRuleUnion {
 	if o == nil {
-		return []ActiveRule{}
+		return []ActiveRuleUnion{}
 	}
 	return o.Rules
 }

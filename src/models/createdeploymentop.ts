@@ -930,6 +930,22 @@ export const ChecksConclusion = {
 } as const;
 export type ChecksConclusion = ClosedEnum<typeof ChecksConclusion>;
 
+export type Cve = {
+  id: string;
+  score: number;
+  description?: string | undefined;
+  link?: string | undefined;
+};
+
+/**
+ * Since December 2025 - Temporary for Christmas hackathon 2025 CVE vulnerabilities found during build, only populated when CVE Shield is enabled and vulnerabilities are detected. Only accessible when CveShieldEnabled feature flag is enabled
+ */
+export type CveVulnerabilities = {
+  packageName: string;
+  packageVersion: string;
+  cve: Cve;
+};
+
 export const CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody15Type =
   {
     Bitbucket: "bitbucket",
@@ -1636,6 +1652,7 @@ export type Routes1 = {
     | undefined;
   mitigate?: RoutesMitigate | undefined;
   transforms?: Array<CreateDeploymentRoutesTransforms> | undefined;
+  env?: Array<string> | undefined;
   locale?: Locale | undefined;
   /**
    * A middleware key within the `output` key under the build result. Overrides a `middleware` definition.
@@ -1940,6 +1957,10 @@ export type CreateDeploymentResponseBody = {
    */
   defaultRoute?: string | undefined;
   canceledAt?: number | undefined;
+  /**
+   * Since December 2025 - Temporary for Christmas hackathon 2025 CVE vulnerabilities found during build, only populated when CVE Shield is enabled and vulnerabilities are detected. Only accessible when CveShieldEnabled feature flag is enabled
+   */
+  cveVulnerabilities?: Array<CveVulnerabilities> | undefined;
   errorCode?: string | undefined;
   errorLink?: string | undefined;
   errorMessage?: string | null | undefined;
@@ -4191,6 +4212,89 @@ export const ChecksConclusion$inboundSchema: z.ZodNativeEnum<
 export const ChecksConclusion$outboundSchema: z.ZodNativeEnum<
   typeof ChecksConclusion
 > = ChecksConclusion$inboundSchema;
+
+/** @internal */
+export const Cve$inboundSchema: z.ZodType<Cve, z.ZodTypeDef, unknown> = z
+  .object({
+    id: z.string(),
+    score: z.number(),
+    description: z.string().optional(),
+    link: z.string().optional(),
+  });
+/** @internal */
+export type Cve$Outbound = {
+  id: string;
+  score: number;
+  description?: string | undefined;
+  link?: string | undefined;
+};
+
+/** @internal */
+export const Cve$outboundSchema: z.ZodType<Cve$Outbound, z.ZodTypeDef, Cve> = z
+  .object({
+    id: z.string(),
+    score: z.number(),
+    description: z.string().optional(),
+    link: z.string().optional(),
+  });
+
+export function cveToJSON(cve: Cve): string {
+  return JSON.stringify(Cve$outboundSchema.parse(cve));
+}
+export function cveFromJSON(
+  jsonString: string,
+): SafeParseResult<Cve, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Cve$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Cve' from JSON`,
+  );
+}
+
+/** @internal */
+export const CveVulnerabilities$inboundSchema: z.ZodType<
+  CveVulnerabilities,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  packageName: z.string(),
+  packageVersion: z.string(),
+  cve: z.lazy(() => Cve$inboundSchema),
+});
+/** @internal */
+export type CveVulnerabilities$Outbound = {
+  packageName: string;
+  packageVersion: string;
+  cve: Cve$Outbound;
+};
+
+/** @internal */
+export const CveVulnerabilities$outboundSchema: z.ZodType<
+  CveVulnerabilities$Outbound,
+  z.ZodTypeDef,
+  CveVulnerabilities
+> = z.object({
+  packageName: z.string(),
+  packageVersion: z.string(),
+  cve: z.lazy(() => Cve$outboundSchema),
+});
+
+export function cveVulnerabilitiesToJSON(
+  cveVulnerabilities: CveVulnerabilities,
+): string {
+  return JSON.stringify(
+    CveVulnerabilities$outboundSchema.parse(cveVulnerabilities),
+  );
+}
+export function cveVulnerabilitiesFromJSON(
+  jsonString: string,
+): SafeParseResult<CveVulnerabilities, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CveVulnerabilities$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CveVulnerabilities' from JSON`,
+  );
+}
 
 /** @internal */
 export const CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody15Type$inboundSchema:
@@ -7143,6 +7247,7 @@ export const Routes1$inboundSchema: z.ZodType<Routes1, z.ZodTypeDef, unknown> =
     transforms: z.array(
       z.lazy(() => CreateDeploymentRoutesTransforms$inboundSchema),
     ).optional(),
+    env: z.array(z.string()).optional(),
     locale: z.lazy(() => Locale$inboundSchema).optional(),
     middlewarePath: z.string().optional(),
     middlewareRawSrc: z.array(z.string()).optional(),
@@ -7178,6 +7283,7 @@ export type Routes1$Outbound = {
     | undefined;
   mitigate?: RoutesMitigate$Outbound | undefined;
   transforms?: Array<CreateDeploymentRoutesTransforms$Outbound> | undefined;
+  env?: Array<string> | undefined;
   locale?: Locale$Outbound | undefined;
   middlewarePath?: string | undefined;
   middlewareRawSrc?: Array<string> | undefined;
@@ -7232,6 +7338,7 @@ export const Routes1$outboundSchema: z.ZodType<
   transforms: z.array(
     z.lazy(() => CreateDeploymentRoutesTransforms$outboundSchema),
   ).optional(),
+  env: z.array(z.string()).optional(),
   locale: z.lazy(() => Locale$outboundSchema).optional(),
   middlewarePath: z.string().optional(),
   middlewareRawSrc: z.array(z.string()).optional(),
@@ -8080,6 +8187,8 @@ export const CreateDeploymentResponseBody$inboundSchema: z.ZodType<
   deletedAt: z.nullable(z.number()).optional(),
   defaultRoute: z.string().optional(),
   canceledAt: z.number().optional(),
+  cveVulnerabilities: z.array(z.lazy(() => CveVulnerabilities$inboundSchema))
+    .optional(),
   errorCode: z.string().optional(),
   errorLink: z.string().optional(),
   errorMessage: z.nullable(z.string()).optional(),
@@ -8207,6 +8316,7 @@ export type CreateDeploymentResponseBody$Outbound = {
   deletedAt?: number | null | undefined;
   defaultRoute?: string | undefined;
   canceledAt?: number | undefined;
+  cveVulnerabilities?: Array<CveVulnerabilities$Outbound> | undefined;
   errorCode?: string | undefined;
   errorLink?: string | undefined;
   errorMessage?: string | null | undefined;
@@ -8327,6 +8437,8 @@ export const CreateDeploymentResponseBody$outboundSchema: z.ZodType<
   deletedAt: z.nullable(z.number()).optional(),
   defaultRoute: z.string().optional(),
   canceledAt: z.number().optional(),
+  cveVulnerabilities: z.array(z.lazy(() => CveVulnerabilities$outboundSchema))
+    .optional(),
   errorCode: z.string().optional(),
   errorLink: z.string().optional(),
   errorMessage: z.nullable(z.string()).optional(),

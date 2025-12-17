@@ -7,13 +7,13 @@ The payload of the event, if requested.
 ```typescript
 import { OneHundredAndThirtySeven } from "@vercel/sdk/models/userevent.js";
 
-let value: OneHundredAndThirtySeven = {
-  username: "Brandyn_Kutch72",
-};
+let value: OneHundredAndThirtySeven = {};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `username`         | *string*           | :heavy_check_mark: | N/A                |
+| `price`            | *number*           | :heavy_minus_sign: | N/A                |
+| `currency`         | *string*           | :heavy_minus_sign: | N/A                |
+| `enabled`          | *boolean*          | :heavy_minus_sign: | N/A                |

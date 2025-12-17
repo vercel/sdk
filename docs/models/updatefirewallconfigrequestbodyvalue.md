@@ -12,7 +12,7 @@ let value: UpdateFirewallConfigRequestBodyValue = {
     {
       conditions: [
         {
-          type: "protocol",
+          type: "scheme",
           op: "pre",
         },
       ],
@@ -31,3 +31,5 @@ let value: UpdateFirewallConfigRequestBodyValue = {
 | `active`                                                                                                                           | *boolean*                                                                                                                          | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
 | `conditionGroup`                                                                                                                   | [models.UpdateFirewallConfigRequestBodyConditionGroup](../models/updatefirewallconfigrequestbodyconditiongroup.md)[]               | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
 | `action`                                                                                                                           | [models.UpdateFirewallConfigRequestBodySecurityRequest3Action](../models/updatefirewallconfigrequestbodysecurityrequest3action.md) | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| `valid`                                                                                                                            | *boolean*                                                                                                                          | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
+| `validationErrors`                                                                                                                 | *models.UpdateFirewallConfigRequestBodyValidationErrors*                                                                           | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |

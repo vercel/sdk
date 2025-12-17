@@ -1,30 +1,36 @@
 # PutFirewallConfigSecurityRules
 
-## Example Usage
+
+## Supported Types
+
+### `models.PutFirewallConfigRules1`
 
 ```typescript
-import { PutFirewallConfigSecurityRules } from "@vercel/sdk/models/putfirewallconfigop.js";
-
-let value: PutFirewallConfigSecurityRules = {
+const value: models.PutFirewallConfigRules1 = {
   id: "<id>",
   name: "<value>",
-  active: true,
-  conditionGroup: [
-    {
-      conditions: [],
-    },
-  ],
+  active: false,
+  conditionGroup: [],
   action: {},
+  valid: false,
+  validationErrors: "<value>",
 };
 ```
 
-## Fields
+### `models.PutFirewallConfigRules2`
 
-| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
-| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                   | *string*                                                                                               | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
-| `name`                                                                                                 | *string*                                                                                               | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
-| `description`                                                                                          | *string*                                                                                               | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |
-| `active`                                                                                               | *boolean*                                                                                              | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
-| `conditionGroup`                                                                                       | [models.PutFirewallConfigConditionGroup](../models/putfirewallconfigconditiongroup.md)[]               | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
-| `action`                                                                                               | [models.PutFirewallConfigSecurityResponseAction](../models/putfirewallconfigsecurityresponseaction.md) | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
+```typescript
+const value: models.PutFirewallConfigRules2 = {
+  id: "<id>",
+  name: "<value>",
+  active: true,
+  conditionGroup: [],
+  action: {},
+  valid: false,
+  validationErrors: [
+    "<value 1>",
+    "<value 2>",
+  ],
+};
+```
+

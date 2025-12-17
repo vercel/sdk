@@ -398,3 +398,22 @@ test("Teams Invite User To Team", async () => {
     ],
   });
 });
+
+test("Teams Post Team Dsync Roles", async () => {
+  const testHttpClient = createTestHTTPClient("postTeamDsyncRoles");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.teams.postTeamDsyncRoles({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    ok: true,
+  });
+});

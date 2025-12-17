@@ -104,55 +104,55 @@ func testPutFirewallConfigPutFirewallConfig0(w http.ResponseWriter, req *http.Re
 					Action: operations.ActiveJavaActionLog,
 				},
 			},
-			Rules: []operations.ActiveRule{
-				operations.ActiveRule{
-					ID:     "<id>",
-					Name:   "<value>",
-					Active: true,
-					ConditionGroup: []operations.ActiveConditionGroup{
-						operations.ActiveConditionGroup{
-							Conditions: []operations.ActiveCondition{
-								operations.ActiveCondition{
-									Type: operations.ActiveTypeTargetPath,
-									Op:   operations.ActiveOpPre,
+			Rules: []operations.ActiveRuleUnion{
+				operations.CreateActiveRuleUnionRuleActive2(
+					operations.RuleActive2{
+						ID:     "<id>",
+						Name:   "<value>",
+						Active: false,
+						ConditionGroup: []operations.ActiveConditionGroup2{
+							operations.ActiveConditionGroup2{
+								Conditions: []operations.ActiveCondition2{
+									operations.ActiveCondition2{
+										Type: operations.ActiveType2Region,
+										Op:   operations.ActiveOp2Lt,
+									},
 								},
 							},
 						},
-						operations.ActiveConditionGroup{
-							Conditions: []operations.ActiveCondition{
-								operations.ActiveCondition{
-									Type: operations.ActiveTypeTargetPath,
-									Op:   operations.ActiveOpPre,
-								},
-							},
-						},
-					},
-					Action: operations.ActiveRuleAction{},
-				},
-				operations.ActiveRule{
-					ID:     "<id>",
-					Name:   "<value>",
-					Active: true,
-					ConditionGroup: []operations.ActiveConditionGroup{
-						operations.ActiveConditionGroup{
-							Conditions: []operations.ActiveCondition{
-								operations.ActiveCondition{
-									Type: operations.ActiveTypeTargetPath,
-									Op:   operations.ActiveOpPre,
-								},
-							},
-						},
-						operations.ActiveConditionGroup{
-							Conditions: []operations.ActiveCondition{
-								operations.ActiveCondition{
-									Type: operations.ActiveTypeTargetPath,
-									Op:   operations.ActiveOpPre,
-								},
-							},
+						Action: operations.RuleActiveAction2{},
+						Valid:  true,
+						ValidationErrors: []string{
+							"<value 1>",
+							"<value 2>",
+							"<value 3>",
 						},
 					},
-					Action: operations.ActiveRuleAction{},
-				},
+				),
+				operations.CreateActiveRuleUnionRuleActive2(
+					operations.RuleActive2{
+						ID:     "<id>",
+						Name:   "<value>",
+						Active: false,
+						ConditionGroup: []operations.ActiveConditionGroup2{
+							operations.ActiveConditionGroup2{
+								Conditions: []operations.ActiveCondition2{
+									operations.ActiveCondition2{
+										Type: operations.ActiveType2Region,
+										Op:   operations.ActiveOp2Lt,
+									},
+								},
+							},
+						},
+						Action: operations.RuleActiveAction2{},
+						Valid:  true,
+						ValidationErrors: []string{
+							"<value 1>",
+							"<value 2>",
+							"<value 3>",
+						},
+					},
+				),
 			},
 			Ips: []operations.ActiveIP{},
 			Changes: []operations.PutFirewallConfigChange{

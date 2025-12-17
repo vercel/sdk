@@ -37,59 +37,59 @@ func (e *Direction) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type StatusCodeType string
+type GetDeploymentEventsStatusCodeType string
 
 const (
-	StatusCodeTypeNumber StatusCodeType = "number"
-	StatusCodeTypeStr    StatusCodeType = "str"
+	GetDeploymentEventsStatusCodeTypeNumber GetDeploymentEventsStatusCodeType = "number"
+	GetDeploymentEventsStatusCodeTypeStr    GetDeploymentEventsStatusCodeType = "str"
 )
 
-// StatusCode - HTTP status code range to filter events by.
-type StatusCode struct {
+// GetDeploymentEventsStatusCode - HTTP status code range to filter events by.
+type GetDeploymentEventsStatusCode struct {
 	Number *float64 `queryParam:"inline"`
 	Str    *string  `queryParam:"inline"`
 
-	Type StatusCodeType
+	Type GetDeploymentEventsStatusCodeType
 }
 
-func CreateStatusCodeNumber(number float64) StatusCode {
-	typ := StatusCodeTypeNumber
+func CreateGetDeploymentEventsStatusCodeNumber(number float64) GetDeploymentEventsStatusCode {
+	typ := GetDeploymentEventsStatusCodeTypeNumber
 
-	return StatusCode{
+	return GetDeploymentEventsStatusCode{
 		Number: &number,
 		Type:   typ,
 	}
 }
 
-func CreateStatusCodeStr(str string) StatusCode {
-	typ := StatusCodeTypeStr
+func CreateGetDeploymentEventsStatusCodeStr(str string) GetDeploymentEventsStatusCode {
+	typ := GetDeploymentEventsStatusCodeTypeStr
 
-	return StatusCode{
+	return GetDeploymentEventsStatusCode{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func (u *StatusCode) UnmarshalJSON(data []byte) error {
+func (u *GetDeploymentEventsStatusCode) UnmarshalJSON(data []byte) error {
 
 	var number float64 = float64(0)
 	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
-		u.Type = StatusCodeTypeNumber
+		u.Type = GetDeploymentEventsStatusCodeTypeNumber
 		return nil
 	}
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
-		u.Type = StatusCodeTypeStr
+		u.Type = GetDeploymentEventsStatusCodeTypeStr
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for StatusCode", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetDeploymentEventsStatusCode", string(data))
 }
 
-func (u StatusCode) MarshalJSON() ([]byte, error) {
+func (u GetDeploymentEventsStatusCode) MarshalJSON() ([]byte, error) {
 	if u.Number != nil {
 		return utils.MarshalJSON(u.Number, "", true)
 	}
@@ -98,7 +98,7 @@ func (u StatusCode) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type StatusCode: all fields are null")
+	return nil, errors.New("could not marshal union type GetDeploymentEventsStatusCode: all fields are null")
 }
 
 type GetDeploymentEventsRequest struct {
@@ -117,9 +117,9 @@ type GetDeploymentEventsRequest struct {
 	// Timestamp for when the build logs should be pulled up until.
 	Until *float64 `queryParam:"style=form,explode=true,name=until"`
 	// HTTP status code range to filter events by.
-	StatusCode *StatusCode `queryParam:"style=form,explode=true,name=statusCode"`
-	Delimiter  *float64    `queryParam:"style=form,explode=true,name=delimiter"`
-	Builds     *float64    `queryParam:"style=form,explode=true,name=builds"`
+	StatusCode *GetDeploymentEventsStatusCode `queryParam:"style=form,explode=true,name=statusCode"`
+	Delimiter  *float64                       `queryParam:"style=form,explode=true,name=delimiter"`
+	Builds     *float64                       `queryParam:"style=form,explode=true,name=builds"`
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
@@ -186,7 +186,7 @@ func (o *GetDeploymentEventsRequest) GetUntil() *float64 {
 	return o.Until
 }
 
-func (o *GetDeploymentEventsRequest) GetStatusCode() *StatusCode {
+func (o *GetDeploymentEventsRequest) GetStatusCode() *GetDeploymentEventsStatusCode {
 	if o == nil {
 		return nil
 	}

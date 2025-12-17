@@ -45,6 +45,7 @@ const (
 	CreateWebhookEventRequestFirewallAttack                                     CreateWebhookEventRequest = "firewall.attack"
 	CreateWebhookEventRequestFirewallSystemRuleAnomaly                          CreateWebhookEventRequest = "firewall.system-rule-anomaly"
 	CreateWebhookEventRequestFirewallCustomRuleAnomaly                          CreateWebhookEventRequest = "firewall.custom-rule-anomaly"
+	CreateWebhookEventRequestAlertsTriggered                                    CreateWebhookEventRequest = "alerts.triggered"
 	CreateWebhookEventRequestIntegrationConfigurationPermissionUpgraded         CreateWebhookEventRequest = "integration-configuration.permission-upgraded"
 	CreateWebhookEventRequestIntegrationConfigurationRemoved                    CreateWebhookEventRequest = "integration-configuration.removed"
 	CreateWebhookEventRequestIntegrationConfigurationScopeChangeConfirmed       CreateWebhookEventRequest = "integration-configuration.scope-change-confirmed"
@@ -87,7 +88,7 @@ const (
 	CreateWebhookEventRequestObservabilityAnomalyError                          CreateWebhookEventRequest = "observability.anomaly-error"
 	CreateWebhookEventRequestObservabilityUsageAnomaly                          CreateWebhookEventRequest = "observability.usage-anomaly"
 	CreateWebhookEventRequestObservabilityErrorAnomaly                          CreateWebhookEventRequest = "observability.error-anomaly"
-	CreateWebhookEventRequestObservabilityAnomalyBotId                          CreateWebhookEventRequest = "observability.anomaly-botId"
+	CreateWebhookEventRequestBotidAnomaly                                       CreateWebhookEventRequest = "botid.anomaly"
 	CreateWebhookEventRequestTestWebhook                                        CreateWebhookEventRequest = "test-webhook"
 )
 
@@ -167,6 +168,8 @@ func (e *CreateWebhookEventRequest) UnmarshalJSON(data []byte) error {
 	case "firewall.system-rule-anomaly":
 		fallthrough
 	case "firewall.custom-rule-anomaly":
+		fallthrough
+	case "alerts.triggered":
 		fallthrough
 	case "integration-configuration.permission-upgraded":
 		fallthrough
@@ -252,7 +255,7 @@ func (e *CreateWebhookEventRequest) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "observability.error-anomaly":
 		fallthrough
-	case "observability.anomaly-botId":
+	case "botid.anomaly":
 		fallthrough
 	case "test-webhook":
 		*e = CreateWebhookEventRequest(v)
@@ -356,6 +359,7 @@ const (
 	CreateWebhookEventResponseFirewallAttack                                     CreateWebhookEventResponse = "firewall.attack"
 	CreateWebhookEventResponseFirewallSystemRuleAnomaly                          CreateWebhookEventResponse = "firewall.system-rule-anomaly"
 	CreateWebhookEventResponseFirewallCustomRuleAnomaly                          CreateWebhookEventResponse = "firewall.custom-rule-anomaly"
+	CreateWebhookEventResponseAlertsTriggered                                    CreateWebhookEventResponse = "alerts.triggered"
 	CreateWebhookEventResponseIntegrationConfigurationPermissionUpgraded         CreateWebhookEventResponse = "integration-configuration.permission-upgraded"
 	CreateWebhookEventResponseIntegrationConfigurationRemoved                    CreateWebhookEventResponse = "integration-configuration.removed"
 	CreateWebhookEventResponseIntegrationConfigurationScopeChangeConfirmed       CreateWebhookEventResponse = "integration-configuration.scope-change-confirmed"
@@ -398,7 +402,7 @@ const (
 	CreateWebhookEventResponseObservabilityAnomalyError                          CreateWebhookEventResponse = "observability.anomaly-error"
 	CreateWebhookEventResponseObservabilityUsageAnomaly                          CreateWebhookEventResponse = "observability.usage-anomaly"
 	CreateWebhookEventResponseObservabilityErrorAnomaly                          CreateWebhookEventResponse = "observability.error-anomaly"
-	CreateWebhookEventResponseObservabilityAnomalyBotId                          CreateWebhookEventResponse = "observability.anomaly-botId"
+	CreateWebhookEventResponseBotidAnomaly                                       CreateWebhookEventResponse = "botid.anomaly"
 	CreateWebhookEventResponseTestWebhook                                        CreateWebhookEventResponse = "test-webhook"
 )
 
@@ -478,6 +482,8 @@ func (e *CreateWebhookEventResponse) UnmarshalJSON(data []byte) error {
 	case "firewall.system-rule-anomaly":
 		fallthrough
 	case "firewall.custom-rule-anomaly":
+		fallthrough
+	case "alerts.triggered":
 		fallthrough
 	case "integration-configuration.permission-upgraded":
 		fallthrough
@@ -563,7 +569,7 @@ func (e *CreateWebhookEventResponse) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "observability.error-anomaly":
 		fallthrough
-	case "observability.anomaly-botId":
+	case "botid.anomaly":
 		fallthrough
 	case "test-webhook":
 		*e = CreateWebhookEventResponse(v)

@@ -17,6 +17,7 @@ export type View = ClosedEnum<typeof View>;
 export const InstallationType = {
   Marketplace: "marketplace",
   External: "external",
+  Provisioning: "provisioning",
 } as const;
 export type InstallationType = ClosedEnum<typeof InstallationType>;
 

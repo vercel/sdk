@@ -295,6 +295,8 @@ export const UpdateFirewallConfigRequestBodySecurityType = {
   Ja3Digest: "ja3_digest",
   RateLimitApiId: "rate_limit_api_id",
   ServerAction: "server_action",
+  BotName: "bot_name",
+  BotCategory: "bot_category",
 } as const;
 export type UpdateFirewallConfigRequestBodySecurityType = ClosedEnum<
   typeof UpdateFirewallConfigRequestBodySecurityType
@@ -403,12 +405,18 @@ export type UpdateFirewallConfigRequestBodySecurityRequest3Action = {
   mitigate?: UpdateFirewallConfigRequestBodyMitigate | undefined;
 };
 
+export type UpdateFirewallConfigRequestBodyValidationErrors =
+  | string
+  | Array<string>;
+
 export type UpdateFirewallConfigRequestBodyValue = {
   name: string;
   description?: string | undefined;
   active: boolean;
   conditionGroup: Array<UpdateFirewallConfigRequestBodyConditionGroup>;
   action: UpdateFirewallConfigRequestBodySecurityRequest3Action;
+  valid?: boolean | undefined;
+  validationErrors?: string | Array<string> | undefined;
 };
 
 /**
@@ -452,6 +460,8 @@ export const UpdateFirewallConfigRequestBodyType = {
   Ja3Digest: "ja3_digest",
   RateLimitApiId: "rate_limit_api_id",
   ServerAction: "server_action",
+  BotName: "bot_name",
+  BotCategory: "bot_category",
 } as const;
 export type UpdateFirewallConfigRequestBodyType = ClosedEnum<
   typeof UpdateFirewallConfigRequestBodyType
@@ -552,12 +562,16 @@ export type UpdateFirewallConfigRequestBodySecurityRequest2Action = {
   mitigate?: RequestBodyMitigate | undefined;
 };
 
+export type RequestBodyValidationErrors = string | Array<string>;
+
 export type RequestBodyValue = {
   name: string;
   description?: string | undefined;
   active: boolean;
   conditionGroup: Array<RequestBodyConditionGroup>;
   action: UpdateFirewallConfigRequestBodySecurityRequest2Action;
+  valid?: boolean | undefined;
+  validationErrors?: string | Array<string> | undefined;
 };
 
 /**
@@ -2173,6 +2187,52 @@ export function updateFirewallConfigRequestBodySecurityRequest3ActionFromJSON(
 }
 
 /** @internal */
+export const UpdateFirewallConfigRequestBodyValidationErrors$inboundSchema:
+  z.ZodType<
+    UpdateFirewallConfigRequestBodyValidationErrors,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([z.string(), z.array(z.string())]);
+/** @internal */
+export type UpdateFirewallConfigRequestBodyValidationErrors$Outbound =
+  | string
+  | Array<string>;
+
+/** @internal */
+export const UpdateFirewallConfigRequestBodyValidationErrors$outboundSchema:
+  z.ZodType<
+    UpdateFirewallConfigRequestBodyValidationErrors$Outbound,
+    z.ZodTypeDef,
+    UpdateFirewallConfigRequestBodyValidationErrors
+  > = z.union([z.string(), z.array(z.string())]);
+
+export function updateFirewallConfigRequestBodyValidationErrorsToJSON(
+  updateFirewallConfigRequestBodyValidationErrors:
+    UpdateFirewallConfigRequestBodyValidationErrors,
+): string {
+  return JSON.stringify(
+    UpdateFirewallConfigRequestBodyValidationErrors$outboundSchema.parse(
+      updateFirewallConfigRequestBodyValidationErrors,
+    ),
+  );
+}
+export function updateFirewallConfigRequestBodyValidationErrorsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateFirewallConfigRequestBodyValidationErrors,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateFirewallConfigRequestBodyValidationErrors$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateFirewallConfigRequestBodyValidationErrors' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateFirewallConfigRequestBodyValue$inboundSchema: z.ZodType<
   UpdateFirewallConfigRequestBodyValue,
   z.ZodTypeDef,
@@ -2187,6 +2247,8 @@ export const UpdateFirewallConfigRequestBodyValue$inboundSchema: z.ZodType<
   action: z.lazy(() =>
     UpdateFirewallConfigRequestBodySecurityRequest3Action$inboundSchema
   ),
+  valid: z.boolean().optional(),
+  validationErrors: z.union([z.string(), z.array(z.string())]).optional(),
 });
 /** @internal */
 export type UpdateFirewallConfigRequestBodyValue$Outbound = {
@@ -2195,6 +2257,8 @@ export type UpdateFirewallConfigRequestBodyValue$Outbound = {
   active: boolean;
   conditionGroup: Array<UpdateFirewallConfigRequestBodyConditionGroup$Outbound>;
   action: UpdateFirewallConfigRequestBodySecurityRequest3Action$Outbound;
+  valid?: boolean | undefined;
+  validationErrors?: string | Array<string> | undefined;
 };
 
 /** @internal */
@@ -2212,6 +2276,8 @@ export const UpdateFirewallConfigRequestBodyValue$outboundSchema: z.ZodType<
   action: z.lazy(() =>
     UpdateFirewallConfigRequestBodySecurityRequest3Action$outboundSchema
   ),
+  valid: z.boolean().optional(),
+  validationErrors: z.union([z.string(), z.array(z.string())]).optional(),
 });
 
 export function updateFirewallConfigRequestBodyValueToJSON(
@@ -2817,6 +2883,41 @@ export function updateFirewallConfigRequestBodySecurityRequest2ActionFromJSON(
 }
 
 /** @internal */
+export const RequestBodyValidationErrors$inboundSchema: z.ZodType<
+  RequestBodyValidationErrors,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.string(), z.array(z.string())]);
+/** @internal */
+export type RequestBodyValidationErrors$Outbound = string | Array<string>;
+
+/** @internal */
+export const RequestBodyValidationErrors$outboundSchema: z.ZodType<
+  RequestBodyValidationErrors$Outbound,
+  z.ZodTypeDef,
+  RequestBodyValidationErrors
+> = z.union([z.string(), z.array(z.string())]);
+
+export function requestBodyValidationErrorsToJSON(
+  requestBodyValidationErrors: RequestBodyValidationErrors,
+): string {
+  return JSON.stringify(
+    RequestBodyValidationErrors$outboundSchema.parse(
+      requestBodyValidationErrors,
+    ),
+  );
+}
+export function requestBodyValidationErrorsFromJSON(
+  jsonString: string,
+): SafeParseResult<RequestBodyValidationErrors, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RequestBodyValidationErrors$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RequestBodyValidationErrors' from JSON`,
+  );
+}
+
+/** @internal */
 export const RequestBodyValue$inboundSchema: z.ZodType<
   RequestBodyValue,
   z.ZodTypeDef,
@@ -2831,6 +2932,8 @@ export const RequestBodyValue$inboundSchema: z.ZodType<
   action: z.lazy(() =>
     UpdateFirewallConfigRequestBodySecurityRequest2Action$inboundSchema
   ),
+  valid: z.boolean().optional(),
+  validationErrors: z.union([z.string(), z.array(z.string())]).optional(),
 });
 /** @internal */
 export type RequestBodyValue$Outbound = {
@@ -2839,6 +2942,8 @@ export type RequestBodyValue$Outbound = {
   active: boolean;
   conditionGroup: Array<RequestBodyConditionGroup$Outbound>;
   action: UpdateFirewallConfigRequestBodySecurityRequest2Action$Outbound;
+  valid?: boolean | undefined;
+  validationErrors?: string | Array<string> | undefined;
 };
 
 /** @internal */
@@ -2856,6 +2961,8 @@ export const RequestBodyValue$outboundSchema: z.ZodType<
   action: z.lazy(() =>
     UpdateFirewallConfigRequestBodySecurityRequest2Action$outboundSchema
   ),
+  valid: z.boolean().optional(),
+  validationErrors: z.union([z.string(), z.array(z.string())]).optional(),
 });
 
 export function requestBodyValueToJSON(

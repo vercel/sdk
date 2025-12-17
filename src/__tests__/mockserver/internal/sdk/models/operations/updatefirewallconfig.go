@@ -1081,6 +1081,8 @@ const (
 	UpdateFirewallConfigType2Ja3Digest        UpdateFirewallConfigType2 = "ja3_digest"
 	UpdateFirewallConfigType2RateLimitAPIID   UpdateFirewallConfigType2 = "rate_limit_api_id"
 	UpdateFirewallConfigType2ServerAction     UpdateFirewallConfigType2 = "server_action"
+	UpdateFirewallConfigType2BotName          UpdateFirewallConfigType2 = "bot_name"
+	UpdateFirewallConfigType2BotCategory      UpdateFirewallConfigType2 = "bot_category"
 )
 
 func (e UpdateFirewallConfigType2) ToPointer() *UpdateFirewallConfigType2 {
@@ -1139,6 +1141,10 @@ func (e *UpdateFirewallConfigType2) UnmarshalJSON(data []byte) error {
 	case "rate_limit_api_id":
 		fallthrough
 	case "server_action":
+		fallthrough
+	case "bot_name":
+		fallthrough
+	case "bot_category":
 		*e = UpdateFirewallConfigType2(v)
 		return nil
 	default:
@@ -1814,12 +1820,77 @@ func (o *ValueAction2) GetMitigate() *UpdateFirewallConfigMitigate2 {
 	return o.Mitigate
 }
 
+type UpdateFirewallConfigValidationErrors2Type string
+
+const (
+	UpdateFirewallConfigValidationErrors2TypeStr        UpdateFirewallConfigValidationErrors2Type = "str"
+	UpdateFirewallConfigValidationErrors2TypeArrayOfStr UpdateFirewallConfigValidationErrors2Type = "arrayOfStr"
+)
+
+type UpdateFirewallConfigValidationErrors2 struct {
+	Str        *string  `queryParam:"inline"`
+	ArrayOfStr []string `queryParam:"inline"`
+
+	Type UpdateFirewallConfigValidationErrors2Type
+}
+
+func CreateUpdateFirewallConfigValidationErrors2Str(str string) UpdateFirewallConfigValidationErrors2 {
+	typ := UpdateFirewallConfigValidationErrors2TypeStr
+
+	return UpdateFirewallConfigValidationErrors2{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateUpdateFirewallConfigValidationErrors2ArrayOfStr(arrayOfStr []string) UpdateFirewallConfigValidationErrors2 {
+	typ := UpdateFirewallConfigValidationErrors2TypeArrayOfStr
+
+	return UpdateFirewallConfigValidationErrors2{
+		ArrayOfStr: arrayOfStr,
+		Type:       typ,
+	}
+}
+
+func (u *UpdateFirewallConfigValidationErrors2) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = UpdateFirewallConfigValidationErrors2TypeStr
+		return nil
+	}
+
+	var arrayOfStr []string = []string{}
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
+		u.ArrayOfStr = arrayOfStr
+		u.Type = UpdateFirewallConfigValidationErrors2TypeArrayOfStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFirewallConfigValidationErrors2", string(data))
+}
+
+func (u UpdateFirewallConfigValidationErrors2) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.ArrayOfStr != nil {
+		return utils.MarshalJSON(u.ArrayOfStr, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type UpdateFirewallConfigValidationErrors2: all fields are null")
+}
+
 type UpdateFirewallConfigValue2 struct {
-	Name           string                                `json:"name"`
-	Description    *string                               `json:"description,omitempty"`
-	Active         bool                                  `json:"active"`
-	ConditionGroup []UpdateFirewallConfigConditionGroup2 `json:"conditionGroup"`
-	Action         ValueAction2                          `json:"action"`
+	Name             string                                 `json:"name"`
+	Description      *string                                `json:"description,omitempty"`
+	Active           bool                                   `json:"active"`
+	ConditionGroup   []UpdateFirewallConfigConditionGroup2  `json:"conditionGroup"`
+	Action           ValueAction2                           `json:"action"`
+	Valid            *bool                                  `json:"valid,omitempty"`
+	ValidationErrors *UpdateFirewallConfigValidationErrors2 `json:"validationErrors,omitempty"`
 }
 
 func (u UpdateFirewallConfigValue2) MarshalJSON() ([]byte, error) {
@@ -1866,6 +1937,20 @@ func (o *UpdateFirewallConfigValue2) GetAction() ValueAction2 {
 		return ValueAction2{}
 	}
 	return o.Action
+}
+
+func (o *UpdateFirewallConfigValue2) GetValid() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Valid
+}
+
+func (o *UpdateFirewallConfigValue2) GetValidationErrors() *UpdateFirewallConfigValidationErrors2 {
+	if o == nil {
+		return nil
+	}
+	return o.ValidationErrors
 }
 
 // RulesUpdate - Update a custom rule
@@ -1957,6 +2042,8 @@ const (
 	UpdateFirewallConfigType1Ja3Digest        UpdateFirewallConfigType1 = "ja3_digest"
 	UpdateFirewallConfigType1RateLimitAPIID   UpdateFirewallConfigType1 = "rate_limit_api_id"
 	UpdateFirewallConfigType1ServerAction     UpdateFirewallConfigType1 = "server_action"
+	UpdateFirewallConfigType1BotName          UpdateFirewallConfigType1 = "bot_name"
+	UpdateFirewallConfigType1BotCategory      UpdateFirewallConfigType1 = "bot_category"
 )
 
 func (e UpdateFirewallConfigType1) ToPointer() *UpdateFirewallConfigType1 {
@@ -2015,6 +2102,10 @@ func (e *UpdateFirewallConfigType1) UnmarshalJSON(data []byte) error {
 	case "rate_limit_api_id":
 		fallthrough
 	case "server_action":
+		fallthrough
+	case "bot_name":
+		fallthrough
+	case "bot_category":
 		*e = UpdateFirewallConfigType1(v)
 		return nil
 	default:
@@ -2690,12 +2781,77 @@ func (o *ValueAction1) GetMitigate() *UpdateFirewallConfigMitigate1 {
 	return o.Mitigate
 }
 
+type UpdateFirewallConfigValidationErrors1Type string
+
+const (
+	UpdateFirewallConfigValidationErrors1TypeStr        UpdateFirewallConfigValidationErrors1Type = "str"
+	UpdateFirewallConfigValidationErrors1TypeArrayOfStr UpdateFirewallConfigValidationErrors1Type = "arrayOfStr"
+)
+
+type UpdateFirewallConfigValidationErrors1 struct {
+	Str        *string  `queryParam:"inline"`
+	ArrayOfStr []string `queryParam:"inline"`
+
+	Type UpdateFirewallConfigValidationErrors1Type
+}
+
+func CreateUpdateFirewallConfigValidationErrors1Str(str string) UpdateFirewallConfigValidationErrors1 {
+	typ := UpdateFirewallConfigValidationErrors1TypeStr
+
+	return UpdateFirewallConfigValidationErrors1{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateUpdateFirewallConfigValidationErrors1ArrayOfStr(arrayOfStr []string) UpdateFirewallConfigValidationErrors1 {
+	typ := UpdateFirewallConfigValidationErrors1TypeArrayOfStr
+
+	return UpdateFirewallConfigValidationErrors1{
+		ArrayOfStr: arrayOfStr,
+		Type:       typ,
+	}
+}
+
+func (u *UpdateFirewallConfigValidationErrors1) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = UpdateFirewallConfigValidationErrors1TypeStr
+		return nil
+	}
+
+	var arrayOfStr []string = []string{}
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
+		u.ArrayOfStr = arrayOfStr
+		u.Type = UpdateFirewallConfigValidationErrors1TypeArrayOfStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFirewallConfigValidationErrors1", string(data))
+}
+
+func (u UpdateFirewallConfigValidationErrors1) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.ArrayOfStr != nil {
+		return utils.MarshalJSON(u.ArrayOfStr, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type UpdateFirewallConfigValidationErrors1: all fields are null")
+}
+
 type UpdateFirewallConfigValue1 struct {
-	Name           string                                `json:"name"`
-	Description    *string                               `json:"description,omitempty"`
-	Active         bool                                  `json:"active"`
-	ConditionGroup []UpdateFirewallConfigConditionGroup1 `json:"conditionGroup"`
-	Action         ValueAction1                          `json:"action"`
+	Name             string                                 `json:"name"`
+	Description      *string                                `json:"description,omitempty"`
+	Active           bool                                   `json:"active"`
+	ConditionGroup   []UpdateFirewallConfigConditionGroup1  `json:"conditionGroup"`
+	Action           ValueAction1                           `json:"action"`
+	Valid            *bool                                  `json:"valid,omitempty"`
+	ValidationErrors *UpdateFirewallConfigValidationErrors1 `json:"validationErrors,omitempty"`
 }
 
 func (u UpdateFirewallConfigValue1) MarshalJSON() ([]byte, error) {
@@ -2742,6 +2898,20 @@ func (o *UpdateFirewallConfigValue1) GetAction() ValueAction1 {
 		return ValueAction1{}
 	}
 	return o.Action
+}
+
+func (o *UpdateFirewallConfigValue1) GetValid() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Valid
+}
+
+func (o *UpdateFirewallConfigValue1) GetValidationErrors() *UpdateFirewallConfigValidationErrors1 {
+	if o == nil {
+		return nil
+	}
+	return o.ValidationErrors
 }
 
 // RulesInsert - Add a custom rule

@@ -1,19 +1,20 @@
 # PutFirewallConfigRedirect
 
-## Example Usage
+
+## Supported Types
+
+### `models.Redirect1`
 
 ```typescript
-import { PutFirewallConfigRedirect } from "@vercel/sdk/models/putfirewallconfigop.js";
-
-let value: PutFirewallConfigRedirect = {
+const value: models.Redirect1 = {
   location: "<value>",
-  permanent: true,
+  permanent: false,
 };
 ```
 
-## Fields
+### `any`
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `location`         | *string*           | :heavy_check_mark: | N/A                |
-| `permanent`        | *boolean*          | :heavy_check_mark: | N/A                |
+```typescript
+const value: any = "<value>";
+```
+

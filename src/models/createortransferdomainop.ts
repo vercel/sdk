@@ -10,30 +10,6 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
- * transfer-in
- *
- * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
- */
-export type CreateOrTransferDomainRequestBody3 = {
-  /**
-   * The domain name you want to add.
-   */
-  name: string;
-  /**
-   * The domain operation to perform. It can be either `add` or `move-in`.
-   */
-  method: string;
-  /**
-   * The authorization code assigned to the domain.
-   */
-  authCode?: string | undefined;
-  /**
-   * The price you expect to be charged for the required 1 year renewal.
-   */
-  expectedPrice?: number | undefined;
-};
-
-/**
  * move-in
  */
 export type CreateOrTransferDomainRequestBody2 = {
@@ -72,7 +48,6 @@ export type CreateOrTransferDomainRequestBody1 = {
 
 export type CreateOrTransferDomainRequestBody =
   | CreateOrTransferDomainRequestBody2
-  | CreateOrTransferDomainRequestBody3
   | CreateOrTransferDomainRequestBody1;
 
 export type CreateOrTransferDomainRequest = {
@@ -86,7 +61,6 @@ export type CreateOrTransferDomainRequest = {
   slug?: string | undefined;
   requestBody?:
     | CreateOrTransferDomainRequestBody2
-    | CreateOrTransferDomainRequestBody3
     | CreateOrTransferDomainRequestBody1
     | undefined;
 };
@@ -204,57 +178,6 @@ export type CreateOrTransferDomainResponseBody = {
 };
 
 /** @internal */
-export const CreateOrTransferDomainRequestBody3$inboundSchema: z.ZodType<
-  CreateOrTransferDomainRequestBody3,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: z.string(),
-  method: z.string(),
-  authCode: z.string().optional(),
-  expectedPrice: z.number().optional(),
-});
-/** @internal */
-export type CreateOrTransferDomainRequestBody3$Outbound = {
-  name: string;
-  method: string;
-  authCode?: string | undefined;
-  expectedPrice?: number | undefined;
-};
-
-/** @internal */
-export const CreateOrTransferDomainRequestBody3$outboundSchema: z.ZodType<
-  CreateOrTransferDomainRequestBody3$Outbound,
-  z.ZodTypeDef,
-  CreateOrTransferDomainRequestBody3
-> = z.object({
-  name: z.string(),
-  method: z.string(),
-  authCode: z.string().optional(),
-  expectedPrice: z.number().optional(),
-});
-
-export function createOrTransferDomainRequestBody3ToJSON(
-  createOrTransferDomainRequestBody3: CreateOrTransferDomainRequestBody3,
-): string {
-  return JSON.stringify(
-    CreateOrTransferDomainRequestBody3$outboundSchema.parse(
-      createOrTransferDomainRequestBody3,
-    ),
-  );
-}
-export function createOrTransferDomainRequestBody3FromJSON(
-  jsonString: string,
-): SafeParseResult<CreateOrTransferDomainRequestBody3, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateOrTransferDomainRequestBody3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateOrTransferDomainRequestBody3' from JSON`,
-  );
-}
-
-/** @internal */
 export const CreateOrTransferDomainRequestBody2$inboundSchema: z.ZodType<
   CreateOrTransferDomainRequestBody2,
   z.ZodTypeDef,
@@ -360,13 +283,11 @@ export const CreateOrTransferDomainRequestBody$inboundSchema: z.ZodType<
   unknown
 > = z.union([
   z.lazy(() => CreateOrTransferDomainRequestBody2$inboundSchema),
-  z.lazy(() => CreateOrTransferDomainRequestBody3$inboundSchema),
   z.lazy(() => CreateOrTransferDomainRequestBody1$inboundSchema),
 ]);
 /** @internal */
 export type CreateOrTransferDomainRequestBody$Outbound =
   | CreateOrTransferDomainRequestBody2$Outbound
-  | CreateOrTransferDomainRequestBody3$Outbound
   | CreateOrTransferDomainRequestBody1$Outbound;
 
 /** @internal */
@@ -376,7 +297,6 @@ export const CreateOrTransferDomainRequestBody$outboundSchema: z.ZodType<
   CreateOrTransferDomainRequestBody
 > = z.union([
   z.lazy(() => CreateOrTransferDomainRequestBody2$outboundSchema),
-  z.lazy(() => CreateOrTransferDomainRequestBody3$outboundSchema),
   z.lazy(() => CreateOrTransferDomainRequestBody1$outboundSchema),
 ]);
 
@@ -409,7 +329,6 @@ export const CreateOrTransferDomainRequest$inboundSchema: z.ZodType<
   slug: z.string().optional(),
   RequestBody: z.union([
     z.lazy(() => CreateOrTransferDomainRequestBody2$inboundSchema),
-    z.lazy(() => CreateOrTransferDomainRequestBody3$inboundSchema),
     z.lazy(() => CreateOrTransferDomainRequestBody1$inboundSchema),
   ]).optional(),
 }).transform((v) => {
@@ -423,7 +342,6 @@ export type CreateOrTransferDomainRequest$Outbound = {
   slug?: string | undefined;
   RequestBody?:
     | CreateOrTransferDomainRequestBody2$Outbound
-    | CreateOrTransferDomainRequestBody3$Outbound
     | CreateOrTransferDomainRequestBody1$Outbound
     | undefined;
 };
@@ -438,7 +356,6 @@ export const CreateOrTransferDomainRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
   requestBody: z.union([
     z.lazy(() => CreateOrTransferDomainRequestBody2$outboundSchema),
-    z.lazy(() => CreateOrTransferDomainRequestBody3$outboundSchema),
     z.lazy(() => CreateOrTransferDomainRequestBody1$outboundSchema),
   ]).optional(),
 }).transform((v) => {

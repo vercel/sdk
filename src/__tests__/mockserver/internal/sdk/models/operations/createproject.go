@@ -624,6 +624,43 @@ func (e *CreateProjectBuildMachineTypeRequest) UnmarshalJSON(data []byte) error 
 	}
 }
 
+type CreateProjectConfigurationRequest string
+
+const (
+	CreateProjectConfigurationRequestSkipNamespaceQueue    CreateProjectConfigurationRequest = "SKIP_NAMESPACE_QUEUE"
+	CreateProjectConfigurationRequestWaitForNamespaceQueue CreateProjectConfigurationRequest = "WAIT_FOR_NAMESPACE_QUEUE"
+)
+
+func (e CreateProjectConfigurationRequest) ToPointer() *CreateProjectConfigurationRequest {
+	return &e
+}
+func (e *CreateProjectConfigurationRequest) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "SKIP_NAMESPACE_QUEUE":
+		fallthrough
+	case "WAIT_FOR_NAMESPACE_QUEUE":
+		*e = CreateProjectConfigurationRequest(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectConfigurationRequest: %v", v)
+	}
+}
+
+type CreateProjectBuildQueueRequest struct {
+	Configuration *CreateProjectConfigurationRequest `json:"configuration,omitempty"`
+}
+
+func (o *CreateProjectBuildQueueRequest) GetConfiguration() *CreateProjectConfigurationRequest {
+	if o == nil {
+		return nil
+	}
+	return o.Configuration
+}
+
 // CreateProjectResourceConfigRequest - Specifies resource override configuration for the project
 type CreateProjectResourceConfigRequest struct {
 	Fluid *bool `json:"fluid,omitempty"`
@@ -636,6 +673,7 @@ type CreateProjectResourceConfigRequest struct {
 	ElasticConcurrencyEnabled  *bool                                 `json:"elasticConcurrencyEnabled,omitempty"`
 	BuildMachineType           *CreateProjectBuildMachineTypeRequest `json:"buildMachineType,omitempty"`
 	IsNSNBDisabled             *bool                                 `json:"isNSNBDisabled,omitempty"`
+	BuildQueue                 *CreateProjectBuildQueueRequest       `json:"buildQueue,omitempty"`
 }
 
 func (o *CreateProjectResourceConfigRequest) GetFluid() *bool {
@@ -692,6 +730,13 @@ func (o *CreateProjectResourceConfigRequest) GetIsNSNBDisabled() *bool {
 		return nil
 	}
 	return o.IsNSNBDisabled
+}
+
+func (o *CreateProjectResourceConfigRequest) GetBuildQueue() *CreateProjectBuildQueueRequest {
+	if o == nil {
+		return nil
+	}
+	return o.BuildQueue
 }
 
 type CreateProjectRequestBody struct {
@@ -5393,6 +5438,43 @@ func (e *CreateProjectResourceConfigBuildMachineTypeResponse) UnmarshalJSON(data
 	}
 }
 
+type CreateProjectResourceConfigConfigurationResponse string
+
+const (
+	CreateProjectResourceConfigConfigurationResponseSkipNamespaceQueue    CreateProjectResourceConfigConfigurationResponse = "SKIP_NAMESPACE_QUEUE"
+	CreateProjectResourceConfigConfigurationResponseWaitForNamespaceQueue CreateProjectResourceConfigConfigurationResponse = "WAIT_FOR_NAMESPACE_QUEUE"
+)
+
+func (e CreateProjectResourceConfigConfigurationResponse) ToPointer() *CreateProjectResourceConfigConfigurationResponse {
+	return &e
+}
+func (e *CreateProjectResourceConfigConfigurationResponse) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "SKIP_NAMESPACE_QUEUE":
+		fallthrough
+	case "WAIT_FOR_NAMESPACE_QUEUE":
+		*e = CreateProjectResourceConfigConfigurationResponse(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectResourceConfigConfigurationResponse: %v", v)
+	}
+}
+
+type CreateProjectResourceConfigBuildQueueResponse struct {
+	Configuration *CreateProjectResourceConfigConfigurationResponse `json:"configuration,omitempty"`
+}
+
+func (o *CreateProjectResourceConfigBuildQueueResponse) GetConfiguration() *CreateProjectResourceConfigConfigurationResponse {
+	if o == nil {
+		return nil
+	}
+	return o.Configuration
+}
+
 type CreateProjectResourceConfigResponse struct {
 	ElasticConcurrencyEnabled  *bool                                                         `json:"elasticConcurrencyEnabled,omitempty"`
 	Fluid                      *bool                                                         `json:"fluid,omitempty"`
@@ -5402,6 +5484,7 @@ type CreateProjectResourceConfigResponse struct {
 	FunctionZeroConfigFailover *bool                                                         `json:"functionZeroConfigFailover,omitempty"`
 	BuildMachineType           *CreateProjectResourceConfigBuildMachineTypeResponse          `json:"buildMachineType,omitempty"`
 	IsNSNBDisabled             *bool                                                         `json:"isNSNBDisabled,omitempty"`
+	BuildQueue                 *CreateProjectResourceConfigBuildQueueResponse                `json:"buildQueue,omitempty"`
 }
 
 func (o *CreateProjectResourceConfigResponse) GetElasticConcurrencyEnabled() *bool {
@@ -5458,6 +5541,13 @@ func (o *CreateProjectResourceConfigResponse) GetIsNSNBDisabled() *bool {
 		return nil
 	}
 	return o.IsNSNBDisabled
+}
+
+func (o *CreateProjectResourceConfigResponse) GetBuildQueue() *CreateProjectResourceConfigBuildQueueResponse {
+	if o == nil {
+		return nil
+	}
+	return o.BuildQueue
 }
 
 // CreateProjectRollbackDescription - Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback.
@@ -5626,6 +5716,43 @@ func (e *CreateProjectDefaultResourceConfigBuildMachineType) UnmarshalJSON(data 
 	}
 }
 
+type CreateProjectDefaultResourceConfigConfiguration string
+
+const (
+	CreateProjectDefaultResourceConfigConfigurationSkipNamespaceQueue    CreateProjectDefaultResourceConfigConfiguration = "SKIP_NAMESPACE_QUEUE"
+	CreateProjectDefaultResourceConfigConfigurationWaitForNamespaceQueue CreateProjectDefaultResourceConfigConfiguration = "WAIT_FOR_NAMESPACE_QUEUE"
+)
+
+func (e CreateProjectDefaultResourceConfigConfiguration) ToPointer() *CreateProjectDefaultResourceConfigConfiguration {
+	return &e
+}
+func (e *CreateProjectDefaultResourceConfigConfiguration) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "SKIP_NAMESPACE_QUEUE":
+		fallthrough
+	case "WAIT_FOR_NAMESPACE_QUEUE":
+		*e = CreateProjectDefaultResourceConfigConfiguration(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectDefaultResourceConfigConfiguration: %v", v)
+	}
+}
+
+type CreateProjectDefaultResourceConfigBuildQueue struct {
+	Configuration *CreateProjectDefaultResourceConfigConfiguration `json:"configuration,omitempty"`
+}
+
+func (o *CreateProjectDefaultResourceConfigBuildQueue) GetConfiguration() *CreateProjectDefaultResourceConfigConfiguration {
+	if o == nil {
+		return nil
+	}
+	return o.Configuration
+}
+
 type CreateProjectDefaultResourceConfig struct {
 	ElasticConcurrencyEnabled  *bool                                                        `json:"elasticConcurrencyEnabled,omitempty"`
 	Fluid                      *bool                                                        `json:"fluid,omitempty"`
@@ -5635,6 +5762,7 @@ type CreateProjectDefaultResourceConfig struct {
 	FunctionZeroConfigFailover *bool                                                        `json:"functionZeroConfigFailover,omitempty"`
 	BuildMachineType           *CreateProjectDefaultResourceConfigBuildMachineType          `json:"buildMachineType,omitempty"`
 	IsNSNBDisabled             *bool                                                        `json:"isNSNBDisabled,omitempty"`
+	BuildQueue                 *CreateProjectDefaultResourceConfigBuildQueue                `json:"buildQueue,omitempty"`
 }
 
 func (o *CreateProjectDefaultResourceConfig) GetElasticConcurrencyEnabled() *bool {
@@ -5691,6 +5819,13 @@ func (o *CreateProjectDefaultResourceConfig) GetIsNSNBDisabled() *bool {
 		return nil
 	}
 	return o.IsNSNBDisabled
+}
+
+func (o *CreateProjectDefaultResourceConfig) GetBuildQueue() *CreateProjectDefaultResourceConfigBuildQueue {
+	if o == nil {
+		return nil
+	}
+	return o.BuildQueue
 }
 
 type CreateProjectStaticIps struct {
@@ -8389,8 +8524,8 @@ func (e *CreateProjectLastAliasRequestType) UnmarshalJSON(data []byte) error {
 }
 
 type CreateProjectLastAliasRequest struct {
-	FromDeploymentID string `json:"fromDeploymentId"`
-	ToDeploymentID   string `json:"toDeploymentId"`
+	FromDeploymentID *string `json:"fromDeploymentId"`
+	ToDeploymentID   string  `json:"toDeploymentId"`
 	// If rolling back from a rolling release, fromDeploymentId captures the "base" of that rolling release, and fromRollingReleaseId captures the "target" of that rolling release.
 	FromRollingReleaseID *string                           `json:"fromRollingReleaseId,omitempty"`
 	JobStatus            CreateProjectJobStatus            `json:"jobStatus"`
@@ -8398,9 +8533,9 @@ type CreateProjectLastAliasRequest struct {
 	Type                 CreateProjectLastAliasRequestType `json:"type"`
 }
 
-func (o *CreateProjectLastAliasRequest) GetFromDeploymentID() string {
+func (o *CreateProjectLastAliasRequest) GetFromDeploymentID() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.FromDeploymentID
 }
@@ -8467,6 +8602,10 @@ type CreateProjectProtectionBypassAutomationBypass struct {
 	CreatedAt float64                            `json:"createdAt"`
 	CreatedBy string                             `json:"createdBy"`
 	Scope     CreateProjectScopeAutomationBypass `json:"scope"`
+	// When there was only one bypass, it was automatically set as an env var on deployments. With multiple bypasses, there is always one bypass that is selected as the default, and gets set as an env var on deployments. As this is a new field, undefined means that the bypass is the env var. If there are any automation bypasses, exactly one must be the env var.
+	IsEnvVar *bool `json:"isEnvVar,omitempty"`
+	// Optional note about the bypass to be displayed in the UI
+	Note *string `json:"note,omitempty"`
 }
 
 func (c CreateProjectProtectionBypassAutomationBypass) MarshalJSON() ([]byte, error) {
@@ -8499,6 +8638,20 @@ func (o *CreateProjectProtectionBypassAutomationBypass) GetScope() CreateProject
 		return CreateProjectScopeAutomationBypass("")
 	}
 	return o.Scope
+}
+
+func (o *CreateProjectProtectionBypassAutomationBypass) GetIsEnvVar() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsEnvVar
+}
+
+func (o *CreateProjectProtectionBypassAutomationBypass) GetNote() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Note
 }
 
 type CreateProjectScopeIntegrationAutomationBypass string
@@ -11799,6 +11952,36 @@ func (o *CreateProjectDismissedToast) GetValue() *CreateProjectValueUnion {
 	return o.Value
 }
 
+type CreateProjectCveShield struct {
+	// True if the CVE Shield has been enabled. Otherwise false.
+	Enabled bool `json:"enabled"`
+	// CVE threshold. It can range between 1 and 10.
+	Threshold *float64 `json:"threshold,omitempty"`
+	// List of CVE that we want to protect against.
+	CveList []string `json:"cveList,omitempty"`
+}
+
+func (o *CreateProjectCveShield) GetEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.Enabled
+}
+
+func (o *CreateProjectCveShield) GetThreshold() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Threshold
+}
+
+func (o *CreateProjectCveShield) GetCveList() []string {
+	if o == nil {
+		return nil
+	}
+	return o.CveList
+}
+
 // CreateProjectResponseBody - The project was successfuly created
 type CreateProjectResponseBody struct {
 	AccountID                        string                              `json:"accountId"`
@@ -11885,6 +12068,7 @@ type CreateProjectResponseBody struct {
 	InternalRoutes                       []CreateProjectInternalRouteUnion             `json:"internalRoutes,omitempty"`
 	HasDeployments                       *bool                                         `json:"hasDeployments,omitempty"`
 	DismissedToasts                      []CreateProjectDismissedToast                 `json:"dismissedToasts,omitempty"`
+	CveShield                            *CreateProjectCveShield                       `json:"cveShield,omitempty"`
 }
 
 func (o *CreateProjectResponseBody) GetAccountID() string {
@@ -12487,6 +12671,13 @@ func (o *CreateProjectResponseBody) GetDismissedToasts() []CreateProjectDismisse
 		return nil
 	}
 	return o.DismissedToasts
+}
+
+func (o *CreateProjectResponseBody) GetCveShield() *CreateProjectCveShield {
+	if o == nil {
+		return nil
+	}
+	return o.CveShield
 }
 
 type CreateProjectResponse struct {

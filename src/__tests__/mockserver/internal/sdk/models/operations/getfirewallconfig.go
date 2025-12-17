@@ -657,40 +657,41 @@ func (o *GetFirewallConfigCrs) GetJava() GetFirewallConfigJava {
 	return o.Java
 }
 
-// GetFirewallConfigType - [Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic.
-type GetFirewallConfigType string
+type GetFirewallConfigType2 string
 
 const (
-	GetFirewallConfigTypeHost             GetFirewallConfigType = "host"
-	GetFirewallConfigTypePath             GetFirewallConfigType = "path"
-	GetFirewallConfigTypeMethod           GetFirewallConfigType = "method"
-	GetFirewallConfigTypeHeader           GetFirewallConfigType = "header"
-	GetFirewallConfigTypeQuery            GetFirewallConfigType = "query"
-	GetFirewallConfigTypeCookie           GetFirewallConfigType = "cookie"
-	GetFirewallConfigTypeTargetPath       GetFirewallConfigType = "target_path"
-	GetFirewallConfigTypeRoute            GetFirewallConfigType = "route"
-	GetFirewallConfigTypeRawPath          GetFirewallConfigType = "raw_path"
-	GetFirewallConfigTypeIPAddress        GetFirewallConfigType = "ip_address"
-	GetFirewallConfigTypeProtocol         GetFirewallConfigType = "protocol"
-	GetFirewallConfigTypeRegion           GetFirewallConfigType = "region"
-	GetFirewallConfigTypeScheme           GetFirewallConfigType = "scheme"
-	GetFirewallConfigTypeEnvironment      GetFirewallConfigType = "environment"
-	GetFirewallConfigTypeUserAgent        GetFirewallConfigType = "user_agent"
-	GetFirewallConfigTypeGeoContinent     GetFirewallConfigType = "geo_continent"
-	GetFirewallConfigTypeGeoCountry       GetFirewallConfigType = "geo_country"
-	GetFirewallConfigTypeGeoCountryRegion GetFirewallConfigType = "geo_country_region"
-	GetFirewallConfigTypeGeoCity          GetFirewallConfigType = "geo_city"
-	GetFirewallConfigTypeGeoAsNumber      GetFirewallConfigType = "geo_as_number"
-	GetFirewallConfigTypeJa4Digest        GetFirewallConfigType = "ja4_digest"
-	GetFirewallConfigTypeJa3Digest        GetFirewallConfigType = "ja3_digest"
-	GetFirewallConfigTypeRateLimitAPIID   GetFirewallConfigType = "rate_limit_api_id"
-	GetFirewallConfigTypeServerAction     GetFirewallConfigType = "server_action"
+	GetFirewallConfigType2Host             GetFirewallConfigType2 = "host"
+	GetFirewallConfigType2Path             GetFirewallConfigType2 = "path"
+	GetFirewallConfigType2Method           GetFirewallConfigType2 = "method"
+	GetFirewallConfigType2Header           GetFirewallConfigType2 = "header"
+	GetFirewallConfigType2Query            GetFirewallConfigType2 = "query"
+	GetFirewallConfigType2Cookie           GetFirewallConfigType2 = "cookie"
+	GetFirewallConfigType2TargetPath       GetFirewallConfigType2 = "target_path"
+	GetFirewallConfigType2Route            GetFirewallConfigType2 = "route"
+	GetFirewallConfigType2RawPath          GetFirewallConfigType2 = "raw_path"
+	GetFirewallConfigType2IPAddress        GetFirewallConfigType2 = "ip_address"
+	GetFirewallConfigType2Protocol         GetFirewallConfigType2 = "protocol"
+	GetFirewallConfigType2Region           GetFirewallConfigType2 = "region"
+	GetFirewallConfigType2Scheme           GetFirewallConfigType2 = "scheme"
+	GetFirewallConfigType2Environment      GetFirewallConfigType2 = "environment"
+	GetFirewallConfigType2UserAgent        GetFirewallConfigType2 = "user_agent"
+	GetFirewallConfigType2GeoContinent     GetFirewallConfigType2 = "geo_continent"
+	GetFirewallConfigType2GeoCountry       GetFirewallConfigType2 = "geo_country"
+	GetFirewallConfigType2GeoCountryRegion GetFirewallConfigType2 = "geo_country_region"
+	GetFirewallConfigType2GeoCity          GetFirewallConfigType2 = "geo_city"
+	GetFirewallConfigType2GeoAsNumber      GetFirewallConfigType2 = "geo_as_number"
+	GetFirewallConfigType2Ja4Digest        GetFirewallConfigType2 = "ja4_digest"
+	GetFirewallConfigType2Ja3Digest        GetFirewallConfigType2 = "ja3_digest"
+	GetFirewallConfigType2RateLimitAPIID   GetFirewallConfigType2 = "rate_limit_api_id"
+	GetFirewallConfigType2ServerAction     GetFirewallConfigType2 = "server_action"
+	GetFirewallConfigType2BotName          GetFirewallConfigType2 = "bot_name"
+	GetFirewallConfigType2BotCategory      GetFirewallConfigType2 = "bot_category"
 )
 
-func (e GetFirewallConfigType) ToPointer() *GetFirewallConfigType {
+func (e GetFirewallConfigType2) ToPointer() *GetFirewallConfigType2 {
 	return &e
 }
-func (e *GetFirewallConfigType) UnmarshalJSON(data []byte) error {
+func (e *GetFirewallConfigType2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -743,36 +744,40 @@ func (e *GetFirewallConfigType) UnmarshalJSON(data []byte) error {
 	case "rate_limit_api_id":
 		fallthrough
 	case "server_action":
-		*e = GetFirewallConfigType(v)
+		fallthrough
+	case "bot_name":
+		fallthrough
+	case "bot_category":
+		*e = GetFirewallConfigType2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetFirewallConfigType: %v", v)
+		return fmt.Errorf("invalid value for GetFirewallConfigType2: %v", v)
 	}
 }
 
-type GetFirewallConfigOp string
+type GetFirewallConfigOp2 string
 
 const (
-	GetFirewallConfigOpRe   GetFirewallConfigOp = "re"
-	GetFirewallConfigOpEq   GetFirewallConfigOp = "eq"
-	GetFirewallConfigOpEx   GetFirewallConfigOp = "ex"
-	GetFirewallConfigOpInc  GetFirewallConfigOp = "inc"
-	GetFirewallConfigOpPre  GetFirewallConfigOp = "pre"
-	GetFirewallConfigOpSuf  GetFirewallConfigOp = "suf"
-	GetFirewallConfigOpSub  GetFirewallConfigOp = "sub"
-	GetFirewallConfigOpGt   GetFirewallConfigOp = "gt"
-	GetFirewallConfigOpGte  GetFirewallConfigOp = "gte"
-	GetFirewallConfigOpLt   GetFirewallConfigOp = "lt"
-	GetFirewallConfigOpLte  GetFirewallConfigOp = "lte"
-	GetFirewallConfigOpNex  GetFirewallConfigOp = "nex"
-	GetFirewallConfigOpNinc GetFirewallConfigOp = "ninc"
-	GetFirewallConfigOpNeq  GetFirewallConfigOp = "neq"
+	GetFirewallConfigOp2Re   GetFirewallConfigOp2 = "re"
+	GetFirewallConfigOp2Eq   GetFirewallConfigOp2 = "eq"
+	GetFirewallConfigOp2Ex   GetFirewallConfigOp2 = "ex"
+	GetFirewallConfigOp2Inc  GetFirewallConfigOp2 = "inc"
+	GetFirewallConfigOp2Pre  GetFirewallConfigOp2 = "pre"
+	GetFirewallConfigOp2Suf  GetFirewallConfigOp2 = "suf"
+	GetFirewallConfigOp2Sub  GetFirewallConfigOp2 = "sub"
+	GetFirewallConfigOp2Gt   GetFirewallConfigOp2 = "gt"
+	GetFirewallConfigOp2Gte  GetFirewallConfigOp2 = "gte"
+	GetFirewallConfigOp2Lt   GetFirewallConfigOp2 = "lt"
+	GetFirewallConfigOp2Lte  GetFirewallConfigOp2 = "lte"
+	GetFirewallConfigOp2Nex  GetFirewallConfigOp2 = "nex"
+	GetFirewallConfigOp2Ninc GetFirewallConfigOp2 = "ninc"
+	GetFirewallConfigOp2Neq  GetFirewallConfigOp2 = "neq"
 )
 
-func (e GetFirewallConfigOp) ToPointer() *GetFirewallConfigOp {
+func (e GetFirewallConfigOp2) ToPointer() *GetFirewallConfigOp2 {
 	return &e
 }
-func (e *GetFirewallConfigOp) UnmarshalJSON(data []byte) error {
+func (e *GetFirewallConfigOp2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -805,83 +810,83 @@ func (e *GetFirewallConfigOp) UnmarshalJSON(data []byte) error {
 	case "ninc":
 		fallthrough
 	case "neq":
-		*e = GetFirewallConfigOp(v)
+		*e = GetFirewallConfigOp2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetFirewallConfigOp: %v", v)
+		return fmt.Errorf("invalid value for GetFirewallConfigOp2: %v", v)
 	}
 }
 
-type GetFirewallConfigValueType string
+type GetFirewallConfigValue2Type string
 
 const (
-	GetFirewallConfigValueTypeStr        GetFirewallConfigValueType = "str"
-	GetFirewallConfigValueTypeNumber     GetFirewallConfigValueType = "number"
-	GetFirewallConfigValueTypeArrayOfStr GetFirewallConfigValueType = "arrayOfStr"
+	GetFirewallConfigValue2TypeStr        GetFirewallConfigValue2Type = "str"
+	GetFirewallConfigValue2TypeNumber     GetFirewallConfigValue2Type = "number"
+	GetFirewallConfigValue2TypeArrayOfStr GetFirewallConfigValue2Type = "arrayOfStr"
 )
 
-type GetFirewallConfigValue struct {
+type GetFirewallConfigValue2 struct {
 	Str        *string  `queryParam:"inline"`
 	Number     *float64 `queryParam:"inline"`
 	ArrayOfStr []string `queryParam:"inline"`
 
-	Type GetFirewallConfigValueType
+	Type GetFirewallConfigValue2Type
 }
 
-func CreateGetFirewallConfigValueStr(str string) GetFirewallConfigValue {
-	typ := GetFirewallConfigValueTypeStr
+func CreateGetFirewallConfigValue2Str(str string) GetFirewallConfigValue2 {
+	typ := GetFirewallConfigValue2TypeStr
 
-	return GetFirewallConfigValue{
+	return GetFirewallConfigValue2{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateGetFirewallConfigValueNumber(number float64) GetFirewallConfigValue {
-	typ := GetFirewallConfigValueTypeNumber
+func CreateGetFirewallConfigValue2Number(number float64) GetFirewallConfigValue2 {
+	typ := GetFirewallConfigValue2TypeNumber
 
-	return GetFirewallConfigValue{
+	return GetFirewallConfigValue2{
 		Number: &number,
 		Type:   typ,
 	}
 }
 
-func CreateGetFirewallConfigValueArrayOfStr(arrayOfStr []string) GetFirewallConfigValue {
-	typ := GetFirewallConfigValueTypeArrayOfStr
+func CreateGetFirewallConfigValue2ArrayOfStr(arrayOfStr []string) GetFirewallConfigValue2 {
+	typ := GetFirewallConfigValue2TypeArrayOfStr
 
-	return GetFirewallConfigValue{
+	return GetFirewallConfigValue2{
 		ArrayOfStr: arrayOfStr,
 		Type:       typ,
 	}
 }
 
-func (u *GetFirewallConfigValue) UnmarshalJSON(data []byte) error {
+func (u *GetFirewallConfigValue2) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
-		u.Type = GetFirewallConfigValueTypeStr
+		u.Type = GetFirewallConfigValue2TypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
 	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
-		u.Type = GetFirewallConfigValueTypeNumber
+		u.Type = GetFirewallConfigValue2TypeNumber
 		return nil
 	}
 
 	var arrayOfStr []string = []string{}
 	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
 		u.ArrayOfStr = arrayOfStr
-		u.Type = GetFirewallConfigValueTypeArrayOfStr
+		u.Type = GetFirewallConfigValue2TypeArrayOfStr
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetFirewallConfigValue", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetFirewallConfigValue2", string(data))
 }
 
-func (u GetFirewallConfigValue) MarshalJSON() ([]byte, error) {
+func (u GetFirewallConfigValue2) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
@@ -894,79 +899,100 @@ func (u GetFirewallConfigValue) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.ArrayOfStr, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type GetFirewallConfigValue: all fields are null")
+	return nil, errors.New("could not marshal union type GetFirewallConfigValue2: all fields are null")
 }
 
-type GetFirewallConfigCondition struct {
-	// [Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic.
-	Type  GetFirewallConfigType   `json:"type"`
-	Op    GetFirewallConfigOp     `json:"op"`
-	Neg   *bool                   `json:"neg,omitempty"`
-	Key   *string                 `json:"key,omitempty"`
-	Value *GetFirewallConfigValue `json:"value,omitempty"`
+type GetFirewallConfigCondition2 struct {
+	Type  GetFirewallConfigType2   `json:"type"`
+	Op    GetFirewallConfigOp2     `json:"op"`
+	Neg   *bool                    `json:"neg,omitempty"`
+	Key   *string                  `json:"key,omitempty"`
+	Value *GetFirewallConfigValue2 `json:"value,omitempty"`
 }
 
-func (o *GetFirewallConfigCondition) GetType() GetFirewallConfigType {
+func (g GetFirewallConfigCondition2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetFirewallConfigCondition2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "op"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetFirewallConfigCondition2) GetType() GetFirewallConfigType2 {
 	if o == nil {
-		return GetFirewallConfigType("")
+		return GetFirewallConfigType2("")
 	}
 	return o.Type
 }
 
-func (o *GetFirewallConfigCondition) GetOp() GetFirewallConfigOp {
+func (o *GetFirewallConfigCondition2) GetOp() GetFirewallConfigOp2 {
 	if o == nil {
-		return GetFirewallConfigOp("")
+		return GetFirewallConfigOp2("")
 	}
 	return o.Op
 }
 
-func (o *GetFirewallConfigCondition) GetNeg() *bool {
+func (o *GetFirewallConfigCondition2) GetNeg() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Neg
 }
 
-func (o *GetFirewallConfigCondition) GetKey() *string {
+func (o *GetFirewallConfigCondition2) GetKey() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Key
 }
 
-func (o *GetFirewallConfigCondition) GetValue() *GetFirewallConfigValue {
+func (o *GetFirewallConfigCondition2) GetValue() *GetFirewallConfigValue2 {
 	if o == nil {
 		return nil
 	}
 	return o.Value
 }
 
-type GetFirewallConfigConditionGroup struct {
-	Conditions []GetFirewallConfigCondition `json:"conditions"`
+type GetFirewallConfigConditionGroup2 struct {
+	Conditions []GetFirewallConfigCondition2 `json:"conditions"`
 }
 
-func (o *GetFirewallConfigConditionGroup) GetConditions() []GetFirewallConfigCondition {
+func (g GetFirewallConfigConditionGroup2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetFirewallConfigConditionGroup2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"conditions"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetFirewallConfigConditionGroup2) GetConditions() []GetFirewallConfigCondition2 {
 	if o == nil {
-		return []GetFirewallConfigCondition{}
+		return []GetFirewallConfigCondition2{}
 	}
 	return o.Conditions
 }
 
-type GetFirewallConfigMitigateAction string
+type GetFirewallConfigMitigateAction2 string
 
 const (
-	GetFirewallConfigMitigateActionDeny      GetFirewallConfigMitigateAction = "deny"
-	GetFirewallConfigMitigateActionLog       GetFirewallConfigMitigateAction = "log"
-	GetFirewallConfigMitigateActionChallenge GetFirewallConfigMitigateAction = "challenge"
-	GetFirewallConfigMitigateActionBypass    GetFirewallConfigMitigateAction = "bypass"
-	GetFirewallConfigMitigateActionRateLimit GetFirewallConfigMitigateAction = "rate_limit"
-	GetFirewallConfigMitigateActionRedirect  GetFirewallConfigMitigateAction = "redirect"
+	GetFirewallConfigMitigateAction2Deny      GetFirewallConfigMitigateAction2 = "deny"
+	GetFirewallConfigMitigateAction2Log       GetFirewallConfigMitigateAction2 = "log"
+	GetFirewallConfigMitigateAction2Challenge GetFirewallConfigMitigateAction2 = "challenge"
+	GetFirewallConfigMitigateAction2Bypass    GetFirewallConfigMitigateAction2 = "bypass"
+	GetFirewallConfigMitigateAction2RateLimit GetFirewallConfigMitigateAction2 = "rate_limit"
+	GetFirewallConfigMitigateAction2Redirect  GetFirewallConfigMitigateAction2 = "redirect"
 )
 
-func (e GetFirewallConfigMitigateAction) ToPointer() *GetFirewallConfigMitigateAction {
+func (e GetFirewallConfigMitigateAction2) ToPointer() *GetFirewallConfigMitigateAction2 {
 	return &e
 }
-func (e *GetFirewallConfigMitigateAction) UnmarshalJSON(data []byte) error {
+func (e *GetFirewallConfigMitigateAction2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -983,24 +1009,24 @@ func (e *GetFirewallConfigMitigateAction) UnmarshalJSON(data []byte) error {
 	case "rate_limit":
 		fallthrough
 	case "redirect":
-		*e = GetFirewallConfigMitigateAction(v)
+		*e = GetFirewallConfigMitigateAction2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetFirewallConfigMitigateAction: %v", v)
+		return fmt.Errorf("invalid value for GetFirewallConfigMitigateAction2: %v", v)
 	}
 }
 
-type GetFirewallConfigAlgo string
+type GetFirewallConfigAlgo2 string
 
 const (
-	GetFirewallConfigAlgoFixedWindow GetFirewallConfigAlgo = "fixed_window"
-	GetFirewallConfigAlgoTokenBucket GetFirewallConfigAlgo = "token_bucket"
+	GetFirewallConfigAlgo2FixedWindow GetFirewallConfigAlgo2 = "fixed_window"
+	GetFirewallConfigAlgo2TokenBucket GetFirewallConfigAlgo2 = "token_bucket"
 )
 
-func (e GetFirewallConfigAlgo) ToPointer() *GetFirewallConfigAlgo {
+func (e GetFirewallConfigAlgo2) ToPointer() *GetFirewallConfigAlgo2 {
 	return &e
 }
-func (e *GetFirewallConfigAlgo) UnmarshalJSON(data []byte) error {
+func (e *GetFirewallConfigAlgo2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1009,26 +1035,26 @@ func (e *GetFirewallConfigAlgo) UnmarshalJSON(data []byte) error {
 	case "fixed_window":
 		fallthrough
 	case "token_bucket":
-		*e = GetFirewallConfigAlgo(v)
+		*e = GetFirewallConfigAlgo2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetFirewallConfigAlgo: %v", v)
+		return fmt.Errorf("invalid value for GetFirewallConfigAlgo2: %v", v)
 	}
 }
 
-type GetFirewallConfigRateLimitAction string
+type GetFirewallConfigRateLimitAction2 string
 
 const (
-	GetFirewallConfigRateLimitActionDeny      GetFirewallConfigRateLimitAction = "deny"
-	GetFirewallConfigRateLimitActionLog       GetFirewallConfigRateLimitAction = "log"
-	GetFirewallConfigRateLimitActionChallenge GetFirewallConfigRateLimitAction = "challenge"
-	GetFirewallConfigRateLimitActionRateLimit GetFirewallConfigRateLimitAction = "rate_limit"
+	GetFirewallConfigRateLimitAction2Deny      GetFirewallConfigRateLimitAction2 = "deny"
+	GetFirewallConfigRateLimitAction2Log       GetFirewallConfigRateLimitAction2 = "log"
+	GetFirewallConfigRateLimitAction2Challenge GetFirewallConfigRateLimitAction2 = "challenge"
+	GetFirewallConfigRateLimitAction2RateLimit GetFirewallConfigRateLimitAction2 = "rate_limit"
 )
 
-func (e GetFirewallConfigRateLimitAction) ToPointer() *GetFirewallConfigRateLimitAction {
+func (e GetFirewallConfigRateLimitAction2) ToPointer() *GetFirewallConfigRateLimitAction2 {
 	return &e
 }
-func (e *GetFirewallConfigRateLimitAction) UnmarshalJSON(data []byte) error {
+func (e *GetFirewallConfigRateLimitAction2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1041,178 +1067,967 @@ func (e *GetFirewallConfigRateLimitAction) UnmarshalJSON(data []byte) error {
 	case "challenge":
 		fallthrough
 	case "rate_limit":
-		*e = GetFirewallConfigRateLimitAction(v)
+		*e = GetFirewallConfigRateLimitAction2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetFirewallConfigRateLimitAction: %v", v)
+		return fmt.Errorf("invalid value for GetFirewallConfigRateLimitAction2: %v", v)
 	}
 }
 
-type GetFirewallConfigRateLimit struct {
-	Algo   GetFirewallConfigAlgo             `json:"algo"`
-	Window float64                           `json:"window"`
-	Limit  float64                           `json:"limit"`
-	Keys   []string                          `json:"keys"`
-	Action *GetFirewallConfigRateLimitAction `json:"action,omitempty"`
+type GetFirewallConfigRateLimit2 struct {
+	Algo   GetFirewallConfigAlgo2             `json:"algo"`
+	Window float64                            `json:"window"`
+	Limit  float64                            `json:"limit"`
+	Keys   []string                           `json:"keys"`
+	Action *GetFirewallConfigRateLimitAction2 `json:"action,omitempty"`
 }
 
-func (o *GetFirewallConfigRateLimit) GetAlgo() GetFirewallConfigAlgo {
+func (g GetFirewallConfigRateLimit2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetFirewallConfigRateLimit2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"algo", "window", "limit", "keys"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetFirewallConfigRateLimit2) GetAlgo() GetFirewallConfigAlgo2 {
 	if o == nil {
-		return GetFirewallConfigAlgo("")
+		return GetFirewallConfigAlgo2("")
 	}
 	return o.Algo
 }
 
-func (o *GetFirewallConfigRateLimit) GetWindow() float64 {
+func (o *GetFirewallConfigRateLimit2) GetWindow() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Window
 }
 
-func (o *GetFirewallConfigRateLimit) GetLimit() float64 {
+func (o *GetFirewallConfigRateLimit2) GetLimit() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Limit
 }
 
-func (o *GetFirewallConfigRateLimit) GetKeys() []string {
+func (o *GetFirewallConfigRateLimit2) GetKeys() []string {
 	if o == nil {
 		return []string{}
 	}
 	return o.Keys
 }
 
-func (o *GetFirewallConfigRateLimit) GetAction() *GetFirewallConfigRateLimitAction {
+func (o *GetFirewallConfigRateLimit2) GetAction() *GetFirewallConfigRateLimitAction2 {
 	if o == nil {
 		return nil
 	}
 	return o.Action
 }
 
-type GetFirewallConfigRedirect struct {
+type GetFirewallConfigRedirect2 struct {
 	Location  string `json:"location"`
 	Permanent bool   `json:"permanent"`
 }
 
-func (o *GetFirewallConfigRedirect) GetLocation() string {
+func (g GetFirewallConfigRedirect2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetFirewallConfigRedirect2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"location", "permanent"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetFirewallConfigRedirect2) GetLocation() string {
 	if o == nil {
 		return ""
 	}
 	return o.Location
 }
 
-func (o *GetFirewallConfigRedirect) GetPermanent() bool {
+func (o *GetFirewallConfigRedirect2) GetPermanent() bool {
 	if o == nil {
 		return false
 	}
 	return o.Permanent
 }
 
-type GetFirewallConfigMitigate struct {
-	Action         GetFirewallConfigMitigateAction `json:"action"`
-	RateLimit      *GetFirewallConfigRateLimit     `json:"rateLimit,omitempty"`
-	Redirect       *GetFirewallConfigRedirect      `json:"redirect,omitempty"`
-	ActionDuration *string                         `json:"actionDuration,omitempty"`
-	BypassSystem   *bool                           `json:"bypassSystem,omitempty"`
+type GetFirewallConfigMitigate2 struct {
+	Action         GetFirewallConfigMitigateAction2 `json:"action"`
+	RateLimit      *GetFirewallConfigRateLimit2     `json:"rateLimit,omitempty"`
+	Redirect       *GetFirewallConfigRedirect2      `json:"redirect,omitempty"`
+	ActionDuration *string                          `json:"actionDuration,omitempty"`
+	BypassSystem   *bool                            `json:"bypassSystem,omitempty"`
 }
 
-func (o *GetFirewallConfigMitigate) GetAction() GetFirewallConfigMitigateAction {
+func (g GetFirewallConfigMitigate2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetFirewallConfigMitigate2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"action"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetFirewallConfigMitigate2) GetAction() GetFirewallConfigMitigateAction2 {
 	if o == nil {
-		return GetFirewallConfigMitigateAction("")
+		return GetFirewallConfigMitigateAction2("")
 	}
 	return o.Action
 }
 
-func (o *GetFirewallConfigMitigate) GetRateLimit() *GetFirewallConfigRateLimit {
+func (o *GetFirewallConfigMitigate2) GetRateLimit() *GetFirewallConfigRateLimit2 {
 	if o == nil {
 		return nil
 	}
 	return o.RateLimit
 }
 
-func (o *GetFirewallConfigMitigate) GetRedirect() *GetFirewallConfigRedirect {
+func (o *GetFirewallConfigMitigate2) GetRedirect() *GetFirewallConfigRedirect2 {
 	if o == nil {
 		return nil
 	}
 	return o.Redirect
 }
 
-func (o *GetFirewallConfigMitigate) GetActionDuration() *string {
+func (o *GetFirewallConfigMitigate2) GetActionDuration() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ActionDuration
 }
 
-func (o *GetFirewallConfigMitigate) GetBypassSystem() *bool {
+func (o *GetFirewallConfigMitigate2) GetBypassSystem() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.BypassSystem
 }
 
-type GetFirewallConfigRuleAction struct {
-	Mitigate *GetFirewallConfigMitigate `json:"mitigate,omitempty"`
+type GetFirewallConfigRuleAction2 struct {
+	Mitigate *GetFirewallConfigMitigate2 `json:"mitigate,omitempty"`
 }
 
-func (o *GetFirewallConfigRuleAction) GetMitigate() *GetFirewallConfigMitigate {
+func (g GetFirewallConfigRuleAction2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetFirewallConfigRuleAction2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetFirewallConfigRuleAction2) GetMitigate() *GetFirewallConfigMitigate2 {
 	if o == nil {
 		return nil
 	}
 	return o.Mitigate
 }
 
-type GetFirewallConfigRule struct {
-	ID             string                            `json:"id"`
-	Name           string                            `json:"name"`
-	Description    *string                           `json:"description,omitempty"`
-	Active         bool                              `json:"active"`
-	ConditionGroup []GetFirewallConfigConditionGroup `json:"conditionGroup"`
-	Action         GetFirewallConfigRuleAction       `json:"action"`
+type GetFirewallConfigRule2 struct {
+	ID               string                             `json:"id"`
+	Name             string                             `json:"name"`
+	Description      *string                            `json:"description,omitempty"`
+	Active           bool                               `json:"active"`
+	ConditionGroup   []GetFirewallConfigConditionGroup2 `json:"conditionGroup"`
+	Action           GetFirewallConfigRuleAction2       `json:"action"`
+	Valid            bool                               `json:"valid"`
+	ValidationErrors []string                           `json:"validationErrors"`
 }
 
-func (o *GetFirewallConfigRule) GetID() string {
+func (g GetFirewallConfigRule2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetFirewallConfigRule2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "name", "active", "conditionGroup", "action", "valid", "validationErrors"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetFirewallConfigRule2) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *GetFirewallConfigRule) GetName() string {
+func (o *GetFirewallConfigRule2) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *GetFirewallConfigRule) GetDescription() *string {
+func (o *GetFirewallConfigRule2) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *GetFirewallConfigRule) GetActive() bool {
+func (o *GetFirewallConfigRule2) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *GetFirewallConfigRule) GetConditionGroup() []GetFirewallConfigConditionGroup {
+func (o *GetFirewallConfigRule2) GetConditionGroup() []GetFirewallConfigConditionGroup2 {
 	if o == nil {
-		return []GetFirewallConfigConditionGroup{}
+		return []GetFirewallConfigConditionGroup2{}
 	}
 	return o.ConditionGroup
 }
 
-func (o *GetFirewallConfigRule) GetAction() GetFirewallConfigRuleAction {
+func (o *GetFirewallConfigRule2) GetAction() GetFirewallConfigRuleAction2 {
 	if o == nil {
-		return GetFirewallConfigRuleAction{}
+		return GetFirewallConfigRuleAction2{}
 	}
 	return o.Action
+}
+
+func (o *GetFirewallConfigRule2) GetValid() bool {
+	if o == nil {
+		return false
+	}
+	return o.Valid
+}
+
+func (o *GetFirewallConfigRule2) GetValidationErrors() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.ValidationErrors
+}
+
+type GetFirewallConfigType1 string
+
+const (
+	GetFirewallConfigType1Host             GetFirewallConfigType1 = "host"
+	GetFirewallConfigType1Path             GetFirewallConfigType1 = "path"
+	GetFirewallConfigType1Method           GetFirewallConfigType1 = "method"
+	GetFirewallConfigType1Header           GetFirewallConfigType1 = "header"
+	GetFirewallConfigType1Query            GetFirewallConfigType1 = "query"
+	GetFirewallConfigType1Cookie           GetFirewallConfigType1 = "cookie"
+	GetFirewallConfigType1TargetPath       GetFirewallConfigType1 = "target_path"
+	GetFirewallConfigType1Route            GetFirewallConfigType1 = "route"
+	GetFirewallConfigType1RawPath          GetFirewallConfigType1 = "raw_path"
+	GetFirewallConfigType1IPAddress        GetFirewallConfigType1 = "ip_address"
+	GetFirewallConfigType1Protocol         GetFirewallConfigType1 = "protocol"
+	GetFirewallConfigType1Region           GetFirewallConfigType1 = "region"
+	GetFirewallConfigType1Scheme           GetFirewallConfigType1 = "scheme"
+	GetFirewallConfigType1Environment      GetFirewallConfigType1 = "environment"
+	GetFirewallConfigType1UserAgent        GetFirewallConfigType1 = "user_agent"
+	GetFirewallConfigType1GeoContinent     GetFirewallConfigType1 = "geo_continent"
+	GetFirewallConfigType1GeoCountry       GetFirewallConfigType1 = "geo_country"
+	GetFirewallConfigType1GeoCountryRegion GetFirewallConfigType1 = "geo_country_region"
+	GetFirewallConfigType1GeoCity          GetFirewallConfigType1 = "geo_city"
+	GetFirewallConfigType1GeoAsNumber      GetFirewallConfigType1 = "geo_as_number"
+	GetFirewallConfigType1Ja4Digest        GetFirewallConfigType1 = "ja4_digest"
+	GetFirewallConfigType1Ja3Digest        GetFirewallConfigType1 = "ja3_digest"
+	GetFirewallConfigType1RateLimitAPIID   GetFirewallConfigType1 = "rate_limit_api_id"
+	GetFirewallConfigType1ServerAction     GetFirewallConfigType1 = "server_action"
+	GetFirewallConfigType1BotName          GetFirewallConfigType1 = "bot_name"
+	GetFirewallConfigType1BotCategory      GetFirewallConfigType1 = "bot_category"
+)
+
+func (e GetFirewallConfigType1) ToPointer() *GetFirewallConfigType1 {
+	return &e
+}
+func (e *GetFirewallConfigType1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "host":
+		fallthrough
+	case "path":
+		fallthrough
+	case "method":
+		fallthrough
+	case "header":
+		fallthrough
+	case "query":
+		fallthrough
+	case "cookie":
+		fallthrough
+	case "target_path":
+		fallthrough
+	case "route":
+		fallthrough
+	case "raw_path":
+		fallthrough
+	case "ip_address":
+		fallthrough
+	case "protocol":
+		fallthrough
+	case "region":
+		fallthrough
+	case "scheme":
+		fallthrough
+	case "environment":
+		fallthrough
+	case "user_agent":
+		fallthrough
+	case "geo_continent":
+		fallthrough
+	case "geo_country":
+		fallthrough
+	case "geo_country_region":
+		fallthrough
+	case "geo_city":
+		fallthrough
+	case "geo_as_number":
+		fallthrough
+	case "ja4_digest":
+		fallthrough
+	case "ja3_digest":
+		fallthrough
+	case "rate_limit_api_id":
+		fallthrough
+	case "server_action":
+		fallthrough
+	case "bot_name":
+		fallthrough
+	case "bot_category":
+		*e = GetFirewallConfigType1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetFirewallConfigType1: %v", v)
+	}
+}
+
+type GetFirewallConfigOp1 string
+
+const (
+	GetFirewallConfigOp1Re   GetFirewallConfigOp1 = "re"
+	GetFirewallConfigOp1Eq   GetFirewallConfigOp1 = "eq"
+	GetFirewallConfigOp1Ex   GetFirewallConfigOp1 = "ex"
+	GetFirewallConfigOp1Inc  GetFirewallConfigOp1 = "inc"
+	GetFirewallConfigOp1Pre  GetFirewallConfigOp1 = "pre"
+	GetFirewallConfigOp1Suf  GetFirewallConfigOp1 = "suf"
+	GetFirewallConfigOp1Sub  GetFirewallConfigOp1 = "sub"
+	GetFirewallConfigOp1Gt   GetFirewallConfigOp1 = "gt"
+	GetFirewallConfigOp1Gte  GetFirewallConfigOp1 = "gte"
+	GetFirewallConfigOp1Lt   GetFirewallConfigOp1 = "lt"
+	GetFirewallConfigOp1Lte  GetFirewallConfigOp1 = "lte"
+	GetFirewallConfigOp1Nex  GetFirewallConfigOp1 = "nex"
+	GetFirewallConfigOp1Ninc GetFirewallConfigOp1 = "ninc"
+	GetFirewallConfigOp1Neq  GetFirewallConfigOp1 = "neq"
+)
+
+func (e GetFirewallConfigOp1) ToPointer() *GetFirewallConfigOp1 {
+	return &e
+}
+func (e *GetFirewallConfigOp1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "re":
+		fallthrough
+	case "eq":
+		fallthrough
+	case "ex":
+		fallthrough
+	case "inc":
+		fallthrough
+	case "pre":
+		fallthrough
+	case "suf":
+		fallthrough
+	case "sub":
+		fallthrough
+	case "gt":
+		fallthrough
+	case "gte":
+		fallthrough
+	case "lt":
+		fallthrough
+	case "lte":
+		fallthrough
+	case "nex":
+		fallthrough
+	case "ninc":
+		fallthrough
+	case "neq":
+		*e = GetFirewallConfigOp1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetFirewallConfigOp1: %v", v)
+	}
+}
+
+type GetFirewallConfigValue1Type string
+
+const (
+	GetFirewallConfigValue1TypeStr        GetFirewallConfigValue1Type = "str"
+	GetFirewallConfigValue1TypeNumber     GetFirewallConfigValue1Type = "number"
+	GetFirewallConfigValue1TypeArrayOfStr GetFirewallConfigValue1Type = "arrayOfStr"
+)
+
+type GetFirewallConfigValue1 struct {
+	Str        *string  `queryParam:"inline"`
+	Number     *float64 `queryParam:"inline"`
+	ArrayOfStr []string `queryParam:"inline"`
+
+	Type GetFirewallConfigValue1Type
+}
+
+func CreateGetFirewallConfigValue1Str(str string) GetFirewallConfigValue1 {
+	typ := GetFirewallConfigValue1TypeStr
+
+	return GetFirewallConfigValue1{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateGetFirewallConfigValue1Number(number float64) GetFirewallConfigValue1 {
+	typ := GetFirewallConfigValue1TypeNumber
+
+	return GetFirewallConfigValue1{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func CreateGetFirewallConfigValue1ArrayOfStr(arrayOfStr []string) GetFirewallConfigValue1 {
+	typ := GetFirewallConfigValue1TypeArrayOfStr
+
+	return GetFirewallConfigValue1{
+		ArrayOfStr: arrayOfStr,
+		Type:       typ,
+	}
+}
+
+func (u *GetFirewallConfigValue1) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = GetFirewallConfigValue1TypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
+		u.Number = &number
+		u.Type = GetFirewallConfigValue1TypeNumber
+		return nil
+	}
+
+	var arrayOfStr []string = []string{}
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
+		u.ArrayOfStr = arrayOfStr
+		u.Type = GetFirewallConfigValue1TypeArrayOfStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetFirewallConfigValue1", string(data))
+}
+
+func (u GetFirewallConfigValue1) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	if u.ArrayOfStr != nil {
+		return utils.MarshalJSON(u.ArrayOfStr, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetFirewallConfigValue1: all fields are null")
+}
+
+type GetFirewallConfigCondition1 struct {
+	Type  GetFirewallConfigType1   `json:"type"`
+	Op    GetFirewallConfigOp1     `json:"op"`
+	Neg   *bool                    `json:"neg,omitempty"`
+	Key   *string                  `json:"key,omitempty"`
+	Value *GetFirewallConfigValue1 `json:"value,omitempty"`
+}
+
+func (g GetFirewallConfigCondition1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetFirewallConfigCondition1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "op"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetFirewallConfigCondition1) GetType() GetFirewallConfigType1 {
+	if o == nil {
+		return GetFirewallConfigType1("")
+	}
+	return o.Type
+}
+
+func (o *GetFirewallConfigCondition1) GetOp() GetFirewallConfigOp1 {
+	if o == nil {
+		return GetFirewallConfigOp1("")
+	}
+	return o.Op
+}
+
+func (o *GetFirewallConfigCondition1) GetNeg() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Neg
+}
+
+func (o *GetFirewallConfigCondition1) GetKey() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Key
+}
+
+func (o *GetFirewallConfigCondition1) GetValue() *GetFirewallConfigValue1 {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}
+
+type GetFirewallConfigConditionGroup1 struct {
+	Conditions []GetFirewallConfigCondition1 `json:"conditions"`
+}
+
+func (g GetFirewallConfigConditionGroup1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetFirewallConfigConditionGroup1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"conditions"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetFirewallConfigConditionGroup1) GetConditions() []GetFirewallConfigCondition1 {
+	if o == nil {
+		return []GetFirewallConfigCondition1{}
+	}
+	return o.Conditions
+}
+
+type GetFirewallConfigMitigateAction1 string
+
+const (
+	GetFirewallConfigMitigateAction1Deny      GetFirewallConfigMitigateAction1 = "deny"
+	GetFirewallConfigMitigateAction1Log       GetFirewallConfigMitigateAction1 = "log"
+	GetFirewallConfigMitigateAction1Challenge GetFirewallConfigMitigateAction1 = "challenge"
+	GetFirewallConfigMitigateAction1Bypass    GetFirewallConfigMitigateAction1 = "bypass"
+	GetFirewallConfigMitigateAction1RateLimit GetFirewallConfigMitigateAction1 = "rate_limit"
+	GetFirewallConfigMitigateAction1Redirect  GetFirewallConfigMitigateAction1 = "redirect"
+)
+
+func (e GetFirewallConfigMitigateAction1) ToPointer() *GetFirewallConfigMitigateAction1 {
+	return &e
+}
+func (e *GetFirewallConfigMitigateAction1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "deny":
+		fallthrough
+	case "log":
+		fallthrough
+	case "challenge":
+		fallthrough
+	case "bypass":
+		fallthrough
+	case "rate_limit":
+		fallthrough
+	case "redirect":
+		*e = GetFirewallConfigMitigateAction1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetFirewallConfigMitigateAction1: %v", v)
+	}
+}
+
+type GetFirewallConfigAlgo1 string
+
+const (
+	GetFirewallConfigAlgo1FixedWindow GetFirewallConfigAlgo1 = "fixed_window"
+	GetFirewallConfigAlgo1TokenBucket GetFirewallConfigAlgo1 = "token_bucket"
+)
+
+func (e GetFirewallConfigAlgo1) ToPointer() *GetFirewallConfigAlgo1 {
+	return &e
+}
+func (e *GetFirewallConfigAlgo1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "fixed_window":
+		fallthrough
+	case "token_bucket":
+		*e = GetFirewallConfigAlgo1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetFirewallConfigAlgo1: %v", v)
+	}
+}
+
+type GetFirewallConfigRateLimitAction1 string
+
+const (
+	GetFirewallConfigRateLimitAction1Deny      GetFirewallConfigRateLimitAction1 = "deny"
+	GetFirewallConfigRateLimitAction1Log       GetFirewallConfigRateLimitAction1 = "log"
+	GetFirewallConfigRateLimitAction1Challenge GetFirewallConfigRateLimitAction1 = "challenge"
+	GetFirewallConfigRateLimitAction1RateLimit GetFirewallConfigRateLimitAction1 = "rate_limit"
+)
+
+func (e GetFirewallConfigRateLimitAction1) ToPointer() *GetFirewallConfigRateLimitAction1 {
+	return &e
+}
+func (e *GetFirewallConfigRateLimitAction1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "deny":
+		fallthrough
+	case "log":
+		fallthrough
+	case "challenge":
+		fallthrough
+	case "rate_limit":
+		*e = GetFirewallConfigRateLimitAction1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetFirewallConfigRateLimitAction1: %v", v)
+	}
+}
+
+type GetFirewallConfigRateLimit1 struct {
+	Algo   GetFirewallConfigAlgo1             `json:"algo"`
+	Window float64                            `json:"window"`
+	Limit  float64                            `json:"limit"`
+	Keys   []string                           `json:"keys"`
+	Action *GetFirewallConfigRateLimitAction1 `json:"action,omitempty"`
+}
+
+func (g GetFirewallConfigRateLimit1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetFirewallConfigRateLimit1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"algo", "window", "limit", "keys"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetFirewallConfigRateLimit1) GetAlgo() GetFirewallConfigAlgo1 {
+	if o == nil {
+		return GetFirewallConfigAlgo1("")
+	}
+	return o.Algo
+}
+
+func (o *GetFirewallConfigRateLimit1) GetWindow() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Window
+}
+
+func (o *GetFirewallConfigRateLimit1) GetLimit() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Limit
+}
+
+func (o *GetFirewallConfigRateLimit1) GetKeys() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.Keys
+}
+
+func (o *GetFirewallConfigRateLimit1) GetAction() *GetFirewallConfigRateLimitAction1 {
+	if o == nil {
+		return nil
+	}
+	return o.Action
+}
+
+type GetFirewallConfigRedirect1 struct {
+	Location  string `json:"location"`
+	Permanent bool   `json:"permanent"`
+}
+
+func (g GetFirewallConfigRedirect1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetFirewallConfigRedirect1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"location", "permanent"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetFirewallConfigRedirect1) GetLocation() string {
+	if o == nil {
+		return ""
+	}
+	return o.Location
+}
+
+func (o *GetFirewallConfigRedirect1) GetPermanent() bool {
+	if o == nil {
+		return false
+	}
+	return o.Permanent
+}
+
+type GetFirewallConfigMitigate1 struct {
+	Action         GetFirewallConfigMitigateAction1 `json:"action"`
+	RateLimit      *GetFirewallConfigRateLimit1     `json:"rateLimit,omitempty"`
+	Redirect       *GetFirewallConfigRedirect1      `json:"redirect,omitempty"`
+	ActionDuration *string                          `json:"actionDuration,omitempty"`
+	BypassSystem   *bool                            `json:"bypassSystem,omitempty"`
+}
+
+func (g GetFirewallConfigMitigate1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetFirewallConfigMitigate1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"action"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetFirewallConfigMitigate1) GetAction() GetFirewallConfigMitigateAction1 {
+	if o == nil {
+		return GetFirewallConfigMitigateAction1("")
+	}
+	return o.Action
+}
+
+func (o *GetFirewallConfigMitigate1) GetRateLimit() *GetFirewallConfigRateLimit1 {
+	if o == nil {
+		return nil
+	}
+	return o.RateLimit
+}
+
+func (o *GetFirewallConfigMitigate1) GetRedirect() *GetFirewallConfigRedirect1 {
+	if o == nil {
+		return nil
+	}
+	return o.Redirect
+}
+
+func (o *GetFirewallConfigMitigate1) GetActionDuration() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ActionDuration
+}
+
+func (o *GetFirewallConfigMitigate1) GetBypassSystem() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.BypassSystem
+}
+
+type GetFirewallConfigRuleAction1 struct {
+	Mitigate *GetFirewallConfigMitigate1 `json:"mitigate,omitempty"`
+}
+
+func (g GetFirewallConfigRuleAction1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetFirewallConfigRuleAction1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetFirewallConfigRuleAction1) GetMitigate() *GetFirewallConfigMitigate1 {
+	if o == nil {
+		return nil
+	}
+	return o.Mitigate
+}
+
+type GetFirewallConfigRule1 struct {
+	ID               string                             `json:"id"`
+	Name             string                             `json:"name"`
+	Description      *string                            `json:"description,omitempty"`
+	Active           bool                               `json:"active"`
+	ConditionGroup   []GetFirewallConfigConditionGroup1 `json:"conditionGroup"`
+	Action           GetFirewallConfigRuleAction1       `json:"action"`
+	Valid            bool                               `json:"valid"`
+	ValidationErrors any                                `json:"validationErrors"`
+}
+
+func (g GetFirewallConfigRule1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetFirewallConfigRule1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "name", "active", "conditionGroup", "action", "valid", "validationErrors"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetFirewallConfigRule1) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *GetFirewallConfigRule1) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *GetFirewallConfigRule1) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *GetFirewallConfigRule1) GetActive() bool {
+	if o == nil {
+		return false
+	}
+	return o.Active
+}
+
+func (o *GetFirewallConfigRule1) GetConditionGroup() []GetFirewallConfigConditionGroup1 {
+	if o == nil {
+		return []GetFirewallConfigConditionGroup1{}
+	}
+	return o.ConditionGroup
+}
+
+func (o *GetFirewallConfigRule1) GetAction() GetFirewallConfigRuleAction1 {
+	if o == nil {
+		return GetFirewallConfigRuleAction1{}
+	}
+	return o.Action
+}
+
+func (o *GetFirewallConfigRule1) GetValid() bool {
+	if o == nil {
+		return false
+	}
+	return o.Valid
+}
+
+func (o *GetFirewallConfigRule1) GetValidationErrors() any {
+	if o == nil {
+		return nil
+	}
+	return o.ValidationErrors
+}
+
+type GetFirewallConfigRuleUnionType string
+
+const (
+	GetFirewallConfigRuleUnionTypeGetFirewallConfigRule1 GetFirewallConfigRuleUnionType = "getFirewallConfig_rule_1"
+	GetFirewallConfigRuleUnionTypeGetFirewallConfigRule2 GetFirewallConfigRuleUnionType = "getFirewallConfig_rule_2"
+)
+
+type GetFirewallConfigRuleUnion struct {
+	GetFirewallConfigRule1 *GetFirewallConfigRule1 `queryParam:"inline"`
+	GetFirewallConfigRule2 *GetFirewallConfigRule2 `queryParam:"inline"`
+
+	Type GetFirewallConfigRuleUnionType
+}
+
+func CreateGetFirewallConfigRuleUnionGetFirewallConfigRule1(getFirewallConfigRule1 GetFirewallConfigRule1) GetFirewallConfigRuleUnion {
+	typ := GetFirewallConfigRuleUnionTypeGetFirewallConfigRule1
+
+	return GetFirewallConfigRuleUnion{
+		GetFirewallConfigRule1: &getFirewallConfigRule1,
+		Type:                   typ,
+	}
+}
+
+func CreateGetFirewallConfigRuleUnionGetFirewallConfigRule2(getFirewallConfigRule2 GetFirewallConfigRule2) GetFirewallConfigRuleUnion {
+	typ := GetFirewallConfigRuleUnionTypeGetFirewallConfigRule2
+
+	return GetFirewallConfigRuleUnion{
+		GetFirewallConfigRule2: &getFirewallConfigRule2,
+		Type:                   typ,
+	}
+}
+
+func (u *GetFirewallConfigRuleUnion) UnmarshalJSON(data []byte) error {
+
+	var getFirewallConfigRule1 GetFirewallConfigRule1 = GetFirewallConfigRule1{}
+	if err := utils.UnmarshalJSON(data, &getFirewallConfigRule1, "", true, nil); err == nil {
+		u.GetFirewallConfigRule1 = &getFirewallConfigRule1
+		u.Type = GetFirewallConfigRuleUnionTypeGetFirewallConfigRule1
+		return nil
+	}
+
+	var getFirewallConfigRule2 GetFirewallConfigRule2 = GetFirewallConfigRule2{}
+	if err := utils.UnmarshalJSON(data, &getFirewallConfigRule2, "", true, nil); err == nil {
+		u.GetFirewallConfigRule2 = &getFirewallConfigRule2
+		u.Type = GetFirewallConfigRuleUnionTypeGetFirewallConfigRule2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetFirewallConfigRuleUnion", string(data))
+}
+
+func (u GetFirewallConfigRuleUnion) MarshalJSON() ([]byte, error) {
+	if u.GetFirewallConfigRule1 != nil {
+		return utils.MarshalJSON(u.GetFirewallConfigRule1, "", true)
+	}
+
+	if u.GetFirewallConfigRule2 != nil {
+		return utils.MarshalJSON(u.GetFirewallConfigRule2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetFirewallConfigRuleUnion: all fields are null")
 }
 
 type GetFirewallConfigIPAction string
@@ -1546,7 +2361,7 @@ type GetFirewallConfigResponseBody struct {
 	FirewallEnabled bool    `json:"firewallEnabled"`
 	// Custom Ruleset
 	Crs          GetFirewallConfigCrs           `json:"crs"`
-	Rules        []GetFirewallConfigRule        `json:"rules"`
+	Rules        []GetFirewallConfigRuleUnion   `json:"rules"`
 	Ips          []GetFirewallConfigIP          `json:"ips"`
 	Changes      []GetFirewallConfigChange      `json:"changes"`
 	ManagedRules *GetFirewallConfigManagedRules `json:"managedRules,omitempty"`
@@ -1602,9 +2417,9 @@ func (o *GetFirewallConfigResponseBody) GetCrs() GetFirewallConfigCrs {
 	return o.Crs
 }
 
-func (o *GetFirewallConfigResponseBody) GetRules() []GetFirewallConfigRule {
+func (o *GetFirewallConfigResponseBody) GetRules() []GetFirewallConfigRuleUnion {
 	if o == nil {
-		return []GetFirewallConfigRule{}
+		return []GetFirewallConfigRuleUnion{}
 	}
 	return o.Rules
 }

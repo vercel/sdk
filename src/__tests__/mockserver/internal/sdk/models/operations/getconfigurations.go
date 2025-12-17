@@ -39,8 +39,9 @@ func (e *View) UnmarshalJSON(data []byte) error {
 type QueryParamInstallationType string
 
 const (
-	QueryParamInstallationTypeMarketplace QueryParamInstallationType = "marketplace"
-	QueryParamInstallationTypeExternal    QueryParamInstallationType = "external"
+	QueryParamInstallationTypeMarketplace  QueryParamInstallationType = "marketplace"
+	QueryParamInstallationTypeExternal     QueryParamInstallationType = "external"
+	QueryParamInstallationTypeProvisioning QueryParamInstallationType = "provisioning"
 )
 
 func (e QueryParamInstallationType) ToPointer() *QueryParamInstallationType {
@@ -55,6 +56,8 @@ func (e *QueryParamInstallationType) UnmarshalJSON(data []byte) error {
 	case "marketplace":
 		fallthrough
 	case "external":
+		fallthrough
+	case "provisioning":
 		*e = QueryParamInstallationType(v)
 		return nil
 	default:

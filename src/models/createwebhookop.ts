@@ -44,6 +44,7 @@ export const Events = {
   FirewallAttack: "firewall.attack",
   FirewallSystemRuleAnomaly: "firewall.system-rule-anomaly",
   FirewallCustomRuleAnomaly: "firewall.custom-rule-anomaly",
+  AlertsTriggered: "alerts.triggered",
   IntegrationConfigurationPermissionUpgraded:
     "integration-configuration.permission-upgraded",
   IntegrationConfigurationRemoved: "integration-configuration.removed",
@@ -91,7 +92,7 @@ export const Events = {
   ObservabilityAnomalyError: "observability.anomaly-error",
   ObservabilityUsageAnomaly: "observability.usage-anomaly",
   ObservabilityErrorAnomaly: "observability.error-anomaly",
-  ObservabilityAnomalyBotId: "observability.anomaly-botId",
+  BotidAnomaly: "botid.anomaly",
   TestWebhook: "test-webhook",
 } as const;
 export type Events = ClosedEnum<typeof Events>;
@@ -152,6 +153,7 @@ export const CreateWebhookEvents = {
   FirewallAttack: "firewall.attack",
   FirewallSystemRuleAnomaly: "firewall.system-rule-anomaly",
   FirewallCustomRuleAnomaly: "firewall.custom-rule-anomaly",
+  AlertsTriggered: "alerts.triggered",
   IntegrationConfigurationPermissionUpgraded:
     "integration-configuration.permission-upgraded",
   IntegrationConfigurationRemoved: "integration-configuration.removed",
@@ -199,7 +201,7 @@ export const CreateWebhookEvents = {
   ObservabilityAnomalyError: "observability.anomaly-error",
   ObservabilityUsageAnomaly: "observability.usage-anomaly",
   ObservabilityErrorAnomaly: "observability.error-anomaly",
-  ObservabilityAnomalyBotId: "observability.anomaly-botId",
+  BotidAnomaly: "botid.anomaly",
   TestWebhook: "test-webhook",
 } as const;
 /**

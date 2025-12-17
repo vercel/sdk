@@ -272,6 +272,43 @@ func (e *UpdateProjectBuildMachineTypeRequest) UnmarshalJSON(data []byte) error 
 	}
 }
 
+type UpdateProjectConfigurationRequest string
+
+const (
+	UpdateProjectConfigurationRequestSkipNamespaceQueue    UpdateProjectConfigurationRequest = "SKIP_NAMESPACE_QUEUE"
+	UpdateProjectConfigurationRequestWaitForNamespaceQueue UpdateProjectConfigurationRequest = "WAIT_FOR_NAMESPACE_QUEUE"
+)
+
+func (e UpdateProjectConfigurationRequest) ToPointer() *UpdateProjectConfigurationRequest {
+	return &e
+}
+func (e *UpdateProjectConfigurationRequest) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "SKIP_NAMESPACE_QUEUE":
+		fallthrough
+	case "WAIT_FOR_NAMESPACE_QUEUE":
+		*e = UpdateProjectConfigurationRequest(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectConfigurationRequest: %v", v)
+	}
+}
+
+type UpdateProjectBuildQueueRequest struct {
+	Configuration *UpdateProjectConfigurationRequest `json:"configuration,omitempty"`
+}
+
+func (o *UpdateProjectBuildQueueRequest) GetConfiguration() *UpdateProjectConfigurationRequest {
+	if o == nil {
+		return nil
+	}
+	return o.Configuration
+}
+
 type UpdateProjectFunctionDefaultMemoryTypeRequest string
 
 const (
@@ -304,6 +341,7 @@ func (e *UpdateProjectFunctionDefaultMemoryTypeRequest) UnmarshalJSON(data []byt
 // UpdateProjectResourceConfigRequest - Specifies resource override configuration for the project
 type UpdateProjectResourceConfigRequest struct {
 	BuildMachineType *UpdateProjectBuildMachineTypeRequest `json:"buildMachineType,omitempty"`
+	BuildQueue       *UpdateProjectBuildQueueRequest       `json:"buildQueue,omitempty"`
 	Fluid            *bool                                 `json:"fluid,omitempty"`
 	// The regions to deploy Vercel Functions to for this project
 	FunctionDefaultRegions    []string                                       `json:"functionDefaultRegions,omitempty"`
@@ -320,6 +358,13 @@ func (o *UpdateProjectResourceConfigRequest) GetBuildMachineType() *UpdateProjec
 		return nil
 	}
 	return o.BuildMachineType
+}
+
+func (o *UpdateProjectResourceConfigRequest) GetBuildQueue() *UpdateProjectBuildQueueRequest {
+	if o == nil {
+		return nil
+	}
+	return o.BuildQueue
 }
 
 func (o *UpdateProjectResourceConfigRequest) GetFluid() *bool {
@@ -5873,6 +5918,43 @@ func (e *UpdateProjectResourceConfigBuildMachineTypeResponse) UnmarshalJSON(data
 	}
 }
 
+type UpdateProjectResourceConfigConfigurationResponse string
+
+const (
+	UpdateProjectResourceConfigConfigurationResponseSkipNamespaceQueue    UpdateProjectResourceConfigConfigurationResponse = "SKIP_NAMESPACE_QUEUE"
+	UpdateProjectResourceConfigConfigurationResponseWaitForNamespaceQueue UpdateProjectResourceConfigConfigurationResponse = "WAIT_FOR_NAMESPACE_QUEUE"
+)
+
+func (e UpdateProjectResourceConfigConfigurationResponse) ToPointer() *UpdateProjectResourceConfigConfigurationResponse {
+	return &e
+}
+func (e *UpdateProjectResourceConfigConfigurationResponse) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "SKIP_NAMESPACE_QUEUE":
+		fallthrough
+	case "WAIT_FOR_NAMESPACE_QUEUE":
+		*e = UpdateProjectResourceConfigConfigurationResponse(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectResourceConfigConfigurationResponse: %v", v)
+	}
+}
+
+type UpdateProjectResourceConfigBuildQueueResponse struct {
+	Configuration *UpdateProjectResourceConfigConfigurationResponse `json:"configuration,omitempty"`
+}
+
+func (o *UpdateProjectResourceConfigBuildQueueResponse) GetConfiguration() *UpdateProjectResourceConfigConfigurationResponse {
+	if o == nil {
+		return nil
+	}
+	return o.Configuration
+}
+
 type UpdateProjectResourceConfigResponse struct {
 	ElasticConcurrencyEnabled  *bool                                                         `json:"elasticConcurrencyEnabled,omitempty"`
 	Fluid                      *bool                                                         `json:"fluid,omitempty"`
@@ -5882,6 +5964,7 @@ type UpdateProjectResourceConfigResponse struct {
 	FunctionZeroConfigFailover *bool                                                         `json:"functionZeroConfigFailover,omitempty"`
 	BuildMachineType           *UpdateProjectResourceConfigBuildMachineTypeResponse          `json:"buildMachineType,omitempty"`
 	IsNSNBDisabled             *bool                                                         `json:"isNSNBDisabled,omitempty"`
+	BuildQueue                 *UpdateProjectResourceConfigBuildQueueResponse                `json:"buildQueue,omitempty"`
 }
 
 func (o *UpdateProjectResourceConfigResponse) GetElasticConcurrencyEnabled() *bool {
@@ -5938,6 +6021,13 @@ func (o *UpdateProjectResourceConfigResponse) GetIsNSNBDisabled() *bool {
 		return nil
 	}
 	return o.IsNSNBDisabled
+}
+
+func (o *UpdateProjectResourceConfigResponse) GetBuildQueue() *UpdateProjectResourceConfigBuildQueueResponse {
+	if o == nil {
+		return nil
+	}
+	return o.BuildQueue
 }
 
 // UpdateProjectRollbackDescription - Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback.
@@ -6106,6 +6196,43 @@ func (e *UpdateProjectDefaultResourceConfigBuildMachineType) UnmarshalJSON(data 
 	}
 }
 
+type UpdateProjectDefaultResourceConfigConfiguration string
+
+const (
+	UpdateProjectDefaultResourceConfigConfigurationSkipNamespaceQueue    UpdateProjectDefaultResourceConfigConfiguration = "SKIP_NAMESPACE_QUEUE"
+	UpdateProjectDefaultResourceConfigConfigurationWaitForNamespaceQueue UpdateProjectDefaultResourceConfigConfiguration = "WAIT_FOR_NAMESPACE_QUEUE"
+)
+
+func (e UpdateProjectDefaultResourceConfigConfiguration) ToPointer() *UpdateProjectDefaultResourceConfigConfiguration {
+	return &e
+}
+func (e *UpdateProjectDefaultResourceConfigConfiguration) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "SKIP_NAMESPACE_QUEUE":
+		fallthrough
+	case "WAIT_FOR_NAMESPACE_QUEUE":
+		*e = UpdateProjectDefaultResourceConfigConfiguration(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectDefaultResourceConfigConfiguration: %v", v)
+	}
+}
+
+type UpdateProjectDefaultResourceConfigBuildQueue struct {
+	Configuration *UpdateProjectDefaultResourceConfigConfiguration `json:"configuration,omitempty"`
+}
+
+func (o *UpdateProjectDefaultResourceConfigBuildQueue) GetConfiguration() *UpdateProjectDefaultResourceConfigConfiguration {
+	if o == nil {
+		return nil
+	}
+	return o.Configuration
+}
+
 type UpdateProjectDefaultResourceConfig struct {
 	ElasticConcurrencyEnabled  *bool                                                        `json:"elasticConcurrencyEnabled,omitempty"`
 	Fluid                      *bool                                                        `json:"fluid,omitempty"`
@@ -6115,6 +6242,7 @@ type UpdateProjectDefaultResourceConfig struct {
 	FunctionZeroConfigFailover *bool                                                        `json:"functionZeroConfigFailover,omitempty"`
 	BuildMachineType           *UpdateProjectDefaultResourceConfigBuildMachineType          `json:"buildMachineType,omitempty"`
 	IsNSNBDisabled             *bool                                                        `json:"isNSNBDisabled,omitempty"`
+	BuildQueue                 *UpdateProjectDefaultResourceConfigBuildQueue                `json:"buildQueue,omitempty"`
 }
 
 func (o *UpdateProjectDefaultResourceConfig) GetElasticConcurrencyEnabled() *bool {
@@ -6171,6 +6299,13 @@ func (o *UpdateProjectDefaultResourceConfig) GetIsNSNBDisabled() *bool {
 		return nil
 	}
 	return o.IsNSNBDisabled
+}
+
+func (o *UpdateProjectDefaultResourceConfig) GetBuildQueue() *UpdateProjectDefaultResourceConfigBuildQueue {
+	if o == nil {
+		return nil
+	}
+	return o.BuildQueue
 }
 
 type UpdateProjectStaticIpsResponse struct {
@@ -8869,8 +9004,8 @@ func (e *UpdateProjectLastAliasRequestType) UnmarshalJSON(data []byte) error {
 }
 
 type UpdateProjectLastAliasRequest struct {
-	FromDeploymentID string `json:"fromDeploymentId"`
-	ToDeploymentID   string `json:"toDeploymentId"`
+	FromDeploymentID *string `json:"fromDeploymentId"`
+	ToDeploymentID   string  `json:"toDeploymentId"`
 	// If rolling back from a rolling release, fromDeploymentId captures the "base" of that rolling release, and fromRollingReleaseId captures the "target" of that rolling release.
 	FromRollingReleaseID *string                           `json:"fromRollingReleaseId,omitempty"`
 	JobStatus            UpdateProjectJobStatus            `json:"jobStatus"`
@@ -8878,9 +9013,9 @@ type UpdateProjectLastAliasRequest struct {
 	Type                 UpdateProjectLastAliasRequestType `json:"type"`
 }
 
-func (o *UpdateProjectLastAliasRequest) GetFromDeploymentID() string {
+func (o *UpdateProjectLastAliasRequest) GetFromDeploymentID() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.FromDeploymentID
 }
@@ -8947,6 +9082,10 @@ type UpdateProjectProtectionBypassAutomationBypass struct {
 	CreatedAt float64                            `json:"createdAt"`
 	CreatedBy string                             `json:"createdBy"`
 	Scope     UpdateProjectScopeAutomationBypass `json:"scope"`
+	// When there was only one bypass, it was automatically set as an env var on deployments. With multiple bypasses, there is always one bypass that is selected as the default, and gets set as an env var on deployments. As this is a new field, undefined means that the bypass is the env var. If there are any automation bypasses, exactly one must be the env var.
+	IsEnvVar *bool `json:"isEnvVar,omitempty"`
+	// Optional note about the bypass to be displayed in the UI
+	Note *string `json:"note,omitempty"`
 }
 
 func (u UpdateProjectProtectionBypassAutomationBypass) MarshalJSON() ([]byte, error) {
@@ -8979,6 +9118,20 @@ func (o *UpdateProjectProtectionBypassAutomationBypass) GetScope() UpdateProject
 		return UpdateProjectScopeAutomationBypass("")
 	}
 	return o.Scope
+}
+
+func (o *UpdateProjectProtectionBypassAutomationBypass) GetIsEnvVar() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsEnvVar
+}
+
+func (o *UpdateProjectProtectionBypassAutomationBypass) GetNote() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Note
 }
 
 type UpdateProjectScopeIntegrationAutomationBypass string
@@ -12279,6 +12432,36 @@ func (o *UpdateProjectDismissedToastResponse) GetValue() *UpdateProjectValueUnio
 	return o.Value
 }
 
+type UpdateProjectCveShield struct {
+	// True if the CVE Shield has been enabled. Otherwise false.
+	Enabled bool `json:"enabled"`
+	// CVE threshold. It can range between 1 and 10.
+	Threshold *float64 `json:"threshold,omitempty"`
+	// List of CVE that we want to protect against.
+	CveList []string `json:"cveList,omitempty"`
+}
+
+func (o *UpdateProjectCveShield) GetEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.Enabled
+}
+
+func (o *UpdateProjectCveShield) GetThreshold() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Threshold
+}
+
+func (o *UpdateProjectCveShield) GetCveList() []string {
+	if o == nil {
+		return nil
+	}
+	return o.CveList
+}
+
 // UpdateProjectResponseBody - The project was successfully updated
 type UpdateProjectResponseBody struct {
 	AccountID                        string                                      `json:"accountId"`
@@ -12365,6 +12548,7 @@ type UpdateProjectResponseBody struct {
 	InternalRoutes                       []UpdateProjectInternalRouteUnion             `json:"internalRoutes,omitempty"`
 	HasDeployments                       *bool                                         `json:"hasDeployments,omitempty"`
 	DismissedToasts                      []UpdateProjectDismissedToastResponse         `json:"dismissedToasts,omitempty"`
+	CveShield                            *UpdateProjectCveShield                       `json:"cveShield,omitempty"`
 }
 
 func (o *UpdateProjectResponseBody) GetAccountID() string {
@@ -12967,6 +13151,13 @@ func (o *UpdateProjectResponseBody) GetDismissedToasts() []UpdateProjectDismisse
 		return nil
 	}
 	return o.DismissedToasts
+}
+
+func (o *UpdateProjectResponseBody) GetCveShield() *UpdateProjectCveShield {
+	if o == nil {
+		return nil
+	}
+	return o.CveShield
 }
 
 type UpdateProjectResponse struct {

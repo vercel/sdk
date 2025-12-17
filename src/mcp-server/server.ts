@@ -50,6 +50,7 @@ import { tool$checksGetCheck } from "./tools/checksGetCheck.js";
 import { tool$checksRerequestCheck } from "./tools/checksRerequestCheck.js";
 import { tool$checksUpdateCheck } from "./tools/checksUpdateCheck.js";
 import { tool$connectUpdateStaticIps } from "./tools/connectUpdateStaticIps.js";
+import { tool$deleteV1BulkRedirects } from "./tools/deleteV1BulkRedirects.js";
 import { tool$deploymentsCancelDeployment } from "./tools/deploymentsCancelDeployment.js";
 import { tool$deploymentsCreateDeployment } from "./tools/deploymentsCreateDeployment.js";
 import { tool$deploymentsDeleteDeployment } from "./tools/deploymentsDeleteDeployment.js";
@@ -64,7 +65,6 @@ import { tool$dnsCreateRecord } from "./tools/dnsCreateRecord.js";
 import { tool$dnsGetRecords } from "./tools/dnsGetRecords.js";
 import { tool$dnsRemoveRecord } from "./tools/dnsRemoveRecord.js";
 import { tool$dnsUpdateRecord } from "./tools/dnsUpdateRecord.js";
-import { tool$domainsBuyDomain } from "./tools/domainsBuyDomain.js";
 import { tool$domainsCheckDomainPrice } from "./tools/domainsCheckDomainPrice.js";
 import { tool$domainsCheckDomainStatus } from "./tools/domainsCheckDomainStatus.js";
 import { tool$domainsCreateOrTransferDomain } from "./tools/domainsCreateOrTransferDomain.js";
@@ -126,6 +126,8 @@ import { tool$environmentRemoveCustomEnvironment } from "./tools/environmentRemo
 import { tool$environmentUnlinkSharedEnvVariable } from "./tools/environmentUnlinkSharedEnvVariable.js";
 import { tool$environmentUpdateCustomEnvironment } from "./tools/environmentUpdateCustomEnvironment.js";
 import { tool$environmentUpdateSharedEnvVariable } from "./tools/environmentUpdateSharedEnvVariable.js";
+import { tool$getV1BulkRedirects } from "./tools/getV1BulkRedirects.js";
+import { tool$getV1BulkRedirectsVersions } from "./tools/getV1BulkRedirectsVersions.js";
 import { tool$integrationsConnectIntegrationResourceToProject } from "./tools/integrationsConnectIntegrationResourceToProject.js";
 import { tool$integrationsCreateIntegrationStoreDirect } from "./tools/integrationsCreateIntegrationStoreDirect.js";
 import { tool$integrationsDeleteConfiguration } from "./tools/integrationsDeleteConfiguration.js";
@@ -163,6 +165,9 @@ import { tool$marketplaceUpdateInvoice } from "./tools/marketplaceUpdateInvoice.
 import { tool$marketplaceUpdateResource } from "./tools/marketplaceUpdateResource.js";
 import { tool$marketplaceUpdateResourceSecrets } from "./tools/marketplaceUpdateResourceSecrets.js";
 import { tool$marketplaceUpdateResourceSecretsById } from "./tools/marketplaceUpdateResourceSecretsById.js";
+import { tool$patchV1BulkRedirects } from "./tools/patchV1BulkRedirects.js";
+import { tool$postV1BulkRedirectsRestore } from "./tools/postV1BulkRedirectsRestore.js";
+import { tool$postV1BulkRedirectsVersions } from "./tools/postV1BulkRedirectsVersions.js";
 import { tool$projectMembersAddProjectMember } from "./tools/projectMembersAddProjectMember.js";
 import { tool$projectMembersGetProjectMembers } from "./tools/projectMembersGetProjectMembers.js";
 import { tool$projectMembersRemoveProjectMember } from "./tools/projectMembersRemoveProjectMember.js";
@@ -194,6 +199,7 @@ import { tool$projectsUpdateProjectDomain } from "./tools/projectsUpdateProjectD
 import { tool$projectsUpdateProjectProtectionBypass } from "./tools/projectsUpdateProjectProtectionBypass.js";
 import { tool$projectsUploadProjectClientCert } from "./tools/projectsUploadProjectClientCert.js";
 import { tool$projectsVerifyProjectDomain } from "./tools/projectsVerifyProjectDomain.js";
+import { tool$putV1BulkRedirects } from "./tools/putV1BulkRedirects.js";
 import { tool$rollingReleaseApproveRollingReleaseStage } from "./tools/rollingReleaseApproveRollingReleaseStage.js";
 import { tool$rollingReleaseCompleteRollingRelease } from "./tools/rollingReleaseCompleteRollingRelease.js";
 import { tool$rollingReleaseDeleteRollingReleaseConfig } from "./tools/rollingReleaseDeleteRollingReleaseConfig.js";
@@ -220,6 +226,7 @@ import { tool$teamsGetTeams } from "./tools/teamsGetTeams.js";
 import { tool$teamsInviteUserToTeam } from "./tools/teamsInviteUserToTeam.js";
 import { tool$teamsJoinTeam } from "./tools/teamsJoinTeam.js";
 import { tool$teamsPatchTeam } from "./tools/teamsPatchTeam.js";
+import { tool$teamsPostTeamDsyncRoles } from "./tools/teamsPostTeamDsyncRoles.js";
 import { tool$teamsRemoveTeamMember } from "./tools/teamsRemoveTeamMember.js";
 import { tool$teamsRequestAccessToTeam } from "./tools/teamsRequestAccessToTeam.js";
 import { tool$teamsUpdateTeamMember } from "./tools/teamsUpdateTeamMember.js";
@@ -241,7 +248,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.18.2",
+    version: "1.18.3",
   });
 
   const client = new VercelCore({
@@ -271,6 +278,13 @@ export function createMCPServer(deps: {
   const register = { tool, resource, resourceTemplate, prompt };
   void register; // suppress unused warnings
 
+  tool(tool$putV1BulkRedirects);
+  tool(tool$getV1BulkRedirects);
+  tool(tool$deleteV1BulkRedirects);
+  tool(tool$patchV1BulkRedirects);
+  tool(tool$postV1BulkRedirectsRestore);
+  tool(tool$getV1BulkRedirectsVersions);
+  tool(tool$postV1BulkRedirectsVersions);
   tool(tool$accessGroupsReadAccessGroup);
   tool(tool$accessGroupsUpdateAccessGroup);
   tool(tool$accessGroupsDeleteAccessGroup);
@@ -338,7 +352,6 @@ export function createMCPServer(deps: {
   tool(tool$integrationsDeleteConfiguration);
   tool(tool$integrationsGetConfigurationProducts);
   tool(tool$integrationsCreateIntegrationStoreDirect);
-  tool(tool$domainsBuyDomain);
   tool(tool$domainsCheckDomainPrice);
   tool(tool$domainsCheckDomainStatus);
   tool(tool$domainsGetDomainConfig);
@@ -472,6 +485,7 @@ export function createMCPServer(deps: {
   tool(tool$teamsPatchTeam);
   tool(tool$teamsGetTeams);
   tool(tool$teamsCreateTeam);
+  tool(tool$teamsPostTeamDsyncRoles);
   tool(tool$teamsDeleteTeam);
   tool(tool$teamsDeleteTeamInviteCode);
   tool(tool$webhooksCreateWebhook);

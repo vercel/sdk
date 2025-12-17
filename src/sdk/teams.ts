@@ -12,6 +12,7 @@ import { teamsGetTeams } from "../funcs/teamsGetTeams.js";
 import { teamsInviteUserToTeam } from "../funcs/teamsInviteUserToTeam.js";
 import { teamsJoinTeam } from "../funcs/teamsJoinTeam.js";
 import { teamsPatchTeam } from "../funcs/teamsPatchTeam.js";
+import { teamsPostTeamDsyncRoles } from "../funcs/teamsPostTeamDsyncRoles.js";
 import { teamsRemoveTeamMember } from "../funcs/teamsRemoveTeamMember.js";
 import { teamsRequestAccessToTeam } from "../funcs/teamsRequestAccessToTeam.js";
 import { teamsUpdateTeamMember } from "../funcs/teamsUpdateTeamMember.js";
@@ -42,6 +43,10 @@ import { InvitedTeamMember } from "../models/invitedteammember.js";
 import { InviteUserToTeamRequestBody } from "../models/inviteusertoteamop.js";
 import { JoinTeamRequest, JoinTeamResponseBody } from "../models/jointeamop.js";
 import { PatchTeamRequest } from "../models/patchteamop.js";
+import {
+  PostTeamDsyncRolesRequest,
+  PostTeamDsyncRolesResponseBody,
+} from "../models/postteamdsyncrolesop.js";
 import {
   RemoveTeamMemberRequest,
   RemoveTeamMemberResponseBody,
@@ -239,6 +244,23 @@ export class Teams extends ClientSDK {
     options?: RequestOptions,
   ): Promise<CreateTeamResponseBody> {
     return unwrapAsync(teamsCreateTeam(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update Team Directory Sync Role Mappings
+   *
+   * @remarks
+   * Update the Directory Sync role mappings for a Team. This endpoint allows updating the mapping between directory groups and team roles or access groups.
+   */
+  async postTeamDsyncRoles(
+    request: PostTeamDsyncRolesRequest,
+    options?: RequestOptions,
+  ): Promise<PostTeamDsyncRolesResponseBody> {
+    return unwrapAsync(teamsPostTeamDsyncRoles(
       this,
       request,
       options,

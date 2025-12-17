@@ -11,5 +11,5 @@ let value: InstallationType = "marketplace";
 ## Values
 
 ```typescript
-"marketplace" | "external"
+"marketplace" | "external" | "provisioning"
 ```

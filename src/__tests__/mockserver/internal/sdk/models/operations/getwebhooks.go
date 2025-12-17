@@ -77,6 +77,7 @@ const (
 	GetWebhooksEvent2FirewallAttack                                     GetWebhooksEvent2 = "firewall.attack"
 	GetWebhooksEvent2FirewallSystemRuleAnomaly                          GetWebhooksEvent2 = "firewall.system-rule-anomaly"
 	GetWebhooksEvent2FirewallCustomRuleAnomaly                          GetWebhooksEvent2 = "firewall.custom-rule-anomaly"
+	GetWebhooksEvent2AlertsTriggered                                    GetWebhooksEvent2 = "alerts.triggered"
 	GetWebhooksEvent2IntegrationConfigurationPermissionUpgraded         GetWebhooksEvent2 = "integration-configuration.permission-upgraded"
 	GetWebhooksEvent2IntegrationConfigurationRemoved                    GetWebhooksEvent2 = "integration-configuration.removed"
 	GetWebhooksEvent2IntegrationConfigurationScopeChangeConfirmed       GetWebhooksEvent2 = "integration-configuration.scope-change-confirmed"
@@ -119,7 +120,7 @@ const (
 	GetWebhooksEvent2ObservabilityAnomalyError                          GetWebhooksEvent2 = "observability.anomaly-error"
 	GetWebhooksEvent2ObservabilityUsageAnomaly                          GetWebhooksEvent2 = "observability.usage-anomaly"
 	GetWebhooksEvent2ObservabilityErrorAnomaly                          GetWebhooksEvent2 = "observability.error-anomaly"
-	GetWebhooksEvent2ObservabilityAnomalyBotId                          GetWebhooksEvent2 = "observability.anomaly-botId"
+	GetWebhooksEvent2BotidAnomaly                                       GetWebhooksEvent2 = "botid.anomaly"
 	GetWebhooksEvent2TestWebhook                                        GetWebhooksEvent2 = "test-webhook"
 )
 
@@ -199,6 +200,8 @@ func (e *GetWebhooksEvent2) UnmarshalJSON(data []byte) error {
 	case "firewall.system-rule-anomaly":
 		fallthrough
 	case "firewall.custom-rule-anomaly":
+		fallthrough
+	case "alerts.triggered":
 		fallthrough
 	case "integration-configuration.permission-upgraded":
 		fallthrough
@@ -284,7 +287,7 @@ func (e *GetWebhooksEvent2) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "observability.error-anomaly":
 		fallthrough
-	case "observability.anomaly-botId":
+	case "botid.anomaly":
 		fallthrough
 	case "test-webhook":
 		*e = GetWebhooksEvent2(v)
@@ -646,6 +649,7 @@ const (
 	GetWebhooksEvent1FirewallAttack                                     GetWebhooksEvent1 = "firewall.attack"
 	GetWebhooksEvent1FirewallSystemRuleAnomaly                          GetWebhooksEvent1 = "firewall.system-rule-anomaly"
 	GetWebhooksEvent1FirewallCustomRuleAnomaly                          GetWebhooksEvent1 = "firewall.custom-rule-anomaly"
+	GetWebhooksEvent1AlertsTriggered                                    GetWebhooksEvent1 = "alerts.triggered"
 	GetWebhooksEvent1IntegrationConfigurationPermissionUpgraded         GetWebhooksEvent1 = "integration-configuration.permission-upgraded"
 	GetWebhooksEvent1IntegrationConfigurationRemoved                    GetWebhooksEvent1 = "integration-configuration.removed"
 	GetWebhooksEvent1IntegrationConfigurationScopeChangeConfirmed       GetWebhooksEvent1 = "integration-configuration.scope-change-confirmed"
@@ -688,7 +692,7 @@ const (
 	GetWebhooksEvent1ObservabilityAnomalyError                          GetWebhooksEvent1 = "observability.anomaly-error"
 	GetWebhooksEvent1ObservabilityUsageAnomaly                          GetWebhooksEvent1 = "observability.usage-anomaly"
 	GetWebhooksEvent1ObservabilityErrorAnomaly                          GetWebhooksEvent1 = "observability.error-anomaly"
-	GetWebhooksEvent1ObservabilityAnomalyBotId                          GetWebhooksEvent1 = "observability.anomaly-botId"
+	GetWebhooksEvent1BotidAnomaly                                       GetWebhooksEvent1 = "botid.anomaly"
 	GetWebhooksEvent1TestWebhook                                        GetWebhooksEvent1 = "test-webhook"
 )
 
@@ -768,6 +772,8 @@ func (e *GetWebhooksEvent1) UnmarshalJSON(data []byte) error {
 	case "firewall.system-rule-anomaly":
 		fallthrough
 	case "firewall.custom-rule-anomaly":
+		fallthrough
+	case "alerts.triggered":
 		fallthrough
 	case "integration-configuration.permission-upgraded":
 		fallthrough
@@ -853,7 +859,7 @@ func (e *GetWebhooksEvent1) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "observability.error-anomaly":
 		fallthrough
-	case "observability.anomaly-botId":
+	case "botid.anomaly":
 		fallthrough
 	case "test-webhook":
 		*e = GetWebhooksEvent1(v)

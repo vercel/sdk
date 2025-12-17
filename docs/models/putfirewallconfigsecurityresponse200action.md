@@ -11,5 +11,5 @@ let value: PutFirewallConfigSecurityResponse200Action = "deny";
 ## Values
 
 ```typescript
-"deny" | "log" | "challenge" | "bypass"
+"deny" | "log"
 ```

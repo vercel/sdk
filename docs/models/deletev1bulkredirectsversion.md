@@ -1,0 +1,28 @@
+# DeleteV1BulkRedirectsVersion
+
+## Example Usage
+
+```typescript
+import { DeleteV1BulkRedirectsVersion } from "@vercel/sdk/models/deletev1bulkredirectsop.js";
+
+let value: DeleteV1BulkRedirectsVersion = {
+  id: "<id>",
+  key: "<key>",
+  lastModified: 8778.49,
+  createdBy: "<value>",
+};
+```
+
+## Fields
+
+| Field                                                                                                                  | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `id`                                                                                                                   | *string*                                                                                                               | :heavy_check_mark:                                                                                                     | The unique identifier for the version.                                                                                 |
+| `key`                                                                                                                  | *string*                                                                                                               | :heavy_check_mark:                                                                                                     | The key of the version. The key may be duplicated across versions if the contents are the same as a different version. |
+| `lastModified`                                                                                                         | *number*                                                                                                               | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
+| `createdBy`                                                                                                            | *string*                                                                                                               | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
+| `name`                                                                                                                 | *string*                                                                                                               | :heavy_minus_sign:                                                                                                     | Optional name for the version. If not provided, defaults to an ISO timestamp string.                                   |
+| `isStaging`                                                                                                            | *boolean*                                                                                                              | :heavy_minus_sign:                                                                                                     | Whether this version has not been promoted to production yet and is not serving end users.                             |
+| `isLive`                                                                                                               | *boolean*                                                                                                              | :heavy_minus_sign:                                                                                                     | Whether this version is currently live in production.                                                                  |
+| `redirectCount`                                                                                                        | *number*                                                                                                               | :heavy_minus_sign:                                                                                                     | The number of redirects in this version.                                                                               |
+| `alias`                                                                                                                | *string*                                                                                                               | :heavy_minus_sign:                                                                                                     | The staging link for previewing redirects in this version.                                                             |

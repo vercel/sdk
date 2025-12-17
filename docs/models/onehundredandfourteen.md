@@ -9,26 +9,24 @@ import { OneHundredAndFourteen } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndFourteen = {
   budget: {
-    budgetItem: {
-      type: "fixed",
-      fixedBudget: 268.4,
-      previousSpend: [
-        2211.33,
-        3066.93,
-        9049.6,
-      ],
-      notifiedAt: [],
-      createdAt: 2535.69,
-      isActive: true,
-      teamId: "<id>",
-      id: "<id>",
-    },
+    type: "fixed",
+    fixedBudget: 4688.1,
+    previousSpend: [],
+    notifiedAt: [
+      432.34,
+      6355.3,
+      4153.31,
+    ],
+    createdAt: 5177.97,
+    isActive: false,
+    teamId: "<id>",
+    id: "<id>",
   },
 };
 ```
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `budget`                             | [models.Budget](../models/budget.md) | :heavy_check_mark:                   | N/A                                  |
+| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `budget`                                                                | [models.PayloadBudget](../models/payloadbudget.md)                      | :heavy_check_mark:                                                      | Represents a budget for tracking and notifying teams on their spending. |

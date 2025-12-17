@@ -23,7 +23,7 @@ export type Direction = ClosedEnum<typeof Direction>;
 /**
  * HTTP status code range to filter events by.
  */
-export type StatusCode = number | string;
+export type QueryParamStatusCode = number | string;
 
 export type GetDeploymentEventsRequest = {
   /**
@@ -359,31 +359,35 @@ export const Direction$outboundSchema: z.ZodNativeEnum<typeof Direction> =
   Direction$inboundSchema;
 
 /** @internal */
-export const StatusCode$inboundSchema: z.ZodType<
-  StatusCode,
+export const QueryParamStatusCode$inboundSchema: z.ZodType<
+  QueryParamStatusCode,
   z.ZodTypeDef,
   unknown
 > = z.union([z.number(), z.string()]);
 /** @internal */
-export type StatusCode$Outbound = number | string;
+export type QueryParamStatusCode$Outbound = number | string;
 
 /** @internal */
-export const StatusCode$outboundSchema: z.ZodType<
-  StatusCode$Outbound,
+export const QueryParamStatusCode$outboundSchema: z.ZodType<
+  QueryParamStatusCode$Outbound,
   z.ZodTypeDef,
-  StatusCode
+  QueryParamStatusCode
 > = z.union([z.number(), z.string()]);
 
-export function statusCodeToJSON(statusCode: StatusCode): string {
-  return JSON.stringify(StatusCode$outboundSchema.parse(statusCode));
+export function queryParamStatusCodeToJSON(
+  queryParamStatusCode: QueryParamStatusCode,
+): string {
+  return JSON.stringify(
+    QueryParamStatusCode$outboundSchema.parse(queryParamStatusCode),
+  );
 }
-export function statusCodeFromJSON(
+export function queryParamStatusCodeFromJSON(
   jsonString: string,
-): SafeParseResult<StatusCode, SDKValidationError> {
+): SafeParseResult<QueryParamStatusCode, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => StatusCode$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StatusCode' from JSON`,
+    (x) => QueryParamStatusCode$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'QueryParamStatusCode' from JSON`,
   );
 }
 

@@ -30,6 +30,28 @@ export type Generate = {
    * Optional value of the secret to generate, don't send it for oauth2 tokens
    */
   secret?: string | undefined;
+  /**
+   * Note to be displayed in the UI for this bypass
+   */
+  note?: string | undefined;
+};
+
+/**
+ * Update an existing bypass
+ */
+export type Update = {
+  /**
+   * Automation bypass to updated
+   */
+  secret: string;
+  /**
+   * Whether or not this bypass is set as the VERCEL_AUTOMATION_BYPASS_SECRET environment variable on deployments
+   */
+  isEnvVar?: boolean | undefined;
+  /**
+   * Note to be displayed in the UI for this bypass
+   */
+  note?: string | undefined;
 };
 
 export type UpdateProjectProtectionBypassRequestBody = {
@@ -41,6 +63,10 @@ export type UpdateProjectProtectionBypassRequestBody = {
    * Generate a new secret. If neither generate or revoke are provided, a new random secret will be generated.
    */
   generate?: Generate | undefined;
+  /**
+   * Update an existing bypass
+   */
+  update?: Update | undefined;
 };
 
 export type UpdateProjectProtectionBypassRequest = {
@@ -63,6 +89,14 @@ export type UpdateProjectProtectionBypassProtectionBypass2 = {
   createdAt: number;
   createdBy: string;
   scope: "automation-bypass";
+  /**
+   * When there was only one bypass, it was automatically set as an env var on deployments. With multiple bypasses, there is always one bypass that is selected as the default, and gets set as an env var on deployments. As this is a new field, undefined means that the bypass is the env var. If there are any automation bypasses, exactly one must be the env var.
+   */
+  isEnvVar?: boolean | undefined;
+  /**
+   * Optional note about the bypass to be displayed in the UI
+   */
+  note?: string | undefined;
 };
 
 export type UpdateProjectProtectionBypassProtectionBypass1 = {
@@ -127,10 +161,12 @@ export const Generate$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   secret: z.string().optional(),
+  note: z.string().optional(),
 });
 /** @internal */
 export type Generate$Outbound = {
   secret?: string | undefined;
+  note?: string | undefined;
 };
 
 /** @internal */
@@ -140,6 +176,7 @@ export const Generate$outboundSchema: z.ZodType<
   Generate
 > = z.object({
   secret: z.string().optional(),
+  note: z.string().optional(),
 });
 
 export function generateToJSON(generate: Generate): string {
@@ -156,6 +193,44 @@ export function generateFromJSON(
 }
 
 /** @internal */
+export const Update$inboundSchema: z.ZodType<Update, z.ZodTypeDef, unknown> = z
+  .object({
+    secret: z.string(),
+    isEnvVar: z.boolean().optional(),
+    note: z.string().optional(),
+  });
+/** @internal */
+export type Update$Outbound = {
+  secret: string;
+  isEnvVar?: boolean | undefined;
+  note?: string | undefined;
+};
+
+/** @internal */
+export const Update$outboundSchema: z.ZodType<
+  Update$Outbound,
+  z.ZodTypeDef,
+  Update
+> = z.object({
+  secret: z.string(),
+  isEnvVar: z.boolean().optional(),
+  note: z.string().optional(),
+});
+
+export function updateToJSON(update: Update): string {
+  return JSON.stringify(Update$outboundSchema.parse(update));
+}
+export function updateFromJSON(
+  jsonString: string,
+): SafeParseResult<Update, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Update$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Update' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateProjectProtectionBypassRequestBody$inboundSchema: z.ZodType<
   UpdateProjectProtectionBypassRequestBody,
   z.ZodTypeDef,
@@ -163,11 +238,13 @@ export const UpdateProjectProtectionBypassRequestBody$inboundSchema: z.ZodType<
 > = z.object({
   revoke: z.lazy(() => Revoke$inboundSchema).optional(),
   generate: z.lazy(() => Generate$inboundSchema).optional(),
+  update: z.lazy(() => Update$inboundSchema).optional(),
 });
 /** @internal */
 export type UpdateProjectProtectionBypassRequestBody$Outbound = {
   revoke?: Revoke$Outbound | undefined;
   generate?: Generate$Outbound | undefined;
+  update?: Update$Outbound | undefined;
 };
 
 /** @internal */
@@ -178,6 +255,7 @@ export const UpdateProjectProtectionBypassRequestBody$outboundSchema: z.ZodType<
 > = z.object({
   revoke: z.lazy(() => Revoke$outboundSchema).optional(),
   generate: z.lazy(() => Generate$outboundSchema).optional(),
+  update: z.lazy(() => Update$outboundSchema).optional(),
 });
 
 export function updateProjectProtectionBypassRequestBodyToJSON(
@@ -279,12 +357,16 @@ export const UpdateProjectProtectionBypassProtectionBypass2$inboundSchema:
     createdAt: z.number(),
     createdBy: z.string(),
     scope: z.literal("automation-bypass"),
+    isEnvVar: z.boolean().optional(),
+    note: z.string().optional(),
   });
 /** @internal */
 export type UpdateProjectProtectionBypassProtectionBypass2$Outbound = {
   createdAt: number;
   createdBy: string;
   scope: "automation-bypass";
+  isEnvVar?: boolean | undefined;
+  note?: string | undefined;
 };
 
 /** @internal */
@@ -297,6 +379,8 @@ export const UpdateProjectProtectionBypassProtectionBypass2$outboundSchema:
     createdAt: z.number(),
     createdBy: z.string(),
     scope: z.literal("automation-bypass"),
+    isEnvVar: z.boolean().optional(),
+    note: z.string().optional(),
   });
 
 export function updateProjectProtectionBypassProtectionBypass2ToJSON(

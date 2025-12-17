@@ -8,16 +8,14 @@ The payload of the event, if requested.
 import { OneHundredAndFour } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndFour = {
-  gitProvider: "<value>",
-  gitProviderGroupDescriptor: "<value>",
-  gitScope: "<value>",
+  instances: 9509.85,
+  url: "https://gigantic-help.org",
 };
 ```
 
 ## Fields
 
-| Field                        | Type                         | Required                     | Description                  |
-| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `gitProvider`                | *string*                     | :heavy_check_mark:           | N/A                          |
-| `gitProviderGroupDescriptor` | *string*                     | :heavy_check_mark:           | N/A                          |
-| `gitScope`                   | *string*                     | :heavy_check_mark:           | N/A                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `instances`        | *number*           | :heavy_check_mark: | N/A                |
+| `url`              | *string*           | :heavy_check_mark: | N/A                |

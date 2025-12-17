@@ -52,7 +52,7 @@ func testGetConfigurationProductsGetConfigurationProducts0(w http.ResponseWriter
 			Slug: "<value>",
 			Name: "<value>",
 		},
-		Configuration: operations.Configuration{
+		Configuration: operations.GetConfigurationProductsConfiguration{
 			ID: "<id>",
 		},
 	}

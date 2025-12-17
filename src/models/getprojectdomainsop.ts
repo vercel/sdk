@@ -41,14 +41,14 @@ export type QueryParamTarget = ClosedEnum<typeof QueryParamTarget>;
 /**
  * Excludes redirect project domains when \"false\". Includes redirect project domains when \"true\" (default).
  */
-export const Redirects = {
+export const QueryParamRedirects = {
   True: "true",
   False: "false",
 } as const;
 /**
  * Excludes redirect project domains when \"false\". Includes redirect project domains when \"true\" (default).
  */
-export type Redirects = ClosedEnum<typeof Redirects>;
+export type QueryParamRedirects = ClosedEnum<typeof QueryParamRedirects>;
 
 /**
  * Filters domains based on their verification status.
@@ -98,7 +98,7 @@ export type GetProjectDomainsRequest = {
   /**
    * Excludes redirect project domains when \"false\". Includes redirect project domains when \"true\" (default).
    */
-  redirects?: Redirects | undefined;
+  redirects?: QueryParamRedirects | undefined;
   /**
    * Filters domains based on their redirect target.
    */
@@ -236,11 +236,13 @@ export const QueryParamTarget$outboundSchema: z.ZodNativeEnum<
 > = QueryParamTarget$inboundSchema;
 
 /** @internal */
-export const Redirects$inboundSchema: z.ZodNativeEnum<typeof Redirects> = z
-  .nativeEnum(Redirects);
+export const QueryParamRedirects$inboundSchema: z.ZodNativeEnum<
+  typeof QueryParamRedirects
+> = z.nativeEnum(QueryParamRedirects);
 /** @internal */
-export const Redirects$outboundSchema: z.ZodNativeEnum<typeof Redirects> =
-  Redirects$inboundSchema;
+export const QueryParamRedirects$outboundSchema: z.ZodNativeEnum<
+  typeof QueryParamRedirects
+> = QueryParamRedirects$inboundSchema;
 
 /** @internal */
 export const Verified$inboundSchema: z.ZodNativeEnum<typeof Verified> = z
@@ -268,7 +270,7 @@ export const GetProjectDomainsRequest$inboundSchema: z.ZodType<
   target: QueryParamTarget$inboundSchema.optional(),
   customEnvironmentId: z.string().optional(),
   gitBranch: z.string().optional(),
-  redirects: Redirects$inboundSchema.default("true"),
+  redirects: QueryParamRedirects$inboundSchema.default("true"),
   redirect: z.string().optional(),
   verified: Verified$inboundSchema.optional(),
   limit: z.number().optional(),
@@ -307,7 +309,7 @@ export const GetProjectDomainsRequest$outboundSchema: z.ZodType<
   target: QueryParamTarget$outboundSchema.optional(),
   customEnvironmentId: z.string().optional(),
   gitBranch: z.string().optional(),
-  redirects: Redirects$outboundSchema.default("true"),
+  redirects: QueryParamRedirects$outboundSchema.default("true"),
   redirect: z.string().optional(),
   verified: Verified$outboundSchema.optional(),
   limit: z.number().optional(),

@@ -1,17 +1,23 @@
 # Redirects
 
-Excludes redirect project domains when \"false\". Includes redirect project domains when \"true\" (default).
-
 ## Example Usage
 
 ```typescript
-import { Redirects } from "@vercel/sdk/models/getprojectdomainsop.js";
+import { Redirects } from "@vercel/sdk/models/putv1bulkredirectsop.js";
 
-let value: Redirects = "false";
+let value: Redirects = {
+  source: "<value>",
+  destination: "<value>",
+};
 ```
 
-## Values
+## Fields
 
-```typescript
-"true" | "false"
-```
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `source`            | *string*            | :heavy_check_mark:  | N/A                 |
+| `destination`       | *string*            | :heavy_check_mark:  | N/A                 |
+| `statusCode`        | *models.StatusCode* | :heavy_minus_sign:  | N/A                 |
+| `permanent`         | *boolean*           | :heavy_minus_sign:  | N/A                 |
+| `caseSensitive`     | *boolean*           | :heavy_minus_sign:  | N/A                 |
+| `query`             | *boolean*           | :heavy_minus_sign:  | N/A                 |

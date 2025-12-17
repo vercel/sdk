@@ -7,11 +7,21 @@ The payload of the event, if requested.
 ```typescript
 import { OneHundredAndThirtyTwo } from "@vercel/sdk/models/userevent.js";
 
-let value: OneHundredAndThirtyTwo = {};
+let value: OneHundredAndThirtyTwo = {
+  previous: {
+    enabled: true,
+    totpVerified: false,
+  },
+  next: {
+    enabled: false,
+    totpVerified: true,
+  },
+};
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `remoteCaching`                                                  | [models.PayloadRemoteCaching](../models/payloadremotecaching.md) | :heavy_minus_sign:                                               | Represents configuration for remote caching                      |
+| Field                                                  | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `previous`                                             | [models.PayloadPrevious](../models/payloadprevious.md) | :heavy_check_mark:                                     | N/A                                                    |
+| `next`                                                 | [models.PayloadNext](../models/payloadnext.md)         | :heavy_check_mark:                                     | N/A                                                    |

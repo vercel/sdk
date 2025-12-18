@@ -801,7 +801,6 @@ actions:
     update:
       x-speakeasy-enums:
         budget.reached: BudgetReached
-        budget.reset: BudgetReset
         domain.created: DomainCreated
         domain.dns.records.changed: DomainDnsRecordsChanged
         domain.transfer-in.started: DomainTransferInStarted
@@ -875,7 +874,6 @@ actions:
     update:
       x-speakeasy-enums:
         budget.reached: BudgetReached
-        budget.reset: BudgetReset
         domain.created: DomainCreated
         domain.dns.records.changed: DomainDnsRecordsChanged
         domain.transfer-in.started: DomainTransferInStarted
@@ -949,7 +947,6 @@ actions:
     update:
       x-speakeasy-enums:
         budget.reached: BudgetReached
-        budget.reset: BudgetReset
         domain.created: DomainCreated
         domain.dns.records.changed: DomainDnsRecordsChanged
         domain.transfer-in.started: DomainTransferInStarted
@@ -1023,7 +1020,6 @@ actions:
     update:
       x-speakeasy-enums:
         budget.reached: BudgetReached
-        budget.reset: BudgetReset
         domain.created: DomainCreated
         domain.dns.records.changed: DomainDnsRecordsChanged
         domain.transfer-in.started: DomainTransferInStarted
@@ -1097,7 +1093,6 @@ actions:
     update:
       x-speakeasy-enums:
         budget.reached: BudgetReached
-        budget.reset: BudgetReset
         domain.created: DomainCreated
         domain.dns.records.changed: DomainDnsRecordsChanged
         domain.transfer-in.started: DomainTransferInStarted

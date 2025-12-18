@@ -30,4 +30,11 @@ actions:
     remove: true
   # Property $id is not valid and breaks mintlify linting when it appears in response schemas
   - target: '$.paths..responses..schema.properties..["$id"]'
+    remove: true
+  # Remove additionalProperties with empty anyOf array in managedRules (invalid schema)
+  # "anyOf must be a non-empty array of schemas"
+  - target: '$.paths["/v1/security/firewall/config"].put.requestBody.content["application/json"].schema.properties.managedRules.additionalProperties'
+    remove: true
+  # Remove "optional" property which is not valid in OpenAPI (fields are optional by default unless in required array)
+  - target: '$..properties..[?(@.optional == true)].optional'
     remove: true      

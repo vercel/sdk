@@ -90,7 +90,7 @@ async function $do(
   const payload = parsed.value;
   const body = null;
 
-  const path = pathToFunc("/v1/v1/bulk-redirects")();
+  const path = pathToFunc("/v1/bulk-redirects")();
 
   const query = encodeFormQuery({
     "diff": payload.diff,

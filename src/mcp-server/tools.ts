@@ -4,7 +4,11 @@
 
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { RequestHandlerExtra } from "@modelcontextprotocol/sdk/shared/protocol.js";
-import { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
+import {
+  CallToolResult,
+  ServerNotification,
+  ServerRequest,
+} from "@modelcontextprotocol/sdk/types.js";
 import { objectOutputType, ZodRawShape, ZodTypeAny } from "zod/v3";
 import { VercelCore } from "../core.js";
 import { ConsoleLogger } from "./console-logger.js";
@@ -20,7 +24,7 @@ export type ToolDefinition<Args extends undefined | ZodRawShape = undefined> =
       tool: (
         client: VercelCore,
         args: objectOutputType<Args, ZodTypeAny>,
-        extra: RequestHandlerExtra,
+        extra: RequestHandlerExtra<ServerRequest, ServerNotification>,
       ) => CallToolResult | Promise<CallToolResult>;
     }
     : {
@@ -30,7 +34,7 @@ export type ToolDefinition<Args extends undefined | ZodRawShape = undefined> =
       args?: undefined;
       tool: (
         client: VercelCore,
-        extra: RequestHandlerExtra,
+        extra: RequestHandlerExtra<ServerRequest, ServerNotification>,
       ) => CallToolResult | Promise<CallToolResult>;
     };
 

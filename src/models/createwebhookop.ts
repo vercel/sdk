@@ -11,7 +11,6 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const Events = {
   BudgetReached: "budget.reached",
-  BudgetReset: "budget.reset",
   DomainCreated: "domain.created",
   DomainDnsRecordsChanged: "domain.dns.records.changed",
   DomainTransferInStarted: "domain.transfer-in.started",
@@ -120,7 +119,6 @@ export type CreateWebhookRequest = {
  */
 export const CreateWebhookEvents = {
   BudgetReached: "budget.reached",
-  BudgetReset: "budget.reset",
   DomainCreated: "domain.created",
   DomainDnsRecordsChanged: "domain.dns.records.changed",
   DomainTransferInStarted: "domain.transfer-in.started",

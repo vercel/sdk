@@ -12,7 +12,6 @@ type CreateWebhookEventRequest string
 
 const (
 	CreateWebhookEventRequestBudgetReached                                      CreateWebhookEventRequest = "budget.reached"
-	CreateWebhookEventRequestBudgetReset                                        CreateWebhookEventRequest = "budget.reset"
 	CreateWebhookEventRequestDomainCreated                                      CreateWebhookEventRequest = "domain.created"
 	CreateWebhookEventRequestDomainDnsRecordsChanged                            CreateWebhookEventRequest = "domain.dns.records.changed"
 	CreateWebhookEventRequestDomainTransferInStarted                            CreateWebhookEventRequest = "domain.transfer-in.started"
@@ -102,8 +101,6 @@ func (e *CreateWebhookEventRequest) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "budget.reached":
-		fallthrough
-	case "budget.reset":
 		fallthrough
 	case "domain.created":
 		fallthrough
@@ -326,7 +323,6 @@ type CreateWebhookEventResponse string
 
 const (
 	CreateWebhookEventResponseBudgetReached                                      CreateWebhookEventResponse = "budget.reached"
-	CreateWebhookEventResponseBudgetReset                                        CreateWebhookEventResponse = "budget.reset"
 	CreateWebhookEventResponseDomainCreated                                      CreateWebhookEventResponse = "domain.created"
 	CreateWebhookEventResponseDomainDnsRecordsChanged                            CreateWebhookEventResponse = "domain.dns.records.changed"
 	CreateWebhookEventResponseDomainTransferInStarted                            CreateWebhookEventResponse = "domain.transfer-in.started"
@@ -416,8 +412,6 @@ func (e *CreateWebhookEventResponse) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "budget.reached":
-		fallthrough
-	case "budget.reset":
 		fallthrough
 	case "domain.created":
 		fallthrough

@@ -42,7 +42,6 @@ type GetWebhookEvent string
 
 const (
 	GetWebhookEventBudgetReached                                      GetWebhookEvent = "budget.reached"
-	GetWebhookEventBudgetReset                                        GetWebhookEvent = "budget.reset"
 	GetWebhookEventDomainCreated                                      GetWebhookEvent = "domain.created"
 	GetWebhookEventDomainDnsRecordsChanged                            GetWebhookEvent = "domain.dns.records.changed"
 	GetWebhookEventDomainTransferInStarted                            GetWebhookEvent = "domain.transfer-in.started"
@@ -132,8 +131,6 @@ func (e *GetWebhookEvent) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "budget.reached":
-		fallthrough
-	case "budget.reset":
 		fallthrough
 	case "domain.created":
 		fallthrough

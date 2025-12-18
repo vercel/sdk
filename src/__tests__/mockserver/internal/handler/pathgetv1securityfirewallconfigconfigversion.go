@@ -8,6 +8,7 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/operations"
+	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
@@ -99,28 +100,15 @@ func testGetFirewallConfigGetFirewallConfig0(w http.ResponseWriter, req *http.Re
 			},
 		},
 		Rules: []operations.GetFirewallConfigRuleUnion{
-			operations.CreateGetFirewallConfigRuleUnionGetFirewallConfigRule2(
-				operations.GetFirewallConfigRule2{
-					ID:     "<id>",
-					Name:   "<value>",
-					Active: false,
-					ConditionGroup: []operations.GetFirewallConfigConditionGroup2{
-						operations.GetFirewallConfigConditionGroup2{
-							Conditions: []operations.GetFirewallConfigCondition2{
-								operations.GetFirewallConfigCondition2{
-									Type: operations.GetFirewallConfigType2Region,
-									Op:   operations.GetFirewallConfigOp2Lt,
-								},
-							},
-						},
-					},
-					Action: operations.GetFirewallConfigRuleAction2{},
-					Valid:  true,
-					ValidationErrors: []string{
-						"<value 1>",
-						"<value 2>",
-						"<value 3>",
-					},
+			operations.CreateGetFirewallConfigRuleUnionGetFirewallConfigRule1(
+				operations.GetFirewallConfigRule1{
+					ID:               "<id>",
+					Name:             "<value>",
+					Active:           false,
+					ConditionGroup:   []operations.GetFirewallConfigConditionGroup1{},
+					Action:           operations.GetFirewallConfigRuleAction1{},
+					Valid:            true,
+					ValidationErrors: types.String("<value>"),
 				},
 			),
 		},

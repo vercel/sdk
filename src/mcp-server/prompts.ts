@@ -4,7 +4,11 @@
 
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { RequestHandlerExtra } from "@modelcontextprotocol/sdk/shared/protocol.js";
-import { GetPromptResult } from "@modelcontextprotocol/sdk/types.js";
+import {
+  GetPromptResult,
+  ServerNotification,
+  ServerRequest,
+} from "@modelcontextprotocol/sdk/types.js";
 import {
   objectOutputType,
   ZodOptional,
@@ -33,7 +37,7 @@ export type PromptDefinition<
     prompt: (
       client: VercelCore,
       args: objectOutputType<Args, ZodTypeAny>,
-      extra: RequestHandlerExtra,
+      extra: RequestHandlerExtra<ServerRequest, ServerNotification>,
     ) => GetPromptResult | Promise<GetPromptResult>;
   }
   : {
@@ -43,7 +47,7 @@ export type PromptDefinition<
     args?: undefined;
     prompt: (
       client: VercelCore,
-      extra: RequestHandlerExtra,
+      extra: RequestHandlerExtra<ServerRequest, ServerNotification>,
     ) => GetPromptResult | Promise<GetPromptResult>;
   };
 

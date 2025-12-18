@@ -50,8 +50,8 @@ test("Edge Config Create Edge Config", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
-    createdAt: 827.44,
-    updatedAt: 8692.49,
+    createdAt: 6531.08,
+    updatedAt: 2532.91,
     id: "<id>",
     slug: "<value>",
     ownerId: "<id>",
@@ -77,8 +77,8 @@ test("Edge Config Get Edge Config", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
-    createdAt: 9685.26,
-    updatedAt: 3884.97,
+    createdAt: 4663.11,
+    updatedAt: 2444.25,
     id: "<id>",
     slug: "<value>",
     ownerId: "<id>",
@@ -107,8 +107,8 @@ test("Edge Config Update Edge Config", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
-    createdAt: 4064.3,
-    updatedAt: 1351.77,
+    createdAt: 1589.69,
+    updatedAt: 1103.75,
     id: "<id>",
     slug: "<value>",
     ownerId: "<id>",

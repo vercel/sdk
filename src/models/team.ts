@@ -219,11 +219,11 @@ export type SsoProtection = {
 };
 
 /**
- * Default deployment protection for this team
+ * Default deployment protection for this team null indicates protection is disabled
  */
 export type DefaultDeploymentProtection = {
-  passwordProtection?: PasswordProtection | undefined;
-  ssoProtection?: SsoProtection | undefined;
+  passwordProtection?: PasswordProtection | null | undefined;
+  ssoProtection?: SsoProtection | null | undefined;
 };
 
 /**
@@ -451,7 +451,7 @@ export type Team = {
    */
   remoteCaching?: RemoteCaching | undefined;
   /**
-   * Default deployment protection for this team
+   * Default deployment protection for this team null indicates protection is disabled
    */
   defaultDeploymentProtection?: DefaultDeploymentProtection | undefined;
   /**
@@ -1056,13 +1056,15 @@ export const DefaultDeploymentProtection$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  passwordProtection: z.lazy(() => PasswordProtection$inboundSchema).optional(),
-  ssoProtection: z.lazy(() => SsoProtection$inboundSchema).optional(),
+  passwordProtection: z.nullable(z.lazy(() => PasswordProtection$inboundSchema))
+    .optional(),
+  ssoProtection: z.nullable(z.lazy(() => SsoProtection$inboundSchema))
+    .optional(),
 });
 /** @internal */
 export type DefaultDeploymentProtection$Outbound = {
-  passwordProtection?: PasswordProtection$Outbound | undefined;
-  ssoProtection?: SsoProtection$Outbound | undefined;
+  passwordProtection?: PasswordProtection$Outbound | null | undefined;
+  ssoProtection?: SsoProtection$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -1071,9 +1073,11 @@ export const DefaultDeploymentProtection$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DefaultDeploymentProtection
 > = z.object({
-  passwordProtection: z.lazy(() => PasswordProtection$outboundSchema)
+  passwordProtection: z.nullable(
+    z.lazy(() => PasswordProtection$outboundSchema),
+  ).optional(),
+  ssoProtection: z.nullable(z.lazy(() => SsoProtection$outboundSchema))
     .optional(),
-  ssoProtection: z.lazy(() => SsoProtection$outboundSchema).optional(),
 });
 
 export function defaultDeploymentProtectionToJSON(

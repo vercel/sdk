@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyVersion } from "@vercel/sdk/models/getv1bulkredirectsop.js";
+import { ResponseBodyVersion } from "@vercel/sdk/models/getredirectsop.js";
 
 let value: ResponseBodyVersion = {
   id: "<id>",

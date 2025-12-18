@@ -7394,3 +7394,161 @@ workflows:
             type: simple
     x-speakeasy-test-group: teams
     x-speakeasy-test-rebuild: true
+  - workflowId: stageRedirects
+    steps:
+      - stepId: test
+        operationId: stageRedirects
+        parameters:
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"alias":"<value>","version":{"id":"<id>","key":"<key>","lastModified":1324.19,"createdBy":"<value>"}}
+            type: simple
+    x-speakeasy-test-group: bulk-redirects
+    x-speakeasy-test-rebuild: true
+  - workflowId: getRedirects
+    steps:
+      - stepId: test
+        operationId: getRedirects
+        parameters:
+          - name: projectId
+            in: query
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"key":"<value>","key1":"<value>","key2":"<value>"}
+            type: simple
+    x-speakeasy-test-group: bulk-redirects
+    x-speakeasy-test-rebuild: true
+  - workflowId: deleteRedirects
+    steps:
+      - stepId: test
+        operationId: deleteRedirects
+        parameters:
+          - name: projectId
+            in: query
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"alias":"<value>","version":{"id":"<id>","key":"<key>","lastModified":7020.06,"createdBy":"<value>"}}
+            type: simple
+    x-speakeasy-test-group: bulk-redirects
+    x-speakeasy-test-rebuild: true
+  - workflowId: editRedirect
+    steps:
+      - stepId: test
+        operationId: editRedirect
+        parameters:
+          - name: projectId
+            in: query
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"alias":"<value>","version":{"id":"<id>","key":"<key>","lastModified":5280.13,"createdBy":"<value>"}}
+            type: simple
+    x-speakeasy-test-group: bulk-redirects
+    x-speakeasy-test-rebuild: true
+  - workflowId: restoreRedirects
+    steps:
+      - stepId: test
+        operationId: restoreRedirects
+        parameters:
+          - name: projectId
+            in: query
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"version":{"id":"<id>","key":"<key>","lastModified":4904.99,"createdBy":"<value>"},"restored":["<value 1>","<value 2>","<value 3>"],"failedToRestore":["<value 1>","<value 2>"]}
+            type: simple
+    x-speakeasy-test-group: bulk-redirects
+    x-speakeasy-test-rebuild: true
+  - workflowId: getVersions
+    steps:
+      - stepId: test
+        operationId: getVersions
+        parameters:
+          - name: projectId
+            in: query
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"versions":[{"id":"<id>","key":"<key>","lastModified":209.01,"createdBy":"<value>"}]}
+            type: simple
+    x-speakeasy-test-group: bulk-redirects
+    x-speakeasy-test-rebuild: true
+  - workflowId: updateVersion
+    steps:
+      - stepId: test
+        operationId: updateVersion
+        parameters:
+          - name: projectId
+            in: query
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"version":{"id":"<id>","key":"<key>","lastModified":7506.95,"createdBy":"<value>"}}
+            type: simple
+    x-speakeasy-test-group: bulk-redirects
+    x-speakeasy-test-rebuild: true

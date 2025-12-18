@@ -5,7 +5,7 @@ The redirect object to edit. The source field is used to match the redirect to m
 ## Example Usage
 
 ```typescript
-import { Redirect } from "@vercel/sdk/models/patchv1bulkredirectsop.js";
+import { Redirect } from "@vercel/sdk/models/editredirectop.js";
 
 let value: Redirect = {
   source: "<value>",

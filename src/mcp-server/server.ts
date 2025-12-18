@@ -40,6 +40,13 @@ import { tool$authenticationCreateAuthToken } from "./tools/authenticationCreate
 import { tool$authenticationDeleteAuthToken } from "./tools/authenticationDeleteAuthToken.js";
 import { tool$authenticationGetAuthToken } from "./tools/authenticationGetAuthToken.js";
 import { tool$authenticationListAuthTokens } from "./tools/authenticationListAuthTokens.js";
+import { tool$bulkRedirectsDeleteRedirects } from "./tools/bulkRedirectsDeleteRedirects.js";
+import { tool$bulkRedirectsEditRedirect } from "./tools/bulkRedirectsEditRedirect.js";
+import { tool$bulkRedirectsGetRedirects } from "./tools/bulkRedirectsGetRedirects.js";
+import { tool$bulkRedirectsGetVersions } from "./tools/bulkRedirectsGetVersions.js";
+import { tool$bulkRedirectsRestoreRedirects } from "./tools/bulkRedirectsRestoreRedirects.js";
+import { tool$bulkRedirectsStageRedirects } from "./tools/bulkRedirectsStageRedirects.js";
+import { tool$bulkRedirectsUpdateVersion } from "./tools/bulkRedirectsUpdateVersion.js";
 import { tool$certsGetCertById } from "./tools/certsGetCertById.js";
 import { tool$certsIssueCert } from "./tools/certsIssueCert.js";
 import { tool$certsRemoveCert } from "./tools/certsRemoveCert.js";
@@ -50,7 +57,6 @@ import { tool$checksGetCheck } from "./tools/checksGetCheck.js";
 import { tool$checksRerequestCheck } from "./tools/checksRerequestCheck.js";
 import { tool$checksUpdateCheck } from "./tools/checksUpdateCheck.js";
 import { tool$connectUpdateStaticIps } from "./tools/connectUpdateStaticIps.js";
-import { tool$deleteV1BulkRedirects } from "./tools/deleteV1BulkRedirects.js";
 import { tool$deploymentsCancelDeployment } from "./tools/deploymentsCancelDeployment.js";
 import { tool$deploymentsCreateDeployment } from "./tools/deploymentsCreateDeployment.js";
 import { tool$deploymentsDeleteDeployment } from "./tools/deploymentsDeleteDeployment.js";
@@ -126,8 +132,6 @@ import { tool$environmentRemoveCustomEnvironment } from "./tools/environmentRemo
 import { tool$environmentUnlinkSharedEnvVariable } from "./tools/environmentUnlinkSharedEnvVariable.js";
 import { tool$environmentUpdateCustomEnvironment } from "./tools/environmentUpdateCustomEnvironment.js";
 import { tool$environmentUpdateSharedEnvVariable } from "./tools/environmentUpdateSharedEnvVariable.js";
-import { tool$getV1BulkRedirects } from "./tools/getV1BulkRedirects.js";
-import { tool$getV1BulkRedirectsVersions } from "./tools/getV1BulkRedirectsVersions.js";
 import { tool$integrationsConnectIntegrationResourceToProject } from "./tools/integrationsConnectIntegrationResourceToProject.js";
 import { tool$integrationsCreateIntegrationStoreDirect } from "./tools/integrationsCreateIntegrationStoreDirect.js";
 import { tool$integrationsDeleteConfiguration } from "./tools/integrationsDeleteConfiguration.js";
@@ -165,9 +169,6 @@ import { tool$marketplaceUpdateInvoice } from "./tools/marketplaceUpdateInvoice.
 import { tool$marketplaceUpdateResource } from "./tools/marketplaceUpdateResource.js";
 import { tool$marketplaceUpdateResourceSecrets } from "./tools/marketplaceUpdateResourceSecrets.js";
 import { tool$marketplaceUpdateResourceSecretsById } from "./tools/marketplaceUpdateResourceSecretsById.js";
-import { tool$patchV1BulkRedirects } from "./tools/patchV1BulkRedirects.js";
-import { tool$postV1BulkRedirectsRestore } from "./tools/postV1BulkRedirectsRestore.js";
-import { tool$postV1BulkRedirectsVersions } from "./tools/postV1BulkRedirectsVersions.js";
 import { tool$projectMembersAddProjectMember } from "./tools/projectMembersAddProjectMember.js";
 import { tool$projectMembersGetProjectMembers } from "./tools/projectMembersGetProjectMembers.js";
 import { tool$projectMembersRemoveProjectMember } from "./tools/projectMembersRemoveProjectMember.js";
@@ -199,7 +200,6 @@ import { tool$projectsUpdateProjectDomain } from "./tools/projectsUpdateProjectD
 import { tool$projectsUpdateProjectProtectionBypass } from "./tools/projectsUpdateProjectProtectionBypass.js";
 import { tool$projectsUploadProjectClientCert } from "./tools/projectsUploadProjectClientCert.js";
 import { tool$projectsVerifyProjectDomain } from "./tools/projectsVerifyProjectDomain.js";
-import { tool$putV1BulkRedirects } from "./tools/putV1BulkRedirects.js";
 import { tool$rollingReleaseApproveRollingReleaseStage } from "./tools/rollingReleaseApproveRollingReleaseStage.js";
 import { tool$rollingReleaseCompleteRollingRelease } from "./tools/rollingReleaseCompleteRollingRelease.js";
 import { tool$rollingReleaseDeleteRollingReleaseConfig } from "./tools/rollingReleaseDeleteRollingReleaseConfig.js";
@@ -248,7 +248,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.18.3",
+    version: "1.18.4",
   });
 
   const client = new VercelCore({
@@ -278,13 +278,6 @@ export function createMCPServer(deps: {
   const register = { tool, resource, resourceTemplate, prompt };
   void register; // suppress unused warnings
 
-  tool(tool$putV1BulkRedirects);
-  tool(tool$getV1BulkRedirects);
-  tool(tool$deleteV1BulkRedirects);
-  tool(tool$patchV1BulkRedirects);
-  tool(tool$postV1BulkRedirectsRestore);
-  tool(tool$getV1BulkRedirectsVersions);
-  tool(tool$postV1BulkRedirectsVersions);
   tool(tool$accessGroupsReadAccessGroup);
   tool(tool$accessGroupsUpdateAccessGroup);
   tool(tool$accessGroupsDeleteAccessGroup);
@@ -302,6 +295,13 @@ export function createMCPServer(deps: {
   tool(tool$artifactsDownloadArtifact);
   tool(tool$artifactsArtifactExists);
   tool(tool$artifactsArtifactQuery);
+  tool(tool$bulkRedirectsStageRedirects);
+  tool(tool$bulkRedirectsGetRedirects);
+  tool(tool$bulkRedirectsDeleteRedirects);
+  tool(tool$bulkRedirectsEditRedirect);
+  tool(tool$bulkRedirectsRestoreRedirects);
+  tool(tool$bulkRedirectsGetVersions);
+  tool(tool$bulkRedirectsUpdateVersion);
   tool(tool$checksCreateCheck);
   tool(tool$checksGetAllChecks);
   tool(tool$checksGetCheck);

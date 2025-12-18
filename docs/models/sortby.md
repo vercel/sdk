@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { SortBy } from "@vercel/sdk/models/getv1bulkredirectsop.js";
+import { SortBy } from "@vercel/sdk/models/getredirectsop.js";
 
 let value: SortBy = "statusCode";
 ```

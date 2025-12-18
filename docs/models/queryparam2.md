@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { QueryParam2 } from "@vercel/sdk/models/getv1bulkredirectsop.js";
+import { QueryParam2 } from "@vercel/sdk/models/getredirectsop.js";
 
 let value: QueryParam2 = "only";
 ```

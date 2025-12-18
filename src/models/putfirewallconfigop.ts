@@ -9,6 +9,8 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
+export type ManagedRules = {};
+
 export const PutFirewallConfigAction = {
   Deny: "deny",
   Log: "log",
@@ -391,7 +393,7 @@ export type Ips = {
 
 export type PutFirewallConfigRequestBody = {
   firewallEnabled: boolean;
-  managedRules?: { [k: string]: any } | undefined;
+  managedRules?: ManagedRules | undefined;
   /**
    * Custom Ruleset
    */
@@ -1055,6 +1057,35 @@ export type Active = {
 export type PutFirewallConfigResponseBody = {
   active: Active;
 };
+
+/** @internal */
+export const ManagedRules$inboundSchema: z.ZodType<
+  ManagedRules,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+/** @internal */
+export type ManagedRules$Outbound = {};
+
+/** @internal */
+export const ManagedRules$outboundSchema: z.ZodType<
+  ManagedRules$Outbound,
+  z.ZodTypeDef,
+  ManagedRules
+> = z.object({});
+
+export function managedRulesToJSON(managedRules: ManagedRules): string {
+  return JSON.stringify(ManagedRules$outboundSchema.parse(managedRules));
+}
+export function managedRulesFromJSON(
+  jsonString: string,
+): SafeParseResult<ManagedRules, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ManagedRules$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ManagedRules' from JSON`,
+  );
+}
 
 /** @internal */
 export const PutFirewallConfigAction$inboundSchema: z.ZodNativeEnum<
@@ -2176,7 +2207,7 @@ export const PutFirewallConfigRequestBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   firewallEnabled: z.boolean(),
-  managedRules: z.record(z.any()).optional(),
+  managedRules: z.lazy(() => ManagedRules$inboundSchema).optional(),
   crs: z.lazy(() => Crs$inboundSchema).optional(),
   rules: z.array(z.lazy(() => PutFirewallConfigRules$inboundSchema)).optional(),
   ips: z.array(z.lazy(() => Ips$inboundSchema)).optional(),
@@ -2185,7 +2216,7 @@ export const PutFirewallConfigRequestBody$inboundSchema: z.ZodType<
 /** @internal */
 export type PutFirewallConfigRequestBody$Outbound = {
   firewallEnabled: boolean;
-  managedRules?: { [k: string]: any } | undefined;
+  managedRules?: ManagedRules$Outbound | undefined;
   crs?: Crs$Outbound | undefined;
   rules?: Array<PutFirewallConfigRules$Outbound> | undefined;
   ips?: Array<Ips$Outbound> | undefined;
@@ -2199,7 +2230,7 @@ export const PutFirewallConfigRequestBody$outboundSchema: z.ZodType<
   PutFirewallConfigRequestBody
 > = z.object({
   firewallEnabled: z.boolean(),
-  managedRules: z.record(z.any()).optional(),
+  managedRules: z.lazy(() => ManagedRules$outboundSchema).optional(),
   crs: z.lazy(() => Crs$outboundSchema).optional(),
   rules: z.array(z.lazy(() => PutFirewallConfigRules$outboundSchema))
     .optional(),

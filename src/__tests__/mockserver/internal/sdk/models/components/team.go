@@ -739,7 +739,7 @@ func (o *TeamSsoProtection) GetDeploymentType() string {
 	return o.DeploymentType
 }
 
-// DefaultDeploymentProtection - Default deployment protection for this team
+// DefaultDeploymentProtection - Default deployment protection for this team null indicates protection is disabled
 type DefaultDeploymentProtection struct {
 	PasswordProtection *TeamPasswordProtection `json:"passwordProtection,omitempty"`
 	SsoProtection      *TeamSsoProtection      `json:"ssoProtection,omitempty"`
@@ -1473,7 +1473,7 @@ type Team struct {
 	DisableHardAutoBlocks *DisableHardAutoBlocks `json:"disableHardAutoBlocks,omitempty"`
 	// Is remote caching enabled for this team
 	RemoteCaching *TeamRemoteCaching `json:"remoteCaching,omitempty"`
-	// Default deployment protection for this team
+	// Default deployment protection for this team null indicates protection is disabled
 	DefaultDeploymentProtection *DefaultDeploymentProtection `json:"defaultDeploymentProtection,omitempty"`
 	// Default deployment expiration settings for this team
 	DefaultExpirationSettings *DefaultExpirationSettings `json:"defaultExpirationSettings,omitempty"`

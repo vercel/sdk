@@ -90,7 +90,7 @@ async function $do(
   const payload = parsed.value;
   const body = null;
 
-  const path = pathToFunc("/v1/v1/bulk-redirects/versions")();
+  const path = pathToFunc("/v1/bulk-redirects/versions")();
 
   const query = encodeFormQuery({
     "projectId": payload.projectId,

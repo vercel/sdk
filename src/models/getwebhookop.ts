@@ -25,7 +25,6 @@ export type GetWebhookRequest = {
  */
 export const GetWebhookEvents = {
   BudgetReached: "budget.reached",
-  BudgetReset: "budget.reset",
   DomainCreated: "domain.created",
   DomainDnsRecordsChanged: "domain.dns.records.changed",
   DomainTransferInStarted: "domain.transfer-in.started",

@@ -18,7 +18,7 @@ Stages new redirects for a project and returns the new version.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="stageRedirects" method="put" path="/v1/v1/bulk-redirects" -->
+<!-- UsageSnippet language="typescript" operationID="stageRedirects" method="put" path="/v1/bulk-redirects" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -93,7 +93,7 @@ Get the version history for a project's bulk redirects
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="getRedirects" method="get" path="/v1/v1/bulk-redirects" -->
+<!-- UsageSnippet language="typescript" operationID="getRedirects" method="get" path="/v1/bulk-redirects" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -170,7 +170,7 @@ Deletes the provided redirects from the latest version of the projects' bulk red
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="deleteRedirects" method="delete" path="/v1/v1/bulk-redirects" -->
+<!-- UsageSnippet language="typescript" operationID="deleteRedirects" method="delete" path="/v1/bulk-redirects" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -247,7 +247,7 @@ Edits a single redirect identified by its source path. Stages a new change with 
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="editRedirect" method="patch" path="/v1/v1/bulk-redirects" -->
+<!-- UsageSnippet language="typescript" operationID="editRedirect" method="patch" path="/v1/bulk-redirects" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -324,7 +324,7 @@ Restores the provided redirects in the staging version to the value in the produ
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="restoreRedirects" method="post" path="/v1/v1/bulk-redirects/restore" -->
+<!-- UsageSnippet language="typescript" operationID="restoreRedirects" method="post" path="/v1/bulk-redirects/restore" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -401,7 +401,7 @@ Get the version history for a project's bulk redirects
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="getVersions" method="get" path="/v1/v1/bulk-redirects/versions" -->
+<!-- UsageSnippet language="typescript" operationID="getVersions" method="get" path="/v1/bulk-redirects/versions" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -478,7 +478,7 @@ Update a version by promoting staging to production or restoring a previous prod
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="updateVersion" method="post" path="/v1/v1/bulk-redirects/versions" -->
+<!-- UsageSnippet language="typescript" operationID="updateVersion" method="post" path="/v1/bulk-redirects/versions" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 

@@ -25,7 +25,6 @@ export type GetWebhooksRequest = {
  */
 export const GetWebhooksResponseBodyEvents = {
   BudgetReached: "budget.reached",
-  BudgetReset: "budget.reset",
   DomainCreated: "domain.created",
   DomainDnsRecordsChanged: "domain.dns.records.changed",
   DomainTransferInStarted: "domain.transfer-in.started",
@@ -222,7 +221,6 @@ export type GetWebhooksResponseBodyProjectsMetadata = {
  */
 export const ResponseBodyEvents = {
   BudgetReached: "budget.reached",
-  BudgetReset: "budget.reset",
   DomainCreated: "domain.created",
   DomainDnsRecordsChanged: "domain.dns.records.changed",
   DomainTransferInStarted: "domain.transfer-in.started",

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { SortOrder } from "@vercel/sdk/models/getv1bulkredirectsop.js";
+import { SortOrder } from "@vercel/sdk/models/getredirectsop.js";
 
 let value: SortOrder = "desc";
 ```

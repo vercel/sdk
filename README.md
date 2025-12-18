@@ -195,7 +195,11 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.putV1BulkRedirects();
+  const result = await vercel.accessGroups.readAccessGroup({
+    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
 
   console.log(result);
 }
@@ -281,16 +285,6 @@ run();
 <details open>
 <summary>Available methods</summary>
 
-### [Vercel SDK](docs/sdks/vercel/README.md)
-
-* [putV1BulkRedirects](docs/sdks/vercel/README.md#putv1bulkredirects)
-* [getV1BulkRedirects](docs/sdks/vercel/README.md#getv1bulkredirects) - Get the version history for a project's bulk redirects
-* [deleteV1BulkRedirects](docs/sdks/vercel/README.md#deletev1bulkredirects) - Deletes the provided redirects from the latest version of the projects' bulk redirects. Stages a new change with the new redirects and returns the alias for the new version in the response.
-* [patchV1BulkRedirects](docs/sdks/vercel/README.md#patchv1bulkredirects) - Edits a single redirect identified by its source path. Stages a new change with the modified redirect and returns the alias for the new version in the response.
-* [postV1BulkRedirectsRestore](docs/sdks/vercel/README.md#postv1bulkredirectsrestore) - Restores the provided redirects in the staging version to the value in the production version. If no production version exists, removes the redirects from staging.
-* [getV1BulkRedirectsVersions](docs/sdks/vercel/README.md#getv1bulkredirectsversions) - Get the version history for a project's bulk redirects
-* [postV1BulkRedirectsVersions](docs/sdks/vercel/README.md#postv1bulkredirectsversions) - Update a version by promoting staging to production or restoring a previous production version
-
 ### [AccessGroups](docs/sdks/accessgroups/README.md)
 
 * [readAccessGroup](docs/sdks/accessgroups/README.md#readaccessgroup) - Reads an access group
@@ -330,6 +324,16 @@ run();
 * [createAuthToken](docs/sdks/authentication/README.md#createauthtoken) - Create an Auth Token
 * [getAuthToken](docs/sdks/authentication/README.md#getauthtoken) - Get Auth Token Metadata
 * [deleteAuthToken](docs/sdks/authentication/README.md#deleteauthtoken) - Delete an authentication token
+
+### [BulkRedirects](docs/sdks/bulkredirects/README.md)
+
+* [stageRedirects](docs/sdks/bulkredirects/README.md#stageredirects) - Stages new redirects for a project.
+* [getRedirects](docs/sdks/bulkredirects/README.md#getredirects) - Gets project-level redirects.
+* [deleteRedirects](docs/sdks/bulkredirects/README.md#deleteredirects) - Delete project-level redirects.
+* [editRedirect](docs/sdks/bulkredirects/README.md#editredirect) - Edit a project-level redirect.
+* [restoreRedirects](docs/sdks/bulkredirects/README.md#restoreredirects) - Restore staged project-level redirects to their production version.
+* [getVersions](docs/sdks/bulkredirects/README.md#getversions) - Get the version history for a project's redirects.
+* [updateVersion](docs/sdks/bulkredirects/README.md#updateversion) - Promote a staging version to production or restore a previous production version.
 
 ### [Certs](docs/sdks/certs/README.md)
 
@@ -637,6 +641,13 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`authenticationDeleteAuthToken`](docs/sdks/authentication/README.md#deleteauthtoken) - Delete an authentication token
 - [`authenticationGetAuthToken`](docs/sdks/authentication/README.md#getauthtoken) - Get Auth Token Metadata
 - [`authenticationListAuthTokens`](docs/sdks/authentication/README.md#listauthtokens) - List Auth Tokens
+- [`bulkRedirectsDeleteRedirects`](docs/sdks/bulkredirects/README.md#deleteredirects) - Delete project-level redirects.
+- [`bulkRedirectsEditRedirect`](docs/sdks/bulkredirects/README.md#editredirect) - Edit a project-level redirect.
+- [`bulkRedirectsGetRedirects`](docs/sdks/bulkredirects/README.md#getredirects) - Gets project-level redirects.
+- [`bulkRedirectsGetVersions`](docs/sdks/bulkredirects/README.md#getversions) - Get the version history for a project's redirects.
+- [`bulkRedirectsRestoreRedirects`](docs/sdks/bulkredirects/README.md#restoreredirects) - Restore staged project-level redirects to their production version.
+- [`bulkRedirectsStageRedirects`](docs/sdks/bulkredirects/README.md#stageredirects) - Stages new redirects for a project.
+- [`bulkRedirectsUpdateVersion`](docs/sdks/bulkredirects/README.md#updateversion) - Promote a staging version to production or restore a previous production version.
 - [`certsGetCertById`](docs/sdks/certs/README.md#getcertbyid) - Get cert by id
 - [`certsIssueCert`](docs/sdks/certs/README.md#issuecert) - Issue a new cert
 - [`certsRemoveCert`](docs/sdks/certs/README.md#removecert) - Remove cert
@@ -648,7 +659,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`checksUpdateCheck`](docs/sdks/checks/README.md#updatecheck) - Update a check
 - [`connectUpdateStaticIps`](docs/sdks/connect/README.md#updatestaticips) - Configures Static IPs for a project
 - [`connectUpdateStaticIps`](docs/sdks/staticips/README.md#updatestaticips) - Configures Static IPs for a project
-- [`deleteV1BulkRedirects`](docs/sdks/vercel/README.md#deletev1bulkredirects) - Deletes the provided redirects from the latest version of the projects' bulk redirects. Stages a new change with the new redirects and returns the alias for the new version in the response.
 - [`deploymentsCancelDeployment`](docs/sdks/deployments/README.md#canceldeployment) - Cancel a deployment
 - [`deploymentsCreateDeployment`](docs/sdks/deployments/README.md#createdeployment) - Create a new deployment
 - [`deploymentsDeleteDeployment`](docs/sdks/deployments/README.md#deletedeployment) - Delete a Deployment
@@ -725,8 +735,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`environmentUnlinkSharedEnvVariable`](docs/sdks/environment/README.md#unlinksharedenvvariable) - Disconnects a shared environment variable for a given project
 - [`environmentUpdateCustomEnvironment`](docs/sdks/environment/README.md#updatecustomenvironment) - Update a custom environment
 - [`environmentUpdateSharedEnvVariable`](docs/sdks/environment/README.md#updatesharedenvvariable) - Updates one or more shared environment variables
-- [`getV1BulkRedirects`](docs/sdks/vercel/README.md#getv1bulkredirects) - Get the version history for a project's bulk redirects
-- [`getV1BulkRedirectsVersions`](docs/sdks/vercel/README.md#getv1bulkredirectsversions) - Get the version history for a project's bulk redirects
 - [`integrationsConnectIntegrationResourceToProject`](docs/sdks/integrations/README.md#connectintegrationresourcetoproject) - Connect integration resource to project
 - [`integrationsCreateIntegrationStoreDirect`](docs/sdks/integrations/README.md#createintegrationstoredirect) - Create integration store (free and paid plans)
 - [`integrationsDeleteConfiguration`](docs/sdks/integrations/README.md#deleteconfiguration) - Delete an integration configuration
@@ -765,9 +773,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`marketplaceUpdateResource`](docs/sdks/marketplace/README.md#updateresource) - Update Resource
 - [`marketplaceUpdateResourceSecrets`](docs/sdks/marketplace/README.md#updateresourcesecrets) - Update Resource Secrets (Deprecated)
 - [`marketplaceUpdateResourceSecretsById`](docs/sdks/marketplace/README.md#updateresourcesecretsbyid) - Update Resource Secrets
-- [`patchV1BulkRedirects`](docs/sdks/vercel/README.md#patchv1bulkredirects) - Edits a single redirect identified by its source path. Stages a new change with the modified redirect and returns the alias for the new version in the response.
-- [`postV1BulkRedirectsRestore`](docs/sdks/vercel/README.md#postv1bulkredirectsrestore) - Restores the provided redirects in the staging version to the value in the production version. If no production version exists, removes the redirects from staging.
-- [`postV1BulkRedirectsVersions`](docs/sdks/vercel/README.md#postv1bulkredirectsversions) - Update a version by promoting staging to production or restoring a previous production version
 - [`projectMembersAddProjectMember`](docs/sdks/projectmembers/README.md#addprojectmember) - Adds a new member to a project.
 - [`projectMembersGetProjectMembers`](docs/sdks/projectmembers/README.md#getprojectmembers) - List project members
 - [`projectMembersRemoveProjectMember`](docs/sdks/projectmembers/README.md#removeprojectmember) - Remove a Project Member
@@ -799,7 +804,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`projectsUpdateProjectProtectionBypass`](docs/sdks/projects/README.md#updateprojectprotectionbypass) - Update Protection Bypass for Automation
 - [`projectsUploadProjectClientCert`](docs/sdks/projects/README.md#uploadprojectclientcert) - Upload client certificate for egress mTLS
 - [`projectsVerifyProjectDomain`](docs/sdks/projects/README.md#verifyprojectdomain) - Verify project domain
-- [`putV1BulkRedirects`](docs/sdks/vercel/README.md#putv1bulkredirects)
 - [`rollingReleaseApproveRollingReleaseStage`](docs/sdks/rollingrelease/README.md#approverollingreleasestage) - Update the active rolling release to the next stage for a project
 - [`rollingReleaseCompleteRollingRelease`](docs/sdks/rollingrelease/README.md#completerollingrelease) - Complete the rolling release for the project
 - [`rollingReleaseDeleteRollingReleaseConfig`](docs/sdks/rollingrelease/README.md#deleterollingreleaseconfig) - Delete rolling release configuration
@@ -893,10 +897,16 @@ To change the default retry strategy for a single API call, simply provide a ret
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
-const vercel = new Vercel();
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
 async function run() {
-  const result = await vercel.putV1BulkRedirects({
+  const result = await vercel.accessGroups.readAccessGroup({
+    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  }, {
     retries: {
       strategy: "backoff",
       backoff: {
@@ -931,10 +941,15 @@ const vercel = new Vercel({
     },
     retryConnectionErrors: false,
   },
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await vercel.putV1BulkRedirects();
+  const result = await vercel.accessGroups.readAccessGroup({
+    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
 
   console.log(result);
 }
@@ -1055,10 +1070,15 @@ import { Vercel } from "@vercel/sdk";
 
 const vercel = new Vercel({
   serverURL: "https://api.vercel.com",
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await vercel.putV1BulkRedirects();
+  const result = await vercel.accessGroups.readAccessGroup({
+    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
 
   console.log(result);
 }

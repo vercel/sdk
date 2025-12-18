@@ -617,7 +617,7 @@ export type Owasp = {
   username?: string | undefined;
 };
 
-export type ManagedRules = {
+export type GetFirewallConfigManagedRules = {
   botProtection?: BotProtection | undefined;
   aiBots?: AiBots | undefined;
   owasp?: Owasp | undefined;
@@ -640,7 +640,7 @@ export type GetFirewallConfigResponseBody = {
   rules: Array<Rules1 | Rules2>;
   ips: Array<GetFirewallConfigIps>;
   changes: Array<Changes>;
-  managedRules?: ManagedRules | undefined;
+  managedRules?: GetFirewallConfigManagedRules | undefined;
   botIdEnabled?: boolean | undefined;
 };
 
@@ -2520,8 +2520,8 @@ export function owaspFromJSON(
 }
 
 /** @internal */
-export const ManagedRules$inboundSchema: z.ZodType<
-  ManagedRules,
+export const GetFirewallConfigManagedRules$inboundSchema: z.ZodType<
+  GetFirewallConfigManagedRules,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2535,17 +2535,17 @@ export const ManagedRules$inboundSchema: z.ZodType<
   });
 });
 /** @internal */
-export type ManagedRules$Outbound = {
+export type GetFirewallConfigManagedRules$Outbound = {
   bot_protection?: BotProtection$Outbound | undefined;
   ai_bots?: AiBots$Outbound | undefined;
   owasp?: Owasp$Outbound | undefined;
 };
 
 /** @internal */
-export const ManagedRules$outboundSchema: z.ZodType<
-  ManagedRules$Outbound,
+export const GetFirewallConfigManagedRules$outboundSchema: z.ZodType<
+  GetFirewallConfigManagedRules$Outbound,
   z.ZodTypeDef,
-  ManagedRules
+  GetFirewallConfigManagedRules
 > = z.object({
   botProtection: z.lazy(() => BotProtection$outboundSchema).optional(),
   aiBots: z.lazy(() => AiBots$outboundSchema).optional(),
@@ -2557,16 +2557,22 @@ export const ManagedRules$outboundSchema: z.ZodType<
   });
 });
 
-export function managedRulesToJSON(managedRules: ManagedRules): string {
-  return JSON.stringify(ManagedRules$outboundSchema.parse(managedRules));
+export function getFirewallConfigManagedRulesToJSON(
+  getFirewallConfigManagedRules: GetFirewallConfigManagedRules,
+): string {
+  return JSON.stringify(
+    GetFirewallConfigManagedRules$outboundSchema.parse(
+      getFirewallConfigManagedRules,
+    ),
+  );
 }
-export function managedRulesFromJSON(
+export function getFirewallConfigManagedRulesFromJSON(
   jsonString: string,
-): SafeParseResult<ManagedRules, SDKValidationError> {
+): SafeParseResult<GetFirewallConfigManagedRules, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ManagedRules$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ManagedRules' from JSON`,
+    (x) => GetFirewallConfigManagedRules$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetFirewallConfigManagedRules' from JSON`,
   );
 }
 
@@ -2591,7 +2597,8 @@ export const GetFirewallConfigResponseBody$inboundSchema: z.ZodType<
   ),
   ips: z.array(z.lazy(() => GetFirewallConfigIps$inboundSchema)),
   changes: z.array(z.lazy(() => Changes$inboundSchema)),
-  managedRules: z.lazy(() => ManagedRules$inboundSchema).optional(),
+  managedRules: z.lazy(() => GetFirewallConfigManagedRules$inboundSchema)
+    .optional(),
   botIdEnabled: z.boolean().optional(),
 });
 /** @internal */
@@ -2606,7 +2613,7 @@ export type GetFirewallConfigResponseBody$Outbound = {
   rules: Array<Rules1$Outbound | Rules2$Outbound>;
   ips: Array<GetFirewallConfigIps$Outbound>;
   changes: Array<Changes$Outbound>;
-  managedRules?: ManagedRules$Outbound | undefined;
+  managedRules?: GetFirewallConfigManagedRules$Outbound | undefined;
   botIdEnabled?: boolean | undefined;
 };
 
@@ -2631,7 +2638,8 @@ export const GetFirewallConfigResponseBody$outboundSchema: z.ZodType<
   ),
   ips: z.array(z.lazy(() => GetFirewallConfigIps$outboundSchema)),
   changes: z.array(z.lazy(() => Changes$outboundSchema)),
-  managedRules: z.lazy(() => ManagedRules$outboundSchema).optional(),
+  managedRules: z.lazy(() => GetFirewallConfigManagedRules$outboundSchema)
+    .optional(),
   botIdEnabled: z.boolean().optional(),
 });
 

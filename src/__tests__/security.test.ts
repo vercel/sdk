@@ -106,14 +106,19 @@ test("Security Put Firewall Config", async () => {
         {
           id: "<id>",
           name: "<value>",
-          active: true,
+          active: false,
           conditionGroup: [
             {
-              conditions: [],
+              conditions: [
+                {
+                  type: "region",
+                  op: "lt",
+                },
+              ],
             },
           ],
           action: {},
-          valid: false,
+          valid: true,
           validationErrors: [
             "<value 1>",
             "<value 2>",
@@ -128,15 +133,19 @@ test("Security Put Firewall Config", async () => {
             {
               conditions: [
                 {
-                  type: "bot_name",
-                  op: "re",
+                  type: "region",
+                  op: "lt",
                 },
               ],
             },
           ],
           action: {},
           valid: true,
-          validationErrors: null,
+          validationErrors: [
+            "<value 1>",
+            "<value 2>",
+            "<value 3>",
+          ],
         },
       ],
       ips: [],
@@ -247,15 +256,15 @@ test("Security Get Firewall Config", async () => {
           {
             conditions: [
               {
-                type: "ja4_digest",
-                op: "sub",
+                type: "bot_name",
+                op: "re",
               },
             ],
           },
         ],
         action: {},
-        valid: false,
-        validationErrors: [],
+        valid: true,
+        validationErrors: null,
       },
     ],
     ips: [
@@ -307,10 +316,10 @@ test("Security Get Bypass Ip", async () => {
       {
         ownerId: "<id>",
         id: "<id>",
-        domain: "corrupt-unblinking.name",
-        ip: "67.198.116.145",
-        createdAt: "1704746155127",
-        updatedAt: "1735656563089",
+        domain: "spanish-sunbeam.org",
+        ip: "ab2e:3eb9:5bac:0ddd:ef79:f1ee:4268:c9f2",
+        createdAt: "1710740737171",
+        updatedAt: "1735617136981",
         updatedAtHour: "<value>",
       },
     ],

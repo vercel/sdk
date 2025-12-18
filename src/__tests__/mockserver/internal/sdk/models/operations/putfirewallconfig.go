@@ -10,6 +10,9 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+type ManagedRulesRequest struct {
+}
+
 type SdActionRequest string
 
 const (
@@ -1546,8 +1549,8 @@ func (o *IPRequest) GetAction() IPActionRequest {
 }
 
 type PutFirewallConfigRequestBody struct {
-	FirewallEnabled bool           `json:"firewallEnabled"`
-	ManagedRules    map[string]any `json:"managedRules,omitempty"`
+	FirewallEnabled bool                 `json:"firewallEnabled"`
+	ManagedRules    *ManagedRulesRequest `json:"managedRules,omitempty"`
 	// Custom Ruleset
 	Crs          *CrsRequest   `json:"crs,omitempty"`
 	Rules        []RuleRequest `json:"rules,omitempty"`
@@ -1562,7 +1565,7 @@ func (o *PutFirewallConfigRequestBody) GetFirewallEnabled() bool {
 	return o.FirewallEnabled
 }
 
-func (o *PutFirewallConfigRequestBody) GetManagedRules() map[string]any {
+func (o *PutFirewallConfigRequestBody) GetManagedRules() *ManagedRulesRequest {
 	if o == nil {
 		return nil
 	}
@@ -3910,27 +3913,27 @@ func (o *PutFirewallConfigOwasp) GetUsername() *string {
 	return o.Username
 }
 
-type PutFirewallConfigManagedRules struct {
+type ActiveManagedRules struct {
 	BotProtection *PutFirewallConfigBotProtection `json:"bot_protection,omitempty"`
 	AiBots        *PutFirewallConfigAiBots        `json:"ai_bots,omitempty"`
 	Owasp         *PutFirewallConfigOwasp         `json:"owasp,omitempty"`
 }
 
-func (o *PutFirewallConfigManagedRules) GetBotProtection() *PutFirewallConfigBotProtection {
+func (o *ActiveManagedRules) GetBotProtection() *PutFirewallConfigBotProtection {
 	if o == nil {
 		return nil
 	}
 	return o.BotProtection
 }
 
-func (o *PutFirewallConfigManagedRules) GetAiBots() *PutFirewallConfigAiBots {
+func (o *ActiveManagedRules) GetAiBots() *PutFirewallConfigAiBots {
 	if o == nil {
 		return nil
 	}
 	return o.AiBots
 }
 
-func (o *PutFirewallConfigManagedRules) GetOwasp() *PutFirewallConfigOwasp {
+func (o *ActiveManagedRules) GetOwasp() *PutFirewallConfigOwasp {
 	if o == nil {
 		return nil
 	}
@@ -3945,12 +3948,12 @@ type Active struct {
 	UpdatedAt       string  `json:"updatedAt"`
 	FirewallEnabled bool    `json:"firewallEnabled"`
 	// Custom Ruleset
-	Crs          ActiveCrs                      `json:"crs"`
-	Rules        []ActiveRuleUnion              `json:"rules"`
-	Ips          []ActiveIP                     `json:"ips"`
-	Changes      []PutFirewallConfigChange      `json:"changes"`
-	ManagedRules *PutFirewallConfigManagedRules `json:"managedRules,omitempty"`
-	BotIDEnabled *bool                          `json:"botIdEnabled,omitempty"`
+	Crs          ActiveCrs                 `json:"crs"`
+	Rules        []ActiveRuleUnion         `json:"rules"`
+	Ips          []ActiveIP                `json:"ips"`
+	Changes      []PutFirewallConfigChange `json:"changes"`
+	ManagedRules *ActiveManagedRules       `json:"managedRules,omitempty"`
+	BotIDEnabled *bool                     `json:"botIdEnabled,omitempty"`
 }
 
 func (o *Active) GetOwnerID() string {
@@ -4023,7 +4026,7 @@ func (o *Active) GetChanges() []PutFirewallConfigChange {
 	return o.Changes
 }
 
-func (o *Active) GetManagedRules() *PutFirewallConfigManagedRules {
+func (o *Active) GetManagedRules() *ActiveManagedRules {
 	if o == nil {
 		return nil
 	}

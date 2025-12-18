@@ -1,6 +1,6 @@
 # DefaultDeploymentProtection
 
-Default deployment protection for this team
+Default deployment protection for this team null indicates protection is disabled
 
 ## Example Usage
 

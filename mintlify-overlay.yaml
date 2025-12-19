@@ -37,4 +37,7 @@ actions:
     remove: true
   # Remove "optional" property which is not valid in OpenAPI (fields are optional by default unless in required array)
   - target: '$..properties..[?(@.optional == true)].optional'
-    remove: true      
+    remove: true
+  # Make managedRules properties (bot_filter, ai_bots, owasp) optional - API doesn't always return all fields
+  - target: '$..properties.security.properties.managedRules.required'
+    remove: true

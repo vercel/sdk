@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { ClosedEnum } from "../types/enums.js";
+import * as types from "../types/primitives.js";
 import { VercelError } from "./vercelerror.js";
 
 export const DomainTooShortCode = {
@@ -59,9 +60,9 @@ export const DomainTooShort$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  status: z.number(),
+  status: types.number(),
   code: DomainTooShortCode$inboundSchema,
-  message: z.string(),
+  message: types.string(),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),

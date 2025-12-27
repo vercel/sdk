@@ -6,6 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import {
   Pagination,
   Pagination$inboundSchema,
@@ -133,12 +135,12 @@ export const GetRecordsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  domain: z.string(),
-  limit: z.string().optional(),
-  since: z.string().optional(),
-  until: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  domain: types.string(),
+  limit: types.optional(types.string()),
+  since: types.optional(types.string()),
+  until: types.optional(types.string()),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type GetRecordsRequest$Outbound = {
@@ -196,20 +198,20 @@ export const ResponseBodyRecords$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  slug: z.string(),
-  name: z.string(),
+  id: types.string(),
+  slug: types.string(),
+  name: types.string(),
   type: GetRecordsResponseBodyDnsType$inboundSchema,
-  value: z.string(),
-  mxPriority: z.number().optional(),
-  priority: z.number().optional(),
-  creator: z.string(),
-  created: z.nullable(z.number()),
-  updated: z.nullable(z.number()),
-  createdAt: z.nullable(z.number()),
-  updatedAt: z.nullable(z.number()),
-  ttl: z.number().optional(),
-  comment: z.string().optional(),
+  value: types.string(),
+  mxPriority: types.optional(types.number()),
+  priority: types.optional(types.number()),
+  creator: types.string(),
+  created: types.nullable(types.number()),
+  updated: types.nullable(types.number()),
+  createdAt: types.nullable(types.number()),
+  updatedAt: types.nullable(types.number()),
+  ttl: types.optional(types.number()),
+  comment: types.optional(types.string()),
 });
 /** @internal */
 export type ResponseBodyRecords$Outbound = {
@@ -318,20 +320,20 @@ export const GetRecordsResponseBodyType$outboundSchema: z.ZodNativeEnum<
 /** @internal */
 export const Records$inboundSchema: z.ZodType<Records, z.ZodTypeDef, unknown> =
   z.object({
-    id: z.string(),
-    slug: z.string(),
-    name: z.string(),
+    id: types.string(),
+    slug: types.string(),
+    name: types.string(),
     type: GetRecordsResponseBodyType$inboundSchema,
-    value: z.string(),
-    mxPriority: z.number().optional(),
-    priority: z.number().optional(),
-    creator: z.string(),
-    created: z.nullable(z.number()),
-    updated: z.nullable(z.number()),
-    createdAt: z.nullable(z.number()),
-    updatedAt: z.nullable(z.number()),
-    ttl: z.number().optional(),
-    comment: z.string().optional(),
+    value: types.string(),
+    mxPriority: types.optional(types.number()),
+    priority: types.optional(types.number()),
+    creator: types.string(),
+    created: types.nullable(types.number()),
+    updated: types.nullable(types.number()),
+    createdAt: types.nullable(types.number()),
+    updatedAt: types.nullable(types.number()),
+    ttl: types.optional(types.number()),
+    comment: types.optional(types.string()),
   });
 /** @internal */
 export type Records$Outbound = {
@@ -430,10 +432,10 @@ export const GetRecordsResponseBody$inboundSchema: z.ZodType<
   GetRecordsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => ResponseBody3$inboundSchema),
   z.lazy(() => GetRecordsResponseBody2$inboundSchema),
-  z.string(),
+  types.string(),
 ]);
 /** @internal */
 export type GetRecordsResponseBody$Outbound =
@@ -446,7 +448,7 @@ export const GetRecordsResponseBody$outboundSchema: z.ZodType<
   GetRecordsResponseBody$Outbound,
   z.ZodTypeDef,
   GetRecordsResponseBody
-> = z.union([
+> = smartUnion([
   z.lazy(() => ResponseBody3$outboundSchema),
   z.lazy(() => GetRecordsResponseBody2$outboundSchema),
   z.string(),

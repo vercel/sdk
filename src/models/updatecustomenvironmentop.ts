@@ -7,6 +7,7 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -208,7 +209,7 @@ export const UpdateCustomEnvironmentBranchMatcher$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type: UpdateCustomEnvironmentType$inboundSchema,
-  pattern: z.string(),
+  pattern: types.string(),
 });
 /** @internal */
 export type UpdateCustomEnvironmentBranchMatcher$Outbound = {
@@ -252,8 +253,8 @@ export const UpdateCustomEnvironmentRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  slug: z.string().optional(),
-  description: z.string().optional(),
+  slug: types.optional(types.string()),
+  description: types.optional(types.string()),
   branchMatcher: z.nullable(
     z.lazy(() => UpdateCustomEnvironmentBranchMatcher$inboundSchema),
   ).optional(),
@@ -307,12 +308,13 @@ export const UpdateCustomEnvironmentRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  idOrName: z.string(),
-  environmentSlugOrId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  RequestBody: z.lazy(() => UpdateCustomEnvironmentRequestBody$inboundSchema)
-    .optional(),
+  idOrName: types.string(),
+  environmentSlugOrId: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
+  RequestBody: types.optional(
+    z.lazy(() => UpdateCustomEnvironmentRequestBody$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",
@@ -391,7 +393,7 @@ export const UpdateCustomEnvironmentEnvironmentBranchMatcher$inboundSchema:
     unknown
   > = z.object({
     type: UpdateCustomEnvironmentEnvironmentResponseType$inboundSchema,
-    pattern: z.string(),
+    pattern: types.string(),
   });
 /** @internal */
 export type UpdateCustomEnvironmentEnvironmentBranchMatcher$Outbound = {
@@ -442,10 +444,10 @@ export const UpdateCustomEnvironmentVerification$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.string(),
-  domain: z.string(),
-  value: z.string(),
-  reason: z.string(),
+  type: types.string(),
+  domain: types.string(),
+  value: types.string(),
+  reason: types.string(),
 });
 /** @internal */
 export type UpdateCustomEnvironmentVerification$Outbound = {
@@ -493,19 +495,19 @@ export const UpdateCustomEnvironmentDomains$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  apexName: z.string(),
-  projectId: z.string(),
-  redirect: z.nullable(z.string()).optional(),
-  redirectStatusCode: z.nullable(z.number()).optional(),
-  gitBranch: z.nullable(z.string()).optional(),
-  customEnvironmentId: z.nullable(z.string()).optional(),
-  updatedAt: z.number().optional(),
-  createdAt: z.number().optional(),
-  verified: z.boolean(),
-  verification: z.array(
-    z.lazy(() => UpdateCustomEnvironmentVerification$inboundSchema),
-  ).optional(),
+  name: types.string(),
+  apexName: types.string(),
+  projectId: types.string(),
+  redirect: z.nullable(types.string()).optional(),
+  redirectStatusCode: z.nullable(types.number()).optional(),
+  gitBranch: z.nullable(types.string()).optional(),
+  customEnvironmentId: z.nullable(types.string()).optional(),
+  updatedAt: types.optional(types.number()),
+  createdAt: types.optional(types.number()),
+  verified: types.boolean(),
+  verification: types.optional(
+    z.array(z.lazy(() => UpdateCustomEnvironmentVerification$inboundSchema)),
+  ),
 });
 /** @internal */
 export type UpdateCustomEnvironmentDomains$Outbound = {
@@ -570,18 +572,19 @@ export const UpdateCustomEnvironmentResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  slug: z.string(),
+  id: types.string(),
+  slug: types.string(),
   type: UpdateCustomEnvironmentEnvironmentType$inboundSchema,
-  description: z.string().optional(),
-  branchMatcher: z.lazy(() =>
-    UpdateCustomEnvironmentEnvironmentBranchMatcher$inboundSchema
-  ).optional(),
-  domains: z.array(z.lazy(() => UpdateCustomEnvironmentDomains$inboundSchema))
-    .optional(),
-  currentDeploymentAliases: z.array(z.string()).optional(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
+  description: types.optional(types.string()),
+  branchMatcher: types.optional(
+    z.lazy(() => UpdateCustomEnvironmentEnvironmentBranchMatcher$inboundSchema),
+  ),
+  domains: types.optional(
+    z.array(z.lazy(() => UpdateCustomEnvironmentDomains$inboundSchema)),
+  ),
+  currentDeploymentAliases: types.optional(z.array(types.string())),
+  createdAt: types.number(),
+  updatedAt: types.number(),
 });
 /** @internal */
 export type UpdateCustomEnvironmentResponseBody$Outbound = {

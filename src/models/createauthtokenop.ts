@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import {
   AuthToken,
   AuthToken$inboundSchema,
@@ -51,8 +52,8 @@ export const CreateAuthTokenRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  expiresAt: z.number().optional(),
+  name: types.string(),
+  expiresAt: types.optional(types.number()),
 });
 /** @internal */
 export type CreateAuthTokenRequestBody$Outbound = {
@@ -93,8 +94,8 @@ export const CreateAuthTokenRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
   RequestBody: z.lazy(() => CreateAuthTokenRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
@@ -147,7 +148,7 @@ export const CreateAuthTokenResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   token: AuthToken$inboundSchema,
-  bearerToken: z.string(),
+  bearerToken: types.string(),
 });
 /** @internal */
 export type CreateAuthTokenResponseBody$Outbound = {

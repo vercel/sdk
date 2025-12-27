@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type ReadAccessGroupRequest = {
@@ -86,9 +87,9 @@ export const ReadAccessGroupRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  idOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  idOrName: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type ReadAccessGroupRequest$Outbound = {
@@ -149,18 +150,21 @@ export const ReadAccessGroupResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamPermissions: z.array(ReadAccessGroupTeamPermissions$inboundSchema)
-    .optional(),
-  entitlements: z.array(ReadAccessGroupEntitlements$inboundSchema).optional(),
-  isDsyncManaged: z.boolean(),
-  name: z.string(),
-  createdAt: z.string(),
-  teamId: z.string(),
-  updatedAt: z.string(),
-  accessGroupId: z.string(),
-  membersCount: z.number(),
-  projectsCount: z.number(),
-  teamRoles: z.array(z.string()).optional(),
+  teamPermissions: types.optional(
+    z.array(ReadAccessGroupTeamPermissions$inboundSchema),
+  ),
+  entitlements: types.optional(
+    z.array(ReadAccessGroupEntitlements$inboundSchema),
+  ),
+  isDsyncManaged: types.boolean(),
+  name: types.string(),
+  createdAt: types.string(),
+  teamId: types.string(),
+  updatedAt: types.string(),
+  accessGroupId: types.string(),
+  membersCount: types.number(),
+  projectsCount: types.number(),
+  teamRoles: types.optional(z.array(types.string())),
 });
 /** @internal */
 export type ReadAccessGroupResponseBody$Outbound = {

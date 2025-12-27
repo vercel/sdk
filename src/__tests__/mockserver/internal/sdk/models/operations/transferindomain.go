@@ -248,6 +248,7 @@ func (o *TransferInDomainLinks) GetMethod() TransferInDomainMethod {
 
 // TransferInDomainResponseBody - Success
 type TransferInDomainResponseBody struct {
+	// A valid order ID
 	OrderID string                           `json:"orderId"`
 	Links   map[string]TransferInDomainLinks `json:"_links"`
 }

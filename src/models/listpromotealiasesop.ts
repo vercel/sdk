@@ -5,6 +5,8 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import {
   Pagination,
   Pagination$inboundSchema,
@@ -67,13 +69,13 @@ export const ListPromoteAliasesRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
-  limit: z.number().optional(),
-  since: z.number().optional(),
-  until: z.number().optional(),
-  failedOnly: z.boolean().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  projectId: types.string(),
+  limit: types.optional(types.number()),
+  since: types.optional(types.number()),
+  until: types.optional(types.number()),
+  failedOnly: types.optional(types.boolean()),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type ListPromoteAliasesRequest$Outbound = {
@@ -124,9 +126,9 @@ export const ResponseBodyAliases$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  status: z.string(),
-  alias: z.string(),
-  id: z.string(),
+  status: types.string(),
+  alias: types.string(),
+  id: types.string(),
 });
 /** @internal */
 export type ResponseBodyAliases$Outbound = {
@@ -247,7 +249,7 @@ export const ListPromoteAliasesResponseBody$inboundSchema: z.ZodType<
   ListPromoteAliasesResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => ListPromoteAliasesResponseBody2$inboundSchema),
   z.lazy(() => ListPromoteAliasesResponseBody1$inboundSchema),
 ]);
@@ -261,7 +263,7 @@ export const ListPromoteAliasesResponseBody$outboundSchema: z.ZodType<
   ListPromoteAliasesResponseBody$Outbound,
   z.ZodTypeDef,
   ListPromoteAliasesResponseBody
-> = z.union([
+> = smartUnion([
   z.lazy(() => ListPromoteAliasesResponseBody2$outboundSchema),
   z.lazy(() => ListPromoteAliasesResponseBody1$outboundSchema),
 ]);

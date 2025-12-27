@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import {
   Forbidden,
   Forbidden$inboundSchema,
@@ -63,8 +64,8 @@ export const GetDomainTransferInRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  domain: z.string(),
-  teamId: z.string().optional(),
+  domain: types.string(),
+  teamId: types.optional(types.string()),
 });
 /** @internal */
 export type GetDomainTransferInRequest$Outbound = {

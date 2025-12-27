@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetAccountInfoRequest = {
@@ -40,7 +41,7 @@ export const GetAccountInfoRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  integrationConfigurationId: z.string(),
+  integrationConfigurationId: types.string(),
 });
 /** @internal */
 export type GetAccountInfoRequest$Outbound = {
@@ -76,8 +77,8 @@ export function getAccountInfoRequestFromJSON(
 /** @internal */
 export const Contact$inboundSchema: z.ZodType<Contact, z.ZodTypeDef, unknown> =
   z.object({
-    email: z.string(),
-    name: z.string().optional(),
+    email: types.string(),
+    name: types.optional(types.string()),
   });
 /** @internal */
 export type Contact$Outbound = {
@@ -114,9 +115,9 @@ export const GetAccountInfoResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string().optional(),
-  url: z.string(),
-  contact: z.nullable(z.lazy(() => Contact$inboundSchema)),
+  name: types.optional(types.string()),
+  url: types.string(),
+  contact: types.nullable(z.lazy(() => Contact$inboundSchema)),
 });
 /** @internal */
 export type GetAccountInfoResponseBody$Outbound = {

@@ -982,9 +982,9 @@ test("Projects Upload Project Client Cert", async () => {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
     requestBody: {
-      cert: "-----BEGIN CERTIFICATE-----\\n...\\n-----END CERTIFICATE-----",
-      key: "-----BEGIN PRIVATE KEY-----\\n...\\n-----END PRIVATE KEY-----",
-      ca: "-----BEGIN CERTIFICATE-----\\n...\\n-----END CERTIFICATE-----",
+      cert: "-----BEGIN CERTIFICATE-----\\\\n...\\\\n-----END CERTIFICATE-----",
+      key: "-----BEGIN PRIVATE KEY-----\\\\n...\\\\n-----END PRIVATE KEY-----",
+      ca: "-----BEGIN CERTIFICATE-----\\\\n...\\\\n-----END CERTIFICATE-----",
       origin: "https://api.example.com",
     },
   });

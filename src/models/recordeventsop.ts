@@ -7,6 +7,7 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -97,11 +98,11 @@ export const RequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  sessionId: z.string(),
+  sessionId: types.string(),
   source: Source$inboundSchema,
   event: Event$inboundSchema,
-  hash: z.string(),
-  duration: z.number().optional(),
+  hash: types.string(),
+  duration: types.optional(types.number()),
 });
 /** @internal */
 export type RequestBody$Outbound = {
@@ -144,10 +145,10 @@ export const RecordEventsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-artifact-client-ci": z.string().optional(),
-  "x-artifact-client-interactive": z.number().int().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  "x-artifact-client-ci": types.optional(types.string()),
+  "x-artifact-client-interactive": types.optional(types.number()),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
   RequestBody: z.array(z.lazy(() => RequestBody$inboundSchema)),
 }).transform((v) => {
   return remap$(v, {

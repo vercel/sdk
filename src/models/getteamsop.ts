@@ -5,6 +5,8 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import {
   Pagination,
   Pagination$inboundSchema,
@@ -59,9 +61,9 @@ export const GetTeamsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  limit: z.number().optional(),
-  since: z.number().optional(),
-  until: z.number().optional(),
+  limit: types.optional(types.number()),
+  since: types.optional(types.number()),
+  until: types.optional(types.number()),
 });
 /** @internal */
 export type GetTeamsRequest$Outbound = {
@@ -101,7 +103,7 @@ export const GetTeamsTeams$inboundSchema: z.ZodType<
   GetTeamsTeams,
   z.ZodTypeDef,
   unknown
-> = z.union([Team$inboundSchema, TeamLimited$inboundSchema]);
+> = smartUnion([Team$inboundSchema, TeamLimited$inboundSchema]);
 /** @internal */
 export type GetTeamsTeams$Outbound = Team$Outbound | TeamLimited$Outbound;
 
@@ -110,7 +112,7 @@ export const GetTeamsTeams$outboundSchema: z.ZodType<
   GetTeamsTeams$Outbound,
   z.ZodTypeDef,
   GetTeamsTeams
-> = z.union([Team$outboundSchema, TeamLimited$outboundSchema]);
+> = smartUnion([Team$outboundSchema, TeamLimited$outboundSchema]);
 
 export function getTeamsTeamsToJSON(getTeamsTeams: GetTeamsTeams): string {
   return JSON.stringify(GetTeamsTeams$outboundSchema.parse(getTeamsTeams));
@@ -131,7 +133,7 @@ export const GetTeamsResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teams: z.array(z.union([Team$inboundSchema, TeamLimited$inboundSchema])),
+  teams: z.array(smartUnion([Team$inboundSchema, TeamLimited$inboundSchema])),
   pagination: Pagination$inboundSchema,
 });
 /** @internal */
@@ -146,7 +148,7 @@ export const GetTeamsResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetTeamsResponseBody
 > = z.object({
-  teams: z.array(z.union([Team$outboundSchema, TeamLimited$outboundSchema])),
+  teams: z.array(smartUnion([Team$outboundSchema, TeamLimited$outboundSchema])),
   pagination: Pagination$outboundSchema,
 });
 

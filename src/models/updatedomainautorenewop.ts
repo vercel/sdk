@@ -6,6 +6,8 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import {
   DomainAlreadyRenewing,
   DomainAlreadyRenewing$inboundSchema,
@@ -76,7 +78,7 @@ export const UpdateDomainAutoRenewRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  autoRenew: z.boolean(),
+  autoRenew: types.boolean(),
 });
 /** @internal */
 export type UpdateDomainAutoRenewRequestBody$Outbound = {
@@ -117,8 +119,8 @@ export const UpdateDomainAutoRenewRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  domain: z.string(),
-  teamId: z.string().optional(),
+  domain: types.string(),
+  teamId: types.optional(types.string()),
   RequestBody: z.lazy(() => UpdateDomainAutoRenewRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
@@ -227,7 +229,7 @@ export const UpdateDomainAutoRenewResponseBody$inboundSchema: z.ZodType<
   UpdateDomainAutoRenewResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   DomainAlreadyRenewing$inboundSchema,
   DomainNotRenewable$inboundSchema,
   DomainNotRegistered$inboundSchema,
@@ -245,7 +247,7 @@ export const UpdateDomainAutoRenewResponseBody$outboundSchema: z.ZodType<
   UpdateDomainAutoRenewResponseBody$Outbound,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   DomainAlreadyRenewing$outboundSchema,
   DomainNotRenewable$outboundSchema,
   DomainNotRegistered$outboundSchema,

@@ -7,6 +7,8 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type Metadata =
@@ -289,12 +291,12 @@ export type CreateIntegrationStoreDirectIntegrationsType = ClosedEnum<
   typeof CreateIntegrationStoreDirectIntegrationsType
 >;
 
-export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8897 =
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8978 =
   {};
 
 export type CreateIntegrationStoreDirectPropertiesValue = {
-  atBRANDAt8897:
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8897;
+  atBRANDAt8978:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8978;
 };
 
 export const CreateIntegrationStoreDirectDisabled3 = {
@@ -363,31 +365,31 @@ export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applica
     typeof CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductUiControl
   >;
 
-export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8897 =
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8978 =
   {};
 
 export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200MaxLength =
   {
-    atBRANDAt8897:
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8897;
+    atBRANDAt8978:
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8978;
   };
 
-export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8897 =
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8978 =
   {};
 
 export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200MinLength =
   {
-    atBRANDAt8897:
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8897;
+    atBRANDAt8978:
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8978;
   };
 
-export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8897 =
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8978 =
   {};
 
 export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Pattern =
   {
-    atBRANDAt8897:
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8897;
+    atBRANDAt8978:
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8978;
   };
 
 export const CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct3 =
@@ -525,10 +527,10 @@ export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applica
     typeof CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreUiControl
   >;
 
-export type CreateIntegrationStoreDirectUiOptionsAtBRANDAt8897 = {};
+export type CreateIntegrationStoreDirectUiOptionsAtBRANDAt8978 = {};
 
 export type CreateIntegrationStoreDirectUiOptionsValue = {
-  atBRANDAt8897: CreateIntegrationStoreDirectUiOptionsAtBRANDAt8897;
+  atBRANDAt8978: CreateIntegrationStoreDirectUiOptionsAtBRANDAt8978;
 };
 
 export const CreateIntegrationStoreDirectDisabledIntegrationsResponse2003 = {
@@ -579,10 +581,10 @@ export type CreateIntegrationStoreDirectUiOptions3 = {
     | undefined;
 };
 
-export type UiOptionsAtBRANDAt8897 = {};
+export type UiOptionsAtBRANDAt8978 = {};
 
 export type CreateIntegrationStoreDirectUiOptions2 = {
-  atBRANDAt8897: UiOptionsAtBRANDAt8897;
+  atBRANDAt8978: UiOptionsAtBRANDAt8978;
 };
 
 export const CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3 =
@@ -645,31 +647,31 @@ export type CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiOptions 
   | CreateIntegrationStoreDirectUiOptions2
   | CreateIntegrationStoreDirectUiOptions3;
 
-export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8897 =
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8978 =
   {};
 
 export type CreateIntegrationStoreDirectPropertiesIntegrationsResponseMaxLength =
   {
-    atBRANDAt8897:
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8897;
+    atBRANDAt8978:
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8978;
   };
 
-export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8897 =
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8978 =
   {};
 
 export type CreateIntegrationStoreDirectPropertiesIntegrationsResponseMinLength =
   {
-    atBRANDAt8897:
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8897;
+    atBRANDAt8978:
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8978;
   };
 
-export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8897 =
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8978 =
   {};
 
 export type CreateIntegrationStoreDirectPropertiesIntegrationsResponsePattern =
   {
-    atBRANDAt8897:
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8897;
+    atBRANDAt8978:
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8978;
   };
 
 export const CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStore3 =
@@ -812,31 +814,31 @@ export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applica
     typeof CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6Type
   >;
 
-export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8897 =
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8978 =
   {};
 
 export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONMinLength =
   {
-    atBRANDAt8897:
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8897;
+    atBRANDAt8978:
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8978;
   };
 
-export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8897 =
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8978 =
   {};
 
 export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONMaxLength =
   {
-    atBRANDAt8897:
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8897;
+    atBRANDAt8978:
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8978;
   };
 
-export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8897 =
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8978 =
   {};
 
 export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONPattern =
   {
-    atBRANDAt8897:
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8897;
+    atBRANDAt8978:
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8978;
   };
 
 export type CreateIntegrationStoreDirectPropertiesIntegrationsItems = {
@@ -1091,28 +1093,28 @@ export type CreateIntegrationStoreDirectPropertiesUiOptions = {
     | undefined;
 };
 
-export type CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8897 =
+export type CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8978 =
   {};
 
 export type CreateIntegrationStoreDirectPropertiesIntegrationsMaxLength = {
-  atBRANDAt8897:
-    CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8897;
+  atBRANDAt8978:
+    CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8978;
 };
 
-export type CreateIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8897 =
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8978 =
   {};
 
 export type CreateIntegrationStoreDirectPropertiesIntegrationsMinLength = {
-  atBRANDAt8897:
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8897;
+  atBRANDAt8978:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8978;
 };
 
-export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8897 =
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8978 =
   {};
 
 export type CreateIntegrationStoreDirectPropertiesIntegrationsPattern = {
-  atBRANDAt8897:
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8897;
+  atBRANDAt8978:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8978;
 };
 
 export const CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJson3 =
@@ -1615,24 +1617,24 @@ export type CreateIntegrationStoreDirectPropertiesUiControl = ClosedEnum<
   typeof CreateIntegrationStoreDirectPropertiesUiControl
 >;
 
-export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8897 =
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8978 =
   {};
 
 export type CreateIntegrationStoreDirectPropertiesMaxLength = {
-  atBRANDAt8897:
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8897;
+  atBRANDAt8978:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8978;
 };
 
-export type PropertiesAtBRANDAt8897 = {};
+export type PropertiesAtBRANDAt8978 = {};
 
 export type CreateIntegrationStoreDirectPropertiesMinLength = {
-  atBRANDAt8897: PropertiesAtBRANDAt8897;
+  atBRANDAt8978: PropertiesAtBRANDAt8978;
 };
 
-export type CreateIntegrationStoreDirectPropertiesAtBRANDAt8897 = {};
+export type CreateIntegrationStoreDirectPropertiesAtBRANDAt8978 = {};
 
 export type CreateIntegrationStoreDirectPropertiesPattern = {
-  atBRANDAt8897: CreateIntegrationStoreDirectPropertiesAtBRANDAt8897;
+  atBRANDAt8978: CreateIntegrationStoreDirectPropertiesAtBRANDAt8978;
 };
 
 export const CreateIntegrationStoreDirectUiReadOnly3 = {
@@ -1873,10 +1875,10 @@ export type Guides = {
   steps: Array<Steps>;
 };
 
-export type AtBRANDAt8897 = {};
+export type AtBRANDAt8978 = {};
 
 export type CreateIntegrationStoreDirectValue = {
-  atBRANDAt8897: AtBRANDAt8897;
+  atBRANDAt8978: AtBRANDAt8978;
 };
 
 export const Disabled3 = {
@@ -2053,12 +2055,12 @@ export const Metadata$inboundSchema: z.ZodType<
   Metadata,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.array(z.string()),
-  z.array(z.number()),
+> = smartUnion([
+  types.string(),
+  types.number(),
+  types.boolean(),
+  z.array(types.string()),
+  z.array(types.number()),
 ]);
 /** @internal */
 export type Metadata$Outbound =
@@ -2073,7 +2075,7 @@ export const Metadata$outboundSchema: z.ZodType<
   Metadata$Outbound,
   z.ZodTypeDef,
   Metadata
-> = z.union([
+> = smartUnion([
   z.string(),
   z.number(),
   z.boolean(),
@@ -2100,24 +2102,26 @@ export const CreateIntegrationStoreDirectRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  integrationConfigurationId: z.string(),
-  integrationProductIdOrSlug: z.any().optional(),
-  metadata: z.record(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.array(z.string()),
-      z.array(z.number()),
-    ]),
-  ).optional(),
-  externalId: z.string().optional(),
-  protocolSettings: z.record(z.any()).optional(),
-  source: z.string().default("marketplace"),
-  billingPlanId: z.string().optional(),
-  paymentMethodId: z.string().optional(),
-  prepaymentAmountCents: z.number().optional(),
+  name: types.string(),
+  integrationConfigurationId: types.string(),
+  integrationProductIdOrSlug: types.optional(z.any()),
+  metadata: types.optional(
+    z.record(
+      smartUnion([
+        types.string(),
+        types.number(),
+        types.boolean(),
+        z.array(types.string()),
+        z.array(types.number()),
+      ]),
+    ),
+  ),
+  externalId: types.optional(types.string()),
+  protocolSettings: types.optional(z.record(z.any())),
+  source: types.string().default("marketplace"),
+  billingPlanId: types.optional(types.string()),
+  paymentMethodId: types.optional(types.string()),
+  prepaymentAmountCents: types.optional(types.number()),
 });
 /** @internal */
 export type CreateIntegrationStoreDirectRequestBody$Outbound = {
@@ -2145,7 +2149,7 @@ export const CreateIntegrationStoreDirectRequestBody$outboundSchema: z.ZodType<
   integrationConfigurationId: z.string(),
   integrationProductIdOrSlug: z.any().optional(),
   metadata: z.record(
-    z.union([
+    smartUnion([
       z.string(),
       z.number(),
       z.boolean(),
@@ -2193,11 +2197,11 @@ export const CreateIntegrationStoreDirectRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  RequestBody: z.lazy(() =>
-    CreateIntegrationStoreDirectRequestBody$inboundSchema
-  ).optional(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
+  RequestBody: types.optional(
+    z.lazy(() => CreateIntegrationStoreDirectRequestBody$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",
@@ -2281,7 +2285,7 @@ export const CreateIntegrationStoreDirectActions$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  slug: z.string(),
+  slug: types.string(),
   environments: z.array(
     CreateIntegrationStoreDirectIntegrationsEnvironments$inboundSchema,
   ),
@@ -2330,7 +2334,7 @@ export const CreateIntegrationStoreDirectDeployments$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  required: z.boolean(),
+  required: types.boolean(),
   actions: z.array(
     z.lazy(() => CreateIntegrationStoreDirectActions$inboundSchema),
   ),
@@ -2386,20 +2390,20 @@ export const CreateIntegrationStoreDirectProjectsMetadata$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    id: z.string(),
-    projectId: z.string(),
-    name: z.string(),
+    id: types.string(),
+    projectId: types.string(),
+    name: types.string(),
     framework: z.nullable(CreateIntegrationStoreDirectFramework$inboundSchema)
       .optional(),
-    latestDeployment: z.string().optional(),
+    latestDeployment: types.optional(types.string()),
     environments: z.array(
       CreateIntegrationStoreDirectEnvironments$inboundSchema,
     ),
-    envVarPrefix: z.nullable(z.string()),
-    environmentVariables: z.array(z.string()),
-    deployments: z.lazy(() =>
-      CreateIntegrationStoreDirectDeployments$inboundSchema
-    ).optional(),
+    envVarPrefix: types.nullable(types.string()),
+    environmentVariables: z.array(types.string()),
+    deployments: types.optional(
+      z.lazy(() => CreateIntegrationStoreDirectDeployments$inboundSchema),
+    ),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectProjectsMetadata$Outbound = {
@@ -2482,7 +2486,7 @@ export const Providers$inboundSchema: z.ZodType<
   Providers,
   z.ZodTypeDef,
   unknown
-> = z.union([z.array(Providers1$inboundSchema), Providers2$inboundSchema]);
+> = smartUnion([z.array(Providers1$inboundSchema), Providers2$inboundSchema]);
 /** @internal */
 export type Providers$Outbound = Array<string> | string;
 
@@ -2491,7 +2495,7 @@ export const Providers$outboundSchema: z.ZodType<
   Providers$Outbound,
   z.ZodTypeDef,
   Providers
-> = z.union([z.array(Providers1$outboundSchema), Providers2$outboundSchema]);
+> = smartUnion([z.array(Providers1$outboundSchema), Providers2$outboundSchema]);
 
 export function providersToJSON(providers: Providers): string {
   return JSON.stringify(Providers$outboundSchema.parse(providers));
@@ -2509,12 +2513,12 @@ export function providersFromJSON(
 /** @internal */
 export const Git$inboundSchema: z.ZodType<Git, z.ZodTypeDef, unknown> = z
   .object({
-    providers: z.union([
+    providers: smartUnion([
       z.array(Providers1$inboundSchema),
       Providers2$inboundSchema,
     ]),
-    owners: z.array(z.string()).optional(),
-    repos: z.array(z.string()).optional(),
+    owners: types.optional(z.array(types.string())),
+    repos: types.optional(z.array(types.string())),
   });
 /** @internal */
 export type Git$Outbound = {
@@ -2526,7 +2530,7 @@ export type Git$Outbound = {
 /** @internal */
 export const Git$outboundSchema: z.ZodType<Git$Outbound, z.ZodTypeDef, Git> = z
   .object({
-    providers: z.union([
+    providers: smartUnion([
       z.array(Providers1$outboundSchema),
       Providers2$outboundSchema,
     ]),
@@ -2553,7 +2557,7 @@ export const ProjectFilter$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  git: z.lazy(() => Git$inboundSchema).optional(),
+  git: types.optional(z.lazy(() => Git$inboundSchema)),
 });
 /** @internal */
 export type ProjectFilter$Outbound = {
@@ -2607,7 +2611,7 @@ export const SecretRotation2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  maxDelayHours: z.number(),
+  maxDelayHours: types.number(),
 });
 /** @internal */
 export type SecretRotation2$Outbound = {
@@ -2643,7 +2647,7 @@ export const SecretRotation$inboundSchema: z.ZodType<
   SecretRotation,
   z.ZodTypeDef,
   unknown
-> = z.union([z.lazy(() => SecretRotation2$inboundSchema), z.boolean()]);
+> = smartUnion([z.lazy(() => SecretRotation2$inboundSchema), types.boolean()]);
 /** @internal */
 export type SecretRotation$Outbound = SecretRotation2$Outbound | boolean;
 
@@ -2652,7 +2656,7 @@ export const SecretRotation$outboundSchema: z.ZodType<
   SecretRotation$Outbound,
   z.ZodTypeDef,
   SecretRotation
-> = z.union([z.lazy(() => SecretRotation2$outboundSchema), z.boolean()]);
+> = smartUnion([z.lazy(() => SecretRotation2$outboundSchema), z.boolean()]);
 
 export function secretRotationToJSON(secretRotation: SecretRotation): string {
   return JSON.stringify(SecretRotation$outboundSchema.parse(secretRotation));
@@ -2673,17 +2677,16 @@ export const Capabilities$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  mcp: z.boolean().optional(),
-  mcpReadonly: z.boolean().optional(),
-  sso: z.boolean().optional(),
-  billable: z.boolean().optional(),
-  transferable: z.boolean().optional(),
-  secretsSync: z.boolean().optional(),
-  secretRotation: z.union([
-    z.lazy(() => SecretRotation2$inboundSchema),
-    z.boolean(),
-  ]).optional(),
-  projects: z.boolean().optional(),
+  mcp: types.optional(types.boolean()),
+  mcpReadonly: types.optional(types.boolean()),
+  sso: types.optional(types.boolean()),
+  billable: types.optional(types.boolean()),
+  transferable: types.optional(types.boolean()),
+  secretsSync: types.optional(types.boolean()),
+  secretRotation: types.optional(
+    smartUnion([z.lazy(() => SecretRotation2$inboundSchema), types.boolean()]),
+  ),
+  projects: types.optional(types.boolean()),
 });
 /** @internal */
 export type Capabilities$Outbound = {
@@ -2709,7 +2712,7 @@ export const Capabilities$outboundSchema: z.ZodType<
   billable: z.boolean().optional(),
   transferable: z.boolean().optional(),
   secretsSync: z.boolean().optional(),
-  secretRotation: z.union([
+  secretRotation: smartUnion([
     z.lazy(() => SecretRotation2$outboundSchema),
     z.boolean(),
   ]).optional(),
@@ -2734,12 +2737,12 @@ export const CreateIntegrationStoreDirectMetadata$inboundSchema: z.ZodType<
   CreateIntegrationStoreDirectMetadata,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.array(z.string()),
-  z.array(z.number()),
+> = smartUnion([
+  types.string(),
+  types.number(),
+  types.boolean(),
+  z.array(types.string()),
+  z.array(types.number()),
 ]);
 /** @internal */
 export type CreateIntegrationStoreDirectMetadata$Outbound =
@@ -2754,7 +2757,7 @@ export const CreateIntegrationStoreDirectMetadata$outboundSchema: z.ZodType<
   CreateIntegrationStoreDirectMetadata$Outbound,
   z.ZodTypeDef,
   CreateIntegrationStoreDirectMetadata
-> = z.union([
+> = smartUnion([
   z.string(),
   z.number(),
   z.boolean(),
@@ -2798,7 +2801,7 @@ export const CreateIntegrationStoreDirectSecretRotation2$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    maxDelayHours: z.number(),
+    maxDelayHours: types.number(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectSecretRotation2$Outbound = {
@@ -2844,9 +2847,9 @@ export function createIntegrationStoreDirectSecretRotation2FromJSON(
 /** @internal */
 export const CreateIntegrationStoreDirectSecretRotation$inboundSchema:
   z.ZodType<CreateIntegrationStoreDirectSecretRotation, z.ZodTypeDef, unknown> =
-    z.union([
+    smartUnion([
       z.lazy(() => CreateIntegrationStoreDirectSecretRotation2$inboundSchema),
-      z.boolean(),
+      types.boolean(),
     ]);
 /** @internal */
 export type CreateIntegrationStoreDirectSecretRotation$Outbound =
@@ -2859,7 +2862,7 @@ export const CreateIntegrationStoreDirectSecretRotation$outboundSchema:
     CreateIntegrationStoreDirectSecretRotation$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectSecretRotation
-  > = z.union([
+  > = smartUnion([
     z.lazy(() => CreateIntegrationStoreDirectSecretRotation2$outboundSchema),
     z.boolean(),
   ]);
@@ -2896,19 +2899,21 @@ export const CreateIntegrationStoreDirectCapabilities$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  mcp: z.boolean().optional(),
-  mcpReadonly: z.boolean().optional(),
-  sso: z.boolean().optional(),
-  billable: z.boolean().optional(),
-  transferable: z.boolean().optional(),
-  secretsSync: z.boolean().optional(),
-  secretRotation: z.union([
-    z.lazy(() => CreateIntegrationStoreDirectSecretRotation2$inboundSchema),
-    z.boolean(),
-  ]).optional(),
-  sandbox: z.boolean().optional(),
-  linking: z.boolean().optional(),
-  projects: z.boolean().optional(),
+  mcp: types.optional(types.boolean()),
+  mcpReadonly: types.optional(types.boolean()),
+  sso: types.optional(types.boolean()),
+  billable: types.optional(types.boolean()),
+  transferable: types.optional(types.boolean()),
+  secretsSync: types.optional(types.boolean()),
+  secretRotation: types.optional(
+    smartUnion([
+      z.lazy(() => CreateIntegrationStoreDirectSecretRotation2$inboundSchema),
+      types.boolean(),
+    ]),
+  ),
+  sandbox: types.optional(types.boolean()),
+  linking: types.optional(types.boolean()),
+  projects: types.optional(types.boolean()),
 });
 /** @internal */
 export type CreateIntegrationStoreDirectCapabilities$Outbound = {
@@ -2939,7 +2944,7 @@ export const CreateIntegrationStoreDirectCapabilities$outboundSchema: z.ZodType<
   billable: z.boolean().optional(),
   transferable: z.boolean().optional(),
   secretsSync: z.boolean().optional(),
-  secretRotation: z.union([
+  secretRotation: smartUnion([
     z.lazy(() => CreateIntegrationStoreDirectSecretRotation2$outboundSchema),
     z.boolean(),
   ]).optional(),
@@ -2984,47 +2989,47 @@ export const CreateIntegrationStoreDirectIntegrationsType$outboundSchema:
     CreateIntegrationStoreDirectIntegrationsType$inboundSchema;
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8897$inboundSchema:
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8978$inboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8897,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8978,
     z.ZodTypeDef,
     unknown
   > = z.object({});
 /** @internal */
-export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8897$Outbound =
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8978$Outbound =
   {};
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8897$outboundSchema:
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8978$outboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8897$Outbound,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8978$Outbound,
     z.ZodTypeDef,
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8897
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8978
   > = z.object({});
 
-export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8897ToJSON(
-  createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8897:
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8897,
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8978ToJSON(
+  createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8978:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8978,
 ): string {
   return JSON.stringify(
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8897$outboundSchema
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8978$outboundSchema
       .parse(
-        createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8897,
+        createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8978,
       ),
   );
 }
-export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8897FromJSON(
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8978FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8897,
+  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8978,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8897$inboundSchema
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8978$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8897' from JSON`,
+    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8978' from JSON`,
   );
 }
 
@@ -3035,18 +3040,18 @@ export const CreateIntegrationStoreDirectPropertiesValue$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    "__@BRAND@8897": z.lazy(() =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8897$inboundSchema
+    "__@BRAND@8978": z.lazy(() =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8978$inboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      "__@BRAND@8897": "atBRANDAt8897",
+      "__@BRAND@8978": "atBRANDAt8978",
     });
   });
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesValue$Outbound = {
-  "__@BRAND@8897":
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8897$Outbound;
+  "__@BRAND@8978":
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8978$Outbound;
 };
 
 /** @internal */
@@ -3056,12 +3061,12 @@ export const CreateIntegrationStoreDirectPropertiesValue$outboundSchema:
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesValue
   > = z.object({
-    atBRANDAt8897: z.lazy(() =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8897$outboundSchema
+    atBRANDAt8978: z.lazy(() =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema9AtBRANDAt8978$outboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      atBRANDAt8897: "__@BRAND@8897",
+      atBRANDAt8978: "__@BRAND@8978",
     });
   });
 
@@ -3107,7 +3112,7 @@ export const CreateIntegrationStoreDirectDisabled2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  expr: z.string(),
+  expr: types.string(),
 });
 /** @internal */
 export type CreateIntegrationStoreDirectDisabled2$Outbound = {
@@ -3149,9 +3154,9 @@ export const CreateIntegrationStoreDirectPropertiesDisabled$inboundSchema:
     CreateIntegrationStoreDirectPropertiesDisabled,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() => CreateIntegrationStoreDirectDisabled2$inboundSchema),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectDisabled3$inboundSchema,
   ]);
 /** @internal */
@@ -3166,7 +3171,7 @@ export const CreateIntegrationStoreDirectPropertiesDisabled$outboundSchema:
     CreateIntegrationStoreDirectPropertiesDisabled$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesDisabled
-  > = z.union([
+  > = smartUnion([
     z.lazy(() => CreateIntegrationStoreDirectDisabled2$outboundSchema),
     z.boolean(),
     CreateIntegrationStoreDirectDisabled3$outboundSchema,
@@ -3213,7 +3218,7 @@ export const CreateIntegrationStoreDirectHidden2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  expr: z.string(),
+  expr: types.string(),
 });
 /** @internal */
 export type CreateIntegrationStoreDirectHidden2$Outbound = {
@@ -3255,9 +3260,9 @@ export const CreateIntegrationStoreDirectPropertiesHidden$inboundSchema:
     CreateIntegrationStoreDirectPropertiesHidden,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() => CreateIntegrationStoreDirectHidden2$inboundSchema),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectHidden3$inboundSchema,
   ]);
 /** @internal */
@@ -3272,7 +3277,7 @@ export const CreateIntegrationStoreDirectPropertiesHidden$outboundSchema:
     CreateIntegrationStoreDirectPropertiesHidden$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesHidden
-  > = z.union([
+  > = smartUnion([
     z.lazy(() => CreateIntegrationStoreDirectHidden2$outboundSchema),
     z.boolean(),
     CreateIntegrationStoreDirectHidden3$outboundSchema,
@@ -3313,16 +3318,20 @@ export const CreateIntegrationStoreDirectProperties9$inboundSchema: z.ZodType<
   value: z.lazy(() =>
     CreateIntegrationStoreDirectPropertiesValue$inboundSchema
   ),
-  disabled: z.union([
-    z.lazy(() => CreateIntegrationStoreDirectDisabled2$inboundSchema),
-    z.boolean(),
-    CreateIntegrationStoreDirectDisabled3$inboundSchema,
-  ]).optional(),
-  hidden: z.union([
-    z.lazy(() => CreateIntegrationStoreDirectHidden2$inboundSchema),
-    z.boolean(),
-    CreateIntegrationStoreDirectHidden3$inboundSchema,
-  ]).optional(),
+  disabled: types.optional(
+    smartUnion([
+      z.lazy(() => CreateIntegrationStoreDirectDisabled2$inboundSchema),
+      types.boolean(),
+      CreateIntegrationStoreDirectDisabled3$inboundSchema,
+    ]),
+  ),
+  hidden: types.optional(
+    smartUnion([
+      z.lazy(() => CreateIntegrationStoreDirectHidden2$inboundSchema),
+      types.boolean(),
+      CreateIntegrationStoreDirectHidden3$inboundSchema,
+    ]),
+  ),
 });
 /** @internal */
 export type CreateIntegrationStoreDirectProperties9$Outbound = {
@@ -3348,12 +3357,12 @@ export const CreateIntegrationStoreDirectProperties9$outboundSchema: z.ZodType<
   value: z.lazy(() =>
     CreateIntegrationStoreDirectPropertiesValue$outboundSchema
   ),
-  disabled: z.union([
+  disabled: smartUnion([
     z.lazy(() => CreateIntegrationStoreDirectDisabled2$outboundSchema),
     z.boolean(),
     CreateIntegrationStoreDirectDisabled3$outboundSchema,
   ]).optional(),
-  hidden: z.union([
+  hidden: smartUnion([
     z.lazy(() => CreateIntegrationStoreDirectHidden2$outboundSchema),
     z.boolean(),
     CreateIntegrationStoreDirectHidden3$outboundSchema,
@@ -3415,47 +3424,47 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductUiControl$inboundSchema;
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8897$inboundSchema:
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8978$inboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8897,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8978,
     z.ZodTypeDef,
     unknown
   > = z.object({});
 /** @internal */
-export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8897$Outbound =
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8978$Outbound =
   {};
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8897$outboundSchema:
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8978$outboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8897$Outbound,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8978$Outbound,
     z.ZodTypeDef,
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8897
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8978
   > = z.object({});
 
-export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8897ToJSON(
-  createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8897:
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8897,
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8978ToJSON(
+  createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8978:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8978,
 ): string {
   return JSON.stringify(
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8897$outboundSchema
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8978$outboundSchema
       .parse(
-        createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8897,
+        createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8978,
       ),
   );
 }
-export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8897FromJSON(
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8978FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8897,
+  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8978,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8897$inboundSchema
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8978$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8897' from JSON`,
+    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8978' from JSON`,
   );
 }
 
@@ -3466,19 +3475,19 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200MaxLen
     z.ZodTypeDef,
     unknown
   > = z.object({
-    "__@BRAND@8897": z.lazy(() =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8897$inboundSchema
+    "__@BRAND@8978": z.lazy(() =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8978$inboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      "__@BRAND@8897": "atBRANDAt8897",
+      "__@BRAND@8978": "atBRANDAt8978",
     });
   });
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200MaxLength$Outbound =
   {
-    "__@BRAND@8897":
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8897$Outbound;
+    "__@BRAND@8978":
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8978$Outbound;
   };
 
 /** @internal */
@@ -3488,12 +3497,12 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200MaxLen
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200MaxLength
   > = z.object({
-    atBRANDAt8897: z.lazy(() =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8897$outboundSchema
+    atBRANDAt8978: z.lazy(() =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt8978$outboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      atBRANDAt8897: "__@BRAND@8897",
+      atBRANDAt8978: "__@BRAND@8978",
     });
   });
 
@@ -3524,47 +3533,47 @@ export function createIntegrationStoreDirectPropertiesIntegrationsResponse200Max
 }
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8897$inboundSchema:
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8978$inboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8897,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8978,
     z.ZodTypeDef,
     unknown
   > = z.object({});
 /** @internal */
-export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8897$Outbound =
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8978$Outbound =
   {};
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8897$outboundSchema:
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8978$outboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8897$Outbound,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8978$Outbound,
     z.ZodTypeDef,
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8897
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8978
   > = z.object({});
 
-export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8897ToJSON(
-  createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8897:
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8897,
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8978ToJSON(
+  createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8978:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8978,
 ): string {
   return JSON.stringify(
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8897$outboundSchema
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8978$outboundSchema
       .parse(
-        createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8897,
+        createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8978,
       ),
   );
 }
-export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8897FromJSON(
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8978FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8897,
+  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8978,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8897$inboundSchema
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8978$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8897' from JSON`,
+    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8978' from JSON`,
   );
 }
 
@@ -3575,19 +3584,19 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200MinLen
     z.ZodTypeDef,
     unknown
   > = z.object({
-    "__@BRAND@8897": z.lazy(() =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8897$inboundSchema
+    "__@BRAND@8978": z.lazy(() =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8978$inboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      "__@BRAND@8897": "atBRANDAt8897",
+      "__@BRAND@8978": "atBRANDAt8978",
     });
   });
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200MinLength$Outbound =
   {
-    "__@BRAND@8897":
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8897$Outbound;
+    "__@BRAND@8978":
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8978$Outbound;
   };
 
 /** @internal */
@@ -3597,12 +3606,12 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200MinLen
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200MinLength
   > = z.object({
-    atBRANDAt8897: z.lazy(() =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8897$outboundSchema
+    atBRANDAt8978: z.lazy(() =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaAtBRANDAt8978$outboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      atBRANDAt8897: "__@BRAND@8897",
+      atBRANDAt8978: "__@BRAND@8978",
     });
   });
 
@@ -3633,47 +3642,47 @@ export function createIntegrationStoreDirectPropertiesIntegrationsResponse200Min
 }
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8897$inboundSchema:
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8978$inboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8897,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8978,
     z.ZodTypeDef,
     unknown
   > = z.object({});
 /** @internal */
-export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8897$Outbound =
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8978$Outbound =
   {};
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8897$outboundSchema:
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8978$outboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8897$Outbound,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8978$Outbound,
     z.ZodTypeDef,
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8897
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8978
   > = z.object({});
 
-export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8897ToJSON(
-  createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8897:
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8897,
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8978ToJSON(
+  createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8978:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8978,
 ): string {
   return JSON.stringify(
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8897$outboundSchema
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8978$outboundSchema
       .parse(
-        createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8897,
+        createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8978,
       ),
   );
 }
-export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8897FromJSON(
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8978FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8897,
+  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8978,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8897$inboundSchema
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8978$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8897' from JSON`,
+    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8978' from JSON`,
   );
 }
 
@@ -3684,19 +3693,19 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Patter
     z.ZodTypeDef,
     unknown
   > = z.object({
-    "__@BRAND@8897": z.lazy(() =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8897$inboundSchema
+    "__@BRAND@8978": z.lazy(() =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8978$inboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      "__@BRAND@8897": "atBRANDAt8897",
+      "__@BRAND@8978": "atBRANDAt8978",
     });
   });
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Pattern$Outbound =
   {
-    "__@BRAND@8897":
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8897$Outbound;
+    "__@BRAND@8978":
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8978$Outbound;
   };
 
 /** @internal */
@@ -3706,12 +3715,12 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Patter
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Pattern
   > = z.object({
-    atBRANDAt8897: z.lazy(() =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8897$outboundSchema
+    atBRANDAt8978: z.lazy(() =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8AtBRANDAt8978$outboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      atBRANDAt8897: "__@BRAND@8897",
+      atBRANDAt8978: "__@BRAND@8978",
     });
   });
 
@@ -3762,7 +3771,7 @@ export const CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200Applic
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct2$Outbound =
@@ -3812,11 +3821,11 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductUiReadOnly,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct3$inboundSchema,
   ]);
 /** @internal */
@@ -3831,7 +3840,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductUiReadOnly$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductUiReadOnly
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct2$outboundSchema
     ),
@@ -3886,7 +3895,7 @@ export const CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200Applicat
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct2$Outbound =
@@ -3936,11 +3945,11 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductUiHidden,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct3$inboundSchema,
   ]);
 /** @internal */
@@ -3955,7 +3964,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductUiHidden$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductUiHidden
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct2$outboundSchema
     ),
@@ -4010,7 +4019,7 @@ export const CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200Applic
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct2$Outbound =
@@ -4060,11 +4069,11 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductUiDisabled,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct3$inboundSchema,
   ]);
 /** @internal */
@@ -4079,7 +4088,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductUiDisabled$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductUiDisabled
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct2$outboundSchema
     ),
@@ -4120,7 +4129,7 @@ export const CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200App
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct2$Outbound =
@@ -4170,11 +4179,11 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductUiDescription,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct2$inboundSchema
     ),
-    z.string(),
+    types.string(),
   ]);
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductUiDescription$Outbound =
@@ -4187,7 +4196,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductUiDescription$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductUiDescription
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct2$outboundSchema
     ),
@@ -4227,7 +4236,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductUiFormattedValue$Outbound =
@@ -4281,50 +4290,66 @@ export const CreateIntegrationStoreDirectProperties8$inboundSchema: z.ZodType<
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductType$inboundSchema,
   "ui:control":
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductUiControl$inboundSchema,
-  enum: z.array(z.string()).optional(),
-  maxLength: z.lazy(() =>
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200MaxLength$inboundSchema
-  ).optional(),
-  minLength: z.lazy(() =>
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200MinLength$inboundSchema
-  ).optional(),
-  pattern: z.lazy(() =>
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Pattern$inboundSchema
-  ).optional(),
-  description: z.string().optional(),
-  default: z.string().optional(),
-  "ui:label": z.string().optional(),
-  "ui:read-only": z.union([
+  enum: types.optional(z.array(types.string())),
+  maxLength: types.optional(
     z.lazy(() =>
-      CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct2$inboundSchema
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200MaxLength$inboundSchema
     ),
-    z.boolean(),
-    CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct3$inboundSchema,
-  ]).optional(),
-  "ui:hidden": z.union([
+  ),
+  minLength: types.optional(
     z.lazy(() =>
-      CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct2$inboundSchema
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200MinLength$inboundSchema
     ),
-    z.boolean(),
-    CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct3$inboundSchema,
-  ]).optional(),
-  "ui:disabled": z.union([
+  ),
+  pattern: types.optional(
     z.lazy(() =>
-      CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct2$inboundSchema
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Pattern$inboundSchema
     ),
-    z.boolean(),
-    CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct3$inboundSchema,
-  ]).optional(),
-  "ui:description": z.union([
+  ),
+  description: types.optional(types.string()),
+  default: types.optional(types.string()),
+  "ui:label": types.optional(types.string()),
+  "ui:read-only": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct2$inboundSchema
+      ),
+      types.boolean(),
+      CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct3$inboundSchema,
+    ]),
+  ),
+  "ui:hidden": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct2$inboundSchema
+      ),
+      types.boolean(),
+      CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct3$inboundSchema,
+    ]),
+  ),
+  "ui:disabled": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct2$inboundSchema
+      ),
+      types.boolean(),
+      CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct3$inboundSchema,
+    ]),
+  ),
+  "ui:description": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct2$inboundSchema
+      ),
+      types.string(),
+    ]),
+  ),
+  "ui:formatted-value": types.optional(
     z.lazy(() =>
-      CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct2$inboundSchema
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductUiFormattedValue$inboundSchema
     ),
-    z.string(),
-  ]).optional(),
-  "ui:formatted-value": z.lazy(() =>
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductUiFormattedValue$inboundSchema
-  ).optional(),
-  "ui:placeholder": z.string().optional(),
+  ),
+  "ui:placeholder": types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
     "ui:control": "uiControl",
@@ -4402,28 +4427,28 @@ export const CreateIntegrationStoreDirectProperties8$outboundSchema: z.ZodType<
   description: z.string().optional(),
   default: z.string().optional(),
   uiLabel: z.string().optional(),
-  uiReadOnly: z.union([
+  uiReadOnly: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct2$outboundSchema
     ),
     z.boolean(),
     CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct3$outboundSchema,
   ]).optional(),
-  uiHidden: z.union([
+  uiHidden: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct2$outboundSchema
     ),
     z.boolean(),
     CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct3$outboundSchema,
   ]).optional(),
-  uiDisabled: z.union([
+  uiDisabled: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct2$outboundSchema
     ),
     z.boolean(),
     CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct3$outboundSchema,
   ]).optional(),
-  uiDescription: z.union([
+  uiDescription: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct2$outboundSchema
     ),
@@ -4501,46 +4526,46 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreUiControl$inboundSchema;
 
 /** @internal */
-export const CreateIntegrationStoreDirectUiOptionsAtBRANDAt8897$inboundSchema:
+export const CreateIntegrationStoreDirectUiOptionsAtBRANDAt8978$inboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectUiOptionsAtBRANDAt8897,
+    CreateIntegrationStoreDirectUiOptionsAtBRANDAt8978,
     z.ZodTypeDef,
     unknown
   > = z.object({});
 /** @internal */
-export type CreateIntegrationStoreDirectUiOptionsAtBRANDAt8897$Outbound = {};
+export type CreateIntegrationStoreDirectUiOptionsAtBRANDAt8978$Outbound = {};
 
 /** @internal */
-export const CreateIntegrationStoreDirectUiOptionsAtBRANDAt8897$outboundSchema:
+export const CreateIntegrationStoreDirectUiOptionsAtBRANDAt8978$outboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectUiOptionsAtBRANDAt8897$Outbound,
+    CreateIntegrationStoreDirectUiOptionsAtBRANDAt8978$Outbound,
     z.ZodTypeDef,
-    CreateIntegrationStoreDirectUiOptionsAtBRANDAt8897
+    CreateIntegrationStoreDirectUiOptionsAtBRANDAt8978
   > = z.object({});
 
-export function createIntegrationStoreDirectUiOptionsAtBRANDAt8897ToJSON(
-  createIntegrationStoreDirectUiOptionsAtBRANDAt8897:
-    CreateIntegrationStoreDirectUiOptionsAtBRANDAt8897,
+export function createIntegrationStoreDirectUiOptionsAtBRANDAt8978ToJSON(
+  createIntegrationStoreDirectUiOptionsAtBRANDAt8978:
+    CreateIntegrationStoreDirectUiOptionsAtBRANDAt8978,
 ): string {
   return JSON.stringify(
-    CreateIntegrationStoreDirectUiOptionsAtBRANDAt8897$outboundSchema.parse(
-      createIntegrationStoreDirectUiOptionsAtBRANDAt8897,
+    CreateIntegrationStoreDirectUiOptionsAtBRANDAt8978$outboundSchema.parse(
+      createIntegrationStoreDirectUiOptionsAtBRANDAt8978,
     ),
   );
 }
-export function createIntegrationStoreDirectUiOptionsAtBRANDAt8897FromJSON(
+export function createIntegrationStoreDirectUiOptionsAtBRANDAt8978FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateIntegrationStoreDirectUiOptionsAtBRANDAt8897,
+  CreateIntegrationStoreDirectUiOptionsAtBRANDAt8978,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateIntegrationStoreDirectUiOptionsAtBRANDAt8897$inboundSchema.parse(
+      CreateIntegrationStoreDirectUiOptionsAtBRANDAt8978$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'CreateIntegrationStoreDirectUiOptionsAtBRANDAt8897' from JSON`,
+    `Failed to parse 'CreateIntegrationStoreDirectUiOptionsAtBRANDAt8978' from JSON`,
   );
 }
 
@@ -4548,17 +4573,17 @@ export function createIntegrationStoreDirectUiOptionsAtBRANDAt8897FromJSON(
 export const CreateIntegrationStoreDirectUiOptionsValue$inboundSchema:
   z.ZodType<CreateIntegrationStoreDirectUiOptionsValue, z.ZodTypeDef, unknown> =
     z.object({
-      "__@BRAND@8897": z.lazy(() =>
-        CreateIntegrationStoreDirectUiOptionsAtBRANDAt8897$inboundSchema
+      "__@BRAND@8978": z.lazy(() =>
+        CreateIntegrationStoreDirectUiOptionsAtBRANDAt8978$inboundSchema
       ),
     }).transform((v) => {
       return remap$(v, {
-        "__@BRAND@8897": "atBRANDAt8897",
+        "__@BRAND@8978": "atBRANDAt8978",
       });
     });
 /** @internal */
 export type CreateIntegrationStoreDirectUiOptionsValue$Outbound = {
-  "__@BRAND@8897": CreateIntegrationStoreDirectUiOptionsAtBRANDAt8897$Outbound;
+  "__@BRAND@8978": CreateIntegrationStoreDirectUiOptionsAtBRANDAt8978$Outbound;
 };
 
 /** @internal */
@@ -4568,12 +4593,12 @@ export const CreateIntegrationStoreDirectUiOptionsValue$outboundSchema:
     z.ZodTypeDef,
     CreateIntegrationStoreDirectUiOptionsValue
   > = z.object({
-    atBRANDAt8897: z.lazy(() =>
-      CreateIntegrationStoreDirectUiOptionsAtBRANDAt8897$outboundSchema
+    atBRANDAt8978: z.lazy(() =>
+      CreateIntegrationStoreDirectUiOptionsAtBRANDAt8978$outboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      atBRANDAt8897: "__@BRAND@8897",
+      atBRANDAt8978: "__@BRAND@8978",
     });
   });
 
@@ -4624,7 +4649,7 @@ export const CreateIntegrationStoreDirectDisabledIntegrationsResponse2002$inboun
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectDisabledIntegrationsResponse2002$Outbound =
@@ -4672,11 +4697,11 @@ export const CreateIntegrationStoreDirectUiOptionsIntegrationsDisabled$inboundSc
     CreateIntegrationStoreDirectUiOptionsIntegrationsDisabled,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectDisabledIntegrationsResponse2002$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectDisabledIntegrationsResponse2003$inboundSchema,
   ]);
 /** @internal */
@@ -4691,7 +4716,7 @@ export const CreateIntegrationStoreDirectUiOptionsIntegrationsDisabled$outboundS
     CreateIntegrationStoreDirectUiOptionsIntegrationsDisabled$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectUiOptionsIntegrationsDisabled
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectDisabledIntegrationsResponse2002$outboundSchema
     ),
@@ -4741,7 +4766,7 @@ export const CreateIntegrationStoreDirectHiddenIntegrationsResponse2002$inboundS
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectHiddenIntegrationsResponse2002$Outbound =
@@ -4789,11 +4814,11 @@ export const CreateIntegrationStoreDirectUiOptionsIntegrationsHidden$inboundSche
     CreateIntegrationStoreDirectUiOptionsIntegrationsHidden,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectHiddenIntegrationsResponse2002$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectHiddenIntegrationsResponse2003$inboundSchema,
   ]);
 /** @internal */
@@ -4808,7 +4833,7 @@ export const CreateIntegrationStoreDirectUiOptionsIntegrationsHidden$outboundSch
     CreateIntegrationStoreDirectUiOptionsIntegrationsHidden$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectUiOptionsIntegrationsHidden
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectHiddenIntegrationsResponse2002$outboundSchema
     ),
@@ -4847,20 +4872,24 @@ export const CreateIntegrationStoreDirectUiOptions3$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   value: z.lazy(() => CreateIntegrationStoreDirectUiOptionsValue$inboundSchema),
-  disabled: z.union([
-    z.lazy(() =>
-      CreateIntegrationStoreDirectDisabledIntegrationsResponse2002$inboundSchema
-    ),
-    z.boolean(),
-    CreateIntegrationStoreDirectDisabledIntegrationsResponse2003$inboundSchema,
-  ]).optional(),
-  hidden: z.union([
-    z.lazy(() =>
-      CreateIntegrationStoreDirectHiddenIntegrationsResponse2002$inboundSchema
-    ),
-    z.boolean(),
-    CreateIntegrationStoreDirectHiddenIntegrationsResponse2003$inboundSchema,
-  ]).optional(),
+  disabled: types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectDisabledIntegrationsResponse2002$inboundSchema
+      ),
+      types.boolean(),
+      CreateIntegrationStoreDirectDisabledIntegrationsResponse2003$inboundSchema,
+    ]),
+  ),
+  hidden: types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectHiddenIntegrationsResponse2002$inboundSchema
+      ),
+      types.boolean(),
+      CreateIntegrationStoreDirectHiddenIntegrationsResponse2003$inboundSchema,
+    ]),
+  ),
 });
 /** @internal */
 export type CreateIntegrationStoreDirectUiOptions3$Outbound = {
@@ -4886,14 +4915,14 @@ export const CreateIntegrationStoreDirectUiOptions3$outboundSchema: z.ZodType<
   value: z.lazy(() =>
     CreateIntegrationStoreDirectUiOptionsValue$outboundSchema
   ),
-  disabled: z.union([
+  disabled: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectDisabledIntegrationsResponse2002$outboundSchema
     ),
     z.boolean(),
     CreateIntegrationStoreDirectDisabledIntegrationsResponse2003$outboundSchema,
   ]).optional(),
-  hidden: z.union([
+  hidden: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectHiddenIntegrationsResponse2002$outboundSchema
     ),
@@ -4924,35 +4953,35 @@ export function createIntegrationStoreDirectUiOptions3FromJSON(
 }
 
 /** @internal */
-export const UiOptionsAtBRANDAt8897$inboundSchema: z.ZodType<
-  UiOptionsAtBRANDAt8897,
+export const UiOptionsAtBRANDAt8978$inboundSchema: z.ZodType<
+  UiOptionsAtBRANDAt8978,
   z.ZodTypeDef,
   unknown
 > = z.object({});
 /** @internal */
-export type UiOptionsAtBRANDAt8897$Outbound = {};
+export type UiOptionsAtBRANDAt8978$Outbound = {};
 
 /** @internal */
-export const UiOptionsAtBRANDAt8897$outboundSchema: z.ZodType<
-  UiOptionsAtBRANDAt8897$Outbound,
+export const UiOptionsAtBRANDAt8978$outboundSchema: z.ZodType<
+  UiOptionsAtBRANDAt8978$Outbound,
   z.ZodTypeDef,
-  UiOptionsAtBRANDAt8897
+  UiOptionsAtBRANDAt8978
 > = z.object({});
 
-export function uiOptionsAtBRANDAt8897ToJSON(
-  uiOptionsAtBRANDAt8897: UiOptionsAtBRANDAt8897,
+export function uiOptionsAtBRANDAt8978ToJSON(
+  uiOptionsAtBRANDAt8978: UiOptionsAtBRANDAt8978,
 ): string {
   return JSON.stringify(
-    UiOptionsAtBRANDAt8897$outboundSchema.parse(uiOptionsAtBRANDAt8897),
+    UiOptionsAtBRANDAt8978$outboundSchema.parse(uiOptionsAtBRANDAt8978),
   );
 }
-export function uiOptionsAtBRANDAt8897FromJSON(
+export function uiOptionsAtBRANDAt8978FromJSON(
   jsonString: string,
-): SafeParseResult<UiOptionsAtBRANDAt8897, SDKValidationError> {
+): SafeParseResult<UiOptionsAtBRANDAt8978, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UiOptionsAtBRANDAt8897$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UiOptionsAtBRANDAt8897' from JSON`,
+    (x) => UiOptionsAtBRANDAt8978$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UiOptionsAtBRANDAt8978' from JSON`,
   );
 }
 
@@ -4962,15 +4991,15 @@ export const CreateIntegrationStoreDirectUiOptions2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "__@BRAND@8897": z.lazy(() => UiOptionsAtBRANDAt8897$inboundSchema),
+  "__@BRAND@8978": z.lazy(() => UiOptionsAtBRANDAt8978$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
-    "__@BRAND@8897": "atBRANDAt8897",
+    "__@BRAND@8978": "atBRANDAt8978",
   });
 });
 /** @internal */
 export type CreateIntegrationStoreDirectUiOptions2$Outbound = {
-  "__@BRAND@8897": UiOptionsAtBRANDAt8897$Outbound;
+  "__@BRAND@8978": UiOptionsAtBRANDAt8978$Outbound;
 };
 
 /** @internal */
@@ -4979,10 +5008,10 @@ export const CreateIntegrationStoreDirectUiOptions2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateIntegrationStoreDirectUiOptions2
 > = z.object({
-  atBRANDAt8897: z.lazy(() => UiOptionsAtBRANDAt8897$outboundSchema),
+  atBRANDAt8978: z.lazy(() => UiOptionsAtBRANDAt8978$outboundSchema),
 }).transform((v) => {
   return remap$(v, {
-    atBRANDAt8897: "__@BRAND@8897",
+    atBRANDAt8978: "__@BRAND@8978",
   });
 });
 
@@ -5028,7 +5057,7 @@ export const CreateIntegrationStoreDirectDisabledIntegrationsResponse200Applicat
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2$Outbound =
@@ -5078,11 +5107,11 @@ export const CreateIntegrationStoreDirectUiOptionsDisabled$inboundSchema:
     CreateIntegrationStoreDirectUiOptionsDisabled,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3$inboundSchema,
   ]);
 /** @internal */
@@ -5097,7 +5126,7 @@ export const CreateIntegrationStoreDirectUiOptionsDisabled$outboundSchema:
     CreateIntegrationStoreDirectUiOptionsDisabled$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectUiOptionsDisabled
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2$outboundSchema
     ),
@@ -5152,7 +5181,7 @@ export const CreateIntegrationStoreDirectHiddenIntegrationsResponse200Applicatio
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2$Outbound =
@@ -5202,11 +5231,11 @@ export const CreateIntegrationStoreDirectUiOptionsHidden$inboundSchema:
     CreateIntegrationStoreDirectUiOptionsHidden,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3$inboundSchema,
   ]);
 /** @internal */
@@ -5221,7 +5250,7 @@ export const CreateIntegrationStoreDirectUiOptionsHidden$outboundSchema:
     CreateIntegrationStoreDirectUiOptionsHidden$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectUiOptionsHidden
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2$outboundSchema
     ),
@@ -5261,22 +5290,26 @@ export const CreateIntegrationStoreDirectUiOptions1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: z.string(),
-  label: z.string(),
-  disabled: z.union([
-    z.lazy(() =>
-      CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2$inboundSchema
-    ),
-    z.boolean(),
-    CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3$inboundSchema,
-  ]).optional(),
-  hidden: z.union([
-    z.lazy(() =>
-      CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2$inboundSchema
-    ),
-    z.boolean(),
-    CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3$inboundSchema,
-  ]).optional(),
+  value: types.string(),
+  label: types.string(),
+  disabled: types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2$inboundSchema
+      ),
+      types.boolean(),
+      CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3$inboundSchema,
+    ]),
+  ),
+  hidden: types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2$inboundSchema
+      ),
+      types.boolean(),
+      CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3$inboundSchema,
+    ]),
+  ),
 });
 /** @internal */
 export type CreateIntegrationStoreDirectUiOptions1$Outbound = {
@@ -5302,14 +5335,14 @@ export const CreateIntegrationStoreDirectUiOptions1$outboundSchema: z.ZodType<
 > = z.object({
   value: z.string(),
   label: z.string(),
-  disabled: z.union([
+  disabled: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2$outboundSchema
     ),
     z.boolean(),
     CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3$outboundSchema,
   ]).optional(),
-  hidden: z.union([
+  hidden: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2$outboundSchema
     ),
@@ -5345,7 +5378,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiOptions
     CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiOptions,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() => CreateIntegrationStoreDirectUiOptions1$inboundSchema),
     z.lazy(() => CreateIntegrationStoreDirectUiOptions2$inboundSchema),
     z.lazy(() => CreateIntegrationStoreDirectUiOptions3$inboundSchema),
@@ -5362,7 +5395,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiOptions
     CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiOptions$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiOptions
-  > = z.union([
+  > = smartUnion([
     z.lazy(() => CreateIntegrationStoreDirectUiOptions1$outboundSchema),
     z.lazy(() => CreateIntegrationStoreDirectUiOptions2$outboundSchema),
     z.lazy(() => CreateIntegrationStoreDirectUiOptions3$outboundSchema),
@@ -5395,47 +5428,47 @@ export function createIntegrationStoreDirectPropertiesIntegrationsResponseUiOpti
 }
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8897$inboundSchema:
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8978$inboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8897,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8978,
     z.ZodTypeDef,
     unknown
   > = z.object({});
 /** @internal */
-export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8897$Outbound =
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8978$Outbound =
   {};
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8897$outboundSchema:
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8978$outboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8897$Outbound,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8978$Outbound,
     z.ZodTypeDef,
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8897
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8978
   > = z.object({});
 
-export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8897ToJSON(
-  createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8897:
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8897,
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8978ToJSON(
+  createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8978:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8978,
 ): string {
   return JSON.stringify(
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8897$outboundSchema
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8978$outboundSchema
       .parse(
-        createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8897,
+        createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8978,
       ),
   );
 }
-export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8897FromJSON(
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8978FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8897,
+  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8978,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8897$inboundSchema
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8978$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8897' from JSON`,
+    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8978' from JSON`,
   );
 }
 
@@ -5446,19 +5479,19 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponseMaxLength
     z.ZodTypeDef,
     unknown
   > = z.object({
-    "__@BRAND@8897": z.lazy(() =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8897$inboundSchema
+    "__@BRAND@8978": z.lazy(() =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8978$inboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      "__@BRAND@8897": "atBRANDAt8897",
+      "__@BRAND@8978": "atBRANDAt8978",
     });
   });
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesIntegrationsResponseMaxLength$Outbound =
   {
-    "__@BRAND@8897":
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8897$Outbound;
+    "__@BRAND@8978":
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8978$Outbound;
   };
 
 /** @internal */
@@ -5468,12 +5501,12 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponseMaxLength
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponseMaxLength
   > = z.object({
-    atBRANDAt8897: z.lazy(() =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8897$outboundSchema
+    atBRANDAt8978: z.lazy(() =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt8978$outboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      atBRANDAt8897: "__@BRAND@8897",
+      atBRANDAt8978: "__@BRAND@8978",
     });
   });
 
@@ -5504,47 +5537,47 @@ export function createIntegrationStoreDirectPropertiesIntegrationsResponseMaxLen
 }
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8897$inboundSchema:
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8978$inboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8897,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8978,
     z.ZodTypeDef,
     unknown
   > = z.object({});
 /** @internal */
-export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8897$Outbound =
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8978$Outbound =
   {};
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8897$outboundSchema:
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8978$outboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8897$Outbound,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8978$Outbound,
     z.ZodTypeDef,
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8897
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8978
   > = z.object({});
 
-export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8897ToJSON(
-  createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8897:
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8897,
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8978ToJSON(
+  createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8978:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8978,
 ): string {
   return JSON.stringify(
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8897$outboundSchema
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8978$outboundSchema
       .parse(
-        createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8897,
+        createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8978,
       ),
   );
 }
-export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8897FromJSON(
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8978FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8897,
+  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8978,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8897$inboundSchema
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8978$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8897' from JSON`,
+    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8978' from JSON`,
   );
 }
 
@@ -5555,19 +5588,19 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponseMinLength
     z.ZodTypeDef,
     unknown
   > = z.object({
-    "__@BRAND@8897": z.lazy(() =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8897$inboundSchema
+    "__@BRAND@8978": z.lazy(() =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8978$inboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      "__@BRAND@8897": "atBRANDAt8897",
+      "__@BRAND@8978": "atBRANDAt8978",
     });
   });
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesIntegrationsResponseMinLength$Outbound =
   {
-    "__@BRAND@8897":
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8897$Outbound;
+    "__@BRAND@8978":
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8978$Outbound;
   };
 
 /** @internal */
@@ -5577,12 +5610,12 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponseMinLength
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponseMinLength
   > = z.object({
-    atBRANDAt8897: z.lazy(() =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8897$outboundSchema
+    atBRANDAt8978: z.lazy(() =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt8978$outboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      atBRANDAt8897: "__@BRAND@8897",
+      atBRANDAt8978: "__@BRAND@8978",
     });
   });
 
@@ -5613,47 +5646,47 @@ export function createIntegrationStoreDirectPropertiesIntegrationsResponseMinLen
 }
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8897$inboundSchema:
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8978$inboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8897,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8978,
     z.ZodTypeDef,
     unknown
   > = z.object({});
 /** @internal */
-export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8897$Outbound =
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8978$Outbound =
   {};
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8897$outboundSchema:
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8978$outboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8897$Outbound,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8978$Outbound,
     z.ZodTypeDef,
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8897
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8978
   > = z.object({});
 
-export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8897ToJSON(
-  createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8897:
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8897,
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8978ToJSON(
+  createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8978:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8978,
 ): string {
   return JSON.stringify(
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8897$outboundSchema
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8978$outboundSchema
       .parse(
-        createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8897,
+        createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8978,
       ),
   );
 }
-export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8897FromJSON(
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8978FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8897,
+  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8978,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8897$inboundSchema
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8978$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8897' from JSON`,
+    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8978' from JSON`,
   );
 }
 
@@ -5664,19 +5697,19 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponsePattern$i
     z.ZodTypeDef,
     unknown
   > = z.object({
-    "__@BRAND@8897": z.lazy(() =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8897$inboundSchema
+    "__@BRAND@8978": z.lazy(() =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8978$inboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      "__@BRAND@8897": "atBRANDAt8897",
+      "__@BRAND@8978": "atBRANDAt8978",
     });
   });
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesIntegrationsResponsePattern$Outbound =
   {
-    "__@BRAND@8897":
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8897$Outbound;
+    "__@BRAND@8978":
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8978$Outbound;
   };
 
 /** @internal */
@@ -5686,12 +5719,12 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponsePattern$o
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponsePattern
   > = z.object({
-    atBRANDAt8897: z.lazy(() =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8897$outboundSchema
+    atBRANDAt8978: z.lazy(() =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreAtBRANDAt8978$outboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      atBRANDAt8897: "__@BRAND@8897",
+      atBRANDAt8978: "__@BRAND@8978",
     });
   });
 
@@ -5740,7 +5773,7 @@ export const CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200Applic
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStore2$Outbound =
@@ -5790,11 +5823,11 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreUiReadOnly,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStore2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStore3$inboundSchema,
   ]);
 /** @internal */
@@ -5809,7 +5842,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreUiReadOnly$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreUiReadOnly
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStore2$outboundSchema
     ),
@@ -5864,7 +5897,7 @@ export const CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200Applicat
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStore2$Outbound =
@@ -5914,11 +5947,11 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreUiHidden,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStore2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStore3$inboundSchema,
   ]);
 /** @internal */
@@ -5933,7 +5966,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreUiHidden$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreUiHidden
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStore2$outboundSchema
     ),
@@ -5988,7 +6021,7 @@ export const CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200Applic
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStore2$Outbound =
@@ -6038,11 +6071,11 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreUiDisabled,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStore2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStore3$inboundSchema,
   ]);
 /** @internal */
@@ -6057,7 +6090,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreUiDisabled$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreUiDisabled
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStore2$outboundSchema
     ),
@@ -6098,7 +6131,7 @@ export const CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200App
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStore2$Outbound =
@@ -6148,11 +6181,11 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreUiDescription,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStore2$inboundSchema
     ),
-    z.string(),
+    types.string(),
   ]);
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreUiDescription$Outbound =
@@ -6165,7 +6198,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreUiDescription$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreUiDescription
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStore2$outboundSchema
     ),
@@ -6205,7 +6238,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreUiFormattedValue$Outbound =
@@ -6260,56 +6293,72 @@ export const CreateIntegrationStoreDirectProperties7$inboundSchema: z.ZodType<
   "ui:control":
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreUiControl$inboundSchema,
   "ui:options": z.array(
-    z.union([
+    smartUnion([
       z.lazy(() => CreateIntegrationStoreDirectUiOptions1$inboundSchema),
       z.lazy(() => CreateIntegrationStoreDirectUiOptions2$inboundSchema),
       z.lazy(() => CreateIntegrationStoreDirectUiOptions3$inboundSchema),
     ]),
   ),
-  enum: z.array(z.string()).optional(),
-  maxLength: z.lazy(() =>
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponseMaxLength$inboundSchema
-  ).optional(),
-  minLength: z.lazy(() =>
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponseMinLength$inboundSchema
-  ).optional(),
-  pattern: z.lazy(() =>
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponsePattern$inboundSchema
-  ).optional(),
-  description: z.string().optional(),
-  default: z.string().optional(),
-  "ui:label": z.string().optional(),
-  "ui:read-only": z.union([
+  enum: types.optional(z.array(types.string())),
+  maxLength: types.optional(
     z.lazy(() =>
-      CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStore2$inboundSchema
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponseMaxLength$inboundSchema
     ),
-    z.boolean(),
-    CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStore3$inboundSchema,
-  ]).optional(),
-  "ui:hidden": z.union([
+  ),
+  minLength: types.optional(
     z.lazy(() =>
-      CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStore2$inboundSchema
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponseMinLength$inboundSchema
     ),
-    z.boolean(),
-    CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStore3$inboundSchema,
-  ]).optional(),
-  "ui:disabled": z.union([
+  ),
+  pattern: types.optional(
     z.lazy(() =>
-      CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStore2$inboundSchema
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponsePattern$inboundSchema
     ),
-    z.boolean(),
-    CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStore3$inboundSchema,
-  ]).optional(),
-  "ui:description": z.union([
+  ),
+  description: types.optional(types.string()),
+  default: types.optional(types.string()),
+  "ui:label": types.optional(types.string()),
+  "ui:read-only": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStore2$inboundSchema
+      ),
+      types.boolean(),
+      CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStore3$inboundSchema,
+    ]),
+  ),
+  "ui:hidden": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStore2$inboundSchema
+      ),
+      types.boolean(),
+      CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStore3$inboundSchema,
+    ]),
+  ),
+  "ui:disabled": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStore2$inboundSchema
+      ),
+      types.boolean(),
+      CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStore3$inboundSchema,
+    ]),
+  ),
+  "ui:description": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStore2$inboundSchema
+      ),
+      types.string(),
+    ]),
+  ),
+  "ui:formatted-value": types.optional(
     z.lazy(() =>
-      CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStore2$inboundSchema
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreUiFormattedValue$inboundSchema
     ),
-    z.string(),
-  ]).optional(),
-  "ui:formatted-value": z.lazy(() =>
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreUiFormattedValue$inboundSchema
-  ).optional(),
-  "ui:placeholder": z.string().optional(),
+  ),
+  "ui:placeholder": types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
     "ui:control": "uiControl",
@@ -6381,7 +6430,7 @@ export const CreateIntegrationStoreDirectProperties7$outboundSchema: z.ZodType<
   uiControl:
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreUiControl$outboundSchema,
   uiOptions: z.array(
-    z.union([
+    smartUnion([
       z.lazy(() => CreateIntegrationStoreDirectUiOptions1$outboundSchema),
       z.lazy(() => CreateIntegrationStoreDirectUiOptions2$outboundSchema),
       z.lazy(() => CreateIntegrationStoreDirectUiOptions3$outboundSchema),
@@ -6400,28 +6449,28 @@ export const CreateIntegrationStoreDirectProperties7$outboundSchema: z.ZodType<
   description: z.string().optional(),
   default: z.string().optional(),
   uiLabel: z.string().optional(),
-  uiReadOnly: z.union([
+  uiReadOnly: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStore2$outboundSchema
     ),
     z.boolean(),
     CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStore3$outboundSchema,
   ]).optional(),
-  uiHidden: z.union([
+  uiHidden: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStore2$outboundSchema
     ),
     z.boolean(),
     CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStore3$outboundSchema,
   ]).optional(),
-  uiDisabled: z.union([
+  uiDisabled: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStore2$outboundSchema
     ),
     z.boolean(),
     CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStore3$outboundSchema,
   ]).optional(),
-  uiDescription: z.union([
+  uiDescription: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStore2$outboundSchema
     ),
@@ -6500,47 +6549,47 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6Type$inboundSchema;
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8897$inboundSchema:
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8978$inboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8897,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8978,
     z.ZodTypeDef,
     unknown
   > = z.object({});
 /** @internal */
-export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8897$Outbound =
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8978$Outbound =
   {};
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8897$outboundSchema:
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8978$outboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8897$Outbound,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8978$Outbound,
     z.ZodTypeDef,
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8897
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8978
   > = z.object({});
 
-export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8897ToJSON(
-  createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8897:
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8897,
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8978ToJSON(
+  createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8978:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8978,
 ): string {
   return JSON.stringify(
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8897$outboundSchema
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8978$outboundSchema
       .parse(
-        createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8897,
+        createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8978,
       ),
   );
 }
-export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8897FromJSON(
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8978FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8897,
+  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8978,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8897$inboundSchema
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8978$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8897' from JSON`,
+    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8978' from JSON`,
   );
 }
 
@@ -6551,19 +6600,19 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     z.ZodTypeDef,
     unknown
   > = z.object({
-    "__@BRAND@8897": z.lazy(() =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8897$inboundSchema
+    "__@BRAND@8978": z.lazy(() =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8978$inboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      "__@BRAND@8897": "atBRANDAt8897",
+      "__@BRAND@8978": "atBRANDAt8978",
     });
   });
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONMinLength$Outbound =
   {
-    "__@BRAND@8897":
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8897$Outbound;
+    "__@BRAND@8978":
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8978$Outbound;
   };
 
 /** @internal */
@@ -6573,12 +6622,12 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONMinLength
   > = z.object({
-    atBRANDAt8897: z.lazy(() =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8897$outboundSchema
+    atBRANDAt8978: z.lazy(() =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsAtBRANDAt8978$outboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      atBRANDAt8897: "__@BRAND@8897",
+      atBRANDAt8978: "__@BRAND@8978",
     });
   });
 
@@ -6609,47 +6658,47 @@ export function createIntegrationStoreDirectPropertiesIntegrationsResponse200App
 }
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8897$inboundSchema:
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8978$inboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8897,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8978,
     z.ZodTypeDef,
     unknown
   > = z.object({});
 /** @internal */
-export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8897$Outbound =
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8978$Outbound =
   {};
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8897$outboundSchema:
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8978$outboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8897$Outbound,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8978$Outbound,
     z.ZodTypeDef,
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8897
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8978
   > = z.object({});
 
-export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8897ToJSON(
-  createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8897:
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8897,
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8978ToJSON(
+  createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8978:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8978,
 ): string {
   return JSON.stringify(
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8897$outboundSchema
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8978$outboundSchema
       .parse(
-        createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8897,
+        createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8978,
       ),
   );
 }
-export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8897FromJSON(
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8978FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8897,
+  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8978,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8897$inboundSchema
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8978$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8897' from JSON`,
+    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8978' from JSON`,
   );
 }
 
@@ -6660,19 +6709,19 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     z.ZodTypeDef,
     unknown
   > = z.object({
-    "__@BRAND@8897": z.lazy(() =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8897$inboundSchema
+    "__@BRAND@8978": z.lazy(() =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8978$inboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      "__@BRAND@8897": "atBRANDAt8897",
+      "__@BRAND@8978": "atBRANDAt8978",
     });
   });
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONMaxLength$Outbound =
   {
-    "__@BRAND@8897":
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8897$Outbound;
+    "__@BRAND@8978":
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8978$Outbound;
   };
 
 /** @internal */
@@ -6682,12 +6731,12 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONMaxLength
   > = z.object({
-    atBRANDAt8897: z.lazy(() =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8897$outboundSchema
+    atBRANDAt8978: z.lazy(() =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8978$outboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      atBRANDAt8897: "__@BRAND@8897",
+      atBRANDAt8978: "__@BRAND@8978",
     });
   });
 
@@ -6718,47 +6767,47 @@ export function createIntegrationStoreDirectPropertiesIntegrationsResponse200App
 }
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8897$inboundSchema:
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8978$inboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8897,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8978,
     z.ZodTypeDef,
     unknown
   > = z.object({});
 /** @internal */
-export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8897$Outbound =
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8978$Outbound =
   {};
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8897$outboundSchema:
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8978$outboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8897$Outbound,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8978$Outbound,
     z.ZodTypeDef,
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8897
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8978
   > = z.object({});
 
-export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8897ToJSON(
-  createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8897:
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8897,
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8978ToJSON(
+  createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8978:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8978,
 ): string {
   return JSON.stringify(
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8897$outboundSchema
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8978$outboundSchema
       .parse(
-        createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8897,
+        createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8978,
       ),
   );
 }
-export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8897FromJSON(
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8978FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8897,
+  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8978,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8897$inboundSchema
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8978$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8897' from JSON`,
+    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8978' from JSON`,
   );
 }
 
@@ -6769,19 +6818,19 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     z.ZodTypeDef,
     unknown
   > = z.object({
-    "__@BRAND@8897": z.lazy(() =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8897$inboundSchema
+    "__@BRAND@8978": z.lazy(() =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8978$inboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      "__@BRAND@8897": "atBRANDAt8897",
+      "__@BRAND@8978": "atBRANDAt8978",
     });
   });
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONPattern$Outbound =
   {
-    "__@BRAND@8897":
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8897$Outbound;
+    "__@BRAND@8978":
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8978$Outbound;
   };
 
 /** @internal */
@@ -6791,12 +6840,12 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONPattern
   > = z.object({
-    atBRANDAt8897: z.lazy(() =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8897$outboundSchema
+    atBRANDAt8978: z.lazy(() =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6AtBRANDAt8978$outboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      atBRANDAt8897: "__@BRAND@8897",
+      atBRANDAt8978: "__@BRAND@8978",
     });
   });
 
@@ -6835,18 +6884,24 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsItems$inboundSche
   > = z.object({
     type:
       CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6Type$inboundSchema,
-    description: z.string().optional(),
-    minLength: z.lazy(() =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONMinLength$inboundSchema
-    ).optional(),
-    maxLength: z.lazy(() =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONMaxLength$inboundSchema
-    ).optional(),
-    pattern: z.lazy(() =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONPattern$inboundSchema
-    ).optional(),
-    default: z.string().optional(),
-    enum: z.array(z.string()).optional(),
+    description: types.optional(types.string()),
+    minLength: types.optional(
+      z.lazy(() =>
+        CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONMinLength$inboundSchema
+      ),
+    ),
+    maxLength: types.optional(
+      z.lazy(() =>
+        CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONMaxLength$inboundSchema
+      ),
+    ),
+    pattern: types.optional(
+      z.lazy(() =>
+        CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONPattern$inboundSchema
+      ),
+    ),
+    default: types.optional(types.string()),
+    enum: types.optional(z.array(types.string())),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesIntegrationsItems$Outbound = {
@@ -6942,7 +6997,7 @@ export const CreateIntegrationStoreDirectDisabledIntegrations2$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectDisabledIntegrations2$Outbound = {
@@ -6991,11 +7046,11 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsDisabled$inboundS
     CreateIntegrationStoreDirectPropertiesIntegrationsDisabled,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectDisabledIntegrations2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectDisabledIntegrations3$inboundSchema,
   ]);
 /** @internal */
@@ -7010,7 +7065,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsDisabled$outbound
     CreateIntegrationStoreDirectPropertiesIntegrationsDisabled$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsDisabled
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectDisabledIntegrations2$outboundSchema
     ),
@@ -7058,7 +7113,7 @@ export const CreateIntegrationStoreDirectHiddenIntegrations2$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectHiddenIntegrations2$Outbound = {
@@ -7107,9 +7162,9 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsHidden$inboundSch
     CreateIntegrationStoreDirectPropertiesIntegrationsHidden,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() => CreateIntegrationStoreDirectHiddenIntegrations2$inboundSchema),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectHiddenIntegrations3$inboundSchema,
   ]);
 /** @internal */
@@ -7124,7 +7179,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsHidden$outboundSc
     CreateIntegrationStoreDirectPropertiesIntegrationsHidden$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsHidden
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectHiddenIntegrations2$outboundSchema
     ),
@@ -7163,22 +7218,26 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsUiOptions$inbound
     z.ZodTypeDef,
     unknown
   > = z.object({
-    value: z.string(),
-    label: z.string(),
-    disabled: z.union([
-      z.lazy(() =>
-        CreateIntegrationStoreDirectDisabledIntegrations2$inboundSchema
-      ),
-      z.boolean(),
-      CreateIntegrationStoreDirectDisabledIntegrations3$inboundSchema,
-    ]).optional(),
-    hidden: z.union([
-      z.lazy(() =>
-        CreateIntegrationStoreDirectHiddenIntegrations2$inboundSchema
-      ),
-      z.boolean(),
-      CreateIntegrationStoreDirectHiddenIntegrations3$inboundSchema,
-    ]).optional(),
+    value: types.string(),
+    label: types.string(),
+    disabled: types.optional(
+      smartUnion([
+        z.lazy(() =>
+          CreateIntegrationStoreDirectDisabledIntegrations2$inboundSchema
+        ),
+        types.boolean(),
+        CreateIntegrationStoreDirectDisabledIntegrations3$inboundSchema,
+      ]),
+    ),
+    hidden: types.optional(
+      smartUnion([
+        z.lazy(() =>
+          CreateIntegrationStoreDirectHiddenIntegrations2$inboundSchema
+        ),
+        types.boolean(),
+        CreateIntegrationStoreDirectHiddenIntegrations3$inboundSchema,
+      ]),
+    ),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesIntegrationsUiOptions$Outbound =
@@ -7206,14 +7265,14 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsUiOptions$outboun
   > = z.object({
     value: z.string(),
     label: z.string(),
-    disabled: z.union([
+    disabled: smartUnion([
       z.lazy(() =>
         CreateIntegrationStoreDirectDisabledIntegrations2$outboundSchema
       ),
       z.boolean(),
       CreateIntegrationStoreDirectDisabledIntegrations3$outboundSchema,
     ]).optional(),
-    hidden: z.union([
+    hidden: smartUnion([
       z.lazy(() =>
         CreateIntegrationStoreDirectHiddenIntegrations2$outboundSchema
       ),
@@ -7267,7 +7326,7 @@ export const CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200Applic
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody2$Outbound =
@@ -7317,11 +7376,11 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiReadOnly,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
   ]);
 /** @internal */
@@ -7336,7 +7395,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiReadOnly$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiReadOnly
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema
     ),
@@ -7391,7 +7450,7 @@ export const CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200Applicat
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBody2$Outbound =
@@ -7441,11 +7500,11 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiHidden,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
   ]);
 /** @internal */
@@ -7460,7 +7519,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiHidden$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiHidden
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema
     ),
@@ -7515,7 +7574,7 @@ export const CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200Applic
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBody2$Outbound =
@@ -7565,11 +7624,11 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDisabled,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
   ]);
 /** @internal */
@@ -7584,7 +7643,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDisabled$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDisabled
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema
     ),
@@ -7625,7 +7684,7 @@ export const CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200App
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBody2$Outbound =
@@ -7675,11 +7734,11 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDescription,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
     ),
-    z.string(),
+    types.string(),
   ]);
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDescription$Outbound =
@@ -7692,7 +7751,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDescription$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDescription
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema
     ),
@@ -7732,7 +7791,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiFormattedValue$Outbound =
@@ -7794,43 +7853,53 @@ export const CreateIntegrationStoreDirectProperties6$inboundSchema: z.ZodType<
       CreateIntegrationStoreDirectPropertiesIntegrationsUiOptions$inboundSchema
     ),
   ),
-  maxItems: z.number().optional(),
-  minItems: z.number().optional(),
-  description: z.string().optional(),
-  "ui:label": z.string().optional(),
-  "ui:read-only": z.union([
+  maxItems: types.optional(types.number()),
+  minItems: types.optional(types.number()),
+  description: types.optional(types.string()),
+  "ui:label": types.optional(types.string()),
+  "ui:read-only": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
+      ),
+      types.boolean(),
+      CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
+    ]),
+  ),
+  "ui:hidden": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
+      ),
+      types.boolean(),
+      CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
+    ]),
+  ),
+  "ui:disabled": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
+      ),
+      types.boolean(),
+      CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
+    ]),
+  ),
+  "ui:description": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
+      ),
+      types.string(),
+    ]),
+  ),
+  "ui:formatted-value": types.optional(
     z.lazy(() =>
-      CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiFormattedValue$inboundSchema
     ),
-    z.boolean(),
-    CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
-  ]).optional(),
-  "ui:hidden": z.union([
-    z.lazy(() =>
-      CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
-    ),
-    z.boolean(),
-    CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
-  ]).optional(),
-  "ui:disabled": z.union([
-    z.lazy(() =>
-      CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
-    ),
-    z.boolean(),
-    CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
-  ]).optional(),
-  "ui:description": z.union([
-    z.lazy(() =>
-      CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
-    ),
-    z.string(),
-  ]).optional(),
-  "ui:formatted-value": z.lazy(() =>
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiFormattedValue$inboundSchema
-  ).optional(),
-  "ui:placeholder": z.string().optional(),
-  default: z.array(z.string()).optional(),
-  example: z.array(z.string()).optional(),
+  ),
+  "ui:placeholder": types.optional(types.string()),
+  default: types.optional(z.array(types.string())),
+  example: types.optional(z.array(types.string())),
 }).transform((v) => {
   return remap$(v, {
     "ui:control": "uiControl",
@@ -7905,28 +7974,28 @@ export const CreateIntegrationStoreDirectProperties6$outboundSchema: z.ZodType<
   minItems: z.number().optional(),
   description: z.string().optional(),
   uiLabel: z.string().optional(),
-  uiReadOnly: z.union([
+  uiReadOnly: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema
     ),
     z.boolean(),
     CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody3$outboundSchema,
   ]).optional(),
-  uiHidden: z.union([
+  uiHidden: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema
     ),
     z.boolean(),
     CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBody3$outboundSchema,
   ]).optional(),
-  uiDisabled: z.union([
+  uiDisabled: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema
     ),
     z.boolean(),
     CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBody3$outboundSchema,
   ]).optional(),
-  uiDescription: z.union([
+  uiDescription: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema
     ),
@@ -8024,7 +8093,7 @@ export const CreateIntegrationStoreDirectDisabledIntegrationsResponse2$inboundSc
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectDisabledIntegrationsResponse2$Outbound =
@@ -8072,11 +8141,11 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponseDisabled$
     CreateIntegrationStoreDirectPropertiesIntegrationsResponseDisabled,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectDisabledIntegrationsResponse2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectDisabledIntegrationsResponse3$inboundSchema,
   ]);
 /** @internal */
@@ -8091,7 +8160,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponseDisabled$
     CreateIntegrationStoreDirectPropertiesIntegrationsResponseDisabled$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponseDisabled
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectDisabledIntegrationsResponse2$outboundSchema
     ),
@@ -8143,7 +8212,7 @@ export const CreateIntegrationStoreDirectHiddenIntegrationsResponse2$inboundSche
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectHiddenIntegrationsResponse2$Outbound = {
@@ -8190,11 +8259,11 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponseHidden$in
     CreateIntegrationStoreDirectPropertiesIntegrationsResponseHidden,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectHiddenIntegrationsResponse2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectHiddenIntegrationsResponse3$inboundSchema,
   ]);
 /** @internal */
@@ -8209,7 +8278,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponseHidden$ou
     CreateIntegrationStoreDirectPropertiesIntegrationsResponseHidden$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponseHidden
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectHiddenIntegrationsResponse2$outboundSchema
     ),
@@ -8248,22 +8317,26 @@ export const CreateIntegrationStoreDirectPropertiesUiOptions$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    value: z.string(),
-    label: z.string(),
-    disabled: z.union([
-      z.lazy(() =>
-        CreateIntegrationStoreDirectDisabledIntegrationsResponse2$inboundSchema
-      ),
-      z.boolean(),
-      CreateIntegrationStoreDirectDisabledIntegrationsResponse3$inboundSchema,
-    ]).optional(),
-    hidden: z.union([
-      z.lazy(() =>
-        CreateIntegrationStoreDirectHiddenIntegrationsResponse2$inboundSchema
-      ),
-      z.boolean(),
-      CreateIntegrationStoreDirectHiddenIntegrationsResponse3$inboundSchema,
-    ]).optional(),
+    value: types.string(),
+    label: types.string(),
+    disabled: types.optional(
+      smartUnion([
+        z.lazy(() =>
+          CreateIntegrationStoreDirectDisabledIntegrationsResponse2$inboundSchema
+        ),
+        types.boolean(),
+        CreateIntegrationStoreDirectDisabledIntegrationsResponse3$inboundSchema,
+      ]),
+    ),
+    hidden: types.optional(
+      smartUnion([
+        z.lazy(() =>
+          CreateIntegrationStoreDirectHiddenIntegrationsResponse2$inboundSchema
+        ),
+        types.boolean(),
+        CreateIntegrationStoreDirectHiddenIntegrationsResponse3$inboundSchema,
+      ]),
+    ),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesUiOptions$Outbound = {
@@ -8290,14 +8363,14 @@ export const CreateIntegrationStoreDirectPropertiesUiOptions$outboundSchema:
   > = z.object({
     value: z.string(),
     label: z.string(),
-    disabled: z.union([
+    disabled: smartUnion([
       z.lazy(() =>
         CreateIntegrationStoreDirectDisabledIntegrationsResponse2$outboundSchema
       ),
       z.boolean(),
       CreateIntegrationStoreDirectDisabledIntegrationsResponse3$outboundSchema,
     ]).optional(),
-    hidden: z.union([
+    hidden: smartUnion([
       z.lazy(() =>
         CreateIntegrationStoreDirectHiddenIntegrationsResponse2$outboundSchema
       ),
@@ -8333,45 +8406,45 @@ export function createIntegrationStoreDirectPropertiesUiOptionsFromJSON(
 }
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8897$inboundSchema:
+export const CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8978$inboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8897,
+    CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8978,
     z.ZodTypeDef,
     unknown
   > = z.object({});
 /** @internal */
-export type CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8897$Outbound =
+export type CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8978$Outbound =
   {};
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8897$outboundSchema:
+export const CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8978$outboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8897$Outbound,
+    CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8978$Outbound,
     z.ZodTypeDef,
-    CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8897
+    CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8978
   > = z.object({});
 
-export function createIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8897ToJSON(
-  createIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8897:
-    CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8897,
+export function createIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8978ToJSON(
+  createIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8978:
+    CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8978,
 ): string {
   return JSON.stringify(
-    CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8897$outboundSchema
-      .parse(createIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8897),
+    CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8978$outboundSchema
+      .parse(createIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8978),
   );
 }
-export function createIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8897FromJSON(
+export function createIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8978FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8897,
+  CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8978,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8897$inboundSchema
+      CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8978$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8897' from JSON`,
+    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8978' from JSON`,
   );
 }
 
@@ -8382,19 +8455,19 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsMaxLength$inbound
     z.ZodTypeDef,
     unknown
   > = z.object({
-    "__@BRAND@8897": z.lazy(() =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8897$inboundSchema
+    "__@BRAND@8978": z.lazy(() =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8978$inboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      "__@BRAND@8897": "atBRANDAt8897",
+      "__@BRAND@8978": "atBRANDAt8978",
     });
   });
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesIntegrationsMaxLength$Outbound =
   {
-    "__@BRAND@8897":
-      CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8897$Outbound;
+    "__@BRAND@8978":
+      CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8978$Outbound;
   };
 
 /** @internal */
@@ -8404,12 +8477,12 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsMaxLength$outboun
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsMaxLength
   > = z.object({
-    atBRANDAt8897: z.lazy(() =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8897$outboundSchema
+    atBRANDAt8978: z.lazy(() =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8978$outboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      atBRANDAt8897: "__@BRAND@8897",
+      atBRANDAt8978: "__@BRAND@8978",
     });
   });
 
@@ -8438,47 +8511,47 @@ export function createIntegrationStoreDirectPropertiesIntegrationsMaxLengthFromJ
 }
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8897$inboundSchema:
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8978$inboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8897,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8978,
     z.ZodTypeDef,
     unknown
   > = z.object({});
 /** @internal */
-export type CreateIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8897$Outbound =
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8978$Outbound =
   {};
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8897$outboundSchema:
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8978$outboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8897$Outbound,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8978$Outbound,
     z.ZodTypeDef,
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8897
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8978
   > = z.object({});
 
-export function createIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8897ToJSON(
-  createIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8897:
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8897,
+export function createIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8978ToJSON(
+  createIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8978:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8978,
 ): string {
   return JSON.stringify(
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8897$outboundSchema
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8978$outboundSchema
       .parse(
-        createIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8897,
+        createIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8978,
       ),
   );
 }
-export function createIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8897FromJSON(
+export function createIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8978FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8897,
+  CreateIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8978,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8897$inboundSchema
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8978$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8897' from JSON`,
+    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8978' from JSON`,
   );
 }
 
@@ -8489,19 +8562,19 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsMinLength$inbound
     z.ZodTypeDef,
     unknown
   > = z.object({
-    "__@BRAND@8897": z.lazy(() =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8897$inboundSchema
+    "__@BRAND@8978": z.lazy(() =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8978$inboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      "__@BRAND@8897": "atBRANDAt8897",
+      "__@BRAND@8978": "atBRANDAt8978",
     });
   });
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesIntegrationsMinLength$Outbound =
   {
-    "__@BRAND@8897":
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8897$Outbound;
+    "__@BRAND@8978":
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8978$Outbound;
   };
 
 /** @internal */
@@ -8511,12 +8584,12 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsMinLength$outboun
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsMinLength
   > = z.object({
-    atBRANDAt8897: z.lazy(() =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8897$outboundSchema
+    atBRANDAt8978: z.lazy(() =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponseAtBRANDAt8978$outboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      atBRANDAt8897: "__@BRAND@8897",
+      atBRANDAt8978: "__@BRAND@8978",
     });
   });
 
@@ -8545,47 +8618,47 @@ export function createIntegrationStoreDirectPropertiesIntegrationsMinLengthFromJ
 }
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8897$inboundSchema:
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8978$inboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8897,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8978,
     z.ZodTypeDef,
     unknown
   > = z.object({});
 /** @internal */
-export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8897$Outbound =
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8978$Outbound =
   {};
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8897$outboundSchema:
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8978$outboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8897$Outbound,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8978$Outbound,
     z.ZodTypeDef,
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8897
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8978
   > = z.object({});
 
-export function createIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8897ToJSON(
-  createIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8897:
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8897,
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8978ToJSON(
+  createIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8978:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8978,
 ): string {
   return JSON.stringify(
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8897$outboundSchema
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8978$outboundSchema
       .parse(
-        createIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8897,
+        createIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8978,
       ),
   );
 }
-export function createIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8897FromJSON(
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8978FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8897,
+  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8978,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8897$inboundSchema
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8978$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8897' from JSON`,
+    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8978' from JSON`,
   );
 }
 
@@ -8596,19 +8669,19 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsPattern$inboundSc
     z.ZodTypeDef,
     unknown
   > = z.object({
-    "__@BRAND@8897": z.lazy(() =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8897$inboundSchema
+    "__@BRAND@8978": z.lazy(() =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8978$inboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      "__@BRAND@8897": "atBRANDAt8897",
+      "__@BRAND@8978": "atBRANDAt8978",
     });
   });
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesIntegrationsPattern$Outbound =
   {
-    "__@BRAND@8897":
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8897$Outbound;
+    "__@BRAND@8978":
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8978$Outbound;
   };
 
 /** @internal */
@@ -8618,12 +8691,12 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsPattern$outboundS
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsPattern
   > = z.object({
-    atBRANDAt8897: z.lazy(() =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8897$outboundSchema
+    atBRANDAt8978: z.lazy(() =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200AtBRANDAt8978$outboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      atBRANDAt8897: "__@BRAND@8897",
+      atBRANDAt8978: "__@BRAND@8978",
     });
   });
 
@@ -8672,7 +8745,7 @@ export const CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200Applic
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJson2$Outbound =
@@ -8722,11 +8795,11 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONUiReadOnly,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJson2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJson3$inboundSchema,
   ]);
 /** @internal */
@@ -8741,7 +8814,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONUiReadOnly$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONUiReadOnly
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJson2$outboundSchema
     ),
@@ -8796,7 +8869,7 @@ export const CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200Applicat
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJson2$Outbound =
@@ -8846,11 +8919,11 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONUiHidden,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJson2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJson3$inboundSchema,
   ]);
 /** @internal */
@@ -8865,7 +8938,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONUiHidden$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONUiHidden
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJson2$outboundSchema
     ),
@@ -8920,7 +8993,7 @@ export const CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200Applic
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJson2$Outbound =
@@ -8970,11 +9043,11 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONUiDisabled,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJson2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJson3$inboundSchema,
   ]);
 /** @internal */
@@ -8989,7 +9062,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONUiDisabled$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONUiDisabled
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJson2$outboundSchema
     ),
@@ -9030,7 +9103,7 @@ export const CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200App
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJson2$Outbound =
@@ -9080,11 +9153,11 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONUiDescription,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJson2$inboundSchema
     ),
-    z.string(),
+    types.string(),
   ]);
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONUiDescription$Outbound =
@@ -9097,7 +9170,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONUiDescription$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONUiDescription
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJson2$outboundSchema
     ),
@@ -9137,7 +9210,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONUiFormattedValue$Outbound =
@@ -9194,50 +9267,66 @@ export const CreateIntegrationStoreDirectProperties5$inboundSchema: z.ZodType<
   "ui:options": z.array(
     z.lazy(() => CreateIntegrationStoreDirectPropertiesUiOptions$inboundSchema),
   ),
-  enum: z.array(z.string()).optional(),
-  maxLength: z.lazy(() =>
-    CreateIntegrationStoreDirectPropertiesIntegrationsMaxLength$inboundSchema
-  ).optional(),
-  minLength: z.lazy(() =>
-    CreateIntegrationStoreDirectPropertiesIntegrationsMinLength$inboundSchema
-  ).optional(),
-  pattern: z.lazy(() =>
-    CreateIntegrationStoreDirectPropertiesIntegrationsPattern$inboundSchema
-  ).optional(),
-  description: z.string().optional(),
-  default: z.string().optional(),
-  "ui:label": z.string().optional(),
-  "ui:read-only": z.union([
+  enum: types.optional(z.array(types.string())),
+  maxLength: types.optional(
     z.lazy(() =>
-      CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJson2$inboundSchema
+      CreateIntegrationStoreDirectPropertiesIntegrationsMaxLength$inboundSchema
     ),
-    z.boolean(),
-    CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJson3$inboundSchema,
-  ]).optional(),
-  "ui:hidden": z.union([
+  ),
+  minLength: types.optional(
     z.lazy(() =>
-      CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJson2$inboundSchema
+      CreateIntegrationStoreDirectPropertiesIntegrationsMinLength$inboundSchema
     ),
-    z.boolean(),
-    CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJson3$inboundSchema,
-  ]).optional(),
-  "ui:disabled": z.union([
+  ),
+  pattern: types.optional(
     z.lazy(() =>
-      CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJson2$inboundSchema
+      CreateIntegrationStoreDirectPropertiesIntegrationsPattern$inboundSchema
     ),
-    z.boolean(),
-    CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJson3$inboundSchema,
-  ]).optional(),
-  "ui:description": z.union([
+  ),
+  description: types.optional(types.string()),
+  default: types.optional(types.string()),
+  "ui:label": types.optional(types.string()),
+  "ui:read-only": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJson2$inboundSchema
+      ),
+      types.boolean(),
+      CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJson3$inboundSchema,
+    ]),
+  ),
+  "ui:hidden": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJson2$inboundSchema
+      ),
+      types.boolean(),
+      CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJson3$inboundSchema,
+    ]),
+  ),
+  "ui:disabled": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJson2$inboundSchema
+      ),
+      types.boolean(),
+      CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJson3$inboundSchema,
+    ]),
+  ),
+  "ui:description": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJson2$inboundSchema
+      ),
+      types.string(),
+    ]),
+  ),
+  "ui:formatted-value": types.optional(
     z.lazy(() =>
-      CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJson2$inboundSchema
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONUiFormattedValue$inboundSchema
     ),
-    z.string(),
-  ]).optional(),
-  "ui:formatted-value": z.lazy(() =>
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONUiFormattedValue$inboundSchema
-  ).optional(),
-  "ui:placeholder": z.string().optional(),
+  ),
+  "ui:placeholder": types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
     "ui:control": "uiControl",
@@ -9322,28 +9411,28 @@ export const CreateIntegrationStoreDirectProperties5$outboundSchema: z.ZodType<
   description: z.string().optional(),
   default: z.string().optional(),
   uiLabel: z.string().optional(),
-  uiReadOnly: z.union([
+  uiReadOnly: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJson2$outboundSchema
     ),
     z.boolean(),
     CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJson3$outboundSchema,
   ]).optional(),
-  uiHidden: z.union([
+  uiHidden: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJson2$outboundSchema
     ),
     z.boolean(),
     CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJson3$outboundSchema,
   ]).optional(),
-  uiDisabled: z.union([
+  uiDisabled: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJson2$outboundSchema
     ),
     z.boolean(),
     CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJson3$outboundSchema,
   ]).optional(),
-  uiDescription: z.union([
+  uiDescription: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJson2$outboundSchema
     ),
@@ -9430,12 +9519,12 @@ export const CreateIntegrationStoreDirectPropertiesItems$inboundSchema:
   > = z.object({
     type:
       CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaType$inboundSchema,
-    description: z.string().optional(),
-    minimum: z.number().optional(),
-    exclusiveMinimum: z.number().optional(),
-    maximum: z.number().optional(),
-    exclusiveMaximum: z.number().optional(),
-    default: z.number().optional(),
+    description: types.optional(types.string()),
+    minimum: types.optional(types.number()),
+    exclusiveMinimum: types.optional(types.number()),
+    maximum: types.optional(types.number()),
+    exclusiveMaximum: types.optional(types.number()),
+    default: types.optional(types.number()),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesItems$Outbound = {
@@ -9526,7 +9615,7 @@ export const CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse2002$inbo
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse2002$Outbound =
@@ -9574,11 +9663,11 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiRead
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiReadOnly,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse2002$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse2003$inboundSchema,
   ]);
 /** @internal */
@@ -9593,7 +9682,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiRead
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiReadOnly$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiReadOnly
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse2002$outboundSchema
     ),
@@ -9648,7 +9737,7 @@ export const CreateIntegrationStoreDirectUiHiddenIntegrationsResponse2002$inboun
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectUiHiddenIntegrationsResponse2002$Outbound =
@@ -9696,11 +9785,11 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiHidd
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiHidden,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiHiddenIntegrationsResponse2002$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectUiHiddenIntegrationsResponse2003$inboundSchema,
   ]);
 /** @internal */
@@ -9715,7 +9804,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiHidd
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiHidden$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiHidden
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiHiddenIntegrationsResponse2002$outboundSchema
     ),
@@ -9770,7 +9859,7 @@ export const CreateIntegrationStoreDirectUiDisabledIntegrationsResponse2002$inbo
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectUiDisabledIntegrationsResponse2002$Outbound =
@@ -9818,11 +9907,11 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiDisa
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiDisabled,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDisabledIntegrationsResponse2002$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectUiDisabledIntegrationsResponse2003$inboundSchema,
   ]);
 /** @internal */
@@ -9837,7 +9926,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiDisa
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiDisabled$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiDisabled
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDisabledIntegrationsResponse2002$outboundSchema
     ),
@@ -9878,7 +9967,7 @@ export const CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse2002$i
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse2002$Outbound =
@@ -9926,11 +10015,11 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiDesc
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiDescription,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse2002$inboundSchema
     ),
-    z.string(),
+    types.string(),
   ]);
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiDescription$Outbound =
@@ -9943,7 +10032,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiDesc
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiDescription$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiDescription
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse2002$outboundSchema
     ),
@@ -9983,7 +10072,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiForm
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiFormattedValue$Outbound =
@@ -10040,42 +10129,52 @@ export const CreateIntegrationStoreDirectProperties4$inboundSchema: z.ZodType<
   ),
   "ui:control":
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiControl$inboundSchema,
-  "ui:steps": z.array(z.number()),
-  maxItems: z.number().optional(),
-  minItems: z.number().optional(),
-  description: z.string().optional(),
-  "ui:label": z.string().optional(),
-  "ui:read-only": z.union([
+  "ui:steps": z.array(types.number()),
+  maxItems: types.optional(types.number()),
+  minItems: types.optional(types.number()),
+  description: types.optional(types.string()),
+  "ui:label": types.optional(types.string()),
+  "ui:read-only": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse2002$inboundSchema
+      ),
+      types.boolean(),
+      CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse2003$inboundSchema,
+    ]),
+  ),
+  "ui:hidden": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiHiddenIntegrationsResponse2002$inboundSchema
+      ),
+      types.boolean(),
+      CreateIntegrationStoreDirectUiHiddenIntegrationsResponse2003$inboundSchema,
+    ]),
+  ),
+  "ui:disabled": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiDisabledIntegrationsResponse2002$inboundSchema
+      ),
+      types.boolean(),
+      CreateIntegrationStoreDirectUiDisabledIntegrationsResponse2003$inboundSchema,
+    ]),
+  ),
+  "ui:description": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse2002$inboundSchema
+      ),
+      types.string(),
+    ]),
+  ),
+  "ui:formatted-value": types.optional(
     z.lazy(() =>
-      CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse2002$inboundSchema
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiFormattedValue$inboundSchema
     ),
-    z.boolean(),
-    CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse2003$inboundSchema,
-  ]).optional(),
-  "ui:hidden": z.union([
-    z.lazy(() =>
-      CreateIntegrationStoreDirectUiHiddenIntegrationsResponse2002$inboundSchema
-    ),
-    z.boolean(),
-    CreateIntegrationStoreDirectUiHiddenIntegrationsResponse2003$inboundSchema,
-  ]).optional(),
-  "ui:disabled": z.union([
-    z.lazy(() =>
-      CreateIntegrationStoreDirectUiDisabledIntegrationsResponse2002$inboundSchema
-    ),
-    z.boolean(),
-    CreateIntegrationStoreDirectUiDisabledIntegrationsResponse2003$inboundSchema,
-  ]).optional(),
-  "ui:description": z.union([
-    z.lazy(() =>
-      CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse2002$inboundSchema
-    ),
-    z.string(),
-  ]).optional(),
-  "ui:formatted-value": z.lazy(() =>
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiFormattedValue$inboundSchema
-  ).optional(),
-  default: z.array(z.number()).optional(),
+  ),
+  default: types.optional(z.array(types.number())),
 }).transform((v) => {
   return remap$(v, {
     "ui:control": "uiControl",
@@ -10141,28 +10240,28 @@ export const CreateIntegrationStoreDirectProperties4$outboundSchema: z.ZodType<
   minItems: z.number().optional(),
   description: z.string().optional(),
   uiLabel: z.string().optional(),
-  uiReadOnly: z.union([
+  uiReadOnly: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse2002$outboundSchema
     ),
     z.boolean(),
     CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse2003$outboundSchema,
   ]).optional(),
-  uiHidden: z.union([
+  uiHidden: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiHiddenIntegrationsResponse2002$outboundSchema
     ),
     z.boolean(),
     CreateIntegrationStoreDirectUiHiddenIntegrationsResponse2003$outboundSchema,
   ]).optional(),
-  uiDisabled: z.union([
+  uiDisabled: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDisabledIntegrationsResponse2002$outboundSchema
     ),
     z.boolean(),
     CreateIntegrationStoreDirectUiDisabledIntegrationsResponse2003$outboundSchema,
   ]).optional(),
-  uiDescription: z.union([
+  uiDescription: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse2002$outboundSchema
     ),
@@ -10257,7 +10356,7 @@ export const CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse2$inbound
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse2$Outbound =
@@ -10305,11 +10404,11 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiReadOnl
     CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiReadOnly,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse3$inboundSchema,
   ]);
 /** @internal */
@@ -10324,7 +10423,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiReadOnl
     CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiReadOnly$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiReadOnly
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse2$outboundSchema
     ),
@@ -10376,7 +10475,7 @@ export const CreateIntegrationStoreDirectUiHiddenIntegrationsResponse2$inboundSc
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectUiHiddenIntegrationsResponse2$Outbound =
@@ -10424,11 +10523,11 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiHidden$
     CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiHidden,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiHiddenIntegrationsResponse2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectUiHiddenIntegrationsResponse3$inboundSchema,
   ]);
 /** @internal */
@@ -10443,7 +10542,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiHidden$
     CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiHidden$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiHidden
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiHiddenIntegrationsResponse2$outboundSchema
     ),
@@ -10495,7 +10594,7 @@ export const CreateIntegrationStoreDirectUiDisabledIntegrationsResponse2$inbound
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectUiDisabledIntegrationsResponse2$Outbound =
@@ -10543,11 +10642,11 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiDisable
     CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiDisabled,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDisabledIntegrationsResponse2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectUiDisabledIntegrationsResponse3$inboundSchema,
   ]);
 /** @internal */
@@ -10562,7 +10661,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiDisable
     CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiDisabled$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiDisabled
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDisabledIntegrationsResponse2$outboundSchema
     ),
@@ -10603,7 +10702,7 @@ export const CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse2$inbo
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse2$Outbound =
@@ -10651,11 +10750,11 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiDescrip
     CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiDescription,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse2$inboundSchema
     ),
-    z.string(),
+    types.string(),
   ]);
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiDescription$Outbound =
@@ -10668,7 +10767,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiDescrip
     CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiDescription$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiDescription
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse2$outboundSchema
     ),
@@ -10708,7 +10807,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiFormatt
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiFormattedValue$Outbound =
@@ -10762,39 +10861,49 @@ export const CreateIntegrationStoreDirectProperties3$inboundSchema: z.ZodType<
     CreateIntegrationStoreDirectPropertiesIntegrationsResponseType$inboundSchema,
   "ui:control":
     CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiControl$inboundSchema,
-  description: z.string().optional(),
-  default: z.boolean().optional(),
-  "ui:label": z.string().optional(),
-  "ui:read-only": z.union([
+  description: types.optional(types.string()),
+  default: types.optional(types.boolean()),
+  "ui:label": types.optional(types.string()),
+  "ui:read-only": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse2$inboundSchema
+      ),
+      types.boolean(),
+      CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse3$inboundSchema,
+    ]),
+  ),
+  "ui:hidden": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiHiddenIntegrationsResponse2$inboundSchema
+      ),
+      types.boolean(),
+      CreateIntegrationStoreDirectUiHiddenIntegrationsResponse3$inboundSchema,
+    ]),
+  ),
+  "ui:disabled": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiDisabledIntegrationsResponse2$inboundSchema
+      ),
+      types.boolean(),
+      CreateIntegrationStoreDirectUiDisabledIntegrationsResponse3$inboundSchema,
+    ]),
+  ),
+  "ui:description": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse2$inboundSchema
+      ),
+      types.string(),
+    ]),
+  ),
+  "ui:formatted-value": types.optional(
     z.lazy(() =>
-      CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse2$inboundSchema
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiFormattedValue$inboundSchema
     ),
-    z.boolean(),
-    CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse3$inboundSchema,
-  ]).optional(),
-  "ui:hidden": z.union([
-    z.lazy(() =>
-      CreateIntegrationStoreDirectUiHiddenIntegrationsResponse2$inboundSchema
-    ),
-    z.boolean(),
-    CreateIntegrationStoreDirectUiHiddenIntegrationsResponse3$inboundSchema,
-  ]).optional(),
-  "ui:disabled": z.union([
-    z.lazy(() =>
-      CreateIntegrationStoreDirectUiDisabledIntegrationsResponse2$inboundSchema
-    ),
-    z.boolean(),
-    CreateIntegrationStoreDirectUiDisabledIntegrationsResponse3$inboundSchema,
-  ]).optional(),
-  "ui:description": z.union([
-    z.lazy(() =>
-      CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse2$inboundSchema
-    ),
-    z.string(),
-  ]).optional(),
-  "ui:formatted-value": z.lazy(() =>
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiFormattedValue$inboundSchema
-  ).optional(),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "ui:control": "uiControl",
@@ -10850,28 +10959,28 @@ export const CreateIntegrationStoreDirectProperties3$outboundSchema: z.ZodType<
   description: z.string().optional(),
   default: z.boolean().optional(),
   uiLabel: z.string().optional(),
-  uiReadOnly: z.union([
+  uiReadOnly: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse2$outboundSchema
     ),
     z.boolean(),
     CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse3$outboundSchema,
   ]).optional(),
-  uiHidden: z.union([
+  uiHidden: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiHiddenIntegrationsResponse2$outboundSchema
     ),
     z.boolean(),
     CreateIntegrationStoreDirectUiHiddenIntegrationsResponse3$outboundSchema,
   ]).optional(),
-  uiDisabled: z.union([
+  uiDisabled: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDisabledIntegrationsResponse2$outboundSchema
     ),
     z.boolean(),
     CreateIntegrationStoreDirectUiDisabledIntegrationsResponse3$outboundSchema,
   ]).optional(),
-  uiDescription: z.union([
+  uiDescription: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse2$outboundSchema
     ),
@@ -10956,7 +11065,7 @@ export const CreateIntegrationStoreDirectUiReadOnlyIntegrations2$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectUiReadOnlyIntegrations2$Outbound = {
@@ -11005,11 +11114,11 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsUiReadOnly$inboun
     CreateIntegrationStoreDirectPropertiesIntegrationsUiReadOnly,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiReadOnlyIntegrations2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectUiReadOnlyIntegrations3$inboundSchema,
   ]);
 /** @internal */
@@ -11024,7 +11133,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsUiReadOnly$outbou
     CreateIntegrationStoreDirectPropertiesIntegrationsUiReadOnly$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsUiReadOnly
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiReadOnlyIntegrations2$outboundSchema
     ),
@@ -11072,7 +11181,7 @@ export const CreateIntegrationStoreDirectUiHiddenIntegrations2$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectUiHiddenIntegrations2$Outbound = {
@@ -11121,11 +11230,11 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsUiHidden$inboundS
     CreateIntegrationStoreDirectPropertiesIntegrationsUiHidden,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiHiddenIntegrations2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectUiHiddenIntegrations3$inboundSchema,
   ]);
 /** @internal */
@@ -11140,7 +11249,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsUiHidden$outbound
     CreateIntegrationStoreDirectPropertiesIntegrationsUiHidden$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsUiHidden
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiHiddenIntegrations2$outboundSchema
     ),
@@ -11188,7 +11297,7 @@ export const CreateIntegrationStoreDirectUiDisabledIntegrations2$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectUiDisabledIntegrations2$Outbound = {
@@ -11237,11 +11346,11 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsUiDisabled$inboun
     CreateIntegrationStoreDirectPropertiesIntegrationsUiDisabled,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDisabledIntegrations2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectUiDisabledIntegrations3$inboundSchema,
   ]);
 /** @internal */
@@ -11256,7 +11365,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsUiDisabled$outbou
     CreateIntegrationStoreDirectPropertiesIntegrationsUiDisabled$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsUiDisabled
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDisabledIntegrations2$outboundSchema
     ),
@@ -11295,7 +11404,7 @@ export const CreateIntegrationStoreDirectUiDescriptionIntegrations2$inboundSchem
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectUiDescriptionIntegrations2$Outbound = {
@@ -11343,11 +11452,11 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsUiDescription$inb
     CreateIntegrationStoreDirectPropertiesIntegrationsUiDescription,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDescriptionIntegrations2$inboundSchema
     ),
-    z.string(),
+    types.string(),
   ]);
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesIntegrationsUiDescription$Outbound =
@@ -11360,7 +11469,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsUiDescription$out
     CreateIntegrationStoreDirectPropertiesIntegrationsUiDescription$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesIntegrationsUiDescription
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDescriptionIntegrations2$outboundSchema
     ),
@@ -11398,7 +11507,7 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsUiFormattedValue$
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesIntegrationsUiFormattedValue$Outbound =
@@ -11451,44 +11560,54 @@ export const CreateIntegrationStoreDirectProperties2$inboundSchema: z.ZodType<
   type: CreateIntegrationStoreDirectPropertiesIntegrationsType$inboundSchema,
   "ui:control":
     CreateIntegrationStoreDirectPropertiesIntegrationsUiControl$inboundSchema,
-  maximum: z.number().optional(),
-  exclusiveMaximum: z.number().optional(),
-  minimum: z.number().optional(),
-  exclusiveMinimum: z.number().optional(),
-  description: z.string().optional(),
-  default: z.number().optional(),
-  "ui:label": z.string().optional(),
-  "ui:read-only": z.union([
+  maximum: types.optional(types.number()),
+  exclusiveMaximum: types.optional(types.number()),
+  minimum: types.optional(types.number()),
+  exclusiveMinimum: types.optional(types.number()),
+  description: types.optional(types.string()),
+  default: types.optional(types.number()),
+  "ui:label": types.optional(types.string()),
+  "ui:read-only": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiReadOnlyIntegrations2$inboundSchema
+      ),
+      types.boolean(),
+      CreateIntegrationStoreDirectUiReadOnlyIntegrations3$inboundSchema,
+    ]),
+  ),
+  "ui:hidden": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiHiddenIntegrations2$inboundSchema
+      ),
+      types.boolean(),
+      CreateIntegrationStoreDirectUiHiddenIntegrations3$inboundSchema,
+    ]),
+  ),
+  "ui:disabled": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiDisabledIntegrations2$inboundSchema
+      ),
+      types.boolean(),
+      CreateIntegrationStoreDirectUiDisabledIntegrations3$inboundSchema,
+    ]),
+  ),
+  "ui:description": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiDescriptionIntegrations2$inboundSchema
+      ),
+      types.string(),
+    ]),
+  ),
+  "ui:formatted-value": types.optional(
     z.lazy(() =>
-      CreateIntegrationStoreDirectUiReadOnlyIntegrations2$inboundSchema
+      CreateIntegrationStoreDirectPropertiesIntegrationsUiFormattedValue$inboundSchema
     ),
-    z.boolean(),
-    CreateIntegrationStoreDirectUiReadOnlyIntegrations3$inboundSchema,
-  ]).optional(),
-  "ui:hidden": z.union([
-    z.lazy(() =>
-      CreateIntegrationStoreDirectUiHiddenIntegrations2$inboundSchema
-    ),
-    z.boolean(),
-    CreateIntegrationStoreDirectUiHiddenIntegrations3$inboundSchema,
-  ]).optional(),
-  "ui:disabled": z.union([
-    z.lazy(() =>
-      CreateIntegrationStoreDirectUiDisabledIntegrations2$inboundSchema
-    ),
-    z.boolean(),
-    CreateIntegrationStoreDirectUiDisabledIntegrations3$inboundSchema,
-  ]).optional(),
-  "ui:description": z.union([
-    z.lazy(() =>
-      CreateIntegrationStoreDirectUiDescriptionIntegrations2$inboundSchema
-    ),
-    z.string(),
-  ]).optional(),
-  "ui:formatted-value": z.lazy(() =>
-    CreateIntegrationStoreDirectPropertiesIntegrationsUiFormattedValue$inboundSchema
-  ).optional(),
-  "ui:placeholder": z.string().optional(),
+  ),
+  "ui:placeholder": types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
     "ui:control": "uiControl",
@@ -11553,28 +11672,28 @@ export const CreateIntegrationStoreDirectProperties2$outboundSchema: z.ZodType<
   description: z.string().optional(),
   default: z.number().optional(),
   uiLabel: z.string().optional(),
-  uiReadOnly: z.union([
+  uiReadOnly: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiReadOnlyIntegrations2$outboundSchema
     ),
     z.boolean(),
     CreateIntegrationStoreDirectUiReadOnlyIntegrations3$outboundSchema,
   ]).optional(),
-  uiHidden: z.union([
+  uiHidden: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiHiddenIntegrations2$outboundSchema
     ),
     z.boolean(),
     CreateIntegrationStoreDirectUiHiddenIntegrations3$outboundSchema,
   ]).optional(),
-  uiDisabled: z.union([
+  uiDisabled: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDisabledIntegrations2$outboundSchema
     ),
     z.boolean(),
     CreateIntegrationStoreDirectUiDisabledIntegrations3$outboundSchema,
   ]).optional(),
-  uiDescription: z.union([
+  uiDescription: smartUnion([
     z.lazy(() =>
       CreateIntegrationStoreDirectUiDescriptionIntegrations2$outboundSchema
     ),
@@ -11642,47 +11761,47 @@ export const CreateIntegrationStoreDirectPropertiesUiControl$outboundSchema:
     CreateIntegrationStoreDirectPropertiesUiControl$inboundSchema;
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8897$inboundSchema:
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8978$inboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8897,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8978,
     z.ZodTypeDef,
     unknown
   > = z.object({});
 /** @internal */
-export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8897$Outbound =
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8978$Outbound =
   {};
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8897$outboundSchema:
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8978$outboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8897$Outbound,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8978$Outbound,
     z.ZodTypeDef,
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8897
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8978
   > = z.object({});
 
-export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8897ToJSON(
-  createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8897:
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8897,
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8978ToJSON(
+  createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8978:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8978,
 ): string {
   return JSON.stringify(
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8897$outboundSchema
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8978$outboundSchema
       .parse(
-        createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8897,
+        createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8978,
       ),
   );
 }
-export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8897FromJSON(
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8978FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8897,
+  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8978,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8897$inboundSchema
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8978$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8897' from JSON`,
+    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8978' from JSON`,
   );
 }
 
@@ -11693,18 +11812,18 @@ export const CreateIntegrationStoreDirectPropertiesMaxLength$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    "__@BRAND@8897": z.lazy(() =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8897$inboundSchema
+    "__@BRAND@8978": z.lazy(() =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8978$inboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      "__@BRAND@8897": "atBRANDAt8897",
+      "__@BRAND@8978": "atBRANDAt8978",
     });
   });
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesMaxLength$Outbound = {
-  "__@BRAND@8897":
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8897$Outbound;
+  "__@BRAND@8978":
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8978$Outbound;
 };
 
 /** @internal */
@@ -11714,12 +11833,12 @@ export const CreateIntegrationStoreDirectPropertiesMaxLength$outboundSchema:
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesMaxLength
   > = z.object({
-    atBRANDAt8897: z.lazy(() =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8897$outboundSchema
+    atBRANDAt8978: z.lazy(() =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema1AtBRANDAt8978$outboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      atBRANDAt8897: "__@BRAND@8897",
+      atBRANDAt8978: "__@BRAND@8978",
     });
   });
 
@@ -11750,35 +11869,35 @@ export function createIntegrationStoreDirectPropertiesMaxLengthFromJSON(
 }
 
 /** @internal */
-export const PropertiesAtBRANDAt8897$inboundSchema: z.ZodType<
-  PropertiesAtBRANDAt8897,
+export const PropertiesAtBRANDAt8978$inboundSchema: z.ZodType<
+  PropertiesAtBRANDAt8978,
   z.ZodTypeDef,
   unknown
 > = z.object({});
 /** @internal */
-export type PropertiesAtBRANDAt8897$Outbound = {};
+export type PropertiesAtBRANDAt8978$Outbound = {};
 
 /** @internal */
-export const PropertiesAtBRANDAt8897$outboundSchema: z.ZodType<
-  PropertiesAtBRANDAt8897$Outbound,
+export const PropertiesAtBRANDAt8978$outboundSchema: z.ZodType<
+  PropertiesAtBRANDAt8978$Outbound,
   z.ZodTypeDef,
-  PropertiesAtBRANDAt8897
+  PropertiesAtBRANDAt8978
 > = z.object({});
 
-export function propertiesAtBRANDAt8897ToJSON(
-  propertiesAtBRANDAt8897: PropertiesAtBRANDAt8897,
+export function propertiesAtBRANDAt8978ToJSON(
+  propertiesAtBRANDAt8978: PropertiesAtBRANDAt8978,
 ): string {
   return JSON.stringify(
-    PropertiesAtBRANDAt8897$outboundSchema.parse(propertiesAtBRANDAt8897),
+    PropertiesAtBRANDAt8978$outboundSchema.parse(propertiesAtBRANDAt8978),
   );
 }
-export function propertiesAtBRANDAt8897FromJSON(
+export function propertiesAtBRANDAt8978FromJSON(
   jsonString: string,
-): SafeParseResult<PropertiesAtBRANDAt8897, SDKValidationError> {
+): SafeParseResult<PropertiesAtBRANDAt8978, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PropertiesAtBRANDAt8897$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PropertiesAtBRANDAt8897' from JSON`,
+    (x) => PropertiesAtBRANDAt8978$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PropertiesAtBRANDAt8978' from JSON`,
   );
 }
 
@@ -11789,15 +11908,15 @@ export const CreateIntegrationStoreDirectPropertiesMinLength$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    "__@BRAND@8897": z.lazy(() => PropertiesAtBRANDAt8897$inboundSchema),
+    "__@BRAND@8978": z.lazy(() => PropertiesAtBRANDAt8978$inboundSchema),
   }).transform((v) => {
     return remap$(v, {
-      "__@BRAND@8897": "atBRANDAt8897",
+      "__@BRAND@8978": "atBRANDAt8978",
     });
   });
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesMinLength$Outbound = {
-  "__@BRAND@8897": PropertiesAtBRANDAt8897$Outbound;
+  "__@BRAND@8978": PropertiesAtBRANDAt8978$Outbound;
 };
 
 /** @internal */
@@ -11807,10 +11926,10 @@ export const CreateIntegrationStoreDirectPropertiesMinLength$outboundSchema:
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesMinLength
   > = z.object({
-    atBRANDAt8897: z.lazy(() => PropertiesAtBRANDAt8897$outboundSchema),
+    atBRANDAt8978: z.lazy(() => PropertiesAtBRANDAt8978$outboundSchema),
   }).transform((v) => {
     return remap$(v, {
-      atBRANDAt8897: "__@BRAND@8897",
+      atBRANDAt8978: "__@BRAND@8978",
     });
   });
 
@@ -11841,46 +11960,46 @@ export function createIntegrationStoreDirectPropertiesMinLengthFromJSON(
 }
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesAtBRANDAt8897$inboundSchema:
+export const CreateIntegrationStoreDirectPropertiesAtBRANDAt8978$inboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesAtBRANDAt8897,
+    CreateIntegrationStoreDirectPropertiesAtBRANDAt8978,
     z.ZodTypeDef,
     unknown
   > = z.object({});
 /** @internal */
-export type CreateIntegrationStoreDirectPropertiesAtBRANDAt8897$Outbound = {};
+export type CreateIntegrationStoreDirectPropertiesAtBRANDAt8978$Outbound = {};
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesAtBRANDAt8897$outboundSchema:
+export const CreateIntegrationStoreDirectPropertiesAtBRANDAt8978$outboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesAtBRANDAt8897$Outbound,
+    CreateIntegrationStoreDirectPropertiesAtBRANDAt8978$Outbound,
     z.ZodTypeDef,
-    CreateIntegrationStoreDirectPropertiesAtBRANDAt8897
+    CreateIntegrationStoreDirectPropertiesAtBRANDAt8978
   > = z.object({});
 
-export function createIntegrationStoreDirectPropertiesAtBRANDAt8897ToJSON(
-  createIntegrationStoreDirectPropertiesAtBRANDAt8897:
-    CreateIntegrationStoreDirectPropertiesAtBRANDAt8897,
+export function createIntegrationStoreDirectPropertiesAtBRANDAt8978ToJSON(
+  createIntegrationStoreDirectPropertiesAtBRANDAt8978:
+    CreateIntegrationStoreDirectPropertiesAtBRANDAt8978,
 ): string {
   return JSON.stringify(
-    CreateIntegrationStoreDirectPropertiesAtBRANDAt8897$outboundSchema.parse(
-      createIntegrationStoreDirectPropertiesAtBRANDAt8897,
+    CreateIntegrationStoreDirectPropertiesAtBRANDAt8978$outboundSchema.parse(
+      createIntegrationStoreDirectPropertiesAtBRANDAt8978,
     ),
   );
 }
-export function createIntegrationStoreDirectPropertiesAtBRANDAt8897FromJSON(
+export function createIntegrationStoreDirectPropertiesAtBRANDAt8978FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateIntegrationStoreDirectPropertiesAtBRANDAt8897,
+  CreateIntegrationStoreDirectPropertiesAtBRANDAt8978,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateIntegrationStoreDirectPropertiesAtBRANDAt8897$inboundSchema.parse(
+      CreateIntegrationStoreDirectPropertiesAtBRANDAt8978$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'CreateIntegrationStoreDirectPropertiesAtBRANDAt8897' from JSON`,
+    `Failed to parse 'CreateIntegrationStoreDirectPropertiesAtBRANDAt8978' from JSON`,
   );
 }
 
@@ -11891,17 +12010,17 @@ export const CreateIntegrationStoreDirectPropertiesPattern$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    "__@BRAND@8897": z.lazy(() =>
-      CreateIntegrationStoreDirectPropertiesAtBRANDAt8897$inboundSchema
+    "__@BRAND@8978": z.lazy(() =>
+      CreateIntegrationStoreDirectPropertiesAtBRANDAt8978$inboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      "__@BRAND@8897": "atBRANDAt8897",
+      "__@BRAND@8978": "atBRANDAt8978",
     });
   });
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesPattern$Outbound = {
-  "__@BRAND@8897": CreateIntegrationStoreDirectPropertiesAtBRANDAt8897$Outbound;
+  "__@BRAND@8978": CreateIntegrationStoreDirectPropertiesAtBRANDAt8978$Outbound;
 };
 
 /** @internal */
@@ -11911,12 +12030,12 @@ export const CreateIntegrationStoreDirectPropertiesPattern$outboundSchema:
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesPattern
   > = z.object({
-    atBRANDAt8897: z.lazy(() =>
-      CreateIntegrationStoreDirectPropertiesAtBRANDAt8897$outboundSchema
+    atBRANDAt8978: z.lazy(() =>
+      CreateIntegrationStoreDirectPropertiesAtBRANDAt8978$outboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {
-      atBRANDAt8897: "__@BRAND@8897",
+      atBRANDAt8978: "__@BRAND@8978",
     });
   });
 
@@ -11961,7 +12080,7 @@ export const CreateIntegrationStoreDirectUiReadOnly2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  expr: z.string(),
+  expr: types.string(),
 });
 /** @internal */
 export type CreateIntegrationStoreDirectUiReadOnly2$Outbound = {
@@ -12009,9 +12128,9 @@ export const CreateIntegrationStoreDirectPropertiesUiReadOnly$inboundSchema:
     CreateIntegrationStoreDirectPropertiesUiReadOnly,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() => CreateIntegrationStoreDirectUiReadOnly2$inboundSchema),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectUiReadOnly3$inboundSchema,
   ]);
 /** @internal */
@@ -12026,7 +12145,7 @@ export const CreateIntegrationStoreDirectPropertiesUiReadOnly$outboundSchema:
     CreateIntegrationStoreDirectPropertiesUiReadOnly$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesUiReadOnly
-  > = z.union([
+  > = smartUnion([
     z.lazy(() => CreateIntegrationStoreDirectUiReadOnly2$outboundSchema),
     z.boolean(),
     CreateIntegrationStoreDirectUiReadOnly3$outboundSchema,
@@ -12074,7 +12193,7 @@ export const CreateIntegrationStoreDirectUiHidden2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  expr: z.string(),
+  expr: types.string(),
 });
 /** @internal */
 export type CreateIntegrationStoreDirectUiHidden2$Outbound = {
@@ -12116,9 +12235,9 @@ export const CreateIntegrationStoreDirectPropertiesUiHidden$inboundSchema:
     CreateIntegrationStoreDirectPropertiesUiHidden,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() => CreateIntegrationStoreDirectUiHidden2$inboundSchema),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectUiHidden3$inboundSchema,
   ]);
 /** @internal */
@@ -12133,7 +12252,7 @@ export const CreateIntegrationStoreDirectPropertiesUiHidden$outboundSchema:
     CreateIntegrationStoreDirectPropertiesUiHidden$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesUiHidden
-  > = z.union([
+  > = smartUnion([
     z.lazy(() => CreateIntegrationStoreDirectUiHidden2$outboundSchema),
     z.boolean(),
     CreateIntegrationStoreDirectUiHidden3$outboundSchema,
@@ -12180,7 +12299,7 @@ export const CreateIntegrationStoreDirectUiDisabled2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  expr: z.string(),
+  expr: types.string(),
 });
 /** @internal */
 export type CreateIntegrationStoreDirectUiDisabled2$Outbound = {
@@ -12228,9 +12347,9 @@ export const CreateIntegrationStoreDirectPropertiesUiDisabled$inboundSchema:
     CreateIntegrationStoreDirectPropertiesUiDisabled,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() => CreateIntegrationStoreDirectUiDisabled2$inboundSchema),
-    z.boolean(),
+    types.boolean(),
     CreateIntegrationStoreDirectUiDisabled3$inboundSchema,
   ]);
 /** @internal */
@@ -12245,7 +12364,7 @@ export const CreateIntegrationStoreDirectPropertiesUiDisabled$outboundSchema:
     CreateIntegrationStoreDirectPropertiesUiDisabled$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesUiDisabled
-  > = z.union([
+  > = smartUnion([
     z.lazy(() => CreateIntegrationStoreDirectUiDisabled2$outboundSchema),
     z.boolean(),
     CreateIntegrationStoreDirectUiDisabled3$outboundSchema,
@@ -12281,7 +12400,7 @@ export function createIntegrationStoreDirectPropertiesUiDisabledFromJSON(
 export const CreateIntegrationStoreDirectUiDescription2$inboundSchema:
   z.ZodType<CreateIntegrationStoreDirectUiDescription2, z.ZodTypeDef, unknown> =
     z.object({
-      expr: z.string(),
+      expr: types.string(),
     });
 /** @internal */
 export type CreateIntegrationStoreDirectUiDescription2$Outbound = {
@@ -12330,9 +12449,9 @@ export const CreateIntegrationStoreDirectPropertiesUiDescription$inboundSchema:
     CreateIntegrationStoreDirectPropertiesUiDescription,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() => CreateIntegrationStoreDirectUiDescription2$inboundSchema),
-    z.string(),
+    types.string(),
   ]);
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesUiDescription$Outbound =
@@ -12345,7 +12464,7 @@ export const CreateIntegrationStoreDirectPropertiesUiDescription$outboundSchema:
     CreateIntegrationStoreDirectPropertiesUiDescription$Outbound,
     z.ZodTypeDef,
     CreateIntegrationStoreDirectPropertiesUiDescription
-  > = z.union([
+  > = smartUnion([
     z.lazy(() => CreateIntegrationStoreDirectUiDescription2$outboundSchema),
     z.string(),
   ]);
@@ -12383,7 +12502,7 @@ export const CreateIntegrationStoreDirectPropertiesUiFormattedValue$inboundSchem
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectPropertiesUiFormattedValue$Outbound = {
@@ -12433,42 +12552,52 @@ export const CreateIntegrationStoreDirectProperties1$inboundSchema: z.ZodType<
 > = z.object({
   type: CreateIntegrationStoreDirectPropertiesType$inboundSchema,
   "ui:control": CreateIntegrationStoreDirectPropertiesUiControl$inboundSchema,
-  enum: z.array(z.string()).optional(),
-  maxLength: z.lazy(() =>
-    CreateIntegrationStoreDirectPropertiesMaxLength$inboundSchema
-  ).optional(),
-  minLength: z.lazy(() =>
-    CreateIntegrationStoreDirectPropertiesMinLength$inboundSchema
-  ).optional(),
-  pattern: z.lazy(() =>
-    CreateIntegrationStoreDirectPropertiesPattern$inboundSchema
-  ).optional(),
-  description: z.string().optional(),
-  default: z.string().optional(),
-  "ui:label": z.string().optional(),
-  "ui:read-only": z.union([
-    z.lazy(() => CreateIntegrationStoreDirectUiReadOnly2$inboundSchema),
-    z.boolean(),
-    CreateIntegrationStoreDirectUiReadOnly3$inboundSchema,
-  ]).optional(),
-  "ui:hidden": z.union([
-    z.lazy(() => CreateIntegrationStoreDirectUiHidden2$inboundSchema),
-    z.boolean(),
-    CreateIntegrationStoreDirectUiHidden3$inboundSchema,
-  ]).optional(),
-  "ui:disabled": z.union([
-    z.lazy(() => CreateIntegrationStoreDirectUiDisabled2$inboundSchema),
-    z.boolean(),
-    CreateIntegrationStoreDirectUiDisabled3$inboundSchema,
-  ]).optional(),
-  "ui:description": z.union([
-    z.lazy(() => CreateIntegrationStoreDirectUiDescription2$inboundSchema),
-    z.string(),
-  ]).optional(),
-  "ui:formatted-value": z.lazy(() =>
-    CreateIntegrationStoreDirectPropertiesUiFormattedValue$inboundSchema
-  ).optional(),
-  "ui:placeholder": z.string().optional(),
+  enum: types.optional(z.array(types.string())),
+  maxLength: types.optional(
+    z.lazy(() => CreateIntegrationStoreDirectPropertiesMaxLength$inboundSchema),
+  ),
+  minLength: types.optional(
+    z.lazy(() => CreateIntegrationStoreDirectPropertiesMinLength$inboundSchema),
+  ),
+  pattern: types.optional(
+    z.lazy(() => CreateIntegrationStoreDirectPropertiesPattern$inboundSchema),
+  ),
+  description: types.optional(types.string()),
+  default: types.optional(types.string()),
+  "ui:label": types.optional(types.string()),
+  "ui:read-only": types.optional(
+    smartUnion([
+      z.lazy(() => CreateIntegrationStoreDirectUiReadOnly2$inboundSchema),
+      types.boolean(),
+      CreateIntegrationStoreDirectUiReadOnly3$inboundSchema,
+    ]),
+  ),
+  "ui:hidden": types.optional(
+    smartUnion([
+      z.lazy(() => CreateIntegrationStoreDirectUiHidden2$inboundSchema),
+      types.boolean(),
+      CreateIntegrationStoreDirectUiHidden3$inboundSchema,
+    ]),
+  ),
+  "ui:disabled": types.optional(
+    smartUnion([
+      z.lazy(() => CreateIntegrationStoreDirectUiDisabled2$inboundSchema),
+      types.boolean(),
+      CreateIntegrationStoreDirectUiDisabled3$inboundSchema,
+    ]),
+  ),
+  "ui:description": types.optional(
+    smartUnion([
+      z.lazy(() => CreateIntegrationStoreDirectUiDescription2$inboundSchema),
+      types.string(),
+    ]),
+  ),
+  "ui:formatted-value": types.optional(
+    z.lazy(() =>
+      CreateIntegrationStoreDirectPropertiesUiFormattedValue$inboundSchema
+    ),
+  ),
+  "ui:placeholder": types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
     "ui:control": "uiControl",
@@ -12542,22 +12671,22 @@ export const CreateIntegrationStoreDirectProperties1$outboundSchema: z.ZodType<
   description: z.string().optional(),
   default: z.string().optional(),
   uiLabel: z.string().optional(),
-  uiReadOnly: z.union([
+  uiReadOnly: smartUnion([
     z.lazy(() => CreateIntegrationStoreDirectUiReadOnly2$outboundSchema),
     z.boolean(),
     CreateIntegrationStoreDirectUiReadOnly3$outboundSchema,
   ]).optional(),
-  uiHidden: z.union([
+  uiHidden: smartUnion([
     z.lazy(() => CreateIntegrationStoreDirectUiHidden2$outboundSchema),
     z.boolean(),
     CreateIntegrationStoreDirectUiHidden3$outboundSchema,
   ]).optional(),
-  uiDisabled: z.union([
+  uiDisabled: smartUnion([
     z.lazy(() => CreateIntegrationStoreDirectUiDisabled2$outboundSchema),
     z.boolean(),
     CreateIntegrationStoreDirectUiDisabled3$outboundSchema,
   ]).optional(),
-  uiDescription: z.union([
+  uiDescription: smartUnion([
     z.lazy(() => CreateIntegrationStoreDirectUiDescription2$outboundSchema),
     z.string(),
   ]).optional(),
@@ -12609,7 +12738,7 @@ export const CreateIntegrationStoreDirectProperties$inboundSchema: z.ZodType<
   CreateIntegrationStoreDirectProperties,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => CreateIntegrationStoreDirectProperties4$inboundSchema),
   z.lazy(() => CreateIntegrationStoreDirectProperties6$inboundSchema),
   z.lazy(() => CreateIntegrationStoreDirectProperties5$inboundSchema),
@@ -12637,7 +12766,7 @@ export const CreateIntegrationStoreDirectProperties$outboundSchema: z.ZodType<
   CreateIntegrationStoreDirectProperties$Outbound,
   z.ZodTypeDef,
   CreateIntegrationStoreDirectProperties
-> = z.union([
+> = smartUnion([
   z.lazy(() => CreateIntegrationStoreDirectProperties4$outboundSchema),
   z.lazy(() => CreateIntegrationStoreDirectProperties6$outboundSchema),
   z.lazy(() => CreateIntegrationStoreDirectProperties5$outboundSchema),
@@ -12676,7 +12805,7 @@ export const CreateIntegrationStoreDirectMetadataSchema$inboundSchema:
     z.object({
       type: CreateIntegrationStoreDirectIntegrationsType$inboundSchema,
       properties: z.record(
-        z.union([
+        smartUnion([
           z.lazy(() => CreateIntegrationStoreDirectProperties4$inboundSchema),
           z.lazy(() => CreateIntegrationStoreDirectProperties6$inboundSchema),
           z.lazy(() => CreateIntegrationStoreDirectProperties5$inboundSchema),
@@ -12688,7 +12817,7 @@ export const CreateIntegrationStoreDirectMetadataSchema$inboundSchema:
           z.lazy(() => CreateIntegrationStoreDirectProperties9$inboundSchema),
         ]),
       ),
-      required: z.array(z.string()).optional(),
+      required: types.optional(z.array(types.string())),
     });
 /** @internal */
 export type CreateIntegrationStoreDirectMetadataSchema$Outbound = {
@@ -12717,7 +12846,7 @@ export const CreateIntegrationStoreDirectMetadataSchema$outboundSchema:
   > = z.object({
     type: CreateIntegrationStoreDirectIntegrationsType$outboundSchema,
     properties: z.record(
-      z.union([
+      smartUnion([
         z.lazy(() => CreateIntegrationStoreDirectProperties4$outboundSchema),
         z.lazy(() => CreateIntegrationStoreDirectProperties6$outboundSchema),
         z.lazy(() => CreateIntegrationStoreDirectProperties5$outboundSchema),
@@ -12764,8 +12893,8 @@ export const ResourceLinks$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  href: z.string(),
-  title: z.string(),
+  href: types.string(),
+  title: types.string(),
 });
 /** @internal */
 export type ResourceLinks$Outbound = {
@@ -12817,9 +12946,9 @@ export const ProjectConnectionScopes$outboundSchema: z.ZodNativeEnum<
 /** @internal */
 export const Repl$inboundSchema: z.ZodType<Repl, z.ZodTypeDef, unknown> = z
   .object({
-    enabled: z.boolean(),
-    supportsReadOnlyMode: z.boolean(),
-    welcomeMessage: z.string().optional(),
+    enabled: types.boolean(),
+    supportsReadOnlyMode: types.boolean(),
+    welcomeMessage: types.optional(types.string()),
   });
 /** @internal */
 export type Repl$Outbound = {
@@ -12911,13 +13040,13 @@ export function createIntegrationStoreDirectIntegrationsActionsFromJSON(
 /** @internal */
 export const Steps$inboundSchema: z.ZodType<Steps, z.ZodTypeDef, unknown> = z
   .object({
-    title: z.string(),
-    content: z.string(),
-    actions: z.array(
-      z.lazy(() =>
+    title: types.string(),
+    content: types.string(),
+    actions: types.optional(
+      z.array(z.lazy(() =>
         CreateIntegrationStoreDirectIntegrationsActions$inboundSchema
-      ),
-    ).optional(),
+      )),
+    ),
   });
 /** @internal */
 export type Steps$Outbound = {
@@ -12959,8 +13088,8 @@ export function stepsFromJSON(
 /** @internal */
 export const Guides$inboundSchema: z.ZodType<Guides, z.ZodTypeDef, unknown> = z
   .object({
-    framework: z.string(),
-    title: z.string(),
+    framework: types.string(),
+    title: types.string(),
     steps: z.array(z.lazy(() => Steps$inboundSchema)),
   });
 /** @internal */
@@ -12995,31 +13124,31 @@ export function guidesFromJSON(
 }
 
 /** @internal */
-export const AtBRANDAt8897$inboundSchema: z.ZodType<
-  AtBRANDAt8897,
+export const AtBRANDAt8978$inboundSchema: z.ZodType<
+  AtBRANDAt8978,
   z.ZodTypeDef,
   unknown
 > = z.object({});
 /** @internal */
-export type AtBRANDAt8897$Outbound = {};
+export type AtBRANDAt8978$Outbound = {};
 
 /** @internal */
-export const AtBRANDAt8897$outboundSchema: z.ZodType<
-  AtBRANDAt8897$Outbound,
+export const AtBRANDAt8978$outboundSchema: z.ZodType<
+  AtBRANDAt8978$Outbound,
   z.ZodTypeDef,
-  AtBRANDAt8897
+  AtBRANDAt8978
 > = z.object({});
 
-export function atBRANDAt8897ToJSON(atBRANDAt8897: AtBRANDAt8897): string {
-  return JSON.stringify(AtBRANDAt8897$outboundSchema.parse(atBRANDAt8897));
+export function atBRANDAt8978ToJSON(atBRANDAt8978: AtBRANDAt8978): string {
+  return JSON.stringify(AtBRANDAt8978$outboundSchema.parse(atBRANDAt8978));
 }
-export function atBRANDAt8897FromJSON(
+export function atBRANDAt8978FromJSON(
   jsonString: string,
-): SafeParseResult<AtBRANDAt8897, SDKValidationError> {
+): SafeParseResult<AtBRANDAt8978, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => AtBRANDAt8897$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtBRANDAt8897' from JSON`,
+    (x) => AtBRANDAt8978$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtBRANDAt8978' from JSON`,
   );
 }
 
@@ -13029,15 +13158,15 @@ export const CreateIntegrationStoreDirectValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "__@BRAND@8897": z.lazy(() => AtBRANDAt8897$inboundSchema),
+  "__@BRAND@8978": z.lazy(() => AtBRANDAt8978$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
-    "__@BRAND@8897": "atBRANDAt8897",
+    "__@BRAND@8978": "atBRANDAt8978",
   });
 });
 /** @internal */
 export type CreateIntegrationStoreDirectValue$Outbound = {
-  "__@BRAND@8897": AtBRANDAt8897$Outbound;
+  "__@BRAND@8978": AtBRANDAt8978$Outbound;
 };
 
 /** @internal */
@@ -13046,10 +13175,10 @@ export const CreateIntegrationStoreDirectValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateIntegrationStoreDirectValue
 > = z.object({
-  atBRANDAt8897: z.lazy(() => AtBRANDAt8897$outboundSchema),
+  atBRANDAt8978: z.lazy(() => AtBRANDAt8978$outboundSchema),
 }).transform((v) => {
   return remap$(v, {
-    atBRANDAt8897: "__@BRAND@8897",
+    atBRANDAt8978: "__@BRAND@8978",
   });
 });
 
@@ -13085,7 +13214,7 @@ export const Disabled2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  expr: z.string(),
+  expr: types.string(),
 });
 /** @internal */
 export type Disabled2$Outbound = {
@@ -13119,9 +13248,9 @@ export const Disabled$inboundSchema: z.ZodType<
   Disabled,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => Disabled2$inboundSchema),
-  z.boolean(),
+  types.boolean(),
   Disabled3$inboundSchema,
 ]);
 /** @internal */
@@ -13132,7 +13261,7 @@ export const Disabled$outboundSchema: z.ZodType<
   Disabled$Outbound,
   z.ZodTypeDef,
   Disabled
-> = z.union([
+> = smartUnion([
   z.lazy(() => Disabled2$outboundSchema),
   z.boolean(),
   Disabled3$outboundSchema,
@@ -13161,7 +13290,7 @@ export const Hidden3$outboundSchema: z.ZodNativeEnum<typeof Hidden3> =
 /** @internal */
 export const Hidden2$inboundSchema: z.ZodType<Hidden2, z.ZodTypeDef, unknown> =
   z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type Hidden2$Outbound = {
@@ -13191,10 +13320,10 @@ export function hidden2FromJSON(
 }
 
 /** @internal */
-export const Hidden$inboundSchema: z.ZodType<Hidden, z.ZodTypeDef, unknown> = z
-  .union([
+export const Hidden$inboundSchema: z.ZodType<Hidden, z.ZodTypeDef, unknown> =
+  smartUnion([
     z.lazy(() => Hidden2$inboundSchema),
-    z.boolean(),
+    types.boolean(),
     Hidden3$inboundSchema,
   ]);
 /** @internal */
@@ -13205,7 +13334,7 @@ export const Hidden$outboundSchema: z.ZodType<
   Hidden$Outbound,
   z.ZodTypeDef,
   Hidden
-> = z.union([
+> = smartUnion([
   z.lazy(() => Hidden2$outboundSchema),
   z.boolean(),
   Hidden3$outboundSchema,
@@ -13227,37 +13356,45 @@ export function hiddenFromJSON(
 /** @internal */
 export const Product$inboundSchema: z.ZodType<Product, z.ZodTypeDef, unknown> =
   z.object({
-    id: z.string().optional(),
-    name: z.string().optional(),
-    slug: z.string().optional(),
-    iconUrl: z.string().optional(),
-    capabilities: z.lazy(() =>
-      CreateIntegrationStoreDirectCapabilities$inboundSchema
-    ).optional(),
-    shortDescription: z.string().optional(),
-    metadataSchema: z.lazy(() =>
-      CreateIntegrationStoreDirectMetadataSchema$inboundSchema
-    ).optional(),
-    resourceLinks: z.array(z.lazy(() => ResourceLinks$inboundSchema))
-      .optional(),
-    tags: z.array(CreateIntegrationStoreDirectTags$inboundSchema).optional(),
-    projectConnectionScopes: z.array(ProjectConnectionScopes$inboundSchema)
-      .optional(),
-    showSSOLinkOnProjectConnection: z.boolean().optional(),
-    disableResourceRenaming: z.boolean().optional(),
-    repl: z.lazy(() => Repl$inboundSchema).optional(),
-    guides: z.array(z.lazy(() => Guides$inboundSchema)).optional(),
+    id: types.optional(types.string()),
+    name: types.optional(types.string()),
+    slug: types.optional(types.string()),
+    iconUrl: types.optional(types.string()),
+    capabilities: types.optional(
+      z.lazy(() => CreateIntegrationStoreDirectCapabilities$inboundSchema),
+    ),
+    shortDescription: types.optional(types.string()),
+    metadataSchema: types.optional(
+      z.lazy(() => CreateIntegrationStoreDirectMetadataSchema$inboundSchema),
+    ),
+    resourceLinks: types.optional(
+      z.array(z.lazy(() => ResourceLinks$inboundSchema)),
+    ),
+    tags: types.optional(
+      z.array(CreateIntegrationStoreDirectTags$inboundSchema),
+    ),
+    projectConnectionScopes: types.optional(
+      z.array(ProjectConnectionScopes$inboundSchema),
+    ),
+    showSSOLinkOnProjectConnection: types.optional(types.boolean()),
+    disableResourceRenaming: types.optional(types.boolean()),
+    repl: types.optional(z.lazy(() => Repl$inboundSchema)),
+    guides: types.optional(z.array(z.lazy(() => Guides$inboundSchema))),
     value: z.lazy(() => CreateIntegrationStoreDirectValue$inboundSchema),
-    disabled: z.union([
-      z.lazy(() => Disabled2$inboundSchema),
-      z.boolean(),
-      Disabled3$inboundSchema,
-    ]).optional(),
-    hidden: z.union([
-      z.lazy(() => Hidden2$inboundSchema),
-      z.boolean(),
-      Hidden3$inboundSchema,
-    ]).optional(),
+    disabled: types.optional(
+      smartUnion([
+        z.lazy(() => Disabled2$inboundSchema),
+        types.boolean(),
+        Disabled3$inboundSchema,
+      ]),
+    ),
+    hidden: types.optional(
+      smartUnion([
+        z.lazy(() => Hidden2$inboundSchema),
+        types.boolean(),
+        Hidden3$inboundSchema,
+      ]),
+    ),
   });
 /** @internal */
 export type Product$Outbound = {
@@ -13308,12 +13445,12 @@ export const Product$outboundSchema: z.ZodType<
   repl: z.lazy(() => Repl$outboundSchema).optional(),
   guides: z.array(z.lazy(() => Guides$outboundSchema)).optional(),
   value: z.lazy(() => CreateIntegrationStoreDirectValue$outboundSchema),
-  disabled: z.union([
+  disabled: smartUnion([
     z.lazy(() => Disabled2$outboundSchema),
     z.boolean(),
     Disabled3$outboundSchema,
   ]).optional(),
-  hidden: z.union([
+  hidden: smartUnion([
     z.lazy(() => Hidden2$outboundSchema),
     z.boolean(),
     Hidden3$outboundSchema,
@@ -13340,9 +13477,9 @@ export const CreateIntegrationStoreDirectExperimentation$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    edgeConfigSyncingEnabled: z.boolean().optional(),
-    edgeConfigId: z.string().optional(),
-    edgeConfigTokenId: z.string().optional(),
+    edgeConfigSyncingEnabled: types.optional(types.boolean()),
+    edgeConfigId: types.optional(types.string()),
+    edgeConfigTokenId: types.optional(types.string()),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectExperimentation$Outbound = {
@@ -13396,9 +13533,9 @@ export const CreateIntegrationStoreDirectProtocolSettings$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    experimentation: z.lazy(() =>
-      CreateIntegrationStoreDirectExperimentation$inboundSchema
-    ).optional(),
+    experimentation: types.optional(
+      z.lazy(() => CreateIntegrationStoreDirectExperimentation$inboundSchema),
+    ),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectProtocolSettings$Outbound = {
@@ -13460,10 +13597,10 @@ export const CreateIntegrationStoreDirectNotification$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  title: z.string(),
+  title: types.string(),
   level: CreateIntegrationStoreDirectLevel$inboundSchema,
-  message: z.string().optional(),
-  href: z.string().optional(),
+  message: types.optional(types.string()),
+  href: types.optional(types.string()),
 });
 /** @internal */
 export type CreateIntegrationStoreDirectNotification$Outbound = {
@@ -13517,8 +13654,8 @@ export const CreateIntegrationStoreDirectSecrets$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  length: z.number(),
+  name: types.string(),
+  length: types.number(),
 });
 /** @internal */
 export type CreateIntegrationStoreDirectSecrets$Outbound = {
@@ -13580,8 +13717,8 @@ export const CreateIntegrationStoreDirectDetails$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  label: z.string(),
-  value: z.string().optional(),
+  label: types.string(),
+  value: types.optional(types.string()),
 });
 /** @internal */
 export type CreateIntegrationStoreDirectDetails$Outbound = {
@@ -13626,8 +13763,8 @@ export const CreateIntegrationStoreDirectHighlightedDetails$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    label: z.string(),
-    value: z.string().optional(),
+    label: types.string(),
+    value: types.optional(types.string()),
   });
 /** @internal */
 export type CreateIntegrationStoreDirectHighlightedDetails$Outbound = {
@@ -13678,8 +13815,8 @@ export const CreateIntegrationStoreDirectQuote$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  line: z.string(),
-  amount: z.string(),
+  line: types.string(),
+  amount: types.string(),
 });
 /** @internal */
 export type CreateIntegrationStoreDirectQuote$Outbound = {
@@ -13723,27 +13860,30 @@ export const CreateIntegrationStoreDirectBillingPlan$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type: CreateIntegrationStoreDirectType$inboundSchema,
-  description: z.string(),
-  id: z.string(),
-  name: z.string(),
+  description: types.string(),
+  id: types.string(),
+  name: types.string(),
   scope: CreateIntegrationStoreDirectScope$inboundSchema,
-  paymentMethodRequired: z.boolean(),
-  preauthorizationAmount: z.number().optional(),
-  initialCharge: z.string().optional(),
-  minimumAmount: z.string().optional(),
-  maximumAmount: z.string().optional(),
-  maximumAmountAutoPurchasePerPeriod: z.string().optional(),
-  cost: z.string().optional(),
-  details: z.array(
-    z.lazy(() => CreateIntegrationStoreDirectDetails$inboundSchema),
-  ).optional(),
-  highlightedDetails: z.array(
-    z.lazy(() => CreateIntegrationStoreDirectHighlightedDetails$inboundSchema),
-  ).optional(),
-  quote: z.array(z.lazy(() => CreateIntegrationStoreDirectQuote$inboundSchema))
-    .optional(),
-  effectiveDate: z.string().optional(),
-  disabled: z.boolean().optional(),
+  paymentMethodRequired: types.boolean(),
+  preauthorizationAmount: types.optional(types.number()),
+  initialCharge: types.optional(types.string()),
+  minimumAmount: types.optional(types.string()),
+  maximumAmount: types.optional(types.string()),
+  maximumAmountAutoPurchasePerPeriod: types.optional(types.string()),
+  cost: types.optional(types.string()),
+  details: types.optional(
+    z.array(z.lazy(() => CreateIntegrationStoreDirectDetails$inboundSchema)),
+  ),
+  highlightedDetails: types.optional(
+    z.array(z.lazy(() =>
+      CreateIntegrationStoreDirectHighlightedDetails$inboundSchema
+    )),
+  ),
+  quote: types.optional(
+    z.array(z.lazy(() => CreateIntegrationStoreDirectQuote$inboundSchema)),
+  ),
+  effectiveDate: types.optional(types.string()),
+  disabled: types.optional(types.boolean()),
 });
 /** @internal */
 export type CreateIntegrationStoreDirectBillingPlan$Outbound = {
@@ -13833,42 +13973,46 @@ export const CreateIntegrationStoreDirectStore$inboundSchema: z.ZodType<
   projectsMetadata: z.array(
     z.lazy(() => CreateIntegrationStoreDirectProjectsMetadata$inboundSchema),
   ),
-  projectFilter: z.lazy(() => ProjectFilter$inboundSchema).optional(),
-  totalConnectedProjects: z.number().optional(),
-  usageQuotaExceeded: z.boolean(),
-  status: z.nullable(CreateIntegrationStoreDirectStatus$inboundSchema),
-  ownership: CreateIntegrationStoreDirectOwnership$inboundSchema.optional(),
-  capabilities: z.lazy(() => Capabilities$inboundSchema).optional(),
-  metadata: z.record(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.array(z.string()),
-      z.array(z.number()),
-    ]),
-  ).optional(),
-  externalResourceId: z.string(),
+  projectFilter: types.optional(z.lazy(() => ProjectFilter$inboundSchema)),
+  totalConnectedProjects: types.optional(types.number()),
+  usageQuotaExceeded: types.boolean(),
+  status: types.nullable(CreateIntegrationStoreDirectStatus$inboundSchema),
+  ownership: types.optional(
+    CreateIntegrationStoreDirectOwnership$inboundSchema,
+  ),
+  capabilities: types.optional(z.lazy(() => Capabilities$inboundSchema)),
+  metadata: types.optional(
+    z.record(
+      smartUnion([
+        types.string(),
+        types.number(),
+        types.boolean(),
+        z.array(types.string()),
+        z.array(types.number()),
+      ]),
+    ),
+  ),
+  externalResourceId: types.string(),
   externalResourceStatus: z.nullable(ExternalResourceStatus$inboundSchema)
     .optional(),
-  directPartnerConsoleUrl: z.string().optional(),
+  directPartnerConsoleUrl: types.optional(types.string()),
   product: z.lazy(() => Product$inboundSchema),
-  protocolSettings: z.lazy(() =>
-    CreateIntegrationStoreDirectProtocolSettings$inboundSchema
-  ).optional(),
-  notification: z.lazy(() =>
-    CreateIntegrationStoreDirectNotification$inboundSchema
-  ).optional(),
+  protocolSettings: types.optional(
+    z.lazy(() => CreateIntegrationStoreDirectProtocolSettings$inboundSchema),
+  ),
+  notification: types.optional(
+    z.lazy(() => CreateIntegrationStoreDirectNotification$inboundSchema),
+  ),
   secrets: z.array(
     z.lazy(() => CreateIntegrationStoreDirectSecrets$inboundSchema),
   ),
-  billingPlan: z.lazy(() =>
-    CreateIntegrationStoreDirectBillingPlan$inboundSchema
-  ).optional(),
-  secretRotationRequestedAt: z.number().optional(),
-  secretRotationRequestedReason: z.string().optional(),
-  secretRotationRequestedBy: z.string().optional(),
-  secretRotationCompletedAt: z.number().optional(),
+  billingPlan: types.optional(
+    z.lazy(() => CreateIntegrationStoreDirectBillingPlan$inboundSchema),
+  ),
+  secretRotationRequestedAt: types.optional(types.number()),
+  secretRotationRequestedReason: types.optional(types.string()),
+  secretRotationRequestedBy: types.optional(types.string()),
+  secretRotationCompletedAt: types.optional(types.number()),
 });
 /** @internal */
 export type CreateIntegrationStoreDirectStore$Outbound = {
@@ -13916,7 +14060,7 @@ export const CreateIntegrationStoreDirectStore$outboundSchema: z.ZodType<
   ownership: CreateIntegrationStoreDirectOwnership$outboundSchema.optional(),
   capabilities: z.lazy(() => Capabilities$outboundSchema).optional(),
   metadata: z.record(
-    z.union([
+    smartUnion([
       z.string(),
       z.number(),
       z.boolean(),
@@ -13972,7 +14116,7 @@ export const CreateIntegrationStoreDirectResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  store: z.nullable(
+  store: types.nullable(
     z.lazy(() => CreateIntegrationStoreDirectStore$inboundSchema),
   ),
 });

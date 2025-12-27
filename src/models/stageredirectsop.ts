@@ -6,6 +6,8 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type StatusCode = number | string;
@@ -82,7 +84,7 @@ export const StatusCode$inboundSchema: z.ZodType<
   StatusCode,
   z.ZodTypeDef,
   unknown
-> = z.union([z.number(), z.string()]);
+> = smartUnion([types.number(), types.string()]);
 /** @internal */
 export type StatusCode$Outbound = number | string;
 
@@ -91,7 +93,7 @@ export const StatusCode$outboundSchema: z.ZodType<
   StatusCode$Outbound,
   z.ZodTypeDef,
   StatusCode
-> = z.union([z.number(), z.string()]);
+> = smartUnion([z.number(), z.string()]);
 
 export function statusCodeToJSON(statusCode: StatusCode): string {
   return JSON.stringify(StatusCode$outboundSchema.parse(statusCode));
@@ -112,12 +114,12 @@ export const Redirects$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  source: z.string(),
-  destination: z.string(),
-  statusCode: z.union([z.number(), z.string()]).optional(),
-  permanent: z.boolean().optional(),
-  caseSensitive: z.boolean().optional(),
-  query: z.boolean().optional(),
+  source: types.string(),
+  destination: types.string(),
+  statusCode: types.optional(smartUnion([types.number(), types.string()])),
+  permanent: types.optional(types.boolean()),
+  caseSensitive: types.optional(types.boolean()),
+  query: types.optional(types.boolean()),
 });
 /** @internal */
 export type Redirects$Outbound = {
@@ -137,7 +139,7 @@ export const Redirects$outboundSchema: z.ZodType<
 > = z.object({
   source: z.string(),
   destination: z.string(),
-  statusCode: z.union([z.number(), z.string()]).optional(),
+  statusCode: smartUnion([z.number(), z.string()]).optional(),
   permanent: z.boolean().optional(),
   caseSensitive: z.boolean().optional(),
   query: z.boolean().optional(),
@@ -162,11 +164,11 @@ export const StageRedirectsRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
-  teamId: z.string(),
-  overwrite: z.boolean().optional(),
-  name: z.string().optional(),
-  redirects: z.array(z.lazy(() => Redirects$inboundSchema)).optional(),
+  projectId: types.string(),
+  teamId: types.string(),
+  overwrite: types.optional(types.boolean()),
+  name: types.optional(types.string()),
+  redirects: types.optional(z.array(z.lazy(() => Redirects$inboundSchema))),
 });
 /** @internal */
 export type StageRedirectsRequestBody$Outbound = {
@@ -213,9 +215,11 @@ export const StageRedirectsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  RequestBody: z.lazy(() => StageRedirectsRequestBody$inboundSchema).optional(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
+  RequestBody: types.optional(
+    z.lazy(() => StageRedirectsRequestBody$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",
@@ -267,15 +271,15 @@ export const StageRedirectsVersion$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  key: z.string(),
-  lastModified: z.number(),
-  createdBy: z.string(),
-  name: z.string().optional(),
-  isStaging: z.boolean().optional(),
-  isLive: z.boolean().optional(),
-  redirectCount: z.number().optional(),
-  alias: z.string().optional(),
+  id: types.string(),
+  key: types.string(),
+  lastModified: types.number(),
+  createdBy: types.string(),
+  name: types.optional(types.string()),
+  isStaging: types.optional(types.boolean()),
+  isLive: types.optional(types.boolean()),
+  redirectCount: types.optional(types.number()),
+  alias: types.optional(types.string()),
 });
 /** @internal */
 export type StageRedirectsVersion$Outbound = {
@@ -330,7 +334,7 @@ export const StageRedirectsResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  alias: z.nullable(z.string()),
+  alias: types.nullable(types.string()),
   version: z.lazy(() => StageRedirectsVersion$inboundSchema),
 });
 /** @internal */

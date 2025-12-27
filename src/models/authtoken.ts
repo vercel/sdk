@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const AuthTokenScopesOrigin = {
@@ -137,11 +138,11 @@ export const AuthTokenScopesOrigin$outboundSchema: z.ZodNativeEnum<
 /** @internal */
 export const Scopes2$inboundSchema: z.ZodType<Scopes2, z.ZodTypeDef, unknown> =
   z.object({
-    type: z.literal("team"),
-    teamId: z.string(),
-    origin: AuthTokenScopesOrigin$inboundSchema.optional(),
-    createdAt: z.number(),
-    expiresAt: z.number().optional(),
+    type: types.literal("team"),
+    teamId: types.string(),
+    origin: types.optional(AuthTokenScopesOrigin$inboundSchema),
+    createdAt: types.number(),
+    expiresAt: types.optional(types.number()),
   });
 /** @internal */
 export type Scopes2$Outbound = {
@@ -191,7 +192,7 @@ export const AuthTokenScopes1Origin$outboundSchema: z.ZodNativeEnum<
 export const Sudo$inboundSchema: z.ZodType<Sudo, z.ZodTypeDef, unknown> = z
   .object({
     origin: AuthTokenScopes1Origin$inboundSchema,
-    expiresAt: z.number(),
+    expiresAt: types.number(),
   });
 /** @internal */
 export type Sudo$Outbound = {
@@ -229,11 +230,11 @@ export const ScopesOrigin$outboundSchema: z.ZodNativeEnum<typeof ScopesOrigin> =
 /** @internal */
 export const Scopes1$inboundSchema: z.ZodType<Scopes1, z.ZodTypeDef, unknown> =
   z.object({
-    type: z.literal("user"),
-    sudo: z.lazy(() => Sudo$inboundSchema).optional(),
-    origin: ScopesOrigin$inboundSchema.optional(),
-    createdAt: z.number(),
-    expiresAt: z.number().optional(),
+    type: types.literal("user"),
+    sudo: types.optional(z.lazy(() => Sudo$inboundSchema)),
+    origin: types.optional(ScopesOrigin$inboundSchema),
+    createdAt: types.number(),
+    expiresAt: types.optional(types.number()),
   });
 /** @internal */
 export type Scopes1$Outbound = {
@@ -308,19 +309,21 @@ export const AuthToken$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
-  type: z.string(),
-  origin: z.string().optional(),
-  scopes: z.array(
-    z.union([
+  id: types.string(),
+  name: types.string(),
+  type: types.string(),
+  origin: types.optional(types.string()),
+  scopes: types.optional(
+    z.array(z.union([
       z.lazy(() => Scopes1$inboundSchema),
-      z.lazy(() => Scopes2$inboundSchema),
-    ]),
-  ).optional(),
-  expiresAt: z.number().optional(),
-  activeAt: z.number(),
-  createdAt: z.number(),
+      z.lazy(() =>
+        Scopes2$inboundSchema
+      ),
+    ])),
+  ),
+  expiresAt: types.optional(types.number()),
+  activeAt: types.number(),
+  createdAt: types.number(),
 });
 /** @internal */
 export type AuthToken$Outbound = {

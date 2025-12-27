@@ -6,6 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetProjectMembersRequest = {
@@ -161,13 +163,13 @@ export const GetProjectMembersRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  idOrName: z.string(),
-  limit: z.number().int().optional(),
-  since: z.number().int().optional(),
-  until: z.number().int().optional(),
-  search: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  idOrName: types.string(),
+  limit: types.optional(types.number()),
+  since: types.optional(types.number()),
+  until: types.optional(types.number()),
+  search: types.optional(types.string()),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type GetProjectMembersRequest$Outbound = {
@@ -245,14 +247,14 @@ export const ResponseBodyMembers$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  avatar: z.string().optional(),
-  email: z.string(),
+  avatar: types.optional(types.string()),
+  email: types.string(),
   role: ResponseBodyRole$inboundSchema,
   computedProjectRole: ComputedProjectRole$inboundSchema,
-  uid: z.string(),
-  username: z.string(),
-  name: z.string().optional(),
-  createdAt: z.number(),
+  uid: types.string(),
+  username: types.string(),
+  name: types.optional(types.string()),
+  createdAt: types.number(),
   teamRole: ResponseBodyTeamRole$inboundSchema,
 });
 /** @internal */
@@ -308,10 +310,10 @@ export const GetProjectMembersResponseBodyPagination$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  hasNext: z.boolean(),
-  count: z.number(),
-  next: z.nullable(z.number()),
-  prev: z.nullable(z.number()),
+  hasNext: types.boolean(),
+  count: types.number(),
+  next: types.nullable(types.number()),
+  prev: types.nullable(types.number()),
 });
 /** @internal */
 export type GetProjectMembersResponseBodyPagination$Outbound = {
@@ -447,7 +449,7 @@ export const GetProjectMembersResponseBody$inboundSchema: z.ZodType<
   GetProjectMembersResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => GetProjectMembersResponseBody2$inboundSchema),
   z.lazy(() => GetProjectMembersResponseBody1$inboundSchema),
 ]);
@@ -461,7 +463,7 @@ export const GetProjectMembersResponseBody$outboundSchema: z.ZodType<
   GetProjectMembersResponseBody$Outbound,
   z.ZodTypeDef,
   GetProjectMembersResponseBody
-> = z.union([
+> = smartUnion([
   z.lazy(() => GetProjectMembersResponseBody2$outboundSchema),
   z.lazy(() => GetProjectMembersResponseBody1$outboundSchema),
 ]);

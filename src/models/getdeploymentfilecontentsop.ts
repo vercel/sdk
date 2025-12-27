@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetDeploymentFileContentsRequest = {
@@ -36,11 +37,11 @@ export const GetDeploymentFileContentsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  fileId: z.string(),
-  path: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  id: types.string(),
+  fileId: types.string(),
+  path: types.optional(types.string()),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type GetDeploymentFileContentsRequest$Outbound = {

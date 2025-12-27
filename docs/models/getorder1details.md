@@ -6,12 +6,14 @@
 import { GetOrder1Details } from "@vercel/sdk/models/getorderop.js";
 
 let value: GetOrder1Details = {
-  tlds: [],
+  message: "<value>",
+  domainNames: [],
 };
 ```
 
 ## Fields
 
-| Field                              | Type                               | Required                           | Description                        |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| `tlds`                             | [models.Tlds](../models/tlds.md)[] | :heavy_check_mark:                 | N/A                                |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `message`          | *string*           | :heavy_check_mark: | N/A                |
+| `domainNames`      | *string*[]         | :heavy_check_mark: | N/A                |

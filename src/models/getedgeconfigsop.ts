@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetEdgeConfigsRequest = {
@@ -66,8 +67,8 @@ export const GetEdgeConfigsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type GetEdgeConfigsRequest$Outbound = {
@@ -108,9 +109,9 @@ export const Transfer$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  fromAccountId: z.string(),
-  startedAt: z.number(),
-  doneAt: z.nullable(z.number()),
+  fromAccountId: types.string(),
+  startedAt: types.number(),
+  doneAt: types.nullable(types.number()),
 });
 /** @internal */
 export type Transfer$Outbound = {
@@ -182,7 +183,7 @@ export const GetEdgeConfigsType$outboundSchema: z.ZodNativeEnum<
 export const Purpose$inboundSchema: z.ZodType<Purpose, z.ZodTypeDef, unknown> =
   z.object({
     type: GetEdgeConfigsType$inboundSchema,
-    projectId: z.string(),
+    projectId: types.string(),
   });
 /** @internal */
 export type Purpose$Outbound = {
@@ -219,17 +220,17 @@ export const GetEdgeConfigsResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string().optional(),
-  createdAt: z.number().optional(),
-  ownerId: z.string().optional(),
-  slug: z.string().optional(),
-  updatedAt: z.number().optional(),
-  digest: z.string().optional(),
-  transfer: z.lazy(() => Transfer$inboundSchema).optional(),
-  schema: z.lazy(() => Schema$inboundSchema).optional(),
-  purpose: z.lazy(() => Purpose$inboundSchema).optional(),
-  sizeInBytes: z.number(),
-  itemCount: z.number(),
+  id: types.optional(types.string()),
+  createdAt: types.optional(types.number()),
+  ownerId: types.optional(types.string()),
+  slug: types.optional(types.string()),
+  updatedAt: types.optional(types.number()),
+  digest: types.optional(types.string()),
+  transfer: types.optional(z.lazy(() => Transfer$inboundSchema)),
+  schema: types.optional(z.lazy(() => Schema$inboundSchema)),
+  purpose: types.optional(z.lazy(() => Purpose$inboundSchema)),
+  sizeInBytes: types.number(),
+  itemCount: types.number(),
 });
 /** @internal */
 export type GetEdgeConfigsResponseBody$Outbound = {

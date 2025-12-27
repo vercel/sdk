@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteDeploymentRequest = {
@@ -58,10 +59,10 @@ export const DeleteDeploymentRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  url: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  id: types.string(),
+  url: types.optional(types.string()),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type DeleteDeploymentRequest$Outbound = {
@@ -115,7 +116,7 @@ export const DeleteDeploymentResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  uid: z.string(),
+  uid: types.string(),
   state: DeleteDeploymentState$inboundSchema,
 });
 /** @internal */

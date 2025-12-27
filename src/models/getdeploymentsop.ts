@@ -7,6 +7,8 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import {
   Pagination,
   Pagination$inboundSchema,
@@ -589,22 +591,22 @@ export const GetDeploymentsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  app: z.string().optional(),
-  from: z.number().optional(),
-  limit: z.number().optional(),
-  projectId: z.string().optional(),
-  projectIds: z.array(z.string()).optional(),
-  target: z.string().optional(),
-  to: z.number().optional(),
-  users: z.string().optional(),
-  since: z.number().optional(),
-  until: z.number().optional(),
-  state: z.string().optional(),
-  rollbackCandidate: z.boolean().optional(),
-  branch: z.string().optional(),
-  sha: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  app: types.optional(types.string()),
+  from: types.optional(types.number()),
+  limit: types.optional(types.number()),
+  projectId: types.optional(types.string()),
+  projectIds: types.optional(z.array(types.string())),
+  target: types.optional(types.string()),
+  to: types.optional(types.number()),
+  users: types.optional(types.string()),
+  since: types.optional(types.number()),
+  until: types.optional(types.number()),
+  state: types.optional(types.string()),
+  rollbackCandidate: types.optional(types.boolean()),
+  branch: types.optional(types.string()),
+  sha: types.optional(types.string()),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type GetDeploymentsRequest$Outbound = {
@@ -709,11 +711,11 @@ export const GetDeploymentsCreator$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  uid: z.string(),
-  email: z.string().optional(),
-  username: z.string().optional(),
-  githubLogin: z.string().optional(),
-  gitlabLogin: z.string().optional(),
+  uid: types.string(),
+  email: types.optional(types.string()),
+  username: types.optional(types.string()),
+  githubLogin: types.optional(types.string()),
+  gitlabLogin: types.optional(types.string()),
 });
 /** @internal */
 export type GetDeploymentsCreator$Outbound = {
@@ -769,8 +771,8 @@ export const GetDeploymentsAliasError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  code: z.string(),
-  message: z.string(),
+  code: types.string(),
+  message: types.string(),
 });
 /** @internal */
 export type GetDeploymentsAliasError$Outbound = {
@@ -810,7 +812,7 @@ export const GetDeploymentsAliasAssigned$inboundSchema: z.ZodType<
   GetDeploymentsAliasAssigned,
   z.ZodTypeDef,
   unknown
-> = z.union([z.number(), z.boolean()]);
+> = smartUnion([types.number(), types.boolean()]);
 /** @internal */
 export type GetDeploymentsAliasAssigned$Outbound = number | boolean;
 
@@ -819,7 +821,7 @@ export const GetDeploymentsAliasAssigned$outboundSchema: z.ZodType<
   GetDeploymentsAliasAssigned$Outbound,
   z.ZodTypeDef,
   GetDeploymentsAliasAssigned
-> = z.union([z.number(), z.boolean()]);
+> = smartUnion([z.number(), z.boolean()]);
 
 export function getDeploymentsAliasAssignedToJSON(
   getDeploymentsAliasAssigned: GetDeploymentsAliasAssigned,
@@ -883,8 +885,8 @@ export const GetDeploymentsDeploymentAlias$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   state: GetDeploymentsDeploymentsState$inboundSchema,
-  startedAt: z.number(),
-  completedAt: z.number().optional(),
+  startedAt: types.number(),
+  completedAt: types.optional(types.number()),
 });
 /** @internal */
 export type GetDeploymentsDeploymentAlias$Outbound = {
@@ -1003,12 +1005,12 @@ export const GetDeploymentsSpeedInsights$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  enabledAt: z.number().optional(),
-  disabledAt: z.number().optional(),
-  canceledAt: z.number().optional(),
-  hasData: z.boolean().optional(),
-  paidAt: z.number().optional(),
+  id: types.string(),
+  enabledAt: types.optional(types.number()),
+  disabledAt: types.optional(types.number()),
+  canceledAt: types.optional(types.number()),
+  hasData: types.optional(types.boolean()),
+  paidAt: types.optional(types.number()),
 });
 /** @internal */
 export type GetDeploymentsSpeedInsights$Outbound = {
@@ -1059,11 +1061,11 @@ export const GetDeploymentsWebAnalytics$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  disabledAt: z.number().optional(),
-  canceledAt: z.number().optional(),
-  enabledAt: z.number().optional(),
-  hasData: z.boolean().optional(),
+  id: types.string(),
+  disabledAt: types.optional(types.number()),
+  canceledAt: types.optional(types.number()),
+  enabledAt: types.optional(types.number()),
+  hasData: types.optional(types.boolean()),
 });
 /** @internal */
 export type GetDeploymentsWebAnalytics$Outbound = {
@@ -1110,8 +1112,8 @@ export const GetDeploymentsGitComments$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  onPullRequest: z.boolean(),
-  onCommit: z.boolean(),
+  onPullRequest: types.boolean(),
+  onCommit: types.boolean(),
 });
 /** @internal */
 export type GetDeploymentsGitComments$Outbound = {
@@ -1153,25 +1155,29 @@ export const GetDeploymentsProjectSettings$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   framework: z.nullable(GetDeploymentsFramework$inboundSchema).optional(),
-  gitForkProtection: z.boolean().optional(),
-  customerSupportCodeVisibility: z.boolean().optional(),
-  gitLFS: z.boolean().optional(),
-  devCommand: z.nullable(z.string()).optional(),
-  installCommand: z.nullable(z.string()).optional(),
-  buildCommand: z.nullable(z.string()).optional(),
-  nodeVersion: GetDeploymentsNodeVersion$inboundSchema.optional(),
-  outputDirectory: z.nullable(z.string()).optional(),
-  publicSource: z.nullable(z.boolean()).optional(),
-  rootDirectory: z.nullable(z.string()).optional(),
-  sourceFilesOutsideRootDirectory: z.boolean().optional(),
-  commandForIgnoringBuildStep: z.nullable(z.string()).optional(),
-  createdAt: z.number().optional(),
-  speedInsights: z.lazy(() => GetDeploymentsSpeedInsights$inboundSchema)
-    .optional(),
-  webAnalytics: z.lazy(() => GetDeploymentsWebAnalytics$inboundSchema)
-    .optional(),
-  skipGitConnectDuringLink: z.boolean().optional(),
-  gitComments: z.lazy(() => GetDeploymentsGitComments$inboundSchema).optional(),
+  gitForkProtection: types.optional(types.boolean()),
+  customerSupportCodeVisibility: types.optional(types.boolean()),
+  gitLFS: types.optional(types.boolean()),
+  devCommand: z.nullable(types.string()).optional(),
+  installCommand: z.nullable(types.string()).optional(),
+  buildCommand: z.nullable(types.string()).optional(),
+  nodeVersion: types.optional(GetDeploymentsNodeVersion$inboundSchema),
+  outputDirectory: z.nullable(types.string()).optional(),
+  publicSource: z.nullable(types.boolean()).optional(),
+  rootDirectory: z.nullable(types.string()).optional(),
+  sourceFilesOutsideRootDirectory: types.optional(types.boolean()),
+  commandForIgnoringBuildStep: z.nullable(types.string()).optional(),
+  createdAt: types.optional(types.number()),
+  speedInsights: types.optional(
+    z.lazy(() => GetDeploymentsSpeedInsights$inboundSchema),
+  ),
+  webAnalytics: types.optional(
+    z.lazy(() => GetDeploymentsWebAnalytics$inboundSchema),
+  ),
+  skipGitConnectDuringLink: types.optional(types.boolean()),
+  gitComments: types.optional(
+    z.lazy(() => GetDeploymentsGitComments$inboundSchema),
+  ),
 });
 /** @internal */
 export type GetDeploymentsProjectSettings$Outbound = {
@@ -1249,8 +1255,8 @@ export const GetDeploymentsCustomEnvironment$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  slug: z.string().optional(),
+  id: types.string(),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type GetDeploymentsCustomEnvironment$Outbound = {
@@ -1293,47 +1299,52 @@ export const Deployments$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  uid: z.string(),
-  name: z.string(),
-  projectId: z.string(),
-  url: z.string(),
-  created: z.number(),
-  defaultRoute: z.string().optional(),
-  deleted: z.number().optional(),
-  undeleted: z.number().optional(),
-  softDeletedByRetention: z.boolean().optional(),
-  source: GetDeploymentsSource$inboundSchema.optional(),
-  state: GetDeploymentsState$inboundSchema.optional(),
-  readyState: GetDeploymentsReadyState$inboundSchema.optional(),
+  uid: types.string(),
+  name: types.string(),
+  projectId: types.string(),
+  url: types.string(),
+  created: types.number(),
+  defaultRoute: types.optional(types.string()),
+  deleted: types.optional(types.number()),
+  undeleted: types.optional(types.number()),
+  softDeletedByRetention: types.optional(types.boolean()),
+  source: types.optional(GetDeploymentsSource$inboundSchema),
+  state: types.optional(GetDeploymentsState$inboundSchema),
+  readyState: types.optional(GetDeploymentsReadyState$inboundSchema),
   type: GetDeploymentsType$inboundSchema,
   creator: z.lazy(() => GetDeploymentsCreator$inboundSchema),
-  meta: z.record(z.string()).optional(),
+  meta: types.optional(z.record(types.string())),
   target: z.nullable(GetDeploymentsTarget$inboundSchema).optional(),
   aliasError: z.nullable(z.lazy(() => GetDeploymentsAliasError$inboundSchema))
     .optional(),
-  aliasAssigned: z.nullable(z.union([z.number(), z.boolean()])).optional(),
-  createdAt: z.number().optional(),
-  buildingAt: z.number().optional(),
-  ready: z.number().optional(),
-  readySubstate: GetDeploymentsReadySubstate$inboundSchema.optional(),
-  checksState: GetDeploymentsChecksState$inboundSchema.optional(),
-  checksConclusion: GetDeploymentsChecksConclusion$inboundSchema.optional(),
-  checks: z.lazy(() => GetDeploymentsChecks$inboundSchema).optional(),
-  inspectorUrl: z.nullable(z.string()),
-  errorCode: z.string().optional(),
-  errorMessage: z.nullable(z.string()).optional(),
-  oomReport: GetDeploymentsOomReport$inboundSchema.optional(),
-  isRollbackCandidate: z.nullable(z.boolean()).optional(),
-  prebuilt: z.boolean().optional(),
-  projectSettings: z.lazy(() => GetDeploymentsProjectSettings$inboundSchema)
+  aliasAssigned: z.nullable(smartUnion([types.number(), types.boolean()]))
     .optional(),
-  connectBuildsEnabled: z.boolean().optional(),
-  connectConfigurationId: z.string().optional(),
-  passiveConnectConfigurationId: z.string().optional(),
-  expiration: z.number().optional(),
-  proposedExpiration: z.number().optional(),
-  customEnvironment: z.lazy(() => GetDeploymentsCustomEnvironment$inboundSchema)
-    .optional(),
+  createdAt: types.optional(types.number()),
+  buildingAt: types.optional(types.number()),
+  ready: types.optional(types.number()),
+  readySubstate: types.optional(GetDeploymentsReadySubstate$inboundSchema),
+  checksState: types.optional(GetDeploymentsChecksState$inboundSchema),
+  checksConclusion: types.optional(
+    GetDeploymentsChecksConclusion$inboundSchema,
+  ),
+  checks: types.optional(z.lazy(() => GetDeploymentsChecks$inboundSchema)),
+  inspectorUrl: types.nullable(types.string()),
+  errorCode: types.optional(types.string()),
+  errorMessage: z.nullable(types.string()).optional(),
+  oomReport: types.optional(GetDeploymentsOomReport$inboundSchema),
+  isRollbackCandidate: z.nullable(types.boolean()).optional(),
+  prebuilt: types.optional(types.boolean()),
+  projectSettings: types.optional(
+    z.lazy(() => GetDeploymentsProjectSettings$inboundSchema),
+  ),
+  connectBuildsEnabled: types.optional(types.boolean()),
+  connectConfigurationId: types.optional(types.string()),
+  passiveConnectConfigurationId: types.optional(types.string()),
+  expiration: types.optional(types.number()),
+  proposedExpiration: types.optional(types.number()),
+  customEnvironment: types.optional(
+    z.lazy(() => GetDeploymentsCustomEnvironment$inboundSchema),
+  ),
 });
 /** @internal */
 export type Deployments$Outbound = {
@@ -1401,7 +1412,7 @@ export const Deployments$outboundSchema: z.ZodType<
   target: z.nullable(GetDeploymentsTarget$outboundSchema).optional(),
   aliasError: z.nullable(z.lazy(() => GetDeploymentsAliasError$outboundSchema))
     .optional(),
-  aliasAssigned: z.nullable(z.union([z.number(), z.boolean()])).optional(),
+  aliasAssigned: z.nullable(smartUnion([z.number(), z.boolean()])).optional(),
   createdAt: z.number().optional(),
   buildingAt: z.number().optional(),
   ready: z.number().optional(),

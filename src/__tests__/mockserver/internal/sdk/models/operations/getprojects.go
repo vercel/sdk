@@ -8598,28 +8598,28 @@ func (o *GetProjectsOwasp) GetAction() *GetProjectsOwaspAction {
 }
 
 type GetProjectsManagedRules struct {
-	BotFilter GetProjectsBotFilter `json:"bot_filter"`
-	AiBots    GetProjectsAiBots    `json:"ai_bots"`
-	Owasp     GetProjectsOwasp     `json:"owasp"`
+	BotFilter *GetProjectsBotFilter `json:"bot_filter,omitempty"`
+	AiBots    *GetProjectsAiBots    `json:"ai_bots,omitempty"`
+	Owasp     *GetProjectsOwasp     `json:"owasp,omitempty"`
 }
 
-func (o *GetProjectsManagedRules) GetBotFilter() GetProjectsBotFilter {
+func (o *GetProjectsManagedRules) GetBotFilter() *GetProjectsBotFilter {
 	if o == nil {
-		return GetProjectsBotFilter{}
+		return nil
 	}
 	return o.BotFilter
 }
 
-func (o *GetProjectsManagedRules) GetAiBots() GetProjectsAiBots {
+func (o *GetProjectsManagedRules) GetAiBots() *GetProjectsAiBots {
 	if o == nil {
-		return GetProjectsAiBots{}
+		return nil
 	}
 	return o.AiBots
 }
 
-func (o *GetProjectsManagedRules) GetOwasp() GetProjectsOwasp {
+func (o *GetProjectsManagedRules) GetOwasp() *GetProjectsOwasp {
 	if o == nil {
-		return GetProjectsOwasp{}
+		return nil
 	}
 	return o.Owasp
 }

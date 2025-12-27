@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type ReadAccessGroupProjectRequest = {
@@ -45,10 +46,10 @@ export const ReadAccessGroupProjectRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  accessGroupIdOrName: z.string(),
-  projectId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  accessGroupIdOrName: types.string(),
+  projectId: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type ReadAccessGroupProjectRequest$Outbound = {
@@ -104,12 +105,12 @@ export const ReadAccessGroupProjectResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamId: z.string(),
-  accessGroupId: z.string(),
-  projectId: z.string(),
+  teamId: types.string(),
+  accessGroupId: types.string(),
+  projectId: types.string(),
   role: ReadAccessGroupProjectRole$inboundSchema,
-  createdAt: z.string(),
-  updatedAt: z.string(),
+  createdAt: types.string(),
+  updatedAt: types.string(),
 });
 /** @internal */
 export type ReadAccessGroupProjectResponseBody$Outbound = {

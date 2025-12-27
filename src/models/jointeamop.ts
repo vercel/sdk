@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type JoinTeamRequestBody = {
@@ -48,7 +49,7 @@ export const JoinTeamRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  inviteCode: z.string().optional(),
+  inviteCode: types.optional(types.string()),
 });
 /** @internal */
 export type JoinTeamRequestBody$Outbound = {
@@ -87,7 +88,7 @@ export const JoinTeamRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamId: z.string(),
+  teamId: types.string(),
   RequestBody: z.lazy(() => JoinTeamRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
@@ -135,10 +136,10 @@ export const JoinTeamResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamId: z.string(),
-  slug: z.string(),
-  name: z.string(),
-  from: z.string(),
+  teamId: types.string(),
+  slug: types.string(),
+  name: types.string(),
+  from: types.string(),
 });
 /** @internal */
 export type JoinTeamResponseBody$Outbound = {

@@ -10,6 +10,8 @@ import {
 } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type PaidFeatures = {
@@ -94,9 +96,9 @@ export const PaidFeatures$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  concurrentBuilds: z.nullable(z.number().int()).optional(),
-  passwordProtection: z.nullable(z.boolean()).optional(),
-  previewDeploymentSuffix: z.nullable(z.boolean()).optional(),
+  concurrentBuilds: z.nullable(types.number()).optional(),
+  passwordProtection: z.nullable(types.boolean()).optional(),
+  previewDeploymentSuffix: z.nullable(types.boolean()).optional(),
 });
 /** @internal */
 export type PaidFeatures$Outbound = {
@@ -136,11 +138,9 @@ export const AcceptedPolicies$inboundSchema: z.ZodType<
   unknown
 > = collectExtraKeys$(
   z.object({
-    eula: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    privacy: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  }).catchall(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
+    eula: types.date(),
+    privacy: types.date(),
+  }).catchall(types.date()),
   "additionalProperties",
   true,
 );
@@ -193,10 +193,11 @@ export const AcceptProjectTransferRequestRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  newProjectName: z.string().optional(),
-  paidFeatures: z.lazy(() => PaidFeatures$inboundSchema).optional(),
-  acceptedPolicies: z.record(z.lazy(() => AcceptedPolicies$inboundSchema))
-    .optional(),
+  newProjectName: types.optional(types.string()),
+  paidFeatures: types.optional(z.lazy(() => PaidFeatures$inboundSchema)),
+  acceptedPolicies: types.optional(
+    z.record(z.lazy(() => AcceptedPolicies$inboundSchema)),
+  ),
 });
 /** @internal */
 export type AcceptProjectTransferRequestRequestBody$Outbound = {
@@ -249,12 +250,12 @@ export const AcceptProjectTransferRequestRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  code: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  RequestBody: z.lazy(() =>
-    AcceptProjectTransferRequestRequestBody$inboundSchema
-  ).optional(),
+  code: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
+  RequestBody: types.optional(
+    z.lazy(() => AcceptProjectTransferRequestRequestBody$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",
@@ -410,10 +411,10 @@ export const AcceptProjectTransferRequestResponseBodyResult$inboundSchema:
     unknown
   > = z.object({
     status: AcceptProjectTransferRequestResponseBodyStatus$inboundSchema,
-    error: z.lazy(() =>
-      AcceptProjectTransferRequestResponseBodyError$inboundSchema
-    ).optional(),
-    code: z.string().optional(),
+    error: types.optional(
+      z.lazy(() => AcceptProjectTransferRequestResponseBodyError$inboundSchema),
+    ),
+    code: types.optional(types.string()),
   });
 /** @internal */
 export type AcceptProjectTransferRequestResponseBodyResult$Outbound = {
@@ -468,8 +469,8 @@ export const PartnerCalls$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  installationId: z.string(),
-  resourceIds: z.array(z.string()),
+  installationId: types.string(),
+  resourceIds: z.array(types.string()),
   result: z.lazy(() =>
     AcceptProjectTransferRequestResponseBodyResult$inboundSchema
   ),
@@ -550,7 +551,7 @@ export const AcceptProjectTransferRequestResponseBody1$inboundSchema: z.ZodType<
   resourceTransferErrors: z.array(
     z.lazy(() => ResourceTransferErrors$inboundSchema),
   ),
-  transferredStoreIds: z.array(z.string()),
+  transferredStoreIds: z.array(types.string()),
 });
 /** @internal */
 export type AcceptProjectTransferRequestResponseBody1$Outbound = {
@@ -604,7 +605,7 @@ export const AcceptProjectTransferRequestResponseBody$inboundSchema: z.ZodType<
   AcceptProjectTransferRequestResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => AcceptProjectTransferRequestResponseBody1$inboundSchema),
   z.lazy(() => AcceptProjectTransferRequestResponseBody2$inboundSchema),
 ]);
@@ -618,7 +619,7 @@ export const AcceptProjectTransferRequestResponseBody$outboundSchema: z.ZodType<
   AcceptProjectTransferRequestResponseBody$Outbound,
   z.ZodTypeDef,
   AcceptProjectTransferRequestResponseBody
-> = z.union([
+> = smartUnion([
   z.lazy(() => AcceptProjectTransferRequestResponseBody1$outboundSchema),
   z.lazy(() => AcceptProjectTransferRequestResponseBody2$outboundSchema),
 ]);

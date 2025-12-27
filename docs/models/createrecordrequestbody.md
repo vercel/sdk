@@ -46,7 +46,7 @@ const value: models.RequestBody4 = {
   name: "subdomain",
   type: "HTTPS",
   ttl: 60,
-  value: "0 issue \\"letsencrypt.org\\"",
+  value: "0 issue \\\"letsencrypt.org\\\"",
   comment: "used to verify ownership of domain",
 };
 ```

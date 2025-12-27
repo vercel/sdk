@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type UpdateEdgeConfigRequestBody = {
@@ -88,7 +89,7 @@ export const UpdateEdgeConfigRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  slug: z.string(),
+  slug: types.string(),
 });
 /** @internal */
 export type UpdateEdgeConfigRequestBody$Outbound = {
@@ -129,9 +130,9 @@ export const UpdateEdgeConfigRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  edgeConfigId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  edgeConfigId: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
   RequestBody: z.lazy(() => UpdateEdgeConfigRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
@@ -185,9 +186,9 @@ export const UpdateEdgeConfigTransfer$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  fromAccountId: z.string(),
-  startedAt: z.number(),
-  doneAt: z.nullable(z.number()),
+  fromAccountId: types.string(),
+  startedAt: types.number(),
+  doneAt: types.nullable(types.number()),
 });
 /** @internal */
 export type UpdateEdgeConfigTransfer$Outbound = {
@@ -263,8 +264,8 @@ export const UpdateEdgeConfigPurpose2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("experimentation"),
-  resourceId: z.string(),
+  type: types.literal("experimentation"),
+  resourceId: types.string(),
 });
 /** @internal */
 export type UpdateEdgeConfigPurpose2$Outbound = {
@@ -305,8 +306,8 @@ export const UpdateEdgeConfigPurpose1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("flags"),
-  projectId: z.string(),
+  type: types.literal("flags"),
+  projectId: types.string(),
 });
 /** @internal */
 export type UpdateEdgeConfigPurpose1$Outbound = {
@@ -388,23 +389,27 @@ export const UpdateEdgeConfigResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  createdAt: z.number(),
-  updatedAt: z.number(),
-  deletedAt: z.nullable(z.number()).optional(),
-  createdBy: z.string().optional(),
-  id: z.string(),
-  slug: z.string(),
-  ownerId: z.string(),
-  digest: z.string(),
-  transfer: z.lazy(() => UpdateEdgeConfigTransfer$inboundSchema).optional(),
-  schema: z.lazy(() => UpdateEdgeConfigSchema$inboundSchema).optional(),
-  purpose: z.union([
-    z.lazy(() => UpdateEdgeConfigPurpose1$inboundSchema),
-    z.lazy(() => UpdateEdgeConfigPurpose2$inboundSchema),
-  ]).optional(),
-  syncedToDynamoAt: z.number().optional(),
-  sizeInBytes: z.number(),
-  itemCount: z.number(),
+  createdAt: types.number(),
+  updatedAt: types.number(),
+  deletedAt: z.nullable(types.number()).optional(),
+  createdBy: types.optional(types.string()),
+  id: types.string(),
+  slug: types.string(),
+  ownerId: types.string(),
+  digest: types.string(),
+  transfer: types.optional(
+    z.lazy(() => UpdateEdgeConfigTransfer$inboundSchema),
+  ),
+  schema: types.optional(z.lazy(() => UpdateEdgeConfigSchema$inboundSchema)),
+  purpose: types.optional(
+    z.union([
+      z.lazy(() => UpdateEdgeConfigPurpose1$inboundSchema),
+      z.lazy(() => UpdateEdgeConfigPurpose2$inboundSchema),
+    ]),
+  ),
+  syncedToDynamoAt: types.optional(types.number()),
+  sizeInBytes: types.number(),
+  itemCount: types.number(),
 });
 /** @internal */
 export type UpdateEdgeConfigResponseBody$Outbound = {

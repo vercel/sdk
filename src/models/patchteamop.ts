@@ -7,6 +7,8 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type PatchTeamRoles2 = {
@@ -295,7 +297,7 @@ export const PatchTeamRoles2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  accessGroupId: z.string(),
+  accessGroupId: types.string(),
 });
 /** @internal */
 export type PatchTeamRoles2$Outbound = {
@@ -340,7 +342,7 @@ export const PatchTeamRoles$inboundSchema: z.ZodType<
   PatchTeamRoles,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => PatchTeamRoles2$inboundSchema),
   PatchTeamRoles1$inboundSchema,
 ]);
@@ -352,7 +354,7 @@ export const PatchTeamRoles$outboundSchema: z.ZodType<
   PatchTeamRoles$Outbound,
   z.ZodTypeDef,
   PatchTeamRoles
-> = z.union([
+> = smartUnion([
   z.lazy(() => PatchTeamRoles2$outboundSchema),
   PatchTeamRoles1$outboundSchema,
 ]);
@@ -376,13 +378,13 @@ export const PatchTeamSaml$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  enforced: z.boolean().optional(),
-  roles: z.record(
-    z.union([
+  enforced: types.optional(types.boolean()),
+  roles: types.optional(
+    z.record(smartUnion([
       z.lazy(() => PatchTeamRoles2$inboundSchema),
       PatchTeamRoles1$inboundSchema,
-    ]),
-  ).optional(),
+    ])),
+  ),
 });
 /** @internal */
 export type PatchTeamSaml$Outbound = {
@@ -398,7 +400,7 @@ export const PatchTeamSaml$outboundSchema: z.ZodType<
 > = z.object({
   enforced: z.boolean().optional(),
   roles: z.record(
-    z.union([
+    smartUnion([
       z.lazy(() => PatchTeamRoles2$outboundSchema),
       PatchTeamRoles1$outboundSchema,
     ]),
@@ -424,7 +426,7 @@ export const PatchTeamRemoteCaching$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  enabled: z.boolean().optional(),
+  enabled: types.optional(types.boolean()),
 });
 /** @internal */
 export type PatchTeamRemoteCaching$Outbound = {
@@ -473,7 +475,7 @@ export const PatchTeamPasswordProtection$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   deploymentType: PatchTeamDeploymentType$inboundSchema,
-  password: z.nullable(z.string()).optional(),
+  password: z.nullable(types.string()).optional(),
 });
 /** @internal */
 export type PatchTeamPasswordProtection$Outbound = {
@@ -651,10 +653,10 @@ export const PatchTeamDefaultExpirationSettings$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  expiration: Expiration$inboundSchema.optional(),
-  expirationProduction: ExpirationProduction$inboundSchema.optional(),
-  expirationCanceled: ExpirationCanceled$inboundSchema.optional(),
-  expirationErrored: ExpirationErrored$inboundSchema.optional(),
+  expiration: types.optional(Expiration$inboundSchema),
+  expirationProduction: types.optional(ExpirationProduction$inboundSchema),
+  expirationCanceled: types.optional(ExpirationCanceled$inboundSchema),
+  expirationErrored: types.optional(ExpirationErrored$inboundSchema),
 });
 /** @internal */
 export type PatchTeamDefaultExpirationSettings$Outbound = {
@@ -702,26 +704,28 @@ export const PatchTeamRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  avatar: z.string().optional(),
-  description: z.string().optional(),
-  emailDomain: z.nullable(z.string()).optional(),
-  name: z.string().optional(),
-  previewDeploymentSuffix: z.nullable(z.string()).optional(),
-  regenerateInviteCode: z.boolean().optional(),
-  saml: z.lazy(() => PatchTeamSaml$inboundSchema).optional(),
-  slug: z.string().optional(),
-  enablePreviewFeedback: z.string().optional(),
-  enableProductionFeedback: z.string().optional(),
-  sensitiveEnvironmentVariablePolicy: z.string().optional(),
-  remoteCaching: z.lazy(() => PatchTeamRemoteCaching$inboundSchema).optional(),
-  hideIpAddresses: z.boolean().optional(),
-  hideIpAddressesInLogDrains: z.boolean().optional(),
-  defaultDeploymentProtection: z.lazy(() =>
-    PatchTeamDefaultDeploymentProtection$inboundSchema
-  ).optional(),
-  defaultExpirationSettings: z.lazy(() =>
-    PatchTeamDefaultExpirationSettings$inboundSchema
-  ).optional(),
+  avatar: types.optional(types.string()),
+  description: types.optional(types.string()),
+  emailDomain: z.nullable(types.string()).optional(),
+  name: types.optional(types.string()),
+  previewDeploymentSuffix: z.nullable(types.string()).optional(),
+  regenerateInviteCode: types.optional(types.boolean()),
+  saml: types.optional(z.lazy(() => PatchTeamSaml$inboundSchema)),
+  slug: types.optional(types.string()),
+  enablePreviewFeedback: types.optional(types.string()),
+  enableProductionFeedback: types.optional(types.string()),
+  sensitiveEnvironmentVariablePolicy: types.optional(types.string()),
+  remoteCaching: types.optional(
+    z.lazy(() => PatchTeamRemoteCaching$inboundSchema),
+  ),
+  hideIpAddresses: types.optional(types.boolean()),
+  hideIpAddressesInLogDrains: types.optional(types.boolean()),
+  defaultDeploymentProtection: types.optional(
+    z.lazy(() => PatchTeamDefaultDeploymentProtection$inboundSchema),
+  ),
+  defaultExpirationSettings: types.optional(
+    z.lazy(() => PatchTeamDefaultExpirationSettings$inboundSchema),
+  ),
 });
 /** @internal */
 export type PatchTeamRequestBody$Outbound = {
@@ -798,8 +802,8 @@ export const PatchTeamRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamId: z.string(),
-  slug: z.string().optional(),
+  teamId: types.string(),
+  slug: types.optional(types.string()),
   RequestBody: z.lazy(() => PatchTeamRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {

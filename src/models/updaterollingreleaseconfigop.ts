@@ -5,6 +5,8 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type UpdateRollingReleaseConfigRequest = {
@@ -66,9 +68,9 @@ export const UpdateRollingReleaseConfigRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  idOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  idOrName: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type UpdateRollingReleaseConfigRequest$Outbound = {
@@ -113,10 +115,10 @@ export const ResponseBodyStages$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  targetPercentage: z.number(),
-  requireApproval: z.boolean().optional(),
-  duration: z.number().optional(),
-  linearShift: z.boolean().optional(),
+  targetPercentage: types.number(),
+  requireApproval: types.optional(types.boolean()),
+  duration: types.optional(types.number()),
+  linearShift: types.optional(types.boolean()),
 });
 /** @internal */
 export type ResponseBodyStages$Outbound = {
@@ -202,7 +204,7 @@ export const UpdateRollingReleaseConfigResponseBody2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  rollingRelease: z.nullable(
+  rollingRelease: types.nullable(
     z.lazy(() => ResponseBodyRollingRelease$inboundSchema),
   ),
 });
@@ -301,7 +303,7 @@ export const UpdateRollingReleaseConfigResponseBody$inboundSchema: z.ZodType<
   UpdateRollingReleaseConfigResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => UpdateRollingReleaseConfigResponseBody1$inboundSchema),
   z.lazy(() => UpdateRollingReleaseConfigResponseBody2$inboundSchema),
 ]);
@@ -315,7 +317,7 @@ export const UpdateRollingReleaseConfigResponseBody$outboundSchema: z.ZodType<
   UpdateRollingReleaseConfigResponseBody$Outbound,
   z.ZodTypeDef,
   UpdateRollingReleaseConfigResponseBody
-> = z.union([
+> = smartUnion([
   z.lazy(() => UpdateRollingReleaseConfigResponseBody1$outboundSchema),
   z.lazy(() => UpdateRollingReleaseConfigResponseBody2$outboundSchema),
 ]);

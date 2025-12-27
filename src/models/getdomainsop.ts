@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import {
   Pagination,
   Pagination$inboundSchema,
@@ -158,11 +159,11 @@ export const GetDomainsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  limit: z.number().optional(),
-  since: z.number().optional(),
-  until: z.number().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  limit: types.optional(types.number()),
+  since: types.optional(types.number()),
+  until: types.optional(types.number()),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type GetDomainsRequest$Outbound = {
@@ -209,11 +210,11 @@ export const GetDomainsCreator$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  username: z.string(),
-  email: z.string(),
-  customerId: z.nullable(z.string()).optional(),
-  isDomainReseller: z.boolean().optional(),
-  id: z.string(),
+  username: types.string(),
+  email: types.string(),
+  customerId: z.nullable(types.string()).optional(),
+  isDomainReseller: types.optional(types.boolean()),
+  id: types.string(),
 });
 /** @internal */
 export type GetDomainsCreator$Outbound = {
@@ -278,24 +279,24 @@ export const GetDomainsDomains$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  verified: z.boolean(),
-  nameservers: z.array(z.string()),
-  intendedNameservers: z.array(z.string()),
-  customNameservers: z.array(z.string()).optional(),
+  verified: types.boolean(),
+  nameservers: z.array(types.string()),
+  intendedNameservers: z.array(types.string()),
+  customNameservers: types.optional(z.array(types.string())),
   creator: z.lazy(() => GetDomainsCreator$inboundSchema),
-  registrar: GetDomainsRegistrar$inboundSchema.optional(),
-  teamId: z.nullable(z.string()),
-  createdAt: z.number(),
-  boughtAt: z.nullable(z.number()),
-  expiresAt: z.nullable(z.number()),
-  id: z.string(),
-  name: z.string(),
-  orderedAt: z.number().optional(),
-  renew: z.boolean().optional(),
+  registrar: types.optional(GetDomainsRegistrar$inboundSchema),
+  teamId: types.nullable(types.string()),
+  createdAt: types.number(),
+  boughtAt: types.nullable(types.number()),
+  expiresAt: types.nullable(types.number()),
+  id: types.string(),
+  name: types.string(),
+  orderedAt: types.optional(types.number()),
+  renew: types.optional(types.boolean()),
   serviceType: GetDomainsServiceType$inboundSchema,
-  transferredAt: z.nullable(z.number()).optional(),
-  transferStartedAt: z.number().optional(),
-  userId: z.string(),
+  transferredAt: z.nullable(types.number()).optional(),
+  transferStartedAt: types.optional(types.number()),
+  userId: types.string(),
 });
 /** @internal */
 export type GetDomainsDomains$Outbound = {

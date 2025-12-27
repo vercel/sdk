@@ -6,9 +6,9 @@
 import { UploadProjectClientCertRequestBody } from "@vercel/sdk/models/uploadprojectclientcertop.js";
 
 let value: UploadProjectClientCertRequestBody = {
-  cert: "-----BEGIN CERTIFICATE-----\\n...\\n-----END CERTIFICATE-----",
-  key: "-----BEGIN PRIVATE KEY-----\\n...\\n-----END PRIVATE KEY-----",
-  ca: "-----BEGIN CERTIFICATE-----\\n...\\n-----END CERTIFICATE-----",
+  cert: "-----BEGIN CERTIFICATE-----\\\\n...\\\\n-----END CERTIFICATE-----",
+  key: "-----BEGIN PRIVATE KEY-----\\\\n...\\\\n-----END PRIVATE KEY-----",
+  ca: "-----BEGIN CERTIFICATE-----\\\\n...\\\\n-----END CERTIFICATE-----",
   origin: "https://api.example.com",
 };
 ```

@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type RemoveRecordRequest = {
@@ -31,10 +32,10 @@ export const RemoveRecordRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  domain: z.string(),
-  recordId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  domain: types.string(),
+  recordId: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type RemoveRecordRequest$Outbound = {

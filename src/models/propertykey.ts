@@ -7,6 +7,8 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const Tag = {
@@ -37,7 +39,7 @@ export const PropertyKey3$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   _tag: Tag$inboundSchema,
-  key: z.string(),
+  key: types.string(),
 }).transform((v) => {
   return remap$(v, {
     "_tag": "tag",
@@ -81,7 +83,11 @@ export const PropertyKey$inboundSchema: z.ZodType<
   PropertyKey,
   z.ZodTypeDef,
   unknown
-> = z.union([z.lazy(() => PropertyKey3$inboundSchema), z.string(), z.number()]);
+> = smartUnion([
+  z.lazy(() => PropertyKey3$inboundSchema),
+  types.string(),
+  types.number(),
+]);
 /** @internal */
 export type PropertyKey$Outbound = PropertyKey3$Outbound | string | number;
 
@@ -90,7 +96,7 @@ export const PropertyKey$outboundSchema: z.ZodType<
   PropertyKey$Outbound,
   z.ZodTypeDef,
   PropertyKey
-> = z.union([
+> = smartUnion([
   z.lazy(() => PropertyKey3$outboundSchema),
   z.string(),
   z.number(),

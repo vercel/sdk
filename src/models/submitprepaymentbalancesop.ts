@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -49,10 +50,10 @@ export const Balances$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  resourceId: z.string().optional(),
-  credit: z.string().optional(),
-  nameLabel: z.string().optional(),
-  currencyValueInCents: z.number(),
+  resourceId: types.optional(types.string()),
+  credit: types.optional(types.string()),
+  nameLabel: types.optional(types.string()),
+  currencyValueInCents: types.number(),
 });
 /** @internal */
 export type Balances$Outbound = {
@@ -93,7 +94,7 @@ export const SubmitPrepaymentBalancesRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  timestamp: types.date(),
   balances: z.array(z.lazy(() => Balances$inboundSchema)),
 });
 /** @internal */
@@ -138,9 +139,10 @@ export const SubmitPrepaymentBalancesRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  integrationConfigurationId: z.string(),
-  RequestBody: z.lazy(() => SubmitPrepaymentBalancesRequestBody$inboundSchema)
-    .optional(),
+  integrationConfigurationId: types.string(),
+  RequestBody: types.optional(
+    z.lazy(() => SubmitPrepaymentBalancesRequestBody$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",

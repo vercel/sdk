@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type ListAccessGroupMembersRequest = {
@@ -75,12 +76,12 @@ export const ListAccessGroupMembersRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  idOrName: z.string(),
-  limit: z.number().int().optional(),
-  next: z.string().optional(),
-  search: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  idOrName: types.string(),
+  limit: types.optional(types.number()),
+  next: types.optional(types.string()),
+  search: types.optional(types.string()),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type ListAccessGroupMembersRequest$Outbound = {
@@ -137,12 +138,12 @@ export const ListAccessGroupMembersTeamRole$outboundSchema: z.ZodNativeEnum<
 /** @internal */
 export const Members$inboundSchema: z.ZodType<Members, z.ZodTypeDef, unknown> =
   z.object({
-    avatar: z.string().optional(),
-    email: z.string(),
-    uid: z.string(),
-    username: z.string(),
-    name: z.string().optional(),
-    createdAt: z.string().optional(),
+    avatar: types.optional(types.string()),
+    email: types.string(),
+    uid: types.string(),
+    username: types.string(),
+    name: types.optional(types.string()),
+    createdAt: types.optional(types.string()),
     teamRole: ListAccessGroupMembersTeamRole$inboundSchema,
   });
 /** @internal */
@@ -190,8 +191,8 @@ export const ListAccessGroupMembersPagination$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  count: z.number(),
-  next: z.nullable(z.string()),
+  count: types.number(),
+  next: types.nullable(types.string()),
 });
 /** @internal */
 export type ListAccessGroupMembersPagination$Outbound = {

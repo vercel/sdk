@@ -6,6 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -363,7 +365,7 @@ export const QueryParamStatusCode$inboundSchema: z.ZodType<
   QueryParamStatusCode,
   z.ZodTypeDef,
   unknown
-> = z.union([z.number(), z.string()]);
+> = smartUnion([types.number(), types.string()]);
 /** @internal */
 export type QueryParamStatusCode$Outbound = number | string;
 
@@ -372,7 +374,7 @@ export const QueryParamStatusCode$outboundSchema: z.ZodType<
   QueryParamStatusCode$Outbound,
   z.ZodTypeDef,
   QueryParamStatusCode
-> = z.union([z.number(), z.string()]);
+> = smartUnion([z.number(), z.string()]);
 
 export function queryParamStatusCodeToJSON(
   queryParamStatusCode: QueryParamStatusCode,
@@ -397,18 +399,18 @@ export const GetDeploymentEventsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  idOrUrl: z.string(),
+  idOrUrl: types.string(),
   direction: Direction$inboundSchema.default("forward"),
-  follow: z.number().optional(),
-  limit: z.number().optional(),
-  name: z.string().optional(),
-  since: z.number().optional(),
-  until: z.number().optional(),
-  statusCode: z.union([z.number(), z.string()]).optional(),
-  delimiter: z.number().optional(),
-  builds: z.number().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  follow: types.optional(types.number()),
+  limit: types.optional(types.number()),
+  name: types.optional(types.string()),
+  since: types.optional(types.number()),
+  until: types.optional(types.number()),
+  statusCode: types.optional(smartUnion([types.number(), types.string()])),
+  delimiter: types.optional(types.number()),
+  builds: types.optional(types.number()),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type GetDeploymentEventsRequest$Outbound = {
@@ -439,7 +441,7 @@ export const GetDeploymentEventsRequest$outboundSchema: z.ZodType<
   name: z.string().optional(),
   since: z.number().optional(),
   until: z.number().optional(),
-  statusCode: z.union([z.number(), z.string()]).optional(),
+  statusCode: smartUnion([z.number(), z.string()]).optional(),
   delimiter: z.number().optional(),
   builds: z.number().optional(),
   teamId: z.string().optional(),
@@ -469,12 +471,12 @@ export const ResponseBodyInfo$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.string(),
-  name: z.string(),
-  entrypoint: z.string().optional(),
-  path: z.string().optional(),
-  step: z.string().optional(),
-  readyState: z.string().optional(),
+  type: types.string(),
+  name: types.string(),
+  entrypoint: types.optional(types.string()),
+  path: types.optional(types.string()),
+  step: types.optional(types.string()),
+  readyState: types.optional(types.string()),
 });
 /** @internal */
 export type ResponseBodyInfo$Outbound = {
@@ -544,15 +546,15 @@ export const GetDeploymentEventsResponseBodyDeployments2$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    created: z.number(),
-    date: z.number(),
-    deploymentId: z.string(),
-    id: z.string(),
+    created: types.number(),
+    date: types.number(),
+    deploymentId: types.string(),
+    id: types.string(),
     info: z.lazy(() => ResponseBodyInfo$inboundSchema),
-    serial: z.string(),
-    text: z.string().optional(),
+    serial: types.string(),
+    text: types.optional(types.string()),
     type: GetDeploymentEventsResponseBodyDeploymentsResponseType$inboundSchema,
-    level: ResponseBodyLevel$inboundSchema.optional(),
+    level: types.optional(ResponseBodyLevel$inboundSchema),
   });
 /** @internal */
 export type GetDeploymentEventsResponseBodyDeployments2$Outbound = {
@@ -626,12 +628,12 @@ export const GetDeploymentEventsResponseBodyInfo$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.string(),
-  name: z.string(),
-  entrypoint: z.string().optional(),
-  path: z.string().optional(),
-  step: z.string().optional(),
-  readyState: z.string().optional(),
+  type: types.string(),
+  name: types.string(),
+  entrypoint: types.optional(types.string()),
+  path: types.optional(types.string()),
+  step: types.optional(types.string()),
+  readyState: types.optional(types.string()),
 });
 /** @internal */
 export type GetDeploymentEventsResponseBodyInfo$Outbound = {
@@ -701,25 +703,25 @@ export const ResponseBodyProxy$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  timestamp: z.number(),
-  method: z.string(),
-  host: z.string(),
-  path: z.string(),
-  statusCode: z.number().optional(),
-  userAgent: z.array(z.string()),
-  referer: z.string(),
-  clientIp: z.string().optional(),
-  region: z.string(),
-  scheme: z.string().optional(),
-  responseByteSize: z.number().optional(),
-  cacheId: z.string().optional(),
-  pathType: z.string().optional(),
-  pathTypeVariant: z.string().optional(),
-  vercelId: z.string().optional(),
-  vercelCache: ResponseBodyVercelCache$inboundSchema.optional(),
-  lambdaRegion: z.string().optional(),
-  wafAction: ResponseBodyWafAction$inboundSchema.optional(),
-  wafRuleId: z.string().optional(),
+  timestamp: types.number(),
+  method: types.string(),
+  host: types.string(),
+  path: types.string(),
+  statusCode: types.optional(types.number()),
+  userAgent: z.array(types.string()),
+  referer: types.string(),
+  clientIp: types.optional(types.string()),
+  region: types.string(),
+  scheme: types.optional(types.string()),
+  responseByteSize: types.optional(types.number()),
+  cacheId: types.optional(types.string()),
+  pathType: types.optional(types.string()),
+  pathTypeVariant: types.optional(types.string()),
+  vercelId: types.optional(types.string()),
+  vercelCache: types.optional(ResponseBodyVercelCache$inboundSchema),
+  lambdaRegion: types.optional(types.string()),
+  wafAction: types.optional(ResponseBodyWafAction$inboundSchema),
+  wafRuleId: types.optional(types.string()),
 });
 /** @internal */
 export type ResponseBodyProxy$Outbound = {
@@ -794,17 +796,18 @@ export const ResponseBodyPayload$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  deploymentId: z.string(),
-  info: z.lazy(() => GetDeploymentEventsResponseBodyInfo$inboundSchema)
-    .optional(),
-  text: z.string().optional(),
-  id: z.string(),
-  date: z.number(),
-  serial: z.string(),
-  created: z.number().optional(),
-  statusCode: z.number().optional(),
-  requestId: z.string().optional(),
-  proxy: z.lazy(() => ResponseBodyProxy$inboundSchema).optional(),
+  deploymentId: types.string(),
+  info: types.optional(
+    z.lazy(() => GetDeploymentEventsResponseBodyInfo$inboundSchema),
+  ),
+  text: types.optional(types.string()),
+  id: types.string(),
+  date: types.number(),
+  serial: types.string(),
+  created: types.optional(types.number()),
+  statusCode: types.optional(types.number()),
+  requestId: types.optional(types.string()),
+  proxy: types.optional(z.lazy(() => ResponseBodyProxy$inboundSchema)),
 });
 /** @internal */
 export type ResponseBodyPayload$Outbound = {
@@ -864,7 +867,7 @@ export const GetDeploymentEventsResponseBodyDeployments1$inboundSchema:
     unknown
   > = z.object({
     type: GetDeploymentEventsResponseBodyDeploymentsType$inboundSchema,
-    created: z.number(),
+    created: types.number(),
     payload: z.lazy(() => ResponseBodyPayload$inboundSchema),
   });
 /** @internal */
@@ -917,7 +920,7 @@ export const GetDeploymentEventsResponseBody$inboundSchema: z.ZodType<
   GetDeploymentEventsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => GetDeploymentEventsResponseBodyDeployments2$inboundSchema),
   z.lazy(() => GetDeploymentEventsResponseBodyDeployments1$inboundSchema),
 ]);
@@ -931,7 +934,7 @@ export const GetDeploymentEventsResponseBody$outboundSchema: z.ZodType<
   GetDeploymentEventsResponseBody$Outbound,
   z.ZodTypeDef,
   GetDeploymentEventsResponseBody
-> = z.union([
+> = smartUnion([
   z.lazy(() => GetDeploymentEventsResponseBodyDeployments2$outboundSchema),
   z.lazy(() => GetDeploymentEventsResponseBodyDeployments1$outboundSchema),
 ]);
@@ -958,12 +961,12 @@ export function getDeploymentEventsResponseBodyFromJSON(
 /** @internal */
 export const Info$inboundSchema: z.ZodType<Info, z.ZodTypeDef, unknown> = z
   .object({
-    type: z.string(),
-    name: z.string(),
-    entrypoint: z.string().optional(),
-    path: z.string().optional(),
-    step: z.string().optional(),
-    readyState: z.string().optional(),
+    type: types.string(),
+    name: types.string(),
+    entrypoint: types.optional(types.string()),
+    path: types.optional(types.string()),
+    step: types.optional(types.string()),
+    readyState: types.optional(types.string()),
   });
 /** @internal */
 export type Info$Outbound = {
@@ -1024,15 +1027,15 @@ export const GetDeploymentEventsResponseBody2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  created: z.number(),
-  date: z.number(),
-  deploymentId: z.string(),
-  id: z.string(),
+  created: types.number(),
+  date: types.number(),
+  deploymentId: types.string(),
+  id: types.string(),
   info: z.lazy(() => Info$inboundSchema),
-  serial: z.string(),
-  text: z.string().optional(),
+  serial: types.string(),
+  text: types.optional(types.string()),
   type: GetDeploymentEventsResponseBodyType$inboundSchema,
-  level: GetDeploymentEventsResponseBodyLevel$inboundSchema.optional(),
+  level: types.optional(GetDeploymentEventsResponseBodyLevel$inboundSchema),
 });
 /** @internal */
 export type GetDeploymentEventsResponseBody2$Outbound = {
@@ -1099,12 +1102,12 @@ export const GetDeploymentEventsResponseBodyDeploymentsInfo$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type: z.string(),
-    name: z.string(),
-    entrypoint: z.string().optional(),
-    path: z.string().optional(),
-    step: z.string().optional(),
-    readyState: z.string().optional(),
+    type: types.string(),
+    name: types.string(),
+    entrypoint: types.optional(types.string()),
+    path: types.optional(types.string()),
+    step: types.optional(types.string()),
+    readyState: types.optional(types.string()),
   });
 /** @internal */
 export type GetDeploymentEventsResponseBodyDeploymentsInfo$Outbound = {
@@ -1174,25 +1177,25 @@ export const WafAction$outboundSchema: z.ZodNativeEnum<typeof WafAction> =
 /** @internal */
 export const Proxy$inboundSchema: z.ZodType<Proxy, z.ZodTypeDef, unknown> = z
   .object({
-    timestamp: z.number(),
-    method: z.string(),
-    host: z.string(),
-    path: z.string(),
-    statusCode: z.number().optional(),
-    userAgent: z.array(z.string()),
-    referer: z.string(),
-    clientIp: z.string().optional(),
-    region: z.string(),
-    scheme: z.string().optional(),
-    responseByteSize: z.number().optional(),
-    cacheId: z.string().optional(),
-    pathType: z.string().optional(),
-    pathTypeVariant: z.string().optional(),
-    vercelId: z.string().optional(),
-    vercelCache: VercelCache$inboundSchema.optional(),
-    lambdaRegion: z.string().optional(),
-    wafAction: WafAction$inboundSchema.optional(),
-    wafRuleId: z.string().optional(),
+    timestamp: types.number(),
+    method: types.string(),
+    host: types.string(),
+    path: types.string(),
+    statusCode: types.optional(types.number()),
+    userAgent: z.array(types.string()),
+    referer: types.string(),
+    clientIp: types.optional(types.string()),
+    region: types.string(),
+    scheme: types.optional(types.string()),
+    responseByteSize: types.optional(types.number()),
+    cacheId: types.optional(types.string()),
+    pathType: types.optional(types.string()),
+    pathTypeVariant: types.optional(types.string()),
+    vercelId: types.optional(types.string()),
+    vercelCache: types.optional(VercelCache$inboundSchema),
+    lambdaRegion: types.optional(types.string()),
+    wafAction: types.optional(WafAction$inboundSchema),
+    wafRuleId: types.optional(types.string()),
   });
 /** @internal */
 export type Proxy$Outbound = {
@@ -1263,18 +1266,18 @@ export const GetDeploymentEventsResponseBodyPayload$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  deploymentId: z.string(),
-  info: z.lazy(() =>
-    GetDeploymentEventsResponseBodyDeploymentsInfo$inboundSchema
-  ).optional(),
-  text: z.string().optional(),
-  id: z.string(),
-  date: z.number(),
-  serial: z.string(),
-  created: z.number().optional(),
-  statusCode: z.number().optional(),
-  requestId: z.string().optional(),
-  proxy: z.lazy(() => Proxy$inboundSchema).optional(),
+  deploymentId: types.string(),
+  info: types.optional(
+    z.lazy(() => GetDeploymentEventsResponseBodyDeploymentsInfo$inboundSchema),
+  ),
+  text: types.optional(types.string()),
+  id: types.string(),
+  date: types.number(),
+  serial: types.string(),
+  created: types.optional(types.number()),
+  statusCode: types.optional(types.number()),
+  requestId: types.optional(types.string()),
+  proxy: types.optional(z.lazy(() => Proxy$inboundSchema)),
 });
 /** @internal */
 export type GetDeploymentEventsResponseBodyPayload$Outbound = {
@@ -1338,7 +1341,7 @@ export const GetDeploymentEventsResponseBody1$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type: ResponseBodyType$inboundSchema,
-  created: z.number(),
+  created: types.number(),
   payload: z.lazy(() => GetDeploymentEventsResponseBodyPayload$inboundSchema),
 });
 /** @internal */
@@ -1381,7 +1384,7 @@ export function getDeploymentEventsResponseBody1FromJSON(
 /** @internal */
 export const GetDeploymentEventsDeploymentsResponseBody$inboundSchema:
   z.ZodType<GetDeploymentEventsDeploymentsResponseBody, z.ZodTypeDef, unknown> =
-    z.union([
+    smartUnion([
       z.lazy(() => GetDeploymentEventsResponseBody2$inboundSchema),
       z.lazy(() => GetDeploymentEventsResponseBody1$inboundSchema),
     ]);
@@ -1396,7 +1399,7 @@ export const GetDeploymentEventsDeploymentsResponseBody$outboundSchema:
     GetDeploymentEventsDeploymentsResponseBody$Outbound,
     z.ZodTypeDef,
     GetDeploymentEventsDeploymentsResponseBody
-  > = z.union([
+  > = smartUnion([
     z.lazy(() => GetDeploymentEventsResponseBody2$outboundSchema),
     z.lazy(() => GetDeploymentEventsResponseBody1$outboundSchema),
   ]);
@@ -1432,14 +1435,14 @@ export const GetDeploymentEventsResponse$inboundSchema: z.ZodType<
   GetDeploymentEventsResponse,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.array(z.nullable(z.union([
+> = smartUnion([
+  z.array(types.nullable(smartUnion([
     z.lazy(() => GetDeploymentEventsResponseBody2$inboundSchema),
     z.lazy(() =>
       GetDeploymentEventsResponseBody1$inboundSchema
     ),
   ]))),
-  z.union([
+  smartUnion([
     z.lazy(() => GetDeploymentEventsResponseBodyDeployments2$inboundSchema),
     z.lazy(() =>
       GetDeploymentEventsResponseBodyDeployments1$inboundSchema
@@ -1461,14 +1464,14 @@ export const GetDeploymentEventsResponse$outboundSchema: z.ZodType<
   GetDeploymentEventsResponse$Outbound,
   z.ZodTypeDef,
   GetDeploymentEventsResponse
-> = z.union([
-  z.array(z.nullable(z.union([
+> = smartUnion([
+  z.array(z.nullable(smartUnion([
     z.lazy(() => GetDeploymentEventsResponseBody2$outboundSchema),
     z.lazy(() =>
       GetDeploymentEventsResponseBody1$outboundSchema
     ),
   ]))),
-  z.union([
+  smartUnion([
     z.lazy(() => GetDeploymentEventsResponseBodyDeployments2$outboundSchema),
     z.lazy(() =>
       GetDeploymentEventsResponseBodyDeployments1$outboundSchema

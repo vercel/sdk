@@ -8421,28 +8421,28 @@ func (o *UpdateProjectDataCacheOwasp) GetAction() *UpdateProjectDataCacheOwaspAc
 }
 
 type UpdateProjectDataCacheManagedRules struct {
-	BotFilter UpdateProjectDataCacheBotFilter `json:"bot_filter"`
-	AiBots    UpdateProjectDataCacheAiBots    `json:"ai_bots"`
-	Owasp     UpdateProjectDataCacheOwasp     `json:"owasp"`
+	BotFilter *UpdateProjectDataCacheBotFilter `json:"bot_filter,omitempty"`
+	AiBots    *UpdateProjectDataCacheAiBots    `json:"ai_bots,omitempty"`
+	Owasp     *UpdateProjectDataCacheOwasp     `json:"owasp,omitempty"`
 }
 
-func (o *UpdateProjectDataCacheManagedRules) GetBotFilter() UpdateProjectDataCacheBotFilter {
+func (o *UpdateProjectDataCacheManagedRules) GetBotFilter() *UpdateProjectDataCacheBotFilter {
 	if o == nil {
-		return UpdateProjectDataCacheBotFilter{}
+		return nil
 	}
 	return o.BotFilter
 }
 
-func (o *UpdateProjectDataCacheManagedRules) GetAiBots() UpdateProjectDataCacheAiBots {
+func (o *UpdateProjectDataCacheManagedRules) GetAiBots() *UpdateProjectDataCacheAiBots {
 	if o == nil {
-		return UpdateProjectDataCacheAiBots{}
+		return nil
 	}
 	return o.AiBots
 }
 
-func (o *UpdateProjectDataCacheManagedRules) GetOwasp() UpdateProjectDataCacheOwasp {
+func (o *UpdateProjectDataCacheManagedRules) GetOwasp() *UpdateProjectDataCacheOwasp {
 	if o == nil {
-		return UpdateProjectDataCacheOwasp{}
+		return nil
 	}
 	return o.Owasp
 }

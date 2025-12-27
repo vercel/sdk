@@ -6,12 +6,17 @@
 import { GetOrder1DomainsRegistrarDetails } from "@vercel/sdk/models/getorderop.js";
 
 let value: GetOrder1DomainsRegistrarDetails = {
-  numDaysUntilTransferrable: 6056.43,
+  tlds: [
+    {
+      tldName: "<value>",
+      endsAt: "<value>",
+    },
+  ],
 };
 ```
 
 ## Fields
 
-| Field                       | Type                        | Required                    | Description                 |
-| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
-| `numDaysUntilTransferrable` | *number*                    | :heavy_check_mark:          | N/A                         |
+| Field                              | Type                               | Required                           | Description                        |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| `tlds`                             | [models.Tlds](../models/tlds.md)[] | :heavy_check_mark:                 | N/A                                |

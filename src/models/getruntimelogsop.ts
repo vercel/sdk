@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetRuntimeLogsRequest = {
@@ -56,10 +57,10 @@ export const GetRuntimeLogsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
-  deploymentId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  projectId: types.string(),
+  deploymentId: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type GetRuntimeLogsRequest$Outbound = {
@@ -123,15 +124,15 @@ export const GetRuntimeLogsResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   level: GetRuntimeLogsLevel$inboundSchema,
-  message: z.string(),
-  rowId: z.string(),
+  message: types.string(),
+  rowId: types.string(),
   source: GetRuntimeLogsSource$inboundSchema,
-  timestampInMs: z.number(),
-  domain: z.string(),
-  messageTruncated: z.boolean(),
-  requestMethod: z.string(),
-  requestPath: z.string(),
-  responseStatusCode: z.number(),
+  timestampInMs: types.number(),
+  domain: types.string(),
+  messageTruncated: types.boolean(),
+  requestMethod: types.string(),
+  requestPath: types.string(),
+  responseStatusCode: types.number(),
 });
 /** @internal */
 export type GetRuntimeLogsResponseBody$Outbound = {

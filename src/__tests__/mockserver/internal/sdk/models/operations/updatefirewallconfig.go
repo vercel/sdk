@@ -49,19 +49,19 @@ func (o *UpdateFirewallConfigRequestBody2) GetValue() bool {
 	return o.Value
 }
 
-type ID3 string
+type UpdateFirewallConfigID3 string
 
 const (
-	ID3AiBots        ID3 = "ai_bots"
-	ID3BotFilter     ID3 = "bot_filter"
-	ID3BotProtection ID3 = "bot_protection"
-	ID3Owasp         ID3 = "owasp"
+	UpdateFirewallConfigID3AiBots        UpdateFirewallConfigID3 = "ai_bots"
+	UpdateFirewallConfigID3BotFilter     UpdateFirewallConfigID3 = "bot_filter"
+	UpdateFirewallConfigID3BotProtection UpdateFirewallConfigID3 = "bot_protection"
+	UpdateFirewallConfigID3Owasp         UpdateFirewallConfigID3 = "owasp"
 )
 
-func (e ID3) ToPointer() *ID3 {
+func (e UpdateFirewallConfigID3) ToPointer() *UpdateFirewallConfigID3 {
 	return &e
 }
-func (e *ID3) UnmarshalJSON(data []byte) error {
+func (e *UpdateFirewallConfigID3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -74,10 +74,10 @@ func (e *ID3) UnmarshalJSON(data []byte) error {
 	case "bot_protection":
 		fallthrough
 	case "owasp":
-		*e = ID3(v)
+		*e = UpdateFirewallConfigID3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ID3: %v", v)
+		return fmt.Errorf("invalid value for UpdateFirewallConfigID3: %v", v)
 	}
 }
 
@@ -143,7 +143,7 @@ func (o *UpdateFirewallConfigValue7) GetAction() *ValueActionEnum5 {
 // UpdateFirewallConfigRequestBody1 - Update a managed rule group
 type UpdateFirewallConfigRequestBody1 struct {
 	Action string                                `json:"action"`
-	ID     ID3                                   `json:"id"`
+	ID     UpdateFirewallConfigID3               `json:"id"`
 	Value  map[string]UpdateFirewallConfigValue7 `json:"value"`
 }
 
@@ -165,9 +165,9 @@ func (o *UpdateFirewallConfigRequestBody1) GetAction() string {
 	return o.Action
 }
 
-func (o *UpdateFirewallConfigRequestBody1) GetID() ID3 {
+func (o *UpdateFirewallConfigRequestBody1) GetID() UpdateFirewallConfigID3 {
 	if o == nil {
-		return ID3("")
+		return UpdateFirewallConfigID3("")
 	}
 	return o.ID
 }
@@ -202,19 +202,19 @@ func (e *ActionManagedRulesUpdate) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type ID2 string
+type UpdateFirewallConfigID2 string
 
 const (
-	ID2AiBots        ID2 = "ai_bots"
-	ID2BotFilter     ID2 = "bot_filter"
-	ID2BotProtection ID2 = "bot_protection"
-	ID2Owasp         ID2 = "owasp"
+	UpdateFirewallConfigID2AiBots        UpdateFirewallConfigID2 = "ai_bots"
+	UpdateFirewallConfigID2BotFilter     UpdateFirewallConfigID2 = "bot_filter"
+	UpdateFirewallConfigID2BotProtection UpdateFirewallConfigID2 = "bot_protection"
+	UpdateFirewallConfigID2Owasp         UpdateFirewallConfigID2 = "owasp"
 )
 
-func (e ID2) ToPointer() *ID2 {
+func (e UpdateFirewallConfigID2) ToPointer() *UpdateFirewallConfigID2 {
 	return &e
 }
-func (e *ID2) UnmarshalJSON(data []byte) error {
+func (e *UpdateFirewallConfigID2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -227,10 +227,10 @@ func (e *ID2) UnmarshalJSON(data []byte) error {
 	case "bot_protection":
 		fallthrough
 	case "owasp":
-		*e = ID2(v)
+		*e = UpdateFirewallConfigID2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ID2: %v", v)
+		return fmt.Errorf("invalid value for UpdateFirewallConfigID2: %v", v)
 	}
 }
 
@@ -296,7 +296,7 @@ func (o *UpdateFirewallConfigValue6) GetActive() bool {
 // ManagedRulesUpdate - Update a managed ruleset
 type ManagedRulesUpdate struct {
 	Action ActionManagedRulesUpdate   `json:"action"`
-	ID     ID2                        `json:"id"`
+	ID     UpdateFirewallConfigID2    `json:"id"`
 	Value  UpdateFirewallConfigValue6 `json:"value"`
 }
 
@@ -318,9 +318,9 @@ func (o *ManagedRulesUpdate) GetAction() ActionManagedRulesUpdate {
 	return o.Action
 }
 
-func (o *ManagedRulesUpdate) GetID() ID2 {
+func (o *ManagedRulesUpdate) GetID() UpdateFirewallConfigID2 {
 	if o == nil {
-		return ID2("")
+		return UpdateFirewallConfigID2("")
 	}
 	return o.ID
 }
@@ -759,26 +759,26 @@ func (e *ActionCrsUpdate) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type ID1 string
+type UpdateFirewallConfigID1 string
 
 const (
-	ID1Sd   ID1 = "sd"
-	ID1Ma   ID1 = "ma"
-	ID1Lfi  ID1 = "lfi"
-	ID1Rfi  ID1 = "rfi"
-	ID1Rce  ID1 = "rce"
-	ID1Php  ID1 = "php"
-	ID1Gen  ID1 = "gen"
-	ID1XSS  ID1 = "xss"
-	ID1Sqli ID1 = "sqli"
-	ID1Sf   ID1 = "sf"
-	ID1Java ID1 = "java"
+	UpdateFirewallConfigID1Sd   UpdateFirewallConfigID1 = "sd"
+	UpdateFirewallConfigID1Ma   UpdateFirewallConfigID1 = "ma"
+	UpdateFirewallConfigID1Lfi  UpdateFirewallConfigID1 = "lfi"
+	UpdateFirewallConfigID1Rfi  UpdateFirewallConfigID1 = "rfi"
+	UpdateFirewallConfigID1Rce  UpdateFirewallConfigID1 = "rce"
+	UpdateFirewallConfigID1Php  UpdateFirewallConfigID1 = "php"
+	UpdateFirewallConfigID1Gen  UpdateFirewallConfigID1 = "gen"
+	UpdateFirewallConfigID1XSS  UpdateFirewallConfigID1 = "xss"
+	UpdateFirewallConfigID1Sqli UpdateFirewallConfigID1 = "sqli"
+	UpdateFirewallConfigID1Sf   UpdateFirewallConfigID1 = "sf"
+	UpdateFirewallConfigID1Java UpdateFirewallConfigID1 = "java"
 )
 
-func (e ID1) ToPointer() *ID1 {
+func (e UpdateFirewallConfigID1) ToPointer() *UpdateFirewallConfigID1 {
 	return &e
 }
-func (e *ID1) UnmarshalJSON(data []byte) error {
+func (e *UpdateFirewallConfigID1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -805,10 +805,10 @@ func (e *ID1) UnmarshalJSON(data []byte) error {
 	case "sf":
 		fallthrough
 	case "java":
-		*e = ID1(v)
+		*e = UpdateFirewallConfigID1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ID1: %v", v)
+		return fmt.Errorf("invalid value for UpdateFirewallConfigID1: %v", v)
 	}
 }
 
@@ -871,7 +871,7 @@ func (o *UpdateFirewallConfigValue3) GetAction() ValueActionEnum1 {
 // CrsUpdate - Enable a managed rule
 type CrsUpdate struct {
 	Action ActionCrsUpdate            `json:"action"`
-	ID     ID1                        `json:"id"`
+	ID     UpdateFirewallConfigID1    `json:"id"`
 	Value  UpdateFirewallConfigValue3 `json:"value"`
 }
 
@@ -893,9 +893,9 @@ func (o *CrsUpdate) GetAction() ActionCrsUpdate {
 	return o.Action
 }
 
-func (o *CrsUpdate) GetID() ID1 {
+func (o *CrsUpdate) GetID() UpdateFirewallConfigID1 {
 	if o == nil {
-		return ID1("")
+		return UpdateFirewallConfigID1("")
 	}
 	return o.ID
 }

@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type UploadArtifactRequest = {
@@ -60,14 +61,14 @@ export const UploadArtifactRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "Content-Length": z.number(),
-  "x-artifact-duration": z.number().optional(),
-  "x-artifact-client-ci": z.string().optional(),
-  "x-artifact-client-interactive": z.number().int().optional(),
-  "x-artifact-tag": z.string().optional(),
-  hash: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  "Content-Length": types.number(),
+  "x-artifact-duration": types.optional(types.number()),
+  "x-artifact-client-ci": types.optional(types.string()),
+  "x-artifact-client-interactive": types.optional(types.number()),
+  "x-artifact-tag": types.optional(types.string()),
+  hash: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
   RequestBody: z.union([
     z.instanceof(ReadableStream<Uint8Array>),
     z.instanceof(Blob),
@@ -151,7 +152,7 @@ export const UploadArtifactResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  urls: z.array(z.string()),
+  urls: z.array(types.string()),
 });
 /** @internal */
 export type UploadArtifactResponseBody$Outbound = {

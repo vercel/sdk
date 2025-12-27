@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   UserEvent,
@@ -72,16 +73,16 @@ export const ListUserEventsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  limit: z.number().optional(),
-  since: z.string().optional(),
-  until: z.string().optional(),
-  types: z.string().optional(),
-  userId: z.string().optional(),
-  principalId: z.string().optional(),
-  projectIds: z.string().optional(),
-  withPayload: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  limit: types.optional(types.number()),
+  since: types.optional(types.string()),
+  until: types.optional(types.string()),
+  types: types.optional(types.string()),
+  userId: types.optional(types.string()),
+  principalId: types.optional(types.string()),
+  projectIds: types.optional(types.string()),
+  withPayload: types.optional(types.string()),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type ListUserEventsRequest$Outbound = {

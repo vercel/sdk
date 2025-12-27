@@ -6,6 +6,8 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetActiveAttackStatusRequest = {
@@ -65,10 +67,10 @@ export const GetActiveAttackStatusRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
-  since: z.number().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  projectId: types.string(),
+  since: types.optional(types.number()),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type GetActiveAttackStatusRequest$Outbound = {
@@ -115,11 +117,11 @@ export const AnomalyAlerts$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  at_minute: z.string(),
-  zscore: z.number(),
-  total_requests_minute: z.number(),
-  avg_requests: z.number(),
-  stddev_requests: z.number(),
+  at_minute: types.string(),
+  zscore: types.number(),
+  total_requests_minute: types.number(),
+  avg_requests: types.number(),
+  stddev_requests: types.number(),
 }).transform((v) => {
   return remap$(v, {
     "at_minute": "atMinute",
@@ -176,8 +178,8 @@ export const DdosAlerts$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  atMinute: z.string(),
-  totalReqs: z.number(),
+  atMinute: types.string(),
+  totalReqs: types.number(),
 });
 /** @internal */
 export type DdosAlerts$Outbound = {
@@ -214,8 +216,10 @@ export const AffectedHostMap$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  anomalyAlerts: z.record(z.lazy(() => AnomalyAlerts$inboundSchema)).optional(),
-  ddosAlerts: z.record(z.lazy(() => DdosAlerts$inboundSchema)).optional(),
+  anomalyAlerts: types.optional(
+    z.record(z.lazy(() => AnomalyAlerts$inboundSchema)),
+  ),
+  ddosAlerts: types.optional(z.record(z.lazy(() => DdosAlerts$inboundSchema))),
 });
 /** @internal */
 export type AffectedHostMap$Outbound = {
@@ -255,12 +259,12 @@ export const Anomalies$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
-  ownerId: z.string(),
-  startTime: z.number(),
-  endTime: z.nullable(z.number()),
-  atMinute: z.number(),
-  state: z.string().optional(),
+  projectId: types.string(),
+  ownerId: types.string(),
+  startTime: types.number(),
+  endTime: types.nullable(types.number()),
+  atMinute: types.number(),
+  state: types.optional(types.string()),
   affectedHostMap: z.record(z.lazy(() => AffectedHostMap$inboundSchema)),
 });
 /** @internal */
@@ -385,7 +389,7 @@ export const GetActiveAttackStatusResponseBody$inboundSchema: z.ZodType<
   GetActiveAttackStatusResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => GetActiveAttackStatusResponseBody2$inboundSchema),
   z.lazy(() => GetActiveAttackStatusResponseBody1$inboundSchema),
 ]);
@@ -399,7 +403,7 @@ export const GetActiveAttackStatusResponseBody$outboundSchema: z.ZodType<
   GetActiveAttackStatusResponseBody$Outbound,
   z.ZodTypeDef,
   GetActiveAttackStatusResponseBody
-> = z.union([
+> = smartUnion([
   z.lazy(() => GetActiveAttackStatusResponseBody2$outboundSchema),
   z.lazy(() => GetActiveAttackStatusResponseBody1$outboundSchema),
 ]);

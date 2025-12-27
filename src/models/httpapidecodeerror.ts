@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import * as types from "../types/primitives.js";
 import {
   Issue,
   Issue$inboundSchema,
@@ -48,7 +49,7 @@ export const HttpApiDecodeError$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   issues: z.array(Issue$inboundSchema),
-  message: z.string(),
+  message: types.string(),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),

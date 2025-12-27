@@ -7,6 +7,7 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -71,12 +72,12 @@ export const ExchangeSsoTokenRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  code: z.string(),
-  state: z.string().optional(),
-  client_id: z.string(),
-  client_secret: z.string(),
-  redirect_uri: z.string().optional(),
-  grant_type: ExchangeSsoTokenGrantType$inboundSchema.optional(),
+  code: types.string(),
+  state: types.optional(types.string()),
+  client_id: types.string(),
+  client_secret: types.string(),
+  redirect_uri: types.optional(types.string()),
+  grant_type: types.optional(ExchangeSsoTokenGrantType$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
     "client_id": "clientId",
@@ -141,10 +142,10 @@ export const ExchangeSsoTokenResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id_token: z.string(),
-  access_token: z.nullable(z.string()),
-  token_type: z.nullable(z.string()),
-  expires_in: z.number().optional(),
+  id_token: types.string(),
+  access_token: types.nullable(types.string()),
+  token_type: types.nullable(types.string()),
+  expires_in: types.optional(types.number()),
 }).transform((v) => {
   return remap$(v, {
     "id_token": "idToken",

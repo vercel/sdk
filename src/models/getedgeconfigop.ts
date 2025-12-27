@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetEdgeConfigRequest = {
@@ -82,9 +83,9 @@ export const GetEdgeConfigRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  edgeConfigId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  edgeConfigId: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type GetEdgeConfigRequest$Outbound = {
@@ -127,9 +128,9 @@ export const GetEdgeConfigTransfer$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  fromAccountId: z.string(),
-  startedAt: z.number(),
-  doneAt: z.nullable(z.number()),
+  fromAccountId: types.string(),
+  startedAt: types.number(),
+  doneAt: types.nullable(types.number()),
 });
 /** @internal */
 export type GetEdgeConfigTransfer$Outbound = {
@@ -205,8 +206,8 @@ export const GetEdgeConfigPurpose2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("experimentation"),
-  resourceId: z.string(),
+  type: types.literal("experimentation"),
+  resourceId: types.string(),
 });
 /** @internal */
 export type GetEdgeConfigPurpose2$Outbound = {
@@ -247,8 +248,8 @@ export const GetEdgeConfigPurpose1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("flags"),
-  projectId: z.string(),
+  type: types.literal("flags"),
+  projectId: types.string(),
 });
 /** @internal */
 export type GetEdgeConfigPurpose1$Outbound = {
@@ -330,23 +331,25 @@ export const GetEdgeConfigResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  createdAt: z.number(),
-  updatedAt: z.number(),
-  deletedAt: z.nullable(z.number()).optional(),
-  createdBy: z.string().optional(),
-  id: z.string(),
-  slug: z.string(),
-  ownerId: z.string(),
-  digest: z.string(),
-  transfer: z.lazy(() => GetEdgeConfigTransfer$inboundSchema).optional(),
-  schema: z.lazy(() => GetEdgeConfigSchema$inboundSchema).optional(),
-  purpose: z.union([
-    z.lazy(() => GetEdgeConfigPurpose1$inboundSchema),
-    z.lazy(() => GetEdgeConfigPurpose2$inboundSchema),
-  ]).optional(),
-  syncedToDynamoAt: z.number().optional(),
-  sizeInBytes: z.number(),
-  itemCount: z.number(),
+  createdAt: types.number(),
+  updatedAt: types.number(),
+  deletedAt: z.nullable(types.number()).optional(),
+  createdBy: types.optional(types.string()),
+  id: types.string(),
+  slug: types.string(),
+  ownerId: types.string(),
+  digest: types.string(),
+  transfer: types.optional(z.lazy(() => GetEdgeConfigTransfer$inboundSchema)),
+  schema: types.optional(z.lazy(() => GetEdgeConfigSchema$inboundSchema)),
+  purpose: types.optional(
+    z.union([
+      z.lazy(() => GetEdgeConfigPurpose1$inboundSchema),
+      z.lazy(() => GetEdgeConfigPurpose2$inboundSchema),
+    ]),
+  ),
+  syncedToDynamoAt: types.optional(types.number()),
+  sizeInBytes: types.number(),
+  itemCount: types.number(),
 });
 /** @internal */
 export type GetEdgeConfigResponseBody$Outbound = {

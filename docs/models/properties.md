@@ -112,7 +112,7 @@ const value: models.Properties9 = {
 ```typescript
 const value: models.Properties10 = {
   value: {
-    atBRANDAt524028: {},
+    atBRANDAt526217: {},
   },
 };
 ```

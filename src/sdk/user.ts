@@ -43,7 +43,7 @@ export class User extends ClientSDK {
    */
   async getAuthUser(
     options?: RequestOptions,
-  ): Promise<GetAuthUserResponseBody> {
+  ): Promise<GetAuthUserResponseBody | undefined> {
     return unwrapAsync(userGetAuthUser(
       this,
       options,

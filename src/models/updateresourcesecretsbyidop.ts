@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -59,9 +60,9 @@ export const UpdateResourceSecretsByIdEnvironmentOverrides$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    development: z.string().optional(),
-    preview: z.string().optional(),
-    production: z.string().optional(),
+    development: types.optional(types.string()),
+    preview: types.optional(types.string()),
+    production: types.optional(types.string()),
   });
 /** @internal */
 export type UpdateResourceSecretsByIdEnvironmentOverrides$Outbound = {
@@ -114,12 +115,12 @@ export const UpdateResourceSecretsByIdSecrets$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  value: z.string(),
-  prefix: z.string().optional(),
-  environmentOverrides: z.lazy(() =>
-    UpdateResourceSecretsByIdEnvironmentOverrides$inboundSchema
-  ).optional(),
+  name: types.string(),
+  value: types.string(),
+  prefix: types.optional(types.string()),
+  environmentOverrides: types.optional(
+    z.lazy(() => UpdateResourceSecretsByIdEnvironmentOverrides$inboundSchema),
+  ),
 });
 /** @internal */
 export type UpdateResourceSecretsByIdSecrets$Outbound = {
@@ -173,7 +174,7 @@ export const UpdateResourceSecretsByIdRequestBody$inboundSchema: z.ZodType<
   secrets: z.array(
     z.lazy(() => UpdateResourceSecretsByIdSecrets$inboundSchema),
   ),
-  partial: z.boolean().optional(),
+  partial: types.optional(types.boolean()),
 });
 /** @internal */
 export type UpdateResourceSecretsByIdRequestBody$Outbound = {
@@ -219,10 +220,11 @@ export const UpdateResourceSecretsByIdRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  integrationConfigurationId: z.string(),
-  resourceId: z.string(),
-  RequestBody: z.lazy(() => UpdateResourceSecretsByIdRequestBody$inboundSchema)
-    .optional(),
+  integrationConfigurationId: types.string(),
+  resourceId: types.string(),
+  RequestBody: types.optional(
+    z.lazy(() => UpdateResourceSecretsByIdRequestBody$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",

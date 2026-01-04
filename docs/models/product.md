@@ -6,9 +6,7 @@
 import { Product } from "@vercel/sdk/models/createintegrationstoredirectop.js";
 
 let value: Product = {
-  value: {
-    atBRANDAt8897: {},
-  },
+  value: "<value>",
 };
 ```
 
@@ -30,6 +28,6 @@ let value: Product = {
 | `disableResourceRenaming`                                                                                    | *boolean*                                                                                                    | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
 | `repl`                                                                                                       | [models.Repl](../models/repl.md)                                                                             | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
 | `guides`                                                                                                     | [models.Guides](../models/guides.md)[]                                                                       | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
-| `value`                                                                                                      | [models.CreateIntegrationStoreDirectValue](../models/createintegrationstoredirectvalue.md)                   | :heavy_check_mark:                                                                                           | N/A                                                                                                          |
+| `value`                                                                                                      | *string*                                                                                                     | :heavy_check_mark:                                                                                           | N/A                                                                                                          |
 | `disabled`                                                                                                   | *models.Disabled*                                                                                            | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
 | `hidden`                                                                                                     | *models.Hidden*                                                                                              | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |

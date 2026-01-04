@@ -139,6 +139,8 @@ import { tool$integrationsGetBillingPlans } from "./tools/integrationsGetBilling
 import { tool$integrationsGetConfiguration } from "./tools/integrationsGetConfiguration.js";
 import { tool$integrationsGetConfigurationProducts } from "./tools/integrationsGetConfigurationProducts.js";
 import { tool$integrationsGetConfigurations } from "./tools/integrationsGetConfigurations.js";
+import { tool$integrationsGitNamespaces } from "./tools/integrationsGitNamespaces.js";
+import { tool$integrationsSearchRepo } from "./tools/integrationsSearchRepo.js";
 import { tool$logDrainsCreateConfigurableLogDrain } from "./tools/logDrainsCreateConfigurableLogDrain.js";
 import { tool$logDrainsCreateLogDrain } from "./tools/logDrainsCreateLogDrain.js";
 import { tool$logDrainsDeleteConfigurableLogDrain } from "./tools/logDrainsDeleteConfigurableLogDrain.js";
@@ -248,7 +250,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.18.5",
+    version: "1.18.6",
   });
 
   const client = new VercelCore({
@@ -345,6 +347,8 @@ export function createMCPServer(deps: {
   tool(tool$deploymentsGetDeploymentFileContents);
   tool(tool$deploymentsGetDeployments);
   tool(tool$deploymentsDeleteDeployment);
+  tool(tool$integrationsGitNamespaces);
+  tool(tool$integrationsSearchRepo);
   tool(tool$integrationsGetBillingPlans);
   tool(tool$integrationsConnectIntegrationResourceToProject);
   tool(tool$integrationsGetConfigurations);

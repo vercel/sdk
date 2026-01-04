@@ -7,6 +7,8 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -5407,8 +5409,8 @@ export const Entities$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type: UserEventType$inboundSchema,
-  start: z.number(),
-  end: z.number(),
+  start: types.number(),
+  end: types.number(),
 });
 /** @internal */
 export type Entities$Outbound = {
@@ -5444,11 +5446,11 @@ export function entitiesFromJSON(
 /** @internal */
 export const User$inboundSchema: z.ZodType<User, z.ZodTypeDef, unknown> = z
   .object({
-    username: z.string(),
-    avatar: z.string(),
-    email: z.string(),
-    slug: z.string().optional(),
-    uid: z.string(),
+    username: types.string(),
+    avatar: types.string(),
+    email: types.string(),
+    slug: types.optional(types.string()),
+    uid: types.string(),
   });
 /** @internal */
 export type User$Outbound = {
@@ -5495,8 +5497,8 @@ export const UserEventPrincipalType$outboundSchema: z.ZodNativeEnum<
 export const Two$inboundSchema: z.ZodType<Two, z.ZodTypeDef, unknown> = z
   .object({
     type: UserEventPrincipalType$inboundSchema,
-    clientId: z.string(),
-    name: z.string(),
+    clientId: types.string(),
+    name: types.string(),
   });
 /** @internal */
 export type Two$Outbound = {
@@ -5538,12 +5540,12 @@ export const PrincipalType$outboundSchema: z.ZodNativeEnum<
 /** @internal */
 export const One$inboundSchema: z.ZodType<One, z.ZodTypeDef, unknown> = z
   .object({
-    type: PrincipalType$inboundSchema.optional(),
-    avatar: z.string(),
-    email: z.string(),
-    slug: z.string().optional(),
-    uid: z.string(),
-    username: z.string(),
+    type: types.optional(PrincipalType$inboundSchema),
+    avatar: types.string(),
+    email: types.string(),
+    slug: types.optional(types.string()),
+    uid: types.string(),
+    username: types.string(),
   });
 /** @internal */
 export type One$Outbound = {
@@ -5584,7 +5586,10 @@ export const Principal$inboundSchema: z.ZodType<
   Principal,
   z.ZodTypeDef,
   unknown
-> = z.union([z.lazy(() => One$inboundSchema), z.lazy(() => Two$inboundSchema)]);
+> = smartUnion([
+  z.lazy(() => One$inboundSchema),
+  z.lazy(() => Two$inboundSchema),
+]);
 /** @internal */
 export type Principal$Outbound = One$Outbound | Two$Outbound;
 
@@ -5593,7 +5598,7 @@ export const Principal$outboundSchema: z.ZodType<
   Principal$Outbound,
   z.ZodTypeDef,
   Principal
-> = z.union([
+> = smartUnion([
   z.lazy(() => One$outboundSchema),
   z.lazy(() => Two$outboundSchema),
 ]);
@@ -5624,8 +5629,8 @@ export const UserEventViaType$outboundSchema: z.ZodNativeEnum<
 export const Via2$inboundSchema: z.ZodType<Via2, z.ZodTypeDef, unknown> = z
   .object({
     type: UserEventViaType$inboundSchema,
-    clientId: z.string(),
-    name: z.string(),
+    clientId: types.string(),
+    name: types.string(),
   });
 /** @internal */
 export type Via2$Outbound = {
@@ -5665,12 +5670,12 @@ export const ViaType$outboundSchema: z.ZodNativeEnum<typeof ViaType> =
 /** @internal */
 export const Via1$inboundSchema: z.ZodType<Via1, z.ZodTypeDef, unknown> = z
   .object({
-    type: ViaType$inboundSchema.optional(),
-    avatar: z.string(),
-    email: z.string(),
-    slug: z.string().optional(),
-    uid: z.string(),
-    username: z.string(),
+    type: types.optional(ViaType$inboundSchema),
+    avatar: types.string(),
+    email: types.string(),
+    slug: types.optional(types.string()),
+    uid: types.string(),
+    username: types.string(),
   });
 /** @internal */
 export type Via1$Outbound = {
@@ -5707,15 +5712,17 @@ export function via1FromJSON(
 }
 
 /** @internal */
-export const Via$inboundSchema: z.ZodType<Via, z.ZodTypeDef, unknown> = z.union(
-  [z.lazy(() => Via1$inboundSchema), z.lazy(() => Via2$inboundSchema)],
-);
+export const Via$inboundSchema: z.ZodType<Via, z.ZodTypeDef, unknown> =
+  smartUnion([
+    z.lazy(() => Via1$inboundSchema),
+    z.lazy(() => Via2$inboundSchema),
+  ]);
 /** @internal */
 export type Via$Outbound = Via1$Outbound | Via2$Outbound;
 
 /** @internal */
-export const Via$outboundSchema: z.ZodType<Via$Outbound, z.ZodTypeDef, Via> = z
-  .union([
+export const Via$outboundSchema: z.ZodType<Via$Outbound, z.ZodTypeDef, Via> =
+  smartUnion([
     z.lazy(() => Via1$outboundSchema),
     z.lazy(() => Via2$outboundSchema),
   ]);
@@ -5761,7 +5768,7 @@ export const ClientAuthenticationUsed$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   method: Method$inboundSchema,
-  secretId: z.string().optional(),
+  secretId: types.optional(types.string()),
 });
 /** @internal */
 export type ClientAuthenticationUsed$Outbound = {
@@ -5802,8 +5809,8 @@ export const PayloadApp$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  clientId: z.string(),
-  name: z.string(),
+  clientId: types.string(),
+  name: types.string(),
   clientAuthenticationUsed: z.lazy(() =>
     ClientAuthenticationUsed$inboundSchema
   ),
@@ -5848,15 +5855,15 @@ export const OneHundredAndSeventyFour$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   grantType: GrantType$inboundSchema,
-  appName: z.string(),
-  atTTL: z.number(),
-  rtTTL: z.number().optional(),
-  scope: z.string(),
+  appName: types.string(),
+  atTTL: types.number(),
+  rtTTL: types.optional(types.number()),
+  scope: types.string(),
   authMethod: AuthMethod$inboundSchema,
-  app: z.lazy(() => PayloadApp$inboundSchema).optional(),
-  includesRefreshToken: z.boolean().optional(),
-  publicId: z.string().optional(),
-  sessionId: z.string().optional(),
+  app: types.optional(z.lazy(() => PayloadApp$inboundSchema)),
+  includesRefreshToken: types.optional(types.boolean()),
+  publicId: types.optional(types.string()),
+  sessionId: types.optional(types.string()),
 });
 /** @internal */
 export type OneHundredAndSeventyFour$Outbound = {
@@ -5913,8 +5920,8 @@ export const UserEventPayload173Team$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
+  id: types.string(),
+  name: types.string(),
 });
 /** @internal */
 export type UserEventPayload173Team$Outbound = {
@@ -5955,8 +5962,8 @@ export const UserEventPayload173Configuration$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string().optional(),
+  id: types.string(),
+  name: types.optional(types.string()),
 });
 /** @internal */
 export type UserEventPayload173Configuration$Outbound = {
@@ -5999,8 +6006,8 @@ export const UserEventPayloadPeering$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string().optional(),
+  id: types.string(),
+  name: types.optional(types.string()),
 });
 /** @internal */
 export type UserEventPayloadPeering$Outbound = {
@@ -6044,7 +6051,7 @@ export const OneHundredAndSeventyThree$inboundSchema: z.ZodType<
   team: z.lazy(() => UserEventPayload173Team$inboundSchema),
   configuration: z.lazy(() => UserEventPayload173Configuration$inboundSchema),
   peering: z.lazy(() => UserEventPayloadPeering$inboundSchema),
-  newName: z.string().optional(),
+  newName: types.optional(types.string()),
 });
 /** @internal */
 export type OneHundredAndSeventyThree$Outbound = {
@@ -6089,8 +6096,8 @@ export const UserEventPayload172Team$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
+  id: types.string(),
+  name: types.string(),
 });
 /** @internal */
 export type UserEventPayload172Team$Outbound = {
@@ -6131,8 +6138,8 @@ export const UserEventPayload172Configuration$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string().optional(),
+  id: types.string(),
+  name: types.optional(types.string()),
 });
 /** @internal */
 export type UserEventPayload172Configuration$Outbound = {
@@ -6175,8 +6182,8 @@ export const PayloadPeering$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string().optional(),
+  id: types.string(),
+  name: types.optional(types.string()),
 });
 /** @internal */
 export type PayloadPeering$Outbound = {
@@ -6258,8 +6265,8 @@ export const UserEventPayload171Team$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
+  id: types.string(),
+  name: types.string(),
 });
 /** @internal */
 export type UserEventPayload171Team$Outbound = {
@@ -6300,8 +6307,8 @@ export const UserEventPayload171Configuration$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string().optional(),
+  id: types.string(),
+  name: types.optional(types.string()),
 });
 /** @internal */
 export type UserEventPayload171Configuration$Outbound = {
@@ -6341,10 +6348,10 @@ export function userEventPayload171ConfigurationFromJSON(
 /** @internal */
 export const Peering$inboundSchema: z.ZodType<Peering, z.ZodTypeDef, unknown> =
   z.object({
-    id: z.string(),
-    accountId: z.string(),
-    region: z.string(),
-    vpcId: z.string(),
+    id: types.string(),
+    accountId: types.string(),
+    region: types.string(),
+    vpcId: types.string(),
   });
 /** @internal */
 export type Peering$Outbound = {
@@ -6427,8 +6434,8 @@ export function oneHundredAndSeventyOneFromJSON(
 /** @internal */
 export const App$inboundSchema: z.ZodType<App, z.ZodTypeDef, unknown> = z
   .object({
-    id: z.string(),
-    name: z.string(),
+    id: types.string(),
+    name: types.string(),
   });
 /** @internal */
 export type App$Outbound = {
@@ -6462,10 +6469,10 @@ export const OneHundredAndSeventy$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  appName: z.string(),
-  appId: z.string().optional(),
-  app: z.lazy(() => App$inboundSchema).optional(),
-  issuedBefore: z.number().optional(),
+  appName: types.string(),
+  appId: types.optional(types.string()),
+  app: types.optional(z.lazy(() => App$inboundSchema)),
+  issuedBefore: types.optional(types.number()),
 });
 /** @internal */
 export type OneHundredAndSeventy$Outbound = {
@@ -6564,7 +6571,7 @@ export const PayloadProjectIds$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type: UserEventPayload169Type$inboundSchema,
-  required: z.boolean(),
+  required: types.boolean(),
   items: z.lazy(() => PayloadItems$inboundSchema),
 });
 /** @internal */
@@ -6644,7 +6651,7 @@ export function payloadResourcesFromJSON(
 /** @internal */
 export const Before$inboundSchema: z.ZodType<Before, z.ZodTypeDef, unknown> = z
   .object({
-    resources: z.lazy(() => PayloadResources$inboundSchema).optional(),
+    resources: types.optional(z.lazy(() => PayloadResources$inboundSchema)),
   });
 /** @internal */
 export type Before$Outbound = {
@@ -6738,7 +6745,7 @@ export const UserEventPayloadProjectIds$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type: UserEventPayload169AfterType$inboundSchema,
-  required: z.boolean(),
+  required: types.boolean(),
   items: z.lazy(() => UserEventPayloadItems$inboundSchema),
 });
 /** @internal */
@@ -6818,7 +6825,9 @@ export function userEventPayloadResourcesFromJSON(
 /** @internal */
 export const After$inboundSchema: z.ZodType<After, z.ZodTypeDef, unknown> = z
   .object({
-    resources: z.lazy(() => UserEventPayloadResources$inboundSchema).optional(),
+    resources: types.optional(
+      z.lazy(() => UserEventPayloadResources$inboundSchema),
+    ),
   });
 /** @internal */
 export type After$Outbound = {
@@ -6853,11 +6862,11 @@ export const OneHundredAndSixtyNine$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  appName: z.string(),
-  appId: z.string().optional(),
-  installationId: z.string().optional(),
-  before: z.lazy(() => Before$inboundSchema).optional(),
-  after: z.lazy(() => After$inboundSchema).optional(),
+  appName: types.string(),
+  appId: types.optional(types.string()),
+  installationId: types.optional(types.string()),
+  before: types.optional(z.lazy(() => Before$inboundSchema)),
+  after: types.optional(z.lazy(() => After$inboundSchema)),
 });
 /** @internal */
 export type OneHundredAndSixtyNine$Outbound = {
@@ -6955,7 +6964,7 @@ export const ProjectIds$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type: UserEventPayload168Type$inboundSchema,
-  required: z.boolean(),
+  required: types.boolean(),
   items: z.lazy(() => Items$inboundSchema),
 });
 /** @internal */
@@ -7030,9 +7039,9 @@ export const OneHundredAndSixtyEight$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  appName: z.string(),
-  appId: z.string().optional(),
-  resources: z.lazy(() => Resources$inboundSchema).optional(),
+  appName: types.string(),
+  appId: types.optional(types.string()),
+  resources: types.optional(z.lazy(() => Resources$inboundSchema)),
 });
 /** @internal */
 export type OneHundredAndSixtyEight$Outbound = {
@@ -7075,9 +7084,9 @@ export const OneHundredAndSixtySeven$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  appName: z.string(),
-  appId: z.string().optional(),
-  secretLastFourChars: z.string().optional(),
+  appName: types.string(),
+  appId: types.optional(types.string()),
+  secretLastFourChars: types.optional(types.string()),
 });
 /** @internal */
 export type OneHundredAndSixtySeven$Outbound = {
@@ -7120,8 +7129,8 @@ export const OneHundredAndSixtySix$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  appName: z.string(),
-  appId: z.string().optional(),
+  appName: types.string(),
+  appId: types.optional(types.string()),
 });
 /** @internal */
 export type OneHundredAndSixtySix$Outbound = {
@@ -7187,7 +7196,9 @@ export const NextAcceptedPermissionSets$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  userPermissionSet: z.array(PayloadUserPermissionSet$inboundSchema).optional(),
+  userPermissionSet: types.optional(
+    z.array(PayloadUserPermissionSet$inboundSchema),
+  ),
 });
 /** @internal */
 export type NextAcceptedPermissionSets$Outbound = {
@@ -7227,13 +7238,13 @@ export const OneHundredAndSixtyFive$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  appName: z.string(),
-  appId: z.string().optional(),
+  appName: types.string(),
+  appId: types.optional(types.string()),
   nextScopes: z.array(NextScopes$inboundSchema),
-  nextPermissions: z.array(NextPermissions$inboundSchema).optional(),
-  nextAcceptedPermissionSets: z.lazy(() =>
-    NextAcceptedPermissionSets$inboundSchema
-  ).optional(),
+  nextPermissions: types.optional(z.array(NextPermissions$inboundSchema)),
+  nextAcceptedPermissionSets: types.optional(
+    z.lazy(() => NextAcceptedPermissionSets$inboundSchema),
+  ),
 });
 /** @internal */
 export type OneHundredAndSixtyFive$Outbound = {
@@ -7307,7 +7318,7 @@ export const AcceptedPermissionSets$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  userPermissionSet: z.array(UserPermissionSet$inboundSchema).optional(),
+  userPermissionSet: types.optional(z.array(UserPermissionSet$inboundSchema)),
 });
 /** @internal */
 export type AcceptedPermissionSets$Outbound = {
@@ -7346,12 +7357,13 @@ export const OneHundredAndSixtyFour$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  appName: z.string(),
-  appId: z.string().optional(),
+  appName: types.string(),
+  appId: types.optional(types.string()),
   scopes: z.array(PayloadScopes$inboundSchema),
-  permissions: z.array(Permissions$inboundSchema).optional(),
-  acceptedPermissionSets: z.lazy(() => AcceptedPermissionSets$inboundSchema)
-    .optional(),
+  permissions: types.optional(z.array(Permissions$inboundSchema)),
+  acceptedPermissionSets: types.optional(
+    z.lazy(() => AcceptedPermissionSets$inboundSchema),
+  ),
 });
 /** @internal */
 export type OneHundredAndSixtyFour$Outbound = {
@@ -7399,8 +7411,8 @@ export const OneHundredAndSixtyThree$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  oldName: z.string(),
-  newName: z.string(),
+  oldName: types.string(),
+  newName: types.string(),
 });
 /** @internal */
 export type OneHundredAndSixtyThree$Outbound = {
@@ -7488,11 +7500,11 @@ export const ProjectWebAnalytics$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  disabledAt: z.number().optional(),
-  canceledAt: z.number().optional(),
-  enabledAt: z.number().optional(),
-  hasData: z.boolean().optional(),
+  id: types.string(),
+  disabledAt: types.optional(types.number()),
+  canceledAt: types.optional(types.number()),
+  enabledAt: types.optional(types.number()),
+  hasData: types.optional(types.boolean()),
 });
 /** @internal */
 export type ProjectWebAnalytics$Outbound = {
@@ -7539,11 +7551,11 @@ export const PrevProjectWebAnalytics$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  disabledAt: z.number().optional(),
-  canceledAt: z.number().optional(),
-  enabledAt: z.number().optional(),
-  hasData: z.boolean().optional(),
+  id: types.string(),
+  disabledAt: types.optional(types.number()),
+  canceledAt: types.optional(types.number()),
+  enabledAt: types.optional(types.number()),
+  hasData: types.optional(types.boolean()),
 });
 /** @internal */
 export type PrevProjectWebAnalytics$Outbound = {
@@ -7590,10 +7602,11 @@ export const OneHundredAndSixtyOne$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  projectWebAnalytics: z.lazy(() => ProjectWebAnalytics$inboundSchema)
-    .optional(),
+  projectId: types.string(),
+  projectName: types.string(),
+  projectWebAnalytics: types.optional(
+    z.lazy(() => ProjectWebAnalytics$inboundSchema),
+  ),
   prevProjectWebAnalytics: z.nullable(
     z.lazy(() => PrevProjectWebAnalytics$inboundSchema),
   ).optional(),
@@ -7644,10 +7657,10 @@ export const Microfrontends3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  updatedAt: z.number(),
+  updatedAt: types.number(),
   groupIds: z.array(z.any()),
-  enabled: z.boolean(),
-  freeProjectForLegacyLimits: z.boolean().optional(),
+  enabled: types.boolean(),
+  freeProjectForLegacyLimits: types.optional(types.boolean()),
 });
 /** @internal */
 export type Microfrontends3$Outbound = {
@@ -7690,14 +7703,14 @@ export const Microfrontends2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  isDefaultApp: z.boolean().optional(),
-  routeObservabilityToThisProject: z.boolean().optional(),
-  doNotRouteWithMicrofrontendsRouting: z.boolean().optional(),
-  updatedAt: z.number(),
-  groupIds: z.array(z.string()),
-  enabled: z.boolean(),
-  defaultRoute: z.string().optional(),
-  freeProjectForLegacyLimits: z.boolean().optional(),
+  isDefaultApp: types.optional(types.boolean()),
+  routeObservabilityToThisProject: types.optional(types.boolean()),
+  doNotRouteWithMicrofrontendsRouting: types.optional(types.boolean()),
+  updatedAt: types.number(),
+  groupIds: z.array(types.string()),
+  enabled: types.boolean(),
+  defaultRoute: types.optional(types.string()),
+  freeProjectForLegacyLimits: types.optional(types.boolean()),
 });
 /** @internal */
 export type Microfrontends2$Outbound = {
@@ -7748,12 +7761,12 @@ export const Microfrontends1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  isDefaultApp: z.boolean(),
-  updatedAt: z.number(),
-  groupIds: z.array(z.string()),
-  enabled: z.boolean(),
-  defaultRoute: z.string().optional(),
-  freeProjectForLegacyLimits: z.boolean().optional(),
+  isDefaultApp: types.boolean(),
+  updatedAt: types.number(),
+  groupIds: z.array(types.string()),
+  enabled: types.boolean(),
+  defaultRoute: types.optional(types.string()),
+  freeProjectForLegacyLimits: types.optional(types.boolean()),
 });
 /** @internal */
 export type Microfrontends1$Outbound = {
@@ -7799,7 +7812,7 @@ export const Microfrontends$inboundSchema: z.ZodType<
   Microfrontends,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => Microfrontends1$inboundSchema),
   z.lazy(() => Microfrontends2$inboundSchema),
   z.lazy(() => Microfrontends3$inboundSchema),
@@ -7815,7 +7828,7 @@ export const Microfrontends$outboundSchema: z.ZodType<
   Microfrontends$Outbound,
   z.ZodTypeDef,
   Microfrontends
-> = z.union([
+> = smartUnion([
   z.lazy(() => Microfrontends1$outboundSchema),
   z.lazy(() => Microfrontends2$outboundSchema),
   z.lazy(() => Microfrontends3$outboundSchema),
@@ -7840,13 +7853,15 @@ export const UserEventPayload160Project$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
-  microfrontends: z.union([
-    z.lazy(() => Microfrontends1$inboundSchema),
-    z.lazy(() => Microfrontends2$inboundSchema),
-    z.lazy(() => Microfrontends3$inboundSchema),
-  ]).optional(),
+  id: types.string(),
+  name: types.string(),
+  microfrontends: types.optional(
+    smartUnion([
+      z.lazy(() => Microfrontends1$inboundSchema),
+      z.lazy(() => Microfrontends2$inboundSchema),
+      z.lazy(() => Microfrontends3$inboundSchema),
+    ]),
+  ),
 });
 /** @internal */
 export type UserEventPayload160Project$Outbound = {
@@ -7867,7 +7882,7 @@ export const UserEventPayload160Project$outboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   name: z.string(),
-  microfrontends: z.union([
+  microfrontends: smartUnion([
     z.lazy(() => Microfrontends1$outboundSchema),
     z.lazy(() => Microfrontends2$outboundSchema),
     z.lazy(() => Microfrontends3$outboundSchema),
@@ -7897,10 +7912,10 @@ export const UserEventMicrofrontends3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  updatedAt: z.number(),
+  updatedAt: types.number(),
   groupIds: z.array(z.any()),
-  enabled: z.boolean(),
-  freeProjectForLegacyLimits: z.boolean().optional(),
+  enabled: types.boolean(),
+  freeProjectForLegacyLimits: types.optional(types.boolean()),
 });
 /** @internal */
 export type UserEventMicrofrontends3$Outbound = {
@@ -7945,14 +7960,14 @@ export const UserEventMicrofrontends2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  isDefaultApp: z.boolean().optional(),
-  routeObservabilityToThisProject: z.boolean().optional(),
-  doNotRouteWithMicrofrontendsRouting: z.boolean().optional(),
-  updatedAt: z.number(),
-  groupIds: z.array(z.string()),
-  enabled: z.boolean(),
-  defaultRoute: z.string().optional(),
-  freeProjectForLegacyLimits: z.boolean().optional(),
+  isDefaultApp: types.optional(types.boolean()),
+  routeObservabilityToThisProject: types.optional(types.boolean()),
+  doNotRouteWithMicrofrontendsRouting: types.optional(types.boolean()),
+  updatedAt: types.number(),
+  groupIds: z.array(types.string()),
+  enabled: types.boolean(),
+  defaultRoute: types.optional(types.string()),
+  freeProjectForLegacyLimits: types.optional(types.boolean()),
 });
 /** @internal */
 export type UserEventMicrofrontends2$Outbound = {
@@ -8005,12 +8020,12 @@ export const UserEventMicrofrontends1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  isDefaultApp: z.boolean(),
-  updatedAt: z.number(),
-  groupIds: z.array(z.string()),
-  enabled: z.boolean(),
-  defaultRoute: z.string().optional(),
-  freeProjectForLegacyLimits: z.boolean().optional(),
+  isDefaultApp: types.boolean(),
+  updatedAt: types.number(),
+  groupIds: z.array(types.string()),
+  enabled: types.boolean(),
+  defaultRoute: types.optional(types.string()),
+  freeProjectForLegacyLimits: types.optional(types.boolean()),
 });
 /** @internal */
 export type UserEventMicrofrontends1$Outbound = {
@@ -8058,7 +8073,7 @@ export const PayloadMicrofrontends$inboundSchema: z.ZodType<
   PayloadMicrofrontends,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => UserEventMicrofrontends1$inboundSchema),
   z.lazy(() => UserEventMicrofrontends2$inboundSchema),
   z.lazy(() => UserEventMicrofrontends3$inboundSchema),
@@ -8074,7 +8089,7 @@ export const PayloadMicrofrontends$outboundSchema: z.ZodType<
   PayloadMicrofrontends$Outbound,
   z.ZodTypeDef,
   PayloadMicrofrontends
-> = z.union([
+> = smartUnion([
   z.lazy(() => UserEventMicrofrontends1$outboundSchema),
   z.lazy(() => UserEventMicrofrontends2$outboundSchema),
   z.lazy(() => UserEventMicrofrontends3$outboundSchema),
@@ -8103,11 +8118,13 @@ export const UserEventPayload160PrevProject$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  microfrontends: z.union([
-    z.lazy(() => UserEventMicrofrontends1$inboundSchema),
-    z.lazy(() => UserEventMicrofrontends2$inboundSchema),
-    z.lazy(() => UserEventMicrofrontends3$inboundSchema),
-  ]).optional(),
+  microfrontends: types.optional(
+    smartUnion([
+      z.lazy(() => UserEventMicrofrontends1$inboundSchema),
+      z.lazy(() => UserEventMicrofrontends2$inboundSchema),
+      z.lazy(() => UserEventMicrofrontends3$inboundSchema),
+    ]),
+  ),
 });
 /** @internal */
 export type UserEventPayload160PrevProject$Outbound = {
@@ -8124,7 +8141,7 @@ export const UserEventPayload160PrevProject$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UserEventPayload160PrevProject
 > = z.object({
-  microfrontends: z.union([
+  microfrontends: smartUnion([
     z.lazy(() => UserEventMicrofrontends1$outboundSchema),
     z.lazy(() => UserEventMicrofrontends2$outboundSchema),
     z.lazy(() => UserEventMicrofrontends3$outboundSchema),
@@ -8191,9 +8208,9 @@ export const PayloadGroup$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  slug: z.string(),
-  name: z.string(),
+  id: types.string(),
+  slug: types.string(),
+  name: types.string(),
 });
 /** @internal */
 export type PayloadGroup$Outbound = {
@@ -8277,8 +8294,8 @@ export const UserEventPayload159Project$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
+  id: types.string(),
+  name: types.string(),
 });
 /** @internal */
 export type UserEventPayload159Project$Outbound = {
@@ -8316,9 +8333,9 @@ export function userEventPayload159ProjectFromJSON(
 /** @internal */
 export const Group$inboundSchema: z.ZodType<Group, z.ZodTypeDef, unknown> = z
   .object({
-    id: z.string(),
-    slug: z.string(),
-    name: z.string(),
+    id: types.string(),
+    slug: types.string(),
+    name: types.string(),
   });
 /** @internal */
 export type Group$Outbound = {
@@ -8396,9 +8413,9 @@ export function oneHundredAndFiftyNineFromJSON(
 /** @internal */
 export const Prev$inboundSchema: z.ZodType<Prev, z.ZodTypeDef, unknown> = z
   .object({
-    name: z.string(),
-    slug: z.string(),
-    fallbackEnvironment: z.string(),
+    name: types.string(),
+    slug: types.string(),
+    fallbackEnvironment: types.string(),
   });
 /** @internal */
 export type Prev$Outbound = {
@@ -8434,10 +8451,10 @@ export const OneHundredAndFiftyEight$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  slug: z.string().optional(),
-  name: z.string().optional(),
-  fallbackEnvironment: z.string().optional(),
+  id: types.string(),
+  slug: types.optional(types.string()),
+  name: types.optional(types.string()),
+  fallbackEnvironment: types.optional(types.string()),
   prev: z.lazy(() => Prev$inboundSchema),
 });
 /** @internal */
@@ -8485,9 +8502,9 @@ export const OneHundredAndFiftySeven$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  slug: z.string(),
-  name: z.string(),
+  id: types.string(),
+  slug: types.string(),
+  name: types.string(),
 });
 /** @internal */
 export type OneHundredAndFiftySeven$Outbound = {
@@ -8578,9 +8595,9 @@ export const OneHundredAndFiftyFive$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  edgeConfigId: z.string(),
-  edgeConfigSlug: z.string(),
-  edgeConfigTokenIds: z.array(z.string()),
+  edgeConfigId: types.string(),
+  edgeConfigSlug: types.string(),
+  edgeConfigTokenIds: z.array(types.string()),
 });
 /** @internal */
 export type OneHundredAndFiftyFive$Outbound = {
@@ -8623,10 +8640,10 @@ export const OneHundredAndFiftyFour$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  edgeConfigId: z.string(),
-  edgeConfigSlug: z.string(),
-  edgeConfigTokenId: z.string(),
-  label: z.string(),
+  edgeConfigId: types.string(),
+  edgeConfigSlug: types.string(),
+  edgeConfigTokenId: types.string(),
+  label: types.string(),
 });
 /** @internal */
 export type OneHundredAndFiftyFour$Outbound = {
@@ -8671,9 +8688,9 @@ export const OneHundredAndFiftyThree$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  edgeConfigId: z.string(),
-  edgeConfigSlug: z.string(),
-  edgeConfigDigest: z.string(),
+  edgeConfigId: types.string(),
+  edgeConfigSlug: types.string(),
+  edgeConfigDigest: types.string(),
 });
 /** @internal */
 export type OneHundredAndFiftyThree$Outbound = {
@@ -8716,8 +8733,8 @@ export const OneHundredAndFiftyTwo$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectName: z.string(),
-  srcImages: z.array(z.string()),
+  projectName: types.string(),
+  srcImages: z.array(types.string()),
 });
 /** @internal */
 export type OneHundredAndFiftyTwo$Outbound = {
@@ -8758,9 +8775,9 @@ export const OneHundredAndFiftyOne$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectName: z.string(),
-  tags: z.array(z.string()),
-  target: z.string().optional(),
+  projectName: types.string(),
+  tags: z.array(types.string()),
+  target: types.optional(types.string()),
 });
 /** @internal */
 export type OneHundredAndFiftyOne$Outbound = {
@@ -8812,11 +8829,11 @@ export const UserEventPayload150Project$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
+  name: types.string(),
   role: UserEventPayload150Role$inboundSchema,
-  invitedUserName: z.string(),
-  id: z.string().optional(),
-  invitedUserId: z.string().optional(),
+  invitedUserName: types.string(),
+  id: types.optional(types.string()),
+  invitedUserId: types.optional(types.string()),
 });
 /** @internal */
 export type UserEventPayload150Project$Outbound = {
@@ -8902,8 +8919,8 @@ export const UserEventPayload149Project$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
+  id: types.string(),
+  name: types.string(),
 });
 /** @internal */
 export type UserEventPayload149Project$Outbound = {
@@ -8962,11 +8979,11 @@ export const PayloadProjectMembership$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  role: UserEventPayload149Role$inboundSchema.optional(),
-  uid: z.string().optional(),
-  createdAt: z.number().optional(),
-  username: z.string().optional(),
-  previousRole: PayloadPreviousRole$inboundSchema.optional(),
+  role: types.optional(UserEventPayload149Role$inboundSchema),
+  uid: types.optional(types.string()),
+  createdAt: types.optional(types.number()),
+  username: types.optional(types.string()),
+  previousRole: types.optional(PayloadPreviousRole$inboundSchema),
 });
 /** @internal */
 export type PayloadProjectMembership$Outbound = {
@@ -9055,8 +9072,8 @@ export const UserEventPayload148Project$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  id: z.string().optional(),
+  name: types.string(),
+  id: types.optional(types.string()),
 });
 /** @internal */
 export type UserEventPayload148Project$Outbound = {
@@ -9107,9 +9124,9 @@ export const RemovedMembership$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   role: UserEventPayload148Role$inboundSchema,
-  uid: z.string(),
-  createdAt: z.number(),
-  username: z.string().optional(),
+  uid: types.string(),
+  createdAt: types.number(),
+  username: types.optional(types.string()),
 });
 /** @internal */
 export type RemovedMembership$Outbound = {
@@ -9196,8 +9213,8 @@ export const UserEventPayload147Project$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  id: z.string().optional(),
+  name: types.string(),
+  id: types.optional(types.string()),
 });
 /** @internal */
 export type UserEventPayload147Project$Outbound = {
@@ -9248,9 +9265,9 @@ export const ProjectMembership$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   role: UserEventPayload147Role$inboundSchema,
-  uid: z.string(),
-  createdAt: z.number(),
-  username: z.string().optional(),
+  uid: types.string(),
+  createdAt: types.number(),
+  username: types.optional(types.string()),
 });
 /** @internal */
 export type ProjectMembership$Outbound = {
@@ -9296,7 +9313,9 @@ export const OneHundredAndFortySeven$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   project: z.lazy(() => UserEventPayload147Project$inboundSchema),
-  projectMembership: z.nullable(z.lazy(() => ProjectMembership$inboundSchema)),
+  projectMembership: types.nullable(
+    z.lazy(() => ProjectMembership$inboundSchema),
+  ),
 });
 /** @internal */
 export type OneHundredAndFortySeven$Outbound = {
@@ -9337,10 +9356,10 @@ export const OneHundredAndFortySix$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  previousProjectName: z.string(),
-  newProjectName: z.string(),
-  originAccountName: z.string(),
-  transferId: z.string().optional(),
+  previousProjectName: types.string(),
+  newProjectName: types.string(),
+  originAccountName: types.string(),
+  transferId: types.optional(types.string()),
 });
 /** @internal */
 export type OneHundredAndFortySix$Outbound = {
@@ -9385,10 +9404,10 @@ export const OneHundredAndFortyFive$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  previousProjectName: z.string(),
-  newProjectName: z.string(),
-  destinationAccountName: z.string(),
-  transferId: z.string().optional(),
+  previousProjectName: types.string(),
+  newProjectName: types.string(),
+  destinationAccountName: types.string(),
+  transferId: types.optional(types.string()),
 });
 /** @internal */
 export type OneHundredAndFortyFive$Outbound = {
@@ -9433,9 +9452,9 @@ export const OneHundredAndFortyFour$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectName: z.string(),
-  destinationAccountName: z.nullable(z.string()),
-  transferId: z.string().optional(),
+  projectName: types.string(),
+  destinationAccountName: types.nullable(types.string()),
+  transferId: types.optional(types.string()),
 });
 /** @internal */
 export type OneHundredAndFortyFour$Outbound = {
@@ -9478,12 +9497,12 @@ export const OneHundredAndFortyThree$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  originAccountName: z.string(),
-  destinationAccountName: z.string(),
-  destinationAccountId: z.string(),
-  transferId: z.string().optional(),
+  projectId: types.string(),
+  projectName: types.string(),
+  originAccountName: types.string(),
+  destinationAccountName: types.string(),
+  destinationAccountId: types.string(),
+  transferId: types.optional(types.string()),
 });
 /** @internal */
 export type OneHundredAndFortyThree$Outbound = {
@@ -9532,12 +9551,12 @@ export const OneHundredAndFortyTwo$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  requestedTeamName: z.string(),
-  requestedUserName: z.string().optional(),
-  gitUsername: z.string().optional(),
-  githubUsername: z.string().optional(),
-  gitlabUsername: z.string().optional(),
-  bitbucketUsername: z.string().optional(),
+  requestedTeamName: types.string(),
+  requestedUserName: types.optional(types.string()),
+  gitUsername: types.optional(types.string()),
+  githubUsername: types.optional(types.string()),
+  gitlabUsername: types.optional(types.string()),
+  bitbucketUsername: types.optional(types.string()),
 });
 /** @internal */
 export type OneHundredAndFortyTwo$Outbound = {
@@ -9586,12 +9605,12 @@ export const OneHundredAndFortyOne$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamName: z.string(),
-  username: z.string().optional(),
-  gitUsername: z.nullable(z.string()).optional(),
-  githubUsername: z.nullable(z.string()).optional(),
-  gitlabUsername: z.nullable(z.string()).optional(),
-  bitbucketUsername: z.nullable(z.string()).optional(),
+  teamName: types.string(),
+  username: types.optional(types.string()),
+  gitUsername: z.nullable(types.string()).optional(),
+  githubUsername: z.nullable(types.string()).optional(),
+  gitlabUsername: z.nullable(types.string()).optional(),
+  bitbucketUsername: z.nullable(types.string()).optional(),
 });
 /** @internal */
 export type OneHundredAndFortyOne$Outbound = {
@@ -9640,14 +9659,14 @@ export const OneHundredAndForty$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamName: z.string(),
-  username: z.string().optional(),
-  gitUsername: z.string().optional(),
-  githubUsername: z.nullable(z.string()).optional(),
-  gitlabUsername: z.nullable(z.string()).optional(),
-  bitbucketUsername: z.nullable(z.string()).optional(),
-  updatedUid: z.string().optional(),
-  teamId: z.string().optional(),
+  teamName: types.string(),
+  username: types.optional(types.string()),
+  gitUsername: types.optional(types.string()),
+  githubUsername: z.nullable(types.string()).optional(),
+  gitlabUsername: z.nullable(types.string()).optional(),
+  bitbucketUsername: z.nullable(types.string()).optional(),
+  updatedUid: types.optional(types.string()),
+  teamId: types.optional(types.string()),
 });
 /** @internal */
 export type OneHundredAndForty$Outbound = {
@@ -9700,8 +9719,8 @@ export const OneHundredAndThirtyNine$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  price: z.number().optional(),
-  currency: z.string().optional(),
+  price: types.optional(types.number()),
+  currency: types.optional(types.string()),
 });
 /** @internal */
 export type OneHundredAndThirtyNine$Outbound = {
@@ -9742,8 +9761,8 @@ export const OneHundredAndThirtyEight$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  previewDeploymentSuffix: z.nullable(z.string()).optional(),
-  previousPreviewDeploymentSuffix: z.nullable(z.string()).optional(),
+  previewDeploymentSuffix: z.nullable(types.string()).optional(),
+  previousPreviewDeploymentSuffix: z.nullable(types.string()).optional(),
 });
 /** @internal */
 export type OneHundredAndThirtyEight$Outbound = {
@@ -9784,9 +9803,9 @@ export const OneHundredAndThirtySeven$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  price: z.number().optional(),
-  currency: z.string().optional(),
-  enabled: z.boolean().optional(),
+  price: types.optional(types.number()),
+  currency: types.optional(types.string()),
+  enabled: types.optional(types.boolean()),
 });
 /** @internal */
 export type OneHundredAndThirtySeven$Outbound = {
@@ -9829,7 +9848,7 @@ export const OneHundredAndThirtySix$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  username: z.string(),
+  username: types.string(),
 });
 /** @internal */
 export type OneHundredAndThirtySix$Outbound = {
@@ -9868,8 +9887,8 @@ export const OneHundredAndThirtyFive$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  email: z.string(),
-  prevEmail: z.string(),
+  email: types.string(),
+  prevEmail: types.string(),
 });
 /** @internal */
 export type OneHundredAndThirtyFive$Outbound = {
@@ -9910,7 +9929,7 @@ export const OneHundredAndThirtyFour$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  mfaEnabled: z.boolean(),
+  mfaEnabled: types.boolean(),
 });
 /** @internal */
 export type OneHundredAndThirtyFour$Outbound = {
@@ -9949,8 +9968,8 @@ export const OneHundredAndThirtyThree$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  enabled: z.boolean(),
-  totpVerified: z.boolean(),
+  enabled: types.boolean(),
+  totpVerified: types.boolean(),
 });
 /** @internal */
 export type OneHundredAndThirtyThree$Outbound = {
@@ -9991,8 +10010,8 @@ export const PayloadPrevious$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  enabled: z.boolean(),
-  totpVerified: z.boolean(),
+  enabled: types.boolean(),
+  totpVerified: types.boolean(),
 });
 /** @internal */
 export type PayloadPrevious$Outbound = {
@@ -10031,8 +10050,8 @@ export const PayloadNext$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  enabled: z.boolean(),
-  totpVerified: z.boolean(),
+  enabled: types.boolean(),
+  totpVerified: types.boolean(),
 });
 /** @internal */
 export type PayloadNext$Outbound = {
@@ -10111,7 +10130,7 @@ export const PayloadRemoteCaching$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  enabled: z.boolean().optional(),
+  enabled: types.optional(types.boolean()),
 });
 /** @internal */
 export type PayloadRemoteCaching$Outbound = {
@@ -10150,7 +10169,9 @@ export const OneHundredAndThirtyOne$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  remoteCaching: z.lazy(() => PayloadRemoteCaching$inboundSchema).optional(),
+  remoteCaching: types.optional(
+    z.lazy(() => PayloadRemoteCaching$inboundSchema),
+  ),
 });
 /** @internal */
 export type OneHundredAndThirtyOne$Outbound = {
@@ -10189,7 +10210,7 @@ export const OneHundredAndThirty$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  slug: z.string().optional(),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type OneHundredAndThirty$Outbound = {
@@ -10228,7 +10249,7 @@ export const OneHundredAndTwentyNine$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string().optional(),
+  name: types.optional(types.string()),
 });
 /** @internal */
 export type OneHundredAndTwentyNine$Outbound = {
@@ -10267,7 +10288,7 @@ export const OneHundredAndTwentyEight$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  enforced: z.boolean(),
+  enforced: types.boolean(),
 });
 /** @internal */
 export type OneHundredAndTwentyEight$Outbound = {
@@ -10306,8 +10327,8 @@ export const UserEventPayload127User$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  username: z.string(),
+  id: types.string(),
+  username: types.string(),
 });
 /** @internal */
 export type UserEventPayload127User$Outbound = {
@@ -10348,9 +10369,9 @@ export const OneHundredAndTwentySeven$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  entitlement: z.string(),
+  entitlement: types.string(),
   user: z.lazy(() => UserEventPayload127User$inboundSchema),
-  previousCanceledAt: z.string().optional(),
+  previousCanceledAt: types.optional(types.string()),
 });
 /** @internal */
 export type OneHundredAndTwentySeven$Outbound = {
@@ -10393,8 +10414,8 @@ export const UserEventPayloadUser$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  username: z.string(),
+  id: types.string(),
+  username: types.string(),
 });
 /** @internal */
 export type UserEventPayloadUser$Outbound = {
@@ -10435,7 +10456,7 @@ export const OneHundredAndTwentySix$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  entitlement: z.string(),
+  entitlement: types.string(),
   user: z.lazy(() => UserEventPayloadUser$inboundSchema),
 });
 /** @internal */
@@ -10477,8 +10498,8 @@ export const UpdatedUser$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  username: z.string(),
-  email: z.string(),
+  username: types.string(),
+  email: types.string(),
 });
 /** @internal */
 export type UpdatedUser$Outbound = {
@@ -10515,11 +10536,11 @@ export const OneHundredAndTwentyFive$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  directoryType: z.string().optional(),
-  updatedUser: z.lazy(() => UpdatedUser$inboundSchema).optional(),
-  role: z.string().optional(),
-  previousRole: z.string(),
-  updatedUid: z.string().optional(),
+  directoryType: types.optional(types.string()),
+  updatedUser: types.optional(z.lazy(() => UpdatedUser$inboundSchema)),
+  role: types.optional(types.string()),
+  previousRole: types.string(),
+  updatedUid: types.optional(types.string()),
 });
 /** @internal */
 export type OneHundredAndTwentyFive$Outbound = {
@@ -10566,12 +10587,12 @@ export const OneHundredAndTwentyFour$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  role: z.string().optional(),
-  uid: z.string(),
-  origin: z.string().optional(),
-  teamRoles: z.array(z.string()).optional(),
-  teamPermissions: z.array(z.string()).optional(),
-  entitlements: z.array(z.string()).optional(),
+  role: types.optional(types.string()),
+  uid: types.string(),
+  origin: types.optional(types.string()),
+  teamRoles: types.optional(z.array(types.string())),
+  teamPermissions: types.optional(z.array(types.string())),
+  entitlements: types.optional(z.array(types.string())),
 });
 /** @internal */
 export type OneHundredAndTwentyFour$Outbound = {
@@ -10620,8 +10641,8 @@ export const DeletedUser$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  username: z.string(),
-  email: z.string(),
+  username: types.string(),
+  email: types.string(),
 });
 /** @internal */
 export type DeletedUser$Outbound = {
@@ -10679,17 +10700,17 @@ export const OneHundredAndTwentyThree$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  deletedUser: z.lazy(() => DeletedUser$inboundSchema).optional(),
-  deletedUid: z.string().optional(),
-  githubUsername: z.nullable(z.string()).optional(),
-  gitlabUsername: z.nullable(z.string()).optional(),
-  bitbucketUsername: z.nullable(z.string()).optional(),
-  directoryType: z.string().optional(),
-  role: PayloadRole$inboundSchema.optional(),
-  reason: z.string().optional(),
-  previousPlan: PreviousPlan$inboundSchema.optional(),
-  newPlan: NewPlan$inboundSchema.optional(),
-  automated: z.boolean().optional(),
+  deletedUser: types.optional(z.lazy(() => DeletedUser$inboundSchema)),
+  deletedUid: types.optional(types.string()),
+  githubUsername: z.nullable(types.string()).optional(),
+  gitlabUsername: z.nullable(types.string()).optional(),
+  bitbucketUsername: z.nullable(types.string()).optional(),
+  directoryType: types.optional(types.string()),
+  role: types.optional(PayloadRole$inboundSchema),
+  reason: types.optional(types.string()),
+  previousPlan: types.optional(PreviousPlan$inboundSchema),
+  newPlan: types.optional(NewPlan$inboundSchema),
+  automated: types.optional(types.boolean()),
 });
 /** @internal */
 export type OneHundredAndTwentyThree$Outbound = {
@@ -10748,8 +10769,8 @@ export const InvitedUser$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  username: z.string(),
-  email: z.string(),
+  username: types.string(),
+  email: types.string(),
 });
 /** @internal */
 export type InvitedUser$Outbound = {
@@ -10786,13 +10807,13 @@ export const OneHundredAndTwentyTwo$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  directoryType: z.string().optional(),
-  ssoType: z.string().optional(),
-  invitedUser: z.lazy(() => InvitedUser$inboundSchema).optional(),
-  invitedEmail: z.string().optional(),
-  invitationRole: z.string().optional(),
-  entitlements: z.array(z.string()).optional(),
-  invitedUid: z.string().optional(),
+  directoryType: types.optional(types.string()),
+  ssoType: types.optional(types.string()),
+  invitedUser: types.optional(z.lazy(() => InvitedUser$inboundSchema)),
+  invitedEmail: types.optional(types.string()),
+  invitationRole: types.optional(types.string()),
+  entitlements: types.optional(z.array(types.string())),
+  invitedUid: types.optional(types.string()),
 });
 /** @internal */
 export type OneHundredAndTwentyTwo$Outbound = {
@@ -10840,8 +10861,8 @@ export function oneHundredAndTwentyTwoFromJSON(
 /** @internal */
 export const Reasons$inboundSchema: z.ZodType<Reasons, z.ZodTypeDef, unknown> =
   z.object({
-    slug: z.string(),
-    description: z.string(),
+    slug: types.string(),
+    description: types.string(),
   });
 /** @internal */
 export type Reasons$Outbound = {
@@ -10888,8 +10909,8 @@ export const PayloadRemovedUsers$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   role: UserEventPayload121Role$inboundSchema,
-  confirmed: z.boolean(),
-  confirmedAt: z.number().optional(),
+  confirmed: types.boolean(),
+  confirmedAt: types.optional(types.number()),
 });
 /** @internal */
 export type PayloadRemovedUsers$Outbound = {
@@ -10932,15 +10953,16 @@ export const OneHundredAndTwentyOne$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  slug: z.string(),
-  teamId: z.string(),
-  by: z.string(),
-  byUid: z.string().optional(),
-  reasons: z.array(z.lazy(() => Reasons$inboundSchema)).optional(),
-  removedUsers: z.record(z.lazy(() => PayloadRemovedUsers$inboundSchema))
-    .optional(),
-  removedMemberCount: z.number().optional(),
-  timestamp: z.number().optional(),
+  slug: types.string(),
+  teamId: types.string(),
+  by: types.string(),
+  byUid: types.optional(types.string()),
+  reasons: types.optional(z.array(z.lazy(() => Reasons$inboundSchema))),
+  removedUsers: types.optional(
+    z.record(z.lazy(() => PayloadRemovedUsers$inboundSchema)),
+  ),
+  removedMemberCount: types.optional(types.number()),
+  timestamp: types.optional(types.number()),
 });
 /** @internal */
 export type OneHundredAndTwentyOne$Outbound = {
@@ -10994,7 +11016,7 @@ export const OneHundredAndTwenty$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  slug: z.string(),
+  slug: types.string(),
 });
 /** @internal */
 export type OneHundredAndTwenty$Outbound = {
@@ -11030,8 +11052,8 @@ export function oneHundredAndTwentyFromJSON(
 /** @internal */
 export const Store$inboundSchema: z.ZodType<Store, z.ZodTypeDef, unknown> = z
   .object({
-    name: z.string(),
-    id: z.string(),
+    name: types.string(),
+    id: types.string(),
   });
 /** @internal */
 export type Store$Outbound = {
@@ -11069,7 +11091,7 @@ export const OneHundredAndNineteen$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   store: z.lazy(() => Store$inboundSchema),
-  ownerId: z.string().optional(),
+  ownerId: types.optional(types.string()),
 });
 /** @internal */
 export type OneHundredAndNineteen$Outbound = {
@@ -11165,11 +11187,11 @@ export const OneHundredAndSeventeen$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string().optional(),
-  computeUnitsMax: z.number().optional(),
-  computeUnitsMin: z.number().optional(),
-  suspendTimeoutSeconds: z.number().optional(),
+  id: types.string(),
+  name: types.optional(types.string()),
+  computeUnitsMax: types.optional(types.number()),
+  computeUnitsMin: types.optional(types.number()),
+  suspendTimeoutSeconds: types.optional(types.number()),
   type: UserEventPayloadType$inboundSchema,
 });
 /** @internal */
@@ -11219,7 +11241,7 @@ export const OneHundredAndSixteen$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  webhookUrl: z.string().optional(),
+  webhookUrl: types.optional(types.string()),
 });
 /** @internal */
 export type OneHundredAndSixteen$Outbound = {
@@ -11277,18 +11299,18 @@ export const UserEventPayloadBudget$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type: UserEventPayload115Type$inboundSchema,
-  fixedBudget: z.number(),
-  previousSpend: z.array(z.number()),
-  notifiedAt: z.array(z.number()),
-  webhookId: z.string().optional(),
-  webhookNotified: z.boolean().optional(),
-  createdAt: z.number(),
-  updatedAt: z.number().optional(),
-  isActive: z.boolean(),
-  pauseProjects: z.boolean().optional(),
-  pricingPlan: PayloadPricingPlan$inboundSchema.optional(),
-  teamId: z.string(),
-  id: z.string(),
+  fixedBudget: types.number(),
+  previousSpend: z.array(types.number()),
+  notifiedAt: z.array(types.number()),
+  webhookId: types.optional(types.string()),
+  webhookNotified: types.optional(types.boolean()),
+  createdAt: types.number(),
+  updatedAt: types.optional(types.number()),
+  isActive: types.boolean(),
+  pauseProjects: types.optional(types.boolean()),
+  pricingPlan: types.optional(PayloadPricingPlan$inboundSchema),
+  teamId: types.string(),
+  id: types.string(),
 });
 /** @internal */
 export type UserEventPayloadBudget$Outbound = {
@@ -11352,7 +11374,7 @@ export const OneHundredAndFifteen$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   budget: z.lazy(() => UserEventPayloadBudget$inboundSchema),
-  webhookUrl: z.string().optional(),
+  webhookUrl: types.optional(types.string()),
 });
 /** @internal */
 export type OneHundredAndFifteen$Outbound = {
@@ -11410,18 +11432,18 @@ export const PayloadBudget$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type: UserEventPayload114Type$inboundSchema,
-  fixedBudget: z.number(),
-  previousSpend: z.array(z.number()),
-  notifiedAt: z.array(z.number()),
-  webhookId: z.string().optional(),
-  webhookNotified: z.boolean().optional(),
-  createdAt: z.number(),
-  updatedAt: z.number().optional(),
-  isActive: z.boolean(),
-  pauseProjects: z.boolean().optional(),
-  pricingPlan: PricingPlan$inboundSchema.optional(),
-  teamId: z.string(),
-  id: z.string(),
+  fixedBudget: types.number(),
+  previousSpend: z.array(types.number()),
+  notifiedAt: z.array(types.number()),
+  webhookId: types.optional(types.string()),
+  webhookNotified: types.optional(types.boolean()),
+  createdAt: types.number(),
+  updatedAt: types.optional(types.number()),
+  isActive: types.boolean(),
+  pauseProjects: types.optional(types.boolean()),
+  pricingPlan: types.optional(PricingPlan$inboundSchema),
+  teamId: types.string(),
+  id: types.string(),
 });
 /** @internal */
 export type PayloadBudget$Outbound = {
@@ -11538,18 +11560,18 @@ export const BudgetItem$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type: UserEventPayload113Type$inboundSchema,
-  fixedBudget: z.number(),
-  previousSpend: z.array(z.number()),
-  notifiedAt: z.array(z.number()),
-  webhookId: z.string().optional(),
-  webhookNotified: z.boolean().optional(),
-  createdAt: z.number(),
-  updatedAt: z.number().optional(),
-  isActive: z.boolean(),
-  pauseProjects: z.boolean().optional(),
-  pricingPlan: UserEventPayloadPricingPlan$inboundSchema.optional(),
-  teamId: z.string(),
-  id: z.string(),
+  fixedBudget: types.number(),
+  previousSpend: z.array(types.number()),
+  notifiedAt: z.array(types.number()),
+  webhookId: types.optional(types.string()),
+  webhookNotified: types.optional(types.boolean()),
+  createdAt: types.number(),
+  updatedAt: types.optional(types.number()),
+  isActive: types.boolean(),
+  pauseProjects: types.optional(types.boolean()),
+  pricingPlan: types.optional(UserEventPayloadPricingPlan$inboundSchema),
+  teamId: types.string(),
+  id: types.string(),
 });
 /** @internal */
 export type BudgetItem$Outbound = {
@@ -11679,8 +11701,8 @@ export const ScalingRules$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  min: z.number(),
-  max: z.number(),
+  min: types.number(),
+  max: types.number(),
 });
 /** @internal */
 export type ScalingRules$Outbound = {
@@ -11718,9 +11740,9 @@ export const OneHundredAndTwelve$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   scalingRules: z.record(z.lazy(() => ScalingRules$inboundSchema)),
-  min: z.number(),
-  max: z.number(),
-  url: z.string(),
+  min: types.number(),
+  max: types.number(),
+  url: types.string(),
 });
 /** @internal */
 export type OneHundredAndTwelve$Outbound = {
@@ -11765,7 +11787,7 @@ export const OneHundredAndEleven$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  bio: z.string(),
+  bio: types.string(),
 });
 /** @internal */
 export type OneHundredAndEleven$Outbound = {
@@ -11804,9 +11826,9 @@ export const OneHundredAndTen$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  oldName: z.string(),
-  newName: z.string(),
-  uid: z.string().optional(),
+  oldName: types.string(),
+  newName: types.string(),
+  uid: types.optional(types.string()),
 });
 /** @internal */
 export type OneHundredAndTen$Outbound = {
@@ -11846,7 +11868,7 @@ export function oneHundredAndTenFromJSON(
 /** @internal */
 export const Name2$inboundSchema: z.ZodType<Name2, z.ZodTypeDef, unknown> = z
   .object({
-    name: z.string(),
+    name: types.string(),
   });
 /** @internal */
 export type Name2$Outbound = {
@@ -11876,14 +11898,14 @@ export function name2FromJSON(
 }
 
 /** @internal */
-export const Name$inboundSchema: z.ZodType<Name, z.ZodTypeDef, unknown> = z
-  .union([z.lazy(() => Name2$inboundSchema), z.string()]);
+export const Name$inboundSchema: z.ZodType<Name, z.ZodTypeDef, unknown> =
+  smartUnion([z.lazy(() => Name2$inboundSchema), types.string()]);
 /** @internal */
 export type Name$Outbound = Name2$Outbound | string;
 
 /** @internal */
 export const Name$outboundSchema: z.ZodType<Name$Outbound, z.ZodTypeDef, Name> =
-  z.union([z.lazy(() => Name2$outboundSchema), z.string()]);
+  smartUnion([z.lazy(() => Name2$outboundSchema), z.string()]);
 
 export function nameToJSON(name: Name): string {
   return JSON.stringify(Name$outboundSchema.parse(name));
@@ -11904,8 +11926,8 @@ export const OneHundredAndNine$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  uid: z.string(),
-  name: z.union([z.lazy(() => Name2$inboundSchema), z.string()]),
+  uid: types.string(),
+  name: smartUnion([z.lazy(() => Name2$inboundSchema), types.string()]),
 });
 /** @internal */
 export type OneHundredAndNine$Outbound = {
@@ -11920,7 +11942,7 @@ export const OneHundredAndNine$outboundSchema: z.ZodType<
   OneHundredAndNine
 > = z.object({
   uid: z.string(),
-  name: z.union([z.lazy(() => Name2$outboundSchema), z.string()]),
+  name: smartUnion([z.lazy(() => Name2$outboundSchema), z.string()]),
 });
 
 export function oneHundredAndNineToJSON(
@@ -11946,8 +11968,8 @@ export const UserEventPayload108Team$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string().optional(),
+  id: types.string(),
+  name: types.optional(types.string()),
 });
 /** @internal */
 export type UserEventPayload108Team$Outbound = {
@@ -11988,7 +12010,7 @@ export const PayloadPreviousRule$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  email: z.string(),
+  email: types.string(),
 });
 /** @internal */
 export type PayloadPreviousRule$Outbound = {
@@ -12069,8 +12091,8 @@ export const UserEventPayload107Team$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string().optional(),
+  id: types.string(),
+  name: types.optional(types.string()),
 });
 /** @internal */
 export type UserEventPayload107Team$Outbound = {
@@ -12111,7 +12133,7 @@ export const PreviousRule$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  email: z.string(),
+  email: types.string(),
 });
 /** @internal */
 export type PreviousRule$Outbound = {
@@ -12146,7 +12168,7 @@ export const NextRule$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  email: z.string(),
+  email: types.string(),
 });
 /** @internal */
 export type NextRule$Outbound = {
@@ -12182,8 +12204,8 @@ export const OneHundredAndSeven$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   team: z.lazy(() => UserEventPayload107Team$inboundSchema),
-  previousRule: z.lazy(() => PreviousRule$inboundSchema).optional(),
-  nextRule: z.lazy(() => NextRule$inboundSchema).optional(),
+  previousRule: types.optional(z.lazy(() => PreviousRule$inboundSchema)),
+  nextRule: types.optional(z.lazy(() => NextRule$inboundSchema)),
 });
 /** @internal */
 export type OneHundredAndSeven$Outbound = {
@@ -12226,7 +12248,7 @@ export const OneHundredAndSix$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  email: z.string(),
+  email: types.string(),
 });
 /** @internal */
 export type OneHundredAndSix$Outbound = {
@@ -12265,8 +12287,8 @@ export const OneHundredAndFive$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  email: z.string(),
-  verified: z.boolean(),
+  email: types.string(),
+  verified: types.boolean(),
 });
 /** @internal */
 export type OneHundredAndFive$Outbound = {
@@ -12307,8 +12329,8 @@ export const OneHundredAndFour$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  instances: z.number(),
-  url: z.string(),
+  instances: types.number(),
+  url: types.string(),
 });
 /** @internal */
 export type OneHundredAndFour$Outbound = {
@@ -12349,9 +12371,9 @@ export const OneHundredAndThree$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  gitProvider: z.string(),
-  gitProviderGroupDescriptor: z.string(),
-  gitScope: z.string(),
+  gitProvider: types.string(),
+  gitProviderGroupDescriptor: types.string(),
+  gitScope: types.string(),
 });
 /** @internal */
 export type OneHundredAndThree$Outbound = {
@@ -12394,10 +12416,10 @@ export const OneHundredAndTwo$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  targetDeploymentId: z.string().optional(),
-  newTargetPercentage: z.number().optional(),
+  projectId: types.string(),
+  projectName: types.string(),
+  targetDeploymentId: types.optional(types.string()),
+  newTargetPercentage: types.optional(types.number()),
 });
 /** @internal */
 export type OneHundredAndTwo$Outbound = {
@@ -12442,9 +12464,9 @@ export const OneHundredAndOne$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  targetDeploymentId: z.string().optional(),
+  projectId: types.string(),
+  projectName: types.string(),
+  targetDeploymentId: types.optional(types.string()),
 });
 /** @internal */
 export type OneHundredAndOne$Outbound = {
@@ -12487,10 +12509,10 @@ export const OneHundred$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  elasticConcurrencyEnabled: z.boolean(),
-  oldElasticConcurrencyEnabled: z.boolean(),
+  projectId: types.string(),
+  projectName: types.string(),
+  elasticConcurrencyEnabled: types.boolean(),
+  oldElasticConcurrencyEnabled: types.boolean(),
 });
 /** @internal */
 export type OneHundred$Outbound = {
@@ -12531,10 +12553,10 @@ export const NinetyNine$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  buildMachineType: z.string().optional(),
-  oldBuildMachineType: z.string().optional(),
+  projectId: types.string(),
+  projectName: types.string(),
+  buildMachineType: types.optional(types.string()),
+  oldBuildMachineType: types.optional(types.string()),
 });
 /** @internal */
 export type NinetyNine$Outbound = {
@@ -12575,9 +12597,9 @@ export const StaticIps$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  builds: z.boolean().optional(),
-  enabled: z.boolean(),
-  regions: z.array(z.string()).optional(),
+  builds: types.optional(types.boolean()),
+  enabled: types.boolean(),
+  regions: types.optional(z.array(types.string())),
 });
 /** @internal */
 export type StaticIps$Outbound = {
@@ -12616,7 +12638,7 @@ export const UserEventPayload98Project$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
+  id: types.string(),
   staticIps: z.lazy(() => StaticIps$inboundSchema),
 });
 /** @internal */
@@ -12687,9 +12709,9 @@ export const PayloadStaticIps$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  builds: z.boolean().optional(),
-  enabled: z.boolean(),
-  regions: z.array(z.string()).optional(),
+  builds: types.optional(types.boolean()),
+  enabled: types.boolean(),
+  regions: types.optional(z.array(types.string())),
 });
 /** @internal */
 export type PayloadStaticIps$Outbound = {
@@ -12732,7 +12754,7 @@ export const UserEventPayload98PreviousProject$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
+  id: types.string(),
   staticIps: z.lazy(() => PayloadStaticIps$inboundSchema),
 });
 /** @internal */
@@ -12849,8 +12871,8 @@ export const NinetySeven$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  source: z.string(),
-  projectId: z.string(),
+  source: types.string(),
+  projectId: types.string(),
 });
 /** @internal */
 export type NinetySeven$Outbound = {
@@ -12896,8 +12918,8 @@ export const NinetySix$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
-  reasonCode: PayloadReasonCode$inboundSchema.optional(),
+  projectId: types.string(),
+  reasonCode: types.optional(PayloadReasonCode$inboundSchema),
 });
 /** @internal */
 export type NinetySix$Outbound = {
@@ -12941,8 +12963,8 @@ export const NinetyFive$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
-  reasonCode: ReasonCode$inboundSchema.optional(),
+  projectId: types.string(),
+  reasonCode: types.optional(ReasonCode$inboundSchema),
 });
 /** @internal */
 export type NinetyFive$Outbound = {
@@ -12979,8 +13001,8 @@ export const UserEventPayload94Team$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
+  id: types.string(),
+  name: types.string(),
 });
 /** @internal */
 export type UserEventPayload94Team$Outbound = {
@@ -13023,8 +13045,8 @@ export const EnvId2$outboundSchema: z.ZodNativeEnum<typeof EnvId2> =
   EnvId2$inboundSchema;
 
 /** @internal */
-export const EnvId$inboundSchema: z.ZodType<EnvId, z.ZodTypeDef, unknown> = z
-  .union([z.string(), EnvId2$inboundSchema]);
+export const EnvId$inboundSchema: z.ZodType<EnvId, z.ZodTypeDef, unknown> =
+  smartUnion([types.string(), EnvId2$inboundSchema]);
 /** @internal */
 export type EnvId$Outbound = string | string;
 
@@ -13033,7 +13055,7 @@ export const EnvId$outboundSchema: z.ZodType<
   EnvId$Outbound,
   z.ZodTypeDef,
   EnvId
-> = z.union([z.string(), EnvId2$outboundSchema]);
+> = smartUnion([z.string(), EnvId2$outboundSchema]);
 
 export function envIdToJSON(envId: EnvId): string {
   return JSON.stringify(EnvId$outboundSchema.parse(envId));
@@ -13051,8 +13073,8 @@ export function envIdFromJSON(
 /** @internal */
 export const Aws$inboundSchema: z.ZodType<Aws, z.ZodTypeDef, unknown> = z
   .object({
-    subnetIds: z.array(z.string()),
-    securityGroupId: z.string(),
+    subnetIds: z.array(types.string()),
+    securityGroupId: types.string(),
   });
 /** @internal */
 export type Aws$Outbound = {
@@ -13086,14 +13108,14 @@ export const OldConnectConfigurations$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  envId: z.union([z.string(), EnvId2$inboundSchema]),
-  connectConfigurationId: z.string(),
-  dc: z.string().optional(),
-  passive: z.boolean(),
-  buildsEnabled: z.boolean(),
-  aws: z.lazy(() => Aws$inboundSchema).optional(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
+  envId: smartUnion([types.string(), EnvId2$inboundSchema]),
+  connectConfigurationId: types.string(),
+  dc: types.optional(types.string()),
+  passive: types.boolean(),
+  buildsEnabled: types.boolean(),
+  aws: types.optional(z.lazy(() => Aws$inboundSchema)),
+  createdAt: types.number(),
+  updatedAt: types.number(),
 });
 /** @internal */
 export type OldConnectConfigurations$Outbound = {
@@ -13113,7 +13135,7 @@ export const OldConnectConfigurations$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OldConnectConfigurations
 > = z.object({
-  envId: z.union([z.string(), EnvId2$outboundSchema]),
+  envId: smartUnion([z.string(), EnvId2$outboundSchema]),
   connectConfigurationId: z.string(),
   dc: z.string().optional(),
   passive: z.boolean(),
@@ -13154,7 +13176,7 @@ export const PayloadEnvId$inboundSchema: z.ZodType<
   PayloadEnvId,
   z.ZodTypeDef,
   unknown
-> = z.union([z.string(), UserEventEnvId2$inboundSchema]);
+> = smartUnion([types.string(), UserEventEnvId2$inboundSchema]);
 /** @internal */
 export type PayloadEnvId$Outbound = string | string;
 
@@ -13163,7 +13185,7 @@ export const PayloadEnvId$outboundSchema: z.ZodType<
   PayloadEnvId$Outbound,
   z.ZodTypeDef,
   PayloadEnvId
-> = z.union([z.string(), UserEventEnvId2$outboundSchema]);
+> = smartUnion([z.string(), UserEventEnvId2$outboundSchema]);
 
 export function payloadEnvIdToJSON(payloadEnvId: PayloadEnvId): string {
   return JSON.stringify(PayloadEnvId$outboundSchema.parse(payloadEnvId));
@@ -13184,8 +13206,8 @@ export const PayloadAws$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  subnetIds: z.array(z.string()),
-  securityGroupId: z.string(),
+  subnetIds: z.array(types.string()),
+  securityGroupId: types.string(),
 });
 /** @internal */
 export type PayloadAws$Outbound = {
@@ -13222,14 +13244,14 @@ export const NewConnectConfigurations$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  envId: z.union([z.string(), UserEventEnvId2$inboundSchema]),
-  connectConfigurationId: z.string(),
-  dc: z.string().optional(),
-  passive: z.boolean(),
-  buildsEnabled: z.boolean(),
-  aws: z.lazy(() => PayloadAws$inboundSchema).optional(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
+  envId: smartUnion([types.string(), UserEventEnvId2$inboundSchema]),
+  connectConfigurationId: types.string(),
+  dc: types.optional(types.string()),
+  passive: types.boolean(),
+  buildsEnabled: types.boolean(),
+  aws: types.optional(z.lazy(() => PayloadAws$inboundSchema)),
+  createdAt: types.number(),
+  updatedAt: types.number(),
 });
 /** @internal */
 export type NewConnectConfigurations$Outbound = {
@@ -13249,7 +13271,7 @@ export const NewConnectConfigurations$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   NewConnectConfigurations
 > = z.object({
-  envId: z.union([z.string(), UserEventEnvId2$outboundSchema]),
+  envId: smartUnion([z.string(), UserEventEnvId2$outboundSchema]),
   connectConfigurationId: z.string(),
   dc: z.string().optional(),
   passive: z.boolean(),
@@ -13282,12 +13304,12 @@ export const UserEventPayload94Project$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string().optional(),
-  oldConnectConfigurations: z.nullable(
+  id: types.string(),
+  name: types.optional(types.string()),
+  oldConnectConfigurations: types.nullable(
     z.array(z.lazy(() => OldConnectConfigurations$inboundSchema)),
   ),
-  newConnectConfigurations: z.nullable(
+  newConnectConfigurations: types.nullable(
     z.array(z.lazy(() => NewConnectConfigurations$inboundSchema)),
   ),
 });
@@ -13376,8 +13398,8 @@ export const NinetyThree$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  ownerId: z.string(),
+  name: types.string(),
+  ownerId: types.string(),
 });
 /** @internal */
 export type NinetyThree$Outbound = {
@@ -13423,10 +13445,10 @@ export const NinetyTwo$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectName: z.string(),
+  projectName: types.string(),
   action: UserEventPayload92Action$inboundSchema,
-  isEnvVar: z.boolean().optional(),
-  note: z.string().optional(),
+  isEnvVar: types.optional(types.boolean()),
+  note: types.optional(types.string()),
 });
 /** @internal */
 export type NinetyTwo$Outbound = {
@@ -13464,7 +13486,7 @@ export function ninetyTwoFromJSON(
 /** @internal */
 export const Paths$inboundSchema: z.ZodType<Paths, z.ZodTypeDef, unknown> = z
   .object({
-    value: z.string(),
+    value: types.string(),
   });
 /** @internal */
 export type Paths$Outbound = {
@@ -13538,7 +13560,7 @@ export const PayloadPaths$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: z.string(),
+  value: types.string(),
 });
 /** @internal */
 export type PayloadPaths$Outbound = {
@@ -13612,7 +13634,7 @@ export const NinetyOne$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectName: z.string(),
+  projectName: types.string(),
   optionsAllowlist: z.nullable(z.lazy(() => OptionsAllowlist$inboundSchema))
     .optional(),
   oldOptionsAllowlist: z.nullable(
@@ -13672,11 +13694,11 @@ export const OldTrustedIps$outboundSchema: z.ZodNativeEnum<
 /** @internal */
 export const Ninety$inboundSchema: z.ZodType<Ninety, z.ZodTypeDef, unknown> = z
   .object({
-    projectName: z.string(),
+    projectName: types.string(),
     trustedIps: z.nullable(TrustedIps$inboundSchema).optional(),
     oldTrustedIps: z.nullable(OldTrustedIps$inboundSchema).optional(),
-    addedAddresses: z.nullable(z.array(z.string())).optional(),
-    removedAddresses: z.nullable(z.array(z.string())).optional(),
+    addedAddresses: z.nullable(z.array(types.string())).optional(),
+    removedAddresses: z.nullable(z.array(types.string())).optional(),
   });
 /** @internal */
 export type Ninety$Outbound = {
@@ -13775,7 +13797,7 @@ export const PayloadPasswordProtection$inboundSchema: z.ZodType<
   PayloadPasswordProtection,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => PasswordProtection1$inboundSchema),
   PasswordProtection2$inboundSchema,
 ]);
@@ -13789,7 +13811,7 @@ export const PayloadPasswordProtection$outboundSchema: z.ZodType<
   PayloadPasswordProtection$Outbound,
   z.ZodTypeDef,
   PayloadPasswordProtection
-> = z.union([
+> = smartUnion([
   z.lazy(() => PasswordProtection1$outboundSchema),
   PasswordProtection2$outboundSchema,
 ]);
@@ -13873,7 +13895,7 @@ export const OldPasswordProtection$inboundSchema: z.ZodType<
   OldPasswordProtection,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => OldPasswordProtection1$inboundSchema),
   OldPasswordProtection2$inboundSchema,
 ]);
@@ -13887,7 +13909,7 @@ export const OldPasswordProtection$outboundSchema: z.ZodType<
   OldPasswordProtection$Outbound,
   z.ZodTypeDef,
   OldPasswordProtection
-> = z.union([
+> = smartUnion([
   z.lazy(() => OldPasswordProtection1$outboundSchema),
   OldPasswordProtection2$outboundSchema,
 ]);
@@ -13915,15 +13937,15 @@ export const EightyNine$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectName: z.string(),
-  passwordProtection: z.nullable(
-    z.union([
+  projectName: types.string(),
+  passwordProtection: types.nullable(
+    smartUnion([
       z.lazy(() => PasswordProtection1$inboundSchema),
       PasswordProtection2$inboundSchema,
     ]),
   ),
-  oldPasswordProtection: z.nullable(
-    z.union([
+  oldPasswordProtection: types.nullable(
+    smartUnion([
       z.lazy(() => OldPasswordProtection1$inboundSchema),
       OldPasswordProtection2$inboundSchema,
     ]),
@@ -13944,13 +13966,13 @@ export const EightyNine$outboundSchema: z.ZodType<
 > = z.object({
   projectName: z.string(),
   passwordProtection: z.nullable(
-    z.union([
+    smartUnion([
       z.lazy(() => PasswordProtection1$outboundSchema),
       PasswordProtection2$outboundSchema,
     ]),
   ),
   oldPasswordProtection: z.nullable(
-    z.union([
+    smartUnion([
       z.lazy(() => OldPasswordProtection1$outboundSchema),
       OldPasswordProtection2$outboundSchema,
     ]),
@@ -14044,7 +14066,7 @@ export const PayloadSsoProtection$inboundSchema: z.ZodType<
   PayloadSsoProtection,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => SsoProtection1$inboundSchema),
   SsoProtection2$inboundSchema,
 ]);
@@ -14056,7 +14078,7 @@ export const PayloadSsoProtection$outboundSchema: z.ZodType<
   PayloadSsoProtection$Outbound,
   z.ZodTypeDef,
   PayloadSsoProtection
-> = z.union([
+> = smartUnion([
   z.lazy(() => SsoProtection1$outboundSchema),
   SsoProtection2$outboundSchema,
 ]);
@@ -14156,7 +14178,7 @@ export const OldSsoProtection$inboundSchema: z.ZodType<
   OldSsoProtection,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => OldSsoProtection1$inboundSchema),
   OldSsoProtection2$inboundSchema,
 ]);
@@ -14168,7 +14190,7 @@ export const OldSsoProtection$outboundSchema: z.ZodType<
   OldSsoProtection$Outbound,
   z.ZodTypeDef,
   OldSsoProtection
-> = z.union([
+> = smartUnion([
   z.lazy(() => OldSsoProtection1$outboundSchema),
   OldSsoProtection2$outboundSchema,
 ]);
@@ -14196,15 +14218,15 @@ export const EightyEight$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectName: z.string(),
-  ssoProtection: z.nullable(
-    z.union([
+  projectName: types.string(),
+  ssoProtection: types.nullable(
+    smartUnion([
       z.lazy(() => SsoProtection1$inboundSchema),
       SsoProtection2$inboundSchema,
     ]),
   ),
-  oldSsoProtection: z.nullable(
-    z.union([
+  oldSsoProtection: types.nullable(
+    smartUnion([
       z.lazy(() => OldSsoProtection1$inboundSchema),
       OldSsoProtection2$inboundSchema,
     ]),
@@ -14225,13 +14247,13 @@ export const EightyEight$outboundSchema: z.ZodType<
 > = z.object({
   projectName: z.string(),
   ssoProtection: z.nullable(
-    z.union([
+    smartUnion([
       z.lazy(() => SsoProtection1$outboundSchema),
       SsoProtection2$outboundSchema,
     ]),
   ),
   oldSsoProtection: z.nullable(
-    z.union([
+    smartUnion([
       z.lazy(() => OldSsoProtection1$outboundSchema),
       OldSsoProtection2$outboundSchema,
     ]),
@@ -14257,8 +14279,8 @@ export const EightySeven$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectName: z.string().optional(),
-  projectId: z.string(),
+  projectName: types.optional(types.string()),
+  projectId: types.string(),
 });
 /** @internal */
 export type EightySeven$Outbound = {
@@ -14295,9 +14317,9 @@ export const EightySix$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectName: z.string().optional(),
-  projectId: z.string(),
-  projectAnalytics: z.record(z.any()).optional(),
+  projectName: types.optional(types.string()),
+  projectId: types.string(),
+  projectAnalytics: types.optional(z.record(z.any())),
   prevProjectAnalytics: z.nullable(z.record(z.any())).optional(),
 });
 /** @internal */
@@ -14339,13 +14361,13 @@ export const ProjectAnalytics$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  canceledAt: z.nullable(z.number()).optional(),
-  disabledAt: z.number(),
-  enabledAt: z.number(),
-  paidAt: z.number().optional(),
-  sampleRatePercent: z.nullable(z.number()).optional(),
-  spendLimitInDollars: z.nullable(z.number()).optional(),
+  id: types.string(),
+  canceledAt: z.nullable(types.number()).optional(),
+  disabledAt: types.number(),
+  enabledAt: types.number(),
+  paidAt: types.optional(types.number()),
+  sampleRatePercent: z.nullable(types.number()).optional(),
+  spendLimitInDollars: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type ProjectAnalytics$Outbound = {
@@ -14396,13 +14418,13 @@ export const PrevProjectAnalytics$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  canceledAt: z.nullable(z.number()).optional(),
-  disabledAt: z.number(),
-  enabledAt: z.number(),
-  paidAt: z.number().optional(),
-  sampleRatePercent: z.nullable(z.number()).optional(),
-  spendLimitInDollars: z.nullable(z.number()).optional(),
+  id: types.string(),
+  canceledAt: z.nullable(types.number()).optional(),
+  disabledAt: types.number(),
+  enabledAt: types.number(),
+  paidAt: types.optional(types.number()),
+  sampleRatePercent: z.nullable(types.number()).optional(),
+  spendLimitInDollars: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type PrevProjectAnalytics$Outbound = {
@@ -14453,10 +14475,12 @@ export const EightyFive$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectName: z.string().optional(),
-  projectId: z.string(),
-  projectAnalytics: z.nullable(z.lazy(() => ProjectAnalytics$inboundSchema)),
-  prevProjectAnalytics: z.nullable(
+  projectName: types.optional(types.string()),
+  projectId: types.string(),
+  projectAnalytics: types.nullable(
+    z.lazy(() => ProjectAnalytics$inboundSchema),
+  ),
+  prevProjectAnalytics: types.nullable(
     z.lazy(() => PrevProjectAnalytics$inboundSchema),
   ),
 });
@@ -14501,8 +14525,8 @@ export const EightyFour$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectName: z.string(),
-  branch: z.string(),
+  projectName: types.string(),
+  branch: types.string(),
 });
 /** @internal */
 export type EightyFour$Outbound = {
@@ -14556,7 +14580,7 @@ export const PayloadGitUserId$inboundSchema: z.ZodType<
   PayloadGitUserId,
   z.ZodTypeDef,
   unknown
-> = z.union([z.string(), z.number()]);
+> = smartUnion([types.string(), types.number()]);
 /** @internal */
 export type PayloadGitUserId$Outbound = string | number;
 
@@ -14565,7 +14589,7 @@ export const PayloadGitUserId$outboundSchema: z.ZodType<
   PayloadGitUserId$Outbound,
   z.ZodTypeDef,
   PayloadGitUserId
-> = z.union([z.string(), z.number()]);
+> = smartUnion([z.string(), z.number()]);
 
 export function payloadGitUserIdToJSON(
   payloadGitUserId: PayloadGitUserId,
@@ -14591,16 +14615,16 @@ export const PayloadJoinedFrom$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   origin: PayloadOrigin$inboundSchema,
-  commitId: z.string().optional(),
-  repoId: z.string().optional(),
-  repoPath: z.string().optional(),
-  gitUserId: z.union([z.string(), z.number()]).optional(),
-  gitUserLogin: z.string().optional(),
-  ssoUserId: z.string().optional(),
-  ssoConnectedAt: z.number().optional(),
-  idpUserId: z.string().optional(),
-  dsyncUserId: z.string().optional(),
-  dsyncConnectedAt: z.number().optional(),
+  commitId: types.optional(types.string()),
+  repoId: types.optional(types.string()),
+  repoPath: types.optional(types.string()),
+  gitUserId: types.optional(smartUnion([types.string(), types.number()])),
+  gitUserLogin: types.optional(types.string()),
+  ssoUserId: types.optional(types.string()),
+  ssoConnectedAt: types.optional(types.number()),
+  idpUserId: types.optional(types.string()),
+  dsyncUserId: types.optional(types.string()),
+  dsyncConnectedAt: types.optional(types.number()),
 });
 /** @internal */
 export type PayloadJoinedFrom$Outbound = {
@@ -14627,7 +14651,7 @@ export const PayloadJoinedFrom$outboundSchema: z.ZodType<
   commitId: z.string().optional(),
   repoId: z.string().optional(),
   repoPath: z.string().optional(),
-  gitUserId: z.union([z.string(), z.number()]).optional(),
+  gitUserId: smartUnion([z.string(), z.number()]).optional(),
   gitUserLogin: z.string().optional(),
   ssoUserId: z.string().optional(),
   ssoConnectedAt: z.number().optional(),
@@ -14660,9 +14684,9 @@ export const RemovedUsers$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   role: UserEventPayloadRole$inboundSchema,
-  confirmed: z.boolean(),
-  confirmedAt: z.number().optional(),
-  joinedFrom: z.lazy(() => PayloadJoinedFrom$inboundSchema).optional(),
+  confirmed: types.boolean(),
+  confirmedAt: types.optional(types.number()),
+  joinedFrom: types.optional(z.lazy(() => PayloadJoinedFrom$inboundSchema)),
 });
 /** @internal */
 export type RemovedUsers$Outbound = {
@@ -14703,18 +14727,20 @@ export const EightyThree$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  plan: z.string(),
-  removedUsers: z.record(z.lazy(() => RemovedUsers$inboundSchema)).optional(),
-  prevPlan: z.string().optional(),
-  priorPlan: z.string().optional(),
-  isDowngrade: z.boolean().optional(),
-  userAgent: z.string().optional(),
-  isReactivate: z.boolean().optional(),
-  isTrialUpgrade: z.boolean().optional(),
-  automated: z.boolean().optional(),
-  reason: z.string().optional(),
-  timestamp: z.number().optional(),
-  removedMemberCount: z.number().optional(),
+  plan: types.string(),
+  removedUsers: types.optional(
+    z.record(z.lazy(() => RemovedUsers$inboundSchema)),
+  ),
+  prevPlan: types.optional(types.string()),
+  priorPlan: types.optional(types.string()),
+  isDowngrade: types.optional(types.boolean()),
+  userAgent: types.optional(types.string()),
+  isReactivate: types.optional(types.boolean()),
+  isTrialUpgrade: types.optional(types.boolean()),
+  automated: types.optional(types.boolean()),
+  reason: types.optional(types.string()),
+  timestamp: types.optional(types.number()),
+  removedMemberCount: types.optional(types.number()),
 });
 /** @internal */
 export type EightyThree$Outbound = {
@@ -14771,7 +14797,7 @@ export const EightyTwo$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectName: z.string(),
+  projectName: types.string(),
 });
 /** @internal */
 export type EightyTwo$Outbound = {
@@ -14806,9 +14832,9 @@ export const EightyOne$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
-  toDeploymentId: z.string(),
-  projectName: z.string(),
+  projectId: types.string(),
+  toDeploymentId: types.string(),
+  projectName: types.string(),
 });
 /** @internal */
 export type EightyOne$Outbound = {
@@ -14844,8 +14870,8 @@ export function eightyOneFromJSON(
 /** @internal */
 export const Eighty$inboundSchema: z.ZodType<Eighty, z.ZodTypeDef, unknown> = z
   .object({
-    drainUrl: z.nullable(z.string()),
-    integrationName: z.string().optional(),
+    drainUrl: types.nullable(types.string()),
+    integrationName: types.optional(types.string()),
   });
 /** @internal */
 export type Eighty$Outbound = {
@@ -14882,8 +14908,8 @@ export const SeventyNine$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  logDrainUrl: z.string(),
-  integrationName: z.string().optional(),
+  logDrainUrl: types.string(),
+  integrationName: types.optional(types.string()),
 });
 /** @internal */
 export type SeventyNine$Outbound = {
@@ -14920,8 +14946,8 @@ export const SeventyEight$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  logDrainUrl: z.nullable(z.string()),
-  integrationName: z.string().optional(),
+  logDrainUrl: types.nullable(types.string()),
+  integrationName: types.optional(types.string()),
 });
 /** @internal */
 export type SeventyEight$Outbound = {
@@ -14958,13 +14984,13 @@ export const SeventySeven$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  integrationId: z.string(),
-  configurationId: z.string(),
-  integrationSlug: z.string(),
-  integrationName: z.string(),
-  ownerId: z.string(),
-  projectIds: z.array(z.string()).optional(),
-  confirmedScopes: z.array(z.string()),
+  integrationId: types.string(),
+  configurationId: types.string(),
+  integrationSlug: types.string(),
+  integrationName: types.string(),
+  ownerId: types.string(),
+  projectIds: types.optional(z.array(types.string())),
+  confirmedScopes: z.array(types.string()),
 });
 /** @internal */
 export type SeventySeven$Outbound = {
@@ -15011,11 +15037,11 @@ export const SeventySix$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
-  fromDeploymentId: z.string(),
-  toDeploymentId: z.string(),
-  projectName: z.string(),
-  reason: z.string().optional(),
+  projectId: types.string(),
+  fromDeploymentId: types.string(),
+  toDeploymentId: types.string(),
+  projectName: types.string(),
+  reason: types.optional(types.string()),
 });
 /** @internal */
 export type SeventySix$Outbound = {
@@ -15058,12 +15084,12 @@ export const SeventyFive$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  integrationId: z.string(),
-  configurationId: z.string(),
-  integrationSlug: z.string(),
-  integrationName: z.string(),
-  ownerId: z.string(),
-  projectIds: z.array(z.string()).optional(),
+  integrationId: types.string(),
+  configurationId: types.string(),
+  integrationSlug: types.string(),
+  integrationName: types.string(),
+  ownerId: types.string(),
+  projectIds: types.optional(z.array(types.string())),
 });
 /** @internal */
 export type SeventyFive$Outbound = {
@@ -15108,13 +15134,13 @@ export const SeventyFour$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  integrationId: z.string(),
-  configurationId: z.string(),
-  integrationSlug: z.string(),
-  integrationName: z.string(),
-  ownerId: z.string(),
-  billingPlanId: z.string(),
-  billingPlanName: z.string().optional(),
+  integrationId: types.string(),
+  configurationId: types.string(),
+  integrationSlug: types.string(),
+  integrationName: types.string(),
+  ownerId: types.string(),
+  billingPlanId: types.string(),
+  billingPlanName: types.optional(types.string()),
 });
 /** @internal */
 export type SeventyFour$Outbound = {
@@ -15161,10 +15187,10 @@ export const Configurations$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  integrationId: z.string(),
-  configurationId: z.string(),
-  integrationSlug: z.string(),
-  integrationName: z.string().optional(),
+  integrationId: types.string(),
+  configurationId: types.string(),
+  integrationSlug: types.string(),
+  integrationName: types.optional(types.string()),
 });
 /** @internal */
 export type Configurations$Outbound = {
@@ -15206,7 +15232,7 @@ export const SeventyThree$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   configurations: z.array(z.lazy(() => Configurations$inboundSchema)),
-  ownerId: z.string(),
+  ownerId: types.string(),
 });
 /** @internal */
 export type SeventyThree$Outbound = {
@@ -15253,12 +15279,12 @@ export const BlockHistory$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   action: UserEventPayload72Action$inboundSchema,
-  createdAt: z.number(),
-  caseId: z.string().optional(),
-  reason: z.string(),
-  actor: z.string().optional(),
-  statusCode: z.number().optional(),
-  comment: z.string().optional(),
+  createdAt: types.number(),
+  caseId: types.optional(types.string()),
+  reason: types.string(),
+  actor: types.optional(types.string()),
+  statusCode: types.optional(types.number()),
+  comment: types.optional(types.string()),
 });
 /** @internal */
 export type BlockHistory$Outbound = {
@@ -15302,11 +15328,11 @@ export function blockHistoryFromJSON(
 /** @internal */
 export const History$inboundSchema: z.ZodType<History, z.ZodTypeDef, unknown> =
   z.object({
-    scanner: z.string(),
-    reason: z.string(),
-    by: z.string(),
-    byId: z.string(),
-    at: z.number(),
+    scanner: types.string(),
+    reason: types.string(),
+    by: types.string(),
+    byId: types.string(),
+    at: types.number(),
   });
 /** @internal */
 export type History$Outbound = {
@@ -15346,17 +15372,19 @@ export function historyFromJSON(
 /** @internal */
 export const Abuse$inboundSchema: z.ZodType<Abuse, z.ZodTypeDef, unknown> = z
   .object({
-    blockHistory: z.array(z.lazy(() => BlockHistory$inboundSchema)).optional(),
-    gitAuthHistory: z.array(z.string()).optional(),
-    history: z.array(z.lazy(() => History$inboundSchema)).optional(),
-    gitLineageBlocks: z.number().optional(),
-    gitLineageBlocksDry: z.number().optional(),
-    scanner: z.string().optional(),
-    scheduledUnblockAt: z.string().optional(),
-    updatedAt: z.number(),
-    creationUserAgent: z.string().optional(),
-    creationIp: z.string().optional(),
-    removedPhoneNumbers: z.string().optional(),
+    blockHistory: types.optional(
+      z.array(z.lazy(() => BlockHistory$inboundSchema)),
+    ),
+    gitAuthHistory: types.optional(z.array(types.string())),
+    history: types.optional(z.array(z.lazy(() => History$inboundSchema))),
+    gitLineageBlocks: types.optional(types.number()),
+    gitLineageBlocksDry: types.optional(types.number()),
+    scanner: types.optional(types.string()),
+    scheduledUnblockAt: types.optional(types.string()),
+    updatedAt: types.number(),
+    creationUserAgent: types.optional(types.string()),
+    creationIp: types.optional(types.string()),
+    removedPhoneNumbers: types.optional(types.string()),
   });
 /** @internal */
 export type Abuse$Outbound = {
@@ -15454,9 +15482,9 @@ export const Credentials2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("github-oauth-custom-host"),
-  host: z.string(),
-  id: z.string(),
+  type: types.literal("github-oauth-custom-host"),
+  host: types.string(),
+  id: types.string(),
 });
 /** @internal */
 export type Credentials2$Outbound = {
@@ -15505,7 +15533,7 @@ export const Credentials1$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type: CredentialsType$inboundSchema,
-  id: z.string(),
+  id: types.string(),
 });
 /** @internal */
 export type Credentials1$Outbound = {
@@ -15618,7 +15646,7 @@ export const PayloadDataCache$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  excessBillingEnabled: z.boolean().optional(),
+  excessBillingEnabled: types.optional(types.boolean()),
 });
 /** @internal */
 export type PayloadDataCache$Outbound = {
@@ -15657,8 +15685,8 @@ export const PayloadDismissals$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  scopeId: z.string(),
-  createdAt: z.number(),
+  scopeId: types.string(),
+  createdAt: types.number(),
 });
 /** @internal */
 export type PayloadDismissals$Outbound = {
@@ -15699,7 +15727,7 @@ export const PayloadDismissedToasts$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
+  name: types.string(),
   dismissals: z.array(z.lazy(() => PayloadDismissals$inboundSchema)),
 });
 /** @internal */
@@ -15741,8 +15769,8 @@ export const PayloadFavoriteProjectsAndSpaces$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamId: z.string(),
-  projectId: z.string(),
+  teamId: types.string(),
+  projectId: types.string(),
 });
 /** @internal */
 export type PayloadFavoriteProjectsAndSpaces$Outbound = {
@@ -15784,7 +15812,7 @@ export const PayloadImportFlowGitNamespace$inboundSchema: z.ZodType<
   PayloadImportFlowGitNamespace,
   z.ZodTypeDef,
   unknown
-> = z.union([z.string(), z.number()]);
+> = smartUnion([types.string(), types.number()]);
 /** @internal */
 export type PayloadImportFlowGitNamespace$Outbound = string | number;
 
@@ -15793,7 +15821,7 @@ export const PayloadImportFlowGitNamespace$outboundSchema: z.ZodType<
   PayloadImportFlowGitNamespace$Outbound,
   z.ZodTypeDef,
   PayloadImportFlowGitNamespace
-> = z.union([z.string(), z.number()]);
+> = smartUnion([z.string(), z.number()]);
 
 export function payloadImportFlowGitNamespaceToJSON(
   payloadImportFlowGitNamespace: PayloadImportFlowGitNamespace,
@@ -15819,7 +15847,7 @@ export const PayloadImportFlowGitNamespaceId$inboundSchema: z.ZodType<
   PayloadImportFlowGitNamespaceId,
   z.ZodTypeDef,
   unknown
-> = z.union([z.string(), z.number()]);
+> = smartUnion([types.string(), types.number()]);
 /** @internal */
 export type PayloadImportFlowGitNamespaceId$Outbound = string | number;
 
@@ -15828,7 +15856,7 @@ export const PayloadImportFlowGitNamespaceId$outboundSchema: z.ZodType<
   PayloadImportFlowGitNamespaceId$Outbound,
   z.ZodTypeDef,
   PayloadImportFlowGitNamespaceId
-> = z.union([z.string(), z.number()]);
+> = smartUnion([z.string(), z.number()]);
 
 export function payloadImportFlowGitNamespaceIdToJSON(
   payloadImportFlowGitNamespaceId: PayloadImportFlowGitNamespaceId,
@@ -15863,7 +15891,7 @@ export const PayloadGitNamespaceId$inboundSchema: z.ZodType<
   PayloadGitNamespaceId,
   z.ZodTypeDef,
   unknown
-> = z.union([z.string(), z.number()]);
+> = smartUnion([types.string(), types.number()]);
 /** @internal */
 export type PayloadGitNamespaceId$Outbound = string | number;
 
@@ -15872,7 +15900,7 @@ export const PayloadGitNamespaceId$outboundSchema: z.ZodType<
   PayloadGitNamespaceId$Outbound,
   z.ZodTypeDef,
   PayloadGitNamespaceId
-> = z.union([z.string(), z.number()]);
+> = smartUnion([z.string(), z.number()]);
 
 export function payloadGitNamespaceIdToJSON(
   payloadGitNamespaceId: PayloadGitNamespaceId,
@@ -15897,8 +15925,8 @@ export const PayloadPreferredScopesAndGitNamespaces$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  scopeId: z.string(),
-  gitNamespaceId: z.nullable(z.union([z.string(), z.number()])),
+  scopeId: types.string(),
+  gitNamespaceId: types.nullable(smartUnion([types.string(), types.number()])),
 });
 /** @internal */
 export type PayloadPreferredScopesAndGitNamespaces$Outbound = {
@@ -15913,7 +15941,7 @@ export const PayloadPreferredScopesAndGitNamespaces$outboundSchema: z.ZodType<
   PayloadPreferredScopesAndGitNamespaces
 > = z.object({
   scopeId: z.string(),
-  gitNamespaceId: z.nullable(z.union([z.string(), z.number()])),
+  gitNamespaceId: z.nullable(smartUnion([z.string(), z.number()])),
 });
 
 export function payloadPreferredScopesAndGitNamespacesToJSON(
@@ -15942,7 +15970,7 @@ export const PreventAutoBlocking$inboundSchema: z.ZodType<
   PreventAutoBlocking,
   z.ZodTypeDef,
   unknown
-> = z.union([z.number(), z.boolean()]);
+> = smartUnion([types.number(), types.boolean()]);
 /** @internal */
 export type PreventAutoBlocking$Outbound = number | boolean;
 
@@ -15951,7 +15979,7 @@ export const PreventAutoBlocking$outboundSchema: z.ZodType<
   PreventAutoBlocking$Outbound,
   z.ZodTypeDef,
   PreventAutoBlocking
-> = z.union([z.number(), z.boolean()]);
+> = smartUnion([z.number(), z.boolean()]);
 
 export function preventAutoBlockingToJSON(
   preventAutoBlocking: PreventAutoBlocking,
@@ -15976,7 +16004,7 @@ export const UserEventPayloadRemoteCaching$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  enabled: z.boolean().optional(),
+  enabled: types.optional(types.boolean()),
 });
 /** @internal */
 export type UserEventPayloadRemoteCaching$Outbound = {
@@ -16017,7 +16045,7 @@ export const PayloadBuildEntitlements$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  enhancedBuilds: z.boolean().optional(),
+  enhancedBuilds: types.optional(types.boolean()),
 });
 /** @internal */
 export type PayloadBuildEntitlements$Outbound = {
@@ -16065,7 +16093,7 @@ export const PayloadBuildQueue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  configuration: UserEventPayload72Configuration$inboundSchema.optional(),
+  configuration: types.optional(UserEventPayload72Configuration$inboundSchema),
 });
 /** @internal */
 export type PayloadBuildQueue$Outbound = {
@@ -16113,10 +16141,10 @@ export const PayloadBuildMachine$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  purchaseType: PayloadPurchaseType$inboundSchema.optional(),
-  isDefaultBuildMachine: z.boolean().optional(),
-  cores: z.number().optional(),
-  memory: z.number().optional(),
+  purchaseType: types.optional(PayloadPurchaseType$inboundSchema),
+  isDefaultBuildMachine: types.optional(types.boolean()),
+  cores: types.optional(types.number()),
+  memory: types.optional(types.number()),
 });
 /** @internal */
 export type PayloadBuildMachine$Outbound = {
@@ -16161,10 +16189,10 @@ export const PayloadSecurity$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  customRules: z.number().optional(),
-  ipBlocks: z.number().optional(),
-  ipBypass: z.number().optional(),
-  rateLimit: z.number().optional(),
+  customRules: types.optional(types.number()),
+  ipBlocks: types.optional(types.number()),
+  ipBypass: types.optional(types.number()),
+  rateLimit: types.optional(types.number()),
 });
 /** @internal */
 export type PayloadSecurity$Outbound = {
@@ -16207,35 +16235,36 @@ export const PayloadResourceConfig$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  nodeType: z.string().optional(),
-  concurrentBuilds: z.number().optional(),
-  elasticConcurrencyEnabled: z.boolean().optional(),
-  buildEntitlements: z.lazy(() => PayloadBuildEntitlements$inboundSchema)
-    .optional(),
-  buildQueue: z.lazy(() => PayloadBuildQueue$inboundSchema).optional(),
-  awsAccountType: z.string().optional(),
-  awsAccountIds: z.array(z.string()).optional(),
-  cfZoneName: z.string().optional(),
-  imageOptimizationType: z.string().optional(),
-  edgeConfigs: z.number().optional(),
-  edgeConfigSize: z.number().optional(),
-  edgeFunctionMaxSizeBytes: z.number().optional(),
-  edgeFunctionExecutionTimeoutMs: z.number().optional(),
-  serverlessFunctionMaxMemorySize: z.number().optional(),
-  kvDatabases: z.number().optional(),
-  postgresDatabases: z.number().optional(),
-  blobStores: z.number().optional(),
-  integrationStores: z.number().optional(),
-  cronJobs: z.number().optional(),
-  cronJobsPerProject: z.number().optional(),
-  microfrontendGroupsPerTeam: z.number().optional(),
-  microfrontendProjectsPerGroup: z.number().optional(),
-  flagsExplorerOverridesThreshold: z.number().optional(),
-  flagsExplorerUnlimitedOverrides: z.boolean().optional(),
-  customEnvironmentsPerProject: z.number().optional(),
-  buildMachine: z.lazy(() => PayloadBuildMachine$inboundSchema).optional(),
-  security: z.lazy(() => PayloadSecurity$inboundSchema).optional(),
-  bulkRedirectsFreeLimitOverride: z.number().optional(),
+  nodeType: types.optional(types.string()),
+  concurrentBuilds: types.optional(types.number()),
+  elasticConcurrencyEnabled: types.optional(types.boolean()),
+  buildEntitlements: types.optional(
+    z.lazy(() => PayloadBuildEntitlements$inboundSchema),
+  ),
+  buildQueue: types.optional(z.lazy(() => PayloadBuildQueue$inboundSchema)),
+  awsAccountType: types.optional(types.string()),
+  awsAccountIds: types.optional(z.array(types.string())),
+  cfZoneName: types.optional(types.string()),
+  imageOptimizationType: types.optional(types.string()),
+  edgeConfigs: types.optional(types.number()),
+  edgeConfigSize: types.optional(types.number()),
+  edgeFunctionMaxSizeBytes: types.optional(types.number()),
+  edgeFunctionExecutionTimeoutMs: types.optional(types.number()),
+  serverlessFunctionMaxMemorySize: types.optional(types.number()),
+  kvDatabases: types.optional(types.number()),
+  postgresDatabases: types.optional(types.number()),
+  blobStores: types.optional(types.number()),
+  integrationStores: types.optional(types.number()),
+  cronJobs: types.optional(types.number()),
+  cronJobsPerProject: types.optional(types.number()),
+  microfrontendGroupsPerTeam: types.optional(types.number()),
+  microfrontendProjectsPerGroup: types.optional(types.number()),
+  flagsExplorerOverridesThreshold: types.optional(types.number()),
+  flagsExplorerUnlimitedOverrides: types.optional(types.boolean()),
+  customEnvironmentsPerProject: types.optional(types.number()),
+  buildMachine: types.optional(z.lazy(() => PayloadBuildMachine$inboundSchema)),
+  security: types.optional(z.lazy(() => PayloadSecurity$inboundSchema)),
+  bulkRedirectsFreeLimitOverride: types.optional(types.number()),
 });
 /** @internal */
 export type PayloadResourceConfig$Outbound = {
@@ -16329,8 +16358,8 @@ export const ResourceLimits$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  max: z.number(),
-  duration: z.number(),
+  max: types.number(),
+  duration: types.number(),
 });
 /** @internal */
 export type ResourceLimits$Outbound = {
@@ -16394,7 +16423,7 @@ export const PayloadActiveDashboardViews$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  scopeId: z.string(),
+  scopeId: types.string(),
   viewPreference: z.nullable(PayloadViewPreference$inboundSchema).optional(),
   favoritesViewPreference: z.nullable(
     PayloadFavoritesViewPreference$inboundSchema,
@@ -16450,8 +16479,8 @@ export const SecondaryEmails$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  email: z.string(),
-  verified: z.boolean(),
+  email: types.string(),
+  verified: types.boolean(),
 });
 /** @internal */
 export type SecondaryEmails$Outbound = {
@@ -16487,7 +16516,7 @@ export function secondaryEmailsFromJSON(
 /** @internal */
 export const Rules$inboundSchema: z.ZodType<Rules, z.ZodTypeDef, unknown> = z
   .object({
-    email: z.string(),
+    email: types.string(),
   });
 /** @internal */
 export type Rules$Outbound = {
@@ -16522,7 +16551,7 @@ export const EmailNotifications$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  rules: z.record(z.lazy(() => Rules$inboundSchema)).optional(),
+  rules: types.optional(z.record(z.lazy(() => Rules$inboundSchema))),
 });
 /** @internal */
 export type EmailNotifications$Outbound = {
@@ -16561,8 +16590,8 @@ export const PayloadReasons$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  value: z.string(),
+  name: types.string(),
+  value: types.string(),
 });
 /** @internal */
 export type PayloadReasons$Outbound = {
@@ -16599,7 +16628,7 @@ export const SiftScores$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  score: z.number(),
+  score: types.number(),
   reasons: z.array(z.lazy(() => PayloadReasons$inboundSchema)),
 });
 /** @internal */
@@ -16697,10 +16726,11 @@ export const PayloadSoftBlock$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  blockedAt: z.number(),
+  blockedAt: types.number(),
   reason: PayloadReason$inboundSchema,
-  blockedDueToOverageType: PayloadBlockedDueToOverageType$inboundSchema
-    .optional(),
+  blockedDueToOverageType: types.optional(
+    PayloadBlockedDueToOverageType$inboundSchema,
+  ),
 });
 /** @internal */
 export type PayloadSoftBlock$Outbound = {
@@ -16779,7 +16809,7 @@ export const UserEventPayloadGitUserId$inboundSchema: z.ZodType<
   UserEventPayloadGitUserId,
   z.ZodTypeDef,
   unknown
-> = z.union([z.string(), z.number()]);
+> = smartUnion([types.string(), types.number()]);
 /** @internal */
 export type UserEventPayloadGitUserId$Outbound = string | number;
 
@@ -16788,7 +16818,7 @@ export const UserEventPayloadGitUserId$outboundSchema: z.ZodType<
   UserEventPayloadGitUserId$Outbound,
   z.ZodTypeDef,
   UserEventPayloadGitUserId
-> = z.union([z.string(), z.number()]);
+> = smartUnion([z.string(), z.number()]);
 
 export function userEventPayloadGitUserIdToJSON(
   userEventPayloadGitUserId: UserEventPayloadGitUserId,
@@ -16814,16 +16844,16 @@ export const UserEventPayloadJoinedFrom$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   origin: UserEventPayloadOrigin$inboundSchema,
-  commitId: z.string().optional(),
-  repoId: z.string().optional(),
-  repoPath: z.string().optional(),
-  gitUserId: z.union([z.string(), z.number()]).optional(),
-  gitUserLogin: z.string().optional(),
-  ssoUserId: z.string().optional(),
-  ssoConnectedAt: z.number().optional(),
-  idpUserId: z.string().optional(),
-  dsyncUserId: z.string().optional(),
-  dsyncConnectedAt: z.number().optional(),
+  commitId: types.optional(types.string()),
+  repoId: types.optional(types.string()),
+  repoPath: types.optional(types.string()),
+  gitUserId: types.optional(smartUnion([types.string(), types.number()])),
+  gitUserLogin: types.optional(types.string()),
+  ssoUserId: types.optional(types.string()),
+  ssoConnectedAt: types.optional(types.number()),
+  idpUserId: types.optional(types.string()),
+  dsyncUserId: types.optional(types.string()),
+  dsyncConnectedAt: types.optional(types.number()),
 });
 /** @internal */
 export type UserEventPayloadJoinedFrom$Outbound = {
@@ -16850,7 +16880,7 @@ export const UserEventPayloadJoinedFrom$outboundSchema: z.ZodType<
   commitId: z.string().optional(),
   repoId: z.string().optional(),
   repoPath: z.string().optional(),
-  gitUserId: z.union([z.string(), z.number()]).optional(),
+  gitUserId: smartUnion([z.string(), z.number()]).optional(),
   gitUserLogin: z.string().optional(),
   ssoUserId: z.string().optional(),
   ssoConnectedAt: z.number().optional(),
@@ -16879,17 +16909,20 @@ export function userEventPayloadJoinedFromFromJSON(
 /** @internal */
 export const Teams$inboundSchema: z.ZodType<Teams, z.ZodTypeDef, unknown> = z
   .object({
-    created: z.number(),
-    createdAt: z.number(),
-    teamId: z.string(),
+    created: types.number(),
+    createdAt: types.number(),
+    teamId: types.string(),
     role: UserEventPayload72Role$inboundSchema,
-    confirmed: z.boolean(),
-    confirmedAt: z.number(),
-    accessRequestedAt: z.number().optional(),
-    teamRoles: z.array(PayloadTeamRoles$inboundSchema).optional(),
-    teamPermissions: z.array(PayloadTeamPermissions$inboundSchema).optional(),
-    joinedFrom: z.lazy(() => UserEventPayloadJoinedFrom$inboundSchema)
-      .optional(),
+    confirmed: types.boolean(),
+    confirmedAt: types.number(),
+    accessRequestedAt: types.optional(types.number()),
+    teamRoles: types.optional(z.array(PayloadTeamRoles$inboundSchema)),
+    teamPermissions: types.optional(
+      z.array(PayloadTeamPermissions$inboundSchema),
+    ),
+    joinedFrom: types.optional(
+      z.lazy(() => UserEventPayloadJoinedFrom$inboundSchema),
+    ),
   });
 /** @internal */
 export type Teams$Outbound = {
@@ -16952,8 +16985,8 @@ export const UsageAlerts$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  warningAt: z.nullable(z.number()).optional(),
-  blockingAt: z.nullable(z.number()).optional(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockingAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type UsageAlerts$Outbound = {
@@ -16990,9 +17023,9 @@ export const AnalyticsUsage$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type AnalyticsUsage$Outbound = {
@@ -17031,9 +17064,9 @@ export const Artifacts$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type Artifacts$Outbound = {
@@ -17072,9 +17105,9 @@ export const Bandwidth$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type Bandwidth$Outbound = {
@@ -17113,9 +17146,9 @@ export const BlobTotalAdvancedRequests$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type BlobTotalAdvancedRequests$Outbound = {
@@ -17158,9 +17191,9 @@ export const BlobTotalAvgSizeInBytes$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type BlobTotalAvgSizeInBytes$Outbound = {
@@ -17203,9 +17236,9 @@ export const BlobTotalGetResponseObjectSizeInBytes$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type BlobTotalGetResponseObjectSizeInBytes$Outbound = {
@@ -17251,9 +17284,9 @@ export const BlobTotalSimpleRequests$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type BlobTotalSimpleRequests$Outbound = {
@@ -17296,9 +17329,9 @@ export const ConnectDataTransfer$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type ConnectDataTransfer$Outbound = {
@@ -17341,9 +17374,9 @@ export const DataCacheRead$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type DataCacheRead$Outbound = {
@@ -17382,9 +17415,9 @@ export const DataCacheWrite$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type DataCacheWrite$Outbound = {
@@ -17423,9 +17456,9 @@ export const EdgeConfigRead$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type EdgeConfigRead$Outbound = {
@@ -17464,9 +17497,9 @@ export const EdgeConfigWrite$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type EdgeConfigWrite$Outbound = {
@@ -17507,9 +17540,9 @@ export const EdgeFunctionExecutionUnits$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type EdgeFunctionExecutionUnits$Outbound = {
@@ -17552,9 +17585,9 @@ export const EdgeMiddlewareInvocations$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type EdgeMiddlewareInvocations$Outbound = {
@@ -17597,9 +17630,9 @@ export const EdgeRequestAdditionalCpuDuration$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type EdgeRequestAdditionalCpuDuration$Outbound = {
@@ -17644,9 +17677,9 @@ export const EdgeRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type EdgeRequest$Outbound = {
@@ -17685,9 +17718,9 @@ export const ElasticConcurrencyBuildSlots$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type ElasticConcurrencyBuildSlots$Outbound = {
@@ -17732,9 +17765,9 @@ export const FastDataTransfer$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type FastDataTransfer$Outbound = {
@@ -17777,9 +17810,9 @@ export const FastOriginTransfer$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type FastOriginTransfer$Outbound = {
@@ -17822,9 +17855,9 @@ export const FluidCpuDuration$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type FluidCpuDuration$Outbound = {
@@ -17867,9 +17900,9 @@ export const FluidDuration$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type FluidDuration$Outbound = {
@@ -17908,9 +17941,9 @@ export const FunctionDuration$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type FunctionDuration$Outbound = {
@@ -17953,9 +17986,9 @@ export const FunctionInvocation$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type FunctionInvocation$Outbound = {
@@ -17998,9 +18031,9 @@ export const ImageOptimizationCacheRead$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type ImageOptimizationCacheRead$Outbound = {
@@ -18043,9 +18076,9 @@ export const ImageOptimizationCacheWrite$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type ImageOptimizationCacheWrite$Outbound = {
@@ -18090,9 +18123,9 @@ export const ImageOptimizationTransformation$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type ImageOptimizationTransformation$Outbound = {
@@ -18137,9 +18170,9 @@ export const LogDrainsVolume$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type LogDrainsVolume$Outbound = {
@@ -18180,9 +18213,9 @@ export const MonitoringMetric$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type MonitoringMetric$Outbound = {
@@ -18225,9 +18258,9 @@ export const BlobDataTransfer$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type BlobDataTransfer$Outbound = {
@@ -18270,9 +18303,9 @@ export const ObservabilityEvent$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type ObservabilityEvent$Outbound = {
@@ -18315,9 +18348,9 @@ export const OnDemandConcurrencyMinutes$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type OnDemandConcurrencyMinutes$Outbound = {
@@ -18360,9 +18393,9 @@ export const RuntimeCacheRead$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type RuntimeCacheRead$Outbound = {
@@ -18405,9 +18438,9 @@ export const RuntimeCacheWrite$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type RuntimeCacheWrite$Outbound = {
@@ -18450,9 +18483,9 @@ export const ServerlessFunctionExecution$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type ServerlessFunctionExecution$Outbound = {
@@ -18497,9 +18530,9 @@ export const SourceImages$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type SourceImages$Outbound = {
@@ -18538,9 +18571,9 @@ export const WafOwaspExcessBytes$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type WafOwaspExcessBytes$Outbound = {
@@ -18583,9 +18616,9 @@ export const WafOwaspRequests$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type WafOwaspRequests$Outbound = {
@@ -18628,9 +18661,9 @@ export const WafRateLimitRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type WafRateLimitRequest$Outbound = {
@@ -18673,9 +18706,9 @@ export const WebAnalyticsEvent$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
+  currentThreshold: types.number(),
+  warningAt: z.nullable(types.number()).optional(),
+  blockedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type WebAnalyticsEvent$Outbound = {
@@ -18718,72 +18751,101 @@ export const OverageUsageAlerts$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  analyticsUsage: z.lazy(() => AnalyticsUsage$inboundSchema).optional(),
-  artifacts: z.lazy(() => Artifacts$inboundSchema).optional(),
-  bandwidth: z.lazy(() => Bandwidth$inboundSchema).optional(),
-  blobTotalAdvancedRequests: z.lazy(() =>
-    BlobTotalAdvancedRequests$inboundSchema
-  ).optional(),
-  blobTotalAvgSizeInBytes: z.lazy(() => BlobTotalAvgSizeInBytes$inboundSchema)
-    .optional(),
-  blobTotalGetResponseObjectSizeInBytes: z.lazy(() =>
-    BlobTotalGetResponseObjectSizeInBytes$inboundSchema
-  ).optional(),
-  blobTotalSimpleRequests: z.lazy(() => BlobTotalSimpleRequests$inboundSchema)
-    .optional(),
-  connectDataTransfer: z.lazy(() => ConnectDataTransfer$inboundSchema)
-    .optional(),
-  dataCacheRead: z.lazy(() => DataCacheRead$inboundSchema).optional(),
-  dataCacheWrite: z.lazy(() => DataCacheWrite$inboundSchema).optional(),
-  edgeConfigRead: z.lazy(() => EdgeConfigRead$inboundSchema).optional(),
-  edgeConfigWrite: z.lazy(() => EdgeConfigWrite$inboundSchema).optional(),
-  edgeFunctionExecutionUnits: z.lazy(() =>
-    EdgeFunctionExecutionUnits$inboundSchema
-  ).optional(),
-  edgeMiddlewareInvocations: z.lazy(() =>
-    EdgeMiddlewareInvocations$inboundSchema
-  ).optional(),
-  edgeRequestAdditionalCpuDuration: z.lazy(() =>
-    EdgeRequestAdditionalCpuDuration$inboundSchema
-  ).optional(),
-  edgeRequest: z.lazy(() => EdgeRequest$inboundSchema).optional(),
-  elasticConcurrencyBuildSlots: z.lazy(() =>
-    ElasticConcurrencyBuildSlots$inboundSchema
-  ).optional(),
-  fastDataTransfer: z.lazy(() => FastDataTransfer$inboundSchema).optional(),
-  fastOriginTransfer: z.lazy(() => FastOriginTransfer$inboundSchema).optional(),
-  fluidCpuDuration: z.lazy(() => FluidCpuDuration$inboundSchema).optional(),
-  fluidDuration: z.lazy(() => FluidDuration$inboundSchema).optional(),
-  functionDuration: z.lazy(() => FunctionDuration$inboundSchema).optional(),
-  functionInvocation: z.lazy(() => FunctionInvocation$inboundSchema).optional(),
-  imageOptimizationCacheRead: z.lazy(() =>
-    ImageOptimizationCacheRead$inboundSchema
-  ).optional(),
-  imageOptimizationCacheWrite: z.lazy(() =>
-    ImageOptimizationCacheWrite$inboundSchema
-  ).optional(),
-  imageOptimizationTransformation: z.lazy(() =>
-    ImageOptimizationTransformation$inboundSchema
-  ).optional(),
-  logDrainsVolume: z.lazy(() => LogDrainsVolume$inboundSchema).optional(),
-  monitoringMetric: z.lazy(() => MonitoringMetric$inboundSchema).optional(),
-  blobDataTransfer: z.lazy(() => BlobDataTransfer$inboundSchema).optional(),
-  observabilityEvent: z.lazy(() => ObservabilityEvent$inboundSchema).optional(),
-  onDemandConcurrencyMinutes: z.lazy(() =>
-    OnDemandConcurrencyMinutes$inboundSchema
-  ).optional(),
-  runtimeCacheRead: z.lazy(() => RuntimeCacheRead$inboundSchema).optional(),
-  runtimeCacheWrite: z.lazy(() => RuntimeCacheWrite$inboundSchema).optional(),
-  serverlessFunctionExecution: z.lazy(() =>
-    ServerlessFunctionExecution$inboundSchema
-  ).optional(),
-  sourceImages: z.lazy(() => SourceImages$inboundSchema).optional(),
-  wafOwaspExcessBytes: z.lazy(() => WafOwaspExcessBytes$inboundSchema)
-    .optional(),
-  wafOwaspRequests: z.lazy(() => WafOwaspRequests$inboundSchema).optional(),
-  wafRateLimitRequest: z.lazy(() => WafRateLimitRequest$inboundSchema)
-    .optional(),
-  webAnalyticsEvent: z.lazy(() => WebAnalyticsEvent$inboundSchema).optional(),
+  analyticsUsage: types.optional(z.lazy(() => AnalyticsUsage$inboundSchema)),
+  artifacts: types.optional(z.lazy(() => Artifacts$inboundSchema)),
+  bandwidth: types.optional(z.lazy(() => Bandwidth$inboundSchema)),
+  blobTotalAdvancedRequests: types.optional(
+    z.lazy(() => BlobTotalAdvancedRequests$inboundSchema),
+  ),
+  blobTotalAvgSizeInBytes: types.optional(
+    z.lazy(() => BlobTotalAvgSizeInBytes$inboundSchema),
+  ),
+  blobTotalGetResponseObjectSizeInBytes: types.optional(
+    z.lazy(() => BlobTotalGetResponseObjectSizeInBytes$inboundSchema),
+  ),
+  blobTotalSimpleRequests: types.optional(
+    z.lazy(() => BlobTotalSimpleRequests$inboundSchema),
+  ),
+  connectDataTransfer: types.optional(
+    z.lazy(() => ConnectDataTransfer$inboundSchema),
+  ),
+  dataCacheRead: types.optional(z.lazy(() => DataCacheRead$inboundSchema)),
+  dataCacheWrite: types.optional(z.lazy(() => DataCacheWrite$inboundSchema)),
+  edgeConfigRead: types.optional(z.lazy(() => EdgeConfigRead$inboundSchema)),
+  edgeConfigWrite: types.optional(z.lazy(() => EdgeConfigWrite$inboundSchema)),
+  edgeFunctionExecutionUnits: types.optional(
+    z.lazy(() => EdgeFunctionExecutionUnits$inboundSchema),
+  ),
+  edgeMiddlewareInvocations: types.optional(
+    z.lazy(() => EdgeMiddlewareInvocations$inboundSchema),
+  ),
+  edgeRequestAdditionalCpuDuration: types.optional(
+    z.lazy(() => EdgeRequestAdditionalCpuDuration$inboundSchema),
+  ),
+  edgeRequest: types.optional(z.lazy(() => EdgeRequest$inboundSchema)),
+  elasticConcurrencyBuildSlots: types.optional(
+    z.lazy(() => ElasticConcurrencyBuildSlots$inboundSchema),
+  ),
+  fastDataTransfer: types.optional(
+    z.lazy(() => FastDataTransfer$inboundSchema),
+  ),
+  fastOriginTransfer: types.optional(
+    z.lazy(() => FastOriginTransfer$inboundSchema),
+  ),
+  fluidCpuDuration: types.optional(
+    z.lazy(() => FluidCpuDuration$inboundSchema),
+  ),
+  fluidDuration: types.optional(z.lazy(() => FluidDuration$inboundSchema)),
+  functionDuration: types.optional(
+    z.lazy(() => FunctionDuration$inboundSchema),
+  ),
+  functionInvocation: types.optional(
+    z.lazy(() => FunctionInvocation$inboundSchema),
+  ),
+  imageOptimizationCacheRead: types.optional(
+    z.lazy(() => ImageOptimizationCacheRead$inboundSchema),
+  ),
+  imageOptimizationCacheWrite: types.optional(
+    z.lazy(() => ImageOptimizationCacheWrite$inboundSchema),
+  ),
+  imageOptimizationTransformation: types.optional(
+    z.lazy(() => ImageOptimizationTransformation$inboundSchema),
+  ),
+  logDrainsVolume: types.optional(z.lazy(() => LogDrainsVolume$inboundSchema)),
+  monitoringMetric: types.optional(
+    z.lazy(() => MonitoringMetric$inboundSchema),
+  ),
+  blobDataTransfer: types.optional(
+    z.lazy(() => BlobDataTransfer$inboundSchema),
+  ),
+  observabilityEvent: types.optional(
+    z.lazy(() => ObservabilityEvent$inboundSchema),
+  ),
+  onDemandConcurrencyMinutes: types.optional(
+    z.lazy(() => OnDemandConcurrencyMinutes$inboundSchema),
+  ),
+  runtimeCacheRead: types.optional(
+    z.lazy(() => RuntimeCacheRead$inboundSchema),
+  ),
+  runtimeCacheWrite: types.optional(
+    z.lazy(() => RuntimeCacheWrite$inboundSchema),
+  ),
+  serverlessFunctionExecution: types.optional(
+    z.lazy(() => ServerlessFunctionExecution$inboundSchema),
+  ),
+  sourceImages: types.optional(z.lazy(() => SourceImages$inboundSchema)),
+  wafOwaspExcessBytes: types.optional(
+    z.lazy(() => WafOwaspExcessBytes$inboundSchema),
+  ),
+  wafOwaspRequests: types.optional(
+    z.lazy(() => WafOwaspRequests$inboundSchema),
+  ),
+  wafRateLimitRequest: types.optional(
+    z.lazy(() => WafRateLimitRequest$inboundSchema),
+  ),
+  webAnalyticsEvent: types.optional(
+    z.lazy(() => WebAnalyticsEvent$inboundSchema),
+  ),
 });
 /** @internal */
 export type OverageUsageAlerts$Outbound = {
@@ -18940,12 +19002,12 @@ export const OverageMetadata$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  firstTimeOnDemandNotificationSentAt: z.number().optional(),
-  dailyOverageSummaryEmailSentAt: z.number().optional(),
-  weeklyOverageSummaryEmailSentAt: z.number().optional(),
-  overageSummaryExpiresAt: z.number().optional(),
-  increasedOnDemandEmailSentAt: z.number().optional(),
-  increasedOnDemandEmailAttemptedAt: z.number().optional(),
+  firstTimeOnDemandNotificationSentAt: types.optional(types.number()),
+  dailyOverageSummaryEmailSentAt: types.optional(types.number()),
+  weeklyOverageSummaryEmailSentAt: types.optional(types.number()),
+  overageSummaryExpiresAt: types.optional(types.number()),
+  increasedOnDemandEmailSentAt: types.optional(types.number()),
+  increasedOnDemandEmailAttemptedAt: types.optional(types.number()),
 });
 /** @internal */
 export type OverageMetadata$Outbound = {
@@ -19008,11 +19070,11 @@ export const PayloadWebAnalytics$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  updatedAt: z.number(),
-  blockedFrom: z.number().optional(),
-  blockedUntil: z.number().optional(),
+  updatedAt: types.number(),
+  blockedFrom: types.optional(types.number()),
+  blockedUntil: types.optional(types.number()),
   blockReason: BlockReason$inboundSchema,
-  graceEmailSentAt: z.number().optional(),
+  graceEmailSentAt: types.optional(types.number()),
 });
 /** @internal */
 export type PayloadWebAnalytics$Outbound = {
@@ -19075,9 +19137,9 @@ export const Monitoring$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  updatedAt: z.number(),
-  blockedFrom: z.number().optional(),
-  blockedUntil: z.number().optional(),
+  updatedAt: types.number(),
+  blockedFrom: types.optional(types.number()),
+  blockedUntil: types.optional(types.number()),
   blockReason: PayloadBlockReason$inboundSchema,
   blockType: BlockType$inboundSchema,
 });
@@ -19140,9 +19202,9 @@ export const ObservabilityPlus$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  updatedAt: z.number(),
-  blockedFrom: z.number().optional(),
-  blockedUntil: z.number().optional(),
+  updatedAt: types.number(),
+  blockedFrom: types.optional(types.number()),
+  blockedUntil: types.optional(types.number()),
   blockReason: UserEventPayloadBlockReason$inboundSchema,
   blockType: PayloadBlockType$inboundSchema,
 });
@@ -19200,9 +19262,9 @@ export const UserEventPayloadDataCache$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  updatedAt: z.number(),
-  blockedFrom: z.number().optional(),
-  blockedUntil: z.number().optional(),
+  updatedAt: types.number(),
+  blockedFrom: types.optional(types.number()),
+  blockedUntil: types.optional(types.number()),
   blockReason: UserEventPayload72BlockReason$inboundSchema,
 });
 /** @internal */
@@ -19258,9 +19320,9 @@ export const PayloadImageOptimizationTransformation$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  updatedAt: z.number(),
-  blockedFrom: z.number().optional(),
-  blockedUntil: z.number().optional(),
+  updatedAt: types.number(),
+  blockedFrom: types.optional(types.number()),
+  blockedUntil: types.optional(types.number()),
   blockReason: UserEventPayload72NewOwnerBlockReason$inboundSchema,
 });
 /** @internal */
@@ -19319,9 +19381,9 @@ export const PayloadSourceImages$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  updatedAt: z.number(),
-  blockedFrom: z.number().optional(),
-  blockedUntil: z.number().optional(),
+  updatedAt: types.number(),
+  blockedFrom: types.optional(types.number()),
+  blockedUntil: types.optional(types.number()),
   blockReason: UserEventPayload72NewOwnerFeatureBlocksBlockReason$inboundSchema,
 });
 /** @internal */
@@ -19385,9 +19447,9 @@ export const OverageReason$outboundSchema: z.ZodNativeEnum<
 /** @internal */
 export const BlobT$inboundSchema: z.ZodType<BlobT, z.ZodTypeDef, unknown> = z
   .object({
-    updatedAt: z.number(),
-    blockedFrom: z.number().optional(),
-    blockedUntil: z.number().optional(),
+    updatedAt: types.number(),
+    blockedFrom: types.optional(types.number()),
+    blockedUntil: types.optional(types.number()),
     blockReason:
       UserEventPayload72NewOwnerFeatureBlocksBlobBlockReason$inboundSchema,
     overageReason: OverageReason$inboundSchema,
@@ -19454,9 +19516,9 @@ export const Postgres$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  updatedAt: z.number(),
-  blockedFrom: z.number().optional(),
-  blockedUntil: z.number().optional(),
+  updatedAt: types.number(),
+  blockedFrom: types.optional(types.number()),
+  blockedUntil: types.optional(types.number()),
   blockReason:
     UserEventPayload72NewOwnerFeatureBlocksPostgresBlockReason$inboundSchema,
   overageReason: PayloadOverageReason$inboundSchema,
@@ -19520,9 +19582,9 @@ export const UserEventPayloadOverageReason$outboundSchema: z.ZodNativeEnum<
 /** @internal */
 export const Redis$inboundSchema: z.ZodType<Redis, z.ZodTypeDef, unknown> = z
   .object({
-    updatedAt: z.number(),
-    blockedFrom: z.number().optional(),
-    blockedUntil: z.number().optional(),
+    updatedAt: types.number(),
+    blockedFrom: types.optional(types.number()),
+    blockedUntil: types.optional(types.number()),
     blockReason:
       UserEventPayload72NewOwnerFeatureBlocksRedisBlockReason$inboundSchema,
     overageReason: UserEventPayloadOverageReason$inboundSchema,
@@ -19583,9 +19645,9 @@ export const MicrofrontendsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  updatedAt: z.number(),
-  blockedFrom: z.number().optional(),
-  blockedUntil: z.number().optional(),
+  updatedAt: types.number(),
+  blockedFrom: types.optional(types.number()),
+  blockedUntil: types.optional(types.number()),
   blockReason:
     UserEventPayload72NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason$inboundSchema,
 });
@@ -19633,19 +19695,24 @@ export const PayloadFeatureBlocks$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  webAnalytics: z.lazy(() => PayloadWebAnalytics$inboundSchema).optional(),
-  monitoring: z.lazy(() => Monitoring$inboundSchema).optional(),
-  observabilityPlus: z.lazy(() => ObservabilityPlus$inboundSchema).optional(),
-  dataCache: z.lazy(() => UserEventPayloadDataCache$inboundSchema).optional(),
-  imageOptimizationTransformation: z.lazy(() =>
-    PayloadImageOptimizationTransformation$inboundSchema
-  ).optional(),
-  sourceImages: z.lazy(() => PayloadSourceImages$inboundSchema).optional(),
-  blob: z.lazy(() => BlobT$inboundSchema).optional(),
-  postgres: z.lazy(() => Postgres$inboundSchema).optional(),
-  redis: z.lazy(() => Redis$inboundSchema).optional(),
-  microfrontendsRequest: z.lazy(() => MicrofrontendsRequest$inboundSchema)
-    .optional(),
+  webAnalytics: types.optional(z.lazy(() => PayloadWebAnalytics$inboundSchema)),
+  monitoring: types.optional(z.lazy(() => Monitoring$inboundSchema)),
+  observabilityPlus: types.optional(
+    z.lazy(() => ObservabilityPlus$inboundSchema),
+  ),
+  dataCache: types.optional(
+    z.lazy(() => UserEventPayloadDataCache$inboundSchema),
+  ),
+  imageOptimizationTransformation: types.optional(
+    z.lazy(() => PayloadImageOptimizationTransformation$inboundSchema),
+  ),
+  sourceImages: types.optional(z.lazy(() => PayloadSourceImages$inboundSchema)),
+  blob: types.optional(z.lazy(() => BlobT$inboundSchema)),
+  postgres: types.optional(z.lazy(() => Postgres$inboundSchema)),
+  redis: types.optional(z.lazy(() => Redis$inboundSchema)),
+  microfrontendsRequest: types.optional(
+    z.lazy(() => MicrofrontendsRequest$inboundSchema),
+  ),
 });
 /** @internal */
 export type PayloadFeatureBlocks$Outbound = {
@@ -19714,13 +19781,13 @@ export const NorthstarMigration$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamId: z.string(),
-  projects: z.number(),
-  stores: z.number(),
-  integrationConfigurations: z.number(),
-  integrationClients: z.number(),
-  startTime: z.number(),
-  endTime: z.number(),
+  teamId: types.string(),
+  projects: types.number(),
+  stores: types.number(),
+  integrationConfigurations: types.number(),
+  integrationClients: types.number(),
+  startTime: types.number(),
+  endTime: types.number(),
 });
 /** @internal */
 export type NorthstarMigration$Outbound = {
@@ -19768,8 +19835,8 @@ export function northstarMigrationFromJSON(
 /** @internal */
 export const Totp$inboundSchema: z.ZodType<Totp, z.ZodTypeDef, unknown> = z
   .object({
-    secret: z.string(),
-    createdAt: z.number(),
+    secret: types.string(),
+    createdAt: types.number(),
   });
 /** @internal */
 export type Totp$Outbound = {
@@ -19803,10 +19870,10 @@ export const MfaConfiguration$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  enabled: z.boolean(),
-  enabledAt: z.number().optional(),
-  recoveryCodes: z.array(z.string()),
-  totp: z.lazy(() => Totp$inboundSchema).optional(),
+  enabled: types.boolean(),
+  enabledAt: types.optional(types.number()),
+  recoveryCodes: z.array(types.string()),
+  totp: types.optional(z.lazy(() => Totp$inboundSchema)),
 });
 /** @internal */
 export type MfaConfiguration$Outbound = {
@@ -19851,17 +19918,17 @@ export const NewOwner$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  abuse: z.lazy(() => Abuse$inboundSchema).optional(),
-  acceptanceState: z.string().optional(),
-  acceptedAt: z.number().optional(),
-  avatar: z.string().optional(),
+  abuse: types.optional(z.lazy(() => Abuse$inboundSchema)),
+  acceptanceState: types.optional(types.string()),
+  acceptedAt: types.optional(types.number()),
+  avatar: types.optional(types.string()),
   billing: z.lazy(() => PayloadBilling$inboundSchema),
-  blocked: z.nullable(z.number()),
-  blockReason: z.string().optional(),
-  created: z.number().optional(),
-  createdAt: z.number(),
-  credentials: z.array(
-    z.union([
+  blocked: types.nullable(types.number()),
+  blockReason: types.optional(types.string()),
+  created: types.optional(types.number()),
+  createdAt: types.number(),
+  credentials: types.optional(
+    z.array(z.union([
       z.lazy(() => Credentials1$inboundSchema).and(
         z.object({ type: z.literal("gitlab") }),
       ),
@@ -19881,85 +19948,107 @@ export const NewOwner$inboundSchema: z.ZodType<
         z.object({ type: z.literal("github-oauth-limited") }),
       ),
       z.lazy(() => Credentials2$inboundSchema),
-    ]),
+    ])),
+  ),
+  customerId: z.nullable(types.string()).optional(),
+  orbCustomerId: z.nullable(types.string()).optional(),
+  dataCache: types.optional(z.lazy(() => PayloadDataCache$inboundSchema)),
+  deletedAt: z.nullable(types.number()).optional(),
+  deploymentSecret: types.string(),
+  dismissedTeams: types.optional(z.array(types.string())),
+  dismissedToasts: types.optional(
+    z.array(z.lazy(() => PayloadDismissedToasts$inboundSchema)),
+  ),
+  favoriteProjectsAndSpaces: types.optional(
+    z.array(z.lazy(() => PayloadFavoriteProjectsAndSpaces$inboundSchema)),
+  ),
+  email: types.string(),
+  id: types.string(),
+  importFlowGitNamespace: z.nullable(
+    smartUnion([types.string(), types.number()]),
   ).optional(),
-  customerId: z.nullable(z.string()).optional(),
-  orbCustomerId: z.nullable(z.string()).optional(),
-  dataCache: z.lazy(() => PayloadDataCache$inboundSchema).optional(),
-  deletedAt: z.nullable(z.number()).optional(),
-  deploymentSecret: z.string(),
-  dismissedTeams: z.array(z.string()).optional(),
-  dismissedToasts: z.array(z.lazy(() => PayloadDismissedToasts$inboundSchema))
-    .optional(),
-  favoriteProjectsAndSpaces: z.array(
-    z.lazy(() => PayloadFavoriteProjectsAndSpaces$inboundSchema),
+  importFlowGitNamespaceId: z.nullable(
+    smartUnion([types.string(), types.number()]),
   ).optional(),
-  email: z.string(),
-  id: z.string(),
-  importFlowGitNamespace: z.nullable(z.union([z.string(), z.number()]))
-    .optional(),
-  importFlowGitNamespaceId: z.nullable(z.union([z.string(), z.number()]))
-    .optional(),
   importFlowGitProvider: z.nullable(PayloadImportFlowGitProvider$inboundSchema)
     .optional(),
-  preferredScopesAndGitNamespaces: z.array(
-    z.lazy(() => PayloadPreferredScopesAndGitNamespaces$inboundSchema),
-  ).optional(),
-  isDomainReseller: z.boolean().optional(),
-  isZeitPub: z.boolean().optional(),
-  maxActiveSlots: z.number().optional(),
-  name: z.string().optional(),
-  phoneNumber: z.string().optional(),
-  platformVersion: z.nullable(z.number()),
-  preventAutoBlocking: z.union([z.number(), z.boolean()]).optional(),
-  projectDomainsLimit: z.number().optional(),
-  remoteCaching: z.lazy(() => UserEventPayloadRemoteCaching$inboundSchema)
-    .optional(),
-  removedAliasesAt: z.number().optional(),
-  removedBillingSubscriptionAt: z.number().optional(),
-  removedConfigurationsAt: z.number().optional(),
-  removedDeploymentsAt: z.number().optional(),
-  removedDomiansAt: z.number().optional(),
-  removedEventsAt: z.number().optional(),
-  removedProjectsAt: z.number().optional(),
-  removedSecretsAt: z.number().optional(),
-  removedSharedEnvVarsAt: z.number().optional(),
-  removedEdgeConfigsAt: z.number().optional(),
-  resourceConfig: z.lazy(() => PayloadResourceConfig$inboundSchema).optional(),
-  resourceLimits: z.record(z.lazy(() => ResourceLimits$inboundSchema))
-    .optional(),
-  activeDashboardViews: z.array(
-    z.lazy(() => PayloadActiveDashboardViews$inboundSchema),
-  ).optional(),
-  secondaryEmails: z.array(z.lazy(() => SecondaryEmails$inboundSchema))
-    .optional(),
-  emailDomains: z.array(z.string()).optional(),
-  emailNotifications: z.lazy(() => EmailNotifications$inboundSchema).optional(),
-  siftScore: z.number().optional(),
-  siftScores: z.record(z.lazy(() => SiftScores$inboundSchema)).optional(),
-  siftRoute: z.lazy(() => SiftRoute$inboundSchema).optional(),
-  sfdcId: z.string().optional(),
+  preferredScopesAndGitNamespaces: types.optional(
+    z.array(z.lazy(() => PayloadPreferredScopesAndGitNamespaces$inboundSchema)),
+  ),
+  isDomainReseller: types.optional(types.boolean()),
+  isZeitPub: types.optional(types.boolean()),
+  maxActiveSlots: types.optional(types.number()),
+  name: types.optional(types.string()),
+  phoneNumber: types.optional(types.string()),
+  platformVersion: types.nullable(types.number()),
+  preventAutoBlocking: types.optional(
+    smartUnion([types.number(), types.boolean()]),
+  ),
+  projectDomainsLimit: types.optional(types.number()),
+  remoteCaching: types.optional(
+    z.lazy(() => UserEventPayloadRemoteCaching$inboundSchema),
+  ),
+  removedAliasesAt: types.optional(types.number()),
+  removedBillingSubscriptionAt: types.optional(types.number()),
+  removedConfigurationsAt: types.optional(types.number()),
+  removedDeploymentsAt: types.optional(types.number()),
+  removedDomiansAt: types.optional(types.number()),
+  removedEventsAt: types.optional(types.number()),
+  removedProjectsAt: types.optional(types.number()),
+  removedSecretsAt: types.optional(types.number()),
+  removedSharedEnvVarsAt: types.optional(types.number()),
+  removedEdgeConfigsAt: types.optional(types.number()),
+  resourceConfig: types.optional(
+    z.lazy(() => PayloadResourceConfig$inboundSchema),
+  ),
+  resourceLimits: types.optional(
+    z.record(z.lazy(() => ResourceLimits$inboundSchema)),
+  ),
+  activeDashboardViews: types.optional(
+    z.array(z.lazy(() => PayloadActiveDashboardViews$inboundSchema)),
+  ),
+  secondaryEmails: types.optional(
+    z.array(z.lazy(() => SecondaryEmails$inboundSchema)),
+  ),
+  emailDomains: types.optional(z.array(types.string())),
+  emailNotifications: types.optional(
+    z.lazy(() => EmailNotifications$inboundSchema),
+  ),
+  siftScore: types.optional(types.number()),
+  siftScores: types.optional(z.record(z.lazy(() => SiftScores$inboundSchema))),
+  siftRoute: types.optional(z.lazy(() => SiftRoute$inboundSchema)),
+  sfdcId: types.optional(types.string()),
   softBlock: z.nullable(z.lazy(() => PayloadSoftBlock$inboundSchema))
     .optional(),
-  stagingPrefix: z.string(),
-  sysToken: z.string(),
-  teams: z.array(z.lazy(() => Teams$inboundSchema)).optional(),
-  trialTeamIds: z.array(z.string()).optional(),
-  maxTrials: z.number().optional(),
-  trialTeamId: z.string().optional(),
+  stagingPrefix: types.string(),
+  sysToken: types.string(),
+  teams: types.optional(z.array(z.lazy(() => Teams$inboundSchema))),
+  trialTeamIds: types.optional(z.array(types.string())),
+  maxTrials: types.optional(types.number()),
+  trialTeamId: types.optional(types.string()),
   type: UserEventPayload72Type$inboundSchema,
   usageAlerts: z.nullable(z.lazy(() => UsageAlerts$inboundSchema)).optional(),
-  overageUsageAlerts: z.lazy(() => OverageUsageAlerts$inboundSchema).optional(),
-  overageMetadata: z.lazy(() => OverageMetadata$inboundSchema).optional(),
-  username: z.string(),
-  updatedAt: z.number(),
-  enablePreviewFeedback: PayloadEnablePreviewFeedback$inboundSchema.optional(),
-  featureBlocks: z.lazy(() => PayloadFeatureBlocks$inboundSchema).optional(),
-  defaultTeamId: z.string().optional(),
+  overageUsageAlerts: types.optional(
+    z.lazy(() => OverageUsageAlerts$inboundSchema),
+  ),
+  overageMetadata: types.optional(z.lazy(() => OverageMetadata$inboundSchema)),
+  username: types.string(),
+  updatedAt: types.number(),
+  enablePreviewFeedback: types.optional(
+    PayloadEnablePreviewFeedback$inboundSchema,
+  ),
+  featureBlocks: types.optional(
+    z.lazy(() => PayloadFeatureBlocks$inboundSchema),
+  ),
+  defaultTeamId: types.optional(types.string()),
   version: Version$inboundSchema,
-  northstarMigration: z.lazy(() => NorthstarMigration$inboundSchema).optional(),
-  opportunityId: z.string().optional(),
-  mfaConfiguration: z.lazy(() => MfaConfiguration$inboundSchema).optional(),
+  northstarMigration: types.optional(
+    z.lazy(() => NorthstarMigration$inboundSchema),
+  ),
+  opportunityId: types.optional(types.string()),
+  mfaConfiguration: types.optional(
+    z.lazy(() => MfaConfiguration$inboundSchema),
+  ),
 });
 /** @internal */
 export type NewOwner$Outbound = {
@@ -20105,9 +20194,9 @@ export const NewOwner$outboundSchema: z.ZodType<
   ).optional(),
   email: z.string(),
   id: z.string(),
-  importFlowGitNamespace: z.nullable(z.union([z.string(), z.number()]))
+  importFlowGitNamespace: z.nullable(smartUnion([z.string(), z.number()]))
     .optional(),
-  importFlowGitNamespaceId: z.nullable(z.union([z.string(), z.number()]))
+  importFlowGitNamespaceId: z.nullable(smartUnion([z.string(), z.number()]))
     .optional(),
   importFlowGitProvider: z.nullable(PayloadImportFlowGitProvider$outboundSchema)
     .optional(),
@@ -20120,7 +20209,7 @@ export const NewOwner$outboundSchema: z.ZodType<
   name: z.string().optional(),
   phoneNumber: z.string().optional(),
   platformVersion: z.nullable(z.number()),
-  preventAutoBlocking: z.union([z.number(), z.boolean()]).optional(),
+  preventAutoBlocking: smartUnion([z.number(), z.boolean()]).optional(),
   projectDomainsLimit: z.number().optional(),
   remoteCaching: z.lazy(() => UserEventPayloadRemoteCaching$outboundSchema)
     .optional(),
@@ -20193,12 +20282,12 @@ export const SeventyTwo$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  userId: z.string(),
-  integrationId: z.string(),
-  configurationId: z.string(),
-  integrationSlug: z.string(),
-  integrationName: z.string().optional(),
-  newOwner: z.nullable(z.lazy(() => NewOwner$inboundSchema)),
+  userId: types.string(),
+  integrationId: types.string(),
+  configurationId: types.string(),
+  integrationSlug: types.string(),
+  integrationName: types.optional(types.string()),
+  newOwner: types.nullable(z.lazy(() => NewOwner$inboundSchema)),
 });
 /** @internal */
 export type SeventyTwo$Outbound = {
@@ -20243,9 +20332,9 @@ export const SeventyOne$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  integrationId: z.string(),
-  integrationSlug: z.string(),
-  integrationName: z.string(),
+  integrationId: types.string(),
+  integrationSlug: types.string(),
+  integrationName: types.string(),
 });
 /** @internal */
 export type SeventyOne$Outbound = {
@@ -20281,11 +20370,11 @@ export function seventyOneFromJSON(
 /** @internal */
 export const Seventy$inboundSchema: z.ZodType<Seventy, z.ZodTypeDef, unknown> =
   z.object({
-    projectId: z.string(),
-    prevAttackModeEnabled: z.boolean().optional(),
-    prevAttackModeActiveUntil: z.nullable(z.number()).optional(),
-    attackModeEnabled: z.boolean(),
-    attackModeActiveUntil: z.nullable(z.number()).optional(),
+    projectId: types.string(),
+    prevAttackModeEnabled: types.optional(types.boolean()),
+    prevAttackModeActiveUntil: z.nullable(types.number()).optional(),
+    attackModeEnabled: types.boolean(),
+    attackModeActiveUntil: z.nullable(types.number()).optional(),
   });
 /** @internal */
 export type Seventy$Outbound = {
@@ -20337,8 +20426,8 @@ export const RuleGroups$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  active: z.boolean(),
-  action: UserEventPayload69Action$inboundSchema.optional(),
+  active: types.boolean(),
+  action: types.optional(UserEventPayload69Action$inboundSchema),
 });
 /** @internal */
 export type RuleGroups$Outbound = {
@@ -20375,8 +20464,8 @@ export const SixtyNine$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
-  rulesetName: z.string(),
+  projectId: types.string(),
+  rulesetName: types.string(),
   ruleGroups: z.record(z.lazy(() => RuleGroups$inboundSchema)),
 });
 /** @internal */
@@ -20425,10 +20514,10 @@ export const SixtyEight$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
-  rulesetName: z.string(),
-  active: z.boolean(),
-  action: UserEventPayload68Action$inboundSchema.optional(),
+  projectId: types.string(),
+  rulesetName: types.string(),
+  active: types.boolean(),
+  action: types.optional(UserEventPayload68Action$inboundSchema),
 });
 /** @internal */
 export type SixtyEight$Outbound = {
@@ -20469,9 +20558,9 @@ export const SixtySeven$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
-  scope: z.string(),
-  source: z.string(),
+  projectId: types.string(),
+  scope: types.string(),
+  source: types.string(),
 });
 /** @internal */
 export type SixtySeven$Outbound = {
@@ -20539,10 +20628,10 @@ export const SixtySix$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
-  restore: z.boolean(),
-  configVersion: z.number(),
-  configChangeCount: z.number(),
+  projectId: types.string(),
+  restore: types.boolean(),
+  configVersion: types.number(),
+  configChangeCount: types.number(),
   configChanges: z.array(z.lazy(() => ConfigChanges$inboundSchema)),
 });
 /** @internal */
@@ -20586,9 +20675,9 @@ export const SixtyFive$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  enabled: z.boolean(),
-  updatedAt: z.number(),
-  firstEnabledAt: z.number().optional(),
+  enabled: types.boolean(),
+  updatedAt: types.number(),
+  firstEnabledAt: types.optional(types.number()),
 });
 /** @internal */
 export type SixtyFive$Outbound = {
@@ -20645,25 +20734,24 @@ export const OldEnvVar$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  created: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  key: z.string().optional(),
-  ownerId: z.nullable(z.string()).optional(),
-  id: z.string().optional(),
-  createdBy: z.nullable(z.string()).optional(),
-  deletedBy: z.nullable(z.string()).optional(),
-  updatedBy: z.nullable(z.string()).optional(),
-  createdAt: z.number().optional(),
-  deletedAt: z.number().optional(),
-  updatedAt: z.number().optional(),
-  value: z.string().optional(),
-  projectId: z.array(z.string()).optional(),
-  type: UserEventPayload64OldEnvVarType$inboundSchema.optional(),
-  target: z.array(UserEventPayloadTarget$inboundSchema).optional(),
-  applyToAllCustomEnvironments: z.boolean().optional(),
-  decrypted: z.boolean().optional(),
-  comment: z.string().optional(),
-  lastEditedByDisplayName: z.string().optional(),
+  created: types.optional(types.date()),
+  key: types.optional(types.string()),
+  ownerId: z.nullable(types.string()).optional(),
+  id: types.optional(types.string()),
+  createdBy: z.nullable(types.string()).optional(),
+  deletedBy: z.nullable(types.string()).optional(),
+  updatedBy: z.nullable(types.string()).optional(),
+  createdAt: types.optional(types.number()),
+  deletedAt: types.optional(types.number()),
+  updatedAt: types.optional(types.number()),
+  value: types.optional(types.string()),
+  projectId: types.optional(z.array(types.string())),
+  type: types.optional(UserEventPayload64OldEnvVarType$inboundSchema),
+  target: types.optional(z.array(UserEventPayloadTarget$inboundSchema)),
+  applyToAllCustomEnvironments: types.optional(types.boolean()),
+  decrypted: types.optional(types.boolean()),
+  comment: types.optional(types.string()),
+  lastEditedByDisplayName: types.optional(types.string()),
 });
 /** @internal */
 export type OldEnvVar$Outbound = {
@@ -20750,25 +20838,24 @@ export const NewEnvVar$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  created: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  key: z.string().optional(),
-  ownerId: z.nullable(z.string()).optional(),
-  id: z.string().optional(),
-  createdBy: z.nullable(z.string()).optional(),
-  deletedBy: z.nullable(z.string()).optional(),
-  updatedBy: z.nullable(z.string()).optional(),
-  createdAt: z.number().optional(),
-  deletedAt: z.number().optional(),
-  updatedAt: z.number().optional(),
-  value: z.string().optional(),
-  projectId: z.array(z.string()).optional(),
-  type: UserEventPayload64Type$inboundSchema.optional(),
-  target: z.array(UserEventPayload64Target$inboundSchema).optional(),
-  applyToAllCustomEnvironments: z.boolean().optional(),
-  decrypted: z.boolean().optional(),
-  comment: z.string().optional(),
-  lastEditedByDisplayName: z.string().optional(),
+  created: types.optional(types.date()),
+  key: types.optional(types.string()),
+  ownerId: z.nullable(types.string()).optional(),
+  id: types.optional(types.string()),
+  createdBy: z.nullable(types.string()).optional(),
+  deletedBy: z.nullable(types.string()).optional(),
+  updatedBy: z.nullable(types.string()).optional(),
+  createdAt: types.optional(types.number()),
+  deletedAt: types.optional(types.number()),
+  updatedAt: types.optional(types.number()),
+  value: types.optional(types.string()),
+  projectId: types.optional(z.array(types.string())),
+  type: types.optional(UserEventPayload64Type$inboundSchema),
+  target: types.optional(z.array(UserEventPayload64Target$inboundSchema)),
+  applyToAllCustomEnvironments: types.optional(types.boolean()),
+  decrypted: types.optional(types.boolean()),
+  comment: types.optional(types.string()),
+  lastEditedByDisplayName: types.optional(types.string()),
 });
 /** @internal */
 export type NewEnvVar$Outbound = {
@@ -20851,8 +20938,8 @@ export const OldProjects$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectName: z.string().optional(),
-  projectId: z.string(),
+  projectName: types.optional(types.string()),
+  projectId: types.string(),
 });
 /** @internal */
 export type OldProjects$Outbound = {
@@ -20889,8 +20976,8 @@ export const NewProjects$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectName: z.string().optional(),
-  projectId: z.string(),
+  projectName: types.optional(types.string()),
+  projectId: types.string(),
 });
 /** @internal */
 export type NewProjects$Outbound = {
@@ -20927,16 +21014,16 @@ export const UpdateDiff$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  key: z.string().optional(),
-  newKey: z.string().optional(),
-  oldTarget: z.array(OldTarget$inboundSchema).optional(),
-  newTarget: z.array(NewTarget$inboundSchema).optional(),
-  oldType: z.string().optional(),
-  newType: z.string().optional(),
-  oldProjects: z.array(z.lazy(() => OldProjects$inboundSchema)).optional(),
-  newProjects: z.array(z.lazy(() => NewProjects$inboundSchema)).optional(),
-  changedValue: z.boolean(),
+  id: types.string(),
+  key: types.optional(types.string()),
+  newKey: types.optional(types.string()),
+  oldTarget: types.optional(z.array(OldTarget$inboundSchema)),
+  newTarget: types.optional(z.array(NewTarget$inboundSchema)),
+  oldType: types.optional(types.string()),
+  newType: types.optional(types.string()),
+  oldProjects: types.optional(z.array(z.lazy(() => OldProjects$inboundSchema))),
+  newProjects: types.optional(z.array(z.lazy(() => NewProjects$inboundSchema))),
+  changedValue: types.boolean(),
 });
 /** @internal */
 export type UpdateDiff$Outbound = {
@@ -20989,9 +21076,9 @@ export const SixtyFour$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  oldEnvVar: z.lazy(() => OldEnvVar$inboundSchema).optional(),
-  newEnvVar: z.lazy(() => NewEnvVar$inboundSchema).optional(),
-  updateDiff: z.lazy(() => UpdateDiff$inboundSchema).optional(),
+  oldEnvVar: types.optional(z.lazy(() => OldEnvVar$inboundSchema)),
+  newEnvVar: types.optional(z.lazy(() => NewEnvVar$inboundSchema)),
+  updateDiff: types.optional(z.lazy(() => UpdateDiff$inboundSchema)),
 });
 /** @internal */
 export type SixtyFour$Outbound = {
@@ -21046,26 +21133,25 @@ export const SixtyThree$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  created: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  key: z.string().optional(),
-  ownerId: z.nullable(z.string()).optional(),
-  id: z.string().optional(),
-  createdBy: z.nullable(z.string()).optional(),
-  deletedBy: z.nullable(z.string()).optional(),
-  updatedBy: z.nullable(z.string()).optional(),
-  createdAt: z.number().optional(),
-  deletedAt: z.number().optional(),
-  updatedAt: z.number().optional(),
-  value: z.string().optional(),
-  projectId: z.array(z.string()).optional(),
-  type: PayloadType$inboundSchema.optional(),
-  target: z.array(PayloadTarget$inboundSchema).optional(),
-  applyToAllCustomEnvironments: z.boolean().optional(),
-  decrypted: z.boolean().optional(),
-  comment: z.string().optional(),
-  lastEditedByDisplayName: z.string().optional(),
-  projectNames: z.array(z.string()).optional(),
+  created: types.optional(types.date()),
+  key: types.optional(types.string()),
+  ownerId: z.nullable(types.string()).optional(),
+  id: types.optional(types.string()),
+  createdBy: z.nullable(types.string()).optional(),
+  deletedBy: z.nullable(types.string()).optional(),
+  updatedBy: z.nullable(types.string()).optional(),
+  createdAt: types.optional(types.number()),
+  deletedAt: types.optional(types.number()),
+  updatedAt: types.optional(types.number()),
+  value: types.optional(types.string()),
+  projectId: types.optional(z.array(types.string())),
+  type: types.optional(PayloadType$inboundSchema),
+  target: types.optional(z.array(PayloadTarget$inboundSchema)),
+  applyToAllCustomEnvironments: types.optional(types.boolean()),
+  decrypted: types.optional(types.boolean()),
+  comment: types.optional(types.string()),
+  lastEditedByDisplayName: types.optional(types.string()),
+  projectNames: types.optional(z.array(types.string())),
 });
 /** @internal */
 export type SixtyThree$Outbound = {
@@ -21131,8 +21217,8 @@ export function sixtyThreeFromJSON(
 }
 
 /** @internal */
-export const Target$inboundSchema: z.ZodType<Target, z.ZodTypeDef, unknown> = z
-  .union([z.string(), z.array(z.string())]);
+export const Target$inboundSchema: z.ZodType<Target, z.ZodTypeDef, unknown> =
+  smartUnion([types.string(), z.array(types.string())]);
 /** @internal */
 export type Target$Outbound = string | Array<string>;
 
@@ -21141,7 +21227,7 @@ export const Target$outboundSchema: z.ZodType<
   Target$Outbound,
   z.ZodTypeDef,
   Target
-> = z.union([z.string(), z.array(z.string())]);
+> = smartUnion([z.string(), z.array(z.string())]);
 
 export function targetToJSON(target: Target): string {
   return JSON.stringify(Target$outboundSchema.parse(target));
@@ -21162,15 +21248,15 @@ export const SixtyTwo$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  key: z.string().optional(),
-  projectId: z.string().optional(),
-  projectName: z.string().optional(),
-  target: z.union([z.string(), z.array(z.string())]).optional(),
-  id: z.string().optional(),
-  gitBranch: z.string().optional(),
-  edgeConfigId: z.nullable(z.string()).optional(),
-  edgeConfigTokenId: z.nullable(z.string()).optional(),
-  source: z.string().optional(),
+  key: types.optional(types.string()),
+  projectId: types.optional(types.string()),
+  projectName: types.optional(types.string()),
+  target: types.optional(smartUnion([types.string(), z.array(types.string())])),
+  id: types.optional(types.string()),
+  gitBranch: types.optional(types.string()),
+  edgeConfigId: z.nullable(types.string()).optional(),
+  edgeConfigTokenId: z.nullable(types.string()).optional(),
+  source: types.optional(types.string()),
 });
 /** @internal */
 export type SixtyTwo$Outbound = {
@@ -21194,7 +21280,7 @@ export const SixtyTwo$outboundSchema: z.ZodType<
   key: z.string().optional(),
   projectId: z.string().optional(),
   projectName: z.string().optional(),
-  target: z.union([z.string(), z.array(z.string())]).optional(),
+  target: smartUnion([z.string(), z.array(z.string())]).optional(),
   id: z.string().optional(),
   gitBranch: z.string().optional(),
   edgeConfigId: z.nullable(z.string()).optional(),
@@ -21221,8 +21307,8 @@ export const SixtyOne$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  email: z.string(),
-  name: z.string(),
+  email: types.string(),
+  name: types.string(),
 });
 /** @internal */
 export type SixtyOne$Outbound = {
@@ -21256,11 +21342,11 @@ export function sixtyOneFromJSON(
 /** @internal */
 export const Sixty$inboundSchema: z.ZodType<Sixty, z.ZodTypeDef, unknown> = z
   .object({
-    sha: z.string(),
-    gitUserPlatform: z.string(),
-    projectName: z.string(),
-    gitCommitterName: z.string(),
-    source: z.string(),
+    sha: types.string(),
+    gitUserPlatform: types.string(),
+    projectName: types.string(),
+    gitCommitterName: types.string(),
+    source: types.string(),
   });
 /** @internal */
 export type Sixty$Outbound = {
@@ -21303,9 +21389,9 @@ export const FiftyNine$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  price: z.number().optional(),
-  currency: z.string().optional(),
+  name: types.string(),
+  price: types.optional(types.number()),
+  currency: types.optional(types.string()),
 });
 /** @internal */
 export type FiftyNine$Outbound = {
@@ -21344,8 +21430,8 @@ export const FiftyEight$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  renew: z.boolean().optional(),
-  domain: z.string(),
+  renew: types.optional(types.boolean()),
+  domain: types.string(),
 });
 /** @internal */
 export type FiftyEight$Outbound = {
@@ -21382,9 +21468,9 @@ export const FiftySeven$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  destinationId: z.string(),
-  destinationName: z.string(),
+  name: types.string(),
+  destinationId: types.string(),
+  destinationName: types.string(),
 });
 /** @internal */
 export type FiftySeven$Outbound = {
@@ -21423,9 +21509,9 @@ export const FiftySix$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  destinationId: z.nullable(z.string()),
-  destinationName: z.nullable(z.string()),
+  name: types.string(),
+  destinationId: types.nullable(types.string()),
+  destinationName: types.nullable(types.string()),
 });
 /** @internal */
 export type FiftySix$Outbound = {
@@ -21464,9 +21550,9 @@ export const FiftyFive$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  fromId: z.nullable(z.string()),
-  fromName: z.nullable(z.string()),
+  name: types.string(),
+  fromId: types.nullable(types.string()),
+  fromName: types.nullable(types.string()),
 });
 /** @internal */
 export type FiftyFive$Outbound = {
@@ -21505,8 +21591,8 @@ export const FiftyFour$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  domainId: z.string(),
-  name: z.string(),
+  domainId: types.string(),
+  name: types.string(),
 });
 /** @internal */
 export type FiftyFour$Outbound = {
@@ -21543,7 +21629,7 @@ export const UserEventPayload53OldTeam$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
+  name: types.string(),
 });
 /** @internal */
 export type UserEventPayload53OldTeam$Outbound = {
@@ -21582,7 +21668,7 @@ export const UserEventPayload53NewTeam$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
+  name: types.string(),
 });
 /** @internal */
 export type UserEventPayload53NewTeam$Outbound = {
@@ -21621,9 +21707,13 @@ export const FiftyThree$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  oldTeam: z.lazy(() => UserEventPayload53OldTeam$inboundSchema).optional(),
-  newTeam: z.lazy(() => UserEventPayload53NewTeam$inboundSchema).optional(),
+  name: types.string(),
+  oldTeam: types.optional(
+    z.lazy(() => UserEventPayload53OldTeam$inboundSchema),
+  ),
+  newTeam: types.optional(
+    z.lazy(() => UserEventPayload53NewTeam$inboundSchema),
+  ),
 });
 /** @internal */
 export type FiftyThree$Outbound = {
@@ -21662,10 +21752,10 @@ export const FiftyTwo$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  userId: z.string(),
-  teamId: z.string(),
-  ownerName: z.string(),
+  name: types.string(),
+  userId: types.string(),
+  teamId: types.string(),
+  ownerName: types.string(),
 });
 /** @internal */
 export type FiftyTwo$Outbound = {
@@ -21706,8 +21796,8 @@ export const FiftyOne$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  cdnEnabled: z.boolean(),
+  name: types.string(),
+  cdnEnabled: types.boolean(),
 });
 /** @internal */
 export type FiftyOne$Outbound = {
@@ -21741,9 +21831,9 @@ export function fiftyOneFromJSON(
 /** @internal */
 export const Fifty$inboundSchema: z.ZodType<Fifty, z.ZodTypeDef, unknown> = z
   .object({
-    name: z.string(),
-    price: z.number(),
-    currency: z.string().optional(),
+    name: types.string(),
+    price: types.number(),
+    currency: types.optional(types.string()),
   });
 /** @internal */
 export type Fifty$Outbound = {
@@ -21782,7 +21872,7 @@ export const FortyNine$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
+  name: types.string(),
 });
 /** @internal */
 export type FortyNine$Outbound = {
@@ -21817,11 +21907,11 @@ export const FortyEight$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  value: z.string(),
-  name: z.string(),
-  domain: z.string(),
-  type: z.string(),
+  id: types.string(),
+  value: types.string(),
+  name: types.string(),
+  domain: types.string(),
+  type: types.string(),
 });
 /** @internal */
 export type FortyEight$Outbound = {
@@ -21864,12 +21954,12 @@ export const FortySeven$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  value: z.string(),
-  name: z.string(),
-  domain: z.string(),
-  type: z.string(),
-  mxPriority: z.number().optional(),
+  id: types.string(),
+  value: types.string(),
+  name: types.string(),
+  domain: types.string(),
+  type: types.string(),
+  mxPriority: types.optional(types.number()),
 });
 /** @internal */
 export type FortySeven$Outbound = {
@@ -21914,10 +22004,10 @@ export const UserEventPayloadDeployment$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
-  url: z.string(),
-  meta: z.record(z.string()),
+  id: types.string(),
+  name: types.string(),
+  url: types.string(),
+  meta: z.record(types.string()),
 });
 /** @internal */
 export type UserEventPayloadDeployment$Outbound = {
@@ -21963,8 +22053,8 @@ export const FortySix$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   deployment: z.lazy(() => UserEventPayloadDeployment$inboundSchema),
-  deploymentId: z.string(),
-  url: z.string(),
+  deploymentId: types.string(),
+  url: types.string(),
 });
 /** @internal */
 export type FortySix$Outbound = {
@@ -22003,7 +22093,7 @@ export const UserEventPayloadOldTeam$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
+  name: types.string(),
 });
 /** @internal */
 export type UserEventPayloadOldTeam$Outbound = {
@@ -22042,7 +22132,7 @@ export const UserEventPayloadNewTeam$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
+  name: types.string(),
 });
 /** @internal */
 export type UserEventPayloadNewTeam$Outbound = {
@@ -22081,9 +22171,9 @@ export const FortyFive$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  url: z.string(),
-  oldTeam: z.lazy(() => UserEventPayloadOldTeam$inboundSchema).optional(),
-  newTeam: z.lazy(() => UserEventPayloadNewTeam$inboundSchema).optional(),
+  url: types.string(),
+  oldTeam: types.optional(z.lazy(() => UserEventPayloadOldTeam$inboundSchema)),
+  newTeam: types.optional(z.lazy(() => UserEventPayloadNewTeam$inboundSchema)),
 });
 /** @internal */
 export type FortyFive$Outbound = {
@@ -22122,10 +22212,10 @@ export const PayloadDeployment$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
-  url: z.string(),
-  meta: z.record(z.string()),
+  id: types.string(),
+  name: types.string(),
+  url: types.string(),
+  meta: z.record(types.string()),
 });
 /** @internal */
 export type PayloadDeployment$Outbound = {
@@ -22170,19 +22260,19 @@ export const FortyFour$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string().optional(),
-  alias: z.array(z.string()).optional(),
-  target: z.nullable(z.string()).optional(),
+  name: types.optional(types.string()),
+  alias: types.optional(z.array(types.string())),
+  target: z.nullable(types.string()).optional(),
   deployment: z.nullable(z.lazy(() => PayloadDeployment$inboundSchema))
     .optional(),
-  url: z.string(),
-  forced: z.boolean().optional(),
-  deploymentId: z.string().optional(),
-  plan: z.string().optional(),
-  project: z.string().optional(),
-  projectId: z.string().optional(),
-  regions: z.array(z.string()).optional(),
-  type: z.string().optional(),
+  url: types.string(),
+  forced: types.optional(types.boolean()),
+  deploymentId: types.optional(types.string()),
+  plan: types.optional(types.string()),
+  project: types.optional(types.string()),
+  projectId: types.optional(types.string()),
+  regions: types.optional(z.array(types.string())),
+  type: types.optional(types.string()),
 });
 /** @internal */
 export type FortyFour$Outbound = {
@@ -22240,7 +22330,7 @@ export const UserEventPayload43Project$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
+  name: types.string(),
 });
 /** @internal */
 export type UserEventPayload43Project$Outbound = {
@@ -22279,10 +22369,10 @@ export const DeployHook$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  createdAt: z.number(),
-  id: z.string(),
-  name: z.string(),
-  ref: z.string(),
+  createdAt: types.number(),
+  id: types.string(),
+  name: types.string(),
+  ref: types.string(),
 });
 /** @internal */
 export type DeployHook$Outbound = {
@@ -22321,7 +22411,7 @@ export function deployHookFromJSON(
 export const Job$inboundSchema: z.ZodType<Job, z.ZodTypeDef, unknown> = z
   .object({
     deployHook: z.lazy(() => DeployHook$inboundSchema),
-    state: z.string(),
+    state: types.string(),
   });
 /** @internal */
 export type Job$Outbound = {
@@ -22393,9 +22483,9 @@ export const FortyTwo$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  bitbucketEmail: z.string(),
-  bitbucketLogin: z.string(),
-  bitbucketName: z.string().optional(),
+  bitbucketEmail: types.string(),
+  bitbucketLogin: types.string(),
+  bitbucketName: types.optional(types.string()),
 });
 /** @internal */
 export type FortyTwo$Outbound = {
@@ -22434,9 +22524,9 @@ export const FortyOne$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  gitlabLogin: z.string(),
-  gitlabEmail: z.string(),
-  gitlabName: z.string().optional(),
+  gitlabLogin: types.string(),
+  gitlabEmail: types.string(),
+  gitlabName: types.optional(types.string()),
 });
 /** @internal */
 export type FortyOne$Outbound = {
@@ -22472,7 +22562,7 @@ export function fortyOneFromJSON(
 /** @internal */
 export const Forty$inboundSchema: z.ZodType<Forty, z.ZodTypeDef, unknown> = z
   .object({
-    githubLogin: z.string(),
+    githubLogin: types.string(),
   });
 /** @internal */
 export type Forty$Outbound = {
@@ -22507,8 +22597,8 @@ export const UserEventPayload39Team$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
+  id: types.string(),
+  name: types.string(),
 });
 /** @internal */
 export type UserEventPayload39Team$Outbound = {
@@ -22549,8 +22639,8 @@ export const UserEventPayload39Configuration$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string().optional(),
+  id: types.string(),
+  name: types.optional(types.string()),
 });
 /** @internal */
 export type UserEventPayload39Configuration$Outbound = {
@@ -22595,7 +22685,7 @@ export const ThirtyNine$inboundSchema: z.ZodType<
 > = z.object({
   team: z.lazy(() => UserEventPayload39Team$inboundSchema),
   configuration: z.lazy(() => UserEventPayload39Configuration$inboundSchema),
-  newName: z.string(),
+  newName: types.string(),
 });
 /** @internal */
 export type ThirtyNine$Outbound = {
@@ -22634,8 +22724,8 @@ export const UserEventPayloadTeam$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
+  id: types.string(),
+  name: types.string(),
 });
 /** @internal */
 export type UserEventPayloadTeam$Outbound = {
@@ -22676,8 +22766,8 @@ export const UserEventPayload38Configuration$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string().optional(),
+  id: types.string(),
+  name: types.optional(types.string()),
 });
 /** @internal */
 export type UserEventPayload38Configuration$Outbound = {
@@ -22720,8 +22810,8 @@ export const UserEventPayload38Project$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string().optional(),
+  id: types.string(),
+  name: types.optional(types.string()),
 });
 /** @internal */
 export type UserEventPayload38Project$Outbound = {
@@ -22803,8 +22893,8 @@ export const PayloadTeam$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
+  id: types.string(),
+  name: types.string(),
 });
 /** @internal */
 export type PayloadTeam$Outbound = {
@@ -22841,8 +22931,8 @@ export const UserEventPayloadConfiguration$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string().optional(),
+  id: types.string(),
+  name: types.optional(types.string()),
 });
 /** @internal */
 export type UserEventPayloadConfiguration$Outbound = {
@@ -22885,8 +22975,8 @@ export const UserEventPayload37Project$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string().optional(),
+  id: types.string(),
+  name: types.optional(types.string()),
 });
 /** @internal */
 export type UserEventPayload37Project$Outbound = {
@@ -22930,8 +23020,8 @@ export const ThirtySeven$inboundSchema: z.ZodType<
   team: z.lazy(() => PayloadTeam$inboundSchema),
   configuration: z.lazy(() => UserEventPayloadConfiguration$inboundSchema),
   project: z.lazy(() => UserEventPayload37Project$inboundSchema),
-  buildsEnabled: z.boolean().optional(),
-  passive: z.boolean().optional(),
+  buildsEnabled: types.optional(types.boolean()),
+  passive: types.optional(types.boolean()),
 });
 /** @internal */
 export type ThirtySeven$Outbound = {
@@ -22974,8 +23064,8 @@ export const UserEventPayload36Team$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
+  id: types.string(),
+  name: types.string(),
 });
 /** @internal */
 export type UserEventPayload36Team$Outbound = {
@@ -23016,8 +23106,8 @@ export const PayloadConfiguration$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string().optional(),
+  id: types.string(),
+  name: types.optional(types.string()),
 });
 /** @internal */
 export type PayloadConfiguration$Outbound = {
@@ -23058,8 +23148,8 @@ export const UserEventPayload36Project$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string().optional(),
+  id: types.string(),
+  name: types.optional(types.string()),
 });
 /** @internal */
 export type UserEventPayload36Project$Outbound = {
@@ -23103,7 +23193,7 @@ export const ThirtySix$inboundSchema: z.ZodType<
   team: z.lazy(() => UserEventPayload36Team$inboundSchema),
   configuration: z.lazy(() => PayloadConfiguration$inboundSchema),
   project: z.lazy(() => UserEventPayload36Project$inboundSchema),
-  buildsEnabled: z.boolean().optional(),
+  buildsEnabled: types.optional(types.boolean()),
 });
 /** @internal */
 export type ThirtySix$Outbound = {
@@ -23144,8 +23234,8 @@ export const Configuration$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
+  id: types.string(),
+  name: types.string(),
 });
 /** @internal */
 export type Configuration$Outbound = {
@@ -23217,7 +23307,7 @@ export const ThirtyFour$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  suffix: z.string(),
+  suffix: types.string(),
 });
 /** @internal */
 export type ThirtyFour$Outbound = {
@@ -23252,8 +23342,8 @@ export const ThirtyThree$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  status: z.string(),
-  suffix: z.string(),
+  status: types.string(),
+  suffix: types.string(),
 });
 /** @internal */
 export type ThirtyThree$Outbound = {
@@ -23290,8 +23380,8 @@ export const ThirtyTwo$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  reason: z.string().optional(),
-  suffix: z.string(),
+  reason: types.optional(types.string()),
+  suffix: types.string(),
 });
 /** @internal */
 export type ThirtyTwo$Outbound = {
@@ -23328,10 +23418,10 @@ export const ThirtyOne$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string().optional(),
-  projectName: z.string().optional(),
-  certId: z.string().optional(),
-  origin: z.string().optional(),
+  projectId: types.optional(types.string()),
+  projectName: types.optional(types.string()),
+  certId: types.optional(types.string()),
+  origin: types.optional(types.string()),
 });
 /** @internal */
 export type ThirtyOne$Outbound = {
@@ -23369,10 +23459,10 @@ export function thirtyOneFromJSON(
 /** @internal */
 export const Thirty$inboundSchema: z.ZodType<Thirty, z.ZodTypeDef, unknown> = z
   .object({
-    projectId: z.string().optional(),
-    projectName: z.string().optional(),
-    target: z.array(z.string()).optional(),
-    updated: z.boolean().optional(),
+    projectId: types.optional(types.string()),
+    projectName: types.optional(types.string()),
+    target: types.optional(z.array(types.string())),
+    updated: types.optional(types.boolean()),
   });
 /** @internal */
 export type Thirty$Outbound = {
@@ -23413,8 +23503,8 @@ export const TwentyNine$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  cn: z.string().optional(),
-  cns: z.array(z.string()).optional(),
+  cn: types.optional(types.string()),
+  cns: types.optional(z.array(types.string())),
 });
 /** @internal */
 export type TwentyNine$Outbound = {
@@ -23451,9 +23541,9 @@ export const TwentyEight$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  cn: z.string().optional(),
-  cns: z.array(z.string()).optional(),
+  id: types.string(),
+  cn: types.optional(types.string()),
+  cns: types.optional(z.array(types.string())),
 });
 /** @internal */
 export type TwentyEight$Outbound = {
@@ -23492,8 +23582,8 @@ export const TwentySeven$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  src: z.string(),
-  dst: z.string(),
+  src: types.string(),
+  dst: types.string(),
 });
 /** @internal */
 export type TwentySeven$Outbound = {
@@ -23530,7 +23620,7 @@ export const PayloadOldTeam$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
+  name: types.string(),
 });
 /** @internal */
 export type PayloadOldTeam$Outbound = {
@@ -23565,7 +23655,7 @@ export const PayloadNewTeam$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
+  name: types.string(),
 });
 /** @internal */
 export type PayloadNewTeam$Outbound = {
@@ -23600,9 +23690,9 @@ export const TwentySix$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  oldTeam: z.lazy(() => PayloadOldTeam$inboundSchema).optional(),
-  newTeam: z.lazy(() => PayloadNewTeam$inboundSchema).optional(),
+  id: types.string(),
+  oldTeam: types.optional(z.lazy(() => PayloadOldTeam$inboundSchema)),
+  newTeam: types.optional(z.lazy(() => PayloadNewTeam$inboundSchema)),
 });
 /** @internal */
 export type TwentySix$Outbound = {
@@ -23641,9 +23731,9 @@ export const TwentyFive$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  cn: z.string().optional(),
-  cns: z.array(z.string()).optional(),
-  id: z.string().optional(),
+  cn: types.optional(types.string()),
+  cns: types.optional(z.array(types.string())),
+  id: types.optional(types.string()),
 });
 /** @internal */
 export type TwentyFive$Outbound = {
@@ -23682,10 +23772,10 @@ export const TwentyFour$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  cn: z.string().optional(),
-  cns: z.array(z.string()).optional(),
-  custom: z.boolean(),
-  id: z.string().optional(),
+  cn: types.optional(types.string()),
+  cns: types.optional(z.array(types.string())),
+  custom: types.boolean(),
+  id: types.optional(types.string()),
 });
 /** @internal */
 export type TwentyFour$Outbound = {
@@ -23726,8 +23816,8 @@ export const UserEventPayloadProject$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
+  id: types.string(),
+  name: types.string(),
 });
 /** @internal */
 export type UserEventPayloadProject$Outbound = {
@@ -23769,7 +23859,7 @@ export const TwentyThree$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   project: z.lazy(() => UserEventPayloadProject$inboundSchema),
-  versionId: z.string(),
+  versionId: types.string(),
 });
 /** @internal */
 export type TwentyThree$Outbound = {
@@ -23806,8 +23896,8 @@ export const PayloadProject$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
+  id: types.string(),
+  name: types.string(),
 });
 /** @internal */
 export type PayloadProject$Outbound = {
@@ -23845,8 +23935,8 @@ export const TwentyTwo$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   project: z.lazy(() => PayloadProject$inboundSchema),
-  bulkRedirectsLimit: z.number(),
-  prevBulkRedirectsLimit: z.number(),
+  bulkRedirectsLimit: types.number(),
+  prevBulkRedirectsLimit: types.number(),
 });
 /** @internal */
 export type TwentyTwo$Outbound = {
@@ -23885,7 +23975,7 @@ export const TwentyOne$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  avatar: z.string().optional(),
+  avatar: types.optional(types.string()),
 });
 /** @internal */
 export type TwentyOne$Outbound = {
@@ -23917,8 +24007,8 @@ export function twentyOneFromJSON(
 /** @internal */
 export const Twenty$inboundSchema: z.ZodType<Twenty, z.ZodTypeDef, unknown> = z
   .object({
-    projectName: z.string(),
-    autoExposeSystemEnvs: z.boolean(),
+    projectName: types.string(),
+    autoExposeSystemEnvs: types.boolean(),
   });
 /** @internal */
 export type Twenty$Outbound = {
@@ -23955,8 +24045,8 @@ export const Nineteen$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  alias: z.string(),
-  deploymentUrl: z.string(),
+  alias: types.string(),
+  deploymentUrl: types.string(),
 });
 /** @internal */
 export type Nineteen$Outbound = {
@@ -23993,10 +24083,10 @@ export const Eighteen$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string().optional(),
-  alias: z.string(),
-  aliasId: z.string(),
-  deploymentId: z.nullable(z.string()),
+  name: types.optional(types.string()),
+  alias: types.string(),
+  aliasId: types.string(),
+  deploymentId: types.nullable(types.string()),
 });
 /** @internal */
 export type Eighteen$Outbound = {
@@ -24034,7 +24124,7 @@ export function eighteenFromJSON(
 /** @internal */
 export const OldTeam$inboundSchema: z.ZodType<OldTeam, z.ZodTypeDef, unknown> =
   z.object({
-    name: z.string(),
+    name: types.string(),
   });
 /** @internal */
 export type OldTeam$Outbound = {
@@ -24066,7 +24156,7 @@ export function oldTeamFromJSON(
 /** @internal */
 export const NewTeam$inboundSchema: z.ZodType<NewTeam, z.ZodTypeDef, unknown> =
   z.object({
-    name: z.string(),
+    name: types.string(),
   });
 /** @internal */
 export type NewTeam$Outbound = {
@@ -24101,10 +24191,10 @@ export const Seventeen$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string().optional(),
-  alias: z.string(),
-  oldTeam: z.lazy(() => OldTeam$inboundSchema).optional(),
-  newTeam: z.lazy(() => NewTeam$inboundSchema).optional(),
+  name: types.optional(types.string()),
+  alias: types.string(),
+  oldTeam: types.optional(z.lazy(() => OldTeam$inboundSchema)),
+  newTeam: types.optional(z.lazy(() => NewTeam$inboundSchema)),
 });
 /** @internal */
 export type Seventeen$Outbound = {
@@ -24142,8 +24232,8 @@ export function seventeenFromJSON(
 /** @internal */
 export const Sixteen$inboundSchema: z.ZodType<Sixteen, z.ZodTypeDef, unknown> =
   z.object({
-    alias: z.string().optional(),
-    email: z.string().optional(),
+    alias: types.optional(types.string()),
+    email: types.optional(types.string()),
   });
 /** @internal */
 export type Sixteen$Outbound = {
@@ -24177,9 +24267,9 @@ export function sixteenFromJSON(
 /** @internal */
 export const Fifteen$inboundSchema: z.ZodType<Fifteen, z.ZodTypeDef, unknown> =
   z.object({
-    alias: z.string().optional(),
-    email: z.string().optional(),
-    username: z.string().optional(),
+    alias: types.optional(types.string()),
+    email: types.optional(types.string()),
+    username: types.optional(types.string()),
   });
 /** @internal */
 export type Fifteen$Outbound = {
@@ -24227,8 +24317,8 @@ export const Fourteen$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectName: z.string(),
-  alias: z.string(),
+  projectName: types.string(),
+  alias: types.string(),
   action: UserEventPayload14Action$inboundSchema,
 });
 /** @internal */
@@ -24268,10 +24358,10 @@ export const Thirteen$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  alias: z.string().optional(),
-  aliasId: z.string().optional(),
-  userId: z.string().optional(),
-  username: z.string().optional(),
+  alias: types.optional(types.string()),
+  aliasId: types.optional(types.string()),
+  userId: types.optional(types.string()),
+  username: types.optional(types.string()),
 });
 /** @internal */
 export type Thirteen$Outbound = {
@@ -24309,9 +24399,9 @@ export function thirteenFromJSON(
 /** @internal */
 export const Twelve$inboundSchema: z.ZodType<Twelve, z.ZodTypeDef, unknown> = z
   .object({
-    alias: z.string().optional(),
-    userId: z.string().optional(),
-    username: z.string().optional(),
+    alias: types.optional(types.string()),
+    userId: types.optional(types.string()),
+    username: types.optional(types.string()),
   });
 /** @internal */
 export type Twelve$Outbound = {
@@ -24347,7 +24437,7 @@ export function twelveFromJSON(
 /** @internal */
 export const Eleven$inboundSchema: z.ZodType<Eleven, z.ZodTypeDef, unknown> = z
   .object({
-    alias: z.string().optional(),
+    alias: types.optional(types.string()),
   });
 /** @internal */
 export type Eleven$Outbound = {
@@ -24379,9 +24469,9 @@ export function elevenFromJSON(
 /** @internal */
 export const Ten$inboundSchema: z.ZodType<Ten, z.ZodTypeDef, unknown> = z
   .object({
-    aliasId: z.string().optional(),
-    alias: z.string().optional(),
-    projectName: z.string().optional(),
+    aliasId: types.optional(types.string()),
+    alias: types.optional(types.string()),
+    projectName: types.optional(types.string()),
   });
 /** @internal */
 export type Ten$Outbound = {
@@ -24417,10 +24507,10 @@ export const Deployment$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
-  url: z.string(),
-  meta: z.record(z.string()),
+  id: types.string(),
+  name: types.string(),
+  url: types.string(),
+  meta: z.record(types.string()),
 });
 /** @internal */
 export type Deployment$Outbound = {
@@ -24458,18 +24548,18 @@ export function deploymentFromJSON(
 /** @internal */
 export const Nine$inboundSchema: z.ZodType<Nine, z.ZodTypeDef, unknown> = z
   .object({
-    alias: z.string().optional(),
+    alias: types.optional(types.string()),
     deployment: z.nullable(z.lazy(() => Deployment$inboundSchema)).optional(),
-    ruleCount: z.number().optional(),
-    deploymentUrl: z.string().optional(),
-    aliasId: z.string().optional(),
-    deploymentId: z.nullable(z.string()).optional(),
-    oldDeploymentId: z.nullable(z.string()).optional(),
-    redirect: z.string().optional(),
-    redirectStatusCode: z.nullable(z.number()).optional(),
-    target: z.nullable(z.string()).optional(),
-    system: z.boolean().optional(),
-    aliasUpdatedAt: z.number().optional(),
+    ruleCount: types.optional(types.number()),
+    deploymentUrl: types.optional(types.string()),
+    aliasId: types.optional(types.string()),
+    deploymentId: z.nullable(types.string()).optional(),
+    oldDeploymentId: z.nullable(types.string()).optional(),
+    redirect: types.optional(types.string()),
+    redirectStatusCode: z.nullable(types.number()).optional(),
+    target: z.nullable(types.string()).optional(),
+    system: types.optional(types.boolean()),
+    aliasUpdatedAt: types.optional(types.number()),
   });
 /** @internal */
 export type Nine$Outbound = {
@@ -24523,8 +24613,8 @@ export const UserEventPayload8AccessGroup$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
+  id: types.string(),
+  name: types.string(),
 });
 /** @internal */
 export type UserEventPayload8AccessGroup$Outbound = {
@@ -24564,8 +24654,8 @@ export function userEventPayload8AccessGroupFromJSON(
 /** @internal */
 export const Project$inboundSchema: z.ZodType<Project, z.ZodTypeDef, unknown> =
   z.object({
-    id: z.string(),
-    name: z.string().optional(),
+    id: types.string(),
+    name: types.optional(types.string()),
   });
 /** @internal */
 export type Project$Outbound = {
@@ -24616,7 +24706,7 @@ export const Eight$inboundSchema: z.ZodType<Eight, z.ZodTypeDef, unknown> = z
     accessGroup: z.lazy(() => UserEventPayload8AccessGroup$inboundSchema),
     project: z.lazy(() => Project$inboundSchema),
     next_role: z.nullable(NextRole$inboundSchema).optional(),
-    previous_role: PreviousRole$inboundSchema.optional(),
+    previous_role: types.optional(PreviousRole$inboundSchema),
   }).transform((v) => {
     return remap$(v, {
       "next_role": "nextRole",
@@ -24667,8 +24757,8 @@ export const UserEventPayloadAccessGroup$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string().optional(),
+  id: types.string(),
+  name: types.optional(types.string()),
 });
 /** @internal */
 export type UserEventPayloadAccessGroup$Outbound = {
@@ -24711,8 +24801,8 @@ export const PayloadUser$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  username: z.string().optional(),
+  id: types.string(),
+  username: types.optional(types.string()),
 });
 /** @internal */
 export type PayloadUser$Outbound = {
@@ -24748,7 +24838,7 @@ export const Seven$inboundSchema: z.ZodType<Seven, z.ZodTypeDef, unknown> = z
   .object({
     accessGroup: z.lazy(() => UserEventPayloadAccessGroup$inboundSchema),
     user: z.lazy(() => PayloadUser$inboundSchema),
-    directoryType: z.string().optional(),
+    directoryType: types.optional(types.string()),
   });
 /** @internal */
 export type Seven$Outbound = {
@@ -24787,8 +24877,8 @@ export const PayloadAccessGroup$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
+  id: types.string(),
+  name: types.string(),
 });
 /** @internal */
 export type PayloadAccessGroup$Outbound = {
@@ -24826,7 +24916,7 @@ export function payloadAccessGroupFromJSON(
 /** @internal */
 export const Six$inboundSchema: z.ZodType<Six, z.ZodTypeDef, unknown> = z
   .object({
-    author: z.string(),
+    author: types.string(),
     accessGroup: z.lazy(() => PayloadAccessGroup$inboundSchema),
   });
 /** @internal */
@@ -24861,8 +24951,8 @@ export const AccessGroup$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
+  id: types.string(),
+  name: types.string(),
 });
 /** @internal */
 export type AccessGroup$Outbound = {
@@ -24935,9 +25025,9 @@ export const UserEventPayloadAction$outboundSchema: z.ZodNativeEnum<
 export const Four$inboundSchema: z.ZodType<Four, z.ZodTypeDef, unknown> = z
   .object({
     action: UserEventPayloadAction$inboundSchema,
-    projectName: z.string().optional(),
-    projectId: z.string().optional(),
-    environment: z.array(z.string()),
+    projectName: types.optional(types.string()),
+    projectId: types.optional(types.string()),
+    environment: z.array(types.string()),
   });
 /** @internal */
 export type Four$Outbound = {
@@ -24982,10 +25072,10 @@ export const PayloadAction$outboundSchema: z.ZodNativeEnum<
 export const Three$inboundSchema: z.ZodType<Three, z.ZodTypeDef, unknown> = z
   .object({
     action: PayloadAction$inboundSchema,
-    label: z.string().optional(),
-    projectName: z.string().optional(),
-    projectId: z.string().optional(),
-    environment: z.string(),
+    label: types.optional(types.string()),
+    projectName: types.optional(types.string()),
+    projectId: types.optional(types.string()),
+    environment: types.string(),
   });
 /** @internal */
 export type Three$Outbound = {
@@ -25036,10 +25126,10 @@ export const Payload2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   action: Action$inboundSchema,
-  id: z.string(),
-  slug: z.string(),
-  projectId: z.string(),
-  projectName: z.string().optional(),
+  id: types.string(),
+  slug: types.string(),
+  projectId: types.string(),
+  projectName: types.optional(types.string()),
 });
 /** @internal */
 export type Payload2$Outbound = {
@@ -25107,7 +25197,7 @@ export function payload1FromJSON(
 
 /** @internal */
 export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
-  z.union([
+  smartUnion([
     z.lazy(() => SeventyFour$inboundSchema),
     z.lazy(() => SeventySeven$inboundSchema),
     z.lazy(() => FortySeven$inboundSchema),
@@ -25465,7 +25555,7 @@ export const Payload$outboundSchema: z.ZodType<
   Payload$Outbound,
   z.ZodTypeDef,
   Payload
-> = z.union([
+> = smartUnion([
   z.lazy(() => SeventyFour$outboundSchema),
   z.lazy(() => SeventySeven$outboundSchema),
   z.lazy(() => FortySeven$outboundSchema),
@@ -25661,200 +25751,206 @@ export const UserEvent$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  text: z.string(),
+  id: types.string(),
+  text: types.string(),
   entities: z.array(z.lazy(() => Entities$inboundSchema)),
-  createdAt: z.number(),
-  user: z.lazy(() => User$inboundSchema).optional(),
-  principal: z.union([
-    z.lazy(() => One$inboundSchema),
-    z.lazy(() => Two$inboundSchema),
-  ]).optional(),
-  via: z.array(
-    z.union([
-      z.lazy(() => Via1$inboundSchema),
-      z.lazy(() => Via2$inboundSchema),
+  createdAt: types.number(),
+  user: types.optional(z.lazy(() => User$inboundSchema)),
+  principal: types.optional(
+    smartUnion([
+      z.lazy(() => One$inboundSchema),
+      z.lazy(() => Two$inboundSchema),
     ]),
-  ).optional(),
-  userId: z.string(),
-  principalId: z.string(),
-  viaIds: z.array(z.string()).optional(),
-  payload: z.union([
-    z.lazy(() => SeventyFour$inboundSchema),
-    z.lazy(() => SeventySeven$inboundSchema),
-    z.lazy(() => FortySeven$inboundSchema),
-    z.lazy(() => FortyEight$inboundSchema),
-    z.lazy(() => Sixty$inboundSchema),
-    z.lazy(() => SixtySix$inboundSchema),
-    z.lazy(() => SeventyTwo$inboundSchema),
-    z.lazy(() => SeventyFive$inboundSchema),
-    z.lazy(() => OneHundredAndFortyThree$inboundSchema),
-    z.lazy(() => OneHundredAndSeventyFour$inboundSchema),
-    z.lazy(() => Payload2$inboundSchema),
-    z.lazy(() => FiftyTwo$inboundSchema),
-    z.lazy(() => SeventySix$inboundSchema),
-    z.lazy(() => OneHundred$inboundSchema),
-    z.lazy(() => OneHundredAndTwelve$inboundSchema),
-    z.lazy(() => OneHundredAndFiftyFour$inboundSchema),
-    z.lazy(() => Fourteen$inboundSchema),
-    z.lazy(() => Eighteen$inboundSchema),
-    z.lazy(() => TwentyTwo$inboundSchema),
-    z.lazy(() => ThirtySix$inboundSchema),
-    z.lazy(() => ThirtySeven$inboundSchema),
-    z.lazy(() => ThirtyEight$inboundSchema),
-    z.lazy(() => ThirtyNine$inboundSchema),
-    z.lazy(() => FortySix$inboundSchema),
-    z.lazy(() => FiftyFive$inboundSchema),
-    z.lazy(() => FiftySix$inboundSchema),
-    z.lazy(() => FiftySeven$inboundSchema),
-    z.lazy(() => SixtySeven$inboundSchema),
-    z.lazy(() => SixtyEight$inboundSchema),
-    z.lazy(() => SixtyNine$inboundSchema),
-    z.lazy(() => SeventyOne$inboundSchema),
-    z.lazy(() => EightyOne$inboundSchema),
-    z.lazy(() => EightyFive$inboundSchema),
-    z.lazy(() => EightyEight$inboundSchema),
-    z.lazy(() => EightyNine$inboundSchema),
-    z.lazy(() => OneHundredAndThree$inboundSchema),
-    z.lazy(() => OneHundredAndTwentyOne$inboundSchema),
-    z.lazy(() => OneHundredAndFortyFive$inboundSchema),
-    z.lazy(() => OneHundredAndFortySix$inboundSchema),
-    z.lazy(() => OneHundredAndFiftyThree$inboundSchema),
-    z.lazy(() => OneHundredAndFiftyFive$inboundSchema),
-    z.lazy(() => OneHundredAndFiftySeven$inboundSchema),
-    z.lazy(() => OneHundredAndSixty$inboundSchema),
-    z.lazy(() => OneHundredAndSeventyOne$inboundSchema),
-    z.lazy(() => OneHundredAndSeventyTwo$inboundSchema),
-    z.lazy(() => OneHundredAndSeventyThree$inboundSchema),
-    z.lazy(() => Three$inboundSchema),
-    z.lazy(() => Four$inboundSchema),
-    z.lazy(() => Six$inboundSchema),
-    z.lazy(() => Seven$inboundSchema),
-    z.lazy(() => Eight$inboundSchema),
-    z.lazy(() => Nineteen$inboundSchema),
-    z.lazy(() => Twenty$inboundSchema),
-    z.lazy(() => TwentyThree$inboundSchema),
-    z.lazy(() => TwentySeven$inboundSchema),
-    z.lazy(() => ThirtyThree$inboundSchema),
-    z.lazy(() => FortyOne$inboundSchema),
-    z.lazy(() => FortyTwo$inboundSchema),
-    z.lazy(() => FortyThree$inboundSchema),
-    z.lazy(() => Fifty$inboundSchema),
-    z.lazy(() => FiftyOne$inboundSchema),
-    z.lazy(() => FiftyFour$inboundSchema),
-    z.lazy(() => SixtyOne$inboundSchema),
-    z.lazy(() => SixtyFive$inboundSchema),
-    z.lazy(() => Seventy$inboundSchema),
-    z.lazy(() => SeventyThree$inboundSchema),
-    z.lazy(() => EightyFour$inboundSchema),
-    z.lazy(() => NinetyTwo$inboundSchema),
-    z.lazy(() => NinetyThree$inboundSchema),
-    z.lazy(() => NinetyFour$inboundSchema),
-    z.lazy(() => NinetySeven$inboundSchema),
-    z.lazy(() => NinetyEight$inboundSchema),
-    z.lazy(() => NinetyNine$inboundSchema),
-    z.lazy(() => OneHundredAndOne$inboundSchema),
-    z.lazy(() => OneHundredAndTwo$inboundSchema),
-    z.lazy(() => OneHundredAndFour$inboundSchema),
-    z.lazy(() => OneHundredAndFive$inboundSchema),
-    z.lazy(() => OneHundredAndEight$inboundSchema),
-    z.lazy(() => OneHundredAndNine$inboundSchema),
-    z.lazy(() => OneHundredAndTen$inboundSchema),
-    z.lazy(() => OneHundredAndSeventeen$inboundSchema),
-    z.lazy(() => OneHundredAndTwentySix$inboundSchema),
-    z.lazy(() => OneHundredAndTwentySeven$inboundSchema),
-    z.lazy(() => OneHundredAndThirtyTwo$inboundSchema),
-    z.lazy(() => OneHundredAndThirtyThree$inboundSchema),
-    z.lazy(() => OneHundredAndThirtyFive$inboundSchema),
-    z.lazy(() => OneHundredAndFortyFour$inboundSchema),
-    z.lazy(() => OneHundredAndFortySeven$inboundSchema),
-    z.lazy(() => OneHundredAndFortyEight$inboundSchema),
-    z.lazy(() => OneHundredAndFortyNine$inboundSchema),
-    z.lazy(() => OneHundredAndFiftyOne$inboundSchema),
-    z.lazy(() => OneHundredAndFiftyTwo$inboundSchema),
-    z.lazy(() => OneHundredAndFiftyEight$inboundSchema),
-    z.lazy(() => OneHundredAndFiftyNine$inboundSchema),
-    z.lazy(() => OneHundredAndSixtyOne$inboundSchema),
-    z.lazy(() => OneHundredAndSixtyThree$inboundSchema),
-    z.lazy(() => OneHundredAndSixtyFour$inboundSchema),
-    z.lazy(() => OneHundredAndSixtyFive$inboundSchema),
-    z.lazy(() => Five$inboundSchema),
-    z.lazy(() => Seventeen$inboundSchema),
-    z.lazy(() => TwentyFour$inboundSchema),
-    z.lazy(() => TwentySix$inboundSchema),
-    z.lazy(() => TwentyEight$inboundSchema),
-    z.lazy(() => ThirtyTwo$inboundSchema),
-    z.lazy(() => ThirtyFour$inboundSchema),
-    z.lazy(() => ThirtyFive$inboundSchema),
-    z.lazy(() => Forty$inboundSchema),
-    z.lazy(() => FortyFour$inboundSchema),
-    z.lazy(() => FortyFive$inboundSchema),
-    z.lazy(() => FortyNine$inboundSchema),
-    z.lazy(() => FiftyThree$inboundSchema),
-    z.lazy(() => FiftyEight$inboundSchema),
-    z.lazy(() => FiftyNine$inboundSchema),
-    z.lazy(() => SeventyEight$inboundSchema),
-    z.lazy(() => SeventyNine$inboundSchema),
-    z.lazy(() => Eighty$inboundSchema),
-    z.lazy(() => EightyTwo$inboundSchema),
-    z.lazy(() => EightyThree$inboundSchema),
-    z.lazy(() => EightySix$inboundSchema),
-    z.lazy(() => EightySeven$inboundSchema),
-    z.lazy(() => Ninety$inboundSchema),
-    z.lazy(() => NinetyOne$inboundSchema),
-    z.lazy(() => NinetyFive$inboundSchema),
-    z.lazy(() => NinetySix$inboundSchema),
-    z.lazy(() => OneHundredAndSix$inboundSchema),
-    z.lazy(() => OneHundredAndSeven$inboundSchema),
-    z.lazy(() => OneHundredAndEleven$inboundSchema),
-    z.lazy(() => OneHundredAndThirteen$inboundSchema),
-    z.lazy(() => OneHundredAndFourteen$inboundSchema),
-    z.lazy(() => OneHundredAndFifteen$inboundSchema),
-    z.lazy(() => OneHundredAndEighteen$inboundSchema),
-    z.lazy(() => OneHundredAndNineteen$inboundSchema),
-    z.lazy(() => OneHundredAndTwenty$inboundSchema),
-    z.lazy(() => OneHundredAndTwentyFour$inboundSchema),
-    z.lazy(() => OneHundredAndTwentyFive$inboundSchema),
-    z.lazy(() => OneHundredAndTwentyEight$inboundSchema),
-    z.lazy(() => OneHundredAndThirtyFour$inboundSchema),
-    z.lazy(() => OneHundredAndThirtySix$inboundSchema),
-    z.lazy(() => OneHundredAndForty$inboundSchema),
-    z.lazy(() => OneHundredAndFortyOne$inboundSchema),
-    z.lazy(() => OneHundredAndFortyTwo$inboundSchema),
-    z.lazy(() => OneHundredAndFifty$inboundSchema),
-    z.lazy(() => OneHundredAndFiftySix$inboundSchema),
-    z.lazy(() => OneHundredAndSixtyTwo$inboundSchema),
-    z.lazy(() => OneHundredAndSixtySix$inboundSchema),
-    z.lazy(() => OneHundredAndSixtySeven$inboundSchema),
-    z.lazy(() => OneHundredAndSixtyEight$inboundSchema),
-    z.lazy(() => OneHundredAndSixtyNine$inboundSchema),
-    z.lazy(() => OneHundredAndSeventy$inboundSchema),
-    z.lazy(() => Payload1$inboundSchema),
-    z.lazy(() => Nine$inboundSchema),
-    z.lazy(() => Ten$inboundSchema),
-    z.lazy(() => Eleven$inboundSchema),
-    z.lazy(() => Twelve$inboundSchema),
-    z.lazy(() => Thirteen$inboundSchema),
-    z.lazy(() => Fifteen$inboundSchema),
-    z.lazy(() => Sixteen$inboundSchema),
-    z.lazy(() => TwentyOne$inboundSchema),
-    z.lazy(() => TwentyFive$inboundSchema),
-    z.lazy(() => TwentyNine$inboundSchema),
-    z.lazy(() => Thirty$inboundSchema),
-    z.lazy(() => ThirtyOne$inboundSchema),
-    z.lazy(() => SixtyTwo$inboundSchema),
-    z.lazy(() => SixtyThree$inboundSchema),
-    z.lazy(() => SixtyFour$inboundSchema),
-    z.lazy(() => OneHundredAndSixteen$inboundSchema),
-    z.lazy(() => OneHundredAndTwentyTwo$inboundSchema),
-    z.lazy(() => OneHundredAndTwentyThree$inboundSchema),
-    z.lazy(() => OneHundredAndTwentyNine$inboundSchema),
-    z.lazy(() => OneHundredAndThirty$inboundSchema),
-    z.lazy(() => OneHundredAndThirtyOne$inboundSchema),
-    z.lazy(() => OneHundredAndThirtySeven$inboundSchema),
-    z.lazy(() => OneHundredAndThirtyEight$inboundSchema),
-    z.lazy(() => OneHundredAndThirtyNine$inboundSchema),
-  ]).optional(),
+  ),
+  via: types.optional(
+    z.array(smartUnion([
+      z.lazy(() => Via1$inboundSchema),
+      z.lazy(() =>
+        Via2$inboundSchema
+      ),
+    ])),
+  ),
+  userId: types.string(),
+  principalId: types.string(),
+  viaIds: types.optional(z.array(types.string())),
+  payload: types.optional(
+    smartUnion([
+      z.lazy(() => SeventyFour$inboundSchema),
+      z.lazy(() => SeventySeven$inboundSchema),
+      z.lazy(() => FortySeven$inboundSchema),
+      z.lazy(() => FortyEight$inboundSchema),
+      z.lazy(() => Sixty$inboundSchema),
+      z.lazy(() => SixtySix$inboundSchema),
+      z.lazy(() => SeventyTwo$inboundSchema),
+      z.lazy(() => SeventyFive$inboundSchema),
+      z.lazy(() => OneHundredAndFortyThree$inboundSchema),
+      z.lazy(() => OneHundredAndSeventyFour$inboundSchema),
+      z.lazy(() => Payload2$inboundSchema),
+      z.lazy(() => FiftyTwo$inboundSchema),
+      z.lazy(() => SeventySix$inboundSchema),
+      z.lazy(() => OneHundred$inboundSchema),
+      z.lazy(() => OneHundredAndTwelve$inboundSchema),
+      z.lazy(() => OneHundredAndFiftyFour$inboundSchema),
+      z.lazy(() => Fourteen$inboundSchema),
+      z.lazy(() => Eighteen$inboundSchema),
+      z.lazy(() => TwentyTwo$inboundSchema),
+      z.lazy(() => ThirtySix$inboundSchema),
+      z.lazy(() => ThirtySeven$inboundSchema),
+      z.lazy(() => ThirtyEight$inboundSchema),
+      z.lazy(() => ThirtyNine$inboundSchema),
+      z.lazy(() => FortySix$inboundSchema),
+      z.lazy(() => FiftyFive$inboundSchema),
+      z.lazy(() => FiftySix$inboundSchema),
+      z.lazy(() => FiftySeven$inboundSchema),
+      z.lazy(() => SixtySeven$inboundSchema),
+      z.lazy(() => SixtyEight$inboundSchema),
+      z.lazy(() => SixtyNine$inboundSchema),
+      z.lazy(() => SeventyOne$inboundSchema),
+      z.lazy(() => EightyOne$inboundSchema),
+      z.lazy(() => EightyFive$inboundSchema),
+      z.lazy(() => EightyEight$inboundSchema),
+      z.lazy(() => EightyNine$inboundSchema),
+      z.lazy(() => OneHundredAndThree$inboundSchema),
+      z.lazy(() => OneHundredAndTwentyOne$inboundSchema),
+      z.lazy(() => OneHundredAndFortyFive$inboundSchema),
+      z.lazy(() => OneHundredAndFortySix$inboundSchema),
+      z.lazy(() => OneHundredAndFiftyThree$inboundSchema),
+      z.lazy(() => OneHundredAndFiftyFive$inboundSchema),
+      z.lazy(() => OneHundredAndFiftySeven$inboundSchema),
+      z.lazy(() => OneHundredAndSixty$inboundSchema),
+      z.lazy(() => OneHundredAndSeventyOne$inboundSchema),
+      z.lazy(() => OneHundredAndSeventyTwo$inboundSchema),
+      z.lazy(() => OneHundredAndSeventyThree$inboundSchema),
+      z.lazy(() => Three$inboundSchema),
+      z.lazy(() => Four$inboundSchema),
+      z.lazy(() => Six$inboundSchema),
+      z.lazy(() => Seven$inboundSchema),
+      z.lazy(() => Eight$inboundSchema),
+      z.lazy(() => Nineteen$inboundSchema),
+      z.lazy(() => Twenty$inboundSchema),
+      z.lazy(() => TwentyThree$inboundSchema),
+      z.lazy(() => TwentySeven$inboundSchema),
+      z.lazy(() => ThirtyThree$inboundSchema),
+      z.lazy(() => FortyOne$inboundSchema),
+      z.lazy(() => FortyTwo$inboundSchema),
+      z.lazy(() => FortyThree$inboundSchema),
+      z.lazy(() => Fifty$inboundSchema),
+      z.lazy(() => FiftyOne$inboundSchema),
+      z.lazy(() => FiftyFour$inboundSchema),
+      z.lazy(() => SixtyOne$inboundSchema),
+      z.lazy(() => SixtyFive$inboundSchema),
+      z.lazy(() => Seventy$inboundSchema),
+      z.lazy(() => SeventyThree$inboundSchema),
+      z.lazy(() => EightyFour$inboundSchema),
+      z.lazy(() => NinetyTwo$inboundSchema),
+      z.lazy(() => NinetyThree$inboundSchema),
+      z.lazy(() => NinetyFour$inboundSchema),
+      z.lazy(() => NinetySeven$inboundSchema),
+      z.lazy(() => NinetyEight$inboundSchema),
+      z.lazy(() => NinetyNine$inboundSchema),
+      z.lazy(() => OneHundredAndOne$inboundSchema),
+      z.lazy(() => OneHundredAndTwo$inboundSchema),
+      z.lazy(() => OneHundredAndFour$inboundSchema),
+      z.lazy(() => OneHundredAndFive$inboundSchema),
+      z.lazy(() => OneHundredAndEight$inboundSchema),
+      z.lazy(() => OneHundredAndNine$inboundSchema),
+      z.lazy(() => OneHundredAndTen$inboundSchema),
+      z.lazy(() => OneHundredAndSeventeen$inboundSchema),
+      z.lazy(() => OneHundredAndTwentySix$inboundSchema),
+      z.lazy(() => OneHundredAndTwentySeven$inboundSchema),
+      z.lazy(() => OneHundredAndThirtyTwo$inboundSchema),
+      z.lazy(() => OneHundredAndThirtyThree$inboundSchema),
+      z.lazy(() => OneHundredAndThirtyFive$inboundSchema),
+      z.lazy(() => OneHundredAndFortyFour$inboundSchema),
+      z.lazy(() => OneHundredAndFortySeven$inboundSchema),
+      z.lazy(() => OneHundredAndFortyEight$inboundSchema),
+      z.lazy(() => OneHundredAndFortyNine$inboundSchema),
+      z.lazy(() => OneHundredAndFiftyOne$inboundSchema),
+      z.lazy(() => OneHundredAndFiftyTwo$inboundSchema),
+      z.lazy(() => OneHundredAndFiftyEight$inboundSchema),
+      z.lazy(() => OneHundredAndFiftyNine$inboundSchema),
+      z.lazy(() => OneHundredAndSixtyOne$inboundSchema),
+      z.lazy(() => OneHundredAndSixtyThree$inboundSchema),
+      z.lazy(() => OneHundredAndSixtyFour$inboundSchema),
+      z.lazy(() => OneHundredAndSixtyFive$inboundSchema),
+      z.lazy(() => Five$inboundSchema),
+      z.lazy(() => Seventeen$inboundSchema),
+      z.lazy(() => TwentyFour$inboundSchema),
+      z.lazy(() => TwentySix$inboundSchema),
+      z.lazy(() => TwentyEight$inboundSchema),
+      z.lazy(() => ThirtyTwo$inboundSchema),
+      z.lazy(() => ThirtyFour$inboundSchema),
+      z.lazy(() => ThirtyFive$inboundSchema),
+      z.lazy(() => Forty$inboundSchema),
+      z.lazy(() => FortyFour$inboundSchema),
+      z.lazy(() => FortyFive$inboundSchema),
+      z.lazy(() => FortyNine$inboundSchema),
+      z.lazy(() => FiftyThree$inboundSchema),
+      z.lazy(() => FiftyEight$inboundSchema),
+      z.lazy(() => FiftyNine$inboundSchema),
+      z.lazy(() => SeventyEight$inboundSchema),
+      z.lazy(() => SeventyNine$inboundSchema),
+      z.lazy(() => Eighty$inboundSchema),
+      z.lazy(() => EightyTwo$inboundSchema),
+      z.lazy(() => EightyThree$inboundSchema),
+      z.lazy(() => EightySix$inboundSchema),
+      z.lazy(() => EightySeven$inboundSchema),
+      z.lazy(() => Ninety$inboundSchema),
+      z.lazy(() => NinetyOne$inboundSchema),
+      z.lazy(() => NinetyFive$inboundSchema),
+      z.lazy(() => NinetySix$inboundSchema),
+      z.lazy(() => OneHundredAndSix$inboundSchema),
+      z.lazy(() => OneHundredAndSeven$inboundSchema),
+      z.lazy(() => OneHundredAndEleven$inboundSchema),
+      z.lazy(() => OneHundredAndThirteen$inboundSchema),
+      z.lazy(() => OneHundredAndFourteen$inboundSchema),
+      z.lazy(() => OneHundredAndFifteen$inboundSchema),
+      z.lazy(() => OneHundredAndEighteen$inboundSchema),
+      z.lazy(() => OneHundredAndNineteen$inboundSchema),
+      z.lazy(() => OneHundredAndTwenty$inboundSchema),
+      z.lazy(() => OneHundredAndTwentyFour$inboundSchema),
+      z.lazy(() => OneHundredAndTwentyFive$inboundSchema),
+      z.lazy(() => OneHundredAndTwentyEight$inboundSchema),
+      z.lazy(() => OneHundredAndThirtyFour$inboundSchema),
+      z.lazy(() => OneHundredAndThirtySix$inboundSchema),
+      z.lazy(() => OneHundredAndForty$inboundSchema),
+      z.lazy(() => OneHundredAndFortyOne$inboundSchema),
+      z.lazy(() => OneHundredAndFortyTwo$inboundSchema),
+      z.lazy(() => OneHundredAndFifty$inboundSchema),
+      z.lazy(() => OneHundredAndFiftySix$inboundSchema),
+      z.lazy(() => OneHundredAndSixtyTwo$inboundSchema),
+      z.lazy(() => OneHundredAndSixtySix$inboundSchema),
+      z.lazy(() => OneHundredAndSixtySeven$inboundSchema),
+      z.lazy(() => OneHundredAndSixtyEight$inboundSchema),
+      z.lazy(() => OneHundredAndSixtyNine$inboundSchema),
+      z.lazy(() => OneHundredAndSeventy$inboundSchema),
+      z.lazy(() => Payload1$inboundSchema),
+      z.lazy(() => Nine$inboundSchema),
+      z.lazy(() => Ten$inboundSchema),
+      z.lazy(() => Eleven$inboundSchema),
+      z.lazy(() => Twelve$inboundSchema),
+      z.lazy(() => Thirteen$inboundSchema),
+      z.lazy(() => Fifteen$inboundSchema),
+      z.lazy(() => Sixteen$inboundSchema),
+      z.lazy(() => TwentyOne$inboundSchema),
+      z.lazy(() => TwentyFive$inboundSchema),
+      z.lazy(() => TwentyNine$inboundSchema),
+      z.lazy(() => Thirty$inboundSchema),
+      z.lazy(() => ThirtyOne$inboundSchema),
+      z.lazy(() => SixtyTwo$inboundSchema),
+      z.lazy(() => SixtyThree$inboundSchema),
+      z.lazy(() => SixtyFour$inboundSchema),
+      z.lazy(() => OneHundredAndSixteen$inboundSchema),
+      z.lazy(() => OneHundredAndTwentyTwo$inboundSchema),
+      z.lazy(() => OneHundredAndTwentyThree$inboundSchema),
+      z.lazy(() => OneHundredAndTwentyNine$inboundSchema),
+      z.lazy(() => OneHundredAndThirty$inboundSchema),
+      z.lazy(() => OneHundredAndThirtyOne$inboundSchema),
+      z.lazy(() => OneHundredAndThirtySeven$inboundSchema),
+      z.lazy(() => OneHundredAndThirtyEight$inboundSchema),
+      z.lazy(() => OneHundredAndThirtyNine$inboundSchema),
+    ]),
+  ),
 });
 /** @internal */
 export type UserEvent$Outbound = {
@@ -26057,12 +26153,12 @@ export const UserEvent$outboundSchema: z.ZodType<
   entities: z.array(z.lazy(() => Entities$outboundSchema)),
   createdAt: z.number(),
   user: z.lazy(() => User$outboundSchema).optional(),
-  principal: z.union([
+  principal: smartUnion([
     z.lazy(() => One$outboundSchema),
     z.lazy(() => Two$outboundSchema),
   ]).optional(),
   via: z.array(
-    z.union([
+    smartUnion([
       z.lazy(() => Via1$outboundSchema),
       z.lazy(() => Via2$outboundSchema),
     ]),
@@ -26070,7 +26166,7 @@ export const UserEvent$outboundSchema: z.ZodType<
   userId: z.string(),
   principalId: z.string(),
   viaIds: z.array(z.string()).optional(),
-  payload: z.union([
+  payload: smartUnion([
     z.lazy(() => SeventyFour$outboundSchema),
     z.lazy(() => SeventySeven$outboundSchema),
     z.lazy(() => FortySeven$outboundSchema),

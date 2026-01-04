@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetV1SecurityFirewallEventsRequest = {
@@ -35,10 +36,10 @@ export const GetV1SecurityFirewallEventsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
-  startTimestamp: z.number().optional(),
-  endTimestamp: z.number().optional(),
-  hosts: z.string().optional(),
+  projectId: types.string(),
+  startTimestamp: types.optional(types.number()),
+  endTimestamp: types.optional(types.number()),
+  hosts: types.optional(types.string()),
 });
 /** @internal */
 export type GetV1SecurityFirewallEventsRequest$Outbound = {
@@ -83,13 +84,13 @@ export function getV1SecurityFirewallEventsRequestFromJSON(
 /** @internal */
 export const Actions$inboundSchema: z.ZodType<Actions, z.ZodTypeDef, unknown> =
   z.object({
-    startTime: z.string(),
-    endTime: z.string(),
-    isActive: z.boolean(),
-    action_type: z.string(),
-    host: z.string(),
-    public_ip: z.string(),
-    count: z.number(),
+    startTime: types.string(),
+    endTime: types.string(),
+    isActive: types.boolean(),
+    action_type: types.string(),
+    host: types.string(),
+    public_ip: types.string(),
+    count: types.number(),
   }).transform((v) => {
     return remap$(v, {
       "action_type": "actionType",

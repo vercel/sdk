@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteDomainRequest = {
@@ -35,9 +36,9 @@ export const DeleteDomainRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  domain: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  domain: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type DeleteDomainRequest$Outbound = {
@@ -80,7 +81,7 @@ export const DeleteDomainResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  uid: z.string(),
+  uid: types.string(),
 });
 /** @internal */
 export type DeleteDomainResponseBody$Outbound = {

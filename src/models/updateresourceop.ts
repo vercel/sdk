@@ -10,6 +10,8 @@ import {
 } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const UpdateResourceOwnership = {
@@ -199,8 +201,8 @@ export const UpdateResourceDetails$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  label: z.string(),
-  value: z.string().optional(),
+  label: types.string(),
+  value: types.optional(types.string()),
 });
 /** @internal */
 export type UpdateResourceDetails$Outbound = {
@@ -241,8 +243,8 @@ export const UpdateResourceHighlightedDetails$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  label: z.string(),
-  value: z.string().optional(),
+  label: types.string(),
+  value: types.optional(types.string()),
 });
 /** @internal */
 export type UpdateResourceHighlightedDetails$Outbound = {
@@ -286,18 +288,19 @@ export const UpdateResourceBillingPlan$inboundSchema: z.ZodType<
   unknown
 > = collectExtraKeys$(
   z.object({
-    id: z.string(),
+    id: types.string(),
     type: UpdateResourceType$inboundSchema,
-    name: z.string(),
-    description: z.string().optional(),
-    paymentMethodRequired: z.boolean().optional(),
-    cost: z.string().optional(),
-    details: z.array(z.lazy(() => UpdateResourceDetails$inboundSchema))
-      .optional(),
-    highlightedDetails: z.array(
-      z.lazy(() => UpdateResourceHighlightedDetails$inboundSchema),
-    ).optional(),
-    effectiveDate: z.string().optional(),
+    name: types.string(),
+    description: types.optional(types.string()),
+    paymentMethodRequired: types.optional(types.boolean()),
+    cost: types.optional(types.string()),
+    details: types.optional(
+      z.array(z.lazy(() => UpdateResourceDetails$inboundSchema)),
+    ),
+    highlightedDetails: types.optional(
+      z.array(z.lazy(() => UpdateResourceHighlightedDetails$inboundSchema)),
+    ),
+    effectiveDate: types.optional(types.string()),
   }).catchall(z.any()),
   "additionalProperties",
   true,
@@ -379,9 +382,9 @@ export const UpdateResourceNotification1$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   level: NotificationLevel$inboundSchema,
-  title: z.string(),
-  message: z.string().optional(),
-  href: z.string().optional(),
+  title: types.string(),
+  message: types.optional(types.string()),
+  href: types.optional(types.string()),
 });
 /** @internal */
 export type UpdateResourceNotification1$Outbound = {
@@ -427,9 +430,9 @@ export const UpdateResourceNotification$inboundSchema: z.ZodType<
   UpdateResourceNotification,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => UpdateResourceNotification1$inboundSchema),
-  z.string(),
+  types.string(),
 ]);
 /** @internal */
 export type UpdateResourceNotification$Outbound =
@@ -441,7 +444,7 @@ export const UpdateResourceNotification$outboundSchema: z.ZodType<
   UpdateResourceNotification$Outbound,
   z.ZodTypeDef,
   UpdateResourceNotification
-> = z.union([
+> = smartUnion([
   z.lazy(() => UpdateResourceNotification1$outboundSchema),
   z.string(),
 ]);
@@ -470,9 +473,9 @@ export const UpdateResourceSecretsMarketplaceEnvironmentOverrides$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    development: z.string().optional(),
-    preview: z.string().optional(),
-    production: z.string().optional(),
+    development: types.optional(types.string()),
+    preview: types.optional(types.string()),
+    production: types.optional(types.string()),
   });
 /** @internal */
 export type UpdateResourceSecretsMarketplaceEnvironmentOverrides$Outbound = {
@@ -525,12 +528,14 @@ export const SecretsSecrets$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  value: z.string(),
-  prefix: z.string().optional(),
-  environmentOverrides: z.lazy(() =>
-    UpdateResourceSecretsMarketplaceEnvironmentOverrides$inboundSchema
-  ).optional(),
+  name: types.string(),
+  value: types.string(),
+  prefix: types.optional(types.string()),
+  environmentOverrides: types.optional(
+    z.lazy(() =>
+      UpdateResourceSecretsMarketplaceEnvironmentOverrides$inboundSchema
+    ),
+  ),
 });
 /** @internal */
 export type SecretsSecrets$Outbound = {
@@ -576,7 +581,7 @@ export const Secrets2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   secrets: z.array(z.lazy(() => SecretsSecrets$inboundSchema)),
-  partial: z.boolean().optional(),
+  partial: types.optional(types.boolean()),
 });
 /** @internal */
 export type Secrets2$Outbound = {
@@ -613,9 +618,9 @@ export const SecretsEnvironmentOverrides$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  development: z.string().optional(),
-  preview: z.string().optional(),
-  production: z.string().optional(),
+  development: types.optional(types.string()),
+  preview: types.optional(types.string()),
+  production: types.optional(types.string()),
 });
 /** @internal */
 export type SecretsEnvironmentOverrides$Outbound = {
@@ -660,11 +665,12 @@ export const Secrets1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  value: z.string(),
-  prefix: z.string().optional(),
-  environmentOverrides: z.lazy(() => SecretsEnvironmentOverrides$inboundSchema)
-    .optional(),
+  name: types.string(),
+  value: types.string(),
+  prefix: types.optional(types.string()),
+  environmentOverrides: types.optional(
+    z.lazy(() => SecretsEnvironmentOverrides$inboundSchema),
+  ),
 });
 /** @internal */
 export type Secrets1$Outbound = {
@@ -705,7 +711,7 @@ export const UpdateResourceSecrets$inboundSchema: z.ZodType<
   UpdateResourceSecrets,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => Secrets2$inboundSchema),
   z.array(z.lazy(() => Secrets1$inboundSchema)),
 ]);
@@ -719,7 +725,7 @@ export const UpdateResourceSecrets$outboundSchema: z.ZodType<
   UpdateResourceSecrets$Outbound,
   z.ZodTypeDef,
   UpdateResourceSecrets
-> = z.union([
+> = smartUnion([
   z.lazy(() => Secrets2$outboundSchema),
   z.array(z.lazy(() => Secrets1$outboundSchema)),
 ]);
@@ -747,20 +753,26 @@ export const UpdateResourceRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  ownership: UpdateResourceOwnership$inboundSchema.optional(),
-  name: z.string().optional(),
-  status: UpdateResourceStatus$inboundSchema.optional(),
-  metadata: z.record(z.any()).optional(),
-  billingPlan: z.lazy(() => UpdateResourceBillingPlan$inboundSchema).optional(),
-  notification: z.union([
-    z.lazy(() => UpdateResourceNotification1$inboundSchema),
-    z.string(),
-  ]).optional(),
-  extras: z.record(z.any()).optional(),
-  secrets: z.union([
-    z.lazy(() => Secrets2$inboundSchema),
-    z.array(z.lazy(() => Secrets1$inboundSchema)),
-  ]).optional(),
+  ownership: types.optional(UpdateResourceOwnership$inboundSchema),
+  name: types.optional(types.string()),
+  status: types.optional(UpdateResourceStatus$inboundSchema),
+  metadata: types.optional(z.record(z.any())),
+  billingPlan: types.optional(
+    z.lazy(() => UpdateResourceBillingPlan$inboundSchema),
+  ),
+  notification: types.optional(
+    smartUnion([
+      z.lazy(() => UpdateResourceNotification1$inboundSchema),
+      types.string(),
+    ]),
+  ),
+  extras: types.optional(z.record(z.any())),
+  secrets: types.optional(
+    smartUnion([
+      z.lazy(() => Secrets2$inboundSchema),
+      z.array(z.lazy(() => Secrets1$inboundSchema)),
+    ]),
+  ),
 });
 /** @internal */
 export type UpdateResourceRequestBody$Outbound = {
@@ -786,12 +798,12 @@ export const UpdateResourceRequestBody$outboundSchema: z.ZodType<
   metadata: z.record(z.any()).optional(),
   billingPlan: z.lazy(() => UpdateResourceBillingPlan$outboundSchema)
     .optional(),
-  notification: z.union([
+  notification: smartUnion([
     z.lazy(() => UpdateResourceNotification1$outboundSchema),
     z.string(),
   ]).optional(),
   extras: z.record(z.any()).optional(),
-  secrets: z.union([
+  secrets: smartUnion([
     z.lazy(() => Secrets2$outboundSchema),
     z.array(z.lazy(() => Secrets1$outboundSchema)),
   ]).optional(),
@@ -820,9 +832,11 @@ export const UpdateResourceRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  integrationConfigurationId: z.string(),
-  resourceId: z.string(),
-  RequestBody: z.lazy(() => UpdateResourceRequestBody$inboundSchema).optional(),
+  integrationConfigurationId: types.string(),
+  resourceId: types.string(),
+  RequestBody: types.optional(
+    z.lazy(() => UpdateResourceRequestBody$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",
@@ -874,7 +888,7 @@ export const UpdateResourceResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
+  name: types.string(),
 });
 /** @internal */
 export type UpdateResourceResponseBody$Outbound = {

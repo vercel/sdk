@@ -7,6 +7,8 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteSharedEnvVariableRequestBody = {
@@ -95,7 +97,7 @@ export const DeleteSharedEnvVariableRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  ids: z.array(z.string()),
+  ids: z.array(types.string()),
 });
 /** @internal */
 export type DeleteSharedEnvVariableRequestBody$Outbound = {
@@ -137,10 +139,11 @@ export const DeleteSharedEnvVariableRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  RequestBody: z.lazy(() => DeleteSharedEnvVariableRequestBody$inboundSchema)
-    .optional(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
+  RequestBody: types.optional(
+    z.lazy(() => DeleteSharedEnvVariableRequestBody$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",
@@ -202,7 +205,10 @@ export const DeleteSharedEnvVariableValue$inboundSchema: z.ZodType<
   DeleteSharedEnvVariableValue,
   z.ZodTypeDef,
   unknown
-> = z.union([z.string(), z.array(DeleteSharedEnvVariableValue2$inboundSchema)]);
+> = smartUnion([
+  types.string(),
+  z.array(DeleteSharedEnvVariableValue2$inboundSchema),
+]);
 /** @internal */
 export type DeleteSharedEnvVariableValue$Outbound = string | Array<string>;
 
@@ -211,7 +217,7 @@ export const DeleteSharedEnvVariableValue$outboundSchema: z.ZodType<
   DeleteSharedEnvVariableValue$Outbound,
   z.ZodTypeDef,
   DeleteSharedEnvVariableValue
-> = z.union([
+> = smartUnion([
   z.string(),
   z.array(DeleteSharedEnvVariableValue2$outboundSchema),
 ]);
@@ -258,7 +264,7 @@ export const DeleteSharedEnvVariableTarget$inboundSchema: z.ZodType<
   DeleteSharedEnvVariableTarget,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.array(DeleteSharedEnvVariableTarget1$inboundSchema),
   DeleteSharedEnvVariableTarget2$inboundSchema,
 ]);
@@ -270,7 +276,7 @@ export const DeleteSharedEnvVariableTarget$outboundSchema: z.ZodType<
   DeleteSharedEnvVariableTarget$Outbound,
   z.ZodTypeDef,
   DeleteSharedEnvVariableTarget
-> = z.union([
+> = smartUnion([
   z.array(DeleteSharedEnvVariableTarget1$outboundSchema),
   DeleteSharedEnvVariableTarget2$outboundSchema,
 ]);
@@ -300,23 +306,27 @@ export const DeleteSharedEnvVariableError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  code: z.string(),
-  message: z.string(),
-  key: z.string().optional(),
-  envVarId: z.string().optional(),
-  envVarKey: z.string().optional(),
-  action: z.string().optional(),
-  link: z.string().optional(),
-  value: z.union([
-    z.string(),
-    z.array(DeleteSharedEnvVariableValue2$inboundSchema),
-  ]).optional(),
-  gitBranch: z.string().optional(),
-  target: z.union([
-    z.array(DeleteSharedEnvVariableTarget1$inboundSchema),
-    DeleteSharedEnvVariableTarget2$inboundSchema,
-  ]).optional(),
-  project: z.string().optional(),
+  code: types.string(),
+  message: types.string(),
+  key: types.optional(types.string()),
+  envVarId: types.optional(types.string()),
+  envVarKey: types.optional(types.string()),
+  action: types.optional(types.string()),
+  link: types.optional(types.string()),
+  value: types.optional(
+    smartUnion([
+      types.string(),
+      z.array(DeleteSharedEnvVariableValue2$inboundSchema),
+    ]),
+  ),
+  gitBranch: types.optional(types.string()),
+  target: types.optional(
+    smartUnion([
+      z.array(DeleteSharedEnvVariableTarget1$inboundSchema),
+      DeleteSharedEnvVariableTarget2$inboundSchema,
+    ]),
+  ),
+  project: types.optional(types.string()),
 });
 /** @internal */
 export type DeleteSharedEnvVariableError$Outbound = {
@@ -346,12 +356,12 @@ export const DeleteSharedEnvVariableError$outboundSchema: z.ZodType<
   envVarKey: z.string().optional(),
   action: z.string().optional(),
   link: z.string().optional(),
-  value: z.union([
+  value: smartUnion([
     z.string(),
     z.array(DeleteSharedEnvVariableValue2$outboundSchema),
   ]).optional(),
   gitBranch: z.string().optional(),
-  target: z.union([
+  target: smartUnion([
     z.array(DeleteSharedEnvVariableTarget1$outboundSchema),
     DeleteSharedEnvVariableTarget2$outboundSchema,
   ]).optional(),
@@ -424,7 +434,7 @@ export const DeleteSharedEnvVariableResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  deleted: z.array(z.string()),
+  deleted: z.array(types.string()),
   failed: z.array(z.lazy(() => DeleteSharedEnvVariableFailed$inboundSchema)),
 });
 /** @internal */

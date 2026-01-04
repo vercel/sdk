@@ -7,6 +7,8 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type ManagedRules = {};
@@ -1098,7 +1100,7 @@ export const PutFirewallConfigAction$outboundSchema: z.ZodNativeEnum<
 
 /** @internal */
 export const Sd$inboundSchema: z.ZodType<Sd, z.ZodTypeDef, unknown> = z.object({
-  active: z.boolean(),
+  active: types.boolean(),
   action: PutFirewallConfigAction$inboundSchema,
 });
 /** @internal */
@@ -1138,7 +1140,7 @@ export const PutFirewallConfigSecurityAction$outboundSchema: z.ZodNativeEnum<
 
 /** @internal */
 export const Ma$inboundSchema: z.ZodType<Ma, z.ZodTypeDef, unknown> = z.object({
-  active: z.boolean(),
+  active: types.boolean(),
   action: PutFirewallConfigSecurityAction$inboundSchema,
 });
 /** @internal */
@@ -1180,7 +1182,7 @@ export const PutFirewallConfigSecurityRequestAction$outboundSchema:
 /** @internal */
 export const Lfi$inboundSchema: z.ZodType<Lfi, z.ZodTypeDef, unknown> = z
   .object({
-    active: z.boolean(),
+    active: types.boolean(),
     action: PutFirewallConfigSecurityRequestAction$inboundSchema,
   });
 /** @internal */
@@ -1221,7 +1223,7 @@ export const PutFirewallConfigSecurityRequestRequestBodyAction$outboundSchema:
 /** @internal */
 export const Rfi$inboundSchema: z.ZodType<Rfi, z.ZodTypeDef, unknown> = z
   .object({
-    active: z.boolean(),
+    active: types.boolean(),
     action: PutFirewallConfigSecurityRequestRequestBodyAction$inboundSchema,
   });
 /** @internal */
@@ -1262,7 +1264,7 @@ export const PutFirewallConfigSecurityRequestRequestBodyCrsAction$outboundSchema
 /** @internal */
 export const Rce$inboundSchema: z.ZodType<Rce, z.ZodTypeDef, unknown> = z
   .object({
-    active: z.boolean(),
+    active: types.boolean(),
     action: PutFirewallConfigSecurityRequestRequestBodyCrsAction$inboundSchema,
   });
 /** @internal */
@@ -1305,7 +1307,7 @@ export const PutFirewallConfigSecurityRequestRequestBodyCrsPhpAction$outboundSch
 /** @internal */
 export const Php$inboundSchema: z.ZodType<Php, z.ZodTypeDef, unknown> = z
   .object({
-    active: z.boolean(),
+    active: types.boolean(),
     action:
       PutFirewallConfigSecurityRequestRequestBodyCrsPhpAction$inboundSchema,
   });
@@ -1350,7 +1352,7 @@ export const PutFirewallConfigSecurityRequestRequestBodyCrsGenAction$outboundSch
 /** @internal */
 export const Gen$inboundSchema: z.ZodType<Gen, z.ZodTypeDef, unknown> = z
   .object({
-    active: z.boolean(),
+    active: types.boolean(),
     action:
       PutFirewallConfigSecurityRequestRequestBodyCrsGenAction$inboundSchema,
   });
@@ -1395,7 +1397,7 @@ export const PutFirewallConfigSecurityRequestRequestBodyCrsXssAction$outboundSch
 /** @internal */
 export const Xss$inboundSchema: z.ZodType<Xss, z.ZodTypeDef, unknown> = z
   .object({
-    active: z.boolean(),
+    active: types.boolean(),
     action:
       PutFirewallConfigSecurityRequestRequestBodyCrsXssAction$inboundSchema,
   });
@@ -1440,7 +1442,7 @@ export const PutFirewallConfigSecurityRequestRequestBodyCrsSqliAction$outboundSc
 /** @internal */
 export const Sqli$inboundSchema: z.ZodType<Sqli, z.ZodTypeDef, unknown> = z
   .object({
-    active: z.boolean(),
+    active: types.boolean(),
     action:
       PutFirewallConfigSecurityRequestRequestBodyCrsSqliAction$inboundSchema,
   });
@@ -1484,7 +1486,7 @@ export const PutFirewallConfigSecurityRequestRequestBodyCrsSfAction$outboundSche
 
 /** @internal */
 export const Sf$inboundSchema: z.ZodType<Sf, z.ZodTypeDef, unknown> = z.object({
-  active: z.boolean(),
+  active: types.boolean(),
   action: PutFirewallConfigSecurityRequestRequestBodyCrsSfAction$inboundSchema,
 });
 /** @internal */
@@ -1528,7 +1530,7 @@ export const PutFirewallConfigSecurityRequestRequestBodyCrsJavaAction$outboundSc
 /** @internal */
 export const Java$inboundSchema: z.ZodType<Java, z.ZodTypeDef, unknown> = z
   .object({
-    active: z.boolean(),
+    active: types.boolean(),
     action:
       PutFirewallConfigSecurityRequestRequestBodyCrsJavaAction$inboundSchema,
   });
@@ -1562,17 +1564,17 @@ export function javaFromJSON(
 /** @internal */
 export const Crs$inboundSchema: z.ZodType<Crs, z.ZodTypeDef, unknown> = z
   .object({
-    sd: z.lazy(() => Sd$inboundSchema).optional(),
-    ma: z.lazy(() => Ma$inboundSchema).optional(),
-    lfi: z.lazy(() => Lfi$inboundSchema).optional(),
-    rfi: z.lazy(() => Rfi$inboundSchema).optional(),
-    rce: z.lazy(() => Rce$inboundSchema).optional(),
-    php: z.lazy(() => Php$inboundSchema).optional(),
-    gen: z.lazy(() => Gen$inboundSchema).optional(),
-    xss: z.lazy(() => Xss$inboundSchema).optional(),
-    sqli: z.lazy(() => Sqli$inboundSchema).optional(),
-    sf: z.lazy(() => Sf$inboundSchema).optional(),
-    java: z.lazy(() => Java$inboundSchema).optional(),
+    sd: types.optional(z.lazy(() => Sd$inboundSchema)),
+    ma: types.optional(z.lazy(() => Ma$inboundSchema)),
+    lfi: types.optional(z.lazy(() => Lfi$inboundSchema)),
+    rfi: types.optional(z.lazy(() => Rfi$inboundSchema)),
+    rce: types.optional(z.lazy(() => Rce$inboundSchema)),
+    php: types.optional(z.lazy(() => Php$inboundSchema)),
+    gen: types.optional(z.lazy(() => Gen$inboundSchema)),
+    xss: types.optional(z.lazy(() => Xss$inboundSchema)),
+    sqli: types.optional(z.lazy(() => Sqli$inboundSchema)),
+    sf: types.optional(z.lazy(() => Sf$inboundSchema)),
+    java: types.optional(z.lazy(() => Java$inboundSchema)),
   });
 /** @internal */
 export type Crs$Outbound = {
@@ -1633,8 +1635,8 @@ export const Op$inboundSchema: z.ZodNativeEnum<typeof Op> = z.nativeEnum(Op);
 export const Op$outboundSchema: z.ZodNativeEnum<typeof Op> = Op$inboundSchema;
 
 /** @internal */
-export const Value$inboundSchema: z.ZodType<Value, z.ZodTypeDef, unknown> = z
-  .union([z.string(), z.array(z.string()), z.number()]);
+export const Value$inboundSchema: z.ZodType<Value, z.ZodTypeDef, unknown> =
+  smartUnion([types.string(), z.array(types.string()), types.number()]);
 /** @internal */
 export type Value$Outbound = string | Array<string> | number;
 
@@ -1643,7 +1645,7 @@ export const Value$outboundSchema: z.ZodType<
   Value$Outbound,
   z.ZodTypeDef,
   Value
-> = z.union([z.string(), z.array(z.string()), z.number()]);
+> = smartUnion([z.string(), z.array(z.string()), z.number()]);
 
 export function valueToJSON(value: Value): string {
   return JSON.stringify(Value$outboundSchema.parse(value));
@@ -1666,9 +1668,11 @@ export const Conditions$inboundSchema: z.ZodType<
 > = z.object({
   type: PutFirewallConfigType$inboundSchema,
   op: Op$inboundSchema,
-  neg: z.boolean().optional(),
-  key: z.string().optional(),
-  value: z.union([z.string(), z.array(z.string()), z.number()]).optional(),
+  neg: types.optional(types.boolean()),
+  key: types.optional(types.string()),
+  value: types.optional(
+    smartUnion([types.string(), z.array(types.string()), types.number()]),
+  ),
 });
 /** @internal */
 export type Conditions$Outbound = {
@@ -1689,7 +1693,7 @@ export const Conditions$outboundSchema: z.ZodType<
   op: Op$outboundSchema,
   neg: z.boolean().optional(),
   key: z.string().optional(),
-  value: z.union([z.string(), z.array(z.string()), z.number()]).optional(),
+  value: smartUnion([z.string(), z.array(z.string()), z.number()]).optional(),
 });
 
 export function conditionsToJSON(conditions: Conditions): string {
@@ -1774,7 +1778,7 @@ export const RateLimitAction$inboundSchema: z.ZodType<
   RateLimitAction,
   z.ZodTypeDef,
   unknown
-> = z.union([Action1$inboundSchema, z.any()]);
+> = smartUnion([Action1$inboundSchema, z.any()]);
 /** @internal */
 export type RateLimitAction$Outbound = string | any;
 
@@ -1783,7 +1787,7 @@ export const RateLimitAction$outboundSchema: z.ZodType<
   RateLimitAction$Outbound,
   z.ZodTypeDef,
   RateLimitAction
-> = z.union([Action1$outboundSchema, z.any()]);
+> = smartUnion([Action1$outboundSchema, z.any()]);
 
 export function rateLimitActionToJSON(
   rateLimitAction: RateLimitAction,
@@ -1807,10 +1811,10 @@ export const RateLimit1$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   algo: Algo$inboundSchema,
-  window: z.number(),
-  limit: z.number(),
-  keys: z.array(z.string()),
-  action: z.nullable(z.union([Action1$inboundSchema, z.any()])).optional(),
+  window: types.number(),
+  limit: types.number(),
+  keys: z.array(types.string()),
+  action: z.nullable(smartUnion([Action1$inboundSchema, z.any()])).optional(),
 });
 /** @internal */
 export type RateLimit1$Outbound = {
@@ -1831,7 +1835,7 @@ export const RateLimit1$outboundSchema: z.ZodType<
   window: z.number(),
   limit: z.number(),
   keys: z.array(z.string()),
-  action: z.nullable(z.union([Action1$outboundSchema, z.any()])).optional(),
+  action: z.nullable(smartUnion([Action1$outboundSchema, z.any()])).optional(),
 });
 
 export function rateLimit1ToJSON(rateLimit1: RateLimit1): string {
@@ -1852,7 +1856,7 @@ export const RateLimit$inboundSchema: z.ZodType<
   RateLimit,
   z.ZodTypeDef,
   unknown
-> = z.union([z.lazy(() => RateLimit1$inboundSchema), z.any()]);
+> = smartUnion([z.lazy(() => RateLimit1$inboundSchema), z.any()]);
 /** @internal */
 export type RateLimit$Outbound = RateLimit1$Outbound | any;
 
@@ -1861,7 +1865,7 @@ export const RateLimit$outboundSchema: z.ZodType<
   RateLimit$Outbound,
   z.ZodTypeDef,
   RateLimit
-> = z.union([z.lazy(() => RateLimit1$outboundSchema), z.any()]);
+> = smartUnion([z.lazy(() => RateLimit1$outboundSchema), z.any()]);
 
 export function rateLimitToJSON(rateLimit: RateLimit): string {
   return JSON.stringify(RateLimit$outboundSchema.parse(rateLimit));
@@ -1882,8 +1886,8 @@ export const Redirect1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  location: z.string(),
-  permanent: z.boolean(),
+  location: types.string(),
+  permanent: types.boolean(),
 });
 /** @internal */
 export type Redirect1$Outbound = {
@@ -1919,7 +1923,7 @@ export const PutFirewallConfigRedirect$inboundSchema: z.ZodType<
   PutFirewallConfigRedirect,
   z.ZodTypeDef,
   unknown
-> = z.union([z.lazy(() => Redirect1$inboundSchema), z.any()]);
+> = smartUnion([z.lazy(() => Redirect1$inboundSchema), z.any()]);
 /** @internal */
 export type PutFirewallConfigRedirect$Outbound = Redirect1$Outbound | any;
 
@@ -1928,7 +1932,7 @@ export const PutFirewallConfigRedirect$outboundSchema: z.ZodType<
   PutFirewallConfigRedirect$Outbound,
   z.ZodTypeDef,
   PutFirewallConfigRedirect
-> = z.union([z.lazy(() => Redirect1$outboundSchema), z.any()]);
+> = smartUnion([z.lazy(() => Redirect1$outboundSchema), z.any()]);
 
 export function putFirewallConfigRedirectToJSON(
   putFirewallConfigRedirect: PutFirewallConfigRedirect,
@@ -1956,13 +1960,13 @@ export const Mitigate$inboundSchema: z.ZodType<
   action:
     PutFirewallConfigSecurityRequestRequestBodyRulesActionAction$inboundSchema,
   rateLimit: z.nullable(
-    z.union([z.lazy(() => RateLimit1$inboundSchema), z.any()]),
+    smartUnion([z.lazy(() => RateLimit1$inboundSchema), z.any()]),
   ).optional(),
   redirect: z.nullable(
-    z.union([z.lazy(() => Redirect1$inboundSchema), z.any()]),
+    smartUnion([z.lazy(() => Redirect1$inboundSchema), z.any()]),
   ).optional(),
-  actionDuration: z.nullable(z.string()).optional(),
-  bypassSystem: z.nullable(z.boolean()).optional(),
+  actionDuration: z.nullable(types.string()).optional(),
+  bypassSystem: z.nullable(types.boolean()).optional(),
 });
 /** @internal */
 export type Mitigate$Outbound = {
@@ -1982,10 +1986,10 @@ export const Mitigate$outboundSchema: z.ZodType<
   action:
     PutFirewallConfigSecurityRequestRequestBodyRulesActionAction$outboundSchema,
   rateLimit: z.nullable(
-    z.union([z.lazy(() => RateLimit1$outboundSchema), z.any()]),
+    smartUnion([z.lazy(() => RateLimit1$outboundSchema), z.any()]),
   ).optional(),
   redirect: z.nullable(
-    z.union([z.lazy(() => Redirect1$outboundSchema), z.any()]),
+    smartUnion([z.lazy(() => Redirect1$outboundSchema), z.any()]),
   ).optional(),
   actionDuration: z.nullable(z.string()).optional(),
   bypassSystem: z.nullable(z.boolean()).optional(),
@@ -2011,7 +2015,7 @@ export const PutFirewallConfigSecurityRequestRequestBodyRulesAction$inboundSchem
     z.ZodTypeDef,
     unknown
   > = z.object({
-    mitigate: z.lazy(() => Mitigate$inboundSchema).optional(),
+    mitigate: types.optional(z.lazy(() => Mitigate$inboundSchema)),
   });
 /** @internal */
 export type PutFirewallConfigSecurityRequestRequestBodyRulesAction$Outbound = {
@@ -2058,7 +2062,7 @@ export const ValidationErrors$inboundSchema: z.ZodType<
   ValidationErrors,
   z.ZodTypeDef,
   unknown
-> = z.union([z.string(), z.array(z.string())]);
+> = smartUnion([types.string(), z.array(types.string())]);
 /** @internal */
 export type ValidationErrors$Outbound = string | Array<string>;
 
@@ -2067,7 +2071,7 @@ export const ValidationErrors$outboundSchema: z.ZodType<
   ValidationErrors$Outbound,
   z.ZodTypeDef,
   ValidationErrors
-> = z.union([z.string(), z.array(z.string())]);
+> = smartUnion([z.string(), z.array(z.string())]);
 
 export function validationErrorsToJSON(
   validationErrors: ValidationErrors,
@@ -2092,16 +2096,18 @@ export const PutFirewallConfigRules$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string().optional(),
-  name: z.string(),
-  description: z.string().optional(),
-  active: z.boolean(),
+  id: types.optional(types.string()),
+  name: types.string(),
+  description: types.optional(types.string()),
+  active: types.boolean(),
   conditionGroup: z.array(z.lazy(() => ConditionGroup$inboundSchema)),
   action: z.lazy(() =>
     PutFirewallConfigSecurityRequestRequestBodyRulesAction$inboundSchema
   ),
-  valid: z.boolean().optional(),
-  validationErrors: z.union([z.string(), z.array(z.string())]).optional(),
+  valid: types.optional(types.boolean()),
+  validationErrors: types.optional(
+    smartUnion([types.string(), z.array(types.string())]),
+  ),
 });
 /** @internal */
 export type PutFirewallConfigRules$Outbound = {
@@ -2130,7 +2136,7 @@ export const PutFirewallConfigRules$outboundSchema: z.ZodType<
     PutFirewallConfigSecurityRequestRequestBodyRulesAction$outboundSchema
   ),
   valid: z.boolean().optional(),
-  validationErrors: z.union([z.string(), z.array(z.string())]).optional(),
+  validationErrors: smartUnion([z.string(), z.array(z.string())]).optional(),
 });
 
 export function putFirewallConfigRulesToJSON(
@@ -2162,10 +2168,10 @@ export const PutFirewallConfigSecurityRequestRequestBodyIpsAction$outboundSchema
 /** @internal */
 export const Ips$inboundSchema: z.ZodType<Ips, z.ZodTypeDef, unknown> = z
   .object({
-    id: z.string().optional(),
-    hostname: z.string(),
-    ip: z.string(),
-    notes: z.string().optional(),
+    id: types.optional(types.string()),
+    hostname: types.string(),
+    ip: types.string(),
+    notes: types.optional(types.string()),
     action: PutFirewallConfigSecurityRequestRequestBodyIpsAction$inboundSchema,
   });
 /** @internal */
@@ -2206,12 +2212,14 @@ export const PutFirewallConfigRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  firewallEnabled: z.boolean(),
-  managedRules: z.lazy(() => ManagedRules$inboundSchema).optional(),
-  crs: z.lazy(() => Crs$inboundSchema).optional(),
-  rules: z.array(z.lazy(() => PutFirewallConfigRules$inboundSchema)).optional(),
-  ips: z.array(z.lazy(() => Ips$inboundSchema)).optional(),
-  botIdEnabled: z.boolean().optional(),
+  firewallEnabled: types.boolean(),
+  managedRules: types.optional(z.lazy(() => ManagedRules$inboundSchema)),
+  crs: types.optional(z.lazy(() => Crs$inboundSchema)),
+  rules: types.optional(
+    z.array(z.lazy(() => PutFirewallConfigRules$inboundSchema)),
+  ),
+  ips: types.optional(z.array(z.lazy(() => Ips$inboundSchema))),
+  botIdEnabled: types.optional(types.boolean()),
 });
 /** @internal */
 export type PutFirewallConfigRequestBody$Outbound = {
@@ -2263,9 +2271,9 @@ export const PutFirewallConfigRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  projectId: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
   RequestBody: z.lazy(() => PutFirewallConfigRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
@@ -2333,7 +2341,7 @@ export const PutFirewallConfigSd$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  active: z.boolean(),
+  active: types.boolean(),
   action:
     PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSdAction$inboundSchema,
 });
@@ -2386,7 +2394,7 @@ export const PutFirewallConfigMa$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  active: z.boolean(),
+  active: types.boolean(),
   action: PutFirewallConfigSecurityResponse200Action$inboundSchema,
 });
 /** @internal */
@@ -2439,7 +2447,7 @@ export const PutFirewallConfigLfi$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  active: z.boolean(),
+  active: types.boolean(),
   action:
     PutFirewallConfigSecurityResponse200ApplicationJSONAction$inboundSchema,
 });
@@ -2497,7 +2505,7 @@ export const PutFirewallConfigRfi$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  active: z.boolean(),
+  active: types.boolean(),
   action:
     PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyAction$inboundSchema,
 });
@@ -2555,7 +2563,7 @@ export const PutFirewallConfigRce$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  active: z.boolean(),
+  active: types.boolean(),
   action:
     PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveAction$inboundSchema,
 });
@@ -2613,7 +2621,7 @@ export const PutFirewallConfigPhp$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  active: z.boolean(),
+  active: types.boolean(),
   action:
     PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsAction$inboundSchema,
 });
@@ -2671,7 +2679,7 @@ export const PutFirewallConfigGen$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  active: z.boolean(),
+  active: types.boolean(),
   action:
     PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsGenAction$inboundSchema,
 });
@@ -2729,7 +2737,7 @@ export const PutFirewallConfigXss$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  active: z.boolean(),
+  active: types.boolean(),
   action:
     PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsXssAction$inboundSchema,
 });
@@ -2787,7 +2795,7 @@ export const PutFirewallConfigSqli$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  active: z.boolean(),
+  active: types.boolean(),
   action:
     PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSqliAction$inboundSchema,
 });
@@ -2845,7 +2853,7 @@ export const PutFirewallConfigSf$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  active: z.boolean(),
+  active: types.boolean(),
   action:
     PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsSfAction$inboundSchema,
 });
@@ -2903,7 +2911,7 @@ export const PutFirewallConfigJava$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  active: z.boolean(),
+  active: types.boolean(),
   action:
     PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveCrsJavaAction$inboundSchema,
 });
@@ -3033,7 +3041,7 @@ export const PutFirewallConfigRulesValue$inboundSchema: z.ZodType<
   PutFirewallConfigRulesValue,
   z.ZodTypeDef,
   unknown
-> = z.union([z.string(), z.number(), z.array(z.string())]);
+> = smartUnion([types.string(), types.number(), z.array(types.string())]);
 /** @internal */
 export type PutFirewallConfigRulesValue$Outbound =
   | string
@@ -3045,7 +3053,7 @@ export const PutFirewallConfigRulesValue$outboundSchema: z.ZodType<
   PutFirewallConfigRulesValue$Outbound,
   z.ZodTypeDef,
   PutFirewallConfigRulesValue
-> = z.union([z.string(), z.number(), z.array(z.string())]);
+> = smartUnion([z.string(), z.number(), z.array(z.string())]);
 
 export function putFirewallConfigRulesValueToJSON(
   putFirewallConfigRulesValue: PutFirewallConfigRulesValue,
@@ -3074,9 +3082,11 @@ export const PutFirewallConfigRulesConditions$inboundSchema: z.ZodType<
 > = z.object({
   type: PutFirewallConfigRulesType$inboundSchema,
   op: PutFirewallConfigRulesOp$inboundSchema,
-  neg: z.boolean().optional(),
-  key: z.string().optional(),
-  value: z.union([z.string(), z.number(), z.array(z.string())]).optional(),
+  neg: types.optional(types.boolean()),
+  key: types.optional(types.string()),
+  value: types.optional(
+    smartUnion([types.string(), types.number(), z.array(types.string())]),
+  ),
 });
 /** @internal */
 export type PutFirewallConfigRulesConditions$Outbound = {
@@ -3097,7 +3107,7 @@ export const PutFirewallConfigRulesConditions$outboundSchema: z.ZodType<
   op: PutFirewallConfigRulesOp$outboundSchema,
   neg: z.boolean().optional(),
   key: z.string().optional(),
-  value: z.union([z.string(), z.number(), z.array(z.string())]).optional(),
+  value: smartUnion([z.string(), z.number(), z.array(z.string())]).optional(),
 });
 
 export function putFirewallConfigRulesConditionsToJSON(
@@ -3204,9 +3214,9 @@ export const PutFirewallConfigRulesRateLimit$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   algo: PutFirewallConfigRulesAlgo$inboundSchema,
-  window: z.number(),
-  limit: z.number(),
-  keys: z.array(z.string()),
+  window: types.number(),
+  limit: types.number(),
+  keys: z.array(types.string()),
   action: z.nullable(
     PutFirewallConfigRulesSecurityResponse200ApplicationJSONResponseBodyAction$inboundSchema,
   ).optional(),
@@ -3260,8 +3270,8 @@ export const PutFirewallConfigRulesRedirect$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  location: z.string(),
-  permanent: z.boolean(),
+  location: types.string(),
+  permanent: types.boolean(),
 });
 /** @internal */
 export type PutFirewallConfigRulesRedirect$Outbound = {
@@ -3311,8 +3321,8 @@ export const PutFirewallConfigRulesMitigate$inboundSchema: z.ZodType<
   redirect: z.nullable(
     z.lazy(() => PutFirewallConfigRulesRedirect$inboundSchema),
   ).optional(),
-  actionDuration: z.nullable(z.string()).optional(),
-  bypassSystem: z.nullable(z.boolean()).optional(),
+  actionDuration: z.nullable(types.string()).optional(),
+  bypassSystem: z.nullable(types.boolean()).optional(),
 });
 /** @internal */
 export type PutFirewallConfigRulesMitigate$Outbound = {
@@ -3365,8 +3375,9 @@ export const PutFirewallConfigRulesAction$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  mitigate: z.lazy(() => PutFirewallConfigRulesMitigate$inboundSchema)
-    .optional(),
+  mitigate: types.optional(
+    z.lazy(() => PutFirewallConfigRulesMitigate$inboundSchema),
+  ),
 });
 /** @internal */
 export type PutFirewallConfigRulesAction$Outbound = {
@@ -3408,16 +3419,16 @@ export const PutFirewallConfigRules2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
-  description: z.string().optional(),
-  active: z.boolean(),
+  id: types.string(),
+  name: types.string(),
+  description: types.optional(types.string()),
+  active: types.boolean(),
   conditionGroup: z.array(
     z.lazy(() => PutFirewallConfigRulesConditionGroup$inboundSchema),
   ),
   action: z.lazy(() => PutFirewallConfigRulesAction$inboundSchema),
-  valid: z.boolean(),
-  validationErrors: z.array(z.string()),
+  valid: types.boolean(),
+  validationErrors: z.array(types.string()),
 });
 /** @internal */
 export type PutFirewallConfigRules2$Outbound = {
@@ -3489,7 +3500,7 @@ export const PutFirewallConfigRulesSecurityValue$inboundSchema: z.ZodType<
   PutFirewallConfigRulesSecurityValue,
   z.ZodTypeDef,
   unknown
-> = z.union([z.string(), z.number(), z.array(z.string())]);
+> = smartUnion([types.string(), types.number(), z.array(types.string())]);
 /** @internal */
 export type PutFirewallConfigRulesSecurityValue$Outbound =
   | string
@@ -3501,7 +3512,7 @@ export const PutFirewallConfigRulesSecurityValue$outboundSchema: z.ZodType<
   PutFirewallConfigRulesSecurityValue$Outbound,
   z.ZodTypeDef,
   PutFirewallConfigRulesSecurityValue
-> = z.union([z.string(), z.number(), z.array(z.string())]);
+> = smartUnion([z.string(), z.number(), z.array(z.string())]);
 
 export function putFirewallConfigRulesSecurityValueToJSON(
   putFirewallConfigRulesSecurityValue: PutFirewallConfigRulesSecurityValue,
@@ -3531,9 +3542,11 @@ export const PutFirewallConfigRulesSecurityConditions$inboundSchema: z.ZodType<
 > = z.object({
   type: PutFirewallConfigRulesSecurityType$inboundSchema,
   op: PutFirewallConfigRulesSecurityOp$inboundSchema,
-  neg: z.boolean().optional(),
-  key: z.string().optional(),
-  value: z.union([z.string(), z.number(), z.array(z.string())]).optional(),
+  neg: types.optional(types.boolean()),
+  key: types.optional(types.string()),
+  value: types.optional(
+    smartUnion([types.string(), types.number(), z.array(types.string())]),
+  ),
 });
 /** @internal */
 export type PutFirewallConfigRulesSecurityConditions$Outbound = {
@@ -3554,7 +3567,7 @@ export const PutFirewallConfigRulesSecurityConditions$outboundSchema: z.ZodType<
   op: PutFirewallConfigRulesSecurityOp$outboundSchema,
   neg: z.boolean().optional(),
   key: z.string().optional(),
-  value: z.union([z.string(), z.number(), z.array(z.string())]).optional(),
+  value: smartUnion([z.string(), z.number(), z.array(z.string())]).optional(),
 });
 
 export function putFirewallConfigRulesSecurityConditionsToJSON(
@@ -3676,9 +3689,9 @@ export const PutFirewallConfigRulesSecurityRateLimit$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   algo: PutFirewallConfigRulesSecurityAlgo$inboundSchema,
-  window: z.number(),
-  limit: z.number(),
-  keys: z.array(z.string()),
+  window: types.number(),
+  limit: types.number(),
+  keys: z.array(types.string()),
   action: z.nullable(
     PutFirewallConfigRulesSecurityResponse200ApplicationJSONAction$inboundSchema,
   ).optional(),
@@ -3739,8 +3752,8 @@ export const PutFirewallConfigRulesSecurityRedirect$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  location: z.string(),
-  permanent: z.boolean(),
+  location: types.string(),
+  permanent: types.boolean(),
 });
 /** @internal */
 export type PutFirewallConfigRulesSecurityRedirect$Outbound = {
@@ -3792,8 +3805,8 @@ export const PutFirewallConfigRulesSecurityMitigate$inboundSchema: z.ZodType<
   redirect: z.nullable(
     z.lazy(() => PutFirewallConfigRulesSecurityRedirect$inboundSchema),
   ).optional(),
-  actionDuration: z.nullable(z.string()).optional(),
-  bypassSystem: z.nullable(z.boolean()).optional(),
+  actionDuration: z.nullable(types.string()).optional(),
+  bypassSystem: z.nullable(types.boolean()).optional(),
 });
 /** @internal */
 export type PutFirewallConfigRulesSecurityMitigate$Outbound = {
@@ -3851,8 +3864,9 @@ export const PutFirewallConfigRulesSecurityAction$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  mitigate: z.lazy(() => PutFirewallConfigRulesSecurityMitigate$inboundSchema)
-    .optional(),
+  mitigate: types.optional(
+    z.lazy(() => PutFirewallConfigRulesSecurityMitigate$inboundSchema),
+  ),
 });
 /** @internal */
 export type PutFirewallConfigRulesSecurityAction$Outbound = {
@@ -3895,15 +3909,15 @@ export const PutFirewallConfigRules1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
-  description: z.string().optional(),
-  active: z.boolean(),
+  id: types.string(),
+  name: types.string(),
+  description: types.optional(types.string()),
+  active: types.boolean(),
   conditionGroup: z.array(
     z.lazy(() => PutFirewallConfigRulesSecurityConditionGroup$inboundSchema),
   ),
   action: z.lazy(() => PutFirewallConfigRulesSecurityAction$inboundSchema),
-  valid: z.boolean(),
+  valid: types.boolean(),
   validationErrors: z.nullable(z.any()).optional(),
 });
 /** @internal */
@@ -3958,7 +3972,7 @@ export const PutFirewallConfigSecurityRules$inboundSchema: z.ZodType<
   PutFirewallConfigSecurityRules,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => PutFirewallConfigRules1$inboundSchema),
   z.lazy(() => PutFirewallConfigRules2$inboundSchema),
 ]);
@@ -3972,7 +3986,7 @@ export const PutFirewallConfigSecurityRules$outboundSchema: z.ZodType<
   PutFirewallConfigSecurityRules$Outbound,
   z.ZodTypeDef,
   PutFirewallConfigSecurityRules
-> = z.union([
+> = smartUnion([
   z.lazy(() => PutFirewallConfigRules1$outboundSchema),
   z.lazy(() => PutFirewallConfigRules2$outboundSchema),
 ]);
@@ -4011,10 +4025,10 @@ export const PutFirewallConfigIps$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  hostname: z.string(),
-  ip: z.string(),
-  notes: z.string().optional(),
+  id: types.string(),
+  hostname: types.string(),
+  ip: types.string(),
+  notes: types.optional(types.string()),
   action: PutFirewallConfigSecurityResponseAction$inboundSchema,
 });
 /** @internal */
@@ -4109,13 +4123,13 @@ export const PutFirewallConfigBotProtection$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  active: z.boolean(),
-  action:
-    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAction$inboundSchema
-      .optional(),
-  updatedAt: z.string().optional(),
-  userId: z.string().optional(),
-  username: z.string().optional(),
+  active: types.boolean(),
+  action: types.optional(
+    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAction$inboundSchema,
+  ),
+  updatedAt: types.optional(types.string()),
+  userId: types.optional(types.string()),
+  username: types.optional(types.string()),
 });
 /** @internal */
 export type PutFirewallConfigBotProtection$Outbound = {
@@ -4180,13 +4194,13 @@ export const PutFirewallConfigAiBots$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  active: z.boolean(),
-  action:
-    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAiBotsAction$inboundSchema
-      .optional(),
-  updatedAt: z.string().optional(),
-  userId: z.string().optional(),
-  username: z.string().optional(),
+  active: types.boolean(),
+  action: types.optional(
+    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesAiBotsAction$inboundSchema,
+  ),
+  updatedAt: types.optional(types.string()),
+  userId: types.optional(types.string()),
+  username: types.optional(types.string()),
 });
 /** @internal */
 export type PutFirewallConfigAiBots$Outbound = {
@@ -4249,13 +4263,13 @@ export const PutFirewallConfigOwasp$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  active: z.boolean(),
-  action:
-    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesOwaspAction$inboundSchema
-      .optional(),
-  updatedAt: z.string().optional(),
-  userId: z.string().optional(),
-  username: z.string().optional(),
+  active: types.boolean(),
+  action: types.optional(
+    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesOwaspAction$inboundSchema,
+  ),
+  updatedAt: types.optional(types.string()),
+  userId: types.optional(types.string()),
+  username: types.optional(types.string()),
 });
 /** @internal */
 export type PutFirewallConfigOwasp$Outbound = {
@@ -4304,10 +4318,11 @@ export const PutFirewallConfigManagedRules$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  bot_protection: z.lazy(() => PutFirewallConfigBotProtection$inboundSchema)
-    .optional(),
-  ai_bots: z.lazy(() => PutFirewallConfigAiBots$inboundSchema).optional(),
-  owasp: z.lazy(() => PutFirewallConfigOwasp$inboundSchema).optional(),
+  bot_protection: types.optional(
+    z.lazy(() => PutFirewallConfigBotProtection$inboundSchema),
+  ),
+  ai_bots: types.optional(z.lazy(() => PutFirewallConfigAiBots$inboundSchema)),
+  owasp: types.optional(z.lazy(() => PutFirewallConfigOwasp$inboundSchema)),
 }).transform((v) => {
   return remap$(v, {
     "bot_protection": "botProtection",
@@ -4360,24 +4375,25 @@ export function putFirewallConfigManagedRulesFromJSON(
 /** @internal */
 export const Active$inboundSchema: z.ZodType<Active, z.ZodTypeDef, unknown> = z
   .object({
-    ownerId: z.string(),
-    projectKey: z.string(),
-    id: z.string(),
-    version: z.number(),
-    updatedAt: z.string(),
-    firewallEnabled: z.boolean(),
+    ownerId: types.string(),
+    projectKey: types.string(),
+    id: types.string(),
+    version: types.number(),
+    updatedAt: types.string(),
+    firewallEnabled: types.boolean(),
     crs: z.lazy(() => PutFirewallConfigCrs$inboundSchema),
     rules: z.array(
-      z.union([
+      smartUnion([
         z.lazy(() => PutFirewallConfigRules1$inboundSchema),
         z.lazy(() => PutFirewallConfigRules2$inboundSchema),
       ]),
     ),
     ips: z.array(z.lazy(() => PutFirewallConfigIps$inboundSchema)),
     changes: z.array(z.lazy(() => PutFirewallConfigChanges$inboundSchema)),
-    managedRules: z.lazy(() => PutFirewallConfigManagedRules$inboundSchema)
-      .optional(),
-    botIdEnabled: z.boolean().optional(),
+    managedRules: types.optional(
+      z.lazy(() => PutFirewallConfigManagedRules$inboundSchema),
+    ),
+    botIdEnabled: types.optional(types.boolean()),
   });
 /** @internal */
 export type Active$Outbound = {
@@ -4411,7 +4427,7 @@ export const Active$outboundSchema: z.ZodType<
   firewallEnabled: z.boolean(),
   crs: z.lazy(() => PutFirewallConfigCrs$outboundSchema),
   rules: z.array(
-    z.union([
+    smartUnion([
       z.lazy(() => PutFirewallConfigRules1$outboundSchema),
       z.lazy(() => PutFirewallConfigRules2$outboundSchema),
     ]),

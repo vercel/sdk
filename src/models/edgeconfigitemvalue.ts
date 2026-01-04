@@ -5,6 +5,8 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type EdgeConfigItemValue = string | number | boolean | {
@@ -16,12 +18,12 @@ export const EdgeConfigItemValue$inboundSchema: z.ZodType<
   EdgeConfigItemValue,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.record(z.nullable(z.lazy(() => EdgeConfigItemValue$inboundSchema))),
-  z.array(z.nullable(z.lazy(() => EdgeConfigItemValue$inboundSchema))),
+> = smartUnion([
+  types.string(),
+  types.number(),
+  types.boolean(),
+  z.record(types.nullable(z.lazy(() => EdgeConfigItemValue$inboundSchema))),
+  z.array(types.nullable(z.lazy(() => EdgeConfigItemValue$inboundSchema))),
 ]);
 /** @internal */
 export type EdgeConfigItemValue$Outbound = string | number | boolean | {
@@ -33,7 +35,7 @@ export const EdgeConfigItemValue$outboundSchema: z.ZodType<
   EdgeConfigItemValue$Outbound,
   z.ZodTypeDef,
   EdgeConfigItemValue
-> = z.union([
+> = smartUnion([
   z.string(),
   z.number(),
   z.boolean(),

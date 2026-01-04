@@ -7,6 +7,8 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const PatchEdgeConfigItems1Operation = {
@@ -109,7 +111,7 @@ export const PatchEdgeConfigItems1Description$inboundSchema: z.ZodType<
   PatchEdgeConfigItems1Description,
   z.ZodTypeDef,
   unknown
-> = z.union([z.string(), z.any()]);
+> = smartUnion([types.string(), z.any()]);
 /** @internal */
 export type PatchEdgeConfigItems1Description$Outbound = string | any;
 
@@ -118,7 +120,7 @@ export const PatchEdgeConfigItems1Description$outboundSchema: z.ZodType<
   PatchEdgeConfigItems1Description$Outbound,
   z.ZodTypeDef,
   PatchEdgeConfigItems1Description
-> = z.union([z.string(), z.any()]);
+> = smartUnion([z.string(), z.any()]);
 
 export function patchEdgeConfigItems1DescriptionToJSON(
   patchEdgeConfigItems1Description: PatchEdgeConfigItems1Description,
@@ -146,9 +148,9 @@ export const PatchEdgeConfigItems13$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   operation: PatchEdgeConfigItems1Operation$inboundSchema,
-  key: z.string(),
+  key: types.string(),
   value: z.nullable(z.any()).optional(),
-  description: z.nullable(z.union([z.string(), z.any()])).optional(),
+  description: z.nullable(smartUnion([types.string(), z.any()])).optional(),
 });
 /** @internal */
 export type PatchEdgeConfigItems13$Outbound = {
@@ -167,7 +169,7 @@ export const PatchEdgeConfigItems13$outboundSchema: z.ZodType<
   operation: PatchEdgeConfigItems1Operation$outboundSchema,
   key: z.string(),
   value: z.nullable(z.any()).optional(),
-  description: z.nullable(z.union([z.string(), z.any()])).optional(),
+  description: z.nullable(smartUnion([z.string(), z.any()])).optional(),
 });
 
 export function patchEdgeConfigItems13ToJSON(
@@ -199,7 +201,7 @@ export const OneDescription$inboundSchema: z.ZodType<
   OneDescription,
   z.ZodTypeDef,
   unknown
-> = z.union([z.string(), z.any()]);
+> = smartUnion([types.string(), z.any()]);
 /** @internal */
 export type OneDescription$Outbound = string | any;
 
@@ -208,7 +210,7 @@ export const OneDescription$outboundSchema: z.ZodType<
   OneDescription$Outbound,
   z.ZodTypeDef,
   OneDescription
-> = z.union([z.string(), z.any()]);
+> = smartUnion([z.string(), z.any()]);
 
 export function oneDescriptionToJSON(oneDescription: OneDescription): string {
   return JSON.stringify(OneDescription$outboundSchema.parse(oneDescription));
@@ -230,9 +232,9 @@ export const PatchEdgeConfigItems12$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   operation: OneOperation$inboundSchema,
-  key: z.string(),
+  key: types.string(),
   value: z.nullable(z.any()).optional(),
-  description: z.nullable(z.union([z.string(), z.any()])).optional(),
+  description: z.nullable(smartUnion([types.string(), z.any()])).optional(),
 });
 /** @internal */
 export type PatchEdgeConfigItems12$Outbound = {
@@ -251,7 +253,7 @@ export const PatchEdgeConfigItems12$outboundSchema: z.ZodType<
   operation: OneOperation$outboundSchema,
   key: z.string(),
   value: z.nullable(z.any()).optional(),
-  description: z.nullable(z.union([z.string(), z.any()])).optional(),
+  description: z.nullable(smartUnion([z.string(), z.any()])).optional(),
 });
 
 export function patchEdgeConfigItems12ToJSON(
@@ -283,7 +285,7 @@ export const Description$inboundSchema: z.ZodType<
   Description,
   z.ZodTypeDef,
   unknown
-> = z.union([z.string(), z.any()]);
+> = smartUnion([types.string(), z.any()]);
 /** @internal */
 export type Description$Outbound = string | any;
 
@@ -292,7 +294,7 @@ export const Description$outboundSchema: z.ZodType<
   Description$Outbound,
   z.ZodTypeDef,
   Description
-> = z.union([z.string(), z.any()]);
+> = smartUnion([z.string(), z.any()]);
 
 export function descriptionToJSON(description: Description): string {
   return JSON.stringify(Description$outboundSchema.parse(description));
@@ -314,9 +316,9 @@ export const PatchEdgeConfigItems11$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   operation: Operation$inboundSchema,
-  key: z.string(),
+  key: types.string(),
   value: z.nullable(z.any()).optional(),
-  description: z.nullable(z.union([z.string(), z.any()])).optional(),
+  description: z.nullable(smartUnion([types.string(), z.any()])).optional(),
 });
 /** @internal */
 export type PatchEdgeConfigItems11$Outbound = {
@@ -335,7 +337,7 @@ export const PatchEdgeConfigItems11$outboundSchema: z.ZodType<
   operation: Operation$outboundSchema,
   key: z.string(),
   value: z.nullable(z.any()).optional(),
-  description: z.nullable(z.union([z.string(), z.any()])).optional(),
+  description: z.nullable(smartUnion([z.string(), z.any()])).optional(),
 });
 
 export function patchEdgeConfigItems11ToJSON(
@@ -356,8 +358,8 @@ export function patchEdgeConfigItems11FromJSON(
 }
 
 /** @internal */
-export const Items1$inboundSchema: z.ZodType<Items1, z.ZodTypeDef, unknown> = z
-  .union([
+export const Items1$inboundSchema: z.ZodType<Items1, z.ZodTypeDef, unknown> =
+  smartUnion([
     z.lazy(() => PatchEdgeConfigItems11$inboundSchema),
     z.lazy(() => PatchEdgeConfigItems12$inboundSchema),
     z.lazy(() => PatchEdgeConfigItems13$inboundSchema),
@@ -373,7 +375,7 @@ export const Items1$outboundSchema: z.ZodType<
   Items1$Outbound,
   z.ZodTypeDef,
   Items1
-> = z.union([
+> = smartUnion([
   z.lazy(() => PatchEdgeConfigItems11$outboundSchema),
   z.lazy(() => PatchEdgeConfigItems12$outboundSchema),
   z.lazy(() => PatchEdgeConfigItems13$outboundSchema),
@@ -397,7 +399,7 @@ export const PatchEdgeConfigItemsItems$inboundSchema: z.ZodType<
   PatchEdgeConfigItemsItems,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => PatchEdgeConfigItems11$inboundSchema),
   z.lazy(() => PatchEdgeConfigItems12$inboundSchema),
   z.lazy(() => PatchEdgeConfigItems13$inboundSchema),
@@ -413,7 +415,7 @@ export const PatchEdgeConfigItemsItems$outboundSchema: z.ZodType<
   PatchEdgeConfigItemsItems$Outbound,
   z.ZodTypeDef,
   PatchEdgeConfigItemsItems
-> = z.union([
+> = smartUnion([
   z.lazy(() => PatchEdgeConfigItems11$outboundSchema),
   z.lazy(() => PatchEdgeConfigItems12$outboundSchema),
   z.lazy(() => PatchEdgeConfigItems13$outboundSchema),
@@ -443,7 +445,7 @@ export const PatchEdgeConfigItemsRequestBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   items: z.array(
-    z.union([
+    smartUnion([
       z.lazy(() => PatchEdgeConfigItems11$inboundSchema),
       z.lazy(() => PatchEdgeConfigItems12$inboundSchema),
       z.lazy(() => PatchEdgeConfigItems13$inboundSchema),
@@ -466,7 +468,7 @@ export const PatchEdgeConfigItemsRequestBody$outboundSchema: z.ZodType<
   PatchEdgeConfigItemsRequestBody
 > = z.object({
   items: z.array(
-    z.union([
+    smartUnion([
       z.lazy(() => PatchEdgeConfigItems11$outboundSchema),
       z.lazy(() => PatchEdgeConfigItems12$outboundSchema),
       z.lazy(() => PatchEdgeConfigItems13$outboundSchema),
@@ -499,11 +501,12 @@ export const PatchEdgeConfigItemsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  edgeConfigId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  RequestBody: z.lazy(() => PatchEdgeConfigItemsRequestBody$inboundSchema)
-    .optional(),
+  edgeConfigId: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
+  RequestBody: types.optional(
+    z.lazy(() => PatchEdgeConfigItemsRequestBody$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",
@@ -559,7 +562,7 @@ export const PatchEdgeConfigItemsResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  status: z.string(),
+  status: types.string(),
 });
 /** @internal */
 export type PatchEdgeConfigItemsResponseBody$Outbound = {

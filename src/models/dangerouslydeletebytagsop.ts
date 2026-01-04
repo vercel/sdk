@@ -7,6 +7,8 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DangerouslyDeleteByTagsTags = Array<string> | string;
@@ -43,7 +45,7 @@ export const DangerouslyDeleteByTagsTags$inboundSchema: z.ZodType<
   DangerouslyDeleteByTagsTags,
   z.ZodTypeDef,
   unknown
-> = z.union([z.array(z.string()), z.string()]);
+> = smartUnion([z.array(types.string()), types.string()]);
 /** @internal */
 export type DangerouslyDeleteByTagsTags$Outbound = Array<string> | string;
 
@@ -52,7 +54,7 @@ export const DangerouslyDeleteByTagsTags$outboundSchema: z.ZodType<
   DangerouslyDeleteByTagsTags$Outbound,
   z.ZodTypeDef,
   DangerouslyDeleteByTagsTags
-> = z.union([z.array(z.string()), z.string()]);
+> = smartUnion([z.array(z.string()), z.string()]);
 
 export function dangerouslyDeleteByTagsTagsToJSON(
   dangerouslyDeleteByTagsTags: DangerouslyDeleteByTagsTags,
@@ -88,9 +90,9 @@ export const DangerouslyDeleteByTagsRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  revalidationDeadlineSeconds: z.number().optional(),
-  tags: z.union([z.array(z.string()), z.string()]),
-  target: DangerouslyDeleteByTagsTarget$inboundSchema.optional(),
+  revalidationDeadlineSeconds: types.optional(types.number()),
+  tags: smartUnion([z.array(types.string()), types.string()]),
+  target: types.optional(DangerouslyDeleteByTagsTarget$inboundSchema),
 });
 /** @internal */
 export type DangerouslyDeleteByTagsRequestBody$Outbound = {
@@ -106,7 +108,7 @@ export const DangerouslyDeleteByTagsRequestBody$outboundSchema: z.ZodType<
   DangerouslyDeleteByTagsRequestBody
 > = z.object({
   revalidationDeadlineSeconds: z.number().optional(),
-  tags: z.union([z.array(z.string()), z.string()]),
+  tags: smartUnion([z.array(z.string()), z.string()]),
   target: DangerouslyDeleteByTagsTarget$outboundSchema.optional(),
 });
 
@@ -136,11 +138,12 @@ export const DangerouslyDeleteByTagsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectIdOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  RequestBody: z.lazy(() => DangerouslyDeleteByTagsRequestBody$inboundSchema)
-    .optional(),
+  projectIdOrName: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
+  RequestBody: types.optional(
+    z.lazy(() => DangerouslyDeleteByTagsRequestBody$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",

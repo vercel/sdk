@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import {
   PropertyKey,
   PropertyKey$inboundSchema,
@@ -31,7 +32,7 @@ export type Issue = {
 export const Issue$inboundSchema: z.ZodType<Issue, z.ZodTypeDef, unknown> = z
   .object({
     path: z.array(PropertyKey$inboundSchema),
-    message: z.string(),
+    message: types.string(),
   });
 /** @internal */
 export type Issue$Outbound = {

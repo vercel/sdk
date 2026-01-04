@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteEdgeConfigTokensRequestBody = {
@@ -31,7 +32,7 @@ export const DeleteEdgeConfigTokensRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  tokens: z.array(z.string()),
+  tokens: z.array(types.string()),
 });
 /** @internal */
 export type DeleteEdgeConfigTokensRequestBody$Outbound = {
@@ -72,9 +73,9 @@ export const DeleteEdgeConfigTokensRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  edgeConfigId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  edgeConfigId: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
   RequestBody: z.lazy(() => DeleteEdgeConfigTokensRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {

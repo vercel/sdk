@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import {
   AuthToken,
   AuthToken$inboundSchema,
@@ -36,7 +37,7 @@ export const GetAuthTokenRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  tokenId: z.string(),
+  tokenId: types.string(),
 });
 /** @internal */
 export type GetAuthTokenRequest$Outbound = {

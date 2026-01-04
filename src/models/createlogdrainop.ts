@@ -7,6 +7,7 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -258,14 +259,16 @@ export const CreateLogDrainRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  projectIds: z.array(z.string()).optional(),
-  secret: z.string().optional(),
-  deliveryFormat: CreateLogDrainDeliveryFormat$inboundSchema.optional(),
-  url: z.string(),
-  sources: z.array(CreateLogDrainSources$inboundSchema).optional(),
-  headers: z.record(z.string()).optional(),
-  environments: z.array(CreateLogDrainEnvironments$inboundSchema).optional(),
+  name: types.string(),
+  projectIds: types.optional(z.array(types.string())),
+  secret: types.optional(types.string()),
+  deliveryFormat: types.optional(CreateLogDrainDeliveryFormat$inboundSchema),
+  url: types.string(),
+  sources: types.optional(z.array(CreateLogDrainSources$inboundSchema)),
+  headers: types.optional(z.record(types.string())),
+  environments: types.optional(
+    z.array(CreateLogDrainEnvironments$inboundSchema),
+  ),
 });
 /** @internal */
 export type CreateLogDrainRequestBody$Outbound = {
@@ -318,8 +321,8 @@ export const CreateLogDrainRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
   RequestBody: z.lazy(() => CreateLogDrainRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
@@ -408,11 +411,11 @@ export const CreateLogDrainSource2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  kind: z.literal("integration"),
-  resourceId: z.string().optional(),
-  externalResourceId: z.string().optional(),
-  integrationId: z.string(),
-  integrationConfigurationId: z.string(),
+  kind: types.literal("integration"),
+  resourceId: types.optional(types.string()),
+  externalResourceId: types.optional(types.string()),
+  integrationId: types.string(),
+  integrationConfigurationId: types.string(),
 });
 /** @internal */
 export type CreateLogDrainSource2$Outbound = {
@@ -459,7 +462,7 @@ export const CreateLogDrainSource1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  kind: z.literal("self-served"),
+  kind: types.literal("self-served"),
 });
 /** @internal */
 export type CreateLogDrainSource1$Outbound = {
@@ -539,24 +542,28 @@ export const CreateLogDrainResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  clientId: z.string().optional(),
-  configurationId: z.string().optional(),
-  createdAt: z.number(),
-  id: z.string(),
-  deliveryFormat: CreateLogDrainLogDrainsDeliveryFormat$inboundSchema
-    .optional(),
-  name: z.string(),
-  ownerId: z.string(),
-  projectId: z.nullable(z.string()).optional(),
-  projectIds: z.array(z.string()).optional(),
-  url: z.string(),
-  sources: z.array(CreateLogDrainLogDrainsSources$inboundSchema).optional(),
-  createdFrom: CreateLogDrainCreatedFrom$inboundSchema.optional(),
-  headers: z.record(z.string()).optional(),
-  environments: z.array(CreateLogDrainLogDrainsEnvironments$inboundSchema)
-    .optional(),
-  branch: z.string().optional(),
-  samplingRate: z.number().optional(),
+  clientId: types.optional(types.string()),
+  configurationId: types.optional(types.string()),
+  createdAt: types.number(),
+  id: types.string(),
+  deliveryFormat: types.optional(
+    CreateLogDrainLogDrainsDeliveryFormat$inboundSchema,
+  ),
+  name: types.string(),
+  ownerId: types.string(),
+  projectId: z.nullable(types.string()).optional(),
+  projectIds: types.optional(z.array(types.string())),
+  url: types.string(),
+  sources: types.optional(
+    z.array(CreateLogDrainLogDrainsSources$inboundSchema),
+  ),
+  createdFrom: types.optional(CreateLogDrainCreatedFrom$inboundSchema),
+  headers: types.optional(z.record(types.string())),
+  environments: types.optional(
+    z.array(CreateLogDrainLogDrainsEnvironments$inboundSchema),
+  ),
+  branch: types.optional(types.string()),
+  samplingRate: types.optional(types.number()),
   source: z.union([
     z.lazy(() => CreateLogDrainSource1$inboundSchema),
     z.lazy(() => CreateLogDrainSource2$inboundSchema),

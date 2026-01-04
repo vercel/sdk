@@ -7,6 +7,8 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const RequestBodyScope = {
@@ -255,8 +257,8 @@ export const ScopeAccess$outboundSchema: z.ZodNativeEnum<typeof ScopeAccess> =
 /** @internal */
 export const Scope2$inboundSchema: z.ZodType<Scope2, z.ZodTypeDef, unknown> = z
   .object({
-    userId: z.string().optional(),
-    email: z.string(),
+    userId: types.optional(types.string()),
+    email: types.string(),
     access: ScopeAccess$inboundSchema,
   });
 /** @internal */
@@ -300,8 +302,8 @@ export const Access$outboundSchema: z.ZodNativeEnum<typeof Access> =
 /** @internal */
 export const Scope1$inboundSchema: z.ZodType<Scope1, z.ZodTypeDef, unknown> = z
   .object({
-    userId: z.string(),
-    email: z.string().optional(),
+    userId: types.string(),
+    email: types.optional(types.string()),
     access: Access$inboundSchema,
   });
 /** @internal */
@@ -336,8 +338,8 @@ export function scope1FromJSON(
 }
 
 /** @internal */
-export const Scope$inboundSchema: z.ZodType<Scope, z.ZodTypeDef, unknown> = z
-  .union([
+export const Scope$inboundSchema: z.ZodType<Scope, z.ZodTypeDef, unknown> =
+  smartUnion([
     z.lazy(() => Scope1$inboundSchema),
     z.lazy(() => Scope2$inboundSchema),
   ]);
@@ -349,7 +351,7 @@ export const Scope$outboundSchema: z.ZodType<
   Scope$Outbound,
   z.ZodTypeDef,
   Scope
-> = z.union([
+> = smartUnion([
   z.lazy(() => Scope1$outboundSchema),
   z.lazy(() => Scope2$outboundSchema),
 ]);
@@ -373,7 +375,7 @@ export const PatchUrlProtectionBypassRequestBody2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  scope: z.union([
+  scope: smartUnion([
     z.lazy(() => Scope1$inboundSchema),
     z.lazy(() => Scope2$inboundSchema),
   ]),
@@ -389,7 +391,7 @@ export const PatchUrlProtectionBypassRequestBody2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PatchUrlProtectionBypassRequestBody2
 > = z.object({
-  scope: z.union([
+  scope: smartUnion([
     z.lazy(() => Scope1$outboundSchema),
     z.lazy(() => Scope2$outboundSchema),
   ]),
@@ -421,8 +423,8 @@ export const RequestBodyRevoke$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  secret: z.string(),
-  regenerate: z.boolean(),
+  secret: types.string(),
+  regenerate: types.boolean(),
 });
 /** @internal */
 export type RequestBodyRevoke$Outbound = {
@@ -463,8 +465,8 @@ export const PatchUrlProtectionBypassRequestBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  ttl: z.number().optional(),
-  revoke: z.lazy(() => RequestBodyRevoke$inboundSchema).optional(),
+  ttl: types.optional(types.number()),
+  revoke: types.optional(z.lazy(() => RequestBodyRevoke$inboundSchema)),
 });
 /** @internal */
 export type PatchUrlProtectionBypassRequestBody1$Outbound = {
@@ -507,7 +509,7 @@ export const PatchUrlProtectionBypassRequestBody$inboundSchema: z.ZodType<
   PatchUrlProtectionBypassRequestBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => PatchUrlProtectionBypassRequestBody2$inboundSchema),
   z.lazy(() => PatchUrlProtectionBypassRequestBody3$inboundSchema),
   z.lazy(() => PatchUrlProtectionBypassRequestBody1$inboundSchema),
@@ -523,7 +525,7 @@ export const PatchUrlProtectionBypassRequestBody$outboundSchema: z.ZodType<
   PatchUrlProtectionBypassRequestBody$Outbound,
   z.ZodTypeDef,
   PatchUrlProtectionBypassRequestBody
-> = z.union([
+> = smartUnion([
   z.lazy(() => PatchUrlProtectionBypassRequestBody2$outboundSchema),
   z.lazy(() => PatchUrlProtectionBypassRequestBody3$outboundSchema),
   z.lazy(() => PatchUrlProtectionBypassRequestBody1$outboundSchema),
@@ -555,14 +557,16 @@ export const PatchUrlProtectionBypassRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  RequestBody: z.union([
-    z.lazy(() => PatchUrlProtectionBypassRequestBody2$inboundSchema),
-    z.lazy(() => PatchUrlProtectionBypassRequestBody3$inboundSchema),
-    z.lazy(() => PatchUrlProtectionBypassRequestBody1$inboundSchema),
-  ]).optional(),
+  id: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
+  RequestBody: types.optional(
+    smartUnion([
+      z.lazy(() => PatchUrlProtectionBypassRequestBody2$inboundSchema),
+      z.lazy(() => PatchUrlProtectionBypassRequestBody3$inboundSchema),
+      z.lazy(() => PatchUrlProtectionBypassRequestBody1$inboundSchema),
+    ]),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",
@@ -589,7 +593,7 @@ export const PatchUrlProtectionBypassRequest$outboundSchema: z.ZodType<
   id: z.string(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
-  requestBody: z.union([
+  requestBody: smartUnion([
     z.lazy(() => PatchUrlProtectionBypassRequestBody2$outboundSchema),
     z.lazy(() => PatchUrlProtectionBypassRequestBody3$outboundSchema),
     z.lazy(() => PatchUrlProtectionBypassRequestBody1$outboundSchema),

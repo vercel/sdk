@@ -7,6 +7,8 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetConfigurationProductsRequest = {
@@ -257,14 +259,6 @@ export type GetConfigurationProductsType = ClosedEnum<
   typeof GetConfigurationProductsType
 >;
 
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt524028 =
-  {};
-
-export type PropertiesValue = {
-  atBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt524028;
-};
-
 export const GetConfigurationProductsDisabled3 = {
   Update: "update",
   Create: "create",
@@ -300,7 +294,7 @@ export type PropertiesHidden =
   | GetConfigurationProductsHidden3;
 
 export type Properties10 = {
-  value: PropertiesValue;
+  value: string;
   disabled?:
     | GetConfigurationProductsDisabled2
     | boolean
@@ -330,30 +324,6 @@ export type GetConfigurationProductsPropertiesIntegrationsResponse200Application
   ClosedEnum<
     typeof GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiControl
   >;
-
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt524028 =
-  {};
-
-export type GetConfigurationProductsPropertiesIntegrationsMinLength = {
-  atBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt524028;
-};
-
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt524028 =
-  {};
-
-export type GetConfigurationProductsPropertiesIntegrationsMaxLength = {
-  atBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt524028;
-};
-
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt524028 =
-  {};
-
-export type GetConfigurationProductsPropertiesIntegrationsPattern = {
-  atBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt524028;
-};
 
 export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3 =
   {
@@ -435,13 +405,9 @@ export type Properties9 = {
   uiControl:
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiControl;
   description?: string | undefined;
-  minLength?:
-    | GetConfigurationProductsPropertiesIntegrationsMinLength
-    | undefined;
-  maxLength?:
-    | GetConfigurationProductsPropertiesIntegrationsMaxLength
-    | undefined;
-  pattern?: GetConfigurationProductsPropertiesIntegrationsPattern | undefined;
+  minLength?: number | undefined;
+  maxLength?: number | undefined;
+  pattern?: string | undefined;
   default?: string | undefined;
   enum?: Array<string> | undefined;
   uiLabel?: string | undefined;
@@ -497,53 +463,15 @@ export type GetConfigurationProductsPropertiesIntegrationsResponse200Application
     typeof GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8Type
   >;
 
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt524028 =
-  {};
-
-export type GetConfigurationProductsPropertiesIntegrationsResponseMinLength = {
-  atBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt524028;
-};
-
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt524028 =
-  {};
-
-export type GetConfigurationProductsPropertiesIntegrationsResponseMaxLength = {
-  atBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt524028;
-};
-
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt524028 =
-  {};
-
-export type GetConfigurationProductsPropertiesIntegrationsResponsePattern = {
-  atBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt524028;
-};
-
 export type GetConfigurationProductsPropertiesIntegrationsItems = {
   type:
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8Type;
   description?: string | undefined;
-  minLength?:
-    | GetConfigurationProductsPropertiesIntegrationsResponseMinLength
-    | undefined;
-  maxLength?:
-    | GetConfigurationProductsPropertiesIntegrationsResponseMaxLength
-    | undefined;
-  pattern?:
-    | GetConfigurationProductsPropertiesIntegrationsResponsePattern
-    | undefined;
+  minLength?: number | undefined;
+  maxLength?: number | undefined;
+  pattern?: string | undefined;
   default?: string | undefined;
   enum?: Array<string> | undefined;
-};
-
-export type GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt524028 =
-  {};
-
-export type GetConfigurationProductsUiOptionsValue = {
-  atBRANDAt524028:
-    GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt524028;
 };
 
 export const GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson3 =
@@ -587,7 +515,7 @@ export type GetConfigurationProductsUiOptionsIntegrationsResponseHidden =
   | GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson3;
 
 export type GetConfigurationProductsUiOptions3 = {
-  value: GetConfigurationProductsUiOptionsValue;
+  value: string;
   disabled?:
     | GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson2
     | boolean
@@ -598,12 +526,6 @@ export type GetConfigurationProductsUiOptions3 = {
     | boolean
     | GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson3
     | undefined;
-};
-
-export type GetConfigurationProductsUiOptionsAtBRANDAt524028 = {};
-
-export type GetConfigurationProductsUiOptions2 = {
-  atBRANDAt524028: GetConfigurationProductsUiOptionsAtBRANDAt524028;
 };
 
 export const GetConfigurationProductsDisabledIntegrationsResponse2003 = {
@@ -656,8 +578,8 @@ export type GetConfigurationProductsUiOptions1 = {
 
 export type GetConfigurationProductsPropertiesIntegrationsUiOptions =
   | GetConfigurationProductsUiOptions1
-  | GetConfigurationProductsUiOptions2
-  | GetConfigurationProductsUiOptions3;
+  | GetConfigurationProductsUiOptions3
+  | string;
 
 export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts3 =
   {
@@ -733,22 +655,6 @@ export type GetConfigurationProductsPropertiesIntegrationsResponse200Application
     expr: string;
   };
 
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt524028 =
-  {};
-
-export type Default = {
-  atBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt524028;
-};
-
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt524028 =
-  {};
-
-export type Example = {
-  atBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt524028;
-};
-
 export type Properties8 = {
   type:
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsType;
@@ -757,8 +663,8 @@ export type Properties8 = {
   items: GetConfigurationProductsPropertiesIntegrationsItems;
   uiOptions: Array<
     | GetConfigurationProductsUiOptions1
-    | GetConfigurationProductsUiOptions2
     | GetConfigurationProductsUiOptions3
+    | string
   >;
   description?: string | undefined;
   minItems?: number | undefined;
@@ -787,8 +693,8 @@ export type Properties8 = {
     | GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiFormattedValue
     | undefined;
   uiPlaceholder?: string | undefined;
-  default?: Array<Default> | undefined;
-  example?: Array<Example> | undefined;
+  default?: Array<string> | undefined;
+  example?: Array<string> | undefined;
 };
 
 export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyType =
@@ -808,12 +714,6 @@ export type GetConfigurationProductsPropertiesIntegrationsResponse200Application
   ClosedEnum<
     typeof GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiControl
   >;
-
-export type GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt524028 = {};
-
-export type UiOptionsValue = {
-  atBRANDAt524028: GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt524028;
-};
 
 export const GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3 =
   {
@@ -856,7 +756,7 @@ export type GetConfigurationProductsUiOptionsHidden =
   | GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts3;
 
 export type UiOptions3 = {
-  value: UiOptionsValue;
+  value: string;
   disabled?:
     | GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2
     | boolean
@@ -867,12 +767,6 @@ export type UiOptions3 = {
     | boolean
     | GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts3
     | undefined;
-};
-
-export type UiOptionsAtBRANDAt524028 = {};
-
-export type UiOptions2 = {
-  atBRANDAt524028: UiOptionsAtBRANDAt524028;
 };
 
 export const GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody3 =
@@ -932,32 +826,8 @@ export type UiOptions1 = {
 
 export type GetConfigurationProductsPropertiesUiOptions =
   | UiOptions1
-  | UiOptions2
-  | UiOptions3;
-
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt524028 =
-  {};
-
-export type GetConfigurationProductsPropertiesMinLength = {
-  atBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt524028;
-};
-
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt524028 =
-  {};
-
-export type GetConfigurationProductsPropertiesMaxLength = {
-  atBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt524028;
-};
-
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt524028 =
-  {};
-
-export type GetConfigurationProductsPropertiesPattern = {
-  atBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt524028;
-};
+  | UiOptions3
+  | string;
 
 export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody3 =
   {
@@ -1038,11 +908,11 @@ export type Properties7 = {
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyType;
   uiControl:
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiControl;
-  uiOptions: Array<UiOptions1 | UiOptions2 | UiOptions3>;
+  uiOptions: Array<UiOptions1 | UiOptions3 | string>;
   description?: string | undefined;
-  minLength?: GetConfigurationProductsPropertiesMinLength | undefined;
-  maxLength?: GetConfigurationProductsPropertiesMaxLength | undefined;
-  pattern?: GetConfigurationProductsPropertiesPattern | undefined;
+  minLength?: number | undefined;
+  maxLength?: number | undefined;
+  pattern?: string | undefined;
   default?: string | undefined;
   enum?: Array<string> | undefined;
   uiLabel?: string | undefined;
@@ -1098,45 +968,13 @@ export type GetConfigurationProductsPropertiesIntegrationsResponse200Application
     typeof GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6Type
   >;
 
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt524028 =
-  {};
-
-export type GetConfigurationProductsPropertiesIntegrationsResponse200MinLength =
-  {
-    atBRANDAt524028:
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt524028;
-  };
-
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt524028 =
-  {};
-
-export type GetConfigurationProductsPropertiesIntegrationsResponse200MaxLength =
-  {
-    atBRANDAt524028:
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt524028;
-  };
-
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt524028 =
-  {};
-
-export type GetConfigurationProductsPropertiesIntegrationsResponse200Pattern = {
-  atBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt524028;
-};
-
 export type GetConfigurationProductsPropertiesItems = {
   type:
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6Type;
   description?: string | undefined;
-  minLength?:
-    | GetConfigurationProductsPropertiesIntegrationsResponse200MinLength
-    | undefined;
-  maxLength?:
-    | GetConfigurationProductsPropertiesIntegrationsResponse200MaxLength
-    | undefined;
-  pattern?:
-    | GetConfigurationProductsPropertiesIntegrationsResponse200Pattern
-    | undefined;
+  minLength?: number | undefined;
+  maxLength?: number | undefined;
+  pattern?: string | undefined;
   default?: string | undefined;
   enum?: Array<string> | undefined;
 };
@@ -1366,29 +1204,6 @@ export type UiOptions = {
     | undefined;
 };
 
-export type GetConfigurationProductsPropertiesIntegrationsAtBRANDAt524028 = {};
-
-export type PropertiesMinLength = {
-  atBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsAtBRANDAt524028;
-};
-
-export type GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt524028 =
-  {};
-
-export type PropertiesMaxLength = {
-  atBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt524028;
-};
-
-export type GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt524028 =
-  {};
-
-export type PropertiesPattern = {
-  atBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt524028;
-};
-
 export const GetConfigurationProductsUiReadOnlyIntegrationsResponse2003 = {
   Update: "update",
   Create: "create",
@@ -1455,9 +1270,9 @@ export type Properties5 = {
   uiControl: GetConfigurationProductsPropertiesIntegrationsResponseUiControl;
   uiOptions: Array<UiOptions>;
   description?: string | undefined;
-  minLength?: PropertiesMinLength | undefined;
-  maxLength?: PropertiesMaxLength | undefined;
-  pattern?: PropertiesPattern | undefined;
+  minLength?: number | undefined;
+  maxLength?: number | undefined;
+  pattern?: string | undefined;
   default?: string | undefined;
   enum?: Array<string> | undefined;
   uiLabel?: string | undefined;
@@ -1835,24 +1650,6 @@ export const UiControl = {
 } as const;
 export type UiControl = ClosedEnum<typeof UiControl>;
 
-export type AtBRANDAt524028 = {};
-
-export type MinLength = {
-  atBRANDAt524028: AtBRANDAt524028;
-};
-
-export type PropertiesAtBRANDAt524028 = {};
-
-export type MaxLength = {
-  atBRANDAt524028: PropertiesAtBRANDAt524028;
-};
-
-export type GetConfigurationProductsPropertiesAtBRANDAt524028 = {};
-
-export type Pattern = {
-  atBRANDAt524028: GetConfigurationProductsPropertiesAtBRANDAt524028;
-};
-
 export const UiReadOnly3 = {
   Update: "update",
   Create: "create",
@@ -1903,9 +1700,9 @@ export type Properties1 = {
   type: PropertiesType;
   uiControl: UiControl;
   description?: string | undefined;
-  minLength?: MinLength | undefined;
-  maxLength?: MaxLength | undefined;
-  pattern?: Pattern | undefined;
+  minLength?: number | undefined;
+  maxLength?: number | undefined;
+  pattern?: string | undefined;
   default?: string | undefined;
   enum?: Array<string> | undefined;
   uiLabel?: string | undefined;
@@ -1981,9 +1778,9 @@ export const GetConfigurationProductsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  id: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type GetConfigurationProductsRequest$Outbound = {
@@ -2037,9 +1834,9 @@ export const GetConfigurationProductsRepl$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  enabled: z.boolean(),
-  supportsReadOnlyMode: z.boolean(),
-  welcomeMessage: z.string().optional(),
+  enabled: types.boolean(),
+  supportsReadOnlyMode: types.boolean(),
+  welcomeMessage: types.optional(types.string()),
 });
 /** @internal */
 export type GetConfigurationProductsRepl$Outbound = {
@@ -2082,7 +1879,9 @@ export function getConfigurationProductsReplFromJSON(
 export const Storage$inboundSchema: z.ZodType<Storage, z.ZodTypeDef, unknown> =
   z.object({
     status: GetConfigurationProductsStatus$inboundSchema,
-    repl: z.lazy(() => GetConfigurationProductsRepl$inboundSchema).optional(),
+    repl: types.optional(
+      z.lazy(() => GetConfigurationProductsRepl$inboundSchema),
+    ),
   });
 /** @internal */
 export type Storage$Outbound = {
@@ -2129,7 +1928,7 @@ export const GetConfigurationProductsExperimentation$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   status: GetConfigurationProductsIntegrationsStatus$inboundSchema,
-  edgeConfigSyncingSupport: z.boolean().optional(),
+  edgeConfigSyncingSupport: types.optional(types.boolean()),
 });
 /** @internal */
 export type GetConfigurationProductsExperimentation$Outbound = {
@@ -2492,8 +2291,8 @@ export const LogDrain$inboundSchema: z.ZodType<
 > = z.object({
   status:
     GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsLogDrainStatus$inboundSchema,
-  endpoint: z.string(),
-  headers: z.record(z.string()).optional(),
+  endpoint: types.string(),
+  headers: types.optional(z.record(types.string())),
   format: Format$inboundSchema,
 });
 /** @internal */
@@ -2561,8 +2360,8 @@ export const TraceDrain$inboundSchema: z.ZodType<
 > = z.object({
   status:
     GetConfigurationProductsIntegrationsResponse200ApplicationJSONResponseBodyProductsProtocolsTraceDrainStatus$inboundSchema,
-  endpoint: z.string(),
-  headers: z.record(z.string()).optional(),
+  endpoint: types.string(),
+  headers: types.optional(z.record(types.string())),
   format: GetConfigurationProductsFormat$inboundSchema,
 });
 /** @internal */
@@ -2704,20 +2503,22 @@ export const Protocols$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  storage: z.lazy(() => Storage$inboundSchema).optional(),
-  experimentation: z.lazy(() =>
-    GetConfigurationProductsExperimentation$inboundSchema
-  ).optional(),
-  ai: z.lazy(() => Ai$inboundSchema).optional(),
-  authentication: z.lazy(() => Authentication$inboundSchema).optional(),
-  observability: z.lazy(() => Observability$inboundSchema).optional(),
-  video: z.lazy(() => Video$inboundSchema).optional(),
-  workflow: z.lazy(() => Workflow$inboundSchema).optional(),
-  checks: z.lazy(() => GetConfigurationProductsChecks$inboundSchema).optional(),
-  logDrain: z.lazy(() => LogDrain$inboundSchema).optional(),
-  traceDrain: z.lazy(() => TraceDrain$inboundSchema).optional(),
-  messaging: z.lazy(() => Messaging$inboundSchema).optional(),
-  other: z.lazy(() => Other$inboundSchema).optional(),
+  storage: types.optional(z.lazy(() => Storage$inboundSchema)),
+  experimentation: types.optional(
+    z.lazy(() => GetConfigurationProductsExperimentation$inboundSchema),
+  ),
+  ai: types.optional(z.lazy(() => Ai$inboundSchema)),
+  authentication: types.optional(z.lazy(() => Authentication$inboundSchema)),
+  observability: types.optional(z.lazy(() => Observability$inboundSchema)),
+  video: types.optional(z.lazy(() => Video$inboundSchema)),
+  workflow: types.optional(z.lazy(() => Workflow$inboundSchema)),
+  checks: types.optional(
+    z.lazy(() => GetConfigurationProductsChecks$inboundSchema),
+  ),
+  logDrain: types.optional(z.lazy(() => LogDrain$inboundSchema)),
+  traceDrain: types.optional(z.lazy(() => TraceDrain$inboundSchema)),
+  messaging: types.optional(z.lazy(() => Messaging$inboundSchema)),
+  other: types.optional(z.lazy(() => Other$inboundSchema)),
 });
 /** @internal */
 export type Protocols$Outbound = {
@@ -2792,101 +2593,6 @@ export const GetConfigurationProductsType$outboundSchema: z.ZodNativeEnum<
 > = GetConfigurationProductsType$inboundSchema;
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt524028$inboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt524028,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({});
-/** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt524028$Outbound =
-  {};
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt524028$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt524028$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt524028
-  > = z.object({});
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt524028ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt524028,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt524028$outboundSchema
-      .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt524028,
-      ),
-  );
-}
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt524028FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt524028,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt524028$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt524028' from JSON`,
-  );
-}
-
-/** @internal */
-export const PropertiesValue$inboundSchema: z.ZodType<
-  PropertiesValue,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  "__@BRAND@524028": z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt524028$inboundSchema
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "__@BRAND@524028": "atBRANDAt524028",
-  });
-});
-/** @internal */
-export type PropertiesValue$Outbound = {
-  "__@BRAND@524028":
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt524028$Outbound;
-};
-
-/** @internal */
-export const PropertiesValue$outboundSchema: z.ZodType<
-  PropertiesValue$Outbound,
-  z.ZodTypeDef,
-  PropertiesValue
-> = z.object({
-  atBRANDAt524028: z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema10AtBRANDAt524028$outboundSchema
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    atBRANDAt524028: "__@BRAND@524028",
-  });
-});
-
-export function propertiesValueToJSON(
-  propertiesValue: PropertiesValue,
-): string {
-  return JSON.stringify(PropertiesValue$outboundSchema.parse(propertiesValue));
-}
-export function propertiesValueFromJSON(
-  jsonString: string,
-): SafeParseResult<PropertiesValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PropertiesValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PropertiesValue' from JSON`,
-  );
-}
-
-/** @internal */
 export const GetConfigurationProductsDisabled3$inboundSchema: z.ZodNativeEnum<
   typeof GetConfigurationProductsDisabled3
 > = z.nativeEnum(GetConfigurationProductsDisabled3);
@@ -2901,7 +2607,7 @@ export const GetConfigurationProductsDisabled2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  expr: z.string(),
+  expr: types.string(),
 });
 /** @internal */
 export type GetConfigurationProductsDisabled2$Outbound = {
@@ -2941,9 +2647,9 @@ export const PropertiesDisabled$inboundSchema: z.ZodType<
   PropertiesDisabled,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => GetConfigurationProductsDisabled2$inboundSchema),
-  z.boolean(),
+  types.boolean(),
   GetConfigurationProductsDisabled3$inboundSchema,
 ]);
 /** @internal */
@@ -2957,7 +2663,7 @@ export const PropertiesDisabled$outboundSchema: z.ZodType<
   PropertiesDisabled$Outbound,
   z.ZodTypeDef,
   PropertiesDisabled
-> = z.union([
+> = smartUnion([
   z.lazy(() => GetConfigurationProductsDisabled2$outboundSchema),
   z.boolean(),
   GetConfigurationProductsDisabled3$outboundSchema,
@@ -2995,7 +2701,7 @@ export const GetConfigurationProductsHidden2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  expr: z.string(),
+  expr: types.string(),
 });
 /** @internal */
 export type GetConfigurationProductsHidden2$Outbound = {
@@ -3035,9 +2741,9 @@ export const PropertiesHidden$inboundSchema: z.ZodType<
   PropertiesHidden,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => GetConfigurationProductsHidden2$inboundSchema),
-  z.boolean(),
+  types.boolean(),
   GetConfigurationProductsHidden3$inboundSchema,
 ]);
 /** @internal */
@@ -3051,7 +2757,7 @@ export const PropertiesHidden$outboundSchema: z.ZodType<
   PropertiesHidden$Outbound,
   z.ZodTypeDef,
   PropertiesHidden
-> = z.union([
+> = smartUnion([
   z.lazy(() => GetConfigurationProductsHidden2$outboundSchema),
   z.boolean(),
   GetConfigurationProductsHidden3$outboundSchema,
@@ -3080,21 +2786,25 @@ export const Properties10$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: z.lazy(() => PropertiesValue$inboundSchema),
-  disabled: z.union([
-    z.lazy(() => GetConfigurationProductsDisabled2$inboundSchema),
-    z.boolean(),
-    GetConfigurationProductsDisabled3$inboundSchema,
-  ]).optional(),
-  hidden: z.union([
-    z.lazy(() => GetConfigurationProductsHidden2$inboundSchema),
-    z.boolean(),
-    GetConfigurationProductsHidden3$inboundSchema,
-  ]).optional(),
+  value: types.string(),
+  disabled: types.optional(
+    smartUnion([
+      z.lazy(() => GetConfigurationProductsDisabled2$inboundSchema),
+      types.boolean(),
+      GetConfigurationProductsDisabled3$inboundSchema,
+    ]),
+  ),
+  hidden: types.optional(
+    smartUnion([
+      z.lazy(() => GetConfigurationProductsHidden2$inboundSchema),
+      types.boolean(),
+      GetConfigurationProductsHidden3$inboundSchema,
+    ]),
+  ),
 });
 /** @internal */
 export type Properties10$Outbound = {
-  value: PropertiesValue$Outbound;
+  value: string;
   disabled?:
     | GetConfigurationProductsDisabled2$Outbound
     | boolean
@@ -3113,13 +2823,13 @@ export const Properties10$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Properties10
 > = z.object({
-  value: z.lazy(() => PropertiesValue$outboundSchema),
-  disabled: z.union([
+  value: z.string(),
+  disabled: smartUnion([
     z.lazy(() => GetConfigurationProductsDisabled2$outboundSchema),
     z.boolean(),
     GetConfigurationProductsDisabled3$outboundSchema,
   ]).optional(),
-  hidden: z.union([
+  hidden: smartUnion([
     z.lazy(() => GetConfigurationProductsHidden2$outboundSchema),
     z.boolean(),
     GetConfigurationProductsHidden3$outboundSchema,
@@ -3168,326 +2878,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiControl$inboundSchema;
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt524028$inboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt524028,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({});
-/** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt524028$Outbound =
-  {};
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt524028$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt524028$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt524028
-  > = z.object({});
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt524028ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt524028,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt524028$outboundSchema
-      .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt524028,
-      ),
-  );
-}
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt524028FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt524028,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt524028$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt524028' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsMinLength$inboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsMinLength,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    "__@BRAND@524028": z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt524028$inboundSchema
-    ),
-  }).transform((v) => {
-    return remap$(v, {
-      "__@BRAND@524028": "atBRANDAt524028",
-    });
-  });
-/** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsMinLength$Outbound = {
-  "__@BRAND@524028":
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt524028$Outbound;
-};
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsMinLength$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsMinLength$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsMinLength
-  > = z.object({
-    atBRANDAt524028: z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9AtBRANDAt524028$outboundSchema
-    ),
-  }).transform((v) => {
-    return remap$(v, {
-      atBRANDAt524028: "__@BRAND@524028",
-    });
-  });
-
-export function getConfigurationProductsPropertiesIntegrationsMinLengthToJSON(
-  getConfigurationProductsPropertiesIntegrationsMinLength:
-    GetConfigurationProductsPropertiesIntegrationsMinLength,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsMinLength$outboundSchema
-      .parse(getConfigurationProductsPropertiesIntegrationsMinLength),
-  );
-}
-export function getConfigurationProductsPropertiesIntegrationsMinLengthFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsMinLength,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsPropertiesIntegrationsMinLength$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsMinLength' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt524028$inboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt524028,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({});
-/** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt524028$Outbound =
-  {};
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt524028$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt524028$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt524028
-  > = z.object({});
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt524028ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt524028,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt524028$outboundSchema
-      .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt524028,
-      ),
-  );
-}
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt524028FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt524028,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt524028$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt524028' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsMaxLength$inboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsMaxLength,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    "__@BRAND@524028": z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt524028$inboundSchema
-    ),
-  }).transform((v) => {
-    return remap$(v, {
-      "__@BRAND@524028": "atBRANDAt524028",
-    });
-  });
-/** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsMaxLength$Outbound = {
-  "__@BRAND@524028":
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt524028$Outbound;
-};
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsMaxLength$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsMaxLength$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsMaxLength
-  > = z.object({
-    atBRANDAt524028: z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9MaxLengthAtBRANDAt524028$outboundSchema
-    ),
-  }).transform((v) => {
-    return remap$(v, {
-      atBRANDAt524028: "__@BRAND@524028",
-    });
-  });
-
-export function getConfigurationProductsPropertiesIntegrationsMaxLengthToJSON(
-  getConfigurationProductsPropertiesIntegrationsMaxLength:
-    GetConfigurationProductsPropertiesIntegrationsMaxLength,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsMaxLength$outboundSchema
-      .parse(getConfigurationProductsPropertiesIntegrationsMaxLength),
-  );
-}
-export function getConfigurationProductsPropertiesIntegrationsMaxLengthFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsMaxLength,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsPropertiesIntegrationsMaxLength$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsMaxLength' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt524028$inboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt524028,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({});
-/** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt524028$Outbound =
-  {};
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt524028$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt524028$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt524028
-  > = z.object({});
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt524028ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt524028,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt524028$outboundSchema
-      .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt524028,
-      ),
-  );
-}
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt524028FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt524028,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt524028$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt524028' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsPattern$inboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsPattern,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    "__@BRAND@524028": z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt524028$inboundSchema
-    ),
-  }).transform((v) => {
-    return remap$(v, {
-      "__@BRAND@524028": "atBRANDAt524028",
-    });
-  });
-/** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsPattern$Outbound = {
-  "__@BRAND@524028":
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt524028$Outbound;
-};
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsPattern$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsPattern$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsPattern
-  > = z.object({
-    atBRANDAt524028: z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema9PatternAtBRANDAt524028$outboundSchema
-    ),
-  }).transform((v) => {
-    return remap$(v, {
-      atBRANDAt524028: "__@BRAND@524028",
-    });
-  });
-
-export function getConfigurationProductsPropertiesIntegrationsPatternToJSON(
-  getConfigurationProductsPropertiesIntegrationsPattern:
-    GetConfigurationProductsPropertiesIntegrationsPattern,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsPattern$outboundSchema.parse(
-      getConfigurationProductsPropertiesIntegrationsPattern,
-    ),
-  );
-}
-export function getConfigurationProductsPropertiesIntegrationsPatternFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsPattern,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsPropertiesIntegrationsPattern$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsPattern' from JSON`,
-  );
-}
-
-/** @internal */
 export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$inboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3
@@ -3508,7 +2898,7 @@ export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200Applicatio
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$Outbound =
@@ -3558,11 +2948,11 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiReadOnly,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$inboundSchema,
   ]);
 /** @internal */
@@ -3577,7 +2967,7 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiReadOnly$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiReadOnly
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$outboundSchema
     ),
@@ -3632,7 +3022,7 @@ export const GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJ
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$Outbound =
@@ -3682,11 +3072,11 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiHidden,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$inboundSchema,
   ]);
 /** @internal */
@@ -3701,7 +3091,7 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiHidden$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiHidden
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$outboundSchema
     ),
@@ -3756,7 +3146,7 @@ export const GetConfigurationProductsUiDisabledIntegrationsResponse200Applicatio
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$Outbound =
@@ -3806,11 +3196,11 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiDisabled,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$inboundSchema,
   ]);
 /** @internal */
@@ -3825,7 +3215,7 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiDisabled$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiDisabled
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$outboundSchema
     ),
@@ -3866,7 +3256,7 @@ export const GetConfigurationProductsUiDescriptionIntegrationsResponse200Applica
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$Outbound =
@@ -3916,11 +3306,11 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiDescription,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$inboundSchema
     ),
-    z.string(),
+    types.string(),
   ]);
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiDescription$Outbound =
@@ -3933,7 +3323,7 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiDescription$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiDescription
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$outboundSchema
     ),
@@ -3973,7 +3363,7 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiFormattedValue$Outbound =
@@ -4027,50 +3417,54 @@ export const Properties9$inboundSchema: z.ZodType<
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaType$inboundSchema,
   "ui:control":
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiControl$inboundSchema,
-  description: z.string().optional(),
-  minLength: z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsMinLength$inboundSchema
-  ).optional(),
-  maxLength: z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsMaxLength$inboundSchema
-  ).optional(),
-  pattern: z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsPattern$inboundSchema
-  ).optional(),
-  default: z.string().optional(),
-  enum: z.array(z.string()).optional(),
-  "ui:label": z.string().optional(),
-  "ui:read-only": z.union([
+  description: types.optional(types.string()),
+  minLength: types.optional(types.number()),
+  maxLength: types.optional(types.number()),
+  pattern: types.optional(types.string()),
+  default: types.optional(types.string()),
+  enum: types.optional(z.array(types.string())),
+  "ui:label": types.optional(types.string()),
+  "ui:read-only": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$inboundSchema
+      ),
+      types.boolean(),
+      GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$inboundSchema,
+    ]),
+  ),
+  "ui:hidden": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$inboundSchema
+      ),
+      types.boolean(),
+      GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$inboundSchema,
+    ]),
+  ),
+  "ui:disabled": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$inboundSchema
+      ),
+      types.boolean(),
+      GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$inboundSchema,
+    ]),
+  ),
+  "ui:description": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$inboundSchema
+      ),
+      types.string(),
+    ]),
+  ),
+  "ui:formatted-value": types.optional(
     z.lazy(() =>
-      GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$inboundSchema
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiFormattedValue$inboundSchema
     ),
-    z.boolean(),
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$inboundSchema,
-  ]).optional(),
-  "ui:hidden": z.union([
-    z.lazy(() =>
-      GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$inboundSchema
-    ),
-    z.boolean(),
-    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$inboundSchema,
-  ]).optional(),
-  "ui:disabled": z.union([
-    z.lazy(() =>
-      GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$inboundSchema
-    ),
-    z.boolean(),
-    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$inboundSchema,
-  ]).optional(),
-  "ui:description": z.union([
-    z.lazy(() =>
-      GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$inboundSchema
-    ),
-    z.string(),
-  ]).optional(),
-  "ui:formatted-value": z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiFormattedValue$inboundSchema
-  ).optional(),
-  "ui:placeholder": z.string().optional(),
+  ),
+  "ui:placeholder": types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
     "ui:control": "uiControl",
@@ -4088,15 +3482,9 @@ export type Properties9$Outbound = {
   type: string;
   "ui:control": string;
   description?: string | undefined;
-  minLength?:
-    | GetConfigurationProductsPropertiesIntegrationsMinLength$Outbound
-    | undefined;
-  maxLength?:
-    | GetConfigurationProductsPropertiesIntegrationsMaxLength$Outbound
-    | undefined;
-  pattern?:
-    | GetConfigurationProductsPropertiesIntegrationsPattern$Outbound
-    | undefined;
+  minLength?: number | undefined;
+  maxLength?: number | undefined;
+  pattern?: string | undefined;
   default?: string | undefined;
   enum?: Array<string> | undefined;
   "ui:label"?: string | undefined;
@@ -4136,40 +3524,34 @@ export const Properties9$outboundSchema: z.ZodType<
   uiControl:
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsUiControl$outboundSchema,
   description: z.string().optional(),
-  minLength: z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsMinLength$outboundSchema
-  ).optional(),
-  maxLength: z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsMaxLength$outboundSchema
-  ).optional(),
-  pattern: z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsPattern$outboundSchema
-  ).optional(),
+  minLength: z.number().optional(),
+  maxLength: z.number().optional(),
+  pattern: z.string().optional(),
   default: z.string().optional(),
   enum: z.array(z.string()).optional(),
   uiLabel: z.string().optional(),
-  uiReadOnly: z.union([
+  uiReadOnly: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$outboundSchema
     ),
     z.boolean(),
     GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$outboundSchema,
   ]).optional(),
-  uiHidden: z.union([
+  uiHidden: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$outboundSchema
     ),
     z.boolean(),
     GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$outboundSchema,
   ]).optional(),
-  uiDisabled: z.union([
+  uiDisabled: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$outboundSchema
     ),
     z.boolean(),
     GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema3$outboundSchema,
   ]).optional(),
-  uiDescription: z.union([
+  uiDescription: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema2$outboundSchema
     ),
@@ -4248,327 +3630,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8Type$inboundSchema;
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt524028$inboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt524028,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({});
-/** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt524028$Outbound =
-  {};
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt524028$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt524028$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt524028
-  > = z.object({});
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt524028ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt524028,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt524028$outboundSchema
-      .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt524028,
-      ),
-  );
-}
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt524028FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt524028,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt524028$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt524028' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponseMinLength$inboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponseMinLength,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    "__@BRAND@524028": z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt524028$inboundSchema
-    ),
-  }).transform((v) => {
-    return remap$(v, {
-      "__@BRAND@524028": "atBRANDAt524028",
-    });
-  });
-/** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponseMinLength$Outbound =
-  {
-    "__@BRAND@524028":
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt524028$Outbound;
-  };
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponseMinLength$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponseMinLength$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponseMinLength
-  > = z.object({
-    atBRANDAt524028: z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsMinLengthAtBRANDAt524028$outboundSchema
-    ),
-  }).transform((v) => {
-    return remap$(v, {
-      atBRANDAt524028: "__@BRAND@524028",
-    });
-  });
-
-export function getConfigurationProductsPropertiesIntegrationsResponseMinLengthToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponseMinLength:
-    GetConfigurationProductsPropertiesIntegrationsResponseMinLength,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponseMinLength$outboundSchema
-      .parse(getConfigurationProductsPropertiesIntegrationsResponseMinLength),
-  );
-}
-export function getConfigurationProductsPropertiesIntegrationsResponseMinLengthFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponseMinLength,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponseMinLength$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponseMinLength' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt524028$inboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt524028,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({});
-/** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt524028$Outbound =
-  {};
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt524028$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt524028$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt524028
-  > = z.object({});
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt524028ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt524028,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt524028$outboundSchema
-      .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt524028,
-      ),
-  );
-}
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt524028FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt524028,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt524028$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt524028' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponseMaxLength$inboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponseMaxLength,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    "__@BRAND@524028": z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt524028$inboundSchema
-    ),
-  }).transform((v) => {
-    return remap$(v, {
-      "__@BRAND@524028": "atBRANDAt524028",
-    });
-  });
-/** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponseMaxLength$Outbound =
-  {
-    "__@BRAND@524028":
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt524028$Outbound;
-  };
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponseMaxLength$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponseMaxLength$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponseMaxLength
-  > = z.object({
-    atBRANDAt524028: z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsAtBRANDAt524028$outboundSchema
-    ),
-  }).transform((v) => {
-    return remap$(v, {
-      atBRANDAt524028: "__@BRAND@524028",
-    });
-  });
-
-export function getConfigurationProductsPropertiesIntegrationsResponseMaxLengthToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponseMaxLength:
-    GetConfigurationProductsPropertiesIntegrationsResponseMaxLength,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponseMaxLength$outboundSchema
-      .parse(getConfigurationProductsPropertiesIntegrationsResponseMaxLength),
-  );
-}
-export function getConfigurationProductsPropertiesIntegrationsResponseMaxLengthFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponseMaxLength,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponseMaxLength$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponseMaxLength' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt524028$inboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt524028,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({});
-/** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt524028$Outbound =
-  {};
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt524028$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt524028$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt524028
-  > = z.object({});
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt524028ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt524028,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt524028$outboundSchema
-      .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt524028,
-      ),
-  );
-}
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt524028FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt524028,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt524028$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt524028' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponsePattern$inboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponsePattern,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    "__@BRAND@524028": z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt524028$inboundSchema
-    ),
-  }).transform((v) => {
-    return remap$(v, {
-      "__@BRAND@524028": "atBRANDAt524028",
-    });
-  });
-/** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponsePattern$Outbound =
-  {
-    "__@BRAND@524028":
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt524028$Outbound;
-  };
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponsePattern$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponsePattern$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponsePattern
-  > = z.object({
-    atBRANDAt524028: z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8ItemsPatternAtBRANDAt524028$outboundSchema
-    ),
-  }).transform((v) => {
-    return remap$(v, {
-      atBRANDAt524028: "__@BRAND@524028",
-    });
-  });
-
-export function getConfigurationProductsPropertiesIntegrationsResponsePatternToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponsePattern:
-    GetConfigurationProductsPropertiesIntegrationsResponsePattern,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponsePattern$outboundSchema
-      .parse(getConfigurationProductsPropertiesIntegrationsResponsePattern),
-  );
-}
-export function getConfigurationProductsPropertiesIntegrationsResponsePatternFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponsePattern,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponsePattern$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponsePattern' from JSON`,
-  );
-}
-
-/** @internal */
 export const GetConfigurationProductsPropertiesIntegrationsItems$inboundSchema:
   z.ZodType<
     GetConfigurationProductsPropertiesIntegrationsItems,
@@ -4577,32 +3638,20 @@ export const GetConfigurationProductsPropertiesIntegrationsItems$inboundSchema:
   > = z.object({
     type:
       GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8Type$inboundSchema,
-    description: z.string().optional(),
-    minLength: z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponseMinLength$inboundSchema
-    ).optional(),
-    maxLength: z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponseMaxLength$inboundSchema
-    ).optional(),
-    pattern: z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponsePattern$inboundSchema
-    ).optional(),
-    default: z.string().optional(),
-    enum: z.array(z.string()).optional(),
+    description: types.optional(types.string()),
+    minLength: types.optional(types.number()),
+    maxLength: types.optional(types.number()),
+    pattern: types.optional(types.string()),
+    default: types.optional(types.string()),
+    enum: types.optional(z.array(types.string())),
   });
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsItems$Outbound = {
   type: string;
   description?: string | undefined;
-  minLength?:
-    | GetConfigurationProductsPropertiesIntegrationsResponseMinLength$Outbound
-    | undefined;
-  maxLength?:
-    | GetConfigurationProductsPropertiesIntegrationsResponseMaxLength$Outbound
-    | undefined;
-  pattern?:
-    | GetConfigurationProductsPropertiesIntegrationsResponsePattern$Outbound
-    | undefined;
+  minLength?: number | undefined;
+  maxLength?: number | undefined;
+  pattern?: string | undefined;
   default?: string | undefined;
   enum?: Array<string> | undefined;
 };
@@ -4617,15 +3666,9 @@ export const GetConfigurationProductsPropertiesIntegrationsItems$outboundSchema:
     type:
       GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8Type$outboundSchema,
     description: z.string().optional(),
-    minLength: z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponseMinLength$outboundSchema
-    ).optional(),
-    maxLength: z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponseMaxLength$outboundSchema
-    ).optional(),
-    pattern: z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponsePattern$outboundSchema
-    ).optional(),
+    minLength: z.number().optional(),
+    maxLength: z.number().optional(),
+    pattern: z.string().optional(),
     default: z.string().optional(),
     enum: z.array(z.string()).optional(),
   });
@@ -4657,107 +3700,6 @@ export function getConfigurationProductsPropertiesIntegrationsItemsFromJSON(
 }
 
 /** @internal */
-export const GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt524028$inboundSchema:
-  z.ZodType<
-    GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt524028,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({});
-/** @internal */
-export type GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt524028$Outbound =
-  {};
-
-/** @internal */
-export const GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt524028$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt524028$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt524028
-  > = z.object({});
-
-export function getConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt524028ToJSON(
-  getConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt524028:
-    GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt524028,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt524028$outboundSchema
-      .parse(
-        getConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt524028,
-      ),
-  );
-}
-export function getConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt524028FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt524028,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt524028$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt524028' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetConfigurationProductsUiOptionsValue$inboundSchema: z.ZodType<
-  GetConfigurationProductsUiOptionsValue,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  "__@BRAND@524028": z.lazy(() =>
-    GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt524028$inboundSchema
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "__@BRAND@524028": "atBRANDAt524028",
-  });
-});
-/** @internal */
-export type GetConfigurationProductsUiOptionsValue$Outbound = {
-  "__@BRAND@524028":
-    GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt524028$Outbound;
-};
-
-/** @internal */
-export const GetConfigurationProductsUiOptionsValue$outboundSchema: z.ZodType<
-  GetConfigurationProductsUiOptionsValue$Outbound,
-  z.ZodTypeDef,
-  GetConfigurationProductsUiOptionsValue
-> = z.object({
-  atBRANDAt524028: z.lazy(() =>
-    GetConfigurationProductsUiOptionsIntegrationsResponseAtBRANDAt524028$outboundSchema
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    atBRANDAt524028: "__@BRAND@524028",
-  });
-});
-
-export function getConfigurationProductsUiOptionsValueToJSON(
-  getConfigurationProductsUiOptionsValue:
-    GetConfigurationProductsUiOptionsValue,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsUiOptionsValue$outboundSchema.parse(
-      getConfigurationProductsUiOptionsValue,
-    ),
-  );
-}
-export function getConfigurationProductsUiOptionsValueFromJSON(
-  jsonString: string,
-): SafeParseResult<GetConfigurationProductsUiOptionsValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsUiOptionsValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsUiOptionsValue' from JSON`,
-  );
-}
-
-/** @internal */
 export const GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson3$inboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson3
@@ -4778,7 +3720,7 @@ export const GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJ
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson2$Outbound =
@@ -4828,11 +3770,11 @@ export const GetConfigurationProductsUiOptionsIntegrationsResponseDisabled$inbou
     GetConfigurationProductsUiOptionsIntegrationsResponseDisabled,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson3$inboundSchema,
   ]);
 /** @internal */
@@ -4847,7 +3789,7 @@ export const GetConfigurationProductsUiOptionsIntegrationsResponseDisabled$outbo
     GetConfigurationProductsUiOptionsIntegrationsResponseDisabled$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsUiOptionsIntegrationsResponseDisabled
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson2$outboundSchema
     ),
@@ -4900,7 +3842,7 @@ export const GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJso
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson2$Outbound =
@@ -4950,11 +3892,11 @@ export const GetConfigurationProductsUiOptionsIntegrationsResponseHidden$inbound
     GetConfigurationProductsUiOptionsIntegrationsResponseHidden,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson3$inboundSchema,
   ]);
 /** @internal */
@@ -4969,7 +3911,7 @@ export const GetConfigurationProductsUiOptionsIntegrationsResponseHidden$outboun
     GetConfigurationProductsUiOptionsIntegrationsResponseHidden$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsUiOptionsIntegrationsResponseHidden
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson2$outboundSchema
     ),
@@ -5007,25 +3949,29 @@ export const GetConfigurationProductsUiOptions3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: z.lazy(() => GetConfigurationProductsUiOptionsValue$inboundSchema),
-  disabled: z.union([
-    z.lazy(() =>
-      GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson2$inboundSchema
-    ),
-    z.boolean(),
-    GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson3$inboundSchema,
-  ]).optional(),
-  hidden: z.union([
-    z.lazy(() =>
-      GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson2$inboundSchema
-    ),
-    z.boolean(),
-    GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson3$inboundSchema,
-  ]).optional(),
+  value: types.string(),
+  disabled: types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson2$inboundSchema
+      ),
+      types.boolean(),
+      GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson3$inboundSchema,
+    ]),
+  ),
+  hidden: types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson2$inboundSchema
+      ),
+      types.boolean(),
+      GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson3$inboundSchema,
+    ]),
+  ),
 });
 /** @internal */
 export type GetConfigurationProductsUiOptions3$Outbound = {
-  value: GetConfigurationProductsUiOptionsValue$Outbound;
+  value: string;
   disabled?:
     | GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson2$Outbound
     | boolean
@@ -5044,15 +3990,15 @@ export const GetConfigurationProductsUiOptions3$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetConfigurationProductsUiOptions3
 > = z.object({
-  value: z.lazy(() => GetConfigurationProductsUiOptionsValue$outboundSchema),
-  disabled: z.union([
+  value: z.string(),
+  disabled: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson2$outboundSchema
     ),
     z.boolean(),
     GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJson3$outboundSchema,
   ]).optional(),
-  hidden: z.union([
+  hidden: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson2$outboundSchema
     ),
@@ -5082,104 +4028,6 @@ export function getConfigurationProductsUiOptions3FromJSON(
 }
 
 /** @internal */
-export const GetConfigurationProductsUiOptionsAtBRANDAt524028$inboundSchema:
-  z.ZodType<
-    GetConfigurationProductsUiOptionsAtBRANDAt524028,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({});
-/** @internal */
-export type GetConfigurationProductsUiOptionsAtBRANDAt524028$Outbound = {};
-
-/** @internal */
-export const GetConfigurationProductsUiOptionsAtBRANDAt524028$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsUiOptionsAtBRANDAt524028$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsUiOptionsAtBRANDAt524028
-  > = z.object({});
-
-export function getConfigurationProductsUiOptionsAtBRANDAt524028ToJSON(
-  getConfigurationProductsUiOptionsAtBRANDAt524028:
-    GetConfigurationProductsUiOptionsAtBRANDAt524028,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsUiOptionsAtBRANDAt524028$outboundSchema.parse(
-      getConfigurationProductsUiOptionsAtBRANDAt524028,
-    ),
-  );
-}
-export function getConfigurationProductsUiOptionsAtBRANDAt524028FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsUiOptionsAtBRANDAt524028,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsUiOptionsAtBRANDAt524028$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetConfigurationProductsUiOptionsAtBRANDAt524028' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetConfigurationProductsUiOptions2$inboundSchema: z.ZodType<
-  GetConfigurationProductsUiOptions2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  "__@BRAND@524028": z.lazy(() =>
-    GetConfigurationProductsUiOptionsAtBRANDAt524028$inboundSchema
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "__@BRAND@524028": "atBRANDAt524028",
-  });
-});
-/** @internal */
-export type GetConfigurationProductsUiOptions2$Outbound = {
-  "__@BRAND@524028": GetConfigurationProductsUiOptionsAtBRANDAt524028$Outbound;
-};
-
-/** @internal */
-export const GetConfigurationProductsUiOptions2$outboundSchema: z.ZodType<
-  GetConfigurationProductsUiOptions2$Outbound,
-  z.ZodTypeDef,
-  GetConfigurationProductsUiOptions2
-> = z.object({
-  atBRANDAt524028: z.lazy(() =>
-    GetConfigurationProductsUiOptionsAtBRANDAt524028$outboundSchema
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    atBRANDAt524028: "__@BRAND@524028",
-  });
-});
-
-export function getConfigurationProductsUiOptions2ToJSON(
-  getConfigurationProductsUiOptions2: GetConfigurationProductsUiOptions2,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsUiOptions2$outboundSchema.parse(
-      getConfigurationProductsUiOptions2,
-    ),
-  );
-}
-export function getConfigurationProductsUiOptions2FromJSON(
-  jsonString: string,
-): SafeParseResult<GetConfigurationProductsUiOptions2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsUiOptions2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsUiOptions2' from JSON`,
-  );
-}
-
-/** @internal */
 export const GetConfigurationProductsDisabledIntegrationsResponse2003$inboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsDisabledIntegrationsResponse2003
@@ -5197,7 +4045,7 @@ export const GetConfigurationProductsDisabledIntegrationsResponse2002$inboundSch
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsDisabledIntegrationsResponse2002$Outbound =
@@ -5245,11 +4093,11 @@ export const GetConfigurationProductsUiOptionsIntegrationsDisabled$inboundSchema
     GetConfigurationProductsUiOptionsIntegrationsDisabled,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsDisabledIntegrationsResponse2002$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     GetConfigurationProductsDisabledIntegrationsResponse2003$inboundSchema,
   ]);
 /** @internal */
@@ -5264,7 +4112,7 @@ export const GetConfigurationProductsUiOptionsIntegrationsDisabled$outboundSchem
     GetConfigurationProductsUiOptionsIntegrationsDisabled$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsUiOptionsIntegrationsDisabled
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsDisabledIntegrationsResponse2002$outboundSchema
     ),
@@ -5316,7 +4164,7 @@ export const GetConfigurationProductsHiddenIntegrationsResponse2002$inboundSchem
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsHiddenIntegrationsResponse2002$Outbound = {
@@ -5364,11 +4212,11 @@ export const GetConfigurationProductsUiOptionsIntegrationsHidden$inboundSchema:
     GetConfigurationProductsUiOptionsIntegrationsHidden,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsHiddenIntegrationsResponse2002$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     GetConfigurationProductsHiddenIntegrationsResponse2003$inboundSchema,
   ]);
 /** @internal */
@@ -5383,7 +4231,7 @@ export const GetConfigurationProductsUiOptionsIntegrationsHidden$outboundSchema:
     GetConfigurationProductsUiOptionsIntegrationsHidden$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsUiOptionsIntegrationsHidden
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsHiddenIntegrationsResponse2002$outboundSchema
     ),
@@ -5423,22 +4271,26 @@ export const GetConfigurationProductsUiOptions1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: z.string(),
-  label: z.string(),
-  disabled: z.union([
-    z.lazy(() =>
-      GetConfigurationProductsDisabledIntegrationsResponse2002$inboundSchema
-    ),
-    z.boolean(),
-    GetConfigurationProductsDisabledIntegrationsResponse2003$inboundSchema,
-  ]).optional(),
-  hidden: z.union([
-    z.lazy(() =>
-      GetConfigurationProductsHiddenIntegrationsResponse2002$inboundSchema
-    ),
-    z.boolean(),
-    GetConfigurationProductsHiddenIntegrationsResponse2003$inboundSchema,
-  ]).optional(),
+  value: types.string(),
+  label: types.string(),
+  disabled: types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsDisabledIntegrationsResponse2002$inboundSchema
+      ),
+      types.boolean(),
+      GetConfigurationProductsDisabledIntegrationsResponse2003$inboundSchema,
+    ]),
+  ),
+  hidden: types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsHiddenIntegrationsResponse2002$inboundSchema
+      ),
+      types.boolean(),
+      GetConfigurationProductsHiddenIntegrationsResponse2003$inboundSchema,
+    ]),
+  ),
 });
 /** @internal */
 export type GetConfigurationProductsUiOptions1$Outbound = {
@@ -5464,14 +4316,14 @@ export const GetConfigurationProductsUiOptions1$outboundSchema: z.ZodType<
 > = z.object({
   value: z.string(),
   label: z.string(),
-  disabled: z.union([
+  disabled: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsDisabledIntegrationsResponse2002$outboundSchema
     ),
     z.boolean(),
     GetConfigurationProductsDisabledIntegrationsResponse2003$outboundSchema,
   ]).optional(),
-  hidden: z.union([
+  hidden: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsHiddenIntegrationsResponse2002$outboundSchema
     ),
@@ -5506,16 +4358,16 @@ export const GetConfigurationProductsPropertiesIntegrationsUiOptions$inboundSche
     GetConfigurationProductsPropertiesIntegrationsUiOptions,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() => GetConfigurationProductsUiOptions1$inboundSchema),
-    z.lazy(() => GetConfigurationProductsUiOptions2$inboundSchema),
     z.lazy(() => GetConfigurationProductsUiOptions3$inboundSchema),
+    types.string(),
   ]);
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsUiOptions$Outbound =
   | GetConfigurationProductsUiOptions1$Outbound
-  | GetConfigurationProductsUiOptions2$Outbound
-  | GetConfigurationProductsUiOptions3$Outbound;
+  | GetConfigurationProductsUiOptions3$Outbound
+  | string;
 
 /** @internal */
 export const GetConfigurationProductsPropertiesIntegrationsUiOptions$outboundSchema:
@@ -5523,10 +4375,10 @@ export const GetConfigurationProductsPropertiesIntegrationsUiOptions$outboundSch
     GetConfigurationProductsPropertiesIntegrationsUiOptions$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsUiOptions
-  > = z.union([
+  > = smartUnion([
     z.lazy(() => GetConfigurationProductsUiOptions1$outboundSchema),
-    z.lazy(() => GetConfigurationProductsUiOptions2$outboundSchema),
     z.lazy(() => GetConfigurationProductsUiOptions3$outboundSchema),
+    z.string(),
   ]);
 
 export function getConfigurationProductsPropertiesIntegrationsUiOptionsToJSON(
@@ -5574,7 +4426,7 @@ export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200Applicatio
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts2$Outbound =
@@ -5624,11 +4476,11 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiReadOnly,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema,
   ]);
 /** @internal */
@@ -5643,7 +4495,7 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiReadOnly$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiReadOnly
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts2$outboundSchema
     ),
@@ -5698,7 +4550,7 @@ export const GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJ
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2$Outbound =
@@ -5748,11 +4600,11 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiHidden,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema,
   ]);
 /** @internal */
@@ -5767,7 +4619,7 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiHidden$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiHidden
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2$outboundSchema
     ),
@@ -5822,7 +4674,7 @@ export const GetConfigurationProductsUiDisabledIntegrationsResponse200Applicatio
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2$Outbound =
@@ -5872,11 +4724,11 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDisabled,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema,
   ]);
 /** @internal */
@@ -5891,7 +4743,7 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDisabled$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDisabled
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2$outboundSchema
     ),
@@ -5932,7 +4784,7 @@ export const GetConfigurationProductsUiDescriptionIntegrationsResponse200Applica
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProducts2$Outbound =
@@ -5982,11 +4834,11 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDescription,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema
     ),
-    z.string(),
+    types.string(),
   ]);
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDescription$Outbound =
@@ -5999,7 +4851,7 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDescription$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiDescription
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProducts2$outboundSchema
     ),
@@ -6039,7 +4891,7 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiFormattedValue$Outbound =
@@ -6084,186 +4936,6 @@ export function getConfigurationProductsPropertiesIntegrationsResponse200Applica
 }
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt524028$inboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt524028,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({});
-/** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt524028$Outbound =
-  {};
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt524028$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt524028$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt524028
-  > = z.object({});
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt524028ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt524028,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt524028$outboundSchema
-      .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt524028,
-      ),
-  );
-}
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt524028FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt524028,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt524028$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt524028' from JSON`,
-  );
-}
-
-/** @internal */
-export const Default$inboundSchema: z.ZodType<Default, z.ZodTypeDef, unknown> =
-  z.object({
-    "__@BRAND@524028": z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt524028$inboundSchema
-    ),
-  }).transform((v) => {
-    return remap$(v, {
-      "__@BRAND@524028": "atBRANDAt524028",
-    });
-  });
-/** @internal */
-export type Default$Outbound = {
-  "__@BRAND@524028":
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt524028$Outbound;
-};
-
-/** @internal */
-export const Default$outboundSchema: z.ZodType<
-  Default$Outbound,
-  z.ZodTypeDef,
-  Default
-> = z.object({
-  atBRANDAt524028: z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaAtBRANDAt524028$outboundSchema
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    atBRANDAt524028: "__@BRAND@524028",
-  });
-});
-
-export function defaultToJSON(value: Default): string {
-  return JSON.stringify(Default$outboundSchema.parse(value));
-}
-export function defaultFromJSON(
-  jsonString: string,
-): SafeParseResult<Default, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Default$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Default' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt524028$inboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt524028,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({});
-/** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt524028$Outbound =
-  {};
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt524028$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt524028$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt524028
-  > = z.object({});
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt524028ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt524028,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt524028$outboundSchema
-      .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt524028,
-      ),
-  );
-}
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt524028FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt524028,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt524028$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt524028' from JSON`,
-  );
-}
-
-/** @internal */
-export const Example$inboundSchema: z.ZodType<Example, z.ZodTypeDef, unknown> =
-  z.object({
-    "__@BRAND@524028": z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt524028$inboundSchema
-    ),
-  }).transform((v) => {
-    return remap$(v, {
-      "__@BRAND@524028": "atBRANDAt524028",
-    });
-  });
-/** @internal */
-export type Example$Outbound = {
-  "__@BRAND@524028":
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt524028$Outbound;
-};
-
-/** @internal */
-export const Example$outboundSchema: z.ZodType<
-  Example$Outbound,
-  z.ZodTypeDef,
-  Example
-> = z.object({
-  atBRANDAt524028: z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema8AtBRANDAt524028$outboundSchema
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    atBRANDAt524028: "__@BRAND@524028",
-  });
-});
-
-export function exampleToJSON(example: Example): string {
-  return JSON.stringify(Example$outboundSchema.parse(example));
-}
-export function exampleFromJSON(
-  jsonString: string,
-): SafeParseResult<Example, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Example$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Example' from JSON`,
-  );
-}
-
-/** @internal */
 export const Properties8$inboundSchema: z.ZodType<
   Properties8,
   z.ZodTypeDef,
@@ -6277,49 +4949,59 @@ export const Properties8$inboundSchema: z.ZodType<
     GetConfigurationProductsPropertiesIntegrationsItems$inboundSchema
   ),
   "ui:options": z.array(
-    z.union([
+    smartUnion([
       z.lazy(() => GetConfigurationProductsUiOptions1$inboundSchema),
-      z.lazy(() => GetConfigurationProductsUiOptions2$inboundSchema),
       z.lazy(() => GetConfigurationProductsUiOptions3$inboundSchema),
+      types.string(),
     ]),
   ),
-  description: z.string().optional(),
-  minItems: z.number().optional(),
-  maxItems: z.number().optional(),
-  "ui:label": z.string().optional(),
-  "ui:read-only": z.union([
+  description: types.optional(types.string()),
+  minItems: types.optional(types.number()),
+  maxItems: types.optional(types.number()),
+  "ui:label": types.optional(types.string()),
+  "ui:read-only": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema
+      ),
+      types.boolean(),
+      GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema,
+    ]),
+  ),
+  "ui:hidden": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema
+      ),
+      types.boolean(),
+      GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema,
+    ]),
+  ),
+  "ui:disabled": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema
+      ),
+      types.boolean(),
+      GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema,
+    ]),
+  ),
+  "ui:description": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema
+      ),
+      types.string(),
+    ]),
+  ),
+  "ui:formatted-value": types.optional(
     z.lazy(() =>
-      GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiFormattedValue$inboundSchema
     ),
-    z.boolean(),
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema,
-  ]).optional(),
-  "ui:hidden": z.union([
-    z.lazy(() =>
-      GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema
-    ),
-    z.boolean(),
-    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema,
-  ]).optional(),
-  "ui:disabled": z.union([
-    z.lazy(() =>
-      GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema
-    ),
-    z.boolean(),
-    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema,
-  ]).optional(),
-  "ui:description": z.union([
-    z.lazy(() =>
-      GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema
-    ),
-    z.string(),
-  ]).optional(),
-  "ui:formatted-value": z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiFormattedValue$inboundSchema
-  ).optional(),
-  "ui:placeholder": z.string().optional(),
-  default: z.array(z.lazy(() => Default$inboundSchema)).optional(),
-  example: z.array(z.lazy(() => Example$inboundSchema)).optional(),
+  ),
+  "ui:placeholder": types.optional(types.string()),
+  default: types.optional(z.array(types.string())),
+  example: types.optional(z.array(types.string())),
 }).transform((v) => {
   return remap$(v, {
     "ui:control": "uiControl",
@@ -6340,8 +5022,8 @@ export type Properties8$Outbound = {
   items: GetConfigurationProductsPropertiesIntegrationsItems$Outbound;
   "ui:options": Array<
     | GetConfigurationProductsUiOptions1$Outbound
-    | GetConfigurationProductsUiOptions2$Outbound
     | GetConfigurationProductsUiOptions3$Outbound
+    | string
   >;
   description?: string | undefined;
   minItems?: number | undefined;
@@ -6370,8 +5052,8 @@ export type Properties8$Outbound = {
     | GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiFormattedValue$Outbound
     | undefined;
   "ui:placeholder"?: string | undefined;
-  default?: Array<Default$Outbound> | undefined;
-  example?: Array<Example$Outbound> | undefined;
+  default?: Array<string> | undefined;
+  example?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -6388,38 +5070,38 @@ export const Properties8$outboundSchema: z.ZodType<
     GetConfigurationProductsPropertiesIntegrationsItems$outboundSchema
   ),
   uiOptions: z.array(
-    z.union([
+    smartUnion([
       z.lazy(() => GetConfigurationProductsUiOptions1$outboundSchema),
-      z.lazy(() => GetConfigurationProductsUiOptions2$outboundSchema),
       z.lazy(() => GetConfigurationProductsUiOptions3$outboundSchema),
+      z.string(),
     ]),
   ),
   description: z.string().optional(),
   minItems: z.number().optional(),
   maxItems: z.number().optional(),
   uiLabel: z.string().optional(),
-  uiReadOnly: z.union([
+  uiReadOnly: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts2$outboundSchema
     ),
     z.boolean(),
     GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts3$outboundSchema,
   ]).optional(),
-  uiHidden: z.union([
+  uiHidden: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2$outboundSchema
     ),
     z.boolean(),
     GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts3$outboundSchema,
   ]).optional(),
-  uiDisabled: z.union([
+  uiDisabled: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2$outboundSchema
     ),
     z.boolean(),
     GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3$outboundSchema,
   ]).optional(),
-  uiDescription: z.union([
+  uiDescription: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyProducts2$outboundSchema
     ),
@@ -6429,8 +5111,8 @@ export const Properties8$outboundSchema: z.ZodType<
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiFormattedValue$outboundSchema
   ).optional(),
   uiPlaceholder: z.string().optional(),
-  default: z.array(z.lazy(() => Default$outboundSchema)).optional(),
-  example: z.array(z.lazy(() => Example$outboundSchema)).optional(),
+  default: z.array(z.string()).optional(),
+  example: z.array(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     uiControl: "ui:control",
@@ -6487,97 +5169,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiControl$inboundSchema;
 
 /** @internal */
-export const GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt524028$inboundSchema:
-  z.ZodType<
-    GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt524028,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({});
-/** @internal */
-export type GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt524028$Outbound =
-  {};
-
-/** @internal */
-export const GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt524028$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt524028$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt524028
-  > = z.object({});
-
-export function getConfigurationProductsUiOptionsIntegrationsAtBRANDAt524028ToJSON(
-  getConfigurationProductsUiOptionsIntegrationsAtBRANDAt524028:
-    GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt524028,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt524028$outboundSchema
-      .parse(getConfigurationProductsUiOptionsIntegrationsAtBRANDAt524028),
-  );
-}
-export function getConfigurationProductsUiOptionsIntegrationsAtBRANDAt524028FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt524028,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt524028$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt524028' from JSON`,
-  );
-}
-
-/** @internal */
-export const UiOptionsValue$inboundSchema: z.ZodType<
-  UiOptionsValue,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  "__@BRAND@524028": z.lazy(() =>
-    GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt524028$inboundSchema
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "__@BRAND@524028": "atBRANDAt524028",
-  });
-});
-/** @internal */
-export type UiOptionsValue$Outbound = {
-  "__@BRAND@524028":
-    GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt524028$Outbound;
-};
-
-/** @internal */
-export const UiOptionsValue$outboundSchema: z.ZodType<
-  UiOptionsValue$Outbound,
-  z.ZodTypeDef,
-  UiOptionsValue
-> = z.object({
-  atBRANDAt524028: z.lazy(() =>
-    GetConfigurationProductsUiOptionsIntegrationsAtBRANDAt524028$outboundSchema
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    atBRANDAt524028: "__@BRAND@524028",
-  });
-});
-
-export function uiOptionsValueToJSON(uiOptionsValue: UiOptionsValue): string {
-  return JSON.stringify(UiOptionsValue$outboundSchema.parse(uiOptionsValue));
-}
-export function uiOptionsValueFromJSON(
-  jsonString: string,
-): SafeParseResult<UiOptionsValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UiOptionsValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UiOptionsValue' from JSON`,
-  );
-}
-
-/** @internal */
 export const GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3
@@ -6598,7 +5189,7 @@ export const GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJ
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2$Outbound =
@@ -6647,11 +5238,11 @@ export const GetConfigurationProductsUiOptionsDisabled$inboundSchema: z.ZodType<
   GetConfigurationProductsUiOptionsDisabled,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() =>
     GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema
   ),
-  z.boolean(),
+  types.boolean(),
   GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema,
 ]);
 /** @internal */
@@ -6666,7 +5257,7 @@ export const GetConfigurationProductsUiOptionsDisabled$outboundSchema:
     GetConfigurationProductsUiOptionsDisabled$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsUiOptionsDisabled
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2$outboundSchema
     ),
@@ -6721,7 +5312,7 @@ export const GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSO
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2$Outbound =
@@ -6770,11 +5361,11 @@ export const GetConfigurationProductsUiOptionsHidden$inboundSchema: z.ZodType<
   GetConfigurationProductsUiOptionsHidden,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() =>
     GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema
   ),
-  z.boolean(),
+  types.boolean(),
   GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema,
 ]);
 /** @internal */
@@ -6788,7 +5379,7 @@ export const GetConfigurationProductsUiOptionsHidden$outboundSchema: z.ZodType<
   GetConfigurationProductsUiOptionsHidden$Outbound,
   z.ZodTypeDef,
   GetConfigurationProductsUiOptionsHidden
-> = z.union([
+> = smartUnion([
   z.lazy(() =>
     GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2$outboundSchema
   ),
@@ -6828,25 +5419,29 @@ export const UiOptions3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: z.lazy(() => UiOptionsValue$inboundSchema),
-  disabled: z.union([
-    z.lazy(() =>
-      GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema
-    ),
-    z.boolean(),
-    GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema,
-  ]).optional(),
-  hidden: z.union([
-    z.lazy(() =>
-      GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema
-    ),
-    z.boolean(),
-    GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema,
-  ]).optional(),
+  value: types.string(),
+  disabled: types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema
+      ),
+      types.boolean(),
+      GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema,
+    ]),
+  ),
+  hidden: types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2$inboundSchema
+      ),
+      types.boolean(),
+      GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts3$inboundSchema,
+    ]),
+  ),
 });
 /** @internal */
 export type UiOptions3$Outbound = {
-  value: UiOptionsValue$Outbound;
+  value: string;
   disabled?:
     | GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2$Outbound
     | boolean
@@ -6865,15 +5460,15 @@ export const UiOptions3$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UiOptions3
 > = z.object({
-  value: z.lazy(() => UiOptionsValue$outboundSchema),
-  disabled: z.union([
+  value: z.string(),
+  disabled: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts2$outboundSchema
     ),
     z.boolean(),
     GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBodyProducts3$outboundSchema,
   ]).optional(),
-  hidden: z.union([
+  hidden: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBodyProducts2$outboundSchema
     ),
@@ -6892,82 +5487,6 @@ export function uiOptions3FromJSON(
     jsonString,
     (x) => UiOptions3$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'UiOptions3' from JSON`,
-  );
-}
-
-/** @internal */
-export const UiOptionsAtBRANDAt524028$inboundSchema: z.ZodType<
-  UiOptionsAtBRANDAt524028,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-/** @internal */
-export type UiOptionsAtBRANDAt524028$Outbound = {};
-
-/** @internal */
-export const UiOptionsAtBRANDAt524028$outboundSchema: z.ZodType<
-  UiOptionsAtBRANDAt524028$Outbound,
-  z.ZodTypeDef,
-  UiOptionsAtBRANDAt524028
-> = z.object({});
-
-export function uiOptionsAtBRANDAt524028ToJSON(
-  uiOptionsAtBRANDAt524028: UiOptionsAtBRANDAt524028,
-): string {
-  return JSON.stringify(
-    UiOptionsAtBRANDAt524028$outboundSchema.parse(uiOptionsAtBRANDAt524028),
-  );
-}
-export function uiOptionsAtBRANDAt524028FromJSON(
-  jsonString: string,
-): SafeParseResult<UiOptionsAtBRANDAt524028, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UiOptionsAtBRANDAt524028$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UiOptionsAtBRANDAt524028' from JSON`,
-  );
-}
-
-/** @internal */
-export const UiOptions2$inboundSchema: z.ZodType<
-  UiOptions2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  "__@BRAND@524028": z.lazy(() => UiOptionsAtBRANDAt524028$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "__@BRAND@524028": "atBRANDAt524028",
-  });
-});
-/** @internal */
-export type UiOptions2$Outbound = {
-  "__@BRAND@524028": UiOptionsAtBRANDAt524028$Outbound;
-};
-
-/** @internal */
-export const UiOptions2$outboundSchema: z.ZodType<
-  UiOptions2$Outbound,
-  z.ZodTypeDef,
-  UiOptions2
-> = z.object({
-  atBRANDAt524028: z.lazy(() => UiOptionsAtBRANDAt524028$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    atBRANDAt524028: "__@BRAND@524028",
-  });
-});
-
-export function uiOptions2ToJSON(uiOptions2: UiOptions2): string {
-  return JSON.stringify(UiOptions2$outboundSchema.parse(uiOptions2));
-}
-export function uiOptions2FromJSON(
-  jsonString: string,
-): SafeParseResult<UiOptions2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UiOptions2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UiOptions2' from JSON`,
   );
 }
 
@@ -6992,7 +5511,7 @@ export const GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJ
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody2$Outbound =
@@ -7041,11 +5560,11 @@ export const UiOptionsDisabled$inboundSchema: z.ZodType<
   UiOptionsDisabled,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() =>
     GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
   ),
-  z.boolean(),
+  types.boolean(),
   GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
 ]);
 /** @internal */
@@ -7059,7 +5578,7 @@ export const UiOptionsDisabled$outboundSchema: z.ZodType<
   UiOptionsDisabled$Outbound,
   z.ZodTypeDef,
   UiOptionsDisabled
-> = z.union([
+> = smartUnion([
   z.lazy(() =>
     GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema
   ),
@@ -7105,7 +5624,7 @@ export const GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSO
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody2$Outbound =
@@ -7154,11 +5673,11 @@ export const UiOptionsHidden$inboundSchema: z.ZodType<
   UiOptionsHidden,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() =>
     GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
   ),
-  z.boolean(),
+  types.boolean(),
   GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
 ]);
 /** @internal */
@@ -7172,7 +5691,7 @@ export const UiOptionsHidden$outboundSchema: z.ZodType<
   UiOptionsHidden$Outbound,
   z.ZodTypeDef,
   UiOptionsHidden
-> = z.union([
+> = smartUnion([
   z.lazy(() =>
     GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema
   ),
@@ -7201,22 +5720,26 @@ export const UiOptions1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: z.string(),
-  label: z.string(),
-  disabled: z.union([
-    z.lazy(() =>
-      GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
-    ),
-    z.boolean(),
-    GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
-  ]).optional(),
-  hidden: z.union([
-    z.lazy(() =>
-      GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
-    ),
-    z.boolean(),
-    GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
-  ]).optional(),
+  value: types.string(),
+  label: types.string(),
+  disabled: types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
+      ),
+      types.boolean(),
+      GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
+    ]),
+  ),
+  hidden: types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
+      ),
+      types.boolean(),
+      GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
+    ]),
+  ),
 });
 /** @internal */
 export type UiOptions1$Outbound = {
@@ -7242,14 +5765,14 @@ export const UiOptions1$outboundSchema: z.ZodType<
 > = z.object({
   value: z.string(),
   label: z.string(),
-  disabled: z.union([
+  disabled: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema
     ),
     z.boolean(),
     GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody3$outboundSchema,
   ]).optional(),
-  hidden: z.union([
+  hidden: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema
     ),
@@ -7277,16 +5800,16 @@ export const GetConfigurationProductsPropertiesUiOptions$inboundSchema:
     GetConfigurationProductsPropertiesUiOptions,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() => UiOptions1$inboundSchema),
-    z.lazy(() => UiOptions2$inboundSchema),
     z.lazy(() => UiOptions3$inboundSchema),
+    types.string(),
   ]);
 /** @internal */
 export type GetConfigurationProductsPropertiesUiOptions$Outbound =
   | UiOptions1$Outbound
-  | UiOptions2$Outbound
-  | UiOptions3$Outbound;
+  | UiOptions3$Outbound
+  | string;
 
 /** @internal */
 export const GetConfigurationProductsPropertiesUiOptions$outboundSchema:
@@ -7294,10 +5817,10 @@ export const GetConfigurationProductsPropertiesUiOptions$outboundSchema:
     GetConfigurationProductsPropertiesUiOptions$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesUiOptions
-  > = z.union([
+  > = smartUnion([
     z.lazy(() => UiOptions1$outboundSchema),
-    z.lazy(() => UiOptions2$outboundSchema),
     z.lazy(() => UiOptions3$outboundSchema),
+    z.string(),
   ]);
 
 export function getConfigurationProductsPropertiesUiOptionsToJSON(
@@ -7327,329 +5850,6 @@ export function getConfigurationProductsPropertiesUiOptionsFromJSON(
 }
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt524028$inboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt524028,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({});
-/** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt524028$Outbound =
-  {};
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt524028$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt524028$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt524028
-  > = z.object({});
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt524028ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt524028,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt524028$outboundSchema
-      .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt524028,
-      ),
-  );
-}
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt524028FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt524028,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt524028$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt524028' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetConfigurationProductsPropertiesMinLength$inboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesMinLength,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    "__@BRAND@524028": z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt524028$inboundSchema
-    ),
-  }).transform((v) => {
-    return remap$(v, {
-      "__@BRAND@524028": "atBRANDAt524028",
-    });
-  });
-/** @internal */
-export type GetConfigurationProductsPropertiesMinLength$Outbound = {
-  "__@BRAND@524028":
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt524028$Outbound;
-};
-
-/** @internal */
-export const GetConfigurationProductsPropertiesMinLength$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesMinLength$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsPropertiesMinLength
-  > = z.object({
-    atBRANDAt524028: z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONAtBRANDAt524028$outboundSchema
-    ),
-  }).transform((v) => {
-    return remap$(v, {
-      atBRANDAt524028: "__@BRAND@524028",
-    });
-  });
-
-export function getConfigurationProductsPropertiesMinLengthToJSON(
-  getConfigurationProductsPropertiesMinLength:
-    GetConfigurationProductsPropertiesMinLength,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsPropertiesMinLength$outboundSchema.parse(
-      getConfigurationProductsPropertiesMinLength,
-    ),
-  );
-}
-export function getConfigurationProductsPropertiesMinLengthFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsPropertiesMinLength,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsPropertiesMinLength$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetConfigurationProductsPropertiesMinLength' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt524028$inboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt524028,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({});
-/** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt524028$Outbound =
-  {};
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt524028$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt524028$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt524028
-  > = z.object({});
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt524028ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt524028,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt524028$outboundSchema
-      .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt524028,
-      ),
-  );
-}
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt524028FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt524028,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt524028$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt524028' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetConfigurationProductsPropertiesMaxLength$inboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesMaxLength,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    "__@BRAND@524028": z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt524028$inboundSchema
-    ),
-  }).transform((v) => {
-    return remap$(v, {
-      "__@BRAND@524028": "atBRANDAt524028",
-    });
-  });
-/** @internal */
-export type GetConfigurationProductsPropertiesMaxLength$Outbound = {
-  "__@BRAND@524028":
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt524028$Outbound;
-};
-
-/** @internal */
-export const GetConfigurationProductsPropertiesMaxLength$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesMaxLength$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsPropertiesMaxLength
-  > = z.object({
-    atBRANDAt524028: z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyAtBRANDAt524028$outboundSchema
-    ),
-  }).transform((v) => {
-    return remap$(v, {
-      atBRANDAt524028: "__@BRAND@524028",
-    });
-  });
-
-export function getConfigurationProductsPropertiesMaxLengthToJSON(
-  getConfigurationProductsPropertiesMaxLength:
-    GetConfigurationProductsPropertiesMaxLength,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsPropertiesMaxLength$outboundSchema.parse(
-      getConfigurationProductsPropertiesMaxLength,
-    ),
-  );
-}
-export function getConfigurationProductsPropertiesMaxLengthFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsPropertiesMaxLength,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsPropertiesMaxLength$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetConfigurationProductsPropertiesMaxLength' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt524028$inboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt524028,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({});
-/** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt524028$Outbound =
-  {};
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt524028$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt524028$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt524028
-  > = z.object({});
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt524028ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt524028,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt524028$outboundSchema
-      .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt524028,
-      ),
-  );
-}
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt524028FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt524028,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt524028$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt524028' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetConfigurationProductsPropertiesPattern$inboundSchema: z.ZodType<
-  GetConfigurationProductsPropertiesPattern,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  "__@BRAND@524028": z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt524028$inboundSchema
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "__@BRAND@524028": "atBRANDAt524028",
-  });
-});
-/** @internal */
-export type GetConfigurationProductsPropertiesPattern$Outbound = {
-  "__@BRAND@524028":
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt524028$Outbound;
-};
-
-/** @internal */
-export const GetConfigurationProductsPropertiesPattern$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesPattern$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsPropertiesPattern
-  > = z.object({
-    atBRANDAt524028: z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsAtBRANDAt524028$outboundSchema
-    ),
-  }).transform((v) => {
-    return remap$(v, {
-      atBRANDAt524028: "__@BRAND@524028",
-    });
-  });
-
-export function getConfigurationProductsPropertiesPatternToJSON(
-  getConfigurationProductsPropertiesPattern:
-    GetConfigurationProductsPropertiesPattern,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsPropertiesPattern$outboundSchema.parse(
-      getConfigurationProductsPropertiesPattern,
-    ),
-  );
-}
-export function getConfigurationProductsPropertiesPatternFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsPropertiesPattern,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsPropertiesPattern$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetConfigurationProductsPropertiesPattern' from JSON`,
-  );
-}
-
-/** @internal */
 export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody3
@@ -7670,7 +5870,7 @@ export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200Applicatio
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody2$Outbound =
@@ -7720,11 +5920,11 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiReadOnly,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
   ]);
 /** @internal */
@@ -7739,7 +5939,7 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiReadOnly$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiReadOnly
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema
     ),
@@ -7794,7 +5994,7 @@ export const GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJ
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody2$Outbound =
@@ -7844,11 +6044,11 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiHidden,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
   ]);
 /** @internal */
@@ -7863,7 +6063,7 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiHidden$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiHidden
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema
     ),
@@ -7918,7 +6118,7 @@ export const GetConfigurationProductsUiDisabledIntegrationsResponse200Applicatio
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody2$Outbound =
@@ -7968,11 +6168,11 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiDisabled,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
   ]);
 /** @internal */
@@ -7987,7 +6187,7 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiDisabled$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiDisabled
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema
     ),
@@ -8028,7 +6228,7 @@ export const GetConfigurationProductsUiDescriptionIntegrationsResponse200Applica
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBody2$Outbound =
@@ -8078,11 +6278,11 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiDescription,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
     ),
-    z.string(),
+    types.string(),
   ]);
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiDescription$Outbound =
@@ -8095,7 +6295,7 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiDescription$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiDescription
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema
     ),
@@ -8135,7 +6335,7 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiFormattedValue$Outbound =
@@ -8190,55 +6390,60 @@ export const Properties7$inboundSchema: z.ZodType<
   "ui:control":
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiControl$inboundSchema,
   "ui:options": z.array(
-    z.union([
+    smartUnion([
       z.lazy(() => UiOptions1$inboundSchema),
-      z.lazy(() => UiOptions2$inboundSchema),
       z.lazy(() => UiOptions3$inboundSchema),
+      types.string(),
     ]),
   ),
-  description: z.string().optional(),
-  minLength: z.lazy(() =>
-    GetConfigurationProductsPropertiesMinLength$inboundSchema
-  ).optional(),
-  maxLength: z.lazy(() =>
-    GetConfigurationProductsPropertiesMaxLength$inboundSchema
-  ).optional(),
-  pattern: z.lazy(() => GetConfigurationProductsPropertiesPattern$inboundSchema)
-    .optional(),
-  default: z.string().optional(),
-  enum: z.array(z.string()).optional(),
-  "ui:label": z.string().optional(),
-  "ui:read-only": z.union([
+  description: types.optional(types.string()),
+  minLength: types.optional(types.number()),
+  maxLength: types.optional(types.number()),
+  pattern: types.optional(types.string()),
+  default: types.optional(types.string()),
+  enum: types.optional(z.array(types.string())),
+  "ui:label": types.optional(types.string()),
+  "ui:read-only": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
+      ),
+      types.boolean(),
+      GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
+    ]),
+  ),
+  "ui:hidden": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
+      ),
+      types.boolean(),
+      GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
+    ]),
+  ),
+  "ui:disabled": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
+      ),
+      types.boolean(),
+      GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
+    ]),
+  ),
+  "ui:description": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
+      ),
+      types.string(),
+    ]),
+  ),
+  "ui:formatted-value": types.optional(
     z.lazy(() =>
-      GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
+      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiFormattedValue$inboundSchema
     ),
-    z.boolean(),
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
-  ]).optional(),
-  "ui:hidden": z.union([
-    z.lazy(() =>
-      GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
-    ),
-    z.boolean(),
-    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
-  ]).optional(),
-  "ui:disabled": z.union([
-    z.lazy(() =>
-      GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
-    ),
-    z.boolean(),
-    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
-  ]).optional(),
-  "ui:description": z.union([
-    z.lazy(() =>
-      GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
-    ),
-    z.string(),
-  ]).optional(),
-  "ui:formatted-value": z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiFormattedValue$inboundSchema
-  ).optional(),
-  "ui:placeholder": z.string().optional(),
+  ),
+  "ui:placeholder": types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
     "ui:control": "uiControl",
@@ -8256,13 +6461,11 @@ export const Properties7$inboundSchema: z.ZodType<
 export type Properties7$Outbound = {
   type: string;
   "ui:control": string;
-  "ui:options": Array<
-    UiOptions1$Outbound | UiOptions2$Outbound | UiOptions3$Outbound
-  >;
+  "ui:options": Array<UiOptions1$Outbound | UiOptions3$Outbound | string>;
   description?: string | undefined;
-  minLength?: GetConfigurationProductsPropertiesMinLength$Outbound | undefined;
-  maxLength?: GetConfigurationProductsPropertiesMaxLength$Outbound | undefined;
-  pattern?: GetConfigurationProductsPropertiesPattern$Outbound | undefined;
+  minLength?: number | undefined;
+  maxLength?: number | undefined;
+  pattern?: string | undefined;
   default?: string | undefined;
   enum?: Array<string> | undefined;
   "ui:label"?: string | undefined;
@@ -8302,47 +6505,41 @@ export const Properties7$outboundSchema: z.ZodType<
   uiControl:
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiControl$outboundSchema,
   uiOptions: z.array(
-    z.union([
+    smartUnion([
       z.lazy(() => UiOptions1$outboundSchema),
-      z.lazy(() => UiOptions2$outboundSchema),
       z.lazy(() => UiOptions3$outboundSchema),
+      z.string(),
     ]),
   ),
   description: z.string().optional(),
-  minLength: z.lazy(() =>
-    GetConfigurationProductsPropertiesMinLength$outboundSchema
-  ).optional(),
-  maxLength: z.lazy(() =>
-    GetConfigurationProductsPropertiesMaxLength$outboundSchema
-  ).optional(),
-  pattern: z.lazy(() =>
-    GetConfigurationProductsPropertiesPattern$outboundSchema
-  ).optional(),
+  minLength: z.number().optional(),
+  maxLength: z.number().optional(),
+  pattern: z.string().optional(),
   default: z.string().optional(),
   enum: z.array(z.string()).optional(),
   uiLabel: z.string().optional(),
-  uiReadOnly: z.union([
+  uiReadOnly: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema
     ),
     z.boolean(),
     GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBody3$outboundSchema,
   ]).optional(),
-  uiHidden: z.union([
+  uiHidden: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema
     ),
     z.boolean(),
     GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSONResponseBody3$outboundSchema,
   ]).optional(),
-  uiDisabled: z.union([
+  uiDisabled: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema
     ),
     z.boolean(),
     GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSONResponseBody3$outboundSchema,
   ]).optional(),
-  uiDescription: z.union([
+  uiDescription: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema
     ),
@@ -8422,331 +6619,6 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200Applicatio
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6Type$inboundSchema;
 
 /** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt524028$inboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt524028,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({});
-/** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt524028$Outbound =
-  {};
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt524028$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt524028$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt524028
-  > = z.object({});
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt524028ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt524028,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt524028$outboundSchema
-      .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt524028,
-      ),
-  );
-}
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt524028FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt524028,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt524028$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt524028' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200MinLength$inboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200MinLength,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    "__@BRAND@524028": z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt524028$inboundSchema
-    ),
-  }).transform((v) => {
-    return remap$(v, {
-      "__@BRAND@524028": "atBRANDAt524028",
-    });
-  });
-/** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200MinLength$Outbound =
-  {
-    "__@BRAND@524028":
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt524028$Outbound;
-  };
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200MinLength$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200MinLength$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200MinLength
-  > = z.object({
-    atBRANDAt524028: z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsMinLengthAtBRANDAt524028$outboundSchema
-    ),
-  }).transform((v) => {
-    return remap$(v, {
-      atBRANDAt524028: "__@BRAND@524028",
-    });
-  });
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200MinLengthToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200MinLength:
-    GetConfigurationProductsPropertiesIntegrationsResponse200MinLength,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200MinLength$outboundSchema
-      .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200MinLength,
-      ),
-  );
-}
-export function getConfigurationProductsPropertiesIntegrationsResponse200MinLengthFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200MinLength,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200MinLength$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200MinLength' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt524028$inboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt524028,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({});
-/** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt524028$Outbound =
-  {};
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt524028$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt524028$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt524028
-  > = z.object({});
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt524028ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt524028,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt524028$outboundSchema
-      .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt524028,
-      ),
-  );
-}
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt524028FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt524028,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt524028$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt524028' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200MaxLength$inboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200MaxLength,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    "__@BRAND@524028": z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt524028$inboundSchema
-    ),
-  }).transform((v) => {
-    return remap$(v, {
-      "__@BRAND@524028": "atBRANDAt524028",
-    });
-  });
-/** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200MaxLength$Outbound =
-  {
-    "__@BRAND@524028":
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt524028$Outbound;
-  };
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200MaxLength$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200MaxLength$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200MaxLength
-  > = z.object({
-    atBRANDAt524028: z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt524028$outboundSchema
-    ),
-  }).transform((v) => {
-    return remap$(v, {
-      atBRANDAt524028: "__@BRAND@524028",
-    });
-  });
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200MaxLengthToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200MaxLength:
-    GetConfigurationProductsPropertiesIntegrationsResponse200MaxLength,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200MaxLength$outboundSchema
-      .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200MaxLength,
-      ),
-  );
-}
-export function getConfigurationProductsPropertiesIntegrationsResponse200MaxLengthFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200MaxLength,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200MaxLength$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200MaxLength' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt524028$inboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt524028,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({});
-/** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt524028$Outbound =
-  {};
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt524028$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt524028$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt524028
-  > = z.object({});
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt524028ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt524028,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt524028$outboundSchema
-      .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt524028,
-      ),
-  );
-}
-export function getConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt524028FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt524028,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt524028$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt524028' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200Pattern$inboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200Pattern,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    "__@BRAND@524028": z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt524028$inboundSchema
-    ),
-  }).transform((v) => {
-    return remap$(v, {
-      "__@BRAND@524028": "atBRANDAt524028",
-    });
-  });
-/** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200Pattern$Outbound =
-  {
-    "__@BRAND@524028":
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt524028$Outbound;
-  };
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200Pattern$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200Pattern$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200Pattern
-  > = z.object({
-    atBRANDAt524028: z.lazy(() =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6ItemsAtBRANDAt524028$outboundSchema
-    ),
-  }).transform((v) => {
-    return remap$(v, {
-      atBRANDAt524028: "__@BRAND@524028",
-    });
-  });
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200PatternToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200Pattern:
-    GetConfigurationProductsPropertiesIntegrationsResponse200Pattern,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200Pattern$outboundSchema
-      .parse(getConfigurationProductsPropertiesIntegrationsResponse200Pattern),
-  );
-}
-export function getConfigurationProductsPropertiesIntegrationsResponse200PatternFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200Pattern,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200Pattern$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200Pattern' from JSON`,
-  );
-}
-
-/** @internal */
 export const GetConfigurationProductsPropertiesItems$inboundSchema: z.ZodType<
   GetConfigurationProductsPropertiesItems,
   z.ZodTypeDef,
@@ -8754,32 +6626,20 @@ export const GetConfigurationProductsPropertiesItems$inboundSchema: z.ZodType<
 > = z.object({
   type:
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6Type$inboundSchema,
-  description: z.string().optional(),
-  minLength: z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsResponse200MinLength$inboundSchema
-  ).optional(),
-  maxLength: z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsResponse200MaxLength$inboundSchema
-  ).optional(),
-  pattern: z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsResponse200Pattern$inboundSchema
-  ).optional(),
-  default: z.string().optional(),
-  enum: z.array(z.string()).optional(),
+  description: types.optional(types.string()),
+  minLength: types.optional(types.number()),
+  maxLength: types.optional(types.number()),
+  pattern: types.optional(types.string()),
+  default: types.optional(types.string()),
+  enum: types.optional(z.array(types.string())),
 });
 /** @internal */
 export type GetConfigurationProductsPropertiesItems$Outbound = {
   type: string;
   description?: string | undefined;
-  minLength?:
-    | GetConfigurationProductsPropertiesIntegrationsResponse200MinLength$Outbound
-    | undefined;
-  maxLength?:
-    | GetConfigurationProductsPropertiesIntegrationsResponse200MaxLength$Outbound
-    | undefined;
-  pattern?:
-    | GetConfigurationProductsPropertiesIntegrationsResponse200Pattern$Outbound
-    | undefined;
+  minLength?: number | undefined;
+  maxLength?: number | undefined;
+  pattern?: string | undefined;
   default?: string | undefined;
   enum?: Array<string> | undefined;
 };
@@ -8793,15 +6653,9 @@ export const GetConfigurationProductsPropertiesItems$outboundSchema: z.ZodType<
   type:
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6Type$outboundSchema,
   description: z.string().optional(),
-  minLength: z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsResponse200MinLength$outboundSchema
-  ).optional(),
-  maxLength: z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsResponse200MaxLength$outboundSchema
-  ).optional(),
-  pattern: z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsResponse200Pattern$outboundSchema
-  ).optional(),
+  minLength: z.number().optional(),
+  maxLength: z.number().optional(),
+  pattern: z.string().optional(),
   default: z.string().optional(),
   enum: z.array(z.string()).optional(),
 });
@@ -8850,7 +6704,7 @@ export const GetConfigurationProductsDisabledIntegrationsResponse2$inboundSchema
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsDisabledIntegrationsResponse2$Outbound = {
@@ -8899,11 +6753,11 @@ export const GetConfigurationProductsPropertiesIntegrationsDisabled$inboundSchem
     GetConfigurationProductsPropertiesIntegrationsDisabled,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsDisabledIntegrationsResponse2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     GetConfigurationProductsDisabledIntegrationsResponse3$inboundSchema,
   ]);
 /** @internal */
@@ -8918,7 +6772,7 @@ export const GetConfigurationProductsPropertiesIntegrationsDisabled$outboundSche
     GetConfigurationProductsPropertiesIntegrationsDisabled$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsDisabled
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsDisabledIntegrationsResponse2$outboundSchema
     ),
@@ -8967,7 +6821,7 @@ export const GetConfigurationProductsHiddenIntegrationsResponse2$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsHiddenIntegrationsResponse2$Outbound = {
@@ -9016,11 +6870,11 @@ export const GetConfigurationProductsPropertiesIntegrationsHidden$inboundSchema:
     GetConfigurationProductsPropertiesIntegrationsHidden,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsHiddenIntegrationsResponse2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     GetConfigurationProductsHiddenIntegrationsResponse3$inboundSchema,
   ]);
 /** @internal */
@@ -9035,7 +6889,7 @@ export const GetConfigurationProductsPropertiesIntegrationsHidden$outboundSchema
     GetConfigurationProductsPropertiesIntegrationsHidden$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsHidden
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsHiddenIntegrationsResponse2$outboundSchema
     ),
@@ -9075,22 +6929,26 @@ export const PropertiesUiOptions$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: z.string(),
-  label: z.string(),
-  disabled: z.union([
-    z.lazy(() =>
-      GetConfigurationProductsDisabledIntegrationsResponse2$inboundSchema
-    ),
-    z.boolean(),
-    GetConfigurationProductsDisabledIntegrationsResponse3$inboundSchema,
-  ]).optional(),
-  hidden: z.union([
-    z.lazy(() =>
-      GetConfigurationProductsHiddenIntegrationsResponse2$inboundSchema
-    ),
-    z.boolean(),
-    GetConfigurationProductsHiddenIntegrationsResponse3$inboundSchema,
-  ]).optional(),
+  value: types.string(),
+  label: types.string(),
+  disabled: types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsDisabledIntegrationsResponse2$inboundSchema
+      ),
+      types.boolean(),
+      GetConfigurationProductsDisabledIntegrationsResponse3$inboundSchema,
+    ]),
+  ),
+  hidden: types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsHiddenIntegrationsResponse2$inboundSchema
+      ),
+      types.boolean(),
+      GetConfigurationProductsHiddenIntegrationsResponse3$inboundSchema,
+    ]),
+  ),
 });
 /** @internal */
 export type PropertiesUiOptions$Outbound = {
@@ -9116,14 +6974,14 @@ export const PropertiesUiOptions$outboundSchema: z.ZodType<
 > = z.object({
   value: z.string(),
   label: z.string(),
-  disabled: z.union([
+  disabled: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsDisabledIntegrationsResponse2$outboundSchema
     ),
     z.boolean(),
     GetConfigurationProductsDisabledIntegrationsResponse3$outboundSchema,
   ]).optional(),
-  hidden: z.union([
+  hidden: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsHiddenIntegrationsResponse2$outboundSchema
     ),
@@ -9170,7 +7028,7 @@ export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200Applicatio
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson2$Outbound =
@@ -9220,11 +7078,11 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200UiReadOnly
     GetConfigurationProductsPropertiesIntegrationsResponse200UiReadOnly,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson3$inboundSchema,
   ]);
 /** @internal */
@@ -9239,7 +7097,7 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200UiReadOnly
     GetConfigurationProductsPropertiesIntegrationsResponse200UiReadOnly$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsResponse200UiReadOnly
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson2$outboundSchema
     ),
@@ -9294,7 +7152,7 @@ export const GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJ
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson2$Outbound =
@@ -9344,11 +7202,11 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200UiHidden$i
     GetConfigurationProductsPropertiesIntegrationsResponse200UiHidden,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson3$inboundSchema,
   ]);
 /** @internal */
@@ -9363,7 +7221,7 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200UiHidden$o
     GetConfigurationProductsPropertiesIntegrationsResponse200UiHidden$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsResponse200UiHidden
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson2$outboundSchema
     ),
@@ -9416,7 +7274,7 @@ export const GetConfigurationProductsUiDisabledIntegrationsResponse200Applicatio
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson2$Outbound =
@@ -9466,11 +7324,11 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200UiDisabled
     GetConfigurationProductsPropertiesIntegrationsResponse200UiDisabled,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson3$inboundSchema,
   ]);
 /** @internal */
@@ -9485,7 +7343,7 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200UiDisabled
     GetConfigurationProductsPropertiesIntegrationsResponse200UiDisabled$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsResponse200UiDisabled
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson2$outboundSchema
     ),
@@ -9526,7 +7384,7 @@ export const GetConfigurationProductsUiDescriptionIntegrationsResponse200Applica
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2$Outbound =
@@ -9576,11 +7434,11 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200UiDescript
     GetConfigurationProductsPropertiesIntegrationsResponse200UiDescription,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2$inboundSchema
     ),
-    z.string(),
+    types.string(),
   ]);
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponse200UiDescription$Outbound =
@@ -9593,7 +7451,7 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200UiDescript
     GetConfigurationProductsPropertiesIntegrationsResponse200UiDescription$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsResponse200UiDescription
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2$outboundSchema
     ),
@@ -9633,7 +7491,7 @@ export const GetConfigurationProductsPropertiesIntegrationsResponse200UiFormatte
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValue$Outbound =
@@ -9689,43 +7547,53 @@ export const Properties6$inboundSchema: z.ZodType<
     GetConfigurationProductsPropertiesIntegrationsResponse200UiControl$inboundSchema,
   items: z.lazy(() => GetConfigurationProductsPropertiesItems$inboundSchema),
   "ui:options": z.array(z.lazy(() => PropertiesUiOptions$inboundSchema)),
-  description: z.string().optional(),
-  minItems: z.number().optional(),
-  maxItems: z.number().optional(),
-  "ui:label": z.string().optional(),
-  "ui:read-only": z.union([
+  description: types.optional(types.string()),
+  minItems: types.optional(types.number()),
+  maxItems: types.optional(types.number()),
+  "ui:label": types.optional(types.string()),
+  "ui:read-only": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson2$inboundSchema
+      ),
+      types.boolean(),
+      GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson3$inboundSchema,
+    ]),
+  ),
+  "ui:hidden": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson2$inboundSchema
+      ),
+      types.boolean(),
+      GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson3$inboundSchema,
+    ]),
+  ),
+  "ui:disabled": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson2$inboundSchema
+      ),
+      types.boolean(),
+      GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson3$inboundSchema,
+    ]),
+  ),
+  "ui:description": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2$inboundSchema
+      ),
+      types.string(),
+    ]),
+  ),
+  "ui:formatted-value": types.optional(
     z.lazy(() =>
-      GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson2$inboundSchema
+      GetConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValue$inboundSchema
     ),
-    z.boolean(),
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson3$inboundSchema,
-  ]).optional(),
-  "ui:hidden": z.union([
-    z.lazy(() =>
-      GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson2$inboundSchema
-    ),
-    z.boolean(),
-    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson3$inboundSchema,
-  ]).optional(),
-  "ui:disabled": z.union([
-    z.lazy(() =>
-      GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson2$inboundSchema
-    ),
-    z.boolean(),
-    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson3$inboundSchema,
-  ]).optional(),
-  "ui:description": z.union([
-    z.lazy(() =>
-      GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2$inboundSchema
-    ),
-    z.string(),
-  ]).optional(),
-  "ui:formatted-value": z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValue$inboundSchema
-  ).optional(),
-  "ui:placeholder": z.string().optional(),
-  default: z.array(z.string()).optional(),
-  example: z.array(z.string()).optional(),
+  ),
+  "ui:placeholder": types.optional(types.string()),
+  default: types.optional(z.array(types.string())),
+  example: types.optional(z.array(types.string())),
 }).transform((v) => {
   return remap$(v, {
     "ui:control": "uiControl",
@@ -9792,28 +7660,28 @@ export const Properties6$outboundSchema: z.ZodType<
   minItems: z.number().optional(),
   maxItems: z.number().optional(),
   uiLabel: z.string().optional(),
-  uiReadOnly: z.union([
+  uiReadOnly: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson2$outboundSchema
     ),
     z.boolean(),
     GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson3$outboundSchema,
   ]).optional(),
-  uiHidden: z.union([
+  uiHidden: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson2$outboundSchema
     ),
     z.boolean(),
     GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson3$outboundSchema,
   ]).optional(),
-  uiDisabled: z.union([
+  uiDisabled: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson2$outboundSchema
     ),
     z.boolean(),
     GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson3$outboundSchema,
   ]).optional(),
-  uiDescription: z.union([
+  uiDescription: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2$outboundSchema
     ),
@@ -9896,7 +7764,7 @@ export const GetConfigurationProductsDisabledIntegrations2$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsDisabledIntegrations2$Outbound = {
@@ -9942,9 +7810,9 @@ export function getConfigurationProductsDisabledIntegrations2FromJSON(
 /** @internal */
 export const GetConfigurationProductsPropertiesDisabled$inboundSchema:
   z.ZodType<GetConfigurationProductsPropertiesDisabled, z.ZodTypeDef, unknown> =
-    z.union([
+    smartUnion([
       z.lazy(() => GetConfigurationProductsDisabledIntegrations2$inboundSchema),
-      z.boolean(),
+      types.boolean(),
       GetConfigurationProductsDisabledIntegrations3$inboundSchema,
     ]);
 /** @internal */
@@ -9959,7 +7827,7 @@ export const GetConfigurationProductsPropertiesDisabled$outboundSchema:
     GetConfigurationProductsPropertiesDisabled$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesDisabled
-  > = z.union([
+  > = smartUnion([
     z.lazy(() => GetConfigurationProductsDisabledIntegrations2$outboundSchema),
     z.boolean(),
     GetConfigurationProductsDisabledIntegrations3$outboundSchema,
@@ -10007,7 +7875,7 @@ export const GetConfigurationProductsHiddenIntegrations2$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsHiddenIntegrations2$Outbound = {
@@ -10055,9 +7923,9 @@ export const GetConfigurationProductsPropertiesHidden$inboundSchema: z.ZodType<
   GetConfigurationProductsPropertiesHidden,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => GetConfigurationProductsHiddenIntegrations2$inboundSchema),
-  z.boolean(),
+  types.boolean(),
   GetConfigurationProductsHiddenIntegrations3$inboundSchema,
 ]);
 /** @internal */
@@ -10071,7 +7939,7 @@ export const GetConfigurationProductsPropertiesHidden$outboundSchema: z.ZodType<
   GetConfigurationProductsPropertiesHidden$Outbound,
   z.ZodTypeDef,
   GetConfigurationProductsPropertiesHidden
-> = z.union([
+> = smartUnion([
   z.lazy(() => GetConfigurationProductsHiddenIntegrations2$outboundSchema),
   z.boolean(),
   GetConfigurationProductsHiddenIntegrations3$outboundSchema,
@@ -10109,18 +7977,22 @@ export const UiOptions$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: z.string(),
-  label: z.string(),
-  disabled: z.union([
-    z.lazy(() => GetConfigurationProductsDisabledIntegrations2$inboundSchema),
-    z.boolean(),
-    GetConfigurationProductsDisabledIntegrations3$inboundSchema,
-  ]).optional(),
-  hidden: z.union([
-    z.lazy(() => GetConfigurationProductsHiddenIntegrations2$inboundSchema),
-    z.boolean(),
-    GetConfigurationProductsHiddenIntegrations3$inboundSchema,
-  ]).optional(),
+  value: types.string(),
+  label: types.string(),
+  disabled: types.optional(
+    smartUnion([
+      z.lazy(() => GetConfigurationProductsDisabledIntegrations2$inboundSchema),
+      types.boolean(),
+      GetConfigurationProductsDisabledIntegrations3$inboundSchema,
+    ]),
+  ),
+  hidden: types.optional(
+    smartUnion([
+      z.lazy(() => GetConfigurationProductsHiddenIntegrations2$inboundSchema),
+      types.boolean(),
+      GetConfigurationProductsHiddenIntegrations3$inboundSchema,
+    ]),
+  ),
 });
 /** @internal */
 export type UiOptions$Outbound = {
@@ -10146,12 +8018,12 @@ export const UiOptions$outboundSchema: z.ZodType<
 > = z.object({
   value: z.string(),
   label: z.string(),
-  disabled: z.union([
+  disabled: smartUnion([
     z.lazy(() => GetConfigurationProductsDisabledIntegrations2$outboundSchema),
     z.boolean(),
     GetConfigurationProductsDisabledIntegrations3$outboundSchema,
   ]).optional(),
-  hidden: z.union([
+  hidden: smartUnion([
     z.lazy(() => GetConfigurationProductsHiddenIntegrations2$outboundSchema),
     z.boolean(),
     GetConfigurationProductsHiddenIntegrations3$outboundSchema,
@@ -10168,295 +8040,6 @@ export function uiOptionsFromJSON(
     jsonString,
     (x) => UiOptions$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'UiOptions' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsAtBRANDAt524028$inboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsAtBRANDAt524028,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({});
-/** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsAtBRANDAt524028$Outbound =
-  {};
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsAtBRANDAt524028$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsAtBRANDAt524028$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsAtBRANDAt524028
-  > = z.object({});
-
-export function getConfigurationProductsPropertiesIntegrationsAtBRANDAt524028ToJSON(
-  getConfigurationProductsPropertiesIntegrationsAtBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsAtBRANDAt524028,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsAtBRANDAt524028$outboundSchema
-      .parse(getConfigurationProductsPropertiesIntegrationsAtBRANDAt524028),
-  );
-}
-export function getConfigurationProductsPropertiesIntegrationsAtBRANDAt524028FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsAtBRANDAt524028,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsPropertiesIntegrationsAtBRANDAt524028$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsAtBRANDAt524028' from JSON`,
-  );
-}
-
-/** @internal */
-export const PropertiesMinLength$inboundSchema: z.ZodType<
-  PropertiesMinLength,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  "__@BRAND@524028": z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsAtBRANDAt524028$inboundSchema
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "__@BRAND@524028": "atBRANDAt524028",
-  });
-});
-/** @internal */
-export type PropertiesMinLength$Outbound = {
-  "__@BRAND@524028":
-    GetConfigurationProductsPropertiesIntegrationsAtBRANDAt524028$Outbound;
-};
-
-/** @internal */
-export const PropertiesMinLength$outboundSchema: z.ZodType<
-  PropertiesMinLength$Outbound,
-  z.ZodTypeDef,
-  PropertiesMinLength
-> = z.object({
-  atBRANDAt524028: z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsAtBRANDAt524028$outboundSchema
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    atBRANDAt524028: "__@BRAND@524028",
-  });
-});
-
-export function propertiesMinLengthToJSON(
-  propertiesMinLength: PropertiesMinLength,
-): string {
-  return JSON.stringify(
-    PropertiesMinLength$outboundSchema.parse(propertiesMinLength),
-  );
-}
-export function propertiesMinLengthFromJSON(
-  jsonString: string,
-): SafeParseResult<PropertiesMinLength, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PropertiesMinLength$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PropertiesMinLength' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt524028$inboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt524028,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({});
-/** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt524028$Outbound =
-  {};
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt524028$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt524028$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt524028
-  > = z.object({});
-
-export function getConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt524028ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt524028,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt524028$outboundSchema
-      .parse(
-        getConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt524028,
-      ),
-  );
-}
-export function getConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt524028FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt524028,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt524028$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt524028' from JSON`,
-  );
-}
-
-/** @internal */
-export const PropertiesMaxLength$inboundSchema: z.ZodType<
-  PropertiesMaxLength,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  "__@BRAND@524028": z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt524028$inboundSchema
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "__@BRAND@524028": "atBRANDAt524028",
-  });
-});
-/** @internal */
-export type PropertiesMaxLength$Outbound = {
-  "__@BRAND@524028":
-    GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt524028$Outbound;
-};
-
-/** @internal */
-export const PropertiesMaxLength$outboundSchema: z.ZodType<
-  PropertiesMaxLength$Outbound,
-  z.ZodTypeDef,
-  PropertiesMaxLength
-> = z.object({
-  atBRANDAt524028: z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt524028$outboundSchema
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    atBRANDAt524028: "__@BRAND@524028",
-  });
-});
-
-export function propertiesMaxLengthToJSON(
-  propertiesMaxLength: PropertiesMaxLength,
-): string {
-  return JSON.stringify(
-    PropertiesMaxLength$outboundSchema.parse(propertiesMaxLength),
-  );
-}
-export function propertiesMaxLengthFromJSON(
-  jsonString: string,
-): SafeParseResult<PropertiesMaxLength, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PropertiesMaxLength$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PropertiesMaxLength' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt524028$inboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt524028,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({});
-/** @internal */
-export type GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt524028$Outbound =
-  {};
-
-/** @internal */
-export const GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt524028$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt524028$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt524028
-  > = z.object({});
-
-export function getConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt524028ToJSON(
-  getConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt524028:
-    GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt524028,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt524028$outboundSchema
-      .parse(
-        getConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt524028,
-      ),
-  );
-}
-export function getConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt524028FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt524028,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt524028$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt524028' from JSON`,
-  );
-}
-
-/** @internal */
-export const PropertiesPattern$inboundSchema: z.ZodType<
-  PropertiesPattern,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  "__@BRAND@524028": z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt524028$inboundSchema
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "__@BRAND@524028": "atBRANDAt524028",
-  });
-});
-/** @internal */
-export type PropertiesPattern$Outbound = {
-  "__@BRAND@524028":
-    GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt524028$Outbound;
-};
-
-/** @internal */
-export const PropertiesPattern$outboundSchema: z.ZodType<
-  PropertiesPattern$Outbound,
-  z.ZodTypeDef,
-  PropertiesPattern
-> = z.object({
-  atBRANDAt524028: z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsResponse200AtBRANDAt524028$outboundSchema
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    atBRANDAt524028: "__@BRAND@524028",
-  });
-});
-
-export function propertiesPatternToJSON(
-  propertiesPattern: PropertiesPattern,
-): string {
-  return JSON.stringify(
-    PropertiesPattern$outboundSchema.parse(propertiesPattern),
-  );
-}
-export function propertiesPatternFromJSON(
-  jsonString: string,
-): SafeParseResult<PropertiesPattern, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PropertiesPattern$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PropertiesPattern' from JSON`,
   );
 }
 
@@ -10478,7 +8061,7 @@ export const GetConfigurationProductsUiReadOnlyIntegrationsResponse2002$inboundS
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsUiReadOnlyIntegrationsResponse2002$Outbound =
@@ -10526,11 +8109,11 @@ export const GetConfigurationProductsPropertiesIntegrationsResponseUiReadOnly$in
     GetConfigurationProductsPropertiesIntegrationsResponseUiReadOnly,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiReadOnlyIntegrationsResponse2002$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     GetConfigurationProductsUiReadOnlyIntegrationsResponse2003$inboundSchema,
   ]);
 /** @internal */
@@ -10545,7 +8128,7 @@ export const GetConfigurationProductsPropertiesIntegrationsResponseUiReadOnly$ou
     GetConfigurationProductsPropertiesIntegrationsResponseUiReadOnly$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsResponseUiReadOnly
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiReadOnlyIntegrationsResponse2002$outboundSchema
     ),
@@ -10595,7 +8178,7 @@ export const GetConfigurationProductsUiHiddenIntegrationsResponse2002$inboundSch
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsUiHiddenIntegrationsResponse2002$Outbound =
@@ -10643,11 +8226,11 @@ export const GetConfigurationProductsPropertiesIntegrationsResponseUiHidden$inbo
     GetConfigurationProductsPropertiesIntegrationsResponseUiHidden,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiHiddenIntegrationsResponse2002$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     GetConfigurationProductsUiHiddenIntegrationsResponse2003$inboundSchema,
   ]);
 /** @internal */
@@ -10662,7 +8245,7 @@ export const GetConfigurationProductsPropertiesIntegrationsResponseUiHidden$outb
     GetConfigurationProductsPropertiesIntegrationsResponseUiHidden$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsResponseUiHidden
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiHiddenIntegrationsResponse2002$outboundSchema
     ),
@@ -10712,7 +8295,7 @@ export const GetConfigurationProductsUiDisabledIntegrationsResponse2002$inboundS
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsUiDisabledIntegrationsResponse2002$Outbound =
@@ -10760,11 +8343,11 @@ export const GetConfigurationProductsPropertiesIntegrationsResponseUiDisabled$in
     GetConfigurationProductsPropertiesIntegrationsResponseUiDisabled,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDisabledIntegrationsResponse2002$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     GetConfigurationProductsUiDisabledIntegrationsResponse2003$inboundSchema,
   ]);
 /** @internal */
@@ -10779,7 +8362,7 @@ export const GetConfigurationProductsPropertiesIntegrationsResponseUiDisabled$ou
     GetConfigurationProductsPropertiesIntegrationsResponseUiDisabled$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsResponseUiDisabled
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDisabledIntegrationsResponse2002$outboundSchema
     ),
@@ -10818,7 +8401,7 @@ export const GetConfigurationProductsUiDescriptionIntegrationsResponse2002$inbou
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsUiDescriptionIntegrationsResponse2002$Outbound =
@@ -10866,11 +8449,11 @@ export const GetConfigurationProductsPropertiesIntegrationsResponseUiDescription
     GetConfigurationProductsPropertiesIntegrationsResponseUiDescription,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDescriptionIntegrationsResponse2002$inboundSchema
     ),
-    z.string(),
+    types.string(),
   ]);
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponseUiDescription$Outbound =
@@ -10883,7 +8466,7 @@ export const GetConfigurationProductsPropertiesIntegrationsResponseUiDescription
     GetConfigurationProductsPropertiesIntegrationsResponseUiDescription$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsResponseUiDescription
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDescriptionIntegrationsResponse2002$outboundSchema
     ),
@@ -10923,7 +8506,7 @@ export const GetConfigurationProductsPropertiesIntegrationsResponseUiFormattedVa
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsResponseUiFormattedValue$Outbound =
@@ -10978,44 +8561,54 @@ export const Properties5$inboundSchema: z.ZodType<
   "ui:control":
     GetConfigurationProductsPropertiesIntegrationsResponseUiControl$inboundSchema,
   "ui:options": z.array(z.lazy(() => UiOptions$inboundSchema)),
-  description: z.string().optional(),
-  minLength: z.lazy(() => PropertiesMinLength$inboundSchema).optional(),
-  maxLength: z.lazy(() => PropertiesMaxLength$inboundSchema).optional(),
-  pattern: z.lazy(() => PropertiesPattern$inboundSchema).optional(),
-  default: z.string().optional(),
-  enum: z.array(z.string()).optional(),
-  "ui:label": z.string().optional(),
-  "ui:read-only": z.union([
+  description: types.optional(types.string()),
+  minLength: types.optional(types.number()),
+  maxLength: types.optional(types.number()),
+  pattern: types.optional(types.string()),
+  default: types.optional(types.string()),
+  enum: types.optional(z.array(types.string())),
+  "ui:label": types.optional(types.string()),
+  "ui:read-only": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsUiReadOnlyIntegrationsResponse2002$inboundSchema
+      ),
+      types.boolean(),
+      GetConfigurationProductsUiReadOnlyIntegrationsResponse2003$inboundSchema,
+    ]),
+  ),
+  "ui:hidden": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsUiHiddenIntegrationsResponse2002$inboundSchema
+      ),
+      types.boolean(),
+      GetConfigurationProductsUiHiddenIntegrationsResponse2003$inboundSchema,
+    ]),
+  ),
+  "ui:disabled": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsUiDisabledIntegrationsResponse2002$inboundSchema
+      ),
+      types.boolean(),
+      GetConfigurationProductsUiDisabledIntegrationsResponse2003$inboundSchema,
+    ]),
+  ),
+  "ui:description": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsUiDescriptionIntegrationsResponse2002$inboundSchema
+      ),
+      types.string(),
+    ]),
+  ),
+  "ui:formatted-value": types.optional(
     z.lazy(() =>
-      GetConfigurationProductsUiReadOnlyIntegrationsResponse2002$inboundSchema
+      GetConfigurationProductsPropertiesIntegrationsResponseUiFormattedValue$inboundSchema
     ),
-    z.boolean(),
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse2003$inboundSchema,
-  ]).optional(),
-  "ui:hidden": z.union([
-    z.lazy(() =>
-      GetConfigurationProductsUiHiddenIntegrationsResponse2002$inboundSchema
-    ),
-    z.boolean(),
-    GetConfigurationProductsUiHiddenIntegrationsResponse2003$inboundSchema,
-  ]).optional(),
-  "ui:disabled": z.union([
-    z.lazy(() =>
-      GetConfigurationProductsUiDisabledIntegrationsResponse2002$inboundSchema
-    ),
-    z.boolean(),
-    GetConfigurationProductsUiDisabledIntegrationsResponse2003$inboundSchema,
-  ]).optional(),
-  "ui:description": z.union([
-    z.lazy(() =>
-      GetConfigurationProductsUiDescriptionIntegrationsResponse2002$inboundSchema
-    ),
-    z.string(),
-  ]).optional(),
-  "ui:formatted-value": z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsResponseUiFormattedValue$inboundSchema
-  ).optional(),
-  "ui:placeholder": z.string().optional(),
+  ),
+  "ui:placeholder": types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
     "ui:control": "uiControl",
@@ -11035,9 +8628,9 @@ export type Properties5$Outbound = {
   "ui:control": string;
   "ui:options": Array<UiOptions$Outbound>;
   description?: string | undefined;
-  minLength?: PropertiesMinLength$Outbound | undefined;
-  maxLength?: PropertiesMaxLength$Outbound | undefined;
-  pattern?: PropertiesPattern$Outbound | undefined;
+  minLength?: number | undefined;
+  maxLength?: number | undefined;
+  pattern?: string | undefined;
   default?: string | undefined;
   enum?: Array<string> | undefined;
   "ui:label"?: string | undefined;
@@ -11078,34 +8671,34 @@ export const Properties5$outboundSchema: z.ZodType<
     GetConfigurationProductsPropertiesIntegrationsResponseUiControl$outboundSchema,
   uiOptions: z.array(z.lazy(() => UiOptions$outboundSchema)),
   description: z.string().optional(),
-  minLength: z.lazy(() => PropertiesMinLength$outboundSchema).optional(),
-  maxLength: z.lazy(() => PropertiesMaxLength$outboundSchema).optional(),
-  pattern: z.lazy(() => PropertiesPattern$outboundSchema).optional(),
+  minLength: z.number().optional(),
+  maxLength: z.number().optional(),
+  pattern: z.string().optional(),
   default: z.string().optional(),
   enum: z.array(z.string()).optional(),
   uiLabel: z.string().optional(),
-  uiReadOnly: z.union([
+  uiReadOnly: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiReadOnlyIntegrationsResponse2002$outboundSchema
     ),
     z.boolean(),
     GetConfigurationProductsUiReadOnlyIntegrationsResponse2003$outboundSchema,
   ]).optional(),
-  uiHidden: z.union([
+  uiHidden: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiHiddenIntegrationsResponse2002$outboundSchema
     ),
     z.boolean(),
     GetConfigurationProductsUiHiddenIntegrationsResponse2003$outboundSchema,
   ]).optional(),
-  uiDisabled: z.union([
+  uiDisabled: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDisabledIntegrationsResponse2002$outboundSchema
     ),
     z.boolean(),
     GetConfigurationProductsUiDisabledIntegrationsResponse2003$outboundSchema,
   ]).optional(),
-  uiDescription: z.union([
+  uiDescription: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDescriptionIntegrationsResponse2002$outboundSchema
     ),
@@ -11186,12 +8779,12 @@ export const PropertiesItems$inboundSchema: z.ZodType<
 > = z.object({
   type:
     GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema4Type$inboundSchema,
-  description: z.string().optional(),
-  minimum: z.number().optional(),
-  exclusiveMinimum: z.number().optional(),
-  maximum: z.number().optional(),
-  exclusiveMaximum: z.number().optional(),
-  default: z.number().optional(),
+  description: types.optional(types.string()),
+  minimum: types.optional(types.number()),
+  exclusiveMinimum: types.optional(types.number()),
+  maximum: types.optional(types.number()),
+  exclusiveMaximum: types.optional(types.number()),
+  default: types.optional(types.number()),
 });
 /** @internal */
 export type PropertiesItems$Outbound = {
@@ -11253,7 +8846,7 @@ export const GetConfigurationProductsUiReadOnlyIntegrationsResponse2$inboundSche
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsUiReadOnlyIntegrationsResponse2$Outbound = {
@@ -11300,11 +8893,11 @@ export const GetConfigurationProductsPropertiesIntegrationsUiReadOnly$inboundSch
     GetConfigurationProductsPropertiesIntegrationsUiReadOnly,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiReadOnlyIntegrationsResponse2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     GetConfigurationProductsUiReadOnlyIntegrationsResponse3$inboundSchema,
   ]);
 /** @internal */
@@ -11319,7 +8912,7 @@ export const GetConfigurationProductsPropertiesIntegrationsUiReadOnly$outboundSc
     GetConfigurationProductsPropertiesIntegrationsUiReadOnly$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsUiReadOnly
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiReadOnlyIntegrationsResponse2$outboundSchema
     ),
@@ -11369,7 +8962,7 @@ export const GetConfigurationProductsUiHiddenIntegrationsResponse2$inboundSchema
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsUiHiddenIntegrationsResponse2$Outbound = {
@@ -11418,11 +9011,11 @@ export const GetConfigurationProductsPropertiesIntegrationsUiHidden$inboundSchem
     GetConfigurationProductsPropertiesIntegrationsUiHidden,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiHiddenIntegrationsResponse2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     GetConfigurationProductsUiHiddenIntegrationsResponse3$inboundSchema,
   ]);
 /** @internal */
@@ -11437,7 +9030,7 @@ export const GetConfigurationProductsPropertiesIntegrationsUiHidden$outboundSche
     GetConfigurationProductsPropertiesIntegrationsUiHidden$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsUiHidden
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiHiddenIntegrationsResponse2$outboundSchema
     ),
@@ -11488,7 +9081,7 @@ export const GetConfigurationProductsUiDisabledIntegrationsResponse2$inboundSche
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsUiDisabledIntegrationsResponse2$Outbound = {
@@ -11535,11 +9128,11 @@ export const GetConfigurationProductsPropertiesIntegrationsUiDisabled$inboundSch
     GetConfigurationProductsPropertiesIntegrationsUiDisabled,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDisabledIntegrationsResponse2$inboundSchema
     ),
-    z.boolean(),
+    types.boolean(),
     GetConfigurationProductsUiDisabledIntegrationsResponse3$inboundSchema,
   ]);
 /** @internal */
@@ -11554,7 +9147,7 @@ export const GetConfigurationProductsPropertiesIntegrationsUiDisabled$outboundSc
     GetConfigurationProductsPropertiesIntegrationsUiDisabled$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsUiDisabled
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDisabledIntegrationsResponse2$outboundSchema
     ),
@@ -11593,7 +9186,7 @@ export const GetConfigurationProductsUiDescriptionIntegrationsResponse2$inboundS
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsUiDescriptionIntegrationsResponse2$Outbound =
@@ -11641,11 +9234,11 @@ export const GetConfigurationProductsPropertiesIntegrationsUiDescription$inbound
     GetConfigurationProductsPropertiesIntegrationsUiDescription,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDescriptionIntegrationsResponse2$inboundSchema
     ),
-    z.string(),
+    types.string(),
   ]);
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsUiDescription$Outbound =
@@ -11658,7 +9251,7 @@ export const GetConfigurationProductsPropertiesIntegrationsUiDescription$outboun
     GetConfigurationProductsPropertiesIntegrationsUiDescription$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesIntegrationsUiDescription
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDescriptionIntegrationsResponse2$outboundSchema
     ),
@@ -11696,7 +9289,7 @@ export const GetConfigurationProductsPropertiesIntegrationsUiFormattedValue$inbo
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsPropertiesIntegrationsUiFormattedValue$Outbound =
@@ -11748,43 +9341,53 @@ export const Properties4$inboundSchema: z.ZodType<
     GetConfigurationProductsPropertiesIntegrationsResponseType$inboundSchema,
   "ui:control":
     GetConfigurationProductsPropertiesIntegrationsUiControl$inboundSchema,
-  "ui:steps": z.array(z.number()),
+  "ui:steps": z.array(types.number()),
   items: z.lazy(() => PropertiesItems$inboundSchema),
-  description: z.string().optional(),
-  minItems: z.number().optional(),
-  maxItems: z.number().optional(),
-  "ui:label": z.string().optional(),
-  "ui:read-only": z.union([
+  description: types.optional(types.string()),
+  minItems: types.optional(types.number()),
+  maxItems: types.optional(types.number()),
+  "ui:label": types.optional(types.string()),
+  "ui:read-only": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsUiReadOnlyIntegrationsResponse2$inboundSchema
+      ),
+      types.boolean(),
+      GetConfigurationProductsUiReadOnlyIntegrationsResponse3$inboundSchema,
+    ]),
+  ),
+  "ui:hidden": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsUiHiddenIntegrationsResponse2$inboundSchema
+      ),
+      types.boolean(),
+      GetConfigurationProductsUiHiddenIntegrationsResponse3$inboundSchema,
+    ]),
+  ),
+  "ui:disabled": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsUiDisabledIntegrationsResponse2$inboundSchema
+      ),
+      types.boolean(),
+      GetConfigurationProductsUiDisabledIntegrationsResponse3$inboundSchema,
+    ]),
+  ),
+  "ui:description": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsUiDescriptionIntegrationsResponse2$inboundSchema
+      ),
+      types.string(),
+    ]),
+  ),
+  "ui:formatted-value": types.optional(
     z.lazy(() =>
-      GetConfigurationProductsUiReadOnlyIntegrationsResponse2$inboundSchema
+      GetConfigurationProductsPropertiesIntegrationsUiFormattedValue$inboundSchema
     ),
-    z.boolean(),
-    GetConfigurationProductsUiReadOnlyIntegrationsResponse3$inboundSchema,
-  ]).optional(),
-  "ui:hidden": z.union([
-    z.lazy(() =>
-      GetConfigurationProductsUiHiddenIntegrationsResponse2$inboundSchema
-    ),
-    z.boolean(),
-    GetConfigurationProductsUiHiddenIntegrationsResponse3$inboundSchema,
-  ]).optional(),
-  "ui:disabled": z.union([
-    z.lazy(() =>
-      GetConfigurationProductsUiDisabledIntegrationsResponse2$inboundSchema
-    ),
-    z.boolean(),
-    GetConfigurationProductsUiDisabledIntegrationsResponse3$inboundSchema,
-  ]).optional(),
-  "ui:description": z.union([
-    z.lazy(() =>
-      GetConfigurationProductsUiDescriptionIntegrationsResponse2$inboundSchema
-    ),
-    z.string(),
-  ]).optional(),
-  "ui:formatted-value": z.lazy(() =>
-    GetConfigurationProductsPropertiesIntegrationsUiFormattedValue$inboundSchema
-  ).optional(),
-  default: z.array(z.number()).optional(),
+  ),
+  default: types.optional(z.array(types.number())),
 }).transform((v) => {
   return remap$(v, {
     "ui:control": "uiControl",
@@ -11848,28 +9451,28 @@ export const Properties4$outboundSchema: z.ZodType<
   minItems: z.number().optional(),
   maxItems: z.number().optional(),
   uiLabel: z.string().optional(),
-  uiReadOnly: z.union([
+  uiReadOnly: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiReadOnlyIntegrationsResponse2$outboundSchema
     ),
     z.boolean(),
     GetConfigurationProductsUiReadOnlyIntegrationsResponse3$outboundSchema,
   ]).optional(),
-  uiHidden: z.union([
+  uiHidden: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiHiddenIntegrationsResponse2$outboundSchema
     ),
     z.boolean(),
     GetConfigurationProductsUiHiddenIntegrationsResponse3$outboundSchema,
   ]).optional(),
-  uiDisabled: z.union([
+  uiDisabled: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDisabledIntegrationsResponse2$outboundSchema
     ),
     z.boolean(),
     GetConfigurationProductsUiDisabledIntegrationsResponse3$outboundSchema,
   ]).optional(),
-  uiDescription: z.union([
+  uiDescription: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDescriptionIntegrationsResponse2$outboundSchema
     ),
@@ -11939,7 +9542,7 @@ export const GetConfigurationProductsUiReadOnlyIntegrations2$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsUiReadOnlyIntegrations2$Outbound = {
@@ -11988,9 +9591,9 @@ export const GetConfigurationProductsPropertiesUiReadOnly$inboundSchema:
     GetConfigurationProductsPropertiesUiReadOnly,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() => GetConfigurationProductsUiReadOnlyIntegrations2$inboundSchema),
-    z.boolean(),
+    types.boolean(),
     GetConfigurationProductsUiReadOnlyIntegrations3$inboundSchema,
   ]);
 /** @internal */
@@ -12005,7 +9608,7 @@ export const GetConfigurationProductsPropertiesUiReadOnly$outboundSchema:
     GetConfigurationProductsPropertiesUiReadOnly$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesUiReadOnly
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiReadOnlyIntegrations2$outboundSchema
     ),
@@ -12055,7 +9658,7 @@ export const GetConfigurationProductsUiHiddenIntegrations2$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsUiHiddenIntegrations2$Outbound = {
@@ -12101,9 +9704,9 @@ export function getConfigurationProductsUiHiddenIntegrations2FromJSON(
 /** @internal */
 export const GetConfigurationProductsPropertiesUiHidden$inboundSchema:
   z.ZodType<GetConfigurationProductsPropertiesUiHidden, z.ZodTypeDef, unknown> =
-    z.union([
+    smartUnion([
       z.lazy(() => GetConfigurationProductsUiHiddenIntegrations2$inboundSchema),
-      z.boolean(),
+      types.boolean(),
       GetConfigurationProductsUiHiddenIntegrations3$inboundSchema,
     ]);
 /** @internal */
@@ -12118,7 +9721,7 @@ export const GetConfigurationProductsPropertiesUiHidden$outboundSchema:
     GetConfigurationProductsPropertiesUiHidden$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesUiHidden
-  > = z.union([
+  > = smartUnion([
     z.lazy(() => GetConfigurationProductsUiHiddenIntegrations2$outboundSchema),
     z.boolean(),
     GetConfigurationProductsUiHiddenIntegrations3$outboundSchema,
@@ -12166,7 +9769,7 @@ export const GetConfigurationProductsUiDisabledIntegrations2$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsUiDisabledIntegrations2$Outbound = {
@@ -12215,9 +9818,9 @@ export const GetConfigurationProductsPropertiesUiDisabled$inboundSchema:
     GetConfigurationProductsPropertiesUiDisabled,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() => GetConfigurationProductsUiDisabledIntegrations2$inboundSchema),
-    z.boolean(),
+    types.boolean(),
     GetConfigurationProductsUiDisabledIntegrations3$inboundSchema,
   ]);
 /** @internal */
@@ -12232,7 +9835,7 @@ export const GetConfigurationProductsPropertiesUiDisabled$outboundSchema:
     GetConfigurationProductsPropertiesUiDisabled$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesUiDisabled
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDisabledIntegrations2$outboundSchema
     ),
@@ -12273,7 +9876,7 @@ export const GetConfigurationProductsUiDescriptionIntegrations2$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsUiDescriptionIntegrations2$Outbound = {
@@ -12322,11 +9925,11 @@ export const GetConfigurationProductsPropertiesUiDescription$inboundSchema:
     GetConfigurationProductsPropertiesUiDescription,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDescriptionIntegrations2$inboundSchema
     ),
-    z.string(),
+    types.string(),
   ]);
 /** @internal */
 export type GetConfigurationProductsPropertiesUiDescription$Outbound =
@@ -12339,7 +9942,7 @@ export const GetConfigurationProductsPropertiesUiDescription$outboundSchema:
     GetConfigurationProductsPropertiesUiDescription$Outbound,
     z.ZodTypeDef,
     GetConfigurationProductsPropertiesUiDescription
-  > = z.union([
+  > = smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDescriptionIntegrations2$outboundSchema
     ),
@@ -12379,7 +9982,7 @@ export const GetConfigurationProductsPropertiesUiFormattedValue$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    expr: z.string(),
+    expr: types.string(),
   });
 /** @internal */
 export type GetConfigurationProductsPropertiesUiFormattedValue$Outbound = {
@@ -12430,33 +10033,47 @@ export const Properties3$inboundSchema: z.ZodType<
 > = z.object({
   type: GetConfigurationProductsPropertiesIntegrationsType$inboundSchema,
   "ui:control": GetConfigurationProductsPropertiesUiControl$inboundSchema,
-  description: z.string().optional(),
-  default: z.boolean().optional(),
-  "ui:label": z.string().optional(),
-  "ui:read-only": z.union([
-    z.lazy(() => GetConfigurationProductsUiReadOnlyIntegrations2$inboundSchema),
-    z.boolean(),
-    GetConfigurationProductsUiReadOnlyIntegrations3$inboundSchema,
-  ]).optional(),
-  "ui:hidden": z.union([
-    z.lazy(() => GetConfigurationProductsUiHiddenIntegrations2$inboundSchema),
-    z.boolean(),
-    GetConfigurationProductsUiHiddenIntegrations3$inboundSchema,
-  ]).optional(),
-  "ui:disabled": z.union([
-    z.lazy(() => GetConfigurationProductsUiDisabledIntegrations2$inboundSchema),
-    z.boolean(),
-    GetConfigurationProductsUiDisabledIntegrations3$inboundSchema,
-  ]).optional(),
-  "ui:description": z.union([
+  description: types.optional(types.string()),
+  default: types.optional(types.boolean()),
+  "ui:label": types.optional(types.string()),
+  "ui:read-only": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsUiReadOnlyIntegrations2$inboundSchema
+      ),
+      types.boolean(),
+      GetConfigurationProductsUiReadOnlyIntegrations3$inboundSchema,
+    ]),
+  ),
+  "ui:hidden": types.optional(
+    smartUnion([
+      z.lazy(() => GetConfigurationProductsUiHiddenIntegrations2$inboundSchema),
+      types.boolean(),
+      GetConfigurationProductsUiHiddenIntegrations3$inboundSchema,
+    ]),
+  ),
+  "ui:disabled": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsUiDisabledIntegrations2$inboundSchema
+      ),
+      types.boolean(),
+      GetConfigurationProductsUiDisabledIntegrations3$inboundSchema,
+    ]),
+  ),
+  "ui:description": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsUiDescriptionIntegrations2$inboundSchema
+      ),
+      types.string(),
+    ]),
+  ),
+  "ui:formatted-value": types.optional(
     z.lazy(() =>
-      GetConfigurationProductsUiDescriptionIntegrations2$inboundSchema
+      GetConfigurationProductsPropertiesUiFormattedValue$inboundSchema
     ),
-    z.string(),
-  ]).optional(),
-  "ui:formatted-value": z.lazy(() =>
-    GetConfigurationProductsPropertiesUiFormattedValue$inboundSchema
-  ).optional(),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "ui:control": "uiControl",
@@ -12510,26 +10127,26 @@ export const Properties3$outboundSchema: z.ZodType<
   description: z.string().optional(),
   default: z.boolean().optional(),
   uiLabel: z.string().optional(),
-  uiReadOnly: z.union([
+  uiReadOnly: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiReadOnlyIntegrations2$outboundSchema
     ),
     z.boolean(),
     GetConfigurationProductsUiReadOnlyIntegrations3$outboundSchema,
   ]).optional(),
-  uiHidden: z.union([
+  uiHidden: smartUnion([
     z.lazy(() => GetConfigurationProductsUiHiddenIntegrations2$outboundSchema),
     z.boolean(),
     GetConfigurationProductsUiHiddenIntegrations3$outboundSchema,
   ]).optional(),
-  uiDisabled: z.union([
+  uiDisabled: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDisabledIntegrations2$outboundSchema
     ),
     z.boolean(),
     GetConfigurationProductsUiDisabledIntegrations3$outboundSchema,
   ]).optional(),
-  uiDescription: z.union([
+  uiDescription: smartUnion([
     z.lazy(() =>
       GetConfigurationProductsUiDescriptionIntegrations2$outboundSchema
     ),
@@ -12597,7 +10214,7 @@ export const GetConfigurationProductsUiReadOnly2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  expr: z.string(),
+  expr: types.string(),
 });
 /** @internal */
 export type GetConfigurationProductsUiReadOnly2$Outbound = {
@@ -12638,9 +10255,9 @@ export const PropertiesUiReadOnly$inboundSchema: z.ZodType<
   PropertiesUiReadOnly,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => GetConfigurationProductsUiReadOnly2$inboundSchema),
-  z.boolean(),
+  types.boolean(),
   GetConfigurationProductsUiReadOnly3$inboundSchema,
 ]);
 /** @internal */
@@ -12654,7 +10271,7 @@ export const PropertiesUiReadOnly$outboundSchema: z.ZodType<
   PropertiesUiReadOnly$Outbound,
   z.ZodTypeDef,
   PropertiesUiReadOnly
-> = z.union([
+> = smartUnion([
   z.lazy(() => GetConfigurationProductsUiReadOnly2$outboundSchema),
   z.boolean(),
   GetConfigurationProductsUiReadOnly3$outboundSchema,
@@ -12692,7 +10309,7 @@ export const GetConfigurationProductsUiHidden2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  expr: z.string(),
+  expr: types.string(),
 });
 /** @internal */
 export type GetConfigurationProductsUiHidden2$Outbound = {
@@ -12732,9 +10349,9 @@ export const PropertiesUiHidden$inboundSchema: z.ZodType<
   PropertiesUiHidden,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => GetConfigurationProductsUiHidden2$inboundSchema),
-  z.boolean(),
+  types.boolean(),
   GetConfigurationProductsUiHidden3$inboundSchema,
 ]);
 /** @internal */
@@ -12748,7 +10365,7 @@ export const PropertiesUiHidden$outboundSchema: z.ZodType<
   PropertiesUiHidden$Outbound,
   z.ZodTypeDef,
   PropertiesUiHidden
-> = z.union([
+> = smartUnion([
   z.lazy(() => GetConfigurationProductsUiHidden2$outboundSchema),
   z.boolean(),
   GetConfigurationProductsUiHidden3$outboundSchema,
@@ -12786,7 +10403,7 @@ export const GetConfigurationProductsUiDisabled2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  expr: z.string(),
+  expr: types.string(),
 });
 /** @internal */
 export type GetConfigurationProductsUiDisabled2$Outbound = {
@@ -12827,9 +10444,9 @@ export const PropertiesUiDisabled$inboundSchema: z.ZodType<
   PropertiesUiDisabled,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => GetConfigurationProductsUiDisabled2$inboundSchema),
-  z.boolean(),
+  types.boolean(),
   GetConfigurationProductsUiDisabled3$inboundSchema,
 ]);
 /** @internal */
@@ -12843,7 +10460,7 @@ export const PropertiesUiDisabled$outboundSchema: z.ZodType<
   PropertiesUiDisabled$Outbound,
   z.ZodTypeDef,
   PropertiesUiDisabled
-> = z.union([
+> = smartUnion([
   z.lazy(() => GetConfigurationProductsUiDisabled2$outboundSchema),
   z.boolean(),
   GetConfigurationProductsUiDisabled3$outboundSchema,
@@ -12872,7 +10489,7 @@ export const GetConfigurationProductsUiDescription2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  expr: z.string(),
+  expr: types.string(),
 });
 /** @internal */
 export type GetConfigurationProductsUiDescription2$Outbound = {
@@ -12914,9 +10531,9 @@ export const PropertiesUiDescription$inboundSchema: z.ZodType<
   PropertiesUiDescription,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => GetConfigurationProductsUiDescription2$inboundSchema),
-  z.string(),
+  types.string(),
 ]);
 /** @internal */
 export type PropertiesUiDescription$Outbound =
@@ -12928,7 +10545,7 @@ export const PropertiesUiDescription$outboundSchema: z.ZodType<
   PropertiesUiDescription$Outbound,
   z.ZodTypeDef,
   PropertiesUiDescription
-> = z.union([
+> = smartUnion([
   z.lazy(() => GetConfigurationProductsUiDescription2$outboundSchema),
   z.string(),
 ]);
@@ -12956,7 +10573,7 @@ export const PropertiesUiFormattedValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  expr: z.string(),
+  expr: types.string(),
 });
 /** @internal */
 export type PropertiesUiFormattedValue$Outbound = {
@@ -12997,35 +10614,44 @@ export const Properties2$inboundSchema: z.ZodType<
 > = z.object({
   type: GetConfigurationProductsPropertiesType$inboundSchema,
   "ui:control": PropertiesUiControl$inboundSchema,
-  minimum: z.number().optional(),
-  maximum: z.number().optional(),
-  description: z.string().optional(),
-  default: z.number().optional(),
-  exclusiveMinimum: z.number().optional(),
-  exclusiveMaximum: z.number().optional(),
-  "ui:label": z.string().optional(),
-  "ui:read-only": z.union([
-    z.lazy(() => GetConfigurationProductsUiReadOnly2$inboundSchema),
-    z.boolean(),
-    GetConfigurationProductsUiReadOnly3$inboundSchema,
-  ]).optional(),
-  "ui:hidden": z.union([
-    z.lazy(() => GetConfigurationProductsUiHidden2$inboundSchema),
-    z.boolean(),
-    GetConfigurationProductsUiHidden3$inboundSchema,
-  ]).optional(),
-  "ui:disabled": z.union([
-    z.lazy(() => GetConfigurationProductsUiDisabled2$inboundSchema),
-    z.boolean(),
-    GetConfigurationProductsUiDisabled3$inboundSchema,
-  ]).optional(),
-  "ui:description": z.union([
-    z.lazy(() => GetConfigurationProductsUiDescription2$inboundSchema),
-    z.string(),
-  ]).optional(),
-  "ui:formatted-value": z.lazy(() => PropertiesUiFormattedValue$inboundSchema)
-    .optional(),
-  "ui:placeholder": z.string().optional(),
+  minimum: types.optional(types.number()),
+  maximum: types.optional(types.number()),
+  description: types.optional(types.string()),
+  default: types.optional(types.number()),
+  exclusiveMinimum: types.optional(types.number()),
+  exclusiveMaximum: types.optional(types.number()),
+  "ui:label": types.optional(types.string()),
+  "ui:read-only": types.optional(
+    smartUnion([
+      z.lazy(() => GetConfigurationProductsUiReadOnly2$inboundSchema),
+      types.boolean(),
+      GetConfigurationProductsUiReadOnly3$inboundSchema,
+    ]),
+  ),
+  "ui:hidden": types.optional(
+    smartUnion([
+      z.lazy(() => GetConfigurationProductsUiHidden2$inboundSchema),
+      types.boolean(),
+      GetConfigurationProductsUiHidden3$inboundSchema,
+    ]),
+  ),
+  "ui:disabled": types.optional(
+    smartUnion([
+      z.lazy(() => GetConfigurationProductsUiDisabled2$inboundSchema),
+      types.boolean(),
+      GetConfigurationProductsUiDisabled3$inboundSchema,
+    ]),
+  ),
+  "ui:description": types.optional(
+    smartUnion([
+      z.lazy(() => GetConfigurationProductsUiDescription2$inboundSchema),
+      types.string(),
+    ]),
+  ),
+  "ui:formatted-value": types.optional(
+    z.lazy(() => PropertiesUiFormattedValue$inboundSchema),
+  ),
+  "ui:placeholder": types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
     "ui:control": "uiControl",
@@ -13087,22 +10713,22 @@ export const Properties2$outboundSchema: z.ZodType<
   exclusiveMinimum: z.number().optional(),
   exclusiveMaximum: z.number().optional(),
   uiLabel: z.string().optional(),
-  uiReadOnly: z.union([
+  uiReadOnly: smartUnion([
     z.lazy(() => GetConfigurationProductsUiReadOnly2$outboundSchema),
     z.boolean(),
     GetConfigurationProductsUiReadOnly3$outboundSchema,
   ]).optional(),
-  uiHidden: z.union([
+  uiHidden: smartUnion([
     z.lazy(() => GetConfigurationProductsUiHidden2$outboundSchema),
     z.boolean(),
     GetConfigurationProductsUiHidden3$outboundSchema,
   ]).optional(),
-  uiDisabled: z.union([
+  uiDisabled: smartUnion([
     z.lazy(() => GetConfigurationProductsUiDisabled2$outboundSchema),
     z.boolean(),
     GetConfigurationProductsUiDisabled3$outboundSchema,
   ]).optional(),
-  uiDescription: z.union([
+  uiDescription: smartUnion([
     z.lazy(() => GetConfigurationProductsUiDescription2$outboundSchema),
     z.string(),
   ]).optional(),
@@ -13152,244 +10778,6 @@ export const UiControl$outboundSchema: z.ZodNativeEnum<typeof UiControl> =
   UiControl$inboundSchema;
 
 /** @internal */
-export const AtBRANDAt524028$inboundSchema: z.ZodType<
-  AtBRANDAt524028,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-/** @internal */
-export type AtBRANDAt524028$Outbound = {};
-
-/** @internal */
-export const AtBRANDAt524028$outboundSchema: z.ZodType<
-  AtBRANDAt524028$Outbound,
-  z.ZodTypeDef,
-  AtBRANDAt524028
-> = z.object({});
-
-export function atBRANDAt524028ToJSON(
-  atBRANDAt524028: AtBRANDAt524028,
-): string {
-  return JSON.stringify(AtBRANDAt524028$outboundSchema.parse(atBRANDAt524028));
-}
-export function atBRANDAt524028FromJSON(
-  jsonString: string,
-): SafeParseResult<AtBRANDAt524028, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AtBRANDAt524028$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AtBRANDAt524028' from JSON`,
-  );
-}
-
-/** @internal */
-export const MinLength$inboundSchema: z.ZodType<
-  MinLength,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  "__@BRAND@524028": z.lazy(() => AtBRANDAt524028$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "__@BRAND@524028": "atBRANDAt524028",
-  });
-});
-/** @internal */
-export type MinLength$Outbound = {
-  "__@BRAND@524028": AtBRANDAt524028$Outbound;
-};
-
-/** @internal */
-export const MinLength$outboundSchema: z.ZodType<
-  MinLength$Outbound,
-  z.ZodTypeDef,
-  MinLength
-> = z.object({
-  atBRANDAt524028: z.lazy(() => AtBRANDAt524028$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    atBRANDAt524028: "__@BRAND@524028",
-  });
-});
-
-export function minLengthToJSON(minLength: MinLength): string {
-  return JSON.stringify(MinLength$outboundSchema.parse(minLength));
-}
-export function minLengthFromJSON(
-  jsonString: string,
-): SafeParseResult<MinLength, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => MinLength$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'MinLength' from JSON`,
-  );
-}
-
-/** @internal */
-export const PropertiesAtBRANDAt524028$inboundSchema: z.ZodType<
-  PropertiesAtBRANDAt524028,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-/** @internal */
-export type PropertiesAtBRANDAt524028$Outbound = {};
-
-/** @internal */
-export const PropertiesAtBRANDAt524028$outboundSchema: z.ZodType<
-  PropertiesAtBRANDAt524028$Outbound,
-  z.ZodTypeDef,
-  PropertiesAtBRANDAt524028
-> = z.object({});
-
-export function propertiesAtBRANDAt524028ToJSON(
-  propertiesAtBRANDAt524028: PropertiesAtBRANDAt524028,
-): string {
-  return JSON.stringify(
-    PropertiesAtBRANDAt524028$outboundSchema.parse(propertiesAtBRANDAt524028),
-  );
-}
-export function propertiesAtBRANDAt524028FromJSON(
-  jsonString: string,
-): SafeParseResult<PropertiesAtBRANDAt524028, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PropertiesAtBRANDAt524028$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PropertiesAtBRANDAt524028' from JSON`,
-  );
-}
-
-/** @internal */
-export const MaxLength$inboundSchema: z.ZodType<
-  MaxLength,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  "__@BRAND@524028": z.lazy(() => PropertiesAtBRANDAt524028$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "__@BRAND@524028": "atBRANDAt524028",
-  });
-});
-/** @internal */
-export type MaxLength$Outbound = {
-  "__@BRAND@524028": PropertiesAtBRANDAt524028$Outbound;
-};
-
-/** @internal */
-export const MaxLength$outboundSchema: z.ZodType<
-  MaxLength$Outbound,
-  z.ZodTypeDef,
-  MaxLength
-> = z.object({
-  atBRANDAt524028: z.lazy(() => PropertiesAtBRANDAt524028$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    atBRANDAt524028: "__@BRAND@524028",
-  });
-});
-
-export function maxLengthToJSON(maxLength: MaxLength): string {
-  return JSON.stringify(MaxLength$outboundSchema.parse(maxLength));
-}
-export function maxLengthFromJSON(
-  jsonString: string,
-): SafeParseResult<MaxLength, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => MaxLength$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'MaxLength' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetConfigurationProductsPropertiesAtBRANDAt524028$inboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesAtBRANDAt524028,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({});
-/** @internal */
-export type GetConfigurationProductsPropertiesAtBRANDAt524028$Outbound = {};
-
-/** @internal */
-export const GetConfigurationProductsPropertiesAtBRANDAt524028$outboundSchema:
-  z.ZodType<
-    GetConfigurationProductsPropertiesAtBRANDAt524028$Outbound,
-    z.ZodTypeDef,
-    GetConfigurationProductsPropertiesAtBRANDAt524028
-  > = z.object({});
-
-export function getConfigurationProductsPropertiesAtBRANDAt524028ToJSON(
-  getConfigurationProductsPropertiesAtBRANDAt524028:
-    GetConfigurationProductsPropertiesAtBRANDAt524028,
-): string {
-  return JSON.stringify(
-    GetConfigurationProductsPropertiesAtBRANDAt524028$outboundSchema.parse(
-      getConfigurationProductsPropertiesAtBRANDAt524028,
-    ),
-  );
-}
-export function getConfigurationProductsPropertiesAtBRANDAt524028FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConfigurationProductsPropertiesAtBRANDAt524028,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConfigurationProductsPropertiesAtBRANDAt524028$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetConfigurationProductsPropertiesAtBRANDAt524028' from JSON`,
-  );
-}
-
-/** @internal */
-export const Pattern$inboundSchema: z.ZodType<Pattern, z.ZodTypeDef, unknown> =
-  z.object({
-    "__@BRAND@524028": z.lazy(() =>
-      GetConfigurationProductsPropertiesAtBRANDAt524028$inboundSchema
-    ),
-  }).transform((v) => {
-    return remap$(v, {
-      "__@BRAND@524028": "atBRANDAt524028",
-    });
-  });
-/** @internal */
-export type Pattern$Outbound = {
-  "__@BRAND@524028": GetConfigurationProductsPropertiesAtBRANDAt524028$Outbound;
-};
-
-/** @internal */
-export const Pattern$outboundSchema: z.ZodType<
-  Pattern$Outbound,
-  z.ZodTypeDef,
-  Pattern
-> = z.object({
-  atBRANDAt524028: z.lazy(() =>
-    GetConfigurationProductsPropertiesAtBRANDAt524028$outboundSchema
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    atBRANDAt524028: "__@BRAND@524028",
-  });
-});
-
-export function patternToJSON(pattern: Pattern): string {
-  return JSON.stringify(Pattern$outboundSchema.parse(pattern));
-}
-export function patternFromJSON(
-  jsonString: string,
-): SafeParseResult<Pattern, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Pattern$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Pattern' from JSON`,
-  );
-}
-
-/** @internal */
 export const UiReadOnly3$inboundSchema: z.ZodNativeEnum<typeof UiReadOnly3> = z
   .nativeEnum(UiReadOnly3);
 /** @internal */
@@ -13402,7 +10790,7 @@ export const UiReadOnly2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  expr: z.string(),
+  expr: types.string(),
 });
 /** @internal */
 export type UiReadOnly2$Outbound = {
@@ -13436,9 +10824,9 @@ export const UiReadOnly$inboundSchema: z.ZodType<
   UiReadOnly,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => UiReadOnly2$inboundSchema),
-  z.boolean(),
+  types.boolean(),
   UiReadOnly3$inboundSchema,
 ]);
 /** @internal */
@@ -13449,7 +10837,7 @@ export const UiReadOnly$outboundSchema: z.ZodType<
   UiReadOnly$Outbound,
   z.ZodTypeDef,
   UiReadOnly
-> = z.union([
+> = smartUnion([
   z.lazy(() => UiReadOnly2$outboundSchema),
   z.boolean(),
   UiReadOnly3$outboundSchema,
@@ -13481,7 +10869,7 @@ export const UiHidden2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  expr: z.string(),
+  expr: types.string(),
 });
 /** @internal */
 export type UiHidden2$Outbound = {
@@ -13515,9 +10903,9 @@ export const UiHidden$inboundSchema: z.ZodType<
   UiHidden,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => UiHidden2$inboundSchema),
-  z.boolean(),
+  types.boolean(),
   UiHidden3$inboundSchema,
 ]);
 /** @internal */
@@ -13528,7 +10916,7 @@ export const UiHidden$outboundSchema: z.ZodType<
   UiHidden$Outbound,
   z.ZodTypeDef,
   UiHidden
-> = z.union([
+> = smartUnion([
   z.lazy(() => UiHidden2$outboundSchema),
   z.boolean(),
   UiHidden3$outboundSchema,
@@ -13560,7 +10948,7 @@ export const UiDisabled2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  expr: z.string(),
+  expr: types.string(),
 });
 /** @internal */
 export type UiDisabled2$Outbound = {
@@ -13594,9 +10982,9 @@ export const UiDisabled$inboundSchema: z.ZodType<
   UiDisabled,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => UiDisabled2$inboundSchema),
-  z.boolean(),
+  types.boolean(),
   UiDisabled3$inboundSchema,
 ]);
 /** @internal */
@@ -13607,7 +10995,7 @@ export const UiDisabled$outboundSchema: z.ZodType<
   UiDisabled$Outbound,
   z.ZodTypeDef,
   UiDisabled
-> = z.union([
+> = smartUnion([
   z.lazy(() => UiDisabled2$outboundSchema),
   z.boolean(),
   UiDisabled3$outboundSchema,
@@ -13632,7 +11020,7 @@ export const UiDescription2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  expr: z.string(),
+  expr: types.string(),
 });
 /** @internal */
 export type UiDescription2$Outbound = {
@@ -13666,7 +11054,7 @@ export const UiDescription$inboundSchema: z.ZodType<
   UiDescription,
   z.ZodTypeDef,
   unknown
-> = z.union([z.lazy(() => UiDescription2$inboundSchema), z.string()]);
+> = smartUnion([z.lazy(() => UiDescription2$inboundSchema), types.string()]);
 /** @internal */
 export type UiDescription$Outbound = UiDescription2$Outbound | string;
 
@@ -13675,7 +11063,7 @@ export const UiDescription$outboundSchema: z.ZodType<
   UiDescription$Outbound,
   z.ZodTypeDef,
   UiDescription
-> = z.union([z.lazy(() => UiDescription2$outboundSchema), z.string()]);
+> = smartUnion([z.lazy(() => UiDescription2$outboundSchema), z.string()]);
 
 export function uiDescriptionToJSON(uiDescription: UiDescription): string {
   return JSON.stringify(UiDescription$outboundSchema.parse(uiDescription));
@@ -13696,7 +11084,7 @@ export const UiFormattedValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  expr: z.string(),
+  expr: types.string(),
 });
 /** @internal */
 export type UiFormattedValue$Outbound = {
@@ -13737,34 +11125,41 @@ export const Properties1$inboundSchema: z.ZodType<
 > = z.object({
   type: PropertiesType$inboundSchema,
   "ui:control": UiControl$inboundSchema,
-  description: z.string().optional(),
-  minLength: z.lazy(() => MinLength$inboundSchema).optional(),
-  maxLength: z.lazy(() => MaxLength$inboundSchema).optional(),
-  pattern: z.lazy(() => Pattern$inboundSchema).optional(),
-  default: z.string().optional(),
-  enum: z.array(z.string()).optional(),
-  "ui:label": z.string().optional(),
-  "ui:read-only": z.union([
-    z.lazy(() => UiReadOnly2$inboundSchema),
-    z.boolean(),
-    UiReadOnly3$inboundSchema,
-  ]).optional(),
-  "ui:hidden": z.union([
-    z.lazy(() => UiHidden2$inboundSchema),
-    z.boolean(),
-    UiHidden3$inboundSchema,
-  ]).optional(),
-  "ui:disabled": z.union([
-    z.lazy(() => UiDisabled2$inboundSchema),
-    z.boolean(),
-    UiDisabled3$inboundSchema,
-  ]).optional(),
-  "ui:description": z.union([
-    z.lazy(() => UiDescription2$inboundSchema),
-    z.string(),
-  ]).optional(),
-  "ui:formatted-value": z.lazy(() => UiFormattedValue$inboundSchema).optional(),
-  "ui:placeholder": z.string().optional(),
+  description: types.optional(types.string()),
+  minLength: types.optional(types.number()),
+  maxLength: types.optional(types.number()),
+  pattern: types.optional(types.string()),
+  default: types.optional(types.string()),
+  enum: types.optional(z.array(types.string())),
+  "ui:label": types.optional(types.string()),
+  "ui:read-only": types.optional(
+    smartUnion([
+      z.lazy(() => UiReadOnly2$inboundSchema),
+      types.boolean(),
+      UiReadOnly3$inboundSchema,
+    ]),
+  ),
+  "ui:hidden": types.optional(
+    smartUnion([
+      z.lazy(() => UiHidden2$inboundSchema),
+      types.boolean(),
+      UiHidden3$inboundSchema,
+    ]),
+  ),
+  "ui:disabled": types.optional(
+    smartUnion([
+      z.lazy(() => UiDisabled2$inboundSchema),
+      types.boolean(),
+      UiDisabled3$inboundSchema,
+    ]),
+  ),
+  "ui:description": types.optional(
+    smartUnion([z.lazy(() => UiDescription2$inboundSchema), types.string()]),
+  ),
+  "ui:formatted-value": types.optional(
+    z.lazy(() => UiFormattedValue$inboundSchema),
+  ),
+  "ui:placeholder": types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
     "ui:control": "uiControl",
@@ -13782,9 +11177,9 @@ export type Properties1$Outbound = {
   type: string;
   "ui:control": string;
   description?: string | undefined;
-  minLength?: MinLength$Outbound | undefined;
-  maxLength?: MaxLength$Outbound | undefined;
-  pattern?: Pattern$Outbound | undefined;
+  minLength?: number | undefined;
+  maxLength?: number | undefined;
+  pattern?: string | undefined;
   default?: string | undefined;
   enum?: Array<string> | undefined;
   "ui:label"?: string | undefined;
@@ -13805,28 +11200,28 @@ export const Properties1$outboundSchema: z.ZodType<
   type: PropertiesType$outboundSchema,
   uiControl: UiControl$outboundSchema,
   description: z.string().optional(),
-  minLength: z.lazy(() => MinLength$outboundSchema).optional(),
-  maxLength: z.lazy(() => MaxLength$outboundSchema).optional(),
-  pattern: z.lazy(() => Pattern$outboundSchema).optional(),
+  minLength: z.number().optional(),
+  maxLength: z.number().optional(),
+  pattern: z.string().optional(),
   default: z.string().optional(),
   enum: z.array(z.string()).optional(),
   uiLabel: z.string().optional(),
-  uiReadOnly: z.union([
+  uiReadOnly: smartUnion([
     z.lazy(() => UiReadOnly2$outboundSchema),
     z.boolean(),
     UiReadOnly3$outboundSchema,
   ]).optional(),
-  uiHidden: z.union([
+  uiHidden: smartUnion([
     z.lazy(() => UiHidden2$outboundSchema),
     z.boolean(),
     UiHidden3$outboundSchema,
   ]).optional(),
-  uiDisabled: z.union([
+  uiDisabled: smartUnion([
     z.lazy(() => UiDisabled2$outboundSchema),
     z.boolean(),
     UiDisabled3$outboundSchema,
   ]).optional(),
-  uiDescription: z.union([
+  uiDescription: smartUnion([
     z.lazy(() => UiDescription2$outboundSchema),
     z.string(),
   ]).optional(),
@@ -13863,7 +11258,7 @@ export const Properties$inboundSchema: z.ZodType<
   Properties,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => Properties4$inboundSchema),
   z.lazy(() => Properties6$inboundSchema),
   z.lazy(() => Properties8$inboundSchema),
@@ -13893,7 +11288,7 @@ export const Properties$outboundSchema: z.ZodType<
   Properties$Outbound,
   z.ZodTypeDef,
   Properties
-> = z.union([
+> = smartUnion([
   z.lazy(() => Properties4$outboundSchema),
   z.lazy(() => Properties6$outboundSchema),
   z.lazy(() => Properties8$outboundSchema),
@@ -13927,7 +11322,7 @@ export const MetadataSchema$inboundSchema: z.ZodType<
 > = z.object({
   type: GetConfigurationProductsType$inboundSchema,
   properties: z.record(
-    z.union([
+    smartUnion([
       z.lazy(() => Properties4$inboundSchema),
       z.lazy(() => Properties6$inboundSchema),
       z.lazy(() => Properties8$inboundSchema),
@@ -13940,7 +11335,7 @@ export const MetadataSchema$inboundSchema: z.ZodType<
       z.lazy(() => Properties10$inboundSchema),
     ]),
   ),
-  required: z.array(z.string()).optional(),
+  required: types.optional(z.array(types.string())),
 });
 /** @internal */
 export type MetadataSchema$Outbound = {
@@ -13969,7 +11364,7 @@ export const MetadataSchema$outboundSchema: z.ZodType<
 > = z.object({
   type: GetConfigurationProductsType$outboundSchema,
   properties: z.record(
-    z.union([
+    smartUnion([
       z.lazy(() => Properties4$outboundSchema),
       z.lazy(() => Properties6$outboundSchema),
       z.lazy(() => Properties8$outboundSchema),
@@ -14004,11 +11399,11 @@ export const Products$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  slug: z.string(),
-  name: z.string(),
+  id: types.string(),
+  slug: types.string(),
+  name: types.string(),
   protocols: z.lazy(() => Protocols$inboundSchema),
-  primaryProtocol: PrimaryProtocol$inboundSchema.optional(),
+  primaryProtocol: types.optional(PrimaryProtocol$inboundSchema),
   metadataSchema: z.lazy(() => MetadataSchema$inboundSchema),
 });
 /** @internal */
@@ -14054,9 +11449,9 @@ export const Integration$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  slug: z.string(),
-  name: z.string(),
+  id: types.string(),
+  slug: types.string(),
+  name: types.string(),
 });
 /** @internal */
 export type Integration$Outbound = {
@@ -14095,7 +11490,7 @@ export const GetConfigurationProductsConfiguration$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
+  id: types.string(),
 });
 /** @internal */
 export type GetConfigurationProductsConfiguration$Outbound = {

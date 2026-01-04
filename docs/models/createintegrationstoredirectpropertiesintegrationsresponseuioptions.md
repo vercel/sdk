@@ -12,21 +12,17 @@ const value: models.CreateIntegrationStoreDirectUiOptions1 = {
 };
 ```
 
-### `models.CreateIntegrationStoreDirectUiOptions2`
+### `string`
 
 ```typescript
-const value: models.CreateIntegrationStoreDirectUiOptions2 = {
-  atBRANDAt8897: {},
-};
+const value: string = "<value>";
 ```
 
 ### `models.CreateIntegrationStoreDirectUiOptions3`
 
 ```typescript
 const value: models.CreateIntegrationStoreDirectUiOptions3 = {
-  value: {
-    atBRANDAt8897: {},
-  },
+  value: "<value>",
 };
 ```
 

@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetTeamRequest = {
@@ -21,8 +22,8 @@ export const GetTeamRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  slug: z.string().optional(),
-  teamId: z.string(),
+  slug: types.optional(types.string()),
+  teamId: types.string(),
 });
 /** @internal */
 export type GetTeamRequest$Outbound = {

@@ -6,6 +6,8 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -85,8 +87,8 @@ export const PatchDomainRequestBody2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  op: z.string().optional(),
-  destination: z.string().optional(),
+  op: types.optional(types.string()),
+  destination: types.optional(types.string()),
 });
 /** @internal */
 export type PatchDomainRequestBody2$Outbound = {
@@ -127,10 +129,10 @@ export const PatchDomainRequestBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  op: z.string().optional(),
-  renew: z.boolean().optional(),
-  customNameservers: z.array(z.string()).optional(),
-  zone: z.boolean().optional(),
+  op: types.optional(types.string()),
+  renew: types.optional(types.boolean()),
+  customNameservers: types.optional(z.array(types.string())),
+  zone: types.optional(types.boolean()),
 });
 /** @internal */
 export type PatchDomainRequestBody1$Outbound = {
@@ -174,7 +176,7 @@ export const PatchDomainRequestBody$inboundSchema: z.ZodType<
   PatchDomainRequestBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => PatchDomainRequestBody1$inboundSchema),
   z.lazy(() => PatchDomainRequestBody2$inboundSchema),
 ]);
@@ -188,7 +190,7 @@ export const PatchDomainRequestBody$outboundSchema: z.ZodType<
   PatchDomainRequestBody$Outbound,
   z.ZodTypeDef,
   PatchDomainRequestBody
-> = z.union([
+> = smartUnion([
   z.lazy(() => PatchDomainRequestBody1$outboundSchema),
   z.lazy(() => PatchDomainRequestBody2$outboundSchema),
 ]);
@@ -216,10 +218,10 @@ export const PatchDomainRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  domain: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  RequestBody: z.union([
+  domain: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
+  RequestBody: smartUnion([
     z.lazy(() => PatchDomainRequestBody1$inboundSchema),
     z.lazy(() => PatchDomainRequestBody2$inboundSchema),
   ]),
@@ -247,7 +249,7 @@ export const PatchDomainRequest$outboundSchema: z.ZodType<
   domain: z.string(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
-  requestBody: z.union([
+  requestBody: smartUnion([
     z.lazy(() => PatchDomainRequestBody1$outboundSchema),
     z.lazy(() => PatchDomainRequestBody2$outboundSchema),
   ]),
@@ -280,9 +282,9 @@ export const PatchDomainResponseBody3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  renew: z.boolean().optional(),
-  customNameservers: z.array(z.string()).optional(),
-  zone: z.boolean().optional(),
+  renew: types.optional(types.boolean()),
+  customNameservers: types.optional(z.array(types.string())),
+  zone: types.optional(types.boolean()),
 });
 /** @internal */
 export type PatchDomainResponseBody3$Outbound = {
@@ -325,8 +327,8 @@ export const PatchDomainResponseBody2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  moved: z.boolean(),
-  token: z.string(),
+  moved: types.boolean(),
+  token: types.string(),
 });
 /** @internal */
 export type PatchDomainResponseBody2$Outbound = {
@@ -367,7 +369,7 @@ export const PatchDomainResponseBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  moved: z.boolean(),
+  moved: types.boolean(),
 });
 /** @internal */
 export type PatchDomainResponseBody1$Outbound = {
@@ -405,7 +407,7 @@ export const PatchDomainResponseBody$inboundSchema: z.ZodType<
   PatchDomainResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => PatchDomainResponseBody2$inboundSchema),
   z.lazy(() => PatchDomainResponseBody1$inboundSchema),
   z.lazy(() => PatchDomainResponseBody3$inboundSchema),
@@ -421,7 +423,7 @@ export const PatchDomainResponseBody$outboundSchema: z.ZodType<
   PatchDomainResponseBody$Outbound,
   z.ZodTypeDef,
   PatchDomainResponseBody
-> = z.union([
+> = smartUnion([
   z.lazy(() => PatchDomainResponseBody2$outboundSchema),
   z.lazy(() => PatchDomainResponseBody1$outboundSchema),
   z.lazy(() => PatchDomainResponseBody3$outboundSchema),

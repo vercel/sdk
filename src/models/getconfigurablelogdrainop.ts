@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetConfigurableLogDrainRequest = {
@@ -106,9 +107,9 @@ export const GetConfigurableLogDrainRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  id: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type GetConfigurableLogDrainRequest$Outbound = {
@@ -162,11 +163,11 @@ export const ProjectsMetadata$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
+  id: types.string(),
+  name: types.string(),
   framework: z.nullable(GetConfigurableLogDrainFramework$inboundSchema)
     .optional(),
-  latestDeployment: z.string().optional(),
+  latestDeployment: types.optional(types.string()),
 });
 /** @internal */
 export type ProjectsMetadata$Outbound = {
@@ -212,15 +213,15 @@ export const GetConfigurableLogDrainResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  createdFrom: z.string(),
-  clientId: z.string().optional(),
-  configurationId: z.string().optional(),
+  createdFrom: types.string(),
+  clientId: types.optional(types.string()),
+  configurationId: types.optional(types.string()),
   projectsMetadata: z.nullable(
     z.array(z.lazy(() => ProjectsMetadata$inboundSchema)),
   ).optional(),
-  integrationIcon: z.string().optional(),
-  integrationConfigurationUri: z.string().optional(),
-  integrationWebsite: z.string().optional(),
+  integrationIcon: types.optional(types.string()),
+  integrationConfigurationUri: types.optional(types.string()),
+  integrationWebsite: types.optional(types.string()),
 });
 /** @internal */
 export type GetConfigurableLogDrainResponseBody$Outbound = {

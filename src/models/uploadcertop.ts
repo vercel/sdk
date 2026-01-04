@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type UploadCertRequestBody = {
@@ -53,10 +54,10 @@ export const UploadCertRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  ca: z.string(),
-  key: z.string(),
-  cert: z.string(),
-  skipValidation: z.boolean().optional(),
+  ca: types.string(),
+  key: types.string(),
+  cert: types.string(),
+  skipValidation: types.optional(types.boolean()),
 });
 /** @internal */
 export type UploadCertRequestBody$Outbound = {
@@ -101,9 +102,11 @@ export const UploadCertRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  RequestBody: z.lazy(() => UploadCertRequestBody$inboundSchema).optional(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
+  RequestBody: types.optional(
+    z.lazy(() => UploadCertRequestBody$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",
@@ -154,11 +157,11 @@ export const UploadCertResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  createdAt: z.number(),
-  expiresAt: z.number(),
-  autoRenew: z.boolean(),
-  cns: z.array(z.string()),
+  id: types.string(),
+  createdAt: types.number(),
+  expiresAt: types.number(),
+  autoRenew: types.boolean(),
+  cns: z.array(types.string()),
 });
 /** @internal */
 export type UploadCertResponseBody$Outbound = {

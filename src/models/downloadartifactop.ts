@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DownloadArtifactRequest = {
@@ -37,11 +38,11 @@ export const DownloadArtifactRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "x-artifact-client-ci": z.string().optional(),
-  "x-artifact-client-interactive": z.number().int().optional(),
-  hash: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  "x-artifact-client-ci": types.optional(types.string()),
+  "x-artifact-client-interactive": types.optional(types.number()),
+  hash: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
     "x-artifact-client-ci": "xArtifactClientCi",

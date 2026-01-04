@@ -7,6 +7,7 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import {
   EdgeConfigItemValue,
   EdgeConfigItemValue$inboundSchema,
@@ -110,11 +111,13 @@ export const PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExpe
     z.ZodTypeDef,
     unknown
   > = z.object({
-    integrationConfigurationId: z.string(),
-    resourceId: z.string(),
-    RequestBody: z.lazy(() =>
-      PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequestBody$inboundSchema
-    ).optional(),
+    integrationConfigurationId: types.string(),
+    resourceId: types.string(),
+    RequestBody: types.optional(
+      z.lazy(() =>
+        PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequestBody$inboundSchema
+      ),
+    ),
   }).transform((v) => {
     return remap$(v, {
       "RequestBody": "requestBody",
@@ -195,12 +198,12 @@ export const PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExpe
     z.ZodTypeDef,
     unknown
   > = z.object({
-    items: z.record(z.nullable(EdgeConfigItemValue$inboundSchema)),
-    updatedAt: z.number(),
-    digest: z.string(),
-    purpose:
-      PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$inboundSchema
-        .optional(),
+    items: z.record(types.nullable(EdgeConfigItemValue$inboundSchema)),
+    updatedAt: types.number(),
+    digest: types.string(),
+    purpose: types.optional(
+      PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$inboundSchema,
+    ),
   });
 /** @internal */
 export type PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody$Outbound =

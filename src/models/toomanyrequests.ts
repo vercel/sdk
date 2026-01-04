@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import { VercelError } from "./vercelerror.js";
 
@@ -73,8 +74,8 @@ export const RetryAfter$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: z.number(),
-  str: z.string(),
+  value: types.number(),
+  str: types.string(),
 });
 /** @internal */
 export type RetryAfter$Outbound = {
@@ -108,9 +109,9 @@ export function retryAfterFromJSON(
 /** @internal */
 export const Limit$inboundSchema: z.ZodType<Limit, z.ZodTypeDef, unknown> = z
   .object({
-    total: z.number(),
-    remaining: z.number(),
-    reset: z.number(),
+    total: types.number(),
+    remaining: types.number(),
+    reset: types.number(),
   });
 /** @internal */
 export type Limit$Outbound = {
@@ -149,9 +150,9 @@ export const TooManyRequests$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  status: z.number(),
+  status: types.number(),
   code: TooManyRequestsCode$inboundSchema,
-  message: z.string(),
+  message: types.string(),
   retryAfter: z.lazy(() => RetryAfter$inboundSchema),
   limit: z.lazy(() => Limit$inboundSchema),
   request$: z.instanceof(Request),

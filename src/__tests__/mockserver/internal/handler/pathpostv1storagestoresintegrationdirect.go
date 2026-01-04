@@ -70,9 +70,7 @@ func testCreateIntegrationStoreDirectCreateIntegrationStoreDirect0(w http.Respon
 			Status:             operations.CreateIntegrationStoreDirectStatusAvailable.ToPointer(),
 			ExternalResourceID: "<id>",
 			Product: operations.CreateIntegrationStoreDirectProduct{
-				Value: operations.CreateIntegrationStoreDirectValue{
-					AtBRANDAt8897: operations.ValueAtBRANDAt8897{},
-				},
+				Value: "{\"__@BRAND@8897\":{}}",
 			},
 			Secrets: []operations.CreateIntegrationStoreDirectSecret{},
 		},

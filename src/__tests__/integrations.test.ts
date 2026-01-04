@@ -123,9 +123,7 @@ test("Integrations Create Integration Store Direct", async () => {
       status: "available",
       externalResourceId: "<id>",
       product: {
-        value: {
-          atBRANDAt8897: {},
-        },
+        value: "{\"__@BRAND@8897\":{}}",
       },
       secrets: [],
     },
@@ -158,6 +156,70 @@ test("Integrations Get Billing Plans", async () => {
         name: "<value>",
         scope: "installation",
         paymentMethodRequired: false,
+      },
+    ],
+  });
+});
+
+test("Integrations Git Namespaces", async () => {
+  const testHttpClient = createTestHTTPClient("gitNamespaces");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.integrations.gitNamespaces({
+    host: "ghes-test.now.systems",
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual([
+    {
+      provider: "<value>",
+      slug: "<value>",
+      id: 4172.87,
+      ownerType: "<value>",
+    },
+  ]);
+});
+
+test("Integrations Search Repo", async () => {
+  const testHttpClient = createTestHTTPClient("searchRepo");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.integrations.searchRepo({
+    host: "ghes-test.now.systems",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    gitAccount: {
+      provider: "bitbucket",
+      namespaceId: "<id>",
+    },
+    repos: [
+      {
+        id: 6849.08,
+        provider: "github-custom-host",
+        url: "https://striking-amnesty.com/",
+        name: "<value>",
+        slug: "<value>",
+        namespace: "<value>",
+        owner: {
+          id: 2912.2,
+          name: "<value>",
+        },
+        ownerType: "user",
+        private: true,
+        defaultBranch: "<value>",
+        updatedAt: 4535.98,
       },
     ],
   });

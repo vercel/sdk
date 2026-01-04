@@ -8,8 +8,8 @@ Period for the billing cycle. The period end date cannot be older than 24 hours 
 import { Period } from "@vercel/sdk/models/submitbillingdataop.js";
 
 let value: Period = {
-  start: new Date("2024-04-17T01:12:19.083Z"),
-  end: new Date("2023-06-05T12:48:35.305Z"),
+  start: new Date("2025-04-17T01:12:19.083Z"),
+  end: new Date("2024-06-04T12:48:35.305Z"),
 };
 ```
 

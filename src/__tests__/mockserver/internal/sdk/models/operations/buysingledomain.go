@@ -252,6 +252,7 @@ func (o *BuySingleDomainLinks) GetMethod() BuySingleDomainMethod {
 
 // BuySingleDomainResponseBody - Success
 type BuySingleDomainResponseBody struct {
+	// A valid order ID
 	OrderID string                          `json:"orderId"`
 	Links   map[string]BuySingleDomainLinks `json:"_links"`
 }

@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest =
@@ -21,9 +22,9 @@ export const DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdE
     z.ZodTypeDef,
     unknown
   > = z.object({
-    integrationConfigurationId: z.string(),
-    resourceId: z.string(),
-    itemId: z.string(),
+    integrationConfigurationId: types.string(),
+    resourceId: types.string(),
+    itemId: types.string(),
   });
 /** @internal */
 export type DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest$Outbound =

@@ -6,6 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetConfigurationRequest = {
@@ -399,9 +401,9 @@ export const GetConfigurationRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  id: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type GetConfigurationRequest$Outbound = {
@@ -484,31 +486,32 @@ export const GetConfigurationResponseBody2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  completedAt: z.number().optional(),
-  createdAt: z.number(),
-  id: z.string(),
-  integrationId: z.string(),
-  ownerId: z.string(),
-  status: GetConfigurationResponseBodyIntegrationsStatus$inboundSchema
-    .optional(),
-  externalId: z.string().optional(),
-  projects: z.array(z.string()).optional(),
-  source: z.string().optional(),
-  slug: z.string(),
-  teamId: z.nullable(z.string()).optional(),
+  completedAt: types.optional(types.number()),
+  createdAt: types.number(),
+  id: types.string(),
+  integrationId: types.string(),
+  ownerId: types.string(),
+  status: types.optional(
+    GetConfigurationResponseBodyIntegrationsStatus$inboundSchema,
+  ),
+  externalId: types.optional(types.string()),
+  projects: types.optional(z.array(types.string())),
+  source: types.optional(types.string()),
+  slug: types.string(),
+  teamId: z.nullable(types.string()).optional(),
   type: GetConfigurationResponseBodyIntegrationsType$inboundSchema,
-  updatedAt: z.number(),
-  userId: z.string(),
-  scopes: z.array(z.string()),
-  disabledAt: z.number().optional(),
-  deletedAt: z.nullable(z.number()).optional(),
-  deleteRequestedAt: z.nullable(z.number()).optional(),
-  disabledReason:
-    GetConfigurationResponseBodyIntegrationsDisabledReason$inboundSchema
-      .optional(),
-  installationType:
-    GetConfigurationResponseBodyIntegrationsInstallationType$inboundSchema
-      .optional(),
+  updatedAt: types.number(),
+  userId: types.string(),
+  scopes: z.array(types.string()),
+  disabledAt: types.optional(types.number()),
+  deletedAt: z.nullable(types.number()).optional(),
+  deleteRequestedAt: z.nullable(types.number()).optional(),
+  disabledReason: types.optional(
+    GetConfigurationResponseBodyIntegrationsDisabledReason$inboundSchema,
+  ),
+  installationType: types.optional(
+    GetConfigurationResponseBodyIntegrationsInstallationType$inboundSchema,
+  ),
 });
 /** @internal */
 export type GetConfigurationResponseBody2$Outbound = {
@@ -611,9 +614,9 @@ export const ResponseBodyNotification$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   level: GetConfigurationResponseBodyLevel$inboundSchema,
-  title: z.string(),
-  message: z.string().optional(),
-  href: z.string().optional(),
+  title: types.string(),
+  message: types.optional(types.string()),
+  href: types.optional(types.string()),
 });
 /** @internal */
 export type ResponseBodyNotification$Outbound = {
@@ -658,8 +661,8 @@ export const TransferRequestRequester$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  email: z.string().optional(),
+  name: types.string(),
+  email: types.optional(types.string()),
 });
 /** @internal */
 export type TransferRequestRequester$Outbound = {
@@ -700,17 +703,17 @@ export const TransferRequest2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  kind: z.literal("transfer-from-marketplace"),
-  requestId: z.string(),
-  transferId: z.string(),
+  kind: types.literal("transfer-from-marketplace"),
+  requestId: types.string(),
+  transferId: types.string(),
   requester: z.lazy(() => TransferRequestRequester$inboundSchema),
-  createdAt: z.number(),
-  expiresAt: z.number(),
-  discardedAt: z.number().optional(),
-  discardedBy: z.string().optional(),
-  approvedAt: z.number().optional(),
-  approvedBy: z.string().optional(),
-  authorizationId: z.string().optional(),
+  createdAt: types.number(),
+  expiresAt: types.number(),
+  discardedAt: types.optional(types.number()),
+  discardedBy: types.optional(types.string()),
+  approvedAt: types.optional(types.number()),
+  approvedBy: types.optional(types.string()),
+  authorizationId: types.optional(types.string()),
 });
 /** @internal */
 export type TransferRequest2$Outbound = {
@@ -787,13 +790,13 @@ export const TransferRequestBillingPlan$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
+  id: types.string(),
   type: TransferRequestType$inboundSchema,
-  scope: TransferRequestScope$inboundSchema.optional(),
-  name: z.string(),
-  description: z.string(),
-  paymentMethodRequired: z.boolean().optional(),
-  preauthorizationAmount: z.number().optional(),
+  scope: types.optional(TransferRequestScope$inboundSchema),
+  name: types.string(),
+  description: types.string(),
+  paymentMethodRequired: types.optional(types.boolean()),
+  preauthorizationAmount: types.optional(types.number()),
 });
 /** @internal */
 export type TransferRequestBillingPlan$Outbound = {
@@ -844,8 +847,8 @@ export const Requester$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  email: z.string().optional(),
+  name: types.string(),
+  email: types.optional(types.string()),
 });
 /** @internal */
 export type Requester$Outbound = {
@@ -882,20 +885,21 @@ export const TransferRequest1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  kind: z.literal("transfer-to-marketplace"),
-  metadata: z.record(z.any()).optional(),
-  billingPlan: z.lazy(() => TransferRequestBillingPlan$inboundSchema)
-    .optional(),
-  requestId: z.string(),
-  transferId: z.string(),
+  kind: types.literal("transfer-to-marketplace"),
+  metadata: types.optional(z.record(z.any())),
+  billingPlan: types.optional(
+    z.lazy(() => TransferRequestBillingPlan$inboundSchema),
+  ),
+  requestId: types.string(),
+  transferId: types.string(),
   requester: z.lazy(() => Requester$inboundSchema),
-  createdAt: z.number(),
-  expiresAt: z.number(),
-  discardedAt: z.number().optional(),
-  discardedBy: z.string().optional(),
-  approvedAt: z.number().optional(),
-  approvedBy: z.string().optional(),
-  authorizationId: z.string().optional(),
+  createdAt: types.number(),
+  expiresAt: types.number(),
+  discardedAt: types.optional(types.number()),
+  discardedBy: types.optional(types.string()),
+  approvedAt: types.optional(types.number()),
+  approvedBy: types.optional(types.string()),
+  authorizationId: types.optional(types.string()),
 });
 /** @internal */
 export type TransferRequest1$Outbound = {
@@ -1040,29 +1044,31 @@ export const GetConfigurationResponseBody1$inboundSchema: z.ZodType<
     z.lazy(() => TransferRequest1$inboundSchema),
     z.lazy(() => TransferRequest2$inboundSchema),
   ]),
-  projects: z.array(z.string()).optional(),
-  createdAt: z.number(),
-  completedAt: z.number().optional(),
-  id: z.string(),
-  integrationId: z.string(),
-  ownerId: z.string(),
-  slug: z.string(),
-  teamId: z.nullable(z.string()).optional(),
-  updatedAt: z.number(),
-  userId: z.string(),
-  scopes: z.array(z.string()),
-  disabledAt: z.number().optional(),
-  disabledReason: GetConfigurationResponseBodyDisabledReason$inboundSchema
-    .optional(),
-  source: z.string().optional(),
-  canConfigureOpenTelemetry: z.boolean().optional(),
-  installationType: GetConfigurationResponseBodyInstallationType$inboundSchema
-    .optional(),
-  deleteRequestedAt: z.nullable(z.number()).optional(),
-  status: GetConfigurationResponseBodyStatus$inboundSchema.optional(),
-  externalId: z.string().optional(),
+  projects: types.optional(z.array(types.string())),
+  createdAt: types.number(),
+  completedAt: types.optional(types.number()),
+  id: types.string(),
+  integrationId: types.string(),
+  ownerId: types.string(),
+  slug: types.string(),
+  teamId: z.nullable(types.string()).optional(),
+  updatedAt: types.number(),
+  userId: types.string(),
+  scopes: z.array(types.string()),
+  disabledAt: types.optional(types.number()),
+  disabledReason: types.optional(
+    GetConfigurationResponseBodyDisabledReason$inboundSchema,
+  ),
+  source: types.optional(types.string()),
+  canConfigureOpenTelemetry: types.optional(types.boolean()),
+  installationType: types.optional(
+    GetConfigurationResponseBodyInstallationType$inboundSchema,
+  ),
+  deleteRequestedAt: z.nullable(types.number()).optional(),
+  status: types.optional(GetConfigurationResponseBodyStatus$inboundSchema),
+  externalId: types.optional(types.string()),
   type: GetConfigurationResponseBodyType$inboundSchema,
-  deletedAt: z.nullable(z.number()).optional(),
+  deletedAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type GetConfigurationResponseBody1$Outbound = {
@@ -1153,7 +1159,7 @@ export const GetConfigurationResponseBody$inboundSchema: z.ZodType<
   GetConfigurationResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => GetConfigurationResponseBody1$inboundSchema),
   z.lazy(() => GetConfigurationResponseBody2$inboundSchema),
 ]);
@@ -1167,7 +1173,7 @@ export const GetConfigurationResponseBody$outboundSchema: z.ZodType<
   GetConfigurationResponseBody$Outbound,
   z.ZodTypeDef,
   GetConfigurationResponseBody
-> = z.union([
+> = smartUnion([
   z.lazy(() => GetConfigurationResponseBody1$outboundSchema),
   z.lazy(() => GetConfigurationResponseBody2$outboundSchema),
 ]);

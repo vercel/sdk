@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type Utm = {
@@ -74,10 +75,10 @@ export type CreateTeamResponseBody = {
 /** @internal */
 export const Utm$inboundSchema: z.ZodType<Utm, z.ZodTypeDef, unknown> = z
   .object({
-    utmSource: z.string().optional(),
-    utmMedium: z.string().optional(),
-    utmCampaign: z.string().optional(),
-    utmTerm: z.string().optional(),
+    utmSource: types.optional(types.string()),
+    utmMedium: types.optional(types.string()),
+    utmCampaign: types.optional(types.string()),
+    utmTerm: types.optional(types.string()),
   });
 /** @internal */
 export type Utm$Outbound = {
@@ -115,10 +116,10 @@ export const Attribution$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  sessionReferrer: z.string().optional(),
-  landingPage: z.string().optional(),
-  pageBeforeConversionPage: z.string().optional(),
-  utm: z.lazy(() => Utm$inboundSchema).optional(),
+  sessionReferrer: types.optional(types.string()),
+  landingPage: types.optional(types.string()),
+  pageBeforeConversionPage: types.optional(types.string()),
+  utm: types.optional(z.lazy(() => Utm$inboundSchema)),
 });
 /** @internal */
 export type Attribution$Outbound = {
@@ -159,9 +160,9 @@ export const CreateTeamRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  slug: z.string(),
-  name: z.string().optional(),
-  attribution: z.lazy(() => Attribution$inboundSchema).optional(),
+  slug: types.string(),
+  name: types.optional(types.string()),
+  attribution: types.optional(z.lazy(() => Attribution$inboundSchema)),
 });
 /** @internal */
 export type CreateTeamRequestBody$Outbound = {
@@ -204,8 +205,8 @@ export const CreateTeamResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  slug: z.string(),
+  id: types.string(),
+  slug: types.string(),
 });
 /** @internal */
 export type CreateTeamResponseBody$Outbound = {

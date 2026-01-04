@@ -28,6 +28,7 @@ import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import { VercelError } from "../models/vercelerror.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
+import * as types$ from "../types/primitives.js";
 
 /**
  * Get the data of a user-provided Edge Config
@@ -176,13 +177,15 @@ async function $do(
   >(
     M.json(
       200,
-      HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody$inboundSchema
-        .optional(),
+      types$.optional(
+        HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody$inboundSchema,
+      ),
     ),
     M.nil(
       304,
-      HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody$inboundSchema
-        .optional(),
+      types$.optional(
+        HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody$inboundSchema,
+      ),
     ),
     M.fail([400, 401, 403, 404, "4XX"]),
     M.fail("5XX"),

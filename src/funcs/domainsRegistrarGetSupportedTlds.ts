@@ -47,6 +47,7 @@ import {
 import { VercelError } from "../models/vercelerror.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
+import * as types$ from "../types/primitives.js";
 
 /**
  * Get supported TLDs
@@ -195,7 +196,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, z.array(z.string())),
+    M.json(200, z.array(types$.string())),
     M.jsonErr(400, HttpApiDecodeError$inboundSchema),
     M.jsonErr(401, Unauthorized$inboundSchema),
     M.jsonErr(403, NotAuthorizedForScope$inboundSchema),

@@ -5,6 +5,8 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import {
   HttpApiDecodeError,
   HttpApiDecodeError$inboundSchema,
@@ -60,9 +62,9 @@ export const GetTldPriceRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  tld: z.string(),
-  years: z.string().optional(),
-  teamId: z.string().optional(),
+  tld: types.string(),
+  years: types.optional(types.string()),
+  teamId: types.optional(types.string()),
 });
 /** @internal */
 export type GetTldPriceRequest$Outbound = {
@@ -104,7 +106,10 @@ export const GetTldPriceDomainsRegistrarResponseBody$inboundSchema: z.ZodType<
   GetTldPriceDomainsRegistrarResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([TldNotSupported$inboundSchema, HttpApiDecodeError$inboundSchema]);
+> = smartUnion([
+  TldNotSupported$inboundSchema,
+  HttpApiDecodeError$inboundSchema,
+]);
 /** @internal */
 export type GetTldPriceDomainsRegistrarResponseBody$Outbound =
   | TldNotSupported$Outbound
@@ -115,7 +120,7 @@ export const GetTldPriceDomainsRegistrarResponseBody$outboundSchema: z.ZodType<
   GetTldPriceDomainsRegistrarResponseBody$Outbound,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   TldNotSupported$outboundSchema,
   HttpApiDecodeError$outboundSchema,
 ]);
@@ -151,7 +156,7 @@ export const PurchasePrice$inboundSchema: z.ZodType<
   PurchasePrice,
   z.ZodTypeDef,
   unknown
-> = z.union([z.number(), z.string()]);
+> = smartUnion([types.number(), types.string()]);
 /** @internal */
 export type PurchasePrice$Outbound = number | string;
 
@@ -160,7 +165,7 @@ export const PurchasePrice$outboundSchema: z.ZodType<
   PurchasePrice$Outbound,
   z.ZodTypeDef,
   PurchasePrice
-> = z.union([z.number(), z.string()]);
+> = smartUnion([z.number(), z.string()]);
 
 export function purchasePriceToJSON(purchasePrice: PurchasePrice): string {
   return JSON.stringify(PurchasePrice$outboundSchema.parse(purchasePrice));
@@ -180,7 +185,7 @@ export const RenewalPrice$inboundSchema: z.ZodType<
   RenewalPrice,
   z.ZodTypeDef,
   unknown
-> = z.union([z.number(), z.string()]);
+> = smartUnion([types.number(), types.string()]);
 /** @internal */
 export type RenewalPrice$Outbound = number | string;
 
@@ -189,7 +194,7 @@ export const RenewalPrice$outboundSchema: z.ZodType<
   RenewalPrice$Outbound,
   z.ZodTypeDef,
   RenewalPrice
-> = z.union([z.number(), z.string()]);
+> = smartUnion([z.number(), z.string()]);
 
 export function renewalPriceToJSON(renewalPrice: RenewalPrice): string {
   return JSON.stringify(RenewalPrice$outboundSchema.parse(renewalPrice));
@@ -209,7 +214,7 @@ export const TransferPrice$inboundSchema: z.ZodType<
   TransferPrice,
   z.ZodTypeDef,
   unknown
-> = z.union([z.number(), z.string()]);
+> = smartUnion([types.number(), types.string()]);
 /** @internal */
 export type TransferPrice$Outbound = number | string;
 
@@ -218,7 +223,7 @@ export const TransferPrice$outboundSchema: z.ZodType<
   TransferPrice$Outbound,
   z.ZodTypeDef,
   TransferPrice
-> = z.union([z.number(), z.string()]);
+> = smartUnion([z.number(), z.string()]);
 
 export function transferPriceToJSON(transferPrice: TransferPrice): string {
   return JSON.stringify(TransferPrice$outboundSchema.parse(transferPrice));
@@ -239,10 +244,10 @@ export const GetTldPriceResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  years: z.number(),
-  purchasePrice: z.union([z.number(), z.string()]),
-  renewalPrice: z.union([z.number(), z.string()]),
-  transferPrice: z.union([z.number(), z.string()]),
+  years: types.number(),
+  purchasePrice: smartUnion([types.number(), types.string()]),
+  renewalPrice: smartUnion([types.number(), types.string()]),
+  transferPrice: smartUnion([types.number(), types.string()]),
 });
 /** @internal */
 export type GetTldPriceResponseBody$Outbound = {
@@ -259,9 +264,9 @@ export const GetTldPriceResponseBody$outboundSchema: z.ZodType<
   GetTldPriceResponseBody
 > = z.object({
   years: z.number(),
-  purchasePrice: z.union([z.number(), z.string()]),
-  renewalPrice: z.union([z.number(), z.string()]),
-  transferPrice: z.union([z.number(), z.string()]),
+  purchasePrice: smartUnion([z.number(), z.string()]),
+  renewalPrice: smartUnion([z.number(), z.string()]),
+  transferPrice: smartUnion([z.number(), z.string()]),
 });
 
 export function getTldPriceResponseBodyToJSON(

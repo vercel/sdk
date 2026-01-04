@@ -5,6 +5,8 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import {
   BadRequest,
   BadRequest$inboundSchema,
@@ -71,9 +73,9 @@ export const GetDomainPriceRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  domain: z.string(),
-  years: z.string().optional(),
-  teamId: z.string().optional(),
+  domain: types.string(),
+  years: types.optional(types.string()),
+  teamId: types.optional(types.string()),
 });
 /** @internal */
 export type GetDomainPriceRequest$Outbound = {
@@ -113,7 +115,7 @@ export function getDomainPriceRequestFromJSON(
 /** @internal */
 export const GetDomainPriceDomainsRegistrarResponseBody$inboundSchema:
   z.ZodType<GetDomainPriceDomainsRegistrarResponseBody, z.ZodTypeDef, unknown> =
-    z.union([
+    smartUnion([
       BadRequest$inboundSchema,
       DomainTooShort$inboundSchema,
       TldNotSupported$inboundSchema,
@@ -132,7 +134,7 @@ export const GetDomainPriceDomainsRegistrarResponseBody$outboundSchema:
     GetDomainPriceDomainsRegistrarResponseBody$Outbound,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     BadRequest$outboundSchema,
     DomainTooShort$outboundSchema,
     TldNotSupported$outboundSchema,
@@ -170,7 +172,7 @@ export const GetDomainPricePurchasePrice$inboundSchema: z.ZodType<
   GetDomainPricePurchasePrice,
   z.ZodTypeDef,
   unknown
-> = z.union([z.number(), z.string()]);
+> = smartUnion([types.number(), types.string()]);
 /** @internal */
 export type GetDomainPricePurchasePrice$Outbound = number | string;
 
@@ -179,7 +181,7 @@ export const GetDomainPricePurchasePrice$outboundSchema: z.ZodType<
   GetDomainPricePurchasePrice$Outbound,
   z.ZodTypeDef,
   GetDomainPricePurchasePrice
-> = z.union([z.number(), z.string()]);
+> = smartUnion([z.number(), z.string()]);
 
 export function getDomainPricePurchasePriceToJSON(
   getDomainPricePurchasePrice: GetDomainPricePurchasePrice,
@@ -205,7 +207,7 @@ export const GetDomainPriceRenewalPrice$inboundSchema: z.ZodType<
   GetDomainPriceRenewalPrice,
   z.ZodTypeDef,
   unknown
-> = z.union([z.number(), z.string()]);
+> = smartUnion([types.number(), types.string()]);
 /** @internal */
 export type GetDomainPriceRenewalPrice$Outbound = number | string;
 
@@ -214,7 +216,7 @@ export const GetDomainPriceRenewalPrice$outboundSchema: z.ZodType<
   GetDomainPriceRenewalPrice$Outbound,
   z.ZodTypeDef,
   GetDomainPriceRenewalPrice
-> = z.union([z.number(), z.string()]);
+> = smartUnion([z.number(), z.string()]);
 
 export function getDomainPriceRenewalPriceToJSON(
   getDomainPriceRenewalPrice: GetDomainPriceRenewalPrice,
@@ -238,7 +240,7 @@ export const GetDomainPriceTransferPrice$inboundSchema: z.ZodType<
   GetDomainPriceTransferPrice,
   z.ZodTypeDef,
   unknown
-> = z.union([z.number(), z.string()]);
+> = smartUnion([types.number(), types.string()]);
 /** @internal */
 export type GetDomainPriceTransferPrice$Outbound = number | string;
 
@@ -247,7 +249,7 @@ export const GetDomainPriceTransferPrice$outboundSchema: z.ZodType<
   GetDomainPriceTransferPrice$Outbound,
   z.ZodTypeDef,
   GetDomainPriceTransferPrice
-> = z.union([z.number(), z.string()]);
+> = smartUnion([z.number(), z.string()]);
 
 export function getDomainPriceTransferPriceToJSON(
   getDomainPriceTransferPrice: GetDomainPriceTransferPrice,
@@ -274,10 +276,10 @@ export const GetDomainPriceResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  years: z.number(),
-  purchasePrice: z.union([z.number(), z.string()]),
-  renewalPrice: z.union([z.number(), z.string()]),
-  transferPrice: z.union([z.number(), z.string()]),
+  years: types.number(),
+  purchasePrice: smartUnion([types.number(), types.string()]),
+  renewalPrice: smartUnion([types.number(), types.string()]),
+  transferPrice: smartUnion([types.number(), types.string()]),
 });
 /** @internal */
 export type GetDomainPriceResponseBody$Outbound = {
@@ -294,9 +296,9 @@ export const GetDomainPriceResponseBody$outboundSchema: z.ZodType<
   GetDomainPriceResponseBody
 > = z.object({
   years: z.number(),
-  purchasePrice: z.union([z.number(), z.string()]),
-  renewalPrice: z.union([z.number(), z.string()]),
-  transferPrice: z.union([z.number(), z.string()]),
+  purchasePrice: smartUnion([z.number(), z.string()]),
+  renewalPrice: smartUnion([z.number(), z.string()]),
+  transferPrice: smartUnion([z.number(), z.string()]),
 });
 
 export function getDomainPriceResponseBodyToJSON(

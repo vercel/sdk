@@ -7,6 +7,8 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type PostTeamDsyncRolesRoles2 = {
@@ -60,7 +62,7 @@ export const PostTeamDsyncRolesRoles2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  accessGroupId: z.string(),
+  accessGroupId: types.string(),
 });
 /** @internal */
 export type PostTeamDsyncRolesRoles2$Outbound = {
@@ -107,7 +109,7 @@ export const PostTeamDsyncRolesRoles$inboundSchema: z.ZodType<
   PostTeamDsyncRolesRoles,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => PostTeamDsyncRolesRoles2$inboundSchema),
   PostTeamDsyncRolesRoles1$inboundSchema,
 ]);
@@ -121,7 +123,7 @@ export const PostTeamDsyncRolesRoles$outboundSchema: z.ZodType<
   PostTeamDsyncRolesRoles$Outbound,
   z.ZodTypeDef,
   PostTeamDsyncRolesRoles
-> = z.union([
+> = smartUnion([
   z.lazy(() => PostTeamDsyncRolesRoles2$outboundSchema),
   PostTeamDsyncRolesRoles1$outboundSchema,
 ]);
@@ -150,7 +152,7 @@ export const PostTeamDsyncRolesRequestBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   roles: z.record(
-    z.union([
+    smartUnion([
       z.lazy(() => PostTeamDsyncRolesRoles2$inboundSchema),
       PostTeamDsyncRolesRoles1$inboundSchema,
     ]),
@@ -168,7 +170,7 @@ export const PostTeamDsyncRolesRequestBody$outboundSchema: z.ZodType<
   PostTeamDsyncRolesRequestBody
 > = z.object({
   roles: z.record(
-    z.union([
+    smartUnion([
       z.lazy(() => PostTeamDsyncRolesRoles2$outboundSchema),
       PostTeamDsyncRolesRoles1$outboundSchema,
     ]),
@@ -200,10 +202,11 @@ export const PostTeamDsyncRolesRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamId: z.string(),
-  slug: z.string().optional(),
-  RequestBody: z.lazy(() => PostTeamDsyncRolesRequestBody$inboundSchema)
-    .optional(),
+  teamId: types.string(),
+  slug: types.optional(types.string()),
+  RequestBody: types.optional(
+    z.lazy(() => PostTeamDsyncRolesRequestBody$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",
@@ -255,7 +258,7 @@ export const PostTeamDsyncRolesResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  ok: z.boolean(),
+  ok: types.boolean(),
 });
 /** @internal */
 export type PostTeamDsyncRolesResponseBody$Outbound = {

@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -399,10 +400,10 @@ export const GetRollingReleaseRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  idOrName: z.string(),
-  state: State$inboundSchema.optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  idOrName: types.string(),
+  state: types.optional(State$inboundSchema),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type GetRollingReleaseRequest$Outbound = {
@@ -483,14 +484,14 @@ export const CurrentDeployment$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
-  url: z.string(),
+  id: types.string(),
+  name: types.string(),
+  url: types.string(),
   target: z.nullable(GetRollingReleaseTarget$inboundSchema).optional(),
-  source: GetRollingReleaseSource$inboundSchema.optional(),
-  createdAt: z.number(),
+  source: types.optional(GetRollingReleaseSource$inboundSchema),
+  createdAt: types.number(),
   readyState: GetRollingReleaseReadyState$inboundSchema,
-  readyStateAt: z.number().optional(),
+  readyStateAt: types.optional(types.number()),
 });
 /** @internal */
 export type CurrentDeployment$Outbound = {
@@ -572,15 +573,15 @@ export const CanaryDeployment$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
-  url: z.string(),
+  id: types.string(),
+  name: types.string(),
+  url: types.string(),
   target: z.nullable(GetRollingReleaseRollingReleaseTarget$inboundSchema)
     .optional(),
-  source: GetRollingReleaseRollingReleaseSource$inboundSchema.optional(),
-  createdAt: z.number(),
+  source: types.optional(GetRollingReleaseRollingReleaseSource$inboundSchema),
+  createdAt: types.number(),
   readyState: GetRollingReleaseRollingReleaseReadyState$inboundSchema,
-  readyStateAt: z.number().optional(),
+  readyStateAt: types.optional(types.number()),
 });
 /** @internal */
 export type CanaryDeployment$Outbound = {
@@ -643,12 +644,12 @@ export const GetRollingReleaseStages$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  index: z.number(),
-  isFinalStage: z.boolean(),
-  targetPercentage: z.number(),
-  requireApproval: z.boolean(),
-  duration: z.nullable(z.number()),
-  linearShift: z.boolean().optional(),
+  index: types.number(),
+  isFinalStage: types.boolean(),
+  targetPercentage: types.number(),
+  requireApproval: types.boolean(),
+  duration: types.nullable(types.number()),
+  linearShift: types.optional(types.boolean()),
 });
 /** @internal */
 export type GetRollingReleaseStages$Outbound = {
@@ -697,12 +698,12 @@ export const ActiveStage$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  index: z.number(),
-  isFinalStage: z.boolean(),
-  targetPercentage: z.number(),
-  requireApproval: z.boolean(),
-  duration: z.nullable(z.number()),
-  linearShift: z.boolean().optional(),
+  index: types.number(),
+  isFinalStage: types.boolean(),
+  targetPercentage: types.number(),
+  requireApproval: types.boolean(),
+  duration: types.nullable(types.number()),
+  linearShift: types.optional(types.boolean()),
 });
 /** @internal */
 export type ActiveStage$Outbound = {
@@ -747,12 +748,12 @@ export const NextStage$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  index: z.number(),
-  isFinalStage: z.boolean(),
-  targetPercentage: z.number(),
-  requireApproval: z.boolean(),
-  duration: z.nullable(z.number()),
-  linearShift: z.boolean().optional(),
+  index: types.number(),
+  isFinalStage: types.boolean(),
+  targetPercentage: types.number(),
+  requireApproval: types.boolean(),
+  duration: types.nullable(types.number()),
+  linearShift: types.optional(types.boolean()),
 });
 /** @internal */
 export type NextStage$Outbound = {
@@ -798,15 +799,19 @@ export const GetRollingReleaseRollingRelease$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   state: GetRollingReleaseState$inboundSchema,
-  currentDeployment: z.nullable(z.lazy(() => CurrentDeployment$inboundSchema)),
-  canaryDeployment: z.nullable(z.lazy(() => CanaryDeployment$inboundSchema)),
-  queuedDeploymentId: z.nullable(z.string()),
+  currentDeployment: types.nullable(
+    z.lazy(() => CurrentDeployment$inboundSchema),
+  ),
+  canaryDeployment: types.nullable(
+    z.lazy(() => CanaryDeployment$inboundSchema),
+  ),
+  queuedDeploymentId: types.nullable(types.string()),
   advancementType: AdvancementType$inboundSchema,
   stages: z.array(z.lazy(() => GetRollingReleaseStages$inboundSchema)),
-  activeStage: z.nullable(z.lazy(() => ActiveStage$inboundSchema)),
-  nextStage: z.nullable(z.lazy(() => NextStage$inboundSchema)),
-  startedAt: z.number(),
-  updatedAt: z.number(),
+  activeStage: types.nullable(z.lazy(() => ActiveStage$inboundSchema)),
+  nextStage: types.nullable(z.lazy(() => NextStage$inboundSchema)),
+  startedAt: types.number(),
+  updatedAt: types.number(),
 });
 /** @internal */
 export type GetRollingReleaseRollingRelease$Outbound = {
@@ -865,7 +870,7 @@ export const GetRollingReleaseResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  rollingRelease: z.nullable(
+  rollingRelease: types.nullable(
     z.lazy(() => GetRollingReleaseRollingRelease$inboundSchema),
   ),
 });

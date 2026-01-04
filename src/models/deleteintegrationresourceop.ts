@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteIntegrationResourceRequest = {
@@ -18,8 +19,8 @@ export const DeleteIntegrationResourceRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  integrationConfigurationId: z.string(),
-  resourceId: z.string(),
+  integrationConfigurationId: types.string(),
+  resourceId: types.string(),
 });
 /** @internal */
 export type DeleteIntegrationResourceRequest$Outbound = {

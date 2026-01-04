@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -65,8 +66,8 @@ export const DeleteTeamReasons$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  slug: z.string(),
-  description: z.string(),
+  slug: types.string(),
+  description: types.string(),
 });
 /** @internal */
 export type DeleteTeamReasons$Outbound = {
@@ -107,7 +108,9 @@ export const DeleteTeamRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  reasons: z.array(z.lazy(() => DeleteTeamReasons$inboundSchema)).optional(),
+  reasons: types.optional(
+    z.array(z.lazy(() => DeleteTeamReasons$inboundSchema)),
+  ),
 });
 /** @internal */
 export type DeleteTeamRequestBody$Outbound = {
@@ -146,9 +149,9 @@ export const DeleteTeamRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  newDefaultTeamId: z.string().optional(),
-  teamId: z.string(),
-  slug: z.string().optional(),
+  newDefaultTeamId: types.optional(types.string()),
+  teamId: types.string(),
+  slug: types.optional(types.string()),
   RequestBody: z.lazy(() => DeleteTeamRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
@@ -202,8 +205,8 @@ export const DeleteTeamResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  newDefaultTeamIdError: z.boolean().optional(),
+  id: types.string(),
+  newDefaultTeamIdError: types.optional(types.boolean()),
 });
 /** @internal */
 export type DeleteTeamResponseBody$Outbound = {

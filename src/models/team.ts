@@ -10,6 +10,8 @@ import {
 } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type Connect = {
@@ -512,7 +514,7 @@ export type Team = {
 /** @internal */
 export const Connect$inboundSchema: z.ZodType<Connect, z.ZodTypeDef, unknown> =
   z.object({
-    enabled: z.boolean().optional(),
+    enabled: types.optional(types.boolean()),
   });
 /** @internal */
 export type Connect$Outbound = {
@@ -547,12 +549,12 @@ export const Connection$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.string(),
-  status: z.string(),
-  state: z.string(),
-  connectedAt: z.number(),
-  lastReceivedWebhookEvent: z.number().optional(),
-  lastSyncedAt: z.number().optional(),
+  type: types.string(),
+  status: types.string(),
+  state: types.string(),
+  connectedAt: types.number(),
+  lastReceivedWebhookEvent: types.optional(types.number()),
+  lastSyncedAt: types.optional(types.number()),
 });
 /** @internal */
 export type Connection$Outbound = {
@@ -597,11 +599,11 @@ export const Directory$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.string(),
-  state: z.string(),
-  connectedAt: z.number(),
-  lastReceivedWebhookEvent: z.number().optional(),
-  lastSyncedAt: z.number().optional(),
+  type: types.string(),
+  state: types.string(),
+  connectedAt: types.number(),
+  lastReceivedWebhookEvent: types.optional(types.number()),
+  lastSyncedAt: types.optional(types.number()),
 });
 /** @internal */
 export type Directory$Outbound = {
@@ -657,7 +659,7 @@ export const Roles2$outboundSchema: z.ZodNativeEnum<typeof Roles2> =
 /** @internal */
 export const Roles1$inboundSchema: z.ZodType<Roles1, z.ZodTypeDef, unknown> = z
   .object({
-    accessGroupId: z.string(),
+    accessGroupId: types.string(),
   });
 /** @internal */
 export type Roles1$Outbound = {
@@ -687,8 +689,8 @@ export function roles1FromJSON(
 }
 
 /** @internal */
-export const Roles$inboundSchema: z.ZodType<Roles, z.ZodTypeDef, unknown> = z
-  .union([z.lazy(() => Roles1$inboundSchema), Roles2$inboundSchema]);
+export const Roles$inboundSchema: z.ZodType<Roles, z.ZodTypeDef, unknown> =
+  smartUnion([z.lazy(() => Roles1$inboundSchema), Roles2$inboundSchema]);
 /** @internal */
 export type Roles$Outbound = Roles1$Outbound | string;
 
@@ -697,7 +699,7 @@ export const Roles$outboundSchema: z.ZodType<
   Roles$Outbound,
   z.ZodTypeDef,
   Roles
-> = z.union([z.lazy(() => Roles1$outboundSchema), Roles2$outboundSchema]);
+> = smartUnion([z.lazy(() => Roles1$outboundSchema), Roles2$outboundSchema]);
 
 export function rolesToJSON(roles: Roles): string {
   return JSON.stringify(Roles$outboundSchema.parse(roles));
@@ -715,13 +717,16 @@ export function rolesFromJSON(
 /** @internal */
 export const Saml$inboundSchema: z.ZodType<Saml, z.ZodTypeDef, unknown> = z
   .object({
-    connection: z.lazy(() => Connection$inboundSchema).optional(),
-    directory: z.lazy(() => Directory$inboundSchema).optional(),
-    enforced: z.boolean(),
-    defaultRedirectUri: DefaultRedirectUri$inboundSchema.optional(),
-    roles: z.record(
-      z.union([z.lazy(() => Roles1$inboundSchema), Roles2$inboundSchema]),
-    ).optional(),
+    connection: types.optional(z.lazy(() => Connection$inboundSchema)),
+    directory: types.optional(z.lazy(() => Directory$inboundSchema)),
+    enforced: types.boolean(),
+    defaultRedirectUri: types.optional(DefaultRedirectUri$inboundSchema),
+    roles: types.optional(
+      z.record(smartUnion([
+        z.lazy(() => Roles1$inboundSchema),
+        Roles2$inboundSchema,
+      ])),
+    ),
   });
 /** @internal */
 export type Saml$Outbound = {
@@ -740,7 +745,7 @@ export const Saml$outboundSchema: z.ZodType<Saml$Outbound, z.ZodTypeDef, Saml> =
     enforced: z.boolean(),
     defaultRedirectUri: DefaultRedirectUri$outboundSchema.optional(),
     roles: z.record(
-      z.union([z.lazy(() => Roles1$outboundSchema), Roles2$outboundSchema]),
+      smartUnion([z.lazy(() => Roles1$outboundSchema), Roles2$outboundSchema]),
     ).optional(),
   });
 
@@ -781,8 +786,8 @@ export const DefaultRoles$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamRoles: z.array(TeamTeamRoles$inboundSchema).optional(),
-  teamPermissions: z.array(TeamTeamPermissions$inboundSchema).optional(),
+  teamRoles: types.optional(z.array(TeamTeamRoles$inboundSchema)),
+  teamPermissions: types.optional(z.array(TeamTeamPermissions$inboundSchema)),
 });
 /** @internal */
 export type DefaultRoles$Outbound = {
@@ -819,7 +824,7 @@ export const BuildEntitlements$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  enhancedBuilds: z.boolean().optional(),
+  enhancedBuilds: types.optional(types.boolean()),
 });
 /** @internal */
 export type BuildEntitlements$Outbound = {
@@ -858,14 +863,16 @@ export const ResourceConfig$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  concurrentBuilds: z.number().optional(),
-  elasticConcurrencyEnabled: z.boolean().optional(),
-  edgeConfigSize: z.number().optional(),
-  edgeConfigs: z.number().optional(),
-  kvDatabases: z.number().optional(),
-  blobStores: z.number().optional(),
-  postgresDatabases: z.number().optional(),
-  buildEntitlements: z.lazy(() => BuildEntitlements$inboundSchema).optional(),
+  concurrentBuilds: types.optional(types.number()),
+  elasticConcurrencyEnabled: types.optional(types.boolean()),
+  edgeConfigSize: types.optional(types.number()),
+  edgeConfigs: types.optional(types.number()),
+  kvDatabases: types.optional(types.number()),
+  blobStores: types.optional(types.number()),
+  postgresDatabases: types.optional(types.number()),
+  buildEntitlements: types.optional(
+    z.lazy(() => BuildEntitlements$inboundSchema),
+  ),
 });
 /** @internal */
 export type ResourceConfig$Outbound = {
@@ -913,7 +920,7 @@ export const DisableHardAutoBlocks$inboundSchema: z.ZodType<
   DisableHardAutoBlocks,
   z.ZodTypeDef,
   unknown
-> = z.union([z.number(), z.boolean()]);
+> = smartUnion([types.number(), types.boolean()]);
 /** @internal */
 export type DisableHardAutoBlocks$Outbound = number | boolean;
 
@@ -922,7 +929,7 @@ export const DisableHardAutoBlocks$outboundSchema: z.ZodType<
   DisableHardAutoBlocks$Outbound,
   z.ZodTypeDef,
   DisableHardAutoBlocks
-> = z.union([z.number(), z.boolean()]);
+> = smartUnion([z.number(), z.boolean()]);
 
 export function disableHardAutoBlocksToJSON(
   disableHardAutoBlocks: DisableHardAutoBlocks,
@@ -947,7 +954,7 @@ export const RemoteCaching$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  enabled: z.boolean().optional(),
+  enabled: types.optional(types.boolean()),
 });
 /** @internal */
 export type RemoteCaching$Outbound = {
@@ -982,7 +989,7 @@ export const PasswordProtection$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  deploymentType: z.string(),
+  deploymentType: types.string(),
 });
 /** @internal */
 export type PasswordProtection$Outbound = {
@@ -1021,7 +1028,7 @@ export const SsoProtection$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  deploymentType: z.string(),
+  deploymentType: types.string(),
 });
 /** @internal */
 export type SsoProtection$Outbound = {
@@ -1105,11 +1112,11 @@ export const DefaultExpirationSettings$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  expirationDays: z.number().optional(),
-  expirationDaysProduction: z.number().optional(),
-  expirationDaysCanceled: z.number().optional(),
-  expirationDaysErrored: z.number().optional(),
-  deploymentsToKeep: z.number().optional(),
+  expirationDays: types.optional(types.number()),
+  expirationDaysProduction: types.optional(types.number()),
+  expirationDaysCanceled: types.optional(types.number()),
+  expirationDaysErrored: types.optional(types.number()),
+  deploymentsToKeep: types.optional(types.number()),
 });
 /** @internal */
 export type DefaultExpirationSettings$Outbound = {
@@ -1183,8 +1190,8 @@ export const IpBuckets$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  bucket: z.string(),
-  supportUntil: z.number().optional(),
+  bucket: types.string(),
+  supportUntil: types.optional(types.number()),
 });
 /** @internal */
 export type IpBuckets$Outbound = {
@@ -1221,7 +1228,7 @@ export const Entitlements$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  entitlement: z.string(),
+  entitlement: types.string(),
 });
 /** @internal */
 export type Entitlements$Outbound = {
@@ -1287,7 +1294,7 @@ export const GitUserId$inboundSchema: z.ZodType<
   GitUserId,
   z.ZodTypeDef,
   unknown
-> = z.union([z.string(), z.number()]);
+> = smartUnion([types.string(), types.number()]);
 /** @internal */
 export type GitUserId$Outbound = string | number;
 
@@ -1296,7 +1303,7 @@ export const GitUserId$outboundSchema: z.ZodType<
   GitUserId$Outbound,
   z.ZodTypeDef,
   GitUserId
-> = z.union([z.string(), z.number()]);
+> = smartUnion([z.string(), z.number()]);
 
 export function gitUserIdToJSON(gitUserId: GitUserId): string {
   return JSON.stringify(GitUserId$outboundSchema.parse(gitUserId));
@@ -1318,16 +1325,16 @@ export const JoinedFrom$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   origin: Origin$inboundSchema,
-  commitId: z.string().optional(),
-  repoId: z.string().optional(),
-  repoPath: z.string().optional(),
-  gitUserId: z.union([z.string(), z.number()]).optional(),
-  gitUserLogin: z.string().optional(),
-  ssoUserId: z.string().optional(),
-  ssoConnectedAt: z.number().optional(),
-  idpUserId: z.string().optional(),
-  dsyncUserId: z.string().optional(),
-  dsyncConnectedAt: z.number().optional(),
+  commitId: types.optional(types.string()),
+  repoId: types.optional(types.string()),
+  repoPath: types.optional(types.string()),
+  gitUserId: types.optional(smartUnion([types.string(), types.number()])),
+  gitUserLogin: types.optional(types.string()),
+  ssoUserId: types.optional(types.string()),
+  ssoConnectedAt: types.optional(types.number()),
+  idpUserId: types.optional(types.string()),
+  dsyncUserId: types.optional(types.string()),
+  dsyncConnectedAt: types.optional(types.number()),
 });
 /** @internal */
 export type JoinedFrom$Outbound = {
@@ -1354,7 +1361,7 @@ export const JoinedFrom$outboundSchema: z.ZodType<
   commitId: z.string().optional(),
   repoId: z.string().optional(),
   repoPath: z.string().optional(),
-  gitUserId: z.union([z.string(), z.number()]).optional(),
+  gitUserId: smartUnion([z.string(), z.number()]).optional(),
   gitUserLogin: z.string().optional(),
   ssoUserId: z.string().optional(),
   ssoConnectedAt: z.number().optional(),
@@ -1382,18 +1389,21 @@ export const Membership$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  uid: z.string().optional(),
-  entitlements: z.array(z.lazy(() => Entitlements$inboundSchema)).optional(),
-  teamId: z.string().optional(),
-  confirmed: z.boolean(),
-  accessRequestedAt: z.number().optional(),
+  uid: types.optional(types.string()),
+  entitlements: types.optional(
+    z.array(z.lazy(() => Entitlements$inboundSchema)),
+  ),
+  teamId: types.optional(types.string()),
+  confirmed: types.boolean(),
+  accessRequestedAt: types.optional(types.number()),
   role: TeamRole$inboundSchema,
-  teamRoles: z.array(TeamMembershipTeamRoles$inboundSchema).optional(),
-  teamPermissions: z.array(TeamMembershipTeamPermissions$inboundSchema)
-    .optional(),
-  createdAt: z.number(),
-  created: z.number(),
-  joinedFrom: z.lazy(() => JoinedFrom$inboundSchema).optional(),
+  teamRoles: types.optional(z.array(TeamMembershipTeamRoles$inboundSchema)),
+  teamPermissions: types.optional(
+    z.array(TeamMembershipTeamPermissions$inboundSchema),
+  ),
+  createdAt: types.number(),
+  created: types.number(),
+  joinedFrom: types.optional(z.lazy(() => JoinedFrom$inboundSchema)),
 });
 /** @internal */
 export type Membership$Outbound = {
@@ -1447,26 +1457,30 @@ export function membershipFromJSON(
 export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> =
   collectExtraKeys$(
     z.object({
-      connect: z.lazy(() => Connect$inboundSchema).optional(),
-      creatorId: z.string(),
-      updatedAt: z.number(),
-      emailDomain: z.nullable(z.string()).optional(),
-      saml: z.lazy(() => Saml$inboundSchema).optional(),
-      inviteCode: z.string().optional(),
-      description: z.nullable(z.string()),
-      defaultRoles: z.lazy(() => DefaultRoles$inboundSchema).optional(),
-      stagingPrefix: z.string(),
-      resourceConfig: z.lazy(() => ResourceConfig$inboundSchema).optional(),
-      previewDeploymentSuffix: z.nullable(z.string()).optional(),
-      platform: z.boolean().optional(),
-      disableHardAutoBlocks: z.union([z.number(), z.boolean()]).optional(),
-      remoteCaching: z.lazy(() => RemoteCaching$inboundSchema).optional(),
-      defaultDeploymentProtection: z.lazy(() =>
-        DefaultDeploymentProtection$inboundSchema
-      ).optional(),
-      defaultExpirationSettings: z.lazy(() =>
-        DefaultExpirationSettings$inboundSchema
-      ).optional(),
+      connect: types.optional(z.lazy(() => Connect$inboundSchema)),
+      creatorId: types.string(),
+      updatedAt: types.number(),
+      emailDomain: z.nullable(types.string()).optional(),
+      saml: types.optional(z.lazy(() => Saml$inboundSchema)),
+      inviteCode: types.optional(types.string()),
+      description: types.nullable(types.string()),
+      defaultRoles: types.optional(z.lazy(() => DefaultRoles$inboundSchema)),
+      stagingPrefix: types.string(),
+      resourceConfig: types.optional(
+        z.lazy(() => ResourceConfig$inboundSchema),
+      ),
+      previewDeploymentSuffix: z.nullable(types.string()).optional(),
+      platform: types.optional(types.boolean()),
+      disableHardAutoBlocks: types.optional(
+        smartUnion([types.number(), types.boolean()]),
+      ),
+      remoteCaching: types.optional(z.lazy(() => RemoteCaching$inboundSchema)),
+      defaultDeploymentProtection: types.optional(
+        z.lazy(() => DefaultDeploymentProtection$inboundSchema),
+      ),
+      defaultExpirationSettings: types.optional(
+        z.lazy(() => DefaultExpirationSettings$inboundSchema),
+      ),
       enablePreviewFeedback: z.nullable(EnablePreviewFeedback$inboundSchema)
         .optional(),
       enableProductionFeedback: z.nullable(
@@ -1475,15 +1489,15 @@ export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> =
       sensitiveEnvironmentVariablePolicy: z.nullable(
         SensitiveEnvironmentVariablePolicy$inboundSchema,
       ).optional(),
-      hideIpAddresses: z.nullable(z.boolean()).optional(),
-      hideIpAddressesInLogDrains: z.nullable(z.boolean()).optional(),
-      ipBuckets: z.array(z.lazy(() => IpBuckets$inboundSchema)).optional(),
-      id: z.string(),
-      slug: z.string(),
-      name: z.nullable(z.string()),
-      avatar: z.nullable(z.string()),
+      hideIpAddresses: z.nullable(types.boolean()).optional(),
+      hideIpAddressesInLogDrains: z.nullable(types.boolean()).optional(),
+      ipBuckets: types.optional(z.array(z.lazy(() => IpBuckets$inboundSchema))),
+      id: types.string(),
+      slug: types.string(),
+      name: types.nullable(types.string()),
+      avatar: types.nullable(types.string()),
       membership: z.lazy(() => Membership$inboundSchema),
-      createdAt: z.number(),
+      createdAt: types.number(),
     }).catchall(z.any()),
     "additionalProperties",
     true,
@@ -1538,7 +1552,7 @@ export const Team$outboundSchema: z.ZodType<Team$Outbound, z.ZodTypeDef, Team> =
     resourceConfig: z.lazy(() => ResourceConfig$outboundSchema).optional(),
     previewDeploymentSuffix: z.nullable(z.string()).optional(),
     platform: z.boolean().optional(),
-    disableHardAutoBlocks: z.union([z.number(), z.boolean()]).optional(),
+    disableHardAutoBlocks: smartUnion([z.number(), z.boolean()]).optional(),
     remoteCaching: z.lazy(() => RemoteCaching$outboundSchema).optional(),
     defaultDeploymentProtection: z.lazy(() =>
       DefaultDeploymentProtection$outboundSchema

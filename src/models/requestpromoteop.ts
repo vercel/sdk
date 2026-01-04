@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type RequestPromoteRequest = {
@@ -26,10 +27,10 @@ export const RequestPromoteRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
-  deploymentId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  projectId: types.string(),
+  deploymentId: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type RequestPromoteRequest$Outbound = {

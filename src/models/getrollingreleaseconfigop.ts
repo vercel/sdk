@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetRollingReleaseConfigRequest = {
@@ -75,9 +76,9 @@ export const GetRollingReleaseConfigRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  idOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  idOrName: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type GetRollingReleaseConfigRequest$Outbound = {
@@ -122,10 +123,10 @@ export const GetRollingReleaseConfigStages$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  targetPercentage: z.number(),
-  requireApproval: z.boolean().optional(),
-  duration: z.number().optional(),
-  linearShift: z.boolean().optional(),
+  targetPercentage: types.number(),
+  requireApproval: types.optional(types.boolean()),
+  duration: types.optional(types.number()),
+  linearShift: types.optional(types.boolean()),
 });
 /** @internal */
 export type GetRollingReleaseConfigStages$Outbound = {
@@ -172,11 +173,11 @@ export const GetRollingReleaseConfigRollingRelease$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  target: z.string(),
+  target: types.string(),
   stages: z.nullable(
     z.array(z.lazy(() => GetRollingReleaseConfigStages$inboundSchema)),
   ).optional(),
-  canaryResponseHeader: z.boolean().optional(),
+  canaryResponseHeader: types.optional(types.boolean()),
 });
 /** @internal */
 export type GetRollingReleaseConfigRollingRelease$Outbound = {
@@ -224,7 +225,7 @@ export const GetRollingReleaseConfigResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  rollingRelease: z.nullable(
+  rollingRelease: types.nullable(
     z.lazy(() => GetRollingReleaseConfigRollingRelease$inboundSchema),
   ),
 });

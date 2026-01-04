@@ -11,9 +11,7 @@ let value: CreateIntegrationStoreDirectStore = {
   status: "limits-exceeded-suspended-store-count",
   externalResourceId: "<id>",
   product: {
-    value: {
-      atBRANDAt8897: {},
-    },
+    value: "<value>",
   },
   secrets: [
     {

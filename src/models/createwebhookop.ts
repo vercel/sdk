@@ -7,6 +7,7 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const Events = {
@@ -55,6 +56,7 @@ export const Events = {
     "integration-resource.project-disconnected",
   ProjectCreated: "project.created",
   ProjectRemoved: "project.removed",
+  ProjectRenamed: "project.renamed",
   ProjectDomainCreated: "project.domain.created",
   ProjectDomainUpdated: "project.domain.updated",
   ProjectDomainDeleted: "project.domain.deleted",
@@ -163,6 +165,7 @@ export const CreateWebhookEvents = {
     "integration-resource.project-disconnected",
   ProjectCreated: "project.created",
   ProjectRemoved: "project.removed",
+  ProjectRenamed: "project.renamed",
   ProjectDomainCreated: "project.domain.created",
   ProjectDomainUpdated: "project.domain.updated",
   ProjectDomainDeleted: "project.domain.deleted",
@@ -255,9 +258,9 @@ export const CreateWebhookRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  url: z.string(),
+  url: types.string(),
   events: z.array(Events$inboundSchema),
-  projectIds: z.array(z.string()).optional(),
+  projectIds: types.optional(z.array(types.string())),
 });
 /** @internal */
 export type CreateWebhookRequestBody$Outbound = {
@@ -300,8 +303,8 @@ export const CreateWebhookRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
   RequestBody: z.lazy(() => CreateWebhookRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
@@ -362,14 +365,14 @@ export const CreateWebhookResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  secret: z.string(),
+  secret: types.string(),
   events: z.array(CreateWebhookEvents$inboundSchema),
-  id: z.string(),
-  url: z.string(),
-  ownerId: z.string(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
-  projectIds: z.array(z.string()).optional(),
+  id: types.string(),
+  url: types.string(),
+  ownerId: types.string(),
+  createdAt: types.number(),
+  updatedAt: types.number(),
+  projectIds: types.optional(z.array(types.string())),
 });
 /** @internal */
 export type CreateWebhookResponseBody$Outbound = {

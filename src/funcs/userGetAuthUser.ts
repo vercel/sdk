@@ -24,6 +24,7 @@ import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import { VercelError } from "../models/vercelerror.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
+import * as types$ from "../types/primitives.js";
 
 /**
  * Get the User
@@ -36,7 +37,7 @@ export function userGetAuthUser(
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    GetAuthUserResponseBody,
+    GetAuthUserResponseBody | undefined,
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -59,7 +60,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      GetAuthUserResponseBody,
+      GetAuthUserResponseBody | undefined,
       | VercelError
       | ResponseValidationError
       | ConnectionError
@@ -123,7 +124,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    GetAuthUserResponseBody,
+    GetAuthUserResponseBody | undefined,
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -133,7 +134,8 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, GetAuthUserResponseBody$inboundSchema),
+    M.json(200, types$.optional(GetAuthUserResponseBody$inboundSchema)),
+    M.nil(302, types$.optional(GetAuthUserResponseBody$inboundSchema)),
     M.fail([400, 401, 403, 409, "4XX"]),
     M.fail("5XX"),
   )(response, req);

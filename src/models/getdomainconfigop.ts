@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -121,11 +122,11 @@ export const GetDomainConfigRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  domain: z.string(),
-  projectIdOrName: z.string().optional(),
-  strict: Strict$inboundSchema.optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  domain: types.string(),
+  projectIdOrName: types.optional(types.string()),
+  strict: types.optional(Strict$inboundSchema),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type GetDomainConfigRequest$Outbound = {
@@ -188,8 +189,8 @@ export const RecommendedIPv4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  rank: z.number(),
-  value: z.array(z.string()),
+  rank: types.number(),
+  value: z.array(types.string()),
 });
 /** @internal */
 export type RecommendedIPv4$Outbound = {
@@ -228,8 +229,8 @@ export const RecommendedCNAME$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  rank: z.number(),
-  value: z.string(),
+  rank: types.number(),
+  value: types.string(),
 });
 /** @internal */
 export type RecommendedCNAME$Outbound = {
@@ -270,11 +271,11 @@ export const GetDomainConfigResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  configuredBy: z.nullable(ConfiguredBy$inboundSchema),
+  configuredBy: types.nullable(ConfiguredBy$inboundSchema),
   acceptedChallenges: z.array(AcceptedChallenges$inboundSchema),
   recommendedIPv4: z.array(z.lazy(() => RecommendedIPv4$inboundSchema)),
   recommendedCNAME: z.array(z.lazy(() => RecommendedCNAME$inboundSchema)),
-  misconfigured: z.boolean(),
+  misconfigured: types.boolean(),
 });
 /** @internal */
 export type GetDomainConfigResponseBody$Outbound = {

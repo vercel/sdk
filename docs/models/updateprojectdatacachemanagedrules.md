@@ -5,23 +5,13 @@
 ```typescript
 import { UpdateProjectDataCacheManagedRules } from "@vercel/sdk/models/updateprojectdatacacheop.js";
 
-let value: UpdateProjectDataCacheManagedRules = {
-  botFilter: {
-    active: false,
-  },
-  aiBots: {
-    active: true,
-  },
-  owasp: {
-    active: false,
-  },
-};
+let value: UpdateProjectDataCacheManagedRules = {};
 ```
 
 ## Fields
 
 | Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `botFilter`                                                                      | [models.BotFilter](../models/botfilter.md)                                       | :heavy_check_mark:                                                               | N/A                                                                              |
-| `aiBots`                                                                         | [models.UpdateProjectDataCacheAiBots](../models/updateprojectdatacacheaibots.md) | :heavy_check_mark:                                                               | N/A                                                                              |
-| `owasp`                                                                          | [models.UpdateProjectDataCacheOwasp](../models/updateprojectdatacacheowasp.md)   | :heavy_check_mark:                                                               | N/A                                                                              |
+| `botFilter`                                                                      | [models.BotFilter](../models/botfilter.md)                                       | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `aiBots`                                                                         | [models.UpdateProjectDataCacheAiBots](../models/updateprojectdatacacheaibots.md) | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `owasp`                                                                          | [models.UpdateProjectDataCacheOwasp](../models/updateprojectdatacacheowasp.md)   | :heavy_minus_sign:                                                               | N/A                                                                              |

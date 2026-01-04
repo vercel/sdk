@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -68,12 +69,12 @@ export const FileTree$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
+  name: types.string(),
   type: Type$inboundSchema,
-  uid: z.string().optional(),
-  children: z.array(z.lazy(() => FileTree$inboundSchema)).optional(),
-  contentType: z.string().optional(),
-  mode: z.number(),
+  uid: types.optional(types.string()),
+  children: types.optional(z.array(z.lazy(() => FileTree$inboundSchema))),
+  contentType: types.optional(types.string()),
+  mode: types.number(),
 });
 /** @internal */
 export type FileTree$Outbound = {

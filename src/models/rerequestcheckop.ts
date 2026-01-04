@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type RerequestCheckRequest = {
@@ -38,11 +39,11 @@ export const RerequestCheckRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  deploymentId: z.string(),
-  checkId: z.string(),
-  autoUpdate: z.boolean().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  deploymentId: types.string(),
+  checkId: types.string(),
+  autoUpdate: types.optional(types.boolean()),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type RerequestCheckRequest$Outbound = {

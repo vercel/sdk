@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type ListAccessGroupProjectsRequest = {
@@ -70,11 +71,11 @@ export const ListAccessGroupProjectsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  idOrName: z.string(),
-  limit: z.number().int().optional(),
-  next: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  idOrName: types.string(),
+  limit: types.optional(types.number()),
+  next: types.optional(types.string()),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type ListAccessGroupProjectsRequest$Outbound = {
@@ -132,9 +133,9 @@ export const ListAccessGroupProjectsProject$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string().optional(),
-  framework: z.nullable(z.string()).optional(),
-  latestDeploymentId: z.string().optional(),
+  name: types.optional(types.string()),
+  framework: z.nullable(types.string()).optional(),
+  latestDeploymentId: types.optional(types.string()),
 });
 /** @internal */
 export type ListAccessGroupProjectsProject$Outbound = {
@@ -179,10 +180,10 @@ export const ListAccessGroupProjectsProjects$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
+  projectId: types.string(),
   role: ListAccessGroupProjectsRole$inboundSchema,
-  createdAt: z.string(),
-  updatedAt: z.string(),
+  createdAt: types.string(),
+  updatedAt: types.string(),
   project: z.lazy(() => ListAccessGroupProjectsProject$inboundSchema),
 });
 /** @internal */
@@ -232,8 +233,8 @@ export const ListAccessGroupProjectsPagination$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  count: z.number(),
-  next: z.nullable(z.string()),
+  count: types.number(),
+  next: types.nullable(types.string()),
 });
 /** @internal */
 export type ListAccessGroupProjectsPagination$Outbound = {

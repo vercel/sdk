@@ -12,21 +12,17 @@ const value: models.UiOptions1 = {
 };
 ```
 
-### `models.UiOptions2`
+### `string`
 
 ```typescript
-const value: models.UiOptions2 = {
-  atBRANDAt524028: {},
-};
+const value: string = "<value>";
 ```
 
 ### `models.UiOptions3`
 
 ```typescript
 const value: models.UiOptions3 = {
-  value: {
-    atBRANDAt524028: {},
-  },
+  value: "<value>",
 };
 ```
 

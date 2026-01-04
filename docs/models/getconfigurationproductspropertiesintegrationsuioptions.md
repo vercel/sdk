@@ -12,21 +12,17 @@ const value: models.GetConfigurationProductsUiOptions1 = {
 };
 ```
 
-### `models.GetConfigurationProductsUiOptions2`
+### `string`
 
 ```typescript
-const value: models.GetConfigurationProductsUiOptions2 = {
-  atBRANDAt524028: {},
-};
+const value: string = "<value>";
 ```
 
 ### `models.GetConfigurationProductsUiOptions3`
 
 ```typescript
 const value: models.GetConfigurationProductsUiOptions3 = {
-  value: {
-    atBRANDAt524028: {},
-  },
+  value: "<value>",
 };
 ```
 

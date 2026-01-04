@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type InvalidateBySrcImagesRequestBody = {
@@ -31,7 +32,7 @@ export const InvalidateBySrcImagesRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  srcImages: z.array(z.string()),
+  srcImages: z.array(types.string()),
 });
 /** @internal */
 export type InvalidateBySrcImagesRequestBody$Outbound = {
@@ -72,11 +73,12 @@ export const InvalidateBySrcImagesRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectIdOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  RequestBody: z.lazy(() => InvalidateBySrcImagesRequestBody$inboundSchema)
-    .optional(),
+  projectIdOrName: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
+  RequestBody: types.optional(
+    z.lazy(() => InvalidateBySrcImagesRequestBody$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",

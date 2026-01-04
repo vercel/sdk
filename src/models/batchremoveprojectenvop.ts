@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type BatchRemoveProjectEnvRequestBody = {
@@ -42,7 +43,7 @@ export const BatchRemoveProjectEnvRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  ids: z.array(z.string()),
+  ids: z.array(types.string()),
 });
 /** @internal */
 export type BatchRemoveProjectEnvRequestBody$Outbound = {
@@ -83,11 +84,12 @@ export const BatchRemoveProjectEnvRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  idOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  RequestBody: z.lazy(() => BatchRemoveProjectEnvRequestBody$inboundSchema)
-    .optional(),
+  idOrName: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
+  RequestBody: types.optional(
+    z.lazy(() => BatchRemoveProjectEnvRequestBody$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",
@@ -143,8 +145,8 @@ export const BatchRemoveProjectEnvResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  deleted: z.number(),
-  ids: z.array(z.string()),
+  deleted: types.number(),
+  ids: z.array(types.string()),
 });
 /** @internal */
 export type BatchRemoveProjectEnvResponseBody$Outbound = {

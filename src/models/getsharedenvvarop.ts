@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetSharedEnvVarRequest = {
@@ -131,9 +132,9 @@ export const GetSharedEnvVarRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  id: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type GetSharedEnvVarRequest$Outbound = {
@@ -194,25 +195,24 @@ export const GetSharedEnvVarResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  created: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  key: z.string().optional(),
-  ownerId: z.nullable(z.string()).optional(),
-  id: z.string().optional(),
-  createdBy: z.nullable(z.string()).optional(),
-  deletedBy: z.nullable(z.string()).optional(),
-  updatedBy: z.nullable(z.string()).optional(),
-  createdAt: z.number().optional(),
-  deletedAt: z.number().optional(),
-  updatedAt: z.number().optional(),
-  value: z.string().optional(),
-  projectId: z.array(z.string()).optional(),
-  type: GetSharedEnvVarType$inboundSchema.optional(),
-  target: z.array(GetSharedEnvVarTarget$inboundSchema).optional(),
-  applyToAllCustomEnvironments: z.boolean().optional(),
-  decrypted: z.boolean().optional(),
-  comment: z.string().optional(),
-  lastEditedByDisplayName: z.string().optional(),
+  created: types.optional(types.date()),
+  key: types.optional(types.string()),
+  ownerId: z.nullable(types.string()).optional(),
+  id: types.optional(types.string()),
+  createdBy: z.nullable(types.string()).optional(),
+  deletedBy: z.nullable(types.string()).optional(),
+  updatedBy: z.nullable(types.string()).optional(),
+  createdAt: types.optional(types.number()),
+  deletedAt: types.optional(types.number()),
+  updatedAt: types.optional(types.number()),
+  value: types.optional(types.string()),
+  projectId: types.optional(z.array(types.string())),
+  type: types.optional(GetSharedEnvVarType$inboundSchema),
+  target: types.optional(z.array(GetSharedEnvVarTarget$inboundSchema)),
+  applyToAllCustomEnvironments: types.optional(types.boolean()),
+  decrypted: types.optional(types.boolean()),
+  comment: types.optional(types.string()),
+  lastEditedByDisplayName: types.optional(types.string()),
 });
 /** @internal */
 export type GetSharedEnvVarResponseBody$Outbound = {

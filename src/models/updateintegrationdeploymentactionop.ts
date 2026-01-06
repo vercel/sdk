@@ -7,6 +7,7 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const UpdateIntegrationDeploymentActionStatus = {
@@ -57,8 +58,8 @@ export const UpdateIntegrationDeploymentActionStatus$outboundSchema:
 /** @internal */
 export const Secrets$inboundSchema: z.ZodType<Secrets, z.ZodTypeDef, unknown> =
   z.object({
-    name: z.string(),
-    value: z.string(),
+    name: types.string(),
+    value: types.string(),
   });
 /** @internal */
 export type Secrets$Outbound = {
@@ -95,7 +96,7 @@ export const Outcomes1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  kind: z.string(),
+  kind: types.string(),
   secrets: z.array(z.lazy(() => Secrets$inboundSchema)),
 });
 /** @internal */
@@ -163,10 +164,12 @@ export const UpdateIntegrationDeploymentActionRequestBody$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    status: UpdateIntegrationDeploymentActionStatus$inboundSchema.optional(),
-    statusText: z.string().optional(),
-    statusUrl: z.string().optional(),
-    outcomes: z.array(z.lazy(() => Outcomes1$inboundSchema)).optional(),
+    status: types.optional(
+      UpdateIntegrationDeploymentActionStatus$inboundSchema,
+    ),
+    statusText: types.optional(types.string()),
+    statusUrl: types.optional(types.string()),
+    outcomes: types.optional(z.array(z.lazy(() => Outcomes1$inboundSchema))),
   });
 /** @internal */
 export type UpdateIntegrationDeploymentActionRequestBody$Outbound = {
@@ -221,13 +224,13 @@ export const UpdateIntegrationDeploymentActionRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  deploymentId: z.string(),
-  integrationConfigurationId: z.string(),
-  resourceId: z.string(),
-  action: z.string(),
-  RequestBody: z.lazy(() =>
-    UpdateIntegrationDeploymentActionRequestBody$inboundSchema
-  ).optional(),
+  deploymentId: types.string(),
+  integrationConfigurationId: types.string(),
+  resourceId: types.string(),
+  action: types.string(),
+  RequestBody: types.optional(
+    z.lazy(() => UpdateIntegrationDeploymentActionRequestBody$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",

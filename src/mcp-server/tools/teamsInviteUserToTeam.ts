@@ -5,10 +5,11 @@
 import * as z from "zod/v3";
 import { teamsInviteUserToTeam } from "../../funcs/teamsInviteUserToTeam.js";
 import { InviteUserToTeamRequestBody$inboundSchema } from "../../models/inviteusertoteamop.js";
+import * as types from "../../types/primitives.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
 const args = {
-  request: z.array(InviteUserToTeamRequestBody$inboundSchema).optional(),
+  request: types.optional(z.array(InviteUserToTeamRequestBody$inboundSchema)),
 };
 
 export const tool$teamsInviteUserToTeam: ToolDefinition<typeof args> = {

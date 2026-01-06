@@ -6,6 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import {
   Pagination,
   Pagination$inboundSchema,
@@ -304,8 +306,8 @@ export type ListAliasesResponseBody = {
 };
 
 /** @internal */
-export const Domain$inboundSchema: z.ZodType<Domain, z.ZodTypeDef, unknown> = z
-  .union([z.array(z.string()), z.string()]);
+export const Domain$inboundSchema: z.ZodType<Domain, z.ZodTypeDef, unknown> =
+  smartUnion([z.array(types.string()), types.string()]);
 /** @internal */
 export type Domain$Outbound = Array<string> | string;
 
@@ -314,7 +316,7 @@ export const Domain$outboundSchema: z.ZodType<
   Domain$Outbound,
   z.ZodTypeDef,
   Domain
-> = z.union([z.array(z.string()), z.string()]);
+> = smartUnion([z.array(z.string()), z.string()]);
 
 export function domainToJSON(domain: Domain): string {
   return JSON.stringify(Domain$outboundSchema.parse(domain));
@@ -335,15 +337,15 @@ export const ListAliasesRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  domain: z.union([z.array(z.string()), z.string()]).optional(),
-  from: z.number().optional(),
-  limit: z.number().optional(),
-  projectId: z.string().optional(),
-  since: z.number().optional(),
-  until: z.number().optional(),
-  rollbackDeploymentId: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  domain: types.optional(smartUnion([z.array(types.string()), types.string()])),
+  from: types.optional(types.number()),
+  limit: types.optional(types.number()),
+  projectId: types.optional(types.string()),
+  since: types.optional(types.number()),
+  until: types.optional(types.number()),
+  rollbackDeploymentId: types.optional(types.string()),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type ListAliasesRequest$Outbound = {
@@ -364,7 +366,7 @@ export const ListAliasesRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListAliasesRequest
 > = z.object({
-  domain: z.union([z.array(z.string()), z.string()]).optional(),
+  domain: smartUnion([z.array(z.string()), z.string()]).optional(),
   from: z.number().optional(),
   limit: z.number().optional(),
   projectId: z.string().optional(),
@@ -398,9 +400,9 @@ export const ListAliasesCreator$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  uid: z.string(),
-  email: z.string(),
-  username: z.string(),
+  uid: types.string(),
+  email: types.string(),
+  username: types.string(),
 });
 /** @internal */
 export type ListAliasesCreator$Outbound = {
@@ -443,9 +445,9 @@ export const ListAliasesDeployment$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  url: z.string(),
-  meta: z.string().optional(),
+  id: types.string(),
+  url: types.string(),
+  meta: types.optional(types.string()),
 });
 /** @internal */
 export type ListAliasesDeployment$Outbound = {
@@ -488,10 +490,10 @@ export const ListAliasesProtectionBypass4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  createdAt: z.number(),
-  lastUpdatedAt: z.number(),
-  lastUpdatedBy: z.string(),
-  scope: z.literal("email_invite"),
+  createdAt: types.number(),
+  lastUpdatedAt: types.number(),
+  lastUpdatedBy: types.string(),
+  scope: types.literal("email_invite"),
 });
 /** @internal */
 export type ListAliasesProtectionBypass4$Outbound = {
@@ -538,9 +540,9 @@ export const ListAliasesProtectionBypass3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  createdAt: z.number(),
-  createdBy: z.string(),
-  scope: z.literal("alias-protection-override"),
+  createdAt: types.number(),
+  createdBy: types.string(),
+  scope: types.literal("alias-protection-override"),
 });
 /** @internal */
 export type ListAliasesProtectionBypass3$Outbound = {
@@ -594,11 +596,11 @@ export const ListAliasesProtectionBypass2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  createdAt: z.number(),
-  lastUpdatedAt: z.number(),
-  lastUpdatedBy: z.string(),
+  createdAt: types.number(),
+  lastUpdatedAt: types.number(),
+  lastUpdatedBy: types.string(),
   access: ListAliasesProtectionBypassAccess$inboundSchema,
-  scope: z.literal("user"),
+  scope: types.literal("user"),
 });
 /** @internal */
 export type ListAliasesProtectionBypass2$Outbound = {
@@ -647,10 +649,10 @@ export const ListAliasesProtectionBypass1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  createdAt: z.number(),
-  createdBy: z.string(),
-  scope: z.literal("shareable-link"),
-  expires: z.number().optional(),
+  createdAt: types.number(),
+  createdBy: types.string(),
+  scope: types.literal("shareable-link"),
+  expires: types.optional(types.number()),
 });
 /** @internal */
 export type ListAliasesProtectionBypass1$Outbound = {
@@ -746,7 +748,7 @@ export const ListAliasesDefaultApp$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
+  projectId: types.string(),
 });
 /** @internal */
 export type ListAliasesDefaultApp$Outbound = {
@@ -785,12 +787,12 @@ export const ListAliasesApplications3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  deploymentId: z.string().optional(),
-  branchDeploymentId: z.string().optional(),
-  fallbackDeploymentId: z.string().optional(),
-  fallbackHost: z.string().optional(),
-  branchAlias: z.string().optional(),
-  projectId: z.string(),
+  deploymentId: types.optional(types.string()),
+  branchDeploymentId: types.optional(types.string()),
+  fallbackDeploymentId: types.optional(types.string()),
+  fallbackHost: types.optional(types.string()),
+  branchAlias: types.optional(types.string()),
+  projectId: types.string(),
 });
 /** @internal */
 export type ListAliasesApplications3$Outbound = {
@@ -839,9 +841,9 @@ export const ListAliasesApplications2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  fallbackHost: z.string(),
-  branchAlias: z.string(),
-  projectId: z.string(),
+  fallbackHost: types.string(),
+  branchAlias: types.string(),
+  projectId: types.string(),
 });
 /** @internal */
 export type ListAliasesApplications2$Outbound = {
@@ -884,8 +886,8 @@ export const ListAliasesApplications1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  fallbackHost: z.string(),
-  projectId: z.string(),
+  fallbackHost: types.string(),
+  projectId: types.string(),
 });
 /** @internal */
 export type ListAliasesApplications1$Outbound = {
@@ -925,7 +927,7 @@ export const ListAliasesApplications$inboundSchema: z.ZodType<
   ListAliasesApplications,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.array(z.lazy(() => ListAliasesApplications1$inboundSchema)),
   z.array(z.lazy(() => ListAliasesApplications2$inboundSchema)),
   z.array(z.lazy(() => ListAliasesApplications3$inboundSchema)),
@@ -941,7 +943,7 @@ export const ListAliasesApplications$outboundSchema: z.ZodType<
   ListAliasesApplications$Outbound,
   z.ZodTypeDef,
   ListAliasesApplications
-> = z.union([
+> = smartUnion([
   z.array(z.lazy(() => ListAliasesApplications1$outboundSchema)),
   z.array(z.lazy(() => ListAliasesApplications2$outboundSchema)),
   z.array(z.lazy(() => ListAliasesApplications3$outboundSchema)),
@@ -971,7 +973,7 @@ export const ListAliasesMicrofrontends$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   defaultApp: z.lazy(() => ListAliasesDefaultApp$inboundSchema),
-  applications: z.union([
+  applications: smartUnion([
     z.array(z.lazy(() => ListAliasesApplications1$inboundSchema)),
     z.array(z.lazy(() => ListAliasesApplications2$inboundSchema)),
     z.array(z.lazy(() => ListAliasesApplications3$inboundSchema)),
@@ -993,7 +995,7 @@ export const ListAliasesMicrofrontends$outboundSchema: z.ZodType<
   ListAliasesMicrofrontends
 > = z.object({
   defaultApp: z.lazy(() => ListAliasesDefaultApp$outboundSchema),
-  applications: z.union([
+  applications: smartUnion([
     z.array(z.lazy(() => ListAliasesApplications1$outboundSchema)),
     z.array(z.lazy(() => ListAliasesApplications2$outboundSchema)),
     z.array(z.lazy(() => ListAliasesApplications3$outboundSchema)),
@@ -1023,28 +1025,31 @@ export const ListAliasesAliases$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  alias: z.string(),
-  created: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  createdAt: z.number().optional(),
-  creator: z.lazy(() => ListAliasesCreator$inboundSchema).optional(),
-  deletedAt: z.nullable(z.number()).optional(),
-  deployment: z.lazy(() => ListAliasesDeployment$inboundSchema).optional(),
-  deploymentId: z.nullable(z.string()),
-  projectId: z.nullable(z.string()),
-  redirect: z.nullable(z.string()).optional(),
-  redirectStatusCode: z.nullable(z.number()).optional(),
-  uid: z.string(),
-  updatedAt: z.number().optional(),
-  protectionBypass: z.record(
-    z.union([
+  alias: types.string(),
+  created: types.date(),
+  createdAt: types.optional(types.number()),
+  creator: types.optional(z.lazy(() => ListAliasesCreator$inboundSchema)),
+  deletedAt: z.nullable(types.number()).optional(),
+  deployment: types.optional(z.lazy(() => ListAliasesDeployment$inboundSchema)),
+  deploymentId: types.nullable(types.string()),
+  projectId: types.nullable(types.string()),
+  redirect: z.nullable(types.string()).optional(),
+  redirectStatusCode: z.nullable(types.number()).optional(),
+  uid: types.string(),
+  updatedAt: types.optional(types.number()),
+  protectionBypass: types.optional(
+    z.record(z.union([
       z.lazy(() => ListAliasesProtectionBypass1$inboundSchema),
-      z.lazy(() => ListAliasesProtectionBypass2$inboundSchema),
+      z.lazy(() =>
+        ListAliasesProtectionBypass2$inboundSchema
+      ),
       z.lazy(() => ListAliasesProtectionBypass3$inboundSchema),
       z.lazy(() => ListAliasesProtectionBypass4$inboundSchema),
-    ]),
-  ).optional(),
-  microfrontends: z.lazy(() => ListAliasesMicrofrontends$inboundSchema)
-    .optional(),
+    ])),
+  ),
+  microfrontends: types.optional(
+    z.lazy(() => ListAliasesMicrofrontends$inboundSchema),
+  ),
 });
 /** @internal */
 export type ListAliasesAliases$Outbound = {

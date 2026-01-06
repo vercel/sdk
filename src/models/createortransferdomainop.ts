@@ -7,6 +7,8 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -183,9 +185,9 @@ export const CreateOrTransferDomainRequestBody2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  method: z.string(),
-  token: z.string().optional(),
+  name: types.string(),
+  method: types.string(),
+  token: types.optional(types.string()),
 });
 /** @internal */
 export type CreateOrTransferDomainRequestBody2$Outbound = {
@@ -231,10 +233,10 @@ export const CreateOrTransferDomainRequestBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  cdnEnabled: z.boolean().optional(),
-  zone: z.boolean().optional(),
-  method: z.string().optional(),
+  name: types.string(),
+  cdnEnabled: types.optional(types.boolean()),
+  zone: types.optional(types.boolean()),
+  method: types.optional(types.string()),
 });
 /** @internal */
 export type CreateOrTransferDomainRequestBody1$Outbound = {
@@ -281,7 +283,7 @@ export const CreateOrTransferDomainRequestBody$inboundSchema: z.ZodType<
   CreateOrTransferDomainRequestBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => CreateOrTransferDomainRequestBody2$inboundSchema),
   z.lazy(() => CreateOrTransferDomainRequestBody1$inboundSchema),
 ]);
@@ -295,7 +297,7 @@ export const CreateOrTransferDomainRequestBody$outboundSchema: z.ZodType<
   CreateOrTransferDomainRequestBody$Outbound,
   z.ZodTypeDef,
   CreateOrTransferDomainRequestBody
-> = z.union([
+> = smartUnion([
   z.lazy(() => CreateOrTransferDomainRequestBody2$outboundSchema),
   z.lazy(() => CreateOrTransferDomainRequestBody1$outboundSchema),
 ]);
@@ -325,12 +327,14 @@ export const CreateOrTransferDomainRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  RequestBody: z.union([
-    z.lazy(() => CreateOrTransferDomainRequestBody2$inboundSchema),
-    z.lazy(() => CreateOrTransferDomainRequestBody1$inboundSchema),
-  ]).optional(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
+  RequestBody: types.optional(
+    smartUnion([
+      z.lazy(() => CreateOrTransferDomainRequestBody2$inboundSchema),
+      z.lazy(() => CreateOrTransferDomainRequestBody1$inboundSchema),
+    ]),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",
@@ -354,7 +358,7 @@ export const CreateOrTransferDomainRequest$outboundSchema: z.ZodType<
 > = z.object({
   teamId: z.string().optional(),
   slug: z.string().optional(),
-  requestBody: z.union([
+  requestBody: smartUnion([
     z.lazy(() => CreateOrTransferDomainRequestBody2$outboundSchema),
     z.lazy(() => CreateOrTransferDomainRequestBody1$outboundSchema),
   ]).optional(),
@@ -389,11 +393,11 @@ export const CreateOrTransferDomainCreator$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  username: z.string(),
-  email: z.string(),
-  customerId: z.nullable(z.string()).optional(),
-  isDomainReseller: z.boolean().optional(),
-  id: z.string(),
+  username: types.string(),
+  email: types.string(),
+  customerId: z.nullable(types.string()).optional(),
+  isDomainReseller: types.optional(types.boolean()),
+  id: types.string(),
 });
 /** @internal */
 export type CreateOrTransferDomainCreator$Outbound = {
@@ -460,24 +464,24 @@ export const CreateOrTransferDomainDomain$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  verified: z.boolean(),
-  nameservers: z.array(z.string()),
-  intendedNameservers: z.array(z.string()),
-  customNameservers: z.array(z.string()).optional(),
+  verified: types.boolean(),
+  nameservers: z.array(types.string()),
+  intendedNameservers: z.array(types.string()),
+  customNameservers: types.optional(z.array(types.string())),
   creator: z.lazy(() => CreateOrTransferDomainCreator$inboundSchema),
-  registrar: CreateOrTransferDomainRegistrar$inboundSchema.optional(),
-  name: z.string(),
-  boughtAt: z.nullable(z.number()),
-  createdAt: z.number(),
-  expiresAt: z.nullable(z.number()),
-  id: z.string(),
-  orderedAt: z.number().optional(),
-  renew: z.boolean().optional(),
+  registrar: types.optional(CreateOrTransferDomainRegistrar$inboundSchema),
+  name: types.string(),
+  boughtAt: types.nullable(types.number()),
+  createdAt: types.number(),
+  expiresAt: types.nullable(types.number()),
+  id: types.string(),
+  orderedAt: types.optional(types.number()),
+  renew: types.optional(types.boolean()),
   serviceType: CreateOrTransferDomainServiceType$inboundSchema,
-  transferredAt: z.nullable(z.number()).optional(),
-  transferStartedAt: z.number().optional(),
-  userId: z.string(),
-  teamId: z.nullable(z.string()),
+  transferredAt: z.nullable(types.number()).optional(),
+  transferStartedAt: types.optional(types.number()),
+  userId: types.string(),
+  teamId: types.nullable(types.string()),
 });
 /** @internal */
 export type CreateOrTransferDomainDomain$Outbound = {

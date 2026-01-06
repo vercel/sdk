@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type CreateEdgeConfigTokenRequestBody = {
@@ -36,7 +37,7 @@ export const CreateEdgeConfigTokenRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  label: z.string(),
+  label: types.string(),
 });
 /** @internal */
 export type CreateEdgeConfigTokenRequestBody$Outbound = {
@@ -77,9 +78,9 @@ export const CreateEdgeConfigTokenRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  edgeConfigId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  edgeConfigId: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
   RequestBody: z.lazy(() => CreateEdgeConfigTokenRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
@@ -135,8 +136,8 @@ export const CreateEdgeConfigTokenResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  token: z.string(),
-  id: z.string(),
+  token: types.string(),
+  id: types.string(),
 });
 /** @internal */
 export type CreateEdgeConfigTokenResponseBody$Outbound = {

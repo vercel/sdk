@@ -5,6 +5,8 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import {
   BadRequest,
   BadRequest$inboundSchema,
@@ -42,8 +44,8 @@ export const GetContactInfoSchemaRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  domain: z.string(),
-  teamId: z.string().optional(),
+  domain: types.string(),
+  teamId: types.optional(types.string()),
 });
 /** @internal */
 export type GetContactInfoSchemaRequest$Outbound = {
@@ -86,7 +88,7 @@ export const GetContactInfoSchemaDomainsRegistrarResponseBody$inboundSchema:
     GetContactInfoSchemaDomainsRegistrarResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.union([BadRequest$inboundSchema, HttpApiDecodeError$inboundSchema]);
+  > = smartUnion([BadRequest$inboundSchema, HttpApiDecodeError$inboundSchema]);
 /** @internal */
 export type GetContactInfoSchemaDomainsRegistrarResponseBody$Outbound =
   | BadRequest$Outbound
@@ -98,7 +100,10 @@ export const GetContactInfoSchemaDomainsRegistrarResponseBody$outboundSchema:
     GetContactInfoSchemaDomainsRegistrarResponseBody$Outbound,
     z.ZodTypeDef,
     unknown
-  > = z.union([BadRequest$outboundSchema, HttpApiDecodeError$outboundSchema]);
+  > = smartUnion([
+    BadRequest$outboundSchema,
+    HttpApiDecodeError$outboundSchema,
+  ]);
 
 export function getContactInfoSchemaDomainsRegistrarResponseBodyToJSON(
   getContactInfoSchemaDomainsRegistrarResponseBody:

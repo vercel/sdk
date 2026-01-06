@@ -6339,7 +6339,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"store":{"projectsMetadata":[{"id":"<id>","projectId":"<id>","name":"<value>","environments":[],"envVarPrefix":"<value>","environmentVariables":["<value 1>","<value 2>"]}],"usageQuotaExceeded":true,"status":"available","externalResourceId":"<id>","product":{"value":{"__@BRAND@8897":{}}},"secrets":[]}}
+              {"store":{"projectsMetadata":[{"id":"<id>","projectId":"<id>","name":"<value>","environments":[],"envVarPrefix":"<value>","environmentVariables":["<value 1>","<value 2>"]}],"usageQuotaExceeded":true,"status":"available","externalResourceId":"<id>","product":{"value":"{\"__@BRAND@8897\":{}}"},"secrets":[]}}
             type: simple
     x-speakeasy-test-group: integrations
     x-speakeasy-test-rebuild: true
@@ -7551,4 +7551,44 @@ workflows:
               {"version":{"id":"<id>","key":"<key>","lastModified":7506.95,"createdBy":"<value>"}}
             type: simple
     x-speakeasy-test-group: bulk-redirects
+    x-speakeasy-test-rebuild: true
+  - workflowId: gitNamespaces
+    steps:
+      - stepId: test
+        operationId: gitNamespaces
+        parameters:
+          - name: host
+            in: query
+            value: ghes-test.now.systems
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              [{"provider":"<value>","slug":"<value>","id":4172.87,"ownerType":"<value>"}]
+            type: simple
+    x-speakeasy-test-group: integrations
+    x-speakeasy-test-rebuild: true
+  - workflowId: searchRepo
+    steps:
+      - stepId: test
+        operationId: searchRepo
+        parameters:
+          - name: host
+            in: query
+            value: ghes-test.now.systems
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"gitAccount":{"provider":"bitbucket","namespaceId":"<id>"},"repos":[{"id":6849.08,"provider":"github-custom-host","url":"https://striking-amnesty.com/","name":"<value>","slug":"<value>","namespace":"<value>","owner":{"id":2912.2,"name":"<value>"},"ownerType":"user","private":true,"defaultBranch":"<value>","updatedAt":4535.98}]}
+            type: simple
+    x-speakeasy-test-group: integrations
     x-speakeasy-test-rebuild: true

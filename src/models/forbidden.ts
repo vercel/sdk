@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import * as types from "../types/primitives.js";
 import { VercelError } from "./vercelerror.js";
 
 export type ForbiddenData = {
@@ -38,9 +39,9 @@ export const Forbidden$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  status: z.number(),
-  code: z.literal("forbidden"),
-  message: z.string(),
+  status: types.number(),
+  code: types.literal("forbidden"),
+  message: types.string(),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),

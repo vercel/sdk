@@ -6,8 +6,8 @@
 import { AcceptedPolicies } from "@vercel/sdk/models/acceptprojecttransferrequestop.js";
 
 let value: AcceptedPolicies = {
-  eula: new Date("2024-03-17T08:03:51.448Z"),
-  privacy: new Date("2025-01-02T10:20:13.120Z"),
+  eula: new Date("2025-03-17T08:03:51.448Z"),
+  privacy: new Date("2026-01-02T10:20:13.120Z"),
 };
 ```
 

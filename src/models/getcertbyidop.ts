@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetCertByIdRequest = {
@@ -36,9 +37,9 @@ export const GetCertByIdRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  id: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type GetCertByIdRequest$Outbound = {
@@ -81,11 +82,11 @@ export const GetCertByIdResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  createdAt: z.number(),
-  expiresAt: z.number(),
-  autoRenew: z.boolean(),
-  cns: z.array(z.string()),
+  id: types.string(),
+  createdAt: types.number(),
+  expiresAt: types.number(),
+  autoRenew: types.boolean(),
+  cns: z.array(types.string()),
 });
 /** @internal */
 export type GetCertByIdResponseBody$Outbound = {

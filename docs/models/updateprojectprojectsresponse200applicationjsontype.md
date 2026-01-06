@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateProjectProjectsResponse200ApplicationJSONType } from "@vercel/sdk/models/updateprojectop.js";
 
-let value: UpdateProjectProjectsResponse200ApplicationJSONType = "promote";
+let value: UpdateProjectProjectsResponse200ApplicationJSONType = "flags-secret";
 ```
 
 ## Values
 
 ```typescript
-"promote" | "rollback"
+"flags-secret"
 ```

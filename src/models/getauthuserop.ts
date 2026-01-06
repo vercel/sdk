@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import { smartUnion } from "../types/smartUnion.js";
 import {
   AuthUser,
   AuthUser$inboundSchema,
@@ -33,7 +34,7 @@ export const GetAuthUserUser$inboundSchema: z.ZodType<
   GetAuthUserUser,
   z.ZodTypeDef,
   unknown
-> = z.union([AuthUser$inboundSchema, AuthUserLimited$inboundSchema]);
+> = smartUnion([AuthUser$inboundSchema, AuthUserLimited$inboundSchema]);
 /** @internal */
 export type GetAuthUserUser$Outbound =
   | AuthUser$Outbound
@@ -44,7 +45,7 @@ export const GetAuthUserUser$outboundSchema: z.ZodType<
   GetAuthUserUser$Outbound,
   z.ZodTypeDef,
   GetAuthUserUser
-> = z.union([AuthUser$outboundSchema, AuthUserLimited$outboundSchema]);
+> = smartUnion([AuthUser$outboundSchema, AuthUserLimited$outboundSchema]);
 
 export function getAuthUserUserToJSON(
   getAuthUserUser: GetAuthUserUser,
@@ -67,7 +68,7 @@ export const GetAuthUserResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  user: z.union([AuthUser$inboundSchema, AuthUserLimited$inboundSchema]),
+  user: smartUnion([AuthUser$inboundSchema, AuthUserLimited$inboundSchema]),
 });
 /** @internal */
 export type GetAuthUserResponseBody$Outbound = {
@@ -80,7 +81,7 @@ export const GetAuthUserResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAuthUserResponseBody
 > = z.object({
-  user: z.union([AuthUser$outboundSchema, AuthUserLimited$outboundSchema]),
+  user: smartUnion([AuthUser$outboundSchema, AuthUserLimited$outboundSchema]),
 });
 
 export function getAuthUserResponseBodyToJSON(

@@ -7,6 +7,7 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const RequestBodyAction = {
@@ -50,8 +51,8 @@ export const UpdateInvoiceRequestBody1$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   action: RequestBodyAction$inboundSchema,
-  reason: z.string(),
-  total: z.string(),
+  reason: types.string(),
+  total: types.string(),
 });
 /** @internal */
 export type UpdateInvoiceRequestBody1$Outbound = {
@@ -128,8 +129,8 @@ export const UpdateInvoiceRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  integrationConfigurationId: z.string(),
-  invoiceId: z.string(),
+  integrationConfigurationId: types.string(),
+  invoiceId: types.string(),
   RequestBody: z.lazy(() => UpdateInvoiceRequestBody1$inboundSchema),
 }).transform((v) => {
   return remap$(v, {

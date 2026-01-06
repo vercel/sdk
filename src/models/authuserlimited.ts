@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -47,13 +48,13 @@ export const AuthUserLimited$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  limited: z.boolean(),
-  id: z.string(),
-  email: z.string(),
-  name: z.nullable(z.string()),
-  username: z.string(),
-  avatar: z.nullable(z.string()),
-  defaultTeamId: z.nullable(z.string()),
+  limited: types.boolean(),
+  id: types.string(),
+  email: types.string(),
+  name: types.nullable(types.string()),
+  username: types.string(),
+  avatar: types.nullable(types.string()),
+  defaultTeamId: types.nullable(types.string()),
 });
 /** @internal */
 export type AuthUserLimited$Outbound = {

@@ -5,6 +5,8 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import {
   EdgeConfigItemValue,
   EdgeConfigItemValue$inboundSchema,
@@ -119,10 +121,10 @@ export const GetEdgeConfigBackupRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  edgeConfigId: z.string(),
-  edgeConfigBackupVersionId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  edgeConfigId: types.string(),
+  edgeConfigBackupVersionId: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type GetEdgeConfigBackupRequest$Outbound = {
@@ -167,11 +169,11 @@ export const ResponseBodyUser$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  username: z.string(),
-  email: z.string(),
-  name: z.string().optional(),
-  avatar: z.string().optional(),
+  id: types.string(),
+  username: types.string(),
+  email: types.string(),
+  name: types.optional(types.string()),
+  avatar: types.optional(types.string()),
 });
 /** @internal */
 export type ResponseBodyUser$Outbound = {
@@ -218,10 +220,10 @@ export const GetEdgeConfigBackupResponseBodyItems$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  updatedAt: z.number(),
-  value: z.nullable(EdgeConfigItemValue$inboundSchema),
-  description: z.string().optional(),
-  createdAt: z.number(),
+  updatedAt: types.number(),
+  value: types.nullable(EdgeConfigItemValue$inboundSchema),
+  description: types.optional(types.string()),
+  createdAt: types.number(),
 });
 /** @internal */
 export type GetEdgeConfigBackupResponseBodyItems$Outbound = {
@@ -269,12 +271,12 @@ export const ResponseBodyBackup$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  digest: z.string(),
+  digest: types.string(),
   items: z.record(
     z.lazy(() => GetEdgeConfigBackupResponseBodyItems$inboundSchema),
   ),
-  slug: z.string(),
-  updatedAt: z.number(),
+  slug: types.string(),
+  updatedAt: types.number(),
 });
 /** @internal */
 export type ResponseBodyBackup$Outbound = {
@@ -321,10 +323,10 @@ export const ResponseBodyMetadata$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  updatedAt: z.string().optional(),
-  updatedBy: z.string().optional(),
-  itemsCount: z.number().optional(),
-  itemsBytes: z.number().optional(),
+  updatedAt: types.optional(types.string()),
+  updatedBy: types.optional(types.string()),
+  itemsCount: types.optional(types.number()),
+  itemsBytes: types.optional(types.number()),
 });
 /** @internal */
 export type ResponseBodyMetadata$Outbound = {
@@ -370,8 +372,8 @@ export const GetEdgeConfigBackupResponseBody2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   user: z.lazy(() => ResponseBodyUser$inboundSchema),
-  id: z.string(),
-  lastModified: z.number(),
+  id: types.string(),
+  lastModified: types.number(),
   backup: z.lazy(() => ResponseBodyBackup$inboundSchema),
   metadata: z.lazy(() => ResponseBodyMetadata$inboundSchema),
 });
@@ -422,10 +424,10 @@ export const ResponseBodyItems$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  updatedAt: z.number(),
-  value: z.nullable(EdgeConfigItemValue$inboundSchema),
-  description: z.string().optional(),
-  createdAt: z.number(),
+  updatedAt: types.number(),
+  value: types.nullable(EdgeConfigItemValue$inboundSchema),
+  description: types.optional(types.string()),
+  createdAt: types.number(),
 });
 /** @internal */
 export type ResponseBodyItems$Outbound = {
@@ -467,10 +469,10 @@ export function responseBodyItemsFromJSON(
 /** @internal */
 export const Backup$inboundSchema: z.ZodType<Backup, z.ZodTypeDef, unknown> = z
   .object({
-    digest: z.string(),
+    digest: types.string(),
     items: z.record(z.lazy(() => ResponseBodyItems$inboundSchema)),
-    slug: z.string(),
-    updatedAt: z.number(),
+    slug: types.string(),
+    updatedAt: types.number(),
   });
 /** @internal */
 export type Backup$Outbound = {
@@ -511,10 +513,10 @@ export const GetEdgeConfigBackupResponseBodyMetadata$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  updatedAt: z.string().optional(),
-  updatedBy: z.string().optional(),
-  itemsCount: z.number().optional(),
-  itemsBytes: z.number().optional(),
+  updatedAt: types.optional(types.string()),
+  updatedBy: types.optional(types.string()),
+  itemsCount: types.optional(types.number()),
+  itemsBytes: types.optional(types.number()),
 });
 /** @internal */
 export type GetEdgeConfigBackupResponseBodyMetadata$Outbound = {
@@ -568,11 +570,11 @@ export const GetEdgeConfigBackupResponseBodyUser$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  username: z.string(),
-  email: z.string(),
-  name: z.string().optional(),
-  avatar: z.string().optional(),
+  id: types.string(),
+  username: types.string(),
+  email: types.string(),
+  name: types.optional(types.string()),
+  avatar: types.optional(types.string()),
 });
 /** @internal */
 export type GetEdgeConfigBackupResponseBodyUser$Outbound = {
@@ -622,12 +624,13 @@ export const GetEdgeConfigBackupResponseBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  lastModified: z.number(),
+  id: types.string(),
+  lastModified: types.number(),
   backup: z.lazy(() => Backup$inboundSchema),
   metadata: z.lazy(() => GetEdgeConfigBackupResponseBodyMetadata$inboundSchema),
-  user: z.lazy(() => GetEdgeConfigBackupResponseBodyUser$inboundSchema)
-    .optional(),
+  user: types.optional(
+    z.lazy(() => GetEdgeConfigBackupResponseBodyUser$inboundSchema),
+  ),
 });
 /** @internal */
 export type GetEdgeConfigBackupResponseBody1$Outbound = {
@@ -678,7 +681,7 @@ export const GetEdgeConfigBackupResponseBody$inboundSchema: z.ZodType<
   GetEdgeConfigBackupResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => GetEdgeConfigBackupResponseBody2$inboundSchema),
   z.lazy(() => GetEdgeConfigBackupResponseBody1$inboundSchema),
 ]);
@@ -692,7 +695,7 @@ export const GetEdgeConfigBackupResponseBody$outboundSchema: z.ZodType<
   GetEdgeConfigBackupResponseBody$Outbound,
   z.ZodTypeDef,
   GetEdgeConfigBackupResponseBody
-> = z.union([
+> = smartUnion([
   z.lazy(() => GetEdgeConfigBackupResponseBody2$outboundSchema),
   z.lazy(() => GetEdgeConfigBackupResponseBody1$outboundSchema),
 ]);

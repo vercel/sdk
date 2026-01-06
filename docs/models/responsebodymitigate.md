@@ -1,0 +1,21 @@
+# ResponseBodyMitigate
+
+## Example Usage
+
+```typescript
+import { ResponseBodyMitigate } from "@vercel/sdk/models/getprojectsop.js";
+
+let value: ResponseBodyMitigate = {
+  action: "rate_limit",
+  ruleId: "<id>",
+};
+```
+
+## Fields
+
+| Field                                                                                                                    | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `action`                                                                                                                 | [models.GetProjectsResponseBodyProjectsResponse200Action](../models/getprojectsresponsebodyprojectsresponse200action.md) | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |
+| `ruleId`                                                                                                                 | *string*                                                                                                                 | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |
+| `ttl`                                                                                                                    | *number*                                                                                                                 | :heavy_minus_sign:                                                                                                       | N/A                                                                                                                      |
+| `erl`                                                                                                                    | [models.Erl](../models/erl.md)                                                                                           | :heavy_minus_sign:                                                                                                       | N/A                                                                                                                      |

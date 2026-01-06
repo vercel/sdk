@@ -10,6 +10,7 @@ import {
 } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const Ownership = {
@@ -154,8 +155,8 @@ export const ImportResourceDetails$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  label: z.string(),
-  value: z.string().optional(),
+  label: types.string(),
+  value: types.optional(types.string()),
 });
 /** @internal */
 export type ImportResourceDetails$Outbound = {
@@ -196,8 +197,8 @@ export const ImportResourceHighlightedDetails$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  label: z.string(),
-  value: z.string().optional(),
+  label: types.string(),
+  value: types.optional(types.string()),
 });
 /** @internal */
 export type ImportResourceHighlightedDetails$Outbound = {
@@ -241,18 +242,19 @@ export const ImportResourceBillingPlan$inboundSchema: z.ZodType<
   unknown
 > = collectExtraKeys$(
   z.object({
-    id: z.string(),
+    id: types.string(),
     type: ImportResourceType$inboundSchema,
-    name: z.string(),
-    description: z.string().optional(),
-    paymentMethodRequired: z.boolean().optional(),
-    cost: z.string().optional(),
-    details: z.array(z.lazy(() => ImportResourceDetails$inboundSchema))
-      .optional(),
-    highlightedDetails: z.array(
-      z.lazy(() => ImportResourceHighlightedDetails$inboundSchema),
-    ).optional(),
-    effectiveDate: z.string().optional(),
+    name: types.string(),
+    description: types.optional(types.string()),
+    paymentMethodRequired: types.optional(types.boolean()),
+    cost: types.optional(types.string()),
+    details: types.optional(
+      z.array(z.lazy(() => ImportResourceDetails$inboundSchema)),
+    ),
+    highlightedDetails: types.optional(
+      z.array(z.lazy(() => ImportResourceHighlightedDetails$inboundSchema)),
+    ),
+    effectiveDate: types.optional(types.string()),
   }).catchall(z.any()),
   "additionalProperties",
   true,
@@ -334,9 +336,9 @@ export const ImportResourceNotification$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   level: ImportResourceLevel$inboundSchema,
-  title: z.string(),
-  message: z.string().optional(),
-  href: z.string().optional(),
+  title: types.string(),
+  message: types.optional(types.string()),
+  href: types.optional(types.string()),
 });
 /** @internal */
 export type ImportResourceNotification$Outbound = {
@@ -381,9 +383,9 @@ export const EnvironmentOverrides$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  development: z.string().optional(),
-  preview: z.string().optional(),
-  production: z.string().optional(),
+  development: types.optional(types.string()),
+  preview: types.optional(types.string()),
+  production: types.optional(types.string()),
 });
 /** @internal */
 export type EnvironmentOverrides$Outbound = {
@@ -426,11 +428,12 @@ export const ImportResourceSecrets$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  value: z.string(),
-  prefix: z.string().optional(),
-  environmentOverrides: z.lazy(() => EnvironmentOverrides$inboundSchema)
-    .optional(),
+  name: types.string(),
+  value: types.string(),
+  prefix: types.optional(types.string()),
+  environmentOverrides: types.optional(
+    z.lazy(() => EnvironmentOverrides$inboundSchema),
+  ),
 });
 /** @internal */
 export type ImportResourceSecrets$Outbound = {
@@ -476,17 +479,21 @@ export const ImportResourceRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  ownership: Ownership$inboundSchema.optional(),
-  productId: z.string(),
-  name: z.string(),
+  ownership: types.optional(Ownership$inboundSchema),
+  productId: types.string(),
+  name: types.string(),
   status: ImportResourceStatus$inboundSchema,
-  metadata: z.record(z.any()).optional(),
-  billingPlan: z.lazy(() => ImportResourceBillingPlan$inboundSchema).optional(),
-  notification: z.lazy(() => ImportResourceNotification$inboundSchema)
-    .optional(),
-  extras: z.record(z.any()).optional(),
-  secrets: z.array(z.lazy(() => ImportResourceSecrets$inboundSchema))
-    .optional(),
+  metadata: types.optional(z.record(z.any())),
+  billingPlan: types.optional(
+    z.lazy(() => ImportResourceBillingPlan$inboundSchema),
+  ),
+  notification: types.optional(
+    z.lazy(() => ImportResourceNotification$inboundSchema),
+  ),
+  extras: types.optional(z.record(z.any())),
+  secrets: types.optional(
+    z.array(z.lazy(() => ImportResourceSecrets$inboundSchema)),
+  ),
 });
 /** @internal */
 export type ImportResourceRequestBody$Outbound = {
@@ -544,9 +551,11 @@ export const ImportResourceRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  integrationConfigurationId: z.string(),
-  resourceId: z.string(),
-  RequestBody: z.lazy(() => ImportResourceRequestBody$inboundSchema).optional(),
+  integrationConfigurationId: types.string(),
+  resourceId: types.string(),
+  RequestBody: types.optional(
+    z.lazy(() => ImportResourceRequestBody$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",
@@ -598,7 +607,7 @@ export const ImportResourceResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
+  name: types.string(),
 });
 /** @internal */
 export type ImportResourceResponseBody$Outbound = {

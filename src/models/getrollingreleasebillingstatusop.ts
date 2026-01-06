@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetRollingReleaseBillingStatusRequest = {
@@ -65,9 +66,9 @@ export const GetRollingReleaseBillingStatusRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  idOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  idOrName: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type GetRollingReleaseBillingStatusRequest$Outbound = {
@@ -113,9 +114,9 @@ export const ResponseBody4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  availableSlots: z.number(),
-  reason: z.literal("available_slots"),
-  message: z.string(),
+  availableSlots: types.number(),
+  reason: types.literal("available_slots"),
+  message: types.string(),
 });
 /** @internal */
 export type ResponseBody4$Outbound = {
@@ -155,10 +156,10 @@ export const GetRollingReleaseBillingStatusResponseBody3$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    availableSlots: z.number(),
-    reason: z.literal("no_available_slots"),
-    message: z.string(),
-    enabledProjects: z.array(z.string()),
+    availableSlots: types.number(),
+    reason: types.literal("no_available_slots"),
+    message: types.string(),
+    enabledProjects: z.array(types.string()),
   });
 /** @internal */
 export type GetRollingReleaseBillingStatusResponseBody3$Outbound = {
@@ -224,8 +225,8 @@ export const GetRollingReleaseBillingStatusResponseBody2$inboundSchema:
     unknown
   > = z.object({
     availableSlots: AvailableSlots$inboundSchema,
-    reason: z.literal("unlimited_slots"),
-    message: z.string(),
+    reason: types.literal("unlimited_slots"),
+    message: types.string(),
   });
 /** @internal */
 export type GetRollingReleaseBillingStatusResponseBody2$Outbound = {
@@ -279,9 +280,9 @@ export const GetRollingReleaseBillingStatusResponseBody1$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    availableSlots: z.number(),
-    reason: z.literal("plan_not_supported"),
-    message: z.string(),
+    availableSlots: types.number(),
+    reason: types.literal("plan_not_supported"),
+    message: types.string(),
   });
 /** @internal */
 export type GetRollingReleaseBillingStatusResponseBody1$Outbound = {

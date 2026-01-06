@@ -7,6 +7,8 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type AddBypassIpRequestBody2 = {
@@ -110,12 +112,12 @@ export const AddBypassIpRequestBody2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  domain: z.string().optional(),
-  projectScope: z.boolean(),
-  sourceIp: z.string().optional(),
-  allSources: z.boolean().optional(),
-  ttl: z.number().optional(),
-  note: z.string().optional(),
+  domain: types.optional(types.string()),
+  projectScope: types.boolean(),
+  sourceIp: types.optional(types.string()),
+  allSources: types.optional(types.boolean()),
+  ttl: types.optional(types.number()),
+  note: types.optional(types.string()),
 });
 /** @internal */
 export type AddBypassIpRequestBody2$Outbound = {
@@ -164,12 +166,12 @@ export const AddBypassIpRequestBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  domain: z.string(),
-  projectScope: z.boolean().optional(),
-  sourceIp: z.string().optional(),
-  allSources: z.boolean().optional(),
-  ttl: z.number().optional(),
-  note: z.string().optional(),
+  domain: types.string(),
+  projectScope: types.optional(types.boolean()),
+  sourceIp: types.optional(types.string()),
+  allSources: types.optional(types.boolean()),
+  ttl: types.optional(types.number()),
+  note: types.optional(types.string()),
 });
 /** @internal */
 export type AddBypassIpRequestBody1$Outbound = {
@@ -217,7 +219,7 @@ export const AddBypassIpRequestBody$inboundSchema: z.ZodType<
   AddBypassIpRequestBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => AddBypassIpRequestBody1$inboundSchema),
   z.lazy(() => AddBypassIpRequestBody2$inboundSchema),
 ]);
@@ -231,7 +233,7 @@ export const AddBypassIpRequestBody$outboundSchema: z.ZodType<
   AddBypassIpRequestBody$Outbound,
   z.ZodTypeDef,
   AddBypassIpRequestBody
-> = z.union([
+> = smartUnion([
   z.lazy(() => AddBypassIpRequestBody1$outboundSchema),
   z.lazy(() => AddBypassIpRequestBody2$outboundSchema),
 ]);
@@ -259,13 +261,15 @@ export const AddBypassIpRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  RequestBody: z.union([
-    z.lazy(() => AddBypassIpRequestBody1$inboundSchema),
-    z.lazy(() => AddBypassIpRequestBody2$inboundSchema),
-  ]).optional(),
+  projectId: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
+  RequestBody: types.optional(
+    smartUnion([
+      z.lazy(() => AddBypassIpRequestBody1$inboundSchema),
+      z.lazy(() => AddBypassIpRequestBody2$inboundSchema),
+    ]),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",
@@ -291,7 +295,7 @@ export const AddBypassIpRequest$outboundSchema: z.ZodType<
   projectId: z.string(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
-  requestBody: z.union([
+  requestBody: smartUnion([
     z.lazy(() => AddBypassIpRequestBody1$outboundSchema),
     z.lazy(() => AddBypassIpRequestBody2$outboundSchema),
   ]).optional(),
@@ -333,20 +337,20 @@ export const AddBypassIpResponseBodyResult$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  OwnerId: z.string(),
-  Id: z.string(),
-  Domain: z.string(),
-  Ip: z.string(),
-  Action: ResponseBodyAction$inboundSchema.optional(),
-  ProjectId: z.string().optional(),
-  IsProjectRule: z.boolean().optional(),
-  Note: z.string().optional(),
-  CreatedAt: z.string(),
-  ActorId: z.string().optional(),
-  UpdatedAt: z.string(),
-  UpdatedAtHour: z.string(),
-  DeletedAt: z.string().optional(),
-  ExpiresAt: z.nullable(z.number()).optional(),
+  OwnerId: types.string(),
+  Id: types.string(),
+  Domain: types.string(),
+  Ip: types.string(),
+  Action: types.optional(ResponseBodyAction$inboundSchema),
+  ProjectId: types.optional(types.string()),
+  IsProjectRule: types.optional(types.boolean()),
+  Note: types.optional(types.string()),
+  CreatedAt: types.string(),
+  ActorId: types.optional(types.string()),
+  UpdatedAt: types.string(),
+  UpdatedAtHour: types.string(),
+  DeletedAt: types.optional(types.string()),
+  ExpiresAt: z.nullable(types.number()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "OwnerId": "ownerId",
@@ -447,9 +451,10 @@ export const AddBypassIpResponseBody2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  ok: z.boolean(),
-  result: z.array(z.lazy(() => AddBypassIpResponseBodyResult$inboundSchema))
-    .optional(),
+  ok: types.boolean(),
+  result: types.optional(
+    z.array(z.lazy(() => AddBypassIpResponseBodyResult$inboundSchema)),
+  ),
 });
 /** @internal */
 export type AddBypassIpResponseBody2$Outbound = {
@@ -491,13 +496,13 @@ export const ResponseBodyResult$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  OwnerId: z.string(),
-  Id: z.string(),
-  Domain: z.string(),
-  Ip: z.string().optional(),
-  ProjectId: z.string(),
-  Note: z.string(),
-  IsProjectRule: z.boolean(),
+  OwnerId: types.string(),
+  Id: types.string(),
+  Domain: types.string(),
+  Ip: types.optional(types.string()),
+  ProjectId: types.string(),
+  Note: types.string(),
+  IsProjectRule: types.boolean(),
 }).transform((v) => {
   return remap$(v, {
     "OwnerId": "ownerId",
@@ -568,7 +573,7 @@ export const AddBypassIpResponseBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  ok: z.boolean(),
+  ok: types.boolean(),
   result: z.array(z.lazy(() => ResponseBodyResult$inboundSchema)),
   pagination: z.nullable(z.any()).optional(),
 });
@@ -612,7 +617,7 @@ export const AddBypassIpResponseBody$inboundSchema: z.ZodType<
   AddBypassIpResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => AddBypassIpResponseBody1$inboundSchema),
   z.lazy(() => AddBypassIpResponseBody2$inboundSchema),
 ]);
@@ -626,7 +631,7 @@ export const AddBypassIpResponseBody$outboundSchema: z.ZodType<
   AddBypassIpResponseBody$Outbound,
   z.ZodTypeDef,
   AddBypassIpResponseBody
-> = z.union([
+> = smartUnion([
   z.lazy(() => AddBypassIpResponseBody1$outboundSchema),
   z.lazy(() => AddBypassIpResponseBody2$outboundSchema),
 ]);

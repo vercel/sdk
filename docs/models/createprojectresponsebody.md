@@ -18,29 +18,10 @@ let value: CreateProjectResponseBody = {
   },
   directoryListing: false,
   id: "<id>",
-  latestDeployments: [
-    {
-      id: "<id>",
-      createdAt: 1456.45,
-      createdIn: "<value>",
-      creator: null,
-      deploymentHostname: "<value>",
-      name: "<value>",
-      plan: "hobby",
-      previewCommentsEnabled: false,
-      private: true,
-      readyState: "INITIALIZING",
-      type: "LAMBDAS",
-      url: "https://hospitable-knitting.info",
-      userId: "<id>",
-    },
-  ],
   name: "<value>",
-  nodeVersion: "24.x",
+  nodeVersion: "22.x",
   resourceConfig: {
-    functionDefaultRegions: [
-      "<value 1>",
-    ],
+    functionDefaultRegions: [],
   },
   rollingRelease: {
     target: "production",
@@ -58,27 +39,6 @@ let value: CreateProjectResponseBody = {
     functionDefaultRegions: [
       "<value 1>",
     ],
-  },
-  targets: {
-    "key": {
-      id: "<id>",
-      createdAt: 8978.12,
-      createdIn: "<value>",
-      creator: {
-        email: "Stephen_Stamm@gmail.com",
-        uid: "<id>",
-        username: "Shad_Flatley74",
-      },
-      deploymentHostname: "<value>",
-      name: "<value>",
-      plan: "enterprise",
-      previewCommentsEnabled: false,
-      private: true,
-      readyState: "INITIALIZING",
-      type: "LAMBDAS",
-      url: "https://different-bourgeoisie.net/",
-      userId: "<id>",
-    },
   },
 };
 ```
@@ -168,4 +128,3 @@ let value: CreateProjectResponseBody = {
 | `internalRoutes`                                                                                                                                                                               | *models.CreateProjectInternalRoutes*[]                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
 | `hasDeployments`                                                                                                                                                                               | *boolean*                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
 | `dismissedToasts`                                                                                                                                                                              | [models.CreateProjectDismissedToasts](../models/createprojectdismissedtoasts.md)[]                                                                                                             | :heavy_minus_sign:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
-| `cveShield`                                                                                                                                                                                    | [models.CreateProjectCveShield](../models/createprojectcveshield.md)                                                                                                                           | :heavy_minus_sign:                                                                                                                                                                             | N/A                                                                                                                                                                                            |

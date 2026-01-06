@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetDomainAvailabilityRequest = {
@@ -25,8 +26,8 @@ export const GetDomainAvailabilityRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  domain: z.string(),
-  teamId: z.string().optional(),
+  domain: types.string(),
+  teamId: types.optional(types.string()),
 });
 /** @internal */
 export type GetDomainAvailabilityRequest$Outbound = {
@@ -69,7 +70,7 @@ export const GetDomainAvailabilityResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  available: z.boolean(),
+  available: types.boolean(),
 });
 /** @internal */
 export type GetDomainAvailabilityResponseBody$Outbound = {

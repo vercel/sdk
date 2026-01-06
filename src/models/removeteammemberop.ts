@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type RemoveTeamMemberRequest = {
@@ -35,9 +36,9 @@ export const RemoveTeamMemberRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  uid: z.string(),
-  newDefaultTeamId: z.string().optional(),
-  teamId: z.string(),
+  uid: types.string(),
+  newDefaultTeamId: types.optional(types.string()),
+  teamId: types.string(),
 });
 /** @internal */
 export type RemoveTeamMemberRequest$Outbound = {
@@ -80,7 +81,7 @@ export const RemoveTeamMemberResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
+  id: types.string(),
 });
 /** @internal */
 export type RemoveTeamMemberResponseBody$Outbound = {

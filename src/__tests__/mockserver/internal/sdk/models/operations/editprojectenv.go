@@ -297,11 +297,11 @@ func (u EditProjectEnvTargetUnion) MarshalJSON() ([]byte, error) {
 type EditProjectEnvResponseBodyType string
 
 const (
+	EditProjectEnvResponseBodyTypeSecret    EditProjectEnvResponseBodyType = "secret"
 	EditProjectEnvResponseBodyTypeSystem    EditProjectEnvResponseBodyType = "system"
 	EditProjectEnvResponseBodyTypeEncrypted EditProjectEnvResponseBodyType = "encrypted"
 	EditProjectEnvResponseBodyTypePlain     EditProjectEnvResponseBodyType = "plain"
 	EditProjectEnvResponseBodyTypeSensitive EditProjectEnvResponseBodyType = "sensitive"
-	EditProjectEnvResponseBodyTypeSecret    EditProjectEnvResponseBodyType = "secret"
 )
 
 func (e EditProjectEnvResponseBodyType) ToPointer() *EditProjectEnvResponseBodyType {
@@ -313,6 +313,8 @@ func (e *EditProjectEnvResponseBodyType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "secret":
+		fallthrough
 	case "system":
 		fallthrough
 	case "encrypted":
@@ -320,8 +322,6 @@ func (e *EditProjectEnvResponseBodyType) UnmarshalJSON(data []byte) error {
 	case "plain":
 		fallthrough
 	case "sensitive":
-		fallthrough
-	case "secret":
 		*e = EditProjectEnvResponseBodyType(v)
 		return nil
 	default:
@@ -1642,7 +1642,7 @@ func (o *EditProjectEnvInternalContentHint) GetEncryptedValue() string {
 type EditProjectEnvResponseBody1 struct {
 	Target *EditProjectEnvTargetUnion     `json:"target,omitempty"`
 	Type   EditProjectEnvResponseBodyType `json:"type"`
-	// This is used to identiy variables that have been migrated from type secret to sensitive.
+	// This is used to identify variables that have been migrated from type secret to sensitive.
 	SunsetSecretID    *string                         `json:"sunsetSecretId,omitempty"`
 	Decrypted         *bool                           `json:"decrypted,omitempty"`
 	Value             string                          `json:"value"`

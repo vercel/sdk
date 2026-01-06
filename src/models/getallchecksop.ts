@@ -7,6 +7,7 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetAllChecksRequest = {
@@ -143,9 +144,9 @@ export const GetAllChecksRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  deploymentId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  deploymentId: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type GetAllChecksRequest$Outbound = {
@@ -206,8 +207,8 @@ export const GetAllChecksFCP$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: z.nullable(z.number()),
-  previousValue: z.number().optional(),
+  value: types.nullable(types.number()),
+  previousValue: types.optional(types.number()),
   source: GetAllChecksSource$inboundSchema,
 });
 /** @internal */
@@ -258,8 +259,8 @@ export const GetAllChecksLCP$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: z.nullable(z.number()),
-  previousValue: z.number().optional(),
+  value: types.nullable(types.number()),
+  previousValue: types.optional(types.number()),
   source: GetAllChecksChecksSource$inboundSchema,
 });
 /** @internal */
@@ -310,8 +311,8 @@ export const GetAllChecksCLS$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: z.nullable(z.number()),
-  previousValue: z.number().optional(),
+  value: types.nullable(types.number()),
+  previousValue: types.optional(types.number()),
   source: GetAllChecksChecksResponseSource$inboundSchema,
 });
 /** @internal */
@@ -362,8 +363,8 @@ export const GetAllChecksTBT$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: z.nullable(z.number()),
-  previousValue: z.number().optional(),
+  value: types.nullable(types.number()),
+  previousValue: types.optional(types.number()),
   source: GetAllChecksChecksResponse200Source$inboundSchema,
 });
 /** @internal */
@@ -414,8 +415,8 @@ export const GetAllChecksVirtualExperienceScore$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: z.nullable(z.number()),
-  previousValue: z.number().optional(),
+  value: types.nullable(types.number()),
+  previousValue: types.optional(types.number()),
   source: GetAllChecksChecksResponse200ApplicationJSONSource$inboundSchema,
 });
 /** @internal */
@@ -466,9 +467,9 @@ export const GetAllChecksMetrics$inboundSchema: z.ZodType<
   LCP: z.lazy(() => GetAllChecksLCP$inboundSchema),
   CLS: z.lazy(() => GetAllChecksCLS$inboundSchema),
   TBT: z.lazy(() => GetAllChecksTBT$inboundSchema),
-  virtualExperienceScore: z.lazy(() =>
-    GetAllChecksVirtualExperienceScore$inboundSchema
-  ).optional(),
+  virtualExperienceScore: types.optional(
+    z.lazy(() => GetAllChecksVirtualExperienceScore$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "FCP": "fcp",
@@ -533,7 +534,7 @@ export const GetAllChecksOutput$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  metrics: z.lazy(() => GetAllChecksMetrics$inboundSchema).optional(),
+  metrics: types.optional(z.lazy(() => GetAllChecksMetrics$inboundSchema)),
 });
 /** @internal */
 export type GetAllChecksOutput$Outbound = {
@@ -578,20 +579,20 @@ export const GetAllChecksStatus$outboundSchema: z.ZodNativeEnum<
 /** @internal */
 export const Checks$inboundSchema: z.ZodType<Checks, z.ZodTypeDef, unknown> = z
   .object({
-    completedAt: z.number().optional(),
-    conclusion: GetAllChecksConclusion$inboundSchema.optional(),
-    createdAt: z.number(),
-    detailsUrl: z.string().optional(),
-    id: z.string(),
-    integrationId: z.string(),
-    name: z.string(),
-    output: z.lazy(() => GetAllChecksOutput$inboundSchema).optional(),
-    path: z.string().optional(),
-    rerequestable: z.boolean(),
-    blocking: z.boolean(),
-    startedAt: z.number().optional(),
+    completedAt: types.optional(types.number()),
+    conclusion: types.optional(GetAllChecksConclusion$inboundSchema),
+    createdAt: types.number(),
+    detailsUrl: types.optional(types.string()),
+    id: types.string(),
+    integrationId: types.string(),
+    name: types.string(),
+    output: types.optional(z.lazy(() => GetAllChecksOutput$inboundSchema)),
+    path: types.optional(types.string()),
+    rerequestable: types.boolean(),
+    blocking: types.boolean(),
+    startedAt: types.optional(types.number()),
     status: GetAllChecksStatus$inboundSchema,
-    updatedAt: z.number(),
+    updatedAt: types.number(),
   });
 /** @internal */
 export type Checks$Outbound = {

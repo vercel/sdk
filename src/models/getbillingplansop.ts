@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetBillingPlansRequest = {
@@ -81,13 +82,13 @@ export const GetBillingPlansRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  integrationIdOrSlug: z.string(),
-  integrationConfigurationId: z.string().optional(),
-  productIdOrSlug: z.string(),
-  metadata: z.string().optional(),
-  source: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  integrationIdOrSlug: types.string(),
+  integrationConfigurationId: types.optional(types.string()),
+  productIdOrSlug: types.string(),
+  metadata: types.optional(types.string()),
+  source: types.optional(types.string()),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type GetBillingPlansRequest$Outbound = {
@@ -156,8 +157,8 @@ export const GetBillingPlansDetails$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  label: z.string(),
-  value: z.string().optional(),
+  label: types.string(),
+  value: types.optional(types.string()),
 });
 /** @internal */
 export type GetBillingPlansDetails$Outbound = {
@@ -198,8 +199,8 @@ export const GetBillingPlansHighlightedDetails$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  label: z.string(),
-  value: z.string().optional(),
+  label: types.string(),
+  value: types.optional(types.string()),
 });
 /** @internal */
 export type GetBillingPlansHighlightedDetails$Outbound = {
@@ -239,8 +240,8 @@ export function getBillingPlansHighlightedDetailsFromJSON(
 /** @internal */
 export const Quote$inboundSchema: z.ZodType<Quote, z.ZodTypeDef, unknown> = z
   .object({
-    line: z.string(),
-    amount: z.string(),
+    line: types.string(),
+    amount: types.string(),
   });
 /** @internal */
 export type Quote$Outbound = {
@@ -275,25 +276,26 @@ export function quoteFromJSON(
 export const Plans$inboundSchema: z.ZodType<Plans, z.ZodTypeDef, unknown> = z
   .object({
     type: GetBillingPlansType$inboundSchema,
-    description: z.string(),
-    id: z.string(),
-    name: z.string(),
+    description: types.string(),
+    id: types.string(),
+    name: types.string(),
     scope: GetBillingPlansScope$inboundSchema,
-    paymentMethodRequired: z.boolean(),
-    preauthorizationAmount: z.number().optional(),
-    initialCharge: z.string().optional(),
-    minimumAmount: z.string().optional(),
-    maximumAmount: z.string().optional(),
-    maximumAmountAutoPurchasePerPeriod: z.string().optional(),
-    cost: z.string().optional(),
-    details: z.array(z.lazy(() => GetBillingPlansDetails$inboundSchema))
-      .optional(),
-    highlightedDetails: z.array(
-      z.lazy(() => GetBillingPlansHighlightedDetails$inboundSchema),
-    ).optional(),
-    quote: z.array(z.lazy(() => Quote$inboundSchema)).optional(),
-    effectiveDate: z.string().optional(),
-    disabled: z.boolean().optional(),
+    paymentMethodRequired: types.boolean(),
+    preauthorizationAmount: types.optional(types.number()),
+    initialCharge: types.optional(types.string()),
+    minimumAmount: types.optional(types.string()),
+    maximumAmount: types.optional(types.string()),
+    maximumAmountAutoPurchasePerPeriod: types.optional(types.string()),
+    cost: types.optional(types.string()),
+    details: types.optional(
+      z.array(z.lazy(() => GetBillingPlansDetails$inboundSchema)),
+    ),
+    highlightedDetails: types.optional(
+      z.array(z.lazy(() => GetBillingPlansHighlightedDetails$inboundSchema)),
+    ),
+    quote: types.optional(z.array(z.lazy(() => Quote$inboundSchema))),
+    effectiveDate: types.optional(types.string()),
+    disabled: types.optional(types.boolean()),
   });
 /** @internal */
 export type Plans$Outbound = {

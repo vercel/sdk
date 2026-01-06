@@ -7,6 +7,7 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -113,8 +114,8 @@ export const CreateAccessGroupProjects$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
-  role: z.nullable(CreateAccessGroupRole$inboundSchema),
+  projectId: types.string(),
+  role: types.nullable(CreateAccessGroupRole$inboundSchema),
 });
 /** @internal */
 export type CreateAccessGroupProjects$Outbound = {
@@ -155,10 +156,11 @@ export const CreateAccessGroupRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  projects: z.array(z.lazy(() => CreateAccessGroupProjects$inboundSchema))
-    .optional(),
-  membersToAdd: z.array(z.string()).optional(),
+  name: types.string(),
+  projects: types.optional(
+    z.array(z.lazy(() => CreateAccessGroupProjects$inboundSchema)),
+  ),
+  membersToAdd: types.optional(z.array(types.string())),
 });
 /** @internal */
 export type CreateAccessGroupRequestBody$Outbound = {
@@ -204,8 +206,8 @@ export const CreateAccessGroupRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
   RequestBody: z.lazy(() => CreateAccessGroupRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
@@ -267,15 +269,15 @@ export const CreateAccessGroupResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   entitlements: z.array(CreateAccessGroupEntitlements$inboundSchema),
-  membersCount: z.number(),
-  projectsCount: z.number(),
-  name: z.string(),
-  createdAt: z.string(),
-  teamId: z.string(),
-  updatedAt: z.string(),
-  accessGroupId: z.string(),
-  teamRoles: z.array(z.string()).optional(),
-  teamPermissions: z.array(z.string()).optional(),
+  membersCount: types.number(),
+  projectsCount: types.number(),
+  name: types.string(),
+  createdAt: types.string(),
+  teamId: types.string(),
+  updatedAt: types.string(),
+  accessGroupId: types.string(),
+  teamRoles: types.optional(z.array(types.string())),
+  teamPermissions: types.optional(z.array(types.string())),
 });
 /** @internal */
 export type CreateAccessGroupResponseBody$Outbound = {

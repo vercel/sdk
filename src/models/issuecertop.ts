@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type IssueCertRequestBody = {
@@ -41,7 +42,7 @@ export const IssueCertRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  cns: z.array(z.string()).optional(),
+  cns: types.optional(z.array(types.string())),
 });
 /** @internal */
 export type IssueCertRequestBody$Outbound = {
@@ -80,9 +81,9 @@ export const IssueCertRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  RequestBody: z.lazy(() => IssueCertRequestBody$inboundSchema).optional(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
+  RequestBody: types.optional(z.lazy(() => IssueCertRequestBody$inboundSchema)),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",
@@ -133,11 +134,11 @@ export const IssueCertResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  createdAt: z.number(),
-  expiresAt: z.number(),
-  autoRenew: z.boolean(),
-  cns: z.array(z.string()),
+  id: types.string(),
+  createdAt: types.number(),
+  expiresAt: types.number(),
+  autoRenew: types.boolean(),
+  cns: z.array(types.string()),
 });
 /** @internal */
 export type IssueCertResponseBody$Outbound = {

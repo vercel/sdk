@@ -447,6 +447,8 @@ type AuthToken struct {
 	ActiveAt float64 `json:"activeAt"`
 	// Timestamp (in milliseconds) of when the token was created.
 	CreatedAt float64 `json:"createdAt"`
+	// Timestamp (in milliseconds) of when the token was marked as leaked.
+	LeakedAt *float64 `json:"leakedAt,omitempty"`
 }
 
 func (o *AuthToken) GetID() string {
@@ -503,4 +505,11 @@ func (o *AuthToken) GetCreatedAt() float64 {
 		return 0.0
 	}
 	return o.CreatedAt
+}
+
+func (o *AuthToken) GetLeakedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.LeakedAt
 }

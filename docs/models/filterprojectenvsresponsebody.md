@@ -9,7 +9,7 @@ The list of environment variables for the given project
 
 ```typescript
 const value: models.FilterProjectEnvsResponseBody1 = {
-  type: "sensitive",
+  type: "plain",
   value: "<value>",
   key: "<key>",
 };

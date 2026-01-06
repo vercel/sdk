@@ -41,3 +41,11 @@ const value: models.GetOrder1DomainsRegistrar4 = {
 };
 ```
 
+### `models.GetOrder1DomainsRegistrar5`
+
+```typescript
+const value: models.GetOrder1DomainsRegistrar5 = {
+  code: "price-change",
+};
+```
+

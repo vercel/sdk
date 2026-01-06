@@ -7,6 +7,8 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type TestDrainSchemas = {
@@ -97,7 +99,7 @@ export const TestDrainSchemas$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  version: z.string(),
+  version: types.string(),
 });
 /** @internal */
 export type TestDrainSchemas$Outbound = {
@@ -136,7 +138,7 @@ export const TestDrainEndpoint1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  traces: z.string(),
+  traces: types.string(),
 });
 /** @internal */
 export type TestDrainEndpoint1$Outbound = {
@@ -217,11 +219,11 @@ export const TestDrainDelivery2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.string(),
+  type: types.string(),
   endpoint: z.lazy(() => TestDrainEndpoint1$inboundSchema),
   encoding: TestDrainDeliveryDrainsEncoding$inboundSchema,
-  headers: z.record(z.string()),
-  secret: z.string().optional(),
+  headers: z.record(types.string()),
+  secret: types.optional(types.string()),
 });
 /** @internal */
 export type TestDrainDelivery2$Outbound = {
@@ -286,12 +288,12 @@ export const TestDrainDelivery1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.string(),
-  endpoint: z.string(),
-  compression: TestDrainDeliveryCompression$inboundSchema.optional(),
+  type: types.string(),
+  endpoint: types.string(),
+  compression: types.optional(TestDrainDeliveryCompression$inboundSchema),
   encoding: TestDrainDeliveryEncoding$inboundSchema,
-  headers: z.record(z.string()),
-  secret: z.string().optional(),
+  headers: z.record(types.string()),
+  secret: types.optional(types.string()),
 });
 /** @internal */
 export type TestDrainDelivery1$Outbound = {
@@ -339,7 +341,7 @@ export const TestDrainDelivery$inboundSchema: z.ZodType<
   TestDrainDelivery,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => TestDrainDelivery1$inboundSchema),
   z.lazy(() => TestDrainDelivery2$inboundSchema),
 ]);
@@ -353,7 +355,7 @@ export const TestDrainDelivery$outboundSchema: z.ZodType<
   TestDrainDelivery$Outbound,
   z.ZodTypeDef,
   TestDrainDelivery
-> = z.union([
+> = smartUnion([
   z.lazy(() => TestDrainDelivery1$outboundSchema),
   z.lazy(() => TestDrainDelivery2$outboundSchema),
 ]);
@@ -382,7 +384,7 @@ export const TestDrainRequestBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   schemas: z.record(z.lazy(() => TestDrainSchemas$inboundSchema)),
-  delivery: z.union([
+  delivery: smartUnion([
     z.lazy(() => TestDrainDelivery1$inboundSchema),
     z.lazy(() => TestDrainDelivery2$inboundSchema),
   ]),
@@ -400,7 +402,7 @@ export const TestDrainRequestBody$outboundSchema: z.ZodType<
   TestDrainRequestBody
 > = z.object({
   schemas: z.record(z.lazy(() => TestDrainSchemas$outboundSchema)),
-  delivery: z.union([
+  delivery: smartUnion([
     z.lazy(() => TestDrainDelivery1$outboundSchema),
     z.lazy(() => TestDrainDelivery2$outboundSchema),
   ]),
@@ -429,9 +431,9 @@ export const TestDrainRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  RequestBody: z.lazy(() => TestDrainRequestBody$inboundSchema).optional(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
+  RequestBody: types.optional(z.lazy(() => TestDrainRequestBody$inboundSchema)),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",
@@ -482,9 +484,9 @@ export const TestDrainResponseBody2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  status: z.string(),
-  error: z.string(),
-  endpoint: z.string(),
+  status: types.string(),
+  error: types.string(),
+  endpoint: types.string(),
 });
 /** @internal */
 export type TestDrainResponseBody2$Outbound = {
@@ -559,7 +561,7 @@ export const TestDrainResponseBody$inboundSchema: z.ZodType<
   TestDrainResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => TestDrainResponseBody2$inboundSchema),
   z.lazy(() => TestDrainResponseBody1$inboundSchema),
 ]);
@@ -573,7 +575,7 @@ export const TestDrainResponseBody$outboundSchema: z.ZodType<
   TestDrainResponseBody$Outbound,
   z.ZodTypeDef,
   TestDrainResponseBody
-> = z.union([
+> = smartUnion([
   z.lazy(() => TestDrainResponseBody2$outboundSchema),
   z.lazy(() => TestDrainResponseBody1$outboundSchema),
 ]);

@@ -7,6 +7,8 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import {
   AdditionalContactInfoRequired,
   AdditionalContactInfoRequired$inboundSchema,
@@ -207,6 +209,9 @@ export type BuyDomainsLinks = {
  * Success
  */
 export type BuyDomainsResponseBody = {
+  /**
+   * A valid order ID
+   */
   orderId: string;
   links: { [k: string]: BuyDomainsLinks };
 };
@@ -214,10 +219,10 @@ export type BuyDomainsResponseBody = {
 /** @internal */
 export const Domains$inboundSchema: z.ZodType<Domains, z.ZodTypeDef, unknown> =
   z.object({
-    domainName: z.string(),
-    autoRenew: z.boolean(),
-    years: z.number(),
-    expectedPrice: z.number(),
+    domainName: types.string(),
+    autoRenew: types.boolean(),
+    years: types.number(),
+    expectedPrice: types.number(),
   });
 /** @internal */
 export type Domains$Outbound = {
@@ -291,19 +296,19 @@ export const BuyDomainsContactInformation$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  firstName: z.string(),
-  lastName: z.string(),
-  email: z.string(),
-  phone: z.string(),
-  address1: z.string(),
-  address2: z.string().optional(),
-  city: z.string(),
-  state: z.string(),
-  zip: z.string(),
-  country: z.string(),
-  companyName: z.string().optional(),
-  fax: z.string().optional(),
-  additional: z.lazy(() => BuyDomainsAdditional$inboundSchema).optional(),
+  firstName: types.string(),
+  lastName: types.string(),
+  email: types.string(),
+  phone: types.string(),
+  address1: types.string(),
+  address2: types.optional(types.string()),
+  city: types.string(),
+  state: types.string(),
+  zip: types.string(),
+  country: types.string(),
+  companyName: types.optional(types.string()),
+  fax: types.optional(types.string()),
+  additional: types.optional(z.lazy(() => BuyDomainsAdditional$inboundSchema)),
 });
 /** @internal */
 export type BuyDomainsContactInformation$Outbound = {
@@ -410,7 +415,7 @@ export const BuyDomainsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamId: z.string().optional(),
+  teamId: types.optional(types.string()),
   RequestBody: z.lazy(() => BuyDomainsRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
@@ -515,7 +520,7 @@ export const BuyDomainsDomainsRegistrarResponseBody$inboundSchema: z.ZodType<
   BuyDomainsDomainsRegistrarResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   DomainTooShort$inboundSchema,
   OrderTooExpensive$inboundSchema,
   TooManyDomains$inboundSchema,
@@ -545,7 +550,7 @@ export const BuyDomainsDomainsRegistrarResponseBody$outboundSchema: z.ZodType<
   BuyDomainsDomainsRegistrarResponseBody$Outbound,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   DomainTooShort$outboundSchema,
   OrderTooExpensive$outboundSchema,
   TooManyDomains$outboundSchema,
@@ -594,7 +599,7 @@ export const BuyDomainsLinks$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  href: z.string(),
+  href: types.string(),
   method: BuyDomainsMethod$inboundSchema,
 });
 /** @internal */
@@ -634,7 +639,7 @@ export const BuyDomainsResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  orderId: z.string(),
+  orderId: types.string(),
   _links: z.record(z.lazy(() => BuyDomainsLinks$inboundSchema)),
 }).transform((v) => {
   return remap$(v, {

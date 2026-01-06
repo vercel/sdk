@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteTeamInviteCodeRequest = {
@@ -34,8 +35,8 @@ export const DeleteTeamInviteCodeRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  inviteId: z.string(),
-  teamId: z.string(),
+  inviteId: types.string(),
+  teamId: types.string(),
 });
 /** @internal */
 export type DeleteTeamInviteCodeRequest$Outbound = {
@@ -78,7 +79,7 @@ export const DeleteTeamInviteCodeResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
+  id: types.string(),
 });
 /** @internal */
 export type DeleteTeamInviteCodeResponseBody$Outbound = {

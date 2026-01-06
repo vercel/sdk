@@ -5,6 +5,8 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import {
   DomainNotRegistered,
   DomainNotRegistered$inboundSchema,
@@ -63,8 +65,8 @@ export const GetDomainAuthCodeRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  domain: z.string(),
-  teamId: z.string().optional(),
+  domain: types.string(),
+  teamId: types.optional(types.string()),
 });
 /** @internal */
 export type GetDomainAuthCodeRequest$Outbound = {
@@ -161,7 +163,7 @@ export const GetDomainAuthCodeDomainsRegistrarResponseBody$inboundSchema:
     GetDomainAuthCodeDomainsRegistrarResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     DomainNotRegistered$inboundSchema,
     HttpApiDecodeError$inboundSchema,
   ]);
@@ -176,7 +178,7 @@ export const GetDomainAuthCodeDomainsRegistrarResponseBody$outboundSchema:
     GetDomainAuthCodeDomainsRegistrarResponseBody$Outbound,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     DomainNotRegistered$outboundSchema,
     HttpApiDecodeError$outboundSchema,
   ]);
@@ -213,7 +215,7 @@ export const GetDomainAuthCodeResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  authCode: z.string(),
+  authCode: types.string(),
 });
 /** @internal */
 export type GetDomainAuthCodeResponseBody$Outbound = {

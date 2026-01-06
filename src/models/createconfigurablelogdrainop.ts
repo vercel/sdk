@@ -7,6 +7,7 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -111,14 +112,14 @@ export const CreateConfigurableLogDrainRequestBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   deliveryFormat: DeliveryFormat$inboundSchema,
-  url: z.string(),
-  headers: z.record(z.string()).optional(),
-  projectIds: z.array(z.string()).optional(),
+  url: types.string(),
+  headers: types.optional(z.record(types.string())),
+  projectIds: types.optional(z.array(types.string())),
   sources: z.array(Sources$inboundSchema),
-  environments: z.array(Environments$inboundSchema).optional(),
-  secret: z.string().optional(),
-  samplingRate: z.number().optional(),
-  name: z.string().optional(),
+  environments: types.optional(z.array(Environments$inboundSchema)),
+  secret: types.optional(types.string()),
+  samplingRate: types.optional(types.number()),
+  name: types.optional(types.string()),
 });
 /** @internal */
 export type CreateConfigurableLogDrainRequestBody$Outbound = {
@@ -176,8 +177,8 @@ export const CreateConfigurableLogDrainRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
   RequestBody: z.lazy(() =>
     CreateConfigurableLogDrainRequestBody$inboundSchema
   ),

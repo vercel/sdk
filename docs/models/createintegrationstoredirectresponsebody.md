@@ -12,9 +12,7 @@ let value: CreateIntegrationStoreDirectResponseBody = {
     status: "uninstalled",
     externalResourceId: "<id>",
     product: {
-      value: {
-        atBRANDAt8897: {},
-      },
+      value: "<value>",
     },
     secrets: [],
   },

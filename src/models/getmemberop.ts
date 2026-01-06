@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetMemberRequest = {
@@ -41,8 +42,8 @@ export const GetMemberRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  integrationConfigurationId: z.string(),
-  memberId: z.string(),
+  integrationConfigurationId: types.string(),
+  memberId: types.string(),
 });
 /** @internal */
 export type GetMemberRequest$Outbound = {
@@ -92,10 +93,10 @@ export const GetMemberResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
+  id: types.string(),
   role: GetMemberRole$inboundSchema,
-  globalUserId: z.string().optional(),
-  userEmail: z.string().optional(),
+  globalUserId: types.optional(types.string()),
+  userEmail: types.optional(types.string()),
 });
 /** @internal */
 export type GetMemberResponseBody$Outbound = {

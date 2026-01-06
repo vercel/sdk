@@ -5,11 +5,11 @@
 ```typescript
 import { CreateProjectProjectsResponse200ApplicationJSONType } from "@vercel/sdk/models/createprojectop.js";
 
-let value: CreateProjectProjectsResponse200ApplicationJSONType = "LAMBDAS";
+let value: CreateProjectProjectsResponse200ApplicationJSONType = "promote";
 ```
 
 ## Values
 
 ```typescript
-"LAMBDAS"
+"promote" | "rollback"
 ```

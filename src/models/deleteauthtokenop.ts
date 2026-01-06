@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteAuthTokenRequest = {
@@ -30,7 +31,7 @@ export const DeleteAuthTokenRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  tokenId: z.string(),
+  tokenId: types.string(),
 });
 /** @internal */
 export type DeleteAuthTokenRequest$Outbound = {
@@ -69,7 +70,7 @@ export const DeleteAuthTokenResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  tokenId: z.string(),
+  tokenId: types.string(),
 });
 /** @internal */
 export type DeleteAuthTokenResponseBody$Outbound = {

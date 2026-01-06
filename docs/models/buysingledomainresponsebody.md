@@ -22,5 +22,5 @@ let value: BuySingleDomainResponseBody = {
 
 | Field                                              | Type                                               | Required                                           | Description                                        |
 | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `orderId`                                          | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
+| `orderId`                                          | *string*                                           | :heavy_check_mark:                                 | A valid order ID                                   |
 | `links`                                            | Record<string, [models.Links](../models/links.md)> | :heavy_check_mark:                                 | N/A                                                |

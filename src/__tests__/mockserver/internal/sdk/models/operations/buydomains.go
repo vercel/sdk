@@ -264,6 +264,7 @@ func (o *BuyDomainsLinks) GetMethod() BuyDomainsMethod {
 
 // BuyDomainsResponseBody - Success
 type BuyDomainsResponseBody struct {
+	// A valid order ID
 	OrderID string                     `json:"orderId"`
 	Links   map[string]BuyDomainsLinks `json:"_links"`
 }

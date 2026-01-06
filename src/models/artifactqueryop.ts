@@ -6,6 +6,8 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type ArtifactQueryRequestBody = {
@@ -49,7 +51,7 @@ export const ArtifactQueryRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  hashes: z.array(z.string()),
+  hashes: z.array(types.string()),
 });
 /** @internal */
 export type ArtifactQueryRequestBody$Outbound = {
@@ -88,8 +90,8 @@ export const ArtifactQueryRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
   RequestBody: z.lazy(() => ArtifactQueryRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
@@ -141,7 +143,7 @@ export const ResponseBodyError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  message: z.string(),
+  message: types.string(),
 });
 /** @internal */
 export type ResponseBodyError$Outbound = {
@@ -215,9 +217,9 @@ export const ResponseBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  size: z.number(),
-  taskDurationMs: z.number(),
-  tag: z.string().optional(),
+  size: types.number(),
+  taskDurationMs: types.number(),
+  tag: types.optional(types.string()),
 });
 /** @internal */
 export type ResponseBody1$Outbound = {
@@ -255,7 +257,7 @@ export const ResponseBody$inboundSchema: z.ZodType<
   ResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => ResponseBody1$inboundSchema),
   z.lazy(() => ResponseBody2$inboundSchema),
 ]);
@@ -269,7 +271,7 @@ export const ResponseBody$outboundSchema: z.ZodType<
   ResponseBody$Outbound,
   z.ZodTypeDef,
   ResponseBody
-> = z.union([
+> = smartUnion([
   z.lazy(() => ResponseBody1$outboundSchema),
   z.lazy(() => ResponseBody2$outboundSchema),
 ]);

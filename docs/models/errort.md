@@ -7,10 +7,7 @@
 
 ```typescript
 const value: models.Error1 = {
-  code: "price-mismatch",
-  details: {
-    expectedPrice: 6230.96,
-  },
+  code: "unexpected-error",
 };
 ```
 

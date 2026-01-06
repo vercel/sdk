@@ -11,5 +11,5 @@ let value: CreateProjectProjectsResponse200Action = "challenge";
 ## Values
 
 ```typescript
-"log" | "challenge" | "deny"
+"deny" | "challenge" | "log"
 ```

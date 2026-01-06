@@ -5,6 +5,8 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type FlagJSONValue =
@@ -19,12 +21,12 @@ export const FlagJSONValue$inboundSchema: z.ZodType<
   FlagJSONValue,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.array(z.nullable(z.lazy(() => FlagJSONValue$inboundSchema))),
-  z.record(z.nullable(z.lazy(() => FlagJSONValue$inboundSchema))),
+> = smartUnion([
+  types.string(),
+  types.number(),
+  types.boolean(),
+  z.array(types.nullable(z.lazy(() => FlagJSONValue$inboundSchema))),
+  z.record(types.nullable(z.lazy(() => FlagJSONValue$inboundSchema))),
 ]);
 /** @internal */
 export type FlagJSONValue$Outbound =
@@ -39,7 +41,7 @@ export const FlagJSONValue$outboundSchema: z.ZodType<
   FlagJSONValue$Outbound,
   z.ZodTypeDef,
   FlagJSONValue
-> = z.union([
+> = smartUnion([
   z.string(),
   z.number(),
   z.boolean(),

@@ -7,6 +7,7 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -84,8 +85,8 @@ export const UpdateTeamMemberProjects$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
-  role: z.nullable(UpdateTeamMemberRole$inboundSchema),
+  projectId: types.string(),
+  role: types.nullable(UpdateTeamMemberRole$inboundSchema),
 });
 /** @internal */
 export type UpdateTeamMemberProjects$Outbound = {
@@ -165,11 +166,14 @@ export const UpdateTeamMemberRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  confirmed: z.boolean().optional(),
-  role: z.string().default("MEMBER"),
-  projects: z.array(z.lazy(() => UpdateTeamMemberProjects$inboundSchema))
-    .optional(),
-  joinedFrom: z.lazy(() => UpdateTeamMemberJoinedFrom$inboundSchema).optional(),
+  confirmed: types.optional(types.boolean()),
+  role: types.string().default("MEMBER"),
+  projects: types.optional(
+    z.array(z.lazy(() => UpdateTeamMemberProjects$inboundSchema)),
+  ),
+  joinedFrom: types.optional(
+    z.lazy(() => UpdateTeamMemberJoinedFrom$inboundSchema),
+  ),
 });
 /** @internal */
 export type UpdateTeamMemberRequestBody$Outbound = {
@@ -218,8 +222,8 @@ export const UpdateTeamMemberRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  uid: z.string(),
-  teamId: z.string(),
+  uid: types.string(),
+  teamId: types.string(),
   RequestBody: z.lazy(() => UpdateTeamMemberRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
@@ -271,7 +275,7 @@ export const UpdateTeamMemberResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
+  id: types.string(),
 });
 /** @internal */
 export type UpdateTeamMemberResponseBody$Outbound = {

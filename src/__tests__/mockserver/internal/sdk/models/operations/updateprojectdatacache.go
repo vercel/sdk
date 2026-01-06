@@ -1955,7 +1955,7 @@ func (o *UpdateProjectDataCacheInternalContentHint) GetEncryptedValue() string {
 type UpdateProjectDataCacheEnv struct {
 	Target *UpdateProjectDataCacheTargetUnion `json:"target,omitempty"`
 	Type   UpdateProjectDataCacheEnvType      `json:"type"`
-	// This is used to identiy variables that have been migrated from type secret to sensitive.
+	// This is used to identify variables that have been migrated from type secret to sensitive.
 	SunsetSecretID    *string                                 `json:"sunsetSecretId,omitempty"`
 	Decrypted         *bool                                   `json:"decrypted,omitempty"`
 	Value             string                                  `json:"value"`
@@ -8421,28 +8421,28 @@ func (o *UpdateProjectDataCacheOwasp) GetAction() *UpdateProjectDataCacheOwaspAc
 }
 
 type UpdateProjectDataCacheManagedRules struct {
-	BotFilter UpdateProjectDataCacheBotFilter `json:"bot_filter"`
-	AiBots    UpdateProjectDataCacheAiBots    `json:"ai_bots"`
-	Owasp     UpdateProjectDataCacheOwasp     `json:"owasp"`
+	BotFilter *UpdateProjectDataCacheBotFilter `json:"bot_filter,omitempty"`
+	AiBots    *UpdateProjectDataCacheAiBots    `json:"ai_bots,omitempty"`
+	Owasp     *UpdateProjectDataCacheOwasp     `json:"owasp,omitempty"`
 }
 
-func (o *UpdateProjectDataCacheManagedRules) GetBotFilter() UpdateProjectDataCacheBotFilter {
+func (o *UpdateProjectDataCacheManagedRules) GetBotFilter() *UpdateProjectDataCacheBotFilter {
 	if o == nil {
-		return UpdateProjectDataCacheBotFilter{}
+		return nil
 	}
 	return o.BotFilter
 }
 
-func (o *UpdateProjectDataCacheManagedRules) GetAiBots() UpdateProjectDataCacheAiBots {
+func (o *UpdateProjectDataCacheManagedRules) GetAiBots() *UpdateProjectDataCacheAiBots {
 	if o == nil {
-		return UpdateProjectDataCacheAiBots{}
+		return nil
 	}
 	return o.AiBots
 }
 
-func (o *UpdateProjectDataCacheManagedRules) GetOwasp() UpdateProjectDataCacheOwasp {
+func (o *UpdateProjectDataCacheManagedRules) GetOwasp() *UpdateProjectDataCacheOwasp {
 	if o == nil {
-		return UpdateProjectDataCacheOwasp{}
+		return nil
 	}
 	return o.Owasp
 }
@@ -11042,36 +11042,6 @@ func (o *UpdateProjectDataCacheDismissedToast) GetValue() *UpdateProjectDataCach
 	return o.Value
 }
 
-type UpdateProjectDataCacheCveShield struct {
-	// True if the CVE Shield has been enabled. Otherwise false.
-	Enabled bool `json:"enabled"`
-	// CVE threshold. It can range between 1 and 10.
-	Threshold *float64 `json:"threshold,omitempty"`
-	// List of CVE that we want to protect against.
-	CveList []string `json:"cveList,omitempty"`
-}
-
-func (o *UpdateProjectDataCacheCveShield) GetEnabled() bool {
-	if o == nil {
-		return false
-	}
-	return o.Enabled
-}
-
-func (o *UpdateProjectDataCacheCveShield) GetThreshold() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Threshold
-}
-
-func (o *UpdateProjectDataCacheCveShield) GetCveList() []string {
-	if o == nil {
-		return nil
-	}
-	return o.CveList
-}
-
 type UpdateProjectDataCacheResponseBody struct {
 	AccountID                        string                                       `json:"accountId"`
 	Analytics                        *UpdateProjectDataCacheAnalytics             `json:"analytics,omitempty"`
@@ -11157,7 +11127,6 @@ type UpdateProjectDataCacheResponseBody struct {
 	InternalRoutes                       []UpdateProjectDataCacheInternalRouteUnion             `json:"internalRoutes,omitempty"`
 	HasDeployments                       *bool                                                  `json:"hasDeployments,omitempty"`
 	DismissedToasts                      []UpdateProjectDataCacheDismissedToast                 `json:"dismissedToasts,omitempty"`
-	CveShield                            *UpdateProjectDataCacheCveShield                       `json:"cveShield,omitempty"`
 }
 
 func (o *UpdateProjectDataCacheResponseBody) GetAccountID() string {
@@ -11760,13 +11729,6 @@ func (o *UpdateProjectDataCacheResponseBody) GetDismissedToasts() []UpdateProjec
 		return nil
 	}
 	return o.DismissedToasts
-}
-
-func (o *UpdateProjectDataCacheResponseBody) GetCveShield() *UpdateProjectDataCacheCveShield {
-	if o == nil {
-		return nil
-	}
-	return o.CveShield
 }
 
 type UpdateProjectDataCacheResponse struct {

@@ -41,3 +41,11 @@ const value: models.GetOrder14 = {
 };
 ```
 
+### `models.GetOrder15`
+
+```typescript
+const value: models.GetOrder15 = {
+  code: "price-change",
+};
+```
+

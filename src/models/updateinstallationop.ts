@@ -10,6 +10,8 @@ import {
 } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const UpdateInstallationStatus = {
@@ -109,8 +111,8 @@ export const UpdateInstallationType$outboundSchema: z.ZodNativeEnum<
 /** @internal */
 export const Details$inboundSchema: z.ZodType<Details, z.ZodTypeDef, unknown> =
   z.object({
-    label: z.string(),
-    value: z.string().optional(),
+    label: types.string(),
+    value: types.optional(types.string()),
   });
 /** @internal */
 export type Details$Outbound = {
@@ -147,8 +149,8 @@ export const HighlightedDetails$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  label: z.string(),
-  value: z.string().optional(),
+  label: types.string(),
+  value: types.optional(types.string()),
 });
 /** @internal */
 export type HighlightedDetails$Outbound = {
@@ -190,16 +192,17 @@ export const BillingPlan$inboundSchema: z.ZodType<
   unknown
 > = collectExtraKeys$(
   z.object({
-    id: z.string(),
+    id: types.string(),
     type: UpdateInstallationType$inboundSchema,
-    name: z.string(),
-    description: z.string().optional(),
-    paymentMethodRequired: z.boolean().optional(),
-    cost: z.string().optional(),
-    details: z.array(z.lazy(() => Details$inboundSchema)).optional(),
-    highlightedDetails: z.array(z.lazy(() => HighlightedDetails$inboundSchema))
-      .optional(),
-    effectiveDate: z.string().optional(),
+    name: types.string(),
+    description: types.optional(types.string()),
+    paymentMethodRequired: types.optional(types.boolean()),
+    cost: types.optional(types.string()),
+    details: types.optional(z.array(z.lazy(() => Details$inboundSchema))),
+    highlightedDetails: types.optional(
+      z.array(z.lazy(() => HighlightedDetails$inboundSchema)),
+    ),
+    effectiveDate: types.optional(types.string()),
   }).catchall(z.any()),
   "additionalProperties",
   true,
@@ -272,9 +275,9 @@ export const Notification1$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   level: Level$inboundSchema,
-  title: z.string(),
-  message: z.string().optional(),
-  href: z.string().optional(),
+  title: types.string(),
+  message: types.optional(types.string()),
+  href: types.optional(types.string()),
 });
 /** @internal */
 export type Notification1$Outbound = {
@@ -314,7 +317,7 @@ export const Notification$inboundSchema: z.ZodType<
   Notification,
   z.ZodTypeDef,
   unknown
-> = z.union([z.lazy(() => Notification1$inboundSchema), z.string()]);
+> = smartUnion([z.lazy(() => Notification1$inboundSchema), types.string()]);
 /** @internal */
 export type Notification$Outbound = Notification1$Outbound | string;
 
@@ -323,7 +326,7 @@ export const Notification$outboundSchema: z.ZodType<
   Notification$Outbound,
   z.ZodTypeDef,
   Notification
-> = z.union([z.lazy(() => Notification1$outboundSchema), z.string()]);
+> = smartUnion([z.lazy(() => Notification1$outboundSchema), z.string()]);
 
 export function notificationToJSON(notification: Notification): string {
   return JSON.stringify(Notification$outboundSchema.parse(notification));
@@ -344,11 +347,12 @@ export const UpdateInstallationRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  status: UpdateInstallationStatus$inboundSchema.optional(),
-  externalId: z.string().optional(),
-  billingPlan: z.lazy(() => BillingPlan$inboundSchema).optional(),
-  notification: z.union([z.lazy(() => Notification1$inboundSchema), z.string()])
-    .optional(),
+  status: types.optional(UpdateInstallationStatus$inboundSchema),
+  externalId: types.optional(types.string()),
+  billingPlan: types.optional(z.lazy(() => BillingPlan$inboundSchema)),
+  notification: types.optional(
+    smartUnion([z.lazy(() => Notification1$inboundSchema), types.string()]),
+  ),
 });
 /** @internal */
 export type UpdateInstallationRequestBody$Outbound = {
@@ -367,7 +371,7 @@ export const UpdateInstallationRequestBody$outboundSchema: z.ZodType<
   status: UpdateInstallationStatus$outboundSchema.optional(),
   externalId: z.string().optional(),
   billingPlan: z.lazy(() => BillingPlan$outboundSchema).optional(),
-  notification: z.union([
+  notification: smartUnion([
     z.lazy(() => Notification1$outboundSchema),
     z.string(),
   ]).optional(),
@@ -398,9 +402,10 @@ export const UpdateInstallationRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  integrationConfigurationId: z.string(),
-  RequestBody: z.lazy(() => UpdateInstallationRequestBody$inboundSchema)
-    .optional(),
+  integrationConfigurationId: types.string(),
+  RequestBody: types.optional(
+    z.lazy(() => UpdateInstallationRequestBody$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",

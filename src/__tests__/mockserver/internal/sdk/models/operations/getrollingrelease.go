@@ -111,8 +111,8 @@ func (e *GetRollingReleaseStateResponseBody) UnmarshalJSON(data []byte) error {
 type GetRollingReleaseCurrentDeploymentTarget string
 
 const (
-	GetRollingReleaseCurrentDeploymentTargetStaging    GetRollingReleaseCurrentDeploymentTarget = "staging"
 	GetRollingReleaseCurrentDeploymentTargetProduction GetRollingReleaseCurrentDeploymentTarget = "production"
+	GetRollingReleaseCurrentDeploymentTargetStaging    GetRollingReleaseCurrentDeploymentTarget = "staging"
 )
 
 func (e GetRollingReleaseCurrentDeploymentTarget) ToPointer() *GetRollingReleaseCurrentDeploymentTarget {
@@ -124,13 +124,52 @@ func (e *GetRollingReleaseCurrentDeploymentTarget) UnmarshalJSON(data []byte) er
 		return err
 	}
 	switch v {
-	case "staging":
-		fallthrough
 	case "production":
+		fallthrough
+	case "staging":
 		*e = GetRollingReleaseCurrentDeploymentTarget(v)
 		return nil
 	default:
 		return fmt.Errorf("invalid value for GetRollingReleaseCurrentDeploymentTarget: %v", v)
+	}
+}
+
+// GetRollingReleaseCurrentDeploymentReadyState - The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+type GetRollingReleaseCurrentDeploymentReadyState string
+
+const (
+	GetRollingReleaseCurrentDeploymentReadyStateBuilding     GetRollingReleaseCurrentDeploymentReadyState = "BUILDING"
+	GetRollingReleaseCurrentDeploymentReadyStateError        GetRollingReleaseCurrentDeploymentReadyState = "ERROR"
+	GetRollingReleaseCurrentDeploymentReadyStateInitializing GetRollingReleaseCurrentDeploymentReadyState = "INITIALIZING"
+	GetRollingReleaseCurrentDeploymentReadyStateQueued       GetRollingReleaseCurrentDeploymentReadyState = "QUEUED"
+	GetRollingReleaseCurrentDeploymentReadyStateReady        GetRollingReleaseCurrentDeploymentReadyState = "READY"
+	GetRollingReleaseCurrentDeploymentReadyStateCanceled     GetRollingReleaseCurrentDeploymentReadyState = "CANCELED"
+)
+
+func (e GetRollingReleaseCurrentDeploymentReadyState) ToPointer() *GetRollingReleaseCurrentDeploymentReadyState {
+	return &e
+}
+func (e *GetRollingReleaseCurrentDeploymentReadyState) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "BUILDING":
+		fallthrough
+	case "ERROR":
+		fallthrough
+	case "INITIALIZING":
+		fallthrough
+	case "QUEUED":
+		fallthrough
+	case "READY":
+		fallthrough
+	case "CANCELED":
+		*e = GetRollingReleaseCurrentDeploymentReadyState(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetRollingReleaseCurrentDeploymentReadyState: %v", v)
 	}
 }
 
@@ -179,69 +218,23 @@ func (e *GetRollingReleaseCurrentDeploymentSource) UnmarshalJSON(data []byte) er
 	}
 }
 
-// GetRollingReleaseCurrentDeploymentReadyState - The state of the deployment depending on the process of deploying, or if it is ready or in an error state
-type GetRollingReleaseCurrentDeploymentReadyState string
-
-const (
-	GetRollingReleaseCurrentDeploymentReadyStateBuilding     GetRollingReleaseCurrentDeploymentReadyState = "BUILDING"
-	GetRollingReleaseCurrentDeploymentReadyStateError        GetRollingReleaseCurrentDeploymentReadyState = "ERROR"
-	GetRollingReleaseCurrentDeploymentReadyStateInitializing GetRollingReleaseCurrentDeploymentReadyState = "INITIALIZING"
-	GetRollingReleaseCurrentDeploymentReadyStateQueued       GetRollingReleaseCurrentDeploymentReadyState = "QUEUED"
-	GetRollingReleaseCurrentDeploymentReadyStateReady        GetRollingReleaseCurrentDeploymentReadyState = "READY"
-	GetRollingReleaseCurrentDeploymentReadyStateCanceled     GetRollingReleaseCurrentDeploymentReadyState = "CANCELED"
-)
-
-func (e GetRollingReleaseCurrentDeploymentReadyState) ToPointer() *GetRollingReleaseCurrentDeploymentReadyState {
-	return &e
-}
-func (e *GetRollingReleaseCurrentDeploymentReadyState) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "BUILDING":
-		fallthrough
-	case "ERROR":
-		fallthrough
-	case "INITIALIZING":
-		fallthrough
-	case "QUEUED":
-		fallthrough
-	case "READY":
-		fallthrough
-	case "CANCELED":
-		*e = GetRollingReleaseCurrentDeploymentReadyState(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetRollingReleaseCurrentDeploymentReadyState: %v", v)
-	}
-}
-
 // GetRollingReleaseCurrentDeployment - The current deployment receiving production traffic
 type GetRollingReleaseCurrentDeployment struct {
-	// A string holding the unique ID of the deployment
-	ID string `json:"id"`
 	// The name of the project associated with the deployment at the time that the deployment was created
 	Name string `json:"name"`
-	// A string with the unique URL of the deployment
-	URL string `json:"url"`
-	// If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
-	Target *GetRollingReleaseCurrentDeploymentTarget `json:"target,omitempty"`
-	// Where was the deployment created from
-	Source *GetRollingReleaseCurrentDeploymentSource `json:"source,omitempty"`
 	// A number containing the date when the deployment was created in milliseconds
 	CreatedAt float64 `json:"createdAt"`
+	// A string holding the unique ID of the deployment
+	ID string `json:"id"`
+	// If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+	Target *GetRollingReleaseCurrentDeploymentTarget `json:"target,omitempty"`
 	// The state of the deployment depending on the process of deploying, or if it is ready or in an error state
 	ReadyState   GetRollingReleaseCurrentDeploymentReadyState `json:"readyState"`
 	ReadyStateAt *float64                                     `json:"readyStateAt,omitempty"`
-}
-
-func (o *GetRollingReleaseCurrentDeployment) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
+	// Where was the deployment created from
+	Source *GetRollingReleaseCurrentDeploymentSource `json:"source,omitempty"`
+	// A string with the unique URL of the deployment
+	URL string `json:"url"`
 }
 
 func (o *GetRollingReleaseCurrentDeployment) GetName() string {
@@ -251,11 +244,18 @@ func (o *GetRollingReleaseCurrentDeployment) GetName() string {
 	return o.Name
 }
 
-func (o *GetRollingReleaseCurrentDeployment) GetURL() string {
+func (o *GetRollingReleaseCurrentDeployment) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *GetRollingReleaseCurrentDeployment) GetID() string {
 	if o == nil {
 		return ""
 	}
-	return o.URL
+	return o.ID
 }
 
 func (o *GetRollingReleaseCurrentDeployment) GetTarget() *GetRollingReleaseCurrentDeploymentTarget {
@@ -263,20 +263,6 @@ func (o *GetRollingReleaseCurrentDeployment) GetTarget() *GetRollingReleaseCurre
 		return nil
 	}
 	return o.Target
-}
-
-func (o *GetRollingReleaseCurrentDeployment) GetSource() *GetRollingReleaseCurrentDeploymentSource {
-	if o == nil {
-		return nil
-	}
-	return o.Source
-}
-
-func (o *GetRollingReleaseCurrentDeployment) GetCreatedAt() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.CreatedAt
 }
 
 func (o *GetRollingReleaseCurrentDeployment) GetReadyState() GetRollingReleaseCurrentDeploymentReadyState {
@@ -293,12 +279,26 @@ func (o *GetRollingReleaseCurrentDeployment) GetReadyStateAt() *float64 {
 	return o.ReadyStateAt
 }
 
+func (o *GetRollingReleaseCurrentDeployment) GetSource() *GetRollingReleaseCurrentDeploymentSource {
+	if o == nil {
+		return nil
+	}
+	return o.Source
+}
+
+func (o *GetRollingReleaseCurrentDeployment) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
+}
+
 // GetRollingReleaseCanaryDeploymentTarget - If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
 type GetRollingReleaseCanaryDeploymentTarget string
 
 const (
-	GetRollingReleaseCanaryDeploymentTargetStaging    GetRollingReleaseCanaryDeploymentTarget = "staging"
 	GetRollingReleaseCanaryDeploymentTargetProduction GetRollingReleaseCanaryDeploymentTarget = "production"
+	GetRollingReleaseCanaryDeploymentTargetStaging    GetRollingReleaseCanaryDeploymentTarget = "staging"
 )
 
 func (e GetRollingReleaseCanaryDeploymentTarget) ToPointer() *GetRollingReleaseCanaryDeploymentTarget {
@@ -310,13 +310,52 @@ func (e *GetRollingReleaseCanaryDeploymentTarget) UnmarshalJSON(data []byte) err
 		return err
 	}
 	switch v {
-	case "staging":
-		fallthrough
 	case "production":
+		fallthrough
+	case "staging":
 		*e = GetRollingReleaseCanaryDeploymentTarget(v)
 		return nil
 	default:
 		return fmt.Errorf("invalid value for GetRollingReleaseCanaryDeploymentTarget: %v", v)
+	}
+}
+
+// GetRollingReleaseCanaryDeploymentReadyState - The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+type GetRollingReleaseCanaryDeploymentReadyState string
+
+const (
+	GetRollingReleaseCanaryDeploymentReadyStateBuilding     GetRollingReleaseCanaryDeploymentReadyState = "BUILDING"
+	GetRollingReleaseCanaryDeploymentReadyStateError        GetRollingReleaseCanaryDeploymentReadyState = "ERROR"
+	GetRollingReleaseCanaryDeploymentReadyStateInitializing GetRollingReleaseCanaryDeploymentReadyState = "INITIALIZING"
+	GetRollingReleaseCanaryDeploymentReadyStateQueued       GetRollingReleaseCanaryDeploymentReadyState = "QUEUED"
+	GetRollingReleaseCanaryDeploymentReadyStateReady        GetRollingReleaseCanaryDeploymentReadyState = "READY"
+	GetRollingReleaseCanaryDeploymentReadyStateCanceled     GetRollingReleaseCanaryDeploymentReadyState = "CANCELED"
+)
+
+func (e GetRollingReleaseCanaryDeploymentReadyState) ToPointer() *GetRollingReleaseCanaryDeploymentReadyState {
+	return &e
+}
+func (e *GetRollingReleaseCanaryDeploymentReadyState) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "BUILDING":
+		fallthrough
+	case "ERROR":
+		fallthrough
+	case "INITIALIZING":
+		fallthrough
+	case "QUEUED":
+		fallthrough
+	case "READY":
+		fallthrough
+	case "CANCELED":
+		*e = GetRollingReleaseCanaryDeploymentReadyState(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetRollingReleaseCanaryDeploymentReadyState: %v", v)
 	}
 }
 
@@ -365,69 +404,23 @@ func (e *GetRollingReleaseCanaryDeploymentSource) UnmarshalJSON(data []byte) err
 	}
 }
 
-// GetRollingReleaseCanaryDeploymentReadyState - The state of the deployment depending on the process of deploying, or if it is ready or in an error state
-type GetRollingReleaseCanaryDeploymentReadyState string
-
-const (
-	GetRollingReleaseCanaryDeploymentReadyStateBuilding     GetRollingReleaseCanaryDeploymentReadyState = "BUILDING"
-	GetRollingReleaseCanaryDeploymentReadyStateError        GetRollingReleaseCanaryDeploymentReadyState = "ERROR"
-	GetRollingReleaseCanaryDeploymentReadyStateInitializing GetRollingReleaseCanaryDeploymentReadyState = "INITIALIZING"
-	GetRollingReleaseCanaryDeploymentReadyStateQueued       GetRollingReleaseCanaryDeploymentReadyState = "QUEUED"
-	GetRollingReleaseCanaryDeploymentReadyStateReady        GetRollingReleaseCanaryDeploymentReadyState = "READY"
-	GetRollingReleaseCanaryDeploymentReadyStateCanceled     GetRollingReleaseCanaryDeploymentReadyState = "CANCELED"
-)
-
-func (e GetRollingReleaseCanaryDeploymentReadyState) ToPointer() *GetRollingReleaseCanaryDeploymentReadyState {
-	return &e
-}
-func (e *GetRollingReleaseCanaryDeploymentReadyState) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "BUILDING":
-		fallthrough
-	case "ERROR":
-		fallthrough
-	case "INITIALIZING":
-		fallthrough
-	case "QUEUED":
-		fallthrough
-	case "READY":
-		fallthrough
-	case "CANCELED":
-		*e = GetRollingReleaseCanaryDeploymentReadyState(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetRollingReleaseCanaryDeploymentReadyState: %v", v)
-	}
-}
-
 // GetRollingReleaseCanaryDeployment - The canary deployment being rolled out
 type GetRollingReleaseCanaryDeployment struct {
-	// A string holding the unique ID of the deployment
-	ID string `json:"id"`
 	// The name of the project associated with the deployment at the time that the deployment was created
 	Name string `json:"name"`
-	// A string with the unique URL of the deployment
-	URL string `json:"url"`
-	// If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
-	Target *GetRollingReleaseCanaryDeploymentTarget `json:"target,omitempty"`
-	// Where was the deployment created from
-	Source *GetRollingReleaseCanaryDeploymentSource `json:"source,omitempty"`
 	// A number containing the date when the deployment was created in milliseconds
 	CreatedAt float64 `json:"createdAt"`
+	// A string holding the unique ID of the deployment
+	ID string `json:"id"`
+	// If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+	Target *GetRollingReleaseCanaryDeploymentTarget `json:"target,omitempty"`
 	// The state of the deployment depending on the process of deploying, or if it is ready or in an error state
 	ReadyState   GetRollingReleaseCanaryDeploymentReadyState `json:"readyState"`
 	ReadyStateAt *float64                                    `json:"readyStateAt,omitempty"`
-}
-
-func (o *GetRollingReleaseCanaryDeployment) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
+	// Where was the deployment created from
+	Source *GetRollingReleaseCanaryDeploymentSource `json:"source,omitempty"`
+	// A string with the unique URL of the deployment
+	URL string `json:"url"`
 }
 
 func (o *GetRollingReleaseCanaryDeployment) GetName() string {
@@ -437,11 +430,18 @@ func (o *GetRollingReleaseCanaryDeployment) GetName() string {
 	return o.Name
 }
 
-func (o *GetRollingReleaseCanaryDeployment) GetURL() string {
+func (o *GetRollingReleaseCanaryDeployment) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *GetRollingReleaseCanaryDeployment) GetID() string {
 	if o == nil {
 		return ""
 	}
-	return o.URL
+	return o.ID
 }
 
 func (o *GetRollingReleaseCanaryDeployment) GetTarget() *GetRollingReleaseCanaryDeploymentTarget {
@@ -449,20 +449,6 @@ func (o *GetRollingReleaseCanaryDeployment) GetTarget() *GetRollingReleaseCanary
 		return nil
 	}
 	return o.Target
-}
-
-func (o *GetRollingReleaseCanaryDeployment) GetSource() *GetRollingReleaseCanaryDeploymentSource {
-	if o == nil {
-		return nil
-	}
-	return o.Source
-}
-
-func (o *GetRollingReleaseCanaryDeployment) GetCreatedAt() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.CreatedAt
 }
 
 func (o *GetRollingReleaseCanaryDeployment) GetReadyState() GetRollingReleaseCanaryDeploymentReadyState {
@@ -477,6 +463,20 @@ func (o *GetRollingReleaseCanaryDeployment) GetReadyStateAt() *float64 {
 		return nil
 	}
 	return o.ReadyStateAt
+}
+
+func (o *GetRollingReleaseCanaryDeployment) GetSource() *GetRollingReleaseCanaryDeploymentSource {
+	if o == nil {
+		return nil
+	}
+	return o.Source
+}
+
+func (o *GetRollingReleaseCanaryDeployment) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
 }
 
 // GetRollingReleaseAdvancementType - The advancement type of the rolling release

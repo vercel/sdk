@@ -7,6 +7,8 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type RequestBodyEvs = {
@@ -307,9 +309,9 @@ export const RequestBodyEvs$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  key: z.string(),
-  value: z.string(),
-  comment: z.string().optional(),
+  key: types.string(),
+  value: types.string(),
+  comment: types.optional(types.string()),
 });
 /** @internal */
 export type RequestBodyEvs$Outbound = {
@@ -367,11 +369,13 @@ export const CreateSharedEnvVariableRequestBody2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   evs: z.array(z.lazy(() => RequestBodyEvs$inboundSchema)),
-  type: CreateSharedEnvVariableRequestBodyEnvironmentType$inboundSchema
-    .optional(),
-  target: z.array(CreateSharedEnvVariableRequestBodyTarget$inboundSchema)
-    .optional(),
-  projectId: z.array(z.string()).optional(),
+  type: types.optional(
+    CreateSharedEnvVariableRequestBodyEnvironmentType$inboundSchema,
+  ),
+  target: types.optional(
+    z.array(CreateSharedEnvVariableRequestBodyTarget$inboundSchema),
+  ),
+  projectId: types.optional(z.array(types.string())),
 });
 /** @internal */
 export type CreateSharedEnvVariableRequestBody2$Outbound = {
@@ -418,9 +422,9 @@ export function createSharedEnvVariableRequestBody2FromJSON(
 /** @internal */
 export const Evs$inboundSchema: z.ZodType<Evs, z.ZodTypeDef, unknown> = z
   .object({
-    key: z.string(),
-    value: z.string(),
-    comment: z.string().optional(),
+    key: types.string(),
+    value: types.string(),
+    comment: types.optional(types.string()),
   });
 /** @internal */
 export type Evs$Outbound = {
@@ -476,9 +480,9 @@ export const CreateSharedEnvVariableRequestBody1$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   evs: z.array(z.lazy(() => Evs$inboundSchema)),
-  type: CreateSharedEnvVariableRequestBodyType$inboundSchema.optional(),
+  type: types.optional(CreateSharedEnvVariableRequestBodyType$inboundSchema),
   target: z.array(RequestBodyTarget$inboundSchema),
-  projectId: z.array(z.string()).optional(),
+  projectId: types.optional(z.array(types.string())),
 });
 /** @internal */
 export type CreateSharedEnvVariableRequestBody1$Outbound = {
@@ -525,7 +529,7 @@ export const CreateSharedEnvVariableRequestBody$inboundSchema: z.ZodType<
   CreateSharedEnvVariableRequestBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => CreateSharedEnvVariableRequestBody1$inboundSchema),
   z.lazy(() => CreateSharedEnvVariableRequestBody2$inboundSchema),
 ]);
@@ -539,7 +543,7 @@ export const CreateSharedEnvVariableRequestBody$outboundSchema: z.ZodType<
   CreateSharedEnvVariableRequestBody$Outbound,
   z.ZodTypeDef,
   CreateSharedEnvVariableRequestBody
-> = z.union([
+> = smartUnion([
   z.lazy(() => CreateSharedEnvVariableRequestBody1$outboundSchema),
   z.lazy(() => CreateSharedEnvVariableRequestBody2$outboundSchema),
 ]);
@@ -570,12 +574,14 @@ export const CreateSharedEnvVariableRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  RequestBody: z.union([
-    z.lazy(() => CreateSharedEnvVariableRequestBody1$inboundSchema),
-    z.lazy(() => CreateSharedEnvVariableRequestBody2$inboundSchema),
-  ]).optional(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
+  RequestBody: types.optional(
+    smartUnion([
+      z.lazy(() => CreateSharedEnvVariableRequestBody1$inboundSchema),
+      z.lazy(() => CreateSharedEnvVariableRequestBody2$inboundSchema),
+    ]),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",
@@ -599,7 +605,7 @@ export const CreateSharedEnvVariableRequest$outboundSchema: z.ZodType<
 > = z.object({
   teamId: z.string().optional(),
   slug: z.string().optional(),
-  requestBody: z.union([
+  requestBody: smartUnion([
     z.lazy(() => CreateSharedEnvVariableRequestBody1$outboundSchema),
     z.lazy(() => CreateSharedEnvVariableRequestBody2$outboundSchema),
   ]).optional(),
@@ -649,25 +655,26 @@ export const CreateSharedEnvVariableTarget$outboundSchema: z.ZodNativeEnum<
 /** @internal */
 export const Created$inboundSchema: z.ZodType<Created, z.ZodTypeDef, unknown> =
   z.object({
-    created: z.string().datetime({ offset: true }).transform(v => new Date(v))
-      .optional(),
-    key: z.string().optional(),
-    ownerId: z.nullable(z.string()).optional(),
-    id: z.string().optional(),
-    createdBy: z.nullable(z.string()).optional(),
-    deletedBy: z.nullable(z.string()).optional(),
-    updatedBy: z.nullable(z.string()).optional(),
-    createdAt: z.number().optional(),
-    deletedAt: z.number().optional(),
-    updatedAt: z.number().optional(),
-    value: z.string().optional(),
-    projectId: z.array(z.string()).optional(),
-    type: CreateSharedEnvVariableType$inboundSchema.optional(),
-    target: z.array(CreateSharedEnvVariableTarget$inboundSchema).optional(),
-    applyToAllCustomEnvironments: z.boolean().optional(),
-    decrypted: z.boolean().optional(),
-    comment: z.string().optional(),
-    lastEditedByDisplayName: z.string().optional(),
+    created: types.optional(types.date()),
+    key: types.optional(types.string()),
+    ownerId: z.nullable(types.string()).optional(),
+    id: types.optional(types.string()),
+    createdBy: z.nullable(types.string()).optional(),
+    deletedBy: z.nullable(types.string()).optional(),
+    updatedBy: z.nullable(types.string()).optional(),
+    createdAt: types.optional(types.number()),
+    deletedAt: types.optional(types.number()),
+    updatedAt: types.optional(types.number()),
+    value: types.optional(types.string()),
+    projectId: types.optional(z.array(types.string())),
+    type: types.optional(CreateSharedEnvVariableType$inboundSchema),
+    target: types.optional(
+      z.array(CreateSharedEnvVariableTarget$inboundSchema),
+    ),
+    applyToAllCustomEnvironments: types.optional(types.boolean()),
+    decrypted: types.optional(types.boolean()),
+    comment: types.optional(types.string()),
+    lastEditedByDisplayName: types.optional(types.string()),
   });
 /** @internal */
 export type Created$Outbound = {
@@ -742,7 +749,7 @@ export const CreateSharedEnvVariableValue$inboundSchema: z.ZodType<
   CreateSharedEnvVariableValue,
   z.ZodTypeDef,
   unknown
-> = z.union([z.string(), z.array(Value2$inboundSchema)]);
+> = smartUnion([types.string(), z.array(Value2$inboundSchema)]);
 /** @internal */
 export type CreateSharedEnvVariableValue$Outbound = string | Array<string>;
 
@@ -751,7 +758,7 @@ export const CreateSharedEnvVariableValue$outboundSchema: z.ZodType<
   CreateSharedEnvVariableValue$Outbound,
   z.ZodTypeDef,
   CreateSharedEnvVariableValue
-> = z.union([z.string(), z.array(Value2$outboundSchema)]);
+> = smartUnion([z.string(), z.array(Value2$outboundSchema)]);
 
 export function createSharedEnvVariableValueToJSON(
   createSharedEnvVariableValue: CreateSharedEnvVariableValue,
@@ -795,7 +802,7 @@ export const CreateSharedEnvVariableEnvironmentTarget$inboundSchema: z.ZodType<
   CreateSharedEnvVariableEnvironmentTarget,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.array(CreateSharedEnvVariableTarget1$inboundSchema),
   CreateSharedEnvVariableTarget2$inboundSchema,
 ]);
@@ -809,7 +816,7 @@ export const CreateSharedEnvVariableEnvironmentTarget$outboundSchema: z.ZodType<
   CreateSharedEnvVariableEnvironmentTarget$Outbound,
   z.ZodTypeDef,
   CreateSharedEnvVariableEnvironmentTarget
-> = z.union([
+> = smartUnion([
   z.array(CreateSharedEnvVariableTarget1$outboundSchema),
   CreateSharedEnvVariableTarget2$outboundSchema,
 ]);
@@ -846,20 +853,24 @@ export const CreateSharedEnvVariableError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  code: z.string(),
-  message: z.string(),
-  key: z.string().optional(),
-  envVarId: z.string().optional(),
-  envVarKey: z.string().optional(),
-  action: z.string().optional(),
-  link: z.string().optional(),
-  value: z.union([z.string(), z.array(Value2$inboundSchema)]).optional(),
-  gitBranch: z.string().optional(),
-  target: z.union([
-    z.array(CreateSharedEnvVariableTarget1$inboundSchema),
-    CreateSharedEnvVariableTarget2$inboundSchema,
-  ]).optional(),
-  project: z.string().optional(),
+  code: types.string(),
+  message: types.string(),
+  key: types.optional(types.string()),
+  envVarId: types.optional(types.string()),
+  envVarKey: types.optional(types.string()),
+  action: types.optional(types.string()),
+  link: types.optional(types.string()),
+  value: types.optional(
+    smartUnion([types.string(), z.array(Value2$inboundSchema)]),
+  ),
+  gitBranch: types.optional(types.string()),
+  target: types.optional(
+    smartUnion([
+      z.array(CreateSharedEnvVariableTarget1$inboundSchema),
+      CreateSharedEnvVariableTarget2$inboundSchema,
+    ]),
+  ),
+  project: types.optional(types.string()),
 });
 /** @internal */
 export type CreateSharedEnvVariableError$Outbound = {
@@ -889,9 +900,9 @@ export const CreateSharedEnvVariableError$outboundSchema: z.ZodType<
   envVarKey: z.string().optional(),
   action: z.string().optional(),
   link: z.string().optional(),
-  value: z.union([z.string(), z.array(Value2$outboundSchema)]).optional(),
+  value: smartUnion([z.string(), z.array(Value2$outboundSchema)]).optional(),
   gitBranch: z.string().optional(),
-  target: z.union([
+  target: smartUnion([
     z.array(CreateSharedEnvVariableTarget1$outboundSchema),
     CreateSharedEnvVariableTarget2$outboundSchema,
   ]).optional(),

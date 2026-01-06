@@ -7,6 +7,7 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdCategory =
@@ -64,16 +65,16 @@ export const PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdEx
     z.ZodTypeDef,
     unknown
   > = z.object({
-    slug: z.string(),
-    origin: z.string(),
-    name: z.string().optional(),
-    category:
-      PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdCategory$inboundSchema
-        .optional(),
-    description: z.string().optional(),
-    isArchived: z.boolean().optional(),
-    createdAt: z.number().optional(),
-    updatedAt: z.number().optional(),
+    slug: types.string(),
+    origin: types.string(),
+    name: types.optional(types.string()),
+    category: types.optional(
+      PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdCategory$inboundSchema,
+    ),
+    description: types.optional(types.string()),
+    isArchived: types.optional(types.boolean()),
+    createdAt: types.optional(types.number()),
+    updatedAt: types.optional(types.number()),
   });
 /** @internal */
 export type PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequestBody$Outbound =
@@ -140,12 +141,14 @@ export const PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdEx
     z.ZodTypeDef,
     unknown
   > = z.object({
-    integrationConfigurationId: z.string(),
-    resourceId: z.string(),
-    itemId: z.string(),
-    RequestBody: z.lazy(() =>
-      PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequestBody$inboundSchema
-    ).optional(),
+    integrationConfigurationId: types.string(),
+    resourceId: types.string(),
+    itemId: types.string(),
+    RequestBody: types.optional(
+      z.lazy(() =>
+        PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequestBody$inboundSchema
+      ),
+    ),
   }).transform((v) => {
     return remap$(v, {
       "RequestBody": "requestBody",

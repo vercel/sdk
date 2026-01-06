@@ -7,6 +7,8 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import {
   BadRequest,
   BadRequest$inboundSchema,
@@ -181,6 +183,9 @@ export type TransferInDomainLinks = {
  * Success
  */
 export type TransferInDomainResponseBody = {
+  /**
+   * A valid order ID
+   */
   orderId: string;
   links: { [k: string]: TransferInDomainLinks };
 };
@@ -191,18 +196,18 @@ export const TransferInDomainContactInformation$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  firstName: z.string(),
-  lastName: z.string(),
-  email: z.string(),
-  phone: z.string(),
-  address1: z.string(),
-  address2: z.string().optional(),
-  city: z.string(),
-  state: z.string(),
-  zip: z.string(),
-  country: z.string(),
-  companyName: z.string().optional(),
-  fax: z.string().optional(),
+  firstName: types.string(),
+  lastName: types.string(),
+  email: types.string(),
+  phone: types.string(),
+  address1: types.string(),
+  address2: types.optional(types.string()),
+  city: types.string(),
+  state: types.string(),
+  zip: types.string(),
+  country: types.string(),
+  companyName: types.optional(types.string()),
+  fax: types.optional(types.string()),
 });
 /** @internal */
 export type TransferInDomainContactInformation$Outbound = {
@@ -266,10 +271,10 @@ export const TransferInDomainRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  authCode: z.string(),
-  autoRenew: z.boolean(),
-  years: z.number(),
-  expectedPrice: z.number(),
+  authCode: types.string(),
+  autoRenew: types.boolean(),
+  years: types.number(),
+  expectedPrice: types.number(),
   contactInformation: z.lazy(() =>
     TransferInDomainContactInformation$inboundSchema
   ),
@@ -323,8 +328,8 @@ export const TransferInDomainRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  domain: z.string(),
-  teamId: z.string().optional(),
+  domain: types.string(),
+  teamId: types.optional(types.string()),
   RequestBody: z.lazy(() => TransferInDomainRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
@@ -432,7 +437,7 @@ export const TransferInDomainDomainsRegistrarResponseBody$inboundSchema:
     TransferInDomainDomainsRegistrarResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     BadRequest$inboundSchema,
     DomainAlreadyOwned$inboundSchema,
     DomainTooShort$inboundSchema,
@@ -459,7 +464,7 @@ export const TransferInDomainDomainsRegistrarResponseBody$outboundSchema:
     TransferInDomainDomainsRegistrarResponseBody$Outbound,
     z.ZodTypeDef,
     unknown
-  > = z.union([
+  > = smartUnion([
     BadRequest$outboundSchema,
     DomainAlreadyOwned$outboundSchema,
     DomainTooShort$outboundSchema,
@@ -511,7 +516,7 @@ export const TransferInDomainLinks$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  href: z.string(),
+  href: types.string(),
   method: TransferInDomainMethod$inboundSchema,
 });
 /** @internal */
@@ -553,7 +558,7 @@ export const TransferInDomainResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  orderId: z.string(),
+  orderId: types.string(),
   _links: z.record(z.lazy(() => TransferInDomainLinks$inboundSchema)),
 }).transform((v) => {
   return remap$(v, {

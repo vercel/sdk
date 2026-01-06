@@ -7,6 +7,8 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -142,7 +144,7 @@ export const RequestAccessToTeamGitUserId$inboundSchema: z.ZodType<
   RequestAccessToTeamGitUserId,
   z.ZodTypeDef,
   unknown
-> = z.union([z.string(), z.number()]);
+> = smartUnion([types.string(), types.number()]);
 /** @internal */
 export type RequestAccessToTeamGitUserId$Outbound = string | number;
 
@@ -151,7 +153,7 @@ export const RequestAccessToTeamGitUserId$outboundSchema: z.ZodType<
   RequestAccessToTeamGitUserId$Outbound,
   z.ZodTypeDef,
   RequestAccessToTeamGitUserId
-> = z.union([z.string(), z.number()]);
+> = smartUnion([z.string(), z.number()]);
 
 export function requestAccessToTeamGitUserIdToJSON(
   requestAccessToTeamGitUserId: RequestAccessToTeamGitUserId,
@@ -179,11 +181,11 @@ export const RequestAccessToTeamJoinedFrom$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   origin: RequestAccessToTeamOrigin$inboundSchema,
-  commitId: z.string().optional(),
-  repoId: z.string().optional(),
-  repoPath: z.string().optional(),
-  gitUserId: z.union([z.string(), z.number()]).optional(),
-  gitUserLogin: z.string().optional(),
+  commitId: types.optional(types.string()),
+  repoId: types.optional(types.string()),
+  repoPath: types.optional(types.string()),
+  gitUserId: types.optional(smartUnion([types.string(), types.number()])),
+  gitUserLogin: types.optional(types.string()),
 });
 /** @internal */
 export type RequestAccessToTeamJoinedFrom$Outbound = {
@@ -205,7 +207,7 @@ export const RequestAccessToTeamJoinedFrom$outboundSchema: z.ZodType<
   commitId: z.string().optional(),
   repoId: z.string().optional(),
   repoPath: z.string().optional(),
-  gitUserId: z.union([z.string(), z.number()]).optional(),
+  gitUserId: smartUnion([z.string(), z.number()]).optional(),
   gitUserLogin: z.string().optional(),
 });
 
@@ -275,7 +277,7 @@ export const RequestAccessToTeamRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamId: z.string(),
+  teamId: types.string(),
   RequestBody: z.lazy(() => RequestAccessToTeamRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
@@ -333,7 +335,7 @@ export const RequestAccessToTeamTeamsGitUserId$inboundSchema: z.ZodType<
   RequestAccessToTeamTeamsGitUserId,
   z.ZodTypeDef,
   unknown
-> = z.union([z.string(), z.number()]);
+> = smartUnion([types.string(), types.number()]);
 /** @internal */
 export type RequestAccessToTeamTeamsGitUserId$Outbound = string | number;
 
@@ -342,7 +344,7 @@ export const RequestAccessToTeamTeamsGitUserId$outboundSchema: z.ZodType<
   RequestAccessToTeamTeamsGitUserId$Outbound,
   z.ZodTypeDef,
   RequestAccessToTeamTeamsGitUserId
-> = z.union([z.string(), z.number()]);
+> = smartUnion([z.string(), z.number()]);
 
 export function requestAccessToTeamTeamsGitUserIdToJSON(
   requestAccessToTeamTeamsGitUserId: RequestAccessToTeamTeamsGitUserId,
@@ -370,16 +372,16 @@ export const RequestAccessToTeamTeamsJoinedFrom$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   origin: RequestAccessToTeamTeamsOrigin$inboundSchema,
-  commitId: z.string().optional(),
-  repoId: z.string().optional(),
-  repoPath: z.string().optional(),
-  gitUserId: z.union([z.string(), z.number()]).optional(),
-  gitUserLogin: z.string().optional(),
-  ssoUserId: z.string().optional(),
-  ssoConnectedAt: z.number().optional(),
-  idpUserId: z.string().optional(),
-  dsyncUserId: z.string().optional(),
-  dsyncConnectedAt: z.number().optional(),
+  commitId: types.optional(types.string()),
+  repoId: types.optional(types.string()),
+  repoPath: types.optional(types.string()),
+  gitUserId: types.optional(smartUnion([types.string(), types.number()])),
+  gitUserLogin: types.optional(types.string()),
+  ssoUserId: types.optional(types.string()),
+  ssoConnectedAt: types.optional(types.number()),
+  idpUserId: types.optional(types.string()),
+  dsyncUserId: types.optional(types.string()),
+  dsyncConnectedAt: types.optional(types.number()),
 });
 /** @internal */
 export type RequestAccessToTeamTeamsJoinedFrom$Outbound = {
@@ -406,7 +408,7 @@ export const RequestAccessToTeamTeamsJoinedFrom$outboundSchema: z.ZodType<
   commitId: z.string().optional(),
   repoId: z.string().optional(),
   repoPath: z.string().optional(),
-  gitUserId: z.union([z.string(), z.number()]).optional(),
+  gitUserId: smartUnion([z.string(), z.number()]).optional(),
   gitUserLogin: z.string().optional(),
   ssoUserId: z.string().optional(),
   ssoConnectedAt: z.number().optional(),
@@ -438,7 +440,7 @@ export function requestAccessToTeamTeamsJoinedFromFromJSON(
 /** @internal */
 export const Github$inboundSchema: z.ZodType<Github, z.ZodTypeDef, unknown> = z
   .object({
-    login: z.string().optional(),
+    login: types.optional(types.string()),
   });
 /** @internal */
 export type Github$Outbound = {
@@ -470,7 +472,7 @@ export function githubFromJSON(
 /** @internal */
 export const Gitlab$inboundSchema: z.ZodType<Gitlab, z.ZodTypeDef, unknown> = z
   .object({
-    login: z.string().optional(),
+    login: types.optional(types.string()),
   });
 /** @internal */
 export type Gitlab$Outbound = {
@@ -505,7 +507,7 @@ export const Bitbucket$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  login: z.string().optional(),
+  login: types.optional(types.string()),
 });
 /** @internal */
 export type Bitbucket$Outbound = {
@@ -540,15 +542,16 @@ export const RequestAccessToTeamResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamSlug: z.string(),
-  teamName: z.string(),
-  confirmed: z.boolean().optional(),
-  joinedFrom: z.lazy(() => RequestAccessToTeamTeamsJoinedFrom$inboundSchema)
-    .optional(),
-  accessRequestedAt: z.number().optional(),
-  github: z.nullable(z.lazy(() => Github$inboundSchema)),
-  gitlab: z.nullable(z.lazy(() => Gitlab$inboundSchema)),
-  bitbucket: z.nullable(z.lazy(() => Bitbucket$inboundSchema)),
+  teamSlug: types.string(),
+  teamName: types.string(),
+  confirmed: types.optional(types.boolean()),
+  joinedFrom: types.optional(
+    z.lazy(() => RequestAccessToTeamTeamsJoinedFrom$inboundSchema),
+  ),
+  accessRequestedAt: types.optional(types.number()),
+  github: types.nullable(z.lazy(() => Github$inboundSchema)),
+  gitlab: types.nullable(z.lazy(() => Gitlab$inboundSchema)),
+  bitbucket: types.nullable(z.lazy(() => Bitbucket$inboundSchema)),
 });
 /** @internal */
 export type RequestAccessToTeamResponseBody$Outbound = {

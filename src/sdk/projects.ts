@@ -9,10 +9,8 @@ import { projectsCreateProject } from "../funcs/projectsCreateProject.js";
 import { projectsCreateProjectEnv } from "../funcs/projectsCreateProjectEnv.js";
 import { projectsCreateProjectTransferRequest } from "../funcs/projectsCreateProjectTransferRequest.js";
 import { projectsDeleteProject } from "../funcs/projectsDeleteProject.js";
-import { projectsDeleteProjectClientCert } from "../funcs/projectsDeleteProjectClientCert.js";
 import { projectsEditProjectEnv } from "../funcs/projectsEditProjectEnv.js";
 import { projectsFilterProjectEnvs } from "../funcs/projectsFilterProjectEnvs.js";
-import { projectsGetProjectClientCerts } from "../funcs/projectsGetProjectClientCerts.js";
 import { projectsGetProjectDomain } from "../funcs/projectsGetProjectDomain.js";
 import { projectsGetProjectDomains } from "../funcs/projectsGetProjectDomains.js";
 import { projectsGetProjectEnv } from "../funcs/projectsGetProjectEnv.js";
@@ -28,7 +26,6 @@ import { projectsUpdateProject } from "../funcs/projectsUpdateProject.js";
 import { projectsUpdateProjectDataCache } from "../funcs/projectsUpdateProjectDataCache.js";
 import { projectsUpdateProjectDomain } from "../funcs/projectsUpdateProjectDomain.js";
 import { projectsUpdateProjectProtectionBypass } from "../funcs/projectsUpdateProjectProtectionBypass.js";
-import { projectsUploadProjectClientCert } from "../funcs/projectsUploadProjectClientCert.js";
 import { projectsVerifyProjectDomain } from "../funcs/projectsVerifyProjectDomain.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import {
@@ -55,10 +52,6 @@ import {
   CreateProjectTransferRequestRequest,
   CreateProjectTransferRequestResponseBody,
 } from "../models/createprojecttransferrequestop.js";
-import {
-  DeleteProjectClientCertRequest,
-  DeleteProjectClientCertResponseBody,
-} from "../models/deleteprojectclientcertop.js";
 import { DeleteProjectRequest } from "../models/deleteprojectop.js";
 import {
   EditProjectEnvRequest,
@@ -68,10 +61,6 @@ import {
   FilterProjectEnvsRequest,
   FilterProjectEnvsResponseBody,
 } from "../models/filterprojectenvsop.js";
-import {
-  GetProjectClientCertsRequest,
-  GetProjectClientCertsResponseBody,
-} from "../models/getprojectclientcertsop.js";
 import {
   GetProjectDomainRequest,
   GetProjectDomainResponseBody,
@@ -123,10 +112,6 @@ import {
   UpdateProjectProtectionBypassRequest,
   UpdateProjectProtectionBypassResponseBody,
 } from "../models/updateprojectprotectionbypassop.js";
-import {
-  UploadProjectClientCertRequest,
-  UploadProjectClientCertResponseBody,
-} from "../models/uploadprojectclientcertop.js";
 import {
   VerifyProjectDomainRequest,
   VerifyProjectDomainResponseBody,
@@ -434,57 +419,6 @@ export class Projects extends ClientSDK {
     options?: RequestOptions,
   ): Promise<BatchRemoveProjectEnvResponseBody> {
     return unwrapAsync(projectsBatchRemoveProjectEnv(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Upload client certificate for egress mTLS
-   *
-   * @remarks
-   * Upload a client certificate for mTLS authentication to external origins.
-   */
-  async uploadProjectClientCert(
-    request: UploadProjectClientCertRequest,
-    options?: RequestOptions,
-  ): Promise<UploadProjectClientCertResponseBody> {
-    return unwrapAsync(projectsUploadProjectClientCert(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Get client certificates for a project
-   *
-   * @remarks
-   * Retrieve client certificates configured for a project's mTLS egress authentication.
-   */
-  async getProjectClientCerts(
-    request: GetProjectClientCertsRequest,
-    options?: RequestOptions,
-  ): Promise<GetProjectClientCertsResponseBody> {
-    return unwrapAsync(projectsGetProjectClientCerts(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Delete client certificate for egress mTLS
-   *
-   * @remarks
-   * Delete a client certificate for mTLS authentication to external origins.
-   */
-  async deleteProjectClientCert(
-    request: DeleteProjectClientCertRequest,
-    options?: RequestOptions,
-  ): Promise<DeleteProjectClientCertResponseBody> {
-    return unwrapAsync(projectsDeleteProjectClientCert(
       this,
       request,
       options,

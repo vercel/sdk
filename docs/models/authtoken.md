@@ -15,6 +15,7 @@ let value: AuthToken = {
   expiresAt: 1632816536002,
   activeAt: 1632816536002,
   createdAt: 1632816536002,
+  leakedAt: 1632816536002,
 };
 ```
 
@@ -30,3 +31,4 @@ let value: AuthToken = {
 | `expiresAt`                                                           | *number*                                                              | :heavy_minus_sign:                                                    | Timestamp (in milliseconds) of when the token expires.                | 1632816536002                                                         |
 | `activeAt`                                                            | *number*                                                              | :heavy_check_mark:                                                    | Timestamp (in milliseconds) of when the token was most recently used. | 1632816536002                                                         |
 | `createdAt`                                                           | *number*                                                              | :heavy_check_mark:                                                    | Timestamp (in milliseconds) of when the token was created.            | 1632816536002                                                         |
+| `leakedAt`                                                            | *number*                                                              | :heavy_minus_sign:                                                    | Timestamp (in milliseconds) of when the token was marked as leaked.   | 1632816536002                                                         |

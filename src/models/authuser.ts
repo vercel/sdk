@@ -6,6 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const Reason = {
@@ -488,9 +490,11 @@ export const SoftBlock$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  blockedAt: z.number(),
+  blockedAt: types.number(),
   reason: Reason$inboundSchema,
-  blockedDueToOverageType: BlockedDueToOverageType$inboundSchema.optional(),
+  blockedDueToOverageType: types.optional(
+    BlockedDueToOverageType$inboundSchema,
+  ),
 });
 /** @internal */
 export type SoftBlock$Outbound = {
@@ -555,7 +559,7 @@ export const AuthUserBuildEntitlements$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  enhancedBuilds: z.boolean().optional(),
+  enhancedBuilds: types.optional(types.boolean()),
 });
 /** @internal */
 export type AuthUserBuildEntitlements$Outbound = {
@@ -603,7 +607,7 @@ export const BuildQueue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  configuration: AuthUserConfiguration$inboundSchema.optional(),
+  configuration: types.optional(AuthUserConfiguration$inboundSchema),
 });
 /** @internal */
 export type BuildQueue$Outbound = {
@@ -645,10 +649,10 @@ export const BuildMachine$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  purchaseType: PurchaseType$inboundSchema.optional(),
-  isDefaultBuildMachine: z.boolean().optional(),
-  cores: z.number().optional(),
-  memory: z.number().optional(),
+  purchaseType: types.optional(PurchaseType$inboundSchema),
+  isDefaultBuildMachine: types.optional(types.boolean()),
+  cores: types.optional(types.number()),
+  memory: types.optional(types.number()),
 });
 /** @internal */
 export type BuildMachine$Outbound = {
@@ -689,10 +693,10 @@ export const AuthUserSecurity$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  customRules: z.number().optional(),
-  ipBlocks: z.number().optional(),
-  ipBypass: z.number().optional(),
-  rateLimit: z.number().optional(),
+  customRules: types.optional(types.number()),
+  ipBlocks: types.optional(types.number()),
+  ipBypass: types.optional(types.number()),
+  rateLimit: types.optional(types.number()),
 });
 /** @internal */
 export type AuthUserSecurity$Outbound = {
@@ -737,35 +741,36 @@ export const AuthUserResourceConfig$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  nodeType: z.string().optional(),
-  concurrentBuilds: z.number().optional(),
-  elasticConcurrencyEnabled: z.boolean().optional(),
-  buildEntitlements: z.lazy(() => AuthUserBuildEntitlements$inboundSchema)
-    .optional(),
-  buildQueue: z.lazy(() => BuildQueue$inboundSchema).optional(),
-  awsAccountType: z.string().optional(),
-  awsAccountIds: z.array(z.string()).optional(),
-  cfZoneName: z.string().optional(),
-  imageOptimizationType: z.string().optional(),
-  edgeConfigs: z.number().optional(),
-  edgeConfigSize: z.number().optional(),
-  edgeFunctionMaxSizeBytes: z.number().optional(),
-  edgeFunctionExecutionTimeoutMs: z.number().optional(),
-  serverlessFunctionMaxMemorySize: z.number().optional(),
-  kvDatabases: z.number().optional(),
-  postgresDatabases: z.number().optional(),
-  blobStores: z.number().optional(),
-  integrationStores: z.number().optional(),
-  cronJobs: z.number().optional(),
-  cronJobsPerProject: z.number().optional(),
-  microfrontendGroupsPerTeam: z.number().optional(),
-  microfrontendProjectsPerGroup: z.number().optional(),
-  flagsExplorerOverridesThreshold: z.number().optional(),
-  flagsExplorerUnlimitedOverrides: z.boolean().optional(),
-  customEnvironmentsPerProject: z.number().optional(),
-  buildMachine: z.lazy(() => BuildMachine$inboundSchema).optional(),
-  security: z.lazy(() => AuthUserSecurity$inboundSchema).optional(),
-  bulkRedirectsFreeLimitOverride: z.number().optional(),
+  nodeType: types.optional(types.string()),
+  concurrentBuilds: types.optional(types.number()),
+  elasticConcurrencyEnabled: types.optional(types.boolean()),
+  buildEntitlements: types.optional(
+    z.lazy(() => AuthUserBuildEntitlements$inboundSchema),
+  ),
+  buildQueue: types.optional(z.lazy(() => BuildQueue$inboundSchema)),
+  awsAccountType: types.optional(types.string()),
+  awsAccountIds: types.optional(z.array(types.string())),
+  cfZoneName: types.optional(types.string()),
+  imageOptimizationType: types.optional(types.string()),
+  edgeConfigs: types.optional(types.number()),
+  edgeConfigSize: types.optional(types.number()),
+  edgeFunctionMaxSizeBytes: types.optional(types.number()),
+  edgeFunctionExecutionTimeoutMs: types.optional(types.number()),
+  serverlessFunctionMaxMemorySize: types.optional(types.number()),
+  kvDatabases: types.optional(types.number()),
+  postgresDatabases: types.optional(types.number()),
+  blobStores: types.optional(types.number()),
+  integrationStores: types.optional(types.number()),
+  cronJobs: types.optional(types.number()),
+  cronJobsPerProject: types.optional(types.number()),
+  microfrontendGroupsPerTeam: types.optional(types.number()),
+  microfrontendProjectsPerGroup: types.optional(types.number()),
+  flagsExplorerOverridesThreshold: types.optional(types.number()),
+  flagsExplorerUnlimitedOverrides: types.optional(types.boolean()),
+  customEnvironmentsPerProject: types.optional(types.number()),
+  buildMachine: types.optional(z.lazy(() => BuildMachine$inboundSchema)),
+  security: types.optional(z.lazy(() => AuthUserSecurity$inboundSchema)),
+  bulkRedirectsFreeLimitOverride: types.optional(types.number()),
 });
 /** @internal */
 export type AuthUserResourceConfig$Outbound = {
@@ -886,7 +891,7 @@ export const ActiveDashboardViews$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  scopeId: z.string(),
+  scopeId: types.string(),
   viewPreference: z.nullable(ViewPreference$inboundSchema).optional(),
   favoritesViewPreference: z.nullable(FavoritesViewPreference$inboundSchema)
     .optional(),
@@ -937,7 +942,7 @@ export const ImportFlowGitNamespace$inboundSchema: z.ZodType<
   ImportFlowGitNamespace,
   z.ZodTypeDef,
   unknown
-> = z.union([z.string(), z.number()]);
+> = smartUnion([types.string(), types.number()]);
 /** @internal */
 export type ImportFlowGitNamespace$Outbound = string | number;
 
@@ -946,7 +951,7 @@ export const ImportFlowGitNamespace$outboundSchema: z.ZodType<
   ImportFlowGitNamespace$Outbound,
   z.ZodTypeDef,
   ImportFlowGitNamespace
-> = z.union([z.string(), z.number()]);
+> = smartUnion([z.string(), z.number()]);
 
 export function importFlowGitNamespaceToJSON(
   importFlowGitNamespace: ImportFlowGitNamespace,
@@ -970,7 +975,7 @@ export const ImportFlowGitNamespaceId$inboundSchema: z.ZodType<
   ImportFlowGitNamespaceId,
   z.ZodTypeDef,
   unknown
-> = z.union([z.string(), z.number()]);
+> = smartUnion([types.string(), types.number()]);
 /** @internal */
 export type ImportFlowGitNamespaceId$Outbound = string | number;
 
@@ -979,7 +984,7 @@ export const ImportFlowGitNamespaceId$outboundSchema: z.ZodType<
   ImportFlowGitNamespaceId$Outbound,
   z.ZodTypeDef,
   ImportFlowGitNamespaceId
-> = z.union([z.string(), z.number()]);
+> = smartUnion([z.string(), z.number()]);
 
 export function importFlowGitNamespaceIdToJSON(
   importFlowGitNamespaceId: ImportFlowGitNamespaceId,
@@ -1012,7 +1017,7 @@ export const GitNamespaceId$inboundSchema: z.ZodType<
   GitNamespaceId,
   z.ZodTypeDef,
   unknown
-> = z.union([z.string(), z.number()]);
+> = smartUnion([types.string(), types.number()]);
 /** @internal */
 export type GitNamespaceId$Outbound = string | number;
 
@@ -1021,7 +1026,7 @@ export const GitNamespaceId$outboundSchema: z.ZodType<
   GitNamespaceId$Outbound,
   z.ZodTypeDef,
   GitNamespaceId
-> = z.union([z.string(), z.number()]);
+> = smartUnion([z.string(), z.number()]);
 
 export function gitNamespaceIdToJSON(gitNamespaceId: GitNamespaceId): string {
   return JSON.stringify(GitNamespaceId$outboundSchema.parse(gitNamespaceId));
@@ -1042,8 +1047,8 @@ export const PreferredScopesAndGitNamespaces$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  scopeId: z.string(),
-  gitNamespaceId: z.nullable(z.union([z.string(), z.number()])),
+  scopeId: types.string(),
+  gitNamespaceId: types.nullable(smartUnion([types.string(), types.number()])),
 });
 /** @internal */
 export type PreferredScopesAndGitNamespaces$Outbound = {
@@ -1058,7 +1063,7 @@ export const PreferredScopesAndGitNamespaces$outboundSchema: z.ZodType<
   PreferredScopesAndGitNamespaces
 > = z.object({
   scopeId: z.string(),
-  gitNamespaceId: z.nullable(z.union([z.string(), z.number()])),
+  gitNamespaceId: z.nullable(smartUnion([z.string(), z.number()])),
 });
 
 export function preferredScopesAndGitNamespacesToJSON(
@@ -1086,8 +1091,8 @@ export const Dismissals$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  scopeId: z.string(),
-  createdAt: z.number(),
+  scopeId: types.string(),
+  createdAt: types.number(),
 });
 /** @internal */
 export type Dismissals$Outbound = {
@@ -1124,7 +1129,7 @@ export const DismissedToasts$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
+  name: types.string(),
   dismissals: z.array(z.lazy(() => Dismissals$inboundSchema)),
 });
 /** @internal */
@@ -1164,8 +1169,8 @@ export const FavoriteProjectsAndSpaces$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamId: z.string(),
-  projectId: z.string(),
+  teamId: types.string(),
+  projectId: types.string(),
 });
 /** @internal */
 export type FavoriteProjectsAndSpaces$Outbound = {
@@ -1206,7 +1211,7 @@ export const AuthUserRemoteCaching$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  enabled: z.boolean().optional(),
+  enabled: types.optional(types.boolean()),
 });
 /** @internal */
 export type AuthUserRemoteCaching$Outbound = {
@@ -1245,7 +1250,7 @@ export const DataCache$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  excessBillingEnabled: z.boolean().optional(),
+  excessBillingEnabled: types.optional(types.boolean()),
 });
 /** @internal */
 export type DataCache$Outbound = {
@@ -1280,9 +1285,9 @@ export const WebAnalytics$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  blockedFrom: z.number().optional(),
-  blockedUntil: z.number().optional(),
-  isCurrentlyBlocked: z.boolean(),
+  blockedFrom: types.optional(types.number()),
+  blockedUntil: types.optional(types.number()),
+  isCurrentlyBlocked: types.boolean(),
 });
 /** @internal */
 export type WebAnalytics$Outbound = {
@@ -1321,7 +1326,7 @@ export const FeatureBlocks$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  webAnalytics: z.lazy(() => WebAnalytics$inboundSchema).optional(),
+  webAnalytics: types.optional(z.lazy(() => WebAnalytics$inboundSchema)),
 });
 /** @internal */
 export type FeatureBlocks$Outbound = {
@@ -1356,38 +1361,43 @@ export const AuthUser$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  createdAt: z.number(),
-  softBlock: z.nullable(z.lazy(() => SoftBlock$inboundSchema)),
-  billing: z.nullable(z.lazy(() => Billing$inboundSchema)),
+  createdAt: types.number(),
+  softBlock: types.nullable(z.lazy(() => SoftBlock$inboundSchema)),
+  billing: types.nullable(z.lazy(() => Billing$inboundSchema)),
   resourceConfig: z.lazy(() => AuthUserResourceConfig$inboundSchema),
-  stagingPrefix: z.string(),
-  activeDashboardViews: z.array(
-    z.lazy(() => ActiveDashboardViews$inboundSchema),
+  stagingPrefix: types.string(),
+  activeDashboardViews: types.optional(
+    z.array(z.lazy(() => ActiveDashboardViews$inboundSchema)),
+  ),
+  importFlowGitNamespace: z.nullable(
+    smartUnion([types.string(), types.number()]),
   ).optional(),
-  importFlowGitNamespace: z.nullable(z.union([z.string(), z.number()]))
-    .optional(),
-  importFlowGitNamespaceId: z.nullable(z.union([z.string(), z.number()]))
-    .optional(),
+  importFlowGitNamespaceId: z.nullable(
+    smartUnion([types.string(), types.number()]),
+  ).optional(),
   importFlowGitProvider: z.nullable(ImportFlowGitProvider$inboundSchema)
     .optional(),
-  preferredScopesAndGitNamespaces: z.array(
-    z.lazy(() => PreferredScopesAndGitNamespaces$inboundSchema),
-  ).optional(),
-  dismissedToasts: z.array(z.lazy(() => DismissedToasts$inboundSchema))
-    .optional(),
-  favoriteProjectsAndSpaces: z.array(
-    z.lazy(() => FavoriteProjectsAndSpaces$inboundSchema),
-  ).optional(),
-  hasTrialAvailable: z.boolean(),
-  remoteCaching: z.lazy(() => AuthUserRemoteCaching$inboundSchema).optional(),
-  dataCache: z.lazy(() => DataCache$inboundSchema).optional(),
-  featureBlocks: z.lazy(() => FeatureBlocks$inboundSchema).optional(),
-  id: z.string(),
-  email: z.string(),
-  name: z.nullable(z.string()),
-  username: z.string(),
-  avatar: z.nullable(z.string()),
-  defaultTeamId: z.nullable(z.string()),
+  preferredScopesAndGitNamespaces: types.optional(
+    z.array(z.lazy(() => PreferredScopesAndGitNamespaces$inboundSchema)),
+  ),
+  dismissedToasts: types.optional(
+    z.array(z.lazy(() => DismissedToasts$inboundSchema)),
+  ),
+  favoriteProjectsAndSpaces: types.optional(
+    z.array(z.lazy(() => FavoriteProjectsAndSpaces$inboundSchema)),
+  ),
+  hasTrialAvailable: types.boolean(),
+  remoteCaching: types.optional(
+    z.lazy(() => AuthUserRemoteCaching$inboundSchema),
+  ),
+  dataCache: types.optional(z.lazy(() => DataCache$inboundSchema)),
+  featureBlocks: types.optional(z.lazy(() => FeatureBlocks$inboundSchema)),
+  id: types.string(),
+  email: types.string(),
+  name: types.nullable(types.string()),
+  username: types.string(),
+  avatar: types.nullable(types.string()),
+  defaultTeamId: types.nullable(types.string()),
 });
 /** @internal */
 export type AuthUser$Outbound = {
@@ -1433,9 +1443,9 @@ export const AuthUser$outboundSchema: z.ZodType<
   activeDashboardViews: z.array(
     z.lazy(() => ActiveDashboardViews$outboundSchema),
   ).optional(),
-  importFlowGitNamespace: z.nullable(z.union([z.string(), z.number()]))
+  importFlowGitNamespace: z.nullable(smartUnion([z.string(), z.number()]))
     .optional(),
-  importFlowGitNamespaceId: z.nullable(z.union([z.string(), z.number()]))
+  importFlowGitNamespaceId: z.nullable(smartUnion([z.string(), z.number()]))
     .optional(),
   importFlowGitProvider: z.nullable(ImportFlowGitProvider$outboundSchema)
     .optional(),

@@ -10,6 +10,8 @@ import { integrationsGetBillingPlans } from "../funcs/integrationsGetBillingPlan
 import { integrationsGetConfiguration } from "../funcs/integrationsGetConfiguration.js";
 import { integrationsGetConfigurationProducts } from "../funcs/integrationsGetConfigurationProducts.js";
 import { integrationsGetConfigurations } from "../funcs/integrationsGetConfigurations.js";
+import { integrationsGitNamespaces } from "../funcs/integrationsGitNamespaces.js";
+import { integrationsSearchRepo } from "../funcs/integrationsSearchRepo.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import { ConnectIntegrationResourceToProjectRequest } from "../models/connectintegrationresourcetoprojectop.js";
 import {
@@ -33,6 +35,14 @@ import {
   GetConfigurationsRequest,
   GetConfigurationsResponseBody,
 } from "../models/getconfigurationsop.js";
+import {
+  GitNamespacesRequest,
+  GitNamespacesResponseBody,
+} from "../models/gitnamespacesop.js";
+import {
+  SearchRepoRequest,
+  SearchRepoResponseBody,
+} from "../models/searchrepoop.js";
 import { UpdateIntegrationDeploymentActionRequest } from "../models/updateintegrationdeploymentactionop.js";
 import { unwrapAsync } from "../types/fp.js";
 
@@ -48,6 +58,40 @@ export class Integrations extends ClientSDK {
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(deploymentsUpdateIntegrationDeploymentAction(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List git namespaces by provider
+   *
+   * @remarks
+   * Lists git namespaces for a supported provider. Supported providers are `github`, `gitlab` and `bitbucket`. If the provider is not provided, it will try to obtain it from the user that authenticated the request.
+   */
+  async gitNamespaces(
+    request: GitNamespacesRequest,
+    options?: RequestOptions,
+  ): Promise<Array<GitNamespacesResponseBody>> {
+    return unwrapAsync(integrationsGitNamespaces(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List git repositories linked to namespace by provider
+   *
+   * @remarks
+   * Lists git repositories linked to a namespace `id` for a supported provider. A specific namespace `id` can be obtained via the `git-namespaces`  endpoint. Supported providers are `github`, `gitlab` and `bitbucket`. If the provider or namespace is not provided, it will try to obtain it from the user that authenticated the request.
+   */
+  async searchRepo(
+    request: SearchRepoRequest,
+    options?: RequestOptions,
+  ): Promise<SearchRepoResponseBody> {
+    return unwrapAsync(integrationsSearchRepo(
       this,
       request,
       options,

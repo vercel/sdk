@@ -139,6 +139,8 @@ import { tool$integrationsGetBillingPlans } from "./tools/integrationsGetBilling
 import { tool$integrationsGetConfiguration } from "./tools/integrationsGetConfiguration.js";
 import { tool$integrationsGetConfigurationProducts } from "./tools/integrationsGetConfigurationProducts.js";
 import { tool$integrationsGetConfigurations } from "./tools/integrationsGetConfigurations.js";
+import { tool$integrationsGitNamespaces } from "./tools/integrationsGitNamespaces.js";
+import { tool$integrationsSearchRepo } from "./tools/integrationsSearchRepo.js";
 import { tool$logDrainsCreateConfigurableLogDrain } from "./tools/logDrainsCreateConfigurableLogDrain.js";
 import { tool$logDrainsCreateLogDrain } from "./tools/logDrainsCreateLogDrain.js";
 import { tool$logDrainsDeleteConfigurableLogDrain } from "./tools/logDrainsDeleteConfigurableLogDrain.js";
@@ -179,10 +181,8 @@ import { tool$projectsCreateProject } from "./tools/projectsCreateProject.js";
 import { tool$projectsCreateProjectEnv } from "./tools/projectsCreateProjectEnv.js";
 import { tool$projectsCreateProjectTransferRequest } from "./tools/projectsCreateProjectTransferRequest.js";
 import { tool$projectsDeleteProject } from "./tools/projectsDeleteProject.js";
-import { tool$projectsDeleteProjectClientCert } from "./tools/projectsDeleteProjectClientCert.js";
 import { tool$projectsEditProjectEnv } from "./tools/projectsEditProjectEnv.js";
 import { tool$projectsFilterProjectEnvs } from "./tools/projectsFilterProjectEnvs.js";
-import { tool$projectsGetProjectClientCerts } from "./tools/projectsGetProjectClientCerts.js";
 import { tool$projectsGetProjectDomain } from "./tools/projectsGetProjectDomain.js";
 import { tool$projectsGetProjectDomains } from "./tools/projectsGetProjectDomains.js";
 import { tool$projectsGetProjectEnv } from "./tools/projectsGetProjectEnv.js";
@@ -198,7 +198,6 @@ import { tool$projectsUpdateProject } from "./tools/projectsUpdateProject.js";
 import { tool$projectsUpdateProjectDataCache } from "./tools/projectsUpdateProjectDataCache.js";
 import { tool$projectsUpdateProjectDomain } from "./tools/projectsUpdateProjectDomain.js";
 import { tool$projectsUpdateProjectProtectionBypass } from "./tools/projectsUpdateProjectProtectionBypass.js";
-import { tool$projectsUploadProjectClientCert } from "./tools/projectsUploadProjectClientCert.js";
 import { tool$projectsVerifyProjectDomain } from "./tools/projectsVerifyProjectDomain.js";
 import { tool$rollingReleaseApproveRollingReleaseStage } from "./tools/rollingReleaseApproveRollingReleaseStage.js";
 import { tool$rollingReleaseCompleteRollingRelease } from "./tools/rollingReleaseCompleteRollingRelease.js";
@@ -248,7 +247,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.18.5",
+    version: "1.18.6",
   });
 
   const client = new VercelCore({
@@ -325,9 +324,6 @@ export function createMCPServer(deps: {
   tool(tool$projectsRemoveProjectEnv);
   tool(tool$projectsEditProjectEnv);
   tool(tool$projectsBatchRemoveProjectEnv);
-  tool(tool$projectsUploadProjectClientCert);
-  tool(tool$projectsGetProjectClientCerts);
-  tool(tool$projectsDeleteProjectClientCert);
   tool(tool$projectsCreateProjectTransferRequest);
   tool(tool$projectsAcceptProjectTransferRequest);
   tool(tool$projectsUpdateProjectProtectionBypass);
@@ -345,6 +341,8 @@ export function createMCPServer(deps: {
   tool(tool$deploymentsGetDeploymentFileContents);
   tool(tool$deploymentsGetDeployments);
   tool(tool$deploymentsDeleteDeployment);
+  tool(tool$integrationsGitNamespaces);
+  tool(tool$integrationsSearchRepo);
   tool(tool$integrationsGetBillingPlans);
   tool(tool$integrationsConnectIntegrationResourceToProject);
   tool(tool$integrationsGetConfigurations);

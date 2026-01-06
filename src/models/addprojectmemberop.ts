@@ -7,6 +7,8 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -155,9 +157,9 @@ export const AddProjectMemberRequestBody3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  uid: z.string().optional(),
-  username: z.string().optional(),
-  email: z.string(),
+  uid: types.optional(types.string()),
+  username: types.optional(types.string()),
+  email: types.string(),
   role: AddProjectMemberRequestBodyProjectMembersRole$inboundSchema,
 });
 /** @internal */
@@ -214,9 +216,9 @@ export const AddProjectMemberRequestBody2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  uid: z.string().optional(),
-  username: z.string(),
-  email: z.string().optional(),
+  uid: types.optional(types.string()),
+  username: types.string(),
+  email: types.optional(types.string()),
   role: AddProjectMemberRequestBodyRole$inboundSchema,
 });
 /** @internal */
@@ -273,9 +275,9 @@ export const AddProjectMemberRequestBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  uid: z.string(),
-  username: z.string().optional(),
-  email: z.string().optional(),
+  uid: types.string(),
+  username: types.optional(types.string()),
+  email: types.optional(types.string()),
   role: RequestBodyRole$inboundSchema,
 });
 /** @internal */
@@ -322,7 +324,7 @@ export const AddProjectMemberRequestBody$inboundSchema: z.ZodType<
   AddProjectMemberRequestBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => AddProjectMemberRequestBody1$inboundSchema),
   z.lazy(() => AddProjectMemberRequestBody2$inboundSchema),
   z.lazy(() => AddProjectMemberRequestBody3$inboundSchema),
@@ -338,7 +340,7 @@ export const AddProjectMemberRequestBody$outboundSchema: z.ZodType<
   AddProjectMemberRequestBody$Outbound,
   z.ZodTypeDef,
   AddProjectMemberRequestBody
-> = z.union([
+> = smartUnion([
   z.lazy(() => AddProjectMemberRequestBody1$outboundSchema),
   z.lazy(() => AddProjectMemberRequestBody2$outboundSchema),
   z.lazy(() => AddProjectMemberRequestBody3$outboundSchema),
@@ -369,10 +371,10 @@ export const AddProjectMemberRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  idOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  RequestBody: z.union([
+  idOrName: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
+  RequestBody: smartUnion([
     z.lazy(() => AddProjectMemberRequestBody1$inboundSchema),
     z.lazy(() => AddProjectMemberRequestBody2$inboundSchema),
     z.lazy(() => AddProjectMemberRequestBody3$inboundSchema),
@@ -402,7 +404,7 @@ export const AddProjectMemberRequest$outboundSchema: z.ZodType<
   idOrName: z.string(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
-  requestBody: z.union([
+  requestBody: smartUnion([
     z.lazy(() => AddProjectMemberRequestBody1$outboundSchema),
     z.lazy(() => AddProjectMemberRequestBody2$outboundSchema),
     z.lazy(() => AddProjectMemberRequestBody3$outboundSchema),
@@ -436,7 +438,7 @@ export const AddProjectMemberResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
+  id: types.string(),
 });
 /** @internal */
 export type AddProjectMemberResponseBody$Outbound = {

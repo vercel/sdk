@@ -7,6 +7,8 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -270,11 +272,11 @@ export type CreateProjectEnvCreatedTarget =
   | CreateProjectEnvTargetProjects2;
 
 export const CreateProjectEnvCreatedType = {
+  Secret: "secret",
   System: "system",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
-  Secret: "secret",
 } as const;
 export type CreateProjectEnvCreatedType = ClosedEnum<
   typeof CreateProjectEnvCreatedType
@@ -397,7 +399,7 @@ export type Created2 = {
   target?: Array<string> | CreateProjectEnvTargetProjects2 | undefined;
   type: CreateProjectEnvCreatedType;
   /**
-   * This is used to identiy variables that have been migrated from type secret to sensitive.
+   * This is used to identify variables that have been migrated from type secret to sensitive.
    */
   sunsetSecretId?: string | undefined;
   decrypted?: boolean | undefined;
@@ -466,11 +468,11 @@ export type CreatedTarget =
   | CreateProjectEnvTarget2;
 
 export const CreatedType = {
+  Secret: "secret",
   System: "system",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
-  Secret: "secret",
 } as const;
 export type CreatedType = ClosedEnum<typeof CreatedType>;
 
@@ -591,7 +593,7 @@ export type Created1 = {
   target?: Array<CreateProjectEnvTarget1> | CreateProjectEnvTarget2 | undefined;
   type: CreatedType;
   /**
-   * This is used to identiy variables that have been migrated from type secret to sensitive.
+   * This is used to identify variables that have been migrated from type secret to sensitive.
    */
   sunsetSecretId?: string | undefined;
   decrypted?: boolean | undefined;
@@ -717,13 +719,13 @@ export const CreateProjectEnv2Target$outboundSchema: z.ZodNativeEnum<
 /** @internal */
 export const Two2$inboundSchema: z.ZodType<Two2, z.ZodTypeDef, unknown> = z
   .object({
-    key: z.string(),
-    value: z.string(),
+    key: types.string(),
+    value: types.string(),
     type: CreateProjectEnv2Type$inboundSchema,
-    target: z.array(CreateProjectEnv2Target$inboundSchema).optional(),
-    gitBranch: z.nullable(z.string()).optional(),
-    comment: z.string().optional(),
-    customEnvironmentIds: z.array(z.string()),
+    target: types.optional(z.array(CreateProjectEnv2Target$inboundSchema)),
+    gitBranch: z.nullable(types.string()).optional(),
+    comment: types.optional(types.string()),
+    customEnvironmentIds: z.array(types.string()),
   });
 /** @internal */
 export type Two2$Outbound = {
@@ -778,13 +780,13 @@ export const TwoTarget$outboundSchema: z.ZodNativeEnum<typeof TwoTarget> =
 /** @internal */
 export const Two1$inboundSchema: z.ZodType<Two1, z.ZodTypeDef, unknown> = z
   .object({
-    key: z.string(),
-    value: z.string(),
+    key: types.string(),
+    value: types.string(),
     type: TwoType$inboundSchema,
     target: z.array(TwoTarget$inboundSchema),
-    gitBranch: z.nullable(z.string()).optional(),
-    comment: z.string().optional(),
-    customEnvironmentIds: z.array(z.string()).optional(),
+    gitBranch: z.nullable(types.string()).optional(),
+    comment: types.optional(types.string()),
+    customEnvironmentIds: types.optional(z.array(types.string())),
   });
 /** @internal */
 export type Two1$Outbound = {
@@ -827,7 +829,7 @@ export const CreateProjectEnvRequestBody2$inboundSchema: z.ZodType<
   CreateProjectEnvRequestBody2,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => Two1$inboundSchema),
   z.lazy(() => Two2$inboundSchema),
 ]);
@@ -841,7 +843,7 @@ export const CreateProjectEnvRequestBody2$outboundSchema: z.ZodType<
   CreateProjectEnvRequestBody2$Outbound,
   z.ZodTypeDef,
   CreateProjectEnvRequestBody2
-> = z.union([
+> = smartUnion([
   z.lazy(() => Two1$outboundSchema),
   z.lazy(() => Two2$outboundSchema),
 ]);
@@ -889,13 +891,13 @@ export const CreateProjectEnv12$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  key: z.string(),
-  value: z.string(),
+  key: types.string(),
+  value: types.string(),
   type: CreateProjectEnv1Type$inboundSchema,
-  target: z.array(CreateProjectEnv1Target$inboundSchema).optional(),
-  gitBranch: z.nullable(z.string()).optional(),
-  comment: z.string().optional(),
-  customEnvironmentIds: z.array(z.string()),
+  target: types.optional(z.array(CreateProjectEnv1Target$inboundSchema)),
+  gitBranch: z.nullable(types.string()).optional(),
+  comment: types.optional(types.string()),
+  customEnvironmentIds: z.array(types.string()),
 });
 /** @internal */
 export type CreateProjectEnv12$Outbound = {
@@ -960,13 +962,13 @@ export const CreateProjectEnv11$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  key: z.string(),
-  value: z.string(),
+  key: types.string(),
+  value: types.string(),
   type: OneType$inboundSchema,
   target: z.array(OneTarget$inboundSchema),
-  gitBranch: z.nullable(z.string()).optional(),
-  comment: z.string().optional(),
-  customEnvironmentIds: z.array(z.string()).optional(),
+  gitBranch: z.nullable(types.string()).optional(),
+  comment: types.optional(types.string()),
+  customEnvironmentIds: types.optional(z.array(types.string())),
 });
 /** @internal */
 export type CreateProjectEnv11$Outbound = {
@@ -1016,7 +1018,7 @@ export const CreateProjectEnvRequestBody1$inboundSchema: z.ZodType<
   CreateProjectEnvRequestBody1,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => CreateProjectEnv11$inboundSchema),
   z.lazy(() => CreateProjectEnv12$inboundSchema),
 ]);
@@ -1030,7 +1032,7 @@ export const CreateProjectEnvRequestBody1$outboundSchema: z.ZodType<
   CreateProjectEnvRequestBody1$Outbound,
   z.ZodTypeDef,
   CreateProjectEnvRequestBody1
-> = z.union([
+> = smartUnion([
   z.lazy(() => CreateProjectEnv11$outboundSchema),
   z.lazy(() => CreateProjectEnv12$outboundSchema),
 ]);
@@ -1059,13 +1061,13 @@ export const CreateProjectEnvRequestBody$inboundSchema: z.ZodType<
   CreateProjectEnvRequestBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.union([
+> = smartUnion([
+  smartUnion([
     z.lazy(() => CreateProjectEnv11$inboundSchema),
     z.lazy(() => CreateProjectEnv12$inboundSchema),
   ]),
   z.array(
-    z.union([
+    smartUnion([
       z.lazy(() => Two1$inboundSchema),
       z.lazy(() => Two2$inboundSchema),
     ]),
@@ -1082,13 +1084,13 @@ export const CreateProjectEnvRequestBody$outboundSchema: z.ZodType<
   CreateProjectEnvRequestBody$Outbound,
   z.ZodTypeDef,
   CreateProjectEnvRequestBody
-> = z.union([
-  z.union([
+> = smartUnion([
+  smartUnion([
     z.lazy(() => CreateProjectEnv11$outboundSchema),
     z.lazy(() => CreateProjectEnv12$outboundSchema),
   ]),
   z.array(
-    z.union([
+    smartUnion([
       z.lazy(() => Two1$outboundSchema),
       z.lazy(() => Two2$outboundSchema),
     ]),
@@ -1120,17 +1122,17 @@ export const CreateProjectEnvRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  idOrName: z.string(),
-  upsert: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  RequestBody: z.union([
-    z.union([
+  idOrName: types.string(),
+  upsert: types.optional(types.string()),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
+  RequestBody: smartUnion([
+    smartUnion([
       z.lazy(() => CreateProjectEnv11$inboundSchema),
       z.lazy(() => CreateProjectEnv12$inboundSchema),
     ]),
     z.array(
-      z.union([
+      smartUnion([
         z.lazy(() => Two1$inboundSchema),
         z.lazy(() => Two2$inboundSchema),
       ]),
@@ -1163,13 +1165,13 @@ export const CreateProjectEnvRequest$outboundSchema: z.ZodType<
   upsert: z.string().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
-  requestBody: z.union([
-    z.union([
+  requestBody: smartUnion([
+    smartUnion([
       z.lazy(() => CreateProjectEnv11$outboundSchema),
       z.lazy(() => CreateProjectEnv12$outboundSchema),
     ]),
     z.array(
-      z.union([
+      smartUnion([
         z.lazy(() => Two1$outboundSchema),
         z.lazy(() => Two2$outboundSchema),
       ]),
@@ -1212,8 +1214,8 @@ export const CreateProjectEnvCreatedTarget$inboundSchema: z.ZodType<
   CreateProjectEnvCreatedTarget,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.array(z.string()),
+> = smartUnion([
+  z.array(types.string()),
   CreateProjectEnvTargetProjects2$inboundSchema,
 ]);
 /** @internal */
@@ -1224,7 +1226,7 @@ export const CreateProjectEnvCreatedTarget$outboundSchema: z.ZodType<
   CreateProjectEnvCreatedTarget$Outbound,
   z.ZodTypeDef,
   CreateProjectEnvCreatedTarget
-> = z.union([
+> = smartUnion([
   z.array(z.string()),
   CreateProjectEnvTargetProjects2$outboundSchema,
 ]);
@@ -1263,8 +1265,8 @@ export const CreateProjectEnvContentHintProjects15$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("flags-connection-string"),
-  projectId: z.string(),
+  type: types.literal("flags-connection-string"),
+  projectId: types.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHintProjects15$Outbound = {
@@ -1308,11 +1310,11 @@ export const CreateProjectEnvContentHintProjects14$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("integration-store-secret"),
-  storeId: z.string(),
-  integrationId: z.string(),
-  integrationProductId: z.string(),
-  integrationConfigurationId: z.string(),
+  type: types.literal("integration-store-secret"),
+  storeId: types.string(),
+  integrationId: types.string(),
+  integrationProductId: types.string(),
+  integrationConfigurationId: types.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHintProjects14$Outbound = {
@@ -1362,8 +1364,8 @@ export const CreateProjectEnvContentHintProjects13$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("postgres-url-no-ssl"),
-  storeId: z.string(),
+  type: types.literal("postgres-url-no-ssl"),
+  storeId: types.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHintProjects13$Outbound = {
@@ -1407,8 +1409,8 @@ export const CreateProjectEnvContentHintProjects12$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("postgres-database"),
-  storeId: z.string(),
+  type: types.literal("postgres-database"),
+  storeId: types.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHintProjects12$Outbound = {
@@ -1452,8 +1454,8 @@ export const CreateProjectEnvContentHintProjects11$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("postgres-password"),
-  storeId: z.string(),
+  type: types.literal("postgres-password"),
+  storeId: types.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHintProjects11$Outbound = {
@@ -1497,8 +1499,8 @@ export const CreateProjectEnvContentHintProjects10$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("postgres-host"),
-  storeId: z.string(),
+  type: types.literal("postgres-host"),
+  storeId: types.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHintProjects10$Outbound = {
@@ -1542,8 +1544,8 @@ export const CreateProjectEnvContentHintProjects9$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("postgres-user"),
-  storeId: z.string(),
+  type: types.literal("postgres-user"),
+  storeId: types.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHintProjects9$Outbound = {
@@ -1587,8 +1589,8 @@ export const CreateProjectEnvContentHintProjects8$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("postgres-prisma-url"),
-  storeId: z.string(),
+  type: types.literal("postgres-prisma-url"),
+  storeId: types.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHintProjects8$Outbound = {
@@ -1632,8 +1634,8 @@ export const CreateProjectEnvContentHintProjects7$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("postgres-url-non-pooling"),
-  storeId: z.string(),
+  type: types.literal("postgres-url-non-pooling"),
+  storeId: types.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHintProjects7$Outbound = {
@@ -1677,8 +1679,8 @@ export const CreateProjectEnvContentHintProjects6$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("postgres-url"),
-  storeId: z.string(),
+  type: types.literal("postgres-url"),
+  storeId: types.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHintProjects6$Outbound = {
@@ -1722,8 +1724,8 @@ export const CreateProjectEnvContentHintProjects5$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("blob-read-write-token"),
-  storeId: z.string(),
+  type: types.literal("blob-read-write-token"),
+  storeId: types.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHintProjects5$Outbound = {
@@ -1767,8 +1769,8 @@ export const CreateProjectEnvContentHintProjects4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("redis-rest-api-read-only-token"),
-  storeId: z.string(),
+  type: types.literal("redis-rest-api-read-only-token"),
+  storeId: types.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHintProjects4$Outbound = {
@@ -1812,8 +1814,8 @@ export const CreateProjectEnvContentHintProjects3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("redis-rest-api-token"),
-  storeId: z.string(),
+  type: types.literal("redis-rest-api-token"),
+  storeId: types.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHintProjects3$Outbound = {
@@ -1857,8 +1859,8 @@ export const CreateProjectEnvContentHintProjects2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("redis-rest-api-url"),
-  storeId: z.string(),
+  type: types.literal("redis-rest-api-url"),
+  storeId: types.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHintProjects2$Outbound = {
@@ -1902,8 +1904,8 @@ export const CreateProjectEnvContentHintProjects1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("redis-url"),
-  storeId: z.string(),
+  type: types.literal("redis-url"),
+  storeId: types.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHintProjects1$Outbound = {
@@ -2038,7 +2040,7 @@ export const CreateProjectEnvCreatedInternalContentHint$inboundSchema:
   z.ZodType<CreateProjectEnvCreatedInternalContentHint, z.ZodTypeDef, unknown> =
     z.object({
       type: CreateProjectEnvCreatedProjectsResponseType$inboundSchema,
-      encryptedValue: z.string(),
+      encryptedValue: types.string(),
     });
 /** @internal */
 export type CreateProjectEnvCreatedInternalContentHint$Outbound = {
@@ -2089,25 +2091,27 @@ export const Created2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  target: z.union([
-    z.array(z.string()),
-    CreateProjectEnvTargetProjects2$inboundSchema,
-  ]).optional(),
+  target: types.optional(
+    smartUnion([
+      z.array(types.string()),
+      CreateProjectEnvTargetProjects2$inboundSchema,
+    ]),
+  ),
   type: CreateProjectEnvCreatedType$inboundSchema,
-  sunsetSecretId: z.string().optional(),
-  decrypted: z.boolean().optional(),
-  value: z.string(),
-  vsmValue: z.string().optional(),
-  id: z.string().optional(),
-  key: z.string(),
-  configurationId: z.nullable(z.string()).optional(),
-  createdAt: z.number().optional(),
-  updatedAt: z.number().optional(),
-  createdBy: z.nullable(z.string()).optional(),
-  updatedBy: z.nullable(z.string()).optional(),
-  gitBranch: z.string().optional(),
-  edgeConfigId: z.nullable(z.string()).optional(),
-  edgeConfigTokenId: z.nullable(z.string()).optional(),
+  sunsetSecretId: types.optional(types.string()),
+  decrypted: types.optional(types.boolean()),
+  value: types.string(),
+  vsmValue: types.optional(types.string()),
+  id: types.optional(types.string()),
+  key: types.string(),
+  configurationId: z.nullable(types.string()).optional(),
+  createdAt: types.optional(types.number()),
+  updatedAt: types.optional(types.number()),
+  createdBy: z.nullable(types.string()).optional(),
+  updatedBy: z.nullable(types.string()).optional(),
+  gitBranch: types.optional(types.string()),
+  edgeConfigId: z.nullable(types.string()).optional(),
+  edgeConfigTokenId: z.nullable(types.string()).optional(),
   contentHint: z.nullable(
     z.union([
       z.lazy(() => CreateProjectEnvContentHintProjects1$inboundSchema),
@@ -2130,9 +2134,9 @@ export const Created2$inboundSchema: z.ZodType<
   internalContentHint: z.nullable(
     z.lazy(() => CreateProjectEnvCreatedInternalContentHint$inboundSchema),
   ).optional(),
-  comment: z.string().optional(),
-  customEnvironmentIds: z.array(z.string()).optional(),
-  system: z.boolean().optional(),
+  comment: types.optional(types.string()),
+  customEnvironmentIds: types.optional(z.array(types.string())),
+  system: types.optional(types.boolean()),
 });
 /** @internal */
 export type Created2$Outbound = {
@@ -2185,7 +2189,7 @@ export const Created2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Created2
 > = z.object({
-  target: z.union([
+  target: smartUnion([
     z.array(z.string()),
     CreateProjectEnvTargetProjects2$outboundSchema,
   ]).optional(),
@@ -2267,7 +2271,7 @@ export const CreatedTarget$inboundSchema: z.ZodType<
   CreatedTarget,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.array(CreateProjectEnvTarget1$inboundSchema),
   CreateProjectEnvTarget2$inboundSchema,
 ]);
@@ -2279,7 +2283,7 @@ export const CreatedTarget$outboundSchema: z.ZodType<
   CreatedTarget$Outbound,
   z.ZodTypeDef,
   CreatedTarget
-> = z.union([
+> = smartUnion([
   z.array(CreateProjectEnvTarget1$outboundSchema),
   CreateProjectEnvTarget2$outboundSchema,
 ]);
@@ -2310,8 +2314,8 @@ export const CreateProjectEnvContentHint15$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("flags-connection-string"),
-  projectId: z.string(),
+  type: types.literal("flags-connection-string"),
+  projectId: types.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHint15$Outbound = {
@@ -2354,11 +2358,11 @@ export const CreateProjectEnvContentHint14$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("integration-store-secret"),
-  storeId: z.string(),
-  integrationId: z.string(),
-  integrationProductId: z.string(),
-  integrationConfigurationId: z.string(),
+  type: types.literal("integration-store-secret"),
+  storeId: types.string(),
+  integrationId: types.string(),
+  integrationProductId: types.string(),
+  integrationConfigurationId: types.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHint14$Outbound = {
@@ -2407,8 +2411,8 @@ export const CreateProjectEnvContentHint13$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("postgres-url-no-ssl"),
-  storeId: z.string(),
+  type: types.literal("postgres-url-no-ssl"),
+  storeId: types.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHint13$Outbound = {
@@ -2451,8 +2455,8 @@ export const CreateProjectEnvContentHint12$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("postgres-database"),
-  storeId: z.string(),
+  type: types.literal("postgres-database"),
+  storeId: types.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHint12$Outbound = {
@@ -2495,8 +2499,8 @@ export const CreateProjectEnvContentHint11$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("postgres-password"),
-  storeId: z.string(),
+  type: types.literal("postgres-password"),
+  storeId: types.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHint11$Outbound = {
@@ -2539,8 +2543,8 @@ export const CreateProjectEnvContentHint10$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("postgres-host"),
-  storeId: z.string(),
+  type: types.literal("postgres-host"),
+  storeId: types.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHint10$Outbound = {
@@ -2583,8 +2587,8 @@ export const CreateProjectEnvContentHint9$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("postgres-user"),
-  storeId: z.string(),
+  type: types.literal("postgres-user"),
+  storeId: types.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHint9$Outbound = {
@@ -2627,8 +2631,8 @@ export const CreateProjectEnvContentHint8$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("postgres-prisma-url"),
-  storeId: z.string(),
+  type: types.literal("postgres-prisma-url"),
+  storeId: types.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHint8$Outbound = {
@@ -2671,8 +2675,8 @@ export const CreateProjectEnvContentHint7$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("postgres-url-non-pooling"),
-  storeId: z.string(),
+  type: types.literal("postgres-url-non-pooling"),
+  storeId: types.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHint7$Outbound = {
@@ -2715,8 +2719,8 @@ export const CreateProjectEnvContentHint6$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("postgres-url"),
-  storeId: z.string(),
+  type: types.literal("postgres-url"),
+  storeId: types.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHint6$Outbound = {
@@ -2759,8 +2763,8 @@ export const CreateProjectEnvContentHint5$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("blob-read-write-token"),
-  storeId: z.string(),
+  type: types.literal("blob-read-write-token"),
+  storeId: types.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHint5$Outbound = {
@@ -2803,8 +2807,8 @@ export const CreateProjectEnvContentHint4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("redis-rest-api-read-only-token"),
-  storeId: z.string(),
+  type: types.literal("redis-rest-api-read-only-token"),
+  storeId: types.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHint4$Outbound = {
@@ -2847,8 +2851,8 @@ export const CreateProjectEnvContentHint3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("redis-rest-api-token"),
-  storeId: z.string(),
+  type: types.literal("redis-rest-api-token"),
+  storeId: types.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHint3$Outbound = {
@@ -2891,8 +2895,8 @@ export const CreateProjectEnvContentHint2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("redis-rest-api-url"),
-  storeId: z.string(),
+  type: types.literal("redis-rest-api-url"),
+  storeId: types.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHint2$Outbound = {
@@ -2935,8 +2939,8 @@ export const CreateProjectEnvContentHint1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.literal("redis-url"),
-  storeId: z.string(),
+  type: types.literal("redis-url"),
+  storeId: types.string(),
 });
 /** @internal */
 export type CreateProjectEnvContentHint1$Outbound = {
@@ -3069,7 +3073,7 @@ export const CreatedInternalContentHint$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type: CreateProjectEnvCreatedProjectsType$inboundSchema,
-  encryptedValue: z.string(),
+  encryptedValue: types.string(),
 });
 /** @internal */
 export type CreatedInternalContentHint$Outbound = {
@@ -3110,25 +3114,27 @@ export const Created1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  target: z.union([
-    z.array(CreateProjectEnvTarget1$inboundSchema),
-    CreateProjectEnvTarget2$inboundSchema,
-  ]).optional(),
+  target: types.optional(
+    smartUnion([
+      z.array(CreateProjectEnvTarget1$inboundSchema),
+      CreateProjectEnvTarget2$inboundSchema,
+    ]),
+  ),
   type: CreatedType$inboundSchema,
-  sunsetSecretId: z.string().optional(),
-  decrypted: z.boolean().optional(),
-  value: z.string(),
-  vsmValue: z.string().optional(),
-  id: z.string().optional(),
-  key: z.string(),
-  configurationId: z.nullable(z.string()).optional(),
-  createdAt: z.number().optional(),
-  updatedAt: z.number().optional(),
-  createdBy: z.nullable(z.string()).optional(),
-  updatedBy: z.nullable(z.string()).optional(),
-  gitBranch: z.string().optional(),
-  edgeConfigId: z.nullable(z.string()).optional(),
-  edgeConfigTokenId: z.nullable(z.string()).optional(),
+  sunsetSecretId: types.optional(types.string()),
+  decrypted: types.optional(types.boolean()),
+  value: types.string(),
+  vsmValue: types.optional(types.string()),
+  id: types.optional(types.string()),
+  key: types.string(),
+  configurationId: z.nullable(types.string()).optional(),
+  createdAt: types.optional(types.number()),
+  updatedAt: types.optional(types.number()),
+  createdBy: z.nullable(types.string()).optional(),
+  updatedBy: z.nullable(types.string()).optional(),
+  gitBranch: types.optional(types.string()),
+  edgeConfigId: z.nullable(types.string()).optional(),
+  edgeConfigTokenId: z.nullable(types.string()).optional(),
   contentHint: z.nullable(
     z.union([
       z.lazy(() => CreateProjectEnvContentHint1$inboundSchema),
@@ -3151,9 +3157,9 @@ export const Created1$inboundSchema: z.ZodType<
   internalContentHint: z.nullable(
     z.lazy(() => CreatedInternalContentHint$inboundSchema),
   ).optional(),
-  comment: z.string().optional(),
-  customEnvironmentIds: z.array(z.string()).optional(),
-  system: z.boolean().optional(),
+  comment: types.optional(types.string()),
+  customEnvironmentIds: types.optional(z.array(types.string())),
+  system: types.optional(types.boolean()),
 });
 /** @internal */
 export type Created1$Outbound = {
@@ -3203,7 +3209,7 @@ export const Created1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Created1
 > = z.object({
-  target: z.union([
+  target: smartUnion([
     z.array(CreateProjectEnvTarget1$outboundSchema),
     CreateProjectEnvTarget2$outboundSchema,
   ]).optional(),
@@ -3267,7 +3273,7 @@ export const CreateProjectEnvCreated$inboundSchema: z.ZodType<
   CreateProjectEnvCreated,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => Created1$inboundSchema),
   z.array(z.lazy(() => Created2$inboundSchema)),
 ]);
@@ -3281,7 +3287,7 @@ export const CreateProjectEnvCreated$outboundSchema: z.ZodType<
   CreateProjectEnvCreated$Outbound,
   z.ZodTypeDef,
   CreateProjectEnvCreated
-> = z.union([
+> = smartUnion([
   z.lazy(() => Created1$outboundSchema),
   z.array(z.lazy(() => Created2$outboundSchema)),
 ]);
@@ -3317,7 +3323,7 @@ export const CreateProjectEnvValue$inboundSchema: z.ZodType<
   CreateProjectEnvValue,
   z.ZodTypeDef,
   unknown
-> = z.union([z.string(), z.array(CreateProjectEnvValue2$inboundSchema)]);
+> = smartUnion([types.string(), z.array(CreateProjectEnvValue2$inboundSchema)]);
 /** @internal */
 export type CreateProjectEnvValue$Outbound = string | Array<string>;
 
@@ -3326,7 +3332,7 @@ export const CreateProjectEnvValue$outboundSchema: z.ZodType<
   CreateProjectEnvValue$Outbound,
   z.ZodTypeDef,
   CreateProjectEnvValue
-> = z.union([z.string(), z.array(CreateProjectEnvValue2$outboundSchema)]);
+> = smartUnion([z.string(), z.array(CreateProjectEnvValue2$outboundSchema)]);
 
 export function createProjectEnvValueToJSON(
   createProjectEnvValue: CreateProjectEnvValue,
@@ -3368,7 +3374,7 @@ export const CreateProjectEnvTarget$inboundSchema: z.ZodType<
   CreateProjectEnvTarget,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.array(CreateProjectEnvTargetProjects1$inboundSchema),
   CreateProjectEnvTargetProjectsResponse2$inboundSchema,
 ]);
@@ -3380,7 +3386,7 @@ export const CreateProjectEnvTarget$outboundSchema: z.ZodType<
   CreateProjectEnvTarget$Outbound,
   z.ZodTypeDef,
   CreateProjectEnvTarget
-> = z.union([
+> = smartUnion([
   z.array(CreateProjectEnvTargetProjects1$outboundSchema),
   CreateProjectEnvTargetProjectsResponse2$outboundSchema,
 ]);
@@ -3408,21 +3414,24 @@ export const CreateProjectEnvError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  code: z.string(),
-  message: z.string(),
-  key: z.string().optional(),
-  envVarId: z.string().optional(),
-  envVarKey: z.string().optional(),
-  action: z.string().optional(),
-  link: z.string().optional(),
-  value: z.union([z.string(), z.array(CreateProjectEnvValue2$inboundSchema)])
-    .optional(),
-  gitBranch: z.string().optional(),
-  target: z.union([
-    z.array(CreateProjectEnvTargetProjects1$inboundSchema),
-    CreateProjectEnvTargetProjectsResponse2$inboundSchema,
-  ]).optional(),
-  project: z.string().optional(),
+  code: types.string(),
+  message: types.string(),
+  key: types.optional(types.string()),
+  envVarId: types.optional(types.string()),
+  envVarKey: types.optional(types.string()),
+  action: types.optional(types.string()),
+  link: types.optional(types.string()),
+  value: types.optional(
+    smartUnion([types.string(), z.array(CreateProjectEnvValue2$inboundSchema)]),
+  ),
+  gitBranch: types.optional(types.string()),
+  target: types.optional(
+    smartUnion([
+      z.array(CreateProjectEnvTargetProjects1$inboundSchema),
+      CreateProjectEnvTargetProjectsResponse2$inboundSchema,
+    ]),
+  ),
+  project: types.optional(types.string()),
 });
 /** @internal */
 export type CreateProjectEnvError$Outbound = {
@@ -3452,10 +3461,12 @@ export const CreateProjectEnvError$outboundSchema: z.ZodType<
   envVarKey: z.string().optional(),
   action: z.string().optional(),
   link: z.string().optional(),
-  value: z.union([z.string(), z.array(CreateProjectEnvValue2$outboundSchema)])
-    .optional(),
+  value: smartUnion([
+    z.string(),
+    z.array(CreateProjectEnvValue2$outboundSchema),
+  ]).optional(),
   gitBranch: z.string().optional(),
-  target: z.union([
+  target: smartUnion([
     z.array(CreateProjectEnvTargetProjects1$outboundSchema),
     CreateProjectEnvTargetProjectsResponse2$outboundSchema,
   ]).optional(),
@@ -3524,7 +3535,7 @@ export const CreateProjectEnvResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  created: z.union([
+  created: smartUnion([
     z.lazy(() => Created1$inboundSchema),
     z.array(z.lazy(() => Created2$inboundSchema)),
   ]),
@@ -3542,7 +3553,7 @@ export const CreateProjectEnvResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvResponseBody
 > = z.object({
-  created: z.union([
+  created: smartUnion([
     z.lazy(() => Created1$outboundSchema),
     z.array(z.lazy(() => Created2$outboundSchema)),
   ]),

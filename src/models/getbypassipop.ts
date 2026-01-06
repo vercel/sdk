@@ -7,6 +7,7 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetBypassIpRequest = {
@@ -77,14 +78,14 @@ export const GetBypassIpRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
-  limit: z.number().optional(),
-  sourceIp: z.string().optional(),
-  domain: z.string().optional(),
-  projectScope: z.boolean().optional(),
-  offset: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  projectId: types.string(),
+  limit: types.optional(types.number()),
+  sourceIp: types.optional(types.string()),
+  domain: types.optional(types.string()),
+  projectScope: types.optional(types.boolean()),
+  offset: types.optional(types.string()),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type GetBypassIpRequest$Outbound = {
@@ -146,20 +147,20 @@ export const GetBypassIpResult$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  OwnerId: z.string(),
-  Id: z.string(),
-  Domain: z.string(),
-  Ip: z.string(),
-  Action: GetBypassIpAction$inboundSchema.optional(),
-  ProjectId: z.string().optional(),
-  IsProjectRule: z.boolean().optional(),
-  Note: z.string().optional(),
-  CreatedAt: z.string(),
-  ActorId: z.string().optional(),
-  UpdatedAt: z.string(),
-  UpdatedAtHour: z.string(),
-  DeletedAt: z.string().optional(),
-  ExpiresAt: z.nullable(z.number()).optional(),
+  OwnerId: types.string(),
+  Id: types.string(),
+  Domain: types.string(),
+  Ip: types.string(),
+  Action: types.optional(GetBypassIpAction$inboundSchema),
+  ProjectId: types.optional(types.string()),
+  IsProjectRule: types.optional(types.boolean()),
+  Note: types.optional(types.string()),
+  CreatedAt: types.string(),
+  ActorId: types.optional(types.string()),
+  UpdatedAt: types.string(),
+  UpdatedAtHour: types.string(),
+  DeletedAt: types.optional(types.string()),
+  ExpiresAt: z.nullable(types.number()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "OwnerId": "ownerId",
@@ -258,8 +259,8 @@ export const GetBypassIpPagination$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  OwnerId: z.string(),
-  Id: z.string(),
+  OwnerId: types.string(),
+  Id: types.string(),
 }).transform((v) => {
   return remap$(v, {
     "OwnerId": "ownerId",
@@ -311,7 +312,7 @@ export const GetBypassIpResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   result: z.array(z.lazy(() => GetBypassIpResult$inboundSchema)),
-  pagination: z.lazy(() => GetBypassIpPagination$inboundSchema).optional(),
+  pagination: types.optional(z.lazy(() => GetBypassIpPagination$inboundSchema)),
 });
 /** @internal */
 export type GetBypassIpResponseBody$Outbound = {

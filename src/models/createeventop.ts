@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type Event2 = {
@@ -42,9 +43,9 @@ export type CreateEventRequest = {
 /** @internal */
 export const Event2$inboundSchema: z.ZodType<Event2, z.ZodTypeDef, unknown> = z
   .object({
-    type: z.literal("resource.updated"),
-    productId: z.string().optional(),
-    resourceId: z.string(),
+    type: types.literal("resource.updated"),
+    productId: types.optional(types.string()),
+    resourceId: types.string(),
   });
 /** @internal */
 export type Event2$Outbound = {
@@ -80,8 +81,8 @@ export function event2FromJSON(
 /** @internal */
 export const Event1$inboundSchema: z.ZodType<Event1, z.ZodTypeDef, unknown> = z
   .object({
-    type: z.literal("installation.updated"),
-    billingPlanId: z.string().optional(),
+    type: types.literal("installation.updated"),
+    billingPlanId: types.optional(types.string()),
   });
 /** @internal */
 export type Event1$Outbound = {
@@ -202,7 +203,7 @@ export const CreateEventRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  integrationConfigurationId: z.string(),
+  integrationConfigurationId: types.string(),
   RequestBody: z.lazy(() => CreateEventRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {

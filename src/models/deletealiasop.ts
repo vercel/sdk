@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteAliasRequest = {
@@ -41,9 +42,9 @@ export const DeleteAliasRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  aliasId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  aliasId: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type DeleteAliasRequest$Outbound = {

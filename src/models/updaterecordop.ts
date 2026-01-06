@@ -7,6 +7,7 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -132,10 +133,10 @@ export const UpdateRecordType$outboundSchema: z.ZodNativeEnum<
 /** @internal */
 export const Srv$inboundSchema: z.ZodType<Srv, z.ZodTypeDef, unknown> = z
   .object({
-    target: z.nullable(z.string()),
-    weight: z.nullable(z.number().int()),
-    port: z.nullable(z.number().int()),
-    priority: z.nullable(z.number().int()),
+    target: types.nullable(types.string()),
+    weight: types.nullable(types.number()),
+    port: types.nullable(types.number()),
+    priority: types.nullable(types.number()),
   });
 /** @internal */
 export type Srv$Outbound = {
@@ -170,9 +171,9 @@ export function srvFromJSON(
 /** @internal */
 export const Https$inboundSchema: z.ZodType<Https, z.ZodTypeDef, unknown> = z
   .object({
-    priority: z.nullable(z.number().int()),
-    target: z.nullable(z.string()),
-    params: z.nullable(z.string()).optional(),
+    priority: types.nullable(types.number()),
+    target: types.nullable(types.string()),
+    params: z.nullable(types.string()).optional(),
   });
 /** @internal */
 export type Https$Outbound = {
@@ -211,14 +212,14 @@ export const UpdateRecordRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.nullable(z.string()).optional(),
-  value: z.nullable(z.string()).optional(),
+  name: z.nullable(types.string()).optional(),
+  value: z.nullable(types.string()).optional(),
   type: z.nullable(UpdateRecordType$inboundSchema).optional(),
-  ttl: z.nullable(z.number().int()).optional(),
-  mxPriority: z.nullable(z.number().int()).optional(),
+  ttl: z.nullable(types.number()).optional(),
+  mxPriority: z.nullable(types.number()).optional(),
   srv: z.nullable(z.lazy(() => Srv$inboundSchema)).optional(),
   https: z.nullable(z.lazy(() => Https$inboundSchema)).optional(),
-  comment: z.string().optional(),
+  comment: types.optional(types.string()),
 });
 /** @internal */
 export type UpdateRecordRequestBody$Outbound = {
@@ -271,9 +272,9 @@ export const UpdateRecordRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  recordId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  recordId: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
   RequestBody: z.lazy(() => UpdateRecordRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
@@ -343,16 +344,16 @@ export const UpdateRecordResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  createdAt: z.nullable(z.number()).optional(),
-  creator: z.string(),
-  domain: z.string(),
-  id: z.string(),
-  name: z.string(),
+  createdAt: z.nullable(types.number()).optional(),
+  creator: types.string(),
+  domain: types.string(),
+  id: types.string(),
+  name: types.string(),
   recordType: RecordType$inboundSchema,
-  ttl: z.number().optional(),
+  ttl: types.optional(types.number()),
   type: UpdateRecordDnsType$inboundSchema,
-  value: z.string(),
-  comment: z.string().optional(),
+  value: types.string(),
+  comment: types.optional(types.string()),
 });
 /** @internal */
 export type UpdateRecordResponseBody$Outbound = {

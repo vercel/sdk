@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type UpdateAttackChallengeModeRequestBody = {
@@ -37,9 +38,9 @@ export const UpdateAttackChallengeModeRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
-  attackModeEnabled: z.boolean(),
-  attackModeActiveUntil: z.nullable(z.number()).optional(),
+  projectId: types.string(),
+  attackModeEnabled: types.boolean(),
+  attackModeActiveUntil: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type UpdateAttackChallengeModeRequestBody$Outbound = {
@@ -85,8 +86,8 @@ export const UpdateAttackChallengeModeRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
   RequestBody: z.lazy(() => UpdateAttackChallengeModeRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
@@ -142,8 +143,8 @@ export const UpdateAttackChallengeModeResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  attackModeEnabled: z.boolean(),
-  attackModeUpdatedAt: z.number(),
+  attackModeEnabled: types.boolean(),
+  attackModeUpdatedAt: types.number(),
 });
 /** @internal */
 export type UpdateAttackChallengeModeResponseBody$Outbound = {

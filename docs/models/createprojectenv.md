@@ -6,7 +6,7 @@
 import { CreateProjectEnv } from "@vercel/sdk/models/createprojectop.js";
 
 let value: CreateProjectEnv = {
-  type: "plain",
+  type: "encrypted",
   value: "<value>",
   key: "<key>",
 };
@@ -18,7 +18,7 @@ let value: CreateProjectEnv = {
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
 | `target`                                                                                   | *models.CreateProjectProjectsTarget*                                                       | :heavy_minus_sign:                                                                         | N/A                                                                                        |
 | `type`                                                                                     | [models.CreateProjectProjectsResponseType](../models/createprojectprojectsresponsetype.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
-| `sunsetSecretId`                                                                           | *string*                                                                                   | :heavy_minus_sign:                                                                         | This is used to identiy variables that have been migrated from type secret to sensitive.   |
+| `sunsetSecretId`                                                                           | *string*                                                                                   | :heavy_minus_sign:                                                                         | This is used to identify variables that have been migrated from type secret to sensitive.  |
 | `decrypted`                                                                                | *boolean*                                                                                  | :heavy_minus_sign:                                                                         | N/A                                                                                        |
 | `value`                                                                                    | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `vsmValue`                                                                                 | *string*                                                                                   | :heavy_minus_sign:                                                                         | N/A                                                                                        |

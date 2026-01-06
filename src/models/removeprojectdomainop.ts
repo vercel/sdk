@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type RemoveProjectDomainRequestBody = {
@@ -46,7 +47,7 @@ export const RemoveProjectDomainRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  removeRedirects: z.boolean().optional(),
+  removeRedirects: types.optional(types.boolean()),
 });
 /** @internal */
 export type RemoveProjectDomainRequestBody$Outbound = {
@@ -87,12 +88,13 @@ export const RemoveProjectDomainRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  idOrName: z.string(),
-  domain: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  RequestBody: z.lazy(() => RemoveProjectDomainRequestBody$inboundSchema)
-    .optional(),
+  idOrName: types.string(),
+  domain: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
+  RequestBody: types.optional(
+    z.lazy(() => RemoveProjectDomainRequestBody$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",

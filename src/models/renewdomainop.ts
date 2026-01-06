@@ -7,6 +7,8 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import {
   BadRequest,
   BadRequest$inboundSchema,
@@ -166,6 +168,9 @@ export type RenewDomainLinks = {
  * Success
  */
 export type RenewDomainResponseBody = {
+  /**
+   * A valid order ID
+   */
   orderId: string;
   links: { [k: string]: RenewDomainLinks };
 };
@@ -176,18 +181,18 @@ export const RenewDomainContactInformation$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  firstName: z.string(),
-  lastName: z.string(),
-  email: z.string(),
-  phone: z.string(),
-  address1: z.string(),
-  address2: z.string().optional(),
-  city: z.string(),
-  state: z.string(),
-  zip: z.string(),
-  country: z.string(),
-  companyName: z.string().optional(),
-  fax: z.string().optional(),
+  firstName: types.string(),
+  lastName: types.string(),
+  email: types.string(),
+  phone: types.string(),
+  address1: types.string(),
+  address2: types.optional(types.string()),
+  city: types.string(),
+  state: types.string(),
+  zip: types.string(),
+  country: types.string(),
+  companyName: types.optional(types.string()),
+  fax: types.optional(types.string()),
 });
 /** @internal */
 export type RenewDomainContactInformation$Outbound = {
@@ -250,10 +255,11 @@ export const RenewDomainRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  years: z.number(),
-  expectedPrice: z.number(),
-  contactInformation: z.lazy(() => RenewDomainContactInformation$inboundSchema)
-    .optional(),
+  years: types.number(),
+  expectedPrice: types.number(),
+  contactInformation: types.optional(
+    z.lazy(() => RenewDomainContactInformation$inboundSchema),
+  ),
 });
 /** @internal */
 export type RenewDomainRequestBody$Outbound = {
@@ -297,8 +303,8 @@ export const RenewDomainRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  domain: z.string(),
-  teamId: z.string().optional(),
+  domain: types.string(),
+  teamId: types.optional(types.string()),
   RequestBody: z.lazy(() => RenewDomainRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
@@ -405,7 +411,7 @@ export const RenewDomainDomainsRegistrarResponseBody$inboundSchema: z.ZodType<
   RenewDomainDomainsRegistrarResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   BadRequest$inboundSchema,
   DomainTooShort$inboundSchema,
   DomainNotRegistered$inboundSchema,
@@ -429,7 +435,7 @@ export const RenewDomainDomainsRegistrarResponseBody$outboundSchema: z.ZodType<
   RenewDomainDomainsRegistrarResponseBody$Outbound,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   BadRequest$outboundSchema,
   DomainTooShort$outboundSchema,
   DomainNotRegistered$outboundSchema,
@@ -480,7 +486,7 @@ export const RenewDomainLinks$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  href: z.string(),
+  href: types.string(),
   method: RenewDomainMethod$inboundSchema,
 });
 /** @internal */
@@ -522,7 +528,7 @@ export const RenewDomainResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  orderId: z.string(),
+  orderId: types.string(),
   _links: z.record(z.lazy(() => RenewDomainLinks$inboundSchema)),
 }).transform((v) => {
   return remap$(v, {

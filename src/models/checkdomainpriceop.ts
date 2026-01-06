@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -70,10 +71,10 @@ export const CheckDomainPriceRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  type: QueryParamType$inboundSchema.optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  name: types.string(),
+  type: types.optional(QueryParamType$inboundSchema),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type CheckDomainPriceRequest$Outbound = {
@@ -118,8 +119,8 @@ export const CheckDomainPriceResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  price: z.number(),
-  period: z.number(),
+  price: types.number(),
+  period: types.number(),
 });
 /** @internal */
 export type CheckDomainPriceResponseBody$Outbound = {

@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetInvoiceRequest = {
@@ -196,8 +197,8 @@ export const GetInvoiceRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  integrationConfigurationId: z.string(),
-  invoiceId: z.string(),
+  integrationConfigurationId: types.string(),
+  invoiceId: types.string(),
 });
 /** @internal */
 export type GetInvoiceRequest$Outbound = {
@@ -247,8 +248,8 @@ export const GetInvoicePeriod$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  start: z.string(),
-  end: z.string(),
+  start: types.string(),
+  end: types.string(),
 });
 /** @internal */
 export type GetInvoicePeriod$Outbound = {
@@ -289,16 +290,16 @@ export const GetInvoiceItems$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  billingPlanId: z.string(),
-  resourceId: z.string().optional(),
-  start: z.string().optional(),
-  end: z.string().optional(),
-  name: z.string(),
-  details: z.string().optional(),
-  price: z.string(),
-  quantity: z.number(),
-  units: z.string(),
-  total: z.string(),
+  billingPlanId: types.string(),
+  resourceId: types.optional(types.string()),
+  start: types.optional(types.string()),
+  end: types.optional(types.string()),
+  name: types.string(),
+  details: types.optional(types.string()),
+  price: types.string(),
+  quantity: types.number(),
+  units: types.string(),
+  total: types.string(),
 });
 /** @internal */
 export type GetInvoiceItems$Outbound = {
@@ -353,13 +354,13 @@ export const GetInvoiceDiscounts$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  billingPlanId: z.string(),
-  resourceId: z.string().optional(),
-  start: z.string().optional(),
-  end: z.string().optional(),
-  name: z.string(),
-  details: z.string().optional(),
-  amount: z.string(),
+  billingPlanId: types.string(),
+  resourceId: types.optional(types.string()),
+  start: types.optional(types.string()),
+  end: types.optional(types.string()),
+  name: types.string(),
+  details: types.optional(types.string()),
+  amount: types.string(),
 });
 /** @internal */
 export type GetInvoiceDiscounts$Outbound = {
@@ -410,24 +411,25 @@ export const GetInvoiceResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  test: z.boolean().optional(),
-  invoiceId: z.string(),
-  externalId: z.string().optional(),
+  test: types.optional(types.boolean()),
+  invoiceId: types.string(),
+  externalId: types.optional(types.string()),
   state: GetInvoiceState$inboundSchema,
-  invoiceNumber: z.string().optional(),
-  invoiceDate: z.string(),
+  invoiceNumber: types.optional(types.string()),
+  invoiceDate: types.string(),
   period: z.lazy(() => GetInvoicePeriod$inboundSchema),
-  paidAt: z.string().optional(),
-  refundedAt: z.string().optional(),
-  memo: z.string().optional(),
+  paidAt: types.optional(types.string()),
+  refundedAt: types.optional(types.string()),
+  memo: types.optional(types.string()),
   items: z.array(z.lazy(() => GetInvoiceItems$inboundSchema)),
-  discounts: z.array(z.lazy(() => GetInvoiceDiscounts$inboundSchema))
-    .optional(),
-  total: z.string(),
-  refundReason: z.string().optional(),
-  refundTotal: z.string().optional(),
-  created: z.string(),
-  updated: z.string(),
+  discounts: types.optional(
+    z.array(z.lazy(() => GetInvoiceDiscounts$inboundSchema)),
+  ),
+  total: types.string(),
+  refundReason: types.optional(types.string()),
+  refundTotal: types.optional(types.string()),
+  created: types.string(),
+  updated: types.string(),
 });
 /** @internal */
 export type GetInvoiceResponseBody$Outbound = {

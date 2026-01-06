@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import {
   EdgeConfigItemValue,
   EdgeConfigItemValue$inboundSchema,
@@ -31,12 +32,12 @@ export const EdgeConfigItem$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  key: z.string(),
-  value: z.nullable(EdgeConfigItemValue$inboundSchema),
-  description: z.string().optional(),
-  edgeConfigId: z.string(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
+  key: types.string(),
+  value: types.nullable(EdgeConfigItemValue$inboundSchema),
+  description: types.optional(types.string()),
+  edgeConfigId: types.string(),
+  createdAt: types.number(),
+  updatedAt: types.number(),
 });
 /** @internal */
 export type EdgeConfigItem$Outbound = {

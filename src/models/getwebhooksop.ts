@@ -6,6 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetWebhooksRequest = {
@@ -69,6 +71,7 @@ export const GetWebhooksResponseBodyEvents = {
     "integration-resource.project-disconnected",
   ProjectCreated: "project.created",
   ProjectRemoved: "project.removed",
+  ProjectRenamed: "project.renamed",
   ProjectDomainCreated: "project.domain.created",
   ProjectDomainUpdated: "project.domain.updated",
   ProjectDomainDeleted: "project.domain.deleted",
@@ -265,6 +268,7 @@ export const ResponseBodyEvents = {
     "integration-resource.project-disconnected",
   ProjectCreated: "project.created",
   ProjectRemoved: "project.removed",
+  ProjectRenamed: "project.renamed",
   ProjectDomainCreated: "project.domain.created",
   ProjectDomainUpdated: "project.domain.updated",
   ProjectDomainDeleted: "project.domain.deleted",
@@ -351,9 +355,9 @@ export const GetWebhooksRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  projectId: types.optional(types.string()),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type GetWebhooksRequest$Outbound = {
@@ -406,12 +410,12 @@ export const GetWebhooksResponseBody2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   events: z.array(GetWebhooksResponseBodyEvents$inboundSchema),
-  id: z.string(),
-  url: z.string(),
-  ownerId: z.string(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
-  projectIds: z.array(z.string()).optional(),
+  id: types.string(),
+  url: types.string(),
+  ownerId: types.string(),
+  createdAt: types.number(),
+  updatedAt: types.number(),
+  projectIds: types.optional(z.array(types.string())),
 });
 /** @internal */
 export type GetWebhooksResponseBody2$Outbound = {
@@ -471,11 +475,11 @@ export const GetWebhooksResponseBodyProjectsMetadata$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
+  id: types.string(),
+  name: types.string(),
   framework: z.nullable(GetWebhooksResponseBodyFramework$inboundSchema)
     .optional(),
-  latestDeployment: z.string().optional(),
+  latestDeployment: types.optional(types.string()),
 });
 /** @internal */
 export type GetWebhooksResponseBodyProjectsMetadata$Outbound = {
@@ -539,18 +543,18 @@ export const GetWebhooksResponseBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectsMetadata: z.nullable(
+  projectsMetadata: types.nullable(
     z.array(
       z.lazy(() => GetWebhooksResponseBodyProjectsMetadata$inboundSchema),
     ),
   ),
   events: z.array(ResponseBodyEvents$inboundSchema),
-  id: z.string(),
-  url: z.string(),
-  ownerId: z.string(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
-  projectIds: z.array(z.string()).optional(),
+  id: types.string(),
+  url: types.string(),
+  ownerId: types.string(),
+  createdAt: types.number(),
+  updatedAt: types.number(),
+  projectIds: types.optional(z.array(types.string())),
 });
 /** @internal */
 export type GetWebhooksResponseBody1$Outbound = {
@@ -608,7 +612,7 @@ export const GetWebhooksResponseBody$inboundSchema: z.ZodType<
   GetWebhooksResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.array(z.lazy(() => GetWebhooksResponseBody1$inboundSchema)),
   z.array(z.lazy(() => GetWebhooksResponseBody2$inboundSchema)),
 ]);
@@ -622,7 +626,7 @@ export const GetWebhooksResponseBody$outboundSchema: z.ZodType<
   GetWebhooksResponseBody$Outbound,
   z.ZodTypeDef,
   GetWebhooksResponseBody
-> = z.union([
+> = smartUnion([
   z.array(z.lazy(() => GetWebhooksResponseBody1$outboundSchema)),
   z.array(z.lazy(() => GetWebhooksResponseBody2$outboundSchema)),
 ]);

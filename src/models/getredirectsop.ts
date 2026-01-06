@@ -7,6 +7,8 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const QueryParam2 = {
@@ -115,14 +117,14 @@ export const QueryParam2$outboundSchema: z.ZodNativeEnum<typeof QueryParam2> =
   QueryParam2$inboundSchema;
 
 /** @internal */
-export const Diff$inboundSchema: z.ZodType<Diff, z.ZodTypeDef, unknown> = z
-  .union([z.boolean(), QueryParam2$inboundSchema]);
+export const Diff$inboundSchema: z.ZodType<Diff, z.ZodTypeDef, unknown> =
+  smartUnion([types.boolean(), QueryParam2$inboundSchema]);
 /** @internal */
 export type Diff$Outbound = boolean | string;
 
 /** @internal */
 export const Diff$outboundSchema: z.ZodType<Diff$Outbound, z.ZodTypeDef, Diff> =
-  z.union([z.boolean(), QueryParam2$outboundSchema]);
+  smartUnion([z.boolean(), QueryParam2$outboundSchema]);
 
 export function diffToJSON(diff: Diff): string {
   return JSON.stringify(Diff$outboundSchema.parse(diff));
@@ -157,16 +159,18 @@ export const GetRedirectsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
-  versionId: z.string().optional(),
-  q: z.string().optional(),
-  diff: z.union([z.boolean(), QueryParam2$inboundSchema]).optional(),
-  page: z.number().int().optional(),
-  per_page: z.number().int().optional(),
-  sort_by: SortBy$inboundSchema.optional(),
-  sort_order: SortOrder$inboundSchema.optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  projectId: types.string(),
+  versionId: types.optional(types.string()),
+  q: types.optional(types.string()),
+  diff: types.optional(
+    smartUnion([types.boolean(), QueryParam2$inboundSchema]),
+  ),
+  page: types.optional(types.number()),
+  per_page: types.optional(types.number()),
+  sort_by: types.optional(SortBy$inboundSchema),
+  sort_order: types.optional(SortOrder$inboundSchema),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 }).transform((v) => {
   return remap$(v, {
     "per_page": "perPage",
@@ -197,7 +201,7 @@ export const GetRedirectsRequest$outboundSchema: z.ZodType<
   projectId: z.string(),
   versionId: z.string().optional(),
   q: z.string().optional(),
-  diff: z.union([z.boolean(), QueryParam2$outboundSchema]).optional(),
+  diff: smartUnion([z.boolean(), QueryParam2$outboundSchema]).optional(),
   page: z.number().int().optional(),
   perPage: z.number().int().optional(),
   sortBy: SortBy$outboundSchema.optional(),
@@ -235,13 +239,13 @@ export const ResponseBodyRedirects$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  statusCode: z.number().optional(),
-  permanent: z.boolean().optional(),
-  sensitive: z.boolean().optional(),
-  caseSensitive: z.boolean().optional(),
-  query: z.boolean().optional(),
-  destination: z.string(),
-  source: z.string(),
+  statusCode: types.optional(types.number()),
+  permanent: types.optional(types.boolean()),
+  sensitive: types.optional(types.boolean()),
+  caseSensitive: types.optional(types.boolean()),
+  query: types.optional(types.boolean()),
+  destination: types.string(),
+  source: types.string(),
 });
 /** @internal */
 export type ResponseBodyRedirects$Outbound = {
@@ -292,15 +296,15 @@ export const ResponseBodyVersion$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  key: z.string(),
-  lastModified: z.number(),
-  createdBy: z.string(),
-  name: z.string().optional(),
-  isStaging: z.boolean().optional(),
-  isLive: z.boolean().optional(),
-  redirectCount: z.number().optional(),
-  alias: z.string().optional(),
+  id: types.string(),
+  key: types.string(),
+  lastModified: types.number(),
+  createdBy: types.string(),
+  name: types.optional(types.string()),
+  isStaging: types.optional(types.boolean()),
+  isLive: types.optional(types.boolean()),
+  redirectCount: types.optional(types.number()),
+  alias: types.optional(types.string()),
 });
 /** @internal */
 export type ResponseBodyVersion$Outbound = {
@@ -355,9 +359,9 @@ export const GetRedirectsResponseBodyPagination$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  page: z.number(),
-  per_page: z.number(),
-  numPages: z.number(),
+  page: types.number(),
+  per_page: types.number(),
+  numPages: types.number(),
 }).transform((v) => {
   return remap$(v, {
     "per_page": "perPage",
@@ -412,7 +416,7 @@ export const GetRedirectsResponseBody2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   redirects: z.array(z.lazy(() => ResponseBodyRedirects$inboundSchema)),
-  version: z.lazy(() => ResponseBodyVersion$inboundSchema).optional(),
+  version: types.optional(z.lazy(() => ResponseBodyVersion$inboundSchema)),
   pagination: z.lazy(() => GetRedirectsResponseBodyPagination$inboundSchema),
 });
 /** @internal */
@@ -455,7 +459,7 @@ export const GetRedirectsResponseBody$inboundSchema: z.ZodType<
   GetRedirectsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => GetRedirectsResponseBody2$inboundSchema),
   z.record(z.any()),
 ]);
@@ -469,7 +473,7 @@ export const GetRedirectsResponseBody$outboundSchema: z.ZodType<
   GetRedirectsResponseBody$Outbound,
   z.ZodTypeDef,
   GetRedirectsResponseBody
-> = z.union([
+> = smartUnion([
   z.lazy(() => GetRedirectsResponseBody2$outboundSchema),
   z.record(z.any()),
 ]);

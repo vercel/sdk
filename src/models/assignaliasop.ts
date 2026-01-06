@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type AssignAliasRequestBody = {
@@ -63,8 +64,8 @@ export const AssignAliasRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  alias: z.string().optional(),
-  redirect: z.nullable(z.string()).optional(),
+  alias: types.optional(types.string()),
+  redirect: z.nullable(types.string()).optional(),
 });
 /** @internal */
 export type AssignAliasRequestBody$Outbound = {
@@ -105,9 +106,9 @@ export const AssignAliasRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  id: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
   RequestBody: z.lazy(() => AssignAliasRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
@@ -161,10 +162,10 @@ export const AssignAliasResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  uid: z.string(),
-  alias: z.string(),
-  created: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  oldDeploymentId: z.nullable(z.string()).optional(),
+  uid: types.string(),
+  alias: types.string(),
+  created: types.date(),
+  oldDeploymentId: z.nullable(types.string()).optional(),
 });
 /** @internal */
 export type AssignAliasResponseBody$Outbound = {

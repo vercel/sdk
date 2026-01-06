@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type PatchEdgeConfigSchemaRequestBody = {
@@ -37,7 +38,7 @@ export const PatchEdgeConfigSchemaRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  definition: z.any().optional(),
+  definition: types.optional(z.any()),
 });
 /** @internal */
 export type PatchEdgeConfigSchemaRequestBody$Outbound = {
@@ -78,10 +79,10 @@ export const PatchEdgeConfigSchemaRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  edgeConfigId: z.string(),
-  dryRun: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  edgeConfigId: types.string(),
+  dryRun: types.optional(types.string()),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
   RequestBody: z.lazy(() => PatchEdgeConfigSchemaRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {

@@ -7,6 +7,8 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type Tags = Array<string> | string;
@@ -36,14 +38,14 @@ export type InvalidateByTagsRequest = {
 };
 
 /** @internal */
-export const Tags$inboundSchema: z.ZodType<Tags, z.ZodTypeDef, unknown> = z
-  .union([z.array(z.string()), z.string()]);
+export const Tags$inboundSchema: z.ZodType<Tags, z.ZodTypeDef, unknown> =
+  smartUnion([z.array(types.string()), types.string()]);
 /** @internal */
 export type Tags$Outbound = Array<string> | string;
 
 /** @internal */
 export const Tags$outboundSchema: z.ZodType<Tags$Outbound, z.ZodTypeDef, Tags> =
-  z.union([z.array(z.string()), z.string()]);
+  smartUnion([z.array(z.string()), z.string()]);
 
 export function tagsToJSON(tags: Tags): string {
   return JSON.stringify(Tags$outboundSchema.parse(tags));
@@ -73,8 +75,8 @@ export const InvalidateByTagsRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  tags: z.union([z.array(z.string()), z.string()]),
-  target: InvalidateByTagsTarget$inboundSchema.optional(),
+  tags: smartUnion([z.array(types.string()), types.string()]),
+  target: types.optional(InvalidateByTagsTarget$inboundSchema),
 });
 /** @internal */
 export type InvalidateByTagsRequestBody$Outbound = {
@@ -88,7 +90,7 @@ export const InvalidateByTagsRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   InvalidateByTagsRequestBody
 > = z.object({
-  tags: z.union([z.array(z.string()), z.string()]),
+  tags: smartUnion([z.array(z.string()), z.string()]),
   target: InvalidateByTagsTarget$outboundSchema.optional(),
 });
 
@@ -117,11 +119,12 @@ export const InvalidateByTagsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectIdOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  RequestBody: z.lazy(() => InvalidateByTagsRequestBody$inboundSchema)
-    .optional(),
+  projectIdOrName: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
+  RequestBody: types.optional(
+    z.lazy(() => InvalidateByTagsRequestBody$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",

@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -89,12 +90,12 @@ export const Redirect$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  source: z.string(),
-  destination: z.string().optional(),
-  statusCode: z.number().optional(),
-  permanent: z.boolean().optional(),
-  caseSensitive: z.boolean().optional(),
-  query: z.boolean().optional(),
+  source: types.string(),
+  destination: types.optional(types.string()),
+  statusCode: types.optional(types.number()),
+  permanent: types.optional(types.boolean()),
+  caseSensitive: types.optional(types.boolean()),
+  query: types.optional(types.boolean()),
 });
 /** @internal */
 export type Redirect$Outbound = {
@@ -139,9 +140,9 @@ export const EditRedirectRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string().optional(),
+  name: types.optional(types.string()),
   redirect: z.lazy(() => Redirect$inboundSchema),
-  restore: z.boolean().optional(),
+  restore: types.optional(types.boolean()),
 });
 /** @internal */
 export type EditRedirectRequestBody$Outbound = {
@@ -184,10 +185,12 @@ export const EditRedirectRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  RequestBody: z.lazy(() => EditRedirectRequestBody$inboundSchema).optional(),
+  projectId: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
+  RequestBody: types.optional(
+    z.lazy(() => EditRedirectRequestBody$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",
@@ -240,15 +243,15 @@ export const EditRedirectVersion$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  key: z.string(),
-  lastModified: z.number(),
-  createdBy: z.string(),
-  name: z.string().optional(),
-  isStaging: z.boolean().optional(),
-  isLive: z.boolean().optional(),
-  redirectCount: z.number().optional(),
-  alias: z.string().optional(),
+  id: types.string(),
+  key: types.string(),
+  lastModified: types.number(),
+  createdBy: types.string(),
+  name: types.optional(types.string()),
+  isStaging: types.optional(types.boolean()),
+  isLive: types.optional(types.boolean()),
+  redirectCount: types.optional(types.number()),
+  alias: types.optional(types.string()),
 });
 /** @internal */
 export type EditRedirectVersion$Outbound = {
@@ -303,7 +306,7 @@ export const EditRedirectResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  alias: z.nullable(z.string()),
+  alias: types.nullable(types.string()),
   version: z.lazy(() => EditRedirectVersion$inboundSchema),
 });
 /** @internal */

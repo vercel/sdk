@@ -7,10 +7,7 @@
 
 ```typescript
 const value: models.GetOrderErrorDomainsRegistrarResponse1 = {
-  code: "cannot-transfer-in-until",
-  details: {
-    numDaysUntilTransferrable: 5850.03,
-  },
+  code: "price-change",
 };
 ```
 

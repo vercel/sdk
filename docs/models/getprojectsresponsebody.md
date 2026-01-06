@@ -1,58 +1,101 @@
 # GetProjectsResponseBody
 
-The paginated list of projects
 
-## Example Usage
+## Supported Types
+
+### `models.GetProjectsResponseBody1[]`
 
 ```typescript
-import { GetProjectsResponseBody } from "@vercel/sdk/models/getprojectsop.js";
+const value: models.GetProjectsResponseBody1[] = [
+  {
+    accountId: "<id>",
+    alias: [
+      {
+        deployment: {
+          createdAt: 6834.37,
+          createdIn: "<value>",
+          creator: {
+            email: "Abigale.Renner@hotmail.com",
+            uid: "<id>",
+            username: "Ellis.Stoltenberg",
+          },
+          deploymentHostname: "<value>",
+          name: "<value>",
+          id: "<id>",
+          plan: "<value>",
+          private: true,
+          readyState: "<value>",
+          type: "<value>",
+          url: "https://unaware-trick.org/",
+          userId: "<id>",
+        },
+        domain: "ordinary-tray.org",
+        environment: "production",
+        target: "PREVIEW",
+      },
+    ],
+    directoryListing: false,
+    id: "<id>",
+    name: "<value>",
+    nodeVersion: "22.x",
+    resourceConfig: {
+      functionDefaultRegions: [
+        "<value 1>",
+        "<value 2>",
+        "<value 3>",
+      ],
+    },
+    rollingRelease: {
+      target: "production",
+      stages: [
+        {
+          targetPercentage: 25,
+          requireApproval: false,
+          duration: 600,
+          linearShift: false,
+        },
+      ],
+      canaryResponseHeader: false,
+    },
+    serverlessFunctionRegion: "<value>",
+  },
+];
+```
 
-let value: GetProjectsResponseBody = {
+### `models.GetProjectsResponseBody2`
+
+```typescript
+const value: models.GetProjectsResponseBody2 = {
+  projects: [],
+  pagination: {
+    count: 20,
+    next: 1540095775951,
+    prev: 1540095775951,
+  },
+};
+```
+
+### `models.GetProjectsResponseBody3`
+
+```typescript
+const value: models.GetProjectsResponseBody3 = {
   projects: [
     {
       accountId: "<id>",
       crons: {
-        enabledAt: 8873.52,
-        disabledAt: null,
-        updatedAt: 4201.43,
+        enabledAt: 8563.1,
+        disabledAt: 3810.36,
+        updatedAt: 6364.7,
         deploymentId: "<id>",
-        definitions: [
-          {
-            host: "vercel.com",
-            path: "/api/crons/sync-something?hello=world",
-            schedule: "0 0 * * *",
-          },
-        ],
+        definitions: [],
       },
-      directoryListing: false,
+      directoryListing: true,
       id: "<id>",
-      latestDeployments: [
-        {
-          id: "<id>",
-          createdAt: 5974.19,
-          createdIn: "<value>",
-          creator: {
-            email: "Tanya.Stanton64@gmail.com",
-            uid: "<id>",
-            username: "Mary.Murphy24",
-          },
-          deploymentHostname: "<value>",
-          name: "<value>",
-          plan: "enterprise",
-          previewCommentsEnabled: false,
-          private: true,
-          readyState: "QUEUED",
-          type: "LAMBDAS",
-          url: "https://humiliating-resolve.name",
-          userId: "<id>",
-        },
-      ],
       name: "<value>",
-      nodeVersion: "22.x",
+      nodeVersion: "10.x",
       resourceConfig: {
         functionDefaultRegions: [
           "<value 1>",
-          "<value 2>",
         ],
       },
       rollingRelease: {
@@ -70,23 +113,6 @@ let value: GetProjectsResponseBody = {
       defaultResourceConfig: {
         functionDefaultRegions: [],
       },
-      targets: {
-        "key": {
-          id: "<id>",
-          createdAt: 9261.58,
-          createdIn: "<value>",
-          creator: null,
-          deploymentHostname: "<value>",
-          name: "<value>",
-          plan: "enterprise",
-          previewCommentsEnabled: false,
-          private: true,
-          readyState: "QUEUED",
-          type: "LAMBDAS",
-          url: "https://unselfish-millet.name",
-          userId: "<id>",
-        },
-      },
     },
   ],
   pagination: {
@@ -96,9 +122,3 @@ let value: GetProjectsResponseBody = {
 };
 ```
 
-## Fields
-
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `projects`                                                       | [models.GetProjectsProjects](../models/getprojectsprojects.md)[] | :heavy_check_mark:                                               | N/A                                                              |
-| `pagination`                                                     | *models.GetProjectsPagination*                                   | :heavy_check_mark:                                               | N/A                                                              |

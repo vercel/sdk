@@ -230,6 +230,7 @@ func (o *RenewDomainLinks) GetMethod() RenewDomainMethod {
 
 // RenewDomainResponseBody - Success
 type RenewDomainResponseBody struct {
+	// A valid order ID
 	OrderID string                      `json:"orderId"`
 	Links   map[string]RenewDomainLinks `json:"_links"`
 }

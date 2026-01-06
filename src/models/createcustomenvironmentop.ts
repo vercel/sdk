@@ -7,6 +7,7 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -208,7 +209,7 @@ export const BranchMatcher$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type: CreateCustomEnvironmentType$inboundSchema,
-  pattern: z.string(),
+  pattern: types.string(),
 });
 /** @internal */
 export type BranchMatcher$Outbound = {
@@ -245,10 +246,10 @@ export const CreateCustomEnvironmentRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  slug: z.string().optional(),
-  description: z.string().optional(),
-  branchMatcher: z.lazy(() => BranchMatcher$inboundSchema).optional(),
-  copyEnvVarsFrom: z.string().optional(),
+  slug: types.optional(types.string()),
+  description: types.optional(types.string()),
+  branchMatcher: types.optional(z.lazy(() => BranchMatcher$inboundSchema)),
+  copyEnvVarsFrom: types.optional(types.string()),
 });
 /** @internal */
 export type CreateCustomEnvironmentRequestBody$Outbound = {
@@ -296,11 +297,12 @@ export const CreateCustomEnvironmentRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  idOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  RequestBody: z.lazy(() => CreateCustomEnvironmentRequestBody$inboundSchema)
-    .optional(),
+  idOrName: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
+  RequestBody: types.optional(
+    z.lazy(() => CreateCustomEnvironmentRequestBody$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",
@@ -376,7 +378,7 @@ export const CreateCustomEnvironmentBranchMatcher$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type: CreateCustomEnvironmentEnvironmentResponseType$inboundSchema,
-  pattern: z.string(),
+  pattern: types.string(),
 });
 /** @internal */
 export type CreateCustomEnvironmentBranchMatcher$Outbound = {
@@ -420,10 +422,10 @@ export const CreateCustomEnvironmentVerification$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.string(),
-  domain: z.string(),
-  value: z.string(),
-  reason: z.string(),
+  type: types.string(),
+  domain: types.string(),
+  value: types.string(),
+  reason: types.string(),
 });
 /** @internal */
 export type CreateCustomEnvironmentVerification$Outbound = {
@@ -471,19 +473,19 @@ export const CreateCustomEnvironmentDomains$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  apexName: z.string(),
-  projectId: z.string(),
-  redirect: z.nullable(z.string()).optional(),
-  redirectStatusCode: z.nullable(z.number()).optional(),
-  gitBranch: z.nullable(z.string()).optional(),
-  customEnvironmentId: z.nullable(z.string()).optional(),
-  updatedAt: z.number().optional(),
-  createdAt: z.number().optional(),
-  verified: z.boolean(),
-  verification: z.array(
-    z.lazy(() => CreateCustomEnvironmentVerification$inboundSchema),
-  ).optional(),
+  name: types.string(),
+  apexName: types.string(),
+  projectId: types.string(),
+  redirect: z.nullable(types.string()).optional(),
+  redirectStatusCode: z.nullable(types.number()).optional(),
+  gitBranch: z.nullable(types.string()).optional(),
+  customEnvironmentId: z.nullable(types.string()).optional(),
+  updatedAt: types.optional(types.number()),
+  createdAt: types.optional(types.number()),
+  verified: types.boolean(),
+  verification: types.optional(
+    z.array(z.lazy(() => CreateCustomEnvironmentVerification$inboundSchema)),
+  ),
 });
 /** @internal */
 export type CreateCustomEnvironmentDomains$Outbound = {
@@ -548,18 +550,19 @@ export const CreateCustomEnvironmentResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  slug: z.string(),
+  id: types.string(),
+  slug: types.string(),
   type: CreateCustomEnvironmentEnvironmentType$inboundSchema,
-  description: z.string().optional(),
-  branchMatcher: z.lazy(() =>
-    CreateCustomEnvironmentBranchMatcher$inboundSchema
-  ).optional(),
-  domains: z.array(z.lazy(() => CreateCustomEnvironmentDomains$inboundSchema))
-    .optional(),
-  currentDeploymentAliases: z.array(z.string()).optional(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
+  description: types.optional(types.string()),
+  branchMatcher: types.optional(
+    z.lazy(() => CreateCustomEnvironmentBranchMatcher$inboundSchema),
+  ),
+  domains: types.optional(
+    z.array(z.lazy(() => CreateCustomEnvironmentDomains$inboundSchema)),
+  ),
+  currentDeploymentAliases: types.optional(z.array(types.string())),
+  createdAt: types.number(),
+  updatedAt: types.number(),
 });
 /** @internal */
 export type CreateCustomEnvironmentResponseBody$Outbound = {

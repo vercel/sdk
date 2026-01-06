@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -27,11 +28,11 @@ export const EdgeConfigToken$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  token: z.string(),
-  label: z.string(),
-  id: z.string(),
-  edgeConfigId: z.string(),
-  createdAt: z.number(),
+  token: types.string(),
+  label: types.string(),
+  id: types.string(),
+  edgeConfigId: types.string(),
+  createdAt: types.number(),
 });
 /** @internal */
 export type EdgeConfigToken$Outbound = {

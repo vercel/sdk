@@ -6,6 +6,8 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import {
   DomainNotRegistered,
   DomainNotRegistered$inboundSchema,
@@ -62,7 +64,7 @@ export const UpdateDomainNameserversRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  nameservers: z.array(z.string()),
+  nameservers: z.array(types.string()),
 });
 /** @internal */
 export type UpdateDomainNameserversRequestBody$Outbound = {
@@ -104,8 +106,8 @@ export const UpdateDomainNameserversRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  domain: z.string(),
-  teamId: z.string().optional(),
+  domain: types.string(),
+  teamId: types.optional(types.string()),
   RequestBody: z.lazy(() => UpdateDomainNameserversRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
@@ -214,7 +216,7 @@ export const UpdateDomainNameserversResponseBody$inboundSchema: z.ZodType<
   UpdateDomainNameserversResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   DomainNotRegistered$inboundSchema,
   HttpApiDecodeError$inboundSchema,
 ]);
@@ -228,7 +230,7 @@ export const UpdateDomainNameserversResponseBody$outboundSchema: z.ZodType<
   UpdateDomainNameserversResponseBody$Outbound,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   DomainNotRegistered$outboundSchema,
   HttpApiDecodeError$outboundSchema,
 ]);

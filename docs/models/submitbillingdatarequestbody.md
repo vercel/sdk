@@ -6,11 +6,11 @@
 import { SubmitBillingDataRequestBody } from "@vercel/sdk/models/submitbillingdataop.js";
 
 let value: SubmitBillingDataRequestBody = {
-  timestamp: new Date("2023-04-30T22:37:34.257Z"),
-  eod: new Date("2025-06-29T07:32:07.538Z"),
+  timestamp: new Date("2024-04-29T22:37:34.257Z"),
+  eod: new Date("2026-06-29T07:32:07.538Z"),
   period: {
-    start: new Date("2024-09-03T00:54:32.604Z"),
-    end: new Date("2024-05-12T10:42:22.084Z"),
+    start: new Date("2025-09-03T00:54:32.604Z"),
+    end: new Date("2025-05-12T10:42:22.084Z"),
   },
   billing: {
     items: [

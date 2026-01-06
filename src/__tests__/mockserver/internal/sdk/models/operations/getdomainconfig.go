@@ -83,20 +83,20 @@ func (o *GetDomainConfigRequest) GetSlug() *string {
 	return o.Slug
 }
 
-// ConfiguredBy - How we see the domain's configuration. - `CNAME`: Domain has a CNAME pointing to Vercel. - `A`: Domain's A record is resolving to Vercel. - `http`: Domain is resolving to Vercel but may be behind a Proxy. - `dns-01`: Domain is not resolving to Vercel but dns-01 challenge is enabled. - `null`: Domain is not resolving to Vercel.
-type ConfiguredBy string
+// GetDomainConfigConfiguredBy - How we see the domain's configuration. - `CNAME`: Domain has a CNAME pointing to Vercel. - `A`: Domain's A record is resolving to Vercel. - `http`: Domain is resolving to Vercel but may be behind a Proxy. - `dns-01`: Domain is not resolving to Vercel but dns-01 challenge is enabled. - `null`: Domain is not resolving to Vercel.
+type GetDomainConfigConfiguredBy string
 
 const (
-	ConfiguredByCname ConfiguredBy = "CNAME"
-	ConfiguredByA     ConfiguredBy = "A"
-	ConfiguredByHTTP  ConfiguredBy = "http"
-	ConfiguredByDns01 ConfiguredBy = "dns-01"
+	GetDomainConfigConfiguredByCname GetDomainConfigConfiguredBy = "CNAME"
+	GetDomainConfigConfiguredByA     GetDomainConfigConfiguredBy = "A"
+	GetDomainConfigConfiguredByHTTP  GetDomainConfigConfiguredBy = "http"
+	GetDomainConfigConfiguredByDns01 GetDomainConfigConfiguredBy = "dns-01"
 )
 
-func (e ConfiguredBy) ToPointer() *ConfiguredBy {
+func (e GetDomainConfigConfiguredBy) ToPointer() *GetDomainConfigConfiguredBy {
 	return &e
 }
-func (e *ConfiguredBy) UnmarshalJSON(data []byte) error {
+func (e *GetDomainConfigConfiguredBy) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -109,10 +109,10 @@ func (e *ConfiguredBy) UnmarshalJSON(data []byte) error {
 	case "http":
 		fallthrough
 	case "dns-01":
-		*e = ConfiguredBy(v)
+		*e = GetDomainConfigConfiguredBy(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ConfiguredBy: %v", v)
+		return fmt.Errorf("invalid value for GetDomainConfigConfiguredBy: %v", v)
 	}
 }
 
@@ -185,7 +185,7 @@ func (o *RecommendedCNAME) GetValue() string {
 
 type GetDomainConfigResponseBody struct {
 	// How we see the domain's configuration. - `CNAME`: Domain has a CNAME pointing to Vercel. - `A`: Domain's A record is resolving to Vercel. - `http`: Domain is resolving to Vercel but may be behind a Proxy. - `dns-01`: Domain is not resolving to Vercel but dns-01 challenge is enabled. - `null`: Domain is not resolving to Vercel.
-	ConfiguredBy *ConfiguredBy `json:"configuredBy"`
+	ConfiguredBy *GetDomainConfigConfiguredBy `json:"configuredBy"`
 	// Which challenge types the domain can use for issuing certs.
 	AcceptedChallenges []AcceptedChallenge `json:"acceptedChallenges"`
 	// Recommended IPv4s for the domain. rank=1 is the preferred value(s) to use. Only using 1 ip value is acceptable.
@@ -196,7 +196,7 @@ type GetDomainConfigResponseBody struct {
 	Misconfigured bool `json:"misconfigured"`
 }
 
-func (o *GetDomainConfigResponseBody) GetConfiguredBy() *ConfiguredBy {
+func (o *GetDomainConfigResponseBody) GetConfiguredBy() *GetDomainConfigConfiguredBy {
 	if o == nil {
 		return nil
 	}

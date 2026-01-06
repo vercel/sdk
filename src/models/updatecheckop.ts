@@ -7,6 +7,7 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -343,8 +344,8 @@ export const UpdateCheckSource$outboundSchema: z.ZodNativeEnum<
 /** @internal */
 export const Fcp$inboundSchema: z.ZodType<Fcp, z.ZodTypeDef, unknown> = z
   .object({
-    value: z.nullable(z.number()),
-    previousValue: z.number().optional(),
+    value: types.nullable(types.number()),
+    previousValue: types.optional(types.number()),
     source: UpdateCheckSource$inboundSchema,
   });
 /** @internal */
@@ -387,8 +388,8 @@ export const UpdateCheckChecksSource$outboundSchema: z.ZodNativeEnum<
 /** @internal */
 export const Lcp$inboundSchema: z.ZodType<Lcp, z.ZodTypeDef, unknown> = z
   .object({
-    value: z.nullable(z.number()),
-    previousValue: z.number().optional(),
+    value: types.nullable(types.number()),
+    previousValue: types.optional(types.number()),
     source: UpdateCheckChecksSource$inboundSchema,
   });
 /** @internal */
@@ -431,8 +432,8 @@ export const UpdateCheckChecksRequestSource$outboundSchema: z.ZodNativeEnum<
 /** @internal */
 export const Cls$inboundSchema: z.ZodType<Cls, z.ZodTypeDef, unknown> = z
   .object({
-    value: z.nullable(z.number()),
-    previousValue: z.number().optional(),
+    value: types.nullable(types.number()),
+    previousValue: types.optional(types.number()),
     source: UpdateCheckChecksRequestSource$inboundSchema,
   });
 /** @internal */
@@ -475,8 +476,8 @@ export const UpdateCheckChecksRequestRequestBodySource$outboundSchema:
 /** @internal */
 export const Tbt$inboundSchema: z.ZodType<Tbt, z.ZodTypeDef, unknown> = z
   .object({
-    value: z.nullable(z.number()),
-    previousValue: z.number().optional(),
+    value: types.nullable(types.number()),
+    previousValue: types.optional(types.number()),
     source: UpdateCheckChecksRequestRequestBodySource$inboundSchema,
   });
 /** @internal */
@@ -522,8 +523,8 @@ export const VirtualExperienceScore$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: z.nullable(z.number().int()),
-  previousValue: z.number().int().optional(),
+  value: types.nullable(types.number()),
+  previousValue: types.optional(types.number()),
   source: UpdateCheckChecksRequestRequestBodyOutputSource$inboundSchema,
 });
 /** @internal */
@@ -568,8 +569,9 @@ export const Metrics$inboundSchema: z.ZodType<Metrics, z.ZodTypeDef, unknown> =
     LCP: z.lazy(() => Lcp$inboundSchema),
     CLS: z.lazy(() => Cls$inboundSchema),
     TBT: z.lazy(() => Tbt$inboundSchema),
-    virtualExperienceScore: z.lazy(() => VirtualExperienceScore$inboundSchema)
-      .optional(),
+    virtualExperienceScore: types.optional(
+      z.lazy(() => VirtualExperienceScore$inboundSchema),
+    ),
   }).transform((v) => {
     return remap$(v, {
       "FCP": "fcp",
@@ -624,7 +626,7 @@ export function metricsFromJSON(
 /** @internal */
 export const Output$inboundSchema: z.ZodType<Output, z.ZodTypeDef, unknown> = z
   .object({
-    metrics: z.lazy(() => Metrics$inboundSchema).optional(),
+    metrics: types.optional(z.lazy(() => Metrics$inboundSchema)),
   });
 /** @internal */
 export type Output$Outbound = {
@@ -659,13 +661,13 @@ export const UpdateCheckRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string().optional(),
-  path: z.string().optional(),
-  status: Status$inboundSchema.optional(),
-  conclusion: Conclusion$inboundSchema.optional(),
-  detailsUrl: z.string().optional(),
-  output: z.lazy(() => Output$inboundSchema).optional(),
-  externalId: z.string().optional(),
+  name: types.optional(types.string()),
+  path: types.optional(types.string()),
+  status: types.optional(Status$inboundSchema),
+  conclusion: types.optional(Conclusion$inboundSchema),
+  detailsUrl: types.optional(types.string()),
+  output: types.optional(z.lazy(() => Output$inboundSchema)),
+  externalId: types.optional(types.string()),
 });
 /** @internal */
 export type UpdateCheckRequestBody$Outbound = {
@@ -716,10 +718,10 @@ export const UpdateCheckRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  deploymentId: z.string(),
-  checkId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  deploymentId: types.string(),
+  checkId: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
   RequestBody: z.lazy(() => UpdateCheckRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
@@ -802,8 +804,8 @@ export const UpdateCheckFCP$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: z.nullable(z.number()),
-  previousValue: z.number().optional(),
+  value: types.nullable(types.number()),
+  previousValue: types.optional(types.number()),
   source: UpdateCheckChecksResponseSource$inboundSchema,
 });
 /** @internal */
@@ -852,8 +854,8 @@ export const UpdateCheckLCP$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: z.nullable(z.number()),
-  previousValue: z.number().optional(),
+  value: types.nullable(types.number()),
+  previousValue: types.optional(types.number()),
   source: UpdateCheckChecksResponse200Source$inboundSchema,
 });
 /** @internal */
@@ -902,8 +904,8 @@ export const UpdateCheckCLS$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: z.nullable(z.number()),
-  previousValue: z.number().optional(),
+  value: types.nullable(types.number()),
+  previousValue: types.optional(types.number()),
   source: UpdateCheckChecksResponse200ApplicationJSONSource$inboundSchema,
 });
 /** @internal */
@@ -957,8 +959,8 @@ export const UpdateCheckTBT$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: z.nullable(z.number()),
-  previousValue: z.number().optional(),
+  value: types.nullable(types.number()),
+  previousValue: types.optional(types.number()),
   source:
     UpdateCheckChecksResponse200ApplicationJSONResponseBodySource$inboundSchema,
 });
@@ -1014,8 +1016,8 @@ export const UpdateCheckVirtualExperienceScore$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: z.nullable(z.number()),
-  previousValue: z.number().optional(),
+  value: types.nullable(types.number()),
+  previousValue: types.optional(types.number()),
   source:
     UpdateCheckChecksResponse200ApplicationJSONResponseBodyOutputSource$inboundSchema,
 });
@@ -1067,9 +1069,9 @@ export const UpdateCheckMetrics$inboundSchema: z.ZodType<
   LCP: z.lazy(() => UpdateCheckLCP$inboundSchema),
   CLS: z.lazy(() => UpdateCheckCLS$inboundSchema),
   TBT: z.lazy(() => UpdateCheckTBT$inboundSchema),
-  virtualExperienceScore: z.lazy(() =>
-    UpdateCheckVirtualExperienceScore$inboundSchema
-  ).optional(),
+  virtualExperienceScore: types.optional(
+    z.lazy(() => UpdateCheckVirtualExperienceScore$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "FCP": "fcp",
@@ -1134,7 +1136,7 @@ export const UpdateCheckOutput$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  metrics: z.lazy(() => UpdateCheckMetrics$inboundSchema).optional(),
+  metrics: types.optional(z.lazy(() => UpdateCheckMetrics$inboundSchema)),
 });
 /** @internal */
 export type UpdateCheckOutput$Outbound = {
@@ -1173,22 +1175,22 @@ export const UpdateCheckResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
-  path: z.string().optional(),
+  id: types.string(),
+  name: types.string(),
+  path: types.optional(types.string()),
   status: UpdateCheckStatus$inboundSchema,
-  conclusion: UpdateCheckConclusion$inboundSchema.optional(),
-  blocking: z.boolean(),
-  output: z.lazy(() => UpdateCheckOutput$inboundSchema).optional(),
-  detailsUrl: z.string().optional(),
-  integrationId: z.string(),
-  deploymentId: z.string(),
-  externalId: z.string().optional(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
-  startedAt: z.number().optional(),
-  completedAt: z.number().optional(),
-  rerequestable: z.boolean().optional(),
+  conclusion: types.optional(UpdateCheckConclusion$inboundSchema),
+  blocking: types.boolean(),
+  output: types.optional(z.lazy(() => UpdateCheckOutput$inboundSchema)),
+  detailsUrl: types.optional(types.string()),
+  integrationId: types.string(),
+  deploymentId: types.string(),
+  externalId: types.optional(types.string()),
+  createdAt: types.number(),
+  updatedAt: types.number(),
+  startedAt: types.optional(types.number()),
+  completedAt: types.optional(types.number()),
+  rerequestable: types.optional(types.boolean()),
 });
 /** @internal */
 export type UpdateCheckResponseBody$Outbound = {

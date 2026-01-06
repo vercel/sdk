@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetBulkAvailabilityRequestBody = {
@@ -41,7 +42,7 @@ export const GetBulkAvailabilityRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  domains: z.array(z.string()),
+  domains: z.array(types.string()),
 });
 /** @internal */
 export type GetBulkAvailabilityRequestBody$Outbound = {
@@ -82,7 +83,7 @@ export const GetBulkAvailabilityRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamId: z.string().optional(),
+  teamId: types.optional(types.string()),
   RequestBody: z.lazy(() => GetBulkAvailabilityRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
@@ -129,8 +130,8 @@ export function getBulkAvailabilityRequestFromJSON(
 /** @internal */
 export const Results$inboundSchema: z.ZodType<Results, z.ZodTypeDef, unknown> =
   z.object({
-    domain: z.string(),
-    available: z.boolean(),
+    domain: types.string(),
+    available: types.boolean(),
   });
 /** @internal */
 export type Results$Outbound = {

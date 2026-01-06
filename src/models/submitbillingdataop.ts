@@ -7,6 +7,8 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -216,8 +218,8 @@ export type SubmitBillingDataRequest = {
 /** @internal */
 export const Period$inboundSchema: z.ZodType<Period, z.ZodTypeDef, unknown> = z
   .object({
-    start: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    end: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    start: types.date(),
+    end: types.date(),
   });
 /** @internal */
 export type Period$Outbound = {
@@ -254,18 +256,16 @@ export const BillingItems$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  billingPlanId: z.string(),
-  resourceId: z.string().optional(),
-  start: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  end: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  name: z.string(),
-  details: z.string().optional(),
-  price: z.string(),
-  quantity: z.number(),
-  units: z.string(),
-  total: z.string(),
+  billingPlanId: types.string(),
+  resourceId: types.optional(types.string()),
+  start: types.optional(types.date()),
+  end: types.optional(types.date()),
+  name: types.string(),
+  details: types.optional(types.string()),
+  price: types.string(),
+  quantity: types.number(),
+  units: types.string(),
+  total: types.string(),
 });
 /** @internal */
 export type BillingItems$Outbound = {
@@ -318,15 +318,13 @@ export const Discounts$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  billingPlanId: z.string(),
-  resourceId: z.string().optional(),
-  start: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  end: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  name: z.string(),
-  details: z.string().optional(),
-  amount: z.string(),
+  billingPlanId: types.string(),
+  resourceId: types.optional(types.string()),
+  start: types.optional(types.date()),
+  end: types.optional(types.date()),
+  name: types.string(),
+  details: types.optional(types.string()),
+  amount: types.string(),
 });
 /** @internal */
 export type Discounts$Outbound = {
@@ -374,7 +372,7 @@ export const Billing2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   items: z.array(z.lazy(() => BillingItems$inboundSchema)),
-  discounts: z.array(z.lazy(() => Discounts$inboundSchema)).optional(),
+  discounts: types.optional(z.array(z.lazy(() => Discounts$inboundSchema))),
 });
 /** @internal */
 export type Billing2$Outbound = {
@@ -411,18 +409,16 @@ export const Billing1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  billingPlanId: z.string(),
-  resourceId: z.string().optional(),
-  start: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  end: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  name: z.string(),
-  details: z.string().optional(),
-  price: z.string(),
-  quantity: z.number(),
-  units: z.string(),
-  total: z.string(),
+  billingPlanId: types.string(),
+  resourceId: types.optional(types.string()),
+  start: types.optional(types.date()),
+  end: types.optional(types.date()),
+  name: types.string(),
+  details: types.optional(types.string()),
+  price: types.string(),
+  quantity: types.number(),
+  units: types.string(),
+  total: types.string(),
 });
 /** @internal */
 export type Billing1$Outbound = {
@@ -474,7 +470,7 @@ export const SubmitBillingDataBilling$inboundSchema: z.ZodType<
   SubmitBillingDataBilling,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => Billing2$inboundSchema),
   z.array(z.lazy(() => Billing1$inboundSchema)),
 ]);
@@ -488,7 +484,7 @@ export const SubmitBillingDataBilling$outboundSchema: z.ZodType<
   SubmitBillingDataBilling$Outbound,
   z.ZodTypeDef,
   SubmitBillingDataBilling
-> = z.union([
+> = smartUnion([
   z.lazy(() => Billing2$outboundSchema),
   z.array(z.lazy(() => Billing1$outboundSchema)),
 ]);
@@ -522,13 +518,13 @@ export const SubmitBillingDataType$outboundSchema: z.ZodNativeEnum<
 /** @internal */
 export const Usage$inboundSchema: z.ZodType<Usage, z.ZodTypeDef, unknown> = z
   .object({
-    resourceId: z.string().optional(),
-    name: z.string(),
+    resourceId: types.optional(types.string()),
+    name: types.string(),
     type: SubmitBillingDataType$inboundSchema,
-    units: z.string(),
-    dayValue: z.number(),
-    periodValue: z.number(),
-    planValue: z.number().optional(),
+    units: types.string(),
+    dayValue: types.number(),
+    periodValue: types.number(),
+    planValue: types.optional(types.number()),
   });
 /** @internal */
 export type Usage$Outbound = {
@@ -575,10 +571,10 @@ export const SubmitBillingDataRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  eod: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  timestamp: types.date(),
+  eod: types.date(),
   period: z.lazy(() => Period$inboundSchema),
-  billing: z.union([
+  billing: smartUnion([
     z.lazy(() => Billing2$inboundSchema),
     z.array(z.lazy(() => Billing1$inboundSchema)),
   ]),
@@ -602,7 +598,7 @@ export const SubmitBillingDataRequestBody$outboundSchema: z.ZodType<
   timestamp: z.date().transform(v => v.toISOString()),
   eod: z.date().transform(v => v.toISOString()),
   period: z.lazy(() => Period$outboundSchema),
-  billing: z.union([
+  billing: smartUnion([
     z.lazy(() => Billing2$outboundSchema),
     z.array(z.lazy(() => Billing1$outboundSchema)),
   ]),
@@ -634,7 +630,7 @@ export const SubmitBillingDataRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  integrationConfigurationId: z.string(),
+  integrationConfigurationId: types.string(),
   RequestBody: z.lazy(() => SubmitBillingDataRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {

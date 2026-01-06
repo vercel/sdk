@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -123,12 +124,12 @@ export const InvitedTeamMember$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  uid: z.string(),
-  username: z.string(),
-  email: z.string(),
+  uid: types.string(),
+  username: types.string(),
+  email: types.string(),
   role: Role$inboundSchema,
-  teamRoles: z.array(TeamRoles$inboundSchema).optional(),
-  teamPermissions: z.array(TeamPermissions$inboundSchema).optional(),
+  teamRoles: types.optional(z.array(TeamRoles$inboundSchema)),
+  teamPermissions: types.optional(z.array(TeamPermissions$inboundSchema)),
 });
 /** @internal */
 export type InvitedTeamMember$Outbound = {

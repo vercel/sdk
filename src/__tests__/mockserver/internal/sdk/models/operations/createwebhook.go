@@ -53,6 +53,7 @@ const (
 	CreateWebhookEventRequestIntegrationResourceProjectDisconnected             CreateWebhookEventRequest = "integration-resource.project-disconnected"
 	CreateWebhookEventRequestProjectCreated                                     CreateWebhookEventRequest = "project.created"
 	CreateWebhookEventRequestProjectRemoved                                     CreateWebhookEventRequest = "project.removed"
+	CreateWebhookEventRequestProjectRenamed                                     CreateWebhookEventRequest = "project.renamed"
 	CreateWebhookEventRequestProjectDomainCreated                               CreateWebhookEventRequest = "project.domain.created"
 	CreateWebhookEventRequestProjectDomainUpdated                               CreateWebhookEventRequest = "project.domain.updated"
 	CreateWebhookEventRequestProjectDomainDeleted                               CreateWebhookEventRequest = "project.domain.deleted"
@@ -183,6 +184,8 @@ func (e *CreateWebhookEventRequest) UnmarshalJSON(data []byte) error {
 	case "project.created":
 		fallthrough
 	case "project.removed":
+		fallthrough
+	case "project.renamed":
 		fallthrough
 	case "project.domain.created":
 		fallthrough
@@ -364,6 +367,7 @@ const (
 	CreateWebhookEventResponseIntegrationResourceProjectDisconnected             CreateWebhookEventResponse = "integration-resource.project-disconnected"
 	CreateWebhookEventResponseProjectCreated                                     CreateWebhookEventResponse = "project.created"
 	CreateWebhookEventResponseProjectRemoved                                     CreateWebhookEventResponse = "project.removed"
+	CreateWebhookEventResponseProjectRenamed                                     CreateWebhookEventResponse = "project.renamed"
 	CreateWebhookEventResponseProjectDomainCreated                               CreateWebhookEventResponse = "project.domain.created"
 	CreateWebhookEventResponseProjectDomainUpdated                               CreateWebhookEventResponse = "project.domain.updated"
 	CreateWebhookEventResponseProjectDomainDeleted                               CreateWebhookEventResponse = "project.domain.deleted"
@@ -494,6 +498,8 @@ func (e *CreateWebhookEventResponse) UnmarshalJSON(data []byte) error {
 	case "project.created":
 		fallthrough
 	case "project.removed":
+		fallthrough
+	case "project.renamed":
 		fallthrough
 	case "project.domain.created":
 		fallthrough

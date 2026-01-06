@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -88,7 +89,7 @@ export const InviteUserToTeamProjects$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
+  projectId: types.string(),
   role: InviteUserToTeamTeamsRole$inboundSchema,
 });
 /** @internal */
@@ -130,10 +131,11 @@ export const InviteUserToTeamRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  email: z.string(),
+  email: types.string(),
   role: InviteUserToTeamRole$inboundSchema.default("VIEWER"),
-  projects: z.array(z.lazy(() => InviteUserToTeamProjects$inboundSchema))
-    .optional(),
+  projects: types.optional(
+    z.array(z.lazy(() => InviteUserToTeamProjects$inboundSchema)),
+  ),
 });
 /** @internal */
 export type InviteUserToTeamRequestBody$Outbound = {

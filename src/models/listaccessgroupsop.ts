@@ -5,6 +5,8 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type ListAccessGroupsRequest = {
@@ -104,14 +106,14 @@ export const ListAccessGroupsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string().optional(),
-  search: z.string().optional(),
-  membersLimit: z.number().int().optional(),
-  projectsLimit: z.number().int().optional(),
-  limit: z.number().int().optional(),
-  next: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  projectId: types.optional(types.string()),
+  search: types.optional(types.string()),
+  membersLimit: types.optional(types.number()),
+  projectsLimit: types.optional(types.number()),
+  limit: types.optional(types.number()),
+  next: types.optional(types.string()),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type ListAccessGroupsRequest$Outbound = {
@@ -164,19 +166,19 @@ export const AccessGroups$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  members: z.array(z.string()).optional(),
-  projects: z.array(z.string()).optional(),
-  entitlements: z.array(z.string()).optional(),
-  teamPermissions: z.array(z.string()).optional(),
-  isDsyncManaged: z.boolean(),
-  name: z.string(),
-  createdAt: z.string(),
-  teamId: z.string(),
-  updatedAt: z.string(),
-  accessGroupId: z.string(),
-  membersCount: z.number(),
-  projectsCount: z.number(),
-  teamRoles: z.array(z.string()).optional(),
+  members: types.optional(z.array(types.string())),
+  projects: types.optional(z.array(types.string())),
+  entitlements: types.optional(z.array(types.string())),
+  teamPermissions: types.optional(z.array(types.string())),
+  isDsyncManaged: types.boolean(),
+  name: types.string(),
+  createdAt: types.string(),
+  teamId: types.string(),
+  updatedAt: types.string(),
+  accessGroupId: types.string(),
+  membersCount: types.number(),
+  projectsCount: types.number(),
+  teamRoles: types.optional(z.array(types.string())),
 });
 /** @internal */
 export type AccessGroups$Outbound = {
@@ -235,8 +237,8 @@ export const ResponseBodyPagination$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  count: z.number(),
-  next: z.nullable(z.string()),
+  count: types.number(),
+  next: types.nullable(types.string()),
 });
 /** @internal */
 export type ResponseBodyPagination$Outbound = {
@@ -355,7 +357,7 @@ export const ListAccessGroupsResponseBody$inboundSchema: z.ZodType<
   ListAccessGroupsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => ListAccessGroupsResponseBody2$inboundSchema),
   z.lazy(() => ListAccessGroupsResponseBody1$inboundSchema),
 ]);
@@ -369,7 +371,7 @@ export const ListAccessGroupsResponseBody$outboundSchema: z.ZodType<
   ListAccessGroupsResponseBody$Outbound,
   z.ZodTypeDef,
   ListAccessGroupsResponseBody
-> = z.union([
+> = smartUnion([
   z.lazy(() => ListAccessGroupsResponseBody2$outboundSchema),
   z.lazy(() => ListAccessGroupsResponseBody1$outboundSchema),
 ]);

@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetEdgeConfigBackupsRequest = {
@@ -51,12 +52,12 @@ export const GetEdgeConfigBackupsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  edgeConfigId: z.string(),
-  next: z.string().optional(),
-  limit: z.number().optional(),
-  metadata: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  edgeConfigId: types.string(),
+  next: types.optional(types.string()),
+  limit: types.optional(types.number()),
+  metadata: types.optional(types.string()),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type GetEdgeConfigBackupsRequest$Outbound = {
@@ -107,10 +108,10 @@ export const GetEdgeConfigBackupsMetadata$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  updatedAt: z.string().optional(),
-  updatedBy: z.string().optional(),
-  itemsCount: z.number().optional(),
-  itemsBytes: z.number().optional(),
+  updatedAt: types.optional(types.string()),
+  updatedBy: types.optional(types.string()),
+  itemsCount: types.optional(types.number()),
+  itemsBytes: types.optional(types.number()),
 });
 /** @internal */
 export type GetEdgeConfigBackupsMetadata$Outbound = {
@@ -154,10 +155,11 @@ export function getEdgeConfigBackupsMetadataFromJSON(
 /** @internal */
 export const Backups$inboundSchema: z.ZodType<Backups, z.ZodTypeDef, unknown> =
   z.object({
-    metadata: z.lazy(() => GetEdgeConfigBackupsMetadata$inboundSchema)
-      .optional(),
-    id: z.string(),
-    lastModified: z.number(),
+    metadata: types.optional(
+      z.lazy(() => GetEdgeConfigBackupsMetadata$inboundSchema),
+    ),
+    id: types.string(),
+    lastModified: types.number(),
   });
 /** @internal */
 export type Backups$Outbound = {
@@ -197,8 +199,8 @@ export const GetEdgeConfigBackupsPagination$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  hasNext: z.boolean(),
-  next: z.string().optional(),
+  hasNext: types.boolean(),
+  next: types.optional(types.string()),
 });
 /** @internal */
 export type GetEdgeConfigBackupsPagination$Outbound = {

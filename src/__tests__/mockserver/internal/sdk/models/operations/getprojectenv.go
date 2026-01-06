@@ -144,11 +144,11 @@ func (u GetProjectEnvTargetUnion3) MarshalJSON() ([]byte, error) {
 type GetProjectEnvType3 string
 
 const (
+	GetProjectEnvType3Secret    GetProjectEnvType3 = "secret"
 	GetProjectEnvType3System    GetProjectEnvType3 = "system"
 	GetProjectEnvType3Encrypted GetProjectEnvType3 = "encrypted"
 	GetProjectEnvType3Plain     GetProjectEnvType3 = "plain"
 	GetProjectEnvType3Sensitive GetProjectEnvType3 = "sensitive"
-	GetProjectEnvType3Secret    GetProjectEnvType3 = "secret"
 )
 
 func (e GetProjectEnvType3) ToPointer() *GetProjectEnvType3 {
@@ -160,6 +160,8 @@ func (e *GetProjectEnvType3) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "secret":
+		fallthrough
 	case "system":
 		fallthrough
 	case "encrypted":
@@ -167,8 +169,6 @@ func (e *GetProjectEnvType3) UnmarshalJSON(data []byte) error {
 	case "plain":
 		fallthrough
 	case "sensitive":
-		fallthrough
-	case "secret":
 		*e = GetProjectEnvType3(v)
 		return nil
 	default:
@@ -1489,7 +1489,7 @@ func (o *GetProjectEnvInternalContentHint3) GetEncryptedValue() string {
 type GetProjectEnvResponseBody3 struct {
 	Target *GetProjectEnvTargetUnion3 `json:"target,omitempty"`
 	Type   GetProjectEnvType3         `json:"type"`
-	// This is used to identiy variables that have been migrated from type secret to sensitive.
+	// This is used to identify variables that have been migrated from type secret to sensitive.
 	SunsetSecretID    *string                         `json:"sunsetSecretId,omitempty"`
 	Decrypted         *bool                           `json:"decrypted,omitempty"`
 	Value             string                          `json:"value"`
@@ -1883,11 +1883,11 @@ func (u GetProjectEnvTargetUnion2) MarshalJSON() ([]byte, error) {
 type GetProjectEnvType2 string
 
 const (
+	GetProjectEnvType2Secret    GetProjectEnvType2 = "secret"
 	GetProjectEnvType2System    GetProjectEnvType2 = "system"
 	GetProjectEnvType2Encrypted GetProjectEnvType2 = "encrypted"
 	GetProjectEnvType2Plain     GetProjectEnvType2 = "plain"
 	GetProjectEnvType2Sensitive GetProjectEnvType2 = "sensitive"
-	GetProjectEnvType2Secret    GetProjectEnvType2 = "secret"
 )
 
 func (e GetProjectEnvType2) ToPointer() *GetProjectEnvType2 {
@@ -1899,6 +1899,8 @@ func (e *GetProjectEnvType2) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "secret":
+		fallthrough
 	case "system":
 		fallthrough
 	case "encrypted":
@@ -1906,8 +1908,6 @@ func (e *GetProjectEnvType2) UnmarshalJSON(data []byte) error {
 	case "plain":
 		fallthrough
 	case "sensitive":
-		fallthrough
-	case "secret":
 		*e = GetProjectEnvType2(v)
 		return nil
 	default:
@@ -3228,7 +3228,7 @@ func (o *GetProjectEnvInternalContentHint2) GetEncryptedValue() string {
 type GetProjectEnvResponseBody2 struct {
 	Target *GetProjectEnvTargetUnion2 `json:"target,omitempty"`
 	Type   GetProjectEnvType2         `json:"type"`
-	// This is used to identiy variables that have been migrated from type secret to sensitive.
+	// This is used to identify variables that have been migrated from type secret to sensitive.
 	SunsetSecretID    *string                         `json:"sunsetSecretId,omitempty"`
 	Decrypted         *bool                           `json:"decrypted,omitempty"`
 	Value             string                          `json:"value"`
@@ -3630,11 +3630,11 @@ func (u GetProjectEnvTargetUnion1) MarshalJSON() ([]byte, error) {
 type GetProjectEnvType1 string
 
 const (
+	GetProjectEnvType1Secret    GetProjectEnvType1 = "secret"
 	GetProjectEnvType1System    GetProjectEnvType1 = "system"
 	GetProjectEnvType1Encrypted GetProjectEnvType1 = "encrypted"
 	GetProjectEnvType1Plain     GetProjectEnvType1 = "plain"
 	GetProjectEnvType1Sensitive GetProjectEnvType1 = "sensitive"
-	GetProjectEnvType1Secret    GetProjectEnvType1 = "secret"
 )
 
 func (e GetProjectEnvType1) ToPointer() *GetProjectEnvType1 {
@@ -3646,6 +3646,8 @@ func (e *GetProjectEnvType1) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "secret":
+		fallthrough
 	case "system":
 		fallthrough
 	case "encrypted":
@@ -3653,8 +3655,6 @@ func (e *GetProjectEnvType1) UnmarshalJSON(data []byte) error {
 	case "plain":
 		fallthrough
 	case "sensitive":
-		fallthrough
-	case "secret":
 		*e = GetProjectEnvType1(v)
 		return nil
 	default:
@@ -4976,7 +4976,7 @@ type GetProjectEnvResponseBody1 struct {
 	Decrypted bool                       `json:"decrypted"`
 	Target    *GetProjectEnvTargetUnion1 `json:"target,omitempty"`
 	Type      GetProjectEnvType1         `json:"type"`
-	// This is used to identiy variables that have been migrated from type secret to sensitive.
+	// This is used to identify variables that have been migrated from type secret to sensitive.
 	SunsetSecretID    *string                         `json:"sunsetSecretId,omitempty"`
 	ID                *string                         `json:"id,omitempty"`
 	Key               string                          `json:"key"`

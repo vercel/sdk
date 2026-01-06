@@ -24,33 +24,11 @@ let value: UpdateProjectResponseBody = {
   },
   directoryListing: false,
   id: "<id>",
-  latestDeployments: [
-    {
-      id: "<id>",
-      createdAt: 4422.69,
-      createdIn: "<value>",
-      creator: {
-        email: "Margret_Volkman@gmail.com",
-        uid: "<id>",
-        username: "Skye_Bartell",
-      },
-      deploymentHostname: "<value>",
-      name: "<value>",
-      plan: "hobby",
-      previewCommentsEnabled: false,
-      private: true,
-      readyState: "ERROR",
-      type: "LAMBDAS",
-      url: "https://specific-saloon.info/",
-      userId: "<id>",
-    },
-  ],
   name: "<value>",
-  nodeVersion: "12.x",
+  nodeVersion: "18.x",
   resourceConfig: {
     functionDefaultRegions: [
       "<value 1>",
-      "<value 2>",
     ],
   },
   rollingRelease: {
@@ -68,30 +46,7 @@ let value: UpdateProjectResponseBody = {
   defaultResourceConfig: {
     functionDefaultRegions: [
       "<value 1>",
-      "<value 2>",
-      "<value 3>",
     ],
-  },
-  targets: {
-    "key": {
-      id: "<id>",
-      createdAt: 9036.6,
-      createdIn: "<value>",
-      creator: {
-        email: "Josiah94@hotmail.com",
-        uid: "<id>",
-        username: "Junior.Strosin66",
-      },
-      deploymentHostname: "<value>",
-      name: "<value>",
-      plan: "enterprise",
-      previewCommentsEnabled: false,
-      private: true,
-      readyState: "ERROR",
-      type: "LAMBDAS",
-      url: "https://experienced-wriggler.biz/",
-      userId: "<id>",
-    },
   },
 };
 ```
@@ -181,4 +136,3 @@ let value: UpdateProjectResponseBody = {
 | `internalRoutes`                                                                                                                                                                               | *models.UpdateProjectInternalRoutes*[]                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
 | `hasDeployments`                                                                                                                                                                               | *boolean*                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
 | `dismissedToasts`                                                                                                                                                                              | [models.UpdateProjectProjectsDismissedToasts](../models/updateprojectprojectsdismissedtoasts.md)[]                                                                                             | :heavy_minus_sign:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
-| `cveShield`                                                                                                                                                                                    | [models.UpdateProjectCveShield](../models/updateprojectcveshield.md)                                                                                                                           | :heavy_minus_sign:                                                                                                                                                                             | N/A                                                                                                                                                                                            |

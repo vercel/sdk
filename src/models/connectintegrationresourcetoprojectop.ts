@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type ConnectIntegrationResourceToProjectRequestBody = {
@@ -33,7 +34,7 @@ export const ConnectIntegrationResourceToProjectRequestBody$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    projectId: z.string(),
+    projectId: types.string(),
   });
 /** @internal */
 export type ConnectIntegrationResourceToProjectRequestBody$Outbound = {
@@ -80,13 +81,15 @@ export function connectIntegrationResourceToProjectRequestBodyFromJSON(
 export const ConnectIntegrationResourceToProjectRequest$inboundSchema:
   z.ZodType<ConnectIntegrationResourceToProjectRequest, z.ZodTypeDef, unknown> =
     z.object({
-      integrationConfigurationId: z.string(),
-      resourceId: z.string(),
-      teamId: z.string().optional(),
-      slug: z.string().optional(),
-      RequestBody: z.lazy(() =>
-        ConnectIntegrationResourceToProjectRequestBody$inboundSchema
-      ).optional(),
+      integrationConfigurationId: types.string(),
+      resourceId: types.string(),
+      teamId: types.optional(types.string()),
+      slug: types.optional(types.string()),
+      RequestBody: types.optional(
+        z.lazy(() =>
+          ConnectIntegrationResourceToProjectRequestBody$inboundSchema
+        ),
+      ),
     }).transform((v) => {
       return remap$(v, {
         "RequestBody": "requestBody",

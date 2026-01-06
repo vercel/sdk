@@ -6,6 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetIntegrationResourcesRequest = {
@@ -121,7 +123,7 @@ export const GetIntegrationResourcesRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  integrationConfigurationId: z.string(),
+  integrationConfigurationId: types.string(),
 });
 /** @internal */
 export type GetIntegrationResourcesRequest$Outbound = {
@@ -171,9 +173,9 @@ export const GetIntegrationResourcesExperimentation$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  edgeConfigSyncingEnabled: z.boolean().optional(),
-  edgeConfigId: z.string().optional(),
-  edgeConfigTokenId: z.string().optional(),
+  edgeConfigSyncingEnabled: types.optional(types.boolean()),
+  edgeConfigId: types.optional(types.string()),
+  edgeConfigTokenId: types.optional(types.string()),
 });
 /** @internal */
 export type GetIntegrationResourcesExperimentation$Outbound = {
@@ -220,9 +222,9 @@ export const GetIntegrationResourcesProtocolSettings$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  experimentation: z.lazy(() =>
-    GetIntegrationResourcesExperimentation$inboundSchema
-  ).optional(),
+  experimentation: types.optional(
+    z.lazy(() => GetIntegrationResourcesExperimentation$inboundSchema),
+  ),
 });
 /** @internal */
 export type GetIntegrationResourcesProtocolSettings$Outbound = {
@@ -282,9 +284,9 @@ export const GetIntegrationResourcesNotification$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   level: GetIntegrationResourcesLevel$inboundSchema,
-  title: z.string(),
-  message: z.string().optional(),
-  href: z.string().optional(),
+  title: types.string(),
+  message: types.optional(types.string()),
+  href: types.optional(types.string()),
 });
 /** @internal */
 export type GetIntegrationResourcesNotification$Outbound = {
@@ -331,12 +333,12 @@ export const GetIntegrationResourcesMetadata$inboundSchema: z.ZodType<
   GetIntegrationResourcesMetadata,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.array(z.string()),
-  z.array(z.number()),
+> = smartUnion([
+  types.string(),
+  types.number(),
+  types.boolean(),
+  z.array(types.string()),
+  z.array(types.number()),
 ]);
 /** @internal */
 export type GetIntegrationResourcesMetadata$Outbound =
@@ -351,7 +353,7 @@ export const GetIntegrationResourcesMetadata$outboundSchema: z.ZodType<
   GetIntegrationResourcesMetadata$Outbound,
   z.ZodTypeDef,
   GetIntegrationResourcesMetadata
-> = z.union([
+> = smartUnion([
   z.string(),
   z.number(),
   z.boolean(),
@@ -384,26 +386,29 @@ export const GetIntegrationResourcesResources$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  partnerId: z.string(),
-  internalId: z.string(),
-  name: z.string(),
-  status: GetIntegrationResourcesStatus$inboundSchema.optional(),
-  productId: z.string(),
-  protocolSettings: z.lazy(() =>
-    GetIntegrationResourcesProtocolSettings$inboundSchema
-  ).optional(),
-  notification: z.lazy(() => GetIntegrationResourcesNotification$inboundSchema)
-    .optional(),
-  billingPlanId: z.string().optional(),
-  metadata: z.record(
-    z.union([
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.array(z.string()),
-      z.array(z.number()),
-    ]),
-  ).optional(),
+  partnerId: types.string(),
+  internalId: types.string(),
+  name: types.string(),
+  status: types.optional(GetIntegrationResourcesStatus$inboundSchema),
+  productId: types.string(),
+  protocolSettings: types.optional(
+    z.lazy(() => GetIntegrationResourcesProtocolSettings$inboundSchema),
+  ),
+  notification: types.optional(
+    z.lazy(() => GetIntegrationResourcesNotification$inboundSchema),
+  ),
+  billingPlanId: types.optional(types.string()),
+  metadata: types.optional(
+    z.record(
+      smartUnion([
+        types.string(),
+        types.number(),
+        types.boolean(),
+        z.array(types.string()),
+        z.array(types.number()),
+      ]),
+    ),
+  ),
 });
 /** @internal */
 export type GetIntegrationResourcesResources$Outbound = {
@@ -440,7 +445,7 @@ export const GetIntegrationResourcesResources$outboundSchema: z.ZodType<
     .optional(),
   billingPlanId: z.string().optional(),
   metadata: z.record(
-    z.union([
+    smartUnion([
       z.string(),
       z.number(),
       z.boolean(),

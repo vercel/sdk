@@ -1,0 +1,19 @@
+# GetProjectsResponseBodyMissing
+
+## Example Usage
+
+```typescript
+import { GetProjectsResponseBodyMissing } from "@vercel/sdk/models/getprojectsop.js";
+
+let value: GetProjectsResponseBodyMissing = {
+  type: "path",
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                                                | Type                                                                                                                                                                                 | Required                                                                                                                                                                             | Description                                                                                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `type`                                                                                                                                                                               | [models.GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsSecurityType](../models/getprojectsresponsebodyprojectsresponse200applicationjson2projectssecuritytype.md) | :heavy_check_mark:                                                                                                                                                                   | N/A                                                                                                                                                                                  |
+| `key`                                                                                                                                                                                | *string*                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                   | N/A                                                                                                                                                                                  |
+| `value`                                                                                                                                                                              | *models.GetProjectsResponseBodyProjectsResponseValue*                                                                                                                                | :heavy_minus_sign:                                                                                                                                                                   | N/A                                                                                                                                                                                  |

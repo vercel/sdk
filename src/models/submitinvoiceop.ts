@@ -7,6 +7,7 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -126,8 +127,8 @@ export const SubmitInvoicePeriod$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  start: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  end: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  start: types.date(),
+  end: types.date(),
 });
 /** @internal */
 export type SubmitInvoicePeriod$Outbound = {
@@ -168,18 +169,16 @@ export const SubmitInvoiceItems$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  resourceId: z.string().optional(),
-  billingPlanId: z.string(),
-  start: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  end: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  name: z.string(),
-  details: z.string().optional(),
-  price: z.string(),
-  quantity: z.number(),
-  units: z.string(),
-  total: z.string(),
+  resourceId: types.optional(types.string()),
+  billingPlanId: types.string(),
+  start: types.optional(types.date()),
+  end: types.optional(types.date()),
+  name: types.string(),
+  details: types.optional(types.string()),
+  price: types.string(),
+  quantity: types.number(),
+  units: types.string(),
+  total: types.string(),
 });
 /** @internal */
 export type SubmitInvoiceItems$Outbound = {
@@ -236,15 +235,13 @@ export const SubmitInvoiceDiscounts$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  resourceId: z.string().optional(),
-  billingPlanId: z.string(),
-  start: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  end: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  name: z.string(),
-  details: z.string().optional(),
-  amount: z.string(),
+  resourceId: types.optional(types.string()),
+  billingPlanId: types.string(),
+  start: types.optional(types.date()),
+  end: types.optional(types.date()),
+  name: types.string(),
+  details: types.optional(types.string()),
+  amount: types.string(),
 });
 /** @internal */
 export type SubmitInvoiceDiscounts$Outbound = {
@@ -299,8 +296,8 @@ export const Result$outboundSchema: z.ZodNativeEnum<typeof Result> =
 /** @internal */
 export const Test$inboundSchema: z.ZodType<Test, z.ZodTypeDef, unknown> = z
   .object({
-    validate: z.boolean().optional(),
-    result: Result$inboundSchema.optional(),
+    validate: types.optional(types.boolean()),
+    result: types.optional(Result$inboundSchema),
   });
 /** @internal */
 export type Test$Outbound = {
@@ -334,16 +331,15 @@ export const SubmitInvoiceRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  externalId: z.string().optional(),
-  invoiceDate: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ),
-  memo: z.string().optional(),
+  externalId: types.optional(types.string()),
+  invoiceDate: types.date(),
+  memo: types.optional(types.string()),
   period: z.lazy(() => SubmitInvoicePeriod$inboundSchema),
   items: z.array(z.lazy(() => SubmitInvoiceItems$inboundSchema)),
-  discounts: z.array(z.lazy(() => SubmitInvoiceDiscounts$inboundSchema))
-    .optional(),
-  test: z.lazy(() => Test$inboundSchema).optional(),
+  discounts: types.optional(
+    z.array(z.lazy(() => SubmitInvoiceDiscounts$inboundSchema)),
+  ),
+  test: types.optional(z.lazy(() => Test$inboundSchema)),
 });
 /** @internal */
 export type SubmitInvoiceRequestBody$Outbound = {
@@ -395,7 +391,7 @@ export const SubmitInvoiceRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  integrationConfigurationId: z.string(),
+  integrationConfigurationId: types.string(),
   RequestBody: z.lazy(() => SubmitInvoiceRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
@@ -445,9 +441,9 @@ export const SubmitInvoiceResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  invoiceId: z.string().optional(),
-  test: z.boolean().optional(),
-  validationErrors: z.array(z.string()).optional(),
+  invoiceId: types.optional(types.string()),
+  test: types.optional(types.boolean()),
+  validationErrors: types.optional(z.array(types.string())),
 });
 /** @internal */
 export type SubmitInvoiceResponseBody$Outbound = {

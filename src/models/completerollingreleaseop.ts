@@ -7,6 +7,7 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type CompleteRollingReleaseRequestBody = {
@@ -51,14 +52,32 @@ export type CompleteRollingReleaseState = ClosedEnum<
  * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
  */
 export const CompleteRollingReleaseTarget = {
-  Staging: "staging",
   Production: "production",
+  Staging: "staging",
 } as const;
 /**
  * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
  */
 export type CompleteRollingReleaseTarget = ClosedEnum<
   typeof CompleteRollingReleaseTarget
+>;
+
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
+export const CompleteRollingReleaseReadyState = {
+  Building: "BUILDING",
+  Error: "ERROR",
+  Initializing: "INITIALIZING",
+  Queued: "QUEUED",
+  Ready: "READY",
+  Canceled: "CANCELED",
+} as const;
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
+export type CompleteRollingReleaseReadyState = ClosedEnum<
+  typeof CompleteRollingReleaseReadyState
 >;
 
 /**
@@ -82,9 +101,58 @@ export type CompleteRollingReleaseSource = ClosedEnum<
 >;
 
 /**
+ * The current deployment receiving production traffic
+ */
+export type CompleteRollingReleaseCurrentDeployment = {
+  /**
+   * The name of the project associated with the deployment at the time that the deployment was created
+   */
+  name: string;
+  /**
+   * A number containing the date when the deployment was created in milliseconds
+   */
+  createdAt: number;
+  /**
+   * A string holding the unique ID of the deployment
+   */
+  id: string;
+  /**
+   * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+   */
+  target?: CompleteRollingReleaseTarget | null | undefined;
+  /**
+   * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+   */
+  readyState: CompleteRollingReleaseReadyState;
+  readyStateAt?: number | undefined;
+  /**
+   * Where was the deployment created from
+   */
+  source?: CompleteRollingReleaseSource | undefined;
+  /**
+   * A string with the unique URL of the deployment
+   */
+  url: string;
+};
+
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
+export const CompleteRollingReleaseRollingReleaseTarget = {
+  Production: "production",
+  Staging: "staging",
+} as const;
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
+export type CompleteRollingReleaseRollingReleaseTarget = ClosedEnum<
+  typeof CompleteRollingReleaseRollingReleaseTarget
+>;
+
+/**
  * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
  */
-export const CompleteRollingReleaseReadyState = {
+export const CompleteRollingReleaseRollingReleaseReadyState = {
   Building: "BUILDING",
   Error: "ERROR",
   Initializing: "INITIALIZING",
@@ -95,57 +163,8 @@ export const CompleteRollingReleaseReadyState = {
 /**
  * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
  */
-export type CompleteRollingReleaseReadyState = ClosedEnum<
-  typeof CompleteRollingReleaseReadyState
->;
-
-/**
- * The current deployment receiving production traffic
- */
-export type CompleteRollingReleaseCurrentDeployment = {
-  /**
-   * A string holding the unique ID of the deployment
-   */
-  id: string;
-  /**
-   * The name of the project associated with the deployment at the time that the deployment was created
-   */
-  name: string;
-  /**
-   * A string with the unique URL of the deployment
-   */
-  url: string;
-  /**
-   * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
-   */
-  target?: CompleteRollingReleaseTarget | null | undefined;
-  /**
-   * Where was the deployment created from
-   */
-  source?: CompleteRollingReleaseSource | undefined;
-  /**
-   * A number containing the date when the deployment was created in milliseconds
-   */
-  createdAt: number;
-  /**
-   * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
-   */
-  readyState: CompleteRollingReleaseReadyState;
-  readyStateAt?: number | undefined;
-};
-
-/**
- * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
- */
-export const CompleteRollingReleaseRollingReleaseTarget = {
-  Staging: "staging",
-  Production: "production",
-} as const;
-/**
- * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
- */
-export type CompleteRollingReleaseRollingReleaseTarget = ClosedEnum<
-  typeof CompleteRollingReleaseRollingReleaseTarget
+export type CompleteRollingReleaseRollingReleaseReadyState = ClosedEnum<
+  typeof CompleteRollingReleaseRollingReleaseReadyState
 >;
 
 /**
@@ -169,56 +188,38 @@ export type CompleteRollingReleaseRollingReleaseSource = ClosedEnum<
 >;
 
 /**
- * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
- */
-export const CompleteRollingReleaseRollingReleaseReadyState = {
-  Building: "BUILDING",
-  Error: "ERROR",
-  Initializing: "INITIALIZING",
-  Queued: "QUEUED",
-  Ready: "READY",
-  Canceled: "CANCELED",
-} as const;
-/**
- * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
- */
-export type CompleteRollingReleaseRollingReleaseReadyState = ClosedEnum<
-  typeof CompleteRollingReleaseRollingReleaseReadyState
->;
-
-/**
  * The canary deployment being rolled out
  */
 export type CompleteRollingReleaseCanaryDeployment = {
-  /**
-   * A string holding the unique ID of the deployment
-   */
-  id: string;
   /**
    * The name of the project associated with the deployment at the time that the deployment was created
    */
   name: string;
   /**
-   * A string with the unique URL of the deployment
+   * A number containing the date when the deployment was created in milliseconds
    */
-  url: string;
+  createdAt: number;
+  /**
+   * A string holding the unique ID of the deployment
+   */
+  id: string;
   /**
    * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
    */
   target?: CompleteRollingReleaseRollingReleaseTarget | null | undefined;
   /**
-   * Where was the deployment created from
-   */
-  source?: CompleteRollingReleaseRollingReleaseSource | undefined;
-  /**
-   * A number containing the date when the deployment was created in milliseconds
-   */
-  createdAt: number;
-  /**
    * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
    */
   readyState: CompleteRollingReleaseRollingReleaseReadyState;
   readyStateAt?: number | undefined;
+  /**
+   * Where was the deployment created from
+   */
+  source?: CompleteRollingReleaseRollingReleaseSource | undefined;
+  /**
+   * A string with the unique URL of the deployment
+   */
+  url: string;
 };
 
 /**
@@ -387,7 +388,7 @@ export const CompleteRollingReleaseRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  canaryDeploymentId: z.string(),
+  canaryDeploymentId: types.string(),
 });
 /** @internal */
 export type CompleteRollingReleaseRequestBody$Outbound = {
@@ -428,11 +429,12 @@ export const CompleteRollingReleaseRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  idOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  RequestBody: z.lazy(() => CompleteRollingReleaseRequestBody$inboundSchema)
-    .optional(),
+  idOrName: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
+  RequestBody: types.optional(
+    z.lazy(() => CompleteRollingReleaseRequestBody$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",
@@ -501,15 +503,6 @@ export const CompleteRollingReleaseTarget$outboundSchema: z.ZodNativeEnum<
 > = CompleteRollingReleaseTarget$inboundSchema;
 
 /** @internal */
-export const CompleteRollingReleaseSource$inboundSchema: z.ZodNativeEnum<
-  typeof CompleteRollingReleaseSource
-> = z.nativeEnum(CompleteRollingReleaseSource);
-/** @internal */
-export const CompleteRollingReleaseSource$outboundSchema: z.ZodNativeEnum<
-  typeof CompleteRollingReleaseSource
-> = CompleteRollingReleaseSource$inboundSchema;
-
-/** @internal */
 export const CompleteRollingReleaseReadyState$inboundSchema: z.ZodNativeEnum<
   typeof CompleteRollingReleaseReadyState
 > = z.nativeEnum(CompleteRollingReleaseReadyState);
@@ -519,30 +512,39 @@ export const CompleteRollingReleaseReadyState$outboundSchema: z.ZodNativeEnum<
 > = CompleteRollingReleaseReadyState$inboundSchema;
 
 /** @internal */
+export const CompleteRollingReleaseSource$inboundSchema: z.ZodNativeEnum<
+  typeof CompleteRollingReleaseSource
+> = z.nativeEnum(CompleteRollingReleaseSource);
+/** @internal */
+export const CompleteRollingReleaseSource$outboundSchema: z.ZodNativeEnum<
+  typeof CompleteRollingReleaseSource
+> = CompleteRollingReleaseSource$inboundSchema;
+
+/** @internal */
 export const CompleteRollingReleaseCurrentDeployment$inboundSchema: z.ZodType<
   CompleteRollingReleaseCurrentDeployment,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
-  url: z.string(),
+  name: types.string(),
+  createdAt: types.number(),
+  id: types.string(),
   target: z.nullable(CompleteRollingReleaseTarget$inboundSchema).optional(),
-  source: CompleteRollingReleaseSource$inboundSchema.optional(),
-  createdAt: z.number(),
   readyState: CompleteRollingReleaseReadyState$inboundSchema,
-  readyStateAt: z.number().optional(),
+  readyStateAt: types.optional(types.number()),
+  source: types.optional(CompleteRollingReleaseSource$inboundSchema),
+  url: types.string(),
 });
 /** @internal */
 export type CompleteRollingReleaseCurrentDeployment$Outbound = {
-  id: string;
   name: string;
-  url: string;
-  target?: string | null | undefined;
-  source?: string | undefined;
   createdAt: number;
+  id: string;
+  target?: string | null | undefined;
   readyState: string;
   readyStateAt?: number | undefined;
+  source?: string | undefined;
+  url: string;
 };
 
 /** @internal */
@@ -551,14 +553,14 @@ export const CompleteRollingReleaseCurrentDeployment$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CompleteRollingReleaseCurrentDeployment
 > = z.object({
-  id: z.string(),
   name: z.string(),
-  url: z.string(),
-  target: z.nullable(CompleteRollingReleaseTarget$outboundSchema).optional(),
-  source: CompleteRollingReleaseSource$outboundSchema.optional(),
   createdAt: z.number(),
+  id: z.string(),
+  target: z.nullable(CompleteRollingReleaseTarget$outboundSchema).optional(),
   readyState: CompleteRollingReleaseReadyState$outboundSchema,
   readyStateAt: z.number().optional(),
+  source: CompleteRollingReleaseSource$outboundSchema.optional(),
+  url: z.string(),
 });
 
 export function completeRollingReleaseCurrentDeploymentToJSON(
@@ -597,15 +599,6 @@ export const CompleteRollingReleaseRollingReleaseTarget$outboundSchema:
     CompleteRollingReleaseRollingReleaseTarget$inboundSchema;
 
 /** @internal */
-export const CompleteRollingReleaseRollingReleaseSource$inboundSchema:
-  z.ZodNativeEnum<typeof CompleteRollingReleaseRollingReleaseSource> = z
-    .nativeEnum(CompleteRollingReleaseRollingReleaseSource);
-/** @internal */
-export const CompleteRollingReleaseRollingReleaseSource$outboundSchema:
-  z.ZodNativeEnum<typeof CompleteRollingReleaseRollingReleaseSource> =
-    CompleteRollingReleaseRollingReleaseSource$inboundSchema;
-
-/** @internal */
 export const CompleteRollingReleaseRollingReleaseReadyState$inboundSchema:
   z.ZodNativeEnum<typeof CompleteRollingReleaseRollingReleaseReadyState> = z
     .nativeEnum(CompleteRollingReleaseRollingReleaseReadyState);
@@ -615,31 +608,42 @@ export const CompleteRollingReleaseRollingReleaseReadyState$outboundSchema:
     CompleteRollingReleaseRollingReleaseReadyState$inboundSchema;
 
 /** @internal */
+export const CompleteRollingReleaseRollingReleaseSource$inboundSchema:
+  z.ZodNativeEnum<typeof CompleteRollingReleaseRollingReleaseSource> = z
+    .nativeEnum(CompleteRollingReleaseRollingReleaseSource);
+/** @internal */
+export const CompleteRollingReleaseRollingReleaseSource$outboundSchema:
+  z.ZodNativeEnum<typeof CompleteRollingReleaseRollingReleaseSource> =
+    CompleteRollingReleaseRollingReleaseSource$inboundSchema;
+
+/** @internal */
 export const CompleteRollingReleaseCanaryDeployment$inboundSchema: z.ZodType<
   CompleteRollingReleaseCanaryDeployment,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
-  url: z.string(),
+  name: types.string(),
+  createdAt: types.number(),
+  id: types.string(),
   target: z.nullable(CompleteRollingReleaseRollingReleaseTarget$inboundSchema)
     .optional(),
-  source: CompleteRollingReleaseRollingReleaseSource$inboundSchema.optional(),
-  createdAt: z.number(),
   readyState: CompleteRollingReleaseRollingReleaseReadyState$inboundSchema,
-  readyStateAt: z.number().optional(),
+  readyStateAt: types.optional(types.number()),
+  source: types.optional(
+    CompleteRollingReleaseRollingReleaseSource$inboundSchema,
+  ),
+  url: types.string(),
 });
 /** @internal */
 export type CompleteRollingReleaseCanaryDeployment$Outbound = {
-  id: string;
   name: string;
-  url: string;
-  target?: string | null | undefined;
-  source?: string | undefined;
   createdAt: number;
+  id: string;
+  target?: string | null | undefined;
   readyState: string;
   readyStateAt?: number | undefined;
+  source?: string | undefined;
+  url: string;
 };
 
 /** @internal */
@@ -648,15 +652,15 @@ export const CompleteRollingReleaseCanaryDeployment$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CompleteRollingReleaseCanaryDeployment
 > = z.object({
-  id: z.string(),
   name: z.string(),
-  url: z.string(),
+  createdAt: z.number(),
+  id: z.string(),
   target: z.nullable(CompleteRollingReleaseRollingReleaseTarget$outboundSchema)
     .optional(),
-  source: CompleteRollingReleaseRollingReleaseSource$outboundSchema.optional(),
-  createdAt: z.number(),
   readyState: CompleteRollingReleaseRollingReleaseReadyState$outboundSchema,
   readyStateAt: z.number().optional(),
+  source: CompleteRollingReleaseRollingReleaseSource$outboundSchema.optional(),
+  url: z.string(),
 });
 
 export function completeRollingReleaseCanaryDeploymentToJSON(
@@ -696,12 +700,12 @@ export const CompleteRollingReleaseStages$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  index: z.number(),
-  isFinalStage: z.boolean(),
-  targetPercentage: z.number(),
-  requireApproval: z.boolean(),
-  duration: z.nullable(z.number()),
-  linearShift: z.boolean().optional(),
+  index: types.number(),
+  isFinalStage: types.boolean(),
+  targetPercentage: types.number(),
+  requireApproval: types.boolean(),
+  duration: types.nullable(types.number()),
+  linearShift: types.optional(types.boolean()),
 });
 /** @internal */
 export type CompleteRollingReleaseStages$Outbound = {
@@ -752,12 +756,12 @@ export const CompleteRollingReleaseActiveStage$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  index: z.number(),
-  isFinalStage: z.boolean(),
-  targetPercentage: z.number(),
-  requireApproval: z.boolean(),
-  duration: z.nullable(z.number()),
-  linearShift: z.boolean().optional(),
+  index: types.number(),
+  isFinalStage: types.boolean(),
+  targetPercentage: types.number(),
+  requireApproval: types.boolean(),
+  duration: types.nullable(types.number()),
+  linearShift: types.optional(types.boolean()),
 });
 /** @internal */
 export type CompleteRollingReleaseActiveStage$Outbound = {
@@ -808,12 +812,12 @@ export const CompleteRollingReleaseNextStage$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  index: z.number(),
-  isFinalStage: z.boolean(),
-  targetPercentage: z.number(),
-  requireApproval: z.boolean(),
-  duration: z.nullable(z.number()),
-  linearShift: z.boolean().optional(),
+  index: types.number(),
+  isFinalStage: types.boolean(),
+  targetPercentage: types.number(),
+  requireApproval: types.boolean(),
+  duration: types.nullable(types.number()),
+  linearShift: types.optional(types.boolean()),
 });
 /** @internal */
 export type CompleteRollingReleaseNextStage$Outbound = {
@@ -865,23 +869,23 @@ export const CompleteRollingReleaseRollingRelease$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   state: CompleteRollingReleaseState$inboundSchema,
-  currentDeployment: z.nullable(
+  currentDeployment: types.nullable(
     z.lazy(() => CompleteRollingReleaseCurrentDeployment$inboundSchema),
   ),
-  canaryDeployment: z.nullable(
+  canaryDeployment: types.nullable(
     z.lazy(() => CompleteRollingReleaseCanaryDeployment$inboundSchema),
   ),
-  queuedDeploymentId: z.nullable(z.string()),
+  queuedDeploymentId: types.nullable(types.string()),
   advancementType: CompleteRollingReleaseAdvancementType$inboundSchema,
   stages: z.array(z.lazy(() => CompleteRollingReleaseStages$inboundSchema)),
-  activeStage: z.nullable(
+  activeStage: types.nullable(
     z.lazy(() => CompleteRollingReleaseActiveStage$inboundSchema),
   ),
-  nextStage: z.nullable(
+  nextStage: types.nullable(
     z.lazy(() => CompleteRollingReleaseNextStage$inboundSchema),
   ),
-  startedAt: z.number(),
-  updatedAt: z.number(),
+  startedAt: types.number(),
+  updatedAt: types.number(),
 });
 /** @internal */
 export type CompleteRollingReleaseRollingRelease$Outbound = {
@@ -949,7 +953,7 @@ export const CompleteRollingReleaseResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  rollingRelease: z.nullable(
+  rollingRelease: types.nullable(
     z.lazy(() => CompleteRollingReleaseRollingRelease$inboundSchema),
   ),
 });

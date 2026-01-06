@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetV9ProjectsIdOrNameCustomEnvironmentsRequest = {
@@ -115,14 +116,6 @@ export type GetV9ProjectsIdOrNameCustomEnvironmentsDomains = {
 
 export type GetV9ProjectsIdOrNameCustomEnvironmentsEnvironments = {
   /**
-   * Unique identifier for the custom environment (format: env_*)
-   */
-  id: string;
-  /**
-   * URL-friendly name of the environment
-   */
-  slug: string;
-  /**
    * The type of environment (production, preview, or development)
    */
   type: GetV9ProjectsIdOrNameCustomEnvironmentsType;
@@ -130,6 +123,22 @@ export type GetV9ProjectsIdOrNameCustomEnvironmentsEnvironments = {
    * Optional description of the environment's purpose
    */
   description?: string | undefined;
+  /**
+   * Timestamp when the environment was created
+   */
+  createdAt: number;
+  /**
+   * Timestamp when the environment was last updated
+   */
+  updatedAt: number;
+  /**
+   * Unique identifier for the custom environment (format: env_*)
+   */
+  id: string;
+  /**
+   * URL-friendly name of the environment
+   */
+  slug: string;
   /**
    * Configuration for matching git branches to this environment
    */
@@ -144,14 +153,6 @@ export type GetV9ProjectsIdOrNameCustomEnvironmentsEnvironments = {
    * List of aliases for the current deployment
    */
   currentDeploymentAliases?: Array<string> | undefined;
-  /**
-   * Timestamp when the environment was created
-   */
-  createdAt: number;
-  /**
-   * Timestamp when the environment was last updated
-   */
-  updatedAt: number;
 };
 
 export type GetV9ProjectsIdOrNameCustomEnvironmentsResponseBody = {
@@ -169,10 +170,10 @@ export const GetV9ProjectsIdOrNameCustomEnvironmentsRequest$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    idOrName: z.string(),
-    gitBranch: z.string().optional(),
-    teamId: z.string().optional(),
-    slug: z.string().optional(),
+    idOrName: types.string(),
+    gitBranch: types.optional(types.string()),
+    teamId: types.optional(types.string()),
+    slug: types.optional(types.string()),
   });
 /** @internal */
 export type GetV9ProjectsIdOrNameCustomEnvironmentsRequest$Outbound = {
@@ -227,7 +228,7 @@ export const AccountLimit$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  total: z.number(),
+  total: types.number(),
 });
 /** @internal */
 export type AccountLimit$Outbound = {
@@ -284,7 +285,7 @@ export const GetV9ProjectsIdOrNameCustomEnvironmentsBranchMatcher$inboundSchema:
     unknown
   > = z.object({
     type: GetV9ProjectsIdOrNameCustomEnvironmentsEnvironmentType$inboundSchema,
-    pattern: z.string(),
+    pattern: types.string(),
   });
 /** @internal */
 export type GetV9ProjectsIdOrNameCustomEnvironmentsBranchMatcher$Outbound = {
@@ -336,10 +337,10 @@ export const GetV9ProjectsIdOrNameCustomEnvironmentsVerification$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    type: z.string(),
-    domain: z.string(),
-    value: z.string(),
-    reason: z.string(),
+    type: types.string(),
+    domain: types.string(),
+    value: types.string(),
+    reason: types.string(),
   });
 /** @internal */
 export type GetV9ProjectsIdOrNameCustomEnvironmentsVerification$Outbound = {
@@ -395,21 +396,21 @@ export const GetV9ProjectsIdOrNameCustomEnvironmentsDomains$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    name: z.string(),
-    apexName: z.string(),
-    projectId: z.string(),
-    redirect: z.nullable(z.string()).optional(),
-    redirectStatusCode: z.nullable(z.number()).optional(),
-    gitBranch: z.nullable(z.string()).optional(),
-    customEnvironmentId: z.nullable(z.string()).optional(),
-    updatedAt: z.number().optional(),
-    createdAt: z.number().optional(),
-    verified: z.boolean(),
-    verification: z.array(
-      z.lazy(() =>
+    name: types.string(),
+    apexName: types.string(),
+    projectId: types.string(),
+    redirect: z.nullable(types.string()).optional(),
+    redirectStatusCode: z.nullable(types.number()).optional(),
+    gitBranch: z.nullable(types.string()).optional(),
+    customEnvironmentId: z.nullable(types.string()).optional(),
+    updatedAt: types.optional(types.number()),
+    createdAt: types.optional(types.number()),
+    verified: types.boolean(),
+    verification: types.optional(
+      z.array(z.lazy(() =>
         GetV9ProjectsIdOrNameCustomEnvironmentsVerification$inboundSchema
-      ),
-    ).optional(),
+      )),
+    ),
   });
 /** @internal */
 export type GetV9ProjectsIdOrNameCustomEnvironmentsDomains$Outbound = {
@@ -485,28 +486,32 @@ export const GetV9ProjectsIdOrNameCustomEnvironmentsEnvironments$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    id: z.string(),
-    slug: z.string(),
     type: GetV9ProjectsIdOrNameCustomEnvironmentsType$inboundSchema,
-    description: z.string().optional(),
-    branchMatcher: z.lazy(() =>
-      GetV9ProjectsIdOrNameCustomEnvironmentsBranchMatcher$inboundSchema
-    ).optional(),
-    domains: z.array(
+    description: types.optional(types.string()),
+    createdAt: types.number(),
+    updatedAt: types.number(),
+    id: types.string(),
+    slug: types.string(),
+    branchMatcher: types.optional(
       z.lazy(() =>
-        GetV9ProjectsIdOrNameCustomEnvironmentsDomains$inboundSchema
+        GetV9ProjectsIdOrNameCustomEnvironmentsBranchMatcher$inboundSchema
       ),
-    ).optional(),
-    currentDeploymentAliases: z.array(z.string()).optional(),
-    createdAt: z.number(),
-    updatedAt: z.number(),
+    ),
+    domains: types.optional(
+      z.array(z.lazy(() =>
+        GetV9ProjectsIdOrNameCustomEnvironmentsDomains$inboundSchema
+      )),
+    ),
+    currentDeploymentAliases: types.optional(z.array(types.string())),
   });
 /** @internal */
 export type GetV9ProjectsIdOrNameCustomEnvironmentsEnvironments$Outbound = {
-  id: string;
-  slug: string;
   type: string;
   description?: string | undefined;
+  createdAt: number;
+  updatedAt: number;
+  id: string;
+  slug: string;
   branchMatcher?:
     | GetV9ProjectsIdOrNameCustomEnvironmentsBranchMatcher$Outbound
     | undefined;
@@ -514,8 +519,6 @@ export type GetV9ProjectsIdOrNameCustomEnvironmentsEnvironments$Outbound = {
     | Array<GetV9ProjectsIdOrNameCustomEnvironmentsDomains$Outbound>
     | undefined;
   currentDeploymentAliases?: Array<string> | undefined;
-  createdAt: number;
-  updatedAt: number;
 };
 
 /** @internal */
@@ -525,10 +528,12 @@ export const GetV9ProjectsIdOrNameCustomEnvironmentsEnvironments$outboundSchema:
     z.ZodTypeDef,
     GetV9ProjectsIdOrNameCustomEnvironmentsEnvironments
   > = z.object({
-    id: z.string(),
-    slug: z.string(),
     type: GetV9ProjectsIdOrNameCustomEnvironmentsType$outboundSchema,
     description: z.string().optional(),
+    createdAt: z.number(),
+    updatedAt: z.number(),
+    id: z.string(),
+    slug: z.string(),
     branchMatcher: z.lazy(() =>
       GetV9ProjectsIdOrNameCustomEnvironmentsBranchMatcher$outboundSchema
     ).optional(),
@@ -538,8 +543,6 @@ export const GetV9ProjectsIdOrNameCustomEnvironmentsEnvironments$outboundSchema:
       ),
     ).optional(),
     currentDeploymentAliases: z.array(z.string()).optional(),
-    createdAt: z.number(),
-    updatedAt: z.number(),
   });
 
 export function getV9ProjectsIdOrNameCustomEnvironmentsEnvironmentsToJSON(

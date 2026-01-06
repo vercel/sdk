@@ -7,6 +7,7 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const Category = {
@@ -58,15 +59,15 @@ export const PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExp
     z.ZodTypeDef,
     unknown
   > = z.object({
-    id: z.string(),
-    slug: z.string(),
-    origin: z.string(),
-    category: Category$inboundSchema.optional(),
-    name: z.string().optional(),
-    description: z.string().optional(),
-    isArchived: z.boolean().optional(),
-    createdAt: z.number().optional(),
-    updatedAt: z.number().optional(),
+    id: types.string(),
+    slug: types.string(),
+    origin: types.string(),
+    category: types.optional(Category$inboundSchema),
+    name: types.optional(types.string()),
+    description: types.optional(types.string()),
+    isArchived: types.optional(types.boolean()),
+    createdAt: types.optional(types.number()),
+    updatedAt: types.optional(types.number()),
   });
 /** @internal */
 export type PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItems$Outbound =
@@ -194,11 +195,13 @@ export const PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExp
     z.ZodTypeDef,
     unknown
   > = z.object({
-    integrationConfigurationId: z.string(),
-    resourceId: z.string(),
-    RequestBody: z.lazy(() =>
-      PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequestBody$inboundSchema
-    ).optional(),
+    integrationConfigurationId: types.string(),
+    resourceId: types.string(),
+    RequestBody: types.optional(
+      z.lazy(() =>
+        PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequestBody$inboundSchema
+      ),
+    ),
   }).transform((v) => {
     return remap$(v, {
       "RequestBody": "requestBody",

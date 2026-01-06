@@ -6,6 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const View = {
@@ -373,10 +375,10 @@ export const GetConfigurationsRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   view: View$inboundSchema,
-  installationType: InstallationType$inboundSchema.optional(),
-  integrationIdOrSlug: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  installationType: types.optional(InstallationType$inboundSchema),
+  integrationIdOrSlug: types.optional(types.string()),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type GetConfigurationsRequest$Outbound = {
@@ -430,12 +432,12 @@ export const ResponseBodyIntegration$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  icon: z.string(),
-  isLegacy: z.boolean(),
-  flags: z.array(z.string()).optional(),
-  assignedBetaLabelAt: z.number().optional(),
-  tagIds: z.array(TagIds$inboundSchema).optional(),
+  name: types.string(),
+  icon: types.string(),
+  isLegacy: types.boolean(),
+  flags: types.optional(z.array(types.string())),
+  assignedBetaLabelAt: types.optional(types.number()),
+  tagIds: types.optional(z.array(TagIds$inboundSchema)),
 });
 /** @internal */
 export type ResponseBodyIntegration$Outbound = {
@@ -523,30 +525,32 @@ export const GetConfigurationsResponseBody2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   integration: z.lazy(() => ResponseBodyIntegration$inboundSchema),
-  completedAt: z.number().optional(),
-  createdAt: z.number(),
-  id: z.string(),
-  integrationId: z.string(),
-  ownerId: z.string(),
-  status: GetConfigurationsResponseBodyIntegrationsStatus$inboundSchema
-    .optional(),
-  externalId: z.string().optional(),
-  projects: z.array(z.string()).optional(),
-  source: z.string().optional(),
-  slug: z.string(),
-  teamId: z.nullable(z.string()).optional(),
+  completedAt: types.optional(types.number()),
+  createdAt: types.number(),
+  id: types.string(),
+  integrationId: types.string(),
+  ownerId: types.string(),
+  status: types.optional(
+    GetConfigurationsResponseBodyIntegrationsStatus$inboundSchema,
+  ),
+  externalId: types.optional(types.string()),
+  projects: types.optional(z.array(types.string())),
+  source: types.optional(types.string()),
+  slug: types.string(),
+  teamId: z.nullable(types.string()).optional(),
   type: GetConfigurationsResponseBodyIntegrationsType$inboundSchema,
-  updatedAt: z.number(),
-  userId: z.string(),
-  scopes: z.array(z.string()),
-  disabledAt: z.number().optional(),
-  deletedAt: z.nullable(z.number()).optional(),
-  deleteRequestedAt: z.nullable(z.number()).optional(),
-  disabledReason:
-    GetConfigurationsResponseBodyIntegrationsDisabledReason$inboundSchema
-      .optional(),
-  installationType: GetConfigurationsResponseBodyInstallationType$inboundSchema
-    .optional(),
+  updatedAt: types.number(),
+  userId: types.string(),
+  scopes: z.array(types.string()),
+  disabledAt: types.optional(types.number()),
+  deletedAt: z.nullable(types.number()).optional(),
+  deleteRequestedAt: z.nullable(types.number()).optional(),
+  disabledReason: types.optional(
+    GetConfigurationsResponseBodyIntegrationsDisabledReason$inboundSchema,
+  ),
+  installationType: types.optional(
+    GetConfigurationsResponseBodyInstallationType$inboundSchema,
+  ),
 });
 /** @internal */
 export type GetConfigurationsResponseBody2$Outbound = {
@@ -667,27 +671,28 @@ export const GetConfigurationsResponseBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  completedAt: z.number().optional(),
-  createdAt: z.number().optional(),
-  id: z.string().optional(),
-  integrationId: z.string().optional(),
-  ownerId: z.string().optional(),
-  status: GetConfigurationsResponseBodyStatus$inboundSchema.optional(),
-  externalId: z.string().optional(),
-  projects: z.array(z.string()).optional(),
-  source: z.string().optional(),
-  slug: z.string().optional(),
-  teamId: z.nullable(z.string()).optional(),
-  type: GetConfigurationsResponseBodyType$inboundSchema.optional(),
-  updatedAt: z.number().optional(),
-  userId: z.string().optional(),
-  scopes: z.array(z.string()).optional(),
-  disabledAt: z.number().optional(),
-  deletedAt: z.nullable(z.number()).optional(),
-  deleteRequestedAt: z.nullable(z.number()).optional(),
-  disabledReason: GetConfigurationsResponseBodyDisabledReason$inboundSchema
-    .optional(),
-  installationType: ResponseBodyInstallationType$inboundSchema.optional(),
+  completedAt: types.optional(types.number()),
+  createdAt: types.optional(types.number()),
+  id: types.optional(types.string()),
+  integrationId: types.optional(types.string()),
+  ownerId: types.optional(types.string()),
+  status: types.optional(GetConfigurationsResponseBodyStatus$inboundSchema),
+  externalId: types.optional(types.string()),
+  projects: types.optional(z.array(types.string())),
+  source: types.optional(types.string()),
+  slug: types.optional(types.string()),
+  teamId: z.nullable(types.string()).optional(),
+  type: types.optional(GetConfigurationsResponseBodyType$inboundSchema),
+  updatedAt: types.optional(types.number()),
+  userId: types.optional(types.string()),
+  scopes: types.optional(z.array(types.string())),
+  disabledAt: types.optional(types.number()),
+  deletedAt: z.nullable(types.number()).optional(),
+  deleteRequestedAt: z.nullable(types.number()).optional(),
+  disabledReason: types.optional(
+    GetConfigurationsResponseBodyDisabledReason$inboundSchema,
+  ),
+  installationType: types.optional(ResponseBodyInstallationType$inboundSchema),
 });
 /** @internal */
 export type GetConfigurationsResponseBody1$Outbound = {
@@ -766,7 +771,7 @@ export const GetConfigurationsResponseBody$inboundSchema: z.ZodType<
   GetConfigurationsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.array(z.lazy(() => GetConfigurationsResponseBody1$inboundSchema)),
   z.array(z.lazy(() => GetConfigurationsResponseBody2$inboundSchema)),
 ]);
@@ -780,7 +785,7 @@ export const GetConfigurationsResponseBody$outboundSchema: z.ZodType<
   GetConfigurationsResponseBody$Outbound,
   z.ZodTypeDef,
   GetConfigurationsResponseBody
-> = z.union([
+> = smartUnion([
   z.array(z.lazy(() => GetConfigurationsResponseBody1$outboundSchema)),
   z.array(z.lazy(() => GetConfigurationsResponseBody2$outboundSchema)),
 ]);

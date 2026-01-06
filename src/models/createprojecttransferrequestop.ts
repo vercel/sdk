@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type CreateProjectTransferRequestRequestBody = {
@@ -51,8 +52,8 @@ export const CreateProjectTransferRequestRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  callbackUrl: z.string().optional(),
-  callbackSecret: z.string().optional(),
+  callbackUrl: types.optional(types.string()),
+  callbackSecret: types.optional(types.string()),
 });
 /** @internal */
 export type CreateProjectTransferRequestRequestBody$Outbound = {
@@ -102,12 +103,12 @@ export const CreateProjectTransferRequestRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  idOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  RequestBody: z.lazy(() =>
-    CreateProjectTransferRequestRequestBody$inboundSchema
-  ).optional(),
+  idOrName: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
+  RequestBody: types.optional(
+    z.lazy(() => CreateProjectTransferRequestRequestBody$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",
@@ -165,7 +166,7 @@ export const CreateProjectTransferRequestResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  code: z.string(),
+  code: types.string(),
 });
 /** @internal */
 export type CreateProjectTransferRequestResponseBody$Outbound = {

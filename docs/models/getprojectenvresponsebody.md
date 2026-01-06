@@ -8,7 +8,7 @@
 ```typescript
 const value: models.GetProjectEnvResponseBody1 = {
   decrypted: false,
-  type: "sensitive",
+  type: "plain",
   key: "<key>",
 };
 ```
@@ -17,7 +17,7 @@ const value: models.GetProjectEnvResponseBody1 = {
 
 ```typescript
 const value: models.GetProjectEnvResponseBody2 = {
-  type: "system",
+  type: "secret",
   value: "<value>",
   key: "<key>",
 };
@@ -27,7 +27,7 @@ const value: models.GetProjectEnvResponseBody2 = {
 
 ```typescript
 const value: models.GetProjectEnvResponseBody3 = {
-  type: "plain",
+  type: "encrypted",
   value: "<value>",
   key: "<key>",
 };

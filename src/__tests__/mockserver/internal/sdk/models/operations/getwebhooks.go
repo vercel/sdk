@@ -85,6 +85,7 @@ const (
 	GetWebhooksEvent2IntegrationResourceProjectDisconnected             GetWebhooksEvent2 = "integration-resource.project-disconnected"
 	GetWebhooksEvent2ProjectCreated                                     GetWebhooksEvent2 = "project.created"
 	GetWebhooksEvent2ProjectRemoved                                     GetWebhooksEvent2 = "project.removed"
+	GetWebhooksEvent2ProjectRenamed                                     GetWebhooksEvent2 = "project.renamed"
 	GetWebhooksEvent2ProjectDomainCreated                               GetWebhooksEvent2 = "project.domain.created"
 	GetWebhooksEvent2ProjectDomainUpdated                               GetWebhooksEvent2 = "project.domain.updated"
 	GetWebhooksEvent2ProjectDomainDeleted                               GetWebhooksEvent2 = "project.domain.deleted"
@@ -215,6 +216,8 @@ func (e *GetWebhooksEvent2) UnmarshalJSON(data []byte) error {
 	case "project.created":
 		fallthrough
 	case "project.removed":
+		fallthrough
+	case "project.renamed":
 		fallthrough
 	case "project.domain.created":
 		fallthrough
@@ -654,6 +657,7 @@ const (
 	GetWebhooksEvent1IntegrationResourceProjectDisconnected             GetWebhooksEvent1 = "integration-resource.project-disconnected"
 	GetWebhooksEvent1ProjectCreated                                     GetWebhooksEvent1 = "project.created"
 	GetWebhooksEvent1ProjectRemoved                                     GetWebhooksEvent1 = "project.removed"
+	GetWebhooksEvent1ProjectRenamed                                     GetWebhooksEvent1 = "project.renamed"
 	GetWebhooksEvent1ProjectDomainCreated                               GetWebhooksEvent1 = "project.domain.created"
 	GetWebhooksEvent1ProjectDomainUpdated                               GetWebhooksEvent1 = "project.domain.updated"
 	GetWebhooksEvent1ProjectDomainDeleted                               GetWebhooksEvent1 = "project.domain.deleted"
@@ -784,6 +788,8 @@ func (e *GetWebhooksEvent1) UnmarshalJSON(data []byte) error {
 	case "project.created":
 		fallthrough
 	case "project.removed":
+		fallthrough
+	case "project.renamed":
 		fallthrough
 	case "project.domain.created":
 		fallthrough

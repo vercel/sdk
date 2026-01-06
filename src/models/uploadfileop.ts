@@ -6,6 +6,8 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type UploadFileRequest = {
@@ -66,18 +68,20 @@ export const UploadFileRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "Content-Length": z.number().optional(),
-  "x-vercel-digest": z.string().optional(),
-  "x-now-digest": z.string().optional(),
-  "x-now-size": z.number().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  RequestBody: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(Blob),
-    z.instanceof(ArrayBuffer),
-    z.instanceof(Uint8Array),
-  ]).optional(),
+  "Content-Length": types.optional(types.number()),
+  "x-vercel-digest": types.optional(types.string()),
+  "x-now-digest": types.optional(types.string()),
+  "x-now-size": types.optional(types.number()),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
+  RequestBody: types.optional(
+    z.union([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(Blob),
+      z.instanceof(ArrayBuffer),
+      z.instanceof(Uint8Array),
+    ]),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "Content-Length": "contentLength",
@@ -187,7 +191,7 @@ export const UploadFileResponseBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  urls: z.array(z.string()),
+  urls: z.array(types.string()),
 });
 /** @internal */
 export type UploadFileResponseBody1$Outbound = {
@@ -225,7 +229,7 @@ export const UploadFileResponseBody$inboundSchema: z.ZodType<
   UploadFileResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => UploadFileResponseBody1$inboundSchema),
   z.lazy(() => UploadFileResponseBody2$inboundSchema),
 ]);
@@ -239,7 +243,7 @@ export const UploadFileResponseBody$outboundSchema: z.ZodType<
   UploadFileResponseBody$Outbound,
   z.ZodTypeDef,
   UploadFileResponseBody
-> = z.union([
+> = smartUnion([
   z.lazy(() => UploadFileResponseBody1$outboundSchema),
   z.lazy(() => UploadFileResponseBody2$outboundSchema),
 ]);

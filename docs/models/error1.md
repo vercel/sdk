@@ -46,3 +46,25 @@ const value: models.One4 = {
 };
 ```
 
+### `models.One5`
+
+```typescript
+const value: models.One5 = {
+  code: "claims-required",
+  details: {
+    message: "<value>",
+    domainNames: [
+      "<value 1>",
+    ],
+  },
+};
+```
+
+### `models.One6`
+
+```typescript
+const value: models.One6 = {
+  code: "domain-mismatch",
+};
+```
+

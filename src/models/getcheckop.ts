@@ -7,6 +7,7 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetCheckRequest = {
@@ -143,10 +144,10 @@ export const GetCheckRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  deploymentId: z.string(),
-  checkId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  deploymentId: types.string(),
+  checkId: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type GetCheckRequest$Outbound = {
@@ -216,8 +217,8 @@ export const GetCheckFCP$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: z.nullable(z.number()),
-  previousValue: z.number().optional(),
+  value: types.nullable(types.number()),
+  previousValue: types.optional(types.number()),
   source: GetCheckSource$inboundSchema,
 });
 /** @internal */
@@ -266,8 +267,8 @@ export const GetCheckLCP$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: z.nullable(z.number()),
-  previousValue: z.number().optional(),
+  value: types.nullable(types.number()),
+  previousValue: types.optional(types.number()),
   source: GetCheckChecksSource$inboundSchema,
 });
 /** @internal */
@@ -316,8 +317,8 @@ export const GetCheckCLS$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: z.nullable(z.number()),
-  previousValue: z.number().optional(),
+  value: types.nullable(types.number()),
+  previousValue: types.optional(types.number()),
   source: GetCheckChecksResponseSource$inboundSchema,
 });
 /** @internal */
@@ -366,8 +367,8 @@ export const GetCheckTBT$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: z.nullable(z.number()),
-  previousValue: z.number().optional(),
+  value: types.nullable(types.number()),
+  previousValue: types.optional(types.number()),
   source: GetCheckChecksResponse200Source$inboundSchema,
 });
 /** @internal */
@@ -416,8 +417,8 @@ export const GetCheckVirtualExperienceScore$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: z.nullable(z.number()),
-  previousValue: z.number().optional(),
+  value: types.nullable(types.number()),
+  previousValue: types.optional(types.number()),
   source: GetCheckChecksResponse200ApplicationJSONSource$inboundSchema,
 });
 /** @internal */
@@ -467,9 +468,9 @@ export const GetCheckMetrics$inboundSchema: z.ZodType<
   LCP: z.lazy(() => GetCheckLCP$inboundSchema),
   CLS: z.lazy(() => GetCheckCLS$inboundSchema),
   TBT: z.lazy(() => GetCheckTBT$inboundSchema),
-  virtualExperienceScore: z.lazy(() =>
-    GetCheckVirtualExperienceScore$inboundSchema
-  ).optional(),
+  virtualExperienceScore: types.optional(
+    z.lazy(() => GetCheckVirtualExperienceScore$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "FCP": "fcp",
@@ -530,7 +531,7 @@ export const GetCheckOutput$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  metrics: z.lazy(() => GetCheckMetrics$inboundSchema).optional(),
+  metrics: types.optional(z.lazy(() => GetCheckMetrics$inboundSchema)),
 });
 /** @internal */
 export type GetCheckOutput$Outbound = {
@@ -565,22 +566,22 @@ export const GetCheckResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string(),
-  path: z.string().optional(),
+  id: types.string(),
+  name: types.string(),
+  path: types.optional(types.string()),
   status: GetCheckStatus$inboundSchema,
-  conclusion: GetCheckConclusion$inboundSchema.optional(),
-  blocking: z.boolean(),
-  output: z.lazy(() => GetCheckOutput$inboundSchema).optional(),
-  detailsUrl: z.string().optional(),
-  integrationId: z.string(),
-  deploymentId: z.string(),
-  externalId: z.string().optional(),
-  createdAt: z.number(),
-  updatedAt: z.number(),
-  startedAt: z.number().optional(),
-  completedAt: z.number().optional(),
-  rerequestable: z.boolean().optional(),
+  conclusion: types.optional(GetCheckConclusion$inboundSchema),
+  blocking: types.boolean(),
+  output: types.optional(z.lazy(() => GetCheckOutput$inboundSchema)),
+  detailsUrl: types.optional(types.string()),
+  integrationId: types.string(),
+  deploymentId: types.string(),
+  externalId: types.optional(types.string()),
+  createdAt: types.number(),
+  updatedAt: types.number(),
+  startedAt: types.optional(types.number()),
+  completedAt: types.optional(types.number()),
+  rerequestable: types.optional(types.boolean()),
 });
 /** @internal */
 export type GetCheckResponseBody$Outbound = {

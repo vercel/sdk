@@ -1,11 +1,11 @@
 # ResponseBodyStages
 
-A stage object configured for a rolling release once a new deployment is triggered the first stage will be read in the proxy for first time visitors, and if a RNG < targetPercentage then it will serve the new deployment. Upon approval the next stage will be read, etc.
+An array of all the stages required during a deployment release. Each stage defines a target percentage and advancement rules. The final stage must always have targetPercentage: 100.
 
 ## Example Usage
 
 ```typescript
-import { ResponseBodyStages } from "@vercel/sdk/models/updaterollingreleaseconfigop.js";
+import { ResponseBodyStages } from "@vercel/sdk/models/getprojectsop.js";
 
 let value: ResponseBodyStages = {
   targetPercentage: 25,

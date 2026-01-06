@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import {
   EdgeConfigItemValue,
   EdgeConfigItemValue$inboundSchema,
@@ -50,8 +51,8 @@ export const HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExp
     z.ZodTypeDef,
     unknown
   > = z.object({
-    integrationConfigurationId: z.string(),
-    resourceId: z.string(),
+    integrationConfigurationId: types.string(),
+    resourceId: types.string(),
   });
 /** @internal */
 export type HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest$Outbound =
@@ -118,12 +119,12 @@ export const HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExp
     z.ZodTypeDef,
     unknown
   > = z.object({
-    items: z.record(z.nullable(EdgeConfigItemValue$inboundSchema)),
-    updatedAt: z.number(),
-    digest: z.string(),
-    purpose:
-      HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$inboundSchema
-        .optional(),
+    items: z.record(types.nullable(EdgeConfigItemValue$inboundSchema)),
+    updatedAt: types.number(),
+    digest: types.string(),
+    purpose: types.optional(
+      HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$inboundSchema,
+    ),
   });
 /** @internal */
 export type HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody$Outbound =

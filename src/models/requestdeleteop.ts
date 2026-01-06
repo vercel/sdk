@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -52,8 +53,8 @@ export const RequestDeleteReasons$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  slug: z.string(),
-  description: z.string(),
+  slug: types.string(),
+  description: types.string(),
 });
 /** @internal */
 export type RequestDeleteReasons$Outbound = {
@@ -94,7 +95,9 @@ export const RequestDeleteRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  reasons: z.array(z.lazy(() => RequestDeleteReasons$inboundSchema)).optional(),
+  reasons: types.optional(
+    z.array(z.lazy(() => RequestDeleteReasons$inboundSchema)),
+  ),
 });
 /** @internal */
 export type RequestDeleteRequestBody$Outbound = {
@@ -134,9 +137,9 @@ export const RequestDeleteResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  email: z.string(),
-  message: z.string(),
+  id: types.string(),
+  email: types.string(),
+  message: types.string(),
 });
 /** @internal */
 export type RequestDeleteResponseBody$Outbound = {

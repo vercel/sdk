@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type ListDeploymentAliasesRequest = {
@@ -125,9 +126,9 @@ export const ListDeploymentAliasesRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
+  id: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type ListDeploymentAliasesRequest$Outbound = {
@@ -172,10 +173,10 @@ export const ListDeploymentAliasesProtectionBypass4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  createdAt: z.number(),
-  lastUpdatedAt: z.number(),
-  lastUpdatedBy: z.string(),
-  scope: z.literal("email_invite"),
+  createdAt: types.number(),
+  lastUpdatedAt: types.number(),
+  lastUpdatedBy: types.string(),
+  scope: types.literal("email_invite"),
 });
 /** @internal */
 export type ListDeploymentAliasesProtectionBypass4$Outbound = {
@@ -224,9 +225,9 @@ export const ListDeploymentAliasesProtectionBypass3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  createdAt: z.number(),
-  createdBy: z.string(),
-  scope: z.literal("alias-protection-override"),
+  createdAt: types.number(),
+  createdBy: types.string(),
+  scope: types.literal("alias-protection-override"),
 });
 /** @internal */
 export type ListDeploymentAliasesProtectionBypass3$Outbound = {
@@ -282,11 +283,11 @@ export const ListDeploymentAliasesProtectionBypass2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  createdAt: z.number(),
-  lastUpdatedAt: z.number(),
-  lastUpdatedBy: z.string(),
+  createdAt: types.number(),
+  lastUpdatedAt: types.number(),
+  lastUpdatedBy: types.string(),
   access: ListDeploymentAliasesProtectionBypassAccess$inboundSchema,
-  scope: z.literal("user"),
+  scope: types.literal("user"),
 });
 /** @internal */
 export type ListDeploymentAliasesProtectionBypass2$Outbound = {
@@ -337,10 +338,10 @@ export const ListDeploymentAliasesProtectionBypass1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  createdAt: z.number(),
-  createdBy: z.string(),
-  scope: z.literal("shareable-link"),
-  expires: z.number().optional(),
+  createdAt: types.number(),
+  createdBy: types.string(),
+  scope: types.literal("shareable-link"),
+  expires: types.optional(types.number()),
 });
 /** @internal */
 export type ListDeploymentAliasesProtectionBypass1$Outbound = {
@@ -436,18 +437,20 @@ export function listDeploymentAliasesProtectionBypassFromJSON(
 /** @internal */
 export const Aliases$inboundSchema: z.ZodType<Aliases, z.ZodTypeDef, unknown> =
   z.object({
-    uid: z.string(),
-    alias: z.string(),
-    created: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    redirect: z.nullable(z.string()).optional(),
-    protectionBypass: z.record(
-      z.union([
+    uid: types.string(),
+    alias: types.string(),
+    created: types.date(),
+    redirect: z.nullable(types.string()).optional(),
+    protectionBypass: types.optional(
+      z.record(z.union([
         z.lazy(() => ListDeploymentAliasesProtectionBypass1$inboundSchema),
-        z.lazy(() => ListDeploymentAliasesProtectionBypass2$inboundSchema),
+        z.lazy(() =>
+          ListDeploymentAliasesProtectionBypass2$inboundSchema
+        ),
         z.lazy(() => ListDeploymentAliasesProtectionBypass3$inboundSchema),
         z.lazy(() => ListDeploymentAliasesProtectionBypass4$inboundSchema),
-      ]),
-    ).optional(),
+      ])),
+    ),
   });
 /** @internal */
 export type Aliases$Outbound = {

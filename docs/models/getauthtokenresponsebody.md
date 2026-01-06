@@ -16,6 +16,7 @@ let value: GetAuthTokenResponseBody = {
     expiresAt: 1632816536002,
     activeAt: 1632816536002,
     createdAt: 1632816536002,
+    leakedAt: 1632816536002,
   },
 };
 ```

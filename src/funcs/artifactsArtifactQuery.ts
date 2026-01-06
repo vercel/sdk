@@ -29,6 +29,7 @@ import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import { VercelError } from "../models/vercelerror.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
+import * as types$ from "../types/primitives.js";
 
 /**
  * Query information about an artifact
@@ -160,7 +161,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, z.record(z.nullable(ResponseBody$inboundSchema))),
+    M.json(200, z.record(types$.nullable(ResponseBody$inboundSchema))),
     M.fail([400, 401, 402, 403, "4XX"]),
     M.fail("5XX"),
   )(response, req);

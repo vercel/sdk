@@ -6,6 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const LimitedBy = {
@@ -231,12 +233,12 @@ export const TeamLimitedConnection$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.string(),
-  status: z.string(),
-  state: z.string(),
-  connectedAt: z.number(),
-  lastReceivedWebhookEvent: z.number().optional(),
-  lastSyncedAt: z.number().optional(),
+  type: types.string(),
+  status: types.string(),
+  state: types.string(),
+  connectedAt: types.number(),
+  lastReceivedWebhookEvent: types.optional(types.number()),
+  lastSyncedAt: types.optional(types.number()),
 });
 /** @internal */
 export type TeamLimitedConnection$Outbound = {
@@ -285,11 +287,11 @@ export const TeamLimitedDirectory$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.string(),
-  state: z.string(),
-  connectedAt: z.number(),
-  lastReceivedWebhookEvent: z.number().optional(),
-  lastSyncedAt: z.number().optional(),
+  type: types.string(),
+  state: types.string(),
+  connectedAt: types.number(),
+  lastReceivedWebhookEvent: types.optional(types.number()),
+  lastSyncedAt: types.optional(types.number()),
 });
 /** @internal */
 export type TeamLimitedDirectory$Outbound = {
@@ -336,9 +338,9 @@ export const TeamLimitedSaml$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  connection: z.lazy(() => TeamLimitedConnection$inboundSchema).optional(),
-  directory: z.lazy(() => TeamLimitedDirectory$inboundSchema).optional(),
-  enforced: z.boolean(),
+  connection: types.optional(z.lazy(() => TeamLimitedConnection$inboundSchema)),
+  directory: types.optional(z.lazy(() => TeamLimitedDirectory$inboundSchema)),
+  enforced: types.boolean(),
 });
 /** @internal */
 export type TeamLimitedSaml$Outbound = {
@@ -379,7 +381,7 @@ export const TeamLimitedEntitlements$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  entitlement: z.string(),
+  entitlement: types.string(),
 });
 /** @internal */
 export type TeamLimitedEntitlements$Outbound = {
@@ -453,7 +455,7 @@ export const TeamLimitedGitUserId$inboundSchema: z.ZodType<
   TeamLimitedGitUserId,
   z.ZodTypeDef,
   unknown
-> = z.union([z.string(), z.number()]);
+> = smartUnion([types.string(), types.number()]);
 /** @internal */
 export type TeamLimitedGitUserId$Outbound = string | number;
 
@@ -462,7 +464,7 @@ export const TeamLimitedGitUserId$outboundSchema: z.ZodType<
   TeamLimitedGitUserId$Outbound,
   z.ZodTypeDef,
   TeamLimitedGitUserId
-> = z.union([z.string(), z.number()]);
+> = smartUnion([z.string(), z.number()]);
 
 export function teamLimitedGitUserIdToJSON(
   teamLimitedGitUserId: TeamLimitedGitUserId,
@@ -488,16 +490,16 @@ export const TeamLimitedJoinedFrom$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   origin: TeamLimitedOrigin$inboundSchema,
-  commitId: z.string().optional(),
-  repoId: z.string().optional(),
-  repoPath: z.string().optional(),
-  gitUserId: z.union([z.string(), z.number()]).optional(),
-  gitUserLogin: z.string().optional(),
-  ssoUserId: z.string().optional(),
-  ssoConnectedAt: z.number().optional(),
-  idpUserId: z.string().optional(),
-  dsyncUserId: z.string().optional(),
-  dsyncConnectedAt: z.number().optional(),
+  commitId: types.optional(types.string()),
+  repoId: types.optional(types.string()),
+  repoPath: types.optional(types.string()),
+  gitUserId: types.optional(smartUnion([types.string(), types.number()])),
+  gitUserLogin: types.optional(types.string()),
+  ssoUserId: types.optional(types.string()),
+  ssoConnectedAt: types.optional(types.number()),
+  idpUserId: types.optional(types.string()),
+  dsyncUserId: types.optional(types.string()),
+  dsyncConnectedAt: types.optional(types.number()),
 });
 /** @internal */
 export type TeamLimitedJoinedFrom$Outbound = {
@@ -524,7 +526,7 @@ export const TeamLimitedJoinedFrom$outboundSchema: z.ZodType<
   commitId: z.string().optional(),
   repoId: z.string().optional(),
   repoPath: z.string().optional(),
-  gitUserId: z.union([z.string(), z.number()]).optional(),
+  gitUserId: smartUnion([z.string(), z.number()]).optional(),
   gitUserLogin: z.string().optional(),
   ssoUserId: z.string().optional(),
   ssoConnectedAt: z.number().optional(),
@@ -556,18 +558,21 @@ export const TeamLimitedMembership$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  uid: z.string().optional(),
-  entitlements: z.array(z.lazy(() => TeamLimitedEntitlements$inboundSchema))
-    .optional(),
-  teamId: z.string().optional(),
-  confirmed: z.boolean(),
-  accessRequestedAt: z.number().optional(),
+  uid: types.optional(types.string()),
+  entitlements: types.optional(
+    z.array(z.lazy(() => TeamLimitedEntitlements$inboundSchema)),
+  ),
+  teamId: types.optional(types.string()),
+  confirmed: types.boolean(),
+  accessRequestedAt: types.optional(types.number()),
   role: TeamLimitedRole$inboundSchema,
-  teamRoles: z.array(TeamLimitedTeamRoles$inboundSchema).optional(),
-  teamPermissions: z.array(TeamLimitedTeamPermissions$inboundSchema).optional(),
-  createdAt: z.number(),
-  created: z.number(),
-  joinedFrom: z.lazy(() => TeamLimitedJoinedFrom$inboundSchema).optional(),
+  teamRoles: types.optional(z.array(TeamLimitedTeamRoles$inboundSchema)),
+  teamPermissions: types.optional(
+    z.array(TeamLimitedTeamPermissions$inboundSchema),
+  ),
+  createdAt: types.number(),
+  created: types.number(),
+  joinedFrom: types.optional(z.lazy(() => TeamLimitedJoinedFrom$inboundSchema)),
 });
 /** @internal */
 export type TeamLimitedMembership$Outbound = {
@@ -628,15 +633,15 @@ export const TeamLimited$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  limited: z.boolean(),
+  limited: types.boolean(),
   limitedBy: z.array(LimitedBy$inboundSchema),
-  saml: z.lazy(() => TeamLimitedSaml$inboundSchema).optional(),
-  id: z.string(),
-  slug: z.string(),
-  name: z.nullable(z.string()),
-  avatar: z.nullable(z.string()),
+  saml: types.optional(z.lazy(() => TeamLimitedSaml$inboundSchema)),
+  id: types.string(),
+  slug: types.string(),
+  name: types.nullable(types.string()),
+  avatar: types.nullable(types.string()),
   membership: z.lazy(() => TeamLimitedMembership$inboundSchema),
-  createdAt: z.number(),
+  createdAt: types.number(),
 });
 /** @internal */
 export type TeamLimited$Outbound = {

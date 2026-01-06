@@ -3,10 +3,10 @@
 
 ## Supported Types
 
-### `models.GetProjectsHasProjects1`
+### `models.GetProjectsHasProjectsResponse2001`
 
 ```typescript
-const value: models.GetProjectsHasProjects1 = {
+const value: models.GetProjectsHasProjectsResponse2001 = {
   type: "header",
   key: "x-vercel-ip-country",
   value: {
@@ -15,10 +15,10 @@ const value: models.GetProjectsHasProjects1 = {
 };
 ```
 
-### `models.GetProjectsHasProjects2`
+### `models.GetProjectsHasProjectsResponse2002`
 
 ```typescript
-const value: models.GetProjectsHasProjects2 = {
+const value: models.GetProjectsHasProjectsResponse2002 = {
   type: "host",
   value: {
     eq: "<value>",

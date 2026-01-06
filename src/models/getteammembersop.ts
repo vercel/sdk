@@ -6,6 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -310,13 +312,13 @@ export const GetTeamMembersRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  limit: z.number().optional(),
-  since: z.number().optional(),
-  until: z.number().optional(),
-  search: z.string().optional(),
-  role: QueryParamRole$inboundSchema.optional(),
-  excludeProject: z.string().optional(),
-  eligibleMembersForProjectId: z.string().optional(),
+  limit: types.optional(types.number()),
+  since: types.optional(types.number()),
+  until: types.optional(types.number()),
+  search: types.optional(types.string()),
+  role: types.optional(QueryParamRole$inboundSchema),
+  excludeProject: types.optional(types.string()),
+  eligibleMembersForProjectId: types.optional(types.string()),
 });
 /** @internal */
 export type GetTeamMembersRequest$Outbound = {
@@ -367,7 +369,7 @@ export const GetTeamMembersGithub$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  login: z.string().optional(),
+  login: types.optional(types.string()),
 });
 /** @internal */
 export type GetTeamMembersGithub$Outbound = {
@@ -406,7 +408,7 @@ export const GetTeamMembersGitlab$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  login: z.string().optional(),
+  login: types.optional(types.string()),
 });
 /** @internal */
 export type GetTeamMembersGitlab$Outbound = {
@@ -445,7 +447,7 @@ export const GetTeamMembersBitbucket$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  login: z.string().optional(),
+  login: types.optional(types.string()),
 });
 /** @internal */
 export type GetTeamMembersBitbucket$Outbound = {
@@ -501,7 +503,7 @@ export const GetTeamMembersGitUserId$inboundSchema: z.ZodType<
   GetTeamMembersGitUserId,
   z.ZodTypeDef,
   unknown
-> = z.union([z.string(), z.number()]);
+> = smartUnion([types.string(), types.number()]);
 /** @internal */
 export type GetTeamMembersGitUserId$Outbound = string | number;
 
@@ -510,7 +512,7 @@ export const GetTeamMembersGitUserId$outboundSchema: z.ZodType<
   GetTeamMembersGitUserId$Outbound,
   z.ZodTypeDef,
   GetTeamMembersGitUserId
-> = z.union([z.string(), z.number()]);
+> = smartUnion([z.string(), z.number()]);
 
 export function getTeamMembersGitUserIdToJSON(
   getTeamMembersGitUserId: GetTeamMembersGitUserId,
@@ -536,16 +538,16 @@ export const GetTeamMembersJoinedFrom$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   origin: GetTeamMembersOrigin$inboundSchema,
-  commitId: z.string().optional(),
-  repoId: z.string().optional(),
-  repoPath: z.string().optional(),
-  gitUserId: z.union([z.string(), z.number()]).optional(),
-  gitUserLogin: z.string().optional(),
-  ssoUserId: z.string().optional(),
-  ssoConnectedAt: z.number().optional(),
-  idpUserId: z.string().optional(),
-  dsyncUserId: z.string().optional(),
-  dsyncConnectedAt: z.number().optional(),
+  commitId: types.optional(types.string()),
+  repoId: types.optional(types.string()),
+  repoPath: types.optional(types.string()),
+  gitUserId: types.optional(smartUnion([types.string(), types.number()])),
+  gitUserLogin: types.optional(types.string()),
+  ssoUserId: types.optional(types.string()),
+  ssoConnectedAt: types.optional(types.number()),
+  idpUserId: types.optional(types.string()),
+  dsyncUserId: types.optional(types.string()),
+  dsyncConnectedAt: types.optional(types.number()),
 });
 /** @internal */
 export type GetTeamMembersJoinedFrom$Outbound = {
@@ -572,7 +574,7 @@ export const GetTeamMembersJoinedFrom$outboundSchema: z.ZodType<
   commitId: z.string().optional(),
   repoId: z.string().optional(),
   repoPath: z.string().optional(),
-  gitUserId: z.union([z.string(), z.number()]).optional(),
+  gitUserId: smartUnion([z.string(), z.number()]).optional(),
   gitUserLogin: z.string().optional(),
   ssoUserId: z.string().optional(),
   ssoConnectedAt: z.number().optional(),
@@ -613,9 +615,9 @@ export const GetTeamMembersProjects$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  id: z.string(),
-  role: GetTeamMembersTeamsResponseRole$inboundSchema.optional(),
+  name: types.string(),
+  id: types.string(),
+  role: types.optional(GetTeamMembersTeamsResponseRole$inboundSchema),
 });
 /** @internal */
 export type GetTeamMembersProjects$Outbound = {
@@ -658,21 +660,26 @@ export const GetTeamMembersMembers$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  avatar: z.string().optional(),
-  confirmed: z.boolean(),
-  email: z.string(),
-  github: z.lazy(() => GetTeamMembersGithub$inboundSchema).optional(),
-  gitlab: z.lazy(() => GetTeamMembersGitlab$inboundSchema).optional(),
-  bitbucket: z.lazy(() => GetTeamMembersBitbucket$inboundSchema).optional(),
+  avatar: types.optional(types.string()),
+  confirmed: types.boolean(),
+  email: types.string(),
+  github: types.optional(z.lazy(() => GetTeamMembersGithub$inboundSchema)),
+  gitlab: types.optional(z.lazy(() => GetTeamMembersGitlab$inboundSchema)),
+  bitbucket: types.optional(
+    z.lazy(() => GetTeamMembersBitbucket$inboundSchema),
+  ),
   role: GetTeamMembersRole$inboundSchema,
-  uid: z.string(),
-  username: z.string(),
-  name: z.string().optional(),
-  createdAt: z.number(),
-  accessRequestedAt: z.number().optional(),
-  joinedFrom: z.lazy(() => GetTeamMembersJoinedFrom$inboundSchema).optional(),
-  projects: z.array(z.lazy(() => GetTeamMembersProjects$inboundSchema))
-    .optional(),
+  uid: types.string(),
+  username: types.string(),
+  name: types.optional(types.string()),
+  createdAt: types.number(),
+  accessRequestedAt: types.optional(types.number()),
+  joinedFrom: types.optional(
+    z.lazy(() => GetTeamMembersJoinedFrom$inboundSchema),
+  ),
+  projects: types.optional(
+    z.array(z.lazy(() => GetTeamMembersProjects$inboundSchema)),
+  ),
 });
 /** @internal */
 export type GetTeamMembersMembers$Outbound = {
@@ -774,18 +781,19 @@ export const EmailInviteCodes$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  accessGroups: z.array(z.string()).optional(),
-  id: z.string(),
-  email: z.string().optional(),
-  role: GetTeamMembersTeamsRole$inboundSchema.optional(),
-  teamRoles: z.array(GetTeamMembersTeamRoles$inboundSchema).optional(),
-  teamPermissions: z.array(GetTeamMembersTeamPermissions$inboundSchema)
-    .optional(),
-  isDSyncUser: z.boolean(),
-  createdAt: z.number().optional(),
-  expired: z.boolean().optional(),
-  projects: z.record(GetTeamMembersTeamsProjects$inboundSchema).optional(),
-  entitlements: z.array(z.string()).optional(),
+  accessGroups: types.optional(z.array(types.string())),
+  id: types.string(),
+  email: types.optional(types.string()),
+  role: types.optional(GetTeamMembersTeamsRole$inboundSchema),
+  teamRoles: types.optional(z.array(GetTeamMembersTeamRoles$inboundSchema)),
+  teamPermissions: types.optional(
+    z.array(GetTeamMembersTeamPermissions$inboundSchema),
+  ),
+  isDSyncUser: types.boolean(),
+  createdAt: types.optional(types.number()),
+  expired: types.optional(types.boolean()),
+  projects: types.optional(z.record(GetTeamMembersTeamsProjects$inboundSchema)),
+  entitlements: types.optional(z.array(types.string())),
 });
 /** @internal */
 export type EmailInviteCodes$Outbound = {
@@ -845,10 +853,10 @@ export const GetTeamMembersPagination$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  hasNext: z.boolean(),
-  count: z.number(),
-  next: z.nullable(z.number()),
-  prev: z.nullable(z.number()),
+  hasNext: types.boolean(),
+  count: types.number(),
+  next: types.nullable(types.number()),
+  prev: types.nullable(types.number()),
 });
 /** @internal */
 export type GetTeamMembersPagination$Outbound = {
@@ -894,8 +902,9 @@ export const GetTeamMembersResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   members: z.array(z.lazy(() => GetTeamMembersMembers$inboundSchema)),
-  emailInviteCodes: z.array(z.lazy(() => EmailInviteCodes$inboundSchema))
-    .optional(),
+  emailInviteCodes: types.optional(
+    z.array(z.lazy(() => EmailInviteCodes$inboundSchema)),
+  ),
   pagination: z.lazy(() => GetTeamMembersPagination$inboundSchema),
 });
 /** @internal */

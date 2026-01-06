@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type RestoreRedirectsRequestBody = {
@@ -74,8 +75,8 @@ export const RestoreRedirectsRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string().optional(),
-  redirects: z.array(z.string()),
+  name: types.optional(types.string()),
+  redirects: z.array(types.string()),
 });
 /** @internal */
 export type RestoreRedirectsRequestBody$Outbound = {
@@ -118,11 +119,12 @@ export const RestoreRedirectsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  RequestBody: z.lazy(() => RestoreRedirectsRequestBody$inboundSchema)
-    .optional(),
+  projectId: types.string(),
+  teamId: types.optional(types.string()),
+  slug: types.optional(types.string()),
+  RequestBody: types.optional(
+    z.lazy(() => RestoreRedirectsRequestBody$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",
@@ -176,15 +178,15 @@ export const RestoreRedirectsVersion$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  key: z.string(),
-  lastModified: z.number(),
-  createdBy: z.string(),
-  name: z.string().optional(),
-  isStaging: z.boolean().optional(),
-  isLive: z.boolean().optional(),
-  redirectCount: z.number().optional(),
-  alias: z.string().optional(),
+  id: types.string(),
+  key: types.string(),
+  lastModified: types.number(),
+  createdBy: types.string(),
+  name: types.optional(types.string()),
+  isStaging: types.optional(types.boolean()),
+  isLive: types.optional(types.boolean()),
+  redirectCount: types.optional(types.number()),
+  alias: types.optional(types.string()),
 });
 /** @internal */
 export type RestoreRedirectsVersion$Outbound = {
@@ -240,8 +242,8 @@ export const RestoreRedirectsResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   version: z.lazy(() => RestoreRedirectsVersion$inboundSchema),
-  restored: z.array(z.string()),
-  failedToRestore: z.array(z.string()),
+  restored: z.array(types.string()),
+  failedToRestore: z.array(types.string()),
 });
 /** @internal */
 export type RestoreRedirectsResponseBody$Outbound = {

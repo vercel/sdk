@@ -5,10 +5,7 @@ sources:
         inputs:
             - location: https://openapi.vercel.sh/
         overlays:
-            - location: overlay.yaml
-            - location: sdk-only-errors.yaml
-            - location: mintlify-overlay.yaml
-            - location: tests-overlay.yaml
+            - location: overlay-title.yaml
         output: vercel-spec.json
         ruleset: vercelRestAPIRuleset
         registry:

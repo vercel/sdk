@@ -7,11 +7,11 @@ Invoice state.
 ```typescript
 import { GetInvoiceState } from "@vercel/sdk/models/getinvoiceop.js";
 
-let value: GetInvoiceState = "draft";
+let value: GetInvoiceState = "pending";
 ```
 
 ## Values
 
 ```typescript
-"draft" | "pending" | "scheduled" | "invoiced" | "paid" | "notpaid" | "refund_requested" | "refunded"
+"pending" | "paid" | "notpaid" | "draft" | "scheduled" | "invoiced" | "refund_requested" | "refunded"
 ```

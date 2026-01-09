@@ -27,6 +27,7 @@ async function run() {
     code: "<value>",
     clientId: "<id>",
     clientSecret: "<value>",
+    grantType: "authorization_code",
   });
 
   console.log(result);
@@ -52,6 +53,7 @@ async function run() {
     code: "<value>",
     clientId: "<id>",
     clientSecret: "<value>",
+    grantType: "authorization_code",
   });
   if (res.ok) {
     const { value: result } = res;

@@ -8,14 +8,16 @@ The payload of the event, if requested.
 import { NinetyThree } from "@vercel/sdk/models/userevent.js";
 
 let value: NinetyThree = {
-  name: "<value>",
-  ownerId: "<id>",
+  projectName: "<value>",
+  action: "enabled",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `projectName`                                                            | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `action`                                                                 | [models.UserEventPayload93Action](../models/usereventpayload93action.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| `isEnvVar`                                                               | *boolean*                                                                | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `note`                                                                   | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |

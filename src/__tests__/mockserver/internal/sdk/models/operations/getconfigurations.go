@@ -281,12 +281,12 @@ func (o *GetConfigurationsIntegration) GetTagIds() []TagID {
 type GetConfigurationsStatus2 string
 
 const (
-	GetConfigurationsStatus2Pending     GetConfigurationsStatus2 = "pending"
+	GetConfigurationsStatus2Error       GetConfigurationsStatus2 = "error"
 	GetConfigurationsStatus2Ready       GetConfigurationsStatus2 = "ready"
+	GetConfigurationsStatus2Pending     GetConfigurationsStatus2 = "pending"
 	GetConfigurationsStatus2Onboarding  GetConfigurationsStatus2 = "onboarding"
 	GetConfigurationsStatus2Suspended   GetConfigurationsStatus2 = "suspended"
 	GetConfigurationsStatus2Resumed     GetConfigurationsStatus2 = "resumed"
-	GetConfigurationsStatus2Error       GetConfigurationsStatus2 = "error"
 	GetConfigurationsStatus2Uninstalled GetConfigurationsStatus2 = "uninstalled"
 )
 
@@ -299,17 +299,17 @@ func (e *GetConfigurationsStatus2) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "pending":
+	case "error":
 		fallthrough
 	case "ready":
+		fallthrough
+	case "pending":
 		fallthrough
 	case "onboarding":
 		fallthrough
 	case "suspended":
 		fallthrough
 	case "resumed":
-		fallthrough
-	case "error":
 		fallthrough
 	case "uninstalled":
 		*e = GetConfigurationsStatus2(v)
@@ -611,12 +611,12 @@ func (o *GetConfigurationsIntegrationConfiguration2) GetInstallationType() *GetC
 type GetConfigurationsStatus1 string
 
 const (
-	GetConfigurationsStatus1Pending     GetConfigurationsStatus1 = "pending"
+	GetConfigurationsStatus1Error       GetConfigurationsStatus1 = "error"
 	GetConfigurationsStatus1Ready       GetConfigurationsStatus1 = "ready"
+	GetConfigurationsStatus1Pending     GetConfigurationsStatus1 = "pending"
 	GetConfigurationsStatus1Onboarding  GetConfigurationsStatus1 = "onboarding"
 	GetConfigurationsStatus1Suspended   GetConfigurationsStatus1 = "suspended"
 	GetConfigurationsStatus1Resumed     GetConfigurationsStatus1 = "resumed"
-	GetConfigurationsStatus1Error       GetConfigurationsStatus1 = "error"
 	GetConfigurationsStatus1Uninstalled GetConfigurationsStatus1 = "uninstalled"
 )
 
@@ -629,17 +629,17 @@ func (e *GetConfigurationsStatus1) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "pending":
+	case "error":
 		fallthrough
 	case "ready":
+		fallthrough
+	case "pending":
 		fallthrough
 	case "onboarding":
 		fallthrough
 	case "suspended":
 		fallthrough
 	case "resumed":
-		fallthrough
-	case "error":
 		fallthrough
 	case "uninstalled":
 		*e = GetConfigurationsStatus1(v)

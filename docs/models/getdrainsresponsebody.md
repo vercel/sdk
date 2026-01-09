@@ -9,10 +9,10 @@ let value: GetDrainsResponseBody = {
   drains: [
     {
       id: "<id>",
-      ownerId: "<id>",
-      name: "<value>",
       createdAt: 639.21,
       updatedAt: 2576.2,
+      name: "<value>",
+      ownerId: "<id>",
       schemas: {},
       delivery: {
         type: "clickhouse",

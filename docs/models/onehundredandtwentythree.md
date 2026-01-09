@@ -12,16 +12,12 @@ let value: OneHundredAndTwentyThree = {};
 
 ## Fields
 
-| Field                                            | Type                                             | Required                                         | Description                                      |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `deletedUser`                                    | [models.DeletedUser](../models/deleteduser.md)   | :heavy_minus_sign:                               | N/A                                              |
-| `deletedUid`                                     | *string*                                         | :heavy_minus_sign:                               | N/A                                              |
-| `githubUsername`                                 | *string*                                         | :heavy_minus_sign:                               | N/A                                              |
-| `gitlabUsername`                                 | *string*                                         | :heavy_minus_sign:                               | N/A                                              |
-| `bitbucketUsername`                              | *string*                                         | :heavy_minus_sign:                               | N/A                                              |
-| `directoryType`                                  | *string*                                         | :heavy_minus_sign:                               | N/A                                              |
-| `role`                                           | [models.PayloadRole](../models/payloadrole.md)   | :heavy_minus_sign:                               | N/A                                              |
-| `reason`                                         | *string*                                         | :heavy_minus_sign:                               | N/A                                              |
-| `previousPlan`                                   | [models.PreviousPlan](../models/previousplan.md) | :heavy_minus_sign:                               | N/A                                              |
-| `newPlan`                                        | [models.NewPlan](../models/newplan.md)           | :heavy_minus_sign:                               | N/A                                              |
-| `automated`                                      | *boolean*                                        | :heavy_minus_sign:                               | N/A                                              |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `directoryType`                                | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `ssoType`                                      | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `invitedUser`                                  | [models.InvitedUser](../models/inviteduser.md) | :heavy_minus_sign:                             | N/A                                            |
+| `invitedEmail`                                 | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `invitationRole`                               | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `entitlements`                                 | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
+| `invitedUid`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |

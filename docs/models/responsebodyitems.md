@@ -6,9 +6,9 @@
 import { ResponseBodyItems } from "@vercel/sdk/models/getedgeconfigbackupop.js";
 
 let value: ResponseBodyItems = {
-  updatedAt: 2293.73,
-  value: false,
-  createdAt: 4741.81,
+  createdAt: 2293.73,
+  updatedAt: 4332.79,
+  value: {},
 };
 ```
 
@@ -16,7 +16,7 @@ let value: ResponseBodyItems = {
 
 | Field                        | Type                         | Required                     | Description                  |
 | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `updatedAt`                  | *number*                     | :heavy_check_mark:           | N/A                          |
-| `value`                      | *models.EdgeConfigItemValue* | :heavy_check_mark:           | N/A                          |
 | `description`                | *string*                     | :heavy_minus_sign:           | N/A                          |
 | `createdAt`                  | *number*                     | :heavy_check_mark:           | N/A                          |
+| `updatedAt`                  | *number*                     | :heavy_check_mark:           | N/A                          |
+| `value`                      | *models.EdgeConfigItemValue* | :heavy_check_mark:           | N/A                          |

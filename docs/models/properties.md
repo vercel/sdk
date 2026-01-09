@@ -35,15 +35,15 @@ const value: models.Properties3 = {
 ```typescript
 const value: models.Properties4 = {
   type: "array",
+  items: {
+    type: "number",
+  },
   uiControl: "slider",
   uiSteps: [
     6791.15,
     160.81,
     1780.91,
   ],
-  items: {
-    type: "number",
-  },
 };
 ```
 
@@ -67,10 +67,10 @@ const value: models.Properties5 = {
 ```typescript
 const value: models.Properties6 = {
   type: "array",
-  uiControl: "multi-select",
   items: {
     type: "string",
   },
+  uiControl: "multi-select",
   uiOptions: [],
 };
 ```
@@ -90,10 +90,10 @@ const value: models.Properties7 = {
 ```typescript
 const value: models.Properties8 = {
   type: "array",
-  uiControl: "multi-vercel-region",
   items: {
     type: "string",
   },
+  uiControl: "multi-vercel-region",
   uiOptions: [],
 };
 ```
@@ -111,7 +111,8 @@ const value: models.Properties9 = {
 
 ```typescript
 const value: models.Properties10 = {
-  value: "<value>",
+  type: "string",
+  uiControl: "git-namespace",
 };
 ```
 

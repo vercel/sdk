@@ -5,11 +5,11 @@
 ```typescript
 import { GetBypassIpAction } from "@vercel/sdk/models/getbypassipop.js";
 
-let value: GetBypassIpAction = "block";
+let value: GetBypassIpAction = "bypass";
 ```
 
 ## Values
 
 ```typescript
-"block" | "bypass"
+"bypass" | "block"
 ```

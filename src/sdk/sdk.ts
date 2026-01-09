@@ -53,6 +53,11 @@ export class Vercel extends ClientSDK {
     return (this._checks ??= new Checks(this._options));
   }
 
+  private _connect?: Connect;
+  get connect(): Connect {
+    return (this._connect ??= new Connect(this._options));
+  }
+
   private _projects?: Projects;
   get projects(): Projects {
     return (this._projects ??= new Projects(this._options));
@@ -68,11 +73,6 @@ export class Vercel extends ClientSDK {
     return (this._integrations ??= new Integrations(this._options));
   }
 
-  private _domains?: Domains;
-  get domains(): Domains {
-    return (this._domains ??= new Domains(this._options));
-  }
-
   private _dns?: Dns;
   get dns(): Dns {
     return (this._dns ??= new Dns(this._options));
@@ -81,6 +81,11 @@ export class Vercel extends ClientSDK {
   private _domainsRegistrar?: DomainsRegistrar;
   get domainsRegistrar(): DomainsRegistrar {
     return (this._domainsRegistrar ??= new DomainsRegistrar(this._options));
+  }
+
+  private _domains?: Domains;
+  get domains(): Domains {
+    return (this._domains ??= new Domains(this._options));
   }
 
   private _logDrains?: LogDrains;
@@ -131,11 +136,6 @@ export class Vercel extends ClientSDK {
   private _projectMembers?: ProjectMembers;
   get projectMembers(): ProjectMembers {
     return (this._projectMembers ??= new ProjectMembers(this._options));
-  }
-
-  private _connect?: Connect;
-  get connect(): Connect {
-    return (this._connect ??= new Connect(this._options));
   }
 
   private _staticIps?: StaticIps;

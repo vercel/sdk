@@ -293,10 +293,10 @@ export type CancelDeploymentLambdas = {
 };
 
 export const CancelDeploymentStatus = {
+  Queued: "QUEUED",
   Building: "BUILDING",
   Error: "ERROR",
   Initializing: "INITIALIZING",
-  Queued: "QUEUED",
   Ready: "READY",
   Canceled: "CANCELED",
 } as const;
@@ -308,8 +308,8 @@ export type CancelDeploymentStatus = ClosedEnum<typeof CancelDeploymentStatus>;
 export type CancelDeploymentTeam = {
   id: string;
   name: string;
-  avatar?: string | undefined;
   slug: string;
+  avatar?: string | undefined;
 };
 
 /**
@@ -451,19 +451,42 @@ export type CancelDeploymentOomReport = ClosedEnum<
   typeof CancelDeploymentOomReport
 >;
 
+export type CancelDeploymentAliasWarning = {
+  code: string;
+  message: string;
+  link?: string | undefined;
+  action?: string | undefined;
+};
+
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
+export const CancelDeploymentReadyState = {
+  Queued: "QUEUED",
+  Building: "BUILDING",
+  Error: "ERROR",
+  Initializing: "INITIALIZING",
+  Ready: "READY",
+  Canceled: "CANCELED",
+} as const;
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
+export type CancelDeploymentReadyState = ClosedEnum<
+  typeof CancelDeploymentReadyState
+>;
+
+export const CancelDeploymentType = {
+  Lambdas: "LAMBDAS",
+} as const;
+export type CancelDeploymentType = ClosedEnum<typeof CancelDeploymentType>;
+
 /**
  * An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
  */
 export type CancelDeploymentAliasError = {
   code: string;
   message: string;
-};
-
-export type CancelDeploymentAliasWarning = {
-  code: string;
-  message: string;
-  link?: string | undefined;
-  action?: string | undefined;
 };
 
 export const CancelDeploymentChecksState = {
@@ -476,9 +499,9 @@ export type CancelDeploymentChecksState = ClosedEnum<
 >;
 
 export const CancelDeploymentChecksConclusion = {
-  Skipped: "skipped",
   Succeeded: "succeeded",
   Failed: "failed",
+  Skipped: "skipped",
   Canceled: "canceled",
 } as const;
 export type CancelDeploymentChecksConclusion = ClosedEnum<
@@ -814,24 +837,6 @@ export type CancelDeploymentProject = {
 };
 
 /**
- * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
- */
-export const CancelDeploymentReadyState = {
-  Building: "BUILDING",
-  Error: "ERROR",
-  Initializing: "INITIALIZING",
-  Queued: "QUEUED",
-  Ready: "READY",
-  Canceled: "CANCELED",
-} as const;
-/**
- * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
- */
-export type CancelDeploymentReadyState = ClosedEnum<
-  typeof CancelDeploymentReadyState
->;
-
-/**
  * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
  */
 export const CancelDeploymentReadySubstate = {
@@ -876,11 +881,6 @@ export const CancelDeploymentTarget = {
  */
 export type CancelDeploymentTarget = ClosedEnum<typeof CancelDeploymentTarget>;
 
-export const CancelDeploymentType = {
-  Lambdas: "LAMBDAS",
-} as const;
-export type CancelDeploymentType = ClosedEnum<typeof CancelDeploymentType>;
-
 export type CancelDeploymentOidcTokenClaims = {
   iss: string;
   sub: string;
@@ -893,6 +893,13 @@ export type CancelDeploymentOidcTokenClaims = {
   environment: string;
   plan?: string | undefined;
 };
+
+export const CancelDeploymentPlan = {
+  Pro: "pro",
+  Enterprise: "enterprise",
+  Hobby: "hobby",
+} as const;
+export type CancelDeploymentPlan = ClosedEnum<typeof CancelDeploymentPlan>;
 
 export type CancelDeploymentCrons = {
   schedule: string;
@@ -962,13 +969,6 @@ export type CancelDeploymentFunctions = {
     | undefined;
   supportsCancellation?: boolean | undefined;
 };
-
-export const CancelDeploymentPlan = {
-  Pro: "pro",
-  Enterprise: "enterprise",
-  Hobby: "hobby",
-} as const;
-export type CancelDeploymentPlan = ClosedEnum<typeof CancelDeploymentPlan>;
 
 export type CancelDeploymentRoutes3 = {
   src: string;
@@ -1502,16 +1502,29 @@ export type CancelDeploymentResponseBody = {
     | CancelDeploymentCustomEnvironment2
     | undefined;
   oomReport?: CancelDeploymentOomReport | undefined;
+  aliasWarning?: CancelDeploymentAliasWarning | null | undefined;
   /**
    * A string holding the unique ID of the deployment
    */
   id: string;
   /**
+   * A number containing the date when the deployment was created in milliseconds
+   */
+  createdAt: number;
+  /**
+   * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+   */
+  readyState: CancelDeploymentReadyState;
+  /**
+   * The name of the project associated with the deployment at the time that the deployment was created
+   */
+  name: string;
+  type: CancelDeploymentType;
+  /**
    * An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
    */
   aliasError?: CancelDeploymentAliasError | null | undefined;
   aliasFinal?: string | null | undefined;
-  aliasWarning?: CancelDeploymentAliasWarning | null | undefined;
   /**
    * applies to custom domains only, defaults to `true`
    */
@@ -1520,10 +1533,6 @@ export type CancelDeploymentResponseBody = {
   buildErrorAt?: number | undefined;
   checksState?: CancelDeploymentChecksState | undefined;
   checksConclusion?: CancelDeploymentChecksConclusion | undefined;
-  /**
-   * A number containing the date when the deployment was created in milliseconds
-   */
-  createdAt: number;
   /**
    * A number containing the date when the deployment was deleted at milliseconds
    */
@@ -1558,10 +1567,6 @@ export type CancelDeploymentResponseBody = {
     | CancelDeploymentGitSource7
     | GitSource8
     | undefined;
-  /**
-   * The name of the project associated with the deployment at the time that the deployment was created
-   */
-  name: string;
   meta: { [k: string]: string };
   originCacheRegion?: string | undefined;
   /**
@@ -1573,10 +1578,6 @@ export type CancelDeploymentResponseBody = {
    */
   project?: CancelDeploymentProject | undefined;
   prebuilt?: boolean | undefined;
-  /**
-   * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
-   */
-  readyState: CancelDeploymentReadyState;
   /**
    * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
    */
@@ -1597,7 +1598,6 @@ export type CancelDeploymentResponseBody = {
    * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
    */
   target?: CancelDeploymentTarget | null | undefined;
-  type: CancelDeploymentType;
   /**
    * A number containing the date when the deployment was undeleted at milliseconds
    */
@@ -1607,10 +1607,16 @@ export type CancelDeploymentResponseBody = {
    */
   url: string;
   /**
+   * Since January 2025 User-configured deployment ID for skew protection with pre-built deployments. This is set when users configure a custom deploymentId in their next.config.js file. This allows Next.js to use skew protection even when deployments are pre-built outside of Vercel's build system.
+   */
+  userConfiguredDeploymentId?: string | undefined;
+  /**
    * The platform version that was used to create the deployment.
    */
   version: number;
   oidcTokenClaims?: CancelDeploymentOidcTokenClaims | undefined;
+  projectId: string;
+  plan: CancelDeploymentPlan;
   connectBuildsEnabled?: boolean | undefined;
   connectConfigurationId?: string | undefined;
   createdIn: string;
@@ -1622,8 +1628,6 @@ export type CancelDeploymentResponseBody = {
    * Since November 2023 this field defines a Secure Compute network that will only be used to deploy passive lambdas to (as in passiveRegions)
    */
   passiveConnectConfigurationId?: string | undefined;
-  plan: CancelDeploymentPlan;
-  projectId: string;
   routes:
     | Array<
       | CancelDeploymentRoutes3
@@ -2448,15 +2452,15 @@ export const CancelDeploymentTeam$inboundSchema: z.ZodType<
 > = z.object({
   id: types.string(),
   name: types.string(),
-  avatar: types.optional(types.string()),
   slug: types.string(),
+  avatar: types.optional(types.string()),
 });
 /** @internal */
 export type CancelDeploymentTeam$Outbound = {
   id: string;
   name: string;
-  avatar?: string | undefined;
   slug: string;
+  avatar?: string | undefined;
 };
 
 /** @internal */
@@ -2467,8 +2471,8 @@ export const CancelDeploymentTeam$outboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   name: z.string(),
-  avatar: z.string().optional(),
   slug: z.string(),
+  avatar: z.string().optional(),
 });
 
 export function cancelDeploymentTeamToJSON(
@@ -2880,48 +2884,6 @@ export const CancelDeploymentOomReport$outboundSchema: z.ZodNativeEnum<
 > = CancelDeploymentOomReport$inboundSchema;
 
 /** @internal */
-export const CancelDeploymentAliasError$inboundSchema: z.ZodType<
-  CancelDeploymentAliasError,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  code: types.string(),
-  message: types.string(),
-});
-/** @internal */
-export type CancelDeploymentAliasError$Outbound = {
-  code: string;
-  message: string;
-};
-
-/** @internal */
-export const CancelDeploymentAliasError$outboundSchema: z.ZodType<
-  CancelDeploymentAliasError$Outbound,
-  z.ZodTypeDef,
-  CancelDeploymentAliasError
-> = z.object({
-  code: z.string(),
-  message: z.string(),
-});
-
-export function cancelDeploymentAliasErrorToJSON(
-  cancelDeploymentAliasError: CancelDeploymentAliasError,
-): string {
-  return JSON.stringify(
-    CancelDeploymentAliasError$outboundSchema.parse(cancelDeploymentAliasError),
-  );
-}
-export function cancelDeploymentAliasErrorFromJSON(
-  jsonString: string,
-): SafeParseResult<CancelDeploymentAliasError, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CancelDeploymentAliasError$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentAliasError' from JSON`,
-  );
-}
-
-/** @internal */
 export const CancelDeploymentAliasWarning$inboundSchema: z.ZodType<
   CancelDeploymentAliasWarning,
   z.ZodTypeDef,
@@ -2968,6 +2930,66 @@ export function cancelDeploymentAliasWarningFromJSON(
     jsonString,
     (x) => CancelDeploymentAliasWarning$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'CancelDeploymentAliasWarning' from JSON`,
+  );
+}
+
+/** @internal */
+export const CancelDeploymentReadyState$inboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentReadyState
+> = z.nativeEnum(CancelDeploymentReadyState);
+/** @internal */
+export const CancelDeploymentReadyState$outboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentReadyState
+> = CancelDeploymentReadyState$inboundSchema;
+
+/** @internal */
+export const CancelDeploymentType$inboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentType
+> = z.nativeEnum(CancelDeploymentType);
+/** @internal */
+export const CancelDeploymentType$outboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentType
+> = CancelDeploymentType$inboundSchema;
+
+/** @internal */
+export const CancelDeploymentAliasError$inboundSchema: z.ZodType<
+  CancelDeploymentAliasError,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  code: types.string(),
+  message: types.string(),
+});
+/** @internal */
+export type CancelDeploymentAliasError$Outbound = {
+  code: string;
+  message: string;
+};
+
+/** @internal */
+export const CancelDeploymentAliasError$outboundSchema: z.ZodType<
+  CancelDeploymentAliasError$Outbound,
+  z.ZodTypeDef,
+  CancelDeploymentAliasError
+> = z.object({
+  code: z.string(),
+  message: z.string(),
+});
+
+export function cancelDeploymentAliasErrorToJSON(
+  cancelDeploymentAliasError: CancelDeploymentAliasError,
+): string {
+  return JSON.stringify(
+    CancelDeploymentAliasError$outboundSchema.parse(cancelDeploymentAliasError),
+  );
+}
+export function cancelDeploymentAliasErrorFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelDeploymentAliasError, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelDeploymentAliasError$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentAliasError' from JSON`,
   );
 }
 
@@ -4262,15 +4284,6 @@ export function cancelDeploymentProjectFromJSON(
 }
 
 /** @internal */
-export const CancelDeploymentReadyState$inboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentReadyState
-> = z.nativeEnum(CancelDeploymentReadyState);
-/** @internal */
-export const CancelDeploymentReadyState$outboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentReadyState
-> = CancelDeploymentReadyState$inboundSchema;
-
-/** @internal */
 export const CancelDeploymentReadySubstate$inboundSchema: z.ZodNativeEnum<
   typeof CancelDeploymentReadySubstate
 > = z.nativeEnum(CancelDeploymentReadySubstate);
@@ -4296,15 +4309,6 @@ export const CancelDeploymentTarget$inboundSchema: z.ZodNativeEnum<
 export const CancelDeploymentTarget$outboundSchema: z.ZodNativeEnum<
   typeof CancelDeploymentTarget
 > = CancelDeploymentTarget$inboundSchema;
-
-/** @internal */
-export const CancelDeploymentType$inboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentType
-> = z.nativeEnum(CancelDeploymentType);
-/** @internal */
-export const CancelDeploymentType$outboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentType
-> = CancelDeploymentType$inboundSchema;
 
 /** @internal */
 export const CancelDeploymentOidcTokenClaims$inboundSchema: z.ZodType<
@@ -4383,6 +4387,15 @@ export function cancelDeploymentOidcTokenClaimsFromJSON(
     `Failed to parse 'CancelDeploymentOidcTokenClaims' from JSON`,
   );
 }
+
+/** @internal */
+export const CancelDeploymentPlan$inboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentPlan
+> = z.nativeEnum(CancelDeploymentPlan);
+/** @internal */
+export const CancelDeploymentPlan$outboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentPlan
+> = CancelDeploymentPlan$inboundSchema;
 
 /** @internal */
 export const CancelDeploymentCrons$inboundSchema: z.ZodType<
@@ -4566,15 +4579,6 @@ export function cancelDeploymentFunctionsFromJSON(
     `Failed to parse 'CancelDeploymentFunctions' from JSON`,
   );
 }
-
-/** @internal */
-export const CancelDeploymentPlan$inboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentPlan
-> = z.nativeEnum(CancelDeploymentPlan);
-/** @internal */
-export const CancelDeploymentPlan$outboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentPlan
-> = CancelDeploymentPlan$inboundSchema;
 
 /** @internal */
 export const CancelDeploymentRoutes3$inboundSchema: z.ZodType<
@@ -7081,13 +7085,17 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
     ]),
   ),
   oomReport: types.optional(CancelDeploymentOomReport$inboundSchema),
-  id: types.string(),
-  aliasError: z.nullable(z.lazy(() => CancelDeploymentAliasError$inboundSchema))
-    .optional(),
-  aliasFinal: z.nullable(types.string()).optional(),
   aliasWarning: z.nullable(
     z.lazy(() => CancelDeploymentAliasWarning$inboundSchema),
   ).optional(),
+  id: types.string(),
+  createdAt: types.number(),
+  readyState: CancelDeploymentReadyState$inboundSchema,
+  name: types.string(),
+  type: CancelDeploymentType$inboundSchema,
+  aliasError: z.nullable(z.lazy(() => CancelDeploymentAliasError$inboundSchema))
+    .optional(),
+  aliasFinal: z.nullable(types.string()).optional(),
   autoAssignCustomDomains: types.optional(types.boolean()),
   automaticAliases: types.optional(z.array(types.string())),
   buildErrorAt: types.optional(types.number()),
@@ -7095,7 +7103,6 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
   checksConclusion: types.optional(
     CancelDeploymentChecksConclusion$inboundSchema,
   ),
-  createdAt: types.number(),
   deletedAt: z.nullable(types.number()).optional(),
   defaultRoute: types.optional(types.string()),
   canceledAt: types.optional(types.number()),
@@ -7123,25 +7130,25 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
       z.lazy(() => GitSource8$inboundSchema),
     ]),
   ),
-  name: types.string(),
   meta: z.record(types.string()),
   originCacheRegion: types.optional(types.string()),
   nodeVersion: types.optional(CancelDeploymentNodeVersion$inboundSchema),
   project: types.optional(z.lazy(() => CancelDeploymentProject$inboundSchema)),
   prebuilt: types.optional(types.boolean()),
-  readyState: CancelDeploymentReadyState$inboundSchema,
   readySubstate: types.optional(CancelDeploymentReadySubstate$inboundSchema),
   regions: z.array(types.string()),
   softDeletedByRetention: types.optional(types.boolean()),
   source: types.optional(CancelDeploymentSource$inboundSchema),
   target: z.nullable(CancelDeploymentTarget$inboundSchema).optional(),
-  type: CancelDeploymentType$inboundSchema,
   undeletedAt: types.optional(types.number()),
   url: types.string(),
+  userConfiguredDeploymentId: types.optional(types.string()),
   version: types.number(),
   oidcTokenClaims: types.optional(
     z.lazy(() => CancelDeploymentOidcTokenClaims$inboundSchema),
   ),
+  projectId: types.string(),
+  plan: CancelDeploymentPlan$inboundSchema,
   connectBuildsEnabled: types.optional(types.boolean()),
   connectConfigurationId: types.optional(types.string()),
   createdIn: types.string(),
@@ -7154,8 +7161,6 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
   monorepoManager: z.nullable(types.string()).optional(),
   ownerId: types.string(),
   passiveConnectConfigurationId: types.optional(types.string()),
-  plan: CancelDeploymentPlan$inboundSchema,
-  projectId: types.string(),
   routes: types.nullable(
     z.array(smartUnion([
       z.lazy(() => CancelDeploymentRoutes3$inboundSchema),
@@ -7224,16 +7229,19 @@ export type CancelDeploymentResponseBody$Outbound = {
     | CancelDeploymentCustomEnvironment2$Outbound
     | undefined;
   oomReport?: string | undefined;
+  aliasWarning?: CancelDeploymentAliasWarning$Outbound | null | undefined;
   id: string;
+  createdAt: number;
+  readyState: string;
+  name: string;
+  type: string;
   aliasError?: CancelDeploymentAliasError$Outbound | null | undefined;
   aliasFinal?: string | null | undefined;
-  aliasWarning?: CancelDeploymentAliasWarning$Outbound | null | undefined;
   autoAssignCustomDomains?: boolean | undefined;
   automaticAliases?: Array<string> | undefined;
   buildErrorAt?: number | undefined;
   checksState?: string | undefined;
   checksConclusion?: string | undefined;
-  createdAt: number;
   deletedAt?: number | null | undefined;
   defaultRoute?: string | undefined;
   canceledAt?: number | undefined;
@@ -7259,23 +7267,23 @@ export type CancelDeploymentResponseBody$Outbound = {
     | CancelDeploymentGitSource7$Outbound
     | GitSource8$Outbound
     | undefined;
-  name: string;
   meta: { [k: string]: string };
   originCacheRegion?: string | undefined;
   nodeVersion?: string | undefined;
   project?: CancelDeploymentProject$Outbound | undefined;
   prebuilt?: boolean | undefined;
-  readyState: string;
   readySubstate?: string | undefined;
   regions: Array<string>;
   softDeletedByRetention?: boolean | undefined;
   source?: string | undefined;
   target?: string | null | undefined;
-  type: string;
   undeletedAt?: number | undefined;
   url: string;
+  userConfiguredDeploymentId?: string | undefined;
   version: number;
   oidcTokenClaims?: CancelDeploymentOidcTokenClaims$Outbound | undefined;
+  projectId: string;
+  plan: string;
   connectBuildsEnabled?: boolean | undefined;
   connectConfigurationId?: string | undefined;
   createdIn: string;
@@ -7287,8 +7295,6 @@ export type CancelDeploymentResponseBody$Outbound = {
   monorepoManager?: string | null | undefined;
   ownerId: string;
   passiveConnectConfigurationId?: string | undefined;
-  plan: string;
-  projectId: string;
   routes:
     | Array<
       | CancelDeploymentRoutes3$Outbound
@@ -7358,20 +7364,23 @@ export const CancelDeploymentResponseBody$outboundSchema: z.ZodType<
     z.lazy(() => CancelDeploymentCustomEnvironment2$outboundSchema),
   ]).optional(),
   oomReport: CancelDeploymentOomReport$outboundSchema.optional(),
+  aliasWarning: z.nullable(
+    z.lazy(() => CancelDeploymentAliasWarning$outboundSchema),
+  ).optional(),
   id: z.string(),
+  createdAt: z.number(),
+  readyState: CancelDeploymentReadyState$outboundSchema,
+  name: z.string(),
+  type: CancelDeploymentType$outboundSchema,
   aliasError: z.nullable(
     z.lazy(() => CancelDeploymentAliasError$outboundSchema),
   ).optional(),
   aliasFinal: z.nullable(z.string()).optional(),
-  aliasWarning: z.nullable(
-    z.lazy(() => CancelDeploymentAliasWarning$outboundSchema),
-  ).optional(),
   autoAssignCustomDomains: z.boolean().optional(),
   automaticAliases: z.array(z.string()).optional(),
   buildErrorAt: z.number().optional(),
   checksState: CancelDeploymentChecksState$outboundSchema.optional(),
   checksConclusion: CancelDeploymentChecksConclusion$outboundSchema.optional(),
-  createdAt: z.number(),
   deletedAt: z.nullable(z.number()).optional(),
   defaultRoute: z.string().optional(),
   canceledAt: z.number().optional(),
@@ -7397,24 +7406,24 @@ export const CancelDeploymentResponseBody$outboundSchema: z.ZodType<
     z.lazy(() => CancelDeploymentGitSource7$outboundSchema),
     z.lazy(() => GitSource8$outboundSchema),
   ]).optional(),
-  name: z.string(),
   meta: z.record(z.string()),
   originCacheRegion: z.string().optional(),
   nodeVersion: CancelDeploymentNodeVersion$outboundSchema.optional(),
   project: z.lazy(() => CancelDeploymentProject$outboundSchema).optional(),
   prebuilt: z.boolean().optional(),
-  readyState: CancelDeploymentReadyState$outboundSchema,
   readySubstate: CancelDeploymentReadySubstate$outboundSchema.optional(),
   regions: z.array(z.string()),
   softDeletedByRetention: z.boolean().optional(),
   source: CancelDeploymentSource$outboundSchema.optional(),
   target: z.nullable(CancelDeploymentTarget$outboundSchema).optional(),
-  type: CancelDeploymentType$outboundSchema,
   undeletedAt: z.number().optional(),
   url: z.string(),
+  userConfiguredDeploymentId: z.string().optional(),
   version: z.number(),
   oidcTokenClaims: z.lazy(() => CancelDeploymentOidcTokenClaims$outboundSchema)
     .optional(),
+  projectId: z.string(),
+  plan: CancelDeploymentPlan$outboundSchema,
   connectBuildsEnabled: z.boolean().optional(),
   connectConfigurationId: z.string().optional(),
   createdIn: z.string(),
@@ -7425,8 +7434,6 @@ export const CancelDeploymentResponseBody$outboundSchema: z.ZodType<
   monorepoManager: z.nullable(z.string()).optional(),
   ownerId: z.string(),
   passiveConnectConfigurationId: z.string().optional(),
-  plan: CancelDeploymentPlan$outboundSchema,
-  projectId: z.string(),
   routes: z.nullable(
     z.array(smartUnion([
       z.lazy(() => CancelDeploymentRoutes3$outboundSchema),

@@ -14,10 +14,10 @@ let value: GetEdgeConfigBackupResponseBody2 = {
   id: "<id>",
   lastModified: 9287.58,
   backup: {
-    digest: "<value>",
     items: {},
     slug: "<value>",
     updatedAt: 8767.37,
+    digest: "<value>",
   },
   metadata: {},
 };

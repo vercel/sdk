@@ -26,6 +26,7 @@ let value: CreateOrTransferDomainResponseBody = {
       id: "ZspSRT4ljIEEmMHgoDwKWDei",
     },
     name: "example.com",
+    teamId: null,
     boughtAt: 1613602938882,
     createdAt: 1613602938882,
     expiresAt: 1613602938882,
@@ -36,7 +37,6 @@ let value: CreateOrTransferDomainResponseBody = {
     transferredAt: 1613602938882,
     transferStartedAt: 1613602938882,
     userId: "<id>",
-    teamId: null,
   },
 };
 ```

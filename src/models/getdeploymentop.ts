@@ -855,6 +855,10 @@ export type GetDeploymentResponseBody2 = {
    */
   url: string;
   /**
+   * Since January 2025 User-configured deployment ID for skew protection with pre-built deployments. This is set when users configure a custom deploymentId in their next.config.js file. This allows Next.js to use skew protection even when deployments are pre-built outside of Vercel's build system.
+   */
+  userConfiguredDeploymentId?: string | undefined;
+  /**
    * The platform version that was used to create the deployment.
    */
   version: number;
@@ -2437,6 +2441,10 @@ export type GetDeploymentResponseBody1 = {
    * A string with the unique URL of the deployment
    */
   url: string;
+  /**
+   * Since January 2025 User-configured deployment ID for skew protection with pre-built deployments. This is set when users configure a custom deploymentId in their next.config.js file. This allows Next.js to use skew protection even when deployments are pre-built outside of Vercel's build system.
+   */
+  userConfiguredDeploymentId?: string | undefined;
   /**
    * The platform version that was used to create the deployment.
    */
@@ -4817,6 +4825,7 @@ export const GetDeploymentResponseBody2$inboundSchema: z.ZodType<
   target: z.nullable(GetDeploymentResponseBodyTarget$inboundSchema).optional(),
   undeletedAt: types.optional(types.number()),
   url: types.string(),
+  userConfiguredDeploymentId: types.optional(types.string()),
   version: types.number(),
   oidcTokenClaims: types.optional(
     z.lazy(() => GetDeploymentResponseBodyOidcTokenClaims$inboundSchema),
@@ -4896,6 +4905,7 @@ export type GetDeploymentResponseBody2$Outbound = {
   target?: string | null | undefined;
   undeletedAt?: number | undefined;
   url: string;
+  userConfiguredDeploymentId?: string | undefined;
   version: number;
   oidcTokenClaims?:
     | GetDeploymentResponseBodyOidcTokenClaims$Outbound
@@ -4987,6 +4997,7 @@ export const GetDeploymentResponseBody2$outboundSchema: z.ZodType<
   target: z.nullable(GetDeploymentResponseBodyTarget$outboundSchema).optional(),
   undeletedAt: z.number().optional(),
   url: z.string(),
+  userConfiguredDeploymentId: z.string().optional(),
   version: z.number(),
   oidcTokenClaims: z.lazy(() =>
     GetDeploymentResponseBodyOidcTokenClaims$outboundSchema
@@ -10553,6 +10564,7 @@ export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
   target: z.nullable(ResponseBodyTarget$inboundSchema).optional(),
   undeletedAt: types.optional(types.number()),
   url: types.string(),
+  userConfiguredDeploymentId: types.optional(types.string()),
   version: types.number(),
   oidcTokenClaims: types.optional(
     z.lazy(() => ResponseBodyOidcTokenClaims$inboundSchema),
@@ -10690,6 +10702,7 @@ export type GetDeploymentResponseBody1$Outbound = {
   target?: string | null | undefined;
   undeletedAt?: number | undefined;
   url: string;
+  userConfiguredDeploymentId?: string | undefined;
   version: number;
   oidcTokenClaims?: ResponseBodyOidcTokenClaims$Outbound | undefined;
   projectId: string;
@@ -10827,6 +10840,7 @@ export const GetDeploymentResponseBody1$outboundSchema: z.ZodType<
   target: z.nullable(ResponseBodyTarget$outboundSchema).optional(),
   undeletedAt: z.number().optional(),
   url: z.string(),
+  userConfiguredDeploymentId: z.string().optional(),
   version: z.number(),
   oidcTokenClaims: z.lazy(() => ResponseBodyOidcTokenClaims$outboundSchema)
     .optional(),

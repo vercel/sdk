@@ -39,11 +39,11 @@ export type GetIntegrationLogDrainsDeliveryFormat = ClosedEnum<
  * The sources from which logs are currently being delivered to this log drain.
  */
 export const GetIntegrationLogDrainsSources = {
+  External: "external",
   Build: "build",
   Edge: "edge",
   Lambda: "lambda",
   Static: "static",
-  External: "external",
   Firewall: "firewall",
   Redirect: "redirect",
 } as const;

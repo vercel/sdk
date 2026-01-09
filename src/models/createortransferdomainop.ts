@@ -135,6 +135,7 @@ export type CreateOrTransferDomainDomain = {
    * The domain name.
    */
   name: string;
+  teamId: string | null;
   /**
    * If it was purchased through Vercel, the timestamp in milliseconds when it was purchased.
    */
@@ -172,7 +173,6 @@ export type CreateOrTransferDomainDomain = {
    */
   transferStartedAt?: number | undefined;
   userId: string;
-  teamId: string | null;
 };
 
 export type CreateOrTransferDomainResponseBody = {
@@ -471,6 +471,7 @@ export const CreateOrTransferDomainDomain$inboundSchema: z.ZodType<
   creator: z.lazy(() => CreateOrTransferDomainCreator$inboundSchema),
   registrar: types.optional(CreateOrTransferDomainRegistrar$inboundSchema),
   name: types.string(),
+  teamId: types.nullable(types.string()),
   boughtAt: types.nullable(types.number()),
   createdAt: types.number(),
   expiresAt: types.nullable(types.number()),
@@ -481,7 +482,6 @@ export const CreateOrTransferDomainDomain$inboundSchema: z.ZodType<
   transferredAt: z.nullable(types.number()).optional(),
   transferStartedAt: types.optional(types.number()),
   userId: types.string(),
-  teamId: types.nullable(types.string()),
 });
 /** @internal */
 export type CreateOrTransferDomainDomain$Outbound = {
@@ -492,6 +492,7 @@ export type CreateOrTransferDomainDomain$Outbound = {
   creator: CreateOrTransferDomainCreator$Outbound;
   registrar?: string | undefined;
   name: string;
+  teamId: string | null;
   boughtAt: number | null;
   createdAt: number;
   expiresAt: number | null;
@@ -502,7 +503,6 @@ export type CreateOrTransferDomainDomain$Outbound = {
   transferredAt?: number | null | undefined;
   transferStartedAt?: number | undefined;
   userId: string;
-  teamId: string | null;
 };
 
 /** @internal */
@@ -518,6 +518,7 @@ export const CreateOrTransferDomainDomain$outboundSchema: z.ZodType<
   creator: z.lazy(() => CreateOrTransferDomainCreator$outboundSchema),
   registrar: CreateOrTransferDomainRegistrar$outboundSchema.optional(),
   name: z.string(),
+  teamId: z.nullable(z.string()),
   boughtAt: z.nullable(z.number()),
   createdAt: z.number(),
   expiresAt: z.nullable(z.number()),
@@ -528,7 +529,6 @@ export const CreateOrTransferDomainDomain$outboundSchema: z.ZodType<
   transferredAt: z.nullable(z.number()).optional(),
   transferStartedAt: z.number().optional(),
   userId: z.string(),
-  teamId: z.nullable(z.string()),
 });
 
 export function createOrTransferDomainDomainToJSON(

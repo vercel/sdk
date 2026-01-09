@@ -46,11 +46,13 @@ func testExchangeSsoTokenExchangeSsoToken0(w http.ResponseWriter, req *http.Requ
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody *operations.ExchangeSsoTokenResponseBody = &operations.ExchangeSsoTokenResponseBody{
-		IDToken:     "<value>",
-		AccessToken: types.String("<value>"),
-		TokenType:   types.String("<value>"),
-	}
+	var respBody *operations.ExchangeSsoTokenResponseBody = types.Pointer(operations.CreateExchangeSsoTokenResponseBodyExchangeSsoTokenResponseBody1(
+		operations.ExchangeSsoTokenResponseBody1{
+			IDToken:     "<value>",
+			TokenType:   types.String("<value>"),
+			AccessToken: types.String("<value>"),
+		},
+	))
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

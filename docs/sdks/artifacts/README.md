@@ -454,6 +454,8 @@ async function run() {
       hashes: [
         "12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
         "34HKQaOmR5t5Uy6vasdasdasdasd",
+        "12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+        "34HKQaOmR5t5Uy6vasdasdasdasd",
       ],
     },
   });
@@ -484,6 +486,8 @@ async function run() {
     slug: "my-team-url-slug",
     requestBody: {
       hashes: [
+        "12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+        "34HKQaOmR5t5Uy6vasdasdasdasd",
         "12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
         "34HKQaOmR5t5Uy6vasdasdasdasd",
       ],

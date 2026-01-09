@@ -56,6 +56,11 @@ import { tool$checksGetAllChecks } from "./tools/checksGetAllChecks.js";
 import { tool$checksGetCheck } from "./tools/checksGetCheck.js";
 import { tool$checksRerequestCheck } from "./tools/checksRerequestCheck.js";
 import { tool$checksUpdateCheck } from "./tools/checksUpdateCheck.js";
+import { tool$connectCreateNetwork } from "./tools/connectCreateNetwork.js";
+import { tool$connectDeleteNetwork } from "./tools/connectDeleteNetwork.js";
+import { tool$connectListNetworks } from "./tools/connectListNetworks.js";
+import { tool$connectReadNetwork } from "./tools/connectReadNetwork.js";
+import { tool$connectUpdateNetwork } from "./tools/connectUpdateNetwork.js";
 import { tool$connectUpdateStaticIps } from "./tools/connectUpdateStaticIps.js";
 import { tool$deploymentsCancelDeployment } from "./tools/deploymentsCancelDeployment.js";
 import { tool$deploymentsCreateDeployment } from "./tools/deploymentsCreateDeployment.js";
@@ -71,8 +76,6 @@ import { tool$dnsCreateRecord } from "./tools/dnsCreateRecord.js";
 import { tool$dnsGetRecords } from "./tools/dnsGetRecords.js";
 import { tool$dnsRemoveRecord } from "./tools/dnsRemoveRecord.js";
 import { tool$dnsUpdateRecord } from "./tools/dnsUpdateRecord.js";
-import { tool$domainsCheckDomainPrice } from "./tools/domainsCheckDomainPrice.js";
-import { tool$domainsCheckDomainStatus } from "./tools/domainsCheckDomainStatus.js";
 import { tool$domainsCreateOrTransferDomain } from "./tools/domainsCreateOrTransferDomain.js";
 import { tool$domainsDeleteDomain } from "./tools/domainsDeleteDomain.js";
 import { tool$domainsGetDomain } from "./tools/domainsGetDomain.js";
@@ -247,7 +250,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.18.6",
+    version: "1.18.7",
   });
 
   const client = new VercelCore({
@@ -306,6 +309,12 @@ export function createMCPServer(deps: {
   tool(tool$checksGetCheck);
   tool(tool$checksUpdateCheck);
   tool(tool$checksRerequestCheck);
+  tool(tool$connectListNetworks);
+  tool(tool$connectCreateNetwork);
+  tool(tool$connectDeleteNetwork);
+  tool(tool$connectUpdateNetwork);
+  tool(tool$connectReadNetwork);
+  tool(tool$connectUpdateStaticIps);
   tool(tool$projectsUpdateProjectDataCache);
   tool(tool$projectsGetProjects);
   tool(tool$projectsCreateProject);
@@ -350,14 +359,6 @@ export function createMCPServer(deps: {
   tool(tool$integrationsDeleteConfiguration);
   tool(tool$integrationsGetConfigurationProducts);
   tool(tool$integrationsCreateIntegrationStoreDirect);
-  tool(tool$domainsCheckDomainPrice);
-  tool(tool$domainsCheckDomainStatus);
-  tool(tool$domainsGetDomainConfig);
-  tool(tool$domainsGetDomain);
-  tool(tool$domainsGetDomains);
-  tool(tool$domainsCreateOrTransferDomain);
-  tool(tool$domainsPatchDomain);
-  tool(tool$domainsDeleteDomain);
   tool(tool$dnsGetRecords);
   tool(tool$dnsCreateRecord);
   tool(tool$dnsUpdateRecord);
@@ -377,6 +378,12 @@ export function createMCPServer(deps: {
   tool(tool$domainsRegistrarUpdateDomainNameservers);
   tool(tool$domainsRegistrarGetContactInfoSchema);
   tool(tool$domainsRegistrarGetOrder);
+  tool(tool$domainsGetDomainConfig);
+  tool(tool$domainsGetDomain);
+  tool(tool$domainsGetDomains);
+  tool(tool$domainsCreateOrTransferDomain);
+  tool(tool$domainsPatchDomain);
+  tool(tool$domainsDeleteDomain);
   tool(tool$logDrainsGetConfigurableLogDrain);
   tool(tool$logDrainsDeleteConfigurableLogDrain);
   tool(tool$logDrainsGetAllLogDrains);
@@ -455,7 +462,6 @@ export function createMCPServer(deps: {
   tool(tool$projectMembersGetProjectMembers);
   tool(tool$projectMembersAddProjectMember);
   tool(tool$projectMembersRemoveProjectMember);
-  tool(tool$connectUpdateStaticIps);
   tool(tool$rollingReleaseGetRollingReleaseBillingStatus);
   tool(tool$rollingReleaseGetRollingReleaseConfig);
   tool(tool$rollingReleaseDeleteRollingReleaseConfig);

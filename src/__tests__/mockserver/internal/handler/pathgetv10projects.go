@@ -46,8 +46,16 @@ func testGetProjectsGetProjects0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody *operations.GetProjectsResponseBody = types.Pointer(operations.CreateGetProjectsResponseBodyArrayOfGetProjectsResponseBody1(
-		[]operations.GetProjectsResponseBody1{},
+	var respBody *operations.GetProjectsResponseBody = types.Pointer(operations.CreateGetProjectsResponseBodyGetProjectsResponseBody2(
+		operations.GetProjectsResponseBody2{
+			Projects: []operations.GetProjectsProject1{},
+			Pagination: operations.CreatePaginationUnion1GetProjectsPagination1(
+				operations.GetProjectsPagination1{
+					Count: 20,
+					Next:  types.String("JBSWY3DPEHPK3PXP"),
+				},
+			),
+		},
 	))
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

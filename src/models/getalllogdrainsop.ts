@@ -13,8 +13,8 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetAllLogDrainsRequest = {
   projectId?: string | undefined;
-  includeMetadata?: boolean | undefined;
   projectIdOrName?: string | undefined;
+  includeMetadata?: boolean | undefined;
   /**
    * The Team identifier to perform the request on behalf of.
    */
@@ -25,85 +25,24 @@ export type GetAllLogDrainsRequest = {
   slug?: string | undefined;
 };
 
-export const GetAllLogDrainsResponseBodyFramework = {
-  Blitzjs: "blitzjs",
-  Nextjs: "nextjs",
-  Gatsby: "gatsby",
-  Remix: "remix",
-  ReactRouter: "react-router",
-  Astro: "astro",
-  Hexo: "hexo",
-  Eleventy: "eleventy",
-  Docusaurus2: "docusaurus-2",
-  Docusaurus: "docusaurus",
-  Preact: "preact",
-  Solidstart1: "solidstart-1",
-  Solidstart: "solidstart",
-  Dojo: "dojo",
-  Ember: "ember",
-  Vue: "vue",
-  Scully: "scully",
-  IonicAngular: "ionic-angular",
-  Angular: "angular",
-  Polymer: "polymer",
-  Svelte: "svelte",
-  Sveltekit: "sveltekit",
-  Sveltekit1: "sveltekit-1",
-  IonicReact: "ionic-react",
-  CreateReactApp: "create-react-app",
-  Gridsome: "gridsome",
-  Umijs: "umijs",
-  Sapper: "sapper",
-  Saber: "saber",
-  Stencil: "stencil",
-  Nuxtjs: "nuxtjs",
-  Redwoodjs: "redwoodjs",
-  Hugo: "hugo",
-  Jekyll: "jekyll",
-  Brunch: "brunch",
-  Middleman: "middleman",
-  Zola: "zola",
-  Hydrogen: "hydrogen",
-  Vite: "vite",
-  TanstackStart: "tanstack-start",
-  Vitepress: "vitepress",
-  Vuepress: "vuepress",
-  Parcel: "parcel",
-  Fastapi: "fastapi",
-  Flask: "flask",
-  Fasthtml: "fasthtml",
-  SanityV3: "sanity-v3",
-  Sanity: "sanity",
-  Storybook: "storybook",
-  Nitro: "nitro",
-  Hono: "hono",
-  Express: "express",
-  H3: "h3",
-  Nestjs: "nestjs",
-  Elysia: "elysia",
-  Fastify: "fastify",
-  Xmcp: "xmcp",
+export const GetAllLogDrainsDrainsStatus = {
+  Enabled: "enabled",
+  Disabled: "disabled",
+  Errored: "errored",
 } as const;
-export type GetAllLogDrainsResponseBodyFramework = ClosedEnum<
-  typeof GetAllLogDrainsResponseBodyFramework
+export type GetAllLogDrainsDrainsStatus = ClosedEnum<
+  typeof GetAllLogDrainsDrainsStatus
 >;
 
-export type ResponseBodyProjectsMetadata = {
-  id: string;
-  name: string;
-  framework?: GetAllLogDrainsResponseBodyFramework | null | undefined;
-  latestDeployment?: string | undefined;
-};
-
-export type GetAllLogDrainsResponseBody2 = {
-  createdFrom: string;
-  clientId?: string | undefined;
-  configurationId?: string | undefined;
-  projectsMetadata?: Array<ResponseBodyProjectsMetadata> | null | undefined;
-  integrationIcon?: string | undefined;
-  integrationConfigurationUri?: string | undefined;
-  integrationWebsite?: string | undefined;
-};
+export const GetAllLogDrainsDrainsLogDrainsDisabledReason = {
+  DisabledByOwner: "disabled-by-owner",
+  FeatureNotAvailable: "feature-not-available",
+  AccountPlanDowngrade: "account-plan-downgrade",
+  DisabledByAdmin: "disabled-by-admin",
+} as const;
+export type GetAllLogDrainsDrainsLogDrainsDisabledReason = ClosedEnum<
+  typeof GetAllLogDrainsDrainsLogDrainsDisabledReason
+>;
 
 export type GetAllLogDrainsDrainsLogDrainsLog = {};
 
@@ -182,8 +121,8 @@ export type GetAllLogDrainsDeliveryLogDrainsEncoding = ClosedEnum<
 >;
 
 export const GetAllLogDrainsDeliveryLogDrainsCompression = {
-  Gzip: "gzip",
   None: "none",
+  Gzip: "gzip",
 } as const;
 export type GetAllLogDrainsDeliveryLogDrainsCompression = ClosedEnum<
   typeof GetAllLogDrainsDeliveryLogDrainsCompression
@@ -240,25 +179,6 @@ export type GetAllLogDrainsDrainsLogDrainsSampling = {
   env?: GetAllLogDrainsDrainsEnv | undefined;
   requestPath?: string | undefined;
 };
-
-export const GetAllLogDrainsDrainsStatus = {
-  Enabled: "enabled",
-  Disabled: "disabled",
-  Errored: "errored",
-} as const;
-export type GetAllLogDrainsDrainsStatus = ClosedEnum<
-  typeof GetAllLogDrainsDrainsStatus
->;
-
-export const GetAllLogDrainsDrainsLogDrainsDisabledReason = {
-  DisabledByOwner: "disabled-by-owner",
-  FeatureNotAvailable: "feature-not-available",
-  AccountPlanDowngrade: "account-plan-downgrade",
-  DisabledByAdmin: "disabled-by-admin",
-} as const;
-export type GetAllLogDrainsDrainsLogDrainsDisabledReason = ClosedEnum<
-  typeof GetAllLogDrainsDrainsLogDrainsDisabledReason
->;
 
 export type GetAllLogDrainsSource2 = {
   kind: "integration";
@@ -354,11 +274,17 @@ export type GetAllLogDrainsDrainsProjectAccess =
 
 export type GetAllLogDrainsDrains2 = {
   id: string;
-  ownerId: string;
-  name: string;
   createdAt: number;
   updatedAt: number;
   projectIds?: Array<string> | undefined;
+  name: string;
+  teamId?: string | null | undefined;
+  ownerId: string;
+  status?: GetAllLogDrainsDrainsStatus | undefined;
+  firstErrorTimestamp?: number | undefined;
+  disabledAt?: number | undefined;
+  disabledBy?: string | undefined;
+  disabledReason?: GetAllLogDrainsDrainsLogDrainsDisabledReason | undefined;
   schemas: GetAllLogDrainsDrainsLogDrainsSchemas;
   delivery:
     | GetAllLogDrainsDelivery1
@@ -366,12 +292,6 @@ export type GetAllLogDrainsDrains2 = {
     | GetAllLogDrainsDelivery3
     | GetAllLogDrainsDelivery4;
   sampling?: Array<GetAllLogDrainsDrainsLogDrainsSampling> | undefined;
-  teamId?: string | null | undefined;
-  status?: GetAllLogDrainsDrainsStatus | undefined;
-  disabledAt?: number | undefined;
-  disabledReason?: GetAllLogDrainsDrainsLogDrainsDisabledReason | undefined;
-  disabledBy?: string | undefined;
-  firstErrorTimestamp?: number | undefined;
   source: GetAllLogDrainsSource1 | GetAllLogDrainsSource2;
   filter?: string | undefined;
   filterV2?: GetAllLogDrainsFilterV21 | GetAllLogDrainsFilterV22 | undefined;
@@ -383,6 +303,25 @@ export type GetAllLogDrainsDrains2 = {
     | GetAllLogDrainsProjectAccess2
     | undefined;
 };
+
+export const GetAllLogDrainsDrainsLogDrainsStatus = {
+  Enabled: "enabled",
+  Disabled: "disabled",
+  Errored: "errored",
+} as const;
+export type GetAllLogDrainsDrainsLogDrainsStatus = ClosedEnum<
+  typeof GetAllLogDrainsDrainsLogDrainsStatus
+>;
+
+export const GetAllLogDrainsDrainsDisabledReason = {
+  DisabledByOwner: "disabled-by-owner",
+  FeatureNotAvailable: "feature-not-available",
+  AccountPlanDowngrade: "account-plan-downgrade",
+  DisabledByAdmin: "disabled-by-admin",
+} as const;
+export type GetAllLogDrainsDrainsDisabledReason = ClosedEnum<
+  typeof GetAllLogDrainsDrainsDisabledReason
+>;
 
 export type GetAllLogDrainsDrainsLog = {};
 
@@ -461,8 +400,8 @@ export type GetAllLogDrainsDeliveryLogDrainsResponse200Encoding = ClosedEnum<
 >;
 
 export const GetAllLogDrainsDeliveryCompression = {
-  Gzip: "gzip",
   None: "none",
+  Gzip: "gzip",
 } as const;
 export type GetAllLogDrainsDeliveryCompression = ClosedEnum<
   typeof GetAllLogDrainsDeliveryCompression
@@ -519,25 +458,6 @@ export type GetAllLogDrainsDrainsSampling = {
   env?: GetAllLogDrainsDrainsLogDrainsEnv | undefined;
   requestPath?: string | undefined;
 };
-
-export const GetAllLogDrainsDrainsLogDrainsStatus = {
-  Enabled: "enabled",
-  Disabled: "disabled",
-  Errored: "errored",
-} as const;
-export type GetAllLogDrainsDrainsLogDrainsStatus = ClosedEnum<
-  typeof GetAllLogDrainsDrainsLogDrainsStatus
->;
-
-export const GetAllLogDrainsDrainsDisabledReason = {
-  DisabledByOwner: "disabled-by-owner",
-  FeatureNotAvailable: "feature-not-available",
-  AccountPlanDowngrade: "account-plan-downgrade",
-  DisabledByAdmin: "disabled-by-admin",
-} as const;
-export type GetAllLogDrainsDrainsDisabledReason = ClosedEnum<
-  typeof GetAllLogDrainsDrainsDisabledReason
->;
 
 export type GetAllLogDrainsSourceLogDrains2 = {
   kind: "integration";
@@ -620,11 +540,17 @@ export type GetAllLogDrainsDrainsFilterV2 =
 
 export type GetAllLogDrainsDrains1 = {
   id: string;
-  ownerId: string;
-  name: string;
   createdAt: number;
   updatedAt: number;
   projectIds?: Array<string> | undefined;
+  name: string;
+  teamId?: string | null | undefined;
+  ownerId: string;
+  status?: GetAllLogDrainsDrainsLogDrainsStatus | undefined;
+  firstErrorTimestamp?: number | undefined;
+  disabledAt?: number | undefined;
+  disabledBy?: string | undefined;
+  disabledReason?: GetAllLogDrainsDrainsDisabledReason | undefined;
   schemas: GetAllLogDrainsDrainsSchemas;
   delivery:
     | GetAllLogDrainsDeliveryLogDrains1
@@ -632,12 +558,6 @@ export type GetAllLogDrainsDrains1 = {
     | GetAllLogDrainsDeliveryLogDrains3
     | GetAllLogDrainsDeliveryLogDrains4;
   sampling?: Array<GetAllLogDrainsDrainsSampling> | undefined;
-  teamId?: string | null | undefined;
-  status?: GetAllLogDrainsDrainsLogDrainsStatus | undefined;
-  disabledAt?: number | undefined;
-  disabledReason?: GetAllLogDrainsDrainsDisabledReason | undefined;
-  disabledBy?: string | undefined;
-  firstErrorTimestamp?: number | undefined;
   source: GetAllLogDrainsSourceLogDrains1 | GetAllLogDrainsSourceLogDrains2;
   filter?: string | undefined;
   filterV2?:
@@ -650,13 +570,93 @@ export type ResponseBodyDrains =
   | Array<GetAllLogDrainsDrains1>
   | Array<GetAllLogDrainsDrains2>;
 
-export type GetAllLogDrainsResponseBody1 = {
+export type GetAllLogDrainsResponseBody2 = {
   drains: Array<GetAllLogDrainsDrains1> | Array<GetAllLogDrainsDrains2>;
 };
 
+export const GetAllLogDrainsResponseBodyFramework = {
+  Blitzjs: "blitzjs",
+  Nextjs: "nextjs",
+  Gatsby: "gatsby",
+  Remix: "remix",
+  ReactRouter: "react-router",
+  Astro: "astro",
+  Hexo: "hexo",
+  Eleventy: "eleventy",
+  Docusaurus2: "docusaurus-2",
+  Docusaurus: "docusaurus",
+  Preact: "preact",
+  Solidstart1: "solidstart-1",
+  Solidstart: "solidstart",
+  Dojo: "dojo",
+  Ember: "ember",
+  Vue: "vue",
+  Scully: "scully",
+  IonicAngular: "ionic-angular",
+  Angular: "angular",
+  Polymer: "polymer",
+  Svelte: "svelte",
+  Sveltekit: "sveltekit",
+  Sveltekit1: "sveltekit-1",
+  IonicReact: "ionic-react",
+  CreateReactApp: "create-react-app",
+  Gridsome: "gridsome",
+  Umijs: "umijs",
+  Sapper: "sapper",
+  Saber: "saber",
+  Stencil: "stencil",
+  Nuxtjs: "nuxtjs",
+  Redwoodjs: "redwoodjs",
+  Hugo: "hugo",
+  Jekyll: "jekyll",
+  Brunch: "brunch",
+  Middleman: "middleman",
+  Zola: "zola",
+  Hydrogen: "hydrogen",
+  Vite: "vite",
+  TanstackStart: "tanstack-start",
+  Vitepress: "vitepress",
+  Vuepress: "vuepress",
+  Parcel: "parcel",
+  Fastapi: "fastapi",
+  Flask: "flask",
+  Fasthtml: "fasthtml",
+  SanityV3: "sanity-v3",
+  Sanity: "sanity",
+  Storybook: "storybook",
+  Nitro: "nitro",
+  Hono: "hono",
+  Express: "express",
+  H3: "h3",
+  Nestjs: "nestjs",
+  Elysia: "elysia",
+  Fastify: "fastify",
+  Xmcp: "xmcp",
+} as const;
+export type GetAllLogDrainsResponseBodyFramework = ClosedEnum<
+  typeof GetAllLogDrainsResponseBodyFramework
+>;
+
+export type ResponseBodyProjectsMetadata = {
+  id: string;
+  name: string;
+  framework?: GetAllLogDrainsResponseBodyFramework | null | undefined;
+  latestDeployment?: string | undefined;
+};
+
+export type GetAllLogDrainsResponseBody1 = {
+  createdFrom: string;
+  clientId?: string | undefined;
+  configurationId?: string | undefined;
+  projectsMetadata?: Array<ResponseBodyProjectsMetadata> | null | undefined;
+  integrationIcon?: string | undefined;
+  integrationConfigurationUri?: string | undefined;
+  integrationWebsite?: string | undefined;
+};
+
 export type GetAllLogDrainsResponseBody =
-  | GetAllLogDrainsResponseBody1
-  | Array<GetAllLogDrainsResponseBody2>;
+  | GetAllLogDrainsResponseBody2
+  | Array<GetAllLogDrainsResponseBody1>;
 
 /** @internal */
 export const GetAllLogDrainsRequest$inboundSchema: z.ZodType<
@@ -665,16 +665,16 @@ export const GetAllLogDrainsRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   projectId: types.optional(types.string()),
-  includeMetadata: types.boolean().default(false),
   projectIdOrName: types.optional(types.string()),
+  includeMetadata: types.boolean().default(false),
   teamId: types.optional(types.string()),
   slug: types.optional(types.string()),
 });
 /** @internal */
 export type GetAllLogDrainsRequest$Outbound = {
   projectId?: string | undefined;
-  includeMetadata: boolean;
   projectIdOrName?: string | undefined;
+  includeMetadata: boolean;
   teamId?: string | undefined;
   slug?: string | undefined;
 };
@@ -686,8 +686,8 @@ export const GetAllLogDrainsRequest$outboundSchema: z.ZodType<
   GetAllLogDrainsRequest
 > = z.object({
   projectId: z.string().optional(),
-  includeMetadata: z.boolean().default(false),
   projectIdOrName: z.string().optional(),
+  includeMetadata: z.boolean().default(false),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
@@ -710,132 +710,22 @@ export function getAllLogDrainsRequestFromJSON(
 }
 
 /** @internal */
-export const GetAllLogDrainsResponseBodyFramework$inboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsResponseBodyFramework> = z.nativeEnum(
-    GetAllLogDrainsResponseBodyFramework,
-  );
+export const GetAllLogDrainsDrainsStatus$inboundSchema: z.ZodNativeEnum<
+  typeof GetAllLogDrainsDrainsStatus
+> = z.nativeEnum(GetAllLogDrainsDrainsStatus);
 /** @internal */
-export const GetAllLogDrainsResponseBodyFramework$outboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsResponseBodyFramework> =
-    GetAllLogDrainsResponseBodyFramework$inboundSchema;
+export const GetAllLogDrainsDrainsStatus$outboundSchema: z.ZodNativeEnum<
+  typeof GetAllLogDrainsDrainsStatus
+> = GetAllLogDrainsDrainsStatus$inboundSchema;
 
 /** @internal */
-export const ResponseBodyProjectsMetadata$inboundSchema: z.ZodType<
-  ResponseBodyProjectsMetadata,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: types.string(),
-  name: types.string(),
-  framework: z.nullable(GetAllLogDrainsResponseBodyFramework$inboundSchema)
-    .optional(),
-  latestDeployment: types.optional(types.string()),
-});
+export const GetAllLogDrainsDrainsLogDrainsDisabledReason$inboundSchema:
+  z.ZodNativeEnum<typeof GetAllLogDrainsDrainsLogDrainsDisabledReason> = z
+    .nativeEnum(GetAllLogDrainsDrainsLogDrainsDisabledReason);
 /** @internal */
-export type ResponseBodyProjectsMetadata$Outbound = {
-  id: string;
-  name: string;
-  framework?: string | null | undefined;
-  latestDeployment?: string | undefined;
-};
-
-/** @internal */
-export const ResponseBodyProjectsMetadata$outboundSchema: z.ZodType<
-  ResponseBodyProjectsMetadata$Outbound,
-  z.ZodTypeDef,
-  ResponseBodyProjectsMetadata
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  framework: z.nullable(GetAllLogDrainsResponseBodyFramework$outboundSchema)
-    .optional(),
-  latestDeployment: z.string().optional(),
-});
-
-export function responseBodyProjectsMetadataToJSON(
-  responseBodyProjectsMetadata: ResponseBodyProjectsMetadata,
-): string {
-  return JSON.stringify(
-    ResponseBodyProjectsMetadata$outboundSchema.parse(
-      responseBodyProjectsMetadata,
-    ),
-  );
-}
-export function responseBodyProjectsMetadataFromJSON(
-  jsonString: string,
-): SafeParseResult<ResponseBodyProjectsMetadata, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ResponseBodyProjectsMetadata$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyProjectsMetadata' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetAllLogDrainsResponseBody2$inboundSchema: z.ZodType<
-  GetAllLogDrainsResponseBody2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  createdFrom: types.string(),
-  clientId: types.optional(types.string()),
-  configurationId: types.optional(types.string()),
-  projectsMetadata: z.nullable(
-    z.array(z.lazy(() => ResponseBodyProjectsMetadata$inboundSchema)),
-  ).optional(),
-  integrationIcon: types.optional(types.string()),
-  integrationConfigurationUri: types.optional(types.string()),
-  integrationWebsite: types.optional(types.string()),
-});
-/** @internal */
-export type GetAllLogDrainsResponseBody2$Outbound = {
-  createdFrom: string;
-  clientId?: string | undefined;
-  configurationId?: string | undefined;
-  projectsMetadata?:
-    | Array<ResponseBodyProjectsMetadata$Outbound>
-    | null
-    | undefined;
-  integrationIcon?: string | undefined;
-  integrationConfigurationUri?: string | undefined;
-  integrationWebsite?: string | undefined;
-};
-
-/** @internal */
-export const GetAllLogDrainsResponseBody2$outboundSchema: z.ZodType<
-  GetAllLogDrainsResponseBody2$Outbound,
-  z.ZodTypeDef,
-  GetAllLogDrainsResponseBody2
-> = z.object({
-  createdFrom: z.string(),
-  clientId: z.string().optional(),
-  configurationId: z.string().optional(),
-  projectsMetadata: z.nullable(
-    z.array(z.lazy(() => ResponseBodyProjectsMetadata$outboundSchema)),
-  ).optional(),
-  integrationIcon: z.string().optional(),
-  integrationConfigurationUri: z.string().optional(),
-  integrationWebsite: z.string().optional(),
-});
-
-export function getAllLogDrainsResponseBody2ToJSON(
-  getAllLogDrainsResponseBody2: GetAllLogDrainsResponseBody2,
-): string {
-  return JSON.stringify(
-    GetAllLogDrainsResponseBody2$outboundSchema.parse(
-      getAllLogDrainsResponseBody2,
-    ),
-  );
-}
-export function getAllLogDrainsResponseBody2FromJSON(
-  jsonString: string,
-): SafeParseResult<GetAllLogDrainsResponseBody2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetAllLogDrainsResponseBody2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetAllLogDrainsResponseBody2' from JSON`,
-  );
-}
+export const GetAllLogDrainsDrainsLogDrainsDisabledReason$outboundSchema:
+  z.ZodNativeEnum<typeof GetAllLogDrainsDrainsLogDrainsDisabledReason> =
+    GetAllLogDrainsDrainsLogDrainsDisabledReason$inboundSchema;
 
 /** @internal */
 export const GetAllLogDrainsDrainsLogDrainsLog$inboundSchema: z.ZodType<
@@ -1669,24 +1559,6 @@ export function getAllLogDrainsDrainsLogDrainsSamplingFromJSON(
 }
 
 /** @internal */
-export const GetAllLogDrainsDrainsStatus$inboundSchema: z.ZodNativeEnum<
-  typeof GetAllLogDrainsDrainsStatus
-> = z.nativeEnum(GetAllLogDrainsDrainsStatus);
-/** @internal */
-export const GetAllLogDrainsDrainsStatus$outboundSchema: z.ZodNativeEnum<
-  typeof GetAllLogDrainsDrainsStatus
-> = GetAllLogDrainsDrainsStatus$inboundSchema;
-
-/** @internal */
-export const GetAllLogDrainsDrainsLogDrainsDisabledReason$inboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsDrainsLogDrainsDisabledReason> = z
-    .nativeEnum(GetAllLogDrainsDrainsLogDrainsDisabledReason);
-/** @internal */
-export const GetAllLogDrainsDrainsLogDrainsDisabledReason$outboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsDrainsLogDrainsDisabledReason> =
-    GetAllLogDrainsDrainsLogDrainsDisabledReason$inboundSchema;
-
-/** @internal */
 export const GetAllLogDrainsSource2$inboundSchema: z.ZodType<
   GetAllLogDrainsSource2,
   z.ZodTypeDef,
@@ -2393,11 +2265,19 @@ export const GetAllLogDrainsDrains2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: types.string(),
-  ownerId: types.string(),
-  name: types.string(),
   createdAt: types.number(),
   updatedAt: types.number(),
   projectIds: types.optional(z.array(types.string())),
+  name: types.string(),
+  teamId: z.nullable(types.string()).optional(),
+  ownerId: types.string(),
+  status: types.optional(GetAllLogDrainsDrainsStatus$inboundSchema),
+  firstErrorTimestamp: types.optional(types.number()),
+  disabledAt: types.optional(types.number()),
+  disabledBy: types.optional(types.string()),
+  disabledReason: types.optional(
+    GetAllLogDrainsDrainsLogDrainsDisabledReason$inboundSchema,
+  ),
   schemas: z.lazy(() => GetAllLogDrainsDrainsLogDrainsSchemas$inboundSchema),
   delivery: z.union([
     z.lazy(() => GetAllLogDrainsDelivery1$inboundSchema),
@@ -2408,14 +2288,6 @@ export const GetAllLogDrainsDrains2$inboundSchema: z.ZodType<
   sampling: types.optional(
     z.array(z.lazy(() => GetAllLogDrainsDrainsLogDrainsSampling$inboundSchema)),
   ),
-  teamId: z.nullable(types.string()).optional(),
-  status: types.optional(GetAllLogDrainsDrainsStatus$inboundSchema),
-  disabledAt: types.optional(types.number()),
-  disabledReason: types.optional(
-    GetAllLogDrainsDrainsLogDrainsDisabledReason$inboundSchema,
-  ),
-  disabledBy: types.optional(types.string()),
-  firstErrorTimestamp: types.optional(types.number()),
   source: z.union([
     z.lazy(() => GetAllLogDrainsSource1$inboundSchema),
     z.lazy(() => GetAllLogDrainsSource2$inboundSchema),
@@ -2440,11 +2312,17 @@ export const GetAllLogDrainsDrains2$inboundSchema: z.ZodType<
 /** @internal */
 export type GetAllLogDrainsDrains2$Outbound = {
   id: string;
-  ownerId: string;
-  name: string;
   createdAt: number;
   updatedAt: number;
   projectIds?: Array<string> | undefined;
+  name: string;
+  teamId?: string | null | undefined;
+  ownerId: string;
+  status?: string | undefined;
+  firstErrorTimestamp?: number | undefined;
+  disabledAt?: number | undefined;
+  disabledBy?: string | undefined;
+  disabledReason?: string | undefined;
   schemas: GetAllLogDrainsDrainsLogDrainsSchemas$Outbound;
   delivery:
     | GetAllLogDrainsDelivery1$Outbound
@@ -2452,12 +2330,6 @@ export type GetAllLogDrainsDrains2$Outbound = {
     | GetAllLogDrainsDelivery3$Outbound
     | GetAllLogDrainsDelivery4$Outbound;
   sampling?: Array<GetAllLogDrainsDrainsLogDrainsSampling$Outbound> | undefined;
-  teamId?: string | null | undefined;
-  status?: string | undefined;
-  disabledAt?: number | undefined;
-  disabledReason?: string | undefined;
-  disabledBy?: string | undefined;
-  firstErrorTimestamp?: number | undefined;
   source: GetAllLogDrainsSource1$Outbound | GetAllLogDrainsSource2$Outbound;
   filter?: string | undefined;
   filterV2?:
@@ -2480,11 +2352,18 @@ export const GetAllLogDrainsDrains2$outboundSchema: z.ZodType<
   GetAllLogDrainsDrains2
 > = z.object({
   id: z.string(),
-  ownerId: z.string(),
-  name: z.string(),
   createdAt: z.number(),
   updatedAt: z.number(),
   projectIds: z.array(z.string()).optional(),
+  name: z.string(),
+  teamId: z.nullable(z.string()).optional(),
+  ownerId: z.string(),
+  status: GetAllLogDrainsDrainsStatus$outboundSchema.optional(),
+  firstErrorTimestamp: z.number().optional(),
+  disabledAt: z.number().optional(),
+  disabledBy: z.string().optional(),
+  disabledReason: GetAllLogDrainsDrainsLogDrainsDisabledReason$outboundSchema
+    .optional(),
   schemas: z.lazy(() => GetAllLogDrainsDrainsLogDrainsSchemas$outboundSchema),
   delivery: z.union([
     z.lazy(() => GetAllLogDrainsDelivery1$outboundSchema),
@@ -2495,13 +2374,6 @@ export const GetAllLogDrainsDrains2$outboundSchema: z.ZodType<
   sampling: z.array(
     z.lazy(() => GetAllLogDrainsDrainsLogDrainsSampling$outboundSchema),
   ).optional(),
-  teamId: z.nullable(z.string()).optional(),
-  status: GetAllLogDrainsDrainsStatus$outboundSchema.optional(),
-  disabledAt: z.number().optional(),
-  disabledReason: GetAllLogDrainsDrainsLogDrainsDisabledReason$outboundSchema
-    .optional(),
-  disabledBy: z.string().optional(),
-  firstErrorTimestamp: z.number().optional(),
   source: z.union([
     z.lazy(() => GetAllLogDrainsSource1$outboundSchema),
     z.lazy(() => GetAllLogDrainsSource2$outboundSchema),
@@ -2536,6 +2408,25 @@ export function getAllLogDrainsDrains2FromJSON(
     `Failed to parse 'GetAllLogDrainsDrains2' from JSON`,
   );
 }
+
+/** @internal */
+export const GetAllLogDrainsDrainsLogDrainsStatus$inboundSchema:
+  z.ZodNativeEnum<typeof GetAllLogDrainsDrainsLogDrainsStatus> = z.nativeEnum(
+    GetAllLogDrainsDrainsLogDrainsStatus,
+  );
+/** @internal */
+export const GetAllLogDrainsDrainsLogDrainsStatus$outboundSchema:
+  z.ZodNativeEnum<typeof GetAllLogDrainsDrainsLogDrainsStatus> =
+    GetAllLogDrainsDrainsLogDrainsStatus$inboundSchema;
+
+/** @internal */
+export const GetAllLogDrainsDrainsDisabledReason$inboundSchema: z.ZodNativeEnum<
+  typeof GetAllLogDrainsDrainsDisabledReason
+> = z.nativeEnum(GetAllLogDrainsDrainsDisabledReason);
+/** @internal */
+export const GetAllLogDrainsDrainsDisabledReason$outboundSchema:
+  z.ZodNativeEnum<typeof GetAllLogDrainsDrainsDisabledReason> =
+    GetAllLogDrainsDrainsDisabledReason$inboundSchema;
 
 /** @internal */
 export const GetAllLogDrainsDrainsLog$inboundSchema: z.ZodType<
@@ -3380,25 +3271,6 @@ export function getAllLogDrainsDrainsSamplingFromJSON(
 }
 
 /** @internal */
-export const GetAllLogDrainsDrainsLogDrainsStatus$inboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsDrainsLogDrainsStatus> = z.nativeEnum(
-    GetAllLogDrainsDrainsLogDrainsStatus,
-  );
-/** @internal */
-export const GetAllLogDrainsDrainsLogDrainsStatus$outboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsDrainsLogDrainsStatus> =
-    GetAllLogDrainsDrainsLogDrainsStatus$inboundSchema;
-
-/** @internal */
-export const GetAllLogDrainsDrainsDisabledReason$inboundSchema: z.ZodNativeEnum<
-  typeof GetAllLogDrainsDrainsDisabledReason
-> = z.nativeEnum(GetAllLogDrainsDrainsDisabledReason);
-/** @internal */
-export const GetAllLogDrainsDrainsDisabledReason$outboundSchema:
-  z.ZodNativeEnum<typeof GetAllLogDrainsDrainsDisabledReason> =
-    GetAllLogDrainsDrainsDisabledReason$inboundSchema;
-
-/** @internal */
 export const GetAllLogDrainsSourceLogDrains2$inboundSchema: z.ZodType<
   GetAllLogDrainsSourceLogDrains2,
   z.ZodTypeDef,
@@ -3981,11 +3853,19 @@ export const GetAllLogDrainsDrains1$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: types.string(),
-  ownerId: types.string(),
-  name: types.string(),
   createdAt: types.number(),
   updatedAt: types.number(),
   projectIds: types.optional(z.array(types.string())),
+  name: types.string(),
+  teamId: z.nullable(types.string()).optional(),
+  ownerId: types.string(),
+  status: types.optional(GetAllLogDrainsDrainsLogDrainsStatus$inboundSchema),
+  firstErrorTimestamp: types.optional(types.number()),
+  disabledAt: types.optional(types.number()),
+  disabledBy: types.optional(types.string()),
+  disabledReason: types.optional(
+    GetAllLogDrainsDrainsDisabledReason$inboundSchema,
+  ),
   schemas: z.lazy(() => GetAllLogDrainsDrainsSchemas$inboundSchema),
   delivery: z.union([
     z.lazy(() => GetAllLogDrainsDeliveryLogDrains1$inboundSchema),
@@ -3996,14 +3876,6 @@ export const GetAllLogDrainsDrains1$inboundSchema: z.ZodType<
   sampling: types.optional(
     z.array(z.lazy(() => GetAllLogDrainsDrainsSampling$inboundSchema)),
   ),
-  teamId: z.nullable(types.string()).optional(),
-  status: types.optional(GetAllLogDrainsDrainsLogDrainsStatus$inboundSchema),
-  disabledAt: types.optional(types.number()),
-  disabledReason: types.optional(
-    GetAllLogDrainsDrainsDisabledReason$inboundSchema,
-  ),
-  disabledBy: types.optional(types.string()),
-  firstErrorTimestamp: types.optional(types.number()),
   source: z.union([
     z.lazy(() => GetAllLogDrainsSourceLogDrains1$inboundSchema),
     z.lazy(() => GetAllLogDrainsSourceLogDrains2$inboundSchema),
@@ -4019,11 +3891,17 @@ export const GetAllLogDrainsDrains1$inboundSchema: z.ZodType<
 /** @internal */
 export type GetAllLogDrainsDrains1$Outbound = {
   id: string;
-  ownerId: string;
-  name: string;
   createdAt: number;
   updatedAt: number;
   projectIds?: Array<string> | undefined;
+  name: string;
+  teamId?: string | null | undefined;
+  ownerId: string;
+  status?: string | undefined;
+  firstErrorTimestamp?: number | undefined;
+  disabledAt?: number | undefined;
+  disabledBy?: string | undefined;
+  disabledReason?: string | undefined;
   schemas: GetAllLogDrainsDrainsSchemas$Outbound;
   delivery:
     | GetAllLogDrainsDeliveryLogDrains1$Outbound
@@ -4031,12 +3909,6 @@ export type GetAllLogDrainsDrains1$Outbound = {
     | GetAllLogDrainsDeliveryLogDrains3$Outbound
     | GetAllLogDrainsDeliveryLogDrains4$Outbound;
   sampling?: Array<GetAllLogDrainsDrainsSampling$Outbound> | undefined;
-  teamId?: string | null | undefined;
-  status?: string | undefined;
-  disabledAt?: number | undefined;
-  disabledReason?: string | undefined;
-  disabledBy?: string | undefined;
-  firstErrorTimestamp?: number | undefined;
   source:
     | GetAllLogDrainsSourceLogDrains1$Outbound
     | GetAllLogDrainsSourceLogDrains2$Outbound;
@@ -4054,11 +3926,17 @@ export const GetAllLogDrainsDrains1$outboundSchema: z.ZodType<
   GetAllLogDrainsDrains1
 > = z.object({
   id: z.string(),
-  ownerId: z.string(),
-  name: z.string(),
   createdAt: z.number(),
   updatedAt: z.number(),
   projectIds: z.array(z.string()).optional(),
+  name: z.string(),
+  teamId: z.nullable(z.string()).optional(),
+  ownerId: z.string(),
+  status: GetAllLogDrainsDrainsLogDrainsStatus$outboundSchema.optional(),
+  firstErrorTimestamp: z.number().optional(),
+  disabledAt: z.number().optional(),
+  disabledBy: z.string().optional(),
+  disabledReason: GetAllLogDrainsDrainsDisabledReason$outboundSchema.optional(),
   schemas: z.lazy(() => GetAllLogDrainsDrainsSchemas$outboundSchema),
   delivery: z.union([
     z.lazy(() => GetAllLogDrainsDeliveryLogDrains1$outboundSchema),
@@ -4068,12 +3946,6 @@ export const GetAllLogDrainsDrains1$outboundSchema: z.ZodType<
   ]),
   sampling: z.array(z.lazy(() => GetAllLogDrainsDrainsSampling$outboundSchema))
     .optional(),
-  teamId: z.nullable(z.string()).optional(),
-  status: GetAllLogDrainsDrainsLogDrainsStatus$outboundSchema.optional(),
-  disabledAt: z.number().optional(),
-  disabledReason: GetAllLogDrainsDrainsDisabledReason$outboundSchema.optional(),
-  disabledBy: z.string().optional(),
-  firstErrorTimestamp: z.number().optional(),
   source: z.union([
     z.lazy(() => GetAllLogDrainsSourceLogDrains1$outboundSchema),
     z.lazy(() => GetAllLogDrainsSourceLogDrains2$outboundSchema),
@@ -4144,8 +4016,8 @@ export function responseBodyDrainsFromJSON(
 }
 
 /** @internal */
-export const GetAllLogDrainsResponseBody1$inboundSchema: z.ZodType<
-  GetAllLogDrainsResponseBody1,
+export const GetAllLogDrainsResponseBody2$inboundSchema: z.ZodType<
+  GetAllLogDrainsResponseBody2,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -4155,10 +4027,133 @@ export const GetAllLogDrainsResponseBody1$inboundSchema: z.ZodType<
   ]),
 });
 /** @internal */
-export type GetAllLogDrainsResponseBody1$Outbound = {
+export type GetAllLogDrainsResponseBody2$Outbound = {
   drains:
     | Array<GetAllLogDrainsDrains1$Outbound>
     | Array<GetAllLogDrainsDrains2$Outbound>;
+};
+
+/** @internal */
+export const GetAllLogDrainsResponseBody2$outboundSchema: z.ZodType<
+  GetAllLogDrainsResponseBody2$Outbound,
+  z.ZodTypeDef,
+  GetAllLogDrainsResponseBody2
+> = z.object({
+  drains: smartUnion([
+    z.array(z.lazy(() => GetAllLogDrainsDrains1$outboundSchema)),
+    z.array(z.lazy(() => GetAllLogDrainsDrains2$outboundSchema)),
+  ]),
+});
+
+export function getAllLogDrainsResponseBody2ToJSON(
+  getAllLogDrainsResponseBody2: GetAllLogDrainsResponseBody2,
+): string {
+  return JSON.stringify(
+    GetAllLogDrainsResponseBody2$outboundSchema.parse(
+      getAllLogDrainsResponseBody2,
+    ),
+  );
+}
+export function getAllLogDrainsResponseBody2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllLogDrainsResponseBody2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAllLogDrainsResponseBody2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllLogDrainsResponseBody2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetAllLogDrainsResponseBodyFramework$inboundSchema:
+  z.ZodNativeEnum<typeof GetAllLogDrainsResponseBodyFramework> = z.nativeEnum(
+    GetAllLogDrainsResponseBodyFramework,
+  );
+/** @internal */
+export const GetAllLogDrainsResponseBodyFramework$outboundSchema:
+  z.ZodNativeEnum<typeof GetAllLogDrainsResponseBodyFramework> =
+    GetAllLogDrainsResponseBodyFramework$inboundSchema;
+
+/** @internal */
+export const ResponseBodyProjectsMetadata$inboundSchema: z.ZodType<
+  ResponseBodyProjectsMetadata,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: types.string(),
+  name: types.string(),
+  framework: z.nullable(GetAllLogDrainsResponseBodyFramework$inboundSchema)
+    .optional(),
+  latestDeployment: types.optional(types.string()),
+});
+/** @internal */
+export type ResponseBodyProjectsMetadata$Outbound = {
+  id: string;
+  name: string;
+  framework?: string | null | undefined;
+  latestDeployment?: string | undefined;
+};
+
+/** @internal */
+export const ResponseBodyProjectsMetadata$outboundSchema: z.ZodType<
+  ResponseBodyProjectsMetadata$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyProjectsMetadata
+> = z.object({
+  id: z.string(),
+  name: z.string(),
+  framework: z.nullable(GetAllLogDrainsResponseBodyFramework$outboundSchema)
+    .optional(),
+  latestDeployment: z.string().optional(),
+});
+
+export function responseBodyProjectsMetadataToJSON(
+  responseBodyProjectsMetadata: ResponseBodyProjectsMetadata,
+): string {
+  return JSON.stringify(
+    ResponseBodyProjectsMetadata$outboundSchema.parse(
+      responseBodyProjectsMetadata,
+    ),
+  );
+}
+export function responseBodyProjectsMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyProjectsMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyProjectsMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyProjectsMetadata' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetAllLogDrainsResponseBody1$inboundSchema: z.ZodType<
+  GetAllLogDrainsResponseBody1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdFrom: types.string(),
+  clientId: types.optional(types.string()),
+  configurationId: types.optional(types.string()),
+  projectsMetadata: z.nullable(
+    z.array(z.lazy(() => ResponseBodyProjectsMetadata$inboundSchema)),
+  ).optional(),
+  integrationIcon: types.optional(types.string()),
+  integrationConfigurationUri: types.optional(types.string()),
+  integrationWebsite: types.optional(types.string()),
+});
+/** @internal */
+export type GetAllLogDrainsResponseBody1$Outbound = {
+  createdFrom: string;
+  clientId?: string | undefined;
+  configurationId?: string | undefined;
+  projectsMetadata?:
+    | Array<ResponseBodyProjectsMetadata$Outbound>
+    | null
+    | undefined;
+  integrationIcon?: string | undefined;
+  integrationConfigurationUri?: string | undefined;
+  integrationWebsite?: string | undefined;
 };
 
 /** @internal */
@@ -4167,10 +4162,15 @@ export const GetAllLogDrainsResponseBody1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsResponseBody1
 > = z.object({
-  drains: smartUnion([
-    z.array(z.lazy(() => GetAllLogDrainsDrains1$outboundSchema)),
-    z.array(z.lazy(() => GetAllLogDrainsDrains2$outboundSchema)),
-  ]),
+  createdFrom: z.string(),
+  clientId: z.string().optional(),
+  configurationId: z.string().optional(),
+  projectsMetadata: z.nullable(
+    z.array(z.lazy(() => ResponseBodyProjectsMetadata$outboundSchema)),
+  ).optional(),
+  integrationIcon: z.string().optional(),
+  integrationConfigurationUri: z.string().optional(),
+  integrationWebsite: z.string().optional(),
 });
 
 export function getAllLogDrainsResponseBody1ToJSON(
@@ -4198,13 +4198,13 @@ export const GetAllLogDrainsResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  z.lazy(() => GetAllLogDrainsResponseBody1$inboundSchema),
-  z.array(z.lazy(() => GetAllLogDrainsResponseBody2$inboundSchema)),
+  z.lazy(() => GetAllLogDrainsResponseBody2$inboundSchema),
+  z.array(z.lazy(() => GetAllLogDrainsResponseBody1$inboundSchema)),
 ]);
 /** @internal */
 export type GetAllLogDrainsResponseBody$Outbound =
-  | GetAllLogDrainsResponseBody1$Outbound
-  | Array<GetAllLogDrainsResponseBody2$Outbound>;
+  | GetAllLogDrainsResponseBody2$Outbound
+  | Array<GetAllLogDrainsResponseBody1$Outbound>;
 
 /** @internal */
 export const GetAllLogDrainsResponseBody$outboundSchema: z.ZodType<
@@ -4212,8 +4212,8 @@ export const GetAllLogDrainsResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllLogDrainsResponseBody
 > = smartUnion([
-  z.lazy(() => GetAllLogDrainsResponseBody1$outboundSchema),
-  z.array(z.lazy(() => GetAllLogDrainsResponseBody2$outboundSchema)),
+  z.lazy(() => GetAllLogDrainsResponseBody2$outboundSchema),
+  z.array(z.lazy(() => GetAllLogDrainsResponseBody1$outboundSchema)),
 ]);
 
 export function getAllLogDrainsResponseBodyToJSON(

@@ -31,13 +31,13 @@ test("Dns Update Record", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
-    creator: "<value>",
-    domain: "raw-scorpion.net",
     id: "<id>",
     name: "<value>",
-    recordType: "AAAA",
     type: "record",
     value: "<value>",
+    creator: "<value>",
+    domain: "raw-scorpion.net",
+    recordType: "AAAA",
   });
 });
 

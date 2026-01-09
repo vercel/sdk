@@ -59,8 +59,8 @@ export type AddBypassIpRequest = {
 };
 
 export const ResponseBodyAction = {
-  Block: "block",
   Bypass: "bypass",
+  Block: "block",
 } as const;
 export type ResponseBodyAction = ClosedEnum<typeof ResponseBodyAction>;
 

@@ -23,13 +23,3 @@ const value: models.GetProjectEnvResponseBody2 = {
 };
 ```
 
-### `models.GetProjectEnvResponseBody3`
-
-```typescript
-const value: models.GetProjectEnvResponseBody3 = {
-  type: "encrypted",
-  value: "<value>",
-  key: "<key>",
-};
-```
-

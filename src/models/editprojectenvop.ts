@@ -84,7 +84,16 @@ export type EditProjectEnvRequest = {
   requestBody: EditProjectEnvRequestBody;
 };
 
-export type EditProjectEnvResponseBody2 = {};
+export const EditProjectEnvProjectsType = {
+  Secret: "secret",
+  System: "system",
+  Encrypted: "encrypted",
+  Plain: "plain",
+  Sensitive: "sensitive",
+} as const;
+export type EditProjectEnvProjectsType = ClosedEnum<
+  typeof EditProjectEnvProjectsType
+>;
 
 export const EditProjectEnvTarget2 = {
   Production: "production",
@@ -93,27 +102,23 @@ export const EditProjectEnvTarget2 = {
 } as const;
 export type EditProjectEnvTarget2 = ClosedEnum<typeof EditProjectEnvTarget2>;
 
-export type EditProjectEnvResponseBodyTarget =
-  | Array<string>
+export const EditProjectEnvTarget1 = {
+  Production: "production",
+  Preview: "preview",
+  Development: "development",
+} as const;
+export type EditProjectEnvTarget1 = ClosedEnum<typeof EditProjectEnvTarget1>;
+
+export type EditProjectEnvProjectsTarget =
+  | Array<EditProjectEnvTarget1>
   | EditProjectEnvTarget2;
 
-export const EditProjectEnvResponseBodyType = {
-  Secret: "secret",
-  System: "system",
-  Encrypted: "encrypted",
-  Plain: "plain",
-  Sensitive: "sensitive",
-} as const;
-export type EditProjectEnvResponseBodyType = ClosedEnum<
-  typeof EditProjectEnvResponseBodyType
->;
-
-export type EditProjectEnvContentHint15 = {
+export type ContentHint15 = {
   type: "flags-connection-string";
   projectId: string;
 };
 
-export type EditProjectEnvContentHint14 = {
+export type ContentHint14 = {
   type: "integration-store-secret";
   storeId: string;
   integrationId: string;
@@ -121,160 +126,153 @@ export type EditProjectEnvContentHint14 = {
   integrationConfigurationId: string;
 };
 
-export type EditProjectEnvContentHint13 = {
+export type ContentHint13 = {
   type: "postgres-url-no-ssl";
   storeId: string;
 };
 
-export type EditProjectEnvContentHint12 = {
+export type ContentHint12 = {
   type: "postgres-database";
   storeId: string;
 };
 
-export type EditProjectEnvContentHint11 = {
+export type ContentHint11 = {
   type: "postgres-password";
   storeId: string;
 };
 
-export type EditProjectEnvContentHint10 = {
+export type ContentHint10 = {
   type: "postgres-host";
   storeId: string;
 };
 
-export type EditProjectEnvContentHint9 = {
+export type ContentHint9 = {
   type: "postgres-user";
   storeId: string;
 };
 
-export type EditProjectEnvContentHint8 = {
+export type ContentHint8 = {
   type: "postgres-prisma-url";
   storeId: string;
 };
 
-export type EditProjectEnvContentHint7 = {
+export type ContentHint7 = {
   type: "postgres-url-non-pooling";
   storeId: string;
 };
 
-export type EditProjectEnvContentHint6 = {
+export type ContentHint6 = {
   type: "postgres-url";
   storeId: string;
 };
 
-export type EditProjectEnvContentHint5 = {
+export type ContentHint5 = {
   type: "blob-read-write-token";
   storeId: string;
 };
 
-export type EditProjectEnvContentHint4 = {
+export type ContentHint4 = {
   type: "redis-rest-api-read-only-token";
   storeId: string;
 };
 
-export type EditProjectEnvContentHint3 = {
+export type ContentHint3 = {
   type: "redis-rest-api-token";
   storeId: string;
 };
 
-export type EditProjectEnvContentHint2 = {
+export type ContentHint2 = {
   type: "redis-rest-api-url";
   storeId: string;
 };
 
-export type EditProjectEnvContentHint1 = {
+export type ContentHint1 = {
   type: "redis-url";
   storeId: string;
 };
 
-export type EditProjectEnvResponseBodyContentHint =
-  | EditProjectEnvContentHint1
-  | EditProjectEnvContentHint2
-  | EditProjectEnvContentHint3
-  | EditProjectEnvContentHint4
-  | EditProjectEnvContentHint5
-  | EditProjectEnvContentHint6
-  | EditProjectEnvContentHint7
-  | EditProjectEnvContentHint8
-  | EditProjectEnvContentHint9
-  | EditProjectEnvContentHint10
-  | EditProjectEnvContentHint11
-  | EditProjectEnvContentHint12
-  | EditProjectEnvContentHint13
-  | EditProjectEnvContentHint14
-  | EditProjectEnvContentHint15;
+export type ContentHint =
+  | ContentHint1
+  | ContentHint2
+  | ContentHint3
+  | ContentHint4
+  | ContentHint5
+  | ContentHint6
+  | ContentHint7
+  | ContentHint8
+  | ContentHint9
+  | ContentHint10
+  | ContentHint11
+  | ContentHint12
+  | ContentHint13
+  | ContentHint14
+  | ContentHint15;
 
-export const EditProjectEnvResponseBodyProjectsType = {
+export const EditProjectEnvProjectsResponseType = {
   FlagsSecret: "flags-secret",
 } as const;
-export type EditProjectEnvResponseBodyProjectsType = ClosedEnum<
-  typeof EditProjectEnvResponseBodyProjectsType
+export type EditProjectEnvProjectsResponseType = ClosedEnum<
+  typeof EditProjectEnvProjectsResponseType
 >;
 
 /**
  * Similar to `contentHints`, but should not be exposed to the user.
  */
-export type EditProjectEnvResponseBodyInternalContentHint = {
-  type: EditProjectEnvResponseBodyProjectsType;
+export type InternalContentHint = {
+  type: EditProjectEnvProjectsResponseType;
   /**
    * Contains the `value` of the env variable, encrypted with a special key to make decryption possible in the subscriber Lambda.
    */
   encryptedValue: string;
 };
 
-export type EditProjectEnvResponseBody1 = {
-  target?: Array<string> | EditProjectEnvTarget2 | undefined;
-  type: EditProjectEnvResponseBodyType;
+/**
+ * The environment variable was successfully edited
+ */
+export type EditProjectEnvResponseBody = {
+  type: EditProjectEnvProjectsType;
+  value: string;
+  edgeConfigId?: string | null | undefined;
+  edgeConfigTokenId?: string | null | undefined;
+  createdAt?: number | undefined;
+  updatedAt?: number | undefined;
+  createdBy?: string | null | undefined;
+  id?: string | undefined;
+  key: string;
+  target?: Array<EditProjectEnvTarget1> | EditProjectEnvTarget2 | undefined;
+  gitBranch?: string | undefined;
+  updatedBy?: string | null | undefined;
   /**
    * This is used to identify variables that have been migrated from type secret to sensitive.
    */
   sunsetSecretId?: string | undefined;
   decrypted?: boolean | undefined;
-  value: string;
-  id?: string | undefined;
-  key: string;
   configurationId?: string | null | undefined;
-  createdAt?: number | undefined;
-  updatedAt?: number | undefined;
-  createdBy?: string | null | undefined;
-  updatedBy?: string | null | undefined;
-  gitBranch?: string | undefined;
-  edgeConfigId?: string | null | undefined;
-  edgeConfigTokenId?: string | null | undefined;
   contentHint?:
-    | EditProjectEnvContentHint1
-    | EditProjectEnvContentHint2
-    | EditProjectEnvContentHint3
-    | EditProjectEnvContentHint4
-    | EditProjectEnvContentHint5
-    | EditProjectEnvContentHint6
-    | EditProjectEnvContentHint7
-    | EditProjectEnvContentHint8
-    | EditProjectEnvContentHint9
-    | EditProjectEnvContentHint10
-    | EditProjectEnvContentHint11
-    | EditProjectEnvContentHint12
-    | EditProjectEnvContentHint13
-    | EditProjectEnvContentHint14
-    | EditProjectEnvContentHint15
+    | ContentHint1
+    | ContentHint2
+    | ContentHint3
+    | ContentHint4
+    | ContentHint5
+    | ContentHint6
+    | ContentHint7
+    | ContentHint8
+    | ContentHint9
+    | ContentHint10
+    | ContentHint11
+    | ContentHint12
+    | ContentHint13
+    | ContentHint14
+    | ContentHint15
     | null
     | undefined;
   /**
    * Similar to `contentHints`, but should not be exposed to the user.
    */
-  internalContentHint?:
-    | EditProjectEnvResponseBodyInternalContentHint
-    | null
-    | undefined;
+  internalContentHint?: InternalContentHint | null | undefined;
   comment?: string | undefined;
   customEnvironmentIds?: Array<string> | undefined;
 };
-
-/**
- * The environment variable was successfully edited
- */
-export type EditProjectEnvResponseBody =
-  | EditProjectEnvResponseBody1
-  | EditProjectEnvResponseBody2;
 
 /** @internal */
 export const EditProjectEnvTarget$inboundSchema: z.ZodNativeEnum<
@@ -411,39 +409,13 @@ export function editProjectEnvRequestFromJSON(
 }
 
 /** @internal */
-export const EditProjectEnvResponseBody2$inboundSchema: z.ZodType<
-  EditProjectEnvResponseBody2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
+export const EditProjectEnvProjectsType$inboundSchema: z.ZodNativeEnum<
+  typeof EditProjectEnvProjectsType
+> = z.nativeEnum(EditProjectEnvProjectsType);
 /** @internal */
-export type EditProjectEnvResponseBody2$Outbound = {};
-
-/** @internal */
-export const EditProjectEnvResponseBody2$outboundSchema: z.ZodType<
-  EditProjectEnvResponseBody2$Outbound,
-  z.ZodTypeDef,
-  EditProjectEnvResponseBody2
-> = z.object({});
-
-export function editProjectEnvResponseBody2ToJSON(
-  editProjectEnvResponseBody2: EditProjectEnvResponseBody2,
-): string {
-  return JSON.stringify(
-    EditProjectEnvResponseBody2$outboundSchema.parse(
-      editProjectEnvResponseBody2,
-    ),
-  );
-}
-export function editProjectEnvResponseBody2FromJSON(
-  jsonString: string,
-): SafeParseResult<EditProjectEnvResponseBody2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => EditProjectEnvResponseBody2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EditProjectEnvResponseBody2' from JSON`,
-  );
-}
+export const EditProjectEnvProjectsType$outboundSchema: z.ZodNativeEnum<
+  typeof EditProjectEnvProjectsType
+> = EditProjectEnvProjectsType$inboundSchema;
 
 /** @internal */
 export const EditProjectEnvTarget2$inboundSchema: z.ZodNativeEnum<
@@ -455,52 +427,58 @@ export const EditProjectEnvTarget2$outboundSchema: z.ZodNativeEnum<
 > = EditProjectEnvTarget2$inboundSchema;
 
 /** @internal */
-export const EditProjectEnvResponseBodyTarget$inboundSchema: z.ZodType<
-  EditProjectEnvResponseBodyTarget,
+export const EditProjectEnvTarget1$inboundSchema: z.ZodNativeEnum<
+  typeof EditProjectEnvTarget1
+> = z.nativeEnum(EditProjectEnvTarget1);
+/** @internal */
+export const EditProjectEnvTarget1$outboundSchema: z.ZodNativeEnum<
+  typeof EditProjectEnvTarget1
+> = EditProjectEnvTarget1$inboundSchema;
+
+/** @internal */
+export const EditProjectEnvProjectsTarget$inboundSchema: z.ZodType<
+  EditProjectEnvProjectsTarget,
   z.ZodTypeDef,
   unknown
-> = smartUnion([z.array(types.string()), EditProjectEnvTarget2$inboundSchema]);
+> = smartUnion([
+  z.array(EditProjectEnvTarget1$inboundSchema),
+  EditProjectEnvTarget2$inboundSchema,
+]);
 /** @internal */
-export type EditProjectEnvResponseBodyTarget$Outbound = Array<string> | string;
+export type EditProjectEnvProjectsTarget$Outbound = Array<string> | string;
 
 /** @internal */
-export const EditProjectEnvResponseBodyTarget$outboundSchema: z.ZodType<
-  EditProjectEnvResponseBodyTarget$Outbound,
+export const EditProjectEnvProjectsTarget$outboundSchema: z.ZodType<
+  EditProjectEnvProjectsTarget$Outbound,
   z.ZodTypeDef,
-  EditProjectEnvResponseBodyTarget
-> = smartUnion([z.array(z.string()), EditProjectEnvTarget2$outboundSchema]);
+  EditProjectEnvProjectsTarget
+> = smartUnion([
+  z.array(EditProjectEnvTarget1$outboundSchema),
+  EditProjectEnvTarget2$outboundSchema,
+]);
 
-export function editProjectEnvResponseBodyTargetToJSON(
-  editProjectEnvResponseBodyTarget: EditProjectEnvResponseBodyTarget,
+export function editProjectEnvProjectsTargetToJSON(
+  editProjectEnvProjectsTarget: EditProjectEnvProjectsTarget,
 ): string {
   return JSON.stringify(
-    EditProjectEnvResponseBodyTarget$outboundSchema.parse(
-      editProjectEnvResponseBodyTarget,
+    EditProjectEnvProjectsTarget$outboundSchema.parse(
+      editProjectEnvProjectsTarget,
     ),
   );
 }
-export function editProjectEnvResponseBodyTargetFromJSON(
+export function editProjectEnvProjectsTargetFromJSON(
   jsonString: string,
-): SafeParseResult<EditProjectEnvResponseBodyTarget, SDKValidationError> {
+): SafeParseResult<EditProjectEnvProjectsTarget, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => EditProjectEnvResponseBodyTarget$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EditProjectEnvResponseBodyTarget' from JSON`,
+    (x) => EditProjectEnvProjectsTarget$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EditProjectEnvProjectsTarget' from JSON`,
   );
 }
 
 /** @internal */
-export const EditProjectEnvResponseBodyType$inboundSchema: z.ZodNativeEnum<
-  typeof EditProjectEnvResponseBodyType
-> = z.nativeEnum(EditProjectEnvResponseBodyType);
-/** @internal */
-export const EditProjectEnvResponseBodyType$outboundSchema: z.ZodNativeEnum<
-  typeof EditProjectEnvResponseBodyType
-> = EditProjectEnvResponseBodyType$inboundSchema;
-
-/** @internal */
-export const EditProjectEnvContentHint15$inboundSchema: z.ZodType<
-  EditProjectEnvContentHint15,
+export const ContentHint15$inboundSchema: z.ZodType<
+  ContentHint15,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -508,43 +486,37 @@ export const EditProjectEnvContentHint15$inboundSchema: z.ZodType<
   projectId: types.string(),
 });
 /** @internal */
-export type EditProjectEnvContentHint15$Outbound = {
+export type ContentHint15$Outbound = {
   type: "flags-connection-string";
   projectId: string;
 };
 
 /** @internal */
-export const EditProjectEnvContentHint15$outboundSchema: z.ZodType<
-  EditProjectEnvContentHint15$Outbound,
+export const ContentHint15$outboundSchema: z.ZodType<
+  ContentHint15$Outbound,
   z.ZodTypeDef,
-  EditProjectEnvContentHint15
+  ContentHint15
 > = z.object({
   type: z.literal("flags-connection-string"),
   projectId: z.string(),
 });
 
-export function editProjectEnvContentHint15ToJSON(
-  editProjectEnvContentHint15: EditProjectEnvContentHint15,
-): string {
-  return JSON.stringify(
-    EditProjectEnvContentHint15$outboundSchema.parse(
-      editProjectEnvContentHint15,
-    ),
-  );
+export function contentHint15ToJSON(contentHint15: ContentHint15): string {
+  return JSON.stringify(ContentHint15$outboundSchema.parse(contentHint15));
 }
-export function editProjectEnvContentHint15FromJSON(
+export function contentHint15FromJSON(
   jsonString: string,
-): SafeParseResult<EditProjectEnvContentHint15, SDKValidationError> {
+): SafeParseResult<ContentHint15, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => EditProjectEnvContentHint15$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EditProjectEnvContentHint15' from JSON`,
+    (x) => ContentHint15$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentHint15' from JSON`,
   );
 }
 
 /** @internal */
-export const EditProjectEnvContentHint14$inboundSchema: z.ZodType<
-  EditProjectEnvContentHint14,
+export const ContentHint14$inboundSchema: z.ZodType<
+  ContentHint14,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -555,7 +527,7 @@ export const EditProjectEnvContentHint14$inboundSchema: z.ZodType<
   integrationConfigurationId: types.string(),
 });
 /** @internal */
-export type EditProjectEnvContentHint14$Outbound = {
+export type ContentHint14$Outbound = {
   type: "integration-store-secret";
   storeId: string;
   integrationId: string;
@@ -564,10 +536,10 @@ export type EditProjectEnvContentHint14$Outbound = {
 };
 
 /** @internal */
-export const EditProjectEnvContentHint14$outboundSchema: z.ZodType<
-  EditProjectEnvContentHint14$Outbound,
+export const ContentHint14$outboundSchema: z.ZodType<
+  ContentHint14$Outbound,
   z.ZodTypeDef,
-  EditProjectEnvContentHint14
+  ContentHint14
 > = z.object({
   type: z.literal("integration-store-secret"),
   storeId: z.string(),
@@ -576,28 +548,22 @@ export const EditProjectEnvContentHint14$outboundSchema: z.ZodType<
   integrationConfigurationId: z.string(),
 });
 
-export function editProjectEnvContentHint14ToJSON(
-  editProjectEnvContentHint14: EditProjectEnvContentHint14,
-): string {
-  return JSON.stringify(
-    EditProjectEnvContentHint14$outboundSchema.parse(
-      editProjectEnvContentHint14,
-    ),
-  );
+export function contentHint14ToJSON(contentHint14: ContentHint14): string {
+  return JSON.stringify(ContentHint14$outboundSchema.parse(contentHint14));
 }
-export function editProjectEnvContentHint14FromJSON(
+export function contentHint14FromJSON(
   jsonString: string,
-): SafeParseResult<EditProjectEnvContentHint14, SDKValidationError> {
+): SafeParseResult<ContentHint14, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => EditProjectEnvContentHint14$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EditProjectEnvContentHint14' from JSON`,
+    (x) => ContentHint14$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentHint14' from JSON`,
   );
 }
 
 /** @internal */
-export const EditProjectEnvContentHint13$inboundSchema: z.ZodType<
-  EditProjectEnvContentHint13,
+export const ContentHint13$inboundSchema: z.ZodType<
+  ContentHint13,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -605,43 +571,37 @@ export const EditProjectEnvContentHint13$inboundSchema: z.ZodType<
   storeId: types.string(),
 });
 /** @internal */
-export type EditProjectEnvContentHint13$Outbound = {
+export type ContentHint13$Outbound = {
   type: "postgres-url-no-ssl";
   storeId: string;
 };
 
 /** @internal */
-export const EditProjectEnvContentHint13$outboundSchema: z.ZodType<
-  EditProjectEnvContentHint13$Outbound,
+export const ContentHint13$outboundSchema: z.ZodType<
+  ContentHint13$Outbound,
   z.ZodTypeDef,
-  EditProjectEnvContentHint13
+  ContentHint13
 > = z.object({
   type: z.literal("postgres-url-no-ssl"),
   storeId: z.string(),
 });
 
-export function editProjectEnvContentHint13ToJSON(
-  editProjectEnvContentHint13: EditProjectEnvContentHint13,
-): string {
-  return JSON.stringify(
-    EditProjectEnvContentHint13$outboundSchema.parse(
-      editProjectEnvContentHint13,
-    ),
-  );
+export function contentHint13ToJSON(contentHint13: ContentHint13): string {
+  return JSON.stringify(ContentHint13$outboundSchema.parse(contentHint13));
 }
-export function editProjectEnvContentHint13FromJSON(
+export function contentHint13FromJSON(
   jsonString: string,
-): SafeParseResult<EditProjectEnvContentHint13, SDKValidationError> {
+): SafeParseResult<ContentHint13, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => EditProjectEnvContentHint13$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EditProjectEnvContentHint13' from JSON`,
+    (x) => ContentHint13$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentHint13' from JSON`,
   );
 }
 
 /** @internal */
-export const EditProjectEnvContentHint12$inboundSchema: z.ZodType<
-  EditProjectEnvContentHint12,
+export const ContentHint12$inboundSchema: z.ZodType<
+  ContentHint12,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -649,43 +609,37 @@ export const EditProjectEnvContentHint12$inboundSchema: z.ZodType<
   storeId: types.string(),
 });
 /** @internal */
-export type EditProjectEnvContentHint12$Outbound = {
+export type ContentHint12$Outbound = {
   type: "postgres-database";
   storeId: string;
 };
 
 /** @internal */
-export const EditProjectEnvContentHint12$outboundSchema: z.ZodType<
-  EditProjectEnvContentHint12$Outbound,
+export const ContentHint12$outboundSchema: z.ZodType<
+  ContentHint12$Outbound,
   z.ZodTypeDef,
-  EditProjectEnvContentHint12
+  ContentHint12
 > = z.object({
   type: z.literal("postgres-database"),
   storeId: z.string(),
 });
 
-export function editProjectEnvContentHint12ToJSON(
-  editProjectEnvContentHint12: EditProjectEnvContentHint12,
-): string {
-  return JSON.stringify(
-    EditProjectEnvContentHint12$outboundSchema.parse(
-      editProjectEnvContentHint12,
-    ),
-  );
+export function contentHint12ToJSON(contentHint12: ContentHint12): string {
+  return JSON.stringify(ContentHint12$outboundSchema.parse(contentHint12));
 }
-export function editProjectEnvContentHint12FromJSON(
+export function contentHint12FromJSON(
   jsonString: string,
-): SafeParseResult<EditProjectEnvContentHint12, SDKValidationError> {
+): SafeParseResult<ContentHint12, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => EditProjectEnvContentHint12$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EditProjectEnvContentHint12' from JSON`,
+    (x) => ContentHint12$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentHint12' from JSON`,
   );
 }
 
 /** @internal */
-export const EditProjectEnvContentHint11$inboundSchema: z.ZodType<
-  EditProjectEnvContentHint11,
+export const ContentHint11$inboundSchema: z.ZodType<
+  ContentHint11,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -693,43 +647,37 @@ export const EditProjectEnvContentHint11$inboundSchema: z.ZodType<
   storeId: types.string(),
 });
 /** @internal */
-export type EditProjectEnvContentHint11$Outbound = {
+export type ContentHint11$Outbound = {
   type: "postgres-password";
   storeId: string;
 };
 
 /** @internal */
-export const EditProjectEnvContentHint11$outboundSchema: z.ZodType<
-  EditProjectEnvContentHint11$Outbound,
+export const ContentHint11$outboundSchema: z.ZodType<
+  ContentHint11$Outbound,
   z.ZodTypeDef,
-  EditProjectEnvContentHint11
+  ContentHint11
 > = z.object({
   type: z.literal("postgres-password"),
   storeId: z.string(),
 });
 
-export function editProjectEnvContentHint11ToJSON(
-  editProjectEnvContentHint11: EditProjectEnvContentHint11,
-): string {
-  return JSON.stringify(
-    EditProjectEnvContentHint11$outboundSchema.parse(
-      editProjectEnvContentHint11,
-    ),
-  );
+export function contentHint11ToJSON(contentHint11: ContentHint11): string {
+  return JSON.stringify(ContentHint11$outboundSchema.parse(contentHint11));
 }
-export function editProjectEnvContentHint11FromJSON(
+export function contentHint11FromJSON(
   jsonString: string,
-): SafeParseResult<EditProjectEnvContentHint11, SDKValidationError> {
+): SafeParseResult<ContentHint11, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => EditProjectEnvContentHint11$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EditProjectEnvContentHint11' from JSON`,
+    (x) => ContentHint11$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentHint11' from JSON`,
   );
 }
 
 /** @internal */
-export const EditProjectEnvContentHint10$inboundSchema: z.ZodType<
-  EditProjectEnvContentHint10,
+export const ContentHint10$inboundSchema: z.ZodType<
+  ContentHint10,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -737,43 +685,37 @@ export const EditProjectEnvContentHint10$inboundSchema: z.ZodType<
   storeId: types.string(),
 });
 /** @internal */
-export type EditProjectEnvContentHint10$Outbound = {
+export type ContentHint10$Outbound = {
   type: "postgres-host";
   storeId: string;
 };
 
 /** @internal */
-export const EditProjectEnvContentHint10$outboundSchema: z.ZodType<
-  EditProjectEnvContentHint10$Outbound,
+export const ContentHint10$outboundSchema: z.ZodType<
+  ContentHint10$Outbound,
   z.ZodTypeDef,
-  EditProjectEnvContentHint10
+  ContentHint10
 > = z.object({
   type: z.literal("postgres-host"),
   storeId: z.string(),
 });
 
-export function editProjectEnvContentHint10ToJSON(
-  editProjectEnvContentHint10: EditProjectEnvContentHint10,
-): string {
-  return JSON.stringify(
-    EditProjectEnvContentHint10$outboundSchema.parse(
-      editProjectEnvContentHint10,
-    ),
-  );
+export function contentHint10ToJSON(contentHint10: ContentHint10): string {
+  return JSON.stringify(ContentHint10$outboundSchema.parse(contentHint10));
 }
-export function editProjectEnvContentHint10FromJSON(
+export function contentHint10FromJSON(
   jsonString: string,
-): SafeParseResult<EditProjectEnvContentHint10, SDKValidationError> {
+): SafeParseResult<ContentHint10, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => EditProjectEnvContentHint10$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EditProjectEnvContentHint10' from JSON`,
+    (x) => ContentHint10$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentHint10' from JSON`,
   );
 }
 
 /** @internal */
-export const EditProjectEnvContentHint9$inboundSchema: z.ZodType<
-  EditProjectEnvContentHint9,
+export const ContentHint9$inboundSchema: z.ZodType<
+  ContentHint9,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -781,41 +723,37 @@ export const EditProjectEnvContentHint9$inboundSchema: z.ZodType<
   storeId: types.string(),
 });
 /** @internal */
-export type EditProjectEnvContentHint9$Outbound = {
+export type ContentHint9$Outbound = {
   type: "postgres-user";
   storeId: string;
 };
 
 /** @internal */
-export const EditProjectEnvContentHint9$outboundSchema: z.ZodType<
-  EditProjectEnvContentHint9$Outbound,
+export const ContentHint9$outboundSchema: z.ZodType<
+  ContentHint9$Outbound,
   z.ZodTypeDef,
-  EditProjectEnvContentHint9
+  ContentHint9
 > = z.object({
   type: z.literal("postgres-user"),
   storeId: z.string(),
 });
 
-export function editProjectEnvContentHint9ToJSON(
-  editProjectEnvContentHint9: EditProjectEnvContentHint9,
-): string {
-  return JSON.stringify(
-    EditProjectEnvContentHint9$outboundSchema.parse(editProjectEnvContentHint9),
-  );
+export function contentHint9ToJSON(contentHint9: ContentHint9): string {
+  return JSON.stringify(ContentHint9$outboundSchema.parse(contentHint9));
 }
-export function editProjectEnvContentHint9FromJSON(
+export function contentHint9FromJSON(
   jsonString: string,
-): SafeParseResult<EditProjectEnvContentHint9, SDKValidationError> {
+): SafeParseResult<ContentHint9, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => EditProjectEnvContentHint9$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EditProjectEnvContentHint9' from JSON`,
+    (x) => ContentHint9$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentHint9' from JSON`,
   );
 }
 
 /** @internal */
-export const EditProjectEnvContentHint8$inboundSchema: z.ZodType<
-  EditProjectEnvContentHint8,
+export const ContentHint8$inboundSchema: z.ZodType<
+  ContentHint8,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -823,41 +761,37 @@ export const EditProjectEnvContentHint8$inboundSchema: z.ZodType<
   storeId: types.string(),
 });
 /** @internal */
-export type EditProjectEnvContentHint8$Outbound = {
+export type ContentHint8$Outbound = {
   type: "postgres-prisma-url";
   storeId: string;
 };
 
 /** @internal */
-export const EditProjectEnvContentHint8$outboundSchema: z.ZodType<
-  EditProjectEnvContentHint8$Outbound,
+export const ContentHint8$outboundSchema: z.ZodType<
+  ContentHint8$Outbound,
   z.ZodTypeDef,
-  EditProjectEnvContentHint8
+  ContentHint8
 > = z.object({
   type: z.literal("postgres-prisma-url"),
   storeId: z.string(),
 });
 
-export function editProjectEnvContentHint8ToJSON(
-  editProjectEnvContentHint8: EditProjectEnvContentHint8,
-): string {
-  return JSON.stringify(
-    EditProjectEnvContentHint8$outboundSchema.parse(editProjectEnvContentHint8),
-  );
+export function contentHint8ToJSON(contentHint8: ContentHint8): string {
+  return JSON.stringify(ContentHint8$outboundSchema.parse(contentHint8));
 }
-export function editProjectEnvContentHint8FromJSON(
+export function contentHint8FromJSON(
   jsonString: string,
-): SafeParseResult<EditProjectEnvContentHint8, SDKValidationError> {
+): SafeParseResult<ContentHint8, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => EditProjectEnvContentHint8$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EditProjectEnvContentHint8' from JSON`,
+    (x) => ContentHint8$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentHint8' from JSON`,
   );
 }
 
 /** @internal */
-export const EditProjectEnvContentHint7$inboundSchema: z.ZodType<
-  EditProjectEnvContentHint7,
+export const ContentHint7$inboundSchema: z.ZodType<
+  ContentHint7,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -865,41 +799,37 @@ export const EditProjectEnvContentHint7$inboundSchema: z.ZodType<
   storeId: types.string(),
 });
 /** @internal */
-export type EditProjectEnvContentHint7$Outbound = {
+export type ContentHint7$Outbound = {
   type: "postgres-url-non-pooling";
   storeId: string;
 };
 
 /** @internal */
-export const EditProjectEnvContentHint7$outboundSchema: z.ZodType<
-  EditProjectEnvContentHint7$Outbound,
+export const ContentHint7$outboundSchema: z.ZodType<
+  ContentHint7$Outbound,
   z.ZodTypeDef,
-  EditProjectEnvContentHint7
+  ContentHint7
 > = z.object({
   type: z.literal("postgres-url-non-pooling"),
   storeId: z.string(),
 });
 
-export function editProjectEnvContentHint7ToJSON(
-  editProjectEnvContentHint7: EditProjectEnvContentHint7,
-): string {
-  return JSON.stringify(
-    EditProjectEnvContentHint7$outboundSchema.parse(editProjectEnvContentHint7),
-  );
+export function contentHint7ToJSON(contentHint7: ContentHint7): string {
+  return JSON.stringify(ContentHint7$outboundSchema.parse(contentHint7));
 }
-export function editProjectEnvContentHint7FromJSON(
+export function contentHint7FromJSON(
   jsonString: string,
-): SafeParseResult<EditProjectEnvContentHint7, SDKValidationError> {
+): SafeParseResult<ContentHint7, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => EditProjectEnvContentHint7$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EditProjectEnvContentHint7' from JSON`,
+    (x) => ContentHint7$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentHint7' from JSON`,
   );
 }
 
 /** @internal */
-export const EditProjectEnvContentHint6$inboundSchema: z.ZodType<
-  EditProjectEnvContentHint6,
+export const ContentHint6$inboundSchema: z.ZodType<
+  ContentHint6,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -907,41 +837,37 @@ export const EditProjectEnvContentHint6$inboundSchema: z.ZodType<
   storeId: types.string(),
 });
 /** @internal */
-export type EditProjectEnvContentHint6$Outbound = {
+export type ContentHint6$Outbound = {
   type: "postgres-url";
   storeId: string;
 };
 
 /** @internal */
-export const EditProjectEnvContentHint6$outboundSchema: z.ZodType<
-  EditProjectEnvContentHint6$Outbound,
+export const ContentHint6$outboundSchema: z.ZodType<
+  ContentHint6$Outbound,
   z.ZodTypeDef,
-  EditProjectEnvContentHint6
+  ContentHint6
 > = z.object({
   type: z.literal("postgres-url"),
   storeId: z.string(),
 });
 
-export function editProjectEnvContentHint6ToJSON(
-  editProjectEnvContentHint6: EditProjectEnvContentHint6,
-): string {
-  return JSON.stringify(
-    EditProjectEnvContentHint6$outboundSchema.parse(editProjectEnvContentHint6),
-  );
+export function contentHint6ToJSON(contentHint6: ContentHint6): string {
+  return JSON.stringify(ContentHint6$outboundSchema.parse(contentHint6));
 }
-export function editProjectEnvContentHint6FromJSON(
+export function contentHint6FromJSON(
   jsonString: string,
-): SafeParseResult<EditProjectEnvContentHint6, SDKValidationError> {
+): SafeParseResult<ContentHint6, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => EditProjectEnvContentHint6$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EditProjectEnvContentHint6' from JSON`,
+    (x) => ContentHint6$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentHint6' from JSON`,
   );
 }
 
 /** @internal */
-export const EditProjectEnvContentHint5$inboundSchema: z.ZodType<
-  EditProjectEnvContentHint5,
+export const ContentHint5$inboundSchema: z.ZodType<
+  ContentHint5,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -949,41 +875,37 @@ export const EditProjectEnvContentHint5$inboundSchema: z.ZodType<
   storeId: types.string(),
 });
 /** @internal */
-export type EditProjectEnvContentHint5$Outbound = {
+export type ContentHint5$Outbound = {
   type: "blob-read-write-token";
   storeId: string;
 };
 
 /** @internal */
-export const EditProjectEnvContentHint5$outboundSchema: z.ZodType<
-  EditProjectEnvContentHint5$Outbound,
+export const ContentHint5$outboundSchema: z.ZodType<
+  ContentHint5$Outbound,
   z.ZodTypeDef,
-  EditProjectEnvContentHint5
+  ContentHint5
 > = z.object({
   type: z.literal("blob-read-write-token"),
   storeId: z.string(),
 });
 
-export function editProjectEnvContentHint5ToJSON(
-  editProjectEnvContentHint5: EditProjectEnvContentHint5,
-): string {
-  return JSON.stringify(
-    EditProjectEnvContentHint5$outboundSchema.parse(editProjectEnvContentHint5),
-  );
+export function contentHint5ToJSON(contentHint5: ContentHint5): string {
+  return JSON.stringify(ContentHint5$outboundSchema.parse(contentHint5));
 }
-export function editProjectEnvContentHint5FromJSON(
+export function contentHint5FromJSON(
   jsonString: string,
-): SafeParseResult<EditProjectEnvContentHint5, SDKValidationError> {
+): SafeParseResult<ContentHint5, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => EditProjectEnvContentHint5$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EditProjectEnvContentHint5' from JSON`,
+    (x) => ContentHint5$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentHint5' from JSON`,
   );
 }
 
 /** @internal */
-export const EditProjectEnvContentHint4$inboundSchema: z.ZodType<
-  EditProjectEnvContentHint4,
+export const ContentHint4$inboundSchema: z.ZodType<
+  ContentHint4,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -991,41 +913,37 @@ export const EditProjectEnvContentHint4$inboundSchema: z.ZodType<
   storeId: types.string(),
 });
 /** @internal */
-export type EditProjectEnvContentHint4$Outbound = {
+export type ContentHint4$Outbound = {
   type: "redis-rest-api-read-only-token";
   storeId: string;
 };
 
 /** @internal */
-export const EditProjectEnvContentHint4$outboundSchema: z.ZodType<
-  EditProjectEnvContentHint4$Outbound,
+export const ContentHint4$outboundSchema: z.ZodType<
+  ContentHint4$Outbound,
   z.ZodTypeDef,
-  EditProjectEnvContentHint4
+  ContentHint4
 > = z.object({
   type: z.literal("redis-rest-api-read-only-token"),
   storeId: z.string(),
 });
 
-export function editProjectEnvContentHint4ToJSON(
-  editProjectEnvContentHint4: EditProjectEnvContentHint4,
-): string {
-  return JSON.stringify(
-    EditProjectEnvContentHint4$outboundSchema.parse(editProjectEnvContentHint4),
-  );
+export function contentHint4ToJSON(contentHint4: ContentHint4): string {
+  return JSON.stringify(ContentHint4$outboundSchema.parse(contentHint4));
 }
-export function editProjectEnvContentHint4FromJSON(
+export function contentHint4FromJSON(
   jsonString: string,
-): SafeParseResult<EditProjectEnvContentHint4, SDKValidationError> {
+): SafeParseResult<ContentHint4, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => EditProjectEnvContentHint4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EditProjectEnvContentHint4' from JSON`,
+    (x) => ContentHint4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentHint4' from JSON`,
   );
 }
 
 /** @internal */
-export const EditProjectEnvContentHint3$inboundSchema: z.ZodType<
-  EditProjectEnvContentHint3,
+export const ContentHint3$inboundSchema: z.ZodType<
+  ContentHint3,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1033,41 +951,37 @@ export const EditProjectEnvContentHint3$inboundSchema: z.ZodType<
   storeId: types.string(),
 });
 /** @internal */
-export type EditProjectEnvContentHint3$Outbound = {
+export type ContentHint3$Outbound = {
   type: "redis-rest-api-token";
   storeId: string;
 };
 
 /** @internal */
-export const EditProjectEnvContentHint3$outboundSchema: z.ZodType<
-  EditProjectEnvContentHint3$Outbound,
+export const ContentHint3$outboundSchema: z.ZodType<
+  ContentHint3$Outbound,
   z.ZodTypeDef,
-  EditProjectEnvContentHint3
+  ContentHint3
 > = z.object({
   type: z.literal("redis-rest-api-token"),
   storeId: z.string(),
 });
 
-export function editProjectEnvContentHint3ToJSON(
-  editProjectEnvContentHint3: EditProjectEnvContentHint3,
-): string {
-  return JSON.stringify(
-    EditProjectEnvContentHint3$outboundSchema.parse(editProjectEnvContentHint3),
-  );
+export function contentHint3ToJSON(contentHint3: ContentHint3): string {
+  return JSON.stringify(ContentHint3$outboundSchema.parse(contentHint3));
 }
-export function editProjectEnvContentHint3FromJSON(
+export function contentHint3FromJSON(
   jsonString: string,
-): SafeParseResult<EditProjectEnvContentHint3, SDKValidationError> {
+): SafeParseResult<ContentHint3, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => EditProjectEnvContentHint3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EditProjectEnvContentHint3' from JSON`,
+    (x) => ContentHint3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentHint3' from JSON`,
   );
 }
 
 /** @internal */
-export const EditProjectEnvContentHint2$inboundSchema: z.ZodType<
-  EditProjectEnvContentHint2,
+export const ContentHint2$inboundSchema: z.ZodType<
+  ContentHint2,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1075,41 +989,37 @@ export const EditProjectEnvContentHint2$inboundSchema: z.ZodType<
   storeId: types.string(),
 });
 /** @internal */
-export type EditProjectEnvContentHint2$Outbound = {
+export type ContentHint2$Outbound = {
   type: "redis-rest-api-url";
   storeId: string;
 };
 
 /** @internal */
-export const EditProjectEnvContentHint2$outboundSchema: z.ZodType<
-  EditProjectEnvContentHint2$Outbound,
+export const ContentHint2$outboundSchema: z.ZodType<
+  ContentHint2$Outbound,
   z.ZodTypeDef,
-  EditProjectEnvContentHint2
+  ContentHint2
 > = z.object({
   type: z.literal("redis-rest-api-url"),
   storeId: z.string(),
 });
 
-export function editProjectEnvContentHint2ToJSON(
-  editProjectEnvContentHint2: EditProjectEnvContentHint2,
-): string {
-  return JSON.stringify(
-    EditProjectEnvContentHint2$outboundSchema.parse(editProjectEnvContentHint2),
-  );
+export function contentHint2ToJSON(contentHint2: ContentHint2): string {
+  return JSON.stringify(ContentHint2$outboundSchema.parse(contentHint2));
 }
-export function editProjectEnvContentHint2FromJSON(
+export function contentHint2FromJSON(
   jsonString: string,
-): SafeParseResult<EditProjectEnvContentHint2, SDKValidationError> {
+): SafeParseResult<ContentHint2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => EditProjectEnvContentHint2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EditProjectEnvContentHint2' from JSON`,
+    (x) => ContentHint2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentHint2' from JSON`,
   );
 }
 
 /** @internal */
-export const EditProjectEnvContentHint1$inboundSchema: z.ZodType<
-  EditProjectEnvContentHint1,
+export const ContentHint1$inboundSchema: z.ZodType<
+  ContentHint1,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1117,341 +1027,158 @@ export const EditProjectEnvContentHint1$inboundSchema: z.ZodType<
   storeId: types.string(),
 });
 /** @internal */
-export type EditProjectEnvContentHint1$Outbound = {
+export type ContentHint1$Outbound = {
   type: "redis-url";
   storeId: string;
 };
 
 /** @internal */
-export const EditProjectEnvContentHint1$outboundSchema: z.ZodType<
-  EditProjectEnvContentHint1$Outbound,
+export const ContentHint1$outboundSchema: z.ZodType<
+  ContentHint1$Outbound,
   z.ZodTypeDef,
-  EditProjectEnvContentHint1
+  ContentHint1
 > = z.object({
   type: z.literal("redis-url"),
   storeId: z.string(),
 });
 
-export function editProjectEnvContentHint1ToJSON(
-  editProjectEnvContentHint1: EditProjectEnvContentHint1,
-): string {
-  return JSON.stringify(
-    EditProjectEnvContentHint1$outboundSchema.parse(editProjectEnvContentHint1),
-  );
+export function contentHint1ToJSON(contentHint1: ContentHint1): string {
+  return JSON.stringify(ContentHint1$outboundSchema.parse(contentHint1));
 }
-export function editProjectEnvContentHint1FromJSON(
+export function contentHint1FromJSON(
   jsonString: string,
-): SafeParseResult<EditProjectEnvContentHint1, SDKValidationError> {
+): SafeParseResult<ContentHint1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => EditProjectEnvContentHint1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EditProjectEnvContentHint1' from JSON`,
+    (x) => ContentHint1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentHint1' from JSON`,
   );
 }
 
 /** @internal */
-export const EditProjectEnvResponseBodyContentHint$inboundSchema: z.ZodType<
-  EditProjectEnvResponseBodyContentHint,
+export const ContentHint$inboundSchema: z.ZodType<
+  ContentHint,
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => EditProjectEnvContentHint1$inboundSchema),
-  z.lazy(() => EditProjectEnvContentHint2$inboundSchema),
-  z.lazy(() => EditProjectEnvContentHint3$inboundSchema),
-  z.lazy(() => EditProjectEnvContentHint4$inboundSchema),
-  z.lazy(() => EditProjectEnvContentHint5$inboundSchema),
-  z.lazy(() => EditProjectEnvContentHint6$inboundSchema),
-  z.lazy(() => EditProjectEnvContentHint7$inboundSchema),
-  z.lazy(() => EditProjectEnvContentHint8$inboundSchema),
-  z.lazy(() => EditProjectEnvContentHint9$inboundSchema),
-  z.lazy(() => EditProjectEnvContentHint10$inboundSchema),
-  z.lazy(() => EditProjectEnvContentHint11$inboundSchema),
-  z.lazy(() => EditProjectEnvContentHint12$inboundSchema),
-  z.lazy(() => EditProjectEnvContentHint13$inboundSchema),
-  z.lazy(() => EditProjectEnvContentHint14$inboundSchema),
-  z.lazy(() => EditProjectEnvContentHint15$inboundSchema),
+  z.lazy(() => ContentHint1$inboundSchema),
+  z.lazy(() => ContentHint2$inboundSchema),
+  z.lazy(() => ContentHint3$inboundSchema),
+  z.lazy(() => ContentHint4$inboundSchema),
+  z.lazy(() => ContentHint5$inboundSchema),
+  z.lazy(() => ContentHint6$inboundSchema),
+  z.lazy(() => ContentHint7$inboundSchema),
+  z.lazy(() => ContentHint8$inboundSchema),
+  z.lazy(() => ContentHint9$inboundSchema),
+  z.lazy(() => ContentHint10$inboundSchema),
+  z.lazy(() => ContentHint11$inboundSchema),
+  z.lazy(() => ContentHint12$inboundSchema),
+  z.lazy(() => ContentHint13$inboundSchema),
+  z.lazy(() => ContentHint14$inboundSchema),
+  z.lazy(() => ContentHint15$inboundSchema),
 ]);
 /** @internal */
-export type EditProjectEnvResponseBodyContentHint$Outbound =
-  | EditProjectEnvContentHint1$Outbound
-  | EditProjectEnvContentHint2$Outbound
-  | EditProjectEnvContentHint3$Outbound
-  | EditProjectEnvContentHint4$Outbound
-  | EditProjectEnvContentHint5$Outbound
-  | EditProjectEnvContentHint6$Outbound
-  | EditProjectEnvContentHint7$Outbound
-  | EditProjectEnvContentHint8$Outbound
-  | EditProjectEnvContentHint9$Outbound
-  | EditProjectEnvContentHint10$Outbound
-  | EditProjectEnvContentHint11$Outbound
-  | EditProjectEnvContentHint12$Outbound
-  | EditProjectEnvContentHint13$Outbound
-  | EditProjectEnvContentHint14$Outbound
-  | EditProjectEnvContentHint15$Outbound;
+export type ContentHint$Outbound =
+  | ContentHint1$Outbound
+  | ContentHint2$Outbound
+  | ContentHint3$Outbound
+  | ContentHint4$Outbound
+  | ContentHint5$Outbound
+  | ContentHint6$Outbound
+  | ContentHint7$Outbound
+  | ContentHint8$Outbound
+  | ContentHint9$Outbound
+  | ContentHint10$Outbound
+  | ContentHint11$Outbound
+  | ContentHint12$Outbound
+  | ContentHint13$Outbound
+  | ContentHint14$Outbound
+  | ContentHint15$Outbound;
 
 /** @internal */
-export const EditProjectEnvResponseBodyContentHint$outboundSchema: z.ZodType<
-  EditProjectEnvResponseBodyContentHint$Outbound,
+export const ContentHint$outboundSchema: z.ZodType<
+  ContentHint$Outbound,
   z.ZodTypeDef,
-  EditProjectEnvResponseBodyContentHint
+  ContentHint
 > = z.union([
-  z.lazy(() => EditProjectEnvContentHint1$outboundSchema),
-  z.lazy(() => EditProjectEnvContentHint2$outboundSchema),
-  z.lazy(() => EditProjectEnvContentHint3$outboundSchema),
-  z.lazy(() => EditProjectEnvContentHint4$outboundSchema),
-  z.lazy(() => EditProjectEnvContentHint5$outboundSchema),
-  z.lazy(() => EditProjectEnvContentHint6$outboundSchema),
-  z.lazy(() => EditProjectEnvContentHint7$outboundSchema),
-  z.lazy(() => EditProjectEnvContentHint8$outboundSchema),
-  z.lazy(() => EditProjectEnvContentHint9$outboundSchema),
-  z.lazy(() => EditProjectEnvContentHint10$outboundSchema),
-  z.lazy(() => EditProjectEnvContentHint11$outboundSchema),
-  z.lazy(() => EditProjectEnvContentHint12$outboundSchema),
-  z.lazy(() => EditProjectEnvContentHint13$outboundSchema),
-  z.lazy(() => EditProjectEnvContentHint14$outboundSchema),
-  z.lazy(() => EditProjectEnvContentHint15$outboundSchema),
+  z.lazy(() => ContentHint1$outboundSchema),
+  z.lazy(() => ContentHint2$outboundSchema),
+  z.lazy(() => ContentHint3$outboundSchema),
+  z.lazy(() => ContentHint4$outboundSchema),
+  z.lazy(() => ContentHint5$outboundSchema),
+  z.lazy(() => ContentHint6$outboundSchema),
+  z.lazy(() => ContentHint7$outboundSchema),
+  z.lazy(() => ContentHint8$outboundSchema),
+  z.lazy(() => ContentHint9$outboundSchema),
+  z.lazy(() => ContentHint10$outboundSchema),
+  z.lazy(() => ContentHint11$outboundSchema),
+  z.lazy(() => ContentHint12$outboundSchema),
+  z.lazy(() => ContentHint13$outboundSchema),
+  z.lazy(() => ContentHint14$outboundSchema),
+  z.lazy(() => ContentHint15$outboundSchema),
 ]);
 
-export function editProjectEnvResponseBodyContentHintToJSON(
-  editProjectEnvResponseBodyContentHint: EditProjectEnvResponseBodyContentHint,
-): string {
-  return JSON.stringify(
-    EditProjectEnvResponseBodyContentHint$outboundSchema.parse(
-      editProjectEnvResponseBodyContentHint,
-    ),
-  );
+export function contentHintToJSON(contentHint: ContentHint): string {
+  return JSON.stringify(ContentHint$outboundSchema.parse(contentHint));
 }
-export function editProjectEnvResponseBodyContentHintFromJSON(
+export function contentHintFromJSON(
   jsonString: string,
-): SafeParseResult<EditProjectEnvResponseBodyContentHint, SDKValidationError> {
+): SafeParseResult<ContentHint, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      EditProjectEnvResponseBodyContentHint$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EditProjectEnvResponseBodyContentHint' from JSON`,
+    (x) => ContentHint$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentHint' from JSON`,
   );
 }
 
 /** @internal */
-export const EditProjectEnvResponseBodyProjectsType$inboundSchema:
-  z.ZodNativeEnum<typeof EditProjectEnvResponseBodyProjectsType> = z.nativeEnum(
-    EditProjectEnvResponseBodyProjectsType,
-  );
+export const EditProjectEnvProjectsResponseType$inboundSchema: z.ZodNativeEnum<
+  typeof EditProjectEnvProjectsResponseType
+> = z.nativeEnum(EditProjectEnvProjectsResponseType);
 /** @internal */
-export const EditProjectEnvResponseBodyProjectsType$outboundSchema:
-  z.ZodNativeEnum<typeof EditProjectEnvResponseBodyProjectsType> =
-    EditProjectEnvResponseBodyProjectsType$inboundSchema;
+export const EditProjectEnvProjectsResponseType$outboundSchema: z.ZodNativeEnum<
+  typeof EditProjectEnvProjectsResponseType
+> = EditProjectEnvProjectsResponseType$inboundSchema;
 
 /** @internal */
-export const EditProjectEnvResponseBodyInternalContentHint$inboundSchema:
-  z.ZodType<
-    EditProjectEnvResponseBodyInternalContentHint,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    type: EditProjectEnvResponseBodyProjectsType$inboundSchema,
-    encryptedValue: types.string(),
-  });
+export const InternalContentHint$inboundSchema: z.ZodType<
+  InternalContentHint,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: EditProjectEnvProjectsResponseType$inboundSchema,
+  encryptedValue: types.string(),
+});
 /** @internal */
-export type EditProjectEnvResponseBodyInternalContentHint$Outbound = {
+export type InternalContentHint$Outbound = {
   type: string;
   encryptedValue: string;
 };
 
 /** @internal */
-export const EditProjectEnvResponseBodyInternalContentHint$outboundSchema:
-  z.ZodType<
-    EditProjectEnvResponseBodyInternalContentHint$Outbound,
-    z.ZodTypeDef,
-    EditProjectEnvResponseBodyInternalContentHint
-  > = z.object({
-    type: EditProjectEnvResponseBodyProjectsType$outboundSchema,
-    encryptedValue: z.string(),
-  });
-
-export function editProjectEnvResponseBodyInternalContentHintToJSON(
-  editProjectEnvResponseBodyInternalContentHint:
-    EditProjectEnvResponseBodyInternalContentHint,
-): string {
-  return JSON.stringify(
-    EditProjectEnvResponseBodyInternalContentHint$outboundSchema.parse(
-      editProjectEnvResponseBodyInternalContentHint,
-    ),
-  );
-}
-export function editProjectEnvResponseBodyInternalContentHintFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  EditProjectEnvResponseBodyInternalContentHint,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      EditProjectEnvResponseBodyInternalContentHint$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'EditProjectEnvResponseBodyInternalContentHint' from JSON`,
-  );
-}
-
-/** @internal */
-export const EditProjectEnvResponseBody1$inboundSchema: z.ZodType<
-  EditProjectEnvResponseBody1,
+export const InternalContentHint$outboundSchema: z.ZodType<
+  InternalContentHint$Outbound,
   z.ZodTypeDef,
-  unknown
+  InternalContentHint
 > = z.object({
-  target: types.optional(
-    smartUnion([z.array(types.string()), EditProjectEnvTarget2$inboundSchema]),
-  ),
-  type: EditProjectEnvResponseBodyType$inboundSchema,
-  sunsetSecretId: types.optional(types.string()),
-  decrypted: types.optional(types.boolean()),
-  value: types.string(),
-  id: types.optional(types.string()),
-  key: types.string(),
-  configurationId: z.nullable(types.string()).optional(),
-  createdAt: types.optional(types.number()),
-  updatedAt: types.optional(types.number()),
-  createdBy: z.nullable(types.string()).optional(),
-  updatedBy: z.nullable(types.string()).optional(),
-  gitBranch: types.optional(types.string()),
-  edgeConfigId: z.nullable(types.string()).optional(),
-  edgeConfigTokenId: z.nullable(types.string()).optional(),
-  contentHint: z.nullable(
-    z.union([
-      z.lazy(() => EditProjectEnvContentHint1$inboundSchema),
-      z.lazy(() => EditProjectEnvContentHint2$inboundSchema),
-      z.lazy(() => EditProjectEnvContentHint3$inboundSchema),
-      z.lazy(() => EditProjectEnvContentHint4$inboundSchema),
-      z.lazy(() => EditProjectEnvContentHint5$inboundSchema),
-      z.lazy(() => EditProjectEnvContentHint6$inboundSchema),
-      z.lazy(() => EditProjectEnvContentHint7$inboundSchema),
-      z.lazy(() => EditProjectEnvContentHint8$inboundSchema),
-      z.lazy(() => EditProjectEnvContentHint9$inboundSchema),
-      z.lazy(() => EditProjectEnvContentHint10$inboundSchema),
-      z.lazy(() => EditProjectEnvContentHint11$inboundSchema),
-      z.lazy(() => EditProjectEnvContentHint12$inboundSchema),
-      z.lazy(() => EditProjectEnvContentHint13$inboundSchema),
-      z.lazy(() => EditProjectEnvContentHint14$inboundSchema),
-      z.lazy(() => EditProjectEnvContentHint15$inboundSchema),
-    ]),
-  ).optional(),
-  internalContentHint: z.nullable(
-    z.lazy(() => EditProjectEnvResponseBodyInternalContentHint$inboundSchema),
-  ).optional(),
-  comment: types.optional(types.string()),
-  customEnvironmentIds: types.optional(z.array(types.string())),
-});
-/** @internal */
-export type EditProjectEnvResponseBody1$Outbound = {
-  target?: Array<string> | string | undefined;
-  type: string;
-  sunsetSecretId?: string | undefined;
-  decrypted?: boolean | undefined;
-  value: string;
-  id?: string | undefined;
-  key: string;
-  configurationId?: string | null | undefined;
-  createdAt?: number | undefined;
-  updatedAt?: number | undefined;
-  createdBy?: string | null | undefined;
-  updatedBy?: string | null | undefined;
-  gitBranch?: string | undefined;
-  edgeConfigId?: string | null | undefined;
-  edgeConfigTokenId?: string | null | undefined;
-  contentHint?:
-    | EditProjectEnvContentHint1$Outbound
-    | EditProjectEnvContentHint2$Outbound
-    | EditProjectEnvContentHint3$Outbound
-    | EditProjectEnvContentHint4$Outbound
-    | EditProjectEnvContentHint5$Outbound
-    | EditProjectEnvContentHint6$Outbound
-    | EditProjectEnvContentHint7$Outbound
-    | EditProjectEnvContentHint8$Outbound
-    | EditProjectEnvContentHint9$Outbound
-    | EditProjectEnvContentHint10$Outbound
-    | EditProjectEnvContentHint11$Outbound
-    | EditProjectEnvContentHint12$Outbound
-    | EditProjectEnvContentHint13$Outbound
-    | EditProjectEnvContentHint14$Outbound
-    | EditProjectEnvContentHint15$Outbound
-    | null
-    | undefined;
-  internalContentHint?:
-    | EditProjectEnvResponseBodyInternalContentHint$Outbound
-    | null
-    | undefined;
-  comment?: string | undefined;
-  customEnvironmentIds?: Array<string> | undefined;
-};
-
-/** @internal */
-export const EditProjectEnvResponseBody1$outboundSchema: z.ZodType<
-  EditProjectEnvResponseBody1$Outbound,
-  z.ZodTypeDef,
-  EditProjectEnvResponseBody1
-> = z.object({
-  target: smartUnion([
-    z.array(z.string()),
-    EditProjectEnvTarget2$outboundSchema,
-  ]).optional(),
-  type: EditProjectEnvResponseBodyType$outboundSchema,
-  sunsetSecretId: z.string().optional(),
-  decrypted: z.boolean().optional(),
-  value: z.string(),
-  id: z.string().optional(),
-  key: z.string(),
-  configurationId: z.nullable(z.string()).optional(),
-  createdAt: z.number().optional(),
-  updatedAt: z.number().optional(),
-  createdBy: z.nullable(z.string()).optional(),
-  updatedBy: z.nullable(z.string()).optional(),
-  gitBranch: z.string().optional(),
-  edgeConfigId: z.nullable(z.string()).optional(),
-  edgeConfigTokenId: z.nullable(z.string()).optional(),
-  contentHint: z.nullable(
-    z.union([
-      z.lazy(() => EditProjectEnvContentHint1$outboundSchema),
-      z.lazy(() => EditProjectEnvContentHint2$outboundSchema),
-      z.lazy(() => EditProjectEnvContentHint3$outboundSchema),
-      z.lazy(() => EditProjectEnvContentHint4$outboundSchema),
-      z.lazy(() => EditProjectEnvContentHint5$outboundSchema),
-      z.lazy(() => EditProjectEnvContentHint6$outboundSchema),
-      z.lazy(() => EditProjectEnvContentHint7$outboundSchema),
-      z.lazy(() => EditProjectEnvContentHint8$outboundSchema),
-      z.lazy(() => EditProjectEnvContentHint9$outboundSchema),
-      z.lazy(() => EditProjectEnvContentHint10$outboundSchema),
-      z.lazy(() => EditProjectEnvContentHint11$outboundSchema),
-      z.lazy(() => EditProjectEnvContentHint12$outboundSchema),
-      z.lazy(() => EditProjectEnvContentHint13$outboundSchema),
-      z.lazy(() => EditProjectEnvContentHint14$outboundSchema),
-      z.lazy(() => EditProjectEnvContentHint15$outboundSchema),
-    ]),
-  ).optional(),
-  internalContentHint: z.nullable(
-    z.lazy(() => EditProjectEnvResponseBodyInternalContentHint$outboundSchema),
-  ).optional(),
-  comment: z.string().optional(),
-  customEnvironmentIds: z.array(z.string()).optional(),
+  type: EditProjectEnvProjectsResponseType$outboundSchema,
+  encryptedValue: z.string(),
 });
 
-export function editProjectEnvResponseBody1ToJSON(
-  editProjectEnvResponseBody1: EditProjectEnvResponseBody1,
+export function internalContentHintToJSON(
+  internalContentHint: InternalContentHint,
 ): string {
   return JSON.stringify(
-    EditProjectEnvResponseBody1$outboundSchema.parse(
-      editProjectEnvResponseBody1,
-    ),
+    InternalContentHint$outboundSchema.parse(internalContentHint),
   );
 }
-export function editProjectEnvResponseBody1FromJSON(
+export function internalContentHintFromJSON(
   jsonString: string,
-): SafeParseResult<EditProjectEnvResponseBody1, SDKValidationError> {
+): SafeParseResult<InternalContentHint, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => EditProjectEnvResponseBody1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EditProjectEnvResponseBody1' from JSON`,
+    (x) => InternalContentHint$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InternalContentHint' from JSON`,
   );
 }
 
@@ -1460,24 +1187,141 @@ export const EditProjectEnvResponseBody$inboundSchema: z.ZodType<
   EditProjectEnvResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => EditProjectEnvResponseBody1$inboundSchema),
-  z.lazy(() => EditProjectEnvResponseBody2$inboundSchema),
-]);
+> = z.object({
+  type: EditProjectEnvProjectsType$inboundSchema,
+  value: types.string(),
+  edgeConfigId: z.nullable(types.string()).optional(),
+  edgeConfigTokenId: z.nullable(types.string()).optional(),
+  createdAt: types.optional(types.number()),
+  updatedAt: types.optional(types.number()),
+  createdBy: z.nullable(types.string()).optional(),
+  id: types.optional(types.string()),
+  key: types.string(),
+  target: types.optional(
+    smartUnion([
+      z.array(EditProjectEnvTarget1$inboundSchema),
+      EditProjectEnvTarget2$inboundSchema,
+    ]),
+  ),
+  gitBranch: types.optional(types.string()),
+  updatedBy: z.nullable(types.string()).optional(),
+  sunsetSecretId: types.optional(types.string()),
+  decrypted: types.optional(types.boolean()),
+  configurationId: z.nullable(types.string()).optional(),
+  contentHint: z.nullable(
+    z.union([
+      z.lazy(() => ContentHint1$inboundSchema),
+      z.lazy(() => ContentHint2$inboundSchema),
+      z.lazy(() => ContentHint3$inboundSchema),
+      z.lazy(() => ContentHint4$inboundSchema),
+      z.lazy(() => ContentHint5$inboundSchema),
+      z.lazy(() => ContentHint6$inboundSchema),
+      z.lazy(() => ContentHint7$inboundSchema),
+      z.lazy(() => ContentHint8$inboundSchema),
+      z.lazy(() => ContentHint9$inboundSchema),
+      z.lazy(() => ContentHint10$inboundSchema),
+      z.lazy(() => ContentHint11$inboundSchema),
+      z.lazy(() => ContentHint12$inboundSchema),
+      z.lazy(() => ContentHint13$inboundSchema),
+      z.lazy(() => ContentHint14$inboundSchema),
+      z.lazy(() => ContentHint15$inboundSchema),
+    ]),
+  ).optional(),
+  internalContentHint: z.nullable(
+    z.lazy(() => InternalContentHint$inboundSchema),
+  ).optional(),
+  comment: types.optional(types.string()),
+  customEnvironmentIds: types.optional(z.array(types.string())),
+});
 /** @internal */
-export type EditProjectEnvResponseBody$Outbound =
-  | EditProjectEnvResponseBody1$Outbound
-  | EditProjectEnvResponseBody2$Outbound;
+export type EditProjectEnvResponseBody$Outbound = {
+  type: string;
+  value: string;
+  edgeConfigId?: string | null | undefined;
+  edgeConfigTokenId?: string | null | undefined;
+  createdAt?: number | undefined;
+  updatedAt?: number | undefined;
+  createdBy?: string | null | undefined;
+  id?: string | undefined;
+  key: string;
+  target?: Array<string> | string | undefined;
+  gitBranch?: string | undefined;
+  updatedBy?: string | null | undefined;
+  sunsetSecretId?: string | undefined;
+  decrypted?: boolean | undefined;
+  configurationId?: string | null | undefined;
+  contentHint?:
+    | ContentHint1$Outbound
+    | ContentHint2$Outbound
+    | ContentHint3$Outbound
+    | ContentHint4$Outbound
+    | ContentHint5$Outbound
+    | ContentHint6$Outbound
+    | ContentHint7$Outbound
+    | ContentHint8$Outbound
+    | ContentHint9$Outbound
+    | ContentHint10$Outbound
+    | ContentHint11$Outbound
+    | ContentHint12$Outbound
+    | ContentHint13$Outbound
+    | ContentHint14$Outbound
+    | ContentHint15$Outbound
+    | null
+    | undefined;
+  internalContentHint?: InternalContentHint$Outbound | null | undefined;
+  comment?: string | undefined;
+  customEnvironmentIds?: Array<string> | undefined;
+};
 
 /** @internal */
 export const EditProjectEnvResponseBody$outboundSchema: z.ZodType<
   EditProjectEnvResponseBody$Outbound,
   z.ZodTypeDef,
   EditProjectEnvResponseBody
-> = smartUnion([
-  z.lazy(() => EditProjectEnvResponseBody1$outboundSchema),
-  z.lazy(() => EditProjectEnvResponseBody2$outboundSchema),
-]);
+> = z.object({
+  type: EditProjectEnvProjectsType$outboundSchema,
+  value: z.string(),
+  edgeConfigId: z.nullable(z.string()).optional(),
+  edgeConfigTokenId: z.nullable(z.string()).optional(),
+  createdAt: z.number().optional(),
+  updatedAt: z.number().optional(),
+  createdBy: z.nullable(z.string()).optional(),
+  id: z.string().optional(),
+  key: z.string(),
+  target: smartUnion([
+    z.array(EditProjectEnvTarget1$outboundSchema),
+    EditProjectEnvTarget2$outboundSchema,
+  ]).optional(),
+  gitBranch: z.string().optional(),
+  updatedBy: z.nullable(z.string()).optional(),
+  sunsetSecretId: z.string().optional(),
+  decrypted: z.boolean().optional(),
+  configurationId: z.nullable(z.string()).optional(),
+  contentHint: z.nullable(
+    z.union([
+      z.lazy(() => ContentHint1$outboundSchema),
+      z.lazy(() => ContentHint2$outboundSchema),
+      z.lazy(() => ContentHint3$outboundSchema),
+      z.lazy(() => ContentHint4$outboundSchema),
+      z.lazy(() => ContentHint5$outboundSchema),
+      z.lazy(() => ContentHint6$outboundSchema),
+      z.lazy(() => ContentHint7$outboundSchema),
+      z.lazy(() => ContentHint8$outboundSchema),
+      z.lazy(() => ContentHint9$outboundSchema),
+      z.lazy(() => ContentHint10$outboundSchema),
+      z.lazy(() => ContentHint11$outboundSchema),
+      z.lazy(() => ContentHint12$outboundSchema),
+      z.lazy(() => ContentHint13$outboundSchema),
+      z.lazy(() => ContentHint14$outboundSchema),
+      z.lazy(() => ContentHint15$outboundSchema),
+    ]),
+  ).optional(),
+  internalContentHint: z.nullable(
+    z.lazy(() => InternalContentHint$outboundSchema),
+  ).optional(),
+  comment: z.string().optional(),
+  customEnvironmentIds: z.array(z.string()).optional(),
+});
 
 export function editProjectEnvResponseBodyToJSON(
   editProjectEnvResponseBody: EditProjectEnvResponseBody,

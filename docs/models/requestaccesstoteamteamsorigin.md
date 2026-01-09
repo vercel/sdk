@@ -5,11 +5,11 @@
 ```typescript
 import { RequestAccessToTeamTeamsOrigin } from "@vercel/sdk/models/requestaccesstoteamop.js";
 
-let value: RequestAccessToTeamTeamsOrigin = "gitlab";
+let value: RequestAccessToTeamTeamsOrigin = "import";
 ```
 
 ## Values
 
 ```typescript
-"import" | "teams" | "github" | "gitlab" | "bitbucket" | "feedback" | "organization-teams" | "link" | "mail" | "saml" | "dsync"
+"teams" | "link" | "mail" | "import" | "github" | "gitlab" | "bitbucket" | "saml" | "dsync" | "feedback" | "organization-teams"
 ```

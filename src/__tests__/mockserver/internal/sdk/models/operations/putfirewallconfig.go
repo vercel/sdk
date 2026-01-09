@@ -2347,13 +2347,13 @@ func (e *ActiveType2) UnmarshalJSON(data []byte) error {
 type ActiveOp2 string
 
 const (
+	ActiveOp2Sub  ActiveOp2 = "sub"
 	ActiveOp2Re   ActiveOp2 = "re"
 	ActiveOp2Eq   ActiveOp2 = "eq"
 	ActiveOp2Ex   ActiveOp2 = "ex"
 	ActiveOp2Inc  ActiveOp2 = "inc"
 	ActiveOp2Pre  ActiveOp2 = "pre"
 	ActiveOp2Suf  ActiveOp2 = "suf"
-	ActiveOp2Sub  ActiveOp2 = "sub"
 	ActiveOp2Gt   ActiveOp2 = "gt"
 	ActiveOp2Gte  ActiveOp2 = "gte"
 	ActiveOp2Lt   ActiveOp2 = "lt"
@@ -2372,6 +2372,8 @@ func (e *ActiveOp2) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "sub":
+		fallthrough
 	case "re":
 		fallthrough
 	case "eq":
@@ -2383,8 +2385,6 @@ func (e *ActiveOp2) UnmarshalJSON(data []byte) error {
 	case "pre":
 		fallthrough
 	case "suf":
-		fallthrough
-	case "sub":
 		fallthrough
 	case "gt":
 		fallthrough
@@ -3002,13 +3002,13 @@ func (e *ActiveType1) UnmarshalJSON(data []byte) error {
 type ActiveOp1 string
 
 const (
+	ActiveOp1Sub  ActiveOp1 = "sub"
 	ActiveOp1Re   ActiveOp1 = "re"
 	ActiveOp1Eq   ActiveOp1 = "eq"
 	ActiveOp1Ex   ActiveOp1 = "ex"
 	ActiveOp1Inc  ActiveOp1 = "inc"
 	ActiveOp1Pre  ActiveOp1 = "pre"
 	ActiveOp1Suf  ActiveOp1 = "suf"
-	ActiveOp1Sub  ActiveOp1 = "sub"
 	ActiveOp1Gt   ActiveOp1 = "gt"
 	ActiveOp1Gte  ActiveOp1 = "gte"
 	ActiveOp1Lt   ActiveOp1 = "lt"
@@ -3027,6 +3027,8 @@ func (e *ActiveOp1) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "sub":
+		fallthrough
 	case "re":
 		fallthrough
 	case "eq":
@@ -3038,8 +3040,6 @@ func (e *ActiveOp1) UnmarshalJSON(data []byte) error {
 	case "pre":
 		fallthrough
 	case "suf":
-		fallthrough
-	case "sub":
 		fallthrough
 	case "gt":
 		fallthrough

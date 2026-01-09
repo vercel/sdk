@@ -35,13 +35,13 @@ func (o *GetIntegrationResourceRequest) GetResourceID() string {
 type GetIntegrationResourceStatus string
 
 const (
+	GetIntegrationResourceStatusError       GetIntegrationResourceStatus = "error"
 	GetIntegrationResourceStatusReady       GetIntegrationResourceStatus = "ready"
 	GetIntegrationResourceStatusPending     GetIntegrationResourceStatus = "pending"
 	GetIntegrationResourceStatusOnboarding  GetIntegrationResourceStatus = "onboarding"
 	GetIntegrationResourceStatusSuspended   GetIntegrationResourceStatus = "suspended"
 	GetIntegrationResourceStatusResumed     GetIntegrationResourceStatus = "resumed"
 	GetIntegrationResourceStatusUninstalled GetIntegrationResourceStatus = "uninstalled"
-	GetIntegrationResourceStatusError       GetIntegrationResourceStatus = "error"
 )
 
 func (e GetIntegrationResourceStatus) ToPointer() *GetIntegrationResourceStatus {
@@ -53,6 +53,8 @@ func (e *GetIntegrationResourceStatus) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "error":
+		fallthrough
 	case "ready":
 		fallthrough
 	case "pending":
@@ -64,8 +66,6 @@ func (e *GetIntegrationResourceStatus) UnmarshalJSON(data []byte) error {
 	case "resumed":
 		fallthrough
 	case "uninstalled":
-		fallthrough
-	case "error":
 		*e = GetIntegrationResourceStatus(v)
 		return nil
 	default:
@@ -143,17 +143,10 @@ func (e *GetIntegrationResourceLevel) UnmarshalJSON(data []byte) error {
 
 // GetIntegrationResourceNotification - The notification, if set, displayed to the user when viewing the resource in Vercel
 type GetIntegrationResourceNotification struct {
-	Level   GetIntegrationResourceLevel `json:"level"`
 	Title   string                      `json:"title"`
+	Level   GetIntegrationResourceLevel `json:"level"`
 	Message *string                     `json:"message,omitempty"`
 	Href    *string                     `json:"href,omitempty"`
-}
-
-func (o *GetIntegrationResourceNotification) GetLevel() GetIntegrationResourceLevel {
-	if o == nil {
-		return GetIntegrationResourceLevel("")
-	}
-	return o.Level
 }
 
 func (o *GetIntegrationResourceNotification) GetTitle() string {
@@ -161,6 +154,13 @@ func (o *GetIntegrationResourceNotification) GetTitle() string {
 		return ""
 	}
 	return o.Title
+}
+
+func (o *GetIntegrationResourceNotification) GetLevel() GetIntegrationResourceLevel {
+	if o == nil {
+		return GetIntegrationResourceLevel("")
+	}
+	return o.Level
 }
 
 func (o *GetIntegrationResourceNotification) GetMessage() *string {

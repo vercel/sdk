@@ -241,8 +241,8 @@ func (o *AddBypassIPRequest) GetBody() *AddBypassIPRequestBody {
 type AddBypassIPAction string
 
 const (
-	AddBypassIPActionBlock  AddBypassIPAction = "block"
 	AddBypassIPActionBypass AddBypassIPAction = "bypass"
+	AddBypassIPActionBlock  AddBypassIPAction = "block"
 )
 
 func (e AddBypassIPAction) ToPointer() *AddBypassIPAction {
@@ -254,9 +254,9 @@ func (e *AddBypassIPAction) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "block":
-		fallthrough
 	case "bypass":
+		fallthrough
+	case "block":
 		*e = AddBypassIPAction(v)
 		return nil
 	default:

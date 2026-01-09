@@ -994,10 +994,10 @@ func (o *CancelDeploymentLambda) GetOutput() []CancelDeploymentOutput {
 type CancelDeploymentStatus string
 
 const (
+	CancelDeploymentStatusQueued       CancelDeploymentStatus = "QUEUED"
 	CancelDeploymentStatusBuilding     CancelDeploymentStatus = "BUILDING"
 	CancelDeploymentStatusError        CancelDeploymentStatus = "ERROR"
 	CancelDeploymentStatusInitializing CancelDeploymentStatus = "INITIALIZING"
-	CancelDeploymentStatusQueued       CancelDeploymentStatus = "QUEUED"
 	CancelDeploymentStatusReady        CancelDeploymentStatus = "READY"
 	CancelDeploymentStatusCanceled     CancelDeploymentStatus = "CANCELED"
 )
@@ -1011,13 +1011,13 @@ func (e *CancelDeploymentStatus) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "QUEUED":
+		fallthrough
 	case "BUILDING":
 		fallthrough
 	case "ERROR":
 		fallthrough
 	case "INITIALIZING":
-		fallthrough
-	case "QUEUED":
 		fallthrough
 	case "READY":
 		fallthrough
@@ -1033,8 +1033,8 @@ func (e *CancelDeploymentStatus) UnmarshalJSON(data []byte) error {
 type CancelDeploymentTeam struct {
 	ID     string  `json:"id"`
 	Name   string  `json:"name"`
-	Avatar *string `json:"avatar,omitempty"`
 	Slug   string  `json:"slug"`
+	Avatar *string `json:"avatar,omitempty"`
 }
 
 func (o *CancelDeploymentTeam) GetID() string {
@@ -1051,18 +1051,18 @@ func (o *CancelDeploymentTeam) GetName() string {
 	return o.Name
 }
 
-func (o *CancelDeploymentTeam) GetAvatar() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Avatar
-}
-
 func (o *CancelDeploymentTeam) GetSlug() string {
 	if o == nil {
 		return ""
 	}
 	return o.Slug
+}
+
+func (o *CancelDeploymentTeam) GetAvatar() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Avatar
 }
 
 // CancelDeploymentCustomEnvironment2 - If the deployment was created using a Custom Environment, then this property contains information regarding the environment used.
@@ -1515,26 +1515,6 @@ func (e *CancelDeploymentOomReport) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// CancelDeploymentAliasError - An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
-type CancelDeploymentAliasError struct {
-	Code    string `json:"code"`
-	Message string `json:"message"`
-}
-
-func (o *CancelDeploymentAliasError) GetCode() string {
-	if o == nil {
-		return ""
-	}
-	return o.Code
-}
-
-func (o *CancelDeploymentAliasError) GetMessage() string {
-	if o == nil {
-		return ""
-	}
-	return o.Message
-}
-
 type CancelDeploymentAliasWarning struct {
 	Code    string  `json:"code"`
 	Message string  `json:"message"`
@@ -1570,6 +1550,88 @@ func (o *CancelDeploymentAliasWarning) GetAction() *string {
 	return o.Action
 }
 
+// CancelDeploymentReadyState - The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+type CancelDeploymentReadyState string
+
+const (
+	CancelDeploymentReadyStateQueued       CancelDeploymentReadyState = "QUEUED"
+	CancelDeploymentReadyStateBuilding     CancelDeploymentReadyState = "BUILDING"
+	CancelDeploymentReadyStateError        CancelDeploymentReadyState = "ERROR"
+	CancelDeploymentReadyStateInitializing CancelDeploymentReadyState = "INITIALIZING"
+	CancelDeploymentReadyStateReady        CancelDeploymentReadyState = "READY"
+	CancelDeploymentReadyStateCanceled     CancelDeploymentReadyState = "CANCELED"
+)
+
+func (e CancelDeploymentReadyState) ToPointer() *CancelDeploymentReadyState {
+	return &e
+}
+func (e *CancelDeploymentReadyState) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "QUEUED":
+		fallthrough
+	case "BUILDING":
+		fallthrough
+	case "ERROR":
+		fallthrough
+	case "INITIALIZING":
+		fallthrough
+	case "READY":
+		fallthrough
+	case "CANCELED":
+		*e = CancelDeploymentReadyState(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentReadyState: %v", v)
+	}
+}
+
+type CancelDeploymentType string
+
+const (
+	CancelDeploymentTypeLambdas CancelDeploymentType = "LAMBDAS"
+)
+
+func (e CancelDeploymentType) ToPointer() *CancelDeploymentType {
+	return &e
+}
+func (e *CancelDeploymentType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "LAMBDAS":
+		*e = CancelDeploymentType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentType: %v", v)
+	}
+}
+
+// CancelDeploymentAliasError - An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
+type CancelDeploymentAliasError struct {
+	Code    string `json:"code"`
+	Message string `json:"message"`
+}
+
+func (o *CancelDeploymentAliasError) GetCode() string {
+	if o == nil {
+		return ""
+	}
+	return o.Code
+}
+
+func (o *CancelDeploymentAliasError) GetMessage() string {
+	if o == nil {
+		return ""
+	}
+	return o.Message
+}
+
 type CancelDeploymentChecksState string
 
 const (
@@ -1602,9 +1664,9 @@ func (e *CancelDeploymentChecksState) UnmarshalJSON(data []byte) error {
 type CancelDeploymentChecksConclusion string
 
 const (
-	CancelDeploymentChecksConclusionSkipped   CancelDeploymentChecksConclusion = "skipped"
 	CancelDeploymentChecksConclusionSucceeded CancelDeploymentChecksConclusion = "succeeded"
 	CancelDeploymentChecksConclusionFailed    CancelDeploymentChecksConclusion = "failed"
+	CancelDeploymentChecksConclusionSkipped   CancelDeploymentChecksConclusion = "skipped"
 	CancelDeploymentChecksConclusionCanceled  CancelDeploymentChecksConclusion = "canceled"
 )
 
@@ -1617,11 +1679,11 @@ func (e *CancelDeploymentChecksConclusion) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "skipped":
-		fallthrough
 	case "succeeded":
 		fallthrough
 	case "failed":
+		fallthrough
+	case "skipped":
 		fallthrough
 	case "canceled":
 		*e = CancelDeploymentChecksConclusion(v)
@@ -3552,45 +3614,6 @@ func (o *CancelDeploymentProject) GetFramework() *string {
 	return o.Framework
 }
 
-// CancelDeploymentReadyState - The state of the deployment depending on the process of deploying, or if it is ready or in an error state
-type CancelDeploymentReadyState string
-
-const (
-	CancelDeploymentReadyStateBuilding     CancelDeploymentReadyState = "BUILDING"
-	CancelDeploymentReadyStateError        CancelDeploymentReadyState = "ERROR"
-	CancelDeploymentReadyStateInitializing CancelDeploymentReadyState = "INITIALIZING"
-	CancelDeploymentReadyStateQueued       CancelDeploymentReadyState = "QUEUED"
-	CancelDeploymentReadyStateReady        CancelDeploymentReadyState = "READY"
-	CancelDeploymentReadyStateCanceled     CancelDeploymentReadyState = "CANCELED"
-)
-
-func (e CancelDeploymentReadyState) ToPointer() *CancelDeploymentReadyState {
-	return &e
-}
-func (e *CancelDeploymentReadyState) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "BUILDING":
-		fallthrough
-	case "ERROR":
-		fallthrough
-	case "INITIALIZING":
-		fallthrough
-	case "QUEUED":
-		fallthrough
-	case "READY":
-		fallthrough
-	case "CANCELED":
-		*e = CancelDeploymentReadyState(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CancelDeploymentReadyState: %v", v)
-	}
-}
-
 // CancelDeploymentReadySubstate - Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
 type CancelDeploymentReadySubstate string
 
@@ -3693,29 +3716,6 @@ func (e *CancelDeploymentTargetEnum) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type CancelDeploymentType string
-
-const (
-	CancelDeploymentTypeLambdas CancelDeploymentType = "LAMBDAS"
-)
-
-func (e CancelDeploymentType) ToPointer() *CancelDeploymentType {
-	return &e
-}
-func (e *CancelDeploymentType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "LAMBDAS":
-		*e = CancelDeploymentType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CancelDeploymentType: %v", v)
-	}
-}
-
 type CancelDeploymentOidcTokenClaims struct {
 	Iss         string  `json:"iss"`
 	Sub         string  `json:"sub"`
@@ -3797,6 +3797,35 @@ func (o *CancelDeploymentOidcTokenClaims) GetPlan() *string {
 		return nil
 	}
 	return o.Plan
+}
+
+type CancelDeploymentPlan string
+
+const (
+	CancelDeploymentPlanPro        CancelDeploymentPlan = "pro"
+	CancelDeploymentPlanEnterprise CancelDeploymentPlan = "enterprise"
+	CancelDeploymentPlanHobby      CancelDeploymentPlan = "hobby"
+)
+
+func (e CancelDeploymentPlan) ToPointer() *CancelDeploymentPlan {
+	return &e
+}
+func (e *CancelDeploymentPlan) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "pro":
+		fallthrough
+	case "enterprise":
+		fallthrough
+	case "hobby":
+		*e = CancelDeploymentPlan(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentPlan: %v", v)
+	}
 }
 
 type CancelDeploymentCron struct {
@@ -3991,35 +4020,6 @@ func (o *CancelDeploymentFunctions) GetSupportsCancellation() *bool {
 		return nil
 	}
 	return o.SupportsCancellation
-}
-
-type CancelDeploymentPlan string
-
-const (
-	CancelDeploymentPlanPro        CancelDeploymentPlan = "pro"
-	CancelDeploymentPlanEnterprise CancelDeploymentPlan = "enterprise"
-	CancelDeploymentPlanHobby      CancelDeploymentPlan = "hobby"
-)
-
-func (e CancelDeploymentPlan) ToPointer() *CancelDeploymentPlan {
-	return &e
-}
-func (e *CancelDeploymentPlan) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "pro":
-		fallthrough
-	case "enterprise":
-		fallthrough
-	case "hobby":
-		*e = CancelDeploymentPlan(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CancelDeploymentPlan: %v", v)
-	}
 }
 
 type CancelDeploymentRoute3 struct {
@@ -7431,20 +7431,25 @@ type CancelDeploymentResponseBody struct {
 	TtyBuildLogs           *bool                                   `json:"ttyBuildLogs,omitempty"`
 	CustomEnvironment      *CancelDeploymentCustomEnvironmentUnion `json:"customEnvironment,omitempty"`
 	OomReport              *CancelDeploymentOomReport              `json:"oomReport,omitempty"`
+	AliasWarning           *CancelDeploymentAliasWarning           `json:"aliasWarning,omitempty"`
 	// A string holding the unique ID of the deployment
 	ID string `json:"id"`
+	// A number containing the date when the deployment was created in milliseconds
+	CreatedAt float64 `json:"createdAt"`
+	// The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+	ReadyState CancelDeploymentReadyState `json:"readyState"`
+	// The name of the project associated with the deployment at the time that the deployment was created
+	Name string               `json:"name"`
+	Type CancelDeploymentType `json:"type"`
 	// An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
-	AliasError   *CancelDeploymentAliasError   `json:"aliasError,omitempty"`
-	AliasFinal   *string                       `json:"aliasFinal,omitempty"`
-	AliasWarning *CancelDeploymentAliasWarning `json:"aliasWarning,omitempty"`
+	AliasError *CancelDeploymentAliasError `json:"aliasError,omitempty"`
+	AliasFinal *string                     `json:"aliasFinal,omitempty"`
 	// applies to custom domains only, defaults to `true`
 	AutoAssignCustomDomains *bool                             `json:"autoAssignCustomDomains,omitempty"`
 	AutomaticAliases        []string                          `json:"automaticAliases,omitempty"`
 	BuildErrorAt            *float64                          `json:"buildErrorAt,omitempty"`
 	ChecksState             *CancelDeploymentChecksState      `json:"checksState,omitempty"`
 	ChecksConclusion        *CancelDeploymentChecksConclusion `json:"checksConclusion,omitempty"`
-	// A number containing the date when the deployment was created in milliseconds
-	CreatedAt float64 `json:"createdAt"`
 	// A number containing the date when the deployment was deleted at milliseconds
 	DeletedAt *float64 `json:"deletedAt,omitempty"`
 	// Computed field that is only available for deployments with a microfrontend configuration.
@@ -7455,19 +7460,15 @@ type CancelDeploymentResponseBody struct {
 	ErrorMessage *string  `json:"errorMessage,omitempty"`
 	ErrorStep    *string  `json:"errorStep,omitempty"`
 	// Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service
-	PassiveRegions []string                        `json:"passiveRegions,omitempty"`
-	GitSource      *CancelDeploymentGitSourceUnion `json:"gitSource,omitempty"`
-	// The name of the project associated with the deployment at the time that the deployment was created
-	Name              string            `json:"name"`
-	Meta              map[string]string `json:"meta"`
-	OriginCacheRegion *string           `json:"originCacheRegion,omitempty"`
+	PassiveRegions    []string                        `json:"passiveRegions,omitempty"`
+	GitSource         *CancelDeploymentGitSourceUnion `json:"gitSource,omitempty"`
+	Meta              map[string]string               `json:"meta"`
+	OriginCacheRegion *string                         `json:"originCacheRegion,omitempty"`
 	// If set it overrides the `projectSettings.nodeVersion` for this deployment.
 	NodeVersion *CancelDeploymentNodeVersion `json:"nodeVersion,omitempty"`
 	// The public project information associated with the deployment.
 	Project  *CancelDeploymentProject `json:"project,omitempty"`
 	Prebuilt *bool                    `json:"prebuilt,omitempty"`
-	// The state of the deployment depending on the process of deploying, or if it is ready or in an error state
-	ReadyState CancelDeploymentReadyState `json:"readyState"`
 	// Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
 	ReadySubstate *CancelDeploymentReadySubstate `json:"readySubstate,omitempty"`
 	// The regions the deployment exists in
@@ -7478,14 +7479,17 @@ type CancelDeploymentResponseBody struct {
 	Source *CancelDeploymentSource `json:"source,omitempty"`
 	// If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
 	Target *CancelDeploymentTargetEnum `json:"target,omitempty"`
-	Type   CancelDeploymentType        `json:"type"`
 	// A number containing the date when the deployment was undeleted at milliseconds
 	UndeletedAt *float64 `json:"undeletedAt,omitempty"`
 	// A string with the unique URL of the deployment
 	URL string `json:"url"`
+	// Since January 2025 User-configured deployment ID for skew protection with pre-built deployments. This is set when users configure a custom deploymentId in their next.config.js file. This allows Next.js to use skew protection even when deployments are pre-built outside of Vercel's build system.
+	UserConfiguredDeploymentID *string `json:"userConfiguredDeploymentId,omitempty"`
 	// The platform version that was used to create the deployment.
 	Version                float64                              `json:"version"`
 	OidcTokenClaims        *CancelDeploymentOidcTokenClaims     `json:"oidcTokenClaims,omitempty"`
+	ProjectID              string                               `json:"projectId"`
+	Plan                   CancelDeploymentPlan                 `json:"plan"`
 	ConnectBuildsEnabled   *bool                                `json:"connectBuildsEnabled,omitempty"`
 	ConnectConfigurationID *string                              `json:"connectConfigurationId,omitempty"`
 	CreatedIn              string                               `json:"createdIn"`
@@ -7495,8 +7499,6 @@ type CancelDeploymentResponseBody struct {
 	OwnerID                string                               `json:"ownerId"`
 	// Since November 2023 this field defines a Secure Compute network that will only be used to deploy passive lambdas to (as in passiveRegions)
 	PassiveConnectConfigurationID *string                              `json:"passiveConnectConfigurationId,omitempty"`
-	Plan                          CancelDeploymentPlan                 `json:"plan"`
-	ProjectID                     string                               `json:"projectId"`
 	Routes                        []CancelDeploymentRouteUnion         `json:"routes"`
 	GitRepo                       *CancelDeploymentGitRepoUnion        `json:"gitRepo,omitempty"`
 	Flags                         *CancelDeploymentFlagsUnion          `json:"flags,omitempty"`
@@ -7730,11 +7732,46 @@ func (o *CancelDeploymentResponseBody) GetOomReport() *CancelDeploymentOomReport
 	return o.OomReport
 }
 
+func (o *CancelDeploymentResponseBody) GetAliasWarning() *CancelDeploymentAliasWarning {
+	if o == nil {
+		return nil
+	}
+	return o.AliasWarning
+}
+
 func (o *CancelDeploymentResponseBody) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
+}
+
+func (o *CancelDeploymentResponseBody) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *CancelDeploymentResponseBody) GetReadyState() CancelDeploymentReadyState {
+	if o == nil {
+		return CancelDeploymentReadyState("")
+	}
+	return o.ReadyState
+}
+
+func (o *CancelDeploymentResponseBody) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *CancelDeploymentResponseBody) GetType() CancelDeploymentType {
+	if o == nil {
+		return CancelDeploymentType("")
+	}
+	return o.Type
 }
 
 func (o *CancelDeploymentResponseBody) GetAliasError() *CancelDeploymentAliasError {
@@ -7749,13 +7786,6 @@ func (o *CancelDeploymentResponseBody) GetAliasFinal() *string {
 		return nil
 	}
 	return o.AliasFinal
-}
-
-func (o *CancelDeploymentResponseBody) GetAliasWarning() *CancelDeploymentAliasWarning {
-	if o == nil {
-		return nil
-	}
-	return o.AliasWarning
 }
 
 func (o *CancelDeploymentResponseBody) GetAutoAssignCustomDomains() *bool {
@@ -7791,13 +7821,6 @@ func (o *CancelDeploymentResponseBody) GetChecksConclusion() *CancelDeploymentCh
 		return nil
 	}
 	return o.ChecksConclusion
-}
-
-func (o *CancelDeploymentResponseBody) GetCreatedAt() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.CreatedAt
 }
 
 func (o *CancelDeploymentResponseBody) GetDeletedAt() *float64 {
@@ -7863,13 +7886,6 @@ func (o *CancelDeploymentResponseBody) GetGitSource() *CancelDeploymentGitSource
 	return o.GitSource
 }
 
-func (o *CancelDeploymentResponseBody) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
 func (o *CancelDeploymentResponseBody) GetMeta() map[string]string {
 	if o == nil {
 		return map[string]string{}
@@ -7903,13 +7919,6 @@ func (o *CancelDeploymentResponseBody) GetPrebuilt() *bool {
 		return nil
 	}
 	return o.Prebuilt
-}
-
-func (o *CancelDeploymentResponseBody) GetReadyState() CancelDeploymentReadyState {
-	if o == nil {
-		return CancelDeploymentReadyState("")
-	}
-	return o.ReadyState
 }
 
 func (o *CancelDeploymentResponseBody) GetReadySubstate() *CancelDeploymentReadySubstate {
@@ -7947,13 +7956,6 @@ func (o *CancelDeploymentResponseBody) GetTarget() *CancelDeploymentTargetEnum {
 	return o.Target
 }
 
-func (o *CancelDeploymentResponseBody) GetType() CancelDeploymentType {
-	if o == nil {
-		return CancelDeploymentType("")
-	}
-	return o.Type
-}
-
 func (o *CancelDeploymentResponseBody) GetUndeletedAt() *float64 {
 	if o == nil {
 		return nil
@@ -7968,6 +7970,13 @@ func (o *CancelDeploymentResponseBody) GetURL() string {
 	return o.URL
 }
 
+func (o *CancelDeploymentResponseBody) GetUserConfiguredDeploymentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UserConfiguredDeploymentID
+}
+
 func (o *CancelDeploymentResponseBody) GetVersion() float64 {
 	if o == nil {
 		return 0.0
@@ -7980,6 +7989,20 @@ func (o *CancelDeploymentResponseBody) GetOidcTokenClaims() *CancelDeploymentOid
 		return nil
 	}
 	return o.OidcTokenClaims
+}
+
+func (o *CancelDeploymentResponseBody) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+func (o *CancelDeploymentResponseBody) GetPlan() CancelDeploymentPlan {
+	if o == nil {
+		return CancelDeploymentPlan("")
+	}
+	return o.Plan
 }
 
 func (o *CancelDeploymentResponseBody) GetConnectBuildsEnabled() *bool {
@@ -8036,20 +8059,6 @@ func (o *CancelDeploymentResponseBody) GetPassiveConnectConfigurationID() *strin
 		return nil
 	}
 	return o.PassiveConnectConfigurationID
-}
-
-func (o *CancelDeploymentResponseBody) GetPlan() CancelDeploymentPlan {
-	if o == nil {
-		return CancelDeploymentPlan("")
-	}
-	return o.Plan
-}
-
-func (o *CancelDeploymentResponseBody) GetProjectID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ProjectID
 }
 
 func (o *CancelDeploymentResponseBody) GetRoutes() []CancelDeploymentRouteUnion {

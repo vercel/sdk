@@ -9,11 +9,11 @@ import {
 
 let value:
   CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaType =
-    "number";
+    "string";
 ```
 
 ## Values
 
 ```typescript
-"number"
+"string"
 ```

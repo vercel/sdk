@@ -23,7 +23,7 @@ export const UpdateAccessGroupRole = {
  */
 export type UpdateAccessGroupRole = ClosedEnum<typeof UpdateAccessGroupRole>;
 
-export type Projects = {
+export type UpdateAccessGroupProjects = {
   /**
    * The ID of the project.
    */
@@ -39,7 +39,7 @@ export type UpdateAccessGroupRequestBody = {
    * The name of the access group
    */
   name?: string | undefined;
-  projects?: Array<Projects> | undefined;
+  projects?: Array<UpdateAccessGroupProjects> | undefined;
   /**
    * List of members to add to the access group.
    */
@@ -120,8 +120,8 @@ export const UpdateAccessGroupRole$outboundSchema: z.ZodNativeEnum<
 > = UpdateAccessGroupRole$inboundSchema;
 
 /** @internal */
-export const Projects$inboundSchema: z.ZodType<
-  Projects,
+export const UpdateAccessGroupProjects$inboundSchema: z.ZodType<
+  UpdateAccessGroupProjects,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -129,31 +129,35 @@ export const Projects$inboundSchema: z.ZodType<
   role: types.nullable(UpdateAccessGroupRole$inboundSchema),
 });
 /** @internal */
-export type Projects$Outbound = {
+export type UpdateAccessGroupProjects$Outbound = {
   projectId: string;
   role: string | null;
 };
 
 /** @internal */
-export const Projects$outboundSchema: z.ZodType<
-  Projects$Outbound,
+export const UpdateAccessGroupProjects$outboundSchema: z.ZodType<
+  UpdateAccessGroupProjects$Outbound,
   z.ZodTypeDef,
-  Projects
+  UpdateAccessGroupProjects
 > = z.object({
   projectId: z.string(),
   role: z.nullable(UpdateAccessGroupRole$outboundSchema),
 });
 
-export function projectsToJSON(projects: Projects): string {
-  return JSON.stringify(Projects$outboundSchema.parse(projects));
+export function updateAccessGroupProjectsToJSON(
+  updateAccessGroupProjects: UpdateAccessGroupProjects,
+): string {
+  return JSON.stringify(
+    UpdateAccessGroupProjects$outboundSchema.parse(updateAccessGroupProjects),
+  );
 }
-export function projectsFromJSON(
+export function updateAccessGroupProjectsFromJSON(
   jsonString: string,
-): SafeParseResult<Projects, SDKValidationError> {
+): SafeParseResult<UpdateAccessGroupProjects, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Projects$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Projects' from JSON`,
+    (x) => UpdateAccessGroupProjects$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateAccessGroupProjects' from JSON`,
   );
 }
 
@@ -164,14 +168,16 @@ export const UpdateAccessGroupRequestBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   name: types.optional(types.string()),
-  projects: types.optional(z.array(z.lazy(() => Projects$inboundSchema))),
+  projects: types.optional(
+    z.array(z.lazy(() => UpdateAccessGroupProjects$inboundSchema)),
+  ),
   membersToAdd: types.optional(z.array(types.string())),
   membersToRemove: types.optional(z.array(types.string())),
 });
 /** @internal */
 export type UpdateAccessGroupRequestBody$Outbound = {
   name?: string | undefined;
-  projects?: Array<Projects$Outbound> | undefined;
+  projects?: Array<UpdateAccessGroupProjects$Outbound> | undefined;
   membersToAdd?: Array<string> | undefined;
   membersToRemove?: Array<string> | undefined;
 };
@@ -183,7 +189,8 @@ export const UpdateAccessGroupRequestBody$outboundSchema: z.ZodType<
   UpdateAccessGroupRequestBody
 > = z.object({
   name: z.string().optional(),
-  projects: z.array(z.lazy(() => Projects$outboundSchema)).optional(),
+  projects: z.array(z.lazy(() => UpdateAccessGroupProjects$outboundSchema))
+    .optional(),
   membersToAdd: z.array(z.string()).optional(),
   membersToRemove: z.array(z.string()).optional(),
 });

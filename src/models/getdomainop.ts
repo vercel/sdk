@@ -85,15 +85,15 @@ export type GetDomainDomain = {
    * Whether or not the domain is registered with Name.com. If set to `true`, the domain is registered with Name.com.
    */
   registrar?: Registrar | undefined;
+  /**
+   * The domain name.
+   */
+  name: string;
   teamId: string | null;
   /**
    * If it was purchased through Vercel, the timestamp in milliseconds when it was purchased.
    */
   boughtAt: number | null;
-  /**
-   * The domain name.
-   */
-  name: string;
   /**
    * Timestamp in milliseconds when the domain was created in the registry.
    */
@@ -259,9 +259,9 @@ export const GetDomainDomain$inboundSchema: z.ZodType<
   customNameservers: types.optional(z.array(types.string())),
   creator: z.lazy(() => GetDomainCreator$inboundSchema),
   registrar: types.optional(Registrar$inboundSchema),
+  name: types.string(),
   teamId: types.nullable(types.string()),
   boughtAt: types.nullable(types.number()),
-  name: types.string(),
   createdAt: types.number(),
   expiresAt: types.nullable(types.number()),
   id: types.string(),
@@ -281,9 +281,9 @@ export type GetDomainDomain$Outbound = {
   customNameservers?: Array<string> | undefined;
   creator: GetDomainCreator$Outbound;
   registrar?: string | undefined;
+  name: string;
   teamId: string | null;
   boughtAt: number | null;
-  name: string;
   createdAt: number;
   expiresAt: number | null;
   id: string;
@@ -308,9 +308,9 @@ export const GetDomainDomain$outboundSchema: z.ZodType<
   customNameservers: z.array(z.string()).optional(),
   creator: z.lazy(() => GetDomainCreator$outboundSchema),
   registrar: Registrar$outboundSchema.optional(),
+  name: z.string(),
   teamId: z.nullable(z.string()),
   boughtAt: z.nullable(z.number()),
-  name: z.string(),
   createdAt: z.number(),
   expiresAt: z.nullable(z.number()),
   id: z.string(),

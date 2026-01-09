@@ -6339,7 +6339,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"store":{"projectsMetadata":[{"id":"<id>","projectId":"<id>","name":"<value>","environments":[],"envVarPrefix":"<value>","environmentVariables":["<value 1>","<value 2>"]}],"usageQuotaExceeded":true,"status":"available","externalResourceId":"<id>","product":{"value":"{\"__@BRAND@8897\":{}}"},"secrets":[]}}
+              {"store":{"projectsMetadata":[{"id":"<id>","projectId":"<id>","name":"<value>","environments":[],"envVarPrefix":"<value>","environmentVariables":["<value 1>","<value 2>"]}],"usageQuotaExceeded":true,"status":"available","externalResourceId":"<id>","product":{"integration":{"id":"<id>","name":"<value>","slug":"<value>","icon":"<value>"},"integrationConfigurationId":"<id>","supportedProtocols":[]},"secrets":[]}}
             type: simple
     x-speakeasy-test-group: integrations
     x-speakeasy-test-rebuild: true
@@ -6846,7 +6846,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"drains":[{"id":"<id>","ownerId":"<id>","name":"<value>","createdAt":7495.57,"updatedAt":4759.82,"schemas":{},"delivery":{"type":"internal","target":"vercel-otel-traces-db"},"source":{"kind":"self-served"}}]}
+              {"drains":[{"id":"<id>","createdAt":7495.57,"updatedAt":4759.82,"name":"<value>","ownerId":"<id>","schemas":{},"delivery":{"type":"internal","target":"vercel-otel-traces-db"},"source":{"kind":"self-served"}}]}
             type: simple
     x-speakeasy-test-group: logDrains
     x-speakeasy-test-rebuild: true
@@ -6892,7 +6892,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"id":"<id>","ownerId":"<id>","name":"<value>","createdAt":3665.73,"updatedAt":3681.88,"schemas":{},"delivery":{"type":"otlphttp","endpoint":{"traces":"<value>"},"encoding":"json","headers":{"key":"<value>"}},"source":{"kind":"self-served"}}
+              {"id":"<id>","createdAt":3665.73,"updatedAt":3681.88,"name":"<value>","ownerId":"<id>","schemas":{},"delivery":{"type":"otlphttp","endpoint":{"traces":"<value>"},"encoding":"json","headers":{"key":"<value>"}},"source":{"kind":"self-served"}}
             type: simple
     x-speakeasy-test-group: drains
     x-speakeasy-test-rebuild: true
@@ -6938,7 +6938,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"id":"<id>","ownerId":"<id>","name":"<value>","createdAt":1182.63,"updatedAt":7579.11,"schemas":{},"delivery":{"type":"http","endpoint":"<value>","encoding":"ndjson","headers":{"key":"<value>","key1":"<value>","key2":"<value>"}},"source":{"kind":"integration","integrationId":"<id>","integrationConfigurationId":"<id>"}}
+              {"id":"<id>","createdAt":1182.63,"updatedAt":7579.11,"name":"<value>","ownerId":"<id>","schemas":{},"delivery":{"type":"http","endpoint":"<value>","encoding":"ndjson","headers":{"key":"<value>","key1":"<value>","key2":"<value>"}},"source":{"kind":"integration","integrationId":"<id>","integrationConfigurationId":"<id>"}}
             type: simple
     x-speakeasy-test-group: drains
     x-speakeasy-test-rebuild: true
@@ -6961,7 +6961,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"id":"<id>","ownerId":"<id>","name":"<value>","createdAt":7781.81,"updatedAt":8087.89,"schemas":{},"delivery":{"type":"internal","target":"vercel-otel-traces-db"},"source":{"kind":"integration","integrationId":"<id>","integrationConfigurationId":"<id>"}}
+              {"id":"<id>","createdAt":7781.81,"updatedAt":8087.89,"name":"<value>","ownerId":"<id>","schemas":{},"delivery":{"type":"internal","target":"vercel-otel-traces-db"},"source":{"kind":"integration","integrationId":"<id>","integrationConfigurationId":"<id>"}}
             type: simple
     x-speakeasy-test-group: drains
     x-speakeasy-test-rebuild: true
@@ -7591,4 +7591,107 @@ workflows:
               {"gitAccount":{"provider":"bitbucket","namespaceId":"<id>"},"repos":[{"id":6849.08,"provider":"github-custom-host","url":"https://striking-amnesty.com/","name":"<value>","slug":"<value>","namespace":"<value>","owner":{"id":2912.2,"name":"<value>"},"ownerType":"user","private":true,"defaultBranch":"<value>","updatedAt":4535.98}]}
             type: simple
     x-speakeasy-test-group: integrations
+    x-speakeasy-test-rebuild: true
+  - workflowId: listNetworks
+    steps:
+      - stepId: test
+        operationId: listNetworks
+        parameters:
+          - name: includeHostedZones
+            in: query
+            value: true
+          - name: includePeeringConnections
+            in: query
+            value: true
+          - name: includeProjects
+            in: query
+            value: true
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              [{"awsAccountId":"<id>","awsRegion":"<value>","cidr":"<value>","createdAt":9379.76,"id":"<id>","name":"<value>","status":"create_in_progress","teamId":"<id>"}]
+            type: simple
+    x-speakeasy-test-group: connect
+    x-speakeasy-test-rebuild: true
+  - workflowId: createNetwork
+    steps:
+      - stepId: test
+        operationId: createNetwork
+        parameters:
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        requestBody:
+          contentType: application/json
+          payload:
+            awsAvailabilityZoneIds:
+              - use1-az1
+            cidr: 192.168.0.0/16
+            name: <value>
+            region: iad1
+        successCriteria:
+          - condition: $statusCode == 201
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"awsAccountId":"<id>","awsRegion":"<value>","cidr":"<value>","createdAt":4149.44,"id":"<id>","name":"<value>","status":"error","teamId":"<id>"}
+            type: simple
+    x-speakeasy-test-group: connect
+    x-speakeasy-test-rebuild: true
+  - workflowId: updateNetwork
+    steps:
+      - stepId: test
+        operationId: updateNetwork
+        parameters:
+          - name: networkId
+            in: path
+            value: uzrmorq7bn05z-fz
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"awsAccountId":"<id>","awsRegion":"<value>","cidr":"<value>","createdAt":9676.6,"id":"<id>","name":"<value>","status":"error","teamId":"<id>"}
+            type: simple
+    x-speakeasy-test-group: connect
+    x-speakeasy-test-rebuild: true
+  - workflowId: readNetwork
+    steps:
+      - stepId: test
+        operationId: readNetwork
+        parameters:
+          - name: networkId
+            in: path
+            value: uzrmorq7bn05z-fz
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"awsAccountId":"<id>","awsRegion":"<value>","cidr":"<value>","createdAt":1571.54,"id":"<id>","name":"<value>","status":"delete_in_progress","teamId":"<id>"}
+            type: simple
+    x-speakeasy-test-group: connect
     x-speakeasy-test-rebuild: true

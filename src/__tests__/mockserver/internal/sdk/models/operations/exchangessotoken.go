@@ -4,35 +4,111 @@ package operations
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/utils"
 )
 
-// GrantType - The grant type, when using x-www-form-urlencoded content type
-type GrantType string
+// GrantTypeRefreshToken - The grant type, when using x-www-form-urlencoded content type
+type GrantTypeRefreshToken string
 
 const (
-	GrantTypeAuthorizationCode GrantType = "authorization_code"
+	GrantTypeRefreshTokenRefreshToken GrantTypeRefreshToken = "refresh_token"
 )
 
-func (e GrantType) ToPointer() *GrantType {
+func (e GrantTypeRefreshToken) ToPointer() *GrantTypeRefreshToken {
 	return &e
 }
-func (e *GrantType) UnmarshalJSON(data []byte) error {
+func (e *GrantTypeRefreshToken) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "refresh_token":
+		*e = GrantTypeRefreshToken(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GrantTypeRefreshToken: %v", v)
+	}
+}
+
+type RefreshToken struct {
+	// The refresh token received from previous token exchange
+	RefreshToken string `json:"refresh_token"`
+	// The integration client id
+	ClientID string `json:"client_id"`
+	// The integration client secret
+	ClientSecret string `json:"client_secret"`
+	// The grant type, when using x-www-form-urlencoded content type
+	GrantType GrantTypeRefreshToken `json:"grant_type"`
+}
+
+func (r RefreshToken) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RefreshToken) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"refresh_token", "client_id", "client_secret", "grant_type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *RefreshToken) GetRefreshToken() string {
+	if o == nil {
+		return ""
+	}
+	return o.RefreshToken
+}
+
+func (o *RefreshToken) GetClientID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ClientID
+}
+
+func (o *RefreshToken) GetClientSecret() string {
+	if o == nil {
+		return ""
+	}
+	return o.ClientSecret
+}
+
+func (o *RefreshToken) GetGrantType() GrantTypeRefreshToken {
+	if o == nil {
+		return GrantTypeRefreshToken("")
+	}
+	return o.GrantType
+}
+
+// GrantTypeAuthorizationCode - The grant type, when using x-www-form-urlencoded content type
+type GrantTypeAuthorizationCode string
+
+const (
+	GrantTypeAuthorizationCodeAuthorizationCode GrantTypeAuthorizationCode = "authorization_code"
+)
+
+func (e GrantTypeAuthorizationCode) ToPointer() *GrantTypeAuthorizationCode {
+	return &e
+}
+func (e *GrantTypeAuthorizationCode) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "authorization_code":
-		*e = GrantType(v)
+		*e = GrantTypeAuthorizationCode(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GrantType: %v", v)
+		return fmt.Errorf("invalid value for GrantTypeAuthorizationCode: %v", v)
 	}
 }
 
-type ExchangeSsoTokenRequest struct {
+type AuthorizationCode struct {
 	// The sensitive code received from Vercel
 	Code string `json:"code"`
 	// The state received from the initialization request
@@ -44,89 +120,321 @@ type ExchangeSsoTokenRequest struct {
 	// The integration redirect URI
 	RedirectURI *string `json:"redirect_uri,omitempty"`
 	// The grant type, when using x-www-form-urlencoded content type
-	GrantType *GrantType `json:"grant_type,omitempty"`
+	GrantType GrantTypeAuthorizationCode `json:"grant_type"`
 }
 
-func (o *ExchangeSsoTokenRequest) GetCode() string {
+func (a AuthorizationCode) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AuthorizationCode) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"code", "client_id", "client_secret", "grant_type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *AuthorizationCode) GetCode() string {
 	if o == nil {
 		return ""
 	}
 	return o.Code
 }
 
-func (o *ExchangeSsoTokenRequest) GetState() *string {
+func (o *AuthorizationCode) GetState() *string {
 	if o == nil {
 		return nil
 	}
 	return o.State
 }
 
-func (o *ExchangeSsoTokenRequest) GetClientID() string {
+func (o *AuthorizationCode) GetClientID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ClientID
 }
 
-func (o *ExchangeSsoTokenRequest) GetClientSecret() string {
+func (o *AuthorizationCode) GetClientSecret() string {
 	if o == nil {
 		return ""
 	}
 	return o.ClientSecret
 }
 
-func (o *ExchangeSsoTokenRequest) GetRedirectURI() *string {
+func (o *AuthorizationCode) GetRedirectURI() *string {
 	if o == nil {
 		return nil
 	}
 	return o.RedirectURI
 }
 
-func (o *ExchangeSsoTokenRequest) GetGrantType() *GrantType {
+func (o *AuthorizationCode) GetGrantType() GrantTypeAuthorizationCode {
 	if o == nil {
-		return nil
+		return GrantTypeAuthorizationCode("")
 	}
 	return o.GrantType
 }
 
-type ExchangeSsoTokenResponseBody struct {
-	IDToken     string   `json:"id_token"`
-	AccessToken *string  `json:"access_token"`
-	TokenType   *string  `json:"token_type"`
-	ExpiresIn   *float64 `json:"expires_in,omitempty"`
+type ExchangeSsoTokenRequestType string
+
+const (
+	ExchangeSsoTokenRequestTypeAuthorizationCode ExchangeSsoTokenRequestType = "authorization_code"
+	ExchangeSsoTokenRequestTypeRefreshToken      ExchangeSsoTokenRequestType = "refresh_token"
+)
+
+type ExchangeSsoTokenRequest struct {
+	AuthorizationCode *AuthorizationCode `queryParam:"inline"`
+	RefreshToken      *RefreshToken      `queryParam:"inline"`
+
+	Type ExchangeSsoTokenRequestType
 }
 
-func (o *ExchangeSsoTokenResponseBody) GetIDToken() string {
+func CreateExchangeSsoTokenRequestAuthorizationCode(authorizationCode AuthorizationCode) ExchangeSsoTokenRequest {
+	typ := ExchangeSsoTokenRequestTypeAuthorizationCode
+
+	typStr := GrantTypeAuthorizationCode(typ)
+	authorizationCode.GrantType = typStr
+
+	return ExchangeSsoTokenRequest{
+		AuthorizationCode: &authorizationCode,
+		Type:              typ,
+	}
+}
+
+func CreateExchangeSsoTokenRequestRefreshToken(refreshToken RefreshToken) ExchangeSsoTokenRequest {
+	typ := ExchangeSsoTokenRequestTypeRefreshToken
+
+	typStr := GrantTypeRefreshToken(typ)
+	refreshToken.GrantType = typStr
+
+	return ExchangeSsoTokenRequest{
+		RefreshToken: &refreshToken,
+		Type:         typ,
+	}
+}
+
+func (u *ExchangeSsoTokenRequest) UnmarshalJSON(data []byte) error {
+
+	type discriminator struct {
+		GrantType string `json:"grant_type"`
+	}
+
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.GrantType {
+	case "authorization_code":
+		authorizationCode := new(AuthorizationCode)
+		if err := utils.UnmarshalJSON(data, &authorizationCode, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (GrantType == authorization_code) type AuthorizationCode within ExchangeSsoTokenRequest: %w", string(data), err)
+		}
+
+		u.AuthorizationCode = authorizationCode
+		u.Type = ExchangeSsoTokenRequestTypeAuthorizationCode
+		return nil
+	case "refresh_token":
+		refreshToken := new(RefreshToken)
+		if err := utils.UnmarshalJSON(data, &refreshToken, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (GrantType == refresh_token) type RefreshToken within ExchangeSsoTokenRequest: %w", string(data), err)
+		}
+
+		u.RefreshToken = refreshToken
+		u.Type = ExchangeSsoTokenRequestTypeRefreshToken
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ExchangeSsoTokenRequest", string(data))
+}
+
+func (u ExchangeSsoTokenRequest) MarshalJSON() ([]byte, error) {
+	if u.AuthorizationCode != nil {
+		return utils.MarshalJSON(u.AuthorizationCode, "", true)
+	}
+
+	if u.RefreshToken != nil {
+		return utils.MarshalJSON(u.RefreshToken, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type ExchangeSsoTokenRequest: all fields are null")
+}
+
+type ExchangeSsoTokenResponseBody2 struct {
+	IDToken      string  `json:"id_token"`
+	TokenType    string  `json:"token_type"`
+	AccessToken  string  `json:"access_token"`
+	RefreshToken string  `json:"refresh_token"`
+	ExpiresIn    float64 `json:"expires_in"`
+}
+
+func (e ExchangeSsoTokenResponseBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *ExchangeSsoTokenResponseBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"id_token", "token_type", "access_token", "refresh_token", "expires_in"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ExchangeSsoTokenResponseBody2) GetIDToken() string {
 	if o == nil {
 		return ""
 	}
 	return o.IDToken
 }
 
-func (o *ExchangeSsoTokenResponseBody) GetAccessToken() *string {
+func (o *ExchangeSsoTokenResponseBody2) GetTokenType() string {
 	if o == nil {
-		return nil
+		return ""
+	}
+	return o.TokenType
+}
+
+func (o *ExchangeSsoTokenResponseBody2) GetAccessToken() string {
+	if o == nil {
+		return ""
 	}
 	return o.AccessToken
 }
 
-func (o *ExchangeSsoTokenResponseBody) GetTokenType() *string {
+func (o *ExchangeSsoTokenResponseBody2) GetRefreshToken() string {
+	if o == nil {
+		return ""
+	}
+	return o.RefreshToken
+}
+
+func (o *ExchangeSsoTokenResponseBody2) GetExpiresIn() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.ExpiresIn
+}
+
+type ExchangeSsoTokenResponseBody1 struct {
+	IDToken      string   `json:"id_token"`
+	TokenType    *string  `json:"token_type"`
+	ExpiresIn    *float64 `json:"expires_in,omitempty"`
+	AccessToken  *string  `json:"access_token"`
+	RefreshToken *string  `json:"refresh_token,omitempty"`
+}
+
+func (e ExchangeSsoTokenResponseBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *ExchangeSsoTokenResponseBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"id_token", "token_type", "access_token"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ExchangeSsoTokenResponseBody1) GetIDToken() string {
+	if o == nil {
+		return ""
+	}
+	return o.IDToken
+}
+
+func (o *ExchangeSsoTokenResponseBody1) GetTokenType() *string {
 	if o == nil {
 		return nil
 	}
 	return o.TokenType
 }
 
-func (o *ExchangeSsoTokenResponseBody) GetExpiresIn() *float64 {
+func (o *ExchangeSsoTokenResponseBody1) GetExpiresIn() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.ExpiresIn
 }
 
+func (o *ExchangeSsoTokenResponseBody1) GetAccessToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AccessToken
+}
+
+func (o *ExchangeSsoTokenResponseBody1) GetRefreshToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RefreshToken
+}
+
+type ExchangeSsoTokenResponseBodyType string
+
+const (
+	ExchangeSsoTokenResponseBodyTypeExchangeSsoTokenResponseBody1 ExchangeSsoTokenResponseBodyType = "exchange_sso_token_ResponseBody_1"
+	ExchangeSsoTokenResponseBodyTypeExchangeSsoTokenResponseBody2 ExchangeSsoTokenResponseBodyType = "exchange_sso_token_ResponseBody_2"
+)
+
+type ExchangeSsoTokenResponseBody struct {
+	ExchangeSsoTokenResponseBody1 *ExchangeSsoTokenResponseBody1 `queryParam:"inline"`
+	ExchangeSsoTokenResponseBody2 *ExchangeSsoTokenResponseBody2 `queryParam:"inline"`
+
+	Type ExchangeSsoTokenResponseBodyType
+}
+
+func CreateExchangeSsoTokenResponseBodyExchangeSsoTokenResponseBody1(exchangeSsoTokenResponseBody1 ExchangeSsoTokenResponseBody1) ExchangeSsoTokenResponseBody {
+	typ := ExchangeSsoTokenResponseBodyTypeExchangeSsoTokenResponseBody1
+
+	return ExchangeSsoTokenResponseBody{
+		ExchangeSsoTokenResponseBody1: &exchangeSsoTokenResponseBody1,
+		Type:                          typ,
+	}
+}
+
+func CreateExchangeSsoTokenResponseBodyExchangeSsoTokenResponseBody2(exchangeSsoTokenResponseBody2 ExchangeSsoTokenResponseBody2) ExchangeSsoTokenResponseBody {
+	typ := ExchangeSsoTokenResponseBodyTypeExchangeSsoTokenResponseBody2
+
+	return ExchangeSsoTokenResponseBody{
+		ExchangeSsoTokenResponseBody2: &exchangeSsoTokenResponseBody2,
+		Type:                          typ,
+	}
+}
+
+func (u *ExchangeSsoTokenResponseBody) UnmarshalJSON(data []byte) error {
+
+	var exchangeSsoTokenResponseBody2 ExchangeSsoTokenResponseBody2 = ExchangeSsoTokenResponseBody2{}
+	if err := utils.UnmarshalJSON(data, &exchangeSsoTokenResponseBody2, "", true, nil); err == nil {
+		u.ExchangeSsoTokenResponseBody2 = &exchangeSsoTokenResponseBody2
+		u.Type = ExchangeSsoTokenResponseBodyTypeExchangeSsoTokenResponseBody2
+		return nil
+	}
+
+	var exchangeSsoTokenResponseBody1 ExchangeSsoTokenResponseBody1 = ExchangeSsoTokenResponseBody1{}
+	if err := utils.UnmarshalJSON(data, &exchangeSsoTokenResponseBody1, "", true, nil); err == nil {
+		u.ExchangeSsoTokenResponseBody1 = &exchangeSsoTokenResponseBody1
+		u.Type = ExchangeSsoTokenResponseBodyTypeExchangeSsoTokenResponseBody1
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ExchangeSsoTokenResponseBody", string(data))
+}
+
+func (u ExchangeSsoTokenResponseBody) MarshalJSON() ([]byte, error) {
+	if u.ExchangeSsoTokenResponseBody1 != nil {
+		return utils.MarshalJSON(u.ExchangeSsoTokenResponseBody1, "", true)
+	}
+
+	if u.ExchangeSsoTokenResponseBody2 != nil {
+		return utils.MarshalJSON(u.ExchangeSsoTokenResponseBody2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type ExchangeSsoTokenResponseBody: all fields are null")
+}
+
 type ExchangeSsoTokenResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
-	Object   *ExchangeSsoTokenResponseBody
+	OneOf    *ExchangeSsoTokenResponseBody
 }
 
 func (o *ExchangeSsoTokenResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -136,9 +444,9 @@ func (o *ExchangeSsoTokenResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *ExchangeSsoTokenResponse) GetObject() *ExchangeSsoTokenResponseBody {
+func (o *ExchangeSsoTokenResponse) GetOneOf() *ExchangeSsoTokenResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.Object
+	return o.OneOf
 }

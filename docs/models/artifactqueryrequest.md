@@ -12,6 +12,8 @@ let value: ArtifactQueryRequest = {
     hashes: [
       "12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
       "34HKQaOmR5t5Uy6vasdasdasdasd",
+      "12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+      "34HKQaOmR5t5Uy6vasdasdasdasd",
     ],
   },
 };

@@ -9,7 +9,7 @@ let value: PutFirewallConfigRulesSecurityConditionGroup = {
   conditions: [
     {
       type: "bot_category",
-      op: "pre",
+      op: "inc",
     },
   ],
 };

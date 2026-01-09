@@ -89,8 +89,16 @@ const value: models.CreateIntegrationStoreDirectProperties7 = {
 
 ```typescript
 const value: models.CreateIntegrationStoreDirectProperties8 = {
-  type: "string",
-  uiControl: "domain",
+  type: "array",
+  items: {
+    type: "string",
+  },
+  uiControl: "multi-vercel-region",
+  uiOptions: [
+    {
+      value: "<value>",
+    },
+  ],
 };
 ```
 
@@ -98,7 +106,17 @@ const value: models.CreateIntegrationStoreDirectProperties8 = {
 
 ```typescript
 const value: models.CreateIntegrationStoreDirectProperties9 = {
-  value: "<value>",
+  type: "string",
+  uiControl: "domain",
+};
+```
+
+### `models.CreateIntegrationStoreDirectProperties10`
+
+```typescript
+const value: models.CreateIntegrationStoreDirectProperties10 = {
+  type: "string",
+  uiControl: "git-namespace",
 };
 ```
 

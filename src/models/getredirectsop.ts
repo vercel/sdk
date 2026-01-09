@@ -56,8 +56,8 @@ export type ResponseBodyRedirects = {
   sensitive?: boolean | undefined;
   caseSensitive?: boolean | undefined;
   query?: boolean | undefined;
-  destination: string;
   source: string;
+  destination: string;
 };
 
 export type ResponseBodyVersion = {
@@ -244,8 +244,8 @@ export const ResponseBodyRedirects$inboundSchema: z.ZodType<
   sensitive: types.optional(types.boolean()),
   caseSensitive: types.optional(types.boolean()),
   query: types.optional(types.boolean()),
-  destination: types.string(),
   source: types.string(),
+  destination: types.string(),
 });
 /** @internal */
 export type ResponseBodyRedirects$Outbound = {
@@ -254,8 +254,8 @@ export type ResponseBodyRedirects$Outbound = {
   sensitive?: boolean | undefined;
   caseSensitive?: boolean | undefined;
   query?: boolean | undefined;
-  destination: string;
   source: string;
+  destination: string;
 };
 
 /** @internal */
@@ -269,8 +269,8 @@ export const ResponseBodyRedirects$outboundSchema: z.ZodType<
   sensitive: z.boolean().optional(),
   caseSensitive: z.boolean().optional(),
   query: z.boolean().optional(),
-  destination: z.string(),
   source: z.string(),
+  destination: z.string(),
 });
 
 export function responseBodyRedirectsToJSON(

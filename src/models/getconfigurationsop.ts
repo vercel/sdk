@@ -85,12 +85,12 @@ export type ResponseBodyIntegration = {
  * The configuration status. Optional. If not defined, assume 'ready'.
  */
 export const GetConfigurationsResponseBodyIntegrationsStatus = {
-  Pending: "pending",
+  Error: "error",
   Ready: "ready",
+  Pending: "pending",
   Onboarding: "onboarding",
   Suspended: "suspended",
   Resumed: "resumed",
-  Error: "error",
   Uninstalled: "uninstalled",
 } as const;
 /**
@@ -216,12 +216,12 @@ export type GetConfigurationsResponseBody2 = {
  * The configuration status. Optional. If not defined, assume 'ready'.
  */
 export const GetConfigurationsResponseBodyStatus = {
-  Pending: "pending",
+  Error: "error",
   Ready: "ready",
+  Pending: "pending",
   Onboarding: "onboarding",
   Suspended: "suspended",
   Resumed: "resumed",
-  Error: "error",
   Uninstalled: "uninstalled",
 } as const;
 /**

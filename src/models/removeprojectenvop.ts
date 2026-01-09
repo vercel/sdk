@@ -33,6 +33,17 @@ export type RemoveProjectEnvRequest = {
   slug?: string | undefined;
 };
 
+export const RemoveProjectEnvResponseBodyProjectsResponseType = {
+  Secret: "secret",
+  System: "system",
+  Encrypted: "encrypted",
+  Plain: "plain",
+  Sensitive: "sensitive",
+} as const;
+export type RemoveProjectEnvResponseBodyProjectsResponseType = ClosedEnum<
+  typeof RemoveProjectEnvResponseBodyProjectsResponseType
+>;
+
 export const RemoveProjectEnvTargetProjectsResponse2 = {
   Production: "production",
   Preview: "preview",
@@ -54,17 +65,6 @@ export type RemoveProjectEnvTargetProjectsResponse1 = ClosedEnum<
 export type RemoveProjectEnvResponseBodyProjectsResponseTarget =
   | Array<RemoveProjectEnvTargetProjectsResponse1>
   | RemoveProjectEnvTargetProjectsResponse2;
-
-export const RemoveProjectEnvResponseBodyProjectsResponseType = {
-  Secret: "secret",
-  System: "system",
-  Encrypted: "encrypted",
-  Plain: "plain",
-  Sensitive: "sensitive",
-} as const;
-export type RemoveProjectEnvResponseBodyProjectsResponseType = ClosedEnum<
-  typeof RemoveProjectEnvResponseBodyProjectsResponseType
->;
 
 export type RemoveProjectEnvContentHintProjectsResponse15 = {
   type: "flags-connection-string";
@@ -182,28 +182,27 @@ export type RemoveProjectEnvResponseBodyProjectsResponseInternalContentHint = {
 };
 
 export type RemoveProjectEnvResponseBody3 = {
+  type: RemoveProjectEnvResponseBodyProjectsResponseType;
+  value: string;
+  edgeConfigId?: string | null | undefined;
+  edgeConfigTokenId?: string | null | undefined;
+  createdAt?: number | undefined;
+  updatedAt?: number | undefined;
+  createdBy?: string | null | undefined;
+  id?: string | undefined;
+  key: string;
   target?:
     | Array<RemoveProjectEnvTargetProjectsResponse1>
     | RemoveProjectEnvTargetProjectsResponse2
     | undefined;
-  type: RemoveProjectEnvResponseBodyProjectsResponseType;
+  gitBranch?: string | undefined;
+  updatedBy?: string | null | undefined;
   /**
    * This is used to identify variables that have been migrated from type secret to sensitive.
    */
   sunsetSecretId?: string | undefined;
   decrypted?: boolean | undefined;
-  value: string;
-  vsmValue?: string | undefined;
-  id?: string | undefined;
-  key: string;
   configurationId?: string | null | undefined;
-  createdAt?: number | undefined;
-  updatedAt?: number | undefined;
-  createdBy?: string | null | undefined;
-  updatedBy?: string | null | undefined;
-  gitBranch?: string | undefined;
-  edgeConfigId?: string | null | undefined;
-  edgeConfigTokenId?: string | null | undefined;
   contentHint?:
     | RemoveProjectEnvContentHintProjectsResponse1
     | RemoveProjectEnvContentHintProjectsResponse2
@@ -233,6 +232,17 @@ export type RemoveProjectEnvResponseBody3 = {
   customEnvironmentIds?: Array<string> | undefined;
 };
 
+export const RemoveProjectEnvResponseBodyProjectsType = {
+  Secret: "secret",
+  System: "system",
+  Encrypted: "encrypted",
+  Plain: "plain",
+  Sensitive: "sensitive",
+} as const;
+export type RemoveProjectEnvResponseBodyProjectsType = ClosedEnum<
+  typeof RemoveProjectEnvResponseBodyProjectsType
+>;
+
 export const RemoveProjectEnvTargetProjects2 = {
   Production: "production",
   Preview: "preview",
@@ -254,17 +264,6 @@ export type RemoveProjectEnvTargetProjects1 = ClosedEnum<
 export type RemoveProjectEnvResponseBodyProjectsTarget =
   | Array<RemoveProjectEnvTargetProjects1>
   | RemoveProjectEnvTargetProjects2;
-
-export const RemoveProjectEnvResponseBodyProjectsType = {
-  Secret: "secret",
-  System: "system",
-  Encrypted: "encrypted",
-  Plain: "plain",
-  Sensitive: "sensitive",
-} as const;
-export type RemoveProjectEnvResponseBodyProjectsType = ClosedEnum<
-  typeof RemoveProjectEnvResponseBodyProjectsType
->;
 
 export type RemoveProjectEnvContentHintProjects15 = {
   type: "flags-connection-string";
@@ -381,28 +380,27 @@ export type RemoveProjectEnvResponseBodyProjectsInternalContentHint = {
 
 export type RemoveProjectEnvResponseBody2 = {
   system?: boolean | undefined;
+  type: RemoveProjectEnvResponseBodyProjectsType;
+  value: string;
+  edgeConfigId?: string | null | undefined;
+  edgeConfigTokenId?: string | null | undefined;
+  createdAt?: number | undefined;
+  updatedAt?: number | undefined;
+  createdBy?: string | null | undefined;
+  id?: string | undefined;
+  key: string;
   target?:
     | Array<RemoveProjectEnvTargetProjects1>
     | RemoveProjectEnvTargetProjects2
     | undefined;
-  type: RemoveProjectEnvResponseBodyProjectsType;
+  gitBranch?: string | undefined;
+  updatedBy?: string | null | undefined;
   /**
    * This is used to identify variables that have been migrated from type secret to sensitive.
    */
   sunsetSecretId?: string | undefined;
   decrypted?: boolean | undefined;
-  value: string;
-  vsmValue?: string | undefined;
-  id?: string | undefined;
-  key: string;
   configurationId?: string | null | undefined;
-  createdAt?: number | undefined;
-  updatedAt?: number | undefined;
-  createdBy?: string | null | undefined;
-  updatedBy?: string | null | undefined;
-  gitBranch?: string | undefined;
-  edgeConfigId?: string | null | undefined;
-  edgeConfigTokenId?: string | null | undefined;
   contentHint?:
     | RemoveProjectEnvContentHintProjects1
     | RemoveProjectEnvContentHintProjects2
@@ -432,6 +430,17 @@ export type RemoveProjectEnvResponseBody2 = {
   customEnvironmentIds?: Array<string> | undefined;
 };
 
+export const RemoveProjectEnvResponseBodyType = {
+  Secret: "secret",
+  System: "system",
+  Encrypted: "encrypted",
+  Plain: "plain",
+  Sensitive: "sensitive",
+} as const;
+export type RemoveProjectEnvResponseBodyType = ClosedEnum<
+  typeof RemoveProjectEnvResponseBodyType
+>;
+
 export const RemoveProjectEnvTarget2 = {
   Production: "production",
   Preview: "preview",
@@ -453,17 +462,6 @@ export type RemoveProjectEnvTarget1 = ClosedEnum<
 export type RemoveProjectEnvResponseBodyTarget =
   | Array<RemoveProjectEnvTarget1>
   | RemoveProjectEnvTarget2;
-
-export const RemoveProjectEnvResponseBodyType = {
-  Secret: "secret",
-  System: "system",
-  Encrypted: "encrypted",
-  Plain: "plain",
-  Sensitive: "sensitive",
-} as const;
-export type RemoveProjectEnvResponseBodyType = ClosedEnum<
-  typeof RemoveProjectEnvResponseBodyType
->;
 
 export type RemoveProjectEnvContentHint15 = {
   type: "flags-connection-string";
@@ -581,25 +579,24 @@ export type RemoveProjectEnvResponseBodyInternalContentHint = {
 };
 
 export type RemoveProjectEnvResponseBody1 = {
-  target?: Array<RemoveProjectEnvTarget1> | RemoveProjectEnvTarget2 | undefined;
   type: RemoveProjectEnvResponseBodyType;
+  value: string;
+  edgeConfigId?: string | null | undefined;
+  edgeConfigTokenId?: string | null | undefined;
+  createdAt?: number | undefined;
+  updatedAt?: number | undefined;
+  createdBy?: string | null | undefined;
+  id?: string | undefined;
+  key: string;
+  target?: Array<RemoveProjectEnvTarget1> | RemoveProjectEnvTarget2 | undefined;
+  gitBranch?: string | undefined;
+  updatedBy?: string | null | undefined;
   /**
    * This is used to identify variables that have been migrated from type secret to sensitive.
    */
   sunsetSecretId?: string | undefined;
   decrypted?: boolean | undefined;
-  value: string;
-  vsmValue?: string | undefined;
-  id?: string | undefined;
-  key: string;
   configurationId?: string | null | undefined;
-  createdAt?: number | undefined;
-  updatedAt?: number | undefined;
-  createdBy?: string | null | undefined;
-  updatedBy?: string | null | undefined;
-  gitBranch?: string | undefined;
-  edgeConfigId?: string | null | undefined;
-  edgeConfigTokenId?: string | null | undefined;
   contentHint?:
     | RemoveProjectEnvContentHint1
     | RemoveProjectEnvContentHint2
@@ -689,6 +686,15 @@ export function removeProjectEnvRequestFromJSON(
 }
 
 /** @internal */
+export const RemoveProjectEnvResponseBodyProjectsResponseType$inboundSchema:
+  z.ZodNativeEnum<typeof RemoveProjectEnvResponseBodyProjectsResponseType> = z
+    .nativeEnum(RemoveProjectEnvResponseBodyProjectsResponseType);
+/** @internal */
+export const RemoveProjectEnvResponseBodyProjectsResponseType$outboundSchema:
+  z.ZodNativeEnum<typeof RemoveProjectEnvResponseBodyProjectsResponseType> =
+    RemoveProjectEnvResponseBodyProjectsResponseType$inboundSchema;
+
+/** @internal */
 export const RemoveProjectEnvTargetProjectsResponse2$inboundSchema:
   z.ZodNativeEnum<typeof RemoveProjectEnvTargetProjectsResponse2> = z
     .nativeEnum(RemoveProjectEnvTargetProjectsResponse2);
@@ -757,15 +763,6 @@ export function removeProjectEnvResponseBodyProjectsResponseTargetFromJSON(
     `Failed to parse 'RemoveProjectEnvResponseBodyProjectsResponseTarget' from JSON`,
   );
 }
-
-/** @internal */
-export const RemoveProjectEnvResponseBodyProjectsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof RemoveProjectEnvResponseBodyProjectsResponseType> = z
-    .nativeEnum(RemoveProjectEnvResponseBodyProjectsResponseType);
-/** @internal */
-export const RemoveProjectEnvResponseBodyProjectsResponseType$outboundSchema:
-  z.ZodNativeEnum<typeof RemoveProjectEnvResponseBodyProjectsResponseType> =
-    RemoveProjectEnvResponseBodyProjectsResponseType$inboundSchema;
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse15$inboundSchema:
@@ -1734,27 +1731,26 @@ export const RemoveProjectEnvResponseBody3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  type: RemoveProjectEnvResponseBodyProjectsResponseType$inboundSchema,
+  value: types.string(),
+  edgeConfigId: z.nullable(types.string()).optional(),
+  edgeConfigTokenId: z.nullable(types.string()).optional(),
+  createdAt: types.optional(types.number()),
+  updatedAt: types.optional(types.number()),
+  createdBy: z.nullable(types.string()).optional(),
+  id: types.optional(types.string()),
+  key: types.string(),
   target: types.optional(
     smartUnion([
       z.array(RemoveProjectEnvTargetProjectsResponse1$inboundSchema),
       RemoveProjectEnvTargetProjectsResponse2$inboundSchema,
     ]),
   ),
-  type: RemoveProjectEnvResponseBodyProjectsResponseType$inboundSchema,
+  gitBranch: types.optional(types.string()),
+  updatedBy: z.nullable(types.string()).optional(),
   sunsetSecretId: types.optional(types.string()),
   decrypted: types.optional(types.boolean()),
-  value: types.string(),
-  vsmValue: types.optional(types.string()),
-  id: types.optional(types.string()),
-  key: types.string(),
   configurationId: z.nullable(types.string()).optional(),
-  createdAt: types.optional(types.number()),
-  updatedAt: types.optional(types.number()),
-  createdBy: z.nullable(types.string()).optional(),
-  updatedBy: z.nullable(types.string()).optional(),
-  gitBranch: types.optional(types.string()),
-  edgeConfigId: z.nullable(types.string()).optional(),
-  edgeConfigTokenId: z.nullable(types.string()).optional(),
   contentHint: z.nullable(
     z.union([
       z.lazy(() => RemoveProjectEnvContentHintProjectsResponse1$inboundSchema),
@@ -1784,22 +1780,21 @@ export const RemoveProjectEnvResponseBody3$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type RemoveProjectEnvResponseBody3$Outbound = {
-  target?: Array<string> | string | undefined;
   type: string;
-  sunsetSecretId?: string | undefined;
-  decrypted?: boolean | undefined;
   value: string;
-  vsmValue?: string | undefined;
-  id?: string | undefined;
-  key: string;
-  configurationId?: string | null | undefined;
+  edgeConfigId?: string | null | undefined;
+  edgeConfigTokenId?: string | null | undefined;
   createdAt?: number | undefined;
   updatedAt?: number | undefined;
   createdBy?: string | null | undefined;
-  updatedBy?: string | null | undefined;
+  id?: string | undefined;
+  key: string;
+  target?: Array<string> | string | undefined;
   gitBranch?: string | undefined;
-  edgeConfigId?: string | null | undefined;
-  edgeConfigTokenId?: string | null | undefined;
+  updatedBy?: string | null | undefined;
+  sunsetSecretId?: string | undefined;
+  decrypted?: boolean | undefined;
+  configurationId?: string | null | undefined;
   contentHint?:
     | RemoveProjectEnvContentHintProjectsResponse1$Outbound
     | RemoveProjectEnvContentHintProjectsResponse2$Outbound
@@ -1832,25 +1827,24 @@ export const RemoveProjectEnvResponseBody3$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RemoveProjectEnvResponseBody3
 > = z.object({
+  type: RemoveProjectEnvResponseBodyProjectsResponseType$outboundSchema,
+  value: z.string(),
+  edgeConfigId: z.nullable(z.string()).optional(),
+  edgeConfigTokenId: z.nullable(z.string()).optional(),
+  createdAt: z.number().optional(),
+  updatedAt: z.number().optional(),
+  createdBy: z.nullable(z.string()).optional(),
+  id: z.string().optional(),
+  key: z.string(),
   target: smartUnion([
     z.array(RemoveProjectEnvTargetProjectsResponse1$outboundSchema),
     RemoveProjectEnvTargetProjectsResponse2$outboundSchema,
   ]).optional(),
-  type: RemoveProjectEnvResponseBodyProjectsResponseType$outboundSchema,
+  gitBranch: z.string().optional(),
+  updatedBy: z.nullable(z.string()).optional(),
   sunsetSecretId: z.string().optional(),
   decrypted: z.boolean().optional(),
-  value: z.string(),
-  vsmValue: z.string().optional(),
-  id: z.string().optional(),
-  key: z.string(),
   configurationId: z.nullable(z.string()).optional(),
-  createdAt: z.number().optional(),
-  updatedAt: z.number().optional(),
-  createdBy: z.nullable(z.string()).optional(),
-  updatedBy: z.nullable(z.string()).optional(),
-  gitBranch: z.string().optional(),
-  edgeConfigId: z.nullable(z.string()).optional(),
-  edgeConfigTokenId: z.nullable(z.string()).optional(),
   contentHint: z.nullable(
     z.union([
       z.lazy(() => RemoveProjectEnvContentHintProjectsResponse1$outboundSchema),
@@ -1911,6 +1905,15 @@ export function removeProjectEnvResponseBody3FromJSON(
     `Failed to parse 'RemoveProjectEnvResponseBody3' from JSON`,
   );
 }
+
+/** @internal */
+export const RemoveProjectEnvResponseBodyProjectsType$inboundSchema:
+  z.ZodNativeEnum<typeof RemoveProjectEnvResponseBodyProjectsType> = z
+    .nativeEnum(RemoveProjectEnvResponseBodyProjectsType);
+/** @internal */
+export const RemoveProjectEnvResponseBodyProjectsType$outboundSchema:
+  z.ZodNativeEnum<typeof RemoveProjectEnvResponseBodyProjectsType> =
+    RemoveProjectEnvResponseBodyProjectsType$inboundSchema;
 
 /** @internal */
 export const RemoveProjectEnvTargetProjects2$inboundSchema: z.ZodNativeEnum<
@@ -1978,15 +1981,6 @@ export function removeProjectEnvResponseBodyProjectsTargetFromJSON(
     `Failed to parse 'RemoveProjectEnvResponseBodyProjectsTarget' from JSON`,
   );
 }
-
-/** @internal */
-export const RemoveProjectEnvResponseBodyProjectsType$inboundSchema:
-  z.ZodNativeEnum<typeof RemoveProjectEnvResponseBodyProjectsType> = z
-    .nativeEnum(RemoveProjectEnvResponseBodyProjectsType);
-/** @internal */
-export const RemoveProjectEnvResponseBodyProjectsType$outboundSchema:
-  z.ZodNativeEnum<typeof RemoveProjectEnvResponseBodyProjectsType> =
-    RemoveProjectEnvResponseBodyProjectsType$inboundSchema;
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjects15$inboundSchema: z.ZodType<
@@ -2830,27 +2824,26 @@ export const RemoveProjectEnvResponseBody2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   system: types.optional(types.boolean()),
+  type: RemoveProjectEnvResponseBodyProjectsType$inboundSchema,
+  value: types.string(),
+  edgeConfigId: z.nullable(types.string()).optional(),
+  edgeConfigTokenId: z.nullable(types.string()).optional(),
+  createdAt: types.optional(types.number()),
+  updatedAt: types.optional(types.number()),
+  createdBy: z.nullable(types.string()).optional(),
+  id: types.optional(types.string()),
+  key: types.string(),
   target: types.optional(
     smartUnion([
       z.array(RemoveProjectEnvTargetProjects1$inboundSchema),
       RemoveProjectEnvTargetProjects2$inboundSchema,
     ]),
   ),
-  type: RemoveProjectEnvResponseBodyProjectsType$inboundSchema,
+  gitBranch: types.optional(types.string()),
+  updatedBy: z.nullable(types.string()).optional(),
   sunsetSecretId: types.optional(types.string()),
   decrypted: types.optional(types.boolean()),
-  value: types.string(),
-  vsmValue: types.optional(types.string()),
-  id: types.optional(types.string()),
-  key: types.string(),
   configurationId: z.nullable(types.string()).optional(),
-  createdAt: types.optional(types.number()),
-  updatedAt: types.optional(types.number()),
-  createdBy: z.nullable(types.string()).optional(),
-  updatedBy: z.nullable(types.string()).optional(),
-  gitBranch: types.optional(types.string()),
-  edgeConfigId: z.nullable(types.string()).optional(),
-  edgeConfigTokenId: z.nullable(types.string()).optional(),
   contentHint: z.nullable(
     z.union([
       z.lazy(() => RemoveProjectEnvContentHintProjects1$inboundSchema),
@@ -2881,22 +2874,21 @@ export const RemoveProjectEnvResponseBody2$inboundSchema: z.ZodType<
 /** @internal */
 export type RemoveProjectEnvResponseBody2$Outbound = {
   system?: boolean | undefined;
-  target?: Array<string> | string | undefined;
   type: string;
-  sunsetSecretId?: string | undefined;
-  decrypted?: boolean | undefined;
   value: string;
-  vsmValue?: string | undefined;
-  id?: string | undefined;
-  key: string;
-  configurationId?: string | null | undefined;
+  edgeConfigId?: string | null | undefined;
+  edgeConfigTokenId?: string | null | undefined;
   createdAt?: number | undefined;
   updatedAt?: number | undefined;
   createdBy?: string | null | undefined;
-  updatedBy?: string | null | undefined;
+  id?: string | undefined;
+  key: string;
+  target?: Array<string> | string | undefined;
   gitBranch?: string | undefined;
-  edgeConfigId?: string | null | undefined;
-  edgeConfigTokenId?: string | null | undefined;
+  updatedBy?: string | null | undefined;
+  sunsetSecretId?: string | undefined;
+  decrypted?: boolean | undefined;
+  configurationId?: string | null | undefined;
   contentHint?:
     | RemoveProjectEnvContentHintProjects1$Outbound
     | RemoveProjectEnvContentHintProjects2$Outbound
@@ -2930,25 +2922,24 @@ export const RemoveProjectEnvResponseBody2$outboundSchema: z.ZodType<
   RemoveProjectEnvResponseBody2
 > = z.object({
   system: z.boolean().optional(),
+  type: RemoveProjectEnvResponseBodyProjectsType$outboundSchema,
+  value: z.string(),
+  edgeConfigId: z.nullable(z.string()).optional(),
+  edgeConfigTokenId: z.nullable(z.string()).optional(),
+  createdAt: z.number().optional(),
+  updatedAt: z.number().optional(),
+  createdBy: z.nullable(z.string()).optional(),
+  id: z.string().optional(),
+  key: z.string(),
   target: smartUnion([
     z.array(RemoveProjectEnvTargetProjects1$outboundSchema),
     RemoveProjectEnvTargetProjects2$outboundSchema,
   ]).optional(),
-  type: RemoveProjectEnvResponseBodyProjectsType$outboundSchema,
+  gitBranch: z.string().optional(),
+  updatedBy: z.nullable(z.string()).optional(),
   sunsetSecretId: z.string().optional(),
   decrypted: z.boolean().optional(),
-  value: z.string(),
-  vsmValue: z.string().optional(),
-  id: z.string().optional(),
-  key: z.string(),
   configurationId: z.nullable(z.string()).optional(),
-  createdAt: z.number().optional(),
-  updatedAt: z.number().optional(),
-  createdBy: z.nullable(z.string()).optional(),
-  updatedBy: z.nullable(z.string()).optional(),
-  gitBranch: z.string().optional(),
-  edgeConfigId: z.nullable(z.string()).optional(),
-  edgeConfigTokenId: z.nullable(z.string()).optional(),
   contentHint: z.nullable(
     z.union([
       z.lazy(() => RemoveProjectEnvContentHintProjects1$outboundSchema),
@@ -2995,6 +2986,15 @@ export function removeProjectEnvResponseBody2FromJSON(
     `Failed to parse 'RemoveProjectEnvResponseBody2' from JSON`,
   );
 }
+
+/** @internal */
+export const RemoveProjectEnvResponseBodyType$inboundSchema: z.ZodNativeEnum<
+  typeof RemoveProjectEnvResponseBodyType
+> = z.nativeEnum(RemoveProjectEnvResponseBodyType);
+/** @internal */
+export const RemoveProjectEnvResponseBodyType$outboundSchema: z.ZodNativeEnum<
+  typeof RemoveProjectEnvResponseBodyType
+> = RemoveProjectEnvResponseBodyType$inboundSchema;
 
 /** @internal */
 export const RemoveProjectEnvTarget2$inboundSchema: z.ZodNativeEnum<
@@ -3057,15 +3057,6 @@ export function removeProjectEnvResponseBodyTargetFromJSON(
     `Failed to parse 'RemoveProjectEnvResponseBodyTarget' from JSON`,
   );
 }
-
-/** @internal */
-export const RemoveProjectEnvResponseBodyType$inboundSchema: z.ZodNativeEnum<
-  typeof RemoveProjectEnvResponseBodyType
-> = z.nativeEnum(RemoveProjectEnvResponseBodyType);
-/** @internal */
-export const RemoveProjectEnvResponseBodyType$outboundSchema: z.ZodNativeEnum<
-  typeof RemoveProjectEnvResponseBodyType
-> = RemoveProjectEnvResponseBodyType$inboundSchema;
 
 /** @internal */
 export const RemoveProjectEnvContentHint15$inboundSchema: z.ZodType<
@@ -3900,27 +3891,26 @@ export const RemoveProjectEnvResponseBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  type: RemoveProjectEnvResponseBodyType$inboundSchema,
+  value: types.string(),
+  edgeConfigId: z.nullable(types.string()).optional(),
+  edgeConfigTokenId: z.nullable(types.string()).optional(),
+  createdAt: types.optional(types.number()),
+  updatedAt: types.optional(types.number()),
+  createdBy: z.nullable(types.string()).optional(),
+  id: types.optional(types.string()),
+  key: types.string(),
   target: types.optional(
     smartUnion([
       z.array(RemoveProjectEnvTarget1$inboundSchema),
       RemoveProjectEnvTarget2$inboundSchema,
     ]),
   ),
-  type: RemoveProjectEnvResponseBodyType$inboundSchema,
+  gitBranch: types.optional(types.string()),
+  updatedBy: z.nullable(types.string()).optional(),
   sunsetSecretId: types.optional(types.string()),
   decrypted: types.optional(types.boolean()),
-  value: types.string(),
-  vsmValue: types.optional(types.string()),
-  id: types.optional(types.string()),
-  key: types.string(),
   configurationId: z.nullable(types.string()).optional(),
-  createdAt: types.optional(types.number()),
-  updatedAt: types.optional(types.number()),
-  createdBy: z.nullable(types.string()).optional(),
-  updatedBy: z.nullable(types.string()).optional(),
-  gitBranch: types.optional(types.string()),
-  edgeConfigId: z.nullable(types.string()).optional(),
-  edgeConfigTokenId: z.nullable(types.string()).optional(),
   contentHint: z.nullable(
     z.union([
       z.lazy(() => RemoveProjectEnvContentHint1$inboundSchema),
@@ -3948,22 +3938,21 @@ export const RemoveProjectEnvResponseBody1$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type RemoveProjectEnvResponseBody1$Outbound = {
-  target?: Array<string> | string | undefined;
   type: string;
-  sunsetSecretId?: string | undefined;
-  decrypted?: boolean | undefined;
   value: string;
-  vsmValue?: string | undefined;
-  id?: string | undefined;
-  key: string;
-  configurationId?: string | null | undefined;
+  edgeConfigId?: string | null | undefined;
+  edgeConfigTokenId?: string | null | undefined;
   createdAt?: number | undefined;
   updatedAt?: number | undefined;
   createdBy?: string | null | undefined;
-  updatedBy?: string | null | undefined;
+  id?: string | undefined;
+  key: string;
+  target?: Array<string> | string | undefined;
   gitBranch?: string | undefined;
-  edgeConfigId?: string | null | undefined;
-  edgeConfigTokenId?: string | null | undefined;
+  updatedBy?: string | null | undefined;
+  sunsetSecretId?: string | undefined;
+  decrypted?: boolean | undefined;
+  configurationId?: string | null | undefined;
   contentHint?:
     | RemoveProjectEnvContentHint1$Outbound
     | RemoveProjectEnvContentHint2$Outbound
@@ -3996,25 +3985,24 @@ export const RemoveProjectEnvResponseBody1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RemoveProjectEnvResponseBody1
 > = z.object({
+  type: RemoveProjectEnvResponseBodyType$outboundSchema,
+  value: z.string(),
+  edgeConfigId: z.nullable(z.string()).optional(),
+  edgeConfigTokenId: z.nullable(z.string()).optional(),
+  createdAt: z.number().optional(),
+  updatedAt: z.number().optional(),
+  createdBy: z.nullable(z.string()).optional(),
+  id: z.string().optional(),
+  key: z.string(),
   target: smartUnion([
     z.array(RemoveProjectEnvTarget1$outboundSchema),
     RemoveProjectEnvTarget2$outboundSchema,
   ]).optional(),
-  type: RemoveProjectEnvResponseBodyType$outboundSchema,
+  gitBranch: z.string().optional(),
+  updatedBy: z.nullable(z.string()).optional(),
   sunsetSecretId: z.string().optional(),
   decrypted: z.boolean().optional(),
-  value: z.string(),
-  vsmValue: z.string().optional(),
-  id: z.string().optional(),
-  key: z.string(),
   configurationId: z.nullable(z.string()).optional(),
-  createdAt: z.number().optional(),
-  updatedAt: z.number().optional(),
-  createdBy: z.nullable(z.string()).optional(),
-  updatedBy: z.nullable(z.string()).optional(),
-  gitBranch: z.string().optional(),
-  edgeConfigId: z.nullable(z.string()).optional(),
-  edgeConfigTokenId: z.nullable(z.string()).optional(),
   contentHint: z.nullable(
     z.union([
       z.lazy(() => RemoveProjectEnvContentHint1$outboundSchema),

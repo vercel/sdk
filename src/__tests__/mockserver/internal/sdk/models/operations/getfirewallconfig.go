@@ -758,13 +758,13 @@ func (e *GetFirewallConfigType2) UnmarshalJSON(data []byte) error {
 type GetFirewallConfigOp2 string
 
 const (
+	GetFirewallConfigOp2Sub  GetFirewallConfigOp2 = "sub"
 	GetFirewallConfigOp2Re   GetFirewallConfigOp2 = "re"
 	GetFirewallConfigOp2Eq   GetFirewallConfigOp2 = "eq"
 	GetFirewallConfigOp2Ex   GetFirewallConfigOp2 = "ex"
 	GetFirewallConfigOp2Inc  GetFirewallConfigOp2 = "inc"
 	GetFirewallConfigOp2Pre  GetFirewallConfigOp2 = "pre"
 	GetFirewallConfigOp2Suf  GetFirewallConfigOp2 = "suf"
-	GetFirewallConfigOp2Sub  GetFirewallConfigOp2 = "sub"
 	GetFirewallConfigOp2Gt   GetFirewallConfigOp2 = "gt"
 	GetFirewallConfigOp2Gte  GetFirewallConfigOp2 = "gte"
 	GetFirewallConfigOp2Lt   GetFirewallConfigOp2 = "lt"
@@ -783,6 +783,8 @@ func (e *GetFirewallConfigOp2) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "sub":
+		fallthrough
 	case "re":
 		fallthrough
 	case "eq":
@@ -794,8 +796,6 @@ func (e *GetFirewallConfigOp2) UnmarshalJSON(data []byte) error {
 	case "pre":
 		fallthrough
 	case "suf":
-		fallthrough
-	case "sub":
 		fallthrough
 	case "gt":
 		fallthrough
@@ -1413,13 +1413,13 @@ func (e *GetFirewallConfigType1) UnmarshalJSON(data []byte) error {
 type GetFirewallConfigOp1 string
 
 const (
+	GetFirewallConfigOp1Sub  GetFirewallConfigOp1 = "sub"
 	GetFirewallConfigOp1Re   GetFirewallConfigOp1 = "re"
 	GetFirewallConfigOp1Eq   GetFirewallConfigOp1 = "eq"
 	GetFirewallConfigOp1Ex   GetFirewallConfigOp1 = "ex"
 	GetFirewallConfigOp1Inc  GetFirewallConfigOp1 = "inc"
 	GetFirewallConfigOp1Pre  GetFirewallConfigOp1 = "pre"
 	GetFirewallConfigOp1Suf  GetFirewallConfigOp1 = "suf"
-	GetFirewallConfigOp1Sub  GetFirewallConfigOp1 = "sub"
 	GetFirewallConfigOp1Gt   GetFirewallConfigOp1 = "gt"
 	GetFirewallConfigOp1Gte  GetFirewallConfigOp1 = "gte"
 	GetFirewallConfigOp1Lt   GetFirewallConfigOp1 = "lt"
@@ -1438,6 +1438,8 @@ func (e *GetFirewallConfigOp1) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "sub":
+		fallthrough
 	case "re":
 		fallthrough
 	case "eq":
@@ -1449,8 +1451,6 @@ func (e *GetFirewallConfigOp1) UnmarshalJSON(data []byte) error {
 	case "pre":
 		fallthrough
 	case "suf":
-		fallthrough
-	case "sub":
 		fallthrough
 	case "gt":
 		fallthrough

@@ -12,46 +12,16 @@ it.skip("Domains Buy Domain", async () => {
   );
 });
 
-test("Domains Check Domain Price", async () => {
-  const testHttpClient = createTestHTTPClient("checkDomainPrice");
-
-  const vercel = new Vercel({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  const result = await vercel.domains.checkDomainPrice({
-    name: "example.com",
-    type: "new",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-  });
-  expect(result).toBeDefined();
-  expect(result).toEqual({
-    price: 20,
-    period: 1,
-  });
+it.skip("Domains Check Domain Price", async () => {
+  assert.fail(
+    "incomplete test found please make sure to address the following errors: [`workflow step checkDomainPrice.test referencing operation checkDomainPrice not found in document`]",
+  );
 });
 
-test("Domains Check Domain Status", async () => {
-  const testHttpClient = createTestHTTPClient("checkDomainStatus");
-
-  const vercel = new Vercel({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  const result = await vercel.domains.checkDomainStatus({
-    name: "example.com",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-  });
-  expect(result).toBeDefined();
-  expect(result).toEqual({
-    available: true,
-  });
+it.skip("Domains Check Domain Status", async () => {
+  assert.fail(
+    "incomplete test found please make sure to address the following errors: [`workflow step checkDomainStatus.test referencing operation checkDomainStatus not found in document`]",
+  );
 });
 
 it.skip("Domains Get Domain Transfer", async () => {
@@ -127,9 +97,9 @@ test("Domains Get Domain", async () => {
         email: "demo@example.com",
         id: "ZspSRT4ljIEEmMHgoDwKWDei",
       },
+      name: "example.com",
       teamId: "<id>",
       boughtAt: 1613602938882,
-      name: "example.com",
       createdAt: 1613602938882,
       expiresAt: 1613602938882,
       id: "EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1",
@@ -181,12 +151,12 @@ test("Domains Get Domains", async () => {
           email: "demo@example.com",
           id: "ZspSRT4ljIEEmMHgoDwKWDei",
         },
+        name: "example.com",
         teamId: "<id>",
-        createdAt: 1613602938882,
         boughtAt: 1613602938882,
+        createdAt: 1613602938882,
         expiresAt: 1613602938882,
         id: "EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1",
-        name: "example.com",
         orderedAt: 1613602938882,
         renew: true,
         serviceType: "zeit.world",

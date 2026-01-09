@@ -1373,17 +1373,63 @@ func (e *CreateIntegrationStoreDirectTypeObject) UnmarshalJSON(data []byte) erro
 	}
 }
 
-type CreateIntegrationStoreDirectPropertiesDisabledEnum string
+type CreateIntegrationStoreDirectTypeString7 string
 
 const (
-	CreateIntegrationStoreDirectPropertiesDisabledEnumUpdate CreateIntegrationStoreDirectPropertiesDisabledEnum = "update"
-	CreateIntegrationStoreDirectPropertiesDisabledEnumCreate CreateIntegrationStoreDirectPropertiesDisabledEnum = "create"
+	CreateIntegrationStoreDirectTypeString7String CreateIntegrationStoreDirectTypeString7 = "string"
 )
 
-func (e CreateIntegrationStoreDirectPropertiesDisabledEnum) ToPointer() *CreateIntegrationStoreDirectPropertiesDisabledEnum {
+func (e CreateIntegrationStoreDirectTypeString7) ToPointer() *CreateIntegrationStoreDirectTypeString7 {
 	return &e
 }
-func (e *CreateIntegrationStoreDirectPropertiesDisabledEnum) UnmarshalJSON(data []byte) error {
+func (e *CreateIntegrationStoreDirectTypeString7) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "string":
+		*e = CreateIntegrationStoreDirectTypeString7(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectTypeString7: %v", v)
+	}
+}
+
+type CreateIntegrationStoreDirectUIControlGitNamespace string
+
+const (
+	CreateIntegrationStoreDirectUIControlGitNamespaceGitNamespace CreateIntegrationStoreDirectUIControlGitNamespace = "git-namespace"
+)
+
+func (e CreateIntegrationStoreDirectUIControlGitNamespace) ToPointer() *CreateIntegrationStoreDirectUIControlGitNamespace {
+	return &e
+}
+func (e *CreateIntegrationStoreDirectUIControlGitNamespace) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "git-namespace":
+		*e = CreateIntegrationStoreDirectUIControlGitNamespace(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectUIControlGitNamespace: %v", v)
+	}
+}
+
+type CreateIntegrationStoreDirectUIReadOnlyEnum10 string
+
+const (
+	CreateIntegrationStoreDirectUIReadOnlyEnum10Update CreateIntegrationStoreDirectUIReadOnlyEnum10 = "update"
+	CreateIntegrationStoreDirectUIReadOnlyEnum10Create CreateIntegrationStoreDirectUIReadOnlyEnum10 = "create"
+)
+
+func (e CreateIntegrationStoreDirectUIReadOnlyEnum10) ToPointer() *CreateIntegrationStoreDirectUIReadOnlyEnum10 {
+	return &e
+}
+func (e *CreateIntegrationStoreDirectUIReadOnlyEnum10) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1392,131 +1438,131 @@ func (e *CreateIntegrationStoreDirectPropertiesDisabledEnum) UnmarshalJSON(data 
 	case "update":
 		fallthrough
 	case "create":
-		*e = CreateIntegrationStoreDirectPropertiesDisabledEnum(v)
+		*e = CreateIntegrationStoreDirectUIReadOnlyEnum10(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectPropertiesDisabledEnum: %v", v)
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectUIReadOnlyEnum10: %v", v)
 	}
 }
 
-type CreateIntegrationStoreDirectPropertiesDisabled struct {
+type CreateIntegrationStoreDirectUIReadOnly10 struct {
 	Expr string `json:"expr"`
 }
 
-func (c CreateIntegrationStoreDirectPropertiesDisabled) MarshalJSON() ([]byte, error) {
+func (c CreateIntegrationStoreDirectUIReadOnly10) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(c, "", false)
 }
 
-func (c *CreateIntegrationStoreDirectPropertiesDisabled) UnmarshalJSON(data []byte) error {
+func (c *CreateIntegrationStoreDirectUIReadOnly10) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"expr"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateIntegrationStoreDirectPropertiesDisabled) GetExpr() string {
+func (o *CreateIntegrationStoreDirectUIReadOnly10) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type CreateIntegrationStoreDirectPropertiesDisabledUnionType string
+type CreateIntegrationStoreDirectUIReadOnlyUnion10Type string
 
 const (
-	CreateIntegrationStoreDirectPropertiesDisabledUnionTypeBoolean                                            CreateIntegrationStoreDirectPropertiesDisabledUnionType = "boolean"
-	CreateIntegrationStoreDirectPropertiesDisabledUnionTypeCreateIntegrationStoreDirectPropertiesDisabled     CreateIntegrationStoreDirectPropertiesDisabledUnionType = "createIntegrationStoreDirect_properties_disabled"
-	CreateIntegrationStoreDirectPropertiesDisabledUnionTypeCreateIntegrationStoreDirectPropertiesDisabledEnum CreateIntegrationStoreDirectPropertiesDisabledUnionType = "createIntegrationStoreDirect_properties_disabled_enum"
+	CreateIntegrationStoreDirectUIReadOnlyUnion10TypeBoolean                                      CreateIntegrationStoreDirectUIReadOnlyUnion10Type = "boolean"
+	CreateIntegrationStoreDirectUIReadOnlyUnion10TypeCreateIntegrationStoreDirectUIReadOnly10     CreateIntegrationStoreDirectUIReadOnlyUnion10Type = "createIntegrationStoreDirect_ui:read-only_10"
+	CreateIntegrationStoreDirectUIReadOnlyUnion10TypeCreateIntegrationStoreDirectUIReadOnlyEnum10 CreateIntegrationStoreDirectUIReadOnlyUnion10Type = "createIntegrationStoreDirect_ui:read-only_enum_10"
 )
 
-type CreateIntegrationStoreDirectPropertiesDisabledUnion struct {
-	Boolean                                            *bool                                               `queryParam:"inline"`
-	CreateIntegrationStoreDirectPropertiesDisabled     *CreateIntegrationStoreDirectPropertiesDisabled     `queryParam:"inline"`
-	CreateIntegrationStoreDirectPropertiesDisabledEnum *CreateIntegrationStoreDirectPropertiesDisabledEnum `queryParam:"inline"`
+type CreateIntegrationStoreDirectUIReadOnlyUnion10 struct {
+	Boolean                                      *bool                                         `queryParam:"inline"`
+	CreateIntegrationStoreDirectUIReadOnly10     *CreateIntegrationStoreDirectUIReadOnly10     `queryParam:"inline"`
+	CreateIntegrationStoreDirectUIReadOnlyEnum10 *CreateIntegrationStoreDirectUIReadOnlyEnum10 `queryParam:"inline"`
 
-	Type CreateIntegrationStoreDirectPropertiesDisabledUnionType
+	Type CreateIntegrationStoreDirectUIReadOnlyUnion10Type
 }
 
-func CreateCreateIntegrationStoreDirectPropertiesDisabledUnionBoolean(boolean bool) CreateIntegrationStoreDirectPropertiesDisabledUnion {
-	typ := CreateIntegrationStoreDirectPropertiesDisabledUnionTypeBoolean
+func CreateCreateIntegrationStoreDirectUIReadOnlyUnion10Boolean(boolean bool) CreateIntegrationStoreDirectUIReadOnlyUnion10 {
+	typ := CreateIntegrationStoreDirectUIReadOnlyUnion10TypeBoolean
 
-	return CreateIntegrationStoreDirectPropertiesDisabledUnion{
+	return CreateIntegrationStoreDirectUIReadOnlyUnion10{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateCreateIntegrationStoreDirectPropertiesDisabledUnionCreateIntegrationStoreDirectPropertiesDisabled(createIntegrationStoreDirectPropertiesDisabled CreateIntegrationStoreDirectPropertiesDisabled) CreateIntegrationStoreDirectPropertiesDisabledUnion {
-	typ := CreateIntegrationStoreDirectPropertiesDisabledUnionTypeCreateIntegrationStoreDirectPropertiesDisabled
+func CreateCreateIntegrationStoreDirectUIReadOnlyUnion10CreateIntegrationStoreDirectUIReadOnly10(createIntegrationStoreDirectUIReadOnly10 CreateIntegrationStoreDirectUIReadOnly10) CreateIntegrationStoreDirectUIReadOnlyUnion10 {
+	typ := CreateIntegrationStoreDirectUIReadOnlyUnion10TypeCreateIntegrationStoreDirectUIReadOnly10
 
-	return CreateIntegrationStoreDirectPropertiesDisabledUnion{
-		CreateIntegrationStoreDirectPropertiesDisabled: &createIntegrationStoreDirectPropertiesDisabled,
+	return CreateIntegrationStoreDirectUIReadOnlyUnion10{
+		CreateIntegrationStoreDirectUIReadOnly10: &createIntegrationStoreDirectUIReadOnly10,
+		Type:                                     typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIReadOnlyUnion10CreateIntegrationStoreDirectUIReadOnlyEnum10(createIntegrationStoreDirectUIReadOnlyEnum10 CreateIntegrationStoreDirectUIReadOnlyEnum10) CreateIntegrationStoreDirectUIReadOnlyUnion10 {
+	typ := CreateIntegrationStoreDirectUIReadOnlyUnion10TypeCreateIntegrationStoreDirectUIReadOnlyEnum10
+
+	return CreateIntegrationStoreDirectUIReadOnlyUnion10{
+		CreateIntegrationStoreDirectUIReadOnlyEnum10: &createIntegrationStoreDirectUIReadOnlyEnum10,
 		Type: typ,
 	}
 }
 
-func CreateCreateIntegrationStoreDirectPropertiesDisabledUnionCreateIntegrationStoreDirectPropertiesDisabledEnum(createIntegrationStoreDirectPropertiesDisabledEnum CreateIntegrationStoreDirectPropertiesDisabledEnum) CreateIntegrationStoreDirectPropertiesDisabledUnion {
-	typ := CreateIntegrationStoreDirectPropertiesDisabledUnionTypeCreateIntegrationStoreDirectPropertiesDisabledEnum
+func (u *CreateIntegrationStoreDirectUIReadOnlyUnion10) UnmarshalJSON(data []byte) error {
 
-	return CreateIntegrationStoreDirectPropertiesDisabledUnion{
-		CreateIntegrationStoreDirectPropertiesDisabledEnum: &createIntegrationStoreDirectPropertiesDisabledEnum,
-		Type: typ,
-	}
-}
-
-func (u *CreateIntegrationStoreDirectPropertiesDisabledUnion) UnmarshalJSON(data []byte) error {
-
-	var createIntegrationStoreDirectPropertiesDisabled CreateIntegrationStoreDirectPropertiesDisabled = CreateIntegrationStoreDirectPropertiesDisabled{}
-	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectPropertiesDisabled, "", true, nil); err == nil {
-		u.CreateIntegrationStoreDirectPropertiesDisabled = &createIntegrationStoreDirectPropertiesDisabled
-		u.Type = CreateIntegrationStoreDirectPropertiesDisabledUnionTypeCreateIntegrationStoreDirectPropertiesDisabled
+	var createIntegrationStoreDirectUIReadOnly10 CreateIntegrationStoreDirectUIReadOnly10 = CreateIntegrationStoreDirectUIReadOnly10{}
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectUIReadOnly10, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectUIReadOnly10 = &createIntegrationStoreDirectUIReadOnly10
+		u.Type = CreateIntegrationStoreDirectUIReadOnlyUnion10TypeCreateIntegrationStoreDirectUIReadOnly10
 		return nil
 	}
 
 	var boolean bool = false
 	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = CreateIntegrationStoreDirectPropertiesDisabledUnionTypeBoolean
+		u.Type = CreateIntegrationStoreDirectUIReadOnlyUnion10TypeBoolean
 		return nil
 	}
 
-	var createIntegrationStoreDirectPropertiesDisabledEnum CreateIntegrationStoreDirectPropertiesDisabledEnum = CreateIntegrationStoreDirectPropertiesDisabledEnum("")
-	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectPropertiesDisabledEnum, "", true, nil); err == nil {
-		u.CreateIntegrationStoreDirectPropertiesDisabledEnum = &createIntegrationStoreDirectPropertiesDisabledEnum
-		u.Type = CreateIntegrationStoreDirectPropertiesDisabledUnionTypeCreateIntegrationStoreDirectPropertiesDisabledEnum
+	var createIntegrationStoreDirectUIReadOnlyEnum10 CreateIntegrationStoreDirectUIReadOnlyEnum10 = CreateIntegrationStoreDirectUIReadOnlyEnum10("")
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectUIReadOnlyEnum10, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectUIReadOnlyEnum10 = &createIntegrationStoreDirectUIReadOnlyEnum10
+		u.Type = CreateIntegrationStoreDirectUIReadOnlyUnion10TypeCreateIntegrationStoreDirectUIReadOnlyEnum10
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectPropertiesDisabledUnion", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectUIReadOnlyUnion10", string(data))
 }
 
-func (u CreateIntegrationStoreDirectPropertiesDisabledUnion) MarshalJSON() ([]byte, error) {
+func (u CreateIntegrationStoreDirectUIReadOnlyUnion10) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.CreateIntegrationStoreDirectPropertiesDisabled != nil {
-		return utils.MarshalJSON(u.CreateIntegrationStoreDirectPropertiesDisabled, "", true)
+	if u.CreateIntegrationStoreDirectUIReadOnly10 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIReadOnly10, "", true)
 	}
 
-	if u.CreateIntegrationStoreDirectPropertiesDisabledEnum != nil {
-		return utils.MarshalJSON(u.CreateIntegrationStoreDirectPropertiesDisabledEnum, "", true)
+	if u.CreateIntegrationStoreDirectUIReadOnlyEnum10 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIReadOnlyEnum10, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectPropertiesDisabledUnion: all fields are null")
+	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectUIReadOnlyUnion10: all fields are null")
 }
 
-type CreateIntegrationStoreDirectPropertiesHiddenEnum string
+type CreateIntegrationStoreDirectUIHiddenEnum10 string
 
 const (
-	CreateIntegrationStoreDirectPropertiesHiddenEnumUpdate CreateIntegrationStoreDirectPropertiesHiddenEnum = "update"
-	CreateIntegrationStoreDirectPropertiesHiddenEnumCreate CreateIntegrationStoreDirectPropertiesHiddenEnum = "create"
+	CreateIntegrationStoreDirectUIHiddenEnum10Update CreateIntegrationStoreDirectUIHiddenEnum10 = "update"
+	CreateIntegrationStoreDirectUIHiddenEnum10Create CreateIntegrationStoreDirectUIHiddenEnum10 = "create"
 )
 
-func (e CreateIntegrationStoreDirectPropertiesHiddenEnum) ToPointer() *CreateIntegrationStoreDirectPropertiesHiddenEnum {
+func (e CreateIntegrationStoreDirectUIHiddenEnum10) ToPointer() *CreateIntegrationStoreDirectUIHiddenEnum10 {
 	return &e
 }
-func (e *CreateIntegrationStoreDirectPropertiesHiddenEnum) UnmarshalJSON(data []byte) error {
+func (e *CreateIntegrationStoreDirectUIHiddenEnum10) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1525,156 +1571,1198 @@ func (e *CreateIntegrationStoreDirectPropertiesHiddenEnum) UnmarshalJSON(data []
 	case "update":
 		fallthrough
 	case "create":
-		*e = CreateIntegrationStoreDirectPropertiesHiddenEnum(v)
+		*e = CreateIntegrationStoreDirectUIHiddenEnum10(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectPropertiesHiddenEnum: %v", v)
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectUIHiddenEnum10: %v", v)
 	}
 }
 
-type CreateIntegrationStoreDirectPropertiesHidden struct {
+type CreateIntegrationStoreDirectUIHidden10 struct {
 	Expr string `json:"expr"`
 }
 
-func (c CreateIntegrationStoreDirectPropertiesHidden) MarshalJSON() ([]byte, error) {
+func (c CreateIntegrationStoreDirectUIHidden10) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(c, "", false)
 }
 
-func (c *CreateIntegrationStoreDirectPropertiesHidden) UnmarshalJSON(data []byte) error {
+func (c *CreateIntegrationStoreDirectUIHidden10) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"expr"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateIntegrationStoreDirectPropertiesHidden) GetExpr() string {
+func (o *CreateIntegrationStoreDirectUIHidden10) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type CreateIntegrationStoreDirectPropertiesHiddenUnionType string
+type CreateIntegrationStoreDirectUIHiddenUnion10Type string
 
 const (
-	CreateIntegrationStoreDirectPropertiesHiddenUnionTypeBoolean                                          CreateIntegrationStoreDirectPropertiesHiddenUnionType = "boolean"
-	CreateIntegrationStoreDirectPropertiesHiddenUnionTypeCreateIntegrationStoreDirectPropertiesHidden     CreateIntegrationStoreDirectPropertiesHiddenUnionType = "createIntegrationStoreDirect_properties_hidden"
-	CreateIntegrationStoreDirectPropertiesHiddenUnionTypeCreateIntegrationStoreDirectPropertiesHiddenEnum CreateIntegrationStoreDirectPropertiesHiddenUnionType = "createIntegrationStoreDirect_properties_hidden_enum"
+	CreateIntegrationStoreDirectUIHiddenUnion10TypeBoolean                                    CreateIntegrationStoreDirectUIHiddenUnion10Type = "boolean"
+	CreateIntegrationStoreDirectUIHiddenUnion10TypeCreateIntegrationStoreDirectUIHidden10     CreateIntegrationStoreDirectUIHiddenUnion10Type = "createIntegrationStoreDirect_ui:hidden_10"
+	CreateIntegrationStoreDirectUIHiddenUnion10TypeCreateIntegrationStoreDirectUIHiddenEnum10 CreateIntegrationStoreDirectUIHiddenUnion10Type = "createIntegrationStoreDirect_ui:hidden_enum_10"
 )
 
-type CreateIntegrationStoreDirectPropertiesHiddenUnion struct {
-	Boolean                                          *bool                                             `queryParam:"inline"`
-	CreateIntegrationStoreDirectPropertiesHidden     *CreateIntegrationStoreDirectPropertiesHidden     `queryParam:"inline"`
-	CreateIntegrationStoreDirectPropertiesHiddenEnum *CreateIntegrationStoreDirectPropertiesHiddenEnum `queryParam:"inline"`
+type CreateIntegrationStoreDirectUIHiddenUnion10 struct {
+	Boolean                                    *bool                                       `queryParam:"inline"`
+	CreateIntegrationStoreDirectUIHidden10     *CreateIntegrationStoreDirectUIHidden10     `queryParam:"inline"`
+	CreateIntegrationStoreDirectUIHiddenEnum10 *CreateIntegrationStoreDirectUIHiddenEnum10 `queryParam:"inline"`
 
-	Type CreateIntegrationStoreDirectPropertiesHiddenUnionType
+	Type CreateIntegrationStoreDirectUIHiddenUnion10Type
 }
 
-func CreateCreateIntegrationStoreDirectPropertiesHiddenUnionBoolean(boolean bool) CreateIntegrationStoreDirectPropertiesHiddenUnion {
-	typ := CreateIntegrationStoreDirectPropertiesHiddenUnionTypeBoolean
+func CreateCreateIntegrationStoreDirectUIHiddenUnion10Boolean(boolean bool) CreateIntegrationStoreDirectUIHiddenUnion10 {
+	typ := CreateIntegrationStoreDirectUIHiddenUnion10TypeBoolean
 
-	return CreateIntegrationStoreDirectPropertiesHiddenUnion{
+	return CreateIntegrationStoreDirectUIHiddenUnion10{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateCreateIntegrationStoreDirectPropertiesHiddenUnionCreateIntegrationStoreDirectPropertiesHidden(createIntegrationStoreDirectPropertiesHidden CreateIntegrationStoreDirectPropertiesHidden) CreateIntegrationStoreDirectPropertiesHiddenUnion {
-	typ := CreateIntegrationStoreDirectPropertiesHiddenUnionTypeCreateIntegrationStoreDirectPropertiesHidden
+func CreateCreateIntegrationStoreDirectUIHiddenUnion10CreateIntegrationStoreDirectUIHidden10(createIntegrationStoreDirectUIHidden10 CreateIntegrationStoreDirectUIHidden10) CreateIntegrationStoreDirectUIHiddenUnion10 {
+	typ := CreateIntegrationStoreDirectUIHiddenUnion10TypeCreateIntegrationStoreDirectUIHidden10
 
-	return CreateIntegrationStoreDirectPropertiesHiddenUnion{
-		CreateIntegrationStoreDirectPropertiesHidden: &createIntegrationStoreDirectPropertiesHidden,
+	return CreateIntegrationStoreDirectUIHiddenUnion10{
+		CreateIntegrationStoreDirectUIHidden10: &createIntegrationStoreDirectUIHidden10,
+		Type:                                   typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIHiddenUnion10CreateIntegrationStoreDirectUIHiddenEnum10(createIntegrationStoreDirectUIHiddenEnum10 CreateIntegrationStoreDirectUIHiddenEnum10) CreateIntegrationStoreDirectUIHiddenUnion10 {
+	typ := CreateIntegrationStoreDirectUIHiddenUnion10TypeCreateIntegrationStoreDirectUIHiddenEnum10
+
+	return CreateIntegrationStoreDirectUIHiddenUnion10{
+		CreateIntegrationStoreDirectUIHiddenEnum10: &createIntegrationStoreDirectUIHiddenEnum10,
 		Type: typ,
 	}
 }
 
-func CreateCreateIntegrationStoreDirectPropertiesHiddenUnionCreateIntegrationStoreDirectPropertiesHiddenEnum(createIntegrationStoreDirectPropertiesHiddenEnum CreateIntegrationStoreDirectPropertiesHiddenEnum) CreateIntegrationStoreDirectPropertiesHiddenUnion {
-	typ := CreateIntegrationStoreDirectPropertiesHiddenUnionTypeCreateIntegrationStoreDirectPropertiesHiddenEnum
+func (u *CreateIntegrationStoreDirectUIHiddenUnion10) UnmarshalJSON(data []byte) error {
 
-	return CreateIntegrationStoreDirectPropertiesHiddenUnion{
-		CreateIntegrationStoreDirectPropertiesHiddenEnum: &createIntegrationStoreDirectPropertiesHiddenEnum,
-		Type: typ,
-	}
-}
-
-func (u *CreateIntegrationStoreDirectPropertiesHiddenUnion) UnmarshalJSON(data []byte) error {
-
-	var createIntegrationStoreDirectPropertiesHidden CreateIntegrationStoreDirectPropertiesHidden = CreateIntegrationStoreDirectPropertiesHidden{}
-	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectPropertiesHidden, "", true, nil); err == nil {
-		u.CreateIntegrationStoreDirectPropertiesHidden = &createIntegrationStoreDirectPropertiesHidden
-		u.Type = CreateIntegrationStoreDirectPropertiesHiddenUnionTypeCreateIntegrationStoreDirectPropertiesHidden
+	var createIntegrationStoreDirectUIHidden10 CreateIntegrationStoreDirectUIHidden10 = CreateIntegrationStoreDirectUIHidden10{}
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectUIHidden10, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectUIHidden10 = &createIntegrationStoreDirectUIHidden10
+		u.Type = CreateIntegrationStoreDirectUIHiddenUnion10TypeCreateIntegrationStoreDirectUIHidden10
 		return nil
 	}
 
 	var boolean bool = false
 	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = CreateIntegrationStoreDirectPropertiesHiddenUnionTypeBoolean
+		u.Type = CreateIntegrationStoreDirectUIHiddenUnion10TypeBoolean
 		return nil
 	}
 
-	var createIntegrationStoreDirectPropertiesHiddenEnum CreateIntegrationStoreDirectPropertiesHiddenEnum = CreateIntegrationStoreDirectPropertiesHiddenEnum("")
-	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectPropertiesHiddenEnum, "", true, nil); err == nil {
-		u.CreateIntegrationStoreDirectPropertiesHiddenEnum = &createIntegrationStoreDirectPropertiesHiddenEnum
-		u.Type = CreateIntegrationStoreDirectPropertiesHiddenUnionTypeCreateIntegrationStoreDirectPropertiesHiddenEnum
+	var createIntegrationStoreDirectUIHiddenEnum10 CreateIntegrationStoreDirectUIHiddenEnum10 = CreateIntegrationStoreDirectUIHiddenEnum10("")
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectUIHiddenEnum10, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectUIHiddenEnum10 = &createIntegrationStoreDirectUIHiddenEnum10
+		u.Type = CreateIntegrationStoreDirectUIHiddenUnion10TypeCreateIntegrationStoreDirectUIHiddenEnum10
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectPropertiesHiddenUnion", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectUIHiddenUnion10", string(data))
 }
 
-func (u CreateIntegrationStoreDirectPropertiesHiddenUnion) MarshalJSON() ([]byte, error) {
+func (u CreateIntegrationStoreDirectUIHiddenUnion10) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.CreateIntegrationStoreDirectPropertiesHidden != nil {
-		return utils.MarshalJSON(u.CreateIntegrationStoreDirectPropertiesHidden, "", true)
+	if u.CreateIntegrationStoreDirectUIHidden10 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIHidden10, "", true)
 	}
 
-	if u.CreateIntegrationStoreDirectPropertiesHiddenEnum != nil {
-		return utils.MarshalJSON(u.CreateIntegrationStoreDirectPropertiesHiddenEnum, "", true)
+	if u.CreateIntegrationStoreDirectUIHiddenEnum10 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIHiddenEnum10, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectPropertiesHiddenUnion: all fields are null")
+	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectUIHiddenUnion10: all fields are null")
 }
 
-type CreateIntegrationStoreDirectProperties struct {
-	Value    string                                               `json:"value"`
-	Disabled *CreateIntegrationStoreDirectPropertiesDisabledUnion `json:"disabled,omitempty"`
-	Hidden   *CreateIntegrationStoreDirectPropertiesHiddenUnion   `json:"hidden,omitempty"`
+type CreateIntegrationStoreDirectUIDisabledEnum10 string
+
+const (
+	CreateIntegrationStoreDirectUIDisabledEnum10Update CreateIntegrationStoreDirectUIDisabledEnum10 = "update"
+	CreateIntegrationStoreDirectUIDisabledEnum10Create CreateIntegrationStoreDirectUIDisabledEnum10 = "create"
+)
+
+func (e CreateIntegrationStoreDirectUIDisabledEnum10) ToPointer() *CreateIntegrationStoreDirectUIDisabledEnum10 {
+	return &e
+}
+func (e *CreateIntegrationStoreDirectUIDisabledEnum10) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "update":
+		fallthrough
+	case "create":
+		*e = CreateIntegrationStoreDirectUIDisabledEnum10(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectUIDisabledEnum10: %v", v)
+	}
 }
 
-func (c CreateIntegrationStoreDirectProperties) MarshalJSON() ([]byte, error) {
+type CreateIntegrationStoreDirectUIDisabled10 struct {
+	Expr string `json:"expr"`
+}
+
+func (c CreateIntegrationStoreDirectUIDisabled10) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(c, "", false)
 }
 
-func (c *CreateIntegrationStoreDirectProperties) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"value"}); err != nil {
+func (c *CreateIntegrationStoreDirectUIDisabled10) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"expr"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateIntegrationStoreDirectProperties) GetValue() string {
+func (o *CreateIntegrationStoreDirectUIDisabled10) GetExpr() string {
 	if o == nil {
 		return ""
 	}
-	return o.Value
+	return o.Expr
 }
 
-func (o *CreateIntegrationStoreDirectProperties) GetDisabled() *CreateIntegrationStoreDirectPropertiesDisabledUnion {
+type CreateIntegrationStoreDirectUIDisabledUnion10Type string
+
+const (
+	CreateIntegrationStoreDirectUIDisabledUnion10TypeBoolean                                      CreateIntegrationStoreDirectUIDisabledUnion10Type = "boolean"
+	CreateIntegrationStoreDirectUIDisabledUnion10TypeCreateIntegrationStoreDirectUIDisabled10     CreateIntegrationStoreDirectUIDisabledUnion10Type = "createIntegrationStoreDirect_ui:disabled_10"
+	CreateIntegrationStoreDirectUIDisabledUnion10TypeCreateIntegrationStoreDirectUIDisabledEnum10 CreateIntegrationStoreDirectUIDisabledUnion10Type = "createIntegrationStoreDirect_ui:disabled_enum_10"
+)
+
+type CreateIntegrationStoreDirectUIDisabledUnion10 struct {
+	Boolean                                      *bool                                         `queryParam:"inline"`
+	CreateIntegrationStoreDirectUIDisabled10     *CreateIntegrationStoreDirectUIDisabled10     `queryParam:"inline"`
+	CreateIntegrationStoreDirectUIDisabledEnum10 *CreateIntegrationStoreDirectUIDisabledEnum10 `queryParam:"inline"`
+
+	Type CreateIntegrationStoreDirectUIDisabledUnion10Type
+}
+
+func CreateCreateIntegrationStoreDirectUIDisabledUnion10Boolean(boolean bool) CreateIntegrationStoreDirectUIDisabledUnion10 {
+	typ := CreateIntegrationStoreDirectUIDisabledUnion10TypeBoolean
+
+	return CreateIntegrationStoreDirectUIDisabledUnion10{
+		Boolean: &boolean,
+		Type:    typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIDisabledUnion10CreateIntegrationStoreDirectUIDisabled10(createIntegrationStoreDirectUIDisabled10 CreateIntegrationStoreDirectUIDisabled10) CreateIntegrationStoreDirectUIDisabledUnion10 {
+	typ := CreateIntegrationStoreDirectUIDisabledUnion10TypeCreateIntegrationStoreDirectUIDisabled10
+
+	return CreateIntegrationStoreDirectUIDisabledUnion10{
+		CreateIntegrationStoreDirectUIDisabled10: &createIntegrationStoreDirectUIDisabled10,
+		Type:                                     typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIDisabledUnion10CreateIntegrationStoreDirectUIDisabledEnum10(createIntegrationStoreDirectUIDisabledEnum10 CreateIntegrationStoreDirectUIDisabledEnum10) CreateIntegrationStoreDirectUIDisabledUnion10 {
+	typ := CreateIntegrationStoreDirectUIDisabledUnion10TypeCreateIntegrationStoreDirectUIDisabledEnum10
+
+	return CreateIntegrationStoreDirectUIDisabledUnion10{
+		CreateIntegrationStoreDirectUIDisabledEnum10: &createIntegrationStoreDirectUIDisabledEnum10,
+		Type: typ,
+	}
+}
+
+func (u *CreateIntegrationStoreDirectUIDisabledUnion10) UnmarshalJSON(data []byte) error {
+
+	var createIntegrationStoreDirectUIDisabled10 CreateIntegrationStoreDirectUIDisabled10 = CreateIntegrationStoreDirectUIDisabled10{}
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectUIDisabled10, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectUIDisabled10 = &createIntegrationStoreDirectUIDisabled10
+		u.Type = CreateIntegrationStoreDirectUIDisabledUnion10TypeCreateIntegrationStoreDirectUIDisabled10
+		return nil
+	}
+
+	var boolean bool = false
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
+		u.Boolean = &boolean
+		u.Type = CreateIntegrationStoreDirectUIDisabledUnion10TypeBoolean
+		return nil
+	}
+
+	var createIntegrationStoreDirectUIDisabledEnum10 CreateIntegrationStoreDirectUIDisabledEnum10 = CreateIntegrationStoreDirectUIDisabledEnum10("")
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectUIDisabledEnum10, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectUIDisabledEnum10 = &createIntegrationStoreDirectUIDisabledEnum10
+		u.Type = CreateIntegrationStoreDirectUIDisabledUnion10TypeCreateIntegrationStoreDirectUIDisabledEnum10
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectUIDisabledUnion10", string(data))
+}
+
+func (u CreateIntegrationStoreDirectUIDisabledUnion10) MarshalJSON() ([]byte, error) {
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
+	}
+
+	if u.CreateIntegrationStoreDirectUIDisabled10 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIDisabled10, "", true)
+	}
+
+	if u.CreateIntegrationStoreDirectUIDisabledEnum10 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIDisabledEnum10, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectUIDisabledUnion10: all fields are null")
+}
+
+type CreateIntegrationStoreDirectUIDescription10 struct {
+	Expr string `json:"expr"`
+}
+
+func (c CreateIntegrationStoreDirectUIDescription10) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateIntegrationStoreDirectUIDescription10) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateIntegrationStoreDirectUIDescription10) GetExpr() string {
+	if o == nil {
+		return ""
+	}
+	return o.Expr
+}
+
+type CreateIntegrationStoreDirectUIDescriptionUnion10Type string
+
+const (
+	CreateIntegrationStoreDirectUIDescriptionUnion10TypeStr                                         CreateIntegrationStoreDirectUIDescriptionUnion10Type = "str"
+	CreateIntegrationStoreDirectUIDescriptionUnion10TypeCreateIntegrationStoreDirectUIDescription10 CreateIntegrationStoreDirectUIDescriptionUnion10Type = "createIntegrationStoreDirect_ui:description_10"
+)
+
+type CreateIntegrationStoreDirectUIDescriptionUnion10 struct {
+	Str                                         *string                                      `queryParam:"inline"`
+	CreateIntegrationStoreDirectUIDescription10 *CreateIntegrationStoreDirectUIDescription10 `queryParam:"inline"`
+
+	Type CreateIntegrationStoreDirectUIDescriptionUnion10Type
+}
+
+func CreateCreateIntegrationStoreDirectUIDescriptionUnion10Str(str string) CreateIntegrationStoreDirectUIDescriptionUnion10 {
+	typ := CreateIntegrationStoreDirectUIDescriptionUnion10TypeStr
+
+	return CreateIntegrationStoreDirectUIDescriptionUnion10{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIDescriptionUnion10CreateIntegrationStoreDirectUIDescription10(createIntegrationStoreDirectUIDescription10 CreateIntegrationStoreDirectUIDescription10) CreateIntegrationStoreDirectUIDescriptionUnion10 {
+	typ := CreateIntegrationStoreDirectUIDescriptionUnion10TypeCreateIntegrationStoreDirectUIDescription10
+
+	return CreateIntegrationStoreDirectUIDescriptionUnion10{
+		CreateIntegrationStoreDirectUIDescription10: &createIntegrationStoreDirectUIDescription10,
+		Type: typ,
+	}
+}
+
+func (u *CreateIntegrationStoreDirectUIDescriptionUnion10) UnmarshalJSON(data []byte) error {
+
+	var createIntegrationStoreDirectUIDescription10 CreateIntegrationStoreDirectUIDescription10 = CreateIntegrationStoreDirectUIDescription10{}
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectUIDescription10, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectUIDescription10 = &createIntegrationStoreDirectUIDescription10
+		u.Type = CreateIntegrationStoreDirectUIDescriptionUnion10TypeCreateIntegrationStoreDirectUIDescription10
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = CreateIntegrationStoreDirectUIDescriptionUnion10TypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectUIDescriptionUnion10", string(data))
+}
+
+func (u CreateIntegrationStoreDirectUIDescriptionUnion10) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.CreateIntegrationStoreDirectUIDescription10 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIDescription10, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectUIDescriptionUnion10: all fields are null")
+}
+
+type CreateIntegrationStoreDirectUIFormattedValue10 struct {
+	Expr string `json:"expr"`
+}
+
+func (c CreateIntegrationStoreDirectUIFormattedValue10) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateIntegrationStoreDirectUIFormattedValue10) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateIntegrationStoreDirectUIFormattedValue10) GetExpr() string {
+	if o == nil {
+		return ""
+	}
+	return o.Expr
+}
+
+type CreateIntegrationStoreDirectGitProvider string
+
+const (
+	CreateIntegrationStoreDirectGitProviderGithub    CreateIntegrationStoreDirectGitProvider = "github"
+	CreateIntegrationStoreDirectGitProviderGitlab    CreateIntegrationStoreDirectGitProvider = "gitlab"
+	CreateIntegrationStoreDirectGitProviderBitbucket CreateIntegrationStoreDirectGitProvider = "bitbucket"
+)
+
+func (e CreateIntegrationStoreDirectGitProvider) ToPointer() *CreateIntegrationStoreDirectGitProvider {
+	return &e
+}
+func (e *CreateIntegrationStoreDirectGitProvider) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github":
+		fallthrough
+	case "gitlab":
+		fallthrough
+	case "bitbucket":
+		*e = CreateIntegrationStoreDirectGitProvider(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectGitProvider: %v", v)
+	}
+}
+
+type CreateIntegrationStoreDirectPropertiesGitNamespace struct {
+	Type             CreateIntegrationStoreDirectTypeString7           `json:"type"`
+	UIControl        CreateIntegrationStoreDirectUIControlGitNamespace `json:"ui:control"`
+	Description      *string                                           `json:"description,omitempty"`
+	UILabel          *string                                           `json:"ui:label,omitempty"`
+	UIReadOnly       *CreateIntegrationStoreDirectUIReadOnlyUnion10    `json:"ui:read-only,omitempty"`
+	UIHidden         *CreateIntegrationStoreDirectUIHiddenUnion10      `json:"ui:hidden,omitempty"`
+	UIDisabled       *CreateIntegrationStoreDirectUIDisabledUnion10    `json:"ui:disabled,omitempty"`
+	UIDescription    *CreateIntegrationStoreDirectUIDescriptionUnion10 `json:"ui:description,omitempty"`
+	UIFormattedValue *CreateIntegrationStoreDirectUIFormattedValue10   `json:"ui:formatted-value,omitempty"`
+	UIPlaceholder    *string                                           `json:"ui:placeholder,omitempty"`
+	GitProviders     []CreateIntegrationStoreDirectGitProvider         `json:"git:providers,omitempty"`
+}
+
+func (c CreateIntegrationStoreDirectPropertiesGitNamespace) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateIntegrationStoreDirectPropertiesGitNamespace) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "ui:control"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesGitNamespace) GetType() CreateIntegrationStoreDirectTypeString7 {
+	if o == nil {
+		return CreateIntegrationStoreDirectTypeString7("")
+	}
+	return o.Type
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesGitNamespace) GetUIControl() CreateIntegrationStoreDirectUIControlGitNamespace {
+	if o == nil {
+		return CreateIntegrationStoreDirectUIControlGitNamespace("")
+	}
+	return o.UIControl
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesGitNamespace) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
-	return o.Disabled
+	return o.Description
 }
 
-func (o *CreateIntegrationStoreDirectProperties) GetHidden() *CreateIntegrationStoreDirectPropertiesHiddenUnion {
+func (o *CreateIntegrationStoreDirectPropertiesGitNamespace) GetUILabel() *string {
 	if o == nil {
 		return nil
 	}
-	return o.Hidden
+	return o.UILabel
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesGitNamespace) GetUIReadOnly() *CreateIntegrationStoreDirectUIReadOnlyUnion10 {
+	if o == nil {
+		return nil
+	}
+	return o.UIReadOnly
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesGitNamespace) GetUIHidden() *CreateIntegrationStoreDirectUIHiddenUnion10 {
+	if o == nil {
+		return nil
+	}
+	return o.UIHidden
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesGitNamespace) GetUIDisabled() *CreateIntegrationStoreDirectUIDisabledUnion10 {
+	if o == nil {
+		return nil
+	}
+	return o.UIDisabled
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesGitNamespace) GetUIDescription() *CreateIntegrationStoreDirectUIDescriptionUnion10 {
+	if o == nil {
+		return nil
+	}
+	return o.UIDescription
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesGitNamespace) GetUIFormattedValue() *CreateIntegrationStoreDirectUIFormattedValue10 {
+	if o == nil {
+		return nil
+	}
+	return o.UIFormattedValue
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesGitNamespace) GetUIPlaceholder() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UIPlaceholder
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesGitNamespace) GetGitProviders() []CreateIntegrationStoreDirectGitProvider {
+	if o == nil {
+		return nil
+	}
+	return o.GitProviders
+}
+
+type CreateIntegrationStoreDirectTypeString6 string
+
+const (
+	CreateIntegrationStoreDirectTypeString6String CreateIntegrationStoreDirectTypeString6 = "string"
+)
+
+func (e CreateIntegrationStoreDirectTypeString6) ToPointer() *CreateIntegrationStoreDirectTypeString6 {
+	return &e
+}
+func (e *CreateIntegrationStoreDirectTypeString6) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "string":
+		*e = CreateIntegrationStoreDirectTypeString6(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectTypeString6: %v", v)
+	}
+}
+
+type CreateIntegrationStoreDirectUIControlDomain string
+
+const (
+	CreateIntegrationStoreDirectUIControlDomainDomain CreateIntegrationStoreDirectUIControlDomain = "domain"
+)
+
+func (e CreateIntegrationStoreDirectUIControlDomain) ToPointer() *CreateIntegrationStoreDirectUIControlDomain {
+	return &e
+}
+func (e *CreateIntegrationStoreDirectUIControlDomain) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "domain":
+		*e = CreateIntegrationStoreDirectUIControlDomain(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectUIControlDomain: %v", v)
+	}
+}
+
+type CreateIntegrationStoreDirectUIReadOnlyEnum9 string
+
+const (
+	CreateIntegrationStoreDirectUIReadOnlyEnum9Update CreateIntegrationStoreDirectUIReadOnlyEnum9 = "update"
+	CreateIntegrationStoreDirectUIReadOnlyEnum9Create CreateIntegrationStoreDirectUIReadOnlyEnum9 = "create"
+)
+
+func (e CreateIntegrationStoreDirectUIReadOnlyEnum9) ToPointer() *CreateIntegrationStoreDirectUIReadOnlyEnum9 {
+	return &e
+}
+func (e *CreateIntegrationStoreDirectUIReadOnlyEnum9) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "update":
+		fallthrough
+	case "create":
+		*e = CreateIntegrationStoreDirectUIReadOnlyEnum9(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectUIReadOnlyEnum9: %v", v)
+	}
+}
+
+type CreateIntegrationStoreDirectUIReadOnly9 struct {
+	Expr string `json:"expr"`
+}
+
+func (c CreateIntegrationStoreDirectUIReadOnly9) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateIntegrationStoreDirectUIReadOnly9) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateIntegrationStoreDirectUIReadOnly9) GetExpr() string {
+	if o == nil {
+		return ""
+	}
+	return o.Expr
+}
+
+type CreateIntegrationStoreDirectUIReadOnlyUnion9Type string
+
+const (
+	CreateIntegrationStoreDirectUIReadOnlyUnion9TypeBoolean                                     CreateIntegrationStoreDirectUIReadOnlyUnion9Type = "boolean"
+	CreateIntegrationStoreDirectUIReadOnlyUnion9TypeCreateIntegrationStoreDirectUIReadOnly9     CreateIntegrationStoreDirectUIReadOnlyUnion9Type = "createIntegrationStoreDirect_ui:read-only_9"
+	CreateIntegrationStoreDirectUIReadOnlyUnion9TypeCreateIntegrationStoreDirectUIReadOnlyEnum9 CreateIntegrationStoreDirectUIReadOnlyUnion9Type = "createIntegrationStoreDirect_ui:read-only_enum_9"
+)
+
+type CreateIntegrationStoreDirectUIReadOnlyUnion9 struct {
+	Boolean                                     *bool                                        `queryParam:"inline"`
+	CreateIntegrationStoreDirectUIReadOnly9     *CreateIntegrationStoreDirectUIReadOnly9     `queryParam:"inline"`
+	CreateIntegrationStoreDirectUIReadOnlyEnum9 *CreateIntegrationStoreDirectUIReadOnlyEnum9 `queryParam:"inline"`
+
+	Type CreateIntegrationStoreDirectUIReadOnlyUnion9Type
+}
+
+func CreateCreateIntegrationStoreDirectUIReadOnlyUnion9Boolean(boolean bool) CreateIntegrationStoreDirectUIReadOnlyUnion9 {
+	typ := CreateIntegrationStoreDirectUIReadOnlyUnion9TypeBoolean
+
+	return CreateIntegrationStoreDirectUIReadOnlyUnion9{
+		Boolean: &boolean,
+		Type:    typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIReadOnlyUnion9CreateIntegrationStoreDirectUIReadOnly9(createIntegrationStoreDirectUIReadOnly9 CreateIntegrationStoreDirectUIReadOnly9) CreateIntegrationStoreDirectUIReadOnlyUnion9 {
+	typ := CreateIntegrationStoreDirectUIReadOnlyUnion9TypeCreateIntegrationStoreDirectUIReadOnly9
+
+	return CreateIntegrationStoreDirectUIReadOnlyUnion9{
+		CreateIntegrationStoreDirectUIReadOnly9: &createIntegrationStoreDirectUIReadOnly9,
+		Type:                                    typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIReadOnlyUnion9CreateIntegrationStoreDirectUIReadOnlyEnum9(createIntegrationStoreDirectUIReadOnlyEnum9 CreateIntegrationStoreDirectUIReadOnlyEnum9) CreateIntegrationStoreDirectUIReadOnlyUnion9 {
+	typ := CreateIntegrationStoreDirectUIReadOnlyUnion9TypeCreateIntegrationStoreDirectUIReadOnlyEnum9
+
+	return CreateIntegrationStoreDirectUIReadOnlyUnion9{
+		CreateIntegrationStoreDirectUIReadOnlyEnum9: &createIntegrationStoreDirectUIReadOnlyEnum9,
+		Type: typ,
+	}
+}
+
+func (u *CreateIntegrationStoreDirectUIReadOnlyUnion9) UnmarshalJSON(data []byte) error {
+
+	var createIntegrationStoreDirectUIReadOnly9 CreateIntegrationStoreDirectUIReadOnly9 = CreateIntegrationStoreDirectUIReadOnly9{}
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectUIReadOnly9, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectUIReadOnly9 = &createIntegrationStoreDirectUIReadOnly9
+		u.Type = CreateIntegrationStoreDirectUIReadOnlyUnion9TypeCreateIntegrationStoreDirectUIReadOnly9
+		return nil
+	}
+
+	var boolean bool = false
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
+		u.Boolean = &boolean
+		u.Type = CreateIntegrationStoreDirectUIReadOnlyUnion9TypeBoolean
+		return nil
+	}
+
+	var createIntegrationStoreDirectUIReadOnlyEnum9 CreateIntegrationStoreDirectUIReadOnlyEnum9 = CreateIntegrationStoreDirectUIReadOnlyEnum9("")
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectUIReadOnlyEnum9, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectUIReadOnlyEnum9 = &createIntegrationStoreDirectUIReadOnlyEnum9
+		u.Type = CreateIntegrationStoreDirectUIReadOnlyUnion9TypeCreateIntegrationStoreDirectUIReadOnlyEnum9
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectUIReadOnlyUnion9", string(data))
+}
+
+func (u CreateIntegrationStoreDirectUIReadOnlyUnion9) MarshalJSON() ([]byte, error) {
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
+	}
+
+	if u.CreateIntegrationStoreDirectUIReadOnly9 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIReadOnly9, "", true)
+	}
+
+	if u.CreateIntegrationStoreDirectUIReadOnlyEnum9 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIReadOnlyEnum9, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectUIReadOnlyUnion9: all fields are null")
+}
+
+type CreateIntegrationStoreDirectUIHiddenEnum9 string
+
+const (
+	CreateIntegrationStoreDirectUIHiddenEnum9Update CreateIntegrationStoreDirectUIHiddenEnum9 = "update"
+	CreateIntegrationStoreDirectUIHiddenEnum9Create CreateIntegrationStoreDirectUIHiddenEnum9 = "create"
+)
+
+func (e CreateIntegrationStoreDirectUIHiddenEnum9) ToPointer() *CreateIntegrationStoreDirectUIHiddenEnum9 {
+	return &e
+}
+func (e *CreateIntegrationStoreDirectUIHiddenEnum9) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "update":
+		fallthrough
+	case "create":
+		*e = CreateIntegrationStoreDirectUIHiddenEnum9(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectUIHiddenEnum9: %v", v)
+	}
+}
+
+type CreateIntegrationStoreDirectUIHidden9 struct {
+	Expr string `json:"expr"`
+}
+
+func (c CreateIntegrationStoreDirectUIHidden9) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateIntegrationStoreDirectUIHidden9) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateIntegrationStoreDirectUIHidden9) GetExpr() string {
+	if o == nil {
+		return ""
+	}
+	return o.Expr
+}
+
+type CreateIntegrationStoreDirectUIHiddenUnion9Type string
+
+const (
+	CreateIntegrationStoreDirectUIHiddenUnion9TypeBoolean                                   CreateIntegrationStoreDirectUIHiddenUnion9Type = "boolean"
+	CreateIntegrationStoreDirectUIHiddenUnion9TypeCreateIntegrationStoreDirectUIHidden9     CreateIntegrationStoreDirectUIHiddenUnion9Type = "createIntegrationStoreDirect_ui:hidden_9"
+	CreateIntegrationStoreDirectUIHiddenUnion9TypeCreateIntegrationStoreDirectUIHiddenEnum9 CreateIntegrationStoreDirectUIHiddenUnion9Type = "createIntegrationStoreDirect_ui:hidden_enum_9"
+)
+
+type CreateIntegrationStoreDirectUIHiddenUnion9 struct {
+	Boolean                                   *bool                                      `queryParam:"inline"`
+	CreateIntegrationStoreDirectUIHidden9     *CreateIntegrationStoreDirectUIHidden9     `queryParam:"inline"`
+	CreateIntegrationStoreDirectUIHiddenEnum9 *CreateIntegrationStoreDirectUIHiddenEnum9 `queryParam:"inline"`
+
+	Type CreateIntegrationStoreDirectUIHiddenUnion9Type
+}
+
+func CreateCreateIntegrationStoreDirectUIHiddenUnion9Boolean(boolean bool) CreateIntegrationStoreDirectUIHiddenUnion9 {
+	typ := CreateIntegrationStoreDirectUIHiddenUnion9TypeBoolean
+
+	return CreateIntegrationStoreDirectUIHiddenUnion9{
+		Boolean: &boolean,
+		Type:    typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIHiddenUnion9CreateIntegrationStoreDirectUIHidden9(createIntegrationStoreDirectUIHidden9 CreateIntegrationStoreDirectUIHidden9) CreateIntegrationStoreDirectUIHiddenUnion9 {
+	typ := CreateIntegrationStoreDirectUIHiddenUnion9TypeCreateIntegrationStoreDirectUIHidden9
+
+	return CreateIntegrationStoreDirectUIHiddenUnion9{
+		CreateIntegrationStoreDirectUIHidden9: &createIntegrationStoreDirectUIHidden9,
+		Type:                                  typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIHiddenUnion9CreateIntegrationStoreDirectUIHiddenEnum9(createIntegrationStoreDirectUIHiddenEnum9 CreateIntegrationStoreDirectUIHiddenEnum9) CreateIntegrationStoreDirectUIHiddenUnion9 {
+	typ := CreateIntegrationStoreDirectUIHiddenUnion9TypeCreateIntegrationStoreDirectUIHiddenEnum9
+
+	return CreateIntegrationStoreDirectUIHiddenUnion9{
+		CreateIntegrationStoreDirectUIHiddenEnum9: &createIntegrationStoreDirectUIHiddenEnum9,
+		Type: typ,
+	}
+}
+
+func (u *CreateIntegrationStoreDirectUIHiddenUnion9) UnmarshalJSON(data []byte) error {
+
+	var createIntegrationStoreDirectUIHidden9 CreateIntegrationStoreDirectUIHidden9 = CreateIntegrationStoreDirectUIHidden9{}
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectUIHidden9, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectUIHidden9 = &createIntegrationStoreDirectUIHidden9
+		u.Type = CreateIntegrationStoreDirectUIHiddenUnion9TypeCreateIntegrationStoreDirectUIHidden9
+		return nil
+	}
+
+	var boolean bool = false
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
+		u.Boolean = &boolean
+		u.Type = CreateIntegrationStoreDirectUIHiddenUnion9TypeBoolean
+		return nil
+	}
+
+	var createIntegrationStoreDirectUIHiddenEnum9 CreateIntegrationStoreDirectUIHiddenEnum9 = CreateIntegrationStoreDirectUIHiddenEnum9("")
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectUIHiddenEnum9, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectUIHiddenEnum9 = &createIntegrationStoreDirectUIHiddenEnum9
+		u.Type = CreateIntegrationStoreDirectUIHiddenUnion9TypeCreateIntegrationStoreDirectUIHiddenEnum9
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectUIHiddenUnion9", string(data))
+}
+
+func (u CreateIntegrationStoreDirectUIHiddenUnion9) MarshalJSON() ([]byte, error) {
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
+	}
+
+	if u.CreateIntegrationStoreDirectUIHidden9 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIHidden9, "", true)
+	}
+
+	if u.CreateIntegrationStoreDirectUIHiddenEnum9 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIHiddenEnum9, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectUIHiddenUnion9: all fields are null")
+}
+
+type CreateIntegrationStoreDirectUIDisabledEnum9 string
+
+const (
+	CreateIntegrationStoreDirectUIDisabledEnum9Update CreateIntegrationStoreDirectUIDisabledEnum9 = "update"
+	CreateIntegrationStoreDirectUIDisabledEnum9Create CreateIntegrationStoreDirectUIDisabledEnum9 = "create"
+)
+
+func (e CreateIntegrationStoreDirectUIDisabledEnum9) ToPointer() *CreateIntegrationStoreDirectUIDisabledEnum9 {
+	return &e
+}
+func (e *CreateIntegrationStoreDirectUIDisabledEnum9) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "update":
+		fallthrough
+	case "create":
+		*e = CreateIntegrationStoreDirectUIDisabledEnum9(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectUIDisabledEnum9: %v", v)
+	}
+}
+
+type CreateIntegrationStoreDirectUIDisabled9 struct {
+	Expr string `json:"expr"`
+}
+
+func (c CreateIntegrationStoreDirectUIDisabled9) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateIntegrationStoreDirectUIDisabled9) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateIntegrationStoreDirectUIDisabled9) GetExpr() string {
+	if o == nil {
+		return ""
+	}
+	return o.Expr
+}
+
+type CreateIntegrationStoreDirectUIDisabledUnion9Type string
+
+const (
+	CreateIntegrationStoreDirectUIDisabledUnion9TypeBoolean                                     CreateIntegrationStoreDirectUIDisabledUnion9Type = "boolean"
+	CreateIntegrationStoreDirectUIDisabledUnion9TypeCreateIntegrationStoreDirectUIDisabled9     CreateIntegrationStoreDirectUIDisabledUnion9Type = "createIntegrationStoreDirect_ui:disabled_9"
+	CreateIntegrationStoreDirectUIDisabledUnion9TypeCreateIntegrationStoreDirectUIDisabledEnum9 CreateIntegrationStoreDirectUIDisabledUnion9Type = "createIntegrationStoreDirect_ui:disabled_enum_9"
+)
+
+type CreateIntegrationStoreDirectUIDisabledUnion9 struct {
+	Boolean                                     *bool                                        `queryParam:"inline"`
+	CreateIntegrationStoreDirectUIDisabled9     *CreateIntegrationStoreDirectUIDisabled9     `queryParam:"inline"`
+	CreateIntegrationStoreDirectUIDisabledEnum9 *CreateIntegrationStoreDirectUIDisabledEnum9 `queryParam:"inline"`
+
+	Type CreateIntegrationStoreDirectUIDisabledUnion9Type
+}
+
+func CreateCreateIntegrationStoreDirectUIDisabledUnion9Boolean(boolean bool) CreateIntegrationStoreDirectUIDisabledUnion9 {
+	typ := CreateIntegrationStoreDirectUIDisabledUnion9TypeBoolean
+
+	return CreateIntegrationStoreDirectUIDisabledUnion9{
+		Boolean: &boolean,
+		Type:    typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIDisabledUnion9CreateIntegrationStoreDirectUIDisabled9(createIntegrationStoreDirectUIDisabled9 CreateIntegrationStoreDirectUIDisabled9) CreateIntegrationStoreDirectUIDisabledUnion9 {
+	typ := CreateIntegrationStoreDirectUIDisabledUnion9TypeCreateIntegrationStoreDirectUIDisabled9
+
+	return CreateIntegrationStoreDirectUIDisabledUnion9{
+		CreateIntegrationStoreDirectUIDisabled9: &createIntegrationStoreDirectUIDisabled9,
+		Type:                                    typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIDisabledUnion9CreateIntegrationStoreDirectUIDisabledEnum9(createIntegrationStoreDirectUIDisabledEnum9 CreateIntegrationStoreDirectUIDisabledEnum9) CreateIntegrationStoreDirectUIDisabledUnion9 {
+	typ := CreateIntegrationStoreDirectUIDisabledUnion9TypeCreateIntegrationStoreDirectUIDisabledEnum9
+
+	return CreateIntegrationStoreDirectUIDisabledUnion9{
+		CreateIntegrationStoreDirectUIDisabledEnum9: &createIntegrationStoreDirectUIDisabledEnum9,
+		Type: typ,
+	}
+}
+
+func (u *CreateIntegrationStoreDirectUIDisabledUnion9) UnmarshalJSON(data []byte) error {
+
+	var createIntegrationStoreDirectUIDisabled9 CreateIntegrationStoreDirectUIDisabled9 = CreateIntegrationStoreDirectUIDisabled9{}
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectUIDisabled9, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectUIDisabled9 = &createIntegrationStoreDirectUIDisabled9
+		u.Type = CreateIntegrationStoreDirectUIDisabledUnion9TypeCreateIntegrationStoreDirectUIDisabled9
+		return nil
+	}
+
+	var boolean bool = false
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
+		u.Boolean = &boolean
+		u.Type = CreateIntegrationStoreDirectUIDisabledUnion9TypeBoolean
+		return nil
+	}
+
+	var createIntegrationStoreDirectUIDisabledEnum9 CreateIntegrationStoreDirectUIDisabledEnum9 = CreateIntegrationStoreDirectUIDisabledEnum9("")
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectUIDisabledEnum9, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectUIDisabledEnum9 = &createIntegrationStoreDirectUIDisabledEnum9
+		u.Type = CreateIntegrationStoreDirectUIDisabledUnion9TypeCreateIntegrationStoreDirectUIDisabledEnum9
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectUIDisabledUnion9", string(data))
+}
+
+func (u CreateIntegrationStoreDirectUIDisabledUnion9) MarshalJSON() ([]byte, error) {
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
+	}
+
+	if u.CreateIntegrationStoreDirectUIDisabled9 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIDisabled9, "", true)
+	}
+
+	if u.CreateIntegrationStoreDirectUIDisabledEnum9 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIDisabledEnum9, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectUIDisabledUnion9: all fields are null")
+}
+
+type CreateIntegrationStoreDirectUIDescription9 struct {
+	Expr string `json:"expr"`
+}
+
+func (c CreateIntegrationStoreDirectUIDescription9) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateIntegrationStoreDirectUIDescription9) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateIntegrationStoreDirectUIDescription9) GetExpr() string {
+	if o == nil {
+		return ""
+	}
+	return o.Expr
+}
+
+type CreateIntegrationStoreDirectUIDescriptionUnion9Type string
+
+const (
+	CreateIntegrationStoreDirectUIDescriptionUnion9TypeStr                                        CreateIntegrationStoreDirectUIDescriptionUnion9Type = "str"
+	CreateIntegrationStoreDirectUIDescriptionUnion9TypeCreateIntegrationStoreDirectUIDescription9 CreateIntegrationStoreDirectUIDescriptionUnion9Type = "createIntegrationStoreDirect_ui:description_9"
+)
+
+type CreateIntegrationStoreDirectUIDescriptionUnion9 struct {
+	Str                                        *string                                     `queryParam:"inline"`
+	CreateIntegrationStoreDirectUIDescription9 *CreateIntegrationStoreDirectUIDescription9 `queryParam:"inline"`
+
+	Type CreateIntegrationStoreDirectUIDescriptionUnion9Type
+}
+
+func CreateCreateIntegrationStoreDirectUIDescriptionUnion9Str(str string) CreateIntegrationStoreDirectUIDescriptionUnion9 {
+	typ := CreateIntegrationStoreDirectUIDescriptionUnion9TypeStr
+
+	return CreateIntegrationStoreDirectUIDescriptionUnion9{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIDescriptionUnion9CreateIntegrationStoreDirectUIDescription9(createIntegrationStoreDirectUIDescription9 CreateIntegrationStoreDirectUIDescription9) CreateIntegrationStoreDirectUIDescriptionUnion9 {
+	typ := CreateIntegrationStoreDirectUIDescriptionUnion9TypeCreateIntegrationStoreDirectUIDescription9
+
+	return CreateIntegrationStoreDirectUIDescriptionUnion9{
+		CreateIntegrationStoreDirectUIDescription9: &createIntegrationStoreDirectUIDescription9,
+		Type: typ,
+	}
+}
+
+func (u *CreateIntegrationStoreDirectUIDescriptionUnion9) UnmarshalJSON(data []byte) error {
+
+	var createIntegrationStoreDirectUIDescription9 CreateIntegrationStoreDirectUIDescription9 = CreateIntegrationStoreDirectUIDescription9{}
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectUIDescription9, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectUIDescription9 = &createIntegrationStoreDirectUIDescription9
+		u.Type = CreateIntegrationStoreDirectUIDescriptionUnion9TypeCreateIntegrationStoreDirectUIDescription9
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = CreateIntegrationStoreDirectUIDescriptionUnion9TypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectUIDescriptionUnion9", string(data))
+}
+
+func (u CreateIntegrationStoreDirectUIDescriptionUnion9) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.CreateIntegrationStoreDirectUIDescription9 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIDescription9, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectUIDescriptionUnion9: all fields are null")
+}
+
+type CreateIntegrationStoreDirectUIFormattedValue9 struct {
+	Expr string `json:"expr"`
+}
+
+func (c CreateIntegrationStoreDirectUIFormattedValue9) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateIntegrationStoreDirectUIFormattedValue9) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateIntegrationStoreDirectUIFormattedValue9) GetExpr() string {
+	if o == nil {
+		return ""
+	}
+	return o.Expr
+}
+
+type CreateIntegrationStoreDirectPropertiesDomain struct {
+	Type             CreateIntegrationStoreDirectTypeString6          `json:"type"`
+	UIControl        CreateIntegrationStoreDirectUIControlDomain      `json:"ui:control"`
+	Enum             []string                                         `json:"enum,omitempty"`
+	MaxLength        *float64                                         `json:"maxLength,omitempty"`
+	MinLength        *float64                                         `json:"minLength,omitempty"`
+	Pattern          *string                                          `json:"pattern,omitempty"`
+	Description      *string                                          `json:"description,omitempty"`
+	Default          *string                                          `json:"default,omitempty"`
+	UILabel          *string                                          `json:"ui:label,omitempty"`
+	UIReadOnly       *CreateIntegrationStoreDirectUIReadOnlyUnion9    `json:"ui:read-only,omitempty"`
+	UIHidden         *CreateIntegrationStoreDirectUIHiddenUnion9      `json:"ui:hidden,omitempty"`
+	UIDisabled       *CreateIntegrationStoreDirectUIDisabledUnion9    `json:"ui:disabled,omitempty"`
+	UIDescription    *CreateIntegrationStoreDirectUIDescriptionUnion9 `json:"ui:description,omitempty"`
+	UIFormattedValue *CreateIntegrationStoreDirectUIFormattedValue9   `json:"ui:formatted-value,omitempty"`
+	UIPlaceholder    *string                                          `json:"ui:placeholder,omitempty"`
+}
+
+func (c CreateIntegrationStoreDirectPropertiesDomain) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateIntegrationStoreDirectPropertiesDomain) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "ui:control"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesDomain) GetType() CreateIntegrationStoreDirectTypeString6 {
+	if o == nil {
+		return CreateIntegrationStoreDirectTypeString6("")
+	}
+	return o.Type
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesDomain) GetUIControl() CreateIntegrationStoreDirectUIControlDomain {
+	if o == nil {
+		return CreateIntegrationStoreDirectUIControlDomain("")
+	}
+	return o.UIControl
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesDomain) GetEnum() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Enum
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesDomain) GetMaxLength() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.MaxLength
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesDomain) GetMinLength() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.MinLength
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesDomain) GetPattern() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Pattern
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesDomain) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesDomain) GetDefault() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Default
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesDomain) GetUILabel() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UILabel
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesDomain) GetUIReadOnly() *CreateIntegrationStoreDirectUIReadOnlyUnion9 {
+	if o == nil {
+		return nil
+	}
+	return o.UIReadOnly
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesDomain) GetUIHidden() *CreateIntegrationStoreDirectUIHiddenUnion9 {
+	if o == nil {
+		return nil
+	}
+	return o.UIHidden
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesDomain) GetUIDisabled() *CreateIntegrationStoreDirectUIDisabledUnion9 {
+	if o == nil {
+		return nil
+	}
+	return o.UIDisabled
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesDomain) GetUIDescription() *CreateIntegrationStoreDirectUIDescriptionUnion9 {
+	if o == nil {
+		return nil
+	}
+	return o.UIDescription
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesDomain) GetUIFormattedValue() *CreateIntegrationStoreDirectUIFormattedValue9 {
+	if o == nil {
+		return nil
+	}
+	return o.UIFormattedValue
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesDomain) GetUIPlaceholder() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UIPlaceholder
+}
+
+type CreateIntegrationStoreDirectTypeArray3 string
+
+const (
+	CreateIntegrationStoreDirectTypeArray3Array CreateIntegrationStoreDirectTypeArray3 = "array"
+)
+
+func (e CreateIntegrationStoreDirectTypeArray3) ToPointer() *CreateIntegrationStoreDirectTypeArray3 {
+	return &e
+}
+func (e *CreateIntegrationStoreDirectTypeArray3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "array":
+		*e = CreateIntegrationStoreDirectTypeArray3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectTypeArray3: %v", v)
+	}
 }
 
 type CreateIntegrationStoreDirectTypeString5 string
@@ -1700,27 +2788,798 @@ func (e *CreateIntegrationStoreDirectTypeString5) UnmarshalJSON(data []byte) err
 	}
 }
 
-type CreateIntegrationStoreDirectUIControlDomain string
+type CreateIntegrationStoreDirectItemsString2 struct {
+	Type        CreateIntegrationStoreDirectTypeString5 `json:"type"`
+	Description *string                                 `json:"description,omitempty"`
+	MinLength   *float64                                `json:"minLength,omitempty"`
+	MaxLength   *float64                                `json:"maxLength,omitempty"`
+	Pattern     *string                                 `json:"pattern,omitempty"`
+	Default     *string                                 `json:"default,omitempty"`
+	Enum        []string                                `json:"enum,omitempty"`
+}
+
+func (c CreateIntegrationStoreDirectItemsString2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateIntegrationStoreDirectItemsString2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateIntegrationStoreDirectItemsString2) GetType() CreateIntegrationStoreDirectTypeString5 {
+	if o == nil {
+		return CreateIntegrationStoreDirectTypeString5("")
+	}
+	return o.Type
+}
+
+func (o *CreateIntegrationStoreDirectItemsString2) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *CreateIntegrationStoreDirectItemsString2) GetMinLength() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.MinLength
+}
+
+func (o *CreateIntegrationStoreDirectItemsString2) GetMaxLength() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.MaxLength
+}
+
+func (o *CreateIntegrationStoreDirectItemsString2) GetPattern() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Pattern
+}
+
+func (o *CreateIntegrationStoreDirectItemsString2) GetDefault() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Default
+}
+
+func (o *CreateIntegrationStoreDirectItemsString2) GetEnum() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Enum
+}
+
+type CreateIntegrationStoreDirectUIControlMultiVercelRegion string
 
 const (
-	CreateIntegrationStoreDirectUIControlDomainDomain CreateIntegrationStoreDirectUIControlDomain = "domain"
+	CreateIntegrationStoreDirectUIControlMultiVercelRegionMultiVercelRegion CreateIntegrationStoreDirectUIControlMultiVercelRegion = "multi-vercel-region"
 )
 
-func (e CreateIntegrationStoreDirectUIControlDomain) ToPointer() *CreateIntegrationStoreDirectUIControlDomain {
+func (e CreateIntegrationStoreDirectUIControlMultiVercelRegion) ToPointer() *CreateIntegrationStoreDirectUIControlMultiVercelRegion {
 	return &e
 }
-func (e *CreateIntegrationStoreDirectUIControlDomain) UnmarshalJSON(data []byte) error {
+func (e *CreateIntegrationStoreDirectUIControlMultiVercelRegion) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
-	case "domain":
-		*e = CreateIntegrationStoreDirectUIControlDomain(v)
+	case "multi-vercel-region":
+		*e = CreateIntegrationStoreDirectUIControlMultiVercelRegion(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectUIControlDomain: %v", v)
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectUIControlMultiVercelRegion: %v", v)
 	}
+}
+
+type CreateIntegrationStoreDirectDisabledEnum6 string
+
+const (
+	CreateIntegrationStoreDirectDisabledEnum6Update CreateIntegrationStoreDirectDisabledEnum6 = "update"
+	CreateIntegrationStoreDirectDisabledEnum6Create CreateIntegrationStoreDirectDisabledEnum6 = "create"
+)
+
+func (e CreateIntegrationStoreDirectDisabledEnum6) ToPointer() *CreateIntegrationStoreDirectDisabledEnum6 {
+	return &e
+}
+func (e *CreateIntegrationStoreDirectDisabledEnum6) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "update":
+		fallthrough
+	case "create":
+		*e = CreateIntegrationStoreDirectDisabledEnum6(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectDisabledEnum6: %v", v)
+	}
+}
+
+type CreateIntegrationStoreDirectDisabled6 struct {
+	Expr string `json:"expr"`
+}
+
+func (c CreateIntegrationStoreDirectDisabled6) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateIntegrationStoreDirectDisabled6) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateIntegrationStoreDirectDisabled6) GetExpr() string {
+	if o == nil {
+		return ""
+	}
+	return o.Expr
+}
+
+type CreateIntegrationStoreDirectDisabledUnion6Type string
+
+const (
+	CreateIntegrationStoreDirectDisabledUnion6TypeBoolean                                   CreateIntegrationStoreDirectDisabledUnion6Type = "boolean"
+	CreateIntegrationStoreDirectDisabledUnion6TypeCreateIntegrationStoreDirectDisabled6     CreateIntegrationStoreDirectDisabledUnion6Type = "createIntegrationStoreDirect_disabled_6"
+	CreateIntegrationStoreDirectDisabledUnion6TypeCreateIntegrationStoreDirectDisabledEnum6 CreateIntegrationStoreDirectDisabledUnion6Type = "createIntegrationStoreDirect_disabled_enum_6"
+)
+
+type CreateIntegrationStoreDirectDisabledUnion6 struct {
+	Boolean                                   *bool                                      `queryParam:"inline"`
+	CreateIntegrationStoreDirectDisabled6     *CreateIntegrationStoreDirectDisabled6     `queryParam:"inline"`
+	CreateIntegrationStoreDirectDisabledEnum6 *CreateIntegrationStoreDirectDisabledEnum6 `queryParam:"inline"`
+
+	Type CreateIntegrationStoreDirectDisabledUnion6Type
+}
+
+func CreateCreateIntegrationStoreDirectDisabledUnion6Boolean(boolean bool) CreateIntegrationStoreDirectDisabledUnion6 {
+	typ := CreateIntegrationStoreDirectDisabledUnion6TypeBoolean
+
+	return CreateIntegrationStoreDirectDisabledUnion6{
+		Boolean: &boolean,
+		Type:    typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectDisabledUnion6CreateIntegrationStoreDirectDisabled6(createIntegrationStoreDirectDisabled6 CreateIntegrationStoreDirectDisabled6) CreateIntegrationStoreDirectDisabledUnion6 {
+	typ := CreateIntegrationStoreDirectDisabledUnion6TypeCreateIntegrationStoreDirectDisabled6
+
+	return CreateIntegrationStoreDirectDisabledUnion6{
+		CreateIntegrationStoreDirectDisabled6: &createIntegrationStoreDirectDisabled6,
+		Type:                                  typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectDisabledUnion6CreateIntegrationStoreDirectDisabledEnum6(createIntegrationStoreDirectDisabledEnum6 CreateIntegrationStoreDirectDisabledEnum6) CreateIntegrationStoreDirectDisabledUnion6 {
+	typ := CreateIntegrationStoreDirectDisabledUnion6TypeCreateIntegrationStoreDirectDisabledEnum6
+
+	return CreateIntegrationStoreDirectDisabledUnion6{
+		CreateIntegrationStoreDirectDisabledEnum6: &createIntegrationStoreDirectDisabledEnum6,
+		Type: typ,
+	}
+}
+
+func (u *CreateIntegrationStoreDirectDisabledUnion6) UnmarshalJSON(data []byte) error {
+
+	var createIntegrationStoreDirectDisabled6 CreateIntegrationStoreDirectDisabled6 = CreateIntegrationStoreDirectDisabled6{}
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectDisabled6, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectDisabled6 = &createIntegrationStoreDirectDisabled6
+		u.Type = CreateIntegrationStoreDirectDisabledUnion6TypeCreateIntegrationStoreDirectDisabled6
+		return nil
+	}
+
+	var boolean bool = false
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
+		u.Boolean = &boolean
+		u.Type = CreateIntegrationStoreDirectDisabledUnion6TypeBoolean
+		return nil
+	}
+
+	var createIntegrationStoreDirectDisabledEnum6 CreateIntegrationStoreDirectDisabledEnum6 = CreateIntegrationStoreDirectDisabledEnum6("")
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectDisabledEnum6, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectDisabledEnum6 = &createIntegrationStoreDirectDisabledEnum6
+		u.Type = CreateIntegrationStoreDirectDisabledUnion6TypeCreateIntegrationStoreDirectDisabledEnum6
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectDisabledUnion6", string(data))
+}
+
+func (u CreateIntegrationStoreDirectDisabledUnion6) MarshalJSON() ([]byte, error) {
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
+	}
+
+	if u.CreateIntegrationStoreDirectDisabled6 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectDisabled6, "", true)
+	}
+
+	if u.CreateIntegrationStoreDirectDisabledEnum6 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectDisabledEnum6, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectDisabledUnion6: all fields are null")
+}
+
+type CreateIntegrationStoreDirectHiddenEnum6 string
+
+const (
+	CreateIntegrationStoreDirectHiddenEnum6Update CreateIntegrationStoreDirectHiddenEnum6 = "update"
+	CreateIntegrationStoreDirectHiddenEnum6Create CreateIntegrationStoreDirectHiddenEnum6 = "create"
+)
+
+func (e CreateIntegrationStoreDirectHiddenEnum6) ToPointer() *CreateIntegrationStoreDirectHiddenEnum6 {
+	return &e
+}
+func (e *CreateIntegrationStoreDirectHiddenEnum6) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "update":
+		fallthrough
+	case "create":
+		*e = CreateIntegrationStoreDirectHiddenEnum6(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectHiddenEnum6: %v", v)
+	}
+}
+
+type CreateIntegrationStoreDirectHidden6 struct {
+	Expr string `json:"expr"`
+}
+
+func (c CreateIntegrationStoreDirectHidden6) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateIntegrationStoreDirectHidden6) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateIntegrationStoreDirectHidden6) GetExpr() string {
+	if o == nil {
+		return ""
+	}
+	return o.Expr
+}
+
+type CreateIntegrationStoreDirectHiddenUnion6Type string
+
+const (
+	CreateIntegrationStoreDirectHiddenUnion6TypeBoolean                                 CreateIntegrationStoreDirectHiddenUnion6Type = "boolean"
+	CreateIntegrationStoreDirectHiddenUnion6TypeCreateIntegrationStoreDirectHidden6     CreateIntegrationStoreDirectHiddenUnion6Type = "createIntegrationStoreDirect_hidden_6"
+	CreateIntegrationStoreDirectHiddenUnion6TypeCreateIntegrationStoreDirectHiddenEnum6 CreateIntegrationStoreDirectHiddenUnion6Type = "createIntegrationStoreDirect_hidden_enum_6"
+)
+
+type CreateIntegrationStoreDirectHiddenUnion6 struct {
+	Boolean                                 *bool                                    `queryParam:"inline"`
+	CreateIntegrationStoreDirectHidden6     *CreateIntegrationStoreDirectHidden6     `queryParam:"inline"`
+	CreateIntegrationStoreDirectHiddenEnum6 *CreateIntegrationStoreDirectHiddenEnum6 `queryParam:"inline"`
+
+	Type CreateIntegrationStoreDirectHiddenUnion6Type
+}
+
+func CreateCreateIntegrationStoreDirectHiddenUnion6Boolean(boolean bool) CreateIntegrationStoreDirectHiddenUnion6 {
+	typ := CreateIntegrationStoreDirectHiddenUnion6TypeBoolean
+
+	return CreateIntegrationStoreDirectHiddenUnion6{
+		Boolean: &boolean,
+		Type:    typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectHiddenUnion6CreateIntegrationStoreDirectHidden6(createIntegrationStoreDirectHidden6 CreateIntegrationStoreDirectHidden6) CreateIntegrationStoreDirectHiddenUnion6 {
+	typ := CreateIntegrationStoreDirectHiddenUnion6TypeCreateIntegrationStoreDirectHidden6
+
+	return CreateIntegrationStoreDirectHiddenUnion6{
+		CreateIntegrationStoreDirectHidden6: &createIntegrationStoreDirectHidden6,
+		Type:                                typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectHiddenUnion6CreateIntegrationStoreDirectHiddenEnum6(createIntegrationStoreDirectHiddenEnum6 CreateIntegrationStoreDirectHiddenEnum6) CreateIntegrationStoreDirectHiddenUnion6 {
+	typ := CreateIntegrationStoreDirectHiddenUnion6TypeCreateIntegrationStoreDirectHiddenEnum6
+
+	return CreateIntegrationStoreDirectHiddenUnion6{
+		CreateIntegrationStoreDirectHiddenEnum6: &createIntegrationStoreDirectHiddenEnum6,
+		Type:                                    typ,
+	}
+}
+
+func (u *CreateIntegrationStoreDirectHiddenUnion6) UnmarshalJSON(data []byte) error {
+
+	var createIntegrationStoreDirectHidden6 CreateIntegrationStoreDirectHidden6 = CreateIntegrationStoreDirectHidden6{}
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectHidden6, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectHidden6 = &createIntegrationStoreDirectHidden6
+		u.Type = CreateIntegrationStoreDirectHiddenUnion6TypeCreateIntegrationStoreDirectHidden6
+		return nil
+	}
+
+	var boolean bool = false
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
+		u.Boolean = &boolean
+		u.Type = CreateIntegrationStoreDirectHiddenUnion6TypeBoolean
+		return nil
+	}
+
+	var createIntegrationStoreDirectHiddenEnum6 CreateIntegrationStoreDirectHiddenEnum6 = CreateIntegrationStoreDirectHiddenEnum6("")
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectHiddenEnum6, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectHiddenEnum6 = &createIntegrationStoreDirectHiddenEnum6
+		u.Type = CreateIntegrationStoreDirectHiddenUnion6TypeCreateIntegrationStoreDirectHiddenEnum6
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectHiddenUnion6", string(data))
+}
+
+func (u CreateIntegrationStoreDirectHiddenUnion6) MarshalJSON() ([]byte, error) {
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
+	}
+
+	if u.CreateIntegrationStoreDirectHidden6 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectHidden6, "", true)
+	}
+
+	if u.CreateIntegrationStoreDirectHiddenEnum6 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectHiddenEnum6, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectHiddenUnion6: all fields are null")
+}
+
+type CreateIntegrationStoreDirectUIOption6 struct {
+	Value    string                                      `json:"value"`
+	Disabled *CreateIntegrationStoreDirectDisabledUnion6 `json:"disabled,omitempty"`
+	Hidden   *CreateIntegrationStoreDirectHiddenUnion6   `json:"hidden,omitempty"`
+}
+
+func (c CreateIntegrationStoreDirectUIOption6) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateIntegrationStoreDirectUIOption6) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateIntegrationStoreDirectUIOption6) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
+}
+
+func (o *CreateIntegrationStoreDirectUIOption6) GetDisabled() *CreateIntegrationStoreDirectDisabledUnion6 {
+	if o == nil {
+		return nil
+	}
+	return o.Disabled
+}
+
+func (o *CreateIntegrationStoreDirectUIOption6) GetHidden() *CreateIntegrationStoreDirectHiddenUnion6 {
+	if o == nil {
+		return nil
+	}
+	return o.Hidden
+}
+
+type CreateIntegrationStoreDirectDisabledEnum5 string
+
+const (
+	CreateIntegrationStoreDirectDisabledEnum5Update CreateIntegrationStoreDirectDisabledEnum5 = "update"
+	CreateIntegrationStoreDirectDisabledEnum5Create CreateIntegrationStoreDirectDisabledEnum5 = "create"
+)
+
+func (e CreateIntegrationStoreDirectDisabledEnum5) ToPointer() *CreateIntegrationStoreDirectDisabledEnum5 {
+	return &e
+}
+func (e *CreateIntegrationStoreDirectDisabledEnum5) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "update":
+		fallthrough
+	case "create":
+		*e = CreateIntegrationStoreDirectDisabledEnum5(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectDisabledEnum5: %v", v)
+	}
+}
+
+type CreateIntegrationStoreDirectDisabled5 struct {
+	Expr string `json:"expr"`
+}
+
+func (c CreateIntegrationStoreDirectDisabled5) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateIntegrationStoreDirectDisabled5) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateIntegrationStoreDirectDisabled5) GetExpr() string {
+	if o == nil {
+		return ""
+	}
+	return o.Expr
+}
+
+type CreateIntegrationStoreDirectDisabledUnion5Type string
+
+const (
+	CreateIntegrationStoreDirectDisabledUnion5TypeBoolean                                   CreateIntegrationStoreDirectDisabledUnion5Type = "boolean"
+	CreateIntegrationStoreDirectDisabledUnion5TypeCreateIntegrationStoreDirectDisabled5     CreateIntegrationStoreDirectDisabledUnion5Type = "createIntegrationStoreDirect_disabled_5"
+	CreateIntegrationStoreDirectDisabledUnion5TypeCreateIntegrationStoreDirectDisabledEnum5 CreateIntegrationStoreDirectDisabledUnion5Type = "createIntegrationStoreDirect_disabled_enum_5"
+)
+
+type CreateIntegrationStoreDirectDisabledUnion5 struct {
+	Boolean                                   *bool                                      `queryParam:"inline"`
+	CreateIntegrationStoreDirectDisabled5     *CreateIntegrationStoreDirectDisabled5     `queryParam:"inline"`
+	CreateIntegrationStoreDirectDisabledEnum5 *CreateIntegrationStoreDirectDisabledEnum5 `queryParam:"inline"`
+
+	Type CreateIntegrationStoreDirectDisabledUnion5Type
+}
+
+func CreateCreateIntegrationStoreDirectDisabledUnion5Boolean(boolean bool) CreateIntegrationStoreDirectDisabledUnion5 {
+	typ := CreateIntegrationStoreDirectDisabledUnion5TypeBoolean
+
+	return CreateIntegrationStoreDirectDisabledUnion5{
+		Boolean: &boolean,
+		Type:    typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectDisabledUnion5CreateIntegrationStoreDirectDisabled5(createIntegrationStoreDirectDisabled5 CreateIntegrationStoreDirectDisabled5) CreateIntegrationStoreDirectDisabledUnion5 {
+	typ := CreateIntegrationStoreDirectDisabledUnion5TypeCreateIntegrationStoreDirectDisabled5
+
+	return CreateIntegrationStoreDirectDisabledUnion5{
+		CreateIntegrationStoreDirectDisabled5: &createIntegrationStoreDirectDisabled5,
+		Type:                                  typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectDisabledUnion5CreateIntegrationStoreDirectDisabledEnum5(createIntegrationStoreDirectDisabledEnum5 CreateIntegrationStoreDirectDisabledEnum5) CreateIntegrationStoreDirectDisabledUnion5 {
+	typ := CreateIntegrationStoreDirectDisabledUnion5TypeCreateIntegrationStoreDirectDisabledEnum5
+
+	return CreateIntegrationStoreDirectDisabledUnion5{
+		CreateIntegrationStoreDirectDisabledEnum5: &createIntegrationStoreDirectDisabledEnum5,
+		Type: typ,
+	}
+}
+
+func (u *CreateIntegrationStoreDirectDisabledUnion5) UnmarshalJSON(data []byte) error {
+
+	var createIntegrationStoreDirectDisabled5 CreateIntegrationStoreDirectDisabled5 = CreateIntegrationStoreDirectDisabled5{}
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectDisabled5, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectDisabled5 = &createIntegrationStoreDirectDisabled5
+		u.Type = CreateIntegrationStoreDirectDisabledUnion5TypeCreateIntegrationStoreDirectDisabled5
+		return nil
+	}
+
+	var boolean bool = false
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
+		u.Boolean = &boolean
+		u.Type = CreateIntegrationStoreDirectDisabledUnion5TypeBoolean
+		return nil
+	}
+
+	var createIntegrationStoreDirectDisabledEnum5 CreateIntegrationStoreDirectDisabledEnum5 = CreateIntegrationStoreDirectDisabledEnum5("")
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectDisabledEnum5, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectDisabledEnum5 = &createIntegrationStoreDirectDisabledEnum5
+		u.Type = CreateIntegrationStoreDirectDisabledUnion5TypeCreateIntegrationStoreDirectDisabledEnum5
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectDisabledUnion5", string(data))
+}
+
+func (u CreateIntegrationStoreDirectDisabledUnion5) MarshalJSON() ([]byte, error) {
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
+	}
+
+	if u.CreateIntegrationStoreDirectDisabled5 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectDisabled5, "", true)
+	}
+
+	if u.CreateIntegrationStoreDirectDisabledEnum5 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectDisabledEnum5, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectDisabledUnion5: all fields are null")
+}
+
+type CreateIntegrationStoreDirectHiddenEnum5 string
+
+const (
+	CreateIntegrationStoreDirectHiddenEnum5Update CreateIntegrationStoreDirectHiddenEnum5 = "update"
+	CreateIntegrationStoreDirectHiddenEnum5Create CreateIntegrationStoreDirectHiddenEnum5 = "create"
+)
+
+func (e CreateIntegrationStoreDirectHiddenEnum5) ToPointer() *CreateIntegrationStoreDirectHiddenEnum5 {
+	return &e
+}
+func (e *CreateIntegrationStoreDirectHiddenEnum5) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "update":
+		fallthrough
+	case "create":
+		*e = CreateIntegrationStoreDirectHiddenEnum5(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectHiddenEnum5: %v", v)
+	}
+}
+
+type CreateIntegrationStoreDirectHidden5 struct {
+	Expr string `json:"expr"`
+}
+
+func (c CreateIntegrationStoreDirectHidden5) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateIntegrationStoreDirectHidden5) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateIntegrationStoreDirectHidden5) GetExpr() string {
+	if o == nil {
+		return ""
+	}
+	return o.Expr
+}
+
+type CreateIntegrationStoreDirectHiddenUnion5Type string
+
+const (
+	CreateIntegrationStoreDirectHiddenUnion5TypeBoolean                                 CreateIntegrationStoreDirectHiddenUnion5Type = "boolean"
+	CreateIntegrationStoreDirectHiddenUnion5TypeCreateIntegrationStoreDirectHidden5     CreateIntegrationStoreDirectHiddenUnion5Type = "createIntegrationStoreDirect_hidden_5"
+	CreateIntegrationStoreDirectHiddenUnion5TypeCreateIntegrationStoreDirectHiddenEnum5 CreateIntegrationStoreDirectHiddenUnion5Type = "createIntegrationStoreDirect_hidden_enum_5"
+)
+
+type CreateIntegrationStoreDirectHiddenUnion5 struct {
+	Boolean                                 *bool                                    `queryParam:"inline"`
+	CreateIntegrationStoreDirectHidden5     *CreateIntegrationStoreDirectHidden5     `queryParam:"inline"`
+	CreateIntegrationStoreDirectHiddenEnum5 *CreateIntegrationStoreDirectHiddenEnum5 `queryParam:"inline"`
+
+	Type CreateIntegrationStoreDirectHiddenUnion5Type
+}
+
+func CreateCreateIntegrationStoreDirectHiddenUnion5Boolean(boolean bool) CreateIntegrationStoreDirectHiddenUnion5 {
+	typ := CreateIntegrationStoreDirectHiddenUnion5TypeBoolean
+
+	return CreateIntegrationStoreDirectHiddenUnion5{
+		Boolean: &boolean,
+		Type:    typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectHiddenUnion5CreateIntegrationStoreDirectHidden5(createIntegrationStoreDirectHidden5 CreateIntegrationStoreDirectHidden5) CreateIntegrationStoreDirectHiddenUnion5 {
+	typ := CreateIntegrationStoreDirectHiddenUnion5TypeCreateIntegrationStoreDirectHidden5
+
+	return CreateIntegrationStoreDirectHiddenUnion5{
+		CreateIntegrationStoreDirectHidden5: &createIntegrationStoreDirectHidden5,
+		Type:                                typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectHiddenUnion5CreateIntegrationStoreDirectHiddenEnum5(createIntegrationStoreDirectHiddenEnum5 CreateIntegrationStoreDirectHiddenEnum5) CreateIntegrationStoreDirectHiddenUnion5 {
+	typ := CreateIntegrationStoreDirectHiddenUnion5TypeCreateIntegrationStoreDirectHiddenEnum5
+
+	return CreateIntegrationStoreDirectHiddenUnion5{
+		CreateIntegrationStoreDirectHiddenEnum5: &createIntegrationStoreDirectHiddenEnum5,
+		Type:                                    typ,
+	}
+}
+
+func (u *CreateIntegrationStoreDirectHiddenUnion5) UnmarshalJSON(data []byte) error {
+
+	var createIntegrationStoreDirectHidden5 CreateIntegrationStoreDirectHidden5 = CreateIntegrationStoreDirectHidden5{}
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectHidden5, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectHidden5 = &createIntegrationStoreDirectHidden5
+		u.Type = CreateIntegrationStoreDirectHiddenUnion5TypeCreateIntegrationStoreDirectHidden5
+		return nil
+	}
+
+	var boolean bool = false
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
+		u.Boolean = &boolean
+		u.Type = CreateIntegrationStoreDirectHiddenUnion5TypeBoolean
+		return nil
+	}
+
+	var createIntegrationStoreDirectHiddenEnum5 CreateIntegrationStoreDirectHiddenEnum5 = CreateIntegrationStoreDirectHiddenEnum5("")
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectHiddenEnum5, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectHiddenEnum5 = &createIntegrationStoreDirectHiddenEnum5
+		u.Type = CreateIntegrationStoreDirectHiddenUnion5TypeCreateIntegrationStoreDirectHiddenEnum5
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectHiddenUnion5", string(data))
+}
+
+func (u CreateIntegrationStoreDirectHiddenUnion5) MarshalJSON() ([]byte, error) {
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
+	}
+
+	if u.CreateIntegrationStoreDirectHidden5 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectHidden5, "", true)
+	}
+
+	if u.CreateIntegrationStoreDirectHiddenEnum5 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectHiddenEnum5, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectHiddenUnion5: all fields are null")
+}
+
+type CreateIntegrationStoreDirectUIOption5 struct {
+	Value    string                                      `json:"value"`
+	Label    string                                      `json:"label"`
+	Disabled *CreateIntegrationStoreDirectDisabledUnion5 `json:"disabled,omitempty"`
+	Hidden   *CreateIntegrationStoreDirectHiddenUnion5   `json:"hidden,omitempty"`
+}
+
+func (c CreateIntegrationStoreDirectUIOption5) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateIntegrationStoreDirectUIOption5) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"value", "label"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateIntegrationStoreDirectUIOption5) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
+}
+
+func (o *CreateIntegrationStoreDirectUIOption5) GetLabel() string {
+	if o == nil {
+		return ""
+	}
+	return o.Label
+}
+
+func (o *CreateIntegrationStoreDirectUIOption5) GetDisabled() *CreateIntegrationStoreDirectDisabledUnion5 {
+	if o == nil {
+		return nil
+	}
+	return o.Disabled
+}
+
+func (o *CreateIntegrationStoreDirectUIOption5) GetHidden() *CreateIntegrationStoreDirectHiddenUnion5 {
+	if o == nil {
+		return nil
+	}
+	return o.Hidden
+}
+
+type CreateIntegrationStoreDirectUIOptionUnion2Type string
+
+const (
+	CreateIntegrationStoreDirectUIOptionUnion2TypeCreateIntegrationStoreDirectUIOption5 CreateIntegrationStoreDirectUIOptionUnion2Type = "createIntegrationStoreDirect_ui:option_5"
+	CreateIntegrationStoreDirectUIOptionUnion2TypeStr                                   CreateIntegrationStoreDirectUIOptionUnion2Type = "str"
+	CreateIntegrationStoreDirectUIOptionUnion2TypeCreateIntegrationStoreDirectUIOption6 CreateIntegrationStoreDirectUIOptionUnion2Type = "createIntegrationStoreDirect_ui:option_6"
+)
+
+type CreateIntegrationStoreDirectUIOptionUnion2 struct {
+	CreateIntegrationStoreDirectUIOption5 *CreateIntegrationStoreDirectUIOption5 `queryParam:"inline"`
+	Str                                   *string                                `queryParam:"inline"`
+	CreateIntegrationStoreDirectUIOption6 *CreateIntegrationStoreDirectUIOption6 `queryParam:"inline"`
+
+	Type CreateIntegrationStoreDirectUIOptionUnion2Type
+}
+
+func CreateCreateIntegrationStoreDirectUIOptionUnion2CreateIntegrationStoreDirectUIOption5(createIntegrationStoreDirectUIOption5 CreateIntegrationStoreDirectUIOption5) CreateIntegrationStoreDirectUIOptionUnion2 {
+	typ := CreateIntegrationStoreDirectUIOptionUnion2TypeCreateIntegrationStoreDirectUIOption5
+
+	return CreateIntegrationStoreDirectUIOptionUnion2{
+		CreateIntegrationStoreDirectUIOption5: &createIntegrationStoreDirectUIOption5,
+		Type:                                  typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIOptionUnion2Str(str string) CreateIntegrationStoreDirectUIOptionUnion2 {
+	typ := CreateIntegrationStoreDirectUIOptionUnion2TypeStr
+
+	return CreateIntegrationStoreDirectUIOptionUnion2{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIOptionUnion2CreateIntegrationStoreDirectUIOption6(createIntegrationStoreDirectUIOption6 CreateIntegrationStoreDirectUIOption6) CreateIntegrationStoreDirectUIOptionUnion2 {
+	typ := CreateIntegrationStoreDirectUIOptionUnion2TypeCreateIntegrationStoreDirectUIOption6
+
+	return CreateIntegrationStoreDirectUIOptionUnion2{
+		CreateIntegrationStoreDirectUIOption6: &createIntegrationStoreDirectUIOption6,
+		Type:                                  typ,
+	}
+}
+
+func (u *CreateIntegrationStoreDirectUIOptionUnion2) UnmarshalJSON(data []byte) error {
+
+	var createIntegrationStoreDirectUIOption5 CreateIntegrationStoreDirectUIOption5 = CreateIntegrationStoreDirectUIOption5{}
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectUIOption5, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectUIOption5 = &createIntegrationStoreDirectUIOption5
+		u.Type = CreateIntegrationStoreDirectUIOptionUnion2TypeCreateIntegrationStoreDirectUIOption5
+		return nil
+	}
+
+	var createIntegrationStoreDirectUIOption6 CreateIntegrationStoreDirectUIOption6 = CreateIntegrationStoreDirectUIOption6{}
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectUIOption6, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectUIOption6 = &createIntegrationStoreDirectUIOption6
+		u.Type = CreateIntegrationStoreDirectUIOptionUnion2TypeCreateIntegrationStoreDirectUIOption6
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = CreateIntegrationStoreDirectUIOptionUnion2TypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectUIOptionUnion2", string(data))
+}
+
+func (u CreateIntegrationStoreDirectUIOptionUnion2) MarshalJSON() ([]byte, error) {
+	if u.CreateIntegrationStoreDirectUIOption5 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIOption5, "", true)
+	}
+
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.CreateIntegrationStoreDirectUIOption6 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIOption6, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectUIOptionUnion2: all fields are null")
 }
 
 type CreateIntegrationStoreDirectUIReadOnlyEnum8 string
@@ -2229,138 +4088,146 @@ func (o *CreateIntegrationStoreDirectUIFormattedValue8) GetExpr() string {
 	return o.Expr
 }
 
-type CreateIntegrationStoreDirectPropertiesDomain struct {
-	Type             CreateIntegrationStoreDirectTypeString5          `json:"type"`
-	UIControl        CreateIntegrationStoreDirectUIControlDomain      `json:"ui:control"`
-	Enum             []string                                         `json:"enum,omitempty"`
-	MaxLength        *float64                                         `json:"maxLength,omitempty"`
-	MinLength        *float64                                         `json:"minLength,omitempty"`
-	Pattern          *string                                          `json:"pattern,omitempty"`
-	Description      *string                                          `json:"description,omitempty"`
-	Default          *string                                          `json:"default,omitempty"`
-	UILabel          *string                                          `json:"ui:label,omitempty"`
-	UIReadOnly       *CreateIntegrationStoreDirectUIReadOnlyUnion8    `json:"ui:read-only,omitempty"`
-	UIHidden         *CreateIntegrationStoreDirectUIHiddenUnion8      `json:"ui:hidden,omitempty"`
-	UIDisabled       *CreateIntegrationStoreDirectUIDisabledUnion8    `json:"ui:disabled,omitempty"`
-	UIDescription    *CreateIntegrationStoreDirectUIDescriptionUnion8 `json:"ui:description,omitempty"`
-	UIFormattedValue *CreateIntegrationStoreDirectUIFormattedValue8   `json:"ui:formatted-value,omitempty"`
-	UIPlaceholder    *string                                          `json:"ui:placeholder,omitempty"`
+type CreateIntegrationStoreDirectPropertiesMultiVercelRegion struct {
+	Type             CreateIntegrationStoreDirectTypeArray3                 `json:"type"`
+	Items            CreateIntegrationStoreDirectItemsString2               `json:"items"`
+	UIControl        CreateIntegrationStoreDirectUIControlMultiVercelRegion `json:"ui:control"`
+	UIOptions        []CreateIntegrationStoreDirectUIOptionUnion2           `json:"ui:options"`
+	MaxItems         *float64                                               `json:"maxItems,omitempty"`
+	MinItems         *float64                                               `json:"minItems,omitempty"`
+	Description      *string                                                `json:"description,omitempty"`
+	UILabel          *string                                                `json:"ui:label,omitempty"`
+	UIReadOnly       *CreateIntegrationStoreDirectUIReadOnlyUnion8          `json:"ui:read-only,omitempty"`
+	UIHidden         *CreateIntegrationStoreDirectUIHiddenUnion8            `json:"ui:hidden,omitempty"`
+	UIDisabled       *CreateIntegrationStoreDirectUIDisabledUnion8          `json:"ui:disabled,omitempty"`
+	UIDescription    *CreateIntegrationStoreDirectUIDescriptionUnion8       `json:"ui:description,omitempty"`
+	UIFormattedValue *CreateIntegrationStoreDirectUIFormattedValue8         `json:"ui:formatted-value,omitempty"`
+	UIPlaceholder    *string                                                `json:"ui:placeholder,omitempty"`
+	Default          []string                                               `json:"default,omitempty"`
+	Example          []string                                               `json:"example,omitempty"`
 }
 
-func (c CreateIntegrationStoreDirectPropertiesDomain) MarshalJSON() ([]byte, error) {
+func (c CreateIntegrationStoreDirectPropertiesMultiVercelRegion) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(c, "", false)
 }
 
-func (c *CreateIntegrationStoreDirectPropertiesDomain) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "ui:control"}); err != nil {
+func (c *CreateIntegrationStoreDirectPropertiesMultiVercelRegion) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "items", "ui:control", "ui:options"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateIntegrationStoreDirectPropertiesDomain) GetType() CreateIntegrationStoreDirectTypeString5 {
+func (o *CreateIntegrationStoreDirectPropertiesMultiVercelRegion) GetType() CreateIntegrationStoreDirectTypeArray3 {
 	if o == nil {
-		return CreateIntegrationStoreDirectTypeString5("")
+		return CreateIntegrationStoreDirectTypeArray3("")
 	}
 	return o.Type
 }
 
-func (o *CreateIntegrationStoreDirectPropertiesDomain) GetUIControl() CreateIntegrationStoreDirectUIControlDomain {
+func (o *CreateIntegrationStoreDirectPropertiesMultiVercelRegion) GetItems() CreateIntegrationStoreDirectItemsString2 {
 	if o == nil {
-		return CreateIntegrationStoreDirectUIControlDomain("")
+		return CreateIntegrationStoreDirectItemsString2{}
+	}
+	return o.Items
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesMultiVercelRegion) GetUIControl() CreateIntegrationStoreDirectUIControlMultiVercelRegion {
+	if o == nil {
+		return CreateIntegrationStoreDirectUIControlMultiVercelRegion("")
 	}
 	return o.UIControl
 }
 
-func (o *CreateIntegrationStoreDirectPropertiesDomain) GetEnum() []string {
+func (o *CreateIntegrationStoreDirectPropertiesMultiVercelRegion) GetUIOptions() []CreateIntegrationStoreDirectUIOptionUnion2 {
+	if o == nil {
+		return []CreateIntegrationStoreDirectUIOptionUnion2{}
+	}
+	return o.UIOptions
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesMultiVercelRegion) GetMaxItems() *float64 {
 	if o == nil {
 		return nil
 	}
-	return o.Enum
+	return o.MaxItems
 }
 
-func (o *CreateIntegrationStoreDirectPropertiesDomain) GetMaxLength() *float64 {
+func (o *CreateIntegrationStoreDirectPropertiesMultiVercelRegion) GetMinItems() *float64 {
 	if o == nil {
 		return nil
 	}
-	return o.MaxLength
+	return o.MinItems
 }
 
-func (o *CreateIntegrationStoreDirectPropertiesDomain) GetMinLength() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.MinLength
-}
-
-func (o *CreateIntegrationStoreDirectPropertiesDomain) GetPattern() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Pattern
-}
-
-func (o *CreateIntegrationStoreDirectPropertiesDomain) GetDescription() *string {
+func (o *CreateIntegrationStoreDirectPropertiesMultiVercelRegion) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *CreateIntegrationStoreDirectPropertiesDomain) GetDefault() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Default
-}
-
-func (o *CreateIntegrationStoreDirectPropertiesDomain) GetUILabel() *string {
+func (o *CreateIntegrationStoreDirectPropertiesMultiVercelRegion) GetUILabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.UILabel
 }
 
-func (o *CreateIntegrationStoreDirectPropertiesDomain) GetUIReadOnly() *CreateIntegrationStoreDirectUIReadOnlyUnion8 {
+func (o *CreateIntegrationStoreDirectPropertiesMultiVercelRegion) GetUIReadOnly() *CreateIntegrationStoreDirectUIReadOnlyUnion8 {
 	if o == nil {
 		return nil
 	}
 	return o.UIReadOnly
 }
 
-func (o *CreateIntegrationStoreDirectPropertiesDomain) GetUIHidden() *CreateIntegrationStoreDirectUIHiddenUnion8 {
+func (o *CreateIntegrationStoreDirectPropertiesMultiVercelRegion) GetUIHidden() *CreateIntegrationStoreDirectUIHiddenUnion8 {
 	if o == nil {
 		return nil
 	}
 	return o.UIHidden
 }
 
-func (o *CreateIntegrationStoreDirectPropertiesDomain) GetUIDisabled() *CreateIntegrationStoreDirectUIDisabledUnion8 {
+func (o *CreateIntegrationStoreDirectPropertiesMultiVercelRegion) GetUIDisabled() *CreateIntegrationStoreDirectUIDisabledUnion8 {
 	if o == nil {
 		return nil
 	}
 	return o.UIDisabled
 }
 
-func (o *CreateIntegrationStoreDirectPropertiesDomain) GetUIDescription() *CreateIntegrationStoreDirectUIDescriptionUnion8 {
+func (o *CreateIntegrationStoreDirectPropertiesMultiVercelRegion) GetUIDescription() *CreateIntegrationStoreDirectUIDescriptionUnion8 {
 	if o == nil {
 		return nil
 	}
 	return o.UIDescription
 }
 
-func (o *CreateIntegrationStoreDirectPropertiesDomain) GetUIFormattedValue() *CreateIntegrationStoreDirectUIFormattedValue8 {
+func (o *CreateIntegrationStoreDirectPropertiesMultiVercelRegion) GetUIFormattedValue() *CreateIntegrationStoreDirectUIFormattedValue8 {
 	if o == nil {
 		return nil
 	}
 	return o.UIFormattedValue
 }
 
-func (o *CreateIntegrationStoreDirectPropertiesDomain) GetUIPlaceholder() *string {
+func (o *CreateIntegrationStoreDirectPropertiesMultiVercelRegion) GetUIPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.UIPlaceholder
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesMultiVercelRegion) GetDefault() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Default
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesMultiVercelRegion) GetExample() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Example
 }
 
 type CreateIntegrationStoreDirectTypeString4 string
@@ -2409,17 +4276,17 @@ func (e *CreateIntegrationStoreDirectUIControlVercelRegion) UnmarshalJSON(data [
 	}
 }
 
-type CreateIntegrationStoreDirectUIOptionDisabledEnum2 string
+type CreateIntegrationStoreDirectDisabledEnum4 string
 
 const (
-	CreateIntegrationStoreDirectUIOptionDisabledEnum2Update CreateIntegrationStoreDirectUIOptionDisabledEnum2 = "update"
-	CreateIntegrationStoreDirectUIOptionDisabledEnum2Create CreateIntegrationStoreDirectUIOptionDisabledEnum2 = "create"
+	CreateIntegrationStoreDirectDisabledEnum4Update CreateIntegrationStoreDirectDisabledEnum4 = "update"
+	CreateIntegrationStoreDirectDisabledEnum4Create CreateIntegrationStoreDirectDisabledEnum4 = "create"
 )
 
-func (e CreateIntegrationStoreDirectUIOptionDisabledEnum2) ToPointer() *CreateIntegrationStoreDirectUIOptionDisabledEnum2 {
+func (e CreateIntegrationStoreDirectDisabledEnum4) ToPointer() *CreateIntegrationStoreDirectDisabledEnum4 {
 	return &e
 }
-func (e *CreateIntegrationStoreDirectUIOptionDisabledEnum2) UnmarshalJSON(data []byte) error {
+func (e *CreateIntegrationStoreDirectDisabledEnum4) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2428,131 +4295,131 @@ func (e *CreateIntegrationStoreDirectUIOptionDisabledEnum2) UnmarshalJSON(data [
 	case "update":
 		fallthrough
 	case "create":
-		*e = CreateIntegrationStoreDirectUIOptionDisabledEnum2(v)
+		*e = CreateIntegrationStoreDirectDisabledEnum4(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectUIOptionDisabledEnum2: %v", v)
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectDisabledEnum4: %v", v)
 	}
 }
 
-type CreateIntegrationStoreDirectUIOptionDisabled2 struct {
+type CreateIntegrationStoreDirectDisabled4 struct {
 	Expr string `json:"expr"`
 }
 
-func (c CreateIntegrationStoreDirectUIOptionDisabled2) MarshalJSON() ([]byte, error) {
+func (c CreateIntegrationStoreDirectDisabled4) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(c, "", false)
 }
 
-func (c *CreateIntegrationStoreDirectUIOptionDisabled2) UnmarshalJSON(data []byte) error {
+func (c *CreateIntegrationStoreDirectDisabled4) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"expr"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateIntegrationStoreDirectUIOptionDisabled2) GetExpr() string {
+func (o *CreateIntegrationStoreDirectDisabled4) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type CreateIntegrationStoreDirectUIOptionDisabledUnion4Type string
+type CreateIntegrationStoreDirectDisabledUnion4Type string
 
 const (
-	CreateIntegrationStoreDirectUIOptionDisabledUnion4TypeBoolean                                           CreateIntegrationStoreDirectUIOptionDisabledUnion4Type = "boolean"
-	CreateIntegrationStoreDirectUIOptionDisabledUnion4TypeCreateIntegrationStoreDirectUIOptionDisabled2     CreateIntegrationStoreDirectUIOptionDisabledUnion4Type = "createIntegrationStoreDirect_ui:option_disabled_2"
-	CreateIntegrationStoreDirectUIOptionDisabledUnion4TypeCreateIntegrationStoreDirectUIOptionDisabledEnum2 CreateIntegrationStoreDirectUIOptionDisabledUnion4Type = "createIntegrationStoreDirect_ui:option_disabled_enum_2"
+	CreateIntegrationStoreDirectDisabledUnion4TypeBoolean                                   CreateIntegrationStoreDirectDisabledUnion4Type = "boolean"
+	CreateIntegrationStoreDirectDisabledUnion4TypeCreateIntegrationStoreDirectDisabled4     CreateIntegrationStoreDirectDisabledUnion4Type = "createIntegrationStoreDirect_disabled_4"
+	CreateIntegrationStoreDirectDisabledUnion4TypeCreateIntegrationStoreDirectDisabledEnum4 CreateIntegrationStoreDirectDisabledUnion4Type = "createIntegrationStoreDirect_disabled_enum_4"
 )
 
-type CreateIntegrationStoreDirectUIOptionDisabledUnion4 struct {
-	Boolean                                           *bool                                              `queryParam:"inline"`
-	CreateIntegrationStoreDirectUIOptionDisabled2     *CreateIntegrationStoreDirectUIOptionDisabled2     `queryParam:"inline"`
-	CreateIntegrationStoreDirectUIOptionDisabledEnum2 *CreateIntegrationStoreDirectUIOptionDisabledEnum2 `queryParam:"inline"`
+type CreateIntegrationStoreDirectDisabledUnion4 struct {
+	Boolean                                   *bool                                      `queryParam:"inline"`
+	CreateIntegrationStoreDirectDisabled4     *CreateIntegrationStoreDirectDisabled4     `queryParam:"inline"`
+	CreateIntegrationStoreDirectDisabledEnum4 *CreateIntegrationStoreDirectDisabledEnum4 `queryParam:"inline"`
 
-	Type CreateIntegrationStoreDirectUIOptionDisabledUnion4Type
+	Type CreateIntegrationStoreDirectDisabledUnion4Type
 }
 
-func CreateCreateIntegrationStoreDirectUIOptionDisabledUnion4Boolean(boolean bool) CreateIntegrationStoreDirectUIOptionDisabledUnion4 {
-	typ := CreateIntegrationStoreDirectUIOptionDisabledUnion4TypeBoolean
+func CreateCreateIntegrationStoreDirectDisabledUnion4Boolean(boolean bool) CreateIntegrationStoreDirectDisabledUnion4 {
+	typ := CreateIntegrationStoreDirectDisabledUnion4TypeBoolean
 
-	return CreateIntegrationStoreDirectUIOptionDisabledUnion4{
+	return CreateIntegrationStoreDirectDisabledUnion4{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateCreateIntegrationStoreDirectUIOptionDisabledUnion4CreateIntegrationStoreDirectUIOptionDisabled2(createIntegrationStoreDirectUIOptionDisabled2 CreateIntegrationStoreDirectUIOptionDisabled2) CreateIntegrationStoreDirectUIOptionDisabledUnion4 {
-	typ := CreateIntegrationStoreDirectUIOptionDisabledUnion4TypeCreateIntegrationStoreDirectUIOptionDisabled2
+func CreateCreateIntegrationStoreDirectDisabledUnion4CreateIntegrationStoreDirectDisabled4(createIntegrationStoreDirectDisabled4 CreateIntegrationStoreDirectDisabled4) CreateIntegrationStoreDirectDisabledUnion4 {
+	typ := CreateIntegrationStoreDirectDisabledUnion4TypeCreateIntegrationStoreDirectDisabled4
 
-	return CreateIntegrationStoreDirectUIOptionDisabledUnion4{
-		CreateIntegrationStoreDirectUIOptionDisabled2: &createIntegrationStoreDirectUIOptionDisabled2,
+	return CreateIntegrationStoreDirectDisabledUnion4{
+		CreateIntegrationStoreDirectDisabled4: &createIntegrationStoreDirectDisabled4,
+		Type:                                  typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectDisabledUnion4CreateIntegrationStoreDirectDisabledEnum4(createIntegrationStoreDirectDisabledEnum4 CreateIntegrationStoreDirectDisabledEnum4) CreateIntegrationStoreDirectDisabledUnion4 {
+	typ := CreateIntegrationStoreDirectDisabledUnion4TypeCreateIntegrationStoreDirectDisabledEnum4
+
+	return CreateIntegrationStoreDirectDisabledUnion4{
+		CreateIntegrationStoreDirectDisabledEnum4: &createIntegrationStoreDirectDisabledEnum4,
 		Type: typ,
 	}
 }
 
-func CreateCreateIntegrationStoreDirectUIOptionDisabledUnion4CreateIntegrationStoreDirectUIOptionDisabledEnum2(createIntegrationStoreDirectUIOptionDisabledEnum2 CreateIntegrationStoreDirectUIOptionDisabledEnum2) CreateIntegrationStoreDirectUIOptionDisabledUnion4 {
-	typ := CreateIntegrationStoreDirectUIOptionDisabledUnion4TypeCreateIntegrationStoreDirectUIOptionDisabledEnum2
+func (u *CreateIntegrationStoreDirectDisabledUnion4) UnmarshalJSON(data []byte) error {
 
-	return CreateIntegrationStoreDirectUIOptionDisabledUnion4{
-		CreateIntegrationStoreDirectUIOptionDisabledEnum2: &createIntegrationStoreDirectUIOptionDisabledEnum2,
-		Type: typ,
-	}
-}
-
-func (u *CreateIntegrationStoreDirectUIOptionDisabledUnion4) UnmarshalJSON(data []byte) error {
-
-	var createIntegrationStoreDirectUIOptionDisabled2 CreateIntegrationStoreDirectUIOptionDisabled2 = CreateIntegrationStoreDirectUIOptionDisabled2{}
-	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectUIOptionDisabled2, "", true, nil); err == nil {
-		u.CreateIntegrationStoreDirectUIOptionDisabled2 = &createIntegrationStoreDirectUIOptionDisabled2
-		u.Type = CreateIntegrationStoreDirectUIOptionDisabledUnion4TypeCreateIntegrationStoreDirectUIOptionDisabled2
+	var createIntegrationStoreDirectDisabled4 CreateIntegrationStoreDirectDisabled4 = CreateIntegrationStoreDirectDisabled4{}
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectDisabled4, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectDisabled4 = &createIntegrationStoreDirectDisabled4
+		u.Type = CreateIntegrationStoreDirectDisabledUnion4TypeCreateIntegrationStoreDirectDisabled4
 		return nil
 	}
 
 	var boolean bool = false
 	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = CreateIntegrationStoreDirectUIOptionDisabledUnion4TypeBoolean
+		u.Type = CreateIntegrationStoreDirectDisabledUnion4TypeBoolean
 		return nil
 	}
 
-	var createIntegrationStoreDirectUIOptionDisabledEnum2 CreateIntegrationStoreDirectUIOptionDisabledEnum2 = CreateIntegrationStoreDirectUIOptionDisabledEnum2("")
-	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectUIOptionDisabledEnum2, "", true, nil); err == nil {
-		u.CreateIntegrationStoreDirectUIOptionDisabledEnum2 = &createIntegrationStoreDirectUIOptionDisabledEnum2
-		u.Type = CreateIntegrationStoreDirectUIOptionDisabledUnion4TypeCreateIntegrationStoreDirectUIOptionDisabledEnum2
+	var createIntegrationStoreDirectDisabledEnum4 CreateIntegrationStoreDirectDisabledEnum4 = CreateIntegrationStoreDirectDisabledEnum4("")
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectDisabledEnum4, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectDisabledEnum4 = &createIntegrationStoreDirectDisabledEnum4
+		u.Type = CreateIntegrationStoreDirectDisabledUnion4TypeCreateIntegrationStoreDirectDisabledEnum4
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectUIOptionDisabledUnion4", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectDisabledUnion4", string(data))
 }
 
-func (u CreateIntegrationStoreDirectUIOptionDisabledUnion4) MarshalJSON() ([]byte, error) {
+func (u CreateIntegrationStoreDirectDisabledUnion4) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.CreateIntegrationStoreDirectUIOptionDisabled2 != nil {
-		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIOptionDisabled2, "", true)
+	if u.CreateIntegrationStoreDirectDisabled4 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectDisabled4, "", true)
 	}
 
-	if u.CreateIntegrationStoreDirectUIOptionDisabledEnum2 != nil {
-		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIOptionDisabledEnum2, "", true)
+	if u.CreateIntegrationStoreDirectDisabledEnum4 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectDisabledEnum4, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectUIOptionDisabledUnion4: all fields are null")
+	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectDisabledUnion4: all fields are null")
 }
 
-type CreateIntegrationStoreDirectUIOptionHiddenEnum2 string
+type CreateIntegrationStoreDirectHiddenEnum4 string
 
 const (
-	CreateIntegrationStoreDirectUIOptionHiddenEnum2Update CreateIntegrationStoreDirectUIOptionHiddenEnum2 = "update"
-	CreateIntegrationStoreDirectUIOptionHiddenEnum2Create CreateIntegrationStoreDirectUIOptionHiddenEnum2 = "create"
+	CreateIntegrationStoreDirectHiddenEnum4Update CreateIntegrationStoreDirectHiddenEnum4 = "update"
+	CreateIntegrationStoreDirectHiddenEnum4Create CreateIntegrationStoreDirectHiddenEnum4 = "create"
 )
 
-func (e CreateIntegrationStoreDirectUIOptionHiddenEnum2) ToPointer() *CreateIntegrationStoreDirectUIOptionHiddenEnum2 {
+func (e CreateIntegrationStoreDirectHiddenEnum4) ToPointer() *CreateIntegrationStoreDirectHiddenEnum4 {
 	return &e
 }
-func (e *CreateIntegrationStoreDirectUIOptionHiddenEnum2) UnmarshalJSON(data []byte) error {
+func (e *CreateIntegrationStoreDirectHiddenEnum4) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2561,124 +4428,124 @@ func (e *CreateIntegrationStoreDirectUIOptionHiddenEnum2) UnmarshalJSON(data []b
 	case "update":
 		fallthrough
 	case "create":
-		*e = CreateIntegrationStoreDirectUIOptionHiddenEnum2(v)
+		*e = CreateIntegrationStoreDirectHiddenEnum4(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectUIOptionHiddenEnum2: %v", v)
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectHiddenEnum4: %v", v)
 	}
 }
 
-type CreateIntegrationStoreDirectUIOptionHidden2 struct {
+type CreateIntegrationStoreDirectHidden4 struct {
 	Expr string `json:"expr"`
 }
 
-func (c CreateIntegrationStoreDirectUIOptionHidden2) MarshalJSON() ([]byte, error) {
+func (c CreateIntegrationStoreDirectHidden4) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(c, "", false)
 }
 
-func (c *CreateIntegrationStoreDirectUIOptionHidden2) UnmarshalJSON(data []byte) error {
+func (c *CreateIntegrationStoreDirectHidden4) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"expr"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateIntegrationStoreDirectUIOptionHidden2) GetExpr() string {
+func (o *CreateIntegrationStoreDirectHidden4) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type CreateIntegrationStoreDirectUIOptionHiddenUnion4Type string
+type CreateIntegrationStoreDirectHiddenUnion4Type string
 
 const (
-	CreateIntegrationStoreDirectUIOptionHiddenUnion4TypeBoolean                                         CreateIntegrationStoreDirectUIOptionHiddenUnion4Type = "boolean"
-	CreateIntegrationStoreDirectUIOptionHiddenUnion4TypeCreateIntegrationStoreDirectUIOptionHidden2     CreateIntegrationStoreDirectUIOptionHiddenUnion4Type = "createIntegrationStoreDirect_ui:option_hidden_2"
-	CreateIntegrationStoreDirectUIOptionHiddenUnion4TypeCreateIntegrationStoreDirectUIOptionHiddenEnum2 CreateIntegrationStoreDirectUIOptionHiddenUnion4Type = "createIntegrationStoreDirect_ui:option_hidden_enum_2"
+	CreateIntegrationStoreDirectHiddenUnion4TypeBoolean                                 CreateIntegrationStoreDirectHiddenUnion4Type = "boolean"
+	CreateIntegrationStoreDirectHiddenUnion4TypeCreateIntegrationStoreDirectHidden4     CreateIntegrationStoreDirectHiddenUnion4Type = "createIntegrationStoreDirect_hidden_4"
+	CreateIntegrationStoreDirectHiddenUnion4TypeCreateIntegrationStoreDirectHiddenEnum4 CreateIntegrationStoreDirectHiddenUnion4Type = "createIntegrationStoreDirect_hidden_enum_4"
 )
 
-type CreateIntegrationStoreDirectUIOptionHiddenUnion4 struct {
-	Boolean                                         *bool                                            `queryParam:"inline"`
-	CreateIntegrationStoreDirectUIOptionHidden2     *CreateIntegrationStoreDirectUIOptionHidden2     `queryParam:"inline"`
-	CreateIntegrationStoreDirectUIOptionHiddenEnum2 *CreateIntegrationStoreDirectUIOptionHiddenEnum2 `queryParam:"inline"`
+type CreateIntegrationStoreDirectHiddenUnion4 struct {
+	Boolean                                 *bool                                    `queryParam:"inline"`
+	CreateIntegrationStoreDirectHidden4     *CreateIntegrationStoreDirectHidden4     `queryParam:"inline"`
+	CreateIntegrationStoreDirectHiddenEnum4 *CreateIntegrationStoreDirectHiddenEnum4 `queryParam:"inline"`
 
-	Type CreateIntegrationStoreDirectUIOptionHiddenUnion4Type
+	Type CreateIntegrationStoreDirectHiddenUnion4Type
 }
 
-func CreateCreateIntegrationStoreDirectUIOptionHiddenUnion4Boolean(boolean bool) CreateIntegrationStoreDirectUIOptionHiddenUnion4 {
-	typ := CreateIntegrationStoreDirectUIOptionHiddenUnion4TypeBoolean
+func CreateCreateIntegrationStoreDirectHiddenUnion4Boolean(boolean bool) CreateIntegrationStoreDirectHiddenUnion4 {
+	typ := CreateIntegrationStoreDirectHiddenUnion4TypeBoolean
 
-	return CreateIntegrationStoreDirectUIOptionHiddenUnion4{
+	return CreateIntegrationStoreDirectHiddenUnion4{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateCreateIntegrationStoreDirectUIOptionHiddenUnion4CreateIntegrationStoreDirectUIOptionHidden2(createIntegrationStoreDirectUIOptionHidden2 CreateIntegrationStoreDirectUIOptionHidden2) CreateIntegrationStoreDirectUIOptionHiddenUnion4 {
-	typ := CreateIntegrationStoreDirectUIOptionHiddenUnion4TypeCreateIntegrationStoreDirectUIOptionHidden2
+func CreateCreateIntegrationStoreDirectHiddenUnion4CreateIntegrationStoreDirectHidden4(createIntegrationStoreDirectHidden4 CreateIntegrationStoreDirectHidden4) CreateIntegrationStoreDirectHiddenUnion4 {
+	typ := CreateIntegrationStoreDirectHiddenUnion4TypeCreateIntegrationStoreDirectHidden4
 
-	return CreateIntegrationStoreDirectUIOptionHiddenUnion4{
-		CreateIntegrationStoreDirectUIOptionHidden2: &createIntegrationStoreDirectUIOptionHidden2,
-		Type: typ,
+	return CreateIntegrationStoreDirectHiddenUnion4{
+		CreateIntegrationStoreDirectHidden4: &createIntegrationStoreDirectHidden4,
+		Type:                                typ,
 	}
 }
 
-func CreateCreateIntegrationStoreDirectUIOptionHiddenUnion4CreateIntegrationStoreDirectUIOptionHiddenEnum2(createIntegrationStoreDirectUIOptionHiddenEnum2 CreateIntegrationStoreDirectUIOptionHiddenEnum2) CreateIntegrationStoreDirectUIOptionHiddenUnion4 {
-	typ := CreateIntegrationStoreDirectUIOptionHiddenUnion4TypeCreateIntegrationStoreDirectUIOptionHiddenEnum2
+func CreateCreateIntegrationStoreDirectHiddenUnion4CreateIntegrationStoreDirectHiddenEnum4(createIntegrationStoreDirectHiddenEnum4 CreateIntegrationStoreDirectHiddenEnum4) CreateIntegrationStoreDirectHiddenUnion4 {
+	typ := CreateIntegrationStoreDirectHiddenUnion4TypeCreateIntegrationStoreDirectHiddenEnum4
 
-	return CreateIntegrationStoreDirectUIOptionHiddenUnion4{
-		CreateIntegrationStoreDirectUIOptionHiddenEnum2: &createIntegrationStoreDirectUIOptionHiddenEnum2,
-		Type: typ,
+	return CreateIntegrationStoreDirectHiddenUnion4{
+		CreateIntegrationStoreDirectHiddenEnum4: &createIntegrationStoreDirectHiddenEnum4,
+		Type:                                    typ,
 	}
 }
 
-func (u *CreateIntegrationStoreDirectUIOptionHiddenUnion4) UnmarshalJSON(data []byte) error {
+func (u *CreateIntegrationStoreDirectHiddenUnion4) UnmarshalJSON(data []byte) error {
 
-	var createIntegrationStoreDirectUIOptionHidden2 CreateIntegrationStoreDirectUIOptionHidden2 = CreateIntegrationStoreDirectUIOptionHidden2{}
-	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectUIOptionHidden2, "", true, nil); err == nil {
-		u.CreateIntegrationStoreDirectUIOptionHidden2 = &createIntegrationStoreDirectUIOptionHidden2
-		u.Type = CreateIntegrationStoreDirectUIOptionHiddenUnion4TypeCreateIntegrationStoreDirectUIOptionHidden2
+	var createIntegrationStoreDirectHidden4 CreateIntegrationStoreDirectHidden4 = CreateIntegrationStoreDirectHidden4{}
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectHidden4, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectHidden4 = &createIntegrationStoreDirectHidden4
+		u.Type = CreateIntegrationStoreDirectHiddenUnion4TypeCreateIntegrationStoreDirectHidden4
 		return nil
 	}
 
 	var boolean bool = false
 	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = CreateIntegrationStoreDirectUIOptionHiddenUnion4TypeBoolean
+		u.Type = CreateIntegrationStoreDirectHiddenUnion4TypeBoolean
 		return nil
 	}
 
-	var createIntegrationStoreDirectUIOptionHiddenEnum2 CreateIntegrationStoreDirectUIOptionHiddenEnum2 = CreateIntegrationStoreDirectUIOptionHiddenEnum2("")
-	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectUIOptionHiddenEnum2, "", true, nil); err == nil {
-		u.CreateIntegrationStoreDirectUIOptionHiddenEnum2 = &createIntegrationStoreDirectUIOptionHiddenEnum2
-		u.Type = CreateIntegrationStoreDirectUIOptionHiddenUnion4TypeCreateIntegrationStoreDirectUIOptionHiddenEnum2
+	var createIntegrationStoreDirectHiddenEnum4 CreateIntegrationStoreDirectHiddenEnum4 = CreateIntegrationStoreDirectHiddenEnum4("")
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectHiddenEnum4, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectHiddenEnum4 = &createIntegrationStoreDirectHiddenEnum4
+		u.Type = CreateIntegrationStoreDirectHiddenUnion4TypeCreateIntegrationStoreDirectHiddenEnum4
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectUIOptionHiddenUnion4", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectHiddenUnion4", string(data))
 }
 
-func (u CreateIntegrationStoreDirectUIOptionHiddenUnion4) MarshalJSON() ([]byte, error) {
+func (u CreateIntegrationStoreDirectHiddenUnion4) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.CreateIntegrationStoreDirectUIOptionHidden2 != nil {
-		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIOptionHidden2, "", true)
+	if u.CreateIntegrationStoreDirectHidden4 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectHidden4, "", true)
 	}
 
-	if u.CreateIntegrationStoreDirectUIOptionHiddenEnum2 != nil {
-		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIOptionHiddenEnum2, "", true)
+	if u.CreateIntegrationStoreDirectHiddenEnum4 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectHiddenEnum4, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectUIOptionHiddenUnion4: all fields are null")
+	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectHiddenUnion4: all fields are null")
 }
 
 type CreateIntegrationStoreDirectUIOption4 struct {
-	Value    string                                              `json:"value"`
-	Disabled *CreateIntegrationStoreDirectUIOptionDisabledUnion4 `json:"disabled,omitempty"`
-	Hidden   *CreateIntegrationStoreDirectUIOptionHiddenUnion4   `json:"hidden,omitempty"`
+	Value    string                                      `json:"value"`
+	Disabled *CreateIntegrationStoreDirectDisabledUnion4 `json:"disabled,omitempty"`
+	Hidden   *CreateIntegrationStoreDirectHiddenUnion4   `json:"hidden,omitempty"`
 }
 
 func (c CreateIntegrationStoreDirectUIOption4) MarshalJSON() ([]byte, error) {
@@ -2699,31 +4566,31 @@ func (o *CreateIntegrationStoreDirectUIOption4) GetValue() string {
 	return o.Value
 }
 
-func (o *CreateIntegrationStoreDirectUIOption4) GetDisabled() *CreateIntegrationStoreDirectUIOptionDisabledUnion4 {
+func (o *CreateIntegrationStoreDirectUIOption4) GetDisabled() *CreateIntegrationStoreDirectDisabledUnion4 {
 	if o == nil {
 		return nil
 	}
 	return o.Disabled
 }
 
-func (o *CreateIntegrationStoreDirectUIOption4) GetHidden() *CreateIntegrationStoreDirectUIOptionHiddenUnion4 {
+func (o *CreateIntegrationStoreDirectUIOption4) GetHidden() *CreateIntegrationStoreDirectHiddenUnion4 {
 	if o == nil {
 		return nil
 	}
 	return o.Hidden
 }
 
-type CreateIntegrationStoreDirectUIOptionDisabledEnum1 string
+type CreateIntegrationStoreDirectDisabledEnum3 string
 
 const (
-	CreateIntegrationStoreDirectUIOptionDisabledEnum1Update CreateIntegrationStoreDirectUIOptionDisabledEnum1 = "update"
-	CreateIntegrationStoreDirectUIOptionDisabledEnum1Create CreateIntegrationStoreDirectUIOptionDisabledEnum1 = "create"
+	CreateIntegrationStoreDirectDisabledEnum3Update CreateIntegrationStoreDirectDisabledEnum3 = "update"
+	CreateIntegrationStoreDirectDisabledEnum3Create CreateIntegrationStoreDirectDisabledEnum3 = "create"
 )
 
-func (e CreateIntegrationStoreDirectUIOptionDisabledEnum1) ToPointer() *CreateIntegrationStoreDirectUIOptionDisabledEnum1 {
+func (e CreateIntegrationStoreDirectDisabledEnum3) ToPointer() *CreateIntegrationStoreDirectDisabledEnum3 {
 	return &e
 }
-func (e *CreateIntegrationStoreDirectUIOptionDisabledEnum1) UnmarshalJSON(data []byte) error {
+func (e *CreateIntegrationStoreDirectDisabledEnum3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2732,131 +4599,131 @@ func (e *CreateIntegrationStoreDirectUIOptionDisabledEnum1) UnmarshalJSON(data [
 	case "update":
 		fallthrough
 	case "create":
-		*e = CreateIntegrationStoreDirectUIOptionDisabledEnum1(v)
+		*e = CreateIntegrationStoreDirectDisabledEnum3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectUIOptionDisabledEnum1: %v", v)
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectDisabledEnum3: %v", v)
 	}
 }
 
-type CreateIntegrationStoreDirectUIOptionDisabled1 struct {
+type CreateIntegrationStoreDirectDisabled3 struct {
 	Expr string `json:"expr"`
 }
 
-func (c CreateIntegrationStoreDirectUIOptionDisabled1) MarshalJSON() ([]byte, error) {
+func (c CreateIntegrationStoreDirectDisabled3) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(c, "", false)
 }
 
-func (c *CreateIntegrationStoreDirectUIOptionDisabled1) UnmarshalJSON(data []byte) error {
+func (c *CreateIntegrationStoreDirectDisabled3) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"expr"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateIntegrationStoreDirectUIOptionDisabled1) GetExpr() string {
+func (o *CreateIntegrationStoreDirectDisabled3) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type CreateIntegrationStoreDirectUIOptionDisabledUnion3Type string
+type CreateIntegrationStoreDirectDisabledUnion3Type string
 
 const (
-	CreateIntegrationStoreDirectUIOptionDisabledUnion3TypeBoolean                                           CreateIntegrationStoreDirectUIOptionDisabledUnion3Type = "boolean"
-	CreateIntegrationStoreDirectUIOptionDisabledUnion3TypeCreateIntegrationStoreDirectUIOptionDisabled1     CreateIntegrationStoreDirectUIOptionDisabledUnion3Type = "createIntegrationStoreDirect_ui:option_disabled_1"
-	CreateIntegrationStoreDirectUIOptionDisabledUnion3TypeCreateIntegrationStoreDirectUIOptionDisabledEnum1 CreateIntegrationStoreDirectUIOptionDisabledUnion3Type = "createIntegrationStoreDirect_ui:option_disabled_enum_1"
+	CreateIntegrationStoreDirectDisabledUnion3TypeBoolean                                   CreateIntegrationStoreDirectDisabledUnion3Type = "boolean"
+	CreateIntegrationStoreDirectDisabledUnion3TypeCreateIntegrationStoreDirectDisabled3     CreateIntegrationStoreDirectDisabledUnion3Type = "createIntegrationStoreDirect_disabled_3"
+	CreateIntegrationStoreDirectDisabledUnion3TypeCreateIntegrationStoreDirectDisabledEnum3 CreateIntegrationStoreDirectDisabledUnion3Type = "createIntegrationStoreDirect_disabled_enum_3"
 )
 
-type CreateIntegrationStoreDirectUIOptionDisabledUnion3 struct {
-	Boolean                                           *bool                                              `queryParam:"inline"`
-	CreateIntegrationStoreDirectUIOptionDisabled1     *CreateIntegrationStoreDirectUIOptionDisabled1     `queryParam:"inline"`
-	CreateIntegrationStoreDirectUIOptionDisabledEnum1 *CreateIntegrationStoreDirectUIOptionDisabledEnum1 `queryParam:"inline"`
+type CreateIntegrationStoreDirectDisabledUnion3 struct {
+	Boolean                                   *bool                                      `queryParam:"inline"`
+	CreateIntegrationStoreDirectDisabled3     *CreateIntegrationStoreDirectDisabled3     `queryParam:"inline"`
+	CreateIntegrationStoreDirectDisabledEnum3 *CreateIntegrationStoreDirectDisabledEnum3 `queryParam:"inline"`
 
-	Type CreateIntegrationStoreDirectUIOptionDisabledUnion3Type
+	Type CreateIntegrationStoreDirectDisabledUnion3Type
 }
 
-func CreateCreateIntegrationStoreDirectUIOptionDisabledUnion3Boolean(boolean bool) CreateIntegrationStoreDirectUIOptionDisabledUnion3 {
-	typ := CreateIntegrationStoreDirectUIOptionDisabledUnion3TypeBoolean
+func CreateCreateIntegrationStoreDirectDisabledUnion3Boolean(boolean bool) CreateIntegrationStoreDirectDisabledUnion3 {
+	typ := CreateIntegrationStoreDirectDisabledUnion3TypeBoolean
 
-	return CreateIntegrationStoreDirectUIOptionDisabledUnion3{
+	return CreateIntegrationStoreDirectDisabledUnion3{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateCreateIntegrationStoreDirectUIOptionDisabledUnion3CreateIntegrationStoreDirectUIOptionDisabled1(createIntegrationStoreDirectUIOptionDisabled1 CreateIntegrationStoreDirectUIOptionDisabled1) CreateIntegrationStoreDirectUIOptionDisabledUnion3 {
-	typ := CreateIntegrationStoreDirectUIOptionDisabledUnion3TypeCreateIntegrationStoreDirectUIOptionDisabled1
+func CreateCreateIntegrationStoreDirectDisabledUnion3CreateIntegrationStoreDirectDisabled3(createIntegrationStoreDirectDisabled3 CreateIntegrationStoreDirectDisabled3) CreateIntegrationStoreDirectDisabledUnion3 {
+	typ := CreateIntegrationStoreDirectDisabledUnion3TypeCreateIntegrationStoreDirectDisabled3
 
-	return CreateIntegrationStoreDirectUIOptionDisabledUnion3{
-		CreateIntegrationStoreDirectUIOptionDisabled1: &createIntegrationStoreDirectUIOptionDisabled1,
+	return CreateIntegrationStoreDirectDisabledUnion3{
+		CreateIntegrationStoreDirectDisabled3: &createIntegrationStoreDirectDisabled3,
+		Type:                                  typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectDisabledUnion3CreateIntegrationStoreDirectDisabledEnum3(createIntegrationStoreDirectDisabledEnum3 CreateIntegrationStoreDirectDisabledEnum3) CreateIntegrationStoreDirectDisabledUnion3 {
+	typ := CreateIntegrationStoreDirectDisabledUnion3TypeCreateIntegrationStoreDirectDisabledEnum3
+
+	return CreateIntegrationStoreDirectDisabledUnion3{
+		CreateIntegrationStoreDirectDisabledEnum3: &createIntegrationStoreDirectDisabledEnum3,
 		Type: typ,
 	}
 }
 
-func CreateCreateIntegrationStoreDirectUIOptionDisabledUnion3CreateIntegrationStoreDirectUIOptionDisabledEnum1(createIntegrationStoreDirectUIOptionDisabledEnum1 CreateIntegrationStoreDirectUIOptionDisabledEnum1) CreateIntegrationStoreDirectUIOptionDisabledUnion3 {
-	typ := CreateIntegrationStoreDirectUIOptionDisabledUnion3TypeCreateIntegrationStoreDirectUIOptionDisabledEnum1
+func (u *CreateIntegrationStoreDirectDisabledUnion3) UnmarshalJSON(data []byte) error {
 
-	return CreateIntegrationStoreDirectUIOptionDisabledUnion3{
-		CreateIntegrationStoreDirectUIOptionDisabledEnum1: &createIntegrationStoreDirectUIOptionDisabledEnum1,
-		Type: typ,
-	}
-}
-
-func (u *CreateIntegrationStoreDirectUIOptionDisabledUnion3) UnmarshalJSON(data []byte) error {
-
-	var createIntegrationStoreDirectUIOptionDisabled1 CreateIntegrationStoreDirectUIOptionDisabled1 = CreateIntegrationStoreDirectUIOptionDisabled1{}
-	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectUIOptionDisabled1, "", true, nil); err == nil {
-		u.CreateIntegrationStoreDirectUIOptionDisabled1 = &createIntegrationStoreDirectUIOptionDisabled1
-		u.Type = CreateIntegrationStoreDirectUIOptionDisabledUnion3TypeCreateIntegrationStoreDirectUIOptionDisabled1
+	var createIntegrationStoreDirectDisabled3 CreateIntegrationStoreDirectDisabled3 = CreateIntegrationStoreDirectDisabled3{}
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectDisabled3, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectDisabled3 = &createIntegrationStoreDirectDisabled3
+		u.Type = CreateIntegrationStoreDirectDisabledUnion3TypeCreateIntegrationStoreDirectDisabled3
 		return nil
 	}
 
 	var boolean bool = false
 	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = CreateIntegrationStoreDirectUIOptionDisabledUnion3TypeBoolean
+		u.Type = CreateIntegrationStoreDirectDisabledUnion3TypeBoolean
 		return nil
 	}
 
-	var createIntegrationStoreDirectUIOptionDisabledEnum1 CreateIntegrationStoreDirectUIOptionDisabledEnum1 = CreateIntegrationStoreDirectUIOptionDisabledEnum1("")
-	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectUIOptionDisabledEnum1, "", true, nil); err == nil {
-		u.CreateIntegrationStoreDirectUIOptionDisabledEnum1 = &createIntegrationStoreDirectUIOptionDisabledEnum1
-		u.Type = CreateIntegrationStoreDirectUIOptionDisabledUnion3TypeCreateIntegrationStoreDirectUIOptionDisabledEnum1
+	var createIntegrationStoreDirectDisabledEnum3 CreateIntegrationStoreDirectDisabledEnum3 = CreateIntegrationStoreDirectDisabledEnum3("")
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectDisabledEnum3, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectDisabledEnum3 = &createIntegrationStoreDirectDisabledEnum3
+		u.Type = CreateIntegrationStoreDirectDisabledUnion3TypeCreateIntegrationStoreDirectDisabledEnum3
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectUIOptionDisabledUnion3", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectDisabledUnion3", string(data))
 }
 
-func (u CreateIntegrationStoreDirectUIOptionDisabledUnion3) MarshalJSON() ([]byte, error) {
+func (u CreateIntegrationStoreDirectDisabledUnion3) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.CreateIntegrationStoreDirectUIOptionDisabled1 != nil {
-		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIOptionDisabled1, "", true)
+	if u.CreateIntegrationStoreDirectDisabled3 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectDisabled3, "", true)
 	}
 
-	if u.CreateIntegrationStoreDirectUIOptionDisabledEnum1 != nil {
-		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIOptionDisabledEnum1, "", true)
+	if u.CreateIntegrationStoreDirectDisabledEnum3 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectDisabledEnum3, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectUIOptionDisabledUnion3: all fields are null")
+	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectDisabledUnion3: all fields are null")
 }
 
-type CreateIntegrationStoreDirectUIOptionHiddenEnum1 string
+type CreateIntegrationStoreDirectHiddenEnum3 string
 
 const (
-	CreateIntegrationStoreDirectUIOptionHiddenEnum1Update CreateIntegrationStoreDirectUIOptionHiddenEnum1 = "update"
-	CreateIntegrationStoreDirectUIOptionHiddenEnum1Create CreateIntegrationStoreDirectUIOptionHiddenEnum1 = "create"
+	CreateIntegrationStoreDirectHiddenEnum3Update CreateIntegrationStoreDirectHiddenEnum3 = "update"
+	CreateIntegrationStoreDirectHiddenEnum3Create CreateIntegrationStoreDirectHiddenEnum3 = "create"
 )
 
-func (e CreateIntegrationStoreDirectUIOptionHiddenEnum1) ToPointer() *CreateIntegrationStoreDirectUIOptionHiddenEnum1 {
+func (e CreateIntegrationStoreDirectHiddenEnum3) ToPointer() *CreateIntegrationStoreDirectHiddenEnum3 {
 	return &e
 }
-func (e *CreateIntegrationStoreDirectUIOptionHiddenEnum1) UnmarshalJSON(data []byte) error {
+func (e *CreateIntegrationStoreDirectHiddenEnum3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2865,125 +4732,125 @@ func (e *CreateIntegrationStoreDirectUIOptionHiddenEnum1) UnmarshalJSON(data []b
 	case "update":
 		fallthrough
 	case "create":
-		*e = CreateIntegrationStoreDirectUIOptionHiddenEnum1(v)
+		*e = CreateIntegrationStoreDirectHiddenEnum3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectUIOptionHiddenEnum1: %v", v)
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectHiddenEnum3: %v", v)
 	}
 }
 
-type CreateIntegrationStoreDirectUIOptionHidden1 struct {
+type CreateIntegrationStoreDirectHidden3 struct {
 	Expr string `json:"expr"`
 }
 
-func (c CreateIntegrationStoreDirectUIOptionHidden1) MarshalJSON() ([]byte, error) {
+func (c CreateIntegrationStoreDirectHidden3) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(c, "", false)
 }
 
-func (c *CreateIntegrationStoreDirectUIOptionHidden1) UnmarshalJSON(data []byte) error {
+func (c *CreateIntegrationStoreDirectHidden3) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"expr"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateIntegrationStoreDirectUIOptionHidden1) GetExpr() string {
+func (o *CreateIntegrationStoreDirectHidden3) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type CreateIntegrationStoreDirectUIOptionHiddenUnion3Type string
+type CreateIntegrationStoreDirectHiddenUnion3Type string
 
 const (
-	CreateIntegrationStoreDirectUIOptionHiddenUnion3TypeBoolean                                         CreateIntegrationStoreDirectUIOptionHiddenUnion3Type = "boolean"
-	CreateIntegrationStoreDirectUIOptionHiddenUnion3TypeCreateIntegrationStoreDirectUIOptionHidden1     CreateIntegrationStoreDirectUIOptionHiddenUnion3Type = "createIntegrationStoreDirect_ui:option_hidden_1"
-	CreateIntegrationStoreDirectUIOptionHiddenUnion3TypeCreateIntegrationStoreDirectUIOptionHiddenEnum1 CreateIntegrationStoreDirectUIOptionHiddenUnion3Type = "createIntegrationStoreDirect_ui:option_hidden_enum_1"
+	CreateIntegrationStoreDirectHiddenUnion3TypeBoolean                                 CreateIntegrationStoreDirectHiddenUnion3Type = "boolean"
+	CreateIntegrationStoreDirectHiddenUnion3TypeCreateIntegrationStoreDirectHidden3     CreateIntegrationStoreDirectHiddenUnion3Type = "createIntegrationStoreDirect_hidden_3"
+	CreateIntegrationStoreDirectHiddenUnion3TypeCreateIntegrationStoreDirectHiddenEnum3 CreateIntegrationStoreDirectHiddenUnion3Type = "createIntegrationStoreDirect_hidden_enum_3"
 )
 
-type CreateIntegrationStoreDirectUIOptionHiddenUnion3 struct {
-	Boolean                                         *bool                                            `queryParam:"inline"`
-	CreateIntegrationStoreDirectUIOptionHidden1     *CreateIntegrationStoreDirectUIOptionHidden1     `queryParam:"inline"`
-	CreateIntegrationStoreDirectUIOptionHiddenEnum1 *CreateIntegrationStoreDirectUIOptionHiddenEnum1 `queryParam:"inline"`
+type CreateIntegrationStoreDirectHiddenUnion3 struct {
+	Boolean                                 *bool                                    `queryParam:"inline"`
+	CreateIntegrationStoreDirectHidden3     *CreateIntegrationStoreDirectHidden3     `queryParam:"inline"`
+	CreateIntegrationStoreDirectHiddenEnum3 *CreateIntegrationStoreDirectHiddenEnum3 `queryParam:"inline"`
 
-	Type CreateIntegrationStoreDirectUIOptionHiddenUnion3Type
+	Type CreateIntegrationStoreDirectHiddenUnion3Type
 }
 
-func CreateCreateIntegrationStoreDirectUIOptionHiddenUnion3Boolean(boolean bool) CreateIntegrationStoreDirectUIOptionHiddenUnion3 {
-	typ := CreateIntegrationStoreDirectUIOptionHiddenUnion3TypeBoolean
+func CreateCreateIntegrationStoreDirectHiddenUnion3Boolean(boolean bool) CreateIntegrationStoreDirectHiddenUnion3 {
+	typ := CreateIntegrationStoreDirectHiddenUnion3TypeBoolean
 
-	return CreateIntegrationStoreDirectUIOptionHiddenUnion3{
+	return CreateIntegrationStoreDirectHiddenUnion3{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateCreateIntegrationStoreDirectUIOptionHiddenUnion3CreateIntegrationStoreDirectUIOptionHidden1(createIntegrationStoreDirectUIOptionHidden1 CreateIntegrationStoreDirectUIOptionHidden1) CreateIntegrationStoreDirectUIOptionHiddenUnion3 {
-	typ := CreateIntegrationStoreDirectUIOptionHiddenUnion3TypeCreateIntegrationStoreDirectUIOptionHidden1
+func CreateCreateIntegrationStoreDirectHiddenUnion3CreateIntegrationStoreDirectHidden3(createIntegrationStoreDirectHidden3 CreateIntegrationStoreDirectHidden3) CreateIntegrationStoreDirectHiddenUnion3 {
+	typ := CreateIntegrationStoreDirectHiddenUnion3TypeCreateIntegrationStoreDirectHidden3
 
-	return CreateIntegrationStoreDirectUIOptionHiddenUnion3{
-		CreateIntegrationStoreDirectUIOptionHidden1: &createIntegrationStoreDirectUIOptionHidden1,
-		Type: typ,
+	return CreateIntegrationStoreDirectHiddenUnion3{
+		CreateIntegrationStoreDirectHidden3: &createIntegrationStoreDirectHidden3,
+		Type:                                typ,
 	}
 }
 
-func CreateCreateIntegrationStoreDirectUIOptionHiddenUnion3CreateIntegrationStoreDirectUIOptionHiddenEnum1(createIntegrationStoreDirectUIOptionHiddenEnum1 CreateIntegrationStoreDirectUIOptionHiddenEnum1) CreateIntegrationStoreDirectUIOptionHiddenUnion3 {
-	typ := CreateIntegrationStoreDirectUIOptionHiddenUnion3TypeCreateIntegrationStoreDirectUIOptionHiddenEnum1
+func CreateCreateIntegrationStoreDirectHiddenUnion3CreateIntegrationStoreDirectHiddenEnum3(createIntegrationStoreDirectHiddenEnum3 CreateIntegrationStoreDirectHiddenEnum3) CreateIntegrationStoreDirectHiddenUnion3 {
+	typ := CreateIntegrationStoreDirectHiddenUnion3TypeCreateIntegrationStoreDirectHiddenEnum3
 
-	return CreateIntegrationStoreDirectUIOptionHiddenUnion3{
-		CreateIntegrationStoreDirectUIOptionHiddenEnum1: &createIntegrationStoreDirectUIOptionHiddenEnum1,
-		Type: typ,
+	return CreateIntegrationStoreDirectHiddenUnion3{
+		CreateIntegrationStoreDirectHiddenEnum3: &createIntegrationStoreDirectHiddenEnum3,
+		Type:                                    typ,
 	}
 }
 
-func (u *CreateIntegrationStoreDirectUIOptionHiddenUnion3) UnmarshalJSON(data []byte) error {
+func (u *CreateIntegrationStoreDirectHiddenUnion3) UnmarshalJSON(data []byte) error {
 
-	var createIntegrationStoreDirectUIOptionHidden1 CreateIntegrationStoreDirectUIOptionHidden1 = CreateIntegrationStoreDirectUIOptionHidden1{}
-	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectUIOptionHidden1, "", true, nil); err == nil {
-		u.CreateIntegrationStoreDirectUIOptionHidden1 = &createIntegrationStoreDirectUIOptionHidden1
-		u.Type = CreateIntegrationStoreDirectUIOptionHiddenUnion3TypeCreateIntegrationStoreDirectUIOptionHidden1
+	var createIntegrationStoreDirectHidden3 CreateIntegrationStoreDirectHidden3 = CreateIntegrationStoreDirectHidden3{}
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectHidden3, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectHidden3 = &createIntegrationStoreDirectHidden3
+		u.Type = CreateIntegrationStoreDirectHiddenUnion3TypeCreateIntegrationStoreDirectHidden3
 		return nil
 	}
 
 	var boolean bool = false
 	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = CreateIntegrationStoreDirectUIOptionHiddenUnion3TypeBoolean
+		u.Type = CreateIntegrationStoreDirectHiddenUnion3TypeBoolean
 		return nil
 	}
 
-	var createIntegrationStoreDirectUIOptionHiddenEnum1 CreateIntegrationStoreDirectUIOptionHiddenEnum1 = CreateIntegrationStoreDirectUIOptionHiddenEnum1("")
-	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectUIOptionHiddenEnum1, "", true, nil); err == nil {
-		u.CreateIntegrationStoreDirectUIOptionHiddenEnum1 = &createIntegrationStoreDirectUIOptionHiddenEnum1
-		u.Type = CreateIntegrationStoreDirectUIOptionHiddenUnion3TypeCreateIntegrationStoreDirectUIOptionHiddenEnum1
+	var createIntegrationStoreDirectHiddenEnum3 CreateIntegrationStoreDirectHiddenEnum3 = CreateIntegrationStoreDirectHiddenEnum3("")
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectHiddenEnum3, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectHiddenEnum3 = &createIntegrationStoreDirectHiddenEnum3
+		u.Type = CreateIntegrationStoreDirectHiddenUnion3TypeCreateIntegrationStoreDirectHiddenEnum3
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectUIOptionHiddenUnion3", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectHiddenUnion3", string(data))
 }
 
-func (u CreateIntegrationStoreDirectUIOptionHiddenUnion3) MarshalJSON() ([]byte, error) {
+func (u CreateIntegrationStoreDirectHiddenUnion3) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.CreateIntegrationStoreDirectUIOptionHidden1 != nil {
-		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIOptionHidden1, "", true)
+	if u.CreateIntegrationStoreDirectHidden3 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectHidden3, "", true)
 	}
 
-	if u.CreateIntegrationStoreDirectUIOptionHiddenEnum1 != nil {
-		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIOptionHiddenEnum1, "", true)
+	if u.CreateIntegrationStoreDirectHiddenEnum3 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectHiddenEnum3, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectUIOptionHiddenUnion3: all fields are null")
+	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectHiddenUnion3: all fields are null")
 }
 
 type CreateIntegrationStoreDirectUIOption3 struct {
-	Value    string                                              `json:"value"`
-	Label    string                                              `json:"label"`
-	Disabled *CreateIntegrationStoreDirectUIOptionDisabledUnion3 `json:"disabled,omitempty"`
-	Hidden   *CreateIntegrationStoreDirectUIOptionHiddenUnion3   `json:"hidden,omitempty"`
+	Value    string                                      `json:"value"`
+	Label    string                                      `json:"label"`
+	Disabled *CreateIntegrationStoreDirectDisabledUnion3 `json:"disabled,omitempty"`
+	Hidden   *CreateIntegrationStoreDirectHiddenUnion3   `json:"hidden,omitempty"`
 }
 
 func (c CreateIntegrationStoreDirectUIOption3) MarshalJSON() ([]byte, error) {
@@ -3011,90 +4878,90 @@ func (o *CreateIntegrationStoreDirectUIOption3) GetLabel() string {
 	return o.Label
 }
 
-func (o *CreateIntegrationStoreDirectUIOption3) GetDisabled() *CreateIntegrationStoreDirectUIOptionDisabledUnion3 {
+func (o *CreateIntegrationStoreDirectUIOption3) GetDisabled() *CreateIntegrationStoreDirectDisabledUnion3 {
 	if o == nil {
 		return nil
 	}
 	return o.Disabled
 }
 
-func (o *CreateIntegrationStoreDirectUIOption3) GetHidden() *CreateIntegrationStoreDirectUIOptionHiddenUnion3 {
+func (o *CreateIntegrationStoreDirectUIOption3) GetHidden() *CreateIntegrationStoreDirectHiddenUnion3 {
 	if o == nil {
 		return nil
 	}
 	return o.Hidden
 }
 
-type CreateIntegrationStoreDirectUIOptionUnionType string
+type CreateIntegrationStoreDirectUIOptionUnion1Type string
 
 const (
-	CreateIntegrationStoreDirectUIOptionUnionTypeCreateIntegrationStoreDirectUIOption3 CreateIntegrationStoreDirectUIOptionUnionType = "createIntegrationStoreDirect_ui:option_3"
-	CreateIntegrationStoreDirectUIOptionUnionTypeStr                                   CreateIntegrationStoreDirectUIOptionUnionType = "str"
-	CreateIntegrationStoreDirectUIOptionUnionTypeCreateIntegrationStoreDirectUIOption4 CreateIntegrationStoreDirectUIOptionUnionType = "createIntegrationStoreDirect_ui:option_4"
+	CreateIntegrationStoreDirectUIOptionUnion1TypeCreateIntegrationStoreDirectUIOption3 CreateIntegrationStoreDirectUIOptionUnion1Type = "createIntegrationStoreDirect_ui:option_3"
+	CreateIntegrationStoreDirectUIOptionUnion1TypeStr                                   CreateIntegrationStoreDirectUIOptionUnion1Type = "str"
+	CreateIntegrationStoreDirectUIOptionUnion1TypeCreateIntegrationStoreDirectUIOption4 CreateIntegrationStoreDirectUIOptionUnion1Type = "createIntegrationStoreDirect_ui:option_4"
 )
 
-type CreateIntegrationStoreDirectUIOptionUnion struct {
+type CreateIntegrationStoreDirectUIOptionUnion1 struct {
 	CreateIntegrationStoreDirectUIOption3 *CreateIntegrationStoreDirectUIOption3 `queryParam:"inline"`
 	Str                                   *string                                `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIOption4 *CreateIntegrationStoreDirectUIOption4 `queryParam:"inline"`
 
-	Type CreateIntegrationStoreDirectUIOptionUnionType
+	Type CreateIntegrationStoreDirectUIOptionUnion1Type
 }
 
-func CreateCreateIntegrationStoreDirectUIOptionUnionCreateIntegrationStoreDirectUIOption3(createIntegrationStoreDirectUIOption3 CreateIntegrationStoreDirectUIOption3) CreateIntegrationStoreDirectUIOptionUnion {
-	typ := CreateIntegrationStoreDirectUIOptionUnionTypeCreateIntegrationStoreDirectUIOption3
+func CreateCreateIntegrationStoreDirectUIOptionUnion1CreateIntegrationStoreDirectUIOption3(createIntegrationStoreDirectUIOption3 CreateIntegrationStoreDirectUIOption3) CreateIntegrationStoreDirectUIOptionUnion1 {
+	typ := CreateIntegrationStoreDirectUIOptionUnion1TypeCreateIntegrationStoreDirectUIOption3
 
-	return CreateIntegrationStoreDirectUIOptionUnion{
+	return CreateIntegrationStoreDirectUIOptionUnion1{
 		CreateIntegrationStoreDirectUIOption3: &createIntegrationStoreDirectUIOption3,
 		Type:                                  typ,
 	}
 }
 
-func CreateCreateIntegrationStoreDirectUIOptionUnionStr(str string) CreateIntegrationStoreDirectUIOptionUnion {
-	typ := CreateIntegrationStoreDirectUIOptionUnionTypeStr
+func CreateCreateIntegrationStoreDirectUIOptionUnion1Str(str string) CreateIntegrationStoreDirectUIOptionUnion1 {
+	typ := CreateIntegrationStoreDirectUIOptionUnion1TypeStr
 
-	return CreateIntegrationStoreDirectUIOptionUnion{
+	return CreateIntegrationStoreDirectUIOptionUnion1{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateCreateIntegrationStoreDirectUIOptionUnionCreateIntegrationStoreDirectUIOption4(createIntegrationStoreDirectUIOption4 CreateIntegrationStoreDirectUIOption4) CreateIntegrationStoreDirectUIOptionUnion {
-	typ := CreateIntegrationStoreDirectUIOptionUnionTypeCreateIntegrationStoreDirectUIOption4
+func CreateCreateIntegrationStoreDirectUIOptionUnion1CreateIntegrationStoreDirectUIOption4(createIntegrationStoreDirectUIOption4 CreateIntegrationStoreDirectUIOption4) CreateIntegrationStoreDirectUIOptionUnion1 {
+	typ := CreateIntegrationStoreDirectUIOptionUnion1TypeCreateIntegrationStoreDirectUIOption4
 
-	return CreateIntegrationStoreDirectUIOptionUnion{
+	return CreateIntegrationStoreDirectUIOptionUnion1{
 		CreateIntegrationStoreDirectUIOption4: &createIntegrationStoreDirectUIOption4,
 		Type:                                  typ,
 	}
 }
 
-func (u *CreateIntegrationStoreDirectUIOptionUnion) UnmarshalJSON(data []byte) error {
+func (u *CreateIntegrationStoreDirectUIOptionUnion1) UnmarshalJSON(data []byte) error {
 
 	var createIntegrationStoreDirectUIOption3 CreateIntegrationStoreDirectUIOption3 = CreateIntegrationStoreDirectUIOption3{}
 	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectUIOption3, "", true, nil); err == nil {
 		u.CreateIntegrationStoreDirectUIOption3 = &createIntegrationStoreDirectUIOption3
-		u.Type = CreateIntegrationStoreDirectUIOptionUnionTypeCreateIntegrationStoreDirectUIOption3
+		u.Type = CreateIntegrationStoreDirectUIOptionUnion1TypeCreateIntegrationStoreDirectUIOption3
 		return nil
 	}
 
 	var createIntegrationStoreDirectUIOption4 CreateIntegrationStoreDirectUIOption4 = CreateIntegrationStoreDirectUIOption4{}
 	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectUIOption4, "", true, nil); err == nil {
 		u.CreateIntegrationStoreDirectUIOption4 = &createIntegrationStoreDirectUIOption4
-		u.Type = CreateIntegrationStoreDirectUIOptionUnionTypeCreateIntegrationStoreDirectUIOption4
+		u.Type = CreateIntegrationStoreDirectUIOptionUnion1TypeCreateIntegrationStoreDirectUIOption4
 		return nil
 	}
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
-		u.Type = CreateIntegrationStoreDirectUIOptionUnionTypeStr
+		u.Type = CreateIntegrationStoreDirectUIOptionUnion1TypeStr
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectUIOptionUnion", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectUIOptionUnion1", string(data))
 }
 
-func (u CreateIntegrationStoreDirectUIOptionUnion) MarshalJSON() ([]byte, error) {
+func (u CreateIntegrationStoreDirectUIOptionUnion1) MarshalJSON() ([]byte, error) {
 	if u.CreateIntegrationStoreDirectUIOption3 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIOption3, "", true)
 	}
@@ -3107,7 +4974,7 @@ func (u CreateIntegrationStoreDirectUIOptionUnion) MarshalJSON() ([]byte, error)
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIOption4, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectUIOptionUnion: all fields are null")
+	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectUIOptionUnion1: all fields are null")
 }
 
 type CreateIntegrationStoreDirectUIReadOnlyEnum7 string
@@ -3619,7 +5486,7 @@ func (o *CreateIntegrationStoreDirectUIFormattedValue7) GetExpr() string {
 type CreateIntegrationStoreDirectPropertiesVercelRegion struct {
 	Type             CreateIntegrationStoreDirectTypeString4           `json:"type"`
 	UIControl        CreateIntegrationStoreDirectUIControlVercelRegion `json:"ui:control"`
-	UIOptions        []CreateIntegrationStoreDirectUIOptionUnion       `json:"ui:options"`
+	UIOptions        []CreateIntegrationStoreDirectUIOptionUnion1      `json:"ui:options"`
 	Enum             []string                                          `json:"enum,omitempty"`
 	MaxLength        *float64                                          `json:"maxLength,omitempty"`
 	MinLength        *float64                                          `json:"minLength,omitempty"`
@@ -3660,9 +5527,9 @@ func (o *CreateIntegrationStoreDirectPropertiesVercelRegion) GetUIControl() Crea
 	return o.UIControl
 }
 
-func (o *CreateIntegrationStoreDirectPropertiesVercelRegion) GetUIOptions() []CreateIntegrationStoreDirectUIOptionUnion {
+func (o *CreateIntegrationStoreDirectPropertiesVercelRegion) GetUIOptions() []CreateIntegrationStoreDirectUIOptionUnion1 {
 	if o == nil {
-		return []CreateIntegrationStoreDirectUIOptionUnion{}
+		return []CreateIntegrationStoreDirectUIOptionUnion1{}
 	}
 	return o.UIOptions
 }
@@ -3804,7 +5671,7 @@ func (e *CreateIntegrationStoreDirectTypeString3) UnmarshalJSON(data []byte) err
 	}
 }
 
-type CreateIntegrationStoreDirectItemsString struct {
+type CreateIntegrationStoreDirectItemsString1 struct {
 	Type        CreateIntegrationStoreDirectTypeString3 `json:"type"`
 	Description *string                                 `json:"description,omitempty"`
 	MinLength   *float64                                `json:"minLength,omitempty"`
@@ -3814,60 +5681,60 @@ type CreateIntegrationStoreDirectItemsString struct {
 	Enum        []string                                `json:"enum,omitempty"`
 }
 
-func (c CreateIntegrationStoreDirectItemsString) MarshalJSON() ([]byte, error) {
+func (c CreateIntegrationStoreDirectItemsString1) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(c, "", false)
 }
 
-func (c *CreateIntegrationStoreDirectItemsString) UnmarshalJSON(data []byte) error {
+func (c *CreateIntegrationStoreDirectItemsString1) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateIntegrationStoreDirectItemsString) GetType() CreateIntegrationStoreDirectTypeString3 {
+func (o *CreateIntegrationStoreDirectItemsString1) GetType() CreateIntegrationStoreDirectTypeString3 {
 	if o == nil {
 		return CreateIntegrationStoreDirectTypeString3("")
 	}
 	return o.Type
 }
 
-func (o *CreateIntegrationStoreDirectItemsString) GetDescription() *string {
+func (o *CreateIntegrationStoreDirectItemsString1) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *CreateIntegrationStoreDirectItemsString) GetMinLength() *float64 {
+func (o *CreateIntegrationStoreDirectItemsString1) GetMinLength() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.MinLength
 }
 
-func (o *CreateIntegrationStoreDirectItemsString) GetMaxLength() *float64 {
+func (o *CreateIntegrationStoreDirectItemsString1) GetMaxLength() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.MaxLength
 }
 
-func (o *CreateIntegrationStoreDirectItemsString) GetPattern() *string {
+func (o *CreateIntegrationStoreDirectItemsString1) GetPattern() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Pattern
 }
 
-func (o *CreateIntegrationStoreDirectItemsString) GetDefault() *string {
+func (o *CreateIntegrationStoreDirectItemsString1) GetDefault() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Default
 }
 
-func (o *CreateIntegrationStoreDirectItemsString) GetEnum() []string {
+func (o *CreateIntegrationStoreDirectItemsString1) GetEnum() []string {
 	if o == nil {
 		return nil
 	}
@@ -3897,17 +5764,17 @@ func (e *CreateIntegrationStoreDirectUIControlMultiSelect) UnmarshalJSON(data []
 	}
 }
 
-type CreateIntegrationStoreDirectDisabledUIOptionEnum2 string
+type CreateIntegrationStoreDirectDisabledEnum2 string
 
 const (
-	CreateIntegrationStoreDirectDisabledUIOptionEnum2Update CreateIntegrationStoreDirectDisabledUIOptionEnum2 = "update"
-	CreateIntegrationStoreDirectDisabledUIOptionEnum2Create CreateIntegrationStoreDirectDisabledUIOptionEnum2 = "create"
+	CreateIntegrationStoreDirectDisabledEnum2Update CreateIntegrationStoreDirectDisabledEnum2 = "update"
+	CreateIntegrationStoreDirectDisabledEnum2Create CreateIntegrationStoreDirectDisabledEnum2 = "create"
 )
 
-func (e CreateIntegrationStoreDirectDisabledUIOptionEnum2) ToPointer() *CreateIntegrationStoreDirectDisabledUIOptionEnum2 {
+func (e CreateIntegrationStoreDirectDisabledEnum2) ToPointer() *CreateIntegrationStoreDirectDisabledEnum2 {
 	return &e
 }
-func (e *CreateIntegrationStoreDirectDisabledUIOptionEnum2) UnmarshalJSON(data []byte) error {
+func (e *CreateIntegrationStoreDirectDisabledEnum2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -3916,131 +5783,131 @@ func (e *CreateIntegrationStoreDirectDisabledUIOptionEnum2) UnmarshalJSON(data [
 	case "update":
 		fallthrough
 	case "create":
-		*e = CreateIntegrationStoreDirectDisabledUIOptionEnum2(v)
+		*e = CreateIntegrationStoreDirectDisabledEnum2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectDisabledUIOptionEnum2: %v", v)
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectDisabledEnum2: %v", v)
 	}
 }
 
-type CreateIntegrationStoreDirectDisabledUIOption2 struct {
+type CreateIntegrationStoreDirectDisabled2 struct {
 	Expr string `json:"expr"`
 }
 
-func (c CreateIntegrationStoreDirectDisabledUIOption2) MarshalJSON() ([]byte, error) {
+func (c CreateIntegrationStoreDirectDisabled2) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(c, "", false)
 }
 
-func (c *CreateIntegrationStoreDirectDisabledUIOption2) UnmarshalJSON(data []byte) error {
+func (c *CreateIntegrationStoreDirectDisabled2) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"expr"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateIntegrationStoreDirectDisabledUIOption2) GetExpr() string {
+func (o *CreateIntegrationStoreDirectDisabled2) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type CreateIntegrationStoreDirectUIOptionDisabledUnion2Type string
+type CreateIntegrationStoreDirectDisabledUnion2Type string
 
 const (
-	CreateIntegrationStoreDirectUIOptionDisabledUnion2TypeBoolean                                           CreateIntegrationStoreDirectUIOptionDisabledUnion2Type = "boolean"
-	CreateIntegrationStoreDirectUIOptionDisabledUnion2TypeCreateIntegrationStoreDirectDisabledUIOption2     CreateIntegrationStoreDirectUIOptionDisabledUnion2Type = "createIntegrationStoreDirect_disabled_ui:option_2"
-	CreateIntegrationStoreDirectUIOptionDisabledUnion2TypeCreateIntegrationStoreDirectDisabledUIOptionEnum2 CreateIntegrationStoreDirectUIOptionDisabledUnion2Type = "createIntegrationStoreDirect_disabled_ui:option_enum_2"
+	CreateIntegrationStoreDirectDisabledUnion2TypeBoolean                                   CreateIntegrationStoreDirectDisabledUnion2Type = "boolean"
+	CreateIntegrationStoreDirectDisabledUnion2TypeCreateIntegrationStoreDirectDisabled2     CreateIntegrationStoreDirectDisabledUnion2Type = "createIntegrationStoreDirect_disabled_2"
+	CreateIntegrationStoreDirectDisabledUnion2TypeCreateIntegrationStoreDirectDisabledEnum2 CreateIntegrationStoreDirectDisabledUnion2Type = "createIntegrationStoreDirect_disabled_enum_2"
 )
 
-type CreateIntegrationStoreDirectUIOptionDisabledUnion2 struct {
-	Boolean                                           *bool                                              `queryParam:"inline"`
-	CreateIntegrationStoreDirectDisabledUIOption2     *CreateIntegrationStoreDirectDisabledUIOption2     `queryParam:"inline"`
-	CreateIntegrationStoreDirectDisabledUIOptionEnum2 *CreateIntegrationStoreDirectDisabledUIOptionEnum2 `queryParam:"inline"`
+type CreateIntegrationStoreDirectDisabledUnion2 struct {
+	Boolean                                   *bool                                      `queryParam:"inline"`
+	CreateIntegrationStoreDirectDisabled2     *CreateIntegrationStoreDirectDisabled2     `queryParam:"inline"`
+	CreateIntegrationStoreDirectDisabledEnum2 *CreateIntegrationStoreDirectDisabledEnum2 `queryParam:"inline"`
 
-	Type CreateIntegrationStoreDirectUIOptionDisabledUnion2Type
+	Type CreateIntegrationStoreDirectDisabledUnion2Type
 }
 
-func CreateCreateIntegrationStoreDirectUIOptionDisabledUnion2Boolean(boolean bool) CreateIntegrationStoreDirectUIOptionDisabledUnion2 {
-	typ := CreateIntegrationStoreDirectUIOptionDisabledUnion2TypeBoolean
+func CreateCreateIntegrationStoreDirectDisabledUnion2Boolean(boolean bool) CreateIntegrationStoreDirectDisabledUnion2 {
+	typ := CreateIntegrationStoreDirectDisabledUnion2TypeBoolean
 
-	return CreateIntegrationStoreDirectUIOptionDisabledUnion2{
+	return CreateIntegrationStoreDirectDisabledUnion2{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateCreateIntegrationStoreDirectUIOptionDisabledUnion2CreateIntegrationStoreDirectDisabledUIOption2(createIntegrationStoreDirectDisabledUIOption2 CreateIntegrationStoreDirectDisabledUIOption2) CreateIntegrationStoreDirectUIOptionDisabledUnion2 {
-	typ := CreateIntegrationStoreDirectUIOptionDisabledUnion2TypeCreateIntegrationStoreDirectDisabledUIOption2
+func CreateCreateIntegrationStoreDirectDisabledUnion2CreateIntegrationStoreDirectDisabled2(createIntegrationStoreDirectDisabled2 CreateIntegrationStoreDirectDisabled2) CreateIntegrationStoreDirectDisabledUnion2 {
+	typ := CreateIntegrationStoreDirectDisabledUnion2TypeCreateIntegrationStoreDirectDisabled2
 
-	return CreateIntegrationStoreDirectUIOptionDisabledUnion2{
-		CreateIntegrationStoreDirectDisabledUIOption2: &createIntegrationStoreDirectDisabledUIOption2,
+	return CreateIntegrationStoreDirectDisabledUnion2{
+		CreateIntegrationStoreDirectDisabled2: &createIntegrationStoreDirectDisabled2,
+		Type:                                  typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectDisabledUnion2CreateIntegrationStoreDirectDisabledEnum2(createIntegrationStoreDirectDisabledEnum2 CreateIntegrationStoreDirectDisabledEnum2) CreateIntegrationStoreDirectDisabledUnion2 {
+	typ := CreateIntegrationStoreDirectDisabledUnion2TypeCreateIntegrationStoreDirectDisabledEnum2
+
+	return CreateIntegrationStoreDirectDisabledUnion2{
+		CreateIntegrationStoreDirectDisabledEnum2: &createIntegrationStoreDirectDisabledEnum2,
 		Type: typ,
 	}
 }
 
-func CreateCreateIntegrationStoreDirectUIOptionDisabledUnion2CreateIntegrationStoreDirectDisabledUIOptionEnum2(createIntegrationStoreDirectDisabledUIOptionEnum2 CreateIntegrationStoreDirectDisabledUIOptionEnum2) CreateIntegrationStoreDirectUIOptionDisabledUnion2 {
-	typ := CreateIntegrationStoreDirectUIOptionDisabledUnion2TypeCreateIntegrationStoreDirectDisabledUIOptionEnum2
+func (u *CreateIntegrationStoreDirectDisabledUnion2) UnmarshalJSON(data []byte) error {
 
-	return CreateIntegrationStoreDirectUIOptionDisabledUnion2{
-		CreateIntegrationStoreDirectDisabledUIOptionEnum2: &createIntegrationStoreDirectDisabledUIOptionEnum2,
-		Type: typ,
-	}
-}
-
-func (u *CreateIntegrationStoreDirectUIOptionDisabledUnion2) UnmarshalJSON(data []byte) error {
-
-	var createIntegrationStoreDirectDisabledUIOption2 CreateIntegrationStoreDirectDisabledUIOption2 = CreateIntegrationStoreDirectDisabledUIOption2{}
-	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectDisabledUIOption2, "", true, nil); err == nil {
-		u.CreateIntegrationStoreDirectDisabledUIOption2 = &createIntegrationStoreDirectDisabledUIOption2
-		u.Type = CreateIntegrationStoreDirectUIOptionDisabledUnion2TypeCreateIntegrationStoreDirectDisabledUIOption2
+	var createIntegrationStoreDirectDisabled2 CreateIntegrationStoreDirectDisabled2 = CreateIntegrationStoreDirectDisabled2{}
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectDisabled2, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectDisabled2 = &createIntegrationStoreDirectDisabled2
+		u.Type = CreateIntegrationStoreDirectDisabledUnion2TypeCreateIntegrationStoreDirectDisabled2
 		return nil
 	}
 
 	var boolean bool = false
 	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = CreateIntegrationStoreDirectUIOptionDisabledUnion2TypeBoolean
+		u.Type = CreateIntegrationStoreDirectDisabledUnion2TypeBoolean
 		return nil
 	}
 
-	var createIntegrationStoreDirectDisabledUIOptionEnum2 CreateIntegrationStoreDirectDisabledUIOptionEnum2 = CreateIntegrationStoreDirectDisabledUIOptionEnum2("")
-	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectDisabledUIOptionEnum2, "", true, nil); err == nil {
-		u.CreateIntegrationStoreDirectDisabledUIOptionEnum2 = &createIntegrationStoreDirectDisabledUIOptionEnum2
-		u.Type = CreateIntegrationStoreDirectUIOptionDisabledUnion2TypeCreateIntegrationStoreDirectDisabledUIOptionEnum2
+	var createIntegrationStoreDirectDisabledEnum2 CreateIntegrationStoreDirectDisabledEnum2 = CreateIntegrationStoreDirectDisabledEnum2("")
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectDisabledEnum2, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectDisabledEnum2 = &createIntegrationStoreDirectDisabledEnum2
+		u.Type = CreateIntegrationStoreDirectDisabledUnion2TypeCreateIntegrationStoreDirectDisabledEnum2
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectUIOptionDisabledUnion2", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectDisabledUnion2", string(data))
 }
 
-func (u CreateIntegrationStoreDirectUIOptionDisabledUnion2) MarshalJSON() ([]byte, error) {
+func (u CreateIntegrationStoreDirectDisabledUnion2) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.CreateIntegrationStoreDirectDisabledUIOption2 != nil {
-		return utils.MarshalJSON(u.CreateIntegrationStoreDirectDisabledUIOption2, "", true)
+	if u.CreateIntegrationStoreDirectDisabled2 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectDisabled2, "", true)
 	}
 
-	if u.CreateIntegrationStoreDirectDisabledUIOptionEnum2 != nil {
-		return utils.MarshalJSON(u.CreateIntegrationStoreDirectDisabledUIOptionEnum2, "", true)
+	if u.CreateIntegrationStoreDirectDisabledEnum2 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectDisabledEnum2, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectUIOptionDisabledUnion2: all fields are null")
+	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectDisabledUnion2: all fields are null")
 }
 
-type CreateIntegrationStoreDirectHiddenUIOptionEnum2 string
+type CreateIntegrationStoreDirectHiddenEnum2 string
 
 const (
-	CreateIntegrationStoreDirectHiddenUIOptionEnum2Update CreateIntegrationStoreDirectHiddenUIOptionEnum2 = "update"
-	CreateIntegrationStoreDirectHiddenUIOptionEnum2Create CreateIntegrationStoreDirectHiddenUIOptionEnum2 = "create"
+	CreateIntegrationStoreDirectHiddenEnum2Update CreateIntegrationStoreDirectHiddenEnum2 = "update"
+	CreateIntegrationStoreDirectHiddenEnum2Create CreateIntegrationStoreDirectHiddenEnum2 = "create"
 )
 
-func (e CreateIntegrationStoreDirectHiddenUIOptionEnum2) ToPointer() *CreateIntegrationStoreDirectHiddenUIOptionEnum2 {
+func (e CreateIntegrationStoreDirectHiddenEnum2) ToPointer() *CreateIntegrationStoreDirectHiddenEnum2 {
 	return &e
 }
-func (e *CreateIntegrationStoreDirectHiddenUIOptionEnum2) UnmarshalJSON(data []byte) error {
+func (e *CreateIntegrationStoreDirectHiddenEnum2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -4049,125 +5916,125 @@ func (e *CreateIntegrationStoreDirectHiddenUIOptionEnum2) UnmarshalJSON(data []b
 	case "update":
 		fallthrough
 	case "create":
-		*e = CreateIntegrationStoreDirectHiddenUIOptionEnum2(v)
+		*e = CreateIntegrationStoreDirectHiddenEnum2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectHiddenUIOptionEnum2: %v", v)
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectHiddenEnum2: %v", v)
 	}
 }
 
-type CreateIntegrationStoreDirectHiddenUIOption2 struct {
+type CreateIntegrationStoreDirectHidden2 struct {
 	Expr string `json:"expr"`
 }
 
-func (c CreateIntegrationStoreDirectHiddenUIOption2) MarshalJSON() ([]byte, error) {
+func (c CreateIntegrationStoreDirectHidden2) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(c, "", false)
 }
 
-func (c *CreateIntegrationStoreDirectHiddenUIOption2) UnmarshalJSON(data []byte) error {
+func (c *CreateIntegrationStoreDirectHidden2) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"expr"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateIntegrationStoreDirectHiddenUIOption2) GetExpr() string {
+func (o *CreateIntegrationStoreDirectHidden2) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type CreateIntegrationStoreDirectUIOptionHiddenUnion2Type string
+type CreateIntegrationStoreDirectHiddenUnion2Type string
 
 const (
-	CreateIntegrationStoreDirectUIOptionHiddenUnion2TypeBoolean                                         CreateIntegrationStoreDirectUIOptionHiddenUnion2Type = "boolean"
-	CreateIntegrationStoreDirectUIOptionHiddenUnion2TypeCreateIntegrationStoreDirectHiddenUIOption2     CreateIntegrationStoreDirectUIOptionHiddenUnion2Type = "createIntegrationStoreDirect_hidden_ui:option_2"
-	CreateIntegrationStoreDirectUIOptionHiddenUnion2TypeCreateIntegrationStoreDirectHiddenUIOptionEnum2 CreateIntegrationStoreDirectUIOptionHiddenUnion2Type = "createIntegrationStoreDirect_hidden_ui:option_enum_2"
+	CreateIntegrationStoreDirectHiddenUnion2TypeBoolean                                 CreateIntegrationStoreDirectHiddenUnion2Type = "boolean"
+	CreateIntegrationStoreDirectHiddenUnion2TypeCreateIntegrationStoreDirectHidden2     CreateIntegrationStoreDirectHiddenUnion2Type = "createIntegrationStoreDirect_hidden_2"
+	CreateIntegrationStoreDirectHiddenUnion2TypeCreateIntegrationStoreDirectHiddenEnum2 CreateIntegrationStoreDirectHiddenUnion2Type = "createIntegrationStoreDirect_hidden_enum_2"
 )
 
-type CreateIntegrationStoreDirectUIOptionHiddenUnion2 struct {
-	Boolean                                         *bool                                            `queryParam:"inline"`
-	CreateIntegrationStoreDirectHiddenUIOption2     *CreateIntegrationStoreDirectHiddenUIOption2     `queryParam:"inline"`
-	CreateIntegrationStoreDirectHiddenUIOptionEnum2 *CreateIntegrationStoreDirectHiddenUIOptionEnum2 `queryParam:"inline"`
+type CreateIntegrationStoreDirectHiddenUnion2 struct {
+	Boolean                                 *bool                                    `queryParam:"inline"`
+	CreateIntegrationStoreDirectHidden2     *CreateIntegrationStoreDirectHidden2     `queryParam:"inline"`
+	CreateIntegrationStoreDirectHiddenEnum2 *CreateIntegrationStoreDirectHiddenEnum2 `queryParam:"inline"`
 
-	Type CreateIntegrationStoreDirectUIOptionHiddenUnion2Type
+	Type CreateIntegrationStoreDirectHiddenUnion2Type
 }
 
-func CreateCreateIntegrationStoreDirectUIOptionHiddenUnion2Boolean(boolean bool) CreateIntegrationStoreDirectUIOptionHiddenUnion2 {
-	typ := CreateIntegrationStoreDirectUIOptionHiddenUnion2TypeBoolean
+func CreateCreateIntegrationStoreDirectHiddenUnion2Boolean(boolean bool) CreateIntegrationStoreDirectHiddenUnion2 {
+	typ := CreateIntegrationStoreDirectHiddenUnion2TypeBoolean
 
-	return CreateIntegrationStoreDirectUIOptionHiddenUnion2{
+	return CreateIntegrationStoreDirectHiddenUnion2{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateCreateIntegrationStoreDirectUIOptionHiddenUnion2CreateIntegrationStoreDirectHiddenUIOption2(createIntegrationStoreDirectHiddenUIOption2 CreateIntegrationStoreDirectHiddenUIOption2) CreateIntegrationStoreDirectUIOptionHiddenUnion2 {
-	typ := CreateIntegrationStoreDirectUIOptionHiddenUnion2TypeCreateIntegrationStoreDirectHiddenUIOption2
+func CreateCreateIntegrationStoreDirectHiddenUnion2CreateIntegrationStoreDirectHidden2(createIntegrationStoreDirectHidden2 CreateIntegrationStoreDirectHidden2) CreateIntegrationStoreDirectHiddenUnion2 {
+	typ := CreateIntegrationStoreDirectHiddenUnion2TypeCreateIntegrationStoreDirectHidden2
 
-	return CreateIntegrationStoreDirectUIOptionHiddenUnion2{
-		CreateIntegrationStoreDirectHiddenUIOption2: &createIntegrationStoreDirectHiddenUIOption2,
-		Type: typ,
+	return CreateIntegrationStoreDirectHiddenUnion2{
+		CreateIntegrationStoreDirectHidden2: &createIntegrationStoreDirectHidden2,
+		Type:                                typ,
 	}
 }
 
-func CreateCreateIntegrationStoreDirectUIOptionHiddenUnion2CreateIntegrationStoreDirectHiddenUIOptionEnum2(createIntegrationStoreDirectHiddenUIOptionEnum2 CreateIntegrationStoreDirectHiddenUIOptionEnum2) CreateIntegrationStoreDirectUIOptionHiddenUnion2 {
-	typ := CreateIntegrationStoreDirectUIOptionHiddenUnion2TypeCreateIntegrationStoreDirectHiddenUIOptionEnum2
+func CreateCreateIntegrationStoreDirectHiddenUnion2CreateIntegrationStoreDirectHiddenEnum2(createIntegrationStoreDirectHiddenEnum2 CreateIntegrationStoreDirectHiddenEnum2) CreateIntegrationStoreDirectHiddenUnion2 {
+	typ := CreateIntegrationStoreDirectHiddenUnion2TypeCreateIntegrationStoreDirectHiddenEnum2
 
-	return CreateIntegrationStoreDirectUIOptionHiddenUnion2{
-		CreateIntegrationStoreDirectHiddenUIOptionEnum2: &createIntegrationStoreDirectHiddenUIOptionEnum2,
-		Type: typ,
+	return CreateIntegrationStoreDirectHiddenUnion2{
+		CreateIntegrationStoreDirectHiddenEnum2: &createIntegrationStoreDirectHiddenEnum2,
+		Type:                                    typ,
 	}
 }
 
-func (u *CreateIntegrationStoreDirectUIOptionHiddenUnion2) UnmarshalJSON(data []byte) error {
+func (u *CreateIntegrationStoreDirectHiddenUnion2) UnmarshalJSON(data []byte) error {
 
-	var createIntegrationStoreDirectHiddenUIOption2 CreateIntegrationStoreDirectHiddenUIOption2 = CreateIntegrationStoreDirectHiddenUIOption2{}
-	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectHiddenUIOption2, "", true, nil); err == nil {
-		u.CreateIntegrationStoreDirectHiddenUIOption2 = &createIntegrationStoreDirectHiddenUIOption2
-		u.Type = CreateIntegrationStoreDirectUIOptionHiddenUnion2TypeCreateIntegrationStoreDirectHiddenUIOption2
+	var createIntegrationStoreDirectHidden2 CreateIntegrationStoreDirectHidden2 = CreateIntegrationStoreDirectHidden2{}
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectHidden2, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectHidden2 = &createIntegrationStoreDirectHidden2
+		u.Type = CreateIntegrationStoreDirectHiddenUnion2TypeCreateIntegrationStoreDirectHidden2
 		return nil
 	}
 
 	var boolean bool = false
 	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = CreateIntegrationStoreDirectUIOptionHiddenUnion2TypeBoolean
+		u.Type = CreateIntegrationStoreDirectHiddenUnion2TypeBoolean
 		return nil
 	}
 
-	var createIntegrationStoreDirectHiddenUIOptionEnum2 CreateIntegrationStoreDirectHiddenUIOptionEnum2 = CreateIntegrationStoreDirectHiddenUIOptionEnum2("")
-	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectHiddenUIOptionEnum2, "", true, nil); err == nil {
-		u.CreateIntegrationStoreDirectHiddenUIOptionEnum2 = &createIntegrationStoreDirectHiddenUIOptionEnum2
-		u.Type = CreateIntegrationStoreDirectUIOptionHiddenUnion2TypeCreateIntegrationStoreDirectHiddenUIOptionEnum2
+	var createIntegrationStoreDirectHiddenEnum2 CreateIntegrationStoreDirectHiddenEnum2 = CreateIntegrationStoreDirectHiddenEnum2("")
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectHiddenEnum2, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectHiddenEnum2 = &createIntegrationStoreDirectHiddenEnum2
+		u.Type = CreateIntegrationStoreDirectHiddenUnion2TypeCreateIntegrationStoreDirectHiddenEnum2
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectUIOptionHiddenUnion2", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectHiddenUnion2", string(data))
 }
 
-func (u CreateIntegrationStoreDirectUIOptionHiddenUnion2) MarshalJSON() ([]byte, error) {
+func (u CreateIntegrationStoreDirectHiddenUnion2) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.CreateIntegrationStoreDirectHiddenUIOption2 != nil {
-		return utils.MarshalJSON(u.CreateIntegrationStoreDirectHiddenUIOption2, "", true)
+	if u.CreateIntegrationStoreDirectHidden2 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectHidden2, "", true)
 	}
 
-	if u.CreateIntegrationStoreDirectHiddenUIOptionEnum2 != nil {
-		return utils.MarshalJSON(u.CreateIntegrationStoreDirectHiddenUIOptionEnum2, "", true)
+	if u.CreateIntegrationStoreDirectHiddenEnum2 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectHiddenEnum2, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectUIOptionHiddenUnion2: all fields are null")
+	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectHiddenUnion2: all fields are null")
 }
 
 type CreateIntegrationStoreDirectUIOption2 struct {
-	Value    string                                              `json:"value"`
-	Label    string                                              `json:"label"`
-	Disabled *CreateIntegrationStoreDirectUIOptionDisabledUnion2 `json:"disabled,omitempty"`
-	Hidden   *CreateIntegrationStoreDirectUIOptionHiddenUnion2   `json:"hidden,omitempty"`
+	Value    string                                      `json:"value"`
+	Label    string                                      `json:"label"`
+	Disabled *CreateIntegrationStoreDirectDisabledUnion2 `json:"disabled,omitempty"`
+	Hidden   *CreateIntegrationStoreDirectHiddenUnion2   `json:"hidden,omitempty"`
 }
 
 func (c CreateIntegrationStoreDirectUIOption2) MarshalJSON() ([]byte, error) {
@@ -4195,14 +6062,14 @@ func (o *CreateIntegrationStoreDirectUIOption2) GetLabel() string {
 	return o.Label
 }
 
-func (o *CreateIntegrationStoreDirectUIOption2) GetDisabled() *CreateIntegrationStoreDirectUIOptionDisabledUnion2 {
+func (o *CreateIntegrationStoreDirectUIOption2) GetDisabled() *CreateIntegrationStoreDirectDisabledUnion2 {
 	if o == nil {
 		return nil
 	}
 	return o.Disabled
 }
 
-func (o *CreateIntegrationStoreDirectUIOption2) GetHidden() *CreateIntegrationStoreDirectUIOptionHiddenUnion2 {
+func (o *CreateIntegrationStoreDirectUIOption2) GetHidden() *CreateIntegrationStoreDirectHiddenUnion2 {
 	if o == nil {
 		return nil
 	}
@@ -4717,7 +6584,7 @@ func (o *CreateIntegrationStoreDirectUIFormattedValue6) GetExpr() string {
 
 type CreateIntegrationStoreDirectPropertiesMultiSelect struct {
 	Type             CreateIntegrationStoreDirectTypeArray2           `json:"type"`
-	Items            CreateIntegrationStoreDirectItemsString          `json:"items"`
+	Items            CreateIntegrationStoreDirectItemsString1         `json:"items"`
 	UIControl        CreateIntegrationStoreDirectUIControlMultiSelect `json:"ui:control"`
 	UIOptions        []CreateIntegrationStoreDirectUIOption2          `json:"ui:options"`
 	MaxItems         *float64                                         `json:"maxItems,omitempty"`
@@ -4752,9 +6619,9 @@ func (o *CreateIntegrationStoreDirectPropertiesMultiSelect) GetType() CreateInte
 	return o.Type
 }
 
-func (o *CreateIntegrationStoreDirectPropertiesMultiSelect) GetItems() CreateIntegrationStoreDirectItemsString {
+func (o *CreateIntegrationStoreDirectPropertiesMultiSelect) GetItems() CreateIntegrationStoreDirectItemsString1 {
 	if o == nil {
-		return CreateIntegrationStoreDirectItemsString{}
+		return CreateIntegrationStoreDirectItemsString1{}
 	}
 	return o.Items
 }
@@ -4903,17 +6770,17 @@ func (e *CreateIntegrationStoreDirectUIControlSelect) UnmarshalJSON(data []byte)
 	}
 }
 
-type CreateIntegrationStoreDirectDisabledUIOptionEnum1 string
+type CreateIntegrationStoreDirectDisabledEnum1 string
 
 const (
-	CreateIntegrationStoreDirectDisabledUIOptionEnum1Update CreateIntegrationStoreDirectDisabledUIOptionEnum1 = "update"
-	CreateIntegrationStoreDirectDisabledUIOptionEnum1Create CreateIntegrationStoreDirectDisabledUIOptionEnum1 = "create"
+	CreateIntegrationStoreDirectDisabledEnum1Update CreateIntegrationStoreDirectDisabledEnum1 = "update"
+	CreateIntegrationStoreDirectDisabledEnum1Create CreateIntegrationStoreDirectDisabledEnum1 = "create"
 )
 
-func (e CreateIntegrationStoreDirectDisabledUIOptionEnum1) ToPointer() *CreateIntegrationStoreDirectDisabledUIOptionEnum1 {
+func (e CreateIntegrationStoreDirectDisabledEnum1) ToPointer() *CreateIntegrationStoreDirectDisabledEnum1 {
 	return &e
 }
-func (e *CreateIntegrationStoreDirectDisabledUIOptionEnum1) UnmarshalJSON(data []byte) error {
+func (e *CreateIntegrationStoreDirectDisabledEnum1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -4922,131 +6789,131 @@ func (e *CreateIntegrationStoreDirectDisabledUIOptionEnum1) UnmarshalJSON(data [
 	case "update":
 		fallthrough
 	case "create":
-		*e = CreateIntegrationStoreDirectDisabledUIOptionEnum1(v)
+		*e = CreateIntegrationStoreDirectDisabledEnum1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectDisabledUIOptionEnum1: %v", v)
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectDisabledEnum1: %v", v)
 	}
 }
 
-type CreateIntegrationStoreDirectDisabledUIOption1 struct {
+type CreateIntegrationStoreDirectDisabled1 struct {
 	Expr string `json:"expr"`
 }
 
-func (c CreateIntegrationStoreDirectDisabledUIOption1) MarshalJSON() ([]byte, error) {
+func (c CreateIntegrationStoreDirectDisabled1) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(c, "", false)
 }
 
-func (c *CreateIntegrationStoreDirectDisabledUIOption1) UnmarshalJSON(data []byte) error {
+func (c *CreateIntegrationStoreDirectDisabled1) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"expr"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateIntegrationStoreDirectDisabledUIOption1) GetExpr() string {
+func (o *CreateIntegrationStoreDirectDisabled1) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type CreateIntegrationStoreDirectUIOptionDisabledUnion1Type string
+type CreateIntegrationStoreDirectDisabledUnion1Type string
 
 const (
-	CreateIntegrationStoreDirectUIOptionDisabledUnion1TypeBoolean                                           CreateIntegrationStoreDirectUIOptionDisabledUnion1Type = "boolean"
-	CreateIntegrationStoreDirectUIOptionDisabledUnion1TypeCreateIntegrationStoreDirectDisabledUIOption1     CreateIntegrationStoreDirectUIOptionDisabledUnion1Type = "createIntegrationStoreDirect_disabled_ui:option_1"
-	CreateIntegrationStoreDirectUIOptionDisabledUnion1TypeCreateIntegrationStoreDirectDisabledUIOptionEnum1 CreateIntegrationStoreDirectUIOptionDisabledUnion1Type = "createIntegrationStoreDirect_disabled_ui:option_enum_1"
+	CreateIntegrationStoreDirectDisabledUnion1TypeBoolean                                   CreateIntegrationStoreDirectDisabledUnion1Type = "boolean"
+	CreateIntegrationStoreDirectDisabledUnion1TypeCreateIntegrationStoreDirectDisabled1     CreateIntegrationStoreDirectDisabledUnion1Type = "createIntegrationStoreDirect_disabled_1"
+	CreateIntegrationStoreDirectDisabledUnion1TypeCreateIntegrationStoreDirectDisabledEnum1 CreateIntegrationStoreDirectDisabledUnion1Type = "createIntegrationStoreDirect_disabled_enum_1"
 )
 
-type CreateIntegrationStoreDirectUIOptionDisabledUnion1 struct {
-	Boolean                                           *bool                                              `queryParam:"inline"`
-	CreateIntegrationStoreDirectDisabledUIOption1     *CreateIntegrationStoreDirectDisabledUIOption1     `queryParam:"inline"`
-	CreateIntegrationStoreDirectDisabledUIOptionEnum1 *CreateIntegrationStoreDirectDisabledUIOptionEnum1 `queryParam:"inline"`
+type CreateIntegrationStoreDirectDisabledUnion1 struct {
+	Boolean                                   *bool                                      `queryParam:"inline"`
+	CreateIntegrationStoreDirectDisabled1     *CreateIntegrationStoreDirectDisabled1     `queryParam:"inline"`
+	CreateIntegrationStoreDirectDisabledEnum1 *CreateIntegrationStoreDirectDisabledEnum1 `queryParam:"inline"`
 
-	Type CreateIntegrationStoreDirectUIOptionDisabledUnion1Type
+	Type CreateIntegrationStoreDirectDisabledUnion1Type
 }
 
-func CreateCreateIntegrationStoreDirectUIOptionDisabledUnion1Boolean(boolean bool) CreateIntegrationStoreDirectUIOptionDisabledUnion1 {
-	typ := CreateIntegrationStoreDirectUIOptionDisabledUnion1TypeBoolean
+func CreateCreateIntegrationStoreDirectDisabledUnion1Boolean(boolean bool) CreateIntegrationStoreDirectDisabledUnion1 {
+	typ := CreateIntegrationStoreDirectDisabledUnion1TypeBoolean
 
-	return CreateIntegrationStoreDirectUIOptionDisabledUnion1{
+	return CreateIntegrationStoreDirectDisabledUnion1{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateCreateIntegrationStoreDirectUIOptionDisabledUnion1CreateIntegrationStoreDirectDisabledUIOption1(createIntegrationStoreDirectDisabledUIOption1 CreateIntegrationStoreDirectDisabledUIOption1) CreateIntegrationStoreDirectUIOptionDisabledUnion1 {
-	typ := CreateIntegrationStoreDirectUIOptionDisabledUnion1TypeCreateIntegrationStoreDirectDisabledUIOption1
+func CreateCreateIntegrationStoreDirectDisabledUnion1CreateIntegrationStoreDirectDisabled1(createIntegrationStoreDirectDisabled1 CreateIntegrationStoreDirectDisabled1) CreateIntegrationStoreDirectDisabledUnion1 {
+	typ := CreateIntegrationStoreDirectDisabledUnion1TypeCreateIntegrationStoreDirectDisabled1
 
-	return CreateIntegrationStoreDirectUIOptionDisabledUnion1{
-		CreateIntegrationStoreDirectDisabledUIOption1: &createIntegrationStoreDirectDisabledUIOption1,
+	return CreateIntegrationStoreDirectDisabledUnion1{
+		CreateIntegrationStoreDirectDisabled1: &createIntegrationStoreDirectDisabled1,
+		Type:                                  typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectDisabledUnion1CreateIntegrationStoreDirectDisabledEnum1(createIntegrationStoreDirectDisabledEnum1 CreateIntegrationStoreDirectDisabledEnum1) CreateIntegrationStoreDirectDisabledUnion1 {
+	typ := CreateIntegrationStoreDirectDisabledUnion1TypeCreateIntegrationStoreDirectDisabledEnum1
+
+	return CreateIntegrationStoreDirectDisabledUnion1{
+		CreateIntegrationStoreDirectDisabledEnum1: &createIntegrationStoreDirectDisabledEnum1,
 		Type: typ,
 	}
 }
 
-func CreateCreateIntegrationStoreDirectUIOptionDisabledUnion1CreateIntegrationStoreDirectDisabledUIOptionEnum1(createIntegrationStoreDirectDisabledUIOptionEnum1 CreateIntegrationStoreDirectDisabledUIOptionEnum1) CreateIntegrationStoreDirectUIOptionDisabledUnion1 {
-	typ := CreateIntegrationStoreDirectUIOptionDisabledUnion1TypeCreateIntegrationStoreDirectDisabledUIOptionEnum1
+func (u *CreateIntegrationStoreDirectDisabledUnion1) UnmarshalJSON(data []byte) error {
 
-	return CreateIntegrationStoreDirectUIOptionDisabledUnion1{
-		CreateIntegrationStoreDirectDisabledUIOptionEnum1: &createIntegrationStoreDirectDisabledUIOptionEnum1,
-		Type: typ,
-	}
-}
-
-func (u *CreateIntegrationStoreDirectUIOptionDisabledUnion1) UnmarshalJSON(data []byte) error {
-
-	var createIntegrationStoreDirectDisabledUIOption1 CreateIntegrationStoreDirectDisabledUIOption1 = CreateIntegrationStoreDirectDisabledUIOption1{}
-	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectDisabledUIOption1, "", true, nil); err == nil {
-		u.CreateIntegrationStoreDirectDisabledUIOption1 = &createIntegrationStoreDirectDisabledUIOption1
-		u.Type = CreateIntegrationStoreDirectUIOptionDisabledUnion1TypeCreateIntegrationStoreDirectDisabledUIOption1
+	var createIntegrationStoreDirectDisabled1 CreateIntegrationStoreDirectDisabled1 = CreateIntegrationStoreDirectDisabled1{}
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectDisabled1, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectDisabled1 = &createIntegrationStoreDirectDisabled1
+		u.Type = CreateIntegrationStoreDirectDisabledUnion1TypeCreateIntegrationStoreDirectDisabled1
 		return nil
 	}
 
 	var boolean bool = false
 	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = CreateIntegrationStoreDirectUIOptionDisabledUnion1TypeBoolean
+		u.Type = CreateIntegrationStoreDirectDisabledUnion1TypeBoolean
 		return nil
 	}
 
-	var createIntegrationStoreDirectDisabledUIOptionEnum1 CreateIntegrationStoreDirectDisabledUIOptionEnum1 = CreateIntegrationStoreDirectDisabledUIOptionEnum1("")
-	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectDisabledUIOptionEnum1, "", true, nil); err == nil {
-		u.CreateIntegrationStoreDirectDisabledUIOptionEnum1 = &createIntegrationStoreDirectDisabledUIOptionEnum1
-		u.Type = CreateIntegrationStoreDirectUIOptionDisabledUnion1TypeCreateIntegrationStoreDirectDisabledUIOptionEnum1
+	var createIntegrationStoreDirectDisabledEnum1 CreateIntegrationStoreDirectDisabledEnum1 = CreateIntegrationStoreDirectDisabledEnum1("")
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectDisabledEnum1, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectDisabledEnum1 = &createIntegrationStoreDirectDisabledEnum1
+		u.Type = CreateIntegrationStoreDirectDisabledUnion1TypeCreateIntegrationStoreDirectDisabledEnum1
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectUIOptionDisabledUnion1", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectDisabledUnion1", string(data))
 }
 
-func (u CreateIntegrationStoreDirectUIOptionDisabledUnion1) MarshalJSON() ([]byte, error) {
+func (u CreateIntegrationStoreDirectDisabledUnion1) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.CreateIntegrationStoreDirectDisabledUIOption1 != nil {
-		return utils.MarshalJSON(u.CreateIntegrationStoreDirectDisabledUIOption1, "", true)
+	if u.CreateIntegrationStoreDirectDisabled1 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectDisabled1, "", true)
 	}
 
-	if u.CreateIntegrationStoreDirectDisabledUIOptionEnum1 != nil {
-		return utils.MarshalJSON(u.CreateIntegrationStoreDirectDisabledUIOptionEnum1, "", true)
+	if u.CreateIntegrationStoreDirectDisabledEnum1 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectDisabledEnum1, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectUIOptionDisabledUnion1: all fields are null")
+	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectDisabledUnion1: all fields are null")
 }
 
-type CreateIntegrationStoreDirectHiddenUIOptionEnum1 string
+type CreateIntegrationStoreDirectHiddenEnum1 string
 
 const (
-	CreateIntegrationStoreDirectHiddenUIOptionEnum1Update CreateIntegrationStoreDirectHiddenUIOptionEnum1 = "update"
-	CreateIntegrationStoreDirectHiddenUIOptionEnum1Create CreateIntegrationStoreDirectHiddenUIOptionEnum1 = "create"
+	CreateIntegrationStoreDirectHiddenEnum1Update CreateIntegrationStoreDirectHiddenEnum1 = "update"
+	CreateIntegrationStoreDirectHiddenEnum1Create CreateIntegrationStoreDirectHiddenEnum1 = "create"
 )
 
-func (e CreateIntegrationStoreDirectHiddenUIOptionEnum1) ToPointer() *CreateIntegrationStoreDirectHiddenUIOptionEnum1 {
+func (e CreateIntegrationStoreDirectHiddenEnum1) ToPointer() *CreateIntegrationStoreDirectHiddenEnum1 {
 	return &e
 }
-func (e *CreateIntegrationStoreDirectHiddenUIOptionEnum1) UnmarshalJSON(data []byte) error {
+func (e *CreateIntegrationStoreDirectHiddenEnum1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -5055,125 +6922,125 @@ func (e *CreateIntegrationStoreDirectHiddenUIOptionEnum1) UnmarshalJSON(data []b
 	case "update":
 		fallthrough
 	case "create":
-		*e = CreateIntegrationStoreDirectHiddenUIOptionEnum1(v)
+		*e = CreateIntegrationStoreDirectHiddenEnum1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectHiddenUIOptionEnum1: %v", v)
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectHiddenEnum1: %v", v)
 	}
 }
 
-type CreateIntegrationStoreDirectHiddenUIOption1 struct {
+type CreateIntegrationStoreDirectHidden1 struct {
 	Expr string `json:"expr"`
 }
 
-func (c CreateIntegrationStoreDirectHiddenUIOption1) MarshalJSON() ([]byte, error) {
+func (c CreateIntegrationStoreDirectHidden1) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(c, "", false)
 }
 
-func (c *CreateIntegrationStoreDirectHiddenUIOption1) UnmarshalJSON(data []byte) error {
+func (c *CreateIntegrationStoreDirectHidden1) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"expr"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateIntegrationStoreDirectHiddenUIOption1) GetExpr() string {
+func (o *CreateIntegrationStoreDirectHidden1) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type CreateIntegrationStoreDirectUIOptionHiddenUnion1Type string
+type CreateIntegrationStoreDirectHiddenUnion1Type string
 
 const (
-	CreateIntegrationStoreDirectUIOptionHiddenUnion1TypeBoolean                                         CreateIntegrationStoreDirectUIOptionHiddenUnion1Type = "boolean"
-	CreateIntegrationStoreDirectUIOptionHiddenUnion1TypeCreateIntegrationStoreDirectHiddenUIOption1     CreateIntegrationStoreDirectUIOptionHiddenUnion1Type = "createIntegrationStoreDirect_hidden_ui:option_1"
-	CreateIntegrationStoreDirectUIOptionHiddenUnion1TypeCreateIntegrationStoreDirectHiddenUIOptionEnum1 CreateIntegrationStoreDirectUIOptionHiddenUnion1Type = "createIntegrationStoreDirect_hidden_ui:option_enum_1"
+	CreateIntegrationStoreDirectHiddenUnion1TypeBoolean                                 CreateIntegrationStoreDirectHiddenUnion1Type = "boolean"
+	CreateIntegrationStoreDirectHiddenUnion1TypeCreateIntegrationStoreDirectHidden1     CreateIntegrationStoreDirectHiddenUnion1Type = "createIntegrationStoreDirect_hidden_1"
+	CreateIntegrationStoreDirectHiddenUnion1TypeCreateIntegrationStoreDirectHiddenEnum1 CreateIntegrationStoreDirectHiddenUnion1Type = "createIntegrationStoreDirect_hidden_enum_1"
 )
 
-type CreateIntegrationStoreDirectUIOptionHiddenUnion1 struct {
-	Boolean                                         *bool                                            `queryParam:"inline"`
-	CreateIntegrationStoreDirectHiddenUIOption1     *CreateIntegrationStoreDirectHiddenUIOption1     `queryParam:"inline"`
-	CreateIntegrationStoreDirectHiddenUIOptionEnum1 *CreateIntegrationStoreDirectHiddenUIOptionEnum1 `queryParam:"inline"`
+type CreateIntegrationStoreDirectHiddenUnion1 struct {
+	Boolean                                 *bool                                    `queryParam:"inline"`
+	CreateIntegrationStoreDirectHidden1     *CreateIntegrationStoreDirectHidden1     `queryParam:"inline"`
+	CreateIntegrationStoreDirectHiddenEnum1 *CreateIntegrationStoreDirectHiddenEnum1 `queryParam:"inline"`
 
-	Type CreateIntegrationStoreDirectUIOptionHiddenUnion1Type
+	Type CreateIntegrationStoreDirectHiddenUnion1Type
 }
 
-func CreateCreateIntegrationStoreDirectUIOptionHiddenUnion1Boolean(boolean bool) CreateIntegrationStoreDirectUIOptionHiddenUnion1 {
-	typ := CreateIntegrationStoreDirectUIOptionHiddenUnion1TypeBoolean
+func CreateCreateIntegrationStoreDirectHiddenUnion1Boolean(boolean bool) CreateIntegrationStoreDirectHiddenUnion1 {
+	typ := CreateIntegrationStoreDirectHiddenUnion1TypeBoolean
 
-	return CreateIntegrationStoreDirectUIOptionHiddenUnion1{
+	return CreateIntegrationStoreDirectHiddenUnion1{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateCreateIntegrationStoreDirectUIOptionHiddenUnion1CreateIntegrationStoreDirectHiddenUIOption1(createIntegrationStoreDirectHiddenUIOption1 CreateIntegrationStoreDirectHiddenUIOption1) CreateIntegrationStoreDirectUIOptionHiddenUnion1 {
-	typ := CreateIntegrationStoreDirectUIOptionHiddenUnion1TypeCreateIntegrationStoreDirectHiddenUIOption1
+func CreateCreateIntegrationStoreDirectHiddenUnion1CreateIntegrationStoreDirectHidden1(createIntegrationStoreDirectHidden1 CreateIntegrationStoreDirectHidden1) CreateIntegrationStoreDirectHiddenUnion1 {
+	typ := CreateIntegrationStoreDirectHiddenUnion1TypeCreateIntegrationStoreDirectHidden1
 
-	return CreateIntegrationStoreDirectUIOptionHiddenUnion1{
-		CreateIntegrationStoreDirectHiddenUIOption1: &createIntegrationStoreDirectHiddenUIOption1,
-		Type: typ,
+	return CreateIntegrationStoreDirectHiddenUnion1{
+		CreateIntegrationStoreDirectHidden1: &createIntegrationStoreDirectHidden1,
+		Type:                                typ,
 	}
 }
 
-func CreateCreateIntegrationStoreDirectUIOptionHiddenUnion1CreateIntegrationStoreDirectHiddenUIOptionEnum1(createIntegrationStoreDirectHiddenUIOptionEnum1 CreateIntegrationStoreDirectHiddenUIOptionEnum1) CreateIntegrationStoreDirectUIOptionHiddenUnion1 {
-	typ := CreateIntegrationStoreDirectUIOptionHiddenUnion1TypeCreateIntegrationStoreDirectHiddenUIOptionEnum1
+func CreateCreateIntegrationStoreDirectHiddenUnion1CreateIntegrationStoreDirectHiddenEnum1(createIntegrationStoreDirectHiddenEnum1 CreateIntegrationStoreDirectHiddenEnum1) CreateIntegrationStoreDirectHiddenUnion1 {
+	typ := CreateIntegrationStoreDirectHiddenUnion1TypeCreateIntegrationStoreDirectHiddenEnum1
 
-	return CreateIntegrationStoreDirectUIOptionHiddenUnion1{
-		CreateIntegrationStoreDirectHiddenUIOptionEnum1: &createIntegrationStoreDirectHiddenUIOptionEnum1,
-		Type: typ,
+	return CreateIntegrationStoreDirectHiddenUnion1{
+		CreateIntegrationStoreDirectHiddenEnum1: &createIntegrationStoreDirectHiddenEnum1,
+		Type:                                    typ,
 	}
 }
 
-func (u *CreateIntegrationStoreDirectUIOptionHiddenUnion1) UnmarshalJSON(data []byte) error {
+func (u *CreateIntegrationStoreDirectHiddenUnion1) UnmarshalJSON(data []byte) error {
 
-	var createIntegrationStoreDirectHiddenUIOption1 CreateIntegrationStoreDirectHiddenUIOption1 = CreateIntegrationStoreDirectHiddenUIOption1{}
-	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectHiddenUIOption1, "", true, nil); err == nil {
-		u.CreateIntegrationStoreDirectHiddenUIOption1 = &createIntegrationStoreDirectHiddenUIOption1
-		u.Type = CreateIntegrationStoreDirectUIOptionHiddenUnion1TypeCreateIntegrationStoreDirectHiddenUIOption1
+	var createIntegrationStoreDirectHidden1 CreateIntegrationStoreDirectHidden1 = CreateIntegrationStoreDirectHidden1{}
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectHidden1, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectHidden1 = &createIntegrationStoreDirectHidden1
+		u.Type = CreateIntegrationStoreDirectHiddenUnion1TypeCreateIntegrationStoreDirectHidden1
 		return nil
 	}
 
 	var boolean bool = false
 	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = CreateIntegrationStoreDirectUIOptionHiddenUnion1TypeBoolean
+		u.Type = CreateIntegrationStoreDirectHiddenUnion1TypeBoolean
 		return nil
 	}
 
-	var createIntegrationStoreDirectHiddenUIOptionEnum1 CreateIntegrationStoreDirectHiddenUIOptionEnum1 = CreateIntegrationStoreDirectHiddenUIOptionEnum1("")
-	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectHiddenUIOptionEnum1, "", true, nil); err == nil {
-		u.CreateIntegrationStoreDirectHiddenUIOptionEnum1 = &createIntegrationStoreDirectHiddenUIOptionEnum1
-		u.Type = CreateIntegrationStoreDirectUIOptionHiddenUnion1TypeCreateIntegrationStoreDirectHiddenUIOptionEnum1
+	var createIntegrationStoreDirectHiddenEnum1 CreateIntegrationStoreDirectHiddenEnum1 = CreateIntegrationStoreDirectHiddenEnum1("")
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectHiddenEnum1, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectHiddenEnum1 = &createIntegrationStoreDirectHiddenEnum1
+		u.Type = CreateIntegrationStoreDirectHiddenUnion1TypeCreateIntegrationStoreDirectHiddenEnum1
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectUIOptionHiddenUnion1", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectHiddenUnion1", string(data))
 }
 
-func (u CreateIntegrationStoreDirectUIOptionHiddenUnion1) MarshalJSON() ([]byte, error) {
+func (u CreateIntegrationStoreDirectHiddenUnion1) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.CreateIntegrationStoreDirectHiddenUIOption1 != nil {
-		return utils.MarshalJSON(u.CreateIntegrationStoreDirectHiddenUIOption1, "", true)
+	if u.CreateIntegrationStoreDirectHidden1 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectHidden1, "", true)
 	}
 
-	if u.CreateIntegrationStoreDirectHiddenUIOptionEnum1 != nil {
-		return utils.MarshalJSON(u.CreateIntegrationStoreDirectHiddenUIOptionEnum1, "", true)
+	if u.CreateIntegrationStoreDirectHiddenEnum1 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectHiddenEnum1, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectUIOptionHiddenUnion1: all fields are null")
+	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectHiddenUnion1: all fields are null")
 }
 
 type CreateIntegrationStoreDirectUIOption1 struct {
-	Value    string                                              `json:"value"`
-	Label    string                                              `json:"label"`
-	Disabled *CreateIntegrationStoreDirectUIOptionDisabledUnion1 `json:"disabled,omitempty"`
-	Hidden   *CreateIntegrationStoreDirectUIOptionHiddenUnion1   `json:"hidden,omitempty"`
+	Value    string                                      `json:"value"`
+	Label    string                                      `json:"label"`
+	Disabled *CreateIntegrationStoreDirectDisabledUnion1 `json:"disabled,omitempty"`
+	Hidden   *CreateIntegrationStoreDirectHiddenUnion1   `json:"hidden,omitempty"`
 }
 
 func (c CreateIntegrationStoreDirectUIOption1) MarshalJSON() ([]byte, error) {
@@ -5201,14 +7068,14 @@ func (o *CreateIntegrationStoreDirectUIOption1) GetLabel() string {
 	return o.Label
 }
 
-func (o *CreateIntegrationStoreDirectUIOption1) GetDisabled() *CreateIntegrationStoreDirectUIOptionDisabledUnion1 {
+func (o *CreateIntegrationStoreDirectUIOption1) GetDisabled() *CreateIntegrationStoreDirectDisabledUnion1 {
 	if o == nil {
 		return nil
 	}
 	return o.Disabled
 }
 
-func (o *CreateIntegrationStoreDirectUIOption1) GetHidden() *CreateIntegrationStoreDirectUIOptionHiddenUnion1 {
+func (o *CreateIntegrationStoreDirectUIOption1) GetHidden() *CreateIntegrationStoreDirectHiddenUnion1 {
 	if o == nil {
 		return nil
 	}
@@ -8655,27 +10522,29 @@ func (o *CreateIntegrationStoreDirectPropertiesStringInput) GetUIPlaceholder() *
 type CreateIntegrationStoreDirectPropertiesUnionType string
 
 const (
-	CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectPropertiesStringInput  CreateIntegrationStoreDirectPropertiesUnionType = "createIntegrationStoreDirect_properties_String_Input"
-	CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectPropertiesNumber       CreateIntegrationStoreDirectPropertiesUnionType = "createIntegrationStoreDirect_properties_Number"
-	CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectPropertiesToggle       CreateIntegrationStoreDirectPropertiesUnionType = "createIntegrationStoreDirect_properties_Toggle"
-	CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectPropertiesSlider       CreateIntegrationStoreDirectPropertiesUnionType = "createIntegrationStoreDirect_properties_Slider"
-	CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectPropertiesSelect       CreateIntegrationStoreDirectPropertiesUnionType = "createIntegrationStoreDirect_properties_Select"
-	CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectPropertiesMultiSelect  CreateIntegrationStoreDirectPropertiesUnionType = "createIntegrationStoreDirect_properties_MultiSelect"
-	CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectPropertiesVercelRegion CreateIntegrationStoreDirectPropertiesUnionType = "createIntegrationStoreDirect_properties_VercelRegion"
-	CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectPropertiesDomain       CreateIntegrationStoreDirectPropertiesUnionType = "createIntegrationStoreDirect_properties_Domain"
-	CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectProperties             CreateIntegrationStoreDirectPropertiesUnionType = "createIntegrationStoreDirect_properties"
+	CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectPropertiesStringInput       CreateIntegrationStoreDirectPropertiesUnionType = "createIntegrationStoreDirect_properties_String_Input"
+	CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectPropertiesNumber            CreateIntegrationStoreDirectPropertiesUnionType = "createIntegrationStoreDirect_properties_Number"
+	CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectPropertiesToggle            CreateIntegrationStoreDirectPropertiesUnionType = "createIntegrationStoreDirect_properties_Toggle"
+	CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectPropertiesSlider            CreateIntegrationStoreDirectPropertiesUnionType = "createIntegrationStoreDirect_properties_Slider"
+	CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectPropertiesSelect            CreateIntegrationStoreDirectPropertiesUnionType = "createIntegrationStoreDirect_properties_Select"
+	CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectPropertiesMultiSelect       CreateIntegrationStoreDirectPropertiesUnionType = "createIntegrationStoreDirect_properties_MultiSelect"
+	CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectPropertiesVercelRegion      CreateIntegrationStoreDirectPropertiesUnionType = "createIntegrationStoreDirect_properties_VercelRegion"
+	CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectPropertiesMultiVercelRegion CreateIntegrationStoreDirectPropertiesUnionType = "createIntegrationStoreDirect_properties_MultiVercelRegion"
+	CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectPropertiesDomain            CreateIntegrationStoreDirectPropertiesUnionType = "createIntegrationStoreDirect_properties_Domain"
+	CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectPropertiesGitNamespace      CreateIntegrationStoreDirectPropertiesUnionType = "createIntegrationStoreDirect_properties_GitNamespace"
 )
 
 type CreateIntegrationStoreDirectPropertiesUnion struct {
-	CreateIntegrationStoreDirectPropertiesStringInput  *CreateIntegrationStoreDirectPropertiesStringInput  `queryParam:"inline"`
-	CreateIntegrationStoreDirectPropertiesNumber       *CreateIntegrationStoreDirectPropertiesNumber       `queryParam:"inline"`
-	CreateIntegrationStoreDirectPropertiesToggle       *CreateIntegrationStoreDirectPropertiesToggle       `queryParam:"inline"`
-	CreateIntegrationStoreDirectPropertiesSlider       *CreateIntegrationStoreDirectPropertiesSlider       `queryParam:"inline"`
-	CreateIntegrationStoreDirectPropertiesSelect       *CreateIntegrationStoreDirectPropertiesSelect       `queryParam:"inline"`
-	CreateIntegrationStoreDirectPropertiesMultiSelect  *CreateIntegrationStoreDirectPropertiesMultiSelect  `queryParam:"inline"`
-	CreateIntegrationStoreDirectPropertiesVercelRegion *CreateIntegrationStoreDirectPropertiesVercelRegion `queryParam:"inline"`
-	CreateIntegrationStoreDirectPropertiesDomain       *CreateIntegrationStoreDirectPropertiesDomain       `queryParam:"inline"`
-	CreateIntegrationStoreDirectProperties             *CreateIntegrationStoreDirectProperties             `queryParam:"inline"`
+	CreateIntegrationStoreDirectPropertiesStringInput       *CreateIntegrationStoreDirectPropertiesStringInput       `queryParam:"inline"`
+	CreateIntegrationStoreDirectPropertiesNumber            *CreateIntegrationStoreDirectPropertiesNumber            `queryParam:"inline"`
+	CreateIntegrationStoreDirectPropertiesToggle            *CreateIntegrationStoreDirectPropertiesToggle            `queryParam:"inline"`
+	CreateIntegrationStoreDirectPropertiesSlider            *CreateIntegrationStoreDirectPropertiesSlider            `queryParam:"inline"`
+	CreateIntegrationStoreDirectPropertiesSelect            *CreateIntegrationStoreDirectPropertiesSelect            `queryParam:"inline"`
+	CreateIntegrationStoreDirectPropertiesMultiSelect       *CreateIntegrationStoreDirectPropertiesMultiSelect       `queryParam:"inline"`
+	CreateIntegrationStoreDirectPropertiesVercelRegion      *CreateIntegrationStoreDirectPropertiesVercelRegion      `queryParam:"inline"`
+	CreateIntegrationStoreDirectPropertiesMultiVercelRegion *CreateIntegrationStoreDirectPropertiesMultiVercelRegion `queryParam:"inline"`
+	CreateIntegrationStoreDirectPropertiesDomain            *CreateIntegrationStoreDirectPropertiesDomain            `queryParam:"inline"`
+	CreateIntegrationStoreDirectPropertiesGitNamespace      *CreateIntegrationStoreDirectPropertiesGitNamespace      `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectPropertiesUnionType
 }
@@ -8743,6 +10612,15 @@ func CreateCreateIntegrationStoreDirectPropertiesUnionCreateIntegrationStoreDire
 	}
 }
 
+func CreateCreateIntegrationStoreDirectPropertiesUnionCreateIntegrationStoreDirectPropertiesMultiVercelRegion(createIntegrationStoreDirectPropertiesMultiVercelRegion CreateIntegrationStoreDirectPropertiesMultiVercelRegion) CreateIntegrationStoreDirectPropertiesUnion {
+	typ := CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectPropertiesMultiVercelRegion
+
+	return CreateIntegrationStoreDirectPropertiesUnion{
+		CreateIntegrationStoreDirectPropertiesMultiVercelRegion: &createIntegrationStoreDirectPropertiesMultiVercelRegion,
+		Type: typ,
+	}
+}
+
 func CreateCreateIntegrationStoreDirectPropertiesUnionCreateIntegrationStoreDirectPropertiesDomain(createIntegrationStoreDirectPropertiesDomain CreateIntegrationStoreDirectPropertiesDomain) CreateIntegrationStoreDirectPropertiesUnion {
 	typ := CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectPropertiesDomain
 
@@ -8752,12 +10630,12 @@ func CreateCreateIntegrationStoreDirectPropertiesUnionCreateIntegrationStoreDire
 	}
 }
 
-func CreateCreateIntegrationStoreDirectPropertiesUnionCreateIntegrationStoreDirectProperties(createIntegrationStoreDirectProperties CreateIntegrationStoreDirectProperties) CreateIntegrationStoreDirectPropertiesUnion {
-	typ := CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectProperties
+func CreateCreateIntegrationStoreDirectPropertiesUnionCreateIntegrationStoreDirectPropertiesGitNamespace(createIntegrationStoreDirectPropertiesGitNamespace CreateIntegrationStoreDirectPropertiesGitNamespace) CreateIntegrationStoreDirectPropertiesUnion {
+	typ := CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectPropertiesGitNamespace
 
 	return CreateIntegrationStoreDirectPropertiesUnion{
-		CreateIntegrationStoreDirectProperties: &createIntegrationStoreDirectProperties,
-		Type:                                   typ,
+		CreateIntegrationStoreDirectPropertiesGitNamespace: &createIntegrationStoreDirectPropertiesGitNamespace,
+		Type: typ,
 	}
 }
 
@@ -8774,6 +10652,13 @@ func (u *CreateIntegrationStoreDirectPropertiesUnion) UnmarshalJSON(data []byte)
 	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectPropertiesMultiSelect, "", true, nil); err == nil {
 		u.CreateIntegrationStoreDirectPropertiesMultiSelect = &createIntegrationStoreDirectPropertiesMultiSelect
 		u.Type = CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectPropertiesMultiSelect
+		return nil
+	}
+
+	var createIntegrationStoreDirectPropertiesMultiVercelRegion CreateIntegrationStoreDirectPropertiesMultiVercelRegion = CreateIntegrationStoreDirectPropertiesMultiVercelRegion{}
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectPropertiesMultiVercelRegion, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectPropertiesMultiVercelRegion = &createIntegrationStoreDirectPropertiesMultiVercelRegion
+		u.Type = CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectPropertiesMultiVercelRegion
 		return nil
 	}
 
@@ -8819,10 +10704,10 @@ func (u *CreateIntegrationStoreDirectPropertiesUnion) UnmarshalJSON(data []byte)
 		return nil
 	}
 
-	var createIntegrationStoreDirectProperties CreateIntegrationStoreDirectProperties = CreateIntegrationStoreDirectProperties{}
-	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectProperties, "", true, nil); err == nil {
-		u.CreateIntegrationStoreDirectProperties = &createIntegrationStoreDirectProperties
-		u.Type = CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectProperties
+	var createIntegrationStoreDirectPropertiesGitNamespace CreateIntegrationStoreDirectPropertiesGitNamespace = CreateIntegrationStoreDirectPropertiesGitNamespace{}
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectPropertiesGitNamespace, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectPropertiesGitNamespace = &createIntegrationStoreDirectPropertiesGitNamespace
+		u.Type = CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectPropertiesGitNamespace
 		return nil
 	}
 
@@ -8858,12 +10743,16 @@ func (u CreateIntegrationStoreDirectPropertiesUnion) MarshalJSON() ([]byte, erro
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectPropertiesVercelRegion, "", true)
 	}
 
+	if u.CreateIntegrationStoreDirectPropertiesMultiVercelRegion != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectPropertiesMultiVercelRegion, "", true)
+	}
+
 	if u.CreateIntegrationStoreDirectPropertiesDomain != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectPropertiesDomain, "", true)
 	}
 
-	if u.CreateIntegrationStoreDirectProperties != nil {
-		return utils.MarshalJSON(u.CreateIntegrationStoreDirectProperties, "", true)
+	if u.CreateIntegrationStoreDirectPropertiesGitNamespace != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectPropertiesGitNamespace, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectPropertiesUnion: all fields are null")
@@ -8935,7 +10824,10 @@ const (
 	TagMessaging          Tag = "messaging"
 	TagOther              Tag = "other"
 	TagMysql              Tag = "mysql"
+	TagKv                 Tag = "kv"
 	TagVector             Tag = "vector"
+	TagLibsql             Tag = "libsql"
+	TagSqlite             Tag = "sqlite"
 	TagTagAgents          Tag = "tag_agents"
 	TagTagAi              Tag = "tag_ai"
 	TagTagAnalytics       Tag = "tag_analytics"
@@ -9014,7 +10906,13 @@ func (e *Tag) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "mysql":
 		fallthrough
+	case "kv":
+		fallthrough
 	case "vector":
+		fallthrough
+	case "libsql":
+		fallthrough
+	case "sqlite":
 		fallthrough
 	case "tag_agents":
 		fallthrough
@@ -9265,290 +11163,215 @@ func (o *Guide) GetSteps() []Step {
 	return o.Steps
 }
 
-type CreateIntegrationStoreDirectDisabledEnum string
+type CreateIntegrationStoreDirectIntegration struct {
+	ID                               string   `json:"id"`
+	Name                             string   `json:"name"`
+	Slug                             string   `json:"slug"`
+	SupportsInstallationBillingPlans *bool    `json:"supportsInstallationBillingPlans,omitempty"`
+	Icon                             string   `json:"icon"`
+	Flags                            []string `json:"flags,omitempty"`
+}
+
+func (o *CreateIntegrationStoreDirectIntegration) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *CreateIntegrationStoreDirectIntegration) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *CreateIntegrationStoreDirectIntegration) GetSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.Slug
+}
+
+func (o *CreateIntegrationStoreDirectIntegration) GetSupportsInstallationBillingPlans() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.SupportsInstallationBillingPlans
+}
+
+func (o *CreateIntegrationStoreDirectIntegration) GetIcon() string {
+	if o == nil {
+		return ""
+	}
+	return o.Icon
+}
+
+func (o *CreateIntegrationStoreDirectIntegration) GetFlags() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Flags
+}
+
+type SupportedProtocol string
 
 const (
-	CreateIntegrationStoreDirectDisabledEnumUpdate CreateIntegrationStoreDirectDisabledEnum = "update"
-	CreateIntegrationStoreDirectDisabledEnumCreate CreateIntegrationStoreDirectDisabledEnum = "create"
+	SupportedProtocolExperimentation SupportedProtocol = "experimentation"
+	SupportedProtocolChecks          SupportedProtocol = "checks"
+	SupportedProtocolStorage         SupportedProtocol = "storage"
+	SupportedProtocolAi              SupportedProtocol = "ai"
+	SupportedProtocolObservability   SupportedProtocol = "observability"
+	SupportedProtocolVideo           SupportedProtocol = "video"
+	SupportedProtocolAuthentication  SupportedProtocol = "authentication"
+	SupportedProtocolWorkflow        SupportedProtocol = "workflow"
+	SupportedProtocolLogDrain        SupportedProtocol = "logDrain"
+	SupportedProtocolTraceDrain      SupportedProtocol = "traceDrain"
+	SupportedProtocolMessaging       SupportedProtocol = "messaging"
+	SupportedProtocolOther           SupportedProtocol = "other"
 )
 
-func (e CreateIntegrationStoreDirectDisabledEnum) ToPointer() *CreateIntegrationStoreDirectDisabledEnum {
+func (e SupportedProtocol) ToPointer() *SupportedProtocol {
 	return &e
 }
-func (e *CreateIntegrationStoreDirectDisabledEnum) UnmarshalJSON(data []byte) error {
+func (e *SupportedProtocol) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
-	case "update":
+	case "experimentation":
 		fallthrough
-	case "create":
-		*e = CreateIntegrationStoreDirectDisabledEnum(v)
+	case "checks":
+		fallthrough
+	case "storage":
+		fallthrough
+	case "ai":
+		fallthrough
+	case "observability":
+		fallthrough
+	case "video":
+		fallthrough
+	case "authentication":
+		fallthrough
+	case "workflow":
+		fallthrough
+	case "logDrain":
+		fallthrough
+	case "traceDrain":
+		fallthrough
+	case "messaging":
+		fallthrough
+	case "other":
+		*e = SupportedProtocol(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectDisabledEnum: %v", v)
+		return fmt.Errorf("invalid value for SupportedProtocol: %v", v)
 	}
 }
 
-type CreateIntegrationStoreDirectDisabled struct {
-	Expr string `json:"expr"`
-}
-
-func (c CreateIntegrationStoreDirectDisabled) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateIntegrationStoreDirectDisabled) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"expr"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *CreateIntegrationStoreDirectDisabled) GetExpr() string {
-	if o == nil {
-		return ""
-	}
-	return o.Expr
-}
-
-type CreateIntegrationStoreDirectDisabledUnionType string
+type CreateIntegrationStoreDirectPrimaryProtocol string
 
 const (
-	CreateIntegrationStoreDirectDisabledUnionTypeBoolean                                  CreateIntegrationStoreDirectDisabledUnionType = "boolean"
-	CreateIntegrationStoreDirectDisabledUnionTypeCreateIntegrationStoreDirectDisabled     CreateIntegrationStoreDirectDisabledUnionType = "createIntegrationStoreDirect_disabled"
-	CreateIntegrationStoreDirectDisabledUnionTypeCreateIntegrationStoreDirectDisabledEnum CreateIntegrationStoreDirectDisabledUnionType = "createIntegrationStoreDirect_disabled_enum"
+	CreateIntegrationStoreDirectPrimaryProtocolExperimentation CreateIntegrationStoreDirectPrimaryProtocol = "experimentation"
+	CreateIntegrationStoreDirectPrimaryProtocolChecks          CreateIntegrationStoreDirectPrimaryProtocol = "checks"
+	CreateIntegrationStoreDirectPrimaryProtocolStorage         CreateIntegrationStoreDirectPrimaryProtocol = "storage"
+	CreateIntegrationStoreDirectPrimaryProtocolAi              CreateIntegrationStoreDirectPrimaryProtocol = "ai"
+	CreateIntegrationStoreDirectPrimaryProtocolObservability   CreateIntegrationStoreDirectPrimaryProtocol = "observability"
+	CreateIntegrationStoreDirectPrimaryProtocolVideo           CreateIntegrationStoreDirectPrimaryProtocol = "video"
+	CreateIntegrationStoreDirectPrimaryProtocolAuthentication  CreateIntegrationStoreDirectPrimaryProtocol = "authentication"
+	CreateIntegrationStoreDirectPrimaryProtocolWorkflow        CreateIntegrationStoreDirectPrimaryProtocol = "workflow"
+	CreateIntegrationStoreDirectPrimaryProtocolLogDrain        CreateIntegrationStoreDirectPrimaryProtocol = "logDrain"
+	CreateIntegrationStoreDirectPrimaryProtocolTraceDrain      CreateIntegrationStoreDirectPrimaryProtocol = "traceDrain"
+	CreateIntegrationStoreDirectPrimaryProtocolMessaging       CreateIntegrationStoreDirectPrimaryProtocol = "messaging"
+	CreateIntegrationStoreDirectPrimaryProtocolOther           CreateIntegrationStoreDirectPrimaryProtocol = "other"
 )
 
-type CreateIntegrationStoreDirectDisabledUnion struct {
-	Boolean                                  *bool                                     `queryParam:"inline"`
-	CreateIntegrationStoreDirectDisabled     *CreateIntegrationStoreDirectDisabled     `queryParam:"inline"`
-	CreateIntegrationStoreDirectDisabledEnum *CreateIntegrationStoreDirectDisabledEnum `queryParam:"inline"`
-
-	Type CreateIntegrationStoreDirectDisabledUnionType
-}
-
-func CreateCreateIntegrationStoreDirectDisabledUnionBoolean(boolean bool) CreateIntegrationStoreDirectDisabledUnion {
-	typ := CreateIntegrationStoreDirectDisabledUnionTypeBoolean
-
-	return CreateIntegrationStoreDirectDisabledUnion{
-		Boolean: &boolean,
-		Type:    typ,
-	}
-}
-
-func CreateCreateIntegrationStoreDirectDisabledUnionCreateIntegrationStoreDirectDisabled(createIntegrationStoreDirectDisabled CreateIntegrationStoreDirectDisabled) CreateIntegrationStoreDirectDisabledUnion {
-	typ := CreateIntegrationStoreDirectDisabledUnionTypeCreateIntegrationStoreDirectDisabled
-
-	return CreateIntegrationStoreDirectDisabledUnion{
-		CreateIntegrationStoreDirectDisabled: &createIntegrationStoreDirectDisabled,
-		Type:                                 typ,
-	}
-}
-
-func CreateCreateIntegrationStoreDirectDisabledUnionCreateIntegrationStoreDirectDisabledEnum(createIntegrationStoreDirectDisabledEnum CreateIntegrationStoreDirectDisabledEnum) CreateIntegrationStoreDirectDisabledUnion {
-	typ := CreateIntegrationStoreDirectDisabledUnionTypeCreateIntegrationStoreDirectDisabledEnum
-
-	return CreateIntegrationStoreDirectDisabledUnion{
-		CreateIntegrationStoreDirectDisabledEnum: &createIntegrationStoreDirectDisabledEnum,
-		Type:                                     typ,
-	}
-}
-
-func (u *CreateIntegrationStoreDirectDisabledUnion) UnmarshalJSON(data []byte) error {
-
-	var createIntegrationStoreDirectDisabled CreateIntegrationStoreDirectDisabled = CreateIntegrationStoreDirectDisabled{}
-	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectDisabled, "", true, nil); err == nil {
-		u.CreateIntegrationStoreDirectDisabled = &createIntegrationStoreDirectDisabled
-		u.Type = CreateIntegrationStoreDirectDisabledUnionTypeCreateIntegrationStoreDirectDisabled
-		return nil
-	}
-
-	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
-		u.Boolean = &boolean
-		u.Type = CreateIntegrationStoreDirectDisabledUnionTypeBoolean
-		return nil
-	}
-
-	var createIntegrationStoreDirectDisabledEnum CreateIntegrationStoreDirectDisabledEnum = CreateIntegrationStoreDirectDisabledEnum("")
-	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectDisabledEnum, "", true, nil); err == nil {
-		u.CreateIntegrationStoreDirectDisabledEnum = &createIntegrationStoreDirectDisabledEnum
-		u.Type = CreateIntegrationStoreDirectDisabledUnionTypeCreateIntegrationStoreDirectDisabledEnum
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectDisabledUnion", string(data))
-}
-
-func (u CreateIntegrationStoreDirectDisabledUnion) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
-	if u.CreateIntegrationStoreDirectDisabled != nil {
-		return utils.MarshalJSON(u.CreateIntegrationStoreDirectDisabled, "", true)
-	}
-
-	if u.CreateIntegrationStoreDirectDisabledEnum != nil {
-		return utils.MarshalJSON(u.CreateIntegrationStoreDirectDisabledEnum, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectDisabledUnion: all fields are null")
-}
-
-type CreateIntegrationStoreDirectHiddenEnum string
-
-const (
-	CreateIntegrationStoreDirectHiddenEnumUpdate CreateIntegrationStoreDirectHiddenEnum = "update"
-	CreateIntegrationStoreDirectHiddenEnumCreate CreateIntegrationStoreDirectHiddenEnum = "create"
-)
-
-func (e CreateIntegrationStoreDirectHiddenEnum) ToPointer() *CreateIntegrationStoreDirectHiddenEnum {
+func (e CreateIntegrationStoreDirectPrimaryProtocol) ToPointer() *CreateIntegrationStoreDirectPrimaryProtocol {
 	return &e
 }
-func (e *CreateIntegrationStoreDirectHiddenEnum) UnmarshalJSON(data []byte) error {
+func (e *CreateIntegrationStoreDirectPrimaryProtocol) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
-	case "update":
+	case "experimentation":
 		fallthrough
-	case "create":
-		*e = CreateIntegrationStoreDirectHiddenEnum(v)
+	case "checks":
+		fallthrough
+	case "storage":
+		fallthrough
+	case "ai":
+		fallthrough
+	case "observability":
+		fallthrough
+	case "video":
+		fallthrough
+	case "authentication":
+		fallthrough
+	case "workflow":
+		fallthrough
+	case "logDrain":
+		fallthrough
+	case "traceDrain":
+		fallthrough
+	case "messaging":
+		fallthrough
+	case "other":
+		*e = CreateIntegrationStoreDirectPrimaryProtocol(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectHiddenEnum: %v", v)
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectPrimaryProtocol: %v", v)
 	}
 }
 
-type CreateIntegrationStoreDirectHidden struct {
-	Expr string `json:"expr"`
-}
-
-func (c CreateIntegrationStoreDirectHidden) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateIntegrationStoreDirectHidden) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"expr"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *CreateIntegrationStoreDirectHidden) GetExpr() string {
-	if o == nil {
-		return ""
-	}
-	return o.Expr
-}
-
-type CreateIntegrationStoreDirectHiddenUnionType string
+type CreateIntegrationStoreDirectStoreLogDrainStatus string
 
 const (
-	CreateIntegrationStoreDirectHiddenUnionTypeBoolean                                CreateIntegrationStoreDirectHiddenUnionType = "boolean"
-	CreateIntegrationStoreDirectHiddenUnionTypeCreateIntegrationStoreDirectHidden     CreateIntegrationStoreDirectHiddenUnionType = "createIntegrationStoreDirect_hidden"
-	CreateIntegrationStoreDirectHiddenUnionTypeCreateIntegrationStoreDirectHiddenEnum CreateIntegrationStoreDirectHiddenUnionType = "createIntegrationStoreDirect_hidden_enum"
+	CreateIntegrationStoreDirectStoreLogDrainStatusDisabled CreateIntegrationStoreDirectStoreLogDrainStatus = "disabled"
+	CreateIntegrationStoreDirectStoreLogDrainStatusEnabled  CreateIntegrationStoreDirectStoreLogDrainStatus = "enabled"
 )
 
-type CreateIntegrationStoreDirectHiddenUnion struct {
-	Boolean                                *bool                                   `queryParam:"inline"`
-	CreateIntegrationStoreDirectHidden     *CreateIntegrationStoreDirectHidden     `queryParam:"inline"`
-	CreateIntegrationStoreDirectHiddenEnum *CreateIntegrationStoreDirectHiddenEnum `queryParam:"inline"`
-
-	Type CreateIntegrationStoreDirectHiddenUnionType
+func (e CreateIntegrationStoreDirectStoreLogDrainStatus) ToPointer() *CreateIntegrationStoreDirectStoreLogDrainStatus {
+	return &e
 }
-
-func CreateCreateIntegrationStoreDirectHiddenUnionBoolean(boolean bool) CreateIntegrationStoreDirectHiddenUnion {
-	typ := CreateIntegrationStoreDirectHiddenUnionTypeBoolean
-
-	return CreateIntegrationStoreDirectHiddenUnion{
-		Boolean: &boolean,
-		Type:    typ,
+func (e *CreateIntegrationStoreDirectStoreLogDrainStatus) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
 	}
-}
-
-func CreateCreateIntegrationStoreDirectHiddenUnionCreateIntegrationStoreDirectHidden(createIntegrationStoreDirectHidden CreateIntegrationStoreDirectHidden) CreateIntegrationStoreDirectHiddenUnion {
-	typ := CreateIntegrationStoreDirectHiddenUnionTypeCreateIntegrationStoreDirectHidden
-
-	return CreateIntegrationStoreDirectHiddenUnion{
-		CreateIntegrationStoreDirectHidden: &createIntegrationStoreDirectHidden,
-		Type:                               typ,
-	}
-}
-
-func CreateCreateIntegrationStoreDirectHiddenUnionCreateIntegrationStoreDirectHiddenEnum(createIntegrationStoreDirectHiddenEnum CreateIntegrationStoreDirectHiddenEnum) CreateIntegrationStoreDirectHiddenUnion {
-	typ := CreateIntegrationStoreDirectHiddenUnionTypeCreateIntegrationStoreDirectHiddenEnum
-
-	return CreateIntegrationStoreDirectHiddenUnion{
-		CreateIntegrationStoreDirectHiddenEnum: &createIntegrationStoreDirectHiddenEnum,
-		Type:                                   typ,
-	}
-}
-
-func (u *CreateIntegrationStoreDirectHiddenUnion) UnmarshalJSON(data []byte) error {
-
-	var createIntegrationStoreDirectHidden CreateIntegrationStoreDirectHidden = CreateIntegrationStoreDirectHidden{}
-	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectHidden, "", true, nil); err == nil {
-		u.CreateIntegrationStoreDirectHidden = &createIntegrationStoreDirectHidden
-		u.Type = CreateIntegrationStoreDirectHiddenUnionTypeCreateIntegrationStoreDirectHidden
+	switch v {
+	case "disabled":
+		fallthrough
+	case "enabled":
+		*e = CreateIntegrationStoreDirectStoreLogDrainStatus(v)
 		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectStoreLogDrainStatus: %v", v)
 	}
-
-	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
-		u.Boolean = &boolean
-		u.Type = CreateIntegrationStoreDirectHiddenUnionTypeBoolean
-		return nil
-	}
-
-	var createIntegrationStoreDirectHiddenEnum CreateIntegrationStoreDirectHiddenEnum = CreateIntegrationStoreDirectHiddenEnum("")
-	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectHiddenEnum, "", true, nil); err == nil {
-		u.CreateIntegrationStoreDirectHiddenEnum = &createIntegrationStoreDirectHiddenEnum
-		u.Type = CreateIntegrationStoreDirectHiddenUnionTypeCreateIntegrationStoreDirectHiddenEnum
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectHiddenUnion", string(data))
-}
-
-func (u CreateIntegrationStoreDirectHiddenUnion) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
-	if u.CreateIntegrationStoreDirectHidden != nil {
-		return utils.MarshalJSON(u.CreateIntegrationStoreDirectHidden, "", true)
-	}
-
-	if u.CreateIntegrationStoreDirectHiddenEnum != nil {
-		return utils.MarshalJSON(u.CreateIntegrationStoreDirectHiddenEnum, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectHiddenUnion: all fields are null")
 }
 
 type CreateIntegrationStoreDirectProduct struct {
-	ID                             *string                                     `json:"id,omitempty"`
-	Name                           *string                                     `json:"name,omitempty"`
-	Slug                           *string                                     `json:"slug,omitempty"`
-	IconURL                        *string                                     `json:"iconUrl,omitempty"`
-	Capabilities                   *ProductCapabilities                        `json:"capabilities,omitempty"`
-	ShortDescription               *string                                     `json:"shortDescription,omitempty"`
-	MetadataSchema                 *CreateIntegrationStoreDirectMetadataSchema `json:"metadataSchema,omitempty"`
-	ResourceLinks                  []ResourceLink                              `json:"resourceLinks,omitempty"`
-	Tags                           []Tag                                       `json:"tags,omitempty"`
-	ProjectConnectionScopes        []ProjectConnectionScope                    `json:"projectConnectionScopes,omitempty"`
-	ShowSSOLinkOnProjectConnection *bool                                       `json:"showSSOLinkOnProjectConnection,omitempty"`
-	DisableResourceRenaming        *bool                                       `json:"disableResourceRenaming,omitempty"`
-	Repl                           *CreateIntegrationStoreDirectRepl           `json:"repl,omitempty"`
-	Guides                         []Guide                                     `json:"guides,omitempty"`
-	Value                          string                                      `json:"value"`
-	Disabled                       *CreateIntegrationStoreDirectDisabledUnion  `json:"disabled,omitempty"`
-	Hidden                         *CreateIntegrationStoreDirectHiddenUnion    `json:"hidden,omitempty"`
+	ID                             *string                                          `json:"id,omitempty"`
+	Name                           *string                                          `json:"name,omitempty"`
+	Slug                           *string                                          `json:"slug,omitempty"`
+	IconURL                        *string                                          `json:"iconUrl,omitempty"`
+	Capabilities                   *ProductCapabilities                             `json:"capabilities,omitempty"`
+	ShortDescription               *string                                          `json:"shortDescription,omitempty"`
+	MetadataSchema                 *CreateIntegrationStoreDirectMetadataSchema      `json:"metadataSchema,omitempty"`
+	ResourceLinks                  []ResourceLink                                   `json:"resourceLinks,omitempty"`
+	Tags                           []Tag                                            `json:"tags,omitempty"`
+	ProjectConnectionScopes        []ProjectConnectionScope                         `json:"projectConnectionScopes,omitempty"`
+	ShowSSOLinkOnProjectConnection *bool                                            `json:"showSSOLinkOnProjectConnection,omitempty"`
+	DisableResourceRenaming        *bool                                            `json:"disableResourceRenaming,omitempty"`
+	Repl                           *CreateIntegrationStoreDirectRepl                `json:"repl,omitempty"`
+	Guides                         []Guide                                          `json:"guides,omitempty"`
+	Integration                    CreateIntegrationStoreDirectIntegration          `json:"integration"`
+	IntegrationConfigurationID     string                                           `json:"integrationConfigurationId"`
+	SupportedProtocols             []SupportedProtocol                              `json:"supportedProtocols"`
+	PrimaryProtocol                *CreateIntegrationStoreDirectPrimaryProtocol     `json:"primaryProtocol,omitempty"`
+	LogDrainStatus                 *CreateIntegrationStoreDirectStoreLogDrainStatus `json:"logDrainStatus,omitempty"`
 }
 
 func (o *CreateIntegrationStoreDirectProduct) GetID() *string {
@@ -9649,25 +11472,39 @@ func (o *CreateIntegrationStoreDirectProduct) GetGuides() []Guide {
 	return o.Guides
 }
 
-func (o *CreateIntegrationStoreDirectProduct) GetValue() string {
+func (o *CreateIntegrationStoreDirectProduct) GetIntegration() CreateIntegrationStoreDirectIntegration {
+	if o == nil {
+		return CreateIntegrationStoreDirectIntegration{}
+	}
+	return o.Integration
+}
+
+func (o *CreateIntegrationStoreDirectProduct) GetIntegrationConfigurationID() string {
 	if o == nil {
 		return ""
 	}
-	return o.Value
+	return o.IntegrationConfigurationID
 }
 
-func (o *CreateIntegrationStoreDirectProduct) GetDisabled() *CreateIntegrationStoreDirectDisabledUnion {
+func (o *CreateIntegrationStoreDirectProduct) GetSupportedProtocols() []SupportedProtocol {
+	if o == nil {
+		return []SupportedProtocol{}
+	}
+	return o.SupportedProtocols
+}
+
+func (o *CreateIntegrationStoreDirectProduct) GetPrimaryProtocol() *CreateIntegrationStoreDirectPrimaryProtocol {
 	if o == nil {
 		return nil
 	}
-	return o.Disabled
+	return o.PrimaryProtocol
 }
 
-func (o *CreateIntegrationStoreDirectProduct) GetHidden() *CreateIntegrationStoreDirectHiddenUnion {
+func (o *CreateIntegrationStoreDirectProduct) GetLogDrainStatus() *CreateIntegrationStoreDirectStoreLogDrainStatus {
 	if o == nil {
 		return nil
 	}
-	return o.Hidden
+	return o.LogDrainStatus
 }
 
 type CreateIntegrationStoreDirectExperimentation struct {

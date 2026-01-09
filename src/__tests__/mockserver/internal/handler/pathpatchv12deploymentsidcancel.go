@@ -69,17 +69,17 @@ func testCancelDeploymentCancelDeployment0(w http.ResponseWriter, req *http.Requ
 		Status:     operations.CancelDeploymentStatusCanceled,
 		ID:         "<id>",
 		CreatedAt:  4076.8,
-		Name:       "<value>",
-		Meta:       map[string]string{},
 		ReadyState: operations.CancelDeploymentReadyStateReady,
-		Regions:    []string{},
+		Name:       "<value>",
 		Type:       operations.CancelDeploymentTypeLambdas,
+		Meta:       map[string]string{},
+		Regions:    []string{},
 		URL:        "https://medium-tribe.org/",
 		Version:    7316.38,
+		ProjectID:  "<id>",
+		Plan:       operations.CancelDeploymentPlanHobby,
 		CreatedIn:  "<value>",
 		OwnerID:    "<id>",
-		Plan:       operations.CancelDeploymentPlanHobby,
-		ProjectID:  "<id>",
 		Routes: []operations.CancelDeploymentRouteUnion{
 			operations.CreateCancelDeploymentRouteUnionCancelDeploymentRoute1(
 				operations.CancelDeploymentRoute1{

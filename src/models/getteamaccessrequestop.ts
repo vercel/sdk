@@ -16,10 +16,10 @@ export type GetTeamAccessRequestRequest = {
 };
 
 export const GetTeamAccessRequestOrigin = {
+  Teams: "teams",
   Link: "link",
   Mail: "mail",
   Import: "import",
-  Teams: "teams",
   Github: "github",
   Gitlab: "gitlab",
   Bitbucket: "bitbucket",

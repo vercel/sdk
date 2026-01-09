@@ -55,6 +55,7 @@ const value: models.GetDeploymentResponseBody1 = {
   target: null,
   undeletedAt: 1540257589405,
   url: "my-instant-deployment-3ij3cxz9qr.now.sh",
+  userConfiguredDeploymentId: "abc123",
   version: 2,
   projectId: "<id>",
   plan: "enterprise",
@@ -104,6 +105,7 @@ const value: models.GetDeploymentResponseBody2 = {
   target: null,
   undeletedAt: 1540257589405,
   url: "my-instant-deployment-3ij3cxz9qr.now.sh",
+  userConfiguredDeploymentId: "abc123",
   version: 2,
 };
 ```

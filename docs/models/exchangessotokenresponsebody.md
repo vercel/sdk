@@ -1,22 +1,27 @@
 # ExchangeSsoTokenResponseBody
 
-## Example Usage
+
+## Supported Types
+
+### `models.ExchangeSsoTokenResponseBody1`
 
 ```typescript
-import { ExchangeSsoTokenResponseBody } from "@vercel/sdk/models/exchangessotokenop.js";
-
-let value: ExchangeSsoTokenResponseBody = {
+const value: models.ExchangeSsoTokenResponseBody1 = {
   idToken: "<value>",
-  accessToken: "<value>",
   tokenType: "<value>",
+  accessToken: "<value>",
 };
 ```
 
-## Fields
+### `models.ExchangeSsoTokenResponseBody2`
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `idToken`          | *string*           | :heavy_check_mark: | N/A                |
-| `accessToken`      | *string*           | :heavy_check_mark: | N/A                |
-| `tokenType`        | *string*           | :heavy_check_mark: | N/A                |
-| `expiresIn`        | *number*           | :heavy_minus_sign: | N/A                |
+```typescript
+const value: models.ExchangeSsoTokenResponseBody2 = {
+  idToken: "<value>",
+  tokenType: "<value>",
+  accessToken: "<value>",
+  refreshToken: "<value>",
+  expiresIn: 5918.76,
+};
+```
+

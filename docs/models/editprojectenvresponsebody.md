@@ -2,22 +2,38 @@
 
 The environment variable was successfully edited
 
-
-## Supported Types
-
-### `models.EditProjectEnvResponseBody1`
+## Example Usage
 
 ```typescript
-const value: models.EditProjectEnvResponseBody1 = {
+import { EditProjectEnvResponseBody } from "@vercel/sdk/models/editprojectenvop.js";
+
+let value: EditProjectEnvResponseBody = {
   type: "secret",
   value: "<value>",
   key: "<key>",
 };
 ```
 
-### `models.EditProjectEnvResponseBody2`
+## Fields
 
-```typescript
-const value: models.EditProjectEnvResponseBody2 = {};
-```
-
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `type`                                                                                    | [models.EditProjectEnvProjectsType](../models/editprojectenvprojectstype.md)              | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `value`                                                                                   | *string*                                                                                  | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `edgeConfigId`                                                                            | *string*                                                                                  | :heavy_minus_sign:                                                                        | N/A                                                                                       |
+| `edgeConfigTokenId`                                                                       | *string*                                                                                  | :heavy_minus_sign:                                                                        | N/A                                                                                       |
+| `createdAt`                                                                               | *number*                                                                                  | :heavy_minus_sign:                                                                        | N/A                                                                                       |
+| `updatedAt`                                                                               | *number*                                                                                  | :heavy_minus_sign:                                                                        | N/A                                                                                       |
+| `createdBy`                                                                               | *string*                                                                                  | :heavy_minus_sign:                                                                        | N/A                                                                                       |
+| `id`                                                                                      | *string*                                                                                  | :heavy_minus_sign:                                                                        | N/A                                                                                       |
+| `key`                                                                                     | *string*                                                                                  | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `target`                                                                                  | *models.EditProjectEnvProjectsTarget*                                                     | :heavy_minus_sign:                                                                        | N/A                                                                                       |
+| `gitBranch`                                                                               | *string*                                                                                  | :heavy_minus_sign:                                                                        | N/A                                                                                       |
+| `updatedBy`                                                                               | *string*                                                                                  | :heavy_minus_sign:                                                                        | N/A                                                                                       |
+| `sunsetSecretId`                                                                          | *string*                                                                                  | :heavy_minus_sign:                                                                        | This is used to identify variables that have been migrated from type secret to sensitive. |
+| `decrypted`                                                                               | *boolean*                                                                                 | :heavy_minus_sign:                                                                        | N/A                                                                                       |
+| `configurationId`                                                                         | *string*                                                                                  | :heavy_minus_sign:                                                                        | N/A                                                                                       |
+| `contentHint`                                                                             | *models.ContentHint*                                                                      | :heavy_minus_sign:                                                                        | N/A                                                                                       |
+| `internalContentHint`                                                                     | [models.InternalContentHint](../models/internalcontenthint.md)                            | :heavy_minus_sign:                                                                        | Similar to `contentHints`, but should not be exposed to the user.                         |
+| `comment`                                                                                 | *string*                                                                                  | :heavy_minus_sign:                                                                        | N/A                                                                                       |
+| `customEnvironmentIds`                                                                    | *string*[]                                                                                | :heavy_minus_sign:                                                                        | N/A                                                                                       |

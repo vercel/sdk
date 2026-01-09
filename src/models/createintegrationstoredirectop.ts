@@ -291,71 +291,418 @@ export type CreateIntegrationStoreDirectIntegrationsType = ClosedEnum<
   typeof CreateIntegrationStoreDirectIntegrationsType
 >;
 
-export const CreateIntegrationStoreDirectDisabled3 = {
-  Update: "update",
-  Create: "create",
-} as const;
-export type CreateIntegrationStoreDirectDisabled3 = ClosedEnum<
-  typeof CreateIntegrationStoreDirectDisabled3
->;
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10Type =
+  {
+    String: "string",
+  } as const;
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10Type =
+  ClosedEnum<
+    typeof CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10Type
+  >;
 
-export type CreateIntegrationStoreDirectDisabled2 = {
-  expr: string;
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiControl =
+  {
+    GitNamespace: "git-namespace",
+  } as const;
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiControl =
+  ClosedEnum<
+    typeof CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiControl
+  >;
+
+export const CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3 =
+  {
+    Update: "update",
+    Create: "create",
+  } as const;
+export type CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3 =
+  ClosedEnum<
+    typeof CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3
+  >;
+
+export type CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2 =
+  {
+    expr: string;
+  };
+
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiReadOnly =
+  | CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2
+  | boolean
+  | CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3;
+
+export const CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3 =
+  {
+    Update: "update",
+    Create: "create",
+  } as const;
+export type CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3 =
+  ClosedEnum<
+    typeof CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3
+  >;
+
+export type CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2 =
+  {
+    expr: string;
+  };
+
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiHidden =
+  | CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2
+  | boolean
+  | CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3;
+
+export const CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3 =
+  {
+    Update: "update",
+    Create: "create",
+  } as const;
+export type CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3 =
+  ClosedEnum<
+    typeof CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3
+  >;
+
+export type CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2 =
+  {
+    expr: string;
+  };
+
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiDisabled =
+  | CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2
+  | boolean
+  | CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3;
+
+export type CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2 =
+  {
+    expr: string;
+  };
+
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiDescription =
+  | CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2
+  | string;
+
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiFormattedValue =
+  {
+    expr: string;
+  };
+
+export const PropertiesGitProviders = {
+  Github: "github",
+  Gitlab: "gitlab",
+  Bitbucket: "bitbucket",
+} as const;
+export type PropertiesGitProviders = ClosedEnum<typeof PropertiesGitProviders>;
+
+export type CreateIntegrationStoreDirectProperties10 = {
+  type:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10Type;
+  uiControl:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiControl;
+  description?: string | undefined;
+  uiLabel?: string | undefined;
+  uiReadOnly?:
+    | CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2
+    | boolean
+    | CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3
+    | undefined;
+  uiHidden?:
+    | CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2
+    | boolean
+    | CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3
+    | undefined;
+  uiDisabled?:
+    | CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2
+    | boolean
+    | CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3
+    | undefined;
+  uiDescription?:
+    | CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2
+    | string
+    | undefined;
+  uiFormattedValue?:
+    | CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiFormattedValue
+    | undefined;
+  uiPlaceholder?: string | undefined;
+  gitProviders?: Array<PropertiesGitProviders> | undefined;
 };
 
-export type CreateIntegrationStoreDirectPropertiesDisabled =
-  | CreateIntegrationStoreDirectDisabled2
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaType =
+  {
+    String: "string",
+  } as const;
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaType =
+  ClosedEnum<
+    typeof CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaType
+  >;
+
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiControl =
+  {
+    Domain: "domain",
+  } as const;
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiControl =
+  ClosedEnum<
+    typeof CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiControl
+  >;
+
+export const CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3 =
+  {
+    Update: "update",
+    Create: "create",
+  } as const;
+export type CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3 =
+  ClosedEnum<
+    typeof CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3
+  >;
+
+export type CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2 =
+  {
+    expr: string;
+  };
+
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiReadOnly =
+  | CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2
   | boolean
-  | CreateIntegrationStoreDirectDisabled3;
+  | CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3;
 
-export const CreateIntegrationStoreDirectHidden3 = {
-  Update: "update",
-  Create: "create",
-} as const;
-export type CreateIntegrationStoreDirectHidden3 = ClosedEnum<
-  typeof CreateIntegrationStoreDirectHidden3
->;
+export const CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3 =
+  {
+    Update: "update",
+    Create: "create",
+  } as const;
+export type CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3 =
+  ClosedEnum<
+    typeof CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3
+  >;
 
-export type CreateIntegrationStoreDirectHidden2 = {
-  expr: string;
-};
+export type CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2 =
+  {
+    expr: string;
+  };
 
-export type CreateIntegrationStoreDirectPropertiesHidden =
-  | CreateIntegrationStoreDirectHidden2
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiHidden =
+  | CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2
   | boolean
-  | CreateIntegrationStoreDirectHidden3;
+  | CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3;
+
+export const CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3 =
+  {
+    Update: "update",
+    Create: "create",
+  } as const;
+export type CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3 =
+  ClosedEnum<
+    typeof CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3
+  >;
+
+export type CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2 =
+  {
+    expr: string;
+  };
+
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiDisabled =
+  | CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2
+  | boolean
+  | CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3;
+
+export type CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2 =
+  {
+    expr: string;
+  };
+
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiDescription =
+  | CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2
+  | string;
+
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiFormattedValue =
+  {
+    expr: string;
+  };
 
 export type CreateIntegrationStoreDirectProperties9 = {
-  value: string;
-  disabled?:
-    | CreateIntegrationStoreDirectDisabled2
+  type:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaType;
+  uiControl:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiControl;
+  enum?: Array<string> | undefined;
+  maxLength?: number | undefined;
+  minLength?: number | undefined;
+  pattern?: string | undefined;
+  description?: string | undefined;
+  default?: string | undefined;
+  uiLabel?: string | undefined;
+  uiReadOnly?:
+    | CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2
     | boolean
-    | CreateIntegrationStoreDirectDisabled3
+    | CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3
     | undefined;
-  hidden?:
-    | CreateIntegrationStoreDirectHidden2
+  uiHidden?:
+    | CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2
     | boolean
-    | CreateIntegrationStoreDirectHidden3
+    | CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3
     | undefined;
+  uiDisabled?:
+    | CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2
+    | boolean
+    | CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3
+    | undefined;
+  uiDescription?:
+    | CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2
+    | string
+    | undefined;
+  uiFormattedValue?:
+    | CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiFormattedValue
+    | undefined;
+  uiPlaceholder?: string | undefined;
 };
 
 export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductType =
   {
-    String: "string",
+    Array: "array",
   } as const;
 export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductType =
   ClosedEnum<
     typeof CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductType
   >;
 
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8Type =
+  {
+    String: "string",
+  } as const;
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8Type =
+  ClosedEnum<
+    typeof CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8Type
+  >;
+
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponseItems = {
+  type:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8Type;
+  description?: string | undefined;
+  minLength?: number | undefined;
+  maxLength?: number | undefined;
+  pattern?: string | undefined;
+  default?: string | undefined;
+  enum?: Array<string> | undefined;
+};
+
 export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductUiControl =
   {
-    Domain: "domain",
+    MultiVercelRegion: "multi-vercel-region",
   } as const;
 export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductUiControl =
   ClosedEnum<
     typeof CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductUiControl
   >;
+
+export const CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody3 =
+  {
+    Update: "update",
+    Create: "create",
+  } as const;
+export type CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody3 =
+  ClosedEnum<
+    typeof CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody3
+  >;
+
+export type CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody2 =
+  {
+    expr: string;
+  };
+
+export type CreateIntegrationStoreDirectUiOptionsIntegrationsResponse200Disabled =
+  | CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody2
+  | boolean
+  | CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody3;
+
+export const CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody3 =
+  {
+    Update: "update",
+    Create: "create",
+  } as const;
+export type CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody3 =
+  ClosedEnum<
+    typeof CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody3
+  >;
+
+export type CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody2 =
+  {
+    expr: string;
+  };
+
+export type CreateIntegrationStoreDirectUiOptionsIntegrationsResponse200Hidden =
+  | CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody2
+  | boolean
+  | CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody3;
+
+export type CreateIntegrationStoreDirectUiOptionsIntegrations3 = {
+  value: string;
+  disabled?:
+    | CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody2
+    | boolean
+    | CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody3
+    | undefined;
+  hidden?:
+    | CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody2
+    | boolean
+    | CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody3
+    | undefined;
+};
+
+export const CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3 =
+  {
+    Update: "update",
+    Create: "create",
+  } as const;
+export type CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3 =
+  ClosedEnum<
+    typeof CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3
+  >;
+
+export type CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2 =
+  {
+    expr: string;
+  };
+
+export type CreateIntegrationStoreDirectUiOptionsIntegrationsResponseDisabled =
+  | CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2
+  | boolean
+  | CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3;
+
+export const CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3 =
+  {
+    Update: "update",
+    Create: "create",
+  } as const;
+export type CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3 =
+  ClosedEnum<
+    typeof CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3
+  >;
+
+export type CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2 =
+  {
+    expr: string;
+  };
+
+export type CreateIntegrationStoreDirectUiOptionsIntegrationsResponseHidden =
+  | CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2
+  | boolean
+  | CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3;
+
+export type CreateIntegrationStoreDirectUiOptionsIntegrations1 = {
+  value: string;
+  label: string;
+  disabled?:
+    | CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2
+    | boolean
+    | CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3
+    | undefined;
+  hidden?:
+    | CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2
+    | boolean
+    | CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3
+    | undefined;
+};
+
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiOptions =
+  | CreateIntegrationStoreDirectUiOptionsIntegrations1
+  | CreateIntegrationStoreDirectUiOptionsIntegrations3
+  | string;
 
 export const CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct3 =
   {
@@ -434,14 +781,17 @@ export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applica
 export type CreateIntegrationStoreDirectProperties8 = {
   type:
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductType;
+  items: CreateIntegrationStoreDirectPropertiesIntegrationsResponseItems;
   uiControl:
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductUiControl;
-  enum?: Array<string> | undefined;
-  maxLength?: number | undefined;
-  minLength?: number | undefined;
-  pattern?: string | undefined;
+  uiOptions: Array<
+    | CreateIntegrationStoreDirectUiOptionsIntegrations1
+    | CreateIntegrationStoreDirectUiOptionsIntegrations3
+    | string
+  >;
+  maxItems?: number | undefined;
+  minItems?: number | undefined;
   description?: string | undefined;
-  default?: string | undefined;
   uiLabel?: string | undefined;
   uiReadOnly?:
     | CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct2
@@ -466,6 +816,8 @@ export type CreateIntegrationStoreDirectProperties8 = {
     | CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductUiFormattedValue
     | undefined;
   uiPlaceholder?: string | undefined;
+  default?: Array<string> | undefined;
+  example?: Array<string> | undefined;
 };
 
 export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreType =
@@ -534,58 +886,50 @@ export type CreateIntegrationStoreDirectUiOptions3 = {
     | undefined;
 };
 
-export const CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3 =
-  {
-    Update: "update",
-    Create: "create",
-  } as const;
-export type CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3 =
-  ClosedEnum<
-    typeof CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3
-  >;
+export const CreateIntegrationStoreDirectDisabledIntegrationsResponse3 = {
+  Update: "update",
+  Create: "create",
+} as const;
+export type CreateIntegrationStoreDirectDisabledIntegrationsResponse3 =
+  ClosedEnum<typeof CreateIntegrationStoreDirectDisabledIntegrationsResponse3>;
 
-export type CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2 =
-  {
-    expr: string;
-  };
+export type CreateIntegrationStoreDirectDisabledIntegrationsResponse2 = {
+  expr: string;
+};
 
 export type CreateIntegrationStoreDirectUiOptionsDisabled =
-  | CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2
+  | CreateIntegrationStoreDirectDisabledIntegrationsResponse2
   | boolean
-  | CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3;
+  | CreateIntegrationStoreDirectDisabledIntegrationsResponse3;
 
-export const CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3 =
-  {
-    Update: "update",
-    Create: "create",
-  } as const;
-export type CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3 =
-  ClosedEnum<
-    typeof CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3
-  >;
+export const CreateIntegrationStoreDirectHiddenIntegrationsResponse3 = {
+  Update: "update",
+  Create: "create",
+} as const;
+export type CreateIntegrationStoreDirectHiddenIntegrationsResponse3 =
+  ClosedEnum<typeof CreateIntegrationStoreDirectHiddenIntegrationsResponse3>;
 
-export type CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2 =
-  {
-    expr: string;
-  };
+export type CreateIntegrationStoreDirectHiddenIntegrationsResponse2 = {
+  expr: string;
+};
 
 export type CreateIntegrationStoreDirectUiOptionsHidden =
-  | CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2
+  | CreateIntegrationStoreDirectHiddenIntegrationsResponse2
   | boolean
-  | CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3;
+  | CreateIntegrationStoreDirectHiddenIntegrationsResponse3;
 
 export type CreateIntegrationStoreDirectUiOptions1 = {
   value: string;
   label: string;
   disabled?:
-    | CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2
+    | CreateIntegrationStoreDirectDisabledIntegrationsResponse2
     | boolean
-    | CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3
+    | CreateIntegrationStoreDirectDisabledIntegrationsResponse3
     | undefined;
   hidden?:
-    | CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2
+    | CreateIntegrationStoreDirectHiddenIntegrationsResponse2
     | boolean
-    | CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3
+    | CreateIntegrationStoreDirectHiddenIntegrationsResponse3
     | undefined;
 };
 
@@ -927,50 +1271,52 @@ export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applica
     typeof CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONUiControl
   >;
 
-export const CreateIntegrationStoreDirectDisabledIntegrationsResponse3 = {
+export const CreateIntegrationStoreDirectDisabled3 = {
   Update: "update",
   Create: "create",
 } as const;
-export type CreateIntegrationStoreDirectDisabledIntegrationsResponse3 =
-  ClosedEnum<typeof CreateIntegrationStoreDirectDisabledIntegrationsResponse3>;
+export type CreateIntegrationStoreDirectDisabled3 = ClosedEnum<
+  typeof CreateIntegrationStoreDirectDisabled3
+>;
 
-export type CreateIntegrationStoreDirectDisabledIntegrationsResponse2 = {
+export type CreateIntegrationStoreDirectDisabled2 = {
   expr: string;
 };
 
-export type CreateIntegrationStoreDirectPropertiesIntegrationsResponseDisabled =
-  | CreateIntegrationStoreDirectDisabledIntegrationsResponse2
+export type CreateIntegrationStoreDirectPropertiesDisabled =
+  | CreateIntegrationStoreDirectDisabled2
   | boolean
-  | CreateIntegrationStoreDirectDisabledIntegrationsResponse3;
+  | CreateIntegrationStoreDirectDisabled3;
 
-export const CreateIntegrationStoreDirectHiddenIntegrationsResponse3 = {
+export const CreateIntegrationStoreDirectHidden3 = {
   Update: "update",
   Create: "create",
 } as const;
-export type CreateIntegrationStoreDirectHiddenIntegrationsResponse3 =
-  ClosedEnum<typeof CreateIntegrationStoreDirectHiddenIntegrationsResponse3>;
+export type CreateIntegrationStoreDirectHidden3 = ClosedEnum<
+  typeof CreateIntegrationStoreDirectHidden3
+>;
 
-export type CreateIntegrationStoreDirectHiddenIntegrationsResponse2 = {
+export type CreateIntegrationStoreDirectHidden2 = {
   expr: string;
 };
 
-export type CreateIntegrationStoreDirectPropertiesIntegrationsResponseHidden =
-  | CreateIntegrationStoreDirectHiddenIntegrationsResponse2
+export type CreateIntegrationStoreDirectPropertiesHidden =
+  | CreateIntegrationStoreDirectHidden2
   | boolean
-  | CreateIntegrationStoreDirectHiddenIntegrationsResponse3;
+  | CreateIntegrationStoreDirectHidden3;
 
 export type CreateIntegrationStoreDirectPropertiesUiOptions = {
   value: string;
   label: string;
   disabled?:
-    | CreateIntegrationStoreDirectDisabledIntegrationsResponse2
+    | CreateIntegrationStoreDirectDisabled2
     | boolean
-    | CreateIntegrationStoreDirectDisabledIntegrationsResponse3
+    | CreateIntegrationStoreDirectDisabled3
     | undefined;
   hidden?:
-    | CreateIntegrationStoreDirectHiddenIntegrationsResponse2
+    | CreateIntegrationStoreDirectHidden2
     | boolean
-    | CreateIntegrationStoreDirectHiddenIntegrationsResponse3
+    | CreateIntegrationStoreDirectHidden3
     | undefined;
 };
 
@@ -1095,18 +1441,18 @@ export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Type =
     typeof CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Type
   >;
 
-export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaType =
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema4Type =
   {
     Number: "number",
   } as const;
-export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaType =
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema4Type =
   ClosedEnum<
-    typeof CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaType
+    typeof CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema4Type
   >;
 
 export type CreateIntegrationStoreDirectPropertiesItems = {
   type:
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaType;
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema4Type;
   description?: string | undefined;
   minimum?: number | undefined;
   exclusiveMinimum?: number | undefined;
@@ -1569,13 +1915,14 @@ export type CreateIntegrationStoreDirectProperties1 = {
 export type CreateIntegrationStoreDirectProperties =
   | CreateIntegrationStoreDirectProperties4
   | CreateIntegrationStoreDirectProperties6
+  | CreateIntegrationStoreDirectProperties8
   | CreateIntegrationStoreDirectProperties5
   | CreateIntegrationStoreDirectProperties7
   | CreateIntegrationStoreDirectProperties1
   | CreateIntegrationStoreDirectProperties2
   | CreateIntegrationStoreDirectProperties3
-  | CreateIntegrationStoreDirectProperties8
-  | CreateIntegrationStoreDirectProperties9;
+  | CreateIntegrationStoreDirectProperties9
+  | CreateIntegrationStoreDirectProperties10;
 
 export type CreateIntegrationStoreDirectMetadataSchema = {
   type: CreateIntegrationStoreDirectIntegrationsType;
@@ -1583,13 +1930,14 @@ export type CreateIntegrationStoreDirectMetadataSchema = {
     [k: string]:
       | CreateIntegrationStoreDirectProperties4
       | CreateIntegrationStoreDirectProperties6
+      | CreateIntegrationStoreDirectProperties8
       | CreateIntegrationStoreDirectProperties5
       | CreateIntegrationStoreDirectProperties7
       | CreateIntegrationStoreDirectProperties1
       | CreateIntegrationStoreDirectProperties2
       | CreateIntegrationStoreDirectProperties3
-      | CreateIntegrationStoreDirectProperties8
-      | CreateIntegrationStoreDirectProperties9;
+      | CreateIntegrationStoreDirectProperties9
+      | CreateIntegrationStoreDirectProperties10;
   };
   required?: Array<string> | undefined;
 };
@@ -1617,7 +1965,10 @@ export const CreateIntegrationStoreDirectTags = {
   Messaging: "messaging",
   Other: "other",
   Mysql: "mysql",
+  Kv: "kv",
   Vector: "vector",
+  Libsql: "libsql",
+  Sqlite: "sqlite",
   TagAgents: "tag_agents",
   TagAi: "tag_ai",
   TagAnalytics: "tag_analytics",
@@ -1706,29 +2057,54 @@ export type Guides = {
   steps: Array<Steps>;
 };
 
-export const Disabled3 = {
-  Update: "update",
-  Create: "create",
-} as const;
-export type Disabled3 = ClosedEnum<typeof Disabled3>;
-
-export type Disabled2 = {
-  expr: string;
+export type CreateIntegrationStoreDirectIntegration = {
+  id: string;
+  name: string;
+  slug: string;
+  supportsInstallationBillingPlans?: boolean | undefined;
+  icon: string;
+  flags?: Array<string> | undefined;
 };
 
-export type Disabled = Disabled2 | boolean | Disabled3;
-
-export const Hidden3 = {
-  Update: "update",
-  Create: "create",
+export const SupportedProtocols = {
+  Experimentation: "experimentation",
+  Checks: "checks",
+  Storage: "storage",
+  Ai: "ai",
+  Observability: "observability",
+  Video: "video",
+  Authentication: "authentication",
+  Workflow: "workflow",
+  LogDrain: "logDrain",
+  TraceDrain: "traceDrain",
+  Messaging: "messaging",
+  Other: "other",
 } as const;
-export type Hidden3 = ClosedEnum<typeof Hidden3>;
+export type SupportedProtocols = ClosedEnum<typeof SupportedProtocols>;
 
-export type Hidden2 = {
-  expr: string;
-};
+export const CreateIntegrationStoreDirectPrimaryProtocol = {
+  Experimentation: "experimentation",
+  Checks: "checks",
+  Storage: "storage",
+  Ai: "ai",
+  Observability: "observability",
+  Video: "video",
+  Authentication: "authentication",
+  Workflow: "workflow",
+  LogDrain: "logDrain",
+  TraceDrain: "traceDrain",
+  Messaging: "messaging",
+  Other: "other",
+} as const;
+export type CreateIntegrationStoreDirectPrimaryProtocol = ClosedEnum<
+  typeof CreateIntegrationStoreDirectPrimaryProtocol
+>;
 
-export type Hidden = Hidden2 | boolean | Hidden3;
+export const LogDrainStatus = {
+  Disabled: "disabled",
+  Enabled: "enabled",
+} as const;
+export type LogDrainStatus = ClosedEnum<typeof LogDrainStatus>;
 
 export type Product = {
   id?: string | undefined;
@@ -1745,9 +2121,11 @@ export type Product = {
   disableResourceRenaming?: boolean | undefined;
   repl?: Repl | undefined;
   guides?: Array<Guides> | undefined;
-  value: string;
-  disabled?: Disabled2 | boolean | Disabled3 | undefined;
-  hidden?: Hidden2 | boolean | Hidden3 | undefined;
+  integration: CreateIntegrationStoreDirectIntegration;
+  integrationConfigurationId: string;
+  supportedProtocols: Array<SupportedProtocols>;
+  primaryProtocol?: CreateIntegrationStoreDirectPrimaryProtocol | undefined;
+  logDrainStatus?: LogDrainStatus | undefined;
 };
 
 export type CreateIntegrationStoreDirectExperimentation = {
@@ -2814,215 +3192,1312 @@ export const CreateIntegrationStoreDirectIntegrationsType$outboundSchema:
     CreateIntegrationStoreDirectIntegrationsType$inboundSchema;
 
 /** @internal */
-export const CreateIntegrationStoreDirectDisabled3$inboundSchema:
-  z.ZodNativeEnum<typeof CreateIntegrationStoreDirectDisabled3> = z.nativeEnum(
-    CreateIntegrationStoreDirectDisabled3,
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10Type$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10Type
+  > = z.nativeEnum(
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10Type,
   );
 /** @internal */
-export const CreateIntegrationStoreDirectDisabled3$outboundSchema:
-  z.ZodNativeEnum<typeof CreateIntegrationStoreDirectDisabled3> =
-    CreateIntegrationStoreDirectDisabled3$inboundSchema;
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10Type$outboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10Type
+  > =
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10Type$inboundSchema;
 
 /** @internal */
-export const CreateIntegrationStoreDirectDisabled2$inboundSchema: z.ZodType<
-  CreateIntegrationStoreDirectDisabled2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  expr: types.string(),
-});
-/** @internal */
-export type CreateIntegrationStoreDirectDisabled2$Outbound = {
-  expr: string;
-};
-
-/** @internal */
-export const CreateIntegrationStoreDirectDisabled2$outboundSchema: z.ZodType<
-  CreateIntegrationStoreDirectDisabled2$Outbound,
-  z.ZodTypeDef,
-  CreateIntegrationStoreDirectDisabled2
-> = z.object({
-  expr: z.string(),
-});
-
-export function createIntegrationStoreDirectDisabled2ToJSON(
-  createIntegrationStoreDirectDisabled2: CreateIntegrationStoreDirectDisabled2,
-): string {
-  return JSON.stringify(
-    CreateIntegrationStoreDirectDisabled2$outboundSchema.parse(
-      createIntegrationStoreDirectDisabled2,
-    ),
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiControl$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiControl
+  > = z.nativeEnum(
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiControl,
   );
-}
-export function createIntegrationStoreDirectDisabled2FromJSON(
-  jsonString: string,
-): SafeParseResult<CreateIntegrationStoreDirectDisabled2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateIntegrationStoreDirectDisabled2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateIntegrationStoreDirectDisabled2' from JSON`,
-  );
-}
+/** @internal */
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiControl$outboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiControl
+  > =
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiControl$inboundSchema;
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesDisabled$inboundSchema:
+export const CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3
+  > = z.nativeEnum(
+    CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3,
+  );
+/** @internal */
+export const CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3$outboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3
+  > =
+    CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3$inboundSchema;
+
+/** @internal */
+export const CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$inboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesDisabled,
+    CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([
-    z.lazy(() => CreateIntegrationStoreDirectDisabled2$inboundSchema),
-    types.boolean(),
-    CreateIntegrationStoreDirectDisabled3$inboundSchema,
-  ]);
+  > = z.object({
+    expr: types.string(),
+  });
 /** @internal */
-export type CreateIntegrationStoreDirectPropertiesDisabled$Outbound =
-  | CreateIntegrationStoreDirectDisabled2$Outbound
-  | boolean
-  | string;
+export type CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$Outbound =
+  {
+    expr: string;
+  };
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesDisabled$outboundSchema:
+export const CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$outboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesDisabled$Outbound,
+    CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$Outbound,
     z.ZodTypeDef,
-    CreateIntegrationStoreDirectPropertiesDisabled
-  > = smartUnion([
-    z.lazy(() => CreateIntegrationStoreDirectDisabled2$outboundSchema),
-    z.boolean(),
-    CreateIntegrationStoreDirectDisabled3$outboundSchema,
-  ]);
+    CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2
+  > = z.object({
+    expr: z.string(),
+  });
 
-export function createIntegrationStoreDirectPropertiesDisabledToJSON(
-  createIntegrationStoreDirectPropertiesDisabled:
-    CreateIntegrationStoreDirectPropertiesDisabled,
+export function createIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2ToJSON(
+  createIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2:
+    CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2,
 ): string {
   return JSON.stringify(
-    CreateIntegrationStoreDirectPropertiesDisabled$outboundSchema.parse(
-      createIntegrationStoreDirectPropertiesDisabled,
-    ),
+    CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$outboundSchema
+      .parse(
+        createIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2,
+      ),
   );
 }
-export function createIntegrationStoreDirectPropertiesDisabledFromJSON(
+export function createIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateIntegrationStoreDirectPropertiesDisabled,
+  CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateIntegrationStoreDirectPropertiesDisabled$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'CreateIntegrationStoreDirectPropertiesDisabled' from JSON`,
+      CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2' from JSON`,
   );
 }
 
 /** @internal */
-export const CreateIntegrationStoreDirectHidden3$inboundSchema: z.ZodNativeEnum<
-  typeof CreateIntegrationStoreDirectHidden3
-> = z.nativeEnum(CreateIntegrationStoreDirectHidden3);
-/** @internal */
-export const CreateIntegrationStoreDirectHidden3$outboundSchema:
-  z.ZodNativeEnum<typeof CreateIntegrationStoreDirectHidden3> =
-    CreateIntegrationStoreDirectHidden3$inboundSchema;
-
-/** @internal */
-export const CreateIntegrationStoreDirectHidden2$inboundSchema: z.ZodType<
-  CreateIntegrationStoreDirectHidden2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  expr: types.string(),
-});
-/** @internal */
-export type CreateIntegrationStoreDirectHidden2$Outbound = {
-  expr: string;
-};
-
-/** @internal */
-export const CreateIntegrationStoreDirectHidden2$outboundSchema: z.ZodType<
-  CreateIntegrationStoreDirectHidden2$Outbound,
-  z.ZodTypeDef,
-  CreateIntegrationStoreDirectHidden2
-> = z.object({
-  expr: z.string(),
-});
-
-export function createIntegrationStoreDirectHidden2ToJSON(
-  createIntegrationStoreDirectHidden2: CreateIntegrationStoreDirectHidden2,
-): string {
-  return JSON.stringify(
-    CreateIntegrationStoreDirectHidden2$outboundSchema.parse(
-      createIntegrationStoreDirectHidden2,
-    ),
-  );
-}
-export function createIntegrationStoreDirectHidden2FromJSON(
-  jsonString: string,
-): SafeParseResult<CreateIntegrationStoreDirectHidden2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateIntegrationStoreDirectHidden2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateIntegrationStoreDirectHidden2' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateIntegrationStoreDirectPropertiesHidden$inboundSchema:
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiReadOnly$inboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesHidden,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiReadOnly,
     z.ZodTypeDef,
     unknown
   > = smartUnion([
-    z.lazy(() => CreateIntegrationStoreDirectHidden2$inboundSchema),
+    z.lazy(() =>
+      CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$inboundSchema
+    ),
     types.boolean(),
-    CreateIntegrationStoreDirectHidden3$inboundSchema,
+    CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3$inboundSchema,
   ]);
 /** @internal */
-export type CreateIntegrationStoreDirectPropertiesHidden$Outbound =
-  | CreateIntegrationStoreDirectHidden2$Outbound
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiReadOnly$Outbound =
+  | CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$Outbound
   | boolean
   | string;
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesHidden$outboundSchema:
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiReadOnly$outboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesHidden$Outbound,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiReadOnly$Outbound,
     z.ZodTypeDef,
-    CreateIntegrationStoreDirectPropertiesHidden
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiReadOnly
   > = smartUnion([
-    z.lazy(() => CreateIntegrationStoreDirectHidden2$outboundSchema),
+    z.lazy(() =>
+      CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$outboundSchema
+    ),
     z.boolean(),
-    CreateIntegrationStoreDirectHidden3$outboundSchema,
+    CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3$outboundSchema,
   ]);
 
-export function createIntegrationStoreDirectPropertiesHiddenToJSON(
-  createIntegrationStoreDirectPropertiesHidden:
-    CreateIntegrationStoreDirectPropertiesHidden,
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiReadOnlyToJSON(
+  createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiReadOnly:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiReadOnly,
 ): string {
   return JSON.stringify(
-    CreateIntegrationStoreDirectPropertiesHidden$outboundSchema.parse(
-      createIntegrationStoreDirectPropertiesHidden,
-    ),
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiReadOnly$outboundSchema
+      .parse(
+        createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiReadOnly,
+      ),
   );
 }
-export function createIntegrationStoreDirectPropertiesHiddenFromJSON(
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiReadOnlyFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateIntegrationStoreDirectPropertiesHidden,
+  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiReadOnly,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateIntegrationStoreDirectPropertiesHidden$inboundSchema.parse(
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiReadOnly$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiReadOnly' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3
+  > = z.nativeEnum(
+    CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3,
+  );
+/** @internal */
+export const CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3$outboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3
+  > =
+    CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3$inboundSchema;
+
+/** @internal */
+export const CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    expr: types.string(),
+  });
+/** @internal */
+export type CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$Outbound =
+  {
+    expr: string;
+  };
+
+/** @internal */
+export const CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$outboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$Outbound,
+    z.ZodTypeDef,
+    CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2
+  > = z.object({
+    expr: z.string(),
+  });
+
+export function createIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2ToJSON(
+  createIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2:
+    CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$outboundSchema
+      .parse(
+        createIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2,
+      ),
+  );
+}
+export function createIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiHidden$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiHidden,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    z.lazy(() =>
+      CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$inboundSchema
+    ),
+    types.boolean(),
+    CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3$inboundSchema,
+  ]);
+/** @internal */
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiHidden$Outbound =
+  | CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$Outbound
+  | boolean
+  | string;
+
+/** @internal */
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiHidden$outboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiHidden$Outbound,
+    z.ZodTypeDef,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiHidden
+  > = smartUnion([
+    z.lazy(() =>
+      CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$outboundSchema
+    ),
+    z.boolean(),
+    CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3$outboundSchema,
+  ]);
+
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiHiddenToJSON(
+  createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiHidden:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiHidden,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiHidden$outboundSchema
+      .parse(
+        createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiHidden,
+      ),
+  );
+}
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiHiddenFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiHidden,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiHidden$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiHidden' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3
+  > = z.nativeEnum(
+    CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3,
+  );
+/** @internal */
+export const CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3$outboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3
+  > =
+    CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3$inboundSchema;
+
+/** @internal */
+export const CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    expr: types.string(),
+  });
+/** @internal */
+export type CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$Outbound =
+  {
+    expr: string;
+  };
+
+/** @internal */
+export const CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$outboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$Outbound,
+    z.ZodTypeDef,
+    CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2
+  > = z.object({
+    expr: z.string(),
+  });
+
+export function createIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2ToJSON(
+  createIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2:
+    CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$outboundSchema
+      .parse(
+        createIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2,
+      ),
+  );
+}
+export function createIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiDisabled$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiDisabled,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    z.lazy(() =>
+      CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$inboundSchema
+    ),
+    types.boolean(),
+    CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3$inboundSchema,
+  ]);
+/** @internal */
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiDisabled$Outbound =
+  | CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$Outbound
+  | boolean
+  | string;
+
+/** @internal */
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiDisabled$outboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiDisabled$Outbound,
+    z.ZodTypeDef,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiDisabled
+  > = smartUnion([
+    z.lazy(() =>
+      CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$outboundSchema
+    ),
+    z.boolean(),
+    CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3$outboundSchema,
+  ]);
+
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiDisabledToJSON(
+  createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiDisabled:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiDisabled,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiDisabled$outboundSchema
+      .parse(
+        createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiDisabled,
+      ),
+  );
+}
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiDisabledFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiDisabled,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiDisabled$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiDisabled' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    expr: types.string(),
+  });
+/** @internal */
+export type CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$Outbound =
+  {
+    expr: string;
+  };
+
+/** @internal */
+export const CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$outboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$Outbound,
+    z.ZodTypeDef,
+    CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2
+  > = z.object({
+    expr: z.string(),
+  });
+
+export function createIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2ToJSON(
+  createIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2:
+    CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$outboundSchema
+      .parse(
+        createIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2,
+      ),
+  );
+}
+export function createIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiDescription$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiDescription,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    z.lazy(() =>
+      CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$inboundSchema
+    ),
+    types.string(),
+  ]);
+/** @internal */
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiDescription$Outbound =
+  | CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$Outbound
+  | string;
+
+/** @internal */
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiDescription$outboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiDescription$Outbound,
+    z.ZodTypeDef,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiDescription
+  > = smartUnion([
+    z.lazy(() =>
+      CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$outboundSchema
+    ),
+    z.string(),
+  ]);
+
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiDescriptionToJSON(
+  createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiDescription:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiDescription,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiDescription$outboundSchema
+      .parse(
+        createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiDescription,
+      ),
+  );
+}
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiDescriptionFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiDescription,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiDescription$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiDescription' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiFormattedValue$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiFormattedValue,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    expr: types.string(),
+  });
+/** @internal */
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiFormattedValue$Outbound =
+  {
+    expr: string;
+  };
+
+/** @internal */
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiFormattedValue$outboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiFormattedValue$Outbound,
+    z.ZodTypeDef,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiFormattedValue
+  > = z.object({
+    expr: z.string(),
+  });
+
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiFormattedValueToJSON(
+  createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiFormattedValue:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiFormattedValue,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiFormattedValue$outboundSchema
+      .parse(
+        createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiFormattedValue,
+      ),
+  );
+}
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiFormattedValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiFormattedValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiFormattedValue$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiFormattedValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const PropertiesGitProviders$inboundSchema: z.ZodNativeEnum<
+  typeof PropertiesGitProviders
+> = z.nativeEnum(PropertiesGitProviders);
+/** @internal */
+export const PropertiesGitProviders$outboundSchema: z.ZodNativeEnum<
+  typeof PropertiesGitProviders
+> = PropertiesGitProviders$inboundSchema;
+
+/** @internal */
+export const CreateIntegrationStoreDirectProperties10$inboundSchema: z.ZodType<
+  CreateIntegrationStoreDirectProperties10,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10Type$inboundSchema,
+  "ui:control":
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiControl$inboundSchema,
+  description: types.optional(types.string()),
+  "ui:label": types.optional(types.string()),
+  "ui:read-only": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$inboundSchema
+      ),
+      types.boolean(),
+      CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3$inboundSchema,
+    ]),
+  ),
+  "ui:hidden": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$inboundSchema
+      ),
+      types.boolean(),
+      CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3$inboundSchema,
+    ]),
+  ),
+  "ui:disabled": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$inboundSchema
+      ),
+      types.boolean(),
+      CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3$inboundSchema,
+    ]),
+  ),
+  "ui:description": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$inboundSchema
+      ),
+      types.string(),
+    ]),
+  ),
+  "ui:formatted-value": types.optional(
+    z.lazy(() =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiFormattedValue$inboundSchema
+    ),
+  ),
+  "ui:placeholder": types.optional(types.string()),
+  "git:providers": types.optional(
+    z.array(PropertiesGitProviders$inboundSchema),
+  ),
+}).transform((v) => {
+  return remap$(v, {
+    "ui:control": "uiControl",
+    "ui:label": "uiLabel",
+    "ui:read-only": "uiReadOnly",
+    "ui:hidden": "uiHidden",
+    "ui:disabled": "uiDisabled",
+    "ui:description": "uiDescription",
+    "ui:formatted-value": "uiFormattedValue",
+    "ui:placeholder": "uiPlaceholder",
+    "git:providers": "gitProviders",
+  });
+});
+/** @internal */
+export type CreateIntegrationStoreDirectProperties10$Outbound = {
+  type: string;
+  "ui:control": string;
+  description?: string | undefined;
+  "ui:label"?: string | undefined;
+  "ui:read-only"?:
+    | CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$Outbound
+    | boolean
+    | string
+    | undefined;
+  "ui:hidden"?:
+    | CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$Outbound
+    | boolean
+    | string
+    | undefined;
+  "ui:disabled"?:
+    | CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$Outbound
+    | boolean
+    | string
+    | undefined;
+  "ui:description"?:
+    | CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$Outbound
+    | string
+    | undefined;
+  "ui:formatted-value"?:
+    | CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiFormattedValue$Outbound
+    | undefined;
+  "ui:placeholder"?: string | undefined;
+  "git:providers"?: Array<string> | undefined;
+};
+
+/** @internal */
+export const CreateIntegrationStoreDirectProperties10$outboundSchema: z.ZodType<
+  CreateIntegrationStoreDirectProperties10$Outbound,
+  z.ZodTypeDef,
+  CreateIntegrationStoreDirectProperties10
+> = z.object({
+  type:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10Type$outboundSchema,
+  uiControl:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiControl$outboundSchema,
+  description: z.string().optional(),
+  uiLabel: z.string().optional(),
+  uiReadOnly: smartUnion([
+    z.lazy(() =>
+      CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$outboundSchema
+    ),
+    z.boolean(),
+    CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3$outboundSchema,
+  ]).optional(),
+  uiHidden: smartUnion([
+    z.lazy(() =>
+      CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$outboundSchema
+    ),
+    z.boolean(),
+    CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3$outboundSchema,
+  ]).optional(),
+  uiDisabled: smartUnion([
+    z.lazy(() =>
+      CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$outboundSchema
+    ),
+    z.boolean(),
+    CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties3$outboundSchema,
+  ]).optional(),
+  uiDescription: smartUnion([
+    z.lazy(() =>
+      CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaProperties2$outboundSchema
+    ),
+    z.string(),
+  ]).optional(),
+  uiFormattedValue: z.lazy(() =>
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiFormattedValue$outboundSchema
+  ).optional(),
+  uiPlaceholder: z.string().optional(),
+  gitProviders: z.array(PropertiesGitProviders$outboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    uiControl: "ui:control",
+    uiLabel: "ui:label",
+    uiReadOnly: "ui:read-only",
+    uiHidden: "ui:hidden",
+    uiDisabled: "ui:disabled",
+    uiDescription: "ui:description",
+    uiFormattedValue: "ui:formatted-value",
+    uiPlaceholder: "ui:placeholder",
+    gitProviders: "git:providers",
+  });
+});
+
+export function createIntegrationStoreDirectProperties10ToJSON(
+  createIntegrationStoreDirectProperties10:
+    CreateIntegrationStoreDirectProperties10,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectProperties10$outboundSchema.parse(
+      createIntegrationStoreDirectProperties10,
+    ),
+  );
+}
+export function createIntegrationStoreDirectProperties10FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectProperties10,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectProperties10$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'CreateIntegrationStoreDirectPropertiesHidden' from JSON`,
+    `Failed to parse 'CreateIntegrationStoreDirectProperties10' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaType
+  > = z.nativeEnum(
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaType,
+  );
+/** @internal */
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaType$outboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaType
+  > =
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaType$inboundSchema;
+
+/** @internal */
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiControl$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiControl
+  > = z.nativeEnum(
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiControl,
+  );
+/** @internal */
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiControl$outboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiControl
+  > =
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiControl$inboundSchema;
+
+/** @internal */
+export const CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3
+  > = z.nativeEnum(
+    CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3,
+  );
+/** @internal */
+export const CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3$outboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3
+  > =
+    CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3$inboundSchema;
+
+/** @internal */
+export const CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    expr: types.string(),
+  });
+/** @internal */
+export type CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$Outbound =
+  {
+    expr: string;
+  };
+
+/** @internal */
+export const CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$outboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$Outbound,
+    z.ZodTypeDef,
+    CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2
+  > = z.object({
+    expr: z.string(),
+  });
+
+export function createIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2ToJSON(
+  createIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2:
+    CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$outboundSchema
+      .parse(
+        createIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2,
+      ),
+  );
+}
+export function createIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiReadOnly$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiReadOnly,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    z.lazy(() =>
+      CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$inboundSchema
+    ),
+    types.boolean(),
+    CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3$inboundSchema,
+  ]);
+/** @internal */
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiReadOnly$Outbound =
+  | CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$Outbound
+  | boolean
+  | string;
+
+/** @internal */
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiReadOnly$outboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiReadOnly$Outbound,
+    z.ZodTypeDef,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiReadOnly
+  > = smartUnion([
+    z.lazy(() =>
+      CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$outboundSchema
+    ),
+    z.boolean(),
+    CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3$outboundSchema,
+  ]);
+
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiReadOnlyToJSON(
+  createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiReadOnly:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiReadOnly,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiReadOnly$outboundSchema
+      .parse(
+        createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiReadOnly,
+      ),
+  );
+}
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiReadOnlyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiReadOnly,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiReadOnly$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiReadOnly' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3
+  > = z.nativeEnum(
+    CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3,
+  );
+/** @internal */
+export const CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3$outboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3
+  > =
+    CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3$inboundSchema;
+
+/** @internal */
+export const CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    expr: types.string(),
+  });
+/** @internal */
+export type CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$Outbound =
+  {
+    expr: string;
+  };
+
+/** @internal */
+export const CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$outboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$Outbound,
+    z.ZodTypeDef,
+    CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2
+  > = z.object({
+    expr: z.string(),
+  });
+
+export function createIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2ToJSON(
+  createIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2:
+    CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$outboundSchema
+      .parse(
+        createIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2,
+      ),
+  );
+}
+export function createIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiHidden$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiHidden,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    z.lazy(() =>
+      CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$inboundSchema
+    ),
+    types.boolean(),
+    CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3$inboundSchema,
+  ]);
+/** @internal */
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiHidden$Outbound =
+  | CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$Outbound
+  | boolean
+  | string;
+
+/** @internal */
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiHidden$outboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiHidden$Outbound,
+    z.ZodTypeDef,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiHidden
+  > = smartUnion([
+    z.lazy(() =>
+      CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$outboundSchema
+    ),
+    z.boolean(),
+    CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3$outboundSchema,
+  ]);
+
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiHiddenToJSON(
+  createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiHidden:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiHidden,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiHidden$outboundSchema
+      .parse(
+        createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiHidden,
+      ),
+  );
+}
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiHiddenFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiHidden,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiHidden$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiHidden' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3
+  > = z.nativeEnum(
+    CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3,
+  );
+/** @internal */
+export const CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3$outboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3
+  > =
+    CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3$inboundSchema;
+
+/** @internal */
+export const CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    expr: types.string(),
+  });
+/** @internal */
+export type CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$Outbound =
+  {
+    expr: string;
+  };
+
+/** @internal */
+export const CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$outboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$Outbound,
+    z.ZodTypeDef,
+    CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2
+  > = z.object({
+    expr: z.string(),
+  });
+
+export function createIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2ToJSON(
+  createIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2:
+    CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$outboundSchema
+      .parse(
+        createIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2,
+      ),
+  );
+}
+export function createIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiDisabled$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiDisabled,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    z.lazy(() =>
+      CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$inboundSchema
+    ),
+    types.boolean(),
+    CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3$inboundSchema,
+  ]);
+/** @internal */
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiDisabled$Outbound =
+  | CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$Outbound
+  | boolean
+  | string;
+
+/** @internal */
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiDisabled$outboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiDisabled$Outbound,
+    z.ZodTypeDef,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiDisabled
+  > = smartUnion([
+    z.lazy(() =>
+      CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$outboundSchema
+    ),
+    z.boolean(),
+    CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3$outboundSchema,
+  ]);
+
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiDisabledToJSON(
+  createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiDisabled:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiDisabled,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiDisabled$outboundSchema
+      .parse(
+        createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiDisabled,
+      ),
+  );
+}
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiDisabledFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiDisabled,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiDisabled$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiDisabled' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    expr: types.string(),
+  });
+/** @internal */
+export type CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$Outbound =
+  {
+    expr: string;
+  };
+
+/** @internal */
+export const CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$outboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$Outbound,
+    z.ZodTypeDef,
+    CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2
+  > = z.object({
+    expr: z.string(),
+  });
+
+export function createIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2ToJSON(
+  createIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2:
+    CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$outboundSchema
+      .parse(
+        createIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2,
+      ),
+  );
+}
+export function createIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiDescription$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiDescription,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    z.lazy(() =>
+      CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$inboundSchema
+    ),
+    types.string(),
+  ]);
+/** @internal */
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiDescription$Outbound =
+  | CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$Outbound
+  | string;
+
+/** @internal */
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiDescription$outboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiDescription$Outbound,
+    z.ZodTypeDef,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiDescription
+  > = smartUnion([
+    z.lazy(() =>
+      CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$outboundSchema
+    ),
+    z.string(),
+  ]);
+
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiDescriptionToJSON(
+  createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiDescription:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiDescription,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiDescription$outboundSchema
+      .parse(
+        createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiDescription,
+      ),
+  );
+}
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiDescriptionFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiDescription,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiDescription$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiDescription' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiFormattedValue$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiFormattedValue,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    expr: types.string(),
+  });
+/** @internal */
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiFormattedValue$Outbound =
+  {
+    expr: string;
+  };
+
+/** @internal */
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiFormattedValue$outboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiFormattedValue$Outbound,
+    z.ZodTypeDef,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiFormattedValue
+  > = z.object({
+    expr: z.string(),
+  });
+
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiFormattedValueToJSON(
+  createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiFormattedValue:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiFormattedValue,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiFormattedValue$outboundSchema
+      .parse(
+        createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiFormattedValue,
+      ),
+  );
+}
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiFormattedValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiFormattedValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiFormattedValue$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiFormattedValue' from JSON`,
   );
 }
 
@@ -3032,35 +4507,104 @@ export const CreateIntegrationStoreDirectProperties9$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  value: types.string(),
-  disabled: types.optional(
+  type:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaType$inboundSchema,
+  "ui:control":
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiControl$inboundSchema,
+  enum: types.optional(z.array(types.string())),
+  maxLength: types.optional(types.number()),
+  minLength: types.optional(types.number()),
+  pattern: types.optional(types.string()),
+  description: types.optional(types.string()),
+  default: types.optional(types.string()),
+  "ui:label": types.optional(types.string()),
+  "ui:read-only": types.optional(
     smartUnion([
-      z.lazy(() => CreateIntegrationStoreDirectDisabled2$inboundSchema),
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$inboundSchema
+      ),
       types.boolean(),
-      CreateIntegrationStoreDirectDisabled3$inboundSchema,
+      CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3$inboundSchema,
     ]),
   ),
-  hidden: types.optional(
+  "ui:hidden": types.optional(
     smartUnion([
-      z.lazy(() => CreateIntegrationStoreDirectHidden2$inboundSchema),
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$inboundSchema
+      ),
       types.boolean(),
-      CreateIntegrationStoreDirectHidden3$inboundSchema,
+      CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3$inboundSchema,
     ]),
   ),
+  "ui:disabled": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$inboundSchema
+      ),
+      types.boolean(),
+      CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3$inboundSchema,
+    ]),
+  ),
+  "ui:description": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$inboundSchema
+      ),
+      types.string(),
+    ]),
+  ),
+  "ui:formatted-value": types.optional(
+    z.lazy(() =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiFormattedValue$inboundSchema
+    ),
+  ),
+  "ui:placeholder": types.optional(types.string()),
+}).transform((v) => {
+  return remap$(v, {
+    "ui:control": "uiControl",
+    "ui:label": "uiLabel",
+    "ui:read-only": "uiReadOnly",
+    "ui:hidden": "uiHidden",
+    "ui:disabled": "uiDisabled",
+    "ui:description": "uiDescription",
+    "ui:formatted-value": "uiFormattedValue",
+    "ui:placeholder": "uiPlaceholder",
+  });
 });
 /** @internal */
 export type CreateIntegrationStoreDirectProperties9$Outbound = {
-  value: string;
-  disabled?:
-    | CreateIntegrationStoreDirectDisabled2$Outbound
+  type: string;
+  "ui:control": string;
+  enum?: Array<string> | undefined;
+  maxLength?: number | undefined;
+  minLength?: number | undefined;
+  pattern?: string | undefined;
+  description?: string | undefined;
+  default?: string | undefined;
+  "ui:label"?: string | undefined;
+  "ui:read-only"?:
+    | CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$Outbound
     | boolean
     | string
     | undefined;
-  hidden?:
-    | CreateIntegrationStoreDirectHidden2$Outbound
+  "ui:hidden"?:
+    | CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$Outbound
     | boolean
     | string
     | undefined;
+  "ui:disabled"?:
+    | CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$Outbound
+    | boolean
+    | string
+    | undefined;
+  "ui:description"?:
+    | CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$Outbound
+    | string
+    | undefined;
+  "ui:formatted-value"?:
+    | CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiFormattedValue$Outbound
+    | undefined;
+  "ui:placeholder"?: string | undefined;
 };
 
 /** @internal */
@@ -3069,17 +4613,59 @@ export const CreateIntegrationStoreDirectProperties9$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateIntegrationStoreDirectProperties9
 > = z.object({
-  value: z.string(),
-  disabled: smartUnion([
-    z.lazy(() => CreateIntegrationStoreDirectDisabled2$outboundSchema),
+  type:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaType$outboundSchema,
+  uiControl:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiControl$outboundSchema,
+  enum: z.array(z.string()).optional(),
+  maxLength: z.number().optional(),
+  minLength: z.number().optional(),
+  pattern: z.string().optional(),
+  description: z.string().optional(),
+  default: z.string().optional(),
+  uiLabel: z.string().optional(),
+  uiReadOnly: smartUnion([
+    z.lazy(() =>
+      CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$outboundSchema
+    ),
     z.boolean(),
-    CreateIntegrationStoreDirectDisabled3$outboundSchema,
+    CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3$outboundSchema,
   ]).optional(),
-  hidden: smartUnion([
-    z.lazy(() => CreateIntegrationStoreDirectHidden2$outboundSchema),
+  uiHidden: smartUnion([
+    z.lazy(() =>
+      CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$outboundSchema
+    ),
     z.boolean(),
-    CreateIntegrationStoreDirectHidden3$outboundSchema,
+    CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3$outboundSchema,
   ]).optional(),
+  uiDisabled: smartUnion([
+    z.lazy(() =>
+      CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$outboundSchema
+    ),
+    z.boolean(),
+    CreateIntegrationStoreDirectUiDisabledIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema3$outboundSchema,
+  ]).optional(),
+  uiDescription: smartUnion([
+    z.lazy(() =>
+      CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema2$outboundSchema
+    ),
+    z.string(),
+  ]).optional(),
+  uiFormattedValue: z.lazy(() =>
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaUiFormattedValue$outboundSchema
+  ).optional(),
+  uiPlaceholder: z.string().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    uiControl: "ui:control",
+    uiLabel: "ui:label",
+    uiReadOnly: "ui:read-only",
+    uiHidden: "ui:hidden",
+    uiDisabled: "ui:disabled",
+    uiDescription: "ui:description",
+    uiFormattedValue: "ui:formatted-value",
+    uiPlaceholder: "ui:placeholder",
+  });
 });
 
 export function createIntegrationStoreDirectProperties9ToJSON(
@@ -3123,6 +4709,89 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductType$inboundSchema;
 
 /** @internal */
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8Type$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8Type
+  > = z.nativeEnum(
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8Type,
+  );
+/** @internal */
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8Type$outboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8Type
+  > =
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8Type$inboundSchema;
+
+/** @internal */
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponseItems$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponseItems,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type:
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8Type$inboundSchema,
+    description: types.optional(types.string()),
+    minLength: types.optional(types.number()),
+    maxLength: types.optional(types.number()),
+    pattern: types.optional(types.string()),
+    default: types.optional(types.string()),
+    enum: types.optional(z.array(types.string())),
+  });
+/** @internal */
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponseItems$Outbound =
+  {
+    type: string;
+    description?: string | undefined;
+    minLength?: number | undefined;
+    maxLength?: number | undefined;
+    pattern?: string | undefined;
+    default?: string | undefined;
+    enum?: Array<string> | undefined;
+  };
+
+/** @internal */
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponseItems$outboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponseItems$Outbound,
+    z.ZodTypeDef,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponseItems
+  > = z.object({
+    type:
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema8Type$outboundSchema,
+    description: z.string().optional(),
+    minLength: z.number().optional(),
+    maxLength: z.number().optional(),
+    pattern: z.string().optional(),
+    default: z.string().optional(),
+    enum: z.array(z.string()).optional(),
+  });
+
+export function createIntegrationStoreDirectPropertiesIntegrationsResponseItemsToJSON(
+  createIntegrationStoreDirectPropertiesIntegrationsResponseItems:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponseItems,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponseItems$outboundSchema
+      .parse(createIntegrationStoreDirectPropertiesIntegrationsResponseItems),
+  );
+}
+export function createIntegrationStoreDirectPropertiesIntegrationsResponseItemsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectPropertiesIntegrationsResponseItems,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponseItems$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponseItems' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductUiControl$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductUiControl
@@ -3135,6 +4804,748 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     typeof CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductUiControl
   > =
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductUiControl$inboundSchema;
+
+/** @internal */
+export const CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody3
+  > = z.nativeEnum(
+    CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody3,
+  );
+/** @internal */
+export const CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody3$outboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody3
+  > =
+    CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema;
+
+/** @internal */
+export const CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody2,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    expr: types.string(),
+  });
+/** @internal */
+export type CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody2$Outbound =
+  {
+    expr: string;
+  };
+
+/** @internal */
+export const CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody2$Outbound,
+    z.ZodTypeDef,
+    CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody2
+  > = z.object({
+    expr: z.string(),
+  });
+
+export function createIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody2ToJSON(
+  createIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody2:
+    CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody2,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema
+      .parse(
+        createIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody2,
+      ),
+  );
+}
+export function createIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody2' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateIntegrationStoreDirectUiOptionsIntegrationsResponse200Disabled$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectUiOptionsIntegrationsResponse200Disabled,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    z.lazy(() =>
+      CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
+    ),
+    types.boolean(),
+    CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
+  ]);
+/** @internal */
+export type CreateIntegrationStoreDirectUiOptionsIntegrationsResponse200Disabled$Outbound =
+  | CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody2$Outbound
+  | boolean
+  | string;
+
+/** @internal */
+export const CreateIntegrationStoreDirectUiOptionsIntegrationsResponse200Disabled$outboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectUiOptionsIntegrationsResponse200Disabled$Outbound,
+    z.ZodTypeDef,
+    CreateIntegrationStoreDirectUiOptionsIntegrationsResponse200Disabled
+  > = smartUnion([
+    z.lazy(() =>
+      CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema
+    ),
+    z.boolean(),
+    CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody3$outboundSchema,
+  ]);
+
+export function createIntegrationStoreDirectUiOptionsIntegrationsResponse200DisabledToJSON(
+  createIntegrationStoreDirectUiOptionsIntegrationsResponse200Disabled:
+    CreateIntegrationStoreDirectUiOptionsIntegrationsResponse200Disabled,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectUiOptionsIntegrationsResponse200Disabled$outboundSchema
+      .parse(
+        createIntegrationStoreDirectUiOptionsIntegrationsResponse200Disabled,
+      ),
+  );
+}
+export function createIntegrationStoreDirectUiOptionsIntegrationsResponse200DisabledFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectUiOptionsIntegrationsResponse200Disabled,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectUiOptionsIntegrationsResponse200Disabled$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectUiOptionsIntegrationsResponse200Disabled' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody3
+  > = z.nativeEnum(
+    CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody3,
+  );
+/** @internal */
+export const CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody3$outboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody3
+  > =
+    CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema;
+
+/** @internal */
+export const CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody2,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    expr: types.string(),
+  });
+/** @internal */
+export type CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody2$Outbound =
+  {
+    expr: string;
+  };
+
+/** @internal */
+export const CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody2$Outbound,
+    z.ZodTypeDef,
+    CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody2
+  > = z.object({
+    expr: z.string(),
+  });
+
+export function createIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody2ToJSON(
+  createIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody2:
+    CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody2,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema
+      .parse(
+        createIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody2,
+      ),
+  );
+}
+export function createIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody2' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateIntegrationStoreDirectUiOptionsIntegrationsResponse200Hidden$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectUiOptionsIntegrationsResponse200Hidden,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    z.lazy(() =>
+      CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
+    ),
+    types.boolean(),
+    CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
+  ]);
+/** @internal */
+export type CreateIntegrationStoreDirectUiOptionsIntegrationsResponse200Hidden$Outbound =
+  | CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody2$Outbound
+  | boolean
+  | string;
+
+/** @internal */
+export const CreateIntegrationStoreDirectUiOptionsIntegrationsResponse200Hidden$outboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectUiOptionsIntegrationsResponse200Hidden$Outbound,
+    z.ZodTypeDef,
+    CreateIntegrationStoreDirectUiOptionsIntegrationsResponse200Hidden
+  > = smartUnion([
+    z.lazy(() =>
+      CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema
+    ),
+    z.boolean(),
+    CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody3$outboundSchema,
+  ]);
+
+export function createIntegrationStoreDirectUiOptionsIntegrationsResponse200HiddenToJSON(
+  createIntegrationStoreDirectUiOptionsIntegrationsResponse200Hidden:
+    CreateIntegrationStoreDirectUiOptionsIntegrationsResponse200Hidden,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectUiOptionsIntegrationsResponse200Hidden$outboundSchema
+      .parse(
+        createIntegrationStoreDirectUiOptionsIntegrationsResponse200Hidden,
+      ),
+  );
+}
+export function createIntegrationStoreDirectUiOptionsIntegrationsResponse200HiddenFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectUiOptionsIntegrationsResponse200Hidden,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectUiOptionsIntegrationsResponse200Hidden$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectUiOptionsIntegrationsResponse200Hidden' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateIntegrationStoreDirectUiOptionsIntegrations3$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectUiOptionsIntegrations3,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    value: types.string(),
+    disabled: types.optional(
+      smartUnion([
+        z.lazy(() =>
+          CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
+        ),
+        types.boolean(),
+        CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
+      ]),
+    ),
+    hidden: types.optional(
+      smartUnion([
+        z.lazy(() =>
+          CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody2$inboundSchema
+        ),
+        types.boolean(),
+        CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody3$inboundSchema,
+      ]),
+    ),
+  });
+/** @internal */
+export type CreateIntegrationStoreDirectUiOptionsIntegrations3$Outbound = {
+  value: string;
+  disabled?:
+    | CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody2$Outbound
+    | boolean
+    | string
+    | undefined;
+  hidden?:
+    | CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody2$Outbound
+    | boolean
+    | string
+    | undefined;
+};
+
+/** @internal */
+export const CreateIntegrationStoreDirectUiOptionsIntegrations3$outboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectUiOptionsIntegrations3$Outbound,
+    z.ZodTypeDef,
+    CreateIntegrationStoreDirectUiOptionsIntegrations3
+  > = z.object({
+    value: z.string(),
+    disabled: smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema
+      ),
+      z.boolean(),
+      CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSONResponseBody3$outboundSchema,
+    ]).optional(),
+    hidden: smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody2$outboundSchema
+      ),
+      z.boolean(),
+      CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody3$outboundSchema,
+    ]).optional(),
+  });
+
+export function createIntegrationStoreDirectUiOptionsIntegrations3ToJSON(
+  createIntegrationStoreDirectUiOptionsIntegrations3:
+    CreateIntegrationStoreDirectUiOptionsIntegrations3,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectUiOptionsIntegrations3$outboundSchema.parse(
+      createIntegrationStoreDirectUiOptionsIntegrations3,
+    ),
+  );
+}
+export function createIntegrationStoreDirectUiOptionsIntegrations3FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectUiOptionsIntegrations3,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectUiOptionsIntegrations3$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateIntegrationStoreDirectUiOptionsIntegrations3' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3
+  > = z.nativeEnum(
+    CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3,
+  );
+/** @internal */
+export const CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3$outboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3
+  > =
+    CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3$inboundSchema;
+
+/** @internal */
+export const CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    expr: types.string(),
+  });
+/** @internal */
+export type CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2$Outbound =
+  {
+    expr: string;
+  };
+
+/** @internal */
+export const CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2$outboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2$Outbound,
+    z.ZodTypeDef,
+    CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2
+  > = z.object({
+    expr: z.string(),
+  });
+
+export function createIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSON2ToJSON(
+  createIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2:
+    CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2$outboundSchema
+      .parse(
+        createIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2,
+      ),
+  );
+}
+export function createIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSON2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateIntegrationStoreDirectUiOptionsIntegrationsResponseDisabled$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectUiOptionsIntegrationsResponseDisabled,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    z.lazy(() =>
+      CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2$inboundSchema
+    ),
+    types.boolean(),
+    CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3$inboundSchema,
+  ]);
+/** @internal */
+export type CreateIntegrationStoreDirectUiOptionsIntegrationsResponseDisabled$Outbound =
+  | CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2$Outbound
+  | boolean
+  | string;
+
+/** @internal */
+export const CreateIntegrationStoreDirectUiOptionsIntegrationsResponseDisabled$outboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectUiOptionsIntegrationsResponseDisabled$Outbound,
+    z.ZodTypeDef,
+    CreateIntegrationStoreDirectUiOptionsIntegrationsResponseDisabled
+  > = smartUnion([
+    z.lazy(() =>
+      CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2$outboundSchema
+    ),
+    z.boolean(),
+    CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3$outboundSchema,
+  ]);
+
+export function createIntegrationStoreDirectUiOptionsIntegrationsResponseDisabledToJSON(
+  createIntegrationStoreDirectUiOptionsIntegrationsResponseDisabled:
+    CreateIntegrationStoreDirectUiOptionsIntegrationsResponseDisabled,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectUiOptionsIntegrationsResponseDisabled$outboundSchema
+      .parse(createIntegrationStoreDirectUiOptionsIntegrationsResponseDisabled),
+  );
+}
+export function createIntegrationStoreDirectUiOptionsIntegrationsResponseDisabledFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectUiOptionsIntegrationsResponseDisabled,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectUiOptionsIntegrationsResponseDisabled$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectUiOptionsIntegrationsResponseDisabled' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3
+  > = z.nativeEnum(
+    CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3,
+  );
+/** @internal */
+export const CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3$outboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3
+  > =
+    CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3$inboundSchema;
+
+/** @internal */
+export const CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    expr: types.string(),
+  });
+/** @internal */
+export type CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2$Outbound =
+  {
+    expr: string;
+  };
+
+/** @internal */
+export const CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2$outboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2$Outbound,
+    z.ZodTypeDef,
+    CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2
+  > = z.object({
+    expr: z.string(),
+  });
+
+export function createIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSON2ToJSON(
+  createIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2:
+    CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2$outboundSchema
+      .parse(
+        createIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2,
+      ),
+  );
+}
+export function createIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSON2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateIntegrationStoreDirectUiOptionsIntegrationsResponseHidden$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectUiOptionsIntegrationsResponseHidden,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    z.lazy(() =>
+      CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2$inboundSchema
+    ),
+    types.boolean(),
+    CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3$inboundSchema,
+  ]);
+/** @internal */
+export type CreateIntegrationStoreDirectUiOptionsIntegrationsResponseHidden$Outbound =
+  | CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2$Outbound
+  | boolean
+  | string;
+
+/** @internal */
+export const CreateIntegrationStoreDirectUiOptionsIntegrationsResponseHidden$outboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectUiOptionsIntegrationsResponseHidden$Outbound,
+    z.ZodTypeDef,
+    CreateIntegrationStoreDirectUiOptionsIntegrationsResponseHidden
+  > = smartUnion([
+    z.lazy(() =>
+      CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2$outboundSchema
+    ),
+    z.boolean(),
+    CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3$outboundSchema,
+  ]);
+
+export function createIntegrationStoreDirectUiOptionsIntegrationsResponseHiddenToJSON(
+  createIntegrationStoreDirectUiOptionsIntegrationsResponseHidden:
+    CreateIntegrationStoreDirectUiOptionsIntegrationsResponseHidden,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectUiOptionsIntegrationsResponseHidden$outboundSchema
+      .parse(createIntegrationStoreDirectUiOptionsIntegrationsResponseHidden),
+  );
+}
+export function createIntegrationStoreDirectUiOptionsIntegrationsResponseHiddenFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectUiOptionsIntegrationsResponseHidden,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectUiOptionsIntegrationsResponseHidden$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectUiOptionsIntegrationsResponseHidden' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateIntegrationStoreDirectUiOptionsIntegrations1$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectUiOptionsIntegrations1,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    value: types.string(),
+    label: types.string(),
+    disabled: types.optional(
+      smartUnion([
+        z.lazy(() =>
+          CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2$inboundSchema
+        ),
+        types.boolean(),
+        CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3$inboundSchema,
+      ]),
+    ),
+    hidden: types.optional(
+      smartUnion([
+        z.lazy(() =>
+          CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2$inboundSchema
+        ),
+        types.boolean(),
+        CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3$inboundSchema,
+      ]),
+    ),
+  });
+/** @internal */
+export type CreateIntegrationStoreDirectUiOptionsIntegrations1$Outbound = {
+  value: string;
+  label: string;
+  disabled?:
+    | CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2$Outbound
+    | boolean
+    | string
+    | undefined;
+  hidden?:
+    | CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2$Outbound
+    | boolean
+    | string
+    | undefined;
+};
+
+/** @internal */
+export const CreateIntegrationStoreDirectUiOptionsIntegrations1$outboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectUiOptionsIntegrations1$Outbound,
+    z.ZodTypeDef,
+    CreateIntegrationStoreDirectUiOptionsIntegrations1
+  > = z.object({
+    value: z.string(),
+    label: z.string(),
+    disabled: smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2$outboundSchema
+      ),
+      z.boolean(),
+      CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3$outboundSchema,
+    ]).optional(),
+    hidden: smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2$outboundSchema
+      ),
+      z.boolean(),
+      CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3$outboundSchema,
+    ]).optional(),
+  });
+
+export function createIntegrationStoreDirectUiOptionsIntegrations1ToJSON(
+  createIntegrationStoreDirectUiOptionsIntegrations1:
+    CreateIntegrationStoreDirectUiOptionsIntegrations1,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectUiOptionsIntegrations1$outboundSchema.parse(
+      createIntegrationStoreDirectUiOptionsIntegrations1,
+    ),
+  );
+}
+export function createIntegrationStoreDirectUiOptionsIntegrations1FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectUiOptionsIntegrations1,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectUiOptionsIntegrations1$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateIntegrationStoreDirectUiOptionsIntegrations1' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiOptions$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiOptions,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    z.lazy(() =>
+      CreateIntegrationStoreDirectUiOptionsIntegrations1$inboundSchema
+    ),
+    z.lazy(() =>
+      CreateIntegrationStoreDirectUiOptionsIntegrations3$inboundSchema
+    ),
+    types.string(),
+  ]);
+/** @internal */
+export type CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiOptions$Outbound =
+  | CreateIntegrationStoreDirectUiOptionsIntegrations1$Outbound
+  | CreateIntegrationStoreDirectUiOptionsIntegrations3$Outbound
+  | string;
+
+/** @internal */
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiOptions$outboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiOptions$Outbound,
+    z.ZodTypeDef,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiOptions
+  > = smartUnion([
+    z.lazy(() =>
+      CreateIntegrationStoreDirectUiOptionsIntegrations1$outboundSchema
+    ),
+    z.lazy(() =>
+      CreateIntegrationStoreDirectUiOptionsIntegrations3$outboundSchema
+    ),
+    z.string(),
+  ]);
+
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200UiOptionsToJSON(
+  createIntegrationStoreDirectPropertiesIntegrationsResponse200UiOptions:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiOptions,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiOptions$outboundSchema
+      .parse(
+        createIntegrationStoreDirectPropertiesIntegrationsResponse200UiOptions,
+      ),
+  );
+}
+export function createIntegrationStoreDirectPropertiesIntegrationsResponse200UiOptionsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiOptions,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiOptions$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponse200UiOptions' from JSON`,
+  );
+}
 
 /** @internal */
 export const CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct3$inboundSchema:
@@ -3674,14 +6085,25 @@ export const CreateIntegrationStoreDirectProperties8$inboundSchema: z.ZodType<
 > = z.object({
   type:
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductType$inboundSchema,
+  items: z.lazy(() =>
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponseItems$inboundSchema
+  ),
   "ui:control":
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductUiControl$inboundSchema,
-  enum: types.optional(z.array(types.string())),
-  maxLength: types.optional(types.number()),
-  minLength: types.optional(types.number()),
-  pattern: types.optional(types.string()),
+  "ui:options": z.array(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiOptionsIntegrations1$inboundSchema
+      ),
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiOptionsIntegrations3$inboundSchema
+      ),
+      types.string(),
+    ]),
+  ),
+  maxItems: types.optional(types.number()),
+  minItems: types.optional(types.number()),
   description: types.optional(types.string()),
-  default: types.optional(types.string()),
   "ui:label": types.optional(types.string()),
   "ui:read-only": types.optional(
     smartUnion([
@@ -3724,9 +6146,12 @@ export const CreateIntegrationStoreDirectProperties8$inboundSchema: z.ZodType<
     ),
   ),
   "ui:placeholder": types.optional(types.string()),
+  default: types.optional(z.array(types.string())),
+  example: types.optional(z.array(types.string())),
 }).transform((v) => {
   return remap$(v, {
     "ui:control": "uiControl",
+    "ui:options": "uiOptions",
     "ui:label": "uiLabel",
     "ui:read-only": "uiReadOnly",
     "ui:hidden": "uiHidden",
@@ -3739,13 +6164,17 @@ export const CreateIntegrationStoreDirectProperties8$inboundSchema: z.ZodType<
 /** @internal */
 export type CreateIntegrationStoreDirectProperties8$Outbound = {
   type: string;
+  items:
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponseItems$Outbound;
   "ui:control": string;
-  enum?: Array<string> | undefined;
-  maxLength?: number | undefined;
-  minLength?: number | undefined;
-  pattern?: string | undefined;
+  "ui:options": Array<
+    | CreateIntegrationStoreDirectUiOptionsIntegrations1$Outbound
+    | CreateIntegrationStoreDirectUiOptionsIntegrations3$Outbound
+    | string
+  >;
+  maxItems?: number | undefined;
+  minItems?: number | undefined;
   description?: string | undefined;
-  default?: string | undefined;
   "ui:label"?: string | undefined;
   "ui:read-only"?:
     | CreateIntegrationStoreDirectUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyStoreProduct2$Outbound
@@ -3770,6 +6199,8 @@ export type CreateIntegrationStoreDirectProperties8$Outbound = {
     | CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductUiFormattedValue$Outbound
     | undefined;
   "ui:placeholder"?: string | undefined;
+  default?: Array<string> | undefined;
+  example?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -3780,14 +6211,25 @@ export const CreateIntegrationStoreDirectProperties8$outboundSchema: z.ZodType<
 > = z.object({
   type:
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductType$outboundSchema,
+  items: z.lazy(() =>
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponseItems$outboundSchema
+  ),
   uiControl:
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductUiControl$outboundSchema,
-  enum: z.array(z.string()).optional(),
-  maxLength: z.number().optional(),
-  minLength: z.number().optional(),
-  pattern: z.string().optional(),
+  uiOptions: z.array(
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiOptionsIntegrations1$outboundSchema
+      ),
+      z.lazy(() =>
+        CreateIntegrationStoreDirectUiOptionsIntegrations3$outboundSchema
+      ),
+      z.string(),
+    ]),
+  ),
+  maxItems: z.number().optional(),
+  minItems: z.number().optional(),
   description: z.string().optional(),
-  default: z.string().optional(),
   uiLabel: z.string().optional(),
   uiReadOnly: smartUnion([
     z.lazy(() =>
@@ -3820,9 +6262,12 @@ export const CreateIntegrationStoreDirectProperties8$outboundSchema: z.ZodType<
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductUiFormattedValue$outboundSchema
   ).optional(),
   uiPlaceholder: z.string().optional(),
+  default: z.array(z.string()).optional(),
+  example: z.array(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     uiControl: "ui:control",
+    uiOptions: "ui:options",
     uiLabel: "ui:label",
     uiReadOnly: "ui:read-only",
     uiHidden: "ui:hidden",
@@ -4210,67 +6655,62 @@ export function createIntegrationStoreDirectUiOptions3FromJSON(
 }
 
 /** @internal */
-export const CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3$inboundSchema:
+export const CreateIntegrationStoreDirectDisabledIntegrationsResponse3$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3
-  > = z.nativeEnum(
-    CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3,
-  );
+    typeof CreateIntegrationStoreDirectDisabledIntegrationsResponse3
+  > = z.nativeEnum(CreateIntegrationStoreDirectDisabledIntegrationsResponse3);
 /** @internal */
-export const CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3$outboundSchema:
+export const CreateIntegrationStoreDirectDisabledIntegrationsResponse3$outboundSchema:
   z.ZodNativeEnum<
-    typeof CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3
-  > =
-    CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3$inboundSchema;
+    typeof CreateIntegrationStoreDirectDisabledIntegrationsResponse3
+  > = CreateIntegrationStoreDirectDisabledIntegrationsResponse3$inboundSchema;
 
 /** @internal */
-export const CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2$inboundSchema:
+export const CreateIntegrationStoreDirectDisabledIntegrationsResponse2$inboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2,
+    CreateIntegrationStoreDirectDisabledIntegrationsResponse2,
     z.ZodTypeDef,
     unknown
   > = z.object({
     expr: types.string(),
   });
 /** @internal */
-export type CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2$Outbound =
+export type CreateIntegrationStoreDirectDisabledIntegrationsResponse2$Outbound =
   {
     expr: string;
   };
 
 /** @internal */
-export const CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2$outboundSchema:
+export const CreateIntegrationStoreDirectDisabledIntegrationsResponse2$outboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2$Outbound,
+    CreateIntegrationStoreDirectDisabledIntegrationsResponse2$Outbound,
     z.ZodTypeDef,
-    CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2
+    CreateIntegrationStoreDirectDisabledIntegrationsResponse2
   > = z.object({
     expr: z.string(),
   });
 
-export function createIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSON2ToJSON(
-  createIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2:
-    CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2,
+export function createIntegrationStoreDirectDisabledIntegrationsResponse2ToJSON(
+  createIntegrationStoreDirectDisabledIntegrationsResponse2:
+    CreateIntegrationStoreDirectDisabledIntegrationsResponse2,
 ): string {
   return JSON.stringify(
-    CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2$outboundSchema
-      .parse(
-        createIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2,
-      ),
+    CreateIntegrationStoreDirectDisabledIntegrationsResponse2$outboundSchema
+      .parse(createIntegrationStoreDirectDisabledIntegrationsResponse2),
   );
 }
-export function createIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJSON2FromJSON(
+export function createIntegrationStoreDirectDisabledIntegrationsResponse2FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2,
+  CreateIntegrationStoreDirectDisabledIntegrationsResponse2,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2$inboundSchema
+      CreateIntegrationStoreDirectDisabledIntegrationsResponse2$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2' from JSON`,
+    `Failed to parse 'CreateIntegrationStoreDirectDisabledIntegrationsResponse2' from JSON`,
   );
 }
 
@@ -4282,14 +6722,14 @@ export const CreateIntegrationStoreDirectUiOptionsDisabled$inboundSchema:
     unknown
   > = smartUnion([
     z.lazy(() =>
-      CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2$inboundSchema
+      CreateIntegrationStoreDirectDisabledIntegrationsResponse2$inboundSchema
     ),
     types.boolean(),
-    CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3$inboundSchema,
+    CreateIntegrationStoreDirectDisabledIntegrationsResponse3$inboundSchema,
   ]);
 /** @internal */
 export type CreateIntegrationStoreDirectUiOptionsDisabled$Outbound =
-  | CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2$Outbound
+  | CreateIntegrationStoreDirectDisabledIntegrationsResponse2$Outbound
   | boolean
   | string;
 
@@ -4301,10 +6741,10 @@ export const CreateIntegrationStoreDirectUiOptionsDisabled$outboundSchema:
     CreateIntegrationStoreDirectUiOptionsDisabled
   > = smartUnion([
     z.lazy(() =>
-      CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2$outboundSchema
+      CreateIntegrationStoreDirectDisabledIntegrationsResponse2$outboundSchema
     ),
     z.boolean(),
-    CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3$outboundSchema,
+    CreateIntegrationStoreDirectDisabledIntegrationsResponse3$outboundSchema,
   ]);
 
 export function createIntegrationStoreDirectUiOptionsDisabledToJSON(
@@ -4334,67 +6774,61 @@ export function createIntegrationStoreDirectUiOptionsDisabledFromJSON(
 }
 
 /** @internal */
-export const CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3$inboundSchema:
+export const CreateIntegrationStoreDirectHiddenIntegrationsResponse3$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3
-  > = z.nativeEnum(
-    CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3,
-  );
+    typeof CreateIntegrationStoreDirectHiddenIntegrationsResponse3
+  > = z.nativeEnum(CreateIntegrationStoreDirectHiddenIntegrationsResponse3);
 /** @internal */
-export const CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3$outboundSchema:
+export const CreateIntegrationStoreDirectHiddenIntegrationsResponse3$outboundSchema:
   z.ZodNativeEnum<
-    typeof CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3
-  > =
-    CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3$inboundSchema;
+    typeof CreateIntegrationStoreDirectHiddenIntegrationsResponse3
+  > = CreateIntegrationStoreDirectHiddenIntegrationsResponse3$inboundSchema;
 
 /** @internal */
-export const CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2$inboundSchema:
+export const CreateIntegrationStoreDirectHiddenIntegrationsResponse2$inboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2,
+    CreateIntegrationStoreDirectHiddenIntegrationsResponse2,
     z.ZodTypeDef,
     unknown
   > = z.object({
     expr: types.string(),
   });
 /** @internal */
-export type CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2$Outbound =
-  {
-    expr: string;
-  };
+export type CreateIntegrationStoreDirectHiddenIntegrationsResponse2$Outbound = {
+  expr: string;
+};
 
 /** @internal */
-export const CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2$outboundSchema:
+export const CreateIntegrationStoreDirectHiddenIntegrationsResponse2$outboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2$Outbound,
+    CreateIntegrationStoreDirectHiddenIntegrationsResponse2$Outbound,
     z.ZodTypeDef,
-    CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2
+    CreateIntegrationStoreDirectHiddenIntegrationsResponse2
   > = z.object({
     expr: z.string(),
   });
 
-export function createIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSON2ToJSON(
-  createIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2:
-    CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2,
+export function createIntegrationStoreDirectHiddenIntegrationsResponse2ToJSON(
+  createIntegrationStoreDirectHiddenIntegrationsResponse2:
+    CreateIntegrationStoreDirectHiddenIntegrationsResponse2,
 ): string {
   return JSON.stringify(
-    CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2$outboundSchema
-      .parse(
-        createIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2,
-      ),
+    CreateIntegrationStoreDirectHiddenIntegrationsResponse2$outboundSchema
+      .parse(createIntegrationStoreDirectHiddenIntegrationsResponse2),
   );
 }
-export function createIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSON2FromJSON(
+export function createIntegrationStoreDirectHiddenIntegrationsResponse2FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2,
+  CreateIntegrationStoreDirectHiddenIntegrationsResponse2,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2$inboundSchema
+      CreateIntegrationStoreDirectHiddenIntegrationsResponse2$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2' from JSON`,
+    `Failed to parse 'CreateIntegrationStoreDirectHiddenIntegrationsResponse2' from JSON`,
   );
 }
 
@@ -4406,14 +6840,14 @@ export const CreateIntegrationStoreDirectUiOptionsHidden$inboundSchema:
     unknown
   > = smartUnion([
     z.lazy(() =>
-      CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2$inboundSchema
+      CreateIntegrationStoreDirectHiddenIntegrationsResponse2$inboundSchema
     ),
     types.boolean(),
-    CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3$inboundSchema,
+    CreateIntegrationStoreDirectHiddenIntegrationsResponse3$inboundSchema,
   ]);
 /** @internal */
 export type CreateIntegrationStoreDirectUiOptionsHidden$Outbound =
-  | CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2$Outbound
+  | CreateIntegrationStoreDirectHiddenIntegrationsResponse2$Outbound
   | boolean
   | string;
 
@@ -4425,10 +6859,10 @@ export const CreateIntegrationStoreDirectUiOptionsHidden$outboundSchema:
     CreateIntegrationStoreDirectUiOptionsHidden
   > = smartUnion([
     z.lazy(() =>
-      CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2$outboundSchema
+      CreateIntegrationStoreDirectHiddenIntegrationsResponse2$outboundSchema
     ),
     z.boolean(),
-    CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3$outboundSchema,
+    CreateIntegrationStoreDirectHiddenIntegrationsResponse3$outboundSchema,
   ]);
 
 export function createIntegrationStoreDirectUiOptionsHiddenToJSON(
@@ -4468,19 +6902,19 @@ export const CreateIntegrationStoreDirectUiOptions1$inboundSchema: z.ZodType<
   disabled: types.optional(
     smartUnion([
       z.lazy(() =>
-        CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2$inboundSchema
+        CreateIntegrationStoreDirectDisabledIntegrationsResponse2$inboundSchema
       ),
       types.boolean(),
-      CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3$inboundSchema,
+      CreateIntegrationStoreDirectDisabledIntegrationsResponse3$inboundSchema,
     ]),
   ),
   hidden: types.optional(
     smartUnion([
       z.lazy(() =>
-        CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2$inboundSchema
+        CreateIntegrationStoreDirectHiddenIntegrationsResponse2$inboundSchema
       ),
       types.boolean(),
-      CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3$inboundSchema,
+      CreateIntegrationStoreDirectHiddenIntegrationsResponse3$inboundSchema,
     ]),
   ),
 });
@@ -4489,12 +6923,12 @@ export type CreateIntegrationStoreDirectUiOptions1$Outbound = {
   value: string;
   label: string;
   disabled?:
-    | CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2$Outbound
+    | CreateIntegrationStoreDirectDisabledIntegrationsResponse2$Outbound
     | boolean
     | string
     | undefined;
   hidden?:
-    | CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2$Outbound
+    | CreateIntegrationStoreDirectHiddenIntegrationsResponse2$Outbound
     | boolean
     | string
     | undefined;
@@ -4510,17 +6944,17 @@ export const CreateIntegrationStoreDirectUiOptions1$outboundSchema: z.ZodType<
   label: z.string(),
   disabled: smartUnion([
     z.lazy(() =>
-      CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson2$outboundSchema
+      CreateIntegrationStoreDirectDisabledIntegrationsResponse2$outboundSchema
     ),
     z.boolean(),
-    CreateIntegrationStoreDirectDisabledIntegrationsResponse200ApplicationJson3$outboundSchema,
+    CreateIntegrationStoreDirectDisabledIntegrationsResponse3$outboundSchema,
   ]).optional(),
   hidden: smartUnion([
     z.lazy(() =>
-      CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2$outboundSchema
+      CreateIntegrationStoreDirectHiddenIntegrationsResponse2$outboundSchema
     ),
     z.boolean(),
-    CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3$outboundSchema,
+    CreateIntegrationStoreDirectHiddenIntegrationsResponse3$outboundSchema,
   ]).optional(),
 });
 
@@ -6549,237 +8983,215 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Applic
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONUiControl$inboundSchema;
 
 /** @internal */
-export const CreateIntegrationStoreDirectDisabledIntegrationsResponse3$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateIntegrationStoreDirectDisabledIntegrationsResponse3
-  > = z.nativeEnum(CreateIntegrationStoreDirectDisabledIntegrationsResponse3);
-/** @internal */
-export const CreateIntegrationStoreDirectDisabledIntegrationsResponse3$outboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateIntegrationStoreDirectDisabledIntegrationsResponse3
-  > = CreateIntegrationStoreDirectDisabledIntegrationsResponse3$inboundSchema;
-
-/** @internal */
-export const CreateIntegrationStoreDirectDisabledIntegrationsResponse2$inboundSchema:
-  z.ZodType<
-    CreateIntegrationStoreDirectDisabledIntegrationsResponse2,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    expr: types.string(),
-  });
-/** @internal */
-export type CreateIntegrationStoreDirectDisabledIntegrationsResponse2$Outbound =
-  {
-    expr: string;
-  };
-
-/** @internal */
-export const CreateIntegrationStoreDirectDisabledIntegrationsResponse2$outboundSchema:
-  z.ZodType<
-    CreateIntegrationStoreDirectDisabledIntegrationsResponse2$Outbound,
-    z.ZodTypeDef,
-    CreateIntegrationStoreDirectDisabledIntegrationsResponse2
-  > = z.object({
-    expr: z.string(),
-  });
-
-export function createIntegrationStoreDirectDisabledIntegrationsResponse2ToJSON(
-  createIntegrationStoreDirectDisabledIntegrationsResponse2:
-    CreateIntegrationStoreDirectDisabledIntegrationsResponse2,
-): string {
-  return JSON.stringify(
-    CreateIntegrationStoreDirectDisabledIntegrationsResponse2$outboundSchema
-      .parse(createIntegrationStoreDirectDisabledIntegrationsResponse2),
+export const CreateIntegrationStoreDirectDisabled3$inboundSchema:
+  z.ZodNativeEnum<typeof CreateIntegrationStoreDirectDisabled3> = z.nativeEnum(
+    CreateIntegrationStoreDirectDisabled3,
   );
-}
-export function createIntegrationStoreDirectDisabledIntegrationsResponse2FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  CreateIntegrationStoreDirectDisabledIntegrationsResponse2,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateIntegrationStoreDirectDisabledIntegrationsResponse2$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'CreateIntegrationStoreDirectDisabledIntegrationsResponse2' from JSON`,
-  );
-}
+/** @internal */
+export const CreateIntegrationStoreDirectDisabled3$outboundSchema:
+  z.ZodNativeEnum<typeof CreateIntegrationStoreDirectDisabled3> =
+    CreateIntegrationStoreDirectDisabled3$inboundSchema;
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsResponseDisabled$inboundSchema:
-  z.ZodType<
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponseDisabled,
-    z.ZodTypeDef,
-    unknown
-  > = smartUnion([
-    z.lazy(() =>
-      CreateIntegrationStoreDirectDisabledIntegrationsResponse2$inboundSchema
-    ),
-    types.boolean(),
-    CreateIntegrationStoreDirectDisabledIntegrationsResponse3$inboundSchema,
-  ]);
+export const CreateIntegrationStoreDirectDisabled2$inboundSchema: z.ZodType<
+  CreateIntegrationStoreDirectDisabled2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  expr: types.string(),
+});
 /** @internal */
-export type CreateIntegrationStoreDirectPropertiesIntegrationsResponseDisabled$Outbound =
-  | CreateIntegrationStoreDirectDisabledIntegrationsResponse2$Outbound
-  | boolean
-  | string;
-
-/** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsResponseDisabled$outboundSchema:
-  z.ZodType<
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponseDisabled$Outbound,
-    z.ZodTypeDef,
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponseDisabled
-  > = smartUnion([
-    z.lazy(() =>
-      CreateIntegrationStoreDirectDisabledIntegrationsResponse2$outboundSchema
-    ),
-    z.boolean(),
-    CreateIntegrationStoreDirectDisabledIntegrationsResponse3$outboundSchema,
-  ]);
-
-export function createIntegrationStoreDirectPropertiesIntegrationsResponseDisabledToJSON(
-  createIntegrationStoreDirectPropertiesIntegrationsResponseDisabled:
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponseDisabled,
-): string {
-  return JSON.stringify(
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponseDisabled$outboundSchema
-      .parse(
-        createIntegrationStoreDirectPropertiesIntegrationsResponseDisabled,
-      ),
-  );
-}
-export function createIntegrationStoreDirectPropertiesIntegrationsResponseDisabledFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  CreateIntegrationStoreDirectPropertiesIntegrationsResponseDisabled,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponseDisabled$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponseDisabled' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateIntegrationStoreDirectHiddenIntegrationsResponse3$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateIntegrationStoreDirectHiddenIntegrationsResponse3
-  > = z.nativeEnum(CreateIntegrationStoreDirectHiddenIntegrationsResponse3);
-/** @internal */
-export const CreateIntegrationStoreDirectHiddenIntegrationsResponse3$outboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateIntegrationStoreDirectHiddenIntegrationsResponse3
-  > = CreateIntegrationStoreDirectHiddenIntegrationsResponse3$inboundSchema;
-
-/** @internal */
-export const CreateIntegrationStoreDirectHiddenIntegrationsResponse2$inboundSchema:
-  z.ZodType<
-    CreateIntegrationStoreDirectHiddenIntegrationsResponse2,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    expr: types.string(),
-  });
-/** @internal */
-export type CreateIntegrationStoreDirectHiddenIntegrationsResponse2$Outbound = {
+export type CreateIntegrationStoreDirectDisabled2$Outbound = {
   expr: string;
 };
 
 /** @internal */
-export const CreateIntegrationStoreDirectHiddenIntegrationsResponse2$outboundSchema:
-  z.ZodType<
-    CreateIntegrationStoreDirectHiddenIntegrationsResponse2$Outbound,
-    z.ZodTypeDef,
-    CreateIntegrationStoreDirectHiddenIntegrationsResponse2
-  > = z.object({
-    expr: z.string(),
-  });
+export const CreateIntegrationStoreDirectDisabled2$outboundSchema: z.ZodType<
+  CreateIntegrationStoreDirectDisabled2$Outbound,
+  z.ZodTypeDef,
+  CreateIntegrationStoreDirectDisabled2
+> = z.object({
+  expr: z.string(),
+});
 
-export function createIntegrationStoreDirectHiddenIntegrationsResponse2ToJSON(
-  createIntegrationStoreDirectHiddenIntegrationsResponse2:
-    CreateIntegrationStoreDirectHiddenIntegrationsResponse2,
+export function createIntegrationStoreDirectDisabled2ToJSON(
+  createIntegrationStoreDirectDisabled2: CreateIntegrationStoreDirectDisabled2,
 ): string {
   return JSON.stringify(
-    CreateIntegrationStoreDirectHiddenIntegrationsResponse2$outboundSchema
-      .parse(createIntegrationStoreDirectHiddenIntegrationsResponse2),
+    CreateIntegrationStoreDirectDisabled2$outboundSchema.parse(
+      createIntegrationStoreDirectDisabled2,
+    ),
   );
 }
-export function createIntegrationStoreDirectHiddenIntegrationsResponse2FromJSON(
+export function createIntegrationStoreDirectDisabled2FromJSON(
   jsonString: string,
-): SafeParseResult<
-  CreateIntegrationStoreDirectHiddenIntegrationsResponse2,
-  SDKValidationError
-> {
+): SafeParseResult<CreateIntegrationStoreDirectDisabled2, SDKValidationError> {
   return safeParse(
     jsonString,
     (x) =>
-      CreateIntegrationStoreDirectHiddenIntegrationsResponse2$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'CreateIntegrationStoreDirectHiddenIntegrationsResponse2' from JSON`,
+      CreateIntegrationStoreDirectDisabled2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectDisabled2' from JSON`,
   );
 }
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsResponseHidden$inboundSchema:
+export const CreateIntegrationStoreDirectPropertiesDisabled$inboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponseHidden,
+    CreateIntegrationStoreDirectPropertiesDisabled,
     z.ZodTypeDef,
     unknown
   > = smartUnion([
-    z.lazy(() =>
-      CreateIntegrationStoreDirectHiddenIntegrationsResponse2$inboundSchema
-    ),
+    z.lazy(() => CreateIntegrationStoreDirectDisabled2$inboundSchema),
     types.boolean(),
-    CreateIntegrationStoreDirectHiddenIntegrationsResponse3$inboundSchema,
+    CreateIntegrationStoreDirectDisabled3$inboundSchema,
   ]);
 /** @internal */
-export type CreateIntegrationStoreDirectPropertiesIntegrationsResponseHidden$Outbound =
-  | CreateIntegrationStoreDirectHiddenIntegrationsResponse2$Outbound
+export type CreateIntegrationStoreDirectPropertiesDisabled$Outbound =
+  | CreateIntegrationStoreDirectDisabled2$Outbound
   | boolean
   | string;
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsResponseHidden$outboundSchema:
+export const CreateIntegrationStoreDirectPropertiesDisabled$outboundSchema:
   z.ZodType<
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponseHidden$Outbound,
+    CreateIntegrationStoreDirectPropertiesDisabled$Outbound,
     z.ZodTypeDef,
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponseHidden
+    CreateIntegrationStoreDirectPropertiesDisabled
   > = smartUnion([
-    z.lazy(() =>
-      CreateIntegrationStoreDirectHiddenIntegrationsResponse2$outboundSchema
-    ),
+    z.lazy(() => CreateIntegrationStoreDirectDisabled2$outboundSchema),
     z.boolean(),
-    CreateIntegrationStoreDirectHiddenIntegrationsResponse3$outboundSchema,
+    CreateIntegrationStoreDirectDisabled3$outboundSchema,
   ]);
 
-export function createIntegrationStoreDirectPropertiesIntegrationsResponseHiddenToJSON(
-  createIntegrationStoreDirectPropertiesIntegrationsResponseHidden:
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponseHidden,
+export function createIntegrationStoreDirectPropertiesDisabledToJSON(
+  createIntegrationStoreDirectPropertiesDisabled:
+    CreateIntegrationStoreDirectPropertiesDisabled,
 ): string {
   return JSON.stringify(
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponseHidden$outboundSchema
-      .parse(createIntegrationStoreDirectPropertiesIntegrationsResponseHidden),
+    CreateIntegrationStoreDirectPropertiesDisabled$outboundSchema.parse(
+      createIntegrationStoreDirectPropertiesDisabled,
+    ),
   );
 }
-export function createIntegrationStoreDirectPropertiesIntegrationsResponseHiddenFromJSON(
+export function createIntegrationStoreDirectPropertiesDisabledFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreateIntegrationStoreDirectPropertiesIntegrationsResponseHidden,
+  CreateIntegrationStoreDirectPropertiesDisabled,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponseHidden$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'CreateIntegrationStoreDirectPropertiesIntegrationsResponseHidden' from JSON`,
+      CreateIntegrationStoreDirectPropertiesDisabled$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateIntegrationStoreDirectPropertiesDisabled' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateIntegrationStoreDirectHidden3$inboundSchema: z.ZodNativeEnum<
+  typeof CreateIntegrationStoreDirectHidden3
+> = z.nativeEnum(CreateIntegrationStoreDirectHidden3);
+/** @internal */
+export const CreateIntegrationStoreDirectHidden3$outboundSchema:
+  z.ZodNativeEnum<typeof CreateIntegrationStoreDirectHidden3> =
+    CreateIntegrationStoreDirectHidden3$inboundSchema;
+
+/** @internal */
+export const CreateIntegrationStoreDirectHidden2$inboundSchema: z.ZodType<
+  CreateIntegrationStoreDirectHidden2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  expr: types.string(),
+});
+/** @internal */
+export type CreateIntegrationStoreDirectHidden2$Outbound = {
+  expr: string;
+};
+
+/** @internal */
+export const CreateIntegrationStoreDirectHidden2$outboundSchema: z.ZodType<
+  CreateIntegrationStoreDirectHidden2$Outbound,
+  z.ZodTypeDef,
+  CreateIntegrationStoreDirectHidden2
+> = z.object({
+  expr: z.string(),
+});
+
+export function createIntegrationStoreDirectHidden2ToJSON(
+  createIntegrationStoreDirectHidden2: CreateIntegrationStoreDirectHidden2,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectHidden2$outboundSchema.parse(
+      createIntegrationStoreDirectHidden2,
+    ),
+  );
+}
+export function createIntegrationStoreDirectHidden2FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateIntegrationStoreDirectHidden2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectHidden2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectHidden2' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateIntegrationStoreDirectPropertiesHidden$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectPropertiesHidden,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    z.lazy(() => CreateIntegrationStoreDirectHidden2$inboundSchema),
+    types.boolean(),
+    CreateIntegrationStoreDirectHidden3$inboundSchema,
+  ]);
+/** @internal */
+export type CreateIntegrationStoreDirectPropertiesHidden$Outbound =
+  | CreateIntegrationStoreDirectHidden2$Outbound
+  | boolean
+  | string;
+
+/** @internal */
+export const CreateIntegrationStoreDirectPropertiesHidden$outboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectPropertiesHidden$Outbound,
+    z.ZodTypeDef,
+    CreateIntegrationStoreDirectPropertiesHidden
+  > = smartUnion([
+    z.lazy(() => CreateIntegrationStoreDirectHidden2$outboundSchema),
+    z.boolean(),
+    CreateIntegrationStoreDirectHidden3$outboundSchema,
+  ]);
+
+export function createIntegrationStoreDirectPropertiesHiddenToJSON(
+  createIntegrationStoreDirectPropertiesHidden:
+    CreateIntegrationStoreDirectPropertiesHidden,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectPropertiesHidden$outboundSchema.parse(
+      createIntegrationStoreDirectPropertiesHidden,
+    ),
+  );
+}
+export function createIntegrationStoreDirectPropertiesHiddenFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectPropertiesHidden,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectPropertiesHidden$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateIntegrationStoreDirectPropertiesHidden' from JSON`,
   );
 }
 
@@ -6794,20 +9206,16 @@ export const CreateIntegrationStoreDirectPropertiesUiOptions$inboundSchema:
     label: types.string(),
     disabled: types.optional(
       smartUnion([
-        z.lazy(() =>
-          CreateIntegrationStoreDirectDisabledIntegrationsResponse2$inboundSchema
-        ),
+        z.lazy(() => CreateIntegrationStoreDirectDisabled2$inboundSchema),
         types.boolean(),
-        CreateIntegrationStoreDirectDisabledIntegrationsResponse3$inboundSchema,
+        CreateIntegrationStoreDirectDisabled3$inboundSchema,
       ]),
     ),
     hidden: types.optional(
       smartUnion([
-        z.lazy(() =>
-          CreateIntegrationStoreDirectHiddenIntegrationsResponse2$inboundSchema
-        ),
+        z.lazy(() => CreateIntegrationStoreDirectHidden2$inboundSchema),
         types.boolean(),
-        CreateIntegrationStoreDirectHiddenIntegrationsResponse3$inboundSchema,
+        CreateIntegrationStoreDirectHidden3$inboundSchema,
       ]),
     ),
   });
@@ -6816,12 +9224,12 @@ export type CreateIntegrationStoreDirectPropertiesUiOptions$Outbound = {
   value: string;
   label: string;
   disabled?:
-    | CreateIntegrationStoreDirectDisabledIntegrationsResponse2$Outbound
+    | CreateIntegrationStoreDirectDisabled2$Outbound
     | boolean
     | string
     | undefined;
   hidden?:
-    | CreateIntegrationStoreDirectHiddenIntegrationsResponse2$Outbound
+    | CreateIntegrationStoreDirectHidden2$Outbound
     | boolean
     | string
     | undefined;
@@ -6837,18 +9245,14 @@ export const CreateIntegrationStoreDirectPropertiesUiOptions$outboundSchema:
     value: z.string(),
     label: z.string(),
     disabled: smartUnion([
-      z.lazy(() =>
-        CreateIntegrationStoreDirectDisabledIntegrationsResponse2$outboundSchema
-      ),
+      z.lazy(() => CreateIntegrationStoreDirectDisabled2$outboundSchema),
       z.boolean(),
-      CreateIntegrationStoreDirectDisabledIntegrationsResponse3$outboundSchema,
+      CreateIntegrationStoreDirectDisabled3$outboundSchema,
     ]).optional(),
     hidden: smartUnion([
-      z.lazy(() =>
-        CreateIntegrationStoreDirectHiddenIntegrationsResponse2$outboundSchema
-      ),
+      z.lazy(() => CreateIntegrationStoreDirectHidden2$outboundSchema),
       z.boolean(),
-      CreateIntegrationStoreDirectHiddenIntegrationsResponse3$outboundSchema,
+      CreateIntegrationStoreDirectHidden3$outboundSchema,
     ]).optional(),
   });
 
@@ -7627,18 +10031,18 @@ export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Type$o
     CreateIntegrationStoreDirectPropertiesIntegrationsResponse200Type$inboundSchema;
 
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaType$inboundSchema:
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema4Type$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaType
+    typeof CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema4Type
   > = z.nativeEnum(
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaType,
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema4Type,
   );
 /** @internal */
-export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaType$outboundSchema:
+export const CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema4Type$outboundSchema:
   z.ZodNativeEnum<
-    typeof CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaType
+    typeof CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema4Type
   > =
-    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaType$inboundSchema;
+    CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema4Type$inboundSchema;
 
 /** @internal */
 export const CreateIntegrationStoreDirectPropertiesItems$inboundSchema:
@@ -7648,7 +10052,7 @@ export const CreateIntegrationStoreDirectPropertiesItems$inboundSchema:
     unknown
   > = z.object({
     type:
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaType$inboundSchema,
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema4Type$inboundSchema,
     description: types.optional(types.string()),
     minimum: types.optional(types.number()),
     exclusiveMinimum: types.optional(types.number()),
@@ -7675,7 +10079,7 @@ export const CreateIntegrationStoreDirectPropertiesItems$outboundSchema:
     CreateIntegrationStoreDirectPropertiesItems
   > = z.object({
     type:
-      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchemaType$outboundSchema,
+      CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema4Type$outboundSchema,
     description: z.string().optional(),
     minimum: z.number().optional(),
     exclusiveMinimum: z.number().optional(),
@@ -10550,25 +12954,27 @@ export const CreateIntegrationStoreDirectProperties$inboundSchema: z.ZodType<
 > = smartUnion([
   z.lazy(() => CreateIntegrationStoreDirectProperties4$inboundSchema),
   z.lazy(() => CreateIntegrationStoreDirectProperties6$inboundSchema),
+  z.lazy(() => CreateIntegrationStoreDirectProperties8$inboundSchema),
   z.lazy(() => CreateIntegrationStoreDirectProperties5$inboundSchema),
   z.lazy(() => CreateIntegrationStoreDirectProperties7$inboundSchema),
   z.lazy(() => CreateIntegrationStoreDirectProperties1$inboundSchema),
   z.lazy(() => CreateIntegrationStoreDirectProperties2$inboundSchema),
   z.lazy(() => CreateIntegrationStoreDirectProperties3$inboundSchema),
-  z.lazy(() => CreateIntegrationStoreDirectProperties8$inboundSchema),
   z.lazy(() => CreateIntegrationStoreDirectProperties9$inboundSchema),
+  z.lazy(() => CreateIntegrationStoreDirectProperties10$inboundSchema),
 ]);
 /** @internal */
 export type CreateIntegrationStoreDirectProperties$Outbound =
   | CreateIntegrationStoreDirectProperties4$Outbound
   | CreateIntegrationStoreDirectProperties6$Outbound
+  | CreateIntegrationStoreDirectProperties8$Outbound
   | CreateIntegrationStoreDirectProperties5$Outbound
   | CreateIntegrationStoreDirectProperties7$Outbound
   | CreateIntegrationStoreDirectProperties1$Outbound
   | CreateIntegrationStoreDirectProperties2$Outbound
   | CreateIntegrationStoreDirectProperties3$Outbound
-  | CreateIntegrationStoreDirectProperties8$Outbound
-  | CreateIntegrationStoreDirectProperties9$Outbound;
+  | CreateIntegrationStoreDirectProperties9$Outbound
+  | CreateIntegrationStoreDirectProperties10$Outbound;
 
 /** @internal */
 export const CreateIntegrationStoreDirectProperties$outboundSchema: z.ZodType<
@@ -10578,13 +12984,14 @@ export const CreateIntegrationStoreDirectProperties$outboundSchema: z.ZodType<
 > = smartUnion([
   z.lazy(() => CreateIntegrationStoreDirectProperties4$outboundSchema),
   z.lazy(() => CreateIntegrationStoreDirectProperties6$outboundSchema),
+  z.lazy(() => CreateIntegrationStoreDirectProperties8$outboundSchema),
   z.lazy(() => CreateIntegrationStoreDirectProperties5$outboundSchema),
   z.lazy(() => CreateIntegrationStoreDirectProperties7$outboundSchema),
   z.lazy(() => CreateIntegrationStoreDirectProperties1$outboundSchema),
   z.lazy(() => CreateIntegrationStoreDirectProperties2$outboundSchema),
   z.lazy(() => CreateIntegrationStoreDirectProperties3$outboundSchema),
-  z.lazy(() => CreateIntegrationStoreDirectProperties8$outboundSchema),
   z.lazy(() => CreateIntegrationStoreDirectProperties9$outboundSchema),
+  z.lazy(() => CreateIntegrationStoreDirectProperties10$outboundSchema),
 ]);
 
 export function createIntegrationStoreDirectPropertiesToJSON(
@@ -10617,13 +13024,14 @@ export const CreateIntegrationStoreDirectMetadataSchema$inboundSchema:
         smartUnion([
           z.lazy(() => CreateIntegrationStoreDirectProperties4$inboundSchema),
           z.lazy(() => CreateIntegrationStoreDirectProperties6$inboundSchema),
+          z.lazy(() => CreateIntegrationStoreDirectProperties8$inboundSchema),
           z.lazy(() => CreateIntegrationStoreDirectProperties5$inboundSchema),
           z.lazy(() => CreateIntegrationStoreDirectProperties7$inboundSchema),
           z.lazy(() => CreateIntegrationStoreDirectProperties1$inboundSchema),
           z.lazy(() => CreateIntegrationStoreDirectProperties2$inboundSchema),
           z.lazy(() => CreateIntegrationStoreDirectProperties3$inboundSchema),
-          z.lazy(() => CreateIntegrationStoreDirectProperties8$inboundSchema),
           z.lazy(() => CreateIntegrationStoreDirectProperties9$inboundSchema),
+          z.lazy(() => CreateIntegrationStoreDirectProperties10$inboundSchema),
         ]),
       ),
       required: types.optional(z.array(types.string())),
@@ -10635,13 +13043,14 @@ export type CreateIntegrationStoreDirectMetadataSchema$Outbound = {
     [k: string]:
       | CreateIntegrationStoreDirectProperties4$Outbound
       | CreateIntegrationStoreDirectProperties6$Outbound
+      | CreateIntegrationStoreDirectProperties8$Outbound
       | CreateIntegrationStoreDirectProperties5$Outbound
       | CreateIntegrationStoreDirectProperties7$Outbound
       | CreateIntegrationStoreDirectProperties1$Outbound
       | CreateIntegrationStoreDirectProperties2$Outbound
       | CreateIntegrationStoreDirectProperties3$Outbound
-      | CreateIntegrationStoreDirectProperties8$Outbound
-      | CreateIntegrationStoreDirectProperties9$Outbound;
+      | CreateIntegrationStoreDirectProperties9$Outbound
+      | CreateIntegrationStoreDirectProperties10$Outbound;
   };
   required?: Array<string> | undefined;
 };
@@ -10658,13 +13067,14 @@ export const CreateIntegrationStoreDirectMetadataSchema$outboundSchema:
       smartUnion([
         z.lazy(() => CreateIntegrationStoreDirectProperties4$outboundSchema),
         z.lazy(() => CreateIntegrationStoreDirectProperties6$outboundSchema),
+        z.lazy(() => CreateIntegrationStoreDirectProperties8$outboundSchema),
         z.lazy(() => CreateIntegrationStoreDirectProperties5$outboundSchema),
         z.lazy(() => CreateIntegrationStoreDirectProperties7$outboundSchema),
         z.lazy(() => CreateIntegrationStoreDirectProperties1$outboundSchema),
         z.lazy(() => CreateIntegrationStoreDirectProperties2$outboundSchema),
         z.lazy(() => CreateIntegrationStoreDirectProperties3$outboundSchema),
-        z.lazy(() => CreateIntegrationStoreDirectProperties8$outboundSchema),
         z.lazy(() => CreateIntegrationStoreDirectProperties9$outboundSchema),
+        z.lazy(() => CreateIntegrationStoreDirectProperties10$outboundSchema),
       ]),
     ),
     required: z.array(z.string()).optional(),
@@ -10933,156 +13343,94 @@ export function guidesFromJSON(
 }
 
 /** @internal */
-export const Disabled3$inboundSchema: z.ZodNativeEnum<typeof Disabled3> = z
-  .nativeEnum(Disabled3);
-/** @internal */
-export const Disabled3$outboundSchema: z.ZodNativeEnum<typeof Disabled3> =
-  Disabled3$inboundSchema;
-
-/** @internal */
-export const Disabled2$inboundSchema: z.ZodType<
-  Disabled2,
+export const CreateIntegrationStoreDirectIntegration$inboundSchema: z.ZodType<
+  CreateIntegrationStoreDirectIntegration,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  expr: types.string(),
+  id: types.string(),
+  name: types.string(),
+  slug: types.string(),
+  supportsInstallationBillingPlans: types.optional(types.boolean()),
+  icon: types.string(),
+  flags: types.optional(z.array(types.string())),
 });
 /** @internal */
-export type Disabled2$Outbound = {
-  expr: string;
+export type CreateIntegrationStoreDirectIntegration$Outbound = {
+  id: string;
+  name: string;
+  slug: string;
+  supportsInstallationBillingPlans?: boolean | undefined;
+  icon: string;
+  flags?: Array<string> | undefined;
 };
 
 /** @internal */
-export const Disabled2$outboundSchema: z.ZodType<
-  Disabled2$Outbound,
+export const CreateIntegrationStoreDirectIntegration$outboundSchema: z.ZodType<
+  CreateIntegrationStoreDirectIntegration$Outbound,
   z.ZodTypeDef,
-  Disabled2
+  CreateIntegrationStoreDirectIntegration
 > = z.object({
-  expr: z.string(),
+  id: z.string(),
+  name: z.string(),
+  slug: z.string(),
+  supportsInstallationBillingPlans: z.boolean().optional(),
+  icon: z.string(),
+  flags: z.array(z.string()).optional(),
 });
 
-export function disabled2ToJSON(disabled2: Disabled2): string {
-  return JSON.stringify(Disabled2$outboundSchema.parse(disabled2));
+export function createIntegrationStoreDirectIntegrationToJSON(
+  createIntegrationStoreDirectIntegration:
+    CreateIntegrationStoreDirectIntegration,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectIntegration$outboundSchema.parse(
+      createIntegrationStoreDirectIntegration,
+    ),
+  );
 }
-export function disabled2FromJSON(
+export function createIntegrationStoreDirectIntegrationFromJSON(
   jsonString: string,
-): SafeParseResult<Disabled2, SDKValidationError> {
+): SafeParseResult<
+  CreateIntegrationStoreDirectIntegration,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => Disabled2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Disabled2' from JSON`,
+    (x) =>
+      CreateIntegrationStoreDirectIntegration$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateIntegrationStoreDirectIntegration' from JSON`,
   );
 }
 
 /** @internal */
-export const Disabled$inboundSchema: z.ZodType<
-  Disabled,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => Disabled2$inboundSchema),
-  types.boolean(),
-  Disabled3$inboundSchema,
-]);
+export const SupportedProtocols$inboundSchema: z.ZodNativeEnum<
+  typeof SupportedProtocols
+> = z.nativeEnum(SupportedProtocols);
 /** @internal */
-export type Disabled$Outbound = Disabled2$Outbound | boolean | string;
+export const SupportedProtocols$outboundSchema: z.ZodNativeEnum<
+  typeof SupportedProtocols
+> = SupportedProtocols$inboundSchema;
 
 /** @internal */
-export const Disabled$outboundSchema: z.ZodType<
-  Disabled$Outbound,
-  z.ZodTypeDef,
-  Disabled
-> = smartUnion([
-  z.lazy(() => Disabled2$outboundSchema),
-  z.boolean(),
-  Disabled3$outboundSchema,
-]);
-
-export function disabledToJSON(disabled: Disabled): string {
-  return JSON.stringify(Disabled$outboundSchema.parse(disabled));
-}
-export function disabledFromJSON(
-  jsonString: string,
-): SafeParseResult<Disabled, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Disabled$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Disabled' from JSON`,
-  );
-}
+export const CreateIntegrationStoreDirectPrimaryProtocol$inboundSchema:
+  z.ZodNativeEnum<typeof CreateIntegrationStoreDirectPrimaryProtocol> = z
+    .nativeEnum(CreateIntegrationStoreDirectPrimaryProtocol);
+/** @internal */
+export const CreateIntegrationStoreDirectPrimaryProtocol$outboundSchema:
+  z.ZodNativeEnum<typeof CreateIntegrationStoreDirectPrimaryProtocol> =
+    CreateIntegrationStoreDirectPrimaryProtocol$inboundSchema;
 
 /** @internal */
-export const Hidden3$inboundSchema: z.ZodNativeEnum<typeof Hidden3> = z
-  .nativeEnum(Hidden3);
+export const LogDrainStatus$inboundSchema: z.ZodNativeEnum<
+  typeof LogDrainStatus
+> = z.nativeEnum(LogDrainStatus);
 /** @internal */
-export const Hidden3$outboundSchema: z.ZodNativeEnum<typeof Hidden3> =
-  Hidden3$inboundSchema;
-
-/** @internal */
-export const Hidden2$inboundSchema: z.ZodType<Hidden2, z.ZodTypeDef, unknown> =
-  z.object({
-    expr: types.string(),
-  });
-/** @internal */
-export type Hidden2$Outbound = {
-  expr: string;
-};
-
-/** @internal */
-export const Hidden2$outboundSchema: z.ZodType<
-  Hidden2$Outbound,
-  z.ZodTypeDef,
-  Hidden2
-> = z.object({
-  expr: z.string(),
-});
-
-export function hidden2ToJSON(hidden2: Hidden2): string {
-  return JSON.stringify(Hidden2$outboundSchema.parse(hidden2));
-}
-export function hidden2FromJSON(
-  jsonString: string,
-): SafeParseResult<Hidden2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Hidden2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Hidden2' from JSON`,
-  );
-}
-
-/** @internal */
-export const Hidden$inboundSchema: z.ZodType<Hidden, z.ZodTypeDef, unknown> =
-  smartUnion([
-    z.lazy(() => Hidden2$inboundSchema),
-    types.boolean(),
-    Hidden3$inboundSchema,
-  ]);
-/** @internal */
-export type Hidden$Outbound = Hidden2$Outbound | boolean | string;
-
-/** @internal */
-export const Hidden$outboundSchema: z.ZodType<
-  Hidden$Outbound,
-  z.ZodTypeDef,
-  Hidden
-> = smartUnion([
-  z.lazy(() => Hidden2$outboundSchema),
-  z.boolean(),
-  Hidden3$outboundSchema,
-]);
-
-export function hiddenToJSON(hidden: Hidden): string {
-  return JSON.stringify(Hidden$outboundSchema.parse(hidden));
-}
-export function hiddenFromJSON(
-  jsonString: string,
-): SafeParseResult<Hidden, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Hidden$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Hidden' from JSON`,
-  );
-}
+export const LogDrainStatus$outboundSchema: z.ZodNativeEnum<
+  typeof LogDrainStatus
+> = LogDrainStatus$inboundSchema;
 
 /** @internal */
 export const Product$inboundSchema: z.ZodType<Product, z.ZodTypeDef, unknown> =
@@ -11111,21 +13459,15 @@ export const Product$inboundSchema: z.ZodType<Product, z.ZodTypeDef, unknown> =
     disableResourceRenaming: types.optional(types.boolean()),
     repl: types.optional(z.lazy(() => Repl$inboundSchema)),
     guides: types.optional(z.array(z.lazy(() => Guides$inboundSchema))),
-    value: types.string(),
-    disabled: types.optional(
-      smartUnion([
-        z.lazy(() => Disabled2$inboundSchema),
-        types.boolean(),
-        Disabled3$inboundSchema,
-      ]),
+    integration: z.lazy(() =>
+      CreateIntegrationStoreDirectIntegration$inboundSchema
     ),
-    hidden: types.optional(
-      smartUnion([
-        z.lazy(() => Hidden2$inboundSchema),
-        types.boolean(),
-        Hidden3$inboundSchema,
-      ]),
+    integrationConfigurationId: types.string(),
+    supportedProtocols: z.array(SupportedProtocols$inboundSchema),
+    primaryProtocol: types.optional(
+      CreateIntegrationStoreDirectPrimaryProtocol$inboundSchema,
     ),
+    logDrainStatus: types.optional(LogDrainStatus$inboundSchema),
   });
 /** @internal */
 export type Product$Outbound = {
@@ -11145,9 +13487,11 @@ export type Product$Outbound = {
   disableResourceRenaming?: boolean | undefined;
   repl?: Repl$Outbound | undefined;
   guides?: Array<Guides$Outbound> | undefined;
-  value: string;
-  disabled?: Disabled2$Outbound | boolean | string | undefined;
-  hidden?: Hidden2$Outbound | boolean | string | undefined;
+  integration: CreateIntegrationStoreDirectIntegration$Outbound;
+  integrationConfigurationId: string;
+  supportedProtocols: Array<string>;
+  primaryProtocol?: string | undefined;
+  logDrainStatus?: string | undefined;
 };
 
 /** @internal */
@@ -11175,17 +13519,14 @@ export const Product$outboundSchema: z.ZodType<
   disableResourceRenaming: z.boolean().optional(),
   repl: z.lazy(() => Repl$outboundSchema).optional(),
   guides: z.array(z.lazy(() => Guides$outboundSchema)).optional(),
-  value: z.string(),
-  disabled: smartUnion([
-    z.lazy(() => Disabled2$outboundSchema),
-    z.boolean(),
-    Disabled3$outboundSchema,
-  ]).optional(),
-  hidden: smartUnion([
-    z.lazy(() => Hidden2$outboundSchema),
-    z.boolean(),
-    Hidden3$outboundSchema,
-  ]).optional(),
+  integration: z.lazy(() =>
+    CreateIntegrationStoreDirectIntegration$outboundSchema
+  ),
+  integrationConfigurationId: z.string(),
+  supportedProtocols: z.array(SupportedProtocols$outboundSchema),
+  primaryProtocol: CreateIntegrationStoreDirectPrimaryProtocol$outboundSchema
+    .optional(),
+  logDrainStatus: LogDrainStatus$outboundSchema.optional(),
 });
 
 export function productToJSON(product: Product): string {

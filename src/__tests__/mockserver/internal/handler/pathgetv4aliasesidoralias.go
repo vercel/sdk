@@ -8,6 +8,7 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/operations"
+	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
@@ -45,7 +46,26 @@ func testGetAliasGetAlias0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody []operations.GetAliasResponseBody = []operations.GetAliasResponseBody{}
+	var respBody *operations.GetAliasResponseBody = &operations.GetAliasResponseBody{
+		Alias:     "my-alias.vercel.app",
+		Created:   types.MustTimeFromString("2017-04-26T23:00:34.232Z"),
+		CreatedAt: types.Float64(1540095775941),
+		Creator: &operations.GetAliasCreator{
+			UID:      "96SnxkFiMyVKsK3pnoHfx3Hz",
+			Email:    "john-doe@gmail.com",
+			Username: "john-doe",
+		},
+		DeletedAt: types.Float64(1540095775941),
+		Deployment: &operations.GetAliasDeployment{
+			ID:   "dpl_5m8CQaRBm3FnWRW1od3wKTpaECPx",
+			URL:  "my-instant-deployment-3ij3cxz9qr.now.sh",
+			Meta: types.String("{}"),
+		},
+		DeploymentID: types.String("dpl_5m8CQaRBm3FnWRW1od3wKTpaECPx"),
+		ProjectID:    types.String("prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB"),
+		UID:          "<id>",
+		UpdatedAt:    types.Float64(1540095775941),
+	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

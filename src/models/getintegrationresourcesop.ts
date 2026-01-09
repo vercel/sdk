@@ -18,13 +18,13 @@ export type GetIntegrationResourcesRequest = {
  * The current status of the resource
  */
 export const GetIntegrationResourcesStatus = {
+  Error: "error",
   Ready: "ready",
   Pending: "pending",
   Onboarding: "onboarding",
   Suspended: "suspended",
   Resumed: "resumed",
   Uninstalled: "uninstalled",
-  Error: "error",
 } as const;
 /**
  * The current status of the resource
@@ -59,8 +59,8 @@ export type GetIntegrationResourcesLevel = ClosedEnum<
  * The notification, if set, displayed to the user when viewing the resource in Vercel
  */
 export type GetIntegrationResourcesNotification = {
-  level: GetIntegrationResourcesLevel;
   title: string;
+  level: GetIntegrationResourcesLevel;
   message?: string | undefined;
   href?: string | undefined;
 };
@@ -283,15 +283,15 @@ export const GetIntegrationResourcesNotification$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  level: GetIntegrationResourcesLevel$inboundSchema,
   title: types.string(),
+  level: GetIntegrationResourcesLevel$inboundSchema,
   message: types.optional(types.string()),
   href: types.optional(types.string()),
 });
 /** @internal */
 export type GetIntegrationResourcesNotification$Outbound = {
-  level: string;
   title: string;
+  level: string;
   message?: string | undefined;
   href?: string | undefined;
 };
@@ -302,8 +302,8 @@ export const GetIntegrationResourcesNotification$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetIntegrationResourcesNotification
 > = z.object({
-  level: GetIntegrationResourcesLevel$outboundSchema,
   title: z.string(),
+  level: GetIntegrationResourcesLevel$outboundSchema,
   message: z.string().optional(),
   href: z.string().optional(),
 });

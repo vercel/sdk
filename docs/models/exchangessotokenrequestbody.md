@@ -1,24 +1,27 @@
 # ExchangeSsoTokenRequestBody
 
-## Example Usage
+
+## Supported Types
+
+### `models.ExchangeSsoTokenRequestBody1`
 
 ```typescript
-import { ExchangeSsoTokenRequestBody } from "@vercel/sdk/models/exchangessotokenop.js";
-
-let value: ExchangeSsoTokenRequestBody = {
+const value: models.ExchangeSsoTokenRequestBody1 = {
   code: "<value>",
   clientId: "<id>",
   clientSecret: "<value>",
+  grantType: "authorization_code",
 };
 ```
 
-## Fields
+### `models.ExchangeSsoTokenRequestBody2`
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `code`                                                                     | *string*                                                                   | :heavy_check_mark:                                                         | The sensitive code received from Vercel                                    |
-| `state`                                                                    | *string*                                                                   | :heavy_minus_sign:                                                         | The state received from the initialization request                         |
-| `clientId`                                                                 | *string*                                                                   | :heavy_check_mark:                                                         | The integration client id                                                  |
-| `clientSecret`                                                             | *string*                                                                   | :heavy_check_mark:                                                         | The integration client secret                                              |
-| `redirectUri`                                                              | *string*                                                                   | :heavy_minus_sign:                                                         | The integration redirect URI                                               |
-| `grantType`                                                                | [models.ExchangeSsoTokenGrantType](../models/exchangessotokengranttype.md) | :heavy_minus_sign:                                                         | The grant type, when using x-www-form-urlencoded content type              |
+```typescript
+const value: models.ExchangeSsoTokenRequestBody2 = {
+  refreshToken: "<value>",
+  clientId: "<id>",
+  clientSecret: "<value>",
+  grantType: "refresh_token",
+};
+```
+

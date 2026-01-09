@@ -155,7 +155,9 @@ test("Logdrains Create Log Drain", async () => {
     branch: "feature/*",
     samplingRate: 0.5,
     source: {
-      kind: "self-served",
+      kind: "integration",
+      integrationId: "<id>",
+      integrationConfigurationId: "<id>",
     },
   });
 });
@@ -214,10 +216,10 @@ test("Logdrains Get All Log Drains", async () => {
     drains: [
       {
         id: "<id>",
-        ownerId: "<id>",
-        name: "<value>",
         createdAt: 7495.57,
         updatedAt: 4759.82,
+        name: "<value>",
+        ownerId: "<id>",
         schemas: {},
         delivery: {
           type: "internal",

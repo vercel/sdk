@@ -9,21 +9,18 @@
 const value: boolean = true;
 ```
 
-### `models.CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2`
+### `models.CreateIntegrationStoreDirectHiddenIntegrationsResponse2`
 
 ```typescript
-const value:
-  models.CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson2 =
-    {
-      expr: "<value>",
-    };
+const value: models.CreateIntegrationStoreDirectHiddenIntegrationsResponse2 = {
+  expr: "<value>",
+};
 ```
 
-### `models.CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3`
+### `models.CreateIntegrationStoreDirectHiddenIntegrationsResponse3`
 
 ```typescript
-const value:
-  models.CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3 =
-    "create";
+const value: models.CreateIntegrationStoreDirectHiddenIntegrationsResponse3 =
+  "update";
 ```
 

@@ -8,16 +8,18 @@ The payload of the event, if requested.
 import { OneHundredAndNine } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndNine = {
-  uid: "<id>",
-  name: {
-    name: "<value>",
+  team: {
+    id: "<id>",
+  },
+  previousRule: {
+    email: "Zakary_Keeling26@hotmail.com",
   },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `uid`              | *string*           | :heavy_check_mark: | N/A                |
-| `name`             | *models.Name*      | :heavy_check_mark: | N/A                |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `team`                                                                 | [models.UserEventPayload109Team](../models/usereventpayload109team.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `previousRule`                                                         | [models.PayloadPreviousRule](../models/payloadpreviousrule.md)         | :heavy_check_mark:                                                     | N/A                                                                    |

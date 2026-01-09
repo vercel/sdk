@@ -1206,6 +1206,67 @@ func (o *UpdateDrainRequest) GetBody() *UpdateDrainRequestBody {
 	return o.Body
 }
 
+type UpdateDrainResponseBodyStatus2 string
+
+const (
+	UpdateDrainResponseBodyStatus2Enabled  UpdateDrainResponseBodyStatus2 = "enabled"
+	UpdateDrainResponseBodyStatus2Disabled UpdateDrainResponseBodyStatus2 = "disabled"
+	UpdateDrainResponseBodyStatus2Errored  UpdateDrainResponseBodyStatus2 = "errored"
+)
+
+func (e UpdateDrainResponseBodyStatus2) ToPointer() *UpdateDrainResponseBodyStatus2 {
+	return &e
+}
+func (e *UpdateDrainResponseBodyStatus2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enabled":
+		fallthrough
+	case "disabled":
+		fallthrough
+	case "errored":
+		*e = UpdateDrainResponseBodyStatus2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateDrainResponseBodyStatus2: %v", v)
+	}
+}
+
+type UpdateDrainDisabledReason2 string
+
+const (
+	UpdateDrainDisabledReason2DisabledByOwner      UpdateDrainDisabledReason2 = "disabled-by-owner"
+	UpdateDrainDisabledReason2FeatureNotAvailable  UpdateDrainDisabledReason2 = "feature-not-available"
+	UpdateDrainDisabledReason2AccountPlanDowngrade UpdateDrainDisabledReason2 = "account-plan-downgrade"
+	UpdateDrainDisabledReason2DisabledByAdmin      UpdateDrainDisabledReason2 = "disabled-by-admin"
+)
+
+func (e UpdateDrainDisabledReason2) ToPointer() *UpdateDrainDisabledReason2 {
+	return &e
+}
+func (e *UpdateDrainDisabledReason2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "disabled-by-owner":
+		fallthrough
+	case "feature-not-available":
+		fallthrough
+	case "account-plan-downgrade":
+		fallthrough
+	case "disabled-by-admin":
+		*e = UpdateDrainDisabledReason2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateDrainDisabledReason2: %v", v)
+	}
+}
+
 type UpdateDrainSchemasLog2 struct {
 }
 
@@ -1730,8 +1791,8 @@ func (e *UpdateDrainEncodingResponse3) UnmarshalJSON(data []byte) error {
 type UpdateDrainCompressionResponse2 string
 
 const (
-	UpdateDrainCompressionResponse2Gzip UpdateDrainCompressionResponse2 = "gzip"
 	UpdateDrainCompressionResponse2None UpdateDrainCompressionResponse2 = "none"
+	UpdateDrainCompressionResponse2Gzip UpdateDrainCompressionResponse2 = "gzip"
 )
 
 func (e UpdateDrainCompressionResponse2) ToPointer() *UpdateDrainCompressionResponse2 {
@@ -1743,9 +1804,9 @@ func (e *UpdateDrainCompressionResponse2) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "gzip":
-		fallthrough
 	case "none":
+		fallthrough
+	case "gzip":
 		*e = UpdateDrainCompressionResponse2(v)
 		return nil
 	default:
@@ -2155,67 +2216,6 @@ func (o *UpdateDrainSamplingResponse2) GetRequestPath() *string {
 		return nil
 	}
 	return o.RequestPath
-}
-
-type UpdateDrainResponseBodyStatus2 string
-
-const (
-	UpdateDrainResponseBodyStatus2Enabled  UpdateDrainResponseBodyStatus2 = "enabled"
-	UpdateDrainResponseBodyStatus2Disabled UpdateDrainResponseBodyStatus2 = "disabled"
-	UpdateDrainResponseBodyStatus2Errored  UpdateDrainResponseBodyStatus2 = "errored"
-)
-
-func (e UpdateDrainResponseBodyStatus2) ToPointer() *UpdateDrainResponseBodyStatus2 {
-	return &e
-}
-func (e *UpdateDrainResponseBodyStatus2) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "enabled":
-		fallthrough
-	case "disabled":
-		fallthrough
-	case "errored":
-		*e = UpdateDrainResponseBodyStatus2(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateDrainResponseBodyStatus2: %v", v)
-	}
-}
-
-type UpdateDrainDisabledReason2 string
-
-const (
-	UpdateDrainDisabledReason2DisabledByOwner      UpdateDrainDisabledReason2 = "disabled-by-owner"
-	UpdateDrainDisabledReason2FeatureNotAvailable  UpdateDrainDisabledReason2 = "feature-not-available"
-	UpdateDrainDisabledReason2AccountPlanDowngrade UpdateDrainDisabledReason2 = "account-plan-downgrade"
-	UpdateDrainDisabledReason2DisabledByAdmin      UpdateDrainDisabledReason2 = "disabled-by-admin"
-)
-
-func (e UpdateDrainDisabledReason2) ToPointer() *UpdateDrainDisabledReason2 {
-	return &e
-}
-func (e *UpdateDrainDisabledReason2) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "disabled-by-owner":
-		fallthrough
-	case "feature-not-available":
-		fallthrough
-	case "account-plan-downgrade":
-		fallthrough
-	case "disabled-by-admin":
-		*e = UpdateDrainDisabledReason2(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateDrainDisabledReason2: %v", v)
-	}
 }
 
 type UpdateDrainKindIntegration2 string
@@ -3149,20 +3149,20 @@ func (u UpdateDrainProjectAccessUnion) MarshalJSON() ([]byte, error) {
 
 type UpdateDrainResponseBody2 struct {
 	ID                          string                              `json:"id"`
-	OwnerID                     string                              `json:"ownerId"`
-	Name                        string                              `json:"name"`
 	CreatedAt                   float64                             `json:"createdAt"`
 	UpdatedAt                   float64                             `json:"updatedAt"`
 	ProjectIds                  []string                            `json:"projectIds,omitempty"`
+	Name                        string                              `json:"name"`
+	TeamID                      *string                             `json:"teamId,omitempty"`
+	OwnerID                     string                              `json:"ownerId"`
+	Status                      *UpdateDrainResponseBodyStatus2     `json:"status,omitempty"`
+	FirstErrorTimestamp         *float64                            `json:"firstErrorTimestamp,omitempty"`
+	DisabledAt                  *float64                            `json:"disabledAt,omitempty"`
+	DisabledBy                  *string                             `json:"disabledBy,omitempty"`
+	DisabledReason              *UpdateDrainDisabledReason2         `json:"disabledReason,omitempty"`
 	Schemas                     UpdateDrainSchemasResponse2         `json:"schemas"`
 	Delivery                    UpdateDrainDeliveryResponseUnion2   `json:"delivery"`
 	Sampling                    []UpdateDrainSamplingResponse2      `json:"sampling,omitempty"`
-	TeamID                      *string                             `json:"teamId,omitempty"`
-	Status                      *UpdateDrainResponseBodyStatus2     `json:"status,omitempty"`
-	DisabledAt                  *float64                            `json:"disabledAt,omitempty"`
-	DisabledReason              *UpdateDrainDisabledReason2         `json:"disabledReason,omitempty"`
-	DisabledBy                  *string                             `json:"disabledBy,omitempty"`
-	FirstErrorTimestamp         *float64                            `json:"firstErrorTimestamp,omitempty"`
 	Source                      UpdateDrainResponseBodySourceUnion2 `json:"source"`
 	Filter                      *string                             `json:"filter,omitempty"`
 	FilterV2                    *UpdateDrainFilterV2Union2          `json:"filterV2,omitempty"`
@@ -3177,7 +3177,7 @@ func (u UpdateDrainResponseBody2) MarshalJSON() ([]byte, error) {
 }
 
 func (u *UpdateDrainResponseBody2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id", "ownerId", "name", "createdAt", "updatedAt", "schemas", "delivery", "source"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id", "createdAt", "updatedAt", "name", "ownerId", "schemas", "delivery", "source"}); err != nil {
 		return err
 	}
 	return nil
@@ -3188,20 +3188,6 @@ func (o *UpdateDrainResponseBody2) GetID() string {
 		return ""
 	}
 	return o.ID
-}
-
-func (o *UpdateDrainResponseBody2) GetOwnerID() string {
-	if o == nil {
-		return ""
-	}
-	return o.OwnerID
-}
-
-func (o *UpdateDrainResponseBody2) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
 }
 
 func (o *UpdateDrainResponseBody2) GetCreatedAt() float64 {
@@ -3223,6 +3209,62 @@ func (o *UpdateDrainResponseBody2) GetProjectIds() []string {
 		return nil
 	}
 	return o.ProjectIds
+}
+
+func (o *UpdateDrainResponseBody2) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *UpdateDrainResponseBody2) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
+}
+
+func (o *UpdateDrainResponseBody2) GetOwnerID() string {
+	if o == nil {
+		return ""
+	}
+	return o.OwnerID
+}
+
+func (o *UpdateDrainResponseBody2) GetStatus() *UpdateDrainResponseBodyStatus2 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *UpdateDrainResponseBody2) GetFirstErrorTimestamp() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.FirstErrorTimestamp
+}
+
+func (o *UpdateDrainResponseBody2) GetDisabledAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DisabledAt
+}
+
+func (o *UpdateDrainResponseBody2) GetDisabledBy() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DisabledBy
+}
+
+func (o *UpdateDrainResponseBody2) GetDisabledReason() *UpdateDrainDisabledReason2 {
+	if o == nil {
+		return nil
+	}
+	return o.DisabledReason
 }
 
 func (o *UpdateDrainResponseBody2) GetSchemas() UpdateDrainSchemasResponse2 {
@@ -3260,48 +3302,6 @@ func (o *UpdateDrainResponseBody2) GetSampling() []UpdateDrainSamplingResponse2 
 		return nil
 	}
 	return o.Sampling
-}
-
-func (o *UpdateDrainResponseBody2) GetTeamID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.TeamID
-}
-
-func (o *UpdateDrainResponseBody2) GetStatus() *UpdateDrainResponseBodyStatus2 {
-	if o == nil {
-		return nil
-	}
-	return o.Status
-}
-
-func (o *UpdateDrainResponseBody2) GetDisabledAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.DisabledAt
-}
-
-func (o *UpdateDrainResponseBody2) GetDisabledReason() *UpdateDrainDisabledReason2 {
-	if o == nil {
-		return nil
-	}
-	return o.DisabledReason
-}
-
-func (o *UpdateDrainResponseBody2) GetDisabledBy() *string {
-	if o == nil {
-		return nil
-	}
-	return o.DisabledBy
-}
-
-func (o *UpdateDrainResponseBody2) GetFirstErrorTimestamp() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.FirstErrorTimestamp
 }
 
 func (o *UpdateDrainResponseBody2) GetSource() UpdateDrainResponseBodySourceUnion2 {
@@ -3387,6 +3387,67 @@ func (o *UpdateDrainResponseBody2) GetProjectAccessSome() *UpdateDrainProjectAcc
 		return v.UpdateDrainProjectAccessSome
 	}
 	return nil
+}
+
+type UpdateDrainResponseBodyStatus1 string
+
+const (
+	UpdateDrainResponseBodyStatus1Enabled  UpdateDrainResponseBodyStatus1 = "enabled"
+	UpdateDrainResponseBodyStatus1Disabled UpdateDrainResponseBodyStatus1 = "disabled"
+	UpdateDrainResponseBodyStatus1Errored  UpdateDrainResponseBodyStatus1 = "errored"
+)
+
+func (e UpdateDrainResponseBodyStatus1) ToPointer() *UpdateDrainResponseBodyStatus1 {
+	return &e
+}
+func (e *UpdateDrainResponseBodyStatus1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enabled":
+		fallthrough
+	case "disabled":
+		fallthrough
+	case "errored":
+		*e = UpdateDrainResponseBodyStatus1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateDrainResponseBodyStatus1: %v", v)
+	}
+}
+
+type UpdateDrainDisabledReason1 string
+
+const (
+	UpdateDrainDisabledReason1DisabledByOwner      UpdateDrainDisabledReason1 = "disabled-by-owner"
+	UpdateDrainDisabledReason1FeatureNotAvailable  UpdateDrainDisabledReason1 = "feature-not-available"
+	UpdateDrainDisabledReason1AccountPlanDowngrade UpdateDrainDisabledReason1 = "account-plan-downgrade"
+	UpdateDrainDisabledReason1DisabledByAdmin      UpdateDrainDisabledReason1 = "disabled-by-admin"
+)
+
+func (e UpdateDrainDisabledReason1) ToPointer() *UpdateDrainDisabledReason1 {
+	return &e
+}
+func (e *UpdateDrainDisabledReason1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "disabled-by-owner":
+		fallthrough
+	case "feature-not-available":
+		fallthrough
+	case "account-plan-downgrade":
+		fallthrough
+	case "disabled-by-admin":
+		*e = UpdateDrainDisabledReason1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateDrainDisabledReason1: %v", v)
+	}
 }
 
 type UpdateDrainSchemasLog1 struct {
@@ -3913,8 +3974,8 @@ func (e *UpdateDrainEncodingResponse1) UnmarshalJSON(data []byte) error {
 type UpdateDrainCompressionResponse1 string
 
 const (
-	UpdateDrainCompressionResponse1Gzip UpdateDrainCompressionResponse1 = "gzip"
 	UpdateDrainCompressionResponse1None UpdateDrainCompressionResponse1 = "none"
+	UpdateDrainCompressionResponse1Gzip UpdateDrainCompressionResponse1 = "gzip"
 )
 
 func (e UpdateDrainCompressionResponse1) ToPointer() *UpdateDrainCompressionResponse1 {
@@ -3926,9 +3987,9 @@ func (e *UpdateDrainCompressionResponse1) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "gzip":
-		fallthrough
 	case "none":
+		fallthrough
+	case "gzip":
 		*e = UpdateDrainCompressionResponse1(v)
 		return nil
 	default:
@@ -4338,67 +4399,6 @@ func (o *UpdateDrainSamplingResponse1) GetRequestPath() *string {
 		return nil
 	}
 	return o.RequestPath
-}
-
-type UpdateDrainResponseBodyStatus1 string
-
-const (
-	UpdateDrainResponseBodyStatus1Enabled  UpdateDrainResponseBodyStatus1 = "enabled"
-	UpdateDrainResponseBodyStatus1Disabled UpdateDrainResponseBodyStatus1 = "disabled"
-	UpdateDrainResponseBodyStatus1Errored  UpdateDrainResponseBodyStatus1 = "errored"
-)
-
-func (e UpdateDrainResponseBodyStatus1) ToPointer() *UpdateDrainResponseBodyStatus1 {
-	return &e
-}
-func (e *UpdateDrainResponseBodyStatus1) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "enabled":
-		fallthrough
-	case "disabled":
-		fallthrough
-	case "errored":
-		*e = UpdateDrainResponseBodyStatus1(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateDrainResponseBodyStatus1: %v", v)
-	}
-}
-
-type UpdateDrainDisabledReason1 string
-
-const (
-	UpdateDrainDisabledReason1DisabledByOwner      UpdateDrainDisabledReason1 = "disabled-by-owner"
-	UpdateDrainDisabledReason1FeatureNotAvailable  UpdateDrainDisabledReason1 = "feature-not-available"
-	UpdateDrainDisabledReason1AccountPlanDowngrade UpdateDrainDisabledReason1 = "account-plan-downgrade"
-	UpdateDrainDisabledReason1DisabledByAdmin      UpdateDrainDisabledReason1 = "disabled-by-admin"
-)
-
-func (e UpdateDrainDisabledReason1) ToPointer() *UpdateDrainDisabledReason1 {
-	return &e
-}
-func (e *UpdateDrainDisabledReason1) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "disabled-by-owner":
-		fallthrough
-	case "feature-not-available":
-		fallthrough
-	case "account-plan-downgrade":
-		fallthrough
-	case "disabled-by-admin":
-		*e = UpdateDrainDisabledReason1(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateDrainDisabledReason1: %v", v)
-	}
 }
 
 type UpdateDrainKindIntegration1 string
@@ -5149,20 +5149,20 @@ func (u UpdateDrainFilterV2Union1) MarshalJSON() ([]byte, error) {
 
 type UpdateDrainResponseBody1 struct {
 	ID                  string                              `json:"id"`
-	OwnerID             string                              `json:"ownerId"`
-	Name                string                              `json:"name"`
 	CreatedAt           float64                             `json:"createdAt"`
 	UpdatedAt           float64                             `json:"updatedAt"`
 	ProjectIds          []string                            `json:"projectIds,omitempty"`
+	Name                string                              `json:"name"`
+	TeamID              *string                             `json:"teamId,omitempty"`
+	OwnerID             string                              `json:"ownerId"`
+	Status              *UpdateDrainResponseBodyStatus1     `json:"status,omitempty"`
+	FirstErrorTimestamp *float64                            `json:"firstErrorTimestamp,omitempty"`
+	DisabledAt          *float64                            `json:"disabledAt,omitempty"`
+	DisabledBy          *string                             `json:"disabledBy,omitempty"`
+	DisabledReason      *UpdateDrainDisabledReason1         `json:"disabledReason,omitempty"`
 	Schemas             UpdateDrainSchemasResponse1         `json:"schemas"`
 	Delivery            UpdateDrainDeliveryResponseUnion1   `json:"delivery"`
 	Sampling            []UpdateDrainSamplingResponse1      `json:"sampling,omitempty"`
-	TeamID              *string                             `json:"teamId,omitempty"`
-	Status              *UpdateDrainResponseBodyStatus1     `json:"status,omitempty"`
-	DisabledAt          *float64                            `json:"disabledAt,omitempty"`
-	DisabledReason      *UpdateDrainDisabledReason1         `json:"disabledReason,omitempty"`
-	DisabledBy          *string                             `json:"disabledBy,omitempty"`
-	FirstErrorTimestamp *float64                            `json:"firstErrorTimestamp,omitempty"`
 	Source              UpdateDrainResponseBodySourceUnion1 `json:"source"`
 	Filter              *string                             `json:"filter,omitempty"`
 	FilterV2            *UpdateDrainFilterV2Union1          `json:"filterV2,omitempty"`
@@ -5173,7 +5173,7 @@ func (u UpdateDrainResponseBody1) MarshalJSON() ([]byte, error) {
 }
 
 func (u *UpdateDrainResponseBody1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id", "ownerId", "name", "createdAt", "updatedAt", "schemas", "delivery", "source"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id", "createdAt", "updatedAt", "name", "ownerId", "schemas", "delivery", "source"}); err != nil {
 		return err
 	}
 	return nil
@@ -5184,20 +5184,6 @@ func (o *UpdateDrainResponseBody1) GetID() string {
 		return ""
 	}
 	return o.ID
-}
-
-func (o *UpdateDrainResponseBody1) GetOwnerID() string {
-	if o == nil {
-		return ""
-	}
-	return o.OwnerID
-}
-
-func (o *UpdateDrainResponseBody1) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
 }
 
 func (o *UpdateDrainResponseBody1) GetCreatedAt() float64 {
@@ -5219,6 +5205,62 @@ func (o *UpdateDrainResponseBody1) GetProjectIds() []string {
 		return nil
 	}
 	return o.ProjectIds
+}
+
+func (o *UpdateDrainResponseBody1) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *UpdateDrainResponseBody1) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
+}
+
+func (o *UpdateDrainResponseBody1) GetOwnerID() string {
+	if o == nil {
+		return ""
+	}
+	return o.OwnerID
+}
+
+func (o *UpdateDrainResponseBody1) GetStatus() *UpdateDrainResponseBodyStatus1 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *UpdateDrainResponseBody1) GetFirstErrorTimestamp() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.FirstErrorTimestamp
+}
+
+func (o *UpdateDrainResponseBody1) GetDisabledAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DisabledAt
+}
+
+func (o *UpdateDrainResponseBody1) GetDisabledBy() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DisabledBy
+}
+
+func (o *UpdateDrainResponseBody1) GetDisabledReason() *UpdateDrainDisabledReason1 {
+	if o == nil {
+		return nil
+	}
+	return o.DisabledReason
 }
 
 func (o *UpdateDrainResponseBody1) GetSchemas() UpdateDrainSchemasResponse1 {
@@ -5256,48 +5298,6 @@ func (o *UpdateDrainResponseBody1) GetSampling() []UpdateDrainSamplingResponse1 
 		return nil
 	}
 	return o.Sampling
-}
-
-func (o *UpdateDrainResponseBody1) GetTeamID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.TeamID
-}
-
-func (o *UpdateDrainResponseBody1) GetStatus() *UpdateDrainResponseBodyStatus1 {
-	if o == nil {
-		return nil
-	}
-	return o.Status
-}
-
-func (o *UpdateDrainResponseBody1) GetDisabledAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.DisabledAt
-}
-
-func (o *UpdateDrainResponseBody1) GetDisabledReason() *UpdateDrainDisabledReason1 {
-	if o == nil {
-		return nil
-	}
-	return o.DisabledReason
-}
-
-func (o *UpdateDrainResponseBody1) GetDisabledBy() *string {
-	if o == nil {
-		return nil
-	}
-	return o.DisabledBy
-}
-
-func (o *UpdateDrainResponseBody1) GetFirstErrorTimestamp() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.FirstErrorTimestamp
 }
 
 func (o *UpdateDrainResponseBody1) GetSource() UpdateDrainResponseBodySourceUnion1 {

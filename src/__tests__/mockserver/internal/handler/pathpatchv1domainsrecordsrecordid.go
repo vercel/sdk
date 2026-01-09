@@ -51,13 +51,13 @@ func testUpdateRecordUpdateRecord0(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 	var respBody *operations.UpdateRecordResponseBody = &operations.UpdateRecordResponseBody{
-		Creator:    "<value>",
-		Domain:     "raw-scorpion.net",
 		ID:         "<id>",
 		Name:       "<value>",
-		RecordType: operations.RecordTypeAaaa,
 		Type:       operations.UpdateRecordTypeResponseBodyRecord,
 		Value:      "<value>",
+		Creator:    "<value>",
+		Domain:     "raw-scorpion.net",
+		RecordType: operations.RecordTypeAaaa,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

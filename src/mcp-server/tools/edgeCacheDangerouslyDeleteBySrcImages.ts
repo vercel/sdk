@@ -16,7 +16,7 @@ export const tool$edgeCacheDangerouslyDeleteBySrcImages: ToolDefinition<
   name: "edge-cache-dangerously-delete-by-src-images",
   description: `Dangerously delete by source image
 
-Marks a source image as deleted, causing cache entries associated with that source image to be revalidated in the foreground on the next request. Use this method with caution because one source image can be associated with many paths and deleting the cache can cause many concurrent requests to the origin leading to cache stampede problem. A good use case for deleting the cache is when the origin has also been deleted, for example it returns a 404 or 410 status code.`,
+Marks a source image as deleted, causing cache entries associated with that source image to be revalidated in the foreground on the next request. Use this method with caution because one source image can be associated with many paths and deleting the cache can cause many concurrent requests to the origin leading to cache stampede problem. This method is for advanced use cases and is not recommended; prefer using \`invalidateBySrcImage\` instead.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await edgeCacheDangerouslyDeleteBySrcImages(

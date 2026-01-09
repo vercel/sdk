@@ -35,8 +35,6 @@ export type UpdateEdgeConfigTransfer = {
   doneAt: number | null;
 };
 
-export type UpdateEdgeConfigSchema = {};
-
 export type UpdateEdgeConfigPurpose2 = {
   type: "experimentation";
   resourceId: string;
@@ -51,30 +49,32 @@ export type UpdateEdgeConfigPurpose =
   | UpdateEdgeConfigPurpose1
   | UpdateEdgeConfigPurpose2;
 
+export type UpdateEdgeConfigSchema = {};
+
 /**
  * An Edge Config
  */
 export type UpdateEdgeConfigResponseBody = {
-  createdAt: number;
-  updatedAt: number;
-  deletedAt?: number | null | undefined;
-  /**
-   * The ID of the user who created the Edge Config, optional because it is not always set.
-   */
-  createdBy?: string | undefined;
-  id: string;
-  /**
-   * Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
-   */
-  slug: string;
-  ownerId: string;
-  digest: string;
   /**
    * Keeps track of the current state of the Edge Config while it gets transferred.
    */
   transfer?: UpdateEdgeConfigTransfer | undefined;
-  schema?: UpdateEdgeConfigSchema | undefined;
+  id: string;
+  createdAt: number;
+  /**
+   * The ID of the user who created the Edge Config, optional because it is not always set.
+   */
+  createdBy?: string | undefined;
+  ownerId: string;
+  /**
+   * Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
+   */
+  slug: string;
+  updatedAt: number;
+  digest: string;
   purpose?: UpdateEdgeConfigPurpose1 | UpdateEdgeConfigPurpose2 | undefined;
+  deletedAt?: number | null | undefined;
+  schema?: UpdateEdgeConfigSchema | undefined;
   /**
    * Timestamp of when the Edge Config was synced to DynamoDB initially. It is only set when syncing the entire Edge Config, not when updating.
    */
@@ -226,39 +226,6 @@ export function updateEdgeConfigTransferFromJSON(
 }
 
 /** @internal */
-export const UpdateEdgeConfigSchema$inboundSchema: z.ZodType<
-  UpdateEdgeConfigSchema,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-/** @internal */
-export type UpdateEdgeConfigSchema$Outbound = {};
-
-/** @internal */
-export const UpdateEdgeConfigSchema$outboundSchema: z.ZodType<
-  UpdateEdgeConfigSchema$Outbound,
-  z.ZodTypeDef,
-  UpdateEdgeConfigSchema
-> = z.object({});
-
-export function updateEdgeConfigSchemaToJSON(
-  updateEdgeConfigSchema: UpdateEdgeConfigSchema,
-): string {
-  return JSON.stringify(
-    UpdateEdgeConfigSchema$outboundSchema.parse(updateEdgeConfigSchema),
-  );
-}
-export function updateEdgeConfigSchemaFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateEdgeConfigSchema, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateEdgeConfigSchema$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateEdgeConfigSchema' from JSON`,
-  );
-}
-
-/** @internal */
 export const UpdateEdgeConfigPurpose2$inboundSchema: z.ZodType<
   UpdateEdgeConfigPurpose2,
   z.ZodTypeDef,
@@ -384,49 +351,82 @@ export function updateEdgeConfigPurposeFromJSON(
 }
 
 /** @internal */
+export const UpdateEdgeConfigSchema$inboundSchema: z.ZodType<
+  UpdateEdgeConfigSchema,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+/** @internal */
+export type UpdateEdgeConfigSchema$Outbound = {};
+
+/** @internal */
+export const UpdateEdgeConfigSchema$outboundSchema: z.ZodType<
+  UpdateEdgeConfigSchema$Outbound,
+  z.ZodTypeDef,
+  UpdateEdgeConfigSchema
+> = z.object({});
+
+export function updateEdgeConfigSchemaToJSON(
+  updateEdgeConfigSchema: UpdateEdgeConfigSchema,
+): string {
+  return JSON.stringify(
+    UpdateEdgeConfigSchema$outboundSchema.parse(updateEdgeConfigSchema),
+  );
+}
+export function updateEdgeConfigSchemaFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateEdgeConfigSchema, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateEdgeConfigSchema$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateEdgeConfigSchema' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateEdgeConfigResponseBody$inboundSchema: z.ZodType<
   UpdateEdgeConfigResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  createdAt: types.number(),
-  updatedAt: types.number(),
-  deletedAt: z.nullable(types.number()).optional(),
-  createdBy: types.optional(types.string()),
-  id: types.string(),
-  slug: types.string(),
-  ownerId: types.string(),
-  digest: types.string(),
   transfer: types.optional(
     z.lazy(() => UpdateEdgeConfigTransfer$inboundSchema),
   ),
-  schema: types.optional(z.lazy(() => UpdateEdgeConfigSchema$inboundSchema)),
+  id: types.string(),
+  createdAt: types.number(),
+  createdBy: types.optional(types.string()),
+  ownerId: types.string(),
+  slug: types.string(),
+  updatedAt: types.number(),
+  digest: types.string(),
   purpose: types.optional(
     z.union([
       z.lazy(() => UpdateEdgeConfigPurpose1$inboundSchema),
       z.lazy(() => UpdateEdgeConfigPurpose2$inboundSchema),
     ]),
   ),
+  deletedAt: z.nullable(types.number()).optional(),
+  schema: types.optional(z.lazy(() => UpdateEdgeConfigSchema$inboundSchema)),
   syncedToDynamoAt: types.optional(types.number()),
   sizeInBytes: types.number(),
   itemCount: types.number(),
 });
 /** @internal */
 export type UpdateEdgeConfigResponseBody$Outbound = {
-  createdAt: number;
-  updatedAt: number;
-  deletedAt?: number | null | undefined;
-  createdBy?: string | undefined;
-  id: string;
-  slug: string;
-  ownerId: string;
-  digest: string;
   transfer?: UpdateEdgeConfigTransfer$Outbound | undefined;
-  schema?: UpdateEdgeConfigSchema$Outbound | undefined;
+  id: string;
+  createdAt: number;
+  createdBy?: string | undefined;
+  ownerId: string;
+  slug: string;
+  updatedAt: number;
+  digest: string;
   purpose?:
     | UpdateEdgeConfigPurpose1$Outbound
     | UpdateEdgeConfigPurpose2$Outbound
     | undefined;
+  deletedAt?: number | null | undefined;
+  schema?: UpdateEdgeConfigSchema$Outbound | undefined;
   syncedToDynamoAt?: number | undefined;
   sizeInBytes: number;
   itemCount: number;
@@ -438,20 +438,20 @@ export const UpdateEdgeConfigResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateEdgeConfigResponseBody
 > = z.object({
-  createdAt: z.number(),
-  updatedAt: z.number(),
-  deletedAt: z.nullable(z.number()).optional(),
-  createdBy: z.string().optional(),
-  id: z.string(),
-  slug: z.string(),
-  ownerId: z.string(),
-  digest: z.string(),
   transfer: z.lazy(() => UpdateEdgeConfigTransfer$outboundSchema).optional(),
-  schema: z.lazy(() => UpdateEdgeConfigSchema$outboundSchema).optional(),
+  id: z.string(),
+  createdAt: z.number(),
+  createdBy: z.string().optional(),
+  ownerId: z.string(),
+  slug: z.string(),
+  updatedAt: z.number(),
+  digest: z.string(),
   purpose: z.union([
     z.lazy(() => UpdateEdgeConfigPurpose1$outboundSchema),
     z.lazy(() => UpdateEdgeConfigPurpose2$outboundSchema),
   ]).optional(),
+  deletedAt: z.nullable(z.number()).optional(),
+  schema: z.lazy(() => UpdateEdgeConfigSchema$outboundSchema).optional(),
   syncedToDynamoAt: z.number().optional(),
   sizeInBytes: z.number(),
   itemCount: z.number(),

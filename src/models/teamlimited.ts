@@ -11,8 +11,8 @@ import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export const LimitedBy = {
-  Scope: "scope",
   Mfa: "mfa",
+  Scope: "scope",
 } as const;
 export type LimitedBy = ClosedEnum<typeof LimitedBy>;
 

@@ -54,10 +54,10 @@ func testUpdateDrainUpdateDrain0(w http.ResponseWriter, req *http.Request) {
 	var respBody *operations.UpdateDrainResponseBody = types.Pointer(operations.CreateUpdateDrainResponseBodyUpdateDrainResponseBody1(
 		operations.UpdateDrainResponseBody1{
 			ID:        "<id>",
-			OwnerID:   "<id>",
-			Name:      "<value>",
 			CreatedAt: 7781.81,
 			UpdatedAt: 8087.89,
+			Name:      "<value>",
+			OwnerID:   "<id>",
 			Schemas:   operations.UpdateDrainSchemasResponse1{},
 			Delivery: operations.CreateUpdateDrainDeliveryResponseUnion1Internal(
 				operations.UpdateDrainDeliveryVercelOtelTracesDb1{

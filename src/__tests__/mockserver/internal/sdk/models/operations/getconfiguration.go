@@ -44,12 +44,12 @@ func (o *GetConfigurationRequest) GetSlug() *string {
 type GetConfigurationStatus2 string
 
 const (
-	GetConfigurationStatus2Pending     GetConfigurationStatus2 = "pending"
+	GetConfigurationStatus2Error       GetConfigurationStatus2 = "error"
 	GetConfigurationStatus2Ready       GetConfigurationStatus2 = "ready"
+	GetConfigurationStatus2Pending     GetConfigurationStatus2 = "pending"
 	GetConfigurationStatus2Onboarding  GetConfigurationStatus2 = "onboarding"
 	GetConfigurationStatus2Suspended   GetConfigurationStatus2 = "suspended"
 	GetConfigurationStatus2Resumed     GetConfigurationStatus2 = "resumed"
-	GetConfigurationStatus2Error       GetConfigurationStatus2 = "error"
 	GetConfigurationStatus2Uninstalled GetConfigurationStatus2 = "uninstalled"
 )
 
@@ -62,17 +62,17 @@ func (e *GetConfigurationStatus2) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "pending":
+	case "error":
 		fallthrough
 	case "ready":
+		fallthrough
+	case "pending":
 		fallthrough
 	case "onboarding":
 		fallthrough
 	case "suspended":
 		fallthrough
 	case "resumed":
-		fallthrough
-	case "error":
 		fallthrough
 	case "uninstalled":
 		*e = GetConfigurationStatus2(v)
@@ -646,8 +646,8 @@ func (e *KindTransferToMarketplace) UnmarshalJSON(data []byte) error {
 type TransferRequestType string
 
 const (
-	TransferRequestTypeSubscription TransferRequestType = "subscription"
 	TransferRequestTypePrepayment   TransferRequestType = "prepayment"
+	TransferRequestTypeSubscription TransferRequestType = "subscription"
 )
 
 func (e TransferRequestType) ToPointer() *TransferRequestType {
@@ -659,9 +659,9 @@ func (e *TransferRequestType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "subscription":
-		fallthrough
 	case "prepayment":
+		fallthrough
+	case "subscription":
 		*e = TransferRequestType(v)
 		return nil
 	default:
@@ -998,6 +998,71 @@ func (u TransferRequest) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type TransferRequest: all fields are null")
 }
 
+// GetConfigurationStatus1 - The configuration status. Optional. If not defined, assume 'ready'.
+type GetConfigurationStatus1 string
+
+const (
+	GetConfigurationStatus1Error       GetConfigurationStatus1 = "error"
+	GetConfigurationStatus1Ready       GetConfigurationStatus1 = "ready"
+	GetConfigurationStatus1Pending     GetConfigurationStatus1 = "pending"
+	GetConfigurationStatus1Onboarding  GetConfigurationStatus1 = "onboarding"
+	GetConfigurationStatus1Suspended   GetConfigurationStatus1 = "suspended"
+	GetConfigurationStatus1Resumed     GetConfigurationStatus1 = "resumed"
+	GetConfigurationStatus1Uninstalled GetConfigurationStatus1 = "uninstalled"
+)
+
+func (e GetConfigurationStatus1) ToPointer() *GetConfigurationStatus1 {
+	return &e
+}
+func (e *GetConfigurationStatus1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "error":
+		fallthrough
+	case "ready":
+		fallthrough
+	case "pending":
+		fallthrough
+	case "onboarding":
+		fallthrough
+	case "suspended":
+		fallthrough
+	case "resumed":
+		fallthrough
+	case "uninstalled":
+		*e = GetConfigurationStatus1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetConfigurationStatus1: %v", v)
+	}
+}
+
+type GetConfigurationTypeIntegrationConfiguration1 string
+
+const (
+	GetConfigurationTypeIntegrationConfiguration1IntegrationConfiguration GetConfigurationTypeIntegrationConfiguration1 = "integration-configuration"
+)
+
+func (e GetConfigurationTypeIntegrationConfiguration1) ToPointer() *GetConfigurationTypeIntegrationConfiguration1 {
+	return &e
+}
+func (e *GetConfigurationTypeIntegrationConfiguration1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "integration-configuration":
+		*e = GetConfigurationTypeIntegrationConfiguration1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetConfigurationTypeIntegrationConfiguration1: %v", v)
+	}
+}
+
 type GetConfigurationDisabledReason1 string
 
 const (
@@ -1063,71 +1128,6 @@ func (e *GetConfigurationInstallationType1) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// GetConfigurationStatus1 - The configuration status. Optional. If not defined, assume 'ready'.
-type GetConfigurationStatus1 string
-
-const (
-	GetConfigurationStatus1Pending     GetConfigurationStatus1 = "pending"
-	GetConfigurationStatus1Ready       GetConfigurationStatus1 = "ready"
-	GetConfigurationStatus1Onboarding  GetConfigurationStatus1 = "onboarding"
-	GetConfigurationStatus1Suspended   GetConfigurationStatus1 = "suspended"
-	GetConfigurationStatus1Resumed     GetConfigurationStatus1 = "resumed"
-	GetConfigurationStatus1Error       GetConfigurationStatus1 = "error"
-	GetConfigurationStatus1Uninstalled GetConfigurationStatus1 = "uninstalled"
-)
-
-func (e GetConfigurationStatus1) ToPointer() *GetConfigurationStatus1 {
-	return &e
-}
-func (e *GetConfigurationStatus1) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "pending":
-		fallthrough
-	case "ready":
-		fallthrough
-	case "onboarding":
-		fallthrough
-	case "suspended":
-		fallthrough
-	case "resumed":
-		fallthrough
-	case "error":
-		fallthrough
-	case "uninstalled":
-		*e = GetConfigurationStatus1(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetConfigurationStatus1: %v", v)
-	}
-}
-
-type GetConfigurationTypeIntegrationConfiguration1 string
-
-const (
-	GetConfigurationTypeIntegrationConfiguration1IntegrationConfiguration GetConfigurationTypeIntegrationConfiguration1 = "integration-configuration"
-)
-
-func (e GetConfigurationTypeIntegrationConfiguration1) ToPointer() *GetConfigurationTypeIntegrationConfiguration1 {
-	return &e
-}
-func (e *GetConfigurationTypeIntegrationConfiguration1) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "integration-configuration":
-		*e = GetConfigurationTypeIntegrationConfiguration1(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetConfigurationTypeIntegrationConfiguration1: %v", v)
-	}
-}
-
 type GetConfigurationIntegrationConfiguration1 struct {
 	// A string representing the permission for projects. Possible values are `all` or `selected`.
 	ProjectSelection ProjectSelection             `json:"projectSelection"`
@@ -1135,16 +1135,15 @@ type GetConfigurationIntegrationConfiguration1 struct {
 	TransferRequest  TransferRequest              `json:"transferRequest"`
 	// When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access.
 	Projects []string `json:"projects,omitempty"`
+	// The configuration status. Optional. If not defined, assume 'ready'.
+	Status *GetConfigurationStatus1                      `json:"status,omitempty"`
+	Type   GetConfigurationTypeIntegrationConfiguration1 `json:"type"`
 	// A timestamp that tells you when the configuration was created
 	CreatedAt float64 `json:"createdAt"`
-	// A timestamp that tells you when the configuration was installed successfully
-	CompletedAt *float64 `json:"completedAt,omitempty"`
+	// A timestamp that tells you when the configuration was deleted.
+	DeletedAt *float64 `json:"deletedAt,omitempty"`
 	// The unique identifier of the configuration
 	ID string `json:"id"`
-	// The unique identifier of the app the configuration was created for
-	IntegrationID string `json:"integrationId"`
-	// The user or team ID that owns the configuration
-	OwnerID string `json:"ownerId"`
 	// The slug of the integration the configuration is created for.
 	Slug string `json:"slug"`
 	// When the configuration was created for a team, this will show the ID of the team.
@@ -1155,23 +1154,24 @@ type GetConfigurationIntegrationConfiguration1 struct {
 	UserID string `json:"userId"`
 	// The resources that are allowed to be accessed by the configuration.
 	Scopes []string `json:"scopes"`
-	// A timestamp that tells you when the configuration was disabled. Note: Configurations can be disabled when the associated user loses access to a team. They do not function during this time until the configuration is 'transferred', meaning the associated user is changed to one with access to the team.
-	DisabledAt     *float64                         `json:"disabledAt,omitempty"`
-	DisabledReason *GetConfigurationDisabledReason1 `json:"disabledReason,omitempty"`
 	// Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
-	Source                    *string `json:"source,omitempty"`
-	CanConfigureOpenTelemetry *bool   `json:"canConfigureOpenTelemetry,omitempty"`
+	Source *string `json:"source,omitempty"`
+	// The unique identifier of the app the configuration was created for
+	IntegrationID string `json:"integrationId"`
+	// The user or team ID that owns the configuration
+	OwnerID                   string `json:"ownerId"`
+	CanConfigureOpenTelemetry *bool  `json:"canConfigureOpenTelemetry,omitempty"`
+	// A timestamp that tells you when the configuration was installed successfully
+	CompletedAt *float64 `json:"completedAt,omitempty"`
+	// An external identifier defined by the integration vendor.
+	ExternalID *string `json:"externalId,omitempty"`
+	// A timestamp that tells you when the configuration was disabled. Note: Configurations can be disabled when the associated user loses access to a team. They do not function during this time until the configuration is 'transferred', meaning the associated user is changed to one with access to the team.
+	DisabledAt *float64 `json:"disabledAt,omitempty"`
+	// A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.
+	DeleteRequestedAt *float64                         `json:"deleteRequestedAt,omitempty"`
+	DisabledReason    *GetConfigurationDisabledReason1 `json:"disabledReason,omitempty"`
 	// Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
 	InstallationType *GetConfigurationInstallationType1 `json:"installationType,omitempty"`
-	// A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.
-	DeleteRequestedAt *float64 `json:"deleteRequestedAt,omitempty"`
-	// The configuration status. Optional. If not defined, assume 'ready'.
-	Status *GetConfigurationStatus1 `json:"status,omitempty"`
-	// An external identifier defined by the integration vendor.
-	ExternalID *string                                       `json:"externalId,omitempty"`
-	Type       GetConfigurationTypeIntegrationConfiguration1 `json:"type"`
-	// A timestamp that tells you when the configuration was deleted.
-	DeletedAt *float64 `json:"deletedAt,omitempty"`
 }
 
 func (g GetConfigurationIntegrationConfiguration1) MarshalJSON() ([]byte, error) {
@@ -1179,7 +1179,7 @@ func (g GetConfigurationIntegrationConfiguration1) MarshalJSON() ([]byte, error)
 }
 
 func (g *GetConfigurationIntegrationConfiguration1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"projectSelection", "notification", "transferRequest", "createdAt", "id", "integrationId", "ownerId", "slug", "updatedAt", "userId", "scopes", "type"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"projectSelection", "notification", "transferRequest", "type", "createdAt", "id", "slug", "updatedAt", "userId", "scopes", "integrationId", "ownerId"}); err != nil {
 		return err
 	}
 	return nil
@@ -1221,6 +1221,20 @@ func (o *GetConfigurationIntegrationConfiguration1) GetProjects() []string {
 	return o.Projects
 }
 
+func (o *GetConfigurationIntegrationConfiguration1) GetStatus() *GetConfigurationStatus1 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *GetConfigurationIntegrationConfiguration1) GetType() GetConfigurationTypeIntegrationConfiguration1 {
+	if o == nil {
+		return GetConfigurationTypeIntegrationConfiguration1("")
+	}
+	return o.Type
+}
+
 func (o *GetConfigurationIntegrationConfiguration1) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
@@ -1228,11 +1242,11 @@ func (o *GetConfigurationIntegrationConfiguration1) GetCreatedAt() float64 {
 	return o.CreatedAt
 }
 
-func (o *GetConfigurationIntegrationConfiguration1) GetCompletedAt() *float64 {
+func (o *GetConfigurationIntegrationConfiguration1) GetDeletedAt() *float64 {
 	if o == nil {
 		return nil
 	}
-	return o.CompletedAt
+	return o.DeletedAt
 }
 
 func (o *GetConfigurationIntegrationConfiguration1) GetID() string {
@@ -1240,20 +1254,6 @@ func (o *GetConfigurationIntegrationConfiguration1) GetID() string {
 		return ""
 	}
 	return o.ID
-}
-
-func (o *GetConfigurationIntegrationConfiguration1) GetIntegrationID() string {
-	if o == nil {
-		return ""
-	}
-	return o.IntegrationID
-}
-
-func (o *GetConfigurationIntegrationConfiguration1) GetOwnerID() string {
-	if o == nil {
-		return ""
-	}
-	return o.OwnerID
 }
 
 func (o *GetConfigurationIntegrationConfiguration1) GetSlug() string {
@@ -1291,25 +1291,25 @@ func (o *GetConfigurationIntegrationConfiguration1) GetScopes() []string {
 	return o.Scopes
 }
 
-func (o *GetConfigurationIntegrationConfiguration1) GetDisabledAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.DisabledAt
-}
-
-func (o *GetConfigurationIntegrationConfiguration1) GetDisabledReason() *GetConfigurationDisabledReason1 {
-	if o == nil {
-		return nil
-	}
-	return o.DisabledReason
-}
-
 func (o *GetConfigurationIntegrationConfiguration1) GetSource() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Source
+}
+
+func (o *GetConfigurationIntegrationConfiguration1) GetIntegrationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.IntegrationID
+}
+
+func (o *GetConfigurationIntegrationConfiguration1) GetOwnerID() string {
+	if o == nil {
+		return ""
+	}
+	return o.OwnerID
 }
 
 func (o *GetConfigurationIntegrationConfiguration1) GetCanConfigureOpenTelemetry() *bool {
@@ -1319,25 +1319,11 @@ func (o *GetConfigurationIntegrationConfiguration1) GetCanConfigureOpenTelemetry
 	return o.CanConfigureOpenTelemetry
 }
 
-func (o *GetConfigurationIntegrationConfiguration1) GetInstallationType() *GetConfigurationInstallationType1 {
+func (o *GetConfigurationIntegrationConfiguration1) GetCompletedAt() *float64 {
 	if o == nil {
 		return nil
 	}
-	return o.InstallationType
-}
-
-func (o *GetConfigurationIntegrationConfiguration1) GetDeleteRequestedAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.DeleteRequestedAt
-}
-
-func (o *GetConfigurationIntegrationConfiguration1) GetStatus() *GetConfigurationStatus1 {
-	if o == nil {
-		return nil
-	}
-	return o.Status
+	return o.CompletedAt
 }
 
 func (o *GetConfigurationIntegrationConfiguration1) GetExternalID() *string {
@@ -1347,18 +1333,32 @@ func (o *GetConfigurationIntegrationConfiguration1) GetExternalID() *string {
 	return o.ExternalID
 }
 
-func (o *GetConfigurationIntegrationConfiguration1) GetType() GetConfigurationTypeIntegrationConfiguration1 {
-	if o == nil {
-		return GetConfigurationTypeIntegrationConfiguration1("")
-	}
-	return o.Type
-}
-
-func (o *GetConfigurationIntegrationConfiguration1) GetDeletedAt() *float64 {
+func (o *GetConfigurationIntegrationConfiguration1) GetDisabledAt() *float64 {
 	if o == nil {
 		return nil
 	}
-	return o.DeletedAt
+	return o.DisabledAt
+}
+
+func (o *GetConfigurationIntegrationConfiguration1) GetDeleteRequestedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DeleteRequestedAt
+}
+
+func (o *GetConfigurationIntegrationConfiguration1) GetDisabledReason() *GetConfigurationDisabledReason1 {
+	if o == nil {
+		return nil
+	}
+	return o.DisabledReason
+}
+
+func (o *GetConfigurationIntegrationConfiguration1) GetInstallationType() *GetConfigurationInstallationType1 {
+	if o == nil {
+		return nil
+	}
+	return o.InstallationType
 }
 
 type GetConfigurationResponseBodyType string

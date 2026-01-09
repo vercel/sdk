@@ -88,6 +88,12 @@ export type UpdateRecordRequest = {
   requestBody: UpdateRecordRequestBody;
 };
 
+export const UpdateRecordDnsType = {
+  Record: "record",
+  RecordSys: "record-sys",
+} as const;
+export type UpdateRecordDnsType = ClosedEnum<typeof UpdateRecordDnsType>;
+
 export const RecordType = {
   A: "A",
   Aaaa: "AAAA",
@@ -102,23 +108,17 @@ export const RecordType = {
 } as const;
 export type RecordType = ClosedEnum<typeof RecordType>;
 
-export const UpdateRecordDnsType = {
-  Record: "record",
-  RecordSys: "record-sys",
-} as const;
-export type UpdateRecordDnsType = ClosedEnum<typeof UpdateRecordDnsType>;
-
 export type UpdateRecordResponseBody = {
-  createdAt?: number | null | undefined;
-  creator: string;
-  domain: string;
   id: string;
   name: string;
-  recordType: RecordType;
-  ttl?: number | undefined;
   type: UpdateRecordDnsType;
   value: string;
+  creator: string;
+  domain: string;
+  ttl?: number | undefined;
   comment?: string | undefined;
+  recordType: RecordType;
+  createdAt?: number | null | undefined;
 };
 
 /** @internal */
@@ -323,13 +323,6 @@ export function updateRecordRequestFromJSON(
 }
 
 /** @internal */
-export const RecordType$inboundSchema: z.ZodNativeEnum<typeof RecordType> = z
-  .nativeEnum(RecordType);
-/** @internal */
-export const RecordType$outboundSchema: z.ZodNativeEnum<typeof RecordType> =
-  RecordType$inboundSchema;
-
-/** @internal */
 export const UpdateRecordDnsType$inboundSchema: z.ZodNativeEnum<
   typeof UpdateRecordDnsType
 > = z.nativeEnum(UpdateRecordDnsType);
@@ -339,34 +332,41 @@ export const UpdateRecordDnsType$outboundSchema: z.ZodNativeEnum<
 > = UpdateRecordDnsType$inboundSchema;
 
 /** @internal */
+export const RecordType$inboundSchema: z.ZodNativeEnum<typeof RecordType> = z
+  .nativeEnum(RecordType);
+/** @internal */
+export const RecordType$outboundSchema: z.ZodNativeEnum<typeof RecordType> =
+  RecordType$inboundSchema;
+
+/** @internal */
 export const UpdateRecordResponseBody$inboundSchema: z.ZodType<
   UpdateRecordResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  createdAt: z.nullable(types.number()).optional(),
-  creator: types.string(),
-  domain: types.string(),
   id: types.string(),
   name: types.string(),
-  recordType: RecordType$inboundSchema,
-  ttl: types.optional(types.number()),
   type: UpdateRecordDnsType$inboundSchema,
   value: types.string(),
+  creator: types.string(),
+  domain: types.string(),
+  ttl: types.optional(types.number()),
   comment: types.optional(types.string()),
+  recordType: RecordType$inboundSchema,
+  createdAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type UpdateRecordResponseBody$Outbound = {
-  createdAt?: number | null | undefined;
-  creator: string;
-  domain: string;
   id: string;
   name: string;
-  recordType: string;
-  ttl?: number | undefined;
   type: string;
   value: string;
+  creator: string;
+  domain: string;
+  ttl?: number | undefined;
   comment?: string | undefined;
+  recordType: string;
+  createdAt?: number | null | undefined;
 };
 
 /** @internal */
@@ -375,16 +375,16 @@ export const UpdateRecordResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateRecordResponseBody
 > = z.object({
-  createdAt: z.nullable(z.number()).optional(),
-  creator: z.string(),
-  domain: z.string(),
   id: z.string(),
   name: z.string(),
-  recordType: RecordType$outboundSchema,
-  ttl: z.number().optional(),
   type: UpdateRecordDnsType$outboundSchema,
   value: z.string(),
+  creator: z.string(),
+  domain: z.string(),
+  ttl: z.number().optional(),
   comment: z.string().optional(),
+  recordType: RecordType$outboundSchema,
+  createdAt: z.nullable(z.number()).optional(),
 });
 
 export function updateRecordResponseBodyToJSON(

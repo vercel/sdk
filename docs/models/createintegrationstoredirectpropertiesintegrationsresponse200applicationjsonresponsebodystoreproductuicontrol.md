@@ -9,11 +9,11 @@ import {
 
 let value:
   CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductUiControl =
-    "domain";
+    "multi-vercel-region";
 ```
 
 ## Values
 
 ```typescript
-"domain"
+"multi-vercel-region"
 ```

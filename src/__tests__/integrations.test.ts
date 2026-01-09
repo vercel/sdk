@@ -123,7 +123,14 @@ test("Integrations Create Integration Store Direct", async () => {
       status: "available",
       externalResourceId: "<id>",
       product: {
-        value: "{\"__@BRAND@8897\":{}}",
+        integration: {
+          id: "<id>",
+          name: "<value>",
+          slug: "<value>",
+          icon: "<value>",
+        },
+        integrationConfigurationId: "<id>",
+        supportedProtocols: [],
       },
       secrets: [],
     },

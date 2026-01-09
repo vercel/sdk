@@ -11,12 +11,21 @@ let value: CreateIntegrationStoreDirectStore = {
   status: "limits-exceeded-suspended-store-count",
   externalResourceId: "<id>",
   product: {
-    value: "<value>",
+    integration: {
+      id: "<id>",
+      name: "<value>",
+      slug: "<value>",
+      icon: "<value>",
+    },
+    integrationConfigurationId: "<id>",
+    supportedProtocols: [
+      "experimentation",
+    ],
   },
   secrets: [
     {
       name: "<value>",
-      length: 96.14,
+      length: 3182.3,
     },
   ],
 };

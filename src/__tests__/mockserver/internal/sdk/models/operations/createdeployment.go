@@ -9164,6 +9164,8 @@ type CreateDeploymentResponseBody struct {
 	UndeletedAt *float64 `json:"undeletedAt,omitempty"`
 	// A string with the unique URL of the deployment
 	URL string `json:"url"`
+	// Since January 2025 User-configured deployment ID for skew protection with pre-built deployments. This is set when users configure a custom deploymentId in their next.config.js file. This allows Next.js to use skew protection even when deployments are pre-built outside of Vercel's build system.
+	UserConfiguredDeploymentID *string `json:"userConfiguredDeploymentId,omitempty"`
 	// The platform version that was used to create the deployment.
 	Version                float64                              `json:"version"`
 	OidcTokenClaims        *CreateDeploymentOidcTokenClaims     `json:"oidcTokenClaims,omitempty"`
@@ -9647,6 +9649,13 @@ func (o *CreateDeploymentResponseBody) GetURL() string {
 		return ""
 	}
 	return o.URL
+}
+
+func (o *CreateDeploymentResponseBody) GetUserConfiguredDeploymentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UserConfiguredDeploymentID
 }
 
 func (o *CreateDeploymentResponseBody) GetVersion() float64 {

@@ -101,10 +101,10 @@ func (o *GetEdgeConfigBackupUser2) GetAvatar() *string {
 }
 
 type GetEdgeConfigBackupItems2 struct {
-	UpdatedAt   float64                         `json:"updatedAt"`
-	Value       *components.EdgeConfigItemValue `json:"value"`
 	Description *string                         `json:"description,omitempty"`
 	CreatedAt   float64                         `json:"createdAt"`
+	UpdatedAt   float64                         `json:"updatedAt"`
+	Value       *components.EdgeConfigItemValue `json:"value"`
 }
 
 func (g GetEdgeConfigBackupItems2) MarshalJSON() ([]byte, error) {
@@ -112,24 +112,10 @@ func (g GetEdgeConfigBackupItems2) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetEdgeConfigBackupItems2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"updatedAt", "value", "createdAt"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"createdAt", "updatedAt", "value"}); err != nil {
 		return err
 	}
 	return nil
-}
-
-func (o *GetEdgeConfigBackupItems2) GetUpdatedAt() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.UpdatedAt
-}
-
-func (o *GetEdgeConfigBackupItems2) GetValue() *components.EdgeConfigItemValue {
-	if o == nil {
-		return nil
-	}
-	return o.Value
 }
 
 func (o *GetEdgeConfigBackupItems2) GetDescription() *string {
@@ -146,12 +132,26 @@ func (o *GetEdgeConfigBackupItems2) GetCreatedAt() float64 {
 	return o.CreatedAt
 }
 
+func (o *GetEdgeConfigBackupItems2) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+func (o *GetEdgeConfigBackupItems2) GetValue() *components.EdgeConfigItemValue {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}
+
 type GetEdgeConfigBackupBackup2 struct {
-	Digest string                               `json:"digest"`
-	Items  map[string]GetEdgeConfigBackupItems2 `json:"items"`
+	Items map[string]GetEdgeConfigBackupItems2 `json:"items"`
 	// Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
 	Slug      string  `json:"slug"`
 	UpdatedAt float64 `json:"updatedAt"`
+	Digest    string  `json:"digest"`
 }
 
 func (g GetEdgeConfigBackupBackup2) MarshalJSON() ([]byte, error) {
@@ -159,17 +159,10 @@ func (g GetEdgeConfigBackupBackup2) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetEdgeConfigBackupBackup2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"digest", "items", "slug", "updatedAt"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"items", "slug", "updatedAt", "digest"}); err != nil {
 		return err
 	}
 	return nil
-}
-
-func (o *GetEdgeConfigBackupBackup2) GetDigest() string {
-	if o == nil {
-		return ""
-	}
-	return o.Digest
 }
 
 func (o *GetEdgeConfigBackupBackup2) GetItems() map[string]GetEdgeConfigBackupItems2 {
@@ -191,6 +184,13 @@ func (o *GetEdgeConfigBackupBackup2) GetUpdatedAt() float64 {
 		return 0.0
 	}
 	return o.UpdatedAt
+}
+
+func (o *GetEdgeConfigBackupBackup2) GetDigest() string {
+	if o == nil {
+		return ""
+	}
+	return o.Digest
 }
 
 type GetEdgeConfigBackupMetadata2 struct {
@@ -294,10 +294,10 @@ func (o *GetEdgeConfigBackupResponseBody2) GetMetadata() GetEdgeConfigBackupMeta
 }
 
 type GetEdgeConfigBackupItems1 struct {
-	UpdatedAt   float64                         `json:"updatedAt"`
-	Value       *components.EdgeConfigItemValue `json:"value"`
 	Description *string                         `json:"description,omitempty"`
 	CreatedAt   float64                         `json:"createdAt"`
+	UpdatedAt   float64                         `json:"updatedAt"`
+	Value       *components.EdgeConfigItemValue `json:"value"`
 }
 
 func (g GetEdgeConfigBackupItems1) MarshalJSON() ([]byte, error) {
@@ -305,24 +305,10 @@ func (g GetEdgeConfigBackupItems1) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetEdgeConfigBackupItems1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"updatedAt", "value", "createdAt"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"createdAt", "updatedAt", "value"}); err != nil {
 		return err
 	}
 	return nil
-}
-
-func (o *GetEdgeConfigBackupItems1) GetUpdatedAt() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.UpdatedAt
-}
-
-func (o *GetEdgeConfigBackupItems1) GetValue() *components.EdgeConfigItemValue {
-	if o == nil {
-		return nil
-	}
-	return o.Value
 }
 
 func (o *GetEdgeConfigBackupItems1) GetDescription() *string {
@@ -339,12 +325,26 @@ func (o *GetEdgeConfigBackupItems1) GetCreatedAt() float64 {
 	return o.CreatedAt
 }
 
+func (o *GetEdgeConfigBackupItems1) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+func (o *GetEdgeConfigBackupItems1) GetValue() *components.EdgeConfigItemValue {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}
+
 type GetEdgeConfigBackupBackup1 struct {
-	Digest string                               `json:"digest"`
-	Items  map[string]GetEdgeConfigBackupItems1 `json:"items"`
+	Items map[string]GetEdgeConfigBackupItems1 `json:"items"`
 	// Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
 	Slug      string  `json:"slug"`
 	UpdatedAt float64 `json:"updatedAt"`
+	Digest    string  `json:"digest"`
 }
 
 func (g GetEdgeConfigBackupBackup1) MarshalJSON() ([]byte, error) {
@@ -352,17 +352,10 @@ func (g GetEdgeConfigBackupBackup1) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetEdgeConfigBackupBackup1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"digest", "items", "slug", "updatedAt"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"items", "slug", "updatedAt", "digest"}); err != nil {
 		return err
 	}
 	return nil
-}
-
-func (o *GetEdgeConfigBackupBackup1) GetDigest() string {
-	if o == nil {
-		return ""
-	}
-	return o.Digest
 }
 
 func (o *GetEdgeConfigBackupBackup1) GetItems() map[string]GetEdgeConfigBackupItems1 {
@@ -384,6 +377,13 @@ func (o *GetEdgeConfigBackupBackup1) GetUpdatedAt() float64 {
 		return 0.0
 	}
 	return o.UpdatedAt
+}
+
+func (o *GetEdgeConfigBackupBackup1) GetDigest() string {
+	if o == nil {
+		return ""
+	}
+	return o.Digest
 }
 
 type GetEdgeConfigBackupMetadata1 struct {

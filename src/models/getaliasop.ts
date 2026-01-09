@@ -208,6 +208,9 @@ export type GetAliasMicrofrontends = {
     | Array<Applications3>;
 };
 
+/**
+ * The alias information
+ */
 export type GetAliasResponseBody = {
   /**
    * The alias name, it could be a `.vercel.app` subdomain or a custom domain
@@ -220,7 +223,7 @@ export type GetAliasResponseBody = {
   /**
    * The date when the alias was created in milliseconds since the UNIX epoch
    */
-  createdAt?: number | undefined;
+  createdAt?: number | null | undefined;
   /**
    * Information of the user who created the alias
    */
@@ -228,7 +231,7 @@ export type GetAliasResponseBody = {
   /**
    * The date when the alias was deleted in milliseconds since the UNIX epoch
    */
-  deletedAt?: number | undefined;
+  deletedAt?: number | null | undefined;
   /**
    * A map with the deployment ID, URL and metadata
    */
@@ -256,7 +259,7 @@ export type GetAliasResponseBody = {
   /**
    * The date when the alias was updated in milliseconds since the UNIX epoch
    */
-  updatedAt?: number | undefined;
+  updatedAt?: number | null | undefined;
   /**
    * The protection bypass for the alias
    */
@@ -929,16 +932,16 @@ export const GetAliasResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   alias: types.string(),
   created: types.date(),
-  createdAt: types.optional(types.number()),
+  createdAt: z.nullable(types.number()).optional(),
   creator: types.optional(z.lazy(() => GetAliasCreator$inboundSchema)),
-  deletedAt: types.optional(types.number()),
+  deletedAt: z.nullable(types.number()).optional(),
   deployment: types.optional(z.lazy(() => GetAliasDeployment$inboundSchema)),
   deploymentId: types.nullable(types.string()),
   projectId: types.nullable(types.string()),
   redirect: z.nullable(types.string()).optional(),
   redirectStatusCode: z.nullable(types.number()).optional(),
   uid: types.string(),
-  updatedAt: types.optional(types.number()),
+  updatedAt: z.nullable(types.number()).optional(),
   protectionBypass: types.optional(
     z.record(z.union([
       z.lazy(() => GetAliasProtectionBypass1$inboundSchema),
@@ -957,16 +960,16 @@ export const GetAliasResponseBody$inboundSchema: z.ZodType<
 export type GetAliasResponseBody$Outbound = {
   alias: string;
   created: string;
-  createdAt?: number | undefined;
+  createdAt?: number | null | undefined;
   creator?: GetAliasCreator$Outbound | undefined;
-  deletedAt?: number | undefined;
+  deletedAt?: number | null | undefined;
   deployment?: GetAliasDeployment$Outbound | undefined;
   deploymentId: string | null;
   projectId: string | null;
   redirect?: string | null | undefined;
   redirectStatusCode?: number | null | undefined;
   uid: string;
-  updatedAt?: number | undefined;
+  updatedAt?: number | null | undefined;
   protectionBypass?: {
     [k: string]:
       | GetAliasProtectionBypass1$Outbound
@@ -985,16 +988,16 @@ export const GetAliasResponseBody$outboundSchema: z.ZodType<
 > = z.object({
   alias: z.string(),
   created: z.date().transform(v => v.toISOString()),
-  createdAt: z.number().optional(),
+  createdAt: z.nullable(z.number()).optional(),
   creator: z.lazy(() => GetAliasCreator$outboundSchema).optional(),
-  deletedAt: z.number().optional(),
+  deletedAt: z.nullable(z.number()).optional(),
   deployment: z.lazy(() => GetAliasDeployment$outboundSchema).optional(),
   deploymentId: z.nullable(z.string()),
   projectId: z.nullable(z.string()),
   redirect: z.nullable(z.string()).optional(),
   redirectStatusCode: z.nullable(z.number()).optional(),
   uid: z.string(),
-  updatedAt: z.number().optional(),
+  updatedAt: z.nullable(z.number()).optional(),
   protectionBypass: z.record(
     z.union([
       z.lazy(() => GetAliasProtectionBypass1$outboundSchema),

@@ -9,11 +9,11 @@ import {
 
 let value:
   CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductType =
-    "string";
+    "array";
 ```
 
 ## Values
 
 ```typescript
-"string"
+"array"
 ```

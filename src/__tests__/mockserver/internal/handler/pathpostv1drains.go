@@ -54,10 +54,10 @@ func testCreateDrainCreateDrain0(w http.ResponseWriter, req *http.Request) {
 	var respBody *operations.CreateDrainResponseBody = types.Pointer(operations.CreateCreateDrainResponseBodyCreateDrainResponseBody1(
 		operations.CreateDrainResponseBody1{
 			ID:        "<id>",
-			OwnerID:   "<id>",
-			Name:      "<value>",
 			CreatedAt: 3665.73,
 			UpdatedAt: 3681.88,
+			Name:      "<value>",
+			OwnerID:   "<id>",
 			Schemas:   operations.CreateDrainSchemasResponse1{},
 			Delivery: operations.CreateCreateDrainDeliveryResponseUnion1Otlphttp(
 				operations.CreateDrainDeliveryOtlphttp1{

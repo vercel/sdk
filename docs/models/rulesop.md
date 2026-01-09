@@ -5,11 +5,11 @@
 ```typescript
 import { RulesOp } from "@vercel/sdk/models/getfirewallconfigop.js";
 
-let value: RulesOp = "suf";
+let value: RulesOp = "pre";
 ```
 
 ## Values
 
 ```typescript
-"re" | "eq" | "ex" | "inc" | "pre" | "suf" | "sub" | "gt" | "gte" | "lt" | "lte" | "nex" | "ninc" | "neq"
+"sub" | "re" | "eq" | "ex" | "inc" | "pre" | "suf" | "gt" | "gte" | "lt" | "lte" | "nex" | "ninc" | "neq"
 ```

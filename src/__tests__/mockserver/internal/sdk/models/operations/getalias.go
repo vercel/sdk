@@ -843,6 +843,7 @@ func (o *GetAliasMicrofrontends) GetApplications() GetAliasApplicationsUnion {
 	return o.Applications
 }
 
+// GetAliasResponseBody - The alias information
 type GetAliasResponseBody struct {
 	// The alias name, it could be a `.vercel.app` subdomain or a custom domain
 	Alias string `json:"alias"`
@@ -986,7 +987,7 @@ func (o *GetAliasResponseBody) GetMicrofrontends() *GetAliasMicrofrontends {
 type GetAliasResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// The alias information
-	ResponseBodies []GetAliasResponseBody
+	Object *GetAliasResponseBody
 }
 
 func (o *GetAliasResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -996,9 +997,9 @@ func (o *GetAliasResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *GetAliasResponse) GetResponseBodies() []GetAliasResponseBody {
+func (o *GetAliasResponse) GetObject() *GetAliasResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.ResponseBodies
+	return o.Object
 }

@@ -84,8 +84,8 @@ func (o *GetBypassIPRequest) GetSlug() *string {
 type GetBypassIPAction string
 
 const (
-	GetBypassIPActionBlock  GetBypassIPAction = "block"
 	GetBypassIPActionBypass GetBypassIPAction = "bypass"
+	GetBypassIPActionBlock  GetBypassIPAction = "block"
 )
 
 func (e GetBypassIPAction) ToPointer() *GetBypassIPAction {
@@ -97,9 +97,9 @@ func (e *GetBypassIPAction) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "block":
-		fallthrough
 	case "bypass":
+		fallthrough
+	case "block":
 		*e = GetBypassIPAction(v)
 		return nil
 	default:

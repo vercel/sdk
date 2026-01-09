@@ -13,14 +13,14 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 /**
  * The current status of the check
  */
-export const Status = {
+export const UpdateCheckStatus = {
   Running: "running",
   Completed: "completed",
 } as const;
 /**
  * The current status of the check
  */
-export type Status = ClosedEnum<typeof Status>;
+export type UpdateCheckStatus = ClosedEnum<typeof UpdateCheckStatus>;
 
 /**
  * The result of the check being run
@@ -163,7 +163,7 @@ export type UpdateCheckRequestBody = {
   /**
    * The current status of the check
    */
-  status?: Status | undefined;
+  status?: UpdateCheckStatus | undefined;
   /**
    * The result of the check being run
    */
@@ -202,12 +202,14 @@ export type UpdateCheckRequest = {
   requestBody: UpdateCheckRequestBody;
 };
 
-export const UpdateCheckStatus = {
+export const UpdateCheckChecksStatus = {
   Registered: "registered",
   Running: "running",
   Completed: "completed",
 } as const;
-export type UpdateCheckStatus = ClosedEnum<typeof UpdateCheckStatus>;
+export type UpdateCheckChecksStatus = ClosedEnum<
+  typeof UpdateCheckChecksStatus
+>;
 
 export const UpdateCheckConclusion = {
   Canceled: "canceled",
@@ -303,7 +305,7 @@ export type UpdateCheckResponseBody = {
   id: string;
   name: string;
   path?: string | undefined;
-  status: UpdateCheckStatus;
+  status: UpdateCheckChecksStatus;
   conclusion?: UpdateCheckConclusion | undefined;
   blocking: boolean;
   output?: UpdateCheckOutput | undefined;
@@ -319,11 +321,13 @@ export type UpdateCheckResponseBody = {
 };
 
 /** @internal */
-export const Status$inboundSchema: z.ZodNativeEnum<typeof Status> = z
-  .nativeEnum(Status);
+export const UpdateCheckStatus$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateCheckStatus
+> = z.nativeEnum(UpdateCheckStatus);
 /** @internal */
-export const Status$outboundSchema: z.ZodNativeEnum<typeof Status> =
-  Status$inboundSchema;
+export const UpdateCheckStatus$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateCheckStatus
+> = UpdateCheckStatus$inboundSchema;
 
 /** @internal */
 export const Conclusion$inboundSchema: z.ZodNativeEnum<typeof Conclusion> = z
@@ -663,7 +667,7 @@ export const UpdateCheckRequestBody$inboundSchema: z.ZodType<
 > = z.object({
   name: types.optional(types.string()),
   path: types.optional(types.string()),
-  status: types.optional(Status$inboundSchema),
+  status: types.optional(UpdateCheckStatus$inboundSchema),
   conclusion: types.optional(Conclusion$inboundSchema),
   detailsUrl: types.optional(types.string()),
   output: types.optional(z.lazy(() => Output$inboundSchema)),
@@ -688,7 +692,7 @@ export const UpdateCheckRequestBody$outboundSchema: z.ZodType<
 > = z.object({
   name: z.string().optional(),
   path: z.string().optional(),
-  status: Status$outboundSchema.optional(),
+  status: UpdateCheckStatus$outboundSchema.optional(),
   conclusion: Conclusion$outboundSchema.optional(),
   detailsUrl: z.string().optional(),
   output: z.lazy(() => Output$outboundSchema).optional(),
@@ -772,13 +776,13 @@ export function updateCheckRequestFromJSON(
 }
 
 /** @internal */
-export const UpdateCheckStatus$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateCheckStatus
-> = z.nativeEnum(UpdateCheckStatus);
+export const UpdateCheckChecksStatus$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateCheckChecksStatus
+> = z.nativeEnum(UpdateCheckChecksStatus);
 /** @internal */
-export const UpdateCheckStatus$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateCheckStatus
-> = UpdateCheckStatus$inboundSchema;
+export const UpdateCheckChecksStatus$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateCheckChecksStatus
+> = UpdateCheckChecksStatus$inboundSchema;
 
 /** @internal */
 export const UpdateCheckConclusion$inboundSchema: z.ZodNativeEnum<
@@ -1178,7 +1182,7 @@ export const UpdateCheckResponseBody$inboundSchema: z.ZodType<
   id: types.string(),
   name: types.string(),
   path: types.optional(types.string()),
-  status: UpdateCheckStatus$inboundSchema,
+  status: UpdateCheckChecksStatus$inboundSchema,
   conclusion: types.optional(UpdateCheckConclusion$inboundSchema),
   blocking: types.boolean(),
   output: types.optional(z.lazy(() => UpdateCheckOutput$inboundSchema)),
@@ -1221,7 +1225,7 @@ export const UpdateCheckResponseBody$outboundSchema: z.ZodType<
   id: z.string(),
   name: z.string(),
   path: z.string().optional(),
-  status: UpdateCheckStatus$outboundSchema,
+  status: UpdateCheckChecksStatus$outboundSchema,
   conclusion: UpdateCheckConclusion$outboundSchema.optional(),
   blocking: z.boolean(),
   output: z.lazy(() => UpdateCheckOutput$outboundSchema).optional(),

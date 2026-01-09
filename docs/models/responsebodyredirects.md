@@ -6,8 +6,8 @@
 import { ResponseBodyRedirects } from "@vercel/sdk/models/getredirectsop.js";
 
 let value: ResponseBodyRedirects = {
-  destination: "<value>",
   source: "<value>",
+  destination: "<value>",
 };
 ```
 
@@ -20,5 +20,5 @@ let value: ResponseBodyRedirects = {
 | `sensitive`        | *boolean*          | :heavy_minus_sign: | N/A                |
 | `caseSensitive`    | *boolean*          | :heavy_minus_sign: | N/A                |
 | `query`            | *boolean*          | :heavy_minus_sign: | N/A                |
-| `destination`      | *string*           | :heavy_check_mark: | N/A                |
 | `source`           | *string*           | :heavy_check_mark: | N/A                |
+| `destination`      | *string*           | :heavy_check_mark: | N/A                |

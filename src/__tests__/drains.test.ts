@@ -22,10 +22,10 @@ test("Drains Create Drain", async () => {
   expect(result).toBeDefined();
   expect(result).toEqual({
     id: "<id>",
-    ownerId: "<id>",
-    name: "<value>",
     createdAt: 3665.73,
     updatedAt: 3681.88,
+    name: "<value>",
+    ownerId: "<id>",
     schemas: {},
     delivery: {
       type: "otlphttp",
@@ -79,10 +79,10 @@ test("Drains Get Drain", async () => {
   expect(result).toBeDefined();
   expect(result).toEqual({
     id: "<id>",
-    ownerId: "<id>",
-    name: "<value>",
     createdAt: 1182.63,
     updatedAt: 7579.11,
+    name: "<value>",
+    ownerId: "<id>",
     schemas: {},
     delivery: {
       type: "http",
@@ -119,10 +119,10 @@ test("Drains Update Drain", async () => {
   expect(result).toBeDefined();
   expect(result).toEqual({
     id: "<id>",
-    ownerId: "<id>",
-    name: "<value>",
     createdAt: 7781.81,
     updatedAt: 8087.89,
+    name: "<value>",
+    ownerId: "<id>",
     schemas: {},
     delivery: {
       type: "internal",

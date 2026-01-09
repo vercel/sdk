@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ContentHint15 } from "@vercel/sdk/models/updateprojectdatacacheop.js";
+import { ContentHint15 } from "@vercel/sdk/models/editprojectenvop.js";
 
 let value: ContentHint15 = {
   type: "flags-connection-string",

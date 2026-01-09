@@ -13,9 +13,9 @@ let value: UiOptions = {
 
 ## Fields
 
-| Field                                               | Type                                                | Required                                            | Description                                         |
-| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| `value`                                             | *string*                                            | :heavy_check_mark:                                  | N/A                                                 |
-| `label`                                             | *string*                                            | :heavy_check_mark:                                  | N/A                                                 |
-| `disabled`                                          | *models.GetConfigurationProductsPropertiesDisabled* | :heavy_minus_sign:                                  | N/A                                                 |
-| `hidden`                                            | *models.GetConfigurationProductsPropertiesHidden*   | :heavy_minus_sign:                                  | N/A                                                 |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `value`            | *string*           | :heavy_check_mark: | N/A                |
+| `label`            | *string*           | :heavy_check_mark: | N/A                |
+| `disabled`         | *models.Disabled*  | :heavy_minus_sign: | N/A                |
+| `hidden`           | *models.Hidden*    | :heavy_minus_sign: | N/A                |

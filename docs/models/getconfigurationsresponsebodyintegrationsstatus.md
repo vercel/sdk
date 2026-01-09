@@ -13,5 +13,5 @@ let value: GetConfigurationsResponseBodyIntegrationsStatus = "uninstalled";
 ## Values
 
 ```typescript
-"pending" | "ready" | "onboarding" | "suspended" | "resumed" | "error" | "uninstalled"
+"error" | "ready" | "pending" | "onboarding" | "suspended" | "resumed" | "uninstalled"
 ```

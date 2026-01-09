@@ -182,12 +182,12 @@ export type UpdateProjectDataCacheProjectsResponse200ApplicationJSONType =
     typeof UpdateProjectDataCacheProjectsResponse200ApplicationJSONType
   >;
 
-export type ContentHint15 = {
+export type UpdateProjectDataCacheContentHint15 = {
   type: "flags-connection-string";
   projectId: string;
 };
 
-export type ContentHint14 = {
+export type UpdateProjectDataCacheContentHint14 = {
   type: "integration-store-secret";
   storeId: string;
   integrationId: string;
@@ -195,87 +195,87 @@ export type ContentHint14 = {
   integrationConfigurationId: string;
 };
 
-export type ContentHint13 = {
+export type UpdateProjectDataCacheContentHint13 = {
   type: "postgres-url-no-ssl";
   storeId: string;
 };
 
-export type ContentHint12 = {
+export type UpdateProjectDataCacheContentHint12 = {
   type: "postgres-database";
   storeId: string;
 };
 
-export type ContentHint11 = {
+export type UpdateProjectDataCacheContentHint11 = {
   type: "postgres-password";
   storeId: string;
 };
 
-export type ContentHint10 = {
+export type UpdateProjectDataCacheContentHint10 = {
   type: "postgres-host";
   storeId: string;
 };
 
-export type ContentHint9 = {
+export type UpdateProjectDataCacheContentHint9 = {
   type: "postgres-user";
   storeId: string;
 };
 
-export type ContentHint8 = {
+export type UpdateProjectDataCacheContentHint8 = {
   type: "postgres-prisma-url";
   storeId: string;
 };
 
-export type ContentHint7 = {
+export type UpdateProjectDataCacheContentHint7 = {
   type: "postgres-url-non-pooling";
   storeId: string;
 };
 
-export type ContentHint6 = {
+export type UpdateProjectDataCacheContentHint6 = {
   type: "postgres-url";
   storeId: string;
 };
 
-export type ContentHint5 = {
+export type UpdateProjectDataCacheContentHint5 = {
   type: "blob-read-write-token";
   storeId: string;
 };
 
-export type ContentHint4 = {
+export type UpdateProjectDataCacheContentHint4 = {
   type: "redis-rest-api-read-only-token";
   storeId: string;
 };
 
-export type ContentHint3 = {
+export type UpdateProjectDataCacheContentHint3 = {
   type: "redis-rest-api-token";
   storeId: string;
 };
 
-export type ContentHint2 = {
+export type UpdateProjectDataCacheContentHint2 = {
   type: "redis-rest-api-url";
   storeId: string;
 };
 
-export type ContentHint1 = {
+export type UpdateProjectDataCacheContentHint1 = {
   type: "redis-url";
   storeId: string;
 };
 
-export type ContentHint =
-  | ContentHint1
-  | ContentHint2
-  | ContentHint3
-  | ContentHint4
-  | ContentHint5
-  | ContentHint6
-  | ContentHint7
-  | ContentHint8
-  | ContentHint9
-  | ContentHint10
-  | ContentHint11
-  | ContentHint12
-  | ContentHint13
-  | ContentHint14
-  | ContentHint15;
+export type UpdateProjectDataCacheContentHint =
+  | UpdateProjectDataCacheContentHint1
+  | UpdateProjectDataCacheContentHint2
+  | UpdateProjectDataCacheContentHint3
+  | UpdateProjectDataCacheContentHint4
+  | UpdateProjectDataCacheContentHint5
+  | UpdateProjectDataCacheContentHint6
+  | UpdateProjectDataCacheContentHint7
+  | UpdateProjectDataCacheContentHint8
+  | UpdateProjectDataCacheContentHint9
+  | UpdateProjectDataCacheContentHint10
+  | UpdateProjectDataCacheContentHint11
+  | UpdateProjectDataCacheContentHint12
+  | UpdateProjectDataCacheContentHint13
+  | UpdateProjectDataCacheContentHint14
+  | UpdateProjectDataCacheContentHint15;
 
 export const UpdateProjectDataCacheProjectsResponse200ApplicationJSONResponseBodyEnvType =
   {
@@ -289,7 +289,7 @@ export type UpdateProjectDataCacheProjectsResponse200ApplicationJSONResponseBody
 /**
  * Similar to `contentHints`, but should not be exposed to the user.
  */
-export type InternalContentHint = {
+export type UpdateProjectDataCacheInternalContentHint = {
   type:
     UpdateProjectDataCacheProjectsResponse200ApplicationJSONResponseBodyEnvType;
   /**
@@ -322,27 +322,30 @@ export type UpdateProjectDataCacheEnv = {
   edgeConfigId?: string | null | undefined;
   edgeConfigTokenId?: string | null | undefined;
   contentHint?:
-    | ContentHint1
-    | ContentHint2
-    | ContentHint3
-    | ContentHint4
-    | ContentHint5
-    | ContentHint6
-    | ContentHint7
-    | ContentHint8
-    | ContentHint9
-    | ContentHint10
-    | ContentHint11
-    | ContentHint12
-    | ContentHint13
-    | ContentHint14
-    | ContentHint15
+    | UpdateProjectDataCacheContentHint1
+    | UpdateProjectDataCacheContentHint2
+    | UpdateProjectDataCacheContentHint3
+    | UpdateProjectDataCacheContentHint4
+    | UpdateProjectDataCacheContentHint5
+    | UpdateProjectDataCacheContentHint6
+    | UpdateProjectDataCacheContentHint7
+    | UpdateProjectDataCacheContentHint8
+    | UpdateProjectDataCacheContentHint9
+    | UpdateProjectDataCacheContentHint10
+    | UpdateProjectDataCacheContentHint11
+    | UpdateProjectDataCacheContentHint12
+    | UpdateProjectDataCacheContentHint13
+    | UpdateProjectDataCacheContentHint14
+    | UpdateProjectDataCacheContentHint15
     | null
     | undefined;
   /**
    * Similar to `contentHints`, but should not be exposed to the user.
    */
-  internalContentHint?: InternalContentHint | null | undefined;
+  internalContentHint?:
+    | UpdateProjectDataCacheInternalContentHint
+    | null
+    | undefined;
   comment?: string | undefined;
   customEnvironmentIds?: Array<string> | undefined;
 };
@@ -2736,8 +2739,8 @@ export const UpdateProjectDataCacheProjectsResponse200ApplicationJSONType$outbou
     UpdateProjectDataCacheProjectsResponse200ApplicationJSONType$inboundSchema;
 
 /** @internal */
-export const ContentHint15$inboundSchema: z.ZodType<
-  ContentHint15,
+export const UpdateProjectDataCacheContentHint15$inboundSchema: z.ZodType<
+  UpdateProjectDataCacheContentHint15,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2745,37 +2748,44 @@ export const ContentHint15$inboundSchema: z.ZodType<
   projectId: types.string(),
 });
 /** @internal */
-export type ContentHint15$Outbound = {
+export type UpdateProjectDataCacheContentHint15$Outbound = {
   type: "flags-connection-string";
   projectId: string;
 };
 
 /** @internal */
-export const ContentHint15$outboundSchema: z.ZodType<
-  ContentHint15$Outbound,
+export const UpdateProjectDataCacheContentHint15$outboundSchema: z.ZodType<
+  UpdateProjectDataCacheContentHint15$Outbound,
   z.ZodTypeDef,
-  ContentHint15
+  UpdateProjectDataCacheContentHint15
 > = z.object({
   type: z.literal("flags-connection-string"),
   projectId: z.string(),
 });
 
-export function contentHint15ToJSON(contentHint15: ContentHint15): string {
-  return JSON.stringify(ContentHint15$outboundSchema.parse(contentHint15));
+export function updateProjectDataCacheContentHint15ToJSON(
+  updateProjectDataCacheContentHint15: UpdateProjectDataCacheContentHint15,
+): string {
+  return JSON.stringify(
+    UpdateProjectDataCacheContentHint15$outboundSchema.parse(
+      updateProjectDataCacheContentHint15,
+    ),
+  );
 }
-export function contentHint15FromJSON(
+export function updateProjectDataCacheContentHint15FromJSON(
   jsonString: string,
-): SafeParseResult<ContentHint15, SDKValidationError> {
+): SafeParseResult<UpdateProjectDataCacheContentHint15, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ContentHint15$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ContentHint15' from JSON`,
+    (x) =>
+      UpdateProjectDataCacheContentHint15$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectDataCacheContentHint15' from JSON`,
   );
 }
 
 /** @internal */
-export const ContentHint14$inboundSchema: z.ZodType<
-  ContentHint14,
+export const UpdateProjectDataCacheContentHint14$inboundSchema: z.ZodType<
+  UpdateProjectDataCacheContentHint14,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2786,7 +2796,7 @@ export const ContentHint14$inboundSchema: z.ZodType<
   integrationConfigurationId: types.string(),
 });
 /** @internal */
-export type ContentHint14$Outbound = {
+export type UpdateProjectDataCacheContentHint14$Outbound = {
   type: "integration-store-secret";
   storeId: string;
   integrationId: string;
@@ -2795,10 +2805,10 @@ export type ContentHint14$Outbound = {
 };
 
 /** @internal */
-export const ContentHint14$outboundSchema: z.ZodType<
-  ContentHint14$Outbound,
+export const UpdateProjectDataCacheContentHint14$outboundSchema: z.ZodType<
+  UpdateProjectDataCacheContentHint14$Outbound,
   z.ZodTypeDef,
-  ContentHint14
+  UpdateProjectDataCacheContentHint14
 > = z.object({
   type: z.literal("integration-store-secret"),
   storeId: z.string(),
@@ -2807,22 +2817,29 @@ export const ContentHint14$outboundSchema: z.ZodType<
   integrationConfigurationId: z.string(),
 });
 
-export function contentHint14ToJSON(contentHint14: ContentHint14): string {
-  return JSON.stringify(ContentHint14$outboundSchema.parse(contentHint14));
+export function updateProjectDataCacheContentHint14ToJSON(
+  updateProjectDataCacheContentHint14: UpdateProjectDataCacheContentHint14,
+): string {
+  return JSON.stringify(
+    UpdateProjectDataCacheContentHint14$outboundSchema.parse(
+      updateProjectDataCacheContentHint14,
+    ),
+  );
 }
-export function contentHint14FromJSON(
+export function updateProjectDataCacheContentHint14FromJSON(
   jsonString: string,
-): SafeParseResult<ContentHint14, SDKValidationError> {
+): SafeParseResult<UpdateProjectDataCacheContentHint14, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ContentHint14$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ContentHint14' from JSON`,
+    (x) =>
+      UpdateProjectDataCacheContentHint14$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectDataCacheContentHint14' from JSON`,
   );
 }
 
 /** @internal */
-export const ContentHint13$inboundSchema: z.ZodType<
-  ContentHint13,
+export const UpdateProjectDataCacheContentHint13$inboundSchema: z.ZodType<
+  UpdateProjectDataCacheContentHint13,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2830,37 +2847,44 @@ export const ContentHint13$inboundSchema: z.ZodType<
   storeId: types.string(),
 });
 /** @internal */
-export type ContentHint13$Outbound = {
+export type UpdateProjectDataCacheContentHint13$Outbound = {
   type: "postgres-url-no-ssl";
   storeId: string;
 };
 
 /** @internal */
-export const ContentHint13$outboundSchema: z.ZodType<
-  ContentHint13$Outbound,
+export const UpdateProjectDataCacheContentHint13$outboundSchema: z.ZodType<
+  UpdateProjectDataCacheContentHint13$Outbound,
   z.ZodTypeDef,
-  ContentHint13
+  UpdateProjectDataCacheContentHint13
 > = z.object({
   type: z.literal("postgres-url-no-ssl"),
   storeId: z.string(),
 });
 
-export function contentHint13ToJSON(contentHint13: ContentHint13): string {
-  return JSON.stringify(ContentHint13$outboundSchema.parse(contentHint13));
+export function updateProjectDataCacheContentHint13ToJSON(
+  updateProjectDataCacheContentHint13: UpdateProjectDataCacheContentHint13,
+): string {
+  return JSON.stringify(
+    UpdateProjectDataCacheContentHint13$outboundSchema.parse(
+      updateProjectDataCacheContentHint13,
+    ),
+  );
 }
-export function contentHint13FromJSON(
+export function updateProjectDataCacheContentHint13FromJSON(
   jsonString: string,
-): SafeParseResult<ContentHint13, SDKValidationError> {
+): SafeParseResult<UpdateProjectDataCacheContentHint13, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ContentHint13$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ContentHint13' from JSON`,
+    (x) =>
+      UpdateProjectDataCacheContentHint13$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectDataCacheContentHint13' from JSON`,
   );
 }
 
 /** @internal */
-export const ContentHint12$inboundSchema: z.ZodType<
-  ContentHint12,
+export const UpdateProjectDataCacheContentHint12$inboundSchema: z.ZodType<
+  UpdateProjectDataCacheContentHint12,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2868,37 +2892,44 @@ export const ContentHint12$inboundSchema: z.ZodType<
   storeId: types.string(),
 });
 /** @internal */
-export type ContentHint12$Outbound = {
+export type UpdateProjectDataCacheContentHint12$Outbound = {
   type: "postgres-database";
   storeId: string;
 };
 
 /** @internal */
-export const ContentHint12$outboundSchema: z.ZodType<
-  ContentHint12$Outbound,
+export const UpdateProjectDataCacheContentHint12$outboundSchema: z.ZodType<
+  UpdateProjectDataCacheContentHint12$Outbound,
   z.ZodTypeDef,
-  ContentHint12
+  UpdateProjectDataCacheContentHint12
 > = z.object({
   type: z.literal("postgres-database"),
   storeId: z.string(),
 });
 
-export function contentHint12ToJSON(contentHint12: ContentHint12): string {
-  return JSON.stringify(ContentHint12$outboundSchema.parse(contentHint12));
+export function updateProjectDataCacheContentHint12ToJSON(
+  updateProjectDataCacheContentHint12: UpdateProjectDataCacheContentHint12,
+): string {
+  return JSON.stringify(
+    UpdateProjectDataCacheContentHint12$outboundSchema.parse(
+      updateProjectDataCacheContentHint12,
+    ),
+  );
 }
-export function contentHint12FromJSON(
+export function updateProjectDataCacheContentHint12FromJSON(
   jsonString: string,
-): SafeParseResult<ContentHint12, SDKValidationError> {
+): SafeParseResult<UpdateProjectDataCacheContentHint12, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ContentHint12$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ContentHint12' from JSON`,
+    (x) =>
+      UpdateProjectDataCacheContentHint12$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectDataCacheContentHint12' from JSON`,
   );
 }
 
 /** @internal */
-export const ContentHint11$inboundSchema: z.ZodType<
-  ContentHint11,
+export const UpdateProjectDataCacheContentHint11$inboundSchema: z.ZodType<
+  UpdateProjectDataCacheContentHint11,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2906,37 +2937,44 @@ export const ContentHint11$inboundSchema: z.ZodType<
   storeId: types.string(),
 });
 /** @internal */
-export type ContentHint11$Outbound = {
+export type UpdateProjectDataCacheContentHint11$Outbound = {
   type: "postgres-password";
   storeId: string;
 };
 
 /** @internal */
-export const ContentHint11$outboundSchema: z.ZodType<
-  ContentHint11$Outbound,
+export const UpdateProjectDataCacheContentHint11$outboundSchema: z.ZodType<
+  UpdateProjectDataCacheContentHint11$Outbound,
   z.ZodTypeDef,
-  ContentHint11
+  UpdateProjectDataCacheContentHint11
 > = z.object({
   type: z.literal("postgres-password"),
   storeId: z.string(),
 });
 
-export function contentHint11ToJSON(contentHint11: ContentHint11): string {
-  return JSON.stringify(ContentHint11$outboundSchema.parse(contentHint11));
+export function updateProjectDataCacheContentHint11ToJSON(
+  updateProjectDataCacheContentHint11: UpdateProjectDataCacheContentHint11,
+): string {
+  return JSON.stringify(
+    UpdateProjectDataCacheContentHint11$outboundSchema.parse(
+      updateProjectDataCacheContentHint11,
+    ),
+  );
 }
-export function contentHint11FromJSON(
+export function updateProjectDataCacheContentHint11FromJSON(
   jsonString: string,
-): SafeParseResult<ContentHint11, SDKValidationError> {
+): SafeParseResult<UpdateProjectDataCacheContentHint11, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ContentHint11$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ContentHint11' from JSON`,
+    (x) =>
+      UpdateProjectDataCacheContentHint11$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectDataCacheContentHint11' from JSON`,
   );
 }
 
 /** @internal */
-export const ContentHint10$inboundSchema: z.ZodType<
-  ContentHint10,
+export const UpdateProjectDataCacheContentHint10$inboundSchema: z.ZodType<
+  UpdateProjectDataCacheContentHint10,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2944,37 +2982,44 @@ export const ContentHint10$inboundSchema: z.ZodType<
   storeId: types.string(),
 });
 /** @internal */
-export type ContentHint10$Outbound = {
+export type UpdateProjectDataCacheContentHint10$Outbound = {
   type: "postgres-host";
   storeId: string;
 };
 
 /** @internal */
-export const ContentHint10$outboundSchema: z.ZodType<
-  ContentHint10$Outbound,
+export const UpdateProjectDataCacheContentHint10$outboundSchema: z.ZodType<
+  UpdateProjectDataCacheContentHint10$Outbound,
   z.ZodTypeDef,
-  ContentHint10
+  UpdateProjectDataCacheContentHint10
 > = z.object({
   type: z.literal("postgres-host"),
   storeId: z.string(),
 });
 
-export function contentHint10ToJSON(contentHint10: ContentHint10): string {
-  return JSON.stringify(ContentHint10$outboundSchema.parse(contentHint10));
+export function updateProjectDataCacheContentHint10ToJSON(
+  updateProjectDataCacheContentHint10: UpdateProjectDataCacheContentHint10,
+): string {
+  return JSON.stringify(
+    UpdateProjectDataCacheContentHint10$outboundSchema.parse(
+      updateProjectDataCacheContentHint10,
+    ),
+  );
 }
-export function contentHint10FromJSON(
+export function updateProjectDataCacheContentHint10FromJSON(
   jsonString: string,
-): SafeParseResult<ContentHint10, SDKValidationError> {
+): SafeParseResult<UpdateProjectDataCacheContentHint10, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ContentHint10$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ContentHint10' from JSON`,
+    (x) =>
+      UpdateProjectDataCacheContentHint10$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectDataCacheContentHint10' from JSON`,
   );
 }
 
 /** @internal */
-export const ContentHint9$inboundSchema: z.ZodType<
-  ContentHint9,
+export const UpdateProjectDataCacheContentHint9$inboundSchema: z.ZodType<
+  UpdateProjectDataCacheContentHint9,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2982,37 +3027,44 @@ export const ContentHint9$inboundSchema: z.ZodType<
   storeId: types.string(),
 });
 /** @internal */
-export type ContentHint9$Outbound = {
+export type UpdateProjectDataCacheContentHint9$Outbound = {
   type: "postgres-user";
   storeId: string;
 };
 
 /** @internal */
-export const ContentHint9$outboundSchema: z.ZodType<
-  ContentHint9$Outbound,
+export const UpdateProjectDataCacheContentHint9$outboundSchema: z.ZodType<
+  UpdateProjectDataCacheContentHint9$Outbound,
   z.ZodTypeDef,
-  ContentHint9
+  UpdateProjectDataCacheContentHint9
 > = z.object({
   type: z.literal("postgres-user"),
   storeId: z.string(),
 });
 
-export function contentHint9ToJSON(contentHint9: ContentHint9): string {
-  return JSON.stringify(ContentHint9$outboundSchema.parse(contentHint9));
+export function updateProjectDataCacheContentHint9ToJSON(
+  updateProjectDataCacheContentHint9: UpdateProjectDataCacheContentHint9,
+): string {
+  return JSON.stringify(
+    UpdateProjectDataCacheContentHint9$outboundSchema.parse(
+      updateProjectDataCacheContentHint9,
+    ),
+  );
 }
-export function contentHint9FromJSON(
+export function updateProjectDataCacheContentHint9FromJSON(
   jsonString: string,
-): SafeParseResult<ContentHint9, SDKValidationError> {
+): SafeParseResult<UpdateProjectDataCacheContentHint9, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ContentHint9$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ContentHint9' from JSON`,
+    (x) =>
+      UpdateProjectDataCacheContentHint9$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectDataCacheContentHint9' from JSON`,
   );
 }
 
 /** @internal */
-export const ContentHint8$inboundSchema: z.ZodType<
-  ContentHint8,
+export const UpdateProjectDataCacheContentHint8$inboundSchema: z.ZodType<
+  UpdateProjectDataCacheContentHint8,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -3020,37 +3072,44 @@ export const ContentHint8$inboundSchema: z.ZodType<
   storeId: types.string(),
 });
 /** @internal */
-export type ContentHint8$Outbound = {
+export type UpdateProjectDataCacheContentHint8$Outbound = {
   type: "postgres-prisma-url";
   storeId: string;
 };
 
 /** @internal */
-export const ContentHint8$outboundSchema: z.ZodType<
-  ContentHint8$Outbound,
+export const UpdateProjectDataCacheContentHint8$outboundSchema: z.ZodType<
+  UpdateProjectDataCacheContentHint8$Outbound,
   z.ZodTypeDef,
-  ContentHint8
+  UpdateProjectDataCacheContentHint8
 > = z.object({
   type: z.literal("postgres-prisma-url"),
   storeId: z.string(),
 });
 
-export function contentHint8ToJSON(contentHint8: ContentHint8): string {
-  return JSON.stringify(ContentHint8$outboundSchema.parse(contentHint8));
+export function updateProjectDataCacheContentHint8ToJSON(
+  updateProjectDataCacheContentHint8: UpdateProjectDataCacheContentHint8,
+): string {
+  return JSON.stringify(
+    UpdateProjectDataCacheContentHint8$outboundSchema.parse(
+      updateProjectDataCacheContentHint8,
+    ),
+  );
 }
-export function contentHint8FromJSON(
+export function updateProjectDataCacheContentHint8FromJSON(
   jsonString: string,
-): SafeParseResult<ContentHint8, SDKValidationError> {
+): SafeParseResult<UpdateProjectDataCacheContentHint8, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ContentHint8$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ContentHint8' from JSON`,
+    (x) =>
+      UpdateProjectDataCacheContentHint8$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectDataCacheContentHint8' from JSON`,
   );
 }
 
 /** @internal */
-export const ContentHint7$inboundSchema: z.ZodType<
-  ContentHint7,
+export const UpdateProjectDataCacheContentHint7$inboundSchema: z.ZodType<
+  UpdateProjectDataCacheContentHint7,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -3058,37 +3117,44 @@ export const ContentHint7$inboundSchema: z.ZodType<
   storeId: types.string(),
 });
 /** @internal */
-export type ContentHint7$Outbound = {
+export type UpdateProjectDataCacheContentHint7$Outbound = {
   type: "postgres-url-non-pooling";
   storeId: string;
 };
 
 /** @internal */
-export const ContentHint7$outboundSchema: z.ZodType<
-  ContentHint7$Outbound,
+export const UpdateProjectDataCacheContentHint7$outboundSchema: z.ZodType<
+  UpdateProjectDataCacheContentHint7$Outbound,
   z.ZodTypeDef,
-  ContentHint7
+  UpdateProjectDataCacheContentHint7
 > = z.object({
   type: z.literal("postgres-url-non-pooling"),
   storeId: z.string(),
 });
 
-export function contentHint7ToJSON(contentHint7: ContentHint7): string {
-  return JSON.stringify(ContentHint7$outboundSchema.parse(contentHint7));
+export function updateProjectDataCacheContentHint7ToJSON(
+  updateProjectDataCacheContentHint7: UpdateProjectDataCacheContentHint7,
+): string {
+  return JSON.stringify(
+    UpdateProjectDataCacheContentHint7$outboundSchema.parse(
+      updateProjectDataCacheContentHint7,
+    ),
+  );
 }
-export function contentHint7FromJSON(
+export function updateProjectDataCacheContentHint7FromJSON(
   jsonString: string,
-): SafeParseResult<ContentHint7, SDKValidationError> {
+): SafeParseResult<UpdateProjectDataCacheContentHint7, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ContentHint7$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ContentHint7' from JSON`,
+    (x) =>
+      UpdateProjectDataCacheContentHint7$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectDataCacheContentHint7' from JSON`,
   );
 }
 
 /** @internal */
-export const ContentHint6$inboundSchema: z.ZodType<
-  ContentHint6,
+export const UpdateProjectDataCacheContentHint6$inboundSchema: z.ZodType<
+  UpdateProjectDataCacheContentHint6,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -3096,37 +3162,44 @@ export const ContentHint6$inboundSchema: z.ZodType<
   storeId: types.string(),
 });
 /** @internal */
-export type ContentHint6$Outbound = {
+export type UpdateProjectDataCacheContentHint6$Outbound = {
   type: "postgres-url";
   storeId: string;
 };
 
 /** @internal */
-export const ContentHint6$outboundSchema: z.ZodType<
-  ContentHint6$Outbound,
+export const UpdateProjectDataCacheContentHint6$outboundSchema: z.ZodType<
+  UpdateProjectDataCacheContentHint6$Outbound,
   z.ZodTypeDef,
-  ContentHint6
+  UpdateProjectDataCacheContentHint6
 > = z.object({
   type: z.literal("postgres-url"),
   storeId: z.string(),
 });
 
-export function contentHint6ToJSON(contentHint6: ContentHint6): string {
-  return JSON.stringify(ContentHint6$outboundSchema.parse(contentHint6));
+export function updateProjectDataCacheContentHint6ToJSON(
+  updateProjectDataCacheContentHint6: UpdateProjectDataCacheContentHint6,
+): string {
+  return JSON.stringify(
+    UpdateProjectDataCacheContentHint6$outboundSchema.parse(
+      updateProjectDataCacheContentHint6,
+    ),
+  );
 }
-export function contentHint6FromJSON(
+export function updateProjectDataCacheContentHint6FromJSON(
   jsonString: string,
-): SafeParseResult<ContentHint6, SDKValidationError> {
+): SafeParseResult<UpdateProjectDataCacheContentHint6, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ContentHint6$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ContentHint6' from JSON`,
+    (x) =>
+      UpdateProjectDataCacheContentHint6$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectDataCacheContentHint6' from JSON`,
   );
 }
 
 /** @internal */
-export const ContentHint5$inboundSchema: z.ZodType<
-  ContentHint5,
+export const UpdateProjectDataCacheContentHint5$inboundSchema: z.ZodType<
+  UpdateProjectDataCacheContentHint5,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -3134,37 +3207,44 @@ export const ContentHint5$inboundSchema: z.ZodType<
   storeId: types.string(),
 });
 /** @internal */
-export type ContentHint5$Outbound = {
+export type UpdateProjectDataCacheContentHint5$Outbound = {
   type: "blob-read-write-token";
   storeId: string;
 };
 
 /** @internal */
-export const ContentHint5$outboundSchema: z.ZodType<
-  ContentHint5$Outbound,
+export const UpdateProjectDataCacheContentHint5$outboundSchema: z.ZodType<
+  UpdateProjectDataCacheContentHint5$Outbound,
   z.ZodTypeDef,
-  ContentHint5
+  UpdateProjectDataCacheContentHint5
 > = z.object({
   type: z.literal("blob-read-write-token"),
   storeId: z.string(),
 });
 
-export function contentHint5ToJSON(contentHint5: ContentHint5): string {
-  return JSON.stringify(ContentHint5$outboundSchema.parse(contentHint5));
+export function updateProjectDataCacheContentHint5ToJSON(
+  updateProjectDataCacheContentHint5: UpdateProjectDataCacheContentHint5,
+): string {
+  return JSON.stringify(
+    UpdateProjectDataCacheContentHint5$outboundSchema.parse(
+      updateProjectDataCacheContentHint5,
+    ),
+  );
 }
-export function contentHint5FromJSON(
+export function updateProjectDataCacheContentHint5FromJSON(
   jsonString: string,
-): SafeParseResult<ContentHint5, SDKValidationError> {
+): SafeParseResult<UpdateProjectDataCacheContentHint5, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ContentHint5$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ContentHint5' from JSON`,
+    (x) =>
+      UpdateProjectDataCacheContentHint5$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectDataCacheContentHint5' from JSON`,
   );
 }
 
 /** @internal */
-export const ContentHint4$inboundSchema: z.ZodType<
-  ContentHint4,
+export const UpdateProjectDataCacheContentHint4$inboundSchema: z.ZodType<
+  UpdateProjectDataCacheContentHint4,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -3172,37 +3252,44 @@ export const ContentHint4$inboundSchema: z.ZodType<
   storeId: types.string(),
 });
 /** @internal */
-export type ContentHint4$Outbound = {
+export type UpdateProjectDataCacheContentHint4$Outbound = {
   type: "redis-rest-api-read-only-token";
   storeId: string;
 };
 
 /** @internal */
-export const ContentHint4$outboundSchema: z.ZodType<
-  ContentHint4$Outbound,
+export const UpdateProjectDataCacheContentHint4$outboundSchema: z.ZodType<
+  UpdateProjectDataCacheContentHint4$Outbound,
   z.ZodTypeDef,
-  ContentHint4
+  UpdateProjectDataCacheContentHint4
 > = z.object({
   type: z.literal("redis-rest-api-read-only-token"),
   storeId: z.string(),
 });
 
-export function contentHint4ToJSON(contentHint4: ContentHint4): string {
-  return JSON.stringify(ContentHint4$outboundSchema.parse(contentHint4));
+export function updateProjectDataCacheContentHint4ToJSON(
+  updateProjectDataCacheContentHint4: UpdateProjectDataCacheContentHint4,
+): string {
+  return JSON.stringify(
+    UpdateProjectDataCacheContentHint4$outboundSchema.parse(
+      updateProjectDataCacheContentHint4,
+    ),
+  );
 }
-export function contentHint4FromJSON(
+export function updateProjectDataCacheContentHint4FromJSON(
   jsonString: string,
-): SafeParseResult<ContentHint4, SDKValidationError> {
+): SafeParseResult<UpdateProjectDataCacheContentHint4, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ContentHint4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ContentHint4' from JSON`,
+    (x) =>
+      UpdateProjectDataCacheContentHint4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectDataCacheContentHint4' from JSON`,
   );
 }
 
 /** @internal */
-export const ContentHint3$inboundSchema: z.ZodType<
-  ContentHint3,
+export const UpdateProjectDataCacheContentHint3$inboundSchema: z.ZodType<
+  UpdateProjectDataCacheContentHint3,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -3210,37 +3297,44 @@ export const ContentHint3$inboundSchema: z.ZodType<
   storeId: types.string(),
 });
 /** @internal */
-export type ContentHint3$Outbound = {
+export type UpdateProjectDataCacheContentHint3$Outbound = {
   type: "redis-rest-api-token";
   storeId: string;
 };
 
 /** @internal */
-export const ContentHint3$outboundSchema: z.ZodType<
-  ContentHint3$Outbound,
+export const UpdateProjectDataCacheContentHint3$outboundSchema: z.ZodType<
+  UpdateProjectDataCacheContentHint3$Outbound,
   z.ZodTypeDef,
-  ContentHint3
+  UpdateProjectDataCacheContentHint3
 > = z.object({
   type: z.literal("redis-rest-api-token"),
   storeId: z.string(),
 });
 
-export function contentHint3ToJSON(contentHint3: ContentHint3): string {
-  return JSON.stringify(ContentHint3$outboundSchema.parse(contentHint3));
+export function updateProjectDataCacheContentHint3ToJSON(
+  updateProjectDataCacheContentHint3: UpdateProjectDataCacheContentHint3,
+): string {
+  return JSON.stringify(
+    UpdateProjectDataCacheContentHint3$outboundSchema.parse(
+      updateProjectDataCacheContentHint3,
+    ),
+  );
 }
-export function contentHint3FromJSON(
+export function updateProjectDataCacheContentHint3FromJSON(
   jsonString: string,
-): SafeParseResult<ContentHint3, SDKValidationError> {
+): SafeParseResult<UpdateProjectDataCacheContentHint3, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ContentHint3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ContentHint3' from JSON`,
+    (x) =>
+      UpdateProjectDataCacheContentHint3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectDataCacheContentHint3' from JSON`,
   );
 }
 
 /** @internal */
-export const ContentHint2$inboundSchema: z.ZodType<
-  ContentHint2,
+export const UpdateProjectDataCacheContentHint2$inboundSchema: z.ZodType<
+  UpdateProjectDataCacheContentHint2,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -3248,37 +3342,44 @@ export const ContentHint2$inboundSchema: z.ZodType<
   storeId: types.string(),
 });
 /** @internal */
-export type ContentHint2$Outbound = {
+export type UpdateProjectDataCacheContentHint2$Outbound = {
   type: "redis-rest-api-url";
   storeId: string;
 };
 
 /** @internal */
-export const ContentHint2$outboundSchema: z.ZodType<
-  ContentHint2$Outbound,
+export const UpdateProjectDataCacheContentHint2$outboundSchema: z.ZodType<
+  UpdateProjectDataCacheContentHint2$Outbound,
   z.ZodTypeDef,
-  ContentHint2
+  UpdateProjectDataCacheContentHint2
 > = z.object({
   type: z.literal("redis-rest-api-url"),
   storeId: z.string(),
 });
 
-export function contentHint2ToJSON(contentHint2: ContentHint2): string {
-  return JSON.stringify(ContentHint2$outboundSchema.parse(contentHint2));
+export function updateProjectDataCacheContentHint2ToJSON(
+  updateProjectDataCacheContentHint2: UpdateProjectDataCacheContentHint2,
+): string {
+  return JSON.stringify(
+    UpdateProjectDataCacheContentHint2$outboundSchema.parse(
+      updateProjectDataCacheContentHint2,
+    ),
+  );
 }
-export function contentHint2FromJSON(
+export function updateProjectDataCacheContentHint2FromJSON(
   jsonString: string,
-): SafeParseResult<ContentHint2, SDKValidationError> {
+): SafeParseResult<UpdateProjectDataCacheContentHint2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ContentHint2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ContentHint2' from JSON`,
+    (x) =>
+      UpdateProjectDataCacheContentHint2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectDataCacheContentHint2' from JSON`,
   );
 }
 
 /** @internal */
-export const ContentHint1$inboundSchema: z.ZodType<
-  ContentHint1,
+export const UpdateProjectDataCacheContentHint1$inboundSchema: z.ZodType<
+  UpdateProjectDataCacheContentHint1,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -3286,107 +3387,120 @@ export const ContentHint1$inboundSchema: z.ZodType<
   storeId: types.string(),
 });
 /** @internal */
-export type ContentHint1$Outbound = {
+export type UpdateProjectDataCacheContentHint1$Outbound = {
   type: "redis-url";
   storeId: string;
 };
 
 /** @internal */
-export const ContentHint1$outboundSchema: z.ZodType<
-  ContentHint1$Outbound,
+export const UpdateProjectDataCacheContentHint1$outboundSchema: z.ZodType<
+  UpdateProjectDataCacheContentHint1$Outbound,
   z.ZodTypeDef,
-  ContentHint1
+  UpdateProjectDataCacheContentHint1
 > = z.object({
   type: z.literal("redis-url"),
   storeId: z.string(),
 });
 
-export function contentHint1ToJSON(contentHint1: ContentHint1): string {
-  return JSON.stringify(ContentHint1$outboundSchema.parse(contentHint1));
+export function updateProjectDataCacheContentHint1ToJSON(
+  updateProjectDataCacheContentHint1: UpdateProjectDataCacheContentHint1,
+): string {
+  return JSON.stringify(
+    UpdateProjectDataCacheContentHint1$outboundSchema.parse(
+      updateProjectDataCacheContentHint1,
+    ),
+  );
 }
-export function contentHint1FromJSON(
+export function updateProjectDataCacheContentHint1FromJSON(
   jsonString: string,
-): SafeParseResult<ContentHint1, SDKValidationError> {
+): SafeParseResult<UpdateProjectDataCacheContentHint1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ContentHint1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ContentHint1' from JSON`,
+    (x) =>
+      UpdateProjectDataCacheContentHint1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectDataCacheContentHint1' from JSON`,
   );
 }
 
 /** @internal */
-export const ContentHint$inboundSchema: z.ZodType<
-  ContentHint,
+export const UpdateProjectDataCacheContentHint$inboundSchema: z.ZodType<
+  UpdateProjectDataCacheContentHint,
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => ContentHint1$inboundSchema),
-  z.lazy(() => ContentHint2$inboundSchema),
-  z.lazy(() => ContentHint3$inboundSchema),
-  z.lazy(() => ContentHint4$inboundSchema),
-  z.lazy(() => ContentHint5$inboundSchema),
-  z.lazy(() => ContentHint6$inboundSchema),
-  z.lazy(() => ContentHint7$inboundSchema),
-  z.lazy(() => ContentHint8$inboundSchema),
-  z.lazy(() => ContentHint9$inboundSchema),
-  z.lazy(() => ContentHint10$inboundSchema),
-  z.lazy(() => ContentHint11$inboundSchema),
-  z.lazy(() => ContentHint12$inboundSchema),
-  z.lazy(() => ContentHint13$inboundSchema),
-  z.lazy(() => ContentHint14$inboundSchema),
-  z.lazy(() => ContentHint15$inboundSchema),
+  z.lazy(() => UpdateProjectDataCacheContentHint1$inboundSchema),
+  z.lazy(() => UpdateProjectDataCacheContentHint2$inboundSchema),
+  z.lazy(() => UpdateProjectDataCacheContentHint3$inboundSchema),
+  z.lazy(() => UpdateProjectDataCacheContentHint4$inboundSchema),
+  z.lazy(() => UpdateProjectDataCacheContentHint5$inboundSchema),
+  z.lazy(() => UpdateProjectDataCacheContentHint6$inboundSchema),
+  z.lazy(() => UpdateProjectDataCacheContentHint7$inboundSchema),
+  z.lazy(() => UpdateProjectDataCacheContentHint8$inboundSchema),
+  z.lazy(() => UpdateProjectDataCacheContentHint9$inboundSchema),
+  z.lazy(() => UpdateProjectDataCacheContentHint10$inboundSchema),
+  z.lazy(() => UpdateProjectDataCacheContentHint11$inboundSchema),
+  z.lazy(() => UpdateProjectDataCacheContentHint12$inboundSchema),
+  z.lazy(() => UpdateProjectDataCacheContentHint13$inboundSchema),
+  z.lazy(() => UpdateProjectDataCacheContentHint14$inboundSchema),
+  z.lazy(() => UpdateProjectDataCacheContentHint15$inboundSchema),
 ]);
 /** @internal */
-export type ContentHint$Outbound =
-  | ContentHint1$Outbound
-  | ContentHint2$Outbound
-  | ContentHint3$Outbound
-  | ContentHint4$Outbound
-  | ContentHint5$Outbound
-  | ContentHint6$Outbound
-  | ContentHint7$Outbound
-  | ContentHint8$Outbound
-  | ContentHint9$Outbound
-  | ContentHint10$Outbound
-  | ContentHint11$Outbound
-  | ContentHint12$Outbound
-  | ContentHint13$Outbound
-  | ContentHint14$Outbound
-  | ContentHint15$Outbound;
+export type UpdateProjectDataCacheContentHint$Outbound =
+  | UpdateProjectDataCacheContentHint1$Outbound
+  | UpdateProjectDataCacheContentHint2$Outbound
+  | UpdateProjectDataCacheContentHint3$Outbound
+  | UpdateProjectDataCacheContentHint4$Outbound
+  | UpdateProjectDataCacheContentHint5$Outbound
+  | UpdateProjectDataCacheContentHint6$Outbound
+  | UpdateProjectDataCacheContentHint7$Outbound
+  | UpdateProjectDataCacheContentHint8$Outbound
+  | UpdateProjectDataCacheContentHint9$Outbound
+  | UpdateProjectDataCacheContentHint10$Outbound
+  | UpdateProjectDataCacheContentHint11$Outbound
+  | UpdateProjectDataCacheContentHint12$Outbound
+  | UpdateProjectDataCacheContentHint13$Outbound
+  | UpdateProjectDataCacheContentHint14$Outbound
+  | UpdateProjectDataCacheContentHint15$Outbound;
 
 /** @internal */
-export const ContentHint$outboundSchema: z.ZodType<
-  ContentHint$Outbound,
+export const UpdateProjectDataCacheContentHint$outboundSchema: z.ZodType<
+  UpdateProjectDataCacheContentHint$Outbound,
   z.ZodTypeDef,
-  ContentHint
+  UpdateProjectDataCacheContentHint
 > = z.union([
-  z.lazy(() => ContentHint1$outboundSchema),
-  z.lazy(() => ContentHint2$outboundSchema),
-  z.lazy(() => ContentHint3$outboundSchema),
-  z.lazy(() => ContentHint4$outboundSchema),
-  z.lazy(() => ContentHint5$outboundSchema),
-  z.lazy(() => ContentHint6$outboundSchema),
-  z.lazy(() => ContentHint7$outboundSchema),
-  z.lazy(() => ContentHint8$outboundSchema),
-  z.lazy(() => ContentHint9$outboundSchema),
-  z.lazy(() => ContentHint10$outboundSchema),
-  z.lazy(() => ContentHint11$outboundSchema),
-  z.lazy(() => ContentHint12$outboundSchema),
-  z.lazy(() => ContentHint13$outboundSchema),
-  z.lazy(() => ContentHint14$outboundSchema),
-  z.lazy(() => ContentHint15$outboundSchema),
+  z.lazy(() => UpdateProjectDataCacheContentHint1$outboundSchema),
+  z.lazy(() => UpdateProjectDataCacheContentHint2$outboundSchema),
+  z.lazy(() => UpdateProjectDataCacheContentHint3$outboundSchema),
+  z.lazy(() => UpdateProjectDataCacheContentHint4$outboundSchema),
+  z.lazy(() => UpdateProjectDataCacheContentHint5$outboundSchema),
+  z.lazy(() => UpdateProjectDataCacheContentHint6$outboundSchema),
+  z.lazy(() => UpdateProjectDataCacheContentHint7$outboundSchema),
+  z.lazy(() => UpdateProjectDataCacheContentHint8$outboundSchema),
+  z.lazy(() => UpdateProjectDataCacheContentHint9$outboundSchema),
+  z.lazy(() => UpdateProjectDataCacheContentHint10$outboundSchema),
+  z.lazy(() => UpdateProjectDataCacheContentHint11$outboundSchema),
+  z.lazy(() => UpdateProjectDataCacheContentHint12$outboundSchema),
+  z.lazy(() => UpdateProjectDataCacheContentHint13$outboundSchema),
+  z.lazy(() => UpdateProjectDataCacheContentHint14$outboundSchema),
+  z.lazy(() => UpdateProjectDataCacheContentHint15$outboundSchema),
 ]);
 
-export function contentHintToJSON(contentHint: ContentHint): string {
-  return JSON.stringify(ContentHint$outboundSchema.parse(contentHint));
+export function updateProjectDataCacheContentHintToJSON(
+  updateProjectDataCacheContentHint: UpdateProjectDataCacheContentHint,
+): string {
+  return JSON.stringify(
+    UpdateProjectDataCacheContentHint$outboundSchema.parse(
+      updateProjectDataCacheContentHint,
+    ),
+  );
 }
-export function contentHintFromJSON(
+export function updateProjectDataCacheContentHintFromJSON(
   jsonString: string,
-): SafeParseResult<ContentHint, SDKValidationError> {
+): SafeParseResult<UpdateProjectDataCacheContentHint, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ContentHint$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ContentHint' from JSON`,
+    (x) => UpdateProjectDataCacheContentHint$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectDataCacheContentHint' from JSON`,
   );
 }
 
@@ -3405,8 +3519,8 @@ export const UpdateProjectDataCacheProjectsResponse200ApplicationJSONResponseBod
     UpdateProjectDataCacheProjectsResponse200ApplicationJSONResponseBodyEnvType$inboundSchema;
 
 /** @internal */
-export const InternalContentHint$inboundSchema: z.ZodType<
-  InternalContentHint,
+export const UpdateProjectDataCacheInternalContentHint$inboundSchema: z.ZodType<
+  UpdateProjectDataCacheInternalContentHint,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -3415,36 +3529,46 @@ export const InternalContentHint$inboundSchema: z.ZodType<
   encryptedValue: types.string(),
 });
 /** @internal */
-export type InternalContentHint$Outbound = {
+export type UpdateProjectDataCacheInternalContentHint$Outbound = {
   type: string;
   encryptedValue: string;
 };
 
 /** @internal */
-export const InternalContentHint$outboundSchema: z.ZodType<
-  InternalContentHint$Outbound,
-  z.ZodTypeDef,
-  InternalContentHint
-> = z.object({
-  type:
-    UpdateProjectDataCacheProjectsResponse200ApplicationJSONResponseBodyEnvType$outboundSchema,
-  encryptedValue: z.string(),
-});
+export const UpdateProjectDataCacheInternalContentHint$outboundSchema:
+  z.ZodType<
+    UpdateProjectDataCacheInternalContentHint$Outbound,
+    z.ZodTypeDef,
+    UpdateProjectDataCacheInternalContentHint
+  > = z.object({
+    type:
+      UpdateProjectDataCacheProjectsResponse200ApplicationJSONResponseBodyEnvType$outboundSchema,
+    encryptedValue: z.string(),
+  });
 
-export function internalContentHintToJSON(
-  internalContentHint: InternalContentHint,
+export function updateProjectDataCacheInternalContentHintToJSON(
+  updateProjectDataCacheInternalContentHint:
+    UpdateProjectDataCacheInternalContentHint,
 ): string {
   return JSON.stringify(
-    InternalContentHint$outboundSchema.parse(internalContentHint),
+    UpdateProjectDataCacheInternalContentHint$outboundSchema.parse(
+      updateProjectDataCacheInternalContentHint,
+    ),
   );
 }
-export function internalContentHintFromJSON(
+export function updateProjectDataCacheInternalContentHintFromJSON(
   jsonString: string,
-): SafeParseResult<InternalContentHint, SDKValidationError> {
+): SafeParseResult<
+  UpdateProjectDataCacheInternalContentHint,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => InternalContentHint$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'InternalContentHint' from JSON`,
+    (x) =>
+      UpdateProjectDataCacheInternalContentHint$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateProjectDataCacheInternalContentHint' from JSON`,
   );
 }
 
@@ -3478,25 +3602,25 @@ export const UpdateProjectDataCacheEnv$inboundSchema: z.ZodType<
   edgeConfigTokenId: z.nullable(types.string()).optional(),
   contentHint: z.nullable(
     z.union([
-      z.lazy(() => ContentHint1$inboundSchema),
-      z.lazy(() => ContentHint2$inboundSchema),
-      z.lazy(() => ContentHint3$inboundSchema),
-      z.lazy(() => ContentHint4$inboundSchema),
-      z.lazy(() => ContentHint5$inboundSchema),
-      z.lazy(() => ContentHint6$inboundSchema),
-      z.lazy(() => ContentHint7$inboundSchema),
-      z.lazy(() => ContentHint8$inboundSchema),
-      z.lazy(() => ContentHint9$inboundSchema),
-      z.lazy(() => ContentHint10$inboundSchema),
-      z.lazy(() => ContentHint11$inboundSchema),
-      z.lazy(() => ContentHint12$inboundSchema),
-      z.lazy(() => ContentHint13$inboundSchema),
-      z.lazy(() => ContentHint14$inboundSchema),
-      z.lazy(() => ContentHint15$inboundSchema),
+      z.lazy(() => UpdateProjectDataCacheContentHint1$inboundSchema),
+      z.lazy(() => UpdateProjectDataCacheContentHint2$inboundSchema),
+      z.lazy(() => UpdateProjectDataCacheContentHint3$inboundSchema),
+      z.lazy(() => UpdateProjectDataCacheContentHint4$inboundSchema),
+      z.lazy(() => UpdateProjectDataCacheContentHint5$inboundSchema),
+      z.lazy(() => UpdateProjectDataCacheContentHint6$inboundSchema),
+      z.lazy(() => UpdateProjectDataCacheContentHint7$inboundSchema),
+      z.lazy(() => UpdateProjectDataCacheContentHint8$inboundSchema),
+      z.lazy(() => UpdateProjectDataCacheContentHint9$inboundSchema),
+      z.lazy(() => UpdateProjectDataCacheContentHint10$inboundSchema),
+      z.lazy(() => UpdateProjectDataCacheContentHint11$inboundSchema),
+      z.lazy(() => UpdateProjectDataCacheContentHint12$inboundSchema),
+      z.lazy(() => UpdateProjectDataCacheContentHint13$inboundSchema),
+      z.lazy(() => UpdateProjectDataCacheContentHint14$inboundSchema),
+      z.lazy(() => UpdateProjectDataCacheContentHint15$inboundSchema),
     ]),
   ).optional(),
   internalContentHint: z.nullable(
-    z.lazy(() => InternalContentHint$inboundSchema),
+    z.lazy(() => UpdateProjectDataCacheInternalContentHint$inboundSchema),
   ).optional(),
   comment: types.optional(types.string()),
   customEnvironmentIds: types.optional(z.array(types.string())),
@@ -3520,24 +3644,27 @@ export type UpdateProjectDataCacheEnv$Outbound = {
   edgeConfigId?: string | null | undefined;
   edgeConfigTokenId?: string | null | undefined;
   contentHint?:
-    | ContentHint1$Outbound
-    | ContentHint2$Outbound
-    | ContentHint3$Outbound
-    | ContentHint4$Outbound
-    | ContentHint5$Outbound
-    | ContentHint6$Outbound
-    | ContentHint7$Outbound
-    | ContentHint8$Outbound
-    | ContentHint9$Outbound
-    | ContentHint10$Outbound
-    | ContentHint11$Outbound
-    | ContentHint12$Outbound
-    | ContentHint13$Outbound
-    | ContentHint14$Outbound
-    | ContentHint15$Outbound
+    | UpdateProjectDataCacheContentHint1$Outbound
+    | UpdateProjectDataCacheContentHint2$Outbound
+    | UpdateProjectDataCacheContentHint3$Outbound
+    | UpdateProjectDataCacheContentHint4$Outbound
+    | UpdateProjectDataCacheContentHint5$Outbound
+    | UpdateProjectDataCacheContentHint6$Outbound
+    | UpdateProjectDataCacheContentHint7$Outbound
+    | UpdateProjectDataCacheContentHint8$Outbound
+    | UpdateProjectDataCacheContentHint9$Outbound
+    | UpdateProjectDataCacheContentHint10$Outbound
+    | UpdateProjectDataCacheContentHint11$Outbound
+    | UpdateProjectDataCacheContentHint12$Outbound
+    | UpdateProjectDataCacheContentHint13$Outbound
+    | UpdateProjectDataCacheContentHint14$Outbound
+    | UpdateProjectDataCacheContentHint15$Outbound
     | null
     | undefined;
-  internalContentHint?: InternalContentHint$Outbound | null | undefined;
+  internalContentHint?:
+    | UpdateProjectDataCacheInternalContentHint$Outbound
+    | null
+    | undefined;
   comment?: string | undefined;
   customEnvironmentIds?: Array<string> | undefined;
 };
@@ -3570,25 +3697,25 @@ export const UpdateProjectDataCacheEnv$outboundSchema: z.ZodType<
   edgeConfigTokenId: z.nullable(z.string()).optional(),
   contentHint: z.nullable(
     z.union([
-      z.lazy(() => ContentHint1$outboundSchema),
-      z.lazy(() => ContentHint2$outboundSchema),
-      z.lazy(() => ContentHint3$outboundSchema),
-      z.lazy(() => ContentHint4$outboundSchema),
-      z.lazy(() => ContentHint5$outboundSchema),
-      z.lazy(() => ContentHint6$outboundSchema),
-      z.lazy(() => ContentHint7$outboundSchema),
-      z.lazy(() => ContentHint8$outboundSchema),
-      z.lazy(() => ContentHint9$outboundSchema),
-      z.lazy(() => ContentHint10$outboundSchema),
-      z.lazy(() => ContentHint11$outboundSchema),
-      z.lazy(() => ContentHint12$outboundSchema),
-      z.lazy(() => ContentHint13$outboundSchema),
-      z.lazy(() => ContentHint14$outboundSchema),
-      z.lazy(() => ContentHint15$outboundSchema),
+      z.lazy(() => UpdateProjectDataCacheContentHint1$outboundSchema),
+      z.lazy(() => UpdateProjectDataCacheContentHint2$outboundSchema),
+      z.lazy(() => UpdateProjectDataCacheContentHint3$outboundSchema),
+      z.lazy(() => UpdateProjectDataCacheContentHint4$outboundSchema),
+      z.lazy(() => UpdateProjectDataCacheContentHint5$outboundSchema),
+      z.lazy(() => UpdateProjectDataCacheContentHint6$outboundSchema),
+      z.lazy(() => UpdateProjectDataCacheContentHint7$outboundSchema),
+      z.lazy(() => UpdateProjectDataCacheContentHint8$outboundSchema),
+      z.lazy(() => UpdateProjectDataCacheContentHint9$outboundSchema),
+      z.lazy(() => UpdateProjectDataCacheContentHint10$outboundSchema),
+      z.lazy(() => UpdateProjectDataCacheContentHint11$outboundSchema),
+      z.lazy(() => UpdateProjectDataCacheContentHint12$outboundSchema),
+      z.lazy(() => UpdateProjectDataCacheContentHint13$outboundSchema),
+      z.lazy(() => UpdateProjectDataCacheContentHint14$outboundSchema),
+      z.lazy(() => UpdateProjectDataCacheContentHint15$outboundSchema),
     ]),
   ).optional(),
   internalContentHint: z.nullable(
-    z.lazy(() => InternalContentHint$outboundSchema),
+    z.lazy(() => UpdateProjectDataCacheInternalContentHint$outboundSchema),
   ).optional(),
   comment: z.string().optional(),
   customEnvironmentIds: z.array(z.string()).optional(),

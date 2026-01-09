@@ -242,8 +242,8 @@ type GetRedirectsRedirect struct {
 	Sensitive     *bool    `json:"sensitive,omitempty"`
 	CaseSensitive *bool    `json:"caseSensitive,omitempty"`
 	Query         *bool    `json:"query,omitempty"`
-	Destination   string   `json:"destination"`
 	Source        string   `json:"source"`
+	Destination   string   `json:"destination"`
 }
 
 func (g GetRedirectsRedirect) MarshalJSON() ([]byte, error) {
@@ -251,7 +251,7 @@ func (g GetRedirectsRedirect) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetRedirectsRedirect) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"destination", "source"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"source", "destination"}); err != nil {
 		return err
 	}
 	return nil
@@ -292,18 +292,18 @@ func (o *GetRedirectsRedirect) GetQuery() *bool {
 	return o.Query
 }
 
-func (o *GetRedirectsRedirect) GetDestination() string {
-	if o == nil {
-		return ""
-	}
-	return o.Destination
-}
-
 func (o *GetRedirectsRedirect) GetSource() string {
 	if o == nil {
 		return ""
 	}
 	return o.Source
+}
+
+func (o *GetRedirectsRedirect) GetDestination() string {
+	if o == nil {
+		return ""
+	}
+	return o.Destination
 }
 
 type GetRedirectsVersion struct {

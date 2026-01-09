@@ -3160,6 +3160,8 @@ type Lambdas2 struct {
 	UndeletedAt *float64 `json:"undeletedAt,omitempty"`
 	// A string with the unique URL of the deployment
 	URL string `json:"url"`
+	// Since January 2025 User-configured deployment ID for skew protection with pre-built deployments. This is set when users configure a custom deploymentId in their next.config.js file. This allows Next.js to use skew protection even when deployments are pre-built outside of Vercel's build system.
+	UserConfiguredDeploymentID *string `json:"userConfiguredDeploymentId,omitempty"`
 	// The platform version that was used to create the deployment.
 	Version         float64                        `json:"version"`
 	OidcTokenClaims *GetDeploymentOidcTokenClaims2 `json:"oidcTokenClaims,omitempty"`
@@ -3545,6 +3547,13 @@ func (o *Lambdas2) GetURL() string {
 		return ""
 	}
 	return o.URL
+}
+
+func (o *Lambdas2) GetUserConfiguredDeploymentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UserConfiguredDeploymentID
 }
 
 func (o *Lambdas2) GetVersion() float64 {
@@ -11257,6 +11266,8 @@ type Lambdas1 struct {
 	UndeletedAt *float64 `json:"undeletedAt,omitempty"`
 	// A string with the unique URL of the deployment
 	URL string `json:"url"`
+	// Since January 2025 User-configured deployment ID for skew protection with pre-built deployments. This is set when users configure a custom deploymentId in their next.config.js file. This allows Next.js to use skew protection even when deployments are pre-built outside of Vercel's build system.
+	UserConfiguredDeploymentID *string `json:"userConfiguredDeploymentId,omitempty"`
 	// The platform version that was used to create the deployment.
 	Version                float64                           `json:"version"`
 	OidcTokenClaims        *GetDeploymentOidcTokenClaims1    `json:"oidcTokenClaims,omitempty"`
@@ -11751,6 +11762,13 @@ func (o *Lambdas1) GetURL() string {
 		return ""
 	}
 	return o.URL
+}
+
+func (o *Lambdas1) GetUserConfiguredDeploymentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UserConfiguredDeploymentID
 }
 
 func (o *Lambdas1) GetVersion() float64 {

@@ -58,6 +58,41 @@ func (o *RemoveProjectEnvRequest) GetSlug() *string {
 	return o.Slug
 }
 
+type RemoveProjectEnvType3 string
+
+const (
+	RemoveProjectEnvType3Secret    RemoveProjectEnvType3 = "secret"
+	RemoveProjectEnvType3System    RemoveProjectEnvType3 = "system"
+	RemoveProjectEnvType3Encrypted RemoveProjectEnvType3 = "encrypted"
+	RemoveProjectEnvType3Plain     RemoveProjectEnvType3 = "plain"
+	RemoveProjectEnvType3Sensitive RemoveProjectEnvType3 = "sensitive"
+)
+
+func (e RemoveProjectEnvType3) ToPointer() *RemoveProjectEnvType3 {
+	return &e
+}
+func (e *RemoveProjectEnvType3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "secret":
+		fallthrough
+	case "system":
+		fallthrough
+	case "encrypted":
+		fallthrough
+	case "plain":
+		fallthrough
+	case "sensitive":
+		*e = RemoveProjectEnvType3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RemoveProjectEnvType3: %v", v)
+	}
+}
+
 type RemoveProjectEnvTargetEnum6 string
 
 const (
@@ -177,41 +212,6 @@ func (u RemoveProjectEnvTargetUnion3) MarshalJSON() ([]byte, error) {
 	}
 
 	return nil, errors.New("could not marshal union type RemoveProjectEnvTargetUnion3: all fields are null")
-}
-
-type RemoveProjectEnvType3 string
-
-const (
-	RemoveProjectEnvType3Secret    RemoveProjectEnvType3 = "secret"
-	RemoveProjectEnvType3System    RemoveProjectEnvType3 = "system"
-	RemoveProjectEnvType3Encrypted RemoveProjectEnvType3 = "encrypted"
-	RemoveProjectEnvType3Plain     RemoveProjectEnvType3 = "plain"
-	RemoveProjectEnvType3Sensitive RemoveProjectEnvType3 = "sensitive"
-)
-
-func (e RemoveProjectEnvType3) ToPointer() *RemoveProjectEnvType3 {
-	return &e
-}
-func (e *RemoveProjectEnvType3) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "secret":
-		fallthrough
-	case "system":
-		fallthrough
-	case "encrypted":
-		fallthrough
-	case "plain":
-		fallthrough
-	case "sensitive":
-		*e = RemoveProjectEnvType3(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for RemoveProjectEnvType3: %v", v)
-	}
 }
 
 type RemoveProjectEnvTypeFlagsConnectionString3 string
@@ -1525,24 +1525,23 @@ func (o *RemoveProjectEnvInternalContentHint3) GetEncryptedValue() string {
 }
 
 type RemoveProjectEnvResponseBody3 struct {
-	Target *RemoveProjectEnvTargetUnion3 `json:"target,omitempty"`
-	Type   RemoveProjectEnvType3         `json:"type"`
+	Type              RemoveProjectEnvType3         `json:"type"`
+	Value             string                        `json:"value"`
+	EdgeConfigID      *string                       `json:"edgeConfigId,omitempty"`
+	EdgeConfigTokenID *string                       `json:"edgeConfigTokenId,omitempty"`
+	CreatedAt         *float64                      `json:"createdAt,omitempty"`
+	UpdatedAt         *float64                      `json:"updatedAt,omitempty"`
+	CreatedBy         *string                       `json:"createdBy,omitempty"`
+	ID                *string                       `json:"id,omitempty"`
+	Key               string                        `json:"key"`
+	Target            *RemoveProjectEnvTargetUnion3 `json:"target,omitempty"`
+	GitBranch         *string                       `json:"gitBranch,omitempty"`
+	UpdatedBy         *string                       `json:"updatedBy,omitempty"`
 	// This is used to identify variables that have been migrated from type secret to sensitive.
-	SunsetSecretID    *string                            `json:"sunsetSecretId,omitempty"`
-	Decrypted         *bool                              `json:"decrypted,omitempty"`
-	Value             string                             `json:"value"`
-	VsmValue          *string                            `json:"vsmValue,omitempty"`
-	ID                *string                            `json:"id,omitempty"`
-	Key               string                             `json:"key"`
-	ConfigurationID   *string                            `json:"configurationId,omitempty"`
-	CreatedAt         *float64                           `json:"createdAt,omitempty"`
-	UpdatedAt         *float64                           `json:"updatedAt,omitempty"`
-	CreatedBy         *string                            `json:"createdBy,omitempty"`
-	UpdatedBy         *string                            `json:"updatedBy,omitempty"`
-	GitBranch         *string                            `json:"gitBranch,omitempty"`
-	EdgeConfigID      *string                            `json:"edgeConfigId,omitempty"`
-	EdgeConfigTokenID *string                            `json:"edgeConfigTokenId,omitempty"`
-	ContentHint       *RemoveProjectEnvContentHintUnion3 `json:"contentHint,omitempty"`
+	SunsetSecretID  *string                            `json:"sunsetSecretId,omitempty"`
+	Decrypted       *bool                              `json:"decrypted,omitempty"`
+	ConfigurationID *string                            `json:"configurationId,omitempty"`
+	ContentHint     *RemoveProjectEnvContentHintUnion3 `json:"contentHint,omitempty"`
 	// Similar to `contentHints`, but should not be exposed to the user.
 	InternalContentHint  *RemoveProjectEnvInternalContentHint3 `json:"internalContentHint,omitempty"`
 	Comment              *string                               `json:"comment,omitempty"`
@@ -1560,32 +1559,11 @@ func (r *RemoveProjectEnvResponseBody3) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *RemoveProjectEnvResponseBody3) GetTarget() *RemoveProjectEnvTargetUnion3 {
-	if o == nil {
-		return nil
-	}
-	return o.Target
-}
-
 func (o *RemoveProjectEnvResponseBody3) GetType() RemoveProjectEnvType3 {
 	if o == nil {
 		return RemoveProjectEnvType3("")
 	}
 	return o.Type
-}
-
-func (o *RemoveProjectEnvResponseBody3) GetSunsetSecretID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.SunsetSecretID
-}
-
-func (o *RemoveProjectEnvResponseBody3) GetDecrypted() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Decrypted
 }
 
 func (o *RemoveProjectEnvResponseBody3) GetValue() string {
@@ -1595,32 +1573,18 @@ func (o *RemoveProjectEnvResponseBody3) GetValue() string {
 	return o.Value
 }
 
-func (o *RemoveProjectEnvResponseBody3) GetVsmValue() *string {
+func (o *RemoveProjectEnvResponseBody3) GetEdgeConfigID() *string {
 	if o == nil {
 		return nil
 	}
-	return o.VsmValue
+	return o.EdgeConfigID
 }
 
-func (o *RemoveProjectEnvResponseBody3) GetID() *string {
+func (o *RemoveProjectEnvResponseBody3) GetEdgeConfigTokenID() *string {
 	if o == nil {
 		return nil
 	}
-	return o.ID
-}
-
-func (o *RemoveProjectEnvResponseBody3) GetKey() string {
-	if o == nil {
-		return ""
-	}
-	return o.Key
-}
-
-func (o *RemoveProjectEnvResponseBody3) GetConfigurationID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ConfigurationID
+	return o.EdgeConfigTokenID
 }
 
 func (o *RemoveProjectEnvResponseBody3) GetCreatedAt() *float64 {
@@ -1644,11 +1608,25 @@ func (o *RemoveProjectEnvResponseBody3) GetCreatedBy() *string {
 	return o.CreatedBy
 }
 
-func (o *RemoveProjectEnvResponseBody3) GetUpdatedBy() *string {
+func (o *RemoveProjectEnvResponseBody3) GetID() *string {
 	if o == nil {
 		return nil
 	}
-	return o.UpdatedBy
+	return o.ID
+}
+
+func (o *RemoveProjectEnvResponseBody3) GetKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.Key
+}
+
+func (o *RemoveProjectEnvResponseBody3) GetTarget() *RemoveProjectEnvTargetUnion3 {
+	if o == nil {
+		return nil
+	}
+	return o.Target
 }
 
 func (o *RemoveProjectEnvResponseBody3) GetGitBranch() *string {
@@ -1658,18 +1636,32 @@ func (o *RemoveProjectEnvResponseBody3) GetGitBranch() *string {
 	return o.GitBranch
 }
 
-func (o *RemoveProjectEnvResponseBody3) GetEdgeConfigID() *string {
+func (o *RemoveProjectEnvResponseBody3) GetUpdatedBy() *string {
 	if o == nil {
 		return nil
 	}
-	return o.EdgeConfigID
+	return o.UpdatedBy
 }
 
-func (o *RemoveProjectEnvResponseBody3) GetEdgeConfigTokenID() *string {
+func (o *RemoveProjectEnvResponseBody3) GetSunsetSecretID() *string {
 	if o == nil {
 		return nil
 	}
-	return o.EdgeConfigTokenID
+	return o.SunsetSecretID
+}
+
+func (o *RemoveProjectEnvResponseBody3) GetDecrypted() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Decrypted
+}
+
+func (o *RemoveProjectEnvResponseBody3) GetConfigurationID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ConfigurationID
 }
 
 func (o *RemoveProjectEnvResponseBody3) GetContentHint() *RemoveProjectEnvContentHintUnion3 {
@@ -1805,6 +1797,41 @@ func (o *RemoveProjectEnvResponseBody3) GetCustomEnvironmentIds() []string {
 	return o.CustomEnvironmentIds
 }
 
+type RemoveProjectEnvType2 string
+
+const (
+	RemoveProjectEnvType2Secret    RemoveProjectEnvType2 = "secret"
+	RemoveProjectEnvType2System    RemoveProjectEnvType2 = "system"
+	RemoveProjectEnvType2Encrypted RemoveProjectEnvType2 = "encrypted"
+	RemoveProjectEnvType2Plain     RemoveProjectEnvType2 = "plain"
+	RemoveProjectEnvType2Sensitive RemoveProjectEnvType2 = "sensitive"
+)
+
+func (e RemoveProjectEnvType2) ToPointer() *RemoveProjectEnvType2 {
+	return &e
+}
+func (e *RemoveProjectEnvType2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "secret":
+		fallthrough
+	case "system":
+		fallthrough
+	case "encrypted":
+		fallthrough
+	case "plain":
+		fallthrough
+	case "sensitive":
+		*e = RemoveProjectEnvType2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RemoveProjectEnvType2: %v", v)
+	}
+}
+
 type RemoveProjectEnvTargetEnum4 string
 
 const (
@@ -1924,41 +1951,6 @@ func (u RemoveProjectEnvTargetUnion2) MarshalJSON() ([]byte, error) {
 	}
 
 	return nil, errors.New("could not marshal union type RemoveProjectEnvTargetUnion2: all fields are null")
-}
-
-type RemoveProjectEnvType2 string
-
-const (
-	RemoveProjectEnvType2Secret    RemoveProjectEnvType2 = "secret"
-	RemoveProjectEnvType2System    RemoveProjectEnvType2 = "system"
-	RemoveProjectEnvType2Encrypted RemoveProjectEnvType2 = "encrypted"
-	RemoveProjectEnvType2Plain     RemoveProjectEnvType2 = "plain"
-	RemoveProjectEnvType2Sensitive RemoveProjectEnvType2 = "sensitive"
-)
-
-func (e RemoveProjectEnvType2) ToPointer() *RemoveProjectEnvType2 {
-	return &e
-}
-func (e *RemoveProjectEnvType2) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "secret":
-		fallthrough
-	case "system":
-		fallthrough
-	case "encrypted":
-		fallthrough
-	case "plain":
-		fallthrough
-	case "sensitive":
-		*e = RemoveProjectEnvType2(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for RemoveProjectEnvType2: %v", v)
-	}
 }
 
 type RemoveProjectEnvTypeFlagsConnectionString2 string
@@ -3272,25 +3264,24 @@ func (o *RemoveProjectEnvInternalContentHint2) GetEncryptedValue() string {
 }
 
 type RemoveProjectEnvResponseBody2 struct {
-	System *bool                         `json:"system,omitempty"`
-	Target *RemoveProjectEnvTargetUnion2 `json:"target,omitempty"`
-	Type   RemoveProjectEnvType2         `json:"type"`
+	System            *bool                         `json:"system,omitempty"`
+	Type              RemoveProjectEnvType2         `json:"type"`
+	Value             string                        `json:"value"`
+	EdgeConfigID      *string                       `json:"edgeConfigId,omitempty"`
+	EdgeConfigTokenID *string                       `json:"edgeConfigTokenId,omitempty"`
+	CreatedAt         *float64                      `json:"createdAt,omitempty"`
+	UpdatedAt         *float64                      `json:"updatedAt,omitempty"`
+	CreatedBy         *string                       `json:"createdBy,omitempty"`
+	ID                *string                       `json:"id,omitempty"`
+	Key               string                        `json:"key"`
+	Target            *RemoveProjectEnvTargetUnion2 `json:"target,omitempty"`
+	GitBranch         *string                       `json:"gitBranch,omitempty"`
+	UpdatedBy         *string                       `json:"updatedBy,omitempty"`
 	// This is used to identify variables that have been migrated from type secret to sensitive.
-	SunsetSecretID    *string                            `json:"sunsetSecretId,omitempty"`
-	Decrypted         *bool                              `json:"decrypted,omitempty"`
-	Value             string                             `json:"value"`
-	VsmValue          *string                            `json:"vsmValue,omitempty"`
-	ID                *string                            `json:"id,omitempty"`
-	Key               string                             `json:"key"`
-	ConfigurationID   *string                            `json:"configurationId,omitempty"`
-	CreatedAt         *float64                           `json:"createdAt,omitempty"`
-	UpdatedAt         *float64                           `json:"updatedAt,omitempty"`
-	CreatedBy         *string                            `json:"createdBy,omitempty"`
-	UpdatedBy         *string                            `json:"updatedBy,omitempty"`
-	GitBranch         *string                            `json:"gitBranch,omitempty"`
-	EdgeConfigID      *string                            `json:"edgeConfigId,omitempty"`
-	EdgeConfigTokenID *string                            `json:"edgeConfigTokenId,omitempty"`
-	ContentHint       *RemoveProjectEnvContentHintUnion2 `json:"contentHint,omitempty"`
+	SunsetSecretID  *string                            `json:"sunsetSecretId,omitempty"`
+	Decrypted       *bool                              `json:"decrypted,omitempty"`
+	ConfigurationID *string                            `json:"configurationId,omitempty"`
+	ContentHint     *RemoveProjectEnvContentHintUnion2 `json:"contentHint,omitempty"`
 	// Similar to `contentHints`, but should not be exposed to the user.
 	InternalContentHint  *RemoveProjectEnvInternalContentHint2 `json:"internalContentHint,omitempty"`
 	Comment              *string                               `json:"comment,omitempty"`
@@ -3315,32 +3306,11 @@ func (o *RemoveProjectEnvResponseBody2) GetSystem() *bool {
 	return o.System
 }
 
-func (o *RemoveProjectEnvResponseBody2) GetTarget() *RemoveProjectEnvTargetUnion2 {
-	if o == nil {
-		return nil
-	}
-	return o.Target
-}
-
 func (o *RemoveProjectEnvResponseBody2) GetType() RemoveProjectEnvType2 {
 	if o == nil {
 		return RemoveProjectEnvType2("")
 	}
 	return o.Type
-}
-
-func (o *RemoveProjectEnvResponseBody2) GetSunsetSecretID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.SunsetSecretID
-}
-
-func (o *RemoveProjectEnvResponseBody2) GetDecrypted() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Decrypted
 }
 
 func (o *RemoveProjectEnvResponseBody2) GetValue() string {
@@ -3350,32 +3320,18 @@ func (o *RemoveProjectEnvResponseBody2) GetValue() string {
 	return o.Value
 }
 
-func (o *RemoveProjectEnvResponseBody2) GetVsmValue() *string {
+func (o *RemoveProjectEnvResponseBody2) GetEdgeConfigID() *string {
 	if o == nil {
 		return nil
 	}
-	return o.VsmValue
+	return o.EdgeConfigID
 }
 
-func (o *RemoveProjectEnvResponseBody2) GetID() *string {
+func (o *RemoveProjectEnvResponseBody2) GetEdgeConfigTokenID() *string {
 	if o == nil {
 		return nil
 	}
-	return o.ID
-}
-
-func (o *RemoveProjectEnvResponseBody2) GetKey() string {
-	if o == nil {
-		return ""
-	}
-	return o.Key
-}
-
-func (o *RemoveProjectEnvResponseBody2) GetConfigurationID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ConfigurationID
+	return o.EdgeConfigTokenID
 }
 
 func (o *RemoveProjectEnvResponseBody2) GetCreatedAt() *float64 {
@@ -3399,11 +3355,25 @@ func (o *RemoveProjectEnvResponseBody2) GetCreatedBy() *string {
 	return o.CreatedBy
 }
 
-func (o *RemoveProjectEnvResponseBody2) GetUpdatedBy() *string {
+func (o *RemoveProjectEnvResponseBody2) GetID() *string {
 	if o == nil {
 		return nil
 	}
-	return o.UpdatedBy
+	return o.ID
+}
+
+func (o *RemoveProjectEnvResponseBody2) GetKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.Key
+}
+
+func (o *RemoveProjectEnvResponseBody2) GetTarget() *RemoveProjectEnvTargetUnion2 {
+	if o == nil {
+		return nil
+	}
+	return o.Target
 }
 
 func (o *RemoveProjectEnvResponseBody2) GetGitBranch() *string {
@@ -3413,18 +3383,32 @@ func (o *RemoveProjectEnvResponseBody2) GetGitBranch() *string {
 	return o.GitBranch
 }
 
-func (o *RemoveProjectEnvResponseBody2) GetEdgeConfigID() *string {
+func (o *RemoveProjectEnvResponseBody2) GetUpdatedBy() *string {
 	if o == nil {
 		return nil
 	}
-	return o.EdgeConfigID
+	return o.UpdatedBy
 }
 
-func (o *RemoveProjectEnvResponseBody2) GetEdgeConfigTokenID() *string {
+func (o *RemoveProjectEnvResponseBody2) GetSunsetSecretID() *string {
 	if o == nil {
 		return nil
 	}
-	return o.EdgeConfigTokenID
+	return o.SunsetSecretID
+}
+
+func (o *RemoveProjectEnvResponseBody2) GetDecrypted() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Decrypted
+}
+
+func (o *RemoveProjectEnvResponseBody2) GetConfigurationID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ConfigurationID
 }
 
 func (o *RemoveProjectEnvResponseBody2) GetContentHint() *RemoveProjectEnvContentHintUnion2 {
@@ -3560,6 +3544,41 @@ func (o *RemoveProjectEnvResponseBody2) GetCustomEnvironmentIds() []string {
 	return o.CustomEnvironmentIds
 }
 
+type RemoveProjectEnvType1 string
+
+const (
+	RemoveProjectEnvType1Secret    RemoveProjectEnvType1 = "secret"
+	RemoveProjectEnvType1System    RemoveProjectEnvType1 = "system"
+	RemoveProjectEnvType1Encrypted RemoveProjectEnvType1 = "encrypted"
+	RemoveProjectEnvType1Plain     RemoveProjectEnvType1 = "plain"
+	RemoveProjectEnvType1Sensitive RemoveProjectEnvType1 = "sensitive"
+)
+
+func (e RemoveProjectEnvType1) ToPointer() *RemoveProjectEnvType1 {
+	return &e
+}
+func (e *RemoveProjectEnvType1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "secret":
+		fallthrough
+	case "system":
+		fallthrough
+	case "encrypted":
+		fallthrough
+	case "plain":
+		fallthrough
+	case "sensitive":
+		*e = RemoveProjectEnvType1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RemoveProjectEnvType1: %v", v)
+	}
+}
+
 type RemoveProjectEnvTargetEnum2 string
 
 const (
@@ -3679,41 +3698,6 @@ func (u RemoveProjectEnvTargetUnion1) MarshalJSON() ([]byte, error) {
 	}
 
 	return nil, errors.New("could not marshal union type RemoveProjectEnvTargetUnion1: all fields are null")
-}
-
-type RemoveProjectEnvType1 string
-
-const (
-	RemoveProjectEnvType1Secret    RemoveProjectEnvType1 = "secret"
-	RemoveProjectEnvType1System    RemoveProjectEnvType1 = "system"
-	RemoveProjectEnvType1Encrypted RemoveProjectEnvType1 = "encrypted"
-	RemoveProjectEnvType1Plain     RemoveProjectEnvType1 = "plain"
-	RemoveProjectEnvType1Sensitive RemoveProjectEnvType1 = "sensitive"
-)
-
-func (e RemoveProjectEnvType1) ToPointer() *RemoveProjectEnvType1 {
-	return &e
-}
-func (e *RemoveProjectEnvType1) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "secret":
-		fallthrough
-	case "system":
-		fallthrough
-	case "encrypted":
-		fallthrough
-	case "plain":
-		fallthrough
-	case "sensitive":
-		*e = RemoveProjectEnvType1(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for RemoveProjectEnvType1: %v", v)
-	}
 }
 
 type RemoveProjectEnvTypeFlagsConnectionString1 string
@@ -5027,24 +5011,23 @@ func (o *RemoveProjectEnvInternalContentHint1) GetEncryptedValue() string {
 }
 
 type RemoveProjectEnvResponseBody1 struct {
-	Target *RemoveProjectEnvTargetUnion1 `json:"target,omitempty"`
-	Type   RemoveProjectEnvType1         `json:"type"`
+	Type              RemoveProjectEnvType1         `json:"type"`
+	Value             string                        `json:"value"`
+	EdgeConfigID      *string                       `json:"edgeConfigId,omitempty"`
+	EdgeConfigTokenID *string                       `json:"edgeConfigTokenId,omitempty"`
+	CreatedAt         *float64                      `json:"createdAt,omitempty"`
+	UpdatedAt         *float64                      `json:"updatedAt,omitempty"`
+	CreatedBy         *string                       `json:"createdBy,omitempty"`
+	ID                *string                       `json:"id,omitempty"`
+	Key               string                        `json:"key"`
+	Target            *RemoveProjectEnvTargetUnion1 `json:"target,omitempty"`
+	GitBranch         *string                       `json:"gitBranch,omitempty"`
+	UpdatedBy         *string                       `json:"updatedBy,omitempty"`
 	// This is used to identify variables that have been migrated from type secret to sensitive.
-	SunsetSecretID    *string                            `json:"sunsetSecretId,omitempty"`
-	Decrypted         *bool                              `json:"decrypted,omitempty"`
-	Value             string                             `json:"value"`
-	VsmValue          *string                            `json:"vsmValue,omitempty"`
-	ID                *string                            `json:"id,omitempty"`
-	Key               string                             `json:"key"`
-	ConfigurationID   *string                            `json:"configurationId,omitempty"`
-	CreatedAt         *float64                           `json:"createdAt,omitempty"`
-	UpdatedAt         *float64                           `json:"updatedAt,omitempty"`
-	CreatedBy         *string                            `json:"createdBy,omitempty"`
-	UpdatedBy         *string                            `json:"updatedBy,omitempty"`
-	GitBranch         *string                            `json:"gitBranch,omitempty"`
-	EdgeConfigID      *string                            `json:"edgeConfigId,omitempty"`
-	EdgeConfigTokenID *string                            `json:"edgeConfigTokenId,omitempty"`
-	ContentHint       *RemoveProjectEnvContentHintUnion1 `json:"contentHint,omitempty"`
+	SunsetSecretID  *string                            `json:"sunsetSecretId,omitempty"`
+	Decrypted       *bool                              `json:"decrypted,omitempty"`
+	ConfigurationID *string                            `json:"configurationId,omitempty"`
+	ContentHint     *RemoveProjectEnvContentHintUnion1 `json:"contentHint,omitempty"`
 	// Similar to `contentHints`, but should not be exposed to the user.
 	InternalContentHint  *RemoveProjectEnvInternalContentHint1 `json:"internalContentHint,omitempty"`
 	Comment              *string                               `json:"comment,omitempty"`
@@ -5062,32 +5045,11 @@ func (r *RemoveProjectEnvResponseBody1) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *RemoveProjectEnvResponseBody1) GetTarget() *RemoveProjectEnvTargetUnion1 {
-	if o == nil {
-		return nil
-	}
-	return o.Target
-}
-
 func (o *RemoveProjectEnvResponseBody1) GetType() RemoveProjectEnvType1 {
 	if o == nil {
 		return RemoveProjectEnvType1("")
 	}
 	return o.Type
-}
-
-func (o *RemoveProjectEnvResponseBody1) GetSunsetSecretID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.SunsetSecretID
-}
-
-func (o *RemoveProjectEnvResponseBody1) GetDecrypted() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Decrypted
 }
 
 func (o *RemoveProjectEnvResponseBody1) GetValue() string {
@@ -5097,32 +5059,18 @@ func (o *RemoveProjectEnvResponseBody1) GetValue() string {
 	return o.Value
 }
 
-func (o *RemoveProjectEnvResponseBody1) GetVsmValue() *string {
+func (o *RemoveProjectEnvResponseBody1) GetEdgeConfigID() *string {
 	if o == nil {
 		return nil
 	}
-	return o.VsmValue
+	return o.EdgeConfigID
 }
 
-func (o *RemoveProjectEnvResponseBody1) GetID() *string {
+func (o *RemoveProjectEnvResponseBody1) GetEdgeConfigTokenID() *string {
 	if o == nil {
 		return nil
 	}
-	return o.ID
-}
-
-func (o *RemoveProjectEnvResponseBody1) GetKey() string {
-	if o == nil {
-		return ""
-	}
-	return o.Key
-}
-
-func (o *RemoveProjectEnvResponseBody1) GetConfigurationID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ConfigurationID
+	return o.EdgeConfigTokenID
 }
 
 func (o *RemoveProjectEnvResponseBody1) GetCreatedAt() *float64 {
@@ -5146,11 +5094,25 @@ func (o *RemoveProjectEnvResponseBody1) GetCreatedBy() *string {
 	return o.CreatedBy
 }
 
-func (o *RemoveProjectEnvResponseBody1) GetUpdatedBy() *string {
+func (o *RemoveProjectEnvResponseBody1) GetID() *string {
 	if o == nil {
 		return nil
 	}
-	return o.UpdatedBy
+	return o.ID
+}
+
+func (o *RemoveProjectEnvResponseBody1) GetKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.Key
+}
+
+func (o *RemoveProjectEnvResponseBody1) GetTarget() *RemoveProjectEnvTargetUnion1 {
+	if o == nil {
+		return nil
+	}
+	return o.Target
 }
 
 func (o *RemoveProjectEnvResponseBody1) GetGitBranch() *string {
@@ -5160,18 +5122,32 @@ func (o *RemoveProjectEnvResponseBody1) GetGitBranch() *string {
 	return o.GitBranch
 }
 
-func (o *RemoveProjectEnvResponseBody1) GetEdgeConfigID() *string {
+func (o *RemoveProjectEnvResponseBody1) GetUpdatedBy() *string {
 	if o == nil {
 		return nil
 	}
-	return o.EdgeConfigID
+	return o.UpdatedBy
 }
 
-func (o *RemoveProjectEnvResponseBody1) GetEdgeConfigTokenID() *string {
+func (o *RemoveProjectEnvResponseBody1) GetSunsetSecretID() *string {
 	if o == nil {
 		return nil
 	}
-	return o.EdgeConfigTokenID
+	return o.SunsetSecretID
+}
+
+func (o *RemoveProjectEnvResponseBody1) GetDecrypted() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Decrypted
+}
+
+func (o *RemoveProjectEnvResponseBody1) GetConfigurationID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ConfigurationID
 }
 
 func (o *RemoveProjectEnvResponseBody1) GetContentHint() *RemoveProjectEnvContentHintUnion1 {

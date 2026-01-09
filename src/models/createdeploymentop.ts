@@ -2008,6 +2008,10 @@ export type CreateDeploymentResponseBody = {
    */
   url: string;
   /**
+   * Since January 2025 User-configured deployment ID for skew protection with pre-built deployments. This is set when users configure a custom deploymentId in their next.config.js file. This allows Next.js to use skew protection even when deployments are pre-built outside of Vercel's build system.
+   */
+  userConfiguredDeploymentId?: string | undefined;
+  /**
    * The platform version that was used to create the deployment.
    */
   version: number;
@@ -8148,6 +8152,7 @@ export const CreateDeploymentResponseBody$inboundSchema: z.ZodType<
   target: z.nullable(CreateDeploymentTarget$inboundSchema).optional(),
   undeletedAt: types.optional(types.number()),
   url: types.string(),
+  userConfiguredDeploymentId: types.optional(types.string()),
   version: types.number(),
   oidcTokenClaims: types.optional(z.lazy(() => OidcTokenClaims$inboundSchema)),
   projectId: types.string(),
@@ -8281,6 +8286,7 @@ export type CreateDeploymentResponseBody$Outbound = {
   target?: string | null | undefined;
   undeletedAt?: number | undefined;
   url: string;
+  userConfiguredDeploymentId?: string | undefined;
   version: number;
   oidcTokenClaims?: OidcTokenClaims$Outbound | undefined;
   projectId: string;
@@ -8401,6 +8407,7 @@ export const CreateDeploymentResponseBody$outboundSchema: z.ZodType<
   target: z.nullable(CreateDeploymentTarget$outboundSchema).optional(),
   undeletedAt: z.number().optional(),
   url: z.string(),
+  userConfiguredDeploymentId: z.string().optional(),
   version: z.number(),
   oidcTokenClaims: z.lazy(() => OidcTokenClaims$outboundSchema).optional(),
   projectId: z.string(),

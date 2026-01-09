@@ -10,15 +10,16 @@ let value: UpdateAttackChallengeModeRequest = {
   slug: "my-team-url-slug",
   requestBody: {
     projectId: "<id>",
-    attackModeEnabled: false,
+    attackModeEnabled: true,
+    attackModeActiveUntil: 4214.91,
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      | Example                                                                                          |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `teamId`                                                                                         | *string*                                                                                         | :heavy_minus_sign:                                                                               | The Team identifier to perform the request on behalf of.                                         | team_1a2b3c4d5e6f7g8h9i0j1k2l                                                                    |
-| `slug`                                                                                           | *string*                                                                                         | :heavy_minus_sign:                                                                               | The Team slug to perform the request on behalf of.                                               | my-team-url-slug                                                                                 |
-| `requestBody`                                                                                    | [models.UpdateAttackChallengeModeRequestBody](../models/updateattackchallengemoderequestbody.md) | :heavy_check_mark:                                                                               | N/A                                                                                              |                                                                                                  |
+| Field                                                    | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `teamId`                                                 | *string*                                                 | :heavy_minus_sign:                                       | The Team identifier to perform the request on behalf of. | team_1a2b3c4d5e6f7g8h9i0j1k2l                            |
+| `slug`                                                   | *string*                                                 | :heavy_minus_sign:                                       | The Team slug to perform the request on behalf of.       | my-team-url-slug                                         |
+| `requestBody`                                            | *models.UpdateAttackChallengeModeRequestBody*            | :heavy_check_mark:                                       | N/A                                                      |                                                          |

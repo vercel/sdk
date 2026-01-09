@@ -1,20 +1,24 @@
 # UpdateAttackChallengeModeRequestBody
 
-## Example Usage
+
+## Supported Types
+
+### `models.UpdateAttackChallengeModeRequestBody1`
 
 ```typescript
-import { UpdateAttackChallengeModeRequestBody } from "@vercel/sdk/models/updateattackchallengemodeop.js";
-
-let value: UpdateAttackChallengeModeRequestBody = {
+const value: models.UpdateAttackChallengeModeRequestBody1 = {
   projectId: "<id>",
   attackModeEnabled: false,
+  attackModeActiveUntil: 2363.23,
 };
 ```
 
-## Fields
+### `models.UpdateAttackChallengeModeRequestBody2`
 
-| Field                   | Type                    | Required                | Description             |
-| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `projectId`             | *string*                | :heavy_check_mark:      | N/A                     |
-| `attackModeEnabled`     | *boolean*               | :heavy_check_mark:      | N/A                     |
-| `attackModeActiveUntil` | *number*                | :heavy_minus_sign:      | N/A                     |
+```typescript
+const value: models.UpdateAttackChallengeModeRequestBody2 = {
+  projectId: "<id>",
+  attackModeEnabled: true,
+};
+```
+

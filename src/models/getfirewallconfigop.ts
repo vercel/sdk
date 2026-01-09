@@ -305,13 +305,13 @@ export type GetFirewallConfigRulesType = ClosedEnum<
 >;
 
 export const GetFirewallConfigRulesOp = {
+  Sub: "sub",
   Re: "re",
   Eq: "eq",
   Ex: "ex",
   Inc: "inc",
   Pre: "pre",
   Suf: "suf",
-  Sub: "sub",
   Gt: "gt",
   Gte: "gte",
   Lt: "lt",
@@ -435,13 +435,13 @@ export const RulesType = {
 export type RulesType = ClosedEnum<typeof RulesType>;
 
 export const RulesOp = {
+  Sub: "sub",
   Re: "re",
   Eq: "eq",
   Ex: "ex",
   Inc: "inc",
   Pre: "pre",
   Suf: "suf",
-  Sub: "sub",
   Gt: "gt",
   Gte: "gte",
   Lt: "lt",

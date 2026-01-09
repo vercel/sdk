@@ -3,46 +3,34 @@
 
 ## Supported Types
 
-### `models.GetAllLogDrainsResponseBody1`
+### `models.GetAllLogDrainsResponseBody1[]`
 
 ```typescript
-const value: models.GetAllLogDrainsResponseBody1 = {
+const value: models.GetAllLogDrainsResponseBody1[] = [];
+```
+
+### `models.GetAllLogDrainsResponseBody2`
+
+```typescript
+const value: models.GetAllLogDrainsResponseBody2 = {
   drains: [
     {
       id: "<id>",
-      ownerId: "<id>",
+      createdAt: 1914.38,
+      updatedAt: 8765.47,
       name: "<value>",
-      createdAt: 5888.29,
-      updatedAt: 3587.18,
+      ownerId: "<id>",
       schemas: {},
       delivery: {
-        type: "otlphttp",
-        endpoint: {
-          traces: "<value>",
-        },
-        encoding: "proto",
-        headers: {
-          "key": "<value>",
-          "key1": "<value>",
-        },
+        type: "clickhouse",
+        endpoint: "<value>",
+        table: "<value>",
       },
       source: {
-        kind: "integration",
-        integrationId: "<id>",
-        integrationConfigurationId: "<id>",
+        kind: "self-served",
       },
     },
   ],
 };
-```
-
-### `models.GetAllLogDrainsResponseBody2[]`
-
-```typescript
-const value: models.GetAllLogDrainsResponseBody2[] = [
-  {
-    createdFrom: "<value>",
-  },
-];
 ```
 

@@ -5,11 +5,11 @@
 ```typescript
 import { GetDrainDeliveryDrainsCompression } from "@vercel/sdk/models/getdrainop.js";
 
-let value: GetDrainDeliveryDrainsCompression = "none";
+let value: GetDrainDeliveryDrainsCompression = "gzip";
 ```
 
 ## Values
 
 ```typescript
-"gzip" | "none"
+"none" | "gzip"
 ```

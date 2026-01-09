@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Hidden2 } from "@vercel/sdk/models/createintegrationstoredirectop.js";
+import { Hidden2 } from "@vercel/sdk/models/getconfigurationproductsop.js";
 
 let value: Hidden2 = {
   expr: "<value>",

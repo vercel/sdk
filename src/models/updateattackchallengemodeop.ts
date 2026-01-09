@@ -7,13 +7,23 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export type UpdateAttackChallengeModeRequestBody = {
+export type UpdateAttackChallengeModeRequestBody2 = {
   projectId: string;
   attackModeEnabled: boolean;
-  attackModeActiveUntil?: number | null | undefined;
 };
+
+export type UpdateAttackChallengeModeRequestBody1 = {
+  projectId: string;
+  attackModeEnabled: boolean;
+  attackModeActiveUntil: number;
+};
+
+export type UpdateAttackChallengeModeRequestBody =
+  | UpdateAttackChallengeModeRequestBody1
+  | UpdateAttackChallengeModeRequestBody2;
 
 export type UpdateAttackChallengeModeRequest = {
   /**
@@ -24,7 +34,9 @@ export type UpdateAttackChallengeModeRequest = {
    * The Team slug to perform the request on behalf of.
    */
   slug?: string | undefined;
-  requestBody: UpdateAttackChallengeModeRequestBody;
+  requestBody:
+    | UpdateAttackChallengeModeRequestBody1
+    | UpdateAttackChallengeModeRequestBody2;
 };
 
 export type UpdateAttackChallengeModeResponseBody = {
@@ -33,32 +45,121 @@ export type UpdateAttackChallengeModeResponseBody = {
 };
 
 /** @internal */
-export const UpdateAttackChallengeModeRequestBody$inboundSchema: z.ZodType<
-  UpdateAttackChallengeModeRequestBody,
+export const UpdateAttackChallengeModeRequestBody2$inboundSchema: z.ZodType<
+  UpdateAttackChallengeModeRequestBody2,
   z.ZodTypeDef,
   unknown
 > = z.object({
   projectId: types.string(),
   attackModeEnabled: types.boolean(),
-  attackModeActiveUntil: z.nullable(types.number()).optional(),
 });
 /** @internal */
-export type UpdateAttackChallengeModeRequestBody$Outbound = {
+export type UpdateAttackChallengeModeRequestBody2$Outbound = {
   projectId: string;
   attackModeEnabled: boolean;
-  attackModeActiveUntil?: number | null | undefined;
 };
+
+/** @internal */
+export const UpdateAttackChallengeModeRequestBody2$outboundSchema: z.ZodType<
+  UpdateAttackChallengeModeRequestBody2$Outbound,
+  z.ZodTypeDef,
+  UpdateAttackChallengeModeRequestBody2
+> = z.object({
+  projectId: z.string(),
+  attackModeEnabled: z.boolean(),
+});
+
+export function updateAttackChallengeModeRequestBody2ToJSON(
+  updateAttackChallengeModeRequestBody2: UpdateAttackChallengeModeRequestBody2,
+): string {
+  return JSON.stringify(
+    UpdateAttackChallengeModeRequestBody2$outboundSchema.parse(
+      updateAttackChallengeModeRequestBody2,
+    ),
+  );
+}
+export function updateAttackChallengeModeRequestBody2FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateAttackChallengeModeRequestBody2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateAttackChallengeModeRequestBody2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateAttackChallengeModeRequestBody2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateAttackChallengeModeRequestBody1$inboundSchema: z.ZodType<
+  UpdateAttackChallengeModeRequestBody1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  projectId: types.string(),
+  attackModeEnabled: types.boolean(),
+  attackModeActiveUntil: types.number(),
+});
+/** @internal */
+export type UpdateAttackChallengeModeRequestBody1$Outbound = {
+  projectId: string;
+  attackModeEnabled: boolean;
+  attackModeActiveUntil: number;
+};
+
+/** @internal */
+export const UpdateAttackChallengeModeRequestBody1$outboundSchema: z.ZodType<
+  UpdateAttackChallengeModeRequestBody1$Outbound,
+  z.ZodTypeDef,
+  UpdateAttackChallengeModeRequestBody1
+> = z.object({
+  projectId: z.string(),
+  attackModeEnabled: z.boolean(),
+  attackModeActiveUntil: z.number(),
+});
+
+export function updateAttackChallengeModeRequestBody1ToJSON(
+  updateAttackChallengeModeRequestBody1: UpdateAttackChallengeModeRequestBody1,
+): string {
+  return JSON.stringify(
+    UpdateAttackChallengeModeRequestBody1$outboundSchema.parse(
+      updateAttackChallengeModeRequestBody1,
+    ),
+  );
+}
+export function updateAttackChallengeModeRequestBody1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateAttackChallengeModeRequestBody1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateAttackChallengeModeRequestBody1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateAttackChallengeModeRequestBody1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateAttackChallengeModeRequestBody$inboundSchema: z.ZodType<
+  UpdateAttackChallengeModeRequestBody,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => UpdateAttackChallengeModeRequestBody1$inboundSchema),
+  z.lazy(() => UpdateAttackChallengeModeRequestBody2$inboundSchema),
+]);
+/** @internal */
+export type UpdateAttackChallengeModeRequestBody$Outbound =
+  | UpdateAttackChallengeModeRequestBody1$Outbound
+  | UpdateAttackChallengeModeRequestBody2$Outbound;
 
 /** @internal */
 export const UpdateAttackChallengeModeRequestBody$outboundSchema: z.ZodType<
   UpdateAttackChallengeModeRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateAttackChallengeModeRequestBody
-> = z.object({
-  projectId: z.string(),
-  attackModeEnabled: z.boolean(),
-  attackModeActiveUntil: z.nullable(z.number()).optional(),
-});
+> = smartUnion([
+  z.lazy(() => UpdateAttackChallengeModeRequestBody1$outboundSchema),
+  z.lazy(() => UpdateAttackChallengeModeRequestBody2$outboundSchema),
+]);
 
 export function updateAttackChallengeModeRequestBodyToJSON(
   updateAttackChallengeModeRequestBody: UpdateAttackChallengeModeRequestBody,
@@ -88,7 +189,10 @@ export const UpdateAttackChallengeModeRequest$inboundSchema: z.ZodType<
 > = z.object({
   teamId: types.optional(types.string()),
   slug: types.optional(types.string()),
-  RequestBody: z.lazy(() => UpdateAttackChallengeModeRequestBody$inboundSchema),
+  RequestBody: smartUnion([
+    z.lazy(() => UpdateAttackChallengeModeRequestBody1$inboundSchema),
+    z.lazy(() => UpdateAttackChallengeModeRequestBody2$inboundSchema),
+  ]),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",
@@ -98,7 +202,9 @@ export const UpdateAttackChallengeModeRequest$inboundSchema: z.ZodType<
 export type UpdateAttackChallengeModeRequest$Outbound = {
   teamId?: string | undefined;
   slug?: string | undefined;
-  RequestBody: UpdateAttackChallengeModeRequestBody$Outbound;
+  RequestBody:
+    | UpdateAttackChallengeModeRequestBody1$Outbound
+    | UpdateAttackChallengeModeRequestBody2$Outbound;
 };
 
 /** @internal */
@@ -109,9 +215,10 @@ export const UpdateAttackChallengeModeRequest$outboundSchema: z.ZodType<
 > = z.object({
   teamId: z.string().optional(),
   slug: z.string().optional(),
-  requestBody: z.lazy(() =>
-    UpdateAttackChallengeModeRequestBody$outboundSchema
-  ),
+  requestBody: smartUnion([
+    z.lazy(() => UpdateAttackChallengeModeRequestBody1$outboundSchema),
+    z.lazy(() => UpdateAttackChallengeModeRequestBody2$outboundSchema),
+  ]),
 }).transform((v) => {
   return remap$(v, {
     requestBody: "RequestBody",

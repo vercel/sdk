@@ -65,11 +65,11 @@ func (e *GetIntegrationLogDrainsDeliveryFormat) UnmarshalJSON(data []byte) error
 type GetIntegrationLogDrainsSourceEnum string
 
 const (
+	GetIntegrationLogDrainsSourceEnumExternal GetIntegrationLogDrainsSourceEnum = "external"
 	GetIntegrationLogDrainsSourceEnumBuild    GetIntegrationLogDrainsSourceEnum = "build"
 	GetIntegrationLogDrainsSourceEnumEdge     GetIntegrationLogDrainsSourceEnum = "edge"
 	GetIntegrationLogDrainsSourceEnumLambda   GetIntegrationLogDrainsSourceEnum = "lambda"
 	GetIntegrationLogDrainsSourceEnumStatic   GetIntegrationLogDrainsSourceEnum = "static"
-	GetIntegrationLogDrainsSourceEnumExternal GetIntegrationLogDrainsSourceEnum = "external"
 	GetIntegrationLogDrainsSourceEnumFirewall GetIntegrationLogDrainsSourceEnum = "firewall"
 	GetIntegrationLogDrainsSourceEnumRedirect GetIntegrationLogDrainsSourceEnum = "redirect"
 )
@@ -83,6 +83,8 @@ func (e *GetIntegrationLogDrainsSourceEnum) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "external":
+		fallthrough
 	case "build":
 		fallthrough
 	case "edge":
@@ -90,8 +92,6 @@ func (e *GetIntegrationLogDrainsSourceEnum) UnmarshalJSON(data []byte) error {
 	case "lambda":
 		fallthrough
 	case "static":
-		fallthrough
-	case "external":
 		fallthrough
 	case "firewall":
 		fallthrough

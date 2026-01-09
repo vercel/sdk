@@ -9,21 +9,17 @@
 const value: boolean = true;
 ```
 
-### `models.GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody2`
+### `models.GetConfigurationProductsDisabledIntegrations2`
 
 ```typescript
-const value:
-  models.GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody2 =
-    {
-      expr: "<value>",
-    };
+const value: models.GetConfigurationProductsDisabledIntegrations2 = {
+  expr: "<value>",
+};
 ```
 
-### `models.GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody3`
+### `models.GetConfigurationProductsDisabledIntegrations3`
 
 ```typescript
-const value:
-  models.GetConfigurationProductsDisabledIntegrationsResponse200ApplicationJSONResponseBody3 =
-    "create";
+const value: models.GetConfigurationProductsDisabledIntegrations3 = "update";
 ```
 

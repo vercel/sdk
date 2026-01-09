@@ -232,6 +232,32 @@ func (o *UpdateRecordRequest) GetBody() UpdateRecordRequestBody {
 	return o.Body
 }
 
+type UpdateRecordTypeResponseBody string
+
+const (
+	UpdateRecordTypeResponseBodyRecord    UpdateRecordTypeResponseBody = "record"
+	UpdateRecordTypeResponseBodyRecordSys UpdateRecordTypeResponseBody = "record-sys"
+)
+
+func (e UpdateRecordTypeResponseBody) ToPointer() *UpdateRecordTypeResponseBody {
+	return &e
+}
+func (e *UpdateRecordTypeResponseBody) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "record":
+		fallthrough
+	case "record-sys":
+		*e = UpdateRecordTypeResponseBody(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateRecordTypeResponseBody: %v", v)
+	}
+}
+
 type RecordType string
 
 const (
@@ -282,64 +308,17 @@ func (e *RecordType) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type UpdateRecordTypeResponseBody string
-
-const (
-	UpdateRecordTypeResponseBodyRecord    UpdateRecordTypeResponseBody = "record"
-	UpdateRecordTypeResponseBodyRecordSys UpdateRecordTypeResponseBody = "record-sys"
-)
-
-func (e UpdateRecordTypeResponseBody) ToPointer() *UpdateRecordTypeResponseBody {
-	return &e
-}
-func (e *UpdateRecordTypeResponseBody) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "record":
-		fallthrough
-	case "record-sys":
-		*e = UpdateRecordTypeResponseBody(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateRecordTypeResponseBody: %v", v)
-	}
-}
-
 type UpdateRecordResponseBody struct {
-	CreatedAt  *float64                     `json:"createdAt,omitempty"`
-	Creator    string                       `json:"creator"`
-	Domain     string                       `json:"domain"`
 	ID         string                       `json:"id"`
 	Name       string                       `json:"name"`
-	RecordType RecordType                   `json:"recordType"`
-	TTL        *float64                     `json:"ttl,omitempty"`
 	Type       UpdateRecordTypeResponseBody `json:"type"`
 	Value      string                       `json:"value"`
+	Creator    string                       `json:"creator"`
+	Domain     string                       `json:"domain"`
+	TTL        *float64                     `json:"ttl,omitempty"`
 	Comment    *string                      `json:"comment,omitempty"`
-}
-
-func (o *UpdateRecordResponseBody) GetCreatedAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.CreatedAt
-}
-
-func (o *UpdateRecordResponseBody) GetCreator() string {
-	if o == nil {
-		return ""
-	}
-	return o.Creator
-}
-
-func (o *UpdateRecordResponseBody) GetDomain() string {
-	if o == nil {
-		return ""
-	}
-	return o.Domain
+	RecordType RecordType                   `json:"recordType"`
+	CreatedAt  *float64                     `json:"createdAt,omitempty"`
 }
 
 func (o *UpdateRecordResponseBody) GetID() string {
@@ -356,20 +335,6 @@ func (o *UpdateRecordResponseBody) GetName() string {
 	return o.Name
 }
 
-func (o *UpdateRecordResponseBody) GetRecordType() RecordType {
-	if o == nil {
-		return RecordType("")
-	}
-	return o.RecordType
-}
-
-func (o *UpdateRecordResponseBody) GetTTL() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.TTL
-}
-
 func (o *UpdateRecordResponseBody) GetType() UpdateRecordTypeResponseBody {
 	if o == nil {
 		return UpdateRecordTypeResponseBody("")
@@ -384,11 +349,46 @@ func (o *UpdateRecordResponseBody) GetValue() string {
 	return o.Value
 }
 
+func (o *UpdateRecordResponseBody) GetCreator() string {
+	if o == nil {
+		return ""
+	}
+	return o.Creator
+}
+
+func (o *UpdateRecordResponseBody) GetDomain() string {
+	if o == nil {
+		return ""
+	}
+	return o.Domain
+}
+
+func (o *UpdateRecordResponseBody) GetTTL() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.TTL
+}
+
 func (o *UpdateRecordResponseBody) GetComment() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Comment
+}
+
+func (o *UpdateRecordResponseBody) GetRecordType() RecordType {
+	if o == nil {
+		return RecordType("")
+	}
+	return o.RecordType
+}
+
+func (o *UpdateRecordResponseBody) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
 }
 
 type UpdateRecordResponse struct {

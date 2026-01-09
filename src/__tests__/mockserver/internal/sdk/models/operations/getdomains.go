@@ -167,17 +167,17 @@ type GetDomainsDomain struct {
 	Creator GetDomainsCreator `json:"creator"`
 	// Whether or not the domain is registered with Name.com. If set to `true`, the domain is registered with Name.com.
 	Registrar *GetDomainsRegistrar `json:"registrar,omitempty"`
-	TeamID    *string              `json:"teamId"`
-	// Timestamp in milliseconds when the domain was created in the registry.
-	CreatedAt float64 `json:"createdAt"`
+	// The domain name.
+	Name   string  `json:"name"`
+	TeamID *string `json:"teamId"`
 	// If it was purchased through Vercel, the timestamp in milliseconds when it was purchased.
 	BoughtAt *float64 `json:"boughtAt"`
+	// Timestamp in milliseconds when the domain was created in the registry.
+	CreatedAt float64 `json:"createdAt"`
 	// Timestamp in milliseconds at which the domain is set to expire. `null` if not bought with Vercel.
 	ExpiresAt *float64 `json:"expiresAt"`
 	// The unique identifier of the domain.
 	ID string `json:"id"`
-	// The domain name.
-	Name string `json:"name"`
 	// Timestamp in milliseconds at which the domain was ordered.
 	OrderedAt *float64 `json:"orderedAt,omitempty"`
 	// Indicates whether the domain is set to automatically renew.
@@ -233,6 +233,13 @@ func (o *GetDomainsDomain) GetRegistrar() *GetDomainsRegistrar {
 	return o.Registrar
 }
 
+func (o *GetDomainsDomain) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
 func (o *GetDomainsDomain) GetTeamID() *string {
 	if o == nil {
 		return nil
@@ -240,18 +247,18 @@ func (o *GetDomainsDomain) GetTeamID() *string {
 	return o.TeamID
 }
 
-func (o *GetDomainsDomain) GetCreatedAt() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.CreatedAt
-}
-
 func (o *GetDomainsDomain) GetBoughtAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.BoughtAt
+}
+
+func (o *GetDomainsDomain) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
 }
 
 func (o *GetDomainsDomain) GetExpiresAt() *float64 {
@@ -266,13 +273,6 @@ func (o *GetDomainsDomain) GetID() string {
 		return ""
 	}
 	return o.ID
-}
-
-func (o *GetDomainsDomain) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
 }
 
 func (o *GetDomainsDomain) GetOrderedAt() *float64 {

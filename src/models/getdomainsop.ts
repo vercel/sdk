@@ -98,15 +98,19 @@ export type GetDomainsDomains = {
    * Whether or not the domain is registered with Name.com. If set to `true`, the domain is registered with Name.com.
    */
   registrar?: GetDomainsRegistrar | undefined;
-  teamId: string | null;
   /**
-   * Timestamp in milliseconds when the domain was created in the registry.
+   * The domain name.
    */
-  createdAt: number;
+  name: string;
+  teamId: string | null;
   /**
    * If it was purchased through Vercel, the timestamp in milliseconds when it was purchased.
    */
   boughtAt: number | null;
+  /**
+   * Timestamp in milliseconds when the domain was created in the registry.
+   */
+  createdAt: number;
   /**
    * Timestamp in milliseconds at which the domain is set to expire. `null` if not bought with Vercel.
    */
@@ -115,10 +119,6 @@ export type GetDomainsDomains = {
    * The unique identifier of the domain.
    */
   id: string;
-  /**
-   * The domain name.
-   */
-  name: string;
   /**
    * Timestamp in milliseconds at which the domain was ordered.
    */
@@ -285,12 +285,12 @@ export const GetDomainsDomains$inboundSchema: z.ZodType<
   customNameservers: types.optional(z.array(types.string())),
   creator: z.lazy(() => GetDomainsCreator$inboundSchema),
   registrar: types.optional(GetDomainsRegistrar$inboundSchema),
+  name: types.string(),
   teamId: types.nullable(types.string()),
-  createdAt: types.number(),
   boughtAt: types.nullable(types.number()),
+  createdAt: types.number(),
   expiresAt: types.nullable(types.number()),
   id: types.string(),
-  name: types.string(),
   orderedAt: types.optional(types.number()),
   renew: types.optional(types.boolean()),
   serviceType: GetDomainsServiceType$inboundSchema,
@@ -306,12 +306,12 @@ export type GetDomainsDomains$Outbound = {
   customNameservers?: Array<string> | undefined;
   creator: GetDomainsCreator$Outbound;
   registrar?: string | undefined;
+  name: string;
   teamId: string | null;
-  createdAt: number;
   boughtAt: number | null;
+  createdAt: number;
   expiresAt: number | null;
   id: string;
-  name: string;
   orderedAt?: number | undefined;
   renew?: boolean | undefined;
   serviceType: string;
@@ -332,12 +332,12 @@ export const GetDomainsDomains$outboundSchema: z.ZodType<
   customNameservers: z.array(z.string()).optional(),
   creator: z.lazy(() => GetDomainsCreator$outboundSchema),
   registrar: GetDomainsRegistrar$outboundSchema.optional(),
+  name: z.string(),
   teamId: z.nullable(z.string()),
-  createdAt: z.number(),
   boughtAt: z.nullable(z.number()),
+  createdAt: z.number(),
   expiresAt: z.nullable(z.number()),
   id: z.string(),
-  name: z.string(),
   orderedAt: z.number().optional(),
   renew: z.boolean().optional(),
   serviceType: GetDomainsServiceType$outboundSchema,

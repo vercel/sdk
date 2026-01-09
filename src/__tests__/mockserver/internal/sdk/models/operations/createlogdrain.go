@@ -236,11 +236,11 @@ func (e *CreateLogDrainDeliveryFormatResponse) UnmarshalJSON(data []byte) error 
 type CreateLogDrainSourceResponseBodyEnum string
 
 const (
+	CreateLogDrainSourceResponseBodyEnumExternal CreateLogDrainSourceResponseBodyEnum = "external"
 	CreateLogDrainSourceResponseBodyEnumBuild    CreateLogDrainSourceResponseBodyEnum = "build"
 	CreateLogDrainSourceResponseBodyEnumEdge     CreateLogDrainSourceResponseBodyEnum = "edge"
 	CreateLogDrainSourceResponseBodyEnumLambda   CreateLogDrainSourceResponseBodyEnum = "lambda"
 	CreateLogDrainSourceResponseBodyEnumStatic   CreateLogDrainSourceResponseBodyEnum = "static"
-	CreateLogDrainSourceResponseBodyEnumExternal CreateLogDrainSourceResponseBodyEnum = "external"
 	CreateLogDrainSourceResponseBodyEnumFirewall CreateLogDrainSourceResponseBodyEnum = "firewall"
 	CreateLogDrainSourceResponseBodyEnumRedirect CreateLogDrainSourceResponseBodyEnum = "redirect"
 )
@@ -254,6 +254,8 @@ func (e *CreateLogDrainSourceResponseBodyEnum) UnmarshalJSON(data []byte) error 
 		return err
 	}
 	switch v {
+	case "external":
+		fallthrough
 	case "build":
 		fallthrough
 	case "edge":
@@ -261,8 +263,6 @@ func (e *CreateLogDrainSourceResponseBodyEnum) UnmarshalJSON(data []byte) error 
 	case "lambda":
 		fallthrough
 	case "static":
-		fallthrough
-	case "external":
 		fallthrough
 	case "firewall":
 		fallthrough

@@ -124,7 +124,26 @@ test("Aliases Get Alias", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual([]);
+  expect(result).toEqual({
+    alias: "my-alias.vercel.app",
+    created: new Date("2017-04-26T23:00:34.232Z"),
+    createdAt: 1540095775941,
+    creator: {
+      uid: "96SnxkFiMyVKsK3pnoHfx3Hz",
+      email: "john-doe@gmail.com",
+      username: "john-doe",
+    },
+    deletedAt: 1540095775941,
+    deployment: {
+      id: "dpl_5m8CQaRBm3FnWRW1od3wKTpaECPx",
+      url: "my-instant-deployment-3ij3cxz9qr.now.sh",
+      meta: "{}",
+    },
+    deploymentId: "dpl_5m8CQaRBm3FnWRW1od3wKTpaECPx",
+    projectId: "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+    uid: "<id>",
+    updatedAt: 1540095775941,
+  });
 });
 
 test("Aliases Delete Alias", async () => {

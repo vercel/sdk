@@ -3,34 +3,141 @@
 package operations
 
 import (
+	"errors"
+	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/utils"
 )
 
-type UpdateAttackChallengeModeRequestBody struct {
-	ProjectID             string   `json:"projectId"`
-	AttackModeEnabled     bool     `json:"attackModeEnabled"`
-	AttackModeActiveUntil *float64 `json:"attackModeActiveUntil,omitempty"`
+type UpdateAttackChallengeModeRequestBody2 struct {
+	ProjectID         string `json:"projectId"`
+	AttackModeEnabled bool   `json:"attackModeEnabled"`
 }
 
-func (o *UpdateAttackChallengeModeRequestBody) GetProjectID() string {
+func (u UpdateAttackChallengeModeRequestBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateAttackChallengeModeRequestBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"projectId", "attackModeEnabled"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateAttackChallengeModeRequestBody2) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProjectID
 }
 
-func (o *UpdateAttackChallengeModeRequestBody) GetAttackModeEnabled() bool {
+func (o *UpdateAttackChallengeModeRequestBody2) GetAttackModeEnabled() bool {
 	if o == nil {
 		return false
 	}
 	return o.AttackModeEnabled
 }
 
-func (o *UpdateAttackChallengeModeRequestBody) GetAttackModeActiveUntil() *float64 {
+type UpdateAttackChallengeModeRequestBody1 struct {
+	ProjectID             string  `json:"projectId"`
+	AttackModeEnabled     bool    `json:"attackModeEnabled"`
+	AttackModeActiveUntil float64 `json:"attackModeActiveUntil"`
+}
+
+func (u UpdateAttackChallengeModeRequestBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateAttackChallengeModeRequestBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"projectId", "attackModeEnabled", "attackModeActiveUntil"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateAttackChallengeModeRequestBody1) GetProjectID() string {
 	if o == nil {
-		return nil
+		return ""
+	}
+	return o.ProjectID
+}
+
+func (o *UpdateAttackChallengeModeRequestBody1) GetAttackModeEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.AttackModeEnabled
+}
+
+func (o *UpdateAttackChallengeModeRequestBody1) GetAttackModeActiveUntil() float64 {
+	if o == nil {
+		return 0.0
 	}
 	return o.AttackModeActiveUntil
+}
+
+type UpdateAttackChallengeModeRequestBodyType string
+
+const (
+	UpdateAttackChallengeModeRequestBodyTypeUpdateAttackChallengeModeRequestBody1 UpdateAttackChallengeModeRequestBodyType = "updateAttackChallengeMode_RequestBody_1"
+	UpdateAttackChallengeModeRequestBodyTypeUpdateAttackChallengeModeRequestBody2 UpdateAttackChallengeModeRequestBodyType = "updateAttackChallengeMode_RequestBody_2"
+)
+
+type UpdateAttackChallengeModeRequestBody struct {
+	UpdateAttackChallengeModeRequestBody1 *UpdateAttackChallengeModeRequestBody1 `queryParam:"inline"`
+	UpdateAttackChallengeModeRequestBody2 *UpdateAttackChallengeModeRequestBody2 `queryParam:"inline"`
+
+	Type UpdateAttackChallengeModeRequestBodyType
+}
+
+func CreateUpdateAttackChallengeModeRequestBodyUpdateAttackChallengeModeRequestBody1(updateAttackChallengeModeRequestBody1 UpdateAttackChallengeModeRequestBody1) UpdateAttackChallengeModeRequestBody {
+	typ := UpdateAttackChallengeModeRequestBodyTypeUpdateAttackChallengeModeRequestBody1
+
+	return UpdateAttackChallengeModeRequestBody{
+		UpdateAttackChallengeModeRequestBody1: &updateAttackChallengeModeRequestBody1,
+		Type:                                  typ,
+	}
+}
+
+func CreateUpdateAttackChallengeModeRequestBodyUpdateAttackChallengeModeRequestBody2(updateAttackChallengeModeRequestBody2 UpdateAttackChallengeModeRequestBody2) UpdateAttackChallengeModeRequestBody {
+	typ := UpdateAttackChallengeModeRequestBodyTypeUpdateAttackChallengeModeRequestBody2
+
+	return UpdateAttackChallengeModeRequestBody{
+		UpdateAttackChallengeModeRequestBody2: &updateAttackChallengeModeRequestBody2,
+		Type:                                  typ,
+	}
+}
+
+func (u *UpdateAttackChallengeModeRequestBody) UnmarshalJSON(data []byte) error {
+
+	var updateAttackChallengeModeRequestBody1 UpdateAttackChallengeModeRequestBody1 = UpdateAttackChallengeModeRequestBody1{}
+	if err := utils.UnmarshalJSON(data, &updateAttackChallengeModeRequestBody1, "", true, nil); err == nil {
+		u.UpdateAttackChallengeModeRequestBody1 = &updateAttackChallengeModeRequestBody1
+		u.Type = UpdateAttackChallengeModeRequestBodyTypeUpdateAttackChallengeModeRequestBody1
+		return nil
+	}
+
+	var updateAttackChallengeModeRequestBody2 UpdateAttackChallengeModeRequestBody2 = UpdateAttackChallengeModeRequestBody2{}
+	if err := utils.UnmarshalJSON(data, &updateAttackChallengeModeRequestBody2, "", true, nil); err == nil {
+		u.UpdateAttackChallengeModeRequestBody2 = &updateAttackChallengeModeRequestBody2
+		u.Type = UpdateAttackChallengeModeRequestBodyTypeUpdateAttackChallengeModeRequestBody2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateAttackChallengeModeRequestBody", string(data))
+}
+
+func (u UpdateAttackChallengeModeRequestBody) MarshalJSON() ([]byte, error) {
+	if u.UpdateAttackChallengeModeRequestBody1 != nil {
+		return utils.MarshalJSON(u.UpdateAttackChallengeModeRequestBody1, "", true)
+	}
+
+	if u.UpdateAttackChallengeModeRequestBody2 != nil {
+		return utils.MarshalJSON(u.UpdateAttackChallengeModeRequestBody2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type UpdateAttackChallengeModeRequestBody: all fields are null")
 }
 
 type UpdateAttackChallengeModeRequest struct {

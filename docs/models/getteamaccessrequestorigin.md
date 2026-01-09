@@ -11,5 +11,5 @@ let value: GetTeamAccessRequestOrigin = "organization-teams";
 ## Values
 
 ```typescript
-"link" | "mail" | "import" | "teams" | "github" | "gitlab" | "bitbucket" | "saml" | "dsync" | "feedback" | "organization-teams"
+"teams" | "link" | "mail" | "import" | "github" | "gitlab" | "bitbucket" | "saml" | "dsync" | "feedback" | "organization-teams"
 ```

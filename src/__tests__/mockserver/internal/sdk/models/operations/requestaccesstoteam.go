@@ -206,17 +206,17 @@ func (o *RequestAccessToTeamRequest) GetBody() RequestAccessToTeamRequestBody {
 type RequestAccessToTeamOriginResponse string
 
 const (
-	RequestAccessToTeamOriginResponseImport            RequestAccessToTeamOriginResponse = "import"
 	RequestAccessToTeamOriginResponseTeams             RequestAccessToTeamOriginResponse = "teams"
+	RequestAccessToTeamOriginResponseLink              RequestAccessToTeamOriginResponse = "link"
+	RequestAccessToTeamOriginResponseMail              RequestAccessToTeamOriginResponse = "mail"
+	RequestAccessToTeamOriginResponseImport            RequestAccessToTeamOriginResponse = "import"
 	RequestAccessToTeamOriginResponseGithub            RequestAccessToTeamOriginResponse = "github"
 	RequestAccessToTeamOriginResponseGitlab            RequestAccessToTeamOriginResponse = "gitlab"
 	RequestAccessToTeamOriginResponseBitbucket         RequestAccessToTeamOriginResponse = "bitbucket"
-	RequestAccessToTeamOriginResponseFeedback          RequestAccessToTeamOriginResponse = "feedback"
-	RequestAccessToTeamOriginResponseOrganizationTeams RequestAccessToTeamOriginResponse = "organization-teams"
-	RequestAccessToTeamOriginResponseLink              RequestAccessToTeamOriginResponse = "link"
-	RequestAccessToTeamOriginResponseMail              RequestAccessToTeamOriginResponse = "mail"
 	RequestAccessToTeamOriginResponseSaml              RequestAccessToTeamOriginResponse = "saml"
 	RequestAccessToTeamOriginResponseDsync             RequestAccessToTeamOriginResponse = "dsync"
+	RequestAccessToTeamOriginResponseFeedback          RequestAccessToTeamOriginResponse = "feedback"
+	RequestAccessToTeamOriginResponseOrganizationTeams RequestAccessToTeamOriginResponse = "organization-teams"
 )
 
 func (e RequestAccessToTeamOriginResponse) ToPointer() *RequestAccessToTeamOriginResponse {
@@ -228,9 +228,13 @@ func (e *RequestAccessToTeamOriginResponse) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "import":
-		fallthrough
 	case "teams":
+		fallthrough
+	case "link":
+		fallthrough
+	case "mail":
+		fallthrough
+	case "import":
 		fallthrough
 	case "github":
 		fallthrough
@@ -238,17 +242,13 @@ func (e *RequestAccessToTeamOriginResponse) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "bitbucket":
 		fallthrough
-	case "feedback":
-		fallthrough
-	case "organization-teams":
-		fallthrough
-	case "link":
-		fallthrough
-	case "mail":
-		fallthrough
 	case "saml":
 		fallthrough
 	case "dsync":
+		fallthrough
+	case "feedback":
+		fallthrough
+	case "organization-teams":
 		*e = RequestAccessToTeamOriginResponse(v)
 		return nil
 	default:

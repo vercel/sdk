@@ -8,10 +8,10 @@
 ```typescript
 const value: models.CreateDrainResponseBody1 = {
   id: "<id>",
-  ownerId: "<id>",
-  name: "<value>",
   createdAt: 9104.12,
   updatedAt: 815.09,
+  name: "<value>",
+  ownerId: "<id>",
   schemas: {},
   delivery: {
     type: "internal",
@@ -30,10 +30,10 @@ const value: models.CreateDrainResponseBody1 = {
 ```typescript
 const value: models.CreateDrainResponseBody2 = {
   id: "<id>",
-  ownerId: "<id>",
-  name: "<value>",
   createdAt: 8513.2,
   updatedAt: 8458.35,
+  name: "<value>",
+  ownerId: "<id>",
   schemas: {},
   delivery: {
     type: "clickhouse",

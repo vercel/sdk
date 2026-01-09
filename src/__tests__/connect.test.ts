@@ -43,3 +43,119 @@ test("Connect Update Static Ips", async () => {
     },
   ]);
 });
+
+test("Connect List Networks", async () => {
+  const testHttpClient = createTestHTTPClient("listNetworks");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.connect.listNetworks({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual([
+    {
+      awsAccountId: "<id>",
+      awsRegion: "<value>",
+      cidr: "<value>",
+      createdAt: 9379.76,
+      id: "<id>",
+      name: "<value>",
+      status: "create_in_progress",
+      teamId: "<id>",
+    },
+  ]);
+});
+
+test("Connect Create Network", async () => {
+  const testHttpClient = createTestHTTPClient("createNetwork");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.connect.createNetwork({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+    requestBody: {
+      awsAvailabilityZoneIds: [
+        "use1-az1",
+      ],
+      cidr: "192.168.0.0/16",
+      name: "<value>",
+      region: "iad1",
+    },
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    awsAccountId: "<id>",
+    awsRegion: "<value>",
+    cidr: "<value>",
+    createdAt: 4149.44,
+    id: "<id>",
+    name: "<value>",
+    status: "error",
+    teamId: "<id>",
+  });
+});
+
+test("Connect Update Network", async () => {
+  const testHttpClient = createTestHTTPClient("updateNetwork");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.connect.updateNetwork({
+    networkId: "uzrmorq7bn05z-fz",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    awsAccountId: "<id>",
+    awsRegion: "<value>",
+    cidr: "<value>",
+    createdAt: 9676.6,
+    id: "<id>",
+    name: "<value>",
+    status: "error",
+    teamId: "<id>",
+  });
+});
+
+test("Connect Read Network", async () => {
+  const testHttpClient = createTestHTTPClient("readNetwork");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.connect.readNetwork({
+    networkId: "uzrmorq7bn05z-fz",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    awsAccountId: "<id>",
+    awsRegion: "<value>",
+    cidr: "<value>",
+    createdAt: 1571.54,
+    id: "<id>",
+    name: "<value>",
+    status: "delete_in_progress",
+    teamId: "<id>",
+  });
+});

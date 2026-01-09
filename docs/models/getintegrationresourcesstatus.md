@@ -7,11 +7,11 @@ The current status of the resource
 ```typescript
 import { GetIntegrationResourcesStatus } from "@vercel/sdk/models/getintegrationresourcesop.js";
 
-let value: GetIntegrationResourcesStatus = "error";
+let value: GetIntegrationResourcesStatus = "uninstalled";
 ```
 
 ## Values
 
 ```typescript
-"ready" | "pending" | "onboarding" | "suspended" | "resumed" | "uninstalled" | "error"
+"error" | "ready" | "pending" | "onboarding" | "suspended" | "resumed" | "uninstalled"
 ```

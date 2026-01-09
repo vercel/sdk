@@ -6,18 +6,29 @@
 import { GetAllLogDrainsResponseBody2 } from "@vercel/sdk/models/getalllogdrainsop.js";
 
 let value: GetAllLogDrainsResponseBody2 = {
-  createdFrom: "<value>",
+  drains: [
+    {
+      id: "<id>",
+      createdAt: 1914.38,
+      updatedAt: 8765.47,
+      name: "<value>",
+      ownerId: "<id>",
+      schemas: {},
+      delivery: {
+        type: "clickhouse",
+        endpoint: "<value>",
+        table: "<value>",
+      },
+      source: {
+        kind: "self-served",
+      },
+    },
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `createdFrom`                                                                      | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `clientId`                                                                         | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `configurationId`                                                                  | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `projectsMetadata`                                                                 | [models.ResponseBodyProjectsMetadata](../models/responsebodyprojectsmetadata.md)[] | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `integrationIcon`                                                                  | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `integrationConfigurationUri`                                                      | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `integrationWebsite`                                                               | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| Field                       | Type                        | Required                    | Description                 |
+| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
+| `drains`                    | *models.ResponseBodyDrains* | :heavy_check_mark:          | N/A                         |

@@ -49,10 +49,10 @@ func testGetDrainGetDrain0(w http.ResponseWriter, req *http.Request) {
 	var respBody *operations.GetDrainResponseBody = types.Pointer(operations.CreateGetDrainResponseBodyGetDrainResponseBody1(
 		operations.GetDrainResponseBody1{
 			ID:        "<id>",
-			OwnerID:   "<id>",
-			Name:      "<value>",
 			CreatedAt: 1182.63,
 			UpdatedAt: 7579.11,
+			Name:      "<value>",
+			OwnerID:   "<id>",
 			Schemas:   operations.GetDrainSchemas1{},
 			Delivery: operations.CreateGetDrainDeliveryUnion1HTTP(
 				operations.GetDrainDeliveryHTTP1{

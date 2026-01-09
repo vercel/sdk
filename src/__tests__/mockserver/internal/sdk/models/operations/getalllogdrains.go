@@ -12,8 +12,8 @@ import (
 
 type GetAllLogDrainsRequest struct {
 	ProjectID       *string `queryParam:"style=form,explode=true,name=projectId"`
-	IncludeMetadata *bool   `default:"false" queryParam:"style=form,explode=true,name=includeMetadata"`
 	ProjectIDOrName *string `queryParam:"style=form,explode=true,name=projectIdOrName"`
+	IncludeMetadata *bool   `default:"false" queryParam:"style=form,explode=true,name=includeMetadata"`
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
@@ -38,18 +38,18 @@ func (o *GetAllLogDrainsRequest) GetProjectID() *string {
 	return o.ProjectID
 }
 
-func (o *GetAllLogDrainsRequest) GetIncludeMetadata() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.IncludeMetadata
-}
-
 func (o *GetAllLogDrainsRequest) GetProjectIDOrName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ProjectIDOrName
+}
+
+func (o *GetAllLogDrainsRequest) GetIncludeMetadata() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IncludeMetadata
 }
 
 func (o *GetAllLogDrainsRequest) GetTeamID() *string {
@@ -66,311 +66,65 @@ func (o *GetAllLogDrainsRequest) GetSlug() *string {
 	return o.Slug
 }
 
-type GetAllLogDrainsFramework string
+type GetAllLogDrainsStatus2 string
 
 const (
-	GetAllLogDrainsFrameworkBlitzjs        GetAllLogDrainsFramework = "blitzjs"
-	GetAllLogDrainsFrameworkNextjs         GetAllLogDrainsFramework = "nextjs"
-	GetAllLogDrainsFrameworkGatsby         GetAllLogDrainsFramework = "gatsby"
-	GetAllLogDrainsFrameworkRemix          GetAllLogDrainsFramework = "remix"
-	GetAllLogDrainsFrameworkReactRouter    GetAllLogDrainsFramework = "react-router"
-	GetAllLogDrainsFrameworkAstro          GetAllLogDrainsFramework = "astro"
-	GetAllLogDrainsFrameworkHexo           GetAllLogDrainsFramework = "hexo"
-	GetAllLogDrainsFrameworkEleventy       GetAllLogDrainsFramework = "eleventy"
-	GetAllLogDrainsFrameworkDocusaurus2    GetAllLogDrainsFramework = "docusaurus-2"
-	GetAllLogDrainsFrameworkDocusaurus     GetAllLogDrainsFramework = "docusaurus"
-	GetAllLogDrainsFrameworkPreact         GetAllLogDrainsFramework = "preact"
-	GetAllLogDrainsFrameworkSolidstart1    GetAllLogDrainsFramework = "solidstart-1"
-	GetAllLogDrainsFrameworkSolidstart     GetAllLogDrainsFramework = "solidstart"
-	GetAllLogDrainsFrameworkDojo           GetAllLogDrainsFramework = "dojo"
-	GetAllLogDrainsFrameworkEmber          GetAllLogDrainsFramework = "ember"
-	GetAllLogDrainsFrameworkVue            GetAllLogDrainsFramework = "vue"
-	GetAllLogDrainsFrameworkScully         GetAllLogDrainsFramework = "scully"
-	GetAllLogDrainsFrameworkIonicAngular   GetAllLogDrainsFramework = "ionic-angular"
-	GetAllLogDrainsFrameworkAngular        GetAllLogDrainsFramework = "angular"
-	GetAllLogDrainsFrameworkPolymer        GetAllLogDrainsFramework = "polymer"
-	GetAllLogDrainsFrameworkSvelte         GetAllLogDrainsFramework = "svelte"
-	GetAllLogDrainsFrameworkSveltekit      GetAllLogDrainsFramework = "sveltekit"
-	GetAllLogDrainsFrameworkSveltekit1     GetAllLogDrainsFramework = "sveltekit-1"
-	GetAllLogDrainsFrameworkIonicReact     GetAllLogDrainsFramework = "ionic-react"
-	GetAllLogDrainsFrameworkCreateReactApp GetAllLogDrainsFramework = "create-react-app"
-	GetAllLogDrainsFrameworkGridsome       GetAllLogDrainsFramework = "gridsome"
-	GetAllLogDrainsFrameworkUmijs          GetAllLogDrainsFramework = "umijs"
-	GetAllLogDrainsFrameworkSapper         GetAllLogDrainsFramework = "sapper"
-	GetAllLogDrainsFrameworkSaber          GetAllLogDrainsFramework = "saber"
-	GetAllLogDrainsFrameworkStencil        GetAllLogDrainsFramework = "stencil"
-	GetAllLogDrainsFrameworkNuxtjs         GetAllLogDrainsFramework = "nuxtjs"
-	GetAllLogDrainsFrameworkRedwoodjs      GetAllLogDrainsFramework = "redwoodjs"
-	GetAllLogDrainsFrameworkHugo           GetAllLogDrainsFramework = "hugo"
-	GetAllLogDrainsFrameworkJekyll         GetAllLogDrainsFramework = "jekyll"
-	GetAllLogDrainsFrameworkBrunch         GetAllLogDrainsFramework = "brunch"
-	GetAllLogDrainsFrameworkMiddleman      GetAllLogDrainsFramework = "middleman"
-	GetAllLogDrainsFrameworkZola           GetAllLogDrainsFramework = "zola"
-	GetAllLogDrainsFrameworkHydrogen       GetAllLogDrainsFramework = "hydrogen"
-	GetAllLogDrainsFrameworkVite           GetAllLogDrainsFramework = "vite"
-	GetAllLogDrainsFrameworkTanstackStart  GetAllLogDrainsFramework = "tanstack-start"
-	GetAllLogDrainsFrameworkVitepress      GetAllLogDrainsFramework = "vitepress"
-	GetAllLogDrainsFrameworkVuepress       GetAllLogDrainsFramework = "vuepress"
-	GetAllLogDrainsFrameworkParcel         GetAllLogDrainsFramework = "parcel"
-	GetAllLogDrainsFrameworkFastapi        GetAllLogDrainsFramework = "fastapi"
-	GetAllLogDrainsFrameworkFlask          GetAllLogDrainsFramework = "flask"
-	GetAllLogDrainsFrameworkFasthtml       GetAllLogDrainsFramework = "fasthtml"
-	GetAllLogDrainsFrameworkSanityV3       GetAllLogDrainsFramework = "sanity-v3"
-	GetAllLogDrainsFrameworkSanity         GetAllLogDrainsFramework = "sanity"
-	GetAllLogDrainsFrameworkStorybook      GetAllLogDrainsFramework = "storybook"
-	GetAllLogDrainsFrameworkNitro          GetAllLogDrainsFramework = "nitro"
-	GetAllLogDrainsFrameworkHono           GetAllLogDrainsFramework = "hono"
-	GetAllLogDrainsFrameworkExpress        GetAllLogDrainsFramework = "express"
-	GetAllLogDrainsFrameworkH3             GetAllLogDrainsFramework = "h3"
-	GetAllLogDrainsFrameworkNestjs         GetAllLogDrainsFramework = "nestjs"
-	GetAllLogDrainsFrameworkElysia         GetAllLogDrainsFramework = "elysia"
-	GetAllLogDrainsFrameworkFastify        GetAllLogDrainsFramework = "fastify"
-	GetAllLogDrainsFrameworkXmcp           GetAllLogDrainsFramework = "xmcp"
+	GetAllLogDrainsStatus2Enabled  GetAllLogDrainsStatus2 = "enabled"
+	GetAllLogDrainsStatus2Disabled GetAllLogDrainsStatus2 = "disabled"
+	GetAllLogDrainsStatus2Errored  GetAllLogDrainsStatus2 = "errored"
 )
 
-func (e GetAllLogDrainsFramework) ToPointer() *GetAllLogDrainsFramework {
+func (e GetAllLogDrainsStatus2) ToPointer() *GetAllLogDrainsStatus2 {
 	return &e
 }
-func (e *GetAllLogDrainsFramework) UnmarshalJSON(data []byte) error {
+func (e *GetAllLogDrainsStatus2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
-	case "blitzjs":
+	case "enabled":
 		fallthrough
-	case "nextjs":
+	case "disabled":
 		fallthrough
-	case "gatsby":
-		fallthrough
-	case "remix":
-		fallthrough
-	case "react-router":
-		fallthrough
-	case "astro":
-		fallthrough
-	case "hexo":
-		fallthrough
-	case "eleventy":
-		fallthrough
-	case "docusaurus-2":
-		fallthrough
-	case "docusaurus":
-		fallthrough
-	case "preact":
-		fallthrough
-	case "solidstart-1":
-		fallthrough
-	case "solidstart":
-		fallthrough
-	case "dojo":
-		fallthrough
-	case "ember":
-		fallthrough
-	case "vue":
-		fallthrough
-	case "scully":
-		fallthrough
-	case "ionic-angular":
-		fallthrough
-	case "angular":
-		fallthrough
-	case "polymer":
-		fallthrough
-	case "svelte":
-		fallthrough
-	case "sveltekit":
-		fallthrough
-	case "sveltekit-1":
-		fallthrough
-	case "ionic-react":
-		fallthrough
-	case "create-react-app":
-		fallthrough
-	case "gridsome":
-		fallthrough
-	case "umijs":
-		fallthrough
-	case "sapper":
-		fallthrough
-	case "saber":
-		fallthrough
-	case "stencil":
-		fallthrough
-	case "nuxtjs":
-		fallthrough
-	case "redwoodjs":
-		fallthrough
-	case "hugo":
-		fallthrough
-	case "jekyll":
-		fallthrough
-	case "brunch":
-		fallthrough
-	case "middleman":
-		fallthrough
-	case "zola":
-		fallthrough
-	case "hydrogen":
-		fallthrough
-	case "vite":
-		fallthrough
-	case "tanstack-start":
-		fallthrough
-	case "vitepress":
-		fallthrough
-	case "vuepress":
-		fallthrough
-	case "parcel":
-		fallthrough
-	case "fastapi":
-		fallthrough
-	case "flask":
-		fallthrough
-	case "fasthtml":
-		fallthrough
-	case "sanity-v3":
-		fallthrough
-	case "sanity":
-		fallthrough
-	case "storybook":
-		fallthrough
-	case "nitro":
-		fallthrough
-	case "hono":
-		fallthrough
-	case "express":
-		fallthrough
-	case "h3":
-		fallthrough
-	case "nestjs":
-		fallthrough
-	case "elysia":
-		fallthrough
-	case "fastify":
-		fallthrough
-	case "xmcp":
-		*e = GetAllLogDrainsFramework(v)
+	case "errored":
+		*e = GetAllLogDrainsStatus2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetAllLogDrainsFramework: %v", v)
+		return fmt.Errorf("invalid value for GetAllLogDrainsStatus2: %v", v)
 	}
 }
 
-type GetAllLogDrainsProjectsMetadatum struct {
-	ID               string                    `json:"id"`
-	Name             string                    `json:"name"`
-	Framework        *GetAllLogDrainsFramework `json:"framework,omitempty"`
-	LatestDeployment *string                   `json:"latestDeployment,omitempty"`
-}
+type GetAllLogDrainsDisabledReason2 string
 
-func (g GetAllLogDrainsProjectsMetadatum) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(g, "", false)
-}
+const (
+	GetAllLogDrainsDisabledReason2DisabledByOwner      GetAllLogDrainsDisabledReason2 = "disabled-by-owner"
+	GetAllLogDrainsDisabledReason2FeatureNotAvailable  GetAllLogDrainsDisabledReason2 = "feature-not-available"
+	GetAllLogDrainsDisabledReason2AccountPlanDowngrade GetAllLogDrainsDisabledReason2 = "account-plan-downgrade"
+	GetAllLogDrainsDisabledReason2DisabledByAdmin      GetAllLogDrainsDisabledReason2 = "disabled-by-admin"
+)
 
-func (g *GetAllLogDrainsProjectsMetadatum) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "name"}); err != nil {
+func (e GetAllLogDrainsDisabledReason2) ToPointer() *GetAllLogDrainsDisabledReason2 {
+	return &e
+}
+func (e *GetAllLogDrainsDisabledReason2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	return nil
-}
-
-func (o *GetAllLogDrainsProjectsMetadatum) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *GetAllLogDrainsProjectsMetadatum) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-func (o *GetAllLogDrainsProjectsMetadatum) GetFramework() *GetAllLogDrainsFramework {
-	if o == nil {
+	switch v {
+	case "disabled-by-owner":
+		fallthrough
+	case "feature-not-available":
+		fallthrough
+	case "account-plan-downgrade":
+		fallthrough
+	case "disabled-by-admin":
+		*e = GetAllLogDrainsDisabledReason2(v)
 		return nil
+	default:
+		return fmt.Errorf("invalid value for GetAllLogDrainsDisabledReason2: %v", v)
 	}
-	return o.Framework
-}
-
-func (o *GetAllLogDrainsProjectsMetadatum) GetLatestDeployment() *string {
-	if o == nil {
-		return nil
-	}
-	return o.LatestDeployment
-}
-
-type GetAllLogDrainsResponseBody2 struct {
-	CreatedFrom                 string                             `json:"createdFrom"`
-	ClientID                    *string                            `json:"clientId,omitempty"`
-	ConfigurationID             *string                            `json:"configurationId,omitempty"`
-	ProjectsMetadata            []GetAllLogDrainsProjectsMetadatum `json:"projectsMetadata,omitempty"`
-	IntegrationIcon             *string                            `json:"integrationIcon,omitempty"`
-	IntegrationConfigurationURI *string                            `json:"integrationConfigurationUri,omitempty"`
-	IntegrationWebsite          *string                            `json:"integrationWebsite,omitempty"`
-}
-
-func (g GetAllLogDrainsResponseBody2) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(g, "", false)
-}
-
-func (g *GetAllLogDrainsResponseBody2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"createdFrom"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *GetAllLogDrainsResponseBody2) GetCreatedFrom() string {
-	if o == nil {
-		return ""
-	}
-	return o.CreatedFrom
-}
-
-func (o *GetAllLogDrainsResponseBody2) GetClientID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ClientID
-}
-
-func (o *GetAllLogDrainsResponseBody2) GetConfigurationID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ConfigurationID
-}
-
-func (o *GetAllLogDrainsResponseBody2) GetProjectsMetadata() []GetAllLogDrainsProjectsMetadatum {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectsMetadata
-}
-
-func (o *GetAllLogDrainsResponseBody2) GetIntegrationIcon() *string {
-	if o == nil {
-		return nil
-	}
-	return o.IntegrationIcon
-}
-
-func (o *GetAllLogDrainsResponseBody2) GetIntegrationConfigurationURI() *string {
-	if o == nil {
-		return nil
-	}
-	return o.IntegrationConfigurationURI
-}
-
-func (o *GetAllLogDrainsResponseBody2) GetIntegrationWebsite() *string {
-	if o == nil {
-		return nil
-	}
-	return o.IntegrationWebsite
 }
 
 type GetAllLogDrainsSchemasLog2 struct {
@@ -897,8 +651,8 @@ func (e *GetAllLogDrainsEncoding3) UnmarshalJSON(data []byte) error {
 type GetAllLogDrainsCompression2 string
 
 const (
-	GetAllLogDrainsCompression2Gzip GetAllLogDrainsCompression2 = "gzip"
 	GetAllLogDrainsCompression2None GetAllLogDrainsCompression2 = "none"
+	GetAllLogDrainsCompression2Gzip GetAllLogDrainsCompression2 = "gzip"
 )
 
 func (e GetAllLogDrainsCompression2) ToPointer() *GetAllLogDrainsCompression2 {
@@ -910,9 +664,9 @@ func (e *GetAllLogDrainsCompression2) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "gzip":
-		fallthrough
 	case "none":
+		fallthrough
+	case "gzip":
 		*e = GetAllLogDrainsCompression2(v)
 		return nil
 	default:
@@ -1322,67 +1076,6 @@ func (o *GetAllLogDrainsSampling2) GetRequestPath() *string {
 		return nil
 	}
 	return o.RequestPath
-}
-
-type GetAllLogDrainsStatus2 string
-
-const (
-	GetAllLogDrainsStatus2Enabled  GetAllLogDrainsStatus2 = "enabled"
-	GetAllLogDrainsStatus2Disabled GetAllLogDrainsStatus2 = "disabled"
-	GetAllLogDrainsStatus2Errored  GetAllLogDrainsStatus2 = "errored"
-)
-
-func (e GetAllLogDrainsStatus2) ToPointer() *GetAllLogDrainsStatus2 {
-	return &e
-}
-func (e *GetAllLogDrainsStatus2) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "enabled":
-		fallthrough
-	case "disabled":
-		fallthrough
-	case "errored":
-		*e = GetAllLogDrainsStatus2(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetAllLogDrainsStatus2: %v", v)
-	}
-}
-
-type GetAllLogDrainsDisabledReason2 string
-
-const (
-	GetAllLogDrainsDisabledReason2DisabledByOwner      GetAllLogDrainsDisabledReason2 = "disabled-by-owner"
-	GetAllLogDrainsDisabledReason2FeatureNotAvailable  GetAllLogDrainsDisabledReason2 = "feature-not-available"
-	GetAllLogDrainsDisabledReason2AccountPlanDowngrade GetAllLogDrainsDisabledReason2 = "account-plan-downgrade"
-	GetAllLogDrainsDisabledReason2DisabledByAdmin      GetAllLogDrainsDisabledReason2 = "disabled-by-admin"
-)
-
-func (e GetAllLogDrainsDisabledReason2) ToPointer() *GetAllLogDrainsDisabledReason2 {
-	return &e
-}
-func (e *GetAllLogDrainsDisabledReason2) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "disabled-by-owner":
-		fallthrough
-	case "feature-not-available":
-		fallthrough
-	case "account-plan-downgrade":
-		fallthrough
-	case "disabled-by-admin":
-		*e = GetAllLogDrainsDisabledReason2(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetAllLogDrainsDisabledReason2: %v", v)
-	}
 }
 
 type GetAllLogDrainsKindIntegration2 string
@@ -2316,20 +2009,20 @@ func (u GetAllLogDrainsProjectAccessUnion) MarshalJSON() ([]byte, error) {
 
 type GetAllLogDrainsDrains2 struct {
 	ID                          string                             `json:"id"`
-	OwnerID                     string                             `json:"ownerId"`
-	Name                        string                             `json:"name"`
 	CreatedAt                   float64                            `json:"createdAt"`
 	UpdatedAt                   float64                            `json:"updatedAt"`
 	ProjectIds                  []string                           `json:"projectIds,omitempty"`
+	Name                        string                             `json:"name"`
+	TeamID                      *string                            `json:"teamId,omitempty"`
+	OwnerID                     string                             `json:"ownerId"`
+	Status                      *GetAllLogDrainsStatus2            `json:"status,omitempty"`
+	FirstErrorTimestamp         *float64                           `json:"firstErrorTimestamp,omitempty"`
+	DisabledAt                  *float64                           `json:"disabledAt,omitempty"`
+	DisabledBy                  *string                            `json:"disabledBy,omitempty"`
+	DisabledReason              *GetAllLogDrainsDisabledReason2    `json:"disabledReason,omitempty"`
 	Schemas                     GetAllLogDrainsSchemas2            `json:"schemas"`
 	Delivery                    GetAllLogDrainsDeliveryUnion2      `json:"delivery"`
 	Sampling                    []GetAllLogDrainsSampling2         `json:"sampling,omitempty"`
-	TeamID                      *string                            `json:"teamId,omitempty"`
-	Status                      *GetAllLogDrainsStatus2            `json:"status,omitempty"`
-	DisabledAt                  *float64                           `json:"disabledAt,omitempty"`
-	DisabledReason              *GetAllLogDrainsDisabledReason2    `json:"disabledReason,omitempty"`
-	DisabledBy                  *string                            `json:"disabledBy,omitempty"`
-	FirstErrorTimestamp         *float64                           `json:"firstErrorTimestamp,omitempty"`
 	Source                      GetAllLogDrainsSourceUnion2        `json:"source"`
 	Filter                      *string                            `json:"filter,omitempty"`
 	FilterV2                    *GetAllLogDrainsFilterV2Union2     `json:"filterV2,omitempty"`
@@ -2344,7 +2037,7 @@ func (g GetAllLogDrainsDrains2) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetAllLogDrainsDrains2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "ownerId", "name", "createdAt", "updatedAt", "schemas", "delivery", "source"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "createdAt", "updatedAt", "name", "ownerId", "schemas", "delivery", "source"}); err != nil {
 		return err
 	}
 	return nil
@@ -2355,20 +2048,6 @@ func (o *GetAllLogDrainsDrains2) GetID() string {
 		return ""
 	}
 	return o.ID
-}
-
-func (o *GetAllLogDrainsDrains2) GetOwnerID() string {
-	if o == nil {
-		return ""
-	}
-	return o.OwnerID
-}
-
-func (o *GetAllLogDrainsDrains2) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
 }
 
 func (o *GetAllLogDrainsDrains2) GetCreatedAt() float64 {
@@ -2390,6 +2069,62 @@ func (o *GetAllLogDrainsDrains2) GetProjectIds() []string {
 		return nil
 	}
 	return o.ProjectIds
+}
+
+func (o *GetAllLogDrainsDrains2) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *GetAllLogDrainsDrains2) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
+}
+
+func (o *GetAllLogDrainsDrains2) GetOwnerID() string {
+	if o == nil {
+		return ""
+	}
+	return o.OwnerID
+}
+
+func (o *GetAllLogDrainsDrains2) GetStatus() *GetAllLogDrainsStatus2 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *GetAllLogDrainsDrains2) GetFirstErrorTimestamp() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.FirstErrorTimestamp
+}
+
+func (o *GetAllLogDrainsDrains2) GetDisabledAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DisabledAt
+}
+
+func (o *GetAllLogDrainsDrains2) GetDisabledBy() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DisabledBy
+}
+
+func (o *GetAllLogDrainsDrains2) GetDisabledReason() *GetAllLogDrainsDisabledReason2 {
+	if o == nil {
+		return nil
+	}
+	return o.DisabledReason
 }
 
 func (o *GetAllLogDrainsDrains2) GetSchemas() GetAllLogDrainsSchemas2 {
@@ -2427,48 +2162,6 @@ func (o *GetAllLogDrainsDrains2) GetSampling() []GetAllLogDrainsSampling2 {
 		return nil
 	}
 	return o.Sampling
-}
-
-func (o *GetAllLogDrainsDrains2) GetTeamID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.TeamID
-}
-
-func (o *GetAllLogDrainsDrains2) GetStatus() *GetAllLogDrainsStatus2 {
-	if o == nil {
-		return nil
-	}
-	return o.Status
-}
-
-func (o *GetAllLogDrainsDrains2) GetDisabledAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.DisabledAt
-}
-
-func (o *GetAllLogDrainsDrains2) GetDisabledReason() *GetAllLogDrainsDisabledReason2 {
-	if o == nil {
-		return nil
-	}
-	return o.DisabledReason
-}
-
-func (o *GetAllLogDrainsDrains2) GetDisabledBy() *string {
-	if o == nil {
-		return nil
-	}
-	return o.DisabledBy
-}
-
-func (o *GetAllLogDrainsDrains2) GetFirstErrorTimestamp() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.FirstErrorTimestamp
 }
 
 func (o *GetAllLogDrainsDrains2) GetSource() GetAllLogDrainsSourceUnion2 {
@@ -2554,6 +2247,67 @@ func (o *GetAllLogDrainsDrains2) GetProjectAccessSome() *GetAllLogDrainsProjectA
 		return v.GetAllLogDrainsProjectAccessSome
 	}
 	return nil
+}
+
+type GetAllLogDrainsStatus1 string
+
+const (
+	GetAllLogDrainsStatus1Enabled  GetAllLogDrainsStatus1 = "enabled"
+	GetAllLogDrainsStatus1Disabled GetAllLogDrainsStatus1 = "disabled"
+	GetAllLogDrainsStatus1Errored  GetAllLogDrainsStatus1 = "errored"
+)
+
+func (e GetAllLogDrainsStatus1) ToPointer() *GetAllLogDrainsStatus1 {
+	return &e
+}
+func (e *GetAllLogDrainsStatus1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enabled":
+		fallthrough
+	case "disabled":
+		fallthrough
+	case "errored":
+		*e = GetAllLogDrainsStatus1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetAllLogDrainsStatus1: %v", v)
+	}
+}
+
+type GetAllLogDrainsDisabledReason1 string
+
+const (
+	GetAllLogDrainsDisabledReason1DisabledByOwner      GetAllLogDrainsDisabledReason1 = "disabled-by-owner"
+	GetAllLogDrainsDisabledReason1FeatureNotAvailable  GetAllLogDrainsDisabledReason1 = "feature-not-available"
+	GetAllLogDrainsDisabledReason1AccountPlanDowngrade GetAllLogDrainsDisabledReason1 = "account-plan-downgrade"
+	GetAllLogDrainsDisabledReason1DisabledByAdmin      GetAllLogDrainsDisabledReason1 = "disabled-by-admin"
+)
+
+func (e GetAllLogDrainsDisabledReason1) ToPointer() *GetAllLogDrainsDisabledReason1 {
+	return &e
+}
+func (e *GetAllLogDrainsDisabledReason1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "disabled-by-owner":
+		fallthrough
+	case "feature-not-available":
+		fallthrough
+	case "account-plan-downgrade":
+		fallthrough
+	case "disabled-by-admin":
+		*e = GetAllLogDrainsDisabledReason1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetAllLogDrainsDisabledReason1: %v", v)
+	}
 }
 
 type GetAllLogDrainsSchemasLog1 struct {
@@ -3080,8 +2834,8 @@ func (e *GetAllLogDrainsEncoding1) UnmarshalJSON(data []byte) error {
 type GetAllLogDrainsCompression1 string
 
 const (
-	GetAllLogDrainsCompression1Gzip GetAllLogDrainsCompression1 = "gzip"
 	GetAllLogDrainsCompression1None GetAllLogDrainsCompression1 = "none"
+	GetAllLogDrainsCompression1Gzip GetAllLogDrainsCompression1 = "gzip"
 )
 
 func (e GetAllLogDrainsCompression1) ToPointer() *GetAllLogDrainsCompression1 {
@@ -3093,9 +2847,9 @@ func (e *GetAllLogDrainsCompression1) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "gzip":
-		fallthrough
 	case "none":
+		fallthrough
+	case "gzip":
 		*e = GetAllLogDrainsCompression1(v)
 		return nil
 	default:
@@ -3505,67 +3259,6 @@ func (o *GetAllLogDrainsSampling1) GetRequestPath() *string {
 		return nil
 	}
 	return o.RequestPath
-}
-
-type GetAllLogDrainsStatus1 string
-
-const (
-	GetAllLogDrainsStatus1Enabled  GetAllLogDrainsStatus1 = "enabled"
-	GetAllLogDrainsStatus1Disabled GetAllLogDrainsStatus1 = "disabled"
-	GetAllLogDrainsStatus1Errored  GetAllLogDrainsStatus1 = "errored"
-)
-
-func (e GetAllLogDrainsStatus1) ToPointer() *GetAllLogDrainsStatus1 {
-	return &e
-}
-func (e *GetAllLogDrainsStatus1) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "enabled":
-		fallthrough
-	case "disabled":
-		fallthrough
-	case "errored":
-		*e = GetAllLogDrainsStatus1(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetAllLogDrainsStatus1: %v", v)
-	}
-}
-
-type GetAllLogDrainsDisabledReason1 string
-
-const (
-	GetAllLogDrainsDisabledReason1DisabledByOwner      GetAllLogDrainsDisabledReason1 = "disabled-by-owner"
-	GetAllLogDrainsDisabledReason1FeatureNotAvailable  GetAllLogDrainsDisabledReason1 = "feature-not-available"
-	GetAllLogDrainsDisabledReason1AccountPlanDowngrade GetAllLogDrainsDisabledReason1 = "account-plan-downgrade"
-	GetAllLogDrainsDisabledReason1DisabledByAdmin      GetAllLogDrainsDisabledReason1 = "disabled-by-admin"
-)
-
-func (e GetAllLogDrainsDisabledReason1) ToPointer() *GetAllLogDrainsDisabledReason1 {
-	return &e
-}
-func (e *GetAllLogDrainsDisabledReason1) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "disabled-by-owner":
-		fallthrough
-	case "feature-not-available":
-		fallthrough
-	case "account-plan-downgrade":
-		fallthrough
-	case "disabled-by-admin":
-		*e = GetAllLogDrainsDisabledReason1(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetAllLogDrainsDisabledReason1: %v", v)
-	}
 }
 
 type GetAllLogDrainsKindIntegration1 string
@@ -4316,20 +4009,20 @@ func (u GetAllLogDrainsFilterV2Union1) MarshalJSON() ([]byte, error) {
 
 type GetAllLogDrainsDrains1 struct {
 	ID                  string                          `json:"id"`
-	OwnerID             string                          `json:"ownerId"`
-	Name                string                          `json:"name"`
 	CreatedAt           float64                         `json:"createdAt"`
 	UpdatedAt           float64                         `json:"updatedAt"`
 	ProjectIds          []string                        `json:"projectIds,omitempty"`
+	Name                string                          `json:"name"`
+	TeamID              *string                         `json:"teamId,omitempty"`
+	OwnerID             string                          `json:"ownerId"`
+	Status              *GetAllLogDrainsStatus1         `json:"status,omitempty"`
+	FirstErrorTimestamp *float64                        `json:"firstErrorTimestamp,omitempty"`
+	DisabledAt          *float64                        `json:"disabledAt,omitempty"`
+	DisabledBy          *string                         `json:"disabledBy,omitempty"`
+	DisabledReason      *GetAllLogDrainsDisabledReason1 `json:"disabledReason,omitempty"`
 	Schemas             GetAllLogDrainsSchemas1         `json:"schemas"`
 	Delivery            GetAllLogDrainsDeliveryUnion1   `json:"delivery"`
 	Sampling            []GetAllLogDrainsSampling1      `json:"sampling,omitempty"`
-	TeamID              *string                         `json:"teamId,omitempty"`
-	Status              *GetAllLogDrainsStatus1         `json:"status,omitempty"`
-	DisabledAt          *float64                        `json:"disabledAt,omitempty"`
-	DisabledReason      *GetAllLogDrainsDisabledReason1 `json:"disabledReason,omitempty"`
-	DisabledBy          *string                         `json:"disabledBy,omitempty"`
-	FirstErrorTimestamp *float64                        `json:"firstErrorTimestamp,omitempty"`
 	Source              GetAllLogDrainsSourceUnion1     `json:"source"`
 	Filter              *string                         `json:"filter,omitempty"`
 	FilterV2            *GetAllLogDrainsFilterV2Union1  `json:"filterV2,omitempty"`
@@ -4340,7 +4033,7 @@ func (g GetAllLogDrainsDrains1) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetAllLogDrainsDrains1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "ownerId", "name", "createdAt", "updatedAt", "schemas", "delivery", "source"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "createdAt", "updatedAt", "name", "ownerId", "schemas", "delivery", "source"}); err != nil {
 		return err
 	}
 	return nil
@@ -4351,20 +4044,6 @@ func (o *GetAllLogDrainsDrains1) GetID() string {
 		return ""
 	}
 	return o.ID
-}
-
-func (o *GetAllLogDrainsDrains1) GetOwnerID() string {
-	if o == nil {
-		return ""
-	}
-	return o.OwnerID
-}
-
-func (o *GetAllLogDrainsDrains1) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
 }
 
 func (o *GetAllLogDrainsDrains1) GetCreatedAt() float64 {
@@ -4386,6 +4065,62 @@ func (o *GetAllLogDrainsDrains1) GetProjectIds() []string {
 		return nil
 	}
 	return o.ProjectIds
+}
+
+func (o *GetAllLogDrainsDrains1) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *GetAllLogDrainsDrains1) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
+}
+
+func (o *GetAllLogDrainsDrains1) GetOwnerID() string {
+	if o == nil {
+		return ""
+	}
+	return o.OwnerID
+}
+
+func (o *GetAllLogDrainsDrains1) GetStatus() *GetAllLogDrainsStatus1 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *GetAllLogDrainsDrains1) GetFirstErrorTimestamp() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.FirstErrorTimestamp
+}
+
+func (o *GetAllLogDrainsDrains1) GetDisabledAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DisabledAt
+}
+
+func (o *GetAllLogDrainsDrains1) GetDisabledBy() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DisabledBy
+}
+
+func (o *GetAllLogDrainsDrains1) GetDisabledReason() *GetAllLogDrainsDisabledReason1 {
+	if o == nil {
+		return nil
+	}
+	return o.DisabledReason
 }
 
 func (o *GetAllLogDrainsDrains1) GetSchemas() GetAllLogDrainsSchemas1 {
@@ -4423,48 +4158,6 @@ func (o *GetAllLogDrainsDrains1) GetSampling() []GetAllLogDrainsSampling1 {
 		return nil
 	}
 	return o.Sampling
-}
-
-func (o *GetAllLogDrainsDrains1) GetTeamID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.TeamID
-}
-
-func (o *GetAllLogDrainsDrains1) GetStatus() *GetAllLogDrainsStatus1 {
-	if o == nil {
-		return nil
-	}
-	return o.Status
-}
-
-func (o *GetAllLogDrainsDrains1) GetDisabledAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.DisabledAt
-}
-
-func (o *GetAllLogDrainsDrains1) GetDisabledReason() *GetAllLogDrainsDisabledReason1 {
-	if o == nil {
-		return nil
-	}
-	return o.DisabledReason
-}
-
-func (o *GetAllLogDrainsDrains1) GetDisabledBy() *string {
-	if o == nil {
-		return nil
-	}
-	return o.DisabledBy
-}
-
-func (o *GetAllLogDrainsDrains1) GetFirstErrorTimestamp() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.FirstErrorTimestamp
 }
 
 func (o *GetAllLogDrainsDrains1) GetSource() GetAllLogDrainsSourceUnion1 {
@@ -4573,8 +4266,273 @@ func (u GetAllLogDrainsDrainsUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type GetAllLogDrainsDrainsUnion: all fields are null")
 }
 
-type GetAllLogDrainsResponseBody1 struct {
+type GetAllLogDrainsResponseBody2 struct {
 	Drains GetAllLogDrainsDrainsUnion `json:"drains"`
+}
+
+func (g GetAllLogDrainsResponseBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetAllLogDrainsResponseBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"drains"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetAllLogDrainsResponseBody2) GetDrains() GetAllLogDrainsDrainsUnion {
+	if o == nil {
+		return GetAllLogDrainsDrainsUnion{}
+	}
+	return o.Drains
+}
+
+type GetAllLogDrainsFramework string
+
+const (
+	GetAllLogDrainsFrameworkBlitzjs        GetAllLogDrainsFramework = "blitzjs"
+	GetAllLogDrainsFrameworkNextjs         GetAllLogDrainsFramework = "nextjs"
+	GetAllLogDrainsFrameworkGatsby         GetAllLogDrainsFramework = "gatsby"
+	GetAllLogDrainsFrameworkRemix          GetAllLogDrainsFramework = "remix"
+	GetAllLogDrainsFrameworkReactRouter    GetAllLogDrainsFramework = "react-router"
+	GetAllLogDrainsFrameworkAstro          GetAllLogDrainsFramework = "astro"
+	GetAllLogDrainsFrameworkHexo           GetAllLogDrainsFramework = "hexo"
+	GetAllLogDrainsFrameworkEleventy       GetAllLogDrainsFramework = "eleventy"
+	GetAllLogDrainsFrameworkDocusaurus2    GetAllLogDrainsFramework = "docusaurus-2"
+	GetAllLogDrainsFrameworkDocusaurus     GetAllLogDrainsFramework = "docusaurus"
+	GetAllLogDrainsFrameworkPreact         GetAllLogDrainsFramework = "preact"
+	GetAllLogDrainsFrameworkSolidstart1    GetAllLogDrainsFramework = "solidstart-1"
+	GetAllLogDrainsFrameworkSolidstart     GetAllLogDrainsFramework = "solidstart"
+	GetAllLogDrainsFrameworkDojo           GetAllLogDrainsFramework = "dojo"
+	GetAllLogDrainsFrameworkEmber          GetAllLogDrainsFramework = "ember"
+	GetAllLogDrainsFrameworkVue            GetAllLogDrainsFramework = "vue"
+	GetAllLogDrainsFrameworkScully         GetAllLogDrainsFramework = "scully"
+	GetAllLogDrainsFrameworkIonicAngular   GetAllLogDrainsFramework = "ionic-angular"
+	GetAllLogDrainsFrameworkAngular        GetAllLogDrainsFramework = "angular"
+	GetAllLogDrainsFrameworkPolymer        GetAllLogDrainsFramework = "polymer"
+	GetAllLogDrainsFrameworkSvelte         GetAllLogDrainsFramework = "svelte"
+	GetAllLogDrainsFrameworkSveltekit      GetAllLogDrainsFramework = "sveltekit"
+	GetAllLogDrainsFrameworkSveltekit1     GetAllLogDrainsFramework = "sveltekit-1"
+	GetAllLogDrainsFrameworkIonicReact     GetAllLogDrainsFramework = "ionic-react"
+	GetAllLogDrainsFrameworkCreateReactApp GetAllLogDrainsFramework = "create-react-app"
+	GetAllLogDrainsFrameworkGridsome       GetAllLogDrainsFramework = "gridsome"
+	GetAllLogDrainsFrameworkUmijs          GetAllLogDrainsFramework = "umijs"
+	GetAllLogDrainsFrameworkSapper         GetAllLogDrainsFramework = "sapper"
+	GetAllLogDrainsFrameworkSaber          GetAllLogDrainsFramework = "saber"
+	GetAllLogDrainsFrameworkStencil        GetAllLogDrainsFramework = "stencil"
+	GetAllLogDrainsFrameworkNuxtjs         GetAllLogDrainsFramework = "nuxtjs"
+	GetAllLogDrainsFrameworkRedwoodjs      GetAllLogDrainsFramework = "redwoodjs"
+	GetAllLogDrainsFrameworkHugo           GetAllLogDrainsFramework = "hugo"
+	GetAllLogDrainsFrameworkJekyll         GetAllLogDrainsFramework = "jekyll"
+	GetAllLogDrainsFrameworkBrunch         GetAllLogDrainsFramework = "brunch"
+	GetAllLogDrainsFrameworkMiddleman      GetAllLogDrainsFramework = "middleman"
+	GetAllLogDrainsFrameworkZola           GetAllLogDrainsFramework = "zola"
+	GetAllLogDrainsFrameworkHydrogen       GetAllLogDrainsFramework = "hydrogen"
+	GetAllLogDrainsFrameworkVite           GetAllLogDrainsFramework = "vite"
+	GetAllLogDrainsFrameworkTanstackStart  GetAllLogDrainsFramework = "tanstack-start"
+	GetAllLogDrainsFrameworkVitepress      GetAllLogDrainsFramework = "vitepress"
+	GetAllLogDrainsFrameworkVuepress       GetAllLogDrainsFramework = "vuepress"
+	GetAllLogDrainsFrameworkParcel         GetAllLogDrainsFramework = "parcel"
+	GetAllLogDrainsFrameworkFastapi        GetAllLogDrainsFramework = "fastapi"
+	GetAllLogDrainsFrameworkFlask          GetAllLogDrainsFramework = "flask"
+	GetAllLogDrainsFrameworkFasthtml       GetAllLogDrainsFramework = "fasthtml"
+	GetAllLogDrainsFrameworkSanityV3       GetAllLogDrainsFramework = "sanity-v3"
+	GetAllLogDrainsFrameworkSanity         GetAllLogDrainsFramework = "sanity"
+	GetAllLogDrainsFrameworkStorybook      GetAllLogDrainsFramework = "storybook"
+	GetAllLogDrainsFrameworkNitro          GetAllLogDrainsFramework = "nitro"
+	GetAllLogDrainsFrameworkHono           GetAllLogDrainsFramework = "hono"
+	GetAllLogDrainsFrameworkExpress        GetAllLogDrainsFramework = "express"
+	GetAllLogDrainsFrameworkH3             GetAllLogDrainsFramework = "h3"
+	GetAllLogDrainsFrameworkNestjs         GetAllLogDrainsFramework = "nestjs"
+	GetAllLogDrainsFrameworkElysia         GetAllLogDrainsFramework = "elysia"
+	GetAllLogDrainsFrameworkFastify        GetAllLogDrainsFramework = "fastify"
+	GetAllLogDrainsFrameworkXmcp           GetAllLogDrainsFramework = "xmcp"
+)
+
+func (e GetAllLogDrainsFramework) ToPointer() *GetAllLogDrainsFramework {
+	return &e
+}
+func (e *GetAllLogDrainsFramework) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "blitzjs":
+		fallthrough
+	case "nextjs":
+		fallthrough
+	case "gatsby":
+		fallthrough
+	case "remix":
+		fallthrough
+	case "react-router":
+		fallthrough
+	case "astro":
+		fallthrough
+	case "hexo":
+		fallthrough
+	case "eleventy":
+		fallthrough
+	case "docusaurus-2":
+		fallthrough
+	case "docusaurus":
+		fallthrough
+	case "preact":
+		fallthrough
+	case "solidstart-1":
+		fallthrough
+	case "solidstart":
+		fallthrough
+	case "dojo":
+		fallthrough
+	case "ember":
+		fallthrough
+	case "vue":
+		fallthrough
+	case "scully":
+		fallthrough
+	case "ionic-angular":
+		fallthrough
+	case "angular":
+		fallthrough
+	case "polymer":
+		fallthrough
+	case "svelte":
+		fallthrough
+	case "sveltekit":
+		fallthrough
+	case "sveltekit-1":
+		fallthrough
+	case "ionic-react":
+		fallthrough
+	case "create-react-app":
+		fallthrough
+	case "gridsome":
+		fallthrough
+	case "umijs":
+		fallthrough
+	case "sapper":
+		fallthrough
+	case "saber":
+		fallthrough
+	case "stencil":
+		fallthrough
+	case "nuxtjs":
+		fallthrough
+	case "redwoodjs":
+		fallthrough
+	case "hugo":
+		fallthrough
+	case "jekyll":
+		fallthrough
+	case "brunch":
+		fallthrough
+	case "middleman":
+		fallthrough
+	case "zola":
+		fallthrough
+	case "hydrogen":
+		fallthrough
+	case "vite":
+		fallthrough
+	case "tanstack-start":
+		fallthrough
+	case "vitepress":
+		fallthrough
+	case "vuepress":
+		fallthrough
+	case "parcel":
+		fallthrough
+	case "fastapi":
+		fallthrough
+	case "flask":
+		fallthrough
+	case "fasthtml":
+		fallthrough
+	case "sanity-v3":
+		fallthrough
+	case "sanity":
+		fallthrough
+	case "storybook":
+		fallthrough
+	case "nitro":
+		fallthrough
+	case "hono":
+		fallthrough
+	case "express":
+		fallthrough
+	case "h3":
+		fallthrough
+	case "nestjs":
+		fallthrough
+	case "elysia":
+		fallthrough
+	case "fastify":
+		fallthrough
+	case "xmcp":
+		*e = GetAllLogDrainsFramework(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetAllLogDrainsFramework: %v", v)
+	}
+}
+
+type GetAllLogDrainsProjectsMetadatum struct {
+	ID               string                    `json:"id"`
+	Name             string                    `json:"name"`
+	Framework        *GetAllLogDrainsFramework `json:"framework,omitempty"`
+	LatestDeployment *string                   `json:"latestDeployment,omitempty"`
+}
+
+func (g GetAllLogDrainsProjectsMetadatum) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetAllLogDrainsProjectsMetadatum) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "name"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetAllLogDrainsProjectsMetadatum) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *GetAllLogDrainsProjectsMetadatum) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *GetAllLogDrainsProjectsMetadatum) GetFramework() *GetAllLogDrainsFramework {
+	if o == nil {
+		return nil
+	}
+	return o.Framework
+}
+
+func (o *GetAllLogDrainsProjectsMetadatum) GetLatestDeployment() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LatestDeployment
+}
+
+type GetAllLogDrainsResponseBody1 struct {
+	CreatedFrom                 string                             `json:"createdFrom"`
+	ClientID                    *string                            `json:"clientId,omitempty"`
+	ConfigurationID             *string                            `json:"configurationId,omitempty"`
+	ProjectsMetadata            []GetAllLogDrainsProjectsMetadatum `json:"projectsMetadata,omitempty"`
+	IntegrationIcon             *string                            `json:"integrationIcon,omitempty"`
+	IntegrationConfigurationURI *string                            `json:"integrationConfigurationUri,omitempty"`
+	IntegrationWebsite          *string                            `json:"integrationWebsite,omitempty"`
 }
 
 func (g GetAllLogDrainsResponseBody1) MarshalJSON() ([]byte, error) {
@@ -4582,64 +4540,106 @@ func (g GetAllLogDrainsResponseBody1) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetAllLogDrainsResponseBody1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"drains"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"createdFrom"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *GetAllLogDrainsResponseBody1) GetDrains() GetAllLogDrainsDrainsUnion {
+func (o *GetAllLogDrainsResponseBody1) GetCreatedFrom() string {
 	if o == nil {
-		return GetAllLogDrainsDrainsUnion{}
+		return ""
 	}
-	return o.Drains
+	return o.CreatedFrom
+}
+
+func (o *GetAllLogDrainsResponseBody1) GetClientID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ClientID
+}
+
+func (o *GetAllLogDrainsResponseBody1) GetConfigurationID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ConfigurationID
+}
+
+func (o *GetAllLogDrainsResponseBody1) GetProjectsMetadata() []GetAllLogDrainsProjectsMetadatum {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectsMetadata
+}
+
+func (o *GetAllLogDrainsResponseBody1) GetIntegrationIcon() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IntegrationIcon
+}
+
+func (o *GetAllLogDrainsResponseBody1) GetIntegrationConfigurationURI() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IntegrationConfigurationURI
+}
+
+func (o *GetAllLogDrainsResponseBody1) GetIntegrationWebsite() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IntegrationWebsite
 }
 
 type GetAllLogDrainsResponseBodyType string
 
 const (
-	GetAllLogDrainsResponseBodyTypeGetAllLogDrainsResponseBody1        GetAllLogDrainsResponseBodyType = "getAllLogDrains_ResponseBody_1"
-	GetAllLogDrainsResponseBodyTypeArrayOfGetAllLogDrainsResponseBody2 GetAllLogDrainsResponseBodyType = "arrayOfGetAllLogDrainsResponseBody2"
+	GetAllLogDrainsResponseBodyTypeArrayOfGetAllLogDrainsResponseBody1 GetAllLogDrainsResponseBodyType = "arrayOfGetAllLogDrainsResponseBody1"
+	GetAllLogDrainsResponseBodyTypeGetAllLogDrainsResponseBody2        GetAllLogDrainsResponseBodyType = "getAllLogDrains_ResponseBody_2"
 )
 
 type GetAllLogDrainsResponseBody struct {
-	GetAllLogDrainsResponseBody1        *GetAllLogDrainsResponseBody1  `queryParam:"inline"`
-	ArrayOfGetAllLogDrainsResponseBody2 []GetAllLogDrainsResponseBody2 `queryParam:"inline"`
+	ArrayOfGetAllLogDrainsResponseBody1 []GetAllLogDrainsResponseBody1 `queryParam:"inline"`
+	GetAllLogDrainsResponseBody2        *GetAllLogDrainsResponseBody2  `queryParam:"inline"`
 
 	Type GetAllLogDrainsResponseBodyType
 }
 
-func CreateGetAllLogDrainsResponseBodyGetAllLogDrainsResponseBody1(getAllLogDrainsResponseBody1 GetAllLogDrainsResponseBody1) GetAllLogDrainsResponseBody {
-	typ := GetAllLogDrainsResponseBodyTypeGetAllLogDrainsResponseBody1
+func CreateGetAllLogDrainsResponseBodyArrayOfGetAllLogDrainsResponseBody1(arrayOfGetAllLogDrainsResponseBody1 []GetAllLogDrainsResponseBody1) GetAllLogDrainsResponseBody {
+	typ := GetAllLogDrainsResponseBodyTypeArrayOfGetAllLogDrainsResponseBody1
 
 	return GetAllLogDrainsResponseBody{
-		GetAllLogDrainsResponseBody1: &getAllLogDrainsResponseBody1,
-		Type:                         typ,
+		ArrayOfGetAllLogDrainsResponseBody1: arrayOfGetAllLogDrainsResponseBody1,
+		Type:                                typ,
 	}
 }
 
-func CreateGetAllLogDrainsResponseBodyArrayOfGetAllLogDrainsResponseBody2(arrayOfGetAllLogDrainsResponseBody2 []GetAllLogDrainsResponseBody2) GetAllLogDrainsResponseBody {
-	typ := GetAllLogDrainsResponseBodyTypeArrayOfGetAllLogDrainsResponseBody2
+func CreateGetAllLogDrainsResponseBodyGetAllLogDrainsResponseBody2(getAllLogDrainsResponseBody2 GetAllLogDrainsResponseBody2) GetAllLogDrainsResponseBody {
+	typ := GetAllLogDrainsResponseBodyTypeGetAllLogDrainsResponseBody2
 
 	return GetAllLogDrainsResponseBody{
-		ArrayOfGetAllLogDrainsResponseBody2: arrayOfGetAllLogDrainsResponseBody2,
-		Type:                                typ,
+		GetAllLogDrainsResponseBody2: &getAllLogDrainsResponseBody2,
+		Type:                         typ,
 	}
 }
 
 func (u *GetAllLogDrainsResponseBody) UnmarshalJSON(data []byte) error {
 
-	var getAllLogDrainsResponseBody1 GetAllLogDrainsResponseBody1 = GetAllLogDrainsResponseBody1{}
-	if err := utils.UnmarshalJSON(data, &getAllLogDrainsResponseBody1, "", true, nil); err == nil {
-		u.GetAllLogDrainsResponseBody1 = &getAllLogDrainsResponseBody1
-		u.Type = GetAllLogDrainsResponseBodyTypeGetAllLogDrainsResponseBody1
+	var getAllLogDrainsResponseBody2 GetAllLogDrainsResponseBody2 = GetAllLogDrainsResponseBody2{}
+	if err := utils.UnmarshalJSON(data, &getAllLogDrainsResponseBody2, "", true, nil); err == nil {
+		u.GetAllLogDrainsResponseBody2 = &getAllLogDrainsResponseBody2
+		u.Type = GetAllLogDrainsResponseBodyTypeGetAllLogDrainsResponseBody2
 		return nil
 	}
 
-	var arrayOfGetAllLogDrainsResponseBody2 []GetAllLogDrainsResponseBody2 = []GetAllLogDrainsResponseBody2{}
-	if err := utils.UnmarshalJSON(data, &arrayOfGetAllLogDrainsResponseBody2, "", true, nil); err == nil {
-		u.ArrayOfGetAllLogDrainsResponseBody2 = arrayOfGetAllLogDrainsResponseBody2
-		u.Type = GetAllLogDrainsResponseBodyTypeArrayOfGetAllLogDrainsResponseBody2
+	var arrayOfGetAllLogDrainsResponseBody1 []GetAllLogDrainsResponseBody1 = []GetAllLogDrainsResponseBody1{}
+	if err := utils.UnmarshalJSON(data, &arrayOfGetAllLogDrainsResponseBody1, "", true, nil); err == nil {
+		u.ArrayOfGetAllLogDrainsResponseBody1 = arrayOfGetAllLogDrainsResponseBody1
+		u.Type = GetAllLogDrainsResponseBodyTypeArrayOfGetAllLogDrainsResponseBody1
 		return nil
 	}
 
@@ -4647,12 +4647,12 @@ func (u *GetAllLogDrainsResponseBody) UnmarshalJSON(data []byte) error {
 }
 
 func (u GetAllLogDrainsResponseBody) MarshalJSON() ([]byte, error) {
-	if u.GetAllLogDrainsResponseBody1 != nil {
-		return utils.MarshalJSON(u.GetAllLogDrainsResponseBody1, "", true)
+	if u.ArrayOfGetAllLogDrainsResponseBody1 != nil {
+		return utils.MarshalJSON(u.ArrayOfGetAllLogDrainsResponseBody1, "", true)
 	}
 
-	if u.ArrayOfGetAllLogDrainsResponseBody2 != nil {
-		return utils.MarshalJSON(u.ArrayOfGetAllLogDrainsResponseBody2, "", true)
+	if u.GetAllLogDrainsResponseBody2 != nil {
+		return utils.MarshalJSON(u.GetAllLogDrainsResponseBody2, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type GetAllLogDrainsResponseBody: all fields are null")

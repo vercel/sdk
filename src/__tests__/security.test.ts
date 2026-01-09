@@ -109,13 +109,20 @@ test("Security Put Firewall Config", async () => {
           active: false,
           conditionGroup: [
             {
-              conditions: [],
+              conditions: [
+                {
+                  type: "region",
+                  op: "lt",
+                },
+              ],
             },
           ],
           action: {},
-          valid: false,
+          valid: true,
           validationErrors: [
             "<value 1>",
+            "<value 2>",
+            "<value 3>",
           ],
         },
         {
@@ -124,13 +131,20 @@ test("Security Put Firewall Config", async () => {
           active: false,
           conditionGroup: [
             {
-              conditions: [],
+              conditions: [
+                {
+                  type: "region",
+                  op: "lt",
+                },
+              ],
             },
           ],
           action: {},
-          valid: false,
+          valid: true,
           validationErrors: [
             "<value 1>",
+            "<value 2>",
+            "<value 3>",
           ],
         },
       ],
@@ -237,20 +251,20 @@ test("Security Get Firewall Config", async () => {
       {
         id: "<id>",
         name: "<value>",
-        active: true,
+        active: false,
         conditionGroup: [
           {
             conditions: [
               {
-                type: "user_agent",
-                op: "ninc",
+                type: "bot_name",
+                op: "sub",
               },
             ],
           },
         ],
         action: {},
         valid: true,
-        validationErrors: [],
+        validationErrors: null,
       },
     ],
     ips: [
@@ -298,7 +312,17 @@ test("Security Get Bypass Ip", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
-    result: [],
+    result: [
+      {
+        ownerId: "<id>",
+        id: "<id>",
+        domain: "spanish-sunbeam.org",
+        ip: "ab2e:3eb9:5bac:0ddd:ef79:f1ee:4268:c9f2",
+        createdAt: "1710740737171",
+        updatedAt: "1735617136981",
+        updatedAtHour: "<value>",
+      },
+    ],
   });
 });
 

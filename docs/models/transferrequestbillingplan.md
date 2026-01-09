@@ -7,7 +7,7 @@ import { TransferRequestBillingPlan } from "@vercel/sdk/models/getconfigurationo
 
 let value: TransferRequestBillingPlan = {
   id: "<id>",
-  type: "prepayment",
+  type: "subscription",
   name: "<value>",
   description: "apprehensive where as fisherman fiddle",
 };

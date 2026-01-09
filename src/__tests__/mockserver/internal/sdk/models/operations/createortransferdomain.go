@@ -306,7 +306,8 @@ type CreateOrTransferDomainDomain struct {
 	// Whether or not the domain is registered with Name.com. If set to `true`, the domain is registered with Name.com.
 	Registrar *CreateOrTransferDomainRegistrar `json:"registrar,omitempty"`
 	// The domain name.
-	Name string `json:"name"`
+	Name   string  `json:"name"`
+	TeamID *string `json:"teamId"`
 	// If it was purchased through Vercel, the timestamp in milliseconds when it was purchased.
 	BoughtAt *float64 `json:"boughtAt"`
 	// Timestamp in milliseconds when the domain was created in the registry.
@@ -326,7 +327,6 @@ type CreateOrTransferDomainDomain struct {
 	// If transferred into Vercel, timestamp in milliseconds when the domain transfer was initiated.
 	TransferStartedAt *float64 `json:"transferStartedAt,omitempty"`
 	UserID            string   `json:"userId"`
-	TeamID            *string  `json:"teamId"`
 }
 
 func (o *CreateOrTransferDomainDomain) GetVerified() bool {
@@ -376,6 +376,13 @@ func (o *CreateOrTransferDomainDomain) GetName() string {
 		return ""
 	}
 	return o.Name
+}
+
+func (o *CreateOrTransferDomainDomain) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
 }
 
 func (o *CreateOrTransferDomainDomain) GetBoughtAt() *float64 {
@@ -446,13 +453,6 @@ func (o *CreateOrTransferDomainDomain) GetUserID() string {
 		return ""
 	}
 	return o.UserID
-}
-
-func (o *CreateOrTransferDomainDomain) GetTeamID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.TeamID
 }
 
 type CreateOrTransferDomainResponseBody struct {

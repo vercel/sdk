@@ -150,11 +150,11 @@ type GetDomainDomain struct {
 	Creator GetDomainCreator `json:"creator"`
 	// Whether or not the domain is registered with Name.com. If set to `true`, the domain is registered with Name.com.
 	Registrar *GetDomainRegistrar `json:"registrar,omitempty"`
-	TeamID    *string             `json:"teamId"`
+	// The domain name.
+	Name   string  `json:"name"`
+	TeamID *string `json:"teamId"`
 	// If it was purchased through Vercel, the timestamp in milliseconds when it was purchased.
 	BoughtAt *float64 `json:"boughtAt"`
-	// The domain name.
-	Name string `json:"name"`
 	// Timestamp in milliseconds when the domain was created in the registry.
 	CreatedAt float64 `json:"createdAt"`
 	// Timestamp in milliseconds at which the domain is set to expire. `null` if not bought with Vercel.
@@ -223,6 +223,13 @@ func (o *GetDomainDomain) GetRegistrar() *GetDomainRegistrar {
 	return o.Registrar
 }
 
+func (o *GetDomainDomain) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
 func (o *GetDomainDomain) GetTeamID() *string {
 	if o == nil {
 		return nil
@@ -235,13 +242,6 @@ func (o *GetDomainDomain) GetBoughtAt() *float64 {
 		return nil
 	}
 	return o.BoughtAt
-}
-
-func (o *GetDomainDomain) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
 }
 
 func (o *GetDomainDomain) GetCreatedAt() float64 {

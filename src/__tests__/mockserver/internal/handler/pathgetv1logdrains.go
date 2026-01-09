@@ -46,16 +46,16 @@ func testGetAllLogDrainsGetAllLogDrains0(w http.ResponseWriter, req *http.Reques
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody *operations.GetAllLogDrainsResponseBody = types.Pointer(operations.CreateGetAllLogDrainsResponseBodyGetAllLogDrainsResponseBody1(
-		operations.GetAllLogDrainsResponseBody1{
+	var respBody *operations.GetAllLogDrainsResponseBody = types.Pointer(operations.CreateGetAllLogDrainsResponseBodyGetAllLogDrainsResponseBody2(
+		operations.GetAllLogDrainsResponseBody2{
 			Drains: operations.CreateGetAllLogDrainsDrainsUnionArrayOfGetAllLogDrainsDrains1(
 				[]operations.GetAllLogDrainsDrains1{
 					operations.GetAllLogDrainsDrains1{
 						ID:        "<id>",
-						OwnerID:   "<id>",
-						Name:      "<value>",
 						CreatedAt: 7495.57,
 						UpdatedAt: 4759.82,
+						Name:      "<value>",
+						OwnerID:   "<id>",
 						Schemas:   operations.GetAllLogDrainsSchemas1{},
 						Delivery: operations.CreateGetAllLogDrainsDeliveryUnion1Internal(
 							operations.GetAllLogDrainsDeliveryVercelOtelTracesDb1{

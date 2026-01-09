@@ -9,17 +9,17 @@ import { EightyNine } from "@vercel/sdk/models/userevent.js";
 
 let value: EightyNine = {
   projectName: "<value>",
-  passwordProtection: {
+  ssoProtection: {
     deploymentType: "all_except_custom_domains",
   },
-  oldPasswordProtection: null,
+  oldSsoProtection: null,
 };
 ```
 
 ## Fields
 
-| Field                              | Type                               | Required                           | Description                        |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| `projectName`                      | *string*                           | :heavy_check_mark:                 | N/A                                |
-| `passwordProtection`               | *models.PayloadPasswordProtection* | :heavy_check_mark:                 | N/A                                |
-| `oldPasswordProtection`            | *models.OldPasswordProtection*     | :heavy_check_mark:                 | N/A                                |
+| Field                         | Type                          | Required                      | Description                   |
+| ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
+| `projectName`                 | *string*                      | :heavy_check_mark:            | N/A                           |
+| `ssoProtection`               | *models.PayloadSsoProtection* | :heavy_check_mark:            | N/A                           |
+| `oldSsoProtection`            | *models.OldSsoProtection*     | :heavy_check_mark:            | N/A                           |

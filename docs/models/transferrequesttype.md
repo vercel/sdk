@@ -5,11 +5,11 @@
 ```typescript
 import { TransferRequestType } from "@vercel/sdk/models/getconfigurationop.js";
 
-let value: TransferRequestType = "subscription";
+let value: TransferRequestType = "prepayment";
 ```
 
 ## Values
 
 ```typescript
-"subscription" | "prepayment"
+"prepayment" | "subscription"
 ```

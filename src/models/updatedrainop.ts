@@ -219,6 +219,25 @@ export type UpdateDrainRequest = {
   requestBody?: UpdateDrainRequestBody | undefined;
 };
 
+export const UpdateDrainResponseBodyDrainsStatus = {
+  Enabled: "enabled",
+  Disabled: "disabled",
+  Errored: "errored",
+} as const;
+export type UpdateDrainResponseBodyDrainsStatus = ClosedEnum<
+  typeof UpdateDrainResponseBodyDrainsStatus
+>;
+
+export const UpdateDrainResponseBodyDrainsDisabledReason = {
+  DisabledByOwner: "disabled-by-owner",
+  FeatureNotAvailable: "feature-not-available",
+  AccountPlanDowngrade: "account-plan-downgrade",
+  DisabledByAdmin: "disabled-by-admin",
+} as const;
+export type UpdateDrainResponseBodyDrainsDisabledReason = ClosedEnum<
+  typeof UpdateDrainResponseBodyDrainsDisabledReason
+>;
+
 export type UpdateDrainResponseBodyDrainsLog = {};
 
 export type UpdateDrainResponseBodyDrainsTrace = {};
@@ -300,8 +319,8 @@ export type UpdateDrainDeliveryDrainsResponse200ApplicationJSONEncoding =
   >;
 
 export const UpdateDrainDeliveryDrainsCompression = {
-  Gzip: "gzip",
   None: "none",
+  Gzip: "gzip",
 } as const;
 export type UpdateDrainDeliveryDrainsCompression = ClosedEnum<
   typeof UpdateDrainDeliveryDrainsCompression
@@ -358,25 +377,6 @@ export type UpdateDrainResponseBodyDrainsSampling = {
   env?: UpdateDrainResponseBodyDrainsEnv | undefined;
   requestPath?: string | undefined;
 };
-
-export const UpdateDrainResponseBodyDrainsStatus = {
-  Enabled: "enabled",
-  Disabled: "disabled",
-  Errored: "errored",
-} as const;
-export type UpdateDrainResponseBodyDrainsStatus = ClosedEnum<
-  typeof UpdateDrainResponseBodyDrainsStatus
->;
-
-export const UpdateDrainResponseBodyDrainsDisabledReason = {
-  DisabledByOwner: "disabled-by-owner",
-  FeatureNotAvailable: "feature-not-available",
-  AccountPlanDowngrade: "account-plan-downgrade",
-  DisabledByAdmin: "disabled-by-admin",
-} as const;
-export type UpdateDrainResponseBodyDrainsDisabledReason = ClosedEnum<
-  typeof UpdateDrainResponseBodyDrainsDisabledReason
->;
 
 export type UpdateDrainSourceDrainsResponse2 = {
   kind: "integration";
@@ -474,11 +474,17 @@ export type UpdateDrainResponseBodyProjectAccess =
 
 export type UpdateDrainResponseBody2 = {
   id: string;
-  ownerId: string;
-  name: string;
   createdAt: number;
   updatedAt: number;
   projectIds?: Array<string> | undefined;
+  name: string;
+  teamId?: string | null | undefined;
+  ownerId: string;
+  status?: UpdateDrainResponseBodyDrainsStatus | undefined;
+  firstErrorTimestamp?: number | undefined;
+  disabledAt?: number | undefined;
+  disabledBy?: string | undefined;
+  disabledReason?: UpdateDrainResponseBodyDrainsDisabledReason | undefined;
   schemas: UpdateDrainResponseBodyDrainsSchemas;
   delivery:
     | UpdateDrainDeliveryDrainsResponse1
@@ -486,12 +492,6 @@ export type UpdateDrainResponseBody2 = {
     | UpdateDrainDeliveryDrains3
     | UpdateDrainDeliveryDrains4;
   sampling?: Array<UpdateDrainResponseBodyDrainsSampling> | undefined;
-  teamId?: string | null | undefined;
-  status?: UpdateDrainResponseBodyDrainsStatus | undefined;
-  disabledAt?: number | undefined;
-  disabledReason?: UpdateDrainResponseBodyDrainsDisabledReason | undefined;
-  disabledBy?: string | undefined;
-  firstErrorTimestamp?: number | undefined;
   source: UpdateDrainSourceDrainsResponse1 | UpdateDrainSourceDrainsResponse2;
   filter?: string | undefined;
   filterV2?:
@@ -506,6 +506,25 @@ export type UpdateDrainResponseBody2 = {
     | UpdateDrainProjectAccess2
     | undefined;
 };
+
+export const UpdateDrainResponseBodyStatus = {
+  Enabled: "enabled",
+  Disabled: "disabled",
+  Errored: "errored",
+} as const;
+export type UpdateDrainResponseBodyStatus = ClosedEnum<
+  typeof UpdateDrainResponseBodyStatus
+>;
+
+export const UpdateDrainResponseBodyDisabledReason = {
+  DisabledByOwner: "disabled-by-owner",
+  FeatureNotAvailable: "feature-not-available",
+  AccountPlanDowngrade: "account-plan-downgrade",
+  DisabledByAdmin: "disabled-by-admin",
+} as const;
+export type UpdateDrainResponseBodyDisabledReason = ClosedEnum<
+  typeof UpdateDrainResponseBodyDisabledReason
+>;
 
 export type UpdateDrainResponseBodyLog = {};
 
@@ -582,8 +601,8 @@ export type UpdateDrainDeliveryDrainsResponseEncoding = ClosedEnum<
 >;
 
 export const UpdateDrainDeliveryCompression = {
-  Gzip: "gzip",
   None: "none",
+  Gzip: "gzip",
 } as const;
 export type UpdateDrainDeliveryCompression = ClosedEnum<
   typeof UpdateDrainDeliveryCompression
@@ -636,25 +655,6 @@ export type UpdateDrainResponseBodySampling = {
   env?: UpdateDrainResponseBodyEnv | undefined;
   requestPath?: string | undefined;
 };
-
-export const UpdateDrainResponseBodyStatus = {
-  Enabled: "enabled",
-  Disabled: "disabled",
-  Errored: "errored",
-} as const;
-export type UpdateDrainResponseBodyStatus = ClosedEnum<
-  typeof UpdateDrainResponseBodyStatus
->;
-
-export const UpdateDrainResponseBodyDisabledReason = {
-  DisabledByOwner: "disabled-by-owner",
-  FeatureNotAvailable: "feature-not-available",
-  AccountPlanDowngrade: "account-plan-downgrade",
-  DisabledByAdmin: "disabled-by-admin",
-} as const;
-export type UpdateDrainResponseBodyDisabledReason = ClosedEnum<
-  typeof UpdateDrainResponseBodyDisabledReason
->;
 
 export type UpdateDrainSourceDrains2 = {
   kind: "integration";
@@ -737,11 +737,17 @@ export type UpdateDrainResponseBodyFilterV2 =
 
 export type UpdateDrainResponseBody1 = {
   id: string;
-  ownerId: string;
-  name: string;
   createdAt: number;
   updatedAt: number;
   projectIds?: Array<string> | undefined;
+  name: string;
+  teamId?: string | null | undefined;
+  ownerId: string;
+  status?: UpdateDrainResponseBodyStatus | undefined;
+  firstErrorTimestamp?: number | undefined;
+  disabledAt?: number | undefined;
+  disabledBy?: string | undefined;
+  disabledReason?: UpdateDrainResponseBodyDisabledReason | undefined;
   schemas: UpdateDrainResponseBodySchemas;
   delivery:
     | UpdateDrainDeliveryDrains1
@@ -749,12 +755,6 @@ export type UpdateDrainResponseBody1 = {
     | UpdateDrainDelivery3
     | UpdateDrainDelivery4;
   sampling?: Array<UpdateDrainResponseBodySampling> | undefined;
-  teamId?: string | null | undefined;
-  status?: UpdateDrainResponseBodyStatus | undefined;
-  disabledAt?: number | undefined;
-  disabledReason?: UpdateDrainResponseBodyDisabledReason | undefined;
-  disabledBy?: string | undefined;
-  firstErrorTimestamp?: number | undefined;
   source: UpdateDrainSourceDrains1 | UpdateDrainSourceDrains2;
   filter?: string | undefined;
   filterV2?: UpdateDrainFilterV21 | UpdateDrainFilterV22 | undefined;
@@ -1925,6 +1925,24 @@ export function updateDrainRequestFromJSON(
 }
 
 /** @internal */
+export const UpdateDrainResponseBodyDrainsStatus$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateDrainResponseBodyDrainsStatus
+> = z.nativeEnum(UpdateDrainResponseBodyDrainsStatus);
+/** @internal */
+export const UpdateDrainResponseBodyDrainsStatus$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateDrainResponseBodyDrainsStatus> =
+    UpdateDrainResponseBodyDrainsStatus$inboundSchema;
+
+/** @internal */
+export const UpdateDrainResponseBodyDrainsDisabledReason$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateDrainResponseBodyDrainsDisabledReason> = z
+    .nativeEnum(UpdateDrainResponseBodyDrainsDisabledReason);
+/** @internal */
+export const UpdateDrainResponseBodyDrainsDisabledReason$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateDrainResponseBodyDrainsDisabledReason> =
+    UpdateDrainResponseBodyDrainsDisabledReason$inboundSchema;
+
+/** @internal */
 export const UpdateDrainResponseBodyDrainsLog$inboundSchema: z.ZodType<
   UpdateDrainResponseBodyDrainsLog,
   z.ZodTypeDef,
@@ -2772,24 +2790,6 @@ export function updateDrainResponseBodyDrainsSamplingFromJSON(
 }
 
 /** @internal */
-export const UpdateDrainResponseBodyDrainsStatus$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateDrainResponseBodyDrainsStatus
-> = z.nativeEnum(UpdateDrainResponseBodyDrainsStatus);
-/** @internal */
-export const UpdateDrainResponseBodyDrainsStatus$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateDrainResponseBodyDrainsStatus> =
-    UpdateDrainResponseBodyDrainsStatus$inboundSchema;
-
-/** @internal */
-export const UpdateDrainResponseBodyDrainsDisabledReason$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateDrainResponseBodyDrainsDisabledReason> = z
-    .nativeEnum(UpdateDrainResponseBodyDrainsDisabledReason);
-/** @internal */
-export const UpdateDrainResponseBodyDrainsDisabledReason$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateDrainResponseBodyDrainsDisabledReason> =
-    UpdateDrainResponseBodyDrainsDisabledReason$inboundSchema;
-
-/** @internal */
 export const UpdateDrainSourceDrainsResponse2$inboundSchema: z.ZodType<
   UpdateDrainSourceDrainsResponse2,
   z.ZodTypeDef,
@@ -3494,11 +3494,19 @@ export const UpdateDrainResponseBody2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: types.string(),
-  ownerId: types.string(),
-  name: types.string(),
   createdAt: types.number(),
   updatedAt: types.number(),
   projectIds: types.optional(z.array(types.string())),
+  name: types.string(),
+  teamId: z.nullable(types.string()).optional(),
+  ownerId: types.string(),
+  status: types.optional(UpdateDrainResponseBodyDrainsStatus$inboundSchema),
+  firstErrorTimestamp: types.optional(types.number()),
+  disabledAt: types.optional(types.number()),
+  disabledBy: types.optional(types.string()),
+  disabledReason: types.optional(
+    UpdateDrainResponseBodyDrainsDisabledReason$inboundSchema,
+  ),
   schemas: z.lazy(() => UpdateDrainResponseBodyDrainsSchemas$inboundSchema),
   delivery: z.union([
     z.lazy(() => UpdateDrainDeliveryDrainsResponse1$inboundSchema),
@@ -3509,14 +3517,6 @@ export const UpdateDrainResponseBody2$inboundSchema: z.ZodType<
   sampling: types.optional(
     z.array(z.lazy(() => UpdateDrainResponseBodyDrainsSampling$inboundSchema)),
   ),
-  teamId: z.nullable(types.string()).optional(),
-  status: types.optional(UpdateDrainResponseBodyDrainsStatus$inboundSchema),
-  disabledAt: types.optional(types.number()),
-  disabledReason: types.optional(
-    UpdateDrainResponseBodyDrainsDisabledReason$inboundSchema,
-  ),
-  disabledBy: types.optional(types.string()),
-  firstErrorTimestamp: types.optional(types.number()),
   source: z.union([
     z.lazy(() => UpdateDrainSourceDrainsResponse1$inboundSchema),
     z.lazy(() => UpdateDrainSourceDrainsResponse2$inboundSchema),
@@ -3541,11 +3541,17 @@ export const UpdateDrainResponseBody2$inboundSchema: z.ZodType<
 /** @internal */
 export type UpdateDrainResponseBody2$Outbound = {
   id: string;
-  ownerId: string;
-  name: string;
   createdAt: number;
   updatedAt: number;
   projectIds?: Array<string> | undefined;
+  name: string;
+  teamId?: string | null | undefined;
+  ownerId: string;
+  status?: string | undefined;
+  firstErrorTimestamp?: number | undefined;
+  disabledAt?: number | undefined;
+  disabledBy?: string | undefined;
+  disabledReason?: string | undefined;
   schemas: UpdateDrainResponseBodyDrainsSchemas$Outbound;
   delivery:
     | UpdateDrainDeliveryDrainsResponse1$Outbound
@@ -3553,12 +3559,6 @@ export type UpdateDrainResponseBody2$Outbound = {
     | UpdateDrainDeliveryDrains3$Outbound
     | UpdateDrainDeliveryDrains4$Outbound;
   sampling?: Array<UpdateDrainResponseBodyDrainsSampling$Outbound> | undefined;
-  teamId?: string | null | undefined;
-  status?: string | undefined;
-  disabledAt?: number | undefined;
-  disabledReason?: string | undefined;
-  disabledBy?: string | undefined;
-  firstErrorTimestamp?: number | undefined;
   source:
     | UpdateDrainSourceDrainsResponse1$Outbound
     | UpdateDrainSourceDrainsResponse2$Outbound;
@@ -3583,11 +3583,18 @@ export const UpdateDrainResponseBody2$outboundSchema: z.ZodType<
   UpdateDrainResponseBody2
 > = z.object({
   id: z.string(),
-  ownerId: z.string(),
-  name: z.string(),
   createdAt: z.number(),
   updatedAt: z.number(),
   projectIds: z.array(z.string()).optional(),
+  name: z.string(),
+  teamId: z.nullable(z.string()).optional(),
+  ownerId: z.string(),
+  status: UpdateDrainResponseBodyDrainsStatus$outboundSchema.optional(),
+  firstErrorTimestamp: z.number().optional(),
+  disabledAt: z.number().optional(),
+  disabledBy: z.string().optional(),
+  disabledReason: UpdateDrainResponseBodyDrainsDisabledReason$outboundSchema
+    .optional(),
   schemas: z.lazy(() => UpdateDrainResponseBodyDrainsSchemas$outboundSchema),
   delivery: z.union([
     z.lazy(() => UpdateDrainDeliveryDrainsResponse1$outboundSchema),
@@ -3598,13 +3605,6 @@ export const UpdateDrainResponseBody2$outboundSchema: z.ZodType<
   sampling: z.array(
     z.lazy(() => UpdateDrainResponseBodyDrainsSampling$outboundSchema),
   ).optional(),
-  teamId: z.nullable(z.string()).optional(),
-  status: UpdateDrainResponseBodyDrainsStatus$outboundSchema.optional(),
-  disabledAt: z.number().optional(),
-  disabledReason: UpdateDrainResponseBodyDrainsDisabledReason$outboundSchema
-    .optional(),
-  disabledBy: z.string().optional(),
-  firstErrorTimestamp: z.number().optional(),
   source: z.union([
     z.lazy(() => UpdateDrainSourceDrainsResponse1$outboundSchema),
     z.lazy(() => UpdateDrainSourceDrainsResponse2$outboundSchema),
@@ -3639,6 +3639,25 @@ export function updateDrainResponseBody2FromJSON(
     `Failed to parse 'UpdateDrainResponseBody2' from JSON`,
   );
 }
+
+/** @internal */
+export const UpdateDrainResponseBodyStatus$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateDrainResponseBodyStatus
+> = z.nativeEnum(UpdateDrainResponseBodyStatus);
+/** @internal */
+export const UpdateDrainResponseBodyStatus$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateDrainResponseBodyStatus
+> = UpdateDrainResponseBodyStatus$inboundSchema;
+
+/** @internal */
+export const UpdateDrainResponseBodyDisabledReason$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateDrainResponseBodyDisabledReason> = z.nativeEnum(
+    UpdateDrainResponseBodyDisabledReason,
+  );
+/** @internal */
+export const UpdateDrainResponseBodyDisabledReason$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateDrainResponseBodyDisabledReason> =
+    UpdateDrainResponseBodyDisabledReason$inboundSchema;
 
 /** @internal */
 export const UpdateDrainResponseBodyLog$inboundSchema: z.ZodType<
@@ -4426,25 +4445,6 @@ export function updateDrainResponseBodySamplingFromJSON(
 }
 
 /** @internal */
-export const UpdateDrainResponseBodyStatus$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateDrainResponseBodyStatus
-> = z.nativeEnum(UpdateDrainResponseBodyStatus);
-/** @internal */
-export const UpdateDrainResponseBodyStatus$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateDrainResponseBodyStatus
-> = UpdateDrainResponseBodyStatus$inboundSchema;
-
-/** @internal */
-export const UpdateDrainResponseBodyDisabledReason$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateDrainResponseBodyDisabledReason> = z.nativeEnum(
-    UpdateDrainResponseBodyDisabledReason,
-  );
-/** @internal */
-export const UpdateDrainResponseBodyDisabledReason$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateDrainResponseBodyDisabledReason> =
-    UpdateDrainResponseBodyDisabledReason$inboundSchema;
-
-/** @internal */
 export const UpdateDrainSourceDrains2$inboundSchema: z.ZodType<
   UpdateDrainSourceDrains2,
   z.ZodTypeDef,
@@ -5005,11 +5005,19 @@ export const UpdateDrainResponseBody1$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: types.string(),
-  ownerId: types.string(),
-  name: types.string(),
   createdAt: types.number(),
   updatedAt: types.number(),
   projectIds: types.optional(z.array(types.string())),
+  name: types.string(),
+  teamId: z.nullable(types.string()).optional(),
+  ownerId: types.string(),
+  status: types.optional(UpdateDrainResponseBodyStatus$inboundSchema),
+  firstErrorTimestamp: types.optional(types.number()),
+  disabledAt: types.optional(types.number()),
+  disabledBy: types.optional(types.string()),
+  disabledReason: types.optional(
+    UpdateDrainResponseBodyDisabledReason$inboundSchema,
+  ),
   schemas: z.lazy(() => UpdateDrainResponseBodySchemas$inboundSchema),
   delivery: z.union([
     z.lazy(() => UpdateDrainDeliveryDrains1$inboundSchema),
@@ -5020,14 +5028,6 @@ export const UpdateDrainResponseBody1$inboundSchema: z.ZodType<
   sampling: types.optional(
     z.array(z.lazy(() => UpdateDrainResponseBodySampling$inboundSchema)),
   ),
-  teamId: z.nullable(types.string()).optional(),
-  status: types.optional(UpdateDrainResponseBodyStatus$inboundSchema),
-  disabledAt: types.optional(types.number()),
-  disabledReason: types.optional(
-    UpdateDrainResponseBodyDisabledReason$inboundSchema,
-  ),
-  disabledBy: types.optional(types.string()),
-  firstErrorTimestamp: types.optional(types.number()),
   source: z.union([
     z.lazy(() => UpdateDrainSourceDrains1$inboundSchema),
     z.lazy(() => UpdateDrainSourceDrains2$inboundSchema),
@@ -5043,11 +5043,17 @@ export const UpdateDrainResponseBody1$inboundSchema: z.ZodType<
 /** @internal */
 export type UpdateDrainResponseBody1$Outbound = {
   id: string;
-  ownerId: string;
-  name: string;
   createdAt: number;
   updatedAt: number;
   projectIds?: Array<string> | undefined;
+  name: string;
+  teamId?: string | null | undefined;
+  ownerId: string;
+  status?: string | undefined;
+  firstErrorTimestamp?: number | undefined;
+  disabledAt?: number | undefined;
+  disabledBy?: string | undefined;
+  disabledReason?: string | undefined;
   schemas: UpdateDrainResponseBodySchemas$Outbound;
   delivery:
     | UpdateDrainDeliveryDrains1$Outbound
@@ -5055,12 +5061,6 @@ export type UpdateDrainResponseBody1$Outbound = {
     | UpdateDrainDelivery3$Outbound
     | UpdateDrainDelivery4$Outbound;
   sampling?: Array<UpdateDrainResponseBodySampling$Outbound> | undefined;
-  teamId?: string | null | undefined;
-  status?: string | undefined;
-  disabledAt?: number | undefined;
-  disabledReason?: string | undefined;
-  disabledBy?: string | undefined;
-  firstErrorTimestamp?: number | undefined;
   source: UpdateDrainSourceDrains1$Outbound | UpdateDrainSourceDrains2$Outbound;
   filter?: string | undefined;
   filterV2?:
@@ -5076,11 +5076,18 @@ export const UpdateDrainResponseBody1$outboundSchema: z.ZodType<
   UpdateDrainResponseBody1
 > = z.object({
   id: z.string(),
-  ownerId: z.string(),
-  name: z.string(),
   createdAt: z.number(),
   updatedAt: z.number(),
   projectIds: z.array(z.string()).optional(),
+  name: z.string(),
+  teamId: z.nullable(z.string()).optional(),
+  ownerId: z.string(),
+  status: UpdateDrainResponseBodyStatus$outboundSchema.optional(),
+  firstErrorTimestamp: z.number().optional(),
+  disabledAt: z.number().optional(),
+  disabledBy: z.string().optional(),
+  disabledReason: UpdateDrainResponseBodyDisabledReason$outboundSchema
+    .optional(),
   schemas: z.lazy(() => UpdateDrainResponseBodySchemas$outboundSchema),
   delivery: z.union([
     z.lazy(() => UpdateDrainDeliveryDrains1$outboundSchema),
@@ -5091,13 +5098,6 @@ export const UpdateDrainResponseBody1$outboundSchema: z.ZodType<
   sampling: z.array(
     z.lazy(() => UpdateDrainResponseBodySampling$outboundSchema),
   ).optional(),
-  teamId: z.nullable(z.string()).optional(),
-  status: UpdateDrainResponseBodyStatus$outboundSchema.optional(),
-  disabledAt: z.number().optional(),
-  disabledReason: UpdateDrainResponseBodyDisabledReason$outboundSchema
-    .optional(),
-  disabledBy: z.string().optional(),
-  firstErrorTimestamp: z.number().optional(),
   source: z.union([
     z.lazy(() => UpdateDrainSourceDrains1$outboundSchema),
     z.lazy(() => UpdateDrainSourceDrains2$outboundSchema),

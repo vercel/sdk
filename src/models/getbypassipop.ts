@@ -40,8 +40,8 @@ export type GetBypassIpRequest = {
 };
 
 export const GetBypassIpAction = {
-  Block: "block",
   Bypass: "bypass",
+  Block: "block",
 } as const;
 export type GetBypassIpAction = ClosedEnum<typeof GetBypassIpAction>;
 

@@ -702,13 +702,13 @@ export type PutFirewallConfigRulesType = ClosedEnum<
 >;
 
 export const PutFirewallConfigRulesOp = {
+  Sub: "sub",
   Re: "re",
   Eq: "eq",
   Ex: "ex",
   Inc: "inc",
   Pre: "pre",
   Suf: "suf",
-  Sub: "sub",
   Gt: "gt",
   Gte: "gte",
   Lt: "lt",
@@ -839,13 +839,13 @@ export type PutFirewallConfigRulesSecurityType = ClosedEnum<
 >;
 
 export const PutFirewallConfigRulesSecurityOp = {
+  Sub: "sub",
   Re: "re",
   Eq: "eq",
   Ex: "ex",
   Inc: "inc",
   Pre: "pre",
   Suf: "suf",
-  Sub: "sub",
   Gt: "gt",
   Gte: "gte",
   Lt: "lt",

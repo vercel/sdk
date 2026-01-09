@@ -15,10 +15,10 @@ const value: models.GetAllLogDrainsDrains1[] = [];
 const value: models.GetAllLogDrainsDrains2[] = [
   {
     id: "<id>",
-    ownerId: "<id>",
-    name: "<value>",
     createdAt: 7250.96,
     updatedAt: 5978.89,
+    name: "<value>",
+    ownerId: "<id>",
     schemas: {},
     delivery: {
       type: "internal",

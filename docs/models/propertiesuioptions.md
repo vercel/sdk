@@ -13,9 +13,9 @@ let value: PropertiesUiOptions = {
 
 ## Fields
 
-| Field                                                           | Type                                                            | Required                                                        | Description                                                     |
-| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
-| `value`                                                         | *string*                                                        | :heavy_check_mark:                                              | N/A                                                             |
-| `label`                                                         | *string*                                                        | :heavy_check_mark:                                              | N/A                                                             |
-| `disabled`                                                      | *models.GetConfigurationProductsPropertiesIntegrationsDisabled* | :heavy_minus_sign:                                              | N/A                                                             |
-| `hidden`                                                        | *models.GetConfigurationProductsPropertiesIntegrationsHidden*   | :heavy_minus_sign:                                              | N/A                                                             |
+| Field                       | Type                        | Required                    | Description                 |
+| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
+| `value`                     | *string*                    | :heavy_check_mark:          | N/A                         |
+| `label`                     | *string*                    | :heavy_check_mark:          | N/A                         |
+| `disabled`                  | *models.PropertiesDisabled* | :heavy_minus_sign:          | N/A                         |
+| `hidden`                    | *models.PropertiesHidden*   | :heavy_minus_sign:          | N/A                         |

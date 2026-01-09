@@ -12,7 +12,16 @@ let value: CreateIntegrationStoreDirectResponseBody = {
     status: "uninstalled",
     externalResourceId: "<id>",
     product: {
-      value: "<value>",
+      integration: {
+        id: "<id>",
+        name: "<value>",
+        slug: "<value>",
+        icon: "<value>",
+      },
+      integrationConfigurationId: "<id>",
+      supportedProtocols: [
+        "experimentation",
+      ],
     },
     secrets: [],
   },

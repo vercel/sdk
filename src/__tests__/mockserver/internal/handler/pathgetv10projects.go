@@ -46,11 +46,57 @@ func testGetProjectsGetProjects0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody *operations.GetProjectsResponseBody = types.Pointer(operations.CreateGetProjectsResponseBodyGetProjectsResponseBody2(
-		operations.GetProjectsResponseBody2{
-			Projects: []operations.GetProjectsProject1{},
-			Pagination: operations.CreatePaginationUnion1GetProjectsPagination1(
-				operations.GetProjectsPagination1{
+	var respBody *operations.GetProjectsResponseBody = types.Pointer(operations.CreateGetProjectsResponseBodyGetProjectsResponseBody3(
+		operations.GetProjectsResponseBody3{
+			Projects: []operations.GetProjectsProject2{
+				operations.GetProjectsProject2{
+					AccountID: "<id>",
+					Crons: &operations.GetProjectsCrons{
+						EnabledAt:    9786.19,
+						DisabledAt:   types.Float64(4614.79),
+						UpdatedAt:    7805.29,
+						DeploymentID: types.String("<id>"),
+						Definitions: []operations.GetProjectsDefinition{
+							operations.GetProjectsDefinition{
+								Host:     "vercel.com",
+								Path:     "/api/crons/sync-something?hello=world",
+								Schedule: "0 0 * * *",
+							},
+						},
+					},
+					DirectoryListing: true,
+					ID:               "<id>",
+					Name:             "<value>",
+					NodeVersion:      operations.ProjectNodeVersion2EightDot10DotX,
+					ResourceConfig: operations.ProjectResourceConfig2{
+						FunctionDefaultRegions: []string{
+							"<value 1>",
+							"<value 2>",
+						},
+					},
+					RollingRelease: &operations.ProjectRollingRelease2{
+						Target: "production",
+						Stages: []operations.ProjectStage2{
+							operations.ProjectStage2{
+								TargetPercentage: 25,
+								RequireApproval:  types.Bool(false),
+								Duration:         types.Float64(600),
+								LinearShift:      types.Bool(false),
+							},
+						},
+						CanaryResponseHeader: types.Bool(false),
+					},
+					DefaultResourceConfig: operations.GetProjectsDefaultResourceConfig{
+						FunctionDefaultRegions: []string{
+							"<value 1>",
+							"<value 2>",
+							"<value 3>",
+						},
+					},
+				},
+			},
+			Pagination: operations.CreatePaginationUnion2GetProjectsPagination2(
+				operations.GetProjectsPagination2{
 					Count: 20,
 					Next:  types.String("JBSWY3DPEHPK3PXP"),
 				},

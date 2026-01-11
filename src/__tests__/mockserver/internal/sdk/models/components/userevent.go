@@ -679,21 +679,21 @@ func (e *AuthMethod) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type Method string
+type ClientAuthenticationUsedMethod string
 
 const (
-	MethodNone              Method = "none"
-	MethodClientSecretBasic Method = "client_secret_basic"
-	MethodClientSecretPost  Method = "client_secret_post"
-	MethodClientSecretJwt   Method = "client_secret_jwt"
-	MethodPrivateKeyJwt     Method = "private_key_jwt"
-	MethodOidcToken         Method = "oidc_token"
+	ClientAuthenticationUsedMethodNone              ClientAuthenticationUsedMethod = "none"
+	ClientAuthenticationUsedMethodClientSecretBasic ClientAuthenticationUsedMethod = "client_secret_basic"
+	ClientAuthenticationUsedMethodClientSecretPost  ClientAuthenticationUsedMethod = "client_secret_post"
+	ClientAuthenticationUsedMethodClientSecretJwt   ClientAuthenticationUsedMethod = "client_secret_jwt"
+	ClientAuthenticationUsedMethodPrivateKeyJwt     ClientAuthenticationUsedMethod = "private_key_jwt"
+	ClientAuthenticationUsedMethodOidcToken         ClientAuthenticationUsedMethod = "oidc_token"
 )
 
-func (e Method) ToPointer() *Method {
+func (e ClientAuthenticationUsedMethod) ToPointer() *ClientAuthenticationUsedMethod {
 	return &e
 }
-func (e *Method) UnmarshalJSON(data []byte) error {
+func (e *ClientAuthenticationUsedMethod) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -710,16 +710,16 @@ func (e *Method) UnmarshalJSON(data []byte) error {
 	case "private_key_jwt":
 		fallthrough
 	case "oidc_token":
-		*e = Method(v)
+		*e = ClientAuthenticationUsedMethod(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Method: %v", v)
+		return fmt.Errorf("invalid value for ClientAuthenticationUsedMethod: %v", v)
 	}
 }
 
 type ClientAuthenticationUsed struct {
-	Method   Method  `json:"method"`
-	SecretID *string `json:"secretId,omitempty"`
+	Method   ClientAuthenticationUsedMethod `json:"method"`
+	SecretID *string                        `json:"secretId,omitempty"`
 }
 
 func (c ClientAuthenticationUsed) MarshalJSON() ([]byte, error) {
@@ -733,9 +733,9 @@ func (c *ClientAuthenticationUsed) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ClientAuthenticationUsed) GetMethod() Method {
+func (o *ClientAuthenticationUsed) GetMethod() ClientAuthenticationUsedMethod {
 	if o == nil {
-		return Method("")
+		return ClientAuthenticationUsedMethod("")
 	}
 	return o.Method
 }
@@ -11065,8 +11065,8 @@ func (o *BlockHistory) GetComment() *string {
 	return o.Comment
 }
 
-// History - (scanner history). Since November 2021. First element is newest.
-type History struct {
+// AbuseHistory - (scanner history). Since November 2021. First element is newest.
+type AbuseHistory struct {
 	Scanner string  `json:"scanner"`
 	Reason  string  `json:"reason"`
 	By      string  `json:"by"`
@@ -11074,46 +11074,46 @@ type History struct {
 	At      float64 `json:"at"`
 }
 
-func (h History) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(h, "", false)
+func (a AbuseHistory) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
 }
 
-func (h *History) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &h, "", false, []string{"scanner", "reason", "by", "byId", "at"}); err != nil {
+func (a *AbuseHistory) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"scanner", "reason", "by", "byId", "at"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *History) GetScanner() string {
+func (o *AbuseHistory) GetScanner() string {
 	if o == nil {
 		return ""
 	}
 	return o.Scanner
 }
 
-func (o *History) GetReason() string {
+func (o *AbuseHistory) GetReason() string {
 	if o == nil {
 		return ""
 	}
 	return o.Reason
 }
 
-func (o *History) GetBy() string {
+func (o *AbuseHistory) GetBy() string {
 	if o == nil {
 		return ""
 	}
 	return o.By
 }
 
-func (o *History) GetByID() string {
+func (o *AbuseHistory) GetByID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ByID
 }
 
-func (o *History) GetAt() float64 {
+func (o *AbuseHistory) GetAt() float64 {
 	if o == nil {
 		return 0.0
 	}
@@ -11126,7 +11126,7 @@ type Abuse struct {
 	// Since March 2022. Helps abuse checks by tracking git auths. Format: `<platform>:<detail>:<value>`
 	GitAuthHistory []string `json:"gitAuthHistory,omitempty"`
 	// (scanner history). Since November 2021. First element is newest.
-	History []History `json:"history,omitempty"`
+	History []AbuseHistory `json:"history,omitempty"`
 	// Since September 2023. How often did this owner trigger an actual git lineage deploy block?
 	GitLineageBlocks *float64 `json:"gitLineageBlocks,omitempty"`
 	// Since September 2023. How often did this owner trigger a git lineage deploy block dry run?
@@ -11167,7 +11167,7 @@ func (o *Abuse) GetGitAuthHistory() []string {
 	return o.GitAuthHistory
 }
 
-func (o *Abuse) GetHistory() []History {
+func (o *Abuse) GetHistory() []AbuseHistory {
 	if o == nil {
 		return nil
 	}
@@ -16905,12 +16905,173 @@ func (o *Totp) GetCreatedAt() float64 {
 	return o.CreatedAt
 }
 
+// HistoryAction - The action that occurred
+type HistoryAction string
+
+const (
+	HistoryActionEnabled  HistoryAction = "enabled"
+	HistoryActionDisabled HistoryAction = "disabled"
+)
+
+func (e HistoryAction) ToPointer() *HistoryAction {
+	return &e
+}
+func (e *HistoryAction) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enabled":
+		fallthrough
+	case "disabled":
+		*e = HistoryAction(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for HistoryAction: %v", v)
+	}
+}
+
+// HistoryMethod - Method used for the state change - 'totp': User set up TOTP authenticator - 'passkey': User registered a passkey - 'user_disabled': User disabled their own MFA - 'admin_removal': Admin removed MFA via backoffice - 'unknown': Method unknown (for pre-tracking events)
+type HistoryMethod string
+
+const (
+	HistoryMethodTotp         HistoryMethod = "totp"
+	HistoryMethodPasskey      HistoryMethod = "passkey"
+	HistoryMethodUserDisabled HistoryMethod = "user_disabled"
+	HistoryMethodAdminRemoval HistoryMethod = "admin_removal"
+	HistoryMethodUnknown      HistoryMethod = "unknown"
+)
+
+func (e HistoryMethod) ToPointer() *HistoryMethod {
+	return &e
+}
+func (e *HistoryMethod) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "totp":
+		fallthrough
+	case "passkey":
+		fallthrough
+	case "user_disabled":
+		fallthrough
+	case "admin_removal":
+		fallthrough
+	case "unknown":
+		*e = HistoryMethod(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for HistoryMethod: %v", v)
+	}
+}
+
+// ActorType - Type of actor
+type ActorType string
+
+const (
+	ActorTypeUser  ActorType = "user"
+	ActorTypeAdmin ActorType = "admin"
+)
+
+func (e ActorType) ToPointer() *ActorType {
+	return &e
+}
+func (e *ActorType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "user":
+		fallthrough
+	case "admin":
+		*e = ActorType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ActorType: %v", v)
+	}
+}
+
+// MfaConfigurationHistory - History of MFA state changes (enabled/disabled events). Most recent events first.
+type MfaConfigurationHistory struct {
+	// The action that occurred
+	Action HistoryAction `json:"action"`
+	// Unix timestamp (milliseconds) when the change occurred. May be null for events that occurred before history tracking was implemented.
+	Timestamp *float64 `json:"timestamp"`
+	// Method used for the state change - 'totp': User set up TOTP authenticator - 'passkey': User registered a passkey - 'user_disabled': User disabled their own MFA - 'admin_removal': Admin removed MFA via backoffice - 'unknown': Method unknown (for pre-tracking events)
+	Method HistoryMethod `json:"method"`
+	// ID of the actor who made the change - For user actions: the user's own ID - For admin actions: the admin's user ID
+	ActorID string `json:"actorId"`
+	// Type of actor
+	ActorType ActorType `json:"actorType"`
+	// Optional: Additional context or reason e.g., "Account recovery request - ticket #12345"
+	Reason *string `json:"reason,omitempty"`
+}
+
+func (m MfaConfigurationHistory) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MfaConfigurationHistory) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"action", "timestamp", "method", "actorId", "actorType"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *MfaConfigurationHistory) GetAction() HistoryAction {
+	if o == nil {
+		return HistoryAction("")
+	}
+	return o.Action
+}
+
+func (o *MfaConfigurationHistory) GetTimestamp() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Timestamp
+}
+
+func (o *MfaConfigurationHistory) GetMethod() HistoryMethod {
+	if o == nil {
+		return HistoryMethod("")
+	}
+	return o.Method
+}
+
+func (o *MfaConfigurationHistory) GetActorID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ActorID
+}
+
+func (o *MfaConfigurationHistory) GetActorType() ActorType {
+	if o == nil {
+		return ActorType("")
+	}
+	return o.ActorType
+}
+
+func (o *MfaConfigurationHistory) GetReason() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Reason
+}
+
 // MfaConfiguration - MFA configuration. When enabled, the user will be required to provide a second factor of authentication when logging in.
 type MfaConfiguration struct {
 	Enabled       bool     `json:"enabled"`
 	EnabledAt     *float64 `json:"enabledAt,omitempty"`
 	RecoveryCodes []string `json:"recoveryCodes"`
 	Totp          *Totp    `json:"totp,omitempty"`
+	// History of MFA state changes (enabled/disabled events). Most recent events first.
+	History []MfaConfigurationHistory `json:"history,omitempty"`
 }
 
 func (m MfaConfiguration) MarshalJSON() ([]byte, error) {
@@ -16950,6 +17111,13 @@ func (o *MfaConfiguration) GetTotp() *Totp {
 		return nil
 	}
 	return o.Totp
+}
+
+func (o *MfaConfiguration) GetHistory() []MfaConfigurationHistory {
+	if o == nil {
+		return nil
+	}
+	return o.History
 }
 
 type NewOwner struct {

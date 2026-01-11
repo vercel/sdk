@@ -2,20 +2,20 @@ speakeasyVersion: 1.684.0
 sources:
     vercel-OAS:
         sourceNamespace: vercel-oas
-        sourceRevisionDigest: sha256:06cf027190c7450e3f1c1a2875ce40d5eb6611ece7f90505c57f9b4779d0ff2b
-        sourceBlobDigest: sha256:91909f0993f1b4eb4e826283dd4f2dda72d51aa1a9a2f17807c68aa3d77aee67
+        sourceRevisionDigest: sha256:7cc5b0f992a2dd5dd3b834b3a30562bf28690f507acc8493ffcf1e63c3db6b9e
+        sourceBlobDigest: sha256:03aff6572bd4c6eee40f5d5a1d04ab5eabe8ef3742ac839c53c62c6e5a76469c
         tags:
             - latest
-            - speakeasy-sdk-regen-1767744499
+            - speakeasy-sdk-regen-1768090226
             - 0.0.1
 targets:
     vercel:
         source: vercel-OAS
         sourceNamespace: vercel-oas
-        sourceRevisionDigest: sha256:06cf027190c7450e3f1c1a2875ce40d5eb6611ece7f90505c57f9b4779d0ff2b
-        sourceBlobDigest: sha256:91909f0993f1b4eb4e826283dd4f2dda72d51aa1a9a2f17807c68aa3d77aee67
+        sourceRevisionDigest: sha256:7cc5b0f992a2dd5dd3b834b3a30562bf28690f507acc8493ffcf1e63c3db6b9e
+        sourceBlobDigest: sha256:03aff6572bd4c6eee40f5d5a1d04ab5eabe8ef3742ac839c53c62c6e5a76469c
         codeSamplesNamespace: vercel-oas-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:742e37eb8ad6048045e730f0e02084b3cc7aba97dc2390a0913e4dd89045d99c
+        codeSamplesRevisionDigest: sha256:a610240d1dbe65d7754ed96211363c67cefb657fa8483283f3d9a4968af706c2
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

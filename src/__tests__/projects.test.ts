@@ -108,11 +108,35 @@ test("Projects Get Projects", async () => {
     projects: [
       {
         accountId: "<id>",
-        alias: [],
-        directoryListing: false,
+        alias: [
+          {
+            deployment: {
+              createdAt: 4236.55,
+              createdIn: "<value>",
+              creator: {
+                email: "Sim56@yahoo.com",
+                uid: "<id>",
+                username: "Antonetta77",
+              },
+              deploymentHostname: "<value>",
+              name: "<value>",
+              id: "<id>",
+              plan: "<value>",
+              private: false,
+              readyState: "<value>",
+              type: "<value>",
+              url: "https://leading-scaffold.com",
+              userId: "<id>",
+            },
+            domain: "productive-charm.org",
+            environment: "production",
+            target: "STAGING",
+          },
+        ],
+        directoryListing: true,
         id: "<id>",
         name: "<value>",
-        nodeVersion: "8.10.x",
+        nodeVersion: "12.x",
         resourceConfig: {
           functionDefaultRegions: [
             "<value 1>",
@@ -120,14 +144,7 @@ test("Projects Get Projects", async () => {
         },
         rollingRelease: {
           target: "production",
-          stages: [
-            {
-              targetPercentage: 25,
-              requireApproval: false,
-              duration: 600,
-              linearShift: false,
-            },
-          ],
+          stages: null,
           canaryResponseHeader: false,
         },
         serverlessFunctionRegion: "<value>",

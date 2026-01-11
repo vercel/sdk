@@ -51,9 +51,7 @@ func testCreateAccessGroupCreateAccessGroup0(w http.ResponseWriter, req *http.Re
 		return
 	}
 	var respBody *operations.CreateAccessGroupResponseBody = &operations.CreateAccessGroupResponseBody{
-		Entitlements: []operations.CreateAccessGroupEntitlement{
-			operations.CreateAccessGroupEntitlementV0,
-		},
+		Entitlements:  []operations.CreateAccessGroupEntitlement{},
 		MembersCount:  446.92,
 		ProjectsCount: 5113.22,
 		Name:          "my-access-group",

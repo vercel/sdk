@@ -3622,6 +3622,77 @@ export type Totp = {
 };
 
 /**
+ * The action that occurred
+ */
+export const UserEventPayload72NewOwnerAction = {
+  Enabled: "enabled",
+  Disabled: "disabled",
+} as const;
+/**
+ * The action that occurred
+ */
+export type UserEventPayload72NewOwnerAction = ClosedEnum<
+  typeof UserEventPayload72NewOwnerAction
+>;
+
+/**
+ * Method used for the state change - 'totp': User set up TOTP authenticator - 'passkey': User registered a passkey - 'user_disabled': User disabled their own MFA - 'admin_removal': Admin removed MFA via backoffice - 'unknown': Method unknown (for pre-tracking events)
+ */
+export const PayloadMethod = {
+  Totp: "totp",
+  Passkey: "passkey",
+  UserDisabled: "user_disabled",
+  AdminRemoval: "admin_removal",
+  Unknown: "unknown",
+} as const;
+/**
+ * Method used for the state change - 'totp': User set up TOTP authenticator - 'passkey': User registered a passkey - 'user_disabled': User disabled their own MFA - 'admin_removal': Admin removed MFA via backoffice - 'unknown': Method unknown (for pre-tracking events)
+ */
+export type PayloadMethod = ClosedEnum<typeof PayloadMethod>;
+
+/**
+ * Type of actor
+ */
+export const ActorType = {
+  User: "user",
+  Admin: "admin",
+} as const;
+/**
+ * Type of actor
+ */
+export type ActorType = ClosedEnum<typeof ActorType>;
+
+/**
+ * History of MFA state changes (enabled/disabled events). Most recent events first.
+ */
+export type PayloadHistory = {
+  /**
+   * The action that occurred
+   */
+  action: UserEventPayload72NewOwnerAction;
+  /**
+   * Unix timestamp (milliseconds) when the change occurred. May be null for events that occurred before history tracking was implemented.
+   */
+  timestamp: number | null;
+  /**
+   * Method used for the state change - 'totp': User set up TOTP authenticator - 'passkey': User registered a passkey - 'user_disabled': User disabled their own MFA - 'admin_removal': Admin removed MFA via backoffice - 'unknown': Method unknown (for pre-tracking events)
+   */
+  method: PayloadMethod;
+  /**
+   * ID of the actor who made the change - For user actions: the user's own ID - For admin actions: the admin's user ID
+   */
+  actorId: string;
+  /**
+   * Type of actor
+   */
+  actorType: ActorType;
+  /**
+   * Optional: Additional context or reason e.g., "Account recovery request - ticket #12345"
+   */
+  reason?: string | undefined;
+};
+
+/**
  * MFA configuration. When enabled, the user will be required to provide a second factor of authentication when logging in.
  */
 export type MfaConfiguration = {
@@ -3629,6 +3700,10 @@ export type MfaConfiguration = {
   enabledAt?: number | undefined;
   recoveryCodes: Array<string>;
   totp?: Totp | undefined;
+  /**
+   * History of MFA state changes (enabled/disabled events). Most recent events first.
+   */
+  history?: Array<PayloadHistory> | undefined;
 };
 
 export type NewOwner = {
@@ -19983,6 +20058,81 @@ export function totpFromJSON(
 }
 
 /** @internal */
+export const UserEventPayload72NewOwnerAction$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload72NewOwnerAction
+> = z.nativeEnum(UserEventPayload72NewOwnerAction);
+/** @internal */
+export const UserEventPayload72NewOwnerAction$outboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload72NewOwnerAction
+> = UserEventPayload72NewOwnerAction$inboundSchema;
+
+/** @internal */
+export const PayloadMethod$inboundSchema: z.ZodNativeEnum<
+  typeof PayloadMethod
+> = z.nativeEnum(PayloadMethod);
+/** @internal */
+export const PayloadMethod$outboundSchema: z.ZodNativeEnum<
+  typeof PayloadMethod
+> = PayloadMethod$inboundSchema;
+
+/** @internal */
+export const ActorType$inboundSchema: z.ZodNativeEnum<typeof ActorType> = z
+  .nativeEnum(ActorType);
+/** @internal */
+export const ActorType$outboundSchema: z.ZodNativeEnum<typeof ActorType> =
+  ActorType$inboundSchema;
+
+/** @internal */
+export const PayloadHistory$inboundSchema: z.ZodType<
+  PayloadHistory,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: UserEventPayload72NewOwnerAction$inboundSchema,
+  timestamp: types.nullable(types.number()),
+  method: PayloadMethod$inboundSchema,
+  actorId: types.string(),
+  actorType: ActorType$inboundSchema,
+  reason: types.optional(types.string()),
+});
+/** @internal */
+export type PayloadHistory$Outbound = {
+  action: string;
+  timestamp: number | null;
+  method: string;
+  actorId: string;
+  actorType: string;
+  reason?: string | undefined;
+};
+
+/** @internal */
+export const PayloadHistory$outboundSchema: z.ZodType<
+  PayloadHistory$Outbound,
+  z.ZodTypeDef,
+  PayloadHistory
+> = z.object({
+  action: UserEventPayload72NewOwnerAction$outboundSchema,
+  timestamp: z.nullable(z.number()),
+  method: PayloadMethod$outboundSchema,
+  actorId: z.string(),
+  actorType: ActorType$outboundSchema,
+  reason: z.string().optional(),
+});
+
+export function payloadHistoryToJSON(payloadHistory: PayloadHistory): string {
+  return JSON.stringify(PayloadHistory$outboundSchema.parse(payloadHistory));
+}
+export function payloadHistoryFromJSON(
+  jsonString: string,
+): SafeParseResult<PayloadHistory, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PayloadHistory$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PayloadHistory' from JSON`,
+  );
+}
+
+/** @internal */
 export const MfaConfiguration$inboundSchema: z.ZodType<
   MfaConfiguration,
   z.ZodTypeDef,
@@ -19992,6 +20142,7 @@ export const MfaConfiguration$inboundSchema: z.ZodType<
   enabledAt: types.optional(types.number()),
   recoveryCodes: z.array(types.string()),
   totp: types.optional(z.lazy(() => Totp$inboundSchema)),
+  history: types.optional(z.array(z.lazy(() => PayloadHistory$inboundSchema))),
 });
 /** @internal */
 export type MfaConfiguration$Outbound = {
@@ -19999,6 +20150,7 @@ export type MfaConfiguration$Outbound = {
   enabledAt?: number | undefined;
   recoveryCodes: Array<string>;
   totp?: Totp$Outbound | undefined;
+  history?: Array<PayloadHistory$Outbound> | undefined;
 };
 
 /** @internal */
@@ -20011,6 +20163,7 @@ export const MfaConfiguration$outboundSchema: z.ZodType<
   enabledAt: z.number().optional(),
   recoveryCodes: z.array(z.string()),
   totp: z.lazy(() => Totp$outboundSchema).optional(),
+  history: z.array(z.lazy(() => PayloadHistory$outboundSchema)).optional(),
 });
 
 export function mfaConfigurationToJSON(

@@ -6,7 +6,7 @@
 import { ResponseBodyConnectConfigurations } from "@vercel/sdk/models/getprojectsop.js";
 
 let value: ResponseBodyConnectConfigurations = {
-  envId: "production",
+  envId: "preview",
   connectConfigurationId: "<id>",
   passive: false,
   buildsEnabled: true,

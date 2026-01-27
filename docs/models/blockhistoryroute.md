@@ -3,23 +3,22 @@
 
 ## Supported Types
 
-### `models.UpdateProjectDataCacheRoute1`
+### `models.CreateProjectRoute1`
 
 ```typescript
-const value: models.UpdateProjectDataCacheRoute1 = {
+const value: models.CreateProjectRoute1 = {
   src: "<value>",
-  status: 379.06,
+  status: 7292.26,
 };
 ```
 
-### `models.UpdateProjectDataCacheRoute2`
+### `models.CreateProjectRoute2`
 
 ```typescript
-const value: models.UpdateProjectDataCacheRoute2 = {
+const value: models.CreateProjectRoute2 = {
   has: [
     {
-      type: "header",
-      key: "x-vercel-ip-country",
+      type: "host",
       value: {
         eq: "<value>",
       },

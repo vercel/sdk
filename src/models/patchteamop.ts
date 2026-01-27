@@ -219,6 +219,41 @@ export type PatchTeamDefaultExpirationSettings = {
   expirationErrored?: ExpirationErrored | undefined;
 };
 
+/**
+ * When enabled, deployment protection settings require stricter permissions (owner-only).
+ */
+export type PatchTeamStrictDeploymentProtectionSettings = {
+  /**
+   * Enable or disable strict deployment protection settings.
+   */
+  enabled: boolean;
+};
+
+/**
+ * The NSNB preference for the team.
+ */
+export const NsnbConfigPreference = {
+  AutoApproval: "auto-approval",
+  ManualApproval: "manual-approval",
+  Block: "block",
+} as const;
+/**
+ * The NSNB preference for the team.
+ */
+export type NsnbConfigPreference = ClosedEnum<typeof NsnbConfigPreference>;
+
+/**
+ * NSNB configuration for the team.
+ */
+export type NsnbConfig1 = {
+  /**
+   * The NSNB preference for the team.
+   */
+  preference: NsnbConfigPreference;
+};
+
+export type PatchTeamNsnbConfig = NsnbConfig1 | string;
+
 export type PatchTeamRequestBody = {
   /**
    * The hash value of an uploaded image.
@@ -277,6 +312,13 @@ export type PatchTeamRequestBody = {
     | PatchTeamDefaultDeploymentProtection
     | undefined;
   defaultExpirationSettings?: PatchTeamDefaultExpirationSettings | undefined;
+  /**
+   * When enabled, deployment protection settings require stricter permissions (owner-only).
+   */
+  strictDeploymentProtectionSettings?:
+    | PatchTeamStrictDeploymentProtectionSettings
+    | undefined;
+  nsnbConfig?: NsnbConfig1 | string | undefined;
 };
 
 export type PatchTeamRequest = {
@@ -699,6 +741,133 @@ export function patchTeamDefaultExpirationSettingsFromJSON(
 }
 
 /** @internal */
+export const PatchTeamStrictDeploymentProtectionSettings$inboundSchema:
+  z.ZodType<
+    PatchTeamStrictDeploymentProtectionSettings,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    enabled: types.boolean(),
+  });
+/** @internal */
+export type PatchTeamStrictDeploymentProtectionSettings$Outbound = {
+  enabled: boolean;
+};
+
+/** @internal */
+export const PatchTeamStrictDeploymentProtectionSettings$outboundSchema:
+  z.ZodType<
+    PatchTeamStrictDeploymentProtectionSettings$Outbound,
+    z.ZodTypeDef,
+    PatchTeamStrictDeploymentProtectionSettings
+  > = z.object({
+    enabled: z.boolean(),
+  });
+
+export function patchTeamStrictDeploymentProtectionSettingsToJSON(
+  patchTeamStrictDeploymentProtectionSettings:
+    PatchTeamStrictDeploymentProtectionSettings,
+): string {
+  return JSON.stringify(
+    PatchTeamStrictDeploymentProtectionSettings$outboundSchema.parse(
+      patchTeamStrictDeploymentProtectionSettings,
+    ),
+  );
+}
+export function patchTeamStrictDeploymentProtectionSettingsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  PatchTeamStrictDeploymentProtectionSettings,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PatchTeamStrictDeploymentProtectionSettings$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PatchTeamStrictDeploymentProtectionSettings' from JSON`,
+  );
+}
+
+/** @internal */
+export const NsnbConfigPreference$inboundSchema: z.ZodNativeEnum<
+  typeof NsnbConfigPreference
+> = z.nativeEnum(NsnbConfigPreference);
+/** @internal */
+export const NsnbConfigPreference$outboundSchema: z.ZodNativeEnum<
+  typeof NsnbConfigPreference
+> = NsnbConfigPreference$inboundSchema;
+
+/** @internal */
+export const NsnbConfig1$inboundSchema: z.ZodType<
+  NsnbConfig1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  preference: NsnbConfigPreference$inboundSchema,
+});
+/** @internal */
+export type NsnbConfig1$Outbound = {
+  preference: string;
+};
+
+/** @internal */
+export const NsnbConfig1$outboundSchema: z.ZodType<
+  NsnbConfig1$Outbound,
+  z.ZodTypeDef,
+  NsnbConfig1
+> = z.object({
+  preference: NsnbConfigPreference$outboundSchema,
+});
+
+export function nsnbConfig1ToJSON(nsnbConfig1: NsnbConfig1): string {
+  return JSON.stringify(NsnbConfig1$outboundSchema.parse(nsnbConfig1));
+}
+export function nsnbConfig1FromJSON(
+  jsonString: string,
+): SafeParseResult<NsnbConfig1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => NsnbConfig1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NsnbConfig1' from JSON`,
+  );
+}
+
+/** @internal */
+export const PatchTeamNsnbConfig$inboundSchema: z.ZodType<
+  PatchTeamNsnbConfig,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([z.lazy(() => NsnbConfig1$inboundSchema), types.string()]);
+/** @internal */
+export type PatchTeamNsnbConfig$Outbound = NsnbConfig1$Outbound | string;
+
+/** @internal */
+export const PatchTeamNsnbConfig$outboundSchema: z.ZodType<
+  PatchTeamNsnbConfig$Outbound,
+  z.ZodTypeDef,
+  PatchTeamNsnbConfig
+> = smartUnion([z.lazy(() => NsnbConfig1$outboundSchema), z.string()]);
+
+export function patchTeamNsnbConfigToJSON(
+  patchTeamNsnbConfig: PatchTeamNsnbConfig,
+): string {
+  return JSON.stringify(
+    PatchTeamNsnbConfig$outboundSchema.parse(patchTeamNsnbConfig),
+  );
+}
+export function patchTeamNsnbConfigFromJSON(
+  jsonString: string,
+): SafeParseResult<PatchTeamNsnbConfig, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PatchTeamNsnbConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchTeamNsnbConfig' from JSON`,
+  );
+}
+
+/** @internal */
 export const PatchTeamRequestBody$inboundSchema: z.ZodType<
   PatchTeamRequestBody,
   z.ZodTypeDef,
@@ -726,6 +895,12 @@ export const PatchTeamRequestBody$inboundSchema: z.ZodType<
   defaultExpirationSettings: types.optional(
     z.lazy(() => PatchTeamDefaultExpirationSettings$inboundSchema),
   ),
+  strictDeploymentProtectionSettings: types.optional(
+    z.lazy(() => PatchTeamStrictDeploymentProtectionSettings$inboundSchema),
+  ),
+  nsnbConfig: types.optional(
+    smartUnion([z.lazy(() => NsnbConfig1$inboundSchema), types.string()]),
+  ),
 });
 /** @internal */
 export type PatchTeamRequestBody$Outbound = {
@@ -749,6 +924,10 @@ export type PatchTeamRequestBody$Outbound = {
   defaultExpirationSettings?:
     | PatchTeamDefaultExpirationSettings$Outbound
     | undefined;
+  strictDeploymentProtectionSettings?:
+    | PatchTeamStrictDeploymentProtectionSettings$Outbound
+    | undefined;
+  nsnbConfig?: NsnbConfig1$Outbound | string | undefined;
 };
 
 /** @internal */
@@ -777,6 +956,11 @@ export const PatchTeamRequestBody$outboundSchema: z.ZodType<
   defaultExpirationSettings: z.lazy(() =>
     PatchTeamDefaultExpirationSettings$outboundSchema
   ).optional(),
+  strictDeploymentProtectionSettings: z.lazy(() =>
+    PatchTeamStrictDeploymentProtectionSettings$outboundSchema
+  ).optional(),
+  nsnbConfig: smartUnion([z.lazy(() => NsnbConfig1$outboundSchema), z.string()])
+    .optional(),
 });
 
 export function patchTeamRequestBodyToJSON(

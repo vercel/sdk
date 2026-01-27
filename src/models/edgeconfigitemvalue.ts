@@ -9,9 +9,12 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export type EdgeConfigItemValue = string | number | boolean | {
-  [k: string]: EdgeConfigItemValue | null;
-} | Array<EdgeConfigItemValue | null>;
+export type EdgeConfigItemValue =
+  | string
+  | number
+  | { [k: string]: EdgeConfigItemValue | null }
+  | Array<EdgeConfigItemValue | null>
+  | boolean;
 
 /** @internal */
 export const EdgeConfigItemValue$inboundSchema: z.ZodType<
@@ -21,14 +24,17 @@ export const EdgeConfigItemValue$inboundSchema: z.ZodType<
 > = smartUnion([
   types.string(),
   types.number(),
-  types.boolean(),
   z.record(types.nullable(z.lazy(() => EdgeConfigItemValue$inboundSchema))),
   z.array(types.nullable(z.lazy(() => EdgeConfigItemValue$inboundSchema))),
+  types.boolean(),
 ]);
 /** @internal */
-export type EdgeConfigItemValue$Outbound = string | number | boolean | {
-  [k: string]: EdgeConfigItemValue$Outbound | null;
-} | Array<EdgeConfigItemValue$Outbound | null>;
+export type EdgeConfigItemValue$Outbound =
+  | string
+  | number
+  | { [k: string]: EdgeConfigItemValue$Outbound | null }
+  | Array<EdgeConfigItemValue$Outbound | null>
+  | boolean;
 
 /** @internal */
 export const EdgeConfigItemValue$outboundSchema: z.ZodType<
@@ -38,9 +44,9 @@ export const EdgeConfigItemValue$outboundSchema: z.ZodType<
 > = smartUnion([
   z.string(),
   z.number(),
-  z.boolean(),
   z.record(z.nullable(z.lazy(() => EdgeConfigItemValue$outboundSchema))),
   z.array(z.nullable(z.lazy(() => EdgeConfigItemValue$outboundSchema))),
+  z.boolean(),
 ]);
 
 export function edgeConfigItemValueToJSON(

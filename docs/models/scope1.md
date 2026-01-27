@@ -13,8 +13,8 @@ let value: Scope1 = {
 
 ## Fields
 
-| Field                                         | Type                                          | Required                                      | Description                                   |
-| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
-| `userId`                                      | *string*                                      | :heavy_check_mark:                            | Specified user id for the scoped bypass.      |
-| `email`                                       | *string*                                      | :heavy_minus_sign:                            | Specified email for the scoped bypass.        |
-| `access`                                      | [models.Access](../models/access.md)          | :heavy_check_mark:                            | Invitation status for the user scoped bypass. |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `userId`                                       | *string*                                       | :heavy_check_mark:                             | Specified user id for the scoped bypass.       |
+| `email`                                        | *string*                                       | :heavy_minus_sign:                             | Specified email for the scoped bypass.         |
+| `access`                                       | [models.ScopeAccess](../models/scopeaccess.md) | :heavy_check_mark:                             | Invitation status for the user scoped bypass.  |

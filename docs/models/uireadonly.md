@@ -3,18 +3,18 @@
 
 ## Supported Types
 
+### `models.UiReadOnly1`
+
+```typescript
+const value: models.UiReadOnly1 = {
+  expr: "<value>",
+};
+```
+
 ### `boolean`
 
 ```typescript
 const value: boolean = true;
-```
-
-### `models.UiReadOnly2`
-
-```typescript
-const value: models.UiReadOnly2 = {
-  expr: "<value>",
-};
 ```
 
 ### `models.UiReadOnly3`

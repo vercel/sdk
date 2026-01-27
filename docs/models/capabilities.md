@@ -20,3 +20,4 @@ let value: Capabilities = {};
 | `secretsSync`           | *boolean*               | :heavy_minus_sign:      | N/A                     |
 | `secretRotation`        | *models.SecretRotation* | :heavy_minus_sign:      | N/A                     |
 | `projects`              | *boolean*               | :heavy_minus_sign:      | N/A                     |
+| `v0`                    | *boolean*               | :heavy_minus_sign:      | N/A                     |

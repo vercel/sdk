@@ -1,11 +1,9 @@
 # IssuerMode
 
-team: `https://oidc.vercel.com/[team_slug]` global: `https://oidc.vercel.com`
-
 ## Example Usage
 
 ```typescript
-import { IssuerMode } from "@vercel/sdk/models/createprojectop.js";
+import { IssuerMode } from "@vercel/sdk/models/userevent.js";
 
 let value: IssuerMode = "team";
 ```

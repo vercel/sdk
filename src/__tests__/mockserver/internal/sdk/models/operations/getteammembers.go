@@ -207,8 +207,8 @@ type GetTeamMembersOrigin string
 const (
 	GetTeamMembersOriginTeams             GetTeamMembersOrigin = "teams"
 	GetTeamMembersOriginLink              GetTeamMembersOrigin = "link"
-	GetTeamMembersOriginMail              GetTeamMembersOrigin = "mail"
 	GetTeamMembersOriginImport            GetTeamMembersOrigin = "import"
+	GetTeamMembersOriginMail              GetTeamMembersOrigin = "mail"
 	GetTeamMembersOriginGithub            GetTeamMembersOrigin = "github"
 	GetTeamMembersOriginGitlab            GetTeamMembersOrigin = "gitlab"
 	GetTeamMembersOriginBitbucket         GetTeamMembersOrigin = "bitbucket"
@@ -216,6 +216,7 @@ const (
 	GetTeamMembersOriginDsync             GetTeamMembersOrigin = "dsync"
 	GetTeamMembersOriginFeedback          GetTeamMembersOrigin = "feedback"
 	GetTeamMembersOriginOrganizationTeams GetTeamMembersOrigin = "organization-teams"
+	GetTeamMembersOriginNsnbAutoApprove   GetTeamMembersOrigin = "nsnb-auto-approve"
 )
 
 func (e GetTeamMembersOrigin) ToPointer() *GetTeamMembersOrigin {
@@ -231,9 +232,9 @@ func (e *GetTeamMembersOrigin) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "link":
 		fallthrough
-	case "mail":
-		fallthrough
 	case "import":
+		fallthrough
+	case "mail":
 		fallthrough
 	case "github":
 		fallthrough
@@ -248,6 +249,8 @@ func (e *GetTeamMembersOrigin) UnmarshalJSON(data []byte) error {
 	case "feedback":
 		fallthrough
 	case "organization-teams":
+		fallthrough
+	case "nsnb-auto-approve":
 		*e = GetTeamMembersOrigin(v)
 		return nil
 	default:

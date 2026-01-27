@@ -968,6 +968,89 @@ func (o *IPBucket) GetSupportUntil() *float64 {
 	return o.SupportUntil
 }
 
+// StrictDeploymentProtectionSettings - When enabled, deployment protection settings require stricter permissions (owner-only).
+type StrictDeploymentProtectionSettings struct {
+	Enabled   bool    `json:"enabled"`
+	UpdatedAt float64 `json:"updatedAt"`
+}
+
+func (s StrictDeploymentProtectionSettings) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *StrictDeploymentProtectionSettings) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"enabled", "updatedAt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *StrictDeploymentProtectionSettings) GetEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.Enabled
+}
+
+func (o *StrictDeploymentProtectionSettings) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+type Preference string
+
+const (
+	PreferenceAutoApproval   Preference = "auto-approval"
+	PreferenceManualApproval Preference = "manual-approval"
+	PreferenceBlock          Preference = "block"
+)
+
+func (e Preference) ToPointer() *Preference {
+	return &e
+}
+func (e *Preference) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto-approval":
+		fallthrough
+	case "manual-approval":
+		fallthrough
+	case "block":
+		*e = Preference(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for Preference: %v", v)
+	}
+}
+
+// NsnbConfig - NSNB configuration for the team.
+type NsnbConfig struct {
+	Preference Preference `json:"preference"`
+}
+
+func (n NsnbConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(n, "", false)
+}
+
+func (n *NsnbConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &n, "", false, []string{"preference"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *NsnbConfig) GetPreference() Preference {
+	if o == nil {
+		return Preference("")
+	}
+	return o.Preference
+}
+
 type TeamEntitlement struct {
 	Entitlement string `json:"entitlement"`
 }
@@ -1139,6 +1222,7 @@ const (
 	TeamOrigin2Dsync             TeamOrigin2 = "dsync"
 	TeamOrigin2Feedback          TeamOrigin2 = "feedback"
 	TeamOrigin2OrganizationTeams TeamOrigin2 = "organization-teams"
+	TeamOrigin2NsnbAutoApprove   TeamOrigin2 = "nsnb-auto-approve"
 )
 
 func (e TeamOrigin2) ToPointer() *TeamOrigin2 {
@@ -1171,6 +1255,8 @@ func (e *TeamOrigin2) UnmarshalJSON(data []byte) error {
 	case "feedback":
 		fallthrough
 	case "organization-teams":
+		fallthrough
+	case "nsnb-auto-approve":
 		*e = TeamOrigin2(v)
 		return nil
 	default:
@@ -1488,6 +1574,10 @@ type Team struct {
 	// Indicates if IP addresses should be accessible in log drains
 	HideIPAddressesInLogDrains *bool      `json:"hideIpAddressesInLogDrains,omitempty"`
 	IPBuckets                  []IPBucket `json:"ipBuckets,omitempty"`
+	// When enabled, deployment protection settings require stricter permissions (owner-only).
+	StrictDeploymentProtectionSettings *StrictDeploymentProtectionSettings `json:"strictDeploymentProtectionSettings,omitempty"`
+	// NSNB configuration for the team.
+	NsnbConfig *NsnbConfig `json:"nsnbConfig,omitempty"`
 	// The Team's unique identifier.
 	ID string `json:"id"`
 	// The Team's slug, which is unique across the Vercel platform.
@@ -1666,6 +1756,20 @@ func (o *Team) GetIPBuckets() []IPBucket {
 		return nil
 	}
 	return o.IPBuckets
+}
+
+func (o *Team) GetStrictDeploymentProtectionSettings() *StrictDeploymentProtectionSettings {
+	if o == nil {
+		return nil
+	}
+	return o.StrictDeploymentProtectionSettings
+}
+
+func (o *Team) GetNsnbConfig() *NsnbConfig {
+	if o == nil {
+		return nil
+	}
+	return o.NsnbConfig
 }
 
 func (o *Team) GetID() string {

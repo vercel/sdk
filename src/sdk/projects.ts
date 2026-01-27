@@ -23,7 +23,6 @@ import { projectsRemoveProjectEnv } from "../funcs/projectsRemoveProjectEnv.js";
 import { projectsRequestPromote } from "../funcs/projectsRequestPromote.js";
 import { projectsUnpauseProject } from "../funcs/projectsUnpauseProject.js";
 import { projectsUpdateProject } from "../funcs/projectsUpdateProject.js";
-import { projectsUpdateProjectDataCache } from "../funcs/projectsUpdateProjectDataCache.js";
 import { projectsUpdateProjectDomain } from "../funcs/projectsUpdateProjectDomain.js";
 import { projectsUpdateProjectProtectionBypass } from "../funcs/projectsUpdateProjectProtectionBypass.js";
 import { projectsVerifyProjectDomain } from "../funcs/projectsVerifyProjectDomain.js";
@@ -97,10 +96,6 @@ import {
 import { RequestPromoteRequest } from "../models/requestpromoteop.js";
 import { UnpauseProjectRequest } from "../models/unpauseprojectop.js";
 import {
-  UpdateProjectDataCacheRequest,
-  UpdateProjectDataCacheResponseBody,
-} from "../models/updateprojectdatacacheop.js";
-import {
   UpdateProjectDomainRequest,
   UpdateProjectDomainResponseBody,
 } from "../models/updateprojectdomainop.js";
@@ -119,23 +114,6 @@ import {
 import { unwrapAsync } from "../types/fp.js";
 
 export class Projects extends ClientSDK {
-  /**
-   * Update the data cache feature
-   *
-   * @remarks
-   * Update the data cache feature on a project.
-   */
-  async updateProjectDataCache(
-    request: UpdateProjectDataCacheRequest,
-    options?: RequestOptions,
-  ): Promise<UpdateProjectDataCacheResponseBody> {
-    return unwrapAsync(projectsUpdateProjectDataCache(
-      this,
-      request,
-      options,
-    ));
-  }
-
   /**
    * Retrieve a list of projects
    *

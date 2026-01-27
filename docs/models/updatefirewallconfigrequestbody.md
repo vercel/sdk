@@ -134,7 +134,7 @@ const value: models.RequestBody11 = {
 ```typescript
 const value: models.RequestBody12 = {
   action: "<value>",
-  id: "bot_protection",
+  id: "vercel_ruleset",
   value: {},
 };
 ```

@@ -8,18 +8,20 @@ The payload of the event, if requested.
 import { OneHundredAndThirteen } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndThirteen = {
-  scalingRules: {},
-  min: 3940.4,
-  max: 3268.08,
-  url: "https://married-pressure.org",
+  projectId: "<id>",
+  projectName: "<value>",
+  previous: {},
+  next: {
+    issuerMode: "team",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `scalingRules`                                                   | Record<string, [models.ScalingRules](../models/scalingrules.md)> | :heavy_check_mark:                                               | N/A                                                              |
-| `min`                                                            | *number*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `max`                                                            | *number*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `url`                                                            | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| Field                                                  | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `projectId`                                            | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| `projectName`                                          | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| `previous`                                             | [models.PayloadPrevious](../models/payloadprevious.md) | :heavy_check_mark:                                     | N/A                                                    |
+| `next`                                                 | [models.PayloadNext](../models/payloadnext.md)         | :heavy_check_mark:                                     | N/A                                                    |

@@ -3,10 +3,10 @@
 
 ## Supported Types
 
-### `models.Two1`
+### `models.CreateProjectEnv21`
 
 ```typescript
-const value: models.Two1 = {
+const value: models.CreateProjectEnv21 = {
   key: "API_URL",
   value: "https://api.vercel.com",
   type: "plain",
@@ -21,10 +21,10 @@ const value: models.Two1 = {
 };
 ```
 
-### `models.Two2`
+### `models.CreateProjectEnv22`
 
 ```typescript
-const value: models.Two2 = {
+const value: models.CreateProjectEnv22 = {
   key: "API_URL",
   value: "https://api.vercel.com",
   type: "plain",

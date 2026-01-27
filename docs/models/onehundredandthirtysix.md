@@ -8,14 +8,16 @@ The payload of the event, if requested.
 import { OneHundredAndThirtySix } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndThirtySix = {
-  email: "Kameron.Hartmann-Maggio@gmail.com",
-  prevEmail: "<value>",
+  projectId: "<id>",
+  projectName: "<value>",
+  gitForkProtection: true,
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `email`            | *string*           | :heavy_check_mark: | N/A                |
-| `prevEmail`        | *string*           | :heavy_check_mark: | N/A                |
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `projectId`         | *string*            | :heavy_check_mark:  | N/A                 |
+| `projectName`       | *string*            | :heavy_check_mark:  | N/A                 |
+| `gitForkProtection` | *boolean*           | :heavy_check_mark:  | N/A                 |

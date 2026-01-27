@@ -25,7 +25,7 @@ let value: Alias = {
     userId: "<id>",
   },
   domain: "ordinary-tray.org",
-  environment: "production",
+  environment: "preview",
   target: "PREVIEW",
 };
 ```
@@ -39,7 +39,7 @@ let value: Alias = {
 | `createdAt`                                                                        | *number*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
 | `deployment`                                                                       | [models.ResponseBodyDeployment](../models/responsebodydeployment.md)               | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `domain`                                                                           | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `environment`                                                                      | [models.Environment](../models/environment.md)                                     | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `environment`                                                                      | [models.ResponseBodyEnvironment](../models/responsebodyenvironment.md)             | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `gitBranch`                                                                        | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
 | `redirect`                                                                         | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
 | `redirectStatusCode`                                                               | *number*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |

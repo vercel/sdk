@@ -74,8 +74,8 @@ export type RequestAccessToTeamRequest = {
 export const RequestAccessToTeamTeamsOrigin = {
   Teams: "teams",
   Link: "link",
-  Mail: "mail",
   Import: "import",
+  Mail: "mail",
   Github: "github",
   Gitlab: "gitlab",
   Bitbucket: "bitbucket",
@@ -83,6 +83,7 @@ export const RequestAccessToTeamTeamsOrigin = {
   Dsync: "dsync",
   Feedback: "feedback",
   OrganizationTeams: "organization-teams",
+  NsnbAutoApprove: "nsnb-auto-approve",
 } as const;
 export type RequestAccessToTeamTeamsOrigin = ClosedEnum<
   typeof RequestAccessToTeamTeamsOrigin

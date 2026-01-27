@@ -308,6 +308,28 @@ export type IpBuckets = {
   supportUntil?: number | undefined;
 };
 
+/**
+ * When enabled, deployment protection settings require stricter permissions (owner-only).
+ */
+export type StrictDeploymentProtectionSettings = {
+  enabled: boolean;
+  updatedAt: number;
+};
+
+export const Preference = {
+  AutoApproval: "auto-approval",
+  ManualApproval: "manual-approval",
+  Block: "block",
+} as const;
+export type Preference = ClosedEnum<typeof Preference>;
+
+/**
+ * NSNB configuration for the team.
+ */
+export type NsnbConfig = {
+  preference: Preference;
+};
+
 export type Entitlements = {
   entitlement: string;
 };
@@ -365,6 +387,7 @@ export const Origin = {
   Dsync: "dsync",
   Feedback: "feedback",
   OrganizationTeams: "organization-teams",
+  NsnbAutoApprove: "nsnb-auto-approve",
 } as const;
 export type Origin = ClosedEnum<typeof Origin>;
 
@@ -484,6 +507,16 @@ export type Team = {
    */
   hideIpAddressesInLogDrains?: boolean | null | undefined;
   ipBuckets?: Array<IpBuckets> | undefined;
+  /**
+   * When enabled, deployment protection settings require stricter permissions (owner-only).
+   */
+  strictDeploymentProtectionSettings?:
+    | StrictDeploymentProtectionSettings
+    | undefined;
+  /**
+   * NSNB configuration for the team.
+   */
+  nsnbConfig?: NsnbConfig | undefined;
   /**
    * The Team's unique identifier.
    */
@@ -1223,6 +1256,93 @@ export function ipBucketsFromJSON(
 }
 
 /** @internal */
+export const StrictDeploymentProtectionSettings$inboundSchema: z.ZodType<
+  StrictDeploymentProtectionSettings,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabled: types.boolean(),
+  updatedAt: types.number(),
+});
+/** @internal */
+export type StrictDeploymentProtectionSettings$Outbound = {
+  enabled: boolean;
+  updatedAt: number;
+};
+
+/** @internal */
+export const StrictDeploymentProtectionSettings$outboundSchema: z.ZodType<
+  StrictDeploymentProtectionSettings$Outbound,
+  z.ZodTypeDef,
+  StrictDeploymentProtectionSettings
+> = z.object({
+  enabled: z.boolean(),
+  updatedAt: z.number(),
+});
+
+export function strictDeploymentProtectionSettingsToJSON(
+  strictDeploymentProtectionSettings: StrictDeploymentProtectionSettings,
+): string {
+  return JSON.stringify(
+    StrictDeploymentProtectionSettings$outboundSchema.parse(
+      strictDeploymentProtectionSettings,
+    ),
+  );
+}
+export function strictDeploymentProtectionSettingsFromJSON(
+  jsonString: string,
+): SafeParseResult<StrictDeploymentProtectionSettings, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      StrictDeploymentProtectionSettings$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StrictDeploymentProtectionSettings' from JSON`,
+  );
+}
+
+/** @internal */
+export const Preference$inboundSchema: z.ZodNativeEnum<typeof Preference> = z
+  .nativeEnum(Preference);
+/** @internal */
+export const Preference$outboundSchema: z.ZodNativeEnum<typeof Preference> =
+  Preference$inboundSchema;
+
+/** @internal */
+export const NsnbConfig$inboundSchema: z.ZodType<
+  NsnbConfig,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  preference: Preference$inboundSchema,
+});
+/** @internal */
+export type NsnbConfig$Outbound = {
+  preference: string;
+};
+
+/** @internal */
+export const NsnbConfig$outboundSchema: z.ZodType<
+  NsnbConfig$Outbound,
+  z.ZodTypeDef,
+  NsnbConfig
+> = z.object({
+  preference: Preference$outboundSchema,
+});
+
+export function nsnbConfigToJSON(nsnbConfig: NsnbConfig): string {
+  return JSON.stringify(NsnbConfig$outboundSchema.parse(nsnbConfig));
+}
+export function nsnbConfigFromJSON(
+  jsonString: string,
+): SafeParseResult<NsnbConfig, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => NsnbConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NsnbConfig' from JSON`,
+  );
+}
+
+/** @internal */
 export const Entitlements$inboundSchema: z.ZodType<
   Entitlements,
   z.ZodTypeDef,
@@ -1492,6 +1612,10 @@ export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> =
       hideIpAddresses: z.nullable(types.boolean()).optional(),
       hideIpAddressesInLogDrains: z.nullable(types.boolean()).optional(),
       ipBuckets: types.optional(z.array(z.lazy(() => IpBuckets$inboundSchema))),
+      strictDeploymentProtectionSettings: types.optional(
+        z.lazy(() => StrictDeploymentProtectionSettings$inboundSchema),
+      ),
+      nsnbConfig: types.optional(z.lazy(() => NsnbConfig$inboundSchema)),
       id: types.string(),
       slug: types.string(),
       name: types.nullable(types.string()),
@@ -1528,6 +1652,10 @@ export type Team$Outbound = {
   hideIpAddresses?: boolean | null | undefined;
   hideIpAddressesInLogDrains?: boolean | null | undefined;
   ipBuckets?: Array<IpBuckets$Outbound> | undefined;
+  strictDeploymentProtectionSettings?:
+    | StrictDeploymentProtectionSettings$Outbound
+    | undefined;
+  nsnbConfig?: NsnbConfig$Outbound | undefined;
   id: string;
   slug: string;
   name: string | null;
@@ -1571,6 +1699,10 @@ export const Team$outboundSchema: z.ZodType<Team$Outbound, z.ZodTypeDef, Team> =
     hideIpAddresses: z.nullable(z.boolean()).optional(),
     hideIpAddressesInLogDrains: z.nullable(z.boolean()).optional(),
     ipBuckets: z.array(z.lazy(() => IpBuckets$outboundSchema)).optional(),
+    strictDeploymentProtectionSettings: z.lazy(() =>
+      StrictDeploymentProtectionSettings$outboundSchema
+    ).optional(),
+    nsnbConfig: z.lazy(() => NsnbConfig$outboundSchema).optional(),
     id: z.string(),
     slug: z.string(),
     name: z.nullable(z.string()),

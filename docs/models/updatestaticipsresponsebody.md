@@ -6,7 +6,7 @@
 import { UpdateStaticIpsResponseBody } from "@vercel/sdk/models/updatestaticipsop.js";
 
 let value: UpdateStaticIpsResponseBody = {
-  envId: "production",
+  envId: "preview",
   connectConfigurationId: "<id>",
   passive: true,
   buildsEnabled: false,

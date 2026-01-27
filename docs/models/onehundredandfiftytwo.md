@@ -8,18 +8,27 @@ The payload of the event, if requested.
 import { OneHundredAndFiftyTwo } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndFiftyTwo = {
-  projectName: "<value>",
-  tags: [
-    "<value 1>",
-    "<value 2>",
-  ],
+  budget: {
+    type: "fixed",
+    fixedBudget: 7028.89,
+    previousSpend: [
+      6331.4,
+      113.93,
+      4919.81,
+    ],
+    notifiedAt: [
+      6450.74,
+    ],
+    createdAt: 6413.68,
+    isActive: true,
+    teamId: "<id>",
+    id: "<id>",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `tags`             | *string*[]         | :heavy_check_mark: | N/A                |
-| `target`           | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `budget`                                                                | [models.PayloadBudget](../models/payloadbudget.md)                      | :heavy_check_mark:                                                      | Represents a budget for tracking and notifying teams on their spending. |

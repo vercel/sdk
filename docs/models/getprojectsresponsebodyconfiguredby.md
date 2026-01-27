@@ -11,5 +11,5 @@ let value: GetProjectsResponseBodyConfiguredBy = "http";
 ## Values
 
 ```typescript
-"CNAME" | "A" | "http" | "dns-01"
+"A" | "CNAME" | "http" | "dns-01"
 ```

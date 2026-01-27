@@ -3,20 +3,20 @@
 
 ## Supported Types
 
+### `models.GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts1`
+
+```typescript
+const value:
+  models.GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts1 =
+    {
+      expr: "<value>",
+    };
+```
+
 ### `boolean`
 
 ```typescript
 const value: boolean = true;
-```
-
-### `models.GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts2`
-
-```typescript
-const value:
-  models.GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts2 =
-    {
-      expr: "<value>",
-    };
 ```
 
 ### `models.GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSONResponseBodyProducts3`

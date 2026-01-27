@@ -3,10 +3,10 @@
 
 ## Supported Types
 
-### `models.CreateProjectTrustedIps1`
+### `models.TrustedIps1`
 
 ```typescript
-const value: models.CreateProjectTrustedIps1 = {
+const value: models.TrustedIps1 = {
   deploymentType: "prod_deployment_urls_and_all_previews",
   addresses: [
     {
@@ -17,11 +17,11 @@ const value: models.CreateProjectTrustedIps1 = {
 };
 ```
 
-### `models.CreateProjectTrustedIps2`
+### `models.TrustedIps2`
 
 ```typescript
-const value: models.CreateProjectTrustedIps2 = {
-  deploymentType: "production",
+const value: models.TrustedIps2 = {
+  deploymentType: "all",
 };
 ```
 

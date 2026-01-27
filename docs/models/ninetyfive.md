@@ -8,30 +8,16 @@ The payload of the event, if requested.
 import { NinetyFive } from "@vercel/sdk/models/userevent.js";
 
 let value: NinetyFive = {
-  team: {
-    id: "<id>",
-    name: "<value>",
-  },
-  project: {
-    id: "<id>",
-    oldConnectConfigurations: [
-      {
-        envId: "<id>",
-        connectConfigurationId: "<id>",
-        passive: false,
-        buildsEnabled: true,
-        createdAt: 9005.75,
-        updatedAt: 8968.35,
-      },
-    ],
-    newConnectConfigurations: [],
-  },
+  projectId: "<id>",
+  projectName: "<value>",
+  onCommit: false,
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `team`                                                                     | [models.UserEventPayload95Team](../models/usereventpayload95team.md)       | :heavy_check_mark:                                                         | N/A                                                                        |
-| `project`                                                                  | [models.UserEventPayload95Project](../models/usereventpayload95project.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `onCommit`         | *boolean*          | :heavy_check_mark: | N/A                |

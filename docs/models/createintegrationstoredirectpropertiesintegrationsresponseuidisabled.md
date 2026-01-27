@@ -3,19 +3,19 @@
 
 ## Supported Types
 
+### `models.CreateIntegrationStoreDirectUiDisabledIntegrationsResponse1`
+
+```typescript
+const value:
+  models.CreateIntegrationStoreDirectUiDisabledIntegrationsResponse1 = {
+    expr: "<value>",
+  };
+```
+
 ### `boolean`
 
 ```typescript
 const value: boolean = true;
-```
-
-### `models.CreateIntegrationStoreDirectUiDisabledIntegrationsResponse2`
-
-```typescript
-const value:
-  models.CreateIntegrationStoreDirectUiDisabledIntegrationsResponse2 = {
-    expr: "<value>",
-  };
 ```
 
 ### `models.CreateIntegrationStoreDirectUiDisabledIntegrationsResponse3`

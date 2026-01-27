@@ -8,11 +8,11 @@ The type of environment (production, preview, or development)
 import { GetProjectsResponseBodyProjectsResponse200ApplicationJSONType } from "@vercel/sdk/models/getprojectsop.js";
 
 let value: GetProjectsResponseBodyProjectsResponse200ApplicationJSONType =
-  "preview";
+  "production";
 ```
 
 ## Values
 
 ```typescript
-"preview" | "production" | "development"
+"production" | "preview" | "development"
 ```

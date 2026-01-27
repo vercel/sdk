@@ -163,6 +163,9 @@ import { tool$marketplaceGetIntegrationResource } from "./tools/marketplaceGetIn
 import { tool$marketplaceGetIntegrationResources } from "./tools/marketplaceGetIntegrationResources.js";
 import { tool$marketplaceGetInvoice } from "./tools/marketplaceGetInvoice.js";
 import { tool$marketplaceGetMember } from "./tools/marketplaceGetMember.js";
+import {
+  tool$marketplaceGetV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig,
+} from "./tools/marketplaceGetV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig.js";
 import { tool$marketplaceImportResource } from "./tools/marketplaceImportResource.js";
 import { tool$marketplaceSubmitBillingData } from "./tools/marketplaceSubmitBillingData.js";
 import { tool$marketplaceSubmitInvoice } from "./tools/marketplaceSubmitInvoice.js";
@@ -198,7 +201,6 @@ import { tool$projectsRemoveProjectEnv } from "./tools/projectsRemoveProjectEnv.
 import { tool$projectsRequestPromote } from "./tools/projectsRequestPromote.js";
 import { tool$projectsUnpauseProject } from "./tools/projectsUnpauseProject.js";
 import { tool$projectsUpdateProject } from "./tools/projectsUpdateProject.js";
-import { tool$projectsUpdateProjectDataCache } from "./tools/projectsUpdateProjectDataCache.js";
 import { tool$projectsUpdateProjectDomain } from "./tools/projectsUpdateProjectDomain.js";
 import { tool$projectsUpdateProjectProtectionBypass } from "./tools/projectsUpdateProjectProtectionBypass.js";
 import { tool$projectsVerifyProjectDomain } from "./tools/projectsVerifyProjectDomain.js";
@@ -250,7 +252,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.18.7",
+    version: "1.18.8",
   });
 
   const client = new VercelCore({
@@ -315,31 +317,6 @@ export function createMCPServer(deps: {
   tool(tool$connectUpdateNetwork);
   tool(tool$connectReadNetwork);
   tool(tool$connectUpdateStaticIps);
-  tool(tool$projectsUpdateProjectDataCache);
-  tool(tool$projectsGetProjects);
-  tool(tool$projectsCreateProject);
-  tool(tool$projectsUpdateProject);
-  tool(tool$projectsDeleteProject);
-  tool(tool$projectsGetProjectDomains);
-  tool(tool$projectsGetProjectDomain);
-  tool(tool$projectsUpdateProjectDomain);
-  tool(tool$projectsRemoveProjectDomain);
-  tool(tool$projectsAddProjectDomain);
-  tool(tool$projectsMoveProjectDomain);
-  tool(tool$projectsVerifyProjectDomain);
-  tool(tool$projectsFilterProjectEnvs);
-  tool(tool$projectsCreateProjectEnv);
-  tool(tool$projectsGetProjectEnv);
-  tool(tool$projectsRemoveProjectEnv);
-  tool(tool$projectsEditProjectEnv);
-  tool(tool$projectsBatchRemoveProjectEnv);
-  tool(tool$projectsCreateProjectTransferRequest);
-  tool(tool$projectsAcceptProjectTransferRequest);
-  tool(tool$projectsUpdateProjectProtectionBypass);
-  tool(tool$projectsRequestPromote);
-  tool(tool$projectsListPromoteAliases);
-  tool(tool$projectsPauseProject);
-  tool(tool$projectsUnpauseProject);
   tool(tool$deploymentsGetDeploymentEvents);
   tool(tool$deploymentsUpdateIntegrationDeploymentAction);
   tool(tool$deploymentsGetDeployment);
@@ -453,6 +430,9 @@ export function createMCPServer(deps: {
   tool(tool$marketplaceUpdateInstallationIntegrationConfiguration);
   tool(tool$marketplaceDeleteInstallationIntegrationConfiguration);
   tool(tool$marketplaceCreateInstallationIntegrationEdgeConfig);
+  tool(
+    tool$marketplaceGetV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig,
+  );
   tool(tool$marketplaceUpdateInstallationIntegrationEdgeConfig);
   tool(tool$authenticationListAuthTokens);
   tool(tool$authenticationCreateAuthToken);
@@ -462,6 +442,30 @@ export function createMCPServer(deps: {
   tool(tool$projectMembersGetProjectMembers);
   tool(tool$projectMembersAddProjectMember);
   tool(tool$projectMembersRemoveProjectMember);
+  tool(tool$projectsGetProjects);
+  tool(tool$projectsCreateProject);
+  tool(tool$projectsUpdateProject);
+  tool(tool$projectsDeleteProject);
+  tool(tool$projectsGetProjectDomains);
+  tool(tool$projectsGetProjectDomain);
+  tool(tool$projectsUpdateProjectDomain);
+  tool(tool$projectsRemoveProjectDomain);
+  tool(tool$projectsAddProjectDomain);
+  tool(tool$projectsMoveProjectDomain);
+  tool(tool$projectsVerifyProjectDomain);
+  tool(tool$projectsFilterProjectEnvs);
+  tool(tool$projectsCreateProjectEnv);
+  tool(tool$projectsGetProjectEnv);
+  tool(tool$projectsRemoveProjectEnv);
+  tool(tool$projectsEditProjectEnv);
+  tool(tool$projectsBatchRemoveProjectEnv);
+  tool(tool$projectsCreateProjectTransferRequest);
+  tool(tool$projectsAcceptProjectTransferRequest);
+  tool(tool$projectsUpdateProjectProtectionBypass);
+  tool(tool$projectsRequestPromote);
+  tool(tool$projectsListPromoteAliases);
+  tool(tool$projectsPauseProject);
+  tool(tool$projectsUnpauseProject);
   tool(tool$rollingReleaseGetRollingReleaseBillingStatus);
   tool(tool$rollingReleaseGetRollingReleaseConfig);
   tool(tool$rollingReleaseDeleteRollingReleaseConfig);

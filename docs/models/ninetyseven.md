@@ -9,6 +9,8 @@ import { NinetySeven } from "@vercel/sdk/models/userevent.js";
 
 let value: NinetySeven = {
   projectId: "<id>",
+  projectName: "<value>",
+  createDeployments: "enabled",
 };
 ```
 
@@ -17,4 +19,5 @@ let value: NinetySeven = {
 | Field                                                      | Type                                                       | Required                                                   | Description                                                |
 | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
 | `projectId`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `reasonCode`                                               | [models.PayloadReasonCode](../models/payloadreasoncode.md) | :heavy_minus_sign:                                         | N/A                                                        |
+| `projectName`                                              | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| `createDeployments`                                        | [models.CreateDeployments](../models/createdeployments.md) | :heavy_check_mark:                                         | N/A                                                        |

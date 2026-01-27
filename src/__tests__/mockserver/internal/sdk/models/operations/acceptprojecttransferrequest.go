@@ -159,8 +159,8 @@ func (a *AcceptProjectTransferRequestResponseBody2) UnmarshalJSON(data []byte) e
 type AcceptProjectTransferRequestStatus string
 
 const (
-	AcceptProjectTransferRequestStatusFulfilled AcceptProjectTransferRequestStatus = "fulfilled"
 	AcceptProjectTransferRequestStatusErrored   AcceptProjectTransferRequestStatus = "errored"
+	AcceptProjectTransferRequestStatusFulfilled AcceptProjectTransferRequestStatus = "fulfilled"
 )
 
 func (e AcceptProjectTransferRequestStatus) ToPointer() *AcceptProjectTransferRequestStatus {
@@ -172,9 +172,9 @@ func (e *AcceptProjectTransferRequestStatus) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "fulfilled":
-		fallthrough
 	case "errored":
+		fallthrough
+	case "fulfilled":
 		*e = AcceptProjectTransferRequestStatus(v)
 		return nil
 	default:

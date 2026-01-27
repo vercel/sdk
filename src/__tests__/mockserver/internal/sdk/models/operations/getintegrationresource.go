@@ -182,17 +182,17 @@ type GetIntegrationResourceMetadataType string
 const (
 	GetIntegrationResourceMetadataTypeStr           GetIntegrationResourceMetadataType = "str"
 	GetIntegrationResourceMetadataTypeNumber        GetIntegrationResourceMetadataType = "number"
-	GetIntegrationResourceMetadataTypeBoolean       GetIntegrationResourceMetadataType = "boolean"
 	GetIntegrationResourceMetadataTypeArrayOfStr    GetIntegrationResourceMetadataType = "arrayOfStr"
 	GetIntegrationResourceMetadataTypeArrayOfNumber GetIntegrationResourceMetadataType = "arrayOfNumber"
+	GetIntegrationResourceMetadataTypeBoolean       GetIntegrationResourceMetadataType = "boolean"
 )
 
 type GetIntegrationResourceMetadata struct {
 	Str           *string   `queryParam:"inline"`
 	Number        *float64  `queryParam:"inline"`
-	Boolean       *bool     `queryParam:"inline"`
 	ArrayOfStr    []string  `queryParam:"inline"`
 	ArrayOfNumber []float64 `queryParam:"inline"`
+	Boolean       *bool     `queryParam:"inline"`
 
 	Type GetIntegrationResourceMetadataType
 }
@@ -215,15 +215,6 @@ func CreateGetIntegrationResourceMetadataNumber(number float64) GetIntegrationRe
 	}
 }
 
-func CreateGetIntegrationResourceMetadataBoolean(boolean bool) GetIntegrationResourceMetadata {
-	typ := GetIntegrationResourceMetadataTypeBoolean
-
-	return GetIntegrationResourceMetadata{
-		Boolean: &boolean,
-		Type:    typ,
-	}
-}
-
 func CreateGetIntegrationResourceMetadataArrayOfStr(arrayOfStr []string) GetIntegrationResourceMetadata {
 	typ := GetIntegrationResourceMetadataTypeArrayOfStr
 
@@ -239,6 +230,15 @@ func CreateGetIntegrationResourceMetadataArrayOfNumber(arrayOfNumber []float64) 
 	return GetIntegrationResourceMetadata{
 		ArrayOfNumber: arrayOfNumber,
 		Type:          typ,
+	}
+}
+
+func CreateGetIntegrationResourceMetadataBoolean(boolean bool) GetIntegrationResourceMetadata {
+	typ := GetIntegrationResourceMetadataTypeBoolean
+
+	return GetIntegrationResourceMetadata{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -258,13 +258,6 @@ func (u *GetIntegrationResourceMetadata) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
-		u.Boolean = &boolean
-		u.Type = GetIntegrationResourceMetadataTypeBoolean
-		return nil
-	}
-
 	var arrayOfStr []string = []string{}
 	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
 		u.ArrayOfStr = arrayOfStr
@@ -276,6 +269,13 @@ func (u *GetIntegrationResourceMetadata) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &arrayOfNumber, "", true, nil); err == nil {
 		u.ArrayOfNumber = arrayOfNumber
 		u.Type = GetIntegrationResourceMetadataTypeArrayOfNumber
+		return nil
+	}
+
+	var boolean bool = false
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
+		u.Boolean = &boolean
+		u.Type = GetIntegrationResourceMetadataTypeBoolean
 		return nil
 	}
 
@@ -291,16 +291,16 @@ func (u GetIntegrationResourceMetadata) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.Number, "", true)
 	}
 
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.ArrayOfStr != nil {
 		return utils.MarshalJSON(u.ArrayOfStr, "", true)
 	}
 
 	if u.ArrayOfNumber != nil {
 		return utils.MarshalJSON(u.ArrayOfNumber, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type GetIntegrationResourceMetadata: all fields are null")

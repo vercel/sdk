@@ -80,7 +80,7 @@ func testGetConfigurationGetConfiguration0(w http.ResponseWriter, req *http.Requ
 				"read:project",
 				"read-write:log-drain",
 			},
-			Source:            types.String("marketplace"),
+			Source:            operations.GetConfigurationSource1Marketplace.ToPointer(),
 			IntegrationID:     "oac_xzpVzcUOgcB1nrVlirtKhbWV",
 			OwnerID:           "kr1PsOIzqEL5Xg6M4VZcZosf",
 			CompletedAt:       types.Float64(1558531915505),

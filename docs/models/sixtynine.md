@@ -10,14 +10,15 @@ import { SixtyNine } from "@vercel/sdk/models/userevent.js";
 let value: SixtyNine = {
   projectId: "<id>",
   rulesetName: "<value>",
-  ruleGroups: {},
+  active: true,
 };
 ```
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `projectId`                                                  | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `rulesetName`                                                | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `ruleGroups`                                                 | Record<string, [models.RuleGroups](../models/rulegroups.md)> | :heavy_check_mark:                                           | N/A                                                          |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `projectId`                                                              | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `rulesetName`                                                            | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `active`                                                                 | *boolean*                                                                | :heavy_check_mark:                                                       | N/A                                                                      |
+| `action`                                                                 | [models.UserEventPayload69Action](../models/usereventpayload69action.md) | :heavy_minus_sign:                                                       | N/A                                                                      |

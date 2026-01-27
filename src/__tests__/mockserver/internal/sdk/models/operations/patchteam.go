@@ -550,6 +550,136 @@ func (o *DefaultExpirationSettings) GetExpirationErrored() *ExpirationErrored {
 	return o.ExpirationErrored
 }
 
+// StrictDeploymentProtectionSettings - When enabled, deployment protection settings require stricter permissions (owner-only).
+type StrictDeploymentProtectionSettings struct {
+	// Enable or disable strict deployment protection settings.
+	Enabled bool `json:"enabled"`
+}
+
+func (o *StrictDeploymentProtectionSettings) GetEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.Enabled
+}
+
+// Preference - The NSNB preference for the team.
+type Preference string
+
+const (
+	PreferenceAutoApproval   Preference = "auto-approval"
+	PreferenceManualApproval Preference = "manual-approval"
+	PreferenceBlock          Preference = "block"
+)
+
+func (e Preference) ToPointer() *Preference {
+	return &e
+}
+func (e *Preference) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto-approval":
+		fallthrough
+	case "manual-approval":
+		fallthrough
+	case "block":
+		*e = Preference(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for Preference: %v", v)
+	}
+}
+
+// NsnbConfig - NSNB configuration for the team.
+type NsnbConfig struct {
+	// The NSNB preference for the team.
+	Preference Preference `json:"preference"`
+}
+
+func (n NsnbConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(n, "", false)
+}
+
+func (n *NsnbConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &n, "", false, []string{"preference"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *NsnbConfig) GetPreference() Preference {
+	if o == nil {
+		return Preference("")
+	}
+	return o.Preference
+}
+
+type NsnbConfigUnionType string
+
+const (
+	NsnbConfigUnionTypeNsnbConfig NsnbConfigUnionType = "nsnbConfig"
+	NsnbConfigUnionTypeStr        NsnbConfigUnionType = "str"
+)
+
+type NsnbConfigUnion struct {
+	NsnbConfig *NsnbConfig `queryParam:"inline"`
+	Str        *string     `queryParam:"inline"`
+
+	Type NsnbConfigUnionType
+}
+
+func CreateNsnbConfigUnionNsnbConfig(nsnbConfig NsnbConfig) NsnbConfigUnion {
+	typ := NsnbConfigUnionTypeNsnbConfig
+
+	return NsnbConfigUnion{
+		NsnbConfig: &nsnbConfig,
+		Type:       typ,
+	}
+}
+
+func CreateNsnbConfigUnionStr(str string) NsnbConfigUnion {
+	typ := NsnbConfigUnionTypeStr
+
+	return NsnbConfigUnion{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func (u *NsnbConfigUnion) UnmarshalJSON(data []byte) error {
+
+	var nsnbConfig NsnbConfig = NsnbConfig{}
+	if err := utils.UnmarshalJSON(data, &nsnbConfig, "", true, nil); err == nil {
+		u.NsnbConfig = &nsnbConfig
+		u.Type = NsnbConfigUnionTypeNsnbConfig
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = NsnbConfigUnionTypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for NsnbConfigUnion", string(data))
+}
+
+func (u NsnbConfigUnion) MarshalJSON() ([]byte, error) {
+	if u.NsnbConfig != nil {
+		return utils.MarshalJSON(u.NsnbConfig, "", true)
+	}
+
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type NsnbConfigUnion: all fields are null")
+}
+
 type PatchTeamRequestBody struct {
 	// The hash value of an uploaded image.
 	Avatar *string `json:"avatar,omitempty"`
@@ -580,6 +710,9 @@ type PatchTeamRequestBody struct {
 	// Default deployment protection settings for new projects.
 	DefaultDeploymentProtection *DefaultDeploymentProtection `json:"defaultDeploymentProtection,omitempty"`
 	DefaultExpirationSettings   *DefaultExpirationSettings   `json:"defaultExpirationSettings,omitempty"`
+	// When enabled, deployment protection settings require stricter permissions (owner-only).
+	StrictDeploymentProtectionSettings *StrictDeploymentProtectionSettings `json:"strictDeploymentProtectionSettings,omitempty"`
+	NsnbConfig                         *NsnbConfigUnion                    `json:"nsnbConfig,omitempty"`
 }
 
 func (o *PatchTeamRequestBody) GetAvatar() *string {
@@ -692,6 +825,20 @@ func (o *PatchTeamRequestBody) GetDefaultExpirationSettings() *DefaultExpiration
 		return nil
 	}
 	return o.DefaultExpirationSettings
+}
+
+func (o *PatchTeamRequestBody) GetStrictDeploymentProtectionSettings() *StrictDeploymentProtectionSettings {
+	if o == nil {
+		return nil
+	}
+	return o.StrictDeploymentProtectionSettings
+}
+
+func (o *PatchTeamRequestBody) GetNsnbConfig() *NsnbConfigUnion {
+	if o == nil {
+		return nil
+	}
+	return o.NsnbConfig
 }
 
 type PatchTeamRequest struct {

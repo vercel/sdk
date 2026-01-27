@@ -13,17 +13,17 @@ type FlagJSONValueType string
 const (
 	FlagJSONValueTypeStr                  FlagJSONValueType = "str"
 	FlagJSONValueTypeNumber               FlagJSONValueType = "number"
-	FlagJSONValueTypeBoolean              FlagJSONValueType = "boolean"
 	FlagJSONValueTypeArrayOfFlagJSONValue FlagJSONValueType = "arrayOfFlagJSONValue"
 	FlagJSONValueTypeMapOfFlagJSONValue   FlagJSONValueType = "mapOfFlagJSONValue"
+	FlagJSONValueTypeBoolean              FlagJSONValueType = "boolean"
 )
 
 type FlagJSONValue struct {
 	Str                  *string                   `queryParam:"inline"`
 	Number               *float64                  `queryParam:"inline"`
-	Boolean              *bool                     `queryParam:"inline"`
 	ArrayOfFlagJSONValue []*FlagJSONValue          `queryParam:"inline"`
 	MapOfFlagJSONValue   map[string]*FlagJSONValue `queryParam:"inline"`
+	Boolean              *bool                     `queryParam:"inline"`
 
 	Type FlagJSONValueType
 }
@@ -46,15 +46,6 @@ func CreateFlagJSONValueNumber(number float64) FlagJSONValue {
 	}
 }
 
-func CreateFlagJSONValueBoolean(boolean bool) FlagJSONValue {
-	typ := FlagJSONValueTypeBoolean
-
-	return FlagJSONValue{
-		Boolean: &boolean,
-		Type:    typ,
-	}
-}
-
 func CreateFlagJSONValueArrayOfFlagJSONValue(arrayOfFlagJSONValue []*FlagJSONValue) FlagJSONValue {
 	typ := FlagJSONValueTypeArrayOfFlagJSONValue
 
@@ -70,6 +61,15 @@ func CreateFlagJSONValueMapOfFlagJSONValue(mapOfFlagJSONValue map[string]*FlagJS
 	return FlagJSONValue{
 		MapOfFlagJSONValue: mapOfFlagJSONValue,
 		Type:               typ,
+	}
+}
+
+func CreateFlagJSONValueBoolean(boolean bool) FlagJSONValue {
+	typ := FlagJSONValueTypeBoolean
+
+	return FlagJSONValue{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -89,13 +89,6 @@ func (u *FlagJSONValue) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
-		u.Boolean = &boolean
-		u.Type = FlagJSONValueTypeBoolean
-		return nil
-	}
-
 	var arrayOfFlagJSONValue []*FlagJSONValue = []*FlagJSONValue{}
 	if err := utils.UnmarshalJSON(data, &arrayOfFlagJSONValue, "", true, nil); err == nil {
 		u.ArrayOfFlagJSONValue = arrayOfFlagJSONValue
@@ -107,6 +100,13 @@ func (u *FlagJSONValue) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &mapOfFlagJSONValue, "", true, nil); err == nil {
 		u.MapOfFlagJSONValue = mapOfFlagJSONValue
 		u.Type = FlagJSONValueTypeMapOfFlagJSONValue
+		return nil
+	}
+
+	var boolean bool = false
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
+		u.Boolean = &boolean
+		u.Type = FlagJSONValueTypeBoolean
 		return nil
 	}
 
@@ -122,16 +122,16 @@ func (u FlagJSONValue) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.Number, "", true)
 	}
 
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.ArrayOfFlagJSONValue != nil {
 		return utils.MarshalJSON(u.ArrayOfFlagJSONValue, "", true)
 	}
 
 	if u.MapOfFlagJSONValue != nil {
 		return utils.MarshalJSON(u.MapOfFlagJSONValue, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type FlagJSONValue: all fields are null")

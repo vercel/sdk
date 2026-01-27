@@ -15,7 +15,7 @@ let value: GetEdgeConfigBackupResponseBody1 = {
       "key": {
         createdAt: 1254.45,
         updatedAt: 3018.16,
-        value: true,
+        value: {},
       },
     },
     slug: "<value>",

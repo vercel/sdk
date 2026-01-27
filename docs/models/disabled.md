@@ -3,18 +3,18 @@
 
 ## Supported Types
 
+### `models.Disabled1`
+
+```typescript
+const value: models.Disabled1 = {
+  expr: "<value>",
+};
+```
+
 ### `boolean`
 
 ```typescript
 const value: boolean = true;
-```
-
-### `models.Disabled2`
-
-```typescript
-const value: models.Disabled2 = {
-  expr: "<value>",
-};
 ```
 
 ### `models.Disabled3`

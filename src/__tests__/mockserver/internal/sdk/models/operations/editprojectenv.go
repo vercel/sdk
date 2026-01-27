@@ -1651,14 +1651,16 @@ type EditProjectEnvResponseBody struct {
 	EdgeConfigTokenID *string                        `json:"edgeConfigTokenId,omitempty"`
 	CreatedAt         *float64                       `json:"createdAt,omitempty"`
 	UpdatedAt         *float64                       `json:"updatedAt,omitempty"`
-	CreatedBy         *string                        `json:"createdBy,omitempty"`
 	ID                *string                        `json:"id,omitempty"`
-	Key               string                         `json:"key"`
+	CreatedBy         *string                        `json:"createdBy,omitempty"`
 	Target            *EditProjectEnvTargetUnion     `json:"target,omitempty"`
+	Key               string                         `json:"key"`
 	GitBranch         *string                        `json:"gitBranch,omitempty"`
 	UpdatedBy         *string                        `json:"updatedBy,omitempty"`
 	// This is used to identify variables that have been migrated from type secret to sensitive.
-	SunsetSecretID  *string                         `json:"sunsetSecretId,omitempty"`
+	SunsetSecretID *string `json:"sunsetSecretId,omitempty"`
+	// Legacy now-encryption ciphertext, present after migration swaps value/vsmValue
+	LegacyValue     *string                         `json:"legacyValue,omitempty"`
 	Decrypted       *bool                           `json:"decrypted,omitempty"`
 	ConfigurationID *string                         `json:"configurationId,omitempty"`
 	ContentHint     *EditProjectEnvContentHintUnion `json:"contentHint,omitempty"`
@@ -1710,13 +1712,6 @@ func (o *EditProjectEnvResponseBody) GetUpdatedAt() *float64 {
 	return o.UpdatedAt
 }
 
-func (o *EditProjectEnvResponseBody) GetCreatedBy() *string {
-	if o == nil {
-		return nil
-	}
-	return o.CreatedBy
-}
-
 func (o *EditProjectEnvResponseBody) GetID() *string {
 	if o == nil {
 		return nil
@@ -1724,11 +1719,11 @@ func (o *EditProjectEnvResponseBody) GetID() *string {
 	return o.ID
 }
 
-func (o *EditProjectEnvResponseBody) GetKey() string {
+func (o *EditProjectEnvResponseBody) GetCreatedBy() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
-	return o.Key
+	return o.CreatedBy
 }
 
 func (o *EditProjectEnvResponseBody) GetTarget() *EditProjectEnvTargetUnion {
@@ -1736,6 +1731,13 @@ func (o *EditProjectEnvResponseBody) GetTarget() *EditProjectEnvTargetUnion {
 		return nil
 	}
 	return o.Target
+}
+
+func (o *EditProjectEnvResponseBody) GetKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.Key
 }
 
 func (o *EditProjectEnvResponseBody) GetGitBranch() *string {
@@ -1757,6 +1759,13 @@ func (o *EditProjectEnvResponseBody) GetSunsetSecretID() *string {
 		return nil
 	}
 	return o.SunsetSecretID
+}
+
+func (o *EditProjectEnvResponseBody) GetLegacyValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LegacyValue
 }
 
 func (o *EditProjectEnvResponseBody) GetDecrypted() *bool {

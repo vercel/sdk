@@ -3,10 +3,10 @@
 
 ## Supported Types
 
-### `models.One1`
+### `models.CreateDrain11`
 
 ```typescript
-const value: models.One1 = {
+const value: models.CreateDrain11 = {
   externalResourceId: "<id>",
 };
 ```

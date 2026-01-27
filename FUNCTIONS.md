@@ -20,7 +20,7 @@ specific category of applications.
 
 ```typescript
 import { VercelCore } from "@vercel/sdk/core.js";
-import { projectsUpdateProject } from "@vercel/sdk/funcs/projectsUpdateProject.js";
+import { deploymentsGetDeployments } from "@vercel/sdk/funcs/deploymentsGetDeployments.js";
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -29,19 +29,29 @@ const vercel = new VercelCore({
 });
 
 async function run() {
-  const res = await projectsUpdateProject(vercel, {
-    idOrName: "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+  const res = await deploymentsGetDeployments(vercel, {
+    app: "docs",
+    from: 1612948664566,
+    limit: 10,
+    projectId: "QmXGTs7mvAMMC7WW5ebrM33qKG32QK3h4vmQMjmY",
+    projectIds: [
+      "prj_123",
+      "prj_456",
+    ],
+    target: "production",
+    to: 1612948664566,
+    users: "kr1PsOIzqEL5Xg6M4VZcZosf,K4amb7K9dAt5R2vBJWF32bmY",
+    since: 1540095775941,
+    until: 1540095775951,
+    state: "BUILDING,READY",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
-    requestBody: {
-      name: "a-project-name",
-    },
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("projectsUpdateProject failed:", res.error);
+    console.log("deploymentsGetDeployments failed:", res.error);
   }
 }
 

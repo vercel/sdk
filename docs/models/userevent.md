@@ -15,11 +15,9 @@ let value: UserEvent = {
   userId: "zTuNVUXEAvvnNN3IaqinkyMw",
   principalId: "<id>",
   payload: {
-    project: {
-      name: "<value>",
-      role: "PROJECT_VIEWER",
-      invitedUserName: "<value>",
-    },
+    previousProjectName: "<value>",
+    newProjectName: "<value>",
+    destinationAccountName: "<value>",
   },
 };
 ```

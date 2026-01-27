@@ -8,12 +8,17 @@ The payload of the event, if requested.
 import { OneHundredAndSixtyThree } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndSixtyThree = {
-  tier: "pro",
+  uid: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                            | Type                             | Required                         | Description                      |
-| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
-| `tier`                           | [models.Tier](../models/tier.md) | :heavy_check_mark:               | N/A                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `role`             | *string*           | :heavy_minus_sign: | N/A                |
+| `uid`              | *string*           | :heavy_check_mark: | N/A                |
+| `origin`           | *string*           | :heavy_minus_sign: | N/A                |
+| `teamRoles`        | *string*[]         | :heavy_minus_sign: | N/A                |
+| `teamPermissions`  | *string*[]         | :heavy_minus_sign: | N/A                |
+| `entitlements`     | *string*[]         | :heavy_minus_sign: | N/A                |

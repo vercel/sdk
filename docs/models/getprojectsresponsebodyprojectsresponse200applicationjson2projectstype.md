@@ -7,11 +7,11 @@ import { GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsType 
 
 let value:
   GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsType =
-    "cookie";
+    "header";
 ```
 
 ## Values
 
 ```typescript
-"path" | "host" | "method" | "header" | "cookie" | "query" | "ip_address" | "protocol" | "scheme" | "environment" | "region" | "initial_request_path"
+"path" | "query" | "host" | "method" | "header" | "cookie" | "ip_address" | "protocol" | "scheme" | "environment" | "region" | "initial_request_path"
 ```

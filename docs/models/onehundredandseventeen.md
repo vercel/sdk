@@ -7,11 +7,19 @@ The payload of the event, if requested.
 ```typescript
 import { OneHundredAndSeventeen } from "@vercel/sdk/models/userevent.js";
 
-let value: OneHundredAndSeventeen = {};
+let value: OneHundredAndSeventeen = {
+  projectId: "<id>",
+  projectName: "<value>",
+  previous: {},
+  next: {},
+};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `webhookUrl`       | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload117Previous](../models/usereventpayload117previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `next`                                                                         | [models.UserEventPayload117Next](../models/usereventpayload117next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |

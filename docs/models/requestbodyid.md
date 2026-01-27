@@ -11,5 +11,5 @@ let value: RequestBodyId = "bot_filter";
 ## Values
 
 ```typescript
-"ai_bots" | "bot_filter" | "bot_protection" | "owasp"
+"ai_bots" | "bot_filter" | "bot_protection" | "vercel_ruleset" | "owasp"
 ```

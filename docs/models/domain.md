@@ -9,7 +9,8 @@ Get only aliases of the given domain name
 
 ```typescript
 const value: string[] = [
-  "my-test-domain.com",
+  "<value 1>",
+  "<value 2>",
 ];
 ```
 

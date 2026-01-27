@@ -141,8 +141,8 @@ func (o *CreateCustomEnvironmentRequest) GetBody() *CreateCustomEnvironmentReque
 type CreateCustomEnvironmentTypeResponseBody string
 
 const (
-	CreateCustomEnvironmentTypeResponseBodyPreview     CreateCustomEnvironmentTypeResponseBody = "preview"
 	CreateCustomEnvironmentTypeResponseBodyProduction  CreateCustomEnvironmentTypeResponseBody = "production"
+	CreateCustomEnvironmentTypeResponseBodyPreview     CreateCustomEnvironmentTypeResponseBody = "preview"
 	CreateCustomEnvironmentTypeResponseBodyDevelopment CreateCustomEnvironmentTypeResponseBody = "development"
 )
 
@@ -155,9 +155,9 @@ func (e *CreateCustomEnvironmentTypeResponseBody) UnmarshalJSON(data []byte) err
 		return err
 	}
 	switch v {
-	case "preview":
-		fallthrough
 	case "production":
+		fallthrough
+	case "preview":
 		fallthrough
 	case "development":
 		*e = CreateCustomEnvironmentTypeResponseBody(v)

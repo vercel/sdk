@@ -51,8 +51,8 @@ func (o *GetCustomEnvironmentRequest) GetSlug() *string {
 type GetCustomEnvironmentType string
 
 const (
-	GetCustomEnvironmentTypePreview     GetCustomEnvironmentType = "preview"
 	GetCustomEnvironmentTypeProduction  GetCustomEnvironmentType = "production"
+	GetCustomEnvironmentTypePreview     GetCustomEnvironmentType = "preview"
 	GetCustomEnvironmentTypeDevelopment GetCustomEnvironmentType = "development"
 )
 
@@ -65,9 +65,9 @@ func (e *GetCustomEnvironmentType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "preview":
-		fallthrough
 	case "production":
+		fallthrough
+	case "preview":
 		fallthrough
 	case "development":
 		*e = GetCustomEnvironmentType(v)

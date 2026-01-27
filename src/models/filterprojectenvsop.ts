@@ -225,6 +225,10 @@ export type ResponseBodyEnvs = {
    * This is used to identify variables that have been migrated from type secret to sensitive.
    */
   sunsetSecretId?: string | undefined;
+  /**
+   * Legacy now-encryption ciphertext, present after migration swaps value/vsmValue
+   */
+  legacyValue?: string | undefined;
   decrypted?: boolean | undefined;
   value: string;
   vsmValue?: string | undefined;
@@ -433,6 +437,10 @@ export type Envs = {
    * This is used to identify variables that have been migrated from type secret to sensitive.
    */
   sunsetSecretId?: string | undefined;
+  /**
+   * Legacy now-encryption ciphertext, present after migration swaps value/vsmValue
+   */
+  legacyValue?: string | undefined;
   decrypted?: boolean | undefined;
   value: string;
   vsmValue?: string | undefined;
@@ -640,6 +648,10 @@ export type FilterProjectEnvsResponseBody1 = {
    * This is used to identify variables that have been migrated from type secret to sensitive.
    */
   sunsetSecretId?: string | undefined;
+  /**
+   * Legacy now-encryption ciphertext, present after migration swaps value/vsmValue
+   */
+  legacyValue?: string | undefined;
   decrypted?: boolean | undefined;
   value: string;
   vsmValue?: string | undefined;
@@ -1811,6 +1823,7 @@ export const ResponseBodyEnvs$inboundSchema: z.ZodType<
   ),
   type: FilterProjectEnvsResponseBodyProjectsResponse200Type$inboundSchema,
   sunsetSecretId: types.optional(types.string()),
+  legacyValue: types.optional(types.string()),
   decrypted: types.optional(types.boolean()),
   value: types.string(),
   vsmValue: types.optional(types.string()),
@@ -1871,6 +1884,7 @@ export type ResponseBodyEnvs$Outbound = {
   target?: Array<string> | string | undefined;
   type: string;
   sunsetSecretId?: string | undefined;
+  legacyValue?: string | undefined;
   decrypted?: boolean | undefined;
   value: string;
   vsmValue?: string | undefined;
@@ -1923,6 +1937,7 @@ export const ResponseBodyEnvs$outboundSchema: z.ZodType<
   ]).optional(),
   type: FilterProjectEnvsResponseBodyProjectsResponse200Type$outboundSchema,
   sunsetSecretId: z.string().optional(),
+  legacyValue: z.string().optional(),
   decrypted: z.boolean().optional(),
   value: z.string(),
   vsmValue: z.string().optional(),
@@ -2991,6 +3006,7 @@ export const Envs$inboundSchema: z.ZodType<Envs, z.ZodTypeDef, unknown> = z
     ),
     type: FilterProjectEnvsResponseBodyProjectsResponseType$inboundSchema,
     sunsetSecretId: types.optional(types.string()),
+    legacyValue: types.optional(types.string()),
     decrypted: types.optional(types.boolean()),
     value: types.string(),
     vsmValue: types.optional(types.string()),
@@ -3037,6 +3053,7 @@ export type Envs$Outbound = {
   target?: Array<string> | string | undefined;
   type: string;
   sunsetSecretId?: string | undefined;
+  legacyValue?: string | undefined;
   decrypted?: boolean | undefined;
   value: string;
   vsmValue?: string | undefined;
@@ -3086,6 +3103,7 @@ export const Envs$outboundSchema: z.ZodType<Envs$Outbound, z.ZodTypeDef, Envs> =
     ]).optional(),
     type: FilterProjectEnvsResponseBodyProjectsResponseType$outboundSchema,
     sunsetSecretId: z.string().optional(),
+    legacyValue: z.string().optional(),
     decrypted: z.boolean().optional(),
     value: z.string(),
     vsmValue: z.string().optional(),
@@ -4072,6 +4090,7 @@ export const FilterProjectEnvsResponseBody1$inboundSchema: z.ZodType<
   ),
   type: FilterProjectEnvsResponseBodyType$inboundSchema,
   sunsetSecretId: types.optional(types.string()),
+  legacyValue: types.optional(types.string()),
   decrypted: types.optional(types.boolean()),
   value: types.string(),
   vsmValue: types.optional(types.string()),
@@ -4116,6 +4135,7 @@ export type FilterProjectEnvsResponseBody1$Outbound = {
   target?: Array<string> | string | undefined;
   type: string;
   sunsetSecretId?: string | undefined;
+  legacyValue?: string | undefined;
   decrypted?: boolean | undefined;
   value: string;
   vsmValue?: string | undefined;
@@ -4168,6 +4188,7 @@ export const FilterProjectEnvsResponseBody1$outboundSchema: z.ZodType<
   ]).optional(),
   type: FilterProjectEnvsResponseBodyType$outboundSchema,
   sunsetSecretId: z.string().optional(),
+  legacyValue: z.string().optional(),
   decrypted: z.boolean().optional(),
   value: z.string(),
   vsmValue: z.string().optional(),

@@ -8,12 +8,56 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
+type GetBillingPlansSource string
+
+const (
+	GetBillingPlansSourceMarketplace    GetBillingPlansSource = "marketplace"
+	GetBillingPlansSourceDeployButton   GetBillingPlansSource = "deploy-button"
+	GetBillingPlansSourceExternal       GetBillingPlansSource = "external"
+	GetBillingPlansSourceV0             GetBillingPlansSource = "v0"
+	GetBillingPlansSourceResourceClaims GetBillingPlansSource = "resource-claims"
+	GetBillingPlansSourceCli            GetBillingPlansSource = "cli"
+	GetBillingPlansSourceOauth          GetBillingPlansSource = "oauth"
+	GetBillingPlansSourceBackoffice     GetBillingPlansSource = "backoffice"
+)
+
+func (e GetBillingPlansSource) ToPointer() *GetBillingPlansSource {
+	return &e
+}
+func (e *GetBillingPlansSource) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "marketplace":
+		fallthrough
+	case "deploy-button":
+		fallthrough
+	case "external":
+		fallthrough
+	case "v0":
+		fallthrough
+	case "resource-claims":
+		fallthrough
+	case "cli":
+		fallthrough
+	case "oauth":
+		fallthrough
+	case "backoffice":
+		*e = GetBillingPlansSource(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetBillingPlansSource: %v", v)
+	}
+}
+
 type GetBillingPlansRequest struct {
-	IntegrationIDOrSlug        string  `pathParam:"style=simple,explode=false,name=integrationIdOrSlug"`
-	IntegrationConfigurationID *string `queryParam:"style=form,explode=true,name=integrationConfigurationId"`
-	ProductIDOrSlug            string  `pathParam:"style=simple,explode=false,name=productIdOrSlug"`
-	Metadata                   *string `queryParam:"style=form,explode=true,name=metadata"`
-	Source                     *string `queryParam:"style=form,explode=true,name=source"`
+	IntegrationIDOrSlug        string                 `pathParam:"style=simple,explode=false,name=integrationIdOrSlug"`
+	IntegrationConfigurationID *string                `queryParam:"style=form,explode=true,name=integrationConfigurationId"`
+	ProductIDOrSlug            string                 `pathParam:"style=simple,explode=false,name=productIdOrSlug"`
+	Metadata                   *string                `queryParam:"style=form,explode=true,name=metadata"`
+	Source                     *GetBillingPlansSource `queryParam:"style=form,explode=true,name=source"`
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
@@ -48,7 +92,7 @@ func (o *GetBillingPlansRequest) GetMetadata() *string {
 	return o.Metadata
 }
 
-func (o *GetBillingPlansRequest) GetSource() *string {
+func (o *GetBillingPlansRequest) GetSource() *GetBillingPlansSource {
 	if o == nil {
 		return nil
 	}

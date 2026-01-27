@@ -2255,7 +2255,9 @@ type CreateProjectEnvCreated2 struct {
 	Target *CreatedTargetUnion2         `json:"target,omitempty"`
 	Type   CreateProjectEnvCreatedType2 `json:"type"`
 	// This is used to identify variables that have been migrated from type secret to sensitive.
-	SunsetSecretID    *string                            `json:"sunsetSecretId,omitempty"`
+	SunsetSecretID *string `json:"sunsetSecretId,omitempty"`
+	// Legacy now-encryption ciphertext, present after migration swaps value/vsmValue
+	LegacyValue       *string                            `json:"legacyValue,omitempty"`
 	Decrypted         *bool                              `json:"decrypted,omitempty"`
 	Value             string                             `json:"value"`
 	VsmValue          *string                            `json:"vsmValue,omitempty"`
@@ -2307,6 +2309,13 @@ func (o *CreateProjectEnvCreated2) GetSunsetSecretID() *string {
 		return nil
 	}
 	return o.SunsetSecretID
+}
+
+func (o *CreateProjectEnvCreated2) GetLegacyValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LegacyValue
 }
 
 func (o *CreateProjectEnvCreated2) GetDecrypted() *bool {
@@ -4010,7 +4019,9 @@ type CreateProjectEnvCreated1 struct {
 	Target *CreatedTargetUnion1         `json:"target,omitempty"`
 	Type   CreateProjectEnvCreatedType1 `json:"type"`
 	// This is used to identify variables that have been migrated from type secret to sensitive.
-	SunsetSecretID    *string                            `json:"sunsetSecretId,omitempty"`
+	SunsetSecretID *string `json:"sunsetSecretId,omitempty"`
+	// Legacy now-encryption ciphertext, present after migration swaps value/vsmValue
+	LegacyValue       *string                            `json:"legacyValue,omitempty"`
 	Decrypted         *bool                              `json:"decrypted,omitempty"`
 	Value             string                             `json:"value"`
 	VsmValue          *string                            `json:"vsmValue,omitempty"`
@@ -4062,6 +4073,13 @@ func (o *CreateProjectEnvCreated1) GetSunsetSecretID() *string {
 		return nil
 	}
 	return o.SunsetSecretID
+}
+
+func (o *CreateProjectEnvCreated1) GetLegacyValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LegacyValue
 }
 
 func (o *CreateProjectEnvCreated1) GetDecrypted() *bool {

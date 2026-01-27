@@ -8,16 +8,18 @@ The payload of the event, if requested.
 import { OneHundredAndFour } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndFour = {
-  gitProvider: "<value>",
-  gitProviderGroupDescriptor: "<value>",
-  gitScope: "<value>",
+  projectId: "<id>",
+  projectName: "<value>",
+  action: "updated",
 };
 ```
 
 ## Fields
 
-| Field                        | Type                         | Required                     | Description                  |
-| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `gitProvider`                | *string*                     | :heavy_check_mark:           | N/A                          |
-| `gitProviderGroupDescriptor` | *string*                     | :heavy_check_mark:           | N/A                          |
-| `gitScope`                   | *string*                     | :heavy_check_mark:           | N/A                          |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `projectId`                                                                | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `projectName`                                                              | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `action`                                                                   | [models.UserEventPayload104Action](../models/usereventpayload104action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `isEnvVar`                                                                 | *boolean*                                                                  | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `note`                                                                     | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |

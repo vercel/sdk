@@ -15,18 +15,18 @@ const value: string = "<value>";
 const value: number = 1284.03;
 ```
 
+### `models.UpdateProjectValue3`
+
+```typescript
+const value: models.UpdateProjectValue3 = {
+  previousValue: "<value>",
+  currentValue: 8003.3,
+};
+```
+
 ### `boolean`
 
 ```typescript
 const value: boolean = true;
-```
-
-### `models.UpdateProjectValue4`
-
-```typescript
-const value: models.UpdateProjectValue4 = {
-  previousValue: false,
-  currentValue: "<value>",
-};
 ```
 

@@ -9,7 +9,6 @@ import { Fifty } from "@vercel/sdk/models/userevent.js";
 
 let value: Fifty = {
   name: "<value>",
-  price: 3882.69,
 };
 ```
 
@@ -18,5 +17,3 @@ let value: Fifty = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `price`            | *number*           | :heavy_check_mark: | N/A                |
-| `currency`         | *string*           | :heavy_minus_sign: | N/A                |

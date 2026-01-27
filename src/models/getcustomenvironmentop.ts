@@ -32,8 +32,8 @@ export type GetCustomEnvironmentRequest = {
  * The type of environment (production, preview, or development)
  */
 export const GetCustomEnvironmentType = {
-  Preview: "preview",
   Production: "production",
+  Preview: "preview",
   Development: "development",
 } as const;
 /**

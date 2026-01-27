@@ -273,10 +273,13 @@ const (
 	CreateProjectFrameworkRequestHono           CreateProjectFrameworkRequest = "hono"
 	CreateProjectFrameworkRequestExpress        CreateProjectFrameworkRequest = "express"
 	CreateProjectFrameworkRequestH3             CreateProjectFrameworkRequest = "h3"
+	CreateProjectFrameworkRequestKoa            CreateProjectFrameworkRequest = "koa"
 	CreateProjectFrameworkRequestNestjs         CreateProjectFrameworkRequest = "nestjs"
 	CreateProjectFrameworkRequestElysia         CreateProjectFrameworkRequest = "elysia"
 	CreateProjectFrameworkRequestFastify        CreateProjectFrameworkRequest = "fastify"
 	CreateProjectFrameworkRequestXmcp           CreateProjectFrameworkRequest = "xmcp"
+	CreateProjectFrameworkRequestPython         CreateProjectFrameworkRequest = "python"
+	CreateProjectFrameworkRequestServices       CreateProjectFrameworkRequest = "services"
 )
 
 func (e CreateProjectFrameworkRequest) ToPointer() *CreateProjectFrameworkRequest {
@@ -394,6 +397,8 @@ func (e *CreateProjectFrameworkRequest) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "h3":
 		fallthrough
+	case "koa":
+		fallthrough
 	case "nestjs":
 		fallthrough
 	case "elysia":
@@ -401,6 +406,10 @@ func (e *CreateProjectFrameworkRequest) UnmarshalJSON(data []byte) error {
 	case "fastify":
 		fallthrough
 	case "xmcp":
+		fallthrough
+	case "python":
+		fallthrough
+	case "services":
 		*e = CreateProjectFrameworkRequest(v)
 		return nil
 	default:
@@ -1083,8 +1092,8 @@ func (o *CreateProjectSpeedInsights) GetPaidAt() *float64 {
 type CreateProjectEnvIDEnum string
 
 const (
-	CreateProjectEnvIDEnumPreview    CreateProjectEnvIDEnum = "preview"
 	CreateProjectEnvIDEnumProduction CreateProjectEnvIDEnum = "production"
+	CreateProjectEnvIDEnumPreview    CreateProjectEnvIDEnum = "preview"
 )
 
 func (e CreateProjectEnvIDEnum) ToPointer() *CreateProjectEnvIDEnum {
@@ -1096,9 +1105,9 @@ func (e *CreateProjectEnvIDEnum) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "preview":
-		fallthrough
 	case "production":
+		fallthrough
+	case "preview":
 		*e = CreateProjectEnvIDEnum(v)
 		return nil
 	default:
@@ -2866,7 +2875,9 @@ type CreateProjectEnv struct {
 	Target *CreateProjectEnvTargetUnion `json:"target,omitempty"`
 	Type   CreateProjectEnvType         `json:"type"`
 	// This is used to identify variables that have been migrated from type secret to sensitive.
-	SunsetSecretID    *string                        `json:"sunsetSecretId,omitempty"`
+	SunsetSecretID *string `json:"sunsetSecretId,omitempty"`
+	// Legacy now-encryption ciphertext, present after migration swaps value/vsmValue
+	LegacyValue       *string                        `json:"legacyValue,omitempty"`
 	Decrypted         *bool                          `json:"decrypted,omitempty"`
 	Value             string                         `json:"value"`
 	VsmValue          *string                        `json:"vsmValue,omitempty"`
@@ -2906,6 +2917,13 @@ func (o *CreateProjectEnv) GetSunsetSecretID() *string {
 		return nil
 	}
 	return o.SunsetSecretID
+}
+
+func (o *CreateProjectEnv) GetLegacyValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LegacyValue
 }
 
 func (o *CreateProjectEnv) GetDecrypted() *bool {
@@ -3136,8 +3154,8 @@ func (o *CreateProjectEnv) GetCustomEnvironmentIds() []string {
 type CreateProjectCustomEnvironmentType string
 
 const (
-	CreateProjectCustomEnvironmentTypePreview     CreateProjectCustomEnvironmentType = "preview"
 	CreateProjectCustomEnvironmentTypeProduction  CreateProjectCustomEnvironmentType = "production"
+	CreateProjectCustomEnvironmentTypePreview     CreateProjectCustomEnvironmentType = "preview"
 	CreateProjectCustomEnvironmentTypeDevelopment CreateProjectCustomEnvironmentType = "development"
 )
 
@@ -3150,9 +3168,9 @@ func (e *CreateProjectCustomEnvironmentType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "preview":
-		fallthrough
 	case "production":
+		fallthrough
+	case "preview":
 		fallthrough
 	case "development":
 		*e = CreateProjectCustomEnvironmentType(v)
@@ -3485,10 +3503,13 @@ const (
 	CreateProjectFrameworkResponseBodyHono           CreateProjectFrameworkResponseBody = "hono"
 	CreateProjectFrameworkResponseBodyExpress        CreateProjectFrameworkResponseBody = "express"
 	CreateProjectFrameworkResponseBodyH3             CreateProjectFrameworkResponseBody = "h3"
+	CreateProjectFrameworkResponseBodyKoa            CreateProjectFrameworkResponseBody = "koa"
 	CreateProjectFrameworkResponseBodyNestjs         CreateProjectFrameworkResponseBody = "nestjs"
 	CreateProjectFrameworkResponseBodyElysia         CreateProjectFrameworkResponseBody = "elysia"
 	CreateProjectFrameworkResponseBodyFastify        CreateProjectFrameworkResponseBody = "fastify"
 	CreateProjectFrameworkResponseBodyXmcp           CreateProjectFrameworkResponseBody = "xmcp"
+	CreateProjectFrameworkResponseBodyPython         CreateProjectFrameworkResponseBody = "python"
+	CreateProjectFrameworkResponseBodyServices       CreateProjectFrameworkResponseBody = "services"
 )
 
 func (e CreateProjectFrameworkResponseBody) ToPointer() *CreateProjectFrameworkResponseBody {
@@ -3606,6 +3627,8 @@ func (e *CreateProjectFrameworkResponseBody) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "h3":
 		fallthrough
+	case "koa":
+		fallthrough
 	case "nestjs":
 		fallthrough
 	case "elysia":
@@ -3613,6 +3636,10 @@ func (e *CreateProjectFrameworkResponseBody) UnmarshalJSON(data []byte) error {
 	case "fastify":
 		fallthrough
 	case "xmcp":
+		fallthrough
+	case "python":
+		fallthrough
+	case "services":
 		*e = CreateProjectFrameworkResponseBody(v)
 		return nil
 	default:
@@ -5450,17 +5477,17 @@ func (e *CreateProjectResourceConfigBuildMachineTypeResponse) UnmarshalJSON(data
 	}
 }
 
-type CreateProjectResourceConfigConfigurationResponse string
+type CreateProjectResourceConfigConfigurationResponseBody string
 
 const (
-	CreateProjectResourceConfigConfigurationResponseSkipNamespaceQueue    CreateProjectResourceConfigConfigurationResponse = "SKIP_NAMESPACE_QUEUE"
-	CreateProjectResourceConfigConfigurationResponseWaitForNamespaceQueue CreateProjectResourceConfigConfigurationResponse = "WAIT_FOR_NAMESPACE_QUEUE"
+	CreateProjectResourceConfigConfigurationResponseBodySkipNamespaceQueue    CreateProjectResourceConfigConfigurationResponseBody = "SKIP_NAMESPACE_QUEUE"
+	CreateProjectResourceConfigConfigurationResponseBodyWaitForNamespaceQueue CreateProjectResourceConfigConfigurationResponseBody = "WAIT_FOR_NAMESPACE_QUEUE"
 )
 
-func (e CreateProjectResourceConfigConfigurationResponse) ToPointer() *CreateProjectResourceConfigConfigurationResponse {
+func (e CreateProjectResourceConfigConfigurationResponseBody) ToPointer() *CreateProjectResourceConfigConfigurationResponseBody {
 	return &e
 }
-func (e *CreateProjectResourceConfigConfigurationResponse) UnmarshalJSON(data []byte) error {
+func (e *CreateProjectResourceConfigConfigurationResponseBody) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -5469,25 +5496,25 @@ func (e *CreateProjectResourceConfigConfigurationResponse) UnmarshalJSON(data []
 	case "SKIP_NAMESPACE_QUEUE":
 		fallthrough
 	case "WAIT_FOR_NAMESPACE_QUEUE":
-		*e = CreateProjectResourceConfigConfigurationResponse(v)
+		*e = CreateProjectResourceConfigConfigurationResponseBody(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateProjectResourceConfigConfigurationResponse: %v", v)
+		return fmt.Errorf("invalid value for CreateProjectResourceConfigConfigurationResponseBody: %v", v)
 	}
 }
 
-type CreateProjectResourceConfigBuildQueueResponse struct {
-	Configuration *CreateProjectResourceConfigConfigurationResponse `json:"configuration,omitempty"`
+type CreateProjectResourceConfigBuildQueueResponseBody struct {
+	Configuration *CreateProjectResourceConfigConfigurationResponseBody `json:"configuration,omitempty"`
 }
 
-func (o *CreateProjectResourceConfigBuildQueueResponse) GetConfiguration() *CreateProjectResourceConfigConfigurationResponse {
+func (o *CreateProjectResourceConfigBuildQueueResponseBody) GetConfiguration() *CreateProjectResourceConfigConfigurationResponseBody {
 	if o == nil {
 		return nil
 	}
 	return o.Configuration
 }
 
-type CreateProjectResourceConfigResponse struct {
+type CreateProjectResourceConfigResponseBody struct {
 	ElasticConcurrencyEnabled  *bool                                                         `json:"elasticConcurrencyEnabled,omitempty"`
 	Fluid                      *bool                                                         `json:"fluid,omitempty"`
 	FunctionDefaultRegions     []string                                                      `json:"functionDefaultRegions"`
@@ -5496,66 +5523,66 @@ type CreateProjectResourceConfigResponse struct {
 	FunctionZeroConfigFailover *bool                                                         `json:"functionZeroConfigFailover,omitempty"`
 	BuildMachineType           *CreateProjectResourceConfigBuildMachineTypeResponse          `json:"buildMachineType,omitempty"`
 	IsNSNBDisabled             *bool                                                         `json:"isNSNBDisabled,omitempty"`
-	BuildQueue                 *CreateProjectResourceConfigBuildQueueResponse                `json:"buildQueue,omitempty"`
+	BuildQueue                 *CreateProjectResourceConfigBuildQueueResponseBody            `json:"buildQueue,omitempty"`
 }
 
-func (o *CreateProjectResourceConfigResponse) GetElasticConcurrencyEnabled() *bool {
+func (o *CreateProjectResourceConfigResponseBody) GetElasticConcurrencyEnabled() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ElasticConcurrencyEnabled
 }
 
-func (o *CreateProjectResourceConfigResponse) GetFluid() *bool {
+func (o *CreateProjectResourceConfigResponseBody) GetFluid() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Fluid
 }
 
-func (o *CreateProjectResourceConfigResponse) GetFunctionDefaultRegions() []string {
+func (o *CreateProjectResourceConfigResponseBody) GetFunctionDefaultRegions() []string {
 	if o == nil {
 		return []string{}
 	}
 	return o.FunctionDefaultRegions
 }
 
-func (o *CreateProjectResourceConfigResponse) GetFunctionDefaultTimeout() *float64 {
+func (o *CreateProjectResourceConfigResponseBody) GetFunctionDefaultTimeout() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FunctionDefaultTimeout
 }
 
-func (o *CreateProjectResourceConfigResponse) GetFunctionDefaultMemoryType() *CreateProjectResourceConfigFunctionDefaultMemoryTypeResponse {
+func (o *CreateProjectResourceConfigResponseBody) GetFunctionDefaultMemoryType() *CreateProjectResourceConfigFunctionDefaultMemoryTypeResponse {
 	if o == nil {
 		return nil
 	}
 	return o.FunctionDefaultMemoryType
 }
 
-func (o *CreateProjectResourceConfigResponse) GetFunctionZeroConfigFailover() *bool {
+func (o *CreateProjectResourceConfigResponseBody) GetFunctionZeroConfigFailover() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.FunctionZeroConfigFailover
 }
 
-func (o *CreateProjectResourceConfigResponse) GetBuildMachineType() *CreateProjectResourceConfigBuildMachineTypeResponse {
+func (o *CreateProjectResourceConfigResponseBody) GetBuildMachineType() *CreateProjectResourceConfigBuildMachineTypeResponse {
 	if o == nil {
 		return nil
 	}
 	return o.BuildMachineType
 }
 
-func (o *CreateProjectResourceConfigResponse) GetIsNSNBDisabled() *bool {
+func (o *CreateProjectResourceConfigResponseBody) GetIsNSNBDisabled() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.IsNSNBDisabled
 }
 
-func (o *CreateProjectResourceConfigResponse) GetBuildQueue() *CreateProjectResourceConfigBuildQueueResponse {
+func (o *CreateProjectResourceConfigResponseBody) GetBuildQueue() *CreateProjectResourceConfigBuildQueueResponseBody {
 	if o == nil {
 		return nil
 	}
@@ -6443,6 +6470,7 @@ type CreateProjectPermissions struct {
 	ProjectCheckRun                          []components.ACLAction `json:"projectCheckRun,omitempty"`
 	ProjectDeploymentExpiration              []components.ACLAction `json:"projectDeploymentExpiration,omitempty"`
 	ProjectDeploymentHook                    []components.ACLAction `json:"projectDeploymentHook,omitempty"`
+	ProjectDeploymentProtectionStrict        []components.ACLAction `json:"projectDeploymentProtectionStrict,omitempty"`
 	ProjectDomain                            []components.ACLAction `json:"projectDomain,omitempty"`
 	ProjectDomainCheckConfig                 []components.ACLAction `json:"projectDomainCheckConfig,omitempty"`
 	ProjectDomainMove                        []components.ACLAction `json:"projectDomainMove,omitempty"`
@@ -7793,6 +7821,13 @@ func (o *CreateProjectPermissions) GetProjectDeploymentHook() []components.ACLAc
 	return o.ProjectDeploymentHook
 }
 
+func (o *CreateProjectPermissions) GetProjectDeploymentProtectionStrict() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectDeploymentProtectionStrict
+}
+
 func (o *CreateProjectPermissions) GetProjectDomain() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -8023,11 +8058,11 @@ type CreateProjectLastRollbackTarget struct {
 type CreateProjectJobStatus string
 
 const (
-	CreateProjectJobStatusPending    CreateProjectJobStatus = "pending"
-	CreateProjectJobStatusInProgress CreateProjectJobStatus = "in-progress"
 	CreateProjectJobStatusSucceeded  CreateProjectJobStatus = "succeeded"
 	CreateProjectJobStatusFailed     CreateProjectJobStatus = "failed"
 	CreateProjectJobStatusSkipped    CreateProjectJobStatus = "skipped"
+	CreateProjectJobStatusPending    CreateProjectJobStatus = "pending"
+	CreateProjectJobStatusInProgress CreateProjectJobStatus = "in-progress"
 )
 
 func (e CreateProjectJobStatus) ToPointer() *CreateProjectJobStatus {
@@ -8039,15 +8074,15 @@ func (e *CreateProjectJobStatus) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "pending":
-		fallthrough
-	case "in-progress":
-		fallthrough
 	case "succeeded":
 		fallthrough
 	case "failed":
 		fallthrough
 	case "skipped":
+		fallthrough
+	case "pending":
+		fallthrough
+	case "in-progress":
 		*e = CreateProjectJobStatus(v)
 		return nil
 	default:
@@ -8377,8 +8412,8 @@ func (u CreateProjectProtectionBypassUnion) MarshalJSON() ([]byte, error) {
 type CreateProjectTrustedIpsDeploymentType2 string
 
 const (
-	CreateProjectTrustedIpsDeploymentType2Preview                          CreateProjectTrustedIpsDeploymentType2 = "preview"
 	CreateProjectTrustedIpsDeploymentType2Production                       CreateProjectTrustedIpsDeploymentType2 = "production"
+	CreateProjectTrustedIpsDeploymentType2Preview                          CreateProjectTrustedIpsDeploymentType2 = "preview"
 	CreateProjectTrustedIpsDeploymentType2All                              CreateProjectTrustedIpsDeploymentType2 = "all"
 	CreateProjectTrustedIpsDeploymentType2ProdDeploymentUrlsAndAllPreviews CreateProjectTrustedIpsDeploymentType2 = "prod_deployment_urls_and_all_previews"
 	CreateProjectTrustedIpsDeploymentType2AllExceptCustomDomains           CreateProjectTrustedIpsDeploymentType2 = "all_except_custom_domains"
@@ -8393,9 +8428,9 @@ func (e *CreateProjectTrustedIpsDeploymentType2) UnmarshalJSON(data []byte) erro
 		return err
 	}
 	switch v {
-	case "preview":
-		fallthrough
 	case "production":
+		fallthrough
+	case "preview":
 		fallthrough
 	case "all":
 		fallthrough
@@ -8434,8 +8469,8 @@ func (o *CreateProjectTrustedIps2) GetDeploymentType() CreateProjectTrustedIpsDe
 type CreateProjectTrustedIpsDeploymentType1 string
 
 const (
-	CreateProjectTrustedIpsDeploymentType1Preview                          CreateProjectTrustedIpsDeploymentType1 = "preview"
 	CreateProjectTrustedIpsDeploymentType1Production                       CreateProjectTrustedIpsDeploymentType1 = "production"
+	CreateProjectTrustedIpsDeploymentType1Preview                          CreateProjectTrustedIpsDeploymentType1 = "preview"
 	CreateProjectTrustedIpsDeploymentType1All                              CreateProjectTrustedIpsDeploymentType1 = "all"
 	CreateProjectTrustedIpsDeploymentType1ProdDeploymentUrlsAndAllPreviews CreateProjectTrustedIpsDeploymentType1 = "prod_deployment_urls_and_all_previews"
 	CreateProjectTrustedIpsDeploymentType1AllExceptCustomDomains           CreateProjectTrustedIpsDeploymentType1 = "all_except_custom_domains"
@@ -8450,9 +8485,9 @@ func (e *CreateProjectTrustedIpsDeploymentType1) UnmarshalJSON(data []byte) erro
 		return err
 	}
 	switch v {
-	case "preview":
-		fallthrough
 	case "production":
+		fallthrough
+	case "preview":
 		fallthrough
 	case "all":
 		fallthrough
@@ -8744,12 +8779,60 @@ func (o *CreateProjectWebAnalytics) GetHasData() *bool {
 	return o.HasData
 }
 
+type CreateProjectVercelRulesetAction string
+
+const (
+	CreateProjectVercelRulesetActionLog       CreateProjectVercelRulesetAction = "log"
+	CreateProjectVercelRulesetActionDeny      CreateProjectVercelRulesetAction = "deny"
+	CreateProjectVercelRulesetActionChallenge CreateProjectVercelRulesetAction = "challenge"
+)
+
+func (e CreateProjectVercelRulesetAction) ToPointer() *CreateProjectVercelRulesetAction {
+	return &e
+}
+func (e *CreateProjectVercelRulesetAction) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "log":
+		fallthrough
+	case "deny":
+		fallthrough
+	case "challenge":
+		*e = CreateProjectVercelRulesetAction(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectVercelRulesetAction: %v", v)
+	}
+}
+
+type CreateProjectVercelRuleset struct {
+	Active bool                              `json:"active"`
+	Action *CreateProjectVercelRulesetAction `json:"action,omitempty"`
+}
+
+func (o *CreateProjectVercelRuleset) GetActive() bool {
+	if o == nil {
+		return false
+	}
+	return o.Active
+}
+
+func (o *CreateProjectVercelRuleset) GetAction() *CreateProjectVercelRulesetAction {
+	if o == nil {
+		return nil
+	}
+	return o.Action
+}
+
 type CreateProjectBotFilterAction string
 
 const (
+	CreateProjectBotFilterActionLog       CreateProjectBotFilterAction = "log"
 	CreateProjectBotFilterActionDeny      CreateProjectBotFilterAction = "deny"
 	CreateProjectBotFilterActionChallenge CreateProjectBotFilterAction = "challenge"
-	CreateProjectBotFilterActionLog       CreateProjectBotFilterAction = "log"
 )
 
 func (e CreateProjectBotFilterAction) ToPointer() *CreateProjectBotFilterAction {
@@ -8761,11 +8844,11 @@ func (e *CreateProjectBotFilterAction) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "log":
+		fallthrough
 	case "deny":
 		fallthrough
 	case "challenge":
-		fallthrough
-	case "log":
 		*e = CreateProjectBotFilterAction(v)
 		return nil
 	default:
@@ -8795,9 +8878,9 @@ func (o *CreateProjectBotFilter) GetAction() *CreateProjectBotFilterAction {
 type CreateProjectAiBotsAction string
 
 const (
+	CreateProjectAiBotsActionLog       CreateProjectAiBotsAction = "log"
 	CreateProjectAiBotsActionDeny      CreateProjectAiBotsAction = "deny"
 	CreateProjectAiBotsActionChallenge CreateProjectAiBotsAction = "challenge"
-	CreateProjectAiBotsActionLog       CreateProjectAiBotsAction = "log"
 )
 
 func (e CreateProjectAiBotsAction) ToPointer() *CreateProjectAiBotsAction {
@@ -8809,11 +8892,11 @@ func (e *CreateProjectAiBotsAction) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "log":
+		fallthrough
 	case "deny":
 		fallthrough
 	case "challenge":
-		fallthrough
-	case "log":
 		*e = CreateProjectAiBotsAction(v)
 		return nil
 	default:
@@ -8843,9 +8926,9 @@ func (o *CreateProjectAiBots) GetAction() *CreateProjectAiBotsAction {
 type CreateProjectOwaspAction string
 
 const (
+	CreateProjectOwaspActionLog       CreateProjectOwaspAction = "log"
 	CreateProjectOwaspActionDeny      CreateProjectOwaspAction = "deny"
 	CreateProjectOwaspActionChallenge CreateProjectOwaspAction = "challenge"
-	CreateProjectOwaspActionLog       CreateProjectOwaspAction = "log"
 )
 
 func (e CreateProjectOwaspAction) ToPointer() *CreateProjectOwaspAction {
@@ -8857,11 +8940,11 @@ func (e *CreateProjectOwaspAction) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "log":
+		fallthrough
 	case "deny":
 		fallthrough
 	case "challenge":
-		fallthrough
-	case "log":
 		*e = CreateProjectOwaspAction(v)
 		return nil
 	default:
@@ -8889,28 +8972,36 @@ func (o *CreateProjectOwasp) GetAction() *CreateProjectOwaspAction {
 }
 
 type CreateProjectManagedRules struct {
-	BotFilter *CreateProjectBotFilter `json:"bot_filter,omitempty"`
-	AiBots    *CreateProjectAiBots    `json:"ai_bots,omitempty"`
-	Owasp     *CreateProjectOwasp     `json:"owasp,omitempty"`
+	VercelRuleset CreateProjectVercelRuleset `json:"vercel_ruleset"`
+	BotFilter     CreateProjectBotFilter     `json:"bot_filter"`
+	AiBots        CreateProjectAiBots        `json:"ai_bots"`
+	Owasp         CreateProjectOwasp         `json:"owasp"`
 }
 
-func (o *CreateProjectManagedRules) GetBotFilter() *CreateProjectBotFilter {
+func (o *CreateProjectManagedRules) GetVercelRuleset() CreateProjectVercelRuleset {
 	if o == nil {
-		return nil
+		return CreateProjectVercelRuleset{}
+	}
+	return o.VercelRuleset
+}
+
+func (o *CreateProjectManagedRules) GetBotFilter() CreateProjectBotFilter {
+	if o == nil {
+		return CreateProjectBotFilter{}
 	}
 	return o.BotFilter
 }
 
-func (o *CreateProjectManagedRules) GetAiBots() *CreateProjectAiBots {
+func (o *CreateProjectManagedRules) GetAiBots() CreateProjectAiBots {
 	if o == nil {
-		return nil
+		return CreateProjectAiBots{}
 	}
 	return o.AiBots
 }
 
-func (o *CreateProjectManagedRules) GetOwasp() *CreateProjectOwasp {
+func (o *CreateProjectManagedRules) GetOwasp() CreateProjectOwasp {
 	if o == nil {
-		return nil
+		return CreateProjectOwasp{}
 	}
 	return o.Owasp
 }
@@ -9169,14 +9260,15 @@ func (e *CreateProjectActionBlocked) UnmarshalJSON(data []byte) error {
 }
 
 type CreateProjectBlock struct {
-	Action      CreateProjectActionBlocked `json:"action"`
-	Reason      string                     `json:"reason"`
-	StatusCode  float64                    `json:"statusCode"`
-	CreatedAt   float64                    `json:"createdAt"`
-	CaseID      *string                    `json:"caseId,omitempty"`
-	Actor       *string                    `json:"actor,omitempty"`
-	Comment     *string                    `json:"comment,omitempty"`
-	IsCascading *bool                      `json:"isCascading,omitempty"`
+	Action              CreateProjectActionBlocked `json:"action"`
+	Reason              string                     `json:"reason"`
+	StatusCode          float64                    `json:"statusCode"`
+	CreatedAt           float64                    `json:"createdAt"`
+	CaseID              *string                    `json:"caseId,omitempty"`
+	Actor               *string                    `json:"actor,omitempty"`
+	Comment             *string                    `json:"comment,omitempty"`
+	IneligibleForAppeal *bool                      `json:"ineligibleForAppeal,omitempty"`
+	IsCascading         *bool                      `json:"isCascading,omitempty"`
 }
 
 func (o *CreateProjectBlock) GetAction() CreateProjectActionBlocked {
@@ -9226,6 +9318,13 @@ func (o *CreateProjectBlock) GetComment() *string {
 		return nil
 	}
 	return o.Comment
+}
+
+func (o *CreateProjectBlock) GetIneligibleForAppeal() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IneligibleForAppeal
 }
 
 func (o *CreateProjectBlock) GetIsCascading() *bool {
@@ -9701,14 +9800,15 @@ func (u CreateProjectRouteUnion2) MarshalJSON() ([]byte, error) {
 }
 
 type CreateProjectBlockHistoryRouteUnblocked struct {
-	Action      CreateProjectActionRouteUnblocked `json:"action"`
-	Route       CreateProjectRouteUnion2          `json:"route"`
-	StatusCode  *float64                          `json:"statusCode,omitempty"`
-	CreatedAt   float64                           `json:"createdAt"`
-	CaseID      *string                           `json:"caseId,omitempty"`
-	Actor       *string                           `json:"actor,omitempty"`
-	Comment     *string                           `json:"comment,omitempty"`
-	IsCascading *bool                             `json:"isCascading,omitempty"`
+	Action              CreateProjectActionRouteUnblocked `json:"action"`
+	Route               CreateProjectRouteUnion2          `json:"route"`
+	StatusCode          *float64                          `json:"statusCode,omitempty"`
+	CreatedAt           float64                           `json:"createdAt"`
+	CaseID              *string                           `json:"caseId,omitempty"`
+	Actor               *string                           `json:"actor,omitempty"`
+	Comment             *string                           `json:"comment,omitempty"`
+	IneligibleForAppeal *bool                             `json:"ineligibleForAppeal,omitempty"`
+	IsCascading         *bool                             `json:"isCascading,omitempty"`
 }
 
 func (c CreateProjectBlockHistoryRouteUnblocked) MarshalJSON() ([]byte, error) {
@@ -9769,6 +9869,13 @@ func (o *CreateProjectBlockHistoryRouteUnblocked) GetComment() *string {
 		return nil
 	}
 	return o.Comment
+}
+
+func (o *CreateProjectBlockHistoryRouteUnblocked) GetIneligibleForAppeal() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IneligibleForAppeal
 }
 
 func (o *CreateProjectBlockHistoryRouteUnblocked) GetIsCascading() *bool {
@@ -10244,14 +10351,15 @@ func (u CreateProjectRouteUnion1) MarshalJSON() ([]byte, error) {
 }
 
 type CreateProjectBlockHistoryRouteBlocked struct {
-	Action      CreateProjectActionRouteBlocked `json:"action"`
-	Route       CreateProjectRouteUnion1        `json:"route"`
-	Reason      string                          `json:"reason"`
-	CreatedAt   float64                         `json:"createdAt"`
-	CaseID      *string                         `json:"caseId,omitempty"`
-	Actor       *string                         `json:"actor,omitempty"`
-	Comment     *string                         `json:"comment,omitempty"`
-	IsCascading *bool                           `json:"isCascading,omitempty"`
+	Action              CreateProjectActionRouteBlocked `json:"action"`
+	Route               CreateProjectRouteUnion1        `json:"route"`
+	Reason              string                          `json:"reason"`
+	CreatedAt           float64                         `json:"createdAt"`
+	CaseID              *string                         `json:"caseId,omitempty"`
+	Actor               *string                         `json:"actor,omitempty"`
+	Comment             *string                         `json:"comment,omitempty"`
+	IneligibleForAppeal *bool                           `json:"ineligibleForAppeal,omitempty"`
+	IsCascading         *bool                           `json:"isCascading,omitempty"`
 }
 
 func (c CreateProjectBlockHistoryRouteBlocked) MarshalJSON() ([]byte, error) {
@@ -10314,6 +10422,13 @@ func (o *CreateProjectBlockHistoryRouteBlocked) GetComment() *string {
 	return o.Comment
 }
 
+func (o *CreateProjectBlockHistoryRouteBlocked) GetIneligibleForAppeal() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IneligibleForAppeal
+}
+
 func (o *CreateProjectBlockHistoryRouteBlocked) GetIsCascading() *bool {
 	if o == nil {
 		return nil
@@ -10345,12 +10460,13 @@ func (e *CreateProjectActionUnblocked) UnmarshalJSON(data []byte) error {
 }
 
 type CreateProjectBlockHistoryUnblocked struct {
-	Action      CreateProjectActionUnblocked `json:"action"`
-	CreatedAt   float64                      `json:"createdAt"`
-	CaseID      *string                      `json:"caseId,omitempty"`
-	Actor       *string                      `json:"actor,omitempty"`
-	Comment     *string                      `json:"comment,omitempty"`
-	IsCascading *bool                        `json:"isCascading,omitempty"`
+	Action              CreateProjectActionUnblocked `json:"action"`
+	CreatedAt           float64                      `json:"createdAt"`
+	CaseID              *string                      `json:"caseId,omitempty"`
+	Actor               *string                      `json:"actor,omitempty"`
+	Comment             *string                      `json:"comment,omitempty"`
+	IneligibleForAppeal *bool                        `json:"ineligibleForAppeal,omitempty"`
+	IsCascading         *bool                        `json:"isCascading,omitempty"`
 }
 
 func (c CreateProjectBlockHistoryUnblocked) MarshalJSON() ([]byte, error) {
@@ -10399,6 +10515,13 @@ func (o *CreateProjectBlockHistoryUnblocked) GetComment() *string {
 	return o.Comment
 }
 
+func (o *CreateProjectBlockHistoryUnblocked) GetIneligibleForAppeal() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IneligibleForAppeal
+}
+
 func (o *CreateProjectBlockHistoryUnblocked) GetIsCascading() *bool {
 	if o == nil {
 		return nil
@@ -10430,14 +10553,15 @@ func (e *CreateProjectBlockHistoryActionBlocked) UnmarshalJSON(data []byte) erro
 }
 
 type CreateProjectBlockHistoryBlocked struct {
-	Action      CreateProjectBlockHistoryActionBlocked `json:"action"`
-	Reason      string                                 `json:"reason"`
-	StatusCode  float64                                `json:"statusCode"`
-	CreatedAt   float64                                `json:"createdAt"`
-	CaseID      *string                                `json:"caseId,omitempty"`
-	Actor       *string                                `json:"actor,omitempty"`
-	Comment     *string                                `json:"comment,omitempty"`
-	IsCascading *bool                                  `json:"isCascading,omitempty"`
+	Action              CreateProjectBlockHistoryActionBlocked `json:"action"`
+	Reason              string                                 `json:"reason"`
+	StatusCode          float64                                `json:"statusCode"`
+	CreatedAt           float64                                `json:"createdAt"`
+	CaseID              *string                                `json:"caseId,omitempty"`
+	Actor               *string                                `json:"actor,omitempty"`
+	Comment             *string                                `json:"comment,omitempty"`
+	IneligibleForAppeal *bool                                  `json:"ineligibleForAppeal,omitempty"`
+	IsCascading         *bool                                  `json:"isCascading,omitempty"`
 }
 
 func (c CreateProjectBlockHistoryBlocked) MarshalJSON() ([]byte, error) {
@@ -10498,6 +10622,13 @@ func (o *CreateProjectBlockHistoryBlocked) GetComment() *string {
 		return nil
 	}
 	return o.Comment
+}
+
+func (o *CreateProjectBlockHistoryBlocked) GetIneligibleForAppeal() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IneligibleForAppeal
 }
 
 func (o *CreateProjectBlockHistoryBlocked) GetIsCascading() *bool {
@@ -11142,9 +11273,9 @@ func (u CreateProjectInternalRouteUnion) MarshalJSON() ([]byte, error) {
 type CreateProjectDismissedToastAction string
 
 const (
+	CreateProjectDismissedToastActionDelete CreateProjectDismissedToastAction = "delete"
 	CreateProjectDismissedToastActionCancel CreateProjectDismissedToastAction = "cancel"
 	CreateProjectDismissedToastActionAccept CreateProjectDismissedToastAction = "accept"
-	CreateProjectDismissedToastActionDelete CreateProjectDismissedToastAction = "delete"
 )
 
 func (e CreateProjectDismissedToastAction) ToPointer() *CreateProjectDismissedToastAction {
@@ -11156,11 +11287,11 @@ func (e *CreateProjectDismissedToastAction) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "delete":
+		fallthrough
 	case "cancel":
 		fallthrough
 	case "accept":
-		fallthrough
-	case "delete":
 		*e = CreateProjectDismissedToastAction(v)
 		return nil
 	default:
@@ -11373,15 +11504,15 @@ type CreateProjectValueUnionType string
 const (
 	CreateProjectValueUnionTypeStr                              CreateProjectValueUnionType = "str"
 	CreateProjectValueUnionTypeNumber                           CreateProjectValueUnionType = "number"
-	CreateProjectValueUnionTypeBoolean                          CreateProjectValueUnionType = "boolean"
 	CreateProjectValueUnionTypeCreateProjectValueDismissedToast CreateProjectValueUnionType = "createProject_value_dismissedToast"
+	CreateProjectValueUnionTypeBoolean                          CreateProjectValueUnionType = "boolean"
 )
 
 type CreateProjectValueUnion struct {
 	Str                              *string                           `queryParam:"inline"`
 	Number                           *float64                          `queryParam:"inline"`
-	Boolean                          *bool                             `queryParam:"inline"`
 	CreateProjectValueDismissedToast *CreateProjectValueDismissedToast `queryParam:"inline"`
+	Boolean                          *bool                             `queryParam:"inline"`
 
 	Type CreateProjectValueUnionType
 }
@@ -11404,21 +11535,21 @@ func CreateCreateProjectValueUnionNumber(number float64) CreateProjectValueUnion
 	}
 }
 
-func CreateCreateProjectValueUnionBoolean(boolean bool) CreateProjectValueUnion {
-	typ := CreateProjectValueUnionTypeBoolean
-
-	return CreateProjectValueUnion{
-		Boolean: &boolean,
-		Type:    typ,
-	}
-}
-
 func CreateCreateProjectValueUnionCreateProjectValueDismissedToast(createProjectValueDismissedToast CreateProjectValueDismissedToast) CreateProjectValueUnion {
 	typ := CreateProjectValueUnionTypeCreateProjectValueDismissedToast
 
 	return CreateProjectValueUnion{
 		CreateProjectValueDismissedToast: &createProjectValueDismissedToast,
 		Type:                             typ,
+	}
+}
+
+func CreateCreateProjectValueUnionBoolean(boolean bool) CreateProjectValueUnion {
+	typ := CreateProjectValueUnionTypeBoolean
+
+	return CreateProjectValueUnion{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -11464,12 +11595,12 @@ func (u CreateProjectValueUnion) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.Number, "", true)
 	}
 
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateProjectValueDismissedToast != nil {
 		return utils.MarshalJSON(u.CreateProjectValueDismissedToast, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type CreateProjectValueUnion: all fields are null")
@@ -11530,28 +11661,28 @@ type CreateProjectResponseBody struct {
 	Crons                            *CreateProjectCrons                 `json:"crons,omitempty"`
 	DataCache                        *CreateProjectDataCache             `json:"dataCache,omitempty"`
 	// Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
-	DeploymentExpiration          *CreateProjectDeploymentExpiration  `json:"deploymentExpiration,omitempty"`
-	DevCommand                    *string                             `json:"devCommand,omitempty"`
-	DirectoryListing              bool                                `json:"directoryListing"`
-	InstallCommand                *string                             `json:"installCommand,omitempty"`
-	Env                           []CreateProjectEnv                  `json:"env,omitempty"`
-	CustomEnvironments            []CreateProjectCustomEnvironment    `json:"customEnvironments,omitempty"`
-	Framework                     *CreateProjectFrameworkResponseBody `json:"framework,omitempty"`
-	GitForkProtection             *bool                               `json:"gitForkProtection,omitempty"`
-	GitLFS                        *bool                               `json:"gitLFS,omitempty"`
-	ID                            string                              `json:"id"`
-	IPBuckets                     []CreateProjectIPBucket             `json:"ipBuckets,omitempty"`
-	LatestDeployments             []CreateProjectLatestDeployment     `json:"latestDeployments,omitempty"`
-	Link                          *CreateProjectLinkUnion             `json:"link,omitempty"`
-	Microfrontends                *CreateProjectMicrofrontendsUnion   `json:"microfrontends,omitempty"`
-	Name                          string                              `json:"name"`
-	NodeVersion                   CreateProjectNodeVersion            `json:"nodeVersion"`
-	OptionsAllowlist              *CreateProjectOptionsAllowlist      `json:"optionsAllowlist,omitempty"`
-	OutputDirectory               *string                             `json:"outputDirectory,omitempty"`
-	PasswordProtection            *CreateProjectPasswordProtection    `json:"passwordProtection,omitempty"`
-	ProductionDeploymentsFastLane *bool                               `json:"productionDeploymentsFastLane,omitempty"`
-	PublicSource                  *bool                               `json:"publicSource,omitempty"`
-	ResourceConfig                CreateProjectResourceConfigResponse `json:"resourceConfig"`
+	DeploymentExpiration          *CreateProjectDeploymentExpiration      `json:"deploymentExpiration,omitempty"`
+	DevCommand                    *string                                 `json:"devCommand,omitempty"`
+	DirectoryListing              bool                                    `json:"directoryListing"`
+	InstallCommand                *string                                 `json:"installCommand,omitempty"`
+	Env                           []CreateProjectEnv                      `json:"env,omitempty"`
+	CustomEnvironments            []CreateProjectCustomEnvironment        `json:"customEnvironments,omitempty"`
+	Framework                     *CreateProjectFrameworkResponseBody     `json:"framework,omitempty"`
+	GitForkProtection             *bool                                   `json:"gitForkProtection,omitempty"`
+	GitLFS                        *bool                                   `json:"gitLFS,omitempty"`
+	ID                            string                                  `json:"id"`
+	IPBuckets                     []CreateProjectIPBucket                 `json:"ipBuckets,omitempty"`
+	LatestDeployments             []CreateProjectLatestDeployment         `json:"latestDeployments,omitempty"`
+	Link                          *CreateProjectLinkUnion                 `json:"link,omitempty"`
+	Microfrontends                *CreateProjectMicrofrontendsUnion       `json:"microfrontends,omitempty"`
+	Name                          string                                  `json:"name"`
+	NodeVersion                   CreateProjectNodeVersion                `json:"nodeVersion"`
+	OptionsAllowlist              *CreateProjectOptionsAllowlist          `json:"optionsAllowlist,omitempty"`
+	OutputDirectory               *string                                 `json:"outputDirectory,omitempty"`
+	PasswordProtection            *CreateProjectPasswordProtection        `json:"passwordProtection,omitempty"`
+	ProductionDeploymentsFastLane *bool                                   `json:"productionDeploymentsFastLane,omitempty"`
+	PublicSource                  *bool                                   `json:"publicSource,omitempty"`
+	ResourceConfig                CreateProjectResourceConfigResponseBody `json:"resourceConfig"`
 	// Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback.
 	RollbackDescription *CreateProjectRollbackDescription `json:"rollbackDescription,omitempty"`
 	// Project-level rolling release configuration that defines how deployments should be gradually rolled out
@@ -11899,9 +12030,9 @@ func (o *CreateProjectResponseBody) GetPublicSource() *bool {
 	return o.PublicSource
 }
 
-func (o *CreateProjectResponseBody) GetResourceConfig() CreateProjectResourceConfigResponse {
+func (o *CreateProjectResponseBody) GetResourceConfig() CreateProjectResourceConfigResponseBody {
 	if o == nil {
-		return CreateProjectResourceConfigResponse{}
+		return CreateProjectResourceConfigResponseBody{}
 	}
 	return o.ResourceConfig
 }

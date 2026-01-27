@@ -1,15 +1,17 @@
 # CancelDeploymentState
 
+Current provisioning state
+
 ## Example Usage
 
 ```typescript
 import { CancelDeploymentState } from "@vercel/sdk/models/canceldeploymentop.js";
 
-let value: CancelDeploymentState = "failed";
+let value: CancelDeploymentState = "COMPLETE";
 ```
 
 ## Values
 
 ```typescript
-"succeeded" | "failed" | "pending"
+"PENDING" | "COMPLETE" | "TIMEOUT"
 ```

@@ -145,6 +145,7 @@ export const TeamLimitedOrigin = {
   Dsync: "dsync",
   Feedback: "feedback",
   OrganizationTeams: "organization-teams",
+  NsnbAutoApprove: "nsnb-auto-approve",
 } as const;
 export type TeamLimitedOrigin = ClosedEnum<typeof TeamLimitedOrigin>;
 

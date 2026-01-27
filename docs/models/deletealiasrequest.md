@@ -6,7 +6,7 @@
 import { DeleteAliasRequest } from "@vercel/sdk/models/deletealiasop.js";
 
 let value: DeleteAliasRequest = {
-  aliasId: "<id>",
+  aliasId: "2WjyKQmM8ZnGcJsPWMrHRHrE",
   teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   slug: "my-team-url-slug",
 };
@@ -16,6 +16,6 @@ let value: DeleteAliasRequest = {
 
 | Field                                                    | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `aliasId`                                                | *string*                                                 | :heavy_check_mark:                                       | The ID or alias that will be removed                     |                                                          |
+| `aliasId`                                                | *string*                                                 | :heavy_check_mark:                                       | The ID or alias that will be removed                     | 2WjyKQmM8ZnGcJsPWMrHRHrE                                 |
 | `teamId`                                                 | *string*                                                 | :heavy_minus_sign:                                       | The Team identifier to perform the request on behalf of. | team_1a2b3c4d5e6f7g8h9i0j1k2l                            |
 | `slug`                                                   | *string*                                                 | :heavy_minus_sign:                                       | The Team slug to perform the request on behalf of.       | my-team-url-slug                                         |

@@ -8,23 +8,24 @@ The payload of the event, if requested.
 import { FortyFour } from "@vercel/sdk/models/userevent.js";
 
 let value: FortyFour = {
-  url: "https://stupendous-tabletop.info",
+  project: {
+    name: "<value>",
+  },
+  job: {
+    deployHook: {
+      createdAt: 3393.49,
+      id: "<id>",
+      name: "<value>",
+      ref: "<value>",
+    },
+    state: "North Carolina",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `name`                                                     | *string*                                                   | :heavy_minus_sign:                                         | N/A                                                        |
-| `alias`                                                    | *string*[]                                                 | :heavy_minus_sign:                                         | N/A                                                        |
-| `target`                                                   | *string*                                                   | :heavy_minus_sign:                                         | N/A                                                        |
-| `deployment`                                               | [models.PayloadDeployment](../models/payloaddeployment.md) | :heavy_minus_sign:                                         | N/A                                                        |
-| `url`                                                      | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `forced`                                                   | *boolean*                                                  | :heavy_minus_sign:                                         | N/A                                                        |
-| `deploymentId`                                             | *string*                                                   | :heavy_minus_sign:                                         | N/A                                                        |
-| `plan`                                                     | *string*                                                   | :heavy_minus_sign:                                         | N/A                                                        |
-| `project`                                                  | *string*                                                   | :heavy_minus_sign:                                         | N/A                                                        |
-| `projectId`                                                | *string*                                                   | :heavy_minus_sign:                                         | N/A                                                        |
-| `regions`                                                  | *string*[]                                                 | :heavy_minus_sign:                                         | N/A                                                        |
-| `type`                                                     | *string*                                                   | :heavy_minus_sign:                                         | N/A                                                        |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `project`                                                                  | [models.UserEventPayload44Project](../models/usereventpayload44project.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `job`                                                                      | [models.Job](../models/job.md)                                             | :heavy_check_mark:                                                         | N/A                                                                        |

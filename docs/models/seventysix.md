@@ -18,11 +18,11 @@ let value: SeventySix = {
 
 ## Fields
 
-| Field               | Type                | Required            | Description         |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `integrationId`     | *string*            | :heavy_check_mark:  | N/A                 |
-| `configurationId`   | *string*            | :heavy_check_mark:  | N/A                 |
-| `integrationSlug`   | *string*            | :heavy_check_mark:  | N/A                 |
-| `integrationName`   | *string*            | :heavy_check_mark:  | N/A                 |
-| `ownerId`           | *string*            | :heavy_check_mark:  | N/A                 |
-| `projectIds`        | *models.ProjectIds* | :heavy_minus_sign:  | N/A                 |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
+| `configurationId`  | *string*           | :heavy_check_mark: | N/A                |
+| `integrationSlug`  | *string*           | :heavy_check_mark: | N/A                |
+| `integrationName`  | *string*           | :heavy_check_mark: | N/A                |
+| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
+| `projectIds`       | *string*[]         | :heavy_minus_sign: | N/A                |

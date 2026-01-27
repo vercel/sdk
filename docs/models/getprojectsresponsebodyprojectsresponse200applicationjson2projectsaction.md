@@ -7,11 +7,11 @@ import { GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsActio
 
 let value:
   GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsAction =
-    "log";
+    "challenge";
 ```
 
 ## Values
 
 ```typescript
-"deny" | "challenge" | "log"
+"log" | "deny" | "challenge"
 ```

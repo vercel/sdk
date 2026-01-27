@@ -3,11 +3,11 @@
 
 ## Supported Types
 
-### `models.GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1`
+### `models.GetProjectsHasProjectsResponse200ApplicationJSONResponseBody21`
 
 ```typescript
 const value:
-  models.GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1 = {
+  models.GetProjectsHasProjectsResponse200ApplicationJSONResponseBody21 = {
     type: "header",
     key: "x-vercel-ip-country",
     value: {
@@ -16,11 +16,11 @@ const value:
   };
 ```
 
-### `models.GetProjectsHasProjectsResponse200ApplicationJSONResponseBody2`
+### `models.GetProjectsHasProjectsResponse200ApplicationJSONResponseBody22`
 
 ```typescript
 const value:
-  models.GetProjectsHasProjectsResponse200ApplicationJSONResponseBody2 = {
+  models.GetProjectsHasProjectsResponse200ApplicationJSONResponseBody22 = {
     type: "host",
     value: {
       eq: "<value>",

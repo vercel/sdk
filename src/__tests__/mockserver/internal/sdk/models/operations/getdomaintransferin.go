@@ -40,6 +40,7 @@ const (
 	GetDomainTransferInStatusPendingNewAuthCode    GetDomainTransferInStatus = "pending_new_auth_code"
 	GetDomainTransferInStatusPendingTransfer       GetDomainTransferInStatus = "pending_transfer"
 	GetDomainTransferInStatusPendingUnlock         GetDomainTransferInStatus = "pending_unlock"
+	GetDomainTransferInStatusPendingRegistryUnlock GetDomainTransferInStatus = "pending_registry_unlock"
 	GetDomainTransferInStatusRejected              GetDomainTransferInStatus = "rejected"
 	GetDomainTransferInStatusSubmittingTransfer    GetDomainTransferInStatus = "submitting_transfer"
 )
@@ -72,6 +73,8 @@ func (e *GetDomainTransferInStatus) UnmarshalJSON(data []byte) error {
 	case "pending_transfer":
 		fallthrough
 	case "pending_unlock":
+		fallthrough
+	case "pending_registry_unlock":
 		fallthrough
 	case "rejected":
 		fallthrough

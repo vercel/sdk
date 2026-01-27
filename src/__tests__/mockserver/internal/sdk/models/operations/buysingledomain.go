@@ -32,7 +32,7 @@ type BuySingleDomainContactInformation struct {
 	// a non empty string
 	Zip string `json:"zip"`
 	// A valid ISO 3166-1 alpha-2 country code
-	Country string `json:"country"`
+	Country components.CountryCode `json:"country"`
 	// a non empty string
 	CompanyName *string `json:"companyName,omitempty"`
 	// A valid E.164 phone number
@@ -103,9 +103,9 @@ func (o *BuySingleDomainContactInformation) GetZip() string {
 	return o.Zip
 }
 
-func (o *BuySingleDomainContactInformation) GetCountry() string {
+func (o *BuySingleDomainContactInformation) GetCountry() components.CountryCode {
 	if o == nil {
-		return ""
+		return components.CountryCode("")
 	}
 	return o.Country
 }

@@ -15,12 +15,6 @@ const value: string = "<value>";
 const value: number = 1284.03;
 ```
 
-### `boolean`
-
-```typescript
-const value: boolean = true;
-```
-
 ### `{ [k: string]: models.EdgeConfigItemValue }`
 
 ```typescript
@@ -33,5 +27,11 @@ const value: { [k: string]: models.EdgeConfigItemValue } = {};
 const value: models.EdgeConfigItemValue[] = [
   "<value>",
 ];
+```
+
+### `boolean`
+
+```typescript
+const value: boolean = true;
 ```
 

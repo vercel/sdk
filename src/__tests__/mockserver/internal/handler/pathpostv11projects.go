@@ -102,7 +102,7 @@ func testCreateProjectCreateProject0(w http.ResponseWriter, req *http.Request) {
 		},
 		Name:        "<value>",
 		NodeVersion: operations.CreateProjectNodeVersionSixteenDotX,
-		ResourceConfig: operations.CreateProjectResourceConfigResponse{
+		ResourceConfig: operations.CreateProjectResourceConfigResponseBody{
 			FunctionDefaultRegions: []string{
 				"<value 1>",
 				"<value 2>",

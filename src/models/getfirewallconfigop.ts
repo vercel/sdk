@@ -619,10 +619,32 @@ export type Owasp = {
   username?: string | undefined;
 };
 
+export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction =
+  {
+    Deny: "deny",
+    Log: "log",
+    Challenge: "challenge",
+  } as const;
+export type GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction =
+  ClosedEnum<
+    typeof GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction
+  >;
+
+export type VercelRuleset = {
+  active: boolean;
+  action?:
+    | GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction
+    | undefined;
+  updatedAt?: string | undefined;
+  userId?: string | undefined;
+  username?: string | undefined;
+};
+
 export type GetFirewallConfigManagedRules = {
   botProtection?: BotProtection | undefined;
   aiBots?: AiBots | undefined;
   owasp?: Owasp | undefined;
+  vercelRuleset?: VercelRuleset | undefined;
 };
 
 /**
@@ -2527,6 +2549,71 @@ export function owaspFromJSON(
 }
 
 /** @internal */
+export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction
+  > = z.nativeEnum(
+    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction,
+  );
+/** @internal */
+export const GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction
+  > =
+    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction$inboundSchema;
+
+/** @internal */
+export const VercelRuleset$inboundSchema: z.ZodType<
+  VercelRuleset,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  active: types.boolean(),
+  action: types.optional(
+    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction$inboundSchema,
+  ),
+  updatedAt: types.optional(types.string()),
+  userId: types.optional(types.string()),
+  username: types.optional(types.string()),
+});
+/** @internal */
+export type VercelRuleset$Outbound = {
+  active: boolean;
+  action?: string | undefined;
+  updatedAt?: string | undefined;
+  userId?: string | undefined;
+  username?: string | undefined;
+};
+
+/** @internal */
+export const VercelRuleset$outboundSchema: z.ZodType<
+  VercelRuleset$Outbound,
+  z.ZodTypeDef,
+  VercelRuleset
+> = z.object({
+  active: z.boolean(),
+  action:
+    GetFirewallConfigSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction$outboundSchema
+      .optional(),
+  updatedAt: z.string().optional(),
+  userId: z.string().optional(),
+  username: z.string().optional(),
+});
+
+export function vercelRulesetToJSON(vercelRuleset: VercelRuleset): string {
+  return JSON.stringify(VercelRuleset$outboundSchema.parse(vercelRuleset));
+}
+export function vercelRulesetFromJSON(
+  jsonString: string,
+): SafeParseResult<VercelRuleset, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => VercelRuleset$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'VercelRuleset' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetFirewallConfigManagedRules$inboundSchema: z.ZodType<
   GetFirewallConfigManagedRules,
   z.ZodTypeDef,
@@ -2535,10 +2622,12 @@ export const GetFirewallConfigManagedRules$inboundSchema: z.ZodType<
   bot_protection: types.optional(z.lazy(() => BotProtection$inboundSchema)),
   ai_bots: types.optional(z.lazy(() => AiBots$inboundSchema)),
   owasp: types.optional(z.lazy(() => Owasp$inboundSchema)),
+  vercel_ruleset: types.optional(z.lazy(() => VercelRuleset$inboundSchema)),
 }).transform((v) => {
   return remap$(v, {
     "bot_protection": "botProtection",
     "ai_bots": "aiBots",
+    "vercel_ruleset": "vercelRuleset",
   });
 });
 /** @internal */
@@ -2546,6 +2635,7 @@ export type GetFirewallConfigManagedRules$Outbound = {
   bot_protection?: BotProtection$Outbound | undefined;
   ai_bots?: AiBots$Outbound | undefined;
   owasp?: Owasp$Outbound | undefined;
+  vercel_ruleset?: VercelRuleset$Outbound | undefined;
 };
 
 /** @internal */
@@ -2557,10 +2647,12 @@ export const GetFirewallConfigManagedRules$outboundSchema: z.ZodType<
   botProtection: z.lazy(() => BotProtection$outboundSchema).optional(),
   aiBots: z.lazy(() => AiBots$outboundSchema).optional(),
   owasp: z.lazy(() => Owasp$outboundSchema).optional(),
+  vercelRuleset: z.lazy(() => VercelRuleset$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     botProtection: "bot_protection",
     aiBots: "ai_bots",
+    vercelRuleset: "vercel_ruleset",
   });
 });
 

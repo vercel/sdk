@@ -712,10 +712,13 @@ const (
 	GetDeploymentsFrameworkHono           GetDeploymentsFramework = "hono"
 	GetDeploymentsFrameworkExpress        GetDeploymentsFramework = "express"
 	GetDeploymentsFrameworkH3             GetDeploymentsFramework = "h3"
+	GetDeploymentsFrameworkKoa            GetDeploymentsFramework = "koa"
 	GetDeploymentsFrameworkNestjs         GetDeploymentsFramework = "nestjs"
 	GetDeploymentsFrameworkElysia         GetDeploymentsFramework = "elysia"
 	GetDeploymentsFrameworkFastify        GetDeploymentsFramework = "fastify"
 	GetDeploymentsFrameworkXmcp           GetDeploymentsFramework = "xmcp"
+	GetDeploymentsFrameworkPython         GetDeploymentsFramework = "python"
+	GetDeploymentsFrameworkServices       GetDeploymentsFramework = "services"
 )
 
 func (e GetDeploymentsFramework) ToPointer() *GetDeploymentsFramework {
@@ -833,6 +836,8 @@ func (e *GetDeploymentsFramework) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "h3":
 		fallthrough
+	case "koa":
+		fallthrough
 	case "nestjs":
 		fallthrough
 	case "elysia":
@@ -840,6 +845,10 @@ func (e *GetDeploymentsFramework) UnmarshalJSON(data []byte) error {
 	case "fastify":
 		fallthrough
 	case "xmcp":
+		fallthrough
+	case "python":
+		fallthrough
+	case "services":
 		*e = GetDeploymentsFramework(v)
 		return nil
 	default:

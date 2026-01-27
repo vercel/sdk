@@ -3,16 +3,18 @@
 ## Example Usage
 
 ```typescript
-import { One1 } from "@vercel/sdk/models/createdrainop.js";
+import { One1 } from "@vercel/sdk/models/userevent.js";
 
 let value: One1 = {
-  externalResourceId: "<id>",
+  origin: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                | Type                 | Required             | Description          |
-| -------------------- | -------------------- | -------------------- | -------------------- |
-| `kind`               | *string*             | :heavy_minus_sign:   | N/A                  |
-| `externalResourceId` | *string*             | :heavy_check_mark:   | N/A                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `origin`           | *string*           | :heavy_check_mark: | N/A                |
+| `username`         | *string*           | :heavy_minus_sign: | N/A                |
+| `teamId`           | *string*           | :heavy_minus_sign: | N/A                |
+| `legacy`           | *boolean*          | :heavy_minus_sign: | N/A                |

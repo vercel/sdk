@@ -261,6 +261,7 @@ export const PutFirewallConfigType = {
   Ja4Digest: "ja4_digest",
   Ja3Digest: "ja3_digest",
   RateLimitApiId: "rate_limit_api_id",
+  ServerAction: "server_action",
   BotName: "bot_name",
   BotCategory: "bot_category",
 } as const;
@@ -362,7 +363,7 @@ export type PutFirewallConfigSecurityRequestRequestBodyRulesAction = {
   mitigate?: Mitigate | undefined;
 };
 
-export type ValidationErrors = string | Array<string>;
+export type ValidationErrors = Array<string> | string;
 
 export type PutFirewallConfigRules = {
   id?: string | undefined;
@@ -372,7 +373,7 @@ export type PutFirewallConfigRules = {
   conditionGroup: Array<ConditionGroup>;
   action: PutFirewallConfigSecurityRequestRequestBodyRulesAction;
   valid?: boolean | undefined;
-  validationErrors?: string | Array<string> | undefined;
+  validationErrors?: Array<string> | string | undefined;
 };
 
 export const PutFirewallConfigSecurityRequestRequestBodyIpsAction = {
@@ -1032,10 +1033,32 @@ export type PutFirewallConfigOwasp = {
   username?: string | undefined;
 };
 
+export const PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesVercelRulesetAction =
+  {
+    Deny: "deny",
+    Log: "log",
+    Challenge: "challenge",
+  } as const;
+export type PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesVercelRulesetAction =
+  ClosedEnum<
+    typeof PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesVercelRulesetAction
+  >;
+
+export type PutFirewallConfigVercelRuleset = {
+  active: boolean;
+  action?:
+    | PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesVercelRulesetAction
+    | undefined;
+  updatedAt?: string | undefined;
+  userId?: string | undefined;
+  username?: string | undefined;
+};
+
 export type PutFirewallConfigManagedRules = {
   botProtection?: PutFirewallConfigBotProtection | undefined;
   aiBots?: PutFirewallConfigAiBots | undefined;
   owasp?: PutFirewallConfigOwasp | undefined;
+  vercelRuleset?: PutFirewallConfigVercelRuleset | undefined;
 };
 
 export type Active = {
@@ -2062,16 +2085,16 @@ export const ValidationErrors$inboundSchema: z.ZodType<
   ValidationErrors,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), z.array(types.string())]);
+> = smartUnion([z.array(types.string()), types.string()]);
 /** @internal */
-export type ValidationErrors$Outbound = string | Array<string>;
+export type ValidationErrors$Outbound = Array<string> | string;
 
 /** @internal */
 export const ValidationErrors$outboundSchema: z.ZodType<
   ValidationErrors$Outbound,
   z.ZodTypeDef,
   ValidationErrors
-> = smartUnion([z.string(), z.array(z.string())]);
+> = smartUnion([z.array(z.string()), z.string()]);
 
 export function validationErrorsToJSON(
   validationErrors: ValidationErrors,
@@ -2106,7 +2129,7 @@ export const PutFirewallConfigRules$inboundSchema: z.ZodType<
   ),
   valid: types.optional(types.boolean()),
   validationErrors: types.optional(
-    smartUnion([types.string(), z.array(types.string())]),
+    smartUnion([z.array(types.string()), types.string()]),
   ),
 });
 /** @internal */
@@ -2118,7 +2141,7 @@ export type PutFirewallConfigRules$Outbound = {
   conditionGroup: Array<ConditionGroup$Outbound>;
   action: PutFirewallConfigSecurityRequestRequestBodyRulesAction$Outbound;
   valid?: boolean | undefined;
-  validationErrors?: string | Array<string> | undefined;
+  validationErrors?: Array<string> | string | undefined;
 };
 
 /** @internal */
@@ -2136,7 +2159,7 @@ export const PutFirewallConfigRules$outboundSchema: z.ZodType<
     PutFirewallConfigSecurityRequestRequestBodyRulesAction$outboundSchema
   ),
   valid: z.boolean().optional(),
-  validationErrors: smartUnion([z.string(), z.array(z.string())]).optional(),
+  validationErrors: smartUnion([z.array(z.string()), z.string()]).optional(),
 });
 
 export function putFirewallConfigRulesToJSON(
@@ -4313,6 +4336,77 @@ export function putFirewallConfigOwaspFromJSON(
 }
 
 /** @internal */
+export const PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesVercelRulesetAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesVercelRulesetAction
+  > = z.nativeEnum(
+    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesVercelRulesetAction,
+  );
+/** @internal */
+export const PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesVercelRulesetAction$outboundSchema:
+  z.ZodNativeEnum<
+    typeof PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesVercelRulesetAction
+  > =
+    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesVercelRulesetAction$inboundSchema;
+
+/** @internal */
+export const PutFirewallConfigVercelRuleset$inboundSchema: z.ZodType<
+  PutFirewallConfigVercelRuleset,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  active: types.boolean(),
+  action: types.optional(
+    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesVercelRulesetAction$inboundSchema,
+  ),
+  updatedAt: types.optional(types.string()),
+  userId: types.optional(types.string()),
+  username: types.optional(types.string()),
+});
+/** @internal */
+export type PutFirewallConfigVercelRuleset$Outbound = {
+  active: boolean;
+  action?: string | undefined;
+  updatedAt?: string | undefined;
+  userId?: string | undefined;
+  username?: string | undefined;
+};
+
+/** @internal */
+export const PutFirewallConfigVercelRuleset$outboundSchema: z.ZodType<
+  PutFirewallConfigVercelRuleset$Outbound,
+  z.ZodTypeDef,
+  PutFirewallConfigVercelRuleset
+> = z.object({
+  active: z.boolean(),
+  action:
+    PutFirewallConfigSecurityResponse200ApplicationJSONResponseBodyActiveManagedRulesVercelRulesetAction$outboundSchema
+      .optional(),
+  updatedAt: z.string().optional(),
+  userId: z.string().optional(),
+  username: z.string().optional(),
+});
+
+export function putFirewallConfigVercelRulesetToJSON(
+  putFirewallConfigVercelRuleset: PutFirewallConfigVercelRuleset,
+): string {
+  return JSON.stringify(
+    PutFirewallConfigVercelRuleset$outboundSchema.parse(
+      putFirewallConfigVercelRuleset,
+    ),
+  );
+}
+export function putFirewallConfigVercelRulesetFromJSON(
+  jsonString: string,
+): SafeParseResult<PutFirewallConfigVercelRuleset, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PutFirewallConfigVercelRuleset$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PutFirewallConfigVercelRuleset' from JSON`,
+  );
+}
+
+/** @internal */
 export const PutFirewallConfigManagedRules$inboundSchema: z.ZodType<
   PutFirewallConfigManagedRules,
   z.ZodTypeDef,
@@ -4323,10 +4417,14 @@ export const PutFirewallConfigManagedRules$inboundSchema: z.ZodType<
   ),
   ai_bots: types.optional(z.lazy(() => PutFirewallConfigAiBots$inboundSchema)),
   owasp: types.optional(z.lazy(() => PutFirewallConfigOwasp$inboundSchema)),
+  vercel_ruleset: types.optional(
+    z.lazy(() => PutFirewallConfigVercelRuleset$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "bot_protection": "botProtection",
     "ai_bots": "aiBots",
+    "vercel_ruleset": "vercelRuleset",
   });
 });
 /** @internal */
@@ -4334,6 +4432,7 @@ export type PutFirewallConfigManagedRules$Outbound = {
   bot_protection?: PutFirewallConfigBotProtection$Outbound | undefined;
   ai_bots?: PutFirewallConfigAiBots$Outbound | undefined;
   owasp?: PutFirewallConfigOwasp$Outbound | undefined;
+  vercel_ruleset?: PutFirewallConfigVercelRuleset$Outbound | undefined;
 };
 
 /** @internal */
@@ -4346,10 +4445,13 @@ export const PutFirewallConfigManagedRules$outboundSchema: z.ZodType<
     .optional(),
   aiBots: z.lazy(() => PutFirewallConfigAiBots$outboundSchema).optional(),
   owasp: z.lazy(() => PutFirewallConfigOwasp$outboundSchema).optional(),
+  vercelRuleset: z.lazy(() => PutFirewallConfigVercelRuleset$outboundSchema)
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     botProtection: "bot_protection",
     aiBots: "ai_bots",
+    vercelRuleset: "vercel_ruleset",
   });
 });
 

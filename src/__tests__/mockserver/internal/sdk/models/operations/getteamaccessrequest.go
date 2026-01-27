@@ -34,8 +34,8 @@ type GetTeamAccessRequestOrigin string
 const (
 	GetTeamAccessRequestOriginTeams             GetTeamAccessRequestOrigin = "teams"
 	GetTeamAccessRequestOriginLink              GetTeamAccessRequestOrigin = "link"
-	GetTeamAccessRequestOriginMail              GetTeamAccessRequestOrigin = "mail"
 	GetTeamAccessRequestOriginImport            GetTeamAccessRequestOrigin = "import"
+	GetTeamAccessRequestOriginMail              GetTeamAccessRequestOrigin = "mail"
 	GetTeamAccessRequestOriginGithub            GetTeamAccessRequestOrigin = "github"
 	GetTeamAccessRequestOriginGitlab            GetTeamAccessRequestOrigin = "gitlab"
 	GetTeamAccessRequestOriginBitbucket         GetTeamAccessRequestOrigin = "bitbucket"
@@ -43,6 +43,7 @@ const (
 	GetTeamAccessRequestOriginDsync             GetTeamAccessRequestOrigin = "dsync"
 	GetTeamAccessRequestOriginFeedback          GetTeamAccessRequestOrigin = "feedback"
 	GetTeamAccessRequestOriginOrganizationTeams GetTeamAccessRequestOrigin = "organization-teams"
+	GetTeamAccessRequestOriginNsnbAutoApprove   GetTeamAccessRequestOrigin = "nsnb-auto-approve"
 )
 
 func (e GetTeamAccessRequestOrigin) ToPointer() *GetTeamAccessRequestOrigin {
@@ -58,9 +59,9 @@ func (e *GetTeamAccessRequestOrigin) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "link":
 		fallthrough
-	case "mail":
-		fallthrough
 	case "import":
+		fallthrough
+	case "mail":
 		fallthrough
 	case "github":
 		fallthrough
@@ -75,6 +76,8 @@ func (e *GetTeamAccessRequestOrigin) UnmarshalJSON(data []byte) error {
 	case "feedback":
 		fallthrough
 	case "organization-teams":
+		fallthrough
+	case "nsnb-auto-approve":
 		*e = GetTeamAccessRequestOrigin(v)
 		return nil
 	default:

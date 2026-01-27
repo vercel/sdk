@@ -8,8 +8,9 @@ The payload of the event, if requested.
 import { NinetyFour } from "@vercel/sdk/models/userevent.js";
 
 let value: NinetyFour = {
-  name: "<value>",
-  ownerId: "<id>",
+  projectId: "<id>",
+  projectName: "<value>",
+  onPullRequest: false,
 };
 ```
 
@@ -17,5 +18,6 @@ let value: NinetyFour = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `onPullRequest`    | *boolean*          | :heavy_check_mark: | N/A                |

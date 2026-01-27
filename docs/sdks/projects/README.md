@@ -4,7 +4,6 @@
 
 ### Available Operations
 
-* [updateProjectDataCache](#updateprojectdatacache) - Update the data cache feature
 * [getProjects](#getprojects) - Retrieve a list of projects
 * [createProject](#createproject) - Create a new project
 * [updateProject](#updateproject) - Update an existing project
@@ -30,89 +29,6 @@
 * [pauseProject](#pauseproject) - Pause a project
 * [unpauseProject](#unpauseproject) - Unpause a project
 
-## updateProjectDataCache
-
-Update the data cache feature on a project.
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="updateProjectDataCache" method="patch" path="/v1/data-cache/projects/{projectId}" -->
-```typescript
-import { Vercel } from "@vercel/sdk";
-
-const vercel = new Vercel({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const result = await vercel.projects.updateProjectDataCache({
-    projectId: "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-    requestBody: {
-      disabled: true,
-    },
-  });
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { VercelCore } from "@vercel/sdk/core.js";
-import { projectsUpdateProjectDataCache } from "@vercel/sdk/funcs/projectsUpdateProjectDataCache.js";
-
-// Use `VercelCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const vercel = new VercelCore({
-  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const res = await projectsUpdateProjectDataCache(vercel, {
-    projectId: "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-    requestBody: {
-      disabled: true,
-    },
-  });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("projectsUpdateProjectDataCache failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.UpdateProjectDataCacheRequest](../../models/updateprojectdatacacherequest.md)                                                                                          | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[models.UpdateProjectDataCacheResponseBody](../../models/updateprojectdatacacheresponsebody.md)\>**
-
-### Errors
-
-| Error Type      | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| models.SDKError | 4XX, 5XX        | \*/\*           |
-
 ## getProjects
 
 Allows to retrieve the list of projects of the authenticated user or team. The list will be paginated and the provided query parameters allow filtering the returned projects.
@@ -134,6 +50,7 @@ async function run() {
     elasticConcurrencyEnabled: "1",
     staticIpsEnabled: "1",
     buildMachineTypes: "default,enhanced",
+    buildQueueConfiguration: "SKIP_NAMESPACE_QUEUE",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
@@ -165,6 +82,7 @@ async function run() {
     elasticConcurrencyEnabled: "1",
     staticIpsEnabled: "1",
     buildMachineTypes: "default,enhanced",
+    buildQueueConfiguration: "SKIP_NAMESPACE_QUEUE",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
@@ -883,7 +801,7 @@ async function run() {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
     requestBody: {
-      projectId: "<id>",
+      projectId: "prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA",
       gitBranch: null,
       redirect: "foobar.com",
       redirectStatusCode: 307,
@@ -917,7 +835,7 @@ async function run() {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
     requestBody: {
-      projectId: "<id>",
+      projectId: "prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA",
       gitBranch: null,
       redirect: "foobar.com",
       redirectStatusCode: 307,

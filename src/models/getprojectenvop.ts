@@ -182,19 +182,23 @@ export type GetProjectEnvResponseBody2 = {
   edgeConfigTokenId?: string | null | undefined;
   createdAt?: number | undefined;
   updatedAt?: number | undefined;
-  createdBy?: string | null | undefined;
   id?: string | undefined;
-  key: string;
+  createdBy?: string | null | undefined;
   target?:
     | Array<GetProjectEnvTargetProjects1>
     | GetProjectEnvTargetProjects2
     | undefined;
+  key: string;
   gitBranch?: string | undefined;
   updatedBy?: string | null | undefined;
   /**
    * This is used to identify variables that have been migrated from type secret to sensitive.
    */
   sunsetSecretId?: string | undefined;
+  /**
+   * Legacy now-encryption ciphertext, present after migration swaps value/vsmValue
+   */
+  legacyValue?: string | undefined;
   decrypted?: boolean | undefined;
   configurationId?: string | null | undefined;
   contentHint?:
@@ -375,16 +379,20 @@ export type GetProjectEnvResponseBody1 = {
   edgeConfigTokenId?: string | null | undefined;
   createdAt?: number | undefined;
   updatedAt?: number | undefined;
-  createdBy?: string | null | undefined;
   id?: string | undefined;
-  key: string;
+  createdBy?: string | null | undefined;
   target?: Array<GetProjectEnvTarget1> | GetProjectEnvTarget2 | undefined;
+  key: string;
   gitBranch?: string | undefined;
   updatedBy?: string | null | undefined;
   /**
    * This is used to identify variables that have been migrated from type secret to sensitive.
    */
   sunsetSecretId?: string | undefined;
+  /**
+   * Legacy now-encryption ciphertext, present after migration swaps value/vsmValue
+   */
+  legacyValue?: string | undefined;
   configurationId?: string | null | undefined;
   contentHint?:
     | GetProjectEnvContentHint1
@@ -1385,18 +1393,19 @@ export const GetProjectEnvResponseBody2$inboundSchema: z.ZodType<
   edgeConfigTokenId: z.nullable(types.string()).optional(),
   createdAt: types.optional(types.number()),
   updatedAt: types.optional(types.number()),
-  createdBy: z.nullable(types.string()).optional(),
   id: types.optional(types.string()),
-  key: types.string(),
+  createdBy: z.nullable(types.string()).optional(),
   target: types.optional(
     smartUnion([
       z.array(GetProjectEnvTargetProjects1$inboundSchema),
       GetProjectEnvTargetProjects2$inboundSchema,
     ]),
   ),
+  key: types.string(),
   gitBranch: types.optional(types.string()),
   updatedBy: z.nullable(types.string()).optional(),
   sunsetSecretId: types.optional(types.string()),
+  legacyValue: types.optional(types.string()),
   decrypted: types.optional(types.boolean()),
   configurationId: z.nullable(types.string()).optional(),
   contentHint: z.nullable(
@@ -1434,13 +1443,14 @@ export type GetProjectEnvResponseBody2$Outbound = {
   edgeConfigTokenId?: string | null | undefined;
   createdAt?: number | undefined;
   updatedAt?: number | undefined;
-  createdBy?: string | null | undefined;
   id?: string | undefined;
-  key: string;
+  createdBy?: string | null | undefined;
   target?: Array<string> | string | undefined;
+  key: string;
   gitBranch?: string | undefined;
   updatedBy?: string | null | undefined;
   sunsetSecretId?: string | undefined;
+  legacyValue?: string | undefined;
   decrypted?: boolean | undefined;
   configurationId?: string | null | undefined;
   contentHint?:
@@ -1481,16 +1491,17 @@ export const GetProjectEnvResponseBody2$outboundSchema: z.ZodType<
   edgeConfigTokenId: z.nullable(z.string()).optional(),
   createdAt: z.number().optional(),
   updatedAt: z.number().optional(),
-  createdBy: z.nullable(z.string()).optional(),
   id: z.string().optional(),
-  key: z.string(),
+  createdBy: z.nullable(z.string()).optional(),
   target: smartUnion([
     z.array(GetProjectEnvTargetProjects1$outboundSchema),
     GetProjectEnvTargetProjects2$outboundSchema,
   ]).optional(),
+  key: z.string(),
   gitBranch: z.string().optional(),
   updatedBy: z.nullable(z.string()).optional(),
   sunsetSecretId: z.string().optional(),
+  legacyValue: z.string().optional(),
   decrypted: z.boolean().optional(),
   configurationId: z.nullable(z.string()).optional(),
   contentHint: z.nullable(
@@ -2402,18 +2413,19 @@ export const GetProjectEnvResponseBody1$inboundSchema: z.ZodType<
   edgeConfigTokenId: z.nullable(types.string()).optional(),
   createdAt: types.optional(types.number()),
   updatedAt: types.optional(types.number()),
-  createdBy: z.nullable(types.string()).optional(),
   id: types.optional(types.string()),
-  key: types.string(),
+  createdBy: z.nullable(types.string()).optional(),
   target: types.optional(
     smartUnion([
       z.array(GetProjectEnvTarget1$inboundSchema),
       GetProjectEnvTarget2$inboundSchema,
     ]),
   ),
+  key: types.string(),
   gitBranch: types.optional(types.string()),
   updatedBy: z.nullable(types.string()).optional(),
   sunsetSecretId: types.optional(types.string()),
+  legacyValue: types.optional(types.string()),
   configurationId: z.nullable(types.string()).optional(),
   contentHint: z.nullable(
     z.union([
@@ -2448,13 +2460,14 @@ export type GetProjectEnvResponseBody1$Outbound = {
   edgeConfigTokenId?: string | null | undefined;
   createdAt?: number | undefined;
   updatedAt?: number | undefined;
-  createdBy?: string | null | undefined;
   id?: string | undefined;
-  key: string;
+  createdBy?: string | null | undefined;
   target?: Array<string> | string | undefined;
+  key: string;
   gitBranch?: string | undefined;
   updatedBy?: string | null | undefined;
   sunsetSecretId?: string | undefined;
+  legacyValue?: string | undefined;
   configurationId?: string | null | undefined;
   contentHint?:
     | GetProjectEnvContentHint1$Outbound
@@ -2494,16 +2507,17 @@ export const GetProjectEnvResponseBody1$outboundSchema: z.ZodType<
   edgeConfigTokenId: z.nullable(z.string()).optional(),
   createdAt: z.number().optional(),
   updatedAt: z.number().optional(),
-  createdBy: z.nullable(z.string()).optional(),
   id: z.string().optional(),
-  key: z.string(),
+  createdBy: z.nullable(z.string()).optional(),
   target: smartUnion([
     z.array(GetProjectEnvTarget1$outboundSchema),
     GetProjectEnvTarget2$outboundSchema,
   ]).optional(),
+  key: z.string(),
   gitBranch: z.string().optional(),
   updatedBy: z.nullable(z.string()).optional(),
   sunsetSecretId: z.string().optional(),
+  legacyValue: z.string().optional(),
   configurationId: z.nullable(z.string()).optional(),
   contentHint: z.nullable(
     z.union([

@@ -8,28 +8,16 @@ The payload of the event, if requested.
 import { NinetyNine } from "@vercel/sdk/models/userevent.js";
 
 let value: NinetyNine = {
-  next: {
-    project: {
-      id: "<id>",
-      staticIps: {
-        enabled: false,
-      },
-    },
-  },
-  previous: {
-    project: {
-      id: "<id>",
-      staticIps: {
-        enabled: true,
-      },
-    },
-  },
+  projectId: "<id>",
+  projectName: "<value>",
+  gitLFS: true,
 };
 ```
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `next`                                   | [models.Next](../models/next.md)         | :heavy_check_mark:                       | N/A                                      |
-| `previous`                               | [models.Previous](../models/previous.md) | :heavy_check_mark:                       | N/A                                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `gitLFS`           | *boolean*          | :heavy_check_mark: | N/A                |

@@ -6,11 +6,11 @@
 import { UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction } from "@vercel/sdk/models/updateprojectop.js";
 
 let value: UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction =
-  "log";
+  "challenge";
 ```
 
 ## Values
 
 ```typescript
-"deny" | "challenge" | "log"
+"log" | "deny" | "challenge"
 ```

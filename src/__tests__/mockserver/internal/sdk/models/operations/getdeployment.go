@@ -2796,6 +2796,69 @@ func (u GetDeploymentGitSourceUnion2) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type GetDeploymentGitSourceUnion2: all fields are null")
 }
 
+// GetDeploymentManualProvisioningState2 - Current provisioning state
+type GetDeploymentManualProvisioningState2 string
+
+const (
+	GetDeploymentManualProvisioningState2Pending  GetDeploymentManualProvisioningState2 = "PENDING"
+	GetDeploymentManualProvisioningState2Complete GetDeploymentManualProvisioningState2 = "COMPLETE"
+	GetDeploymentManualProvisioningState2Timeout  GetDeploymentManualProvisioningState2 = "TIMEOUT"
+)
+
+func (e GetDeploymentManualProvisioningState2) ToPointer() *GetDeploymentManualProvisioningState2 {
+	return &e
+}
+func (e *GetDeploymentManualProvisioningState2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "PENDING":
+		fallthrough
+	case "COMPLETE":
+		fallthrough
+	case "TIMEOUT":
+		*e = GetDeploymentManualProvisioningState2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentManualProvisioningState2: %v", v)
+	}
+}
+
+// GetDeploymentManualProvisioning2 - Present when deployment was created with VERCEL_MANUAL_PROVISIONING=true. The deployment stays in INITIALIZING until /continue is called.
+type GetDeploymentManualProvisioning2 struct {
+	// Current provisioning state
+	State GetDeploymentManualProvisioningState2 `json:"state"`
+	// Timestamp when manual provisioning completed
+	CompletedAt *float64 `json:"completedAt,omitempty"`
+}
+
+func (g GetDeploymentManualProvisioning2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentManualProvisioning2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"state"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetDeploymentManualProvisioning2) GetState() GetDeploymentManualProvisioningState2 {
+	if o == nil {
+		return GetDeploymentManualProvisioningState2("")
+	}
+	return o.State
+}
+
+func (o *GetDeploymentManualProvisioning2) GetCompletedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CompletedAt
+}
+
 // GetDeploymentNodeVersion2 - If set it overrides the `projectSettings.nodeVersion` for this deployment.
 type GetDeploymentNodeVersion2 string
 
@@ -3137,10 +3200,12 @@ type Lambdas2 struct {
 	ErrorMessage *string  `json:"errorMessage,omitempty"`
 	ErrorStep    *string  `json:"errorStep,omitempty"`
 	// Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service
-	PassiveRegions    []string                      `json:"passiveRegions,omitempty"`
-	GitSource         *GetDeploymentGitSourceUnion2 `json:"gitSource,omitempty"`
-	Meta              map[string]string             `json:"meta"`
-	OriginCacheRegion *string                       `json:"originCacheRegion,omitempty"`
+	PassiveRegions []string                      `json:"passiveRegions,omitempty"`
+	GitSource      *GetDeploymentGitSourceUnion2 `json:"gitSource,omitempty"`
+	// Present when deployment was created with VERCEL_MANUAL_PROVISIONING=true. The deployment stays in INITIALIZING until /continue is called.
+	ManualProvisioning *GetDeploymentManualProvisioning2 `json:"manualProvisioning,omitempty"`
+	Meta               map[string]string                 `json:"meta"`
+	OriginCacheRegion  *string                           `json:"originCacheRegion,omitempty"`
 	// If set it overrides the `projectSettings.nodeVersion` for this deployment.
 	NodeVersion *GetDeploymentNodeVersion2 `json:"nodeVersion,omitempty"`
 	// The public project information associated with the deployment.
@@ -3463,6 +3528,13 @@ func (o *Lambdas2) GetGitSource() *GetDeploymentGitSourceUnion2 {
 		return nil
 	}
 	return o.GitSource
+}
+
+func (o *Lambdas2) GetManualProvisioning() *GetDeploymentManualProvisioning2 {
+	if o == nil {
+		return nil
+	}
+	return o.ManualProvisioning
 }
 
 func (o *Lambdas2) GetMeta() map[string]string {
@@ -3796,10 +3868,13 @@ const (
 	GetDeploymentFrameworkHono           GetDeploymentFramework = "hono"
 	GetDeploymentFrameworkExpress        GetDeploymentFramework = "express"
 	GetDeploymentFrameworkH3             GetDeploymentFramework = "h3"
+	GetDeploymentFrameworkKoa            GetDeploymentFramework = "koa"
 	GetDeploymentFrameworkNestjs         GetDeploymentFramework = "nestjs"
 	GetDeploymentFrameworkElysia         GetDeploymentFramework = "elysia"
 	GetDeploymentFrameworkFastify        GetDeploymentFramework = "fastify"
 	GetDeploymentFrameworkXmcp           GetDeploymentFramework = "xmcp"
+	GetDeploymentFrameworkPython         GetDeploymentFramework = "python"
+	GetDeploymentFrameworkServices       GetDeploymentFramework = "services"
 )
 
 func (e GetDeploymentFramework) ToPointer() *GetDeploymentFramework {
@@ -3917,6 +3992,8 @@ func (e *GetDeploymentFramework) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "h3":
 		fallthrough
+	case "koa":
+		fallthrough
 	case "nestjs":
 		fallthrough
 	case "elysia":
@@ -3924,6 +4001,10 @@ func (e *GetDeploymentFramework) UnmarshalJSON(data []byte) error {
 	case "fastify":
 		fallthrough
 	case "xmcp":
+		fallthrough
+	case "python":
+		fallthrough
+	case "services":
 		*e = GetDeploymentFramework(v)
 		return nil
 	default:
@@ -7233,6 +7314,69 @@ func (u GetDeploymentGitSourceUnion1) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type GetDeploymentGitSourceUnion1: all fields are null")
 }
 
+// GetDeploymentManualProvisioningState1 - Current provisioning state
+type GetDeploymentManualProvisioningState1 string
+
+const (
+	GetDeploymentManualProvisioningState1Pending  GetDeploymentManualProvisioningState1 = "PENDING"
+	GetDeploymentManualProvisioningState1Complete GetDeploymentManualProvisioningState1 = "COMPLETE"
+	GetDeploymentManualProvisioningState1Timeout  GetDeploymentManualProvisioningState1 = "TIMEOUT"
+)
+
+func (e GetDeploymentManualProvisioningState1) ToPointer() *GetDeploymentManualProvisioningState1 {
+	return &e
+}
+func (e *GetDeploymentManualProvisioningState1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "PENDING":
+		fallthrough
+	case "COMPLETE":
+		fallthrough
+	case "TIMEOUT":
+		*e = GetDeploymentManualProvisioningState1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentManualProvisioningState1: %v", v)
+	}
+}
+
+// GetDeploymentManualProvisioning1 - Present when deployment was created with VERCEL_MANUAL_PROVISIONING=true. The deployment stays in INITIALIZING until /continue is called.
+type GetDeploymentManualProvisioning1 struct {
+	// Current provisioning state
+	State GetDeploymentManualProvisioningState1 `json:"state"`
+	// Timestamp when manual provisioning completed
+	CompletedAt *float64 `json:"completedAt,omitempty"`
+}
+
+func (g GetDeploymentManualProvisioning1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentManualProvisioning1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"state"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetDeploymentManualProvisioning1) GetState() GetDeploymentManualProvisioningState1 {
+	if o == nil {
+		return GetDeploymentManualProvisioningState1("")
+	}
+	return o.State
+}
+
+func (o *GetDeploymentManualProvisioning1) GetCompletedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CompletedAt
+}
+
 // GetDeploymentNodeVersion1 - If set it overrides the `projectSettings.nodeVersion` for this deployment.
 type GetDeploymentNodeVersion1 string
 
@@ -7639,6 +7783,8 @@ type GetDeploymentExperimentalTrigger struct {
 	RetryAfterSeconds *float64 `json:"retryAfterSeconds,omitempty"`
 	// Initial delay in seconds before first execution attempt (OPTIONAL) Must be 0 or greater. Use 0 for no initial delay. Behavior when not specified depends on the server's default configuration.
 	InitialDelaySeconds *float64 `json:"initialDelaySeconds,omitempty"`
+	// Maximum number of concurrent executions for this consumer (OPTIONAL) Must be at least 1 if specified. Behavior when not specified depends on the server's default configuration.
+	MaxConcurrency *float64 `json:"maxConcurrency,omitempty"`
 }
 
 func (g GetDeploymentExperimentalTrigger) MarshalJSON() ([]byte, error) {
@@ -7692,6 +7838,13 @@ func (o *GetDeploymentExperimentalTrigger) GetInitialDelaySeconds() *float64 {
 		return nil
 	}
 	return o.InitialDelaySeconds
+}
+
+func (o *GetDeploymentExperimentalTrigger) GetMaxConcurrency() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.MaxConcurrency
 }
 
 type GetDeploymentFunctions struct {
@@ -9821,7 +9974,8 @@ type GetDeploymentRoute1 struct {
 	// The original middleware matchers.
 	MiddlewareRawSrc []string `json:"middlewareRawSrc,omitempty"`
 	// A middleware index in the `middleware` key under the build result
-	Middleware *float64 `json:"middleware,omitempty"`
+	Middleware                *float64 `json:"middleware,omitempty"`
+	RespectOriginCacheControl *bool    `json:"respectOriginCacheControl,omitempty"`
 }
 
 func (g GetDeploymentRoute1) MarshalJSON() ([]byte, error) {
@@ -9966,6 +10120,13 @@ func (o *GetDeploymentRoute1) GetMiddleware() *float64 {
 		return nil
 	}
 	return o.Middleware
+}
+
+func (o *GetDeploymentRoute1) GetRespectOriginCacheControl() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.RespectOriginCacheControl
 }
 
 type GetDeploymentRouteUnionType string
@@ -11010,6 +11171,207 @@ func (e *GetDeploymentFunctionMemoryType) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// GetDeploymentConfiguration - Build resource configuration snapshot for this deployment.
+type GetDeploymentConfiguration string
+
+const (
+	GetDeploymentConfigurationSkipNamespaceQueue    GetDeploymentConfiguration = "SKIP_NAMESPACE_QUEUE"
+	GetDeploymentConfigurationWaitForNamespaceQueue GetDeploymentConfiguration = "WAIT_FOR_NAMESPACE_QUEUE"
+)
+
+func (e GetDeploymentConfiguration) ToPointer() *GetDeploymentConfiguration {
+	return &e
+}
+func (e *GetDeploymentConfiguration) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "SKIP_NAMESPACE_QUEUE":
+		fallthrough
+	case "WAIT_FOR_NAMESPACE_QUEUE":
+		*e = GetDeploymentConfiguration(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentConfiguration: %v", v)
+	}
+}
+
+// GetDeploymentBuildQueue - Build resource configuration snapshot for this deployment.
+type GetDeploymentBuildQueue struct {
+	// Build resource configuration snapshot for this deployment.
+	Configuration *GetDeploymentConfiguration `json:"configuration,omitempty"`
+}
+
+func (g GetDeploymentBuildQueue) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentBuildQueue) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetDeploymentBuildQueue) GetConfiguration() *GetDeploymentConfiguration {
+	if o == nil {
+		return nil
+	}
+	return o.Configuration
+}
+
+// GetDeploymentPurchaseType - Build resource configuration snapshot for this deployment.
+type GetDeploymentPurchaseType string
+
+const (
+	GetDeploymentPurchaseTypeEnhanced GetDeploymentPurchaseType = "enhanced"
+	GetDeploymentPurchaseTypeTurbo    GetDeploymentPurchaseType = "turbo"
+)
+
+func (e GetDeploymentPurchaseType) ToPointer() *GetDeploymentPurchaseType {
+	return &e
+}
+func (e *GetDeploymentPurchaseType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enhanced":
+		fallthrough
+	case "turbo":
+		*e = GetDeploymentPurchaseType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentPurchaseType: %v", v)
+	}
+}
+
+// GetDeploymentBuildMachine - Build resource configuration snapshot for this deployment.
+type GetDeploymentBuildMachine struct {
+	// Build resource configuration snapshot for this deployment.
+	PurchaseType *GetDeploymentPurchaseType `json:"purchaseType,omitempty"`
+	// Build resource configuration snapshot for this deployment.
+	IsDefaultBuildMachine *bool `json:"isDefaultBuildMachine,omitempty"`
+	// Build resource configuration snapshot for this deployment.
+	Cores *float64 `json:"cores,omitempty"`
+	// Build resource configuration snapshot for this deployment.
+	Memory *float64 `json:"memory,omitempty"`
+}
+
+func (g GetDeploymentBuildMachine) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentBuildMachine) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetDeploymentBuildMachine) GetPurchaseType() *GetDeploymentPurchaseType {
+	if o == nil {
+		return nil
+	}
+	return o.PurchaseType
+}
+
+func (o *GetDeploymentBuildMachine) GetIsDefaultBuildMachine() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsDefaultBuildMachine
+}
+
+func (o *GetDeploymentBuildMachine) GetCores() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Cores
+}
+
+func (o *GetDeploymentBuildMachine) GetMemory() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Memory
+}
+
+// GetDeploymentElasticConcurrency - When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues
+type GetDeploymentElasticConcurrency string
+
+const (
+	GetDeploymentElasticConcurrencyTeamSetting    GetDeploymentElasticConcurrency = "TEAM_SETTING"
+	GetDeploymentElasticConcurrencyProjectSetting GetDeploymentElasticConcurrency = "PROJECT_SETTING"
+	GetDeploymentElasticConcurrencySkipQueue      GetDeploymentElasticConcurrency = "SKIP_QUEUE"
+)
+
+func (e GetDeploymentElasticConcurrency) ToPointer() *GetDeploymentElasticConcurrency {
+	return &e
+}
+func (e *GetDeploymentElasticConcurrency) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "TEAM_SETTING":
+		fallthrough
+	case "PROJECT_SETTING":
+		fallthrough
+	case "SKIP_QUEUE":
+		*e = GetDeploymentElasticConcurrency(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentElasticConcurrency: %v", v)
+	}
+}
+
+// GetDeploymentResourceConfig - Build resource configuration snapshot for this deployment.
+type GetDeploymentResourceConfig struct {
+	// Build resource configuration snapshot for this deployment.
+	BuildQueue *GetDeploymentBuildQueue `json:"buildQueue,omitempty"`
+	// Build resource configuration snapshot for this deployment.
+	BuildMachine *GetDeploymentBuildMachine `json:"buildMachine,omitempty"`
+	// When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues
+	ElasticConcurrency *GetDeploymentElasticConcurrency `json:"elasticConcurrency,omitempty"`
+}
+
+func (g GetDeploymentResourceConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentResourceConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetDeploymentResourceConfig) GetBuildQueue() *GetDeploymentBuildQueue {
+	if o == nil {
+		return nil
+	}
+	return o.BuildQueue
+}
+
+func (o *GetDeploymentResourceConfig) GetBuildMachine() *GetDeploymentBuildMachine {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachine
+}
+
+func (o *GetDeploymentResourceConfig) GetElasticConcurrency() *GetDeploymentElasticConcurrency {
+	if o == nil {
+		return nil
+	}
+	return o.ElasticConcurrency
+}
+
 // GetDeploymentConfig - Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
 type GetDeploymentConfig struct {
 	Version                     *float64                        `json:"version,omitempty"`
@@ -11019,6 +11381,8 @@ type GetDeploymentConfig struct {
 	SecureComputePrimaryRegion  *string                         `json:"secureComputePrimaryRegion"`
 	SecureComputeFallbackRegion *string                         `json:"secureComputeFallbackRegion"`
 	IsUsingActiveCPU            *bool                           `json:"isUsingActiveCPU,omitempty"`
+	// Build resource configuration snapshot for this deployment.
+	ResourceConfig *GetDeploymentResourceConfig `json:"resourceConfig,omitempty"`
 }
 
 func (g GetDeploymentConfig) MarshalJSON() ([]byte, error) {
@@ -11081,18 +11445,25 @@ func (o *GetDeploymentConfig) GetIsUsingActiveCPU() *bool {
 	return o.IsUsingActiveCPU
 }
 
-type GetDeploymentState string
+func (o *GetDeploymentConfig) GetResourceConfig() *GetDeploymentResourceConfig {
+	if o == nil {
+		return nil
+	}
+	return o.ResourceConfig
+}
+
+type GetDeploymentDeploymentAliasState string
 
 const (
-	GetDeploymentStateSucceeded GetDeploymentState = "succeeded"
-	GetDeploymentStateFailed    GetDeploymentState = "failed"
-	GetDeploymentStatePending   GetDeploymentState = "pending"
+	GetDeploymentDeploymentAliasStateSucceeded GetDeploymentDeploymentAliasState = "succeeded"
+	GetDeploymentDeploymentAliasStateFailed    GetDeploymentDeploymentAliasState = "failed"
+	GetDeploymentDeploymentAliasStatePending   GetDeploymentDeploymentAliasState = "pending"
 )
 
-func (e GetDeploymentState) ToPointer() *GetDeploymentState {
+func (e GetDeploymentDeploymentAliasState) ToPointer() *GetDeploymentDeploymentAliasState {
 	return &e
 }
-func (e *GetDeploymentState) UnmarshalJSON(data []byte) error {
+func (e *GetDeploymentDeploymentAliasState) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -11103,18 +11474,18 @@ func (e *GetDeploymentState) UnmarshalJSON(data []byte) error {
 	case "failed":
 		fallthrough
 	case "pending":
-		*e = GetDeploymentState(v)
+		*e = GetDeploymentDeploymentAliasState(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetDeploymentState: %v", v)
+		return fmt.Errorf("invalid value for GetDeploymentDeploymentAliasState: %v", v)
 	}
 }
 
 // GetDeploymentDeploymentAlias - Condensed check data. Retrieve individual check and check run data using api-checks v2 routes.
 type GetDeploymentDeploymentAlias struct {
-	State       GetDeploymentState `json:"state"`
-	StartedAt   float64            `json:"startedAt"`
-	CompletedAt *float64           `json:"completedAt,omitempty"`
+	State       GetDeploymentDeploymentAliasState `json:"state"`
+	StartedAt   float64                           `json:"startedAt"`
+	CompletedAt *float64                          `json:"completedAt,omitempty"`
 }
 
 func (g GetDeploymentDeploymentAlias) MarshalJSON() ([]byte, error) {
@@ -11128,9 +11499,9 @@ func (g *GetDeploymentDeploymentAlias) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *GetDeploymentDeploymentAlias) GetState() GetDeploymentState {
+func (o *GetDeploymentDeploymentAlias) GetState() GetDeploymentDeploymentAliasState {
 	if o == nil {
-		return GetDeploymentState("")
+		return GetDeploymentDeploymentAliasState("")
 	}
 	return o.State
 }
@@ -11243,10 +11614,12 @@ type Lambdas1 struct {
 	ErrorMessage *string  `json:"errorMessage,omitempty"`
 	ErrorStep    *string  `json:"errorStep,omitempty"`
 	// Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service
-	PassiveRegions    []string                      `json:"passiveRegions,omitempty"`
-	GitSource         *GetDeploymentGitSourceUnion1 `json:"gitSource,omitempty"`
-	Meta              map[string]string             `json:"meta"`
-	OriginCacheRegion *string                       `json:"originCacheRegion,omitempty"`
+	PassiveRegions []string                      `json:"passiveRegions,omitempty"`
+	GitSource      *GetDeploymentGitSourceUnion1 `json:"gitSource,omitempty"`
+	// Present when deployment was created with VERCEL_MANUAL_PROVISIONING=true. The deployment stays in INITIALIZING until /continue is called.
+	ManualProvisioning *GetDeploymentManualProvisioning1 `json:"manualProvisioning,omitempty"`
+	Meta               map[string]string                 `json:"meta"`
+	OriginCacheRegion  *string                           `json:"originCacheRegion,omitempty"`
 	// If set it overrides the `projectSettings.nodeVersion` for this deployment.
 	NodeVersion *GetDeploymentNodeVersion1 `json:"nodeVersion,omitempty"`
 	// The public project information associated with the deployment.
@@ -11678,6 +12051,13 @@ func (o *Lambdas1) GetGitSource() *GetDeploymentGitSourceUnion1 {
 		return nil
 	}
 	return o.GitSource
+}
+
+func (o *Lambdas1) GetManualProvisioning() *GetDeploymentManualProvisioning1 {
+	if o == nil {
+		return nil
+	}
+	return o.ManualProvisioning
 }
 
 func (o *Lambdas1) GetMeta() map[string]string {

@@ -67,10 +67,13 @@ const (
 	UpdateProjectFrameworkRequestHono           UpdateProjectFrameworkRequest = "hono"
 	UpdateProjectFrameworkRequestExpress        UpdateProjectFrameworkRequest = "express"
 	UpdateProjectFrameworkRequestH3             UpdateProjectFrameworkRequest = "h3"
+	UpdateProjectFrameworkRequestKoa            UpdateProjectFrameworkRequest = "koa"
 	UpdateProjectFrameworkRequestNestjs         UpdateProjectFrameworkRequest = "nestjs"
 	UpdateProjectFrameworkRequestElysia         UpdateProjectFrameworkRequest = "elysia"
 	UpdateProjectFrameworkRequestFastify        UpdateProjectFrameworkRequest = "fastify"
 	UpdateProjectFrameworkRequestXmcp           UpdateProjectFrameworkRequest = "xmcp"
+	UpdateProjectFrameworkRequestPython         UpdateProjectFrameworkRequest = "python"
+	UpdateProjectFrameworkRequestServices       UpdateProjectFrameworkRequest = "services"
 )
 
 func (e UpdateProjectFrameworkRequest) ToPointer() *UpdateProjectFrameworkRequest {
@@ -188,6 +191,8 @@ func (e *UpdateProjectFrameworkRequest) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "h3":
 		fallthrough
+	case "koa":
+		fallthrough
 	case "nestjs":
 		fallthrough
 	case "elysia":
@@ -195,6 +200,10 @@ func (e *UpdateProjectFrameworkRequest) UnmarshalJSON(data []byte) error {
 	case "fastify":
 		fallthrough
 	case "xmcp":
+		fallthrough
+	case "python":
+		fallthrough
+	case "services":
 		*e = UpdateProjectFrameworkRequest(v)
 		return nil
 	default:
@@ -1032,30 +1041,30 @@ func (u CurrentValueRequest) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type CurrentValueRequest: all fields are null")
 }
 
-type UpdateProjectValueRequest struct {
+type ValueDismissedToastRequest struct {
 	PreviousValue PreviousValueRequest `json:"previousValue"`
 	CurrentValue  CurrentValueRequest  `json:"currentValue"`
 }
 
-func (u UpdateProjectValueRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
+func (v ValueDismissedToastRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(v, "", false)
 }
 
-func (u *UpdateProjectValueRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"previousValue", "currentValue"}); err != nil {
+func (v *ValueDismissedToastRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &v, "", false, []string{"previousValue", "currentValue"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *UpdateProjectValueRequest) GetPreviousValue() PreviousValueRequest {
+func (o *ValueDismissedToastRequest) GetPreviousValue() PreviousValueRequest {
 	if o == nil {
 		return PreviousValueRequest{}
 	}
 	return o.PreviousValue
 }
 
-func (o *UpdateProjectValueRequest) GetCurrentValue() CurrentValueRequest {
+func (o *ValueDismissedToastRequest) GetCurrentValue() CurrentValueRequest {
 	if o == nil {
 		return CurrentValueRequest{}
 	}
@@ -1592,8 +1601,8 @@ func (o *UpdateProjectSpeedInsights) GetPaidAt() *float64 {
 type UpdateProjectEnvIDEnum string
 
 const (
-	UpdateProjectEnvIDEnumPreview    UpdateProjectEnvIDEnum = "preview"
 	UpdateProjectEnvIDEnumProduction UpdateProjectEnvIDEnum = "production"
+	UpdateProjectEnvIDEnumPreview    UpdateProjectEnvIDEnum = "preview"
 )
 
 func (e UpdateProjectEnvIDEnum) ToPointer() *UpdateProjectEnvIDEnum {
@@ -1605,9 +1614,9 @@ func (e *UpdateProjectEnvIDEnum) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "preview":
-		fallthrough
 	case "production":
+		fallthrough
+	case "preview":
 		*e = UpdateProjectEnvIDEnum(v)
 		return nil
 	default:
@@ -3346,7 +3355,9 @@ type UpdateProjectEnv struct {
 	Target *UpdateProjectTargetUnion `json:"target,omitempty"`
 	Type   UpdateProjectEnvType      `json:"type"`
 	// This is used to identify variables that have been migrated from type secret to sensitive.
-	SunsetSecretID    *string                        `json:"sunsetSecretId,omitempty"`
+	SunsetSecretID *string `json:"sunsetSecretId,omitempty"`
+	// Legacy now-encryption ciphertext, present after migration swaps value/vsmValue
+	LegacyValue       *string                        `json:"legacyValue,omitempty"`
 	Decrypted         *bool                          `json:"decrypted,omitempty"`
 	Value             string                         `json:"value"`
 	VsmValue          *string                        `json:"vsmValue,omitempty"`
@@ -3386,6 +3397,13 @@ func (o *UpdateProjectEnv) GetSunsetSecretID() *string {
 		return nil
 	}
 	return o.SunsetSecretID
+}
+
+func (o *UpdateProjectEnv) GetLegacyValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LegacyValue
 }
 
 func (o *UpdateProjectEnv) GetDecrypted() *bool {
@@ -3616,8 +3634,8 @@ func (o *UpdateProjectEnv) GetCustomEnvironmentIds() []string {
 type UpdateProjectCustomEnvironmentType string
 
 const (
-	UpdateProjectCustomEnvironmentTypePreview     UpdateProjectCustomEnvironmentType = "preview"
 	UpdateProjectCustomEnvironmentTypeProduction  UpdateProjectCustomEnvironmentType = "production"
+	UpdateProjectCustomEnvironmentTypePreview     UpdateProjectCustomEnvironmentType = "preview"
 	UpdateProjectCustomEnvironmentTypeDevelopment UpdateProjectCustomEnvironmentType = "development"
 )
 
@@ -3630,9 +3648,9 @@ func (e *UpdateProjectCustomEnvironmentType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "preview":
-		fallthrough
 	case "production":
+		fallthrough
+	case "preview":
 		fallthrough
 	case "development":
 		*e = UpdateProjectCustomEnvironmentType(v)
@@ -3965,10 +3983,13 @@ const (
 	UpdateProjectFrameworkResponseBodyHono           UpdateProjectFrameworkResponseBody = "hono"
 	UpdateProjectFrameworkResponseBodyExpress        UpdateProjectFrameworkResponseBody = "express"
 	UpdateProjectFrameworkResponseBodyH3             UpdateProjectFrameworkResponseBody = "h3"
+	UpdateProjectFrameworkResponseBodyKoa            UpdateProjectFrameworkResponseBody = "koa"
 	UpdateProjectFrameworkResponseBodyNestjs         UpdateProjectFrameworkResponseBody = "nestjs"
 	UpdateProjectFrameworkResponseBodyElysia         UpdateProjectFrameworkResponseBody = "elysia"
 	UpdateProjectFrameworkResponseBodyFastify        UpdateProjectFrameworkResponseBody = "fastify"
 	UpdateProjectFrameworkResponseBodyXmcp           UpdateProjectFrameworkResponseBody = "xmcp"
+	UpdateProjectFrameworkResponseBodyPython         UpdateProjectFrameworkResponseBody = "python"
+	UpdateProjectFrameworkResponseBodyServices       UpdateProjectFrameworkResponseBody = "services"
 )
 
 func (e UpdateProjectFrameworkResponseBody) ToPointer() *UpdateProjectFrameworkResponseBody {
@@ -4086,6 +4107,8 @@ func (e *UpdateProjectFrameworkResponseBody) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "h3":
 		fallthrough
+	case "koa":
+		fallthrough
 	case "nestjs":
 		fallthrough
 	case "elysia":
@@ -4093,6 +4116,10 @@ func (e *UpdateProjectFrameworkResponseBody) UnmarshalJSON(data []byte) error {
 	case "fastify":
 		fallthrough
 	case "xmcp":
+		fallthrough
+	case "python":
+		fallthrough
+	case "services":
 		*e = UpdateProjectFrameworkResponseBody(v)
 		return nil
 	default:
@@ -5930,17 +5957,17 @@ func (e *UpdateProjectResourceConfigBuildMachineTypeResponse) UnmarshalJSON(data
 	}
 }
 
-type UpdateProjectResourceConfigConfigurationResponse string
+type UpdateProjectResourceConfigConfigurationResponseBody string
 
 const (
-	UpdateProjectResourceConfigConfigurationResponseSkipNamespaceQueue    UpdateProjectResourceConfigConfigurationResponse = "SKIP_NAMESPACE_QUEUE"
-	UpdateProjectResourceConfigConfigurationResponseWaitForNamespaceQueue UpdateProjectResourceConfigConfigurationResponse = "WAIT_FOR_NAMESPACE_QUEUE"
+	UpdateProjectResourceConfigConfigurationResponseBodySkipNamespaceQueue    UpdateProjectResourceConfigConfigurationResponseBody = "SKIP_NAMESPACE_QUEUE"
+	UpdateProjectResourceConfigConfigurationResponseBodyWaitForNamespaceQueue UpdateProjectResourceConfigConfigurationResponseBody = "WAIT_FOR_NAMESPACE_QUEUE"
 )
 
-func (e UpdateProjectResourceConfigConfigurationResponse) ToPointer() *UpdateProjectResourceConfigConfigurationResponse {
+func (e UpdateProjectResourceConfigConfigurationResponseBody) ToPointer() *UpdateProjectResourceConfigConfigurationResponseBody {
 	return &e
 }
-func (e *UpdateProjectResourceConfigConfigurationResponse) UnmarshalJSON(data []byte) error {
+func (e *UpdateProjectResourceConfigConfigurationResponseBody) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -5949,25 +5976,25 @@ func (e *UpdateProjectResourceConfigConfigurationResponse) UnmarshalJSON(data []
 	case "SKIP_NAMESPACE_QUEUE":
 		fallthrough
 	case "WAIT_FOR_NAMESPACE_QUEUE":
-		*e = UpdateProjectResourceConfigConfigurationResponse(v)
+		*e = UpdateProjectResourceConfigConfigurationResponseBody(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateProjectResourceConfigConfigurationResponse: %v", v)
+		return fmt.Errorf("invalid value for UpdateProjectResourceConfigConfigurationResponseBody: %v", v)
 	}
 }
 
-type UpdateProjectResourceConfigBuildQueueResponse struct {
-	Configuration *UpdateProjectResourceConfigConfigurationResponse `json:"configuration,omitempty"`
+type UpdateProjectResourceConfigBuildQueueResponseBody struct {
+	Configuration *UpdateProjectResourceConfigConfigurationResponseBody `json:"configuration,omitempty"`
 }
 
-func (o *UpdateProjectResourceConfigBuildQueueResponse) GetConfiguration() *UpdateProjectResourceConfigConfigurationResponse {
+func (o *UpdateProjectResourceConfigBuildQueueResponseBody) GetConfiguration() *UpdateProjectResourceConfigConfigurationResponseBody {
 	if o == nil {
 		return nil
 	}
 	return o.Configuration
 }
 
-type UpdateProjectResourceConfigResponse struct {
+type UpdateProjectResourceConfigResponseBody struct {
 	ElasticConcurrencyEnabled  *bool                                                         `json:"elasticConcurrencyEnabled,omitempty"`
 	Fluid                      *bool                                                         `json:"fluid,omitempty"`
 	FunctionDefaultRegions     []string                                                      `json:"functionDefaultRegions"`
@@ -5976,66 +6003,66 @@ type UpdateProjectResourceConfigResponse struct {
 	FunctionZeroConfigFailover *bool                                                         `json:"functionZeroConfigFailover,omitempty"`
 	BuildMachineType           *UpdateProjectResourceConfigBuildMachineTypeResponse          `json:"buildMachineType,omitempty"`
 	IsNSNBDisabled             *bool                                                         `json:"isNSNBDisabled,omitempty"`
-	BuildQueue                 *UpdateProjectResourceConfigBuildQueueResponse                `json:"buildQueue,omitempty"`
+	BuildQueue                 *UpdateProjectResourceConfigBuildQueueResponseBody            `json:"buildQueue,omitempty"`
 }
 
-func (o *UpdateProjectResourceConfigResponse) GetElasticConcurrencyEnabled() *bool {
+func (o *UpdateProjectResourceConfigResponseBody) GetElasticConcurrencyEnabled() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ElasticConcurrencyEnabled
 }
 
-func (o *UpdateProjectResourceConfigResponse) GetFluid() *bool {
+func (o *UpdateProjectResourceConfigResponseBody) GetFluid() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Fluid
 }
 
-func (o *UpdateProjectResourceConfigResponse) GetFunctionDefaultRegions() []string {
+func (o *UpdateProjectResourceConfigResponseBody) GetFunctionDefaultRegions() []string {
 	if o == nil {
 		return []string{}
 	}
 	return o.FunctionDefaultRegions
 }
 
-func (o *UpdateProjectResourceConfigResponse) GetFunctionDefaultTimeout() *float64 {
+func (o *UpdateProjectResourceConfigResponseBody) GetFunctionDefaultTimeout() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FunctionDefaultTimeout
 }
 
-func (o *UpdateProjectResourceConfigResponse) GetFunctionDefaultMemoryType() *UpdateProjectResourceConfigFunctionDefaultMemoryTypeResponse {
+func (o *UpdateProjectResourceConfigResponseBody) GetFunctionDefaultMemoryType() *UpdateProjectResourceConfigFunctionDefaultMemoryTypeResponse {
 	if o == nil {
 		return nil
 	}
 	return o.FunctionDefaultMemoryType
 }
 
-func (o *UpdateProjectResourceConfigResponse) GetFunctionZeroConfigFailover() *bool {
+func (o *UpdateProjectResourceConfigResponseBody) GetFunctionZeroConfigFailover() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.FunctionZeroConfigFailover
 }
 
-func (o *UpdateProjectResourceConfigResponse) GetBuildMachineType() *UpdateProjectResourceConfigBuildMachineTypeResponse {
+func (o *UpdateProjectResourceConfigResponseBody) GetBuildMachineType() *UpdateProjectResourceConfigBuildMachineTypeResponse {
 	if o == nil {
 		return nil
 	}
 	return o.BuildMachineType
 }
 
-func (o *UpdateProjectResourceConfigResponse) GetIsNSNBDisabled() *bool {
+func (o *UpdateProjectResourceConfigResponseBody) GetIsNSNBDisabled() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.IsNSNBDisabled
 }
 
-func (o *UpdateProjectResourceConfigResponse) GetBuildQueue() *UpdateProjectResourceConfigBuildQueueResponse {
+func (o *UpdateProjectResourceConfigResponseBody) GetBuildQueue() *UpdateProjectResourceConfigBuildQueueResponseBody {
 	if o == nil {
 		return nil
 	}
@@ -6923,6 +6950,7 @@ type UpdateProjectPermissions struct {
 	ProjectCheckRun                          []components.ACLAction `json:"projectCheckRun,omitempty"`
 	ProjectDeploymentExpiration              []components.ACLAction `json:"projectDeploymentExpiration,omitempty"`
 	ProjectDeploymentHook                    []components.ACLAction `json:"projectDeploymentHook,omitempty"`
+	ProjectDeploymentProtectionStrict        []components.ACLAction `json:"projectDeploymentProtectionStrict,omitempty"`
 	ProjectDomain                            []components.ACLAction `json:"projectDomain,omitempty"`
 	ProjectDomainCheckConfig                 []components.ACLAction `json:"projectDomainCheckConfig,omitempty"`
 	ProjectDomainMove                        []components.ACLAction `json:"projectDomainMove,omitempty"`
@@ -8273,6 +8301,13 @@ func (o *UpdateProjectPermissions) GetProjectDeploymentHook() []components.ACLAc
 	return o.ProjectDeploymentHook
 }
 
+func (o *UpdateProjectPermissions) GetProjectDeploymentProtectionStrict() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectDeploymentProtectionStrict
+}
+
 func (o *UpdateProjectPermissions) GetProjectDomain() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -8503,11 +8538,11 @@ type UpdateProjectLastRollbackTarget struct {
 type UpdateProjectJobStatus string
 
 const (
-	UpdateProjectJobStatusPending    UpdateProjectJobStatus = "pending"
-	UpdateProjectJobStatusInProgress UpdateProjectJobStatus = "in-progress"
 	UpdateProjectJobStatusSucceeded  UpdateProjectJobStatus = "succeeded"
 	UpdateProjectJobStatusFailed     UpdateProjectJobStatus = "failed"
 	UpdateProjectJobStatusSkipped    UpdateProjectJobStatus = "skipped"
+	UpdateProjectJobStatusPending    UpdateProjectJobStatus = "pending"
+	UpdateProjectJobStatusInProgress UpdateProjectJobStatus = "in-progress"
 )
 
 func (e UpdateProjectJobStatus) ToPointer() *UpdateProjectJobStatus {
@@ -8519,15 +8554,15 @@ func (e *UpdateProjectJobStatus) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "pending":
-		fallthrough
-	case "in-progress":
-		fallthrough
 	case "succeeded":
 		fallthrough
 	case "failed":
 		fallthrough
 	case "skipped":
+		fallthrough
+	case "pending":
+		fallthrough
+	case "in-progress":
 		*e = UpdateProjectJobStatus(v)
 		return nil
 	default:
@@ -8857,8 +8892,8 @@ func (u UpdateProjectProtectionBypassUnion) MarshalJSON() ([]byte, error) {
 type UpdateProjectTrustedIpsDeploymentTypeResponse2 string
 
 const (
-	UpdateProjectTrustedIpsDeploymentTypeResponse2Preview                          UpdateProjectTrustedIpsDeploymentTypeResponse2 = "preview"
 	UpdateProjectTrustedIpsDeploymentTypeResponse2Production                       UpdateProjectTrustedIpsDeploymentTypeResponse2 = "production"
+	UpdateProjectTrustedIpsDeploymentTypeResponse2Preview                          UpdateProjectTrustedIpsDeploymentTypeResponse2 = "preview"
 	UpdateProjectTrustedIpsDeploymentTypeResponse2All                              UpdateProjectTrustedIpsDeploymentTypeResponse2 = "all"
 	UpdateProjectTrustedIpsDeploymentTypeResponse2ProdDeploymentUrlsAndAllPreviews UpdateProjectTrustedIpsDeploymentTypeResponse2 = "prod_deployment_urls_and_all_previews"
 	UpdateProjectTrustedIpsDeploymentTypeResponse2AllExceptCustomDomains           UpdateProjectTrustedIpsDeploymentTypeResponse2 = "all_except_custom_domains"
@@ -8873,9 +8908,9 @@ func (e *UpdateProjectTrustedIpsDeploymentTypeResponse2) UnmarshalJSON(data []by
 		return err
 	}
 	switch v {
-	case "preview":
-		fallthrough
 	case "production":
+		fallthrough
+	case "preview":
 		fallthrough
 	case "all":
 		fallthrough
@@ -8914,8 +8949,8 @@ func (o *UpdateProjectTrustedIpsResponse2) GetDeploymentType() UpdateProjectTrus
 type UpdateProjectTrustedIpsDeploymentTypeResponse1 string
 
 const (
-	UpdateProjectTrustedIpsDeploymentTypeResponse1Preview                          UpdateProjectTrustedIpsDeploymentTypeResponse1 = "preview"
 	UpdateProjectTrustedIpsDeploymentTypeResponse1Production                       UpdateProjectTrustedIpsDeploymentTypeResponse1 = "production"
+	UpdateProjectTrustedIpsDeploymentTypeResponse1Preview                          UpdateProjectTrustedIpsDeploymentTypeResponse1 = "preview"
 	UpdateProjectTrustedIpsDeploymentTypeResponse1All                              UpdateProjectTrustedIpsDeploymentTypeResponse1 = "all"
 	UpdateProjectTrustedIpsDeploymentTypeResponse1ProdDeploymentUrlsAndAllPreviews UpdateProjectTrustedIpsDeploymentTypeResponse1 = "prod_deployment_urls_and_all_previews"
 	UpdateProjectTrustedIpsDeploymentTypeResponse1AllExceptCustomDomains           UpdateProjectTrustedIpsDeploymentTypeResponse1 = "all_except_custom_domains"
@@ -8930,9 +8965,9 @@ func (e *UpdateProjectTrustedIpsDeploymentTypeResponse1) UnmarshalJSON(data []by
 		return err
 	}
 	switch v {
-	case "preview":
-		fallthrough
 	case "production":
+		fallthrough
+	case "preview":
 		fallthrough
 	case "all":
 		fallthrough
@@ -9224,12 +9259,60 @@ func (o *UpdateProjectWebAnalytics) GetHasData() *bool {
 	return o.HasData
 }
 
+type UpdateProjectVercelRulesetAction string
+
+const (
+	UpdateProjectVercelRulesetActionLog       UpdateProjectVercelRulesetAction = "log"
+	UpdateProjectVercelRulesetActionDeny      UpdateProjectVercelRulesetAction = "deny"
+	UpdateProjectVercelRulesetActionChallenge UpdateProjectVercelRulesetAction = "challenge"
+)
+
+func (e UpdateProjectVercelRulesetAction) ToPointer() *UpdateProjectVercelRulesetAction {
+	return &e
+}
+func (e *UpdateProjectVercelRulesetAction) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "log":
+		fallthrough
+	case "deny":
+		fallthrough
+	case "challenge":
+		*e = UpdateProjectVercelRulesetAction(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectVercelRulesetAction: %v", v)
+	}
+}
+
+type UpdateProjectVercelRuleset struct {
+	Active bool                              `json:"active"`
+	Action *UpdateProjectVercelRulesetAction `json:"action,omitempty"`
+}
+
+func (o *UpdateProjectVercelRuleset) GetActive() bool {
+	if o == nil {
+		return false
+	}
+	return o.Active
+}
+
+func (o *UpdateProjectVercelRuleset) GetAction() *UpdateProjectVercelRulesetAction {
+	if o == nil {
+		return nil
+	}
+	return o.Action
+}
+
 type UpdateProjectBotFilterAction string
 
 const (
+	UpdateProjectBotFilterActionLog       UpdateProjectBotFilterAction = "log"
 	UpdateProjectBotFilterActionDeny      UpdateProjectBotFilterAction = "deny"
 	UpdateProjectBotFilterActionChallenge UpdateProjectBotFilterAction = "challenge"
-	UpdateProjectBotFilterActionLog       UpdateProjectBotFilterAction = "log"
 )
 
 func (e UpdateProjectBotFilterAction) ToPointer() *UpdateProjectBotFilterAction {
@@ -9241,11 +9324,11 @@ func (e *UpdateProjectBotFilterAction) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "log":
+		fallthrough
 	case "deny":
 		fallthrough
 	case "challenge":
-		fallthrough
-	case "log":
 		*e = UpdateProjectBotFilterAction(v)
 		return nil
 	default:
@@ -9275,9 +9358,9 @@ func (o *UpdateProjectBotFilter) GetAction() *UpdateProjectBotFilterAction {
 type UpdateProjectAiBotsAction string
 
 const (
+	UpdateProjectAiBotsActionLog       UpdateProjectAiBotsAction = "log"
 	UpdateProjectAiBotsActionDeny      UpdateProjectAiBotsAction = "deny"
 	UpdateProjectAiBotsActionChallenge UpdateProjectAiBotsAction = "challenge"
-	UpdateProjectAiBotsActionLog       UpdateProjectAiBotsAction = "log"
 )
 
 func (e UpdateProjectAiBotsAction) ToPointer() *UpdateProjectAiBotsAction {
@@ -9289,11 +9372,11 @@ func (e *UpdateProjectAiBotsAction) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "log":
+		fallthrough
 	case "deny":
 		fallthrough
 	case "challenge":
-		fallthrough
-	case "log":
 		*e = UpdateProjectAiBotsAction(v)
 		return nil
 	default:
@@ -9323,9 +9406,9 @@ func (o *UpdateProjectAiBots) GetAction() *UpdateProjectAiBotsAction {
 type UpdateProjectOwaspAction string
 
 const (
+	UpdateProjectOwaspActionLog       UpdateProjectOwaspAction = "log"
 	UpdateProjectOwaspActionDeny      UpdateProjectOwaspAction = "deny"
 	UpdateProjectOwaspActionChallenge UpdateProjectOwaspAction = "challenge"
-	UpdateProjectOwaspActionLog       UpdateProjectOwaspAction = "log"
 )
 
 func (e UpdateProjectOwaspAction) ToPointer() *UpdateProjectOwaspAction {
@@ -9337,11 +9420,11 @@ func (e *UpdateProjectOwaspAction) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "log":
+		fallthrough
 	case "deny":
 		fallthrough
 	case "challenge":
-		fallthrough
-	case "log":
 		*e = UpdateProjectOwaspAction(v)
 		return nil
 	default:
@@ -9369,28 +9452,36 @@ func (o *UpdateProjectOwasp) GetAction() *UpdateProjectOwaspAction {
 }
 
 type UpdateProjectManagedRules struct {
-	BotFilter *UpdateProjectBotFilter `json:"bot_filter,omitempty"`
-	AiBots    *UpdateProjectAiBots    `json:"ai_bots,omitempty"`
-	Owasp     *UpdateProjectOwasp     `json:"owasp,omitempty"`
+	VercelRuleset UpdateProjectVercelRuleset `json:"vercel_ruleset"`
+	BotFilter     UpdateProjectBotFilter     `json:"bot_filter"`
+	AiBots        UpdateProjectAiBots        `json:"ai_bots"`
+	Owasp         UpdateProjectOwasp         `json:"owasp"`
 }
 
-func (o *UpdateProjectManagedRules) GetBotFilter() *UpdateProjectBotFilter {
+func (o *UpdateProjectManagedRules) GetVercelRuleset() UpdateProjectVercelRuleset {
 	if o == nil {
-		return nil
+		return UpdateProjectVercelRuleset{}
+	}
+	return o.VercelRuleset
+}
+
+func (o *UpdateProjectManagedRules) GetBotFilter() UpdateProjectBotFilter {
+	if o == nil {
+		return UpdateProjectBotFilter{}
 	}
 	return o.BotFilter
 }
 
-func (o *UpdateProjectManagedRules) GetAiBots() *UpdateProjectAiBots {
+func (o *UpdateProjectManagedRules) GetAiBots() UpdateProjectAiBots {
 	if o == nil {
-		return nil
+		return UpdateProjectAiBots{}
 	}
 	return o.AiBots
 }
 
-func (o *UpdateProjectManagedRules) GetOwasp() *UpdateProjectOwasp {
+func (o *UpdateProjectManagedRules) GetOwasp() UpdateProjectOwasp {
 	if o == nil {
-		return nil
+		return UpdateProjectOwasp{}
 	}
 	return o.Owasp
 }
@@ -9649,14 +9740,15 @@ func (e *UpdateProjectActionBlocked) UnmarshalJSON(data []byte) error {
 }
 
 type UpdateProjectBlock struct {
-	Action      UpdateProjectActionBlocked `json:"action"`
-	Reason      string                     `json:"reason"`
-	StatusCode  float64                    `json:"statusCode"`
-	CreatedAt   float64                    `json:"createdAt"`
-	CaseID      *string                    `json:"caseId,omitempty"`
-	Actor       *string                    `json:"actor,omitempty"`
-	Comment     *string                    `json:"comment,omitempty"`
-	IsCascading *bool                      `json:"isCascading,omitempty"`
+	Action              UpdateProjectActionBlocked `json:"action"`
+	Reason              string                     `json:"reason"`
+	StatusCode          float64                    `json:"statusCode"`
+	CreatedAt           float64                    `json:"createdAt"`
+	CaseID              *string                    `json:"caseId,omitempty"`
+	Actor               *string                    `json:"actor,omitempty"`
+	Comment             *string                    `json:"comment,omitempty"`
+	IneligibleForAppeal *bool                      `json:"ineligibleForAppeal,omitempty"`
+	IsCascading         *bool                      `json:"isCascading,omitempty"`
 }
 
 func (o *UpdateProjectBlock) GetAction() UpdateProjectActionBlocked {
@@ -9706,6 +9798,13 @@ func (o *UpdateProjectBlock) GetComment() *string {
 		return nil
 	}
 	return o.Comment
+}
+
+func (o *UpdateProjectBlock) GetIneligibleForAppeal() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IneligibleForAppeal
 }
 
 func (o *UpdateProjectBlock) GetIsCascading() *bool {
@@ -10181,14 +10280,15 @@ func (u UpdateProjectRouteUnion2) MarshalJSON() ([]byte, error) {
 }
 
 type UpdateProjectBlockHistoryRouteUnblocked struct {
-	Action      UpdateProjectActionRouteUnblocked `json:"action"`
-	Route       UpdateProjectRouteUnion2          `json:"route"`
-	StatusCode  *float64                          `json:"statusCode,omitempty"`
-	CreatedAt   float64                           `json:"createdAt"`
-	CaseID      *string                           `json:"caseId,omitempty"`
-	Actor       *string                           `json:"actor,omitempty"`
-	Comment     *string                           `json:"comment,omitempty"`
-	IsCascading *bool                             `json:"isCascading,omitempty"`
+	Action              UpdateProjectActionRouteUnblocked `json:"action"`
+	Route               UpdateProjectRouteUnion2          `json:"route"`
+	StatusCode          *float64                          `json:"statusCode,omitempty"`
+	CreatedAt           float64                           `json:"createdAt"`
+	CaseID              *string                           `json:"caseId,omitempty"`
+	Actor               *string                           `json:"actor,omitempty"`
+	Comment             *string                           `json:"comment,omitempty"`
+	IneligibleForAppeal *bool                             `json:"ineligibleForAppeal,omitempty"`
+	IsCascading         *bool                             `json:"isCascading,omitempty"`
 }
 
 func (u UpdateProjectBlockHistoryRouteUnblocked) MarshalJSON() ([]byte, error) {
@@ -10249,6 +10349,13 @@ func (o *UpdateProjectBlockHistoryRouteUnblocked) GetComment() *string {
 		return nil
 	}
 	return o.Comment
+}
+
+func (o *UpdateProjectBlockHistoryRouteUnblocked) GetIneligibleForAppeal() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IneligibleForAppeal
 }
 
 func (o *UpdateProjectBlockHistoryRouteUnblocked) GetIsCascading() *bool {
@@ -10724,14 +10831,15 @@ func (u UpdateProjectRouteUnion1) MarshalJSON() ([]byte, error) {
 }
 
 type UpdateProjectBlockHistoryRouteBlocked struct {
-	Action      UpdateProjectActionRouteBlocked `json:"action"`
-	Route       UpdateProjectRouteUnion1        `json:"route"`
-	Reason      string                          `json:"reason"`
-	CreatedAt   float64                         `json:"createdAt"`
-	CaseID      *string                         `json:"caseId,omitempty"`
-	Actor       *string                         `json:"actor,omitempty"`
-	Comment     *string                         `json:"comment,omitempty"`
-	IsCascading *bool                           `json:"isCascading,omitempty"`
+	Action              UpdateProjectActionRouteBlocked `json:"action"`
+	Route               UpdateProjectRouteUnion1        `json:"route"`
+	Reason              string                          `json:"reason"`
+	CreatedAt           float64                         `json:"createdAt"`
+	CaseID              *string                         `json:"caseId,omitempty"`
+	Actor               *string                         `json:"actor,omitempty"`
+	Comment             *string                         `json:"comment,omitempty"`
+	IneligibleForAppeal *bool                           `json:"ineligibleForAppeal,omitempty"`
+	IsCascading         *bool                           `json:"isCascading,omitempty"`
 }
 
 func (u UpdateProjectBlockHistoryRouteBlocked) MarshalJSON() ([]byte, error) {
@@ -10794,6 +10902,13 @@ func (o *UpdateProjectBlockHistoryRouteBlocked) GetComment() *string {
 	return o.Comment
 }
 
+func (o *UpdateProjectBlockHistoryRouteBlocked) GetIneligibleForAppeal() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IneligibleForAppeal
+}
+
 func (o *UpdateProjectBlockHistoryRouteBlocked) GetIsCascading() *bool {
 	if o == nil {
 		return nil
@@ -10825,12 +10940,13 @@ func (e *UpdateProjectActionUnblocked) UnmarshalJSON(data []byte) error {
 }
 
 type UpdateProjectBlockHistoryUnblocked struct {
-	Action      UpdateProjectActionUnblocked `json:"action"`
-	CreatedAt   float64                      `json:"createdAt"`
-	CaseID      *string                      `json:"caseId,omitempty"`
-	Actor       *string                      `json:"actor,omitempty"`
-	Comment     *string                      `json:"comment,omitempty"`
-	IsCascading *bool                        `json:"isCascading,omitempty"`
+	Action              UpdateProjectActionUnblocked `json:"action"`
+	CreatedAt           float64                      `json:"createdAt"`
+	CaseID              *string                      `json:"caseId,omitempty"`
+	Actor               *string                      `json:"actor,omitempty"`
+	Comment             *string                      `json:"comment,omitempty"`
+	IneligibleForAppeal *bool                        `json:"ineligibleForAppeal,omitempty"`
+	IsCascading         *bool                        `json:"isCascading,omitempty"`
 }
 
 func (u UpdateProjectBlockHistoryUnblocked) MarshalJSON() ([]byte, error) {
@@ -10879,6 +10995,13 @@ func (o *UpdateProjectBlockHistoryUnblocked) GetComment() *string {
 	return o.Comment
 }
 
+func (o *UpdateProjectBlockHistoryUnblocked) GetIneligibleForAppeal() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IneligibleForAppeal
+}
+
 func (o *UpdateProjectBlockHistoryUnblocked) GetIsCascading() *bool {
 	if o == nil {
 		return nil
@@ -10910,14 +11033,15 @@ func (e *UpdateProjectBlockHistoryActionBlocked) UnmarshalJSON(data []byte) erro
 }
 
 type UpdateProjectBlockHistoryBlocked struct {
-	Action      UpdateProjectBlockHistoryActionBlocked `json:"action"`
-	Reason      string                                 `json:"reason"`
-	StatusCode  float64                                `json:"statusCode"`
-	CreatedAt   float64                                `json:"createdAt"`
-	CaseID      *string                                `json:"caseId,omitempty"`
-	Actor       *string                                `json:"actor,omitempty"`
-	Comment     *string                                `json:"comment,omitempty"`
-	IsCascading *bool                                  `json:"isCascading,omitempty"`
+	Action              UpdateProjectBlockHistoryActionBlocked `json:"action"`
+	Reason              string                                 `json:"reason"`
+	StatusCode          float64                                `json:"statusCode"`
+	CreatedAt           float64                                `json:"createdAt"`
+	CaseID              *string                                `json:"caseId,omitempty"`
+	Actor               *string                                `json:"actor,omitempty"`
+	Comment             *string                                `json:"comment,omitempty"`
+	IneligibleForAppeal *bool                                  `json:"ineligibleForAppeal,omitempty"`
+	IsCascading         *bool                                  `json:"isCascading,omitempty"`
 }
 
 func (u UpdateProjectBlockHistoryBlocked) MarshalJSON() ([]byte, error) {
@@ -10978,6 +11102,13 @@ func (o *UpdateProjectBlockHistoryBlocked) GetComment() *string {
 		return nil
 	}
 	return o.Comment
+}
+
+func (o *UpdateProjectBlockHistoryBlocked) GetIneligibleForAppeal() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IneligibleForAppeal
 }
 
 func (o *UpdateProjectBlockHistoryBlocked) GetIsCascading() *bool {
@@ -11622,9 +11753,9 @@ func (u UpdateProjectInternalRouteUnion) MarshalJSON() ([]byte, error) {
 type UpdateProjectDismissedToastActionResponseBody string
 
 const (
+	UpdateProjectDismissedToastActionResponseBodyDelete UpdateProjectDismissedToastActionResponseBody = "delete"
 	UpdateProjectDismissedToastActionResponseBodyCancel UpdateProjectDismissedToastActionResponseBody = "cancel"
 	UpdateProjectDismissedToastActionResponseBodyAccept UpdateProjectDismissedToastActionResponseBody = "accept"
-	UpdateProjectDismissedToastActionResponseBodyDelete UpdateProjectDismissedToastActionResponseBody = "delete"
 )
 
 func (e UpdateProjectDismissedToastActionResponseBody) ToPointer() *UpdateProjectDismissedToastActionResponseBody {
@@ -11636,11 +11767,11 @@ func (e *UpdateProjectDismissedToastActionResponseBody) UnmarshalJSON(data []byt
 		return err
 	}
 	switch v {
+	case "delete":
+		fallthrough
 	case "cancel":
 		fallthrough
 	case "accept":
-		fallthrough
-	case "delete":
 		*e = UpdateProjectDismissedToastActionResponseBody(v)
 		return nil
 	default:
@@ -11853,15 +11984,15 @@ type UpdateProjectValueUnionType string
 const (
 	UpdateProjectValueUnionTypeStr                                          UpdateProjectValueUnionType = "str"
 	UpdateProjectValueUnionTypeNumber                                       UpdateProjectValueUnionType = "number"
-	UpdateProjectValueUnionTypeBoolean                                      UpdateProjectValueUnionType = "boolean"
 	UpdateProjectValueUnionTypeUpdateProjectValueDismissedToastResponseBody UpdateProjectValueUnionType = "updateProject_value_dismissedToast_ResponseBody"
+	UpdateProjectValueUnionTypeBoolean                                      UpdateProjectValueUnionType = "boolean"
 )
 
 type UpdateProjectValueUnion struct {
 	Str                                          *string                                       `queryParam:"inline"`
 	Number                                       *float64                                      `queryParam:"inline"`
-	Boolean                                      *bool                                         `queryParam:"inline"`
 	UpdateProjectValueDismissedToastResponseBody *UpdateProjectValueDismissedToastResponseBody `queryParam:"inline"`
+	Boolean                                      *bool                                         `queryParam:"inline"`
 
 	Type UpdateProjectValueUnionType
 }
@@ -11884,21 +12015,21 @@ func CreateUpdateProjectValueUnionNumber(number float64) UpdateProjectValueUnion
 	}
 }
 
-func CreateUpdateProjectValueUnionBoolean(boolean bool) UpdateProjectValueUnion {
-	typ := UpdateProjectValueUnionTypeBoolean
-
-	return UpdateProjectValueUnion{
-		Boolean: &boolean,
-		Type:    typ,
-	}
-}
-
 func CreateUpdateProjectValueUnionUpdateProjectValueDismissedToastResponseBody(updateProjectValueDismissedToastResponseBody UpdateProjectValueDismissedToastResponseBody) UpdateProjectValueUnion {
 	typ := UpdateProjectValueUnionTypeUpdateProjectValueDismissedToastResponseBody
 
 	return UpdateProjectValueUnion{
 		UpdateProjectValueDismissedToastResponseBody: &updateProjectValueDismissedToastResponseBody,
 		Type: typ,
+	}
+}
+
+func CreateUpdateProjectValueUnionBoolean(boolean bool) UpdateProjectValueUnion {
+	typ := UpdateProjectValueUnionTypeBoolean
+
+	return UpdateProjectValueUnion{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -11944,12 +12075,12 @@ func (u UpdateProjectValueUnion) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.Number, "", true)
 	}
 
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.UpdateProjectValueDismissedToastResponseBody != nil {
 		return utils.MarshalJSON(u.UpdateProjectValueDismissedToastResponseBody, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type UpdateProjectValueUnion: all fields are null")
@@ -12031,7 +12162,7 @@ type UpdateProjectResponseBody struct {
 	PasswordProtection            *UpdateProjectPasswordProtectionResponse `json:"passwordProtection,omitempty"`
 	ProductionDeploymentsFastLane *bool                                    `json:"productionDeploymentsFastLane,omitempty"`
 	PublicSource                  *bool                                    `json:"publicSource,omitempty"`
-	ResourceConfig                UpdateProjectResourceConfigResponse      `json:"resourceConfig"`
+	ResourceConfig                UpdateProjectResourceConfigResponseBody  `json:"resourceConfig"`
 	// Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback.
 	RollbackDescription *UpdateProjectRollbackDescription `json:"rollbackDescription,omitempty"`
 	// Project-level rolling release configuration that defines how deployments should be gradually rolled out
@@ -12379,9 +12510,9 @@ func (o *UpdateProjectResponseBody) GetPublicSource() *bool {
 	return o.PublicSource
 }
 
-func (o *UpdateProjectResponseBody) GetResourceConfig() UpdateProjectResourceConfigResponse {
+func (o *UpdateProjectResponseBody) GetResourceConfig() UpdateProjectResourceConfigResponseBody {
 	if o == nil {
-		return UpdateProjectResourceConfigResponse{}
+		return UpdateProjectResourceConfigResponseBody{}
 	}
 	return o.ResourceConfig
 }

@@ -7,6 +7,7 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteRedirectsRequestBody = {
@@ -30,7 +31,7 @@ export type DeleteRedirectsRequest = {
   requestBody?: DeleteRedirectsRequestBody | undefined;
 };
 
-export type DeleteRedirectsVersion = {
+export type DeleteRedirectsResponseBodyBulkRedirectsVersion = {
   /**
    * The unique identifier for the version.
    */
@@ -63,10 +64,52 @@ export type DeleteRedirectsVersion = {
   alias?: string | undefined;
 };
 
-export type DeleteRedirectsResponseBody = {
+export type DeleteRedirectsResponseBody2 = {
   alias: string | null;
-  version: DeleteRedirectsVersion;
+  version: DeleteRedirectsResponseBodyBulkRedirectsVersion;
 };
+
+export type DeleteRedirectsResponseBodyVersion = {
+  /**
+   * The unique identifier for the version.
+   */
+  id: string;
+  /**
+   * The key of the version. The key may be duplicated across versions if the contents are the same as a different version.
+   */
+  key: string;
+  lastModified: number;
+  createdBy: string;
+  /**
+   * Optional name for the version. If not provided, defaults to an ISO timestamp string.
+   */
+  name?: string | undefined;
+  /**
+   * Whether this version has not been promoted to production yet and is not serving end users.
+   */
+  isStaging?: boolean | undefined;
+  /**
+   * Whether this version is currently live in production.
+   */
+  isLive?: boolean | undefined;
+  /**
+   * The number of redirects in this version.
+   */
+  redirectCount?: number | undefined;
+  /**
+   * The staging link for previewing redirects in this version.
+   */
+  alias?: string | undefined;
+};
+
+export type DeleteRedirectsResponseBody1 = {
+  alias?: string | undefined;
+  version: DeleteRedirectsResponseBodyVersion;
+};
+
+export type DeleteRedirectsResponseBody =
+  | DeleteRedirectsResponseBody2
+  | DeleteRedirectsResponseBody1;
 
 /** @internal */
 export const DeleteRedirectsRequestBody$inboundSchema: z.ZodType<
@@ -170,8 +213,130 @@ export function deleteRedirectsRequestFromJSON(
 }
 
 /** @internal */
-export const DeleteRedirectsVersion$inboundSchema: z.ZodType<
-  DeleteRedirectsVersion,
+export const DeleteRedirectsResponseBodyBulkRedirectsVersion$inboundSchema:
+  z.ZodType<
+    DeleteRedirectsResponseBodyBulkRedirectsVersion,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    id: types.string(),
+    key: types.string(),
+    lastModified: types.number(),
+    createdBy: types.string(),
+    name: types.optional(types.string()),
+    isStaging: types.optional(types.boolean()),
+    isLive: types.optional(types.boolean()),
+    redirectCount: types.optional(types.number()),
+    alias: types.optional(types.string()),
+  });
+/** @internal */
+export type DeleteRedirectsResponseBodyBulkRedirectsVersion$Outbound = {
+  id: string;
+  key: string;
+  lastModified: number;
+  createdBy: string;
+  name?: string | undefined;
+  isStaging?: boolean | undefined;
+  isLive?: boolean | undefined;
+  redirectCount?: number | undefined;
+  alias?: string | undefined;
+};
+
+/** @internal */
+export const DeleteRedirectsResponseBodyBulkRedirectsVersion$outboundSchema:
+  z.ZodType<
+    DeleteRedirectsResponseBodyBulkRedirectsVersion$Outbound,
+    z.ZodTypeDef,
+    DeleteRedirectsResponseBodyBulkRedirectsVersion
+  > = z.object({
+    id: z.string(),
+    key: z.string(),
+    lastModified: z.number(),
+    createdBy: z.string(),
+    name: z.string().optional(),
+    isStaging: z.boolean().optional(),
+    isLive: z.boolean().optional(),
+    redirectCount: z.number().optional(),
+    alias: z.string().optional(),
+  });
+
+export function deleteRedirectsResponseBodyBulkRedirectsVersionToJSON(
+  deleteRedirectsResponseBodyBulkRedirectsVersion:
+    DeleteRedirectsResponseBodyBulkRedirectsVersion,
+): string {
+  return JSON.stringify(
+    DeleteRedirectsResponseBodyBulkRedirectsVersion$outboundSchema.parse(
+      deleteRedirectsResponseBodyBulkRedirectsVersion,
+    ),
+  );
+}
+export function deleteRedirectsResponseBodyBulkRedirectsVersionFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  DeleteRedirectsResponseBodyBulkRedirectsVersion,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      DeleteRedirectsResponseBodyBulkRedirectsVersion$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'DeleteRedirectsResponseBodyBulkRedirectsVersion' from JSON`,
+  );
+}
+
+/** @internal */
+export const DeleteRedirectsResponseBody2$inboundSchema: z.ZodType<
+  DeleteRedirectsResponseBody2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  alias: types.nullable(types.string()),
+  version: z.lazy(() =>
+    DeleteRedirectsResponseBodyBulkRedirectsVersion$inboundSchema
+  ),
+});
+/** @internal */
+export type DeleteRedirectsResponseBody2$Outbound = {
+  alias: string | null;
+  version: DeleteRedirectsResponseBodyBulkRedirectsVersion$Outbound;
+};
+
+/** @internal */
+export const DeleteRedirectsResponseBody2$outboundSchema: z.ZodType<
+  DeleteRedirectsResponseBody2$Outbound,
+  z.ZodTypeDef,
+  DeleteRedirectsResponseBody2
+> = z.object({
+  alias: z.nullable(z.string()),
+  version: z.lazy(() =>
+    DeleteRedirectsResponseBodyBulkRedirectsVersion$outboundSchema
+  ),
+});
+
+export function deleteRedirectsResponseBody2ToJSON(
+  deleteRedirectsResponseBody2: DeleteRedirectsResponseBody2,
+): string {
+  return JSON.stringify(
+    DeleteRedirectsResponseBody2$outboundSchema.parse(
+      deleteRedirectsResponseBody2,
+    ),
+  );
+}
+export function deleteRedirectsResponseBody2FromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteRedirectsResponseBody2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteRedirectsResponseBody2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteRedirectsResponseBody2' from JSON`,
+  );
+}
+
+/** @internal */
+export const DeleteRedirectsResponseBodyVersion$inboundSchema: z.ZodType<
+  DeleteRedirectsResponseBodyVersion,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -186,7 +351,7 @@ export const DeleteRedirectsVersion$inboundSchema: z.ZodType<
   alias: types.optional(types.string()),
 });
 /** @internal */
-export type DeleteRedirectsVersion$Outbound = {
+export type DeleteRedirectsResponseBodyVersion$Outbound = {
   id: string;
   key: string;
   lastModified: number;
@@ -199,10 +364,10 @@ export type DeleteRedirectsVersion$Outbound = {
 };
 
 /** @internal */
-export const DeleteRedirectsVersion$outboundSchema: z.ZodType<
-  DeleteRedirectsVersion$Outbound,
+export const DeleteRedirectsResponseBodyVersion$outboundSchema: z.ZodType<
+  DeleteRedirectsResponseBodyVersion$Outbound,
   z.ZodTypeDef,
-  DeleteRedirectsVersion
+  DeleteRedirectsResponseBodyVersion
 > = z.object({
   id: z.string(),
   key: z.string(),
@@ -215,20 +380,67 @@ export const DeleteRedirectsVersion$outboundSchema: z.ZodType<
   alias: z.string().optional(),
 });
 
-export function deleteRedirectsVersionToJSON(
-  deleteRedirectsVersion: DeleteRedirectsVersion,
+export function deleteRedirectsResponseBodyVersionToJSON(
+  deleteRedirectsResponseBodyVersion: DeleteRedirectsResponseBodyVersion,
 ): string {
   return JSON.stringify(
-    DeleteRedirectsVersion$outboundSchema.parse(deleteRedirectsVersion),
+    DeleteRedirectsResponseBodyVersion$outboundSchema.parse(
+      deleteRedirectsResponseBodyVersion,
+    ),
   );
 }
-export function deleteRedirectsVersionFromJSON(
+export function deleteRedirectsResponseBodyVersionFromJSON(
   jsonString: string,
-): SafeParseResult<DeleteRedirectsVersion, SDKValidationError> {
+): SafeParseResult<DeleteRedirectsResponseBodyVersion, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => DeleteRedirectsVersion$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteRedirectsVersion' from JSON`,
+    (x) =>
+      DeleteRedirectsResponseBodyVersion$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteRedirectsResponseBodyVersion' from JSON`,
+  );
+}
+
+/** @internal */
+export const DeleteRedirectsResponseBody1$inboundSchema: z.ZodType<
+  DeleteRedirectsResponseBody1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  alias: types.optional(types.string()),
+  version: z.lazy(() => DeleteRedirectsResponseBodyVersion$inboundSchema),
+});
+/** @internal */
+export type DeleteRedirectsResponseBody1$Outbound = {
+  alias?: string | undefined;
+  version: DeleteRedirectsResponseBodyVersion$Outbound;
+};
+
+/** @internal */
+export const DeleteRedirectsResponseBody1$outboundSchema: z.ZodType<
+  DeleteRedirectsResponseBody1$Outbound,
+  z.ZodTypeDef,
+  DeleteRedirectsResponseBody1
+> = z.object({
+  alias: z.string().optional(),
+  version: z.lazy(() => DeleteRedirectsResponseBodyVersion$outboundSchema),
+});
+
+export function deleteRedirectsResponseBody1ToJSON(
+  deleteRedirectsResponseBody1: DeleteRedirectsResponseBody1,
+): string {
+  return JSON.stringify(
+    DeleteRedirectsResponseBody1$outboundSchema.parse(
+      deleteRedirectsResponseBody1,
+    ),
+  );
+}
+export function deleteRedirectsResponseBody1FromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteRedirectsResponseBody1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteRedirectsResponseBody1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteRedirectsResponseBody1' from JSON`,
   );
 }
 
@@ -237,25 +449,24 @@ export const DeleteRedirectsResponseBody$inboundSchema: z.ZodType<
   DeleteRedirectsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alias: types.nullable(types.string()),
-  version: z.lazy(() => DeleteRedirectsVersion$inboundSchema),
-});
+> = smartUnion([
+  z.lazy(() => DeleteRedirectsResponseBody2$inboundSchema),
+  z.lazy(() => DeleteRedirectsResponseBody1$inboundSchema),
+]);
 /** @internal */
-export type DeleteRedirectsResponseBody$Outbound = {
-  alias: string | null;
-  version: DeleteRedirectsVersion$Outbound;
-};
+export type DeleteRedirectsResponseBody$Outbound =
+  | DeleteRedirectsResponseBody2$Outbound
+  | DeleteRedirectsResponseBody1$Outbound;
 
 /** @internal */
 export const DeleteRedirectsResponseBody$outboundSchema: z.ZodType<
   DeleteRedirectsResponseBody$Outbound,
   z.ZodTypeDef,
   DeleteRedirectsResponseBody
-> = z.object({
-  alias: z.nullable(z.string()),
-  version: z.lazy(() => DeleteRedirectsVersion$outboundSchema),
-});
+> = smartUnion([
+  z.lazy(() => DeleteRedirectsResponseBody2$outboundSchema),
+  z.lazy(() => DeleteRedirectsResponseBody1$outboundSchema),
+]);
 
 export function deleteRedirectsResponseBodyToJSON(
   deleteRedirectsResponseBody: DeleteRedirectsResponseBody,

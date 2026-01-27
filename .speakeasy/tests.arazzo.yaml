@@ -6333,7 +6333,7 @@ workflows:
             protocolSettings:
               experimentation:
                 edgeConfigSyncingEnabled: true
-            source: api
+            source: marketplace
         successCriteria:
           - condition: $statusCode == 200
           - condition: $response.header.Content-Type == application/json
@@ -6559,7 +6559,7 @@ workflows:
             contactInformation:
               address1: <value>
               city: Spencerport
-              country: Sweden
+              country: MM
               email: Lionel21@gmail.com
               firstName: Lexie
               lastName: Lemke
@@ -6587,7 +6587,7 @@ workflows:
             contactInformation:
               address1: <value>
               city: Rennerland
-              country: Peru
+              country: GF
               email: Anna_Fisher13@hotmail.com
               firstName: Leonie
               lastName: Johnston
@@ -6627,7 +6627,7 @@ workflows:
             contactInformation:
               address1: <value>
               city: Pattiestead
-              country: Bolivia
+              country: JO
               email: Keshawn99@yahoo.com
               firstName: Gabrielle
               lastName: Hackett
@@ -7694,4 +7694,24 @@ workflows:
               {"awsAccountId":"<id>","awsRegion":"<value>","cidr":"<value>","createdAt":1571.54,"id":"<id>","name":"<value>","status":"delete_in_progress","teamId":"<id>"}
             type: simple
     x-speakeasy-test-group: connect
+    x-speakeasy-test-rebuild: true
+  - workflowId: get_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config
+    steps:
+      - stepId: test
+        operationId: get_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config
+        parameters:
+          - name: integrationConfigurationId
+            in: path
+            value: <id>
+          - name: resourceId
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"items":{},"updatedAt":3968.81,"digest":"<value>"}
+            type: simple
+    x-speakeasy-test-group: marketplace
     x-speakeasy-test-rebuild: true

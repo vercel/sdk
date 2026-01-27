@@ -94,6 +94,7 @@ async function $do(
 
   const query = encodeFormQuery({
     "buildMachineTypes": payload.buildMachineTypes,
+    "buildQueueConfiguration": payload.buildQueueConfiguration,
     "deprecated": payload.deprecated,
     "edgeConfigId": payload.edgeConfigId,
     "edgeConfigTokenId": payload.edgeConfigTokenId,

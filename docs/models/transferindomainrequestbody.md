@@ -19,7 +19,7 @@ let value: TransferInDomainRequestBody = {
     city: "Palm Desert",
     state: "New Jersey",
     zip: "34043",
-    country: "Malta",
+    country: "MC",
   },
 };
 ```

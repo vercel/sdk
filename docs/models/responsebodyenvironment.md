@@ -5,11 +5,11 @@
 ```typescript
 import { ResponseBodyEnvironment } from "@vercel/sdk/models/getprojectsop.js";
 
-let value: ResponseBodyEnvironment = "preview";
+let value: ResponseBodyEnvironment = "production";
 ```
 
 ## Values
 
 ```typescript
-"preview" | "production"
+"production" | "preview"
 ```

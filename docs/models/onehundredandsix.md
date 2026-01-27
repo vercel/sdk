@@ -8,14 +8,39 @@ The payload of the event, if requested.
 import { OneHundredAndSix } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndSix = {
-  email: "Randall24@hotmail.com",
-  verified: false,
+  team: {
+    id: "<id>",
+    name: "<value>",
+  },
+  project: {
+    id: "<id>",
+    oldConnectConfigurations: [
+      {
+        envId: "<id>",
+        connectConfigurationId: "<id>",
+        passive: false,
+        buildsEnabled: true,
+        createdAt: 9005.75,
+        updatedAt: 8968.35,
+      },
+    ],
+    newConnectConfigurations: [
+      {
+        envId: "<id>",
+        connectConfigurationId: "<id>",
+        passive: true,
+        buildsEnabled: false,
+        createdAt: 5463.76,
+        updatedAt: 2696.76,
+      },
+    ],
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `email`            | *string*           | :heavy_check_mark: | N/A                |
-| `verified`         | *boolean*          | :heavy_check_mark: | N/A                |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `team`                                                                       | [models.UserEventPayload106Team](../models/usereventpayload106team.md)       | :heavy_check_mark:                                                           | N/A                                                                          |
+| `project`                                                                    | [models.UserEventPayload106Project](../models/usereventpayload106project.md) | :heavy_check_mark:                                                           | N/A                                                                          |

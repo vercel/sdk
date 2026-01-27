@@ -1276,10 +1276,13 @@ const (
 	CreateDeploymentFrameworkRequestHono           CreateDeploymentFrameworkRequest = "hono"
 	CreateDeploymentFrameworkRequestExpress        CreateDeploymentFrameworkRequest = "express"
 	CreateDeploymentFrameworkRequestH3             CreateDeploymentFrameworkRequest = "h3"
+	CreateDeploymentFrameworkRequestKoa            CreateDeploymentFrameworkRequest = "koa"
 	CreateDeploymentFrameworkRequestNestjs         CreateDeploymentFrameworkRequest = "nestjs"
 	CreateDeploymentFrameworkRequestElysia         CreateDeploymentFrameworkRequest = "elysia"
 	CreateDeploymentFrameworkRequestFastify        CreateDeploymentFrameworkRequest = "fastify"
 	CreateDeploymentFrameworkRequestXmcp           CreateDeploymentFrameworkRequest = "xmcp"
+	CreateDeploymentFrameworkRequestPython         CreateDeploymentFrameworkRequest = "python"
+	CreateDeploymentFrameworkRequestServices       CreateDeploymentFrameworkRequest = "services"
 )
 
 func (e CreateDeploymentFrameworkRequest) ToPointer() *CreateDeploymentFrameworkRequest {
@@ -1397,6 +1400,8 @@ func (e *CreateDeploymentFrameworkRequest) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "h3":
 		fallthrough
+	case "koa":
+		fallthrough
 	case "nestjs":
 		fallthrough
 	case "elysia":
@@ -1404,6 +1409,10 @@ func (e *CreateDeploymentFrameworkRequest) UnmarshalJSON(data []byte) error {
 	case "fastify":
 		fallthrough
 	case "xmcp":
+		fallthrough
+	case "python":
+		fallthrough
+	case "services":
 		*e = CreateDeploymentFrameworkRequest(v)
 		return nil
 	default:
@@ -1925,10 +1934,13 @@ const (
 	CreateDeploymentFrameworkLambdasHono           CreateDeploymentFrameworkLambdas = "hono"
 	CreateDeploymentFrameworkLambdasExpress        CreateDeploymentFrameworkLambdas = "express"
 	CreateDeploymentFrameworkLambdasH3             CreateDeploymentFrameworkLambdas = "h3"
+	CreateDeploymentFrameworkLambdasKoa            CreateDeploymentFrameworkLambdas = "koa"
 	CreateDeploymentFrameworkLambdasNestjs         CreateDeploymentFrameworkLambdas = "nestjs"
 	CreateDeploymentFrameworkLambdasElysia         CreateDeploymentFrameworkLambdas = "elysia"
 	CreateDeploymentFrameworkLambdasFastify        CreateDeploymentFrameworkLambdas = "fastify"
 	CreateDeploymentFrameworkLambdasXmcp           CreateDeploymentFrameworkLambdas = "xmcp"
+	CreateDeploymentFrameworkLambdasPython         CreateDeploymentFrameworkLambdas = "python"
+	CreateDeploymentFrameworkLambdasServices       CreateDeploymentFrameworkLambdas = "services"
 )
 
 func (e CreateDeploymentFrameworkLambdas) ToPointer() *CreateDeploymentFrameworkLambdas {
@@ -2046,6 +2058,8 @@ func (e *CreateDeploymentFrameworkLambdas) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "h3":
 		fallthrough
+	case "koa":
+		fallthrough
 	case "nestjs":
 		fallthrough
 	case "elysia":
@@ -2053,6 +2067,10 @@ func (e *CreateDeploymentFrameworkLambdas) UnmarshalJSON(data []byte) error {
 	case "fastify":
 		fallthrough
 	case "xmcp":
+		fallthrough
+	case "python":
+		fallthrough
+	case "services":
 		*e = CreateDeploymentFrameworkLambdas(v)
 		return nil
 	default:
@@ -5219,6 +5237,58 @@ func (u CreateDeploymentGitSourceLambdasUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type CreateDeploymentGitSourceLambdasUnion: all fields are null")
 }
 
+// CreateDeploymentManualProvisioningState - Current provisioning state
+type CreateDeploymentManualProvisioningState string
+
+const (
+	CreateDeploymentManualProvisioningStatePending  CreateDeploymentManualProvisioningState = "PENDING"
+	CreateDeploymentManualProvisioningStateComplete CreateDeploymentManualProvisioningState = "COMPLETE"
+	CreateDeploymentManualProvisioningStateTimeout  CreateDeploymentManualProvisioningState = "TIMEOUT"
+)
+
+func (e CreateDeploymentManualProvisioningState) ToPointer() *CreateDeploymentManualProvisioningState {
+	return &e
+}
+func (e *CreateDeploymentManualProvisioningState) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "PENDING":
+		fallthrough
+	case "COMPLETE":
+		fallthrough
+	case "TIMEOUT":
+		*e = CreateDeploymentManualProvisioningState(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateDeploymentManualProvisioningState: %v", v)
+	}
+}
+
+// CreateDeploymentManualProvisioning - Present when deployment was created with VERCEL_MANUAL_PROVISIONING=true. The deployment stays in INITIALIZING until /continue is called.
+type CreateDeploymentManualProvisioning struct {
+	// Current provisioning state
+	State CreateDeploymentManualProvisioningState `json:"state"`
+	// Timestamp when manual provisioning completed
+	CompletedAt *float64 `json:"completedAt,omitempty"`
+}
+
+func (o *CreateDeploymentManualProvisioning) GetState() CreateDeploymentManualProvisioningState {
+	if o == nil {
+		return CreateDeploymentManualProvisioningState("")
+	}
+	return o.State
+}
+
+func (o *CreateDeploymentManualProvisioning) GetCompletedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CompletedAt
+}
+
 // CreateDeploymentNodeVersionLambdas - If set it overrides the `projectSettings.nodeVersion` for this deployment.
 type CreateDeploymentNodeVersionLambdas string
 
@@ -5592,6 +5662,8 @@ type CreateDeploymentExperimentalTrigger struct {
 	RetryAfterSeconds *float64 `json:"retryAfterSeconds,omitempty"`
 	// Initial delay in seconds before first execution attempt (OPTIONAL) Must be 0 or greater. Use 0 for no initial delay. Behavior when not specified depends on the server's default configuration.
 	InitialDelaySeconds *float64 `json:"initialDelaySeconds,omitempty"`
+	// Maximum number of concurrent executions for this consumer (OPTIONAL) Must be at least 1 if specified. Behavior when not specified depends on the server's default configuration.
+	MaxConcurrency *float64 `json:"maxConcurrency,omitempty"`
 }
 
 func (o *CreateDeploymentExperimentalTrigger) GetType() CreateDeploymentFunctionsType {
@@ -5634,6 +5706,13 @@ func (o *CreateDeploymentExperimentalTrigger) GetInitialDelaySeconds() *float64 
 		return nil
 	}
 	return o.InitialDelaySeconds
+}
+
+func (o *CreateDeploymentExperimentalTrigger) GetMaxConcurrency() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.MaxConcurrency
 }
 
 type CreateDeploymentFunctions struct {
@@ -7752,7 +7831,8 @@ type CreateDeploymentRoute1 struct {
 	// The original middleware matchers.
 	MiddlewareRawSrc []string `json:"middlewareRawSrc,omitempty"`
 	// A middleware index in the `middleware` key under the build result
-	Middleware *float64 `json:"middleware,omitempty"`
+	Middleware                *float64 `json:"middleware,omitempty"`
+	RespectOriginCacheControl *bool    `json:"respectOriginCacheControl,omitempty"`
 }
 
 func (c CreateDeploymentRoute1) MarshalJSON() ([]byte, error) {
@@ -7897,6 +7977,13 @@ func (o *CreateDeploymentRoute1) GetMiddleware() *float64 {
 		return nil
 	}
 	return o.Middleware
+}
+
+func (o *CreateDeploymentRoute1) GetRespectOriginCacheControl() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.RespectOriginCacheControl
 }
 
 type CreateDeploymentRouteUnionType string
@@ -8941,6 +9028,174 @@ func (e *CreateDeploymentFunctionMemoryType) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// CreateDeploymentConfiguration - Build resource configuration snapshot for this deployment.
+type CreateDeploymentConfiguration string
+
+const (
+	CreateDeploymentConfigurationSkipNamespaceQueue    CreateDeploymentConfiguration = "SKIP_NAMESPACE_QUEUE"
+	CreateDeploymentConfigurationWaitForNamespaceQueue CreateDeploymentConfiguration = "WAIT_FOR_NAMESPACE_QUEUE"
+)
+
+func (e CreateDeploymentConfiguration) ToPointer() *CreateDeploymentConfiguration {
+	return &e
+}
+func (e *CreateDeploymentConfiguration) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "SKIP_NAMESPACE_QUEUE":
+		fallthrough
+	case "WAIT_FOR_NAMESPACE_QUEUE":
+		*e = CreateDeploymentConfiguration(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateDeploymentConfiguration: %v", v)
+	}
+}
+
+// CreateDeploymentBuildQueue - Build resource configuration snapshot for this deployment.
+type CreateDeploymentBuildQueue struct {
+	// Build resource configuration snapshot for this deployment.
+	Configuration *CreateDeploymentConfiguration `json:"configuration,omitempty"`
+}
+
+func (o *CreateDeploymentBuildQueue) GetConfiguration() *CreateDeploymentConfiguration {
+	if o == nil {
+		return nil
+	}
+	return o.Configuration
+}
+
+// CreateDeploymentPurchaseType - Build resource configuration snapshot for this deployment.
+type CreateDeploymentPurchaseType string
+
+const (
+	CreateDeploymentPurchaseTypeEnhanced CreateDeploymentPurchaseType = "enhanced"
+	CreateDeploymentPurchaseTypeTurbo    CreateDeploymentPurchaseType = "turbo"
+)
+
+func (e CreateDeploymentPurchaseType) ToPointer() *CreateDeploymentPurchaseType {
+	return &e
+}
+func (e *CreateDeploymentPurchaseType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enhanced":
+		fallthrough
+	case "turbo":
+		*e = CreateDeploymentPurchaseType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateDeploymentPurchaseType: %v", v)
+	}
+}
+
+// CreateDeploymentBuildMachine - Build resource configuration snapshot for this deployment.
+type CreateDeploymentBuildMachine struct {
+	// Build resource configuration snapshot for this deployment.
+	PurchaseType *CreateDeploymentPurchaseType `json:"purchaseType,omitempty"`
+	// Build resource configuration snapshot for this deployment.
+	IsDefaultBuildMachine *bool `json:"isDefaultBuildMachine,omitempty"`
+	// Build resource configuration snapshot for this deployment.
+	Cores *float64 `json:"cores,omitempty"`
+	// Build resource configuration snapshot for this deployment.
+	Memory *float64 `json:"memory,omitempty"`
+}
+
+func (o *CreateDeploymentBuildMachine) GetPurchaseType() *CreateDeploymentPurchaseType {
+	if o == nil {
+		return nil
+	}
+	return o.PurchaseType
+}
+
+func (o *CreateDeploymentBuildMachine) GetIsDefaultBuildMachine() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsDefaultBuildMachine
+}
+
+func (o *CreateDeploymentBuildMachine) GetCores() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Cores
+}
+
+func (o *CreateDeploymentBuildMachine) GetMemory() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Memory
+}
+
+// CreateDeploymentElasticConcurrency - When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues
+type CreateDeploymentElasticConcurrency string
+
+const (
+	CreateDeploymentElasticConcurrencyTeamSetting    CreateDeploymentElasticConcurrency = "TEAM_SETTING"
+	CreateDeploymentElasticConcurrencyProjectSetting CreateDeploymentElasticConcurrency = "PROJECT_SETTING"
+	CreateDeploymentElasticConcurrencySkipQueue      CreateDeploymentElasticConcurrency = "SKIP_QUEUE"
+)
+
+func (e CreateDeploymentElasticConcurrency) ToPointer() *CreateDeploymentElasticConcurrency {
+	return &e
+}
+func (e *CreateDeploymentElasticConcurrency) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "TEAM_SETTING":
+		fallthrough
+	case "PROJECT_SETTING":
+		fallthrough
+	case "SKIP_QUEUE":
+		*e = CreateDeploymentElasticConcurrency(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateDeploymentElasticConcurrency: %v", v)
+	}
+}
+
+// CreateDeploymentResourceConfig - Build resource configuration snapshot for this deployment.
+type CreateDeploymentResourceConfig struct {
+	// Build resource configuration snapshot for this deployment.
+	BuildQueue *CreateDeploymentBuildQueue `json:"buildQueue,omitempty"`
+	// Build resource configuration snapshot for this deployment.
+	BuildMachine *CreateDeploymentBuildMachine `json:"buildMachine,omitempty"`
+	// When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues
+	ElasticConcurrency *CreateDeploymentElasticConcurrency `json:"elasticConcurrency,omitempty"`
+}
+
+func (o *CreateDeploymentResourceConfig) GetBuildQueue() *CreateDeploymentBuildQueue {
+	if o == nil {
+		return nil
+	}
+	return o.BuildQueue
+}
+
+func (o *CreateDeploymentResourceConfig) GetBuildMachine() *CreateDeploymentBuildMachine {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachine
+}
+
+func (o *CreateDeploymentResourceConfig) GetElasticConcurrency() *CreateDeploymentElasticConcurrency {
+	if o == nil {
+		return nil
+	}
+	return o.ElasticConcurrency
+}
+
 // CreateDeploymentConfig - Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
 type CreateDeploymentConfig struct {
 	Version                     *float64                           `json:"version,omitempty"`
@@ -8950,6 +9205,8 @@ type CreateDeploymentConfig struct {
 	SecureComputePrimaryRegion  *string                            `json:"secureComputePrimaryRegion"`
 	SecureComputeFallbackRegion *string                            `json:"secureComputeFallbackRegion"`
 	IsUsingActiveCPU            *bool                              `json:"isUsingActiveCPU,omitempty"`
+	// Build resource configuration snapshot for this deployment.
+	ResourceConfig *CreateDeploymentResourceConfig `json:"resourceConfig,omitempty"`
 }
 
 func (o *CreateDeploymentConfig) GetVersion() *float64 {
@@ -9001,18 +9258,25 @@ func (o *CreateDeploymentConfig) GetIsUsingActiveCPU() *bool {
 	return o.IsUsingActiveCPU
 }
 
-type CreateDeploymentState string
+func (o *CreateDeploymentConfig) GetResourceConfig() *CreateDeploymentResourceConfig {
+	if o == nil {
+		return nil
+	}
+	return o.ResourceConfig
+}
+
+type CreateDeploymentDeploymentAliasState string
 
 const (
-	CreateDeploymentStateSucceeded CreateDeploymentState = "succeeded"
-	CreateDeploymentStateFailed    CreateDeploymentState = "failed"
-	CreateDeploymentStatePending   CreateDeploymentState = "pending"
+	CreateDeploymentDeploymentAliasStateSucceeded CreateDeploymentDeploymentAliasState = "succeeded"
+	CreateDeploymentDeploymentAliasStateFailed    CreateDeploymentDeploymentAliasState = "failed"
+	CreateDeploymentDeploymentAliasStatePending   CreateDeploymentDeploymentAliasState = "pending"
 )
 
-func (e CreateDeploymentState) ToPointer() *CreateDeploymentState {
+func (e CreateDeploymentDeploymentAliasState) ToPointer() *CreateDeploymentDeploymentAliasState {
 	return &e
 }
-func (e *CreateDeploymentState) UnmarshalJSON(data []byte) error {
+func (e *CreateDeploymentDeploymentAliasState) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -9023,23 +9287,23 @@ func (e *CreateDeploymentState) UnmarshalJSON(data []byte) error {
 	case "failed":
 		fallthrough
 	case "pending":
-		*e = CreateDeploymentState(v)
+		*e = CreateDeploymentDeploymentAliasState(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateDeploymentState: %v", v)
+		return fmt.Errorf("invalid value for CreateDeploymentDeploymentAliasState: %v", v)
 	}
 }
 
 // CreateDeploymentDeploymentAlias - Condensed check data. Retrieve individual check and check run data using api-checks v2 routes.
 type CreateDeploymentDeploymentAlias struct {
-	State       CreateDeploymentState `json:"state"`
-	StartedAt   float64               `json:"startedAt"`
-	CompletedAt *float64              `json:"completedAt,omitempty"`
+	State       CreateDeploymentDeploymentAliasState `json:"state"`
+	StartedAt   float64                              `json:"startedAt"`
+	CompletedAt *float64                             `json:"completedAt,omitempty"`
 }
 
-func (o *CreateDeploymentDeploymentAlias) GetState() CreateDeploymentState {
+func (o *CreateDeploymentDeploymentAlias) GetState() CreateDeploymentDeploymentAliasState {
 	if o == nil {
-		return CreateDeploymentState("")
+		return CreateDeploymentDeploymentAliasState("")
 	}
 	return o.State
 }
@@ -9141,10 +9405,12 @@ type CreateDeploymentResponseBody struct {
 	ErrorMessage *string  `json:"errorMessage,omitempty"`
 	ErrorStep    *string  `json:"errorStep,omitempty"`
 	// Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service
-	PassiveRegions    []string                               `json:"passiveRegions,omitempty"`
-	GitSource         *CreateDeploymentGitSourceLambdasUnion `json:"gitSource,omitempty"`
-	Meta              map[string]string                      `json:"meta"`
-	OriginCacheRegion *string                                `json:"originCacheRegion,omitempty"`
+	PassiveRegions []string                               `json:"passiveRegions,omitempty"`
+	GitSource      *CreateDeploymentGitSourceLambdasUnion `json:"gitSource,omitempty"`
+	// Present when deployment was created with VERCEL_MANUAL_PROVISIONING=true. The deployment stays in INITIALIZING until /continue is called.
+	ManualProvisioning *CreateDeploymentManualProvisioning `json:"manualProvisioning,omitempty"`
+	Meta               map[string]string                   `json:"meta"`
+	OriginCacheRegion  *string                             `json:"originCacheRegion,omitempty"`
 	// If set it overrides the `projectSettings.nodeVersion` for this deployment.
 	NodeVersion *CreateDeploymentNodeVersionLambdas `json:"nodeVersion,omitempty"`
 	// The public project information associated with the deployment.
@@ -9565,6 +9831,13 @@ func (o *CreateDeploymentResponseBody) GetGitSource() *CreateDeploymentGitSource
 		return nil
 	}
 	return o.GitSource
+}
+
+func (o *CreateDeploymentResponseBody) GetManualProvisioning() *CreateDeploymentManualProvisioning {
+	if o == nil {
+		return nil
+	}
+	return o.ManualProvisioning
 }
 
 func (o *CreateDeploymentResponseBody) GetMeta() map[string]string {

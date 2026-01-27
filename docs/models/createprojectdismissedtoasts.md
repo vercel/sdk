@@ -8,8 +8,11 @@ import { CreateProjectDismissedToasts } from "@vercel/sdk/models/createprojectop
 let value: CreateProjectDismissedToasts = {
   key: "<key>",
   dismissedAt: 9269.94,
-  action: "accept",
-  value: false,
+  action: "cancel",
+  value: {
+    previousValue: false,
+    currentValue: false,
+  },
 };
 ```
 

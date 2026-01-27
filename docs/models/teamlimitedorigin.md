@@ -11,5 +11,5 @@ let value: TeamLimitedOrigin = "mail";
 ## Values
 
 ```typescript
-"link" | "saml" | "mail" | "import" | "teams" | "github" | "gitlab" | "bitbucket" | "dsync" | "feedback" | "organization-teams"
+"link" | "saml" | "mail" | "import" | "teams" | "github" | "gitlab" | "bitbucket" | "dsync" | "feedback" | "organization-teams" | "nsnb-auto-approve"
 ```

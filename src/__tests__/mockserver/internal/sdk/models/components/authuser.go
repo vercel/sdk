@@ -481,8 +481,6 @@ type AuthUserResourceConfig struct {
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	IntegrationStores *float64 `json:"integrationStores,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
-	CronJobs *float64 `json:"cronJobs,omitempty"`
-	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	CronJobsPerProject *float64 `json:"cronJobsPerProject,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	MicrofrontendGroupsPerTeam *float64 `json:"microfrontendGroupsPerTeam,omitempty"`
@@ -637,13 +635,6 @@ func (o *AuthUserResourceConfig) GetIntegrationStores() *float64 {
 		return nil
 	}
 	return o.IntegrationStores
-}
-
-func (o *AuthUserResourceConfig) GetCronJobs() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.CronJobs
 }
 
 func (o *AuthUserResourceConfig) GetCronJobsPerProject() *float64 {

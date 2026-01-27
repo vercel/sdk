@@ -3,20 +3,20 @@
 
 ## Supported Types
 
+### `models.GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson1`
+
+```typescript
+const value:
+  models.GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson1 =
+    {
+      expr: "<value>",
+    };
+```
+
 ### `boolean`
 
 ```typescript
 const value: boolean = true;
-```
-
-### `models.GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson2`
-
-```typescript
-const value:
-  models.GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson2 =
-    {
-      expr: "<value>",
-    };
 ```
 
 ### `models.GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson3`

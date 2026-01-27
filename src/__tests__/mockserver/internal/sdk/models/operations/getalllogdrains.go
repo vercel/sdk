@@ -4344,10 +4344,13 @@ const (
 	GetAllLogDrainsFrameworkHono           GetAllLogDrainsFramework = "hono"
 	GetAllLogDrainsFrameworkExpress        GetAllLogDrainsFramework = "express"
 	GetAllLogDrainsFrameworkH3             GetAllLogDrainsFramework = "h3"
+	GetAllLogDrainsFrameworkKoa            GetAllLogDrainsFramework = "koa"
 	GetAllLogDrainsFrameworkNestjs         GetAllLogDrainsFramework = "nestjs"
 	GetAllLogDrainsFrameworkElysia         GetAllLogDrainsFramework = "elysia"
 	GetAllLogDrainsFrameworkFastify        GetAllLogDrainsFramework = "fastify"
 	GetAllLogDrainsFrameworkXmcp           GetAllLogDrainsFramework = "xmcp"
+	GetAllLogDrainsFrameworkPython         GetAllLogDrainsFramework = "python"
+	GetAllLogDrainsFrameworkServices       GetAllLogDrainsFramework = "services"
 )
 
 func (e GetAllLogDrainsFramework) ToPointer() *GetAllLogDrainsFramework {
@@ -4465,6 +4468,8 @@ func (e *GetAllLogDrainsFramework) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "h3":
 		fallthrough
+	case "koa":
+		fallthrough
 	case "nestjs":
 		fallthrough
 	case "elysia":
@@ -4472,6 +4477,10 @@ func (e *GetAllLogDrainsFramework) UnmarshalJSON(data []byte) error {
 	case "fastify":
 		fallthrough
 	case "xmcp":
+		fallthrough
+	case "python":
+		fallthrough
+	case "services":
 		*e = GetAllLogDrainsFramework(v)
 		return nil
 	default:

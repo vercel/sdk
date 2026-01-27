@@ -41,8 +41,8 @@ export type RemoveCustomEnvironmentRequest = {
  * The type of environment (production, preview, or development)
  */
 export const RemoveCustomEnvironmentType = {
-  Preview: "preview",
   Production: "production",
+  Preview: "preview",
   Development: "development",
 } as const;
 /**

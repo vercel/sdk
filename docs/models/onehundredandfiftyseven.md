@@ -8,12 +8,16 @@ The payload of the event, if requested.
 import { OneHundredAndFiftySeven } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndFiftySeven = {
-  action: "disable",
+  store: {
+    name: "<value>",
+    id: "<id>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `action`                                                                   | [models.UserEventPayload157Action](../models/usereventpayload157action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field                              | Type                               | Required                           | Description                        |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| `store`                            | [models.Store](../models/store.md) | :heavy_check_mark:                 | N/A                                |
+| `ownerId`                          | *string*                           | :heavy_minus_sign:                 | N/A                                |

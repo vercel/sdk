@@ -546,7 +546,7 @@ async function run() {
         city: "Spencerport",
         state: "West Virginia",
         zip: "46432",
-        country: "Sweden",
+        country: "MM",
       },
     },
   });
@@ -588,7 +588,7 @@ async function run() {
         city: "Spencerport",
         state: "West Virginia",
         zip: "46432",
-        country: "Sweden",
+        country: "MM",
       },
     },
   });
@@ -663,7 +663,7 @@ async function run() {
         city: "Rennerland",
         state: "New Jersey",
         zip: "70054",
-        country: "Peru",
+        country: "GF",
       },
     },
   });
@@ -702,7 +702,7 @@ async function run() {
         city: "Rennerland",
         state: "New Jersey",
         zip: "70054",
-        country: "Peru",
+        country: "GF",
       },
     },
   });
@@ -783,7 +783,7 @@ async function run() {
         city: "Pattiestead",
         state: "Idaho",
         zip: "64653-9022",
-        country: "Bolivia",
+        country: "JO",
       },
     },
   });
@@ -826,7 +826,7 @@ async function run() {
         city: "Pattiestead",
         state: "Idaho",
         zip: "64653-9022",
-        country: "Bolivia",
+        country: "JO",
       },
     },
   });

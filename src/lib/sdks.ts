@@ -304,9 +304,9 @@ export class ClientSDK {
   }
 }
 
-const jsonLikeContentTypeRE = /(application|text)\/([^+]+\+)*json.*/;
+const jsonLikeContentTypeRE = /^(application|text)\/([^+]+\+)*json.*/;
 const jsonlLikeContentTypeRE =
-  /(application|text)\/(([^+]+\+)*jsonl\b.*|([^+]+\+)*x-ndjson\b.*)/;
+  /^(application|text)\/([^+]+\+)*(jsonl|x-ndjson)\b.*/;
 async function logRequest(logger: Logger | undefined, req: Request) {
   if (!logger) {
     return;

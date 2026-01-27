@@ -7,11 +7,11 @@ The type of environment (production, preview, or development)
 ```typescript
 import { RemoveCustomEnvironmentType } from "@vercel/sdk/models/removecustomenvironmentop.js";
 
-let value: RemoveCustomEnvironmentType = "preview";
+let value: RemoveCustomEnvironmentType = "production";
 ```
 
 ## Values
 
 ```typescript
-"preview" | "production" | "development"
+"production" | "preview" | "development"
 ```

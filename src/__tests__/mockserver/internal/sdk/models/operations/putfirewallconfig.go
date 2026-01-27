@@ -649,6 +649,7 @@ const (
 	PutFirewallConfigTypeRequestJa4Digest        PutFirewallConfigTypeRequest = "ja4_digest"
 	PutFirewallConfigTypeRequestJa3Digest        PutFirewallConfigTypeRequest = "ja3_digest"
 	PutFirewallConfigTypeRequestRateLimitAPIID   PutFirewallConfigTypeRequest = "rate_limit_api_id"
+	PutFirewallConfigTypeRequestServerAction     PutFirewallConfigTypeRequest = "server_action"
 	PutFirewallConfigTypeRequestBotName          PutFirewallConfigTypeRequest = "bot_name"
 	PutFirewallConfigTypeRequestBotCategory      PutFirewallConfigTypeRequest = "bot_category"
 )
@@ -707,6 +708,8 @@ func (e *PutFirewallConfigTypeRequest) UnmarshalJSON(data []byte) error {
 	case "ja3_digest":
 		fallthrough
 	case "rate_limit_api_id":
+		fallthrough
+	case "server_action":
 		fallthrough
 	case "bot_name":
 		fallthrough
@@ -1346,24 +1349,15 @@ func (o *RuleActionRequest) GetMitigate() *PutFirewallConfigMitigateRequest {
 type PutFirewallConfigValidationErrorsType string
 
 const (
-	PutFirewallConfigValidationErrorsTypeStr        PutFirewallConfigValidationErrorsType = "str"
 	PutFirewallConfigValidationErrorsTypeArrayOfStr PutFirewallConfigValidationErrorsType = "arrayOfStr"
+	PutFirewallConfigValidationErrorsTypeStr        PutFirewallConfigValidationErrorsType = "str"
 )
 
 type PutFirewallConfigValidationErrors struct {
-	Str        *string  `queryParam:"inline"`
 	ArrayOfStr []string `queryParam:"inline"`
+	Str        *string  `queryParam:"inline"`
 
 	Type PutFirewallConfigValidationErrorsType
-}
-
-func CreatePutFirewallConfigValidationErrorsStr(str string) PutFirewallConfigValidationErrors {
-	typ := PutFirewallConfigValidationErrorsTypeStr
-
-	return PutFirewallConfigValidationErrors{
-		Str:  &str,
-		Type: typ,
-	}
 }
 
 func CreatePutFirewallConfigValidationErrorsArrayOfStr(arrayOfStr []string) PutFirewallConfigValidationErrors {
@@ -1375,14 +1369,16 @@ func CreatePutFirewallConfigValidationErrorsArrayOfStr(arrayOfStr []string) PutF
 	}
 }
 
-func (u *PutFirewallConfigValidationErrors) UnmarshalJSON(data []byte) error {
+func CreatePutFirewallConfigValidationErrorsStr(str string) PutFirewallConfigValidationErrors {
+	typ := PutFirewallConfigValidationErrorsTypeStr
 
-	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
-		u.Str = &str
-		u.Type = PutFirewallConfigValidationErrorsTypeStr
-		return nil
+	return PutFirewallConfigValidationErrors{
+		Str:  &str,
+		Type: typ,
 	}
+}
+
+func (u *PutFirewallConfigValidationErrors) UnmarshalJSON(data []byte) error {
 
 	var arrayOfStr []string = []string{}
 	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
@@ -1391,16 +1387,23 @@ func (u *PutFirewallConfigValidationErrors) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = PutFirewallConfigValidationErrorsTypeStr
+		return nil
+	}
+
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PutFirewallConfigValidationErrors", string(data))
 }
 
 func (u PutFirewallConfigValidationErrors) MarshalJSON() ([]byte, error) {
-	if u.Str != nil {
-		return utils.MarshalJSON(u.Str, "", true)
-	}
-
 	if u.ArrayOfStr != nil {
 		return utils.MarshalJSON(u.ArrayOfStr, "", true)
+	}
+
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type PutFirewallConfigValidationErrors: all fields are null")
@@ -3913,10 +3916,83 @@ func (o *PutFirewallConfigOwasp) GetUsername() *string {
 	return o.Username
 }
 
+type ActiveVercelRulesetAction string
+
+const (
+	ActiveVercelRulesetActionDeny      ActiveVercelRulesetAction = "deny"
+	ActiveVercelRulesetActionLog       ActiveVercelRulesetAction = "log"
+	ActiveVercelRulesetActionChallenge ActiveVercelRulesetAction = "challenge"
+)
+
+func (e ActiveVercelRulesetAction) ToPointer() *ActiveVercelRulesetAction {
+	return &e
+}
+func (e *ActiveVercelRulesetAction) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "deny":
+		fallthrough
+	case "log":
+		fallthrough
+	case "challenge":
+		*e = ActiveVercelRulesetAction(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ActiveVercelRulesetAction: %v", v)
+	}
+}
+
+type PutFirewallConfigVercelRuleset struct {
+	Active    bool                       `json:"active"`
+	Action    *ActiveVercelRulesetAction `json:"action,omitempty"`
+	UpdatedAt *string                    `json:"updatedAt,omitempty"`
+	UserID    *string                    `json:"userId,omitempty"`
+	Username  *string                    `json:"username,omitempty"`
+}
+
+func (o *PutFirewallConfigVercelRuleset) GetActive() bool {
+	if o == nil {
+		return false
+	}
+	return o.Active
+}
+
+func (o *PutFirewallConfigVercelRuleset) GetAction() *ActiveVercelRulesetAction {
+	if o == nil {
+		return nil
+	}
+	return o.Action
+}
+
+func (o *PutFirewallConfigVercelRuleset) GetUpdatedAt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *PutFirewallConfigVercelRuleset) GetUserID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UserID
+}
+
+func (o *PutFirewallConfigVercelRuleset) GetUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Username
+}
+
 type ActiveManagedRules struct {
 	BotProtection *PutFirewallConfigBotProtection `json:"bot_protection,omitempty"`
 	AiBots        *PutFirewallConfigAiBots        `json:"ai_bots,omitempty"`
 	Owasp         *PutFirewallConfigOwasp         `json:"owasp,omitempty"`
+	VercelRuleset *PutFirewallConfigVercelRuleset `json:"vercel_ruleset,omitempty"`
 }
 
 func (o *ActiveManagedRules) GetBotProtection() *PutFirewallConfigBotProtection {
@@ -3938,6 +4014,13 @@ func (o *ActiveManagedRules) GetOwasp() *PutFirewallConfigOwasp {
 		return nil
 	}
 	return o.Owasp
+}
+
+func (o *ActiveManagedRules) GetVercelRuleset() *PutFirewallConfigVercelRuleset {
+	if o == nil {
+		return nil
+	}
+	return o.VercelRuleset
 }
 
 type Active struct {

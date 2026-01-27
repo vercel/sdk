@@ -3,29 +3,17 @@
 ## Example Usage
 
 ```typescript
-import { Crons } from "@vercel/sdk/models/updateprojectdatacacheop.js";
+import { Crons } from "@vercel/sdk/models/createdeploymentop.js";
 
 let value: Crons = {
-  enabledAt: 9924.58,
-  disabledAt: 4638.01,
-  updatedAt: 9014.17,
-  deploymentId: "<id>",
-  definitions: [
-    {
-      host: "vercel.com",
-      path: "/api/crons/sync-something?hello=world",
-      schedule: "0 0 * * *",
-    },
-  ],
+  schedule: "<value>",
+  path: "/var/yp",
 };
 ```
 
 ## Fields
 
-| Field                                                                                                                              | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
-| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `enabledAt`                                                                                                                        | *number*                                                                                                                           | :heavy_check_mark:                                                                                                                 | The time the feature was enabled for this project. Note: It enables automatically with the first Deployment that outputs cronjobs. |
-| `disabledAt`                                                                                                                       | *number*                                                                                                                           | :heavy_check_mark:                                                                                                                 | The time the feature was disabled for this project.                                                                                |
-| `updatedAt`                                                                                                                        | *number*                                                                                                                           | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
-| `deploymentId`                                                                                                                     | *string*                                                                                                                           | :heavy_check_mark:                                                                                                                 | The ID of the Deployment from which the definitions originated.                                                                    |
-| `definitions`                                                                                                                      | [models.Definitions](../models/definitions.md)[]                                                                                   | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `schedule`         | *string*           | :heavy_check_mark: | N/A                |
+| `path`             | *string*           | :heavy_check_mark: | N/A                |

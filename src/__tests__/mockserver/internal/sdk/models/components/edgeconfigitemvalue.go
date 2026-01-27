@@ -13,17 +13,17 @@ type EdgeConfigItemValueType string
 const (
 	EdgeConfigItemValueTypeStr                        EdgeConfigItemValueType = "str"
 	EdgeConfigItemValueTypeNumber                     EdgeConfigItemValueType = "number"
-	EdgeConfigItemValueTypeBoolean                    EdgeConfigItemValueType = "boolean"
 	EdgeConfigItemValueTypeMapOfEdgeConfigItemValue   EdgeConfigItemValueType = "mapOfEdgeConfigItemValue"
 	EdgeConfigItemValueTypeArrayOfEdgeConfigItemValue EdgeConfigItemValueType = "arrayOfEdgeConfigItemValue"
+	EdgeConfigItemValueTypeBoolean                    EdgeConfigItemValueType = "boolean"
 )
 
 type EdgeConfigItemValue struct {
 	Str                        *string                         `queryParam:"inline"`
 	Number                     *float64                        `queryParam:"inline"`
-	Boolean                    *bool                           `queryParam:"inline"`
 	MapOfEdgeConfigItemValue   map[string]*EdgeConfigItemValue `queryParam:"inline"`
 	ArrayOfEdgeConfigItemValue []*EdgeConfigItemValue          `queryParam:"inline"`
+	Boolean                    *bool                           `queryParam:"inline"`
 
 	Type EdgeConfigItemValueType
 }
@@ -46,15 +46,6 @@ func CreateEdgeConfigItemValueNumber(number float64) EdgeConfigItemValue {
 	}
 }
 
-func CreateEdgeConfigItemValueBoolean(boolean bool) EdgeConfigItemValue {
-	typ := EdgeConfigItemValueTypeBoolean
-
-	return EdgeConfigItemValue{
-		Boolean: &boolean,
-		Type:    typ,
-	}
-}
-
 func CreateEdgeConfigItemValueMapOfEdgeConfigItemValue(mapOfEdgeConfigItemValue map[string]*EdgeConfigItemValue) EdgeConfigItemValue {
 	typ := EdgeConfigItemValueTypeMapOfEdgeConfigItemValue
 
@@ -70,6 +61,15 @@ func CreateEdgeConfigItemValueArrayOfEdgeConfigItemValue(arrayOfEdgeConfigItemVa
 	return EdgeConfigItemValue{
 		ArrayOfEdgeConfigItemValue: arrayOfEdgeConfigItemValue,
 		Type:                       typ,
+	}
+}
+
+func CreateEdgeConfigItemValueBoolean(boolean bool) EdgeConfigItemValue {
+	typ := EdgeConfigItemValueTypeBoolean
+
+	return EdgeConfigItemValue{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -89,13 +89,6 @@ func (u *EdgeConfigItemValue) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
-		u.Boolean = &boolean
-		u.Type = EdgeConfigItemValueTypeBoolean
-		return nil
-	}
-
 	var mapOfEdgeConfigItemValue map[string]*EdgeConfigItemValue = map[string]*EdgeConfigItemValue{}
 	if err := utils.UnmarshalJSON(data, &mapOfEdgeConfigItemValue, "", true, nil); err == nil {
 		u.MapOfEdgeConfigItemValue = mapOfEdgeConfigItemValue
@@ -107,6 +100,13 @@ func (u *EdgeConfigItemValue) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &arrayOfEdgeConfigItemValue, "", true, nil); err == nil {
 		u.ArrayOfEdgeConfigItemValue = arrayOfEdgeConfigItemValue
 		u.Type = EdgeConfigItemValueTypeArrayOfEdgeConfigItemValue
+		return nil
+	}
+
+	var boolean bool = false
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
+		u.Boolean = &boolean
+		u.Type = EdgeConfigItemValueTypeBoolean
 		return nil
 	}
 
@@ -122,16 +122,16 @@ func (u EdgeConfigItemValue) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.Number, "", true)
 	}
 
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.MapOfEdgeConfigItemValue != nil {
 		return utils.MarshalJSON(u.MapOfEdgeConfigItemValue, "", true)
 	}
 
 	if u.ArrayOfEdgeConfigItemValue != nil {
 		return utils.MarshalJSON(u.ArrayOfEdgeConfigItemValue, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type EdgeConfigItemValue: all fields are null")

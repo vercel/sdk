@@ -1,6 +1,6 @@
 # CreateCustomEnvironmentBranchMatcher
 
-Configuration for matching git branches to this environment
+How we want to determine a matching branch. This is optional.
 
 ## Example Usage
 
@@ -15,7 +15,7 @@ let value: CreateCustomEnvironmentBranchMatcher = {
 
 ## Fields
 
-| Field                                                                                                                | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
-| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                               | [models.CreateCustomEnvironmentEnvironmentResponseType](../models/createcustomenvironmentenvironmentresponsetype.md) | :heavy_check_mark:                                                                                                   | The type of matching to perform                                                                                      |
-| `pattern`                                                                                                            | *string*                                                                                                             | :heavy_check_mark:                                                                                                   | The pattern to match against branch names                                                                            |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `type`                                                                         | [models.CreateCustomEnvironmentType](../models/createcustomenvironmenttype.md) | :heavy_check_mark:                                                             | Type of matcher. One of \"equals\", \"startsWith\", or \"endsWith\".           |
+| `pattern`                                                                      | *string*                                                                       | :heavy_check_mark:                                                             | Git branch name or portion thereof.                                            |

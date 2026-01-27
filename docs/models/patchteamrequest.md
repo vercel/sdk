@@ -33,6 +33,9 @@ let value: PatchTeamRequest = {
       expirationCanceled: "1y",
       expirationErrored: "1y",
     },
+    strictDeploymentProtectionSettings: {
+      enabled: true,
+    },
   },
 };
 ```

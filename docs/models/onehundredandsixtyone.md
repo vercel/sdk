@@ -7,26 +7,17 @@ The payload of the event, if requested.
 ```typescript
 import { OneHundredAndSixtyOne } from "@vercel/sdk/models/userevent.js";
 
-let value: OneHundredAndSixtyOne = {
-  project: {
-    id: "<id>",
-    name: "<value>",
-  },
-  prev: {
-    project: {},
-  },
-  group: {
-    id: "<id>",
-    slug: "<value>",
-    name: "<value>",
-  },
-};
+let value: OneHundredAndSixtyOne = {};
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `project`                                                                    | [models.UserEventPayload161Project](../models/usereventpayload161project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `prev`                                                                       | [models.PayloadPrev](../models/payloadprev.md)                               | :heavy_check_mark:                                                           | N/A                                                                          |
-| `group`                                                                      | [models.PayloadGroup](../models/payloadgroup.md)                             | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `directoryType`                                | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `ssoType`                                      | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `invitedUser`                                  | [models.InvitedUser](../models/inviteduser.md) | :heavy_minus_sign:                             | N/A                                            |
+| `invitedEmail`                                 | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `invitationRole`                               | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `entitlements`                                 | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
+| `invitedUid`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |

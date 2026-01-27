@@ -8,13 +8,7 @@ The payload of the event, if requested.
 import { EightySix } from "@vercel/sdk/models/userevent.js";
 
 let value: EightySix = {
-  projectId: "<id>",
-  projectAnalytics: {
-    id: "<id>",
-    disabledAt: 6510.39,
-    enabledAt: 3421.27,
-  },
-  prevProjectAnalytics: null,
+  plan: "<value>",
 };
 ```
 
@@ -22,7 +16,15 @@ let value: EightySix = {
 
 | Field                                                            | Type                                                             | Required                                                         | Description                                                      |
 | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `projectName`                                                    | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
-| `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `projectAnalytics`                                               | [models.ProjectAnalytics](../models/projectanalytics.md)         | :heavy_check_mark:                                               | N/A                                                              |
-| `prevProjectAnalytics`                                           | [models.PrevProjectAnalytics](../models/prevprojectanalytics.md) | :heavy_check_mark:                                               | N/A                                                              |
+| `plan`                                                           | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `removedUsers`                                                   | Record<string, [models.RemovedUsers](../models/removedusers.md)> | :heavy_minus_sign:                                               | N/A                                                              |
+| `prevPlan`                                                       | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
+| `priorPlan`                                                      | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
+| `isDowngrade`                                                    | *boolean*                                                        | :heavy_minus_sign:                                               | N/A                                                              |
+| `userAgent`                                                      | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
+| `isReactivate`                                                   | *boolean*                                                        | :heavy_minus_sign:                                               | N/A                                                              |
+| `isTrialUpgrade`                                                 | *boolean*                                                        | :heavy_minus_sign:                                               | N/A                                                              |
+| `automated`                                                      | *boolean*                                                        | :heavy_minus_sign:                                               | N/A                                                              |
+| `reason`                                                         | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
+| `timestamp`                                                      | *number*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
+| `removedMemberCount`                                             | *number*                                                         | :heavy_minus_sign:                                               | N/A                                                              |

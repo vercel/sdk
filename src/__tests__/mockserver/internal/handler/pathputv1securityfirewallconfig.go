@@ -8,6 +8,7 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/operations"
+	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
@@ -107,32 +108,40 @@ func testPutFirewallConfigPutFirewallConfig0(w http.ResponseWriter, req *http.Re
 			Rules: []operations.ActiveRuleUnion{
 				operations.CreateActiveRuleUnionRuleActive2(
 					operations.RuleActive2{
-						ID:             "<id>",
-						Name:           "<value>",
-						Active:         true,
-						ConditionGroup: []operations.ActiveConditionGroup2{},
-						Action:         operations.RuleActiveAction2{},
-						Valid:          true,
+						ID:     "<id>",
+						Name:   "<value>",
+						Active: false,
+						ConditionGroup: []operations.ActiveConditionGroup2{
+							operations.ActiveConditionGroup2{
+								Conditions: []operations.ActiveCondition2{
+									operations.ActiveCondition2{
+										Type: operations.ActiveType2Region,
+										Op:   operations.ActiveOp2Lte,
+									},
+								},
+							},
+						},
+						Action: operations.RuleActiveAction2{},
+						Valid:  true,
 						ValidationErrors: []string{
 							"<value 1>",
 							"<value 2>",
-							"<value 3>",
 						},
 					},
 				),
-				operations.CreateActiveRuleUnionRuleActive2(
-					operations.RuleActive2{
-						ID:             "<id>",
-						Name:           "<value>",
-						Active:         true,
-						ConditionGroup: []operations.ActiveConditionGroup2{},
-						Action:         operations.RuleActiveAction2{},
-						Valid:          true,
-						ValidationErrors: []string{
-							"<value 1>",
-							"<value 2>",
-							"<value 3>",
+				operations.CreateActiveRuleUnionRuleActive1(
+					operations.RuleActive1{
+						ID:     "<id>",
+						Name:   "<value>",
+						Active: false,
+						ConditionGroup: []operations.ActiveConditionGroup1{
+							operations.ActiveConditionGroup1{
+								Conditions: []operations.ActiveCondition1{},
+							},
 						},
+						Action:           operations.RuleActiveAction1{},
+						Valid:            true,
+						ValidationErrors: types.String("<value>"),
 					},
 				),
 			},

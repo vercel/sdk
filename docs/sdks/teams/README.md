@@ -749,6 +749,9 @@ async function run() {
         expirationCanceled: "1y",
         expirationErrored: "1y",
       },
+      strictDeploymentProtectionSettings: {
+        enabled: true,
+      },
     },
   });
 
@@ -799,6 +802,9 @@ async function run() {
         expirationProduction: "1y",
         expirationCanceled: "1y",
         expirationErrored: "1y",
+      },
+      strictDeploymentProtectionSettings: {
+        enabled: true,
       },
     },
   });

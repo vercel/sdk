@@ -3,20 +3,20 @@
 
 ## Supported Types
 
+### `models.CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBody1`
+
+```typescript
+const value:
+  models.CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBody1 =
+    {
+      expr: "<value>",
+    };
+```
+
 ### `boolean`
 
 ```typescript
 const value: boolean = true;
-```
-
-### `models.CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBody2`
-
-```typescript
-const value:
-  models.CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBody2 =
-    {
-      expr: "<value>",
-    };
 ```
 
 ### `models.CreateIntegrationStoreDirectUiHiddenIntegrationsResponse200ApplicationJSONResponseBody3`

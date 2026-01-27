@@ -9,12 +9,9 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export type FlagJSONValue =
-  | string
-  | number
-  | boolean
-  | Array<FlagJSONValue | null>
-  | { [k: string]: FlagJSONValue | null };
+export type FlagJSONValue = string | number | Array<FlagJSONValue | null> | {
+  [k: string]: FlagJSONValue | null;
+} | boolean;
 
 /** @internal */
 export const FlagJSONValue$inboundSchema: z.ZodType<
@@ -24,17 +21,17 @@ export const FlagJSONValue$inboundSchema: z.ZodType<
 > = smartUnion([
   types.string(),
   types.number(),
-  types.boolean(),
   z.array(types.nullable(z.lazy(() => FlagJSONValue$inboundSchema))),
   z.record(types.nullable(z.lazy(() => FlagJSONValue$inboundSchema))),
+  types.boolean(),
 ]);
 /** @internal */
 export type FlagJSONValue$Outbound =
   | string
   | number
-  | boolean
   | Array<FlagJSONValue$Outbound | null>
-  | { [k: string]: FlagJSONValue$Outbound | null };
+  | { [k: string]: FlagJSONValue$Outbound | null }
+  | boolean;
 
 /** @internal */
 export const FlagJSONValue$outboundSchema: z.ZodType<
@@ -44,9 +41,9 @@ export const FlagJSONValue$outboundSchema: z.ZodType<
 > = smartUnion([
   z.string(),
   z.number(),
-  z.boolean(),
   z.array(z.nullable(z.lazy(() => FlagJSONValue$outboundSchema))),
   z.record(z.nullable(z.lazy(() => FlagJSONValue$outboundSchema))),
+  z.boolean(),
 ]);
 
 export function flagJSONValueToJSON(flagJSONValue: FlagJSONValue): string {

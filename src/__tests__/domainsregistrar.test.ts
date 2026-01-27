@@ -155,7 +155,7 @@ test("Domains Registrar Buy Single Domain", async () => {
         city: "Spencerport",
         state: "West Virginia",
         zip: "46432",
-        country: "Sweden",
+        country: "MM",
       },
     },
   });
@@ -193,7 +193,7 @@ test("Domains Registrar Buy Domains", async () => {
         city: "Rennerland",
         state: "New Jersey",
         zip: "70054",
-        country: "Peru",
+        country: "GF",
       },
     },
   });
@@ -230,7 +230,7 @@ test("Domains Registrar Transfer In Domain", async () => {
         city: "Pattiestead",
         state: "Idaho",
         zip: "64653-9022",
-        country: "Bolivia",
+        country: "JO",
       },
     },
   });

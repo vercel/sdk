@@ -9,12 +9,24 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
+export const QueryParamSource = {
+  Marketplace: "marketplace",
+  DeployButton: "deploy-button",
+  External: "external",
+  V0: "v0",
+  ResourceClaims: "resource-claims",
+  Cli: "cli",
+  Oauth: "oauth",
+  Backoffice: "backoffice",
+} as const;
+export type QueryParamSource = ClosedEnum<typeof QueryParamSource>;
+
 export type GetBillingPlansRequest = {
   integrationIdOrSlug: string;
   integrationConfigurationId?: string | undefined;
   productIdOrSlug: string;
   metadata?: string | undefined;
-  source?: string | undefined;
+  source?: QueryParamSource | undefined;
   /**
    * The Team identifier to perform the request on behalf of.
    */
@@ -77,6 +89,15 @@ export type GetBillingPlansResponseBody = {
 };
 
 /** @internal */
+export const QueryParamSource$inboundSchema: z.ZodNativeEnum<
+  typeof QueryParamSource
+> = z.nativeEnum(QueryParamSource);
+/** @internal */
+export const QueryParamSource$outboundSchema: z.ZodNativeEnum<
+  typeof QueryParamSource
+> = QueryParamSource$inboundSchema;
+
+/** @internal */
 export const GetBillingPlansRequest$inboundSchema: z.ZodType<
   GetBillingPlansRequest,
   z.ZodTypeDef,
@@ -86,7 +107,7 @@ export const GetBillingPlansRequest$inboundSchema: z.ZodType<
   integrationConfigurationId: types.optional(types.string()),
   productIdOrSlug: types.string(),
   metadata: types.optional(types.string()),
-  source: types.optional(types.string()),
+  source: types.optional(QueryParamSource$inboundSchema),
   teamId: types.optional(types.string()),
   slug: types.optional(types.string()),
 });
@@ -111,7 +132,7 @@ export const GetBillingPlansRequest$outboundSchema: z.ZodType<
   integrationConfigurationId: z.string().optional(),
   productIdOrSlug: z.string(),
   metadata: z.string().optional(),
-  source: z.string().optional(),
+  source: QueryParamSource$outboundSchema.optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });

@@ -24,6 +24,7 @@ export const UpdateFirewallConfigRequestBodyId = {
   AiBots: "ai_bots",
   BotFilter: "bot_filter",
   BotProtection: "bot_protection",
+  VercelRuleset: "vercel_ruleset",
   Owasp: "owasp",
 } as const;
 export type UpdateFirewallConfigRequestBodyId = ClosedEnum<
@@ -64,6 +65,7 @@ export const RequestBodyId = {
   AiBots: "ai_bots",
   BotFilter: "bot_filter",
   BotProtection: "bot_protection",
+  VercelRuleset: "vercel_ruleset",
   Owasp: "owasp",
 } as const;
 export type RequestBodyId = ClosedEnum<typeof RequestBodyId>;
@@ -408,8 +410,8 @@ export type UpdateFirewallConfigRequestBodySecurityRequest3Action = {
 };
 
 export type UpdateFirewallConfigRequestBodyValidationErrors =
-  | string
-  | Array<string>;
+  | Array<string>
+  | string;
 
 export type UpdateFirewallConfigRequestBodyValue = {
   name: string;
@@ -418,7 +420,7 @@ export type UpdateFirewallConfigRequestBodyValue = {
   conditionGroup: Array<UpdateFirewallConfigRequestBodyConditionGroup>;
   action: UpdateFirewallConfigRequestBodySecurityRequest3Action;
   valid?: boolean | undefined;
-  validationErrors?: string | Array<string> | undefined;
+  validationErrors?: Array<string> | string | undefined;
 };
 
 /**
@@ -564,7 +566,7 @@ export type UpdateFirewallConfigRequestBodySecurityRequest2Action = {
   mitigate?: RequestBodyMitigate | undefined;
 };
 
-export type RequestBodyValidationErrors = string | Array<string>;
+export type RequestBodyValidationErrors = Array<string> | string;
 
 export type RequestBodyValue = {
   name: string;
@@ -573,7 +575,7 @@ export type RequestBodyValue = {
   conditionGroup: Array<RequestBodyConditionGroup>;
   action: UpdateFirewallConfigRequestBodySecurityRequest2Action;
   valid?: boolean | undefined;
-  validationErrors?: string | Array<string> | undefined;
+  validationErrors?: Array<string> | string | undefined;
 };
 
 /**
@@ -2197,11 +2199,11 @@ export const UpdateFirewallConfigRequestBodyValidationErrors$inboundSchema:
     UpdateFirewallConfigRequestBodyValidationErrors,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([types.string(), z.array(types.string())]);
+  > = smartUnion([z.array(types.string()), types.string()]);
 /** @internal */
 export type UpdateFirewallConfigRequestBodyValidationErrors$Outbound =
-  | string
-  | Array<string>;
+  | Array<string>
+  | string;
 
 /** @internal */
 export const UpdateFirewallConfigRequestBodyValidationErrors$outboundSchema:
@@ -2209,7 +2211,7 @@ export const UpdateFirewallConfigRequestBodyValidationErrors$outboundSchema:
     UpdateFirewallConfigRequestBodyValidationErrors$Outbound,
     z.ZodTypeDef,
     UpdateFirewallConfigRequestBodyValidationErrors
-  > = smartUnion([z.string(), z.array(z.string())]);
+  > = smartUnion([z.array(z.string()), z.string()]);
 
 export function updateFirewallConfigRequestBodyValidationErrorsToJSON(
   updateFirewallConfigRequestBodyValidationErrors:
@@ -2254,7 +2256,7 @@ export const UpdateFirewallConfigRequestBodyValue$inboundSchema: z.ZodType<
   ),
   valid: types.optional(types.boolean()),
   validationErrors: types.optional(
-    smartUnion([types.string(), z.array(types.string())]),
+    smartUnion([z.array(types.string()), types.string()]),
   ),
 });
 /** @internal */
@@ -2265,7 +2267,7 @@ export type UpdateFirewallConfigRequestBodyValue$Outbound = {
   conditionGroup: Array<UpdateFirewallConfigRequestBodyConditionGroup$Outbound>;
   action: UpdateFirewallConfigRequestBodySecurityRequest3Action$Outbound;
   valid?: boolean | undefined;
-  validationErrors?: string | Array<string> | undefined;
+  validationErrors?: Array<string> | string | undefined;
 };
 
 /** @internal */
@@ -2284,7 +2286,7 @@ export const UpdateFirewallConfigRequestBodyValue$outboundSchema: z.ZodType<
     UpdateFirewallConfigRequestBodySecurityRequest3Action$outboundSchema
   ),
   valid: z.boolean().optional(),
-  validationErrors: smartUnion([z.string(), z.array(z.string())]).optional(),
+  validationErrors: smartUnion([z.array(z.string()), z.string()]).optional(),
 });
 
 export function updateFirewallConfigRequestBodyValueToJSON(
@@ -2896,16 +2898,16 @@ export const RequestBodyValidationErrors$inboundSchema: z.ZodType<
   RequestBodyValidationErrors,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), z.array(types.string())]);
+> = smartUnion([z.array(types.string()), types.string()]);
 /** @internal */
-export type RequestBodyValidationErrors$Outbound = string | Array<string>;
+export type RequestBodyValidationErrors$Outbound = Array<string> | string;
 
 /** @internal */
 export const RequestBodyValidationErrors$outboundSchema: z.ZodType<
   RequestBodyValidationErrors$Outbound,
   z.ZodTypeDef,
   RequestBodyValidationErrors
-> = smartUnion([z.string(), z.array(z.string())]);
+> = smartUnion([z.array(z.string()), z.string()]);
 
 export function requestBodyValidationErrorsToJSON(
   requestBodyValidationErrors: RequestBodyValidationErrors,
@@ -2943,7 +2945,7 @@ export const RequestBodyValue$inboundSchema: z.ZodType<
   ),
   valid: types.optional(types.boolean()),
   validationErrors: types.optional(
-    smartUnion([types.string(), z.array(types.string())]),
+    smartUnion([z.array(types.string()), types.string()]),
   ),
 });
 /** @internal */
@@ -2954,7 +2956,7 @@ export type RequestBodyValue$Outbound = {
   conditionGroup: Array<RequestBodyConditionGroup$Outbound>;
   action: UpdateFirewallConfigRequestBodySecurityRequest2Action$Outbound;
   valid?: boolean | undefined;
-  validationErrors?: string | Array<string> | undefined;
+  validationErrors?: Array<string> | string | undefined;
 };
 
 /** @internal */
@@ -2973,7 +2975,7 @@ export const RequestBodyValue$outboundSchema: z.ZodType<
     UpdateFirewallConfigRequestBodySecurityRequest2Action$outboundSchema
   ),
   valid: z.boolean().optional(),
-  validationErrors: smartUnion([z.string(), z.array(z.string())]).optional(),
+  validationErrors: smartUnion([z.array(z.string()), z.string()]).optional(),
 });
 
 export function requestBodyValueToJSON(

@@ -1,0 +1,21 @@
+# WorkflowStorage
+
+## Example Usage
+
+```typescript
+import { WorkflowStorage } from "@vercel/sdk/models/userevent.js";
+
+let value: WorkflowStorage = {
+  updatedAt: 3509.01,
+  blockReason: "limits_exceeded",
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                      | Type                                                                                                                                                       | Required                                                                                                                                                   | Description                                                                                                                                                |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `updatedAt`                                                                                                                                                | *number*                                                                                                                                                   | :heavy_check_mark:                                                                                                                                         | N/A                                                                                                                                                        |
+| `blockedFrom`                                                                                                                                              | *number*                                                                                                                                                   | :heavy_minus_sign:                                                                                                                                         | N/A                                                                                                                                                        |
+| `blockedUntil`                                                                                                                                             | *number*                                                                                                                                                   | :heavy_minus_sign:                                                                                                                                         | N/A                                                                                                                                                        |
+| `blockReason`                                                                                                                                              | [models.UserEventPayload73NewOwnerFeatureBlocksWorkflowStorageBlockReason](../models/usereventpayload73newownerfeatureblocksworkflowstorageblockreason.md) | :heavy_check_mark:                                                                                                                                         | N/A                                                                                                                                                        |

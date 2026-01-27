@@ -5,11 +5,11 @@
 ```typescript
 import { GetProjectsResponseBodyAction } from "@vercel/sdk/models/getprojectsop.js";
 
-let value: GetProjectsResponseBodyAction = "delete";
+let value: GetProjectsResponseBodyAction = "accept";
 ```
 
 ## Values
 
 ```typescript
-"cancel" | "accept" | "delete"
+"delete" | "cancel" | "accept"
 ```

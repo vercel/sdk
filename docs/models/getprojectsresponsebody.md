@@ -30,7 +30,7 @@ const value: models.GetProjectsResponseBody1[] = [
           userId: "<id>",
         },
         domain: "ordinary-tray.org",
-        environment: "production",
+        environment: "preview",
         target: "PREVIEW",
       },
     ],

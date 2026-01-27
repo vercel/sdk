@@ -1,15 +1,17 @@
 # Key
 
-## Example Usage
+
+## Supported Types
+
+### `string`
 
 ```typescript
-import { Key } from "@vercel/sdk/models/updateprojectdatacacheop.js";
-
-let value: Key = "x-vercel-ip-country";
+const value: string = "<value>";
 ```
 
-## Values
+### `models.Key2`
 
 ```typescript
-"x-vercel-ip-country"
+const value: models.Key2 = {};
 ```
+

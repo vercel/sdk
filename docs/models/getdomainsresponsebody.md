@@ -34,7 +34,6 @@ let value: GetDomainsResponseBody = {
       createdAt: 1613602938882,
       expiresAt: 1613602938882,
       id: "EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1",
-      orderedAt: 1613602938882,
       renew: true,
       serviceType: "zeit.world",
       transferredAt: 1613602938882,

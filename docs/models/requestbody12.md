@@ -9,7 +9,7 @@ import { RequestBody12 } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: RequestBody12 = {
   action: "<value>",
-  id: "bot_protection",
+  id: "vercel_ruleset",
   value: {},
 };
 ```

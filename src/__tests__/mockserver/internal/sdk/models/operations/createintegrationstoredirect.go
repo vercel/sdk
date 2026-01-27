@@ -139,6 +139,51 @@ func (u MetadataRequest) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type MetadataRequest: all fields are null")
 }
 
+// CreateIntegrationStoreDirectSource - Source of the store creation request
+type CreateIntegrationStoreDirectSource string
+
+const (
+	CreateIntegrationStoreDirectSourceMarketplace    CreateIntegrationStoreDirectSource = "marketplace"
+	CreateIntegrationStoreDirectSourceDeployButton   CreateIntegrationStoreDirectSource = "deploy-button"
+	CreateIntegrationStoreDirectSourceExternal       CreateIntegrationStoreDirectSource = "external"
+	CreateIntegrationStoreDirectSourceV0             CreateIntegrationStoreDirectSource = "v0"
+	CreateIntegrationStoreDirectSourceResourceClaims CreateIntegrationStoreDirectSource = "resource-claims"
+	CreateIntegrationStoreDirectSourceCli            CreateIntegrationStoreDirectSource = "cli"
+	CreateIntegrationStoreDirectSourceOauth          CreateIntegrationStoreDirectSource = "oauth"
+	CreateIntegrationStoreDirectSourceBackoffice     CreateIntegrationStoreDirectSource = "backoffice"
+)
+
+func (e CreateIntegrationStoreDirectSource) ToPointer() *CreateIntegrationStoreDirectSource {
+	return &e
+}
+func (e *CreateIntegrationStoreDirectSource) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "marketplace":
+		fallthrough
+	case "deploy-button":
+		fallthrough
+	case "external":
+		fallthrough
+	case "v0":
+		fallthrough
+	case "resource-claims":
+		fallthrough
+	case "cli":
+		fallthrough
+	case "oauth":
+		fallthrough
+	case "backoffice":
+		*e = CreateIntegrationStoreDirectSource(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectSource: %v", v)
+	}
+}
+
 type CreateIntegrationStoreDirectRequestBody struct {
 	// Human-readable name for the storage resource
 	Name string `json:"name"`
@@ -153,7 +198,7 @@ type CreateIntegrationStoreDirectRequestBody struct {
 	// Protocol-specific configuration settings
 	ProtocolSettings map[string]any `json:"protocolSettings,omitempty"`
 	// Source of the store creation request
-	Source *string `default:"marketplace" json:"source"`
+	Source *CreateIntegrationStoreDirectSource `default:"marketplace" json:"source"`
 	// ID of the billing plan for paid resources. Get available plans from GET /integrations/integration/{id}/products/{productId}/plans. If not provided, automatically discovers free billing plans.
 	BillingPlanID *string `json:"billingPlanId,omitempty"`
 	// Payment method ID for paid resources. Optional - uses default payment method if not provided.
@@ -215,7 +260,7 @@ func (o *CreateIntegrationStoreDirectRequestBody) GetProtocolSettings() map[stri
 	return o.ProtocolSettings
 }
 
-func (o *CreateIntegrationStoreDirectRequestBody) GetSource() *string {
+func (o *CreateIntegrationStoreDirectRequestBody) GetSource() *CreateIntegrationStoreDirectSource {
 	if o == nil {
 		return nil
 	}
@@ -328,10 +373,13 @@ const (
 	CreateIntegrationStoreDirectFrameworkHono           CreateIntegrationStoreDirectFramework = "hono"
 	CreateIntegrationStoreDirectFrameworkExpress        CreateIntegrationStoreDirectFramework = "express"
 	CreateIntegrationStoreDirectFrameworkH3             CreateIntegrationStoreDirectFramework = "h3"
+	CreateIntegrationStoreDirectFrameworkKoa            CreateIntegrationStoreDirectFramework = "koa"
 	CreateIntegrationStoreDirectFrameworkNestjs         CreateIntegrationStoreDirectFramework = "nestjs"
 	CreateIntegrationStoreDirectFrameworkElysia         CreateIntegrationStoreDirectFramework = "elysia"
 	CreateIntegrationStoreDirectFrameworkFastify        CreateIntegrationStoreDirectFramework = "fastify"
 	CreateIntegrationStoreDirectFrameworkXmcp           CreateIntegrationStoreDirectFramework = "xmcp"
+	CreateIntegrationStoreDirectFrameworkPython         CreateIntegrationStoreDirectFramework = "python"
+	CreateIntegrationStoreDirectFrameworkServices       CreateIntegrationStoreDirectFramework = "services"
 )
 
 func (e CreateIntegrationStoreDirectFramework) ToPointer() *CreateIntegrationStoreDirectFramework {
@@ -449,6 +497,8 @@ func (e *CreateIntegrationStoreDirectFramework) UnmarshalJSON(data []byte) error
 		fallthrough
 	case "h3":
 		fallthrough
+	case "koa":
+		fallthrough
 	case "nestjs":
 		fallthrough
 	case "elysia":
@@ -456,6 +506,10 @@ func (e *CreateIntegrationStoreDirectFramework) UnmarshalJSON(data []byte) error
 	case "fastify":
 		fallthrough
 	case "xmcp":
+		fallthrough
+	case "python":
+		fallthrough
+	case "services":
 		*e = CreateIntegrationStoreDirectFramework(v)
 		return nil
 	default:
@@ -885,24 +939,15 @@ func (o *SecretRotation) GetMaxDelayHours() float64 {
 type SecretRotationUnionType string
 
 const (
-	SecretRotationUnionTypeBoolean        SecretRotationUnionType = "boolean"
 	SecretRotationUnionTypeSecretRotation SecretRotationUnionType = "secretRotation"
+	SecretRotationUnionTypeBoolean        SecretRotationUnionType = "boolean"
 )
 
 type SecretRotationUnion struct {
-	Boolean        *bool           `queryParam:"inline"`
 	SecretRotation *SecretRotation `queryParam:"inline"`
+	Boolean        *bool           `queryParam:"inline"`
 
 	Type SecretRotationUnionType
-}
-
-func CreateSecretRotationUnionBoolean(boolean bool) SecretRotationUnion {
-	typ := SecretRotationUnionTypeBoolean
-
-	return SecretRotationUnion{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateSecretRotationUnionSecretRotation(secretRotation SecretRotation) SecretRotationUnion {
@@ -911,6 +956,15 @@ func CreateSecretRotationUnionSecretRotation(secretRotation SecretRotation) Secr
 	return SecretRotationUnion{
 		SecretRotation: &secretRotation,
 		Type:           typ,
+	}
+}
+
+func CreateSecretRotationUnionBoolean(boolean bool) SecretRotationUnion {
+	typ := SecretRotationUnionTypeBoolean
+
+	return SecretRotationUnion{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -934,12 +988,12 @@ func (u *SecretRotationUnion) UnmarshalJSON(data []byte) error {
 }
 
 func (u SecretRotationUnion) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.SecretRotation != nil {
 		return utils.MarshalJSON(u.SecretRotation, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type SecretRotationUnion: all fields are null")
@@ -954,6 +1008,7 @@ type Capabilities struct {
 	SecretsSync    *bool                `json:"secretsSync,omitempty"`
 	SecretRotation *SecretRotationUnion `json:"secretRotation,omitempty"`
 	Projects       *bool                `json:"projects,omitempty"`
+	V0             *bool                `json:"v0,omitempty"`
 }
 
 func (o *Capabilities) GetMcp() *bool {
@@ -1012,22 +1067,29 @@ func (o *Capabilities) GetProjects() *bool {
 	return o.Projects
 }
 
+func (o *Capabilities) GetV0() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.V0
+}
+
 type StoreMetadataType string
 
 const (
 	StoreMetadataTypeStr           StoreMetadataType = "str"
 	StoreMetadataTypeNumber        StoreMetadataType = "number"
-	StoreMetadataTypeBoolean       StoreMetadataType = "boolean"
 	StoreMetadataTypeArrayOfStr    StoreMetadataType = "arrayOfStr"
 	StoreMetadataTypeArrayOfNumber StoreMetadataType = "arrayOfNumber"
+	StoreMetadataTypeBoolean       StoreMetadataType = "boolean"
 )
 
 type StoreMetadata struct {
 	Str           *string   `queryParam:"inline"`
 	Number        *float64  `queryParam:"inline"`
-	Boolean       *bool     `queryParam:"inline"`
 	ArrayOfStr    []string  `queryParam:"inline"`
 	ArrayOfNumber []float64 `queryParam:"inline"`
+	Boolean       *bool     `queryParam:"inline"`
 
 	Type StoreMetadataType
 }
@@ -1050,15 +1112,6 @@ func CreateStoreMetadataNumber(number float64) StoreMetadata {
 	}
 }
 
-func CreateStoreMetadataBoolean(boolean bool) StoreMetadata {
-	typ := StoreMetadataTypeBoolean
-
-	return StoreMetadata{
-		Boolean: &boolean,
-		Type:    typ,
-	}
-}
-
 func CreateStoreMetadataArrayOfStr(arrayOfStr []string) StoreMetadata {
 	typ := StoreMetadataTypeArrayOfStr
 
@@ -1074,6 +1127,15 @@ func CreateStoreMetadataArrayOfNumber(arrayOfNumber []float64) StoreMetadata {
 	return StoreMetadata{
 		ArrayOfNumber: arrayOfNumber,
 		Type:          typ,
+	}
+}
+
+func CreateStoreMetadataBoolean(boolean bool) StoreMetadata {
+	typ := StoreMetadataTypeBoolean
+
+	return StoreMetadata{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -1093,13 +1155,6 @@ func (u *StoreMetadata) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
-		u.Boolean = &boolean
-		u.Type = StoreMetadataTypeBoolean
-		return nil
-	}
-
 	var arrayOfStr []string = []string{}
 	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
 		u.ArrayOfStr = arrayOfStr
@@ -1111,6 +1166,13 @@ func (u *StoreMetadata) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &arrayOfNumber, "", true, nil); err == nil {
 		u.ArrayOfNumber = arrayOfNumber
 		u.Type = StoreMetadataTypeArrayOfNumber
+		return nil
+	}
+
+	var boolean bool = false
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
+		u.Boolean = &boolean
+		u.Type = StoreMetadataTypeBoolean
 		return nil
 	}
 
@@ -1126,16 +1188,16 @@ func (u StoreMetadata) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.Number, "", true)
 	}
 
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.ArrayOfStr != nil {
 		return utils.MarshalJSON(u.ArrayOfStr, "", true)
 	}
 
 	if u.ArrayOfNumber != nil {
 		return utils.MarshalJSON(u.ArrayOfNumber, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type StoreMetadata: all fields are null")
@@ -1207,24 +1269,15 @@ func (o *SecretRotationProduct) GetMaxDelayHours() float64 {
 type ProductSecretRotationUnionType string
 
 const (
-	ProductSecretRotationUnionTypeBoolean               ProductSecretRotationUnionType = "boolean"
 	ProductSecretRotationUnionTypeSecretRotationProduct ProductSecretRotationUnionType = "secretRotation_product"
+	ProductSecretRotationUnionTypeBoolean               ProductSecretRotationUnionType = "boolean"
 )
 
 type ProductSecretRotationUnion struct {
-	Boolean               *bool                  `queryParam:"inline"`
 	SecretRotationProduct *SecretRotationProduct `queryParam:"inline"`
+	Boolean               *bool                  `queryParam:"inline"`
 
 	Type ProductSecretRotationUnionType
-}
-
-func CreateProductSecretRotationUnionBoolean(boolean bool) ProductSecretRotationUnion {
-	typ := ProductSecretRotationUnionTypeBoolean
-
-	return ProductSecretRotationUnion{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateProductSecretRotationUnionSecretRotationProduct(secretRotationProduct SecretRotationProduct) ProductSecretRotationUnion {
@@ -1233,6 +1286,15 @@ func CreateProductSecretRotationUnionSecretRotationProduct(secretRotationProduct
 	return ProductSecretRotationUnion{
 		SecretRotationProduct: &secretRotationProduct,
 		Type:                  typ,
+	}
+}
+
+func CreateProductSecretRotationUnionBoolean(boolean bool) ProductSecretRotationUnion {
+	typ := ProductSecretRotationUnionTypeBoolean
+
+	return ProductSecretRotationUnion{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -1256,28 +1318,32 @@ func (u *ProductSecretRotationUnion) UnmarshalJSON(data []byte) error {
 }
 
 func (u ProductSecretRotationUnion) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.SecretRotationProduct != nil {
 		return utils.MarshalJSON(u.SecretRotationProduct, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type ProductSecretRotationUnion: all fields are null")
 }
 
 type ProductCapabilities struct {
-	Mcp            *bool                       `json:"mcp,omitempty"`
-	McpReadonly    *bool                       `json:"mcpReadonly,omitempty"`
-	Sso            *bool                       `json:"sso,omitempty"`
-	Billable       *bool                       `json:"billable,omitempty"`
-	Transferable   *bool                       `json:"transferable,omitempty"`
-	SecretsSync    *bool                       `json:"secretsSync,omitempty"`
-	SecretRotation *ProductSecretRotationUnion `json:"secretRotation,omitempty"`
-	Sandbox        *bool                       `json:"sandbox,omitempty"`
-	Linking        *bool                       `json:"linking,omitempty"`
-	Projects       *bool                       `json:"projects,omitempty"`
+	Mcp                     *bool                       `json:"mcp,omitempty"`
+	McpReadonly             *bool                       `json:"mcpReadonly,omitempty"`
+	Sso                     *bool                       `json:"sso,omitempty"`
+	Billable                *bool                       `json:"billable,omitempty"`
+	Transferable            *bool                       `json:"transferable,omitempty"`
+	SecretsSync             *bool                       `json:"secretsSync,omitempty"`
+	SecretRotation          *ProductSecretRotationUnion `json:"secretRotation,omitempty"`
+	Sandbox                 *bool                       `json:"sandbox,omitempty"`
+	Linking                 *bool                       `json:"linking,omitempty"`
+	Projects                *bool                       `json:"projects,omitempty"`
+	V0                      *bool                       `json:"v0,omitempty"`
+	ImportResource          *bool                       `json:"importResource,omitempty"`
+	ConnectedImportResource *bool                       `json:"connectedImportResource,omitempty"`
+	NativeImportResource    *bool                       `json:"nativeImportResource,omitempty"`
 }
 
 func (o *ProductCapabilities) GetMcp() *bool {
@@ -1348,6 +1414,34 @@ func (o *ProductCapabilities) GetProjects() *bool {
 		return nil
 	}
 	return o.Projects
+}
+
+func (o *ProductCapabilities) GetV0() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.V0
+}
+
+func (o *ProductCapabilities) GetImportResource() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ImportResource
+}
+
+func (o *ProductCapabilities) GetConnectedImportResource() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ConnectedImportResource
+}
+
+func (o *ProductCapabilities) GetNativeImportResource() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.NativeImportResource
 }
 
 type CreateIntegrationStoreDirectTypeObject string
@@ -1470,26 +1564,17 @@ func (o *CreateIntegrationStoreDirectUIReadOnly10) GetExpr() string {
 type CreateIntegrationStoreDirectUIReadOnlyUnion10Type string
 
 const (
-	CreateIntegrationStoreDirectUIReadOnlyUnion10TypeBoolean                                      CreateIntegrationStoreDirectUIReadOnlyUnion10Type = "boolean"
 	CreateIntegrationStoreDirectUIReadOnlyUnion10TypeCreateIntegrationStoreDirectUIReadOnly10     CreateIntegrationStoreDirectUIReadOnlyUnion10Type = "createIntegrationStoreDirect_ui:read-only_10"
+	CreateIntegrationStoreDirectUIReadOnlyUnion10TypeBoolean                                      CreateIntegrationStoreDirectUIReadOnlyUnion10Type = "boolean"
 	CreateIntegrationStoreDirectUIReadOnlyUnion10TypeCreateIntegrationStoreDirectUIReadOnlyEnum10 CreateIntegrationStoreDirectUIReadOnlyUnion10Type = "createIntegrationStoreDirect_ui:read-only_enum_10"
 )
 
 type CreateIntegrationStoreDirectUIReadOnlyUnion10 struct {
-	Boolean                                      *bool                                         `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIReadOnly10     *CreateIntegrationStoreDirectUIReadOnly10     `queryParam:"inline"`
+	Boolean                                      *bool                                         `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIReadOnlyEnum10 *CreateIntegrationStoreDirectUIReadOnlyEnum10 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectUIReadOnlyUnion10Type
-}
-
-func CreateCreateIntegrationStoreDirectUIReadOnlyUnion10Boolean(boolean bool) CreateIntegrationStoreDirectUIReadOnlyUnion10 {
-	typ := CreateIntegrationStoreDirectUIReadOnlyUnion10TypeBoolean
-
-	return CreateIntegrationStoreDirectUIReadOnlyUnion10{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectUIReadOnlyUnion10CreateIntegrationStoreDirectUIReadOnly10(createIntegrationStoreDirectUIReadOnly10 CreateIntegrationStoreDirectUIReadOnly10) CreateIntegrationStoreDirectUIReadOnlyUnion10 {
@@ -1498,6 +1583,15 @@ func CreateCreateIntegrationStoreDirectUIReadOnlyUnion10CreateIntegrationStoreDi
 	return CreateIntegrationStoreDirectUIReadOnlyUnion10{
 		CreateIntegrationStoreDirectUIReadOnly10: &createIntegrationStoreDirectUIReadOnly10,
 		Type:                                     typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIReadOnlyUnion10Boolean(boolean bool) CreateIntegrationStoreDirectUIReadOnlyUnion10 {
+	typ := CreateIntegrationStoreDirectUIReadOnlyUnion10TypeBoolean
+
+	return CreateIntegrationStoreDirectUIReadOnlyUnion10{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -1537,12 +1631,12 @@ func (u *CreateIntegrationStoreDirectUIReadOnlyUnion10) UnmarshalJSON(data []byt
 }
 
 func (u CreateIntegrationStoreDirectUIReadOnlyUnion10) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectUIReadOnly10 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIReadOnly10, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectUIReadOnlyEnum10 != nil {
@@ -1603,26 +1697,17 @@ func (o *CreateIntegrationStoreDirectUIHidden10) GetExpr() string {
 type CreateIntegrationStoreDirectUIHiddenUnion10Type string
 
 const (
-	CreateIntegrationStoreDirectUIHiddenUnion10TypeBoolean                                    CreateIntegrationStoreDirectUIHiddenUnion10Type = "boolean"
 	CreateIntegrationStoreDirectUIHiddenUnion10TypeCreateIntegrationStoreDirectUIHidden10     CreateIntegrationStoreDirectUIHiddenUnion10Type = "createIntegrationStoreDirect_ui:hidden_10"
+	CreateIntegrationStoreDirectUIHiddenUnion10TypeBoolean                                    CreateIntegrationStoreDirectUIHiddenUnion10Type = "boolean"
 	CreateIntegrationStoreDirectUIHiddenUnion10TypeCreateIntegrationStoreDirectUIHiddenEnum10 CreateIntegrationStoreDirectUIHiddenUnion10Type = "createIntegrationStoreDirect_ui:hidden_enum_10"
 )
 
 type CreateIntegrationStoreDirectUIHiddenUnion10 struct {
-	Boolean                                    *bool                                       `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIHidden10     *CreateIntegrationStoreDirectUIHidden10     `queryParam:"inline"`
+	Boolean                                    *bool                                       `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIHiddenEnum10 *CreateIntegrationStoreDirectUIHiddenEnum10 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectUIHiddenUnion10Type
-}
-
-func CreateCreateIntegrationStoreDirectUIHiddenUnion10Boolean(boolean bool) CreateIntegrationStoreDirectUIHiddenUnion10 {
-	typ := CreateIntegrationStoreDirectUIHiddenUnion10TypeBoolean
-
-	return CreateIntegrationStoreDirectUIHiddenUnion10{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectUIHiddenUnion10CreateIntegrationStoreDirectUIHidden10(createIntegrationStoreDirectUIHidden10 CreateIntegrationStoreDirectUIHidden10) CreateIntegrationStoreDirectUIHiddenUnion10 {
@@ -1631,6 +1716,15 @@ func CreateCreateIntegrationStoreDirectUIHiddenUnion10CreateIntegrationStoreDire
 	return CreateIntegrationStoreDirectUIHiddenUnion10{
 		CreateIntegrationStoreDirectUIHidden10: &createIntegrationStoreDirectUIHidden10,
 		Type:                                   typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIHiddenUnion10Boolean(boolean bool) CreateIntegrationStoreDirectUIHiddenUnion10 {
+	typ := CreateIntegrationStoreDirectUIHiddenUnion10TypeBoolean
+
+	return CreateIntegrationStoreDirectUIHiddenUnion10{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -1670,12 +1764,12 @@ func (u *CreateIntegrationStoreDirectUIHiddenUnion10) UnmarshalJSON(data []byte)
 }
 
 func (u CreateIntegrationStoreDirectUIHiddenUnion10) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectUIHidden10 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIHidden10, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectUIHiddenEnum10 != nil {
@@ -1736,26 +1830,17 @@ func (o *CreateIntegrationStoreDirectUIDisabled10) GetExpr() string {
 type CreateIntegrationStoreDirectUIDisabledUnion10Type string
 
 const (
-	CreateIntegrationStoreDirectUIDisabledUnion10TypeBoolean                                      CreateIntegrationStoreDirectUIDisabledUnion10Type = "boolean"
 	CreateIntegrationStoreDirectUIDisabledUnion10TypeCreateIntegrationStoreDirectUIDisabled10     CreateIntegrationStoreDirectUIDisabledUnion10Type = "createIntegrationStoreDirect_ui:disabled_10"
+	CreateIntegrationStoreDirectUIDisabledUnion10TypeBoolean                                      CreateIntegrationStoreDirectUIDisabledUnion10Type = "boolean"
 	CreateIntegrationStoreDirectUIDisabledUnion10TypeCreateIntegrationStoreDirectUIDisabledEnum10 CreateIntegrationStoreDirectUIDisabledUnion10Type = "createIntegrationStoreDirect_ui:disabled_enum_10"
 )
 
 type CreateIntegrationStoreDirectUIDisabledUnion10 struct {
-	Boolean                                      *bool                                         `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIDisabled10     *CreateIntegrationStoreDirectUIDisabled10     `queryParam:"inline"`
+	Boolean                                      *bool                                         `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIDisabledEnum10 *CreateIntegrationStoreDirectUIDisabledEnum10 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectUIDisabledUnion10Type
-}
-
-func CreateCreateIntegrationStoreDirectUIDisabledUnion10Boolean(boolean bool) CreateIntegrationStoreDirectUIDisabledUnion10 {
-	typ := CreateIntegrationStoreDirectUIDisabledUnion10TypeBoolean
-
-	return CreateIntegrationStoreDirectUIDisabledUnion10{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectUIDisabledUnion10CreateIntegrationStoreDirectUIDisabled10(createIntegrationStoreDirectUIDisabled10 CreateIntegrationStoreDirectUIDisabled10) CreateIntegrationStoreDirectUIDisabledUnion10 {
@@ -1764,6 +1849,15 @@ func CreateCreateIntegrationStoreDirectUIDisabledUnion10CreateIntegrationStoreDi
 	return CreateIntegrationStoreDirectUIDisabledUnion10{
 		CreateIntegrationStoreDirectUIDisabled10: &createIntegrationStoreDirectUIDisabled10,
 		Type:                                     typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIDisabledUnion10Boolean(boolean bool) CreateIntegrationStoreDirectUIDisabledUnion10 {
+	typ := CreateIntegrationStoreDirectUIDisabledUnion10TypeBoolean
+
+	return CreateIntegrationStoreDirectUIDisabledUnion10{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -1803,12 +1897,12 @@ func (u *CreateIntegrationStoreDirectUIDisabledUnion10) UnmarshalJSON(data []byt
 }
 
 func (u CreateIntegrationStoreDirectUIDisabledUnion10) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectUIDisabled10 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIDisabled10, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectUIDisabledEnum10 != nil {
@@ -2153,26 +2247,17 @@ func (o *CreateIntegrationStoreDirectUIReadOnly9) GetExpr() string {
 type CreateIntegrationStoreDirectUIReadOnlyUnion9Type string
 
 const (
-	CreateIntegrationStoreDirectUIReadOnlyUnion9TypeBoolean                                     CreateIntegrationStoreDirectUIReadOnlyUnion9Type = "boolean"
 	CreateIntegrationStoreDirectUIReadOnlyUnion9TypeCreateIntegrationStoreDirectUIReadOnly9     CreateIntegrationStoreDirectUIReadOnlyUnion9Type = "createIntegrationStoreDirect_ui:read-only_9"
+	CreateIntegrationStoreDirectUIReadOnlyUnion9TypeBoolean                                     CreateIntegrationStoreDirectUIReadOnlyUnion9Type = "boolean"
 	CreateIntegrationStoreDirectUIReadOnlyUnion9TypeCreateIntegrationStoreDirectUIReadOnlyEnum9 CreateIntegrationStoreDirectUIReadOnlyUnion9Type = "createIntegrationStoreDirect_ui:read-only_enum_9"
 )
 
 type CreateIntegrationStoreDirectUIReadOnlyUnion9 struct {
-	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIReadOnly9     *CreateIntegrationStoreDirectUIReadOnly9     `queryParam:"inline"`
+	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIReadOnlyEnum9 *CreateIntegrationStoreDirectUIReadOnlyEnum9 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectUIReadOnlyUnion9Type
-}
-
-func CreateCreateIntegrationStoreDirectUIReadOnlyUnion9Boolean(boolean bool) CreateIntegrationStoreDirectUIReadOnlyUnion9 {
-	typ := CreateIntegrationStoreDirectUIReadOnlyUnion9TypeBoolean
-
-	return CreateIntegrationStoreDirectUIReadOnlyUnion9{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectUIReadOnlyUnion9CreateIntegrationStoreDirectUIReadOnly9(createIntegrationStoreDirectUIReadOnly9 CreateIntegrationStoreDirectUIReadOnly9) CreateIntegrationStoreDirectUIReadOnlyUnion9 {
@@ -2181,6 +2266,15 @@ func CreateCreateIntegrationStoreDirectUIReadOnlyUnion9CreateIntegrationStoreDir
 	return CreateIntegrationStoreDirectUIReadOnlyUnion9{
 		CreateIntegrationStoreDirectUIReadOnly9: &createIntegrationStoreDirectUIReadOnly9,
 		Type:                                    typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIReadOnlyUnion9Boolean(boolean bool) CreateIntegrationStoreDirectUIReadOnlyUnion9 {
+	typ := CreateIntegrationStoreDirectUIReadOnlyUnion9TypeBoolean
+
+	return CreateIntegrationStoreDirectUIReadOnlyUnion9{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -2220,12 +2314,12 @@ func (u *CreateIntegrationStoreDirectUIReadOnlyUnion9) UnmarshalJSON(data []byte
 }
 
 func (u CreateIntegrationStoreDirectUIReadOnlyUnion9) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectUIReadOnly9 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIReadOnly9, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectUIReadOnlyEnum9 != nil {
@@ -2286,26 +2380,17 @@ func (o *CreateIntegrationStoreDirectUIHidden9) GetExpr() string {
 type CreateIntegrationStoreDirectUIHiddenUnion9Type string
 
 const (
-	CreateIntegrationStoreDirectUIHiddenUnion9TypeBoolean                                   CreateIntegrationStoreDirectUIHiddenUnion9Type = "boolean"
 	CreateIntegrationStoreDirectUIHiddenUnion9TypeCreateIntegrationStoreDirectUIHidden9     CreateIntegrationStoreDirectUIHiddenUnion9Type = "createIntegrationStoreDirect_ui:hidden_9"
+	CreateIntegrationStoreDirectUIHiddenUnion9TypeBoolean                                   CreateIntegrationStoreDirectUIHiddenUnion9Type = "boolean"
 	CreateIntegrationStoreDirectUIHiddenUnion9TypeCreateIntegrationStoreDirectUIHiddenEnum9 CreateIntegrationStoreDirectUIHiddenUnion9Type = "createIntegrationStoreDirect_ui:hidden_enum_9"
 )
 
 type CreateIntegrationStoreDirectUIHiddenUnion9 struct {
-	Boolean                                   *bool                                      `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIHidden9     *CreateIntegrationStoreDirectUIHidden9     `queryParam:"inline"`
+	Boolean                                   *bool                                      `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIHiddenEnum9 *CreateIntegrationStoreDirectUIHiddenEnum9 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectUIHiddenUnion9Type
-}
-
-func CreateCreateIntegrationStoreDirectUIHiddenUnion9Boolean(boolean bool) CreateIntegrationStoreDirectUIHiddenUnion9 {
-	typ := CreateIntegrationStoreDirectUIHiddenUnion9TypeBoolean
-
-	return CreateIntegrationStoreDirectUIHiddenUnion9{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectUIHiddenUnion9CreateIntegrationStoreDirectUIHidden9(createIntegrationStoreDirectUIHidden9 CreateIntegrationStoreDirectUIHidden9) CreateIntegrationStoreDirectUIHiddenUnion9 {
@@ -2314,6 +2399,15 @@ func CreateCreateIntegrationStoreDirectUIHiddenUnion9CreateIntegrationStoreDirec
 	return CreateIntegrationStoreDirectUIHiddenUnion9{
 		CreateIntegrationStoreDirectUIHidden9: &createIntegrationStoreDirectUIHidden9,
 		Type:                                  typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIHiddenUnion9Boolean(boolean bool) CreateIntegrationStoreDirectUIHiddenUnion9 {
+	typ := CreateIntegrationStoreDirectUIHiddenUnion9TypeBoolean
+
+	return CreateIntegrationStoreDirectUIHiddenUnion9{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -2353,12 +2447,12 @@ func (u *CreateIntegrationStoreDirectUIHiddenUnion9) UnmarshalJSON(data []byte) 
 }
 
 func (u CreateIntegrationStoreDirectUIHiddenUnion9) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectUIHidden9 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIHidden9, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectUIHiddenEnum9 != nil {
@@ -2419,26 +2513,17 @@ func (o *CreateIntegrationStoreDirectUIDisabled9) GetExpr() string {
 type CreateIntegrationStoreDirectUIDisabledUnion9Type string
 
 const (
-	CreateIntegrationStoreDirectUIDisabledUnion9TypeBoolean                                     CreateIntegrationStoreDirectUIDisabledUnion9Type = "boolean"
 	CreateIntegrationStoreDirectUIDisabledUnion9TypeCreateIntegrationStoreDirectUIDisabled9     CreateIntegrationStoreDirectUIDisabledUnion9Type = "createIntegrationStoreDirect_ui:disabled_9"
+	CreateIntegrationStoreDirectUIDisabledUnion9TypeBoolean                                     CreateIntegrationStoreDirectUIDisabledUnion9Type = "boolean"
 	CreateIntegrationStoreDirectUIDisabledUnion9TypeCreateIntegrationStoreDirectUIDisabledEnum9 CreateIntegrationStoreDirectUIDisabledUnion9Type = "createIntegrationStoreDirect_ui:disabled_enum_9"
 )
 
 type CreateIntegrationStoreDirectUIDisabledUnion9 struct {
-	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIDisabled9     *CreateIntegrationStoreDirectUIDisabled9     `queryParam:"inline"`
+	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIDisabledEnum9 *CreateIntegrationStoreDirectUIDisabledEnum9 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectUIDisabledUnion9Type
-}
-
-func CreateCreateIntegrationStoreDirectUIDisabledUnion9Boolean(boolean bool) CreateIntegrationStoreDirectUIDisabledUnion9 {
-	typ := CreateIntegrationStoreDirectUIDisabledUnion9TypeBoolean
-
-	return CreateIntegrationStoreDirectUIDisabledUnion9{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectUIDisabledUnion9CreateIntegrationStoreDirectUIDisabled9(createIntegrationStoreDirectUIDisabled9 CreateIntegrationStoreDirectUIDisabled9) CreateIntegrationStoreDirectUIDisabledUnion9 {
@@ -2447,6 +2532,15 @@ func CreateCreateIntegrationStoreDirectUIDisabledUnion9CreateIntegrationStoreDir
 	return CreateIntegrationStoreDirectUIDisabledUnion9{
 		CreateIntegrationStoreDirectUIDisabled9: &createIntegrationStoreDirectUIDisabled9,
 		Type:                                    typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIDisabledUnion9Boolean(boolean bool) CreateIntegrationStoreDirectUIDisabledUnion9 {
+	typ := CreateIntegrationStoreDirectUIDisabledUnion9TypeBoolean
+
+	return CreateIntegrationStoreDirectUIDisabledUnion9{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -2486,12 +2580,12 @@ func (u *CreateIntegrationStoreDirectUIDisabledUnion9) UnmarshalJSON(data []byte
 }
 
 func (u CreateIntegrationStoreDirectUIDisabledUnion9) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectUIDisabled9 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIDisabled9, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectUIDisabledEnum9 != nil {
@@ -2932,26 +3026,17 @@ func (o *CreateIntegrationStoreDirectDisabled6) GetExpr() string {
 type CreateIntegrationStoreDirectDisabledUnion6Type string
 
 const (
-	CreateIntegrationStoreDirectDisabledUnion6TypeBoolean                                   CreateIntegrationStoreDirectDisabledUnion6Type = "boolean"
 	CreateIntegrationStoreDirectDisabledUnion6TypeCreateIntegrationStoreDirectDisabled6     CreateIntegrationStoreDirectDisabledUnion6Type = "createIntegrationStoreDirect_disabled_6"
+	CreateIntegrationStoreDirectDisabledUnion6TypeBoolean                                   CreateIntegrationStoreDirectDisabledUnion6Type = "boolean"
 	CreateIntegrationStoreDirectDisabledUnion6TypeCreateIntegrationStoreDirectDisabledEnum6 CreateIntegrationStoreDirectDisabledUnion6Type = "createIntegrationStoreDirect_disabled_enum_6"
 )
 
 type CreateIntegrationStoreDirectDisabledUnion6 struct {
-	Boolean                                   *bool                                      `queryParam:"inline"`
 	CreateIntegrationStoreDirectDisabled6     *CreateIntegrationStoreDirectDisabled6     `queryParam:"inline"`
+	Boolean                                   *bool                                      `queryParam:"inline"`
 	CreateIntegrationStoreDirectDisabledEnum6 *CreateIntegrationStoreDirectDisabledEnum6 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectDisabledUnion6Type
-}
-
-func CreateCreateIntegrationStoreDirectDisabledUnion6Boolean(boolean bool) CreateIntegrationStoreDirectDisabledUnion6 {
-	typ := CreateIntegrationStoreDirectDisabledUnion6TypeBoolean
-
-	return CreateIntegrationStoreDirectDisabledUnion6{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectDisabledUnion6CreateIntegrationStoreDirectDisabled6(createIntegrationStoreDirectDisabled6 CreateIntegrationStoreDirectDisabled6) CreateIntegrationStoreDirectDisabledUnion6 {
@@ -2960,6 +3045,15 @@ func CreateCreateIntegrationStoreDirectDisabledUnion6CreateIntegrationStoreDirec
 	return CreateIntegrationStoreDirectDisabledUnion6{
 		CreateIntegrationStoreDirectDisabled6: &createIntegrationStoreDirectDisabled6,
 		Type:                                  typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectDisabledUnion6Boolean(boolean bool) CreateIntegrationStoreDirectDisabledUnion6 {
+	typ := CreateIntegrationStoreDirectDisabledUnion6TypeBoolean
+
+	return CreateIntegrationStoreDirectDisabledUnion6{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -2999,12 +3093,12 @@ func (u *CreateIntegrationStoreDirectDisabledUnion6) UnmarshalJSON(data []byte) 
 }
 
 func (u CreateIntegrationStoreDirectDisabledUnion6) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectDisabled6 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectDisabled6, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectDisabledEnum6 != nil {
@@ -3065,26 +3159,17 @@ func (o *CreateIntegrationStoreDirectHidden6) GetExpr() string {
 type CreateIntegrationStoreDirectHiddenUnion6Type string
 
 const (
-	CreateIntegrationStoreDirectHiddenUnion6TypeBoolean                                 CreateIntegrationStoreDirectHiddenUnion6Type = "boolean"
 	CreateIntegrationStoreDirectHiddenUnion6TypeCreateIntegrationStoreDirectHidden6     CreateIntegrationStoreDirectHiddenUnion6Type = "createIntegrationStoreDirect_hidden_6"
+	CreateIntegrationStoreDirectHiddenUnion6TypeBoolean                                 CreateIntegrationStoreDirectHiddenUnion6Type = "boolean"
 	CreateIntegrationStoreDirectHiddenUnion6TypeCreateIntegrationStoreDirectHiddenEnum6 CreateIntegrationStoreDirectHiddenUnion6Type = "createIntegrationStoreDirect_hidden_enum_6"
 )
 
 type CreateIntegrationStoreDirectHiddenUnion6 struct {
-	Boolean                                 *bool                                    `queryParam:"inline"`
 	CreateIntegrationStoreDirectHidden6     *CreateIntegrationStoreDirectHidden6     `queryParam:"inline"`
+	Boolean                                 *bool                                    `queryParam:"inline"`
 	CreateIntegrationStoreDirectHiddenEnum6 *CreateIntegrationStoreDirectHiddenEnum6 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectHiddenUnion6Type
-}
-
-func CreateCreateIntegrationStoreDirectHiddenUnion6Boolean(boolean bool) CreateIntegrationStoreDirectHiddenUnion6 {
-	typ := CreateIntegrationStoreDirectHiddenUnion6TypeBoolean
-
-	return CreateIntegrationStoreDirectHiddenUnion6{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectHiddenUnion6CreateIntegrationStoreDirectHidden6(createIntegrationStoreDirectHidden6 CreateIntegrationStoreDirectHidden6) CreateIntegrationStoreDirectHiddenUnion6 {
@@ -3093,6 +3178,15 @@ func CreateCreateIntegrationStoreDirectHiddenUnion6CreateIntegrationStoreDirectH
 	return CreateIntegrationStoreDirectHiddenUnion6{
 		CreateIntegrationStoreDirectHidden6: &createIntegrationStoreDirectHidden6,
 		Type:                                typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectHiddenUnion6Boolean(boolean bool) CreateIntegrationStoreDirectHiddenUnion6 {
+	typ := CreateIntegrationStoreDirectHiddenUnion6TypeBoolean
+
+	return CreateIntegrationStoreDirectHiddenUnion6{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -3132,12 +3226,12 @@ func (u *CreateIntegrationStoreDirectHiddenUnion6) UnmarshalJSON(data []byte) er
 }
 
 func (u CreateIntegrationStoreDirectHiddenUnion6) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectHidden6 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectHidden6, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectHiddenEnum6 != nil {
@@ -3236,26 +3330,17 @@ func (o *CreateIntegrationStoreDirectDisabled5) GetExpr() string {
 type CreateIntegrationStoreDirectDisabledUnion5Type string
 
 const (
-	CreateIntegrationStoreDirectDisabledUnion5TypeBoolean                                   CreateIntegrationStoreDirectDisabledUnion5Type = "boolean"
 	CreateIntegrationStoreDirectDisabledUnion5TypeCreateIntegrationStoreDirectDisabled5     CreateIntegrationStoreDirectDisabledUnion5Type = "createIntegrationStoreDirect_disabled_5"
+	CreateIntegrationStoreDirectDisabledUnion5TypeBoolean                                   CreateIntegrationStoreDirectDisabledUnion5Type = "boolean"
 	CreateIntegrationStoreDirectDisabledUnion5TypeCreateIntegrationStoreDirectDisabledEnum5 CreateIntegrationStoreDirectDisabledUnion5Type = "createIntegrationStoreDirect_disabled_enum_5"
 )
 
 type CreateIntegrationStoreDirectDisabledUnion5 struct {
-	Boolean                                   *bool                                      `queryParam:"inline"`
 	CreateIntegrationStoreDirectDisabled5     *CreateIntegrationStoreDirectDisabled5     `queryParam:"inline"`
+	Boolean                                   *bool                                      `queryParam:"inline"`
 	CreateIntegrationStoreDirectDisabledEnum5 *CreateIntegrationStoreDirectDisabledEnum5 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectDisabledUnion5Type
-}
-
-func CreateCreateIntegrationStoreDirectDisabledUnion5Boolean(boolean bool) CreateIntegrationStoreDirectDisabledUnion5 {
-	typ := CreateIntegrationStoreDirectDisabledUnion5TypeBoolean
-
-	return CreateIntegrationStoreDirectDisabledUnion5{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectDisabledUnion5CreateIntegrationStoreDirectDisabled5(createIntegrationStoreDirectDisabled5 CreateIntegrationStoreDirectDisabled5) CreateIntegrationStoreDirectDisabledUnion5 {
@@ -3264,6 +3349,15 @@ func CreateCreateIntegrationStoreDirectDisabledUnion5CreateIntegrationStoreDirec
 	return CreateIntegrationStoreDirectDisabledUnion5{
 		CreateIntegrationStoreDirectDisabled5: &createIntegrationStoreDirectDisabled5,
 		Type:                                  typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectDisabledUnion5Boolean(boolean bool) CreateIntegrationStoreDirectDisabledUnion5 {
+	typ := CreateIntegrationStoreDirectDisabledUnion5TypeBoolean
+
+	return CreateIntegrationStoreDirectDisabledUnion5{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -3303,12 +3397,12 @@ func (u *CreateIntegrationStoreDirectDisabledUnion5) UnmarshalJSON(data []byte) 
 }
 
 func (u CreateIntegrationStoreDirectDisabledUnion5) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectDisabled5 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectDisabled5, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectDisabledEnum5 != nil {
@@ -3369,26 +3463,17 @@ func (o *CreateIntegrationStoreDirectHidden5) GetExpr() string {
 type CreateIntegrationStoreDirectHiddenUnion5Type string
 
 const (
-	CreateIntegrationStoreDirectHiddenUnion5TypeBoolean                                 CreateIntegrationStoreDirectHiddenUnion5Type = "boolean"
 	CreateIntegrationStoreDirectHiddenUnion5TypeCreateIntegrationStoreDirectHidden5     CreateIntegrationStoreDirectHiddenUnion5Type = "createIntegrationStoreDirect_hidden_5"
+	CreateIntegrationStoreDirectHiddenUnion5TypeBoolean                                 CreateIntegrationStoreDirectHiddenUnion5Type = "boolean"
 	CreateIntegrationStoreDirectHiddenUnion5TypeCreateIntegrationStoreDirectHiddenEnum5 CreateIntegrationStoreDirectHiddenUnion5Type = "createIntegrationStoreDirect_hidden_enum_5"
 )
 
 type CreateIntegrationStoreDirectHiddenUnion5 struct {
-	Boolean                                 *bool                                    `queryParam:"inline"`
 	CreateIntegrationStoreDirectHidden5     *CreateIntegrationStoreDirectHidden5     `queryParam:"inline"`
+	Boolean                                 *bool                                    `queryParam:"inline"`
 	CreateIntegrationStoreDirectHiddenEnum5 *CreateIntegrationStoreDirectHiddenEnum5 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectHiddenUnion5Type
-}
-
-func CreateCreateIntegrationStoreDirectHiddenUnion5Boolean(boolean bool) CreateIntegrationStoreDirectHiddenUnion5 {
-	typ := CreateIntegrationStoreDirectHiddenUnion5TypeBoolean
-
-	return CreateIntegrationStoreDirectHiddenUnion5{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectHiddenUnion5CreateIntegrationStoreDirectHidden5(createIntegrationStoreDirectHidden5 CreateIntegrationStoreDirectHidden5) CreateIntegrationStoreDirectHiddenUnion5 {
@@ -3397,6 +3482,15 @@ func CreateCreateIntegrationStoreDirectHiddenUnion5CreateIntegrationStoreDirectH
 	return CreateIntegrationStoreDirectHiddenUnion5{
 		CreateIntegrationStoreDirectHidden5: &createIntegrationStoreDirectHidden5,
 		Type:                                typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectHiddenUnion5Boolean(boolean bool) CreateIntegrationStoreDirectHiddenUnion5 {
+	typ := CreateIntegrationStoreDirectHiddenUnion5TypeBoolean
+
+	return CreateIntegrationStoreDirectHiddenUnion5{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -3436,12 +3530,12 @@ func (u *CreateIntegrationStoreDirectHiddenUnion5) UnmarshalJSON(data []byte) er
 }
 
 func (u CreateIntegrationStoreDirectHiddenUnion5) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectHidden5 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectHidden5, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectHiddenEnum5 != nil {
@@ -3633,26 +3727,17 @@ func (o *CreateIntegrationStoreDirectUIReadOnly8) GetExpr() string {
 type CreateIntegrationStoreDirectUIReadOnlyUnion8Type string
 
 const (
-	CreateIntegrationStoreDirectUIReadOnlyUnion8TypeBoolean                                     CreateIntegrationStoreDirectUIReadOnlyUnion8Type = "boolean"
 	CreateIntegrationStoreDirectUIReadOnlyUnion8TypeCreateIntegrationStoreDirectUIReadOnly8     CreateIntegrationStoreDirectUIReadOnlyUnion8Type = "createIntegrationStoreDirect_ui:read-only_8"
+	CreateIntegrationStoreDirectUIReadOnlyUnion8TypeBoolean                                     CreateIntegrationStoreDirectUIReadOnlyUnion8Type = "boolean"
 	CreateIntegrationStoreDirectUIReadOnlyUnion8TypeCreateIntegrationStoreDirectUIReadOnlyEnum8 CreateIntegrationStoreDirectUIReadOnlyUnion8Type = "createIntegrationStoreDirect_ui:read-only_enum_8"
 )
 
 type CreateIntegrationStoreDirectUIReadOnlyUnion8 struct {
-	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIReadOnly8     *CreateIntegrationStoreDirectUIReadOnly8     `queryParam:"inline"`
+	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIReadOnlyEnum8 *CreateIntegrationStoreDirectUIReadOnlyEnum8 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectUIReadOnlyUnion8Type
-}
-
-func CreateCreateIntegrationStoreDirectUIReadOnlyUnion8Boolean(boolean bool) CreateIntegrationStoreDirectUIReadOnlyUnion8 {
-	typ := CreateIntegrationStoreDirectUIReadOnlyUnion8TypeBoolean
-
-	return CreateIntegrationStoreDirectUIReadOnlyUnion8{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectUIReadOnlyUnion8CreateIntegrationStoreDirectUIReadOnly8(createIntegrationStoreDirectUIReadOnly8 CreateIntegrationStoreDirectUIReadOnly8) CreateIntegrationStoreDirectUIReadOnlyUnion8 {
@@ -3661,6 +3746,15 @@ func CreateCreateIntegrationStoreDirectUIReadOnlyUnion8CreateIntegrationStoreDir
 	return CreateIntegrationStoreDirectUIReadOnlyUnion8{
 		CreateIntegrationStoreDirectUIReadOnly8: &createIntegrationStoreDirectUIReadOnly8,
 		Type:                                    typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIReadOnlyUnion8Boolean(boolean bool) CreateIntegrationStoreDirectUIReadOnlyUnion8 {
+	typ := CreateIntegrationStoreDirectUIReadOnlyUnion8TypeBoolean
+
+	return CreateIntegrationStoreDirectUIReadOnlyUnion8{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -3700,12 +3794,12 @@ func (u *CreateIntegrationStoreDirectUIReadOnlyUnion8) UnmarshalJSON(data []byte
 }
 
 func (u CreateIntegrationStoreDirectUIReadOnlyUnion8) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectUIReadOnly8 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIReadOnly8, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectUIReadOnlyEnum8 != nil {
@@ -3766,26 +3860,17 @@ func (o *CreateIntegrationStoreDirectUIHidden8) GetExpr() string {
 type CreateIntegrationStoreDirectUIHiddenUnion8Type string
 
 const (
-	CreateIntegrationStoreDirectUIHiddenUnion8TypeBoolean                                   CreateIntegrationStoreDirectUIHiddenUnion8Type = "boolean"
 	CreateIntegrationStoreDirectUIHiddenUnion8TypeCreateIntegrationStoreDirectUIHidden8     CreateIntegrationStoreDirectUIHiddenUnion8Type = "createIntegrationStoreDirect_ui:hidden_8"
+	CreateIntegrationStoreDirectUIHiddenUnion8TypeBoolean                                   CreateIntegrationStoreDirectUIHiddenUnion8Type = "boolean"
 	CreateIntegrationStoreDirectUIHiddenUnion8TypeCreateIntegrationStoreDirectUIHiddenEnum8 CreateIntegrationStoreDirectUIHiddenUnion8Type = "createIntegrationStoreDirect_ui:hidden_enum_8"
 )
 
 type CreateIntegrationStoreDirectUIHiddenUnion8 struct {
-	Boolean                                   *bool                                      `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIHidden8     *CreateIntegrationStoreDirectUIHidden8     `queryParam:"inline"`
+	Boolean                                   *bool                                      `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIHiddenEnum8 *CreateIntegrationStoreDirectUIHiddenEnum8 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectUIHiddenUnion8Type
-}
-
-func CreateCreateIntegrationStoreDirectUIHiddenUnion8Boolean(boolean bool) CreateIntegrationStoreDirectUIHiddenUnion8 {
-	typ := CreateIntegrationStoreDirectUIHiddenUnion8TypeBoolean
-
-	return CreateIntegrationStoreDirectUIHiddenUnion8{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectUIHiddenUnion8CreateIntegrationStoreDirectUIHidden8(createIntegrationStoreDirectUIHidden8 CreateIntegrationStoreDirectUIHidden8) CreateIntegrationStoreDirectUIHiddenUnion8 {
@@ -3794,6 +3879,15 @@ func CreateCreateIntegrationStoreDirectUIHiddenUnion8CreateIntegrationStoreDirec
 	return CreateIntegrationStoreDirectUIHiddenUnion8{
 		CreateIntegrationStoreDirectUIHidden8: &createIntegrationStoreDirectUIHidden8,
 		Type:                                  typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIHiddenUnion8Boolean(boolean bool) CreateIntegrationStoreDirectUIHiddenUnion8 {
+	typ := CreateIntegrationStoreDirectUIHiddenUnion8TypeBoolean
+
+	return CreateIntegrationStoreDirectUIHiddenUnion8{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -3833,12 +3927,12 @@ func (u *CreateIntegrationStoreDirectUIHiddenUnion8) UnmarshalJSON(data []byte) 
 }
 
 func (u CreateIntegrationStoreDirectUIHiddenUnion8) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectUIHidden8 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIHidden8, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectUIHiddenEnum8 != nil {
@@ -3899,26 +3993,17 @@ func (o *CreateIntegrationStoreDirectUIDisabled8) GetExpr() string {
 type CreateIntegrationStoreDirectUIDisabledUnion8Type string
 
 const (
-	CreateIntegrationStoreDirectUIDisabledUnion8TypeBoolean                                     CreateIntegrationStoreDirectUIDisabledUnion8Type = "boolean"
 	CreateIntegrationStoreDirectUIDisabledUnion8TypeCreateIntegrationStoreDirectUIDisabled8     CreateIntegrationStoreDirectUIDisabledUnion8Type = "createIntegrationStoreDirect_ui:disabled_8"
+	CreateIntegrationStoreDirectUIDisabledUnion8TypeBoolean                                     CreateIntegrationStoreDirectUIDisabledUnion8Type = "boolean"
 	CreateIntegrationStoreDirectUIDisabledUnion8TypeCreateIntegrationStoreDirectUIDisabledEnum8 CreateIntegrationStoreDirectUIDisabledUnion8Type = "createIntegrationStoreDirect_ui:disabled_enum_8"
 )
 
 type CreateIntegrationStoreDirectUIDisabledUnion8 struct {
-	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIDisabled8     *CreateIntegrationStoreDirectUIDisabled8     `queryParam:"inline"`
+	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIDisabledEnum8 *CreateIntegrationStoreDirectUIDisabledEnum8 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectUIDisabledUnion8Type
-}
-
-func CreateCreateIntegrationStoreDirectUIDisabledUnion8Boolean(boolean bool) CreateIntegrationStoreDirectUIDisabledUnion8 {
-	typ := CreateIntegrationStoreDirectUIDisabledUnion8TypeBoolean
-
-	return CreateIntegrationStoreDirectUIDisabledUnion8{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectUIDisabledUnion8CreateIntegrationStoreDirectUIDisabled8(createIntegrationStoreDirectUIDisabled8 CreateIntegrationStoreDirectUIDisabled8) CreateIntegrationStoreDirectUIDisabledUnion8 {
@@ -3927,6 +4012,15 @@ func CreateCreateIntegrationStoreDirectUIDisabledUnion8CreateIntegrationStoreDir
 	return CreateIntegrationStoreDirectUIDisabledUnion8{
 		CreateIntegrationStoreDirectUIDisabled8: &createIntegrationStoreDirectUIDisabled8,
 		Type:                                    typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIDisabledUnion8Boolean(boolean bool) CreateIntegrationStoreDirectUIDisabledUnion8 {
+	typ := CreateIntegrationStoreDirectUIDisabledUnion8TypeBoolean
+
+	return CreateIntegrationStoreDirectUIDisabledUnion8{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -3966,12 +4060,12 @@ func (u *CreateIntegrationStoreDirectUIDisabledUnion8) UnmarshalJSON(data []byte
 }
 
 func (u CreateIntegrationStoreDirectUIDisabledUnion8) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectUIDisabled8 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIDisabled8, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectUIDisabledEnum8 != nil {
@@ -4327,26 +4421,17 @@ func (o *CreateIntegrationStoreDirectDisabled4) GetExpr() string {
 type CreateIntegrationStoreDirectDisabledUnion4Type string
 
 const (
-	CreateIntegrationStoreDirectDisabledUnion4TypeBoolean                                   CreateIntegrationStoreDirectDisabledUnion4Type = "boolean"
 	CreateIntegrationStoreDirectDisabledUnion4TypeCreateIntegrationStoreDirectDisabled4     CreateIntegrationStoreDirectDisabledUnion4Type = "createIntegrationStoreDirect_disabled_4"
+	CreateIntegrationStoreDirectDisabledUnion4TypeBoolean                                   CreateIntegrationStoreDirectDisabledUnion4Type = "boolean"
 	CreateIntegrationStoreDirectDisabledUnion4TypeCreateIntegrationStoreDirectDisabledEnum4 CreateIntegrationStoreDirectDisabledUnion4Type = "createIntegrationStoreDirect_disabled_enum_4"
 )
 
 type CreateIntegrationStoreDirectDisabledUnion4 struct {
-	Boolean                                   *bool                                      `queryParam:"inline"`
 	CreateIntegrationStoreDirectDisabled4     *CreateIntegrationStoreDirectDisabled4     `queryParam:"inline"`
+	Boolean                                   *bool                                      `queryParam:"inline"`
 	CreateIntegrationStoreDirectDisabledEnum4 *CreateIntegrationStoreDirectDisabledEnum4 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectDisabledUnion4Type
-}
-
-func CreateCreateIntegrationStoreDirectDisabledUnion4Boolean(boolean bool) CreateIntegrationStoreDirectDisabledUnion4 {
-	typ := CreateIntegrationStoreDirectDisabledUnion4TypeBoolean
-
-	return CreateIntegrationStoreDirectDisabledUnion4{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectDisabledUnion4CreateIntegrationStoreDirectDisabled4(createIntegrationStoreDirectDisabled4 CreateIntegrationStoreDirectDisabled4) CreateIntegrationStoreDirectDisabledUnion4 {
@@ -4355,6 +4440,15 @@ func CreateCreateIntegrationStoreDirectDisabledUnion4CreateIntegrationStoreDirec
 	return CreateIntegrationStoreDirectDisabledUnion4{
 		CreateIntegrationStoreDirectDisabled4: &createIntegrationStoreDirectDisabled4,
 		Type:                                  typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectDisabledUnion4Boolean(boolean bool) CreateIntegrationStoreDirectDisabledUnion4 {
+	typ := CreateIntegrationStoreDirectDisabledUnion4TypeBoolean
+
+	return CreateIntegrationStoreDirectDisabledUnion4{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -4394,12 +4488,12 @@ func (u *CreateIntegrationStoreDirectDisabledUnion4) UnmarshalJSON(data []byte) 
 }
 
 func (u CreateIntegrationStoreDirectDisabledUnion4) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectDisabled4 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectDisabled4, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectDisabledEnum4 != nil {
@@ -4460,26 +4554,17 @@ func (o *CreateIntegrationStoreDirectHidden4) GetExpr() string {
 type CreateIntegrationStoreDirectHiddenUnion4Type string
 
 const (
-	CreateIntegrationStoreDirectHiddenUnion4TypeBoolean                                 CreateIntegrationStoreDirectHiddenUnion4Type = "boolean"
 	CreateIntegrationStoreDirectHiddenUnion4TypeCreateIntegrationStoreDirectHidden4     CreateIntegrationStoreDirectHiddenUnion4Type = "createIntegrationStoreDirect_hidden_4"
+	CreateIntegrationStoreDirectHiddenUnion4TypeBoolean                                 CreateIntegrationStoreDirectHiddenUnion4Type = "boolean"
 	CreateIntegrationStoreDirectHiddenUnion4TypeCreateIntegrationStoreDirectHiddenEnum4 CreateIntegrationStoreDirectHiddenUnion4Type = "createIntegrationStoreDirect_hidden_enum_4"
 )
 
 type CreateIntegrationStoreDirectHiddenUnion4 struct {
-	Boolean                                 *bool                                    `queryParam:"inline"`
 	CreateIntegrationStoreDirectHidden4     *CreateIntegrationStoreDirectHidden4     `queryParam:"inline"`
+	Boolean                                 *bool                                    `queryParam:"inline"`
 	CreateIntegrationStoreDirectHiddenEnum4 *CreateIntegrationStoreDirectHiddenEnum4 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectHiddenUnion4Type
-}
-
-func CreateCreateIntegrationStoreDirectHiddenUnion4Boolean(boolean bool) CreateIntegrationStoreDirectHiddenUnion4 {
-	typ := CreateIntegrationStoreDirectHiddenUnion4TypeBoolean
-
-	return CreateIntegrationStoreDirectHiddenUnion4{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectHiddenUnion4CreateIntegrationStoreDirectHidden4(createIntegrationStoreDirectHidden4 CreateIntegrationStoreDirectHidden4) CreateIntegrationStoreDirectHiddenUnion4 {
@@ -4488,6 +4573,15 @@ func CreateCreateIntegrationStoreDirectHiddenUnion4CreateIntegrationStoreDirectH
 	return CreateIntegrationStoreDirectHiddenUnion4{
 		CreateIntegrationStoreDirectHidden4: &createIntegrationStoreDirectHidden4,
 		Type:                                typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectHiddenUnion4Boolean(boolean bool) CreateIntegrationStoreDirectHiddenUnion4 {
+	typ := CreateIntegrationStoreDirectHiddenUnion4TypeBoolean
+
+	return CreateIntegrationStoreDirectHiddenUnion4{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -4527,12 +4621,12 @@ func (u *CreateIntegrationStoreDirectHiddenUnion4) UnmarshalJSON(data []byte) er
 }
 
 func (u CreateIntegrationStoreDirectHiddenUnion4) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectHidden4 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectHidden4, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectHiddenEnum4 != nil {
@@ -4631,26 +4725,17 @@ func (o *CreateIntegrationStoreDirectDisabled3) GetExpr() string {
 type CreateIntegrationStoreDirectDisabledUnion3Type string
 
 const (
-	CreateIntegrationStoreDirectDisabledUnion3TypeBoolean                                   CreateIntegrationStoreDirectDisabledUnion3Type = "boolean"
 	CreateIntegrationStoreDirectDisabledUnion3TypeCreateIntegrationStoreDirectDisabled3     CreateIntegrationStoreDirectDisabledUnion3Type = "createIntegrationStoreDirect_disabled_3"
+	CreateIntegrationStoreDirectDisabledUnion3TypeBoolean                                   CreateIntegrationStoreDirectDisabledUnion3Type = "boolean"
 	CreateIntegrationStoreDirectDisabledUnion3TypeCreateIntegrationStoreDirectDisabledEnum3 CreateIntegrationStoreDirectDisabledUnion3Type = "createIntegrationStoreDirect_disabled_enum_3"
 )
 
 type CreateIntegrationStoreDirectDisabledUnion3 struct {
-	Boolean                                   *bool                                      `queryParam:"inline"`
 	CreateIntegrationStoreDirectDisabled3     *CreateIntegrationStoreDirectDisabled3     `queryParam:"inline"`
+	Boolean                                   *bool                                      `queryParam:"inline"`
 	CreateIntegrationStoreDirectDisabledEnum3 *CreateIntegrationStoreDirectDisabledEnum3 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectDisabledUnion3Type
-}
-
-func CreateCreateIntegrationStoreDirectDisabledUnion3Boolean(boolean bool) CreateIntegrationStoreDirectDisabledUnion3 {
-	typ := CreateIntegrationStoreDirectDisabledUnion3TypeBoolean
-
-	return CreateIntegrationStoreDirectDisabledUnion3{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectDisabledUnion3CreateIntegrationStoreDirectDisabled3(createIntegrationStoreDirectDisabled3 CreateIntegrationStoreDirectDisabled3) CreateIntegrationStoreDirectDisabledUnion3 {
@@ -4659,6 +4744,15 @@ func CreateCreateIntegrationStoreDirectDisabledUnion3CreateIntegrationStoreDirec
 	return CreateIntegrationStoreDirectDisabledUnion3{
 		CreateIntegrationStoreDirectDisabled3: &createIntegrationStoreDirectDisabled3,
 		Type:                                  typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectDisabledUnion3Boolean(boolean bool) CreateIntegrationStoreDirectDisabledUnion3 {
+	typ := CreateIntegrationStoreDirectDisabledUnion3TypeBoolean
+
+	return CreateIntegrationStoreDirectDisabledUnion3{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -4698,12 +4792,12 @@ func (u *CreateIntegrationStoreDirectDisabledUnion3) UnmarshalJSON(data []byte) 
 }
 
 func (u CreateIntegrationStoreDirectDisabledUnion3) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectDisabled3 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectDisabled3, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectDisabledEnum3 != nil {
@@ -4764,26 +4858,17 @@ func (o *CreateIntegrationStoreDirectHidden3) GetExpr() string {
 type CreateIntegrationStoreDirectHiddenUnion3Type string
 
 const (
-	CreateIntegrationStoreDirectHiddenUnion3TypeBoolean                                 CreateIntegrationStoreDirectHiddenUnion3Type = "boolean"
 	CreateIntegrationStoreDirectHiddenUnion3TypeCreateIntegrationStoreDirectHidden3     CreateIntegrationStoreDirectHiddenUnion3Type = "createIntegrationStoreDirect_hidden_3"
+	CreateIntegrationStoreDirectHiddenUnion3TypeBoolean                                 CreateIntegrationStoreDirectHiddenUnion3Type = "boolean"
 	CreateIntegrationStoreDirectHiddenUnion3TypeCreateIntegrationStoreDirectHiddenEnum3 CreateIntegrationStoreDirectHiddenUnion3Type = "createIntegrationStoreDirect_hidden_enum_3"
 )
 
 type CreateIntegrationStoreDirectHiddenUnion3 struct {
-	Boolean                                 *bool                                    `queryParam:"inline"`
 	CreateIntegrationStoreDirectHidden3     *CreateIntegrationStoreDirectHidden3     `queryParam:"inline"`
+	Boolean                                 *bool                                    `queryParam:"inline"`
 	CreateIntegrationStoreDirectHiddenEnum3 *CreateIntegrationStoreDirectHiddenEnum3 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectHiddenUnion3Type
-}
-
-func CreateCreateIntegrationStoreDirectHiddenUnion3Boolean(boolean bool) CreateIntegrationStoreDirectHiddenUnion3 {
-	typ := CreateIntegrationStoreDirectHiddenUnion3TypeBoolean
-
-	return CreateIntegrationStoreDirectHiddenUnion3{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectHiddenUnion3CreateIntegrationStoreDirectHidden3(createIntegrationStoreDirectHidden3 CreateIntegrationStoreDirectHidden3) CreateIntegrationStoreDirectHiddenUnion3 {
@@ -4792,6 +4877,15 @@ func CreateCreateIntegrationStoreDirectHiddenUnion3CreateIntegrationStoreDirectH
 	return CreateIntegrationStoreDirectHiddenUnion3{
 		CreateIntegrationStoreDirectHidden3: &createIntegrationStoreDirectHidden3,
 		Type:                                typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectHiddenUnion3Boolean(boolean bool) CreateIntegrationStoreDirectHiddenUnion3 {
+	typ := CreateIntegrationStoreDirectHiddenUnion3TypeBoolean
+
+	return CreateIntegrationStoreDirectHiddenUnion3{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -4831,12 +4925,12 @@ func (u *CreateIntegrationStoreDirectHiddenUnion3) UnmarshalJSON(data []byte) er
 }
 
 func (u CreateIntegrationStoreDirectHiddenUnion3) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectHidden3 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectHidden3, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectHiddenEnum3 != nil {
@@ -5028,26 +5122,17 @@ func (o *CreateIntegrationStoreDirectUIReadOnly7) GetExpr() string {
 type CreateIntegrationStoreDirectUIReadOnlyUnion7Type string
 
 const (
-	CreateIntegrationStoreDirectUIReadOnlyUnion7TypeBoolean                                     CreateIntegrationStoreDirectUIReadOnlyUnion7Type = "boolean"
 	CreateIntegrationStoreDirectUIReadOnlyUnion7TypeCreateIntegrationStoreDirectUIReadOnly7     CreateIntegrationStoreDirectUIReadOnlyUnion7Type = "createIntegrationStoreDirect_ui:read-only_7"
+	CreateIntegrationStoreDirectUIReadOnlyUnion7TypeBoolean                                     CreateIntegrationStoreDirectUIReadOnlyUnion7Type = "boolean"
 	CreateIntegrationStoreDirectUIReadOnlyUnion7TypeCreateIntegrationStoreDirectUIReadOnlyEnum7 CreateIntegrationStoreDirectUIReadOnlyUnion7Type = "createIntegrationStoreDirect_ui:read-only_enum_7"
 )
 
 type CreateIntegrationStoreDirectUIReadOnlyUnion7 struct {
-	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIReadOnly7     *CreateIntegrationStoreDirectUIReadOnly7     `queryParam:"inline"`
+	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIReadOnlyEnum7 *CreateIntegrationStoreDirectUIReadOnlyEnum7 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectUIReadOnlyUnion7Type
-}
-
-func CreateCreateIntegrationStoreDirectUIReadOnlyUnion7Boolean(boolean bool) CreateIntegrationStoreDirectUIReadOnlyUnion7 {
-	typ := CreateIntegrationStoreDirectUIReadOnlyUnion7TypeBoolean
-
-	return CreateIntegrationStoreDirectUIReadOnlyUnion7{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectUIReadOnlyUnion7CreateIntegrationStoreDirectUIReadOnly7(createIntegrationStoreDirectUIReadOnly7 CreateIntegrationStoreDirectUIReadOnly7) CreateIntegrationStoreDirectUIReadOnlyUnion7 {
@@ -5056,6 +5141,15 @@ func CreateCreateIntegrationStoreDirectUIReadOnlyUnion7CreateIntegrationStoreDir
 	return CreateIntegrationStoreDirectUIReadOnlyUnion7{
 		CreateIntegrationStoreDirectUIReadOnly7: &createIntegrationStoreDirectUIReadOnly7,
 		Type:                                    typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIReadOnlyUnion7Boolean(boolean bool) CreateIntegrationStoreDirectUIReadOnlyUnion7 {
+	typ := CreateIntegrationStoreDirectUIReadOnlyUnion7TypeBoolean
+
+	return CreateIntegrationStoreDirectUIReadOnlyUnion7{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -5095,12 +5189,12 @@ func (u *CreateIntegrationStoreDirectUIReadOnlyUnion7) UnmarshalJSON(data []byte
 }
 
 func (u CreateIntegrationStoreDirectUIReadOnlyUnion7) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectUIReadOnly7 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIReadOnly7, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectUIReadOnlyEnum7 != nil {
@@ -5161,26 +5255,17 @@ func (o *CreateIntegrationStoreDirectUIHidden7) GetExpr() string {
 type CreateIntegrationStoreDirectUIHiddenUnion7Type string
 
 const (
-	CreateIntegrationStoreDirectUIHiddenUnion7TypeBoolean                                   CreateIntegrationStoreDirectUIHiddenUnion7Type = "boolean"
 	CreateIntegrationStoreDirectUIHiddenUnion7TypeCreateIntegrationStoreDirectUIHidden7     CreateIntegrationStoreDirectUIHiddenUnion7Type = "createIntegrationStoreDirect_ui:hidden_7"
+	CreateIntegrationStoreDirectUIHiddenUnion7TypeBoolean                                   CreateIntegrationStoreDirectUIHiddenUnion7Type = "boolean"
 	CreateIntegrationStoreDirectUIHiddenUnion7TypeCreateIntegrationStoreDirectUIHiddenEnum7 CreateIntegrationStoreDirectUIHiddenUnion7Type = "createIntegrationStoreDirect_ui:hidden_enum_7"
 )
 
 type CreateIntegrationStoreDirectUIHiddenUnion7 struct {
-	Boolean                                   *bool                                      `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIHidden7     *CreateIntegrationStoreDirectUIHidden7     `queryParam:"inline"`
+	Boolean                                   *bool                                      `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIHiddenEnum7 *CreateIntegrationStoreDirectUIHiddenEnum7 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectUIHiddenUnion7Type
-}
-
-func CreateCreateIntegrationStoreDirectUIHiddenUnion7Boolean(boolean bool) CreateIntegrationStoreDirectUIHiddenUnion7 {
-	typ := CreateIntegrationStoreDirectUIHiddenUnion7TypeBoolean
-
-	return CreateIntegrationStoreDirectUIHiddenUnion7{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectUIHiddenUnion7CreateIntegrationStoreDirectUIHidden7(createIntegrationStoreDirectUIHidden7 CreateIntegrationStoreDirectUIHidden7) CreateIntegrationStoreDirectUIHiddenUnion7 {
@@ -5189,6 +5274,15 @@ func CreateCreateIntegrationStoreDirectUIHiddenUnion7CreateIntegrationStoreDirec
 	return CreateIntegrationStoreDirectUIHiddenUnion7{
 		CreateIntegrationStoreDirectUIHidden7: &createIntegrationStoreDirectUIHidden7,
 		Type:                                  typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIHiddenUnion7Boolean(boolean bool) CreateIntegrationStoreDirectUIHiddenUnion7 {
+	typ := CreateIntegrationStoreDirectUIHiddenUnion7TypeBoolean
+
+	return CreateIntegrationStoreDirectUIHiddenUnion7{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -5228,12 +5322,12 @@ func (u *CreateIntegrationStoreDirectUIHiddenUnion7) UnmarshalJSON(data []byte) 
 }
 
 func (u CreateIntegrationStoreDirectUIHiddenUnion7) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectUIHidden7 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIHidden7, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectUIHiddenEnum7 != nil {
@@ -5294,26 +5388,17 @@ func (o *CreateIntegrationStoreDirectUIDisabled7) GetExpr() string {
 type CreateIntegrationStoreDirectUIDisabledUnion7Type string
 
 const (
-	CreateIntegrationStoreDirectUIDisabledUnion7TypeBoolean                                     CreateIntegrationStoreDirectUIDisabledUnion7Type = "boolean"
 	CreateIntegrationStoreDirectUIDisabledUnion7TypeCreateIntegrationStoreDirectUIDisabled7     CreateIntegrationStoreDirectUIDisabledUnion7Type = "createIntegrationStoreDirect_ui:disabled_7"
+	CreateIntegrationStoreDirectUIDisabledUnion7TypeBoolean                                     CreateIntegrationStoreDirectUIDisabledUnion7Type = "boolean"
 	CreateIntegrationStoreDirectUIDisabledUnion7TypeCreateIntegrationStoreDirectUIDisabledEnum7 CreateIntegrationStoreDirectUIDisabledUnion7Type = "createIntegrationStoreDirect_ui:disabled_enum_7"
 )
 
 type CreateIntegrationStoreDirectUIDisabledUnion7 struct {
-	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIDisabled7     *CreateIntegrationStoreDirectUIDisabled7     `queryParam:"inline"`
+	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIDisabledEnum7 *CreateIntegrationStoreDirectUIDisabledEnum7 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectUIDisabledUnion7Type
-}
-
-func CreateCreateIntegrationStoreDirectUIDisabledUnion7Boolean(boolean bool) CreateIntegrationStoreDirectUIDisabledUnion7 {
-	typ := CreateIntegrationStoreDirectUIDisabledUnion7TypeBoolean
-
-	return CreateIntegrationStoreDirectUIDisabledUnion7{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectUIDisabledUnion7CreateIntegrationStoreDirectUIDisabled7(createIntegrationStoreDirectUIDisabled7 CreateIntegrationStoreDirectUIDisabled7) CreateIntegrationStoreDirectUIDisabledUnion7 {
@@ -5322,6 +5407,15 @@ func CreateCreateIntegrationStoreDirectUIDisabledUnion7CreateIntegrationStoreDir
 	return CreateIntegrationStoreDirectUIDisabledUnion7{
 		CreateIntegrationStoreDirectUIDisabled7: &createIntegrationStoreDirectUIDisabled7,
 		Type:                                    typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIDisabledUnion7Boolean(boolean bool) CreateIntegrationStoreDirectUIDisabledUnion7 {
+	typ := CreateIntegrationStoreDirectUIDisabledUnion7TypeBoolean
+
+	return CreateIntegrationStoreDirectUIDisabledUnion7{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -5361,12 +5455,12 @@ func (u *CreateIntegrationStoreDirectUIDisabledUnion7) UnmarshalJSON(data []byte
 }
 
 func (u CreateIntegrationStoreDirectUIDisabledUnion7) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectUIDisabled7 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIDisabled7, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectUIDisabledEnum7 != nil {
@@ -5815,26 +5909,17 @@ func (o *CreateIntegrationStoreDirectDisabled2) GetExpr() string {
 type CreateIntegrationStoreDirectDisabledUnion2Type string
 
 const (
-	CreateIntegrationStoreDirectDisabledUnion2TypeBoolean                                   CreateIntegrationStoreDirectDisabledUnion2Type = "boolean"
 	CreateIntegrationStoreDirectDisabledUnion2TypeCreateIntegrationStoreDirectDisabled2     CreateIntegrationStoreDirectDisabledUnion2Type = "createIntegrationStoreDirect_disabled_2"
+	CreateIntegrationStoreDirectDisabledUnion2TypeBoolean                                   CreateIntegrationStoreDirectDisabledUnion2Type = "boolean"
 	CreateIntegrationStoreDirectDisabledUnion2TypeCreateIntegrationStoreDirectDisabledEnum2 CreateIntegrationStoreDirectDisabledUnion2Type = "createIntegrationStoreDirect_disabled_enum_2"
 )
 
 type CreateIntegrationStoreDirectDisabledUnion2 struct {
-	Boolean                                   *bool                                      `queryParam:"inline"`
 	CreateIntegrationStoreDirectDisabled2     *CreateIntegrationStoreDirectDisabled2     `queryParam:"inline"`
+	Boolean                                   *bool                                      `queryParam:"inline"`
 	CreateIntegrationStoreDirectDisabledEnum2 *CreateIntegrationStoreDirectDisabledEnum2 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectDisabledUnion2Type
-}
-
-func CreateCreateIntegrationStoreDirectDisabledUnion2Boolean(boolean bool) CreateIntegrationStoreDirectDisabledUnion2 {
-	typ := CreateIntegrationStoreDirectDisabledUnion2TypeBoolean
-
-	return CreateIntegrationStoreDirectDisabledUnion2{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectDisabledUnion2CreateIntegrationStoreDirectDisabled2(createIntegrationStoreDirectDisabled2 CreateIntegrationStoreDirectDisabled2) CreateIntegrationStoreDirectDisabledUnion2 {
@@ -5843,6 +5928,15 @@ func CreateCreateIntegrationStoreDirectDisabledUnion2CreateIntegrationStoreDirec
 	return CreateIntegrationStoreDirectDisabledUnion2{
 		CreateIntegrationStoreDirectDisabled2: &createIntegrationStoreDirectDisabled2,
 		Type:                                  typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectDisabledUnion2Boolean(boolean bool) CreateIntegrationStoreDirectDisabledUnion2 {
+	typ := CreateIntegrationStoreDirectDisabledUnion2TypeBoolean
+
+	return CreateIntegrationStoreDirectDisabledUnion2{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -5882,12 +5976,12 @@ func (u *CreateIntegrationStoreDirectDisabledUnion2) UnmarshalJSON(data []byte) 
 }
 
 func (u CreateIntegrationStoreDirectDisabledUnion2) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectDisabled2 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectDisabled2, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectDisabledEnum2 != nil {
@@ -5948,26 +6042,17 @@ func (o *CreateIntegrationStoreDirectHidden2) GetExpr() string {
 type CreateIntegrationStoreDirectHiddenUnion2Type string
 
 const (
-	CreateIntegrationStoreDirectHiddenUnion2TypeBoolean                                 CreateIntegrationStoreDirectHiddenUnion2Type = "boolean"
 	CreateIntegrationStoreDirectHiddenUnion2TypeCreateIntegrationStoreDirectHidden2     CreateIntegrationStoreDirectHiddenUnion2Type = "createIntegrationStoreDirect_hidden_2"
+	CreateIntegrationStoreDirectHiddenUnion2TypeBoolean                                 CreateIntegrationStoreDirectHiddenUnion2Type = "boolean"
 	CreateIntegrationStoreDirectHiddenUnion2TypeCreateIntegrationStoreDirectHiddenEnum2 CreateIntegrationStoreDirectHiddenUnion2Type = "createIntegrationStoreDirect_hidden_enum_2"
 )
 
 type CreateIntegrationStoreDirectHiddenUnion2 struct {
-	Boolean                                 *bool                                    `queryParam:"inline"`
 	CreateIntegrationStoreDirectHidden2     *CreateIntegrationStoreDirectHidden2     `queryParam:"inline"`
+	Boolean                                 *bool                                    `queryParam:"inline"`
 	CreateIntegrationStoreDirectHiddenEnum2 *CreateIntegrationStoreDirectHiddenEnum2 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectHiddenUnion2Type
-}
-
-func CreateCreateIntegrationStoreDirectHiddenUnion2Boolean(boolean bool) CreateIntegrationStoreDirectHiddenUnion2 {
-	typ := CreateIntegrationStoreDirectHiddenUnion2TypeBoolean
-
-	return CreateIntegrationStoreDirectHiddenUnion2{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectHiddenUnion2CreateIntegrationStoreDirectHidden2(createIntegrationStoreDirectHidden2 CreateIntegrationStoreDirectHidden2) CreateIntegrationStoreDirectHiddenUnion2 {
@@ -5976,6 +6061,15 @@ func CreateCreateIntegrationStoreDirectHiddenUnion2CreateIntegrationStoreDirectH
 	return CreateIntegrationStoreDirectHiddenUnion2{
 		CreateIntegrationStoreDirectHidden2: &createIntegrationStoreDirectHidden2,
 		Type:                                typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectHiddenUnion2Boolean(boolean bool) CreateIntegrationStoreDirectHiddenUnion2 {
+	typ := CreateIntegrationStoreDirectHiddenUnion2TypeBoolean
+
+	return CreateIntegrationStoreDirectHiddenUnion2{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -6015,12 +6109,12 @@ func (u *CreateIntegrationStoreDirectHiddenUnion2) UnmarshalJSON(data []byte) er
 }
 
 func (u CreateIntegrationStoreDirectHiddenUnion2) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectHidden2 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectHidden2, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectHiddenEnum2 != nil {
@@ -6127,26 +6221,17 @@ func (o *CreateIntegrationStoreDirectUIReadOnly6) GetExpr() string {
 type CreateIntegrationStoreDirectUIReadOnlyUnion6Type string
 
 const (
-	CreateIntegrationStoreDirectUIReadOnlyUnion6TypeBoolean                                     CreateIntegrationStoreDirectUIReadOnlyUnion6Type = "boolean"
 	CreateIntegrationStoreDirectUIReadOnlyUnion6TypeCreateIntegrationStoreDirectUIReadOnly6     CreateIntegrationStoreDirectUIReadOnlyUnion6Type = "createIntegrationStoreDirect_ui:read-only_6"
+	CreateIntegrationStoreDirectUIReadOnlyUnion6TypeBoolean                                     CreateIntegrationStoreDirectUIReadOnlyUnion6Type = "boolean"
 	CreateIntegrationStoreDirectUIReadOnlyUnion6TypeCreateIntegrationStoreDirectUIReadOnlyEnum6 CreateIntegrationStoreDirectUIReadOnlyUnion6Type = "createIntegrationStoreDirect_ui:read-only_enum_6"
 )
 
 type CreateIntegrationStoreDirectUIReadOnlyUnion6 struct {
-	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIReadOnly6     *CreateIntegrationStoreDirectUIReadOnly6     `queryParam:"inline"`
+	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIReadOnlyEnum6 *CreateIntegrationStoreDirectUIReadOnlyEnum6 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectUIReadOnlyUnion6Type
-}
-
-func CreateCreateIntegrationStoreDirectUIReadOnlyUnion6Boolean(boolean bool) CreateIntegrationStoreDirectUIReadOnlyUnion6 {
-	typ := CreateIntegrationStoreDirectUIReadOnlyUnion6TypeBoolean
-
-	return CreateIntegrationStoreDirectUIReadOnlyUnion6{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectUIReadOnlyUnion6CreateIntegrationStoreDirectUIReadOnly6(createIntegrationStoreDirectUIReadOnly6 CreateIntegrationStoreDirectUIReadOnly6) CreateIntegrationStoreDirectUIReadOnlyUnion6 {
@@ -6155,6 +6240,15 @@ func CreateCreateIntegrationStoreDirectUIReadOnlyUnion6CreateIntegrationStoreDir
 	return CreateIntegrationStoreDirectUIReadOnlyUnion6{
 		CreateIntegrationStoreDirectUIReadOnly6: &createIntegrationStoreDirectUIReadOnly6,
 		Type:                                    typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIReadOnlyUnion6Boolean(boolean bool) CreateIntegrationStoreDirectUIReadOnlyUnion6 {
+	typ := CreateIntegrationStoreDirectUIReadOnlyUnion6TypeBoolean
+
+	return CreateIntegrationStoreDirectUIReadOnlyUnion6{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -6194,12 +6288,12 @@ func (u *CreateIntegrationStoreDirectUIReadOnlyUnion6) UnmarshalJSON(data []byte
 }
 
 func (u CreateIntegrationStoreDirectUIReadOnlyUnion6) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectUIReadOnly6 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIReadOnly6, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectUIReadOnlyEnum6 != nil {
@@ -6260,26 +6354,17 @@ func (o *CreateIntegrationStoreDirectUIHidden6) GetExpr() string {
 type CreateIntegrationStoreDirectUIHiddenUnion6Type string
 
 const (
-	CreateIntegrationStoreDirectUIHiddenUnion6TypeBoolean                                   CreateIntegrationStoreDirectUIHiddenUnion6Type = "boolean"
 	CreateIntegrationStoreDirectUIHiddenUnion6TypeCreateIntegrationStoreDirectUIHidden6     CreateIntegrationStoreDirectUIHiddenUnion6Type = "createIntegrationStoreDirect_ui:hidden_6"
+	CreateIntegrationStoreDirectUIHiddenUnion6TypeBoolean                                   CreateIntegrationStoreDirectUIHiddenUnion6Type = "boolean"
 	CreateIntegrationStoreDirectUIHiddenUnion6TypeCreateIntegrationStoreDirectUIHiddenEnum6 CreateIntegrationStoreDirectUIHiddenUnion6Type = "createIntegrationStoreDirect_ui:hidden_enum_6"
 )
 
 type CreateIntegrationStoreDirectUIHiddenUnion6 struct {
-	Boolean                                   *bool                                      `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIHidden6     *CreateIntegrationStoreDirectUIHidden6     `queryParam:"inline"`
+	Boolean                                   *bool                                      `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIHiddenEnum6 *CreateIntegrationStoreDirectUIHiddenEnum6 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectUIHiddenUnion6Type
-}
-
-func CreateCreateIntegrationStoreDirectUIHiddenUnion6Boolean(boolean bool) CreateIntegrationStoreDirectUIHiddenUnion6 {
-	typ := CreateIntegrationStoreDirectUIHiddenUnion6TypeBoolean
-
-	return CreateIntegrationStoreDirectUIHiddenUnion6{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectUIHiddenUnion6CreateIntegrationStoreDirectUIHidden6(createIntegrationStoreDirectUIHidden6 CreateIntegrationStoreDirectUIHidden6) CreateIntegrationStoreDirectUIHiddenUnion6 {
@@ -6288,6 +6373,15 @@ func CreateCreateIntegrationStoreDirectUIHiddenUnion6CreateIntegrationStoreDirec
 	return CreateIntegrationStoreDirectUIHiddenUnion6{
 		CreateIntegrationStoreDirectUIHidden6: &createIntegrationStoreDirectUIHidden6,
 		Type:                                  typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIHiddenUnion6Boolean(boolean bool) CreateIntegrationStoreDirectUIHiddenUnion6 {
+	typ := CreateIntegrationStoreDirectUIHiddenUnion6TypeBoolean
+
+	return CreateIntegrationStoreDirectUIHiddenUnion6{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -6327,12 +6421,12 @@ func (u *CreateIntegrationStoreDirectUIHiddenUnion6) UnmarshalJSON(data []byte) 
 }
 
 func (u CreateIntegrationStoreDirectUIHiddenUnion6) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectUIHidden6 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIHidden6, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectUIHiddenEnum6 != nil {
@@ -6393,26 +6487,17 @@ func (o *CreateIntegrationStoreDirectUIDisabled6) GetExpr() string {
 type CreateIntegrationStoreDirectUIDisabledUnion6Type string
 
 const (
-	CreateIntegrationStoreDirectUIDisabledUnion6TypeBoolean                                     CreateIntegrationStoreDirectUIDisabledUnion6Type = "boolean"
 	CreateIntegrationStoreDirectUIDisabledUnion6TypeCreateIntegrationStoreDirectUIDisabled6     CreateIntegrationStoreDirectUIDisabledUnion6Type = "createIntegrationStoreDirect_ui:disabled_6"
+	CreateIntegrationStoreDirectUIDisabledUnion6TypeBoolean                                     CreateIntegrationStoreDirectUIDisabledUnion6Type = "boolean"
 	CreateIntegrationStoreDirectUIDisabledUnion6TypeCreateIntegrationStoreDirectUIDisabledEnum6 CreateIntegrationStoreDirectUIDisabledUnion6Type = "createIntegrationStoreDirect_ui:disabled_enum_6"
 )
 
 type CreateIntegrationStoreDirectUIDisabledUnion6 struct {
-	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIDisabled6     *CreateIntegrationStoreDirectUIDisabled6     `queryParam:"inline"`
+	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIDisabledEnum6 *CreateIntegrationStoreDirectUIDisabledEnum6 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectUIDisabledUnion6Type
-}
-
-func CreateCreateIntegrationStoreDirectUIDisabledUnion6Boolean(boolean bool) CreateIntegrationStoreDirectUIDisabledUnion6 {
-	typ := CreateIntegrationStoreDirectUIDisabledUnion6TypeBoolean
-
-	return CreateIntegrationStoreDirectUIDisabledUnion6{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectUIDisabledUnion6CreateIntegrationStoreDirectUIDisabled6(createIntegrationStoreDirectUIDisabled6 CreateIntegrationStoreDirectUIDisabled6) CreateIntegrationStoreDirectUIDisabledUnion6 {
@@ -6421,6 +6506,15 @@ func CreateCreateIntegrationStoreDirectUIDisabledUnion6CreateIntegrationStoreDir
 	return CreateIntegrationStoreDirectUIDisabledUnion6{
 		CreateIntegrationStoreDirectUIDisabled6: &createIntegrationStoreDirectUIDisabled6,
 		Type:                                    typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIDisabledUnion6Boolean(boolean bool) CreateIntegrationStoreDirectUIDisabledUnion6 {
+	typ := CreateIntegrationStoreDirectUIDisabledUnion6TypeBoolean
+
+	return CreateIntegrationStoreDirectUIDisabledUnion6{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -6460,12 +6554,12 @@ func (u *CreateIntegrationStoreDirectUIDisabledUnion6) UnmarshalJSON(data []byte
 }
 
 func (u CreateIntegrationStoreDirectUIDisabledUnion6) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectUIDisabled6 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIDisabled6, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectUIDisabledEnum6 != nil {
@@ -6821,26 +6915,17 @@ func (o *CreateIntegrationStoreDirectDisabled1) GetExpr() string {
 type CreateIntegrationStoreDirectDisabledUnion1Type string
 
 const (
-	CreateIntegrationStoreDirectDisabledUnion1TypeBoolean                                   CreateIntegrationStoreDirectDisabledUnion1Type = "boolean"
 	CreateIntegrationStoreDirectDisabledUnion1TypeCreateIntegrationStoreDirectDisabled1     CreateIntegrationStoreDirectDisabledUnion1Type = "createIntegrationStoreDirect_disabled_1"
+	CreateIntegrationStoreDirectDisabledUnion1TypeBoolean                                   CreateIntegrationStoreDirectDisabledUnion1Type = "boolean"
 	CreateIntegrationStoreDirectDisabledUnion1TypeCreateIntegrationStoreDirectDisabledEnum1 CreateIntegrationStoreDirectDisabledUnion1Type = "createIntegrationStoreDirect_disabled_enum_1"
 )
 
 type CreateIntegrationStoreDirectDisabledUnion1 struct {
-	Boolean                                   *bool                                      `queryParam:"inline"`
 	CreateIntegrationStoreDirectDisabled1     *CreateIntegrationStoreDirectDisabled1     `queryParam:"inline"`
+	Boolean                                   *bool                                      `queryParam:"inline"`
 	CreateIntegrationStoreDirectDisabledEnum1 *CreateIntegrationStoreDirectDisabledEnum1 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectDisabledUnion1Type
-}
-
-func CreateCreateIntegrationStoreDirectDisabledUnion1Boolean(boolean bool) CreateIntegrationStoreDirectDisabledUnion1 {
-	typ := CreateIntegrationStoreDirectDisabledUnion1TypeBoolean
-
-	return CreateIntegrationStoreDirectDisabledUnion1{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectDisabledUnion1CreateIntegrationStoreDirectDisabled1(createIntegrationStoreDirectDisabled1 CreateIntegrationStoreDirectDisabled1) CreateIntegrationStoreDirectDisabledUnion1 {
@@ -6849,6 +6934,15 @@ func CreateCreateIntegrationStoreDirectDisabledUnion1CreateIntegrationStoreDirec
 	return CreateIntegrationStoreDirectDisabledUnion1{
 		CreateIntegrationStoreDirectDisabled1: &createIntegrationStoreDirectDisabled1,
 		Type:                                  typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectDisabledUnion1Boolean(boolean bool) CreateIntegrationStoreDirectDisabledUnion1 {
+	typ := CreateIntegrationStoreDirectDisabledUnion1TypeBoolean
+
+	return CreateIntegrationStoreDirectDisabledUnion1{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -6888,12 +6982,12 @@ func (u *CreateIntegrationStoreDirectDisabledUnion1) UnmarshalJSON(data []byte) 
 }
 
 func (u CreateIntegrationStoreDirectDisabledUnion1) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectDisabled1 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectDisabled1, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectDisabledEnum1 != nil {
@@ -6954,26 +7048,17 @@ func (o *CreateIntegrationStoreDirectHidden1) GetExpr() string {
 type CreateIntegrationStoreDirectHiddenUnion1Type string
 
 const (
-	CreateIntegrationStoreDirectHiddenUnion1TypeBoolean                                 CreateIntegrationStoreDirectHiddenUnion1Type = "boolean"
 	CreateIntegrationStoreDirectHiddenUnion1TypeCreateIntegrationStoreDirectHidden1     CreateIntegrationStoreDirectHiddenUnion1Type = "createIntegrationStoreDirect_hidden_1"
+	CreateIntegrationStoreDirectHiddenUnion1TypeBoolean                                 CreateIntegrationStoreDirectHiddenUnion1Type = "boolean"
 	CreateIntegrationStoreDirectHiddenUnion1TypeCreateIntegrationStoreDirectHiddenEnum1 CreateIntegrationStoreDirectHiddenUnion1Type = "createIntegrationStoreDirect_hidden_enum_1"
 )
 
 type CreateIntegrationStoreDirectHiddenUnion1 struct {
-	Boolean                                 *bool                                    `queryParam:"inline"`
 	CreateIntegrationStoreDirectHidden1     *CreateIntegrationStoreDirectHidden1     `queryParam:"inline"`
+	Boolean                                 *bool                                    `queryParam:"inline"`
 	CreateIntegrationStoreDirectHiddenEnum1 *CreateIntegrationStoreDirectHiddenEnum1 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectHiddenUnion1Type
-}
-
-func CreateCreateIntegrationStoreDirectHiddenUnion1Boolean(boolean bool) CreateIntegrationStoreDirectHiddenUnion1 {
-	typ := CreateIntegrationStoreDirectHiddenUnion1TypeBoolean
-
-	return CreateIntegrationStoreDirectHiddenUnion1{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectHiddenUnion1CreateIntegrationStoreDirectHidden1(createIntegrationStoreDirectHidden1 CreateIntegrationStoreDirectHidden1) CreateIntegrationStoreDirectHiddenUnion1 {
@@ -6982,6 +7067,15 @@ func CreateCreateIntegrationStoreDirectHiddenUnion1CreateIntegrationStoreDirectH
 	return CreateIntegrationStoreDirectHiddenUnion1{
 		CreateIntegrationStoreDirectHidden1: &createIntegrationStoreDirectHidden1,
 		Type:                                typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectHiddenUnion1Boolean(boolean bool) CreateIntegrationStoreDirectHiddenUnion1 {
+	typ := CreateIntegrationStoreDirectHiddenUnion1TypeBoolean
+
+	return CreateIntegrationStoreDirectHiddenUnion1{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -7021,12 +7115,12 @@ func (u *CreateIntegrationStoreDirectHiddenUnion1) UnmarshalJSON(data []byte) er
 }
 
 func (u CreateIntegrationStoreDirectHiddenUnion1) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectHidden1 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectHidden1, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectHiddenEnum1 != nil {
@@ -7133,26 +7227,17 @@ func (o *CreateIntegrationStoreDirectUIReadOnly5) GetExpr() string {
 type CreateIntegrationStoreDirectUIReadOnlyUnion5Type string
 
 const (
-	CreateIntegrationStoreDirectUIReadOnlyUnion5TypeBoolean                                     CreateIntegrationStoreDirectUIReadOnlyUnion5Type = "boolean"
 	CreateIntegrationStoreDirectUIReadOnlyUnion5TypeCreateIntegrationStoreDirectUIReadOnly5     CreateIntegrationStoreDirectUIReadOnlyUnion5Type = "createIntegrationStoreDirect_ui:read-only_5"
+	CreateIntegrationStoreDirectUIReadOnlyUnion5TypeBoolean                                     CreateIntegrationStoreDirectUIReadOnlyUnion5Type = "boolean"
 	CreateIntegrationStoreDirectUIReadOnlyUnion5TypeCreateIntegrationStoreDirectUIReadOnlyEnum5 CreateIntegrationStoreDirectUIReadOnlyUnion5Type = "createIntegrationStoreDirect_ui:read-only_enum_5"
 )
 
 type CreateIntegrationStoreDirectUIReadOnlyUnion5 struct {
-	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIReadOnly5     *CreateIntegrationStoreDirectUIReadOnly5     `queryParam:"inline"`
+	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIReadOnlyEnum5 *CreateIntegrationStoreDirectUIReadOnlyEnum5 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectUIReadOnlyUnion5Type
-}
-
-func CreateCreateIntegrationStoreDirectUIReadOnlyUnion5Boolean(boolean bool) CreateIntegrationStoreDirectUIReadOnlyUnion5 {
-	typ := CreateIntegrationStoreDirectUIReadOnlyUnion5TypeBoolean
-
-	return CreateIntegrationStoreDirectUIReadOnlyUnion5{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectUIReadOnlyUnion5CreateIntegrationStoreDirectUIReadOnly5(createIntegrationStoreDirectUIReadOnly5 CreateIntegrationStoreDirectUIReadOnly5) CreateIntegrationStoreDirectUIReadOnlyUnion5 {
@@ -7161,6 +7246,15 @@ func CreateCreateIntegrationStoreDirectUIReadOnlyUnion5CreateIntegrationStoreDir
 	return CreateIntegrationStoreDirectUIReadOnlyUnion5{
 		CreateIntegrationStoreDirectUIReadOnly5: &createIntegrationStoreDirectUIReadOnly5,
 		Type:                                    typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIReadOnlyUnion5Boolean(boolean bool) CreateIntegrationStoreDirectUIReadOnlyUnion5 {
+	typ := CreateIntegrationStoreDirectUIReadOnlyUnion5TypeBoolean
+
+	return CreateIntegrationStoreDirectUIReadOnlyUnion5{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -7200,12 +7294,12 @@ func (u *CreateIntegrationStoreDirectUIReadOnlyUnion5) UnmarshalJSON(data []byte
 }
 
 func (u CreateIntegrationStoreDirectUIReadOnlyUnion5) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectUIReadOnly5 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIReadOnly5, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectUIReadOnlyEnum5 != nil {
@@ -7266,26 +7360,17 @@ func (o *CreateIntegrationStoreDirectUIHidden5) GetExpr() string {
 type CreateIntegrationStoreDirectUIHiddenUnion5Type string
 
 const (
-	CreateIntegrationStoreDirectUIHiddenUnion5TypeBoolean                                   CreateIntegrationStoreDirectUIHiddenUnion5Type = "boolean"
 	CreateIntegrationStoreDirectUIHiddenUnion5TypeCreateIntegrationStoreDirectUIHidden5     CreateIntegrationStoreDirectUIHiddenUnion5Type = "createIntegrationStoreDirect_ui:hidden_5"
+	CreateIntegrationStoreDirectUIHiddenUnion5TypeBoolean                                   CreateIntegrationStoreDirectUIHiddenUnion5Type = "boolean"
 	CreateIntegrationStoreDirectUIHiddenUnion5TypeCreateIntegrationStoreDirectUIHiddenEnum5 CreateIntegrationStoreDirectUIHiddenUnion5Type = "createIntegrationStoreDirect_ui:hidden_enum_5"
 )
 
 type CreateIntegrationStoreDirectUIHiddenUnion5 struct {
-	Boolean                                   *bool                                      `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIHidden5     *CreateIntegrationStoreDirectUIHidden5     `queryParam:"inline"`
+	Boolean                                   *bool                                      `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIHiddenEnum5 *CreateIntegrationStoreDirectUIHiddenEnum5 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectUIHiddenUnion5Type
-}
-
-func CreateCreateIntegrationStoreDirectUIHiddenUnion5Boolean(boolean bool) CreateIntegrationStoreDirectUIHiddenUnion5 {
-	typ := CreateIntegrationStoreDirectUIHiddenUnion5TypeBoolean
-
-	return CreateIntegrationStoreDirectUIHiddenUnion5{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectUIHiddenUnion5CreateIntegrationStoreDirectUIHidden5(createIntegrationStoreDirectUIHidden5 CreateIntegrationStoreDirectUIHidden5) CreateIntegrationStoreDirectUIHiddenUnion5 {
@@ -7294,6 +7379,15 @@ func CreateCreateIntegrationStoreDirectUIHiddenUnion5CreateIntegrationStoreDirec
 	return CreateIntegrationStoreDirectUIHiddenUnion5{
 		CreateIntegrationStoreDirectUIHidden5: &createIntegrationStoreDirectUIHidden5,
 		Type:                                  typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIHiddenUnion5Boolean(boolean bool) CreateIntegrationStoreDirectUIHiddenUnion5 {
+	typ := CreateIntegrationStoreDirectUIHiddenUnion5TypeBoolean
+
+	return CreateIntegrationStoreDirectUIHiddenUnion5{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -7333,12 +7427,12 @@ func (u *CreateIntegrationStoreDirectUIHiddenUnion5) UnmarshalJSON(data []byte) 
 }
 
 func (u CreateIntegrationStoreDirectUIHiddenUnion5) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectUIHidden5 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIHidden5, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectUIHiddenEnum5 != nil {
@@ -7399,26 +7493,17 @@ func (o *CreateIntegrationStoreDirectUIDisabled5) GetExpr() string {
 type CreateIntegrationStoreDirectUIDisabledUnion5Type string
 
 const (
-	CreateIntegrationStoreDirectUIDisabledUnion5TypeBoolean                                     CreateIntegrationStoreDirectUIDisabledUnion5Type = "boolean"
 	CreateIntegrationStoreDirectUIDisabledUnion5TypeCreateIntegrationStoreDirectUIDisabled5     CreateIntegrationStoreDirectUIDisabledUnion5Type = "createIntegrationStoreDirect_ui:disabled_5"
+	CreateIntegrationStoreDirectUIDisabledUnion5TypeBoolean                                     CreateIntegrationStoreDirectUIDisabledUnion5Type = "boolean"
 	CreateIntegrationStoreDirectUIDisabledUnion5TypeCreateIntegrationStoreDirectUIDisabledEnum5 CreateIntegrationStoreDirectUIDisabledUnion5Type = "createIntegrationStoreDirect_ui:disabled_enum_5"
 )
 
 type CreateIntegrationStoreDirectUIDisabledUnion5 struct {
-	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIDisabled5     *CreateIntegrationStoreDirectUIDisabled5     `queryParam:"inline"`
+	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIDisabledEnum5 *CreateIntegrationStoreDirectUIDisabledEnum5 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectUIDisabledUnion5Type
-}
-
-func CreateCreateIntegrationStoreDirectUIDisabledUnion5Boolean(boolean bool) CreateIntegrationStoreDirectUIDisabledUnion5 {
-	typ := CreateIntegrationStoreDirectUIDisabledUnion5TypeBoolean
-
-	return CreateIntegrationStoreDirectUIDisabledUnion5{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectUIDisabledUnion5CreateIntegrationStoreDirectUIDisabled5(createIntegrationStoreDirectUIDisabled5 CreateIntegrationStoreDirectUIDisabled5) CreateIntegrationStoreDirectUIDisabledUnion5 {
@@ -7427,6 +7512,15 @@ func CreateCreateIntegrationStoreDirectUIDisabledUnion5CreateIntegrationStoreDir
 	return CreateIntegrationStoreDirectUIDisabledUnion5{
 		CreateIntegrationStoreDirectUIDisabled5: &createIntegrationStoreDirectUIDisabled5,
 		Type:                                    typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIDisabledUnion5Boolean(boolean bool) CreateIntegrationStoreDirectUIDisabledUnion5 {
+	typ := CreateIntegrationStoreDirectUIDisabledUnion5TypeBoolean
+
+	return CreateIntegrationStoreDirectUIDisabledUnion5{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -7466,12 +7560,12 @@ func (u *CreateIntegrationStoreDirectUIDisabledUnion5) UnmarshalJSON(data []byte
 }
 
 func (u CreateIntegrationStoreDirectUIDisabledUnion5) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectUIDisabled5 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIDisabled5, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectUIDisabledEnum5 != nil {
@@ -7920,26 +8014,17 @@ func (o *CreateIntegrationStoreDirectUIReadOnly4) GetExpr() string {
 type CreateIntegrationStoreDirectUIReadOnlyUnion4Type string
 
 const (
-	CreateIntegrationStoreDirectUIReadOnlyUnion4TypeBoolean                                     CreateIntegrationStoreDirectUIReadOnlyUnion4Type = "boolean"
 	CreateIntegrationStoreDirectUIReadOnlyUnion4TypeCreateIntegrationStoreDirectUIReadOnly4     CreateIntegrationStoreDirectUIReadOnlyUnion4Type = "createIntegrationStoreDirect_ui:read-only_4"
+	CreateIntegrationStoreDirectUIReadOnlyUnion4TypeBoolean                                     CreateIntegrationStoreDirectUIReadOnlyUnion4Type = "boolean"
 	CreateIntegrationStoreDirectUIReadOnlyUnion4TypeCreateIntegrationStoreDirectUIReadOnlyEnum4 CreateIntegrationStoreDirectUIReadOnlyUnion4Type = "createIntegrationStoreDirect_ui:read-only_enum_4"
 )
 
 type CreateIntegrationStoreDirectUIReadOnlyUnion4 struct {
-	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIReadOnly4     *CreateIntegrationStoreDirectUIReadOnly4     `queryParam:"inline"`
+	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIReadOnlyEnum4 *CreateIntegrationStoreDirectUIReadOnlyEnum4 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectUIReadOnlyUnion4Type
-}
-
-func CreateCreateIntegrationStoreDirectUIReadOnlyUnion4Boolean(boolean bool) CreateIntegrationStoreDirectUIReadOnlyUnion4 {
-	typ := CreateIntegrationStoreDirectUIReadOnlyUnion4TypeBoolean
-
-	return CreateIntegrationStoreDirectUIReadOnlyUnion4{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectUIReadOnlyUnion4CreateIntegrationStoreDirectUIReadOnly4(createIntegrationStoreDirectUIReadOnly4 CreateIntegrationStoreDirectUIReadOnly4) CreateIntegrationStoreDirectUIReadOnlyUnion4 {
@@ -7948,6 +8033,15 @@ func CreateCreateIntegrationStoreDirectUIReadOnlyUnion4CreateIntegrationStoreDir
 	return CreateIntegrationStoreDirectUIReadOnlyUnion4{
 		CreateIntegrationStoreDirectUIReadOnly4: &createIntegrationStoreDirectUIReadOnly4,
 		Type:                                    typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIReadOnlyUnion4Boolean(boolean bool) CreateIntegrationStoreDirectUIReadOnlyUnion4 {
+	typ := CreateIntegrationStoreDirectUIReadOnlyUnion4TypeBoolean
+
+	return CreateIntegrationStoreDirectUIReadOnlyUnion4{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -7987,12 +8081,12 @@ func (u *CreateIntegrationStoreDirectUIReadOnlyUnion4) UnmarshalJSON(data []byte
 }
 
 func (u CreateIntegrationStoreDirectUIReadOnlyUnion4) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectUIReadOnly4 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIReadOnly4, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectUIReadOnlyEnum4 != nil {
@@ -8053,26 +8147,17 @@ func (o *CreateIntegrationStoreDirectUIHidden4) GetExpr() string {
 type CreateIntegrationStoreDirectUIHiddenUnion4Type string
 
 const (
-	CreateIntegrationStoreDirectUIHiddenUnion4TypeBoolean                                   CreateIntegrationStoreDirectUIHiddenUnion4Type = "boolean"
 	CreateIntegrationStoreDirectUIHiddenUnion4TypeCreateIntegrationStoreDirectUIHidden4     CreateIntegrationStoreDirectUIHiddenUnion4Type = "createIntegrationStoreDirect_ui:hidden_4"
+	CreateIntegrationStoreDirectUIHiddenUnion4TypeBoolean                                   CreateIntegrationStoreDirectUIHiddenUnion4Type = "boolean"
 	CreateIntegrationStoreDirectUIHiddenUnion4TypeCreateIntegrationStoreDirectUIHiddenEnum4 CreateIntegrationStoreDirectUIHiddenUnion4Type = "createIntegrationStoreDirect_ui:hidden_enum_4"
 )
 
 type CreateIntegrationStoreDirectUIHiddenUnion4 struct {
-	Boolean                                   *bool                                      `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIHidden4     *CreateIntegrationStoreDirectUIHidden4     `queryParam:"inline"`
+	Boolean                                   *bool                                      `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIHiddenEnum4 *CreateIntegrationStoreDirectUIHiddenEnum4 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectUIHiddenUnion4Type
-}
-
-func CreateCreateIntegrationStoreDirectUIHiddenUnion4Boolean(boolean bool) CreateIntegrationStoreDirectUIHiddenUnion4 {
-	typ := CreateIntegrationStoreDirectUIHiddenUnion4TypeBoolean
-
-	return CreateIntegrationStoreDirectUIHiddenUnion4{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectUIHiddenUnion4CreateIntegrationStoreDirectUIHidden4(createIntegrationStoreDirectUIHidden4 CreateIntegrationStoreDirectUIHidden4) CreateIntegrationStoreDirectUIHiddenUnion4 {
@@ -8081,6 +8166,15 @@ func CreateCreateIntegrationStoreDirectUIHiddenUnion4CreateIntegrationStoreDirec
 	return CreateIntegrationStoreDirectUIHiddenUnion4{
 		CreateIntegrationStoreDirectUIHidden4: &createIntegrationStoreDirectUIHidden4,
 		Type:                                  typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIHiddenUnion4Boolean(boolean bool) CreateIntegrationStoreDirectUIHiddenUnion4 {
+	typ := CreateIntegrationStoreDirectUIHiddenUnion4TypeBoolean
+
+	return CreateIntegrationStoreDirectUIHiddenUnion4{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -8120,12 +8214,12 @@ func (u *CreateIntegrationStoreDirectUIHiddenUnion4) UnmarshalJSON(data []byte) 
 }
 
 func (u CreateIntegrationStoreDirectUIHiddenUnion4) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectUIHidden4 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIHidden4, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectUIHiddenEnum4 != nil {
@@ -8186,26 +8280,17 @@ func (o *CreateIntegrationStoreDirectUIDisabled4) GetExpr() string {
 type CreateIntegrationStoreDirectUIDisabledUnion4Type string
 
 const (
-	CreateIntegrationStoreDirectUIDisabledUnion4TypeBoolean                                     CreateIntegrationStoreDirectUIDisabledUnion4Type = "boolean"
 	CreateIntegrationStoreDirectUIDisabledUnion4TypeCreateIntegrationStoreDirectUIDisabled4     CreateIntegrationStoreDirectUIDisabledUnion4Type = "createIntegrationStoreDirect_ui:disabled_4"
+	CreateIntegrationStoreDirectUIDisabledUnion4TypeBoolean                                     CreateIntegrationStoreDirectUIDisabledUnion4Type = "boolean"
 	CreateIntegrationStoreDirectUIDisabledUnion4TypeCreateIntegrationStoreDirectUIDisabledEnum4 CreateIntegrationStoreDirectUIDisabledUnion4Type = "createIntegrationStoreDirect_ui:disabled_enum_4"
 )
 
 type CreateIntegrationStoreDirectUIDisabledUnion4 struct {
-	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIDisabled4     *CreateIntegrationStoreDirectUIDisabled4     `queryParam:"inline"`
+	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIDisabledEnum4 *CreateIntegrationStoreDirectUIDisabledEnum4 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectUIDisabledUnion4Type
-}
-
-func CreateCreateIntegrationStoreDirectUIDisabledUnion4Boolean(boolean bool) CreateIntegrationStoreDirectUIDisabledUnion4 {
-	typ := CreateIntegrationStoreDirectUIDisabledUnion4TypeBoolean
-
-	return CreateIntegrationStoreDirectUIDisabledUnion4{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectUIDisabledUnion4CreateIntegrationStoreDirectUIDisabled4(createIntegrationStoreDirectUIDisabled4 CreateIntegrationStoreDirectUIDisabled4) CreateIntegrationStoreDirectUIDisabledUnion4 {
@@ -8214,6 +8299,15 @@ func CreateCreateIntegrationStoreDirectUIDisabledUnion4CreateIntegrationStoreDir
 	return CreateIntegrationStoreDirectUIDisabledUnion4{
 		CreateIntegrationStoreDirectUIDisabled4: &createIntegrationStoreDirectUIDisabled4,
 		Type:                                    typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIDisabledUnion4Boolean(boolean bool) CreateIntegrationStoreDirectUIDisabledUnion4 {
+	typ := CreateIntegrationStoreDirectUIDisabledUnion4TypeBoolean
+
+	return CreateIntegrationStoreDirectUIDisabledUnion4{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -8253,12 +8347,12 @@ func (u *CreateIntegrationStoreDirectUIDisabledUnion4) UnmarshalJSON(data []byte
 }
 
 func (u CreateIntegrationStoreDirectUIDisabledUnion4) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectUIDisabled4 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIDisabled4, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectUIDisabledEnum4 != nil {
@@ -8598,26 +8692,17 @@ func (o *CreateIntegrationStoreDirectUIReadOnly3) GetExpr() string {
 type CreateIntegrationStoreDirectUIReadOnlyUnion3Type string
 
 const (
-	CreateIntegrationStoreDirectUIReadOnlyUnion3TypeBoolean                                     CreateIntegrationStoreDirectUIReadOnlyUnion3Type = "boolean"
 	CreateIntegrationStoreDirectUIReadOnlyUnion3TypeCreateIntegrationStoreDirectUIReadOnly3     CreateIntegrationStoreDirectUIReadOnlyUnion3Type = "createIntegrationStoreDirect_ui:read-only_3"
+	CreateIntegrationStoreDirectUIReadOnlyUnion3TypeBoolean                                     CreateIntegrationStoreDirectUIReadOnlyUnion3Type = "boolean"
 	CreateIntegrationStoreDirectUIReadOnlyUnion3TypeCreateIntegrationStoreDirectUIReadOnlyEnum3 CreateIntegrationStoreDirectUIReadOnlyUnion3Type = "createIntegrationStoreDirect_ui:read-only_enum_3"
 )
 
 type CreateIntegrationStoreDirectUIReadOnlyUnion3 struct {
-	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIReadOnly3     *CreateIntegrationStoreDirectUIReadOnly3     `queryParam:"inline"`
+	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIReadOnlyEnum3 *CreateIntegrationStoreDirectUIReadOnlyEnum3 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectUIReadOnlyUnion3Type
-}
-
-func CreateCreateIntegrationStoreDirectUIReadOnlyUnion3Boolean(boolean bool) CreateIntegrationStoreDirectUIReadOnlyUnion3 {
-	typ := CreateIntegrationStoreDirectUIReadOnlyUnion3TypeBoolean
-
-	return CreateIntegrationStoreDirectUIReadOnlyUnion3{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectUIReadOnlyUnion3CreateIntegrationStoreDirectUIReadOnly3(createIntegrationStoreDirectUIReadOnly3 CreateIntegrationStoreDirectUIReadOnly3) CreateIntegrationStoreDirectUIReadOnlyUnion3 {
@@ -8626,6 +8711,15 @@ func CreateCreateIntegrationStoreDirectUIReadOnlyUnion3CreateIntegrationStoreDir
 	return CreateIntegrationStoreDirectUIReadOnlyUnion3{
 		CreateIntegrationStoreDirectUIReadOnly3: &createIntegrationStoreDirectUIReadOnly3,
 		Type:                                    typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIReadOnlyUnion3Boolean(boolean bool) CreateIntegrationStoreDirectUIReadOnlyUnion3 {
+	typ := CreateIntegrationStoreDirectUIReadOnlyUnion3TypeBoolean
+
+	return CreateIntegrationStoreDirectUIReadOnlyUnion3{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -8665,12 +8759,12 @@ func (u *CreateIntegrationStoreDirectUIReadOnlyUnion3) UnmarshalJSON(data []byte
 }
 
 func (u CreateIntegrationStoreDirectUIReadOnlyUnion3) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectUIReadOnly3 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIReadOnly3, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectUIReadOnlyEnum3 != nil {
@@ -8731,26 +8825,17 @@ func (o *CreateIntegrationStoreDirectUIHidden3) GetExpr() string {
 type CreateIntegrationStoreDirectUIHiddenUnion3Type string
 
 const (
-	CreateIntegrationStoreDirectUIHiddenUnion3TypeBoolean                                   CreateIntegrationStoreDirectUIHiddenUnion3Type = "boolean"
 	CreateIntegrationStoreDirectUIHiddenUnion3TypeCreateIntegrationStoreDirectUIHidden3     CreateIntegrationStoreDirectUIHiddenUnion3Type = "createIntegrationStoreDirect_ui:hidden_3"
+	CreateIntegrationStoreDirectUIHiddenUnion3TypeBoolean                                   CreateIntegrationStoreDirectUIHiddenUnion3Type = "boolean"
 	CreateIntegrationStoreDirectUIHiddenUnion3TypeCreateIntegrationStoreDirectUIHiddenEnum3 CreateIntegrationStoreDirectUIHiddenUnion3Type = "createIntegrationStoreDirect_ui:hidden_enum_3"
 )
 
 type CreateIntegrationStoreDirectUIHiddenUnion3 struct {
-	Boolean                                   *bool                                      `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIHidden3     *CreateIntegrationStoreDirectUIHidden3     `queryParam:"inline"`
+	Boolean                                   *bool                                      `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIHiddenEnum3 *CreateIntegrationStoreDirectUIHiddenEnum3 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectUIHiddenUnion3Type
-}
-
-func CreateCreateIntegrationStoreDirectUIHiddenUnion3Boolean(boolean bool) CreateIntegrationStoreDirectUIHiddenUnion3 {
-	typ := CreateIntegrationStoreDirectUIHiddenUnion3TypeBoolean
-
-	return CreateIntegrationStoreDirectUIHiddenUnion3{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectUIHiddenUnion3CreateIntegrationStoreDirectUIHidden3(createIntegrationStoreDirectUIHidden3 CreateIntegrationStoreDirectUIHidden3) CreateIntegrationStoreDirectUIHiddenUnion3 {
@@ -8759,6 +8844,15 @@ func CreateCreateIntegrationStoreDirectUIHiddenUnion3CreateIntegrationStoreDirec
 	return CreateIntegrationStoreDirectUIHiddenUnion3{
 		CreateIntegrationStoreDirectUIHidden3: &createIntegrationStoreDirectUIHidden3,
 		Type:                                  typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIHiddenUnion3Boolean(boolean bool) CreateIntegrationStoreDirectUIHiddenUnion3 {
+	typ := CreateIntegrationStoreDirectUIHiddenUnion3TypeBoolean
+
+	return CreateIntegrationStoreDirectUIHiddenUnion3{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -8798,12 +8892,12 @@ func (u *CreateIntegrationStoreDirectUIHiddenUnion3) UnmarshalJSON(data []byte) 
 }
 
 func (u CreateIntegrationStoreDirectUIHiddenUnion3) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectUIHidden3 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIHidden3, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectUIHiddenEnum3 != nil {
@@ -8864,26 +8958,17 @@ func (o *CreateIntegrationStoreDirectUIDisabled3) GetExpr() string {
 type CreateIntegrationStoreDirectUIDisabledUnion3Type string
 
 const (
-	CreateIntegrationStoreDirectUIDisabledUnion3TypeBoolean                                     CreateIntegrationStoreDirectUIDisabledUnion3Type = "boolean"
 	CreateIntegrationStoreDirectUIDisabledUnion3TypeCreateIntegrationStoreDirectUIDisabled3     CreateIntegrationStoreDirectUIDisabledUnion3Type = "createIntegrationStoreDirect_ui:disabled_3"
+	CreateIntegrationStoreDirectUIDisabledUnion3TypeBoolean                                     CreateIntegrationStoreDirectUIDisabledUnion3Type = "boolean"
 	CreateIntegrationStoreDirectUIDisabledUnion3TypeCreateIntegrationStoreDirectUIDisabledEnum3 CreateIntegrationStoreDirectUIDisabledUnion3Type = "createIntegrationStoreDirect_ui:disabled_enum_3"
 )
 
 type CreateIntegrationStoreDirectUIDisabledUnion3 struct {
-	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIDisabled3     *CreateIntegrationStoreDirectUIDisabled3     `queryParam:"inline"`
+	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIDisabledEnum3 *CreateIntegrationStoreDirectUIDisabledEnum3 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectUIDisabledUnion3Type
-}
-
-func CreateCreateIntegrationStoreDirectUIDisabledUnion3Boolean(boolean bool) CreateIntegrationStoreDirectUIDisabledUnion3 {
-	typ := CreateIntegrationStoreDirectUIDisabledUnion3TypeBoolean
-
-	return CreateIntegrationStoreDirectUIDisabledUnion3{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectUIDisabledUnion3CreateIntegrationStoreDirectUIDisabled3(createIntegrationStoreDirectUIDisabled3 CreateIntegrationStoreDirectUIDisabled3) CreateIntegrationStoreDirectUIDisabledUnion3 {
@@ -8892,6 +8977,15 @@ func CreateCreateIntegrationStoreDirectUIDisabledUnion3CreateIntegrationStoreDir
 	return CreateIntegrationStoreDirectUIDisabledUnion3{
 		CreateIntegrationStoreDirectUIDisabled3: &createIntegrationStoreDirectUIDisabled3,
 		Type:                                    typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIDisabledUnion3Boolean(boolean bool) CreateIntegrationStoreDirectUIDisabledUnion3 {
+	typ := CreateIntegrationStoreDirectUIDisabledUnion3TypeBoolean
+
+	return CreateIntegrationStoreDirectUIDisabledUnion3{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -8931,12 +9025,12 @@ func (u *CreateIntegrationStoreDirectUIDisabledUnion3) UnmarshalJSON(data []byte
 }
 
 func (u CreateIntegrationStoreDirectUIDisabledUnion3) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectUIDisabled3 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIDisabled3, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectUIDisabledEnum3 != nil {
@@ -9244,26 +9338,17 @@ func (o *CreateIntegrationStoreDirectUIReadOnly2) GetExpr() string {
 type CreateIntegrationStoreDirectUIReadOnlyUnion2Type string
 
 const (
-	CreateIntegrationStoreDirectUIReadOnlyUnion2TypeBoolean                                     CreateIntegrationStoreDirectUIReadOnlyUnion2Type = "boolean"
 	CreateIntegrationStoreDirectUIReadOnlyUnion2TypeCreateIntegrationStoreDirectUIReadOnly2     CreateIntegrationStoreDirectUIReadOnlyUnion2Type = "createIntegrationStoreDirect_ui:read-only_2"
+	CreateIntegrationStoreDirectUIReadOnlyUnion2TypeBoolean                                     CreateIntegrationStoreDirectUIReadOnlyUnion2Type = "boolean"
 	CreateIntegrationStoreDirectUIReadOnlyUnion2TypeCreateIntegrationStoreDirectUIReadOnlyEnum2 CreateIntegrationStoreDirectUIReadOnlyUnion2Type = "createIntegrationStoreDirect_ui:read-only_enum_2"
 )
 
 type CreateIntegrationStoreDirectUIReadOnlyUnion2 struct {
-	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIReadOnly2     *CreateIntegrationStoreDirectUIReadOnly2     `queryParam:"inline"`
+	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIReadOnlyEnum2 *CreateIntegrationStoreDirectUIReadOnlyEnum2 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectUIReadOnlyUnion2Type
-}
-
-func CreateCreateIntegrationStoreDirectUIReadOnlyUnion2Boolean(boolean bool) CreateIntegrationStoreDirectUIReadOnlyUnion2 {
-	typ := CreateIntegrationStoreDirectUIReadOnlyUnion2TypeBoolean
-
-	return CreateIntegrationStoreDirectUIReadOnlyUnion2{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectUIReadOnlyUnion2CreateIntegrationStoreDirectUIReadOnly2(createIntegrationStoreDirectUIReadOnly2 CreateIntegrationStoreDirectUIReadOnly2) CreateIntegrationStoreDirectUIReadOnlyUnion2 {
@@ -9272,6 +9357,15 @@ func CreateCreateIntegrationStoreDirectUIReadOnlyUnion2CreateIntegrationStoreDir
 	return CreateIntegrationStoreDirectUIReadOnlyUnion2{
 		CreateIntegrationStoreDirectUIReadOnly2: &createIntegrationStoreDirectUIReadOnly2,
 		Type:                                    typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIReadOnlyUnion2Boolean(boolean bool) CreateIntegrationStoreDirectUIReadOnlyUnion2 {
+	typ := CreateIntegrationStoreDirectUIReadOnlyUnion2TypeBoolean
+
+	return CreateIntegrationStoreDirectUIReadOnlyUnion2{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -9311,12 +9405,12 @@ func (u *CreateIntegrationStoreDirectUIReadOnlyUnion2) UnmarshalJSON(data []byte
 }
 
 func (u CreateIntegrationStoreDirectUIReadOnlyUnion2) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectUIReadOnly2 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIReadOnly2, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectUIReadOnlyEnum2 != nil {
@@ -9377,26 +9471,17 @@ func (o *CreateIntegrationStoreDirectUIHidden2) GetExpr() string {
 type CreateIntegrationStoreDirectUIHiddenUnion2Type string
 
 const (
-	CreateIntegrationStoreDirectUIHiddenUnion2TypeBoolean                                   CreateIntegrationStoreDirectUIHiddenUnion2Type = "boolean"
 	CreateIntegrationStoreDirectUIHiddenUnion2TypeCreateIntegrationStoreDirectUIHidden2     CreateIntegrationStoreDirectUIHiddenUnion2Type = "createIntegrationStoreDirect_ui:hidden_2"
+	CreateIntegrationStoreDirectUIHiddenUnion2TypeBoolean                                   CreateIntegrationStoreDirectUIHiddenUnion2Type = "boolean"
 	CreateIntegrationStoreDirectUIHiddenUnion2TypeCreateIntegrationStoreDirectUIHiddenEnum2 CreateIntegrationStoreDirectUIHiddenUnion2Type = "createIntegrationStoreDirect_ui:hidden_enum_2"
 )
 
 type CreateIntegrationStoreDirectUIHiddenUnion2 struct {
-	Boolean                                   *bool                                      `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIHidden2     *CreateIntegrationStoreDirectUIHidden2     `queryParam:"inline"`
+	Boolean                                   *bool                                      `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIHiddenEnum2 *CreateIntegrationStoreDirectUIHiddenEnum2 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectUIHiddenUnion2Type
-}
-
-func CreateCreateIntegrationStoreDirectUIHiddenUnion2Boolean(boolean bool) CreateIntegrationStoreDirectUIHiddenUnion2 {
-	typ := CreateIntegrationStoreDirectUIHiddenUnion2TypeBoolean
-
-	return CreateIntegrationStoreDirectUIHiddenUnion2{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectUIHiddenUnion2CreateIntegrationStoreDirectUIHidden2(createIntegrationStoreDirectUIHidden2 CreateIntegrationStoreDirectUIHidden2) CreateIntegrationStoreDirectUIHiddenUnion2 {
@@ -9405,6 +9490,15 @@ func CreateCreateIntegrationStoreDirectUIHiddenUnion2CreateIntegrationStoreDirec
 	return CreateIntegrationStoreDirectUIHiddenUnion2{
 		CreateIntegrationStoreDirectUIHidden2: &createIntegrationStoreDirectUIHidden2,
 		Type:                                  typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIHiddenUnion2Boolean(boolean bool) CreateIntegrationStoreDirectUIHiddenUnion2 {
+	typ := CreateIntegrationStoreDirectUIHiddenUnion2TypeBoolean
+
+	return CreateIntegrationStoreDirectUIHiddenUnion2{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -9444,12 +9538,12 @@ func (u *CreateIntegrationStoreDirectUIHiddenUnion2) UnmarshalJSON(data []byte) 
 }
 
 func (u CreateIntegrationStoreDirectUIHiddenUnion2) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectUIHidden2 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIHidden2, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectUIHiddenEnum2 != nil {
@@ -9510,26 +9604,17 @@ func (o *CreateIntegrationStoreDirectUIDisabled2) GetExpr() string {
 type CreateIntegrationStoreDirectUIDisabledUnion2Type string
 
 const (
-	CreateIntegrationStoreDirectUIDisabledUnion2TypeBoolean                                     CreateIntegrationStoreDirectUIDisabledUnion2Type = "boolean"
 	CreateIntegrationStoreDirectUIDisabledUnion2TypeCreateIntegrationStoreDirectUIDisabled2     CreateIntegrationStoreDirectUIDisabledUnion2Type = "createIntegrationStoreDirect_ui:disabled_2"
+	CreateIntegrationStoreDirectUIDisabledUnion2TypeBoolean                                     CreateIntegrationStoreDirectUIDisabledUnion2Type = "boolean"
 	CreateIntegrationStoreDirectUIDisabledUnion2TypeCreateIntegrationStoreDirectUIDisabledEnum2 CreateIntegrationStoreDirectUIDisabledUnion2Type = "createIntegrationStoreDirect_ui:disabled_enum_2"
 )
 
 type CreateIntegrationStoreDirectUIDisabledUnion2 struct {
-	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIDisabled2     *CreateIntegrationStoreDirectUIDisabled2     `queryParam:"inline"`
+	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIDisabledEnum2 *CreateIntegrationStoreDirectUIDisabledEnum2 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectUIDisabledUnion2Type
-}
-
-func CreateCreateIntegrationStoreDirectUIDisabledUnion2Boolean(boolean bool) CreateIntegrationStoreDirectUIDisabledUnion2 {
-	typ := CreateIntegrationStoreDirectUIDisabledUnion2TypeBoolean
-
-	return CreateIntegrationStoreDirectUIDisabledUnion2{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectUIDisabledUnion2CreateIntegrationStoreDirectUIDisabled2(createIntegrationStoreDirectUIDisabled2 CreateIntegrationStoreDirectUIDisabled2) CreateIntegrationStoreDirectUIDisabledUnion2 {
@@ -9538,6 +9623,15 @@ func CreateCreateIntegrationStoreDirectUIDisabledUnion2CreateIntegrationStoreDir
 	return CreateIntegrationStoreDirectUIDisabledUnion2{
 		CreateIntegrationStoreDirectUIDisabled2: &createIntegrationStoreDirectUIDisabled2,
 		Type:                                    typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIDisabledUnion2Boolean(boolean bool) CreateIntegrationStoreDirectUIDisabledUnion2 {
+	typ := CreateIntegrationStoreDirectUIDisabledUnion2TypeBoolean
+
+	return CreateIntegrationStoreDirectUIDisabledUnion2{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -9577,12 +9671,12 @@ func (u *CreateIntegrationStoreDirectUIDisabledUnion2) UnmarshalJSON(data []byte
 }
 
 func (u CreateIntegrationStoreDirectUIDisabledUnion2) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectUIDisabled2 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIDisabled2, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectUIDisabledEnum2 != nil {
@@ -9930,26 +10024,17 @@ func (o *CreateIntegrationStoreDirectUIReadOnly1) GetExpr() string {
 type CreateIntegrationStoreDirectUIReadOnlyUnion1Type string
 
 const (
-	CreateIntegrationStoreDirectUIReadOnlyUnion1TypeBoolean                                     CreateIntegrationStoreDirectUIReadOnlyUnion1Type = "boolean"
 	CreateIntegrationStoreDirectUIReadOnlyUnion1TypeCreateIntegrationStoreDirectUIReadOnly1     CreateIntegrationStoreDirectUIReadOnlyUnion1Type = "createIntegrationStoreDirect_ui:read-only_1"
+	CreateIntegrationStoreDirectUIReadOnlyUnion1TypeBoolean                                     CreateIntegrationStoreDirectUIReadOnlyUnion1Type = "boolean"
 	CreateIntegrationStoreDirectUIReadOnlyUnion1TypeCreateIntegrationStoreDirectUIReadOnlyEnum1 CreateIntegrationStoreDirectUIReadOnlyUnion1Type = "createIntegrationStoreDirect_ui:read-only_enum_1"
 )
 
 type CreateIntegrationStoreDirectUIReadOnlyUnion1 struct {
-	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIReadOnly1     *CreateIntegrationStoreDirectUIReadOnly1     `queryParam:"inline"`
+	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIReadOnlyEnum1 *CreateIntegrationStoreDirectUIReadOnlyEnum1 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectUIReadOnlyUnion1Type
-}
-
-func CreateCreateIntegrationStoreDirectUIReadOnlyUnion1Boolean(boolean bool) CreateIntegrationStoreDirectUIReadOnlyUnion1 {
-	typ := CreateIntegrationStoreDirectUIReadOnlyUnion1TypeBoolean
-
-	return CreateIntegrationStoreDirectUIReadOnlyUnion1{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectUIReadOnlyUnion1CreateIntegrationStoreDirectUIReadOnly1(createIntegrationStoreDirectUIReadOnly1 CreateIntegrationStoreDirectUIReadOnly1) CreateIntegrationStoreDirectUIReadOnlyUnion1 {
@@ -9958,6 +10043,15 @@ func CreateCreateIntegrationStoreDirectUIReadOnlyUnion1CreateIntegrationStoreDir
 	return CreateIntegrationStoreDirectUIReadOnlyUnion1{
 		CreateIntegrationStoreDirectUIReadOnly1: &createIntegrationStoreDirectUIReadOnly1,
 		Type:                                    typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIReadOnlyUnion1Boolean(boolean bool) CreateIntegrationStoreDirectUIReadOnlyUnion1 {
+	typ := CreateIntegrationStoreDirectUIReadOnlyUnion1TypeBoolean
+
+	return CreateIntegrationStoreDirectUIReadOnlyUnion1{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -9997,12 +10091,12 @@ func (u *CreateIntegrationStoreDirectUIReadOnlyUnion1) UnmarshalJSON(data []byte
 }
 
 func (u CreateIntegrationStoreDirectUIReadOnlyUnion1) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectUIReadOnly1 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIReadOnly1, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectUIReadOnlyEnum1 != nil {
@@ -10063,26 +10157,17 @@ func (o *CreateIntegrationStoreDirectUIHidden1) GetExpr() string {
 type CreateIntegrationStoreDirectUIHiddenUnion1Type string
 
 const (
-	CreateIntegrationStoreDirectUIHiddenUnion1TypeBoolean                                   CreateIntegrationStoreDirectUIHiddenUnion1Type = "boolean"
 	CreateIntegrationStoreDirectUIHiddenUnion1TypeCreateIntegrationStoreDirectUIHidden1     CreateIntegrationStoreDirectUIHiddenUnion1Type = "createIntegrationStoreDirect_ui:hidden_1"
+	CreateIntegrationStoreDirectUIHiddenUnion1TypeBoolean                                   CreateIntegrationStoreDirectUIHiddenUnion1Type = "boolean"
 	CreateIntegrationStoreDirectUIHiddenUnion1TypeCreateIntegrationStoreDirectUIHiddenEnum1 CreateIntegrationStoreDirectUIHiddenUnion1Type = "createIntegrationStoreDirect_ui:hidden_enum_1"
 )
 
 type CreateIntegrationStoreDirectUIHiddenUnion1 struct {
-	Boolean                                   *bool                                      `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIHidden1     *CreateIntegrationStoreDirectUIHidden1     `queryParam:"inline"`
+	Boolean                                   *bool                                      `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIHiddenEnum1 *CreateIntegrationStoreDirectUIHiddenEnum1 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectUIHiddenUnion1Type
-}
-
-func CreateCreateIntegrationStoreDirectUIHiddenUnion1Boolean(boolean bool) CreateIntegrationStoreDirectUIHiddenUnion1 {
-	typ := CreateIntegrationStoreDirectUIHiddenUnion1TypeBoolean
-
-	return CreateIntegrationStoreDirectUIHiddenUnion1{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectUIHiddenUnion1CreateIntegrationStoreDirectUIHidden1(createIntegrationStoreDirectUIHidden1 CreateIntegrationStoreDirectUIHidden1) CreateIntegrationStoreDirectUIHiddenUnion1 {
@@ -10091,6 +10176,15 @@ func CreateCreateIntegrationStoreDirectUIHiddenUnion1CreateIntegrationStoreDirec
 	return CreateIntegrationStoreDirectUIHiddenUnion1{
 		CreateIntegrationStoreDirectUIHidden1: &createIntegrationStoreDirectUIHidden1,
 		Type:                                  typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIHiddenUnion1Boolean(boolean bool) CreateIntegrationStoreDirectUIHiddenUnion1 {
+	typ := CreateIntegrationStoreDirectUIHiddenUnion1TypeBoolean
+
+	return CreateIntegrationStoreDirectUIHiddenUnion1{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -10130,12 +10224,12 @@ func (u *CreateIntegrationStoreDirectUIHiddenUnion1) UnmarshalJSON(data []byte) 
 }
 
 func (u CreateIntegrationStoreDirectUIHiddenUnion1) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectUIHidden1 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIHidden1, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectUIHiddenEnum1 != nil {
@@ -10196,26 +10290,17 @@ func (o *CreateIntegrationStoreDirectUIDisabled1) GetExpr() string {
 type CreateIntegrationStoreDirectUIDisabledUnion1Type string
 
 const (
-	CreateIntegrationStoreDirectUIDisabledUnion1TypeBoolean                                     CreateIntegrationStoreDirectUIDisabledUnion1Type = "boolean"
 	CreateIntegrationStoreDirectUIDisabledUnion1TypeCreateIntegrationStoreDirectUIDisabled1     CreateIntegrationStoreDirectUIDisabledUnion1Type = "createIntegrationStoreDirect_ui:disabled_1"
+	CreateIntegrationStoreDirectUIDisabledUnion1TypeBoolean                                     CreateIntegrationStoreDirectUIDisabledUnion1Type = "boolean"
 	CreateIntegrationStoreDirectUIDisabledUnion1TypeCreateIntegrationStoreDirectUIDisabledEnum1 CreateIntegrationStoreDirectUIDisabledUnion1Type = "createIntegrationStoreDirect_ui:disabled_enum_1"
 )
 
 type CreateIntegrationStoreDirectUIDisabledUnion1 struct {
-	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIDisabled1     *CreateIntegrationStoreDirectUIDisabled1     `queryParam:"inline"`
+	Boolean                                     *bool                                        `queryParam:"inline"`
 	CreateIntegrationStoreDirectUIDisabledEnum1 *CreateIntegrationStoreDirectUIDisabledEnum1 `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectUIDisabledUnion1Type
-}
-
-func CreateCreateIntegrationStoreDirectUIDisabledUnion1Boolean(boolean bool) CreateIntegrationStoreDirectUIDisabledUnion1 {
-	typ := CreateIntegrationStoreDirectUIDisabledUnion1TypeBoolean
-
-	return CreateIntegrationStoreDirectUIDisabledUnion1{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateCreateIntegrationStoreDirectUIDisabledUnion1CreateIntegrationStoreDirectUIDisabled1(createIntegrationStoreDirectUIDisabled1 CreateIntegrationStoreDirectUIDisabled1) CreateIntegrationStoreDirectUIDisabledUnion1 {
@@ -10224,6 +10309,15 @@ func CreateCreateIntegrationStoreDirectUIDisabledUnion1CreateIntegrationStoreDir
 	return CreateIntegrationStoreDirectUIDisabledUnion1{
 		CreateIntegrationStoreDirectUIDisabled1: &createIntegrationStoreDirectUIDisabled1,
 		Type:                                    typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIDisabledUnion1Boolean(boolean bool) CreateIntegrationStoreDirectUIDisabledUnion1 {
+	typ := CreateIntegrationStoreDirectUIDisabledUnion1TypeBoolean
+
+	return CreateIntegrationStoreDirectUIDisabledUnion1{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -10263,12 +10357,12 @@ func (u *CreateIntegrationStoreDirectUIDisabledUnion1) UnmarshalJSON(data []byte
 }
 
 func (u CreateIntegrationStoreDirectUIDisabledUnion1) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.CreateIntegrationStoreDirectUIDisabled1 != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIDisabled1, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectUIDisabledEnum1 != nil {
@@ -10828,6 +10922,7 @@ const (
 	TagVector             Tag = "vector"
 	TagLibsql             Tag = "libsql"
 	TagSqlite             Tag = "sqlite"
+	TagRds                Tag = "rds"
 	TagTagAgents          Tag = "tag_agents"
 	TagTagAi              Tag = "tag_ai"
 	TagTagAnalytics       Tag = "tag_analytics"
@@ -10913,6 +11008,8 @@ func (e *Tag) UnmarshalJSON(data []byte) error {
 	case "libsql":
 		fallthrough
 	case "sqlite":
+		fallthrough
+	case "rds":
 		fallthrough
 	case "tag_agents":
 		fallthrough

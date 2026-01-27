@@ -16,6 +16,11 @@ import {
   BadRequest$outboundSchema,
 } from "./badrequest.js";
 import {
+  CountryCode,
+  CountryCode$inboundSchema,
+  CountryCode$outboundSchema,
+} from "./countrycode.js";
+import {
   DNSSECEnabled,
   DNSSECEnabled$inboundSchema,
   DNSSECEnabled$Outbound,
@@ -111,7 +116,7 @@ export type TransferInDomainContactInformation = {
   /**
    * A valid ISO 3166-1 alpha-2 country code
    */
-  country: string;
+  country: CountryCode;
   /**
    * a non empty string
    */
@@ -205,7 +210,7 @@ export const TransferInDomainContactInformation$inboundSchema: z.ZodType<
   city: types.string(),
   state: types.string(),
   zip: types.string(),
-  country: types.string(),
+  country: CountryCode$inboundSchema,
   companyName: types.optional(types.string()),
   fax: types.optional(types.string()),
 });
@@ -240,7 +245,7 @@ export const TransferInDomainContactInformation$outboundSchema: z.ZodType<
   city: z.string(),
   state: z.string(),
   zip: z.string(),
-  country: z.string(),
+  country: CountryCode$outboundSchema,
   companyName: z.string().optional(),
   fax: z.string().optional(),
 });

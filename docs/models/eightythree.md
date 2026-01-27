@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { EightyThree } from "@vercel/sdk/models/userevent.js";
 
 let value: EightyThree = {
-  projectName: "<value>",
+  drainUrl: "https://focused-rawhide.biz/",
 };
 ```
 
@@ -16,4 +16,5 @@ let value: EightyThree = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `drainUrl`         | *string*           | :heavy_check_mark: | N/A                |
+| `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |

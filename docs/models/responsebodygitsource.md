@@ -22,134 +22,134 @@ const value: models.GetDeploymentGitSource2 = {
 };
 ```
 
-### `models.GetDeploymentGitSource3`
+### `models.GetDeploymentGitSourceDeployments3`
 
 ```typescript
-const value: models.GetDeploymentGitSource3 = {
+const value: models.GetDeploymentGitSourceDeployments3 = {
   type: "github-custom-host",
-  host: "querulous-papa.name",
+  host: "round-cop-out.net",
   repoId: "<id>",
 };
 ```
 
-### `models.GetDeploymentGitSource4`
+### `models.GetDeploymentGitSourceDeployments4`
 
 ```typescript
-const value: models.GetDeploymentGitSource4 = {
+const value: models.GetDeploymentGitSourceDeployments4 = {
   type: "github-custom-host",
-  host: "outstanding-shoulder.org",
+  host: "short-bid.net",
   org: "<value>",
   repo: "<value>",
 };
 ```
 
-### `models.GetDeploymentGitSource5`
+### `models.GetDeploymentGitSourceDeployments5`
 
 ```typescript
-const value: models.GetDeploymentGitSource5 = {
+const value: models.GetDeploymentGitSourceDeployments5 = {
   type: "github-limited",
-  repoId: "<id>",
+  repoId: 8837.73,
 };
 ```
 
-### `models.GetDeploymentGitSource6`
+### `models.GetDeploymentGitSourceDeployments6`
 
 ```typescript
-const value: models.GetDeploymentGitSource6 = {
+const value: models.GetDeploymentGitSourceDeployments6 = {
   type: "github-limited",
   org: "<value>",
   repo: "<value>",
 };
 ```
 
-### `models.GetDeploymentGitSource7`
+### `models.GetDeploymentGitSourceDeployments7`
 
 ```typescript
-const value: models.GetDeploymentGitSource7 = {
+const value: models.GetDeploymentGitSourceDeployments7 = {
   type: "gitlab",
-  projectId: 1918.51,
+  projectId: "<id>",
 };
 ```
 
-### `models.GetDeploymentGitSource8`
+### `models.GetDeploymentGitSourceDeployments8`
 
 ```typescript
-const value: models.GetDeploymentGitSource8 = {
+const value: models.GetDeploymentGitSourceDeployments8 = {
   type: "bitbucket",
   repoUuid: "<id>",
 };
 ```
 
-### `models.GetDeploymentGitSource9`
+### `models.GetDeploymentGitSourceDeployments9`
 
 ```typescript
-const value: models.GetDeploymentGitSource9 = {
+const value: models.GetDeploymentGitSourceDeployments9 = {
   type: "bitbucket",
   owner: "<value>",
   slug: "<value>",
 };
 ```
 
-### `models.GetDeploymentGitSource10`
+### `models.GetDeploymentGitSourceDeployments10`
 
 ```typescript
-const value: models.GetDeploymentGitSource10 = {
+const value: models.GetDeploymentGitSourceDeployments10 = {
   type: "custom",
   ref: "<value>",
   sha: "<value>",
-  gitUrl: "https://which-barracks.name",
+  gitUrl: "https://palatable-cod.biz",
 };
 ```
 
-### `models.GetDeploymentGitSource11`
+### `models.GetDeploymentGitSourceDeployments11`
 
 ```typescript
-const value: models.GetDeploymentGitSource11 = {
+const value: models.GetDeploymentGitSourceDeployments11 = {
   type: "github",
   ref: "<value>",
   sha: "<value>",
-  repoId: 5631.38,
+  repoId: 3996.33,
 };
 ```
 
-### `models.GetDeploymentGitSource12`
+### `models.GetDeploymentGitSourceDeployments12`
 
 ```typescript
-const value: models.GetDeploymentGitSource12 = {
+const value: models.GetDeploymentGitSourceDeployments12 = {
   type: "github-custom-host",
-  host: "precious-sediment.net",
+  host: "peaceful-bog.info",
   ref: "<value>",
   sha: "<value>",
-  repoId: 1532,
+  repoId: 2785.32,
 };
 ```
 
-### `models.GetDeploymentGitSource13`
+### `models.GetDeploymentGitSourceDeployments13`
 
 ```typescript
-const value: models.GetDeploymentGitSource13 = {
+const value: models.GetDeploymentGitSourceDeployments13 = {
   type: "github-limited",
   ref: "<value>",
   sha: "<value>",
-  repoId: 5526.81,
+  repoId: 4465.75,
 };
 ```
 
-### `models.GetDeploymentGitSource14`
+### `models.GetDeploymentGitSourceDeployments14`
 
 ```typescript
-const value: models.GetDeploymentGitSource14 = {
+const value: models.GetDeploymentGitSourceDeployments14 = {
   type: "gitlab",
   ref: "<value>",
   sha: "<value>",
-  projectId: 1800.62,
+  projectId: 1976.41,
 };
 ```
 
-### `models.GetDeploymentGitSource15`
+### `models.GetDeploymentGitSourceDeployments15`
 
 ```typescript
-const value: models.GetDeploymentGitSource15 = {
+const value: models.GetDeploymentGitSourceDeployments15 = {
   type: "bitbucket",
   ref: "<value>",
   sha: "<value>",

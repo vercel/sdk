@@ -5,11 +5,11 @@
 ```typescript
 import { ResponseBodyJobStatus } from "@vercel/sdk/models/getprojectsop.js";
 
-let value: ResponseBodyJobStatus = "succeeded";
+let value: ResponseBodyJobStatus = "skipped";
 ```
 
 ## Values
 
 ```typescript
-"pending" | "in-progress" | "succeeded" | "failed" | "skipped"
+"succeeded" | "failed" | "skipped" | "pending" | "in-progress"
 ```

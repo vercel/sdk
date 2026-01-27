@@ -8,8 +8,11 @@ import { ResponseBodyDismissedToasts } from "@vercel/sdk/models/getprojectsop.js
 let value: ResponseBodyDismissedToasts = {
   key: "<key>",
   dismissedAt: 9794.9,
-  action: "delete",
-  value: false,
+  action: "accept",
+  value: {
+    previousValue: false,
+    currentValue: 9956.01,
+  },
 };
 ```
 

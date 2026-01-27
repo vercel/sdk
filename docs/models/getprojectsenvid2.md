@@ -5,11 +5,11 @@
 ```typescript
 import { GetProjectsEnvId2 } from "@vercel/sdk/models/getprojectsop.js";
 
-let value: GetProjectsEnvId2 = "production";
+let value: GetProjectsEnvId2 = "preview";
 ```
 
 ## Values
 
 ```typescript
-"preview" | "production"
+"production" | "preview"
 ```

@@ -3,7 +3,10 @@
 package operations
 
 import (
+	"errors"
+	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/utils"
 )
 
 type DeleteRedirectsRequestBody struct {
@@ -63,7 +66,7 @@ func (o *DeleteRedirectsRequest) GetBody() *DeleteRedirectsRequestBody {
 	return o.Body
 }
 
-type DeleteRedirectsVersion struct {
+type DeleteRedirectsVersion2 struct {
 	// The unique identifier for the version.
 	ID string `json:"id"`
 	// The key of the version. The key may be duplicated across versions if the contents are the same as a different version.
@@ -82,91 +85,299 @@ type DeleteRedirectsVersion struct {
 	Alias *string `json:"alias,omitempty"`
 }
 
-func (o *DeleteRedirectsVersion) GetID() string {
+func (d DeleteRedirectsVersion2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeleteRedirectsVersion2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"id", "key", "lastModified", "createdBy"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DeleteRedirectsVersion2) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *DeleteRedirectsVersion) GetKey() string {
+func (o *DeleteRedirectsVersion2) GetKey() string {
 	if o == nil {
 		return ""
 	}
 	return o.Key
 }
 
-func (o *DeleteRedirectsVersion) GetLastModified() float64 {
+func (o *DeleteRedirectsVersion2) GetLastModified() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.LastModified
 }
 
-func (o *DeleteRedirectsVersion) GetCreatedBy() string {
+func (o *DeleteRedirectsVersion2) GetCreatedBy() string {
 	if o == nil {
 		return ""
 	}
 	return o.CreatedBy
 }
 
-func (o *DeleteRedirectsVersion) GetName() *string {
+func (o *DeleteRedirectsVersion2) GetName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Name
 }
 
-func (o *DeleteRedirectsVersion) GetIsStaging() *bool {
+func (o *DeleteRedirectsVersion2) GetIsStaging() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.IsStaging
 }
 
-func (o *DeleteRedirectsVersion) GetIsLive() *bool {
+func (o *DeleteRedirectsVersion2) GetIsLive() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.IsLive
 }
 
-func (o *DeleteRedirectsVersion) GetRedirectCount() *float64 {
+func (o *DeleteRedirectsVersion2) GetRedirectCount() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.RedirectCount
 }
 
-func (o *DeleteRedirectsVersion) GetAlias() *string {
+func (o *DeleteRedirectsVersion2) GetAlias() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Alias
 }
 
-type DeleteRedirectsResponseBody struct {
-	Alias   *string                `json:"alias"`
-	Version DeleteRedirectsVersion `json:"version"`
+type DeleteRedirectsResponseBody2 struct {
+	Alias   *string                 `json:"alias"`
+	Version DeleteRedirectsVersion2 `json:"version"`
 }
 
-func (o *DeleteRedirectsResponseBody) GetAlias() *string {
+func (d DeleteRedirectsResponseBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeleteRedirectsResponseBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"alias", "version"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DeleteRedirectsResponseBody2) GetAlias() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Alias
 }
 
-func (o *DeleteRedirectsResponseBody) GetVersion() DeleteRedirectsVersion {
+func (o *DeleteRedirectsResponseBody2) GetVersion() DeleteRedirectsVersion2 {
 	if o == nil {
-		return DeleteRedirectsVersion{}
+		return DeleteRedirectsVersion2{}
 	}
 	return o.Version
 }
 
+type DeleteRedirectsVersion1 struct {
+	// The unique identifier for the version.
+	ID string `json:"id"`
+	// The key of the version. The key may be duplicated across versions if the contents are the same as a different version.
+	Key          string  `json:"key"`
+	LastModified float64 `json:"lastModified"`
+	CreatedBy    string  `json:"createdBy"`
+	// Optional name for the version. If not provided, defaults to an ISO timestamp string.
+	Name *string `json:"name,omitempty"`
+	// Whether this version has not been promoted to production yet and is not serving end users.
+	IsStaging *bool `json:"isStaging,omitempty"`
+	// Whether this version is currently live in production.
+	IsLive *bool `json:"isLive,omitempty"`
+	// The number of redirects in this version.
+	RedirectCount *float64 `json:"redirectCount,omitempty"`
+	// The staging link for previewing redirects in this version.
+	Alias *string `json:"alias,omitempty"`
+}
+
+func (d DeleteRedirectsVersion1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeleteRedirectsVersion1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"id", "key", "lastModified", "createdBy"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DeleteRedirectsVersion1) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *DeleteRedirectsVersion1) GetKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.Key
+}
+
+func (o *DeleteRedirectsVersion1) GetLastModified() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.LastModified
+}
+
+func (o *DeleteRedirectsVersion1) GetCreatedBy() string {
+	if o == nil {
+		return ""
+	}
+	return o.CreatedBy
+}
+
+func (o *DeleteRedirectsVersion1) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *DeleteRedirectsVersion1) GetIsStaging() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsStaging
+}
+
+func (o *DeleteRedirectsVersion1) GetIsLive() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsLive
+}
+
+func (o *DeleteRedirectsVersion1) GetRedirectCount() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RedirectCount
+}
+
+func (o *DeleteRedirectsVersion1) GetAlias() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Alias
+}
+
+type DeleteRedirectsResponseBody1 struct {
+	Alias   *string                 `json:"alias,omitempty"`
+	Version DeleteRedirectsVersion1 `json:"version"`
+}
+
+func (d DeleteRedirectsResponseBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeleteRedirectsResponseBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"version"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DeleteRedirectsResponseBody1) GetAlias() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Alias
+}
+
+func (o *DeleteRedirectsResponseBody1) GetVersion() DeleteRedirectsVersion1 {
+	if o == nil {
+		return DeleteRedirectsVersion1{}
+	}
+	return o.Version
+}
+
+type DeleteRedirectsResponseBodyType string
+
+const (
+	DeleteRedirectsResponseBodyTypeDeleteRedirectsResponseBody1 DeleteRedirectsResponseBodyType = "deleteRedirects_ResponseBody_1"
+	DeleteRedirectsResponseBodyTypeDeleteRedirectsResponseBody2 DeleteRedirectsResponseBodyType = "deleteRedirects_ResponseBody_2"
+)
+
+type DeleteRedirectsResponseBody struct {
+	DeleteRedirectsResponseBody1 *DeleteRedirectsResponseBody1 `queryParam:"inline"`
+	DeleteRedirectsResponseBody2 *DeleteRedirectsResponseBody2 `queryParam:"inline"`
+
+	Type DeleteRedirectsResponseBodyType
+}
+
+func CreateDeleteRedirectsResponseBodyDeleteRedirectsResponseBody1(deleteRedirectsResponseBody1 DeleteRedirectsResponseBody1) DeleteRedirectsResponseBody {
+	typ := DeleteRedirectsResponseBodyTypeDeleteRedirectsResponseBody1
+
+	return DeleteRedirectsResponseBody{
+		DeleteRedirectsResponseBody1: &deleteRedirectsResponseBody1,
+		Type:                         typ,
+	}
+}
+
+func CreateDeleteRedirectsResponseBodyDeleteRedirectsResponseBody2(deleteRedirectsResponseBody2 DeleteRedirectsResponseBody2) DeleteRedirectsResponseBody {
+	typ := DeleteRedirectsResponseBodyTypeDeleteRedirectsResponseBody2
+
+	return DeleteRedirectsResponseBody{
+		DeleteRedirectsResponseBody2: &deleteRedirectsResponseBody2,
+		Type:                         typ,
+	}
+}
+
+func (u *DeleteRedirectsResponseBody) UnmarshalJSON(data []byte) error {
+
+	var deleteRedirectsResponseBody2 DeleteRedirectsResponseBody2 = DeleteRedirectsResponseBody2{}
+	if err := utils.UnmarshalJSON(data, &deleteRedirectsResponseBody2, "", true, nil); err == nil {
+		u.DeleteRedirectsResponseBody2 = &deleteRedirectsResponseBody2
+		u.Type = DeleteRedirectsResponseBodyTypeDeleteRedirectsResponseBody2
+		return nil
+	}
+
+	var deleteRedirectsResponseBody1 DeleteRedirectsResponseBody1 = DeleteRedirectsResponseBody1{}
+	if err := utils.UnmarshalJSON(data, &deleteRedirectsResponseBody1, "", true, nil); err == nil {
+		u.DeleteRedirectsResponseBody1 = &deleteRedirectsResponseBody1
+		u.Type = DeleteRedirectsResponseBodyTypeDeleteRedirectsResponseBody1
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for DeleteRedirectsResponseBody", string(data))
+}
+
+func (u DeleteRedirectsResponseBody) MarshalJSON() ([]byte, error) {
+	if u.DeleteRedirectsResponseBody1 != nil {
+		return utils.MarshalJSON(u.DeleteRedirectsResponseBody1, "", true)
+	}
+
+	if u.DeleteRedirectsResponseBody2 != nil {
+		return utils.MarshalJSON(u.DeleteRedirectsResponseBody2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type DeleteRedirectsResponseBody: all fields are null")
+}
+
 type DeleteRedirectsResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
-	Object   *DeleteRedirectsResponseBody
+	OneOf    *DeleteRedirectsResponseBody
 }
 
 func (o *DeleteRedirectsResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -176,9 +387,9 @@ func (o *DeleteRedirectsResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *DeleteRedirectsResponse) GetObject() *DeleteRedirectsResponseBody {
+func (o *DeleteRedirectsResponse) GetOneOf() *DeleteRedirectsResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.Object
+	return o.OneOf
 }

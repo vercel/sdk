@@ -28,7 +28,7 @@ export type CreateCustomEnvironmentType = ClosedEnum<
 /**
  * How we want to determine a matching branch. This is optional.
  */
-export type BranchMatcher = {
+export type CreateCustomEnvironmentBranchMatcher = {
   /**
    * Type of matcher. One of \"equals\", \"startsWith\", or \"endsWith\".
    */
@@ -51,7 +51,7 @@ export type CreateCustomEnvironmentRequestBody = {
   /**
    * How we want to determine a matching branch. This is optional.
    */
-  branchMatcher?: BranchMatcher | undefined;
+  branchMatcher?: CreateCustomEnvironmentBranchMatcher | undefined;
   /**
    * Where to copy environment variables from. This is optional.
    */
@@ -78,8 +78,8 @@ export type CreateCustomEnvironmentRequest = {
  * The type of environment (production, preview, or development)
  */
 export const CreateCustomEnvironmentEnvironmentType = {
-  Preview: "preview",
   Production: "production",
+  Preview: "preview",
   Development: "development",
 } as const;
 /**
@@ -107,7 +107,7 @@ export type CreateCustomEnvironmentEnvironmentResponseType = ClosedEnum<
 /**
  * Configuration for matching git branches to this environment
  */
-export type CreateCustomEnvironmentBranchMatcher = {
+export type CreateCustomEnvironmentEnvironmentBranchMatcher = {
   /**
    * The type of matching to perform
    */
@@ -174,7 +174,7 @@ export type CreateCustomEnvironmentResponseBody = {
   /**
    * Configuration for matching git branches to this environment
    */
-  branchMatcher?: CreateCustomEnvironmentBranchMatcher | undefined;
+  branchMatcher?: CreateCustomEnvironmentEnvironmentBranchMatcher | undefined;
   /**
    * List of domains associated with this environment
    */
@@ -203,8 +203,8 @@ export const CreateCustomEnvironmentType$outboundSchema: z.ZodNativeEnum<
 > = CreateCustomEnvironmentType$inboundSchema;
 
 /** @internal */
-export const BranchMatcher$inboundSchema: z.ZodType<
-  BranchMatcher,
+export const CreateCustomEnvironmentBranchMatcher$inboundSchema: z.ZodType<
+  CreateCustomEnvironmentBranchMatcher,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -212,31 +212,38 @@ export const BranchMatcher$inboundSchema: z.ZodType<
   pattern: types.string(),
 });
 /** @internal */
-export type BranchMatcher$Outbound = {
+export type CreateCustomEnvironmentBranchMatcher$Outbound = {
   type: string;
   pattern: string;
 };
 
 /** @internal */
-export const BranchMatcher$outboundSchema: z.ZodType<
-  BranchMatcher$Outbound,
+export const CreateCustomEnvironmentBranchMatcher$outboundSchema: z.ZodType<
+  CreateCustomEnvironmentBranchMatcher$Outbound,
   z.ZodTypeDef,
-  BranchMatcher
+  CreateCustomEnvironmentBranchMatcher
 > = z.object({
   type: CreateCustomEnvironmentType$outboundSchema,
   pattern: z.string(),
 });
 
-export function branchMatcherToJSON(branchMatcher: BranchMatcher): string {
-  return JSON.stringify(BranchMatcher$outboundSchema.parse(branchMatcher));
+export function createCustomEnvironmentBranchMatcherToJSON(
+  createCustomEnvironmentBranchMatcher: CreateCustomEnvironmentBranchMatcher,
+): string {
+  return JSON.stringify(
+    CreateCustomEnvironmentBranchMatcher$outboundSchema.parse(
+      createCustomEnvironmentBranchMatcher,
+    ),
+  );
 }
-export function branchMatcherFromJSON(
+export function createCustomEnvironmentBranchMatcherFromJSON(
   jsonString: string,
-): SafeParseResult<BranchMatcher, SDKValidationError> {
+): SafeParseResult<CreateCustomEnvironmentBranchMatcher, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => BranchMatcher$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BranchMatcher' from JSON`,
+    (x) =>
+      CreateCustomEnvironmentBranchMatcher$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateCustomEnvironmentBranchMatcher' from JSON`,
   );
 }
 
@@ -248,14 +255,16 @@ export const CreateCustomEnvironmentRequestBody$inboundSchema: z.ZodType<
 > = z.object({
   slug: types.optional(types.string()),
   description: types.optional(types.string()),
-  branchMatcher: types.optional(z.lazy(() => BranchMatcher$inboundSchema)),
+  branchMatcher: types.optional(
+    z.lazy(() => CreateCustomEnvironmentBranchMatcher$inboundSchema),
+  ),
   copyEnvVarsFrom: types.optional(types.string()),
 });
 /** @internal */
 export type CreateCustomEnvironmentRequestBody$Outbound = {
   slug?: string | undefined;
   description?: string | undefined;
-  branchMatcher?: BranchMatcher$Outbound | undefined;
+  branchMatcher?: CreateCustomEnvironmentBranchMatcher$Outbound | undefined;
   copyEnvVarsFrom?: string | undefined;
 };
 
@@ -267,7 +276,9 @@ export const CreateCustomEnvironmentRequestBody$outboundSchema: z.ZodType<
 > = z.object({
   slug: z.string().optional(),
   description: z.string().optional(),
-  branchMatcher: z.lazy(() => BranchMatcher$outboundSchema).optional(),
+  branchMatcher: z.lazy(() =>
+    CreateCustomEnvironmentBranchMatcher$outboundSchema
+  ).optional(),
   copyEnvVarsFrom: z.string().optional(),
 });
 
@@ -372,47 +383,55 @@ export const CreateCustomEnvironmentEnvironmentResponseType$outboundSchema:
     CreateCustomEnvironmentEnvironmentResponseType$inboundSchema;
 
 /** @internal */
-export const CreateCustomEnvironmentBranchMatcher$inboundSchema: z.ZodType<
-  CreateCustomEnvironmentBranchMatcher,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: CreateCustomEnvironmentEnvironmentResponseType$inboundSchema,
-  pattern: types.string(),
-});
+export const CreateCustomEnvironmentEnvironmentBranchMatcher$inboundSchema:
+  z.ZodType<
+    CreateCustomEnvironmentEnvironmentBranchMatcher,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type: CreateCustomEnvironmentEnvironmentResponseType$inboundSchema,
+    pattern: types.string(),
+  });
 /** @internal */
-export type CreateCustomEnvironmentBranchMatcher$Outbound = {
+export type CreateCustomEnvironmentEnvironmentBranchMatcher$Outbound = {
   type: string;
   pattern: string;
 };
 
 /** @internal */
-export const CreateCustomEnvironmentBranchMatcher$outboundSchema: z.ZodType<
-  CreateCustomEnvironmentBranchMatcher$Outbound,
-  z.ZodTypeDef,
-  CreateCustomEnvironmentBranchMatcher
-> = z.object({
-  type: CreateCustomEnvironmentEnvironmentResponseType$outboundSchema,
-  pattern: z.string(),
-});
+export const CreateCustomEnvironmentEnvironmentBranchMatcher$outboundSchema:
+  z.ZodType<
+    CreateCustomEnvironmentEnvironmentBranchMatcher$Outbound,
+    z.ZodTypeDef,
+    CreateCustomEnvironmentEnvironmentBranchMatcher
+  > = z.object({
+    type: CreateCustomEnvironmentEnvironmentResponseType$outboundSchema,
+    pattern: z.string(),
+  });
 
-export function createCustomEnvironmentBranchMatcherToJSON(
-  createCustomEnvironmentBranchMatcher: CreateCustomEnvironmentBranchMatcher,
+export function createCustomEnvironmentEnvironmentBranchMatcherToJSON(
+  createCustomEnvironmentEnvironmentBranchMatcher:
+    CreateCustomEnvironmentEnvironmentBranchMatcher,
 ): string {
   return JSON.stringify(
-    CreateCustomEnvironmentBranchMatcher$outboundSchema.parse(
-      createCustomEnvironmentBranchMatcher,
+    CreateCustomEnvironmentEnvironmentBranchMatcher$outboundSchema.parse(
+      createCustomEnvironmentEnvironmentBranchMatcher,
     ),
   );
 }
-export function createCustomEnvironmentBranchMatcherFromJSON(
+export function createCustomEnvironmentEnvironmentBranchMatcherFromJSON(
   jsonString: string,
-): SafeParseResult<CreateCustomEnvironmentBranchMatcher, SDKValidationError> {
+): SafeParseResult<
+  CreateCustomEnvironmentEnvironmentBranchMatcher,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
     (x) =>
-      CreateCustomEnvironmentBranchMatcher$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateCustomEnvironmentBranchMatcher' from JSON`,
+      CreateCustomEnvironmentEnvironmentBranchMatcher$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateCustomEnvironmentEnvironmentBranchMatcher' from JSON`,
   );
 }
 
@@ -555,7 +574,7 @@ export const CreateCustomEnvironmentResponseBody$inboundSchema: z.ZodType<
   type: CreateCustomEnvironmentEnvironmentType$inboundSchema,
   description: types.optional(types.string()),
   branchMatcher: types.optional(
-    z.lazy(() => CreateCustomEnvironmentBranchMatcher$inboundSchema),
+    z.lazy(() => CreateCustomEnvironmentEnvironmentBranchMatcher$inboundSchema),
   ),
   domains: types.optional(
     z.array(z.lazy(() => CreateCustomEnvironmentDomains$inboundSchema)),
@@ -570,7 +589,9 @@ export type CreateCustomEnvironmentResponseBody$Outbound = {
   slug: string;
   type: string;
   description?: string | undefined;
-  branchMatcher?: CreateCustomEnvironmentBranchMatcher$Outbound | undefined;
+  branchMatcher?:
+    | CreateCustomEnvironmentEnvironmentBranchMatcher$Outbound
+    | undefined;
   domains?: Array<CreateCustomEnvironmentDomains$Outbound> | undefined;
   currentDeploymentAliases?: Array<string> | undefined;
   createdAt: number;
@@ -588,7 +609,7 @@ export const CreateCustomEnvironmentResponseBody$outboundSchema: z.ZodType<
   type: CreateCustomEnvironmentEnvironmentType$outboundSchema,
   description: z.string().optional(),
   branchMatcher: z.lazy(() =>
-    CreateCustomEnvironmentBranchMatcher$outboundSchema
+    CreateCustomEnvironmentEnvironmentBranchMatcher$outboundSchema
   ).optional(),
   domains: z.array(z.lazy(() => CreateCustomEnvironmentDomains$outboundSchema))
     .optional(),

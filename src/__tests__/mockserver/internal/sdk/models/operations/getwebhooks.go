@@ -430,10 +430,13 @@ const (
 	GetWebhooksFrameworkHono           GetWebhooksFramework = "hono"
 	GetWebhooksFrameworkExpress        GetWebhooksFramework = "express"
 	GetWebhooksFrameworkH3             GetWebhooksFramework = "h3"
+	GetWebhooksFrameworkKoa            GetWebhooksFramework = "koa"
 	GetWebhooksFrameworkNestjs         GetWebhooksFramework = "nestjs"
 	GetWebhooksFrameworkElysia         GetWebhooksFramework = "elysia"
 	GetWebhooksFrameworkFastify        GetWebhooksFramework = "fastify"
 	GetWebhooksFrameworkXmcp           GetWebhooksFramework = "xmcp"
+	GetWebhooksFrameworkPython         GetWebhooksFramework = "python"
+	GetWebhooksFrameworkServices       GetWebhooksFramework = "services"
 )
 
 func (e GetWebhooksFramework) ToPointer() *GetWebhooksFramework {
@@ -551,6 +554,8 @@ func (e *GetWebhooksFramework) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "h3":
 		fallthrough
+	case "koa":
+		fallthrough
 	case "nestjs":
 		fallthrough
 	case "elysia":
@@ -558,6 +563,10 @@ func (e *GetWebhooksFramework) UnmarshalJSON(data []byte) error {
 	case "fastify":
 		fallthrough
 	case "xmcp":
+		fallthrough
+	case "python":
+		fallthrough
+	case "services":
 		*e = GetWebhooksFramework(v)
 		return nil
 	default:

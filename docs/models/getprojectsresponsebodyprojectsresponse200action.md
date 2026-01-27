@@ -5,11 +5,11 @@
 ```typescript
 import { GetProjectsResponseBodyProjectsResponse200Action } from "@vercel/sdk/models/getprojectsop.js";
 
-let value: GetProjectsResponseBodyProjectsResponse200Action = "rate_limit";
+let value: GetProjectsResponseBodyProjectsResponse200Action = "challenge";
 ```
 
 ## Values
 
 ```typescript
-"deny" | "challenge" | "log" | "bypass" | "rate_limit" | "redirect"
+"log" | "deny" | "challenge"
 ```

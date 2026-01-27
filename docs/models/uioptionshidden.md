@@ -3,18 +3,18 @@
 
 ## Supported Types
 
+### `models.GetConfigurationProductsHiddenIntegrations1`
+
+```typescript
+const value: models.GetConfigurationProductsHiddenIntegrations1 = {
+  expr: "<value>",
+};
+```
+
 ### `boolean`
 
 ```typescript
 const value: boolean = true;
-```
-
-### `models.GetConfigurationProductsHiddenIntegrations2`
-
-```typescript
-const value: models.GetConfigurationProductsHiddenIntegrations2 = {
-  expr: "<value>",
-};
 ```
 
 ### `models.GetConfigurationProductsHiddenIntegrations3`

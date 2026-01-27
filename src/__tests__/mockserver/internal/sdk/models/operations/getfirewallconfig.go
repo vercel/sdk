@@ -2324,10 +2324,83 @@ func (o *GetFirewallConfigOwasp) GetUsername() *string {
 	return o.Username
 }
 
+type GetFirewallConfigVercelRulesetAction string
+
+const (
+	GetFirewallConfigVercelRulesetActionDeny      GetFirewallConfigVercelRulesetAction = "deny"
+	GetFirewallConfigVercelRulesetActionLog       GetFirewallConfigVercelRulesetAction = "log"
+	GetFirewallConfigVercelRulesetActionChallenge GetFirewallConfigVercelRulesetAction = "challenge"
+)
+
+func (e GetFirewallConfigVercelRulesetAction) ToPointer() *GetFirewallConfigVercelRulesetAction {
+	return &e
+}
+func (e *GetFirewallConfigVercelRulesetAction) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "deny":
+		fallthrough
+	case "log":
+		fallthrough
+	case "challenge":
+		*e = GetFirewallConfigVercelRulesetAction(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetFirewallConfigVercelRulesetAction: %v", v)
+	}
+}
+
+type GetFirewallConfigVercelRuleset struct {
+	Active    bool                                  `json:"active"`
+	Action    *GetFirewallConfigVercelRulesetAction `json:"action,omitempty"`
+	UpdatedAt *string                               `json:"updatedAt,omitempty"`
+	UserID    *string                               `json:"userId,omitempty"`
+	Username  *string                               `json:"username,omitempty"`
+}
+
+func (o *GetFirewallConfigVercelRuleset) GetActive() bool {
+	if o == nil {
+		return false
+	}
+	return o.Active
+}
+
+func (o *GetFirewallConfigVercelRuleset) GetAction() *GetFirewallConfigVercelRulesetAction {
+	if o == nil {
+		return nil
+	}
+	return o.Action
+}
+
+func (o *GetFirewallConfigVercelRuleset) GetUpdatedAt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *GetFirewallConfigVercelRuleset) GetUserID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UserID
+}
+
+func (o *GetFirewallConfigVercelRuleset) GetUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Username
+}
+
 type GetFirewallConfigManagedRules struct {
 	BotProtection *GetFirewallConfigBotProtection `json:"bot_protection,omitempty"`
 	AiBots        *GetFirewallConfigAiBots        `json:"ai_bots,omitempty"`
 	Owasp         *GetFirewallConfigOwasp         `json:"owasp,omitempty"`
+	VercelRuleset *GetFirewallConfigVercelRuleset `json:"vercel_ruleset,omitempty"`
 }
 
 func (o *GetFirewallConfigManagedRules) GetBotProtection() *GetFirewallConfigBotProtection {
@@ -2349,6 +2422,13 @@ func (o *GetFirewallConfigManagedRules) GetOwasp() *GetFirewallConfigOwasp {
 		return nil
 	}
 	return o.Owasp
+}
+
+func (o *GetFirewallConfigManagedRules) GetVercelRuleset() *GetFirewallConfigVercelRuleset {
+	if o == nil {
+		return nil
+	}
+	return o.VercelRuleset
 }
 
 // GetFirewallConfigResponseBody - If the firewall configuration includes a [custom managed ruleset](https://vercel.com/docs/security/vercel-waf/managed-rulesets), it will include a `crs` item that has the following values: sd: Scanner Detection ma: Multipart Attack lfi: Local File Inclusion Attack rfi: Remote File Inclusion Attack rce: Remote Execution Attack php: PHP Attack gen: Generic Attack xss: XSS Attack sqli: SQL Injection Attack sf: Session Fixation Attack java: Java Attack

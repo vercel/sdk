@@ -479,3 +479,29 @@ test("Marketplace Update Resource", async () => {
     name: "<value>",
   });
 });
+
+test("Marketplace Get /V1 /Installations/{integration Configuration Id}/resources/{resource Id}/experimentation/edge Config", async () => {
+  const testHttpClient = createTestHTTPClient(
+    "get_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config",
+  );
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.marketplace
+    .getV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig(
+      {
+        integrationConfigurationId: "<id>",
+        resourceId: "<id>",
+      },
+    );
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    items: {},
+    updatedAt: 3968.81,
+    digest: "<value>",
+  });
+});

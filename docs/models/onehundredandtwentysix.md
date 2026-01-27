@@ -8,16 +8,22 @@ The payload of the event, if requested.
 import { OneHundredAndTwentySix } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndTwentySix = {
-  previousRole: "<value>",
+  projectId: "<id>",
+  projectName: "<value>",
+  previous: {
+    functionDefaultTimeout: 2741.35,
+  },
+  next: {
+    functionDefaultTimeout: 5217.02,
+  },
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `directoryType`                                | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `updatedUser`                                  | [models.UpdatedUser](../models/updateduser.md) | :heavy_minus_sign:                             | N/A                                            |
-| `role`                                         | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `previousRole`                                 | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `updatedUid`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload126Previous](../models/usereventpayload126previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `next`                                                                         | [models.UserEventPayload126Next](../models/usereventpayload126next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |

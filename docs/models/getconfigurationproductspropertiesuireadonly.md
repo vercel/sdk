@@ -3,18 +3,18 @@
 
 ## Supported Types
 
+### `models.GetConfigurationProductsUiReadOnlyIntegrations1`
+
+```typescript
+const value: models.GetConfigurationProductsUiReadOnlyIntegrations1 = {
+  expr: "<value>",
+};
+```
+
 ### `boolean`
 
 ```typescript
 const value: boolean = true;
-```
-
-### `models.GetConfigurationProductsUiReadOnlyIntegrations2`
-
-```typescript
-const value: models.GetConfigurationProductsUiReadOnlyIntegrations2 = {
-  expr: "<value>",
-};
 ```
 
 ### `models.GetConfigurationProductsUiReadOnlyIntegrations3`

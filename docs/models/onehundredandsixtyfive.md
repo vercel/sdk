@@ -8,17 +8,17 @@ The payload of the event, if requested.
 import { OneHundredAndSixtyFive } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndSixtyFive = {
-  appName: "<value>",
-  scopes: [],
+  entitlement: "<value>",
+  user: {
+    id: "<id>",
+    username: "Art.Bins61",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `appName`                                                            | *string*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
-| `appId`                                                              | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
-| `scopes`                                                             | [models.PayloadScopes](../models/payloadscopes.md)[]                 | :heavy_check_mark:                                                   | N/A                                                                  |
-| `permissions`                                                        | [models.Permissions](../models/permissions.md)[]                     | :heavy_minus_sign:                                                   | N/A                                                                  |
-| `acceptedPermissionSets`                                             | [models.AcceptedPermissionSets](../models/acceptedpermissionsets.md) | :heavy_minus_sign:                                                   | N/A                                                                  |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `entitlement`                                                    | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `user`                                                           | [models.UserEventPayloadUser](../models/usereventpayloaduser.md) | :heavy_check_mark:                                               | N/A                                                              |

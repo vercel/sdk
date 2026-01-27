@@ -8,7 +8,7 @@ The ID of the Git account of the user who requests access.
 ### `string`
 
 ```typescript
-const value: string = "103053343";
+const value: string = "<value>";
 ```
 
 ### `number`

@@ -104,7 +104,7 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.aliases.assignAlias({
-    id: "<id>",
+    id: "dpl_FjvFJncQHQcZMznrUm9EoB8sFuPa",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
     requestBody: {
@@ -135,7 +135,7 @@ const vercel = new VercelCore({
 
 async function run() {
   const res = await aliasesAssignAlias(vercel, {
-    id: "<id>",
+    id: "dpl_FjvFJncQHQcZMznrUm9EoB8sFuPa",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
     requestBody: {
@@ -363,7 +363,7 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.aliases.deleteAlias({
-    aliasId: "<id>",
+    aliasId: "2WjyKQmM8ZnGcJsPWMrHRHrE",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
@@ -390,7 +390,7 @@ const vercel = new VercelCore({
 
 async function run() {
   const res = await aliasesDeleteAlias(vercel, {
-    aliasId: "<id>",
+    aliasId: "2WjyKQmM8ZnGcJsPWMrHRHrE",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });

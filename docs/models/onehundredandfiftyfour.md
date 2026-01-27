@@ -7,17 +7,11 @@ The payload of the event, if requested.
 ```typescript
 import { OneHundredAndFiftyFour } from "@vercel/sdk/models/userevent.js";
 
-let value: OneHundredAndFiftyFour = {
-  edgeConfigId: "<id>",
-  edgeConfigSlug: "<value>",
-  edgeConfigDigest: "<value>",
-};
+let value: OneHundredAndFiftyFour = {};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `edgeConfigId`     | *string*           | :heavy_check_mark: | N/A                |
-| `edgeConfigSlug`   | *string*           | :heavy_check_mark: | N/A                |
-| `edgeConfigDigest` | *string*           | :heavy_check_mark: | N/A                |
+| `webhookUrl`       | *string*           | :heavy_minus_sign: | N/A                |

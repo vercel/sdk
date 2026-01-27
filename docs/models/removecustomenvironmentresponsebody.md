@@ -10,7 +10,7 @@ import { RemoveCustomEnvironmentResponseBody } from "@vercel/sdk/models/removecu
 let value: RemoveCustomEnvironmentResponseBody = {
   id: "<id>",
   slug: "<value>",
-  type: "preview",
+  type: "production",
   createdAt: 5340.36,
   updatedAt: 1789.51,
 };

@@ -1584,7 +1584,9 @@ type FilterProjectEnvsEnv2 struct {
 	Target *FilterProjectEnvsEnvTargetUnion2 `json:"target,omitempty"`
 	Type   FilterProjectEnvsEnvType2         `json:"type"`
 	// This is used to identify variables that have been migrated from type secret to sensitive.
-	SunsetSecretID    *string                                `json:"sunsetSecretId,omitempty"`
+	SunsetSecretID *string `json:"sunsetSecretId,omitempty"`
+	// Legacy now-encryption ciphertext, present after migration swaps value/vsmValue
+	LegacyValue       *string                                `json:"legacyValue,omitempty"`
 	Decrypted         *bool                                  `json:"decrypted,omitempty"`
 	Value             string                                 `json:"value"`
 	VsmValue          *string                                `json:"vsmValue,omitempty"`
@@ -1636,6 +1638,13 @@ func (o *FilterProjectEnvsEnv2) GetSunsetSecretID() *string {
 		return nil
 	}
 	return o.SunsetSecretID
+}
+
+func (o *FilterProjectEnvsEnv2) GetLegacyValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LegacyValue
 }
 
 func (o *FilterProjectEnvsEnv2) GetDecrypted() *bool {
@@ -3362,7 +3371,9 @@ type FilterProjectEnvsEnv1 struct {
 	Target *FilterProjectEnvsEnvTargetUnion1 `json:"target,omitempty"`
 	Type   FilterProjectEnvsEnvType1         `json:"type"`
 	// This is used to identify variables that have been migrated from type secret to sensitive.
-	SunsetSecretID    *string                                `json:"sunsetSecretId,omitempty"`
+	SunsetSecretID *string `json:"sunsetSecretId,omitempty"`
+	// Legacy now-encryption ciphertext, present after migration swaps value/vsmValue
+	LegacyValue       *string                                `json:"legacyValue,omitempty"`
 	Decrypted         *bool                                  `json:"decrypted,omitempty"`
 	Value             string                                 `json:"value"`
 	VsmValue          *string                                `json:"vsmValue,omitempty"`
@@ -3414,6 +3425,13 @@ func (o *FilterProjectEnvsEnv1) GetSunsetSecretID() *string {
 		return nil
 	}
 	return o.SunsetSecretID
+}
+
+func (o *FilterProjectEnvsEnv1) GetLegacyValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LegacyValue
 }
 
 func (o *FilterProjectEnvsEnv1) GetDecrypted() *bool {
@@ -5148,7 +5166,9 @@ type FilterProjectEnvsResponseBody1 struct {
 	Target *FilterProjectEnvsTargetUnion `json:"target,omitempty"`
 	Type   FilterProjectEnvsType         `json:"type"`
 	// This is used to identify variables that have been migrated from type secret to sensitive.
-	SunsetSecretID    *string                            `json:"sunsetSecretId,omitempty"`
+	SunsetSecretID *string `json:"sunsetSecretId,omitempty"`
+	// Legacy now-encryption ciphertext, present after migration swaps value/vsmValue
+	LegacyValue       *string                            `json:"legacyValue,omitempty"`
 	Decrypted         *bool                              `json:"decrypted,omitempty"`
 	Value             string                             `json:"value"`
 	VsmValue          *string                            `json:"vsmValue,omitempty"`
@@ -5200,6 +5220,13 @@ func (o *FilterProjectEnvsResponseBody1) GetSunsetSecretID() *string {
 		return nil
 	}
 	return o.SunsetSecretID
+}
+
+func (o *FilterProjectEnvsResponseBody1) GetLegacyValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LegacyValue
 }
 
 func (o *FilterProjectEnvsResponseBody1) GetDecrypted() *bool {

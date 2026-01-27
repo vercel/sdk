@@ -3,61 +3,52 @@
 
 ## Supported Types
 
-### `models.CreateProjectBlockHistory1`
+### `models.BlockHistory1`
 
 ```typescript
-const value: models.CreateProjectBlockHistory1 = {
+const value: models.BlockHistory1 = {
   action: "blocked",
   reason: "<value>",
-  statusCode: 5274.55,
-  createdAt: 3444.61,
+  statusCode: 7635.45,
+  createdAt: 5035.25,
 };
 ```
 
-### `models.CreateProjectBlockHistory2`
+### `models.BlockHistory2`
 
 ```typescript
-const value: models.CreateProjectBlockHistory2 = {
+const value: models.BlockHistory2 = {
   action: "unblocked",
-  createdAt: 3560.16,
+  createdAt: 1206.28,
 };
 ```
 
-### `models.CreateProjectBlockHistory3`
+### `models.BlockHistory3`
 
 ```typescript
-const value: models.CreateProjectBlockHistory3 = {
+const value: models.BlockHistory3 = {
   action: "route-blocked",
+  route: {
+    src: "<value>",
+    status: 8677.85,
+  },
+  reason: "<value>",
+  createdAt: 8082.76,
+};
+```
+
+### `models.BlockHistory4`
+
+```typescript
+const value: models.BlockHistory4 = {
+  action: "route-unblocked",
   route: {
     has: [],
     mitigate: {
       action: "block_legal_cwc",
     },
   },
-  reason: "<value>",
-  createdAt: 8396.94,
-};
-```
-
-### `models.CreateProjectBlockHistory4`
-
-```typescript
-const value: models.CreateProjectBlockHistory4 = {
-  action: "route-unblocked",
-  route: {
-    has: [
-      {
-        type: "host",
-        value: {
-          eq: "<value>",
-        },
-      },
-    ],
-    mitigate: {
-      action: "block_legal_cwc",
-    },
-  },
-  createdAt: 9559.06,
+  createdAt: 1752.63,
 };
 ```
 

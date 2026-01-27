@@ -36,14 +36,16 @@ export type PatchUrlProtectionBypassRequestBody3 = {
 /**
  * Invitation status for the user scoped bypass.
  */
-export const ScopeAccess = {
+export const PatchUrlProtectionBypassScopeAccess = {
   Denied: "denied",
   Granted: "granted",
 } as const;
 /**
  * Invitation status for the user scoped bypass.
  */
-export type ScopeAccess = ClosedEnum<typeof ScopeAccess>;
+export type PatchUrlProtectionBypassScopeAccess = ClosedEnum<
+  typeof PatchUrlProtectionBypassScopeAccess
+>;
 
 export type Scope2 = {
   /**
@@ -57,20 +59,20 @@ export type Scope2 = {
   /**
    * Invitation status for the user scoped bypass.
    */
-  access: ScopeAccess;
+  access: PatchUrlProtectionBypassScopeAccess;
 };
 
 /**
  * Invitation status for the user scoped bypass.
  */
-export const Access = {
+export const ScopeAccess = {
   Denied: "denied",
   Granted: "granted",
 } as const;
 /**
  * Invitation status for the user scoped bypass.
  */
-export type Access = ClosedEnum<typeof Access>;
+export type ScopeAccess = ClosedEnum<typeof ScopeAccess>;
 
 export type Scope1 = {
   /**
@@ -84,7 +86,7 @@ export type Scope1 = {
   /**
    * Invitation status for the user scoped bypass.
    */
-  access: Access;
+  access: ScopeAccess;
 };
 
 /**
@@ -248,18 +250,20 @@ export function patchUrlProtectionBypassRequestBody3FromJSON(
 }
 
 /** @internal */
-export const ScopeAccess$inboundSchema: z.ZodNativeEnum<typeof ScopeAccess> = z
-  .nativeEnum(ScopeAccess);
+export const PatchUrlProtectionBypassScopeAccess$inboundSchema: z.ZodNativeEnum<
+  typeof PatchUrlProtectionBypassScopeAccess
+> = z.nativeEnum(PatchUrlProtectionBypassScopeAccess);
 /** @internal */
-export const ScopeAccess$outboundSchema: z.ZodNativeEnum<typeof ScopeAccess> =
-  ScopeAccess$inboundSchema;
+export const PatchUrlProtectionBypassScopeAccess$outboundSchema:
+  z.ZodNativeEnum<typeof PatchUrlProtectionBypassScopeAccess> =
+    PatchUrlProtectionBypassScopeAccess$inboundSchema;
 
 /** @internal */
 export const Scope2$inboundSchema: z.ZodType<Scope2, z.ZodTypeDef, unknown> = z
   .object({
     userId: types.optional(types.string()),
     email: types.string(),
-    access: ScopeAccess$inboundSchema,
+    access: PatchUrlProtectionBypassScopeAccess$inboundSchema,
   });
 /** @internal */
 export type Scope2$Outbound = {
@@ -276,7 +280,7 @@ export const Scope2$outboundSchema: z.ZodType<
 > = z.object({
   userId: z.string().optional(),
   email: z.string(),
-  access: ScopeAccess$outboundSchema,
+  access: PatchUrlProtectionBypassScopeAccess$outboundSchema,
 });
 
 export function scope2ToJSON(scope2: Scope2): string {
@@ -293,18 +297,18 @@ export function scope2FromJSON(
 }
 
 /** @internal */
-export const Access$inboundSchema: z.ZodNativeEnum<typeof Access> = z
-  .nativeEnum(Access);
+export const ScopeAccess$inboundSchema: z.ZodNativeEnum<typeof ScopeAccess> = z
+  .nativeEnum(ScopeAccess);
 /** @internal */
-export const Access$outboundSchema: z.ZodNativeEnum<typeof Access> =
-  Access$inboundSchema;
+export const ScopeAccess$outboundSchema: z.ZodNativeEnum<typeof ScopeAccess> =
+  ScopeAccess$inboundSchema;
 
 /** @internal */
 export const Scope1$inboundSchema: z.ZodType<Scope1, z.ZodTypeDef, unknown> = z
   .object({
     userId: types.string(),
     email: types.optional(types.string()),
-    access: Access$inboundSchema,
+    access: ScopeAccess$inboundSchema,
   });
 /** @internal */
 export type Scope1$Outbound = {
@@ -321,7 +325,7 @@ export const Scope1$outboundSchema: z.ZodType<
 > = z.object({
   userId: z.string(),
   email: z.string().optional(),
-  access: Access$outboundSchema,
+  access: ScopeAccess$outboundSchema,
 });
 
 export function scope1ToJSON(scope1: Scope1): string {

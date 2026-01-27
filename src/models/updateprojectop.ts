@@ -73,10 +73,13 @@ export const UpdateProjectFramework = {
   Hono: "hono",
   Express: "express",
   H3: "h3",
+  Koa: "koa",
   Nestjs: "nestjs",
   Elysia: "elysia",
   Fastify: "fastify",
   Xmcp: "xmcp",
+  Python: "python",
+  Services: "services",
 } as const;
 /**
  * The framework that is being used for this project. When `null` is used no framework is selected
@@ -548,8 +551,8 @@ export type UpdateProjectSpeedInsights = {
 };
 
 export const UpdateProjectEnvId2 = {
-  Preview: "preview",
   Production: "production",
+  Preview: "preview",
 } as const;
 export type UpdateProjectEnvId2 = ClosedEnum<typeof UpdateProjectEnvId2>;
 
@@ -773,6 +776,10 @@ export type UpdateProjectEnv = {
    * This is used to identify variables that have been migrated from type secret to sensitive.
    */
   sunsetSecretId?: string | undefined;
+  /**
+   * Legacy now-encryption ciphertext, present after migration swaps value/vsmValue
+   */
+  legacyValue?: string | undefined;
   decrypted?: boolean | undefined;
   value: string;
   vsmValue?: string | undefined;
@@ -816,8 +823,8 @@ export type UpdateProjectEnv = {
  * The type of environment (production, preview, or development)
  */
 export const UpdateProjectProjectsType = {
-  Preview: "preview",
   Production: "production",
+  Preview: "preview",
   Development: "development",
 } as const;
 /**
@@ -985,10 +992,13 @@ export const UpdateProjectProjectsFramework = {
   Hono: "hono",
   Express: "express",
   H3: "h3",
+  Koa: "koa",
   Nestjs: "nestjs",
   Elysia: "elysia",
   Fastify: "fastify",
   Xmcp: "xmcp",
+  Python: "python",
+  Services: "services",
 } as const;
 export type UpdateProjectProjectsFramework = ClosedEnum<
   typeof UpdateProjectProjectsFramework
@@ -1678,6 +1688,7 @@ export type UpdateProjectPermissions = {
   projectCheckRun?: Array<ACLAction> | undefined;
   projectDeploymentExpiration?: Array<ACLAction> | undefined;
   projectDeploymentHook?: Array<ACLAction> | undefined;
+  projectDeploymentProtectionStrict?: Array<ACLAction> | undefined;
   projectDomain?: Array<ACLAction> | undefined;
   projectDomainCheckConfig?: Array<ACLAction> | undefined;
   projectDomainMove?: Array<ACLAction> | undefined;
@@ -1715,11 +1726,11 @@ export type UpdateProjectPermissions = {
 export type UpdateProjectLastRollbackTarget = {};
 
 export const UpdateProjectJobStatus = {
-  Pending: "pending",
-  InProgress: "in-progress",
   Succeeded: "succeeded",
   Failed: "failed",
   Skipped: "skipped",
+  Pending: "pending",
+  InProgress: "in-progress",
 } as const;
 export type UpdateProjectJobStatus = ClosedEnum<typeof UpdateProjectJobStatus>;
 
@@ -1770,8 +1781,8 @@ export type UpdateProjectProtectionBypass =
   | UpdateProjectProtectionBypass2;
 
 export const UpdateProjectTrustedIpsProjectsDeploymentType = {
-  Preview: "preview",
   Production: "production",
+  Preview: "preview",
   All: "all",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
   AllExceptCustomDomains: "all_except_custom_domains",
@@ -1785,8 +1796,8 @@ export type UpdateProjectTrustedIps2 = {
 };
 
 export const UpdateProjectTrustedIpsDeploymentType = {
-  Preview: "preview",
   Production: "production",
+  Preview: "preview",
   All: "all",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
   AllExceptCustomDomains: "all_except_custom_domains",
@@ -1866,56 +1877,75 @@ export type UpdateProjectWebAnalytics = {
   hasData?: boolean | undefined;
 };
 
-export const UpdateProjectProjectsResponse200ApplicationJSONAction = {
-  Deny: "deny",
-  Challenge: "challenge",
-  Log: "log",
-} as const;
-export type UpdateProjectProjectsResponse200ApplicationJSONAction = ClosedEnum<
-  typeof UpdateProjectProjectsResponse200ApplicationJSONAction
->;
-
-export type UpdateProjectBotFilter = {
-  active: boolean;
-  action?: UpdateProjectProjectsResponse200ApplicationJSONAction | undefined;
-};
-
 export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction =
   {
+    Log: "log",
     Deny: "deny",
     Challenge: "challenge",
-    Log: "log",
   } as const;
 export type UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction =
   ClosedEnum<
     typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction
   >;
 
-export type UpdateProjectAiBots = {
+export type UpdateProjectVercelRuleset = {
   active: boolean;
   action?:
     | UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction
     | undefined;
 };
 
+export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction =
+  {
+    Log: "log",
+    Deny: "deny",
+    Challenge: "challenge",
+  } as const;
+export type UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction =
+  ClosedEnum<
+    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction
+  >;
+
+export type UpdateProjectBotFilter = {
+  active: boolean;
+  action?:
+    | UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction
+    | undefined;
+};
+
 export const UpdateProjectProjectsResponse200Action = {
+  Log: "log",
   Deny: "deny",
   Challenge: "challenge",
-  Log: "log",
 } as const;
 export type UpdateProjectProjectsResponse200Action = ClosedEnum<
   typeof UpdateProjectProjectsResponse200Action
 >;
 
-export type UpdateProjectOwasp = {
+export type UpdateProjectAiBots = {
   active: boolean;
   action?: UpdateProjectProjectsResponse200Action | undefined;
 };
 
+export const UpdateProjectProjectsResponse200ApplicationJSONAction = {
+  Log: "log",
+  Deny: "deny",
+  Challenge: "challenge",
+} as const;
+export type UpdateProjectProjectsResponse200ApplicationJSONAction = ClosedEnum<
+  typeof UpdateProjectProjectsResponse200ApplicationJSONAction
+>;
+
+export type UpdateProjectOwasp = {
+  active: boolean;
+  action?: UpdateProjectProjectsResponse200ApplicationJSONAction | undefined;
+};
+
 export type UpdateProjectManagedRules = {
-  botFilter?: UpdateProjectBotFilter | undefined;
-  aiBots?: UpdateProjectAiBots | undefined;
-  owasp?: UpdateProjectOwasp | undefined;
+  vercelRuleset: UpdateProjectVercelRuleset;
+  botFilter: UpdateProjectBotFilter;
+  aiBots: UpdateProjectAiBots;
+  owasp: UpdateProjectOwasp;
 };
 
 export type UpdateProjectSecurity = {
@@ -1992,6 +2022,7 @@ export type UpdateProjectBlock = {
   caseId?: string | undefined;
   actor?: string | undefined;
   comment?: string | undefined;
+  ineligibleForAppeal?: boolean | undefined;
   isCascading?: boolean | undefined;
 };
 
@@ -2059,6 +2090,7 @@ export type UpdateProjectBlockHistory4 = {
   caseId?: string | undefined;
   actor?: string | undefined;
   comment?: string | undefined;
+  ineligibleForAppeal?: boolean | undefined;
   isCascading?: boolean | undefined;
 };
 
@@ -2129,6 +2161,7 @@ export type UpdateProjectBlockHistory3 = {
   caseId?: string | undefined;
   actor?: string | undefined;
   comment?: string | undefined;
+  ineligibleForAppeal?: boolean | undefined;
   isCascading?: boolean | undefined;
 };
 
@@ -2138,6 +2171,7 @@ export type UpdateProjectBlockHistory2 = {
   caseId?: string | undefined;
   actor?: string | undefined;
   comment?: string | undefined;
+  ineligibleForAppeal?: boolean | undefined;
   isCascading?: boolean | undefined;
 };
 
@@ -2149,6 +2183,7 @@ export type UpdateProjectBlockHistory1 = {
   caseId?: string | undefined;
   actor?: string | undefined;
   comment?: string | undefined;
+  ineligibleForAppeal?: boolean | undefined;
   isCascading?: boolean | undefined;
 };
 
@@ -2229,9 +2264,9 @@ export type UpdateProjectInternalRoutes =
   | UpdateProjectInternalRoutes2;
 
 export const UpdateProjectProjectsAction = {
+  Delete: "delete",
   Cancel: "cancel",
   Accept: "accept",
-  Delete: "delete",
 } as const;
 export type UpdateProjectProjectsAction = ClosedEnum<
   typeof UpdateProjectProjectsAction
@@ -2241,13 +2276,13 @@ export type UpdateProjectValuePreviousValue = string | number | boolean;
 
 export type UpdateProjectValueCurrentValue = string | number | boolean;
 
-export type UpdateProjectValue4 = {
+export type UpdateProjectValue3 = {
   previousValue: string | number | boolean;
   currentValue: string | number | boolean;
 };
 
 export type UpdateProjectValue =
-  | UpdateProjectValue4
+  | UpdateProjectValue3
   | string
   | number
   | boolean;
@@ -2256,7 +2291,7 @@ export type UpdateProjectProjectsDismissedToasts = {
   key: string;
   dismissedAt: number;
   action: UpdateProjectProjectsAction;
-  value: UpdateProjectValue4 | string | number | boolean | null;
+  value: UpdateProjectValue3 | string | number | boolean | null;
 };
 
 /**
@@ -4677,6 +4712,7 @@ export const UpdateProjectEnv$inboundSchema: z.ZodType<
   ),
   type: UpdateProjectType$inboundSchema,
   sunsetSecretId: types.optional(types.string()),
+  legacyValue: types.optional(types.string()),
   decrypted: types.optional(types.boolean()),
   value: types.string(),
   vsmValue: types.optional(types.string()),
@@ -4720,6 +4756,7 @@ export type UpdateProjectEnv$Outbound = {
   target?: Array<string> | string | undefined;
   type: string;
   sunsetSecretId?: string | undefined;
+  legacyValue?: string | undefined;
   decrypted?: boolean | undefined;
   value: string;
   vsmValue?: string | undefined;
@@ -4769,6 +4806,7 @@ export const UpdateProjectEnv$outboundSchema: z.ZodType<
     .optional(),
   type: UpdateProjectType$outboundSchema,
   sunsetSecretId: z.string().optional(),
+  legacyValue: z.string().optional(),
   decrypted: z.boolean().optional(),
   value: z.string(),
   vsmValue: z.string().optional(),
@@ -7473,6 +7511,9 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   projectCheckRun: types.optional(z.array(ACLAction$inboundSchema)),
   projectDeploymentExpiration: types.optional(z.array(ACLAction$inboundSchema)),
   projectDeploymentHook: types.optional(z.array(ACLAction$inboundSchema)),
+  projectDeploymentProtectionStrict: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
   projectDomain: types.optional(z.array(ACLAction$inboundSchema)),
   projectDomainCheckConfig: types.optional(z.array(ACLAction$inboundSchema)),
   projectDomainMove: types.optional(z.array(ACLAction$inboundSchema)),
@@ -7706,6 +7747,7 @@ export type UpdateProjectPermissions$Outbound = {
   projectCheckRun?: Array<string> | undefined;
   projectDeploymentExpiration?: Array<string> | undefined;
   projectDeploymentHook?: Array<string> | undefined;
+  projectDeploymentProtectionStrict?: Array<string> | undefined;
   projectDomain?: Array<string> | undefined;
   projectDomainCheckConfig?: Array<string> | undefined;
   projectDomainMove?: Array<string> | undefined;
@@ -7940,6 +7982,8 @@ export const UpdateProjectPermissions$outboundSchema: z.ZodType<
   projectCheckRun: z.array(ACLAction$outboundSchema).optional(),
   projectDeploymentExpiration: z.array(ACLAction$outboundSchema).optional(),
   projectDeploymentHook: z.array(ACLAction$outboundSchema).optional(),
+  projectDeploymentProtectionStrict: z.array(ACLAction$outboundSchema)
+    .optional(),
   projectDomain: z.array(ACLAction$outboundSchema).optional(),
   projectDomainCheckConfig: z.array(ACLAction$outboundSchema).optional(),
   projectDomainMove: z.array(ACLAction$outboundSchema).optional(),
@@ -8610,15 +8654,78 @@ export function updateProjectWebAnalyticsFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectProjectsResponse200ApplicationJSONAction$inboundSchema:
+export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof UpdateProjectProjectsResponse200ApplicationJSONAction
-  > = z.nativeEnum(UpdateProjectProjectsResponse200ApplicationJSONAction);
+    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction
+  > = z.nativeEnum(
+    UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction,
+  );
 /** @internal */
-export const UpdateProjectProjectsResponse200ApplicationJSONAction$outboundSchema:
+export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction$outboundSchema:
   z.ZodNativeEnum<
-    typeof UpdateProjectProjectsResponse200ApplicationJSONAction
-  > = UpdateProjectProjectsResponse200ApplicationJSONAction$inboundSchema;
+    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction
+  > =
+    UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction$inboundSchema;
+
+/** @internal */
+export const UpdateProjectVercelRuleset$inboundSchema: z.ZodType<
+  UpdateProjectVercelRuleset,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  active: types.boolean(),
+  action: types.optional(
+    UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction$inboundSchema,
+  ),
+});
+/** @internal */
+export type UpdateProjectVercelRuleset$Outbound = {
+  active: boolean;
+  action?: string | undefined;
+};
+
+/** @internal */
+export const UpdateProjectVercelRuleset$outboundSchema: z.ZodType<
+  UpdateProjectVercelRuleset$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectVercelRuleset
+> = z.object({
+  active: z.boolean(),
+  action:
+    UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction$outboundSchema
+      .optional(),
+});
+
+export function updateProjectVercelRulesetToJSON(
+  updateProjectVercelRuleset: UpdateProjectVercelRuleset,
+): string {
+  return JSON.stringify(
+    UpdateProjectVercelRuleset$outboundSchema.parse(updateProjectVercelRuleset),
+  );
+}
+export function updateProjectVercelRulesetFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectVercelRuleset, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectVercelRuleset$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectVercelRuleset' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction
+  > = z.nativeEnum(
+    UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction,
+  );
+/** @internal */
+export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction$outboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction
+  > =
+    UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction$inboundSchema;
 
 /** @internal */
 export const UpdateProjectBotFilter$inboundSchema: z.ZodType<
@@ -8628,7 +8735,7 @@ export const UpdateProjectBotFilter$inboundSchema: z.ZodType<
 > = z.object({
   active: types.boolean(),
   action: types.optional(
-    UpdateProjectProjectsResponse200ApplicationJSONAction$inboundSchema,
+    UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction$inboundSchema,
   ),
 });
 /** @internal */
@@ -8644,8 +8751,9 @@ export const UpdateProjectBotFilter$outboundSchema: z.ZodType<
   UpdateProjectBotFilter
 > = z.object({
   active: z.boolean(),
-  action: UpdateProjectProjectsResponse200ApplicationJSONAction$outboundSchema
-    .optional(),
+  action:
+    UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction$outboundSchema
+      .optional(),
 });
 
 export function updateProjectBotFilterToJSON(
@@ -8666,18 +8774,14 @@ export function updateProjectBotFilterFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction
-  > = z.nativeEnum(
-    UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction,
+export const UpdateProjectProjectsResponse200Action$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectProjectsResponse200Action> = z.nativeEnum(
+    UpdateProjectProjectsResponse200Action,
   );
 /** @internal */
-export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction$outboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction
-  > =
-    UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction$inboundSchema;
+export const UpdateProjectProjectsResponse200Action$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectProjectsResponse200Action> =
+    UpdateProjectProjectsResponse200Action$inboundSchema;
 
 /** @internal */
 export const UpdateProjectAiBots$inboundSchema: z.ZodType<
@@ -8686,9 +8790,7 @@ export const UpdateProjectAiBots$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   active: types.boolean(),
-  action: types.optional(
-    UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction$inboundSchema,
-  ),
+  action: types.optional(UpdateProjectProjectsResponse200Action$inboundSchema),
 });
 /** @internal */
 export type UpdateProjectAiBots$Outbound = {
@@ -8703,9 +8805,7 @@ export const UpdateProjectAiBots$outboundSchema: z.ZodType<
   UpdateProjectAiBots
 > = z.object({
   active: z.boolean(),
-  action:
-    UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction$outboundSchema
-      .optional(),
+  action: UpdateProjectProjectsResponse200Action$outboundSchema.optional(),
 });
 
 export function updateProjectAiBotsToJSON(
@@ -8726,14 +8826,15 @@ export function updateProjectAiBotsFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectProjectsResponse200Action$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectProjectsResponse200Action> = z.nativeEnum(
-    UpdateProjectProjectsResponse200Action,
-  );
+export const UpdateProjectProjectsResponse200ApplicationJSONAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateProjectProjectsResponse200ApplicationJSONAction
+  > = z.nativeEnum(UpdateProjectProjectsResponse200ApplicationJSONAction);
 /** @internal */
-export const UpdateProjectProjectsResponse200Action$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectProjectsResponse200Action> =
-    UpdateProjectProjectsResponse200Action$inboundSchema;
+export const UpdateProjectProjectsResponse200ApplicationJSONAction$outboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateProjectProjectsResponse200ApplicationJSONAction
+  > = UpdateProjectProjectsResponse200ApplicationJSONAction$inboundSchema;
 
 /** @internal */
 export const UpdateProjectOwasp$inboundSchema: z.ZodType<
@@ -8742,7 +8843,9 @@ export const UpdateProjectOwasp$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   active: types.boolean(),
-  action: types.optional(UpdateProjectProjectsResponse200Action$inboundSchema),
+  action: types.optional(
+    UpdateProjectProjectsResponse200ApplicationJSONAction$inboundSchema,
+  ),
 });
 /** @internal */
 export type UpdateProjectOwasp$Outbound = {
@@ -8757,7 +8860,8 @@ export const UpdateProjectOwasp$outboundSchema: z.ZodType<
   UpdateProjectOwasp
 > = z.object({
   active: z.boolean(),
-  action: UpdateProjectProjectsResponse200Action$outboundSchema.optional(),
+  action: UpdateProjectProjectsResponse200ApplicationJSONAction$outboundSchema
+    .optional(),
 });
 
 export function updateProjectOwaspToJSON(
@@ -8783,22 +8887,23 @@ export const UpdateProjectManagedRules$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  bot_filter: types.optional(
-    z.lazy(() => UpdateProjectBotFilter$inboundSchema),
-  ),
-  ai_bots: types.optional(z.lazy(() => UpdateProjectAiBots$inboundSchema)),
-  owasp: types.optional(z.lazy(() => UpdateProjectOwasp$inboundSchema)),
+  vercel_ruleset: z.lazy(() => UpdateProjectVercelRuleset$inboundSchema),
+  bot_filter: z.lazy(() => UpdateProjectBotFilter$inboundSchema),
+  ai_bots: z.lazy(() => UpdateProjectAiBots$inboundSchema),
+  owasp: z.lazy(() => UpdateProjectOwasp$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
+    "vercel_ruleset": "vercelRuleset",
     "bot_filter": "botFilter",
     "ai_bots": "aiBots",
   });
 });
 /** @internal */
 export type UpdateProjectManagedRules$Outbound = {
-  bot_filter?: UpdateProjectBotFilter$Outbound | undefined;
-  ai_bots?: UpdateProjectAiBots$Outbound | undefined;
-  owasp?: UpdateProjectOwasp$Outbound | undefined;
+  vercel_ruleset: UpdateProjectVercelRuleset$Outbound;
+  bot_filter: UpdateProjectBotFilter$Outbound;
+  ai_bots: UpdateProjectAiBots$Outbound;
+  owasp: UpdateProjectOwasp$Outbound;
 };
 
 /** @internal */
@@ -8807,11 +8912,13 @@ export const UpdateProjectManagedRules$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectManagedRules
 > = z.object({
-  botFilter: z.lazy(() => UpdateProjectBotFilter$outboundSchema).optional(),
-  aiBots: z.lazy(() => UpdateProjectAiBots$outboundSchema).optional(),
-  owasp: z.lazy(() => UpdateProjectOwasp$outboundSchema).optional(),
+  vercelRuleset: z.lazy(() => UpdateProjectVercelRuleset$outboundSchema),
+  botFilter: z.lazy(() => UpdateProjectBotFilter$outboundSchema),
+  aiBots: z.lazy(() => UpdateProjectAiBots$outboundSchema),
+  owasp: z.lazy(() => UpdateProjectOwasp$outboundSchema),
 }).transform((v) => {
   return remap$(v, {
+    vercelRuleset: "vercel_ruleset",
     botFilter: "bot_filter",
     aiBots: "ai_bots",
   });
@@ -9085,6 +9192,7 @@ export const UpdateProjectBlock$inboundSchema: z.ZodType<
   caseId: types.optional(types.string()),
   actor: types.optional(types.string()),
   comment: types.optional(types.string()),
+  ineligibleForAppeal: types.optional(types.boolean()),
   isCascading: types.optional(types.boolean()),
 });
 /** @internal */
@@ -9096,6 +9204,7 @@ export type UpdateProjectBlock$Outbound = {
   caseId?: string | undefined;
   actor?: string | undefined;
   comment?: string | undefined;
+  ineligibleForAppeal?: boolean | undefined;
   isCascading?: boolean | undefined;
 };
 
@@ -9112,6 +9221,7 @@ export const UpdateProjectBlock$outboundSchema: z.ZodType<
   caseId: z.string().optional(),
   actor: z.string().optional(),
   comment: z.string().optional(),
+  ineligibleForAppeal: z.boolean().optional(),
   isCascading: z.boolean().optional(),
 });
 
@@ -9576,6 +9686,7 @@ export const UpdateProjectBlockHistory4$inboundSchema: z.ZodType<
   caseId: types.optional(types.string()),
   actor: types.optional(types.string()),
   comment: types.optional(types.string()),
+  ineligibleForAppeal: types.optional(types.boolean()),
   isCascading: types.optional(types.boolean()),
 });
 /** @internal */
@@ -9589,6 +9700,7 @@ export type UpdateProjectBlockHistory4$Outbound = {
   caseId?: string | undefined;
   actor?: string | undefined;
   comment?: string | undefined;
+  ineligibleForAppeal?: boolean | undefined;
   isCascading?: boolean | undefined;
 };
 
@@ -9608,6 +9720,7 @@ export const UpdateProjectBlockHistory4$outboundSchema: z.ZodType<
   caseId: z.string().optional(),
   actor: z.string().optional(),
   comment: z.string().optional(),
+  ineligibleForAppeal: z.boolean().optional(),
   isCascading: z.boolean().optional(),
 });
 
@@ -10084,6 +10197,7 @@ export const UpdateProjectBlockHistory3$inboundSchema: z.ZodType<
   caseId: types.optional(types.string()),
   actor: types.optional(types.string()),
   comment: types.optional(types.string()),
+  ineligibleForAppeal: types.optional(types.boolean()),
   isCascading: types.optional(types.boolean()),
 });
 /** @internal */
@@ -10095,6 +10209,7 @@ export type UpdateProjectBlockHistory3$Outbound = {
   caseId?: string | undefined;
   actor?: string | undefined;
   comment?: string | undefined;
+  ineligibleForAppeal?: boolean | undefined;
   isCascading?: boolean | undefined;
 };
 
@@ -10114,6 +10229,7 @@ export const UpdateProjectBlockHistory3$outboundSchema: z.ZodType<
   caseId: z.string().optional(),
   actor: z.string().optional(),
   comment: z.string().optional(),
+  ineligibleForAppeal: z.boolean().optional(),
   isCascading: z.boolean().optional(),
 });
 
@@ -10145,6 +10261,7 @@ export const UpdateProjectBlockHistory2$inboundSchema: z.ZodType<
   caseId: types.optional(types.string()),
   actor: types.optional(types.string()),
   comment: types.optional(types.string()),
+  ineligibleForAppeal: types.optional(types.boolean()),
   isCascading: types.optional(types.boolean()),
 });
 /** @internal */
@@ -10154,6 +10271,7 @@ export type UpdateProjectBlockHistory2$Outbound = {
   caseId?: string | undefined;
   actor?: string | undefined;
   comment?: string | undefined;
+  ineligibleForAppeal?: boolean | undefined;
   isCascading?: boolean | undefined;
 };
 
@@ -10168,6 +10286,7 @@ export const UpdateProjectBlockHistory2$outboundSchema: z.ZodType<
   caseId: z.string().optional(),
   actor: z.string().optional(),
   comment: z.string().optional(),
+  ineligibleForAppeal: z.boolean().optional(),
   isCascading: z.boolean().optional(),
 });
 
@@ -10201,6 +10320,7 @@ export const UpdateProjectBlockHistory1$inboundSchema: z.ZodType<
   caseId: types.optional(types.string()),
   actor: types.optional(types.string()),
   comment: types.optional(types.string()),
+  ineligibleForAppeal: types.optional(types.boolean()),
   isCascading: types.optional(types.boolean()),
 });
 /** @internal */
@@ -10212,6 +10332,7 @@ export type UpdateProjectBlockHistory1$Outbound = {
   caseId?: string | undefined;
   actor?: string | undefined;
   comment?: string | undefined;
+  ineligibleForAppeal?: boolean | undefined;
   isCascading?: boolean | undefined;
 };
 
@@ -10228,6 +10349,7 @@ export const UpdateProjectBlockHistory1$outboundSchema: z.ZodType<
   caseId: z.string().optional(),
   actor: z.string().optional(),
   comment: z.string().optional(),
+  ineligibleForAppeal: z.boolean().optional(),
   isCascading: z.boolean().optional(),
 });
 
@@ -10869,8 +10991,8 @@ export function updateProjectValueCurrentValueFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectValue4$inboundSchema: z.ZodType<
-  UpdateProjectValue4,
+export const UpdateProjectValue3$inboundSchema: z.ZodType<
+  UpdateProjectValue3,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -10878,35 +11000,35 @@ export const UpdateProjectValue4$inboundSchema: z.ZodType<
   currentValue: smartUnion([types.string(), types.number(), types.boolean()]),
 });
 /** @internal */
-export type UpdateProjectValue4$Outbound = {
+export type UpdateProjectValue3$Outbound = {
   previousValue: string | number | boolean;
   currentValue: string | number | boolean;
 };
 
 /** @internal */
-export const UpdateProjectValue4$outboundSchema: z.ZodType<
-  UpdateProjectValue4$Outbound,
+export const UpdateProjectValue3$outboundSchema: z.ZodType<
+  UpdateProjectValue3$Outbound,
   z.ZodTypeDef,
-  UpdateProjectValue4
+  UpdateProjectValue3
 > = z.object({
   previousValue: smartUnion([z.string(), z.number(), z.boolean()]),
   currentValue: smartUnion([z.string(), z.number(), z.boolean()]),
 });
 
-export function updateProjectValue4ToJSON(
-  updateProjectValue4: UpdateProjectValue4,
+export function updateProjectValue3ToJSON(
+  updateProjectValue3: UpdateProjectValue3,
 ): string {
   return JSON.stringify(
-    UpdateProjectValue4$outboundSchema.parse(updateProjectValue4),
+    UpdateProjectValue3$outboundSchema.parse(updateProjectValue3),
   );
 }
-export function updateProjectValue4FromJSON(
+export function updateProjectValue3FromJSON(
   jsonString: string,
-): SafeParseResult<UpdateProjectValue4, SDKValidationError> {
+): SafeParseResult<UpdateProjectValue3, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UpdateProjectValue4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateProjectValue4' from JSON`,
+    (x) => UpdateProjectValue3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectValue3' from JSON`,
   );
 }
 
@@ -10916,14 +11038,14 @@ export const UpdateProjectValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  z.lazy(() => UpdateProjectValue4$inboundSchema),
+  z.lazy(() => UpdateProjectValue3$inboundSchema),
   types.string(),
   types.number(),
   types.boolean(),
 ]);
 /** @internal */
 export type UpdateProjectValue$Outbound =
-  | UpdateProjectValue4$Outbound
+  | UpdateProjectValue3$Outbound
   | string
   | number
   | boolean;
@@ -10934,7 +11056,7 @@ export const UpdateProjectValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectValue
 > = smartUnion([
-  z.lazy(() => UpdateProjectValue4$outboundSchema),
+  z.lazy(() => UpdateProjectValue3$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
@@ -10968,7 +11090,7 @@ export const UpdateProjectProjectsDismissedToasts$inboundSchema: z.ZodType<
   action: UpdateProjectProjectsAction$inboundSchema,
   value: types.nullable(
     smartUnion([
-      z.lazy(() => UpdateProjectValue4$inboundSchema),
+      z.lazy(() => UpdateProjectValue3$inboundSchema),
       types.string(),
       types.number(),
       types.boolean(),
@@ -10980,7 +11102,7 @@ export type UpdateProjectProjectsDismissedToasts$Outbound = {
   key: string;
   dismissedAt: number;
   action: string;
-  value: UpdateProjectValue4$Outbound | string | number | boolean | null;
+  value: UpdateProjectValue3$Outbound | string | number | boolean | null;
 };
 
 /** @internal */
@@ -10994,7 +11116,7 @@ export const UpdateProjectProjectsDismissedToasts$outboundSchema: z.ZodType<
   action: UpdateProjectProjectsAction$outboundSchema,
   value: z.nullable(
     smartUnion([
-      z.lazy(() => UpdateProjectValue4$outboundSchema),
+      z.lazy(() => UpdateProjectValue3$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),

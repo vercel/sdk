@@ -319,6 +319,51 @@ func (e *GetConfigurationsStatus2) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// GetConfigurationsSource2 - Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
+type GetConfigurationsSource2 string
+
+const (
+	GetConfigurationsSource2Marketplace    GetConfigurationsSource2 = "marketplace"
+	GetConfigurationsSource2DeployButton   GetConfigurationsSource2 = "deploy-button"
+	GetConfigurationsSource2External       GetConfigurationsSource2 = "external"
+	GetConfigurationsSource2V0             GetConfigurationsSource2 = "v0"
+	GetConfigurationsSource2ResourceClaims GetConfigurationsSource2 = "resource-claims"
+	GetConfigurationsSource2Cli            GetConfigurationsSource2 = "cli"
+	GetConfigurationsSource2Oauth          GetConfigurationsSource2 = "oauth"
+	GetConfigurationsSource2Backoffice     GetConfigurationsSource2 = "backoffice"
+)
+
+func (e GetConfigurationsSource2) ToPointer() *GetConfigurationsSource2 {
+	return &e
+}
+func (e *GetConfigurationsSource2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "marketplace":
+		fallthrough
+	case "deploy-button":
+		fallthrough
+	case "external":
+		fallthrough
+	case "v0":
+		fallthrough
+	case "resource-claims":
+		fallthrough
+	case "cli":
+		fallthrough
+	case "oauth":
+		fallthrough
+	case "backoffice":
+		*e = GetConfigurationsSource2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetConfigurationsSource2: %v", v)
+	}
+}
+
 type GetConfigurationsType2 string
 
 const (
@@ -426,7 +471,7 @@ type GetConfigurationsIntegrationConfiguration2 struct {
 	// When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access.
 	Projects []string `json:"projects,omitempty"`
 	// Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
-	Source *string `json:"source,omitempty"`
+	Source *GetConfigurationsSource2 `json:"source,omitempty"`
 	// The slug of the integration the configuration is created for.
 	Slug string `json:"slug"`
 	// When the configuration was created for a team, this will show the ID of the team.
@@ -523,7 +568,7 @@ func (o *GetConfigurationsIntegrationConfiguration2) GetProjects() []string {
 	return o.Projects
 }
 
-func (o *GetConfigurationsIntegrationConfiguration2) GetSource() *string {
+func (o *GetConfigurationsIntegrationConfiguration2) GetSource() *GetConfigurationsSource2 {
 	if o == nil {
 		return nil
 	}
@@ -649,6 +694,51 @@ func (e *GetConfigurationsStatus1) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// GetConfigurationsSource1 - Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
+type GetConfigurationsSource1 string
+
+const (
+	GetConfigurationsSource1Marketplace    GetConfigurationsSource1 = "marketplace"
+	GetConfigurationsSource1DeployButton   GetConfigurationsSource1 = "deploy-button"
+	GetConfigurationsSource1External       GetConfigurationsSource1 = "external"
+	GetConfigurationsSource1V0             GetConfigurationsSource1 = "v0"
+	GetConfigurationsSource1ResourceClaims GetConfigurationsSource1 = "resource-claims"
+	GetConfigurationsSource1Cli            GetConfigurationsSource1 = "cli"
+	GetConfigurationsSource1Oauth          GetConfigurationsSource1 = "oauth"
+	GetConfigurationsSource1Backoffice     GetConfigurationsSource1 = "backoffice"
+)
+
+func (e GetConfigurationsSource1) ToPointer() *GetConfigurationsSource1 {
+	return &e
+}
+func (e *GetConfigurationsSource1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "marketplace":
+		fallthrough
+	case "deploy-button":
+		fallthrough
+	case "external":
+		fallthrough
+	case "v0":
+		fallthrough
+	case "resource-claims":
+		fallthrough
+	case "cli":
+		fallthrough
+	case "oauth":
+		fallthrough
+	case "backoffice":
+		*e = GetConfigurationsSource1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetConfigurationsSource1: %v", v)
+	}
+}
+
 type GetConfigurationsType1 string
 
 const (
@@ -756,7 +846,7 @@ type GetConfigurationsIntegrationConfiguration1 struct {
 	// When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access.
 	Projects []string `json:"projects,omitempty"`
 	// Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
-	Source *string `json:"source,omitempty"`
+	Source *GetConfigurationsSource1 `json:"source,omitempty"`
 	// The slug of the integration the configuration is created for.
 	Slug *string `json:"slug,omitempty"`
 	// When the configuration was created for a team, this will show the ID of the team.
@@ -846,7 +936,7 @@ func (o *GetConfigurationsIntegrationConfiguration1) GetProjects() []string {
 	return o.Projects
 }
 
-func (o *GetConfigurationsIntegrationConfiguration1) GetSource() *string {
+func (o *GetConfigurationsIntegrationConfiguration1) GetSource() *GetConfigurationsSource1 {
 	if o == nil {
 		return nil
 	}

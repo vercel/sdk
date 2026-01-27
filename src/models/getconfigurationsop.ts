@@ -100,6 +100,26 @@ export type GetConfigurationsResponseBodyIntegrationsStatus = ClosedEnum<
   typeof GetConfigurationsResponseBodyIntegrationsStatus
 >;
 
+/**
+ * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
+ */
+export const GetConfigurationsResponseBodyIntegrationsSource = {
+  Marketplace: "marketplace",
+  DeployButton: "deploy-button",
+  External: "external",
+  V0: "v0",
+  ResourceClaims: "resource-claims",
+  Cli: "cli",
+  Oauth: "oauth",
+  Backoffice: "backoffice",
+} as const;
+/**
+ * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
+ */
+export type GetConfigurationsResponseBodyIntegrationsSource = ClosedEnum<
+  typeof GetConfigurationsResponseBodyIntegrationsSource
+>;
+
 export const GetConfigurationsResponseBodyIntegrationsType = {
   IntegrationConfiguration: "integration-configuration",
 } as const;
@@ -169,7 +189,7 @@ export type GetConfigurationsResponseBody2 = {
   /**
    * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
    */
-  source?: string | undefined;
+  source?: GetConfigurationsResponseBodyIntegrationsSource | undefined;
   /**
    * The slug of the integration the configuration is created for.
    */
@@ -229,6 +249,26 @@ export const GetConfigurationsResponseBodyStatus = {
  */
 export type GetConfigurationsResponseBodyStatus = ClosedEnum<
   typeof GetConfigurationsResponseBodyStatus
+>;
+
+/**
+ * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
+ */
+export const GetConfigurationsResponseBodySource = {
+  Marketplace: "marketplace",
+  DeployButton: "deploy-button",
+  External: "external",
+  V0: "v0",
+  ResourceClaims: "resource-claims",
+  Cli: "cli",
+  Oauth: "oauth",
+  Backoffice: "backoffice",
+} as const;
+/**
+ * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
+ */
+export type GetConfigurationsResponseBodySource = ClosedEnum<
+  typeof GetConfigurationsResponseBodySource
 >;
 
 export const GetConfigurationsResponseBodyType = {
@@ -303,7 +343,7 @@ export type GetConfigurationsResponseBody1 = {
   /**
    * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
    */
-  source?: string | undefined;
+  source?: GetConfigurationsResponseBodySource | undefined;
   /**
    * The slug of the integration the configuration is created for.
    */
@@ -490,6 +530,15 @@ export const GetConfigurationsResponseBodyIntegrationsStatus$outboundSchema:
     GetConfigurationsResponseBodyIntegrationsStatus$inboundSchema;
 
 /** @internal */
+export const GetConfigurationsResponseBodyIntegrationsSource$inboundSchema:
+  z.ZodNativeEnum<typeof GetConfigurationsResponseBodyIntegrationsSource> = z
+    .nativeEnum(GetConfigurationsResponseBodyIntegrationsSource);
+/** @internal */
+export const GetConfigurationsResponseBodyIntegrationsSource$outboundSchema:
+  z.ZodNativeEnum<typeof GetConfigurationsResponseBodyIntegrationsSource> =
+    GetConfigurationsResponseBodyIntegrationsSource$inboundSchema;
+
+/** @internal */
 export const GetConfigurationsResponseBodyIntegrationsType$inboundSchema:
   z.ZodNativeEnum<typeof GetConfigurationsResponseBodyIntegrationsType> = z
     .nativeEnum(GetConfigurationsResponseBodyIntegrationsType);
@@ -535,7 +584,9 @@ export const GetConfigurationsResponseBody2$inboundSchema: z.ZodType<
   ),
   externalId: types.optional(types.string()),
   projects: types.optional(z.array(types.string())),
-  source: types.optional(types.string()),
+  source: types.optional(
+    GetConfigurationsResponseBodyIntegrationsSource$inboundSchema,
+  ),
   slug: types.string(),
   teamId: z.nullable(types.string()).optional(),
   type: GetConfigurationsResponseBodyIntegrationsType$inboundSchema,
@@ -593,7 +644,8 @@ export const GetConfigurationsResponseBody2$outboundSchema: z.ZodType<
     .optional(),
   externalId: z.string().optional(),
   projects: z.array(z.string()).optional(),
-  source: z.string().optional(),
+  source: GetConfigurationsResponseBodyIntegrationsSource$outboundSchema
+    .optional(),
   slug: z.string(),
   teamId: z.nullable(z.string()).optional(),
   type: GetConfigurationsResponseBodyIntegrationsType$outboundSchema,
@@ -639,6 +691,15 @@ export const GetConfigurationsResponseBodyStatus$outboundSchema:
     GetConfigurationsResponseBodyStatus$inboundSchema;
 
 /** @internal */
+export const GetConfigurationsResponseBodySource$inboundSchema: z.ZodNativeEnum<
+  typeof GetConfigurationsResponseBodySource
+> = z.nativeEnum(GetConfigurationsResponseBodySource);
+/** @internal */
+export const GetConfigurationsResponseBodySource$outboundSchema:
+  z.ZodNativeEnum<typeof GetConfigurationsResponseBodySource> =
+    GetConfigurationsResponseBodySource$inboundSchema;
+
+/** @internal */
 export const GetConfigurationsResponseBodyType$inboundSchema: z.ZodNativeEnum<
   typeof GetConfigurationsResponseBodyType
 > = z.nativeEnum(GetConfigurationsResponseBodyType);
@@ -679,7 +740,7 @@ export const GetConfigurationsResponseBody1$inboundSchema: z.ZodType<
   status: types.optional(GetConfigurationsResponseBodyStatus$inboundSchema),
   externalId: types.optional(types.string()),
   projects: types.optional(z.array(types.string())),
-  source: types.optional(types.string()),
+  source: types.optional(GetConfigurationsResponseBodySource$inboundSchema),
   slug: types.optional(types.string()),
   teamId: z.nullable(types.string()).optional(),
   type: types.optional(GetConfigurationsResponseBodyType$inboundSchema),
@@ -732,7 +793,7 @@ export const GetConfigurationsResponseBody1$outboundSchema: z.ZodType<
   status: GetConfigurationsResponseBodyStatus$outboundSchema.optional(),
   externalId: z.string().optional(),
   projects: z.array(z.string()).optional(),
-  source: z.string().optional(),
+  source: GetConfigurationsResponseBodySource$outboundSchema.optional(),
   slug: z.string().optional(),
   teamId: z.nullable(z.string()).optional(),
   type: GetConfigurationsResponseBodyType$outboundSchema.optional(),

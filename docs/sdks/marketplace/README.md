@@ -25,6 +25,7 @@
 * [updateInstallationIntegrationConfiguration](#updateinstallationintegrationconfiguration) - Patch an existing experimentation item
 * [deleteInstallationIntegrationConfiguration](#deleteinstallationintegrationconfiguration) - Delete an existing experimentation item
 * [createInstallationIntegrationEdgeConfig](#createinstallationintegrationedgeconfig) - Get the data of a user-provided Edge Config
+* [getV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig](#getv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfig) - Get the data of a user-provided Edge Config
 * [updateInstallationIntegrationEdgeConfig](#updateinstallationintegrationedgeconfig) - Push data into a user-provided Edge Config
 
 ## updateInstallation
@@ -1761,6 +1762,83 @@ run();
 ### Response
 
 **Promise\<[models.HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody](../../models/headv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigresponsebody.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
+
+## getV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig
+
+When the user enabled Edge Config syncing, then this endpoint can be used by the partner to fetch the contents of the Edge Config.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="get_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config" method="get" path="/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.marketplace.getV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig({
+    integrationConfigurationId: "<id>",
+    resourceId: "<id>",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import {
+  marketplaceGetV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig,
+} from "@vercel/sdk/funcs/marketplaceGetV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await marketplaceGetV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig(vercel, {
+    integrationConfigurationId: "<id>",
+    resourceId: "<id>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("marketplaceGetV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                                 | Type                                                                                                                                                                                                                      | Required                                                                                                                                                                                                                  | Description                                                                                                                                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                                                                                                 | [models.GetV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest](../../models/getv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigrequest.md) | :heavy_check_mark:                                                                                                                                                                                                        | The request object to use for the request.                                                                                                                                                                                |
+| `options`                                                                                                                                                                                                                 | RequestOptions                                                                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                                                        | Used to set various options for making HTTP requests.                                                                                                                                                                     |
+| `options.fetchOptions`                                                                                                                                                                                                    | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                                                                   | :heavy_minus_sign:                                                                                                                                                                                                        | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed.                                            |
+| `options.retries`                                                                                                                                                                                                         | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                                        | Enables retrying HTTP requests under certain failure conditions.                                                                                                                                                          |
+
+### Response
+
+**Promise\<[models.GetV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody](../../models/getv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigresponsebody.md)\>**
 
 ### Errors
 

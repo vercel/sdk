@@ -377,6 +377,7 @@ const (
 	TeamLimitedOriginDsync             TeamLimitedOrigin = "dsync"
 	TeamLimitedOriginFeedback          TeamLimitedOrigin = "feedback"
 	TeamLimitedOriginOrganizationTeams TeamLimitedOrigin = "organization-teams"
+	TeamLimitedOriginNsnbAutoApprove   TeamLimitedOrigin = "nsnb-auto-approve"
 )
 
 func (e TeamLimitedOrigin) ToPointer() *TeamLimitedOrigin {
@@ -409,6 +410,8 @@ func (e *TeamLimitedOrigin) UnmarshalJSON(data []byte) error {
 	case "feedback":
 		fallthrough
 	case "organization-teams":
+		fallthrough
+	case "nsnb-auto-approve":
 		*e = TeamLimitedOrigin(v)
 		return nil
 	default:

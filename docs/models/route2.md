@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Route2 } from "@vercel/sdk/models/updateprojectdatacacheop.js";
+import { Route2 } from "@vercel/sdk/models/createprojectop.js";
 
 let value: Route2 = {
   has: [],
@@ -15,8 +15,8 @@ let value: Route2 = {
 
 ## Fields
 
-| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `has`                                                                                          | *models.UpdateProjectDataCacheRouteHas*[]                                                      | :heavy_check_mark:                                                                             | N/A                                                                                            |
-| `mitigate`                                                                                     | [models.UpdateProjectDataCacheRouteMitigate](../models/updateprojectdatacacheroutemitigate.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |
-| `src`                                                                                          | *string*                                                                                       | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| Field                                              | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `has`                                              | *models.RouteHas*[]                                | :heavy_check_mark:                                 | N/A                                                |
+| `mitigate`                                         | [models.RouteMitigate](../models/routemitigate.md) | :heavy_check_mark:                                 | N/A                                                |
+| `src`                                              | *string*                                           | :heavy_minus_sign:                                 | N/A                                                |

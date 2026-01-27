@@ -1,24 +1,32 @@
 # DeleteRedirectsResponseBody
 
-## Example Usage
+
+## Supported Types
+
+### `models.DeleteRedirectsResponseBody1`
 
 ```typescript
-import { DeleteRedirectsResponseBody } from "@vercel/sdk/models/deleteredirectsop.js";
-
-let value: DeleteRedirectsResponseBody = {
-  alias: "<value>",
+const value: models.DeleteRedirectsResponseBody1 = {
   version: {
     id: "<id>",
     key: "<key>",
-    lastModified: 3408.11,
+    lastModified: 3808.37,
     createdBy: "<value>",
   },
 };
 ```
 
-## Fields
+### `models.DeleteRedirectsResponseBody2`
 
-| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `alias`                                                              | *string*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
-| `version`                                                            | [models.DeleteRedirectsVersion](../models/deleteredirectsversion.md) | :heavy_check_mark:                                                   | N/A                                                                  |
+```typescript
+const value: models.DeleteRedirectsResponseBody2 = {
+  alias: "<value>",
+  version: {
+    id: "<id>",
+    key: "<key>",
+    lastModified: 3234.03,
+    createdBy: "<value>",
+  },
+};
+```
+

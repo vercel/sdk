@@ -16,7 +16,7 @@ let value: BuyDomainsContactInformation = {
   city: "Odellmouth",
   state: "Nebraska",
   zip: "09572-2511",
-  country: "Pitcairn Islands",
+  country: "PK",
 };
 ```
 
@@ -33,7 +33,7 @@ let value: BuyDomainsContactInformation = {
 | `city`                                                           | *string*                                                         | :heavy_check_mark:                                               | a non empty string                                               |
 | `state`                                                          | *string*                                                         | :heavy_check_mark:                                               | a non empty string                                               |
 | `zip`                                                            | *string*                                                         | :heavy_check_mark:                                               | a non empty string                                               |
-| `country`                                                        | *string*                                                         | :heavy_check_mark:                                               | A valid ISO 3166-1 alpha-2 country code                          |
+| `country`                                                        | [models.CountryCode](../models/countrycode.md)                   | :heavy_check_mark:                                               | A valid ISO 3166-1 alpha-2 country code                          |
 | `companyName`                                                    | *string*                                                         | :heavy_minus_sign:                                               | a non empty string                                               |
 | `fax`                                                            | *string*                                                         | :heavy_minus_sign:                                               | A valid E.164 phone number                                       |
 | `additional`                                                     | [models.BuyDomainsAdditional](../models/buydomainsadditional.md) | :heavy_minus_sign:                                               | N/A                                                              |

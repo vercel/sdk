@@ -316,8 +316,6 @@ type CreateOrTransferDomainDomain struct {
 	ExpiresAt *float64 `json:"expiresAt"`
 	// The unique identifier of the domain.
 	ID string `json:"id"`
-	// Timestamp in milliseconds at which the domain was ordered.
-	OrderedAt *float64 `json:"orderedAt,omitempty"`
 	// Indicates whether the domain is set to automatically renew.
 	Renew *bool `json:"renew,omitempty"`
 	// The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available.
@@ -411,13 +409,6 @@ func (o *CreateOrTransferDomainDomain) GetID() string {
 		return ""
 	}
 	return o.ID
-}
-
-func (o *CreateOrTransferDomainDomain) GetOrderedAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.OrderedAt
 }
 
 func (o *CreateOrTransferDomainDomain) GetRenew() *bool {

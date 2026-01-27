@@ -51,15 +51,17 @@ func testDeleteRedirectsDeleteRedirects0(w http.ResponseWriter, req *http.Reques
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody *operations.DeleteRedirectsResponseBody = &operations.DeleteRedirectsResponseBody{
-		Alias: types.String("<value>"),
-		Version: operations.DeleteRedirectsVersion{
-			ID:           "<id>",
-			Key:          "<key>",
-			LastModified: 7020.06,
-			CreatedBy:    "<value>",
+	var respBody *operations.DeleteRedirectsResponseBody = types.Pointer(operations.CreateDeleteRedirectsResponseBodyDeleteRedirectsResponseBody1(
+		operations.DeleteRedirectsResponseBody1{
+			Alias: types.String("<value>"),
+			Version: operations.DeleteRedirectsVersion1{
+				ID:           "<id>",
+				Key:          "<key>",
+				LastModified: 7020.06,
+				CreatedBy:    "<value>",
+			},
 		},
-	}
+	))
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

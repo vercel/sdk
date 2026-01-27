@@ -9,13 +9,17 @@ import { FiftyThree } from "@vercel/sdk/models/userevent.js";
 
 let value: FiftyThree = {
   name: "<value>",
+  userId: "<id>",
+  teamId: "<id>",
+  ownerName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `name`                                                                     | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `oldTeam`                                                                  | [models.UserEventPayload53OldTeam](../models/usereventpayload53oldteam.md) | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `newTeam`                                                                  | [models.UserEventPayload53NewTeam](../models/usereventpayload53newteam.md) | :heavy_minus_sign:                                                         | N/A                                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `userId`           | *string*           | :heavy_check_mark: | N/A                |
+| `teamId`           | *string*           | :heavy_check_mark: | N/A                |
+| `ownerName`        | *string*           | :heavy_check_mark: | N/A                |

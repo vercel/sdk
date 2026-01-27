@@ -75,9 +75,9 @@ export type GetIntegrationResourceNotification = {
 export type GetIntegrationResourceMetadata =
   | string
   | number
-  | boolean
   | Array<string>
-  | Array<number>;
+  | Array<number>
+  | boolean;
 
 export type GetIntegrationResourceResponseBody = {
   /**
@@ -116,7 +116,7 @@ export type GetIntegrationResourceResponseBody = {
    * The configured metadata for the resource as defined by its product's Metadata Schema
    */
   metadata?: {
-    [k: string]: string | number | boolean | Array<string> | Array<number>;
+    [k: string]: string | number | Array<string> | Array<number> | boolean;
   } | undefined;
 };
 
@@ -323,17 +323,17 @@ export const GetIntegrationResourceMetadata$inboundSchema: z.ZodType<
 > = smartUnion([
   types.string(),
   types.number(),
-  types.boolean(),
   z.array(types.string()),
   z.array(types.number()),
+  types.boolean(),
 ]);
 /** @internal */
 export type GetIntegrationResourceMetadata$Outbound =
   | string
   | number
-  | boolean
   | Array<string>
-  | Array<number>;
+  | Array<number>
+  | boolean;
 
 /** @internal */
 export const GetIntegrationResourceMetadata$outboundSchema: z.ZodType<
@@ -343,9 +343,9 @@ export const GetIntegrationResourceMetadata$outboundSchema: z.ZodType<
 > = smartUnion([
   z.string(),
   z.number(),
-  z.boolean(),
   z.array(z.string()),
   z.array(z.number()),
+  z.boolean(),
 ]);
 
 export function getIntegrationResourceMetadataToJSON(
@@ -390,9 +390,9 @@ export const GetIntegrationResourceResponseBody$inboundSchema: z.ZodType<
       smartUnion([
         types.string(),
         types.number(),
-        types.boolean(),
         z.array(types.string()),
         z.array(types.number()),
+        types.boolean(),
       ]),
     ),
   ),
@@ -408,7 +408,7 @@ export type GetIntegrationResourceResponseBody$Outbound = {
   notification?: GetIntegrationResourceNotification$Outbound | undefined;
   billingPlanId?: string | undefined;
   metadata?: {
-    [k: string]: string | number | boolean | Array<string> | Array<number>;
+    [k: string]: string | number | Array<string> | Array<number> | boolean;
   } | undefined;
 };
 
@@ -431,9 +431,9 @@ export const GetIntegrationResourceResponseBody$outboundSchema: z.ZodType<
     smartUnion([
       z.string(),
       z.number(),
-      z.boolean(),
       z.array(z.string()),
       z.array(z.number()),
+      z.boolean(),
     ]),
   ).optional(),
 });

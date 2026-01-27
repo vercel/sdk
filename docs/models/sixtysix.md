@@ -8,22 +8,15 @@ The payload of the event, if requested.
 import { SixtySix } from "@vercel/sdk/models/userevent.js";
 
 let value: SixtySix = {
-  projectId: "<id>",
-  restore: true,
-  configVersion: 1679.11,
-  configChangeCount: 3027.85,
-  configChanges: [
-    {},
-  ],
+  enabled: true,
+  updatedAt: 1679.11,
 };
 ```
 
 ## Fields
 
-| Field                                                | Type                                                 | Required                                             | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `projectId`                                          | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
-| `restore`                                            | *boolean*                                            | :heavy_check_mark:                                   | N/A                                                  |
-| `configVersion`                                      | *number*                                             | :heavy_check_mark:                                   | N/A                                                  |
-| `configChangeCount`                                  | *number*                                             | :heavy_check_mark:                                   | N/A                                                  |
-| `configChanges`                                      | [models.ConfigChanges](../models/configchanges.md)[] | :heavy_check_mark:                                   | N/A                                                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
+| `updatedAt`        | *number*           | :heavy_check_mark: | N/A                |
+| `firstEnabledAt`   | *number*           | :heavy_minus_sign: | N/A                |

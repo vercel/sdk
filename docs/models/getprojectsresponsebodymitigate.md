@@ -6,7 +6,7 @@
 import { GetProjectsResponseBodyMitigate } from "@vercel/sdk/models/getprojectsop.js";
 
 let value: GetProjectsResponseBodyMitigate = {
-  action: "deny",
+  action: "log",
   ruleId: "<id>",
 };
 ```

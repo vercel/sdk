@@ -78,8 +78,8 @@ export type UpdateCustomEnvironmentRequest = {
  * The type of environment (production, preview, or development)
  */
 export const UpdateCustomEnvironmentEnvironmentType = {
-  Preview: "preview",
   Production: "production",
+  Preview: "preview",
   Development: "development",
 } as const;
 /**

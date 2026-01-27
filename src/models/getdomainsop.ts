@@ -120,10 +120,6 @@ export type GetDomainsDomains = {
    */
   id: string;
   /**
-   * Timestamp in milliseconds at which the domain was ordered.
-   */
-  orderedAt?: number | undefined;
-  /**
    * Indicates whether the domain is set to automatically renew.
    */
   renew?: boolean | undefined;
@@ -291,7 +287,6 @@ export const GetDomainsDomains$inboundSchema: z.ZodType<
   createdAt: types.number(),
   expiresAt: types.nullable(types.number()),
   id: types.string(),
-  orderedAt: types.optional(types.number()),
   renew: types.optional(types.boolean()),
   serviceType: GetDomainsServiceType$inboundSchema,
   transferredAt: z.nullable(types.number()).optional(),
@@ -312,7 +307,6 @@ export type GetDomainsDomains$Outbound = {
   createdAt: number;
   expiresAt: number | null;
   id: string;
-  orderedAt?: number | undefined;
   renew?: boolean | undefined;
   serviceType: string;
   transferredAt?: number | null | undefined;
@@ -338,7 +332,6 @@ export const GetDomainsDomains$outboundSchema: z.ZodType<
   createdAt: z.number(),
   expiresAt: z.nullable(z.number()),
   id: z.string(),
-  orderedAt: z.number().optional(),
   renew: z.boolean().optional(),
   serviceType: GetDomainsServiceType$outboundSchema,
   transferredAt: z.nullable(z.number()).optional(),

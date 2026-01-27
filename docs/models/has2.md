@@ -3,19 +3,18 @@
 ## Example Usage
 
 ```typescript
-import { Has2 } from "@vercel/sdk/models/updateprojectdatacacheop.js";
+import { Has2 } from "@vercel/sdk/models/createdeploymentop.js";
 
 let value: Has2 = {
-  type: "host",
-  value: {
-    eq: "<value>",
-  },
+  type: "header",
+  key: "<key>",
 };
 ```
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `type`                                   | *"host"*                                 | :heavy_check_mark:                       | N/A                                      |
-| `value`                                  | [models.HasValue](../models/hasvalue.md) | :heavy_check_mark:                       | N/A                                      |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `type`                                                                 | [models.CreateDeploymentHasType](../models/createdeploymenthastype.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `key`                                                                  | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `value`                                                                | *models.HasValue*                                                      | :heavy_minus_sign:                                                     | N/A                                                                    |

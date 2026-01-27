@@ -506,6 +506,7 @@ run();
 * [updateInstallationIntegrationConfiguration](docs/sdks/marketplace/README.md#updateinstallationintegrationconfiguration) - Patch an existing experimentation item
 * [deleteInstallationIntegrationConfiguration](docs/sdks/marketplace/README.md#deleteinstallationintegrationconfiguration) - Delete an existing experimentation item
 * [createInstallationIntegrationEdgeConfig](docs/sdks/marketplace/README.md#createinstallationintegrationedgeconfig) - Get the data of a user-provided Edge Config
+* [getV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig](docs/sdks/marketplace/README.md#getv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfig) - Get the data of a user-provided Edge Config
 * [updateInstallationIntegrationEdgeConfig](docs/sdks/marketplace/README.md#updateinstallationintegrationedgeconfig) - Push data into a user-provided Edge Config
 
 ### [ProjectMembers](docs/sdks/projectmembers/README.md)
@@ -516,7 +517,6 @@ run();
 
 ### [Projects](docs/sdks/projects/README.md)
 
-* [updateProjectDataCache](docs/sdks/projects/README.md#updateprojectdatacache) - Update the data cache feature
 * [getProjects](docs/sdks/projects/README.md#getprojects) - Retrieve a list of projects
 * [createProject](docs/sdks/projects/README.md#createproject) - Create a new project
 * [updateProject](docs/sdks/projects/README.md#updateproject) - Update an existing project
@@ -769,6 +769,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`marketplaceGetIntegrationResources`](docs/sdks/marketplace/README.md#getintegrationresources) - Get Integration Resources
 - [`marketplaceGetInvoice`](docs/sdks/marketplace/README.md#getinvoice) - Get Invoice
 - [`marketplaceGetMember`](docs/sdks/marketplace/README.md#getmember) - Get Member Information
+- [`marketplaceGetV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig`](docs/sdks/marketplace/README.md#getv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfig) - Get the data of a user-provided Edge Config
 - [`marketplaceImportResource`](docs/sdks/marketplace/README.md#importresource) - Import Resource
 - [`marketplaceSubmitBillingData`](docs/sdks/marketplace/README.md#submitbillingdata) - Submit Billing Data
 - [`marketplaceSubmitInvoice`](docs/sdks/marketplace/README.md#submitinvoice) - Submit Invoice
@@ -804,7 +805,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`projectsRequestPromote`](docs/sdks/projects/README.md#requestpromote) - Points all production domains for a project to the given deploy
 - [`projectsUnpauseProject`](docs/sdks/projects/README.md#unpauseproject) - Unpause a project
 - [`projectsUpdateProject`](docs/sdks/projects/README.md#updateproject) - Update an existing project
-- [`projectsUpdateProjectDataCache`](docs/sdks/projects/README.md#updateprojectdatacache) - Update the data cache feature
 - [`projectsUpdateProjectDomain`](docs/sdks/projects/README.md#updateprojectdomain) - Update a project domain
 - [`projectsUpdateProjectProtectionBypass`](docs/sdks/projects/README.md#updateprojectprotectionbypass) - Update Protection Bypass for Automation
 - [`projectsVerifyProjectDomain`](docs/sdks/projects/README.md#verifyprojectdomain) - Verify project domain

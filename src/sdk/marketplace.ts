@@ -13,6 +13,9 @@ import { marketplaceGetIntegrationResource } from "../funcs/marketplaceGetIntegr
 import { marketplaceGetIntegrationResources } from "../funcs/marketplaceGetIntegrationResources.js";
 import { marketplaceGetInvoice } from "../funcs/marketplaceGetInvoice.js";
 import { marketplaceGetMember } from "../funcs/marketplaceGetMember.js";
+import {
+  marketplaceGetV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig,
+} from "../funcs/marketplaceGetV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig.js";
 import { marketplaceImportResource } from "../funcs/marketplaceImportResource.js";
 import { marketplaceSubmitBillingData } from "../funcs/marketplaceSubmitBillingData.js";
 import { marketplaceSubmitInvoice } from "../funcs/marketplaceSubmitInvoice.js";
@@ -54,6 +57,10 @@ import {
   GetMemberRequest,
   GetMemberResponseBody,
 } from "../models/getmemberop.js";
+import {
+  GetV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest,
+  GetV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody,
+} from "../models/getv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigop.js";
 import {
   HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest,
   HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody,
@@ -451,6 +458,29 @@ export class Marketplace extends ClientSDK {
       request,
       options,
     ));
+  }
+
+  /**
+   * Get the data of a user-provided Edge Config
+   *
+   * @remarks
+   * When the user enabled Edge Config syncing, then this endpoint can be used by the partner to fetch the contents of the Edge Config.
+   */
+  async getV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig(
+    request:
+      GetV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest,
+    options?: RequestOptions,
+  ): Promise<
+    | GetV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody
+    | undefined
+  > {
+    return unwrapAsync(
+      marketplaceGetV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig(
+        this,
+        request,
+        options,
+      ),
+    );
   }
 
   /**

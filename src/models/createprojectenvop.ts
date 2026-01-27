@@ -35,7 +35,7 @@ export type CreateProjectEnv2Target = ClosedEnum<
   typeof CreateProjectEnv2Target
 >;
 
-export type Two2 = {
+export type CreateProjectEnv22 = {
   /**
    * The name of the environment variable
    */
@@ -88,7 +88,7 @@ export const TwoTarget = {
 } as const;
 export type TwoTarget = ClosedEnum<typeof TwoTarget>;
 
-export type Two1 = {
+export type CreateProjectEnv21 = {
   /**
    * The name of the environment variable
    */
@@ -119,7 +119,9 @@ export type Two1 = {
   customEnvironmentIds?: Array<string> | undefined;
 };
 
-export type CreateProjectEnvRequestBody2 = Two1 | Two2;
+export type CreateProjectEnvRequestBody2 =
+  | CreateProjectEnv21
+  | CreateProjectEnv22;
 
 /**
  * The type of environment variable
@@ -236,7 +238,7 @@ export type CreateProjectEnvRequestBody1 =
 export type CreateProjectEnvRequestBody =
   | CreateProjectEnv11
   | CreateProjectEnv12
-  | Array<Two1 | Two2>;
+  | Array<CreateProjectEnv21 | CreateProjectEnv22>;
 
 export type CreateProjectEnvRequest = {
   /**
@@ -255,7 +257,10 @@ export type CreateProjectEnvRequest = {
    * The Team slug to perform the request on behalf of.
    */
   slug?: string | undefined;
-  requestBody: CreateProjectEnv11 | CreateProjectEnv12 | Array<Two1 | Two2>;
+  requestBody:
+    | CreateProjectEnv11
+    | CreateProjectEnv12
+    | Array<CreateProjectEnv21 | CreateProjectEnv22>;
 };
 
 export const CreateProjectEnvTargetProjects2 = {
@@ -402,6 +407,10 @@ export type Created2 = {
    * This is used to identify variables that have been migrated from type secret to sensitive.
    */
   sunsetSecretId?: string | undefined;
+  /**
+   * Legacy now-encryption ciphertext, present after migration swaps value/vsmValue
+   */
+  legacyValue?: string | undefined;
   decrypted?: boolean | undefined;
   value: string;
   vsmValue?: string | undefined;
@@ -596,6 +605,10 @@ export type Created1 = {
    * This is used to identify variables that have been migrated from type secret to sensitive.
    */
   sunsetSecretId?: string | undefined;
+  /**
+   * Legacy now-encryption ciphertext, present after migration swaps value/vsmValue
+   */
+  legacyValue?: string | undefined;
   decrypted?: boolean | undefined;
   value: string;
   vsmValue?: string | undefined;
@@ -717,18 +730,21 @@ export const CreateProjectEnv2Target$outboundSchema: z.ZodNativeEnum<
 > = CreateProjectEnv2Target$inboundSchema;
 
 /** @internal */
-export const Two2$inboundSchema: z.ZodType<Two2, z.ZodTypeDef, unknown> = z
-  .object({
-    key: types.string(),
-    value: types.string(),
-    type: CreateProjectEnv2Type$inboundSchema,
-    target: types.optional(z.array(CreateProjectEnv2Target$inboundSchema)),
-    gitBranch: z.nullable(types.string()).optional(),
-    comment: types.optional(types.string()),
-    customEnvironmentIds: z.array(types.string()),
-  });
+export const CreateProjectEnv22$inboundSchema: z.ZodType<
+  CreateProjectEnv22,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  key: types.string(),
+  value: types.string(),
+  type: CreateProjectEnv2Type$inboundSchema,
+  target: types.optional(z.array(CreateProjectEnv2Target$inboundSchema)),
+  gitBranch: z.nullable(types.string()).optional(),
+  comment: types.optional(types.string()),
+  customEnvironmentIds: z.array(types.string()),
+});
 /** @internal */
-export type Two2$Outbound = {
+export type CreateProjectEnv22$Outbound = {
   key: string;
   value: string;
   type: string;
@@ -739,27 +755,34 @@ export type Two2$Outbound = {
 };
 
 /** @internal */
-export const Two2$outboundSchema: z.ZodType<Two2$Outbound, z.ZodTypeDef, Two2> =
-  z.object({
-    key: z.string(),
-    value: z.string(),
-    type: CreateProjectEnv2Type$outboundSchema,
-    target: z.array(CreateProjectEnv2Target$outboundSchema).optional(),
-    gitBranch: z.nullable(z.string()).optional(),
-    comment: z.string().optional(),
-    customEnvironmentIds: z.array(z.string()),
-  });
+export const CreateProjectEnv22$outboundSchema: z.ZodType<
+  CreateProjectEnv22$Outbound,
+  z.ZodTypeDef,
+  CreateProjectEnv22
+> = z.object({
+  key: z.string(),
+  value: z.string(),
+  type: CreateProjectEnv2Type$outboundSchema,
+  target: z.array(CreateProjectEnv2Target$outboundSchema).optional(),
+  gitBranch: z.nullable(z.string()).optional(),
+  comment: z.string().optional(),
+  customEnvironmentIds: z.array(z.string()),
+});
 
-export function two2ToJSON(two2: Two2): string {
-  return JSON.stringify(Two2$outboundSchema.parse(two2));
+export function createProjectEnv22ToJSON(
+  createProjectEnv22: CreateProjectEnv22,
+): string {
+  return JSON.stringify(
+    CreateProjectEnv22$outboundSchema.parse(createProjectEnv22),
+  );
 }
-export function two2FromJSON(
+export function createProjectEnv22FromJSON(
   jsonString: string,
-): SafeParseResult<Two2, SDKValidationError> {
+): SafeParseResult<CreateProjectEnv22, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Two2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Two2' from JSON`,
+    (x) => CreateProjectEnv22$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectEnv22' from JSON`,
   );
 }
 
@@ -778,18 +801,21 @@ export const TwoTarget$outboundSchema: z.ZodNativeEnum<typeof TwoTarget> =
   TwoTarget$inboundSchema;
 
 /** @internal */
-export const Two1$inboundSchema: z.ZodType<Two1, z.ZodTypeDef, unknown> = z
-  .object({
-    key: types.string(),
-    value: types.string(),
-    type: TwoType$inboundSchema,
-    target: z.array(TwoTarget$inboundSchema),
-    gitBranch: z.nullable(types.string()).optional(),
-    comment: types.optional(types.string()),
-    customEnvironmentIds: types.optional(z.array(types.string())),
-  });
+export const CreateProjectEnv21$inboundSchema: z.ZodType<
+  CreateProjectEnv21,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  key: types.string(),
+  value: types.string(),
+  type: TwoType$inboundSchema,
+  target: z.array(TwoTarget$inboundSchema),
+  gitBranch: z.nullable(types.string()).optional(),
+  comment: types.optional(types.string()),
+  customEnvironmentIds: types.optional(z.array(types.string())),
+});
 /** @internal */
-export type Two1$Outbound = {
+export type CreateProjectEnv21$Outbound = {
   key: string;
   value: string;
   type: string;
@@ -800,27 +826,34 @@ export type Two1$Outbound = {
 };
 
 /** @internal */
-export const Two1$outboundSchema: z.ZodType<Two1$Outbound, z.ZodTypeDef, Two1> =
-  z.object({
-    key: z.string(),
-    value: z.string(),
-    type: TwoType$outboundSchema,
-    target: z.array(TwoTarget$outboundSchema),
-    gitBranch: z.nullable(z.string()).optional(),
-    comment: z.string().optional(),
-    customEnvironmentIds: z.array(z.string()).optional(),
-  });
+export const CreateProjectEnv21$outboundSchema: z.ZodType<
+  CreateProjectEnv21$Outbound,
+  z.ZodTypeDef,
+  CreateProjectEnv21
+> = z.object({
+  key: z.string(),
+  value: z.string(),
+  type: TwoType$outboundSchema,
+  target: z.array(TwoTarget$outboundSchema),
+  gitBranch: z.nullable(z.string()).optional(),
+  comment: z.string().optional(),
+  customEnvironmentIds: z.array(z.string()).optional(),
+});
 
-export function two1ToJSON(two1: Two1): string {
-  return JSON.stringify(Two1$outboundSchema.parse(two1));
+export function createProjectEnv21ToJSON(
+  createProjectEnv21: CreateProjectEnv21,
+): string {
+  return JSON.stringify(
+    CreateProjectEnv21$outboundSchema.parse(createProjectEnv21),
+  );
 }
-export function two1FromJSON(
+export function createProjectEnv21FromJSON(
   jsonString: string,
-): SafeParseResult<Two1, SDKValidationError> {
+): SafeParseResult<CreateProjectEnv21, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Two1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Two1' from JSON`,
+    (x) => CreateProjectEnv21$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectEnv21' from JSON`,
   );
 }
 
@@ -830,13 +863,13 @@ export const CreateProjectEnvRequestBody2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  z.lazy(() => Two1$inboundSchema),
-  z.lazy(() => Two2$inboundSchema),
+  z.lazy(() => CreateProjectEnv21$inboundSchema),
+  z.lazy(() => CreateProjectEnv22$inboundSchema),
 ]);
 /** @internal */
 export type CreateProjectEnvRequestBody2$Outbound =
-  | Two1$Outbound
-  | Two2$Outbound;
+  | CreateProjectEnv21$Outbound
+  | CreateProjectEnv22$Outbound;
 
 /** @internal */
 export const CreateProjectEnvRequestBody2$outboundSchema: z.ZodType<
@@ -844,8 +877,8 @@ export const CreateProjectEnvRequestBody2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectEnvRequestBody2
 > = smartUnion([
-  z.lazy(() => Two1$outboundSchema),
-  z.lazy(() => Two2$outboundSchema),
+  z.lazy(() => CreateProjectEnv21$outboundSchema),
+  z.lazy(() => CreateProjectEnv22$outboundSchema),
 ]);
 
 export function createProjectEnvRequestBody2ToJSON(
@@ -1068,8 +1101,8 @@ export const CreateProjectEnvRequestBody$inboundSchema: z.ZodType<
   ]),
   z.array(
     smartUnion([
-      z.lazy(() => Two1$inboundSchema),
-      z.lazy(() => Two2$inboundSchema),
+      z.lazy(() => CreateProjectEnv21$inboundSchema),
+      z.lazy(() => CreateProjectEnv22$inboundSchema),
     ]),
   ),
 ]);
@@ -1077,7 +1110,7 @@ export const CreateProjectEnvRequestBody$inboundSchema: z.ZodType<
 export type CreateProjectEnvRequestBody$Outbound =
   | CreateProjectEnv11$Outbound
   | CreateProjectEnv12$Outbound
-  | Array<Two1$Outbound | Two2$Outbound>;
+  | Array<CreateProjectEnv21$Outbound | CreateProjectEnv22$Outbound>;
 
 /** @internal */
 export const CreateProjectEnvRequestBody$outboundSchema: z.ZodType<
@@ -1091,8 +1124,8 @@ export const CreateProjectEnvRequestBody$outboundSchema: z.ZodType<
   ]),
   z.array(
     smartUnion([
-      z.lazy(() => Two1$outboundSchema),
-      z.lazy(() => Two2$outboundSchema),
+      z.lazy(() => CreateProjectEnv21$outboundSchema),
+      z.lazy(() => CreateProjectEnv22$outboundSchema),
     ]),
   ),
 ]);
@@ -1133,8 +1166,8 @@ export const CreateProjectEnvRequest$inboundSchema: z.ZodType<
     ]),
     z.array(
       smartUnion([
-        z.lazy(() => Two1$inboundSchema),
-        z.lazy(() => Two2$inboundSchema),
+        z.lazy(() => CreateProjectEnv21$inboundSchema),
+        z.lazy(() => CreateProjectEnv22$inboundSchema),
       ]),
     ),
   ]),
@@ -1152,7 +1185,7 @@ export type CreateProjectEnvRequest$Outbound = {
   RequestBody:
     | CreateProjectEnv11$Outbound
     | CreateProjectEnv12$Outbound
-    | Array<Two1$Outbound | Two2$Outbound>;
+    | Array<CreateProjectEnv21$Outbound | CreateProjectEnv22$Outbound>;
 };
 
 /** @internal */
@@ -1172,8 +1205,8 @@ export const CreateProjectEnvRequest$outboundSchema: z.ZodType<
     ]),
     z.array(
       smartUnion([
-        z.lazy(() => Two1$outboundSchema),
-        z.lazy(() => Two2$outboundSchema),
+        z.lazy(() => CreateProjectEnv21$outboundSchema),
+        z.lazy(() => CreateProjectEnv22$outboundSchema),
       ]),
     ),
   ]),
@@ -2099,6 +2132,7 @@ export const Created2$inboundSchema: z.ZodType<
   ),
   type: CreateProjectEnvCreatedType$inboundSchema,
   sunsetSecretId: types.optional(types.string()),
+  legacyValue: types.optional(types.string()),
   decrypted: types.optional(types.boolean()),
   value: types.string(),
   vsmValue: types.optional(types.string()),
@@ -2143,6 +2177,7 @@ export type Created2$Outbound = {
   target?: Array<string> | string | undefined;
   type: string;
   sunsetSecretId?: string | undefined;
+  legacyValue?: string | undefined;
   decrypted?: boolean | undefined;
   value: string;
   vsmValue?: string | undefined;
@@ -2195,6 +2230,7 @@ export const Created2$outboundSchema: z.ZodType<
   ]).optional(),
   type: CreateProjectEnvCreatedType$outboundSchema,
   sunsetSecretId: z.string().optional(),
+  legacyValue: z.string().optional(),
   decrypted: z.boolean().optional(),
   value: z.string(),
   vsmValue: z.string().optional(),
@@ -3122,6 +3158,7 @@ export const Created1$inboundSchema: z.ZodType<
   ),
   type: CreatedType$inboundSchema,
   sunsetSecretId: types.optional(types.string()),
+  legacyValue: types.optional(types.string()),
   decrypted: types.optional(types.boolean()),
   value: types.string(),
   vsmValue: types.optional(types.string()),
@@ -3166,6 +3203,7 @@ export type Created1$Outbound = {
   target?: Array<string> | string | undefined;
   type: string;
   sunsetSecretId?: string | undefined;
+  legacyValue?: string | undefined;
   decrypted?: boolean | undefined;
   value: string;
   vsmValue?: string | undefined;
@@ -3215,6 +3253,7 @@ export const Created1$outboundSchema: z.ZodType<
   ]).optional(),
   type: CreatedType$outboundSchema,
   sunsetSecretId: z.string().optional(),
+  legacyValue: z.string().optional(),
   decrypted: z.boolean().optional(),
   value: z.string(),
   vsmValue: z.string().optional(),

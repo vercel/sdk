@@ -8,18 +8,15 @@ The payload of the event, if requested.
 import { EightyNine } from "@vercel/sdk/models/userevent.js";
 
 let value: EightyNine = {
-  projectName: "<value>",
-  ssoProtection: {
-    deploymentType: "all_except_custom_domains",
-  },
-  oldSsoProtection: null,
+  projectId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                         | Type                          | Required                      | Description                   |
-| ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
-| `projectName`                 | *string*                      | :heavy_check_mark:            | N/A                           |
-| `ssoProtection`               | *models.PayloadSsoProtection* | :heavy_check_mark:            | N/A                           |
-| `oldSsoProtection`            | *models.OldSsoProtection*     | :heavy_check_mark:            | N/A                           |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `projectName`          | *string*               | :heavy_minus_sign:     | N/A                    |
+| `projectId`            | *string*               | :heavy_check_mark:     | N/A                    |
+| `projectAnalytics`     | Record<string, *any*>  | :heavy_minus_sign:     | N/A                    |
+| `prevProjectAnalytics` | Record<string, *any*>  | :heavy_minus_sign:     | N/A                    |

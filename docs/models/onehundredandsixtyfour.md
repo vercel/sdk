@@ -8,14 +8,16 @@ The payload of the event, if requested.
 import { OneHundredAndSixtyFour } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndSixtyFour = {
-  oldName: "<value>",
-  newName: "<value>",
+  previousRole: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `oldName`          | *string*           | :heavy_check_mark: | N/A                |
-| `newName`          | *string*           | :heavy_check_mark: | N/A                |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `directoryType`                                | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `updatedUser`                                  | [models.UpdatedUser](../models/updateduser.md) | :heavy_minus_sign:                             | N/A                                            |
+| `role`                                         | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `previousRole`                                 | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `updatedUid`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |

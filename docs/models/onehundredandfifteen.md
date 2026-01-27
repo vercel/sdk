@@ -8,23 +8,16 @@ The payload of the event, if requested.
 import { OneHundredAndFifteen } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndFifteen = {
-  budget: {
-    type: "fixed",
-    fixedBudget: 9401.51,
-    previousSpend: [
-      9731.65,
-    ],
-    notifiedAt: [],
-    createdAt: 7362.68,
-    isActive: true,
-    teamId: "<id>",
-    id: "<id>",
-  },
+  projectId: "<id>",
+  projectName: "<value>",
+  enableAffectedProjectsDeployments: false,
 };
 ```
 
 ## Fields
 
-| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `budget`                                                                | [models.PayloadBudget](../models/payloadbudget.md)                      | :heavy_check_mark:                                                      | Represents a budget for tracking and notifying teams on their spending. |
+| Field                               | Type                                | Required                            | Description                         |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| `projectId`                         | *string*                            | :heavy_check_mark:                  | N/A                                 |
+| `projectName`                       | *string*                            | :heavy_check_mark:                  | N/A                                 |
+| `enableAffectedProjectsDeployments` | *boolean*                           | :heavy_check_mark:                  | N/A                                 |

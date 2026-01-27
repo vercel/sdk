@@ -203,10 +203,13 @@ export const GetWebhooksResponseBodyFramework = {
   Hono: "hono",
   Express: "express",
   H3: "h3",
+  Koa: "koa",
   Nestjs: "nestjs",
   Elysia: "elysia",
   Fastify: "fastify",
   Xmcp: "xmcp",
+  Python: "python",
+  Services: "services",
 } as const;
 export type GetWebhooksResponseBodyFramework = ClosedEnum<
   typeof GetWebhooksResponseBodyFramework

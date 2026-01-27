@@ -19,9 +19,10 @@ let value: MfaConfiguration = {
 
 ## Fields
 
-| Field                            | Type                             | Required                         | Description                      |
-| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
-| `enabled`                        | *boolean*                        | :heavy_check_mark:               | N/A                              |
-| `enabledAt`                      | *number*                         | :heavy_minus_sign:               | N/A                              |
-| `recoveryCodes`                  | *string*[]                       | :heavy_check_mark:               | N/A                              |
-| `totp`                           | [models.Totp](../models/totp.md) | :heavy_minus_sign:               | N/A                              |
+| Field                                                                             | Type                                                                              | Required                                                                          | Description                                                                       |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `enabled`                                                                         | *boolean*                                                                         | :heavy_check_mark:                                                                | N/A                                                                               |
+| `enabledAt`                                                                       | *number*                                                                          | :heavy_minus_sign:                                                                | N/A                                                                               |
+| `recoveryCodes`                                                                   | *string*[]                                                                        | :heavy_check_mark:                                                                | N/A                                                                               |
+| `totp`                                                                            | [models.Totp](../models/totp.md)                                                  | :heavy_minus_sign:                                                                | N/A                                                                               |
+| `history`                                                                         | [models.PayloadHistory](../models/payloadhistory.md)[]                            | :heavy_minus_sign:                                                                | History of MFA state changes (enabled/disabled events). Most recent events first. |

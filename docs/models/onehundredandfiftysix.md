@@ -8,20 +8,12 @@ The payload of the event, if requested.
 import { OneHundredAndFiftySix } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndFiftySix = {
-  edgeConfigId: "<id>",
-  edgeConfigSlug: "<value>",
-  edgeConfigTokenIds: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
+  storeType: "postgres",
 };
 ```
 
 ## Fields
 
-| Field                 | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `edgeConfigId`        | *string*              | :heavy_check_mark:    | N/A                   |
-| `edgeConfigSlug`      | *string*              | :heavy_check_mark:    | N/A                   |
-| `edgeConfigTokenIds`  | *string*[]            | :heavy_check_mark:    | ids of deleted tokens |
+| Field                                      | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `storeType`                                | [models.StoreType](../models/storetype.md) | :heavy_check_mark:                         | N/A                                        |

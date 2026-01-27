@@ -15,17 +15,13 @@ const value: string = "<value>";
 const value: number = 1284.03;
 ```
 
-### `boolean`
-
-```typescript
-const value: boolean = true;
-```
-
 ### `models.FlagJSONValue[]`
 
 ```typescript
 const value: models.FlagJSONValue[] = [
-  [],
+  {
+    "key": true,
+  },
 ];
 ```
 
@@ -35,5 +31,11 @@ const value: models.FlagJSONValue[] = [
 const value: { [k: string]: models.FlagJSONValue } = {
   "key": "<value>",
 };
+```
+
+### `boolean`
+
+```typescript
+const value: boolean = true;
 ```
 

@@ -902,26 +902,17 @@ func (o *GetConfigurationProductsUIReadOnly10) GetExpr() string {
 type GetConfigurationProductsUIReadOnlyUnion10Type string
 
 const (
-	GetConfigurationProductsUIReadOnlyUnion10TypeBoolean                                  GetConfigurationProductsUIReadOnlyUnion10Type = "boolean"
 	GetConfigurationProductsUIReadOnlyUnion10TypeGetConfigurationProductsUIReadOnly10     GetConfigurationProductsUIReadOnlyUnion10Type = "getConfigurationProducts_ui:read-only_10"
+	GetConfigurationProductsUIReadOnlyUnion10TypeBoolean                                  GetConfigurationProductsUIReadOnlyUnion10Type = "boolean"
 	GetConfigurationProductsUIReadOnlyUnion10TypeGetConfigurationProductsUIReadOnlyEnum10 GetConfigurationProductsUIReadOnlyUnion10Type = "getConfigurationProducts_ui:read-only_enum_10"
 )
 
 type GetConfigurationProductsUIReadOnlyUnion10 struct {
-	Boolean                                  *bool                                     `queryParam:"inline"`
 	GetConfigurationProductsUIReadOnly10     *GetConfigurationProductsUIReadOnly10     `queryParam:"inline"`
+	Boolean                                  *bool                                     `queryParam:"inline"`
 	GetConfigurationProductsUIReadOnlyEnum10 *GetConfigurationProductsUIReadOnlyEnum10 `queryParam:"inline"`
 
 	Type GetConfigurationProductsUIReadOnlyUnion10Type
-}
-
-func CreateGetConfigurationProductsUIReadOnlyUnion10Boolean(boolean bool) GetConfigurationProductsUIReadOnlyUnion10 {
-	typ := GetConfigurationProductsUIReadOnlyUnion10TypeBoolean
-
-	return GetConfigurationProductsUIReadOnlyUnion10{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsUIReadOnlyUnion10GetConfigurationProductsUIReadOnly10(getConfigurationProductsUIReadOnly10 GetConfigurationProductsUIReadOnly10) GetConfigurationProductsUIReadOnlyUnion10 {
@@ -930,6 +921,15 @@ func CreateGetConfigurationProductsUIReadOnlyUnion10GetConfigurationProductsUIRe
 	return GetConfigurationProductsUIReadOnlyUnion10{
 		GetConfigurationProductsUIReadOnly10: &getConfigurationProductsUIReadOnly10,
 		Type:                                 typ,
+	}
+}
+
+func CreateGetConfigurationProductsUIReadOnlyUnion10Boolean(boolean bool) GetConfigurationProductsUIReadOnlyUnion10 {
+	typ := GetConfigurationProductsUIReadOnlyUnion10TypeBoolean
+
+	return GetConfigurationProductsUIReadOnlyUnion10{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -969,12 +969,12 @@ func (u *GetConfigurationProductsUIReadOnlyUnion10) UnmarshalJSON(data []byte) e
 }
 
 func (u GetConfigurationProductsUIReadOnlyUnion10) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsUIReadOnly10 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsUIReadOnly10, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsUIReadOnlyEnum10 != nil {
@@ -1035,26 +1035,17 @@ func (o *GetConfigurationProductsUIHidden10) GetExpr() string {
 type GetConfigurationProductsUIHiddenUnion10Type string
 
 const (
-	GetConfigurationProductsUIHiddenUnion10TypeBoolean                                GetConfigurationProductsUIHiddenUnion10Type = "boolean"
 	GetConfigurationProductsUIHiddenUnion10TypeGetConfigurationProductsUIHidden10     GetConfigurationProductsUIHiddenUnion10Type = "getConfigurationProducts_ui:hidden_10"
+	GetConfigurationProductsUIHiddenUnion10TypeBoolean                                GetConfigurationProductsUIHiddenUnion10Type = "boolean"
 	GetConfigurationProductsUIHiddenUnion10TypeGetConfigurationProductsUIHiddenEnum10 GetConfigurationProductsUIHiddenUnion10Type = "getConfigurationProducts_ui:hidden_enum_10"
 )
 
 type GetConfigurationProductsUIHiddenUnion10 struct {
-	Boolean                                *bool                                   `queryParam:"inline"`
 	GetConfigurationProductsUIHidden10     *GetConfigurationProductsUIHidden10     `queryParam:"inline"`
+	Boolean                                *bool                                   `queryParam:"inline"`
 	GetConfigurationProductsUIHiddenEnum10 *GetConfigurationProductsUIHiddenEnum10 `queryParam:"inline"`
 
 	Type GetConfigurationProductsUIHiddenUnion10Type
-}
-
-func CreateGetConfigurationProductsUIHiddenUnion10Boolean(boolean bool) GetConfigurationProductsUIHiddenUnion10 {
-	typ := GetConfigurationProductsUIHiddenUnion10TypeBoolean
-
-	return GetConfigurationProductsUIHiddenUnion10{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsUIHiddenUnion10GetConfigurationProductsUIHidden10(getConfigurationProductsUIHidden10 GetConfigurationProductsUIHidden10) GetConfigurationProductsUIHiddenUnion10 {
@@ -1063,6 +1054,15 @@ func CreateGetConfigurationProductsUIHiddenUnion10GetConfigurationProductsUIHidd
 	return GetConfigurationProductsUIHiddenUnion10{
 		GetConfigurationProductsUIHidden10: &getConfigurationProductsUIHidden10,
 		Type:                               typ,
+	}
+}
+
+func CreateGetConfigurationProductsUIHiddenUnion10Boolean(boolean bool) GetConfigurationProductsUIHiddenUnion10 {
+	typ := GetConfigurationProductsUIHiddenUnion10TypeBoolean
+
+	return GetConfigurationProductsUIHiddenUnion10{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -1102,12 +1102,12 @@ func (u *GetConfigurationProductsUIHiddenUnion10) UnmarshalJSON(data []byte) err
 }
 
 func (u GetConfigurationProductsUIHiddenUnion10) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsUIHidden10 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsUIHidden10, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsUIHiddenEnum10 != nil {
@@ -1168,26 +1168,17 @@ func (o *GetConfigurationProductsUIDisabled10) GetExpr() string {
 type GetConfigurationProductsUIDisabledUnion10Type string
 
 const (
-	GetConfigurationProductsUIDisabledUnion10TypeBoolean                                  GetConfigurationProductsUIDisabledUnion10Type = "boolean"
 	GetConfigurationProductsUIDisabledUnion10TypeGetConfigurationProductsUIDisabled10     GetConfigurationProductsUIDisabledUnion10Type = "getConfigurationProducts_ui:disabled_10"
+	GetConfigurationProductsUIDisabledUnion10TypeBoolean                                  GetConfigurationProductsUIDisabledUnion10Type = "boolean"
 	GetConfigurationProductsUIDisabledUnion10TypeGetConfigurationProductsUIDisabledEnum10 GetConfigurationProductsUIDisabledUnion10Type = "getConfigurationProducts_ui:disabled_enum_10"
 )
 
 type GetConfigurationProductsUIDisabledUnion10 struct {
-	Boolean                                  *bool                                     `queryParam:"inline"`
 	GetConfigurationProductsUIDisabled10     *GetConfigurationProductsUIDisabled10     `queryParam:"inline"`
+	Boolean                                  *bool                                     `queryParam:"inline"`
 	GetConfigurationProductsUIDisabledEnum10 *GetConfigurationProductsUIDisabledEnum10 `queryParam:"inline"`
 
 	Type GetConfigurationProductsUIDisabledUnion10Type
-}
-
-func CreateGetConfigurationProductsUIDisabledUnion10Boolean(boolean bool) GetConfigurationProductsUIDisabledUnion10 {
-	typ := GetConfigurationProductsUIDisabledUnion10TypeBoolean
-
-	return GetConfigurationProductsUIDisabledUnion10{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsUIDisabledUnion10GetConfigurationProductsUIDisabled10(getConfigurationProductsUIDisabled10 GetConfigurationProductsUIDisabled10) GetConfigurationProductsUIDisabledUnion10 {
@@ -1196,6 +1187,15 @@ func CreateGetConfigurationProductsUIDisabledUnion10GetConfigurationProductsUIDi
 	return GetConfigurationProductsUIDisabledUnion10{
 		GetConfigurationProductsUIDisabled10: &getConfigurationProductsUIDisabled10,
 		Type:                                 typ,
+	}
+}
+
+func CreateGetConfigurationProductsUIDisabledUnion10Boolean(boolean bool) GetConfigurationProductsUIDisabledUnion10 {
+	typ := GetConfigurationProductsUIDisabledUnion10TypeBoolean
+
+	return GetConfigurationProductsUIDisabledUnion10{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -1235,12 +1235,12 @@ func (u *GetConfigurationProductsUIDisabledUnion10) UnmarshalJSON(data []byte) e
 }
 
 func (u GetConfigurationProductsUIDisabledUnion10) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsUIDisabled10 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsUIDisabled10, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsUIDisabledEnum10 != nil {
@@ -1585,26 +1585,17 @@ func (o *GetConfigurationProductsUIReadOnly9) GetExpr() string {
 type GetConfigurationProductsUIReadOnlyUnion9Type string
 
 const (
-	GetConfigurationProductsUIReadOnlyUnion9TypeBoolean                                 GetConfigurationProductsUIReadOnlyUnion9Type = "boolean"
 	GetConfigurationProductsUIReadOnlyUnion9TypeGetConfigurationProductsUIReadOnly9     GetConfigurationProductsUIReadOnlyUnion9Type = "getConfigurationProducts_ui:read-only_9"
+	GetConfigurationProductsUIReadOnlyUnion9TypeBoolean                                 GetConfigurationProductsUIReadOnlyUnion9Type = "boolean"
 	GetConfigurationProductsUIReadOnlyUnion9TypeGetConfigurationProductsUIReadOnlyEnum9 GetConfigurationProductsUIReadOnlyUnion9Type = "getConfigurationProducts_ui:read-only_enum_9"
 )
 
 type GetConfigurationProductsUIReadOnlyUnion9 struct {
-	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIReadOnly9     *GetConfigurationProductsUIReadOnly9     `queryParam:"inline"`
+	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIReadOnlyEnum9 *GetConfigurationProductsUIReadOnlyEnum9 `queryParam:"inline"`
 
 	Type GetConfigurationProductsUIReadOnlyUnion9Type
-}
-
-func CreateGetConfigurationProductsUIReadOnlyUnion9Boolean(boolean bool) GetConfigurationProductsUIReadOnlyUnion9 {
-	typ := GetConfigurationProductsUIReadOnlyUnion9TypeBoolean
-
-	return GetConfigurationProductsUIReadOnlyUnion9{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsUIReadOnlyUnion9GetConfigurationProductsUIReadOnly9(getConfigurationProductsUIReadOnly9 GetConfigurationProductsUIReadOnly9) GetConfigurationProductsUIReadOnlyUnion9 {
@@ -1613,6 +1604,15 @@ func CreateGetConfigurationProductsUIReadOnlyUnion9GetConfigurationProductsUIRea
 	return GetConfigurationProductsUIReadOnlyUnion9{
 		GetConfigurationProductsUIReadOnly9: &getConfigurationProductsUIReadOnly9,
 		Type:                                typ,
+	}
+}
+
+func CreateGetConfigurationProductsUIReadOnlyUnion9Boolean(boolean bool) GetConfigurationProductsUIReadOnlyUnion9 {
+	typ := GetConfigurationProductsUIReadOnlyUnion9TypeBoolean
+
+	return GetConfigurationProductsUIReadOnlyUnion9{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -1652,12 +1652,12 @@ func (u *GetConfigurationProductsUIReadOnlyUnion9) UnmarshalJSON(data []byte) er
 }
 
 func (u GetConfigurationProductsUIReadOnlyUnion9) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsUIReadOnly9 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsUIReadOnly9, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsUIReadOnlyEnum9 != nil {
@@ -1718,26 +1718,17 @@ func (o *GetConfigurationProductsUIHidden9) GetExpr() string {
 type GetConfigurationProductsUIHiddenUnion9Type string
 
 const (
-	GetConfigurationProductsUIHiddenUnion9TypeBoolean                               GetConfigurationProductsUIHiddenUnion9Type = "boolean"
 	GetConfigurationProductsUIHiddenUnion9TypeGetConfigurationProductsUIHidden9     GetConfigurationProductsUIHiddenUnion9Type = "getConfigurationProducts_ui:hidden_9"
+	GetConfigurationProductsUIHiddenUnion9TypeBoolean                               GetConfigurationProductsUIHiddenUnion9Type = "boolean"
 	GetConfigurationProductsUIHiddenUnion9TypeGetConfigurationProductsUIHiddenEnum9 GetConfigurationProductsUIHiddenUnion9Type = "getConfigurationProducts_ui:hidden_enum_9"
 )
 
 type GetConfigurationProductsUIHiddenUnion9 struct {
-	Boolean                               *bool                                  `queryParam:"inline"`
 	GetConfigurationProductsUIHidden9     *GetConfigurationProductsUIHidden9     `queryParam:"inline"`
+	Boolean                               *bool                                  `queryParam:"inline"`
 	GetConfigurationProductsUIHiddenEnum9 *GetConfigurationProductsUIHiddenEnum9 `queryParam:"inline"`
 
 	Type GetConfigurationProductsUIHiddenUnion9Type
-}
-
-func CreateGetConfigurationProductsUIHiddenUnion9Boolean(boolean bool) GetConfigurationProductsUIHiddenUnion9 {
-	typ := GetConfigurationProductsUIHiddenUnion9TypeBoolean
-
-	return GetConfigurationProductsUIHiddenUnion9{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsUIHiddenUnion9GetConfigurationProductsUIHidden9(getConfigurationProductsUIHidden9 GetConfigurationProductsUIHidden9) GetConfigurationProductsUIHiddenUnion9 {
@@ -1746,6 +1737,15 @@ func CreateGetConfigurationProductsUIHiddenUnion9GetConfigurationProductsUIHidde
 	return GetConfigurationProductsUIHiddenUnion9{
 		GetConfigurationProductsUIHidden9: &getConfigurationProductsUIHidden9,
 		Type:                              typ,
+	}
+}
+
+func CreateGetConfigurationProductsUIHiddenUnion9Boolean(boolean bool) GetConfigurationProductsUIHiddenUnion9 {
+	typ := GetConfigurationProductsUIHiddenUnion9TypeBoolean
+
+	return GetConfigurationProductsUIHiddenUnion9{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -1785,12 +1785,12 @@ func (u *GetConfigurationProductsUIHiddenUnion9) UnmarshalJSON(data []byte) erro
 }
 
 func (u GetConfigurationProductsUIHiddenUnion9) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsUIHidden9 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsUIHidden9, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsUIHiddenEnum9 != nil {
@@ -1851,26 +1851,17 @@ func (o *GetConfigurationProductsUIDisabled9) GetExpr() string {
 type GetConfigurationProductsUIDisabledUnion9Type string
 
 const (
-	GetConfigurationProductsUIDisabledUnion9TypeBoolean                                 GetConfigurationProductsUIDisabledUnion9Type = "boolean"
 	GetConfigurationProductsUIDisabledUnion9TypeGetConfigurationProductsUIDisabled9     GetConfigurationProductsUIDisabledUnion9Type = "getConfigurationProducts_ui:disabled_9"
+	GetConfigurationProductsUIDisabledUnion9TypeBoolean                                 GetConfigurationProductsUIDisabledUnion9Type = "boolean"
 	GetConfigurationProductsUIDisabledUnion9TypeGetConfigurationProductsUIDisabledEnum9 GetConfigurationProductsUIDisabledUnion9Type = "getConfigurationProducts_ui:disabled_enum_9"
 )
 
 type GetConfigurationProductsUIDisabledUnion9 struct {
-	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIDisabled9     *GetConfigurationProductsUIDisabled9     `queryParam:"inline"`
+	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIDisabledEnum9 *GetConfigurationProductsUIDisabledEnum9 `queryParam:"inline"`
 
 	Type GetConfigurationProductsUIDisabledUnion9Type
-}
-
-func CreateGetConfigurationProductsUIDisabledUnion9Boolean(boolean bool) GetConfigurationProductsUIDisabledUnion9 {
-	typ := GetConfigurationProductsUIDisabledUnion9TypeBoolean
-
-	return GetConfigurationProductsUIDisabledUnion9{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsUIDisabledUnion9GetConfigurationProductsUIDisabled9(getConfigurationProductsUIDisabled9 GetConfigurationProductsUIDisabled9) GetConfigurationProductsUIDisabledUnion9 {
@@ -1879,6 +1870,15 @@ func CreateGetConfigurationProductsUIDisabledUnion9GetConfigurationProductsUIDis
 	return GetConfigurationProductsUIDisabledUnion9{
 		GetConfigurationProductsUIDisabled9: &getConfigurationProductsUIDisabled9,
 		Type:                                typ,
+	}
+}
+
+func CreateGetConfigurationProductsUIDisabledUnion9Boolean(boolean bool) GetConfigurationProductsUIDisabledUnion9 {
+	typ := GetConfigurationProductsUIDisabledUnion9TypeBoolean
+
+	return GetConfigurationProductsUIDisabledUnion9{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -1918,12 +1918,12 @@ func (u *GetConfigurationProductsUIDisabledUnion9) UnmarshalJSON(data []byte) er
 }
 
 func (u GetConfigurationProductsUIDisabledUnion9) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsUIDisabled9 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsUIDisabled9, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsUIDisabledEnum9 != nil {
@@ -2364,26 +2364,17 @@ func (o *GetConfigurationProductsDisabled6) GetExpr() string {
 type GetConfigurationProductsDisabledUnion6Type string
 
 const (
-	GetConfigurationProductsDisabledUnion6TypeBoolean                               GetConfigurationProductsDisabledUnion6Type = "boolean"
 	GetConfigurationProductsDisabledUnion6TypeGetConfigurationProductsDisabled6     GetConfigurationProductsDisabledUnion6Type = "getConfigurationProducts_disabled_6"
+	GetConfigurationProductsDisabledUnion6TypeBoolean                               GetConfigurationProductsDisabledUnion6Type = "boolean"
 	GetConfigurationProductsDisabledUnion6TypeGetConfigurationProductsDisabledEnum6 GetConfigurationProductsDisabledUnion6Type = "getConfigurationProducts_disabled_enum_6"
 )
 
 type GetConfigurationProductsDisabledUnion6 struct {
-	Boolean                               *bool                                  `queryParam:"inline"`
 	GetConfigurationProductsDisabled6     *GetConfigurationProductsDisabled6     `queryParam:"inline"`
+	Boolean                               *bool                                  `queryParam:"inline"`
 	GetConfigurationProductsDisabledEnum6 *GetConfigurationProductsDisabledEnum6 `queryParam:"inline"`
 
 	Type GetConfigurationProductsDisabledUnion6Type
-}
-
-func CreateGetConfigurationProductsDisabledUnion6Boolean(boolean bool) GetConfigurationProductsDisabledUnion6 {
-	typ := GetConfigurationProductsDisabledUnion6TypeBoolean
-
-	return GetConfigurationProductsDisabledUnion6{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsDisabledUnion6GetConfigurationProductsDisabled6(getConfigurationProductsDisabled6 GetConfigurationProductsDisabled6) GetConfigurationProductsDisabledUnion6 {
@@ -2392,6 +2383,15 @@ func CreateGetConfigurationProductsDisabledUnion6GetConfigurationProductsDisable
 	return GetConfigurationProductsDisabledUnion6{
 		GetConfigurationProductsDisabled6: &getConfigurationProductsDisabled6,
 		Type:                              typ,
+	}
+}
+
+func CreateGetConfigurationProductsDisabledUnion6Boolean(boolean bool) GetConfigurationProductsDisabledUnion6 {
+	typ := GetConfigurationProductsDisabledUnion6TypeBoolean
+
+	return GetConfigurationProductsDisabledUnion6{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -2431,12 +2431,12 @@ func (u *GetConfigurationProductsDisabledUnion6) UnmarshalJSON(data []byte) erro
 }
 
 func (u GetConfigurationProductsDisabledUnion6) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsDisabled6 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsDisabled6, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsDisabledEnum6 != nil {
@@ -2497,26 +2497,17 @@ func (o *GetConfigurationProductsHidden6) GetExpr() string {
 type GetConfigurationProductsHiddenUnion6Type string
 
 const (
-	GetConfigurationProductsHiddenUnion6TypeBoolean                             GetConfigurationProductsHiddenUnion6Type = "boolean"
 	GetConfigurationProductsHiddenUnion6TypeGetConfigurationProductsHidden6     GetConfigurationProductsHiddenUnion6Type = "getConfigurationProducts_hidden_6"
+	GetConfigurationProductsHiddenUnion6TypeBoolean                             GetConfigurationProductsHiddenUnion6Type = "boolean"
 	GetConfigurationProductsHiddenUnion6TypeGetConfigurationProductsHiddenEnum6 GetConfigurationProductsHiddenUnion6Type = "getConfigurationProducts_hidden_enum_6"
 )
 
 type GetConfigurationProductsHiddenUnion6 struct {
-	Boolean                             *bool                                `queryParam:"inline"`
 	GetConfigurationProductsHidden6     *GetConfigurationProductsHidden6     `queryParam:"inline"`
+	Boolean                             *bool                                `queryParam:"inline"`
 	GetConfigurationProductsHiddenEnum6 *GetConfigurationProductsHiddenEnum6 `queryParam:"inline"`
 
 	Type GetConfigurationProductsHiddenUnion6Type
-}
-
-func CreateGetConfigurationProductsHiddenUnion6Boolean(boolean bool) GetConfigurationProductsHiddenUnion6 {
-	typ := GetConfigurationProductsHiddenUnion6TypeBoolean
-
-	return GetConfigurationProductsHiddenUnion6{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsHiddenUnion6GetConfigurationProductsHidden6(getConfigurationProductsHidden6 GetConfigurationProductsHidden6) GetConfigurationProductsHiddenUnion6 {
@@ -2525,6 +2516,15 @@ func CreateGetConfigurationProductsHiddenUnion6GetConfigurationProductsHidden6(g
 	return GetConfigurationProductsHiddenUnion6{
 		GetConfigurationProductsHidden6: &getConfigurationProductsHidden6,
 		Type:                            typ,
+	}
+}
+
+func CreateGetConfigurationProductsHiddenUnion6Boolean(boolean bool) GetConfigurationProductsHiddenUnion6 {
+	typ := GetConfigurationProductsHiddenUnion6TypeBoolean
+
+	return GetConfigurationProductsHiddenUnion6{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -2564,12 +2564,12 @@ func (u *GetConfigurationProductsHiddenUnion6) UnmarshalJSON(data []byte) error 
 }
 
 func (u GetConfigurationProductsHiddenUnion6) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsHidden6 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsHidden6, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsHiddenEnum6 != nil {
@@ -2668,26 +2668,17 @@ func (o *GetConfigurationProductsDisabled5) GetExpr() string {
 type GetConfigurationProductsDisabledUnion5Type string
 
 const (
-	GetConfigurationProductsDisabledUnion5TypeBoolean                               GetConfigurationProductsDisabledUnion5Type = "boolean"
 	GetConfigurationProductsDisabledUnion5TypeGetConfigurationProductsDisabled5     GetConfigurationProductsDisabledUnion5Type = "getConfigurationProducts_disabled_5"
+	GetConfigurationProductsDisabledUnion5TypeBoolean                               GetConfigurationProductsDisabledUnion5Type = "boolean"
 	GetConfigurationProductsDisabledUnion5TypeGetConfigurationProductsDisabledEnum5 GetConfigurationProductsDisabledUnion5Type = "getConfigurationProducts_disabled_enum_5"
 )
 
 type GetConfigurationProductsDisabledUnion5 struct {
-	Boolean                               *bool                                  `queryParam:"inline"`
 	GetConfigurationProductsDisabled5     *GetConfigurationProductsDisabled5     `queryParam:"inline"`
+	Boolean                               *bool                                  `queryParam:"inline"`
 	GetConfigurationProductsDisabledEnum5 *GetConfigurationProductsDisabledEnum5 `queryParam:"inline"`
 
 	Type GetConfigurationProductsDisabledUnion5Type
-}
-
-func CreateGetConfigurationProductsDisabledUnion5Boolean(boolean bool) GetConfigurationProductsDisabledUnion5 {
-	typ := GetConfigurationProductsDisabledUnion5TypeBoolean
-
-	return GetConfigurationProductsDisabledUnion5{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsDisabledUnion5GetConfigurationProductsDisabled5(getConfigurationProductsDisabled5 GetConfigurationProductsDisabled5) GetConfigurationProductsDisabledUnion5 {
@@ -2696,6 +2687,15 @@ func CreateGetConfigurationProductsDisabledUnion5GetConfigurationProductsDisable
 	return GetConfigurationProductsDisabledUnion5{
 		GetConfigurationProductsDisabled5: &getConfigurationProductsDisabled5,
 		Type:                              typ,
+	}
+}
+
+func CreateGetConfigurationProductsDisabledUnion5Boolean(boolean bool) GetConfigurationProductsDisabledUnion5 {
+	typ := GetConfigurationProductsDisabledUnion5TypeBoolean
+
+	return GetConfigurationProductsDisabledUnion5{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -2735,12 +2735,12 @@ func (u *GetConfigurationProductsDisabledUnion5) UnmarshalJSON(data []byte) erro
 }
 
 func (u GetConfigurationProductsDisabledUnion5) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsDisabled5 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsDisabled5, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsDisabledEnum5 != nil {
@@ -2801,26 +2801,17 @@ func (o *GetConfigurationProductsHidden5) GetExpr() string {
 type GetConfigurationProductsHiddenUnion5Type string
 
 const (
-	GetConfigurationProductsHiddenUnion5TypeBoolean                             GetConfigurationProductsHiddenUnion5Type = "boolean"
 	GetConfigurationProductsHiddenUnion5TypeGetConfigurationProductsHidden5     GetConfigurationProductsHiddenUnion5Type = "getConfigurationProducts_hidden_5"
+	GetConfigurationProductsHiddenUnion5TypeBoolean                             GetConfigurationProductsHiddenUnion5Type = "boolean"
 	GetConfigurationProductsHiddenUnion5TypeGetConfigurationProductsHiddenEnum5 GetConfigurationProductsHiddenUnion5Type = "getConfigurationProducts_hidden_enum_5"
 )
 
 type GetConfigurationProductsHiddenUnion5 struct {
-	Boolean                             *bool                                `queryParam:"inline"`
 	GetConfigurationProductsHidden5     *GetConfigurationProductsHidden5     `queryParam:"inline"`
+	Boolean                             *bool                                `queryParam:"inline"`
 	GetConfigurationProductsHiddenEnum5 *GetConfigurationProductsHiddenEnum5 `queryParam:"inline"`
 
 	Type GetConfigurationProductsHiddenUnion5Type
-}
-
-func CreateGetConfigurationProductsHiddenUnion5Boolean(boolean bool) GetConfigurationProductsHiddenUnion5 {
-	typ := GetConfigurationProductsHiddenUnion5TypeBoolean
-
-	return GetConfigurationProductsHiddenUnion5{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsHiddenUnion5GetConfigurationProductsHidden5(getConfigurationProductsHidden5 GetConfigurationProductsHidden5) GetConfigurationProductsHiddenUnion5 {
@@ -2829,6 +2820,15 @@ func CreateGetConfigurationProductsHiddenUnion5GetConfigurationProductsHidden5(g
 	return GetConfigurationProductsHiddenUnion5{
 		GetConfigurationProductsHidden5: &getConfigurationProductsHidden5,
 		Type:                            typ,
+	}
+}
+
+func CreateGetConfigurationProductsHiddenUnion5Boolean(boolean bool) GetConfigurationProductsHiddenUnion5 {
+	typ := GetConfigurationProductsHiddenUnion5TypeBoolean
+
+	return GetConfigurationProductsHiddenUnion5{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -2868,12 +2868,12 @@ func (u *GetConfigurationProductsHiddenUnion5) UnmarshalJSON(data []byte) error 
 }
 
 func (u GetConfigurationProductsHiddenUnion5) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsHidden5 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsHidden5, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsHiddenEnum5 != nil {
@@ -3065,26 +3065,17 @@ func (o *GetConfigurationProductsUIReadOnly8) GetExpr() string {
 type GetConfigurationProductsUIReadOnlyUnion8Type string
 
 const (
-	GetConfigurationProductsUIReadOnlyUnion8TypeBoolean                                 GetConfigurationProductsUIReadOnlyUnion8Type = "boolean"
 	GetConfigurationProductsUIReadOnlyUnion8TypeGetConfigurationProductsUIReadOnly8     GetConfigurationProductsUIReadOnlyUnion8Type = "getConfigurationProducts_ui:read-only_8"
+	GetConfigurationProductsUIReadOnlyUnion8TypeBoolean                                 GetConfigurationProductsUIReadOnlyUnion8Type = "boolean"
 	GetConfigurationProductsUIReadOnlyUnion8TypeGetConfigurationProductsUIReadOnlyEnum8 GetConfigurationProductsUIReadOnlyUnion8Type = "getConfigurationProducts_ui:read-only_enum_8"
 )
 
 type GetConfigurationProductsUIReadOnlyUnion8 struct {
-	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIReadOnly8     *GetConfigurationProductsUIReadOnly8     `queryParam:"inline"`
+	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIReadOnlyEnum8 *GetConfigurationProductsUIReadOnlyEnum8 `queryParam:"inline"`
 
 	Type GetConfigurationProductsUIReadOnlyUnion8Type
-}
-
-func CreateGetConfigurationProductsUIReadOnlyUnion8Boolean(boolean bool) GetConfigurationProductsUIReadOnlyUnion8 {
-	typ := GetConfigurationProductsUIReadOnlyUnion8TypeBoolean
-
-	return GetConfigurationProductsUIReadOnlyUnion8{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsUIReadOnlyUnion8GetConfigurationProductsUIReadOnly8(getConfigurationProductsUIReadOnly8 GetConfigurationProductsUIReadOnly8) GetConfigurationProductsUIReadOnlyUnion8 {
@@ -3093,6 +3084,15 @@ func CreateGetConfigurationProductsUIReadOnlyUnion8GetConfigurationProductsUIRea
 	return GetConfigurationProductsUIReadOnlyUnion8{
 		GetConfigurationProductsUIReadOnly8: &getConfigurationProductsUIReadOnly8,
 		Type:                                typ,
+	}
+}
+
+func CreateGetConfigurationProductsUIReadOnlyUnion8Boolean(boolean bool) GetConfigurationProductsUIReadOnlyUnion8 {
+	typ := GetConfigurationProductsUIReadOnlyUnion8TypeBoolean
+
+	return GetConfigurationProductsUIReadOnlyUnion8{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -3132,12 +3132,12 @@ func (u *GetConfigurationProductsUIReadOnlyUnion8) UnmarshalJSON(data []byte) er
 }
 
 func (u GetConfigurationProductsUIReadOnlyUnion8) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsUIReadOnly8 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsUIReadOnly8, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsUIReadOnlyEnum8 != nil {
@@ -3198,26 +3198,17 @@ func (o *GetConfigurationProductsUIHidden8) GetExpr() string {
 type GetConfigurationProductsUIHiddenUnion8Type string
 
 const (
-	GetConfigurationProductsUIHiddenUnion8TypeBoolean                               GetConfigurationProductsUIHiddenUnion8Type = "boolean"
 	GetConfigurationProductsUIHiddenUnion8TypeGetConfigurationProductsUIHidden8     GetConfigurationProductsUIHiddenUnion8Type = "getConfigurationProducts_ui:hidden_8"
+	GetConfigurationProductsUIHiddenUnion8TypeBoolean                               GetConfigurationProductsUIHiddenUnion8Type = "boolean"
 	GetConfigurationProductsUIHiddenUnion8TypeGetConfigurationProductsUIHiddenEnum8 GetConfigurationProductsUIHiddenUnion8Type = "getConfigurationProducts_ui:hidden_enum_8"
 )
 
 type GetConfigurationProductsUIHiddenUnion8 struct {
-	Boolean                               *bool                                  `queryParam:"inline"`
 	GetConfigurationProductsUIHidden8     *GetConfigurationProductsUIHidden8     `queryParam:"inline"`
+	Boolean                               *bool                                  `queryParam:"inline"`
 	GetConfigurationProductsUIHiddenEnum8 *GetConfigurationProductsUIHiddenEnum8 `queryParam:"inline"`
 
 	Type GetConfigurationProductsUIHiddenUnion8Type
-}
-
-func CreateGetConfigurationProductsUIHiddenUnion8Boolean(boolean bool) GetConfigurationProductsUIHiddenUnion8 {
-	typ := GetConfigurationProductsUIHiddenUnion8TypeBoolean
-
-	return GetConfigurationProductsUIHiddenUnion8{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsUIHiddenUnion8GetConfigurationProductsUIHidden8(getConfigurationProductsUIHidden8 GetConfigurationProductsUIHidden8) GetConfigurationProductsUIHiddenUnion8 {
@@ -3226,6 +3217,15 @@ func CreateGetConfigurationProductsUIHiddenUnion8GetConfigurationProductsUIHidde
 	return GetConfigurationProductsUIHiddenUnion8{
 		GetConfigurationProductsUIHidden8: &getConfigurationProductsUIHidden8,
 		Type:                              typ,
+	}
+}
+
+func CreateGetConfigurationProductsUIHiddenUnion8Boolean(boolean bool) GetConfigurationProductsUIHiddenUnion8 {
+	typ := GetConfigurationProductsUIHiddenUnion8TypeBoolean
+
+	return GetConfigurationProductsUIHiddenUnion8{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -3265,12 +3265,12 @@ func (u *GetConfigurationProductsUIHiddenUnion8) UnmarshalJSON(data []byte) erro
 }
 
 func (u GetConfigurationProductsUIHiddenUnion8) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsUIHidden8 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsUIHidden8, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsUIHiddenEnum8 != nil {
@@ -3331,26 +3331,17 @@ func (o *GetConfigurationProductsUIDisabled8) GetExpr() string {
 type GetConfigurationProductsUIDisabledUnion8Type string
 
 const (
-	GetConfigurationProductsUIDisabledUnion8TypeBoolean                                 GetConfigurationProductsUIDisabledUnion8Type = "boolean"
 	GetConfigurationProductsUIDisabledUnion8TypeGetConfigurationProductsUIDisabled8     GetConfigurationProductsUIDisabledUnion8Type = "getConfigurationProducts_ui:disabled_8"
+	GetConfigurationProductsUIDisabledUnion8TypeBoolean                                 GetConfigurationProductsUIDisabledUnion8Type = "boolean"
 	GetConfigurationProductsUIDisabledUnion8TypeGetConfigurationProductsUIDisabledEnum8 GetConfigurationProductsUIDisabledUnion8Type = "getConfigurationProducts_ui:disabled_enum_8"
 )
 
 type GetConfigurationProductsUIDisabledUnion8 struct {
-	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIDisabled8     *GetConfigurationProductsUIDisabled8     `queryParam:"inline"`
+	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIDisabledEnum8 *GetConfigurationProductsUIDisabledEnum8 `queryParam:"inline"`
 
 	Type GetConfigurationProductsUIDisabledUnion8Type
-}
-
-func CreateGetConfigurationProductsUIDisabledUnion8Boolean(boolean bool) GetConfigurationProductsUIDisabledUnion8 {
-	typ := GetConfigurationProductsUIDisabledUnion8TypeBoolean
-
-	return GetConfigurationProductsUIDisabledUnion8{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsUIDisabledUnion8GetConfigurationProductsUIDisabled8(getConfigurationProductsUIDisabled8 GetConfigurationProductsUIDisabled8) GetConfigurationProductsUIDisabledUnion8 {
@@ -3359,6 +3350,15 @@ func CreateGetConfigurationProductsUIDisabledUnion8GetConfigurationProductsUIDis
 	return GetConfigurationProductsUIDisabledUnion8{
 		GetConfigurationProductsUIDisabled8: &getConfigurationProductsUIDisabled8,
 		Type:                                typ,
+	}
+}
+
+func CreateGetConfigurationProductsUIDisabledUnion8Boolean(boolean bool) GetConfigurationProductsUIDisabledUnion8 {
+	typ := GetConfigurationProductsUIDisabledUnion8TypeBoolean
+
+	return GetConfigurationProductsUIDisabledUnion8{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -3398,12 +3398,12 @@ func (u *GetConfigurationProductsUIDisabledUnion8) UnmarshalJSON(data []byte) er
 }
 
 func (u GetConfigurationProductsUIDisabledUnion8) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsUIDisabled8 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsUIDisabled8, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsUIDisabledEnum8 != nil {
@@ -3759,26 +3759,17 @@ func (o *GetConfigurationProductsDisabled4) GetExpr() string {
 type GetConfigurationProductsDisabledUnion4Type string
 
 const (
-	GetConfigurationProductsDisabledUnion4TypeBoolean                               GetConfigurationProductsDisabledUnion4Type = "boolean"
 	GetConfigurationProductsDisabledUnion4TypeGetConfigurationProductsDisabled4     GetConfigurationProductsDisabledUnion4Type = "getConfigurationProducts_disabled_4"
+	GetConfigurationProductsDisabledUnion4TypeBoolean                               GetConfigurationProductsDisabledUnion4Type = "boolean"
 	GetConfigurationProductsDisabledUnion4TypeGetConfigurationProductsDisabledEnum4 GetConfigurationProductsDisabledUnion4Type = "getConfigurationProducts_disabled_enum_4"
 )
 
 type GetConfigurationProductsDisabledUnion4 struct {
-	Boolean                               *bool                                  `queryParam:"inline"`
 	GetConfigurationProductsDisabled4     *GetConfigurationProductsDisabled4     `queryParam:"inline"`
+	Boolean                               *bool                                  `queryParam:"inline"`
 	GetConfigurationProductsDisabledEnum4 *GetConfigurationProductsDisabledEnum4 `queryParam:"inline"`
 
 	Type GetConfigurationProductsDisabledUnion4Type
-}
-
-func CreateGetConfigurationProductsDisabledUnion4Boolean(boolean bool) GetConfigurationProductsDisabledUnion4 {
-	typ := GetConfigurationProductsDisabledUnion4TypeBoolean
-
-	return GetConfigurationProductsDisabledUnion4{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsDisabledUnion4GetConfigurationProductsDisabled4(getConfigurationProductsDisabled4 GetConfigurationProductsDisabled4) GetConfigurationProductsDisabledUnion4 {
@@ -3787,6 +3778,15 @@ func CreateGetConfigurationProductsDisabledUnion4GetConfigurationProductsDisable
 	return GetConfigurationProductsDisabledUnion4{
 		GetConfigurationProductsDisabled4: &getConfigurationProductsDisabled4,
 		Type:                              typ,
+	}
+}
+
+func CreateGetConfigurationProductsDisabledUnion4Boolean(boolean bool) GetConfigurationProductsDisabledUnion4 {
+	typ := GetConfigurationProductsDisabledUnion4TypeBoolean
+
+	return GetConfigurationProductsDisabledUnion4{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -3826,12 +3826,12 @@ func (u *GetConfigurationProductsDisabledUnion4) UnmarshalJSON(data []byte) erro
 }
 
 func (u GetConfigurationProductsDisabledUnion4) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsDisabled4 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsDisabled4, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsDisabledEnum4 != nil {
@@ -3892,26 +3892,17 @@ func (o *GetConfigurationProductsHidden4) GetExpr() string {
 type GetConfigurationProductsHiddenUnion4Type string
 
 const (
-	GetConfigurationProductsHiddenUnion4TypeBoolean                             GetConfigurationProductsHiddenUnion4Type = "boolean"
 	GetConfigurationProductsHiddenUnion4TypeGetConfigurationProductsHidden4     GetConfigurationProductsHiddenUnion4Type = "getConfigurationProducts_hidden_4"
+	GetConfigurationProductsHiddenUnion4TypeBoolean                             GetConfigurationProductsHiddenUnion4Type = "boolean"
 	GetConfigurationProductsHiddenUnion4TypeGetConfigurationProductsHiddenEnum4 GetConfigurationProductsHiddenUnion4Type = "getConfigurationProducts_hidden_enum_4"
 )
 
 type GetConfigurationProductsHiddenUnion4 struct {
-	Boolean                             *bool                                `queryParam:"inline"`
 	GetConfigurationProductsHidden4     *GetConfigurationProductsHidden4     `queryParam:"inline"`
+	Boolean                             *bool                                `queryParam:"inline"`
 	GetConfigurationProductsHiddenEnum4 *GetConfigurationProductsHiddenEnum4 `queryParam:"inline"`
 
 	Type GetConfigurationProductsHiddenUnion4Type
-}
-
-func CreateGetConfigurationProductsHiddenUnion4Boolean(boolean bool) GetConfigurationProductsHiddenUnion4 {
-	typ := GetConfigurationProductsHiddenUnion4TypeBoolean
-
-	return GetConfigurationProductsHiddenUnion4{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsHiddenUnion4GetConfigurationProductsHidden4(getConfigurationProductsHidden4 GetConfigurationProductsHidden4) GetConfigurationProductsHiddenUnion4 {
@@ -3920,6 +3911,15 @@ func CreateGetConfigurationProductsHiddenUnion4GetConfigurationProductsHidden4(g
 	return GetConfigurationProductsHiddenUnion4{
 		GetConfigurationProductsHidden4: &getConfigurationProductsHidden4,
 		Type:                            typ,
+	}
+}
+
+func CreateGetConfigurationProductsHiddenUnion4Boolean(boolean bool) GetConfigurationProductsHiddenUnion4 {
+	typ := GetConfigurationProductsHiddenUnion4TypeBoolean
+
+	return GetConfigurationProductsHiddenUnion4{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -3959,12 +3959,12 @@ func (u *GetConfigurationProductsHiddenUnion4) UnmarshalJSON(data []byte) error 
 }
 
 func (u GetConfigurationProductsHiddenUnion4) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsHidden4 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsHidden4, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsHiddenEnum4 != nil {
@@ -4063,26 +4063,17 @@ func (o *GetConfigurationProductsDisabled3) GetExpr() string {
 type GetConfigurationProductsDisabledUnion3Type string
 
 const (
-	GetConfigurationProductsDisabledUnion3TypeBoolean                               GetConfigurationProductsDisabledUnion3Type = "boolean"
 	GetConfigurationProductsDisabledUnion3TypeGetConfigurationProductsDisabled3     GetConfigurationProductsDisabledUnion3Type = "getConfigurationProducts_disabled_3"
+	GetConfigurationProductsDisabledUnion3TypeBoolean                               GetConfigurationProductsDisabledUnion3Type = "boolean"
 	GetConfigurationProductsDisabledUnion3TypeGetConfigurationProductsDisabledEnum3 GetConfigurationProductsDisabledUnion3Type = "getConfigurationProducts_disabled_enum_3"
 )
 
 type GetConfigurationProductsDisabledUnion3 struct {
-	Boolean                               *bool                                  `queryParam:"inline"`
 	GetConfigurationProductsDisabled3     *GetConfigurationProductsDisabled3     `queryParam:"inline"`
+	Boolean                               *bool                                  `queryParam:"inline"`
 	GetConfigurationProductsDisabledEnum3 *GetConfigurationProductsDisabledEnum3 `queryParam:"inline"`
 
 	Type GetConfigurationProductsDisabledUnion3Type
-}
-
-func CreateGetConfigurationProductsDisabledUnion3Boolean(boolean bool) GetConfigurationProductsDisabledUnion3 {
-	typ := GetConfigurationProductsDisabledUnion3TypeBoolean
-
-	return GetConfigurationProductsDisabledUnion3{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsDisabledUnion3GetConfigurationProductsDisabled3(getConfigurationProductsDisabled3 GetConfigurationProductsDisabled3) GetConfigurationProductsDisabledUnion3 {
@@ -4091,6 +4082,15 @@ func CreateGetConfigurationProductsDisabledUnion3GetConfigurationProductsDisable
 	return GetConfigurationProductsDisabledUnion3{
 		GetConfigurationProductsDisabled3: &getConfigurationProductsDisabled3,
 		Type:                              typ,
+	}
+}
+
+func CreateGetConfigurationProductsDisabledUnion3Boolean(boolean bool) GetConfigurationProductsDisabledUnion3 {
+	typ := GetConfigurationProductsDisabledUnion3TypeBoolean
+
+	return GetConfigurationProductsDisabledUnion3{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -4130,12 +4130,12 @@ func (u *GetConfigurationProductsDisabledUnion3) UnmarshalJSON(data []byte) erro
 }
 
 func (u GetConfigurationProductsDisabledUnion3) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsDisabled3 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsDisabled3, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsDisabledEnum3 != nil {
@@ -4196,26 +4196,17 @@ func (o *GetConfigurationProductsHidden3) GetExpr() string {
 type GetConfigurationProductsHiddenUnion3Type string
 
 const (
-	GetConfigurationProductsHiddenUnion3TypeBoolean                             GetConfigurationProductsHiddenUnion3Type = "boolean"
 	GetConfigurationProductsHiddenUnion3TypeGetConfigurationProductsHidden3     GetConfigurationProductsHiddenUnion3Type = "getConfigurationProducts_hidden_3"
+	GetConfigurationProductsHiddenUnion3TypeBoolean                             GetConfigurationProductsHiddenUnion3Type = "boolean"
 	GetConfigurationProductsHiddenUnion3TypeGetConfigurationProductsHiddenEnum3 GetConfigurationProductsHiddenUnion3Type = "getConfigurationProducts_hidden_enum_3"
 )
 
 type GetConfigurationProductsHiddenUnion3 struct {
-	Boolean                             *bool                                `queryParam:"inline"`
 	GetConfigurationProductsHidden3     *GetConfigurationProductsHidden3     `queryParam:"inline"`
+	Boolean                             *bool                                `queryParam:"inline"`
 	GetConfigurationProductsHiddenEnum3 *GetConfigurationProductsHiddenEnum3 `queryParam:"inline"`
 
 	Type GetConfigurationProductsHiddenUnion3Type
-}
-
-func CreateGetConfigurationProductsHiddenUnion3Boolean(boolean bool) GetConfigurationProductsHiddenUnion3 {
-	typ := GetConfigurationProductsHiddenUnion3TypeBoolean
-
-	return GetConfigurationProductsHiddenUnion3{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsHiddenUnion3GetConfigurationProductsHidden3(getConfigurationProductsHidden3 GetConfigurationProductsHidden3) GetConfigurationProductsHiddenUnion3 {
@@ -4224,6 +4215,15 @@ func CreateGetConfigurationProductsHiddenUnion3GetConfigurationProductsHidden3(g
 	return GetConfigurationProductsHiddenUnion3{
 		GetConfigurationProductsHidden3: &getConfigurationProductsHidden3,
 		Type:                            typ,
+	}
+}
+
+func CreateGetConfigurationProductsHiddenUnion3Boolean(boolean bool) GetConfigurationProductsHiddenUnion3 {
+	typ := GetConfigurationProductsHiddenUnion3TypeBoolean
+
+	return GetConfigurationProductsHiddenUnion3{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -4263,12 +4263,12 @@ func (u *GetConfigurationProductsHiddenUnion3) UnmarshalJSON(data []byte) error 
 }
 
 func (u GetConfigurationProductsHiddenUnion3) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsHidden3 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsHidden3, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsHiddenEnum3 != nil {
@@ -4460,26 +4460,17 @@ func (o *GetConfigurationProductsUIReadOnly7) GetExpr() string {
 type GetConfigurationProductsUIReadOnlyUnion7Type string
 
 const (
-	GetConfigurationProductsUIReadOnlyUnion7TypeBoolean                                 GetConfigurationProductsUIReadOnlyUnion7Type = "boolean"
 	GetConfigurationProductsUIReadOnlyUnion7TypeGetConfigurationProductsUIReadOnly7     GetConfigurationProductsUIReadOnlyUnion7Type = "getConfigurationProducts_ui:read-only_7"
+	GetConfigurationProductsUIReadOnlyUnion7TypeBoolean                                 GetConfigurationProductsUIReadOnlyUnion7Type = "boolean"
 	GetConfigurationProductsUIReadOnlyUnion7TypeGetConfigurationProductsUIReadOnlyEnum7 GetConfigurationProductsUIReadOnlyUnion7Type = "getConfigurationProducts_ui:read-only_enum_7"
 )
 
 type GetConfigurationProductsUIReadOnlyUnion7 struct {
-	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIReadOnly7     *GetConfigurationProductsUIReadOnly7     `queryParam:"inline"`
+	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIReadOnlyEnum7 *GetConfigurationProductsUIReadOnlyEnum7 `queryParam:"inline"`
 
 	Type GetConfigurationProductsUIReadOnlyUnion7Type
-}
-
-func CreateGetConfigurationProductsUIReadOnlyUnion7Boolean(boolean bool) GetConfigurationProductsUIReadOnlyUnion7 {
-	typ := GetConfigurationProductsUIReadOnlyUnion7TypeBoolean
-
-	return GetConfigurationProductsUIReadOnlyUnion7{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsUIReadOnlyUnion7GetConfigurationProductsUIReadOnly7(getConfigurationProductsUIReadOnly7 GetConfigurationProductsUIReadOnly7) GetConfigurationProductsUIReadOnlyUnion7 {
@@ -4488,6 +4479,15 @@ func CreateGetConfigurationProductsUIReadOnlyUnion7GetConfigurationProductsUIRea
 	return GetConfigurationProductsUIReadOnlyUnion7{
 		GetConfigurationProductsUIReadOnly7: &getConfigurationProductsUIReadOnly7,
 		Type:                                typ,
+	}
+}
+
+func CreateGetConfigurationProductsUIReadOnlyUnion7Boolean(boolean bool) GetConfigurationProductsUIReadOnlyUnion7 {
+	typ := GetConfigurationProductsUIReadOnlyUnion7TypeBoolean
+
+	return GetConfigurationProductsUIReadOnlyUnion7{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -4527,12 +4527,12 @@ func (u *GetConfigurationProductsUIReadOnlyUnion7) UnmarshalJSON(data []byte) er
 }
 
 func (u GetConfigurationProductsUIReadOnlyUnion7) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsUIReadOnly7 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsUIReadOnly7, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsUIReadOnlyEnum7 != nil {
@@ -4593,26 +4593,17 @@ func (o *GetConfigurationProductsUIHidden7) GetExpr() string {
 type GetConfigurationProductsUIHiddenUnion7Type string
 
 const (
-	GetConfigurationProductsUIHiddenUnion7TypeBoolean                               GetConfigurationProductsUIHiddenUnion7Type = "boolean"
 	GetConfigurationProductsUIHiddenUnion7TypeGetConfigurationProductsUIHidden7     GetConfigurationProductsUIHiddenUnion7Type = "getConfigurationProducts_ui:hidden_7"
+	GetConfigurationProductsUIHiddenUnion7TypeBoolean                               GetConfigurationProductsUIHiddenUnion7Type = "boolean"
 	GetConfigurationProductsUIHiddenUnion7TypeGetConfigurationProductsUIHiddenEnum7 GetConfigurationProductsUIHiddenUnion7Type = "getConfigurationProducts_ui:hidden_enum_7"
 )
 
 type GetConfigurationProductsUIHiddenUnion7 struct {
-	Boolean                               *bool                                  `queryParam:"inline"`
 	GetConfigurationProductsUIHidden7     *GetConfigurationProductsUIHidden7     `queryParam:"inline"`
+	Boolean                               *bool                                  `queryParam:"inline"`
 	GetConfigurationProductsUIHiddenEnum7 *GetConfigurationProductsUIHiddenEnum7 `queryParam:"inline"`
 
 	Type GetConfigurationProductsUIHiddenUnion7Type
-}
-
-func CreateGetConfigurationProductsUIHiddenUnion7Boolean(boolean bool) GetConfigurationProductsUIHiddenUnion7 {
-	typ := GetConfigurationProductsUIHiddenUnion7TypeBoolean
-
-	return GetConfigurationProductsUIHiddenUnion7{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsUIHiddenUnion7GetConfigurationProductsUIHidden7(getConfigurationProductsUIHidden7 GetConfigurationProductsUIHidden7) GetConfigurationProductsUIHiddenUnion7 {
@@ -4621,6 +4612,15 @@ func CreateGetConfigurationProductsUIHiddenUnion7GetConfigurationProductsUIHidde
 	return GetConfigurationProductsUIHiddenUnion7{
 		GetConfigurationProductsUIHidden7: &getConfigurationProductsUIHidden7,
 		Type:                              typ,
+	}
+}
+
+func CreateGetConfigurationProductsUIHiddenUnion7Boolean(boolean bool) GetConfigurationProductsUIHiddenUnion7 {
+	typ := GetConfigurationProductsUIHiddenUnion7TypeBoolean
+
+	return GetConfigurationProductsUIHiddenUnion7{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -4660,12 +4660,12 @@ func (u *GetConfigurationProductsUIHiddenUnion7) UnmarshalJSON(data []byte) erro
 }
 
 func (u GetConfigurationProductsUIHiddenUnion7) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsUIHidden7 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsUIHidden7, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsUIHiddenEnum7 != nil {
@@ -4726,26 +4726,17 @@ func (o *GetConfigurationProductsUIDisabled7) GetExpr() string {
 type GetConfigurationProductsUIDisabledUnion7Type string
 
 const (
-	GetConfigurationProductsUIDisabledUnion7TypeBoolean                                 GetConfigurationProductsUIDisabledUnion7Type = "boolean"
 	GetConfigurationProductsUIDisabledUnion7TypeGetConfigurationProductsUIDisabled7     GetConfigurationProductsUIDisabledUnion7Type = "getConfigurationProducts_ui:disabled_7"
+	GetConfigurationProductsUIDisabledUnion7TypeBoolean                                 GetConfigurationProductsUIDisabledUnion7Type = "boolean"
 	GetConfigurationProductsUIDisabledUnion7TypeGetConfigurationProductsUIDisabledEnum7 GetConfigurationProductsUIDisabledUnion7Type = "getConfigurationProducts_ui:disabled_enum_7"
 )
 
 type GetConfigurationProductsUIDisabledUnion7 struct {
-	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIDisabled7     *GetConfigurationProductsUIDisabled7     `queryParam:"inline"`
+	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIDisabledEnum7 *GetConfigurationProductsUIDisabledEnum7 `queryParam:"inline"`
 
 	Type GetConfigurationProductsUIDisabledUnion7Type
-}
-
-func CreateGetConfigurationProductsUIDisabledUnion7Boolean(boolean bool) GetConfigurationProductsUIDisabledUnion7 {
-	typ := GetConfigurationProductsUIDisabledUnion7TypeBoolean
-
-	return GetConfigurationProductsUIDisabledUnion7{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsUIDisabledUnion7GetConfigurationProductsUIDisabled7(getConfigurationProductsUIDisabled7 GetConfigurationProductsUIDisabled7) GetConfigurationProductsUIDisabledUnion7 {
@@ -4754,6 +4745,15 @@ func CreateGetConfigurationProductsUIDisabledUnion7GetConfigurationProductsUIDis
 	return GetConfigurationProductsUIDisabledUnion7{
 		GetConfigurationProductsUIDisabled7: &getConfigurationProductsUIDisabled7,
 		Type:                                typ,
+	}
+}
+
+func CreateGetConfigurationProductsUIDisabledUnion7Boolean(boolean bool) GetConfigurationProductsUIDisabledUnion7 {
+	typ := GetConfigurationProductsUIDisabledUnion7TypeBoolean
+
+	return GetConfigurationProductsUIDisabledUnion7{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -4793,12 +4793,12 @@ func (u *GetConfigurationProductsUIDisabledUnion7) UnmarshalJSON(data []byte) er
 }
 
 func (u GetConfigurationProductsUIDisabledUnion7) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsUIDisabled7 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsUIDisabled7, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsUIDisabledEnum7 != nil {
@@ -5247,26 +5247,17 @@ func (o *GetConfigurationProductsDisabled2) GetExpr() string {
 type GetConfigurationProductsDisabledUnion2Type string
 
 const (
-	GetConfigurationProductsDisabledUnion2TypeBoolean                               GetConfigurationProductsDisabledUnion2Type = "boolean"
 	GetConfigurationProductsDisabledUnion2TypeGetConfigurationProductsDisabled2     GetConfigurationProductsDisabledUnion2Type = "getConfigurationProducts_disabled_2"
+	GetConfigurationProductsDisabledUnion2TypeBoolean                               GetConfigurationProductsDisabledUnion2Type = "boolean"
 	GetConfigurationProductsDisabledUnion2TypeGetConfigurationProductsDisabledEnum2 GetConfigurationProductsDisabledUnion2Type = "getConfigurationProducts_disabled_enum_2"
 )
 
 type GetConfigurationProductsDisabledUnion2 struct {
-	Boolean                               *bool                                  `queryParam:"inline"`
 	GetConfigurationProductsDisabled2     *GetConfigurationProductsDisabled2     `queryParam:"inline"`
+	Boolean                               *bool                                  `queryParam:"inline"`
 	GetConfigurationProductsDisabledEnum2 *GetConfigurationProductsDisabledEnum2 `queryParam:"inline"`
 
 	Type GetConfigurationProductsDisabledUnion2Type
-}
-
-func CreateGetConfigurationProductsDisabledUnion2Boolean(boolean bool) GetConfigurationProductsDisabledUnion2 {
-	typ := GetConfigurationProductsDisabledUnion2TypeBoolean
-
-	return GetConfigurationProductsDisabledUnion2{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsDisabledUnion2GetConfigurationProductsDisabled2(getConfigurationProductsDisabled2 GetConfigurationProductsDisabled2) GetConfigurationProductsDisabledUnion2 {
@@ -5275,6 +5266,15 @@ func CreateGetConfigurationProductsDisabledUnion2GetConfigurationProductsDisable
 	return GetConfigurationProductsDisabledUnion2{
 		GetConfigurationProductsDisabled2: &getConfigurationProductsDisabled2,
 		Type:                              typ,
+	}
+}
+
+func CreateGetConfigurationProductsDisabledUnion2Boolean(boolean bool) GetConfigurationProductsDisabledUnion2 {
+	typ := GetConfigurationProductsDisabledUnion2TypeBoolean
+
+	return GetConfigurationProductsDisabledUnion2{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -5314,12 +5314,12 @@ func (u *GetConfigurationProductsDisabledUnion2) UnmarshalJSON(data []byte) erro
 }
 
 func (u GetConfigurationProductsDisabledUnion2) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsDisabled2 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsDisabled2, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsDisabledEnum2 != nil {
@@ -5380,26 +5380,17 @@ func (o *GetConfigurationProductsHidden2) GetExpr() string {
 type GetConfigurationProductsHiddenUnion2Type string
 
 const (
-	GetConfigurationProductsHiddenUnion2TypeBoolean                             GetConfigurationProductsHiddenUnion2Type = "boolean"
 	GetConfigurationProductsHiddenUnion2TypeGetConfigurationProductsHidden2     GetConfigurationProductsHiddenUnion2Type = "getConfigurationProducts_hidden_2"
+	GetConfigurationProductsHiddenUnion2TypeBoolean                             GetConfigurationProductsHiddenUnion2Type = "boolean"
 	GetConfigurationProductsHiddenUnion2TypeGetConfigurationProductsHiddenEnum2 GetConfigurationProductsHiddenUnion2Type = "getConfigurationProducts_hidden_enum_2"
 )
 
 type GetConfigurationProductsHiddenUnion2 struct {
-	Boolean                             *bool                                `queryParam:"inline"`
 	GetConfigurationProductsHidden2     *GetConfigurationProductsHidden2     `queryParam:"inline"`
+	Boolean                             *bool                                `queryParam:"inline"`
 	GetConfigurationProductsHiddenEnum2 *GetConfigurationProductsHiddenEnum2 `queryParam:"inline"`
 
 	Type GetConfigurationProductsHiddenUnion2Type
-}
-
-func CreateGetConfigurationProductsHiddenUnion2Boolean(boolean bool) GetConfigurationProductsHiddenUnion2 {
-	typ := GetConfigurationProductsHiddenUnion2TypeBoolean
-
-	return GetConfigurationProductsHiddenUnion2{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsHiddenUnion2GetConfigurationProductsHidden2(getConfigurationProductsHidden2 GetConfigurationProductsHidden2) GetConfigurationProductsHiddenUnion2 {
@@ -5408,6 +5399,15 @@ func CreateGetConfigurationProductsHiddenUnion2GetConfigurationProductsHidden2(g
 	return GetConfigurationProductsHiddenUnion2{
 		GetConfigurationProductsHidden2: &getConfigurationProductsHidden2,
 		Type:                            typ,
+	}
+}
+
+func CreateGetConfigurationProductsHiddenUnion2Boolean(boolean bool) GetConfigurationProductsHiddenUnion2 {
+	typ := GetConfigurationProductsHiddenUnion2TypeBoolean
+
+	return GetConfigurationProductsHiddenUnion2{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -5447,12 +5447,12 @@ func (u *GetConfigurationProductsHiddenUnion2) UnmarshalJSON(data []byte) error 
 }
 
 func (u GetConfigurationProductsHiddenUnion2) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsHidden2 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsHidden2, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsHiddenEnum2 != nil {
@@ -5559,26 +5559,17 @@ func (o *GetConfigurationProductsUIReadOnly6) GetExpr() string {
 type GetConfigurationProductsUIReadOnlyUnion6Type string
 
 const (
-	GetConfigurationProductsUIReadOnlyUnion6TypeBoolean                                 GetConfigurationProductsUIReadOnlyUnion6Type = "boolean"
 	GetConfigurationProductsUIReadOnlyUnion6TypeGetConfigurationProductsUIReadOnly6     GetConfigurationProductsUIReadOnlyUnion6Type = "getConfigurationProducts_ui:read-only_6"
+	GetConfigurationProductsUIReadOnlyUnion6TypeBoolean                                 GetConfigurationProductsUIReadOnlyUnion6Type = "boolean"
 	GetConfigurationProductsUIReadOnlyUnion6TypeGetConfigurationProductsUIReadOnlyEnum6 GetConfigurationProductsUIReadOnlyUnion6Type = "getConfigurationProducts_ui:read-only_enum_6"
 )
 
 type GetConfigurationProductsUIReadOnlyUnion6 struct {
-	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIReadOnly6     *GetConfigurationProductsUIReadOnly6     `queryParam:"inline"`
+	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIReadOnlyEnum6 *GetConfigurationProductsUIReadOnlyEnum6 `queryParam:"inline"`
 
 	Type GetConfigurationProductsUIReadOnlyUnion6Type
-}
-
-func CreateGetConfigurationProductsUIReadOnlyUnion6Boolean(boolean bool) GetConfigurationProductsUIReadOnlyUnion6 {
-	typ := GetConfigurationProductsUIReadOnlyUnion6TypeBoolean
-
-	return GetConfigurationProductsUIReadOnlyUnion6{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsUIReadOnlyUnion6GetConfigurationProductsUIReadOnly6(getConfigurationProductsUIReadOnly6 GetConfigurationProductsUIReadOnly6) GetConfigurationProductsUIReadOnlyUnion6 {
@@ -5587,6 +5578,15 @@ func CreateGetConfigurationProductsUIReadOnlyUnion6GetConfigurationProductsUIRea
 	return GetConfigurationProductsUIReadOnlyUnion6{
 		GetConfigurationProductsUIReadOnly6: &getConfigurationProductsUIReadOnly6,
 		Type:                                typ,
+	}
+}
+
+func CreateGetConfigurationProductsUIReadOnlyUnion6Boolean(boolean bool) GetConfigurationProductsUIReadOnlyUnion6 {
+	typ := GetConfigurationProductsUIReadOnlyUnion6TypeBoolean
+
+	return GetConfigurationProductsUIReadOnlyUnion6{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -5626,12 +5626,12 @@ func (u *GetConfigurationProductsUIReadOnlyUnion6) UnmarshalJSON(data []byte) er
 }
 
 func (u GetConfigurationProductsUIReadOnlyUnion6) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsUIReadOnly6 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsUIReadOnly6, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsUIReadOnlyEnum6 != nil {
@@ -5692,26 +5692,17 @@ func (o *GetConfigurationProductsUIHidden6) GetExpr() string {
 type GetConfigurationProductsUIHiddenUnion6Type string
 
 const (
-	GetConfigurationProductsUIHiddenUnion6TypeBoolean                               GetConfigurationProductsUIHiddenUnion6Type = "boolean"
 	GetConfigurationProductsUIHiddenUnion6TypeGetConfigurationProductsUIHidden6     GetConfigurationProductsUIHiddenUnion6Type = "getConfigurationProducts_ui:hidden_6"
+	GetConfigurationProductsUIHiddenUnion6TypeBoolean                               GetConfigurationProductsUIHiddenUnion6Type = "boolean"
 	GetConfigurationProductsUIHiddenUnion6TypeGetConfigurationProductsUIHiddenEnum6 GetConfigurationProductsUIHiddenUnion6Type = "getConfigurationProducts_ui:hidden_enum_6"
 )
 
 type GetConfigurationProductsUIHiddenUnion6 struct {
-	Boolean                               *bool                                  `queryParam:"inline"`
 	GetConfigurationProductsUIHidden6     *GetConfigurationProductsUIHidden6     `queryParam:"inline"`
+	Boolean                               *bool                                  `queryParam:"inline"`
 	GetConfigurationProductsUIHiddenEnum6 *GetConfigurationProductsUIHiddenEnum6 `queryParam:"inline"`
 
 	Type GetConfigurationProductsUIHiddenUnion6Type
-}
-
-func CreateGetConfigurationProductsUIHiddenUnion6Boolean(boolean bool) GetConfigurationProductsUIHiddenUnion6 {
-	typ := GetConfigurationProductsUIHiddenUnion6TypeBoolean
-
-	return GetConfigurationProductsUIHiddenUnion6{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsUIHiddenUnion6GetConfigurationProductsUIHidden6(getConfigurationProductsUIHidden6 GetConfigurationProductsUIHidden6) GetConfigurationProductsUIHiddenUnion6 {
@@ -5720,6 +5711,15 @@ func CreateGetConfigurationProductsUIHiddenUnion6GetConfigurationProductsUIHidde
 	return GetConfigurationProductsUIHiddenUnion6{
 		GetConfigurationProductsUIHidden6: &getConfigurationProductsUIHidden6,
 		Type:                              typ,
+	}
+}
+
+func CreateGetConfigurationProductsUIHiddenUnion6Boolean(boolean bool) GetConfigurationProductsUIHiddenUnion6 {
+	typ := GetConfigurationProductsUIHiddenUnion6TypeBoolean
+
+	return GetConfigurationProductsUIHiddenUnion6{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -5759,12 +5759,12 @@ func (u *GetConfigurationProductsUIHiddenUnion6) UnmarshalJSON(data []byte) erro
 }
 
 func (u GetConfigurationProductsUIHiddenUnion6) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsUIHidden6 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsUIHidden6, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsUIHiddenEnum6 != nil {
@@ -5825,26 +5825,17 @@ func (o *GetConfigurationProductsUIDisabled6) GetExpr() string {
 type GetConfigurationProductsUIDisabledUnion6Type string
 
 const (
-	GetConfigurationProductsUIDisabledUnion6TypeBoolean                                 GetConfigurationProductsUIDisabledUnion6Type = "boolean"
 	GetConfigurationProductsUIDisabledUnion6TypeGetConfigurationProductsUIDisabled6     GetConfigurationProductsUIDisabledUnion6Type = "getConfigurationProducts_ui:disabled_6"
+	GetConfigurationProductsUIDisabledUnion6TypeBoolean                                 GetConfigurationProductsUIDisabledUnion6Type = "boolean"
 	GetConfigurationProductsUIDisabledUnion6TypeGetConfigurationProductsUIDisabledEnum6 GetConfigurationProductsUIDisabledUnion6Type = "getConfigurationProducts_ui:disabled_enum_6"
 )
 
 type GetConfigurationProductsUIDisabledUnion6 struct {
-	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIDisabled6     *GetConfigurationProductsUIDisabled6     `queryParam:"inline"`
+	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIDisabledEnum6 *GetConfigurationProductsUIDisabledEnum6 `queryParam:"inline"`
 
 	Type GetConfigurationProductsUIDisabledUnion6Type
-}
-
-func CreateGetConfigurationProductsUIDisabledUnion6Boolean(boolean bool) GetConfigurationProductsUIDisabledUnion6 {
-	typ := GetConfigurationProductsUIDisabledUnion6TypeBoolean
-
-	return GetConfigurationProductsUIDisabledUnion6{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsUIDisabledUnion6GetConfigurationProductsUIDisabled6(getConfigurationProductsUIDisabled6 GetConfigurationProductsUIDisabled6) GetConfigurationProductsUIDisabledUnion6 {
@@ -5853,6 +5844,15 @@ func CreateGetConfigurationProductsUIDisabledUnion6GetConfigurationProductsUIDis
 	return GetConfigurationProductsUIDisabledUnion6{
 		GetConfigurationProductsUIDisabled6: &getConfigurationProductsUIDisabled6,
 		Type:                                typ,
+	}
+}
+
+func CreateGetConfigurationProductsUIDisabledUnion6Boolean(boolean bool) GetConfigurationProductsUIDisabledUnion6 {
+	typ := GetConfigurationProductsUIDisabledUnion6TypeBoolean
+
+	return GetConfigurationProductsUIDisabledUnion6{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -5892,12 +5892,12 @@ func (u *GetConfigurationProductsUIDisabledUnion6) UnmarshalJSON(data []byte) er
 }
 
 func (u GetConfigurationProductsUIDisabledUnion6) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsUIDisabled6 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsUIDisabled6, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsUIDisabledEnum6 != nil {
@@ -6253,26 +6253,17 @@ func (o *GetConfigurationProductsDisabled1) GetExpr() string {
 type GetConfigurationProductsDisabledUnion1Type string
 
 const (
-	GetConfigurationProductsDisabledUnion1TypeBoolean                               GetConfigurationProductsDisabledUnion1Type = "boolean"
 	GetConfigurationProductsDisabledUnion1TypeGetConfigurationProductsDisabled1     GetConfigurationProductsDisabledUnion1Type = "getConfigurationProducts_disabled_1"
+	GetConfigurationProductsDisabledUnion1TypeBoolean                               GetConfigurationProductsDisabledUnion1Type = "boolean"
 	GetConfigurationProductsDisabledUnion1TypeGetConfigurationProductsDisabledEnum1 GetConfigurationProductsDisabledUnion1Type = "getConfigurationProducts_disabled_enum_1"
 )
 
 type GetConfigurationProductsDisabledUnion1 struct {
-	Boolean                               *bool                                  `queryParam:"inline"`
 	GetConfigurationProductsDisabled1     *GetConfigurationProductsDisabled1     `queryParam:"inline"`
+	Boolean                               *bool                                  `queryParam:"inline"`
 	GetConfigurationProductsDisabledEnum1 *GetConfigurationProductsDisabledEnum1 `queryParam:"inline"`
 
 	Type GetConfigurationProductsDisabledUnion1Type
-}
-
-func CreateGetConfigurationProductsDisabledUnion1Boolean(boolean bool) GetConfigurationProductsDisabledUnion1 {
-	typ := GetConfigurationProductsDisabledUnion1TypeBoolean
-
-	return GetConfigurationProductsDisabledUnion1{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsDisabledUnion1GetConfigurationProductsDisabled1(getConfigurationProductsDisabled1 GetConfigurationProductsDisabled1) GetConfigurationProductsDisabledUnion1 {
@@ -6281,6 +6272,15 @@ func CreateGetConfigurationProductsDisabledUnion1GetConfigurationProductsDisable
 	return GetConfigurationProductsDisabledUnion1{
 		GetConfigurationProductsDisabled1: &getConfigurationProductsDisabled1,
 		Type:                              typ,
+	}
+}
+
+func CreateGetConfigurationProductsDisabledUnion1Boolean(boolean bool) GetConfigurationProductsDisabledUnion1 {
+	typ := GetConfigurationProductsDisabledUnion1TypeBoolean
+
+	return GetConfigurationProductsDisabledUnion1{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -6320,12 +6320,12 @@ func (u *GetConfigurationProductsDisabledUnion1) UnmarshalJSON(data []byte) erro
 }
 
 func (u GetConfigurationProductsDisabledUnion1) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsDisabled1 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsDisabled1, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsDisabledEnum1 != nil {
@@ -6386,26 +6386,17 @@ func (o *GetConfigurationProductsHidden1) GetExpr() string {
 type GetConfigurationProductsHiddenUnion1Type string
 
 const (
-	GetConfigurationProductsHiddenUnion1TypeBoolean                             GetConfigurationProductsHiddenUnion1Type = "boolean"
 	GetConfigurationProductsHiddenUnion1TypeGetConfigurationProductsHidden1     GetConfigurationProductsHiddenUnion1Type = "getConfigurationProducts_hidden_1"
+	GetConfigurationProductsHiddenUnion1TypeBoolean                             GetConfigurationProductsHiddenUnion1Type = "boolean"
 	GetConfigurationProductsHiddenUnion1TypeGetConfigurationProductsHiddenEnum1 GetConfigurationProductsHiddenUnion1Type = "getConfigurationProducts_hidden_enum_1"
 )
 
 type GetConfigurationProductsHiddenUnion1 struct {
-	Boolean                             *bool                                `queryParam:"inline"`
 	GetConfigurationProductsHidden1     *GetConfigurationProductsHidden1     `queryParam:"inline"`
+	Boolean                             *bool                                `queryParam:"inline"`
 	GetConfigurationProductsHiddenEnum1 *GetConfigurationProductsHiddenEnum1 `queryParam:"inline"`
 
 	Type GetConfigurationProductsHiddenUnion1Type
-}
-
-func CreateGetConfigurationProductsHiddenUnion1Boolean(boolean bool) GetConfigurationProductsHiddenUnion1 {
-	typ := GetConfigurationProductsHiddenUnion1TypeBoolean
-
-	return GetConfigurationProductsHiddenUnion1{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsHiddenUnion1GetConfigurationProductsHidden1(getConfigurationProductsHidden1 GetConfigurationProductsHidden1) GetConfigurationProductsHiddenUnion1 {
@@ -6414,6 +6405,15 @@ func CreateGetConfigurationProductsHiddenUnion1GetConfigurationProductsHidden1(g
 	return GetConfigurationProductsHiddenUnion1{
 		GetConfigurationProductsHidden1: &getConfigurationProductsHidden1,
 		Type:                            typ,
+	}
+}
+
+func CreateGetConfigurationProductsHiddenUnion1Boolean(boolean bool) GetConfigurationProductsHiddenUnion1 {
+	typ := GetConfigurationProductsHiddenUnion1TypeBoolean
+
+	return GetConfigurationProductsHiddenUnion1{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -6453,12 +6453,12 @@ func (u *GetConfigurationProductsHiddenUnion1) UnmarshalJSON(data []byte) error 
 }
 
 func (u GetConfigurationProductsHiddenUnion1) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsHidden1 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsHidden1, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsHiddenEnum1 != nil {
@@ -6565,26 +6565,17 @@ func (o *GetConfigurationProductsUIReadOnly5) GetExpr() string {
 type GetConfigurationProductsUIReadOnlyUnion5Type string
 
 const (
-	GetConfigurationProductsUIReadOnlyUnion5TypeBoolean                                 GetConfigurationProductsUIReadOnlyUnion5Type = "boolean"
 	GetConfigurationProductsUIReadOnlyUnion5TypeGetConfigurationProductsUIReadOnly5     GetConfigurationProductsUIReadOnlyUnion5Type = "getConfigurationProducts_ui:read-only_5"
+	GetConfigurationProductsUIReadOnlyUnion5TypeBoolean                                 GetConfigurationProductsUIReadOnlyUnion5Type = "boolean"
 	GetConfigurationProductsUIReadOnlyUnion5TypeGetConfigurationProductsUIReadOnlyEnum5 GetConfigurationProductsUIReadOnlyUnion5Type = "getConfigurationProducts_ui:read-only_enum_5"
 )
 
 type GetConfigurationProductsUIReadOnlyUnion5 struct {
-	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIReadOnly5     *GetConfigurationProductsUIReadOnly5     `queryParam:"inline"`
+	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIReadOnlyEnum5 *GetConfigurationProductsUIReadOnlyEnum5 `queryParam:"inline"`
 
 	Type GetConfigurationProductsUIReadOnlyUnion5Type
-}
-
-func CreateGetConfigurationProductsUIReadOnlyUnion5Boolean(boolean bool) GetConfigurationProductsUIReadOnlyUnion5 {
-	typ := GetConfigurationProductsUIReadOnlyUnion5TypeBoolean
-
-	return GetConfigurationProductsUIReadOnlyUnion5{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsUIReadOnlyUnion5GetConfigurationProductsUIReadOnly5(getConfigurationProductsUIReadOnly5 GetConfigurationProductsUIReadOnly5) GetConfigurationProductsUIReadOnlyUnion5 {
@@ -6593,6 +6584,15 @@ func CreateGetConfigurationProductsUIReadOnlyUnion5GetConfigurationProductsUIRea
 	return GetConfigurationProductsUIReadOnlyUnion5{
 		GetConfigurationProductsUIReadOnly5: &getConfigurationProductsUIReadOnly5,
 		Type:                                typ,
+	}
+}
+
+func CreateGetConfigurationProductsUIReadOnlyUnion5Boolean(boolean bool) GetConfigurationProductsUIReadOnlyUnion5 {
+	typ := GetConfigurationProductsUIReadOnlyUnion5TypeBoolean
+
+	return GetConfigurationProductsUIReadOnlyUnion5{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -6632,12 +6632,12 @@ func (u *GetConfigurationProductsUIReadOnlyUnion5) UnmarshalJSON(data []byte) er
 }
 
 func (u GetConfigurationProductsUIReadOnlyUnion5) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsUIReadOnly5 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsUIReadOnly5, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsUIReadOnlyEnum5 != nil {
@@ -6698,26 +6698,17 @@ func (o *GetConfigurationProductsUIHidden5) GetExpr() string {
 type GetConfigurationProductsUIHiddenUnion5Type string
 
 const (
-	GetConfigurationProductsUIHiddenUnion5TypeBoolean                               GetConfigurationProductsUIHiddenUnion5Type = "boolean"
 	GetConfigurationProductsUIHiddenUnion5TypeGetConfigurationProductsUIHidden5     GetConfigurationProductsUIHiddenUnion5Type = "getConfigurationProducts_ui:hidden_5"
+	GetConfigurationProductsUIHiddenUnion5TypeBoolean                               GetConfigurationProductsUIHiddenUnion5Type = "boolean"
 	GetConfigurationProductsUIHiddenUnion5TypeGetConfigurationProductsUIHiddenEnum5 GetConfigurationProductsUIHiddenUnion5Type = "getConfigurationProducts_ui:hidden_enum_5"
 )
 
 type GetConfigurationProductsUIHiddenUnion5 struct {
-	Boolean                               *bool                                  `queryParam:"inline"`
 	GetConfigurationProductsUIHidden5     *GetConfigurationProductsUIHidden5     `queryParam:"inline"`
+	Boolean                               *bool                                  `queryParam:"inline"`
 	GetConfigurationProductsUIHiddenEnum5 *GetConfigurationProductsUIHiddenEnum5 `queryParam:"inline"`
 
 	Type GetConfigurationProductsUIHiddenUnion5Type
-}
-
-func CreateGetConfigurationProductsUIHiddenUnion5Boolean(boolean bool) GetConfigurationProductsUIHiddenUnion5 {
-	typ := GetConfigurationProductsUIHiddenUnion5TypeBoolean
-
-	return GetConfigurationProductsUIHiddenUnion5{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsUIHiddenUnion5GetConfigurationProductsUIHidden5(getConfigurationProductsUIHidden5 GetConfigurationProductsUIHidden5) GetConfigurationProductsUIHiddenUnion5 {
@@ -6726,6 +6717,15 @@ func CreateGetConfigurationProductsUIHiddenUnion5GetConfigurationProductsUIHidde
 	return GetConfigurationProductsUIHiddenUnion5{
 		GetConfigurationProductsUIHidden5: &getConfigurationProductsUIHidden5,
 		Type:                              typ,
+	}
+}
+
+func CreateGetConfigurationProductsUIHiddenUnion5Boolean(boolean bool) GetConfigurationProductsUIHiddenUnion5 {
+	typ := GetConfigurationProductsUIHiddenUnion5TypeBoolean
+
+	return GetConfigurationProductsUIHiddenUnion5{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -6765,12 +6765,12 @@ func (u *GetConfigurationProductsUIHiddenUnion5) UnmarshalJSON(data []byte) erro
 }
 
 func (u GetConfigurationProductsUIHiddenUnion5) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsUIHidden5 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsUIHidden5, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsUIHiddenEnum5 != nil {
@@ -6831,26 +6831,17 @@ func (o *GetConfigurationProductsUIDisabled5) GetExpr() string {
 type GetConfigurationProductsUIDisabledUnion5Type string
 
 const (
-	GetConfigurationProductsUIDisabledUnion5TypeBoolean                                 GetConfigurationProductsUIDisabledUnion5Type = "boolean"
 	GetConfigurationProductsUIDisabledUnion5TypeGetConfigurationProductsUIDisabled5     GetConfigurationProductsUIDisabledUnion5Type = "getConfigurationProducts_ui:disabled_5"
+	GetConfigurationProductsUIDisabledUnion5TypeBoolean                                 GetConfigurationProductsUIDisabledUnion5Type = "boolean"
 	GetConfigurationProductsUIDisabledUnion5TypeGetConfigurationProductsUIDisabledEnum5 GetConfigurationProductsUIDisabledUnion5Type = "getConfigurationProducts_ui:disabled_enum_5"
 )
 
 type GetConfigurationProductsUIDisabledUnion5 struct {
-	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIDisabled5     *GetConfigurationProductsUIDisabled5     `queryParam:"inline"`
+	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIDisabledEnum5 *GetConfigurationProductsUIDisabledEnum5 `queryParam:"inline"`
 
 	Type GetConfigurationProductsUIDisabledUnion5Type
-}
-
-func CreateGetConfigurationProductsUIDisabledUnion5Boolean(boolean bool) GetConfigurationProductsUIDisabledUnion5 {
-	typ := GetConfigurationProductsUIDisabledUnion5TypeBoolean
-
-	return GetConfigurationProductsUIDisabledUnion5{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsUIDisabledUnion5GetConfigurationProductsUIDisabled5(getConfigurationProductsUIDisabled5 GetConfigurationProductsUIDisabled5) GetConfigurationProductsUIDisabledUnion5 {
@@ -6859,6 +6850,15 @@ func CreateGetConfigurationProductsUIDisabledUnion5GetConfigurationProductsUIDis
 	return GetConfigurationProductsUIDisabledUnion5{
 		GetConfigurationProductsUIDisabled5: &getConfigurationProductsUIDisabled5,
 		Type:                                typ,
+	}
+}
+
+func CreateGetConfigurationProductsUIDisabledUnion5Boolean(boolean bool) GetConfigurationProductsUIDisabledUnion5 {
+	typ := GetConfigurationProductsUIDisabledUnion5TypeBoolean
+
+	return GetConfigurationProductsUIDisabledUnion5{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -6898,12 +6898,12 @@ func (u *GetConfigurationProductsUIDisabledUnion5) UnmarshalJSON(data []byte) er
 }
 
 func (u GetConfigurationProductsUIDisabledUnion5) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsUIDisabled5 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsUIDisabled5, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsUIDisabledEnum5 != nil {
@@ -7352,26 +7352,17 @@ func (o *GetConfigurationProductsUIReadOnly4) GetExpr() string {
 type GetConfigurationProductsUIReadOnlyUnion4Type string
 
 const (
-	GetConfigurationProductsUIReadOnlyUnion4TypeBoolean                                 GetConfigurationProductsUIReadOnlyUnion4Type = "boolean"
 	GetConfigurationProductsUIReadOnlyUnion4TypeGetConfigurationProductsUIReadOnly4     GetConfigurationProductsUIReadOnlyUnion4Type = "getConfigurationProducts_ui:read-only_4"
+	GetConfigurationProductsUIReadOnlyUnion4TypeBoolean                                 GetConfigurationProductsUIReadOnlyUnion4Type = "boolean"
 	GetConfigurationProductsUIReadOnlyUnion4TypeGetConfigurationProductsUIReadOnlyEnum4 GetConfigurationProductsUIReadOnlyUnion4Type = "getConfigurationProducts_ui:read-only_enum_4"
 )
 
 type GetConfigurationProductsUIReadOnlyUnion4 struct {
-	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIReadOnly4     *GetConfigurationProductsUIReadOnly4     `queryParam:"inline"`
+	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIReadOnlyEnum4 *GetConfigurationProductsUIReadOnlyEnum4 `queryParam:"inline"`
 
 	Type GetConfigurationProductsUIReadOnlyUnion4Type
-}
-
-func CreateGetConfigurationProductsUIReadOnlyUnion4Boolean(boolean bool) GetConfigurationProductsUIReadOnlyUnion4 {
-	typ := GetConfigurationProductsUIReadOnlyUnion4TypeBoolean
-
-	return GetConfigurationProductsUIReadOnlyUnion4{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsUIReadOnlyUnion4GetConfigurationProductsUIReadOnly4(getConfigurationProductsUIReadOnly4 GetConfigurationProductsUIReadOnly4) GetConfigurationProductsUIReadOnlyUnion4 {
@@ -7380,6 +7371,15 @@ func CreateGetConfigurationProductsUIReadOnlyUnion4GetConfigurationProductsUIRea
 	return GetConfigurationProductsUIReadOnlyUnion4{
 		GetConfigurationProductsUIReadOnly4: &getConfigurationProductsUIReadOnly4,
 		Type:                                typ,
+	}
+}
+
+func CreateGetConfigurationProductsUIReadOnlyUnion4Boolean(boolean bool) GetConfigurationProductsUIReadOnlyUnion4 {
+	typ := GetConfigurationProductsUIReadOnlyUnion4TypeBoolean
+
+	return GetConfigurationProductsUIReadOnlyUnion4{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -7419,12 +7419,12 @@ func (u *GetConfigurationProductsUIReadOnlyUnion4) UnmarshalJSON(data []byte) er
 }
 
 func (u GetConfigurationProductsUIReadOnlyUnion4) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsUIReadOnly4 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsUIReadOnly4, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsUIReadOnlyEnum4 != nil {
@@ -7485,26 +7485,17 @@ func (o *GetConfigurationProductsUIHidden4) GetExpr() string {
 type GetConfigurationProductsUIHiddenUnion4Type string
 
 const (
-	GetConfigurationProductsUIHiddenUnion4TypeBoolean                               GetConfigurationProductsUIHiddenUnion4Type = "boolean"
 	GetConfigurationProductsUIHiddenUnion4TypeGetConfigurationProductsUIHidden4     GetConfigurationProductsUIHiddenUnion4Type = "getConfigurationProducts_ui:hidden_4"
+	GetConfigurationProductsUIHiddenUnion4TypeBoolean                               GetConfigurationProductsUIHiddenUnion4Type = "boolean"
 	GetConfigurationProductsUIHiddenUnion4TypeGetConfigurationProductsUIHiddenEnum4 GetConfigurationProductsUIHiddenUnion4Type = "getConfigurationProducts_ui:hidden_enum_4"
 )
 
 type GetConfigurationProductsUIHiddenUnion4 struct {
-	Boolean                               *bool                                  `queryParam:"inline"`
 	GetConfigurationProductsUIHidden4     *GetConfigurationProductsUIHidden4     `queryParam:"inline"`
+	Boolean                               *bool                                  `queryParam:"inline"`
 	GetConfigurationProductsUIHiddenEnum4 *GetConfigurationProductsUIHiddenEnum4 `queryParam:"inline"`
 
 	Type GetConfigurationProductsUIHiddenUnion4Type
-}
-
-func CreateGetConfigurationProductsUIHiddenUnion4Boolean(boolean bool) GetConfigurationProductsUIHiddenUnion4 {
-	typ := GetConfigurationProductsUIHiddenUnion4TypeBoolean
-
-	return GetConfigurationProductsUIHiddenUnion4{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsUIHiddenUnion4GetConfigurationProductsUIHidden4(getConfigurationProductsUIHidden4 GetConfigurationProductsUIHidden4) GetConfigurationProductsUIHiddenUnion4 {
@@ -7513,6 +7504,15 @@ func CreateGetConfigurationProductsUIHiddenUnion4GetConfigurationProductsUIHidde
 	return GetConfigurationProductsUIHiddenUnion4{
 		GetConfigurationProductsUIHidden4: &getConfigurationProductsUIHidden4,
 		Type:                              typ,
+	}
+}
+
+func CreateGetConfigurationProductsUIHiddenUnion4Boolean(boolean bool) GetConfigurationProductsUIHiddenUnion4 {
+	typ := GetConfigurationProductsUIHiddenUnion4TypeBoolean
+
+	return GetConfigurationProductsUIHiddenUnion4{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -7552,12 +7552,12 @@ func (u *GetConfigurationProductsUIHiddenUnion4) UnmarshalJSON(data []byte) erro
 }
 
 func (u GetConfigurationProductsUIHiddenUnion4) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsUIHidden4 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsUIHidden4, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsUIHiddenEnum4 != nil {
@@ -7618,26 +7618,17 @@ func (o *GetConfigurationProductsUIDisabled4) GetExpr() string {
 type GetConfigurationProductsUIDisabledUnion4Type string
 
 const (
-	GetConfigurationProductsUIDisabledUnion4TypeBoolean                                 GetConfigurationProductsUIDisabledUnion4Type = "boolean"
 	GetConfigurationProductsUIDisabledUnion4TypeGetConfigurationProductsUIDisabled4     GetConfigurationProductsUIDisabledUnion4Type = "getConfigurationProducts_ui:disabled_4"
+	GetConfigurationProductsUIDisabledUnion4TypeBoolean                                 GetConfigurationProductsUIDisabledUnion4Type = "boolean"
 	GetConfigurationProductsUIDisabledUnion4TypeGetConfigurationProductsUIDisabledEnum4 GetConfigurationProductsUIDisabledUnion4Type = "getConfigurationProducts_ui:disabled_enum_4"
 )
 
 type GetConfigurationProductsUIDisabledUnion4 struct {
-	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIDisabled4     *GetConfigurationProductsUIDisabled4     `queryParam:"inline"`
+	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIDisabledEnum4 *GetConfigurationProductsUIDisabledEnum4 `queryParam:"inline"`
 
 	Type GetConfigurationProductsUIDisabledUnion4Type
-}
-
-func CreateGetConfigurationProductsUIDisabledUnion4Boolean(boolean bool) GetConfigurationProductsUIDisabledUnion4 {
-	typ := GetConfigurationProductsUIDisabledUnion4TypeBoolean
-
-	return GetConfigurationProductsUIDisabledUnion4{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsUIDisabledUnion4GetConfigurationProductsUIDisabled4(getConfigurationProductsUIDisabled4 GetConfigurationProductsUIDisabled4) GetConfigurationProductsUIDisabledUnion4 {
@@ -7646,6 +7637,15 @@ func CreateGetConfigurationProductsUIDisabledUnion4GetConfigurationProductsUIDis
 	return GetConfigurationProductsUIDisabledUnion4{
 		GetConfigurationProductsUIDisabled4: &getConfigurationProductsUIDisabled4,
 		Type:                                typ,
+	}
+}
+
+func CreateGetConfigurationProductsUIDisabledUnion4Boolean(boolean bool) GetConfigurationProductsUIDisabledUnion4 {
+	typ := GetConfigurationProductsUIDisabledUnion4TypeBoolean
+
+	return GetConfigurationProductsUIDisabledUnion4{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -7685,12 +7685,12 @@ func (u *GetConfigurationProductsUIDisabledUnion4) UnmarshalJSON(data []byte) er
 }
 
 func (u GetConfigurationProductsUIDisabledUnion4) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsUIDisabled4 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsUIDisabled4, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsUIDisabledEnum4 != nil {
@@ -8030,26 +8030,17 @@ func (o *GetConfigurationProductsUIReadOnly3) GetExpr() string {
 type GetConfigurationProductsUIReadOnlyUnion3Type string
 
 const (
-	GetConfigurationProductsUIReadOnlyUnion3TypeBoolean                                 GetConfigurationProductsUIReadOnlyUnion3Type = "boolean"
 	GetConfigurationProductsUIReadOnlyUnion3TypeGetConfigurationProductsUIReadOnly3     GetConfigurationProductsUIReadOnlyUnion3Type = "getConfigurationProducts_ui:read-only_3"
+	GetConfigurationProductsUIReadOnlyUnion3TypeBoolean                                 GetConfigurationProductsUIReadOnlyUnion3Type = "boolean"
 	GetConfigurationProductsUIReadOnlyUnion3TypeGetConfigurationProductsUIReadOnlyEnum3 GetConfigurationProductsUIReadOnlyUnion3Type = "getConfigurationProducts_ui:read-only_enum_3"
 )
 
 type GetConfigurationProductsUIReadOnlyUnion3 struct {
-	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIReadOnly3     *GetConfigurationProductsUIReadOnly3     `queryParam:"inline"`
+	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIReadOnlyEnum3 *GetConfigurationProductsUIReadOnlyEnum3 `queryParam:"inline"`
 
 	Type GetConfigurationProductsUIReadOnlyUnion3Type
-}
-
-func CreateGetConfigurationProductsUIReadOnlyUnion3Boolean(boolean bool) GetConfigurationProductsUIReadOnlyUnion3 {
-	typ := GetConfigurationProductsUIReadOnlyUnion3TypeBoolean
-
-	return GetConfigurationProductsUIReadOnlyUnion3{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsUIReadOnlyUnion3GetConfigurationProductsUIReadOnly3(getConfigurationProductsUIReadOnly3 GetConfigurationProductsUIReadOnly3) GetConfigurationProductsUIReadOnlyUnion3 {
@@ -8058,6 +8049,15 @@ func CreateGetConfigurationProductsUIReadOnlyUnion3GetConfigurationProductsUIRea
 	return GetConfigurationProductsUIReadOnlyUnion3{
 		GetConfigurationProductsUIReadOnly3: &getConfigurationProductsUIReadOnly3,
 		Type:                                typ,
+	}
+}
+
+func CreateGetConfigurationProductsUIReadOnlyUnion3Boolean(boolean bool) GetConfigurationProductsUIReadOnlyUnion3 {
+	typ := GetConfigurationProductsUIReadOnlyUnion3TypeBoolean
+
+	return GetConfigurationProductsUIReadOnlyUnion3{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -8097,12 +8097,12 @@ func (u *GetConfigurationProductsUIReadOnlyUnion3) UnmarshalJSON(data []byte) er
 }
 
 func (u GetConfigurationProductsUIReadOnlyUnion3) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsUIReadOnly3 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsUIReadOnly3, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsUIReadOnlyEnum3 != nil {
@@ -8163,26 +8163,17 @@ func (o *GetConfigurationProductsUIHidden3) GetExpr() string {
 type GetConfigurationProductsUIHiddenUnion3Type string
 
 const (
-	GetConfigurationProductsUIHiddenUnion3TypeBoolean                               GetConfigurationProductsUIHiddenUnion3Type = "boolean"
 	GetConfigurationProductsUIHiddenUnion3TypeGetConfigurationProductsUIHidden3     GetConfigurationProductsUIHiddenUnion3Type = "getConfigurationProducts_ui:hidden_3"
+	GetConfigurationProductsUIHiddenUnion3TypeBoolean                               GetConfigurationProductsUIHiddenUnion3Type = "boolean"
 	GetConfigurationProductsUIHiddenUnion3TypeGetConfigurationProductsUIHiddenEnum3 GetConfigurationProductsUIHiddenUnion3Type = "getConfigurationProducts_ui:hidden_enum_3"
 )
 
 type GetConfigurationProductsUIHiddenUnion3 struct {
-	Boolean                               *bool                                  `queryParam:"inline"`
 	GetConfigurationProductsUIHidden3     *GetConfigurationProductsUIHidden3     `queryParam:"inline"`
+	Boolean                               *bool                                  `queryParam:"inline"`
 	GetConfigurationProductsUIHiddenEnum3 *GetConfigurationProductsUIHiddenEnum3 `queryParam:"inline"`
 
 	Type GetConfigurationProductsUIHiddenUnion3Type
-}
-
-func CreateGetConfigurationProductsUIHiddenUnion3Boolean(boolean bool) GetConfigurationProductsUIHiddenUnion3 {
-	typ := GetConfigurationProductsUIHiddenUnion3TypeBoolean
-
-	return GetConfigurationProductsUIHiddenUnion3{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsUIHiddenUnion3GetConfigurationProductsUIHidden3(getConfigurationProductsUIHidden3 GetConfigurationProductsUIHidden3) GetConfigurationProductsUIHiddenUnion3 {
@@ -8191,6 +8182,15 @@ func CreateGetConfigurationProductsUIHiddenUnion3GetConfigurationProductsUIHidde
 	return GetConfigurationProductsUIHiddenUnion3{
 		GetConfigurationProductsUIHidden3: &getConfigurationProductsUIHidden3,
 		Type:                              typ,
+	}
+}
+
+func CreateGetConfigurationProductsUIHiddenUnion3Boolean(boolean bool) GetConfigurationProductsUIHiddenUnion3 {
+	typ := GetConfigurationProductsUIHiddenUnion3TypeBoolean
+
+	return GetConfigurationProductsUIHiddenUnion3{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -8230,12 +8230,12 @@ func (u *GetConfigurationProductsUIHiddenUnion3) UnmarshalJSON(data []byte) erro
 }
 
 func (u GetConfigurationProductsUIHiddenUnion3) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsUIHidden3 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsUIHidden3, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsUIHiddenEnum3 != nil {
@@ -8296,26 +8296,17 @@ func (o *GetConfigurationProductsUIDisabled3) GetExpr() string {
 type GetConfigurationProductsUIDisabledUnion3Type string
 
 const (
-	GetConfigurationProductsUIDisabledUnion3TypeBoolean                                 GetConfigurationProductsUIDisabledUnion3Type = "boolean"
 	GetConfigurationProductsUIDisabledUnion3TypeGetConfigurationProductsUIDisabled3     GetConfigurationProductsUIDisabledUnion3Type = "getConfigurationProducts_ui:disabled_3"
+	GetConfigurationProductsUIDisabledUnion3TypeBoolean                                 GetConfigurationProductsUIDisabledUnion3Type = "boolean"
 	GetConfigurationProductsUIDisabledUnion3TypeGetConfigurationProductsUIDisabledEnum3 GetConfigurationProductsUIDisabledUnion3Type = "getConfigurationProducts_ui:disabled_enum_3"
 )
 
 type GetConfigurationProductsUIDisabledUnion3 struct {
-	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIDisabled3     *GetConfigurationProductsUIDisabled3     `queryParam:"inline"`
+	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIDisabledEnum3 *GetConfigurationProductsUIDisabledEnum3 `queryParam:"inline"`
 
 	Type GetConfigurationProductsUIDisabledUnion3Type
-}
-
-func CreateGetConfigurationProductsUIDisabledUnion3Boolean(boolean bool) GetConfigurationProductsUIDisabledUnion3 {
-	typ := GetConfigurationProductsUIDisabledUnion3TypeBoolean
-
-	return GetConfigurationProductsUIDisabledUnion3{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsUIDisabledUnion3GetConfigurationProductsUIDisabled3(getConfigurationProductsUIDisabled3 GetConfigurationProductsUIDisabled3) GetConfigurationProductsUIDisabledUnion3 {
@@ -8324,6 +8315,15 @@ func CreateGetConfigurationProductsUIDisabledUnion3GetConfigurationProductsUIDis
 	return GetConfigurationProductsUIDisabledUnion3{
 		GetConfigurationProductsUIDisabled3: &getConfigurationProductsUIDisabled3,
 		Type:                                typ,
+	}
+}
+
+func CreateGetConfigurationProductsUIDisabledUnion3Boolean(boolean bool) GetConfigurationProductsUIDisabledUnion3 {
+	typ := GetConfigurationProductsUIDisabledUnion3TypeBoolean
+
+	return GetConfigurationProductsUIDisabledUnion3{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -8363,12 +8363,12 @@ func (u *GetConfigurationProductsUIDisabledUnion3) UnmarshalJSON(data []byte) er
 }
 
 func (u GetConfigurationProductsUIDisabledUnion3) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsUIDisabled3 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsUIDisabled3, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsUIDisabledEnum3 != nil {
@@ -8676,26 +8676,17 @@ func (o *GetConfigurationProductsUIReadOnly2) GetExpr() string {
 type GetConfigurationProductsUIReadOnlyUnion2Type string
 
 const (
-	GetConfigurationProductsUIReadOnlyUnion2TypeBoolean                                 GetConfigurationProductsUIReadOnlyUnion2Type = "boolean"
 	GetConfigurationProductsUIReadOnlyUnion2TypeGetConfigurationProductsUIReadOnly2     GetConfigurationProductsUIReadOnlyUnion2Type = "getConfigurationProducts_ui:read-only_2"
+	GetConfigurationProductsUIReadOnlyUnion2TypeBoolean                                 GetConfigurationProductsUIReadOnlyUnion2Type = "boolean"
 	GetConfigurationProductsUIReadOnlyUnion2TypeGetConfigurationProductsUIReadOnlyEnum2 GetConfigurationProductsUIReadOnlyUnion2Type = "getConfigurationProducts_ui:read-only_enum_2"
 )
 
 type GetConfigurationProductsUIReadOnlyUnion2 struct {
-	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIReadOnly2     *GetConfigurationProductsUIReadOnly2     `queryParam:"inline"`
+	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIReadOnlyEnum2 *GetConfigurationProductsUIReadOnlyEnum2 `queryParam:"inline"`
 
 	Type GetConfigurationProductsUIReadOnlyUnion2Type
-}
-
-func CreateGetConfigurationProductsUIReadOnlyUnion2Boolean(boolean bool) GetConfigurationProductsUIReadOnlyUnion2 {
-	typ := GetConfigurationProductsUIReadOnlyUnion2TypeBoolean
-
-	return GetConfigurationProductsUIReadOnlyUnion2{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsUIReadOnlyUnion2GetConfigurationProductsUIReadOnly2(getConfigurationProductsUIReadOnly2 GetConfigurationProductsUIReadOnly2) GetConfigurationProductsUIReadOnlyUnion2 {
@@ -8704,6 +8695,15 @@ func CreateGetConfigurationProductsUIReadOnlyUnion2GetConfigurationProductsUIRea
 	return GetConfigurationProductsUIReadOnlyUnion2{
 		GetConfigurationProductsUIReadOnly2: &getConfigurationProductsUIReadOnly2,
 		Type:                                typ,
+	}
+}
+
+func CreateGetConfigurationProductsUIReadOnlyUnion2Boolean(boolean bool) GetConfigurationProductsUIReadOnlyUnion2 {
+	typ := GetConfigurationProductsUIReadOnlyUnion2TypeBoolean
+
+	return GetConfigurationProductsUIReadOnlyUnion2{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -8743,12 +8743,12 @@ func (u *GetConfigurationProductsUIReadOnlyUnion2) UnmarshalJSON(data []byte) er
 }
 
 func (u GetConfigurationProductsUIReadOnlyUnion2) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsUIReadOnly2 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsUIReadOnly2, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsUIReadOnlyEnum2 != nil {
@@ -8809,26 +8809,17 @@ func (o *GetConfigurationProductsUIHidden2) GetExpr() string {
 type GetConfigurationProductsUIHiddenUnion2Type string
 
 const (
-	GetConfigurationProductsUIHiddenUnion2TypeBoolean                               GetConfigurationProductsUIHiddenUnion2Type = "boolean"
 	GetConfigurationProductsUIHiddenUnion2TypeGetConfigurationProductsUIHidden2     GetConfigurationProductsUIHiddenUnion2Type = "getConfigurationProducts_ui:hidden_2"
+	GetConfigurationProductsUIHiddenUnion2TypeBoolean                               GetConfigurationProductsUIHiddenUnion2Type = "boolean"
 	GetConfigurationProductsUIHiddenUnion2TypeGetConfigurationProductsUIHiddenEnum2 GetConfigurationProductsUIHiddenUnion2Type = "getConfigurationProducts_ui:hidden_enum_2"
 )
 
 type GetConfigurationProductsUIHiddenUnion2 struct {
-	Boolean                               *bool                                  `queryParam:"inline"`
 	GetConfigurationProductsUIHidden2     *GetConfigurationProductsUIHidden2     `queryParam:"inline"`
+	Boolean                               *bool                                  `queryParam:"inline"`
 	GetConfigurationProductsUIHiddenEnum2 *GetConfigurationProductsUIHiddenEnum2 `queryParam:"inline"`
 
 	Type GetConfigurationProductsUIHiddenUnion2Type
-}
-
-func CreateGetConfigurationProductsUIHiddenUnion2Boolean(boolean bool) GetConfigurationProductsUIHiddenUnion2 {
-	typ := GetConfigurationProductsUIHiddenUnion2TypeBoolean
-
-	return GetConfigurationProductsUIHiddenUnion2{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsUIHiddenUnion2GetConfigurationProductsUIHidden2(getConfigurationProductsUIHidden2 GetConfigurationProductsUIHidden2) GetConfigurationProductsUIHiddenUnion2 {
@@ -8837,6 +8828,15 @@ func CreateGetConfigurationProductsUIHiddenUnion2GetConfigurationProductsUIHidde
 	return GetConfigurationProductsUIHiddenUnion2{
 		GetConfigurationProductsUIHidden2: &getConfigurationProductsUIHidden2,
 		Type:                              typ,
+	}
+}
+
+func CreateGetConfigurationProductsUIHiddenUnion2Boolean(boolean bool) GetConfigurationProductsUIHiddenUnion2 {
+	typ := GetConfigurationProductsUIHiddenUnion2TypeBoolean
+
+	return GetConfigurationProductsUIHiddenUnion2{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -8876,12 +8876,12 @@ func (u *GetConfigurationProductsUIHiddenUnion2) UnmarshalJSON(data []byte) erro
 }
 
 func (u GetConfigurationProductsUIHiddenUnion2) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsUIHidden2 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsUIHidden2, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsUIHiddenEnum2 != nil {
@@ -8942,26 +8942,17 @@ func (o *GetConfigurationProductsUIDisabled2) GetExpr() string {
 type GetConfigurationProductsUIDisabledUnion2Type string
 
 const (
-	GetConfigurationProductsUIDisabledUnion2TypeBoolean                                 GetConfigurationProductsUIDisabledUnion2Type = "boolean"
 	GetConfigurationProductsUIDisabledUnion2TypeGetConfigurationProductsUIDisabled2     GetConfigurationProductsUIDisabledUnion2Type = "getConfigurationProducts_ui:disabled_2"
+	GetConfigurationProductsUIDisabledUnion2TypeBoolean                                 GetConfigurationProductsUIDisabledUnion2Type = "boolean"
 	GetConfigurationProductsUIDisabledUnion2TypeGetConfigurationProductsUIDisabledEnum2 GetConfigurationProductsUIDisabledUnion2Type = "getConfigurationProducts_ui:disabled_enum_2"
 )
 
 type GetConfigurationProductsUIDisabledUnion2 struct {
-	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIDisabled2     *GetConfigurationProductsUIDisabled2     `queryParam:"inline"`
+	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIDisabledEnum2 *GetConfigurationProductsUIDisabledEnum2 `queryParam:"inline"`
 
 	Type GetConfigurationProductsUIDisabledUnion2Type
-}
-
-func CreateGetConfigurationProductsUIDisabledUnion2Boolean(boolean bool) GetConfigurationProductsUIDisabledUnion2 {
-	typ := GetConfigurationProductsUIDisabledUnion2TypeBoolean
-
-	return GetConfigurationProductsUIDisabledUnion2{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsUIDisabledUnion2GetConfigurationProductsUIDisabled2(getConfigurationProductsUIDisabled2 GetConfigurationProductsUIDisabled2) GetConfigurationProductsUIDisabledUnion2 {
@@ -8970,6 +8961,15 @@ func CreateGetConfigurationProductsUIDisabledUnion2GetConfigurationProductsUIDis
 	return GetConfigurationProductsUIDisabledUnion2{
 		GetConfigurationProductsUIDisabled2: &getConfigurationProductsUIDisabled2,
 		Type:                                typ,
+	}
+}
+
+func CreateGetConfigurationProductsUIDisabledUnion2Boolean(boolean bool) GetConfigurationProductsUIDisabledUnion2 {
+	typ := GetConfigurationProductsUIDisabledUnion2TypeBoolean
+
+	return GetConfigurationProductsUIDisabledUnion2{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -9009,12 +9009,12 @@ func (u *GetConfigurationProductsUIDisabledUnion2) UnmarshalJSON(data []byte) er
 }
 
 func (u GetConfigurationProductsUIDisabledUnion2) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsUIDisabled2 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsUIDisabled2, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsUIDisabledEnum2 != nil {
@@ -9362,26 +9362,17 @@ func (o *GetConfigurationProductsUIReadOnly1) GetExpr() string {
 type GetConfigurationProductsUIReadOnlyUnion1Type string
 
 const (
-	GetConfigurationProductsUIReadOnlyUnion1TypeBoolean                                 GetConfigurationProductsUIReadOnlyUnion1Type = "boolean"
 	GetConfigurationProductsUIReadOnlyUnion1TypeGetConfigurationProductsUIReadOnly1     GetConfigurationProductsUIReadOnlyUnion1Type = "getConfigurationProducts_ui:read-only_1"
+	GetConfigurationProductsUIReadOnlyUnion1TypeBoolean                                 GetConfigurationProductsUIReadOnlyUnion1Type = "boolean"
 	GetConfigurationProductsUIReadOnlyUnion1TypeGetConfigurationProductsUIReadOnlyEnum1 GetConfigurationProductsUIReadOnlyUnion1Type = "getConfigurationProducts_ui:read-only_enum_1"
 )
 
 type GetConfigurationProductsUIReadOnlyUnion1 struct {
-	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIReadOnly1     *GetConfigurationProductsUIReadOnly1     `queryParam:"inline"`
+	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIReadOnlyEnum1 *GetConfigurationProductsUIReadOnlyEnum1 `queryParam:"inline"`
 
 	Type GetConfigurationProductsUIReadOnlyUnion1Type
-}
-
-func CreateGetConfigurationProductsUIReadOnlyUnion1Boolean(boolean bool) GetConfigurationProductsUIReadOnlyUnion1 {
-	typ := GetConfigurationProductsUIReadOnlyUnion1TypeBoolean
-
-	return GetConfigurationProductsUIReadOnlyUnion1{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsUIReadOnlyUnion1GetConfigurationProductsUIReadOnly1(getConfigurationProductsUIReadOnly1 GetConfigurationProductsUIReadOnly1) GetConfigurationProductsUIReadOnlyUnion1 {
@@ -9390,6 +9381,15 @@ func CreateGetConfigurationProductsUIReadOnlyUnion1GetConfigurationProductsUIRea
 	return GetConfigurationProductsUIReadOnlyUnion1{
 		GetConfigurationProductsUIReadOnly1: &getConfigurationProductsUIReadOnly1,
 		Type:                                typ,
+	}
+}
+
+func CreateGetConfigurationProductsUIReadOnlyUnion1Boolean(boolean bool) GetConfigurationProductsUIReadOnlyUnion1 {
+	typ := GetConfigurationProductsUIReadOnlyUnion1TypeBoolean
+
+	return GetConfigurationProductsUIReadOnlyUnion1{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -9429,12 +9429,12 @@ func (u *GetConfigurationProductsUIReadOnlyUnion1) UnmarshalJSON(data []byte) er
 }
 
 func (u GetConfigurationProductsUIReadOnlyUnion1) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsUIReadOnly1 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsUIReadOnly1, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsUIReadOnlyEnum1 != nil {
@@ -9495,26 +9495,17 @@ func (o *GetConfigurationProductsUIHidden1) GetExpr() string {
 type GetConfigurationProductsUIHiddenUnion1Type string
 
 const (
-	GetConfigurationProductsUIHiddenUnion1TypeBoolean                               GetConfigurationProductsUIHiddenUnion1Type = "boolean"
 	GetConfigurationProductsUIHiddenUnion1TypeGetConfigurationProductsUIHidden1     GetConfigurationProductsUIHiddenUnion1Type = "getConfigurationProducts_ui:hidden_1"
+	GetConfigurationProductsUIHiddenUnion1TypeBoolean                               GetConfigurationProductsUIHiddenUnion1Type = "boolean"
 	GetConfigurationProductsUIHiddenUnion1TypeGetConfigurationProductsUIHiddenEnum1 GetConfigurationProductsUIHiddenUnion1Type = "getConfigurationProducts_ui:hidden_enum_1"
 )
 
 type GetConfigurationProductsUIHiddenUnion1 struct {
-	Boolean                               *bool                                  `queryParam:"inline"`
 	GetConfigurationProductsUIHidden1     *GetConfigurationProductsUIHidden1     `queryParam:"inline"`
+	Boolean                               *bool                                  `queryParam:"inline"`
 	GetConfigurationProductsUIHiddenEnum1 *GetConfigurationProductsUIHiddenEnum1 `queryParam:"inline"`
 
 	Type GetConfigurationProductsUIHiddenUnion1Type
-}
-
-func CreateGetConfigurationProductsUIHiddenUnion1Boolean(boolean bool) GetConfigurationProductsUIHiddenUnion1 {
-	typ := GetConfigurationProductsUIHiddenUnion1TypeBoolean
-
-	return GetConfigurationProductsUIHiddenUnion1{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsUIHiddenUnion1GetConfigurationProductsUIHidden1(getConfigurationProductsUIHidden1 GetConfigurationProductsUIHidden1) GetConfigurationProductsUIHiddenUnion1 {
@@ -9523,6 +9514,15 @@ func CreateGetConfigurationProductsUIHiddenUnion1GetConfigurationProductsUIHidde
 	return GetConfigurationProductsUIHiddenUnion1{
 		GetConfigurationProductsUIHidden1: &getConfigurationProductsUIHidden1,
 		Type:                              typ,
+	}
+}
+
+func CreateGetConfigurationProductsUIHiddenUnion1Boolean(boolean bool) GetConfigurationProductsUIHiddenUnion1 {
+	typ := GetConfigurationProductsUIHiddenUnion1TypeBoolean
+
+	return GetConfigurationProductsUIHiddenUnion1{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -9562,12 +9562,12 @@ func (u *GetConfigurationProductsUIHiddenUnion1) UnmarshalJSON(data []byte) erro
 }
 
 func (u GetConfigurationProductsUIHiddenUnion1) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsUIHidden1 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsUIHidden1, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsUIHiddenEnum1 != nil {
@@ -9628,26 +9628,17 @@ func (o *GetConfigurationProductsUIDisabled1) GetExpr() string {
 type GetConfigurationProductsUIDisabledUnion1Type string
 
 const (
-	GetConfigurationProductsUIDisabledUnion1TypeBoolean                                 GetConfigurationProductsUIDisabledUnion1Type = "boolean"
 	GetConfigurationProductsUIDisabledUnion1TypeGetConfigurationProductsUIDisabled1     GetConfigurationProductsUIDisabledUnion1Type = "getConfigurationProducts_ui:disabled_1"
+	GetConfigurationProductsUIDisabledUnion1TypeBoolean                                 GetConfigurationProductsUIDisabledUnion1Type = "boolean"
 	GetConfigurationProductsUIDisabledUnion1TypeGetConfigurationProductsUIDisabledEnum1 GetConfigurationProductsUIDisabledUnion1Type = "getConfigurationProducts_ui:disabled_enum_1"
 )
 
 type GetConfigurationProductsUIDisabledUnion1 struct {
-	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIDisabled1     *GetConfigurationProductsUIDisabled1     `queryParam:"inline"`
+	Boolean                                 *bool                                    `queryParam:"inline"`
 	GetConfigurationProductsUIDisabledEnum1 *GetConfigurationProductsUIDisabledEnum1 `queryParam:"inline"`
 
 	Type GetConfigurationProductsUIDisabledUnion1Type
-}
-
-func CreateGetConfigurationProductsUIDisabledUnion1Boolean(boolean bool) GetConfigurationProductsUIDisabledUnion1 {
-	typ := GetConfigurationProductsUIDisabledUnion1TypeBoolean
-
-	return GetConfigurationProductsUIDisabledUnion1{
-		Boolean: &boolean,
-		Type:    typ,
-	}
 }
 
 func CreateGetConfigurationProductsUIDisabledUnion1GetConfigurationProductsUIDisabled1(getConfigurationProductsUIDisabled1 GetConfigurationProductsUIDisabled1) GetConfigurationProductsUIDisabledUnion1 {
@@ -9656,6 +9647,15 @@ func CreateGetConfigurationProductsUIDisabledUnion1GetConfigurationProductsUIDis
 	return GetConfigurationProductsUIDisabledUnion1{
 		GetConfigurationProductsUIDisabled1: &getConfigurationProductsUIDisabled1,
 		Type:                                typ,
+	}
+}
+
+func CreateGetConfigurationProductsUIDisabledUnion1Boolean(boolean bool) GetConfigurationProductsUIDisabledUnion1 {
+	typ := GetConfigurationProductsUIDisabledUnion1TypeBoolean
+
+	return GetConfigurationProductsUIDisabledUnion1{
+		Boolean: &boolean,
+		Type:    typ,
 	}
 }
 
@@ -9695,12 +9695,12 @@ func (u *GetConfigurationProductsUIDisabledUnion1) UnmarshalJSON(data []byte) er
 }
 
 func (u GetConfigurationProductsUIDisabledUnion1) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return utils.MarshalJSON(u.Boolean, "", true)
-	}
-
 	if u.GetConfigurationProductsUIDisabled1 != nil {
 		return utils.MarshalJSON(u.GetConfigurationProductsUIDisabled1, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.GetConfigurationProductsUIDisabledEnum1 != nil {

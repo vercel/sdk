@@ -55,6 +55,7 @@ const (
 	UpdateFirewallConfigID3AiBots        UpdateFirewallConfigID3 = "ai_bots"
 	UpdateFirewallConfigID3BotFilter     UpdateFirewallConfigID3 = "bot_filter"
 	UpdateFirewallConfigID3BotProtection UpdateFirewallConfigID3 = "bot_protection"
+	UpdateFirewallConfigID3VercelRuleset UpdateFirewallConfigID3 = "vercel_ruleset"
 	UpdateFirewallConfigID3Owasp         UpdateFirewallConfigID3 = "owasp"
 )
 
@@ -72,6 +73,8 @@ func (e *UpdateFirewallConfigID3) UnmarshalJSON(data []byte) error {
 	case "bot_filter":
 		fallthrough
 	case "bot_protection":
+		fallthrough
+	case "vercel_ruleset":
 		fallthrough
 	case "owasp":
 		*e = UpdateFirewallConfigID3(v)
@@ -208,6 +211,7 @@ const (
 	UpdateFirewallConfigID2AiBots        UpdateFirewallConfigID2 = "ai_bots"
 	UpdateFirewallConfigID2BotFilter     UpdateFirewallConfigID2 = "bot_filter"
 	UpdateFirewallConfigID2BotProtection UpdateFirewallConfigID2 = "bot_protection"
+	UpdateFirewallConfigID2VercelRuleset UpdateFirewallConfigID2 = "vercel_ruleset"
 	UpdateFirewallConfigID2Owasp         UpdateFirewallConfigID2 = "owasp"
 )
 
@@ -225,6 +229,8 @@ func (e *UpdateFirewallConfigID2) UnmarshalJSON(data []byte) error {
 	case "bot_filter":
 		fallthrough
 	case "bot_protection":
+		fallthrough
+	case "vercel_ruleset":
 		fallthrough
 	case "owasp":
 		*e = UpdateFirewallConfigID2(v)
@@ -1823,24 +1829,15 @@ func (o *ValueAction2) GetMitigate() *UpdateFirewallConfigMitigate2 {
 type UpdateFirewallConfigValidationErrors2Type string
 
 const (
-	UpdateFirewallConfigValidationErrors2TypeStr        UpdateFirewallConfigValidationErrors2Type = "str"
 	UpdateFirewallConfigValidationErrors2TypeArrayOfStr UpdateFirewallConfigValidationErrors2Type = "arrayOfStr"
+	UpdateFirewallConfigValidationErrors2TypeStr        UpdateFirewallConfigValidationErrors2Type = "str"
 )
 
 type UpdateFirewallConfigValidationErrors2 struct {
-	Str        *string  `queryParam:"inline"`
 	ArrayOfStr []string `queryParam:"inline"`
+	Str        *string  `queryParam:"inline"`
 
 	Type UpdateFirewallConfigValidationErrors2Type
-}
-
-func CreateUpdateFirewallConfigValidationErrors2Str(str string) UpdateFirewallConfigValidationErrors2 {
-	typ := UpdateFirewallConfigValidationErrors2TypeStr
-
-	return UpdateFirewallConfigValidationErrors2{
-		Str:  &str,
-		Type: typ,
-	}
 }
 
 func CreateUpdateFirewallConfigValidationErrors2ArrayOfStr(arrayOfStr []string) UpdateFirewallConfigValidationErrors2 {
@@ -1852,14 +1849,16 @@ func CreateUpdateFirewallConfigValidationErrors2ArrayOfStr(arrayOfStr []string) 
 	}
 }
 
-func (u *UpdateFirewallConfigValidationErrors2) UnmarshalJSON(data []byte) error {
+func CreateUpdateFirewallConfigValidationErrors2Str(str string) UpdateFirewallConfigValidationErrors2 {
+	typ := UpdateFirewallConfigValidationErrors2TypeStr
 
-	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
-		u.Str = &str
-		u.Type = UpdateFirewallConfigValidationErrors2TypeStr
-		return nil
+	return UpdateFirewallConfigValidationErrors2{
+		Str:  &str,
+		Type: typ,
 	}
+}
+
+func (u *UpdateFirewallConfigValidationErrors2) UnmarshalJSON(data []byte) error {
 
 	var arrayOfStr []string = []string{}
 	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
@@ -1868,16 +1867,23 @@ func (u *UpdateFirewallConfigValidationErrors2) UnmarshalJSON(data []byte) error
 		return nil
 	}
 
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = UpdateFirewallConfigValidationErrors2TypeStr
+		return nil
+	}
+
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFirewallConfigValidationErrors2", string(data))
 }
 
 func (u UpdateFirewallConfigValidationErrors2) MarshalJSON() ([]byte, error) {
-	if u.Str != nil {
-		return utils.MarshalJSON(u.Str, "", true)
-	}
-
 	if u.ArrayOfStr != nil {
 		return utils.MarshalJSON(u.ArrayOfStr, "", true)
+	}
+
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type UpdateFirewallConfigValidationErrors2: all fields are null")
@@ -2784,24 +2790,15 @@ func (o *ValueAction1) GetMitigate() *UpdateFirewallConfigMitigate1 {
 type UpdateFirewallConfigValidationErrors1Type string
 
 const (
-	UpdateFirewallConfigValidationErrors1TypeStr        UpdateFirewallConfigValidationErrors1Type = "str"
 	UpdateFirewallConfigValidationErrors1TypeArrayOfStr UpdateFirewallConfigValidationErrors1Type = "arrayOfStr"
+	UpdateFirewallConfigValidationErrors1TypeStr        UpdateFirewallConfigValidationErrors1Type = "str"
 )
 
 type UpdateFirewallConfigValidationErrors1 struct {
-	Str        *string  `queryParam:"inline"`
 	ArrayOfStr []string `queryParam:"inline"`
+	Str        *string  `queryParam:"inline"`
 
 	Type UpdateFirewallConfigValidationErrors1Type
-}
-
-func CreateUpdateFirewallConfigValidationErrors1Str(str string) UpdateFirewallConfigValidationErrors1 {
-	typ := UpdateFirewallConfigValidationErrors1TypeStr
-
-	return UpdateFirewallConfigValidationErrors1{
-		Str:  &str,
-		Type: typ,
-	}
 }
 
 func CreateUpdateFirewallConfigValidationErrors1ArrayOfStr(arrayOfStr []string) UpdateFirewallConfigValidationErrors1 {
@@ -2813,14 +2810,16 @@ func CreateUpdateFirewallConfigValidationErrors1ArrayOfStr(arrayOfStr []string) 
 	}
 }
 
-func (u *UpdateFirewallConfigValidationErrors1) UnmarshalJSON(data []byte) error {
+func CreateUpdateFirewallConfigValidationErrors1Str(str string) UpdateFirewallConfigValidationErrors1 {
+	typ := UpdateFirewallConfigValidationErrors1TypeStr
 
-	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
-		u.Str = &str
-		u.Type = UpdateFirewallConfigValidationErrors1TypeStr
-		return nil
+	return UpdateFirewallConfigValidationErrors1{
+		Str:  &str,
+		Type: typ,
 	}
+}
+
+func (u *UpdateFirewallConfigValidationErrors1) UnmarshalJSON(data []byte) error {
 
 	var arrayOfStr []string = []string{}
 	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
@@ -2829,16 +2828,23 @@ func (u *UpdateFirewallConfigValidationErrors1) UnmarshalJSON(data []byte) error
 		return nil
 	}
 
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = UpdateFirewallConfigValidationErrors1TypeStr
+		return nil
+	}
+
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFirewallConfigValidationErrors1", string(data))
 }
 
 func (u UpdateFirewallConfigValidationErrors1) MarshalJSON() ([]byte, error) {
-	if u.Str != nil {
-		return utils.MarshalJSON(u.Str, "", true)
-	}
-
 	if u.ArrayOfStr != nil {
 		return utils.MarshalJSON(u.ArrayOfStr, "", true)
+	}
+
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type UpdateFirewallConfigValidationErrors1: all fields are null")

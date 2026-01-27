@@ -1522,14 +1522,16 @@ type GetProjectEnvResponseBody2 struct {
 	EdgeConfigTokenID *string                    `json:"edgeConfigTokenId,omitempty"`
 	CreatedAt         *float64                   `json:"createdAt,omitempty"`
 	UpdatedAt         *float64                   `json:"updatedAt,omitempty"`
-	CreatedBy         *string                    `json:"createdBy,omitempty"`
 	ID                *string                    `json:"id,omitempty"`
-	Key               string                     `json:"key"`
+	CreatedBy         *string                    `json:"createdBy,omitempty"`
 	Target            *GetProjectEnvTargetUnion2 `json:"target,omitempty"`
+	Key               string                     `json:"key"`
 	GitBranch         *string                    `json:"gitBranch,omitempty"`
 	UpdatedBy         *string                    `json:"updatedBy,omitempty"`
 	// This is used to identify variables that have been migrated from type secret to sensitive.
-	SunsetSecretID  *string                         `json:"sunsetSecretId,omitempty"`
+	SunsetSecretID *string `json:"sunsetSecretId,omitempty"`
+	// Legacy now-encryption ciphertext, present after migration swaps value/vsmValue
+	LegacyValue     *string                         `json:"legacyValue,omitempty"`
 	Decrypted       *bool                           `json:"decrypted,omitempty"`
 	ConfigurationID *string                         `json:"configurationId,omitempty"`
 	ContentHint     *GetProjectEnvContentHintUnion2 `json:"contentHint,omitempty"`
@@ -1592,13 +1594,6 @@ func (o *GetProjectEnvResponseBody2) GetUpdatedAt() *float64 {
 	return o.UpdatedAt
 }
 
-func (o *GetProjectEnvResponseBody2) GetCreatedBy() *string {
-	if o == nil {
-		return nil
-	}
-	return o.CreatedBy
-}
-
 func (o *GetProjectEnvResponseBody2) GetID() *string {
 	if o == nil {
 		return nil
@@ -1606,11 +1601,11 @@ func (o *GetProjectEnvResponseBody2) GetID() *string {
 	return o.ID
 }
 
-func (o *GetProjectEnvResponseBody2) GetKey() string {
+func (o *GetProjectEnvResponseBody2) GetCreatedBy() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
-	return o.Key
+	return o.CreatedBy
 }
 
 func (o *GetProjectEnvResponseBody2) GetTarget() *GetProjectEnvTargetUnion2 {
@@ -1618,6 +1613,13 @@ func (o *GetProjectEnvResponseBody2) GetTarget() *GetProjectEnvTargetUnion2 {
 		return nil
 	}
 	return o.Target
+}
+
+func (o *GetProjectEnvResponseBody2) GetKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.Key
 }
 
 func (o *GetProjectEnvResponseBody2) GetGitBranch() *string {
@@ -1639,6 +1641,13 @@ func (o *GetProjectEnvResponseBody2) GetSunsetSecretID() *string {
 		return nil
 	}
 	return o.SunsetSecretID
+}
+
+func (o *GetProjectEnvResponseBody2) GetLegacyValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LegacyValue
 }
 
 func (o *GetProjectEnvResponseBody2) GetDecrypted() *bool {
@@ -3261,14 +3270,16 @@ type GetProjectEnvResponseBody1 struct {
 	EdgeConfigTokenID *string                    `json:"edgeConfigTokenId,omitempty"`
 	CreatedAt         *float64                   `json:"createdAt,omitempty"`
 	UpdatedAt         *float64                   `json:"updatedAt,omitempty"`
-	CreatedBy         *string                    `json:"createdBy,omitempty"`
 	ID                *string                    `json:"id,omitempty"`
-	Key               string                     `json:"key"`
+	CreatedBy         *string                    `json:"createdBy,omitempty"`
 	Target            *GetProjectEnvTargetUnion1 `json:"target,omitempty"`
+	Key               string                     `json:"key"`
 	GitBranch         *string                    `json:"gitBranch,omitempty"`
 	UpdatedBy         *string                    `json:"updatedBy,omitempty"`
 	// This is used to identify variables that have been migrated from type secret to sensitive.
-	SunsetSecretID  *string                         `json:"sunsetSecretId,omitempty"`
+	SunsetSecretID *string `json:"sunsetSecretId,omitempty"`
+	// Legacy now-encryption ciphertext, present after migration swaps value/vsmValue
+	LegacyValue     *string                         `json:"legacyValue,omitempty"`
 	ConfigurationID *string                         `json:"configurationId,omitempty"`
 	ContentHint     *GetProjectEnvContentHintUnion1 `json:"contentHint,omitempty"`
 	// Similar to `contentHints`, but should not be exposed to the user.
@@ -3330,13 +3341,6 @@ func (o *GetProjectEnvResponseBody1) GetUpdatedAt() *float64 {
 	return o.UpdatedAt
 }
 
-func (o *GetProjectEnvResponseBody1) GetCreatedBy() *string {
-	if o == nil {
-		return nil
-	}
-	return o.CreatedBy
-}
-
 func (o *GetProjectEnvResponseBody1) GetID() *string {
 	if o == nil {
 		return nil
@@ -3344,11 +3348,11 @@ func (o *GetProjectEnvResponseBody1) GetID() *string {
 	return o.ID
 }
 
-func (o *GetProjectEnvResponseBody1) GetKey() string {
+func (o *GetProjectEnvResponseBody1) GetCreatedBy() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
-	return o.Key
+	return o.CreatedBy
 }
 
 func (o *GetProjectEnvResponseBody1) GetTarget() *GetProjectEnvTargetUnion1 {
@@ -3356,6 +3360,13 @@ func (o *GetProjectEnvResponseBody1) GetTarget() *GetProjectEnvTargetUnion1 {
 		return nil
 	}
 	return o.Target
+}
+
+func (o *GetProjectEnvResponseBody1) GetKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.Key
 }
 
 func (o *GetProjectEnvResponseBody1) GetGitBranch() *string {
@@ -3377,6 +3388,13 @@ func (o *GetProjectEnvResponseBody1) GetSunsetSecretID() *string {
 		return nil
 	}
 	return o.SunsetSecretID
+}
+
+func (o *GetProjectEnvResponseBody1) GetLegacyValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LegacyValue
 }
 
 func (o *GetProjectEnvResponseBody1) GetConfigurationID() *string {

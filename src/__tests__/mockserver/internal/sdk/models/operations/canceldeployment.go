@@ -244,10 +244,13 @@ const (
 	CancelDeploymentFrameworkHono           CancelDeploymentFramework = "hono"
 	CancelDeploymentFrameworkExpress        CancelDeploymentFramework = "express"
 	CancelDeploymentFrameworkH3             CancelDeploymentFramework = "h3"
+	CancelDeploymentFrameworkKoa            CancelDeploymentFramework = "koa"
 	CancelDeploymentFrameworkNestjs         CancelDeploymentFramework = "nestjs"
 	CancelDeploymentFrameworkElysia         CancelDeploymentFramework = "elysia"
 	CancelDeploymentFrameworkFastify        CancelDeploymentFramework = "fastify"
 	CancelDeploymentFrameworkXmcp           CancelDeploymentFramework = "xmcp"
+	CancelDeploymentFrameworkPython         CancelDeploymentFramework = "python"
+	CancelDeploymentFrameworkServices       CancelDeploymentFramework = "services"
 )
 
 func (e CancelDeploymentFramework) ToPointer() *CancelDeploymentFramework {
@@ -365,6 +368,8 @@ func (e *CancelDeploymentFramework) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "h3":
 		fallthrough
+	case "koa":
+		fallthrough
 	case "nestjs":
 		fallthrough
 	case "elysia":
@@ -372,6 +377,10 @@ func (e *CancelDeploymentFramework) UnmarshalJSON(data []byte) error {
 	case "fastify":
 		fallthrough
 	case "xmcp":
+		fallthrough
+	case "python":
+		fallthrough
+	case "services":
 		*e = CancelDeploymentFramework(v)
 		return nil
 	default:
@@ -3538,6 +3547,58 @@ func (u CancelDeploymentGitSourceUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type CancelDeploymentGitSourceUnion: all fields are null")
 }
 
+// CancelDeploymentManualProvisioningState - Current provisioning state
+type CancelDeploymentManualProvisioningState string
+
+const (
+	CancelDeploymentManualProvisioningStatePending  CancelDeploymentManualProvisioningState = "PENDING"
+	CancelDeploymentManualProvisioningStateComplete CancelDeploymentManualProvisioningState = "COMPLETE"
+	CancelDeploymentManualProvisioningStateTimeout  CancelDeploymentManualProvisioningState = "TIMEOUT"
+)
+
+func (e CancelDeploymentManualProvisioningState) ToPointer() *CancelDeploymentManualProvisioningState {
+	return &e
+}
+func (e *CancelDeploymentManualProvisioningState) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "PENDING":
+		fallthrough
+	case "COMPLETE":
+		fallthrough
+	case "TIMEOUT":
+		*e = CancelDeploymentManualProvisioningState(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentManualProvisioningState: %v", v)
+	}
+}
+
+// CancelDeploymentManualProvisioning - Present when deployment was created with VERCEL_MANUAL_PROVISIONING=true. The deployment stays in INITIALIZING until /continue is called.
+type CancelDeploymentManualProvisioning struct {
+	// Current provisioning state
+	State CancelDeploymentManualProvisioningState `json:"state"`
+	// Timestamp when manual provisioning completed
+	CompletedAt *float64 `json:"completedAt,omitempty"`
+}
+
+func (o *CancelDeploymentManualProvisioning) GetState() CancelDeploymentManualProvisioningState {
+	if o == nil {
+		return CancelDeploymentManualProvisioningState("")
+	}
+	return o.State
+}
+
+func (o *CancelDeploymentManualProvisioning) GetCompletedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CompletedAt
+}
+
 // CancelDeploymentNodeVersion - If set it overrides the `projectSettings.nodeVersion` for this deployment.
 type CancelDeploymentNodeVersion string
 
@@ -3911,6 +3972,8 @@ type CancelDeploymentExperimentalTrigger struct {
 	RetryAfterSeconds *float64 `json:"retryAfterSeconds,omitempty"`
 	// Initial delay in seconds before first execution attempt (OPTIONAL) Must be 0 or greater. Use 0 for no initial delay. Behavior when not specified depends on the server's default configuration.
 	InitialDelaySeconds *float64 `json:"initialDelaySeconds,omitempty"`
+	// Maximum number of concurrent executions for this consumer (OPTIONAL) Must be at least 1 if specified. Behavior when not specified depends on the server's default configuration.
+	MaxConcurrency *float64 `json:"maxConcurrency,omitempty"`
 }
 
 func (o *CancelDeploymentExperimentalTrigger) GetType() CancelDeploymentFunctionsType {
@@ -3953,6 +4016,13 @@ func (o *CancelDeploymentExperimentalTrigger) GetInitialDelaySeconds() *float64 
 		return nil
 	}
 	return o.InitialDelaySeconds
+}
+
+func (o *CancelDeploymentExperimentalTrigger) GetMaxConcurrency() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.MaxConcurrency
 }
 
 type CancelDeploymentFunctions struct {
@@ -6071,7 +6141,8 @@ type CancelDeploymentRoute1 struct {
 	// The original middleware matchers.
 	MiddlewareRawSrc []string `json:"middlewareRawSrc,omitempty"`
 	// A middleware index in the `middleware` key under the build result
-	Middleware *float64 `json:"middleware,omitempty"`
+	Middleware                *float64 `json:"middleware,omitempty"`
+	RespectOriginCacheControl *bool    `json:"respectOriginCacheControl,omitempty"`
 }
 
 func (c CancelDeploymentRoute1) MarshalJSON() ([]byte, error) {
@@ -6216,6 +6287,13 @@ func (o *CancelDeploymentRoute1) GetMiddleware() *float64 {
 		return nil
 	}
 	return o.Middleware
+}
+
+func (o *CancelDeploymentRoute1) GetRespectOriginCacheControl() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.RespectOriginCacheControl
 }
 
 type CancelDeploymentRouteUnionType string
@@ -7260,6 +7338,174 @@ func (e *CancelDeploymentFunctionMemoryType) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// CancelDeploymentConfiguration - Build resource configuration snapshot for this deployment.
+type CancelDeploymentConfiguration string
+
+const (
+	CancelDeploymentConfigurationSkipNamespaceQueue    CancelDeploymentConfiguration = "SKIP_NAMESPACE_QUEUE"
+	CancelDeploymentConfigurationWaitForNamespaceQueue CancelDeploymentConfiguration = "WAIT_FOR_NAMESPACE_QUEUE"
+)
+
+func (e CancelDeploymentConfiguration) ToPointer() *CancelDeploymentConfiguration {
+	return &e
+}
+func (e *CancelDeploymentConfiguration) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "SKIP_NAMESPACE_QUEUE":
+		fallthrough
+	case "WAIT_FOR_NAMESPACE_QUEUE":
+		*e = CancelDeploymentConfiguration(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentConfiguration: %v", v)
+	}
+}
+
+// CancelDeploymentBuildQueue - Build resource configuration snapshot for this deployment.
+type CancelDeploymentBuildQueue struct {
+	// Build resource configuration snapshot for this deployment.
+	Configuration *CancelDeploymentConfiguration `json:"configuration,omitempty"`
+}
+
+func (o *CancelDeploymentBuildQueue) GetConfiguration() *CancelDeploymentConfiguration {
+	if o == nil {
+		return nil
+	}
+	return o.Configuration
+}
+
+// CancelDeploymentPurchaseType - Build resource configuration snapshot for this deployment.
+type CancelDeploymentPurchaseType string
+
+const (
+	CancelDeploymentPurchaseTypeEnhanced CancelDeploymentPurchaseType = "enhanced"
+	CancelDeploymentPurchaseTypeTurbo    CancelDeploymentPurchaseType = "turbo"
+)
+
+func (e CancelDeploymentPurchaseType) ToPointer() *CancelDeploymentPurchaseType {
+	return &e
+}
+func (e *CancelDeploymentPurchaseType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enhanced":
+		fallthrough
+	case "turbo":
+		*e = CancelDeploymentPurchaseType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentPurchaseType: %v", v)
+	}
+}
+
+// CancelDeploymentBuildMachine - Build resource configuration snapshot for this deployment.
+type CancelDeploymentBuildMachine struct {
+	// Build resource configuration snapshot for this deployment.
+	PurchaseType *CancelDeploymentPurchaseType `json:"purchaseType,omitempty"`
+	// Build resource configuration snapshot for this deployment.
+	IsDefaultBuildMachine *bool `json:"isDefaultBuildMachine,omitempty"`
+	// Build resource configuration snapshot for this deployment.
+	Cores *float64 `json:"cores,omitempty"`
+	// Build resource configuration snapshot for this deployment.
+	Memory *float64 `json:"memory,omitempty"`
+}
+
+func (o *CancelDeploymentBuildMachine) GetPurchaseType() *CancelDeploymentPurchaseType {
+	if o == nil {
+		return nil
+	}
+	return o.PurchaseType
+}
+
+func (o *CancelDeploymentBuildMachine) GetIsDefaultBuildMachine() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsDefaultBuildMachine
+}
+
+func (o *CancelDeploymentBuildMachine) GetCores() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Cores
+}
+
+func (o *CancelDeploymentBuildMachine) GetMemory() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Memory
+}
+
+// CancelDeploymentElasticConcurrency - When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues
+type CancelDeploymentElasticConcurrency string
+
+const (
+	CancelDeploymentElasticConcurrencyTeamSetting    CancelDeploymentElasticConcurrency = "TEAM_SETTING"
+	CancelDeploymentElasticConcurrencyProjectSetting CancelDeploymentElasticConcurrency = "PROJECT_SETTING"
+	CancelDeploymentElasticConcurrencySkipQueue      CancelDeploymentElasticConcurrency = "SKIP_QUEUE"
+)
+
+func (e CancelDeploymentElasticConcurrency) ToPointer() *CancelDeploymentElasticConcurrency {
+	return &e
+}
+func (e *CancelDeploymentElasticConcurrency) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "TEAM_SETTING":
+		fallthrough
+	case "PROJECT_SETTING":
+		fallthrough
+	case "SKIP_QUEUE":
+		*e = CancelDeploymentElasticConcurrency(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentElasticConcurrency: %v", v)
+	}
+}
+
+// CancelDeploymentResourceConfig - Build resource configuration snapshot for this deployment.
+type CancelDeploymentResourceConfig struct {
+	// Build resource configuration snapshot for this deployment.
+	BuildQueue *CancelDeploymentBuildQueue `json:"buildQueue,omitempty"`
+	// Build resource configuration snapshot for this deployment.
+	BuildMachine *CancelDeploymentBuildMachine `json:"buildMachine,omitempty"`
+	// When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues
+	ElasticConcurrency *CancelDeploymentElasticConcurrency `json:"elasticConcurrency,omitempty"`
+}
+
+func (o *CancelDeploymentResourceConfig) GetBuildQueue() *CancelDeploymentBuildQueue {
+	if o == nil {
+		return nil
+	}
+	return o.BuildQueue
+}
+
+func (o *CancelDeploymentResourceConfig) GetBuildMachine() *CancelDeploymentBuildMachine {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachine
+}
+
+func (o *CancelDeploymentResourceConfig) GetElasticConcurrency() *CancelDeploymentElasticConcurrency {
+	if o == nil {
+		return nil
+	}
+	return o.ElasticConcurrency
+}
+
 // CancelDeploymentConfig - Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
 type CancelDeploymentConfig struct {
 	Version                     *float64                           `json:"version,omitempty"`
@@ -7269,6 +7515,8 @@ type CancelDeploymentConfig struct {
 	SecureComputePrimaryRegion  *string                            `json:"secureComputePrimaryRegion"`
 	SecureComputeFallbackRegion *string                            `json:"secureComputeFallbackRegion"`
 	IsUsingActiveCPU            *bool                              `json:"isUsingActiveCPU,omitempty"`
+	// Build resource configuration snapshot for this deployment.
+	ResourceConfig *CancelDeploymentResourceConfig `json:"resourceConfig,omitempty"`
 }
 
 func (o *CancelDeploymentConfig) GetVersion() *float64 {
@@ -7320,18 +7568,25 @@ func (o *CancelDeploymentConfig) GetIsUsingActiveCPU() *bool {
 	return o.IsUsingActiveCPU
 }
 
-type CancelDeploymentState string
+func (o *CancelDeploymentConfig) GetResourceConfig() *CancelDeploymentResourceConfig {
+	if o == nil {
+		return nil
+	}
+	return o.ResourceConfig
+}
+
+type CancelDeploymentDeploymentAliasState string
 
 const (
-	CancelDeploymentStateSucceeded CancelDeploymentState = "succeeded"
-	CancelDeploymentStateFailed    CancelDeploymentState = "failed"
-	CancelDeploymentStatePending   CancelDeploymentState = "pending"
+	CancelDeploymentDeploymentAliasStateSucceeded CancelDeploymentDeploymentAliasState = "succeeded"
+	CancelDeploymentDeploymentAliasStateFailed    CancelDeploymentDeploymentAliasState = "failed"
+	CancelDeploymentDeploymentAliasStatePending   CancelDeploymentDeploymentAliasState = "pending"
 )
 
-func (e CancelDeploymentState) ToPointer() *CancelDeploymentState {
+func (e CancelDeploymentDeploymentAliasState) ToPointer() *CancelDeploymentDeploymentAliasState {
 	return &e
 }
-func (e *CancelDeploymentState) UnmarshalJSON(data []byte) error {
+func (e *CancelDeploymentDeploymentAliasState) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -7342,23 +7597,23 @@ func (e *CancelDeploymentState) UnmarshalJSON(data []byte) error {
 	case "failed":
 		fallthrough
 	case "pending":
-		*e = CancelDeploymentState(v)
+		*e = CancelDeploymentDeploymentAliasState(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CancelDeploymentState: %v", v)
+		return fmt.Errorf("invalid value for CancelDeploymentDeploymentAliasState: %v", v)
 	}
 }
 
 // CancelDeploymentDeploymentAlias - Condensed check data. Retrieve individual check and check run data using api-checks v2 routes.
 type CancelDeploymentDeploymentAlias struct {
-	State       CancelDeploymentState `json:"state"`
-	StartedAt   float64               `json:"startedAt"`
-	CompletedAt *float64              `json:"completedAt,omitempty"`
+	State       CancelDeploymentDeploymentAliasState `json:"state"`
+	StartedAt   float64                              `json:"startedAt"`
+	CompletedAt *float64                             `json:"completedAt,omitempty"`
 }
 
-func (o *CancelDeploymentDeploymentAlias) GetState() CancelDeploymentState {
+func (o *CancelDeploymentDeploymentAlias) GetState() CancelDeploymentDeploymentAliasState {
 	if o == nil {
-		return CancelDeploymentState("")
+		return CancelDeploymentDeploymentAliasState("")
 	}
 	return o.State
 }
@@ -7460,10 +7715,12 @@ type CancelDeploymentResponseBody struct {
 	ErrorMessage *string  `json:"errorMessage,omitempty"`
 	ErrorStep    *string  `json:"errorStep,omitempty"`
 	// Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service
-	PassiveRegions    []string                        `json:"passiveRegions,omitempty"`
-	GitSource         *CancelDeploymentGitSourceUnion `json:"gitSource,omitempty"`
-	Meta              map[string]string               `json:"meta"`
-	OriginCacheRegion *string                         `json:"originCacheRegion,omitempty"`
+	PassiveRegions []string                        `json:"passiveRegions,omitempty"`
+	GitSource      *CancelDeploymentGitSourceUnion `json:"gitSource,omitempty"`
+	// Present when deployment was created with VERCEL_MANUAL_PROVISIONING=true. The deployment stays in INITIALIZING until /continue is called.
+	ManualProvisioning *CancelDeploymentManualProvisioning `json:"manualProvisioning,omitempty"`
+	Meta               map[string]string                   `json:"meta"`
+	OriginCacheRegion  *string                             `json:"originCacheRegion,omitempty"`
 	// If set it overrides the `projectSettings.nodeVersion` for this deployment.
 	NodeVersion *CancelDeploymentNodeVersion `json:"nodeVersion,omitempty"`
 	// The public project information associated with the deployment.
@@ -7884,6 +8141,13 @@ func (o *CancelDeploymentResponseBody) GetGitSource() *CancelDeploymentGitSource
 		return nil
 	}
 	return o.GitSource
+}
+
+func (o *CancelDeploymentResponseBody) GetManualProvisioning() *CancelDeploymentManualProvisioning {
+	if o == nil {
+		return nil
+	}
+	return o.ManualProvisioning
 }
 
 func (o *CancelDeploymentResponseBody) GetMeta() map[string]string {

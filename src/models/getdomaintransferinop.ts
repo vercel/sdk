@@ -44,6 +44,7 @@ export const GetDomainTransferInStatus = {
   PendingNewAuthCode: "pending_new_auth_code",
   PendingTransfer: "pending_transfer",
   PendingUnlock: "pending_unlock",
+  PendingRegistryUnlock: "pending_registry_unlock",
   Rejected: "rejected",
   SubmittingTransfer: "submitting_transfer",
 } as const;

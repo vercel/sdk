@@ -8,16 +8,13 @@ The payload of the event, if requested.
 import { Ninety } from "@vercel/sdk/models/userevent.js";
 
 let value: Ninety = {
-  projectName: "<value>",
-  passwordProtection: null,
-  oldPasswordProtection: "prod_deployment_urls_and_all_previews",
+  projectId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                              | Type                               | Required                           | Description                        |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| `projectName`                      | *string*                           | :heavy_check_mark:                 | N/A                                |
-| `passwordProtection`               | *models.PayloadPasswordProtection* | :heavy_check_mark:                 | N/A                                |
-| `oldPasswordProtection`            | *models.OldPasswordProtection*     | :heavy_check_mark:                 | N/A                                |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectName`      | *string*           | :heavy_minus_sign: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |

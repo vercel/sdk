@@ -247,10 +247,6 @@ export type AuthUserResourceConfig = {
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
-  cronJobs?: number | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
   cronJobsPerProject?: number | undefined;
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
@@ -761,7 +757,6 @@ export const AuthUserResourceConfig$inboundSchema: z.ZodType<
   postgresDatabases: types.optional(types.number()),
   blobStores: types.optional(types.number()),
   integrationStores: types.optional(types.number()),
-  cronJobs: types.optional(types.number()),
   cronJobsPerProject: types.optional(types.number()),
   microfrontendGroupsPerTeam: types.optional(types.number()),
   microfrontendProjectsPerGroup: types.optional(types.number()),
@@ -792,7 +787,6 @@ export type AuthUserResourceConfig$Outbound = {
   postgresDatabases?: number | undefined;
   blobStores?: number | undefined;
   integrationStores?: number | undefined;
-  cronJobs?: number | undefined;
   cronJobsPerProject?: number | undefined;
   microfrontendGroupsPerTeam?: number | undefined;
   microfrontendProjectsPerGroup?: number | undefined;
@@ -829,7 +823,6 @@ export const AuthUserResourceConfig$outboundSchema: z.ZodType<
   postgresDatabases: z.number().optional(),
   blobStores: z.number().optional(),
   integrationStores: z.number().optional(),
-  cronJobs: z.number().optional(),
   cronJobsPerProject: z.number().optional(),
   microfrontendGroupsPerTeam: z.number().optional(),
   microfrontendProjectsPerGroup: z.number().optional(),

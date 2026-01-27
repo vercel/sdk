@@ -40,6 +40,374 @@ func (o *GetConfigurationRequest) GetSlug() *string {
 	return o.Slug
 }
 
+// GetConfigurationStatus3 - The configuration status. Optional. If not defined, assume 'ready'.
+type GetConfigurationStatus3 string
+
+const (
+	GetConfigurationStatus3Error       GetConfigurationStatus3 = "error"
+	GetConfigurationStatus3Ready       GetConfigurationStatus3 = "ready"
+	GetConfigurationStatus3Pending     GetConfigurationStatus3 = "pending"
+	GetConfigurationStatus3Onboarding  GetConfigurationStatus3 = "onboarding"
+	GetConfigurationStatus3Suspended   GetConfigurationStatus3 = "suspended"
+	GetConfigurationStatus3Resumed     GetConfigurationStatus3 = "resumed"
+	GetConfigurationStatus3Uninstalled GetConfigurationStatus3 = "uninstalled"
+)
+
+func (e GetConfigurationStatus3) ToPointer() *GetConfigurationStatus3 {
+	return &e
+}
+func (e *GetConfigurationStatus3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "error":
+		fallthrough
+	case "ready":
+		fallthrough
+	case "pending":
+		fallthrough
+	case "onboarding":
+		fallthrough
+	case "suspended":
+		fallthrough
+	case "resumed":
+		fallthrough
+	case "uninstalled":
+		*e = GetConfigurationStatus3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetConfigurationStatus3: %v", v)
+	}
+}
+
+// GetConfigurationSource3 - Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
+type GetConfigurationSource3 string
+
+const (
+	GetConfigurationSource3Marketplace    GetConfigurationSource3 = "marketplace"
+	GetConfigurationSource3DeployButton   GetConfigurationSource3 = "deploy-button"
+	GetConfigurationSource3External       GetConfigurationSource3 = "external"
+	GetConfigurationSource3V0             GetConfigurationSource3 = "v0"
+	GetConfigurationSource3ResourceClaims GetConfigurationSource3 = "resource-claims"
+	GetConfigurationSource3Cli            GetConfigurationSource3 = "cli"
+	GetConfigurationSource3Oauth          GetConfigurationSource3 = "oauth"
+	GetConfigurationSource3Backoffice     GetConfigurationSource3 = "backoffice"
+)
+
+func (e GetConfigurationSource3) ToPointer() *GetConfigurationSource3 {
+	return &e
+}
+func (e *GetConfigurationSource3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "marketplace":
+		fallthrough
+	case "deploy-button":
+		fallthrough
+	case "external":
+		fallthrough
+	case "v0":
+		fallthrough
+	case "resource-claims":
+		fallthrough
+	case "cli":
+		fallthrough
+	case "oauth":
+		fallthrough
+	case "backoffice":
+		*e = GetConfigurationSource3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetConfigurationSource3: %v", v)
+	}
+}
+
+type GetConfigurationTypeIntegrationConfiguration3 string
+
+const (
+	GetConfigurationTypeIntegrationConfiguration3IntegrationConfiguration GetConfigurationTypeIntegrationConfiguration3 = "integration-configuration"
+)
+
+func (e GetConfigurationTypeIntegrationConfiguration3) ToPointer() *GetConfigurationTypeIntegrationConfiguration3 {
+	return &e
+}
+func (e *GetConfigurationTypeIntegrationConfiguration3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "integration-configuration":
+		*e = GetConfigurationTypeIntegrationConfiguration3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetConfigurationTypeIntegrationConfiguration3: %v", v)
+	}
+}
+
+type GetConfigurationDisabledReason3 string
+
+const (
+	GetConfigurationDisabledReason3DisabledByOwner             GetConfigurationDisabledReason3 = "disabled-by-owner"
+	GetConfigurationDisabledReason3FeatureNotAvailable         GetConfigurationDisabledReason3 = "feature-not-available"
+	GetConfigurationDisabledReason3DisabledByAdmin             GetConfigurationDisabledReason3 = "disabled-by-admin"
+	GetConfigurationDisabledReason3OriginalOwnerLeftTheTeam    GetConfigurationDisabledReason3 = "original-owner-left-the-team"
+	GetConfigurationDisabledReason3AccountPlanDowngrade        GetConfigurationDisabledReason3 = "account-plan-downgrade"
+	GetConfigurationDisabledReason3OriginalOwnerRoleDowngraded GetConfigurationDisabledReason3 = "original-owner-role-downgraded"
+)
+
+func (e GetConfigurationDisabledReason3) ToPointer() *GetConfigurationDisabledReason3 {
+	return &e
+}
+func (e *GetConfigurationDisabledReason3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "disabled-by-owner":
+		fallthrough
+	case "feature-not-available":
+		fallthrough
+	case "disabled-by-admin":
+		fallthrough
+	case "original-owner-left-the-team":
+		fallthrough
+	case "account-plan-downgrade":
+		fallthrough
+	case "original-owner-role-downgraded":
+		*e = GetConfigurationDisabledReason3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetConfigurationDisabledReason3: %v", v)
+	}
+}
+
+// GetConfigurationInstallationType3 - Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
+type GetConfigurationInstallationType3 string
+
+const (
+	GetConfigurationInstallationType3Marketplace GetConfigurationInstallationType3 = "marketplace"
+	GetConfigurationInstallationType3External    GetConfigurationInstallationType3 = "external"
+)
+
+func (e GetConfigurationInstallationType3) ToPointer() *GetConfigurationInstallationType3 {
+	return &e
+}
+func (e *GetConfigurationInstallationType3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "marketplace":
+		fallthrough
+	case "external":
+		*e = GetConfigurationInstallationType3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetConfigurationInstallationType3: %v", v)
+	}
+}
+
+// GetConfigurationIntegrationConfiguration3 - A configuration represents information about a single installation of an integration within an individual or team account
+type GetConfigurationIntegrationConfiguration3 struct {
+	// A timestamp that tells you when the configuration was installed successfully
+	CompletedAt *float64 `json:"completedAt,omitempty"`
+	// A timestamp that tells you when the configuration was created
+	CreatedAt *float64 `json:"createdAt,omitempty"`
+	// The unique identifier of the configuration
+	ID *string `json:"id,omitempty"`
+	// The unique identifier of the app the configuration was created for
+	IntegrationID *string `json:"integrationId,omitempty"`
+	// The user or team ID that owns the configuration
+	OwnerID *string `json:"ownerId,omitempty"`
+	// The configuration status. Optional. If not defined, assume 'ready'.
+	Status *GetConfigurationStatus3 `json:"status,omitempty"`
+	// An external identifier defined by the integration vendor.
+	ExternalID *string `json:"externalId,omitempty"`
+	// When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access.
+	Projects []string `json:"projects,omitempty"`
+	// Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
+	Source *GetConfigurationSource3 `json:"source,omitempty"`
+	// The slug of the integration the configuration is created for.
+	Slug *string `json:"slug,omitempty"`
+	// When the configuration was created for a team, this will show the ID of the team.
+	TeamID *string                                        `json:"teamId,omitempty"`
+	Type   *GetConfigurationTypeIntegrationConfiguration3 `json:"type,omitempty"`
+	// A timestamp that tells you when the configuration was updated.
+	UpdatedAt *float64 `json:"updatedAt,omitempty"`
+	// The ID of the user that created the configuration.
+	UserID *string `json:"userId,omitempty"`
+	// The resources that are allowed to be accessed by the configuration.
+	Scopes []string `json:"scopes,omitempty"`
+	// A timestamp that tells you when the configuration was disabled. Note: Configurations can be disabled when the associated user loses access to a team. They do not function during this time until the configuration is 'transferred', meaning the associated user is changed to one with access to the team.
+	DisabledAt *float64 `json:"disabledAt,omitempty"`
+	// A timestamp that tells you when the configuration was deleted.
+	DeletedAt *float64 `json:"deletedAt,omitempty"`
+	// A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.
+	DeleteRequestedAt *float64                         `json:"deleteRequestedAt,omitempty"`
+	DisabledReason    *GetConfigurationDisabledReason3 `json:"disabledReason,omitempty"`
+	// Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
+	InstallationType *GetConfigurationInstallationType3 `json:"installationType,omitempty"`
+}
+
+func (g GetConfigurationIntegrationConfiguration3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationIntegrationConfiguration3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationIntegrationConfiguration3) GetCompletedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CompletedAt
+}
+
+func (o *GetConfigurationIntegrationConfiguration3) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *GetConfigurationIntegrationConfiguration3) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *GetConfigurationIntegrationConfiguration3) GetIntegrationID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IntegrationID
+}
+
+func (o *GetConfigurationIntegrationConfiguration3) GetOwnerID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.OwnerID
+}
+
+func (o *GetConfigurationIntegrationConfiguration3) GetStatus() *GetConfigurationStatus3 {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *GetConfigurationIntegrationConfiguration3) GetExternalID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ExternalID
+}
+
+func (o *GetConfigurationIntegrationConfiguration3) GetProjects() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Projects
+}
+
+func (o *GetConfigurationIntegrationConfiguration3) GetSource() *GetConfigurationSource3 {
+	if o == nil {
+		return nil
+	}
+	return o.Source
+}
+
+func (o *GetConfigurationIntegrationConfiguration3) GetSlug() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Slug
+}
+
+func (o *GetConfigurationIntegrationConfiguration3) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
+}
+
+func (o *GetConfigurationIntegrationConfiguration3) GetType() *GetConfigurationTypeIntegrationConfiguration3 {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *GetConfigurationIntegrationConfiguration3) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *GetConfigurationIntegrationConfiguration3) GetUserID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UserID
+}
+
+func (o *GetConfigurationIntegrationConfiguration3) GetScopes() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Scopes
+}
+
+func (o *GetConfigurationIntegrationConfiguration3) GetDisabledAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DisabledAt
+}
+
+func (o *GetConfigurationIntegrationConfiguration3) GetDeletedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DeletedAt
+}
+
+func (o *GetConfigurationIntegrationConfiguration3) GetDeleteRequestedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DeleteRequestedAt
+}
+
+func (o *GetConfigurationIntegrationConfiguration3) GetDisabledReason() *GetConfigurationDisabledReason3 {
+	if o == nil {
+		return nil
+	}
+	return o.DisabledReason
+}
+
+func (o *GetConfigurationIntegrationConfiguration3) GetInstallationType() *GetConfigurationInstallationType3 {
+	if o == nil {
+		return nil
+	}
+	return o.InstallationType
+}
+
 // GetConfigurationStatus2 - The configuration status. Optional. If not defined, assume 'ready'.
 type GetConfigurationStatus2 string
 
@@ -79,6 +447,51 @@ func (e *GetConfigurationStatus2) UnmarshalJSON(data []byte) error {
 		return nil
 	default:
 		return fmt.Errorf("invalid value for GetConfigurationStatus2: %v", v)
+	}
+}
+
+// GetConfigurationSource2 - Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
+type GetConfigurationSource2 string
+
+const (
+	GetConfigurationSource2Marketplace    GetConfigurationSource2 = "marketplace"
+	GetConfigurationSource2DeployButton   GetConfigurationSource2 = "deploy-button"
+	GetConfigurationSource2External       GetConfigurationSource2 = "external"
+	GetConfigurationSource2V0             GetConfigurationSource2 = "v0"
+	GetConfigurationSource2ResourceClaims GetConfigurationSource2 = "resource-claims"
+	GetConfigurationSource2Cli            GetConfigurationSource2 = "cli"
+	GetConfigurationSource2Oauth          GetConfigurationSource2 = "oauth"
+	GetConfigurationSource2Backoffice     GetConfigurationSource2 = "backoffice"
+)
+
+func (e GetConfigurationSource2) ToPointer() *GetConfigurationSource2 {
+	return &e
+}
+func (e *GetConfigurationSource2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "marketplace":
+		fallthrough
+	case "deploy-button":
+		fallthrough
+	case "external":
+		fallthrough
+	case "v0":
+		fallthrough
+	case "resource-claims":
+		fallthrough
+	case "cli":
+		fallthrough
+	case "oauth":
+		fallthrough
+	case "backoffice":
+		*e = GetConfigurationSource2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetConfigurationSource2: %v", v)
 	}
 }
 
@@ -189,7 +602,7 @@ type GetConfigurationIntegrationConfiguration2 struct {
 	// When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access.
 	Projects []string `json:"projects,omitempty"`
 	// Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
-	Source *string `json:"source,omitempty"`
+	Source *GetConfigurationSource2 `json:"source,omitempty"`
 	// The slug of the integration the configuration is created for.
 	Slug string `json:"slug"`
 	// When the configuration was created for a team, this will show the ID of the team.
@@ -279,7 +692,7 @@ func (o *GetConfigurationIntegrationConfiguration2) GetProjects() []string {
 	return o.Projects
 }
 
-func (o *GetConfigurationIntegrationConfiguration2) GetSource() *string {
+func (o *GetConfigurationIntegrationConfiguration2) GetSource() *GetConfigurationSource2 {
 	if o == nil {
 		return nil
 	}
@@ -1063,6 +1476,51 @@ func (e *GetConfigurationTypeIntegrationConfiguration1) UnmarshalJSON(data []byt
 	}
 }
 
+// GetConfigurationSource1 - Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
+type GetConfigurationSource1 string
+
+const (
+	GetConfigurationSource1Marketplace    GetConfigurationSource1 = "marketplace"
+	GetConfigurationSource1DeployButton   GetConfigurationSource1 = "deploy-button"
+	GetConfigurationSource1External       GetConfigurationSource1 = "external"
+	GetConfigurationSource1V0             GetConfigurationSource1 = "v0"
+	GetConfigurationSource1ResourceClaims GetConfigurationSource1 = "resource-claims"
+	GetConfigurationSource1Cli            GetConfigurationSource1 = "cli"
+	GetConfigurationSource1Oauth          GetConfigurationSource1 = "oauth"
+	GetConfigurationSource1Backoffice     GetConfigurationSource1 = "backoffice"
+)
+
+func (e GetConfigurationSource1) ToPointer() *GetConfigurationSource1 {
+	return &e
+}
+func (e *GetConfigurationSource1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "marketplace":
+		fallthrough
+	case "deploy-button":
+		fallthrough
+	case "external":
+		fallthrough
+	case "v0":
+		fallthrough
+	case "resource-claims":
+		fallthrough
+	case "cli":
+		fallthrough
+	case "oauth":
+		fallthrough
+	case "backoffice":
+		*e = GetConfigurationSource1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetConfigurationSource1: %v", v)
+	}
+}
+
 type GetConfigurationDisabledReason1 string
 
 const (
@@ -1155,7 +1613,7 @@ type GetConfigurationIntegrationConfiguration1 struct {
 	// The resources that are allowed to be accessed by the configuration.
 	Scopes []string `json:"scopes"`
 	// Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
-	Source *string `json:"source,omitempty"`
+	Source *GetConfigurationSource1 `json:"source,omitempty"`
 	// The unique identifier of the app the configuration was created for
 	IntegrationID string `json:"integrationId"`
 	// The user or team ID that owns the configuration
@@ -1291,7 +1749,7 @@ func (o *GetConfigurationIntegrationConfiguration1) GetScopes() []string {
 	return o.Scopes
 }
 
-func (o *GetConfigurationIntegrationConfiguration1) GetSource() *string {
+func (o *GetConfigurationIntegrationConfiguration1) GetSource() *GetConfigurationSource1 {
 	if o == nil {
 		return nil
 	}
@@ -1366,12 +1824,14 @@ type GetConfigurationResponseBodyType string
 const (
 	GetConfigurationResponseBodyTypeGetConfigurationIntegrationConfiguration1 GetConfigurationResponseBodyType = "getConfiguration_IntegrationConfiguration_1"
 	GetConfigurationResponseBodyTypeGetConfigurationIntegrationConfiguration2 GetConfigurationResponseBodyType = "getConfiguration_IntegrationConfiguration_2"
+	GetConfigurationResponseBodyTypeGetConfigurationIntegrationConfiguration3 GetConfigurationResponseBodyType = "getConfiguration_IntegrationConfiguration_3"
 )
 
 // GetConfigurationResponseBody - The configuration with the provided id
 type GetConfigurationResponseBody struct {
 	GetConfigurationIntegrationConfiguration1 *GetConfigurationIntegrationConfiguration1 `queryParam:"inline"`
 	GetConfigurationIntegrationConfiguration2 *GetConfigurationIntegrationConfiguration2 `queryParam:"inline"`
+	GetConfigurationIntegrationConfiguration3 *GetConfigurationIntegrationConfiguration3 `queryParam:"inline"`
 
 	Type GetConfigurationResponseBodyType
 }
@@ -1394,6 +1854,15 @@ func CreateGetConfigurationResponseBodyGetConfigurationIntegrationConfiguration2
 	}
 }
 
+func CreateGetConfigurationResponseBodyGetConfigurationIntegrationConfiguration3(getConfigurationIntegrationConfiguration3 GetConfigurationIntegrationConfiguration3) GetConfigurationResponseBody {
+	typ := GetConfigurationResponseBodyTypeGetConfigurationIntegrationConfiguration3
+
+	return GetConfigurationResponseBody{
+		GetConfigurationIntegrationConfiguration3: &getConfigurationIntegrationConfiguration3,
+		Type: typ,
+	}
+}
+
 func (u *GetConfigurationResponseBody) UnmarshalJSON(data []byte) error {
 
 	var getConfigurationIntegrationConfiguration1 GetConfigurationIntegrationConfiguration1 = GetConfigurationIntegrationConfiguration1{}
@@ -1410,6 +1879,13 @@ func (u *GetConfigurationResponseBody) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var getConfigurationIntegrationConfiguration3 GetConfigurationIntegrationConfiguration3 = GetConfigurationIntegrationConfiguration3{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationIntegrationConfiguration3, "", true, nil); err == nil {
+		u.GetConfigurationIntegrationConfiguration3 = &getConfigurationIntegrationConfiguration3
+		u.Type = GetConfigurationResponseBodyTypeGetConfigurationIntegrationConfiguration3
+		return nil
+	}
+
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationResponseBody", string(data))
 }
 
@@ -1420,6 +1896,10 @@ func (u GetConfigurationResponseBody) MarshalJSON() ([]byte, error) {
 
 	if u.GetConfigurationIntegrationConfiguration2 != nil {
 		return utils.MarshalJSON(u.GetConfigurationIntegrationConfiguration2, "", true)
+	}
+
+	if u.GetConfigurationIntegrationConfiguration3 != nil {
+		return utils.MarshalJSON(u.GetConfigurationIntegrationConfiguration3, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type GetConfigurationResponseBody: all fields are null")

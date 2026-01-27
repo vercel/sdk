@@ -6,7 +6,7 @@
 import { UpdateProjectConnectConfigurations } from "@vercel/sdk/models/updateprojectop.js";
 
 let value: UpdateProjectConnectConfigurations = {
-  envId: "preview",
+  envId: "production",
   connectConfigurationId: "<id>",
   passive: true,
   buildsEnabled: false,

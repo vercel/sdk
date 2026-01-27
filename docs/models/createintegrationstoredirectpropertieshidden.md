@@ -3,18 +3,18 @@
 
 ## Supported Types
 
+### `models.CreateIntegrationStoreDirectHidden1`
+
+```typescript
+const value: models.CreateIntegrationStoreDirectHidden1 = {
+  expr: "<value>",
+};
+```
+
 ### `boolean`
 
 ```typescript
 const value: boolean = true;
-```
-
-### `models.CreateIntegrationStoreDirectHidden2`
-
-```typescript
-const value: models.CreateIntegrationStoreDirectHidden2 = {
-  expr: "<value>",
-};
 ```
 
 ### `models.CreateIntegrationStoreDirectHidden3`

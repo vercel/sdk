@@ -58,11 +58,6 @@ export class Vercel extends ClientSDK {
     return (this._connect ??= new Connect(this._options));
   }
 
-  private _projects?: Projects;
-  get projects(): Projects {
-    return (this._projects ??= new Projects(this._options));
-  }
-
   private _deployments?: Deployments;
   get deployments(): Deployments {
     return (this._deployments ??= new Deployments(this._options));
@@ -136,6 +131,11 @@ export class Vercel extends ClientSDK {
   private _projectMembers?: ProjectMembers;
   get projectMembers(): ProjectMembers {
     return (this._projectMembers ??= new ProjectMembers(this._options));
+  }
+
+  private _projects?: Projects;
+  get projects(): Projects {
+    return (this._projects ??= new Projects(this._options));
   }
 
   private _staticIps?: StaticIps;

@@ -97,7 +97,6 @@ test("Integrations Create Integration Store Direct", async () => {
           "edgeConfigSyncingEnabled": true,
         },
       },
-      source: "api",
       billingPlanId: "bp_abc123def456",
       paymentMethodId: "pm_1AbcDefGhiJklMno",
       prepaymentAmountCents: 5000,

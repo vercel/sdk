@@ -19,15 +19,28 @@ import (
 )
 
 func MarshalJSON(v interface{}, tag reflect.StructTag, topLevel bool) ([]byte, error) {
-	typ, val := dereferencePointers(reflect.TypeOf(v), reflect.ValueOf(v))
+	// Handle nil interface early
+	if v == nil {
+		return []byte("null"), nil
+	}
+
+	// Check for nil pointer before dereferencing to avoid creating invalid reflect.Value
+	origVal := reflect.ValueOf(v)
+	if origVal.Kind() == reflect.Ptr && origVal.IsNil() {
+		return []byte("null"), nil
+	}
+
+	typ, val := dereferencePointers(reflect.TypeOf(v), origVal)
 
 	switch {
 	case isModelType(typ):
-		if topLevel {
+		// When topLevel=true, only use json.Marshal if the type has a custom MarshalJSON
+		// to ensure nested structs with custom tags (like integer:"string") are handled correctly
+		if topLevel && implementsJSONMarshaler(v) {
 			return json.Marshal(v)
 		}
 
-		if isNil(typ, val) {
+		if isNil(typ, val) || !val.IsValid() {
 			return []byte("null"), nil
 		}
 
@@ -350,10 +363,34 @@ func marshalValue(v interface{}, tag reflect.StructTag) (json.RawMessage, error)
 
 				return []byte(fmt.Sprintf(`%f`, f)), nil
 			}
+		default:
+			// For model types without custom MarshalJSON, use field processing
+			// to handle custom tags like integer:"string"
+			if isModelType(typ) && !implementsJSONMarshaler(v) {
+				return MarshalJSON(v, "", false)
+			}
 		}
 	}
 
 	return json.Marshal(v)
+}
+
+func implementsJSONMarshaler(v interface{}) bool {
+	marshalerType := reflect.TypeOf((*json.Marshaler)(nil)).Elem()
+	vType := reflect.TypeOf(v)
+	if vType.Implements(marshalerType) {
+		return true
+	}
+	if vType.Kind() == reflect.Ptr {
+		// For double pointers (e.g., **TypeA), check if the inner pointer type
+		// implements the interface (e.g., *TypeA)
+		if vType.Elem().Implements(marshalerType) {
+			return true
+		}
+		// Also check if pointer to element implements it
+		return reflect.PtrTo(vType.Elem()).Implements(marshalerType)
+	}
+	return reflect.PtrTo(vType).Implements(marshalerType)
 }
 
 func handleDefaultConstValue(tagValue string, val interface{}, tag reflect.StructTag) json.RawMessage {
@@ -389,6 +426,9 @@ func handleDefaultConstValue(tagValue string, val interface{}, tag reflect.Struc
 		return []byte(fmt.Sprintf(`"%s"`, tagValue))
 	default:
 		if typ.Kind() == reflect.String {
+			if strings.HasPrefix(tagValue, "\"") && strings.HasSuffix(tagValue, "\"") {
+				return []byte(tagValue)
+			}
 			return []byte(fmt.Sprintf("%q", tagValue))
 		}
 	}

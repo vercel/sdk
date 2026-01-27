@@ -3,18 +3,18 @@
 
 ## Supported Types
 
+### `models.CreateIntegrationStoreDirectUiReadOnly1`
+
+```typescript
+const value: models.CreateIntegrationStoreDirectUiReadOnly1 = {
+  expr: "<value>",
+};
+```
+
 ### `boolean`
 
 ```typescript
 const value: boolean = true;
-```
-
-### `models.CreateIntegrationStoreDirectUiReadOnly2`
-
-```typescript
-const value: models.CreateIntegrationStoreDirectUiReadOnly2 = {
-  expr: "<value>",
-};
 ```
 
 ### `models.CreateIntegrationStoreDirectUiReadOnly3`

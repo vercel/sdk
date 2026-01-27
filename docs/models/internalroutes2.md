@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { InternalRoutes2 } from "@vercel/sdk/models/updateprojectdatacacheop.js";
+import { InternalRoutes2 } from "@vercel/sdk/models/createprojectop.js";
 
 let value: InternalRoutes2 = {
   has: [
@@ -22,8 +22,8 @@ let value: InternalRoutes2 = {
 
 ## Fields
 
-| Field                                                                                                            | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
-| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `has`                                                                                                            | *models.Has*[]                                                                                                   | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
-| `mitigate`                                                                                                       | [models.UpdateProjectDataCacheInternalRoutesMitigate](../models/updateprojectdatacacheinternalroutesmitigate.md) | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
-| `src`                                                                                                            | *string*                                                                                                         | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `has`                                                                | *models.InternalRoutesHas*[]                                         | :heavy_check_mark:                                                   | N/A                                                                  |
+| `mitigate`                                                           | [models.InternalRoutesMitigate](../models/internalroutesmitigate.md) | :heavy_check_mark:                                                   | N/A                                                                  |
+| `src`                                                                | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |

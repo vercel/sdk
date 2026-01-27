@@ -5,11 +5,11 @@
 ```typescript
 import { ResponseBodyConfiguredBy } from "@vercel/sdk/models/getprojectsop.js";
 
-let value: ResponseBodyConfiguredBy = "A";
+let value: ResponseBodyConfiguredBy = "CNAME";
 ```
 
 ## Values
 
 ```typescript
-"CNAME" | "A" | "http" | "dns-01"
+"A" | "CNAME" | "http" | "dns-01"
 ```

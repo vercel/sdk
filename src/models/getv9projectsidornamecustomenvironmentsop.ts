@@ -39,8 +39,8 @@ export type AccountLimit = {
  * The type of environment (production, preview, or development)
  */
 export const GetV9ProjectsIdOrNameCustomEnvironmentsType = {
-  Preview: "preview",
   Production: "production",
+  Preview: "preview",
   Development: "development",
 } as const;
 /**

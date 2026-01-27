@@ -6,86 +6,10 @@ import { assert, expect, it, test } from "vitest";
 import { Vercel } from "../index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
-test("Projects Update Project Data Cache", async () => {
-  const testHttpClient = createTestHTTPClient("updateProjectDataCache");
-
-  const vercel = new Vercel({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  const result = await vercel.projects.updateProjectDataCache({
-    projectId: "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-    requestBody: {
-      disabled: true,
-    },
-  });
-  expect(result).toBeDefined();
-  expect(result).toEqual({
-    accountId: "<id>",
-    crons: {
-      enabledAt: 4537.72,
-      disabledAt: 4306.04,
-      updatedAt: 4313.17,
-      deploymentId: "<id>",
-      definitions: [],
-    },
-    directoryListing: true,
-    id: "<id>",
-    latestDeployments: [
-      {
-        id: "<id>",
-        createdAt: 1954.03,
-        createdIn: "<value>",
-        creator: {
-          email: "Cleveland_Bruen@gmail.com",
-          uid: "<id>",
-          username: "Frida_Stamm12",
-        },
-        deploymentHostname: "<value>",
-        name: "<value>",
-        plan: "pro",
-        previewCommentsEnabled: false,
-        private: false,
-        readyState: "CANCELED",
-        type: "LAMBDAS",
-        url: "https://well-worn-handful.biz/",
-        userId: "<id>",
-      },
-    ],
-    name: "<value>",
-    nodeVersion: "22.x",
-    resourceConfig: {
-      functionDefaultRegions: [],
-    },
-    defaultResourceConfig: {
-      functionDefaultRegions: [],
-    },
-    targets: {
-      "key": {
-        id: "<id>",
-        createdAt: 5941.68,
-        createdIn: "<value>",
-        creator: {
-          email: "Fay_Herman21@yahoo.com",
-          uid: "<id>",
-          username: "Anna.Barrows31",
-        },
-        deploymentHostname: "<value>",
-        name: "<value>",
-        plan: "pro",
-        previewCommentsEnabled: false,
-        private: false,
-        readyState: "READY",
-        type: "LAMBDAS",
-        url: "https://scaly-epic.com",
-        userId: "<id>",
-      },
-    },
-  });
+it.skip("Projects Update Project Data Cache", async () => {
+  assert.fail(
+    "incomplete test found please make sure to address the following errors: [`workflow step updateProjectDataCache.test referencing operation updateProjectDataCache not found in document`]",
+  );
 });
 
 test("Projects Get Projects", async () => {
@@ -104,41 +28,60 @@ test("Projects Get Projects", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    projects: [
-      {
-        accountId: "<id>",
-        alias: [],
-        directoryListing: false,
-        id: "<id>",
-        name: "<value>",
-        nodeVersion: "8.10.x",
-        resourceConfig: {
-          functionDefaultRegions: [
-            "<value 1>",
-          ],
-        },
-        rollingRelease: {
-          target: "production",
-          stages: [
-            {
-              targetPercentage: 25,
-              requireApproval: false,
-              duration: 600,
-              linearShift: false,
+  expect(result).toEqual([
+    {
+      accountId: "<id>",
+      alias: [
+        {
+          deployment: {
+            createdAt: 4064.3,
+            createdIn: "<value>",
+            creator: {
+              email: "Lurline.Metz82@yahoo.com",
+              uid: "<id>",
+              username: "Antonetta_Reinger86",
             },
-          ],
-          canaryResponseHeader: false,
+            deploymentHostname: "<value>",
+            name: "<value>",
+            id: "<id>",
+            plan: "<value>",
+            private: false,
+            readyState: "<value>",
+            type: "<value>",
+            url: "https://affectionate-underneath.biz/",
+            userId: "<id>",
+          },
+          domain: "informal-loyalty.biz",
+          environment: "production",
+          target: "STAGING",
         },
-        serverlessFunctionRegion: "<value>",
+      ],
+      directoryListing: false,
+      id: "<id>",
+      name: "<value>",
+      nodeVersion: "24.x",
+      resourceConfig: {
+        functionDefaultRegions: [
+          "<value 1>",
+          "<value 2>",
+          "<value 3>",
+        ],
       },
-    ],
-    pagination: {
-      count: 20,
-      next: 1540095775951,
-      prev: 1540095775951,
+      rollingRelease: {
+        target: "production",
+        stages: [
+          {
+            targetPercentage: 25,
+            requireApproval: false,
+            duration: 600,
+            linearShift: false,
+          },
+        ],
+        canaryResponseHeader: false,
+      },
+      serverlessFunctionRegion: "<value>",
     },
-  });
+  ]);
 });
 
 test("Projects Create Project", async () => {

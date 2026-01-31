@@ -3874,6 +3874,9 @@ const (
 	GetDeploymentFrameworkFastify        GetDeploymentFramework = "fastify"
 	GetDeploymentFrameworkXmcp           GetDeploymentFramework = "xmcp"
 	GetDeploymentFrameworkPython         GetDeploymentFramework = "python"
+	GetDeploymentFrameworkRuby           GetDeploymentFramework = "ruby"
+	GetDeploymentFrameworkRust           GetDeploymentFramework = "rust"
+	GetDeploymentFrameworkNode           GetDeploymentFramework = "node"
 	GetDeploymentFrameworkServices       GetDeploymentFramework = "services"
 )
 
@@ -4003,6 +4006,12 @@ func (e *GetDeploymentFramework) UnmarshalJSON(data []byte) error {
 	case "xmcp":
 		fallthrough
 	case "python":
+		fallthrough
+	case "ruby":
+		fallthrough
+	case "rust":
+		fallthrough
+	case "node":
 		fallthrough
 	case "services":
 		*e = GetDeploymentFramework(v)

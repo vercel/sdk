@@ -11,10 +11,12 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export const RequestBodyScope = {
+export const PatchUrlProtectionBypassRequestBodyScope = {
   AliasProtectionOverride: "alias-protection-override",
 } as const;
-export type RequestBodyScope = ClosedEnum<typeof RequestBodyScope>;
+export type PatchUrlProtectionBypassRequestBodyScope = ClosedEnum<
+  typeof PatchUrlProtectionBypassRequestBodyScope
+>;
 
 export const PatchUrlProtectionBypassRequestBodyAction = {
   Create: "create",
@@ -25,7 +27,7 @@ export type PatchUrlProtectionBypassRequestBodyAction = ClosedEnum<
 >;
 
 export type Override = {
-  scope: RequestBodyScope;
+  scope: PatchUrlProtectionBypassRequestBodyScope;
   action: PatchUrlProtectionBypassRequestBodyAction;
 };
 
@@ -92,7 +94,7 @@ export type Scope1 = {
 /**
  * Instructions for creating a user scoped protection bypass
  */
-export type Scope = Scope1 | Scope2;
+export type RequestBodyScope = Scope1 | Scope2;
 
 export type PatchUrlProtectionBypassRequestBody2 = {
   /**
@@ -152,13 +154,13 @@ export type PatchUrlProtectionBypassRequest = {
 };
 
 /** @internal */
-export const RequestBodyScope$inboundSchema: z.ZodNativeEnum<
-  typeof RequestBodyScope
-> = z.nativeEnum(RequestBodyScope);
+export const PatchUrlProtectionBypassRequestBodyScope$inboundSchema:
+  z.ZodNativeEnum<typeof PatchUrlProtectionBypassRequestBodyScope> = z
+    .nativeEnum(PatchUrlProtectionBypassRequestBodyScope);
 /** @internal */
-export const RequestBodyScope$outboundSchema: z.ZodNativeEnum<
-  typeof RequestBodyScope
-> = RequestBodyScope$inboundSchema;
+export const PatchUrlProtectionBypassRequestBodyScope$outboundSchema:
+  z.ZodNativeEnum<typeof PatchUrlProtectionBypassRequestBodyScope> =
+    PatchUrlProtectionBypassRequestBodyScope$inboundSchema;
 
 /** @internal */
 export const PatchUrlProtectionBypassRequestBodyAction$inboundSchema:
@@ -175,7 +177,7 @@ export const Override$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  scope: RequestBodyScope$inboundSchema,
+  scope: PatchUrlProtectionBypassRequestBodyScope$inboundSchema,
   action: PatchUrlProtectionBypassRequestBodyAction$inboundSchema,
 });
 /** @internal */
@@ -190,7 +192,7 @@ export const Override$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Override
 > = z.object({
-  scope: RequestBodyScope$outboundSchema,
+  scope: PatchUrlProtectionBypassRequestBodyScope$outboundSchema,
   action: PatchUrlProtectionBypassRequestBodyAction$outboundSchema,
 });
 
@@ -342,34 +344,41 @@ export function scope1FromJSON(
 }
 
 /** @internal */
-export const Scope$inboundSchema: z.ZodType<Scope, z.ZodTypeDef, unknown> =
-  smartUnion([
-    z.lazy(() => Scope1$inboundSchema),
-    z.lazy(() => Scope2$inboundSchema),
-  ]);
+export const RequestBodyScope$inboundSchema: z.ZodType<
+  RequestBodyScope,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => Scope1$inboundSchema),
+  z.lazy(() => Scope2$inboundSchema),
+]);
 /** @internal */
-export type Scope$Outbound = Scope1$Outbound | Scope2$Outbound;
+export type RequestBodyScope$Outbound = Scope1$Outbound | Scope2$Outbound;
 
 /** @internal */
-export const Scope$outboundSchema: z.ZodType<
-  Scope$Outbound,
+export const RequestBodyScope$outboundSchema: z.ZodType<
+  RequestBodyScope$Outbound,
   z.ZodTypeDef,
-  Scope
+  RequestBodyScope
 > = smartUnion([
   z.lazy(() => Scope1$outboundSchema),
   z.lazy(() => Scope2$outboundSchema),
 ]);
 
-export function scopeToJSON(scope: Scope): string {
-  return JSON.stringify(Scope$outboundSchema.parse(scope));
+export function requestBodyScopeToJSON(
+  requestBodyScope: RequestBodyScope,
+): string {
+  return JSON.stringify(
+    RequestBodyScope$outboundSchema.parse(requestBodyScope),
+  );
 }
-export function scopeFromJSON(
+export function requestBodyScopeFromJSON(
   jsonString: string,
-): SafeParseResult<Scope, SDKValidationError> {
+): SafeParseResult<RequestBodyScope, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Scope$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Scope' from JSON`,
+    (x) => RequestBodyScope$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RequestBodyScope' from JSON`,
   );
 }
 

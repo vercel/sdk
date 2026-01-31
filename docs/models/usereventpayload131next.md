@@ -6,12 +6,15 @@
 import { UserEventPayload131Next } from "@vercel/sdk/models/userevent.js";
 
 let value: UserEventPayload131Next = {
-  skewProtectionBoundaryAt: 5823.55,
+  functionDefaultRegions: [
+    "<value 1>",
+    "<value 2>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                      | Type                       | Required                   | Description                |
-| -------------------------- | -------------------------- | -------------------------- | -------------------------- |
-| `skewProtectionBoundaryAt` | *number*                   | :heavy_check_mark:         | N/A                        |
+| Field                    | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `functionDefaultRegions` | *string*[]               | :heavy_check_mark:       | N/A                      |

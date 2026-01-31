@@ -35,6 +35,33 @@ func (e *LimitedBy) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// TeamLimitedConnectionSyncState - Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
+type TeamLimitedConnectionSyncState string
+
+const (
+	TeamLimitedConnectionSyncStateSetup  TeamLimitedConnectionSyncState = "SETUP"
+	TeamLimitedConnectionSyncStateActive TeamLimitedConnectionSyncState = "ACTIVE"
+)
+
+func (e TeamLimitedConnectionSyncState) ToPointer() *TeamLimitedConnectionSyncState {
+	return &e
+}
+func (e *TeamLimitedConnectionSyncState) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "SETUP":
+		fallthrough
+	case "ACTIVE":
+		*e = TeamLimitedConnectionSyncState(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TeamLimitedConnectionSyncState: %v", v)
+	}
+}
+
 // TeamLimitedConnection - Information for the SAML Single Sign-On configuration.
 type TeamLimitedConnection struct {
 	// The Identity Provider "type", for example Okta.
@@ -49,6 +76,8 @@ type TeamLimitedConnection struct {
 	LastReceivedWebhookEvent *float64 `json:"lastReceivedWebhookEvent,omitempty"`
 	// Timestamp (in milliseconds) of when the last directory sync was performed.
 	LastSyncedAt *float64 `json:"lastSyncedAt,omitempty"`
+	// Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
+	SyncState *TeamLimitedConnectionSyncState `json:"syncState,omitempty"`
 }
 
 func (t TeamLimitedConnection) MarshalJSON() ([]byte, error) {
@@ -104,6 +133,40 @@ func (o *TeamLimitedConnection) GetLastSyncedAt() *float64 {
 	return o.LastSyncedAt
 }
 
+func (o *TeamLimitedConnection) GetSyncState() *TeamLimitedConnectionSyncState {
+	if o == nil {
+		return nil
+	}
+	return o.SyncState
+}
+
+// TeamLimitedDirectorySyncState - Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
+type TeamLimitedDirectorySyncState string
+
+const (
+	TeamLimitedDirectorySyncStateSetup  TeamLimitedDirectorySyncState = "SETUP"
+	TeamLimitedDirectorySyncStateActive TeamLimitedDirectorySyncState = "ACTIVE"
+)
+
+func (e TeamLimitedDirectorySyncState) ToPointer() *TeamLimitedDirectorySyncState {
+	return &e
+}
+func (e *TeamLimitedDirectorySyncState) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "SETUP":
+		fallthrough
+	case "ACTIVE":
+		*e = TeamLimitedDirectorySyncState(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TeamLimitedDirectorySyncState: %v", v)
+	}
+}
+
 // TeamLimitedDirectory - Information for the Directory Sync configuration.
 type TeamLimitedDirectory struct {
 	// The Identity Provider "type", for example Okta.
@@ -116,6 +179,8 @@ type TeamLimitedDirectory struct {
 	LastReceivedWebhookEvent *float64 `json:"lastReceivedWebhookEvent,omitempty"`
 	// Timestamp (in milliseconds) of when the last directory sync was performed.
 	LastSyncedAt *float64 `json:"lastSyncedAt,omitempty"`
+	// Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
+	SyncState *TeamLimitedDirectorySyncState `json:"syncState,omitempty"`
 }
 
 func (t TeamLimitedDirectory) MarshalJSON() ([]byte, error) {
@@ -162,6 +227,13 @@ func (o *TeamLimitedDirectory) GetLastSyncedAt() *float64 {
 		return nil
 	}
 	return o.LastSyncedAt
+}
+
+func (o *TeamLimitedDirectory) GetSyncState() *TeamLimitedDirectorySyncState {
+	if o == nil {
+		return nil
+	}
+	return o.SyncState
 }
 
 // TeamLimitedSaml - When "Single Sign-On (SAML)" is configured, this object contains information that allows the client-side to identify whether or not this Team has SAML enforced.

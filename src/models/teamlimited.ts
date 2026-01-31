@@ -17,6 +17,18 @@ export const LimitedBy = {
 export type LimitedBy = ClosedEnum<typeof LimitedBy>;
 
 /**
+ * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
+ */
+export const TeamLimitedSyncState = {
+  Setup: "SETUP",
+  Active: "ACTIVE",
+} as const;
+/**
+ * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
+ */
+export type TeamLimitedSyncState = ClosedEnum<typeof TeamLimitedSyncState>;
+
+/**
  * Information for the SAML Single Sign-On configuration.
  */
 export type TeamLimitedConnection = {
@@ -44,7 +56,25 @@ export type TeamLimitedConnection = {
    * Timestamp (in milliseconds) of when the last directory sync was performed.
    */
   lastSyncedAt?: number | undefined;
+  /**
+   * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
+   */
+  syncState?: TeamLimitedSyncState | undefined;
 };
+
+/**
+ * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
+ */
+export const TeamLimitedSamlSyncState = {
+  Setup: "SETUP",
+  Active: "ACTIVE",
+} as const;
+/**
+ * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
+ */
+export type TeamLimitedSamlSyncState = ClosedEnum<
+  typeof TeamLimitedSamlSyncState
+>;
 
 /**
  * Information for the Directory Sync configuration.
@@ -70,6 +100,10 @@ export type TeamLimitedDirectory = {
    * Timestamp (in milliseconds) of when the last directory sync was performed.
    */
   lastSyncedAt?: number | undefined;
+  /**
+   * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
+   */
+  syncState?: TeamLimitedSamlSyncState | undefined;
 };
 
 /**
@@ -229,6 +263,15 @@ export const LimitedBy$outboundSchema: z.ZodNativeEnum<typeof LimitedBy> =
   LimitedBy$inboundSchema;
 
 /** @internal */
+export const TeamLimitedSyncState$inboundSchema: z.ZodNativeEnum<
+  typeof TeamLimitedSyncState
+> = z.nativeEnum(TeamLimitedSyncState);
+/** @internal */
+export const TeamLimitedSyncState$outboundSchema: z.ZodNativeEnum<
+  typeof TeamLimitedSyncState
+> = TeamLimitedSyncState$inboundSchema;
+
+/** @internal */
 export const TeamLimitedConnection$inboundSchema: z.ZodType<
   TeamLimitedConnection,
   z.ZodTypeDef,
@@ -240,6 +283,7 @@ export const TeamLimitedConnection$inboundSchema: z.ZodType<
   connectedAt: types.number(),
   lastReceivedWebhookEvent: types.optional(types.number()),
   lastSyncedAt: types.optional(types.number()),
+  syncState: types.optional(TeamLimitedSyncState$inboundSchema),
 });
 /** @internal */
 export type TeamLimitedConnection$Outbound = {
@@ -249,6 +293,7 @@ export type TeamLimitedConnection$Outbound = {
   connectedAt: number;
   lastReceivedWebhookEvent?: number | undefined;
   lastSyncedAt?: number | undefined;
+  syncState?: string | undefined;
 };
 
 /** @internal */
@@ -263,6 +308,7 @@ export const TeamLimitedConnection$outboundSchema: z.ZodType<
   connectedAt: z.number(),
   lastReceivedWebhookEvent: z.number().optional(),
   lastSyncedAt: z.number().optional(),
+  syncState: TeamLimitedSyncState$outboundSchema.optional(),
 });
 
 export function teamLimitedConnectionToJSON(
@@ -283,6 +329,15 @@ export function teamLimitedConnectionFromJSON(
 }
 
 /** @internal */
+export const TeamLimitedSamlSyncState$inboundSchema: z.ZodNativeEnum<
+  typeof TeamLimitedSamlSyncState
+> = z.nativeEnum(TeamLimitedSamlSyncState);
+/** @internal */
+export const TeamLimitedSamlSyncState$outboundSchema: z.ZodNativeEnum<
+  typeof TeamLimitedSamlSyncState
+> = TeamLimitedSamlSyncState$inboundSchema;
+
+/** @internal */
 export const TeamLimitedDirectory$inboundSchema: z.ZodType<
   TeamLimitedDirectory,
   z.ZodTypeDef,
@@ -293,6 +348,7 @@ export const TeamLimitedDirectory$inboundSchema: z.ZodType<
   connectedAt: types.number(),
   lastReceivedWebhookEvent: types.optional(types.number()),
   lastSyncedAt: types.optional(types.number()),
+  syncState: types.optional(TeamLimitedSamlSyncState$inboundSchema),
 });
 /** @internal */
 export type TeamLimitedDirectory$Outbound = {
@@ -301,6 +357,7 @@ export type TeamLimitedDirectory$Outbound = {
   connectedAt: number;
   lastReceivedWebhookEvent?: number | undefined;
   lastSyncedAt?: number | undefined;
+  syncState?: string | undefined;
 };
 
 /** @internal */
@@ -314,6 +371,7 @@ export const TeamLimitedDirectory$outboundSchema: z.ZodType<
   connectedAt: z.number(),
   lastReceivedWebhookEvent: z.number().optional(),
   lastSyncedAt: z.number().optional(),
+  syncState: TeamLimitedSamlSyncState$outboundSchema.optional(),
 });
 
 export function teamLimitedDirectoryToJSON(

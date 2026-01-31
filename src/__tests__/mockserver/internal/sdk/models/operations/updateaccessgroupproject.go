@@ -101,6 +101,7 @@ const (
 	UpdateAccessGroupProjectRoleResponseAdmin            UpdateAccessGroupProjectRoleResponse = "ADMIN"
 	UpdateAccessGroupProjectRoleResponseProjectDeveloper UpdateAccessGroupProjectRoleResponse = "PROJECT_DEVELOPER"
 	UpdateAccessGroupProjectRoleResponseProjectViewer    UpdateAccessGroupProjectRoleResponse = "PROJECT_VIEWER"
+	UpdateAccessGroupProjectRoleResponseProjectGuest     UpdateAccessGroupProjectRoleResponse = "PROJECT_GUEST"
 )
 
 func (e UpdateAccessGroupProjectRoleResponse) ToPointer() *UpdateAccessGroupProjectRoleResponse {
@@ -117,6 +118,8 @@ func (e *UpdateAccessGroupProjectRoleResponse) UnmarshalJSON(data []byte) error 
 	case "PROJECT_DEVELOPER":
 		fallthrough
 	case "PROJECT_VIEWER":
+		fallthrough
+	case "PROJECT_GUEST":
 		*e = UpdateAccessGroupProjectRoleResponse(v)
 		return nil
 	default:

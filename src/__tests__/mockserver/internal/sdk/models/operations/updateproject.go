@@ -73,6 +73,9 @@ const (
 	UpdateProjectFrameworkRequestFastify        UpdateProjectFrameworkRequest = "fastify"
 	UpdateProjectFrameworkRequestXmcp           UpdateProjectFrameworkRequest = "xmcp"
 	UpdateProjectFrameworkRequestPython         UpdateProjectFrameworkRequest = "python"
+	UpdateProjectFrameworkRequestRuby           UpdateProjectFrameworkRequest = "ruby"
+	UpdateProjectFrameworkRequestRust           UpdateProjectFrameworkRequest = "rust"
+	UpdateProjectFrameworkRequestNode           UpdateProjectFrameworkRequest = "node"
 	UpdateProjectFrameworkRequestServices       UpdateProjectFrameworkRequest = "services"
 )
 
@@ -202,6 +205,12 @@ func (e *UpdateProjectFrameworkRequest) UnmarshalJSON(data []byte) error {
 	case "xmcp":
 		fallthrough
 	case "python":
+		fallthrough
+	case "ruby":
+		fallthrough
+	case "rust":
+		fallthrough
+	case "node":
 		fallthrough
 	case "services":
 		*e = UpdateProjectFrameworkRequest(v)
@@ -1127,6 +1136,8 @@ type UpdateProjectRequestBody struct {
 	GitForkProtection *bool `json:"gitForkProtection,omitempty"`
 	// Specifies whether Git LFS is enabled for this project.
 	GitLFS *bool `json:"gitLFS,omitempty"`
+	// Specifies whether sourcemaps are protected and require authentication to access.
+	ProtectedSourcemaps *bool `json:"protectedSourcemaps,omitempty"`
 	// The install command for this project. When `null` is used this value will be automatically detected
 	InstallCommand *string `json:"installCommand,omitempty"`
 	// The desired name for the project
@@ -1259,6 +1270,13 @@ func (o *UpdateProjectRequestBody) GetGitLFS() *bool {
 		return nil
 	}
 	return o.GitLFS
+}
+
+func (o *UpdateProjectRequestBody) GetProtectedSourcemaps() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ProtectedSourcemaps
 }
 
 func (o *UpdateProjectRequestBody) GetInstallCommand() *string {
@@ -3989,6 +4007,9 @@ const (
 	UpdateProjectFrameworkResponseBodyFastify        UpdateProjectFrameworkResponseBody = "fastify"
 	UpdateProjectFrameworkResponseBodyXmcp           UpdateProjectFrameworkResponseBody = "xmcp"
 	UpdateProjectFrameworkResponseBodyPython         UpdateProjectFrameworkResponseBody = "python"
+	UpdateProjectFrameworkResponseBodyRuby           UpdateProjectFrameworkResponseBody = "ruby"
+	UpdateProjectFrameworkResponseBodyRust           UpdateProjectFrameworkResponseBody = "rust"
+	UpdateProjectFrameworkResponseBodyNode           UpdateProjectFrameworkResponseBody = "node"
 	UpdateProjectFrameworkResponseBodyServices       UpdateProjectFrameworkResponseBody = "services"
 )
 
@@ -4118,6 +4139,12 @@ func (e *UpdateProjectFrameworkResponseBody) UnmarshalJSON(data []byte) error {
 	case "xmcp":
 		fallthrough
 	case "python":
+		fallthrough
+	case "ruby":
+		fallthrough
+	case "rust":
+		fallthrough
+	case "node":
 		fallthrough
 	case "services":
 		*e = UpdateProjectFrameworkResponseBody(v)
@@ -12207,6 +12234,7 @@ type UpdateProjectResponseBody struct {
 	InternalRoutes                       []UpdateProjectInternalRouteUnion             `json:"internalRoutes,omitempty"`
 	HasDeployments                       *bool                                         `json:"hasDeployments,omitempty"`
 	DismissedToasts                      []UpdateProjectDismissedToastResponse         `json:"dismissedToasts,omitempty"`
+	ProtectedSourcemaps                  *bool                                         `json:"protectedSourcemaps,omitempty"`
 }
 
 func (o *UpdateProjectResponseBody) GetAccountID() string {
@@ -12809,6 +12837,13 @@ func (o *UpdateProjectResponseBody) GetDismissedToasts() []UpdateProjectDismisse
 		return nil
 	}
 	return o.DismissedToasts
+}
+
+func (o *UpdateProjectResponseBody) GetProtectedSourcemaps() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ProtectedSourcemaps
 }
 
 type UpdateProjectResponse struct {

@@ -8,14 +8,14 @@ The payload of the event, if requested.
 import { TwoHundredAndSix } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndSix = {
-  appName: "<value>",
+  oldName: "<value>",
+  newName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                 | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `appName`             | *string*              | :heavy_check_mark:    | N/A                   |
-| `appId`               | *string*              | :heavy_minus_sign:    | N/A                   |
-| `secretLastFourChars` | *string*              | :heavy_minus_sign:    | N/A                   |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `oldName`          | *string*           | :heavy_check_mark: | N/A                |
+| `newName`          | *string*           | :heavy_check_mark: | N/A                |

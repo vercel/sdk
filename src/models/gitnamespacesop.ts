@@ -10,21 +10,21 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export const Provider = {
+export const QueryParamProvider = {
   Github: "github",
   GithubLimited: "github-limited",
   GithubCustomHost: "github-custom-host",
   Gitlab: "gitlab",
   Bitbucket: "bitbucket",
 } as const;
-export type Provider = ClosedEnum<typeof Provider>;
+export type QueryParamProvider = ClosedEnum<typeof QueryParamProvider>;
 
 export type GitNamespacesRequest = {
   /**
    * The custom Git host if using a custom Git provider, like GitHub Enterprise Server
    */
   host?: string | undefined;
-  provider?: Provider | undefined;
+  provider?: QueryParamProvider | undefined;
 };
 
 export type GitNamespacesId = string | number;
@@ -41,11 +41,13 @@ export type GitNamespacesResponseBody = {
 };
 
 /** @internal */
-export const Provider$inboundSchema: z.ZodNativeEnum<typeof Provider> = z
-  .nativeEnum(Provider);
+export const QueryParamProvider$inboundSchema: z.ZodNativeEnum<
+  typeof QueryParamProvider
+> = z.nativeEnum(QueryParamProvider);
 /** @internal */
-export const Provider$outboundSchema: z.ZodNativeEnum<typeof Provider> =
-  Provider$inboundSchema;
+export const QueryParamProvider$outboundSchema: z.ZodNativeEnum<
+  typeof QueryParamProvider
+> = QueryParamProvider$inboundSchema;
 
 /** @internal */
 export const GitNamespacesRequest$inboundSchema: z.ZodType<
@@ -54,7 +56,7 @@ export const GitNamespacesRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   host: types.optional(types.string()),
-  provider: types.optional(Provider$inboundSchema),
+  provider: types.optional(QueryParamProvider$inboundSchema),
 });
 /** @internal */
 export type GitNamespacesRequest$Outbound = {
@@ -69,7 +71,7 @@ export const GitNamespacesRequest$outboundSchema: z.ZodType<
   GitNamespacesRequest
 > = z.object({
   host: z.string().optional(),
-  provider: Provider$outboundSchema.optional(),
+  provider: QueryParamProvider$outboundSchema.optional(),
 });
 
 export function gitNamespacesRequestToJSON(

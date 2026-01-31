@@ -6,12 +6,12 @@
 import { UserEventPayload129Previous } from "@vercel/sdk/models/userevent.js";
 
 let value: UserEventPayload129Previous = {
-  functionZeroConfigFailover: false,
+  functionDefaultTimeout: 7466.06,
 };
 ```
 
 ## Fields
 
-| Field                        | Type                         | Required                     | Description                  |
-| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `functionZeroConfigFailover` | *boolean*                    | :heavy_check_mark:           | N/A                          |
+| Field                    | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `functionDefaultTimeout` | *number*                 | :heavy_check_mark:       | N/A                      |

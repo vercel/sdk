@@ -73,12 +73,13 @@ func (u StageRedirectsStatusCode) MarshalJSON() ([]byte, error) {
 }
 
 type StageRedirectsRedirect struct {
-	Source        string                    `json:"source"`
-	Destination   string                    `json:"destination"`
-	StatusCode    *StageRedirectsStatusCode `json:"statusCode,omitempty"`
-	Permanent     *bool                     `json:"permanent,omitempty"`
-	CaseSensitive *bool                     `json:"caseSensitive,omitempty"`
-	Query         *bool                     `json:"query,omitempty"`
+	Source              string                    `json:"source"`
+	Destination         string                    `json:"destination"`
+	StatusCode          *StageRedirectsStatusCode `json:"statusCode,omitempty"`
+	Permanent           *bool                     `json:"permanent,omitempty"`
+	CaseSensitive       *bool                     `json:"caseSensitive,omitempty"`
+	Query               *bool                     `json:"query,omitempty"`
+	PreserveQueryParams *bool                     `json:"preserveQueryParams,omitempty"`
 }
 
 func (o *StageRedirectsRedirect) GetSource() string {
@@ -121,6 +122,13 @@ func (o *StageRedirectsRedirect) GetQuery() *bool {
 		return nil
 	}
 	return o.Query
+}
+
+func (o *StageRedirectsRedirect) GetPreserveQueryParams() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.PreserveQueryParams
 }
 
 type StageRedirectsRequestBody struct {

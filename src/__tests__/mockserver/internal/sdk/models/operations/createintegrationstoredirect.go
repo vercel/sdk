@@ -379,6 +379,9 @@ const (
 	CreateIntegrationStoreDirectFrameworkFastify        CreateIntegrationStoreDirectFramework = "fastify"
 	CreateIntegrationStoreDirectFrameworkXmcp           CreateIntegrationStoreDirectFramework = "xmcp"
 	CreateIntegrationStoreDirectFrameworkPython         CreateIntegrationStoreDirectFramework = "python"
+	CreateIntegrationStoreDirectFrameworkRuby           CreateIntegrationStoreDirectFramework = "ruby"
+	CreateIntegrationStoreDirectFrameworkRust           CreateIntegrationStoreDirectFramework = "rust"
+	CreateIntegrationStoreDirectFrameworkNode           CreateIntegrationStoreDirectFramework = "node"
 	CreateIntegrationStoreDirectFrameworkServices       CreateIntegrationStoreDirectFramework = "services"
 )
 
@@ -508,6 +511,12 @@ func (e *CreateIntegrationStoreDirectFramework) UnmarshalJSON(data []byte) error
 	case "xmcp":
 		fallthrough
 	case "python":
+		fallthrough
+	case "ruby":
+		fallthrough
+	case "rust":
+		fallthrough
+	case "node":
 		fallthrough
 	case "services":
 		*e = CreateIntegrationStoreDirectFramework(v)
@@ -10923,6 +10932,7 @@ const (
 	TagLibsql             Tag = "libsql"
 	TagSqlite             Tag = "sqlite"
 	TagRds                Tag = "rds"
+	TagDrains             Tag = "drains"
 	TagTagAgents          Tag = "tag_agents"
 	TagTagAi              Tag = "tag_ai"
 	TagTagAnalytics       Tag = "tag_analytics"
@@ -11010,6 +11020,8 @@ func (e *Tag) UnmarshalJSON(data []byte) error {
 	case "sqlite":
 		fallthrough
 	case "rds":
+		fallthrough
+	case "drains":
 		fallthrough
 	case "tag_agents":
 		fallthrough
@@ -11973,6 +11985,36 @@ func (o *CreateIntegrationStoreDirectBillingPlan) GetDisabled() *bool {
 	return o.Disabled
 }
 
+// CreateIntegrationStoreDirectTarget - The deployment targets that this resource is available for.
+type CreateIntegrationStoreDirectTarget string
+
+const (
+	CreateIntegrationStoreDirectTargetProduction  CreateIntegrationStoreDirectTarget = "production"
+	CreateIntegrationStoreDirectTargetPreview     CreateIntegrationStoreDirectTarget = "preview"
+	CreateIntegrationStoreDirectTargetDevelopment CreateIntegrationStoreDirectTarget = "development"
+)
+
+func (e CreateIntegrationStoreDirectTarget) ToPointer() *CreateIntegrationStoreDirectTarget {
+	return &e
+}
+func (e *CreateIntegrationStoreDirectTarget) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "production":
+		fallthrough
+	case "preview":
+		fallthrough
+	case "development":
+		*e = CreateIntegrationStoreDirectTarget(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectTarget: %v", v)
+	}
+}
+
 type Store struct {
 	ProjectsMetadata        []CreateIntegrationStoreDirectProjectsMetadatum `json:"projectsMetadata"`
 	ProjectFilter           *ProjectFilter                                  `json:"projectFilter,omitempty"`
@@ -11998,6 +12040,10 @@ type Store struct {
 	SecretRotationRequestedBy *string `json:"secretRotationRequestedBy,omitempty"`
 	// The timestamp when secret rotation was completed.
 	SecretRotationCompletedAt *float64 `json:"secretRotationCompletedAt,omitempty"`
+	// The ID of the parent resource. Used to establish a parent-child relationship between resources, such as sandbox resources linking to their owner account resource.
+	ParentID *string `json:"parentId,omitempty"`
+	// The deployment targets that this resource is available for.
+	Targets []CreateIntegrationStoreDirectTarget `json:"targets,omitempty"`
 }
 
 func (o *Store) GetProjectsMetadata() []CreateIntegrationStoreDirectProjectsMetadatum {
@@ -12138,6 +12184,20 @@ func (o *Store) GetSecretRotationCompletedAt() *float64 {
 		return nil
 	}
 	return o.SecretRotationCompletedAt
+}
+
+func (o *Store) GetParentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ParentID
+}
+
+func (o *Store) GetTargets() []CreateIntegrationStoreDirectTarget {
+	if o == nil {
+		return nil
+	}
+	return o.Targets
 }
 
 type CreateIntegrationStoreDirectResponseBody struct {

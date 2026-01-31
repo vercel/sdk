@@ -79,6 +79,9 @@ export const UpdateProjectFramework = {
   Fastify: "fastify",
   Xmcp: "xmcp",
   Python: "python",
+  Ruby: "ruby",
+  Rust: "rust",
+  Node: "node",
   Services: "services",
 } as const;
 /**
@@ -406,6 +409,10 @@ export type UpdateProjectRequestBody = {
    * Specifies whether Git LFS is enabled for this project.
    */
   gitLFS?: boolean | undefined;
+  /**
+   * Specifies whether sourcemaps are protected and require authentication to access.
+   */
+  protectedSourcemaps?: boolean | undefined;
   /**
    * The install command for this project. When `null` is used this value will be automatically detected
    */
@@ -998,6 +1005,9 @@ export const UpdateProjectProjectsFramework = {
   Fastify: "fastify",
   Xmcp: "xmcp",
   Python: "python",
+  Ruby: "ruby",
+  Rust: "rust",
+  Node: "node",
   Services: "services",
 } as const;
 export type UpdateProjectProjectsFramework = ClosedEnum<
@@ -2414,6 +2424,7 @@ export type UpdateProjectResponseBody = {
     | undefined;
   hasDeployments?: boolean | undefined;
   dismissedToasts?: Array<UpdateProjectProjectsDismissedToasts> | undefined;
+  protectedSourcemaps?: boolean | undefined;
 };
 
 /** @internal */
@@ -3203,6 +3214,7 @@ export const UpdateProjectRequestBody$inboundSchema: z.ZodType<
   framework: z.nullable(UpdateProjectFramework$inboundSchema).optional(),
   gitForkProtection: types.optional(types.boolean()),
   gitLFS: types.optional(types.boolean()),
+  protectedSourcemaps: types.optional(types.boolean()),
   installCommand: z.nullable(types.string()).optional(),
   name: types.optional(types.string()),
   nodeVersion: types.optional(UpdateProjectNodeVersion$inboundSchema),
@@ -3259,6 +3271,7 @@ export type UpdateProjectRequestBody$Outbound = {
   framework?: string | null | undefined;
   gitForkProtection?: boolean | undefined;
   gitLFS?: boolean | undefined;
+  protectedSourcemaps?: boolean | undefined;
   installCommand?: string | null | undefined;
   name?: string | undefined;
   nodeVersion?: string | undefined;
@@ -3311,6 +3324,7 @@ export const UpdateProjectRequestBody$outboundSchema: z.ZodType<
   framework: z.nullable(UpdateProjectFramework$outboundSchema).optional(),
   gitForkProtection: z.boolean().optional(),
   gitLFS: z.boolean().optional(),
+  protectedSourcemaps: z.boolean().optional(),
   installCommand: z.nullable(z.string()).optional(),
   name: z.string().optional(),
   nodeVersion: UpdateProjectNodeVersion$outboundSchema.optional(),
@@ -11311,6 +11325,7 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
   dismissedToasts: types.optional(
     z.array(z.lazy(() => UpdateProjectProjectsDismissedToasts$inboundSchema)),
   ),
+  protectedSourcemaps: types.optional(types.boolean()),
 });
 /** @internal */
 export type UpdateProjectResponseBody$Outbound = {
@@ -11442,6 +11457,7 @@ export type UpdateProjectResponseBody$Outbound = {
   dismissedToasts?:
     | Array<UpdateProjectProjectsDismissedToasts$Outbound>
     | undefined;
+  protectedSourcemaps?: boolean | undefined;
 };
 
 /** @internal */
@@ -11595,6 +11611,7 @@ export const UpdateProjectResponseBody$outboundSchema: z.ZodType<
   dismissedToasts: z.array(
     z.lazy(() => UpdateProjectProjectsDismissedToasts$outboundSchema),
   ).optional(),
+  protectedSourcemaps: z.boolean().optional(),
 });
 
 export function updateProjectResponseBodyToJSON(

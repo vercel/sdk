@@ -8,8 +8,11 @@ The payload of the event, if requested.
 import { FiftyOne } from "@vercel/sdk/models/userevent.js";
 
 let value: FiftyOne = {
+  id: "<id>",
+  value: "<value>",
   name: "<value>",
-  price: 8561.8,
+  domain: "timely-essence.net",
+  type: "<value>",
 };
 ```
 
@@ -17,6 +20,9 @@ let value: FiftyOne = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `value`            | *string*           | :heavy_check_mark: | N/A                |
 | `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `price`            | *number*           | :heavy_check_mark: | N/A                |
-| `currency`         | *string*           | :heavy_minus_sign: | N/A                |
+| `domain`           | *string*           | :heavy_check_mark: | N/A                |
+| `type`             | *string*           | :heavy_check_mark: | N/A                |
+| `mxPriority`       | *number*           | :heavy_minus_sign: | N/A                |

@@ -10,13 +10,14 @@ import { OneHundredAndThirtyNine } from "@vercel/sdk/models/userevent.js";
 let value: OneHundredAndThirtyNine = {
   projectId: "<id>",
   projectName: "<value>",
+  gitForkProtection: false,
 };
 ```
 
 ## Fields
 
-| Field                | Type                 | Required             | Description          |
-| -------------------- | -------------------- | -------------------- | -------------------- |
-| `projectId`          | *string*             | :heavy_check_mark:   | N/A                  |
-| `projectName`        | *string*             | :heavy_check_mark:   | N/A                  |
-| `targetDeploymentId` | *string*             | :heavy_minus_sign:   | N/A                  |
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `projectId`         | *string*            | :heavy_check_mark:  | N/A                 |
+| `projectName`       | *string*            | :heavy_check_mark:  | N/A                 |
+| `gitForkProtection` | *boolean*           | :heavy_check_mark:  | N/A                 |

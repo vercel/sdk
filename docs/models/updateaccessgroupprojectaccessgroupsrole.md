@@ -11,5 +11,5 @@ let value: UpdateAccessGroupProjectAccessGroupsRole = "ADMIN";
 ## Values
 
 ```typescript
-"ADMIN" | "PROJECT_DEVELOPER" | "PROJECT_VIEWER"
+"ADMIN" | "PROJECT_DEVELOPER" | "PROJECT_VIEWER" | "PROJECT_GUEST"
 ```

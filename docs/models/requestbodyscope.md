@@ -1,15 +1,25 @@
 # RequestBodyScope
 
-## Example Usage
+Instructions for creating a user scoped protection bypass
+
+
+## Supported Types
+
+### `models.Scope1`
 
 ```typescript
-import { RequestBodyScope } from "@vercel/sdk/models/patchurlprotectionbypassop.js";
-
-let value: RequestBodyScope = "alias-protection-override";
+const value: models.Scope1 = {
+  userId: "<id>",
+  access: "granted",
+};
 ```
 
-## Values
+### `models.Scope2`
 
 ```typescript
-"alias-protection-override"
+const value: models.Scope2 = {
+  email: "Haven82@hotmail.com",
+  access: "granted",
+};
 ```
+

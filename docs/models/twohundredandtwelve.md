@@ -8,24 +8,16 @@ The payload of the event, if requested.
 import { TwoHundredAndTwelve } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndTwelve = {
-  team: {
-    id: "<id>",
-    name: "<value>",
-  },
-  configuration: {
-    id: "<id>",
-  },
-  peering: {
-    id: "<id>",
-  },
+  appName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `team`                                                                                   | [models.UserEventPayload212Team](../models/usereventpayload212team.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `configuration`                                                                          | [models.UserEventPayload212Configuration](../models/usereventpayload212configuration.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `peering`                                                                                | [models.UserEventPayloadPeering](../models/usereventpayloadpeering.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `newName`                                                                                | *string*                                                                                 | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| Field                                | Type                                 | Required                             | Description                          |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `appName`                            | *string*                             | :heavy_check_mark:                   | N/A                                  |
+| `appId`                              | *string*                             | :heavy_minus_sign:                   | N/A                                  |
+| `installationId`                     | *string*                             | :heavy_minus_sign:                   | N/A                                  |
+| `before`                             | [models.Before](../models/before.md) | :heavy_minus_sign:                   | N/A                                  |
+| `after`                              | [models.After](../models/after.md)   | :heavy_minus_sign:                   | N/A                                  |

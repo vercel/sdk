@@ -31,6 +31,33 @@ func (o *Connect) GetEnabled() *bool {
 	return o.Enabled
 }
 
+// TeamConnectionSyncState - Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
+type TeamConnectionSyncState string
+
+const (
+	TeamConnectionSyncStateSetup  TeamConnectionSyncState = "SETUP"
+	TeamConnectionSyncStateActive TeamConnectionSyncState = "ACTIVE"
+)
+
+func (e TeamConnectionSyncState) ToPointer() *TeamConnectionSyncState {
+	return &e
+}
+func (e *TeamConnectionSyncState) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "SETUP":
+		fallthrough
+	case "ACTIVE":
+		*e = TeamConnectionSyncState(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TeamConnectionSyncState: %v", v)
+	}
+}
+
 // TeamConnection - Information for the SAML Single Sign-On configuration.
 type TeamConnection struct {
 	// The Identity Provider "type", for example Okta.
@@ -45,6 +72,8 @@ type TeamConnection struct {
 	LastReceivedWebhookEvent *float64 `json:"lastReceivedWebhookEvent,omitempty"`
 	// Timestamp (in milliseconds) of when the last directory sync was performed.
 	LastSyncedAt *float64 `json:"lastSyncedAt,omitempty"`
+	// Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
+	SyncState *TeamConnectionSyncState `json:"syncState,omitempty"`
 }
 
 func (t TeamConnection) MarshalJSON() ([]byte, error) {
@@ -100,6 +129,40 @@ func (o *TeamConnection) GetLastSyncedAt() *float64 {
 	return o.LastSyncedAt
 }
 
+func (o *TeamConnection) GetSyncState() *TeamConnectionSyncState {
+	if o == nil {
+		return nil
+	}
+	return o.SyncState
+}
+
+// TeamDirectorySyncState - Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
+type TeamDirectorySyncState string
+
+const (
+	TeamDirectorySyncStateSetup  TeamDirectorySyncState = "SETUP"
+	TeamDirectorySyncStateActive TeamDirectorySyncState = "ACTIVE"
+)
+
+func (e TeamDirectorySyncState) ToPointer() *TeamDirectorySyncState {
+	return &e
+}
+func (e *TeamDirectorySyncState) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "SETUP":
+		fallthrough
+	case "ACTIVE":
+		*e = TeamDirectorySyncState(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TeamDirectorySyncState: %v", v)
+	}
+}
+
 // TeamDirectory - Information for the Directory Sync configuration.
 type TeamDirectory struct {
 	// The Identity Provider "type", for example Okta.
@@ -112,6 +175,8 @@ type TeamDirectory struct {
 	LastReceivedWebhookEvent *float64 `json:"lastReceivedWebhookEvent,omitempty"`
 	// Timestamp (in milliseconds) of when the last directory sync was performed.
 	LastSyncedAt *float64 `json:"lastSyncedAt,omitempty"`
+	// Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
+	SyncState *TeamDirectorySyncState `json:"syncState,omitempty"`
 }
 
 func (t TeamDirectory) MarshalJSON() ([]byte, error) {
@@ -158,6 +223,13 @@ func (o *TeamDirectory) GetLastSyncedAt() *float64 {
 		return nil
 	}
 	return o.LastSyncedAt
+}
+
+func (o *TeamDirectory) GetSyncState() *TeamDirectorySyncState {
+	if o == nil {
+		return nil
+	}
+	return o.SyncState
 }
 
 // DefaultRedirectURI - The default redirect URI to use after successful SAML authentication.

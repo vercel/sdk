@@ -8,14 +8,17 @@ The payload of the event, if requested.
 import { Twenty } from "@vercel/sdk/models/userevent.js";
 
 let value: Twenty = {
-  projectName: "<value>",
-  autoExposeSystemEnvs: false,
+  alias: "<value>",
+  aliasId: "<id>",
+  deploymentId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `projectName`          | *string*               | :heavy_check_mark:     | N/A                    |
-| `autoExposeSystemEnvs` | *boolean*              | :heavy_check_mark:     | N/A                    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `name`             | *string*           | :heavy_minus_sign: | N/A                |
+| `alias`            | *string*           | :heavy_check_mark: | N/A                |
+| `aliasId`          | *string*           | :heavy_check_mark: | N/A                |
+| `deploymentId`     | *string*           | :heavy_check_mark: | N/A                |

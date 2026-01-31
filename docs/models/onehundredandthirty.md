@@ -10,8 +10,12 @@ import { OneHundredAndThirty } from "@vercel/sdk/models/userevent.js";
 let value: OneHundredAndThirty = {
   projectId: "<id>",
   projectName: "<value>",
-  previous: {},
-  next: {},
+  previous: {
+    functionDefaultMemoryType: "<value>",
+  },
+  next: {
+    functionDefaultMemoryType: "<value>",
+  },
 };
 ```
 

@@ -634,6 +634,9 @@ export const GetAllLogDrainsResponseBodyFramework = {
   Fastify: "fastify",
   Xmcp: "xmcp",
   Python: "python",
+  Ruby: "ruby",
+  Rust: "rust",
+  Node: "node",
   Services: "services",
 } as const;
 export type GetAllLogDrainsResponseBodyFramework = ClosedEnum<

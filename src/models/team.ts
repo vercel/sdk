@@ -19,6 +19,18 @@ export type Connect = {
 };
 
 /**
+ * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
+ */
+export const SyncState = {
+  Setup: "SETUP",
+  Active: "ACTIVE",
+} as const;
+/**
+ * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
+ */
+export type SyncState = ClosedEnum<typeof SyncState>;
+
+/**
  * Information for the SAML Single Sign-On configuration.
  */
 export type Connection = {
@@ -46,7 +58,23 @@ export type Connection = {
    * Timestamp (in milliseconds) of when the last directory sync was performed.
    */
   lastSyncedAt?: number | undefined;
+  /**
+   * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
+   */
+  syncState?: SyncState | undefined;
 };
+
+/**
+ * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
+ */
+export const TeamSyncState = {
+  Setup: "SETUP",
+  Active: "ACTIVE",
+} as const;
+/**
+ * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
+ */
+export type TeamSyncState = ClosedEnum<typeof TeamSyncState>;
 
 /**
  * Information for the Directory Sync configuration.
@@ -72,6 +100,10 @@ export type Directory = {
    * Timestamp (in milliseconds) of when the last directory sync was performed.
    */
   lastSyncedAt?: number | undefined;
+  /**
+   * Controls whether directory sync events are processed. - 'SETUP': Directory connected but role mappings not yet configured. Events are acknowledged but not processed. - 'ACTIVE': Fully configured. Events are processed normally. - undefined: Legacy directory (pre-feature), treat as 'ACTIVE' for backwards compatibility.
+   */
+  syncState?: TeamSyncState | undefined;
 };
 
 /**
@@ -577,6 +609,13 @@ export function connectFromJSON(
 }
 
 /** @internal */
+export const SyncState$inboundSchema: z.ZodNativeEnum<typeof SyncState> = z
+  .nativeEnum(SyncState);
+/** @internal */
+export const SyncState$outboundSchema: z.ZodNativeEnum<typeof SyncState> =
+  SyncState$inboundSchema;
+
+/** @internal */
 export const Connection$inboundSchema: z.ZodType<
   Connection,
   z.ZodTypeDef,
@@ -588,6 +627,7 @@ export const Connection$inboundSchema: z.ZodType<
   connectedAt: types.number(),
   lastReceivedWebhookEvent: types.optional(types.number()),
   lastSyncedAt: types.optional(types.number()),
+  syncState: types.optional(SyncState$inboundSchema),
 });
 /** @internal */
 export type Connection$Outbound = {
@@ -597,6 +637,7 @@ export type Connection$Outbound = {
   connectedAt: number;
   lastReceivedWebhookEvent?: number | undefined;
   lastSyncedAt?: number | undefined;
+  syncState?: string | undefined;
 };
 
 /** @internal */
@@ -611,6 +652,7 @@ export const Connection$outboundSchema: z.ZodType<
   connectedAt: z.number(),
   lastReceivedWebhookEvent: z.number().optional(),
   lastSyncedAt: z.number().optional(),
+  syncState: SyncState$outboundSchema.optional(),
 });
 
 export function connectionToJSON(connection: Connection): string {
@@ -627,6 +669,15 @@ export function connectionFromJSON(
 }
 
 /** @internal */
+export const TeamSyncState$inboundSchema: z.ZodNativeEnum<
+  typeof TeamSyncState
+> = z.nativeEnum(TeamSyncState);
+/** @internal */
+export const TeamSyncState$outboundSchema: z.ZodNativeEnum<
+  typeof TeamSyncState
+> = TeamSyncState$inboundSchema;
+
+/** @internal */
 export const Directory$inboundSchema: z.ZodType<
   Directory,
   z.ZodTypeDef,
@@ -637,6 +688,7 @@ export const Directory$inboundSchema: z.ZodType<
   connectedAt: types.number(),
   lastReceivedWebhookEvent: types.optional(types.number()),
   lastSyncedAt: types.optional(types.number()),
+  syncState: types.optional(TeamSyncState$inboundSchema),
 });
 /** @internal */
 export type Directory$Outbound = {
@@ -645,6 +697,7 @@ export type Directory$Outbound = {
   connectedAt: number;
   lastReceivedWebhookEvent?: number | undefined;
   lastSyncedAt?: number | undefined;
+  syncState?: string | undefined;
 };
 
 /** @internal */
@@ -658,6 +711,7 @@ export const Directory$outboundSchema: z.ZodType<
   connectedAt: z.number(),
   lastReceivedWebhookEvent: z.number().optional(),
   lastSyncedAt: z.number().optional(),
+  syncState: TeamSyncState$outboundSchema.optional(),
 });
 
 export function directoryToJSON(directory: Directory): string {

@@ -5,11 +5,13 @@
 ```typescript
 import { UserEventPayload130Next } from "@vercel/sdk/models/userevent.js";
 
-let value: UserEventPayload130Next = {};
+let value: UserEventPayload130Next = {
+  functionDefaultMemoryType: "<value>",
+};
 ```
 
 ## Fields
 
-| Field                         | Type                          | Required                      | Description                   |
-| ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
-| `commandForIgnoringBuildStep` | *string*                      | :heavy_minus_sign:            | N/A                           |
+| Field                       | Type                        | Required                    | Description                 |
+| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
+| `functionDefaultMemoryType` | *string*                    | :heavy_check_mark:          | N/A                         |

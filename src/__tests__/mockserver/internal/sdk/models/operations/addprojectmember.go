@@ -15,8 +15,8 @@ type AddProjectMemberRole3 string
 
 const (
 	AddProjectMemberRole3Admin            AddProjectMemberRole3 = "ADMIN"
-	AddProjectMemberRole3ProjectDeveloper AddProjectMemberRole3 = "PROJECT_DEVELOPER"
 	AddProjectMemberRole3ProjectViewer    AddProjectMemberRole3 = "PROJECT_VIEWER"
+	AddProjectMemberRole3ProjectDeveloper AddProjectMemberRole3 = "PROJECT_DEVELOPER"
 )
 
 func (e AddProjectMemberRole3) ToPointer() *AddProjectMemberRole3 {
@@ -30,9 +30,9 @@ func (e *AddProjectMemberRole3) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "ADMIN":
 		fallthrough
-	case "PROJECT_DEVELOPER":
-		fallthrough
 	case "PROJECT_VIEWER":
+		fallthrough
+	case "PROJECT_DEVELOPER":
 		*e = AddProjectMemberRole3(v)
 		return nil
 	default:
@@ -95,8 +95,8 @@ type AddProjectMemberRole2 string
 
 const (
 	AddProjectMemberRole2Admin            AddProjectMemberRole2 = "ADMIN"
-	AddProjectMemberRole2ProjectDeveloper AddProjectMemberRole2 = "PROJECT_DEVELOPER"
 	AddProjectMemberRole2ProjectViewer    AddProjectMemberRole2 = "PROJECT_VIEWER"
+	AddProjectMemberRole2ProjectDeveloper AddProjectMemberRole2 = "PROJECT_DEVELOPER"
 )
 
 func (e AddProjectMemberRole2) ToPointer() *AddProjectMemberRole2 {
@@ -110,9 +110,9 @@ func (e *AddProjectMemberRole2) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "ADMIN":
 		fallthrough
-	case "PROJECT_DEVELOPER":
-		fallthrough
 	case "PROJECT_VIEWER":
+		fallthrough
+	case "PROJECT_DEVELOPER":
 		*e = AddProjectMemberRole2(v)
 		return nil
 	default:
@@ -175,8 +175,8 @@ type AddProjectMemberRole1 string
 
 const (
 	AddProjectMemberRole1Admin            AddProjectMemberRole1 = "ADMIN"
-	AddProjectMemberRole1ProjectDeveloper AddProjectMemberRole1 = "PROJECT_DEVELOPER"
 	AddProjectMemberRole1ProjectViewer    AddProjectMemberRole1 = "PROJECT_VIEWER"
+	AddProjectMemberRole1ProjectDeveloper AddProjectMemberRole1 = "PROJECT_DEVELOPER"
 )
 
 func (e AddProjectMemberRole1) ToPointer() *AddProjectMemberRole1 {
@@ -190,9 +190,9 @@ func (e *AddProjectMemberRole1) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "ADMIN":
 		fallthrough
-	case "PROJECT_DEVELOPER":
-		fallthrough
 	case "PROJECT_VIEWER":
+		fallthrough
+	case "PROJECT_DEVELOPER":
 		*e = AddProjectMemberRole1(v)
 		return nil
 	default:

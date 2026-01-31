@@ -237,13 +237,14 @@ func (o *GetRedirectsRequest) GetSlug() *string {
 }
 
 type GetRedirectsRedirect struct {
-	StatusCode    *float64 `json:"statusCode,omitempty"`
-	Permanent     *bool    `json:"permanent,omitempty"`
-	Sensitive     *bool    `json:"sensitive,omitempty"`
-	CaseSensitive *bool    `json:"caseSensitive,omitempty"`
-	Query         *bool    `json:"query,omitempty"`
-	Source        string   `json:"source"`
-	Destination   string   `json:"destination"`
+	StatusCode          *float64 `json:"statusCode,omitempty"`
+	Permanent           *bool    `json:"permanent,omitempty"`
+	Sensitive           *bool    `json:"sensitive,omitempty"`
+	CaseSensitive       *bool    `json:"caseSensitive,omitempty"`
+	Query               *bool    `json:"query,omitempty"`
+	PreserveQueryParams *bool    `json:"preserveQueryParams,omitempty"`
+	Source              string   `json:"source"`
+	Destination         string   `json:"destination"`
 }
 
 func (g GetRedirectsRedirect) MarshalJSON() ([]byte, error) {
@@ -290,6 +291,13 @@ func (o *GetRedirectsRedirect) GetQuery() *bool {
 		return nil
 	}
 	return o.Query
+}
+
+func (o *GetRedirectsRedirect) GetPreserveQueryParams() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.PreserveQueryParams
 }
 
 func (o *GetRedirectsRedirect) GetSource() string {

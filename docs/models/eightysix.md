@@ -8,23 +8,13 @@ The payload of the event, if requested.
 import { EightySix } from "@vercel/sdk/models/userevent.js";
 
 let value: EightySix = {
-  plan: "<value>",
+  drainUrl: "https://grounded-adult.name",
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `plan`                                                           | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `removedUsers`                                                   | Record<string, [models.RemovedUsers](../models/removedusers.md)> | :heavy_minus_sign:                                               | N/A                                                              |
-| `prevPlan`                                                       | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
-| `priorPlan`                                                      | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
-| `isDowngrade`                                                    | *boolean*                                                        | :heavy_minus_sign:                                               | N/A                                                              |
-| `userAgent`                                                      | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
-| `isReactivate`                                                   | *boolean*                                                        | :heavy_minus_sign:                                               | N/A                                                              |
-| `isTrialUpgrade`                                                 | *boolean*                                                        | :heavy_minus_sign:                                               | N/A                                                              |
-| `automated`                                                      | *boolean*                                                        | :heavy_minus_sign:                                               | N/A                                                              |
-| `reason`                                                         | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
-| `timestamp`                                                      | *number*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
-| `removedMemberCount`                                             | *number*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `drainUrl`         | *string*           | :heavy_check_mark: | N/A                |
+| `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |

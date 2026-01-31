@@ -636,6 +636,9 @@ export const GetProjectsResponseBodyProjectsFramework = {
   Fastify: "fastify",
   Xmcp: "xmcp",
   Python: "python",
+  Ruby: "ruby",
+  Rust: "rust",
+  Node: "node",
   Services: "services",
 } as const;
 export type GetProjectsResponseBodyProjectsFramework = ClosedEnum<
@@ -2121,6 +2124,7 @@ export type GetProjectsResponseBodyProjects = {
     | undefined;
   hasDeployments?: boolean | undefined;
   dismissedToasts?: Array<ResponseBodyDismissedToasts> | undefined;
+  protectedSourcemaps?: boolean | undefined;
 };
 
 /**
@@ -2537,6 +2541,9 @@ export const GetProjectsResponseBodyFramework = {
   Fastify: "fastify",
   Xmcp: "xmcp",
   Python: "python",
+  Ruby: "ruby",
+  Rust: "rust",
+  Node: "node",
   Services: "services",
 } as const;
 export type GetProjectsResponseBodyFramework = ClosedEnum<
@@ -4030,6 +4037,9 @@ export const ResponseBodyFramework = {
   Fastify: "fastify",
   Xmcp: "xmcp",
   Python: "python",
+  Ruby: "ruby",
+  Rust: "rust",
+  Node: "node",
   Services: "services",
 } as const;
 export type ResponseBodyFramework = ClosedEnum<typeof ResponseBodyFramework>;
@@ -13772,6 +13782,7 @@ export const GetProjectsResponseBodyProjects$inboundSchema: z.ZodType<
   dismissedToasts: types.optional(
     z.array(z.lazy(() => ResponseBodyDismissedToasts$inboundSchema)),
   ),
+  protectedSourcemaps: types.optional(types.boolean()),
 });
 /** @internal */
 export type GetProjectsResponseBodyProjects$Outbound = {
@@ -13909,6 +13920,7 @@ export type GetProjectsResponseBodyProjects$Outbound = {
     | undefined;
   hasDeployments?: boolean | undefined;
   dismissedToasts?: Array<ResponseBodyDismissedToasts$Outbound> | undefined;
+  protectedSourcemaps?: boolean | undefined;
 };
 
 /** @internal */
@@ -14073,6 +14085,7 @@ export const GetProjectsResponseBodyProjects$outboundSchema: z.ZodType<
   dismissedToasts: z.array(
     z.lazy(() => ResponseBodyDismissedToasts$outboundSchema),
   ).optional(),
+  protectedSourcemaps: z.boolean().optional(),
 });
 
 export function getProjectsResponseBodyProjectsToJSON(

@@ -11,5 +11,5 @@ let value: CreateAccessGroupProjectAccessGroupsRole = "PROJECT_DEVELOPER";
 ## Values
 
 ```typescript
-"ADMIN" | "PROJECT_DEVELOPER" | "PROJECT_VIEWER"
+"ADMIN" | "PROJECT_DEVELOPER" | "PROJECT_VIEWER" | "PROJECT_GUEST"
 ```

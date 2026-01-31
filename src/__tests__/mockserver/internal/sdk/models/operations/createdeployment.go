@@ -1282,6 +1282,9 @@ const (
 	CreateDeploymentFrameworkRequestFastify        CreateDeploymentFrameworkRequest = "fastify"
 	CreateDeploymentFrameworkRequestXmcp           CreateDeploymentFrameworkRequest = "xmcp"
 	CreateDeploymentFrameworkRequestPython         CreateDeploymentFrameworkRequest = "python"
+	CreateDeploymentFrameworkRequestRuby           CreateDeploymentFrameworkRequest = "ruby"
+	CreateDeploymentFrameworkRequestRust           CreateDeploymentFrameworkRequest = "rust"
+	CreateDeploymentFrameworkRequestNode           CreateDeploymentFrameworkRequest = "node"
 	CreateDeploymentFrameworkRequestServices       CreateDeploymentFrameworkRequest = "services"
 )
 
@@ -1411,6 +1414,12 @@ func (e *CreateDeploymentFrameworkRequest) UnmarshalJSON(data []byte) error {
 	case "xmcp":
 		fallthrough
 	case "python":
+		fallthrough
+	case "ruby":
+		fallthrough
+	case "rust":
+		fallthrough
+	case "node":
 		fallthrough
 	case "services":
 		*e = CreateDeploymentFrameworkRequest(v)
@@ -1940,6 +1949,9 @@ const (
 	CreateDeploymentFrameworkLambdasFastify        CreateDeploymentFrameworkLambdas = "fastify"
 	CreateDeploymentFrameworkLambdasXmcp           CreateDeploymentFrameworkLambdas = "xmcp"
 	CreateDeploymentFrameworkLambdasPython         CreateDeploymentFrameworkLambdas = "python"
+	CreateDeploymentFrameworkLambdasRuby           CreateDeploymentFrameworkLambdas = "ruby"
+	CreateDeploymentFrameworkLambdasRust           CreateDeploymentFrameworkLambdas = "rust"
+	CreateDeploymentFrameworkLambdasNode           CreateDeploymentFrameworkLambdas = "node"
 	CreateDeploymentFrameworkLambdasServices       CreateDeploymentFrameworkLambdas = "services"
 )
 
@@ -2069,6 +2081,12 @@ func (e *CreateDeploymentFrameworkLambdas) UnmarshalJSON(data []byte) error {
 	case "xmcp":
 		fallthrough
 	case "python":
+		fallthrough
+	case "ruby":
+		fallthrough
+	case "rust":
+		fallthrough
+	case "node":
 		fallthrough
 	case "services":
 		*e = CreateDeploymentFrameworkLambdas(v)

@@ -48,6 +48,7 @@ export const ResponseBodyRole = {
   Admin: "ADMIN",
   ProjectDeveloper: "PROJECT_DEVELOPER",
   ProjectViewer: "PROJECT_VIEWER",
+  ProjectGuest: "PROJECT_GUEST",
 } as const;
 /**
  * Role of this user in the project.
@@ -61,6 +62,7 @@ export const ComputedProjectRole = {
   Admin: "ADMIN",
   ProjectDeveloper: "PROJECT_DEVELOPER",
   ProjectViewer: "PROJECT_VIEWER",
+  ProjectGuest: "PROJECT_GUEST",
 } as const;
 /**
  * Role of this user in the project.

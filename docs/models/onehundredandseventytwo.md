@@ -7,15 +7,11 @@ The payload of the event, if requested.
 ```typescript
 import { OneHundredAndSeventyTwo } from "@vercel/sdk/models/userevent.js";
 
-let value: OneHundredAndSeventyTwo = {
-  enabled: true,
-  totpVerified: false,
-};
+let value: OneHundredAndSeventyTwo = {};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
-| `totpVerified`     | *boolean*          | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_minus_sign: | N/A                |

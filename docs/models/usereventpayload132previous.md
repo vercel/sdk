@@ -5,11 +5,13 @@
 ```typescript
 import { UserEventPayload132Previous } from "@vercel/sdk/models/userevent.js";
 
-let value: UserEventPayload132Previous = {};
+let value: UserEventPayload132Previous = {
+  functionZeroConfigFailover: null,
+};
 ```
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `skewProtectionMaxAge` | *number*               | :heavy_minus_sign:     | N/A                    |
+| Field                        | Type                         | Required                     | Description                  |
+| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
+| `functionZeroConfigFailover` | *boolean*                    | :heavy_check_mark:           | N/A                          |

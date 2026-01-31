@@ -419,6 +419,7 @@ const (
 	MemberProjectRoleAdmin            MemberProjectRole = "ADMIN"
 	MemberProjectRoleProjectDeveloper MemberProjectRole = "PROJECT_DEVELOPER"
 	MemberProjectRoleProjectViewer    MemberProjectRole = "PROJECT_VIEWER"
+	MemberProjectRoleProjectGuest     MemberProjectRole = "PROJECT_GUEST"
 )
 
 func (e MemberProjectRole) ToPointer() *MemberProjectRole {
@@ -435,6 +436,8 @@ func (e *MemberProjectRole) UnmarshalJSON(data []byte) error {
 	case "PROJECT_DEVELOPER":
 		fallthrough
 	case "PROJECT_VIEWER":
+		fallthrough
+	case "PROJECT_GUEST":
 		*e = MemberProjectRole(v)
 		return nil
 	default:
@@ -740,6 +743,7 @@ const (
 	GetTeamMembersProjectsAdmin            GetTeamMembersProjects = "ADMIN"
 	GetTeamMembersProjectsProjectDeveloper GetTeamMembersProjects = "PROJECT_DEVELOPER"
 	GetTeamMembersProjectsProjectViewer    GetTeamMembersProjects = "PROJECT_VIEWER"
+	GetTeamMembersProjectsProjectGuest     GetTeamMembersProjects = "PROJECT_GUEST"
 )
 
 func (e GetTeamMembersProjects) ToPointer() *GetTeamMembersProjects {
@@ -756,6 +760,8 @@ func (e *GetTeamMembersProjects) UnmarshalJSON(data []byte) error {
 	case "PROJECT_DEVELOPER":
 		fallthrough
 	case "PROJECT_VIEWER":
+		fallthrough
+	case "PROJECT_GUEST":
 		*e = GetTeamMembersProjects(v)
 		return nil
 	default:

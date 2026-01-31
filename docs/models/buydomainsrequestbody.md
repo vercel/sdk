@@ -23,7 +23,7 @@ let value: BuyDomainsRequestBody = {
     city: "Lake Zettaville",
     state: "Indiana",
     zip: "08371",
-    country: "SI",
+    country: "Seychelles",
   },
 };
 ```

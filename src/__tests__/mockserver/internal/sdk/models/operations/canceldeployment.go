@@ -250,6 +250,9 @@ const (
 	CancelDeploymentFrameworkFastify        CancelDeploymentFramework = "fastify"
 	CancelDeploymentFrameworkXmcp           CancelDeploymentFramework = "xmcp"
 	CancelDeploymentFrameworkPython         CancelDeploymentFramework = "python"
+	CancelDeploymentFrameworkRuby           CancelDeploymentFramework = "ruby"
+	CancelDeploymentFrameworkRust           CancelDeploymentFramework = "rust"
+	CancelDeploymentFrameworkNode           CancelDeploymentFramework = "node"
 	CancelDeploymentFrameworkServices       CancelDeploymentFramework = "services"
 )
 
@@ -379,6 +382,12 @@ func (e *CancelDeploymentFramework) UnmarshalJSON(data []byte) error {
 	case "xmcp":
 		fallthrough
 	case "python":
+		fallthrough
+	case "ruby":
+		fallthrough
+	case "rust":
+		fallthrough
+	case "node":
 		fallthrough
 	case "services":
 		*e = CancelDeploymentFramework(v)

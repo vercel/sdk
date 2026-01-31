@@ -7,18 +7,11 @@ The payload of the event, if requested.
 ```typescript
 import { TwentyThree } from "@vercel/sdk/models/userevent.js";
 
-let value: TwentyThree = {
-  project: {
-    id: "<id>",
-    name: "<value>",
-  },
-  versionId: "<id>",
-};
+let value: TwentyThree = {};
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `project`                                                              | [models.UserEventPayloadProject](../models/usereventpayloadproject.md) | :heavy_check_mark:                                                     | N/A                                                                    |
-| `versionId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `avatar`           | *string*           | :heavy_minus_sign: | N/A                |

@@ -17,4 +17,4 @@ let value: PatchUrlProtectionBypassRequestBody2 = {
 
 | Field                                                     | Type                                                      | Required                                                  | Description                                               |
 | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
-| `scope`                                                   | *models.Scope*                                            | :heavy_check_mark:                                        | Instructions for creating a user scoped protection bypass |
+| `scope`                                                   | *models.RequestBodyScope*                                 | :heavy_check_mark:                                        | Instructions for creating a user scoped protection bypass |

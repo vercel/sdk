@@ -344,6 +344,9 @@ export const GetDeploymentsFramework = {
   Fastify: "fastify",
   Xmcp: "xmcp",
   Python: "python",
+  Ruby: "ruby",
+  Rust: "rust",
+  Node: "node",
   Services: "services",
 } as const;
 export type GetDeploymentsFramework = ClosedEnum<

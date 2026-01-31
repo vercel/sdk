@@ -21,7 +21,7 @@ let value: BuySingleDomainRequest = {
       city: "Amberfurt",
       state: "North Dakota",
       zip: "89617",
-      country: "CO",
+      country: "Cocos (Keeling) Islands",
     },
   },
 };

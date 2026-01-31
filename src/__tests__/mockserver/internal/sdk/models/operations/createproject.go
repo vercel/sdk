@@ -279,6 +279,9 @@ const (
 	CreateProjectFrameworkRequestFastify        CreateProjectFrameworkRequest = "fastify"
 	CreateProjectFrameworkRequestXmcp           CreateProjectFrameworkRequest = "xmcp"
 	CreateProjectFrameworkRequestPython         CreateProjectFrameworkRequest = "python"
+	CreateProjectFrameworkRequestRuby           CreateProjectFrameworkRequest = "ruby"
+	CreateProjectFrameworkRequestRust           CreateProjectFrameworkRequest = "rust"
+	CreateProjectFrameworkRequestNode           CreateProjectFrameworkRequest = "node"
 	CreateProjectFrameworkRequestServices       CreateProjectFrameworkRequest = "services"
 )
 
@@ -408,6 +411,12 @@ func (e *CreateProjectFrameworkRequest) UnmarshalJSON(data []byte) error {
 	case "xmcp":
 		fallthrough
 	case "python":
+		fallthrough
+	case "ruby":
+		fallthrough
+	case "rust":
+		fallthrough
+	case "node":
 		fallthrough
 	case "services":
 		*e = CreateProjectFrameworkRequest(v)
@@ -3509,6 +3518,9 @@ const (
 	CreateProjectFrameworkResponseBodyFastify        CreateProjectFrameworkResponseBody = "fastify"
 	CreateProjectFrameworkResponseBodyXmcp           CreateProjectFrameworkResponseBody = "xmcp"
 	CreateProjectFrameworkResponseBodyPython         CreateProjectFrameworkResponseBody = "python"
+	CreateProjectFrameworkResponseBodyRuby           CreateProjectFrameworkResponseBody = "ruby"
+	CreateProjectFrameworkResponseBodyRust           CreateProjectFrameworkResponseBody = "rust"
+	CreateProjectFrameworkResponseBodyNode           CreateProjectFrameworkResponseBody = "node"
 	CreateProjectFrameworkResponseBodyServices       CreateProjectFrameworkResponseBody = "services"
 )
 
@@ -3638,6 +3650,12 @@ func (e *CreateProjectFrameworkResponseBody) UnmarshalJSON(data []byte) error {
 	case "xmcp":
 		fallthrough
 	case "python":
+		fallthrough
+	case "ruby":
+		fallthrough
+	case "rust":
+		fallthrough
+	case "node":
 		fallthrough
 	case "services":
 		*e = CreateProjectFrameworkResponseBody(v)
@@ -11727,6 +11745,7 @@ type CreateProjectResponseBody struct {
 	InternalRoutes                       []CreateProjectInternalRouteUnion             `json:"internalRoutes,omitempty"`
 	HasDeployments                       *bool                                         `json:"hasDeployments,omitempty"`
 	DismissedToasts                      []CreateProjectDismissedToast                 `json:"dismissedToasts,omitempty"`
+	ProtectedSourcemaps                  *bool                                         `json:"protectedSourcemaps,omitempty"`
 }
 
 func (o *CreateProjectResponseBody) GetAccountID() string {
@@ -12329,6 +12348,13 @@ func (o *CreateProjectResponseBody) GetDismissedToasts() []CreateProjectDismisse
 		return nil
 	}
 	return o.DismissedToasts
+}
+
+func (o *CreateProjectResponseBody) GetProtectedSourcemaps() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ProtectedSourcemaps
 }
 
 type CreateProjectResponse struct {

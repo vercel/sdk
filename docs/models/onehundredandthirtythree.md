@@ -10,13 +10,8 @@ import { OneHundredAndThirtyThree } from "@vercel/sdk/models/userevent.js";
 let value: OneHundredAndThirtyThree = {
   projectId: "<id>",
   projectName: "<value>",
-  next: {
-    skewProtectionAllowedDomains: [
-      "<value 1>",
-      "<value 2>",
-    ],
-  },
   previous: {},
+  next: {},
 };
 ```
 
@@ -26,5 +21,5 @@ let value: OneHundredAndThirtyThree = {
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
 | `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
 | `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `next`                                                                         | [models.UserEventPayload133Next](../models/usereventpayload133next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
 | `previous`                                                                     | [models.UserEventPayload133Previous](../models/usereventpayload133previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `next`                                                                         | [models.UserEventPayload133Next](../models/usereventpayload133next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |

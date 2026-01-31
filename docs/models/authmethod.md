@@ -5,11 +5,11 @@
 ```typescript
 import { AuthMethod } from "@vercel/sdk/models/userevent.js";
 
-let value: AuthMethod = "passkey";
+let value: AuthMethod = "apple";
 ```
 
 ## Values
 
 ```typescript
-"email" | "saml" | "app" | "github" | "gitlab" | "bitbucket" | "manual" | "passkey" | "otp" | "sms" | "invite" | "google" | "apple"
+"email" | "saml" | "app" | "github" | "gitlab" | "bitbucket" | "google" | "apple" | "manual" | "passkey" | "otp" | "sms" | "invite"
 ```

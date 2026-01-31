@@ -7,22 +7,18 @@ The payload of the event, if requested.
 ```typescript
 import { Nine } from "@vercel/sdk/models/userevent.js";
 
-let value: Nine = {};
+let value: Nine = {
+  next: {
+    enabled: true,
+    scope: "public",
+    includeDrafts: true,
+  },
+};
 ```
 
 ## Fields
 
-| Field                                        | Type                                         | Required                                     | Description                                  |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| `alias`                                      | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `deployment`                                 | [models.Deployment](../models/deployment.md) | :heavy_minus_sign:                           | N/A                                          |
-| `ruleCount`                                  | *number*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `deploymentUrl`                              | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `aliasId`                                    | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `deploymentId`                               | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `oldDeploymentId`                            | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `redirect`                                   | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `redirectStatusCode`                         | *number*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `target`                                     | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `system`                                     | *boolean*                                    | :heavy_minus_sign:                           | N/A                                          |
-| `aliasUpdatedAt`                             | *number*                                     | :heavy_minus_sign:                           | N/A                                          |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `previous`                               | [models.Previous](../models/previous.md) | :heavy_minus_sign:                       | Automatic code review settings           |
+| `next`                                   | [models.Next](../models/next.md)         | :heavy_check_mark:                       | Automatic code review settings           |

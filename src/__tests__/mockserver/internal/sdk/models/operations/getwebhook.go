@@ -114,6 +114,8 @@ const (
 	GetWebhookEventMarketplaceInvoicePaid                             GetWebhookEvent = "marketplace.invoice.paid"
 	GetWebhookEventMarketplaceInvoiceNotpaid                          GetWebhookEvent = "marketplace.invoice.notpaid"
 	GetWebhookEventMarketplaceInvoiceRefunded                         GetWebhookEvent = "marketplace.invoice.refunded"
+	GetWebhookEventAiGatewayBalanceDepleted                           GetWebhookEvent = "ai-gateway.balance-depleted"
+	GetWebhookEventAiGatewayAutoReloadLimitReached                    GetWebhookEvent = "ai-gateway.auto-reload.limit-reached"
 	GetWebhookEventObservabilityAnomaly                               GetWebhookEvent = "observability.anomaly"
 	GetWebhookEventObservabilityAnomalyError                          GetWebhookEvent = "observability.anomaly-error"
 	GetWebhookEventObservabilityUsageAnomaly                          GetWebhookEvent = "observability.usage-anomaly"
@@ -276,6 +278,10 @@ func (e *GetWebhookEvent) UnmarshalJSON(data []byte) error {
 	case "marketplace.invoice.notpaid":
 		fallthrough
 	case "marketplace.invoice.refunded":
+		fallthrough
+	case "ai-gateway.balance-depleted":
+		fallthrough
+	case "ai-gateway.auto-reload.limit-reached":
 		fallthrough
 	case "observability.anomaly":
 		fallthrough

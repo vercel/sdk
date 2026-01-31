@@ -137,6 +137,7 @@ export const GetTeamMembersTeamsResponseRole = {
   Admin: "ADMIN",
   ProjectDeveloper: "PROJECT_DEVELOPER",
   ProjectViewer: "PROJECT_VIEWER",
+  ProjectGuest: "PROJECT_GUEST",
 } as const;
 export type GetTeamMembersTeamsResponseRole = ClosedEnum<
   typeof GetTeamMembersTeamsResponseRole
@@ -257,6 +258,7 @@ export const GetTeamMembersTeamsProjects = {
   Admin: "ADMIN",
   ProjectDeveloper: "PROJECT_DEVELOPER",
   ProjectViewer: "PROJECT_VIEWER",
+  ProjectGuest: "PROJECT_GUEST",
 } as const;
 export type GetTeamMembersTeamsProjects = ClosedEnum<
   typeof GetTeamMembersTeamsProjects

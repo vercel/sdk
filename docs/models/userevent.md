@@ -15,9 +15,12 @@ let value: UserEvent = {
   userId: "zTuNVUXEAvvnNN3IaqinkyMw",
   principalId: "<id>",
   payload: {
-    previousProjectName: "<value>",
-    newProjectName: "<value>",
-    destinationAccountName: "<value>",
+    id: "<id>",
+    prev: {
+      name: "<value>",
+      slug: "<value>",
+      fallbackEnvironment: "<value>",
+    },
   },
 };
 ```

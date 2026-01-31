@@ -2957,6 +2957,9 @@ const (
 	ProjectFramework2Fastify        ProjectFramework2 = "fastify"
 	ProjectFramework2Xmcp           ProjectFramework2 = "xmcp"
 	ProjectFramework2Python         ProjectFramework2 = "python"
+	ProjectFramework2Ruby           ProjectFramework2 = "ruby"
+	ProjectFramework2Rust           ProjectFramework2 = "rust"
+	ProjectFramework2Node           ProjectFramework2 = "node"
 	ProjectFramework2Services       ProjectFramework2 = "services"
 )
 
@@ -3086,6 +3089,12 @@ func (e *ProjectFramework2) UnmarshalJSON(data []byte) error {
 	case "xmcp":
 		fallthrough
 	case "python":
+		fallthrough
+	case "ruby":
+		fallthrough
+	case "rust":
+		fallthrough
+	case "node":
 		fallthrough
 	case "services":
 		*e = ProjectFramework2(v)
@@ -11581,6 +11590,7 @@ type GetProjectsProject2 struct {
 	InternalRoutes                       []ProjectInternalRouteUnion2                `json:"internalRoutes,omitempty"`
 	HasDeployments                       *bool                                       `json:"hasDeployments,omitempty"`
 	DismissedToasts                      []GetProjectsDismissedToast                 `json:"dismissedToasts,omitempty"`
+	ProtectedSourcemaps                  *bool                                       `json:"protectedSourcemaps,omitempty"`
 }
 
 func (g GetProjectsProject2) MarshalJSON() ([]byte, error) {
@@ -12194,6 +12204,13 @@ func (o *GetProjectsProject2) GetDismissedToasts() []GetProjectsDismissedToast {
 		return nil
 	}
 	return o.DismissedToasts
+}
+
+func (o *GetProjectsProject2) GetProtectedSourcemaps() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ProtectedSourcemaps
 }
 
 // GetProjectsPagination2 - This object contains information related to the pagination of the current request using continuation tokens. Since CosmosDB doesn't support going to previous pages, only count and next are provided.
@@ -14818,6 +14835,9 @@ const (
 	ProjectFramework1Fastify        ProjectFramework1 = "fastify"
 	ProjectFramework1Xmcp           ProjectFramework1 = "xmcp"
 	ProjectFramework1Python         ProjectFramework1 = "python"
+	ProjectFramework1Ruby           ProjectFramework1 = "ruby"
+	ProjectFramework1Rust           ProjectFramework1 = "rust"
+	ProjectFramework1Node           ProjectFramework1 = "node"
 	ProjectFramework1Services       ProjectFramework1 = "services"
 )
 
@@ -14947,6 +14967,12 @@ func (e *ProjectFramework1) UnmarshalJSON(data []byte) error {
 	case "xmcp":
 		fallthrough
 	case "python":
+		fallthrough
+	case "ruby":
+		fallthrough
+	case "rust":
+		fallthrough
+	case "node":
 		fallthrough
 	case "services":
 		*e = ProjectFramework1(v)
@@ -24010,6 +24036,9 @@ const (
 	GetProjectsFrameworkFastify        GetProjectsFramework = "fastify"
 	GetProjectsFrameworkXmcp           GetProjectsFramework = "xmcp"
 	GetProjectsFrameworkPython         GetProjectsFramework = "python"
+	GetProjectsFrameworkRuby           GetProjectsFramework = "ruby"
+	GetProjectsFrameworkRust           GetProjectsFramework = "rust"
+	GetProjectsFrameworkNode           GetProjectsFramework = "node"
 	GetProjectsFrameworkServices       GetProjectsFramework = "services"
 )
 
@@ -24139,6 +24168,12 @@ func (e *GetProjectsFramework) UnmarshalJSON(data []byte) error {
 	case "xmcp":
 		fallthrough
 	case "python":
+		fallthrough
+	case "ruby":
+		fallthrough
+	case "rust":
+		fallthrough
+	case "node":
 		fallthrough
 	case "services":
 		*e = GetProjectsFramework(v)

@@ -16,8 +16,8 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
  */
 export const AddProjectMemberRequestBodyProjectMembersRole = {
   Admin: "ADMIN",
-  ProjectDeveloper: "PROJECT_DEVELOPER",
   ProjectViewer: "PROJECT_VIEWER",
+  ProjectDeveloper: "PROJECT_DEVELOPER",
 } as const;
 /**
  * The project role of the member that will be added.
@@ -50,8 +50,8 @@ export type AddProjectMemberRequestBody3 = {
  */
 export const AddProjectMemberRequestBodyRole = {
   Admin: "ADMIN",
-  ProjectDeveloper: "PROJECT_DEVELOPER",
   ProjectViewer: "PROJECT_VIEWER",
+  ProjectDeveloper: "PROJECT_DEVELOPER",
 } as const;
 /**
  * The project role of the member that will be added.
@@ -84,8 +84,8 @@ export type AddProjectMemberRequestBody2 = {
  */
 export const RequestBodyRole = {
   Admin: "ADMIN",
-  ProjectDeveloper: "PROJECT_DEVELOPER",
   ProjectViewer: "PROJECT_VIEWER",
+  ProjectDeveloper: "PROJECT_DEVELOPER",
 } as const;
 /**
  * The project role of the member that will be added.

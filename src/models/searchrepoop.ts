@@ -12,19 +12,21 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type NamespaceId = string | number;
 
-export const QueryParamProvider = {
+export const SearchRepoQueryParamProvider = {
   Github: "github",
   GithubLimited: "github-limited",
   GithubCustomHost: "github-custom-host",
   Gitlab: "gitlab",
   Bitbucket: "bitbucket",
 } as const;
-export type QueryParamProvider = ClosedEnum<typeof QueryParamProvider>;
+export type SearchRepoQueryParamProvider = ClosedEnum<
+  typeof SearchRepoQueryParamProvider
+>;
 
 export type SearchRepoRequest = {
   query?: string | undefined;
   namespaceId?: string | number | null | undefined;
-  provider?: QueryParamProvider | undefined;
+  provider?: SearchRepoQueryParamProvider | undefined;
   installationId?: string | undefined;
   /**
    * The custom Git host if using a custom Git provider, like GitHub Enterprise Server
@@ -137,13 +139,13 @@ export function namespaceIdFromJSON(
 }
 
 /** @internal */
-export const QueryParamProvider$inboundSchema: z.ZodNativeEnum<
-  typeof QueryParamProvider
-> = z.nativeEnum(QueryParamProvider);
+export const SearchRepoQueryParamProvider$inboundSchema: z.ZodNativeEnum<
+  typeof SearchRepoQueryParamProvider
+> = z.nativeEnum(SearchRepoQueryParamProvider);
 /** @internal */
-export const QueryParamProvider$outboundSchema: z.ZodNativeEnum<
-  typeof QueryParamProvider
-> = QueryParamProvider$inboundSchema;
+export const SearchRepoQueryParamProvider$outboundSchema: z.ZodNativeEnum<
+  typeof SearchRepoQueryParamProvider
+> = SearchRepoQueryParamProvider$inboundSchema;
 
 /** @internal */
 export const SearchRepoRequest$inboundSchema: z.ZodType<
@@ -154,7 +156,7 @@ export const SearchRepoRequest$inboundSchema: z.ZodType<
   query: types.optional(types.string()),
   namespaceId: z.nullable(smartUnion([types.string(), types.number()]))
     .optional(),
-  provider: types.optional(QueryParamProvider$inboundSchema),
+  provider: types.optional(SearchRepoQueryParamProvider$inboundSchema),
   installationId: types.optional(types.string()),
   host: types.optional(types.string()),
   teamId: types.optional(types.string()),
@@ -179,7 +181,7 @@ export const SearchRepoRequest$outboundSchema: z.ZodType<
 > = z.object({
   query: z.string().optional(),
   namespaceId: z.nullable(smartUnion([z.string(), z.number()])).optional(),
-  provider: QueryParamProvider$outboundSchema.optional(),
+  provider: SearchRepoQueryParamProvider$outboundSchema.optional(),
   installationId: z.string().optional(),
   host: z.string().optional(),
   teamId: z.string().optional(),

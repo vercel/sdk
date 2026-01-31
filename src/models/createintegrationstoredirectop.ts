@@ -155,6 +155,9 @@ export const CreateIntegrationStoreDirectFramework = {
   Fastify: "fastify",
   Xmcp: "xmcp",
   Python: "python",
+  Ruby: "ruby",
+  Rust: "rust",
+  Node: "node",
   Services: "services",
 } as const;
 export type CreateIntegrationStoreDirectFramework = ClosedEnum<
@@ -1998,6 +2001,7 @@ export const CreateIntegrationStoreDirectTags = {
   Libsql: "libsql",
   Sqlite: "sqlite",
   Rds: "rds",
+  Drains: "drains",
   TagAgents: "tag_agents",
   TagAi: "tag_ai",
   TagAnalytics: "tag_analytics",
@@ -2241,6 +2245,21 @@ export type CreateIntegrationStoreDirectBillingPlan = {
   disabled?: boolean | undefined;
 };
 
+/**
+ * The deployment targets that this resource is available for.
+ */
+export const CreateIntegrationStoreDirectTargets = {
+  Production: "production",
+  Preview: "preview",
+  Development: "development",
+} as const;
+/**
+ * The deployment targets that this resource is available for.
+ */
+export type CreateIntegrationStoreDirectTargets = ClosedEnum<
+  typeof CreateIntegrationStoreDirectTargets
+>;
+
 export type CreateIntegrationStoreDirectStore = {
   projectsMetadata: Array<CreateIntegrationStoreDirectProjectsMetadata>;
   projectFilter?: ProjectFilter | undefined;
@@ -2276,6 +2295,14 @@ export type CreateIntegrationStoreDirectStore = {
    * The timestamp when secret rotation was completed.
    */
   secretRotationCompletedAt?: number | undefined;
+  /**
+   * The ID of the parent resource. Used to establish a parent-child relationship between resources, such as sandbox resources linking to their owner account resource.
+   */
+  parentId?: string | undefined;
+  /**
+   * The deployment targets that this resource is available for.
+   */
+  targets?: Array<CreateIntegrationStoreDirectTargets> | undefined;
 };
 
 export type CreateIntegrationStoreDirectResponseBody = {
@@ -14094,6 +14121,15 @@ export function createIntegrationStoreDirectBillingPlanFromJSON(
 }
 
 /** @internal */
+export const CreateIntegrationStoreDirectTargets$inboundSchema: z.ZodNativeEnum<
+  typeof CreateIntegrationStoreDirectTargets
+> = z.nativeEnum(CreateIntegrationStoreDirectTargets);
+/** @internal */
+export const CreateIntegrationStoreDirectTargets$outboundSchema:
+  z.ZodNativeEnum<typeof CreateIntegrationStoreDirectTargets> =
+    CreateIntegrationStoreDirectTargets$inboundSchema;
+
+/** @internal */
 export const CreateIntegrationStoreDirectStore$inboundSchema: z.ZodType<
   CreateIntegrationStoreDirectStore,
   z.ZodTypeDef,
@@ -14142,6 +14178,10 @@ export const CreateIntegrationStoreDirectStore$inboundSchema: z.ZodType<
   secretRotationRequestedReason: types.optional(types.string()),
   secretRotationRequestedBy: types.optional(types.string()),
   secretRotationCompletedAt: types.optional(types.number()),
+  parentId: types.optional(types.string()),
+  targets: types.optional(
+    z.array(CreateIntegrationStoreDirectTargets$inboundSchema),
+  ),
 });
 /** @internal */
 export type CreateIntegrationStoreDirectStore$Outbound = {
@@ -14171,6 +14211,8 @@ export type CreateIntegrationStoreDirectStore$Outbound = {
   secretRotationRequestedReason?: string | undefined;
   secretRotationRequestedBy?: string | undefined;
   secretRotationCompletedAt?: number | undefined;
+  parentId?: string | undefined;
+  targets?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -14218,6 +14260,9 @@ export const CreateIntegrationStoreDirectStore$outboundSchema: z.ZodType<
   secretRotationRequestedReason: z.string().optional(),
   secretRotationRequestedBy: z.string().optional(),
   secretRotationCompletedAt: z.number().optional(),
+  parentId: z.string().optional(),
+  targets: z.array(CreateIntegrationStoreDirectTargets$outboundSchema)
+    .optional(),
 });
 
 export function createIntegrationStoreDirectStoreToJSON(

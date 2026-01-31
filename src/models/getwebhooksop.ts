@@ -104,6 +104,8 @@ export const GetWebhooksResponseBodyEvents = {
   MarketplaceInvoicePaid: "marketplace.invoice.paid",
   MarketplaceInvoiceNotpaid: "marketplace.invoice.notpaid",
   MarketplaceInvoiceRefunded: "marketplace.invoice.refunded",
+  AiGatewayBalanceDepleted: "ai-gateway.balance-depleted",
+  AiGatewayAutoReloadLimitReached: "ai-gateway.auto-reload.limit-reached",
   ObservabilityAnomaly: "observability.anomaly",
   ObservabilityAnomalyError: "observability.anomaly-error",
   ObservabilityUsageAnomaly: "observability.usage-anomaly",
@@ -209,6 +211,9 @@ export const GetWebhooksResponseBodyFramework = {
   Fastify: "fastify",
   Xmcp: "xmcp",
   Python: "python",
+  Ruby: "ruby",
+  Rust: "rust",
+  Node: "node",
   Services: "services",
 } as const;
 export type GetWebhooksResponseBodyFramework = ClosedEnum<
@@ -304,6 +309,8 @@ export const ResponseBodyEvents = {
   MarketplaceInvoicePaid: "marketplace.invoice.paid",
   MarketplaceInvoiceNotpaid: "marketplace.invoice.notpaid",
   MarketplaceInvoiceRefunded: "marketplace.invoice.refunded",
+  AiGatewayBalanceDepleted: "ai-gateway.balance-depleted",
+  AiGatewayAutoReloadLimitReached: "ai-gateway.auto-reload.limit-reached",
   ObservabilityAnomaly: "observability.anomaly",
   ObservabilityAnomalyError: "observability.anomaly-error",
   ObservabilityUsageAnomaly: "observability.usage-anomaly",

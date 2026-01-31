@@ -19,6 +19,7 @@ export type Redirect = {
   permanent?: boolean | undefined;
   caseSensitive?: boolean | undefined;
   query?: boolean | undefined;
+  preserveQueryParams?: boolean | undefined;
 };
 
 export type EditRedirectRequestBody = {
@@ -96,6 +97,7 @@ export const Redirect$inboundSchema: z.ZodType<
   permanent: types.optional(types.boolean()),
   caseSensitive: types.optional(types.boolean()),
   query: types.optional(types.boolean()),
+  preserveQueryParams: types.optional(types.boolean()),
 });
 /** @internal */
 export type Redirect$Outbound = {
@@ -105,6 +107,7 @@ export type Redirect$Outbound = {
   permanent?: boolean | undefined;
   caseSensitive?: boolean | undefined;
   query?: boolean | undefined;
+  preserveQueryParams?: boolean | undefined;
 };
 
 /** @internal */
@@ -119,6 +122,7 @@ export const Redirect$outboundSchema: z.ZodType<
   permanent: z.boolean().optional(),
   caseSensitive: z.boolean().optional(),
   query: z.boolean().optional(),
+  preserveQueryParams: z.boolean().optional(),
 });
 
 export function redirectToJSON(redirect: Redirect): string {

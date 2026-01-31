@@ -30,6 +30,8 @@ import { tool$aliasesGetAlias } from "./tools/aliasesGetAlias.js";
 import { tool$aliasesListAliases } from "./tools/aliasesListAliases.js";
 import { tool$aliasesListDeploymentAliases } from "./tools/aliasesListDeploymentAliases.js";
 import { tool$aliasesPatchUrlProtectionBypass } from "./tools/aliasesPatchUrlProtectionBypass.js";
+import { tool$apiBillingGetV1BillingCharges } from "./tools/apiBillingGetV1BillingCharges.js";
+import { tool$apiBillingGetV1BillingContractCommitments } from "./tools/apiBillingGetV1BillingContractCommitments.js";
 import { tool$artifactsArtifactExists } from "./tools/artifactsArtifactExists.js";
 import { tool$artifactsArtifactQuery } from "./tools/artifactsArtifactQuery.js";
 import { tool$artifactsDownloadArtifact } from "./tools/artifactsDownloadArtifact.js";
@@ -177,6 +179,7 @@ import { tool$marketplaceUpdateInvoice } from "./tools/marketplaceUpdateInvoice.
 import { tool$marketplaceUpdateResource } from "./tools/marketplaceUpdateResource.js";
 import { tool$marketplaceUpdateResourceSecrets } from "./tools/marketplaceUpdateResourceSecrets.js";
 import { tool$marketplaceUpdateResourceSecretsById } from "./tools/marketplaceUpdateResourceSecretsById.js";
+import { tool$patchV1ProjectsProjectIdRollbackDeploymentIdUpdateDescription } from "./tools/patchV1ProjectsProjectIdRollbackDeploymentIdUpdateDescription.js";
 import { tool$projectMembersAddProjectMember } from "./tools/projectMembersAddProjectMember.js";
 import { tool$projectMembersGetProjectMembers } from "./tools/projectMembersGetProjectMembers.js";
 import { tool$projectMembersRemoveProjectMember } from "./tools/projectMembersRemoveProjectMember.js";
@@ -199,6 +202,7 @@ import { tool$projectsPauseProject } from "./tools/projectsPauseProject.js";
 import { tool$projectsRemoveProjectDomain } from "./tools/projectsRemoveProjectDomain.js";
 import { tool$projectsRemoveProjectEnv } from "./tools/projectsRemoveProjectEnv.js";
 import { tool$projectsRequestPromote } from "./tools/projectsRequestPromote.js";
+import { tool$projectsRequestRollback } from "./tools/projectsRequestRollback.js";
 import { tool$projectsUnpauseProject } from "./tools/projectsUnpauseProject.js";
 import { tool$projectsUpdateProject } from "./tools/projectsUpdateProject.js";
 import { tool$projectsUpdateProjectDomain } from "./tools/projectsUpdateProjectDomain.js";
@@ -252,7 +256,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.18.8",
+    version: "1.18.9",
   });
 
   const client = new VercelCore({
@@ -282,6 +286,7 @@ export function createMCPServer(deps: {
   const register = { tool, resource, resourceTemplate, prompt };
   void register; // suppress unused warnings
 
+  tool(tool$patchV1ProjectsProjectIdRollbackDeploymentIdUpdateDescription);
   tool(tool$accessGroupsReadAccessGroup);
   tool(tool$accessGroupsUpdateAccessGroup);
   tool(tool$accessGroupsDeleteAccessGroup);
@@ -299,6 +304,8 @@ export function createMCPServer(deps: {
   tool(tool$artifactsDownloadArtifact);
   tool(tool$artifactsArtifactExists);
   tool(tool$artifactsArtifactQuery);
+  tool(tool$apiBillingGetV1BillingCharges);
+  tool(tool$apiBillingGetV1BillingContractCommitments);
   tool(tool$bulkRedirectsStageRedirects);
   tool(tool$bulkRedirectsGetRedirects);
   tool(tool$bulkRedirectsDeleteRedirects);
@@ -462,6 +469,7 @@ export function createMCPServer(deps: {
   tool(tool$projectsCreateProjectTransferRequest);
   tool(tool$projectsAcceptProjectTransferRequest);
   tool(tool$projectsUpdateProjectProtectionBypass);
+  tool(tool$projectsRequestRollback);
   tool(tool$projectsRequestPromote);
   tool(tool$projectsListPromoteAliases);
   tool(tool$projectsPauseProject);

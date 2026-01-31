@@ -9,13 +9,14 @@ import { Nineteen } from "@vercel/sdk/models/userevent.js";
 
 let value: Nineteen = {
   alias: "<value>",
-  deploymentUrl: "https://mean-yarmulke.org",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `alias`            | *string*           | :heavy_check_mark: | N/A                |
-| `deploymentUrl`    | *string*           | :heavy_check_mark: | N/A                |
+| Field                                  | Type                                   | Required                               | Description                            |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `name`                                 | *string*                               | :heavy_minus_sign:                     | N/A                                    |
+| `alias`                                | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `oldTeam`                              | [models.OldTeam](../models/oldteam.md) | :heavy_minus_sign:                     | N/A                                    |
+| `newTeam`                              | [models.NewTeam](../models/newteam.md) | :heavy_minus_sign:                     | N/A                                    |

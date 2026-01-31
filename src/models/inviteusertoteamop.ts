@@ -34,6 +34,7 @@ export const InviteUserToTeamTeamsRole = {
   Admin: "ADMIN",
   ProjectViewer: "PROJECT_VIEWER",
   ProjectDeveloper: "PROJECT_DEVELOPER",
+  ProjectGuest: "PROJECT_GUEST",
 } as const;
 /**
  * Sets the project roles for the invited user

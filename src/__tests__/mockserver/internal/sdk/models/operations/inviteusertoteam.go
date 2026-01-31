@@ -61,6 +61,7 @@ const (
 	InviteUserToTeamProjectRoleAdmin            InviteUserToTeamProjectRole = "ADMIN"
 	InviteUserToTeamProjectRoleProjectViewer    InviteUserToTeamProjectRole = "PROJECT_VIEWER"
 	InviteUserToTeamProjectRoleProjectDeveloper InviteUserToTeamProjectRole = "PROJECT_DEVELOPER"
+	InviteUserToTeamProjectRoleProjectGuest     InviteUserToTeamProjectRole = "PROJECT_GUEST"
 )
 
 func (e InviteUserToTeamProjectRole) ToPointer() *InviteUserToTeamProjectRole {
@@ -77,6 +78,8 @@ func (e *InviteUserToTeamProjectRole) UnmarshalJSON(data []byte) error {
 	case "PROJECT_VIEWER":
 		fallthrough
 	case "PROJECT_DEVELOPER":
+		fallthrough
+	case "PROJECT_GUEST":
 		*e = InviteUserToTeamProjectRole(v)
 		return nil
 	default:

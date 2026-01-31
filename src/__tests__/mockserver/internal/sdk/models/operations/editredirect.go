@@ -8,12 +8,13 @@ import (
 
 // EditRedirectRedirect - The redirect object to edit. The source field is used to match the redirect to modify.
 type EditRedirectRedirect struct {
-	Source        string   `json:"source"`
-	Destination   *string  `json:"destination,omitempty"`
-	StatusCode    *float64 `json:"statusCode,omitempty"`
-	Permanent     *bool    `json:"permanent,omitempty"`
-	CaseSensitive *bool    `json:"caseSensitive,omitempty"`
-	Query         *bool    `json:"query,omitempty"`
+	Source              string   `json:"source"`
+	Destination         *string  `json:"destination,omitempty"`
+	StatusCode          *float64 `json:"statusCode,omitempty"`
+	Permanent           *bool    `json:"permanent,omitempty"`
+	CaseSensitive       *bool    `json:"caseSensitive,omitempty"`
+	Query               *bool    `json:"query,omitempty"`
+	PreserveQueryParams *bool    `json:"preserveQueryParams,omitempty"`
 }
 
 func (o *EditRedirectRedirect) GetSource() string {
@@ -56,6 +57,13 @@ func (o *EditRedirectRedirect) GetQuery() *bool {
 		return nil
 	}
 	return o.Query
+}
+
+func (o *EditRedirectRedirect) GetPreserveQueryParams() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.PreserveQueryParams
 }
 
 type EditRedirectRequestBody struct {

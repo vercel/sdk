@@ -1,21 +1,23 @@
 # Previous
 
+Automatic code review settings
+
 ## Example Usage
 
 ```typescript
 import { Previous } from "@vercel/sdk/models/userevent.js";
 
 let value: Previous = {
-  gitProvider: "github-custom-host",
-  gitRepoId: "<id>",
-  gitRepositoryName: "<value>",
+  enabled: false,
+  scope: "all",
+  includeDrafts: false,
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `gitProvider`                                                                  | [models.UserEventPayloadGitProvider](../models/usereventpayloadgitprovider.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `gitRepoId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `gitRepositoryName`                                                            | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `enabled`                                                          | *boolean*                                                          | :heavy_check_mark:                                                 | Whether automatic code reviews are enabled                         |
+| `scope`                                                            | [models.UserEventPayloadScope](../models/usereventpayloadscope.md) | :heavy_check_mark:                                                 | Which repository visibilities get automatic reviews                |
+| `includeDrafts`                                                    | *boolean*                                                          | :heavy_check_mark:                                                 | Whether to include draft pull requests in automatic reviews        |

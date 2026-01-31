@@ -13,5 +13,5 @@ let value: InviteUserToTeamTeamsRole = "ADMIN";
 ## Values
 
 ```typescript
-"ADMIN" | "PROJECT_VIEWER" | "PROJECT_DEVELOPER"
+"ADMIN" | "PROJECT_VIEWER" | "PROJECT_DEVELOPER" | "PROJECT_GUEST"
 ```

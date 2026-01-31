@@ -5,18 +5,11 @@
 ```typescript
 import { UserEventPayloadPrevious } from "@vercel/sdk/models/userevent.js";
 
-let value: UserEventPayloadPrevious = {
-  project: {
-    id: "<id>",
-    staticIps: {
-      enabled: false,
-    },
-  },
-};
+let value: UserEventPayloadPrevious = {};
 ```
 
 ## Fields
 
-| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `project`                                                                                    | [models.UserEventPayload114PreviousProject](../models/usereventpayload114previousproject.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| Field                                        | Type                                         | Required                                     | Description                                  |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| `issuerMode`                                 | [models.IssuerMode](../models/issuermode.md) | :heavy_minus_sign:                           | N/A                                          |

@@ -136,6 +136,9 @@ export const CreateProjectFramework = {
   Fastify: "fastify",
   Xmcp: "xmcp",
   Python: "python",
+  Ruby: "ruby",
+  Rust: "rust",
+  Node: "node",
   Services: "services",
 } as const;
 /**
@@ -851,6 +854,9 @@ export const CreateProjectProjectsFramework = {
   Fastify: "fastify",
   Xmcp: "xmcp",
   Python: "python",
+  Ruby: "ruby",
+  Rust: "rust",
+  Node: "node",
   Services: "services",
 } as const;
 export type CreateProjectProjectsFramework = ClosedEnum<
@@ -2210,6 +2216,7 @@ export type CreateProjectResponseBody = {
   internalRoutes?: Array<InternalRoutes1 | InternalRoutes2> | undefined;
   hasDeployments?: boolean | undefined;
   dismissedToasts?: Array<CreateProjectDismissedToasts> | undefined;
+  protectedSourcemaps?: boolean | undefined;
 };
 
 /** @internal */
@@ -10373,6 +10380,7 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
   dismissedToasts: types.optional(
     z.array(z.lazy(() => CreateProjectDismissedToasts$inboundSchema)),
   ),
+  protectedSourcemaps: types.optional(types.boolean()),
 });
 /** @internal */
 export type CreateProjectResponseBody$Outbound = {
@@ -10480,6 +10488,7 @@ export type CreateProjectResponseBody$Outbound = {
     | undefined;
   hasDeployments?: boolean | undefined;
   dismissedToasts?: Array<CreateProjectDismissedToasts$Outbound> | undefined;
+  protectedSourcemaps?: boolean | undefined;
 };
 
 /** @internal */
@@ -10621,6 +10630,7 @@ export const CreateProjectResponseBody$outboundSchema: z.ZodType<
   dismissedToasts: z.array(
     z.lazy(() => CreateProjectDismissedToasts$outboundSchema),
   ).optional(),
+  protectedSourcemaps: z.boolean().optional(),
 });
 
 export function createProjectResponseBodyToJSON(

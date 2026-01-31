@@ -16,11 +16,6 @@ import {
   AdditionalContactInfoRequired$outboundSchema,
 } from "./additionalcontactinforequired.js";
 import {
-  CountryCode,
-  CountryCode$inboundSchema,
-  CountryCode$outboundSchema,
-} from "./countrycode.js";
-import {
   DomainNotAvailable,
   DomainNotAvailable$inboundSchema,
   DomainNotAvailable$Outbound,
@@ -121,7 +116,7 @@ export type ContactInformation = {
   /**
    * A valid ISO 3166-1 alpha-2 country code
    */
-  country: CountryCode;
+  country: string;
   /**
    * a non empty string
    */
@@ -244,7 +239,7 @@ export const ContactInformation$inboundSchema: z.ZodType<
   city: types.string(),
   state: types.string(),
   zip: types.string(),
-  country: CountryCode$inboundSchema,
+  country: types.string(),
   companyName: types.optional(types.string()),
   fax: types.optional(types.string()),
   additional: types.optional(z.lazy(() => Additional$inboundSchema)),
@@ -281,7 +276,7 @@ export const ContactInformation$outboundSchema: z.ZodType<
   city: z.string(),
   state: z.string(),
   zip: z.string(),
-  country: CountryCode$outboundSchema,
+  country: z.string(),
   companyName: z.string().optional(),
   fax: z.string().optional(),
   additional: z.lazy(() => Additional$outboundSchema).optional(),

@@ -6,12 +6,12 @@
 import { UserEventPayload132Next } from "@vercel/sdk/models/userevent.js";
 
 let value: UserEventPayload132Next = {
-  skewProtectionMaxAge: 376.35,
+  functionZeroConfigFailover: true,
 };
 ```
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `skewProtectionMaxAge` | *number*               | :heavy_check_mark:     | N/A                    |
+| Field                        | Type                         | Required                     | Description                  |
+| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
+| `functionZeroConfigFailover` | *boolean*                    | :heavy_check_mark:           | N/A                          |

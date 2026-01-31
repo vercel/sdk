@@ -28,7 +28,7 @@ type RenewDomainContactInformation struct {
 	// a non empty string
 	Zip string `json:"zip"`
 	// A valid ISO 3166-1 alpha-2 country code
-	Country components.CountryCode `json:"country"`
+	Country string `json:"country"`
 	// a non empty string
 	CompanyName *string `json:"companyName,omitempty"`
 	// A valid E.164 phone number
@@ -98,9 +98,9 @@ func (o *RenewDomainContactInformation) GetZip() string {
 	return o.Zip
 }
 
-func (o *RenewDomainContactInformation) GetCountry() components.CountryCode {
+func (o *RenewDomainContactInformation) GetCountry() string {
 	if o == nil {
-		return components.CountryCode("")
+		return ""
 	}
 	return o.Country
 }

@@ -21,6 +21,7 @@ import { projectsPauseProject } from "../funcs/projectsPauseProject.js";
 import { projectsRemoveProjectDomain } from "../funcs/projectsRemoveProjectDomain.js";
 import { projectsRemoveProjectEnv } from "../funcs/projectsRemoveProjectEnv.js";
 import { projectsRequestPromote } from "../funcs/projectsRequestPromote.js";
+import { projectsRequestRollback } from "../funcs/projectsRequestRollback.js";
 import { projectsUnpauseProject } from "../funcs/projectsUnpauseProject.js";
 import { projectsUpdateProject } from "../funcs/projectsUpdateProject.js";
 import { projectsUpdateProjectDomain } from "../funcs/projectsUpdateProjectDomain.js";
@@ -94,6 +95,7 @@ import {
   RemoveProjectEnvResponseBody,
 } from "../models/removeprojectenvop.js";
 import { RequestPromoteRequest } from "../models/requestpromoteop.js";
+import { RequestRollbackRequest } from "../models/requestrollbackop.js";
 import { UnpauseProjectRequest } from "../models/unpauseprojectop.js";
 import {
   UpdateProjectDomainRequest,
@@ -448,6 +450,23 @@ export class Projects extends ClientSDK {
     options?: RequestOptions,
   ): Promise<UpdateProjectProtectionBypassResponseBody> {
     return unwrapAsync(projectsUpdateProjectProtectionBypass(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Points all production domains for a project to the given deploy
+   *
+   * @remarks
+   * Allows users to rollback to a deployment.
+   */
+  async requestRollback(
+    request: RequestRollbackRequest,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(projectsRequestRollback(
       this,
       request,
       options,

@@ -5,17 +5,11 @@
 ```typescript
 import { UserEventPayload133Next } from "@vercel/sdk/models/userevent.js";
 
-let value: UserEventPayload133Next = {
-  skewProtectionAllowedDomains: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
-};
+let value: UserEventPayload133Next = {};
 ```
 
 ## Fields
 
-| Field                          | Type                           | Required                       | Description                    |
-| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `skewProtectionAllowedDomains` | *string*[]                     | :heavy_check_mark:             | N/A                            |
+| Field                         | Type                          | Required                      | Description                   |
+| ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
+| `commandForIgnoringBuildStep` | *string*                      | :heavy_minus_sign:            | N/A                           |

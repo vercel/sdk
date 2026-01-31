@@ -99,6 +99,9 @@ const (
 	GetConfigurableLogDrainFrameworkFastify        GetConfigurableLogDrainFramework = "fastify"
 	GetConfigurableLogDrainFrameworkXmcp           GetConfigurableLogDrainFramework = "xmcp"
 	GetConfigurableLogDrainFrameworkPython         GetConfigurableLogDrainFramework = "python"
+	GetConfigurableLogDrainFrameworkRuby           GetConfigurableLogDrainFramework = "ruby"
+	GetConfigurableLogDrainFrameworkRust           GetConfigurableLogDrainFramework = "rust"
+	GetConfigurableLogDrainFrameworkNode           GetConfigurableLogDrainFramework = "node"
 	GetConfigurableLogDrainFrameworkServices       GetConfigurableLogDrainFramework = "services"
 )
 
@@ -228,6 +231,12 @@ func (e *GetConfigurableLogDrainFramework) UnmarshalJSON(data []byte) error {
 	case "xmcp":
 		fallthrough
 	case "python":
+		fallthrough
+	case "ruby":
+		fallthrough
+	case "rust":
+		fallthrough
+	case "node":
 		fallthrough
 	case "services":
 		*e = GetConfigurableLogDrainFramework(v)

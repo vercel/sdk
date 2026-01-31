@@ -84,6 +84,8 @@ const (
 	CreateWebhookEventRequestMarketplaceInvoicePaid                             CreateWebhookEventRequest = "marketplace.invoice.paid"
 	CreateWebhookEventRequestMarketplaceInvoiceNotpaid                          CreateWebhookEventRequest = "marketplace.invoice.notpaid"
 	CreateWebhookEventRequestMarketplaceInvoiceRefunded                         CreateWebhookEventRequest = "marketplace.invoice.refunded"
+	CreateWebhookEventRequestAiGatewayBalanceDepleted                           CreateWebhookEventRequest = "ai-gateway.balance-depleted"
+	CreateWebhookEventRequestAiGatewayAutoReloadLimitReached                    CreateWebhookEventRequest = "ai-gateway.auto-reload.limit-reached"
 	CreateWebhookEventRequestObservabilityAnomaly                               CreateWebhookEventRequest = "observability.anomaly"
 	CreateWebhookEventRequestObservabilityAnomalyError                          CreateWebhookEventRequest = "observability.anomaly-error"
 	CreateWebhookEventRequestObservabilityUsageAnomaly                          CreateWebhookEventRequest = "observability.usage-anomaly"
@@ -247,6 +249,10 @@ func (e *CreateWebhookEventRequest) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "marketplace.invoice.refunded":
 		fallthrough
+	case "ai-gateway.balance-depleted":
+		fallthrough
+	case "ai-gateway.auto-reload.limit-reached":
+		fallthrough
 	case "observability.anomaly":
 		fallthrough
 	case "observability.anomaly-error":
@@ -398,6 +404,8 @@ const (
 	CreateWebhookEventResponseMarketplaceInvoicePaid                             CreateWebhookEventResponse = "marketplace.invoice.paid"
 	CreateWebhookEventResponseMarketplaceInvoiceNotpaid                          CreateWebhookEventResponse = "marketplace.invoice.notpaid"
 	CreateWebhookEventResponseMarketplaceInvoiceRefunded                         CreateWebhookEventResponse = "marketplace.invoice.refunded"
+	CreateWebhookEventResponseAiGatewayBalanceDepleted                           CreateWebhookEventResponse = "ai-gateway.balance-depleted"
+	CreateWebhookEventResponseAiGatewayAutoReloadLimitReached                    CreateWebhookEventResponse = "ai-gateway.auto-reload.limit-reached"
 	CreateWebhookEventResponseObservabilityAnomaly                               CreateWebhookEventResponse = "observability.anomaly"
 	CreateWebhookEventResponseObservabilityAnomalyError                          CreateWebhookEventResponse = "observability.anomaly-error"
 	CreateWebhookEventResponseObservabilityUsageAnomaly                          CreateWebhookEventResponse = "observability.usage-anomaly"
@@ -560,6 +568,10 @@ func (e *CreateWebhookEventResponse) UnmarshalJSON(data []byte) error {
 	case "marketplace.invoice.notpaid":
 		fallthrough
 	case "marketplace.invoice.refunded":
+		fallthrough
+	case "ai-gateway.balance-depleted":
+		fallthrough
+	case "ai-gateway.auto-reload.limit-reached":
 		fallthrough
 	case "observability.anomaly":
 		fallthrough

@@ -19,6 +19,7 @@ export type Redirects = {
   permanent?: boolean | undefined;
   caseSensitive?: boolean | undefined;
   query?: boolean | undefined;
+  preserveQueryParams?: boolean | undefined;
 };
 
 export type StageRedirectsRequestBody = {
@@ -120,6 +121,7 @@ export const Redirects$inboundSchema: z.ZodType<
   permanent: types.optional(types.boolean()),
   caseSensitive: types.optional(types.boolean()),
   query: types.optional(types.boolean()),
+  preserveQueryParams: types.optional(types.boolean()),
 });
 /** @internal */
 export type Redirects$Outbound = {
@@ -129,6 +131,7 @@ export type Redirects$Outbound = {
   permanent?: boolean | undefined;
   caseSensitive?: boolean | undefined;
   query?: boolean | undefined;
+  preserveQueryParams?: boolean | undefined;
 };
 
 /** @internal */
@@ -143,6 +146,7 @@ export const Redirects$outboundSchema: z.ZodType<
   permanent: z.boolean().optional(),
   caseSensitive: z.boolean().optional(),
   query: z.boolean().optional(),
+  preserveQueryParams: z.boolean().optional(),
 });
 
 export function redirectsToJSON(redirects: Redirects): string {

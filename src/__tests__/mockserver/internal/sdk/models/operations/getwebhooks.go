@@ -116,6 +116,8 @@ const (
 	GetWebhooksEvent2MarketplaceInvoicePaid                             GetWebhooksEvent2 = "marketplace.invoice.paid"
 	GetWebhooksEvent2MarketplaceInvoiceNotpaid                          GetWebhooksEvent2 = "marketplace.invoice.notpaid"
 	GetWebhooksEvent2MarketplaceInvoiceRefunded                         GetWebhooksEvent2 = "marketplace.invoice.refunded"
+	GetWebhooksEvent2AiGatewayBalanceDepleted                           GetWebhooksEvent2 = "ai-gateway.balance-depleted"
+	GetWebhooksEvent2AiGatewayAutoReloadLimitReached                    GetWebhooksEvent2 = "ai-gateway.auto-reload.limit-reached"
 	GetWebhooksEvent2ObservabilityAnomaly                               GetWebhooksEvent2 = "observability.anomaly"
 	GetWebhooksEvent2ObservabilityAnomalyError                          GetWebhooksEvent2 = "observability.anomaly-error"
 	GetWebhooksEvent2ObservabilityUsageAnomaly                          GetWebhooksEvent2 = "observability.usage-anomaly"
@@ -279,6 +281,10 @@ func (e *GetWebhooksEvent2) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "marketplace.invoice.refunded":
 		fallthrough
+	case "ai-gateway.balance-depleted":
+		fallthrough
+	case "ai-gateway.auto-reload.limit-reached":
+		fallthrough
 	case "observability.anomaly":
 		fallthrough
 	case "observability.anomaly-error":
@@ -436,6 +442,9 @@ const (
 	GetWebhooksFrameworkFastify        GetWebhooksFramework = "fastify"
 	GetWebhooksFrameworkXmcp           GetWebhooksFramework = "xmcp"
 	GetWebhooksFrameworkPython         GetWebhooksFramework = "python"
+	GetWebhooksFrameworkRuby           GetWebhooksFramework = "ruby"
+	GetWebhooksFrameworkRust           GetWebhooksFramework = "rust"
+	GetWebhooksFrameworkNode           GetWebhooksFramework = "node"
 	GetWebhooksFrameworkServices       GetWebhooksFramework = "services"
 )
 
@@ -565,6 +574,12 @@ func (e *GetWebhooksFramework) UnmarshalJSON(data []byte) error {
 	case "xmcp":
 		fallthrough
 	case "python":
+		fallthrough
+	case "ruby":
+		fallthrough
+	case "rust":
+		fallthrough
+	case "node":
 		fallthrough
 	case "services":
 		*e = GetWebhooksFramework(v)
@@ -697,6 +712,8 @@ const (
 	GetWebhooksEvent1MarketplaceInvoicePaid                             GetWebhooksEvent1 = "marketplace.invoice.paid"
 	GetWebhooksEvent1MarketplaceInvoiceNotpaid                          GetWebhooksEvent1 = "marketplace.invoice.notpaid"
 	GetWebhooksEvent1MarketplaceInvoiceRefunded                         GetWebhooksEvent1 = "marketplace.invoice.refunded"
+	GetWebhooksEvent1AiGatewayBalanceDepleted                           GetWebhooksEvent1 = "ai-gateway.balance-depleted"
+	GetWebhooksEvent1AiGatewayAutoReloadLimitReached                    GetWebhooksEvent1 = "ai-gateway.auto-reload.limit-reached"
 	GetWebhooksEvent1ObservabilityAnomaly                               GetWebhooksEvent1 = "observability.anomaly"
 	GetWebhooksEvent1ObservabilityAnomalyError                          GetWebhooksEvent1 = "observability.anomaly-error"
 	GetWebhooksEvent1ObservabilityUsageAnomaly                          GetWebhooksEvent1 = "observability.usage-anomaly"
@@ -859,6 +876,10 @@ func (e *GetWebhooksEvent1) UnmarshalJSON(data []byte) error {
 	case "marketplace.invoice.notpaid":
 		fallthrough
 	case "marketplace.invoice.refunded":
+		fallthrough
+	case "ai-gateway.balance-depleted":
+		fallthrough
+	case "ai-gateway.auto-reload.limit-reached":
 		fallthrough
 	case "observability.anomaly":
 		fallthrough

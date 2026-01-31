@@ -13,5 +13,5 @@ let value: AddProjectMemberRequestBodyRole = "ADMIN";
 ## Values
 
 ```typescript
-"ADMIN" | "PROJECT_DEVELOPER" | "PROJECT_VIEWER"
+"ADMIN" | "PROJECT_VIEWER" | "PROJECT_DEVELOPER"
 ```

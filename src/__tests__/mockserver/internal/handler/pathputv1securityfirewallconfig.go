@@ -8,7 +8,6 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/operations"
-	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
@@ -113,35 +112,31 @@ func testPutFirewallConfigPutFirewallConfig0(w http.ResponseWriter, req *http.Re
 						Active: false,
 						ConditionGroup: []operations.ActiveConditionGroup2{
 							operations.ActiveConditionGroup2{
-								Conditions: []operations.ActiveCondition2{
-									operations.ActiveCondition2{
-										Type: operations.ActiveType2Region,
-										Op:   operations.ActiveOp2Lte,
-									},
-								},
+								Conditions: []operations.ActiveCondition2{},
 							},
 						},
 						Action: operations.RuleActiveAction2{},
-						Valid:  true,
+						Valid:  false,
 						ValidationErrors: []string{
 							"<value 1>",
-							"<value 2>",
 						},
 					},
 				),
-				operations.CreateActiveRuleUnionRuleActive1(
-					operations.RuleActive1{
+				operations.CreateActiveRuleUnionRuleActive2(
+					operations.RuleActive2{
 						ID:     "<id>",
 						Name:   "<value>",
 						Active: false,
-						ConditionGroup: []operations.ActiveConditionGroup1{
-							operations.ActiveConditionGroup1{
-								Conditions: []operations.ActiveCondition1{},
+						ConditionGroup: []operations.ActiveConditionGroup2{
+							operations.ActiveConditionGroup2{
+								Conditions: []operations.ActiveCondition2{},
 							},
 						},
-						Action:           operations.RuleActiveAction1{},
-						Valid:            true,
-						ValidationErrors: types.String("<value>"),
+						Action: operations.RuleActiveAction2{},
+						Valid:  false,
+						ValidationErrors: []string{
+							"<value 1>",
+						},
 					},
 				),
 			},

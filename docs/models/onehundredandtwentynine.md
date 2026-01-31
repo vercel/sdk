@@ -11,10 +11,10 @@ let value: OneHundredAndTwentyNine = {
   projectId: "<id>",
   projectName: "<value>",
   previous: {
-    functionZeroConfigFailover: false,
+    functionDefaultTimeout: 7508.37,
   },
   next: {
-    functionZeroConfigFailover: false,
+    functionDefaultTimeout: 9558.51,
   },
 };
 ```

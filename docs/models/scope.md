@@ -1,25 +1,15 @@
 # Scope
 
-Instructions for creating a user scoped protection bypass
-
-
-## Supported Types
-
-### `models.Scope1`
+## Example Usage
 
 ```typescript
-const value: models.Scope1 = {
-  userId: "<id>",
-  access: "granted",
-};
+import { Scope } from "@vercel/sdk/models/userevent.js";
+
+let value: Scope = "dashboard";
 ```
 
-### `models.Scope2`
+## Values
 
 ```typescript
-const value: models.Scope2 = {
-  email: "Haven82@hotmail.com",
-  access: "granted",
-};
+"dashboard" | "log-drains"
 ```
-

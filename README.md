@@ -6,11 +6,11 @@
   <p align="center">Develop. Preview. Ship.</p>
 </p>
 
-[Join the Vercel Community](https://vercel.community/)
+[Join the Vercel Community](https://community.vercel.com/)
 
 # @vercel/sdk
 
-The `@vercel/sdk` is a type-safe Typescript SDK that gives you full control over the entire Vercel platform through the [Vercel REST API](https://vercel.com/docs/rest-api).
+The `@vercel/sdk` is a type-safe Typescript SDK that gives you full control over the entire Vercel platform through the [Vercel REST API](https://docs.vercel.com/docs/rest-api/reference/welcome).
 
 <div align="left">
     <a href="https://www.speakeasy.com/?utm_source=@vercel/sdk&utm_campaign=typescript"><img src="https://custom-icon-badges.demolab.com/badge/-Built%20By%20Speakeasy-212015?style=for-the-badge&logoColor=FBE331&logo=speakeasy&labelColor=545454" /></a>
@@ -169,7 +169,7 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 
 ## Access Tokens
 
-You need to pass a valid access token to be able to use any resource or operation. Refer to [Creating an Access Token](https://vercel.com/docs/rest-api#creating-an-access-token) to learn how to create one. Make sure that you create a token with the correct Vercel [scope](https://vercel.com/docs/dashboard-features#scope-selector). 
+You need to pass a valid access token to be able to use any resource or operation. Refer to [Creating an Access Token](https://docs.vercel.com/docs/rest-api/reference/welcome#creating-an-access-token) to learn how to create one. Make sure that you create a token with the correct Vercel [scope](https://vercel.com/docs/dashboard-features#scope-selector). 
 If you face permission (403) errors when you are already sending a token, it can be one of the following problems:
 - The token you are using has expired. Check the expiry date of the token in the Vercel dashboard.
 - The token does not have access to the correct scope, either not the right team or it does not have account level access.

@@ -75,11 +75,9 @@ func testGetIntegrationLogDrainsGetIntegrationLogDrains0(w http.ResponseWriter, 
 			},
 			Branch:       types.String("feature/*"),
 			SamplingRate: types.Float64(0.5),
-			Source: operations.CreateGetIntegrationLogDrainsSourceUnionIntegration(
-				operations.GetIntegrationLogDrainsSourceIntegration{
-					Kind:                       operations.GetIntegrationLogDrainsKindIntegrationIntegration,
-					IntegrationID:              "<id>",
-					IntegrationConfigurationID: "<id>",
+			Source: operations.CreateGetIntegrationLogDrainsSourceUnionSelfServed(
+				operations.GetIntegrationLogDrainsSourceSelfServed{
+					Kind: operations.GetIntegrationLogDrainsKindSelfServedSelfServed,
 				},
 			),
 		},
@@ -111,9 +109,11 @@ func testGetIntegrationLogDrainsGetIntegrationLogDrains0(w http.ResponseWriter, 
 			},
 			Branch:       types.String("feature/*"),
 			SamplingRate: types.Float64(0.5),
-			Source: operations.CreateGetIntegrationLogDrainsSourceUnionSelfServed(
-				operations.GetIntegrationLogDrainsSourceSelfServed{
-					Kind: operations.GetIntegrationLogDrainsKindSelfServedSelfServed,
+			Source: operations.CreateGetIntegrationLogDrainsSourceUnionIntegration(
+				operations.GetIntegrationLogDrainsSourceIntegration{
+					Kind:                       operations.GetIntegrationLogDrainsKindIntegrationIntegration,
+					IntegrationID:              "<id>",
+					IntegrationConfigurationID: "<id>",
 				},
 			),
 		},

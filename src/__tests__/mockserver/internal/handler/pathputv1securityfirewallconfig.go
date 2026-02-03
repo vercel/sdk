@@ -112,13 +112,20 @@ func testPutFirewallConfigPutFirewallConfig0(w http.ResponseWriter, req *http.Re
 						Active: false,
 						ConditionGroup: []operations.ActiveConditionGroup2{
 							operations.ActiveConditionGroup2{
-								Conditions: []operations.ActiveCondition2{},
+								Conditions: []operations.ActiveCondition2{
+									operations.ActiveCondition2{
+										Type: operations.ActiveType2Region,
+										Op:   operations.ActiveOp2Lt,
+									},
+								},
 							},
 						},
 						Action: operations.RuleActiveAction2{},
-						Valid:  false,
+						Valid:  true,
 						ValidationErrors: []string{
 							"<value 1>",
+							"<value 2>",
+							"<value 3>",
 						},
 					},
 				),
@@ -129,13 +136,20 @@ func testPutFirewallConfigPutFirewallConfig0(w http.ResponseWriter, req *http.Re
 						Active: false,
 						ConditionGroup: []operations.ActiveConditionGroup2{
 							operations.ActiveConditionGroup2{
-								Conditions: []operations.ActiveCondition2{},
+								Conditions: []operations.ActiveCondition2{
+									operations.ActiveCondition2{
+										Type: operations.ActiveType2Region,
+										Op:   operations.ActiveOp2Lt,
+									},
+								},
 							},
 						},
 						Action: operations.RuleActiveAction2{},
-						Valid:  false,
+						Valid:  true,
 						ValidationErrors: []string{
 							"<value 1>",
+							"<value 2>",
+							"<value 3>",
 						},
 					},
 				),

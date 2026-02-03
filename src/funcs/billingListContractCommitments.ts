@@ -4,9 +4,12 @@
 
 import * as z from "zod/v3";
 import { VercelCore } from "../core.js";
+import { encodeFormQuery } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
+import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
   ConnectionError,
@@ -15,6 +18,10 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/httpclienterrors.js";
+import {
+  ListContractCommitmentsRequest,
+  ListContractCommitmentsRequest$outboundSchema,
+} from "../models/listcontractcommitmentsop.js";
 import { ResponseValidationError } from "../models/responsevalidationerror.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import { VercelError } from "../models/vercelerror.js";
@@ -22,13 +29,14 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Get FOCUS v1.3 compliant usage cost metrics
+ * List FOCUS contract commitments
  *
  * @remarks
- * Returns usage charges in FOCUS v1.3 JSONL format
+ * Returns commitment allocations per contract period in FOCUS v1.3 JSONL format for a specified Vercel team. The response is streamed as newline-delimited JSON (JSONL). This endpoint is only applicable to Enterprise Vercel customers. An empty response is returned for non-Enterprise (Pro/Flex) customers.
  */
-export function apiBillingGetV1BillingCharges(
+export function billingListContractCommitments(
   client: VercelCore,
+  request: ListContractCommitmentsRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -45,12 +53,14 @@ export function apiBillingGetV1BillingCharges(
 > {
   return new APIPromise($do(
     client,
+    request,
     options,
   ));
 }
 
 async function $do(
   client: VercelCore,
+  request: ListContractCommitmentsRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -68,21 +78,41 @@ async function $do(
     APICall,
   ]
 > {
-  const path = pathToFunc("/v1/billing/charges")();
+  const parsed = safeParse(
+    request,
+    (value) => ListContractCommitmentsRequest$outboundSchema.parse(value),
+    "Input validation failed",
+  );
+  if (!parsed.ok) {
+    return [parsed, { status: "invalid" }];
+  }
+  const payload = parsed.value;
+  const body = null;
+
+  const path = pathToFunc("/v1/billing/contract-commitments")();
+
+  const query = encodeFormQuery({
+    "slug": payload.slug,
+    "teamId": payload.teamId,
+  });
 
   const headers = new Headers(compactMap({
     Accept: "*/*",
   }));
 
+  const secConfig = await extractSecurity(client._options.bearerToken);
+  const securityInput = secConfig == null ? {} : { bearerToken: secConfig };
+  const requestSecurity = resolveGlobalSecurity(securityInput);
+
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "get_/v1/billing/charges",
+    operationID: "listContractCommitments",
     oAuth2Scopes: null,
 
-    resolvedSecurity: null,
+    resolvedSecurity: requestSecurity,
 
-    securitySource: null,
+    securitySource: client._options.bearerToken,
     retryConfig: options?.retries
       || client._options.retryConfig
       || { strategy: "none" },
@@ -90,10 +120,13 @@ async function $do(
   };
 
   const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "GET",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
+    query: query,
+    body: body,
     userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
@@ -104,7 +137,7 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["400", "401", "403", "404", "4XX", "500", "503", "5XX"],
+    errorCodes: ["400", "401", "403", "404", "4XX", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -126,7 +159,7 @@ async function $do(
   >(
     M.nil("2XX", z.void()),
     M.fail([400, 401, 403, 404, "4XX"]),
-    M.fail([500, 503, "5XX"]),
+    M.fail("5XX"),
   )(response, req);
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];

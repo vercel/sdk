@@ -8,9 +8,9 @@ import { PatchV1ProjectsProjectIdRollbackDeploymentIdUpdateDescriptionRequest } 
 import { unwrapAsync } from "../types/fp.js";
 import { AccessGroups } from "./accessgroups.js";
 import { Aliases } from "./aliases.js";
-import { ApiBilling } from "./apibilling.js";
 import { Artifacts } from "./artifacts.js";
 import { Authentication } from "./authentication.js";
+import { Billing } from "./billing.js";
 import { BulkRedirects } from "./bulkredirects.js";
 import { Certs } from "./certs.js";
 import { Checks } from "./checks.js";
@@ -47,9 +47,9 @@ export class Vercel extends ClientSDK {
     return (this._artifacts ??= new Artifacts(this._options));
   }
 
-  private _apiBilling?: ApiBilling;
-  get apiBilling(): ApiBilling {
-    return (this._apiBilling ??= new ApiBilling(this._options));
+  private _billing?: Billing;
+  get billing(): Billing {
+    return (this._billing ??= new Billing(this._options));
   }
 
   private _bulkRedirects?: BulkRedirects;

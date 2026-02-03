@@ -115,6 +115,19 @@ export type BuildQueue = {
 /**
  * An object containing infomation related to the amount of platform resources may be allocated to the User account.
  */
+export const AuthUserDefault = {
+  Enhanced: "enhanced",
+  Turbo: "turbo",
+  Standard: "standard",
+} as const;
+/**
+ * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+ */
+export type AuthUserDefault = ClosedEnum<typeof AuthUserDefault>;
+
+/**
+ * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+ */
 export const PurchaseType = {
   Enhanced: "enhanced",
   Turbo: "turbo",
@@ -127,7 +140,11 @@ export type PurchaseType = ClosedEnum<typeof PurchaseType>;
 /**
  * An object containing infomation related to the amount of platform resources may be allocated to the User account.
  */
-export type BuildMachine = {
+export type AuthUserBuildMachine = {
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  default?: AuthUserDefault | undefined;
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
@@ -271,7 +288,7 @@ export type AuthUserResourceConfig = {
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
-  buildMachine?: BuildMachine | undefined;
+  buildMachine?: AuthUserBuildMachine | undefined;
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
@@ -633,6 +650,15 @@ export function buildQueueFromJSON(
 }
 
 /** @internal */
+export const AuthUserDefault$inboundSchema: z.ZodNativeEnum<
+  typeof AuthUserDefault
+> = z.nativeEnum(AuthUserDefault);
+/** @internal */
+export const AuthUserDefault$outboundSchema: z.ZodNativeEnum<
+  typeof AuthUserDefault
+> = AuthUserDefault$inboundSchema;
+
+/** @internal */
 export const PurchaseType$inboundSchema: z.ZodNativeEnum<typeof PurchaseType> =
   z.nativeEnum(PurchaseType);
 /** @internal */
@@ -640,18 +666,20 @@ export const PurchaseType$outboundSchema: z.ZodNativeEnum<typeof PurchaseType> =
   PurchaseType$inboundSchema;
 
 /** @internal */
-export const BuildMachine$inboundSchema: z.ZodType<
-  BuildMachine,
+export const AuthUserBuildMachine$inboundSchema: z.ZodType<
+  AuthUserBuildMachine,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  default: types.optional(AuthUserDefault$inboundSchema),
   purchaseType: types.optional(PurchaseType$inboundSchema),
   isDefaultBuildMachine: types.optional(types.boolean()),
   cores: types.optional(types.number()),
   memory: types.optional(types.number()),
 });
 /** @internal */
-export type BuildMachine$Outbound = {
+export type AuthUserBuildMachine$Outbound = {
+  default?: string | undefined;
   purchaseType?: string | undefined;
   isDefaultBuildMachine?: boolean | undefined;
   cores?: number | undefined;
@@ -659,27 +687,32 @@ export type BuildMachine$Outbound = {
 };
 
 /** @internal */
-export const BuildMachine$outboundSchema: z.ZodType<
-  BuildMachine$Outbound,
+export const AuthUserBuildMachine$outboundSchema: z.ZodType<
+  AuthUserBuildMachine$Outbound,
   z.ZodTypeDef,
-  BuildMachine
+  AuthUserBuildMachine
 > = z.object({
+  default: AuthUserDefault$outboundSchema.optional(),
   purchaseType: PurchaseType$outboundSchema.optional(),
   isDefaultBuildMachine: z.boolean().optional(),
   cores: z.number().optional(),
   memory: z.number().optional(),
 });
 
-export function buildMachineToJSON(buildMachine: BuildMachine): string {
-  return JSON.stringify(BuildMachine$outboundSchema.parse(buildMachine));
+export function authUserBuildMachineToJSON(
+  authUserBuildMachine: AuthUserBuildMachine,
+): string {
+  return JSON.stringify(
+    AuthUserBuildMachine$outboundSchema.parse(authUserBuildMachine),
+  );
 }
-export function buildMachineFromJSON(
+export function authUserBuildMachineFromJSON(
   jsonString: string,
-): SafeParseResult<BuildMachine, SDKValidationError> {
+): SafeParseResult<AuthUserBuildMachine, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => BuildMachine$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BuildMachine' from JSON`,
+    (x) => AuthUserBuildMachine$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AuthUserBuildMachine' from JSON`,
   );
 }
 
@@ -763,7 +796,9 @@ export const AuthUserResourceConfig$inboundSchema: z.ZodType<
   flagsExplorerOverridesThreshold: types.optional(types.number()),
   flagsExplorerUnlimitedOverrides: types.optional(types.boolean()),
   customEnvironmentsPerProject: types.optional(types.number()),
-  buildMachine: types.optional(z.lazy(() => BuildMachine$inboundSchema)),
+  buildMachine: types.optional(
+    z.lazy(() => AuthUserBuildMachine$inboundSchema),
+  ),
   security: types.optional(z.lazy(() => AuthUserSecurity$inboundSchema)),
   bulkRedirectsFreeLimitOverride: types.optional(types.number()),
 });
@@ -793,7 +828,7 @@ export type AuthUserResourceConfig$Outbound = {
   flagsExplorerOverridesThreshold?: number | undefined;
   flagsExplorerUnlimitedOverrides?: boolean | undefined;
   customEnvironmentsPerProject?: number | undefined;
-  buildMachine?: BuildMachine$Outbound | undefined;
+  buildMachine?: AuthUserBuildMachine$Outbound | undefined;
   security?: AuthUserSecurity$Outbound | undefined;
   bulkRedirectsFreeLimitOverride?: number | undefined;
 };
@@ -829,7 +864,7 @@ export const AuthUserResourceConfig$outboundSchema: z.ZodType<
   flagsExplorerOverridesThreshold: z.number().optional(),
   flagsExplorerUnlimitedOverrides: z.boolean().optional(),
   customEnvironmentsPerProject: z.number().optional(),
-  buildMachine: z.lazy(() => BuildMachine$outboundSchema).optional(),
+  buildMachine: z.lazy(() => AuthUserBuildMachine$outboundSchema).optional(),
   security: z.lazy(() => AuthUserSecurity$outboundSchema).optional(),
   bulkRedirectsFreeLimitOverride: z.number().optional(),
 });

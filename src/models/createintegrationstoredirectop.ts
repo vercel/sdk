@@ -2002,6 +2002,7 @@ export const CreateIntegrationStoreDirectTags = {
   Sqlite: "sqlite",
   Rds: "rds",
   Drains: "drains",
+  Mcp: "mcp",
   TagAgents: "tag_agents",
   TagAi: "tag_ai",
   TagAnalytics: "tag_analytics",

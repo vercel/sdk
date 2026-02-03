@@ -1839,8 +1839,8 @@ export type CreateDeploymentMicrofrontends =
   | CreateDeploymentMicrofrontends1;
 
 export const FunctionType = {
-  Fluid: "fluid",
   Standard: "standard",
+  Fluid: "fluid",
 } as const;
 export type FunctionType = ClosedEnum<typeof FunctionType>;
 
@@ -1878,6 +1878,21 @@ export type CreateDeploymentBuildQueue = {
 /**
  * Build resource configuration snapshot for this deployment.
  */
+export const CreateDeploymentDefault = {
+  Enhanced: "enhanced",
+  Turbo: "turbo",
+  Standard: "standard",
+} as const;
+/**
+ * Build resource configuration snapshot for this deployment.
+ */
+export type CreateDeploymentDefault = ClosedEnum<
+  typeof CreateDeploymentDefault
+>;
+
+/**
+ * Build resource configuration snapshot for this deployment.
+ */
 export const CreateDeploymentPurchaseType = {
   Enhanced: "enhanced",
   Turbo: "turbo",
@@ -1893,6 +1908,10 @@ export type CreateDeploymentPurchaseType = ClosedEnum<
  * Build resource configuration snapshot for this deployment.
  */
 export type CreateDeploymentBuildMachine = {
+  /**
+   * Build resource configuration snapshot for this deployment.
+   */
+  default?: CreateDeploymentDefault | undefined;
   /**
    * Build resource configuration snapshot for this deployment.
    */
@@ -8165,6 +8184,15 @@ export function createDeploymentBuildQueueFromJSON(
 }
 
 /** @internal */
+export const CreateDeploymentDefault$inboundSchema: z.ZodNativeEnum<
+  typeof CreateDeploymentDefault
+> = z.nativeEnum(CreateDeploymentDefault);
+/** @internal */
+export const CreateDeploymentDefault$outboundSchema: z.ZodNativeEnum<
+  typeof CreateDeploymentDefault
+> = CreateDeploymentDefault$inboundSchema;
+
+/** @internal */
 export const CreateDeploymentPurchaseType$inboundSchema: z.ZodNativeEnum<
   typeof CreateDeploymentPurchaseType
 > = z.nativeEnum(CreateDeploymentPurchaseType);
@@ -8179,6 +8207,7 @@ export const CreateDeploymentBuildMachine$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  default: types.optional(CreateDeploymentDefault$inboundSchema),
   purchaseType: types.optional(CreateDeploymentPurchaseType$inboundSchema),
   isDefaultBuildMachine: types.optional(types.boolean()),
   cores: types.optional(types.number()),
@@ -8186,6 +8215,7 @@ export const CreateDeploymentBuildMachine$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type CreateDeploymentBuildMachine$Outbound = {
+  default?: string | undefined;
   purchaseType?: string | undefined;
   isDefaultBuildMachine?: boolean | undefined;
   cores?: number | undefined;
@@ -8198,6 +8228,7 @@ export const CreateDeploymentBuildMachine$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateDeploymentBuildMachine
 > = z.object({
+  default: CreateDeploymentDefault$outboundSchema.optional(),
   purchaseType: CreateDeploymentPurchaseType$outboundSchema.optional(),
   isDefaultBuildMachine: z.boolean().optional(),
   cores: z.number().optional(),

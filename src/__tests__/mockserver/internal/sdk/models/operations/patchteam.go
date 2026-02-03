@@ -680,6 +680,62 @@ func (u NsnbConfigUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type NsnbConfigUnion: all fields are null")
 }
 
+// PatchTeamDefault - Default build machine type for new builds: standard, enhanced, or turbo.
+type PatchTeamDefault string
+
+const (
+	PatchTeamDefaultStandard PatchTeamDefault = "standard"
+	PatchTeamDefaultEnhanced PatchTeamDefault = "enhanced"
+	PatchTeamDefaultTurbo    PatchTeamDefault = "turbo"
+)
+
+func (e PatchTeamDefault) ToPointer() *PatchTeamDefault {
+	return &e
+}
+func (e *PatchTeamDefault) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "standard":
+		fallthrough
+	case "enhanced":
+		fallthrough
+	case "turbo":
+		*e = PatchTeamDefault(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PatchTeamDefault: %v", v)
+	}
+}
+
+// PatchTeamBuildMachine - Build machine configuration.
+type PatchTeamBuildMachine struct {
+	// Default build machine type for new builds: standard, enhanced, or turbo.
+	Default *PatchTeamDefault `json:"default,omitempty"`
+}
+
+func (o *PatchTeamBuildMachine) GetDefault() *PatchTeamDefault {
+	if o == nil {
+		return nil
+	}
+	return o.Default
+}
+
+// PatchTeamResourceConfig - Resource configuration for the team.
+type PatchTeamResourceConfig struct {
+	// Build machine configuration.
+	BuildMachine *PatchTeamBuildMachine `json:"buildMachine,omitempty"`
+}
+
+func (o *PatchTeamResourceConfig) GetBuildMachine() *PatchTeamBuildMachine {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachine
+}
+
 type PatchTeamRequestBody struct {
 	// The hash value of an uploaded image.
 	Avatar *string `json:"avatar,omitempty"`
@@ -713,6 +769,8 @@ type PatchTeamRequestBody struct {
 	// When enabled, deployment protection settings require stricter permissions (owner-only).
 	StrictDeploymentProtectionSettings *StrictDeploymentProtectionSettings `json:"strictDeploymentProtectionSettings,omitempty"`
 	NsnbConfig                         *NsnbConfigUnion                    `json:"nsnbConfig,omitempty"`
+	// Resource configuration for the team.
+	ResourceConfig *PatchTeamResourceConfig `json:"resourceConfig,omitempty"`
 }
 
 func (o *PatchTeamRequestBody) GetAvatar() *string {
@@ -839,6 +897,13 @@ func (o *PatchTeamRequestBody) GetNsnbConfig() *NsnbConfigUnion {
 		return nil
 	}
 	return o.NsnbConfig
+}
+
+func (o *PatchTeamRequestBody) GetResourceConfig() *PatchTeamResourceConfig {
+	if o == nil {
+		return nil
+	}
+	return o.ResourceConfig
 }
 
 type PatchTeamRequest struct {

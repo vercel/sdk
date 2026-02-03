@@ -596,6 +596,60 @@ func (o *TeamBuildEntitlements) GetEnhancedBuilds() *bool {
 	return o.EnhancedBuilds
 }
 
+// TeamDefault - Default build machine type for new builds
+type TeamDefault string
+
+const (
+	TeamDefaultStandard TeamDefault = "standard"
+	TeamDefaultEnhanced TeamDefault = "enhanced"
+	TeamDefaultTurbo    TeamDefault = "turbo"
+)
+
+func (e TeamDefault) ToPointer() *TeamDefault {
+	return &e
+}
+func (e *TeamDefault) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "standard":
+		fallthrough
+	case "enhanced":
+		fallthrough
+	case "turbo":
+		*e = TeamDefault(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TeamDefault: %v", v)
+	}
+}
+
+// TeamBuildMachine - Build machine configuration
+type TeamBuildMachine struct {
+	// Default build machine type for new builds
+	Default *TeamDefault `json:"default,omitempty"`
+}
+
+func (t TeamBuildMachine) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TeamBuildMachine) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *TeamBuildMachine) GetDefault() *TeamDefault {
+	if o == nil {
+		return nil
+	}
+	return o.Default
+}
+
 type TeamResourceConfig struct {
 	// The total amount of concurrent builds that can be used.
 	ConcurrentBuilds *float64 `json:"concurrentBuilds,omitempty"`
@@ -612,6 +666,8 @@ type TeamResourceConfig struct {
 	// The maximum number of postgres databases an account can create.
 	PostgresDatabases *float64               `json:"postgresDatabases,omitempty"`
 	BuildEntitlements *TeamBuildEntitlements `json:"buildEntitlements,omitempty"`
+	// Build machine configuration
+	BuildMachine *TeamBuildMachine `json:"buildMachine,omitempty"`
 }
 
 func (t TeamResourceConfig) MarshalJSON() ([]byte, error) {
@@ -679,6 +735,13 @@ func (o *TeamResourceConfig) GetBuildEntitlements() *TeamBuildEntitlements {
 		return nil
 	}
 	return o.BuildEntitlements
+}
+
+func (o *TeamResourceConfig) GetBuildMachine() *TeamBuildMachine {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachine
 }
 
 type DisableHardAutoBlocksType string

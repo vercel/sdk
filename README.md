@@ -309,11 +309,6 @@ run();
 * [deleteAlias](docs/sdks/aliases/README.md#deletealias) - Delete an Alias
 * [patchUrlProtectionBypass](docs/sdks/aliases/README.md#patchurlprotectionbypass) - Update the protection bypass for a URL
 
-### [ApiBilling](docs/sdks/apibilling/README.md)
-
-* [getV1BillingCharges](docs/sdks/apibilling/README.md#getv1billingcharges) - Get FOCUS v1.3 compliant usage cost metrics
-* [getV1BillingContractCommitments](docs/sdks/apibilling/README.md#getv1billingcontractcommitments) - Get FOCUS v1.3 compliant contract commitments
-
 ### [Artifacts](docs/sdks/artifacts/README.md)
 
 * [recordEvents](docs/sdks/artifacts/README.md#recordevents) - Record an artifacts cache usage event
@@ -330,6 +325,11 @@ run();
 * [createAuthToken](docs/sdks/authentication/README.md#createauthtoken) - Create an Auth Token
 * [getAuthToken](docs/sdks/authentication/README.md#getauthtoken) - Get Auth Token Metadata
 * [deleteAuthToken](docs/sdks/authentication/README.md#deleteauthtoken) - Delete an authentication token
+
+### [Billing](docs/sdks/billing/README.md)
+
+* [listBillingCharges](docs/sdks/billing/README.md#listbillingcharges) - List FOCUS billing charges
+* [listContractCommitments](docs/sdks/billing/README.md#listcontractcommitments) - List FOCUS contract commitments
 
 ### [BulkRedirects](docs/sdks/bulkredirects/README.md)
 
@@ -640,8 +640,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`aliasesListAliases`](docs/sdks/aliases/README.md#listaliases) - List aliases
 - [`aliasesListDeploymentAliases`](docs/sdks/aliases/README.md#listdeploymentaliases) - List Deployment Aliases
 - [`aliasesPatchUrlProtectionBypass`](docs/sdks/aliases/README.md#patchurlprotectionbypass) - Update the protection bypass for a URL
-- [`apiBillingGetV1BillingCharges`](docs/sdks/apibilling/README.md#getv1billingcharges) - Get FOCUS v1.3 compliant usage cost metrics
-- [`apiBillingGetV1BillingContractCommitments`](docs/sdks/apibilling/README.md#getv1billingcontractcommitments) - Get FOCUS v1.3 compliant contract commitments
 - [`artifactsArtifactExists`](docs/sdks/artifacts/README.md#artifactexists) - Check if a cache artifact exists
 - [`artifactsArtifactQuery`](docs/sdks/artifacts/README.md#artifactquery) - Query information about an artifact
 - [`artifactsDownloadArtifact`](docs/sdks/artifacts/README.md#downloadartifact) - Download a cache artifact
@@ -652,6 +650,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`authenticationDeleteAuthToken`](docs/sdks/authentication/README.md#deleteauthtoken) - Delete an authentication token
 - [`authenticationGetAuthToken`](docs/sdks/authentication/README.md#getauthtoken) - Get Auth Token Metadata
 - [`authenticationListAuthTokens`](docs/sdks/authentication/README.md#listauthtokens) - List Auth Tokens
+- [`billingListBillingCharges`](docs/sdks/billing/README.md#listbillingcharges) - List FOCUS billing charges
+- [`billingListContractCommitments`](docs/sdks/billing/README.md#listcontractcommitments) - List FOCUS contract commitments
 - [`bulkRedirectsDeleteRedirects`](docs/sdks/bulkredirects/README.md#deleteredirects) - Delete project-level redirects.
 - [`bulkRedirectsEditRedirect`](docs/sdks/bulkredirects/README.md#editredirect) - Edit a project-level redirect.
 - [`bulkRedirectsGetRedirects`](docs/sdks/bulkredirects/README.md#getredirects) - Gets project-level redirects.

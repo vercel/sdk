@@ -2291,8 +2291,8 @@ export type ResponseBodyMicrofrontends =
   | GetDeploymentMicrofrontends1;
 
 export const ResponseBodyFunctionType = {
-  Fluid: "fluid",
   Standard: "standard",
+  Fluid: "fluid",
 } as const;
 export type ResponseBodyFunctionType = ClosedEnum<
   typeof ResponseBodyFunctionType
@@ -2334,6 +2334,19 @@ export type GetDeploymentResponseBodyBuildQueue = {
 /**
  * Build resource configuration snapshot for this deployment.
  */
+export const ResponseBodyDefault = {
+  Enhanced: "enhanced",
+  Turbo: "turbo",
+  Standard: "standard",
+} as const;
+/**
+ * Build resource configuration snapshot for this deployment.
+ */
+export type ResponseBodyDefault = ClosedEnum<typeof ResponseBodyDefault>;
+
+/**
+ * Build resource configuration snapshot for this deployment.
+ */
 export const ResponseBodyPurchaseType = {
   Enhanced: "enhanced",
   Turbo: "turbo",
@@ -2349,6 +2362,10 @@ export type ResponseBodyPurchaseType = ClosedEnum<
  * Build resource configuration snapshot for this deployment.
  */
 export type ResponseBodyBuildMachine = {
+  /**
+   * Build resource configuration snapshot for this deployment.
+   */
+  default?: ResponseBodyDefault | undefined;
   /**
    * Build resource configuration snapshot for this deployment.
    */
@@ -10640,6 +10657,15 @@ export function getDeploymentResponseBodyBuildQueueFromJSON(
 }
 
 /** @internal */
+export const ResponseBodyDefault$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyDefault
+> = z.nativeEnum(ResponseBodyDefault);
+/** @internal */
+export const ResponseBodyDefault$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyDefault
+> = ResponseBodyDefault$inboundSchema;
+
+/** @internal */
 export const ResponseBodyPurchaseType$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyPurchaseType
 > = z.nativeEnum(ResponseBodyPurchaseType);
@@ -10654,6 +10680,7 @@ export const ResponseBodyBuildMachine$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  default: types.optional(ResponseBodyDefault$inboundSchema),
   purchaseType: types.optional(ResponseBodyPurchaseType$inboundSchema),
   isDefaultBuildMachine: types.optional(types.boolean()),
   cores: types.optional(types.number()),
@@ -10661,6 +10688,7 @@ export const ResponseBodyBuildMachine$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type ResponseBodyBuildMachine$Outbound = {
+  default?: string | undefined;
   purchaseType?: string | undefined;
   isDefaultBuildMachine?: boolean | undefined;
   cores?: number | undefined;
@@ -10673,6 +10701,7 @@ export const ResponseBodyBuildMachine$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ResponseBodyBuildMachine
 > = z.object({
+  default: ResponseBodyDefault$outboundSchema.optional(),
   purchaseType: ResponseBodyPurchaseType$outboundSchema.optional(),
   isDefaultBuildMachine: z.boolean().optional(),
   cores: z.number().optional(),

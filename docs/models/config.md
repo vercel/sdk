@@ -8,7 +8,7 @@ Since February 2025 the configuration must include snapshot data at the time of 
 import { Config } from "@vercel/sdk/models/createdeploymentop.js";
 
 let value: Config = {
-  functionType: "standard",
+  functionType: "fluid",
   functionMemoryType: "standard_legacy",
   functionTimeout: 8491.2,
   secureComputePrimaryRegion: "<value>",

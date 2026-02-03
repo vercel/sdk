@@ -29,11 +29,63 @@ test("Projects Get Projects", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
-    projects: [],
+    projects: [
+      {
+        accountId: "<id>",
+        alias: [
+          {
+            deployment: {
+              createdAt: 7917.25,
+              createdIn: "<value>",
+              creator: {
+                email: "Tianna83@yahoo.com",
+                uid: "<id>",
+                username: "Sarah_Schmidt-Koepp",
+              },
+              deploymentHostname: "<value>",
+              name: "<value>",
+              id: "<id>",
+              plan: "<value>",
+              private: true,
+              readyState: "<value>",
+              type: "<value>",
+              url: "https://misguided-hawk.biz",
+              userId: "<id>",
+            },
+            domain: "sorrowful-import.name",
+            environment: "production",
+            target: "STAGING",
+          },
+        ],
+        directoryListing: false,
+        id: "<id>",
+        name: "<value>",
+        nodeVersion: "14.x",
+        resourceConfig: {
+          functionDefaultRegions: [
+            "<value 1>",
+            "<value 2>",
+            "<value 3>",
+          ],
+        },
+        rollingRelease: {
+          target: "production",
+          stages: [
+            {
+              targetPercentage: 25,
+              requireApproval: false,
+              duration: 600,
+              linearShift: false,
+            },
+          ],
+          canaryResponseHeader: false,
+        },
+        serverlessFunctionRegion: "<value>",
+      },
+    ],
     pagination: {
       count: 20,
-      next: 1540095775951,
-      prev: 1540095775951,
+      next: "JBSWY3DPEHPK3PXP",
     },
   });
 });

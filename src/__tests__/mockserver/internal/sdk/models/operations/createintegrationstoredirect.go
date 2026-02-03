@@ -10933,6 +10933,7 @@ const (
 	TagSqlite             Tag = "sqlite"
 	TagRds                Tag = "rds"
 	TagDrains             Tag = "drains"
+	TagMcp                Tag = "mcp"
 	TagTagAgents          Tag = "tag_agents"
 	TagTagAi              Tag = "tag_ai"
 	TagTagAnalytics       Tag = "tag_analytics"
@@ -11022,6 +11023,8 @@ func (e *Tag) UnmarshalJSON(data []byte) error {
 	case "rds":
 		fallthrough
 	case "drains":
+		fallthrough
+	case "mcp":
 		fallthrough
 	case "tag_agents":
 		fallthrough

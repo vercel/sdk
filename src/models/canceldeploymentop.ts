@@ -1423,8 +1423,8 @@ export type CancelDeploymentMicrofrontends =
   | CancelDeploymentMicrofrontends1;
 
 export const CancelDeploymentFunctionType = {
-  Fluid: "fluid",
   Standard: "standard",
+  Fluid: "fluid",
 } as const;
 export type CancelDeploymentFunctionType = ClosedEnum<
   typeof CancelDeploymentFunctionType
@@ -1466,6 +1466,21 @@ export type CancelDeploymentBuildQueue = {
 /**
  * Build resource configuration snapshot for this deployment.
  */
+export const CancelDeploymentDefault = {
+  Enhanced: "enhanced",
+  Turbo: "turbo",
+  Standard: "standard",
+} as const;
+/**
+ * Build resource configuration snapshot for this deployment.
+ */
+export type CancelDeploymentDefault = ClosedEnum<
+  typeof CancelDeploymentDefault
+>;
+
+/**
+ * Build resource configuration snapshot for this deployment.
+ */
 export const CancelDeploymentPurchaseType = {
   Enhanced: "enhanced",
   Turbo: "turbo",
@@ -1481,6 +1496,10 @@ export type CancelDeploymentPurchaseType = ClosedEnum<
  * Build resource configuration snapshot for this deployment.
  */
 export type CancelDeploymentBuildMachine = {
+  /**
+   * Build resource configuration snapshot for this deployment.
+   */
+  default?: CancelDeploymentDefault | undefined;
   /**
    * Build resource configuration snapshot for this deployment.
    */
@@ -7057,6 +7076,15 @@ export function cancelDeploymentBuildQueueFromJSON(
 }
 
 /** @internal */
+export const CancelDeploymentDefault$inboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentDefault
+> = z.nativeEnum(CancelDeploymentDefault);
+/** @internal */
+export const CancelDeploymentDefault$outboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentDefault
+> = CancelDeploymentDefault$inboundSchema;
+
+/** @internal */
 export const CancelDeploymentPurchaseType$inboundSchema: z.ZodNativeEnum<
   typeof CancelDeploymentPurchaseType
 > = z.nativeEnum(CancelDeploymentPurchaseType);
@@ -7071,6 +7099,7 @@ export const CancelDeploymentBuildMachine$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  default: types.optional(CancelDeploymentDefault$inboundSchema),
   purchaseType: types.optional(CancelDeploymentPurchaseType$inboundSchema),
   isDefaultBuildMachine: types.optional(types.boolean()),
   cores: types.optional(types.number()),
@@ -7078,6 +7107,7 @@ export const CancelDeploymentBuildMachine$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type CancelDeploymentBuildMachine$Outbound = {
+  default?: string | undefined;
   purchaseType?: string | undefined;
   isDefaultBuildMachine?: boolean | undefined;
   cores?: number | undefined;
@@ -7090,6 +7120,7 @@ export const CancelDeploymentBuildMachine$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CancelDeploymentBuildMachine
 > = z.object({
+  default: CancelDeploymentDefault$outboundSchema.optional(),
   purchaseType: CancelDeploymentPurchaseType$outboundSchema.optional(),
   isDefaultBuildMachine: z.boolean().optional(),
   cores: z.number().optional(),

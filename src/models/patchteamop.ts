@@ -254,6 +254,39 @@ export type NsnbConfig1 = {
 
 export type PatchTeamNsnbConfig = NsnbConfig1 | string;
 
+/**
+ * Default build machine type for new builds: standard, enhanced, or turbo.
+ */
+export const PatchTeamDefault = {
+  Standard: "standard",
+  Enhanced: "enhanced",
+  Turbo: "turbo",
+} as const;
+/**
+ * Default build machine type for new builds: standard, enhanced, or turbo.
+ */
+export type PatchTeamDefault = ClosedEnum<typeof PatchTeamDefault>;
+
+/**
+ * Build machine configuration.
+ */
+export type PatchTeamBuildMachine = {
+  /**
+   * Default build machine type for new builds: standard, enhanced, or turbo.
+   */
+  default?: PatchTeamDefault | undefined;
+};
+
+/**
+ * Resource configuration for the team.
+ */
+export type PatchTeamResourceConfig = {
+  /**
+   * Build machine configuration.
+   */
+  buildMachine?: PatchTeamBuildMachine | undefined;
+};
+
 export type PatchTeamRequestBody = {
   /**
    * The hash value of an uploaded image.
@@ -319,6 +352,10 @@ export type PatchTeamRequestBody = {
     | PatchTeamStrictDeploymentProtectionSettings
     | undefined;
   nsnbConfig?: NsnbConfig1 | string | undefined;
+  /**
+   * Resource configuration for the team.
+   */
+  resourceConfig?: PatchTeamResourceConfig | undefined;
 };
 
 export type PatchTeamRequest = {
@@ -868,6 +905,95 @@ export function patchTeamNsnbConfigFromJSON(
 }
 
 /** @internal */
+export const PatchTeamDefault$inboundSchema: z.ZodNativeEnum<
+  typeof PatchTeamDefault
+> = z.nativeEnum(PatchTeamDefault);
+/** @internal */
+export const PatchTeamDefault$outboundSchema: z.ZodNativeEnum<
+  typeof PatchTeamDefault
+> = PatchTeamDefault$inboundSchema;
+
+/** @internal */
+export const PatchTeamBuildMachine$inboundSchema: z.ZodType<
+  PatchTeamBuildMachine,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  default: types.optional(PatchTeamDefault$inboundSchema),
+});
+/** @internal */
+export type PatchTeamBuildMachine$Outbound = {
+  default?: string | undefined;
+};
+
+/** @internal */
+export const PatchTeamBuildMachine$outboundSchema: z.ZodType<
+  PatchTeamBuildMachine$Outbound,
+  z.ZodTypeDef,
+  PatchTeamBuildMachine
+> = z.object({
+  default: PatchTeamDefault$outboundSchema.optional(),
+});
+
+export function patchTeamBuildMachineToJSON(
+  patchTeamBuildMachine: PatchTeamBuildMachine,
+): string {
+  return JSON.stringify(
+    PatchTeamBuildMachine$outboundSchema.parse(patchTeamBuildMachine),
+  );
+}
+export function patchTeamBuildMachineFromJSON(
+  jsonString: string,
+): SafeParseResult<PatchTeamBuildMachine, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PatchTeamBuildMachine$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchTeamBuildMachine' from JSON`,
+  );
+}
+
+/** @internal */
+export const PatchTeamResourceConfig$inboundSchema: z.ZodType<
+  PatchTeamResourceConfig,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  buildMachine: types.optional(
+    z.lazy(() => PatchTeamBuildMachine$inboundSchema),
+  ),
+});
+/** @internal */
+export type PatchTeamResourceConfig$Outbound = {
+  buildMachine?: PatchTeamBuildMachine$Outbound | undefined;
+};
+
+/** @internal */
+export const PatchTeamResourceConfig$outboundSchema: z.ZodType<
+  PatchTeamResourceConfig$Outbound,
+  z.ZodTypeDef,
+  PatchTeamResourceConfig
+> = z.object({
+  buildMachine: z.lazy(() => PatchTeamBuildMachine$outboundSchema).optional(),
+});
+
+export function patchTeamResourceConfigToJSON(
+  patchTeamResourceConfig: PatchTeamResourceConfig,
+): string {
+  return JSON.stringify(
+    PatchTeamResourceConfig$outboundSchema.parse(patchTeamResourceConfig),
+  );
+}
+export function patchTeamResourceConfigFromJSON(
+  jsonString: string,
+): SafeParseResult<PatchTeamResourceConfig, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PatchTeamResourceConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchTeamResourceConfig' from JSON`,
+  );
+}
+
+/** @internal */
 export const PatchTeamRequestBody$inboundSchema: z.ZodType<
   PatchTeamRequestBody,
   z.ZodTypeDef,
@@ -901,6 +1027,9 @@ export const PatchTeamRequestBody$inboundSchema: z.ZodType<
   nsnbConfig: types.optional(
     smartUnion([z.lazy(() => NsnbConfig1$inboundSchema), types.string()]),
   ),
+  resourceConfig: types.optional(
+    z.lazy(() => PatchTeamResourceConfig$inboundSchema),
+  ),
 });
 /** @internal */
 export type PatchTeamRequestBody$Outbound = {
@@ -928,6 +1057,7 @@ export type PatchTeamRequestBody$Outbound = {
     | PatchTeamStrictDeploymentProtectionSettings$Outbound
     | undefined;
   nsnbConfig?: NsnbConfig1$Outbound | string | undefined;
+  resourceConfig?: PatchTeamResourceConfig$Outbound | undefined;
 };
 
 /** @internal */
@@ -960,6 +1090,8 @@ export const PatchTeamRequestBody$outboundSchema: z.ZodType<
     PatchTeamStrictDeploymentProtectionSettings$outboundSchema
   ).optional(),
   nsnbConfig: smartUnion([z.lazy(() => NsnbConfig1$outboundSchema), z.string()])
+    .optional(),
+  resourceConfig: z.lazy(() => PatchTeamResourceConfig$outboundSchema)
     .optional(),
 });
 

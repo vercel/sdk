@@ -5,11 +5,11 @@
 ```typescript
 import { ResponseBodyFunctionType } from "@vercel/sdk/models/getdeploymentop.js";
 
-let value: ResponseBodyFunctionType = "fluid";
+let value: ResponseBodyFunctionType = "standard";
 ```
 
 ## Values
 
 ```typescript
-"fluid" | "standard"
+"standard" | "fluid"
 ```

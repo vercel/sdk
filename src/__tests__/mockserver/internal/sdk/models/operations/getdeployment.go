@@ -11128,8 +11128,8 @@ func (u GetDeploymentMicrofrontendsUnion) MarshalJSON() ([]byte, error) {
 type GetDeploymentFunctionType string
 
 const (
-	GetDeploymentFunctionTypeFluid    GetDeploymentFunctionType = "fluid"
 	GetDeploymentFunctionTypeStandard GetDeploymentFunctionType = "standard"
+	GetDeploymentFunctionTypeFluid    GetDeploymentFunctionType = "fluid"
 )
 
 func (e GetDeploymentFunctionType) ToPointer() *GetDeploymentFunctionType {
@@ -11141,9 +11141,9 @@ func (e *GetDeploymentFunctionType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "fluid":
-		fallthrough
 	case "standard":
+		fallthrough
+	case "fluid":
 		*e = GetDeploymentFunctionType(v)
 		return nil
 	default:
@@ -11231,6 +11231,36 @@ func (o *GetDeploymentBuildQueue) GetConfiguration() *GetDeploymentConfiguration
 	return o.Configuration
 }
 
+// GetDeploymentDefault - Build resource configuration snapshot for this deployment.
+type GetDeploymentDefault string
+
+const (
+	GetDeploymentDefaultEnhanced GetDeploymentDefault = "enhanced"
+	GetDeploymentDefaultTurbo    GetDeploymentDefault = "turbo"
+	GetDeploymentDefaultStandard GetDeploymentDefault = "standard"
+)
+
+func (e GetDeploymentDefault) ToPointer() *GetDeploymentDefault {
+	return &e
+}
+func (e *GetDeploymentDefault) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enhanced":
+		fallthrough
+	case "turbo":
+		fallthrough
+	case "standard":
+		*e = GetDeploymentDefault(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentDefault: %v", v)
+	}
+}
+
 // GetDeploymentPurchaseType - Build resource configuration snapshot for this deployment.
 type GetDeploymentPurchaseType string
 
@@ -11261,6 +11291,8 @@ func (e *GetDeploymentPurchaseType) UnmarshalJSON(data []byte) error {
 // GetDeploymentBuildMachine - Build resource configuration snapshot for this deployment.
 type GetDeploymentBuildMachine struct {
 	// Build resource configuration snapshot for this deployment.
+	Default *GetDeploymentDefault `json:"default,omitempty"`
+	// Build resource configuration snapshot for this deployment.
 	PurchaseType *GetDeploymentPurchaseType `json:"purchaseType,omitempty"`
 	// Build resource configuration snapshot for this deployment.
 	IsDefaultBuildMachine *bool `json:"isDefaultBuildMachine,omitempty"`
@@ -11279,6 +11311,13 @@ func (g *GetDeploymentBuildMachine) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
+}
+
+func (o *GetDeploymentBuildMachine) GetDefault() *GetDeploymentDefault {
+	if o == nil {
+		return nil
+	}
+	return o.Default
 }
 
 func (o *GetDeploymentBuildMachine) GetPurchaseType() *GetDeploymentPurchaseType {

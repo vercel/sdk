@@ -30,8 +30,6 @@ import { tool$aliasesGetAlias } from "./tools/aliasesGetAlias.js";
 import { tool$aliasesListAliases } from "./tools/aliasesListAliases.js";
 import { tool$aliasesListDeploymentAliases } from "./tools/aliasesListDeploymentAliases.js";
 import { tool$aliasesPatchUrlProtectionBypass } from "./tools/aliasesPatchUrlProtectionBypass.js";
-import { tool$apiBillingGetV1BillingCharges } from "./tools/apiBillingGetV1BillingCharges.js";
-import { tool$apiBillingGetV1BillingContractCommitments } from "./tools/apiBillingGetV1BillingContractCommitments.js";
 import { tool$artifactsArtifactExists } from "./tools/artifactsArtifactExists.js";
 import { tool$artifactsArtifactQuery } from "./tools/artifactsArtifactQuery.js";
 import { tool$artifactsDownloadArtifact } from "./tools/artifactsDownloadArtifact.js";
@@ -42,6 +40,8 @@ import { tool$authenticationCreateAuthToken } from "./tools/authenticationCreate
 import { tool$authenticationDeleteAuthToken } from "./tools/authenticationDeleteAuthToken.js";
 import { tool$authenticationGetAuthToken } from "./tools/authenticationGetAuthToken.js";
 import { tool$authenticationListAuthTokens } from "./tools/authenticationListAuthTokens.js";
+import { tool$billingListBillingCharges } from "./tools/billingListBillingCharges.js";
+import { tool$billingListContractCommitments } from "./tools/billingListContractCommitments.js";
 import { tool$bulkRedirectsDeleteRedirects } from "./tools/bulkRedirectsDeleteRedirects.js";
 import { tool$bulkRedirectsEditRedirect } from "./tools/bulkRedirectsEditRedirect.js";
 import { tool$bulkRedirectsGetRedirects } from "./tools/bulkRedirectsGetRedirects.js";
@@ -256,7 +256,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.18.9",
+    version: "1.18.10",
   });
 
   const client = new VercelCore({
@@ -304,8 +304,8 @@ export function createMCPServer(deps: {
   tool(tool$artifactsDownloadArtifact);
   tool(tool$artifactsArtifactExists);
   tool(tool$artifactsArtifactQuery);
-  tool(tool$apiBillingGetV1BillingCharges);
-  tool(tool$apiBillingGetV1BillingContractCommitments);
+  tool(tool$billingListBillingCharges);
+  tool(tool$billingListContractCommitments);
   tool(tool$bulkRedirectsStageRedirects);
   tool(tool$bulkRedirectsGetRedirects);
   tool(tool$bulkRedirectsDeleteRedirects);

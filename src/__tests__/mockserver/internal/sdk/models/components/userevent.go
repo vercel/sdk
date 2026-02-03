@@ -16765,6 +16765,35 @@ func (o *UserEventBuildQueue) GetConfiguration() *ConfigurationUser {
 	return o.Configuration
 }
 
+type UserEventDefault string
+
+const (
+	UserEventDefaultEnhanced UserEventDefault = "enhanced"
+	UserEventDefaultTurbo    UserEventDefault = "turbo"
+	UserEventDefaultStandard UserEventDefault = "standard"
+)
+
+func (e UserEventDefault) ToPointer() *UserEventDefault {
+	return &e
+}
+func (e *UserEventDefault) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enhanced":
+		fallthrough
+	case "turbo":
+		fallthrough
+	case "standard":
+		*e = UserEventDefault(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UserEventDefault: %v", v)
+	}
+}
+
 type UserEventPurchaseType string
 
 const (
@@ -16792,6 +16821,7 @@ func (e *UserEventPurchaseType) UnmarshalJSON(data []byte) error {
 }
 
 type UserEventBuildMachine struct {
+	Default               *UserEventDefault      `json:"default,omitempty"`
 	PurchaseType          *UserEventPurchaseType `json:"purchaseType,omitempty"`
 	IsDefaultBuildMachine *bool                  `json:"isDefaultBuildMachine,omitempty"`
 	Cores                 *float64               `json:"cores,omitempty"`
@@ -16807,6 +16837,13 @@ func (u *UserEventBuildMachine) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
+}
+
+func (o *UserEventBuildMachine) GetDefault() *UserEventDefault {
+	if o == nil {
+		return nil
+	}
+	return o.Default
 }
 
 func (o *UserEventBuildMachine) GetPurchaseType() *UserEventPurchaseType {

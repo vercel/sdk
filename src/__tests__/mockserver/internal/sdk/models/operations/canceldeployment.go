@@ -7295,8 +7295,8 @@ func (u CancelDeploymentMicrofrontendsUnion) MarshalJSON() ([]byte, error) {
 type CancelDeploymentFunctionType string
 
 const (
-	CancelDeploymentFunctionTypeFluid    CancelDeploymentFunctionType = "fluid"
 	CancelDeploymentFunctionTypeStandard CancelDeploymentFunctionType = "standard"
+	CancelDeploymentFunctionTypeFluid    CancelDeploymentFunctionType = "fluid"
 )
 
 func (e CancelDeploymentFunctionType) ToPointer() *CancelDeploymentFunctionType {
@@ -7308,9 +7308,9 @@ func (e *CancelDeploymentFunctionType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "fluid":
-		fallthrough
 	case "standard":
+		fallthrough
+	case "fluid":
 		*e = CancelDeploymentFunctionType(v)
 		return nil
 	default:
@@ -7387,6 +7387,36 @@ func (o *CancelDeploymentBuildQueue) GetConfiguration() *CancelDeploymentConfigu
 	return o.Configuration
 }
 
+// CancelDeploymentDefault - Build resource configuration snapshot for this deployment.
+type CancelDeploymentDefault string
+
+const (
+	CancelDeploymentDefaultEnhanced CancelDeploymentDefault = "enhanced"
+	CancelDeploymentDefaultTurbo    CancelDeploymentDefault = "turbo"
+	CancelDeploymentDefaultStandard CancelDeploymentDefault = "standard"
+)
+
+func (e CancelDeploymentDefault) ToPointer() *CancelDeploymentDefault {
+	return &e
+}
+func (e *CancelDeploymentDefault) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enhanced":
+		fallthrough
+	case "turbo":
+		fallthrough
+	case "standard":
+		*e = CancelDeploymentDefault(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentDefault: %v", v)
+	}
+}
+
 // CancelDeploymentPurchaseType - Build resource configuration snapshot for this deployment.
 type CancelDeploymentPurchaseType string
 
@@ -7417,6 +7447,8 @@ func (e *CancelDeploymentPurchaseType) UnmarshalJSON(data []byte) error {
 // CancelDeploymentBuildMachine - Build resource configuration snapshot for this deployment.
 type CancelDeploymentBuildMachine struct {
 	// Build resource configuration snapshot for this deployment.
+	Default *CancelDeploymentDefault `json:"default,omitempty"`
+	// Build resource configuration snapshot for this deployment.
 	PurchaseType *CancelDeploymentPurchaseType `json:"purchaseType,omitempty"`
 	// Build resource configuration snapshot for this deployment.
 	IsDefaultBuildMachine *bool `json:"isDefaultBuildMachine,omitempty"`
@@ -7424,6 +7456,13 @@ type CancelDeploymentBuildMachine struct {
 	Cores *float64 `json:"cores,omitempty"`
 	// Build resource configuration snapshot for this deployment.
 	Memory *float64 `json:"memory,omitempty"`
+}
+
+func (o *CancelDeploymentBuildMachine) GetDefault() *CancelDeploymentDefault {
+	if o == nil {
+		return nil
+	}
+	return o.Default
 }
 
 func (o *CancelDeploymentBuildMachine) GetPurchaseType() *CancelDeploymentPurchaseType {

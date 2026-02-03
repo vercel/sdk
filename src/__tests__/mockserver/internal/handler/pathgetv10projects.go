@@ -47,10 +47,54 @@ func testGetProjectsGetProjects0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody *operations.GetProjectsResponseBody = types.Pointer(operations.CreateGetProjectsResponseBodyGetProjectsResponseBody3(
-		operations.GetProjectsResponseBody3{
-			Projects: []operations.GetProjectsProject2{},
-			Pagination: operations.CreatePaginationUnion2Pagination(
+	var respBody *operations.GetProjectsResponseBody = types.Pointer(operations.CreateGetProjectsResponseBodyGetProjectsResponseBody2(
+		operations.GetProjectsResponseBody2{
+			Projects: []operations.GetProjectsProject1{
+				operations.GetProjectsProject1{
+					AccountID: "<id>",
+					Alias: []operations.ProjectAlias{
+						operations.ProjectAlias{
+							Deployment: &operations.ProjectDeployment{
+								CreatedAt: 4236.55,
+								CreatedIn: "<value>",
+								Creator: &operations.ProjectDeploymentCreator{
+									Email:    "Sim56@yahoo.com",
+									UID:      "<id>",
+									Username: "Antonetta77",
+								},
+								DeploymentHostname: "<value>",
+								Name:               "<value>",
+								ID:                 "<id>",
+								Plan:               "<value>",
+								Private:            false,
+								ReadyState:         "<value>",
+								Type:               "<value>",
+								URL:                "https://leading-scaffold.com",
+								UserID:             "<id>",
+							},
+							Domain:      "productive-charm.org",
+							Environment: operations.ProjectEnvironmentPreview,
+							Target:      operations.ProjectAliasTargetStaging,
+						},
+					},
+					DirectoryListing: true,
+					ID:               "<id>",
+					Name:             "<value>",
+					NodeVersion:      operations.ProjectNodeVersion1TwelveDotX,
+					ResourceConfig: operations.ProjectResourceConfig1{
+						FunctionDefaultRegions: []string{
+							"<value 1>",
+						},
+					},
+					RollingRelease: &operations.ProjectRollingRelease1{
+						Target:               "production",
+						Stages:               nil,
+						CanaryResponseHeader: types.Bool(false),
+					},
+					ServerlessFunctionRegion: "<value>",
+				},
+			},
+			Pagination: operations.CreatePaginationUnion1Pagination(
 				components.Pagination{
 					Count: 20,
 					Next:  types.Float64(1540095775951),

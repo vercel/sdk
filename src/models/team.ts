@@ -203,6 +203,29 @@ export type BuildEntitlements = {
   enhancedBuilds?: boolean | undefined;
 };
 
+/**
+ * Default build machine type for new builds
+ */
+export const Default = {
+  Standard: "standard",
+  Enhanced: "enhanced",
+  Turbo: "turbo",
+} as const;
+/**
+ * Default build machine type for new builds
+ */
+export type Default = ClosedEnum<typeof Default>;
+
+/**
+ * Build machine configuration
+ */
+export type BuildMachine = {
+  /**
+   * Default build machine type for new builds
+   */
+  default?: Default | undefined;
+};
+
 export type ResourceConfig = {
   /**
    * The total amount of concurrent builds that can be used.
@@ -233,6 +256,10 @@ export type ResourceConfig = {
    */
   postgresDatabases?: number | undefined;
   buildEntitlements?: BuildEntitlements | undefined;
+  /**
+   * Build machine configuration
+   */
+  buildMachine?: BuildMachine | undefined;
 };
 
 export type DisableHardAutoBlocks = number | boolean;
@@ -945,6 +972,48 @@ export function buildEntitlementsFromJSON(
 }
 
 /** @internal */
+export const Default$inboundSchema: z.ZodNativeEnum<typeof Default> = z
+  .nativeEnum(Default);
+/** @internal */
+export const Default$outboundSchema: z.ZodNativeEnum<typeof Default> =
+  Default$inboundSchema;
+
+/** @internal */
+export const BuildMachine$inboundSchema: z.ZodType<
+  BuildMachine,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  default: types.optional(Default$inboundSchema),
+});
+/** @internal */
+export type BuildMachine$Outbound = {
+  default?: string | undefined;
+};
+
+/** @internal */
+export const BuildMachine$outboundSchema: z.ZodType<
+  BuildMachine$Outbound,
+  z.ZodTypeDef,
+  BuildMachine
+> = z.object({
+  default: Default$outboundSchema.optional(),
+});
+
+export function buildMachineToJSON(buildMachine: BuildMachine): string {
+  return JSON.stringify(BuildMachine$outboundSchema.parse(buildMachine));
+}
+export function buildMachineFromJSON(
+  jsonString: string,
+): SafeParseResult<BuildMachine, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BuildMachine$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BuildMachine' from JSON`,
+  );
+}
+
+/** @internal */
 export const ResourceConfig$inboundSchema: z.ZodType<
   ResourceConfig,
   z.ZodTypeDef,
@@ -960,6 +1029,7 @@ export const ResourceConfig$inboundSchema: z.ZodType<
   buildEntitlements: types.optional(
     z.lazy(() => BuildEntitlements$inboundSchema),
   ),
+  buildMachine: types.optional(z.lazy(() => BuildMachine$inboundSchema)),
 });
 /** @internal */
 export type ResourceConfig$Outbound = {
@@ -971,6 +1041,7 @@ export type ResourceConfig$Outbound = {
   blobStores?: number | undefined;
   postgresDatabases?: number | undefined;
   buildEntitlements?: BuildEntitlements$Outbound | undefined;
+  buildMachine?: BuildMachine$Outbound | undefined;
 };
 
 /** @internal */
@@ -987,6 +1058,7 @@ export const ResourceConfig$outboundSchema: z.ZodType<
   blobStores: z.number().optional(),
   postgresDatabases: z.number().optional(),
   buildEntitlements: z.lazy(() => BuildEntitlements$outboundSchema).optional(),
+  buildMachine: z.lazy(() => BuildMachine$outboundSchema).optional(),
 });
 
 export function resourceConfigToJSON(resourceConfig: ResourceConfig): string {

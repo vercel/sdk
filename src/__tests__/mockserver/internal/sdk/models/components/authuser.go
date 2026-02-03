@@ -313,6 +313,36 @@ func (o *AuthUserBuildQueue) GetConfiguration() *AuthUserConfiguration {
 	return o.Configuration
 }
 
+// AuthUserDefault - An object containing infomation related to the amount of platform resources may be allocated to the User account.
+type AuthUserDefault string
+
+const (
+	AuthUserDefaultEnhanced AuthUserDefault = "enhanced"
+	AuthUserDefaultTurbo    AuthUserDefault = "turbo"
+	AuthUserDefaultStandard AuthUserDefault = "standard"
+)
+
+func (e AuthUserDefault) ToPointer() *AuthUserDefault {
+	return &e
+}
+func (e *AuthUserDefault) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enhanced":
+		fallthrough
+	case "turbo":
+		fallthrough
+	case "standard":
+		*e = AuthUserDefault(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AuthUserDefault: %v", v)
+	}
+}
+
 // AuthUserPurchaseType - An object containing infomation related to the amount of platform resources may be allocated to the User account.
 type AuthUserPurchaseType string
 
@@ -343,6 +373,8 @@ func (e *AuthUserPurchaseType) UnmarshalJSON(data []byte) error {
 // AuthUserBuildMachine - An object containing infomation related to the amount of platform resources may be allocated to the User account.
 type AuthUserBuildMachine struct {
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
+	Default *AuthUserDefault `json:"default,omitempty"`
+	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	PurchaseType *AuthUserPurchaseType `json:"purchaseType,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	IsDefaultBuildMachine *bool `json:"isDefaultBuildMachine,omitempty"`
@@ -361,6 +393,13 @@ func (a *AuthUserBuildMachine) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
+}
+
+func (o *AuthUserBuildMachine) GetDefault() *AuthUserDefault {
+	if o == nil {
+		return nil
+	}
+	return o.Default
 }
 
 func (o *AuthUserBuildMachine) GetPurchaseType() *AuthUserPurchaseType {

@@ -5985,6 +5985,7 @@ type GetProjectsPermissions struct {
 	ConcurrentBuilds                         []components.ACLAction `json:"concurrentBuilds,omitempty"`
 	Connect                                  []components.ACLAction `json:"connect,omitempty"`
 	ConnectConfiguration                     []components.ACLAction `json:"connectConfiguration,omitempty"`
+	BuildMachineDefault                      []components.ACLAction `json:"buildMachineDefault,omitempty"`
 	DataCacheBillingSettings                 []components.ACLAction `json:"dataCacheBillingSettings,omitempty"`
 	DefaultDeploymentProtection              []components.ACLAction `json:"defaultDeploymentProtection,omitempty"`
 	Domain                                   []components.ACLAction `json:"domain,omitempty"`
@@ -6439,6 +6440,13 @@ func (o *GetProjectsPermissions) GetConnectConfiguration() []components.ACLActio
 		return nil
 	}
 	return o.ConnectConfiguration
+}
+
+func (o *GetProjectsPermissions) GetBuildMachineDefault() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachineDefault
 }
 
 func (o *GetProjectsPermissions) GetDataCacheBillingSettings() []components.ACLAction {

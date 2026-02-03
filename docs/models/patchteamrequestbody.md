@@ -32,6 +32,11 @@ let value: PatchTeamRequestBody = {
   strictDeploymentProtectionSettings: {
     enabled: true,
   },
+  resourceConfig: {
+    buildMachine: {
+      default: "standard",
+    },
+  },
 };
 ```
 
@@ -57,3 +62,4 @@ let value: PatchTeamRequestBody = {
 | `defaultExpirationSettings`                                                                                    | [models.PatchTeamDefaultExpirationSettings](../models/patchteamdefaultexpirationsettings.md)                   | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |                                                                                                                |
 | `strictDeploymentProtectionSettings`                                                                           | [models.PatchTeamStrictDeploymentProtectionSettings](../models/patchteamstrictdeploymentprotectionsettings.md) | :heavy_minus_sign:                                                                                             | When enabled, deployment protection settings require stricter permissions (owner-only).                        |                                                                                                                |
 | `nsnbConfig`                                                                                                   | *models.PatchTeamNsnbConfig*                                                                                   | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |                                                                                                                |
+| `resourceConfig`                                                                                               | [models.PatchTeamResourceConfig](../models/patchteamresourceconfig.md)                                         | :heavy_minus_sign:                                                                                             | Resource configuration for the team.                                                                           |                                                                                                                |

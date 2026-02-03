@@ -3617,6 +3617,13 @@ export type PayloadBuildQueue = {
   configuration?: UserEventPayload76Configuration | undefined;
 };
 
+export const PayloadDefault = {
+  Enhanced: "enhanced",
+  Turbo: "turbo",
+  Standard: "standard",
+} as const;
+export type PayloadDefault = ClosedEnum<typeof PayloadDefault>;
+
 export const PayloadPurchaseType = {
   Enhanced: "enhanced",
   Turbo: "turbo",
@@ -3624,6 +3631,7 @@ export const PayloadPurchaseType = {
 export type PayloadPurchaseType = ClosedEnum<typeof PayloadPurchaseType>;
 
 export type PayloadBuildMachine = {
+  default?: PayloadDefault | undefined;
   purchaseType?: PayloadPurchaseType | undefined;
   isDefaultBuildMachine?: boolean | undefined;
   cores?: number | undefined;
@@ -22257,6 +22265,15 @@ export function payloadBuildQueueFromJSON(
 }
 
 /** @internal */
+export const PayloadDefault$inboundSchema: z.ZodNativeEnum<
+  typeof PayloadDefault
+> = z.nativeEnum(PayloadDefault);
+/** @internal */
+export const PayloadDefault$outboundSchema: z.ZodNativeEnum<
+  typeof PayloadDefault
+> = PayloadDefault$inboundSchema;
+
+/** @internal */
 export const PayloadPurchaseType$inboundSchema: z.ZodNativeEnum<
   typeof PayloadPurchaseType
 > = z.nativeEnum(PayloadPurchaseType);
@@ -22271,6 +22288,7 @@ export const PayloadBuildMachine$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  default: types.optional(PayloadDefault$inboundSchema),
   purchaseType: types.optional(PayloadPurchaseType$inboundSchema),
   isDefaultBuildMachine: types.optional(types.boolean()),
   cores: types.optional(types.number()),
@@ -22278,6 +22296,7 @@ export const PayloadBuildMachine$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type PayloadBuildMachine$Outbound = {
+  default?: string | undefined;
   purchaseType?: string | undefined;
   isDefaultBuildMachine?: boolean | undefined;
   cores?: number | undefined;
@@ -22290,6 +22309,7 @@ export const PayloadBuildMachine$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PayloadBuildMachine
 > = z.object({
+  default: PayloadDefault$outboundSchema.optional(),
   purchaseType: PayloadPurchaseType$outboundSchema.optional(),
   isDefaultBuildMachine: z.boolean().optional(),
   cores: z.number().optional(),

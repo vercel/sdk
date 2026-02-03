@@ -36,6 +36,11 @@ let value: PatchTeamRequest = {
     strictDeploymentProtectionSettings: {
       enabled: true,
     },
+    resourceConfig: {
+      buildMachine: {
+        default: "standard",
+      },
+    },
   },
 };
 ```

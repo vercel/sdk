@@ -106,24 +106,42 @@ test("Security Put Firewall Config", async () => {
         {
           id: "<id>",
           name: "<value>",
-          active: false,
+          active: true,
           conditionGroup: [
             {
-              conditions: [],
+              conditions: [
+                {
+                  type: "cookie",
+                  op: "re",
+                },
+              ],
             },
           ],
           action: {},
-          valid: false,
-          validationErrors: "<value>",
+          valid: true,
+          validationErrors: [
+            "<value 1>",
+          ],
         },
         {
           id: "<id>",
           name: "<value>",
-          active: false,
-          conditionGroup: [],
+          active: true,
+          conditionGroup: [
+            {
+              conditions: [
+                {
+                  type: "cookie",
+                  op: "re",
+                },
+              ],
+            },
+          ],
           action: {},
           valid: true,
-          validationErrors: [],
+          validationErrors: [
+            "<value 1>",
+          ],
         },
       ],
       ips: [],
@@ -230,19 +248,10 @@ test("Security Get Firewall Config", async () => {
         id: "<id>",
         name: "<value>",
         active: false,
-        conditionGroup: [
-          {
-            conditions: [
-              {
-                type: "ja4_digest",
-                op: "suf",
-              },
-            ],
-          },
-        ],
+        conditionGroup: [],
         action: {},
-        valid: false,
-        validationErrors: [],
+        valid: true,
+        validationErrors: "<value>",
       },
     ],
     ips: [
@@ -294,10 +303,10 @@ test("Security Get Bypass Ip", async () => {
       {
         ownerId: "<id>",
         id: "<id>",
-        domain: "corrupt-unblinking.name",
-        ip: "67.198.116.145",
-        createdAt: "1704746155127",
-        updatedAt: "1735656563089",
+        domain: "fair-insolence.biz",
+        ip: "28.168.35.50",
+        createdAt: "1715781716613",
+        updatedAt: "1735674132994",
         updatedAtHour: "<value>",
       },
     ],

@@ -752,6 +752,11 @@ async function run() {
       strictDeploymentProtectionSettings: {
         enabled: true,
       },
+      resourceConfig: {
+        buildMachine: {
+          default: "standard",
+        },
+      },
     },
   });
 
@@ -805,6 +810,11 @@ async function run() {
       },
       strictDeploymentProtectionSettings: {
         enabled: true,
+      },
+      resourceConfig: {
+        buildMachine: {
+          default: "standard",
+        },
       },
     },
   });

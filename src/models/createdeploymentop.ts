@@ -1879,9 +1879,9 @@ export type CreateDeploymentBuildQueue = {
  * Build resource configuration snapshot for this deployment.
  */
 export const CreateDeploymentDefault = {
+  Standard: "standard",
   Enhanced: "enhanced",
   Turbo: "turbo",
-  Standard: "standard",
 } as const;
 /**
  * Build resource configuration snapshot for this deployment.
@@ -1894,6 +1894,7 @@ export type CreateDeploymentDefault = ClosedEnum<
  * Build resource configuration snapshot for this deployment.
  */
 export const CreateDeploymentPurchaseType = {
+  Standard: "standard",
   Enhanced: "enhanced",
   Turbo: "turbo",
 } as const;

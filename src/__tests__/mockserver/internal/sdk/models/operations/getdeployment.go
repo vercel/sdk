@@ -11235,9 +11235,9 @@ func (o *GetDeploymentBuildQueue) GetConfiguration() *GetDeploymentConfiguration
 type GetDeploymentDefault string
 
 const (
+	GetDeploymentDefaultStandard GetDeploymentDefault = "standard"
 	GetDeploymentDefaultEnhanced GetDeploymentDefault = "enhanced"
 	GetDeploymentDefaultTurbo    GetDeploymentDefault = "turbo"
-	GetDeploymentDefaultStandard GetDeploymentDefault = "standard"
 )
 
 func (e GetDeploymentDefault) ToPointer() *GetDeploymentDefault {
@@ -11249,11 +11249,11 @@ func (e *GetDeploymentDefault) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "standard":
+		fallthrough
 	case "enhanced":
 		fallthrough
 	case "turbo":
-		fallthrough
-	case "standard":
 		*e = GetDeploymentDefault(v)
 		return nil
 	default:
@@ -11265,6 +11265,7 @@ func (e *GetDeploymentDefault) UnmarshalJSON(data []byte) error {
 type GetDeploymentPurchaseType string
 
 const (
+	GetDeploymentPurchaseTypeStandard GetDeploymentPurchaseType = "standard"
 	GetDeploymentPurchaseTypeEnhanced GetDeploymentPurchaseType = "enhanced"
 	GetDeploymentPurchaseTypeTurbo    GetDeploymentPurchaseType = "turbo"
 )
@@ -11278,6 +11279,8 @@ func (e *GetDeploymentPurchaseType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "standard":
+		fallthrough
 	case "enhanced":
 		fallthrough
 	case "turbo":

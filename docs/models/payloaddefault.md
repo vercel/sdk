@@ -5,11 +5,11 @@
 ```typescript
 import { PayloadDefault } from "@vercel/sdk/models/userevent.js";
 
-let value: PayloadDefault = "turbo";
+let value: PayloadDefault = "enhanced";
 ```
 
 ## Values
 
 ```typescript
-"enhanced" | "turbo" | "standard"
+"standard" | "enhanced" | "turbo"
 ```

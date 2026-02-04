@@ -22,14 +22,17 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  await vercel.billing.listBillingCharges({
+  const result = await vercel.billing.listBillingCharges({
     from: "2025-01-01T00:00:00.000Z",
     to: "2025-01-31T00:00:00.000Z",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
 
-
+  for await (const event of result) {
+    // Handle the event
+    console.log(event);
+  }
 }
 
 run();
@@ -58,7 +61,10 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    
+    for await (const event of result) {
+    // Handle the event
+    console.log(event);
+  }
   } else {
     console.log("billingListBillingCharges failed:", res.error);
   }
@@ -78,7 +84,7 @@ run();
 
 ### Response
 
-**Promise\<void\>**
+**Promise\<[JsonLStream<models.ListBillingChargesResponseBody>](../../models/.md)\>**
 
 ### Errors
 
@@ -101,12 +107,15 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  await vercel.billing.listContractCommitments({
+  const result = await vercel.billing.listContractCommitments({
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
 
-
+  for await (const event of result) {
+    // Handle the event
+    console.log(event);
+  }
 }
 
 run();
@@ -133,7 +142,10 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    
+    for await (const event of result) {
+    // Handle the event
+    console.log(event);
+  }
   } else {
     console.log("billingListContractCommitments failed:", res.error);
   }
@@ -153,7 +165,7 @@ run();
 
 ### Response
 
-**Promise\<void\>**
+**Promise\<[JsonLStream<models.ListContractCommitmentsResponseBody>](../../models/.md)\>**
 
 ### Errors
 

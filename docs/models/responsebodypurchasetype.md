@@ -7,11 +7,11 @@ Build resource configuration snapshot for this deployment.
 ```typescript
 import { ResponseBodyPurchaseType } from "@vercel/sdk/models/getdeploymentop.js";
 
-let value: ResponseBodyPurchaseType = "enhanced";
+let value: ResponseBodyPurchaseType = "standard";
 ```
 
 ## Values
 
 ```typescript
-"enhanced" | "turbo"
+"standard" | "enhanced" | "turbo"
 ```

@@ -2335,9 +2335,9 @@ export type GetDeploymentResponseBodyBuildQueue = {
  * Build resource configuration snapshot for this deployment.
  */
 export const ResponseBodyDefault = {
+  Standard: "standard",
   Enhanced: "enhanced",
   Turbo: "turbo",
-  Standard: "standard",
 } as const;
 /**
  * Build resource configuration snapshot for this deployment.
@@ -2348,6 +2348,7 @@ export type ResponseBodyDefault = ClosedEnum<typeof ResponseBodyDefault>;
  * Build resource configuration snapshot for this deployment.
  */
 export const ResponseBodyPurchaseType = {
+  Standard: "standard",
   Enhanced: "enhanced",
   Turbo: "turbo",
 } as const;

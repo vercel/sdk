@@ -30,6 +30,8 @@ Returns the billing charge data in FOCUS v1.3 JSONL format for a specified Verce
       };
     }
 
-    return formatResult(void 0, apiCall);
+    const value = result.value;
+
+    return formatResult(value, apiCall);
   },
 };

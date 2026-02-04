@@ -7,11 +7,11 @@ Build resource configuration snapshot for this deployment.
 ```typescript
 import { CreateDeploymentPurchaseType } from "@vercel/sdk/models/createdeploymentop.js";
 
-let value: CreateDeploymentPurchaseType = "enhanced";
+let value: CreateDeploymentPurchaseType = "standard";
 ```
 
 ## Values
 
 ```typescript
-"enhanced" | "turbo"
+"standard" | "enhanced" | "turbo"
 ```

@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { VercelCore } from "../core.js";
 import { encodeFormQuery } from "../lib/encodings.js";
+import { JsonLStream } from "../lib/jsonl.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -21,6 +22,8 @@ import {
 import {
   ListContractCommitmentsRequest,
   ListContractCommitmentsRequest$outboundSchema,
+  ListContractCommitmentsResponseBody,
+  ListContractCommitmentsResponseBody$inboundSchema,
 } from "../models/listcontractcommitmentsop.js";
 import { ResponseValidationError } from "../models/responsevalidationerror.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
@@ -40,7 +43,7 @@ export function billingListContractCommitments(
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    void,
+    JsonLStream<ListContractCommitmentsResponseBody>,
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -65,7 +68,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      void,
+      JsonLStream<ListContractCommitmentsResponseBody>,
       | VercelError
       | ResponseValidationError
       | ConnectionError
@@ -97,7 +100,7 @@ async function $do(
   });
 
   const headers = new Headers(compactMap({
-    Accept: "*/*",
+    Accept: "application/jsonl",
   }));
 
   const secConfig = await extractSecurity(client._options.bearerToken);
@@ -147,7 +150,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    void,
+    JsonLStream<ListContractCommitmentsResponseBody>,
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -157,7 +160,19 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.nil("2XX", z.void()),
+    M.jsonl(
+      200,
+      z.instanceof(ReadableStream<Uint8Array>).transform(stream => {
+        return new JsonLStream({
+          stream,
+          decoder(rawEvent) {
+            const schema = ListContractCommitmentsResponseBody$inboundSchema;
+            return schema.parse(rawEvent);
+          },
+        });
+      }),
+      { ctype: "application/jsonl" },
+    ),
     M.fail([400, 401, 403, 404, "4XX"]),
     M.fail("5XX"),
   )(response, req);

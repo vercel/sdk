@@ -7,11 +7,11 @@ Build resource configuration snapshot for this deployment.
 ```typescript
 import { CancelDeploymentDefault } from "@vercel/sdk/models/canceldeploymentop.js";
 
-let value: CancelDeploymentDefault = "enhanced";
+let value: CancelDeploymentDefault = "standard";
 ```
 
 ## Values
 
 ```typescript
-"enhanced" | "turbo" | "standard"
+"standard" | "enhanced" | "turbo"
 ```

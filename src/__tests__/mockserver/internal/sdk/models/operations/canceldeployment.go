@@ -7391,9 +7391,9 @@ func (o *CancelDeploymentBuildQueue) GetConfiguration() *CancelDeploymentConfigu
 type CancelDeploymentDefault string
 
 const (
+	CancelDeploymentDefaultStandard CancelDeploymentDefault = "standard"
 	CancelDeploymentDefaultEnhanced CancelDeploymentDefault = "enhanced"
 	CancelDeploymentDefaultTurbo    CancelDeploymentDefault = "turbo"
-	CancelDeploymentDefaultStandard CancelDeploymentDefault = "standard"
 )
 
 func (e CancelDeploymentDefault) ToPointer() *CancelDeploymentDefault {
@@ -7405,11 +7405,11 @@ func (e *CancelDeploymentDefault) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "standard":
+		fallthrough
 	case "enhanced":
 		fallthrough
 	case "turbo":
-		fallthrough
-	case "standard":
 		*e = CancelDeploymentDefault(v)
 		return nil
 	default:
@@ -7421,6 +7421,7 @@ func (e *CancelDeploymentDefault) UnmarshalJSON(data []byte) error {
 type CancelDeploymentPurchaseType string
 
 const (
+	CancelDeploymentPurchaseTypeStandard CancelDeploymentPurchaseType = "standard"
 	CancelDeploymentPurchaseTypeEnhanced CancelDeploymentPurchaseType = "enhanced"
 	CancelDeploymentPurchaseTypeTurbo    CancelDeploymentPurchaseType = "turbo"
 )
@@ -7434,6 +7435,8 @@ func (e *CancelDeploymentPurchaseType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "standard":
+		fallthrough
 	case "enhanced":
 		fallthrough
 	case "turbo":

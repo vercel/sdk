@@ -109,38 +109,24 @@ test("Security Put Firewall Config", async () => {
           active: true,
           conditionGroup: [
             {
-              conditions: [
-                {
-                  type: "cookie",
-                  op: "re",
-                },
-              ],
+              conditions: [],
             },
           ],
           action: {},
-          valid: true,
-          validationErrors: [
-            "<value 1>",
-          ],
+          valid: false,
+          validationErrors: "<value>",
         },
         {
           id: "<id>",
           name: "<value>",
           active: true,
-          conditionGroup: [
-            {
-              conditions: [
-                {
-                  type: "cookie",
-                  op: "re",
-                },
-              ],
-            },
-          ],
+          conditionGroup: [],
           action: {},
           valid: true,
           validationErrors: [
             "<value 1>",
+            "<value 2>",
+            "<value 3>",
           ],
         },
       ],
@@ -248,10 +234,21 @@ test("Security Get Firewall Config", async () => {
         id: "<id>",
         name: "<value>",
         active: false,
-        conditionGroup: [],
+        conditionGroup: [
+          {
+            conditions: [
+              {
+                type: "cookie",
+                op: "ninc",
+              },
+            ],
+          },
+        ],
         action: {},
         valid: true,
-        validationErrors: "<value>",
+        validationErrors: [
+          "<value 1>",
+        ],
       },
     ],
     ips: [
@@ -299,17 +296,7 @@ test("Security Get Bypass Ip", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
-    result: [
-      {
-        ownerId: "<id>",
-        id: "<id>",
-        domain: "fair-insolence.biz",
-        ip: "28.168.35.50",
-        createdAt: "1715781716613",
-        updatedAt: "1735674132994",
-        updatedAtHour: "<value>",
-      },
-    ],
+    result: [],
   });
 });
 

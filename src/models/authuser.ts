@@ -116,9 +116,9 @@ export type BuildQueue = {
  * An object containing infomation related to the amount of platform resources may be allocated to the User account.
  */
 export const AuthUserDefault = {
+  Standard: "standard",
   Enhanced: "enhanced",
   Turbo: "turbo",
-  Standard: "standard",
 } as const;
 /**
  * An object containing infomation related to the amount of platform resources may be allocated to the User account.
@@ -129,6 +129,7 @@ export type AuthUserDefault = ClosedEnum<typeof AuthUserDefault>;
  * An object containing infomation related to the amount of platform resources may be allocated to the User account.
  */
 export const PurchaseType = {
+  Standard: "standard",
   Enhanced: "enhanced",
   Turbo: "turbo",
 } as const;

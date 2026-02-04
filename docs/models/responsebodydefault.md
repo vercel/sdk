@@ -7,11 +7,11 @@ Build resource configuration snapshot for this deployment.
 ```typescript
 import { ResponseBodyDefault } from "@vercel/sdk/models/getdeploymentop.js";
 
-let value: ResponseBodyDefault = "standard";
+let value: ResponseBodyDefault = "turbo";
 ```
 
 ## Values
 
 ```typescript
-"enhanced" | "turbo" | "standard"
+"standard" | "enhanced" | "turbo"
 ```

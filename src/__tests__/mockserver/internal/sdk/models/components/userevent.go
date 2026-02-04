@@ -16768,9 +16768,9 @@ func (o *UserEventBuildQueue) GetConfiguration() *ConfigurationUser {
 type UserEventDefault string
 
 const (
+	UserEventDefaultStandard UserEventDefault = "standard"
 	UserEventDefaultEnhanced UserEventDefault = "enhanced"
 	UserEventDefaultTurbo    UserEventDefault = "turbo"
-	UserEventDefaultStandard UserEventDefault = "standard"
 )
 
 func (e UserEventDefault) ToPointer() *UserEventDefault {
@@ -16782,11 +16782,11 @@ func (e *UserEventDefault) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "standard":
+		fallthrough
 	case "enhanced":
 		fallthrough
 	case "turbo":
-		fallthrough
-	case "standard":
 		*e = UserEventDefault(v)
 		return nil
 	default:
@@ -16797,6 +16797,7 @@ func (e *UserEventDefault) UnmarshalJSON(data []byte) error {
 type UserEventPurchaseType string
 
 const (
+	UserEventPurchaseTypeStandard UserEventPurchaseType = "standard"
 	UserEventPurchaseTypeEnhanced UserEventPurchaseType = "enhanced"
 	UserEventPurchaseTypeTurbo    UserEventPurchaseType = "turbo"
 )
@@ -16810,6 +16811,8 @@ func (e *UserEventPurchaseType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "standard":
+		fallthrough
 	case "enhanced":
 		fallthrough
 	case "turbo":

@@ -317,9 +317,9 @@ func (o *AuthUserBuildQueue) GetConfiguration() *AuthUserConfiguration {
 type AuthUserDefault string
 
 const (
+	AuthUserDefaultStandard AuthUserDefault = "standard"
 	AuthUserDefaultEnhanced AuthUserDefault = "enhanced"
 	AuthUserDefaultTurbo    AuthUserDefault = "turbo"
-	AuthUserDefaultStandard AuthUserDefault = "standard"
 )
 
 func (e AuthUserDefault) ToPointer() *AuthUserDefault {
@@ -331,11 +331,11 @@ func (e *AuthUserDefault) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "standard":
+		fallthrough
 	case "enhanced":
 		fallthrough
 	case "turbo":
-		fallthrough
-	case "standard":
 		*e = AuthUserDefault(v)
 		return nil
 	default:
@@ -347,6 +347,7 @@ func (e *AuthUserDefault) UnmarshalJSON(data []byte) error {
 type AuthUserPurchaseType string
 
 const (
+	AuthUserPurchaseTypeStandard AuthUserPurchaseType = "standard"
 	AuthUserPurchaseTypeEnhanced AuthUserPurchaseType = "enhanced"
 	AuthUserPurchaseTypeTurbo    AuthUserPurchaseType = "turbo"
 )
@@ -360,6 +361,8 @@ func (e *AuthUserPurchaseType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "standard":
+		fallthrough
 	case "enhanced":
 		fallthrough
 	case "turbo":

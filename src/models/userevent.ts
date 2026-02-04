@@ -3618,13 +3618,14 @@ export type PayloadBuildQueue = {
 };
 
 export const PayloadDefault = {
+  Standard: "standard",
   Enhanced: "enhanced",
   Turbo: "turbo",
-  Standard: "standard",
 } as const;
 export type PayloadDefault = ClosedEnum<typeof PayloadDefault>;
 
 export const PayloadPurchaseType = {
+  Standard: "standard",
   Enhanced: "enhanced",
   Turbo: "turbo",
 } as const;

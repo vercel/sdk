@@ -24,13 +24,14 @@ generation:
   schemas:
     allOfMergeStrategy: shallowMerge
   requestBodyFieldName: ""
+  versioningStrategy: automatic
   persistentEdits: {}
   tests:
     generateTests: true
     generateNewTests: true
     skipResponseBodyAssertions: false
 typescript:
-  version: 1.18.10
+  version: 1.19.0
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}

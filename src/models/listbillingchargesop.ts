@@ -3,7 +3,9 @@
  */
 
 import * as z from "zod/v3";
+import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
+import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -25,6 +27,149 @@ export type ListBillingChargesRequest = {
    * The Team slug to perform the request on behalf of.
    */
   slug?: string | undefined;
+};
+
+/**
+ * Currency used for billing (ISO 4217)
+ */
+export const BillingCurrency = {
+  Usd: "USD",
+} as const;
+/**
+ * Currency used for billing (ISO 4217)
+ */
+export type BillingCurrency = ClosedEnum<typeof BillingCurrency>;
+
+/**
+ * Classification of the charge
+ */
+export const ChargeCategory = {
+  Adjustment: "Adjustment",
+  Credit: "Credit",
+  Purchase: "Purchase",
+  Tax: "Tax",
+  Usage: "Usage",
+} as const;
+/**
+ * Classification of the charge
+ */
+export type ChargeCategory = ClosedEnum<typeof ChargeCategory>;
+
+/**
+ * High-level category of the service
+ */
+export const ServiceCategory = {
+  AIAndMachineLearning: "AI and Machine Learning",
+  Analytics: "Analytics",
+  BusinessApplications: "Business Applications",
+  Compute: "Compute",
+  Databases: "Databases",
+  DeveloperTools: "Developer Tools",
+  Multicloud: "Multicloud",
+  Identity: "Identity",
+  Integration: "Integration",
+  InternetOfThings: "Internet of Things",
+  ManagementAndGovernance: "Management and Governance",
+  Media: "Media",
+  Migration: "Migration",
+  Mobile: "Mobile",
+  Networking: "Networking",
+  Security: "Security",
+  Storage: "Storage",
+  Web: "Web",
+  Other: "Other",
+} as const;
+/**
+ * High-level category of the service
+ */
+export type ServiceCategory = ClosedEnum<typeof ServiceCategory>;
+
+/**
+ * Pricing model used for the charge.
+ */
+export const PricingCategory = {
+  Other: "Other",
+  Standard: "Standard",
+  Dynamic: "Dynamic",
+  Committed: "Committed",
+} as const;
+/**
+ * Pricing model used for the charge.
+ */
+export type PricingCategory = ClosedEnum<typeof PricingCategory>;
+
+export const PricingCurrency = {
+  Usd: "USD",
+} as const;
+export type PricingCurrency = ClosedEnum<typeof PricingCurrency>;
+
+/**
+ * Extension of the base schema for Focus charges. Includes pricing information for all customers.
+ */
+export type ListBillingChargesResponseBody = {
+  /**
+   * Charge amount serving as the basis for invoicing
+   */
+  billedCost: number;
+  /**
+   * Currency used for billing (ISO 4217)
+   */
+  billingCurrency: BillingCurrency;
+  /**
+   * Classification of the charge
+   */
+  chargeCategory: ChargeCategory;
+  /**
+   * Inclusive start of the charge period (ISO 8601 UTC)
+   */
+  chargePeriodStart: string;
+  /**
+   * Exclusive end of the charge period (ISO 8601 UTC) - Required in v1.3
+   */
+  chargePeriodEnd: string;
+  /**
+   * Volume of resource consumed
+   */
+  consumedQuantity: number;
+  /**
+   * Unit of measurement for consumed quantity
+   */
+  consumedUnit: string;
+  /**
+   * Amortized cost representation including discounts, pre-commitment credit purchase amount, etc.
+   */
+  effectiveCost: number;
+  /**
+   * Provider-assigned region identifier
+   */
+  regionId?: string | undefined;
+  /**
+   * Display name for the region
+   */
+  regionName?: string | undefined;
+  /**
+   * Display name for the service/product
+   */
+  serviceName: string;
+  /**
+   * High-level category of the service
+   */
+  serviceCategory?: ServiceCategory | undefined;
+  /**
+   * Entity making the resource/service available for purchase (v1.3)
+   */
+  serviceProviderName: string;
+  /**
+   * Custom key-value metadata (ProjectId, ProjectName)
+   */
+  tags: { [k: string]: string };
+  /**
+   * Pricing model used for the charge.
+   */
+  pricingCategory: PricingCategory;
+  pricingCurrency: PricingCurrency;
+  pricingQuantity: number;
+  pricingUnit: string;
 };
 
 /** @internal */
@@ -72,5 +217,184 @@ export function listBillingChargesRequestFromJSON(
     jsonString,
     (x) => ListBillingChargesRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'ListBillingChargesRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const BillingCurrency$inboundSchema: z.ZodNativeEnum<
+  typeof BillingCurrency
+> = z.nativeEnum(BillingCurrency);
+/** @internal */
+export const BillingCurrency$outboundSchema: z.ZodNativeEnum<
+  typeof BillingCurrency
+> = BillingCurrency$inboundSchema;
+
+/** @internal */
+export const ChargeCategory$inboundSchema: z.ZodNativeEnum<
+  typeof ChargeCategory
+> = z.nativeEnum(ChargeCategory);
+/** @internal */
+export const ChargeCategory$outboundSchema: z.ZodNativeEnum<
+  typeof ChargeCategory
+> = ChargeCategory$inboundSchema;
+
+/** @internal */
+export const ServiceCategory$inboundSchema: z.ZodNativeEnum<
+  typeof ServiceCategory
+> = z.nativeEnum(ServiceCategory);
+/** @internal */
+export const ServiceCategory$outboundSchema: z.ZodNativeEnum<
+  typeof ServiceCategory
+> = ServiceCategory$inboundSchema;
+
+/** @internal */
+export const PricingCategory$inboundSchema: z.ZodNativeEnum<
+  typeof PricingCategory
+> = z.nativeEnum(PricingCategory);
+/** @internal */
+export const PricingCategory$outboundSchema: z.ZodNativeEnum<
+  typeof PricingCategory
+> = PricingCategory$inboundSchema;
+
+/** @internal */
+export const PricingCurrency$inboundSchema: z.ZodNativeEnum<
+  typeof PricingCurrency
+> = z.nativeEnum(PricingCurrency);
+/** @internal */
+export const PricingCurrency$outboundSchema: z.ZodNativeEnum<
+  typeof PricingCurrency
+> = PricingCurrency$inboundSchema;
+
+/** @internal */
+export const ListBillingChargesResponseBody$inboundSchema: z.ZodType<
+  ListBillingChargesResponseBody,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  BilledCost: types.number(),
+  BillingCurrency: BillingCurrency$inboundSchema,
+  ChargeCategory: ChargeCategory$inboundSchema,
+  ChargePeriodStart: types.string(),
+  ChargePeriodEnd: types.string(),
+  ConsumedQuantity: types.number(),
+  ConsumedUnit: types.string(),
+  EffectiveCost: types.number(),
+  RegionId: types.optional(types.string()),
+  RegionName: types.optional(types.string()),
+  ServiceName: types.string(),
+  ServiceCategory: types.optional(ServiceCategory$inboundSchema),
+  ServiceProviderName: types.string(),
+  Tags: z.record(types.string()),
+  PricingCategory: PricingCategory$inboundSchema,
+  PricingCurrency: PricingCurrency$inboundSchema,
+  PricingQuantity: types.number(),
+  PricingUnit: types.string(),
+}).transform((v) => {
+  return remap$(v, {
+    "BilledCost": "billedCost",
+    "BillingCurrency": "billingCurrency",
+    "ChargeCategory": "chargeCategory",
+    "ChargePeriodStart": "chargePeriodStart",
+    "ChargePeriodEnd": "chargePeriodEnd",
+    "ConsumedQuantity": "consumedQuantity",
+    "ConsumedUnit": "consumedUnit",
+    "EffectiveCost": "effectiveCost",
+    "RegionId": "regionId",
+    "RegionName": "regionName",
+    "ServiceName": "serviceName",
+    "ServiceCategory": "serviceCategory",
+    "ServiceProviderName": "serviceProviderName",
+    "Tags": "tags",
+    "PricingCategory": "pricingCategory",
+    "PricingCurrency": "pricingCurrency",
+    "PricingQuantity": "pricingQuantity",
+    "PricingUnit": "pricingUnit",
+  });
+});
+/** @internal */
+export type ListBillingChargesResponseBody$Outbound = {
+  BilledCost: number;
+  BillingCurrency: string;
+  ChargeCategory: string;
+  ChargePeriodStart: string;
+  ChargePeriodEnd: string;
+  ConsumedQuantity: number;
+  ConsumedUnit: string;
+  EffectiveCost: number;
+  RegionId?: string | undefined;
+  RegionName?: string | undefined;
+  ServiceName: string;
+  ServiceCategory?: string | undefined;
+  ServiceProviderName: string;
+  Tags: { [k: string]: string };
+  PricingCategory: string;
+  PricingCurrency: string;
+  PricingQuantity: number;
+  PricingUnit: string;
+};
+
+/** @internal */
+export const ListBillingChargesResponseBody$outboundSchema: z.ZodType<
+  ListBillingChargesResponseBody$Outbound,
+  z.ZodTypeDef,
+  ListBillingChargesResponseBody
+> = z.object({
+  billedCost: z.number(),
+  billingCurrency: BillingCurrency$outboundSchema,
+  chargeCategory: ChargeCategory$outboundSchema,
+  chargePeriodStart: z.string(),
+  chargePeriodEnd: z.string(),
+  consumedQuantity: z.number(),
+  consumedUnit: z.string(),
+  effectiveCost: z.number(),
+  regionId: z.string().optional(),
+  regionName: z.string().optional(),
+  serviceName: z.string(),
+  serviceCategory: ServiceCategory$outboundSchema.optional(),
+  serviceProviderName: z.string(),
+  tags: z.record(z.string()),
+  pricingCategory: PricingCategory$outboundSchema,
+  pricingCurrency: PricingCurrency$outboundSchema,
+  pricingQuantity: z.number(),
+  pricingUnit: z.string(),
+}).transform((v) => {
+  return remap$(v, {
+    billedCost: "BilledCost",
+    billingCurrency: "BillingCurrency",
+    chargeCategory: "ChargeCategory",
+    chargePeriodStart: "ChargePeriodStart",
+    chargePeriodEnd: "ChargePeriodEnd",
+    consumedQuantity: "ConsumedQuantity",
+    consumedUnit: "ConsumedUnit",
+    effectiveCost: "EffectiveCost",
+    regionId: "RegionId",
+    regionName: "RegionName",
+    serviceName: "ServiceName",
+    serviceCategory: "ServiceCategory",
+    serviceProviderName: "ServiceProviderName",
+    tags: "Tags",
+    pricingCategory: "PricingCategory",
+    pricingCurrency: "PricingCurrency",
+    pricingQuantity: "PricingQuantity",
+    pricingUnit: "PricingUnit",
+  });
+});
+
+export function listBillingChargesResponseBodyToJSON(
+  listBillingChargesResponseBody: ListBillingChargesResponseBody,
+): string {
+  return JSON.stringify(
+    ListBillingChargesResponseBody$outboundSchema.parse(
+      listBillingChargesResponseBody,
+    ),
+  );
+}
+export function listBillingChargesResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ListBillingChargesResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListBillingChargesResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListBillingChargesResponseBody' from JSON`,
   );
 }

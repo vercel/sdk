@@ -4,9 +4,16 @@
 
 import { billingListBillingCharges } from "../funcs/billingListBillingCharges.js";
 import { billingListContractCommitments } from "../funcs/billingListContractCommitments.js";
+import { JsonLStream } from "../lib/jsonl.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import { ListBillingChargesRequest } from "../models/listbillingchargesop.js";
-import { ListContractCommitmentsRequest } from "../models/listcontractcommitmentsop.js";
+import {
+  ListBillingChargesRequest,
+  ListBillingChargesResponseBody,
+} from "../models/listbillingchargesop.js";
+import {
+  ListContractCommitmentsRequest,
+  ListContractCommitmentsResponseBody,
+} from "../models/listcontractcommitmentsop.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Billing extends ClientSDK {
@@ -19,7 +26,7 @@ export class Billing extends ClientSDK {
   async listBillingCharges(
     request: ListBillingChargesRequest,
     options?: RequestOptions,
-  ): Promise<void> {
+  ): Promise<JsonLStream<ListBillingChargesResponseBody>> {
     return unwrapAsync(billingListBillingCharges(
       this,
       request,
@@ -36,7 +43,7 @@ export class Billing extends ClientSDK {
   async listContractCommitments(
     request: ListContractCommitmentsRequest,
     options?: RequestOptions,
-  ): Promise<void> {
+  ): Promise<JsonLStream<ListContractCommitmentsResponseBody>> {
     return unwrapAsync(billingListContractCommitments(
       this,
       request,

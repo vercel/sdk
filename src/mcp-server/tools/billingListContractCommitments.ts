@@ -31,6 +31,8 @@ Returns commitment allocations per contract period in FOCUS v1.3 JSONL format fo
         };
       }
 
-      return formatResult(void 0, apiCall);
+      const value = result.value;
+
+      return formatResult(value, apiCall);
     },
   };

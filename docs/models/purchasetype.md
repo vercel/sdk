@@ -7,11 +7,11 @@ An object containing infomation related to the amount of platform resources may 
 ```typescript
 import { PurchaseType } from "@vercel/sdk/models/authuser.js";
 
-let value: PurchaseType = "turbo";
+let value: PurchaseType = "enhanced";
 ```
 
 ## Values
 
 ```typescript
-"enhanced" | "turbo"
+"standard" | "enhanced" | "turbo"
 ```

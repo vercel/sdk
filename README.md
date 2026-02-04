@@ -32,6 +32,7 @@ The `@vercel/sdk` is a type-safe Typescript SDK that gives you full control over
   * [SDK Example Usage](#sdk-example-usage)
   * [Available Resources and Operations](#available-resources-and-operations)
   * [Standalone functions](#standalone-functions)
+  * [Json Streaming](#json-streaming)
   * [File uploads](#file-uploads)
   * [Retries](#retries)
   * [Error Handling](#error-handling)
@@ -859,6 +860,43 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->
+
+<!-- Start Json Streaming [jsonl] -->
+## Json Streaming
+
+Json Streaming ([jsonl][jsonl-format] / [x-ndjson][x-ndjson]) content type can be used to stream content from certain operations. These operations expose the stream as an [AsyncGenerator][async-generator] that can be consumed using a `for await...of` loop in TypeScript/JavaScript. The loop will terminate when the server no longer has any events to send and closes the underlying connection.
+
+Here's an example of consuming a JSONL stream:
+
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.billing.listBillingCharges({
+    from: "2025-01-01T00:00:00.000Z",
+    to: "2025-01-31T00:00:00.000Z",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+
+  for await (const event of result) {
+    // Handle the event
+    console.log(event);
+  }
+}
+
+run();
+
+```
+
+[jsonl-format]: https://jsonlines.org/
+[x-ndjson]: https://github.com/ndjson/ndjson-spec
+[async-generator]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AsyncGenerator
+<!-- End Json Streaming [jsonl] -->
 
 <!-- Start File uploads [file-upload] -->
 ## File uploads

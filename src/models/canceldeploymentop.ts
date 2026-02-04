@@ -1467,9 +1467,9 @@ export type CancelDeploymentBuildQueue = {
  * Build resource configuration snapshot for this deployment.
  */
 export const CancelDeploymentDefault = {
+  Standard: "standard",
   Enhanced: "enhanced",
   Turbo: "turbo",
-  Standard: "standard",
 } as const;
 /**
  * Build resource configuration snapshot for this deployment.
@@ -1482,6 +1482,7 @@ export type CancelDeploymentDefault = ClosedEnum<
  * Build resource configuration snapshot for this deployment.
  */
 export const CancelDeploymentPurchaseType = {
+  Standard: "standard",
   Enhanced: "enhanced",
   Turbo: "turbo",
 } as const;

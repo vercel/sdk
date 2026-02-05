@@ -8,25 +8,25 @@ The payload of the event, if requested.
 import { TwoHundredAndThirtyThree } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndThirtyThree = {
-  grantType: "authorization_code",
-  appName: "<value>",
-  atTTL: 3848.34,
-  scope: "<value>",
-  authMethod: "gitlab",
+  projectId: "<id>",
+  projectName: "<value>",
+  domain: "competent-going.info",
+  target: "<value>",
+  redirect: "<value>",
+  redirectStatusCode: null,
+  gitBranch: null,
 };
 ```
 
 ## Fields
 
-| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `grantType`                                                                           | [models.GrantType](../models/granttype.md)                                            | :heavy_check_mark:                                                                    | N/A                                                                                   |
-| `appName`                                                                             | *string*                                                                              | :heavy_check_mark:                                                                    | the app's name at the time the event was published (it could have changed since then) |
-| `atTTL`                                                                               | *number*                                                                              | :heavy_check_mark:                                                                    | access_token TTL                                                                      |
-| `rtTTL`                                                                               | *number*                                                                              | :heavy_minus_sign:                                                                    | refresh_token TTL                                                                     |
-| `scope`                                                                               | *string*                                                                              | :heavy_check_mark:                                                                    | N/A                                                                                   |
-| `authMethod`                                                                          | [models.AuthMethod](../models/authmethod.md)                                          | :heavy_check_mark:                                                                    | N/A                                                                                   |
-| `app`                                                                                 | [models.PayloadApp](../models/payloadapp.md)                                          | :heavy_minus_sign:                                                                    | optional since entries prior to 2025-10-13 do not contain app information             |
-| `includesRefreshToken`                                                                | *boolean*                                                                             | :heavy_minus_sign:                                                                    | optional since entries prior to 2025-10-13 do not contain this field                  |
-| `publicId`                                                                            | *string*                                                                              | :heavy_minus_sign:                                                                    | optional since entries prior to 2025-10-13 do not contain this field                  |
-| `sessionId`                                                                           | *string*                                                                              | :heavy_minus_sign:                                                                    | optional since entries prior to 2025-10-13 do not contain this field                  |
+| Field                | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `projectId`          | *string*             | :heavy_check_mark:   | N/A                  |
+| `projectName`        | *string*             | :heavy_check_mark:   | N/A                  |
+| `domain`             | *string*             | :heavy_check_mark:   | N/A                  |
+| `target`             | *string*             | :heavy_check_mark:   | N/A                  |
+| `redirect`           | *string*             | :heavy_check_mark:   | N/A                  |
+| `redirectStatusCode` | *number*             | :heavy_check_mark:   | N/A                  |
+| `gitBranch`          | *string*             | :heavy_check_mark:   | N/A                  |
+| `configuredBy`       | *string*             | :heavy_minus_sign:   | N/A                  |

@@ -11,5 +11,5 @@ let value: ScopesOrigin = "bitbucket";
 ## Values
 
 ```typescript
-"saml" | "github" | "gitlab" | "bitbucket" | "email" | "manual" | "passkey" | "otp" | "sms" | "invite" | "google" | "apple" | "app"
+"saml" | "github" | "gitlab" | "bitbucket" | "email" | "manual" | "passkey" | "otp" | "sms" | "invite" | "google" | "apple" | "app" | "emu"
 ```

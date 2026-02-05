@@ -23,8 +23,10 @@ let value: ListUserEventsResponseBody = {
       userId: "zTuNVUXEAvvnNN3IaqinkyMw",
       principalId: "<id>",
       payload: {
-        status: "<value>",
-        suffix: "<value>",
+        configuration: {
+          id: "<id>",
+          name: "<value>",
+        },
       },
     },
   ],

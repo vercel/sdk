@@ -48,6 +48,7 @@ const (
 	AuthTokenOrigin2Google    AuthTokenOrigin2 = "google"
 	AuthTokenOrigin2Apple     AuthTokenOrigin2 = "apple"
 	AuthTokenOrigin2App       AuthTokenOrigin2 = "app"
+	AuthTokenOrigin2Emu       AuthTokenOrigin2 = "emu"
 )
 
 func (e AuthTokenOrigin2) ToPointer() *AuthTokenOrigin2 {
@@ -84,6 +85,8 @@ func (e *AuthTokenOrigin2) UnmarshalJSON(data []byte) error {
 	case "apple":
 		fallthrough
 	case "app":
+		fallthrough
+	case "emu":
 		*e = AuthTokenOrigin2(v)
 		return nil
 	default:
@@ -246,6 +249,7 @@ const (
 	AuthTokenOrigin1Google    AuthTokenOrigin1 = "google"
 	AuthTokenOrigin1Apple     AuthTokenOrigin1 = "apple"
 	AuthTokenOrigin1App       AuthTokenOrigin1 = "app"
+	AuthTokenOrigin1Emu       AuthTokenOrigin1 = "emu"
 )
 
 func (e AuthTokenOrigin1) ToPointer() *AuthTokenOrigin1 {
@@ -282,6 +286,8 @@ func (e *AuthTokenOrigin1) UnmarshalJSON(data []byte) error {
 	case "apple":
 		fallthrough
 	case "app":
+		fallthrough
+	case "emu":
 		*e = AuthTokenOrigin1(v)
 		return nil
 	default:

@@ -15,12 +15,7 @@ let value: UserEvent = {
   userId: "zTuNVUXEAvvnNN3IaqinkyMw",
   principalId: "<id>",
   payload: {
-    id: "<id>",
-    prev: {
-      name: "<value>",
-      slug: "<value>",
-      fallbackEnvironment: "<value>",
-    },
+    appName: "<value>",
   },
 };
 ```

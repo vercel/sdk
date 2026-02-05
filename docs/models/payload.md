@@ -1354,10 +1354,7 @@ const value: models.OneHundredAndTwentySix = {
 ### `models.OneHundredAndTwentySeven`
 
 ```typescript
-const value: models.OneHundredAndTwentySeven = {
-  projectId: "<id>",
-  projectName: "<value>",
-};
+const value: models.OneHundredAndTwentySeven = {};
 ```
 
 ### `models.OneHundredAndTwentyEight`
@@ -2481,11 +2478,125 @@ const value: models.TwoHundredAndThirtyTwo = {
 
 ```typescript
 const value: models.TwoHundredAndThirtyThree = {
+  projectId: "<id>",
+  projectName: "<value>",
+  domain: "competent-going.info",
+  target: "<value>",
+  redirect: "<value>",
+  redirectStatusCode: null,
+  gitBranch: null,
+};
+```
+
+### `models.TwoHundredAndThirtyFour`
+
+```typescript
+const value: models.TwoHundredAndThirtyFour = {
+  projectId: "<id>",
+  projectName: "<value>",
+  domain: "infatuated-nerve.info",
+  target: "<value>",
+};
+```
+
+### `models.TwoHundredAndThirtyFive`
+
+```typescript
+const value: models.TwoHundredAndThirtyFive = {
+  oldProjectId: "<id>",
+  oldProjectName: "<value>",
+  newProjectId: "<id>",
+  newProjectName: "<value>",
+  domain: "that-singing.name",
+};
+```
+
+### `models.TwoHundredAndThirtySix`
+
+```typescript
+const value: models.TwoHundredAndThirtySix = {
+  projectId: "<id>",
+  projectName: "<value>",
+  domain: "winged-costume.net",
+};
+```
+
+### `models.TwoHundredAndThirtySeven`
+
+```typescript
+const value: models.TwoHundredAndThirtySeven = {
+  projects: [
+    {
+      projectId: "<id>",
+      role: "PROJECT_GUEST",
+      membershipCreatedAt: 2933.02,
+    },
+  ],
+  uid: "<id>",
+};
+```
+
+### `models.TwoHundredAndThirtyEight`
+
+```typescript
+const value: models.TwoHundredAndThirtyEight = {
+  projectId: "<id>",
+  projectName: "<value>",
+  target: "<value>",
+  domain: "vengeful-lender.name",
+};
+```
+
+### `models.TwoHundredAndThirtyNine`
+
+```typescript
+const value: models.TwoHundredAndThirtyNine = {
+  plan: "pro",
+};
+```
+
+### `models.TwoHundredAndForty`
+
+```typescript
+const value: models.TwoHundredAndForty = {
+  invoiceId: "<id>",
+  convertedFromTrial: true,
+  plan: "enterprise",
+};
+```
+
+### `models.TwoHundredAndFortyOne`
+
+```typescript
+const value: models.TwoHundredAndFortyOne = {};
+```
+
+### `models.TwoHundredAndFortyTwo`
+
+```typescript
+const value: models.TwoHundredAndFortyTwo = {};
+```
+
+### `models.TwoHundredAndFortyThree`
+
+```typescript
+const value: models.TwoHundredAndFortyThree = {
+  trialCreditsIssuedAt: 4750.45,
+  expiresAt: "1755863021971",
+  amount: "311.85",
+  currency: "Cape Verde Escudo",
+};
+```
+
+### `models.TwoHundredAndFortyFour`
+
+```typescript
+const value: models.TwoHundredAndFortyFour = {
   grantType: "authorization_code",
   appName: "<value>",
-  atTTL: 3848.34,
+  atTTL: 4908.39,
   scope: "<value>",
-  authMethod: "gitlab",
+  authMethod: "bitbucket",
 };
 ```
 

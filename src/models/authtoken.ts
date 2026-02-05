@@ -23,6 +23,7 @@ export const AuthTokenScopesOrigin = {
   Google: "google",
   Apple: "apple",
   App: "app",
+  Emu: "emu",
 } as const;
 export type AuthTokenScopesOrigin = ClosedEnum<typeof AuthTokenScopesOrigin>;
 
@@ -72,6 +73,7 @@ export const ScopesOrigin = {
   Google: "google",
   Apple: "apple",
   App: "app",
+  Emu: "emu",
 } as const;
 export type ScopesOrigin = ClosedEnum<typeof ScopesOrigin>;
 

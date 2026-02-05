@@ -66,9 +66,7 @@ test("Logdrains Get Integration Log Drains", async () => {
       branch: "feature/*",
       samplingRate: 0.5,
       source: {
-        kind: "integration",
-        integrationId: "<id>",
-        integrationConfigurationId: "<id>",
+        kind: "self-served",
       },
     },
     {
@@ -155,9 +153,7 @@ test("Logdrains Create Log Drain", async () => {
     branch: "feature/*",
     samplingRate: 0.5,
     source: {
-      kind: "integration",
-      integrationId: "<id>",
-      integrationConfigurationId: "<id>",
+      kind: "self-served",
     },
   });
 });

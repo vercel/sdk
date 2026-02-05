@@ -159,6 +159,7 @@ export const AuthMethod = {
   Otp: "otp",
   Sms: "sms",
   Invite: "invite",
+  Emu: "emu",
 } as const;
 export type AuthMethod = ClosedEnum<typeof AuthMethod>;
 
@@ -192,7 +193,7 @@ export type PayloadApp = {
 /**
  * The payload of the event, if requested.
  */
-export type TwoHundredAndThirtyThree = {
+export type TwoHundredAndFortyFour = {
   grantType: GrantType;
   /**
    * the app's name at the time the event was published (it could have changed since then)
@@ -224,6 +225,150 @@ export type TwoHundredAndThirtyThree = {
    * optional since entries prior to 2025-10-13 do not contain this field
    */
   sessionId?: string | undefined;
+};
+
+/**
+ * The payload of the event, if requested.
+ */
+export type TwoHundredAndFortyThree = {
+  trialCreditsIssuedAt: number;
+  expiresAt: string;
+  amount: string;
+  currency: string;
+};
+
+/**
+ * The payload of the event, if requested.
+ */
+export type TwoHundredAndFortyTwo = {
+  inviteCode?: string | undefined;
+};
+
+/**
+ * The payload of the event, if requested.
+ */
+export type TwoHundredAndFortyOne = {
+  emailDomain?: string | null | undefined;
+};
+
+export const PayloadPlan = {
+  Pro: "pro",
+  Enterprise: "enterprise",
+  Hobby: "hobby",
+} as const;
+export type PayloadPlan = ClosedEnum<typeof PayloadPlan>;
+
+/**
+ * The payload of the event, if requested.
+ */
+export type TwoHundredAndForty = {
+  invoiceId: string;
+  convertedFromTrial: boolean;
+  plan: PayloadPlan;
+};
+
+export const Plan = {
+  Pro: "pro",
+  Enterprise: "enterprise",
+  Hobby: "hobby",
+} as const;
+export type Plan = ClosedEnum<typeof Plan>;
+
+export type Trial = {
+  start: number;
+  end: number;
+};
+
+/**
+ * The payload of the event, if requested.
+ */
+export type TwoHundredAndThirtyNine = {
+  plan: Plan;
+  trial?: Trial | null | undefined;
+};
+
+/**
+ * The payload of the event, if requested.
+ */
+export type TwoHundredAndThirtyEight = {
+  projectId: string;
+  projectName: string;
+  target: string;
+  domain: string;
+  configuredBy?: string | null | undefined;
+  prevConfiguredBy?: string | null | undefined;
+};
+
+export const UserEventPayload237Role = {
+  Admin: "ADMIN",
+  ProjectDeveloper: "PROJECT_DEVELOPER",
+  ProjectViewer: "PROJECT_VIEWER",
+  ProjectGuest: "PROJECT_GUEST",
+} as const;
+export type UserEventPayload237Role = ClosedEnum<
+  typeof UserEventPayload237Role
+>;
+
+export type PayloadProjects = {
+  projectId: string;
+  role: UserEventPayload237Role;
+  membershipCreatedAt: number;
+};
+
+/**
+ * The payload of the event, if requested.
+ */
+export type TwoHundredAndThirtySeven = {
+  projects: Array<PayloadProjects>;
+  uid: string;
+};
+
+/**
+ * The payload of the event, if requested.
+ */
+export type TwoHundredAndThirtySix = {
+  projectId: string;
+  projectName: string;
+  domain: string;
+  redirect?: string | null | undefined;
+  redirectStatusCode?: number | null | undefined;
+};
+
+/**
+ * The payload of the event, if requested.
+ */
+export type TwoHundredAndThirtyFive = {
+  oldProjectId: string;
+  oldProjectName: string;
+  newProjectId: string;
+  newProjectName: string;
+  domain: string;
+};
+
+/**
+ * The payload of the event, if requested.
+ */
+export type TwoHundredAndThirtyFour = {
+  projectId: string;
+  projectName: string;
+  domain: string;
+  target: string;
+  redirect?: string | null | undefined;
+  redirectStatusCode?: number | null | undefined;
+};
+
+/**
+ * The payload of the event, if requested.
+ */
+export type TwoHundredAndThirtyThree = {
+  projectId: string;
+  projectName: string;
+  domain: string;
+  target: string;
+  redirect: string | null;
+  redirectStatusCode: number | null;
+  gitBranch: string | null;
+  configuredBy?: string | undefined;
 };
 
 export type EdgeConfig = {
@@ -2362,8 +2507,8 @@ export type OneHundredAndTwentyEight = {
  * The payload of the event, if requested.
  */
 export type OneHundredAndTwentySeven = {
-  projectId: string;
-  projectName: string;
+  projectId?: string | undefined;
+  projectName?: string | undefined;
   buildMachineType?: string | undefined;
   oldBuildMachineType?: string | undefined;
 };
@@ -3510,15 +3655,15 @@ export type Abuse = {
   removedPhoneNumbers?: string | undefined;
 };
 
-export const Plan = {
+export const UserEventPayloadPlan = {
   Pro: "pro",
   Enterprise: "enterprise",
   Hobby: "hobby",
 } as const;
-export type Plan = ClosedEnum<typeof Plan>;
+export type UserEventPayloadPlan = ClosedEnum<typeof UserEventPayloadPlan>;
 
 export type PayloadBilling = {
-  plan: Plan;
+  plan: UserEventPayloadPlan;
 };
 
 export type Credentials2 = {
@@ -4845,6 +4990,10 @@ export type NewOwner = {
    * MFA configuration. When enabled, the user will be required to provide a second factor of authentication when logging in.
    */
   mfaConfiguration?: MfaConfiguration | undefined;
+  /**
+   * Indicates that the underlying user entity is a managed user for the enterprise it's associated with The intention is that this field is only set to true for users that are provisioned by the enterprise which means that the domain associated with the user's email is the same domain associated with the team Allowing us to query information about the user's team at login time through the domain verification service
+   */
+  isEnterpriseManaged?: boolean | undefined;
 };
 
 /**
@@ -6215,6 +6364,7 @@ export type Payload1 = {};
 
 export type Payload =
   | EightyFive
+  | TwoHundredAndThirtyThree
   | SeventyEight
   | EightyTwo
   | OneHundredAndTwentyTwo
@@ -6227,7 +6377,8 @@ export type Payload =
   | Eighty
   | NinetySix
   | OneHundredAndEightySix
-  | TwoHundredAndThirtyThree
+  | TwoHundredAndThirtyFive
+  | TwoHundredAndFortyFour
   | Payload2
   | FortySix
   | FiftySix
@@ -6249,6 +6400,9 @@ export type Payload =
   | OneHundredAndFiftyFour
   | OneHundredAndNinetySeven
   | TwoHundredAndTwentyTwo
+  | TwoHundredAndThirtyFour
+  | TwoHundredAndThirtyEight
+  | TwoHundredAndFortyThree
   | Sixteen
   | Twenty
   | TwentyFour
@@ -6305,6 +6459,8 @@ export type Payload =
   | TwoHundredAndTwentyEight
   | TwoHundredAndTwentyNine
   | TwoHundredAndThirtyTwo
+  | TwoHundredAndThirtySix
+  | TwoHundredAndForty
   | Three
   | Four
   | Six
@@ -6334,7 +6490,6 @@ export type Payload =
   | OneHundredAndEight
   | OneHundredAndNine
   | OneHundredAndTwelve
-  | OneHundredAndTwentySeven
   | OneHundredAndFortyTwo
   | OneHundredAndFortyThree
   | OneHundredAndFortyFour
@@ -6367,6 +6522,7 @@ export type Payload =
   | TwoHundredAndTwentyOne
   | TwoHundredAndThirty
   | TwoHundredAndThirtyOne
+  | TwoHundredAndThirtySeven
   | Five
   | Nine
   | Ten
@@ -6421,6 +6577,7 @@ export type Payload =
   | TwoHundredAndEighteen
   | TwoHundredAndTwentyThree
   | TwoHundredAndTwentyFour
+  | TwoHundredAndThirtyNine
   | Payload1
   | Eleven
   | Twelve
@@ -6437,6 +6594,7 @@ export type Payload =
   | SixtySix
   | SixtySeven
   | SixtyEight
+  | OneHundredAndTwentySeven
   | OneHundredAndFiftyEight
   | OneHundredAndSixtyFive
   | OneHundredAndSixtySix
@@ -6446,7 +6604,9 @@ export type Payload =
   | OneHundredAndEighty
   | OneHundredAndEightyOne
   | OneHundredAndEightyTwo
-  | TwoHundredAndTwenty;
+  | TwoHundredAndTwenty
+  | TwoHundredAndFortyOne
+  | TwoHundredAndFortyTwo;
 
 /**
  * Array of events generated by the User.
@@ -6491,6 +6651,7 @@ export type UserEvent = {
   viaIds?: Array<string> | undefined;
   payload?:
     | EightyFive
+    | TwoHundredAndThirtyThree
     | SeventyEight
     | EightyTwo
     | OneHundredAndTwentyTwo
@@ -6503,7 +6664,8 @@ export type UserEvent = {
     | Eighty
     | NinetySix
     | OneHundredAndEightySix
-    | TwoHundredAndThirtyThree
+    | TwoHundredAndThirtyFive
+    | TwoHundredAndFortyFour
     | Payload2
     | FortySix
     | FiftySix
@@ -6525,6 +6687,9 @@ export type UserEvent = {
     | OneHundredAndFiftyFour
     | OneHundredAndNinetySeven
     | TwoHundredAndTwentyTwo
+    | TwoHundredAndThirtyFour
+    | TwoHundredAndThirtyEight
+    | TwoHundredAndFortyThree
     | Sixteen
     | Twenty
     | TwentyFour
@@ -6581,6 +6746,8 @@ export type UserEvent = {
     | TwoHundredAndTwentyEight
     | TwoHundredAndTwentyNine
     | TwoHundredAndThirtyTwo
+    | TwoHundredAndThirtySix
+    | TwoHundredAndForty
     | Three
     | Four
     | Six
@@ -6610,7 +6777,6 @@ export type UserEvent = {
     | OneHundredAndEight
     | OneHundredAndNine
     | OneHundredAndTwelve
-    | OneHundredAndTwentySeven
     | OneHundredAndFortyTwo
     | OneHundredAndFortyThree
     | OneHundredAndFortyFour
@@ -6643,6 +6809,7 @@ export type UserEvent = {
     | TwoHundredAndTwentyOne
     | TwoHundredAndThirty
     | TwoHundredAndThirtyOne
+    | TwoHundredAndThirtySeven
     | Five
     | Nine
     | Ten
@@ -6697,6 +6864,7 @@ export type UserEvent = {
     | TwoHundredAndEighteen
     | TwoHundredAndTwentyThree
     | TwoHundredAndTwentyFour
+    | TwoHundredAndThirtyNine
     | Payload1
     | Eleven
     | Twelve
@@ -6713,6 +6881,7 @@ export type UserEvent = {
     | SixtySix
     | SixtySeven
     | SixtyEight
+    | OneHundredAndTwentySeven
     | OneHundredAndFiftyEight
     | OneHundredAndSixtyFive
     | OneHundredAndSixtySix
@@ -6723,6 +6892,8 @@ export type UserEvent = {
     | OneHundredAndEightyOne
     | OneHundredAndEightyTwo
     | TwoHundredAndTwenty
+    | TwoHundredAndFortyOne
+    | TwoHundredAndFortyTwo
     | undefined;
 };
 
@@ -7182,8 +7353,8 @@ export function payloadAppFromJSON(
 }
 
 /** @internal */
-export const TwoHundredAndThirtyThree$inboundSchema: z.ZodType<
-  TwoHundredAndThirtyThree,
+export const TwoHundredAndFortyFour$inboundSchema: z.ZodType<
+  TwoHundredAndFortyFour,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -7199,7 +7370,7 @@ export const TwoHundredAndThirtyThree$inboundSchema: z.ZodType<
   sessionId: types.optional(types.string()),
 });
 /** @internal */
-export type TwoHundredAndThirtyThree$Outbound = {
+export type TwoHundredAndFortyFour$Outbound = {
   grantType: string;
   appName: string;
   atTTL: number;
@@ -7213,10 +7384,10 @@ export type TwoHundredAndThirtyThree$Outbound = {
 };
 
 /** @internal */
-export const TwoHundredAndThirtyThree$outboundSchema: z.ZodType<
-  TwoHundredAndThirtyThree$Outbound,
+export const TwoHundredAndFortyFour$outboundSchema: z.ZodType<
+  TwoHundredAndFortyFour$Outbound,
   z.ZodTypeDef,
-  TwoHundredAndThirtyThree
+  TwoHundredAndFortyFour
 > = z.object({
   grantType: GrantType$outboundSchema,
   appName: z.string(),
@@ -7228,6 +7399,633 @@ export const TwoHundredAndThirtyThree$outboundSchema: z.ZodType<
   includesRefreshToken: z.boolean().optional(),
   publicId: z.string().optional(),
   sessionId: z.string().optional(),
+});
+
+export function twoHundredAndFortyFourToJSON(
+  twoHundredAndFortyFour: TwoHundredAndFortyFour,
+): string {
+  return JSON.stringify(
+    TwoHundredAndFortyFour$outboundSchema.parse(twoHundredAndFortyFour),
+  );
+}
+export function twoHundredAndFortyFourFromJSON(
+  jsonString: string,
+): SafeParseResult<TwoHundredAndFortyFour, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TwoHundredAndFortyFour$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TwoHundredAndFortyFour' from JSON`,
+  );
+}
+
+/** @internal */
+export const TwoHundredAndFortyThree$inboundSchema: z.ZodType<
+  TwoHundredAndFortyThree,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  trialCreditsIssuedAt: types.number(),
+  expiresAt: types.string(),
+  amount: types.string(),
+  currency: types.string(),
+});
+/** @internal */
+export type TwoHundredAndFortyThree$Outbound = {
+  trialCreditsIssuedAt: number;
+  expiresAt: string;
+  amount: string;
+  currency: string;
+};
+
+/** @internal */
+export const TwoHundredAndFortyThree$outboundSchema: z.ZodType<
+  TwoHundredAndFortyThree$Outbound,
+  z.ZodTypeDef,
+  TwoHundredAndFortyThree
+> = z.object({
+  trialCreditsIssuedAt: z.number(),
+  expiresAt: z.string(),
+  amount: z.string(),
+  currency: z.string(),
+});
+
+export function twoHundredAndFortyThreeToJSON(
+  twoHundredAndFortyThree: TwoHundredAndFortyThree,
+): string {
+  return JSON.stringify(
+    TwoHundredAndFortyThree$outboundSchema.parse(twoHundredAndFortyThree),
+  );
+}
+export function twoHundredAndFortyThreeFromJSON(
+  jsonString: string,
+): SafeParseResult<TwoHundredAndFortyThree, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TwoHundredAndFortyThree$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TwoHundredAndFortyThree' from JSON`,
+  );
+}
+
+/** @internal */
+export const TwoHundredAndFortyTwo$inboundSchema: z.ZodType<
+  TwoHundredAndFortyTwo,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  inviteCode: types.optional(types.string()),
+});
+/** @internal */
+export type TwoHundredAndFortyTwo$Outbound = {
+  inviteCode?: string | undefined;
+};
+
+/** @internal */
+export const TwoHundredAndFortyTwo$outboundSchema: z.ZodType<
+  TwoHundredAndFortyTwo$Outbound,
+  z.ZodTypeDef,
+  TwoHundredAndFortyTwo
+> = z.object({
+  inviteCode: z.string().optional(),
+});
+
+export function twoHundredAndFortyTwoToJSON(
+  twoHundredAndFortyTwo: TwoHundredAndFortyTwo,
+): string {
+  return JSON.stringify(
+    TwoHundredAndFortyTwo$outboundSchema.parse(twoHundredAndFortyTwo),
+  );
+}
+export function twoHundredAndFortyTwoFromJSON(
+  jsonString: string,
+): SafeParseResult<TwoHundredAndFortyTwo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TwoHundredAndFortyTwo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TwoHundredAndFortyTwo' from JSON`,
+  );
+}
+
+/** @internal */
+export const TwoHundredAndFortyOne$inboundSchema: z.ZodType<
+  TwoHundredAndFortyOne,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  emailDomain: z.nullable(types.string()).optional(),
+});
+/** @internal */
+export type TwoHundredAndFortyOne$Outbound = {
+  emailDomain?: string | null | undefined;
+};
+
+/** @internal */
+export const TwoHundredAndFortyOne$outboundSchema: z.ZodType<
+  TwoHundredAndFortyOne$Outbound,
+  z.ZodTypeDef,
+  TwoHundredAndFortyOne
+> = z.object({
+  emailDomain: z.nullable(z.string()).optional(),
+});
+
+export function twoHundredAndFortyOneToJSON(
+  twoHundredAndFortyOne: TwoHundredAndFortyOne,
+): string {
+  return JSON.stringify(
+    TwoHundredAndFortyOne$outboundSchema.parse(twoHundredAndFortyOne),
+  );
+}
+export function twoHundredAndFortyOneFromJSON(
+  jsonString: string,
+): SafeParseResult<TwoHundredAndFortyOne, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TwoHundredAndFortyOne$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TwoHundredAndFortyOne' from JSON`,
+  );
+}
+
+/** @internal */
+export const PayloadPlan$inboundSchema: z.ZodNativeEnum<typeof PayloadPlan> = z
+  .nativeEnum(PayloadPlan);
+/** @internal */
+export const PayloadPlan$outboundSchema: z.ZodNativeEnum<typeof PayloadPlan> =
+  PayloadPlan$inboundSchema;
+
+/** @internal */
+export const TwoHundredAndForty$inboundSchema: z.ZodType<
+  TwoHundredAndForty,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  invoiceId: types.string(),
+  convertedFromTrial: types.boolean(),
+  plan: PayloadPlan$inboundSchema,
+});
+/** @internal */
+export type TwoHundredAndForty$Outbound = {
+  invoiceId: string;
+  convertedFromTrial: boolean;
+  plan: string;
+};
+
+/** @internal */
+export const TwoHundredAndForty$outboundSchema: z.ZodType<
+  TwoHundredAndForty$Outbound,
+  z.ZodTypeDef,
+  TwoHundredAndForty
+> = z.object({
+  invoiceId: z.string(),
+  convertedFromTrial: z.boolean(),
+  plan: PayloadPlan$outboundSchema,
+});
+
+export function twoHundredAndFortyToJSON(
+  twoHundredAndForty: TwoHundredAndForty,
+): string {
+  return JSON.stringify(
+    TwoHundredAndForty$outboundSchema.parse(twoHundredAndForty),
+  );
+}
+export function twoHundredAndFortyFromJSON(
+  jsonString: string,
+): SafeParseResult<TwoHundredAndForty, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TwoHundredAndForty$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TwoHundredAndForty' from JSON`,
+  );
+}
+
+/** @internal */
+export const Plan$inboundSchema: z.ZodNativeEnum<typeof Plan> = z.nativeEnum(
+  Plan,
+);
+/** @internal */
+export const Plan$outboundSchema: z.ZodNativeEnum<typeof Plan> =
+  Plan$inboundSchema;
+
+/** @internal */
+export const Trial$inboundSchema: z.ZodType<Trial, z.ZodTypeDef, unknown> = z
+  .object({
+    start: types.number(),
+    end: types.number(),
+  });
+/** @internal */
+export type Trial$Outbound = {
+  start: number;
+  end: number;
+};
+
+/** @internal */
+export const Trial$outboundSchema: z.ZodType<
+  Trial$Outbound,
+  z.ZodTypeDef,
+  Trial
+> = z.object({
+  start: z.number(),
+  end: z.number(),
+});
+
+export function trialToJSON(trial: Trial): string {
+  return JSON.stringify(Trial$outboundSchema.parse(trial));
+}
+export function trialFromJSON(
+  jsonString: string,
+): SafeParseResult<Trial, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Trial$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Trial' from JSON`,
+  );
+}
+
+/** @internal */
+export const TwoHundredAndThirtyNine$inboundSchema: z.ZodType<
+  TwoHundredAndThirtyNine,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  plan: Plan$inboundSchema,
+  trial: z.nullable(z.lazy(() => Trial$inboundSchema)).optional(),
+});
+/** @internal */
+export type TwoHundredAndThirtyNine$Outbound = {
+  plan: string;
+  trial?: Trial$Outbound | null | undefined;
+};
+
+/** @internal */
+export const TwoHundredAndThirtyNine$outboundSchema: z.ZodType<
+  TwoHundredAndThirtyNine$Outbound,
+  z.ZodTypeDef,
+  TwoHundredAndThirtyNine
+> = z.object({
+  plan: Plan$outboundSchema,
+  trial: z.nullable(z.lazy(() => Trial$outboundSchema)).optional(),
+});
+
+export function twoHundredAndThirtyNineToJSON(
+  twoHundredAndThirtyNine: TwoHundredAndThirtyNine,
+): string {
+  return JSON.stringify(
+    TwoHundredAndThirtyNine$outboundSchema.parse(twoHundredAndThirtyNine),
+  );
+}
+export function twoHundredAndThirtyNineFromJSON(
+  jsonString: string,
+): SafeParseResult<TwoHundredAndThirtyNine, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TwoHundredAndThirtyNine$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TwoHundredAndThirtyNine' from JSON`,
+  );
+}
+
+/** @internal */
+export const TwoHundredAndThirtyEight$inboundSchema: z.ZodType<
+  TwoHundredAndThirtyEight,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  projectId: types.string(),
+  projectName: types.string(),
+  target: types.string(),
+  domain: types.string(),
+  configuredBy: z.nullable(types.string()).optional(),
+  prevConfiguredBy: z.nullable(types.string()).optional(),
+});
+/** @internal */
+export type TwoHundredAndThirtyEight$Outbound = {
+  projectId: string;
+  projectName: string;
+  target: string;
+  domain: string;
+  configuredBy?: string | null | undefined;
+  prevConfiguredBy?: string | null | undefined;
+};
+
+/** @internal */
+export const TwoHundredAndThirtyEight$outboundSchema: z.ZodType<
+  TwoHundredAndThirtyEight$Outbound,
+  z.ZodTypeDef,
+  TwoHundredAndThirtyEight
+> = z.object({
+  projectId: z.string(),
+  projectName: z.string(),
+  target: z.string(),
+  domain: z.string(),
+  configuredBy: z.nullable(z.string()).optional(),
+  prevConfiguredBy: z.nullable(z.string()).optional(),
+});
+
+export function twoHundredAndThirtyEightToJSON(
+  twoHundredAndThirtyEight: TwoHundredAndThirtyEight,
+): string {
+  return JSON.stringify(
+    TwoHundredAndThirtyEight$outboundSchema.parse(twoHundredAndThirtyEight),
+  );
+}
+export function twoHundredAndThirtyEightFromJSON(
+  jsonString: string,
+): SafeParseResult<TwoHundredAndThirtyEight, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TwoHundredAndThirtyEight$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TwoHundredAndThirtyEight' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventPayload237Role$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload237Role
+> = z.nativeEnum(UserEventPayload237Role);
+/** @internal */
+export const UserEventPayload237Role$outboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload237Role
+> = UserEventPayload237Role$inboundSchema;
+
+/** @internal */
+export const PayloadProjects$inboundSchema: z.ZodType<
+  PayloadProjects,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  projectId: types.string(),
+  role: UserEventPayload237Role$inboundSchema,
+  membershipCreatedAt: types.number(),
+});
+/** @internal */
+export type PayloadProjects$Outbound = {
+  projectId: string;
+  role: string;
+  membershipCreatedAt: number;
+};
+
+/** @internal */
+export const PayloadProjects$outboundSchema: z.ZodType<
+  PayloadProjects$Outbound,
+  z.ZodTypeDef,
+  PayloadProjects
+> = z.object({
+  projectId: z.string(),
+  role: UserEventPayload237Role$outboundSchema,
+  membershipCreatedAt: z.number(),
+});
+
+export function payloadProjectsToJSON(
+  payloadProjects: PayloadProjects,
+): string {
+  return JSON.stringify(PayloadProjects$outboundSchema.parse(payloadProjects));
+}
+export function payloadProjectsFromJSON(
+  jsonString: string,
+): SafeParseResult<PayloadProjects, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PayloadProjects$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PayloadProjects' from JSON`,
+  );
+}
+
+/** @internal */
+export const TwoHundredAndThirtySeven$inboundSchema: z.ZodType<
+  TwoHundredAndThirtySeven,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  projects: z.array(z.lazy(() => PayloadProjects$inboundSchema)),
+  uid: types.string(),
+});
+/** @internal */
+export type TwoHundredAndThirtySeven$Outbound = {
+  projects: Array<PayloadProjects$Outbound>;
+  uid: string;
+};
+
+/** @internal */
+export const TwoHundredAndThirtySeven$outboundSchema: z.ZodType<
+  TwoHundredAndThirtySeven$Outbound,
+  z.ZodTypeDef,
+  TwoHundredAndThirtySeven
+> = z.object({
+  projects: z.array(z.lazy(() => PayloadProjects$outboundSchema)),
+  uid: z.string(),
+});
+
+export function twoHundredAndThirtySevenToJSON(
+  twoHundredAndThirtySeven: TwoHundredAndThirtySeven,
+): string {
+  return JSON.stringify(
+    TwoHundredAndThirtySeven$outboundSchema.parse(twoHundredAndThirtySeven),
+  );
+}
+export function twoHundredAndThirtySevenFromJSON(
+  jsonString: string,
+): SafeParseResult<TwoHundredAndThirtySeven, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TwoHundredAndThirtySeven$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TwoHundredAndThirtySeven' from JSON`,
+  );
+}
+
+/** @internal */
+export const TwoHundredAndThirtySix$inboundSchema: z.ZodType<
+  TwoHundredAndThirtySix,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  projectId: types.string(),
+  projectName: types.string(),
+  domain: types.string(),
+  redirect: z.nullable(types.string()).optional(),
+  redirectStatusCode: z.nullable(types.number()).optional(),
+});
+/** @internal */
+export type TwoHundredAndThirtySix$Outbound = {
+  projectId: string;
+  projectName: string;
+  domain: string;
+  redirect?: string | null | undefined;
+  redirectStatusCode?: number | null | undefined;
+};
+
+/** @internal */
+export const TwoHundredAndThirtySix$outboundSchema: z.ZodType<
+  TwoHundredAndThirtySix$Outbound,
+  z.ZodTypeDef,
+  TwoHundredAndThirtySix
+> = z.object({
+  projectId: z.string(),
+  projectName: z.string(),
+  domain: z.string(),
+  redirect: z.nullable(z.string()).optional(),
+  redirectStatusCode: z.nullable(z.number()).optional(),
+});
+
+export function twoHundredAndThirtySixToJSON(
+  twoHundredAndThirtySix: TwoHundredAndThirtySix,
+): string {
+  return JSON.stringify(
+    TwoHundredAndThirtySix$outboundSchema.parse(twoHundredAndThirtySix),
+  );
+}
+export function twoHundredAndThirtySixFromJSON(
+  jsonString: string,
+): SafeParseResult<TwoHundredAndThirtySix, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TwoHundredAndThirtySix$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TwoHundredAndThirtySix' from JSON`,
+  );
+}
+
+/** @internal */
+export const TwoHundredAndThirtyFive$inboundSchema: z.ZodType<
+  TwoHundredAndThirtyFive,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  oldProjectId: types.string(),
+  oldProjectName: types.string(),
+  newProjectId: types.string(),
+  newProjectName: types.string(),
+  domain: types.string(),
+});
+/** @internal */
+export type TwoHundredAndThirtyFive$Outbound = {
+  oldProjectId: string;
+  oldProjectName: string;
+  newProjectId: string;
+  newProjectName: string;
+  domain: string;
+};
+
+/** @internal */
+export const TwoHundredAndThirtyFive$outboundSchema: z.ZodType<
+  TwoHundredAndThirtyFive$Outbound,
+  z.ZodTypeDef,
+  TwoHundredAndThirtyFive
+> = z.object({
+  oldProjectId: z.string(),
+  oldProjectName: z.string(),
+  newProjectId: z.string(),
+  newProjectName: z.string(),
+  domain: z.string(),
+});
+
+export function twoHundredAndThirtyFiveToJSON(
+  twoHundredAndThirtyFive: TwoHundredAndThirtyFive,
+): string {
+  return JSON.stringify(
+    TwoHundredAndThirtyFive$outboundSchema.parse(twoHundredAndThirtyFive),
+  );
+}
+export function twoHundredAndThirtyFiveFromJSON(
+  jsonString: string,
+): SafeParseResult<TwoHundredAndThirtyFive, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TwoHundredAndThirtyFive$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TwoHundredAndThirtyFive' from JSON`,
+  );
+}
+
+/** @internal */
+export const TwoHundredAndThirtyFour$inboundSchema: z.ZodType<
+  TwoHundredAndThirtyFour,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  projectId: types.string(),
+  projectName: types.string(),
+  domain: types.string(),
+  target: types.string(),
+  redirect: z.nullable(types.string()).optional(),
+  redirectStatusCode: z.nullable(types.number()).optional(),
+});
+/** @internal */
+export type TwoHundredAndThirtyFour$Outbound = {
+  projectId: string;
+  projectName: string;
+  domain: string;
+  target: string;
+  redirect?: string | null | undefined;
+  redirectStatusCode?: number | null | undefined;
+};
+
+/** @internal */
+export const TwoHundredAndThirtyFour$outboundSchema: z.ZodType<
+  TwoHundredAndThirtyFour$Outbound,
+  z.ZodTypeDef,
+  TwoHundredAndThirtyFour
+> = z.object({
+  projectId: z.string(),
+  projectName: z.string(),
+  domain: z.string(),
+  target: z.string(),
+  redirect: z.nullable(z.string()).optional(),
+  redirectStatusCode: z.nullable(z.number()).optional(),
+});
+
+export function twoHundredAndThirtyFourToJSON(
+  twoHundredAndThirtyFour: TwoHundredAndThirtyFour,
+): string {
+  return JSON.stringify(
+    TwoHundredAndThirtyFour$outboundSchema.parse(twoHundredAndThirtyFour),
+  );
+}
+export function twoHundredAndThirtyFourFromJSON(
+  jsonString: string,
+): SafeParseResult<TwoHundredAndThirtyFour, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TwoHundredAndThirtyFour$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TwoHundredAndThirtyFour' from JSON`,
+  );
+}
+
+/** @internal */
+export const TwoHundredAndThirtyThree$inboundSchema: z.ZodType<
+  TwoHundredAndThirtyThree,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  projectId: types.string(),
+  projectName: types.string(),
+  domain: types.string(),
+  target: types.string(),
+  redirect: types.nullable(types.string()),
+  redirectStatusCode: types.nullable(types.number()),
+  gitBranch: types.nullable(types.string()),
+  configuredBy: types.optional(types.string()),
+});
+/** @internal */
+export type TwoHundredAndThirtyThree$Outbound = {
+  projectId: string;
+  projectName: string;
+  domain: string;
+  target: string;
+  redirect: string | null;
+  redirectStatusCode: number | null;
+  gitBranch: string | null;
+  configuredBy?: string | undefined;
+};
+
+/** @internal */
+export const TwoHundredAndThirtyThree$outboundSchema: z.ZodType<
+  TwoHundredAndThirtyThree$Outbound,
+  z.ZodTypeDef,
+  TwoHundredAndThirtyThree
+> = z.object({
+  projectId: z.string(),
+  projectName: z.string(),
+  domain: z.string(),
+  target: z.string(),
+  redirect: z.nullable(z.string()),
+  redirectStatusCode: z.nullable(z.number()),
+  gitBranch: z.nullable(z.string()),
+  configuredBy: z.string().optional(),
 });
 
 export function twoHundredAndThirtyThreeToJSON(
@@ -16466,15 +17264,15 @@ export const OneHundredAndTwentySeven$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: types.string(),
-  projectName: types.string(),
+  projectId: types.optional(types.string()),
+  projectName: types.optional(types.string()),
   buildMachineType: types.optional(types.string()),
   oldBuildMachineType: types.optional(types.string()),
 });
 /** @internal */
 export type OneHundredAndTwentySeven$Outbound = {
-  projectId: string;
-  projectName: string;
+  projectId?: string | undefined;
+  projectName?: string | undefined;
   buildMachineType?: string | undefined;
   oldBuildMachineType?: string | undefined;
 };
@@ -16485,8 +17283,8 @@ export const OneHundredAndTwentySeven$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OneHundredAndTwentySeven
 > = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
+  projectId: z.string().optional(),
+  projectName: z.string().optional(),
   buildMachineType: z.string().optional(),
   oldBuildMachineType: z.string().optional(),
 });
@@ -21573,12 +22371,13 @@ export function abuseFromJSON(
 }
 
 /** @internal */
-export const Plan$inboundSchema: z.ZodNativeEnum<typeof Plan> = z.nativeEnum(
-  Plan,
-);
+export const UserEventPayloadPlan$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayloadPlan
+> = z.nativeEnum(UserEventPayloadPlan);
 /** @internal */
-export const Plan$outboundSchema: z.ZodNativeEnum<typeof Plan> =
-  Plan$inboundSchema;
+export const UserEventPayloadPlan$outboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayloadPlan
+> = UserEventPayloadPlan$inboundSchema;
 
 /** @internal */
 export const PayloadBilling$inboundSchema: z.ZodType<
@@ -21586,7 +22385,7 @@ export const PayloadBilling$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  plan: Plan$inboundSchema,
+  plan: UserEventPayloadPlan$inboundSchema,
 });
 /** @internal */
 export type PayloadBilling$Outbound = {
@@ -21599,7 +22398,7 @@ export const PayloadBilling$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PayloadBilling
 > = z.object({
-  plan: Plan$outboundSchema,
+  plan: UserEventPayloadPlan$outboundSchema,
 });
 
 export function payloadBillingToJSON(payloadBilling: PayloadBilling): string {
@@ -26407,6 +27206,7 @@ export const NewOwner$inboundSchema: z.ZodType<
   mfaConfiguration: types.optional(
     z.lazy(() => MfaConfiguration$inboundSchema),
   ),
+  isEnterpriseManaged: types.optional(types.boolean()),
 });
 /** @internal */
 export type NewOwner$Outbound = {
@@ -26499,6 +27299,7 @@ export type NewOwner$Outbound = {
   northstarMigration?: NorthstarMigration$Outbound | undefined;
   opportunityId?: string | undefined;
   mfaConfiguration?: MfaConfiguration$Outbound | undefined;
+  isEnterpriseManaged?: boolean | undefined;
 };
 
 /** @internal */
@@ -26619,6 +27420,7 @@ export const NewOwner$outboundSchema: z.ZodType<
     .optional(),
   opportunityId: z.string().optional(),
   mfaConfiguration: z.lazy(() => MfaConfiguration$outboundSchema).optional(),
+  isEnterpriseManaged: z.boolean().optional(),
 });
 
 export function newOwnerToJSON(newOwner: NewOwner): string {
@@ -31811,6 +32613,7 @@ export function payload1FromJSON(
 export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
   smartUnion([
     z.lazy(() => EightyFive$inboundSchema),
+    z.lazy(() => TwoHundredAndThirtyThree$inboundSchema),
     z.lazy(() => SeventyEight$inboundSchema),
     z.lazy(() => EightyTwo$inboundSchema),
     z.lazy(() => OneHundredAndTwentyTwo$inboundSchema),
@@ -31823,7 +32626,8 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     z.lazy(() => Eighty$inboundSchema),
     z.lazy(() => NinetySix$inboundSchema),
     z.lazy(() => OneHundredAndEightySix$inboundSchema),
-    z.lazy(() => TwoHundredAndThirtyThree$inboundSchema),
+    z.lazy(() => TwoHundredAndThirtyFive$inboundSchema),
+    z.lazy(() => TwoHundredAndFortyFour$inboundSchema),
     z.lazy(() => Payload2$inboundSchema),
     z.lazy(() => FortySix$inboundSchema),
     z.lazy(() => FiftySix$inboundSchema),
@@ -31845,6 +32649,9 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     z.lazy(() => OneHundredAndFiftyFour$inboundSchema),
     z.lazy(() => OneHundredAndNinetySeven$inboundSchema),
     z.lazy(() => TwoHundredAndTwentyTwo$inboundSchema),
+    z.lazy(() => TwoHundredAndThirtyFour$inboundSchema),
+    z.lazy(() => TwoHundredAndThirtyEight$inboundSchema),
+    z.lazy(() => TwoHundredAndFortyThree$inboundSchema),
     z.lazy(() => Sixteen$inboundSchema),
     z.lazy(() => Twenty$inboundSchema),
     z.lazy(() => TwentyFour$inboundSchema),
@@ -31901,6 +32708,8 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     z.lazy(() => TwoHundredAndTwentyEight$inboundSchema),
     z.lazy(() => TwoHundredAndTwentyNine$inboundSchema),
     z.lazy(() => TwoHundredAndThirtyTwo$inboundSchema),
+    z.lazy(() => TwoHundredAndThirtySix$inboundSchema),
+    z.lazy(() => TwoHundredAndForty$inboundSchema),
     z.lazy(() => Three$inboundSchema),
     z.lazy(() => Four$inboundSchema),
     z.lazy(() => Six$inboundSchema),
@@ -31930,7 +32739,6 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     z.lazy(() => OneHundredAndEight$inboundSchema),
     z.lazy(() => OneHundredAndNine$inboundSchema),
     z.lazy(() => OneHundredAndTwelve$inboundSchema),
-    z.lazy(() => OneHundredAndTwentySeven$inboundSchema),
     z.lazy(() => OneHundredAndFortyTwo$inboundSchema),
     z.lazy(() => OneHundredAndFortyThree$inboundSchema),
     z.lazy(() => OneHundredAndFortyFour$inboundSchema),
@@ -31963,6 +32771,7 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     z.lazy(() => TwoHundredAndTwentyOne$inboundSchema),
     z.lazy(() => TwoHundredAndThirty$inboundSchema),
     z.lazy(() => TwoHundredAndThirtyOne$inboundSchema),
+    z.lazy(() => TwoHundredAndThirtySeven$inboundSchema),
     z.lazy(() => Five$inboundSchema),
     z.lazy(() => Nine$inboundSchema),
     z.lazy(() => Ten$inboundSchema),
@@ -32017,6 +32826,7 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     z.lazy(() => TwoHundredAndEighteen$inboundSchema),
     z.lazy(() => TwoHundredAndTwentyThree$inboundSchema),
     z.lazy(() => TwoHundredAndTwentyFour$inboundSchema),
+    z.lazy(() => TwoHundredAndThirtyNine$inboundSchema),
     z.lazy(() => Payload1$inboundSchema),
     z.lazy(() => Eleven$inboundSchema),
     z.lazy(() => Twelve$inboundSchema),
@@ -32033,6 +32843,7 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     z.lazy(() => SixtySix$inboundSchema),
     z.lazy(() => SixtySeven$inboundSchema),
     z.lazy(() => SixtyEight$inboundSchema),
+    z.lazy(() => OneHundredAndTwentySeven$inboundSchema),
     z.lazy(() => OneHundredAndFiftyEight$inboundSchema),
     z.lazy(() => OneHundredAndSixtyFive$inboundSchema),
     z.lazy(() => OneHundredAndSixtySix$inboundSchema),
@@ -32043,10 +32854,13 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     z.lazy(() => OneHundredAndEightyOne$inboundSchema),
     z.lazy(() => OneHundredAndEightyTwo$inboundSchema),
     z.lazy(() => TwoHundredAndTwenty$inboundSchema),
+    z.lazy(() => TwoHundredAndFortyOne$inboundSchema),
+    z.lazy(() => TwoHundredAndFortyTwo$inboundSchema),
   ]);
 /** @internal */
 export type Payload$Outbound =
   | EightyFive$Outbound
+  | TwoHundredAndThirtyThree$Outbound
   | SeventyEight$Outbound
   | EightyTwo$Outbound
   | OneHundredAndTwentyTwo$Outbound
@@ -32059,7 +32873,8 @@ export type Payload$Outbound =
   | Eighty$Outbound
   | NinetySix$Outbound
   | OneHundredAndEightySix$Outbound
-  | TwoHundredAndThirtyThree$Outbound
+  | TwoHundredAndThirtyFive$Outbound
+  | TwoHundredAndFortyFour$Outbound
   | Payload2$Outbound
   | FortySix$Outbound
   | FiftySix$Outbound
@@ -32081,6 +32896,9 @@ export type Payload$Outbound =
   | OneHundredAndFiftyFour$Outbound
   | OneHundredAndNinetySeven$Outbound
   | TwoHundredAndTwentyTwo$Outbound
+  | TwoHundredAndThirtyFour$Outbound
+  | TwoHundredAndThirtyEight$Outbound
+  | TwoHundredAndFortyThree$Outbound
   | Sixteen$Outbound
   | Twenty$Outbound
   | TwentyFour$Outbound
@@ -32137,6 +32955,8 @@ export type Payload$Outbound =
   | TwoHundredAndTwentyEight$Outbound
   | TwoHundredAndTwentyNine$Outbound
   | TwoHundredAndThirtyTwo$Outbound
+  | TwoHundredAndThirtySix$Outbound
+  | TwoHundredAndForty$Outbound
   | Three$Outbound
   | Four$Outbound
   | Six$Outbound
@@ -32166,7 +32986,6 @@ export type Payload$Outbound =
   | OneHundredAndEight$Outbound
   | OneHundredAndNine$Outbound
   | OneHundredAndTwelve$Outbound
-  | OneHundredAndTwentySeven$Outbound
   | OneHundredAndFortyTwo$Outbound
   | OneHundredAndFortyThree$Outbound
   | OneHundredAndFortyFour$Outbound
@@ -32199,6 +33018,7 @@ export type Payload$Outbound =
   | TwoHundredAndTwentyOne$Outbound
   | TwoHundredAndThirty$Outbound
   | TwoHundredAndThirtyOne$Outbound
+  | TwoHundredAndThirtySeven$Outbound
   | Five$Outbound
   | Nine$Outbound
   | Ten$Outbound
@@ -32253,6 +33073,7 @@ export type Payload$Outbound =
   | TwoHundredAndEighteen$Outbound
   | TwoHundredAndTwentyThree$Outbound
   | TwoHundredAndTwentyFour$Outbound
+  | TwoHundredAndThirtyNine$Outbound
   | Payload1$Outbound
   | Eleven$Outbound
   | Twelve$Outbound
@@ -32269,6 +33090,7 @@ export type Payload$Outbound =
   | SixtySix$Outbound
   | SixtySeven$Outbound
   | SixtyEight$Outbound
+  | OneHundredAndTwentySeven$Outbound
   | OneHundredAndFiftyEight$Outbound
   | OneHundredAndSixtyFive$Outbound
   | OneHundredAndSixtySix$Outbound
@@ -32278,7 +33100,9 @@ export type Payload$Outbound =
   | OneHundredAndEighty$Outbound
   | OneHundredAndEightyOne$Outbound
   | OneHundredAndEightyTwo$Outbound
-  | TwoHundredAndTwenty$Outbound;
+  | TwoHundredAndTwenty$Outbound
+  | TwoHundredAndFortyOne$Outbound
+  | TwoHundredAndFortyTwo$Outbound;
 
 /** @internal */
 export const Payload$outboundSchema: z.ZodType<
@@ -32287,6 +33111,7 @@ export const Payload$outboundSchema: z.ZodType<
   Payload
 > = smartUnion([
   z.lazy(() => EightyFive$outboundSchema),
+  z.lazy(() => TwoHundredAndThirtyThree$outboundSchema),
   z.lazy(() => SeventyEight$outboundSchema),
   z.lazy(() => EightyTwo$outboundSchema),
   z.lazy(() => OneHundredAndTwentyTwo$outboundSchema),
@@ -32299,7 +33124,8 @@ export const Payload$outboundSchema: z.ZodType<
   z.lazy(() => Eighty$outboundSchema),
   z.lazy(() => NinetySix$outboundSchema),
   z.lazy(() => OneHundredAndEightySix$outboundSchema),
-  z.lazy(() => TwoHundredAndThirtyThree$outboundSchema),
+  z.lazy(() => TwoHundredAndThirtyFive$outboundSchema),
+  z.lazy(() => TwoHundredAndFortyFour$outboundSchema),
   z.lazy(() => Payload2$outboundSchema),
   z.lazy(() => FortySix$outboundSchema),
   z.lazy(() => FiftySix$outboundSchema),
@@ -32321,6 +33147,9 @@ export const Payload$outboundSchema: z.ZodType<
   z.lazy(() => OneHundredAndFiftyFour$outboundSchema),
   z.lazy(() => OneHundredAndNinetySeven$outboundSchema),
   z.lazy(() => TwoHundredAndTwentyTwo$outboundSchema),
+  z.lazy(() => TwoHundredAndThirtyFour$outboundSchema),
+  z.lazy(() => TwoHundredAndThirtyEight$outboundSchema),
+  z.lazy(() => TwoHundredAndFortyThree$outboundSchema),
   z.lazy(() => Sixteen$outboundSchema),
   z.lazy(() => Twenty$outboundSchema),
   z.lazy(() => TwentyFour$outboundSchema),
@@ -32377,6 +33206,8 @@ export const Payload$outboundSchema: z.ZodType<
   z.lazy(() => TwoHundredAndTwentyEight$outboundSchema),
   z.lazy(() => TwoHundredAndTwentyNine$outboundSchema),
   z.lazy(() => TwoHundredAndThirtyTwo$outboundSchema),
+  z.lazy(() => TwoHundredAndThirtySix$outboundSchema),
+  z.lazy(() => TwoHundredAndForty$outboundSchema),
   z.lazy(() => Three$outboundSchema),
   z.lazy(() => Four$outboundSchema),
   z.lazy(() => Six$outboundSchema),
@@ -32406,7 +33237,6 @@ export const Payload$outboundSchema: z.ZodType<
   z.lazy(() => OneHundredAndEight$outboundSchema),
   z.lazy(() => OneHundredAndNine$outboundSchema),
   z.lazy(() => OneHundredAndTwelve$outboundSchema),
-  z.lazy(() => OneHundredAndTwentySeven$outboundSchema),
   z.lazy(() => OneHundredAndFortyTwo$outboundSchema),
   z.lazy(() => OneHundredAndFortyThree$outboundSchema),
   z.lazy(() => OneHundredAndFortyFour$outboundSchema),
@@ -32439,6 +33269,7 @@ export const Payload$outboundSchema: z.ZodType<
   z.lazy(() => TwoHundredAndTwentyOne$outboundSchema),
   z.lazy(() => TwoHundredAndThirty$outboundSchema),
   z.lazy(() => TwoHundredAndThirtyOne$outboundSchema),
+  z.lazy(() => TwoHundredAndThirtySeven$outboundSchema),
   z.lazy(() => Five$outboundSchema),
   z.lazy(() => Nine$outboundSchema),
   z.lazy(() => Ten$outboundSchema),
@@ -32493,6 +33324,7 @@ export const Payload$outboundSchema: z.ZodType<
   z.lazy(() => TwoHundredAndEighteen$outboundSchema),
   z.lazy(() => TwoHundredAndTwentyThree$outboundSchema),
   z.lazy(() => TwoHundredAndTwentyFour$outboundSchema),
+  z.lazy(() => TwoHundredAndThirtyNine$outboundSchema),
   z.lazy(() => Payload1$outboundSchema),
   z.lazy(() => Eleven$outboundSchema),
   z.lazy(() => Twelve$outboundSchema),
@@ -32509,6 +33341,7 @@ export const Payload$outboundSchema: z.ZodType<
   z.lazy(() => SixtySix$outboundSchema),
   z.lazy(() => SixtySeven$outboundSchema),
   z.lazy(() => SixtyEight$outboundSchema),
+  z.lazy(() => OneHundredAndTwentySeven$outboundSchema),
   z.lazy(() => OneHundredAndFiftyEight$outboundSchema),
   z.lazy(() => OneHundredAndSixtyFive$outboundSchema),
   z.lazy(() => OneHundredAndSixtySix$outboundSchema),
@@ -32519,6 +33352,8 @@ export const Payload$outboundSchema: z.ZodType<
   z.lazy(() => OneHundredAndEightyOne$outboundSchema),
   z.lazy(() => OneHundredAndEightyTwo$outboundSchema),
   z.lazy(() => TwoHundredAndTwenty$outboundSchema),
+  z.lazy(() => TwoHundredAndFortyOne$outboundSchema),
+  z.lazy(() => TwoHundredAndFortyTwo$outboundSchema),
 ]);
 
 export function payloadToJSON(payload: Payload): string {
@@ -32565,6 +33400,7 @@ export const UserEvent$inboundSchema: z.ZodType<
   payload: types.optional(
     smartUnion([
       z.lazy(() => EightyFive$inboundSchema),
+      z.lazy(() => TwoHundredAndThirtyThree$inboundSchema),
       z.lazy(() => SeventyEight$inboundSchema),
       z.lazy(() => EightyTwo$inboundSchema),
       z.lazy(() => OneHundredAndTwentyTwo$inboundSchema),
@@ -32577,7 +33413,8 @@ export const UserEvent$inboundSchema: z.ZodType<
       z.lazy(() => Eighty$inboundSchema),
       z.lazy(() => NinetySix$inboundSchema),
       z.lazy(() => OneHundredAndEightySix$inboundSchema),
-      z.lazy(() => TwoHundredAndThirtyThree$inboundSchema),
+      z.lazy(() => TwoHundredAndThirtyFive$inboundSchema),
+      z.lazy(() => TwoHundredAndFortyFour$inboundSchema),
       z.lazy(() => Payload2$inboundSchema),
       z.lazy(() => FortySix$inboundSchema),
       z.lazy(() => FiftySix$inboundSchema),
@@ -32599,6 +33436,9 @@ export const UserEvent$inboundSchema: z.ZodType<
       z.lazy(() => OneHundredAndFiftyFour$inboundSchema),
       z.lazy(() => OneHundredAndNinetySeven$inboundSchema),
       z.lazy(() => TwoHundredAndTwentyTwo$inboundSchema),
+      z.lazy(() => TwoHundredAndThirtyFour$inboundSchema),
+      z.lazy(() => TwoHundredAndThirtyEight$inboundSchema),
+      z.lazy(() => TwoHundredAndFortyThree$inboundSchema),
       z.lazy(() => Sixteen$inboundSchema),
       z.lazy(() => Twenty$inboundSchema),
       z.lazy(() => TwentyFour$inboundSchema),
@@ -32655,6 +33495,8 @@ export const UserEvent$inboundSchema: z.ZodType<
       z.lazy(() => TwoHundredAndTwentyEight$inboundSchema),
       z.lazy(() => TwoHundredAndTwentyNine$inboundSchema),
       z.lazy(() => TwoHundredAndThirtyTwo$inboundSchema),
+      z.lazy(() => TwoHundredAndThirtySix$inboundSchema),
+      z.lazy(() => TwoHundredAndForty$inboundSchema),
       z.lazy(() => Three$inboundSchema),
       z.lazy(() => Four$inboundSchema),
       z.lazy(() => Six$inboundSchema),
@@ -32684,7 +33526,6 @@ export const UserEvent$inboundSchema: z.ZodType<
       z.lazy(() => OneHundredAndEight$inboundSchema),
       z.lazy(() => OneHundredAndNine$inboundSchema),
       z.lazy(() => OneHundredAndTwelve$inboundSchema),
-      z.lazy(() => OneHundredAndTwentySeven$inboundSchema),
       z.lazy(() => OneHundredAndFortyTwo$inboundSchema),
       z.lazy(() => OneHundredAndFortyThree$inboundSchema),
       z.lazy(() => OneHundredAndFortyFour$inboundSchema),
@@ -32717,6 +33558,7 @@ export const UserEvent$inboundSchema: z.ZodType<
       z.lazy(() => TwoHundredAndTwentyOne$inboundSchema),
       z.lazy(() => TwoHundredAndThirty$inboundSchema),
       z.lazy(() => TwoHundredAndThirtyOne$inboundSchema),
+      z.lazy(() => TwoHundredAndThirtySeven$inboundSchema),
       z.lazy(() => Five$inboundSchema),
       z.lazy(() => Nine$inboundSchema),
       z.lazy(() => Ten$inboundSchema),
@@ -32771,6 +33613,7 @@ export const UserEvent$inboundSchema: z.ZodType<
       z.lazy(() => TwoHundredAndEighteen$inboundSchema),
       z.lazy(() => TwoHundredAndTwentyThree$inboundSchema),
       z.lazy(() => TwoHundredAndTwentyFour$inboundSchema),
+      z.lazy(() => TwoHundredAndThirtyNine$inboundSchema),
       z.lazy(() => Payload1$inboundSchema),
       z.lazy(() => Eleven$inboundSchema),
       z.lazy(() => Twelve$inboundSchema),
@@ -32787,6 +33630,7 @@ export const UserEvent$inboundSchema: z.ZodType<
       z.lazy(() => SixtySix$inboundSchema),
       z.lazy(() => SixtySeven$inboundSchema),
       z.lazy(() => SixtyEight$inboundSchema),
+      z.lazy(() => OneHundredAndTwentySeven$inboundSchema),
       z.lazy(() => OneHundredAndFiftyEight$inboundSchema),
       z.lazy(() => OneHundredAndSixtyFive$inboundSchema),
       z.lazy(() => OneHundredAndSixtySix$inboundSchema),
@@ -32797,6 +33641,8 @@ export const UserEvent$inboundSchema: z.ZodType<
       z.lazy(() => OneHundredAndEightyOne$inboundSchema),
       z.lazy(() => OneHundredAndEightyTwo$inboundSchema),
       z.lazy(() => TwoHundredAndTwenty$inboundSchema),
+      z.lazy(() => TwoHundredAndFortyOne$inboundSchema),
+      z.lazy(() => TwoHundredAndFortyTwo$inboundSchema),
     ]),
   ),
 });
@@ -32814,6 +33660,7 @@ export type UserEvent$Outbound = {
   viaIds?: Array<string> | undefined;
   payload?:
     | EightyFive$Outbound
+    | TwoHundredAndThirtyThree$Outbound
     | SeventyEight$Outbound
     | EightyTwo$Outbound
     | OneHundredAndTwentyTwo$Outbound
@@ -32826,7 +33673,8 @@ export type UserEvent$Outbound = {
     | Eighty$Outbound
     | NinetySix$Outbound
     | OneHundredAndEightySix$Outbound
-    | TwoHundredAndThirtyThree$Outbound
+    | TwoHundredAndThirtyFive$Outbound
+    | TwoHundredAndFortyFour$Outbound
     | Payload2$Outbound
     | FortySix$Outbound
     | FiftySix$Outbound
@@ -32848,6 +33696,9 @@ export type UserEvent$Outbound = {
     | OneHundredAndFiftyFour$Outbound
     | OneHundredAndNinetySeven$Outbound
     | TwoHundredAndTwentyTwo$Outbound
+    | TwoHundredAndThirtyFour$Outbound
+    | TwoHundredAndThirtyEight$Outbound
+    | TwoHundredAndFortyThree$Outbound
     | Sixteen$Outbound
     | Twenty$Outbound
     | TwentyFour$Outbound
@@ -32904,6 +33755,8 @@ export type UserEvent$Outbound = {
     | TwoHundredAndTwentyEight$Outbound
     | TwoHundredAndTwentyNine$Outbound
     | TwoHundredAndThirtyTwo$Outbound
+    | TwoHundredAndThirtySix$Outbound
+    | TwoHundredAndForty$Outbound
     | Three$Outbound
     | Four$Outbound
     | Six$Outbound
@@ -32933,7 +33786,6 @@ export type UserEvent$Outbound = {
     | OneHundredAndEight$Outbound
     | OneHundredAndNine$Outbound
     | OneHundredAndTwelve$Outbound
-    | OneHundredAndTwentySeven$Outbound
     | OneHundredAndFortyTwo$Outbound
     | OneHundredAndFortyThree$Outbound
     | OneHundredAndFortyFour$Outbound
@@ -32966,6 +33818,7 @@ export type UserEvent$Outbound = {
     | TwoHundredAndTwentyOne$Outbound
     | TwoHundredAndThirty$Outbound
     | TwoHundredAndThirtyOne$Outbound
+    | TwoHundredAndThirtySeven$Outbound
     | Five$Outbound
     | Nine$Outbound
     | Ten$Outbound
@@ -33020,6 +33873,7 @@ export type UserEvent$Outbound = {
     | TwoHundredAndEighteen$Outbound
     | TwoHundredAndTwentyThree$Outbound
     | TwoHundredAndTwentyFour$Outbound
+    | TwoHundredAndThirtyNine$Outbound
     | Payload1$Outbound
     | Eleven$Outbound
     | Twelve$Outbound
@@ -33036,6 +33890,7 @@ export type UserEvent$Outbound = {
     | SixtySix$Outbound
     | SixtySeven$Outbound
     | SixtyEight$Outbound
+    | OneHundredAndTwentySeven$Outbound
     | OneHundredAndFiftyEight$Outbound
     | OneHundredAndSixtyFive$Outbound
     | OneHundredAndSixtySix$Outbound
@@ -33046,6 +33901,8 @@ export type UserEvent$Outbound = {
     | OneHundredAndEightyOne$Outbound
     | OneHundredAndEightyTwo$Outbound
     | TwoHundredAndTwenty$Outbound
+    | TwoHundredAndFortyOne$Outbound
+    | TwoHundredAndFortyTwo$Outbound
     | undefined;
 };
 
@@ -33075,6 +33932,7 @@ export const UserEvent$outboundSchema: z.ZodType<
   viaIds: z.array(z.string()).optional(),
   payload: smartUnion([
     z.lazy(() => EightyFive$outboundSchema),
+    z.lazy(() => TwoHundredAndThirtyThree$outboundSchema),
     z.lazy(() => SeventyEight$outboundSchema),
     z.lazy(() => EightyTwo$outboundSchema),
     z.lazy(() => OneHundredAndTwentyTwo$outboundSchema),
@@ -33087,7 +33945,8 @@ export const UserEvent$outboundSchema: z.ZodType<
     z.lazy(() => Eighty$outboundSchema),
     z.lazy(() => NinetySix$outboundSchema),
     z.lazy(() => OneHundredAndEightySix$outboundSchema),
-    z.lazy(() => TwoHundredAndThirtyThree$outboundSchema),
+    z.lazy(() => TwoHundredAndThirtyFive$outboundSchema),
+    z.lazy(() => TwoHundredAndFortyFour$outboundSchema),
     z.lazy(() => Payload2$outboundSchema),
     z.lazy(() => FortySix$outboundSchema),
     z.lazy(() => FiftySix$outboundSchema),
@@ -33109,6 +33968,9 @@ export const UserEvent$outboundSchema: z.ZodType<
     z.lazy(() => OneHundredAndFiftyFour$outboundSchema),
     z.lazy(() => OneHundredAndNinetySeven$outboundSchema),
     z.lazy(() => TwoHundredAndTwentyTwo$outboundSchema),
+    z.lazy(() => TwoHundredAndThirtyFour$outboundSchema),
+    z.lazy(() => TwoHundredAndThirtyEight$outboundSchema),
+    z.lazy(() => TwoHundredAndFortyThree$outboundSchema),
     z.lazy(() => Sixteen$outboundSchema),
     z.lazy(() => Twenty$outboundSchema),
     z.lazy(() => TwentyFour$outboundSchema),
@@ -33165,6 +34027,8 @@ export const UserEvent$outboundSchema: z.ZodType<
     z.lazy(() => TwoHundredAndTwentyEight$outboundSchema),
     z.lazy(() => TwoHundredAndTwentyNine$outboundSchema),
     z.lazy(() => TwoHundredAndThirtyTwo$outboundSchema),
+    z.lazy(() => TwoHundredAndThirtySix$outboundSchema),
+    z.lazy(() => TwoHundredAndForty$outboundSchema),
     z.lazy(() => Three$outboundSchema),
     z.lazy(() => Four$outboundSchema),
     z.lazy(() => Six$outboundSchema),
@@ -33194,7 +34058,6 @@ export const UserEvent$outboundSchema: z.ZodType<
     z.lazy(() => OneHundredAndEight$outboundSchema),
     z.lazy(() => OneHundredAndNine$outboundSchema),
     z.lazy(() => OneHundredAndTwelve$outboundSchema),
-    z.lazy(() => OneHundredAndTwentySeven$outboundSchema),
     z.lazy(() => OneHundredAndFortyTwo$outboundSchema),
     z.lazy(() => OneHundredAndFortyThree$outboundSchema),
     z.lazy(() => OneHundredAndFortyFour$outboundSchema),
@@ -33227,6 +34090,7 @@ export const UserEvent$outboundSchema: z.ZodType<
     z.lazy(() => TwoHundredAndTwentyOne$outboundSchema),
     z.lazy(() => TwoHundredAndThirty$outboundSchema),
     z.lazy(() => TwoHundredAndThirtyOne$outboundSchema),
+    z.lazy(() => TwoHundredAndThirtySeven$outboundSchema),
     z.lazy(() => Five$outboundSchema),
     z.lazy(() => Nine$outboundSchema),
     z.lazy(() => Ten$outboundSchema),
@@ -33281,6 +34145,7 @@ export const UserEvent$outboundSchema: z.ZodType<
     z.lazy(() => TwoHundredAndEighteen$outboundSchema),
     z.lazy(() => TwoHundredAndTwentyThree$outboundSchema),
     z.lazy(() => TwoHundredAndTwentyFour$outboundSchema),
+    z.lazy(() => TwoHundredAndThirtyNine$outboundSchema),
     z.lazy(() => Payload1$outboundSchema),
     z.lazy(() => Eleven$outboundSchema),
     z.lazy(() => Twelve$outboundSchema),
@@ -33297,6 +34162,7 @@ export const UserEvent$outboundSchema: z.ZodType<
     z.lazy(() => SixtySix$outboundSchema),
     z.lazy(() => SixtySeven$outboundSchema),
     z.lazy(() => SixtyEight$outboundSchema),
+    z.lazy(() => OneHundredAndTwentySeven$outboundSchema),
     z.lazy(() => OneHundredAndFiftyEight$outboundSchema),
     z.lazy(() => OneHundredAndSixtyFive$outboundSchema),
     z.lazy(() => OneHundredAndSixtySix$outboundSchema),
@@ -33307,6 +34173,8 @@ export const UserEvent$outboundSchema: z.ZodType<
     z.lazy(() => OneHundredAndEightyOne$outboundSchema),
     z.lazy(() => OneHundredAndEightyTwo$outboundSchema),
     z.lazy(() => TwoHundredAndTwenty$outboundSchema),
+    z.lazy(() => TwoHundredAndFortyOne$outboundSchema),
+    z.lazy(() => TwoHundredAndFortyTwo$outboundSchema),
   ]).optional(),
 });
 

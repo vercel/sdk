@@ -29,51 +29,7 @@ test("Projects Get Projects", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
-    projects: [
-      {
-        accountId: "<id>",
-        alias: [
-          {
-            deployment: {
-              createdAt: 4236.55,
-              createdIn: "<value>",
-              creator: {
-                email: "Sim56@yahoo.com",
-                uid: "<id>",
-                username: "Antonetta77",
-              },
-              deploymentHostname: "<value>",
-              name: "<value>",
-              id: "<id>",
-              plan: "<value>",
-              private: false,
-              readyState: "<value>",
-              type: "<value>",
-              url: "https://leading-scaffold.com",
-              userId: "<id>",
-            },
-            domain: "productive-charm.org",
-            environment: "preview",
-            target: "STAGING",
-          },
-        ],
-        directoryListing: true,
-        id: "<id>",
-        name: "<value>",
-        nodeVersion: "12.x",
-        resourceConfig: {
-          functionDefaultRegions: [
-            "<value 1>",
-          ],
-        },
-        rollingRelease: {
-          target: "production",
-          stages: null,
-          canaryResponseHeader: false,
-        },
-        serverlessFunctionRegion: "<value>",
-      },
-    ],
+    projects: [],
     pagination: {
       count: 20,
       next: 1540095775951,

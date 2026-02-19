@@ -3,7 +3,7 @@
  */
 
 import { VercelCore } from "../core.js";
-import { encodeFormQuery, encodeJSON, encodeSimple } from "../lib/encodings.js";
+import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -11,13 +11,11 @@ import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
-  CreateSDKKeyRequest,
-  CreateSDKKeyRequest$outboundSchema,
-} from "../models/createsdkkeyop.js";
-import {
-  FlagsSDKKey,
-  FlagsSDKKey$inboundSchema,
-} from "../models/flagssdkkey.js";
+  GetSDKKeysRequest,
+  GetSDKKeysRequest$outboundSchema,
+  GetSDKKeysResponseBody,
+  GetSDKKeysResponseBody$inboundSchema,
+} from "../models/getsdkkeysop.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -32,18 +30,18 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Create an SDK key
+ * Get all SDK keys
  *
  * @remarks
- * Creates an SDK key.
+ * Gets all SDK keys for a project.
  */
-export function flagsCreateSDKKey(
+export function featureFlagsGetSDKKeys(
   client: VercelCore,
-  request: CreateSDKKeyRequest,
+  request: GetSDKKeysRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    FlagsSDKKey,
+    GetSDKKeysResponseBody,
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -63,12 +61,12 @@ export function flagsCreateSDKKey(
 
 async function $do(
   client: VercelCore,
-  request: CreateSDKKeyRequest,
+  request: GetSDKKeysRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      FlagsSDKKey,
+      GetSDKKeysResponseBody,
       | VercelError
       | ResponseValidationError
       | ConnectionError
@@ -83,14 +81,14 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => CreateSDKKeyRequest$outboundSchema.parse(value),
+    (value) => GetSDKKeysRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.RequestBody, { explode: true });
+  const body = null;
 
   const pathParams = {
     projectIdOrName: encodeSimple("projectIdOrName", payload.projectIdOrName, {
@@ -109,7 +107,6 @@ async function $do(
   });
 
   const headers = new Headers(compactMap({
-    "Content-Type": "application/json",
     Accept: "application/json",
   }));
 
@@ -120,7 +117,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "createSdkKey",
+    operationID: "getSdkKeys",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -134,7 +131,7 @@ async function $do(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "PUT",
+    method: "GET",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
@@ -150,7 +147,7 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["400", "401", "402", "403", "404", "409", "4XX", "5XX"],
+    errorCodes: ["400", "401", "402", "403", "404", "4XX", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -160,7 +157,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    FlagsSDKKey,
+    GetSDKKeysResponseBody,
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -170,8 +167,8 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, FlagsSDKKey$inboundSchema),
-    M.fail([400, 401, 402, 403, 404, 409, "4XX"]),
+    M.json(200, GetSDKKeysResponseBody$inboundSchema),
+    M.fail([400, 401, 402, 403, 404, "4XX"]),
     M.fail("5XX"),
   )(response, req);
   if (!result.ok) {

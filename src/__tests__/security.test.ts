@@ -107,25 +107,27 @@ test("Security Put Firewall Config", async () => {
           id: "<id>",
           name: "<value>",
           active: false,
-          conditionGroup: [],
-          action: {},
-          valid: false,
-          validationErrors: [
-            "<value 1>",
-            "<value 2>",
+          conditionGroup: [
+            {
+              conditions: [],
+            },
           ],
+          action: {},
+          valid: true,
+          validationErrors: "<value>",
         },
         {
           id: "<id>",
           name: "<value>",
           active: false,
-          conditionGroup: [],
-          action: {},
-          valid: false,
-          validationErrors: [
-            "<value 1>",
-            "<value 2>",
+          conditionGroup: [
+            {
+              conditions: [],
+            },
           ],
+          action: {},
+          valid: true,
+          validationErrors: "<value>",
         },
       ],
       ips: [],
@@ -231,15 +233,15 @@ test("Security Get Firewall Config", async () => {
       {
         id: "<id>",
         name: "<value>",
-        active: true,
-        conditionGroup: [],
-        action: {},
-        valid: true,
-        validationErrors: [
-          "<value 1>",
-          "<value 2>",
-          "<value 3>",
+        active: false,
+        conditionGroup: [
+          {
+            conditions: [],
+          },
         ],
+        action: {},
+        valid: false,
+        validationErrors: [],
       },
     ],
     ips: [
@@ -287,17 +289,7 @@ test("Security Get Bypass Ip", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
-    result: [
-      {
-        ownerId: "<id>",
-        id: "<id>",
-        domain: "true-wasabi.net",
-        ip: "199.30.163.36",
-        createdAt: "1733944678024",
-        updatedAt: "1735648287173",
-        updatedAtHour: "<value>",
-      },
-    ],
+    result: [],
   });
 });
 

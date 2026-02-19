@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Deletes an SDK key.
  */
-export function flagsDeleteSDKKey(
+export function featureFlagsDeleteSDKKey(
   client: VercelCore,
   request: DeleteSDKKeyRequest,
   options?: RequestOptions,

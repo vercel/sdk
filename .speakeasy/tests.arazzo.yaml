@@ -8383,7 +8383,7 @@ workflows:
             condition: |
               {"data":[]}
             type: simple
-    x-speakeasy-test-group: flags
+    x-speakeasy-test-group: feature-flags
     x-speakeasy-test-rebuild: true
   - workflowId: createSdkKey
     steps:
@@ -8406,7 +8406,7 @@ workflows:
             condition: |
               {"hashKey":"<value>","projectId":"<id>","type":"mobile","environment":"<value>","createdBy":"<value>","createdAt":4791.7,"updatedAt":3218.83}
             type: simple
-    x-speakeasy-test-group: flags
+    x-speakeasy-test-group: feature-flags
     x-speakeasy-test-rebuild: true
   - workflowId: listSandboxes
     steps:

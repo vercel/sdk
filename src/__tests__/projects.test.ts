@@ -28,61 +28,59 @@ test("Projects Get Projects", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual([
-    {
-      accountId: "<id>",
-      alias: [
-        {
-          deployment: {
-            createdAt: 4064.3,
-            createdIn: "<value>",
-            creator: {
-              email: "Lurline.Metz82@yahoo.com",
-              uid: "<id>",
-              username: "Antonetta_Reinger86",
-            },
-            deploymentHostname: "<value>",
-            name: "<value>",
-            id: "<id>",
-            plan: "<value>",
-            private: false,
-            readyState: "<value>",
-            type: "<value>",
-            url: "https://affectionate-underneath.biz/",
-            userId: "<id>",
-          },
-          domain: "informal-loyalty.biz",
-          environment: "production",
-          target: "STAGING",
-        },
-      ],
-      directoryListing: false,
-      deploymentExpiration: {},
-      id: "<id>",
-      name: "<value>",
-      nodeVersion: "24.x",
-      resourceConfig: {
-        functionDefaultRegions: [
-          "<value 1>",
-          "<value 2>",
-          "<value 3>",
-        ],
-      },
-      rollingRelease: {
-        target: "production",
-        stages: [
+  expect(result).toEqual({
+    projects: [
+      {
+        accountId: "<id>",
+        alias: [
           {
-            targetPercentage: 25,
-            requireApproval: false,
-            duration: 600,
-            linearShift: false,
+            deployment: {
+              createdAt: 4236.55,
+              createdIn: "<value>",
+              creator: {
+                email: "Sim56@yahoo.com",
+                uid: "<id>",
+                username: "Antonetta77",
+              },
+              deploymentHostname: "<value>",
+              name: "<value>",
+              id: "<id>",
+              plan: "<value>",
+              private: false,
+              readyState: "<value>",
+              type: "<value>",
+              url: "https://leading-scaffold.com",
+              userId: "<id>",
+            },
+            domain: "productive-charm.org",
+            environment: "preview",
+            target: "STAGING",
           },
         ],
-        canaryResponseHeader: false,
+        directoryListing: true,
+        deploymentExpiration: {},
+        id: "<id>",
+        name: "<value>",
+        nodeVersion: "12.x",
+        resourceConfig: {
+          functionDefaultRegions: [
+            "<value 1>",
+          ],
+        },
+        rollingRelease: {
+          target: "production",
+          stages: null,
+          canaryResponseHeader: false,
+        },
+        serverlessFunctionRegion: "<value>",
       },
-      serverlessFunctionRegion: "<value>",
+    ],
+    pagination: {
+      count: 20,
+      next: 1540095775951,
+      prev: 1540095775951,
     },
-  ]);
+  });
 });
 
 test("Projects Create Project", async () => {

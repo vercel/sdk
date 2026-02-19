@@ -150,12 +150,15 @@ import { tool$environmentUpdateCustomEnvironment } from "./tools/environmentUpda
 import { tool$environmentUpdateSharedEnvVariable } from "./tools/environmentUpdateSharedEnvVariable.js";
 import { tool$featureFlagsCreateFlag } from "./tools/featureFlagsCreateFlag.js";
 import { tool$featureFlagsCreateFlagSegment } from "./tools/featureFlagsCreateFlagSegment.js";
+import { tool$featureFlagsCreateSDKKey } from "./tools/featureFlagsCreateSDKKey.js";
 import { tool$featureFlagsDeleteFlag } from "./tools/featureFlagsDeleteFlag.js";
 import { tool$featureFlagsDeleteFlagSegment } from "./tools/featureFlagsDeleteFlagSegment.js";
+import { tool$featureFlagsDeleteSDKKey } from "./tools/featureFlagsDeleteSDKKey.js";
 import { tool$featureFlagsGetDeploymentFeatureFlags } from "./tools/featureFlagsGetDeploymentFeatureFlags.js";
 import { tool$featureFlagsGetFlag } from "./tools/featureFlagsGetFlag.js";
 import { tool$featureFlagsGetFlagSegment } from "./tools/featureFlagsGetFlagSegment.js";
 import { tool$featureFlagsGetFlagSettings } from "./tools/featureFlagsGetFlagSettings.js";
+import { tool$featureFlagsGetSDKKeys } from "./tools/featureFlagsGetSDKKeys.js";
 import { tool$featureFlagsListFlags } from "./tools/featureFlagsListFlags.js";
 import { tool$featureFlagsListFlagSegments } from "./tools/featureFlagsListFlagSegments.js";
 import { tool$featureFlagsListFlagVersions } from "./tools/featureFlagsListFlagVersions.js";
@@ -164,9 +167,6 @@ import { tool$featureFlagsListTeamFlagSettings } from "./tools/featureFlagsListT
 import { tool$featureFlagsUpdateFlag } from "./tools/featureFlagsUpdateFlag.js";
 import { tool$featureFlagsUpdateFlagSegment } from "./tools/featureFlagsUpdateFlagSegment.js";
 import { tool$featureFlagsUpdateFlagSettings } from "./tools/featureFlagsUpdateFlagSettings.js";
-import { tool$flagsCreateSDKKey } from "./tools/flagsCreateSDKKey.js";
-import { tool$flagsDeleteSDKKey } from "./tools/flagsDeleteSDKKey.js";
-import { tool$flagsGetSDKKeys } from "./tools/flagsGetSDKKeys.js";
 import { tool$integrationsConnectIntegrationResourceToProject } from "./tools/integrationsConnectIntegrationResourceToProject.js";
 import { tool$integrationsCreateIntegrationStoreDirect } from "./tools/integrationsCreateIntegrationStoreDirect.js";
 import { tool$integrationsDeleteConfiguration } from "./tools/integrationsDeleteConfiguration.js";
@@ -305,7 +305,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.19.4",
+    version: "1.19.5",
   });
 
   const client = new VercelCore({
@@ -492,9 +492,9 @@ export function createMCPServer(deps: {
   tool(tool$featureFlagsDeleteFlagSegment);
   tool(tool$featureFlagsUpdateFlagSegment);
   tool(tool$featureFlagsGetDeploymentFeatureFlags);
-  tool(tool$flagsGetSDKKeys);
-  tool(tool$flagsCreateSDKKey);
-  tool(tool$flagsDeleteSDKKey);
+  tool(tool$featureFlagsGetSDKKeys);
+  tool(tool$featureFlagsCreateSDKKey);
+  tool(tool$featureFlagsDeleteSDKKey);
   tool(tool$marketplaceUpdateInstallation);
   tool(tool$marketplaceGetAccountInfo);
   tool(tool$marketplaceGetMember);

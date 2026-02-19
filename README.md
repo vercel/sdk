@@ -494,12 +494,9 @@ run();
 * [deleteFlagSegment](docs/sdks/featureflags/README.md#deleteflagsegment) - Delete a segment
 * [updateFlagSegment](docs/sdks/featureflags/README.md#updateflagsegment) - Update a segment
 * [getDeploymentFeatureFlags](docs/sdks/featureflags/README.md#getdeploymentfeatureflags) - Retrieve the feature flags of a deployment
-
-### [Flags](docs/sdks/flags/README.md)
-
-* [getSDKKeys](docs/sdks/flags/README.md#getsdkkeys) - Get all SDK keys
-* [createSDKKey](docs/sdks/flags/README.md#createsdkkey) - Create an SDK key
-* [deleteSDKKey](docs/sdks/flags/README.md#deletesdkkey) - Delete an SDK key
+* [getSDKKeys](docs/sdks/featureflags/README.md#getsdkkeys) - Get all SDK keys
+* [createSDKKey](docs/sdks/featureflags/README.md#createsdkkey) - Create an SDK key
+* [deleteSDKKey](docs/sdks/featureflags/README.md#deletesdkkey) - Delete an SDK key
 
 ### [Integrations](docs/sdks/integrations/README.md)
 
@@ -824,12 +821,15 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`environmentUpdateSharedEnvVariable`](docs/sdks/environment/README.md#updatesharedenvvariable) - Updates one or more shared environment variables
 - [`featureFlagsCreateFlag`](docs/sdks/featureflags/README.md#createflag) - Create a flag
 - [`featureFlagsCreateFlagSegment`](docs/sdks/featureflags/README.md#createflagsegment) - Create a segment
+- [`featureFlagsCreateSDKKey`](docs/sdks/featureflags/README.md#createsdkkey) - Create an SDK key
 - [`featureFlagsDeleteFlag`](docs/sdks/featureflags/README.md#deleteflag) - Delete a flag
 - [`featureFlagsDeleteFlagSegment`](docs/sdks/featureflags/README.md#deleteflagsegment) - Delete a segment
+- [`featureFlagsDeleteSDKKey`](docs/sdks/featureflags/README.md#deletesdkkey) - Delete an SDK key
 - [`featureFlagsGetDeploymentFeatureFlags`](docs/sdks/featureflags/README.md#getdeploymentfeatureflags) - Retrieve the feature flags of a deployment
 - [`featureFlagsGetFlag`](docs/sdks/featureflags/README.md#getflag) - Get a flag
 - [`featureFlagsGetFlagSegment`](docs/sdks/featureflags/README.md#getflagsegment) - Get a segment
 - [`featureFlagsGetFlagSettings`](docs/sdks/featureflags/README.md#getflagsettings) - Get project flag settings
+- [`featureFlagsGetSDKKeys`](docs/sdks/featureflags/README.md#getsdkkeys) - Get all SDK keys
 - [`featureFlagsListFlags`](docs/sdks/featureflags/README.md#listflags) - List all flags
 - [`featureFlagsListFlagSegments`](docs/sdks/featureflags/README.md#listflagsegments) - List segments
 - [`featureFlagsListFlagVersions`](docs/sdks/featureflags/README.md#listflagversions) - List flag versions
@@ -838,9 +838,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`featureFlagsUpdateFlag`](docs/sdks/featureflags/README.md#updateflag) - Update a flag
 - [`featureFlagsUpdateFlagSegment`](docs/sdks/featureflags/README.md#updateflagsegment) - Update a segment
 - [`featureFlagsUpdateFlagSettings`](docs/sdks/featureflags/README.md#updateflagsettings) - Update project flag settings
-- [`flagsCreateSDKKey`](docs/sdks/flags/README.md#createsdkkey) - Create an SDK key
-- [`flagsDeleteSDKKey`](docs/sdks/flags/README.md#deletesdkkey) - Delete an SDK key
-- [`flagsGetSDKKeys`](docs/sdks/flags/README.md#getsdkkeys) - Get all SDK keys
 - [`integrationsConnectIntegrationResourceToProject`](docs/sdks/integrations/README.md#connectintegrationresourcetoproject) - Connect integration resource to project
 - [`integrationsCreateIntegrationStoreDirect`](docs/sdks/integrations/README.md#createintegrationstoredirect) - Create integration store (free and paid plans)
 - [`integrationsDeleteConfiguration`](docs/sdks/integrations/README.md#deleteconfiguration) - Delete an integration configuration

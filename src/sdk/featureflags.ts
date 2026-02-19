@@ -4,12 +4,15 @@
 
 import { featureFlagsCreateFlag } from "../funcs/featureFlagsCreateFlag.js";
 import { featureFlagsCreateFlagSegment } from "../funcs/featureFlagsCreateFlagSegment.js";
+import { featureFlagsCreateSDKKey } from "../funcs/featureFlagsCreateSDKKey.js";
 import { featureFlagsDeleteFlag } from "../funcs/featureFlagsDeleteFlag.js";
 import { featureFlagsDeleteFlagSegment } from "../funcs/featureFlagsDeleteFlagSegment.js";
+import { featureFlagsDeleteSDKKey } from "../funcs/featureFlagsDeleteSDKKey.js";
 import { featureFlagsGetDeploymentFeatureFlags } from "../funcs/featureFlagsGetDeploymentFeatureFlags.js";
 import { featureFlagsGetFlag } from "../funcs/featureFlagsGetFlag.js";
 import { featureFlagsGetFlagSegment } from "../funcs/featureFlagsGetFlagSegment.js";
 import { featureFlagsGetFlagSettings } from "../funcs/featureFlagsGetFlagSettings.js";
+import { featureFlagsGetSDKKeys } from "../funcs/featureFlagsGetSDKKeys.js";
 import { featureFlagsListFlags } from "../funcs/featureFlagsListFlags.js";
 import { featureFlagsListFlagSegments } from "../funcs/featureFlagsListFlagSegments.js";
 import { featureFlagsListFlagVersions } from "../funcs/featureFlagsListFlagVersions.js";
@@ -27,9 +30,12 @@ import {
   CreateFlagSegmentRequest,
   CreateFlagSegmentResponseBody,
 } from "../models/createflagsegmentop.js";
+import { CreateSDKKeyRequest } from "../models/createsdkkeyop.js";
 import { DeleteFlagRequest } from "../models/deleteflagop.js";
 import { DeleteFlagSegmentRequest } from "../models/deleteflagsegmentop.js";
+import { DeleteSDKKeyRequest } from "../models/deletesdkkeyop.js";
 import { Flag } from "../models/flag.js";
+import { FlagsSDKKey } from "../models/flagssdkkey.js";
 import {
   GetDeploymentFeatureFlagsRequest,
   GetDeploymentFeatureFlagsResponseBody,
@@ -40,6 +46,10 @@ import {
   GetFlagSettingsRequest,
   GetFlagSettingsResponseBody,
 } from "../models/getflagsettingsop.js";
+import {
+  GetSDKKeysRequest,
+  GetSDKKeysResponseBody,
+} from "../models/getsdkkeysop.js";
 import {
   ListFlagSegmentsRequest,
   ListFlagSegmentsResponseBody,
@@ -336,6 +346,57 @@ export class FeatureFlags extends ClientSDK {
     options?: RequestOptions,
   ): Promise<GetDeploymentFeatureFlagsResponseBody> {
     return unwrapAsync(featureFlagsGetDeploymentFeatureFlags(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get all SDK keys
+   *
+   * @remarks
+   * Gets all SDK keys for a project.
+   */
+  async getSDKKeys(
+    request: GetSDKKeysRequest,
+    options?: RequestOptions,
+  ): Promise<GetSDKKeysResponseBody> {
+    return unwrapAsync(featureFlagsGetSDKKeys(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Create an SDK key
+   *
+   * @remarks
+   * Creates an SDK key.
+   */
+  async createSDKKey(
+    request: CreateSDKKeyRequest,
+    options?: RequestOptions,
+  ): Promise<FlagsSDKKey> {
+    return unwrapAsync(featureFlagsCreateSDKKey(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete an SDK key
+   *
+   * @remarks
+   * Deletes an SDK key.
+   */
+  async deleteSDKKey(
+    request: DeleteSDKKeyRequest,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(featureFlagsDeleteSDKKey(
       this,
       request,
       options,

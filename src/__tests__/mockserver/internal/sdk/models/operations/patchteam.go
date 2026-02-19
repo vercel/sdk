@@ -680,19 +680,19 @@ func (u NsnbConfigUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type NsnbConfigUnion: all fields are null")
 }
 
-// PatchTeamDefault - Default build machine type for new builds: standard, enhanced, or turbo.
-type PatchTeamDefault string
+// Default build machine type for new builds: standard, enhanced, or turbo.
+type Default string
 
 const (
-	PatchTeamDefaultStandard PatchTeamDefault = "standard"
-	PatchTeamDefaultEnhanced PatchTeamDefault = "enhanced"
-	PatchTeamDefaultTurbo    PatchTeamDefault = "turbo"
+	DefaultStandard Default = "standard"
+	DefaultEnhanced Default = "enhanced"
+	DefaultTurbo    Default = "turbo"
 )
 
-func (e PatchTeamDefault) ToPointer() *PatchTeamDefault {
+func (e Default) ToPointer() *Default {
 	return &e
 }
-func (e *PatchTeamDefault) UnmarshalJSON(data []byte) error {
+func (e *Default) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -703,20 +703,20 @@ func (e *PatchTeamDefault) UnmarshalJSON(data []byte) error {
 	case "enhanced":
 		fallthrough
 	case "turbo":
-		*e = PatchTeamDefault(v)
+		*e = Default(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PatchTeamDefault: %v", v)
+		return fmt.Errorf("invalid value for Default: %v", v)
 	}
 }
 
 // PatchTeamBuildMachine - Build machine configuration.
 type PatchTeamBuildMachine struct {
 	// Default build machine type for new builds: standard, enhanced, or turbo.
-	Default *PatchTeamDefault `json:"default,omitempty"`
+	Default *Default `json:"default,omitempty"`
 }
 
-func (o *PatchTeamBuildMachine) GetDefault() *PatchTeamDefault {
+func (o *PatchTeamBuildMachine) GetDefault() *Default {
 	if o == nil {
 		return nil
 	}

@@ -141,6 +141,19 @@ export type PurchaseType = ClosedEnum<typeof PurchaseType>;
 /**
  * An object containing infomation related to the amount of platform resources may be allocated to the User account.
  */
+export const DefaultPurchaseType = {
+  Standard: "standard",
+  Enhanced: "enhanced",
+  Turbo: "turbo",
+} as const;
+/**
+ * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+ */
+export type DefaultPurchaseType = ClosedEnum<typeof DefaultPurchaseType>;
+
+/**
+ * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+ */
 export type AuthUserBuildMachine = {
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
@@ -150,6 +163,10 @@ export type AuthUserBuildMachine = {
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
   purchaseType?: PurchaseType | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  defaultPurchaseType?: DefaultPurchaseType | undefined;
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
@@ -480,6 +497,10 @@ export type AuthUser = {
    * The user's default team.
    */
   defaultTeamId: string | null;
+  /**
+   * Indicates whether the user is managed by an enterprise.
+   */
+  isEnterpriseManaged?: boolean | undefined;
 };
 
 /** @internal */
@@ -667,6 +688,15 @@ export const PurchaseType$outboundSchema: z.ZodNativeEnum<typeof PurchaseType> =
   PurchaseType$inboundSchema;
 
 /** @internal */
+export const DefaultPurchaseType$inboundSchema: z.ZodNativeEnum<
+  typeof DefaultPurchaseType
+> = z.nativeEnum(DefaultPurchaseType);
+/** @internal */
+export const DefaultPurchaseType$outboundSchema: z.ZodNativeEnum<
+  typeof DefaultPurchaseType
+> = DefaultPurchaseType$inboundSchema;
+
+/** @internal */
 export const AuthUserBuildMachine$inboundSchema: z.ZodType<
   AuthUserBuildMachine,
   z.ZodTypeDef,
@@ -674,6 +704,7 @@ export const AuthUserBuildMachine$inboundSchema: z.ZodType<
 > = z.object({
   default: types.optional(AuthUserDefault$inboundSchema),
   purchaseType: types.optional(PurchaseType$inboundSchema),
+  defaultPurchaseType: types.optional(DefaultPurchaseType$inboundSchema),
   isDefaultBuildMachine: types.optional(types.boolean()),
   cores: types.optional(types.number()),
   memory: types.optional(types.number()),
@@ -682,6 +713,7 @@ export const AuthUserBuildMachine$inboundSchema: z.ZodType<
 export type AuthUserBuildMachine$Outbound = {
   default?: string | undefined;
   purchaseType?: string | undefined;
+  defaultPurchaseType?: string | undefined;
   isDefaultBuildMachine?: boolean | undefined;
   cores?: number | undefined;
   memory?: number | undefined;
@@ -695,6 +727,7 @@ export const AuthUserBuildMachine$outboundSchema: z.ZodType<
 > = z.object({
   default: AuthUserDefault$outboundSchema.optional(),
   purchaseType: PurchaseType$outboundSchema.optional(),
+  defaultPurchaseType: DefaultPurchaseType$outboundSchema.optional(),
   isDefaultBuildMachine: z.boolean().optional(),
   cores: z.number().optional(),
   memory: z.number().optional(),
@@ -1427,6 +1460,7 @@ export const AuthUser$inboundSchema: z.ZodType<
   username: types.string(),
   avatar: types.nullable(types.string()),
   defaultTeamId: types.nullable(types.string()),
+  isEnterpriseManaged: types.optional(types.boolean()),
 });
 /** @internal */
 export type AuthUser$Outbound = {
@@ -1456,6 +1490,7 @@ export type AuthUser$Outbound = {
   username: string;
   avatar: string | null;
   defaultTeamId: string | null;
+  isEnterpriseManaged?: boolean | undefined;
 };
 
 /** @internal */
@@ -1496,6 +1531,7 @@ export const AuthUser$outboundSchema: z.ZodType<
   username: z.string(),
   avatar: z.nullable(z.string()),
   defaultTeamId: z.nullable(z.string()),
+  isEnterpriseManaged: z.boolean().optional(),
 });
 
 export function authUserToJSON(authUser: AuthUser): string {

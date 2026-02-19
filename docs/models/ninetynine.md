@@ -8,16 +8,13 @@ The payload of the event, if requested.
 import { NinetyNine } from "@vercel/sdk/models/userevent.js";
 
 let value: NinetyNine = {
-  projectId: "<id>",
-  projectName: "<value>",
-  disableRepositoryDispatchEvents: true,
+  drainUrl: "https://lean-disadvantage.info",
 };
 ```
 
 ## Fields
 
-| Field                             | Type                              | Required                          | Description                       |
-| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
-| `projectId`                       | *string*                          | :heavy_check_mark:                | N/A                               |
-| `projectName`                     | *string*                          | :heavy_check_mark:                | N/A                               |
-| `disableRepositoryDispatchEvents` | *boolean*                         | :heavy_check_mark:                | N/A                               |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `drainUrl`         | *string*           | :heavy_check_mark: | N/A                |
+| `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |

@@ -8,27 +8,16 @@ The payload of the event, if requested.
 import { OneHundredAndFiftyFive } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndFiftyFive = {
-  budget: {
-    budgetItem: {
-      type: "fixed",
-      fixedBudget: 268.4,
-      previousSpend: [
-        2211.33,
-        3066.93,
-        9049.6,
-      ],
-      notifiedAt: [],
-      createdAt: 2535.69,
-      isActive: true,
-      teamId: "<id>",
-      id: "<id>",
-    },
-  },
+  previous: {},
+  next: {},
 };
 ```
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `budget`                             | [models.Budget](../models/budget.md) | :heavy_check_mark:                   | N/A                                  |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `projectId`                                                                    | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload155Previous](../models/usereventpayload155previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `next`                                                                         | [models.UserEventPayload155Next](../models/usereventpayload155next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |

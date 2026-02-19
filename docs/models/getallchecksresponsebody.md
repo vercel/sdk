@@ -8,14 +8,14 @@ import { GetAllChecksResponseBody } from "@vercel/sdk/models/getallchecksop.js";
 let value: GetAllChecksResponseBody = {
   checks: [
     {
-      createdAt: 3740.14,
+      createdAt: 7107.03,
       id: "<id>",
       integrationId: "<id>",
       name: "<value>",
-      rerequestable: false,
+      rerequestable: true,
       blocking: true,
       status: "running",
-      updatedAt: 7646.44,
+      updatedAt: 2249.21,
     },
   ],
 };
@@ -23,6 +23,6 @@ let value: GetAllChecksResponseBody = {
 
 ## Fields
 
-| Field                                  | Type                                   | Required                               | Description                            |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| `checks`                               | [models.Checks](../models/checks.md)[] | :heavy_check_mark:                     | N/A                                    |
+| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `checks`                                                       | [models.GetAllChecksChecks](../models/getallcheckschecks.md)[] | :heavy_check_mark:                                             | N/A                                                            |

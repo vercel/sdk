@@ -784,12 +784,24 @@ export type PutFirewallConfigRulesRedirect = {
   permanent: boolean;
 };
 
+export const PutFirewallConfigLogHeadersSecurity2 = {
+  Wildcard: "*",
+} as const;
+export type PutFirewallConfigLogHeadersSecurity2 = ClosedEnum<
+  typeof PutFirewallConfigLogHeadersSecurity2
+>;
+
+export type PutFirewallConfigRulesLogHeaders =
+  | Array<string>
+  | PutFirewallConfigLogHeadersSecurity2;
+
 export type PutFirewallConfigRulesMitigate = {
   action: PutFirewallConfigRulesSecurityResponse200Action;
   rateLimit?: PutFirewallConfigRulesRateLimit | null | undefined;
   redirect?: PutFirewallConfigRulesRedirect | null | undefined;
   actionDuration?: string | null | undefined;
   bypassSystem?: boolean | null | undefined;
+  logHeaders?: Array<string> | PutFirewallConfigLogHeadersSecurity2 | undefined;
 };
 
 export type PutFirewallConfigRulesAction = {
@@ -923,12 +935,24 @@ export type PutFirewallConfigRulesSecurityRedirect = {
   permanent: boolean;
 };
 
+export const PutFirewallConfigLogHeaders2 = {
+  Wildcard: "*",
+} as const;
+export type PutFirewallConfigLogHeaders2 = ClosedEnum<
+  typeof PutFirewallConfigLogHeaders2
+>;
+
+export type PutFirewallConfigRulesSecurityLogHeaders =
+  | Array<string>
+  | PutFirewallConfigLogHeaders2;
+
 export type PutFirewallConfigRulesSecurityMitigate = {
   action: PutFirewallConfigRulesSecurityResponseAction;
   rateLimit?: PutFirewallConfigRulesSecurityRateLimit | null | undefined;
   redirect?: PutFirewallConfigRulesSecurityRedirect | null | undefined;
   actionDuration?: string | null | undefined;
   bypassSystem?: boolean | null | undefined;
+  logHeaders?: Array<string> | PutFirewallConfigLogHeaders2 | undefined;
 };
 
 export type PutFirewallConfigRulesSecurityAction = {
@@ -3332,6 +3356,57 @@ export function putFirewallConfigRulesRedirectFromJSON(
 }
 
 /** @internal */
+export const PutFirewallConfigLogHeadersSecurity2$inboundSchema:
+  z.ZodNativeEnum<typeof PutFirewallConfigLogHeadersSecurity2> = z.nativeEnum(
+    PutFirewallConfigLogHeadersSecurity2,
+  );
+/** @internal */
+export const PutFirewallConfigLogHeadersSecurity2$outboundSchema:
+  z.ZodNativeEnum<typeof PutFirewallConfigLogHeadersSecurity2> =
+    PutFirewallConfigLogHeadersSecurity2$inboundSchema;
+
+/** @internal */
+export const PutFirewallConfigRulesLogHeaders$inboundSchema: z.ZodType<
+  PutFirewallConfigRulesLogHeaders,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.array(types.string()),
+  PutFirewallConfigLogHeadersSecurity2$inboundSchema,
+]);
+/** @internal */
+export type PutFirewallConfigRulesLogHeaders$Outbound = Array<string> | string;
+
+/** @internal */
+export const PutFirewallConfigRulesLogHeaders$outboundSchema: z.ZodType<
+  PutFirewallConfigRulesLogHeaders$Outbound,
+  z.ZodTypeDef,
+  PutFirewallConfigRulesLogHeaders
+> = smartUnion([
+  z.array(z.string()),
+  PutFirewallConfigLogHeadersSecurity2$outboundSchema,
+]);
+
+export function putFirewallConfigRulesLogHeadersToJSON(
+  putFirewallConfigRulesLogHeaders: PutFirewallConfigRulesLogHeaders,
+): string {
+  return JSON.stringify(
+    PutFirewallConfigRulesLogHeaders$outboundSchema.parse(
+      putFirewallConfigRulesLogHeaders,
+    ),
+  );
+}
+export function putFirewallConfigRulesLogHeadersFromJSON(
+  jsonString: string,
+): SafeParseResult<PutFirewallConfigRulesLogHeaders, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PutFirewallConfigRulesLogHeaders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PutFirewallConfigRulesLogHeaders' from JSON`,
+  );
+}
+
+/** @internal */
 export const PutFirewallConfigRulesMitigate$inboundSchema: z.ZodType<
   PutFirewallConfigRulesMitigate,
   z.ZodTypeDef,
@@ -3346,6 +3421,12 @@ export const PutFirewallConfigRulesMitigate$inboundSchema: z.ZodType<
   ).optional(),
   actionDuration: z.nullable(types.string()).optional(),
   bypassSystem: z.nullable(types.boolean()).optional(),
+  logHeaders: types.optional(
+    smartUnion([
+      z.array(types.string()),
+      PutFirewallConfigLogHeadersSecurity2$inboundSchema,
+    ]),
+  ),
 });
 /** @internal */
 export type PutFirewallConfigRulesMitigate$Outbound = {
@@ -3354,6 +3435,7 @@ export type PutFirewallConfigRulesMitigate$Outbound = {
   redirect?: PutFirewallConfigRulesRedirect$Outbound | null | undefined;
   actionDuration?: string | null | undefined;
   bypassSystem?: boolean | null | undefined;
+  logHeaders?: Array<string> | string | undefined;
 };
 
 /** @internal */
@@ -3371,6 +3453,10 @@ export const PutFirewallConfigRulesMitigate$outboundSchema: z.ZodType<
   ).optional(),
   actionDuration: z.nullable(z.string()).optional(),
   bypassSystem: z.nullable(z.boolean()).optional(),
+  logHeaders: smartUnion([
+    z.array(z.string()),
+    PutFirewallConfigLogHeadersSecurity2$outboundSchema,
+  ]).optional(),
 });
 
 export function putFirewallConfigRulesMitigateToJSON(
@@ -3816,6 +3902,65 @@ export function putFirewallConfigRulesSecurityRedirectFromJSON(
 }
 
 /** @internal */
+export const PutFirewallConfigLogHeaders2$inboundSchema: z.ZodNativeEnum<
+  typeof PutFirewallConfigLogHeaders2
+> = z.nativeEnum(PutFirewallConfigLogHeaders2);
+/** @internal */
+export const PutFirewallConfigLogHeaders2$outboundSchema: z.ZodNativeEnum<
+  typeof PutFirewallConfigLogHeaders2
+> = PutFirewallConfigLogHeaders2$inboundSchema;
+
+/** @internal */
+export const PutFirewallConfigRulesSecurityLogHeaders$inboundSchema: z.ZodType<
+  PutFirewallConfigRulesSecurityLogHeaders,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.array(types.string()),
+  PutFirewallConfigLogHeaders2$inboundSchema,
+]);
+/** @internal */
+export type PutFirewallConfigRulesSecurityLogHeaders$Outbound =
+  | Array<string>
+  | string;
+
+/** @internal */
+export const PutFirewallConfigRulesSecurityLogHeaders$outboundSchema: z.ZodType<
+  PutFirewallConfigRulesSecurityLogHeaders$Outbound,
+  z.ZodTypeDef,
+  PutFirewallConfigRulesSecurityLogHeaders
+> = smartUnion([
+  z.array(z.string()),
+  PutFirewallConfigLogHeaders2$outboundSchema,
+]);
+
+export function putFirewallConfigRulesSecurityLogHeadersToJSON(
+  putFirewallConfigRulesSecurityLogHeaders:
+    PutFirewallConfigRulesSecurityLogHeaders,
+): string {
+  return JSON.stringify(
+    PutFirewallConfigRulesSecurityLogHeaders$outboundSchema.parse(
+      putFirewallConfigRulesSecurityLogHeaders,
+    ),
+  );
+}
+export function putFirewallConfigRulesSecurityLogHeadersFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  PutFirewallConfigRulesSecurityLogHeaders,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PutFirewallConfigRulesSecurityLogHeaders$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PutFirewallConfigRulesSecurityLogHeaders' from JSON`,
+  );
+}
+
+/** @internal */
 export const PutFirewallConfigRulesSecurityMitigate$inboundSchema: z.ZodType<
   PutFirewallConfigRulesSecurityMitigate,
   z.ZodTypeDef,
@@ -3830,6 +3975,12 @@ export const PutFirewallConfigRulesSecurityMitigate$inboundSchema: z.ZodType<
   ).optional(),
   actionDuration: z.nullable(types.string()).optional(),
   bypassSystem: z.nullable(types.boolean()).optional(),
+  logHeaders: types.optional(
+    smartUnion([
+      z.array(types.string()),
+      PutFirewallConfigLogHeaders2$inboundSchema,
+    ]),
+  ),
 });
 /** @internal */
 export type PutFirewallConfigRulesSecurityMitigate$Outbound = {
@@ -3841,6 +3992,7 @@ export type PutFirewallConfigRulesSecurityMitigate$Outbound = {
   redirect?: PutFirewallConfigRulesSecurityRedirect$Outbound | null | undefined;
   actionDuration?: string | null | undefined;
   bypassSystem?: boolean | null | undefined;
+  logHeaders?: Array<string> | string | undefined;
 };
 
 /** @internal */
@@ -3858,6 +4010,10 @@ export const PutFirewallConfigRulesSecurityMitigate$outboundSchema: z.ZodType<
   ).optional(),
   actionDuration: z.nullable(z.string()).optional(),
   bypassSystem: z.nullable(z.boolean()).optional(),
+  logHeaders: smartUnion([
+    z.array(z.string()),
+    PutFirewallConfigLogHeaders2$outboundSchema,
+  ]).optional(),
 });
 
 export function putFirewallConfigRulesSecurityMitigateToJSON(

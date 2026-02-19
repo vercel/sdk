@@ -8,16 +8,22 @@ The payload of the event, if requested.
 import { OneHundredAndFortyNine } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndFortyNine = {
-  team: {
-    id: "<id>",
+  projectId: "<id>",
+  projectName: "<value>",
+  next: {
+    skewProtectionAllowedDomains: [
+      "<value 1>",
+    ],
   },
+  previous: {},
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `team`                                                                 | [models.UserEventPayload149Team](../models/usereventpayload149team.md) | :heavy_check_mark:                                                     | N/A                                                                    |
-| `previousRule`                                                         | [models.PreviousRule](../models/previousrule.md)                       | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `nextRule`                                                             | [models.NextRule](../models/nextrule.md)                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `next`                                                                         | [models.UserEventPayload149Next](../models/usereventpayload149next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload149Previous](../models/usereventpayload149previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |

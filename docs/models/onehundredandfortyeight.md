@@ -8,12 +8,20 @@ The payload of the event, if requested.
 import { OneHundredAndFortyEight } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndFortyEight = {
-  email: "Catharine.Jast@gmail.com",
+  projectId: "<id>",
+  projectName: "<value>",
+  next: {
+    skewProtectionMaxAge: 2270.45,
+  },
+  previous: {},
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `email`            | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `next`                                                                         | [models.UserEventPayload148Next](../models/usereventpayload148next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload148Previous](../models/usereventpayload148previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |

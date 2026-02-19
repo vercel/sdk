@@ -160,7 +160,7 @@ export type ListBillingChargesResponseBody = {
    */
   serviceProviderName: string;
   /**
-   * Custom key-value metadata (ProjectId, ProjectName)
+   * Charge metadata including the Vercel ProjectId and ProjectName information
    */
   tags: { [k: string]: string };
   /**

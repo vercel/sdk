@@ -373,12 +373,44 @@ func (e *AuthUserPurchaseType) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// AuthUserDefaultPurchaseType - An object containing infomation related to the amount of platform resources may be allocated to the User account.
+type AuthUserDefaultPurchaseType string
+
+const (
+	AuthUserDefaultPurchaseTypeStandard AuthUserDefaultPurchaseType = "standard"
+	AuthUserDefaultPurchaseTypeEnhanced AuthUserDefaultPurchaseType = "enhanced"
+	AuthUserDefaultPurchaseTypeTurbo    AuthUserDefaultPurchaseType = "turbo"
+)
+
+func (e AuthUserDefaultPurchaseType) ToPointer() *AuthUserDefaultPurchaseType {
+	return &e
+}
+func (e *AuthUserDefaultPurchaseType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "standard":
+		fallthrough
+	case "enhanced":
+		fallthrough
+	case "turbo":
+		*e = AuthUserDefaultPurchaseType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AuthUserDefaultPurchaseType: %v", v)
+	}
+}
+
 // AuthUserBuildMachine - An object containing infomation related to the amount of platform resources may be allocated to the User account.
 type AuthUserBuildMachine struct {
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	Default *AuthUserDefault `json:"default,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	PurchaseType *AuthUserPurchaseType `json:"purchaseType,omitempty"`
+	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
+	DefaultPurchaseType *AuthUserDefaultPurchaseType `json:"defaultPurchaseType,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	IsDefaultBuildMachine *bool `json:"isDefaultBuildMachine,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
@@ -410,6 +442,13 @@ func (o *AuthUserBuildMachine) GetPurchaseType() *AuthUserPurchaseType {
 		return nil
 	}
 	return o.PurchaseType
+}
+
+func (o *AuthUserBuildMachine) GetDefaultPurchaseType() *AuthUserDefaultPurchaseType {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultPurchaseType
 }
 
 func (o *AuthUserBuildMachine) GetIsDefaultBuildMachine() *bool {
@@ -1362,6 +1401,8 @@ type AuthUser struct {
 	Avatar *string `json:"avatar"`
 	// The user's default team.
 	DefaultTeamID *string `json:"defaultTeamId"`
+	// Indicates whether the user is managed by an enterprise.
+	IsEnterpriseManaged *bool `json:"isEnterpriseManaged,omitempty"`
 }
 
 func (a AuthUser) MarshalJSON() ([]byte, error) {
@@ -1527,4 +1568,11 @@ func (o *AuthUser) GetDefaultTeamID() *string {
 		return nil
 	}
 	return o.DefaultTeamID
+}
+
+func (o *AuthUser) GetIsEnterpriseManaged() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsEnterpriseManaged
 }

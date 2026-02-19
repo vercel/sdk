@@ -171,7 +171,7 @@ export type ResponseBodyEnvId = string | GetProjectsEnvId2;
 
 export type ResponseBodyAws = {
   subnetIds: Array<string>;
-  securityGroupId: string;
+  securityGroupId?: string | undefined;
 };
 
 export type ResponseBodyConnectConfigurations = {
@@ -577,6 +577,7 @@ export type ResponseBodyCustomEnvironments = {
 };
 
 export const GetProjectsResponseBodyProjectsFramework = {
+  Services: "services",
   Blitzjs: "blitzjs",
   Nextjs: "nextjs",
   Gatsby: "gatsby",
@@ -639,7 +640,7 @@ export const GetProjectsResponseBodyProjectsFramework = {
   Ruby: "ruby",
   Rust: "rust",
   Node: "node",
-  Services: "services",
+  Go: "go",
 } as const;
 export type GetProjectsResponseBodyProjectsFramework = ClosedEnum<
   typeof GetProjectsResponseBodyProjectsFramework
@@ -948,6 +949,7 @@ export type GetProjectsResponseBodyFunctionDefaultMemoryType = ClosedEnum<
 >;
 
 export const GetProjectsResponseBodyBuildMachineType = {
+  Standard: "standard",
   Enhanced: "enhanced",
   Turbo: "turbo",
 } as const;
@@ -1052,6 +1054,7 @@ export type GetProjectsResponseBodyProjectsFunctionDefaultMemoryType =
   ClosedEnum<typeof GetProjectsResponseBodyProjectsFunctionDefaultMemoryType>;
 
 export const GetProjectsResponseBodyProjectsBuildMachineType = {
+  Standard: "standard",
   Enhanced: "enhanced",
   Turbo: "turbo",
 } as const;
@@ -1321,6 +1324,7 @@ export type ResponseBodyPermissions = {
   teamOwnMembership?: Array<ACLAction> | undefined;
   teamOwnMembershipDisconnectSAML?: Array<ACLAction> | undefined;
   token?: Array<ACLAction> | undefined;
+  toolbarComment?: Array<ACLAction> | undefined;
   usage?: Array<ACLAction> | undefined;
   usageCycle?: Array<ACLAction> | undefined;
   vercelRun?: Array<ACLAction> | undefined;
@@ -1331,6 +1335,7 @@ export type ResponseBodyPermissions = {
   webhookEvent?: Array<ACLAction> | undefined;
   aliasProject?: Array<ACLAction> | undefined;
   aliasProtectionBypass?: Array<ACLAction> | undefined;
+  bulkRedirects?: Array<ACLAction> | undefined;
   buildMachine?: Array<ACLAction> | undefined;
   connectConfigurationLink?: Array<ACLAction> | undefined;
   dataCacheNamespace?: Array<ACLAction> | undefined;
@@ -1384,6 +1389,7 @@ export type ResponseBodyPermissions = {
   projectProductionBranch?: Array<ACLAction> | undefined;
   projectProtectionBypass?: Array<ACLAction> | undefined;
   projectRollingRelease?: Array<ACLAction> | undefined;
+  projectRoutes?: Array<ACLAction> | undefined;
   projectSupportCase?: Array<ACLAction> | undefined;
   projectSupportCaseComment?: Array<ACLAction> | undefined;
   projectTier?: Array<ACLAction> | undefined;
@@ -1506,7 +1512,7 @@ export type ResponseBodyTrustedIps =
   | GetProjectsTrustedIps1
   | GetProjectsTrustedIps2;
 
-export type GetProjectsResponseBodyGitComments = {
+export type GetProjectsResponseBodyProjectsGitComments = {
   /**
    * Whether the Vercel bot should comment on PRs
    */
@@ -2024,10 +2030,7 @@ export type GetProjectsResponseBodyProjects = {
   /**
    * Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
    */
-  deploymentExpiration?:
-    | GetProjectsResponseBodyDeploymentExpiration
-    | null
-    | undefined;
+  deploymentExpiration: GetProjectsResponseBodyDeploymentExpiration;
   devCommand?: string | null | undefined;
   directoryListing: boolean;
   installCommand?: string | null | undefined;
@@ -2107,7 +2110,7 @@ export type GetProjectsResponseBodyProjects = {
     | GetProjectsTrustedIps2
     | null
     | undefined;
-  gitComments?: GetProjectsResponseBodyGitComments | undefined;
+  gitComments?: GetProjectsResponseBodyProjectsGitComments | undefined;
   gitProviderOptions?: GetProjectsResponseBodyGitProviderOptions | undefined;
   paused?: boolean | undefined;
   concurrencyBucketName?: string | undefined;
@@ -2483,6 +2486,7 @@ export type GetProjectsResponseBodyEnv = {
 };
 
 export const GetProjectsResponseBodyFramework = {
+  Services: "services",
   Blitzjs: "blitzjs",
   Nextjs: "nextjs",
   Gatsby: "gatsby",
@@ -2545,7 +2549,7 @@ export const GetProjectsResponseBodyFramework = {
   Ruby: "ruby",
   Rust: "rust",
   Node: "node",
-  Services: "services",
+  Go: "go",
 } as const;
 export type GetProjectsResponseBodyFramework = ClosedEnum<
   typeof GetProjectsResponseBodyFramework
@@ -2768,6 +2772,7 @@ export type GetProjectsResponseBodyProjectsResponseFunctionDefaultMemoryType =
   >;
 
 export const GetProjectsResponseBodyProjectsResponseBuildMachineType = {
+  Standard: "standard",
   Enhanced: "enhanced",
   Turbo: "turbo",
 } as const;
@@ -2925,7 +2930,7 @@ export type GetProjectsResponseBodyProjectsTargets = {
   withCache?: boolean | undefined;
 };
 
-export type GetProjectsResponseBodyProjectsGitComments = {
+export type GetProjectsResponseBodyGitComments = {
   /**
    * Whether the Vercel bot should comment on PRs
    */
@@ -3115,12 +3120,20 @@ export type ResponseBodyErl = {
   keys: Array<string>;
 };
 
+export const GetProjectsLogHeaders2 = {
+  Wildcard: "*",
+} as const;
+export type GetProjectsLogHeaders2 = ClosedEnum<typeof GetProjectsLogHeaders2>;
+
+export type ResponseBodyLogHeaders = Array<string> | GetProjectsLogHeaders2;
+
 export type GetProjectsResponseBodyMitigate = {
   action:
     GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsSecurityFirewallRoutesAction;
   ruleId: string;
   ttl?: number | undefined;
   erl?: ResponseBodyErl | undefined;
+  logHeaders?: Array<string> | GetProjectsLogHeaders2 | undefined;
 };
 
 export type ResponseBodyFirewallRoutes = {
@@ -3568,10 +3581,7 @@ export type ResponseBodyProjects = {
   /**
    * Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
    */
-  deploymentExpiration?:
-    | GetProjectsResponseBodyProjectsDeploymentExpiration
-    | null
-    | undefined;
+  deploymentExpiration: GetProjectsResponseBodyProjectsDeploymentExpiration;
   installCommand?: string | null | undefined;
   ipBuckets?: Array<GetProjectsResponseBodyProjectsIpBuckets> | undefined;
   env?: Array<GetProjectsResponseBodyEnv> | undefined;
@@ -3621,7 +3631,7 @@ export type ResponseBodyProjects = {
   updatedAt?: number | undefined;
   live?: boolean | undefined;
   hasActiveBranches?: boolean | undefined;
-  gitComments?: GetProjectsResponseBodyProjectsGitComments | undefined;
+  gitComments?: GetProjectsResponseBodyGitComments | undefined;
   gitProviderOptions?:
     | GetProjectsResponseBodyProjectsGitProviderOptions
     | undefined;
@@ -3979,6 +3989,7 @@ export type ResponseBodyEnv = {
 };
 
 export const ResponseBodyFramework = {
+  Services: "services",
   Blitzjs: "blitzjs",
   Nextjs: "nextjs",
   Gatsby: "gatsby",
@@ -4041,7 +4052,7 @@ export const ResponseBodyFramework = {
   Ruby: "ruby",
   Rust: "rust",
   Node: "node",
-  Services: "services",
+  Go: "go",
 } as const;
 export type ResponseBodyFramework = ClosedEnum<typeof ResponseBodyFramework>;
 
@@ -4247,6 +4258,7 @@ export type ResponseBodyFunctionDefaultMemoryType = ClosedEnum<
 >;
 
 export const ResponseBodyBuildMachineType = {
+  Standard: "standard",
   Enhanced: "enhanced",
   Turbo: "turbo",
 } as const;
@@ -4574,11 +4586,19 @@ export type Erl = {
   keys: Array<string>;
 };
 
+export const LogHeaders2 = {
+  Wildcard: "*",
+} as const;
+export type LogHeaders2 = ClosedEnum<typeof LogHeaders2>;
+
+export type LogHeaders = Array<string> | LogHeaders2;
+
 export type ResponseBodyMitigate = {
   action: GetProjectsResponseBodyProjectsResponse200ApplicationJSONAction;
   ruleId: string;
   ttl?: number | undefined;
   erl?: Erl | undefined;
+  logHeaders?: Array<string> | LogHeaders2 | undefined;
 };
 
 export type FirewallRoutes = {
@@ -4994,7 +5014,7 @@ export type GetProjectsResponseBody1 = {
   /**
    * Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
    */
-  deploymentExpiration?: ResponseBodyDeploymentExpiration | null | undefined;
+  deploymentExpiration: ResponseBodyDeploymentExpiration;
   installCommand?: string | null | undefined;
   ipBuckets?: Array<ResponseBodyIpBuckets> | undefined;
   env?: Array<ResponseBodyEnv> | undefined;
@@ -5361,12 +5381,12 @@ export const ResponseBodyAws$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   subnetIds: z.array(types.string()),
-  securityGroupId: types.string(),
+  securityGroupId: types.optional(types.string()),
 });
 /** @internal */
 export type ResponseBodyAws$Outbound = {
   subnetIds: Array<string>;
-  securityGroupId: string;
+  securityGroupId?: string | undefined;
 };
 
 /** @internal */
@@ -5376,7 +5396,7 @@ export const ResponseBodyAws$outboundSchema: z.ZodType<
   ResponseBodyAws
 > = z.object({
   subnetIds: z.array(z.string()),
-  securityGroupId: z.string(),
+  securityGroupId: z.string().optional(),
 });
 
 export function responseBodyAwsToJSON(
@@ -9551,6 +9571,7 @@ export const ResponseBodyPermissions$inboundSchema: z.ZodType<
     z.array(ACLAction$inboundSchema),
   ),
   token: types.optional(z.array(ACLAction$inboundSchema)),
+  toolbarComment: types.optional(z.array(ACLAction$inboundSchema)),
   usage: types.optional(z.array(ACLAction$inboundSchema)),
   usageCycle: types.optional(z.array(ACLAction$inboundSchema)),
   vercelRun: types.optional(z.array(ACLAction$inboundSchema)),
@@ -9561,6 +9582,7 @@ export const ResponseBodyPermissions$inboundSchema: z.ZodType<
   "webhook-event": types.optional(z.array(ACLAction$inboundSchema)),
   aliasProject: types.optional(z.array(ACLAction$inboundSchema)),
   aliasProtectionBypass: types.optional(z.array(ACLAction$inboundSchema)),
+  bulkRedirects: types.optional(z.array(ACLAction$inboundSchema)),
   buildMachine: types.optional(z.array(ACLAction$inboundSchema)),
   connectConfigurationLink: types.optional(z.array(ACLAction$inboundSchema)),
   dataCacheNamespace: types.optional(z.array(ACLAction$inboundSchema)),
@@ -9624,6 +9646,7 @@ export const ResponseBodyPermissions$inboundSchema: z.ZodType<
   projectProductionBranch: types.optional(z.array(ACLAction$inboundSchema)),
   projectProtectionBypass: types.optional(z.array(ACLAction$inboundSchema)),
   projectRollingRelease: types.optional(z.array(ACLAction$inboundSchema)),
+  projectRoutes: types.optional(z.array(ACLAction$inboundSchema)),
   projectSupportCase: types.optional(z.array(ACLAction$inboundSchema)),
   projectSupportCaseComment: types.optional(z.array(ACLAction$inboundSchema)),
   projectTier: types.optional(z.array(ACLAction$inboundSchema)),
@@ -9792,6 +9815,7 @@ export type ResponseBodyPermissions$Outbound = {
   teamOwnMembership?: Array<string> | undefined;
   teamOwnMembershipDisconnectSAML?: Array<string> | undefined;
   token?: Array<string> | undefined;
+  toolbarComment?: Array<string> | undefined;
   usage?: Array<string> | undefined;
   usageCycle?: Array<string> | undefined;
   vercelRun?: Array<string> | undefined;
@@ -9802,6 +9826,7 @@ export type ResponseBodyPermissions$Outbound = {
   "webhook-event"?: Array<string> | undefined;
   aliasProject?: Array<string> | undefined;
   aliasProtectionBypass?: Array<string> | undefined;
+  bulkRedirects?: Array<string> | undefined;
   buildMachine?: Array<string> | undefined;
   connectConfigurationLink?: Array<string> | undefined;
   dataCacheNamespace?: Array<string> | undefined;
@@ -9855,6 +9880,7 @@ export type ResponseBodyPermissions$Outbound = {
   projectProductionBranch?: Array<string> | undefined;
   projectProtectionBypass?: Array<string> | undefined;
   projectRollingRelease?: Array<string> | undefined;
+  projectRoutes?: Array<string> | undefined;
   projectSupportCase?: Array<string> | undefined;
   projectSupportCaseComment?: Array<string> | undefined;
   projectTier?: Array<string> | undefined;
@@ -10027,6 +10053,7 @@ export const ResponseBodyPermissions$outboundSchema: z.ZodType<
   teamOwnMembership: z.array(ACLAction$outboundSchema).optional(),
   teamOwnMembershipDisconnectSAML: z.array(ACLAction$outboundSchema).optional(),
   token: z.array(ACLAction$outboundSchema).optional(),
+  toolbarComment: z.array(ACLAction$outboundSchema).optional(),
   usage: z.array(ACLAction$outboundSchema).optional(),
   usageCycle: z.array(ACLAction$outboundSchema).optional(),
   vercelRun: z.array(ACLAction$outboundSchema).optional(),
@@ -10037,6 +10064,7 @@ export const ResponseBodyPermissions$outboundSchema: z.ZodType<
   webhookEvent: z.array(ACLAction$outboundSchema).optional(),
   aliasProject: z.array(ACLAction$outboundSchema).optional(),
   aliasProtectionBypass: z.array(ACLAction$outboundSchema).optional(),
+  bulkRedirects: z.array(ACLAction$outboundSchema).optional(),
   buildMachine: z.array(ACLAction$outboundSchema).optional(),
   connectConfigurationLink: z.array(ACLAction$outboundSchema).optional(),
   dataCacheNamespace: z.array(ACLAction$outboundSchema).optional(),
@@ -10093,6 +10121,7 @@ export const ResponseBodyPermissions$outboundSchema: z.ZodType<
   projectProductionBranch: z.array(ACLAction$outboundSchema).optional(),
   projectProtectionBypass: z.array(ACLAction$outboundSchema).optional(),
   projectRollingRelease: z.array(ACLAction$outboundSchema).optional(),
+  projectRoutes: z.array(ACLAction$outboundSchema).optional(),
   projectSupportCase: z.array(ACLAction$outboundSchema).optional(),
   projectSupportCaseComment: z.array(ACLAction$outboundSchema).optional(),
   projectTier: z.array(ACLAction$outboundSchema).optional(),
@@ -10597,47 +10626,52 @@ export function responseBodyTrustedIpsFromJSON(
 }
 
 /** @internal */
-export const GetProjectsResponseBodyGitComments$inboundSchema: z.ZodType<
-  GetProjectsResponseBodyGitComments,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  onPullRequest: types.boolean(),
-  onCommit: types.boolean(),
-});
+export const GetProjectsResponseBodyProjectsGitComments$inboundSchema:
+  z.ZodType<GetProjectsResponseBodyProjectsGitComments, z.ZodTypeDef, unknown> =
+    z.object({
+      onPullRequest: types.boolean(),
+      onCommit: types.boolean(),
+    });
 /** @internal */
-export type GetProjectsResponseBodyGitComments$Outbound = {
+export type GetProjectsResponseBodyProjectsGitComments$Outbound = {
   onPullRequest: boolean;
   onCommit: boolean;
 };
 
 /** @internal */
-export const GetProjectsResponseBodyGitComments$outboundSchema: z.ZodType<
-  GetProjectsResponseBodyGitComments$Outbound,
-  z.ZodTypeDef,
-  GetProjectsResponseBodyGitComments
-> = z.object({
-  onPullRequest: z.boolean(),
-  onCommit: z.boolean(),
-});
+export const GetProjectsResponseBodyProjectsGitComments$outboundSchema:
+  z.ZodType<
+    GetProjectsResponseBodyProjectsGitComments$Outbound,
+    z.ZodTypeDef,
+    GetProjectsResponseBodyProjectsGitComments
+  > = z.object({
+    onPullRequest: z.boolean(),
+    onCommit: z.boolean(),
+  });
 
-export function getProjectsResponseBodyGitCommentsToJSON(
-  getProjectsResponseBodyGitComments: GetProjectsResponseBodyGitComments,
+export function getProjectsResponseBodyProjectsGitCommentsToJSON(
+  getProjectsResponseBodyProjectsGitComments:
+    GetProjectsResponseBodyProjectsGitComments,
 ): string {
   return JSON.stringify(
-    GetProjectsResponseBodyGitComments$outboundSchema.parse(
-      getProjectsResponseBodyGitComments,
+    GetProjectsResponseBodyProjectsGitComments$outboundSchema.parse(
+      getProjectsResponseBodyProjectsGitComments,
     ),
   );
 }
-export function getProjectsResponseBodyGitCommentsFromJSON(
+export function getProjectsResponseBodyProjectsGitCommentsFromJSON(
   jsonString: string,
-): SafeParseResult<GetProjectsResponseBodyGitComments, SDKValidationError> {
+): SafeParseResult<
+  GetProjectsResponseBodyProjectsGitComments,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
     (x) =>
-      GetProjectsResponseBodyGitComments$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectsResponseBodyGitComments' from JSON`,
+      GetProjectsResponseBodyProjectsGitComments$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetProjectsResponseBodyProjectsGitComments' from JSON`,
   );
 }
 
@@ -13636,9 +13670,9 @@ export const GetProjectsResponseBodyProjects$inboundSchema: z.ZodType<
     z.lazy(() => GetProjectsResponseBodyCrons$inboundSchema),
   ),
   dataCache: types.optional(z.lazy(() => ResponseBodyDataCache$inboundSchema)),
-  deploymentExpiration: z.nullable(
-    z.lazy(() => GetProjectsResponseBodyDeploymentExpiration$inboundSchema),
-  ).optional(),
+  deploymentExpiration: z.lazy(() =>
+    GetProjectsResponseBodyDeploymentExpiration$inboundSchema
+  ),
   devCommand: z.nullable(types.string()).optional(),
   directoryListing: types.boolean(),
   installCommand: z.nullable(types.string()).optional(),
@@ -13752,7 +13786,7 @@ export const GetProjectsResponseBodyProjects$inboundSchema: z.ZodType<
     ]),
   ).optional(),
   gitComments: types.optional(
-    z.lazy(() => GetProjectsResponseBodyGitComments$inboundSchema),
+    z.lazy(() => GetProjectsResponseBodyProjectsGitComments$inboundSchema),
   ),
   gitProviderOptions: types.optional(
     z.lazy(() => GetProjectsResponseBodyGitProviderOptions$inboundSchema),
@@ -13812,10 +13846,7 @@ export type GetProjectsResponseBodyProjects$Outbound = {
   customerSupportCodeVisibility?: boolean | undefined;
   crons?: GetProjectsResponseBodyCrons$Outbound | undefined;
   dataCache?: ResponseBodyDataCache$Outbound | undefined;
-  deploymentExpiration?:
-    | GetProjectsResponseBodyDeploymentExpiration$Outbound
-    | null
-    | undefined;
+  deploymentExpiration: GetProjectsResponseBodyDeploymentExpiration$Outbound;
   devCommand?: string | null | undefined;
   directoryListing: boolean;
   installCommand?: string | null | undefined;
@@ -13901,7 +13932,7 @@ export type GetProjectsResponseBodyProjects$Outbound = {
     | GetProjectsTrustedIps2$Outbound
     | null
     | undefined;
-  gitComments?: GetProjectsResponseBodyGitComments$Outbound | undefined;
+  gitComments?: GetProjectsResponseBodyProjectsGitComments$Outbound | undefined;
   gitProviderOptions?:
     | GetProjectsResponseBodyGitProviderOptions$Outbound
     | undefined;
@@ -13956,9 +13987,9 @@ export const GetProjectsResponseBodyProjects$outboundSchema: z.ZodType<
   customerSupportCodeVisibility: z.boolean().optional(),
   crons: z.lazy(() => GetProjectsResponseBodyCrons$outboundSchema).optional(),
   dataCache: z.lazy(() => ResponseBodyDataCache$outboundSchema).optional(),
-  deploymentExpiration: z.nullable(
-    z.lazy(() => GetProjectsResponseBodyDeploymentExpiration$outboundSchema),
-  ).optional(),
+  deploymentExpiration: z.lazy(() =>
+    GetProjectsResponseBodyDeploymentExpiration$outboundSchema
+  ),
   devCommand: z.nullable(z.string()).optional(),
   directoryListing: z.boolean(),
   installCommand: z.nullable(z.string()).optional(),
@@ -14059,8 +14090,9 @@ export const GetProjectsResponseBodyProjects$outboundSchema: z.ZodType<
       z.lazy(() => GetProjectsTrustedIps2$outboundSchema),
     ]),
   ).optional(),
-  gitComments: z.lazy(() => GetProjectsResponseBodyGitComments$outboundSchema)
-    .optional(),
+  gitComments: z.lazy(() =>
+    GetProjectsResponseBodyProjectsGitComments$outboundSchema
+  ).optional(),
   gitProviderOptions: z.lazy(() =>
     GetProjectsResponseBodyGitProviderOptions$outboundSchema
   ).optional(),
@@ -17820,52 +17852,47 @@ export function getProjectsResponseBodyProjectsTargetsFromJSON(
 }
 
 /** @internal */
-export const GetProjectsResponseBodyProjectsGitComments$inboundSchema:
-  z.ZodType<GetProjectsResponseBodyProjectsGitComments, z.ZodTypeDef, unknown> =
-    z.object({
-      onPullRequest: types.boolean(),
-      onCommit: types.boolean(),
-    });
+export const GetProjectsResponseBodyGitComments$inboundSchema: z.ZodType<
+  GetProjectsResponseBodyGitComments,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  onPullRequest: types.boolean(),
+  onCommit: types.boolean(),
+});
 /** @internal */
-export type GetProjectsResponseBodyProjectsGitComments$Outbound = {
+export type GetProjectsResponseBodyGitComments$Outbound = {
   onPullRequest: boolean;
   onCommit: boolean;
 };
 
 /** @internal */
-export const GetProjectsResponseBodyProjectsGitComments$outboundSchema:
-  z.ZodType<
-    GetProjectsResponseBodyProjectsGitComments$Outbound,
-    z.ZodTypeDef,
-    GetProjectsResponseBodyProjectsGitComments
-  > = z.object({
-    onPullRequest: z.boolean(),
-    onCommit: z.boolean(),
-  });
+export const GetProjectsResponseBodyGitComments$outboundSchema: z.ZodType<
+  GetProjectsResponseBodyGitComments$Outbound,
+  z.ZodTypeDef,
+  GetProjectsResponseBodyGitComments
+> = z.object({
+  onPullRequest: z.boolean(),
+  onCommit: z.boolean(),
+});
 
-export function getProjectsResponseBodyProjectsGitCommentsToJSON(
-  getProjectsResponseBodyProjectsGitComments:
-    GetProjectsResponseBodyProjectsGitComments,
+export function getProjectsResponseBodyGitCommentsToJSON(
+  getProjectsResponseBodyGitComments: GetProjectsResponseBodyGitComments,
 ): string {
   return JSON.stringify(
-    GetProjectsResponseBodyProjectsGitComments$outboundSchema.parse(
-      getProjectsResponseBodyProjectsGitComments,
+    GetProjectsResponseBodyGitComments$outboundSchema.parse(
+      getProjectsResponseBodyGitComments,
     ),
   );
 }
-export function getProjectsResponseBodyProjectsGitCommentsFromJSON(
+export function getProjectsResponseBodyGitCommentsFromJSON(
   jsonString: string,
-): SafeParseResult<
-  GetProjectsResponseBodyProjectsGitComments,
-  SDKValidationError
-> {
+): SafeParseResult<GetProjectsResponseBodyGitComments, SDKValidationError> {
   return safeParse(
     jsonString,
     (x) =>
-      GetProjectsResponseBodyProjectsGitComments$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetProjectsResponseBodyProjectsGitComments' from JSON`,
+      GetProjectsResponseBodyGitComments$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsResponseBodyGitComments' from JSON`,
   );
 }
 
@@ -18552,6 +18579,48 @@ export function responseBodyErlFromJSON(
 }
 
 /** @internal */
+export const GetProjectsLogHeaders2$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsLogHeaders2
+> = z.nativeEnum(GetProjectsLogHeaders2);
+/** @internal */
+export const GetProjectsLogHeaders2$outboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsLogHeaders2
+> = GetProjectsLogHeaders2$inboundSchema;
+
+/** @internal */
+export const ResponseBodyLogHeaders$inboundSchema: z.ZodType<
+  ResponseBodyLogHeaders,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([z.array(types.string()), GetProjectsLogHeaders2$inboundSchema]);
+/** @internal */
+export type ResponseBodyLogHeaders$Outbound = Array<string> | string;
+
+/** @internal */
+export const ResponseBodyLogHeaders$outboundSchema: z.ZodType<
+  ResponseBodyLogHeaders$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyLogHeaders
+> = smartUnion([z.array(z.string()), GetProjectsLogHeaders2$outboundSchema]);
+
+export function responseBodyLogHeadersToJSON(
+  responseBodyLogHeaders: ResponseBodyLogHeaders,
+): string {
+  return JSON.stringify(
+    ResponseBodyLogHeaders$outboundSchema.parse(responseBodyLogHeaders),
+  );
+}
+export function responseBodyLogHeadersFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyLogHeaders, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyLogHeaders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyLogHeaders' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetProjectsResponseBodyMitigate$inboundSchema: z.ZodType<
   GetProjectsResponseBodyMitigate,
   z.ZodTypeDef,
@@ -18562,9 +18631,13 @@ export const GetProjectsResponseBodyMitigate$inboundSchema: z.ZodType<
   rule_id: types.string(),
   ttl: types.optional(types.number()),
   erl: types.optional(z.lazy(() => ResponseBodyErl$inboundSchema)),
+  log_headers: types.optional(
+    smartUnion([z.array(types.string()), GetProjectsLogHeaders2$inboundSchema]),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "rule_id": "ruleId",
+    "log_headers": "logHeaders",
   });
 });
 /** @internal */
@@ -18573,6 +18646,7 @@ export type GetProjectsResponseBodyMitigate$Outbound = {
   rule_id: string;
   ttl?: number | undefined;
   erl?: ResponseBodyErl$Outbound | undefined;
+  log_headers?: Array<string> | string | undefined;
 };
 
 /** @internal */
@@ -18586,9 +18660,14 @@ export const GetProjectsResponseBodyMitigate$outboundSchema: z.ZodType<
   ruleId: z.string(),
   ttl: z.number().optional(),
   erl: z.lazy(() => ResponseBodyErl$outboundSchema).optional(),
+  logHeaders: smartUnion([
+    z.array(z.string()),
+    GetProjectsLogHeaders2$outboundSchema,
+  ]).optional(),
 }).transform((v) => {
   return remap$(v, {
     ruleId: "rule_id",
+    logHeaders: "log_headers",
   });
 });
 
@@ -21305,11 +21384,9 @@ export const ResponseBodyProjects$inboundSchema: z.ZodType<
   createdAt: types.optional(types.number()),
   devCommand: z.nullable(types.string()).optional(),
   directoryListing: types.boolean(),
-  deploymentExpiration: z.nullable(
-    z.lazy(() =>
-      GetProjectsResponseBodyProjectsDeploymentExpiration$inboundSchema
-    ),
-  ).optional(),
+  deploymentExpiration: z.lazy(() =>
+    GetProjectsResponseBodyProjectsDeploymentExpiration$inboundSchema
+  ),
   installCommand: z.nullable(types.string()).optional(),
   ipBuckets: types.optional(
     z.array(
@@ -21374,7 +21451,7 @@ export const ResponseBodyProjects$inboundSchema: z.ZodType<
   live: types.optional(types.boolean()),
   hasActiveBranches: types.optional(types.boolean()),
   gitComments: types.optional(
-    z.lazy(() => GetProjectsResponseBodyProjectsGitComments$inboundSchema),
+    z.lazy(() => GetProjectsResponseBodyGitComments$inboundSchema),
   ),
   gitProviderOptions: types.optional(
     z.lazy(() =>
@@ -21419,10 +21496,8 @@ export type ResponseBodyProjects$Outbound = {
   createdAt?: number | undefined;
   devCommand?: string | null | undefined;
   directoryListing: boolean;
-  deploymentExpiration?:
-    | GetProjectsResponseBodyProjectsDeploymentExpiration$Outbound
-    | null
-    | undefined;
+  deploymentExpiration:
+    GetProjectsResponseBodyProjectsDeploymentExpiration$Outbound;
   installCommand?: string | null | undefined;
   ipBuckets?:
     | Array<GetProjectsResponseBodyProjectsIpBuckets$Outbound>
@@ -21474,7 +21549,7 @@ export type ResponseBodyProjects$Outbound = {
   updatedAt?: number | undefined;
   live?: boolean | undefined;
   hasActiveBranches?: boolean | undefined;
-  gitComments?: GetProjectsResponseBodyProjectsGitComments$Outbound | undefined;
+  gitComments?: GetProjectsResponseBodyGitComments$Outbound | undefined;
   gitProviderOptions?:
     | GetProjectsResponseBodyProjectsGitProviderOptions$Outbound
     | undefined;
@@ -21514,11 +21589,9 @@ export const ResponseBodyProjects$outboundSchema: z.ZodType<
   createdAt: z.number().optional(),
   devCommand: z.nullable(z.string()).optional(),
   directoryListing: z.boolean(),
-  deploymentExpiration: z.nullable(
-    z.lazy(() =>
-      GetProjectsResponseBodyProjectsDeploymentExpiration$outboundSchema
-    ),
-  ).optional(),
+  deploymentExpiration: z.lazy(() =>
+    GetProjectsResponseBodyProjectsDeploymentExpiration$outboundSchema
+  ),
   installCommand: z.nullable(z.string()).optional(),
   ipBuckets: z.array(
     z.lazy(() => GetProjectsResponseBodyProjectsIpBuckets$outboundSchema),
@@ -21577,9 +21650,8 @@ export const ResponseBodyProjects$outboundSchema: z.ZodType<
   updatedAt: z.number().optional(),
   live: z.boolean().optional(),
   hasActiveBranches: z.boolean().optional(),
-  gitComments: z.lazy(() =>
-    GetProjectsResponseBodyProjectsGitComments$outboundSchema
-  ).optional(),
+  gitComments: z.lazy(() => GetProjectsResponseBodyGitComments$outboundSchema)
+    .optional(),
   gitProviderOptions: z.lazy(() =>
     GetProjectsResponseBodyProjectsGitProviderOptions$outboundSchema
   ).optional(),
@@ -25540,6 +25612,42 @@ export function erlFromJSON(
 }
 
 /** @internal */
+export const LogHeaders2$inboundSchema: z.ZodNativeEnum<typeof LogHeaders2> = z
+  .nativeEnum(LogHeaders2);
+/** @internal */
+export const LogHeaders2$outboundSchema: z.ZodNativeEnum<typeof LogHeaders2> =
+  LogHeaders2$inboundSchema;
+
+/** @internal */
+export const LogHeaders$inboundSchema: z.ZodType<
+  LogHeaders,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([z.array(types.string()), LogHeaders2$inboundSchema]);
+/** @internal */
+export type LogHeaders$Outbound = Array<string> | string;
+
+/** @internal */
+export const LogHeaders$outboundSchema: z.ZodType<
+  LogHeaders$Outbound,
+  z.ZodTypeDef,
+  LogHeaders
+> = smartUnion([z.array(z.string()), LogHeaders2$outboundSchema]);
+
+export function logHeadersToJSON(logHeaders: LogHeaders): string {
+  return JSON.stringify(LogHeaders$outboundSchema.parse(logHeaders));
+}
+export function logHeadersFromJSON(
+  jsonString: string,
+): SafeParseResult<LogHeaders, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LogHeaders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LogHeaders' from JSON`,
+  );
+}
+
+/** @internal */
 export const ResponseBodyMitigate$inboundSchema: z.ZodType<
   ResponseBodyMitigate,
   z.ZodTypeDef,
@@ -25550,9 +25658,13 @@ export const ResponseBodyMitigate$inboundSchema: z.ZodType<
   rule_id: types.string(),
   ttl: types.optional(types.number()),
   erl: types.optional(z.lazy(() => Erl$inboundSchema)),
+  log_headers: types.optional(
+    smartUnion([z.array(types.string()), LogHeaders2$inboundSchema]),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "rule_id": "ruleId",
+    "log_headers": "logHeaders",
   });
 });
 /** @internal */
@@ -25561,6 +25673,7 @@ export type ResponseBodyMitigate$Outbound = {
   rule_id: string;
   ttl?: number | undefined;
   erl?: Erl$Outbound | undefined;
+  log_headers?: Array<string> | string | undefined;
 };
 
 /** @internal */
@@ -25574,9 +25687,12 @@ export const ResponseBodyMitigate$outboundSchema: z.ZodType<
   ruleId: z.string(),
   ttl: z.number().optional(),
   erl: z.lazy(() => Erl$outboundSchema).optional(),
+  logHeaders: smartUnion([z.array(z.string()), LogHeaders2$outboundSchema])
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     ruleId: "rule_id",
+    logHeaders: "log_headers",
   });
 });
 
@@ -27941,9 +28057,9 @@ export const GetProjectsResponseBody1$inboundSchema: z.ZodType<
   createdAt: types.optional(types.number()),
   devCommand: z.nullable(types.string()).optional(),
   directoryListing: types.boolean(),
-  deploymentExpiration: z.nullable(
-    z.lazy(() => ResponseBodyDeploymentExpiration$inboundSchema),
-  ).optional(),
+  deploymentExpiration: z.lazy(() =>
+    ResponseBodyDeploymentExpiration$inboundSchema
+  ),
   installCommand: z.nullable(types.string()).optional(),
   ipBuckets: types.optional(
     z.array(z.lazy(() => ResponseBodyIpBuckets$inboundSchema)),
@@ -28036,10 +28152,7 @@ export type GetProjectsResponseBody1$Outbound = {
   createdAt?: number | undefined;
   devCommand?: string | null | undefined;
   directoryListing: boolean;
-  deploymentExpiration?:
-    | ResponseBodyDeploymentExpiration$Outbound
-    | null
-    | undefined;
+  deploymentExpiration: ResponseBodyDeploymentExpiration$Outbound;
   installCommand?: string | null | undefined;
   ipBuckets?: Array<ResponseBodyIpBuckets$Outbound> | undefined;
   env?: Array<ResponseBodyEnv$Outbound> | undefined;
@@ -28113,9 +28226,9 @@ export const GetProjectsResponseBody1$outboundSchema: z.ZodType<
   createdAt: z.number().optional(),
   devCommand: z.nullable(z.string()).optional(),
   directoryListing: z.boolean(),
-  deploymentExpiration: z.nullable(
-    z.lazy(() => ResponseBodyDeploymentExpiration$outboundSchema),
-  ).optional(),
+  deploymentExpiration: z.lazy(() =>
+    ResponseBodyDeploymentExpiration$outboundSchema
+  ),
   installCommand: z.nullable(z.string()).optional(),
   ipBuckets: z.array(z.lazy(() => ResponseBodyIpBuckets$outboundSchema))
     .optional(),

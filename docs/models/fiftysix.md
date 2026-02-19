@@ -8,10 +8,11 @@ The payload of the event, if requested.
 import { FiftySix } from "@vercel/sdk/models/userevent.js";
 
 let value: FiftySix = {
+  id: "<id>",
+  value: "<value>",
   name: "<value>",
-  userId: "<id>",
-  teamId: "<id>",
-  ownerName: "<value>",
+  domain: "cuddly-forgery.name",
+  type: "<value>",
 };
 ```
 
@@ -19,7 +20,9 @@ let value: FiftySix = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `value`            | *string*           | :heavy_check_mark: | N/A                |
 | `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `userId`           | *string*           | :heavy_check_mark: | N/A                |
-| `teamId`           | *string*           | :heavy_check_mark: | N/A                |
-| `ownerName`        | *string*           | :heavy_check_mark: | N/A                |
+| `domain`           | *string*           | :heavy_check_mark: | N/A                |
+| `type`             | *string*           | :heavy_check_mark: | N/A                |
+| `mxPriority`       | *number*           | :heavy_minus_sign: | N/A                |

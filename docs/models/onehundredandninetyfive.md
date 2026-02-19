@@ -7,19 +7,13 @@ The payload of the event, if requested.
 ```typescript
 import { OneHundredAndNinetyFive } from "@vercel/sdk/models/userevent.js";
 
-let value: OneHundredAndNinetyFive = {
-  projectName: "<value>",
-  srcImages: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
-};
+let value: OneHundredAndNinetyFive = {};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `srcImages`        | *string*[]         | :heavy_check_mark: | N/A                |
+| `price`            | *number*           | :heavy_minus_sign: | N/A                |
+| `currency`         | *string*           | :heavy_minus_sign: | N/A                |
+| `enabled`          | *boolean*          | :heavy_minus_sign: | N/A                |

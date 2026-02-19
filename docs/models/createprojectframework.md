@@ -7,11 +7,11 @@ The framework that is being used for this project. When `null` is used no framew
 ```typescript
 import { CreateProjectFramework } from "@vercel/sdk/models/createprojectop.js";
 
-let value: CreateProjectFramework = "remix";
+let value: CreateProjectFramework = "gatsby";
 ```
 
 ## Values
 
 ```typescript
-"blitzjs" | "nextjs" | "gatsby" | "remix" | "react-router" | "astro" | "hexo" | "eleventy" | "docusaurus-2" | "docusaurus" | "preact" | "solidstart-1" | "solidstart" | "dojo" | "ember" | "vue" | "scully" | "ionic-angular" | "angular" | "polymer" | "svelte" | "sveltekit" | "sveltekit-1" | "ionic-react" | "create-react-app" | "gridsome" | "umijs" | "sapper" | "saber" | "stencil" | "nuxtjs" | "redwoodjs" | "hugo" | "jekyll" | "brunch" | "middleman" | "zola" | "hydrogen" | "vite" | "tanstack-start" | "vitepress" | "vuepress" | "parcel" | "fastapi" | "flask" | "fasthtml" | "sanity-v3" | "sanity" | "storybook" | "nitro" | "hono" | "express" | "h3" | "koa" | "nestjs" | "elysia" | "fastify" | "xmcp" | "python" | "ruby" | "rust" | "node" | "services"
+"services" | "blitzjs" | "nextjs" | "gatsby" | "remix" | "react-router" | "astro" | "hexo" | "eleventy" | "docusaurus-2" | "docusaurus" | "preact" | "solidstart-1" | "solidstart" | "dojo" | "ember" | "vue" | "scully" | "ionic-angular" | "angular" | "polymer" | "svelte" | "sveltekit" | "sveltekit-1" | "ionic-react" | "create-react-app" | "gridsome" | "umijs" | "sapper" | "saber" | "stencil" | "nuxtjs" | "redwoodjs" | "hugo" | "jekyll" | "brunch" | "middleman" | "zola" | "hydrogen" | "vite" | "tanstack-start" | "vitepress" | "vuepress" | "parcel" | "fastapi" | "flask" | "fasthtml" | "sanity-v3" | "sanity" | "storybook" | "nitro" | "hono" | "express" | "h3" | "koa" | "nestjs" | "elysia" | "fastify" | "xmcp" | "python" | "ruby" | "rust" | "node" | "go"
 ```

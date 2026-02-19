@@ -12,7 +12,7 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 /**
  * String indicating the type of file tree entry.
  */
-export const Type = {
+export const FileTreeType = {
   Directory: "directory",
   File: "file",
   Symlink: "symlink",
@@ -23,7 +23,7 @@ export const Type = {
 /**
  * String indicating the type of file tree entry.
  */
-export type Type = ClosedEnum<typeof Type>;
+export type FileTreeType = ClosedEnum<typeof FileTreeType>;
 
 /**
  * A deployment file tree entry
@@ -36,7 +36,7 @@ export type FileTree = {
   /**
    * String indicating the type of file tree entry.
    */
-  type: Type;
+  type: FileTreeType;
   /**
    * The unique identifier of the file (only valid for the `file` type)
    */
@@ -56,12 +56,11 @@ export type FileTree = {
 };
 
 /** @internal */
-export const Type$inboundSchema: z.ZodNativeEnum<typeof Type> = z.nativeEnum(
-  Type,
-);
+export const FileTreeType$inboundSchema: z.ZodNativeEnum<typeof FileTreeType> =
+  z.nativeEnum(FileTreeType);
 /** @internal */
-export const Type$outboundSchema: z.ZodNativeEnum<typeof Type> =
-  Type$inboundSchema;
+export const FileTreeType$outboundSchema: z.ZodNativeEnum<typeof FileTreeType> =
+  FileTreeType$inboundSchema;
 
 /** @internal */
 export const FileTree$inboundSchema: z.ZodType<
@@ -70,7 +69,7 @@ export const FileTree$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   name: types.string(),
-  type: Type$inboundSchema,
+  type: FileTreeType$inboundSchema,
   uid: types.optional(types.string()),
   children: types.optional(z.array(z.lazy(() => FileTree$inboundSchema))),
   contentType: types.optional(types.string()),
@@ -93,7 +92,7 @@ export const FileTree$outboundSchema: z.ZodType<
   FileTree
 > = z.object({
   name: z.string(),
-  type: Type$outboundSchema,
+  type: FileTreeType$outboundSchema,
   uid: z.string().optional(),
   children: z.array(z.lazy(() => FileTree$outboundSchema)).optional(),
   contentType: z.string().optional(),

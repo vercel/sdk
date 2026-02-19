@@ -27,10 +27,10 @@ export type GetAllChecksRequest = {
 
 export const GetAllChecksConclusion = {
   Canceled: "canceled",
+  Skipped: "skipped",
   Failed: "failed",
   Neutral: "neutral",
   Succeeded: "succeeded",
-  Skipped: "skipped",
   Stale: "stale",
 } as const;
 export type GetAllChecksConclusion = ClosedEnum<typeof GetAllChecksConclusion>;
@@ -111,13 +111,13 @@ export type GetAllChecksOutput = {
 };
 
 export const GetAllChecksStatus = {
-  Registered: "registered",
   Running: "running",
   Completed: "completed",
+  Registered: "registered",
 } as const;
 export type GetAllChecksStatus = ClosedEnum<typeof GetAllChecksStatus>;
 
-export type Checks = {
+export type GetAllChecksChecks = {
   completedAt?: number | undefined;
   conclusion?: GetAllChecksConclusion | undefined;
   createdAt: number;
@@ -135,7 +135,7 @@ export type Checks = {
 };
 
 export type GetAllChecksResponseBody = {
-  checks: Array<Checks>;
+  checks: Array<GetAllChecksChecks>;
 };
 
 /** @internal */
@@ -577,25 +577,28 @@ export const GetAllChecksStatus$outboundSchema: z.ZodNativeEnum<
 > = GetAllChecksStatus$inboundSchema;
 
 /** @internal */
-export const Checks$inboundSchema: z.ZodType<Checks, z.ZodTypeDef, unknown> = z
-  .object({
-    completedAt: types.optional(types.number()),
-    conclusion: types.optional(GetAllChecksConclusion$inboundSchema),
-    createdAt: types.number(),
-    detailsUrl: types.optional(types.string()),
-    id: types.string(),
-    integrationId: types.string(),
-    name: types.string(),
-    output: types.optional(z.lazy(() => GetAllChecksOutput$inboundSchema)),
-    path: types.optional(types.string()),
-    rerequestable: types.boolean(),
-    blocking: types.boolean(),
-    startedAt: types.optional(types.number()),
-    status: GetAllChecksStatus$inboundSchema,
-    updatedAt: types.number(),
-  });
+export const GetAllChecksChecks$inboundSchema: z.ZodType<
+  GetAllChecksChecks,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  completedAt: types.optional(types.number()),
+  conclusion: types.optional(GetAllChecksConclusion$inboundSchema),
+  createdAt: types.number(),
+  detailsUrl: types.optional(types.string()),
+  id: types.string(),
+  integrationId: types.string(),
+  name: types.string(),
+  output: types.optional(z.lazy(() => GetAllChecksOutput$inboundSchema)),
+  path: types.optional(types.string()),
+  rerequestable: types.boolean(),
+  blocking: types.boolean(),
+  startedAt: types.optional(types.number()),
+  status: GetAllChecksStatus$inboundSchema,
+  updatedAt: types.number(),
+});
 /** @internal */
-export type Checks$Outbound = {
+export type GetAllChecksChecks$Outbound = {
   completedAt?: number | undefined;
   conclusion?: string | undefined;
   createdAt: number;
@@ -613,10 +616,10 @@ export type Checks$Outbound = {
 };
 
 /** @internal */
-export const Checks$outboundSchema: z.ZodType<
-  Checks$Outbound,
+export const GetAllChecksChecks$outboundSchema: z.ZodType<
+  GetAllChecksChecks$Outbound,
   z.ZodTypeDef,
-  Checks
+  GetAllChecksChecks
 > = z.object({
   completedAt: z.number().optional(),
   conclusion: GetAllChecksConclusion$outboundSchema.optional(),
@@ -634,16 +637,20 @@ export const Checks$outboundSchema: z.ZodType<
   updatedAt: z.number(),
 });
 
-export function checksToJSON(checks: Checks): string {
-  return JSON.stringify(Checks$outboundSchema.parse(checks));
+export function getAllChecksChecksToJSON(
+  getAllChecksChecks: GetAllChecksChecks,
+): string {
+  return JSON.stringify(
+    GetAllChecksChecks$outboundSchema.parse(getAllChecksChecks),
+  );
 }
-export function checksFromJSON(
+export function getAllChecksChecksFromJSON(
   jsonString: string,
-): SafeParseResult<Checks, SDKValidationError> {
+): SafeParseResult<GetAllChecksChecks, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Checks$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Checks' from JSON`,
+    (x) => GetAllChecksChecks$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllChecksChecks' from JSON`,
   );
 }
 
@@ -653,11 +660,11 @@ export const GetAllChecksResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  checks: z.array(z.lazy(() => Checks$inboundSchema)),
+  checks: z.array(z.lazy(() => GetAllChecksChecks$inboundSchema)),
 });
 /** @internal */
 export type GetAllChecksResponseBody$Outbound = {
-  checks: Array<Checks$Outbound>;
+  checks: Array<GetAllChecksChecks$Outbound>;
 };
 
 /** @internal */
@@ -666,7 +673,7 @@ export const GetAllChecksResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAllChecksResponseBody
 > = z.object({
-  checks: z.array(z.lazy(() => Checks$outboundSchema)),
+  checks: z.array(z.lazy(() => GetAllChecksChecks$outboundSchema)),
 });
 
 export function getAllChecksResponseBodyToJSON(

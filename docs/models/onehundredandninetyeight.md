@@ -8,16 +8,18 @@ The payload of the event, if requested.
 import { OneHundredAndNinetyEight } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndNinetyEight = {
-  edgeConfigId: "<id>",
-  edgeConfigSlug: "<value>",
-  edgeConfigTokenIds: [],
+  invoiceId: "<id>",
+  amount: 1920.87,
+  refundReason: "<value>",
+  lineItemCount: 1948.04,
 };
 ```
 
 ## Fields
 
-| Field                 | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `edgeConfigId`        | *string*              | :heavy_check_mark:    | N/A                   |
-| `edgeConfigSlug`      | *string*              | :heavy_check_mark:    | N/A                   |
-| `edgeConfigTokenIds`  | *string*[]            | :heavy_check_mark:    | ids of deleted tokens |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `invoiceId`        | *string*           | :heavy_check_mark: | N/A                |
+| `amount`           | *number*           | :heavy_check_mark: | N/A                |
+| `refundReason`     | *string*           | :heavy_check_mark: | N/A                |
+| `lineItemCount`    | *number*           | :heavy_check_mark: | N/A                |

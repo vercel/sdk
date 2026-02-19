@@ -54,14 +54,14 @@ func testCreateCheckCreateCheck0(w http.ResponseWriter, req *http.Request) {
 	var respBody *operations.CreateCheckResponseBody = &operations.CreateCheckResponseBody{
 		ID:            "chk_1a2b3c4d5e6f7g8h9i0j",
 		Name:          "Performance Check",
-		Path:          types.String("/api/users"),
-		Status:        operations.CreateCheckStatusCompleted,
-		Conclusion:    operations.CreateCheckConclusionSucceeded.ToPointer(),
-		Blocking:      true,
-		IntegrationID: "<id>",
-		DeploymentID:  "<id>",
 		CreatedAt:     6444.33,
 		UpdatedAt:     2432.96,
+		DeploymentID:  "<id>",
+		Status:        operations.CreateCheckStatusCompleted,
+		Conclusion:    operations.CreateCheckConclusionSucceeded.ToPointer(),
+		Path:          types.String("/api/users"),
+		Blocking:      true,
+		IntegrationID: "<id>",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

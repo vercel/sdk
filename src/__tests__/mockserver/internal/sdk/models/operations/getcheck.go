@@ -50,9 +50,9 @@ func (o *GetCheckRequest) GetSlug() *string {
 type GetCheckStatus string
 
 const (
-	GetCheckStatusRegistered GetCheckStatus = "registered"
 	GetCheckStatusRunning    GetCheckStatus = "running"
 	GetCheckStatusCompleted  GetCheckStatus = "completed"
+	GetCheckStatusRegistered GetCheckStatus = "registered"
 )
 
 func (e GetCheckStatus) ToPointer() *GetCheckStatus {
@@ -64,11 +64,11 @@ func (e *GetCheckStatus) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "registered":
-		fallthrough
 	case "running":
 		fallthrough
 	case "completed":
+		fallthrough
+	case "registered":
 		*e = GetCheckStatus(v)
 		return nil
 	default:
@@ -80,10 +80,10 @@ type GetCheckConclusion string
 
 const (
 	GetCheckConclusionCanceled  GetCheckConclusion = "canceled"
+	GetCheckConclusionSkipped   GetCheckConclusion = "skipped"
 	GetCheckConclusionFailed    GetCheckConclusion = "failed"
 	GetCheckConclusionNeutral   GetCheckConclusion = "neutral"
 	GetCheckConclusionSucceeded GetCheckConclusion = "succeeded"
-	GetCheckConclusionSkipped   GetCheckConclusion = "skipped"
 	GetCheckConclusionStale     GetCheckConclusion = "stale"
 )
 
@@ -98,13 +98,13 @@ func (e *GetCheckConclusion) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "canceled":
 		fallthrough
+	case "skipped":
+		fallthrough
 	case "failed":
 		fallthrough
 	case "neutral":
 		fallthrough
 	case "succeeded":
-		fallthrough
-	case "skipped":
 		fallthrough
 	case "stale":
 		*e = GetCheckConclusion(v)
@@ -329,19 +329,19 @@ func (o *GetCheckOutput) GetMetrics() *GetCheckMetrics {
 type GetCheckResponseBody struct {
 	ID            string              `json:"id"`
 	Name          string              `json:"name"`
-	Path          *string             `json:"path,omitempty"`
-	Status        GetCheckStatus      `json:"status"`
-	Conclusion    *GetCheckConclusion `json:"conclusion,omitempty"`
-	Blocking      bool                `json:"blocking"`
-	Output        *GetCheckOutput     `json:"output,omitempty"`
-	DetailsURL    *string             `json:"detailsUrl,omitempty"`
-	IntegrationID string              `json:"integrationId"`
-	DeploymentID  string              `json:"deploymentId"`
-	ExternalID    *string             `json:"externalId,omitempty"`
 	CreatedAt     float64             `json:"createdAt"`
 	UpdatedAt     float64             `json:"updatedAt"`
-	StartedAt     *float64            `json:"startedAt,omitempty"`
+	DeploymentID  string              `json:"deploymentId"`
+	Status        GetCheckStatus      `json:"status"`
+	Conclusion    *GetCheckConclusion `json:"conclusion,omitempty"`
+	ExternalID    *string             `json:"externalId,omitempty"`
+	Output        *GetCheckOutput     `json:"output,omitempty"`
 	CompletedAt   *float64            `json:"completedAt,omitempty"`
+	Path          *string             `json:"path,omitempty"`
+	Blocking      bool                `json:"blocking"`
+	DetailsURL    *string             `json:"detailsUrl,omitempty"`
+	IntegrationID string              `json:"integrationId"`
+	StartedAt     *float64            `json:"startedAt,omitempty"`
 	Rerequestable *bool               `json:"rerequestable,omitempty"`
 }
 
@@ -359,11 +359,25 @@ func (o *GetCheckResponseBody) GetName() string {
 	return o.Name
 }
 
-func (o *GetCheckResponseBody) GetPath() *string {
+func (o *GetCheckResponseBody) GetCreatedAt() float64 {
 	if o == nil {
-		return nil
+		return 0.0
 	}
-	return o.Path
+	return o.CreatedAt
+}
+
+func (o *GetCheckResponseBody) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+func (o *GetCheckResponseBody) GetDeploymentID() string {
+	if o == nil {
+		return ""
+	}
+	return o.DeploymentID
 }
 
 func (o *GetCheckResponseBody) GetStatus() GetCheckStatus {
@@ -380,11 +394,11 @@ func (o *GetCheckResponseBody) GetConclusion() *GetCheckConclusion {
 	return o.Conclusion
 }
 
-func (o *GetCheckResponseBody) GetBlocking() bool {
+func (o *GetCheckResponseBody) GetExternalID() *string {
 	if o == nil {
-		return false
+		return nil
 	}
-	return o.Blocking
+	return o.ExternalID
 }
 
 func (o *GetCheckResponseBody) GetOutput() *GetCheckOutput {
@@ -392,6 +406,27 @@ func (o *GetCheckResponseBody) GetOutput() *GetCheckOutput {
 		return nil
 	}
 	return o.Output
+}
+
+func (o *GetCheckResponseBody) GetCompletedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CompletedAt
+}
+
+func (o *GetCheckResponseBody) GetPath() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Path
+}
+
+func (o *GetCheckResponseBody) GetBlocking() bool {
+	if o == nil {
+		return false
+	}
+	return o.Blocking
 }
 
 func (o *GetCheckResponseBody) GetDetailsURL() *string {
@@ -408,46 +443,11 @@ func (o *GetCheckResponseBody) GetIntegrationID() string {
 	return o.IntegrationID
 }
 
-func (o *GetCheckResponseBody) GetDeploymentID() string {
-	if o == nil {
-		return ""
-	}
-	return o.DeploymentID
-}
-
-func (o *GetCheckResponseBody) GetExternalID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ExternalID
-}
-
-func (o *GetCheckResponseBody) GetCreatedAt() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.CreatedAt
-}
-
-func (o *GetCheckResponseBody) GetUpdatedAt() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.UpdatedAt
-}
-
 func (o *GetCheckResponseBody) GetStartedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.StartedAt
-}
-
-func (o *GetCheckResponseBody) GetCompletedAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.CompletedAt
 }
 
 func (o *GetCheckResponseBody) GetRerequestable() *bool {

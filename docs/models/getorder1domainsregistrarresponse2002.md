@@ -6,12 +6,16 @@
 import { GetOrder1DomainsRegistrarResponse2002 } from "@vercel/sdk/models/getorderop.js";
 
 let value: GetOrder1DomainsRegistrarResponse2002 = {
-  code: "client-transfer-prohibited",
+  code: "incorrect-language-code",
+  details: {
+    detectedLanguageCode: "<value>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                          | Type                           | Required                       | Description                    |
-| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `code`                         | *"client-transfer-prohibited"* | :heavy_check_mark:             | N/A                            |
+| Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `code`                                                                                                   | *"incorrect-language-code"*                                                                              | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
+| `details`                                                                                                | [models.GetOrder1DomainsRegistrarResponseDetails](../models/getorder1domainsregistrarresponsedetails.md) | :heavy_check_mark:                                                                                       | N/A                                                                                                      |

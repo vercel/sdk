@@ -57,6 +57,9 @@ export const Events = {
   ProjectCreated: "project.created",
   ProjectRemoved: "project.removed",
   ProjectRenamed: "project.renamed",
+  ProjectEnvVariableCreated: "project.env-variable.created",
+  ProjectEnvVariableUpdated: "project.env-variable.updated",
+  ProjectEnvVariableDeleted: "project.env-variable.deleted",
   ProjectDomainCreated: "project.domain.created",
   ProjectDomainUpdated: "project.domain.updated",
   ProjectDomainDeleted: "project.domain.deleted",
@@ -97,6 +100,14 @@ export const Events = {
   ObservabilityErrorAnomaly: "observability.error-anomaly",
   BotidAnomaly: "botid.anomaly",
   TestWebhook: "test-webhook",
+  CommentCreated: "comment.created",
+  CommentUpdated: "comment.updated",
+  CommentDeleted: "comment.deleted",
+  CommentResolved: "comment.resolved",
+  CommentUnresolved: "comment.unresolved",
+  CommentReactionAdded: "comment.reaction-added",
+  CommentReactionRemoved: "comment.reaction-removed",
+  CommentMentioned: "comment.mentioned",
 } as const;
 export type Events = ClosedEnum<typeof Events>;
 
@@ -168,6 +179,9 @@ export const CreateWebhookEvents = {
   ProjectCreated: "project.created",
   ProjectRemoved: "project.removed",
   ProjectRenamed: "project.renamed",
+  ProjectEnvVariableCreated: "project.env-variable.created",
+  ProjectEnvVariableUpdated: "project.env-variable.updated",
+  ProjectEnvVariableDeleted: "project.env-variable.deleted",
   ProjectDomainCreated: "project.domain.created",
   ProjectDomainUpdated: "project.domain.updated",
   ProjectDomainDeleted: "project.domain.deleted",
@@ -208,6 +222,14 @@ export const CreateWebhookEvents = {
   ObservabilityErrorAnomaly: "observability.error-anomaly",
   BotidAnomaly: "botid.anomaly",
   TestWebhook: "test-webhook",
+  CommentCreated: "comment.created",
+  CommentUpdated: "comment.updated",
+  CommentDeleted: "comment.deleted",
+  CommentResolved: "comment.resolved",
+  CommentUnresolved: "comment.unresolved",
+  CommentReactionAdded: "comment.reaction-added",
+  CommentReactionRemoved: "comment.reaction-removed",
+  CommentMentioned: "comment.mentioned",
 } as const;
 /**
  * The webhooks events

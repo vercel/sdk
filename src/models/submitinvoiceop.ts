@@ -105,6 +105,10 @@ export type SubmitInvoiceRequestBody = {
   items: Array<SubmitInvoiceItems>;
   discounts?: Array<SubmitInvoiceDiscounts> | undefined;
   /**
+   * Set this to `true` if this is the final invoice for the installation.
+   */
+  final?: boolean | undefined;
+  /**
    * Test mode
    */
   test?: Test | undefined;
@@ -339,6 +343,7 @@ export const SubmitInvoiceRequestBody$inboundSchema: z.ZodType<
   discounts: types.optional(
     z.array(z.lazy(() => SubmitInvoiceDiscounts$inboundSchema)),
   ),
+  final: types.optional(types.boolean()),
   test: types.optional(z.lazy(() => Test$inboundSchema)),
 });
 /** @internal */
@@ -349,6 +354,7 @@ export type SubmitInvoiceRequestBody$Outbound = {
   period: SubmitInvoicePeriod$Outbound;
   items: Array<SubmitInvoiceItems$Outbound>;
   discounts?: Array<SubmitInvoiceDiscounts$Outbound> | undefined;
+  final?: boolean | undefined;
   test?: Test$Outbound | undefined;
 };
 
@@ -365,6 +371,7 @@ export const SubmitInvoiceRequestBody$outboundSchema: z.ZodType<
   items: z.array(z.lazy(() => SubmitInvoiceItems$outboundSchema)),
   discounts: z.array(z.lazy(() => SubmitInvoiceDiscounts$outboundSchema))
     .optional(),
+  final: z.boolean().optional(),
   test: z.lazy(() => Test$outboundSchema).optional(),
 });
 

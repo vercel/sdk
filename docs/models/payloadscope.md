@@ -7,11 +7,11 @@ Which repository visibilities get automatic reviews
 ```typescript
 import { PayloadScope } from "@vercel/sdk/models/userevent.js";
 
-let value: PayloadScope = "private";
+let value: PayloadScope = "selected_repos";
 ```
 
 ## Values
 
 ```typescript
-"public" | "all" | "private"
+"public" | "all" | "private" | "selected_repos"
 ```

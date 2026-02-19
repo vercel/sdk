@@ -8,14 +8,19 @@ The payload of the event, if requested.
 import { TwoHundredAndNineteen } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndNineteen = {
-  enabled: false,
-  scope: "dashboard",
+  projectId: "<id>",
+  projectName: "<value>",
+  srcImages: [
+    "<value 1>",
+    "<value 2>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                              | Type                               | Required                           | Description                        |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| `enabled`                          | *boolean*                          | :heavy_check_mark:                 | N/A                                |
-| `scope`                            | [models.Scope](../models/scope.md) | :heavy_check_mark:                 | N/A                                |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `srcImages`        | *string*[]         | :heavy_check_mark: | N/A                |

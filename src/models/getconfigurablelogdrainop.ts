@@ -84,6 +84,7 @@ export const GetConfigurableLogDrainFramework = {
   Ruby: "ruby",
   Rust: "rust",
   Node: "node",
+  Go: "go",
   Services: "services",
 } as const;
 export type GetConfigurableLogDrainFramework = ClosedEnum<

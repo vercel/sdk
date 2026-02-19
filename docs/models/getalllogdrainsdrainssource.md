@@ -3,18 +3,18 @@
 
 ## Supported Types
 
-### `models.GetAllLogDrainsSource1`
+### `models.GetAllLogDrainsSourceLogDrains1`
 
 ```typescript
-const value: models.GetAllLogDrainsSource1 = {
+const value: models.GetAllLogDrainsSourceLogDrains1 = {
   kind: "self-served",
 };
 ```
 
-### `models.GetAllLogDrainsSource2`
+### `models.GetAllLogDrainsSourceLogDrains2`
 
 ```typescript
-const value: models.GetAllLogDrainsSource2 = {
+const value: models.GetAllLogDrainsSourceLogDrains2 = {
   kind: "integration",
   integrationId: "<id>",
   integrationConfigurationId: "<id>",

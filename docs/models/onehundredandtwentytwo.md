@@ -8,22 +8,30 @@ The payload of the event, if requested.
 import { OneHundredAndTwentyTwo } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndTwentyTwo = {
-  projectId: "<id>",
-  projectName: "<value>",
-  customEnvironmentId: "<id>",
-  customEnvironmentSlug: "<value>",
-  previous: {},
-  next: {},
+  team: {
+    id: "<id>",
+    name: "<value>",
+  },
+  project: {
+    id: "<id>",
+    oldConnectConfigurations: [],
+    newConnectConfigurations: [
+      {
+        envId: "<id>",
+        connectConfigurationId: "<id>",
+        passive: true,
+        buildsEnabled: false,
+        createdAt: 5463.76,
+        updatedAt: 2696.76,
+      },
+    ],
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `customEnvironmentId`                                                          | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `customEnvironmentSlug`                                                        | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload122Previous](../models/usereventpayload122previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `next`                                                                         | [models.UserEventPayload122Next](../models/usereventpayload122next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `team`                                                                       | [models.UserEventPayload122Team](../models/usereventpayload122team.md)       | :heavy_check_mark:                                                           | N/A                                                                          |
+| `project`                                                                    | [models.UserEventPayload122Project](../models/usereventpayload122project.md) | :heavy_check_mark:                                                           | N/A                                                                          |

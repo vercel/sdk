@@ -9,13 +9,19 @@ import { TwentyEight } from "@vercel/sdk/models/userevent.js";
 
 let value: TwentyEight = {
   id: "<id>",
+  cns: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
+  custom: true,
 };
 ```
 
 ## Fields
 
-| Field                                                | Type                                                 | Required                                             | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `id`                                                 | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
-| `oldTeam`                                            | [models.PayloadOldTeam](../models/payloadoldteam.md) | :heavy_minus_sign:                                   | N/A                                                  |
-| `newTeam`                                            | [models.PayloadNewTeam](../models/payloadnewteam.md) | :heavy_minus_sign:                                   | N/A                                                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `cns`              | *string*[]         | :heavy_check_mark: | N/A                |
+| `custom`           | *boolean*          | :heavy_check_mark: | N/A                |

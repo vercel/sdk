@@ -145,7 +145,7 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["400", "401", "403", "404", "409", "428", "4XX", "500", "5XX"],
+    errorCodes: ["400", "401", "403", "404", "409", "428", "4XX", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -167,7 +167,7 @@ async function $do(
   >(
     M.json(200, z.record(z.any())),
     M.fail([400, 401, 403, 404, 409, 428, "4XX"]),
-    M.fail([500, "5XX"]),
+    M.fail("5XX"),
   )(response, req);
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];

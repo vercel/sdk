@@ -7,11 +7,17 @@ The payload of the event, if requested.
 ```typescript
 import { OneHundredAndFiftyEight } from "@vercel/sdk/models/userevent.js";
 
-let value: OneHundredAndFiftyEight = {};
+let value: OneHundredAndFiftyEight = {
+  gitProvider: "<value>",
+  gitProviderGroupDescriptor: "<value>",
+  gitScope: "<value>",
+};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `webhookUrl`       | *string*           | :heavy_minus_sign: | N/A                |
+| Field                        | Type                         | Required                     | Description                  |
+| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
+| `gitProvider`                | *string*                     | :heavy_check_mark:           | N/A                          |
+| `gitProviderGroupDescriptor` | *string*                     | :heavy_check_mark:           | N/A                          |
+| `gitScope`                   | *string*                     | :heavy_check_mark:           | N/A                          |

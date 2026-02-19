@@ -54,18 +54,18 @@ export type CreateCheckRequest = {
 };
 
 export const CreateCheckStatus = {
-  Registered: "registered",
   Running: "running",
   Completed: "completed",
+  Registered: "registered",
 } as const;
 export type CreateCheckStatus = ClosedEnum<typeof CreateCheckStatus>;
 
 export const CreateCheckConclusion = {
   Canceled: "canceled",
+  Skipped: "skipped",
   Failed: "failed",
   Neutral: "neutral",
   Succeeded: "succeeded",
-  Skipped: "skipped",
   Stale: "stale",
 } as const;
 export type CreateCheckConclusion = ClosedEnum<typeof CreateCheckConclusion>;
@@ -148,19 +148,19 @@ export type CreateCheckOutput = {
 export type CreateCheckResponseBody = {
   id: string;
   name: string;
-  path?: string | undefined;
-  status: CreateCheckStatus;
-  conclusion?: CreateCheckConclusion | undefined;
-  blocking: boolean;
-  output?: CreateCheckOutput | undefined;
-  detailsUrl?: string | undefined;
-  integrationId: string;
-  deploymentId: string;
-  externalId?: string | undefined;
   createdAt: number;
   updatedAt: number;
-  startedAt?: number | undefined;
+  deploymentId: string;
+  status: CreateCheckStatus;
+  conclusion?: CreateCheckConclusion | undefined;
+  externalId?: string | undefined;
+  output?: CreateCheckOutput | undefined;
   completedAt?: number | undefined;
+  path?: string | undefined;
+  blocking: boolean;
+  detailsUrl?: string | undefined;
+  integrationId: string;
+  startedAt?: number | undefined;
   rerequestable?: boolean | undefined;
 };
 
@@ -666,38 +666,38 @@ export const CreateCheckResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   id: types.string(),
   name: types.string(),
-  path: types.optional(types.string()),
-  status: CreateCheckStatus$inboundSchema,
-  conclusion: types.optional(CreateCheckConclusion$inboundSchema),
-  blocking: types.boolean(),
-  output: types.optional(z.lazy(() => CreateCheckOutput$inboundSchema)),
-  detailsUrl: types.optional(types.string()),
-  integrationId: types.string(),
-  deploymentId: types.string(),
-  externalId: types.optional(types.string()),
   createdAt: types.number(),
   updatedAt: types.number(),
-  startedAt: types.optional(types.number()),
+  deploymentId: types.string(),
+  status: CreateCheckStatus$inboundSchema,
+  conclusion: types.optional(CreateCheckConclusion$inboundSchema),
+  externalId: types.optional(types.string()),
+  output: types.optional(z.lazy(() => CreateCheckOutput$inboundSchema)),
   completedAt: types.optional(types.number()),
+  path: types.optional(types.string()),
+  blocking: types.boolean(),
+  detailsUrl: types.optional(types.string()),
+  integrationId: types.string(),
+  startedAt: types.optional(types.number()),
   rerequestable: types.optional(types.boolean()),
 });
 /** @internal */
 export type CreateCheckResponseBody$Outbound = {
   id: string;
   name: string;
-  path?: string | undefined;
-  status: string;
-  conclusion?: string | undefined;
-  blocking: boolean;
-  output?: CreateCheckOutput$Outbound | undefined;
-  detailsUrl?: string | undefined;
-  integrationId: string;
-  deploymentId: string;
-  externalId?: string | undefined;
   createdAt: number;
   updatedAt: number;
-  startedAt?: number | undefined;
+  deploymentId: string;
+  status: string;
+  conclusion?: string | undefined;
+  externalId?: string | undefined;
+  output?: CreateCheckOutput$Outbound | undefined;
   completedAt?: number | undefined;
+  path?: string | undefined;
+  blocking: boolean;
+  detailsUrl?: string | undefined;
+  integrationId: string;
+  startedAt?: number | undefined;
   rerequestable?: boolean | undefined;
 };
 
@@ -709,19 +709,19 @@ export const CreateCheckResponseBody$outboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   name: z.string(),
-  path: z.string().optional(),
-  status: CreateCheckStatus$outboundSchema,
-  conclusion: CreateCheckConclusion$outboundSchema.optional(),
-  blocking: z.boolean(),
-  output: z.lazy(() => CreateCheckOutput$outboundSchema).optional(),
-  detailsUrl: z.string().optional(),
-  integrationId: z.string(),
-  deploymentId: z.string(),
-  externalId: z.string().optional(),
   createdAt: z.number(),
   updatedAt: z.number(),
-  startedAt: z.number().optional(),
+  deploymentId: z.string(),
+  status: CreateCheckStatus$outboundSchema,
+  conclusion: CreateCheckConclusion$outboundSchema.optional(),
+  externalId: z.string().optional(),
+  output: z.lazy(() => CreateCheckOutput$outboundSchema).optional(),
   completedAt: z.number().optional(),
+  path: z.string().optional(),
+  blocking: z.boolean(),
+  detailsUrl: z.string().optional(),
+  integrationId: z.string(),
+  startedAt: z.number().optional(),
   rerequestable: z.boolean().optional(),
 });
 

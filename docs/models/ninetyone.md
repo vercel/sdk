@@ -8,25 +8,23 @@ The payload of the event, if requested.
 import { NinetyOne } from "@vercel/sdk/models/userevent.js";
 
 let value: NinetyOne = {
-  projectId: "<id>",
-  projectAnalytics: {
-    id: "<id>",
-    disabledAt: 6073.38,
-    enabledAt: 9367.57,
-  },
-  prevProjectAnalytics: {
-    id: "<id>",
-    disabledAt: 3098.43,
-    enabledAt: 9480.64,
-  },
+  integrationId: "<id>",
+  configurationId: "<id>",
+  integrationSlug: "<value>",
+  integrationName: "<value>",
+  ownerId: "<id>",
+  confirmedScopes: [],
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `projectName`                                                    | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
-| `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `projectAnalytics`                                               | [models.ProjectAnalytics](../models/projectanalytics.md)         | :heavy_check_mark:                                               | N/A                                                              |
-| `prevProjectAnalytics`                                           | [models.PrevProjectAnalytics](../models/prevprojectanalytics.md) | :heavy_check_mark:                                               | N/A                                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
+| `configurationId`  | *string*           | :heavy_check_mark: | N/A                |
+| `integrationSlug`  | *string*           | :heavy_check_mark: | N/A                |
+| `integrationName`  | *string*           | :heavy_check_mark: | N/A                |
+| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
+| `projectIds`       | *string*[]         | :heavy_minus_sign: | N/A                |
+| `confirmedScopes`  | *string*[]         | :heavy_check_mark: | N/A                |

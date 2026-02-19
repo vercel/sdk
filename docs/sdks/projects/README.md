@@ -25,6 +25,7 @@
 * [acceptProjectTransferRequest](#acceptprojecttransferrequest) - Accept project transfer request
 * [updateProjectProtectionBypass](#updateprojectprotectionbypass) - Update Protection Bypass for Automation
 * [requestRollback](#requestrollback) - Points all production domains for a project to the given deploy
+* [patchV1ProjectsProjectIdRollbackDeploymentIdUpdateDescription](#patchv1projectsprojectidrollbackdeploymentidupdatedescription) - Updates the description for a rollback
 * [requestPromote](#requestpromote) - Points all production domains for a project to the given deploy
 * [listPromoteAliases](#listpromotealiases) - Gets a list of aliases with status for the current promote
 * [pauseProject](#pauseproject) - Pause a project
@@ -1789,6 +1790,77 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `request`                                                                                                                                                                      | [models.RequestRollbackRequest](../../models/requestrollbackrequest.md)                                                                                                        | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<void\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
+
+## patchV1ProjectsProjectIdRollbackDeploymentIdUpdateDescription
+
+Updates the reason for a rollback, without changing the rollback status itself.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="patch_/v1/projects/{projectId}/rollback/{deploymentId}/update-description" method="patch" path="/v1/projects/{projectId}/rollback/{deploymentId}/update-description" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel();
+
+async function run() {
+  await vercel.projects.patchV1ProjectsProjectIdRollbackDeploymentIdUpdateDescription({
+    projectId: "<id>",
+    deploymentId: "<id>",
+  });
+
+
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { projectsPatchV1ProjectsProjectIdRollbackDeploymentIdUpdateDescription } from "@vercel/sdk/funcs/projectsPatchV1ProjectsProjectIdRollbackDeploymentIdUpdateDescription.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore();
+
+async function run() {
+  const res = await projectsPatchV1ProjectsProjectIdRollbackDeploymentIdUpdateDescription(vercel, {
+    projectId: "<id>",
+    deploymentId: "<id>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("projectsPatchV1ProjectsProjectIdRollbackDeploymentIdUpdateDescription failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.PatchV1ProjectsProjectIdRollbackDeploymentIdUpdateDescriptionRequest](../../models/patchv1projectsprojectidrollbackdeploymentidupdatedescriptionrequest.md)            | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |

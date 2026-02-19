@@ -66,6 +66,129 @@ func (o *DeleteRedirectsRequest) GetBody() *DeleteRedirectsRequestBody {
 	return o.Body
 }
 
+type DeleteRedirectsVersion3 struct {
+	// The unique identifier for the version.
+	ID string `json:"id"`
+	// The key of the version. The key may be duplicated across versions if the contents are the same as a different version.
+	Key          string  `json:"key"`
+	LastModified float64 `json:"lastModified"`
+	CreatedBy    string  `json:"createdBy"`
+	// Optional name for the version. If not provided, defaults to an ISO timestamp string.
+	Name *string `json:"name,omitempty"`
+	// Whether this version has not been promoted to production yet and is not serving end users.
+	IsStaging *bool `json:"isStaging,omitempty"`
+	// Whether this version is currently live in production.
+	IsLive *bool `json:"isLive,omitempty"`
+	// The number of redirects in this version.
+	RedirectCount *float64 `json:"redirectCount,omitempty"`
+	// The staging link for previewing redirects in this version.
+	Alias *string `json:"alias,omitempty"`
+}
+
+func (d DeleteRedirectsVersion3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeleteRedirectsVersion3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"id", "key", "lastModified", "createdBy"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DeleteRedirectsVersion3) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *DeleteRedirectsVersion3) GetKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.Key
+}
+
+func (o *DeleteRedirectsVersion3) GetLastModified() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.LastModified
+}
+
+func (o *DeleteRedirectsVersion3) GetCreatedBy() string {
+	if o == nil {
+		return ""
+	}
+	return o.CreatedBy
+}
+
+func (o *DeleteRedirectsVersion3) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *DeleteRedirectsVersion3) GetIsStaging() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsStaging
+}
+
+func (o *DeleteRedirectsVersion3) GetIsLive() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsLive
+}
+
+func (o *DeleteRedirectsVersion3) GetRedirectCount() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RedirectCount
+}
+
+func (o *DeleteRedirectsVersion3) GetAlias() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Alias
+}
+
+type DeleteRedirectsResponseBody3 struct {
+	Alias   *string                 `json:"alias"`
+	Version DeleteRedirectsVersion3 `json:"version"`
+}
+
+func (d DeleteRedirectsResponseBody3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeleteRedirectsResponseBody3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"alias", "version"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DeleteRedirectsResponseBody3) GetAlias() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Alias
+}
+
+func (o *DeleteRedirectsResponseBody3) GetVersion() DeleteRedirectsVersion3 {
+	if o == nil {
+		return DeleteRedirectsVersion3{}
+	}
+	return o.Version
+}
+
 type DeleteRedirectsVersion2 struct {
 	// The unique identifier for the version.
 	ID string `json:"id"`
@@ -160,7 +283,7 @@ func (o *DeleteRedirectsVersion2) GetAlias() *string {
 }
 
 type DeleteRedirectsResponseBody2 struct {
-	Alias   *string                 `json:"alias"`
+	Alias   any                     `json:"alias"`
 	Version DeleteRedirectsVersion2 `json:"version"`
 }
 
@@ -175,7 +298,7 @@ func (d *DeleteRedirectsResponseBody2) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *DeleteRedirectsResponseBody2) GetAlias() *string {
+func (o *DeleteRedirectsResponseBody2) GetAlias() any {
 	if o == nil {
 		return nil
 	}
@@ -317,11 +440,13 @@ type DeleteRedirectsResponseBodyType string
 const (
 	DeleteRedirectsResponseBodyTypeDeleteRedirectsResponseBody1 DeleteRedirectsResponseBodyType = "deleteRedirects_ResponseBody_1"
 	DeleteRedirectsResponseBodyTypeDeleteRedirectsResponseBody2 DeleteRedirectsResponseBodyType = "deleteRedirects_ResponseBody_2"
+	DeleteRedirectsResponseBodyTypeDeleteRedirectsResponseBody3 DeleteRedirectsResponseBodyType = "deleteRedirects_ResponseBody_3"
 )
 
 type DeleteRedirectsResponseBody struct {
 	DeleteRedirectsResponseBody1 *DeleteRedirectsResponseBody1 `queryParam:"inline"`
 	DeleteRedirectsResponseBody2 *DeleteRedirectsResponseBody2 `queryParam:"inline"`
+	DeleteRedirectsResponseBody3 *DeleteRedirectsResponseBody3 `queryParam:"inline"`
 
 	Type DeleteRedirectsResponseBodyType
 }
@@ -344,12 +469,28 @@ func CreateDeleteRedirectsResponseBodyDeleteRedirectsResponseBody2(deleteRedirec
 	}
 }
 
+func CreateDeleteRedirectsResponseBodyDeleteRedirectsResponseBody3(deleteRedirectsResponseBody3 DeleteRedirectsResponseBody3) DeleteRedirectsResponseBody {
+	typ := DeleteRedirectsResponseBodyTypeDeleteRedirectsResponseBody3
+
+	return DeleteRedirectsResponseBody{
+		DeleteRedirectsResponseBody3: &deleteRedirectsResponseBody3,
+		Type:                         typ,
+	}
+}
+
 func (u *DeleteRedirectsResponseBody) UnmarshalJSON(data []byte) error {
 
 	var deleteRedirectsResponseBody2 DeleteRedirectsResponseBody2 = DeleteRedirectsResponseBody2{}
 	if err := utils.UnmarshalJSON(data, &deleteRedirectsResponseBody2, "", true, nil); err == nil {
 		u.DeleteRedirectsResponseBody2 = &deleteRedirectsResponseBody2
 		u.Type = DeleteRedirectsResponseBodyTypeDeleteRedirectsResponseBody2
+		return nil
+	}
+
+	var deleteRedirectsResponseBody3 DeleteRedirectsResponseBody3 = DeleteRedirectsResponseBody3{}
+	if err := utils.UnmarshalJSON(data, &deleteRedirectsResponseBody3, "", true, nil); err == nil {
+		u.DeleteRedirectsResponseBody3 = &deleteRedirectsResponseBody3
+		u.Type = DeleteRedirectsResponseBodyTypeDeleteRedirectsResponseBody3
 		return nil
 	}
 
@@ -370,6 +511,10 @@ func (u DeleteRedirectsResponseBody) MarshalJSON() ([]byte, error) {
 
 	if u.DeleteRedirectsResponseBody2 != nil {
 		return utils.MarshalJSON(u.DeleteRedirectsResponseBody2, "", true)
+	}
+
+	if u.DeleteRedirectsResponseBody3 != nil {
+		return utils.MarshalJSON(u.DeleteRedirectsResponseBody3, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type DeleteRedirectsResponseBody: all fields are null")

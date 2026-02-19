@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
@@ -64,6 +65,18 @@ export type InviteUserToTeamRequestBody = {
    */
   role?: InviteUserToTeamRole | undefined;
   projects?: Array<InviteUserToTeamProjects> | undefined;
+};
+
+export type InviteUserToTeamRequest = {
+  /**
+   * The Team identifier to perform the request on behalf of.
+   */
+  teamId: string;
+  /**
+   * The Team slug to perform the request on behalf of.
+   */
+  slug?: string | undefined;
+  requestBody?: Array<InviteUserToTeamRequestBody> | undefined;
 };
 
 /** @internal */
@@ -173,5 +186,61 @@ export function inviteUserToTeamRequestBodyFromJSON(
     jsonString,
     (x) => InviteUserToTeamRequestBody$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'InviteUserToTeamRequestBody' from JSON`,
+  );
+}
+
+/** @internal */
+export const InviteUserToTeamRequest$inboundSchema: z.ZodType<
+  InviteUserToTeamRequest,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  teamId: types.string(),
+  slug: types.optional(types.string()),
+  RequestBody: types.optional(
+    z.array(z.lazy(() => InviteUserToTeamRequestBody$inboundSchema)),
+  ),
+}).transform((v) => {
+  return remap$(v, {
+    "RequestBody": "requestBody",
+  });
+});
+/** @internal */
+export type InviteUserToTeamRequest$Outbound = {
+  teamId: string;
+  slug?: string | undefined;
+  RequestBody?: Array<InviteUserToTeamRequestBody$Outbound> | undefined;
+};
+
+/** @internal */
+export const InviteUserToTeamRequest$outboundSchema: z.ZodType<
+  InviteUserToTeamRequest$Outbound,
+  z.ZodTypeDef,
+  InviteUserToTeamRequest
+> = z.object({
+  teamId: z.string(),
+  slug: z.string().optional(),
+  requestBody: z.array(z.lazy(() => InviteUserToTeamRequestBody$outboundSchema))
+    .optional(),
+}).transform((v) => {
+  return remap$(v, {
+    requestBody: "RequestBody",
+  });
+});
+
+export function inviteUserToTeamRequestToJSON(
+  inviteUserToTeamRequest: InviteUserToTeamRequest,
+): string {
+  return JSON.stringify(
+    InviteUserToTeamRequest$outboundSchema.parse(inviteUserToTeamRequest),
+  );
+}
+export function inviteUserToTeamRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<InviteUserToTeamRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InviteUserToTeamRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InviteUserToTeamRequest' from JSON`,
   );
 }

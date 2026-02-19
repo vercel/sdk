@@ -9,18 +9,16 @@ import { EightyOne } from "@vercel/sdk/models/userevent.js";
 
 let value: EightyOne = {
   projectId: "<id>",
-  fromDeploymentId: "<id>",
-  toDeploymentId: "<id>",
-  projectName: "<value>",
+  rulesetName: "<value>",
+  active: false,
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `fromDeploymentId` | *string*           | :heavy_check_mark: | N/A                |
-| `toDeploymentId`   | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `reason`           | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `projectId`                                                              | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `rulesetName`                                                            | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `active`                                                                 | *boolean*                                                                | :heavy_check_mark:                                                       | N/A                                                                      |
+| `action`                                                                 | [models.UserEventPayload81Action](../models/usereventpayload81action.md) | :heavy_minus_sign:                                                       | N/A                                                                      |

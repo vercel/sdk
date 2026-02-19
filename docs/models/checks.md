@@ -3,35 +3,49 @@
 ## Example Usage
 
 ```typescript
-import { Checks } from "@vercel/sdk/models/getallchecksop.js";
+import { Checks } from "@vercel/sdk/models/listprojectchecksop.js";
 
 let value: Checks = {
-  createdAt: 3740.14,
   id: "<id>",
-  integrationId: "<id>",
   name: "<value>",
-  rerequestable: false,
-  blocking: true,
-  status: "running",
-  updatedAt: 7646.44,
+  ownerId: "<id>",
+  projectId: "<id>",
+  isRerequestable: true,
+  requires: "deployment-url",
+  source: {
+    kind: "integration",
+    integrationId: "<id>",
+    integrationConfigurationId: "<id>",
+  },
+  blocks: "deployment-start",
+  targets: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
+  sourceKind: "webhook",
+  timeout: 7230.69,
+  createdAt: 4176.53,
+  updatedAt: 4138.18,
 };
 ```
 
 ## Fields
 
-| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `completedAt`                                                        | *number*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
-| `conclusion`                                                         | [models.GetAllChecksConclusion](../models/getallchecksconclusion.md) | :heavy_minus_sign:                                                   | N/A                                                                  |
-| `createdAt`                                                          | *number*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
-| `detailsUrl`                                                         | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
-| `id`                                                                 | *string*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
-| `integrationId`                                                      | *string*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
-| `name`                                                               | *string*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
-| `output`                                                             | [models.GetAllChecksOutput](../models/getallchecksoutput.md)         | :heavy_minus_sign:                                                   | N/A                                                                  |
-| `path`                                                               | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
-| `rerequestable`                                                      | *boolean*                                                            | :heavy_check_mark:                                                   | N/A                                                                  |
-| `blocking`                                                           | *boolean*                                                            | :heavy_check_mark:                                                   | N/A                                                                  |
-| `startedAt`                                                          | *number*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
-| `status`                                                             | [models.GetAllChecksStatus](../models/getallchecksstatus.md)         | :heavy_check_mark:                                                   | N/A                                                                  |
-| `updatedAt`                                                          | *number*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `id`                                                                           | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `name`                                                                         | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `ownerId`                                                                      | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `isRerequestable`                                                              | *boolean*                                                                      | :heavy_check_mark:                                                             | N/A                                                                            |
+| `requires`                                                                     | [models.ListProjectChecksRequires](../models/listprojectchecksrequires.md)     | :heavy_check_mark:                                                             | N/A                                                                            |
+| `source`                                                                       | *models.ListProjectChecksSource*                                               | :heavy_check_mark:                                                             | N/A                                                                            |
+| `blocks`                                                                       | [models.ListProjectChecksBlocks](../models/listprojectchecksblocks.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `targets`                                                                      | *string*[]                                                                     | :heavy_check_mark:                                                             | N/A                                                                            |
+| `sourceKind`                                                                   | [models.ListProjectChecksSourceKind](../models/listprojectcheckssourcekind.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `sourceIntegrationConfigurationId`                                             | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `timeout`                                                                      | *number*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `createdAt`                                                                    | *number*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `updatedAt`                                                                    | *number*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `deletedAt`                                                                    | *number*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |

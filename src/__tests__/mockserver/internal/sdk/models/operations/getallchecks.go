@@ -42,10 +42,10 @@ type GetAllChecksConclusion string
 
 const (
 	GetAllChecksConclusionCanceled  GetAllChecksConclusion = "canceled"
+	GetAllChecksConclusionSkipped   GetAllChecksConclusion = "skipped"
 	GetAllChecksConclusionFailed    GetAllChecksConclusion = "failed"
 	GetAllChecksConclusionNeutral   GetAllChecksConclusion = "neutral"
 	GetAllChecksConclusionSucceeded GetAllChecksConclusion = "succeeded"
-	GetAllChecksConclusionSkipped   GetAllChecksConclusion = "skipped"
 	GetAllChecksConclusionStale     GetAllChecksConclusion = "stale"
 )
 
@@ -60,13 +60,13 @@ func (e *GetAllChecksConclusion) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "canceled":
 		fallthrough
+	case "skipped":
+		fallthrough
 	case "failed":
 		fallthrough
 	case "neutral":
 		fallthrough
 	case "succeeded":
-		fallthrough
-	case "skipped":
 		fallthrough
 	case "stale":
 		*e = GetAllChecksConclusion(v)
@@ -291,9 +291,9 @@ func (o *GetAllChecksOutput) GetMetrics() *GetAllChecksMetrics {
 type GetAllChecksStatus string
 
 const (
-	GetAllChecksStatusRegistered GetAllChecksStatus = "registered"
 	GetAllChecksStatusRunning    GetAllChecksStatus = "running"
 	GetAllChecksStatusCompleted  GetAllChecksStatus = "completed"
+	GetAllChecksStatusRegistered GetAllChecksStatus = "registered"
 )
 
 func (e GetAllChecksStatus) ToPointer() *GetAllChecksStatus {
@@ -305,11 +305,11 @@ func (e *GetAllChecksStatus) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "registered":
-		fallthrough
 	case "running":
 		fallthrough
 	case "completed":
+		fallthrough
+	case "registered":
 		*e = GetAllChecksStatus(v)
 		return nil
 	default:
@@ -317,7 +317,7 @@ func (e *GetAllChecksStatus) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type Check struct {
+type GetAllChecksCheck struct {
 	CompletedAt   *float64                `json:"completedAt,omitempty"`
 	Conclusion    *GetAllChecksConclusion `json:"conclusion,omitempty"`
 	CreatedAt     float64                 `json:"createdAt"`
@@ -334,98 +334,98 @@ type Check struct {
 	UpdatedAt     float64                 `json:"updatedAt"`
 }
 
-func (o *Check) GetCompletedAt() *float64 {
+func (o *GetAllChecksCheck) GetCompletedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CompletedAt
 }
 
-func (o *Check) GetConclusion() *GetAllChecksConclusion {
+func (o *GetAllChecksCheck) GetConclusion() *GetAllChecksConclusion {
 	if o == nil {
 		return nil
 	}
 	return o.Conclusion
 }
 
-func (o *Check) GetCreatedAt() float64 {
+func (o *GetAllChecksCheck) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.CreatedAt
 }
 
-func (o *Check) GetDetailsURL() *string {
+func (o *GetAllChecksCheck) GetDetailsURL() *string {
 	if o == nil {
 		return nil
 	}
 	return o.DetailsURL
 }
 
-func (o *Check) GetID() string {
+func (o *GetAllChecksCheck) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *Check) GetIntegrationID() string {
+func (o *GetAllChecksCheck) GetIntegrationID() string {
 	if o == nil {
 		return ""
 	}
 	return o.IntegrationID
 }
 
-func (o *Check) GetName() string {
+func (o *GetAllChecksCheck) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *Check) GetOutput() *GetAllChecksOutput {
+func (o *GetAllChecksCheck) GetOutput() *GetAllChecksOutput {
 	if o == nil {
 		return nil
 	}
 	return o.Output
 }
 
-func (o *Check) GetPath() *string {
+func (o *GetAllChecksCheck) GetPath() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Path
 }
 
-func (o *Check) GetRerequestable() bool {
+func (o *GetAllChecksCheck) GetRerequestable() bool {
 	if o == nil {
 		return false
 	}
 	return o.Rerequestable
 }
 
-func (o *Check) GetBlocking() bool {
+func (o *GetAllChecksCheck) GetBlocking() bool {
 	if o == nil {
 		return false
 	}
 	return o.Blocking
 }
 
-func (o *Check) GetStartedAt() *float64 {
+func (o *GetAllChecksCheck) GetStartedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.StartedAt
 }
 
-func (o *Check) GetStatus() GetAllChecksStatus {
+func (o *GetAllChecksCheck) GetStatus() GetAllChecksStatus {
 	if o == nil {
 		return GetAllChecksStatus("")
 	}
 	return o.Status
 }
 
-func (o *Check) GetUpdatedAt() float64 {
+func (o *GetAllChecksCheck) GetUpdatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
@@ -433,12 +433,12 @@ func (o *Check) GetUpdatedAt() float64 {
 }
 
 type GetAllChecksResponseBody struct {
-	Checks []Check `json:"checks"`
+	Checks []GetAllChecksCheck `json:"checks"`
 }
 
-func (o *GetAllChecksResponseBody) GetChecks() []Check {
+func (o *GetAllChecksResponseBody) GetChecks() []GetAllChecksCheck {
 	if o == nil {
-		return []Check{}
+		return []GetAllChecksCheck{}
 	}
 	return o.Checks
 }

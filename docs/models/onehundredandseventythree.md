@@ -7,11 +7,13 @@ The payload of the event, if requested.
 ```typescript
 import { OneHundredAndSeventyThree } from "@vercel/sdk/models/userevent.js";
 
-let value: OneHundredAndSeventyThree = {};
+let value: OneHundredAndSeventyThree = {
+  storeType: "postgres",
+};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `slug`             | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                      | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `storeType`                                | [models.StoreType](../models/storetype.md) | :heavy_check_mark:                         | N/A                                        |

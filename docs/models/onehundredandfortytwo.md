@@ -8,8 +8,14 @@ The payload of the event, if requested.
 import { OneHundredAndFortyTwo } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndFortyTwo = {
-  previous: {},
-  next: {},
+  projectId: "<id>",
+  projectName: "<value>",
+  previous: {
+    functionDefaultTimeout: 2716.8,
+  },
+  next: {
+    functionDefaultTimeout: 8825.2,
+  },
 };
 ```
 
@@ -17,7 +23,7 @@ let value: OneHundredAndFortyTwo = {
 
 | Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `projectId`                                                                    | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `projectName`                                                                  | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
 | `previous`                                                                     | [models.UserEventPayload142Previous](../models/usereventpayload142previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
 | `next`                                                                         | [models.UserEventPayload142Next](../models/usereventpayload142next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |

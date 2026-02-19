@@ -22,6 +22,8 @@ type AuthUserLimited struct {
 	Avatar *string `json:"avatar"`
 	// The user's default team.
 	DefaultTeamID *string `json:"defaultTeamId"`
+	// Indicates whether the user is managed by an enterprise.
+	IsEnterpriseManaged *bool `json:"isEnterpriseManaged,omitempty"`
 }
 
 func (a AuthUserLimited) MarshalJSON() ([]byte, error) {
@@ -82,4 +84,11 @@ func (o *AuthUserLimited) GetDefaultTeamID() *string {
 		return nil
 	}
 	return o.DefaultTeamID
+}
+
+func (o *AuthUserLimited) GetIsEnterpriseManaged() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsEnterpriseManaged
 }

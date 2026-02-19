@@ -10,7 +10,7 @@ import { Nine } from "@vercel/sdk/models/userevent.js";
 let value: Nine = {
   next: {
     enabled: true,
-    scope: "public",
+    scope: "all",
     includeDrafts: true,
   },
 };

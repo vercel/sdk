@@ -7,12 +7,17 @@ The payload of the event, if requested.
 ```typescript
 import { TwoHundredAndTwenty } from "@vercel/sdk/models/userevent.js";
 
-let value: TwoHundredAndTwenty = {};
+let value: TwoHundredAndTwenty = {
+  edgeConfigId: "<id>",
+  edgeConfigSlug: "<value>",
+  edgeConfigDigest: "<value>",
+};
 ```
 
 ## Fields
 
-| Field                                                | Type                                                 | Required                                             | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `previous`                                           | Record<string, *models.UserEventPayload220Previous*> | :heavy_minus_sign:                                   | N/A                                                  |
-| `next`                                               | Record<string, *models.UserEventPayload220Next*>     | :heavy_minus_sign:                                   | N/A                                                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `edgeConfigId`     | *string*           | :heavy_check_mark: | N/A                |
+| `edgeConfigSlug`   | *string*           | :heavy_check_mark: | N/A                |
+| `edgeConfigDigest` | *string*           | :heavy_check_mark: | N/A                |

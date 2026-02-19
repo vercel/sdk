@@ -87,8 +87,8 @@ func (o *GetDomainConfigRequest) GetSlug() *string {
 type GetDomainConfigConfiguredBy string
 
 const (
-	GetDomainConfigConfiguredByCname GetDomainConfigConfiguredBy = "CNAME"
 	GetDomainConfigConfiguredByA     GetDomainConfigConfiguredBy = "A"
+	GetDomainConfigConfiguredByCname GetDomainConfigConfiguredBy = "CNAME"
 	GetDomainConfigConfiguredByHTTP  GetDomainConfigConfiguredBy = "http"
 	GetDomainConfigConfiguredByDns01 GetDomainConfigConfiguredBy = "dns-01"
 )
@@ -102,9 +102,9 @@ func (e *GetDomainConfigConfiguredBy) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "CNAME":
-		fallthrough
 	case "A":
+		fallthrough
+	case "CNAME":
 		fallthrough
 	case "http":
 		fallthrough

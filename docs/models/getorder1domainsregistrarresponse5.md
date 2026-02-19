@@ -6,12 +6,12 @@
 import { GetOrder1DomainsRegistrarResponse5 } from "@vercel/sdk/models/getorderop.js";
 
 let value: GetOrder1DomainsRegistrarResponse5 = {
-  code: "price-change",
+  code: "claims-notice-required",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `code`             | *"price-change"*   | :heavy_check_mark: | N/A                |
+| Field                      | Type                       | Required                   | Description                |
+| -------------------------- | -------------------------- | -------------------------- | -------------------------- |
+| `code`                     | *"claims-notice-required"* | :heavy_check_mark:         | N/A                        |

@@ -6,12 +6,16 @@
 import { UserEventPayload130Next } from "@vercel/sdk/models/userevent.js";
 
 let value: UserEventPayload130Next = {
-  functionDefaultMemoryType: "<value>",
+  project: {
+    staticIps: {
+      enabled: false,
+    },
+  },
 };
 ```
 
 ## Fields
 
-| Field                       | Type                        | Required                    | Description                 |
-| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
-| `functionDefaultMemoryType` | *string*                    | :heavy_check_mark:          | N/A                         |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `project`                                                                    | [models.UserEventPayload130Project](../models/usereventpayload130project.md) | :heavy_check_mark:                                                           | N/A                                                                          |

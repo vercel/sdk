@@ -721,6 +721,7 @@ const (
 	GetDeploymentsFrameworkRuby           GetDeploymentsFramework = "ruby"
 	GetDeploymentsFrameworkRust           GetDeploymentsFramework = "rust"
 	GetDeploymentsFrameworkNode           GetDeploymentsFramework = "node"
+	GetDeploymentsFrameworkGo             GetDeploymentsFramework = "go"
 	GetDeploymentsFrameworkServices       GetDeploymentsFramework = "services"
 )
 
@@ -856,6 +857,8 @@ func (e *GetDeploymentsFramework) UnmarshalJSON(data []byte) error {
 	case "rust":
 		fallthrough
 	case "node":
+		fallthrough
+	case "go":
 		fallthrough
 	case "services":
 		*e = GetDeploymentsFramework(v)

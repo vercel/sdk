@@ -158,6 +158,7 @@ export const CreateIntegrationStoreDirectFramework = {
   Ruby: "ruby",
   Rust: "rust",
   Node: "node",
+  Go: "go",
   Services: "services",
 } as const;
 export type CreateIntegrationStoreDirectFramework = ClosedEnum<
@@ -313,6 +314,7 @@ export type CreateIntegrationStoreDirectCapabilities = {
   importResource?: boolean | undefined;
   connectedImportResource?: boolean | undefined;
   nativeImportResource?: boolean | undefined;
+  databaseUI?: boolean | undefined;
 };
 
 export const CreateIntegrationStoreDirectIntegrationsType = {
@@ -2153,6 +2155,10 @@ export type Product = {
   projectConnectionScopes?: Array<ProjectConnectionScopes> | undefined;
   showSSOLinkOnProjectConnection?: boolean | undefined;
   disableResourceRenaming?: boolean | undefined;
+  /**
+   * Custom resource title to display during installation and configuration. If not provided, defaults to protocol-based defaults.
+   */
+  resourceTitle?: string | undefined;
   repl?: Repl | undefined;
   guides?: Array<Guides> | undefined;
   integration: CreateIntegrationStoreDirectIntegration;
@@ -3194,6 +3200,7 @@ export const CreateIntegrationStoreDirectCapabilities$inboundSchema: z.ZodType<
   importResource: types.optional(types.boolean()),
   connectedImportResource: types.optional(types.boolean()),
   nativeImportResource: types.optional(types.boolean()),
+  databaseUI: types.optional(types.boolean()),
 });
 /** @internal */
 export type CreateIntegrationStoreDirectCapabilities$Outbound = {
@@ -3214,6 +3221,7 @@ export type CreateIntegrationStoreDirectCapabilities$Outbound = {
   importResource?: boolean | undefined;
   connectedImportResource?: boolean | undefined;
   nativeImportResource?: boolean | undefined;
+  databaseUI?: boolean | undefined;
 };
 
 /** @internal */
@@ -3239,6 +3247,7 @@ export const CreateIntegrationStoreDirectCapabilities$outboundSchema: z.ZodType<
   importResource: z.boolean().optional(),
   connectedImportResource: z.boolean().optional(),
   nativeImportResource: z.boolean().optional(),
+  databaseUI: z.boolean().optional(),
 });
 
 export function createIntegrationStoreDirectCapabilitiesToJSON(
@@ -13542,6 +13551,7 @@ export const Product$inboundSchema: z.ZodType<Product, z.ZodTypeDef, unknown> =
     ),
     showSSOLinkOnProjectConnection: types.optional(types.boolean()),
     disableResourceRenaming: types.optional(types.boolean()),
+    resourceTitle: types.optional(types.string()),
     repl: types.optional(z.lazy(() => Repl$inboundSchema)),
     guides: types.optional(z.array(z.lazy(() => Guides$inboundSchema))),
     integration: z.lazy(() =>
@@ -13570,6 +13580,7 @@ export type Product$Outbound = {
   projectConnectionScopes?: Array<string> | undefined;
   showSSOLinkOnProjectConnection?: boolean | undefined;
   disableResourceRenaming?: boolean | undefined;
+  resourceTitle?: string | undefined;
   repl?: Repl$Outbound | undefined;
   guides?: Array<Guides$Outbound> | undefined;
   integration: CreateIntegrationStoreDirectIntegration$Outbound;
@@ -13602,6 +13613,7 @@ export const Product$outboundSchema: z.ZodType<
     .optional(),
   showSSOLinkOnProjectConnection: z.boolean().optional(),
   disableResourceRenaming: z.boolean().optional(),
+  resourceTitle: z.string().optional(),
   repl: z.lazy(() => Repl$outboundSchema).optional(),
   guides: z.array(z.lazy(() => Guides$outboundSchema)).optional(),
   integration: z.lazy(() =>

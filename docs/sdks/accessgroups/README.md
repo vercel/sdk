@@ -20,9 +20,9 @@
 
 Allows to read an access group
 
-### Example Usage
+### Example Usage: id
 
-<!-- UsageSnippet language="typescript" operationID="readAccessGroup" method="get" path="/v1/access-groups/{idOrName}" -->
+<!-- UsageSnippet language="typescript" operationID="readAccessGroup" method="get" path="/v1/access-groups/{idOrName}" example="id" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -60,6 +60,59 @@ const vercel = new VercelCore({
 async function run() {
   const res = await accessGroupsReadAccessGroup(vercel, {
     idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accessGroupsReadAccessGroup failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: name
+
+<!-- UsageSnippet language="typescript" operationID="readAccessGroup" method="get" path="/v1/access-groups/{idOrName}" example="name" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.accessGroups.readAccessGroup({
+    idOrName: "My Access Group",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { accessGroupsReadAccessGroup } from "@vercel/sdk/funcs/accessGroupsReadAccessGroup.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await accessGroupsReadAccessGroup(vercel, {
+    idOrName: "My Access Group",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
@@ -730,9 +783,9 @@ run();
 
 Allows reading an access group project
 
-### Example Usage
+### Example Usage: id
 
-<!-- UsageSnippet language="typescript" operationID="readAccessGroupProject" method="get" path="/v1/access-groups/{accessGroupIdOrName}/projects/{projectId}" -->
+<!-- UsageSnippet language="typescript" operationID="readAccessGroupProject" method="get" path="/v1/access-groups/{accessGroupIdOrName}/projects/{projectId}" example="id" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -785,6 +838,61 @@ async function run() {
 
 run();
 ```
+### Example Usage: name
+
+<!-- UsageSnippet language="typescript" operationID="readAccessGroupProject" method="get" path="/v1/access-groups/{accessGroupIdOrName}/projects/{projectId}" example="name" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.accessGroups.readAccessGroupProject({
+    accessGroupIdOrName: "My Access Group",
+    projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { accessGroupsReadAccessGroupProject } from "@vercel/sdk/funcs/accessGroupsReadAccessGroupProject.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await accessGroupsReadAccessGroupProject(vercel, {
+    accessGroupIdOrName: "My Access Group",
+    projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accessGroupsReadAccessGroupProject failed:", res.error);
+  }
+}
+
+run();
+```
 
 ### Parameters
 
@@ -809,9 +917,9 @@ run();
 
 Allows update of an access group project
 
-### Example Usage
+### Example Usage: id
 
-<!-- UsageSnippet language="typescript" operationID="updateAccessGroupProject" method="patch" path="/v1/access-groups/{accessGroupIdOrName}/projects/{projectId}" -->
+<!-- UsageSnippet language="typescript" operationID="updateAccessGroupProject" method="patch" path="/v1/access-groups/{accessGroupIdOrName}/projects/{projectId}" example="id" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -853,6 +961,67 @@ const vercel = new VercelCore({
 async function run() {
   const res = await accessGroupsUpdateAccessGroupProject(vercel, {
     accessGroupIdOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+    requestBody: {
+      role: "ADMIN",
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accessGroupsUpdateAccessGroupProject failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: name
+
+<!-- UsageSnippet language="typescript" operationID="updateAccessGroupProject" method="patch" path="/v1/access-groups/{accessGroupIdOrName}/projects/{projectId}" example="name" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.accessGroups.updateAccessGroupProject({
+    accessGroupIdOrName: "My Access Group",
+    projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+    requestBody: {
+      role: "ADMIN",
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { accessGroupsUpdateAccessGroupProject } from "@vercel/sdk/funcs/accessGroupsUpdateAccessGroupProject.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await accessGroupsUpdateAccessGroupProject(vercel, {
+    accessGroupIdOrName: "My Access Group",
     projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",

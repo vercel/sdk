@@ -118,6 +118,7 @@ const (
 	BuyDomainsBadRequestTypeDuplicateDomainsError              BuyDomainsBadRequestType = "DuplicateDomains_error"
 	BuyDomainsBadRequestTypeExpectedPriceMismatchError         BuyDomainsBadRequestType = "ExpectedPriceMismatch_error"
 	BuyDomainsBadRequestTypeDomainNotAvailableError            BuyDomainsBadRequestType = "DomainNotAvailable_error"
+	BuyDomainsBadRequestTypeLanguageCodeRequiredError          BuyDomainsBadRequestType = "LanguageCodeRequired_error"
 	BuyDomainsBadRequestTypeTldNotSupportedError               BuyDomainsBadRequestType = "TldNotSupported_error"
 	BuyDomainsBadRequestTypeHTTPAPIDecodeError                 BuyDomainsBadRequestType = "HttpApiDecodeError"
 )
@@ -132,6 +133,7 @@ type BuyDomainsBadRequest struct {
 	DuplicateDomainsError              *DuplicateDomainsError              `queryParam:"inline"`
 	ExpectedPriceMismatchError         *ExpectedPriceMismatchError         `queryParam:"inline"`
 	DomainNotAvailableError            *DomainNotAvailableError            `queryParam:"inline"`
+	LanguageCodeRequiredError          *LanguageCodeRequiredError          `queryParam:"inline"`
 	TldNotSupportedError               *TldNotSupportedError               `queryParam:"inline"`
 	HTTPAPIDecodeError                 *HTTPAPIDecodeError                 `queryParam:"inline"`
 
@@ -214,6 +216,15 @@ func CreateBuyDomainsBadRequestDomainNotAvailableError(domainNotAvailableError D
 	}
 }
 
+func CreateBuyDomainsBadRequestLanguageCodeRequiredError(languageCodeRequiredError LanguageCodeRequiredError) BuyDomainsBadRequest {
+	typ := BuyDomainsBadRequestTypeLanguageCodeRequiredError
+
+	return BuyDomainsBadRequest{
+		LanguageCodeRequiredError: &languageCodeRequiredError,
+		Type:                      typ,
+	}
+}
+
 func CreateBuyDomainsBadRequestTldNotSupportedError(tldNotSupportedError TldNotSupportedError) BuyDomainsBadRequest {
 	typ := BuyDomainsBadRequestTypeTldNotSupportedError
 
@@ -290,6 +301,13 @@ func (u *BuyDomainsBadRequest) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var languageCodeRequiredError LanguageCodeRequiredError = LanguageCodeRequiredError{}
+	if err := utils.UnmarshalJSON(data, &languageCodeRequiredError, "", true, nil); err == nil {
+		u.LanguageCodeRequiredError = &languageCodeRequiredError
+		u.Type = BuyDomainsBadRequestTypeLanguageCodeRequiredError
+		return nil
+	}
+
 	var tldNotSupportedError TldNotSupportedError = TldNotSupportedError{}
 	if err := utils.UnmarshalJSON(data, &tldNotSupportedError, "", true, nil); err == nil {
 		u.TldNotSupportedError = &tldNotSupportedError
@@ -340,6 +358,10 @@ func (u BuyDomainsBadRequest) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.DomainNotAvailableError, "", true)
 	}
 
+	if u.LanguageCodeRequiredError != nil {
+		return utils.MarshalJSON(u.LanguageCodeRequiredError, "", true)
+	}
+
 	if u.TldNotSupportedError != nil {
 		return utils.MarshalJSON(u.TldNotSupportedError, "", true)
 	}
@@ -376,6 +398,9 @@ func (u BuyDomainsBadRequest) Error() string {
 		return string(data)
 	case BuyDomainsBadRequestTypeDomainNotAvailableError:
 		data, _ := json.Marshal(u.DomainNotAvailableError)
+		return string(data)
+	case BuyDomainsBadRequestTypeLanguageCodeRequiredError:
+		data, _ := json.Marshal(u.LanguageCodeRequiredError)
 		return string(data)
 	case BuyDomainsBadRequestTypeTldNotSupportedError:
 		data, _ := json.Marshal(u.TldNotSupportedError)

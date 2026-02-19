@@ -5,14 +5,13 @@
 ```typescript
 import { UserEventPayload142Next } from "@vercel/sdk/models/userevent.js";
 
-let value: UserEventPayload142Next = {};
+let value: UserEventPayload142Next = {
+  functionDefaultTimeout: 8048.18,
+};
 ```
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `expiration`           | *string*               | :heavy_minus_sign:     | N/A                    |
-| `expirationProduction` | *string*               | :heavy_minus_sign:     | N/A                    |
-| `expirationCanceled`   | *string*               | :heavy_minus_sign:     | N/A                    |
-| `expirationErrored`    | *string*               | :heavy_minus_sign:     | N/A                    |
+| Field                    | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `functionDefaultTimeout` | *number*                 | :heavy_check_mark:       | N/A                      |

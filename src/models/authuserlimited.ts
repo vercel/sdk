@@ -40,6 +40,10 @@ export type AuthUserLimited = {
    * The user's default team.
    */
   defaultTeamId: string | null;
+  /**
+   * Indicates whether the user is managed by an enterprise.
+   */
+  isEnterpriseManaged?: boolean | undefined;
 };
 
 /** @internal */
@@ -55,6 +59,7 @@ export const AuthUserLimited$inboundSchema: z.ZodType<
   username: types.string(),
   avatar: types.nullable(types.string()),
   defaultTeamId: types.nullable(types.string()),
+  isEnterpriseManaged: types.optional(types.boolean()),
 });
 /** @internal */
 export type AuthUserLimited$Outbound = {
@@ -65,6 +70,7 @@ export type AuthUserLimited$Outbound = {
   username: string;
   avatar: string | null;
   defaultTeamId: string | null;
+  isEnterpriseManaged?: boolean | undefined;
 };
 
 /** @internal */
@@ -80,6 +86,7 @@ export const AuthUserLimited$outboundSchema: z.ZodType<
   username: z.string(),
   avatar: z.nullable(z.string()),
   defaultTeamId: z.nullable(z.string()),
+  isEnterpriseManaged: z.boolean().optional(),
 });
 
 export function authUserLimitedToJSON(

@@ -52,6 +52,12 @@ import {
   InvalidAdditionalContactInfo$outboundSchema,
 } from "./invalidadditionalcontactinfo.js";
 import {
+  LanguageCodeRequired,
+  LanguageCodeRequired$inboundSchema,
+  LanguageCodeRequired$Outbound,
+  LanguageCodeRequired$outboundSchema,
+} from "./languagecoderequired.js";
+import {
   NotAuthorizedForScope,
   NotAuthorizedForScope$inboundSchema,
   NotAuthorizedForScope$Outbound,
@@ -142,6 +148,10 @@ export type BuySingleDomainRequestBody = {
    * The contact information for the domain. Some TLDs require additional contact information. Use the [Get contact info schema](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-contact-info-schema) endpoint to retrieve the required fields.
    */
   contactInformation: ContactInformation;
+  /**
+   * The language code for the domain. For punycode domains, this must be provided. The list of supported language codes for a TLD can be retrieved from the [Get TLD](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-tld) endpoint.
+   */
+  languageCode?: string | undefined;
 };
 
 export type BuySingleDomainRequest = {
@@ -167,6 +177,7 @@ export type BuySingleDomainDomainsRegistrarResponseBody =
   | AdditionalContactInfoRequired
   | ExpectedPriceMismatch
   | DomainNotAvailable
+  | LanguageCodeRequired
   | TldNotSupported
   | HttpApiDecodeError;
 
@@ -309,6 +320,7 @@ export const BuySingleDomainRequestBody$inboundSchema: z.ZodType<
   years: types.number(),
   expectedPrice: types.number(),
   contactInformation: z.lazy(() => ContactInformation$inboundSchema),
+  languageCode: types.optional(types.string()),
 });
 /** @internal */
 export type BuySingleDomainRequestBody$Outbound = {
@@ -316,6 +328,7 @@ export type BuySingleDomainRequestBody$Outbound = {
   years: number;
   expectedPrice: number;
   contactInformation: ContactInformation$Outbound;
+  languageCode?: string | undefined;
 };
 
 /** @internal */
@@ -328,6 +341,7 @@ export const BuySingleDomainRequestBody$outboundSchema: z.ZodType<
   years: z.number(),
   expectedPrice: z.number(),
   contactInformation: z.lazy(() => ContactInformation$outboundSchema),
+  languageCode: z.string().optional(),
 });
 
 export function buySingleDomainRequestBodyToJSON(
@@ -469,6 +483,7 @@ export const BuySingleDomainDomainsRegistrarResponseBody$inboundSchema:
     AdditionalContactInfoRequired$inboundSchema,
     ExpectedPriceMismatch$inboundSchema,
     DomainNotAvailable$inboundSchema,
+    LanguageCodeRequired$inboundSchema,
     TldNotSupported$inboundSchema,
     HttpApiDecodeError$inboundSchema,
   ]);
@@ -480,6 +495,7 @@ export type BuySingleDomainDomainsRegistrarResponseBody$Outbound =
   | AdditionalContactInfoRequired$Outbound
   | ExpectedPriceMismatch$Outbound
   | DomainNotAvailable$Outbound
+  | LanguageCodeRequired$Outbound
   | TldNotSupported$Outbound
   | HttpApiDecodeError$Outbound;
 
@@ -496,6 +512,7 @@ export const BuySingleDomainDomainsRegistrarResponseBody$outboundSchema:
     AdditionalContactInfoRequired$outboundSchema,
     ExpectedPriceMismatch$outboundSchema,
     DomainNotAvailable$outboundSchema,
+    LanguageCodeRequired$outboundSchema,
     TldNotSupported$outboundSchema,
     HttpApiDecodeError$outboundSchema,
   ]);

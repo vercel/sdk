@@ -329,3 +329,24 @@ test("Domains Registrar Get Order", async () => {
     status: "purchasing",
   });
 });
+
+test("Domains Registrar Get Tld", async () => {
+  const testHttpClient = createTestHTTPClient("getTld");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.domainsRegistrar.getTld({
+    tld: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    supportedLanguageCodes: {
+      "key": "<value>",
+    },
+  });
+});

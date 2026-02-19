@@ -8,7 +8,9 @@ The payload of the event, if requested.
 import { EightyFour } from "@vercel/sdk/models/userevent.js";
 
 let value: EightyFour = {
-  logDrainUrl: "https://closed-mallard.org/",
+  integrationId: "<id>",
+  integrationSlug: "<value>",
+  integrationName: "<value>",
 };
 ```
 
@@ -16,5 +18,6 @@ let value: EightyFour = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `logDrainUrl`      | *string*           | :heavy_check_mark: | N/A                |
-| `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |
+| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
+| `integrationSlug`  | *string*           | :heavy_check_mark: | N/A                |
+| `integrationName`  | *string*           | :heavy_check_mark: | N/A                |

@@ -7,17 +7,16 @@ The payload of the event, if requested.
 ```typescript
 import { OneHundredAndSixtyFive } from "@vercel/sdk/models/userevent.js";
 
-let value: OneHundredAndSixtyFive = {};
+let value: OneHundredAndSixtyFive = {
+  oldName: "<value>",
+  newName: "<value>",
+};
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `directoryType`                                | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `ssoType`                                      | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `invitedUser`                                  | [models.InvitedUser](../models/inviteduser.md) | :heavy_minus_sign:                             | N/A                                            |
-| `invitedEmail`                                 | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `invitationRole`                               | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `entitlements`                                 | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
-| `invitedUid`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `oldName`          | *string*           | :heavy_check_mark: | N/A                |
+| `newName`          | *string*           | :heavy_check_mark: | N/A                |
+| `uid`              | *string*           | :heavy_minus_sign: | N/A                |

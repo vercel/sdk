@@ -443,18 +443,24 @@ type AuthToken struct {
 	Name string `json:"name"`
 	// The type of the token.
 	Type string `json:"type"`
+	// The token's prefix, for identification purposes.
+	Prefix *string `json:"prefix,omitempty"`
+	// The last few characters of the token, for identification purposes.
+	Suffix *string `json:"suffix,omitempty"`
 	// The origin of how the token was created.
 	Origin *string `json:"origin,omitempty"`
 	// The access scopes granted to the token.
 	Scopes []Scope `json:"scopes,omitempty"`
-	// Timestamp (in milliseconds) of when the token expires.
-	ExpiresAt *float64 `json:"expiresAt,omitempty"`
-	// Timestamp (in milliseconds) of when the token was most recently used.
-	ActiveAt float64 `json:"activeAt"`
 	// Timestamp (in milliseconds) of when the token was created.
 	CreatedAt float64 `json:"createdAt"`
+	// Timestamp (in milliseconds) of when the token was most recently used.
+	ActiveAt float64 `json:"activeAt"`
+	// Timestamp (in milliseconds) of when the token expires.
+	ExpiresAt *float64 `json:"expiresAt,omitempty"`
 	// Timestamp (in milliseconds) of when the token was marked as leaked.
 	LeakedAt *float64 `json:"leakedAt,omitempty"`
+	// URL where the token was discovered as leaked.
+	LeakedURL *string `json:"leakedUrl,omitempty"`
 }
 
 func (o *AuthToken) GetID() string {
@@ -478,6 +484,20 @@ func (o *AuthToken) GetType() string {
 	return o.Type
 }
 
+func (o *AuthToken) GetPrefix() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Prefix
+}
+
+func (o *AuthToken) GetSuffix() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Suffix
+}
+
 func (o *AuthToken) GetOrigin() *string {
 	if o == nil {
 		return nil
@@ -492,11 +512,11 @@ func (o *AuthToken) GetScopes() []Scope {
 	return o.Scopes
 }
 
-func (o *AuthToken) GetExpiresAt() *float64 {
+func (o *AuthToken) GetCreatedAt() float64 {
 	if o == nil {
-		return nil
+		return 0.0
 	}
-	return o.ExpiresAt
+	return o.CreatedAt
 }
 
 func (o *AuthToken) GetActiveAt() float64 {
@@ -506,11 +526,11 @@ func (o *AuthToken) GetActiveAt() float64 {
 	return o.ActiveAt
 }
 
-func (o *AuthToken) GetCreatedAt() float64 {
+func (o *AuthToken) GetExpiresAt() *float64 {
 	if o == nil {
-		return 0.0
+		return nil
 	}
-	return o.CreatedAt
+	return o.ExpiresAt
 }
 
 func (o *AuthToken) GetLeakedAt() *float64 {
@@ -518,4 +538,11 @@ func (o *AuthToken) GetLeakedAt() *float64 {
 		return nil
 	}
 	return o.LeakedAt
+}
+
+func (o *AuthToken) GetLeakedURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LeakedURL
 }

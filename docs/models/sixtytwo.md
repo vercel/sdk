@@ -8,13 +8,14 @@ The payload of the event, if requested.
 import { SixtyTwo } from "@vercel/sdk/models/userevent.js";
 
 let value: SixtyTwo = {
-  domain: "total-quit.com",
+  name: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `renew`            | *boolean*          | :heavy_minus_sign: | N/A                |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `name`                                                                     | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `oldTeam`                                                                  | [models.UserEventPayload62OldTeam](../models/usereventpayload62oldteam.md) | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `newTeam`                                                                  | [models.UserEventPayload62NewTeam](../models/usereventpayload62newteam.md) | :heavy_minus_sign:                                                         | N/A                                                                        |

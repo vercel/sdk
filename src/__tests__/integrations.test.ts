@@ -122,6 +122,7 @@ test("Integrations Create Integration Store Direct", async () => {
       status: "available",
       externalResourceId: "<id>",
       product: {
+        resourceTitle: "Instance",
         integration: {
           id: "<id>",
           name: "<value>",

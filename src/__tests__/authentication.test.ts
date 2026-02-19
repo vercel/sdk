@@ -24,9 +24,9 @@ test("Authentication List Auth Tokens", async () => {
         name: "<value>",
         type: "oauth2-token",
         origin: "github",
-        expiresAt: 1632816536002,
-        activeAt: 1632816536002,
         createdAt: 1632816536002,
+        activeAt: 1632816536002,
+        expiresAt: 1632816536002,
       },
     ],
     pagination: {
@@ -60,9 +60,9 @@ test("Authentication Create Auth Token", async () => {
       name: "<value>",
       type: "oauth2-token",
       origin: "github",
-      expiresAt: 1632816536002,
-      activeAt: 1632816536002,
       createdAt: 1632816536002,
+      activeAt: 1632816536002,
+      expiresAt: 1632816536002,
     },
     bearerToken: "uRKJSTt0L4RaSkiMj41QTkxM",
   });
@@ -87,9 +87,9 @@ test("Authentication Get Auth Token", async () => {
       name: "<value>",
       type: "oauth2-token",
       origin: "github",
-      expiresAt: 1632816536002,
-      activeAt: 1632816536002,
       createdAt: 1632816536002,
+      activeAt: 1632816536002,
+      expiresAt: 1632816536002,
     },
   });
 });

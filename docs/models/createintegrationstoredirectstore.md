@@ -11,6 +11,7 @@ let value: CreateIntegrationStoreDirectStore = {
   status: "limits-exceeded-suspended-store-count",
   externalResourceId: "<id>",
   product: {
+    resourceTitle: "Instance",
     integration: {
       id: "<id>",
       name: "<value>",

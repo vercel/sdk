@@ -8,13 +8,20 @@ The payload of the event, if requested.
 import { EightySix } from "@vercel/sdk/models/userevent.js";
 
 let value: EightySix = {
-  drainUrl: "https://grounded-adult.name",
+  configurations: [
+    {
+      integrationId: "<id>",
+      configurationId: "<id>",
+      integrationSlug: "<value>",
+    },
+  ],
+  ownerId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `drainUrl`         | *string*           | :heavy_check_mark: | N/A                |
-| `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                  | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `configurations`                                       | [models.Configurations](../models/configurations.md)[] | :heavy_check_mark:                                     | N/A                                                    |
+| `ownerId`                                              | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |

@@ -32,14 +32,14 @@ test("Checks Create Check", async () => {
   expect(result).toEqual({
     id: "chk_1a2b3c4d5e6f7g8h9i0j",
     name: "Performance Check",
-    path: "/api/users",
-    status: "completed",
-    conclusion: "succeeded",
-    blocking: true,
-    integrationId: "<id>",
-    deploymentId: "<id>",
     createdAt: 6444.33,
     updatedAt: 2432.96,
+    deploymentId: "<id>",
+    status: "completed",
+    conclusion: "succeeded",
+    path: "/api/users",
+    blocking: true,
+    integrationId: "<id>",
   });
 });
 
@@ -93,12 +93,12 @@ test("Checks Get Check", async () => {
   expect(result).toEqual({
     id: "<id>",
     name: "<value>",
+    createdAt: 6704.13,
+    updatedAt: 5470.22,
+    deploymentId: "<id>",
     status: "running",
     blocking: true,
     integrationId: "<id>",
-    deploymentId: "<id>",
-    createdAt: 6704.13,
-    updatedAt: 5470.22,
   });
 });
 
@@ -156,12 +156,12 @@ test("Checks Update Check", async () => {
   expect(result).toEqual({
     id: "<id>",
     name: "<value>",
+    createdAt: 3990.23,
+    updatedAt: 3283.38,
+    deploymentId: "<id>",
     status: "running",
     blocking: true,
     integrationId: "<id>",
-    deploymentId: "<id>",
-    createdAt: 3990.23,
-    updatedAt: 3283.38,
   });
 });
 

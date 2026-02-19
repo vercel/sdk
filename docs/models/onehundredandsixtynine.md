@@ -8,17 +8,28 @@ The payload of the event, if requested.
 import { OneHundredAndSixtyNine } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndSixtyNine = {
-  entitlement: "<value>",
-  user: {
+  budget: {
+    type: "fixed",
+    fixedBudget: 5943.41,
+    previousSpend: [
+      6707.47,
+      1499.39,
+    ],
+    notifiedAt: [
+      9835.77,
+      9985.59,
+      6854.65,
+    ],
+    createdAt: 1394.57,
+    isActive: false,
+    teamId: "<id>",
     id: "<id>",
-    username: "Laurence78",
   },
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `entitlement`                                                    | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `user`                                                           | [models.UserEventPayloadUser](../models/usereventpayloaduser.md) | :heavy_check_mark:                                               | N/A                                                              |
+| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `budget`                                                                | [models.PayloadBudget](../models/payloadbudget.md)                      | :heavy_check_mark:                                                      | Represents a budget for tracking and notifying teams on their spending. |

@@ -41,6 +41,9 @@ export type CreateOrTransferDomainRequestBody1 = {
    * Whether the domain has the Vercel Edge Network enabled or not.
    */
   cdnEnabled?: boolean | undefined;
+  /**
+   * Whether to create a DNS zone on Vercel. Set `true` if using Vercel nameservers.
+   */
   zone?: boolean | undefined;
   /**
    * The domain operation to perform. It can be either `add` or `move-in`.

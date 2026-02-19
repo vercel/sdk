@@ -8,20 +8,14 @@ The payload of the event, if requested.
 import { SeventyThree } from "@vercel/sdk/models/userevent.js";
 
 let value: SeventyThree = {
-  projectId: "<id>",
-  rulesetName: "<value>",
-  ruleGroups: {
-    "key": {
-      active: false,
-    },
-  },
+  email: "Friedrich_Ferry25@yahoo.com",
+  name: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `projectId`                                                  | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `rulesetName`                                                | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `ruleGroups`                                                 | Record<string, [models.RuleGroups](../models/rulegroups.md)> | :heavy_check_mark:                                           | N/A                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `email`            | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |

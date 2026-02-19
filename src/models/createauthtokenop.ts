@@ -18,6 +18,10 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 export type CreateAuthTokenRequestBody = {
   name: string;
   expiresAt?: number | undefined;
+  /**
+   * The ID of the project to scope this token to
+   */
+  projectId?: string | undefined;
 };
 
 export type CreateAuthTokenRequest = {
@@ -54,11 +58,13 @@ export const CreateAuthTokenRequestBody$inboundSchema: z.ZodType<
 > = z.object({
   name: types.string(),
   expiresAt: types.optional(types.number()),
+  projectId: types.optional(types.string()),
 });
 /** @internal */
 export type CreateAuthTokenRequestBody$Outbound = {
   name: string;
   expiresAt?: number | undefined;
+  projectId?: string | undefined;
 };
 
 /** @internal */
@@ -69,6 +75,7 @@ export const CreateAuthTokenRequestBody$outboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
   expiresAt: z.number().optional(),
+  projectId: z.string().optional(),
 });
 
 export function createAuthTokenRequestBodyToJSON(

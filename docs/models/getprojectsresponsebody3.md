@@ -16,6 +16,7 @@ let value: GetProjectsResponseBody3 = {
         deploymentId: "<id>",
         definitions: [],
       },
+      deploymentExpiration: {},
       directoryListing: true,
       id: "<id>",
       name: "<value>",

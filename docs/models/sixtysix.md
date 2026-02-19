@@ -7,19 +7,17 @@ The payload of the event, if requested.
 ```typescript
 import { SixtySix } from "@vercel/sdk/models/userevent.js";
 
-let value: SixtySix = {};
+let value: SixtySix = {
+  name: "<value>",
+  destinationId: "<id>",
+  destinationName: "<value>",
+};
 ```
 
 ## Fields
 
-| Field               | Type                | Required            | Description         |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `key`               | *string*            | :heavy_minus_sign:  | N/A                 |
-| `projectId`         | *string*            | :heavy_minus_sign:  | N/A                 |
-| `projectName`       | *string*            | :heavy_minus_sign:  | N/A                 |
-| `target`            | *models.Target*     | :heavy_minus_sign:  | N/A                 |
-| `id`                | *string*            | :heavy_minus_sign:  | N/A                 |
-| `gitBranch`         | *string*            | :heavy_minus_sign:  | N/A                 |
-| `edgeConfigId`      | *string*            | :heavy_minus_sign:  | N/A                 |
-| `edgeConfigTokenId` | *string*            | :heavy_minus_sign:  | N/A                 |
-| `source`            | *string*            | :heavy_minus_sign:  | N/A                 |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `destinationId`    | *string*           | :heavy_check_mark: | N/A                |
+| `destinationName`  | *string*           | :heavy_check_mark: | N/A                |

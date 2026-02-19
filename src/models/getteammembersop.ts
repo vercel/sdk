@@ -57,6 +57,14 @@ export type GetTeamMembersRequest = {
    * Include team members who are eligible to be members of the specified project.
    */
   eligibleMembersForProjectId?: string | undefined;
+  /**
+   * The Team identifier to perform the request on behalf of.
+   */
+  teamId: string;
+  /**
+   * The Team slug to perform the request on behalf of.
+   */
+  slug?: string | undefined;
 };
 
 /**
@@ -111,6 +119,9 @@ export const GetTeamMembersOrigin = {
   Feedback: "feedback",
   OrganizationTeams: "organization-teams",
   NsnbAutoApprove: "nsnb-auto-approve",
+  NsnbRequestAccess: "nsnb-request-access",
+  NsnbViewerUpgrade: "nsnb-viewer-upgrade",
+  NsnbInvite: "nsnb-invite",
 } as const;
 export type GetTeamMembersOrigin = ClosedEnum<typeof GetTeamMembersOrigin>;
 
@@ -209,6 +220,10 @@ export type GetTeamMembersMembers = {
    * Array of project memberships
    */
   projects?: Array<GetTeamMembersProjects> | undefined;
+  /**
+   * Indicates whether the user is managed by an enterprise.
+   */
+  isEnterpriseManaged?: boolean | undefined;
 };
 
 export const GetTeamMembersTeamsRole = {
@@ -322,6 +337,8 @@ export const GetTeamMembersRequest$inboundSchema: z.ZodType<
   role: types.optional(QueryParamRole$inboundSchema),
   excludeProject: types.optional(types.string()),
   eligibleMembersForProjectId: types.optional(types.string()),
+  teamId: types.string(),
+  slug: types.optional(types.string()),
 });
 /** @internal */
 export type GetTeamMembersRequest$Outbound = {
@@ -332,6 +349,8 @@ export type GetTeamMembersRequest$Outbound = {
   role?: string | undefined;
   excludeProject?: string | undefined;
   eligibleMembersForProjectId?: string | undefined;
+  teamId: string;
+  slug?: string | undefined;
 };
 
 /** @internal */
@@ -347,6 +366,8 @@ export const GetTeamMembersRequest$outboundSchema: z.ZodType<
   role: QueryParamRole$outboundSchema.optional(),
   excludeProject: z.string().optional(),
   eligibleMembersForProjectId: z.string().optional(),
+  teamId: z.string(),
+  slug: z.string().optional(),
 });
 
 export function getTeamMembersRequestToJSON(
@@ -683,6 +704,7 @@ export const GetTeamMembersMembers$inboundSchema: z.ZodType<
   projects: types.optional(
     z.array(z.lazy(() => GetTeamMembersProjects$inboundSchema)),
   ),
+  isEnterpriseManaged: types.optional(types.boolean()),
 });
 /** @internal */
 export type GetTeamMembersMembers$Outbound = {
@@ -700,6 +722,7 @@ export type GetTeamMembersMembers$Outbound = {
   accessRequestedAt?: number | undefined;
   joinedFrom?: GetTeamMembersJoinedFrom$Outbound | undefined;
   projects?: Array<GetTeamMembersProjects$Outbound> | undefined;
+  isEnterpriseManaged?: boolean | undefined;
 };
 
 /** @internal */
@@ -723,6 +746,7 @@ export const GetTeamMembersMembers$outboundSchema: z.ZodType<
   joinedFrom: z.lazy(() => GetTeamMembersJoinedFrom$outboundSchema).optional(),
   projects: z.array(z.lazy(() => GetTeamMembersProjects$outboundSchema))
     .optional(),
+  isEnterpriseManaged: z.boolean().optional(),
 });
 
 export function getTeamMembersMembersToJSON(

@@ -6,7 +6,7 @@
 import { TeamLimitedJoinedFrom } from "@vercel/sdk/models/teamlimited.js";
 
 let value: TeamLimitedJoinedFrom = {
-  origin: "teams",
+  origin: "github",
 };
 ```
 

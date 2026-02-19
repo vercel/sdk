@@ -8,12 +8,12 @@ The payload of the event, if requested.
 import { TwoHundredAndTwentyThree } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndTwentyThree = {
-  fileId: "<id>",
+  action: "enable",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `fileId`           | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `action`                                                                   | [models.UserEventPayload223Action](../models/usereventpayload223action.md) | :heavy_check_mark:                                                         | N/A                                                                        |

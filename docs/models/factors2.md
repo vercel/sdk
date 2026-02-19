@@ -7,7 +7,7 @@
 
 ```typescript
 const value: models.Two1 = {
-  origin: "<value>",
+  origin: "google",
 };
 ```
 
@@ -15,7 +15,7 @@ const value: models.Two1 = {
 
 ```typescript
 const value: models.Two2 = {
-  origin: "<value>",
+  origin: "recovery-code",
 };
 ```
 

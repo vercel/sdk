@@ -16,6 +16,8 @@ type BuyDomainsDomain struct {
 	// The number of years to purchase the domain for.
 	Years         float64 `json:"years"`
 	ExpectedPrice float64 `json:"expectedPrice"`
+	// The language code for the domain. For punycode domains, this must be provided. The list of supported language codes for a TLD can be retrieved from the [Get TLD](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-tld) endpoint.
+	LanguageCode *string `json:"languageCode,omitempty"`
 }
 
 func (o *BuyDomainsDomain) GetDomainName() string {
@@ -44,6 +46,13 @@ func (o *BuyDomainsDomain) GetExpectedPrice() float64 {
 		return 0.0
 	}
 	return o.ExpectedPrice
+}
+
+func (o *BuyDomainsDomain) GetLanguageCode() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LanguageCode
 }
 
 type BuyDomainsAdditional struct {

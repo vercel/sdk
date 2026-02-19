@@ -8,20 +8,17 @@ The payload of the event, if requested.
 import { OneHundredAndNinetyOne } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndNinetyOne = {
-  project: {
-    name: "<value>",
-  },
-  removedMembership: {
-    role: "PROJECT_VIEWER",
-    uid: "<id>",
-    createdAt: 4782.19,
-  },
+  totp: false,
+  recoveryCodes: 4782.19,
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `project`                                                                    | [models.UserEventPayload191Project](../models/usereventpayload191project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `removedMembership`                                                          | [models.RemovedMembership](../models/removedmembership.md)                   | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field                                      | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `totp`                                     | *boolean*                                  | :heavy_check_mark:                         | N/A                                        |
+| `recoveryCodes`                            | *number*                                   | :heavy_check_mark:                         | N/A                                        |
+| `actorId`                                  | *string*                                   | :heavy_minus_sign:                         | N/A                                        |
+| `actorType`                                | [models.ActorType](../models/actortype.md) | :heavy_minus_sign:                         | N/A                                        |
+| `reason`                                   | *string*                                   | :heavy_minus_sign:                         | N/A                                        |

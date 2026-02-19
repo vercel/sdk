@@ -8,14 +8,15 @@ The payload of the event, if requested.
 import { SeventySeven } from "@vercel/sdk/models/userevent.js";
 
 let value: SeventySeven = {
-  configurations: [],
-  ownerId: "<id>",
+  enabled: true,
+  updatedAt: 1935.43,
 };
 ```
 
 ## Fields
 
-| Field                                                  | Type                                                   | Required                                               | Description                                            |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `configurations`                                       | [models.Configurations](../models/configurations.md)[] | :heavy_check_mark:                                     | N/A                                                    |
-| `ownerId`                                              | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
+| `updatedAt`        | *number*           | :heavy_check_mark: | N/A                |
+| `firstEnabledAt`   | *number*           | :heavy_minus_sign: | N/A                |

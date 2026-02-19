@@ -8,23 +8,16 @@ The payload of the event, if requested.
 import { OneHundredAndFiftyFour } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndFiftyFour = {
-  scalingRules: {
-    "key": {
-      min: 7732.79,
-      max: 2712.29,
-    },
-  },
-  min: 9429.01,
-  max: 5237.36,
-  url: "https://trivial-tusk.net",
+  projectId: "<id>",
+  projectName: "<value>",
+  publicSource: false,
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `scalingRules`                                                   | Record<string, [models.ScalingRules](../models/scalingrules.md)> | :heavy_check_mark:                                               | N/A                                                              |
-| `min`                                                            | *number*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `max`                                                            | *number*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `url`                                                            | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `publicSource`     | *boolean*          | :heavy_check_mark: | N/A                |

@@ -19,13 +19,20 @@ let value: ListUserEventsResponseBody = {
           end: 3,
         },
       ],
+      type: "login",
       createdAt: 1632859321020,
       userId: "zTuNVUXEAvvnNN3IaqinkyMw",
       principalId: "<id>",
       payload: {
-        configuration: {
+        team: {
           id: "<id>",
           name: "<value>",
+        },
+        configuration: {
+          id: "<id>",
+        },
+        project: {
+          id: "<id>",
         },
       },
     },

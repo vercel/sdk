@@ -9,6 +9,8 @@ import (
 type CreateAuthTokenRequestBody struct {
 	Name      string   `json:"name"`
 	ExpiresAt *float64 `json:"expiresAt,omitempty"`
+	// The ID of the project to scope this token to
+	ProjectID *string `json:"projectId,omitempty"`
 }
 
 func (o *CreateAuthTokenRequestBody) GetName() string {
@@ -23,6 +25,13 @@ func (o *CreateAuthTokenRequestBody) GetExpiresAt() *float64 {
 		return nil
 	}
 	return o.ExpiresAt
+}
+
+func (o *CreateAuthTokenRequestBody) GetProjectID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectID
 }
 
 type CreateAuthTokenRequest struct {

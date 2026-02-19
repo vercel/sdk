@@ -6,12 +6,12 @@
 import { GetOrder1DomainsRegistrarResponse3 } from "@vercel/sdk/models/getorderop.js";
 
 let value: GetOrder1DomainsRegistrarResponse3 = {
-  code: "claims-notice-required",
+  code: "client-transfer-prohibited",
 };
 ```
 
 ## Fields
 
-| Field                      | Type                       | Required                   | Description                |
-| -------------------------- | -------------------------- | -------------------------- | -------------------------- |
-| `code`                     | *"claims-notice-required"* | :heavy_check_mark:         | N/A                        |
+| Field                          | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `code`                         | *"client-transfer-prohibited"* | :heavy_check_mark:             | N/A                            |

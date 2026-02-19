@@ -148,6 +148,35 @@ func (o *InviteUserToTeamRequestBody) GetProjects() []InviteUserToTeamProject {
 	return o.Projects
 }
 
+type InviteUserToTeamRequest struct {
+	// The Team identifier to perform the request on behalf of.
+	TeamID string `pathParam:"style=simple,explode=false,name=teamId"`
+	// The Team slug to perform the request on behalf of.
+	Slug *string                       `queryParam:"style=form,explode=true,name=slug"`
+	Body []InviteUserToTeamRequestBody `request:"mediaType=application/json"`
+}
+
+func (o *InviteUserToTeamRequest) GetTeamID() string {
+	if o == nil {
+		return ""
+	}
+	return o.TeamID
+}
+
+func (o *InviteUserToTeamRequest) GetSlug() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Slug
+}
+
+func (o *InviteUserToTeamRequest) GetBody() []InviteUserToTeamRequestBody {
+	if o == nil {
+		return nil
+	}
+	return o.Body
+}
+
 type InviteUserToTeamResponse struct {
 	HTTPMeta          components.HTTPMetadata `json:"-"`
 	InvitedTeamMember *components.InvitedTeamMember

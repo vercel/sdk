@@ -8,37 +8,53 @@ The payload of the event, if requested.
 import { SeventySix } from "@vercel/sdk/models/userevent.js";
 
 let value: SeventySix = {
-  userId: "<id>",
-  integrationId: "<id>",
-  configurationId: "<id>",
-  integrationSlug: "<value>",
-  newOwner: {
-    billing: {
-      plan: "enterprise",
-    },
-    blocked: 8140.97,
-    createdAt: 2114.95,
-    deploymentSecret: "<value>",
-    email: "Era46@gmail.com",
-    id: "<id>",
-    platformVersion: 1079.52,
-    stagingPrefix: "<value>",
-    sysToken: "<value>",
-    type: "user",
-    username: "Hilbert_Frami65",
-    updatedAt: 3667.65,
-    version: "northstar",
+  oldEnvVar: {
+    created: new Date("2021-02-10T13:11:49.180Z"),
+    key: "my-api-key",
+    ownerId: "team_LLHUOMOoDlqOp8wPE4kFo9pE",
+    id: "env_XCG7t7AIHuO2SBA8667zNUiM",
+    createdBy: "2qDDuGFTWXBLDNnqZfWPDp1A",
+    deletedBy: "2qDDuGFTWXBLDNnqZfWPDp1A",
+    updatedBy: "2qDDuGFTWXBLDNnqZfWPDp1A",
+    createdAt: 1609492210000,
+    deletedAt: 1609492210000,
+    updatedAt: 1609492210000,
+    projectId: [
+      "prj_2WjyKQmM8ZnGcJsPWMrHRHrE",
+      "prj_2WjyKQmM8ZnGcJsPWMrasEFg",
+    ],
+    type: "encrypted",
+    target: [
+      "production",
+    ],
+  },
+  newEnvVar: {
+    created: new Date("2021-02-10T13:11:49.180Z"),
+    key: "my-api-key",
+    ownerId: "team_LLHUOMOoDlqOp8wPE4kFo9pE",
+    id: "env_XCG7t7AIHuO2SBA8667zNUiM",
+    createdBy: "2qDDuGFTWXBLDNnqZfWPDp1A",
+    deletedBy: "2qDDuGFTWXBLDNnqZfWPDp1A",
+    updatedBy: "2qDDuGFTWXBLDNnqZfWPDp1A",
+    createdAt: 1609492210000,
+    deletedAt: 1609492210000,
+    updatedAt: 1609492210000,
+    projectId: [
+      "prj_2WjyKQmM8ZnGcJsPWMrHRHrE",
+      "prj_2WjyKQmM8ZnGcJsPWMrasEFg",
+    ],
+    type: "encrypted",
+    target: [
+      "production",
+    ],
   },
 };
 ```
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `userId`                                 | *string*                                 | :heavy_check_mark:                       | N/A                                      |
-| `integrationId`                          | *string*                                 | :heavy_check_mark:                       | N/A                                      |
-| `configurationId`                        | *string*                                 | :heavy_check_mark:                       | N/A                                      |
-| `integrationSlug`                        | *string*                                 | :heavy_check_mark:                       | N/A                                      |
-| `integrationName`                        | *string*                                 | :heavy_minus_sign:                       | N/A                                      |
-| `newOwner`                               | [models.NewOwner](../models/newowner.md) | :heavy_check_mark:                       | N/A                                      |
+| Field                                        | Type                                         | Required                                     | Description                                  |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| `oldEnvVar`                                  | [models.OldEnvVar](../models/oldenvvar.md)   | :heavy_minus_sign:                           | N/A                                          |
+| `newEnvVar`                                  | [models.NewEnvVar](../models/newenvvar.md)   | :heavy_minus_sign:                           | N/A                                          |
+| `updateDiff`                                 | [models.UpdateDiff](../models/updatediff.md) | :heavy_minus_sign:                           | N/A                                          |

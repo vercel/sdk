@@ -7,15 +7,17 @@ The payload of the event, if requested.
 ```typescript
 import { OneHundredAndSeventyEight } from "@vercel/sdk/models/userevent.js";
 
-let value: OneHundredAndSeventyEight = {
-  email: "Hollis42@hotmail.com",
-  prevEmail: "<value>",
-};
+let value: OneHundredAndSeventyEight = {};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `email`            | *string*           | :heavy_check_mark: | N/A                |
-| `prevEmail`        | *string*           | :heavy_check_mark: | N/A                |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `directoryType`                                | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `ssoType`                                      | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `invitedUser`                                  | [models.InvitedUser](../models/inviteduser.md) | :heavy_minus_sign:                             | N/A                                            |
+| `invitedEmail`                                 | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `invitationRole`                               | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `entitlements`                                 | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
+| `invitedUid`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |

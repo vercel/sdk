@@ -17,6 +17,7 @@ import { projectsGetProjectEnv } from "../funcs/projectsGetProjectEnv.js";
 import { projectsGetProjects } from "../funcs/projectsGetProjects.js";
 import { projectsListPromoteAliases } from "../funcs/projectsListPromoteAliases.js";
 import { projectsMoveProjectDomain } from "../funcs/projectsMoveProjectDomain.js";
+import { projectsPatchV1ProjectsProjectIdRollbackDeploymentIdUpdateDescription } from "../funcs/projectsPatchV1ProjectsProjectIdRollbackDeploymentIdUpdateDescription.js";
 import { projectsPauseProject } from "../funcs/projectsPauseProject.js";
 import { projectsRemoveProjectDomain } from "../funcs/projectsRemoveProjectDomain.js";
 import { projectsRemoveProjectEnv } from "../funcs/projectsRemoveProjectEnv.js";
@@ -85,6 +86,7 @@ import {
   MoveProjectDomainRequest,
   MoveProjectDomainResponseBody,
 } from "../models/moveprojectdomainop.js";
+import { PatchV1ProjectsProjectIdRollbackDeploymentIdUpdateDescriptionRequest } from "../models/patchv1projectsprojectidrollbackdeploymentidupdatedescriptionop.js";
 import { PauseProjectRequest } from "../models/pauseprojectop.js";
 import {
   RemoveProjectDomainRequest,
@@ -471,6 +473,26 @@ export class Projects extends ClientSDK {
       request,
       options,
     ));
+  }
+
+  /**
+   * Updates the description for a rollback
+   *
+   * @remarks
+   * Updates the reason for a rollback, without changing the rollback status itself.
+   */
+  async patchV1ProjectsProjectIdRollbackDeploymentIdUpdateDescription(
+    request:
+      PatchV1ProjectsProjectIdRollbackDeploymentIdUpdateDescriptionRequest,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(
+      projectsPatchV1ProjectsProjectIdRollbackDeploymentIdUpdateDescription(
+        this,
+        request,
+        options,
+      ),
+    );
   }
 
   /**

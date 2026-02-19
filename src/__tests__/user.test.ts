@@ -50,3 +50,32 @@ test("User Request Delete", async () => {
     message: "Verification email sent",
   });
 });
+
+test("User List Event Types", async () => {
+  const testHttpClient = createTestHTTPClient("listEventTypes");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.user.listEventTypes({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    types: [
+      {
+        replacedBy: [
+          "<value 1>",
+          "<value 2>",
+        ],
+        deprecated: false,
+        name: "domain-transfer-in",
+        description: "woot baritone lasting ah foot when worth whether bleakly",
+      },
+    ],
+  });
+});

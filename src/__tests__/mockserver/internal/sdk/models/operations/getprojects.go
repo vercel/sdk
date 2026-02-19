@@ -496,7 +496,7 @@ func (u GetProjectsEnvIDUnion) MarshalJSON() ([]byte, error) {
 
 type GetProjectsAws struct {
 	SubnetIds       []string `json:"subnetIds"`
-	SecurityGroupID string   `json:"securityGroupId"`
+	SecurityGroupID *string  `json:"securityGroupId,omitempty"`
 }
 
 func (g GetProjectsAws) MarshalJSON() ([]byte, error) {
@@ -504,7 +504,7 @@ func (g GetProjectsAws) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetProjectsAws) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"subnetIds", "securityGroupId"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"subnetIds"}); err != nil {
 		return err
 	}
 	return nil
@@ -517,9 +517,9 @@ func (o *GetProjectsAws) GetSubnetIds() []string {
 	return o.SubnetIds
 }
 
-func (o *GetProjectsAws) GetSecurityGroupID() string {
+func (o *GetProjectsAws) GetSecurityGroupID() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.SecurityGroupID
 }
@@ -2898,6 +2898,7 @@ func (o *GetProjectsCustomEnvironment) GetUpdatedAt() float64 {
 type ProjectFramework2 string
 
 const (
+	ProjectFramework2Services       ProjectFramework2 = "services"
 	ProjectFramework2Blitzjs        ProjectFramework2 = "blitzjs"
 	ProjectFramework2Nextjs         ProjectFramework2 = "nextjs"
 	ProjectFramework2Gatsby         ProjectFramework2 = "gatsby"
@@ -2960,7 +2961,7 @@ const (
 	ProjectFramework2Ruby           ProjectFramework2 = "ruby"
 	ProjectFramework2Rust           ProjectFramework2 = "rust"
 	ProjectFramework2Node           ProjectFramework2 = "node"
-	ProjectFramework2Services       ProjectFramework2 = "services"
+	ProjectFramework2Go             ProjectFramework2 = "go"
 )
 
 func (e ProjectFramework2) ToPointer() *ProjectFramework2 {
@@ -2972,6 +2973,8 @@ func (e *ProjectFramework2) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "services":
+		fallthrough
 	case "blitzjs":
 		fallthrough
 	case "nextjs":
@@ -3096,7 +3099,7 @@ func (e *ProjectFramework2) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "node":
 		fallthrough
-	case "services":
+	case "go":
 		*e = ProjectFramework2(v)
 		return nil
 	default:
@@ -4988,6 +4991,7 @@ func (e *ProjectResourceConfigFunctionDefaultMemoryType2) UnmarshalJSON(data []b
 type ProjectResourceConfigBuildMachineType2 string
 
 const (
+	ProjectResourceConfigBuildMachineType2Standard ProjectResourceConfigBuildMachineType2 = "standard"
 	ProjectResourceConfigBuildMachineType2Enhanced ProjectResourceConfigBuildMachineType2 = "enhanced"
 	ProjectResourceConfigBuildMachineType2Turbo    ProjectResourceConfigBuildMachineType2 = "turbo"
 )
@@ -5001,6 +5005,8 @@ func (e *ProjectResourceConfigBuildMachineType2) UnmarshalJSON(data []byte) erro
 		return err
 	}
 	switch v {
+	case "standard":
+		fallthrough
 	case "enhanced":
 		fallthrough
 	case "turbo":
@@ -5321,6 +5327,7 @@ func (e *ProjectDefaultResourceConfigFunctionDefaultMemoryType) UnmarshalJSON(da
 type ProjectDefaultResourceConfigBuildMachineType string
 
 const (
+	ProjectDefaultResourceConfigBuildMachineTypeStandard ProjectDefaultResourceConfigBuildMachineType = "standard"
 	ProjectDefaultResourceConfigBuildMachineTypeEnhanced ProjectDefaultResourceConfigBuildMachineType = "enhanced"
 	ProjectDefaultResourceConfigBuildMachineTypeTurbo    ProjectDefaultResourceConfigBuildMachineType = "turbo"
 )
@@ -5334,6 +5341,8 @@ func (e *ProjectDefaultResourceConfigBuildMachineType) UnmarshalJSON(data []byte
 		return err
 	}
 	switch v {
+	case "standard":
+		fallthrough
 	case "enhanced":
 		fallthrough
 	case "turbo":
@@ -6094,6 +6103,7 @@ type GetProjectsPermissions struct {
 	TeamOwnMembership                        []components.ACLAction `json:"teamOwnMembership,omitempty"`
 	TeamOwnMembershipDisconnectSAML          []components.ACLAction `json:"teamOwnMembershipDisconnectSAML,omitempty"`
 	Token                                    []components.ACLAction `json:"token,omitempty"`
+	ToolbarComment                           []components.ACLAction `json:"toolbarComment,omitempty"`
 	Usage                                    []components.ACLAction `json:"usage,omitempty"`
 	UsageCycle                               []components.ACLAction `json:"usageCycle,omitempty"`
 	VercelRun                                []components.ACLAction `json:"vercelRun,omitempty"`
@@ -6104,6 +6114,7 @@ type GetProjectsPermissions struct {
 	WebhookEvent                             []components.ACLAction `json:"webhook-event,omitempty"`
 	AliasProject                             []components.ACLAction `json:"aliasProject,omitempty"`
 	AliasProtectionBypass                    []components.ACLAction `json:"aliasProtectionBypass,omitempty"`
+	BulkRedirects                            []components.ACLAction `json:"bulkRedirects,omitempty"`
 	BuildMachine                             []components.ACLAction `json:"buildMachine,omitempty"`
 	ConnectConfigurationLink                 []components.ACLAction `json:"connectConfigurationLink,omitempty"`
 	DataCacheNamespace                       []components.ACLAction `json:"dataCacheNamespace,omitempty"`
@@ -6157,6 +6168,7 @@ type GetProjectsPermissions struct {
 	ProjectProductionBranch                  []components.ACLAction `json:"projectProductionBranch,omitempty"`
 	ProjectProtectionBypass                  []components.ACLAction `json:"projectProtectionBypass,omitempty"`
 	ProjectRollingRelease                    []components.ACLAction `json:"projectRollingRelease,omitempty"`
+	ProjectRoutes                            []components.ACLAction `json:"projectRoutes,omitempty"`
 	ProjectSupportCase                       []components.ACLAction `json:"projectSupportCase,omitempty"`
 	ProjectSupportCaseComment                []components.ACLAction `json:"projectSupportCaseComment,omitempty"`
 	ProjectTier                              []components.ACLAction `json:"projectTier,omitempty"`
@@ -7205,6 +7217,13 @@ func (o *GetProjectsPermissions) GetToken() []components.ACLAction {
 	return o.Token
 }
 
+func (o *GetProjectsPermissions) GetToolbarComment() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ToolbarComment
+}
+
 func (o *GetProjectsPermissions) GetUsage() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -7273,6 +7292,13 @@ func (o *GetProjectsPermissions) GetAliasProtectionBypass() []components.ACLActi
 		return nil
 	}
 	return o.AliasProtectionBypass
+}
+
+func (o *GetProjectsPermissions) GetBulkRedirects() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.BulkRedirects
 }
 
 func (o *GetProjectsPermissions) GetBuildMachine() []components.ACLAction {
@@ -7644,6 +7670,13 @@ func (o *GetProjectsPermissions) GetProjectRollingRelease() []components.ACLActi
 		return nil
 	}
 	return o.ProjectRollingRelease
+}
+
+func (o *GetProjectsPermissions) GetProjectRoutes() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectRoutes
 }
 
 func (o *GetProjectsPermissions) GetProjectSupportCase() []components.ACLAction {
@@ -11532,7 +11565,7 @@ type GetProjectsProject2 struct {
 	Crons                            *GetProjectsCrons                 `json:"crons,omitempty"`
 	DataCache                        *GetProjectsDataCache             `json:"dataCache,omitempty"`
 	// Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
-	DeploymentExpiration          *ProjectDeploymentExpiration2   `json:"deploymentExpiration,omitempty"`
+	DeploymentExpiration          ProjectDeploymentExpiration2    `json:"deploymentExpiration"`
 	DevCommand                    *string                         `json:"devCommand,omitempty"`
 	DirectoryListing              bool                            `json:"directoryListing"`
 	InstallCommand                *string                         `json:"installCommand,omitempty"`
@@ -11606,7 +11639,7 @@ func (g GetProjectsProject2) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetProjectsProject2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"accountId", "directoryListing", "id", "name", "nodeVersion", "resourceConfig", "defaultResourceConfig"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"accountId", "deploymentExpiration", "directoryListing", "id", "name", "nodeVersion", "resourceConfig", "defaultResourceConfig"}); err != nil {
 		return err
 	}
 	return nil
@@ -11731,9 +11764,9 @@ func (o *GetProjectsProject2) GetDataCache() *GetProjectsDataCache {
 	return o.DataCache
 }
 
-func (o *GetProjectsProject2) GetDeploymentExpiration() *ProjectDeploymentExpiration2 {
+func (o *GetProjectsProject2) GetDeploymentExpiration() ProjectDeploymentExpiration2 {
 	if o == nil {
-		return nil
+		return ProjectDeploymentExpiration2{}
 	}
 	return o.DeploymentExpiration
 }
@@ -14784,6 +14817,7 @@ func (o *ProjectEnv1) GetCustomEnvironmentIds() []string {
 type ProjectFramework1 string
 
 const (
+	ProjectFramework1Services       ProjectFramework1 = "services"
 	ProjectFramework1Blitzjs        ProjectFramework1 = "blitzjs"
 	ProjectFramework1Nextjs         ProjectFramework1 = "nextjs"
 	ProjectFramework1Gatsby         ProjectFramework1 = "gatsby"
@@ -14846,7 +14880,7 @@ const (
 	ProjectFramework1Ruby           ProjectFramework1 = "ruby"
 	ProjectFramework1Rust           ProjectFramework1 = "rust"
 	ProjectFramework1Node           ProjectFramework1 = "node"
-	ProjectFramework1Services       ProjectFramework1 = "services"
+	ProjectFramework1Go             ProjectFramework1 = "go"
 )
 
 func (e ProjectFramework1) ToPointer() *ProjectFramework1 {
@@ -14858,6 +14892,8 @@ func (e *ProjectFramework1) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "services":
+		fallthrough
 	case "blitzjs":
 		fallthrough
 	case "nextjs":
@@ -14982,7 +15018,7 @@ func (e *ProjectFramework1) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "node":
 		fallthrough
-	case "services":
+	case "go":
 		*e = ProjectFramework1(v)
 		return nil
 	default:
@@ -16517,6 +16553,7 @@ func (e *ProjectResourceConfigFunctionDefaultMemoryType1) UnmarshalJSON(data []b
 type ProjectResourceConfigBuildMachineType1 string
 
 const (
+	ProjectResourceConfigBuildMachineType1Standard ProjectResourceConfigBuildMachineType1 = "standard"
 	ProjectResourceConfigBuildMachineType1Enhanced ProjectResourceConfigBuildMachineType1 = "enhanced"
 	ProjectResourceConfigBuildMachineType1Turbo    ProjectResourceConfigBuildMachineType1 = "turbo"
 )
@@ -16530,6 +16567,8 @@ func (e *ProjectResourceConfigBuildMachineType1) UnmarshalJSON(data []byte) erro
 		return err
 	}
 	switch v {
+	case "standard":
+		fallthrough
 	case "enhanced":
 		fallthrough
 	case "turbo":
@@ -18233,11 +18272,98 @@ func (o *ProjectErl) GetKeys() []string {
 	return o.Keys
 }
 
+type LogHeadersProjectEnum string
+
+const (
+	LogHeadersProjectEnumWildcard LogHeadersProjectEnum = "*"
+)
+
+func (e LogHeadersProjectEnum) ToPointer() *LogHeadersProjectEnum {
+	return &e
+}
+func (e *LogHeadersProjectEnum) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "*":
+		*e = LogHeadersProjectEnum(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for LogHeadersProjectEnum: %v", v)
+	}
+}
+
+type ProjectLogHeadersUnionType string
+
+const (
+	ProjectLogHeadersUnionTypeArrayOfStr            ProjectLogHeadersUnionType = "arrayOfStr"
+	ProjectLogHeadersUnionTypeLogHeadersProjectEnum ProjectLogHeadersUnionType = "log_headers_project_enum"
+)
+
+type ProjectLogHeadersUnion struct {
+	ArrayOfStr            []string               `queryParam:"inline"`
+	LogHeadersProjectEnum *LogHeadersProjectEnum `queryParam:"inline"`
+
+	Type ProjectLogHeadersUnionType
+}
+
+func CreateProjectLogHeadersUnionArrayOfStr(arrayOfStr []string) ProjectLogHeadersUnion {
+	typ := ProjectLogHeadersUnionTypeArrayOfStr
+
+	return ProjectLogHeadersUnion{
+		ArrayOfStr: arrayOfStr,
+		Type:       typ,
+	}
+}
+
+func CreateProjectLogHeadersUnionLogHeadersProjectEnum(logHeadersProjectEnum LogHeadersProjectEnum) ProjectLogHeadersUnion {
+	typ := ProjectLogHeadersUnionTypeLogHeadersProjectEnum
+
+	return ProjectLogHeadersUnion{
+		LogHeadersProjectEnum: &logHeadersProjectEnum,
+		Type:                  typ,
+	}
+}
+
+func (u *ProjectLogHeadersUnion) UnmarshalJSON(data []byte) error {
+
+	var arrayOfStr []string = []string{}
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
+		u.ArrayOfStr = arrayOfStr
+		u.Type = ProjectLogHeadersUnionTypeArrayOfStr
+		return nil
+	}
+
+	var logHeadersProjectEnum LogHeadersProjectEnum = LogHeadersProjectEnum("")
+	if err := utils.UnmarshalJSON(data, &logHeadersProjectEnum, "", true, nil); err == nil {
+		u.LogHeadersProjectEnum = &logHeadersProjectEnum
+		u.Type = ProjectLogHeadersUnionTypeLogHeadersProjectEnum
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ProjectLogHeadersUnion", string(data))
+}
+
+func (u ProjectLogHeadersUnion) MarshalJSON() ([]byte, error) {
+	if u.ArrayOfStr != nil {
+		return utils.MarshalJSON(u.ArrayOfStr, "", true)
+	}
+
+	if u.LogHeadersProjectEnum != nil {
+		return utils.MarshalJSON(u.LogHeadersProjectEnum, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type ProjectLogHeadersUnion: all fields are null")
+}
+
 type ProjectFirewallRouteMitigate struct {
-	Action ProjectFirewallRouteAction `json:"action"`
-	RuleID string                     `json:"rule_id"`
-	TTL    *float64                   `json:"ttl,omitempty"`
-	Erl    *ProjectErl                `json:"erl,omitempty"`
+	Action     ProjectFirewallRouteAction `json:"action"`
+	RuleID     string                     `json:"rule_id"`
+	TTL        *float64                   `json:"ttl,omitempty"`
+	Erl        *ProjectErl                `json:"erl,omitempty"`
+	LogHeaders *ProjectLogHeadersUnion    `json:"log_headers,omitempty"`
 }
 
 func (p ProjectFirewallRouteMitigate) MarshalJSON() ([]byte, error) {
@@ -18277,6 +18403,13 @@ func (o *ProjectFirewallRouteMitigate) GetErl() *ProjectErl {
 		return nil
 	}
 	return o.Erl
+}
+
+func (o *ProjectFirewallRouteMitigate) GetLogHeaders() *ProjectLogHeadersUnion {
+	if o == nil {
+		return nil
+	}
+	return o.LogHeaders
 }
 
 type ProjectFirewallRoute struct {
@@ -20962,21 +21095,21 @@ type GetProjectsProject1 struct {
 	DevCommand                       *string            `json:"devCommand,omitempty"`
 	DirectoryListing                 bool               `json:"directoryListing"`
 	// Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
-	DeploymentExpiration *ProjectDeploymentExpiration1 `json:"deploymentExpiration,omitempty"`
-	InstallCommand       *string                       `json:"installCommand,omitempty"`
-	IPBuckets            []ProjectIPBucket1            `json:"ipBuckets,omitempty"`
-	Env                  []ProjectEnv1                 `json:"env,omitempty"`
-	Framework            *ProjectFramework1            `json:"framework,omitempty"`
-	GitForkProtection    *bool                         `json:"gitForkProtection,omitempty"`
-	ID                   string                        `json:"id"`
-	LatestDeployments    []ProjectLatestDeployment1    `json:"latestDeployments,omitempty"`
-	Link                 *ProjectLinkUnion1            `json:"link,omitempty"`
-	Name                 string                        `json:"name"`
-	NodeVersion          ProjectNodeVersion1           `json:"nodeVersion"`
-	OutputDirectory      *string                       `json:"outputDirectory,omitempty"`
-	PasswordProtection   *ProjectPasswordProtection1   `json:"passwordProtection,omitempty"`
-	PublicSource         *bool                         `json:"publicSource,omitempty"`
-	ResourceConfig       ProjectResourceConfig1        `json:"resourceConfig"`
+	DeploymentExpiration ProjectDeploymentExpiration1 `json:"deploymentExpiration"`
+	InstallCommand       *string                      `json:"installCommand,omitempty"`
+	IPBuckets            []ProjectIPBucket1           `json:"ipBuckets,omitempty"`
+	Env                  []ProjectEnv1                `json:"env,omitempty"`
+	Framework            *ProjectFramework1           `json:"framework,omitempty"`
+	GitForkProtection    *bool                        `json:"gitForkProtection,omitempty"`
+	ID                   string                       `json:"id"`
+	LatestDeployments    []ProjectLatestDeployment1   `json:"latestDeployments,omitempty"`
+	Link                 *ProjectLinkUnion1           `json:"link,omitempty"`
+	Name                 string                       `json:"name"`
+	NodeVersion          ProjectNodeVersion1          `json:"nodeVersion"`
+	OutputDirectory      *string                      `json:"outputDirectory,omitempty"`
+	PasswordProtection   *ProjectPasswordProtection1  `json:"passwordProtection,omitempty"`
+	PublicSource         *bool                        `json:"publicSource,omitempty"`
+	ResourceConfig       ProjectResourceConfig1       `json:"resourceConfig"`
 	// Project-level rolling release configuration that defines how deployments should be gradually rolled out
 	RollingRelease                       *ProjectRollingRelease1      `json:"rollingRelease,omitempty"`
 	RootDirectory                        *string                      `json:"rootDirectory,omitempty"`
@@ -21010,7 +21143,7 @@ func (g GetProjectsProject1) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetProjectsProject1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"accountId", "alias", "directoryListing", "id", "name", "nodeVersion", "resourceConfig", "serverlessFunctionRegion"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"accountId", "alias", "directoryListing", "deploymentExpiration", "id", "name", "nodeVersion", "resourceConfig", "serverlessFunctionRegion"}); err != nil {
 		return err
 	}
 	return nil
@@ -21107,9 +21240,9 @@ func (o *GetProjectsProject1) GetDirectoryListing() bool {
 	return o.DirectoryListing
 }
 
-func (o *GetProjectsProject1) GetDeploymentExpiration() *ProjectDeploymentExpiration1 {
+func (o *GetProjectsProject1) GetDeploymentExpiration() ProjectDeploymentExpiration1 {
 	if o == nil {
-		return nil
+		return ProjectDeploymentExpiration1{}
 	}
 	return o.DeploymentExpiration
 }
@@ -23985,6 +24118,7 @@ func (o *GetProjectsEnv) GetCustomEnvironmentIds() []string {
 type GetProjectsFramework string
 
 const (
+	GetProjectsFrameworkServices       GetProjectsFramework = "services"
 	GetProjectsFrameworkBlitzjs        GetProjectsFramework = "blitzjs"
 	GetProjectsFrameworkNextjs         GetProjectsFramework = "nextjs"
 	GetProjectsFrameworkGatsby         GetProjectsFramework = "gatsby"
@@ -24047,7 +24181,7 @@ const (
 	GetProjectsFrameworkRuby           GetProjectsFramework = "ruby"
 	GetProjectsFrameworkRust           GetProjectsFramework = "rust"
 	GetProjectsFrameworkNode           GetProjectsFramework = "node"
-	GetProjectsFrameworkServices       GetProjectsFramework = "services"
+	GetProjectsFrameworkGo             GetProjectsFramework = "go"
 )
 
 func (e GetProjectsFramework) ToPointer() *GetProjectsFramework {
@@ -24059,6 +24193,8 @@ func (e *GetProjectsFramework) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "services":
+		fallthrough
 	case "blitzjs":
 		fallthrough
 	case "nextjs":
@@ -24183,7 +24319,7 @@ func (e *GetProjectsFramework) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "node":
 		fallthrough
-	case "services":
+	case "go":
 		*e = GetProjectsFramework(v)
 		return nil
 	default:
@@ -25718,6 +25854,7 @@ func (e *GetProjectsResourceConfigFunctionDefaultMemoryType) UnmarshalJSON(data 
 type GetProjectsResourceConfigBuildMachineType string
 
 const (
+	GetProjectsResourceConfigBuildMachineTypeStandard GetProjectsResourceConfigBuildMachineType = "standard"
 	GetProjectsResourceConfigBuildMachineTypeEnhanced GetProjectsResourceConfigBuildMachineType = "enhanced"
 	GetProjectsResourceConfigBuildMachineTypeTurbo    GetProjectsResourceConfigBuildMachineType = "turbo"
 )
@@ -25731,6 +25868,8 @@ func (e *GetProjectsResourceConfigBuildMachineType) UnmarshalJSON(data []byte) e
 		return err
 	}
 	switch v {
+	case "standard":
+		fallthrough
 	case "enhanced":
 		fallthrough
 	case "turbo":
@@ -27434,11 +27573,98 @@ func (o *Erl) GetKeys() []string {
 	return o.Keys
 }
 
+type GetProjectsLogHeadersEnum string
+
+const (
+	GetProjectsLogHeadersEnumWildcard GetProjectsLogHeadersEnum = "*"
+)
+
+func (e GetProjectsLogHeadersEnum) ToPointer() *GetProjectsLogHeadersEnum {
+	return &e
+}
+func (e *GetProjectsLogHeadersEnum) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "*":
+		*e = GetProjectsLogHeadersEnum(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetProjectsLogHeadersEnum: %v", v)
+	}
+}
+
+type GetProjectsLogHeadersUnionType string
+
+const (
+	GetProjectsLogHeadersUnionTypeArrayOfStr                GetProjectsLogHeadersUnionType = "arrayOfStr"
+	GetProjectsLogHeadersUnionTypeGetProjectsLogHeadersEnum GetProjectsLogHeadersUnionType = "getProjects_log_headers_enum"
+)
+
+type GetProjectsLogHeadersUnion struct {
+	ArrayOfStr                []string                   `queryParam:"inline"`
+	GetProjectsLogHeadersEnum *GetProjectsLogHeadersEnum `queryParam:"inline"`
+
+	Type GetProjectsLogHeadersUnionType
+}
+
+func CreateGetProjectsLogHeadersUnionArrayOfStr(arrayOfStr []string) GetProjectsLogHeadersUnion {
+	typ := GetProjectsLogHeadersUnionTypeArrayOfStr
+
+	return GetProjectsLogHeadersUnion{
+		ArrayOfStr: arrayOfStr,
+		Type:       typ,
+	}
+}
+
+func CreateGetProjectsLogHeadersUnionGetProjectsLogHeadersEnum(getProjectsLogHeadersEnum GetProjectsLogHeadersEnum) GetProjectsLogHeadersUnion {
+	typ := GetProjectsLogHeadersUnionTypeGetProjectsLogHeadersEnum
+
+	return GetProjectsLogHeadersUnion{
+		GetProjectsLogHeadersEnum: &getProjectsLogHeadersEnum,
+		Type:                      typ,
+	}
+}
+
+func (u *GetProjectsLogHeadersUnion) UnmarshalJSON(data []byte) error {
+
+	var arrayOfStr []string = []string{}
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
+		u.ArrayOfStr = arrayOfStr
+		u.Type = GetProjectsLogHeadersUnionTypeArrayOfStr
+		return nil
+	}
+
+	var getProjectsLogHeadersEnum GetProjectsLogHeadersEnum = GetProjectsLogHeadersEnum("")
+	if err := utils.UnmarshalJSON(data, &getProjectsLogHeadersEnum, "", true, nil); err == nil {
+		u.GetProjectsLogHeadersEnum = &getProjectsLogHeadersEnum
+		u.Type = GetProjectsLogHeadersUnionTypeGetProjectsLogHeadersEnum
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetProjectsLogHeadersUnion", string(data))
+}
+
+func (u GetProjectsLogHeadersUnion) MarshalJSON() ([]byte, error) {
+	if u.ArrayOfStr != nil {
+		return utils.MarshalJSON(u.ArrayOfStr, "", true)
+	}
+
+	if u.GetProjectsLogHeadersEnum != nil {
+		return utils.MarshalJSON(u.GetProjectsLogHeadersEnum, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetProjectsLogHeadersUnion: all fields are null")
+}
+
 type FirewallRouteMitigate struct {
-	Action FirewallRouteAction `json:"action"`
-	RuleID string              `json:"rule_id"`
-	TTL    *float64            `json:"ttl,omitempty"`
-	Erl    *Erl                `json:"erl,omitempty"`
+	Action     FirewallRouteAction         `json:"action"`
+	RuleID     string                      `json:"rule_id"`
+	TTL        *float64                    `json:"ttl,omitempty"`
+	Erl        *Erl                        `json:"erl,omitempty"`
+	LogHeaders *GetProjectsLogHeadersUnion `json:"log_headers,omitempty"`
 }
 
 func (f FirewallRouteMitigate) MarshalJSON() ([]byte, error) {
@@ -27478,6 +27704,13 @@ func (o *FirewallRouteMitigate) GetErl() *Erl {
 		return nil
 	}
 	return o.Erl
+}
+
+func (o *FirewallRouteMitigate) GetLogHeaders() *GetProjectsLogHeadersUnion {
+	if o == nil {
+		return nil
+	}
+	return o.LogHeaders
 }
 
 type FirewallRoute struct {
@@ -30163,21 +30396,21 @@ type GetProjectsResponseBody1 struct {
 	DevCommand                       *string               `json:"devCommand,omitempty"`
 	DirectoryListing                 bool                  `json:"directoryListing"`
 	// Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
-	DeploymentExpiration *GetProjectsDeploymentExpiration `json:"deploymentExpiration,omitempty"`
-	InstallCommand       *string                          `json:"installCommand,omitempty"`
-	IPBuckets            []GetProjectsIPBucket            `json:"ipBuckets,omitempty"`
-	Env                  []GetProjectsEnv                 `json:"env,omitempty"`
-	Framework            *GetProjectsFramework            `json:"framework,omitempty"`
-	GitForkProtection    *bool                            `json:"gitForkProtection,omitempty"`
-	ID                   string                           `json:"id"`
-	LatestDeployments    []GetProjectsLatestDeployment    `json:"latestDeployments,omitempty"`
-	Link                 *GetProjectsLinkUnion            `json:"link,omitempty"`
-	Name                 string                           `json:"name"`
-	NodeVersion          GetProjectsNodeVersion           `json:"nodeVersion"`
-	OutputDirectory      *string                          `json:"outputDirectory,omitempty"`
-	PasswordProtection   *GetProjectsPasswordProtection   `json:"passwordProtection,omitempty"`
-	PublicSource         *bool                            `json:"publicSource,omitempty"`
-	ResourceConfig       GetProjectsResourceConfig        `json:"resourceConfig"`
+	DeploymentExpiration GetProjectsDeploymentExpiration `json:"deploymentExpiration"`
+	InstallCommand       *string                         `json:"installCommand,omitempty"`
+	IPBuckets            []GetProjectsIPBucket           `json:"ipBuckets,omitempty"`
+	Env                  []GetProjectsEnv                `json:"env,omitempty"`
+	Framework            *GetProjectsFramework           `json:"framework,omitempty"`
+	GitForkProtection    *bool                           `json:"gitForkProtection,omitempty"`
+	ID                   string                          `json:"id"`
+	LatestDeployments    []GetProjectsLatestDeployment   `json:"latestDeployments,omitempty"`
+	Link                 *GetProjectsLinkUnion           `json:"link,omitempty"`
+	Name                 string                          `json:"name"`
+	NodeVersion          GetProjectsNodeVersion          `json:"nodeVersion"`
+	OutputDirectory      *string                         `json:"outputDirectory,omitempty"`
+	PasswordProtection   *GetProjectsPasswordProtection  `json:"passwordProtection,omitempty"`
+	PublicSource         *bool                           `json:"publicSource,omitempty"`
+	ResourceConfig       GetProjectsResourceConfig       `json:"resourceConfig"`
 	// Project-level rolling release configuration that defines how deployments should be gradually rolled out
 	RollingRelease                       *GetProjectsRollingRelease      `json:"rollingRelease,omitempty"`
 	RootDirectory                        *string                         `json:"rootDirectory,omitempty"`
@@ -30211,7 +30444,7 @@ func (g GetProjectsResponseBody1) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetProjectsResponseBody1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"accountId", "alias", "directoryListing", "id", "name", "nodeVersion", "resourceConfig", "serverlessFunctionRegion"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"accountId", "alias", "directoryListing", "deploymentExpiration", "id", "name", "nodeVersion", "resourceConfig", "serverlessFunctionRegion"}); err != nil {
 		return err
 	}
 	return nil
@@ -30308,9 +30541,9 @@ func (o *GetProjectsResponseBody1) GetDirectoryListing() bool {
 	return o.DirectoryListing
 }
 
-func (o *GetProjectsResponseBody1) GetDeploymentExpiration() *GetProjectsDeploymentExpiration {
+func (o *GetProjectsResponseBody1) GetDeploymentExpiration() GetProjectsDeploymentExpiration {
 	if o == nil {
-		return nil
+		return GetProjectsDeploymentExpiration{}
 	}
 	return o.DeploymentExpiration
 }

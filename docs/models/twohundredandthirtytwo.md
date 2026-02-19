@@ -8,25 +8,18 @@ The payload of the event, if requested.
 import { TwoHundredAndThirtyTwo } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndThirtyTwo = {
-  edgeConfig: {
-    id: "<id>",
-    slug: "<value>",
-  },
-  fromAccount: {
-    id: "<id>",
-    type: "user",
-  },
-  toAccount: {
-    id: "<id>",
-    type: "user",
-  },
+  appName: "<value>",
+  nextScopes: [
+    "profile",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `edgeConfig`                                   | [models.EdgeConfig](../models/edgeconfig.md)   | :heavy_check_mark:                             | N/A                                            |
-| `fromAccount`                                  | [models.FromAccount](../models/fromaccount.md) | :heavy_check_mark:                             | N/A                                            |
-| `toAccount`                                    | [models.ToAccount](../models/toaccount.md)     | :heavy_check_mark:                             | N/A                                            |
+| Field                                                    | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `appName`                                                | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `appId`                                                  | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      |
+| `nextScopes`                                             | [models.NextScopes](../models/nextscopes.md)[]           | :heavy_check_mark:                                       | N/A                                                      |
+| `nextPermissions`                                        | [models.NextPermissions](../models/nextpermissions.md)[] | :heavy_minus_sign:                                       | N/A                                                      |

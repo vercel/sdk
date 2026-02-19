@@ -8,12 +8,12 @@ import { GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains2
 let value:
   GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains2Details =
     {
-      numDaysUntilTransferrable: 1690.22,
+      detectedLanguageCode: "<value>",
     };
 ```
 
 ## Fields
 
-| Field                       | Type                        | Required                    | Description                 |
-| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
-| `numDaysUntilTransferrable` | *number*                    | :heavy_check_mark:          | N/A                         |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `detectedLanguageCode` | *string*               | :heavy_check_mark:     | N/A                    |

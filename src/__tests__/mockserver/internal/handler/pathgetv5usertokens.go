@@ -54,9 +54,9 @@ func testListAuthTokensListAuthTokens0(w http.ResponseWriter, req *http.Request)
 				Name:      "<value>",
 				Type:      "oauth2-token",
 				Origin:    types.String("github"),
-				ExpiresAt: types.Float64(1632816536002),
-				ActiveAt:  1632816536002,
 				CreatedAt: 1632816536002,
+				ActiveAt:  1632816536002,
+				ExpiresAt: types.Float64(1632816536002),
 			},
 		},
 		Pagination: components.Pagination{

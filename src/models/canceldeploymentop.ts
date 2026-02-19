@@ -122,6 +122,7 @@ export const CancelDeploymentFramework = {
   Ruby: "ruby",
   Rust: "rust",
   Node: "node",
+  Go: "go",
   Services: "services",
 } as const;
 export type CancelDeploymentFramework = ClosedEnum<
@@ -946,34 +947,17 @@ export type CancelDeploymentArchitecture = ClosedEnum<
 >;
 
 /**
- * Event type - must be "queue/v1beta" (REQUIRED)
+ * Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed.
  */
-export const CancelDeploymentDeploymentsType = {
-  QueueV1beta: "queue/v1beta",
-} as const;
-/**
- * Event type - must be "queue/v1beta" (REQUIRED)
- */
-export type CancelDeploymentDeploymentsType = ClosedEnum<
-  typeof CancelDeploymentDeploymentsType
->;
-
-/**
- * Queue trigger event for Vercel's queue system. Handles "queue/v1beta" events with queue-specific configuration.
- */
-export type CancelDeploymentExperimentalTriggers = {
+export type CancelDeploymentExperimentalTriggers2 = {
   /**
-   * Event type - must be "queue/v1beta" (REQUIRED)
+   * Event type - must be "queue/v2beta" (REQUIRED)
    */
-  type: CancelDeploymentDeploymentsType;
+  type: "queue/v2beta";
   /**
    * Name of the queue topic to consume from (REQUIRED)
    */
   topic: string;
-  /**
-   * Name of the consumer group for this trigger (REQUIRED)
-   */
-  consumer: string;
   /**
    * Maximum number of delivery attempts for message processing (OPTIONAL) This represents the total number of times a message can be delivered, not the number of retries. Must be at least 1 if specified. Behavior when not specified depends on the server's default configuration.
    */
@@ -992,15 +976,58 @@ export type CancelDeploymentExperimentalTriggers = {
   maxConcurrency?: number | undefined;
 };
 
+/**
+ * Queue trigger input event for v1beta (from vercel.json config). Requires explicit consumer name.
+ */
+export type CancelDeploymentExperimentalTriggers1 = {
+  /**
+   * Event type - must be "queue/v1beta" (REQUIRED)
+   */
+  type: "queue/v1beta";
+  /**
+   * Name of the consumer group for this trigger (REQUIRED)
+   */
+  consumer: string;
+  /**
+   * Name of the queue topic to consume from (REQUIRED)
+   */
+  topic: string;
+  /**
+   * Maximum number of delivery attempts for message processing (OPTIONAL) This represents the total number of times a message can be delivered, not the number of retries. Must be at least 1 if specified. Behavior when not specified depends on the server's default configuration.
+   */
+  maxDeliveries?: number | undefined;
+  /**
+   * Delay in seconds before retrying failed executions (OPTIONAL) Behavior when not specified depends on the server's default configuration.
+   */
+  retryAfterSeconds?: number | undefined;
+  /**
+   * Initial delay in seconds before first execution attempt (OPTIONAL) Must be 0 or greater. Use 0 for no initial delay. Behavior when not specified depends on the server's default configuration.
+   */
+  initialDelaySeconds?: number | undefined;
+  /**
+   * Maximum number of concurrent executions for this consumer (OPTIONAL) Must be at least 1 if specified. Behavior when not specified depends on the server's default configuration.
+   */
+  maxConcurrency?: number | undefined;
+};
+
+export type CancelDeploymentExperimentalTriggers =
+  | CancelDeploymentExperimentalTriggers1
+  | CancelDeploymentExperimentalTriggers2;
+
 export type CancelDeploymentFunctions = {
   architecture?: CancelDeploymentArchitecture | undefined;
   memory?: number | undefined;
   maxDuration?: number | undefined;
+  regions?: Array<string> | undefined;
+  functionFailoverRegions?: Array<string> | undefined;
   runtime?: string | undefined;
   includeFiles?: string | undefined;
   excludeFiles?: string | undefined;
   experimentalTriggers?:
-    | Array<CancelDeploymentExperimentalTriggers>
+    | Array<
+      | CancelDeploymentExperimentalTriggers1
+      | CancelDeploymentExperimentalTriggers2
+    >
     | undefined;
   supportsCancellation?: boolean | undefined;
 };
@@ -1464,62 +1491,6 @@ export type CancelDeploymentBuildQueue = {
 };
 
 /**
- * Build resource configuration snapshot for this deployment.
- */
-export const CancelDeploymentDefault = {
-  Standard: "standard",
-  Enhanced: "enhanced",
-  Turbo: "turbo",
-} as const;
-/**
- * Build resource configuration snapshot for this deployment.
- */
-export type CancelDeploymentDefault = ClosedEnum<
-  typeof CancelDeploymentDefault
->;
-
-/**
- * Build resource configuration snapshot for this deployment.
- */
-export const CancelDeploymentPurchaseType = {
-  Standard: "standard",
-  Enhanced: "enhanced",
-  Turbo: "turbo",
-} as const;
-/**
- * Build resource configuration snapshot for this deployment.
- */
-export type CancelDeploymentPurchaseType = ClosedEnum<
-  typeof CancelDeploymentPurchaseType
->;
-
-/**
- * Build resource configuration snapshot for this deployment.
- */
-export type CancelDeploymentBuildMachine = {
-  /**
-   * Build resource configuration snapshot for this deployment.
-   */
-  default?: CancelDeploymentDefault | undefined;
-  /**
-   * Build resource configuration snapshot for this deployment.
-   */
-  purchaseType?: CancelDeploymentPurchaseType | undefined;
-  /**
-   * Build resource configuration snapshot for this deployment.
-   */
-  isDefaultBuildMachine?: boolean | undefined;
-  /**
-   * Build resource configuration snapshot for this deployment.
-   */
-  cores?: number | undefined;
-  /**
-   * Build resource configuration snapshot for this deployment.
-   */
-  memory?: number | undefined;
-};
-
-/**
  * When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues
  */
 export const CancelDeploymentElasticConcurrency = {
@@ -1535,6 +1506,32 @@ export type CancelDeploymentElasticConcurrency = ClosedEnum<
 >;
 
 /**
+ * Machine type that was used for the build.
+ */
+export const CancelDeploymentPurchaseType = {
+  Standard: "standard",
+  Enhanced: "enhanced",
+  Turbo: "turbo",
+} as const;
+/**
+ * Machine type that was used for the build.
+ */
+export type CancelDeploymentPurchaseType = ClosedEnum<
+  typeof CancelDeploymentPurchaseType
+>;
+
+export type CancelDeploymentBuildMachine = {
+  /**
+   * Machine type that was used for the build.
+   */
+  purchaseType?: CancelDeploymentPurchaseType | null | undefined;
+  /**
+   * Whether the build machine is the default build machine.
+   */
+  isDefaultBuildMachine?: boolean | undefined;
+};
+
+/**
  * Build resource configuration snapshot for this deployment.
  */
 export type CancelDeploymentResourceConfig = {
@@ -1543,13 +1540,10 @@ export type CancelDeploymentResourceConfig = {
    */
   buildQueue?: CancelDeploymentBuildQueue | undefined;
   /**
-   * Build resource configuration snapshot for this deployment.
-   */
-  buildMachine?: CancelDeploymentBuildMachine | undefined;
-  /**
    * When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues
    */
   elasticConcurrency?: CancelDeploymentElasticConcurrency | undefined;
+  buildMachine?: CancelDeploymentBuildMachine | undefined;
 };
 
 /**
@@ -4623,33 +4617,22 @@ export const CancelDeploymentArchitecture$outboundSchema: z.ZodNativeEnum<
 > = CancelDeploymentArchitecture$inboundSchema;
 
 /** @internal */
-export const CancelDeploymentDeploymentsType$inboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentDeploymentsType
-> = z.nativeEnum(CancelDeploymentDeploymentsType);
-/** @internal */
-export const CancelDeploymentDeploymentsType$outboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentDeploymentsType
-> = CancelDeploymentDeploymentsType$inboundSchema;
-
-/** @internal */
-export const CancelDeploymentExperimentalTriggers$inboundSchema: z.ZodType<
-  CancelDeploymentExperimentalTriggers,
+export const CancelDeploymentExperimentalTriggers2$inboundSchema: z.ZodType<
+  CancelDeploymentExperimentalTriggers2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: CancelDeploymentDeploymentsType$inboundSchema,
+  type: types.literal("queue/v2beta"),
   topic: types.string(),
-  consumer: types.string(),
   maxDeliveries: types.optional(types.number()),
   retryAfterSeconds: types.optional(types.number()),
   initialDelaySeconds: types.optional(types.number()),
   maxConcurrency: types.optional(types.number()),
 });
 /** @internal */
-export type CancelDeploymentExperimentalTriggers$Outbound = {
-  type: string;
+export type CancelDeploymentExperimentalTriggers2$Outbound = {
+  type: "queue/v2beta";
   topic: string;
-  consumer: string;
   maxDeliveries?: number | undefined;
   retryAfterSeconds?: number | undefined;
   initialDelaySeconds?: number | undefined;
@@ -4657,19 +4640,122 @@ export type CancelDeploymentExperimentalTriggers$Outbound = {
 };
 
 /** @internal */
-export const CancelDeploymentExperimentalTriggers$outboundSchema: z.ZodType<
-  CancelDeploymentExperimentalTriggers$Outbound,
+export const CancelDeploymentExperimentalTriggers2$outboundSchema: z.ZodType<
+  CancelDeploymentExperimentalTriggers2$Outbound,
   z.ZodTypeDef,
-  CancelDeploymentExperimentalTriggers
+  CancelDeploymentExperimentalTriggers2
 > = z.object({
-  type: CancelDeploymentDeploymentsType$outboundSchema,
+  type: z.literal("queue/v2beta"),
   topic: z.string(),
-  consumer: z.string(),
   maxDeliveries: z.number().optional(),
   retryAfterSeconds: z.number().optional(),
   initialDelaySeconds: z.number().optional(),
   maxConcurrency: z.number().optional(),
 });
+
+export function cancelDeploymentExperimentalTriggers2ToJSON(
+  cancelDeploymentExperimentalTriggers2: CancelDeploymentExperimentalTriggers2,
+): string {
+  return JSON.stringify(
+    CancelDeploymentExperimentalTriggers2$outboundSchema.parse(
+      cancelDeploymentExperimentalTriggers2,
+    ),
+  );
+}
+export function cancelDeploymentExperimentalTriggers2FromJSON(
+  jsonString: string,
+): SafeParseResult<CancelDeploymentExperimentalTriggers2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelDeploymentExperimentalTriggers2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentExperimentalTriggers2' from JSON`,
+  );
+}
+
+/** @internal */
+export const CancelDeploymentExperimentalTriggers1$inboundSchema: z.ZodType<
+  CancelDeploymentExperimentalTriggers1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("queue/v1beta"),
+  consumer: types.string(),
+  topic: types.string(),
+  maxDeliveries: types.optional(types.number()),
+  retryAfterSeconds: types.optional(types.number()),
+  initialDelaySeconds: types.optional(types.number()),
+  maxConcurrency: types.optional(types.number()),
+});
+/** @internal */
+export type CancelDeploymentExperimentalTriggers1$Outbound = {
+  type: "queue/v1beta";
+  consumer: string;
+  topic: string;
+  maxDeliveries?: number | undefined;
+  retryAfterSeconds?: number | undefined;
+  initialDelaySeconds?: number | undefined;
+  maxConcurrency?: number | undefined;
+};
+
+/** @internal */
+export const CancelDeploymentExperimentalTriggers1$outboundSchema: z.ZodType<
+  CancelDeploymentExperimentalTriggers1$Outbound,
+  z.ZodTypeDef,
+  CancelDeploymentExperimentalTriggers1
+> = z.object({
+  type: z.literal("queue/v1beta"),
+  consumer: z.string(),
+  topic: z.string(),
+  maxDeliveries: z.number().optional(),
+  retryAfterSeconds: z.number().optional(),
+  initialDelaySeconds: z.number().optional(),
+  maxConcurrency: z.number().optional(),
+});
+
+export function cancelDeploymentExperimentalTriggers1ToJSON(
+  cancelDeploymentExperimentalTriggers1: CancelDeploymentExperimentalTriggers1,
+): string {
+  return JSON.stringify(
+    CancelDeploymentExperimentalTriggers1$outboundSchema.parse(
+      cancelDeploymentExperimentalTriggers1,
+    ),
+  );
+}
+export function cancelDeploymentExperimentalTriggers1FromJSON(
+  jsonString: string,
+): SafeParseResult<CancelDeploymentExperimentalTriggers1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelDeploymentExperimentalTriggers1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentExperimentalTriggers1' from JSON`,
+  );
+}
+
+/** @internal */
+export const CancelDeploymentExperimentalTriggers$inboundSchema: z.ZodType<
+  CancelDeploymentExperimentalTriggers,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => CancelDeploymentExperimentalTriggers1$inboundSchema),
+  z.lazy(() => CancelDeploymentExperimentalTriggers2$inboundSchema),
+]);
+/** @internal */
+export type CancelDeploymentExperimentalTriggers$Outbound =
+  | CancelDeploymentExperimentalTriggers1$Outbound
+  | CancelDeploymentExperimentalTriggers2$Outbound;
+
+/** @internal */
+export const CancelDeploymentExperimentalTriggers$outboundSchema: z.ZodType<
+  CancelDeploymentExperimentalTriggers$Outbound,
+  z.ZodTypeDef,
+  CancelDeploymentExperimentalTriggers
+> = z.union([
+  z.lazy(() => CancelDeploymentExperimentalTriggers1$outboundSchema),
+  z.lazy(() => CancelDeploymentExperimentalTriggers2$outboundSchema),
+]);
 
 export function cancelDeploymentExperimentalTriggersToJSON(
   cancelDeploymentExperimentalTriggers: CancelDeploymentExperimentalTriggers,
@@ -4700,11 +4786,18 @@ export const CancelDeploymentFunctions$inboundSchema: z.ZodType<
   architecture: types.optional(CancelDeploymentArchitecture$inboundSchema),
   memory: types.optional(types.number()),
   maxDuration: types.optional(types.number()),
+  regions: types.optional(z.array(types.string())),
+  functionFailoverRegions: types.optional(z.array(types.string())),
   runtime: types.optional(types.string()),
   includeFiles: types.optional(types.string()),
   excludeFiles: types.optional(types.string()),
   experimentalTriggers: types.optional(
-    z.array(z.lazy(() => CancelDeploymentExperimentalTriggers$inboundSchema)),
+    z.array(z.union([
+      z.lazy(() => CancelDeploymentExperimentalTriggers1$inboundSchema),
+      z.lazy(() =>
+        CancelDeploymentExperimentalTriggers2$inboundSchema
+      ),
+    ])),
   ),
   supportsCancellation: types.optional(types.boolean()),
 });
@@ -4713,11 +4806,16 @@ export type CancelDeploymentFunctions$Outbound = {
   architecture?: string | undefined;
   memory?: number | undefined;
   maxDuration?: number | undefined;
+  regions?: Array<string> | undefined;
+  functionFailoverRegions?: Array<string> | undefined;
   runtime?: string | undefined;
   includeFiles?: string | undefined;
   excludeFiles?: string | undefined;
   experimentalTriggers?:
-    | Array<CancelDeploymentExperimentalTriggers$Outbound>
+    | Array<
+      | CancelDeploymentExperimentalTriggers1$Outbound
+      | CancelDeploymentExperimentalTriggers2$Outbound
+    >
     | undefined;
   supportsCancellation?: boolean | undefined;
 };
@@ -4731,11 +4829,16 @@ export const CancelDeploymentFunctions$outboundSchema: z.ZodType<
   architecture: CancelDeploymentArchitecture$outboundSchema.optional(),
   memory: z.number().optional(),
   maxDuration: z.number().optional(),
+  regions: z.array(z.string()).optional(),
+  functionFailoverRegions: z.array(z.string()).optional(),
   runtime: z.string().optional(),
   includeFiles: z.string().optional(),
   excludeFiles: z.string().optional(),
   experimentalTriggers: z.array(
-    z.lazy(() => CancelDeploymentExperimentalTriggers$outboundSchema),
+    z.union([
+      z.lazy(() => CancelDeploymentExperimentalTriggers1$outboundSchema),
+      z.lazy(() => CancelDeploymentExperimentalTriggers2$outboundSchema),
+    ]),
   ).optional(),
   supportsCancellation: z.boolean().optional(),
 });
@@ -7077,13 +7180,13 @@ export function cancelDeploymentBuildQueueFromJSON(
 }
 
 /** @internal */
-export const CancelDeploymentDefault$inboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentDefault
-> = z.nativeEnum(CancelDeploymentDefault);
+export const CancelDeploymentElasticConcurrency$inboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentElasticConcurrency
+> = z.nativeEnum(CancelDeploymentElasticConcurrency);
 /** @internal */
-export const CancelDeploymentDefault$outboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentDefault
-> = CancelDeploymentDefault$inboundSchema;
+export const CancelDeploymentElasticConcurrency$outboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentElasticConcurrency
+> = CancelDeploymentElasticConcurrency$inboundSchema;
 
 /** @internal */
 export const CancelDeploymentPurchaseType$inboundSchema: z.ZodNativeEnum<
@@ -7100,19 +7203,14 @@ export const CancelDeploymentBuildMachine$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  default: types.optional(CancelDeploymentDefault$inboundSchema),
-  purchaseType: types.optional(CancelDeploymentPurchaseType$inboundSchema),
+  purchaseType: z.nullable(CancelDeploymentPurchaseType$inboundSchema)
+    .optional(),
   isDefaultBuildMachine: types.optional(types.boolean()),
-  cores: types.optional(types.number()),
-  memory: types.optional(types.number()),
 });
 /** @internal */
 export type CancelDeploymentBuildMachine$Outbound = {
-  default?: string | undefined;
-  purchaseType?: string | undefined;
+  purchaseType?: string | null | undefined;
   isDefaultBuildMachine?: boolean | undefined;
-  cores?: number | undefined;
-  memory?: number | undefined;
 };
 
 /** @internal */
@@ -7121,11 +7219,9 @@ export const CancelDeploymentBuildMachine$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CancelDeploymentBuildMachine
 > = z.object({
-  default: CancelDeploymentDefault$outboundSchema.optional(),
-  purchaseType: CancelDeploymentPurchaseType$outboundSchema.optional(),
+  purchaseType: z.nullable(CancelDeploymentPurchaseType$outboundSchema)
+    .optional(),
   isDefaultBuildMachine: z.boolean().optional(),
-  cores: z.number().optional(),
-  memory: z.number().optional(),
 });
 
 export function cancelDeploymentBuildMachineToJSON(
@@ -7148,15 +7244,6 @@ export function cancelDeploymentBuildMachineFromJSON(
 }
 
 /** @internal */
-export const CancelDeploymentElasticConcurrency$inboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentElasticConcurrency
-> = z.nativeEnum(CancelDeploymentElasticConcurrency);
-/** @internal */
-export const CancelDeploymentElasticConcurrency$outboundSchema: z.ZodNativeEnum<
-  typeof CancelDeploymentElasticConcurrency
-> = CancelDeploymentElasticConcurrency$inboundSchema;
-
-/** @internal */
 export const CancelDeploymentResourceConfig$inboundSchema: z.ZodType<
   CancelDeploymentResourceConfig,
   z.ZodTypeDef,
@@ -7165,18 +7252,18 @@ export const CancelDeploymentResourceConfig$inboundSchema: z.ZodType<
   buildQueue: types.optional(
     z.lazy(() => CancelDeploymentBuildQueue$inboundSchema),
   ),
-  buildMachine: types.optional(
-    z.lazy(() => CancelDeploymentBuildMachine$inboundSchema),
-  ),
   elasticConcurrency: types.optional(
     CancelDeploymentElasticConcurrency$inboundSchema,
+  ),
+  buildMachine: types.optional(
+    z.lazy(() => CancelDeploymentBuildMachine$inboundSchema),
   ),
 });
 /** @internal */
 export type CancelDeploymentResourceConfig$Outbound = {
   buildQueue?: CancelDeploymentBuildQueue$Outbound | undefined;
-  buildMachine?: CancelDeploymentBuildMachine$Outbound | undefined;
   elasticConcurrency?: string | undefined;
+  buildMachine?: CancelDeploymentBuildMachine$Outbound | undefined;
 };
 
 /** @internal */
@@ -7187,9 +7274,9 @@ export const CancelDeploymentResourceConfig$outboundSchema: z.ZodType<
 > = z.object({
   buildQueue: z.lazy(() => CancelDeploymentBuildQueue$outboundSchema)
     .optional(),
-  buildMachine: z.lazy(() => CancelDeploymentBuildMachine$outboundSchema)
-    .optional(),
   elasticConcurrency: CancelDeploymentElasticConcurrency$outboundSchema
+    .optional(),
+  buildMachine: z.lazy(() => CancelDeploymentBuildMachine$outboundSchema)
     .optional(),
 });
 

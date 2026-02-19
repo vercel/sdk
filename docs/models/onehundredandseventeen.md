@@ -8,30 +8,18 @@ The payload of the event, if requested.
 import { OneHundredAndSeventeen } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndSeventeen = {
-  projectId: "<id>",
-  projectName: "<value>",
-  next: {
-    project: {
-      staticIps: {
-        enabled: false,
-      },
-    },
+  passwordProtection: {
+    deploymentType: "all",
   },
-  previous: {
-    project: {
-      staticIps: {
-        enabled: false,
-      },
-    },
-  },
+  oldPasswordProtection: "prod_deployment_urls_and_all_previews",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `next`                                                                         | [models.UserEventPayload117Next](../models/usereventpayload117next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload117Previous](../models/usereventpayload117previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                              | Type                               | Required                           | Description                        |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| `projectId`                        | *string*                           | :heavy_minus_sign:                 | N/A                                |
+| `projectName`                      | *string*                           | :heavy_minus_sign:                 | N/A                                |
+| `passwordProtection`               | *models.PayloadPasswordProtection* | :heavy_check_mark:                 | N/A                                |
+| `oldPasswordProtection`            | *models.OldPasswordProtection*     | :heavy_check_mark:                 | N/A                                |

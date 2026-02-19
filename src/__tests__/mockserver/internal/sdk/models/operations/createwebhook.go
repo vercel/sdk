@@ -54,6 +54,9 @@ const (
 	CreateWebhookEventRequestProjectCreated                                     CreateWebhookEventRequest = "project.created"
 	CreateWebhookEventRequestProjectRemoved                                     CreateWebhookEventRequest = "project.removed"
 	CreateWebhookEventRequestProjectRenamed                                     CreateWebhookEventRequest = "project.renamed"
+	CreateWebhookEventRequestProjectEnvVariableCreated                          CreateWebhookEventRequest = "project.env-variable.created"
+	CreateWebhookEventRequestProjectEnvVariableUpdated                          CreateWebhookEventRequest = "project.env-variable.updated"
+	CreateWebhookEventRequestProjectEnvVariableDeleted                          CreateWebhookEventRequest = "project.env-variable.deleted"
 	CreateWebhookEventRequestProjectDomainCreated                               CreateWebhookEventRequest = "project.domain.created"
 	CreateWebhookEventRequestProjectDomainUpdated                               CreateWebhookEventRequest = "project.domain.updated"
 	CreateWebhookEventRequestProjectDomainDeleted                               CreateWebhookEventRequest = "project.domain.deleted"
@@ -92,6 +95,14 @@ const (
 	CreateWebhookEventRequestObservabilityErrorAnomaly                          CreateWebhookEventRequest = "observability.error-anomaly"
 	CreateWebhookEventRequestBotidAnomaly                                       CreateWebhookEventRequest = "botid.anomaly"
 	CreateWebhookEventRequestTestWebhook                                        CreateWebhookEventRequest = "test-webhook"
+	CreateWebhookEventRequestCommentCreated                                     CreateWebhookEventRequest = "comment.created"
+	CreateWebhookEventRequestCommentUpdated                                     CreateWebhookEventRequest = "comment.updated"
+	CreateWebhookEventRequestCommentDeleted                                     CreateWebhookEventRequest = "comment.deleted"
+	CreateWebhookEventRequestCommentResolved                                    CreateWebhookEventRequest = "comment.resolved"
+	CreateWebhookEventRequestCommentUnresolved                                  CreateWebhookEventRequest = "comment.unresolved"
+	CreateWebhookEventRequestCommentReactionAdded                               CreateWebhookEventRequest = "comment.reaction-added"
+	CreateWebhookEventRequestCommentReactionRemoved                             CreateWebhookEventRequest = "comment.reaction-removed"
+	CreateWebhookEventRequestCommentMentioned                                   CreateWebhookEventRequest = "comment.mentioned"
 )
 
 func (e CreateWebhookEventRequest) ToPointer() *CreateWebhookEventRequest {
@@ -189,6 +200,12 @@ func (e *CreateWebhookEventRequest) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "project.renamed":
 		fallthrough
+	case "project.env-variable.created":
+		fallthrough
+	case "project.env-variable.updated":
+		fallthrough
+	case "project.env-variable.deleted":
+		fallthrough
 	case "project.domain.created":
 		fallthrough
 	case "project.domain.updated":
@@ -264,6 +281,22 @@ func (e *CreateWebhookEventRequest) UnmarshalJSON(data []byte) error {
 	case "botid.anomaly":
 		fallthrough
 	case "test-webhook":
+		fallthrough
+	case "comment.created":
+		fallthrough
+	case "comment.updated":
+		fallthrough
+	case "comment.deleted":
+		fallthrough
+	case "comment.resolved":
+		fallthrough
+	case "comment.unresolved":
+		fallthrough
+	case "comment.reaction-added":
+		fallthrough
+	case "comment.reaction-removed":
+		fallthrough
+	case "comment.mentioned":
 		*e = CreateWebhookEventRequest(v)
 		return nil
 	default:
@@ -374,6 +407,9 @@ const (
 	CreateWebhookEventResponseProjectCreated                                     CreateWebhookEventResponse = "project.created"
 	CreateWebhookEventResponseProjectRemoved                                     CreateWebhookEventResponse = "project.removed"
 	CreateWebhookEventResponseProjectRenamed                                     CreateWebhookEventResponse = "project.renamed"
+	CreateWebhookEventResponseProjectEnvVariableCreated                          CreateWebhookEventResponse = "project.env-variable.created"
+	CreateWebhookEventResponseProjectEnvVariableUpdated                          CreateWebhookEventResponse = "project.env-variable.updated"
+	CreateWebhookEventResponseProjectEnvVariableDeleted                          CreateWebhookEventResponse = "project.env-variable.deleted"
 	CreateWebhookEventResponseProjectDomainCreated                               CreateWebhookEventResponse = "project.domain.created"
 	CreateWebhookEventResponseProjectDomainUpdated                               CreateWebhookEventResponse = "project.domain.updated"
 	CreateWebhookEventResponseProjectDomainDeleted                               CreateWebhookEventResponse = "project.domain.deleted"
@@ -412,6 +448,14 @@ const (
 	CreateWebhookEventResponseObservabilityErrorAnomaly                          CreateWebhookEventResponse = "observability.error-anomaly"
 	CreateWebhookEventResponseBotidAnomaly                                       CreateWebhookEventResponse = "botid.anomaly"
 	CreateWebhookEventResponseTestWebhook                                        CreateWebhookEventResponse = "test-webhook"
+	CreateWebhookEventResponseCommentCreated                                     CreateWebhookEventResponse = "comment.created"
+	CreateWebhookEventResponseCommentUpdated                                     CreateWebhookEventResponse = "comment.updated"
+	CreateWebhookEventResponseCommentDeleted                                     CreateWebhookEventResponse = "comment.deleted"
+	CreateWebhookEventResponseCommentResolved                                    CreateWebhookEventResponse = "comment.resolved"
+	CreateWebhookEventResponseCommentUnresolved                                  CreateWebhookEventResponse = "comment.unresolved"
+	CreateWebhookEventResponseCommentReactionAdded                               CreateWebhookEventResponse = "comment.reaction-added"
+	CreateWebhookEventResponseCommentReactionRemoved                             CreateWebhookEventResponse = "comment.reaction-removed"
+	CreateWebhookEventResponseCommentMentioned                                   CreateWebhookEventResponse = "comment.mentioned"
 )
 
 func (e CreateWebhookEventResponse) ToPointer() *CreateWebhookEventResponse {
@@ -509,6 +553,12 @@ func (e *CreateWebhookEventResponse) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "project.renamed":
 		fallthrough
+	case "project.env-variable.created":
+		fallthrough
+	case "project.env-variable.updated":
+		fallthrough
+	case "project.env-variable.deleted":
+		fallthrough
 	case "project.domain.created":
 		fallthrough
 	case "project.domain.updated":
@@ -584,6 +634,22 @@ func (e *CreateWebhookEventResponse) UnmarshalJSON(data []byte) error {
 	case "botid.anomaly":
 		fallthrough
 	case "test-webhook":
+		fallthrough
+	case "comment.created":
+		fallthrough
+	case "comment.updated":
+		fallthrough
+	case "comment.deleted":
+		fallthrough
+	case "comment.resolved":
+		fallthrough
+	case "comment.unresolved":
+		fallthrough
+	case "comment.reaction-added":
+		fallthrough
+	case "comment.reaction-removed":
+		fallthrough
+	case "comment.mentioned":
 		*e = CreateWebhookEventResponse(v)
 		return nil
 	default:

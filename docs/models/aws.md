@@ -7,7 +7,6 @@ import { Aws } from "@vercel/sdk/models/userevent.js";
 
 let value: Aws = {
   subnetIds: [],
-  securityGroupId: "<id>",
 };
 ```
 
@@ -16,4 +15,4 @@ let value: Aws = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `subnetIds`        | *string*[]         | :heavy_check_mark: | N/A                |
-| `securityGroupId`  | *string*           | :heavy_check_mark: | N/A                |
+| `securityGroupId`  | *string*           | :heavy_minus_sign: | N/A                |

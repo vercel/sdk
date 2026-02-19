@@ -8,16 +8,27 @@ The payload of the event, if requested.
 import { OneHundredAndSixtyEight } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndSixtyEight = {
-  previousRole: "<value>",
+  budget: {
+    budgetItem: {
+      type: "fixed",
+      fixedBudget: 268.4,
+      previousSpend: [
+        2211.33,
+        3066.93,
+        9049.6,
+      ],
+      notifiedAt: [],
+      createdAt: 2535.69,
+      isActive: true,
+      teamId: "<id>",
+      id: "<id>",
+    },
+  },
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `directoryType`                                | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `updatedUser`                                  | [models.UpdatedUser](../models/updateduser.md) | :heavy_minus_sign:                             | N/A                                            |
-| `role`                                         | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `previousRole`                                 | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `updatedUid`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| Field                                | Type                                 | Required                             | Description                          |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `budget`                             | [models.Budget](../models/budget.md) | :heavy_check_mark:                   | N/A                                  |

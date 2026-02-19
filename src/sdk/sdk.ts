@@ -22,7 +22,6 @@ import { EdgeCache } from "./edgecache.js";
 import { EdgeConfig } from "./edgeconfig.js";
 import { Environment } from "./environment.js";
 import { FeatureFlags } from "./featureflags.js";
-import { Flags } from "./flags.js";
 import { Integrations } from "./integrations.js";
 import { LogDrains } from "./logdrains.js";
 import { Logs } from "./logs.js";
@@ -131,11 +130,6 @@ export class Vercel extends ClientSDK {
   private _featureFlags?: FeatureFlags;
   get featureFlags(): FeatureFlags {
     return (this._featureFlags ??= new FeatureFlags(this._options));
-  }
-
-  private _flags?: Flags;
-  get flags(): Flags {
-    return (this._flags ??= new Flags(this._options));
   }
 
   private _marketplace?: Marketplace;

@@ -47,55 +47,48 @@ func testGetProjectsGetProjects0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody *operations.GetProjectsResponseBody = types.Pointer(operations.CreateGetProjectsResponseBodyGetProjectsResponseBody2(
-		operations.GetProjectsResponseBody2{
-			Projects: []operations.GetProjectsProject1{
-				operations.GetProjectsProject1{
+	var respBody *operations.GetProjectsResponseBody = types.Pointer(operations.CreateGetProjectsResponseBodyGetProjectsResponseBody3(
+		operations.GetProjectsResponseBody3{
+			Projects: []operations.GetProjectsProject2{
+				operations.GetProjectsProject2{
 					AccountID: "<id>",
-					Alias: []operations.ProjectAlias{
-						operations.ProjectAlias{
-							Deployment: &operations.ProjectDeployment{
-								CreatedAt: 4236.55,
-								CreatedIn: "<value>",
-								Creator: &operations.ProjectDeploymentCreator{
-									Email:    "Sim56@yahoo.com",
-									UID:      "<id>",
-									Username: "Antonetta77",
-								},
-								DeploymentHostname: "<value>",
-								Name:               "<value>",
-								ID:                 "<id>",
-								Plan:               "<value>",
-								Private:            false,
-								ReadyState:         "<value>",
-								Type:               "<value>",
-								URL:                "https://leading-scaffold.com",
-								UserID:             "<id>",
-							},
-							Domain:      "productive-charm.org",
-							Environment: operations.ProjectEnvironmentPreview,
-							Target:      operations.ProjectAliasTargetStaging,
-						},
+					Crons: &operations.GetProjectsCrons{
+						EnabledAt:    7991.59,
+						DisabledAt:   types.Float64(7805.29),
+						UpdatedAt:    1182.74,
+						DeploymentID: types.String("<id>"),
+						Definitions:  []operations.GetProjectsDefinition{},
 					},
-					DirectoryListing:     true,
-					DeploymentExpiration: operations.ProjectDeploymentExpiration1{},
+					DeploymentExpiration: operations.ProjectDeploymentExpiration2{},
+					DirectoryListing:     false,
 					ID:                   "<id>",
 					Name:                 "<value>",
-					NodeVersion:          operations.ProjectNodeVersion1TwelveDotX,
-					ResourceConfig: operations.ProjectResourceConfig1{
+					NodeVersion:          operations.ProjectNodeVersion2SixteenDotX,
+					ResourceConfig: operations.ProjectResourceConfig2{
 						FunctionDefaultRegions: []string{
 							"<value 1>",
 						},
 					},
-					RollingRelease: &operations.ProjectRollingRelease1{
-						Target:               "production",
-						Stages:               nil,
+					RollingRelease: &operations.ProjectRollingRelease2{
+						Target: "production",
+						Stages: []operations.ProjectStage2{
+							operations.ProjectStage2{
+								TargetPercentage: 25,
+								RequireApproval:  types.Bool(false),
+								Duration:         types.Float64(600),
+								LinearShift:      types.Bool(false),
+							},
+						},
 						CanaryResponseHeader: types.Bool(false),
 					},
-					ServerlessFunctionRegion: "<value>",
+					DefaultResourceConfig: operations.GetProjectsDefaultResourceConfig{
+						FunctionDefaultRegions: []string{
+							"<value 1>",
+						},
+					},
 				},
 			},
-			Pagination: operations.CreatePaginationUnion1Pagination(
+			Pagination: operations.CreatePaginationUnion2Pagination(
 				components.Pagination{
 					Count: 20,
 					Next:  types.Float64(1540095775951),

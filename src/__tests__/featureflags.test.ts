@@ -455,3 +455,49 @@ test("Feature Flags Get Deployment Feature Flags", async () => {
     },
   });
 });
+
+test("Feature Flags Get Sdk Keys", async () => {
+  const testHttpClient = createTestHTTPClient("getSdkKeys");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.featureFlags.getSDKKeys({
+    projectIdOrName: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    data: [],
+  });
+});
+
+test("Feature Flags Create Sdk Key", async () => {
+  const testHttpClient = createTestHTTPClient("createSdkKey");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.featureFlags.createSDKKey({
+    projectIdOrName: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    hashKey: "<value>",
+    projectId: "<id>",
+    type: "mobile",
+    environment: "<value>",
+    createdBy: "<value>",
+    createdAt: 4791.7,
+    updatedAt: 3218.83,
+  });
+});

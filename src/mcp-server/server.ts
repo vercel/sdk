@@ -246,6 +246,23 @@ import { tool$rollingReleaseGetRollingRelease } from "./tools/rollingReleaseGetR
 import { tool$rollingReleaseGetRollingReleaseBillingStatus } from "./tools/rollingReleaseGetRollingReleaseBillingStatus.js";
 import { tool$rollingReleaseGetRollingReleaseConfig } from "./tools/rollingReleaseGetRollingReleaseConfig.js";
 import { tool$rollingReleaseUpdateRollingReleaseConfig } from "./tools/rollingReleaseUpdateRollingReleaseConfig.js";
+import { tool$sandboxesCreateDirectory } from "./tools/sandboxesCreateDirectory.js";
+import { tool$sandboxesCreateSnapshot } from "./tools/sandboxesCreateSnapshot.js";
+import { tool$sandboxesDeleteSnapshot } from "./tools/sandboxesDeleteSnapshot.js";
+import { tool$sandboxesExtendSandboxTimeout } from "./tools/sandboxesExtendSandboxTimeout.js";
+import { tool$sandboxesGetCommand } from "./tools/sandboxesGetCommand.js";
+import { tool$sandboxesGetCommandLogs } from "./tools/sandboxesGetCommandLogs.js";
+import { tool$sandboxesGetSandbox } from "./tools/sandboxesGetSandbox.js";
+import { tool$sandboxesGetSnapshot } from "./tools/sandboxesGetSnapshot.js";
+import { tool$sandboxesKillCommand } from "./tools/sandboxesKillCommand.js";
+import { tool$sandboxesListCommands } from "./tools/sandboxesListCommands.js";
+import { tool$sandboxesListSandboxes } from "./tools/sandboxesListSandboxes.js";
+import { tool$sandboxesListSnapshots } from "./tools/sandboxesListSnapshots.js";
+import { tool$sandboxesReadFile } from "./tools/sandboxesReadFile.js";
+import { tool$sandboxesRunCommand } from "./tools/sandboxesRunCommand.js";
+import { tool$sandboxesStopSandbox } from "./tools/sandboxesStopSandbox.js";
+import { tool$sandboxesUpdateNetworkPolicy } from "./tools/sandboxesUpdateNetworkPolicy.js";
+import { tool$sandboxesWriteFiles } from "./tools/sandboxesWriteFiles.js";
 import { tool$securityAddBypassIp } from "./tools/securityAddBypassIp.js";
 import { tool$securityGetActiveAttackStatus } from "./tools/securityGetActiveAttackStatus.js";
 import { tool$securityGetBypassIp } from "./tools/securityGetBypassIp.js";
@@ -288,7 +305,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.19.3",
+    version: "1.19.4",
   });
 
   const client = new VercelCore({
@@ -547,6 +564,23 @@ export function createMCPServer(deps: {
   tool(tool$rollingReleaseGetRollingRelease);
   tool(tool$rollingReleaseApproveRollingReleaseStage);
   tool(tool$rollingReleaseCompleteRollingRelease);
+  tool(tool$sandboxesListSandboxes);
+  tool(tool$sandboxesListSnapshots);
+  tool(tool$sandboxesGetSandbox);
+  tool(tool$sandboxesListCommands);
+  tool(tool$sandboxesRunCommand);
+  tool(tool$sandboxesKillCommand);
+  tool(tool$sandboxesStopSandbox);
+  tool(tool$sandboxesExtendSandboxTimeout);
+  tool(tool$sandboxesUpdateNetworkPolicy);
+  tool(tool$sandboxesGetCommand);
+  tool(tool$sandboxesGetCommandLogs);
+  tool(tool$sandboxesReadFile);
+  tool(tool$sandboxesCreateDirectory);
+  tool(tool$sandboxesWriteFiles);
+  tool(tool$sandboxesGetSnapshot);
+  tool(tool$sandboxesDeleteSnapshot);
+  tool(tool$sandboxesCreateSnapshot);
   tool(tool$securityUpdateAttackChallengeMode);
   tool(tool$securityPutFirewallConfig);
   tool(tool$securityUpdateFirewallConfig);

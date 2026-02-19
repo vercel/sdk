@@ -28,63 +28,61 @@ test("Projects Get Projects", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    projects: [
-      {
-        accountId: "<id>",
-        alias: [
-          {
-            deployment: {
-              createdAt: 715.79,
-              createdIn: "<value>",
-              creator: {
-                email: "Adolph.Denesik53@yahoo.com",
-                uid: "<id>",
-                username: "Berneice.Lueilwitz",
-              },
-              deploymentHostname: "<value>",
-              name: "<value>",
-              id: "<id>",
-              plan: "<value>",
-              private: false,
-              readyState: "<value>",
-              type: "<value>",
-              url: "https://aching-tapioca.name",
-              userId: "<id>",
+  expect(result).toEqual([
+    {
+      accountId: "<id>",
+      alias: [
+        {
+          deployment: {
+            createdAt: 4064.3,
+            createdIn: "<value>",
+            creator: {
+              email: "Lurline.Metz82@yahoo.com",
+              uid: "<id>",
+              username: "Antonetta_Reinger86",
             },
-            domain: "outrageous-kinase.biz",
-            environment: "preview",
-            target: "STAGING",
+            deploymentHostname: "<value>",
+            name: "<value>",
+            id: "<id>",
+            plan: "<value>",
+            private: false,
+            readyState: "<value>",
+            type: "<value>",
+            url: "https://affectionate-underneath.biz/",
+            userId: "<id>",
+          },
+          domain: "informal-loyalty.biz",
+          environment: "production",
+          target: "STAGING",
+        },
+      ],
+      directoryListing: false,
+      deploymentExpiration: {},
+      id: "<id>",
+      name: "<value>",
+      nodeVersion: "24.x",
+      resourceConfig: {
+        functionDefaultRegions: [
+          "<value 1>",
+          "<value 2>",
+          "<value 3>",
+        ],
+      },
+      rollingRelease: {
+        target: "production",
+        stages: [
+          {
+            targetPercentage: 25,
+            requireApproval: false,
+            duration: 600,
+            linearShift: false,
           },
         ],
-        directoryListing: true,
-        deploymentExpiration: {},
-        id: "<id>",
-        name: "<value>",
-        nodeVersion: "22.x",
-        resourceConfig: {
-          functionDefaultRegions: [],
-        },
-        rollingRelease: {
-          target: "production",
-          stages: [
-            {
-              targetPercentage: 25,
-              requireApproval: false,
-              duration: 600,
-              linearShift: false,
-            },
-          ],
-          canaryResponseHeader: false,
-        },
-        serverlessFunctionRegion: "<value>",
+        canaryResponseHeader: false,
       },
-    ],
-    pagination: {
-      count: 20,
-      next: "JBSWY3DPEHPK3PXP",
+      serverlessFunctionRegion: "<value>",
     },
-  });
+  ]);
 });
 
 test("Projects Create Project", async () => {

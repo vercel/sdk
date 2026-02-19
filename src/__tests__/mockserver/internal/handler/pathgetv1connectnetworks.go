@@ -53,7 +53,7 @@ func testListNetworksListNetworks0(w http.ResponseWriter, req *http.Request) {
 			CreatedAt:    9379.76,
 			ID:           "<id>",
 			Name:         "<value>",
-			Status:       components.StatusCreateInProgress,
+			Status:       components.NetworkStatusCreateInProgress,
 			TeamID:       "<id>",
 		},
 	}

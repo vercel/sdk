@@ -30,6 +30,7 @@ import { Marketplace } from "./marketplace.js";
 import { ProjectMembers } from "./projectmembers.js";
 import { Projects } from "./projects.js";
 import { RollingRelease } from "./rollingrelease.js";
+import { Sandboxes } from "./sandboxes.js";
 import { Security } from "./security.js";
 import { StaticIps } from "./staticips.js";
 import { Teams } from "./teams.js";
@@ -170,6 +171,11 @@ export class Vercel extends ClientSDK {
   private _rollingRelease?: RollingRelease;
   get rollingRelease(): RollingRelease {
     return (this._rollingRelease ??= new RollingRelease(this._options));
+  }
+
+  private _sandboxes?: Sandboxes;
+  get sandboxes(): Sandboxes {
+    return (this._sandboxes ??= new Sandboxes(this._options));
   }
 
   private _security?: Security;

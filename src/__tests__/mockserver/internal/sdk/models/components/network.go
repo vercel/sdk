@@ -53,20 +53,20 @@ func (o *Projects) GetIds() []string {
 	return o.Ids
 }
 
-// Status - The status of the Network.
-type Status string
+// NetworkStatus - The status of the Network.
+type NetworkStatus string
 
 const (
-	StatusCreateInProgress Status = "create_in_progress"
-	StatusDeleteInProgress Status = "delete_in_progress"
-	StatusError            Status = "error"
-	StatusReady            Status = "ready"
+	NetworkStatusCreateInProgress NetworkStatus = "create_in_progress"
+	NetworkStatusDeleteInProgress NetworkStatus = "delete_in_progress"
+	NetworkStatusError            NetworkStatus = "error"
+	NetworkStatusReady            NetworkStatus = "ready"
 )
 
-func (e Status) ToPointer() *Status {
+func (e NetworkStatus) ToPointer() *NetworkStatus {
 	return &e
 }
-func (e *Status) UnmarshalJSON(data []byte) error {
+func (e *NetworkStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -79,10 +79,10 @@ func (e *Status) UnmarshalJSON(data []byte) error {
 	case "error":
 		fallthrough
 	case "ready":
-		*e = Status(v)
+		*e = NetworkStatus(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Status: %v", v)
+		return fmt.Errorf("invalid value for NetworkStatus: %v", v)
 	}
 }
 
@@ -111,7 +111,7 @@ type Network struct {
 	// The Vercel region in which the Network exists.
 	Region *string `json:"region,omitempty"`
 	// The status of the Network.
-	Status Status `json:"status"`
+	Status NetworkStatus `json:"status"`
 	// The unique identifier of the Team that owns the Network.
 	TeamID string `json:"teamId"`
 	// The ID of the VPC which hosts the network.
@@ -202,9 +202,9 @@ func (o *Network) GetRegion() *string {
 	return o.Region
 }
 
-func (o *Network) GetStatus() Status {
+func (o *Network) GetStatus() NetworkStatus {
 	if o == nil {
-		return Status("")
+		return NetworkStatus("")
 	}
 	return o.Status
 }

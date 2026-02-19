@@ -52,7 +52,7 @@ func testReadNetworkReadNetwork0(w http.ResponseWriter, req *http.Request) {
 		CreatedAt:    1571.54,
 		ID:           "<id>",
 		Name:         "<value>",
-		Status:       components.StatusDeleteInProgress,
+		Status:       components.NetworkStatusDeleteInProgress,
 		TeamID:       "<id>",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

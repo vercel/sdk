@@ -10,19 +10,19 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type Operation3 string
+type PatchEdgeConfigItemsOperation3 string
 
 const (
-	Operation3Create Operation3 = "create"
-	Operation3Update Operation3 = "update"
-	Operation3Upsert Operation3 = "upsert"
-	Operation3Delete Operation3 = "delete"
+	PatchEdgeConfigItemsOperation3Create PatchEdgeConfigItemsOperation3 = "create"
+	PatchEdgeConfigItemsOperation3Update PatchEdgeConfigItemsOperation3 = "update"
+	PatchEdgeConfigItemsOperation3Upsert PatchEdgeConfigItemsOperation3 = "upsert"
+	PatchEdgeConfigItemsOperation3Delete PatchEdgeConfigItemsOperation3 = "delete"
 )
 
-func (e Operation3) ToPointer() *Operation3 {
+func (e PatchEdgeConfigItemsOperation3) ToPointer() *PatchEdgeConfigItemsOperation3 {
 	return &e
 }
-func (e *Operation3) UnmarshalJSON(data []byte) error {
+func (e *PatchEdgeConfigItemsOperation3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -35,10 +35,10 @@ func (e *Operation3) UnmarshalJSON(data []byte) error {
 	case "upsert":
 		fallthrough
 	case "delete":
-		*e = Operation3(v)
+		*e = PatchEdgeConfigItemsOperation3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Operation3: %v", v)
+		return fmt.Errorf("invalid value for PatchEdgeConfigItemsOperation3: %v", v)
 	}
 }
 
@@ -106,10 +106,10 @@ func (u Description3) MarshalJSON() ([]byte, error) {
 }
 
 type PatchEdgeConfigItemsItem3 struct {
-	Operation   Operation3    `json:"operation"`
-	Key         string        `json:"key"`
-	Value       any           `json:"value,omitempty"`
-	Description *Description3 `json:"description"`
+	Operation   PatchEdgeConfigItemsOperation3 `json:"operation"`
+	Key         string                         `json:"key"`
+	Value       any                            `json:"value,omitempty"`
+	Description *Description3                  `json:"description"`
 }
 
 func (p PatchEdgeConfigItemsItem3) MarshalJSON() ([]byte, error) {
@@ -123,9 +123,9 @@ func (p *PatchEdgeConfigItemsItem3) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PatchEdgeConfigItemsItem3) GetOperation() Operation3 {
+func (o *PatchEdgeConfigItemsItem3) GetOperation() PatchEdgeConfigItemsOperation3 {
 	if o == nil {
-		return Operation3("")
+		return PatchEdgeConfigItemsOperation3("")
 	}
 	return o.Operation
 }
@@ -151,19 +151,19 @@ func (o *PatchEdgeConfigItemsItem3) GetDescription() *Description3 {
 	return o.Description
 }
 
-type Operation2 string
+type PatchEdgeConfigItemsOperation2 string
 
 const (
-	Operation2Create Operation2 = "create"
-	Operation2Update Operation2 = "update"
-	Operation2Upsert Operation2 = "upsert"
-	Operation2Delete Operation2 = "delete"
+	PatchEdgeConfigItemsOperation2Create PatchEdgeConfigItemsOperation2 = "create"
+	PatchEdgeConfigItemsOperation2Update PatchEdgeConfigItemsOperation2 = "update"
+	PatchEdgeConfigItemsOperation2Upsert PatchEdgeConfigItemsOperation2 = "upsert"
+	PatchEdgeConfigItemsOperation2Delete PatchEdgeConfigItemsOperation2 = "delete"
 )
 
-func (e Operation2) ToPointer() *Operation2 {
+func (e PatchEdgeConfigItemsOperation2) ToPointer() *PatchEdgeConfigItemsOperation2 {
 	return &e
 }
-func (e *Operation2) UnmarshalJSON(data []byte) error {
+func (e *PatchEdgeConfigItemsOperation2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -176,10 +176,10 @@ func (e *Operation2) UnmarshalJSON(data []byte) error {
 	case "upsert":
 		fallthrough
 	case "delete":
-		*e = Operation2(v)
+		*e = PatchEdgeConfigItemsOperation2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Operation2: %v", v)
+		return fmt.Errorf("invalid value for PatchEdgeConfigItemsOperation2: %v", v)
 	}
 }
 
@@ -247,10 +247,10 @@ func (u Description2) MarshalJSON() ([]byte, error) {
 }
 
 type PatchEdgeConfigItemsItem2 struct {
-	Operation   Operation2    `json:"operation"`
-	Key         string        `json:"key"`
-	Value       any           `json:"value"`
-	Description *Description2 `json:"description,omitempty"`
+	Operation   PatchEdgeConfigItemsOperation2 `json:"operation"`
+	Key         string                         `json:"key"`
+	Value       any                            `json:"value"`
+	Description *Description2                  `json:"description,omitempty"`
 }
 
 func (p PatchEdgeConfigItemsItem2) MarshalJSON() ([]byte, error) {
@@ -264,9 +264,9 @@ func (p *PatchEdgeConfigItemsItem2) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PatchEdgeConfigItemsItem2) GetOperation() Operation2 {
+func (o *PatchEdgeConfigItemsItem2) GetOperation() PatchEdgeConfigItemsOperation2 {
 	if o == nil {
-		return Operation2("")
+		return PatchEdgeConfigItemsOperation2("")
 	}
 	return o.Operation
 }
@@ -292,19 +292,19 @@ func (o *PatchEdgeConfigItemsItem2) GetDescription() *Description2 {
 	return o.Description
 }
 
-type Operation1 string
+type PatchEdgeConfigItemsOperation1 string
 
 const (
-	Operation1Create Operation1 = "create"
-	Operation1Update Operation1 = "update"
-	Operation1Upsert Operation1 = "upsert"
-	Operation1Delete Operation1 = "delete"
+	PatchEdgeConfigItemsOperation1Create PatchEdgeConfigItemsOperation1 = "create"
+	PatchEdgeConfigItemsOperation1Update PatchEdgeConfigItemsOperation1 = "update"
+	PatchEdgeConfigItemsOperation1Upsert PatchEdgeConfigItemsOperation1 = "upsert"
+	PatchEdgeConfigItemsOperation1Delete PatchEdgeConfigItemsOperation1 = "delete"
 )
 
-func (e Operation1) ToPointer() *Operation1 {
+func (e PatchEdgeConfigItemsOperation1) ToPointer() *PatchEdgeConfigItemsOperation1 {
 	return &e
 }
-func (e *Operation1) UnmarshalJSON(data []byte) error {
+func (e *PatchEdgeConfigItemsOperation1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -317,10 +317,10 @@ func (e *Operation1) UnmarshalJSON(data []byte) error {
 	case "upsert":
 		fallthrough
 	case "delete":
-		*e = Operation1(v)
+		*e = PatchEdgeConfigItemsOperation1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Operation1: %v", v)
+		return fmt.Errorf("invalid value for PatchEdgeConfigItemsOperation1: %v", v)
 	}
 }
 
@@ -388,10 +388,10 @@ func (u Description1) MarshalJSON() ([]byte, error) {
 }
 
 type PatchEdgeConfigItemsItem1 struct {
-	Operation   Operation1    `json:"operation"`
-	Key         string        `json:"key"`
-	Value       any           `json:"value"`
-	Description *Description1 `json:"description,omitempty"`
+	Operation   PatchEdgeConfigItemsOperation1 `json:"operation"`
+	Key         string                         `json:"key"`
+	Value       any                            `json:"value"`
+	Description *Description1                  `json:"description,omitempty"`
 }
 
 func (p PatchEdgeConfigItemsItem1) MarshalJSON() ([]byte, error) {
@@ -405,9 +405,9 @@ func (p *PatchEdgeConfigItemsItem1) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PatchEdgeConfigItemsItem1) GetOperation() Operation1 {
+func (o *PatchEdgeConfigItemsItem1) GetOperation() PatchEdgeConfigItemsOperation1 {
 	if o == nil {
-		return Operation1("")
+		return PatchEdgeConfigItemsOperation1("")
 	}
 	return o.Operation
 }
@@ -433,76 +433,76 @@ func (o *PatchEdgeConfigItemsItem1) GetDescription() *Description1 {
 	return o.Description
 }
 
-type ItemUnion2Type string
+type PatchEdgeConfigItemsItemUnion2Type string
 
 const (
-	ItemUnion2TypePatchEdgeConfigItemsItem1 ItemUnion2Type = "patchEdgeConfigItems_item_1"
-	ItemUnion2TypePatchEdgeConfigItemsItem2 ItemUnion2Type = "patchEdgeConfigItems_item_2"
-	ItemUnion2TypePatchEdgeConfigItemsItem3 ItemUnion2Type = "patchEdgeConfigItems_item_3"
+	PatchEdgeConfigItemsItemUnion2TypePatchEdgeConfigItemsItem1 PatchEdgeConfigItemsItemUnion2Type = "patchEdgeConfigItems_item_1"
+	PatchEdgeConfigItemsItemUnion2TypePatchEdgeConfigItemsItem2 PatchEdgeConfigItemsItemUnion2Type = "patchEdgeConfigItems_item_2"
+	PatchEdgeConfigItemsItemUnion2TypePatchEdgeConfigItemsItem3 PatchEdgeConfigItemsItemUnion2Type = "patchEdgeConfigItems_item_3"
 )
 
-type ItemUnion2 struct {
+type PatchEdgeConfigItemsItemUnion2 struct {
 	PatchEdgeConfigItemsItem1 *PatchEdgeConfigItemsItem1 `queryParam:"inline"`
 	PatchEdgeConfigItemsItem2 *PatchEdgeConfigItemsItem2 `queryParam:"inline"`
 	PatchEdgeConfigItemsItem3 *PatchEdgeConfigItemsItem3 `queryParam:"inline"`
 
-	Type ItemUnion2Type
+	Type PatchEdgeConfigItemsItemUnion2Type
 }
 
-func CreateItemUnion2PatchEdgeConfigItemsItem1(patchEdgeConfigItemsItem1 PatchEdgeConfigItemsItem1) ItemUnion2 {
-	typ := ItemUnion2TypePatchEdgeConfigItemsItem1
+func CreatePatchEdgeConfigItemsItemUnion2PatchEdgeConfigItemsItem1(patchEdgeConfigItemsItem1 PatchEdgeConfigItemsItem1) PatchEdgeConfigItemsItemUnion2 {
+	typ := PatchEdgeConfigItemsItemUnion2TypePatchEdgeConfigItemsItem1
 
-	return ItemUnion2{
+	return PatchEdgeConfigItemsItemUnion2{
 		PatchEdgeConfigItemsItem1: &patchEdgeConfigItemsItem1,
 		Type:                      typ,
 	}
 }
 
-func CreateItemUnion2PatchEdgeConfigItemsItem2(patchEdgeConfigItemsItem2 PatchEdgeConfigItemsItem2) ItemUnion2 {
-	typ := ItemUnion2TypePatchEdgeConfigItemsItem2
+func CreatePatchEdgeConfigItemsItemUnion2PatchEdgeConfigItemsItem2(patchEdgeConfigItemsItem2 PatchEdgeConfigItemsItem2) PatchEdgeConfigItemsItemUnion2 {
+	typ := PatchEdgeConfigItemsItemUnion2TypePatchEdgeConfigItemsItem2
 
-	return ItemUnion2{
+	return PatchEdgeConfigItemsItemUnion2{
 		PatchEdgeConfigItemsItem2: &patchEdgeConfigItemsItem2,
 		Type:                      typ,
 	}
 }
 
-func CreateItemUnion2PatchEdgeConfigItemsItem3(patchEdgeConfigItemsItem3 PatchEdgeConfigItemsItem3) ItemUnion2 {
-	typ := ItemUnion2TypePatchEdgeConfigItemsItem3
+func CreatePatchEdgeConfigItemsItemUnion2PatchEdgeConfigItemsItem3(patchEdgeConfigItemsItem3 PatchEdgeConfigItemsItem3) PatchEdgeConfigItemsItemUnion2 {
+	typ := PatchEdgeConfigItemsItemUnion2TypePatchEdgeConfigItemsItem3
 
-	return ItemUnion2{
+	return PatchEdgeConfigItemsItemUnion2{
 		PatchEdgeConfigItemsItem3: &patchEdgeConfigItemsItem3,
 		Type:                      typ,
 	}
 }
 
-func (u *ItemUnion2) UnmarshalJSON(data []byte) error {
+func (u *PatchEdgeConfigItemsItemUnion2) UnmarshalJSON(data []byte) error {
 
 	var patchEdgeConfigItemsItem1 PatchEdgeConfigItemsItem1 = PatchEdgeConfigItemsItem1{}
 	if err := utils.UnmarshalJSON(data, &patchEdgeConfigItemsItem1, "", true, nil); err == nil {
 		u.PatchEdgeConfigItemsItem1 = &patchEdgeConfigItemsItem1
-		u.Type = ItemUnion2TypePatchEdgeConfigItemsItem1
+		u.Type = PatchEdgeConfigItemsItemUnion2TypePatchEdgeConfigItemsItem1
 		return nil
 	}
 
 	var patchEdgeConfigItemsItem2 PatchEdgeConfigItemsItem2 = PatchEdgeConfigItemsItem2{}
 	if err := utils.UnmarshalJSON(data, &patchEdgeConfigItemsItem2, "", true, nil); err == nil {
 		u.PatchEdgeConfigItemsItem2 = &patchEdgeConfigItemsItem2
-		u.Type = ItemUnion2TypePatchEdgeConfigItemsItem2
+		u.Type = PatchEdgeConfigItemsItemUnion2TypePatchEdgeConfigItemsItem2
 		return nil
 	}
 
 	var patchEdgeConfigItemsItem3 PatchEdgeConfigItemsItem3 = PatchEdgeConfigItemsItem3{}
 	if err := utils.UnmarshalJSON(data, &patchEdgeConfigItemsItem3, "", true, nil); err == nil {
 		u.PatchEdgeConfigItemsItem3 = &patchEdgeConfigItemsItem3
-		u.Type = ItemUnion2TypePatchEdgeConfigItemsItem3
+		u.Type = PatchEdgeConfigItemsItemUnion2TypePatchEdgeConfigItemsItem3
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ItemUnion2", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PatchEdgeConfigItemsItemUnion2", string(data))
 }
 
-func (u ItemUnion2) MarshalJSON() ([]byte, error) {
+func (u PatchEdgeConfigItemsItemUnion2) MarshalJSON() ([]byte, error) {
 	if u.PatchEdgeConfigItemsItem1 != nil {
 		return utils.MarshalJSON(u.PatchEdgeConfigItemsItem1, "", true)
 	}
@@ -515,57 +515,57 @@ func (u ItemUnion2) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.PatchEdgeConfigItemsItem3, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type ItemUnion2: all fields are null")
+	return nil, errors.New("could not marshal union type PatchEdgeConfigItemsItemUnion2: all fields are null")
 }
 
-type ItemUnion1Type string
+type PatchEdgeConfigItemsItemUnion1Type string
 
 const (
-	ItemUnion1TypeItemUnion2 ItemUnion1Type = "item_union_2"
+	PatchEdgeConfigItemsItemUnion1TypePatchEdgeConfigItemsItemUnion2 PatchEdgeConfigItemsItemUnion1Type = "patchEdgeConfigItems_item_union_2"
 )
 
-type ItemUnion1 struct {
-	ItemUnion2 *ItemUnion2 `queryParam:"inline"`
+type PatchEdgeConfigItemsItemUnion1 struct {
+	PatchEdgeConfigItemsItemUnion2 *PatchEdgeConfigItemsItemUnion2 `queryParam:"inline"`
 
-	Type ItemUnion1Type
+	Type PatchEdgeConfigItemsItemUnion1Type
 }
 
-func CreateItemUnion1ItemUnion2(itemUnion2 ItemUnion2) ItemUnion1 {
-	typ := ItemUnion1TypeItemUnion2
+func CreatePatchEdgeConfigItemsItemUnion1PatchEdgeConfigItemsItemUnion2(patchEdgeConfigItemsItemUnion2 PatchEdgeConfigItemsItemUnion2) PatchEdgeConfigItemsItemUnion1 {
+	typ := PatchEdgeConfigItemsItemUnion1TypePatchEdgeConfigItemsItemUnion2
 
-	return ItemUnion1{
-		ItemUnion2: &itemUnion2,
-		Type:       typ,
+	return PatchEdgeConfigItemsItemUnion1{
+		PatchEdgeConfigItemsItemUnion2: &patchEdgeConfigItemsItemUnion2,
+		Type:                           typ,
 	}
 }
 
-func (u *ItemUnion1) UnmarshalJSON(data []byte) error {
+func (u *PatchEdgeConfigItemsItemUnion1) UnmarshalJSON(data []byte) error {
 
-	var itemUnion2 ItemUnion2 = ItemUnion2{}
-	if err := utils.UnmarshalJSON(data, &itemUnion2, "", true, nil); err == nil {
-		u.ItemUnion2 = &itemUnion2
-		u.Type = ItemUnion1TypeItemUnion2
+	var patchEdgeConfigItemsItemUnion2 PatchEdgeConfigItemsItemUnion2 = PatchEdgeConfigItemsItemUnion2{}
+	if err := utils.UnmarshalJSON(data, &patchEdgeConfigItemsItemUnion2, "", true, nil); err == nil {
+		u.PatchEdgeConfigItemsItemUnion2 = &patchEdgeConfigItemsItemUnion2
+		u.Type = PatchEdgeConfigItemsItemUnion1TypePatchEdgeConfigItemsItemUnion2
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ItemUnion1", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PatchEdgeConfigItemsItemUnion1", string(data))
 }
 
-func (u ItemUnion1) MarshalJSON() ([]byte, error) {
-	if u.ItemUnion2 != nil {
-		return utils.MarshalJSON(u.ItemUnion2, "", true)
+func (u PatchEdgeConfigItemsItemUnion1) MarshalJSON() ([]byte, error) {
+	if u.PatchEdgeConfigItemsItemUnion2 != nil {
+		return utils.MarshalJSON(u.PatchEdgeConfigItemsItemUnion2, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type ItemUnion1: all fields are null")
+	return nil, errors.New("could not marshal union type PatchEdgeConfigItemsItemUnion1: all fields are null")
 }
 
 type PatchEdgeConfigItemsRequestBody struct {
-	Items []ItemUnion1 `json:"items"`
+	Items []PatchEdgeConfigItemsItemUnion1 `json:"items"`
 }
 
-func (o *PatchEdgeConfigItemsRequestBody) GetItems() []ItemUnion1 {
+func (o *PatchEdgeConfigItemsRequestBody) GetItems() []PatchEdgeConfigItemsItemUnion1 {
 	if o == nil {
-		return []ItemUnion1{}
+		return []PatchEdgeConfigItemsItemUnion1{}
 	}
 	return o.Items
 }

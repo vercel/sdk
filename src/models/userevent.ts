@@ -2793,7 +2793,7 @@ export const PayloadReason = {
 } as const;
 export type PayloadReason = ClosedEnum<typeof PayloadReason>;
 
-export type Data = {
+export type UserEventPayloadData = {
   planSlug: PlanSlug;
   reason?: PayloadReason | undefined;
 };
@@ -2804,7 +2804,7 @@ export type Data = {
 export type TwoHundredAndTwo = {
   subscriptionId?: string | undefined;
   action: UserEventPayload202Action;
-  data: Data;
+  data: UserEventPayloadData;
 };
 
 /**
@@ -5406,12 +5406,12 @@ export type SecondaryEmails = {
   verified: boolean;
 };
 
-export type Rules = {
+export type PayloadRules = {
   email: string;
 };
 
 export type EmailNotifications = {
-  rules?: { [k: string]: Rules } | undefined;
+  rules?: { [k: string]: PayloadRules } | undefined;
 };
 
 export type PayloadReasons = {
@@ -17129,34 +17129,44 @@ export const PayloadReason$outboundSchema: z.ZodNativeEnum<
 > = PayloadReason$inboundSchema;
 
 /** @internal */
-export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
-  .object({
-    planSlug: PlanSlug$inboundSchema,
-    reason: types.optional(PayloadReason$inboundSchema),
-  });
+export const UserEventPayloadData$inboundSchema: z.ZodType<
+  UserEventPayloadData,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  planSlug: PlanSlug$inboundSchema,
+  reason: types.optional(PayloadReason$inboundSchema),
+});
 /** @internal */
-export type Data$Outbound = {
+export type UserEventPayloadData$Outbound = {
   planSlug: string;
   reason?: string | undefined;
 };
 
 /** @internal */
-export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> =
-  z.object({
-    planSlug: PlanSlug$outboundSchema,
-    reason: PayloadReason$outboundSchema.optional(),
-  });
+export const UserEventPayloadData$outboundSchema: z.ZodType<
+  UserEventPayloadData$Outbound,
+  z.ZodTypeDef,
+  UserEventPayloadData
+> = z.object({
+  planSlug: PlanSlug$outboundSchema,
+  reason: PayloadReason$outboundSchema.optional(),
+});
 
-export function dataToJSON(data: Data): string {
-  return JSON.stringify(Data$outboundSchema.parse(data));
+export function userEventPayloadDataToJSON(
+  userEventPayloadData: UserEventPayloadData,
+): string {
+  return JSON.stringify(
+    UserEventPayloadData$outboundSchema.parse(userEventPayloadData),
+  );
 }
-export function dataFromJSON(
+export function userEventPayloadDataFromJSON(
   jsonString: string,
-): SafeParseResult<Data, SDKValidationError> {
+): SafeParseResult<UserEventPayloadData, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Data$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Data' from JSON`,
+    (x) => UserEventPayloadData$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayloadData' from JSON`,
   );
 }
 
@@ -17168,13 +17178,13 @@ export const TwoHundredAndTwo$inboundSchema: z.ZodType<
 > = z.object({
   subscriptionId: types.optional(types.string()),
   action: UserEventPayload202Action$inboundSchema,
-  data: z.lazy(() => Data$inboundSchema),
+  data: z.lazy(() => UserEventPayloadData$inboundSchema),
 });
 /** @internal */
 export type TwoHundredAndTwo$Outbound = {
   subscriptionId?: string | undefined;
   action: string;
-  data: Data$Outbound;
+  data: UserEventPayloadData$Outbound;
 };
 
 /** @internal */
@@ -17185,7 +17195,7 @@ export const TwoHundredAndTwo$outboundSchema: z.ZodType<
 > = z.object({
   subscriptionId: z.string().optional(),
   action: UserEventPayload202Action$outboundSchema,
-  data: z.lazy(() => Data$outboundSchema),
+  data: z.lazy(() => UserEventPayloadData$outboundSchema),
 });
 
 export function twoHundredAndTwoToJSON(
@@ -28735,34 +28745,37 @@ export function secondaryEmailsFromJSON(
 }
 
 /** @internal */
-export const Rules$inboundSchema: z.ZodType<Rules, z.ZodTypeDef, unknown> = z
-  .object({
-    email: types.string(),
-  });
+export const PayloadRules$inboundSchema: z.ZodType<
+  PayloadRules,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  email: types.string(),
+});
 /** @internal */
-export type Rules$Outbound = {
+export type PayloadRules$Outbound = {
   email: string;
 };
 
 /** @internal */
-export const Rules$outboundSchema: z.ZodType<
-  Rules$Outbound,
+export const PayloadRules$outboundSchema: z.ZodType<
+  PayloadRules$Outbound,
   z.ZodTypeDef,
-  Rules
+  PayloadRules
 > = z.object({
   email: z.string(),
 });
 
-export function rulesToJSON(rules: Rules): string {
-  return JSON.stringify(Rules$outboundSchema.parse(rules));
+export function payloadRulesToJSON(payloadRules: PayloadRules): string {
+  return JSON.stringify(PayloadRules$outboundSchema.parse(payloadRules));
 }
-export function rulesFromJSON(
+export function payloadRulesFromJSON(
   jsonString: string,
-): SafeParseResult<Rules, SDKValidationError> {
+): SafeParseResult<PayloadRules, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Rules$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Rules' from JSON`,
+    (x) => PayloadRules$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PayloadRules' from JSON`,
   );
 }
 
@@ -28772,11 +28785,11 @@ export const EmailNotifications$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  rules: types.optional(z.record(z.lazy(() => Rules$inboundSchema))),
+  rules: types.optional(z.record(z.lazy(() => PayloadRules$inboundSchema))),
 });
 /** @internal */
 export type EmailNotifications$Outbound = {
-  rules?: { [k: string]: Rules$Outbound } | undefined;
+  rules?: { [k: string]: PayloadRules$Outbound } | undefined;
 };
 
 /** @internal */
@@ -28785,7 +28798,7 @@ export const EmailNotifications$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   EmailNotifications
 > = z.object({
-  rules: z.record(z.lazy(() => Rules$outboundSchema)).optional(),
+  rules: z.record(z.lazy(() => PayloadRules$outboundSchema)).optional(),
 });
 
 export function emailNotificationsToJSON(

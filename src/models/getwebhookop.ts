@@ -105,6 +105,7 @@ export const GetWebhookEvents = {
   MarketplaceInvoiceCreated: "marketplace.invoice.created",
   MarketplaceInvoicePaid: "marketplace.invoice.paid",
   MarketplaceInvoiceNotpaid: "marketplace.invoice.notpaid",
+  MarketplaceInvoiceOverdue: "marketplace.invoice.overdue",
   MarketplaceInvoiceRefunded: "marketplace.invoice.refunded",
   AiGatewayBalanceDepleted: "ai-gateway.balance-depleted",
   AiGatewayAutoReloadLimitReached: "ai-gateway.auto-reload.limit-reached",

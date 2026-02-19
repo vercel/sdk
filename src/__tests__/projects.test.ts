@@ -35,12 +35,12 @@ test("Projects Get Projects", async () => {
         alias: [
           {
             deployment: {
-              createdAt: 4236.55,
+              createdAt: 715.79,
               createdIn: "<value>",
               creator: {
-                email: "Sim56@yahoo.com",
+                email: "Adolph.Denesik53@yahoo.com",
                 uid: "<id>",
-                username: "Antonetta77",
+                username: "Berneice.Lueilwitz",
               },
               deploymentHostname: "<value>",
               name: "<value>",
@@ -49,10 +49,10 @@ test("Projects Get Projects", async () => {
               private: false,
               readyState: "<value>",
               type: "<value>",
-              url: "https://leading-scaffold.com",
+              url: "https://aching-tapioca.name",
               userId: "<id>",
             },
-            domain: "productive-charm.org",
+            domain: "outrageous-kinase.biz",
             environment: "preview",
             target: "STAGING",
           },
@@ -61,15 +61,20 @@ test("Projects Get Projects", async () => {
         deploymentExpiration: {},
         id: "<id>",
         name: "<value>",
-        nodeVersion: "12.x",
+        nodeVersion: "22.x",
         resourceConfig: {
-          functionDefaultRegions: [
-            "<value 1>",
-          ],
+          functionDefaultRegions: [],
         },
         rollingRelease: {
           target: "production",
-          stages: null,
+          stages: [
+            {
+              targetPercentage: 25,
+              requireApproval: false,
+              duration: 600,
+              linearShift: false,
+            },
+          ],
           canaryResponseHeader: false,
         },
         serverlessFunctionRegion: "<value>",
@@ -77,8 +82,7 @@ test("Projects Get Projects", async () => {
     ],
     pagination: {
       count: 20,
-      next: 1540095775951,
-      prev: 1540095775951,
+      next: "JBSWY3DPEHPK3PXP",
     },
   });
 });

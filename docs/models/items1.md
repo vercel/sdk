@@ -1,35 +1,19 @@
 # Items1
 
-
-## Supported Types
-
-### `models.PatchEdgeConfigItems11`
+## Example Usage
 
 ```typescript
-const value: models.PatchEdgeConfigItems11 = {
-  operation: "delete",
-  key: "<key>",
-  value: "<value>",
+import { Items1 } from "@vercel/sdk/models/flag.js";
+
+let value: Items1 = {
+  value: 601.68,
 };
 ```
 
-### `models.PatchEdgeConfigItems12`
+## Fields
 
-```typescript
-const value: models.PatchEdgeConfigItems12 = {
-  operation: "create",
-  key: "<key>",
-  value: "<value>",
-};
-```
-
-### `models.PatchEdgeConfigItems13`
-
-```typescript
-const value: models.PatchEdgeConfigItems13 = {
-  operation: "upsert",
-  key: "<key>",
-  description: "helpfully potentially astonishing",
-};
-```
-
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `label`            | *string*           | :heavy_minus_sign: | N/A                |
+| `note`             | *string*           | :heavy_minus_sign: | N/A                |
+| `value`            | *number*           | :heavy_check_mark: | N/A                |

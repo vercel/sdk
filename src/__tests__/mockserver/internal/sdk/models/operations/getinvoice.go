@@ -37,6 +37,7 @@ const (
 	GetInvoiceStateDraft           GetInvoiceState = "draft"
 	GetInvoiceStateScheduled       GetInvoiceState = "scheduled"
 	GetInvoiceStateInvoiced        GetInvoiceState = "invoiced"
+	GetInvoiceStateOverdue         GetInvoiceState = "overdue"
 	GetInvoiceStateRefundRequested GetInvoiceState = "refund_requested"
 	GetInvoiceStateRefunded        GetInvoiceState = "refunded"
 )
@@ -61,6 +62,8 @@ func (e *GetInvoiceState) UnmarshalJSON(data []byte) error {
 	case "scheduled":
 		fallthrough
 	case "invoiced":
+		fallthrough
+	case "overdue":
 		fallthrough
 	case "refund_requested":
 		fallthrough

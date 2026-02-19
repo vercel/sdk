@@ -64,7 +64,7 @@ export type PatchEdgeConfigItems11 = {
   description?: string | any | null | undefined;
 };
 
-export type Items1 =
+export type PatchEdgeConfigItemsItems1 =
   | PatchEdgeConfigItems11
   | PatchEdgeConfigItems12
   | PatchEdgeConfigItems13;
@@ -358,39 +358,46 @@ export function patchEdgeConfigItems11FromJSON(
 }
 
 /** @internal */
-export const Items1$inboundSchema: z.ZodType<Items1, z.ZodTypeDef, unknown> =
-  smartUnion([
-    z.lazy(() => PatchEdgeConfigItems11$inboundSchema),
-    z.lazy(() => PatchEdgeConfigItems12$inboundSchema),
-    z.lazy(() => PatchEdgeConfigItems13$inboundSchema),
-  ]);
+export const PatchEdgeConfigItemsItems1$inboundSchema: z.ZodType<
+  PatchEdgeConfigItemsItems1,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => PatchEdgeConfigItems11$inboundSchema),
+  z.lazy(() => PatchEdgeConfigItems12$inboundSchema),
+  z.lazy(() => PatchEdgeConfigItems13$inboundSchema),
+]);
 /** @internal */
-export type Items1$Outbound =
+export type PatchEdgeConfigItemsItems1$Outbound =
   | PatchEdgeConfigItems11$Outbound
   | PatchEdgeConfigItems12$Outbound
   | PatchEdgeConfigItems13$Outbound;
 
 /** @internal */
-export const Items1$outboundSchema: z.ZodType<
-  Items1$Outbound,
+export const PatchEdgeConfigItemsItems1$outboundSchema: z.ZodType<
+  PatchEdgeConfigItemsItems1$Outbound,
   z.ZodTypeDef,
-  Items1
+  PatchEdgeConfigItemsItems1
 > = smartUnion([
   z.lazy(() => PatchEdgeConfigItems11$outboundSchema),
   z.lazy(() => PatchEdgeConfigItems12$outboundSchema),
   z.lazy(() => PatchEdgeConfigItems13$outboundSchema),
 ]);
 
-export function items1ToJSON(items1: Items1): string {
-  return JSON.stringify(Items1$outboundSchema.parse(items1));
+export function patchEdgeConfigItemsItems1ToJSON(
+  patchEdgeConfigItemsItems1: PatchEdgeConfigItemsItems1,
+): string {
+  return JSON.stringify(
+    PatchEdgeConfigItemsItems1$outboundSchema.parse(patchEdgeConfigItemsItems1),
+  );
 }
-export function items1FromJSON(
+export function patchEdgeConfigItemsItems1FromJSON(
   jsonString: string,
-): SafeParseResult<Items1, SDKValidationError> {
+): SafeParseResult<PatchEdgeConfigItemsItems1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Items1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Items1' from JSON`,
+    (x) => PatchEdgeConfigItemsItems1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchEdgeConfigItemsItems1' from JSON`,
   );
 }
 

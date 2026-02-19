@@ -13,5 +13,5 @@ let value: GetInvoiceState = "pending";
 ## Values
 
 ```typescript
-"pending" | "paid" | "notpaid" | "draft" | "scheduled" | "invoiced" | "refund_requested" | "refunded"
+"pending" | "paid" | "notpaid" | "draft" | "scheduled" | "invoiced" | "overdue" | "refund_requested" | "refunded"
 ```

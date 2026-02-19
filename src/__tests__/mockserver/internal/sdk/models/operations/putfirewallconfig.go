@@ -1409,7 +1409,7 @@ func (u PutFirewallConfigValidationErrors) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type PutFirewallConfigValidationErrors: all fields are null")
 }
 
-type RuleRequest struct {
+type PutFirewallConfigRuleRequest struct {
 	ID               *string                                  `json:"id,omitempty"`
 	Name             string                                   `json:"name"`
 	Description      *string                                  `json:"description,omitempty"`
@@ -1420,56 +1420,56 @@ type RuleRequest struct {
 	ValidationErrors *PutFirewallConfigValidationErrors       `json:"validationErrors,omitempty"`
 }
 
-func (o *RuleRequest) GetID() *string {
+func (o *PutFirewallConfigRuleRequest) GetID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ID
 }
 
-func (o *RuleRequest) GetName() string {
+func (o *PutFirewallConfigRuleRequest) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *RuleRequest) GetDescription() *string {
+func (o *PutFirewallConfigRuleRequest) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *RuleRequest) GetActive() bool {
+func (o *PutFirewallConfigRuleRequest) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *RuleRequest) GetConditionGroup() []PutFirewallConfigConditionGroupRequest {
+func (o *PutFirewallConfigRuleRequest) GetConditionGroup() []PutFirewallConfigConditionGroupRequest {
 	if o == nil {
 		return []PutFirewallConfigConditionGroupRequest{}
 	}
 	return o.ConditionGroup
 }
 
-func (o *RuleRequest) GetAction() RuleActionRequest {
+func (o *PutFirewallConfigRuleRequest) GetAction() RuleActionRequest {
 	if o == nil {
 		return RuleActionRequest{}
 	}
 	return o.Action
 }
 
-func (o *RuleRequest) GetValid() *bool {
+func (o *PutFirewallConfigRuleRequest) GetValid() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Valid
 }
 
-func (o *RuleRequest) GetValidationErrors() *PutFirewallConfigValidationErrors {
+func (o *PutFirewallConfigRuleRequest) GetValidationErrors() *PutFirewallConfigValidationErrors {
 	if o == nil {
 		return nil
 	}
@@ -1555,10 +1555,10 @@ type PutFirewallConfigRequestBody struct {
 	FirewallEnabled bool                 `json:"firewallEnabled"`
 	ManagedRules    *ManagedRulesRequest `json:"managedRules,omitempty"`
 	// Custom Ruleset
-	Crs          *CrsRequest   `json:"crs,omitempty"`
-	Rules        []RuleRequest `json:"rules,omitempty"`
-	Ips          []IPRequest   `json:"ips,omitempty"`
-	BotIDEnabled *bool         `json:"botIdEnabled,omitempty"`
+	Crs          *CrsRequest                    `json:"crs,omitempty"`
+	Rules        []PutFirewallConfigRuleRequest `json:"rules,omitempty"`
+	Ips          []IPRequest                    `json:"ips,omitempty"`
+	BotIDEnabled *bool                          `json:"botIdEnabled,omitempty"`
 }
 
 func (o *PutFirewallConfigRequestBody) GetFirewallEnabled() bool {
@@ -1582,7 +1582,7 @@ func (o *PutFirewallConfigRequestBody) GetCrs() *CrsRequest {
 	return o.Crs
 }
 
-func (o *PutFirewallConfigRequestBody) GetRules() []RuleRequest {
+func (o *PutFirewallConfigRequestBody) GetRules() []PutFirewallConfigRuleRequest {
 	if o == nil {
 		return nil
 	}

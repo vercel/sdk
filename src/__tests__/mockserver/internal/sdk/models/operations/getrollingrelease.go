@@ -8,19 +8,19 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
-// QueryParamState - Filter by rolling release state
-type QueryParamState string
+// GetRollingReleaseQueryParamState - Filter by rolling release state
+type GetRollingReleaseQueryParamState string
 
 const (
-	QueryParamStateActive   QueryParamState = "ACTIVE"
-	QueryParamStateComplete QueryParamState = "COMPLETE"
-	QueryParamStateAborted  QueryParamState = "ABORTED"
+	GetRollingReleaseQueryParamStateActive   GetRollingReleaseQueryParamState = "ACTIVE"
+	GetRollingReleaseQueryParamStateComplete GetRollingReleaseQueryParamState = "COMPLETE"
+	GetRollingReleaseQueryParamStateAborted  GetRollingReleaseQueryParamState = "ABORTED"
 )
 
-func (e QueryParamState) ToPointer() *QueryParamState {
+func (e GetRollingReleaseQueryParamState) ToPointer() *GetRollingReleaseQueryParamState {
 	return &e
 }
-func (e *QueryParamState) UnmarshalJSON(data []byte) error {
+func (e *GetRollingReleaseQueryParamState) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -31,10 +31,10 @@ func (e *QueryParamState) UnmarshalJSON(data []byte) error {
 	case "COMPLETE":
 		fallthrough
 	case "ABORTED":
-		*e = QueryParamState(v)
+		*e = GetRollingReleaseQueryParamState(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for QueryParamState: %v", v)
+		return fmt.Errorf("invalid value for GetRollingReleaseQueryParamState: %v", v)
 	}
 }
 
@@ -42,7 +42,7 @@ type GetRollingReleaseRequest struct {
 	// Project ID or project name (URL-encoded)
 	IDOrName string `pathParam:"style=simple,explode=false,name=idOrName"`
 	// Filter by rolling release state
-	State *QueryParamState `queryParam:"style=form,explode=true,name=state"`
+	State *GetRollingReleaseQueryParamState `queryParam:"style=form,explode=true,name=state"`
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
@@ -56,7 +56,7 @@ func (o *GetRollingReleaseRequest) GetIDOrName() string {
 	return o.IDOrName
 }
 
-func (o *GetRollingReleaseRequest) GetState() *QueryParamState {
+func (o *GetRollingReleaseRequest) GetState() *GetRollingReleaseQueryParamState {
 	if o == nil {
 		return nil
 	}

@@ -48,7 +48,7 @@ func testListSharedEnvVariableListSharedEnvVariable0(w http.ResponseWriter, req 
 		return
 	}
 	var respBody *operations.ListSharedEnvVariableResponseBody = &operations.ListSharedEnvVariableResponseBody{
-		Data: []operations.Data{},
+		Data: []operations.ListSharedEnvVariableData{},
 		Pagination: components.Pagination{
 			Count: 20,
 			Next:  types.Float64(1540095775951),

@@ -3,11 +3,11 @@
 
 ## Supported Types
 
-### `models.Items1`
+### `models.PatchEdgeConfigItemsItems1`
 
 ```typescript
-const value: models.Items1 = {
-  operation: "upsert",
+const value: models.PatchEdgeConfigItemsItems1 = {
+  operation: "update",
   key: "<key>",
   value: "<value>",
 };

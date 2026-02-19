@@ -53,7 +53,7 @@ func testGetAllChecksGetAllChecks0(w http.ResponseWriter, req *http.Request) {
 				IntegrationID: "<id>",
 				Name:          "<value>",
 				Rerequestable: false,
-				Blocking:      false,
+				Blocking:      true,
 				Status:        operations.GetAllChecksStatusCompleted,
 				UpdatedAt:     5993.81,
 			},

@@ -11853,22 +11853,22 @@ func (e *DataPlanSlug) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type Data struct {
+type UserEventData struct {
 	PlanSlug DataPlanSlug `json:"planSlug"`
 }
 
-func (d Data) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(d, "", false)
+func (u UserEventData) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
 }
 
-func (d *Data) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"planSlug"}); err != nil {
+func (u *UserEventData) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"planSlug"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Data) GetPlanSlug() DataPlanSlug {
+func (o *UserEventData) GetPlanSlug() DataPlanSlug {
 	if o == nil {
 		return DataPlanSlug("")
 	}
@@ -11879,7 +11879,7 @@ func (o *Data) GetPlanSlug() DataPlanSlug {
 type PayloadResumePlan struct {
 	SubscriptionID *string          `json:"subscriptionId,omitempty"`
 	Action         ActionResumePlan `json:"action"`
-	Data           Data             `json:"data"`
+	Data           UserEventData    `json:"data"`
 }
 
 func (p PayloadResumePlan) MarshalJSON() ([]byte, error) {
@@ -11907,9 +11907,9 @@ func (o *PayloadResumePlan) GetAction() ActionResumePlan {
 	return o.Action
 }
 
-func (o *PayloadResumePlan) GetData() Data {
+func (o *PayloadResumePlan) GetData() UserEventData {
 	if o == nil {
-		return Data{}
+		return UserEventData{}
 	}
 	return o.Data
 }

@@ -12,7 +12,7 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 /**
  * Filter by rolling release state
  */
-export const State = {
+export const GetRollingReleaseQueryParamState = {
   Active: "ACTIVE",
   Complete: "COMPLETE",
   Aborted: "ABORTED",
@@ -20,7 +20,9 @@ export const State = {
 /**
  * Filter by rolling release state
  */
-export type State = ClosedEnum<typeof State>;
+export type GetRollingReleaseQueryParamState = ClosedEnum<
+  typeof GetRollingReleaseQueryParamState
+>;
 
 export type GetRollingReleaseRequest = {
   /**
@@ -30,7 +32,7 @@ export type GetRollingReleaseRequest = {
   /**
    * Filter by rolling release state
    */
-  state?: State | undefined;
+  state?: GetRollingReleaseQueryParamState | undefined;
   /**
    * The Team identifier to perform the request on behalf of.
    */
@@ -387,12 +389,13 @@ export type GetRollingReleaseResponseBody = {
 };
 
 /** @internal */
-export const State$inboundSchema: z.ZodNativeEnum<typeof State> = z.nativeEnum(
-  State,
-);
+export const GetRollingReleaseQueryParamState$inboundSchema: z.ZodNativeEnum<
+  typeof GetRollingReleaseQueryParamState
+> = z.nativeEnum(GetRollingReleaseQueryParamState);
 /** @internal */
-export const State$outboundSchema: z.ZodNativeEnum<typeof State> =
-  State$inboundSchema;
+export const GetRollingReleaseQueryParamState$outboundSchema: z.ZodNativeEnum<
+  typeof GetRollingReleaseQueryParamState
+> = GetRollingReleaseQueryParamState$inboundSchema;
 
 /** @internal */
 export const GetRollingReleaseRequest$inboundSchema: z.ZodType<
@@ -401,7 +404,7 @@ export const GetRollingReleaseRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   idOrName: types.string(),
-  state: types.optional(State$inboundSchema),
+  state: types.optional(GetRollingReleaseQueryParamState$inboundSchema),
   teamId: types.optional(types.string()),
   slug: types.optional(types.string()),
 });
@@ -420,7 +423,7 @@ export const GetRollingReleaseRequest$outboundSchema: z.ZodType<
   GetRollingReleaseRequest
 > = z.object({
   idOrName: z.string(),
-  state: State$outboundSchema.optional(),
+  state: GetRollingReleaseQueryParamState$outboundSchema.optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });

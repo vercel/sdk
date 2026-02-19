@@ -116,6 +116,7 @@ const (
 	GetWebhookEventMarketplaceInvoiceCreated                          GetWebhookEvent = "marketplace.invoice.created"
 	GetWebhookEventMarketplaceInvoicePaid                             GetWebhookEvent = "marketplace.invoice.paid"
 	GetWebhookEventMarketplaceInvoiceNotpaid                          GetWebhookEvent = "marketplace.invoice.notpaid"
+	GetWebhookEventMarketplaceInvoiceOverdue                          GetWebhookEvent = "marketplace.invoice.overdue"
 	GetWebhookEventMarketplaceInvoiceRefunded                         GetWebhookEvent = "marketplace.invoice.refunded"
 	GetWebhookEventAiGatewayBalanceDepleted                           GetWebhookEvent = "ai-gateway.balance-depleted"
 	GetWebhookEventAiGatewayAutoReloadLimitReached                    GetWebhookEvent = "ai-gateway.auto-reload.limit-reached"
@@ -293,6 +294,8 @@ func (e *GetWebhookEvent) UnmarshalJSON(data []byte) error {
 	case "marketplace.invoice.paid":
 		fallthrough
 	case "marketplace.invoice.notpaid":
+		fallthrough
+	case "marketplace.invoice.overdue":
 		fallthrough
 	case "marketplace.invoice.refunded":
 		fallthrough

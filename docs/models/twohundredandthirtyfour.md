@@ -8,20 +8,14 @@ The payload of the event, if requested.
 import { TwoHundredAndThirtyFour } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndThirtyFour = {
-  projectId: "<id>",
-  projectName: "<value>",
-  domain: "infatuated-nerve.info",
-  target: "<value>",
+  appName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                | Type                 | Required             | Description          |
-| -------------------- | -------------------- | -------------------- | -------------------- |
-| `projectId`          | *string*             | :heavy_check_mark:   | N/A                  |
-| `projectName`        | *string*             | :heavy_check_mark:   | N/A                  |
-| `domain`             | *string*             | :heavy_check_mark:   | N/A                  |
-| `target`             | *string*             | :heavy_check_mark:   | N/A                  |
-| `redirect`           | *string*             | :heavy_minus_sign:   | N/A                  |
-| `redirectStatusCode` | *number*             | :heavy_minus_sign:   | N/A                  |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `appName`             | *string*              | :heavy_check_mark:    | N/A                   |
+| `appId`               | *string*              | :heavy_minus_sign:    | N/A                   |
+| `secretLastFourChars` | *string*              | :heavy_minus_sign:    | N/A                   |

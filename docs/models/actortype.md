@@ -1,7 +1,5 @@
 # ActorType
 
-Type of actor
-
 ## Example Usage
 
 ```typescript

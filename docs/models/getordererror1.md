@@ -18,7 +18,10 @@ const value: models.GetOrder1DomainsRegistrarResponse2001 = {
 
 ```typescript
 const value: models.GetOrder1DomainsRegistrarResponse2002 = {
-  code: "client-transfer-prohibited",
+  code: "incorrect-language-code",
+  details: {
+    detectedLanguageCode: "<value>",
+  },
 };
 ```
 
@@ -26,7 +29,7 @@ const value: models.GetOrder1DomainsRegistrarResponse2002 = {
 
 ```typescript
 const value: models.GetOrder1DomainsRegistrarResponse2003 = {
-  code: "claims-notice-required",
+  code: "client-transfer-prohibited",
 };
 ```
 
@@ -34,10 +37,7 @@ const value: models.GetOrder1DomainsRegistrarResponse2003 = {
 
 ```typescript
 const value: models.GetOrder14 = {
-  code: "cannot-transfer-in-until",
-  details: {
-    numDaysUntilTransferrable: 8639.69,
-  },
+  code: "incorrect-auth-code",
 };
 ```
 
@@ -45,7 +45,34 @@ const value: models.GetOrder14 = {
 
 ```typescript
 const value: models.GetOrder15 = {
+  code: "claims-notice-required",
+};
+```
+
+### `models.GetOrder16`
+
+```typescript
+const value: models.GetOrder16 = {
+  code: "cannot-transfer-in-until",
+  details: {
+    numDaysUntilTransferrable: 520.02,
+  },
+};
+```
+
+### `models.GetOrder17`
+
+```typescript
+const value: models.GetOrder17 = {
   code: "price-change",
+};
+```
+
+### `models.GetOrder18`
+
+```typescript
+const value: models.GetOrder18 = {
+  code: "unavailable-legal",
 };
 ```
 

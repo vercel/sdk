@@ -107,6 +107,14 @@ export type AuthToken = {
    */
   type: string;
   /**
+   * The token's prefix, for identification purposes.
+   */
+  prefix?: string | undefined;
+  /**
+   * The last few characters of the token, for identification purposes.
+   */
+  suffix?: string | undefined;
+  /**
    * The origin of how the token was created.
    */
   origin?: string | undefined;
@@ -115,21 +123,25 @@ export type AuthToken = {
    */
   scopes?: Array<Scopes1 | Scopes2> | undefined;
   /**
-   * Timestamp (in milliseconds) of when the token expires.
+   * Timestamp (in milliseconds) of when the token was created.
    */
-  expiresAt?: number | undefined;
+  createdAt: number;
   /**
    * Timestamp (in milliseconds) of when the token was most recently used.
    */
   activeAt: number;
   /**
-   * Timestamp (in milliseconds) of when the token was created.
+   * Timestamp (in milliseconds) of when the token expires.
    */
-  createdAt: number;
+  expiresAt?: number | undefined;
   /**
    * Timestamp (in milliseconds) of when the token was marked as leaked.
    */
   leakedAt?: number | undefined;
+  /**
+   * URL where the token was discovered as leaked.
+   */
+  leakedUrl?: string | undefined;
 };
 
 /** @internal */
@@ -318,6 +330,8 @@ export const AuthToken$inboundSchema: z.ZodType<
   id: types.string(),
   name: types.string(),
   type: types.string(),
+  prefix: types.optional(types.string()),
+  suffix: types.optional(types.string()),
   origin: types.optional(types.string()),
   scopes: types.optional(
     z.array(z.union([
@@ -327,22 +341,26 @@ export const AuthToken$inboundSchema: z.ZodType<
       ),
     ])),
   ),
-  expiresAt: types.optional(types.number()),
-  activeAt: types.number(),
   createdAt: types.number(),
+  activeAt: types.number(),
+  expiresAt: types.optional(types.number()),
   leakedAt: types.optional(types.number()),
+  leakedUrl: types.optional(types.string()),
 });
 /** @internal */
 export type AuthToken$Outbound = {
   id: string;
   name: string;
   type: string;
+  prefix?: string | undefined;
+  suffix?: string | undefined;
   origin?: string | undefined;
   scopes?: Array<Scopes1$Outbound | Scopes2$Outbound> | undefined;
-  expiresAt?: number | undefined;
-  activeAt: number;
   createdAt: number;
+  activeAt: number;
+  expiresAt?: number | undefined;
   leakedAt?: number | undefined;
+  leakedUrl?: string | undefined;
 };
 
 /** @internal */
@@ -354,6 +372,8 @@ export const AuthToken$outboundSchema: z.ZodType<
   id: z.string(),
   name: z.string(),
   type: z.string(),
+  prefix: z.string().optional(),
+  suffix: z.string().optional(),
   origin: z.string().optional(),
   scopes: z.array(
     z.union([
@@ -361,10 +381,11 @@ export const AuthToken$outboundSchema: z.ZodType<
       z.lazy(() => Scopes2$outboundSchema),
     ]),
   ).optional(),
-  expiresAt: z.number().optional(),
-  activeAt: z.number(),
   createdAt: z.number(),
+  activeAt: z.number(),
+  expiresAt: z.number().optional(),
   leakedAt: z.number().optional(),
+  leakedUrl: z.string().optional(),
 });
 
 export function authTokenToJSON(authToken: AuthToken): string {

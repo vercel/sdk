@@ -8,9 +8,10 @@ The payload of the event, if requested.
 import { NinetySeven } from "@vercel/sdk/models/userevent.js";
 
 let value: NinetySeven = {
-  projectId: "<id>",
-  projectName: "<value>",
-  onPullRequest: true,
+  email: "Camryn.Feeney@yahoo.com",
+  githubLogin: "<value>",
+  zeitAccount: "<value>",
+  zeitAccountType: "<value>",
 };
 ```
 
@@ -18,6 +19,7 @@ let value: NinetySeven = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `onPullRequest`    | *boolean*          | :heavy_check_mark: | N/A                |
+| `email`            | *string*           | :heavy_check_mark: | N/A                |
+| `githubLogin`      | *string*           | :heavy_check_mark: | N/A                |
+| `zeitAccount`      | *string*           | :heavy_check_mark: | N/A                |
+| `zeitAccountType`  | *string*           | :heavy_check_mark: | N/A                |

@@ -8,16 +8,25 @@ The payload of the event, if requested.
 import { OneHundredAndFour } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndFour = {
-  passwordProtection: "preview",
-  oldPasswordProtection: "prod_deployment_urls_and_all_previews",
+  projectId: "<id>",
+  projectAnalytics: {
+    id: "<id>",
+    disabledAt: 8284.36,
+    enabledAt: 3151.64,
+  },
+  prevProjectAnalytics: {
+    id: "<id>",
+    disabledAt: 8349.71,
+    enabledAt: 6554.16,
+  },
 };
 ```
 
 ## Fields
 
-| Field                              | Type                               | Required                           | Description                        |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| `projectId`                        | *string*                           | :heavy_minus_sign:                 | N/A                                |
-| `projectName`                      | *string*                           | :heavy_minus_sign:                 | N/A                                |
-| `passwordProtection`               | *models.PayloadPasswordProtection* | :heavy_check_mark:                 | N/A                                |
-| `oldPasswordProtection`            | *models.OldPasswordProtection*     | :heavy_check_mark:                 | N/A                                |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `projectName`                                                    | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
+| `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `projectAnalytics`                                               | [models.ProjectAnalytics](../models/projectanalytics.md)         | :heavy_check_mark:                                               | N/A                                                              |
+| `prevProjectAnalytics`                                           | [models.PrevProjectAnalytics](../models/prevprojectanalytics.md) | :heavy_check_mark:                                               | N/A                                                              |

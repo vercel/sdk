@@ -12,6 +12,7 @@ import { domainsRegistrarGetDomainPrice } from "../funcs/domainsRegistrarGetDoma
 import { domainsRegistrarGetDomainTransferIn } from "../funcs/domainsRegistrarGetDomainTransferIn.js";
 import { domainsRegistrarGetOrder } from "../funcs/domainsRegistrarGetOrder.js";
 import { domainsRegistrarGetSupportedTlds } from "../funcs/domainsRegistrarGetSupportedTlds.js";
+import { domainsRegistrarGetTld } from "../funcs/domainsRegistrarGetTld.js";
 import { domainsRegistrarGetTldPrice } from "../funcs/domainsRegistrarGetTldPrice.js";
 import { domainsRegistrarRenewDomain } from "../funcs/domainsRegistrarRenewDomain.js";
 import { domainsRegistrarTransferInDomain } from "../funcs/domainsRegistrarTransferInDomain.js";
@@ -52,6 +53,7 @@ import {
 } from "../models/getdomaintransferinop.js";
 import { GetOrderRequest, GetOrderResponseBody } from "../models/getorderop.js";
 import { GetSupportedTldsRequest } from "../models/getsupportedtldsop.js";
+import { GetTldRequest, GetTldResponseBody } from "../models/gettldop.js";
 import {
   GetTldPriceRequest,
   GetTldPriceResponseBody,
@@ -80,6 +82,23 @@ export class DomainsRegistrar extends ClientSDK {
     options?: RequestOptions,
   ): Promise<Array<string>> {
     return unwrapAsync(domainsRegistrarGetSupportedTlds(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get TLD
+   *
+   * @remarks
+   * Get the metadata for a specific TLD.
+   */
+  async getTld(
+    request: GetTldRequest,
+    options?: RequestOptions,
+  ): Promise<GetTldResponseBody> {
+    return unwrapAsync(domainsRegistrarGetTld(
       this,
       request,
       options,

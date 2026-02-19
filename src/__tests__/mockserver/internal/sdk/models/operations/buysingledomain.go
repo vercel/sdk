@@ -139,6 +139,8 @@ type BuySingleDomainRequestBody struct {
 	ExpectedPrice float64 `json:"expectedPrice"`
 	// The contact information for the domain. Some TLDs require additional contact information. Use the [Get contact info schema](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-contact-info-schema) endpoint to retrieve the required fields.
 	ContactInformation BuySingleDomainContactInformation `json:"contactInformation"`
+	// The language code for the domain. For punycode domains, this must be provided. The list of supported language codes for a TLD can be retrieved from the [Get TLD](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-tld) endpoint.
+	LanguageCode *string `json:"languageCode,omitempty"`
 }
 
 func (o *BuySingleDomainRequestBody) GetAutoRenew() bool {
@@ -167,6 +169,13 @@ func (o *BuySingleDomainRequestBody) GetContactInformation() BuySingleDomainCont
 		return BuySingleDomainContactInformation{}
 	}
 	return o.ContactInformation
+}
+
+func (o *BuySingleDomainRequestBody) GetLanguageCode() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LanguageCode
 }
 
 type BuySingleDomainRequest struct {

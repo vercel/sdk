@@ -8,23 +8,15 @@ The payload of the event, if requested.
 import { FortyEight } from "@vercel/sdk/models/userevent.js";
 
 let value: FortyEight = {
-  url: "https://fruitful-necklace.net",
+  bitbucketEmail: "<value>",
+  bitbucketLogin: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `name`                                                     | *string*                                                   | :heavy_minus_sign:                                         | N/A                                                        |
-| `alias`                                                    | *string*[]                                                 | :heavy_minus_sign:                                         | N/A                                                        |
-| `target`                                                   | *string*                                                   | :heavy_minus_sign:                                         | N/A                                                        |
-| `deployment`                                               | [models.PayloadDeployment](../models/payloaddeployment.md) | :heavy_minus_sign:                                         | N/A                                                        |
-| `url`                                                      | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `forced`                                                   | *boolean*                                                  | :heavy_minus_sign:                                         | N/A                                                        |
-| `deploymentId`                                             | *string*                                                   | :heavy_minus_sign:                                         | N/A                                                        |
-| `plan`                                                     | *string*                                                   | :heavy_minus_sign:                                         | N/A                                                        |
-| `project`                                                  | *string*                                                   | :heavy_minus_sign:                                         | N/A                                                        |
-| `projectId`                                                | *string*                                                   | :heavy_minus_sign:                                         | N/A                                                        |
-| `regions`                                                  | *string*[]                                                 | :heavy_minus_sign:                                         | N/A                                                        |
-| `type`                                                     | *string*                                                   | :heavy_minus_sign:                                         | N/A                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `bitbucketEmail`   | *string*           | :heavy_check_mark: | N/A                |
+| `bitbucketLogin`   | *string*           | :heavy_check_mark: | N/A                |
+| `bitbucketName`    | *string*           | :heavy_minus_sign: | N/A                |

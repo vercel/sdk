@@ -70,6 +70,7 @@ func testCreateIntegrationStoreDirectCreateIntegrationStoreDirect0(w http.Respon
 			Status:             operations.CreateIntegrationStoreDirectStatusAvailable.ToPointer(),
 			ExternalResourceID: "<id>",
 			Product: operations.CreateIntegrationStoreDirectProduct{
+				ResourceTitle: types.String("Instance"),
 				Integration: operations.CreateIntegrationStoreDirectIntegration{
 					ID:   "<id>",
 					Name: "<value>",

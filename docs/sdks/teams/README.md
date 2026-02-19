@@ -39,6 +39,8 @@ async function run() {
     since: 1540095775951,
     until: 1540095775951,
     role: "OWNER",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   console.log(result);
@@ -67,6 +69,8 @@ async function run() {
     since: 1540095775951,
     until: 1540095775951,
     role: "OWNER",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
   if (res.ok) {
     const { value: result } = res;
@@ -113,22 +117,26 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.teams.inviteUserToTeam([
-    {
-      email: "john@example.com",
-      role: "DEVELOPER",
-      projects: [
-        {
-          projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
-          role: "ADMIN",
-        },
-        {
-          projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
-          role: "ADMIN",
-        },
-      ],
-    },
-  ]);
+  const result = await vercel.teams.inviteUserToTeam({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+    requestBody: [
+      {
+        email: "john@example.com",
+        role: "DEVELOPER",
+        projects: [
+          {
+            projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
+            role: "ADMIN",
+          },
+          {
+            projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
+            role: "ADMIN",
+          },
+        ],
+      },
+    ],
+  });
 
   console.log(result);
 }
@@ -151,22 +159,26 @@ const vercel = new VercelCore({
 });
 
 async function run() {
-  const res = await teamsInviteUserToTeam(vercel, [
-    {
-      email: "john@example.com",
-      role: "DEVELOPER",
-      projects: [
-        {
-          projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
-          role: "ADMIN",
-        },
-        {
-          projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
-          role: "ADMIN",
-        },
-      ],
-    },
-  ]);
+  const res = await teamsInviteUserToTeam(vercel, {
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+    requestBody: [
+      {
+        email: "john@example.com",
+        role: "DEVELOPER",
+        projects: [
+          {
+            projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
+            role: "ADMIN",
+          },
+          {
+            projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
+            role: "ADMIN",
+          },
+        ],
+      },
+    ],
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -182,7 +194,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.InviteUserToTeamRequestBody[]](../../models/.md)                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [models.InviteUserToTeamRequest](../../models/inviteusertoteamrequest.md)                                                                                                      | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |

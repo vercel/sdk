@@ -117,6 +117,51 @@ func (o *DomainError3) GetDetails() any {
 	return o.Details
 }
 
+type CodeUnavailableLegal3 string
+
+const (
+	CodeUnavailableLegal3UnavailableLegal CodeUnavailableLegal3 = "unavailable-legal"
+)
+
+func (e CodeUnavailableLegal3) ToPointer() *CodeUnavailableLegal3 {
+	return &e
+}
+func (e *CodeUnavailableLegal3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "unavailable-legal":
+		*e = CodeUnavailableLegal3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CodeUnavailableLegal3: %v", v)
+	}
+}
+
+type ErrorUnavailableLegal3 struct {
+	Code CodeUnavailableLegal3 `json:"code"`
+}
+
+func (e ErrorUnavailableLegal3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *ErrorUnavailableLegal3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"code"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ErrorUnavailableLegal3) GetCode() CodeUnavailableLegal3 {
+	if o == nil {
+		return CodeUnavailableLegal3("")
+	}
+	return o.Code
+}
+
 type CodePriceChange3 string
 
 const (
@@ -185,22 +230,22 @@ func (e *CodeCannotTransferInUntil3) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type DomainDetails6 struct {
+type DomainDetails9 struct {
 	NumDaysUntilTransferrable float64 `json:"numDaysUntilTransferrable"`
 }
 
-func (d DomainDetails6) MarshalJSON() ([]byte, error) {
+func (d DomainDetails9) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(d, "", false)
 }
 
-func (d *DomainDetails6) UnmarshalJSON(data []byte) error {
+func (d *DomainDetails9) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"numDaysUntilTransferrable"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *DomainDetails6) GetNumDaysUntilTransferrable() float64 {
+func (o *DomainDetails9) GetNumDaysUntilTransferrable() float64 {
 	if o == nil {
 		return 0.0
 	}
@@ -209,7 +254,7 @@ func (o *DomainDetails6) GetNumDaysUntilTransferrable() float64 {
 
 type ErrorCannotTransferInUntil3 struct {
 	Code    CodeCannotTransferInUntil3 `json:"code"`
-	Details DomainDetails6             `json:"details"`
+	Details DomainDetails9             `json:"details"`
 }
 
 func (e ErrorCannotTransferInUntil3) MarshalJSON() ([]byte, error) {
@@ -230,9 +275,9 @@ func (o *ErrorCannotTransferInUntil3) GetCode() CodeCannotTransferInUntil3 {
 	return o.Code
 }
 
-func (o *ErrorCannotTransferInUntil3) GetDetails() DomainDetails6 {
+func (o *ErrorCannotTransferInUntil3) GetDetails() DomainDetails9 {
 	if o == nil {
-		return DomainDetails6{}
+		return DomainDetails9{}
 	}
 	return o.Details
 }
@@ -282,6 +327,51 @@ func (o *ErrorClaimsNoticeRequired3) GetCode() CodeClaimsNoticeRequired3 {
 	return o.Code
 }
 
+type CodeIncorrectAuthCode3 string
+
+const (
+	CodeIncorrectAuthCode3IncorrectAuthCode CodeIncorrectAuthCode3 = "incorrect-auth-code"
+)
+
+func (e CodeIncorrectAuthCode3) ToPointer() *CodeIncorrectAuthCode3 {
+	return &e
+}
+func (e *CodeIncorrectAuthCode3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "incorrect-auth-code":
+		*e = CodeIncorrectAuthCode3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CodeIncorrectAuthCode3: %v", v)
+	}
+}
+
+type ErrorIncorrectAuthCode3 struct {
+	Code CodeIncorrectAuthCode3 `json:"code"`
+}
+
+func (e ErrorIncorrectAuthCode3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *ErrorIncorrectAuthCode3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"code"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ErrorIncorrectAuthCode3) GetCode() CodeIncorrectAuthCode3 {
+	if o == nil {
+		return CodeIncorrectAuthCode3("")
+	}
+	return o.Code
+}
+
 type CodeClientTransferProhibited3 string
 
 const (
@@ -327,6 +417,81 @@ func (o *ErrorClientTransferProhibited3) GetCode() CodeClientTransferProhibited3
 	return o.Code
 }
 
+type CodeIncorrectLanguageCode3 string
+
+const (
+	CodeIncorrectLanguageCode3IncorrectLanguageCode CodeIncorrectLanguageCode3 = "incorrect-language-code"
+)
+
+func (e CodeIncorrectLanguageCode3) ToPointer() *CodeIncorrectLanguageCode3 {
+	return &e
+}
+func (e *CodeIncorrectLanguageCode3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "incorrect-language-code":
+		*e = CodeIncorrectLanguageCode3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CodeIncorrectLanguageCode3: %v", v)
+	}
+}
+
+type DomainDetails8 struct {
+	DetectedLanguageCode string `json:"detectedLanguageCode"`
+}
+
+func (d DomainDetails8) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DomainDetails8) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"detectedLanguageCode"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DomainDetails8) GetDetectedLanguageCode() string {
+	if o == nil {
+		return ""
+	}
+	return o.DetectedLanguageCode
+}
+
+type ErrorIncorrectLanguageCode3 struct {
+	Code    CodeIncorrectLanguageCode3 `json:"code"`
+	Details DomainDetails8             `json:"details"`
+}
+
+func (e ErrorIncorrectLanguageCode3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *ErrorIncorrectLanguageCode3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"code", "details"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ErrorIncorrectLanguageCode3) GetCode() CodeIncorrectLanguageCode3 {
+	if o == nil {
+		return CodeIncorrectLanguageCode3("")
+	}
+	return o.Code
+}
+
+func (o *ErrorIncorrectLanguageCode3) GetDetails() DomainDetails8 {
+	if o == nil {
+		return DomainDetails8{}
+	}
+	return o.Details
+}
+
 type CodeUnsupportedLanguageCode3 string
 
 const (
@@ -350,22 +515,22 @@ func (e *CodeUnsupportedLanguageCode3) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type DomainDetails5 struct {
+type DomainDetails7 struct {
 	DetectedLanguageCode string `json:"detectedLanguageCode"`
 }
 
-func (d DomainDetails5) MarshalJSON() ([]byte, error) {
+func (d DomainDetails7) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(d, "", false)
 }
 
-func (d *DomainDetails5) UnmarshalJSON(data []byte) error {
+func (d *DomainDetails7) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"detectedLanguageCode"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *DomainDetails5) GetDetectedLanguageCode() string {
+func (o *DomainDetails7) GetDetectedLanguageCode() string {
 	if o == nil {
 		return ""
 	}
@@ -374,7 +539,7 @@ func (o *DomainDetails5) GetDetectedLanguageCode() string {
 
 type ErrorUnsupportedLanguageCode3 struct {
 	Code    CodeUnsupportedLanguageCode3 `json:"code"`
-	Details DomainDetails5               `json:"details"`
+	Details DomainDetails7               `json:"details"`
 }
 
 func (e ErrorUnsupportedLanguageCode3) MarshalJSON() ([]byte, error) {
@@ -395,9 +560,9 @@ func (o *ErrorUnsupportedLanguageCode3) GetCode() CodeUnsupportedLanguageCode3 {
 	return o.Code
 }
 
-func (o *ErrorUnsupportedLanguageCode3) GetDetails() DomainDetails5 {
+func (o *ErrorUnsupportedLanguageCode3) GetDetails() DomainDetails7 {
 	if o == nil {
-		return DomainDetails5{}
+		return DomainDetails7{}
 	}
 	return o.Details
 }
@@ -406,18 +571,24 @@ type DomainErrorUnion5Type string
 
 const (
 	DomainErrorUnion5TypeUnsupportedLanguageCode  DomainErrorUnion5Type = "unsupported-language-code"
+	DomainErrorUnion5TypeIncorrectLanguageCode    DomainErrorUnion5Type = "incorrect-language-code"
 	DomainErrorUnion5TypeClientTransferProhibited DomainErrorUnion5Type = "client-transfer-prohibited"
+	DomainErrorUnion5TypeIncorrectAuthCode        DomainErrorUnion5Type = "incorrect-auth-code"
 	DomainErrorUnion5TypeClaimsNoticeRequired     DomainErrorUnion5Type = "claims-notice-required"
 	DomainErrorUnion5TypeCannotTransferInUntil    DomainErrorUnion5Type = "cannot-transfer-in-until"
 	DomainErrorUnion5TypePriceChange              DomainErrorUnion5Type = "price-change"
+	DomainErrorUnion5TypeUnavailableLegal         DomainErrorUnion5Type = "unavailable-legal"
 )
 
 type DomainErrorUnion5 struct {
 	ErrorUnsupportedLanguageCode3  *ErrorUnsupportedLanguageCode3  `queryParam:"inline"`
+	ErrorIncorrectLanguageCode3    *ErrorIncorrectLanguageCode3    `queryParam:"inline"`
 	ErrorClientTransferProhibited3 *ErrorClientTransferProhibited3 `queryParam:"inline"`
+	ErrorIncorrectAuthCode3        *ErrorIncorrectAuthCode3        `queryParam:"inline"`
 	ErrorClaimsNoticeRequired3     *ErrorClaimsNoticeRequired3     `queryParam:"inline"`
 	ErrorCannotTransferInUntil3    *ErrorCannotTransferInUntil3    `queryParam:"inline"`
 	ErrorPriceChange3              *ErrorPriceChange3              `queryParam:"inline"`
+	ErrorUnavailableLegal3         *ErrorUnavailableLegal3         `queryParam:"inline"`
 
 	Type DomainErrorUnion5Type
 }
@@ -434,6 +605,18 @@ func CreateDomainErrorUnion5UnsupportedLanguageCode(unsupportedLanguageCode Erro
 	}
 }
 
+func CreateDomainErrorUnion5IncorrectLanguageCode(incorrectLanguageCode ErrorIncorrectLanguageCode3) DomainErrorUnion5 {
+	typ := DomainErrorUnion5TypeIncorrectLanguageCode
+
+	typStr := CodeIncorrectLanguageCode3(typ)
+	incorrectLanguageCode.Code = typStr
+
+	return DomainErrorUnion5{
+		ErrorIncorrectLanguageCode3: &incorrectLanguageCode,
+		Type:                        typ,
+	}
+}
+
 func CreateDomainErrorUnion5ClientTransferProhibited(clientTransferProhibited ErrorClientTransferProhibited3) DomainErrorUnion5 {
 	typ := DomainErrorUnion5TypeClientTransferProhibited
 
@@ -443,6 +626,18 @@ func CreateDomainErrorUnion5ClientTransferProhibited(clientTransferProhibited Er
 	return DomainErrorUnion5{
 		ErrorClientTransferProhibited3: &clientTransferProhibited,
 		Type:                           typ,
+	}
+}
+
+func CreateDomainErrorUnion5IncorrectAuthCode(incorrectAuthCode ErrorIncorrectAuthCode3) DomainErrorUnion5 {
+	typ := DomainErrorUnion5TypeIncorrectAuthCode
+
+	typStr := CodeIncorrectAuthCode3(typ)
+	incorrectAuthCode.Code = typStr
+
+	return DomainErrorUnion5{
+		ErrorIncorrectAuthCode3: &incorrectAuthCode,
+		Type:                    typ,
 	}
 }
 
@@ -482,6 +677,18 @@ func CreateDomainErrorUnion5PriceChange(priceChange ErrorPriceChange3) DomainErr
 	}
 }
 
+func CreateDomainErrorUnion5UnavailableLegal(unavailableLegal ErrorUnavailableLegal3) DomainErrorUnion5 {
+	typ := DomainErrorUnion5TypeUnavailableLegal
+
+	typStr := CodeUnavailableLegal3(typ)
+	unavailableLegal.Code = typStr
+
+	return DomainErrorUnion5{
+		ErrorUnavailableLegal3: &unavailableLegal,
+		Type:                   typ,
+	}
+}
+
 func (u *DomainErrorUnion5) UnmarshalJSON(data []byte) error {
 
 	type discriminator struct {
@@ -503,6 +710,15 @@ func (u *DomainErrorUnion5) UnmarshalJSON(data []byte) error {
 		u.ErrorUnsupportedLanguageCode3 = errorUnsupportedLanguageCode3
 		u.Type = DomainErrorUnion5TypeUnsupportedLanguageCode
 		return nil
+	case "incorrect-language-code":
+		errorIncorrectLanguageCode3 := new(ErrorIncorrectLanguageCode3)
+		if err := utils.UnmarshalJSON(data, &errorIncorrectLanguageCode3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == incorrect-language-code) type ErrorIncorrectLanguageCode3 within DomainErrorUnion5: %w", string(data), err)
+		}
+
+		u.ErrorIncorrectLanguageCode3 = errorIncorrectLanguageCode3
+		u.Type = DomainErrorUnion5TypeIncorrectLanguageCode
+		return nil
 	case "client-transfer-prohibited":
 		errorClientTransferProhibited3 := new(ErrorClientTransferProhibited3)
 		if err := utils.UnmarshalJSON(data, &errorClientTransferProhibited3, "", true, nil); err != nil {
@@ -511,6 +727,15 @@ func (u *DomainErrorUnion5) UnmarshalJSON(data []byte) error {
 
 		u.ErrorClientTransferProhibited3 = errorClientTransferProhibited3
 		u.Type = DomainErrorUnion5TypeClientTransferProhibited
+		return nil
+	case "incorrect-auth-code":
+		errorIncorrectAuthCode3 := new(ErrorIncorrectAuthCode3)
+		if err := utils.UnmarshalJSON(data, &errorIncorrectAuthCode3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == incorrect-auth-code) type ErrorIncorrectAuthCode3 within DomainErrorUnion5: %w", string(data), err)
+		}
+
+		u.ErrorIncorrectAuthCode3 = errorIncorrectAuthCode3
+		u.Type = DomainErrorUnion5TypeIncorrectAuthCode
 		return nil
 	case "claims-notice-required":
 		errorClaimsNoticeRequired3 := new(ErrorClaimsNoticeRequired3)
@@ -539,6 +764,15 @@ func (u *DomainErrorUnion5) UnmarshalJSON(data []byte) error {
 		u.ErrorPriceChange3 = errorPriceChange3
 		u.Type = DomainErrorUnion5TypePriceChange
 		return nil
+	case "unavailable-legal":
+		errorUnavailableLegal3 := new(ErrorUnavailableLegal3)
+		if err := utils.UnmarshalJSON(data, &errorUnavailableLegal3, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == unavailable-legal) type ErrorUnavailableLegal3 within DomainErrorUnion5: %w", string(data), err)
+		}
+
+		u.ErrorUnavailableLegal3 = errorUnavailableLegal3
+		u.Type = DomainErrorUnion5TypeUnavailableLegal
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for DomainErrorUnion5", string(data))
@@ -549,8 +783,16 @@ func (u DomainErrorUnion5) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.ErrorUnsupportedLanguageCode3, "", true)
 	}
 
+	if u.ErrorIncorrectLanguageCode3 != nil {
+		return utils.MarshalJSON(u.ErrorIncorrectLanguageCode3, "", true)
+	}
+
 	if u.ErrorClientTransferProhibited3 != nil {
 		return utils.MarshalJSON(u.ErrorClientTransferProhibited3, "", true)
+	}
+
+	if u.ErrorIncorrectAuthCode3 != nil {
+		return utils.MarshalJSON(u.ErrorIncorrectAuthCode3, "", true)
 	}
 
 	if u.ErrorClaimsNoticeRequired3 != nil {
@@ -563,6 +805,10 @@ func (u DomainErrorUnion5) MarshalJSON() ([]byte, error) {
 
 	if u.ErrorPriceChange3 != nil {
 		return utils.MarshalJSON(u.ErrorPriceChange3, "", true)
+	}
+
+	if u.ErrorUnavailableLegal3 != nil {
+		return utils.MarshalJSON(u.ErrorUnavailableLegal3, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type DomainErrorUnion5: all fields are null")
@@ -791,6 +1037,51 @@ func (o *DomainError2) GetDetails() any {
 	return o.Details
 }
 
+type CodeUnavailableLegal2 string
+
+const (
+	CodeUnavailableLegal2UnavailableLegal CodeUnavailableLegal2 = "unavailable-legal"
+)
+
+func (e CodeUnavailableLegal2) ToPointer() *CodeUnavailableLegal2 {
+	return &e
+}
+func (e *CodeUnavailableLegal2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "unavailable-legal":
+		*e = CodeUnavailableLegal2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CodeUnavailableLegal2: %v", v)
+	}
+}
+
+type ErrorUnavailableLegal2 struct {
+	Code CodeUnavailableLegal2 `json:"code"`
+}
+
+func (e ErrorUnavailableLegal2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *ErrorUnavailableLegal2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"code"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ErrorUnavailableLegal2) GetCode() CodeUnavailableLegal2 {
+	if o == nil {
+		return CodeUnavailableLegal2("")
+	}
+	return o.Code
+}
+
 type CodePriceChange2 string
 
 const (
@@ -859,22 +1150,22 @@ func (e *CodeCannotTransferInUntil2) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type DomainDetails4 struct {
+type DomainDetails6 struct {
 	NumDaysUntilTransferrable float64 `json:"numDaysUntilTransferrable"`
 }
 
-func (d DomainDetails4) MarshalJSON() ([]byte, error) {
+func (d DomainDetails6) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(d, "", false)
 }
 
-func (d *DomainDetails4) UnmarshalJSON(data []byte) error {
+func (d *DomainDetails6) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"numDaysUntilTransferrable"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *DomainDetails4) GetNumDaysUntilTransferrable() float64 {
+func (o *DomainDetails6) GetNumDaysUntilTransferrable() float64 {
 	if o == nil {
 		return 0.0
 	}
@@ -883,7 +1174,7 @@ func (o *DomainDetails4) GetNumDaysUntilTransferrable() float64 {
 
 type ErrorCannotTransferInUntil2 struct {
 	Code    CodeCannotTransferInUntil2 `json:"code"`
-	Details DomainDetails4             `json:"details"`
+	Details DomainDetails6             `json:"details"`
 }
 
 func (e ErrorCannotTransferInUntil2) MarshalJSON() ([]byte, error) {
@@ -904,9 +1195,9 @@ func (o *ErrorCannotTransferInUntil2) GetCode() CodeCannotTransferInUntil2 {
 	return o.Code
 }
 
-func (o *ErrorCannotTransferInUntil2) GetDetails() DomainDetails4 {
+func (o *ErrorCannotTransferInUntil2) GetDetails() DomainDetails6 {
 	if o == nil {
-		return DomainDetails4{}
+		return DomainDetails6{}
 	}
 	return o.Details
 }
@@ -956,6 +1247,51 @@ func (o *ErrorClaimsNoticeRequired2) GetCode() CodeClaimsNoticeRequired2 {
 	return o.Code
 }
 
+type CodeIncorrectAuthCode2 string
+
+const (
+	CodeIncorrectAuthCode2IncorrectAuthCode CodeIncorrectAuthCode2 = "incorrect-auth-code"
+)
+
+func (e CodeIncorrectAuthCode2) ToPointer() *CodeIncorrectAuthCode2 {
+	return &e
+}
+func (e *CodeIncorrectAuthCode2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "incorrect-auth-code":
+		*e = CodeIncorrectAuthCode2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CodeIncorrectAuthCode2: %v", v)
+	}
+}
+
+type ErrorIncorrectAuthCode2 struct {
+	Code CodeIncorrectAuthCode2 `json:"code"`
+}
+
+func (e ErrorIncorrectAuthCode2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *ErrorIncorrectAuthCode2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"code"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ErrorIncorrectAuthCode2) GetCode() CodeIncorrectAuthCode2 {
+	if o == nil {
+		return CodeIncorrectAuthCode2("")
+	}
+	return o.Code
+}
+
 type CodeClientTransferProhibited2 string
 
 const (
@@ -1001,6 +1337,81 @@ func (o *ErrorClientTransferProhibited2) GetCode() CodeClientTransferProhibited2
 	return o.Code
 }
 
+type CodeIncorrectLanguageCode2 string
+
+const (
+	CodeIncorrectLanguageCode2IncorrectLanguageCode CodeIncorrectLanguageCode2 = "incorrect-language-code"
+)
+
+func (e CodeIncorrectLanguageCode2) ToPointer() *CodeIncorrectLanguageCode2 {
+	return &e
+}
+func (e *CodeIncorrectLanguageCode2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "incorrect-language-code":
+		*e = CodeIncorrectLanguageCode2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CodeIncorrectLanguageCode2: %v", v)
+	}
+}
+
+type DomainDetails5 struct {
+	DetectedLanguageCode string `json:"detectedLanguageCode"`
+}
+
+func (d DomainDetails5) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DomainDetails5) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"detectedLanguageCode"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DomainDetails5) GetDetectedLanguageCode() string {
+	if o == nil {
+		return ""
+	}
+	return o.DetectedLanguageCode
+}
+
+type ErrorIncorrectLanguageCode2 struct {
+	Code    CodeIncorrectLanguageCode2 `json:"code"`
+	Details DomainDetails5             `json:"details"`
+}
+
+func (e ErrorIncorrectLanguageCode2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *ErrorIncorrectLanguageCode2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"code", "details"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ErrorIncorrectLanguageCode2) GetCode() CodeIncorrectLanguageCode2 {
+	if o == nil {
+		return CodeIncorrectLanguageCode2("")
+	}
+	return o.Code
+}
+
+func (o *ErrorIncorrectLanguageCode2) GetDetails() DomainDetails5 {
+	if o == nil {
+		return DomainDetails5{}
+	}
+	return o.Details
+}
+
 type CodeUnsupportedLanguageCode2 string
 
 const (
@@ -1024,22 +1435,22 @@ func (e *CodeUnsupportedLanguageCode2) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type DomainDetails3 struct {
+type DomainDetails4 struct {
 	DetectedLanguageCode string `json:"detectedLanguageCode"`
 }
 
-func (d DomainDetails3) MarshalJSON() ([]byte, error) {
+func (d DomainDetails4) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(d, "", false)
 }
 
-func (d *DomainDetails3) UnmarshalJSON(data []byte) error {
+func (d *DomainDetails4) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"detectedLanguageCode"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *DomainDetails3) GetDetectedLanguageCode() string {
+func (o *DomainDetails4) GetDetectedLanguageCode() string {
 	if o == nil {
 		return ""
 	}
@@ -1048,7 +1459,7 @@ func (o *DomainDetails3) GetDetectedLanguageCode() string {
 
 type ErrorUnsupportedLanguageCode2 struct {
 	Code    CodeUnsupportedLanguageCode2 `json:"code"`
-	Details DomainDetails3               `json:"details"`
+	Details DomainDetails4               `json:"details"`
 }
 
 func (e ErrorUnsupportedLanguageCode2) MarshalJSON() ([]byte, error) {
@@ -1069,9 +1480,9 @@ func (o *ErrorUnsupportedLanguageCode2) GetCode() CodeUnsupportedLanguageCode2 {
 	return o.Code
 }
 
-func (o *ErrorUnsupportedLanguageCode2) GetDetails() DomainDetails3 {
+func (o *ErrorUnsupportedLanguageCode2) GetDetails() DomainDetails4 {
 	if o == nil {
-		return DomainDetails3{}
+		return DomainDetails4{}
 	}
 	return o.Details
 }
@@ -1080,18 +1491,24 @@ type DomainErrorUnion3Type string
 
 const (
 	DomainErrorUnion3TypeUnsupportedLanguageCode  DomainErrorUnion3Type = "unsupported-language-code"
+	DomainErrorUnion3TypeIncorrectLanguageCode    DomainErrorUnion3Type = "incorrect-language-code"
 	DomainErrorUnion3TypeClientTransferProhibited DomainErrorUnion3Type = "client-transfer-prohibited"
+	DomainErrorUnion3TypeIncorrectAuthCode        DomainErrorUnion3Type = "incorrect-auth-code"
 	DomainErrorUnion3TypeClaimsNoticeRequired     DomainErrorUnion3Type = "claims-notice-required"
 	DomainErrorUnion3TypeCannotTransferInUntil    DomainErrorUnion3Type = "cannot-transfer-in-until"
 	DomainErrorUnion3TypePriceChange              DomainErrorUnion3Type = "price-change"
+	DomainErrorUnion3TypeUnavailableLegal         DomainErrorUnion3Type = "unavailable-legal"
 )
 
 type DomainErrorUnion3 struct {
 	ErrorUnsupportedLanguageCode2  *ErrorUnsupportedLanguageCode2  `queryParam:"inline"`
+	ErrorIncorrectLanguageCode2    *ErrorIncorrectLanguageCode2    `queryParam:"inline"`
 	ErrorClientTransferProhibited2 *ErrorClientTransferProhibited2 `queryParam:"inline"`
+	ErrorIncorrectAuthCode2        *ErrorIncorrectAuthCode2        `queryParam:"inline"`
 	ErrorClaimsNoticeRequired2     *ErrorClaimsNoticeRequired2     `queryParam:"inline"`
 	ErrorCannotTransferInUntil2    *ErrorCannotTransferInUntil2    `queryParam:"inline"`
 	ErrorPriceChange2              *ErrorPriceChange2              `queryParam:"inline"`
+	ErrorUnavailableLegal2         *ErrorUnavailableLegal2         `queryParam:"inline"`
 
 	Type DomainErrorUnion3Type
 }
@@ -1108,6 +1525,18 @@ func CreateDomainErrorUnion3UnsupportedLanguageCode(unsupportedLanguageCode Erro
 	}
 }
 
+func CreateDomainErrorUnion3IncorrectLanguageCode(incorrectLanguageCode ErrorIncorrectLanguageCode2) DomainErrorUnion3 {
+	typ := DomainErrorUnion3TypeIncorrectLanguageCode
+
+	typStr := CodeIncorrectLanguageCode2(typ)
+	incorrectLanguageCode.Code = typStr
+
+	return DomainErrorUnion3{
+		ErrorIncorrectLanguageCode2: &incorrectLanguageCode,
+		Type:                        typ,
+	}
+}
+
 func CreateDomainErrorUnion3ClientTransferProhibited(clientTransferProhibited ErrorClientTransferProhibited2) DomainErrorUnion3 {
 	typ := DomainErrorUnion3TypeClientTransferProhibited
 
@@ -1117,6 +1546,18 @@ func CreateDomainErrorUnion3ClientTransferProhibited(clientTransferProhibited Er
 	return DomainErrorUnion3{
 		ErrorClientTransferProhibited2: &clientTransferProhibited,
 		Type:                           typ,
+	}
+}
+
+func CreateDomainErrorUnion3IncorrectAuthCode(incorrectAuthCode ErrorIncorrectAuthCode2) DomainErrorUnion3 {
+	typ := DomainErrorUnion3TypeIncorrectAuthCode
+
+	typStr := CodeIncorrectAuthCode2(typ)
+	incorrectAuthCode.Code = typStr
+
+	return DomainErrorUnion3{
+		ErrorIncorrectAuthCode2: &incorrectAuthCode,
+		Type:                    typ,
 	}
 }
 
@@ -1156,6 +1597,18 @@ func CreateDomainErrorUnion3PriceChange(priceChange ErrorPriceChange2) DomainErr
 	}
 }
 
+func CreateDomainErrorUnion3UnavailableLegal(unavailableLegal ErrorUnavailableLegal2) DomainErrorUnion3 {
+	typ := DomainErrorUnion3TypeUnavailableLegal
+
+	typStr := CodeUnavailableLegal2(typ)
+	unavailableLegal.Code = typStr
+
+	return DomainErrorUnion3{
+		ErrorUnavailableLegal2: &unavailableLegal,
+		Type:                   typ,
+	}
+}
+
 func (u *DomainErrorUnion3) UnmarshalJSON(data []byte) error {
 
 	type discriminator struct {
@@ -1177,6 +1630,15 @@ func (u *DomainErrorUnion3) UnmarshalJSON(data []byte) error {
 		u.ErrorUnsupportedLanguageCode2 = errorUnsupportedLanguageCode2
 		u.Type = DomainErrorUnion3TypeUnsupportedLanguageCode
 		return nil
+	case "incorrect-language-code":
+		errorIncorrectLanguageCode2 := new(ErrorIncorrectLanguageCode2)
+		if err := utils.UnmarshalJSON(data, &errorIncorrectLanguageCode2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == incorrect-language-code) type ErrorIncorrectLanguageCode2 within DomainErrorUnion3: %w", string(data), err)
+		}
+
+		u.ErrorIncorrectLanguageCode2 = errorIncorrectLanguageCode2
+		u.Type = DomainErrorUnion3TypeIncorrectLanguageCode
+		return nil
 	case "client-transfer-prohibited":
 		errorClientTransferProhibited2 := new(ErrorClientTransferProhibited2)
 		if err := utils.UnmarshalJSON(data, &errorClientTransferProhibited2, "", true, nil); err != nil {
@@ -1185,6 +1647,15 @@ func (u *DomainErrorUnion3) UnmarshalJSON(data []byte) error {
 
 		u.ErrorClientTransferProhibited2 = errorClientTransferProhibited2
 		u.Type = DomainErrorUnion3TypeClientTransferProhibited
+		return nil
+	case "incorrect-auth-code":
+		errorIncorrectAuthCode2 := new(ErrorIncorrectAuthCode2)
+		if err := utils.UnmarshalJSON(data, &errorIncorrectAuthCode2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == incorrect-auth-code) type ErrorIncorrectAuthCode2 within DomainErrorUnion3: %w", string(data), err)
+		}
+
+		u.ErrorIncorrectAuthCode2 = errorIncorrectAuthCode2
+		u.Type = DomainErrorUnion3TypeIncorrectAuthCode
 		return nil
 	case "claims-notice-required":
 		errorClaimsNoticeRequired2 := new(ErrorClaimsNoticeRequired2)
@@ -1213,6 +1684,15 @@ func (u *DomainErrorUnion3) UnmarshalJSON(data []byte) error {
 		u.ErrorPriceChange2 = errorPriceChange2
 		u.Type = DomainErrorUnion3TypePriceChange
 		return nil
+	case "unavailable-legal":
+		errorUnavailableLegal2 := new(ErrorUnavailableLegal2)
+		if err := utils.UnmarshalJSON(data, &errorUnavailableLegal2, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == unavailable-legal) type ErrorUnavailableLegal2 within DomainErrorUnion3: %w", string(data), err)
+		}
+
+		u.ErrorUnavailableLegal2 = errorUnavailableLegal2
+		u.Type = DomainErrorUnion3TypeUnavailableLegal
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for DomainErrorUnion3", string(data))
@@ -1223,8 +1703,16 @@ func (u DomainErrorUnion3) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.ErrorUnsupportedLanguageCode2, "", true)
 	}
 
+	if u.ErrorIncorrectLanguageCode2 != nil {
+		return utils.MarshalJSON(u.ErrorIncorrectLanguageCode2, "", true)
+	}
+
 	if u.ErrorClientTransferProhibited2 != nil {
 		return utils.MarshalJSON(u.ErrorClientTransferProhibited2, "", true)
+	}
+
+	if u.ErrorIncorrectAuthCode2 != nil {
+		return utils.MarshalJSON(u.ErrorIncorrectAuthCode2, "", true)
 	}
 
 	if u.ErrorClaimsNoticeRequired2 != nil {
@@ -1237,6 +1725,10 @@ func (u DomainErrorUnion3) MarshalJSON() ([]byte, error) {
 
 	if u.ErrorPriceChange2 != nil {
 		return utils.MarshalJSON(u.ErrorPriceChange2, "", true)
+	}
+
+	if u.ErrorUnavailableLegal2 != nil {
+		return utils.MarshalJSON(u.ErrorUnavailableLegal2, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type DomainErrorUnion3: all fields are null")
@@ -1457,6 +1949,51 @@ func (o *DomainError1) GetDetails() any {
 	return o.Details
 }
 
+type CodeUnavailableLegal1 string
+
+const (
+	CodeUnavailableLegal1UnavailableLegal CodeUnavailableLegal1 = "unavailable-legal"
+)
+
+func (e CodeUnavailableLegal1) ToPointer() *CodeUnavailableLegal1 {
+	return &e
+}
+func (e *CodeUnavailableLegal1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "unavailable-legal":
+		*e = CodeUnavailableLegal1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CodeUnavailableLegal1: %v", v)
+	}
+}
+
+type ErrorUnavailableLegal1 struct {
+	Code CodeUnavailableLegal1 `json:"code"`
+}
+
+func (e ErrorUnavailableLegal1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *ErrorUnavailableLegal1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"code"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ErrorUnavailableLegal1) GetCode() CodeUnavailableLegal1 {
+	if o == nil {
+		return CodeUnavailableLegal1("")
+	}
+	return o.Code
+}
+
 type CodePriceChange1 string
 
 const (
@@ -1525,22 +2062,22 @@ func (e *CodeCannotTransferInUntil1) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type DomainDetails2 struct {
+type DomainDetails3 struct {
 	NumDaysUntilTransferrable float64 `json:"numDaysUntilTransferrable"`
 }
 
-func (d DomainDetails2) MarshalJSON() ([]byte, error) {
+func (d DomainDetails3) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(d, "", false)
 }
 
-func (d *DomainDetails2) UnmarshalJSON(data []byte) error {
+func (d *DomainDetails3) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"numDaysUntilTransferrable"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *DomainDetails2) GetNumDaysUntilTransferrable() float64 {
+func (o *DomainDetails3) GetNumDaysUntilTransferrable() float64 {
 	if o == nil {
 		return 0.0
 	}
@@ -1549,7 +2086,7 @@ func (o *DomainDetails2) GetNumDaysUntilTransferrable() float64 {
 
 type ErrorCannotTransferInUntil1 struct {
 	Code    CodeCannotTransferInUntil1 `json:"code"`
-	Details DomainDetails2             `json:"details"`
+	Details DomainDetails3             `json:"details"`
 }
 
 func (e ErrorCannotTransferInUntil1) MarshalJSON() ([]byte, error) {
@@ -1570,9 +2107,9 @@ func (o *ErrorCannotTransferInUntil1) GetCode() CodeCannotTransferInUntil1 {
 	return o.Code
 }
 
-func (o *ErrorCannotTransferInUntil1) GetDetails() DomainDetails2 {
+func (o *ErrorCannotTransferInUntil1) GetDetails() DomainDetails3 {
 	if o == nil {
-		return DomainDetails2{}
+		return DomainDetails3{}
 	}
 	return o.Details
 }
@@ -1622,6 +2159,51 @@ func (o *ErrorClaimsNoticeRequired1) GetCode() CodeClaimsNoticeRequired1 {
 	return o.Code
 }
 
+type CodeIncorrectAuthCode1 string
+
+const (
+	CodeIncorrectAuthCode1IncorrectAuthCode CodeIncorrectAuthCode1 = "incorrect-auth-code"
+)
+
+func (e CodeIncorrectAuthCode1) ToPointer() *CodeIncorrectAuthCode1 {
+	return &e
+}
+func (e *CodeIncorrectAuthCode1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "incorrect-auth-code":
+		*e = CodeIncorrectAuthCode1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CodeIncorrectAuthCode1: %v", v)
+	}
+}
+
+type ErrorIncorrectAuthCode1 struct {
+	Code CodeIncorrectAuthCode1 `json:"code"`
+}
+
+func (e ErrorIncorrectAuthCode1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *ErrorIncorrectAuthCode1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"code"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ErrorIncorrectAuthCode1) GetCode() CodeIncorrectAuthCode1 {
+	if o == nil {
+		return CodeIncorrectAuthCode1("")
+	}
+	return o.Code
+}
+
 type CodeClientTransferProhibited1 string
 
 const (
@@ -1665,6 +2247,81 @@ func (o *ErrorClientTransferProhibited1) GetCode() CodeClientTransferProhibited1
 		return CodeClientTransferProhibited1("")
 	}
 	return o.Code
+}
+
+type CodeIncorrectLanguageCode1 string
+
+const (
+	CodeIncorrectLanguageCode1IncorrectLanguageCode CodeIncorrectLanguageCode1 = "incorrect-language-code"
+)
+
+func (e CodeIncorrectLanguageCode1) ToPointer() *CodeIncorrectLanguageCode1 {
+	return &e
+}
+func (e *CodeIncorrectLanguageCode1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "incorrect-language-code":
+		*e = CodeIncorrectLanguageCode1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CodeIncorrectLanguageCode1: %v", v)
+	}
+}
+
+type DomainDetails2 struct {
+	DetectedLanguageCode string `json:"detectedLanguageCode"`
+}
+
+func (d DomainDetails2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DomainDetails2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"detectedLanguageCode"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DomainDetails2) GetDetectedLanguageCode() string {
+	if o == nil {
+		return ""
+	}
+	return o.DetectedLanguageCode
+}
+
+type ErrorIncorrectLanguageCode1 struct {
+	Code    CodeIncorrectLanguageCode1 `json:"code"`
+	Details DomainDetails2             `json:"details"`
+}
+
+func (e ErrorIncorrectLanguageCode1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *ErrorIncorrectLanguageCode1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"code", "details"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ErrorIncorrectLanguageCode1) GetCode() CodeIncorrectLanguageCode1 {
+	if o == nil {
+		return CodeIncorrectLanguageCode1("")
+	}
+	return o.Code
+}
+
+func (o *ErrorIncorrectLanguageCode1) GetDetails() DomainDetails2 {
+	if o == nil {
+		return DomainDetails2{}
+	}
+	return o.Details
 }
 
 type CodeUnsupportedLanguageCode1 string
@@ -1746,18 +2403,24 @@ type DomainErrorUnion1Type string
 
 const (
 	DomainErrorUnion1TypeUnsupportedLanguageCode  DomainErrorUnion1Type = "unsupported-language-code"
+	DomainErrorUnion1TypeIncorrectLanguageCode    DomainErrorUnion1Type = "incorrect-language-code"
 	DomainErrorUnion1TypeClientTransferProhibited DomainErrorUnion1Type = "client-transfer-prohibited"
+	DomainErrorUnion1TypeIncorrectAuthCode        DomainErrorUnion1Type = "incorrect-auth-code"
 	DomainErrorUnion1TypeClaimsNoticeRequired     DomainErrorUnion1Type = "claims-notice-required"
 	DomainErrorUnion1TypeCannotTransferInUntil    DomainErrorUnion1Type = "cannot-transfer-in-until"
 	DomainErrorUnion1TypePriceChange              DomainErrorUnion1Type = "price-change"
+	DomainErrorUnion1TypeUnavailableLegal         DomainErrorUnion1Type = "unavailable-legal"
 )
 
 type DomainErrorUnion1 struct {
 	ErrorUnsupportedLanguageCode1  *ErrorUnsupportedLanguageCode1  `queryParam:"inline"`
+	ErrorIncorrectLanguageCode1    *ErrorIncorrectLanguageCode1    `queryParam:"inline"`
 	ErrorClientTransferProhibited1 *ErrorClientTransferProhibited1 `queryParam:"inline"`
+	ErrorIncorrectAuthCode1        *ErrorIncorrectAuthCode1        `queryParam:"inline"`
 	ErrorClaimsNoticeRequired1     *ErrorClaimsNoticeRequired1     `queryParam:"inline"`
 	ErrorCannotTransferInUntil1    *ErrorCannotTransferInUntil1    `queryParam:"inline"`
 	ErrorPriceChange1              *ErrorPriceChange1              `queryParam:"inline"`
+	ErrorUnavailableLegal1         *ErrorUnavailableLegal1         `queryParam:"inline"`
 
 	Type DomainErrorUnion1Type
 }
@@ -1774,6 +2437,18 @@ func CreateDomainErrorUnion1UnsupportedLanguageCode(unsupportedLanguageCode Erro
 	}
 }
 
+func CreateDomainErrorUnion1IncorrectLanguageCode(incorrectLanguageCode ErrorIncorrectLanguageCode1) DomainErrorUnion1 {
+	typ := DomainErrorUnion1TypeIncorrectLanguageCode
+
+	typStr := CodeIncorrectLanguageCode1(typ)
+	incorrectLanguageCode.Code = typStr
+
+	return DomainErrorUnion1{
+		ErrorIncorrectLanguageCode1: &incorrectLanguageCode,
+		Type:                        typ,
+	}
+}
+
 func CreateDomainErrorUnion1ClientTransferProhibited(clientTransferProhibited ErrorClientTransferProhibited1) DomainErrorUnion1 {
 	typ := DomainErrorUnion1TypeClientTransferProhibited
 
@@ -1783,6 +2458,18 @@ func CreateDomainErrorUnion1ClientTransferProhibited(clientTransferProhibited Er
 	return DomainErrorUnion1{
 		ErrorClientTransferProhibited1: &clientTransferProhibited,
 		Type:                           typ,
+	}
+}
+
+func CreateDomainErrorUnion1IncorrectAuthCode(incorrectAuthCode ErrorIncorrectAuthCode1) DomainErrorUnion1 {
+	typ := DomainErrorUnion1TypeIncorrectAuthCode
+
+	typStr := CodeIncorrectAuthCode1(typ)
+	incorrectAuthCode.Code = typStr
+
+	return DomainErrorUnion1{
+		ErrorIncorrectAuthCode1: &incorrectAuthCode,
+		Type:                    typ,
 	}
 }
 
@@ -1822,6 +2509,18 @@ func CreateDomainErrorUnion1PriceChange(priceChange ErrorPriceChange1) DomainErr
 	}
 }
 
+func CreateDomainErrorUnion1UnavailableLegal(unavailableLegal ErrorUnavailableLegal1) DomainErrorUnion1 {
+	typ := DomainErrorUnion1TypeUnavailableLegal
+
+	typStr := CodeUnavailableLegal1(typ)
+	unavailableLegal.Code = typStr
+
+	return DomainErrorUnion1{
+		ErrorUnavailableLegal1: &unavailableLegal,
+		Type:                   typ,
+	}
+}
+
 func (u *DomainErrorUnion1) UnmarshalJSON(data []byte) error {
 
 	type discriminator struct {
@@ -1843,6 +2542,15 @@ func (u *DomainErrorUnion1) UnmarshalJSON(data []byte) error {
 		u.ErrorUnsupportedLanguageCode1 = errorUnsupportedLanguageCode1
 		u.Type = DomainErrorUnion1TypeUnsupportedLanguageCode
 		return nil
+	case "incorrect-language-code":
+		errorIncorrectLanguageCode1 := new(ErrorIncorrectLanguageCode1)
+		if err := utils.UnmarshalJSON(data, &errorIncorrectLanguageCode1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == incorrect-language-code) type ErrorIncorrectLanguageCode1 within DomainErrorUnion1: %w", string(data), err)
+		}
+
+		u.ErrorIncorrectLanguageCode1 = errorIncorrectLanguageCode1
+		u.Type = DomainErrorUnion1TypeIncorrectLanguageCode
+		return nil
 	case "client-transfer-prohibited":
 		errorClientTransferProhibited1 := new(ErrorClientTransferProhibited1)
 		if err := utils.UnmarshalJSON(data, &errorClientTransferProhibited1, "", true, nil); err != nil {
@@ -1851,6 +2559,15 @@ func (u *DomainErrorUnion1) UnmarshalJSON(data []byte) error {
 
 		u.ErrorClientTransferProhibited1 = errorClientTransferProhibited1
 		u.Type = DomainErrorUnion1TypeClientTransferProhibited
+		return nil
+	case "incorrect-auth-code":
+		errorIncorrectAuthCode1 := new(ErrorIncorrectAuthCode1)
+		if err := utils.UnmarshalJSON(data, &errorIncorrectAuthCode1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == incorrect-auth-code) type ErrorIncorrectAuthCode1 within DomainErrorUnion1: %w", string(data), err)
+		}
+
+		u.ErrorIncorrectAuthCode1 = errorIncorrectAuthCode1
+		u.Type = DomainErrorUnion1TypeIncorrectAuthCode
 		return nil
 	case "claims-notice-required":
 		errorClaimsNoticeRequired1 := new(ErrorClaimsNoticeRequired1)
@@ -1879,6 +2596,15 @@ func (u *DomainErrorUnion1) UnmarshalJSON(data []byte) error {
 		u.ErrorPriceChange1 = errorPriceChange1
 		u.Type = DomainErrorUnion1TypePriceChange
 		return nil
+	case "unavailable-legal":
+		errorUnavailableLegal1 := new(ErrorUnavailableLegal1)
+		if err := utils.UnmarshalJSON(data, &errorUnavailableLegal1, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Code == unavailable-legal) type ErrorUnavailableLegal1 within DomainErrorUnion1: %w", string(data), err)
+		}
+
+		u.ErrorUnavailableLegal1 = errorUnavailableLegal1
+		u.Type = DomainErrorUnion1TypeUnavailableLegal
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for DomainErrorUnion1", string(data))
@@ -1889,8 +2615,16 @@ func (u DomainErrorUnion1) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.ErrorUnsupportedLanguageCode1, "", true)
 	}
 
+	if u.ErrorIncorrectLanguageCode1 != nil {
+		return utils.MarshalJSON(u.ErrorIncorrectLanguageCode1, "", true)
+	}
+
 	if u.ErrorClientTransferProhibited1 != nil {
 		return utils.MarshalJSON(u.ErrorClientTransferProhibited1, "", true)
+	}
+
+	if u.ErrorIncorrectAuthCode1 != nil {
+		return utils.MarshalJSON(u.ErrorIncorrectAuthCode1, "", true)
 	}
 
 	if u.ErrorClaimsNoticeRequired1 != nil {
@@ -1903,6 +2637,10 @@ func (u DomainErrorUnion1) MarshalJSON() ([]byte, error) {
 
 	if u.ErrorPriceChange1 != nil {
 		return utils.MarshalJSON(u.ErrorPriceChange1, "", true)
+	}
+
+	if u.ErrorUnavailableLegal1 != nil {
+		return utils.MarshalJSON(u.ErrorUnavailableLegal1, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type DomainErrorUnion1: all fields are null")

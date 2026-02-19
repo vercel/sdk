@@ -8,17 +8,14 @@ The payload of the event, if requested.
 import { OneHundredAndEightyNine } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndEightyNine = {
-  previousProjectName: "<value>",
-  newProjectName: "<value>",
-  originAccountName: "<value>",
+  enabled: true,
+  totpVerified: true,
 };
 ```
 
 ## Fields
 
-| Field                 | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `previousProjectName` | *string*              | :heavy_check_mark:    | N/A                   |
-| `newProjectName`      | *string*              | :heavy_check_mark:    | N/A                   |
-| `originAccountName`   | *string*              | :heavy_check_mark:    | N/A                   |
-| `transferId`          | *string*              | :heavy_minus_sign:    | N/A                   |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
+| `totpVerified`     | *boolean*          | :heavy_check_mark: | N/A                |

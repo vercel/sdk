@@ -11,5 +11,5 @@ let value: GetCheckConclusion = "stale";
 ## Values
 
 ```typescript
-"canceled" | "failed" | "neutral" | "succeeded" | "skipped" | "stale"
+"canceled" | "skipped" | "failed" | "neutral" | "succeeded" | "stale"
 ```

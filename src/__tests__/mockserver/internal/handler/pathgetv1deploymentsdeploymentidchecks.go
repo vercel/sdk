@@ -46,8 +46,8 @@ func testGetAllChecksGetAllChecks0(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 	var respBody *operations.GetAllChecksResponseBody = &operations.GetAllChecksResponseBody{
-		Checks: []operations.Check{
-			operations.Check{
+		Checks: []operations.GetAllChecksCheck{
+			operations.GetAllChecksCheck{
 				CreatedAt:     4018.09,
 				ID:            "<id>",
 				IntegrationID: "<id>",

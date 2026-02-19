@@ -25,7 +25,7 @@ export type UpdateCheckStatus = ClosedEnum<typeof UpdateCheckStatus>;
 /**
  * The result of the check being run
  */
-export const Conclusion = {
+export const UpdateCheckConclusion = {
   Canceled: "canceled",
   Failed: "failed",
   Neutral: "neutral",
@@ -35,7 +35,7 @@ export const Conclusion = {
 /**
  * The result of the check being run
  */
-export type Conclusion = ClosedEnum<typeof Conclusion>;
+export type UpdateCheckConclusion = ClosedEnum<typeof UpdateCheckConclusion>;
 
 export const UpdateCheckSource = {
   WebVitals: "web-vitals",
@@ -144,7 +144,7 @@ export type Metrics = {
 /**
  * The results of the check Run
  */
-export type Output = {
+export type UpdateCheckOutput = {
   /**
    * Metrics about the page
    */
@@ -167,7 +167,7 @@ export type UpdateCheckRequestBody = {
   /**
    * The result of the check being run
    */
-  conclusion?: Conclusion | undefined;
+  conclusion?: UpdateCheckConclusion | undefined;
   /**
    * A URL a user may visit to see more information about the check
    */
@@ -175,7 +175,7 @@ export type UpdateCheckRequestBody = {
   /**
    * The results of the check Run
    */
-  output?: Output | undefined;
+  output?: UpdateCheckOutput | undefined;
   /**
    * An identifier that can be used as an external reference
    */
@@ -203,23 +203,25 @@ export type UpdateCheckRequest = {
 };
 
 export const UpdateCheckChecksStatus = {
-  Registered: "registered",
   Running: "running",
   Completed: "completed",
+  Registered: "registered",
 } as const;
 export type UpdateCheckChecksStatus = ClosedEnum<
   typeof UpdateCheckChecksStatus
 >;
 
-export const UpdateCheckConclusion = {
+export const UpdateCheckChecksConclusion = {
   Canceled: "canceled",
+  Skipped: "skipped",
   Failed: "failed",
   Neutral: "neutral",
   Succeeded: "succeeded",
-  Skipped: "skipped",
   Stale: "stale",
 } as const;
-export type UpdateCheckConclusion = ClosedEnum<typeof UpdateCheckConclusion>;
+export type UpdateCheckChecksConclusion = ClosedEnum<
+  typeof UpdateCheckChecksConclusion
+>;
 
 export const UpdateCheckChecksResponseSource = {
   WebVitals: "web-vitals",
@@ -297,26 +299,26 @@ export type UpdateCheckMetrics = {
   virtualExperienceScore?: UpdateCheckVirtualExperienceScore | undefined;
 };
 
-export type UpdateCheckOutput = {
+export type UpdateCheckChecksOutput = {
   metrics?: UpdateCheckMetrics | undefined;
 };
 
 export type UpdateCheckResponseBody = {
   id: string;
   name: string;
-  path?: string | undefined;
-  status: UpdateCheckChecksStatus;
-  conclusion?: UpdateCheckConclusion | undefined;
-  blocking: boolean;
-  output?: UpdateCheckOutput | undefined;
-  detailsUrl?: string | undefined;
-  integrationId: string;
-  deploymentId: string;
-  externalId?: string | undefined;
   createdAt: number;
   updatedAt: number;
-  startedAt?: number | undefined;
+  deploymentId: string;
+  status: UpdateCheckChecksStatus;
+  conclusion?: UpdateCheckChecksConclusion | undefined;
+  externalId?: string | undefined;
+  output?: UpdateCheckChecksOutput | undefined;
   completedAt?: number | undefined;
+  path?: string | undefined;
+  blocking: boolean;
+  detailsUrl?: string | undefined;
+  integrationId: string;
+  startedAt?: number | undefined;
   rerequestable?: boolean | undefined;
 };
 
@@ -330,11 +332,13 @@ export const UpdateCheckStatus$outboundSchema: z.ZodNativeEnum<
 > = UpdateCheckStatus$inboundSchema;
 
 /** @internal */
-export const Conclusion$inboundSchema: z.ZodNativeEnum<typeof Conclusion> = z
-  .nativeEnum(Conclusion);
+export const UpdateCheckConclusion$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateCheckConclusion
+> = z.nativeEnum(UpdateCheckConclusion);
 /** @internal */
-export const Conclusion$outboundSchema: z.ZodNativeEnum<typeof Conclusion> =
-  Conclusion$inboundSchema;
+export const UpdateCheckConclusion$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateCheckConclusion
+> = UpdateCheckConclusion$inboundSchema;
 
 /** @internal */
 export const UpdateCheckSource$inboundSchema: z.ZodNativeEnum<
@@ -628,34 +632,41 @@ export function metricsFromJSON(
 }
 
 /** @internal */
-export const Output$inboundSchema: z.ZodType<Output, z.ZodTypeDef, unknown> = z
-  .object({
-    metrics: types.optional(z.lazy(() => Metrics$inboundSchema)),
-  });
+export const UpdateCheckOutput$inboundSchema: z.ZodType<
+  UpdateCheckOutput,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  metrics: types.optional(z.lazy(() => Metrics$inboundSchema)),
+});
 /** @internal */
-export type Output$Outbound = {
+export type UpdateCheckOutput$Outbound = {
   metrics?: Metrics$Outbound | undefined;
 };
 
 /** @internal */
-export const Output$outboundSchema: z.ZodType<
-  Output$Outbound,
+export const UpdateCheckOutput$outboundSchema: z.ZodType<
+  UpdateCheckOutput$Outbound,
   z.ZodTypeDef,
-  Output
+  UpdateCheckOutput
 > = z.object({
   metrics: z.lazy(() => Metrics$outboundSchema).optional(),
 });
 
-export function outputToJSON(output: Output): string {
-  return JSON.stringify(Output$outboundSchema.parse(output));
+export function updateCheckOutputToJSON(
+  updateCheckOutput: UpdateCheckOutput,
+): string {
+  return JSON.stringify(
+    UpdateCheckOutput$outboundSchema.parse(updateCheckOutput),
+  );
 }
-export function outputFromJSON(
+export function updateCheckOutputFromJSON(
   jsonString: string,
-): SafeParseResult<Output, SDKValidationError> {
+): SafeParseResult<UpdateCheckOutput, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Output$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Output' from JSON`,
+    (x) => UpdateCheckOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateCheckOutput' from JSON`,
   );
 }
 
@@ -668,9 +679,9 @@ export const UpdateCheckRequestBody$inboundSchema: z.ZodType<
   name: types.optional(types.string()),
   path: types.optional(types.string()),
   status: types.optional(UpdateCheckStatus$inboundSchema),
-  conclusion: types.optional(Conclusion$inboundSchema),
+  conclusion: types.optional(UpdateCheckConclusion$inboundSchema),
   detailsUrl: types.optional(types.string()),
-  output: types.optional(z.lazy(() => Output$inboundSchema)),
+  output: types.optional(z.lazy(() => UpdateCheckOutput$inboundSchema)),
   externalId: types.optional(types.string()),
 });
 /** @internal */
@@ -680,7 +691,7 @@ export type UpdateCheckRequestBody$Outbound = {
   status?: string | undefined;
   conclusion?: string | undefined;
   detailsUrl?: string | undefined;
-  output?: Output$Outbound | undefined;
+  output?: UpdateCheckOutput$Outbound | undefined;
   externalId?: string | undefined;
 };
 
@@ -693,9 +704,9 @@ export const UpdateCheckRequestBody$outboundSchema: z.ZodType<
   name: z.string().optional(),
   path: z.string().optional(),
   status: UpdateCheckStatus$outboundSchema.optional(),
-  conclusion: Conclusion$outboundSchema.optional(),
+  conclusion: UpdateCheckConclusion$outboundSchema.optional(),
   detailsUrl: z.string().optional(),
-  output: z.lazy(() => Output$outboundSchema).optional(),
+  output: z.lazy(() => UpdateCheckOutput$outboundSchema).optional(),
   externalId: z.string().optional(),
 });
 
@@ -785,13 +796,13 @@ export const UpdateCheckChecksStatus$outboundSchema: z.ZodNativeEnum<
 > = UpdateCheckChecksStatus$inboundSchema;
 
 /** @internal */
-export const UpdateCheckConclusion$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateCheckConclusion
-> = z.nativeEnum(UpdateCheckConclusion);
+export const UpdateCheckChecksConclusion$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateCheckChecksConclusion
+> = z.nativeEnum(UpdateCheckChecksConclusion);
 /** @internal */
-export const UpdateCheckConclusion$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateCheckConclusion
-> = UpdateCheckConclusion$inboundSchema;
+export const UpdateCheckChecksConclusion$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateCheckChecksConclusion
+> = UpdateCheckChecksConclusion$inboundSchema;
 
 /** @internal */
 export const UpdateCheckChecksResponseSource$inboundSchema: z.ZodNativeEnum<
@@ -1135,41 +1146,41 @@ export function updateCheckMetricsFromJSON(
 }
 
 /** @internal */
-export const UpdateCheckOutput$inboundSchema: z.ZodType<
-  UpdateCheckOutput,
+export const UpdateCheckChecksOutput$inboundSchema: z.ZodType<
+  UpdateCheckChecksOutput,
   z.ZodTypeDef,
   unknown
 > = z.object({
   metrics: types.optional(z.lazy(() => UpdateCheckMetrics$inboundSchema)),
 });
 /** @internal */
-export type UpdateCheckOutput$Outbound = {
+export type UpdateCheckChecksOutput$Outbound = {
   metrics?: UpdateCheckMetrics$Outbound | undefined;
 };
 
 /** @internal */
-export const UpdateCheckOutput$outboundSchema: z.ZodType<
-  UpdateCheckOutput$Outbound,
+export const UpdateCheckChecksOutput$outboundSchema: z.ZodType<
+  UpdateCheckChecksOutput$Outbound,
   z.ZodTypeDef,
-  UpdateCheckOutput
+  UpdateCheckChecksOutput
 > = z.object({
   metrics: z.lazy(() => UpdateCheckMetrics$outboundSchema).optional(),
 });
 
-export function updateCheckOutputToJSON(
-  updateCheckOutput: UpdateCheckOutput,
+export function updateCheckChecksOutputToJSON(
+  updateCheckChecksOutput: UpdateCheckChecksOutput,
 ): string {
   return JSON.stringify(
-    UpdateCheckOutput$outboundSchema.parse(updateCheckOutput),
+    UpdateCheckChecksOutput$outboundSchema.parse(updateCheckChecksOutput),
   );
 }
-export function updateCheckOutputFromJSON(
+export function updateCheckChecksOutputFromJSON(
   jsonString: string,
-): SafeParseResult<UpdateCheckOutput, SDKValidationError> {
+): SafeParseResult<UpdateCheckChecksOutput, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UpdateCheckOutput$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateCheckOutput' from JSON`,
+    (x) => UpdateCheckChecksOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateCheckChecksOutput' from JSON`,
   );
 }
 
@@ -1181,38 +1192,38 @@ export const UpdateCheckResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   id: types.string(),
   name: types.string(),
-  path: types.optional(types.string()),
-  status: UpdateCheckChecksStatus$inboundSchema,
-  conclusion: types.optional(UpdateCheckConclusion$inboundSchema),
-  blocking: types.boolean(),
-  output: types.optional(z.lazy(() => UpdateCheckOutput$inboundSchema)),
-  detailsUrl: types.optional(types.string()),
-  integrationId: types.string(),
-  deploymentId: types.string(),
-  externalId: types.optional(types.string()),
   createdAt: types.number(),
   updatedAt: types.number(),
-  startedAt: types.optional(types.number()),
+  deploymentId: types.string(),
+  status: UpdateCheckChecksStatus$inboundSchema,
+  conclusion: types.optional(UpdateCheckChecksConclusion$inboundSchema),
+  externalId: types.optional(types.string()),
+  output: types.optional(z.lazy(() => UpdateCheckChecksOutput$inboundSchema)),
   completedAt: types.optional(types.number()),
+  path: types.optional(types.string()),
+  blocking: types.boolean(),
+  detailsUrl: types.optional(types.string()),
+  integrationId: types.string(),
+  startedAt: types.optional(types.number()),
   rerequestable: types.optional(types.boolean()),
 });
 /** @internal */
 export type UpdateCheckResponseBody$Outbound = {
   id: string;
   name: string;
-  path?: string | undefined;
-  status: string;
-  conclusion?: string | undefined;
-  blocking: boolean;
-  output?: UpdateCheckOutput$Outbound | undefined;
-  detailsUrl?: string | undefined;
-  integrationId: string;
-  deploymentId: string;
-  externalId?: string | undefined;
   createdAt: number;
   updatedAt: number;
-  startedAt?: number | undefined;
+  deploymentId: string;
+  status: string;
+  conclusion?: string | undefined;
+  externalId?: string | undefined;
+  output?: UpdateCheckChecksOutput$Outbound | undefined;
   completedAt?: number | undefined;
+  path?: string | undefined;
+  blocking: boolean;
+  detailsUrl?: string | undefined;
+  integrationId: string;
+  startedAt?: number | undefined;
   rerequestable?: boolean | undefined;
 };
 
@@ -1224,19 +1235,19 @@ export const UpdateCheckResponseBody$outboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   name: z.string(),
-  path: z.string().optional(),
-  status: UpdateCheckChecksStatus$outboundSchema,
-  conclusion: UpdateCheckConclusion$outboundSchema.optional(),
-  blocking: z.boolean(),
-  output: z.lazy(() => UpdateCheckOutput$outboundSchema).optional(),
-  detailsUrl: z.string().optional(),
-  integrationId: z.string(),
-  deploymentId: z.string(),
-  externalId: z.string().optional(),
   createdAt: z.number(),
   updatedAt: z.number(),
-  startedAt: z.number().optional(),
+  deploymentId: z.string(),
+  status: UpdateCheckChecksStatus$outboundSchema,
+  conclusion: UpdateCheckChecksConclusion$outboundSchema.optional(),
+  externalId: z.string().optional(),
+  output: z.lazy(() => UpdateCheckChecksOutput$outboundSchema).optional(),
   completedAt: z.number().optional(),
+  path: z.string().optional(),
+  blocking: z.boolean(),
+  detailsUrl: z.string().optional(),
+  integrationId: z.string(),
+  startedAt: z.number().optional(),
   rerequestable: z.boolean().optional(),
 });
 

@@ -8,15 +8,20 @@ The payload of the event, if requested.
 import { TwoHundredAndThirteen } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndThirteen = {
-  appName: "<value>",
+  project: {
+    name: "<value>",
+  },
+  projectMembership: {
+    role: "ADMIN",
+    uid: "<id>",
+    createdAt: 5413.27,
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                                                                                | Type                                                                                                                                 | Required                                                                                                                             | Description                                                                                                                          |
-| ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `appName`                                                                                                                            | *string*                                                                                                                             | :heavy_check_mark:                                                                                                                   | The App's name at the moment this even was published (it may have changed since then).                                               |
-| `appId`                                                                                                                              | *string*                                                                                                                             | :heavy_minus_sign:                                                                                                                   | The App's ID. Note that not all historical events have this field.                                                                   |
-| `app`                                                                                                                                | [models.App](../models/app.md)                                                                                                       | :heavy_minus_sign:                                                                                                                   | Note that not all historical events have this field.                                                                                 |
-| `issuedBefore`                                                                                                                       | *number*                                                                                                                             | :heavy_minus_sign:                                                                                                                   | UNIX timestamp in seconds. Tokens issued before this timestamp will be revoked. Note that not all historical events have this field. |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `project`                                                                    | [models.UserEventPayload213Project](../models/usereventpayload213project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| `projectMembership`                                                          | [models.ProjectMembership](../models/projectmembership.md)                   | :heavy_check_mark:                                                           | N/A                                                                          |

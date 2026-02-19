@@ -22,12 +22,12 @@ const value: models.GetDeploymentGitSource2 = {
 };
 ```
 
-### `models.GetDeploymentGitSourceDeployments3`
+### `models.GetDeploymentGitSource3`
 
 ```typescript
-const value: models.GetDeploymentGitSourceDeployments3 = {
+const value: models.GetDeploymentGitSource3 = {
   type: "github-custom-host",
-  host: "round-cop-out.net",
+  host: "querulous-papa.name",
   repoId: "<id>",
 };
 ```

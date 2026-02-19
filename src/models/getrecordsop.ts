@@ -76,7 +76,7 @@ export type ResponseBodyRecords = {
 /**
  * Successful response retrieving a list of paginated DNS records.
  */
-export type ResponseBody3 = {
+export type GetRecordsResponseBody3 = {
   records: Array<ResponseBodyRecords>;
   /**
    * This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data.
@@ -125,7 +125,7 @@ export type GetRecordsResponseBody2 = {
  * Successful response retrieving a list of paginated DNS records.
  */
 export type GetRecordsResponseBody =
-  | ResponseBody3
+  | GetRecordsResponseBody3
   | GetRecordsResponseBody2
   | string;
 
@@ -271,8 +271,8 @@ export function responseBodyRecordsFromJSON(
 }
 
 /** @internal */
-export const ResponseBody3$inboundSchema: z.ZodType<
-  ResponseBody3,
+export const GetRecordsResponseBody3$inboundSchema: z.ZodType<
+  GetRecordsResponseBody3,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -280,31 +280,35 @@ export const ResponseBody3$inboundSchema: z.ZodType<
   pagination: Pagination$inboundSchema,
 });
 /** @internal */
-export type ResponseBody3$Outbound = {
+export type GetRecordsResponseBody3$Outbound = {
   records: Array<ResponseBodyRecords$Outbound>;
   pagination: Pagination$Outbound;
 };
 
 /** @internal */
-export const ResponseBody3$outboundSchema: z.ZodType<
-  ResponseBody3$Outbound,
+export const GetRecordsResponseBody3$outboundSchema: z.ZodType<
+  GetRecordsResponseBody3$Outbound,
   z.ZodTypeDef,
-  ResponseBody3
+  GetRecordsResponseBody3
 > = z.object({
   records: z.array(z.lazy(() => ResponseBodyRecords$outboundSchema)),
   pagination: Pagination$outboundSchema,
 });
 
-export function responseBody3ToJSON(responseBody3: ResponseBody3): string {
-  return JSON.stringify(ResponseBody3$outboundSchema.parse(responseBody3));
+export function getRecordsResponseBody3ToJSON(
+  getRecordsResponseBody3: GetRecordsResponseBody3,
+): string {
+  return JSON.stringify(
+    GetRecordsResponseBody3$outboundSchema.parse(getRecordsResponseBody3),
+  );
 }
-export function responseBody3FromJSON(
+export function getRecordsResponseBody3FromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBody3, SDKValidationError> {
+): SafeParseResult<GetRecordsResponseBody3, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ResponseBody3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBody3' from JSON`,
+    (x) => GetRecordsResponseBody3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetRecordsResponseBody3' from JSON`,
   );
 }
 
@@ -433,13 +437,13 @@ export const GetRecordsResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  z.lazy(() => ResponseBody3$inboundSchema),
+  z.lazy(() => GetRecordsResponseBody3$inboundSchema),
   z.lazy(() => GetRecordsResponseBody2$inboundSchema),
   types.string(),
 ]);
 /** @internal */
 export type GetRecordsResponseBody$Outbound =
-  | ResponseBody3$Outbound
+  | GetRecordsResponseBody3$Outbound
   | GetRecordsResponseBody2$Outbound
   | string;
 
@@ -449,7 +453,7 @@ export const GetRecordsResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetRecordsResponseBody
 > = smartUnion([
-  z.lazy(() => ResponseBody3$outboundSchema),
+  z.lazy(() => GetRecordsResponseBody3$outboundSchema),
   z.lazy(() => GetRecordsResponseBody2$outboundSchema),
   z.string(),
 ]);

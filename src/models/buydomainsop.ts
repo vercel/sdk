@@ -58,6 +58,12 @@ import {
   InvalidAdditionalContactInfo$outboundSchema,
 } from "./invalidadditionalcontactinfo.js";
 import {
+  LanguageCodeRequired,
+  LanguageCodeRequired$inboundSchema,
+  LanguageCodeRequired$Outbound,
+  LanguageCodeRequired$outboundSchema,
+} from "./languagecoderequired.js";
+import {
   NotAuthorizedForScope,
   NotAuthorizedForScope$inboundSchema,
   NotAuthorizedForScope$Outbound,
@@ -97,6 +103,10 @@ export type Domains = {
    */
   years: number;
   expectedPrice: number;
+  /**
+   * The language code for the domain. For punycode domains, this must be provided. The list of supported language codes for a TLD can be retrieved from the [Get TLD](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-tld) endpoint.
+   */
+  languageCode?: string | undefined;
 };
 
 export type BuyDomainsAdditional = {};
@@ -188,6 +198,7 @@ export type BuyDomainsDomainsRegistrarResponseBody =
   | DuplicateDomains
   | ExpectedPriceMismatch
   | DomainNotAvailable
+  | LanguageCodeRequired
   | TldNotSupported
   | HttpApiDecodeError;
 
@@ -223,6 +234,7 @@ export const Domains$inboundSchema: z.ZodType<Domains, z.ZodTypeDef, unknown> =
     autoRenew: types.boolean(),
     years: types.number(),
     expectedPrice: types.number(),
+    languageCode: types.optional(types.string()),
   });
 /** @internal */
 export type Domains$Outbound = {
@@ -230,6 +242,7 @@ export type Domains$Outbound = {
   autoRenew: boolean;
   years: number;
   expectedPrice: number;
+  languageCode?: string | undefined;
 };
 
 /** @internal */
@@ -242,6 +255,7 @@ export const Domains$outboundSchema: z.ZodType<
   autoRenew: z.boolean(),
   years: z.number(),
   expectedPrice: z.number(),
+  languageCode: z.string().optional(),
 });
 
 export function domainsToJSON(domains: Domains): string {
@@ -529,6 +543,7 @@ export const BuyDomainsDomainsRegistrarResponseBody$inboundSchema: z.ZodType<
   DuplicateDomains$inboundSchema,
   ExpectedPriceMismatch$inboundSchema,
   DomainNotAvailable$inboundSchema,
+  LanguageCodeRequired$inboundSchema,
   TldNotSupported$inboundSchema,
   HttpApiDecodeError$inboundSchema,
 ]);
@@ -542,6 +557,7 @@ export type BuyDomainsDomainsRegistrarResponseBody$Outbound =
   | DuplicateDomains$Outbound
   | ExpectedPriceMismatch$Outbound
   | DomainNotAvailable$Outbound
+  | LanguageCodeRequired$Outbound
   | TldNotSupported$Outbound
   | HttpApiDecodeError$Outbound;
 
@@ -559,6 +575,7 @@ export const BuyDomainsDomainsRegistrarResponseBody$outboundSchema: z.ZodType<
   DuplicateDomains$outboundSchema,
   ExpectedPriceMismatch$outboundSchema,
   DomainNotAvailable$outboundSchema,
+  LanguageCodeRequired$outboundSchema,
   TldNotSupported$outboundSchema,
   HttpApiDecodeError$outboundSchema,
 ]);

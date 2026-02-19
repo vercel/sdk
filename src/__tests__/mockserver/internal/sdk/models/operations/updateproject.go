@@ -14,6 +14,7 @@ import (
 type UpdateProjectFrameworkRequest string
 
 const (
+	UpdateProjectFrameworkRequestServices       UpdateProjectFrameworkRequest = "services"
 	UpdateProjectFrameworkRequestBlitzjs        UpdateProjectFrameworkRequest = "blitzjs"
 	UpdateProjectFrameworkRequestNextjs         UpdateProjectFrameworkRequest = "nextjs"
 	UpdateProjectFrameworkRequestGatsby         UpdateProjectFrameworkRequest = "gatsby"
@@ -76,7 +77,7 @@ const (
 	UpdateProjectFrameworkRequestRuby           UpdateProjectFrameworkRequest = "ruby"
 	UpdateProjectFrameworkRequestRust           UpdateProjectFrameworkRequest = "rust"
 	UpdateProjectFrameworkRequestNode           UpdateProjectFrameworkRequest = "node"
-	UpdateProjectFrameworkRequestServices       UpdateProjectFrameworkRequest = "services"
+	UpdateProjectFrameworkRequestGo             UpdateProjectFrameworkRequest = "go"
 )
 
 func (e UpdateProjectFrameworkRequest) ToPointer() *UpdateProjectFrameworkRequest {
@@ -88,6 +89,8 @@ func (e *UpdateProjectFrameworkRequest) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "services":
+		fallthrough
 	case "blitzjs":
 		fallthrough
 	case "nextjs":
@@ -212,7 +215,7 @@ func (e *UpdateProjectFrameworkRequest) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "node":
 		fallthrough
-	case "services":
+	case "go":
 		*e = UpdateProjectFrameworkRequest(v)
 		return nil
 	default:
@@ -269,6 +272,7 @@ type UpdateProjectBuildMachineTypeRequest string
 const (
 	UpdateProjectBuildMachineTypeRequestEnhanced UpdateProjectBuildMachineTypeRequest = "enhanced"
 	UpdateProjectBuildMachineTypeRequestTurbo    UpdateProjectBuildMachineTypeRequest = "turbo"
+	UpdateProjectBuildMachineTypeRequestStandard UpdateProjectBuildMachineTypeRequest = "standard"
 )
 
 func (e UpdateProjectBuildMachineTypeRequest) ToPointer() *UpdateProjectBuildMachineTypeRequest {
@@ -283,6 +287,8 @@ func (e *UpdateProjectBuildMachineTypeRequest) UnmarshalJSON(data []byte) error 
 	case "enhanced":
 		fallthrough
 	case "turbo":
+		fallthrough
+	case "standard":
 		*e = UpdateProjectBuildMachineTypeRequest(v)
 		return nil
 	default:
@@ -1707,7 +1713,7 @@ func (u UpdateProjectEnvIDUnion) MarshalJSON() ([]byte, error) {
 
 type UpdateProjectAws struct {
 	SubnetIds       []string `json:"subnetIds"`
-	SecurityGroupID string   `json:"securityGroupId"`
+	SecurityGroupID *string  `json:"securityGroupId,omitempty"`
 }
 
 func (o *UpdateProjectAws) GetSubnetIds() []string {
@@ -1717,9 +1723,9 @@ func (o *UpdateProjectAws) GetSubnetIds() []string {
 	return o.SubnetIds
 }
 
-func (o *UpdateProjectAws) GetSecurityGroupID() string {
+func (o *UpdateProjectAws) GetSecurityGroupID() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.SecurityGroupID
 }
@@ -3948,6 +3954,7 @@ func (o *UpdateProjectCustomEnvironment) GetUpdatedAt() float64 {
 type UpdateProjectFrameworkResponseBody string
 
 const (
+	UpdateProjectFrameworkResponseBodyServices       UpdateProjectFrameworkResponseBody = "services"
 	UpdateProjectFrameworkResponseBodyBlitzjs        UpdateProjectFrameworkResponseBody = "blitzjs"
 	UpdateProjectFrameworkResponseBodyNextjs         UpdateProjectFrameworkResponseBody = "nextjs"
 	UpdateProjectFrameworkResponseBodyGatsby         UpdateProjectFrameworkResponseBody = "gatsby"
@@ -4010,7 +4017,7 @@ const (
 	UpdateProjectFrameworkResponseBodyRuby           UpdateProjectFrameworkResponseBody = "ruby"
 	UpdateProjectFrameworkResponseBodyRust           UpdateProjectFrameworkResponseBody = "rust"
 	UpdateProjectFrameworkResponseBodyNode           UpdateProjectFrameworkResponseBody = "node"
-	UpdateProjectFrameworkResponseBodyServices       UpdateProjectFrameworkResponseBody = "services"
+	UpdateProjectFrameworkResponseBodyGo             UpdateProjectFrameworkResponseBody = "go"
 )
 
 func (e UpdateProjectFrameworkResponseBody) ToPointer() *UpdateProjectFrameworkResponseBody {
@@ -4022,6 +4029,8 @@ func (e *UpdateProjectFrameworkResponseBody) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "services":
+		fallthrough
 	case "blitzjs":
 		fallthrough
 	case "nextjs":
@@ -4146,7 +4155,7 @@ func (e *UpdateProjectFrameworkResponseBody) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "node":
 		fallthrough
-	case "services":
+	case "go":
 		*e = UpdateProjectFrameworkResponseBody(v)
 		return nil
 	default:
@@ -5961,6 +5970,7 @@ func (e *UpdateProjectResourceConfigFunctionDefaultMemoryTypeResponse) Unmarshal
 type UpdateProjectResourceConfigBuildMachineTypeResponse string
 
 const (
+	UpdateProjectResourceConfigBuildMachineTypeResponseStandard UpdateProjectResourceConfigBuildMachineTypeResponse = "standard"
 	UpdateProjectResourceConfigBuildMachineTypeResponseEnhanced UpdateProjectResourceConfigBuildMachineTypeResponse = "enhanced"
 	UpdateProjectResourceConfigBuildMachineTypeResponseTurbo    UpdateProjectResourceConfigBuildMachineTypeResponse = "turbo"
 )
@@ -5974,6 +5984,8 @@ func (e *UpdateProjectResourceConfigBuildMachineTypeResponse) UnmarshalJSON(data
 		return err
 	}
 	switch v {
+	case "standard":
+		fallthrough
 	case "enhanced":
 		fallthrough
 	case "turbo":
@@ -6239,6 +6251,7 @@ func (e *UpdateProjectDefaultResourceConfigFunctionDefaultMemoryType) UnmarshalJ
 type UpdateProjectDefaultResourceConfigBuildMachineType string
 
 const (
+	UpdateProjectDefaultResourceConfigBuildMachineTypeStandard UpdateProjectDefaultResourceConfigBuildMachineType = "standard"
 	UpdateProjectDefaultResourceConfigBuildMachineTypeEnhanced UpdateProjectDefaultResourceConfigBuildMachineType = "enhanced"
 	UpdateProjectDefaultResourceConfigBuildMachineTypeTurbo    UpdateProjectDefaultResourceConfigBuildMachineType = "turbo"
 )
@@ -6252,6 +6265,8 @@ func (e *UpdateProjectDefaultResourceConfigBuildMachineType) UnmarshalJSON(data 
 		return err
 	}
 	switch v {
+	case "standard":
+		fallthrough
 	case "enhanced":
 		fallthrough
 	case "turbo":
@@ -6935,6 +6950,7 @@ type UpdateProjectPermissions struct {
 	TeamOwnMembership                        []components.ACLAction `json:"teamOwnMembership,omitempty"`
 	TeamOwnMembershipDisconnectSAML          []components.ACLAction `json:"teamOwnMembershipDisconnectSAML,omitempty"`
 	Token                                    []components.ACLAction `json:"token,omitempty"`
+	ToolbarComment                           []components.ACLAction `json:"toolbarComment,omitempty"`
 	Usage                                    []components.ACLAction `json:"usage,omitempty"`
 	UsageCycle                               []components.ACLAction `json:"usageCycle,omitempty"`
 	VercelRun                                []components.ACLAction `json:"vercelRun,omitempty"`
@@ -6945,6 +6961,7 @@ type UpdateProjectPermissions struct {
 	WebhookEvent                             []components.ACLAction `json:"webhook-event,omitempty"`
 	AliasProject                             []components.ACLAction `json:"aliasProject,omitempty"`
 	AliasProtectionBypass                    []components.ACLAction `json:"aliasProtectionBypass,omitempty"`
+	BulkRedirects                            []components.ACLAction `json:"bulkRedirects,omitempty"`
 	BuildMachine                             []components.ACLAction `json:"buildMachine,omitempty"`
 	ConnectConfigurationLink                 []components.ACLAction `json:"connectConfigurationLink,omitempty"`
 	DataCacheNamespace                       []components.ACLAction `json:"dataCacheNamespace,omitempty"`
@@ -6998,6 +7015,7 @@ type UpdateProjectPermissions struct {
 	ProjectProductionBranch                  []components.ACLAction `json:"projectProductionBranch,omitempty"`
 	ProjectProtectionBypass                  []components.ACLAction `json:"projectProtectionBypass,omitempty"`
 	ProjectRollingRelease                    []components.ACLAction `json:"projectRollingRelease,omitempty"`
+	ProjectRoutes                            []components.ACLAction `json:"projectRoutes,omitempty"`
 	ProjectSupportCase                       []components.ACLAction `json:"projectSupportCase,omitempty"`
 	ProjectSupportCaseComment                []components.ACLAction `json:"projectSupportCaseComment,omitempty"`
 	ProjectTier                              []components.ACLAction `json:"projectTier,omitempty"`
@@ -8035,6 +8053,13 @@ func (o *UpdateProjectPermissions) GetToken() []components.ACLAction {
 	return o.Token
 }
 
+func (o *UpdateProjectPermissions) GetToolbarComment() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ToolbarComment
+}
+
 func (o *UpdateProjectPermissions) GetUsage() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -8103,6 +8128,13 @@ func (o *UpdateProjectPermissions) GetAliasProtectionBypass() []components.ACLAc
 		return nil
 	}
 	return o.AliasProtectionBypass
+}
+
+func (o *UpdateProjectPermissions) GetBulkRedirects() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.BulkRedirects
 }
 
 func (o *UpdateProjectPermissions) GetBuildMachine() []components.ACLAction {
@@ -8474,6 +8506,13 @@ func (o *UpdateProjectPermissions) GetProjectRollingRelease() []components.ACLAc
 		return nil
 	}
 	return o.ProjectRollingRelease
+}
+
+func (o *UpdateProjectPermissions) GetProjectRoutes() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectRoutes
 }
 
 func (o *UpdateProjectPermissions) GetProjectSupportCase() []components.ACLAction {
@@ -12176,7 +12215,7 @@ type UpdateProjectResponseBody struct {
 	Crons                            *UpdateProjectCrons                         `json:"crons,omitempty"`
 	DataCache                        *UpdateProjectDataCache                     `json:"dataCache,omitempty"`
 	// Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
-	DeploymentExpiration          *UpdateProjectDeploymentExpiration       `json:"deploymentExpiration,omitempty"`
+	DeploymentExpiration          UpdateProjectDeploymentExpiration        `json:"deploymentExpiration"`
 	DevCommand                    *string                                  `json:"devCommand,omitempty"`
 	DirectoryListing              bool                                     `json:"directoryListing"`
 	InstallCommand                *string                                  `json:"installCommand,omitempty"`
@@ -12364,9 +12403,9 @@ func (o *UpdateProjectResponseBody) GetDataCache() *UpdateProjectDataCache {
 	return o.DataCache
 }
 
-func (o *UpdateProjectResponseBody) GetDeploymentExpiration() *UpdateProjectDeploymentExpiration {
+func (o *UpdateProjectResponseBody) GetDeploymentExpiration() UpdateProjectDeploymentExpiration {
 	if o == nil {
-		return nil
+		return UpdateProjectDeploymentExpiration{}
 	}
 	return o.DeploymentExpiration
 }

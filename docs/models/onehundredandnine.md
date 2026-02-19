@@ -8,30 +8,20 @@ The payload of the event, if requested.
 import { OneHundredAndNine } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndNine = {
-  team: {
-    id: "<id>",
-    name: "<value>",
-  },
-  project: {
-    id: "<id>",
-    oldConnectConfigurations: [
-      {
-        envId: "<id>",
-        connectConfigurationId: "<id>",
-        passive: false,
-        buildsEnabled: true,
-        createdAt: 9005.75,
-        updatedAt: 8968.35,
-      },
-    ],
-    newConnectConfigurations: [],
-  },
+  projectId: "<id>",
+  projectName: "<value>",
+  gitProvider: "gitlab",
+  gitRepoId: "<id>",
+  gitRepositoryName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `team`                                                                       | [models.UserEventPayload109Team](../models/usereventpayload109team.md)       | :heavy_check_mark:                                                           | N/A                                                                          |
-| `project`                                                                    | [models.UserEventPayload109Project](../models/usereventpayload109project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `projectId`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `projectName`                                  | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `gitProvider`                                  | [models.GitProvider](../models/gitprovider.md) | :heavy_check_mark:                             | N/A                                            |
+| `gitRepoId`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `gitRepositoryName`                            | *string*                                       | :heavy_check_mark:                             | N/A                                            |

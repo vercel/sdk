@@ -18,7 +18,10 @@ const value: models.GetOrder1DomainsRegistrar1 = {
 
 ```typescript
 const value: models.GetOrder1DomainsRegistrar2 = {
-  code: "client-transfer-prohibited",
+  code: "incorrect-language-code",
+  details: {
+    detectedLanguageCode: "<value>",
+  },
 };
 ```
 
@@ -26,7 +29,7 @@ const value: models.GetOrder1DomainsRegistrar2 = {
 
 ```typescript
 const value: models.GetOrder1DomainsRegistrar3 = {
-  code: "claims-notice-required",
+  code: "client-transfer-prohibited",
 };
 ```
 
@@ -34,10 +37,7 @@ const value: models.GetOrder1DomainsRegistrar3 = {
 
 ```typescript
 const value: models.GetOrder1DomainsRegistrar4 = {
-  code: "cannot-transfer-in-until",
-  details: {
-    numDaysUntilTransferrable: 3426.05,
-  },
+  code: "incorrect-auth-code",
 };
 ```
 
@@ -45,7 +45,34 @@ const value: models.GetOrder1DomainsRegistrar4 = {
 
 ```typescript
 const value: models.GetOrder1DomainsRegistrar5 = {
+  code: "claims-notice-required",
+};
+```
+
+### `models.GetOrder1DomainsRegistrar6`
+
+```typescript
+const value: models.GetOrder1DomainsRegistrar6 = {
+  code: "cannot-transfer-in-until",
+  details: {
+    numDaysUntilTransferrable: 995.57,
+  },
+};
+```
+
+### `models.GetOrder1DomainsRegistrar7`
+
+```typescript
+const value: models.GetOrder1DomainsRegistrar7 = {
   code: "price-change",
+};
+```
+
+### `models.GetOrder1DomainsRegistrar8`
+
+```typescript
+const value: models.GetOrder1DomainsRegistrar8 = {
+  code: "unavailable-legal",
 };
 ```
 

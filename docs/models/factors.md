@@ -14,7 +14,7 @@ const value: models.Factors1[] = [];
 ```typescript
 const value: models.Factors2[] = [
   {
-    origin: "<value>",
+    origin: "apple",
   },
 ];
 ```

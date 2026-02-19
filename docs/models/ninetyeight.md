@@ -8,9 +8,12 @@ The payload of the event, if requested.
 import { NinetyEight } from "@vercel/sdk/models/userevent.js";
 
 let value: NinetyEight = {
-  projectId: "<id>",
-  projectName: "<value>",
-  onCommit: false,
+  email: "Marilyne_Grant29@hotmail.com",
+  gitlabLogin: "<value>",
+  gitlabEmail: "<value>",
+  gitlabName: "<value>",
+  zeitAccount: "<value>",
+  zeitAccountType: "<value>",
 };
 ```
 
@@ -18,6 +21,9 @@ let value: NinetyEight = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `onCommit`         | *boolean*          | :heavy_check_mark: | N/A                |
+| `email`            | *string*           | :heavy_check_mark: | N/A                |
+| `gitlabLogin`      | *string*           | :heavy_check_mark: | N/A                |
+| `gitlabEmail`      | *string*           | :heavy_check_mark: | N/A                |
+| `gitlabName`       | *string*           | :heavy_check_mark: | N/A                |
+| `zeitAccount`      | *string*           | :heavy_check_mark: | N/A                |
+| `zeitAccountType`  | *string*           | :heavy_check_mark: | N/A                |

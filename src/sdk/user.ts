@@ -3,10 +3,15 @@
  */
 
 import { userGetAuthUser } from "../funcs/userGetAuthUser.js";
+import { userListEventTypes } from "../funcs/userListEventTypes.js";
 import { userListUserEvents } from "../funcs/userListUserEvents.js";
 import { userRequestDelete } from "../funcs/userRequestDelete.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import { GetAuthUserResponseBody } from "../models/getauthuserop.js";
+import {
+  ListEventTypesRequest,
+  ListEventTypesResponseBody,
+} from "../models/listeventtypesop.js";
 import {
   ListUserEventsRequest,
   ListUserEventsResponseBody,
@@ -29,6 +34,23 @@ export class User extends ClientSDK {
     options?: RequestOptions,
   ): Promise<ListUserEventsResponseBody> {
     return unwrapAsync(userListUserEvents(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List Event Types
+   *
+   * @remarks
+   * Returns the list of user-facing event types with descriptions.
+   */
+  async listEventTypes(
+    request: ListEventTypesRequest,
+    options?: RequestOptions,
+  ): Promise<ListEventTypesResponseBody> {
+    return unwrapAsync(userListEventTypes(
       this,
       request,
       options,

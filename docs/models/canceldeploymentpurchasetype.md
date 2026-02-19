@@ -1,6 +1,6 @@
 # CancelDeploymentPurchaseType
 
-Build resource configuration snapshot for this deployment.
+Machine type that was used for the build.
 
 ## Example Usage
 

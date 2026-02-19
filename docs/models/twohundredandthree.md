@@ -8,25 +8,17 @@ The payload of the event, if requested.
 import { TwoHundredAndThree } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndThree = {
-  project: {
-    id: "<id>",
-    name: "<value>",
-  },
-  prev: {
-    project: {},
-  },
-  group: {
-    id: "<id>",
-    slug: "<value>",
-    name: "<value>",
+  action: "resume_plan",
+  data: {
+    planSlug: "v0_business",
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `project`                                                                    | [models.UserEventPayload203Project](../models/usereventpayload203project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `prev`                                                                       | [models.PayloadPrev](../models/payloadprev.md)                               | :heavy_check_mark:                                                           | N/A                                                                          |
-| `group`                                                                      | [models.PayloadGroup](../models/payloadgroup.md)                             | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `subscriptionId`                                                           | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `action`                                                                   | [models.UserEventPayload203Action](../models/usereventpayload203action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `data`                                                                     | [models.PayloadData](../models/payloaddata.md)                             | :heavy_check_mark:                                                         | N/A                                                                        |

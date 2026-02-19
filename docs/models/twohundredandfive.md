@@ -8,12 +8,15 @@ The payload of the event, if requested.
 import { TwoHundredAndFive } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndFive = {
-  tier: "pro",
+  productAliases: [
+    "<value 1>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                            | Type                             | Required                         | Description                      |
-| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
-| `tier`                           | [models.Tier](../models/tier.md) | :heavy_check_mark:               | N/A                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `subscriptionId`   | *string*           | :heavy_minus_sign: | N/A                |
+| `productAliases`   | *string*[]         | :heavy_check_mark: | N/A                |

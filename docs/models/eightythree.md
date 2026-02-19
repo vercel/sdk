@@ -8,13 +8,17 @@ The payload of the event, if requested.
 import { EightyThree } from "@vercel/sdk/models/userevent.js";
 
 let value: EightyThree = {
-  logDrainUrl: "https://focused-rawhide.biz/",
+  projectId: "<id>",
+  attackModeEnabled: true,
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `logDrainUrl`      | *string*           | :heavy_check_mark: | N/A                |
-| `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |
+| Field                       | Type                        | Required                    | Description                 |
+| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
+| `projectId`                 | *string*                    | :heavy_check_mark:          | N/A                         |
+| `prevAttackModeEnabled`     | *boolean*                   | :heavy_minus_sign:          | N/A                         |
+| `prevAttackModeActiveUntil` | *number*                    | :heavy_minus_sign:          | N/A                         |
+| `attackModeEnabled`         | *boolean*                   | :heavy_check_mark:          | N/A                         |
+| `attackModeActiveUntil`     | *number*                    | :heavy_minus_sign:          | N/A                         |

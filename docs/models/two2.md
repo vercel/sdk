@@ -6,12 +6,12 @@
 import { Two2 } from "@vercel/sdk/models/userevent.js";
 
 let value: Two2 = {
-  origin: "<value>",
+  origin: "recovery-code",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `origin`           | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                    | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `origin`                                                 | [models.UserEvent2Origin](../models/userevent2origin.md) | :heavy_check_mark:                                       | N/A                                                      |

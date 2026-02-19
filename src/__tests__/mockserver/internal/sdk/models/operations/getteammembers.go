@@ -70,6 +70,10 @@ type GetTeamMembersRequest struct {
 	ExcludeProject *string `queryParam:"style=form,explode=true,name=excludeProject"`
 	// Include team members who are eligible to be members of the specified project.
 	EligibleMembersForProjectID *string `queryParam:"style=form,explode=true,name=eligibleMembersForProjectId"`
+	// The Team identifier to perform the request on behalf of.
+	TeamID string `pathParam:"style=simple,explode=false,name=teamId"`
+	// The Team slug to perform the request on behalf of.
+	Slug *string `queryParam:"style=form,explode=true,name=slug"`
 }
 
 func (o *GetTeamMembersRequest) GetLimit() *float64 {
@@ -119,6 +123,20 @@ func (o *GetTeamMembersRequest) GetEligibleMembersForProjectID() *string {
 		return nil
 	}
 	return o.EligibleMembersForProjectID
+}
+
+func (o *GetTeamMembersRequest) GetTeamID() string {
+	if o == nil {
+		return ""
+	}
+	return o.TeamID
+}
+
+func (o *GetTeamMembersRequest) GetSlug() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Slug
 }
 
 // GetTeamMembersGithub - Information about the GitHub account for this user.
@@ -217,6 +235,9 @@ const (
 	GetTeamMembersOriginFeedback          GetTeamMembersOrigin = "feedback"
 	GetTeamMembersOriginOrganizationTeams GetTeamMembersOrigin = "organization-teams"
 	GetTeamMembersOriginNsnbAutoApprove   GetTeamMembersOrigin = "nsnb-auto-approve"
+	GetTeamMembersOriginNsnbRequestAccess GetTeamMembersOrigin = "nsnb-request-access"
+	GetTeamMembersOriginNsnbViewerUpgrade GetTeamMembersOrigin = "nsnb-viewer-upgrade"
+	GetTeamMembersOriginNsnbInvite        GetTeamMembersOrigin = "nsnb-invite"
 )
 
 func (e GetTeamMembersOrigin) ToPointer() *GetTeamMembersOrigin {
@@ -251,6 +272,12 @@ func (e *GetTeamMembersOrigin) UnmarshalJSON(data []byte) error {
 	case "organization-teams":
 		fallthrough
 	case "nsnb-auto-approve":
+		fallthrough
+	case "nsnb-request-access":
+		fallthrough
+	case "nsnb-viewer-upgrade":
+		fallthrough
+	case "nsnb-invite":
 		*e = GetTeamMembersOrigin(v)
 		return nil
 	default:
@@ -502,6 +529,8 @@ type GetTeamMembersMember struct {
 	JoinedFrom *GetTeamMembersJoinedFrom `json:"joinedFrom,omitempty"`
 	// Array of project memberships
 	Projects []GetTeamMembersProject `json:"projects,omitempty"`
+	// Indicates whether the user is managed by an enterprise.
+	IsEnterpriseManaged *bool `json:"isEnterpriseManaged,omitempty"`
 }
 
 func (o *GetTeamMembersMember) GetAvatar() *string {
@@ -600,6 +629,13 @@ func (o *GetTeamMembersMember) GetProjects() []GetTeamMembersProject {
 		return nil
 	}
 	return o.Projects
+}
+
+func (o *GetTeamMembersMember) GetIsEnterpriseManaged() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsEnterpriseManaged
 }
 
 type EmailInviteCodeRole string

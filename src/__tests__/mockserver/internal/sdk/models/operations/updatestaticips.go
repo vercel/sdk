@@ -264,7 +264,7 @@ func (u UpdateStaticIpsEnvIDUnion) MarshalJSON() ([]byte, error) {
 
 type UpdateStaticIpsAws struct {
 	SubnetIds       []string `json:"subnetIds"`
-	SecurityGroupID string   `json:"securityGroupId"`
+	SecurityGroupID *string  `json:"securityGroupId,omitempty"`
 }
 
 func (o *UpdateStaticIpsAws) GetSubnetIds() []string {
@@ -274,9 +274,9 @@ func (o *UpdateStaticIpsAws) GetSubnetIds() []string {
 	return o.SubnetIds
 }
 
-func (o *UpdateStaticIpsAws) GetSecurityGroupID() string {
+func (o *UpdateStaticIpsAws) GetSecurityGroupID() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.SecurityGroupID
 }

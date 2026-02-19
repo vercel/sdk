@@ -8,15 +8,17 @@ The payload of the event, if requested.
 import { TwoHundredAndEleven } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndEleven = {
-  appName: "<value>",
+  previousProjectName: "<value>",
+  newProjectName: "<value>",
+  destinationAccountName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `appName`                                                      | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
-| `appId`                                                        | *string*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
-| `resources`                                                    | [models.Resources](../models/resources.md)                     | :heavy_minus_sign:                                             | N/A                                                            |
-| `permissions`                                                  | [models.PayloadPermissions](../models/payloadpermissions.md)[] | :heavy_minus_sign:                                             | N/A                                                            |
+| Field                    | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `previousProjectName`    | *string*                 | :heavy_check_mark:       | N/A                      |
+| `newProjectName`         | *string*                 | :heavy_check_mark:       | N/A                      |
+| `destinationAccountName` | *string*                 | :heavy_check_mark:       | N/A                      |
+| `transferId`             | *string*                 | :heavy_minus_sign:       | N/A                      |

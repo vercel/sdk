@@ -8,20 +8,22 @@ The payload of the event, if requested.
 import { NinetySix } from "@vercel/sdk/models/userevent.js";
 
 let value: NinetySix = {
-  projectId: "<id>",
-  projectName: "<value>",
-  gitProvider: "github-limited",
-  gitRepoId: "<id>",
-  gitRepositoryName: "<value>",
+  email: "Lonny_Kassulke62@gmail.com",
+  bitbucketLogin: "<value>",
+  bitbucketEmail: "<value>",
+  bitbucketName: "<value>",
+  zeitAccount: "<value>",
+  zeitAccountType: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `projectId`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `projectName`                                  | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `gitProvider`                                  | [models.GitProvider](../models/gitprovider.md) | :heavy_check_mark:                             | N/A                                            |
-| `gitRepoId`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `gitRepositoryName`                            | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `email`            | *string*           | :heavy_check_mark: | N/A                |
+| `bitbucketLogin`   | *string*           | :heavy_check_mark: | N/A                |
+| `bitbucketEmail`   | *string*           | :heavy_check_mark: | N/A                |
+| `bitbucketName`    | *string*           | :heavy_check_mark: | N/A                |
+| `zeitAccount`      | *string*           | :heavy_check_mark: | N/A                |
+| `zeitAccountType`  | *string*           | :heavy_check_mark: | N/A                |

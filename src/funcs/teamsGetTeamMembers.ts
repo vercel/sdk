@@ -3,7 +3,7 @@
  */
 
 import { VercelCore } from "../core.js";
-import { encodeFormQuery } from "../lib/encodings.js";
+import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -90,7 +90,14 @@ async function $do(
   const payload = parsed.value;
   const body = null;
 
-  const path = pathToFunc("/v3/teams/{teamId}/members")();
+  const pathParams = {
+    teamId: encodeSimple("teamId", payload.teamId, {
+      explode: false,
+      charEncoding: "percent",
+    }),
+  };
+
+  const path = pathToFunc("/v3/teams/{teamId}/members")(pathParams);
 
   const query = encodeFormQuery({
     "eligibleMembersForProjectId": payload.eligibleMembersForProjectId,
@@ -99,6 +106,7 @@ async function $do(
     "role": payload.role,
     "search": payload.search,
     "since": payload.since,
+    "slug": payload.slug,
     "until": payload.until,
   });
 

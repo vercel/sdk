@@ -381,12 +381,24 @@ export type GetFirewallConfigRulesRedirect = {
   permanent: boolean;
 };
 
+export const GetFirewallConfigLogHeadersSecurity2 = {
+  Wildcard: "*",
+} as const;
+export type GetFirewallConfigLogHeadersSecurity2 = ClosedEnum<
+  typeof GetFirewallConfigLogHeadersSecurity2
+>;
+
+export type GetFirewallConfigRulesLogHeaders =
+  | Array<string>
+  | GetFirewallConfigLogHeadersSecurity2;
+
 export type GetFirewallConfigRulesMitigate = {
   action: GetFirewallConfigRulesSecurityAction;
   rateLimit?: GetFirewallConfigRulesRateLimit | null | undefined;
   redirect?: GetFirewallConfigRulesRedirect | null | undefined;
   actionDuration?: string | null | undefined;
   bypassSystem?: boolean | null | undefined;
+  logHeaders?: Array<string> | GetFirewallConfigLogHeadersSecurity2 | undefined;
 };
 
 export type GetFirewallConfigRulesAction = {
@@ -511,12 +523,22 @@ export type RulesRedirect = {
   permanent: boolean;
 };
 
+export const GetFirewallConfigLogHeaders2 = {
+  Wildcard: "*",
+} as const;
+export type GetFirewallConfigLogHeaders2 = ClosedEnum<
+  typeof GetFirewallConfigLogHeaders2
+>;
+
+export type RulesLogHeaders = Array<string> | GetFirewallConfigLogHeaders2;
+
 export type RulesMitigate = {
   action: GetFirewallConfigRulesSecurityResponseAction;
   rateLimit?: RulesRateLimit | null | undefined;
   redirect?: RulesRedirect | null | undefined;
   actionDuration?: string | null | undefined;
   bypassSystem?: boolean | null | undefined;
+  logHeaders?: Array<string> | GetFirewallConfigLogHeaders2 | undefined;
 };
 
 export type RulesAction = {
@@ -1686,6 +1708,57 @@ export function getFirewallConfigRulesRedirectFromJSON(
 }
 
 /** @internal */
+export const GetFirewallConfigLogHeadersSecurity2$inboundSchema:
+  z.ZodNativeEnum<typeof GetFirewallConfigLogHeadersSecurity2> = z.nativeEnum(
+    GetFirewallConfigLogHeadersSecurity2,
+  );
+/** @internal */
+export const GetFirewallConfigLogHeadersSecurity2$outboundSchema:
+  z.ZodNativeEnum<typeof GetFirewallConfigLogHeadersSecurity2> =
+    GetFirewallConfigLogHeadersSecurity2$inboundSchema;
+
+/** @internal */
+export const GetFirewallConfigRulesLogHeaders$inboundSchema: z.ZodType<
+  GetFirewallConfigRulesLogHeaders,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.array(types.string()),
+  GetFirewallConfigLogHeadersSecurity2$inboundSchema,
+]);
+/** @internal */
+export type GetFirewallConfigRulesLogHeaders$Outbound = Array<string> | string;
+
+/** @internal */
+export const GetFirewallConfigRulesLogHeaders$outboundSchema: z.ZodType<
+  GetFirewallConfigRulesLogHeaders$Outbound,
+  z.ZodTypeDef,
+  GetFirewallConfigRulesLogHeaders
+> = smartUnion([
+  z.array(z.string()),
+  GetFirewallConfigLogHeadersSecurity2$outboundSchema,
+]);
+
+export function getFirewallConfigRulesLogHeadersToJSON(
+  getFirewallConfigRulesLogHeaders: GetFirewallConfigRulesLogHeaders,
+): string {
+  return JSON.stringify(
+    GetFirewallConfigRulesLogHeaders$outboundSchema.parse(
+      getFirewallConfigRulesLogHeaders,
+    ),
+  );
+}
+export function getFirewallConfigRulesLogHeadersFromJSON(
+  jsonString: string,
+): SafeParseResult<GetFirewallConfigRulesLogHeaders, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetFirewallConfigRulesLogHeaders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetFirewallConfigRulesLogHeaders' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetFirewallConfigRulesMitigate$inboundSchema: z.ZodType<
   GetFirewallConfigRulesMitigate,
   z.ZodTypeDef,
@@ -1700,6 +1773,12 @@ export const GetFirewallConfigRulesMitigate$inboundSchema: z.ZodType<
   ).optional(),
   actionDuration: z.nullable(types.string()).optional(),
   bypassSystem: z.nullable(types.boolean()).optional(),
+  logHeaders: types.optional(
+    smartUnion([
+      z.array(types.string()),
+      GetFirewallConfigLogHeadersSecurity2$inboundSchema,
+    ]),
+  ),
 });
 /** @internal */
 export type GetFirewallConfigRulesMitigate$Outbound = {
@@ -1708,6 +1787,7 @@ export type GetFirewallConfigRulesMitigate$Outbound = {
   redirect?: GetFirewallConfigRulesRedirect$Outbound | null | undefined;
   actionDuration?: string | null | undefined;
   bypassSystem?: boolean | null | undefined;
+  logHeaders?: Array<string> | string | undefined;
 };
 
 /** @internal */
@@ -1725,6 +1805,10 @@ export const GetFirewallConfigRulesMitigate$outboundSchema: z.ZodType<
   ).optional(),
   actionDuration: z.nullable(z.string()).optional(),
   bypassSystem: z.nullable(z.boolean()).optional(),
+  logHeaders: smartUnion([
+    z.array(z.string()),
+    GetFirewallConfigLogHeadersSecurity2$outboundSchema,
+  ]).optional(),
 });
 
 export function getFirewallConfigRulesMitigateToJSON(
@@ -2100,6 +2184,52 @@ export function rulesRedirectFromJSON(
 }
 
 /** @internal */
+export const GetFirewallConfigLogHeaders2$inboundSchema: z.ZodNativeEnum<
+  typeof GetFirewallConfigLogHeaders2
+> = z.nativeEnum(GetFirewallConfigLogHeaders2);
+/** @internal */
+export const GetFirewallConfigLogHeaders2$outboundSchema: z.ZodNativeEnum<
+  typeof GetFirewallConfigLogHeaders2
+> = GetFirewallConfigLogHeaders2$inboundSchema;
+
+/** @internal */
+export const RulesLogHeaders$inboundSchema: z.ZodType<
+  RulesLogHeaders,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.array(types.string()),
+  GetFirewallConfigLogHeaders2$inboundSchema,
+]);
+/** @internal */
+export type RulesLogHeaders$Outbound = Array<string> | string;
+
+/** @internal */
+export const RulesLogHeaders$outboundSchema: z.ZodType<
+  RulesLogHeaders$Outbound,
+  z.ZodTypeDef,
+  RulesLogHeaders
+> = smartUnion([
+  z.array(z.string()),
+  GetFirewallConfigLogHeaders2$outboundSchema,
+]);
+
+export function rulesLogHeadersToJSON(
+  rulesLogHeaders: RulesLogHeaders,
+): string {
+  return JSON.stringify(RulesLogHeaders$outboundSchema.parse(rulesLogHeaders));
+}
+export function rulesLogHeadersFromJSON(
+  jsonString: string,
+): SafeParseResult<RulesLogHeaders, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RulesLogHeaders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RulesLogHeaders' from JSON`,
+  );
+}
+
+/** @internal */
 export const RulesMitigate$inboundSchema: z.ZodType<
   RulesMitigate,
   z.ZodTypeDef,
@@ -2110,6 +2240,12 @@ export const RulesMitigate$inboundSchema: z.ZodType<
   redirect: z.nullable(z.lazy(() => RulesRedirect$inboundSchema)).optional(),
   actionDuration: z.nullable(types.string()).optional(),
   bypassSystem: z.nullable(types.boolean()).optional(),
+  logHeaders: types.optional(
+    smartUnion([
+      z.array(types.string()),
+      GetFirewallConfigLogHeaders2$inboundSchema,
+    ]),
+  ),
 });
 /** @internal */
 export type RulesMitigate$Outbound = {
@@ -2118,6 +2254,7 @@ export type RulesMitigate$Outbound = {
   redirect?: RulesRedirect$Outbound | null | undefined;
   actionDuration?: string | null | undefined;
   bypassSystem?: boolean | null | undefined;
+  logHeaders?: Array<string> | string | undefined;
 };
 
 /** @internal */
@@ -2131,6 +2268,10 @@ export const RulesMitigate$outboundSchema: z.ZodType<
   redirect: z.nullable(z.lazy(() => RulesRedirect$outboundSchema)).optional(),
   actionDuration: z.nullable(z.string()).optional(),
   bypassSystem: z.nullable(z.boolean()).optional(),
+  logHeaders: smartUnion([
+    z.array(z.string()),
+    GetFirewallConfigLogHeaders2$outboundSchema,
+  ]).optional(),
 });
 
 export function rulesMitigateToJSON(rulesMitigate: RulesMitigate): string {

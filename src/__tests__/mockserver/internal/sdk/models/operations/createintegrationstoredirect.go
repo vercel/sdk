@@ -382,6 +382,7 @@ const (
 	CreateIntegrationStoreDirectFrameworkRuby           CreateIntegrationStoreDirectFramework = "ruby"
 	CreateIntegrationStoreDirectFrameworkRust           CreateIntegrationStoreDirectFramework = "rust"
 	CreateIntegrationStoreDirectFrameworkNode           CreateIntegrationStoreDirectFramework = "node"
+	CreateIntegrationStoreDirectFrameworkGo             CreateIntegrationStoreDirectFramework = "go"
 	CreateIntegrationStoreDirectFrameworkServices       CreateIntegrationStoreDirectFramework = "services"
 )
 
@@ -517,6 +518,8 @@ func (e *CreateIntegrationStoreDirectFramework) UnmarshalJSON(data []byte) error
 	case "rust":
 		fallthrough
 	case "node":
+		fallthrough
+	case "go":
 		fallthrough
 	case "services":
 		*e = CreateIntegrationStoreDirectFramework(v)
@@ -1353,6 +1356,7 @@ type ProductCapabilities struct {
 	ImportResource          *bool                       `json:"importResource,omitempty"`
 	ConnectedImportResource *bool                       `json:"connectedImportResource,omitempty"`
 	NativeImportResource    *bool                       `json:"nativeImportResource,omitempty"`
+	DatabaseUI              *bool                       `json:"databaseUI,omitempty"`
 }
 
 func (o *ProductCapabilities) GetMcp() *bool {
@@ -1451,6 +1455,13 @@ func (o *ProductCapabilities) GetNativeImportResource() *bool {
 		return nil
 	}
 	return o.NativeImportResource
+}
+
+func (o *ProductCapabilities) GetDatabaseUI() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.DatabaseUI
 }
 
 type CreateIntegrationStoreDirectTypeObject string
@@ -11465,25 +11476,27 @@ func (e *CreateIntegrationStoreDirectStoreLogDrainStatus) UnmarshalJSON(data []b
 }
 
 type CreateIntegrationStoreDirectProduct struct {
-	ID                             *string                                          `json:"id,omitempty"`
-	Name                           *string                                          `json:"name,omitempty"`
-	Slug                           *string                                          `json:"slug,omitempty"`
-	IconURL                        *string                                          `json:"iconUrl,omitempty"`
-	Capabilities                   *ProductCapabilities                             `json:"capabilities,omitempty"`
-	ShortDescription               *string                                          `json:"shortDescription,omitempty"`
-	MetadataSchema                 *CreateIntegrationStoreDirectMetadataSchema      `json:"metadataSchema,omitempty"`
-	ResourceLinks                  []ResourceLink                                   `json:"resourceLinks,omitempty"`
-	Tags                           []Tag                                            `json:"tags,omitempty"`
-	ProjectConnectionScopes        []ProjectConnectionScope                         `json:"projectConnectionScopes,omitempty"`
-	ShowSSOLinkOnProjectConnection *bool                                            `json:"showSSOLinkOnProjectConnection,omitempty"`
-	DisableResourceRenaming        *bool                                            `json:"disableResourceRenaming,omitempty"`
-	Repl                           *CreateIntegrationStoreDirectRepl                `json:"repl,omitempty"`
-	Guides                         []Guide                                          `json:"guides,omitempty"`
-	Integration                    CreateIntegrationStoreDirectIntegration          `json:"integration"`
-	IntegrationConfigurationID     string                                           `json:"integrationConfigurationId"`
-	SupportedProtocols             []SupportedProtocol                              `json:"supportedProtocols"`
-	PrimaryProtocol                *CreateIntegrationStoreDirectPrimaryProtocol     `json:"primaryProtocol,omitempty"`
-	LogDrainStatus                 *CreateIntegrationStoreDirectStoreLogDrainStatus `json:"logDrainStatus,omitempty"`
+	ID                             *string                                     `json:"id,omitempty"`
+	Name                           *string                                     `json:"name,omitempty"`
+	Slug                           *string                                     `json:"slug,omitempty"`
+	IconURL                        *string                                     `json:"iconUrl,omitempty"`
+	Capabilities                   *ProductCapabilities                        `json:"capabilities,omitempty"`
+	ShortDescription               *string                                     `json:"shortDescription,omitempty"`
+	MetadataSchema                 *CreateIntegrationStoreDirectMetadataSchema `json:"metadataSchema,omitempty"`
+	ResourceLinks                  []ResourceLink                              `json:"resourceLinks,omitempty"`
+	Tags                           []Tag                                       `json:"tags,omitempty"`
+	ProjectConnectionScopes        []ProjectConnectionScope                    `json:"projectConnectionScopes,omitempty"`
+	ShowSSOLinkOnProjectConnection *bool                                       `json:"showSSOLinkOnProjectConnection,omitempty"`
+	DisableResourceRenaming        *bool                                       `json:"disableResourceRenaming,omitempty"`
+	// Custom resource title to display during installation and configuration. If not provided, defaults to protocol-based defaults.
+	ResourceTitle              *string                                          `json:"resourceTitle,omitempty"`
+	Repl                       *CreateIntegrationStoreDirectRepl                `json:"repl,omitempty"`
+	Guides                     []Guide                                          `json:"guides,omitempty"`
+	Integration                CreateIntegrationStoreDirectIntegration          `json:"integration"`
+	IntegrationConfigurationID string                                           `json:"integrationConfigurationId"`
+	SupportedProtocols         []SupportedProtocol                              `json:"supportedProtocols"`
+	PrimaryProtocol            *CreateIntegrationStoreDirectPrimaryProtocol     `json:"primaryProtocol,omitempty"`
+	LogDrainStatus             *CreateIntegrationStoreDirectStoreLogDrainStatus `json:"logDrainStatus,omitempty"`
 }
 
 func (o *CreateIntegrationStoreDirectProduct) GetID() *string {
@@ -11568,6 +11581,13 @@ func (o *CreateIntegrationStoreDirectProduct) GetDisableResourceRenaming() *bool
 		return nil
 	}
 	return o.DisableResourceRenaming
+}
+
+func (o *CreateIntegrationStoreDirectProduct) GetResourceTitle() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ResourceTitle
 }
 
 func (o *CreateIntegrationStoreDirectProduct) GetRepl() *CreateIntegrationStoreDirectRepl {

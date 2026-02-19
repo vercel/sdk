@@ -60,7 +60,7 @@ export type UpdateStaticIpsEnvId = string | UpdateStaticIpsEnvId2;
 
 export type UpdateStaticIpsAws = {
   subnetIds: Array<string>;
-  securityGroupId: string;
+  securityGroupId?: string | undefined;
 };
 
 export type UpdateStaticIpsResponseBody = {
@@ -319,12 +319,12 @@ export const UpdateStaticIpsAws$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   subnetIds: z.array(types.string()),
-  securityGroupId: types.string(),
+  securityGroupId: types.optional(types.string()),
 });
 /** @internal */
 export type UpdateStaticIpsAws$Outbound = {
   subnetIds: Array<string>;
-  securityGroupId: string;
+  securityGroupId?: string | undefined;
 };
 
 /** @internal */
@@ -334,7 +334,7 @@ export const UpdateStaticIpsAws$outboundSchema: z.ZodType<
   UpdateStaticIpsAws
 > = z.object({
   subnetIds: z.array(z.string()),
-  securityGroupId: z.string(),
+  securityGroupId: z.string().optional(),
 });
 
 export function updateStaticIpsAwsToJSON(

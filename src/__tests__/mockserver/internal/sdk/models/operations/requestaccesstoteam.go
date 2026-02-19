@@ -218,6 +218,9 @@ const (
 	RequestAccessToTeamOriginResponseFeedback          RequestAccessToTeamOriginResponse = "feedback"
 	RequestAccessToTeamOriginResponseOrganizationTeams RequestAccessToTeamOriginResponse = "organization-teams"
 	RequestAccessToTeamOriginResponseNsnbAutoApprove   RequestAccessToTeamOriginResponse = "nsnb-auto-approve"
+	RequestAccessToTeamOriginResponseNsnbRequestAccess RequestAccessToTeamOriginResponse = "nsnb-request-access"
+	RequestAccessToTeamOriginResponseNsnbViewerUpgrade RequestAccessToTeamOriginResponse = "nsnb-viewer-upgrade"
+	RequestAccessToTeamOriginResponseNsnbInvite        RequestAccessToTeamOriginResponse = "nsnb-invite"
 )
 
 func (e RequestAccessToTeamOriginResponse) ToPointer() *RequestAccessToTeamOriginResponse {
@@ -252,6 +255,12 @@ func (e *RequestAccessToTeamOriginResponse) UnmarshalJSON(data []byte) error {
 	case "organization-teams":
 		fallthrough
 	case "nsnb-auto-approve":
+		fallthrough
+	case "nsnb-request-access":
+		fallthrough
+	case "nsnb-viewer-upgrade":
+		fallthrough
+	case "nsnb-invite":
 		*e = RequestAccessToTeamOriginResponse(v)
 		return nil
 	default:

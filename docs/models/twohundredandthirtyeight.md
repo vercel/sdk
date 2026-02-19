@@ -8,20 +8,26 @@ The payload of the event, if requested.
 import { TwoHundredAndThirtyEight } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndThirtyEight = {
-  projectId: "<id>",
-  projectName: "<value>",
-  target: "<value>",
-  domain: "vengeful-lender.name",
+  team: {
+    id: "<id>",
+    name: "<value>",
+  },
+  configuration: {
+    id: "<id>",
+  },
+  peering: {
+    id: "<id>",
+    accountId: "<id>",
+    region: "<value>",
+    vpcId: "<id>",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `target`           | *string*           | :heavy_check_mark: | N/A                |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `configuredBy`     | *string*           | :heavy_minus_sign: | N/A                |
-| `prevConfiguredBy` | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `team`                                                                                   | [models.UserEventPayload238Team](../models/usereventpayload238team.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `configuration`                                                                          | [models.UserEventPayload238Configuration](../models/usereventpayload238configuration.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `peering`                                                                                | [models.Peering](../models/peering.md)                                                   | :heavy_check_mark:                                                                       | N/A                                                                                      |

@@ -7,7 +7,7 @@
 
 ```typescript
 const value: models.One1 = {
-  origin: "<value>",
+  origin: "email",
 };
 ```
 

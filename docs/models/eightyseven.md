@@ -8,9 +8,12 @@ The payload of the event, if requested.
 import { EightySeven } from "@vercel/sdk/models/userevent.js";
 
 let value: EightySeven = {
-  projectId: "<id>",
-  toDeploymentId: "<id>",
-  projectName: "<value>",
+  integrationId: "<id>",
+  configurationId: "<id>",
+  integrationSlug: "<value>",
+  integrationName: "<value>",
+  ownerId: "<id>",
+  billingPlanId: "<id>",
 };
 ```
 
@@ -18,6 +21,10 @@ let value: EightySeven = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `toDeploymentId`   | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
+| `configurationId`  | *string*           | :heavy_check_mark: | N/A                |
+| `integrationSlug`  | *string*           | :heavy_check_mark: | N/A                |
+| `integrationName`  | *string*           | :heavy_check_mark: | N/A                |
+| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
+| `billingPlanId`    | *string*           | :heavy_check_mark: | N/A                |
+| `billingPlanName`  | *string*           | :heavy_minus_sign: | N/A                |

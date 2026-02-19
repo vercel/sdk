@@ -8,15 +8,18 @@ The payload of the event, if requested.
 import { TwoHundredAndThirtyOne } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndThirtyOne = {
-  edgeConfigId: "<id>",
-  edgeConfigSlug: "<value>",
+  appName: "<value>",
+  scopes: [
+    "email",
+  ],
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `edgeConfigId`     | *string*           | :heavy_check_mark: | N/A                |
-| `edgeConfigSlug`   | *string*           | :heavy_check_mark: | N/A                |
-| `edgeConfigDigest` | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `appName`                                            | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
+| `appId`                                              | *string*                                             | :heavy_minus_sign:                                   | N/A                                                  |
+| `scopes`                                             | [models.PayloadScopes](../models/payloadscopes.md)[] | :heavy_check_mark:                                   | N/A                                                  |
+| `permissions`                                        | [models.Permissions](../models/permissions.md)[]     | :heavy_minus_sign:                                   | N/A                                                  |

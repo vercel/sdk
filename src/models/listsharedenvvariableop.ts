@@ -83,7 +83,7 @@ export type ListSharedEnvVariableTarget = ClosedEnum<
   typeof ListSharedEnvVariableTarget
 >;
 
-export type Data = {
+export type ListSharedEnvVariableData = {
   /**
    * The date when the Shared Env Var was created.
    */
@@ -159,7 +159,7 @@ export type Data = {
 };
 
 export type ListSharedEnvVariableResponseBody = {
-  data: Array<Data>;
+  data: Array<ListSharedEnvVariableData>;
   /**
    * This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data.
    */
@@ -264,29 +264,32 @@ export const ListSharedEnvVariableTarget$outboundSchema: z.ZodNativeEnum<
 > = ListSharedEnvVariableTarget$inboundSchema;
 
 /** @internal */
-export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
-  .object({
-    created: types.optional(types.date()),
-    key: types.optional(types.string()),
-    ownerId: z.nullable(types.string()).optional(),
-    id: types.optional(types.string()),
-    createdBy: z.nullable(types.string()).optional(),
-    deletedBy: z.nullable(types.string()).optional(),
-    updatedBy: z.nullable(types.string()).optional(),
-    createdAt: types.optional(types.number()),
-    deletedAt: types.optional(types.number()),
-    updatedAt: types.optional(types.number()),
-    value: types.optional(types.string()),
-    projectId: types.optional(z.array(types.string())),
-    type: types.optional(ListSharedEnvVariableType$inboundSchema),
-    target: types.optional(z.array(ListSharedEnvVariableTarget$inboundSchema)),
-    applyToAllCustomEnvironments: types.optional(types.boolean()),
-    decrypted: types.optional(types.boolean()),
-    comment: types.optional(types.string()),
-    lastEditedByDisplayName: types.optional(types.string()),
-  });
+export const ListSharedEnvVariableData$inboundSchema: z.ZodType<
+  ListSharedEnvVariableData,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  created: types.optional(types.date()),
+  key: types.optional(types.string()),
+  ownerId: z.nullable(types.string()).optional(),
+  id: types.optional(types.string()),
+  createdBy: z.nullable(types.string()).optional(),
+  deletedBy: z.nullable(types.string()).optional(),
+  updatedBy: z.nullable(types.string()).optional(),
+  createdAt: types.optional(types.number()),
+  deletedAt: types.optional(types.number()),
+  updatedAt: types.optional(types.number()),
+  value: types.optional(types.string()),
+  projectId: types.optional(z.array(types.string())),
+  type: types.optional(ListSharedEnvVariableType$inboundSchema),
+  target: types.optional(z.array(ListSharedEnvVariableTarget$inboundSchema)),
+  applyToAllCustomEnvironments: types.optional(types.boolean()),
+  decrypted: types.optional(types.boolean()),
+  comment: types.optional(types.string()),
+  lastEditedByDisplayName: types.optional(types.string()),
+});
 /** @internal */
-export type Data$Outbound = {
+export type ListSharedEnvVariableData$Outbound = {
   created?: string | undefined;
   key?: string | undefined;
   ownerId?: string | null | undefined;
@@ -308,38 +311,45 @@ export type Data$Outbound = {
 };
 
 /** @internal */
-export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> =
-  z.object({
-    created: z.date().transform(v => v.toISOString()).optional(),
-    key: z.string().optional(),
-    ownerId: z.nullable(z.string()).optional(),
-    id: z.string().optional(),
-    createdBy: z.nullable(z.string()).optional(),
-    deletedBy: z.nullable(z.string()).optional(),
-    updatedBy: z.nullable(z.string()).optional(),
-    createdAt: z.number().optional(),
-    deletedAt: z.number().optional(),
-    updatedAt: z.number().optional(),
-    value: z.string().optional(),
-    projectId: z.array(z.string()).optional(),
-    type: ListSharedEnvVariableType$outboundSchema.optional(),
-    target: z.array(ListSharedEnvVariableTarget$outboundSchema).optional(),
-    applyToAllCustomEnvironments: z.boolean().optional(),
-    decrypted: z.boolean().optional(),
-    comment: z.string().optional(),
-    lastEditedByDisplayName: z.string().optional(),
-  });
+export const ListSharedEnvVariableData$outboundSchema: z.ZodType<
+  ListSharedEnvVariableData$Outbound,
+  z.ZodTypeDef,
+  ListSharedEnvVariableData
+> = z.object({
+  created: z.date().transform(v => v.toISOString()).optional(),
+  key: z.string().optional(),
+  ownerId: z.nullable(z.string()).optional(),
+  id: z.string().optional(),
+  createdBy: z.nullable(z.string()).optional(),
+  deletedBy: z.nullable(z.string()).optional(),
+  updatedBy: z.nullable(z.string()).optional(),
+  createdAt: z.number().optional(),
+  deletedAt: z.number().optional(),
+  updatedAt: z.number().optional(),
+  value: z.string().optional(),
+  projectId: z.array(z.string()).optional(),
+  type: ListSharedEnvVariableType$outboundSchema.optional(),
+  target: z.array(ListSharedEnvVariableTarget$outboundSchema).optional(),
+  applyToAllCustomEnvironments: z.boolean().optional(),
+  decrypted: z.boolean().optional(),
+  comment: z.string().optional(),
+  lastEditedByDisplayName: z.string().optional(),
+});
 
-export function dataToJSON(data: Data): string {
-  return JSON.stringify(Data$outboundSchema.parse(data));
+export function listSharedEnvVariableDataToJSON(
+  listSharedEnvVariableData: ListSharedEnvVariableData,
+): string {
+  return JSON.stringify(
+    ListSharedEnvVariableData$outboundSchema.parse(listSharedEnvVariableData),
+  );
 }
-export function dataFromJSON(
+export function listSharedEnvVariableDataFromJSON(
   jsonString: string,
-): SafeParseResult<Data, SDKValidationError> {
+): SafeParseResult<ListSharedEnvVariableData, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Data$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Data' from JSON`,
+    (x) => ListSharedEnvVariableData$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListSharedEnvVariableData' from JSON`,
   );
 }
 
@@ -349,12 +359,12 @@ export const ListSharedEnvVariableResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: z.array(z.lazy(() => Data$inboundSchema)),
+  data: z.array(z.lazy(() => ListSharedEnvVariableData$inboundSchema)),
   pagination: Pagination$inboundSchema,
 });
 /** @internal */
 export type ListSharedEnvVariableResponseBody$Outbound = {
-  data: Array<Data$Outbound>;
+  data: Array<ListSharedEnvVariableData$Outbound>;
   pagination: Pagination$Outbound;
 };
 
@@ -364,7 +374,7 @@ export const ListSharedEnvVariableResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListSharedEnvVariableResponseBody
 > = z.object({
-  data: z.array(z.lazy(() => Data$outboundSchema)),
+  data: z.array(z.lazy(() => ListSharedEnvVariableData$outboundSchema)),
   pagination: Pagination$outboundSchema,
 });
 

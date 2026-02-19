@@ -8,18 +8,16 @@ The payload of the event, if requested.
 import { TwoHundredAndThirtySix } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndThirtySix = {
-  projectId: "<id>",
-  projectName: "<value>",
-  domain: "winged-costume.net",
+  appName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                | Type                 | Required             | Description          |
-| -------------------- | -------------------- | -------------------- | -------------------- |
-| `projectId`          | *string*             | :heavy_check_mark:   | N/A                  |
-| `projectName`        | *string*             | :heavy_check_mark:   | N/A                  |
-| `domain`             | *string*             | :heavy_check_mark:   | N/A                  |
-| `redirect`           | *string*             | :heavy_minus_sign:   | N/A                  |
-| `redirectStatusCode` | *number*             | :heavy_minus_sign:   | N/A                  |
+| Field                                | Type                                 | Required                             | Description                          |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `appName`                            | *string*                             | :heavy_check_mark:                   | N/A                                  |
+| `appId`                              | *string*                             | :heavy_minus_sign:                   | N/A                                  |
+| `installationId`                     | *string*                             | :heavy_minus_sign:                   | N/A                                  |
+| `before`                             | [models.Before](../models/before.md) | :heavy_minus_sign:                   | N/A                                  |
+| `after`                              | [models.After](../models/after.md)   | :heavy_minus_sign:                   | N/A                                  |

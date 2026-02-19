@@ -10,7 +10,6 @@ let value: UpdateStaticIpsAws = {
     "<value 1>",
     "<value 2>",
   ],
-  securityGroupId: "<id>",
 };
 ```
 
@@ -19,4 +18,4 @@ let value: UpdateStaticIpsAws = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `subnetIds`        | *string*[]         | :heavy_check_mark: | N/A                |
-| `securityGroupId`  | *string*           | :heavy_check_mark: | N/A                |
+| `securityGroupId`  | *string*           | :heavy_minus_sign: | N/A                |

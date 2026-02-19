@@ -53,12 +53,12 @@ func testUpdateCheckUpdateCheck0(w http.ResponseWriter, req *http.Request) {
 	var respBody *operations.UpdateCheckResponseBody = &operations.UpdateCheckResponseBody{
 		ID:            "<id>",
 		Name:          "<value>",
+		CreatedAt:     3990.23,
+		UpdatedAt:     3283.38,
+		DeploymentID:  "<id>",
 		Status:        operations.UpdateCheckStatusResponseBodyRunning,
 		Blocking:      true,
 		IntegrationID: "<id>",
-		DeploymentID:  "<id>",
-		CreatedAt:     3990.23,
-		UpdatedAt:     3283.38,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

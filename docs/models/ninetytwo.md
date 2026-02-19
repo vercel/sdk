@@ -8,15 +8,13 @@ The payload of the event, if requested.
 import { NinetyTwo } from "@vercel/sdk/models/userevent.js";
 
 let value: NinetyTwo = {
-  projectId: "<id>",
+  logDrainUrl: "https://scaly-venom.name",
 };
 ```
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `projectName`          | *string*               | :heavy_minus_sign:     | N/A                    |
-| `projectId`            | *string*               | :heavy_check_mark:     | N/A                    |
-| `projectAnalytics`     | Record<string, *any*>  | :heavy_minus_sign:     | N/A                    |
-| `prevProjectAnalytics` | Record<string, *any*>  | :heavy_minus_sign:     | N/A                    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `logDrainUrl`      | *string*           | :heavy_check_mark: | N/A                |
+| `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |

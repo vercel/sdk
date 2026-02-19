@@ -58,7 +58,8 @@ type CreateOrTransferDomainRequestBody1 struct {
 	Name string `json:"name"`
 	// Whether the domain has the Vercel Edge Network enabled or not.
 	CdnEnabled *bool `json:"cdnEnabled,omitempty"`
-	Zone       *bool `json:"zone,omitempty"`
+	// Whether to create a DNS zone on Vercel. Set `true` if using Vercel nameservers.
+	Zone *bool `json:"zone,omitempty"`
 	// The domain operation to perform. It can be either `add` or `move-in`.
 	Method *string `json:"method,omitempty"`
 }

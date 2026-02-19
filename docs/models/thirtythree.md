@@ -16,5 +16,5 @@ let value: ThirtyThree = {};
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
 | `projectName`      | *string*           | :heavy_minus_sign: | N/A                |
-| `certId`           | *string*           | :heavy_minus_sign: | N/A                |
-| `origin`           | *string*           | :heavy_minus_sign: | N/A                |
+| `target`           | *string*[]         | :heavy_minus_sign: | N/A                |
+| `updated`          | *boolean*          | :heavy_minus_sign: | N/A                |

@@ -8,26 +8,20 @@ The payload of the event, if requested.
 import { TwoHundredAndFourteen } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndFourteen = {
-  team: {
-    id: "<id>",
+  project: {
     name: "<value>",
   },
-  configuration: {
-    id: "<id>",
-  },
-  peering: {
-    id: "<id>",
-    accountId: "<id>",
-    region: "<value>",
-    vpcId: "<id>",
+  removedMembership: {
+    role: "PROJECT_DEVELOPER",
+    uid: "<id>",
+    createdAt: 5511.54,
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `team`                                                                                   | [models.UserEventPayload214Team](../models/usereventpayload214team.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `configuration`                                                                          | [models.UserEventPayload214Configuration](../models/usereventpayload214configuration.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `peering`                                                                                | [models.Peering](../models/peering.md)                                                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `project`                                                                    | [models.UserEventPayload214Project](../models/usereventpayload214project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| `removedMembership`                                                          | [models.RemovedMembership](../models/removedmembership.md)                   | :heavy_check_mark:                                                           | N/A                                                                          |

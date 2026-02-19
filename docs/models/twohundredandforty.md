@@ -8,16 +8,24 @@ The payload of the event, if requested.
 import { TwoHundredAndForty } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndForty = {
-  invoiceId: "<id>",
-  convertedFromTrial: true,
-  plan: "enterprise",
+  team: {
+    id: "<id>",
+    name: "<value>",
+  },
+  configuration: {
+    id: "<id>",
+  },
+  peering: {
+    id: "<id>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `invoiceId`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `convertedFromTrial`                           | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
-| `plan`                                         | [models.PayloadPlan](../models/payloadplan.md) | :heavy_check_mark:                             | N/A                                            |
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `team`                                                                                   | [models.UserEventPayload240Team](../models/usereventpayload240team.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `configuration`                                                                          | [models.UserEventPayload240Configuration](../models/usereventpayload240configuration.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `peering`                                                                                | [models.UserEventPayloadPeering](../models/usereventpayloadpeering.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `newName`                                                                                | *string*                                                                                 | :heavy_minus_sign:                                                                       | N/A                                                                                      |

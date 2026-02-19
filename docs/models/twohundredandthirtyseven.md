@@ -8,20 +8,15 @@ The payload of the event, if requested.
 import { TwoHundredAndThirtySeven } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndThirtySeven = {
-  projects: [
-    {
-      projectId: "<id>",
-      role: "PROJECT_GUEST",
-      membershipCreatedAt: 2933.02,
-    },
-  ],
-  uid: "<id>",
+  appName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                    | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `projects`                                               | [models.PayloadProjects](../models/payloadprojects.md)[] | :heavy_check_mark:                                       | N/A                                                      |
-| `uid`                                                    | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| Field                                                                                                                                | Type                                                                                                                                 | Required                                                                                                                             | Description                                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `appName`                                                                                                                            | *string*                                                                                                                             | :heavy_check_mark:                                                                                                                   | The App's name at the moment this even was published (it may have changed since then).                                               |
+| `appId`                                                                                                                              | *string*                                                                                                                             | :heavy_minus_sign:                                                                                                                   | The App's ID. Note that not all historical events have this field.                                                                   |
+| `app`                                                                                                                                | [models.App](../models/app.md)                                                                                                       | :heavy_minus_sign:                                                                                                                   | Note that not all historical events have this field.                                                                                 |
+| `issuedBefore`                                                                                                                       | *number*                                                                                                                             | :heavy_minus_sign:                                                                                                                   | UNIX timestamp in seconds. Tokens issued before this timestamp will be revoked. Note that not all historical events have this field. |

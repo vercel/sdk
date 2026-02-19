@@ -8,12 +8,18 @@ The payload of the event, if requested.
 import { OneHundredAndNinetyNine } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndNinetyNine = {
-  action: "enable",
+  invoiceId: "<id>",
+  newInvoiceId: "<id>",
+  settlementMethod: "refunded-paid",
+  amount: 2768.73,
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `action`                                                                   | [models.UserEventPayload199Action](../models/usereventpayload199action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field                                                    | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `invoiceId`                                              | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `newInvoiceId`                                           | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `settlementMethod`                                       | [models.SettlementMethod](../models/settlementmethod.md) | :heavy_check_mark:                                       | N/A                                                      |
+| `amount`                                                 | *number*                                                 | :heavy_check_mark:                                       | N/A                                                      |

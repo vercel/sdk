@@ -8,17 +8,20 @@ The payload of the event, if requested.
 import { OneHundredAndEightyEight } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndEightyEight = {
-  previousProjectName: "<value>",
-  newProjectName: "<value>",
-  destinationAccountName: "<value>",
+  previous: {
+    enabled: false,
+    totpVerified: false,
+  },
+  next: {
+    enabled: false,
+    totpVerified: true,
+  },
 };
 ```
 
 ## Fields
 
-| Field                    | Type                     | Required                 | Description              |
-| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-| `previousProjectName`    | *string*                 | :heavy_check_mark:       | N/A                      |
-| `newProjectName`         | *string*                 | :heavy_check_mark:       | N/A                      |
-| `destinationAccountName` | *string*                 | :heavy_check_mark:       | N/A                      |
-| `transferId`             | *string*                 | :heavy_minus_sign:       | N/A                      |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `previous`                                                                     | [models.UserEventPayload188Previous](../models/usereventpayload188previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `next`                                                                         | [models.UserEventPayload188Next](../models/usereventpayload188next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |

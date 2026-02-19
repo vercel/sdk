@@ -60,8 +60,9 @@ func testUpdateProjectUpdateProject0(w http.ResponseWriter, req *http.Request) {
 			DeploymentID: types.String("<id>"),
 			Definitions:  []operations.UpdateProjectDefinition{},
 		},
-		DirectoryListing: true,
-		ID:               "<id>",
+		DeploymentExpiration: operations.UpdateProjectDeploymentExpiration{},
+		DirectoryListing:     true,
+		ID:                   "<id>",
 		LatestDeployments: []operations.UpdateProjectLatestDeployment{
 			operations.UpdateProjectLatestDeployment{
 				CreatedAt: 5470.28,

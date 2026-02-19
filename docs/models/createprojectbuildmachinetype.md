@@ -11,5 +11,5 @@ let value: CreateProjectBuildMachineType = "turbo";
 ## Values
 
 ```typescript
-"enhanced" | "turbo"
+"standard" | "enhanced" | "turbo"
 ```

@@ -253,6 +253,7 @@ const (
 	CancelDeploymentFrameworkRuby           CancelDeploymentFramework = "ruby"
 	CancelDeploymentFrameworkRust           CancelDeploymentFramework = "rust"
 	CancelDeploymentFrameworkNode           CancelDeploymentFramework = "node"
+	CancelDeploymentFrameworkGo             CancelDeploymentFramework = "go"
 	CancelDeploymentFrameworkServices       CancelDeploymentFramework = "services"
 )
 
@@ -388,6 +389,8 @@ func (e *CancelDeploymentFramework) UnmarshalJSON(data []byte) error {
 	case "rust":
 		fallthrough
 	case "node":
+		fallthrough
+	case "go":
 		fallthrough
 	case "services":
 		*e = CancelDeploymentFramework(v)
@@ -3943,38 +3946,36 @@ func (e *CancelDeploymentArchitecture) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// CancelDeploymentFunctionsType - Event type - must be "queue/v1beta" (REQUIRED)
-type CancelDeploymentFunctionsType string
+// CancelDeploymentTypeQueueV2beta - Event type - must be "queue/v2beta" (REQUIRED)
+type CancelDeploymentTypeQueueV2beta string
 
 const (
-	CancelDeploymentFunctionsTypeQueueV1beta CancelDeploymentFunctionsType = "queue/v1beta"
+	CancelDeploymentTypeQueueV2betaQueueV2beta CancelDeploymentTypeQueueV2beta = "queue/v2beta"
 )
 
-func (e CancelDeploymentFunctionsType) ToPointer() *CancelDeploymentFunctionsType {
+func (e CancelDeploymentTypeQueueV2beta) ToPointer() *CancelDeploymentTypeQueueV2beta {
 	return &e
 }
-func (e *CancelDeploymentFunctionsType) UnmarshalJSON(data []byte) error {
+func (e *CancelDeploymentTypeQueueV2beta) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
-	case "queue/v1beta":
-		*e = CancelDeploymentFunctionsType(v)
+	case "queue/v2beta":
+		*e = CancelDeploymentTypeQueueV2beta(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CancelDeploymentFunctionsType: %v", v)
+		return fmt.Errorf("invalid value for CancelDeploymentTypeQueueV2beta: %v", v)
 	}
 }
 
-// CancelDeploymentExperimentalTrigger - Queue trigger event for Vercel's queue system. Handles "queue/v1beta" events with queue-specific configuration.
-type CancelDeploymentExperimentalTrigger struct {
-	// Event type - must be "queue/v1beta" (REQUIRED)
-	Type CancelDeploymentFunctionsType `json:"type"`
+// CancelDeploymentExperimentalTriggerQueueV2beta - Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed.
+type CancelDeploymentExperimentalTriggerQueueV2beta struct {
+	// Event type - must be "queue/v2beta" (REQUIRED)
+	Type CancelDeploymentTypeQueueV2beta `json:"type"`
 	// Name of the queue topic to consume from (REQUIRED)
 	Topic string `json:"topic"`
-	// Name of the consumer group for this trigger (REQUIRED)
-	Consumer string `json:"consumer"`
 	// Maximum number of delivery attempts for message processing (OPTIONAL) This represents the total number of times a message can be delivered, not the number of retries. Must be at least 1 if specified. Behavior when not specified depends on the server's default configuration.
 	MaxDeliveries *float64 `json:"maxDeliveries,omitempty"`
 	// Delay in seconds before retrying failed executions (OPTIONAL) Behavior when not specified depends on the server's default configuration.
@@ -3985,64 +3986,257 @@ type CancelDeploymentExperimentalTrigger struct {
 	MaxConcurrency *float64 `json:"maxConcurrency,omitempty"`
 }
 
-func (o *CancelDeploymentExperimentalTrigger) GetType() CancelDeploymentFunctionsType {
+func (c CancelDeploymentExperimentalTriggerQueueV2beta) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CancelDeploymentExperimentalTriggerQueueV2beta) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "topic"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CancelDeploymentExperimentalTriggerQueueV2beta) GetType() CancelDeploymentTypeQueueV2beta {
 	if o == nil {
-		return CancelDeploymentFunctionsType("")
+		return CancelDeploymentTypeQueueV2beta("")
 	}
 	return o.Type
 }
 
-func (o *CancelDeploymentExperimentalTrigger) GetTopic() string {
+func (o *CancelDeploymentExperimentalTriggerQueueV2beta) GetTopic() string {
 	if o == nil {
 		return ""
 	}
 	return o.Topic
 }
 
-func (o *CancelDeploymentExperimentalTrigger) GetConsumer() string {
-	if o == nil {
-		return ""
-	}
-	return o.Consumer
-}
-
-func (o *CancelDeploymentExperimentalTrigger) GetMaxDeliveries() *float64 {
+func (o *CancelDeploymentExperimentalTriggerQueueV2beta) GetMaxDeliveries() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.MaxDeliveries
 }
 
-func (o *CancelDeploymentExperimentalTrigger) GetRetryAfterSeconds() *float64 {
+func (o *CancelDeploymentExperimentalTriggerQueueV2beta) GetRetryAfterSeconds() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.RetryAfterSeconds
 }
 
-func (o *CancelDeploymentExperimentalTrigger) GetInitialDelaySeconds() *float64 {
+func (o *CancelDeploymentExperimentalTriggerQueueV2beta) GetInitialDelaySeconds() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.InitialDelaySeconds
 }
 
-func (o *CancelDeploymentExperimentalTrigger) GetMaxConcurrency() *float64 {
+func (o *CancelDeploymentExperimentalTriggerQueueV2beta) GetMaxConcurrency() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.MaxConcurrency
 }
 
+// CancelDeploymentTypeQueueV1beta - Event type - must be "queue/v1beta" (REQUIRED)
+type CancelDeploymentTypeQueueV1beta string
+
+const (
+	CancelDeploymentTypeQueueV1betaQueueV1beta CancelDeploymentTypeQueueV1beta = "queue/v1beta"
+)
+
+func (e CancelDeploymentTypeQueueV1beta) ToPointer() *CancelDeploymentTypeQueueV1beta {
+	return &e
+}
+func (e *CancelDeploymentTypeQueueV1beta) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "queue/v1beta":
+		*e = CancelDeploymentTypeQueueV1beta(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentTypeQueueV1beta: %v", v)
+	}
+}
+
+// CancelDeploymentExperimentalTriggerQueueV1beta - Queue trigger input event for v1beta (from vercel.json config). Requires explicit consumer name.
+type CancelDeploymentExperimentalTriggerQueueV1beta struct {
+	// Event type - must be "queue/v1beta" (REQUIRED)
+	Type CancelDeploymentTypeQueueV1beta `json:"type"`
+	// Name of the consumer group for this trigger (REQUIRED)
+	Consumer string `json:"consumer"`
+	// Name of the queue topic to consume from (REQUIRED)
+	Topic string `json:"topic"`
+	// Maximum number of delivery attempts for message processing (OPTIONAL) This represents the total number of times a message can be delivered, not the number of retries. Must be at least 1 if specified. Behavior when not specified depends on the server's default configuration.
+	MaxDeliveries *float64 `json:"maxDeliveries,omitempty"`
+	// Delay in seconds before retrying failed executions (OPTIONAL) Behavior when not specified depends on the server's default configuration.
+	RetryAfterSeconds *float64 `json:"retryAfterSeconds,omitempty"`
+	// Initial delay in seconds before first execution attempt (OPTIONAL) Must be 0 or greater. Use 0 for no initial delay. Behavior when not specified depends on the server's default configuration.
+	InitialDelaySeconds *float64 `json:"initialDelaySeconds,omitempty"`
+	// Maximum number of concurrent executions for this consumer (OPTIONAL) Must be at least 1 if specified. Behavior when not specified depends on the server's default configuration.
+	MaxConcurrency *float64 `json:"maxConcurrency,omitempty"`
+}
+
+func (c CancelDeploymentExperimentalTriggerQueueV1beta) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CancelDeploymentExperimentalTriggerQueueV1beta) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "consumer", "topic"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CancelDeploymentExperimentalTriggerQueueV1beta) GetType() CancelDeploymentTypeQueueV1beta {
+	if o == nil {
+		return CancelDeploymentTypeQueueV1beta("")
+	}
+	return o.Type
+}
+
+func (o *CancelDeploymentExperimentalTriggerQueueV1beta) GetConsumer() string {
+	if o == nil {
+		return ""
+	}
+	return o.Consumer
+}
+
+func (o *CancelDeploymentExperimentalTriggerQueueV1beta) GetTopic() string {
+	if o == nil {
+		return ""
+	}
+	return o.Topic
+}
+
+func (o *CancelDeploymentExperimentalTriggerQueueV1beta) GetMaxDeliveries() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.MaxDeliveries
+}
+
+func (o *CancelDeploymentExperimentalTriggerQueueV1beta) GetRetryAfterSeconds() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RetryAfterSeconds
+}
+
+func (o *CancelDeploymentExperimentalTriggerQueueV1beta) GetInitialDelaySeconds() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.InitialDelaySeconds
+}
+
+func (o *CancelDeploymentExperimentalTriggerQueueV1beta) GetMaxConcurrency() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.MaxConcurrency
+}
+
+type CancelDeploymentExperimentalTriggerUnionType string
+
+const (
+	CancelDeploymentExperimentalTriggerUnionTypeQueueV1beta CancelDeploymentExperimentalTriggerUnionType = "queue/v1beta"
+	CancelDeploymentExperimentalTriggerUnionTypeQueueV2beta CancelDeploymentExperimentalTriggerUnionType = "queue/v2beta"
+)
+
+type CancelDeploymentExperimentalTriggerUnion struct {
+	CancelDeploymentExperimentalTriggerQueueV1beta *CancelDeploymentExperimentalTriggerQueueV1beta `queryParam:"inline"`
+	CancelDeploymentExperimentalTriggerQueueV2beta *CancelDeploymentExperimentalTriggerQueueV2beta `queryParam:"inline"`
+
+	Type CancelDeploymentExperimentalTriggerUnionType
+}
+
+func CreateCancelDeploymentExperimentalTriggerUnionQueueV1beta(queueV1beta CancelDeploymentExperimentalTriggerQueueV1beta) CancelDeploymentExperimentalTriggerUnion {
+	typ := CancelDeploymentExperimentalTriggerUnionTypeQueueV1beta
+
+	typStr := CancelDeploymentTypeQueueV1beta(typ)
+	queueV1beta.Type = typStr
+
+	return CancelDeploymentExperimentalTriggerUnion{
+		CancelDeploymentExperimentalTriggerQueueV1beta: &queueV1beta,
+		Type: typ,
+	}
+}
+
+func CreateCancelDeploymentExperimentalTriggerUnionQueueV2beta(queueV2beta CancelDeploymentExperimentalTriggerQueueV2beta) CancelDeploymentExperimentalTriggerUnion {
+	typ := CancelDeploymentExperimentalTriggerUnionTypeQueueV2beta
+
+	typStr := CancelDeploymentTypeQueueV2beta(typ)
+	queueV2beta.Type = typStr
+
+	return CancelDeploymentExperimentalTriggerUnion{
+		CancelDeploymentExperimentalTriggerQueueV2beta: &queueV2beta,
+		Type: typ,
+	}
+}
+
+func (u *CancelDeploymentExperimentalTriggerUnion) UnmarshalJSON(data []byte) error {
+
+	type discriminator struct {
+		Type string `json:"type"`
+	}
+
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Type {
+	case "queue/v1beta":
+		cancelDeploymentExperimentalTriggerQueueV1beta := new(CancelDeploymentExperimentalTriggerQueueV1beta)
+		if err := utils.UnmarshalJSON(data, &cancelDeploymentExperimentalTriggerQueueV1beta, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == queue/v1beta) type CancelDeploymentExperimentalTriggerQueueV1beta within CancelDeploymentExperimentalTriggerUnion: %w", string(data), err)
+		}
+
+		u.CancelDeploymentExperimentalTriggerQueueV1beta = cancelDeploymentExperimentalTriggerQueueV1beta
+		u.Type = CancelDeploymentExperimentalTriggerUnionTypeQueueV1beta
+		return nil
+	case "queue/v2beta":
+		cancelDeploymentExperimentalTriggerQueueV2beta := new(CancelDeploymentExperimentalTriggerQueueV2beta)
+		if err := utils.UnmarshalJSON(data, &cancelDeploymentExperimentalTriggerQueueV2beta, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == queue/v2beta) type CancelDeploymentExperimentalTriggerQueueV2beta within CancelDeploymentExperimentalTriggerUnion: %w", string(data), err)
+		}
+
+		u.CancelDeploymentExperimentalTriggerQueueV2beta = cancelDeploymentExperimentalTriggerQueueV2beta
+		u.Type = CancelDeploymentExperimentalTriggerUnionTypeQueueV2beta
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CancelDeploymentExperimentalTriggerUnion", string(data))
+}
+
+func (u CancelDeploymentExperimentalTriggerUnion) MarshalJSON() ([]byte, error) {
+	if u.CancelDeploymentExperimentalTriggerQueueV1beta != nil {
+		return utils.MarshalJSON(u.CancelDeploymentExperimentalTriggerQueueV1beta, "", true)
+	}
+
+	if u.CancelDeploymentExperimentalTriggerQueueV2beta != nil {
+		return utils.MarshalJSON(u.CancelDeploymentExperimentalTriggerQueueV2beta, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CancelDeploymentExperimentalTriggerUnion: all fields are null")
+}
+
 type CancelDeploymentFunctions struct {
-	Architecture         *CancelDeploymentArchitecture         `json:"architecture,omitempty"`
-	Memory               *float64                              `json:"memory,omitempty"`
-	MaxDuration          *float64                              `json:"maxDuration,omitempty"`
-	Runtime              *string                               `json:"runtime,omitempty"`
-	IncludeFiles         *string                               `json:"includeFiles,omitempty"`
-	ExcludeFiles         *string                               `json:"excludeFiles,omitempty"`
-	ExperimentalTriggers []CancelDeploymentExperimentalTrigger `json:"experimentalTriggers,omitempty"`
-	SupportsCancellation *bool                                 `json:"supportsCancellation,omitempty"`
+	Architecture            *CancelDeploymentArchitecture              `json:"architecture,omitempty"`
+	Memory                  *float64                                   `json:"memory,omitempty"`
+	MaxDuration             *float64                                   `json:"maxDuration,omitempty"`
+	Regions                 []string                                   `json:"regions,omitempty"`
+	FunctionFailoverRegions []string                                   `json:"functionFailoverRegions,omitempty"`
+	Runtime                 *string                                    `json:"runtime,omitempty"`
+	IncludeFiles            *string                                    `json:"includeFiles,omitempty"`
+	ExcludeFiles            *string                                    `json:"excludeFiles,omitempty"`
+	ExperimentalTriggers    []CancelDeploymentExperimentalTriggerUnion `json:"experimentalTriggers,omitempty"`
+	SupportsCancellation    *bool                                      `json:"supportsCancellation,omitempty"`
 }
 
 func (o *CancelDeploymentFunctions) GetArchitecture() *CancelDeploymentArchitecture {
@@ -4066,6 +4260,20 @@ func (o *CancelDeploymentFunctions) GetMaxDuration() *float64 {
 	return o.MaxDuration
 }
 
+func (o *CancelDeploymentFunctions) GetRegions() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Regions
+}
+
+func (o *CancelDeploymentFunctions) GetFunctionFailoverRegions() []string {
+	if o == nil {
+		return nil
+	}
+	return o.FunctionFailoverRegions
+}
+
 func (o *CancelDeploymentFunctions) GetRuntime() *string {
 	if o == nil {
 		return nil
@@ -4087,7 +4295,7 @@ func (o *CancelDeploymentFunctions) GetExcludeFiles() *string {
 	return o.ExcludeFiles
 }
 
-func (o *CancelDeploymentFunctions) GetExperimentalTriggers() []CancelDeploymentExperimentalTrigger {
+func (o *CancelDeploymentFunctions) GetExperimentalTriggers() []CancelDeploymentExperimentalTriggerUnion {
 	if o == nil {
 		return nil
 	}
@@ -7387,115 +7595,6 @@ func (o *CancelDeploymentBuildQueue) GetConfiguration() *CancelDeploymentConfigu
 	return o.Configuration
 }
 
-// CancelDeploymentDefault - Build resource configuration snapshot for this deployment.
-type CancelDeploymentDefault string
-
-const (
-	CancelDeploymentDefaultStandard CancelDeploymentDefault = "standard"
-	CancelDeploymentDefaultEnhanced CancelDeploymentDefault = "enhanced"
-	CancelDeploymentDefaultTurbo    CancelDeploymentDefault = "turbo"
-)
-
-func (e CancelDeploymentDefault) ToPointer() *CancelDeploymentDefault {
-	return &e
-}
-func (e *CancelDeploymentDefault) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "standard":
-		fallthrough
-	case "enhanced":
-		fallthrough
-	case "turbo":
-		*e = CancelDeploymentDefault(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CancelDeploymentDefault: %v", v)
-	}
-}
-
-// CancelDeploymentPurchaseType - Build resource configuration snapshot for this deployment.
-type CancelDeploymentPurchaseType string
-
-const (
-	CancelDeploymentPurchaseTypeStandard CancelDeploymentPurchaseType = "standard"
-	CancelDeploymentPurchaseTypeEnhanced CancelDeploymentPurchaseType = "enhanced"
-	CancelDeploymentPurchaseTypeTurbo    CancelDeploymentPurchaseType = "turbo"
-)
-
-func (e CancelDeploymentPurchaseType) ToPointer() *CancelDeploymentPurchaseType {
-	return &e
-}
-func (e *CancelDeploymentPurchaseType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "standard":
-		fallthrough
-	case "enhanced":
-		fallthrough
-	case "turbo":
-		*e = CancelDeploymentPurchaseType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CancelDeploymentPurchaseType: %v", v)
-	}
-}
-
-// CancelDeploymentBuildMachine - Build resource configuration snapshot for this deployment.
-type CancelDeploymentBuildMachine struct {
-	// Build resource configuration snapshot for this deployment.
-	Default *CancelDeploymentDefault `json:"default,omitempty"`
-	// Build resource configuration snapshot for this deployment.
-	PurchaseType *CancelDeploymentPurchaseType `json:"purchaseType,omitempty"`
-	// Build resource configuration snapshot for this deployment.
-	IsDefaultBuildMachine *bool `json:"isDefaultBuildMachine,omitempty"`
-	// Build resource configuration snapshot for this deployment.
-	Cores *float64 `json:"cores,omitempty"`
-	// Build resource configuration snapshot for this deployment.
-	Memory *float64 `json:"memory,omitempty"`
-}
-
-func (o *CancelDeploymentBuildMachine) GetDefault() *CancelDeploymentDefault {
-	if o == nil {
-		return nil
-	}
-	return o.Default
-}
-
-func (o *CancelDeploymentBuildMachine) GetPurchaseType() *CancelDeploymentPurchaseType {
-	if o == nil {
-		return nil
-	}
-	return o.PurchaseType
-}
-
-func (o *CancelDeploymentBuildMachine) GetIsDefaultBuildMachine() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.IsDefaultBuildMachine
-}
-
-func (o *CancelDeploymentBuildMachine) GetCores() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Cores
-}
-
-func (o *CancelDeploymentBuildMachine) GetMemory() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Memory
-}
-
 // CancelDeploymentElasticConcurrency - When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues
 type CancelDeploymentElasticConcurrency string
 
@@ -7526,14 +7625,64 @@ func (e *CancelDeploymentElasticConcurrency) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// CancelDeploymentPurchaseType - Machine type that was used for the build.
+type CancelDeploymentPurchaseType string
+
+const (
+	CancelDeploymentPurchaseTypeStandard CancelDeploymentPurchaseType = "standard"
+	CancelDeploymentPurchaseTypeEnhanced CancelDeploymentPurchaseType = "enhanced"
+	CancelDeploymentPurchaseTypeTurbo    CancelDeploymentPurchaseType = "turbo"
+)
+
+func (e CancelDeploymentPurchaseType) ToPointer() *CancelDeploymentPurchaseType {
+	return &e
+}
+func (e *CancelDeploymentPurchaseType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "standard":
+		fallthrough
+	case "enhanced":
+		fallthrough
+	case "turbo":
+		*e = CancelDeploymentPurchaseType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentPurchaseType: %v", v)
+	}
+}
+
+type CancelDeploymentBuildMachine struct {
+	// Machine type that was used for the build.
+	PurchaseType *CancelDeploymentPurchaseType `json:"purchaseType,omitempty"`
+	// Whether the build machine is the default build machine.
+	IsDefaultBuildMachine *bool `json:"isDefaultBuildMachine,omitempty"`
+}
+
+func (o *CancelDeploymentBuildMachine) GetPurchaseType() *CancelDeploymentPurchaseType {
+	if o == nil {
+		return nil
+	}
+	return o.PurchaseType
+}
+
+func (o *CancelDeploymentBuildMachine) GetIsDefaultBuildMachine() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsDefaultBuildMachine
+}
+
 // CancelDeploymentResourceConfig - Build resource configuration snapshot for this deployment.
 type CancelDeploymentResourceConfig struct {
 	// Build resource configuration snapshot for this deployment.
 	BuildQueue *CancelDeploymentBuildQueue `json:"buildQueue,omitempty"`
-	// Build resource configuration snapshot for this deployment.
-	BuildMachine *CancelDeploymentBuildMachine `json:"buildMachine,omitempty"`
 	// When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues
 	ElasticConcurrency *CancelDeploymentElasticConcurrency `json:"elasticConcurrency,omitempty"`
+	BuildMachine       *CancelDeploymentBuildMachine       `json:"buildMachine,omitempty"`
 }
 
 func (o *CancelDeploymentResourceConfig) GetBuildQueue() *CancelDeploymentBuildQueue {
@@ -7543,18 +7692,18 @@ func (o *CancelDeploymentResourceConfig) GetBuildQueue() *CancelDeploymentBuildQ
 	return o.BuildQueue
 }
 
-func (o *CancelDeploymentResourceConfig) GetBuildMachine() *CancelDeploymentBuildMachine {
-	if o == nil {
-		return nil
-	}
-	return o.BuildMachine
-}
-
 func (o *CancelDeploymentResourceConfig) GetElasticConcurrency() *CancelDeploymentElasticConcurrency {
 	if o == nil {
 		return nil
 	}
 	return o.ElasticConcurrency
+}
+
+func (o *CancelDeploymentResourceConfig) GetBuildMachine() *CancelDeploymentBuildMachine {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachine
 }
 
 // CancelDeploymentConfig - Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured

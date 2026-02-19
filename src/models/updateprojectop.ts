@@ -20,6 +20,7 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
  * The framework that is being used for this project. When `null` is used no framework is selected
  */
 export const UpdateProjectFramework = {
+  Services: "services",
   Blitzjs: "blitzjs",
   Nextjs: "nextjs",
   Gatsby: "gatsby",
@@ -82,7 +83,7 @@ export const UpdateProjectFramework = {
   Ruby: "ruby",
   Rust: "rust",
   Node: "node",
-  Services: "services",
+  Go: "go",
 } as const;
 /**
  * The framework that is being used for this project. When `null` is used no framework is selected
@@ -106,6 +107,7 @@ export type UpdateProjectNodeVersion = ClosedEnum<
 export const UpdateProjectBuildMachineType = {
   Enhanced: "enhanced",
   Turbo: "turbo",
+  Standard: "standard",
 } as const;
 export type UpdateProjectBuildMachineType = ClosedEnum<
   typeof UpdateProjectBuildMachineType
@@ -567,7 +569,7 @@ export type UpdateProjectEnvId = string | UpdateProjectEnvId2;
 
 export type UpdateProjectAws = {
   subnetIds: Array<string>;
-  securityGroupId: string;
+  securityGroupId?: string | undefined;
 };
 
 export type UpdateProjectConnectConfigurations = {
@@ -946,6 +948,7 @@ export type UpdateProjectCustomEnvironments = {
 };
 
 export const UpdateProjectProjectsFramework = {
+  Services: "services",
   Blitzjs: "blitzjs",
   Nextjs: "nextjs",
   Gatsby: "gatsby",
@@ -1008,7 +1011,7 @@ export const UpdateProjectProjectsFramework = {
   Ruby: "ruby",
   Rust: "rust",
   Node: "node",
-  Services: "services",
+  Go: "go",
 } as const;
 export type UpdateProjectProjectsFramework = ClosedEnum<
   typeof UpdateProjectProjectsFramework
@@ -1297,6 +1300,7 @@ export type UpdateProjectProjectsFunctionDefaultMemoryType = ClosedEnum<
 >;
 
 export const UpdateProjectProjectsBuildMachineType = {
+  Standard: "standard",
   Enhanced: "enhanced",
   Turbo: "turbo",
 } as const;
@@ -1402,6 +1406,7 @@ export type UpdateProjectProjectsResponseFunctionDefaultMemoryType = ClosedEnum<
 >;
 
 export const UpdateProjectProjectsResponseBuildMachineType = {
+  Standard: "standard",
   Enhanced: "enhanced",
   Turbo: "turbo",
 } as const;
@@ -1656,6 +1661,7 @@ export type UpdateProjectPermissions = {
   teamOwnMembership?: Array<ACLAction> | undefined;
   teamOwnMembershipDisconnectSAML?: Array<ACLAction> | undefined;
   token?: Array<ACLAction> | undefined;
+  toolbarComment?: Array<ACLAction> | undefined;
   usage?: Array<ACLAction> | undefined;
   usageCycle?: Array<ACLAction> | undefined;
   vercelRun?: Array<ACLAction> | undefined;
@@ -1666,6 +1672,7 @@ export type UpdateProjectPermissions = {
   webhookEvent?: Array<ACLAction> | undefined;
   aliasProject?: Array<ACLAction> | undefined;
   aliasProtectionBypass?: Array<ACLAction> | undefined;
+  bulkRedirects?: Array<ACLAction> | undefined;
   buildMachine?: Array<ACLAction> | undefined;
   connectConfigurationLink?: Array<ACLAction> | undefined;
   dataCacheNamespace?: Array<ACLAction> | undefined;
@@ -1719,6 +1726,7 @@ export type UpdateProjectPermissions = {
   projectProductionBranch?: Array<ACLAction> | undefined;
   projectProtectionBypass?: Array<ACLAction> | undefined;
   projectRollingRelease?: Array<ACLAction> | undefined;
+  projectRoutes?: Array<ACLAction> | undefined;
   projectSupportCase?: Array<ACLAction> | undefined;
   projectSupportCaseComment?: Array<ACLAction> | undefined;
   projectTier?: Array<ACLAction> | undefined;
@@ -2332,7 +2340,7 @@ export type UpdateProjectResponseBody = {
   /**
    * Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
    */
-  deploymentExpiration?: UpdateProjectDeploymentExpiration | null | undefined;
+  deploymentExpiration: UpdateProjectDeploymentExpiration;
   devCommand?: string | null | undefined;
   directoryListing: boolean;
   installCommand?: string | null | undefined;
@@ -3601,12 +3609,12 @@ export const UpdateProjectAws$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   subnetIds: z.array(types.string()),
-  securityGroupId: types.string(),
+  securityGroupId: types.optional(types.string()),
 });
 /** @internal */
 export type UpdateProjectAws$Outbound = {
   subnetIds: Array<string>;
-  securityGroupId: string;
+  securityGroupId?: string | undefined;
 };
 
 /** @internal */
@@ -3616,7 +3624,7 @@ export const UpdateProjectAws$outboundSchema: z.ZodType<
   UpdateProjectAws
 > = z.object({
   subnetIds: z.array(z.string()),
-  securityGroupId: z.string(),
+  securityGroupId: z.string().optional(),
 });
 
 export function updateProjectAwsToJSON(
@@ -7480,6 +7488,7 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
     z.array(ACLAction$inboundSchema),
   ),
   token: types.optional(z.array(ACLAction$inboundSchema)),
+  toolbarComment: types.optional(z.array(ACLAction$inboundSchema)),
   usage: types.optional(z.array(ACLAction$inboundSchema)),
   usageCycle: types.optional(z.array(ACLAction$inboundSchema)),
   vercelRun: types.optional(z.array(ACLAction$inboundSchema)),
@@ -7490,6 +7499,7 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   "webhook-event": types.optional(z.array(ACLAction$inboundSchema)),
   aliasProject: types.optional(z.array(ACLAction$inboundSchema)),
   aliasProtectionBypass: types.optional(z.array(ACLAction$inboundSchema)),
+  bulkRedirects: types.optional(z.array(ACLAction$inboundSchema)),
   buildMachine: types.optional(z.array(ACLAction$inboundSchema)),
   connectConfigurationLink: types.optional(z.array(ACLAction$inboundSchema)),
   dataCacheNamespace: types.optional(z.array(ACLAction$inboundSchema)),
@@ -7553,6 +7563,7 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   projectProductionBranch: types.optional(z.array(ACLAction$inboundSchema)),
   projectProtectionBypass: types.optional(z.array(ACLAction$inboundSchema)),
   projectRollingRelease: types.optional(z.array(ACLAction$inboundSchema)),
+  projectRoutes: types.optional(z.array(ACLAction$inboundSchema)),
   projectSupportCase: types.optional(z.array(ACLAction$inboundSchema)),
   projectSupportCaseComment: types.optional(z.array(ACLAction$inboundSchema)),
   projectTier: types.optional(z.array(ACLAction$inboundSchema)),
@@ -7721,6 +7732,7 @@ export type UpdateProjectPermissions$Outbound = {
   teamOwnMembership?: Array<string> | undefined;
   teamOwnMembershipDisconnectSAML?: Array<string> | undefined;
   token?: Array<string> | undefined;
+  toolbarComment?: Array<string> | undefined;
   usage?: Array<string> | undefined;
   usageCycle?: Array<string> | undefined;
   vercelRun?: Array<string> | undefined;
@@ -7731,6 +7743,7 @@ export type UpdateProjectPermissions$Outbound = {
   "webhook-event"?: Array<string> | undefined;
   aliasProject?: Array<string> | undefined;
   aliasProtectionBypass?: Array<string> | undefined;
+  bulkRedirects?: Array<string> | undefined;
   buildMachine?: Array<string> | undefined;
   connectConfigurationLink?: Array<string> | undefined;
   dataCacheNamespace?: Array<string> | undefined;
@@ -7784,6 +7797,7 @@ export type UpdateProjectPermissions$Outbound = {
   projectProductionBranch?: Array<string> | undefined;
   projectProtectionBypass?: Array<string> | undefined;
   projectRollingRelease?: Array<string> | undefined;
+  projectRoutes?: Array<string> | undefined;
   projectSupportCase?: Array<string> | undefined;
   projectSupportCaseComment?: Array<string> | undefined;
   projectTier?: Array<string> | undefined;
@@ -7956,6 +7970,7 @@ export const UpdateProjectPermissions$outboundSchema: z.ZodType<
   teamOwnMembership: z.array(ACLAction$outboundSchema).optional(),
   teamOwnMembershipDisconnectSAML: z.array(ACLAction$outboundSchema).optional(),
   token: z.array(ACLAction$outboundSchema).optional(),
+  toolbarComment: z.array(ACLAction$outboundSchema).optional(),
   usage: z.array(ACLAction$outboundSchema).optional(),
   usageCycle: z.array(ACLAction$outboundSchema).optional(),
   vercelRun: z.array(ACLAction$outboundSchema).optional(),
@@ -7966,6 +7981,7 @@ export const UpdateProjectPermissions$outboundSchema: z.ZodType<
   webhookEvent: z.array(ACLAction$outboundSchema).optional(),
   aliasProject: z.array(ACLAction$outboundSchema).optional(),
   aliasProtectionBypass: z.array(ACLAction$outboundSchema).optional(),
+  bulkRedirects: z.array(ACLAction$outboundSchema).optional(),
   buildMachine: z.array(ACLAction$outboundSchema).optional(),
   connectConfigurationLink: z.array(ACLAction$outboundSchema).optional(),
   dataCacheNamespace: z.array(ACLAction$outboundSchema).optional(),
@@ -8022,6 +8038,7 @@ export const UpdateProjectPermissions$outboundSchema: z.ZodType<
   projectProductionBranch: z.array(ACLAction$outboundSchema).optional(),
   projectProtectionBypass: z.array(ACLAction$outboundSchema).optional(),
   projectRollingRelease: z.array(ACLAction$outboundSchema).optional(),
+  projectRoutes: z.array(ACLAction$outboundSchema).optional(),
   projectSupportCase: z.array(ACLAction$outboundSchema).optional(),
   projectSupportCaseComment: z.array(ACLAction$outboundSchema).optional(),
   projectTier: z.array(ACLAction$outboundSchema).optional(),
@@ -11189,9 +11206,9 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
   customerSupportCodeVisibility: types.optional(types.boolean()),
   crons: types.optional(z.lazy(() => UpdateProjectCrons$inboundSchema)),
   dataCache: types.optional(z.lazy(() => UpdateProjectDataCache$inboundSchema)),
-  deploymentExpiration: z.nullable(
-    z.lazy(() => UpdateProjectDeploymentExpiration$inboundSchema),
-  ).optional(),
+  deploymentExpiration: z.lazy(() =>
+    UpdateProjectDeploymentExpiration$inboundSchema
+  ),
   devCommand: z.nullable(types.string()).optional(),
   directoryListing: types.boolean(),
   installCommand: z.nullable(types.string()).optional(),
@@ -11353,10 +11370,7 @@ export type UpdateProjectResponseBody$Outbound = {
   customerSupportCodeVisibility?: boolean | undefined;
   crons?: UpdateProjectCrons$Outbound | undefined;
   dataCache?: UpdateProjectDataCache$Outbound | undefined;
-  deploymentExpiration?:
-    | UpdateProjectDeploymentExpiration$Outbound
-    | null
-    | undefined;
+  deploymentExpiration: UpdateProjectDeploymentExpiration$Outbound;
   devCommand?: string | null | undefined;
   directoryListing: boolean;
   installCommand?: string | null | undefined;
@@ -11490,9 +11504,9 @@ export const UpdateProjectResponseBody$outboundSchema: z.ZodType<
   customerSupportCodeVisibility: z.boolean().optional(),
   crons: z.lazy(() => UpdateProjectCrons$outboundSchema).optional(),
   dataCache: z.lazy(() => UpdateProjectDataCache$outboundSchema).optional(),
-  deploymentExpiration: z.nullable(
-    z.lazy(() => UpdateProjectDeploymentExpiration$outboundSchema),
-  ).optional(),
+  deploymentExpiration: z.lazy(() =>
+    UpdateProjectDeploymentExpiration$outboundSchema
+  ),
   devCommand: z.nullable(z.string()).optional(),
   directoryListing: z.boolean(),
   installCommand: z.nullable(z.string()).optional(),

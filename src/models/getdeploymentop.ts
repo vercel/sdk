@@ -546,7 +546,7 @@ export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
 
 export type GetDeploymentGitSourceDeploymentsResponseRepoId = string | number;
 
-export type GetDeploymentGitSourceDeployments3 = {
+export type GetDeploymentGitSource3 = {
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody23Type;
   host: string;
@@ -604,7 +604,7 @@ export type ResponseBodyGitSource =
   | GetDeploymentGitSourceDeployments13
   | GetDeploymentGitSourceDeployments14
   | GetDeploymentGitSource2
-  | GetDeploymentGitSourceDeployments3
+  | GetDeploymentGitSource3
   | GetDeploymentGitSourceDeployments6
   | GetDeploymentGitSourceDeployments9
   | GetDeploymentGitSource1
@@ -836,7 +836,7 @@ export type GetDeploymentResponseBody2 = {
     | GetDeploymentGitSourceDeployments13
     | GetDeploymentGitSourceDeployments14
     | GetDeploymentGitSource2
-    | GetDeploymentGitSourceDeployments3
+    | GetDeploymentGitSource3
     | GetDeploymentGitSourceDeployments6
     | GetDeploymentGitSourceDeployments9
     | GetDeploymentGitSource1
@@ -988,6 +988,7 @@ export const GetDeploymentResponseBodyFramework = {
   Ruby: "ruby",
   Rust: "rust",
   Node: "node",
+  Go: "go",
   Services: "services",
 } as const;
 export type GetDeploymentResponseBodyFramework = ClosedEnum<
@@ -1610,7 +1611,7 @@ export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
   | string
   | number;
 
-export type GetDeploymentGitSource3 = {
+export type GetDeploymentGitSourceDeployments3 = {
   type: GetDeploymentGitSourceDeploymentsType;
   host: string;
   repoId: string | number;
@@ -1666,7 +1667,7 @@ export type GetDeploymentResponseBodyGitSource =
   | GetDeploymentGitSource13
   | GetDeploymentGitSource14
   | GetDeploymentGitSourceDeployments2
-  | GetDeploymentGitSource3
+  | GetDeploymentGitSourceDeployments3
   | GetDeploymentGitSource6
   | GetDeploymentGitSource9
   | GetDeploymentGitSourceDeployments1
@@ -1814,34 +1815,17 @@ export type ResponseBodyArchitecture = ClosedEnum<
 >;
 
 /**
- * Event type - must be "queue/v1beta" (REQUIRED)
+ * Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed.
  */
-export const GetDeploymentResponseBodyDeploymentsResponseType = {
-  QueueV1beta: "queue/v1beta",
-} as const;
-/**
- * Event type - must be "queue/v1beta" (REQUIRED)
- */
-export type GetDeploymentResponseBodyDeploymentsResponseType = ClosedEnum<
-  typeof GetDeploymentResponseBodyDeploymentsResponseType
->;
-
-/**
- * Queue trigger event for Vercel's queue system. Handles "queue/v1beta" events with queue-specific configuration.
- */
-export type ResponseBodyExperimentalTriggers = {
+export type GetDeploymentExperimentalTriggers2 = {
   /**
-   * Event type - must be "queue/v1beta" (REQUIRED)
+   * Event type - must be "queue/v2beta" (REQUIRED)
    */
-  type: GetDeploymentResponseBodyDeploymentsResponseType;
+  type: "queue/v2beta";
   /**
    * Name of the queue topic to consume from (REQUIRED)
    */
   topic: string;
-  /**
-   * Name of the consumer group for this trigger (REQUIRED)
-   */
-  consumer: string;
   /**
    * Maximum number of delivery attempts for message processing (OPTIONAL) This represents the total number of times a message can be delivered, not the number of retries. Must be at least 1 if specified. Behavior when not specified depends on the server's default configuration.
    */
@@ -1860,14 +1844,58 @@ export type ResponseBodyExperimentalTriggers = {
   maxConcurrency?: number | undefined;
 };
 
+/**
+ * Queue trigger input event for v1beta (from vercel.json config). Requires explicit consumer name.
+ */
+export type GetDeploymentExperimentalTriggers1 = {
+  /**
+   * Event type - must be "queue/v1beta" (REQUIRED)
+   */
+  type: "queue/v1beta";
+  /**
+   * Name of the consumer group for this trigger (REQUIRED)
+   */
+  consumer: string;
+  /**
+   * Name of the queue topic to consume from (REQUIRED)
+   */
+  topic: string;
+  /**
+   * Maximum number of delivery attempts for message processing (OPTIONAL) This represents the total number of times a message can be delivered, not the number of retries. Must be at least 1 if specified. Behavior when not specified depends on the server's default configuration.
+   */
+  maxDeliveries?: number | undefined;
+  /**
+   * Delay in seconds before retrying failed executions (OPTIONAL) Behavior when not specified depends on the server's default configuration.
+   */
+  retryAfterSeconds?: number | undefined;
+  /**
+   * Initial delay in seconds before first execution attempt (OPTIONAL) Must be 0 or greater. Use 0 for no initial delay. Behavior when not specified depends on the server's default configuration.
+   */
+  initialDelaySeconds?: number | undefined;
+  /**
+   * Maximum number of concurrent executions for this consumer (OPTIONAL) Must be at least 1 if specified. Behavior when not specified depends on the server's default configuration.
+   */
+  maxConcurrency?: number | undefined;
+};
+
+export type ResponseBodyExperimentalTriggers =
+  | GetDeploymentExperimentalTriggers1
+  | GetDeploymentExperimentalTriggers2;
+
 export type ResponseBodyFunctions = {
   architecture?: ResponseBodyArchitecture | undefined;
   memory?: number | undefined;
   maxDuration?: number | undefined;
+  regions?: Array<string> | undefined;
+  functionFailoverRegions?: Array<string> | undefined;
   runtime?: string | undefined;
   includeFiles?: string | undefined;
   excludeFiles?: string | undefined;
-  experimentalTriggers?: Array<ResponseBodyExperimentalTriggers> | undefined;
+  experimentalTriggers?:
+    | Array<
+      GetDeploymentExperimentalTriggers1 | GetDeploymentExperimentalTriggers2
+    >
+    | undefined;
   supportsCancellation?: boolean | undefined;
 };
 
@@ -2332,60 +2360,6 @@ export type GetDeploymentResponseBodyBuildQueue = {
 };
 
 /**
- * Build resource configuration snapshot for this deployment.
- */
-export const ResponseBodyDefault = {
-  Standard: "standard",
-  Enhanced: "enhanced",
-  Turbo: "turbo",
-} as const;
-/**
- * Build resource configuration snapshot for this deployment.
- */
-export type ResponseBodyDefault = ClosedEnum<typeof ResponseBodyDefault>;
-
-/**
- * Build resource configuration snapshot for this deployment.
- */
-export const ResponseBodyPurchaseType = {
-  Standard: "standard",
-  Enhanced: "enhanced",
-  Turbo: "turbo",
-} as const;
-/**
- * Build resource configuration snapshot for this deployment.
- */
-export type ResponseBodyPurchaseType = ClosedEnum<
-  typeof ResponseBodyPurchaseType
->;
-
-/**
- * Build resource configuration snapshot for this deployment.
- */
-export type ResponseBodyBuildMachine = {
-  /**
-   * Build resource configuration snapshot for this deployment.
-   */
-  default?: ResponseBodyDefault | undefined;
-  /**
-   * Build resource configuration snapshot for this deployment.
-   */
-  purchaseType?: ResponseBodyPurchaseType | undefined;
-  /**
-   * Build resource configuration snapshot for this deployment.
-   */
-  isDefaultBuildMachine?: boolean | undefined;
-  /**
-   * Build resource configuration snapshot for this deployment.
-   */
-  cores?: number | undefined;
-  /**
-   * Build resource configuration snapshot for this deployment.
-   */
-  memory?: number | undefined;
-};
-
-/**
  * When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues
  */
 export const ResponseBodyElasticConcurrency = {
@@ -2401,6 +2375,32 @@ export type ResponseBodyElasticConcurrency = ClosedEnum<
 >;
 
 /**
+ * Machine type that was used for the build.
+ */
+export const ResponseBodyPurchaseType = {
+  Standard: "standard",
+  Enhanced: "enhanced",
+  Turbo: "turbo",
+} as const;
+/**
+ * Machine type that was used for the build.
+ */
+export type ResponseBodyPurchaseType = ClosedEnum<
+  typeof ResponseBodyPurchaseType
+>;
+
+export type ResponseBodyBuildMachine = {
+  /**
+   * Machine type that was used for the build.
+   */
+  purchaseType?: ResponseBodyPurchaseType | null | undefined;
+  /**
+   * Whether the build machine is the default build machine.
+   */
+  isDefaultBuildMachine?: boolean | undefined;
+};
+
+/**
  * Build resource configuration snapshot for this deployment.
  */
 export type GetDeploymentResponseBodyResourceConfig = {
@@ -2409,13 +2409,10 @@ export type GetDeploymentResponseBodyResourceConfig = {
    */
   buildQueue?: GetDeploymentResponseBodyBuildQueue | undefined;
   /**
-   * Build resource configuration snapshot for this deployment.
-   */
-  buildMachine?: ResponseBodyBuildMachine | undefined;
-  /**
    * When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues
    */
   elasticConcurrency?: ResponseBodyElasticConcurrency | undefined;
+  buildMachine?: ResponseBodyBuildMachine | undefined;
 };
 
 /**
@@ -2580,7 +2577,7 @@ export type GetDeploymentResponseBody1 = {
     | GetDeploymentGitSource13
     | GetDeploymentGitSource14
     | GetDeploymentGitSourceDeployments2
-    | GetDeploymentGitSource3
+    | GetDeploymentGitSourceDeployments3
     | GetDeploymentGitSource6
     | GetDeploymentGitSource9
     | GetDeploymentGitSourceDeployments1
@@ -4487,8 +4484,8 @@ export function getDeploymentGitSourceDeploymentsResponseRepoIdFromJSON(
 }
 
 /** @internal */
-export const GetDeploymentGitSourceDeployments3$inboundSchema: z.ZodType<
-  GetDeploymentGitSourceDeployments3,
+export const GetDeploymentGitSource3$inboundSchema: z.ZodType<
+  GetDeploymentGitSource3,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -4501,7 +4498,7 @@ export const GetDeploymentGitSourceDeployments3$inboundSchema: z.ZodType<
   prId: z.nullable(types.number()).optional(),
 });
 /** @internal */
-export type GetDeploymentGitSourceDeployments3$Outbound = {
+export type GetDeploymentGitSource3$Outbound = {
   type: string;
   host: string;
   repoId: string | number;
@@ -4511,10 +4508,10 @@ export type GetDeploymentGitSourceDeployments3$Outbound = {
 };
 
 /** @internal */
-export const GetDeploymentGitSourceDeployments3$outboundSchema: z.ZodType<
-  GetDeploymentGitSourceDeployments3$Outbound,
+export const GetDeploymentGitSource3$outboundSchema: z.ZodType<
+  GetDeploymentGitSource3$Outbound,
   z.ZodTypeDef,
-  GetDeploymentGitSourceDeployments3
+  GetDeploymentGitSource3
 > = z.object({
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody23Type$outboundSchema,
@@ -4525,23 +4522,20 @@ export const GetDeploymentGitSourceDeployments3$outboundSchema: z.ZodType<
   prId: z.nullable(z.number()).optional(),
 });
 
-export function getDeploymentGitSourceDeployments3ToJSON(
-  getDeploymentGitSourceDeployments3: GetDeploymentGitSourceDeployments3,
+export function getDeploymentGitSource3ToJSON(
+  getDeploymentGitSource3: GetDeploymentGitSource3,
 ): string {
   return JSON.stringify(
-    GetDeploymentGitSourceDeployments3$outboundSchema.parse(
-      getDeploymentGitSourceDeployments3,
-    ),
+    GetDeploymentGitSource3$outboundSchema.parse(getDeploymentGitSource3),
   );
 }
-export function getDeploymentGitSourceDeployments3FromJSON(
+export function getDeploymentGitSource3FromJSON(
   jsonString: string,
-): SafeParseResult<GetDeploymentGitSourceDeployments3, SDKValidationError> {
+): SafeParseResult<GetDeploymentGitSource3, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      GetDeploymentGitSourceDeployments3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentGitSourceDeployments3' from JSON`,
+    (x) => GetDeploymentGitSource3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentGitSource3' from JSON`,
   );
 }
 
@@ -4738,7 +4732,7 @@ export const ResponseBodyGitSource$inboundSchema: z.ZodType<
   z.lazy(() => GetDeploymentGitSourceDeployments13$inboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments14$inboundSchema),
   z.lazy(() => GetDeploymentGitSource2$inboundSchema),
-  z.lazy(() => GetDeploymentGitSourceDeployments3$inboundSchema),
+  z.lazy(() => GetDeploymentGitSource3$inboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments6$inboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments9$inboundSchema),
   z.lazy(() => GetDeploymentGitSource1$inboundSchema),
@@ -4756,7 +4750,7 @@ export type ResponseBodyGitSource$Outbound =
   | GetDeploymentGitSourceDeployments13$Outbound
   | GetDeploymentGitSourceDeployments14$Outbound
   | GetDeploymentGitSource2$Outbound
-  | GetDeploymentGitSourceDeployments3$Outbound
+  | GetDeploymentGitSource3$Outbound
   | GetDeploymentGitSourceDeployments6$Outbound
   | GetDeploymentGitSourceDeployments9$Outbound
   | GetDeploymentGitSource1$Outbound
@@ -4778,7 +4772,7 @@ export const ResponseBodyGitSource$outboundSchema: z.ZodType<
   z.lazy(() => GetDeploymentGitSourceDeployments13$outboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments14$outboundSchema),
   z.lazy(() => GetDeploymentGitSource2$outboundSchema),
-  z.lazy(() => GetDeploymentGitSourceDeployments3$outboundSchema),
+  z.lazy(() => GetDeploymentGitSource3$outboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments6$outboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments9$outboundSchema),
   z.lazy(() => GetDeploymentGitSource1$outboundSchema),
@@ -5083,7 +5077,7 @@ export const GetDeploymentResponseBody2$inboundSchema: z.ZodType<
       z.lazy(() => GetDeploymentGitSourceDeployments13$inboundSchema),
       z.lazy(() => GetDeploymentGitSourceDeployments14$inboundSchema),
       z.lazy(() => GetDeploymentGitSource2$inboundSchema),
-      z.lazy(() => GetDeploymentGitSourceDeployments3$inboundSchema),
+      z.lazy(() => GetDeploymentGitSource3$inboundSchema),
       z.lazy(() => GetDeploymentGitSourceDeployments6$inboundSchema),
       z.lazy(() => GetDeploymentGitSourceDeployments9$inboundSchema),
       z.lazy(() => GetDeploymentGitSource1$inboundSchema),
@@ -5169,7 +5163,7 @@ export type GetDeploymentResponseBody2$Outbound = {
     | GetDeploymentGitSourceDeployments13$Outbound
     | GetDeploymentGitSourceDeployments14$Outbound
     | GetDeploymentGitSource2$Outbound
-    | GetDeploymentGitSourceDeployments3$Outbound
+    | GetDeploymentGitSource3$Outbound
     | GetDeploymentGitSourceDeployments6$Outbound
     | GetDeploymentGitSourceDeployments9$Outbound
     | GetDeploymentGitSource1$Outbound
@@ -5256,7 +5250,7 @@ export const GetDeploymentResponseBody2$outboundSchema: z.ZodType<
     z.lazy(() => GetDeploymentGitSourceDeployments13$outboundSchema),
     z.lazy(() => GetDeploymentGitSourceDeployments14$outboundSchema),
     z.lazy(() => GetDeploymentGitSource2$outboundSchema),
-    z.lazy(() => GetDeploymentGitSourceDeployments3$outboundSchema),
+    z.lazy(() => GetDeploymentGitSource3$outboundSchema),
     z.lazy(() => GetDeploymentGitSourceDeployments6$outboundSchema),
     z.lazy(() => GetDeploymentGitSourceDeployments9$outboundSchema),
     z.lazy(() => GetDeploymentGitSource1$outboundSchema),
@@ -7578,8 +7572,8 @@ export function getDeploymentGitSourceDeploymentsResponse200ApplicationJSONRespo
 }
 
 /** @internal */
-export const GetDeploymentGitSource3$inboundSchema: z.ZodType<
-  GetDeploymentGitSource3,
+export const GetDeploymentGitSourceDeployments3$inboundSchema: z.ZodType<
+  GetDeploymentGitSourceDeployments3,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -7591,7 +7585,7 @@ export const GetDeploymentGitSource3$inboundSchema: z.ZodType<
   prId: z.nullable(types.number()).optional(),
 });
 /** @internal */
-export type GetDeploymentGitSource3$Outbound = {
+export type GetDeploymentGitSourceDeployments3$Outbound = {
   type: string;
   host: string;
   repoId: string | number;
@@ -7601,10 +7595,10 @@ export type GetDeploymentGitSource3$Outbound = {
 };
 
 /** @internal */
-export const GetDeploymentGitSource3$outboundSchema: z.ZodType<
-  GetDeploymentGitSource3$Outbound,
+export const GetDeploymentGitSourceDeployments3$outboundSchema: z.ZodType<
+  GetDeploymentGitSourceDeployments3$Outbound,
   z.ZodTypeDef,
-  GetDeploymentGitSource3
+  GetDeploymentGitSourceDeployments3
 > = z.object({
   type: GetDeploymentGitSourceDeploymentsType$outboundSchema,
   host: z.string(),
@@ -7614,20 +7608,23 @@ export const GetDeploymentGitSource3$outboundSchema: z.ZodType<
   prId: z.nullable(z.number()).optional(),
 });
 
-export function getDeploymentGitSource3ToJSON(
-  getDeploymentGitSource3: GetDeploymentGitSource3,
+export function getDeploymentGitSourceDeployments3ToJSON(
+  getDeploymentGitSourceDeployments3: GetDeploymentGitSourceDeployments3,
 ): string {
   return JSON.stringify(
-    GetDeploymentGitSource3$outboundSchema.parse(getDeploymentGitSource3),
+    GetDeploymentGitSourceDeployments3$outboundSchema.parse(
+      getDeploymentGitSourceDeployments3,
+    ),
   );
 }
-export function getDeploymentGitSource3FromJSON(
+export function getDeploymentGitSourceDeployments3FromJSON(
   jsonString: string,
-): SafeParseResult<GetDeploymentGitSource3, SDKValidationError> {
+): SafeParseResult<GetDeploymentGitSourceDeployments3, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetDeploymentGitSource3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentGitSource3' from JSON`,
+    (x) =>
+      GetDeploymentGitSourceDeployments3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentGitSourceDeployments3' from JSON`,
   );
 }
 
@@ -7825,7 +7822,7 @@ export const GetDeploymentResponseBodyGitSource$inboundSchema: z.ZodType<
   z.lazy(() => GetDeploymentGitSource13$inboundSchema),
   z.lazy(() => GetDeploymentGitSource14$inboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments2$inboundSchema),
-  z.lazy(() => GetDeploymentGitSource3$inboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments3$inboundSchema),
   z.lazy(() => GetDeploymentGitSource6$inboundSchema),
   z.lazy(() => GetDeploymentGitSource9$inboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments1$inboundSchema),
@@ -7843,7 +7840,7 @@ export type GetDeploymentResponseBodyGitSource$Outbound =
   | GetDeploymentGitSource13$Outbound
   | GetDeploymentGitSource14$Outbound
   | GetDeploymentGitSourceDeployments2$Outbound
-  | GetDeploymentGitSource3$Outbound
+  | GetDeploymentGitSourceDeployments3$Outbound
   | GetDeploymentGitSource6$Outbound
   | GetDeploymentGitSource9$Outbound
   | GetDeploymentGitSourceDeployments1$Outbound
@@ -7865,7 +7862,7 @@ export const GetDeploymentResponseBodyGitSource$outboundSchema: z.ZodType<
   z.lazy(() => GetDeploymentGitSource13$outboundSchema),
   z.lazy(() => GetDeploymentGitSource14$outboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments2$outboundSchema),
-  z.lazy(() => GetDeploymentGitSource3$outboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments3$outboundSchema),
   z.lazy(() => GetDeploymentGitSource6$outboundSchema),
   z.lazy(() => GetDeploymentGitSource9$outboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments1$outboundSchema),
@@ -8185,33 +8182,22 @@ export const ResponseBodyArchitecture$outboundSchema: z.ZodNativeEnum<
 > = ResponseBodyArchitecture$inboundSchema;
 
 /** @internal */
-export const GetDeploymentResponseBodyDeploymentsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsResponseType> = z
-    .nativeEnum(GetDeploymentResponseBodyDeploymentsResponseType);
-/** @internal */
-export const GetDeploymentResponseBodyDeploymentsResponseType$outboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsResponseType> =
-    GetDeploymentResponseBodyDeploymentsResponseType$inboundSchema;
-
-/** @internal */
-export const ResponseBodyExperimentalTriggers$inboundSchema: z.ZodType<
-  ResponseBodyExperimentalTriggers,
+export const GetDeploymentExperimentalTriggers2$inboundSchema: z.ZodType<
+  GetDeploymentExperimentalTriggers2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: GetDeploymentResponseBodyDeploymentsResponseType$inboundSchema,
+  type: types.literal("queue/v2beta"),
   topic: types.string(),
-  consumer: types.string(),
   maxDeliveries: types.optional(types.number()),
   retryAfterSeconds: types.optional(types.number()),
   initialDelaySeconds: types.optional(types.number()),
   maxConcurrency: types.optional(types.number()),
 });
 /** @internal */
-export type ResponseBodyExperimentalTriggers$Outbound = {
-  type: string;
+export type GetDeploymentExperimentalTriggers2$Outbound = {
+  type: "queue/v2beta";
   topic: string;
-  consumer: string;
   maxDeliveries?: number | undefined;
   retryAfterSeconds?: number | undefined;
   initialDelaySeconds?: number | undefined;
@@ -8219,19 +8205,122 @@ export type ResponseBodyExperimentalTriggers$Outbound = {
 };
 
 /** @internal */
-export const ResponseBodyExperimentalTriggers$outboundSchema: z.ZodType<
-  ResponseBodyExperimentalTriggers$Outbound,
+export const GetDeploymentExperimentalTriggers2$outboundSchema: z.ZodType<
+  GetDeploymentExperimentalTriggers2$Outbound,
   z.ZodTypeDef,
-  ResponseBodyExperimentalTriggers
+  GetDeploymentExperimentalTriggers2
 > = z.object({
-  type: GetDeploymentResponseBodyDeploymentsResponseType$outboundSchema,
+  type: z.literal("queue/v2beta"),
   topic: z.string(),
-  consumer: z.string(),
   maxDeliveries: z.number().optional(),
   retryAfterSeconds: z.number().optional(),
   initialDelaySeconds: z.number().optional(),
   maxConcurrency: z.number().optional(),
 });
+
+export function getDeploymentExperimentalTriggers2ToJSON(
+  getDeploymentExperimentalTriggers2: GetDeploymentExperimentalTriggers2,
+): string {
+  return JSON.stringify(
+    GetDeploymentExperimentalTriggers2$outboundSchema.parse(
+      getDeploymentExperimentalTriggers2,
+    ),
+  );
+}
+export function getDeploymentExperimentalTriggers2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentExperimentalTriggers2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentExperimentalTriggers2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentExperimentalTriggers2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentExperimentalTriggers1$inboundSchema: z.ZodType<
+  GetDeploymentExperimentalTriggers1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("queue/v1beta"),
+  consumer: types.string(),
+  topic: types.string(),
+  maxDeliveries: types.optional(types.number()),
+  retryAfterSeconds: types.optional(types.number()),
+  initialDelaySeconds: types.optional(types.number()),
+  maxConcurrency: types.optional(types.number()),
+});
+/** @internal */
+export type GetDeploymentExperimentalTriggers1$Outbound = {
+  type: "queue/v1beta";
+  consumer: string;
+  topic: string;
+  maxDeliveries?: number | undefined;
+  retryAfterSeconds?: number | undefined;
+  initialDelaySeconds?: number | undefined;
+  maxConcurrency?: number | undefined;
+};
+
+/** @internal */
+export const GetDeploymentExperimentalTriggers1$outboundSchema: z.ZodType<
+  GetDeploymentExperimentalTriggers1$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentExperimentalTriggers1
+> = z.object({
+  type: z.literal("queue/v1beta"),
+  consumer: z.string(),
+  topic: z.string(),
+  maxDeliveries: z.number().optional(),
+  retryAfterSeconds: z.number().optional(),
+  initialDelaySeconds: z.number().optional(),
+  maxConcurrency: z.number().optional(),
+});
+
+export function getDeploymentExperimentalTriggers1ToJSON(
+  getDeploymentExperimentalTriggers1: GetDeploymentExperimentalTriggers1,
+): string {
+  return JSON.stringify(
+    GetDeploymentExperimentalTriggers1$outboundSchema.parse(
+      getDeploymentExperimentalTriggers1,
+    ),
+  );
+}
+export function getDeploymentExperimentalTriggers1FromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentExperimentalTriggers1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentExperimentalTriggers1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentExperimentalTriggers1' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyExperimentalTriggers$inboundSchema: z.ZodType<
+  ResponseBodyExperimentalTriggers,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => GetDeploymentExperimentalTriggers1$inboundSchema),
+  z.lazy(() => GetDeploymentExperimentalTriggers2$inboundSchema),
+]);
+/** @internal */
+export type ResponseBodyExperimentalTriggers$Outbound =
+  | GetDeploymentExperimentalTriggers1$Outbound
+  | GetDeploymentExperimentalTriggers2$Outbound;
+
+/** @internal */
+export const ResponseBodyExperimentalTriggers$outboundSchema: z.ZodType<
+  ResponseBodyExperimentalTriggers$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyExperimentalTriggers
+> = z.union([
+  z.lazy(() => GetDeploymentExperimentalTriggers1$outboundSchema),
+  z.lazy(() => GetDeploymentExperimentalTriggers2$outboundSchema),
+]);
 
 export function responseBodyExperimentalTriggersToJSON(
   responseBodyExperimentalTriggers: ResponseBodyExperimentalTriggers,
@@ -8261,11 +8350,18 @@ export const ResponseBodyFunctions$inboundSchema: z.ZodType<
   architecture: types.optional(ResponseBodyArchitecture$inboundSchema),
   memory: types.optional(types.number()),
   maxDuration: types.optional(types.number()),
+  regions: types.optional(z.array(types.string())),
+  functionFailoverRegions: types.optional(z.array(types.string())),
   runtime: types.optional(types.string()),
   includeFiles: types.optional(types.string()),
   excludeFiles: types.optional(types.string()),
   experimentalTriggers: types.optional(
-    z.array(z.lazy(() => ResponseBodyExperimentalTriggers$inboundSchema)),
+    z.array(z.union([
+      z.lazy(() => GetDeploymentExperimentalTriggers1$inboundSchema),
+      z.lazy(() =>
+        GetDeploymentExperimentalTriggers2$inboundSchema
+      ),
+    ])),
   ),
   supportsCancellation: types.optional(types.boolean()),
 });
@@ -8274,11 +8370,16 @@ export type ResponseBodyFunctions$Outbound = {
   architecture?: string | undefined;
   memory?: number | undefined;
   maxDuration?: number | undefined;
+  regions?: Array<string> | undefined;
+  functionFailoverRegions?: Array<string> | undefined;
   runtime?: string | undefined;
   includeFiles?: string | undefined;
   excludeFiles?: string | undefined;
   experimentalTriggers?:
-    | Array<ResponseBodyExperimentalTriggers$Outbound>
+    | Array<
+      | GetDeploymentExperimentalTriggers1$Outbound
+      | GetDeploymentExperimentalTriggers2$Outbound
+    >
     | undefined;
   supportsCancellation?: boolean | undefined;
 };
@@ -8292,11 +8393,16 @@ export const ResponseBodyFunctions$outboundSchema: z.ZodType<
   architecture: ResponseBodyArchitecture$outboundSchema.optional(),
   memory: z.number().optional(),
   maxDuration: z.number().optional(),
+  regions: z.array(z.string()).optional(),
+  functionFailoverRegions: z.array(z.string()).optional(),
   runtime: z.string().optional(),
   includeFiles: z.string().optional(),
   excludeFiles: z.string().optional(),
   experimentalTriggers: z.array(
-    z.lazy(() => ResponseBodyExperimentalTriggers$outboundSchema),
+    z.union([
+      z.lazy(() => GetDeploymentExperimentalTriggers1$outboundSchema),
+      z.lazy(() => GetDeploymentExperimentalTriggers2$outboundSchema),
+    ]),
   ).optional(),
   supportsCancellation: z.boolean().optional(),
 });
@@ -10658,13 +10764,13 @@ export function getDeploymentResponseBodyBuildQueueFromJSON(
 }
 
 /** @internal */
-export const ResponseBodyDefault$inboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyDefault
-> = z.nativeEnum(ResponseBodyDefault);
+export const ResponseBodyElasticConcurrency$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyElasticConcurrency
+> = z.nativeEnum(ResponseBodyElasticConcurrency);
 /** @internal */
-export const ResponseBodyDefault$outboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyDefault
-> = ResponseBodyDefault$inboundSchema;
+export const ResponseBodyElasticConcurrency$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyElasticConcurrency
+> = ResponseBodyElasticConcurrency$inboundSchema;
 
 /** @internal */
 export const ResponseBodyPurchaseType$inboundSchema: z.ZodNativeEnum<
@@ -10681,19 +10787,13 @@ export const ResponseBodyBuildMachine$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  default: types.optional(ResponseBodyDefault$inboundSchema),
-  purchaseType: types.optional(ResponseBodyPurchaseType$inboundSchema),
+  purchaseType: z.nullable(ResponseBodyPurchaseType$inboundSchema).optional(),
   isDefaultBuildMachine: types.optional(types.boolean()),
-  cores: types.optional(types.number()),
-  memory: types.optional(types.number()),
 });
 /** @internal */
 export type ResponseBodyBuildMachine$Outbound = {
-  default?: string | undefined;
-  purchaseType?: string | undefined;
+  purchaseType?: string | null | undefined;
   isDefaultBuildMachine?: boolean | undefined;
-  cores?: number | undefined;
-  memory?: number | undefined;
 };
 
 /** @internal */
@@ -10702,11 +10802,8 @@ export const ResponseBodyBuildMachine$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ResponseBodyBuildMachine
 > = z.object({
-  default: ResponseBodyDefault$outboundSchema.optional(),
-  purchaseType: ResponseBodyPurchaseType$outboundSchema.optional(),
+  purchaseType: z.nullable(ResponseBodyPurchaseType$outboundSchema).optional(),
   isDefaultBuildMachine: z.boolean().optional(),
-  cores: z.number().optional(),
-  memory: z.number().optional(),
 });
 
 export function responseBodyBuildMachineToJSON(
@@ -10727,15 +10824,6 @@ export function responseBodyBuildMachineFromJSON(
 }
 
 /** @internal */
-export const ResponseBodyElasticConcurrency$inboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyElasticConcurrency
-> = z.nativeEnum(ResponseBodyElasticConcurrency);
-/** @internal */
-export const ResponseBodyElasticConcurrency$outboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyElasticConcurrency
-> = ResponseBodyElasticConcurrency$inboundSchema;
-
-/** @internal */
 export const GetDeploymentResponseBodyResourceConfig$inboundSchema: z.ZodType<
   GetDeploymentResponseBodyResourceConfig,
   z.ZodTypeDef,
@@ -10744,18 +10832,18 @@ export const GetDeploymentResponseBodyResourceConfig$inboundSchema: z.ZodType<
   buildQueue: types.optional(
     z.lazy(() => GetDeploymentResponseBodyBuildQueue$inboundSchema),
   ),
-  buildMachine: types.optional(
-    z.lazy(() => ResponseBodyBuildMachine$inboundSchema),
-  ),
   elasticConcurrency: types.optional(
     ResponseBodyElasticConcurrency$inboundSchema,
+  ),
+  buildMachine: types.optional(
+    z.lazy(() => ResponseBodyBuildMachine$inboundSchema),
   ),
 });
 /** @internal */
 export type GetDeploymentResponseBodyResourceConfig$Outbound = {
   buildQueue?: GetDeploymentResponseBodyBuildQueue$Outbound | undefined;
-  buildMachine?: ResponseBodyBuildMachine$Outbound | undefined;
   elasticConcurrency?: string | undefined;
+  buildMachine?: ResponseBodyBuildMachine$Outbound | undefined;
 };
 
 /** @internal */
@@ -10766,9 +10854,9 @@ export const GetDeploymentResponseBodyResourceConfig$outboundSchema: z.ZodType<
 > = z.object({
   buildQueue: z.lazy(() => GetDeploymentResponseBodyBuildQueue$outboundSchema)
     .optional(),
+  elasticConcurrency: ResponseBodyElasticConcurrency$outboundSchema.optional(),
   buildMachine: z.lazy(() => ResponseBodyBuildMachine$outboundSchema)
     .optional(),
-  elasticConcurrency: ResponseBodyElasticConcurrency$outboundSchema.optional(),
 });
 
 export function getDeploymentResponseBodyResourceConfigToJSON(
@@ -11055,7 +11143,7 @@ export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
       z.lazy(() => GetDeploymentGitSource13$inboundSchema),
       z.lazy(() => GetDeploymentGitSource14$inboundSchema),
       z.lazy(() => GetDeploymentGitSourceDeployments2$inboundSchema),
-      z.lazy(() => GetDeploymentGitSource3$inboundSchema),
+      z.lazy(() => GetDeploymentGitSourceDeployments3$inboundSchema),
       z.lazy(() => GetDeploymentGitSource6$inboundSchema),
       z.lazy(() => GetDeploymentGitSource9$inboundSchema),
       z.lazy(() => GetDeploymentGitSourceDeployments1$inboundSchema),
@@ -11201,7 +11289,7 @@ export type GetDeploymentResponseBody1$Outbound = {
     | GetDeploymentGitSource13$Outbound
     | GetDeploymentGitSource14$Outbound
     | GetDeploymentGitSourceDeployments2$Outbound
-    | GetDeploymentGitSource3$Outbound
+    | GetDeploymentGitSourceDeployments3$Outbound
     | GetDeploymentGitSource6$Outbound
     | GetDeploymentGitSource9$Outbound
     | GetDeploymentGitSourceDeployments1$Outbound
@@ -11346,7 +11434,7 @@ export const GetDeploymentResponseBody1$outboundSchema: z.ZodType<
     z.lazy(() => GetDeploymentGitSource13$outboundSchema),
     z.lazy(() => GetDeploymentGitSource14$outboundSchema),
     z.lazy(() => GetDeploymentGitSourceDeployments2$outboundSchema),
-    z.lazy(() => GetDeploymentGitSource3$outboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments3$outboundSchema),
     z.lazy(() => GetDeploymentGitSource6$outboundSchema),
     z.lazy(() => GetDeploymentGitSource9$outboundSchema),
     z.lazy(() => GetDeploymentGitSourceDeployments1$outboundSchema),

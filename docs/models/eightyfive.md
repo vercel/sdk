@@ -8,35 +8,37 @@ The payload of the event, if requested.
 import { EightyFive } from "@vercel/sdk/models/userevent.js";
 
 let value: EightyFive = {
-  viaOTP: false,
-  viaEmailInvite: true,
-  viaGithub: false,
-  viaGitlab: true,
-  viaBitbucket: true,
-  viaGoogle: false,
-  viaApple: true,
-  viaSamlSso: true,
-  viaPasskey: true,
+  userId: "<id>",
+  integrationId: "<id>",
+  configurationId: "<id>",
+  integrationSlug: "<value>",
+  newOwner: {
+    billing: {
+      plan: "enterprise",
+    },
+    blocked: 5742.67,
+    createdAt: 2155.79,
+    deploymentSecret: "<value>",
+    email: "Natasha18@gmail.com",
+    id: "<id>",
+    platformVersion: 2555.68,
+    stagingPrefix: "<value>",
+    sysToken: "<value>",
+    type: "user",
+    username: "Hilbert_Mayert72",
+    updatedAt: 4161.11,
+    version: "northstar",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `userAgent`                                    | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `geolocation`                                  | [models.Geolocation](../models/geolocation.md) | :heavy_minus_sign:                             | N/A                                            |
-| `viaOTP`                                       | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
-| `viaEmailInvite`                               | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
-| `viaGithub`                                    | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
-| `viaGitlab`                                    | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
-| `viaBitbucket`                                 | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
-| `viaGoogle`                                    | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
-| `viaApple`                                     | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
-| `viaSamlSso`                                   | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
-| `viaPasskey`                                   | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
-| `ssoType`                                      | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `env`                                          | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `os`                                           | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `username`                                     | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `factors`                                      | *models.Factors*                               | :heavy_minus_sign:                             | N/A                                            |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `userId`                                 | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| `integrationId`                          | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| `configurationId`                        | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| `integrationSlug`                        | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| `integrationName`                        | *string*                                 | :heavy_minus_sign:                       | N/A                                      |
+| `newOwner`                               | [models.NewOwner](../models/newowner.md) | :heavy_check_mark:                       | N/A                                      |

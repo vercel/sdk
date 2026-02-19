@@ -8,12 +8,14 @@ The payload of the event, if requested.
 import { OneHundredAndSixty } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndSixty = {
-  storeType: "postgres",
+  email: "Alivia_Torp79@hotmail.com",
+  verified: false,
 };
 ```
 
 ## Fields
 
-| Field                                      | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `storeType`                                | [models.StoreType](../models/storetype.md) | :heavy_check_mark:                         | N/A                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `email`            | *string*           | :heavy_check_mark: | N/A                |
+| `verified`         | *boolean*          | :heavy_check_mark: | N/A                |

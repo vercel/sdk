@@ -10,14 +10,14 @@ import { OneHundredAndNineteen } from "@vercel/sdk/models/userevent.js";
 let value: OneHundredAndNineteen = {
   projectId: "<id>",
   projectName: "<value>",
-  autoAssignCustomDomains: true,
 };
 ```
 
 ## Fields
 
-| Field                     | Type                      | Required                  | Description               |
-| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
-| `projectId`               | *string*                  | :heavy_check_mark:        | N/A                       |
-| `projectName`             | *string*                  | :heavy_check_mark:        | N/A                       |
-| `autoAssignCustomDomains` | *boolean*                 | :heavy_check_mark:        | N/A                       |
+| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `projectId`                                                    | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
+| `projectName`                                                  | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
+| `optionsAllowlist`                                             | [models.OptionsAllowlist](../models/optionsallowlist.md)       | :heavy_minus_sign:                                             | N/A                                                            |
+| `oldOptionsAllowlist`                                          | [models.OldOptionsAllowlist](../models/oldoptionsallowlist.md) | :heavy_minus_sign:                                             | N/A                                                            |

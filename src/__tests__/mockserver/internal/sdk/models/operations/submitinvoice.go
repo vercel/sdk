@@ -272,6 +272,8 @@ type SubmitInvoiceRequestBody struct {
 	Period    SubmitInvoicePeriod     `json:"period"`
 	Items     []SubmitInvoiceItem     `json:"items"`
 	Discounts []SubmitInvoiceDiscount `json:"discounts,omitempty"`
+	// Set this to `true` if this is the final invoice for the installation.
+	Final *bool `json:"final,omitempty"`
 	// Test mode
 	Test *Test `json:"test,omitempty"`
 }
@@ -327,6 +329,13 @@ func (o *SubmitInvoiceRequestBody) GetDiscounts() []SubmitInvoiceDiscount {
 		return nil
 	}
 	return o.Discounts
+}
+
+func (o *SubmitInvoiceRequestBody) GetFinal() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Final
 }
 
 func (o *SubmitInvoiceRequestBody) GetTest() *Test {

@@ -8,14 +8,14 @@ The payload of the event, if requested.
 import { FortyFive } from "@vercel/sdk/models/userevent.js";
 
 let value: FortyFive = {
-  provider: "github-custom-host",
-  login: "Karli76",
+  githubLogin: "<value>",
+  host: "gentle-mallard.org",
 };
 ```
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `provider`                               | [models.Provider](../models/provider.md) | :heavy_check_mark:                       | N/A                                      |
-| `login`                                  | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `githubLogin`      | *string*           | :heavy_check_mark: | N/A                |
+| `host`             | *string*           | :heavy_check_mark: | N/A                |

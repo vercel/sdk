@@ -1,5 +1,7 @@
 # UpdateCheckConclusion
 
+The result of the check being run
+
 ## Example Usage
 
 ```typescript
@@ -11,5 +13,5 @@ let value: UpdateCheckConclusion = "failed";
 ## Values
 
 ```typescript
-"canceled" | "failed" | "neutral" | "succeeded" | "skipped" | "stale"
+"canceled" | "failed" | "neutral" | "succeeded" | "skipped"
 ```

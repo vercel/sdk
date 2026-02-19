@@ -1,17 +1,15 @@
 # Conclusion
 
-The result of the check being run
-
 ## Example Usage
 
 ```typescript
-import { Conclusion } from "@vercel/sdk/models/updatecheckop.js";
+import { Conclusion } from "@vercel/sdk/models/updatedeploymentcheckrunop.js";
 
-let value: Conclusion = "succeeded";
+let value: Conclusion = "neutral";
 ```
 
 ## Values
 
 ```typescript
-"canceled" | "failed" | "neutral" | "succeeded" | "skipped"
+"canceled" | "skipped" | "timeout" | "failed" | "neutral" | "succeeded"
 ```

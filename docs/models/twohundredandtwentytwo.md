@@ -8,18 +8,18 @@ The payload of the event, if requested.
 import { TwoHundredAndTwentyTwo } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndTwentyTwo = {
-  exportId: "<id>",
-  from: 4076.34,
-  to: 5457.12,
-  format: "<value>",
+  edgeConfigId: "<id>",
+  edgeConfigSlug: "<value>",
+  edgeConfigTokenIds: [
+    "<value 1>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `exportId`         | *string*           | :heavy_check_mark: | N/A                |
-| `from`             | *number*           | :heavy_check_mark: | N/A                |
-| `to`               | *number*           | :heavy_check_mark: | N/A                |
-| `format`           | *string*           | :heavy_check_mark: | N/A                |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `edgeConfigId`        | *string*              | :heavy_check_mark:    | N/A                   |
+| `edgeConfigSlug`      | *string*              | :heavy_check_mark:    | N/A                   |
+| `edgeConfigTokenIds`  | *string*[]            | :heavy_check_mark:    | ids of deleted tokens |

@@ -368,22 +368,26 @@ test("Teams Invite User To Team", async () => {
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const result = await vercel.teams.inviteUserToTeam([
-    {
-      email: "john@example.com",
-      role: "DEVELOPER",
-      projects: [
-        {
-          projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
-          role: "ADMIN",
-        },
-        {
-          projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
-          role: "ADMIN",
-        },
-      ],
-    },
-  ]);
+  const result = await vercel.teams.inviteUserToTeam({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+    requestBody: [
+      {
+        email: "john@example.com",
+        role: "DEVELOPER",
+        projects: [
+          {
+            projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
+            role: "ADMIN",
+          },
+          {
+            projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
+            role: "ADMIN",
+          },
+        ],
+      },
+    ],
+  });
   expect(result).toBeDefined();
   expect(result).toEqual({
     uid: "kr1PsOIzqEL5Xg6M4VZcZosf",

@@ -4353,6 +4353,7 @@ const (
 	GetAllLogDrainsFrameworkRuby           GetAllLogDrainsFramework = "ruby"
 	GetAllLogDrainsFrameworkRust           GetAllLogDrainsFramework = "rust"
 	GetAllLogDrainsFrameworkNode           GetAllLogDrainsFramework = "node"
+	GetAllLogDrainsFrameworkGo             GetAllLogDrainsFramework = "go"
 	GetAllLogDrainsFrameworkServices       GetAllLogDrainsFramework = "services"
 )
 
@@ -4488,6 +4489,8 @@ func (e *GetAllLogDrainsFramework) UnmarshalJSON(data []byte) error {
 	case "rust":
 		fallthrough
 	case "node":
+		fallthrough
+	case "go":
 		fallthrough
 	case "services":
 		*e = GetAllLogDrainsFramework(v)

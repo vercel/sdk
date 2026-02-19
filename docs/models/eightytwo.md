@@ -8,25 +8,16 @@ The payload of the event, if requested.
 import { EightyTwo } from "@vercel/sdk/models/userevent.js";
 
 let value: EightyTwo = {
-  integrationId: "<id>",
-  configurationId: "<id>",
-  integrationSlug: "<value>",
-  integrationName: "<value>",
-  ownerId: "<id>",
-  confirmedScopes: [
-    "<value 1>",
-  ],
+  projectId: "<id>",
+  rulesetName: "<value>",
+  ruleGroups: {},
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
-| `configurationId`  | *string*           | :heavy_check_mark: | N/A                |
-| `integrationSlug`  | *string*           | :heavy_check_mark: | N/A                |
-| `integrationName`  | *string*           | :heavy_check_mark: | N/A                |
-| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
-| `projectIds`       | *string*[]         | :heavy_minus_sign: | N/A                |
-| `confirmedScopes`  | *string*[]         | :heavy_check_mark: | N/A                |
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `projectId`                                                  | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `rulesetName`                                                | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `ruleGroups`                                                 | Record<string, [models.RuleGroups](../models/rulegroups.md)> | :heavy_check_mark:                                           | N/A                                                          |

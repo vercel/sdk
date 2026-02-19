@@ -8,17 +8,25 @@ The payload of the event, if requested.
 import { TwoHundredAndTwentySeven } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndTwentySeven = {
-  ownerId: "<id>",
-  source: "<value>",
-  cause: "<value>",
+  project: {
+    id: "<id>",
+    name: "<value>",
+  },
+  prev: {
+    project: {},
+  },
+  group: {
+    id: "<id>",
+    slug: "<value>",
+    name: "<value>",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
-| `source`           | *string*           | :heavy_check_mark: | N/A                |
-| `cause`            | *string*           | :heavy_check_mark: | N/A                |
-| `reason`           | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `project`                                                                    | [models.UserEventPayload227Project](../models/usereventpayload227project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| `prev`                                                                       | [models.PayloadPrev](../models/payloadprev.md)                               | :heavy_check_mark:                                                           | N/A                                                                          |
+| `group`                                                                      | [models.PayloadGroup](../models/payloadgroup.md)                             | :heavy_check_mark:                                                           | N/A                                                                          |

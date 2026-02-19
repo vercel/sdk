@@ -196,10 +196,13 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  await vercel.patchV1ProjectsProjectIdRollbackDeploymentIdUpdateDescription({
-    projectId: "<id>",
-    deploymentId: "<id>",
+  const result = await vercel.accessGroups.readAccessGroup({
+    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
+
+  console.log(result);
 }
 
 run();
@@ -283,10 +286,6 @@ run();
 <details open>
 <summary>Available methods</summary>
 
-### [Vercel SDK](docs/sdks/vercel/README.md)
-
-* [patchV1ProjectsProjectIdRollbackDeploymentIdUpdateDescription](docs/sdks/vercel/README.md#patchv1projectsprojectidrollbackdeploymentidupdatedescription) - Updates the description for a rollback
-
 ### [AccessGroups](docs/sdks/accessgroups/README.md)
 
 * [readAccessGroup](docs/sdks/accessgroups/README.md#readaccessgroup) - Reads an access group
@@ -357,6 +356,19 @@ run();
 * [updateCheck](docs/sdks/checks/README.md#updatecheck) - Update a check
 * [rerequestCheck](docs/sdks/checks/README.md#rerequestcheck) - Rerequest a check
 
+### [ChecksV2](docs/sdks/checksv2/README.md)
+
+* [listProjectChecks](docs/sdks/checksv2/README.md#listprojectchecks) - List all checks for a project
+* [createProjectCheck](docs/sdks/checksv2/README.md#createprojectcheck) - Create a check
+* [getProjectCheck](docs/sdks/checksv2/README.md#getprojectcheck) - Get a check
+* [updateProjectCheck](docs/sdks/checksv2/README.md#updateprojectcheck) - Update a check
+* [deleteProjectCheck](docs/sdks/checksv2/README.md#deleteprojectcheck) - Delete a check
+* [listCheckRuns](docs/sdks/checksv2/README.md#listcheckruns) - List runs for a check
+* [listDeploymentCheckRuns](docs/sdks/checksv2/README.md#listdeploymentcheckruns) - List check runs for a deployment
+* [createDeploymentCheckRun](docs/sdks/checksv2/README.md#createdeploymentcheckrun) - Create a check run
+* [getDeploymentCheckRun](docs/sdks/checksv2/README.md#getdeploymentcheckrun) - Get a check run
+* [updateDeploymentCheckRun](docs/sdks/checksv2/README.md#updatedeploymentcheckrun) - Update a check run
+
 ### [Connect](docs/sdks/connect/README.md)
 
 * [listNetworks](docs/sdks/connect/README.md#listnetworks) - List Secure Compute networks
@@ -398,6 +410,7 @@ run();
 ### [DomainsRegistrar](docs/sdks/domainsregistrar/README.md)
 
 * [getSupportedTlds](docs/sdks/domainsregistrar/README.md#getsupportedtlds) - Get supported TLDs
+* [getTld](docs/sdks/domainsregistrar/README.md#gettld) - Get TLD
 * [getTldPrice](docs/sdks/domainsregistrar/README.md#gettldprice) - Get TLD price data
 * [getDomainAvailability](docs/sdks/domainsregistrar/README.md#getdomainavailability) - Get availability for a domain
 * [getDomainPrice](docs/sdks/domainsregistrar/README.md#getdomainprice) - Get price data for a domain
@@ -503,6 +516,7 @@ run();
 * [updateResource](docs/sdks/marketplace/README.md#updateresource) - Update Resource
 * [submitBillingData](docs/sdks/marketplace/README.md#submitbillingdata) - Submit Billing Data
 * [submitInvoice](docs/sdks/marketplace/README.md#submitinvoice) - Submit Invoice
+* [finalizeInstallation](docs/sdks/marketplace/README.md#finalizeinstallation) - Finalize Installation
 * [getInvoice](docs/sdks/marketplace/README.md#getinvoice) - Get Invoice
 * [updateInvoice](docs/sdks/marketplace/README.md#updateinvoice) - Invoice Actions
 * [submitPrepaymentBalances](docs/sdks/marketplace/README.md#submitprepaymentbalances) - Submit Prepayment Balances
@@ -545,6 +559,7 @@ run();
 * [acceptProjectTransferRequest](docs/sdks/projects/README.md#acceptprojecttransferrequest) - Accept project transfer request
 * [updateProjectProtectionBypass](docs/sdks/projects/README.md#updateprojectprotectionbypass) - Update Protection Bypass for Automation
 * [requestRollback](docs/sdks/projects/README.md#requestrollback) - Points all production domains for a project to the given deploy
+* [patchV1ProjectsProjectIdRollbackDeploymentIdUpdateDescription](docs/sdks/projects/README.md#patchv1projectsprojectidrollbackdeploymentidupdatedescription) - Updates the description for a rollback
 * [requestPromote](docs/sdks/projects/README.md#requestpromote) - Points all production domains for a project to the given deploy
 * [listPromoteAliases](docs/sdks/projects/README.md#listpromotealiases) - Gets a list of aliases with status for the current promote
 * [pauseProject](docs/sdks/projects/README.md#pauseproject) - Pause a project
@@ -596,6 +611,7 @@ run();
 ### [User](docs/sdks/user/README.md)
 
 * [listUserEvents](docs/sdks/user/README.md#listuserevents) - List User Events
+* [listEventTypes](docs/sdks/user/README.md#listeventtypes) - List Event Types
 * [getAuthUser](docs/sdks/user/README.md#getauthuser) - Get the User
 * [requestDelete](docs/sdks/user/README.md#requestdelete) - Delete User Account
 
@@ -669,6 +685,16 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`checksGetCheck`](docs/sdks/checks/README.md#getcheck) - Get a single check
 - [`checksRerequestCheck`](docs/sdks/checks/README.md#rerequestcheck) - Rerequest a check
 - [`checksUpdateCheck`](docs/sdks/checks/README.md#updatecheck) - Update a check
+- [`checksV2CreateDeploymentCheckRun`](docs/sdks/checksv2/README.md#createdeploymentcheckrun) - Create a check run
+- [`checksV2CreateProjectCheck`](docs/sdks/checksv2/README.md#createprojectcheck) - Create a check
+- [`checksV2DeleteProjectCheck`](docs/sdks/checksv2/README.md#deleteprojectcheck) - Delete a check
+- [`checksV2GetDeploymentCheckRun`](docs/sdks/checksv2/README.md#getdeploymentcheckrun) - Get a check run
+- [`checksV2GetProjectCheck`](docs/sdks/checksv2/README.md#getprojectcheck) - Get a check
+- [`checksV2ListCheckRuns`](docs/sdks/checksv2/README.md#listcheckruns) - List runs for a check
+- [`checksV2ListDeploymentCheckRuns`](docs/sdks/checksv2/README.md#listdeploymentcheckruns) - List check runs for a deployment
+- [`checksV2ListProjectChecks`](docs/sdks/checksv2/README.md#listprojectchecks) - List all checks for a project
+- [`checksV2UpdateDeploymentCheckRun`](docs/sdks/checksv2/README.md#updatedeploymentcheckrun) - Update a check run
+- [`checksV2UpdateProjectCheck`](docs/sdks/checksv2/README.md#updateprojectcheck) - Update a check
 - [`connectCreateNetwork`](docs/sdks/connect/README.md#createnetwork) - Create a Secure Compute network
 - [`connectDeleteNetwork`](docs/sdks/connect/README.md#deletenetwork) - Delete a Secure Compute network
 - [`connectListNetworks`](docs/sdks/connect/README.md#listnetworks) - List Secure Compute networks
@@ -707,6 +733,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`domainsRegistrarGetDomainTransferIn`](docs/sdks/domainsregistrar/README.md#getdomaintransferin) - Get a domain's transfer status
 - [`domainsRegistrarGetOrder`](docs/sdks/domainsregistrar/README.md#getorder) - Get a domain order
 - [`domainsRegistrarGetSupportedTlds`](docs/sdks/domainsregistrar/README.md#getsupportedtlds) - Get supported TLDs
+- [`domainsRegistrarGetTld`](docs/sdks/domainsregistrar/README.md#gettld) - Get TLD
 - [`domainsRegistrarGetTldPrice`](docs/sdks/domainsregistrar/README.md#gettldprice) - Get TLD price data
 - [`domainsRegistrarRenewDomain`](docs/sdks/domainsregistrar/README.md#renewdomain) - Renew a domain
 - [`domainsRegistrarTransferInDomain`](docs/sdks/domainsregistrar/README.md#transferindomain) - Transfer-in a domain
@@ -774,6 +801,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`marketplaceDeleteIntegrationResource`](docs/sdks/marketplace/README.md#deleteintegrationresource) - Delete Integration Resource
 - [`marketplaceExchangeSsoToken`](docs/sdks/authentication/README.md#exchangessotoken) - SSO Token Exchange
 - [`marketplaceExchangeSsoToken`](docs/sdks/marketplace/README.md#exchangessotoken) - SSO Token Exchange
+- [`marketplaceFinalizeInstallation`](docs/sdks/marketplace/README.md#finalizeinstallation) - Finalize Installation
 - [`marketplaceGetAccountInfo`](docs/sdks/marketplace/README.md#getaccountinfo) - Get Account Information
 - [`marketplaceGetIntegrationResource`](docs/sdks/marketplace/README.md#getintegrationresource) - Get Integration Resource
 - [`marketplaceGetIntegrationResources`](docs/sdks/marketplace/README.md#getintegrationresources) - Get Integration Resources
@@ -791,7 +819,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`marketplaceUpdateResource`](docs/sdks/marketplace/README.md#updateresource) - Update Resource
 - [`marketplaceUpdateResourceSecrets`](docs/sdks/marketplace/README.md#updateresourcesecrets) - Update Resource Secrets (Deprecated)
 - [`marketplaceUpdateResourceSecretsById`](docs/sdks/marketplace/README.md#updateresourcesecretsbyid) - Update Resource Secrets
-- [`patchV1ProjectsProjectIdRollbackDeploymentIdUpdateDescription`](docs/sdks/vercel/README.md#patchv1projectsprojectidrollbackdeploymentidupdatedescription) - Updates the description for a rollback
 - [`projectMembersAddProjectMember`](docs/sdks/projectmembers/README.md#addprojectmember) - Adds a new member to a project.
 - [`projectMembersGetProjectMembers`](docs/sdks/projectmembers/README.md#getprojectmembers) - List project members
 - [`projectMembersRemoveProjectMember`](docs/sdks/projectmembers/README.md#removeprojectmember) - Remove a Project Member
@@ -810,6 +837,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`projectsGetProjects`](docs/sdks/projects/README.md#getprojects) - Retrieve a list of projects
 - [`projectsListPromoteAliases`](docs/sdks/projects/README.md#listpromotealiases) - Gets a list of aliases with status for the current promote
 - [`projectsMoveProjectDomain`](docs/sdks/projects/README.md#moveprojectdomain) - Move a project domain
+- [`projectsPatchV1ProjectsProjectIdRollbackDeploymentIdUpdateDescription`](docs/sdks/projects/README.md#patchv1projectsprojectidrollbackdeploymentidupdatedescription) - Updates the description for a rollback
 - [`projectsPauseProject`](docs/sdks/projects/README.md#pauseproject) - Pause a project
 - [`projectsRemoveProjectDomain`](docs/sdks/projects/README.md#removeprojectdomain) - Remove a domain from a project
 - [`projectsRemoveProjectEnv`](docs/sdks/projects/README.md#removeprojectenv) - Remove an environment variable
@@ -851,6 +879,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`teamsRequestAccessToTeam`](docs/sdks/teams/README.md#requestaccesstoteam) - Request access to a team
 - [`teamsUpdateTeamMember`](docs/sdks/teams/README.md#updateteammember) - Update a Team Member
 - [`userGetAuthUser`](docs/sdks/user/README.md#getauthuser) - Get the User
+- [`userListEventTypes`](docs/sdks/user/README.md#listeventtypes) - List Event Types
 - [`userListUserEvents`](docs/sdks/user/README.md#listuserevents) - List User Events
 - [`userRequestDelete`](docs/sdks/user/README.md#requestdelete) - Delete User Account
 - [`webhooksCreateWebhook`](docs/sdks/webhooks/README.md#createwebhook) - Creates a webhook
@@ -950,12 +979,15 @@ To change the default retry strategy for a single API call, simply provide a ret
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
-const vercel = new Vercel();
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
 async function run() {
-  await vercel.patchV1ProjectsProjectIdRollbackDeploymentIdUpdateDescription({
-    projectId: "<id>",
-    deploymentId: "<id>",
+  const result = await vercel.accessGroups.readAccessGroup({
+    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   }, {
     retries: {
       strategy: "backoff",
@@ -968,6 +1000,8 @@ async function run() {
       retryConnectionErrors: false,
     },
   });
+
+  console.log(result);
 }
 
 run();
@@ -989,13 +1023,17 @@ const vercel = new Vercel({
     },
     retryConnectionErrors: false,
   },
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  await vercel.patchV1ProjectsProjectIdRollbackDeploymentIdUpdateDescription({
-    projectId: "<id>",
-    deploymentId: "<id>",
+  const result = await vercel.accessGroups.readAccessGroup({
+    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
+
+  console.log(result);
 }
 
 run();
@@ -1059,7 +1097,7 @@ run();
 **Primary error:**
 * [`VercelError`](./src/models/vercelerror.ts): The base class for HTTP error responses.
 
-<details><summary>Less common errors (30)</summary>
+<details><summary>Less common errors (31)</summary>
 
 <br />
 
@@ -1072,30 +1110,31 @@ run();
 
 
 **Inherit from [`VercelError`](./src/models/vercelerror.ts)**:
-* [`HttpApiDecodeError`](./src/models/httpapidecodeerror.ts): The request did not match the expected schema. Status code `400`. Applicable to 15 of 233 methods.*
-* [`Unauthorized`](./src/models/unauthorized.ts): Unauthorized. Status code `401`. Applicable to 15 of 233 methods.*
-* [`NotAuthorizedForScope`](./src/models/notauthorizedforscope.ts): NotAuthorizedForScope. Status code `403`. Applicable to 15 of 233 methods.*
-* [`TooManyRequests`](./src/models/toomanyrequests.ts): TooManyRequests. Status code `429`. Applicable to 15 of 233 methods.*
-* [`InternalServerError`](./src/models/internalservererror.ts): InternalServerError. Status code `500`. Applicable to 15 of 233 methods.*
-* [`Forbidden`](./src/models/forbidden.ts): NotAuthorizedForScope. Status code `403`. Applicable to 9 of 233 methods.*
-* [`TldNotSupported`](./src/models/tldnotsupported.ts): The TLD is not currently supported. Status code `400`. Applicable to 6 of 233 methods.*
-* [`DomainTooShort`](./src/models/domaintooshort.ts): The domain name (excluding the TLD) is too short. Status code `400`. Applicable to 5 of 233 methods.*
-* [`BadRequest`](./src/models/badrequest.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 233 methods.*
-* [`DomainNotRegistered`](./src/models/domainnotregistered.ts): The domain is not registered with Vercel. Status code `400`. Applicable to 4 of 233 methods.*
-* [`ExpectedPriceMismatch`](./src/models/expectedpricemismatch.ts): The expected price passed does not match the actual price. Status code `400`. Applicable to 4 of 233 methods.*
-* [`DomainNotAvailable`](./src/models/domainnotavailable.ts): The domain is not available. Status code `400`. Applicable to 4 of 233 methods.*
-* [`DomainNotFound`](./src/models/domainnotfound.ts): The domain was not found in our system. Status code `404`. Applicable to 4 of 233 methods.*
-* [`NotFound`](./src/models/notfound.ts): NotFound. Status code `404`. Applicable to 3 of 233 methods.*
-* [`OrderTooExpensive`](./src/models/ordertooexpensive.ts): The total price of the order is too high. Status code `400`. Applicable to 2 of 233 methods.*
-* [`InvalidAdditionalContactInfo`](./src/models/invalidadditionalcontactinfo.ts): Additional contact information provided for the TLD is invalid. Status code `400`. Applicable to 2 of 233 methods.*
-* [`AdditionalContactInfoRequired`](./src/models/additionalcontactinforequired.ts): Additional contact information is required for the TLD. Status code `400`. Applicable to 2 of 233 methods.*
-* [`TooManyDomains`](./src/models/toomanydomains.ts): The number of domains in the order is too high. Status code `400`. Applicable to 1 of 233 methods.*
-* [`DuplicateDomains`](./src/models/duplicatedomains.ts): Duplicate domains were provided. Status code `400`. Applicable to 1 of 233 methods.*
-* [`DomainAlreadyOwned`](./src/models/domainalreadyowned.ts): The domain is already owned by another team or user. Status code `400`. Applicable to 1 of 233 methods.*
-* [`DNSSECEnabled`](./src/models/dnssecenabled.ts): The operation cannot be completed because DNSSEC is enabled for the domain. Status code `400`. Applicable to 1 of 233 methods.*
-* [`DomainAlreadyRenewing`](./src/models/domainalreadyrenewing.ts): The domain is already renewing. Status code `400`. Applicable to 1 of 233 methods.*
-* [`DomainNotRenewable`](./src/models/domainnotrenewable.ts): The domain is not renewable. Status code `400`. Applicable to 1 of 233 methods.*
-* [`DomainCannotBeTransferedOutUntil`](./src/models/domaincannotbetransferedoutuntil.ts): The domain cannot be transfered out until the specified date. Status code `409`. Applicable to 1 of 233 methods.*
+* [`HttpApiDecodeError`](./src/models/httpapidecodeerror.ts): The request did not match the expected schema. Status code `400`. Applicable to 16 of 246 methods.*
+* [`Unauthorized`](./src/models/unauthorized.ts): Unauthorized. Status code `401`. Applicable to 16 of 246 methods.*
+* [`NotAuthorizedForScope`](./src/models/notauthorizedforscope.ts): NotAuthorizedForScope. Status code `403`. Applicable to 16 of 246 methods.*
+* [`TooManyRequests`](./src/models/toomanyrequests.ts): TooManyRequests. Status code `429`. Applicable to 16 of 246 methods.*
+* [`InternalServerError`](./src/models/internalservererror.ts): InternalServerError. Status code `500`. Applicable to 16 of 246 methods.*
+* [`Forbidden`](./src/models/forbidden.ts): NotAuthorizedForScope. Status code `403`. Applicable to 9 of 246 methods.*
+* [`TldNotSupported`](./src/models/tldnotsupported.ts): The TLD is not currently supported. Status code `400`. Applicable to 7 of 246 methods.*
+* [`DomainTooShort`](./src/models/domaintooshort.ts): The domain name (excluding the TLD) is too short. Status code `400`. Applicable to 5 of 246 methods.*
+* [`BadRequest`](./src/models/badrequest.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 246 methods.*
+* [`DomainNotRegistered`](./src/models/domainnotregistered.ts): The domain is not registered with Vercel. Status code `400`. Applicable to 4 of 246 methods.*
+* [`ExpectedPriceMismatch`](./src/models/expectedpricemismatch.ts): The expected price passed does not match the actual price. Status code `400`. Applicable to 4 of 246 methods.*
+* [`DomainNotAvailable`](./src/models/domainnotavailable.ts): The domain is not available. Status code `400`. Applicable to 4 of 246 methods.*
+* [`DomainNotFound`](./src/models/domainnotfound.ts): The domain was not found in our system. Status code `404`. Applicable to 4 of 246 methods.*
+* [`NotFound`](./src/models/notfound.ts): NotFound. Status code `404`. Applicable to 3 of 246 methods.*
+* [`OrderTooExpensive`](./src/models/ordertooexpensive.ts): The total price of the order is too high. Status code `400`. Applicable to 2 of 246 methods.*
+* [`InvalidAdditionalContactInfo`](./src/models/invalidadditionalcontactinfo.ts): Additional contact information provided for the TLD is invalid. Status code `400`. Applicable to 2 of 246 methods.*
+* [`AdditionalContactInfoRequired`](./src/models/additionalcontactinforequired.ts): Additional contact information is required for the TLD. Status code `400`. Applicable to 2 of 246 methods.*
+* [`LanguageCodeRequired`](./src/models/languagecoderequired.ts): A language code is required for punycode domains. Status code `400`. Applicable to 2 of 246 methods.*
+* [`TooManyDomains`](./src/models/toomanydomains.ts): The number of domains in the order is too high. Status code `400`. Applicable to 1 of 246 methods.*
+* [`DuplicateDomains`](./src/models/duplicatedomains.ts): Duplicate domains were provided. Status code `400`. Applicable to 1 of 246 methods.*
+* [`DomainAlreadyOwned`](./src/models/domainalreadyowned.ts): The domain is already owned by another team or user. Status code `400`. Applicable to 1 of 246 methods.*
+* [`DNSSECEnabled`](./src/models/dnssecenabled.ts): The operation cannot be completed because DNSSEC is enabled for the domain. Status code `400`. Applicable to 1 of 246 methods.*
+* [`DomainAlreadyRenewing`](./src/models/domainalreadyrenewing.ts): The domain is already renewing. Status code `400`. Applicable to 1 of 246 methods.*
+* [`DomainNotRenewable`](./src/models/domainnotrenewable.ts): The domain is not renewable. Status code `400`. Applicable to 1 of 246 methods.*
+* [`DomainCannotBeTransferedOutUntil`](./src/models/domaincannotbetransferedoutuntil.ts): The domain cannot be transfered out until the specified date. Status code `409`. Applicable to 1 of 246 methods.*
 * [`ResponseValidationError`](./src/models/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>
@@ -1114,13 +1153,17 @@ import { Vercel } from "@vercel/sdk";
 
 const vercel = new Vercel({
   serverURL: "https://api.vercel.com",
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  await vercel.patchV1ProjectsProjectIdRollbackDeploymentIdUpdateDescription({
-    projectId: "<id>",
-    deploymentId: "<id>",
+  const result = await vercel.accessGroups.readAccessGroup({
+    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
+
+  console.log(result);
 }
 
 run();
@@ -1141,19 +1184,23 @@ The `HTTPClient` constructor takes an optional `fetcher` argument that can be
 used to integrate a third-party HTTP client or when writing tests to mock out
 the HTTP client and feed in fixtures.
 
-The following example shows how to use the `"beforeRequest"` hook to to add a
-custom header and a timeout to requests and how to use the `"requestError"` hook
-to log errors:
+The following example shows how to:
+- route requests through a proxy server using [undici](https://www.npmjs.com/package/undici)'s ProxyAgent
+- use the `"beforeRequest"` hook to add a custom header and a timeout to requests
+- use the `"requestError"` hook to log errors
 
 ```typescript
 import { Vercel } from "@vercel/sdk";
+import { ProxyAgent } from "undici";
 import { HTTPClient } from "@vercel/sdk/lib/http";
 
+const dispatcher = new ProxyAgent("http://proxy.example.com:8080");
+
 const httpClient = new HTTPClient({
-  // fetcher takes a function that has the same signature as native `fetch`.
-  fetcher: (request) => {
-    return fetch(request);
-  }
+  // 'fetcher' takes a function that has the same signature as native 'fetch'.
+  fetcher: (input, init) =>
+    // 'dispatcher' is specific to undici and not part of the standard Fetch API.
+    fetch(input, { ...init, dispatcher } as RequestInit),
 });
 
 httpClient.addHook("beforeRequest", (request) => {

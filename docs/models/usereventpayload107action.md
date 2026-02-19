@@ -11,5 +11,5 @@ let value: UserEventPayload107Action = "enabled";
 ## Values
 
 ```typescript
-"enabled" | "disabled" | "regenerated" | "updated"
+"enabled" | "disabled"
 ```

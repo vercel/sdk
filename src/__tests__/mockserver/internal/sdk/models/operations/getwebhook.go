@@ -84,6 +84,9 @@ const (
 	GetWebhookEventProjectCreated                                     GetWebhookEvent = "project.created"
 	GetWebhookEventProjectRemoved                                     GetWebhookEvent = "project.removed"
 	GetWebhookEventProjectRenamed                                     GetWebhookEvent = "project.renamed"
+	GetWebhookEventProjectEnvVariableCreated                          GetWebhookEvent = "project.env-variable.created"
+	GetWebhookEventProjectEnvVariableUpdated                          GetWebhookEvent = "project.env-variable.updated"
+	GetWebhookEventProjectEnvVariableDeleted                          GetWebhookEvent = "project.env-variable.deleted"
 	GetWebhookEventProjectDomainCreated                               GetWebhookEvent = "project.domain.created"
 	GetWebhookEventProjectDomainUpdated                               GetWebhookEvent = "project.domain.updated"
 	GetWebhookEventProjectDomainDeleted                               GetWebhookEvent = "project.domain.deleted"
@@ -122,6 +125,14 @@ const (
 	GetWebhookEventObservabilityErrorAnomaly                          GetWebhookEvent = "observability.error-anomaly"
 	GetWebhookEventBotidAnomaly                                       GetWebhookEvent = "botid.anomaly"
 	GetWebhookEventTestWebhook                                        GetWebhookEvent = "test-webhook"
+	GetWebhookEventCommentCreated                                     GetWebhookEvent = "comment.created"
+	GetWebhookEventCommentUpdated                                     GetWebhookEvent = "comment.updated"
+	GetWebhookEventCommentDeleted                                     GetWebhookEvent = "comment.deleted"
+	GetWebhookEventCommentResolved                                    GetWebhookEvent = "comment.resolved"
+	GetWebhookEventCommentUnresolved                                  GetWebhookEvent = "comment.unresolved"
+	GetWebhookEventCommentReactionAdded                               GetWebhookEvent = "comment.reaction-added"
+	GetWebhookEventCommentReactionRemoved                             GetWebhookEvent = "comment.reaction-removed"
+	GetWebhookEventCommentMentioned                                   GetWebhookEvent = "comment.mentioned"
 )
 
 func (e GetWebhookEvent) ToPointer() *GetWebhookEvent {
@@ -219,6 +230,12 @@ func (e *GetWebhookEvent) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "project.renamed":
 		fallthrough
+	case "project.env-variable.created":
+		fallthrough
+	case "project.env-variable.updated":
+		fallthrough
+	case "project.env-variable.deleted":
+		fallthrough
 	case "project.domain.created":
 		fallthrough
 	case "project.domain.updated":
@@ -294,6 +311,22 @@ func (e *GetWebhookEvent) UnmarshalJSON(data []byte) error {
 	case "botid.anomaly":
 		fallthrough
 	case "test-webhook":
+		fallthrough
+	case "comment.created":
+		fallthrough
+	case "comment.updated":
+		fallthrough
+	case "comment.deleted":
+		fallthrough
+	case "comment.resolved":
+		fallthrough
+	case "comment.unresolved":
+		fallthrough
+	case "comment.reaction-added":
+		fallthrough
+	case "comment.reaction-removed":
+		fallthrough
+	case "comment.mentioned":
 		*e = GetWebhookEvent(v)
 		return nil
 	default:

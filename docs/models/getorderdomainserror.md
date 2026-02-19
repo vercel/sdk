@@ -9,7 +9,7 @@
 const value: models.GetOrderError1 = {
   code: "cannot-transfer-in-until",
   details: {
-    numDaysUntilTransferrable: 8639.69,
+    numDaysUntilTransferrable: 520.02,
   },
 };
 ```

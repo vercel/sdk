@@ -65,6 +65,16 @@ const value: models.DomainNotAvailable = {
 };
 ```
 
+### `models.LanguageCodeRequired`
+
+```typescript
+const value: models.LanguageCodeRequired = {
+  status: 8352.8,
+  code: "language_code_required",
+  message: "<value>",
+};
+```
+
 ### `models.TldNotSupported`
 
 ```typescript

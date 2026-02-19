@@ -10,6 +10,6 @@ let value: UserEventPayload135Previous = {};
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `skewProtectionMaxAge` | *number*               | :heavy_minus_sign:     | N/A                    |
+| Field                                              | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `branchMatcher`                                    | [models.BranchMatcher](../models/branchmatcher.md) | :heavy_minus_sign:                                 | N/A                                                |

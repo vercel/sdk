@@ -6339,7 +6339,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"store":{"projectsMetadata":[{"id":"<id>","projectId":"<id>","name":"<value>","environments":[],"envVarPrefix":"<value>","environmentVariables":["<value 1>","<value 2>"]}],"usageQuotaExceeded":true,"status":"available","externalResourceId":"<id>","product":{"integration":{"id":"<id>","name":"<value>","slug":"<value>","icon":"<value>"},"integrationConfigurationId":"<id>","supportedProtocols":[]},"secrets":[]}}
+              {"store":{"projectsMetadata":[{"id":"<id>","projectId":"<id>","name":"<value>","environments":[],"envVarPrefix":"<value>","environmentVariables":["<value 1>","<value 2>"]}],"usageQuotaExceeded":true,"status":"available","externalResourceId":"<id>","product":{"resourceTitle":"Instance","integration":{"id":"<id>","name":"<value>","slug":"<value>","icon":"<value>"},"integrationConfigurationId":"<id>","supportedProtocols":[]},"secrets":[]}}
             type: simple
     x-speakeasy-test-group: integrations
     x-speakeasy-test-rebuild: true
@@ -7257,6 +7257,13 @@ workflows:
             condition: |
               {"uid":"kr1PsOIzqEL5Xg6M4VZcZosf","username":"john-doe","email":"john@user.co","role":"MEMBER","teamRoles":["MEMBER"],"teamPermissions":["CreateProject"]}
             type: simple
+        parameters:
+          - name: teamId
+            in: path
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
     x-speakeasy-test-group: teams
     x-speakeasy-test-rebuild: true
   - workflowId: put_/v1/bulk-redirects
@@ -7714,4 +7721,292 @@ workflows:
               {"items":{},"updatedAt":3968.81,"digest":"<value>"}
             type: simple
     x-speakeasy-test-group: marketplace
+    x-speakeasy-test-rebuild: true
+  - workflowId: listProjectChecks
+    steps:
+      - stepId: test
+        operationId: listProjectChecks
+        parameters:
+          - name: projectIdOrName
+            in: path
+            value: <value>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"checks":[{"id":"<id>","name":"<value>","ownerId":"<id>","projectId":"<id>","isRerequestable":false,"requires":"none","source":{"kind":"git-provider","provider":"gitlab","externalCheckName":"<value>"},"blocks":"deployment-alias","targets":["<value 1>","<value 2>","<value 3>"],"sourceKind":"integration","timeout":7907.15,"createdAt":8323.07,"updatedAt":2126.19}]}
+            type: simple
+    x-speakeasy-test-group: checks-v2
+    x-speakeasy-test-rebuild: true
+  - workflowId: createProjectCheck
+    steps:
+      - stepId: test
+        operationId: createProjectCheck
+        parameters:
+          - name: projectIdOrName
+            in: path
+            value: <value>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"id":"<id>","name":"<value>","ownerId":"<id>","projectId":"<id>","isRerequestable":false,"requires":"none","source":{"kind":"git-provider","provider":"github","externalCheckName":"<value>"},"blocks":"build-start","targets":["<value 1>","<value 2>"],"sourceKind":"webhook","timeout":3857.24,"createdAt":8346.78,"updatedAt":5501.55}
+            type: simple
+    x-speakeasy-test-group: checks-v2
+    x-speakeasy-test-rebuild: true
+  - workflowId: getProjectCheck
+    steps:
+      - stepId: test
+        operationId: getProjectCheck
+        parameters:
+          - name: projectIdOrName
+            in: path
+            value: <value>
+          - name: checkId
+            in: path
+            value: stf_89ha9sdhh9a9
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"id":"<id>","name":"<value>","ownerId":"<id>","projectId":"<id>","isRerequestable":false,"requires":"deployment-url","source":{"kind":"integration","integrationId":"<id>","integrationConfigurationId":"<id>"},"blocks":"deployment-promotion","targets":["<value 1>","<value 2>"],"sourceKind":"integration","timeout":371.16,"createdAt":1812.63,"updatedAt":2669.44}
+            type: simple
+    x-speakeasy-test-group: checks-v2
+    x-speakeasy-test-rebuild: true
+  - workflowId: updateProjectCheck
+    steps:
+      - stepId: test
+        operationId: updateProjectCheck
+        parameters:
+          - name: projectIdOrName
+            in: path
+            value: <value>
+          - name: checkId
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"id":"<id>","name":"<value>","ownerId":"<id>","projectId":"<id>","isRerequestable":false,"requires":"none","source":{"kind":"webhook"},"blocks":"deployment-start","targets":["<value 1>"],"sourceKind":"integration","timeout":6604.77,"createdAt":6849.47,"updatedAt":1044.45}
+            type: simple
+    x-speakeasy-test-group: checks-v2
+    x-speakeasy-test-rebuild: true
+  - workflowId: deleteProjectCheck
+    steps:
+      - stepId: test
+        operationId: deleteProjectCheck
+        parameters:
+          - name: projectIdOrName
+            in: path
+            value: <value>
+          - name: checkId
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"success":true}
+            type: simple
+    x-speakeasy-test-group: checks-v2
+    x-speakeasy-test-rebuild: true
+  - workflowId: listCheckRuns
+    steps:
+      - stepId: test
+        operationId: listCheckRuns
+        parameters:
+          - name: projectIdOrName
+            in: path
+            value: <value>
+          - name: checkId
+            in: path
+            value: ckr_89ha9sdhh9a9
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"runs":[{"id":"<id>","name":"<value>","checkId":"<id>","ownerId":"<id>","deploymentId":"<id>","source":{"kind":"git-provider","provider":"gitlab","externalCheckName":"<value>"},"status":"running","timeout":2183.78,"createdAt":8028.57,"updatedAt":5968.89}]}
+            type: simple
+    x-speakeasy-test-group: checks-v2
+    x-speakeasy-test-rebuild: true
+  - workflowId: listDeploymentCheckRuns
+    steps:
+      - stepId: test
+        operationId: listDeploymentCheckRuns
+        parameters:
+          - name: deploymentId
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"runs":[]}
+            type: simple
+    x-speakeasy-test-group: checks-v2
+    x-speakeasy-test-rebuild: true
+  - workflowId: createDeploymentCheckRun
+    steps:
+      - stepId: test
+        operationId: createDeploymentCheckRun
+        parameters:
+          - name: deploymentId
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"id":"<id>","name":"<value>","checkId":"<id>","ownerId":"<id>","deploymentId":"<id>","source":{"kind":"git-provider","provider":"gitlab","externalCheckName":"<value>"},"status":"queued","timeout":900.28,"createdAt":917.6,"updatedAt":853.91}
+            type: simple
+    x-speakeasy-test-group: checks-v2
+    x-speakeasy-test-rebuild: true
+  - workflowId: getDeploymentCheckRun
+    steps:
+      - stepId: test
+        operationId: getDeploymentCheckRun
+        parameters:
+          - name: deploymentId
+            in: path
+            value: <id>
+          - name: checkRunId
+            in: path
+            value: ckr_89ha9sdhh9a9
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"id":"<id>","name":"<value>","checkId":"<id>","ownerId":"<id>","deploymentId":"<id>","source":{"kind":"integration","integrationId":"<id>","integrationConfigurationId":"<id>"},"status":"running","timeout":9092.1,"createdAt":1450.24,"updatedAt":966.92}
+            type: simple
+    x-speakeasy-test-group: checks-v2
+    x-speakeasy-test-rebuild: true
+  - workflowId: updateDeploymentCheckRun
+    steps:
+      - stepId: test
+        operationId: updateDeploymentCheckRun
+        parameters:
+          - name: deploymentId
+            in: path
+            value: <id>
+          - name: checkRunId
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"id":"<id>","name":"<value>","checkId":"<id>","ownerId":"<id>","deploymentId":"<id>","source":{"kind":"integration","integrationId":"<id>","integrationConfigurationId":"<id>"},"status":"running","timeout":49.19,"createdAt":3033.31,"updatedAt":5693.16}
+            type: simple
+    x-speakeasy-test-group: checks-v2
+    x-speakeasy-test-rebuild: true
+  - workflowId: getTld
+    steps:
+      - stepId: test
+        operationId: getTld
+        parameters:
+          - name: tld
+            in: path
+            value: <value>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"supportedLanguageCodes":{"key":"<value>"}}
+            type: simple
+    x-speakeasy-test-group: domains-registrar
+    x-speakeasy-test-rebuild: true
+  - workflowId: listEventTypes
+    steps:
+      - stepId: test
+        operationId: listEventTypes
+        parameters:
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"types":[{"replacedBy":["<value 1>","<value 2>"],"deprecated":false,"name":"domain-transfer-in","description":"woot baritone lasting ah foot when worth whether bleakly"}]}
+            type: simple
+    x-speakeasy-test-group: user
     x-speakeasy-test-rebuild: true

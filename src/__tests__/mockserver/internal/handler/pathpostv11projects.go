@@ -60,8 +60,9 @@ func testCreateProjectCreateProject0(w http.ResponseWriter, req *http.Request) {
 			DeploymentID: types.String("<id>"),
 			Definitions:  []operations.CreateProjectDefinition{},
 		},
-		DirectoryListing: true,
-		ID:               "<id>",
+		DeploymentExpiration: operations.CreateProjectDeploymentExpiration{},
+		DirectoryListing:     true,
+		ID:                   "<id>",
 		LatestDeployments: []operations.CreateProjectLatestDeployment{
 			operations.CreateProjectLatestDeployment{
 				CreatedAt: 79.03,

@@ -1285,6 +1285,7 @@ const (
 	CreateDeploymentFrameworkRequestRuby           CreateDeploymentFrameworkRequest = "ruby"
 	CreateDeploymentFrameworkRequestRust           CreateDeploymentFrameworkRequest = "rust"
 	CreateDeploymentFrameworkRequestNode           CreateDeploymentFrameworkRequest = "node"
+	CreateDeploymentFrameworkRequestGo             CreateDeploymentFrameworkRequest = "go"
 	CreateDeploymentFrameworkRequestServices       CreateDeploymentFrameworkRequest = "services"
 )
 
@@ -1420,6 +1421,8 @@ func (e *CreateDeploymentFrameworkRequest) UnmarshalJSON(data []byte) error {
 	case "rust":
 		fallthrough
 	case "node":
+		fallthrough
+	case "go":
 		fallthrough
 	case "services":
 		*e = CreateDeploymentFrameworkRequest(v)
@@ -1952,6 +1955,7 @@ const (
 	CreateDeploymentFrameworkLambdasRuby           CreateDeploymentFrameworkLambdas = "ruby"
 	CreateDeploymentFrameworkLambdasRust           CreateDeploymentFrameworkLambdas = "rust"
 	CreateDeploymentFrameworkLambdasNode           CreateDeploymentFrameworkLambdas = "node"
+	CreateDeploymentFrameworkLambdasGo             CreateDeploymentFrameworkLambdas = "go"
 	CreateDeploymentFrameworkLambdasServices       CreateDeploymentFrameworkLambdas = "services"
 )
 
@@ -2087,6 +2091,8 @@ func (e *CreateDeploymentFrameworkLambdas) UnmarshalJSON(data []byte) error {
 	case "rust":
 		fallthrough
 	case "node":
+		fallthrough
+	case "go":
 		fallthrough
 	case "services":
 		*e = CreateDeploymentFrameworkLambdas(v)
@@ -5642,38 +5648,36 @@ func (e *CreateDeploymentArchitecture) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// CreateDeploymentFunctionsType - Event type - must be "queue/v1beta" (REQUIRED)
-type CreateDeploymentFunctionsType string
+// CreateDeploymentTypeQueueV2beta - Event type - must be "queue/v2beta" (REQUIRED)
+type CreateDeploymentTypeQueueV2beta string
 
 const (
-	CreateDeploymentFunctionsTypeQueueV1beta CreateDeploymentFunctionsType = "queue/v1beta"
+	CreateDeploymentTypeQueueV2betaQueueV2beta CreateDeploymentTypeQueueV2beta = "queue/v2beta"
 )
 
-func (e CreateDeploymentFunctionsType) ToPointer() *CreateDeploymentFunctionsType {
+func (e CreateDeploymentTypeQueueV2beta) ToPointer() *CreateDeploymentTypeQueueV2beta {
 	return &e
 }
-func (e *CreateDeploymentFunctionsType) UnmarshalJSON(data []byte) error {
+func (e *CreateDeploymentTypeQueueV2beta) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
-	case "queue/v1beta":
-		*e = CreateDeploymentFunctionsType(v)
+	case "queue/v2beta":
+		*e = CreateDeploymentTypeQueueV2beta(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateDeploymentFunctionsType: %v", v)
+		return fmt.Errorf("invalid value for CreateDeploymentTypeQueueV2beta: %v", v)
 	}
 }
 
-// CreateDeploymentExperimentalTrigger - Queue trigger event for Vercel's queue system. Handles "queue/v1beta" events with queue-specific configuration.
-type CreateDeploymentExperimentalTrigger struct {
-	// Event type - must be "queue/v1beta" (REQUIRED)
-	Type CreateDeploymentFunctionsType `json:"type"`
+// CreateDeploymentExperimentalTriggerQueueV2beta - Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed.
+type CreateDeploymentExperimentalTriggerQueueV2beta struct {
+	// Event type - must be "queue/v2beta" (REQUIRED)
+	Type CreateDeploymentTypeQueueV2beta `json:"type"`
 	// Name of the queue topic to consume from (REQUIRED)
 	Topic string `json:"topic"`
-	// Name of the consumer group for this trigger (REQUIRED)
-	Consumer string `json:"consumer"`
 	// Maximum number of delivery attempts for message processing (OPTIONAL) This represents the total number of times a message can be delivered, not the number of retries. Must be at least 1 if specified. Behavior when not specified depends on the server's default configuration.
 	MaxDeliveries *float64 `json:"maxDeliveries,omitempty"`
 	// Delay in seconds before retrying failed executions (OPTIONAL) Behavior when not specified depends on the server's default configuration.
@@ -5684,64 +5688,257 @@ type CreateDeploymentExperimentalTrigger struct {
 	MaxConcurrency *float64 `json:"maxConcurrency,omitempty"`
 }
 
-func (o *CreateDeploymentExperimentalTrigger) GetType() CreateDeploymentFunctionsType {
+func (c CreateDeploymentExperimentalTriggerQueueV2beta) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateDeploymentExperimentalTriggerQueueV2beta) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "topic"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateDeploymentExperimentalTriggerQueueV2beta) GetType() CreateDeploymentTypeQueueV2beta {
 	if o == nil {
-		return CreateDeploymentFunctionsType("")
+		return CreateDeploymentTypeQueueV2beta("")
 	}
 	return o.Type
 }
 
-func (o *CreateDeploymentExperimentalTrigger) GetTopic() string {
+func (o *CreateDeploymentExperimentalTriggerQueueV2beta) GetTopic() string {
 	if o == nil {
 		return ""
 	}
 	return o.Topic
 }
 
-func (o *CreateDeploymentExperimentalTrigger) GetConsumer() string {
-	if o == nil {
-		return ""
-	}
-	return o.Consumer
-}
-
-func (o *CreateDeploymentExperimentalTrigger) GetMaxDeliveries() *float64 {
+func (o *CreateDeploymentExperimentalTriggerQueueV2beta) GetMaxDeliveries() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.MaxDeliveries
 }
 
-func (o *CreateDeploymentExperimentalTrigger) GetRetryAfterSeconds() *float64 {
+func (o *CreateDeploymentExperimentalTriggerQueueV2beta) GetRetryAfterSeconds() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.RetryAfterSeconds
 }
 
-func (o *CreateDeploymentExperimentalTrigger) GetInitialDelaySeconds() *float64 {
+func (o *CreateDeploymentExperimentalTriggerQueueV2beta) GetInitialDelaySeconds() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.InitialDelaySeconds
 }
 
-func (o *CreateDeploymentExperimentalTrigger) GetMaxConcurrency() *float64 {
+func (o *CreateDeploymentExperimentalTriggerQueueV2beta) GetMaxConcurrency() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.MaxConcurrency
 }
 
+// CreateDeploymentTypeQueueV1beta - Event type - must be "queue/v1beta" (REQUIRED)
+type CreateDeploymentTypeQueueV1beta string
+
+const (
+	CreateDeploymentTypeQueueV1betaQueueV1beta CreateDeploymentTypeQueueV1beta = "queue/v1beta"
+)
+
+func (e CreateDeploymentTypeQueueV1beta) ToPointer() *CreateDeploymentTypeQueueV1beta {
+	return &e
+}
+func (e *CreateDeploymentTypeQueueV1beta) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "queue/v1beta":
+		*e = CreateDeploymentTypeQueueV1beta(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateDeploymentTypeQueueV1beta: %v", v)
+	}
+}
+
+// CreateDeploymentExperimentalTriggerQueueV1beta - Queue trigger input event for v1beta (from vercel.json config). Requires explicit consumer name.
+type CreateDeploymentExperimentalTriggerQueueV1beta struct {
+	// Event type - must be "queue/v1beta" (REQUIRED)
+	Type CreateDeploymentTypeQueueV1beta `json:"type"`
+	// Name of the consumer group for this trigger (REQUIRED)
+	Consumer string `json:"consumer"`
+	// Name of the queue topic to consume from (REQUIRED)
+	Topic string `json:"topic"`
+	// Maximum number of delivery attempts for message processing (OPTIONAL) This represents the total number of times a message can be delivered, not the number of retries. Must be at least 1 if specified. Behavior when not specified depends on the server's default configuration.
+	MaxDeliveries *float64 `json:"maxDeliveries,omitempty"`
+	// Delay in seconds before retrying failed executions (OPTIONAL) Behavior when not specified depends on the server's default configuration.
+	RetryAfterSeconds *float64 `json:"retryAfterSeconds,omitempty"`
+	// Initial delay in seconds before first execution attempt (OPTIONAL) Must be 0 or greater. Use 0 for no initial delay. Behavior when not specified depends on the server's default configuration.
+	InitialDelaySeconds *float64 `json:"initialDelaySeconds,omitempty"`
+	// Maximum number of concurrent executions for this consumer (OPTIONAL) Must be at least 1 if specified. Behavior when not specified depends on the server's default configuration.
+	MaxConcurrency *float64 `json:"maxConcurrency,omitempty"`
+}
+
+func (c CreateDeploymentExperimentalTriggerQueueV1beta) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateDeploymentExperimentalTriggerQueueV1beta) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "consumer", "topic"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateDeploymentExperimentalTriggerQueueV1beta) GetType() CreateDeploymentTypeQueueV1beta {
+	if o == nil {
+		return CreateDeploymentTypeQueueV1beta("")
+	}
+	return o.Type
+}
+
+func (o *CreateDeploymentExperimentalTriggerQueueV1beta) GetConsumer() string {
+	if o == nil {
+		return ""
+	}
+	return o.Consumer
+}
+
+func (o *CreateDeploymentExperimentalTriggerQueueV1beta) GetTopic() string {
+	if o == nil {
+		return ""
+	}
+	return o.Topic
+}
+
+func (o *CreateDeploymentExperimentalTriggerQueueV1beta) GetMaxDeliveries() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.MaxDeliveries
+}
+
+func (o *CreateDeploymentExperimentalTriggerQueueV1beta) GetRetryAfterSeconds() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RetryAfterSeconds
+}
+
+func (o *CreateDeploymentExperimentalTriggerQueueV1beta) GetInitialDelaySeconds() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.InitialDelaySeconds
+}
+
+func (o *CreateDeploymentExperimentalTriggerQueueV1beta) GetMaxConcurrency() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.MaxConcurrency
+}
+
+type CreateDeploymentExperimentalTriggerUnionType string
+
+const (
+	CreateDeploymentExperimentalTriggerUnionTypeQueueV1beta CreateDeploymentExperimentalTriggerUnionType = "queue/v1beta"
+	CreateDeploymentExperimentalTriggerUnionTypeQueueV2beta CreateDeploymentExperimentalTriggerUnionType = "queue/v2beta"
+)
+
+type CreateDeploymentExperimentalTriggerUnion struct {
+	CreateDeploymentExperimentalTriggerQueueV1beta *CreateDeploymentExperimentalTriggerQueueV1beta `queryParam:"inline"`
+	CreateDeploymentExperimentalTriggerQueueV2beta *CreateDeploymentExperimentalTriggerQueueV2beta `queryParam:"inline"`
+
+	Type CreateDeploymentExperimentalTriggerUnionType
+}
+
+func CreateCreateDeploymentExperimentalTriggerUnionQueueV1beta(queueV1beta CreateDeploymentExperimentalTriggerQueueV1beta) CreateDeploymentExperimentalTriggerUnion {
+	typ := CreateDeploymentExperimentalTriggerUnionTypeQueueV1beta
+
+	typStr := CreateDeploymentTypeQueueV1beta(typ)
+	queueV1beta.Type = typStr
+
+	return CreateDeploymentExperimentalTriggerUnion{
+		CreateDeploymentExperimentalTriggerQueueV1beta: &queueV1beta,
+		Type: typ,
+	}
+}
+
+func CreateCreateDeploymentExperimentalTriggerUnionQueueV2beta(queueV2beta CreateDeploymentExperimentalTriggerQueueV2beta) CreateDeploymentExperimentalTriggerUnion {
+	typ := CreateDeploymentExperimentalTriggerUnionTypeQueueV2beta
+
+	typStr := CreateDeploymentTypeQueueV2beta(typ)
+	queueV2beta.Type = typStr
+
+	return CreateDeploymentExperimentalTriggerUnion{
+		CreateDeploymentExperimentalTriggerQueueV2beta: &queueV2beta,
+		Type: typ,
+	}
+}
+
+func (u *CreateDeploymentExperimentalTriggerUnion) UnmarshalJSON(data []byte) error {
+
+	type discriminator struct {
+		Type string `json:"type"`
+	}
+
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Type {
+	case "queue/v1beta":
+		createDeploymentExperimentalTriggerQueueV1beta := new(CreateDeploymentExperimentalTriggerQueueV1beta)
+		if err := utils.UnmarshalJSON(data, &createDeploymentExperimentalTriggerQueueV1beta, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == queue/v1beta) type CreateDeploymentExperimentalTriggerQueueV1beta within CreateDeploymentExperimentalTriggerUnion: %w", string(data), err)
+		}
+
+		u.CreateDeploymentExperimentalTriggerQueueV1beta = createDeploymentExperimentalTriggerQueueV1beta
+		u.Type = CreateDeploymentExperimentalTriggerUnionTypeQueueV1beta
+		return nil
+	case "queue/v2beta":
+		createDeploymentExperimentalTriggerQueueV2beta := new(CreateDeploymentExperimentalTriggerQueueV2beta)
+		if err := utils.UnmarshalJSON(data, &createDeploymentExperimentalTriggerQueueV2beta, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == queue/v2beta) type CreateDeploymentExperimentalTriggerQueueV2beta within CreateDeploymentExperimentalTriggerUnion: %w", string(data), err)
+		}
+
+		u.CreateDeploymentExperimentalTriggerQueueV2beta = createDeploymentExperimentalTriggerQueueV2beta
+		u.Type = CreateDeploymentExperimentalTriggerUnionTypeQueueV2beta
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateDeploymentExperimentalTriggerUnion", string(data))
+}
+
+func (u CreateDeploymentExperimentalTriggerUnion) MarshalJSON() ([]byte, error) {
+	if u.CreateDeploymentExperimentalTriggerQueueV1beta != nil {
+		return utils.MarshalJSON(u.CreateDeploymentExperimentalTriggerQueueV1beta, "", true)
+	}
+
+	if u.CreateDeploymentExperimentalTriggerQueueV2beta != nil {
+		return utils.MarshalJSON(u.CreateDeploymentExperimentalTriggerQueueV2beta, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateDeploymentExperimentalTriggerUnion: all fields are null")
+}
+
 type CreateDeploymentFunctions struct {
-	Architecture         *CreateDeploymentArchitecture         `json:"architecture,omitempty"`
-	Memory               *float64                              `json:"memory,omitempty"`
-	MaxDuration          *float64                              `json:"maxDuration,omitempty"`
-	Runtime              *string                               `json:"runtime,omitempty"`
-	IncludeFiles         *string                               `json:"includeFiles,omitempty"`
-	ExcludeFiles         *string                               `json:"excludeFiles,omitempty"`
-	ExperimentalTriggers []CreateDeploymentExperimentalTrigger `json:"experimentalTriggers,omitempty"`
-	SupportsCancellation *bool                                 `json:"supportsCancellation,omitempty"`
+	Architecture            *CreateDeploymentArchitecture              `json:"architecture,omitempty"`
+	Memory                  *float64                                   `json:"memory,omitempty"`
+	MaxDuration             *float64                                   `json:"maxDuration,omitempty"`
+	Regions                 []string                                   `json:"regions,omitempty"`
+	FunctionFailoverRegions []string                                   `json:"functionFailoverRegions,omitempty"`
+	Runtime                 *string                                    `json:"runtime,omitempty"`
+	IncludeFiles            *string                                    `json:"includeFiles,omitempty"`
+	ExcludeFiles            *string                                    `json:"excludeFiles,omitempty"`
+	ExperimentalTriggers    []CreateDeploymentExperimentalTriggerUnion `json:"experimentalTriggers,omitempty"`
+	SupportsCancellation    *bool                                      `json:"supportsCancellation,omitempty"`
 }
 
 func (o *CreateDeploymentFunctions) GetArchitecture() *CreateDeploymentArchitecture {
@@ -5765,6 +5962,20 @@ func (o *CreateDeploymentFunctions) GetMaxDuration() *float64 {
 	return o.MaxDuration
 }
 
+func (o *CreateDeploymentFunctions) GetRegions() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Regions
+}
+
+func (o *CreateDeploymentFunctions) GetFunctionFailoverRegions() []string {
+	if o == nil {
+		return nil
+	}
+	return o.FunctionFailoverRegions
+}
+
 func (o *CreateDeploymentFunctions) GetRuntime() *string {
 	if o == nil {
 		return nil
@@ -5786,7 +5997,7 @@ func (o *CreateDeploymentFunctions) GetExcludeFiles() *string {
 	return o.ExcludeFiles
 }
 
-func (o *CreateDeploymentFunctions) GetExperimentalTriggers() []CreateDeploymentExperimentalTrigger {
+func (o *CreateDeploymentFunctions) GetExperimentalTriggers() []CreateDeploymentExperimentalTriggerUnion {
 	if o == nil {
 		return nil
 	}
@@ -9086,115 +9297,6 @@ func (o *CreateDeploymentBuildQueue) GetConfiguration() *CreateDeploymentConfigu
 	return o.Configuration
 }
 
-// CreateDeploymentDefault - Build resource configuration snapshot for this deployment.
-type CreateDeploymentDefault string
-
-const (
-	CreateDeploymentDefaultStandard CreateDeploymentDefault = "standard"
-	CreateDeploymentDefaultEnhanced CreateDeploymentDefault = "enhanced"
-	CreateDeploymentDefaultTurbo    CreateDeploymentDefault = "turbo"
-)
-
-func (e CreateDeploymentDefault) ToPointer() *CreateDeploymentDefault {
-	return &e
-}
-func (e *CreateDeploymentDefault) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "standard":
-		fallthrough
-	case "enhanced":
-		fallthrough
-	case "turbo":
-		*e = CreateDeploymentDefault(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CreateDeploymentDefault: %v", v)
-	}
-}
-
-// CreateDeploymentPurchaseType - Build resource configuration snapshot for this deployment.
-type CreateDeploymentPurchaseType string
-
-const (
-	CreateDeploymentPurchaseTypeStandard CreateDeploymentPurchaseType = "standard"
-	CreateDeploymentPurchaseTypeEnhanced CreateDeploymentPurchaseType = "enhanced"
-	CreateDeploymentPurchaseTypeTurbo    CreateDeploymentPurchaseType = "turbo"
-)
-
-func (e CreateDeploymentPurchaseType) ToPointer() *CreateDeploymentPurchaseType {
-	return &e
-}
-func (e *CreateDeploymentPurchaseType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "standard":
-		fallthrough
-	case "enhanced":
-		fallthrough
-	case "turbo":
-		*e = CreateDeploymentPurchaseType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CreateDeploymentPurchaseType: %v", v)
-	}
-}
-
-// CreateDeploymentBuildMachine - Build resource configuration snapshot for this deployment.
-type CreateDeploymentBuildMachine struct {
-	// Build resource configuration snapshot for this deployment.
-	Default *CreateDeploymentDefault `json:"default,omitempty"`
-	// Build resource configuration snapshot for this deployment.
-	PurchaseType *CreateDeploymentPurchaseType `json:"purchaseType,omitempty"`
-	// Build resource configuration snapshot for this deployment.
-	IsDefaultBuildMachine *bool `json:"isDefaultBuildMachine,omitempty"`
-	// Build resource configuration snapshot for this deployment.
-	Cores *float64 `json:"cores,omitempty"`
-	// Build resource configuration snapshot for this deployment.
-	Memory *float64 `json:"memory,omitempty"`
-}
-
-func (o *CreateDeploymentBuildMachine) GetDefault() *CreateDeploymentDefault {
-	if o == nil {
-		return nil
-	}
-	return o.Default
-}
-
-func (o *CreateDeploymentBuildMachine) GetPurchaseType() *CreateDeploymentPurchaseType {
-	if o == nil {
-		return nil
-	}
-	return o.PurchaseType
-}
-
-func (o *CreateDeploymentBuildMachine) GetIsDefaultBuildMachine() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.IsDefaultBuildMachine
-}
-
-func (o *CreateDeploymentBuildMachine) GetCores() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Cores
-}
-
-func (o *CreateDeploymentBuildMachine) GetMemory() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Memory
-}
-
 // CreateDeploymentElasticConcurrency - When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues
 type CreateDeploymentElasticConcurrency string
 
@@ -9225,14 +9327,64 @@ func (e *CreateDeploymentElasticConcurrency) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// CreateDeploymentPurchaseType - Machine type that was used for the build.
+type CreateDeploymentPurchaseType string
+
+const (
+	CreateDeploymentPurchaseTypeStandard CreateDeploymentPurchaseType = "standard"
+	CreateDeploymentPurchaseTypeEnhanced CreateDeploymentPurchaseType = "enhanced"
+	CreateDeploymentPurchaseTypeTurbo    CreateDeploymentPurchaseType = "turbo"
+)
+
+func (e CreateDeploymentPurchaseType) ToPointer() *CreateDeploymentPurchaseType {
+	return &e
+}
+func (e *CreateDeploymentPurchaseType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "standard":
+		fallthrough
+	case "enhanced":
+		fallthrough
+	case "turbo":
+		*e = CreateDeploymentPurchaseType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateDeploymentPurchaseType: %v", v)
+	}
+}
+
+type CreateDeploymentBuildMachine struct {
+	// Machine type that was used for the build.
+	PurchaseType *CreateDeploymentPurchaseType `json:"purchaseType,omitempty"`
+	// Whether the build machine is the default build machine.
+	IsDefaultBuildMachine *bool `json:"isDefaultBuildMachine,omitempty"`
+}
+
+func (o *CreateDeploymentBuildMachine) GetPurchaseType() *CreateDeploymentPurchaseType {
+	if o == nil {
+		return nil
+	}
+	return o.PurchaseType
+}
+
+func (o *CreateDeploymentBuildMachine) GetIsDefaultBuildMachine() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsDefaultBuildMachine
+}
+
 // CreateDeploymentResourceConfig - Build resource configuration snapshot for this deployment.
 type CreateDeploymentResourceConfig struct {
 	// Build resource configuration snapshot for this deployment.
 	BuildQueue *CreateDeploymentBuildQueue `json:"buildQueue,omitempty"`
-	// Build resource configuration snapshot for this deployment.
-	BuildMachine *CreateDeploymentBuildMachine `json:"buildMachine,omitempty"`
 	// When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues
 	ElasticConcurrency *CreateDeploymentElasticConcurrency `json:"elasticConcurrency,omitempty"`
+	BuildMachine       *CreateDeploymentBuildMachine       `json:"buildMachine,omitempty"`
 }
 
 func (o *CreateDeploymentResourceConfig) GetBuildQueue() *CreateDeploymentBuildQueue {
@@ -9242,18 +9394,18 @@ func (o *CreateDeploymentResourceConfig) GetBuildQueue() *CreateDeploymentBuildQ
 	return o.BuildQueue
 }
 
-func (o *CreateDeploymentResourceConfig) GetBuildMachine() *CreateDeploymentBuildMachine {
-	if o == nil {
-		return nil
-	}
-	return o.BuildMachine
-}
-
 func (o *CreateDeploymentResourceConfig) GetElasticConcurrency() *CreateDeploymentElasticConcurrency {
 	if o == nil {
 		return nil
 	}
 	return o.ElasticConcurrency
+}
+
+func (o *CreateDeploymentResourceConfig) GetBuildMachine() *CreateDeploymentBuildMachine {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachine
 }
 
 // CreateDeploymentConfig - Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured

@@ -8,16 +8,18 @@ The payload of the event, if requested.
 import { TwoHundredAndFour } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndFour = {
-  projectId: "<id>",
-  projectName: "<value>",
+  action: "mutate",
+  data: {
+    "key": "<value>",
+    "key1": "<value>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `projectId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `projectName`                                                          | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `projectWebAnalytics`                                                  | [models.ProjectWebAnalytics](../models/projectwebanalytics.md)         | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `prevProjectWebAnalytics`                                              | [models.PrevProjectWebAnalytics](../models/prevprojectwebanalytics.md) | :heavy_minus_sign:                                                     | N/A                                                                    |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `subscriptionId`                                                           | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `action`                                                                   | [models.UserEventPayload204Action](../models/usereventpayload204action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `data`                                                                     | Record<string, *any*>                                                      | :heavy_check_mark:                                                         | N/A                                                                        |

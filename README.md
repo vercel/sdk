@@ -600,6 +600,26 @@ run();
 * [approveRollingReleaseStage](docs/sdks/rollingrelease/README.md#approverollingreleasestage) - Update the active rolling release to the next stage for a project
 * [completeRollingRelease](docs/sdks/rollingrelease/README.md#completerollingrelease) - Complete the rolling release for the project
 
+### [Sandboxes](docs/sdks/sandboxes/README.md)
+
+* [listSandboxes](docs/sdks/sandboxes/README.md#listsandboxes) - List sandboxes
+* [listSnapshots](docs/sdks/sandboxes/README.md#listsnapshots) - List snapshots
+* [getSandbox](docs/sdks/sandboxes/README.md#getsandbox) - Get a sandbox
+* [listCommands](docs/sdks/sandboxes/README.md#listcommands) - List commands
+* [runCommand](docs/sdks/sandboxes/README.md#runcommand) - Execute a command
+* [killCommand](docs/sdks/sandboxes/README.md#killcommand) - Kill a command
+* [stopSandbox](docs/sdks/sandboxes/README.md#stopsandbox) - Stop a sandbox
+* [extendSandboxTimeout](docs/sdks/sandboxes/README.md#extendsandboxtimeout) - Extend sandbox timeout
+* [updateNetworkPolicy](docs/sdks/sandboxes/README.md#updatenetworkpolicy) - Update network policy
+* [getCommand](docs/sdks/sandboxes/README.md#getcommand) - Get a command
+* [getCommandLogs](docs/sdks/sandboxes/README.md#getcommandlogs) - Stream command logs
+* [readFile](docs/sdks/sandboxes/README.md#readfile) - Read a file
+* [createDirectory](docs/sdks/sandboxes/README.md#createdirectory) - Create a directory
+* [writeFiles](docs/sdks/sandboxes/README.md#writefiles) - Write files
+* [getSnapshot](docs/sdks/sandboxes/README.md#getsnapshot) - Get a snapshot
+* [deleteSnapshot](docs/sdks/sandboxes/README.md#deletesnapshot) - Delete a snapshot
+* [createSnapshot](docs/sdks/sandboxes/README.md#createsnapshot) - Create a snapshot
+
 ### [Security](docs/sdks/security/README.md)
 
 * [updateAttackChallengeMode](docs/sdks/security/README.md#updateattackchallengemode) - Update Attack Challenge mode
@@ -899,6 +919,23 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`rollingReleaseGetRollingReleaseBillingStatus`](docs/sdks/rollingrelease/README.md#getrollingreleasebillingstatus) - Get rolling release billing status
 - [`rollingReleaseGetRollingReleaseConfig`](docs/sdks/rollingrelease/README.md#getrollingreleaseconfig) - Get rolling release configuration
 - [`rollingReleaseUpdateRollingReleaseConfig`](docs/sdks/rollingrelease/README.md#updaterollingreleaseconfig) - Update the rolling release settings for the project
+- [`sandboxesCreateDirectory`](docs/sdks/sandboxes/README.md#createdirectory) - Create a directory
+- [`sandboxesCreateSnapshot`](docs/sdks/sandboxes/README.md#createsnapshot) - Create a snapshot
+- [`sandboxesDeleteSnapshot`](docs/sdks/sandboxes/README.md#deletesnapshot) - Delete a snapshot
+- [`sandboxesExtendSandboxTimeout`](docs/sdks/sandboxes/README.md#extendsandboxtimeout) - Extend sandbox timeout
+- [`sandboxesGetCommand`](docs/sdks/sandboxes/README.md#getcommand) - Get a command
+- [`sandboxesGetCommandLogs`](docs/sdks/sandboxes/README.md#getcommandlogs) - Stream command logs
+- [`sandboxesGetSandbox`](docs/sdks/sandboxes/README.md#getsandbox) - Get a sandbox
+- [`sandboxesGetSnapshot`](docs/sdks/sandboxes/README.md#getsnapshot) - Get a snapshot
+- [`sandboxesKillCommand`](docs/sdks/sandboxes/README.md#killcommand) - Kill a command
+- [`sandboxesListCommands`](docs/sdks/sandboxes/README.md#listcommands) - List commands
+- [`sandboxesListSandboxes`](docs/sdks/sandboxes/README.md#listsandboxes) - List sandboxes
+- [`sandboxesListSnapshots`](docs/sdks/sandboxes/README.md#listsnapshots) - List snapshots
+- [`sandboxesReadFile`](docs/sdks/sandboxes/README.md#readfile) - Read a file
+- [`sandboxesRunCommand`](docs/sdks/sandboxes/README.md#runcommand) - Execute a command
+- [`sandboxesStopSandbox`](docs/sdks/sandboxes/README.md#stopsandbox) - Stop a sandbox
+- [`sandboxesUpdateNetworkPolicy`](docs/sdks/sandboxes/README.md#updatenetworkpolicy) - Update network policy
+- [`sandboxesWriteFiles`](docs/sdks/sandboxes/README.md#writefiles) - Write files
 - [`securityAddBypassIp`](docs/sdks/security/README.md#addbypassip) - Create System Bypass Rule
 - [`securityGetActiveAttackStatus`](docs/sdks/security/README.md#getactiveattackstatus) - Read active attack data
 - [`securityGetBypassIp`](docs/sdks/security/README.md#getbypassip) - Read System Bypass
@@ -1154,31 +1191,31 @@ run();
 
 
 **Inherit from [`VercelError`](./src/models/vercelerror.ts)**:
-* [`HttpApiDecodeError`](./src/models/httpapidecodeerror.ts): The request did not match the expected schema. Status code `400`. Applicable to 16 of 265 methods.*
-* [`Unauthorized`](./src/models/unauthorized.ts): Unauthorized. Status code `401`. Applicable to 16 of 265 methods.*
-* [`NotAuthorizedForScope`](./src/models/notauthorizedforscope.ts): NotAuthorizedForScope. Status code `403`. Applicable to 16 of 265 methods.*
-* [`TooManyRequests`](./src/models/toomanyrequests.ts): TooManyRequests. Status code `429`. Applicable to 16 of 265 methods.*
-* [`InternalServerError`](./src/models/internalservererror.ts): InternalServerError. Status code `500`. Applicable to 16 of 265 methods.*
-* [`Forbidden`](./src/models/forbidden.ts): NotAuthorizedForScope. Status code `403`. Applicable to 9 of 265 methods.*
-* [`TldNotSupported`](./src/models/tldnotsupported.ts): The TLD is not currently supported. Status code `400`. Applicable to 7 of 265 methods.*
-* [`DomainTooShort`](./src/models/domaintooshort.ts): The domain name (excluding the TLD) is too short. Status code `400`. Applicable to 5 of 265 methods.*
-* [`BadRequest`](./src/models/badrequest.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 265 methods.*
-* [`DomainNotRegistered`](./src/models/domainnotregistered.ts): The domain is not registered with Vercel. Status code `400`. Applicable to 4 of 265 methods.*
-* [`ExpectedPriceMismatch`](./src/models/expectedpricemismatch.ts): The expected price passed does not match the actual price. Status code `400`. Applicable to 4 of 265 methods.*
-* [`DomainNotAvailable`](./src/models/domainnotavailable.ts): The domain is not available. Status code `400`. Applicable to 4 of 265 methods.*
-* [`DomainNotFound`](./src/models/domainnotfound.ts): The domain was not found in our system. Status code `404`. Applicable to 4 of 265 methods.*
-* [`NotFound`](./src/models/notfound.ts): NotFound. Status code `404`. Applicable to 3 of 265 methods.*
-* [`OrderTooExpensive`](./src/models/ordertooexpensive.ts): The total price of the order is too high. Status code `400`. Applicable to 2 of 265 methods.*
-* [`InvalidAdditionalContactInfo`](./src/models/invalidadditionalcontactinfo.ts): Additional contact information provided for the TLD is invalid. Status code `400`. Applicable to 2 of 265 methods.*
-* [`AdditionalContactInfoRequired`](./src/models/additionalcontactinforequired.ts): Additional contact information is required for the TLD. Status code `400`. Applicable to 2 of 265 methods.*
-* [`LanguageCodeRequired`](./src/models/languagecoderequired.ts): A language code is required for punycode domains. Status code `400`. Applicable to 2 of 265 methods.*
-* [`TooManyDomains`](./src/models/toomanydomains.ts): The number of domains in the order is too high. Status code `400`. Applicable to 1 of 265 methods.*
-* [`DuplicateDomains`](./src/models/duplicatedomains.ts): Duplicate domains were provided. Status code `400`. Applicable to 1 of 265 methods.*
-* [`DomainAlreadyOwned`](./src/models/domainalreadyowned.ts): The domain is already owned by another team or user. Status code `400`. Applicable to 1 of 265 methods.*
-* [`DNSSECEnabled`](./src/models/dnssecenabled.ts): The operation cannot be completed because DNSSEC is enabled for the domain. Status code `400`. Applicable to 1 of 265 methods.*
-* [`DomainAlreadyRenewing`](./src/models/domainalreadyrenewing.ts): The domain is already renewing. Status code `400`. Applicable to 1 of 265 methods.*
-* [`DomainNotRenewable`](./src/models/domainnotrenewable.ts): The domain is not renewable. Status code `400`. Applicable to 1 of 265 methods.*
-* [`DomainCannotBeTransferedOutUntil`](./src/models/domaincannotbetransferedoutuntil.ts): The domain cannot be transfered out until the specified date. Status code `409`. Applicable to 1 of 265 methods.*
+* [`HttpApiDecodeError`](./src/models/httpapidecodeerror.ts): The request did not match the expected schema. Status code `400`. Applicable to 16 of 282 methods.*
+* [`Unauthorized`](./src/models/unauthorized.ts): Unauthorized. Status code `401`. Applicable to 16 of 282 methods.*
+* [`NotAuthorizedForScope`](./src/models/notauthorizedforscope.ts): NotAuthorizedForScope. Status code `403`. Applicable to 16 of 282 methods.*
+* [`TooManyRequests`](./src/models/toomanyrequests.ts): TooManyRequests. Status code `429`. Applicable to 16 of 282 methods.*
+* [`InternalServerError`](./src/models/internalservererror.ts): InternalServerError. Status code `500`. Applicable to 16 of 282 methods.*
+* [`Forbidden`](./src/models/forbidden.ts): NotAuthorizedForScope. Status code `403`. Applicable to 9 of 282 methods.*
+* [`TldNotSupported`](./src/models/tldnotsupported.ts): The TLD is not currently supported. Status code `400`. Applicable to 7 of 282 methods.*
+* [`DomainTooShort`](./src/models/domaintooshort.ts): The domain name (excluding the TLD) is too short. Status code `400`. Applicable to 5 of 282 methods.*
+* [`BadRequest`](./src/models/badrequest.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 282 methods.*
+* [`DomainNotRegistered`](./src/models/domainnotregistered.ts): The domain is not registered with Vercel. Status code `400`. Applicable to 4 of 282 methods.*
+* [`ExpectedPriceMismatch`](./src/models/expectedpricemismatch.ts): The expected price passed does not match the actual price. Status code `400`. Applicable to 4 of 282 methods.*
+* [`DomainNotAvailable`](./src/models/domainnotavailable.ts): The domain is not available. Status code `400`. Applicable to 4 of 282 methods.*
+* [`DomainNotFound`](./src/models/domainnotfound.ts): The domain was not found in our system. Status code `404`. Applicable to 4 of 282 methods.*
+* [`NotFound`](./src/models/notfound.ts): NotFound. Status code `404`. Applicable to 3 of 282 methods.*
+* [`OrderTooExpensive`](./src/models/ordertooexpensive.ts): The total price of the order is too high. Status code `400`. Applicable to 2 of 282 methods.*
+* [`InvalidAdditionalContactInfo`](./src/models/invalidadditionalcontactinfo.ts): Additional contact information provided for the TLD is invalid. Status code `400`. Applicable to 2 of 282 methods.*
+* [`AdditionalContactInfoRequired`](./src/models/additionalcontactinforequired.ts): Additional contact information is required for the TLD. Status code `400`. Applicable to 2 of 282 methods.*
+* [`LanguageCodeRequired`](./src/models/languagecoderequired.ts): A language code is required for punycode domains. Status code `400`. Applicable to 2 of 282 methods.*
+* [`TooManyDomains`](./src/models/toomanydomains.ts): The number of domains in the order is too high. Status code `400`. Applicable to 1 of 282 methods.*
+* [`DuplicateDomains`](./src/models/duplicatedomains.ts): Duplicate domains were provided. Status code `400`. Applicable to 1 of 282 methods.*
+* [`DomainAlreadyOwned`](./src/models/domainalreadyowned.ts): The domain is already owned by another team or user. Status code `400`. Applicable to 1 of 282 methods.*
+* [`DNSSECEnabled`](./src/models/dnssecenabled.ts): The operation cannot be completed because DNSSEC is enabled for the domain. Status code `400`. Applicable to 1 of 282 methods.*
+* [`DomainAlreadyRenewing`](./src/models/domainalreadyrenewing.ts): The domain is already renewing. Status code `400`. Applicable to 1 of 282 methods.*
+* [`DomainNotRenewable`](./src/models/domainnotrenewable.ts): The domain is not renewable. Status code `400`. Applicable to 1 of 282 methods.*
+* [`DomainCannotBeTransferedOutUntil`](./src/models/domaincannotbetransferedoutuntil.ts): The domain cannot be transfered out until the specified date. Status code `409`. Applicable to 1 of 282 methods.*
 * [`ResponseValidationError`](./src/models/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>

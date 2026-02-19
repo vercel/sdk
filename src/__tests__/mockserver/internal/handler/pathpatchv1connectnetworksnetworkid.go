@@ -57,7 +57,7 @@ func testUpdateNetworkUpdateNetwork0(w http.ResponseWriter, req *http.Request) {
 		CreatedAt:    9676.6,
 		ID:           "<id>",
 		Name:         "<value>",
-		Status:       components.StatusError,
+		Status:       components.NetworkStatusError,
 		TeamID:       "<id>",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

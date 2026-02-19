@@ -32,11 +32,13 @@ export const Sources = {
 } as const;
 export type Sources = ClosedEnum<typeof Sources>;
 
-export const Environments = {
+export const CreateConfigurableLogDrainEnvironments = {
   Preview: "preview",
   Production: "production",
 } as const;
-export type Environments = ClosedEnum<typeof Environments>;
+export type CreateConfigurableLogDrainEnvironments = ClosedEnum<
+  typeof CreateConfigurableLogDrainEnvironments
+>;
 
 export type CreateConfigurableLogDrainRequestBody = {
   /**
@@ -53,7 +55,7 @@ export type CreateConfigurableLogDrainRequestBody = {
   headers?: { [k: string]: string } | undefined;
   projectIds?: Array<string> | undefined;
   sources: Array<Sources>;
-  environments?: Array<Environments> | undefined;
+  environments?: Array<CreateConfigurableLogDrainEnvironments> | undefined;
   /**
    * Custom secret of log drain
    */
@@ -99,11 +101,14 @@ export const Sources$outboundSchema: z.ZodNativeEnum<typeof Sources> =
   Sources$inboundSchema;
 
 /** @internal */
-export const Environments$inboundSchema: z.ZodNativeEnum<typeof Environments> =
-  z.nativeEnum(Environments);
+export const CreateConfigurableLogDrainEnvironments$inboundSchema:
+  z.ZodNativeEnum<typeof CreateConfigurableLogDrainEnvironments> = z.nativeEnum(
+    CreateConfigurableLogDrainEnvironments,
+  );
 /** @internal */
-export const Environments$outboundSchema: z.ZodNativeEnum<typeof Environments> =
-  Environments$inboundSchema;
+export const CreateConfigurableLogDrainEnvironments$outboundSchema:
+  z.ZodNativeEnum<typeof CreateConfigurableLogDrainEnvironments> =
+    CreateConfigurableLogDrainEnvironments$inboundSchema;
 
 /** @internal */
 export const CreateConfigurableLogDrainRequestBody$inboundSchema: z.ZodType<
@@ -116,7 +121,9 @@ export const CreateConfigurableLogDrainRequestBody$inboundSchema: z.ZodType<
   headers: types.optional(z.record(types.string())),
   projectIds: types.optional(z.array(types.string())),
   sources: z.array(Sources$inboundSchema),
-  environments: types.optional(z.array(Environments$inboundSchema)),
+  environments: types.optional(
+    z.array(CreateConfigurableLogDrainEnvironments$inboundSchema),
+  ),
   secret: types.optional(types.string()),
   samplingRate: types.optional(types.number()),
   name: types.optional(types.string()),
@@ -145,7 +152,8 @@ export const CreateConfigurableLogDrainRequestBody$outboundSchema: z.ZodType<
   headers: z.record(z.string()).optional(),
   projectIds: z.array(z.string()).optional(),
   sources: z.array(Sources$outboundSchema),
-  environments: z.array(Environments$outboundSchema).optional(),
+  environments: z.array(CreateConfigurableLogDrainEnvironments$outboundSchema)
+    .optional(),
   secret: z.string().optional(),
   samplingRate: z.number().optional(),
   name: z.string().optional(),

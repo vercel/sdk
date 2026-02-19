@@ -476,6 +476,31 @@ run();
 * [updateCustomEnvironment](docs/sdks/environment/README.md#updatecustomenvironment) - Update a custom environment
 * [removeCustomEnvironment](docs/sdks/environment/README.md#removecustomenvironment) - Remove a custom environment
 
+### [FeatureFlags](docs/sdks/featureflags/README.md)
+
+* [listFlags](docs/sdks/featureflags/README.md#listflags) - List all flags
+* [createFlag](docs/sdks/featureflags/README.md#createflag) - Create a flag
+* [getFlag](docs/sdks/featureflags/README.md#getflag) - Get a flag
+* [updateFlag](docs/sdks/featureflags/README.md#updateflag) - Update a flag
+* [deleteFlag](docs/sdks/featureflags/README.md#deleteflag) - Delete a flag
+* [listFlagVersions](docs/sdks/featureflags/README.md#listflagversions) - List flag versions
+* [getFlagSettings](docs/sdks/featureflags/README.md#getflagsettings) - Get project flag settings
+* [updateFlagSettings](docs/sdks/featureflags/README.md#updateflagsettings) - Update project flag settings
+* [listTeamFlagSettings](docs/sdks/featureflags/README.md#listteamflagsettings) - List team project flag settings
+* [listTeamFlags](docs/sdks/featureflags/README.md#listteamflags) - List all flags for a team
+* [createFlagSegment](docs/sdks/featureflags/README.md#createflagsegment) - Create a segment
+* [listFlagSegments](docs/sdks/featureflags/README.md#listflagsegments) - List segments
+* [getFlagSegment](docs/sdks/featureflags/README.md#getflagsegment) - Get a segment
+* [deleteFlagSegment](docs/sdks/featureflags/README.md#deleteflagsegment) - Delete a segment
+* [updateFlagSegment](docs/sdks/featureflags/README.md#updateflagsegment) - Update a segment
+* [getDeploymentFeatureFlags](docs/sdks/featureflags/README.md#getdeploymentfeatureflags) - Retrieve the feature flags of a deployment
+
+### [Flags](docs/sdks/flags/README.md)
+
+* [getSDKKeys](docs/sdks/flags/README.md#getsdkkeys) - Get all SDK keys
+* [createSDKKey](docs/sdks/flags/README.md#createsdkkey) - Create an SDK key
+* [deleteSDKKey](docs/sdks/flags/README.md#deletesdkkey) - Delete an SDK key
+
 ### [Integrations](docs/sdks/integrations/README.md)
 
 * [updateIntegrationDeploymentAction](docs/sdks/integrations/README.md#updateintegrationdeploymentaction) - Update deployment integration action
@@ -777,6 +802,25 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`environmentUnlinkSharedEnvVariable`](docs/sdks/environment/README.md#unlinksharedenvvariable) - Disconnects a shared environment variable for a given project
 - [`environmentUpdateCustomEnvironment`](docs/sdks/environment/README.md#updatecustomenvironment) - Update a custom environment
 - [`environmentUpdateSharedEnvVariable`](docs/sdks/environment/README.md#updatesharedenvvariable) - Updates one or more shared environment variables
+- [`featureFlagsCreateFlag`](docs/sdks/featureflags/README.md#createflag) - Create a flag
+- [`featureFlagsCreateFlagSegment`](docs/sdks/featureflags/README.md#createflagsegment) - Create a segment
+- [`featureFlagsDeleteFlag`](docs/sdks/featureflags/README.md#deleteflag) - Delete a flag
+- [`featureFlagsDeleteFlagSegment`](docs/sdks/featureflags/README.md#deleteflagsegment) - Delete a segment
+- [`featureFlagsGetDeploymentFeatureFlags`](docs/sdks/featureflags/README.md#getdeploymentfeatureflags) - Retrieve the feature flags of a deployment
+- [`featureFlagsGetFlag`](docs/sdks/featureflags/README.md#getflag) - Get a flag
+- [`featureFlagsGetFlagSegment`](docs/sdks/featureflags/README.md#getflagsegment) - Get a segment
+- [`featureFlagsGetFlagSettings`](docs/sdks/featureflags/README.md#getflagsettings) - Get project flag settings
+- [`featureFlagsListFlags`](docs/sdks/featureflags/README.md#listflags) - List all flags
+- [`featureFlagsListFlagSegments`](docs/sdks/featureflags/README.md#listflagsegments) - List segments
+- [`featureFlagsListFlagVersions`](docs/sdks/featureflags/README.md#listflagversions) - List flag versions
+- [`featureFlagsListTeamFlags`](docs/sdks/featureflags/README.md#listteamflags) - List all flags for a team
+- [`featureFlagsListTeamFlagSettings`](docs/sdks/featureflags/README.md#listteamflagsettings) - List team project flag settings
+- [`featureFlagsUpdateFlag`](docs/sdks/featureflags/README.md#updateflag) - Update a flag
+- [`featureFlagsUpdateFlagSegment`](docs/sdks/featureflags/README.md#updateflagsegment) - Update a segment
+- [`featureFlagsUpdateFlagSettings`](docs/sdks/featureflags/README.md#updateflagsettings) - Update project flag settings
+- [`flagsCreateSDKKey`](docs/sdks/flags/README.md#createsdkkey) - Create an SDK key
+- [`flagsDeleteSDKKey`](docs/sdks/flags/README.md#deletesdkkey) - Delete an SDK key
+- [`flagsGetSDKKeys`](docs/sdks/flags/README.md#getsdkkeys) - Get all SDK keys
 - [`integrationsConnectIntegrationResourceToProject`](docs/sdks/integrations/README.md#connectintegrationresourcetoproject) - Connect integration resource to project
 - [`integrationsCreateIntegrationStoreDirect`](docs/sdks/integrations/README.md#createintegrationstoredirect) - Create integration store (free and paid plans)
 - [`integrationsDeleteConfiguration`](docs/sdks/integrations/README.md#deleteconfiguration) - Delete an integration configuration
@@ -1110,31 +1154,31 @@ run();
 
 
 **Inherit from [`VercelError`](./src/models/vercelerror.ts)**:
-* [`HttpApiDecodeError`](./src/models/httpapidecodeerror.ts): The request did not match the expected schema. Status code `400`. Applicable to 16 of 246 methods.*
-* [`Unauthorized`](./src/models/unauthorized.ts): Unauthorized. Status code `401`. Applicable to 16 of 246 methods.*
-* [`NotAuthorizedForScope`](./src/models/notauthorizedforscope.ts): NotAuthorizedForScope. Status code `403`. Applicable to 16 of 246 methods.*
-* [`TooManyRequests`](./src/models/toomanyrequests.ts): TooManyRequests. Status code `429`. Applicable to 16 of 246 methods.*
-* [`InternalServerError`](./src/models/internalservererror.ts): InternalServerError. Status code `500`. Applicable to 16 of 246 methods.*
-* [`Forbidden`](./src/models/forbidden.ts): NotAuthorizedForScope. Status code `403`. Applicable to 9 of 246 methods.*
-* [`TldNotSupported`](./src/models/tldnotsupported.ts): The TLD is not currently supported. Status code `400`. Applicable to 7 of 246 methods.*
-* [`DomainTooShort`](./src/models/domaintooshort.ts): The domain name (excluding the TLD) is too short. Status code `400`. Applicable to 5 of 246 methods.*
-* [`BadRequest`](./src/models/badrequest.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 246 methods.*
-* [`DomainNotRegistered`](./src/models/domainnotregistered.ts): The domain is not registered with Vercel. Status code `400`. Applicable to 4 of 246 methods.*
-* [`ExpectedPriceMismatch`](./src/models/expectedpricemismatch.ts): The expected price passed does not match the actual price. Status code `400`. Applicable to 4 of 246 methods.*
-* [`DomainNotAvailable`](./src/models/domainnotavailable.ts): The domain is not available. Status code `400`. Applicable to 4 of 246 methods.*
-* [`DomainNotFound`](./src/models/domainnotfound.ts): The domain was not found in our system. Status code `404`. Applicable to 4 of 246 methods.*
-* [`NotFound`](./src/models/notfound.ts): NotFound. Status code `404`. Applicable to 3 of 246 methods.*
-* [`OrderTooExpensive`](./src/models/ordertooexpensive.ts): The total price of the order is too high. Status code `400`. Applicable to 2 of 246 methods.*
-* [`InvalidAdditionalContactInfo`](./src/models/invalidadditionalcontactinfo.ts): Additional contact information provided for the TLD is invalid. Status code `400`. Applicable to 2 of 246 methods.*
-* [`AdditionalContactInfoRequired`](./src/models/additionalcontactinforequired.ts): Additional contact information is required for the TLD. Status code `400`. Applicable to 2 of 246 methods.*
-* [`LanguageCodeRequired`](./src/models/languagecoderequired.ts): A language code is required for punycode domains. Status code `400`. Applicable to 2 of 246 methods.*
-* [`TooManyDomains`](./src/models/toomanydomains.ts): The number of domains in the order is too high. Status code `400`. Applicable to 1 of 246 methods.*
-* [`DuplicateDomains`](./src/models/duplicatedomains.ts): Duplicate domains were provided. Status code `400`. Applicable to 1 of 246 methods.*
-* [`DomainAlreadyOwned`](./src/models/domainalreadyowned.ts): The domain is already owned by another team or user. Status code `400`. Applicable to 1 of 246 methods.*
-* [`DNSSECEnabled`](./src/models/dnssecenabled.ts): The operation cannot be completed because DNSSEC is enabled for the domain. Status code `400`. Applicable to 1 of 246 methods.*
-* [`DomainAlreadyRenewing`](./src/models/domainalreadyrenewing.ts): The domain is already renewing. Status code `400`. Applicable to 1 of 246 methods.*
-* [`DomainNotRenewable`](./src/models/domainnotrenewable.ts): The domain is not renewable. Status code `400`. Applicable to 1 of 246 methods.*
-* [`DomainCannotBeTransferedOutUntil`](./src/models/domaincannotbetransferedoutuntil.ts): The domain cannot be transfered out until the specified date. Status code `409`. Applicable to 1 of 246 methods.*
+* [`HttpApiDecodeError`](./src/models/httpapidecodeerror.ts): The request did not match the expected schema. Status code `400`. Applicable to 16 of 265 methods.*
+* [`Unauthorized`](./src/models/unauthorized.ts): Unauthorized. Status code `401`. Applicable to 16 of 265 methods.*
+* [`NotAuthorizedForScope`](./src/models/notauthorizedforscope.ts): NotAuthorizedForScope. Status code `403`. Applicable to 16 of 265 methods.*
+* [`TooManyRequests`](./src/models/toomanyrequests.ts): TooManyRequests. Status code `429`. Applicable to 16 of 265 methods.*
+* [`InternalServerError`](./src/models/internalservererror.ts): InternalServerError. Status code `500`. Applicable to 16 of 265 methods.*
+* [`Forbidden`](./src/models/forbidden.ts): NotAuthorizedForScope. Status code `403`. Applicable to 9 of 265 methods.*
+* [`TldNotSupported`](./src/models/tldnotsupported.ts): The TLD is not currently supported. Status code `400`. Applicable to 7 of 265 methods.*
+* [`DomainTooShort`](./src/models/domaintooshort.ts): The domain name (excluding the TLD) is too short. Status code `400`. Applicable to 5 of 265 methods.*
+* [`BadRequest`](./src/models/badrequest.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 265 methods.*
+* [`DomainNotRegistered`](./src/models/domainnotregistered.ts): The domain is not registered with Vercel. Status code `400`. Applicable to 4 of 265 methods.*
+* [`ExpectedPriceMismatch`](./src/models/expectedpricemismatch.ts): The expected price passed does not match the actual price. Status code `400`. Applicable to 4 of 265 methods.*
+* [`DomainNotAvailable`](./src/models/domainnotavailable.ts): The domain is not available. Status code `400`. Applicable to 4 of 265 methods.*
+* [`DomainNotFound`](./src/models/domainnotfound.ts): The domain was not found in our system. Status code `404`. Applicable to 4 of 265 methods.*
+* [`NotFound`](./src/models/notfound.ts): NotFound. Status code `404`. Applicable to 3 of 265 methods.*
+* [`OrderTooExpensive`](./src/models/ordertooexpensive.ts): The total price of the order is too high. Status code `400`. Applicable to 2 of 265 methods.*
+* [`InvalidAdditionalContactInfo`](./src/models/invalidadditionalcontactinfo.ts): Additional contact information provided for the TLD is invalid. Status code `400`. Applicable to 2 of 265 methods.*
+* [`AdditionalContactInfoRequired`](./src/models/additionalcontactinforequired.ts): Additional contact information is required for the TLD. Status code `400`. Applicable to 2 of 265 methods.*
+* [`LanguageCodeRequired`](./src/models/languagecoderequired.ts): A language code is required for punycode domains. Status code `400`. Applicable to 2 of 265 methods.*
+* [`TooManyDomains`](./src/models/toomanydomains.ts): The number of domains in the order is too high. Status code `400`. Applicable to 1 of 265 methods.*
+* [`DuplicateDomains`](./src/models/duplicatedomains.ts): Duplicate domains were provided. Status code `400`. Applicable to 1 of 265 methods.*
+* [`DomainAlreadyOwned`](./src/models/domainalreadyowned.ts): The domain is already owned by another team or user. Status code `400`. Applicable to 1 of 265 methods.*
+* [`DNSSECEnabled`](./src/models/dnssecenabled.ts): The operation cannot be completed because DNSSEC is enabled for the domain. Status code `400`. Applicable to 1 of 265 methods.*
+* [`DomainAlreadyRenewing`](./src/models/domainalreadyrenewing.ts): The domain is already renewing. Status code `400`. Applicable to 1 of 265 methods.*
+* [`DomainNotRenewable`](./src/models/domainnotrenewable.ts): The domain is not renewable. Status code `400`. Applicable to 1 of 265 methods.*
+* [`DomainCannotBeTransferedOutUntil`](./src/models/domaincannotbetransferedoutuntil.ts): The domain cannot be transfered out until the specified date. Status code `409`. Applicable to 1 of 265 methods.*
 * [`ResponseValidationError`](./src/models/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>

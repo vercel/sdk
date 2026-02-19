@@ -8,8 +8,8 @@ import { ConditionGroup } from "@vercel/sdk/models/putfirewallconfigop.js";
 let value: ConditionGroup = {
   conditions: [
     {
-      type: "region",
-      op: "pre",
+      type: "method",
+      op: "gte",
     },
   ],
 };
@@ -17,6 +17,6 @@ let value: ConditionGroup = {
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `conditions`                                   | [models.Conditions](../models/conditions.md)[] | :heavy_check_mark:                             | N/A                                            |
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `conditions`                                                                     | [models.PutFirewallConfigConditions](../models/putfirewallconfigconditions.md)[] | :heavy_check_mark:                                                               | N/A                                                                              |

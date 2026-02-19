@@ -156,7 +156,7 @@ func (e *ListSharedEnvVariableTarget) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type Data struct {
+type ListSharedEnvVariableData struct {
 	// The date when the Shared Env Var was created.
 	Created *time.Time `json:"created,omitempty"`
 	// The name of the Shared Env Var.
@@ -195,137 +195,137 @@ type Data struct {
 	LastEditedByDisplayName *string `json:"lastEditedByDisplayName,omitempty"`
 }
 
-func (d Data) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(d, "", false)
+func (l ListSharedEnvVariableData) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
 }
 
-func (d *Data) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
+func (l *ListSharedEnvVariableData) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Data) GetCreated() *time.Time {
+func (o *ListSharedEnvVariableData) GetCreated() *time.Time {
 	if o == nil {
 		return nil
 	}
 	return o.Created
 }
 
-func (o *Data) GetKey() *string {
+func (o *ListSharedEnvVariableData) GetKey() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Key
 }
 
-func (o *Data) GetOwnerID() *string {
+func (o *ListSharedEnvVariableData) GetOwnerID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.OwnerID
 }
 
-func (o *Data) GetID() *string {
+func (o *ListSharedEnvVariableData) GetID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ID
 }
 
-func (o *Data) GetCreatedBy() *string {
+func (o *ListSharedEnvVariableData) GetCreatedBy() *string {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedBy
 }
 
-func (o *Data) GetDeletedBy() *string {
+func (o *ListSharedEnvVariableData) GetDeletedBy() *string {
 	if o == nil {
 		return nil
 	}
 	return o.DeletedBy
 }
 
-func (o *Data) GetUpdatedBy() *string {
+func (o *ListSharedEnvVariableData) GetUpdatedBy() *string {
 	if o == nil {
 		return nil
 	}
 	return o.UpdatedBy
 }
 
-func (o *Data) GetCreatedAt() *float64 {
+func (o *ListSharedEnvVariableData) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedAt
 }
 
-func (o *Data) GetDeletedAt() *float64 {
+func (o *ListSharedEnvVariableData) GetDeletedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.DeletedAt
 }
 
-func (o *Data) GetUpdatedAt() *float64 {
+func (o *ListSharedEnvVariableData) GetUpdatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.UpdatedAt
 }
 
-func (o *Data) GetValue() *string {
+func (o *ListSharedEnvVariableData) GetValue() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Value
 }
 
-func (o *Data) GetProjectID() []string {
+func (o *ListSharedEnvVariableData) GetProjectID() []string {
 	if o == nil {
 		return nil
 	}
 	return o.ProjectID
 }
 
-func (o *Data) GetType() *ListSharedEnvVariableType {
+func (o *ListSharedEnvVariableData) GetType() *ListSharedEnvVariableType {
 	if o == nil {
 		return nil
 	}
 	return o.Type
 }
 
-func (o *Data) GetTarget() []ListSharedEnvVariableTarget {
+func (o *ListSharedEnvVariableData) GetTarget() []ListSharedEnvVariableTarget {
 	if o == nil {
 		return nil
 	}
 	return o.Target
 }
 
-func (o *Data) GetApplyToAllCustomEnvironments() *bool {
+func (o *ListSharedEnvVariableData) GetApplyToAllCustomEnvironments() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ApplyToAllCustomEnvironments
 }
 
-func (o *Data) GetDecrypted() *bool {
+func (o *ListSharedEnvVariableData) GetDecrypted() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Decrypted
 }
 
-func (o *Data) GetComment() *string {
+func (o *ListSharedEnvVariableData) GetComment() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Comment
 }
 
-func (o *Data) GetLastEditedByDisplayName() *string {
+func (o *ListSharedEnvVariableData) GetLastEditedByDisplayName() *string {
 	if o == nil {
 		return nil
 	}
@@ -333,14 +333,14 @@ func (o *Data) GetLastEditedByDisplayName() *string {
 }
 
 type ListSharedEnvVariableResponseBody struct {
-	Data []Data `json:"data"`
+	Data []ListSharedEnvVariableData `json:"data"`
 	// This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data.
 	Pagination components.Pagination `json:"pagination"`
 }
 
-func (o *ListSharedEnvVariableResponseBody) GetData() []Data {
+func (o *ListSharedEnvVariableResponseBody) GetData() []ListSharedEnvVariableData {
 	if o == nil {
-		return []Data{}
+		return []ListSharedEnvVariableData{}
 	}
 	return o.Data
 }

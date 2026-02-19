@@ -1332,7 +1332,7 @@ export type CreateProjectProjectsCreator = {
   username: string;
 };
 
-export type Targets = {
+export type CreateProjectTargets = {
   alias?: Array<string> | undefined;
   aliasAssigned?: number | boolean | null | undefined;
   builds?: Array<CreateProjectProjectsBuilds> | undefined;
@@ -2194,7 +2194,7 @@ export type CreateProjectResponseBody = {
   sourceFilesOutsideRootDirectory?: boolean | undefined;
   enableAffectedProjectsDeployments?: boolean | undefined;
   ssoProtection?: CreateProjectProjectsSsoProtection | null | undefined;
-  targets?: { [k: string]: Targets | null } | undefined;
+  targets?: { [k: string]: CreateProjectTargets | null } | undefined;
   transferCompletedAt?: number | undefined;
   transferStartedAt?: number | undefined;
   transferToAccountId?: string | undefined;
@@ -6427,37 +6427,40 @@ export function createProjectProjectsCreatorFromJSON(
 }
 
 /** @internal */
-export const Targets$inboundSchema: z.ZodType<Targets, z.ZodTypeDef, unknown> =
-  z.object({
-    alias: types.optional(z.array(types.string())),
-    aliasAssigned: z.nullable(smartUnion([types.number(), types.boolean()]))
-      .optional(),
-    builds: types.optional(
-      z.array(z.lazy(() => CreateProjectProjectsBuilds$inboundSchema)),
-    ),
-    createdAt: types.number(),
-    createdIn: types.string(),
-    creator: types.nullable(
-      z.lazy(() => CreateProjectProjectsCreator$inboundSchema),
-    ),
-    deploymentHostname: types.string(),
-    name: types.string(),
-    forced: types.optional(types.boolean()),
-    id: types.string(),
-    meta: types.optional(z.record(types.string())),
-    plan: types.string(),
-    private: types.boolean(),
-    readyState: types.string(),
-    requestedAt: types.optional(types.number()),
-    target: z.nullable(types.string()).optional(),
-    teamId: z.nullable(types.string()).optional(),
-    type: types.string(),
-    url: types.string(),
-    userId: types.string(),
-    withCache: types.optional(types.boolean()),
-  });
+export const CreateProjectTargets$inboundSchema: z.ZodType<
+  CreateProjectTargets,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  alias: types.optional(z.array(types.string())),
+  aliasAssigned: z.nullable(smartUnion([types.number(), types.boolean()]))
+    .optional(),
+  builds: types.optional(
+    z.array(z.lazy(() => CreateProjectProjectsBuilds$inboundSchema)),
+  ),
+  createdAt: types.number(),
+  createdIn: types.string(),
+  creator: types.nullable(
+    z.lazy(() => CreateProjectProjectsCreator$inboundSchema),
+  ),
+  deploymentHostname: types.string(),
+  name: types.string(),
+  forced: types.optional(types.boolean()),
+  id: types.string(),
+  meta: types.optional(z.record(types.string())),
+  plan: types.string(),
+  private: types.boolean(),
+  readyState: types.string(),
+  requestedAt: types.optional(types.number()),
+  target: z.nullable(types.string()).optional(),
+  teamId: z.nullable(types.string()).optional(),
+  type: types.string(),
+  url: types.string(),
+  userId: types.string(),
+  withCache: types.optional(types.boolean()),
+});
 /** @internal */
-export type Targets$Outbound = {
+export type CreateProjectTargets$Outbound = {
   alias?: Array<string> | undefined;
   aliasAssigned?: number | boolean | null | undefined;
   builds?: Array<CreateProjectProjectsBuilds$Outbound> | undefined;
@@ -6482,10 +6485,10 @@ export type Targets$Outbound = {
 };
 
 /** @internal */
-export const Targets$outboundSchema: z.ZodType<
-  Targets$Outbound,
+export const CreateProjectTargets$outboundSchema: z.ZodType<
+  CreateProjectTargets$Outbound,
   z.ZodTypeDef,
-  Targets
+  CreateProjectTargets
 > = z.object({
   alias: z.array(z.string()).optional(),
   aliasAssigned: z.nullable(smartUnion([z.number(), z.boolean()])).optional(),
@@ -6513,16 +6516,20 @@ export const Targets$outboundSchema: z.ZodType<
   withCache: z.boolean().optional(),
 });
 
-export function targetsToJSON(targets: Targets): string {
-  return JSON.stringify(Targets$outboundSchema.parse(targets));
+export function createProjectTargetsToJSON(
+  createProjectTargets: CreateProjectTargets,
+): string {
+  return JSON.stringify(
+    CreateProjectTargets$outboundSchema.parse(createProjectTargets),
+  );
 }
-export function targetsFromJSON(
+export function createProjectTargetsFromJSON(
   jsonString: string,
-): SafeParseResult<Targets, SDKValidationError> {
+): SafeParseResult<CreateProjectTargets, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Targets$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Targets' from JSON`,
+    (x) => CreateProjectTargets$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectTargets' from JSON`,
   );
 }
 
@@ -10342,7 +10349,7 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => CreateProjectProjectsSsoProtection$inboundSchema),
   ).optional(),
   targets: types.optional(
-    z.record(types.nullable(z.lazy(() => Targets$inboundSchema))),
+    z.record(types.nullable(z.lazy(() => CreateProjectTargets$inboundSchema))),
   ),
   transferCompletedAt: types.optional(types.number()),
   transferStartedAt: types.optional(types.number()),
@@ -10480,7 +10487,7 @@ export type CreateProjectResponseBody$Outbound = {
     | CreateProjectProjectsSsoProtection$Outbound
     | null
     | undefined;
-  targets?: { [k: string]: Targets$Outbound | null } | undefined;
+  targets?: { [k: string]: CreateProjectTargets$Outbound | null } | undefined;
   transferCompletedAt?: number | undefined;
   transferStartedAt?: number | undefined;
   transferToAccountId?: string | undefined;
@@ -10600,8 +10607,9 @@ export const CreateProjectResponseBody$outboundSchema: z.ZodType<
   ssoProtection: z.nullable(
     z.lazy(() => CreateProjectProjectsSsoProtection$outboundSchema),
   ).optional(),
-  targets: z.record(z.nullable(z.lazy(() => Targets$outboundSchema)))
-    .optional(),
+  targets: z.record(
+    z.nullable(z.lazy(() => CreateProjectTargets$outboundSchema)),
+  ).optional(),
   transferCompletedAt: z.number().optional(),
   transferStartedAt: z.number().optional(),
   transferToAccountId: z.string().optional(),

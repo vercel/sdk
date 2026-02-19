@@ -11,7 +11,7 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export type Metadata =
+export type CreateIntegrationStoreDirectMetadata =
   | string
   | number
   | boolean
@@ -270,7 +270,7 @@ export type Capabilities = {
   v0?: boolean | undefined;
 };
 
-export type CreateIntegrationStoreDirectMetadata =
+export type CreateIntegrationStoreDirectIntegrationsMetadata =
   | string
   | number
   | Array<string>
@@ -2317,8 +2317,8 @@ export type CreateIntegrationStoreDirectResponseBody = {
 };
 
 /** @internal */
-export const Metadata$inboundSchema: z.ZodType<
-  Metadata,
+export const CreateIntegrationStoreDirectMetadata$inboundSchema: z.ZodType<
+  CreateIntegrationStoreDirectMetadata,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
@@ -2329,7 +2329,7 @@ export const Metadata$inboundSchema: z.ZodType<
   z.array(types.number()),
 ]);
 /** @internal */
-export type Metadata$Outbound =
+export type CreateIntegrationStoreDirectMetadata$Outbound =
   | string
   | number
   | boolean
@@ -2337,10 +2337,10 @@ export type Metadata$Outbound =
   | Array<number>;
 
 /** @internal */
-export const Metadata$outboundSchema: z.ZodType<
-  Metadata$Outbound,
+export const CreateIntegrationStoreDirectMetadata$outboundSchema: z.ZodType<
+  CreateIntegrationStoreDirectMetadata$Outbound,
   z.ZodTypeDef,
-  Metadata
+  CreateIntegrationStoreDirectMetadata
 > = smartUnion([
   z.string(),
   z.number(),
@@ -2349,16 +2349,23 @@ export const Metadata$outboundSchema: z.ZodType<
   z.array(z.number()),
 ]);
 
-export function metadataToJSON(metadata: Metadata): string {
-  return JSON.stringify(Metadata$outboundSchema.parse(metadata));
+export function createIntegrationStoreDirectMetadataToJSON(
+  createIntegrationStoreDirectMetadata: CreateIntegrationStoreDirectMetadata,
+): string {
+  return JSON.stringify(
+    CreateIntegrationStoreDirectMetadata$outboundSchema.parse(
+      createIntegrationStoreDirectMetadata,
+    ),
+  );
 }
-export function metadataFromJSON(
+export function createIntegrationStoreDirectMetadataFromJSON(
   jsonString: string,
-): SafeParseResult<Metadata, SDKValidationError> {
+): SafeParseResult<CreateIntegrationStoreDirectMetadata, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Metadata$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Metadata' from JSON`,
+    (x) =>
+      CreateIntegrationStoreDirectMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectMetadata' from JSON`,
   );
 }
 
@@ -3015,19 +3022,20 @@ export function capabilitiesFromJSON(
 }
 
 /** @internal */
-export const CreateIntegrationStoreDirectMetadata$inboundSchema: z.ZodType<
-  CreateIntegrationStoreDirectMetadata,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  types.string(),
-  types.number(),
-  z.array(types.string()),
-  z.array(types.number()),
-  types.boolean(),
-]);
+export const CreateIntegrationStoreDirectIntegrationsMetadata$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectIntegrationsMetadata,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    types.string(),
+    types.number(),
+    z.array(types.string()),
+    z.array(types.number()),
+    types.boolean(),
+  ]);
 /** @internal */
-export type CreateIntegrationStoreDirectMetadata$Outbound =
+export type CreateIntegrationStoreDirectIntegrationsMetadata$Outbound =
   | string
   | number
   | Array<string>
@@ -3035,35 +3043,42 @@ export type CreateIntegrationStoreDirectMetadata$Outbound =
   | boolean;
 
 /** @internal */
-export const CreateIntegrationStoreDirectMetadata$outboundSchema: z.ZodType<
-  CreateIntegrationStoreDirectMetadata$Outbound,
-  z.ZodTypeDef,
-  CreateIntegrationStoreDirectMetadata
-> = smartUnion([
-  z.string(),
-  z.number(),
-  z.array(z.string()),
-  z.array(z.number()),
-  z.boolean(),
-]);
+export const CreateIntegrationStoreDirectIntegrationsMetadata$outboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectIntegrationsMetadata$Outbound,
+    z.ZodTypeDef,
+    CreateIntegrationStoreDirectIntegrationsMetadata
+  > = smartUnion([
+    z.string(),
+    z.number(),
+    z.array(z.string()),
+    z.array(z.number()),
+    z.boolean(),
+  ]);
 
-export function createIntegrationStoreDirectMetadataToJSON(
-  createIntegrationStoreDirectMetadata: CreateIntegrationStoreDirectMetadata,
+export function createIntegrationStoreDirectIntegrationsMetadataToJSON(
+  createIntegrationStoreDirectIntegrationsMetadata:
+    CreateIntegrationStoreDirectIntegrationsMetadata,
 ): string {
   return JSON.stringify(
-    CreateIntegrationStoreDirectMetadata$outboundSchema.parse(
-      createIntegrationStoreDirectMetadata,
+    CreateIntegrationStoreDirectIntegrationsMetadata$outboundSchema.parse(
+      createIntegrationStoreDirectIntegrationsMetadata,
     ),
   );
 }
-export function createIntegrationStoreDirectMetadataFromJSON(
+export function createIntegrationStoreDirectIntegrationsMetadataFromJSON(
   jsonString: string,
-): SafeParseResult<CreateIntegrationStoreDirectMetadata, SDKValidationError> {
+): SafeParseResult<
+  CreateIntegrationStoreDirectIntegrationsMetadata,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
     (x) =>
-      CreateIntegrationStoreDirectMetadata$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateIntegrationStoreDirectMetadata' from JSON`,
+      CreateIntegrationStoreDirectIntegrationsMetadata$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateIntegrationStoreDirectIntegrationsMetadata' from JSON`,
   );
 }
 

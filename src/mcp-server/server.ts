@@ -148,6 +148,25 @@ import { tool$environmentRemoveCustomEnvironment } from "./tools/environmentRemo
 import { tool$environmentUnlinkSharedEnvVariable } from "./tools/environmentUnlinkSharedEnvVariable.js";
 import { tool$environmentUpdateCustomEnvironment } from "./tools/environmentUpdateCustomEnvironment.js";
 import { tool$environmentUpdateSharedEnvVariable } from "./tools/environmentUpdateSharedEnvVariable.js";
+import { tool$featureFlagsCreateFlag } from "./tools/featureFlagsCreateFlag.js";
+import { tool$featureFlagsCreateFlagSegment } from "./tools/featureFlagsCreateFlagSegment.js";
+import { tool$featureFlagsDeleteFlag } from "./tools/featureFlagsDeleteFlag.js";
+import { tool$featureFlagsDeleteFlagSegment } from "./tools/featureFlagsDeleteFlagSegment.js";
+import { tool$featureFlagsGetDeploymentFeatureFlags } from "./tools/featureFlagsGetDeploymentFeatureFlags.js";
+import { tool$featureFlagsGetFlag } from "./tools/featureFlagsGetFlag.js";
+import { tool$featureFlagsGetFlagSegment } from "./tools/featureFlagsGetFlagSegment.js";
+import { tool$featureFlagsGetFlagSettings } from "./tools/featureFlagsGetFlagSettings.js";
+import { tool$featureFlagsListFlags } from "./tools/featureFlagsListFlags.js";
+import { tool$featureFlagsListFlagSegments } from "./tools/featureFlagsListFlagSegments.js";
+import { tool$featureFlagsListFlagVersions } from "./tools/featureFlagsListFlagVersions.js";
+import { tool$featureFlagsListTeamFlags } from "./tools/featureFlagsListTeamFlags.js";
+import { tool$featureFlagsListTeamFlagSettings } from "./tools/featureFlagsListTeamFlagSettings.js";
+import { tool$featureFlagsUpdateFlag } from "./tools/featureFlagsUpdateFlag.js";
+import { tool$featureFlagsUpdateFlagSegment } from "./tools/featureFlagsUpdateFlagSegment.js";
+import { tool$featureFlagsUpdateFlagSettings } from "./tools/featureFlagsUpdateFlagSettings.js";
+import { tool$flagsCreateSDKKey } from "./tools/flagsCreateSDKKey.js";
+import { tool$flagsDeleteSDKKey } from "./tools/flagsDeleteSDKKey.js";
+import { tool$flagsGetSDKKeys } from "./tools/flagsGetSDKKeys.js";
 import { tool$integrationsConnectIntegrationResourceToProject } from "./tools/integrationsConnectIntegrationResourceToProject.js";
 import { tool$integrationsCreateIntegrationStoreDirect } from "./tools/integrationsCreateIntegrationStoreDirect.js";
 import { tool$integrationsDeleteConfiguration } from "./tools/integrationsDeleteConfiguration.js";
@@ -269,7 +288,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.19.2",
+    version: "1.19.3",
   });
 
   const client = new VercelCore({
@@ -440,6 +459,25 @@ export function createMCPServer(deps: {
   tool(tool$userListEventTypes);
   tool(tool$userGetAuthUser);
   tool(tool$userRequestDelete);
+  tool(tool$featureFlagsListFlags);
+  tool(tool$featureFlagsCreateFlag);
+  tool(tool$featureFlagsGetFlag);
+  tool(tool$featureFlagsUpdateFlag);
+  tool(tool$featureFlagsDeleteFlag);
+  tool(tool$featureFlagsListFlagVersions);
+  tool(tool$featureFlagsGetFlagSettings);
+  tool(tool$featureFlagsUpdateFlagSettings);
+  tool(tool$featureFlagsListTeamFlagSettings);
+  tool(tool$featureFlagsListTeamFlags);
+  tool(tool$featureFlagsCreateFlagSegment);
+  tool(tool$featureFlagsListFlagSegments);
+  tool(tool$featureFlagsGetFlagSegment);
+  tool(tool$featureFlagsDeleteFlagSegment);
+  tool(tool$featureFlagsUpdateFlagSegment);
+  tool(tool$featureFlagsGetDeploymentFeatureFlags);
+  tool(tool$flagsGetSDKKeys);
+  tool(tool$flagsCreateSDKKey);
+  tool(tool$flagsDeleteSDKKey);
   tool(tool$marketplaceUpdateInstallation);
   tool(tool$marketplaceGetAccountInfo);
   tool(tool$marketplaceGetMember);

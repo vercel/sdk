@@ -24,6 +24,7 @@ export const GetInvoiceState = {
   Draft: "draft",
   Scheduled: "scheduled",
   Invoiced: "invoiced",
+  Overdue: "overdue",
   RefundRequested: "refund_requested",
   Refunded: "refunded",
 } as const;

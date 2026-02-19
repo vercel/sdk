@@ -69,82 +69,82 @@ func (o *UpdateIntegrationDeploymentActionSecret) GetValue() string {
 	return o.Value
 }
 
-type Outcome struct {
+type UpdateIntegrationDeploymentActionOutcome struct {
 	Kind    string                                    `json:"kind"`
 	Secrets []UpdateIntegrationDeploymentActionSecret `json:"secrets"`
 }
 
-func (o Outcome) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(o, "", false)
+func (u UpdateIntegrationDeploymentActionOutcome) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
 }
 
-func (o *Outcome) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"kind", "secrets"}); err != nil {
+func (u *UpdateIntegrationDeploymentActionOutcome) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"kind", "secrets"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Outcome) GetKind() string {
+func (o *UpdateIntegrationDeploymentActionOutcome) GetKind() string {
 	if o == nil {
 		return ""
 	}
 	return o.Kind
 }
 
-func (o *Outcome) GetSecrets() []UpdateIntegrationDeploymentActionSecret {
+func (o *UpdateIntegrationDeploymentActionOutcome) GetSecrets() []UpdateIntegrationDeploymentActionSecret {
 	if o == nil {
 		return []UpdateIntegrationDeploymentActionSecret{}
 	}
 	return o.Secrets
 }
 
-type OutcomeUnionType string
+type UpdateIntegrationDeploymentActionOutcomeUnionType string
 
 const (
-	OutcomeUnionTypeOutcome OutcomeUnionType = "outcome"
+	UpdateIntegrationDeploymentActionOutcomeUnionTypeUpdateIntegrationDeploymentActionOutcome UpdateIntegrationDeploymentActionOutcomeUnionType = "update_integration_deployment_action_outcome"
 )
 
-type OutcomeUnion struct {
-	Outcome *Outcome `queryParam:"inline"`
+type UpdateIntegrationDeploymentActionOutcomeUnion struct {
+	UpdateIntegrationDeploymentActionOutcome *UpdateIntegrationDeploymentActionOutcome `queryParam:"inline"`
 
-	Type OutcomeUnionType
+	Type UpdateIntegrationDeploymentActionOutcomeUnionType
 }
 
-func CreateOutcomeUnionOutcome(outcome Outcome) OutcomeUnion {
-	typ := OutcomeUnionTypeOutcome
+func CreateUpdateIntegrationDeploymentActionOutcomeUnionUpdateIntegrationDeploymentActionOutcome(updateIntegrationDeploymentActionOutcome UpdateIntegrationDeploymentActionOutcome) UpdateIntegrationDeploymentActionOutcomeUnion {
+	typ := UpdateIntegrationDeploymentActionOutcomeUnionTypeUpdateIntegrationDeploymentActionOutcome
 
-	return OutcomeUnion{
-		Outcome: &outcome,
-		Type:    typ,
+	return UpdateIntegrationDeploymentActionOutcomeUnion{
+		UpdateIntegrationDeploymentActionOutcome: &updateIntegrationDeploymentActionOutcome,
+		Type:                                     typ,
 	}
 }
 
-func (u *OutcomeUnion) UnmarshalJSON(data []byte) error {
+func (u *UpdateIntegrationDeploymentActionOutcomeUnion) UnmarshalJSON(data []byte) error {
 
-	var outcome Outcome = Outcome{}
-	if err := utils.UnmarshalJSON(data, &outcome, "", true, nil); err == nil {
-		u.Outcome = &outcome
-		u.Type = OutcomeUnionTypeOutcome
+	var updateIntegrationDeploymentActionOutcome UpdateIntegrationDeploymentActionOutcome = UpdateIntegrationDeploymentActionOutcome{}
+	if err := utils.UnmarshalJSON(data, &updateIntegrationDeploymentActionOutcome, "", true, nil); err == nil {
+		u.UpdateIntegrationDeploymentActionOutcome = &updateIntegrationDeploymentActionOutcome
+		u.Type = UpdateIntegrationDeploymentActionOutcomeUnionTypeUpdateIntegrationDeploymentActionOutcome
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for OutcomeUnion", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateIntegrationDeploymentActionOutcomeUnion", string(data))
 }
 
-func (u OutcomeUnion) MarshalJSON() ([]byte, error) {
-	if u.Outcome != nil {
-		return utils.MarshalJSON(u.Outcome, "", true)
+func (u UpdateIntegrationDeploymentActionOutcomeUnion) MarshalJSON() ([]byte, error) {
+	if u.UpdateIntegrationDeploymentActionOutcome != nil {
+		return utils.MarshalJSON(u.UpdateIntegrationDeploymentActionOutcome, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type OutcomeUnion: all fields are null")
+	return nil, errors.New("could not marshal union type UpdateIntegrationDeploymentActionOutcomeUnion: all fields are null")
 }
 
 type UpdateIntegrationDeploymentActionRequestBody struct {
-	Status     *UpdateIntegrationDeploymentActionStatus `json:"status,omitempty"`
-	StatusText *string                                  `json:"statusText,omitempty"`
-	StatusURL  *string                                  `json:"statusUrl,omitempty"`
-	Outcomes   []OutcomeUnion                           `json:"outcomes,omitempty"`
+	Status     *UpdateIntegrationDeploymentActionStatus        `json:"status,omitempty"`
+	StatusText *string                                         `json:"statusText,omitempty"`
+	StatusURL  *string                                         `json:"statusUrl,omitempty"`
+	Outcomes   []UpdateIntegrationDeploymentActionOutcomeUnion `json:"outcomes,omitempty"`
 }
 
 func (o *UpdateIntegrationDeploymentActionRequestBody) GetStatus() *UpdateIntegrationDeploymentActionStatus {
@@ -168,7 +168,7 @@ func (o *UpdateIntegrationDeploymentActionRequestBody) GetStatusURL() *string {
 	return o.StatusURL
 }
 
-func (o *UpdateIntegrationDeploymentActionRequestBody) GetOutcomes() []OutcomeUnion {
+func (o *UpdateIntegrationDeploymentActionRequestBody) GetOutcomes() []UpdateIntegrationDeploymentActionOutcomeUnion {
 	if o == nil {
 		return nil
 	}

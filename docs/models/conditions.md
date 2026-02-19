@@ -3,20 +3,20 @@
 ## Example Usage
 
 ```typescript
-import { Conditions } from "@vercel/sdk/models/putfirewallconfigop.js";
+import { Conditions } from "@vercel/sdk/models/flag.js";
 
 let value: Conditions = {
-  type: "region",
-  op: "pre",
+  lhs: {
+    type: "segment",
+  },
+  cmp: "!endsWith",
 };
 ```
 
 ## Fields
 
-| Field                                                                                                             | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       |
-| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                            | [models.PutFirewallConfigType](../models/putfirewallconfigtype.md)                                                | :heavy_check_mark:                                                                                                | [Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic. |
-| `op`                                                                                                              | [models.Op](../models/op.md)                                                                                      | :heavy_check_mark:                                                                                                | N/A                                                                                                               |
-| `neg`                                                                                                             | *boolean*                                                                                                         | :heavy_minus_sign:                                                                                                | N/A                                                                                                               |
-| `key`                                                                                                             | *string*                                                                                                          | :heavy_minus_sign:                                                                                                | N/A                                                                                                               |
-| `value`                                                                                                           | *models.Value*                                                                                                    | :heavy_minus_sign:                                                                                                | N/A                                                                                                               |
+| Field                          | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `rhs`                          | *models.Rhs*                   | :heavy_minus_sign:             | N/A                            |
+| `lhs`                          | *models.Lhs*                   | :heavy_check_mark:             | N/A                            |
+| `cmp`                          | [models.Cmp](../models/cmp.md) | :heavy_check_mark:             | N/A                            |

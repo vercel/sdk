@@ -8010,3 +8010,401 @@ workflows:
             type: simple
     x-speakeasy-test-group: user
     x-speakeasy-test-rebuild: true
+  - workflowId: listFlags
+    steps:
+      - stepId: test
+        operationId: listFlags
+        parameters:
+          - name: projectIdOrName
+            in: path
+            value: <value>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"data":[]}
+            type: simple
+    x-speakeasy-test-group: feature-flags
+    x-speakeasy-test-rebuild: true
+  - workflowId: createFlag
+    steps:
+      - stepId: test
+        operationId: createFlag
+        parameters:
+          - name: projectIdOrName
+            in: path
+            value: <value>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 201
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"variants":[{"value":false,"id":"<id>"}],"id":"<id>","environments":{"key":{"pausedOutcome":{"type":"variant","variantId":"<id>"},"fallthrough":{"type":"variant","variantId":"<id>"},"active":true,"rules":[]}},"kind":"number","revision":6165.62,"seed":156.13,"state":"archived","slug":"<value>","createdAt":8146.33,"updatedAt":8302.64,"createdBy":"<value>","ownerId":"<id>","projectId":"<id>","typeName":"flag"}
+            type: simple
+    x-speakeasy-test-group: feature-flags
+    x-speakeasy-test-rebuild: true
+  - workflowId: getFlag
+    steps:
+      - stepId: test
+        operationId: getFlag
+        parameters:
+          - name: projectIdOrName
+            in: path
+            value: <value>
+          - name: flagIdOrSlug
+            in: path
+            value: <value>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"variants":[],"id":"<id>","environments":{},"kind":"string","revision":4506.54,"seed":2692.5,"state":"active","slug":"<value>","createdAt":9169.87,"updatedAt":2775.69,"createdBy":"<value>","ownerId":"<id>","projectId":"<id>","typeName":"flag"}
+            type: simple
+    x-speakeasy-test-group: feature-flags
+    x-speakeasy-test-rebuild: true
+  - workflowId: updateFlag
+    steps:
+      - stepId: test
+        operationId: updateFlag
+        parameters:
+          - name: projectIdOrName
+            in: path
+            value: <value>
+          - name: flagIdOrSlug
+            in: path
+            value: <value>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"variants":[],"id":"<id>","environments":{"key":{"pausedOutcome":{"type":"variant","variantId":"<id>"},"fallthrough":{"type":"split","base":{"type":"entity","kind":"<value>","attribute":"<value>"},"weights":{"key":5332.25,"key1":4559.62},"defaultVariantId":"<id>"},"active":true,"rules":[{"id":"<id>","outcome":{"type":"variant","variantId":"<id>"},"conditions":[{"lhs":{"type":"entity","kind":"<value>","attribute":"<value>"},"cmp":"!endsWith"}]}]}},"kind":"boolean","revision":6275.71,"seed":9679.18,"state":"archived","slug":"<value>","createdAt":1600.13,"updatedAt":4288.92,"createdBy":"<value>","ownerId":"<id>","projectId":"<id>","typeName":"flag"}
+            type: simple
+    x-speakeasy-test-group: feature-flags
+    x-speakeasy-test-rebuild: true
+  - workflowId: listFlagVersions
+    steps:
+      - stepId: test
+        operationId: listFlagVersions
+        parameters:
+          - name: projectIdOrName
+            in: path
+            value: <value>
+          - name: flagIdOrSlug
+            in: path
+            value: <value>
+          - name: limit
+            in: query
+            value: 20
+          - name: withMetadata
+            in: query
+            value: false
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"versions":[],"pagination":{}}
+            type: simple
+    x-speakeasy-test-group: feature-flags
+    x-speakeasy-test-rebuild: true
+  - workflowId: getFlagSettings
+    steps:
+      - stepId: test
+        operationId: getFlagSettings
+        parameters:
+          - name: projectIdOrName
+            in: path
+            value: <value>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"typeName":"settings","projectId":"<id>","enabled":false,"environments":["<value 1>"],"entities":[],"metadata":{"activeFlagCount":5032.56,"archivedFlagCount":7510.8,"segmentCount":4704.93,"packSizeInBytes":2505.31}}
+            type: simple
+    x-speakeasy-test-group: feature-flags
+    x-speakeasy-test-rebuild: true
+  - workflowId: updateFlagSettings
+    steps:
+      - stepId: test
+        operationId: updateFlagSettings
+        parameters:
+          - name: projectIdOrName
+            in: path
+            value: <value>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 201
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"typeName":"settings","projectId":"<id>","enabled":false,"environments":["<value 1>","<value 2>","<value 3>"],"entities":[{"kind":"<value>","label":"<value>","attributes":[{"key":"<key>","type":"<value>"}]}],"metadata":{"activeFlagCount":9382.74,"archivedFlagCount":1968.58,"segmentCount":1175.12,"packSizeInBytes":5502.16}}
+            type: simple
+    x-speakeasy-test-group: feature-flags
+    x-speakeasy-test-rebuild: true
+  - workflowId: listTeamFlagSettings
+    steps:
+      - stepId: test
+        operationId: listTeamFlagSettings
+        parameters:
+          - name: teamId
+            in: path
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: limit
+            in: query
+            value: 20
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {}
+            type: simple
+    x-speakeasy-test-group: feature-flags
+    x-speakeasy-test-rebuild: true
+  - workflowId: listTeamFlags
+    steps:
+      - stepId: test
+        operationId: listTeamFlags
+        parameters:
+          - name: teamId
+            in: path
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: limit
+            in: query
+            value: 20
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"data":[],"pagination":{"next":null}}
+            type: simple
+    x-speakeasy-test-group: feature-flags
+    x-speakeasy-test-rebuild: true
+  - workflowId: createFlagSegment
+    steps:
+      - stepId: test
+        operationId: createFlagSegment
+        parameters:
+          - name: projectIdOrName
+            in: path
+            value: <value>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 201
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"id":"<id>","label":"<value>","slug":"<value>","createdAt":3411.5,"updatedAt":7820.53,"projectId":"<id>","typeName":"segment","data":{},"hint":"<value>"}
+            type: simple
+    x-speakeasy-test-group: feature-flags
+    x-speakeasy-test-rebuild: true
+  - workflowId: listFlagSegments
+    steps:
+      - stepId: test
+        operationId: listFlagSegments
+        parameters:
+          - name: projectIdOrName
+            in: path
+            value: <value>
+          - name: withMetadata
+            in: query
+            value: false
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"data":[]}
+            type: simple
+    x-speakeasy-test-group: feature-flags
+    x-speakeasy-test-rebuild: true
+  - workflowId: getFlagSegment
+    steps:
+      - stepId: test
+        operationId: getFlagSegment
+        parameters:
+          - name: projectIdOrName
+            in: path
+            value: <value>
+          - name: segmentIdOrSlug
+            in: path
+            value: <value>
+          - name: withMetadata
+            in: query
+            value: false
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"id":"<id>","label":"<value>","slug":"<value>","createdAt":9261.28,"updatedAt":346.59,"projectId":"<id>","typeName":"segment","data":{},"hint":"<value>"}
+            type: simple
+    x-speakeasy-test-group: feature-flags
+    x-speakeasy-test-rebuild: true
+  - workflowId: updateFlagSegment
+    steps:
+      - stepId: test
+        operationId: updateFlagSegment
+        parameters:
+          - name: projectIdOrName
+            in: path
+            value: <value>
+          - name: segmentIdOrSlug
+            in: path
+            value: <value>
+          - name: withMetadata
+            in: query
+            value: false
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"id":"<id>","label":"<value>","slug":"<value>","createdAt":2949.22,"updatedAt":6371.72,"projectId":"<id>","typeName":"segment","data":{},"hint":"<value>"}
+            type: simple
+    x-speakeasy-test-group: feature-flags
+    x-speakeasy-test-rebuild: true
+  - workflowId: getDeploymentFeatureFlags
+    steps:
+      - stepId: test
+        operationId: getDeploymentFeatureFlags
+        parameters:
+          - name: deploymentId
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"flags":[],"status":{"deploymentId":"<id>","projectId":"<id>","responseStatus":5008.57,"flagCount":3132.84,"createdAt":2379.62}}
+            type: simple
+    x-speakeasy-test-group: feature-flags
+    x-speakeasy-test-rebuild: true
+  - workflowId: getSdkKeys
+    steps:
+      - stepId: test
+        operationId: getSdkKeys
+        parameters:
+          - name: projectIdOrName
+            in: path
+            value: <value>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"data":[]}
+            type: simple
+    x-speakeasy-test-group: flags
+    x-speakeasy-test-rebuild: true
+  - workflowId: createSdkKey
+    steps:
+      - stepId: test
+        operationId: createSdkKey
+        parameters:
+          - name: projectIdOrName
+            in: path
+            value: <value>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"hashKey":"<value>","projectId":"<id>","type":"mobile","environment":"<value>","createdBy":"<value>","createdAt":4791.7,"updatedAt":3218.83}
+            type: simple
+    x-speakeasy-test-group: flags
+    x-speakeasy-test-rebuild: true

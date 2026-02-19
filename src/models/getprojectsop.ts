@@ -1147,7 +1147,7 @@ export type GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsCr
     username: string;
   };
 
-export type GetProjectsResponseBodyTargets = {
+export type GetProjectsResponseBodyProjectsTargets = {
   alias?: Array<string> | undefined;
   aliasAssigned?: number | boolean | null | undefined;
   builds?:
@@ -2089,7 +2089,9 @@ export type GetProjectsResponseBodyProjects = {
     | GetProjectsResponseBodyProjectsSsoProtection
     | null
     | undefined;
-  targets?: { [k: string]: GetProjectsResponseBodyTargets | null } | undefined;
+  targets?:
+    | { [k: string]: GetProjectsResponseBodyProjectsTargets | null }
+    | undefined;
   transferCompletedAt?: number | undefined;
   transferStartedAt?: number | undefined;
   transferToAccountId?: string | undefined;
@@ -2902,7 +2904,7 @@ export type GetProjectsResponseBodyProjectsResponse200ApplicationJSONCreator = {
   username: string;
 };
 
-export type GetProjectsResponseBodyProjectsTargets = {
+export type GetProjectsResponseBodyTargets = {
   alias?: Array<string> | undefined;
   aliasAssigned?: number | boolean | null | undefined;
   builds?:
@@ -3621,9 +3623,7 @@ export type ResponseBodyProjects = {
   skipGitConnectDuringLink?: boolean | undefined;
   sourceFilesOutsideRootDirectory?: boolean | undefined;
   ssoProtection?: GetProjectsResponseBodySsoProtection | null | undefined;
-  targets?:
-    | { [k: string]: GetProjectsResponseBodyProjectsTargets | null }
-    | undefined;
+  targets?: { [k: string]: GetProjectsResponseBodyTargets | null } | undefined;
   transferCompletedAt?: number | undefined;
   transferStartedAt?: number | undefined;
   transferToAccountId?: string | undefined;
@@ -9262,8 +9262,8 @@ export function getProjectsResponseBodyProjectsResponse200ApplicationJSON3Projec
 }
 
 /** @internal */
-export const GetProjectsResponseBodyTargets$inboundSchema: z.ZodType<
-  GetProjectsResponseBodyTargets,
+export const GetProjectsResponseBodyProjectsTargets$inboundSchema: z.ZodType<
+  GetProjectsResponseBodyProjectsTargets,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -9299,7 +9299,7 @@ export const GetProjectsResponseBodyTargets$inboundSchema: z.ZodType<
   withCache: types.optional(types.boolean()),
 });
 /** @internal */
-export type GetProjectsResponseBodyTargets$Outbound = {
+export type GetProjectsResponseBodyProjectsTargets$Outbound = {
   alias?: Array<string> | undefined;
   aliasAssigned?: number | boolean | null | undefined;
   builds?:
@@ -9330,10 +9330,10 @@ export type GetProjectsResponseBodyTargets$Outbound = {
 };
 
 /** @internal */
-export const GetProjectsResponseBodyTargets$outboundSchema: z.ZodType<
-  GetProjectsResponseBodyTargets$Outbound,
+export const GetProjectsResponseBodyProjectsTargets$outboundSchema: z.ZodType<
+  GetProjectsResponseBodyProjectsTargets$Outbound,
   z.ZodTypeDef,
-  GetProjectsResponseBodyTargets
+  GetProjectsResponseBodyProjectsTargets
 > = z.object({
   alias: z.array(z.string()).optional(),
   aliasAssigned: z.nullable(smartUnion([z.number(), z.boolean()])).optional(),
@@ -9366,22 +9366,24 @@ export const GetProjectsResponseBodyTargets$outboundSchema: z.ZodType<
   withCache: z.boolean().optional(),
 });
 
-export function getProjectsResponseBodyTargetsToJSON(
-  getProjectsResponseBodyTargets: GetProjectsResponseBodyTargets,
+export function getProjectsResponseBodyProjectsTargetsToJSON(
+  getProjectsResponseBodyProjectsTargets:
+    GetProjectsResponseBodyProjectsTargets,
 ): string {
   return JSON.stringify(
-    GetProjectsResponseBodyTargets$outboundSchema.parse(
-      getProjectsResponseBodyTargets,
+    GetProjectsResponseBodyProjectsTargets$outboundSchema.parse(
+      getProjectsResponseBodyProjectsTargets,
     ),
   );
 }
-export function getProjectsResponseBodyTargetsFromJSON(
+export function getProjectsResponseBodyProjectsTargetsFromJSON(
   jsonString: string,
-): SafeParseResult<GetProjectsResponseBodyTargets, SDKValidationError> {
+): SafeParseResult<GetProjectsResponseBodyProjectsTargets, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetProjectsResponseBodyTargets$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectsResponseBodyTargets' from JSON`,
+    (x) =>
+      GetProjectsResponseBodyProjectsTargets$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsResponseBodyProjectsTargets' from JSON`,
   );
 }
 
@@ -13750,7 +13752,7 @@ export const GetProjectsResponseBodyProjects$inboundSchema: z.ZodType<
   ).optional(),
   targets: types.optional(
     z.record(types.nullable(z.lazy(() =>
-      GetProjectsResponseBodyTargets$inboundSchema
+      GetProjectsResponseBodyProjectsTargets$inboundSchema
     ))),
   ),
   transferCompletedAt: types.optional(types.number()),
@@ -13904,9 +13906,9 @@ export type GetProjectsResponseBodyProjects$Outbound = {
     | GetProjectsResponseBodyProjectsSsoProtection$Outbound
     | null
     | undefined;
-  targets?:
-    | { [k: string]: GetProjectsResponseBodyTargets$Outbound | null }
-    | undefined;
+  targets?: {
+    [k: string]: GetProjectsResponseBodyProjectsTargets$Outbound | null;
+  } | undefined;
   transferCompletedAt?: number | undefined;
   transferStartedAt?: number | undefined;
   transferToAccountId?: string | undefined;
@@ -14060,7 +14062,9 @@ export const GetProjectsResponseBodyProjects$outboundSchema: z.ZodType<
     z.lazy(() => GetProjectsResponseBodyProjectsSsoProtection$outboundSchema),
   ).optional(),
   targets: z.record(
-    z.nullable(z.lazy(() => GetProjectsResponseBodyTargets$outboundSchema)),
+    z.nullable(z.lazy(() =>
+      GetProjectsResponseBodyProjectsTargets$outboundSchema
+    )),
   ).optional(),
   transferCompletedAt: z.number().optional(),
   transferStartedAt: z.number().optional(),
@@ -17726,8 +17730,8 @@ export function getProjectsResponseBodyProjectsResponse200ApplicationJSONCreator
 }
 
 /** @internal */
-export const GetProjectsResponseBodyProjectsTargets$inboundSchema: z.ZodType<
-  GetProjectsResponseBodyProjectsTargets,
+export const GetProjectsResponseBodyTargets$inboundSchema: z.ZodType<
+  GetProjectsResponseBodyTargets,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -17763,7 +17767,7 @@ export const GetProjectsResponseBodyProjectsTargets$inboundSchema: z.ZodType<
   withCache: types.optional(types.boolean()),
 });
 /** @internal */
-export type GetProjectsResponseBodyProjectsTargets$Outbound = {
+export type GetProjectsResponseBodyTargets$Outbound = {
   alias?: Array<string> | undefined;
   aliasAssigned?: number | boolean | null | undefined;
   builds?:
@@ -17794,10 +17798,10 @@ export type GetProjectsResponseBodyProjectsTargets$Outbound = {
 };
 
 /** @internal */
-export const GetProjectsResponseBodyProjectsTargets$outboundSchema: z.ZodType<
-  GetProjectsResponseBodyProjectsTargets$Outbound,
+export const GetProjectsResponseBodyTargets$outboundSchema: z.ZodType<
+  GetProjectsResponseBodyTargets$Outbound,
   z.ZodTypeDef,
-  GetProjectsResponseBodyProjectsTargets
+  GetProjectsResponseBodyTargets
 > = z.object({
   alias: z.array(z.string()).optional(),
   aliasAssigned: z.nullable(smartUnion([z.number(), z.boolean()])).optional(),
@@ -17830,24 +17834,22 @@ export const GetProjectsResponseBodyProjectsTargets$outboundSchema: z.ZodType<
   withCache: z.boolean().optional(),
 });
 
-export function getProjectsResponseBodyProjectsTargetsToJSON(
-  getProjectsResponseBodyProjectsTargets:
-    GetProjectsResponseBodyProjectsTargets,
+export function getProjectsResponseBodyTargetsToJSON(
+  getProjectsResponseBodyTargets: GetProjectsResponseBodyTargets,
 ): string {
   return JSON.stringify(
-    GetProjectsResponseBodyProjectsTargets$outboundSchema.parse(
-      getProjectsResponseBodyProjectsTargets,
+    GetProjectsResponseBodyTargets$outboundSchema.parse(
+      getProjectsResponseBodyTargets,
     ),
   );
 }
-export function getProjectsResponseBodyProjectsTargetsFromJSON(
+export function getProjectsResponseBodyTargetsFromJSON(
   jsonString: string,
-): SafeParseResult<GetProjectsResponseBodyProjectsTargets, SDKValidationError> {
+): SafeParseResult<GetProjectsResponseBodyTargets, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      GetProjectsResponseBodyProjectsTargets$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectsResponseBodyProjectsTargets' from JSON`,
+    (x) => GetProjectsResponseBodyTargets$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsResponseBodyTargets' from JSON`,
   );
 }
 
@@ -21440,7 +21442,7 @@ export const ResponseBodyProjects$inboundSchema: z.ZodType<
   ).optional(),
   targets: types.optional(
     z.record(types.nullable(z.lazy(() =>
-      GetProjectsResponseBodyProjectsTargets$inboundSchema
+      GetProjectsResponseBodyTargets$inboundSchema
     ))),
   ),
   transferCompletedAt: types.optional(types.number()),
@@ -21539,9 +21541,9 @@ export type ResponseBodyProjects$Outbound = {
     | GetProjectsResponseBodySsoProtection$Outbound
     | null
     | undefined;
-  targets?: {
-    [k: string]: GetProjectsResponseBodyProjectsTargets$Outbound | null;
-  } | undefined;
+  targets?:
+    | { [k: string]: GetProjectsResponseBodyTargets$Outbound | null }
+    | undefined;
   transferCompletedAt?: number | undefined;
   transferStartedAt?: number | undefined;
   transferToAccountId?: string | undefined;
@@ -21639,9 +21641,7 @@ export const ResponseBodyProjects$outboundSchema: z.ZodType<
     z.lazy(() => GetProjectsResponseBodySsoProtection$outboundSchema),
   ).optional(),
   targets: z.record(
-    z.nullable(z.lazy(() =>
-      GetProjectsResponseBodyProjectsTargets$outboundSchema
-    )),
+    z.nullable(z.lazy(() => GetProjectsResponseBodyTargets$outboundSchema)),
   ).optional(),
   transferCompletedAt: z.number().optional(),
   transferStartedAt: z.number().optional(),

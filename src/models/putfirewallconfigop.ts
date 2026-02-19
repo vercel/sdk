@@ -288,9 +288,9 @@ export const Op = {
 } as const;
 export type Op = ClosedEnum<typeof Op>;
 
-export type Value = string | Array<string> | number;
+export type PutFirewallConfigValue = string | Array<string> | number;
 
-export type Conditions = {
+export type PutFirewallConfigConditions = {
   /**
    * [Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic.
    */
@@ -302,7 +302,7 @@ export type Conditions = {
 };
 
 export type ConditionGroup = {
-  conditions: Array<Conditions>;
+  conditions: Array<PutFirewallConfigConditions>;
 };
 
 export const PutFirewallConfigSecurityRequestRequestBodyRulesActionAction = {
@@ -1682,34 +1682,41 @@ export const Op$inboundSchema: z.ZodNativeEnum<typeof Op> = z.nativeEnum(Op);
 export const Op$outboundSchema: z.ZodNativeEnum<typeof Op> = Op$inboundSchema;
 
 /** @internal */
-export const Value$inboundSchema: z.ZodType<Value, z.ZodTypeDef, unknown> =
-  smartUnion([types.string(), z.array(types.string()), types.number()]);
+export const PutFirewallConfigValue$inboundSchema: z.ZodType<
+  PutFirewallConfigValue,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), z.array(types.string()), types.number()]);
 /** @internal */
-export type Value$Outbound = string | Array<string> | number;
+export type PutFirewallConfigValue$Outbound = string | Array<string> | number;
 
 /** @internal */
-export const Value$outboundSchema: z.ZodType<
-  Value$Outbound,
+export const PutFirewallConfigValue$outboundSchema: z.ZodType<
+  PutFirewallConfigValue$Outbound,
   z.ZodTypeDef,
-  Value
+  PutFirewallConfigValue
 > = smartUnion([z.string(), z.array(z.string()), z.number()]);
 
-export function valueToJSON(value: Value): string {
-  return JSON.stringify(Value$outboundSchema.parse(value));
+export function putFirewallConfigValueToJSON(
+  putFirewallConfigValue: PutFirewallConfigValue,
+): string {
+  return JSON.stringify(
+    PutFirewallConfigValue$outboundSchema.parse(putFirewallConfigValue),
+  );
 }
-export function valueFromJSON(
+export function putFirewallConfigValueFromJSON(
   jsonString: string,
-): SafeParseResult<Value, SDKValidationError> {
+): SafeParseResult<PutFirewallConfigValue, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Value$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Value' from JSON`,
+    (x) => PutFirewallConfigValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PutFirewallConfigValue' from JSON`,
   );
 }
 
 /** @internal */
-export const Conditions$inboundSchema: z.ZodType<
-  Conditions,
+export const PutFirewallConfigConditions$inboundSchema: z.ZodType<
+  PutFirewallConfigConditions,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1722,7 +1729,7 @@ export const Conditions$inboundSchema: z.ZodType<
   ),
 });
 /** @internal */
-export type Conditions$Outbound = {
+export type PutFirewallConfigConditions$Outbound = {
   type: string;
   op: string;
   neg?: boolean | undefined;
@@ -1731,10 +1738,10 @@ export type Conditions$Outbound = {
 };
 
 /** @internal */
-export const Conditions$outboundSchema: z.ZodType<
-  Conditions$Outbound,
+export const PutFirewallConfigConditions$outboundSchema: z.ZodType<
+  PutFirewallConfigConditions$Outbound,
   z.ZodTypeDef,
-  Conditions
+  PutFirewallConfigConditions
 > = z.object({
   type: PutFirewallConfigType$outboundSchema,
   op: Op$outboundSchema,
@@ -1743,16 +1750,22 @@ export const Conditions$outboundSchema: z.ZodType<
   value: smartUnion([z.string(), z.array(z.string()), z.number()]).optional(),
 });
 
-export function conditionsToJSON(conditions: Conditions): string {
-  return JSON.stringify(Conditions$outboundSchema.parse(conditions));
+export function putFirewallConfigConditionsToJSON(
+  putFirewallConfigConditions: PutFirewallConfigConditions,
+): string {
+  return JSON.stringify(
+    PutFirewallConfigConditions$outboundSchema.parse(
+      putFirewallConfigConditions,
+    ),
+  );
 }
-export function conditionsFromJSON(
+export function putFirewallConfigConditionsFromJSON(
   jsonString: string,
-): SafeParseResult<Conditions, SDKValidationError> {
+): SafeParseResult<PutFirewallConfigConditions, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Conditions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Conditions' from JSON`,
+    (x) => PutFirewallConfigConditions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PutFirewallConfigConditions' from JSON`,
   );
 }
 
@@ -1762,11 +1775,11 @@ export const ConditionGroup$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  conditions: z.array(z.lazy(() => Conditions$inboundSchema)),
+  conditions: z.array(z.lazy(() => PutFirewallConfigConditions$inboundSchema)),
 });
 /** @internal */
 export type ConditionGroup$Outbound = {
-  conditions: Array<Conditions$Outbound>;
+  conditions: Array<PutFirewallConfigConditions$Outbound>;
 };
 
 /** @internal */
@@ -1775,7 +1788,7 @@ export const ConditionGroup$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ConditionGroup
 > = z.object({
-  conditions: z.array(z.lazy(() => Conditions$outboundSchema)),
+  conditions: z.array(z.lazy(() => PutFirewallConfigConditions$outboundSchema)),
 });
 
 export function conditionGroupToJSON(conditionGroup: ConditionGroup): string {

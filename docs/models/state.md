@@ -1,17 +1,15 @@
 # State
 
-Filter by rolling release state
-
 ## Example Usage
 
 ```typescript
-import { State } from "@vercel/sdk/models/getrollingreleaseop.js";
+import { State } from "@vercel/sdk/models/flag.js";
 
-let value: State = "ACTIVE";
+let value: State = "active";
 ```
 
 ## Values
 
 ```typescript
-"ACTIVE" | "COMPLETE" | "ABORTED"
+"active" | "archived"
 ```

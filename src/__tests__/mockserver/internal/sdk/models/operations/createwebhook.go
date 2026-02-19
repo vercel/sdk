@@ -86,6 +86,7 @@ const (
 	CreateWebhookEventRequestMarketplaceInvoiceCreated                          CreateWebhookEventRequest = "marketplace.invoice.created"
 	CreateWebhookEventRequestMarketplaceInvoicePaid                             CreateWebhookEventRequest = "marketplace.invoice.paid"
 	CreateWebhookEventRequestMarketplaceInvoiceNotpaid                          CreateWebhookEventRequest = "marketplace.invoice.notpaid"
+	CreateWebhookEventRequestMarketplaceInvoiceOverdue                          CreateWebhookEventRequest = "marketplace.invoice.overdue"
 	CreateWebhookEventRequestMarketplaceInvoiceRefunded                         CreateWebhookEventRequest = "marketplace.invoice.refunded"
 	CreateWebhookEventRequestAiGatewayBalanceDepleted                           CreateWebhookEventRequest = "ai-gateway.balance-depleted"
 	CreateWebhookEventRequestAiGatewayAutoReloadLimitReached                    CreateWebhookEventRequest = "ai-gateway.auto-reload.limit-reached"
@@ -264,6 +265,8 @@ func (e *CreateWebhookEventRequest) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "marketplace.invoice.notpaid":
 		fallthrough
+	case "marketplace.invoice.overdue":
+		fallthrough
 	case "marketplace.invoice.refunded":
 		fallthrough
 	case "ai-gateway.balance-depleted":
@@ -439,6 +442,7 @@ const (
 	CreateWebhookEventResponseMarketplaceInvoiceCreated                          CreateWebhookEventResponse = "marketplace.invoice.created"
 	CreateWebhookEventResponseMarketplaceInvoicePaid                             CreateWebhookEventResponse = "marketplace.invoice.paid"
 	CreateWebhookEventResponseMarketplaceInvoiceNotpaid                          CreateWebhookEventResponse = "marketplace.invoice.notpaid"
+	CreateWebhookEventResponseMarketplaceInvoiceOverdue                          CreateWebhookEventResponse = "marketplace.invoice.overdue"
 	CreateWebhookEventResponseMarketplaceInvoiceRefunded                         CreateWebhookEventResponse = "marketplace.invoice.refunded"
 	CreateWebhookEventResponseAiGatewayBalanceDepleted                           CreateWebhookEventResponse = "ai-gateway.balance-depleted"
 	CreateWebhookEventResponseAiGatewayAutoReloadLimitReached                    CreateWebhookEventResponse = "ai-gateway.auto-reload.limit-reached"
@@ -616,6 +620,8 @@ func (e *CreateWebhookEventResponse) UnmarshalJSON(data []byte) error {
 	case "marketplace.invoice.paid":
 		fallthrough
 	case "marketplace.invoice.notpaid":
+		fallthrough
+	case "marketplace.invoice.overdue":
 		fallthrough
 	case "marketplace.invoice.refunded":
 		fallthrough

@@ -702,7 +702,7 @@ export type Images = {
 /**
  * Information about the deployment creator
  */
-export type Creator = {
+export type CreateDeploymentCreator = {
   /**
    * The ID of the user that created the deployment
    */
@@ -2033,7 +2033,7 @@ export type CreateDeploymentResponseBody = {
   /**
    * Information about the deployment creator
    */
-  creator: Creator;
+  creator: CreateDeploymentCreator;
   initReadyAt?: number | undefined;
   isFirstBranchDeployment?: boolean | undefined;
   lambdas?: Array<Lambdas> | undefined;
@@ -3725,40 +3725,47 @@ export function imagesFromJSON(
 }
 
 /** @internal */
-export const Creator$inboundSchema: z.ZodType<Creator, z.ZodTypeDef, unknown> =
-  z.object({
-    uid: types.string(),
-    username: types.optional(types.string()),
-    avatar: types.optional(types.string()),
-  });
+export const CreateDeploymentCreator$inboundSchema: z.ZodType<
+  CreateDeploymentCreator,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  uid: types.string(),
+  username: types.optional(types.string()),
+  avatar: types.optional(types.string()),
+});
 /** @internal */
-export type Creator$Outbound = {
+export type CreateDeploymentCreator$Outbound = {
   uid: string;
   username?: string | undefined;
   avatar?: string | undefined;
 };
 
 /** @internal */
-export const Creator$outboundSchema: z.ZodType<
-  Creator$Outbound,
+export const CreateDeploymentCreator$outboundSchema: z.ZodType<
+  CreateDeploymentCreator$Outbound,
   z.ZodTypeDef,
-  Creator
+  CreateDeploymentCreator
 > = z.object({
   uid: z.string(),
   username: z.string().optional(),
   avatar: z.string().optional(),
 });
 
-export function creatorToJSON(creator: Creator): string {
-  return JSON.stringify(Creator$outboundSchema.parse(creator));
+export function createDeploymentCreatorToJSON(
+  createDeploymentCreator: CreateDeploymentCreator,
+): string {
+  return JSON.stringify(
+    CreateDeploymentCreator$outboundSchema.parse(createDeploymentCreator),
+  );
 }
-export function creatorFromJSON(
+export function createDeploymentCreatorFromJSON(
   jsonString: string,
-): SafeParseResult<Creator, SDKValidationError> {
+): SafeParseResult<CreateDeploymentCreator, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Creator$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Creator' from JSON`,
+    (x) => CreateDeploymentCreator$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentCreator' from JSON`,
   );
 }
 
@@ -8578,7 +8585,7 @@ export const CreateDeploymentResponseBody$inboundSchema: z.ZodType<
   buildingAt: types.number(),
   buildContainerFinishedAt: types.optional(types.number()),
   buildSkipped: types.boolean(),
-  creator: z.lazy(() => Creator$inboundSchema),
+  creator: z.lazy(() => CreateDeploymentCreator$inboundSchema),
   initReadyAt: types.optional(types.number()),
   isFirstBranchDeployment: types.optional(types.boolean()),
   lambdas: types.optional(z.array(z.lazy(() => Lambdas$inboundSchema))),
@@ -8717,7 +8724,7 @@ export type CreateDeploymentResponseBody$Outbound = {
   buildingAt: number;
   buildContainerFinishedAt?: number | undefined;
   buildSkipped: boolean;
-  creator: Creator$Outbound;
+  creator: CreateDeploymentCreator$Outbound;
   initReadyAt?: number | undefined;
   isFirstBranchDeployment?: boolean | undefined;
   lambdas?: Array<Lambdas$Outbound> | undefined;
@@ -8838,7 +8845,7 @@ export const CreateDeploymentResponseBody$outboundSchema: z.ZodType<
   buildingAt: z.number(),
   buildContainerFinishedAt: z.number().optional(),
   buildSkipped: z.boolean(),
-  creator: z.lazy(() => Creator$outboundSchema),
+  creator: z.lazy(() => CreateDeploymentCreator$outboundSchema),
   initReadyAt: z.number().optional(),
   isFirstBranchDeployment: z.boolean().optional(),
   lambdas: z.array(z.lazy(() => Lambdas$outboundSchema)).optional(),

@@ -21,6 +21,8 @@ jobs:
     uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-test.yaml@v15
     with:
       target: ${{ github.event.inputs.target || 'vercel' }}
+      env_vars: |
+        NODE_OPTIONS=--max-old-space-size=6144
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}

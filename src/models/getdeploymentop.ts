@@ -2394,10 +2394,6 @@ export type ResponseBodyBuildMachine = {
    * Machine type that was used for the build.
    */
   purchaseType?: ResponseBodyPurchaseType | null | undefined;
-  /**
-   * Whether the build machine is the default build machine.
-   */
-  isDefaultBuildMachine?: boolean | undefined;
 };
 
 /**
@@ -10788,12 +10784,10 @@ export const ResponseBodyBuildMachine$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   purchaseType: z.nullable(ResponseBodyPurchaseType$inboundSchema).optional(),
-  isDefaultBuildMachine: types.optional(types.boolean()),
 });
 /** @internal */
 export type ResponseBodyBuildMachine$Outbound = {
   purchaseType?: string | null | undefined;
-  isDefaultBuildMachine?: boolean | undefined;
 };
 
 /** @internal */
@@ -10803,7 +10797,6 @@ export const ResponseBodyBuildMachine$outboundSchema: z.ZodType<
   ResponseBodyBuildMachine
 > = z.object({
   purchaseType: z.nullable(ResponseBodyPurchaseType$outboundSchema).optional(),
-  isDefaultBuildMachine: z.boolean().optional(),
 });
 
 export function responseBodyBuildMachineToJSON(

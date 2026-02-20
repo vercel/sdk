@@ -170,10 +170,6 @@ export type AuthUserBuildMachine = {
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
-  isDefaultBuildMachine?: boolean | undefined;
-  /**
-   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
-   */
   cores?: number | undefined;
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
@@ -705,7 +701,6 @@ export const AuthUserBuildMachine$inboundSchema: z.ZodType<
   default: types.optional(AuthUserDefault$inboundSchema),
   purchaseType: types.optional(PurchaseType$inboundSchema),
   defaultPurchaseType: types.optional(DefaultPurchaseType$inboundSchema),
-  isDefaultBuildMachine: types.optional(types.boolean()),
   cores: types.optional(types.number()),
   memory: types.optional(types.number()),
 });
@@ -714,7 +709,6 @@ export type AuthUserBuildMachine$Outbound = {
   default?: string | undefined;
   purchaseType?: string | undefined;
   defaultPurchaseType?: string | undefined;
-  isDefaultBuildMachine?: boolean | undefined;
   cores?: number | undefined;
   memory?: number | undefined;
 };
@@ -728,7 +722,6 @@ export const AuthUserBuildMachine$outboundSchema: z.ZodType<
   default: AuthUserDefault$outboundSchema.optional(),
   purchaseType: PurchaseType$outboundSchema.optional(),
   defaultPurchaseType: DefaultPurchaseType$outboundSchema.optional(),
-  isDefaultBuildMachine: z.boolean().optional(),
   cores: z.number().optional(),
   memory: z.number().optional(),
 });

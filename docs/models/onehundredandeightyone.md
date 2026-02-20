@@ -21,3 +21,4 @@ let value: OneHundredAndEightyOne = {
 | `role`                                         | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
 | `previousRole`                                 | *string*                                       | :heavy_check_mark:                             | N/A                                            |
 | `updatedUid`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `origin`                                       | *string*                                       | :heavy_minus_sign:                             | N/A                                            |

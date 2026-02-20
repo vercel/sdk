@@ -11491,8 +11491,6 @@ func (e *GetDeploymentPurchaseType) UnmarshalJSON(data []byte) error {
 type GetDeploymentBuildMachine struct {
 	// Machine type that was used for the build.
 	PurchaseType *GetDeploymentPurchaseType `json:"purchaseType,omitempty"`
-	// Whether the build machine is the default build machine.
-	IsDefaultBuildMachine *bool `json:"isDefaultBuildMachine,omitempty"`
 }
 
 func (g GetDeploymentBuildMachine) MarshalJSON() ([]byte, error) {
@@ -11511,13 +11509,6 @@ func (o *GetDeploymentBuildMachine) GetPurchaseType() *GetDeploymentPurchaseType
 		return nil
 	}
 	return o.PurchaseType
-}
-
-func (o *GetDeploymentBuildMachine) GetIsDefaultBuildMachine() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.IsDefaultBuildMachine
 }
 
 // GetDeploymentResourceConfig - Build resource configuration snapshot for this deployment.

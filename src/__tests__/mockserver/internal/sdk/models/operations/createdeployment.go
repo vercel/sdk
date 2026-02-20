@@ -9360,8 +9360,6 @@ func (e *CreateDeploymentPurchaseType) UnmarshalJSON(data []byte) error {
 type CreateDeploymentBuildMachine struct {
 	// Machine type that was used for the build.
 	PurchaseType *CreateDeploymentPurchaseType `json:"purchaseType,omitempty"`
-	// Whether the build machine is the default build machine.
-	IsDefaultBuildMachine *bool `json:"isDefaultBuildMachine,omitempty"`
 }
 
 func (o *CreateDeploymentBuildMachine) GetPurchaseType() *CreateDeploymentPurchaseType {
@@ -9369,13 +9367,6 @@ func (o *CreateDeploymentBuildMachine) GetPurchaseType() *CreateDeploymentPurcha
 		return nil
 	}
 	return o.PurchaseType
-}
-
-func (o *CreateDeploymentBuildMachine) GetIsDefaultBuildMachine() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.IsDefaultBuildMachine
 }
 
 // CreateDeploymentResourceConfig - Build resource configuration snapshot for this deployment.

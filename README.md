@@ -10,7 +10,7 @@
 
 # @vercel/sdk
 
-The `@vercel/sdk` is a type-safe Typescript SDK that gives you full control over the entire Vercel platform through the [Vercel REST API](https://docs.vercel.com/docs/rest-api/reference/welcome).
+The `@vercel/sdk` is a type-safe Typescript SDK that gives you full control over the entire Vercel platform through the [Vercel REST API](https://vercel.com/docs/rest-api).
 
 <div align="left">
     <a href="https://www.speakeasy.com/?utm_source=@vercel/sdk&utm_campaign=typescript"><img src="https://custom-icon-badges.demolab.com/badge/-Built%20By%20Speakeasy-212015?style=for-the-badge&logoColor=FBE331&logo=speakeasy&labelColor=545454" /></a>

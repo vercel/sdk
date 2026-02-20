@@ -1525,10 +1525,6 @@ export type CancelDeploymentBuildMachine = {
    * Machine type that was used for the build.
    */
   purchaseType?: CancelDeploymentPurchaseType | null | undefined;
-  /**
-   * Whether the build machine is the default build machine.
-   */
-  isDefaultBuildMachine?: boolean | undefined;
 };
 
 /**
@@ -7205,12 +7201,10 @@ export const CancelDeploymentBuildMachine$inboundSchema: z.ZodType<
 > = z.object({
   purchaseType: z.nullable(CancelDeploymentPurchaseType$inboundSchema)
     .optional(),
-  isDefaultBuildMachine: types.optional(types.boolean()),
 });
 /** @internal */
 export type CancelDeploymentBuildMachine$Outbound = {
   purchaseType?: string | null | undefined;
-  isDefaultBuildMachine?: boolean | undefined;
 };
 
 /** @internal */
@@ -7221,7 +7215,6 @@ export const CancelDeploymentBuildMachine$outboundSchema: z.ZodType<
 > = z.object({
   purchaseType: z.nullable(CancelDeploymentPurchaseType$outboundSchema)
     .optional(),
-  isDefaultBuildMachine: z.boolean().optional(),
 });
 
 export function cancelDeploymentBuildMachineToJSON(

@@ -12940,6 +12940,7 @@ type Payload180 struct {
 	Role          *string      `json:"role,omitempty"`
 	PreviousRole  string       `json:"previousRole"`
 	UpdatedUID    *string      `json:"updatedUid,omitempty"`
+	Origin        *string      `json:"origin,omitempty"`
 }
 
 func (p Payload180) MarshalJSON() ([]byte, error) {
@@ -12986,6 +12987,13 @@ func (o *Payload180) GetUpdatedUID() *string {
 		return nil
 	}
 	return o.UpdatedUID
+}
+
+func (o *Payload180) GetOrigin() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Origin
 }
 
 // Payload179 - The payload of the event, if requested.
@@ -24032,12 +24040,11 @@ func (e *UserEventDefaultPurchaseType) UnmarshalJSON(data []byte) error {
 }
 
 type UserEventBuildMachine struct {
-	Default               *UserEventDefault             `json:"default,omitempty"`
-	PurchaseType          *UserEventPurchaseType        `json:"purchaseType,omitempty"`
-	DefaultPurchaseType   *UserEventDefaultPurchaseType `json:"defaultPurchaseType,omitempty"`
-	IsDefaultBuildMachine *bool                         `json:"isDefaultBuildMachine,omitempty"`
-	Cores                 *float64                      `json:"cores,omitempty"`
-	Memory                *float64                      `json:"memory,omitempty"`
+	Default             *UserEventDefault             `json:"default,omitempty"`
+	PurchaseType        *UserEventPurchaseType        `json:"purchaseType,omitempty"`
+	DefaultPurchaseType *UserEventDefaultPurchaseType `json:"defaultPurchaseType,omitempty"`
+	Cores               *float64                      `json:"cores,omitempty"`
+	Memory              *float64                      `json:"memory,omitempty"`
 }
 
 func (u UserEventBuildMachine) MarshalJSON() ([]byte, error) {
@@ -24070,13 +24077,6 @@ func (o *UserEventBuildMachine) GetDefaultPurchaseType() *UserEventDefaultPurcha
 		return nil
 	}
 	return o.DefaultPurchaseType
-}
-
-func (o *UserEventBuildMachine) GetIsDefaultBuildMachine() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.IsDefaultBuildMachine
 }
 
 func (o *UserEventBuildMachine) GetCores() *float64 {

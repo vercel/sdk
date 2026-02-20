@@ -7658,8 +7658,6 @@ func (e *CancelDeploymentPurchaseType) UnmarshalJSON(data []byte) error {
 type CancelDeploymentBuildMachine struct {
 	// Machine type that was used for the build.
 	PurchaseType *CancelDeploymentPurchaseType `json:"purchaseType,omitempty"`
-	// Whether the build machine is the default build machine.
-	IsDefaultBuildMachine *bool `json:"isDefaultBuildMachine,omitempty"`
 }
 
 func (o *CancelDeploymentBuildMachine) GetPurchaseType() *CancelDeploymentPurchaseType {
@@ -7667,13 +7665,6 @@ func (o *CancelDeploymentBuildMachine) GetPurchaseType() *CancelDeploymentPurcha
 		return nil
 	}
 	return o.PurchaseType
-}
-
-func (o *CancelDeploymentBuildMachine) GetIsDefaultBuildMachine() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.IsDefaultBuildMachine
 }
 
 // CancelDeploymentResourceConfig - Build resource configuration snapshot for this deployment.

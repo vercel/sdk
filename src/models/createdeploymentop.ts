@@ -1935,10 +1935,6 @@ export type CreateDeploymentBuildMachine = {
    * Machine type that was used for the build.
    */
   purchaseType?: CreateDeploymentPurchaseType | null | undefined;
-  /**
-   * Whether the build machine is the default build machine.
-   */
-  isDefaultBuildMachine?: boolean | undefined;
 };
 
 /**
@@ -8313,12 +8309,10 @@ export const CreateDeploymentBuildMachine$inboundSchema: z.ZodType<
 > = z.object({
   purchaseType: z.nullable(CreateDeploymentPurchaseType$inboundSchema)
     .optional(),
-  isDefaultBuildMachine: types.optional(types.boolean()),
 });
 /** @internal */
 export type CreateDeploymentBuildMachine$Outbound = {
   purchaseType?: string | null | undefined;
-  isDefaultBuildMachine?: boolean | undefined;
 };
 
 /** @internal */
@@ -8329,7 +8323,6 @@ export const CreateDeploymentBuildMachine$outboundSchema: z.ZodType<
 > = z.object({
   purchaseType: z.nullable(CreateDeploymentPurchaseType$outboundSchema)
     .optional(),
-  isDefaultBuildMachine: z.boolean().optional(),
 });
 
 export function createDeploymentBuildMachineToJSON(

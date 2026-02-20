@@ -3027,6 +3027,7 @@ export type OneHundredAndEightyOne = {
   role?: string | undefined;
   previousRole: string;
   updatedUid?: string | undefined;
+  origin?: string | undefined;
 };
 
 /**
@@ -5325,7 +5326,6 @@ export type PayloadBuildMachine = {
   default?: PayloadDefault | undefined;
   purchaseType?: PayloadPurchaseType | undefined;
   defaultPurchaseType?: PayloadDefaultPurchaseType | undefined;
-  isDefaultBuildMachine?: boolean | undefined;
   cores?: number | undefined;
   memory?: number | undefined;
 };
@@ -18339,6 +18339,7 @@ export const OneHundredAndEightyOne$inboundSchema: z.ZodType<
   role: types.optional(types.string()),
   previousRole: types.string(),
   updatedUid: types.optional(types.string()),
+  origin: types.optional(types.string()),
 });
 /** @internal */
 export type OneHundredAndEightyOne$Outbound = {
@@ -18347,6 +18348,7 @@ export type OneHundredAndEightyOne$Outbound = {
   role?: string | undefined;
   previousRole: string;
   updatedUid?: string | undefined;
+  origin?: string | undefined;
 };
 
 /** @internal */
@@ -18360,6 +18362,7 @@ export const OneHundredAndEightyOne$outboundSchema: z.ZodType<
   role: z.string().optional(),
   previousRole: z.string(),
   updatedUid: z.string().optional(),
+  origin: z.string().optional(),
 });
 
 export function oneHundredAndEightyOneToJSON(
@@ -28372,7 +28375,6 @@ export const PayloadBuildMachine$inboundSchema: z.ZodType<
   default: types.optional(PayloadDefault$inboundSchema),
   purchaseType: types.optional(PayloadPurchaseType$inboundSchema),
   defaultPurchaseType: types.optional(PayloadDefaultPurchaseType$inboundSchema),
-  isDefaultBuildMachine: types.optional(types.boolean()),
   cores: types.optional(types.number()),
   memory: types.optional(types.number()),
 });
@@ -28381,7 +28383,6 @@ export type PayloadBuildMachine$Outbound = {
   default?: string | undefined;
   purchaseType?: string | undefined;
   defaultPurchaseType?: string | undefined;
-  isDefaultBuildMachine?: boolean | undefined;
   cores?: number | undefined;
   memory?: number | undefined;
 };
@@ -28395,7 +28396,6 @@ export const PayloadBuildMachine$outboundSchema: z.ZodType<
   default: PayloadDefault$outboundSchema.optional(),
   purchaseType: PayloadPurchaseType$outboundSchema.optional(),
   defaultPurchaseType: PayloadDefaultPurchaseType$outboundSchema.optional(),
-  isDefaultBuildMachine: z.boolean().optional(),
   cores: z.number().optional(),
   memory: z.number().optional(),
 });

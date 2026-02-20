@@ -7,7 +7,6 @@ import (
 	"log"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
-	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/models/operations"
 	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
@@ -53,9 +52,9 @@ func testGetProjectsGetProjects0(w http.ResponseWriter, req *http.Request) {
 				operations.GetProjectsProject2{
 					AccountID: "<id>",
 					Crons: &operations.GetProjectsCrons{
-						EnabledAt:    7991.59,
-						DisabledAt:   types.Float64(7805.29),
-						UpdatedAt:    1182.74,
+						EnabledAt:    2103.82,
+						DisabledAt:   types.Float64(3154.28),
+						UpdatedAt:    3637.11,
 						DeploymentID: types.String("<id>"),
 						Definitions:  []operations.GetProjectsDefinition{},
 					},
@@ -63,11 +62,9 @@ func testGetProjectsGetProjects0(w http.ResponseWriter, req *http.Request) {
 					DirectoryListing:     false,
 					ID:                   "<id>",
 					Name:                 "<value>",
-					NodeVersion:          operations.ProjectNodeVersion2SixteenDotX,
+					NodeVersion:          operations.ProjectNodeVersion2TwentyFourDotX,
 					ResourceConfig: operations.ProjectResourceConfig2{
-						FunctionDefaultRegions: []string{
-							"<value 1>",
-						},
+						FunctionDefaultRegions: []string{},
 					},
 					RollingRelease: &operations.ProjectRollingRelease2{
 						Target: "production",
@@ -88,11 +85,10 @@ func testGetProjectsGetProjects0(w http.ResponseWriter, req *http.Request) {
 					},
 				},
 			},
-			Pagination: operations.CreatePaginationUnion2Pagination(
-				components.Pagination{
+			Pagination: operations.CreatePaginationUnion2GetProjectsPagination2(
+				operations.GetProjectsPagination2{
 					Count: 20,
-					Next:  types.Float64(1540095775951),
-					Prev:  types.Float64(1540095775951),
+					Next:  types.String("JBSWY3DPEHPK3PXP"),
 				},
 			),
 		},

@@ -412,8 +412,6 @@ type AuthUserBuildMachine struct {
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	DefaultPurchaseType *AuthUserDefaultPurchaseType `json:"defaultPurchaseType,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
-	IsDefaultBuildMachine *bool `json:"isDefaultBuildMachine,omitempty"`
-	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	Cores *float64 `json:"cores,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	Memory *float64 `json:"memory,omitempty"`
@@ -449,13 +447,6 @@ func (o *AuthUserBuildMachine) GetDefaultPurchaseType() *AuthUserDefaultPurchase
 		return nil
 	}
 	return o.DefaultPurchaseType
-}
-
-func (o *AuthUserBuildMachine) GetIsDefaultBuildMachine() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.IsDefaultBuildMachine
 }
 
 func (o *AuthUserBuildMachine) GetCores() *float64 {

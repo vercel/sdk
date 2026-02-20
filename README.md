@@ -169,7 +169,7 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 
 ## Access Tokens
 
-You need to pass a valid access token to be able to use any resource or operation. Refer to [Creating an Access Token](https://docs.vercel.com/docs/rest-api/reference/welcome#creating-an-access-token) to learn how to create one. Make sure that you create a token with the correct Vercel [scope](https://vercel.com/docs/dashboard-features#scope-selector). 
+You need to pass a valid access token to be able to use any resource or operation. Refer to [Creating an Access Token](https://vercel.com/docs/rest-api#authentication) to learn how to create one. Make sure that you create a token with the correct Vercel [scope](https://vercel.com/docs/dashboard-features#scope-selector). 
 If you face permission (403) errors when you are already sending a token, it can be one of the following problems:
 - The token you are using has expired. Check the expiry date of the token in the Vercel dashboard.
 - The token does not have access to the correct scope, either not the right team or it does not have account level access.

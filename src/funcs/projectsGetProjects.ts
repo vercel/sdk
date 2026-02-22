@@ -13,9 +13,11 @@ import { pathToFunc } from "../lib/url.js";
 import {
   GetProjectsRequest,
   GetProjectsRequest$outboundSchema,
+} from "../models/getprojectsblockhistoryprojects3.js";
+import {
   GetProjectsResponseBody,
   GetProjectsResponseBody$inboundSchema,
-} from "../models/getprojectsop.js";
+} from "../models/getprojectsresponsebody.js";
 import {
   ConnectionError,
   InvalidRequestError,

@@ -203,30 +203,31 @@ func (o *RequestAccessToTeamRequest) GetBody() RequestAccessToTeamRequestBody {
 	return o.Body
 }
 
-type RequestAccessToTeamOriginResponse string
+type RequestAccessToTeamOriginResponseBody string
 
 const (
-	RequestAccessToTeamOriginResponseTeams             RequestAccessToTeamOriginResponse = "teams"
-	RequestAccessToTeamOriginResponseLink              RequestAccessToTeamOriginResponse = "link"
-	RequestAccessToTeamOriginResponseImport            RequestAccessToTeamOriginResponse = "import"
-	RequestAccessToTeamOriginResponseMail              RequestAccessToTeamOriginResponse = "mail"
-	RequestAccessToTeamOriginResponseGithub            RequestAccessToTeamOriginResponse = "github"
-	RequestAccessToTeamOriginResponseGitlab            RequestAccessToTeamOriginResponse = "gitlab"
-	RequestAccessToTeamOriginResponseBitbucket         RequestAccessToTeamOriginResponse = "bitbucket"
-	RequestAccessToTeamOriginResponseSaml              RequestAccessToTeamOriginResponse = "saml"
-	RequestAccessToTeamOriginResponseDsync             RequestAccessToTeamOriginResponse = "dsync"
-	RequestAccessToTeamOriginResponseFeedback          RequestAccessToTeamOriginResponse = "feedback"
-	RequestAccessToTeamOriginResponseOrganizationTeams RequestAccessToTeamOriginResponse = "organization-teams"
-	RequestAccessToTeamOriginResponseNsnbAutoApprove   RequestAccessToTeamOriginResponse = "nsnb-auto-approve"
-	RequestAccessToTeamOriginResponseNsnbRequestAccess RequestAccessToTeamOriginResponse = "nsnb-request-access"
-	RequestAccessToTeamOriginResponseNsnbViewerUpgrade RequestAccessToTeamOriginResponse = "nsnb-viewer-upgrade"
-	RequestAccessToTeamOriginResponseNsnbInvite        RequestAccessToTeamOriginResponse = "nsnb-invite"
+	RequestAccessToTeamOriginResponseBodyTeams             RequestAccessToTeamOriginResponseBody = "teams"
+	RequestAccessToTeamOriginResponseBodyLink              RequestAccessToTeamOriginResponseBody = "link"
+	RequestAccessToTeamOriginResponseBodyImport            RequestAccessToTeamOriginResponseBody = "import"
+	RequestAccessToTeamOriginResponseBodyMail              RequestAccessToTeamOriginResponseBody = "mail"
+	RequestAccessToTeamOriginResponseBodyGithub            RequestAccessToTeamOriginResponseBody = "github"
+	RequestAccessToTeamOriginResponseBodyGitlab            RequestAccessToTeamOriginResponseBody = "gitlab"
+	RequestAccessToTeamOriginResponseBodyBitbucket         RequestAccessToTeamOriginResponseBody = "bitbucket"
+	RequestAccessToTeamOriginResponseBodySaml              RequestAccessToTeamOriginResponseBody = "saml"
+	RequestAccessToTeamOriginResponseBodyDsync             RequestAccessToTeamOriginResponseBody = "dsync"
+	RequestAccessToTeamOriginResponseBodyFeedback          RequestAccessToTeamOriginResponseBody = "feedback"
+	RequestAccessToTeamOriginResponseBodyOrganizationTeams RequestAccessToTeamOriginResponseBody = "organization-teams"
+	RequestAccessToTeamOriginResponseBodyNsnbAutoApprove   RequestAccessToTeamOriginResponseBody = "nsnb-auto-approve"
+	RequestAccessToTeamOriginResponseBodyNsnbRequestAccess RequestAccessToTeamOriginResponseBody = "nsnb-request-access"
+	RequestAccessToTeamOriginResponseBodyNsnbViewerUpgrade RequestAccessToTeamOriginResponseBody = "nsnb-viewer-upgrade"
+	RequestAccessToTeamOriginResponseBodyNsnbInvite        RequestAccessToTeamOriginResponseBody = "nsnb-invite"
+	RequestAccessToTeamOriginResponseBodyNsnbRedeploy      RequestAccessToTeamOriginResponseBody = "nsnb-redeploy"
 )
 
-func (e RequestAccessToTeamOriginResponse) ToPointer() *RequestAccessToTeamOriginResponse {
+func (e RequestAccessToTeamOriginResponseBody) ToPointer() *RequestAccessToTeamOriginResponseBody {
 	return &e
 }
-func (e *RequestAccessToTeamOriginResponse) UnmarshalJSON(data []byte) error {
+func (e *RequestAccessToTeamOriginResponseBody) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -261,10 +262,12 @@ func (e *RequestAccessToTeamOriginResponse) UnmarshalJSON(data []byte) error {
 	case "nsnb-viewer-upgrade":
 		fallthrough
 	case "nsnb-invite":
-		*e = RequestAccessToTeamOriginResponse(v)
+		fallthrough
+	case "nsnb-redeploy":
+		*e = RequestAccessToTeamOriginResponseBody(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RequestAccessToTeamOriginResponse: %v", v)
+		return fmt.Errorf("invalid value for RequestAccessToTeamOriginResponseBody: %v", v)
 	}
 }
 
@@ -332,7 +335,7 @@ func (u RequestAccessToTeamGitUserIDResponse) MarshalJSON() ([]byte, error) {
 }
 
 type RequestAccessToTeamJoinedFromResponse struct {
-	Origin           RequestAccessToTeamOriginResponse     `json:"origin"`
+	Origin           RequestAccessToTeamOriginResponseBody `json:"origin"`
 	CommitID         *string                               `json:"commitId,omitempty"`
 	RepoID           *string                               `json:"repoId,omitempty"`
 	RepoPath         *string                               `json:"repoPath,omitempty"`
@@ -345,9 +348,9 @@ type RequestAccessToTeamJoinedFromResponse struct {
 	DsyncConnectedAt *float64                              `json:"dsyncConnectedAt,omitempty"`
 }
 
-func (o *RequestAccessToTeamJoinedFromResponse) GetOrigin() RequestAccessToTeamOriginResponse {
+func (o *RequestAccessToTeamJoinedFromResponse) GetOrigin() RequestAccessToTeamOriginResponseBody {
 	if o == nil {
-		return RequestAccessToTeamOriginResponse("")
+		return RequestAccessToTeamOriginResponseBody("")
 	}
 	return o.Origin
 }

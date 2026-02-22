@@ -11,5 +11,5 @@ let value: UpdateProjectProjectsResponseBuildMachineType = "standard";
 ## Values
 
 ```typescript
-"standard" | "enhanced" | "turbo"
+"standard" | "enhanced" | "turbo" | "elastic"
 ```

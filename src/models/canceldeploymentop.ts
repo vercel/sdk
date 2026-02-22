@@ -933,6 +933,32 @@ export const CancelDeploymentPlan = {
 } as const;
 export type CancelDeploymentPlan = ClosedEnum<typeof CancelDeploymentPlan>;
 
+export type CancelDeploymentDeploymentsSource = {
+  name: string;
+};
+
+export const CancelDeploymentDeploymentsType = {
+  Id: "id",
+  Url: "url",
+} as const;
+export type CancelDeploymentDeploymentsType = ClosedEnum<
+  typeof CancelDeploymentDeploymentsType
+>;
+
+export type CancelDeploymentOrigin = {
+  type: CancelDeploymentDeploymentsType;
+  value: string;
+};
+
+/**
+ * Metadata about the source platform that triggered the deployment. Allows us to map a deployment back to a platform (e.g. the chat that created it)
+ */
+export type CancelDeploymentPlatform = {
+  source: CancelDeploymentDeploymentsSource;
+  origin: CancelDeploymentOrigin;
+  meta?: { [k: string]: string } | undefined;
+};
+
 export type CancelDeploymentCrons = {
   schedule: string;
   path: string;
@@ -1585,6 +1611,34 @@ export type CancelDeploymentChecks = {
 };
 
 /**
+ * The NSNB decision code for the seat block. TODO: We should consolidate block types.
+ */
+export const CancelDeploymentBlockCode = {
+  TeamAccessRequired: "TEAM_ACCESS_REQUIRED",
+  CommitAuthorRequired: "COMMIT_AUTHOR_REQUIRED",
+} as const;
+/**
+ * The NSNB decision code for the seat block. TODO: We should consolidate block types.
+ */
+export type CancelDeploymentBlockCode = ClosedEnum<
+  typeof CancelDeploymentBlockCode
+>;
+
+/**
+ * NSNB Blocked metadata
+ */
+export type CancelDeploymentSeatBlock = {
+  /**
+   * The NSNB decision code for the seat block. TODO: We should consolidate block types.
+   */
+  blockCode: CancelDeploymentBlockCode;
+  /**
+   * The blocked vercel user ID.
+   */
+  userId?: string | undefined;
+};
+
+/**
  * The private deployment representation of a Deployment.
  */
 export type CancelDeploymentResponseBody = {
@@ -1766,6 +1820,10 @@ export type CancelDeploymentResponseBody = {
   oidcTokenClaims?: CancelDeploymentOidcTokenClaims | undefined;
   projectId: string;
   plan: CancelDeploymentPlan;
+  /**
+   * Metadata about the source platform that triggered the deployment. Allows us to map a deployment back to a platform (e.g. the chat that created it)
+   */
+  platform?: CancelDeploymentPlatform | undefined;
   connectBuildsEnabled?: boolean | undefined;
   connectConfigurationId?: string | undefined;
   createdIn: string;
@@ -1800,6 +1858,10 @@ export type CancelDeploymentResponseBody = {
    */
   config?: CancelDeploymentConfig | undefined;
   checks?: CancelDeploymentChecks | undefined;
+  /**
+   * NSNB Blocked metadata
+   */
+  seatBlock?: CancelDeploymentSeatBlock | undefined;
 };
 
 /** @internal */
@@ -4560,6 +4622,143 @@ export const CancelDeploymentPlan$inboundSchema: z.ZodNativeEnum<
 export const CancelDeploymentPlan$outboundSchema: z.ZodNativeEnum<
   typeof CancelDeploymentPlan
 > = CancelDeploymentPlan$inboundSchema;
+
+/** @internal */
+export const CancelDeploymentDeploymentsSource$inboundSchema: z.ZodType<
+  CancelDeploymentDeploymentsSource,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  name: types.string(),
+});
+/** @internal */
+export type CancelDeploymentDeploymentsSource$Outbound = {
+  name: string;
+};
+
+/** @internal */
+export const CancelDeploymentDeploymentsSource$outboundSchema: z.ZodType<
+  CancelDeploymentDeploymentsSource$Outbound,
+  z.ZodTypeDef,
+  CancelDeploymentDeploymentsSource
+> = z.object({
+  name: z.string(),
+});
+
+export function cancelDeploymentDeploymentsSourceToJSON(
+  cancelDeploymentDeploymentsSource: CancelDeploymentDeploymentsSource,
+): string {
+  return JSON.stringify(
+    CancelDeploymentDeploymentsSource$outboundSchema.parse(
+      cancelDeploymentDeploymentsSource,
+    ),
+  );
+}
+export function cancelDeploymentDeploymentsSourceFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelDeploymentDeploymentsSource, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelDeploymentDeploymentsSource$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentDeploymentsSource' from JSON`,
+  );
+}
+
+/** @internal */
+export const CancelDeploymentDeploymentsType$inboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentDeploymentsType
+> = z.nativeEnum(CancelDeploymentDeploymentsType);
+/** @internal */
+export const CancelDeploymentDeploymentsType$outboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentDeploymentsType
+> = CancelDeploymentDeploymentsType$inboundSchema;
+
+/** @internal */
+export const CancelDeploymentOrigin$inboundSchema: z.ZodType<
+  CancelDeploymentOrigin,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: CancelDeploymentDeploymentsType$inboundSchema,
+  value: types.string(),
+});
+/** @internal */
+export type CancelDeploymentOrigin$Outbound = {
+  type: string;
+  value: string;
+};
+
+/** @internal */
+export const CancelDeploymentOrigin$outboundSchema: z.ZodType<
+  CancelDeploymentOrigin$Outbound,
+  z.ZodTypeDef,
+  CancelDeploymentOrigin
+> = z.object({
+  type: CancelDeploymentDeploymentsType$outboundSchema,
+  value: z.string(),
+});
+
+export function cancelDeploymentOriginToJSON(
+  cancelDeploymentOrigin: CancelDeploymentOrigin,
+): string {
+  return JSON.stringify(
+    CancelDeploymentOrigin$outboundSchema.parse(cancelDeploymentOrigin),
+  );
+}
+export function cancelDeploymentOriginFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelDeploymentOrigin, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelDeploymentOrigin$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentOrigin' from JSON`,
+  );
+}
+
+/** @internal */
+export const CancelDeploymentPlatform$inboundSchema: z.ZodType<
+  CancelDeploymentPlatform,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  source: z.lazy(() => CancelDeploymentDeploymentsSource$inboundSchema),
+  origin: z.lazy(() => CancelDeploymentOrigin$inboundSchema),
+  meta: types.optional(z.record(types.string())),
+});
+/** @internal */
+export type CancelDeploymentPlatform$Outbound = {
+  source: CancelDeploymentDeploymentsSource$Outbound;
+  origin: CancelDeploymentOrigin$Outbound;
+  meta?: { [k: string]: string } | undefined;
+};
+
+/** @internal */
+export const CancelDeploymentPlatform$outboundSchema: z.ZodType<
+  CancelDeploymentPlatform$Outbound,
+  z.ZodTypeDef,
+  CancelDeploymentPlatform
+> = z.object({
+  source: z.lazy(() => CancelDeploymentDeploymentsSource$outboundSchema),
+  origin: z.lazy(() => CancelDeploymentOrigin$outboundSchema),
+  meta: z.record(z.string()).optional(),
+});
+
+export function cancelDeploymentPlatformToJSON(
+  cancelDeploymentPlatform: CancelDeploymentPlatform,
+): string {
+  return JSON.stringify(
+    CancelDeploymentPlatform$outboundSchema.parse(cancelDeploymentPlatform),
+  );
+}
+export function cancelDeploymentPlatformFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelDeploymentPlatform, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelDeploymentPlatform$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentPlatform' from JSON`,
+  );
+}
 
 /** @internal */
 export const CancelDeploymentCrons$inboundSchema: z.ZodType<
@@ -7461,6 +7660,57 @@ export function cancelDeploymentChecksFromJSON(
 }
 
 /** @internal */
+export const CancelDeploymentBlockCode$inboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentBlockCode
+> = z.nativeEnum(CancelDeploymentBlockCode);
+/** @internal */
+export const CancelDeploymentBlockCode$outboundSchema: z.ZodNativeEnum<
+  typeof CancelDeploymentBlockCode
+> = CancelDeploymentBlockCode$inboundSchema;
+
+/** @internal */
+export const CancelDeploymentSeatBlock$inboundSchema: z.ZodType<
+  CancelDeploymentSeatBlock,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  blockCode: CancelDeploymentBlockCode$inboundSchema,
+  userId: types.optional(types.string()),
+});
+/** @internal */
+export type CancelDeploymentSeatBlock$Outbound = {
+  blockCode: string;
+  userId?: string | undefined;
+};
+
+/** @internal */
+export const CancelDeploymentSeatBlock$outboundSchema: z.ZodType<
+  CancelDeploymentSeatBlock$Outbound,
+  z.ZodTypeDef,
+  CancelDeploymentSeatBlock
+> = z.object({
+  blockCode: CancelDeploymentBlockCode$outboundSchema,
+  userId: z.string().optional(),
+});
+
+export function cancelDeploymentSeatBlockToJSON(
+  cancelDeploymentSeatBlock: CancelDeploymentSeatBlock,
+): string {
+  return JSON.stringify(
+    CancelDeploymentSeatBlock$outboundSchema.parse(cancelDeploymentSeatBlock),
+  );
+}
+export function cancelDeploymentSeatBlockFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelDeploymentSeatBlock, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelDeploymentSeatBlock$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentSeatBlock' from JSON`,
+  );
+}
+
+/** @internal */
 export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
   CancelDeploymentResponseBody,
   z.ZodTypeDef,
@@ -7577,6 +7827,9 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
   ),
   projectId: types.string(),
   plan: CancelDeploymentPlan$inboundSchema,
+  platform: types.optional(
+    z.lazy(() => CancelDeploymentPlatform$inboundSchema),
+  ),
   connectBuildsEnabled: types.optional(types.boolean()),
   connectConfigurationId: types.optional(types.string()),
   createdIn: types.string(),
@@ -7619,6 +7872,9 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
   ),
   config: types.optional(z.lazy(() => CancelDeploymentConfig$inboundSchema)),
   checks: types.optional(z.lazy(() => CancelDeploymentChecks$inboundSchema)),
+  seatBlock: types.optional(
+    z.lazy(() => CancelDeploymentSeatBlock$inboundSchema),
+  ),
 });
 /** @internal */
 export type CancelDeploymentResponseBody$Outbound = {
@@ -7713,6 +7969,7 @@ export type CancelDeploymentResponseBody$Outbound = {
   oidcTokenClaims?: CancelDeploymentOidcTokenClaims$Outbound | undefined;
   projectId: string;
   plan: string;
+  platform?: CancelDeploymentPlatform$Outbound | undefined;
   connectBuildsEnabled?: boolean | undefined;
   connectConfigurationId?: string | undefined;
   createdIn: string;
@@ -7747,6 +8004,7 @@ export type CancelDeploymentResponseBody$Outbound = {
     | undefined;
   config?: CancelDeploymentConfig$Outbound | undefined;
   checks?: CancelDeploymentChecks$Outbound | undefined;
+  seatBlock?: CancelDeploymentSeatBlock$Outbound | undefined;
 };
 
 /** @internal */
@@ -7856,6 +8114,7 @@ export const CancelDeploymentResponseBody$outboundSchema: z.ZodType<
     .optional(),
   projectId: z.string(),
   plan: CancelDeploymentPlan$outboundSchema,
+  platform: z.lazy(() => CancelDeploymentPlatform$outboundSchema).optional(),
   connectBuildsEnabled: z.boolean().optional(),
   connectConfigurationId: z.string().optional(),
   createdIn: z.string(),
@@ -7892,6 +8151,7 @@ export const CancelDeploymentResponseBody$outboundSchema: z.ZodType<
   ]).optional(),
   config: z.lazy(() => CancelDeploymentConfig$outboundSchema).optional(),
   checks: z.lazy(() => CancelDeploymentChecks$outboundSchema).optional(),
+  seatBlock: z.lazy(() => CancelDeploymentSeatBlock$outboundSchema).optional(),
 });
 
 export function cancelDeploymentResponseBodyToJSON(

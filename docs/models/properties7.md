@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Properties7 } from "@vercel/sdk/models/getconfigurationproductsop.js";
+import { Properties7 } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponseuicontrol.js";
 
 let value: Properties7 = {
   type: "string",

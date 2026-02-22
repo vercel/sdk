@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Observability } from "@vercel/sdk/models/getconfigurationproductsop.js";
+import { Observability } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponseuicontrol.js";
 
 let value: Observability = {
   status: "disabled",

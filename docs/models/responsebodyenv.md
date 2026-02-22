@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyEnv } from "@vercel/sdk/models/getprojectsop.js";
+import { ResponseBodyEnv } from "@vercel/sdk/models/getprojectsrouteprojects1.js";
 
 let value: ResponseBodyEnv = {
   type: "sensitive",

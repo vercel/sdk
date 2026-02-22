@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetConfigurationProductsPropertiesIntegrationsType } from "@vercel/sdk/models/getconfigurationproductsop.js";
+import { GetConfigurationProductsPropertiesIntegrationsType } from "@vercel/sdk/models/getconfigurationproductsresponsebody.js";
 
 let value: GetConfigurationProductsPropertiesIntegrationsType = "boolean";
 ```

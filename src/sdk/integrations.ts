@@ -14,10 +14,8 @@ import { integrationsGitNamespaces } from "../funcs/integrationsGitNamespaces.js
 import { integrationsSearchRepo } from "../funcs/integrationsSearchRepo.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import { ConnectIntegrationResourceToProjectRequest } from "../models/connectintegrationresourcetoprojectop.js";
-import {
-  CreateIntegrationStoreDirectRequest,
-  CreateIntegrationStoreDirectResponseBody,
-} from "../models/createintegrationstoredirectop.js";
+import { CreateIntegrationStoreDirectRequest } from "../models/createintegrationstoredirecthidden1.js";
+import { CreateIntegrationStoreDirectResponseBody } from "../models/createintegrationstoredirectresponsebody.js";
 import { DeleteConfigurationRequest } from "../models/deleteconfigurationop.js";
 import {
   GetBillingPlansRequest,
@@ -27,10 +25,8 @@ import {
   GetConfigurationRequest,
   GetConfigurationResponseBody,
 } from "../models/getconfigurationop.js";
-import {
-  GetConfigurationProductsRequest,
-  GetConfigurationProductsResponseBody,
-} from "../models/getconfigurationproductsop.js";
+import { GetConfigurationProductsRequest } from "../models/getconfigurationproductspropertiesintegrationsresponseuicontrol.js";
+import { GetConfigurationProductsResponseBody } from "../models/getconfigurationproductsresponsebody.js";
 import {
   GetConfigurationsRequest,
   GetConfigurationsResponseBody,

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload147Next } from "@vercel/sdk/models/userevent.js";
+import { UserEventPayload147Next } from "@vercel/sdk/models/projectanalytics.js";
 
 let value: UserEventPayload147Next = {
   skewProtectionBoundaryAt: 851.04,

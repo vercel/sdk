@@ -111,15 +111,15 @@ test("Security Put Firewall Config", async () => {
             {
               conditions: [
                 {
-                  type: "bot_category",
-                  op: "nex",
+                  type: "ip_address",
+                  op: "suf",
                 },
               ],
             },
           ],
           action: {},
-          valid: true,
-          validationErrors: "<value>",
+          valid: false,
+          validationErrors: [],
         },
         {
           id: "<id>",
@@ -129,15 +129,15 @@ test("Security Put Firewall Config", async () => {
             {
               conditions: [
                 {
-                  type: "bot_category",
-                  op: "nex",
+                  type: "ip_address",
+                  op: "suf",
                 },
               ],
             },
           ],
           action: {},
-          valid: true,
-          validationErrors: "<value>",
+          valid: false,
+          validationErrors: [],
         },
       ],
       ips: [],
@@ -244,18 +244,9 @@ test("Security Get Firewall Config", async () => {
         id: "<id>",
         name: "<value>",
         active: true,
-        conditionGroup: [
-          {
-            conditions: [
-              {
-                type: "protocol",
-                op: "ex",
-              },
-            ],
-          },
-        ],
+        conditionGroup: [],
         action: {},
-        valid: false,
+        valid: true,
         validationErrors: [
           "<value 1>",
         ],
@@ -310,10 +301,10 @@ test("Security Get Bypass Ip", async () => {
       {
         ownerId: "<id>",
         id: "<id>",
-        domain: "agitated-ocelot.name",
-        ip: "ef79:f1ee:4268:c9f2:43e5:a532:e348:c2c2",
-        createdAt: "1734947224713",
-        updatedAt: "1735643690995",
+        domain: "jittery-window.com",
+        ip: "41.167.64.119",
+        createdAt: "1711861805225",
+        updatedAt: "1735616934813",
         updatedAtHour: "<value>",
       },
     ],

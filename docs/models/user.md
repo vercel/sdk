@@ -5,7 +5,7 @@ Metadata for {@link userId}.
 ## Example Usage
 
 ```typescript
-import { User } from "@vercel/sdk/models/userevent.js";
+import { User } from "@vercel/sdk/models/payloadprojectids.js";
 
 let value: User = {
   username: "Joanie79",

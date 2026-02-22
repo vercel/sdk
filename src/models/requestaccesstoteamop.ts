@@ -87,6 +87,7 @@ export const RequestAccessToTeamTeamsOrigin = {
   NsnbRequestAccess: "nsnb-request-access",
   NsnbViewerUpgrade: "nsnb-viewer-upgrade",
   NsnbInvite: "nsnb-invite",
+  NsnbRedeploy: "nsnb-redeploy",
 } as const;
 export type RequestAccessToTeamTeamsOrigin = ClosedEnum<
   typeof RequestAccessToTeamTeamsOrigin

@@ -5,7 +5,7 @@ If set it overrides the `projectSettings.nodeVersion` for this deployment.
 ## Example Usage
 
 ```typescript
-import { ResponseBodyNodeVersion } from "@vercel/sdk/models/getdeploymentop.js";
+import { ResponseBodyNodeVersion } from "@vercel/sdk/models/responsebodyorigin.js";
 
 let value: ResponseBodyNodeVersion = "24.x";
 ```

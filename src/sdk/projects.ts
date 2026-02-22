@@ -74,10 +74,8 @@ import {
   GetProjectEnvRequest,
   GetProjectEnvResponseBody,
 } from "../models/getprojectenvop.js";
-import {
-  GetProjectsRequest,
-  GetProjectsResponseBody,
-} from "../models/getprojectsop.js";
+import { GetProjectsRequest } from "../models/getprojectsblockhistoryprojects3.js";
+import { GetProjectsResponseBody } from "../models/getprojectsresponsebody.js";
 import {
   ListPromoteAliasesRequest,
   ListPromoteAliasesResponseBody,

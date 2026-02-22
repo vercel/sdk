@@ -101,15 +101,18 @@ func testGetFirewallConfigGetFirewallConfig0(w http.ResponseWriter, req *http.Re
 		Rules: []operations.GetFirewallConfigRuleUnion{
 			operations.CreateGetFirewallConfigRuleUnionGetFirewallConfigRule2(
 				operations.GetFirewallConfigRule2{
-					ID:             "<id>",
-					Name:           "<value>",
-					Active:         false,
-					ConditionGroup: []operations.GetFirewallConfigConditionGroup2{},
-					Action:         operations.GetFirewallConfigRuleAction2{},
-					Valid:          false,
+					ID:     "<id>",
+					Name:   "<value>",
+					Active: false,
+					ConditionGroup: []operations.GetFirewallConfigConditionGroup2{
+						operations.GetFirewallConfigConditionGroup2{
+							Conditions: []operations.GetFirewallConfigCondition2{},
+						},
+					},
+					Action: operations.GetFirewallConfigRuleAction2{},
+					Valid:  false,
 					ValidationErrors: []string{
 						"<value 1>",
-						"<value 2>",
 					},
 				},
 			),

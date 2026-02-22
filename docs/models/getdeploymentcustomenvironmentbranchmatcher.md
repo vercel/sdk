@@ -5,7 +5,7 @@ Configuration for matching git branches to this environment
 ## Example Usage
 
 ```typescript
-import { GetDeploymentCustomEnvironmentBranchMatcher } from "@vercel/sdk/models/getdeploymentop.js";
+import { GetDeploymentCustomEnvironmentBranchMatcher } from "@vercel/sdk/models/responsebodyorigin.js";
 
 let value: GetDeploymentCustomEnvironmentBranchMatcher = {
   type: "endsWith",

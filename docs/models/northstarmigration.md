@@ -5,7 +5,7 @@ An archive of information about the Northstar migration, derived from the old (d
 ## Example Usage
 
 ```typescript
-import { NorthstarMigration } from "@vercel/sdk/models/userevent.js";
+import { NorthstarMigration } from "@vercel/sdk/models/oldteam.js";
 
 let value: NorthstarMigration = {
   teamId: "<id>",

@@ -3,7 +3,7 @@
  */
 
 import { integrationsGetConfigurationProducts } from "../../funcs/integrationsGetConfigurationProducts.js";
-import { GetConfigurationProductsRequest$inboundSchema } from "../../models/getconfigurationproductsop.js";
+import { GetConfigurationProductsRequest$inboundSchema } from "../../models/getconfigurationproductspropertiesintegrationsresponseuicontrol.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
 const args = {

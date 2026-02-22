@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { WafOwaspExcessBytes } from "@vercel/sdk/models/userevent.js";
+import { WafOwaspExcessBytes } from "@vercel/sdk/models/payloadenablepreviewfeedback.js";
 
 let value: WafOwaspExcessBytes = {
   currentThreshold: 2693.47,

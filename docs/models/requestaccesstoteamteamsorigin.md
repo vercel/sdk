@@ -11,5 +11,5 @@ let value: RequestAccessToTeamTeamsOrigin = "gitlab";
 ## Values
 
 ```typescript
-"teams" | "link" | "import" | "mail" | "github" | "gitlab" | "bitbucket" | "saml" | "dsync" | "feedback" | "organization-teams" | "nsnb-auto-approve" | "nsnb-request-access" | "nsnb-viewer-upgrade" | "nsnb-invite"
+"teams" | "link" | "import" | "mail" | "github" | "gitlab" | "bitbucket" | "saml" | "dsync" | "feedback" | "organization-teams" | "nsnb-auto-approve" | "nsnb-request-access" | "nsnb-viewer-upgrade" | "nsnb-invite" | "nsnb-redeploy"
 ```

@@ -237,6 +237,7 @@ export const BuildMachineType = {
   Enhanced: "enhanced",
   Turbo: "turbo",
   Standard: "standard",
+  Elastic: "elastic",
 } as const;
 export type BuildMachineType = ClosedEnum<typeof BuildMachineType>;
 
@@ -1145,6 +1146,7 @@ export const CreateProjectBuildMachineType = {
   Standard: "standard",
   Enhanced: "enhanced",
   Turbo: "turbo",
+  Elastic: "elastic",
 } as const;
 export type CreateProjectBuildMachineType = ClosedEnum<
   typeof CreateProjectBuildMachineType
@@ -1251,6 +1253,7 @@ export const CreateProjectProjectsBuildMachineType = {
   Standard: "standard",
   Enhanced: "enhanced",
   Turbo: "turbo",
+  Elastic: "elastic",
 } as const;
 export type CreateProjectProjectsBuildMachineType = ClosedEnum<
   typeof CreateProjectProjectsBuildMachineType

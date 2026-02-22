@@ -5,7 +5,7 @@ A list of verification challenges, one of which must be completed to verify the 
 ## Example Usage
 
 ```typescript
-import { GetDeploymentCustomEnvironmentVerification } from "@vercel/sdk/models/getdeploymentop.js";
+import { GetDeploymentCustomEnvironmentVerification } from "@vercel/sdk/models/responsebodyorigin.js";
 
 let value: GetDeploymentCustomEnvironmentVerification = {
   type: "<value>",

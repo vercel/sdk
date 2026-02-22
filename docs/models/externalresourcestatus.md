@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ExternalResourceStatus } from "@vercel/sdk/models/createintegrationstoredirectop.js";
+import { ExternalResourceStatus } from "@vercel/sdk/models/createintegrationstoredirecthidden1.js";
 
 let value: ExternalResourceStatus = "ready";
 ```

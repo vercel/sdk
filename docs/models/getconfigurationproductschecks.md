@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetConfigurationProductsChecks } from "@vercel/sdk/models/getconfigurationproductsop.js";
+import { GetConfigurationProductsChecks } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponseuicontrol.js";
 
 let value: GetConfigurationProductsChecks = {
   status: "disabled",

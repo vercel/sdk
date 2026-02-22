@@ -32,50 +32,53 @@ test("Projects Get Projects", async () => {
     projects: [
       {
         accountId: "<id>",
-        crons: {
-          enabledAt: 5448.83,
-          disabledAt: 6458.94,
-          updatedAt: 4375.87,
-          deploymentId: "<id>",
-          definitions: [
-            {
-              host: "vercel.com",
-              path: "/api/crons/sync-something?hello=world",
-              schedule: "0 0 * * *",
+        alias: [
+          {
+            deployment: {
+              createdAt: 4236.55,
+              createdIn: "<value>",
+              creator: {
+                email: "Sim56@yahoo.com",
+                uid: "<id>",
+                username: "Antonetta77",
+              },
+              deploymentHostname: "<value>",
+              name: "<value>",
+              id: "<id>",
+              plan: "<value>",
+              private: false,
+              readyState: "<value>",
+              type: "<value>",
+              url: "https://leading-scaffold.com",
+              userId: "<id>",
             },
-          ],
-        },
-        deploymentExpiration: {},
+            domain: "productive-charm.org",
+            environment: "preview",
+            target: "STAGING",
+          },
+        ],
         directoryListing: true,
+        deploymentExpiration: {},
         id: "<id>",
         name: "<value>",
-        nodeVersion: "10.x",
+        nodeVersion: "12.x",
         resourceConfig: {
           functionDefaultRegions: [
             "<value 1>",
-            "<value 2>",
           ],
         },
         rollingRelease: {
           target: "production",
-          stages: [
-            {
-              targetPercentage: 25,
-              requireApproval: false,
-              duration: 600,
-              linearShift: false,
-            },
-          ],
+          stages: null,
           canaryResponseHeader: false,
         },
-        defaultResourceConfig: {
-          functionDefaultRegions: [],
-        },
+        serverlessFunctionRegion: "<value>",
       },
     ],
     pagination: {
       count: 20,
-      next: "JBSWY3DPEHPK3PXP",
+      next: 1540095775951,
+      prev: 1540095775951,
     },
   });
 });

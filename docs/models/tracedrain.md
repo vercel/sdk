@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TraceDrain } from "@vercel/sdk/models/getconfigurationproductsop.js";
+import { TraceDrain } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponseuicontrol.js";
 
 let value: TraceDrain = {
   status: "enabled",

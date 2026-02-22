@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Repl } from "@vercel/sdk/models/createintegrationstoredirectop.js";
+import { Repl } from "@vercel/sdk/models/createintegrationstoredirectresponsebody.js";
 
 let value: Repl = {
   enabled: true,

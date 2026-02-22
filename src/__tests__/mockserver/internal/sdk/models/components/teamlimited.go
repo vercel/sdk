@@ -453,6 +453,7 @@ const (
 	TeamLimitedOriginNsnbRequestAccess TeamLimitedOrigin = "nsnb-request-access"
 	TeamLimitedOriginNsnbViewerUpgrade TeamLimitedOrigin = "nsnb-viewer-upgrade"
 	TeamLimitedOriginNsnbInvite        TeamLimitedOrigin = "nsnb-invite"
+	TeamLimitedOriginNsnbRedeploy      TeamLimitedOrigin = "nsnb-redeploy"
 )
 
 func (e TeamLimitedOrigin) ToPointer() *TeamLimitedOrigin {
@@ -493,6 +494,8 @@ func (e *TeamLimitedOrigin) UnmarshalJSON(data []byte) error {
 	case "nsnb-viewer-upgrade":
 		fallthrough
 	case "nsnb-invite":
+		fallthrough
+	case "nsnb-redeploy":
 		*e = TeamLimitedOrigin(v)
 		return nil
 	default:

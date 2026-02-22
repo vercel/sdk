@@ -5,7 +5,7 @@ optional since entries prior to 2025-10-13 do not contain app information
 ## Example Usage
 
 ```typescript
-import { PayloadApp } from "@vercel/sdk/models/userevent.js";
+import { PayloadApp } from "@vercel/sdk/models/payloadprojectids.js";
 
 let value: PayloadApp = {
   clientId: "<id>",

@@ -5,7 +5,7 @@ Current provisioning state
 ## Example Usage
 
 ```typescript
-import { ResponseBodyState } from "@vercel/sdk/models/getdeploymentop.js";
+import { ResponseBodyState } from "@vercel/sdk/models/responsebodyorigin.js";
 
 let value: ResponseBodyState = "TIMEOUT";
 ```

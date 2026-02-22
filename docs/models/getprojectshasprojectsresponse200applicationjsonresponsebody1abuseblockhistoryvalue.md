@@ -5,7 +5,7 @@
 ```typescript
 import {
   GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1AbuseBlockHistoryValue,
-} from "@vercel/sdk/models/getprojectsop.js";
+} from "@vercel/sdk/models/getprojectsrouteprojects1.js";
 
 let value:
   GetProjectsHasProjectsResponse200ApplicationJSONResponseBody1AbuseBlockHistoryValue =

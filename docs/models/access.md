@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Access } from "@vercel/sdk/models/userevent.js";
+import { Access } from "@vercel/sdk/models/onehundredandsixtyfour.js";
 
 let value: Access = "public";
 ```

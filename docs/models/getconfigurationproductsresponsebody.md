@@ -5,7 +5,7 @@ List of products available for this integration configuration
 ## Example Usage
 
 ```typescript
-import { GetConfigurationProductsResponseBody } from "@vercel/sdk/models/getconfigurationproductsop.js";
+import { GetConfigurationProductsResponseBody } from "@vercel/sdk/models/getconfigurationproductsresponsebody.js";
 
 let value: GetConfigurationProductsResponseBody = {
   products: [],

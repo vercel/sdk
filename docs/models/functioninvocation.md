@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { FunctionInvocation } from "@vercel/sdk/models/userevent.js";
+import { FunctionInvocation } from "@vercel/sdk/models/payloadenablepreviewfeedback.js";
 
 let value: FunctionInvocation = {
   currentThreshold: 5022.65,

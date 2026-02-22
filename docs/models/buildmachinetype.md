@@ -11,5 +11,5 @@ let value: BuildMachineType = "turbo";
 ## Values
 
 ```typescript
-"enhanced" | "turbo" | "standard"
+"enhanced" | "turbo" | "standard" | "elastic"
 ```

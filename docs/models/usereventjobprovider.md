@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventJobProvider } from "@vercel/sdk/models/userevent.js";
+import { UserEventJobProvider } from "@vercel/sdk/models/payloadprojectids.js";
 
 let value: UserEventJobProvider = "bitbucket";
 ```

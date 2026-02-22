@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadBlockReason } from "@vercel/sdk/models/userevent.js";
+import { UserEventPayloadBlockReason } from "@vercel/sdk/models/oldteam.js";
 
 let value: UserEventPayloadBlockReason = "limits_exceeded";
 ```

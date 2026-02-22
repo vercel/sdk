@@ -427,12 +427,66 @@ export type GetDeploymentsProjectSettings = {
   gitComments?: GetDeploymentsGitComments | undefined;
 };
 
+export type GetDeploymentsDeploymentsSource = {
+  name: string;
+};
+
+export const GetDeploymentsDeploymentsType = {
+  Url: "url",
+  Id: "id",
+} as const;
+export type GetDeploymentsDeploymentsType = ClosedEnum<
+  typeof GetDeploymentsDeploymentsType
+>;
+
+export type GetDeploymentsOrigin = {
+  type: GetDeploymentsDeploymentsType;
+  value: string;
+};
+
+/**
+ * Metadata about the source platform that triggered the deployment.
+ */
+export type GetDeploymentsPlatform = {
+  source: GetDeploymentsDeploymentsSource;
+  origin: GetDeploymentsOrigin;
+  meta?: { [k: string]: string } | undefined;
+};
+
 /**
  * The custom environment used for this deployment, if any
  */
 export type GetDeploymentsCustomEnvironment = {
   id: string;
   slug?: string | undefined;
+};
+
+/**
+ * The NSNB decision code for the seat block. TODO: We should consolidate block types.
+ */
+export const GetDeploymentsBlockCode = {
+  TeamAccessRequired: "TEAM_ACCESS_REQUIRED",
+  CommitAuthorRequired: "COMMIT_AUTHOR_REQUIRED",
+} as const;
+/**
+ * The NSNB decision code for the seat block. TODO: We should consolidate block types.
+ */
+export type GetDeploymentsBlockCode = ClosedEnum<
+  typeof GetDeploymentsBlockCode
+>;
+
+/**
+ * NSNB Blocked metadata
+ */
+export type GetDeploymentsSeatBlock = {
+  /**
+   * The NSNB decision code for the seat block. TODO: We should consolidate block types.
+   */
+  blockCode: GetDeploymentsBlockCode;
+  /**
+   * The blocked vercel user ID.
+   */
+  userId?: string | undefined;
 };
 
 export type Deployments = {
@@ -579,9 +633,17 @@ export type Deployments = {
    */
   proposedExpiration?: number | undefined;
   /**
+   * Metadata about the source platform that triggered the deployment.
+   */
+  platform?: GetDeploymentsPlatform | undefined;
+  /**
    * The custom environment used for this deployment, if any
    */
   customEnvironment?: GetDeploymentsCustomEnvironment | undefined;
+  /**
+   * NSNB Blocked metadata
+   */
+  seatBlock?: GetDeploymentsSeatBlock | undefined;
 };
 
 export type GetDeploymentsResponseBody = {
@@ -1257,6 +1319,143 @@ export function getDeploymentsProjectSettingsFromJSON(
 }
 
 /** @internal */
+export const GetDeploymentsDeploymentsSource$inboundSchema: z.ZodType<
+  GetDeploymentsDeploymentsSource,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  name: types.string(),
+});
+/** @internal */
+export type GetDeploymentsDeploymentsSource$Outbound = {
+  name: string;
+};
+
+/** @internal */
+export const GetDeploymentsDeploymentsSource$outboundSchema: z.ZodType<
+  GetDeploymentsDeploymentsSource$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentsDeploymentsSource
+> = z.object({
+  name: z.string(),
+});
+
+export function getDeploymentsDeploymentsSourceToJSON(
+  getDeploymentsDeploymentsSource: GetDeploymentsDeploymentsSource,
+): string {
+  return JSON.stringify(
+    GetDeploymentsDeploymentsSource$outboundSchema.parse(
+      getDeploymentsDeploymentsSource,
+    ),
+  );
+}
+export function getDeploymentsDeploymentsSourceFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsDeploymentsSource, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentsDeploymentsSource$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsDeploymentsSource' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentsDeploymentsType$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentsDeploymentsType
+> = z.nativeEnum(GetDeploymentsDeploymentsType);
+/** @internal */
+export const GetDeploymentsDeploymentsType$outboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentsDeploymentsType
+> = GetDeploymentsDeploymentsType$inboundSchema;
+
+/** @internal */
+export const GetDeploymentsOrigin$inboundSchema: z.ZodType<
+  GetDeploymentsOrigin,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: GetDeploymentsDeploymentsType$inboundSchema,
+  value: types.string(),
+});
+/** @internal */
+export type GetDeploymentsOrigin$Outbound = {
+  type: string;
+  value: string;
+};
+
+/** @internal */
+export const GetDeploymentsOrigin$outboundSchema: z.ZodType<
+  GetDeploymentsOrigin$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentsOrigin
+> = z.object({
+  type: GetDeploymentsDeploymentsType$outboundSchema,
+  value: z.string(),
+});
+
+export function getDeploymentsOriginToJSON(
+  getDeploymentsOrigin: GetDeploymentsOrigin,
+): string {
+  return JSON.stringify(
+    GetDeploymentsOrigin$outboundSchema.parse(getDeploymentsOrigin),
+  );
+}
+export function getDeploymentsOriginFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsOrigin, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentsOrigin$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsOrigin' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentsPlatform$inboundSchema: z.ZodType<
+  GetDeploymentsPlatform,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  source: z.lazy(() => GetDeploymentsDeploymentsSource$inboundSchema),
+  origin: z.lazy(() => GetDeploymentsOrigin$inboundSchema),
+  meta: types.optional(z.record(types.string())),
+});
+/** @internal */
+export type GetDeploymentsPlatform$Outbound = {
+  source: GetDeploymentsDeploymentsSource$Outbound;
+  origin: GetDeploymentsOrigin$Outbound;
+  meta?: { [k: string]: string } | undefined;
+};
+
+/** @internal */
+export const GetDeploymentsPlatform$outboundSchema: z.ZodType<
+  GetDeploymentsPlatform$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentsPlatform
+> = z.object({
+  source: z.lazy(() => GetDeploymentsDeploymentsSource$outboundSchema),
+  origin: z.lazy(() => GetDeploymentsOrigin$outboundSchema),
+  meta: z.record(z.string()).optional(),
+});
+
+export function getDeploymentsPlatformToJSON(
+  getDeploymentsPlatform: GetDeploymentsPlatform,
+): string {
+  return JSON.stringify(
+    GetDeploymentsPlatform$outboundSchema.parse(getDeploymentsPlatform),
+  );
+}
+export function getDeploymentsPlatformFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsPlatform, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentsPlatform$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsPlatform' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetDeploymentsCustomEnvironment$inboundSchema: z.ZodType<
   GetDeploymentsCustomEnvironment,
   z.ZodTypeDef,
@@ -1297,6 +1496,57 @@ export function getDeploymentsCustomEnvironmentFromJSON(
     jsonString,
     (x) => GetDeploymentsCustomEnvironment$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetDeploymentsCustomEnvironment' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentsBlockCode$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentsBlockCode
+> = z.nativeEnum(GetDeploymentsBlockCode);
+/** @internal */
+export const GetDeploymentsBlockCode$outboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentsBlockCode
+> = GetDeploymentsBlockCode$inboundSchema;
+
+/** @internal */
+export const GetDeploymentsSeatBlock$inboundSchema: z.ZodType<
+  GetDeploymentsSeatBlock,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  blockCode: GetDeploymentsBlockCode$inboundSchema,
+  userId: types.optional(types.string()),
+});
+/** @internal */
+export type GetDeploymentsSeatBlock$Outbound = {
+  blockCode: string;
+  userId?: string | undefined;
+};
+
+/** @internal */
+export const GetDeploymentsSeatBlock$outboundSchema: z.ZodType<
+  GetDeploymentsSeatBlock$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentsSeatBlock
+> = z.object({
+  blockCode: GetDeploymentsBlockCode$outboundSchema,
+  userId: z.string().optional(),
+});
+
+export function getDeploymentsSeatBlockToJSON(
+  getDeploymentsSeatBlock: GetDeploymentsSeatBlock,
+): string {
+  return JSON.stringify(
+    GetDeploymentsSeatBlock$outboundSchema.parse(getDeploymentsSeatBlock),
+  );
+}
+export function getDeploymentsSeatBlockFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsSeatBlock, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentsSeatBlock$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsSeatBlock' from JSON`,
   );
 }
 
@@ -1349,8 +1599,12 @@ export const Deployments$inboundSchema: z.ZodType<
   passiveConnectConfigurationId: types.optional(types.string()),
   expiration: types.optional(types.number()),
   proposedExpiration: types.optional(types.number()),
+  platform: types.optional(z.lazy(() => GetDeploymentsPlatform$inboundSchema)),
   customEnvironment: types.optional(
     z.lazy(() => GetDeploymentsCustomEnvironment$inboundSchema),
+  ),
+  seatBlock: types.optional(
+    z.lazy(() => GetDeploymentsSeatBlock$inboundSchema),
   ),
 });
 /** @internal */
@@ -1392,7 +1646,9 @@ export type Deployments$Outbound = {
   passiveConnectConfigurationId?: string | undefined;
   expiration?: number | undefined;
   proposedExpiration?: number | undefined;
+  platform?: GetDeploymentsPlatform$Outbound | undefined;
   customEnvironment?: GetDeploymentsCustomEnvironment$Outbound | undefined;
+  seatBlock?: GetDeploymentsSeatBlock$Outbound | undefined;
 };
 
 /** @internal */
@@ -1440,9 +1696,11 @@ export const Deployments$outboundSchema: z.ZodType<
   passiveConnectConfigurationId: z.string().optional(),
   expiration: z.number().optional(),
   proposedExpiration: z.number().optional(),
+  platform: z.lazy(() => GetDeploymentsPlatform$outboundSchema).optional(),
   customEnvironment: z.lazy(() =>
     GetDeploymentsCustomEnvironment$outboundSchema
   ).optional(),
+  seatBlock: z.lazy(() => GetDeploymentsSeatBlock$outboundSchema).optional(),
 });
 
 export function deploymentsToJSON(deployments: Deployments): string {

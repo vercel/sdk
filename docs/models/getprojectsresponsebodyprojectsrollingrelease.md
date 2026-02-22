@@ -5,7 +5,7 @@ Project-level rolling release configuration that defines how deployments should 
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsRollingRelease } from "@vercel/sdk/models/getprojectsop.js";
+import { GetProjectsResponseBodyProjectsRollingRelease } from "@vercel/sdk/models/getprojectsrouteprojectsresponse200applicationjsonresponsebodymitigate.js";
 
 let value: GetProjectsResponseBodyProjectsRollingRelease = {
   target: "production",

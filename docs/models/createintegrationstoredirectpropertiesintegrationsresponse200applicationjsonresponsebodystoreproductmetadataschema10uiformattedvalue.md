@@ -5,7 +5,7 @@
 ```typescript
 import {
   CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiFormattedValue,
-} from "@vercel/sdk/models/createintegrationstoredirectop.js";
+} from "@vercel/sdk/models/createintegrationstoredirecthidden1.js";
 
 let value:
   CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema10UiFormattedValue =

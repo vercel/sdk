@@ -3717,24 +3717,24 @@ func (e *CancelDeploymentReadySubstate) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// CancelDeploymentSource - Where was the deployment created from
-type CancelDeploymentSource string
+// CancelDeploymentSourceEnum - Where was the deployment created from
+type CancelDeploymentSourceEnum string
 
 const (
-	CancelDeploymentSourceAPITriggerGitDeploy CancelDeploymentSource = "api-trigger-git-deploy"
-	CancelDeploymentSourceCli                 CancelDeploymentSource = "cli"
-	CancelDeploymentSourceCloneRepo           CancelDeploymentSource = "clone/repo"
-	CancelDeploymentSourceGit                 CancelDeploymentSource = "git"
-	CancelDeploymentSourceImport              CancelDeploymentSource = "import"
-	CancelDeploymentSourceImportRepo          CancelDeploymentSource = "import/repo"
-	CancelDeploymentSourceRedeploy            CancelDeploymentSource = "redeploy"
-	CancelDeploymentSourceV0Web               CancelDeploymentSource = "v0-web"
+	CancelDeploymentSourceEnumAPITriggerGitDeploy CancelDeploymentSourceEnum = "api-trigger-git-deploy"
+	CancelDeploymentSourceEnumCli                 CancelDeploymentSourceEnum = "cli"
+	CancelDeploymentSourceEnumCloneRepo           CancelDeploymentSourceEnum = "clone/repo"
+	CancelDeploymentSourceEnumGit                 CancelDeploymentSourceEnum = "git"
+	CancelDeploymentSourceEnumImport              CancelDeploymentSourceEnum = "import"
+	CancelDeploymentSourceEnumImportRepo          CancelDeploymentSourceEnum = "import/repo"
+	CancelDeploymentSourceEnumRedeploy            CancelDeploymentSourceEnum = "redeploy"
+	CancelDeploymentSourceEnumV0Web               CancelDeploymentSourceEnum = "v0-web"
 )
 
-func (e CancelDeploymentSource) ToPointer() *CancelDeploymentSource {
+func (e CancelDeploymentSourceEnum) ToPointer() *CancelDeploymentSourceEnum {
 	return &e
 }
-func (e *CancelDeploymentSource) UnmarshalJSON(data []byte) error {
+func (e *CancelDeploymentSourceEnum) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -3755,10 +3755,10 @@ func (e *CancelDeploymentSource) UnmarshalJSON(data []byte) error {
 	case "redeploy":
 		fallthrough
 	case "v0-web":
-		*e = CancelDeploymentSource(v)
+		*e = CancelDeploymentSourceEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CancelDeploymentSource: %v", v)
+		return fmt.Errorf("invalid value for CancelDeploymentSourceEnum: %v", v)
 	}
 }
 
@@ -3899,6 +3899,90 @@ func (e *CancelDeploymentPlan) UnmarshalJSON(data []byte) error {
 	default:
 		return fmt.Errorf("invalid value for CancelDeploymentPlan: %v", v)
 	}
+}
+
+type CancelDeploymentPlatformSource struct {
+	Name string `json:"name"`
+}
+
+func (o *CancelDeploymentPlatformSource) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+type CancelDeploymentOriginType string
+
+const (
+	CancelDeploymentOriginTypeID  CancelDeploymentOriginType = "id"
+	CancelDeploymentOriginTypeURL CancelDeploymentOriginType = "url"
+)
+
+func (e CancelDeploymentOriginType) ToPointer() *CancelDeploymentOriginType {
+	return &e
+}
+func (e *CancelDeploymentOriginType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "id":
+		fallthrough
+	case "url":
+		*e = CancelDeploymentOriginType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentOriginType: %v", v)
+	}
+}
+
+type CancelDeploymentOrigin struct {
+	Type  CancelDeploymentOriginType `json:"type"`
+	Value string                     `json:"value"`
+}
+
+func (o *CancelDeploymentOrigin) GetType() CancelDeploymentOriginType {
+	if o == nil {
+		return CancelDeploymentOriginType("")
+	}
+	return o.Type
+}
+
+func (o *CancelDeploymentOrigin) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
+}
+
+// CancelDeploymentPlatform - Metadata about the source platform that triggered the deployment. Allows us to map a deployment back to a platform (e.g. the chat that created it)
+type CancelDeploymentPlatform struct {
+	Source CancelDeploymentPlatformSource `json:"source"`
+	Origin CancelDeploymentOrigin         `json:"origin"`
+	Meta   map[string]string              `json:"meta,omitempty"`
+}
+
+func (o *CancelDeploymentPlatform) GetSource() CancelDeploymentPlatformSource {
+	if o == nil {
+		return CancelDeploymentPlatformSource{}
+	}
+	return o.Source
+}
+
+func (o *CancelDeploymentPlatform) GetOrigin() CancelDeploymentOrigin {
+	if o == nil {
+		return CancelDeploymentOrigin{}
+	}
+	return o.Origin
+}
+
+func (o *CancelDeploymentPlatform) GetMeta() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Meta
 }
 
 type CancelDeploymentCron struct {
@@ -7835,6 +7919,55 @@ func (o *CancelDeploymentChecks) GetDeploymentAlias() CancelDeploymentDeployment
 	return o.DeploymentAlias
 }
 
+// CancelDeploymentBlockCode - The NSNB decision code for the seat block. TODO: We should consolidate block types.
+type CancelDeploymentBlockCode string
+
+const (
+	CancelDeploymentBlockCodeTeamAccessRequired   CancelDeploymentBlockCode = "TEAM_ACCESS_REQUIRED"
+	CancelDeploymentBlockCodeCommitAuthorRequired CancelDeploymentBlockCode = "COMMIT_AUTHOR_REQUIRED"
+)
+
+func (e CancelDeploymentBlockCode) ToPointer() *CancelDeploymentBlockCode {
+	return &e
+}
+func (e *CancelDeploymentBlockCode) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "TEAM_ACCESS_REQUIRED":
+		fallthrough
+	case "COMMIT_AUTHOR_REQUIRED":
+		*e = CancelDeploymentBlockCode(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentBlockCode: %v", v)
+	}
+}
+
+// CancelDeploymentSeatBlock - NSNB Blocked metadata
+type CancelDeploymentSeatBlock struct {
+	// The NSNB decision code for the seat block. TODO: We should consolidate block types.
+	BlockCode CancelDeploymentBlockCode `json:"blockCode"`
+	// The blocked vercel user ID.
+	UserID *string `json:"userId,omitempty"`
+}
+
+func (o *CancelDeploymentSeatBlock) GetBlockCode() CancelDeploymentBlockCode {
+	if o == nil {
+		return CancelDeploymentBlockCode("")
+	}
+	return o.BlockCode
+}
+
+func (o *CancelDeploymentSeatBlock) GetUserID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UserID
+}
+
 // CancelDeploymentResponseBody - The private deployment representation of a Deployment.
 type CancelDeploymentResponseBody struct {
 	AliasAssignedAt           *CancelDeploymentAliasAssignedAt `json:"aliasAssignedAt,omitempty"`
@@ -7924,7 +8057,7 @@ type CancelDeploymentResponseBody struct {
 	// flag to indicate if the deployment was deleted by retention policy
 	SoftDeletedByRetention *bool `json:"softDeletedByRetention,omitempty"`
 	// Where was the deployment created from
-	Source *CancelDeploymentSource `json:"source,omitempty"`
+	Source *CancelDeploymentSourceEnum `json:"source,omitempty"`
 	// If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
 	Target *CancelDeploymentTargetEnum `json:"target,omitempty"`
 	// A number containing the date when the deployment was undeleted at milliseconds
@@ -7934,10 +8067,12 @@ type CancelDeploymentResponseBody struct {
 	// Since January 2025 User-configured deployment ID for skew protection with pre-built deployments. This is set when users configure a custom deploymentId in their next.config.js file. This allows Next.js to use skew protection even when deployments are pre-built outside of Vercel's build system.
 	UserConfiguredDeploymentID *string `json:"userConfiguredDeploymentId,omitempty"`
 	// The platform version that was used to create the deployment.
-	Version                float64                              `json:"version"`
-	OidcTokenClaims        *CancelDeploymentOidcTokenClaims     `json:"oidcTokenClaims,omitempty"`
-	ProjectID              string                               `json:"projectId"`
-	Plan                   CancelDeploymentPlan                 `json:"plan"`
+	Version         float64                          `json:"version"`
+	OidcTokenClaims *CancelDeploymentOidcTokenClaims `json:"oidcTokenClaims,omitempty"`
+	ProjectID       string                           `json:"projectId"`
+	Plan            CancelDeploymentPlan             `json:"plan"`
+	// Metadata about the source platform that triggered the deployment. Allows us to map a deployment back to a platform (e.g. the chat that created it)
+	Platform               *CancelDeploymentPlatform            `json:"platform,omitempty"`
 	ConnectBuildsEnabled   *bool                                `json:"connectBuildsEnabled,omitempty"`
 	ConnectConfigurationID *string                              `json:"connectConfigurationId,omitempty"`
 	CreatedIn              string                               `json:"createdIn"`
@@ -7954,6 +8089,8 @@ type CancelDeploymentResponseBody struct {
 	// Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
 	Config *CancelDeploymentConfig `json:"config,omitempty"`
 	Checks *CancelDeploymentChecks `json:"checks,omitempty"`
+	// NSNB Blocked metadata
+	SeatBlock *CancelDeploymentSeatBlock `json:"seatBlock,omitempty"`
 }
 
 func (o *CancelDeploymentResponseBody) GetAliasAssignedAt() *CancelDeploymentAliasAssignedAt {
@@ -8397,7 +8534,7 @@ func (o *CancelDeploymentResponseBody) GetSoftDeletedByRetention() *bool {
 	return o.SoftDeletedByRetention
 }
 
-func (o *CancelDeploymentResponseBody) GetSource() *CancelDeploymentSource {
+func (o *CancelDeploymentResponseBody) GetSource() *CancelDeploymentSourceEnum {
 	if o == nil {
 		return nil
 	}
@@ -8458,6 +8595,13 @@ func (o *CancelDeploymentResponseBody) GetPlan() CancelDeploymentPlan {
 		return CancelDeploymentPlan("")
 	}
 	return o.Plan
+}
+
+func (o *CancelDeploymentResponseBody) GetPlatform() *CancelDeploymentPlatform {
+	if o == nil {
+		return nil
+	}
+	return o.Platform
 }
 
 func (o *CancelDeploymentResponseBody) GetConnectBuildsEnabled() *bool {
@@ -8577,6 +8721,13 @@ func (o *CancelDeploymentResponseBody) GetChecks() *CancelDeploymentChecks {
 		return nil
 	}
 	return o.Checks
+}
+
+func (o *CancelDeploymentResponseBody) GetSeatBlock() *CancelDeploymentSeatBlock {
+	if o == nil {
+		return nil
+	}
+	return o.SeatBlock
 }
 
 type CancelDeploymentResponse struct {

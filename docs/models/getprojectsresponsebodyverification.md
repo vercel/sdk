@@ -5,7 +5,7 @@ A list of verification challenges, one of which must be completed to verify the 
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyVerification } from "@vercel/sdk/models/getprojectsop.js";
+import { GetProjectsResponseBodyVerification } from "@vercel/sdk/models/getprojectsblockhistoryprojects3.js";
 
 let value: GetProjectsResponseBodyVerification = {
   type: "<value>",

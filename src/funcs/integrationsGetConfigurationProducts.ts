@@ -13,9 +13,11 @@ import { pathToFunc } from "../lib/url.js";
 import {
   GetConfigurationProductsRequest,
   GetConfigurationProductsRequest$outboundSchema,
+} from "../models/getconfigurationproductspropertiesintegrationsresponseuicontrol.js";
+import {
   GetConfigurationProductsResponseBody,
   GetConfigurationProductsResponseBody$inboundSchema,
-} from "../models/getconfigurationproductsop.js";
+} from "../models/getconfigurationproductsresponsebody.js";
 import {
   ConnectionError,
   InvalidRequestError,

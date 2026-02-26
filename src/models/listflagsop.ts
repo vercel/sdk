@@ -41,6 +41,18 @@ export type ListFlagsRequest = {
    */
   withMetadata?: boolean | undefined;
   /**
+   * Maximum number of flags to return. When not set, all flags are returned.
+   */
+  limit?: number | undefined;
+  /**
+   * Pagination cursor to continue from.
+   */
+  cursor?: string | undefined;
+  /**
+   * Search flags by their slug or description. Case-insensitive.
+   */
+  search?: string | undefined;
+  /**
    * The Team identifier to perform the request on behalf of.
    */
   teamId?: string | undefined;
@@ -50,8 +62,13 @@ export type ListFlagsRequest = {
   slug?: string | undefined;
 };
 
+export type ListFlagsPagination = {
+  next: string | null;
+};
+
 export type ListFlagsResponseBody = {
   data: Array<Flag>;
+  pagination: ListFlagsPagination;
 };
 
 /** @internal */
@@ -72,6 +89,9 @@ export const ListFlagsRequest$inboundSchema: z.ZodType<
   projectIdOrName: types.string(),
   state: types.optional(QueryParamState$inboundSchema),
   withMetadata: types.optional(types.boolean()),
+  limit: types.optional(types.number()),
+  cursor: types.optional(types.string()),
+  search: types.optional(types.string()),
   teamId: types.optional(types.string()),
   slug: types.optional(types.string()),
 });
@@ -80,6 +100,9 @@ export type ListFlagsRequest$Outbound = {
   projectIdOrName: string;
   state?: string | undefined;
   withMetadata?: boolean | undefined;
+  limit?: number | undefined;
+  cursor?: string | undefined;
+  search?: string | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
 };
@@ -93,6 +116,9 @@ export const ListFlagsRequest$outboundSchema: z.ZodType<
   projectIdOrName: z.string(),
   state: QueryParamState$outboundSchema.optional(),
   withMetadata: z.boolean().optional(),
+  limit: z.number().int().optional(),
+  cursor: z.string().optional(),
+  search: z.string().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
@@ -115,16 +141,57 @@ export function listFlagsRequestFromJSON(
 }
 
 /** @internal */
+export const ListFlagsPagination$inboundSchema: z.ZodType<
+  ListFlagsPagination,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  next: types.nullable(types.string()),
+});
+/** @internal */
+export type ListFlagsPagination$Outbound = {
+  next: string | null;
+};
+
+/** @internal */
+export const ListFlagsPagination$outboundSchema: z.ZodType<
+  ListFlagsPagination$Outbound,
+  z.ZodTypeDef,
+  ListFlagsPagination
+> = z.object({
+  next: z.nullable(z.string()),
+});
+
+export function listFlagsPaginationToJSON(
+  listFlagsPagination: ListFlagsPagination,
+): string {
+  return JSON.stringify(
+    ListFlagsPagination$outboundSchema.parse(listFlagsPagination),
+  );
+}
+export function listFlagsPaginationFromJSON(
+  jsonString: string,
+): SafeParseResult<ListFlagsPagination, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListFlagsPagination$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListFlagsPagination' from JSON`,
+  );
+}
+
+/** @internal */
 export const ListFlagsResponseBody$inboundSchema: z.ZodType<
   ListFlagsResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
   data: z.array(Flag$inboundSchema),
+  pagination: z.lazy(() => ListFlagsPagination$inboundSchema),
 });
 /** @internal */
 export type ListFlagsResponseBody$Outbound = {
   data: Array<Flag$Outbound>;
+  pagination: ListFlagsPagination$Outbound;
 };
 
 /** @internal */
@@ -134,6 +201,7 @@ export const ListFlagsResponseBody$outboundSchema: z.ZodType<
   ListFlagsResponseBody
 > = z.object({
   data: z.array(Flag$outboundSchema),
+  pagination: z.lazy(() => ListFlagsPagination$outboundSchema),
 });
 
 export function listFlagsResponseBodyToJSON(

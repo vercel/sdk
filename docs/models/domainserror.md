@@ -7,7 +7,7 @@
 
 ```typescript
 const value: models.GetOrderErrorDomainsRegistrarResponse1 = {
-  code: "price-change",
+  code: "unavailable-legal",
 };
 ```
 

@@ -4,7 +4,7 @@
 
 ### Available Operations
 
-* [listFlags](#listflags) - List all flags
+* [listFlags](#listflags) - List flags
 * [createFlag](#createflag) - Create a flag
 * [getFlag](#getflag) - Get a flag
 * [updateFlag](#updateflag) - Update a flag
@@ -26,7 +26,7 @@
 
 ## listFlags
 
-Retrieve all feature flags for a project. The list can be filtered by state.
+Retrieve feature flags for a project. The list can be filtered by state and supports pagination.
 
 ### Example Usage
 

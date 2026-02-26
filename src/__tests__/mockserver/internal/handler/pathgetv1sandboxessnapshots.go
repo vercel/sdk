@@ -47,26 +47,28 @@ func testListSnapshotsListSnapshots0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody *operations.ListSnapshotsResponseBody = &operations.ListSnapshotsResponseBody{
-		Snapshots: []components.Snapshot{
-			components.Snapshot{
-				ID:              "snap_123a6c5209bc3778245d011443644c8d27dc2c50",
-				SourceSandboxID: "sbx_123a6c5209bc3778245d011443644c8d27dc2c50",
-				Region:          "iad1",
-				Status:          components.SnapshotStatusCreated,
-				SizeBytes:       104857600,
-				ExpiresAt:       types.Float64(1750344501629),
-				CreatedAt:       1750344501629,
-				UpdatedAt:       1750344501629,
+	var respBody *operations.ListSnapshotsResponseBody = types.Pointer(operations.CreateListSnapshotsResponseBodyListSnapshotsResponseBody2(
+		operations.ListSnapshotsResponseBody2{
+			Snapshots: []components.Snapshot{
+				components.Snapshot{
+					ID:              "snap_123a6c5209bc3778245d011443644c8d27dc2c50",
+					SourceSandboxID: "sbx_123a6c5209bc3778245d011443644c8d27dc2c50",
+					Region:          "iad1",
+					Status:          components.SnapshotStatusCreated,
+					SizeBytes:       104857600,
+					ExpiresAt:       types.Float64(1750344501629),
+					CreatedAt:       1750344501629,
+					UpdatedAt:       1750344501629,
+				},
+			},
+			Pagination: operations.ListSnapshotsPagination{
+				Total: 9335.55,
+				Count: 20,
+				Next:  types.Float64(1540095775951),
+				Prev:  types.Float64(1540095775951),
 			},
 		},
-		Pagination: operations.ListSnapshotsPagination{
-			Total: 9335.55,
-			Count: 20,
-			Next:  types.Float64(1540095775951),
-			Prev:  types.Float64(1540095775951),
-		},
-	}
+	))
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

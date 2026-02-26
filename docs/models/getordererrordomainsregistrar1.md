@@ -64,7 +64,7 @@ const value: models.GetOrder1DomainsRegistrar6 = {
 
 ```typescript
 const value: models.GetOrder1DomainsRegistrar7 = {
-  code: "price-change",
+  code: "account-transfer-required",
 };
 ```
 
@@ -72,7 +72,24 @@ const value: models.GetOrder1DomainsRegistrar7 = {
 
 ```typescript
 const value: models.GetOrder1DomainsRegistrar8 = {
+  code: "price-change",
+};
+```
+
+### `models.GetOrder1DomainsRegistrar9`
+
+```typescript
+const value: models.GetOrder1DomainsRegistrar9 = {
   code: "unavailable-legal",
+};
+```
+
+### `models.GetOrder1DomainsRegistrar10`
+
+```typescript
+const value: models.GetOrder1DomainsRegistrar10 = {
+  code: "invalid-contact",
+  details: {},
 };
 ```
 

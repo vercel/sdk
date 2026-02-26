@@ -366,6 +366,7 @@ const (
 	CreateIntegrationStoreDirectFrameworkFastapi        CreateIntegrationStoreDirectFramework = "fastapi"
 	CreateIntegrationStoreDirectFrameworkFlask          CreateIntegrationStoreDirectFramework = "flask"
 	CreateIntegrationStoreDirectFrameworkFasthtml       CreateIntegrationStoreDirectFramework = "fasthtml"
+	CreateIntegrationStoreDirectFrameworkDjango         CreateIntegrationStoreDirectFramework = "django"
 	CreateIntegrationStoreDirectFrameworkSanityV3       CreateIntegrationStoreDirectFramework = "sanity-v3"
 	CreateIntegrationStoreDirectFrameworkSanity         CreateIntegrationStoreDirectFramework = "sanity"
 	CreateIntegrationStoreDirectFrameworkStorybook      CreateIntegrationStoreDirectFramework = "storybook"
@@ -486,6 +487,8 @@ func (e *CreateIntegrationStoreDirectFramework) UnmarshalJSON(data []byte) error
 	case "flask":
 		fallthrough
 	case "fasthtml":
+		fallthrough
+	case "django":
 		fallthrough
 	case "sanity-v3":
 		fallthrough
@@ -11489,7 +11492,9 @@ type CreateIntegrationStoreDirectProduct struct {
 	ShowSSOLinkOnProjectConnection *bool                                       `json:"showSSOLinkOnProjectConnection,omitempty"`
 	DisableResourceRenaming        *bool                                       `json:"disableResourceRenaming,omitempty"`
 	// Custom resource title to display during installation and configuration. If not provided, defaults to protocol-based defaults.
-	ResourceTitle              *string                                          `json:"resourceTitle,omitempty"`
+	ResourceTitle *string `json:"resourceTitle,omitempty"`
+	// URL to a skill/guide for how AI agents should use this product. Providers can specify this to help agents understand how to interact with their integration.
+	AgentSkillURL              *string                                          `json:"agentSkillUrl,omitempty"`
 	Repl                       *CreateIntegrationStoreDirectRepl                `json:"repl,omitempty"`
 	Guides                     []Guide                                          `json:"guides,omitempty"`
 	Integration                CreateIntegrationStoreDirectIntegration          `json:"integration"`
@@ -11588,6 +11593,13 @@ func (o *CreateIntegrationStoreDirectProduct) GetResourceTitle() *string {
 		return nil
 	}
 	return o.ResourceTitle
+}
+
+func (o *CreateIntegrationStoreDirectProduct) GetAgentSkillURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AgentSkillURL
 }
 
 func (o *CreateIntegrationStoreDirectProduct) GetRepl() *CreateIntegrationStoreDirectRepl {

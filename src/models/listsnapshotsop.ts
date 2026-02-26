@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   Snapshot,
@@ -41,7 +42,7 @@ export type ListSnapshotsRequest = {
   slug?: string | undefined;
 };
 
-export type ListSnapshotsPagination = {
+export type ListSnapshotsResponseBodyPagination = {
   total: number;
   /**
    * Amount of items in the current page.
@@ -57,10 +58,16 @@ export type ListSnapshotsPagination = {
   prev: number | null;
 };
 
-export type ListSnapshotsResponseBody = {
+export type ListSnapshotsResponseBody2 = {
   snapshots: Array<Snapshot>;
-  pagination: ListSnapshotsPagination;
+  pagination: ListSnapshotsResponseBodyPagination;
 };
+
+export type ListSnapshotsResponseBody1 = {};
+
+export type ListSnapshotsResponseBody =
+  | ListSnapshotsResponseBody2
+  | ListSnapshotsResponseBody1;
 
 /** @internal */
 export const ListSnapshotsRequest$inboundSchema: z.ZodType<
@@ -117,8 +124,8 @@ export function listSnapshotsRequestFromJSON(
 }
 
 /** @internal */
-export const ListSnapshotsPagination$inboundSchema: z.ZodType<
-  ListSnapshotsPagination,
+export const ListSnapshotsResponseBodyPagination$inboundSchema: z.ZodType<
+  ListSnapshotsResponseBodyPagination,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -128,7 +135,7 @@ export const ListSnapshotsPagination$inboundSchema: z.ZodType<
   prev: types.nullable(types.number()),
 });
 /** @internal */
-export type ListSnapshotsPagination$Outbound = {
+export type ListSnapshotsResponseBodyPagination$Outbound = {
   total: number;
   count: number;
   next: number | null;
@@ -136,10 +143,10 @@ export type ListSnapshotsPagination$Outbound = {
 };
 
 /** @internal */
-export const ListSnapshotsPagination$outboundSchema: z.ZodType<
-  ListSnapshotsPagination$Outbound,
+export const ListSnapshotsResponseBodyPagination$outboundSchema: z.ZodType<
+  ListSnapshotsResponseBodyPagination$Outbound,
   z.ZodTypeDef,
-  ListSnapshotsPagination
+  ListSnapshotsResponseBodyPagination
 > = z.object({
   total: z.number(),
   count: z.number(),
@@ -147,20 +154,98 @@ export const ListSnapshotsPagination$outboundSchema: z.ZodType<
   prev: z.nullable(z.number()),
 });
 
-export function listSnapshotsPaginationToJSON(
-  listSnapshotsPagination: ListSnapshotsPagination,
+export function listSnapshotsResponseBodyPaginationToJSON(
+  listSnapshotsResponseBodyPagination: ListSnapshotsResponseBodyPagination,
 ): string {
   return JSON.stringify(
-    ListSnapshotsPagination$outboundSchema.parse(listSnapshotsPagination),
+    ListSnapshotsResponseBodyPagination$outboundSchema.parse(
+      listSnapshotsResponseBodyPagination,
+    ),
   );
 }
-export function listSnapshotsPaginationFromJSON(
+export function listSnapshotsResponseBodyPaginationFromJSON(
   jsonString: string,
-): SafeParseResult<ListSnapshotsPagination, SDKValidationError> {
+): SafeParseResult<ListSnapshotsResponseBodyPagination, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ListSnapshotsPagination$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListSnapshotsPagination' from JSON`,
+    (x) =>
+      ListSnapshotsResponseBodyPagination$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListSnapshotsResponseBodyPagination' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListSnapshotsResponseBody2$inboundSchema: z.ZodType<
+  ListSnapshotsResponseBody2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  snapshots: z.array(Snapshot$inboundSchema),
+  pagination: z.lazy(() => ListSnapshotsResponseBodyPagination$inboundSchema),
+});
+/** @internal */
+export type ListSnapshotsResponseBody2$Outbound = {
+  snapshots: Array<Snapshot$Outbound>;
+  pagination: ListSnapshotsResponseBodyPagination$Outbound;
+};
+
+/** @internal */
+export const ListSnapshotsResponseBody2$outboundSchema: z.ZodType<
+  ListSnapshotsResponseBody2$Outbound,
+  z.ZodTypeDef,
+  ListSnapshotsResponseBody2
+> = z.object({
+  snapshots: z.array(Snapshot$outboundSchema),
+  pagination: z.lazy(() => ListSnapshotsResponseBodyPagination$outboundSchema),
+});
+
+export function listSnapshotsResponseBody2ToJSON(
+  listSnapshotsResponseBody2: ListSnapshotsResponseBody2,
+): string {
+  return JSON.stringify(
+    ListSnapshotsResponseBody2$outboundSchema.parse(listSnapshotsResponseBody2),
+  );
+}
+export function listSnapshotsResponseBody2FromJSON(
+  jsonString: string,
+): SafeParseResult<ListSnapshotsResponseBody2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListSnapshotsResponseBody2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListSnapshotsResponseBody2' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListSnapshotsResponseBody1$inboundSchema: z.ZodType<
+  ListSnapshotsResponseBody1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+/** @internal */
+export type ListSnapshotsResponseBody1$Outbound = {};
+
+/** @internal */
+export const ListSnapshotsResponseBody1$outboundSchema: z.ZodType<
+  ListSnapshotsResponseBody1$Outbound,
+  z.ZodTypeDef,
+  ListSnapshotsResponseBody1
+> = z.object({});
+
+export function listSnapshotsResponseBody1ToJSON(
+  listSnapshotsResponseBody1: ListSnapshotsResponseBody1,
+): string {
+  return JSON.stringify(
+    ListSnapshotsResponseBody1$outboundSchema.parse(listSnapshotsResponseBody1),
+  );
+}
+export function listSnapshotsResponseBody1FromJSON(
+  jsonString: string,
+): SafeParseResult<ListSnapshotsResponseBody1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListSnapshotsResponseBody1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListSnapshotsResponseBody1' from JSON`,
   );
 }
 
@@ -169,25 +254,24 @@ export const ListSnapshotsResponseBody$inboundSchema: z.ZodType<
   ListSnapshotsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  snapshots: z.array(Snapshot$inboundSchema),
-  pagination: z.lazy(() => ListSnapshotsPagination$inboundSchema),
-});
+> = smartUnion([
+  z.lazy(() => ListSnapshotsResponseBody2$inboundSchema),
+  z.lazy(() => ListSnapshotsResponseBody1$inboundSchema),
+]);
 /** @internal */
-export type ListSnapshotsResponseBody$Outbound = {
-  snapshots: Array<Snapshot$Outbound>;
-  pagination: ListSnapshotsPagination$Outbound;
-};
+export type ListSnapshotsResponseBody$Outbound =
+  | ListSnapshotsResponseBody2$Outbound
+  | ListSnapshotsResponseBody1$Outbound;
 
 /** @internal */
 export const ListSnapshotsResponseBody$outboundSchema: z.ZodType<
   ListSnapshotsResponseBody$Outbound,
   z.ZodTypeDef,
   ListSnapshotsResponseBody
-> = z.object({
-  snapshots: z.array(Snapshot$outboundSchema),
-  pagination: z.lazy(() => ListSnapshotsPagination$outboundSchema),
-});
+> = smartUnion([
+  z.lazy(() => ListSnapshotsResponseBody2$outboundSchema),
+  z.lazy(() => ListSnapshotsResponseBody1$outboundSchema),
+]);
 
 export function listSnapshotsResponseBodyToJSON(
   listSnapshotsResponseBody: ListSnapshotsResponseBody,

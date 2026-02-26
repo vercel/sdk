@@ -1,12 +1,12 @@
-# ListSnapshotsPagination
+# ListSnapshotsResponseBodyPagination
 
 ## Example Usage
 
 ```typescript
-import { ListSnapshotsPagination } from "@vercel/sdk/models/listsnapshotsop.js";
+import { ListSnapshotsResponseBodyPagination } from "@vercel/sdk/models/listsnapshotsop.js";
 
-let value: ListSnapshotsPagination = {
-  total: 2585.29,
+let value: ListSnapshotsResponseBodyPagination = {
+  total: 8661.07,
   count: 20,
   next: 1540095775951,
   prev: 1540095775951,

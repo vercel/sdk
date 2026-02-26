@@ -267,6 +267,7 @@ const (
 	CreateProjectFrameworkRequestFastapi        CreateProjectFrameworkRequest = "fastapi"
 	CreateProjectFrameworkRequestFlask          CreateProjectFrameworkRequest = "flask"
 	CreateProjectFrameworkRequestFasthtml       CreateProjectFrameworkRequest = "fasthtml"
+	CreateProjectFrameworkRequestDjango         CreateProjectFrameworkRequest = "django"
 	CreateProjectFrameworkRequestSanityV3       CreateProjectFrameworkRequest = "sanity-v3"
 	CreateProjectFrameworkRequestSanity         CreateProjectFrameworkRequest = "sanity"
 	CreateProjectFrameworkRequestStorybook      CreateProjectFrameworkRequest = "storybook"
@@ -388,6 +389,8 @@ func (e *CreateProjectFrameworkRequest) UnmarshalJSON(data []byte) error {
 	case "flask":
 		fallthrough
 	case "fasthtml":
+		fallthrough
+	case "django":
 		fallthrough
 	case "sanity-v3":
 		fallthrough
@@ -648,6 +651,32 @@ func (e *CreateProjectBuildMachineTypeRequest) UnmarshalJSON(data []byte) error 
 	}
 }
 
+type CreateProjectBuildMachineSelectionRequest string
+
+const (
+	CreateProjectBuildMachineSelectionRequestElastic CreateProjectBuildMachineSelectionRequest = "elastic"
+	CreateProjectBuildMachineSelectionRequestFixed   CreateProjectBuildMachineSelectionRequest = "fixed"
+)
+
+func (e CreateProjectBuildMachineSelectionRequest) ToPointer() *CreateProjectBuildMachineSelectionRequest {
+	return &e
+}
+func (e *CreateProjectBuildMachineSelectionRequest) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "elastic":
+		fallthrough
+	case "fixed":
+		*e = CreateProjectBuildMachineSelectionRequest(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectBuildMachineSelectionRequest: %v", v)
+	}
+}
+
 type CreateProjectConfigurationRequest string
 
 const (
@@ -693,11 +722,13 @@ type CreateProjectResourceConfigRequest struct {
 	FunctionDefaultTimeout    *float64                                       `json:"functionDefaultTimeout,omitempty"`
 	FunctionDefaultMemoryType *CreateProjectFunctionDefaultMemoryTypeRequest `json:"functionDefaultMemoryType,omitempty"`
 	// Specifies whether Zero Config Failover is enabled for this project.
-	FunctionZeroConfigFailover *bool                                 `json:"functionZeroConfigFailover,omitempty"`
-	ElasticConcurrencyEnabled  *bool                                 `json:"elasticConcurrencyEnabled,omitempty"`
-	BuildMachineType           *CreateProjectBuildMachineTypeRequest `json:"buildMachineType,omitempty"`
-	IsNSNBDisabled             *bool                                 `json:"isNSNBDisabled,omitempty"`
-	BuildQueue                 *CreateProjectBuildQueueRequest       `json:"buildQueue,omitempty"`
+	FunctionZeroConfigFailover     *bool                                      `json:"functionZeroConfigFailover,omitempty"`
+	ElasticConcurrencyEnabled      *bool                                      `json:"elasticConcurrencyEnabled,omitempty"`
+	BuildMachineType               *CreateProjectBuildMachineTypeRequest      `json:"buildMachineType,omitempty"`
+	BuildMachineSelection          *CreateProjectBuildMachineSelectionRequest `json:"buildMachineSelection,omitempty"`
+	BuildMachineElasticLastUpdated *float64                                   `json:"buildMachineElasticLastUpdated,omitempty"`
+	IsNSNBDisabled                 *bool                                      `json:"isNSNBDisabled,omitempty"`
+	BuildQueue                     *CreateProjectBuildQueueRequest            `json:"buildQueue,omitempty"`
 }
 
 func (o *CreateProjectResourceConfigRequest) GetFluid() *bool {
@@ -747,6 +778,20 @@ func (o *CreateProjectResourceConfigRequest) GetBuildMachineType() *CreateProjec
 		return nil
 	}
 	return o.BuildMachineType
+}
+
+func (o *CreateProjectResourceConfigRequest) GetBuildMachineSelection() *CreateProjectBuildMachineSelectionRequest {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachineSelection
+}
+
+func (o *CreateProjectResourceConfigRequest) GetBuildMachineElasticLastUpdated() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachineElasticLastUpdated
 }
 
 func (o *CreateProjectResourceConfigRequest) GetIsNSNBDisabled() *bool {
@@ -3512,6 +3557,7 @@ const (
 	CreateProjectFrameworkResponseBodyFastapi        CreateProjectFrameworkResponseBody = "fastapi"
 	CreateProjectFrameworkResponseBodyFlask          CreateProjectFrameworkResponseBody = "flask"
 	CreateProjectFrameworkResponseBodyFasthtml       CreateProjectFrameworkResponseBody = "fasthtml"
+	CreateProjectFrameworkResponseBodyDjango         CreateProjectFrameworkResponseBody = "django"
 	CreateProjectFrameworkResponseBodySanityV3       CreateProjectFrameworkResponseBody = "sanity-v3"
 	CreateProjectFrameworkResponseBodySanity         CreateProjectFrameworkResponseBody = "sanity"
 	CreateProjectFrameworkResponseBodyStorybook      CreateProjectFrameworkResponseBody = "storybook"
@@ -3633,6 +3679,8 @@ func (e *CreateProjectFrameworkResponseBody) UnmarshalJSON(data []byte) error {
 	case "flask":
 		fallthrough
 	case "fasthtml":
+		fallthrough
+	case "django":
 		fallthrough
 	case "sanity-v3":
 		fallthrough
@@ -5507,6 +5555,32 @@ func (e *CreateProjectResourceConfigBuildMachineTypeResponse) UnmarshalJSON(data
 	}
 }
 
+type CreateProjectResourceConfigBuildMachineSelectionResponse string
+
+const (
+	CreateProjectResourceConfigBuildMachineSelectionResponseFixed   CreateProjectResourceConfigBuildMachineSelectionResponse = "fixed"
+	CreateProjectResourceConfigBuildMachineSelectionResponseElastic CreateProjectResourceConfigBuildMachineSelectionResponse = "elastic"
+)
+
+func (e CreateProjectResourceConfigBuildMachineSelectionResponse) ToPointer() *CreateProjectResourceConfigBuildMachineSelectionResponse {
+	return &e
+}
+func (e *CreateProjectResourceConfigBuildMachineSelectionResponse) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "fixed":
+		fallthrough
+	case "elastic":
+		*e = CreateProjectResourceConfigBuildMachineSelectionResponse(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectResourceConfigBuildMachineSelectionResponse: %v", v)
+	}
+}
+
 type CreateProjectResourceConfigConfigurationResponseBody string
 
 const (
@@ -5545,15 +5619,17 @@ func (o *CreateProjectResourceConfigBuildQueueResponseBody) GetConfiguration() *
 }
 
 type CreateProjectResourceConfigResponseBody struct {
-	ElasticConcurrencyEnabled  *bool                                                         `json:"elasticConcurrencyEnabled,omitempty"`
-	Fluid                      *bool                                                         `json:"fluid,omitempty"`
-	FunctionDefaultRegions     []string                                                      `json:"functionDefaultRegions"`
-	FunctionDefaultTimeout     *float64                                                      `json:"functionDefaultTimeout,omitempty"`
-	FunctionDefaultMemoryType  *CreateProjectResourceConfigFunctionDefaultMemoryTypeResponse `json:"functionDefaultMemoryType,omitempty"`
-	FunctionZeroConfigFailover *bool                                                         `json:"functionZeroConfigFailover,omitempty"`
-	BuildMachineType           *CreateProjectResourceConfigBuildMachineTypeResponse          `json:"buildMachineType,omitempty"`
-	IsNSNBDisabled             *bool                                                         `json:"isNSNBDisabled,omitempty"`
-	BuildQueue                 *CreateProjectResourceConfigBuildQueueResponseBody            `json:"buildQueue,omitempty"`
+	ElasticConcurrencyEnabled      *bool                                                         `json:"elasticConcurrencyEnabled,omitempty"`
+	Fluid                          *bool                                                         `json:"fluid,omitempty"`
+	FunctionDefaultRegions         []string                                                      `json:"functionDefaultRegions"`
+	FunctionDefaultTimeout         *float64                                                      `json:"functionDefaultTimeout,omitempty"`
+	FunctionDefaultMemoryType      *CreateProjectResourceConfigFunctionDefaultMemoryTypeResponse `json:"functionDefaultMemoryType,omitempty"`
+	FunctionZeroConfigFailover     *bool                                                         `json:"functionZeroConfigFailover,omitempty"`
+	BuildMachineType               *CreateProjectResourceConfigBuildMachineTypeResponse          `json:"buildMachineType,omitempty"`
+	BuildMachineSelection          *CreateProjectResourceConfigBuildMachineSelectionResponse     `json:"buildMachineSelection,omitempty"`
+	BuildMachineElasticLastUpdated *float64                                                      `json:"buildMachineElasticLastUpdated,omitempty"`
+	IsNSNBDisabled                 *bool                                                         `json:"isNSNBDisabled,omitempty"`
+	BuildQueue                     *CreateProjectResourceConfigBuildQueueResponseBody            `json:"buildQueue,omitempty"`
 }
 
 func (o *CreateProjectResourceConfigResponseBody) GetElasticConcurrencyEnabled() *bool {
@@ -5603,6 +5679,20 @@ func (o *CreateProjectResourceConfigResponseBody) GetBuildMachineType() *CreateP
 		return nil
 	}
 	return o.BuildMachineType
+}
+
+func (o *CreateProjectResourceConfigResponseBody) GetBuildMachineSelection() *CreateProjectResourceConfigBuildMachineSelectionResponse {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachineSelection
+}
+
+func (o *CreateProjectResourceConfigResponseBody) GetBuildMachineElasticLastUpdated() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachineElasticLastUpdated
 }
 
 func (o *CreateProjectResourceConfigResponseBody) GetIsNSNBDisabled() *bool {
@@ -5788,6 +5878,32 @@ func (e *CreateProjectDefaultResourceConfigBuildMachineType) UnmarshalJSON(data 
 	}
 }
 
+type CreateProjectDefaultResourceConfigBuildMachineSelection string
+
+const (
+	CreateProjectDefaultResourceConfigBuildMachineSelectionFixed   CreateProjectDefaultResourceConfigBuildMachineSelection = "fixed"
+	CreateProjectDefaultResourceConfigBuildMachineSelectionElastic CreateProjectDefaultResourceConfigBuildMachineSelection = "elastic"
+)
+
+func (e CreateProjectDefaultResourceConfigBuildMachineSelection) ToPointer() *CreateProjectDefaultResourceConfigBuildMachineSelection {
+	return &e
+}
+func (e *CreateProjectDefaultResourceConfigBuildMachineSelection) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "fixed":
+		fallthrough
+	case "elastic":
+		*e = CreateProjectDefaultResourceConfigBuildMachineSelection(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectDefaultResourceConfigBuildMachineSelection: %v", v)
+	}
+}
+
 type CreateProjectDefaultResourceConfigConfiguration string
 
 const (
@@ -5826,15 +5942,17 @@ func (o *CreateProjectDefaultResourceConfigBuildQueue) GetConfiguration() *Creat
 }
 
 type CreateProjectDefaultResourceConfig struct {
-	ElasticConcurrencyEnabled  *bool                                                        `json:"elasticConcurrencyEnabled,omitempty"`
-	Fluid                      *bool                                                        `json:"fluid,omitempty"`
-	FunctionDefaultRegions     []string                                                     `json:"functionDefaultRegions"`
-	FunctionDefaultTimeout     *float64                                                     `json:"functionDefaultTimeout,omitempty"`
-	FunctionDefaultMemoryType  *CreateProjectDefaultResourceConfigFunctionDefaultMemoryType `json:"functionDefaultMemoryType,omitempty"`
-	FunctionZeroConfigFailover *bool                                                        `json:"functionZeroConfigFailover,omitempty"`
-	BuildMachineType           *CreateProjectDefaultResourceConfigBuildMachineType          `json:"buildMachineType,omitempty"`
-	IsNSNBDisabled             *bool                                                        `json:"isNSNBDisabled,omitempty"`
-	BuildQueue                 *CreateProjectDefaultResourceConfigBuildQueue                `json:"buildQueue,omitempty"`
+	ElasticConcurrencyEnabled      *bool                                                        `json:"elasticConcurrencyEnabled,omitempty"`
+	Fluid                          *bool                                                        `json:"fluid,omitempty"`
+	FunctionDefaultRegions         []string                                                     `json:"functionDefaultRegions"`
+	FunctionDefaultTimeout         *float64                                                     `json:"functionDefaultTimeout,omitempty"`
+	FunctionDefaultMemoryType      *CreateProjectDefaultResourceConfigFunctionDefaultMemoryType `json:"functionDefaultMemoryType,omitempty"`
+	FunctionZeroConfigFailover     *bool                                                        `json:"functionZeroConfigFailover,omitempty"`
+	BuildMachineType               *CreateProjectDefaultResourceConfigBuildMachineType          `json:"buildMachineType,omitempty"`
+	BuildMachineSelection          *CreateProjectDefaultResourceConfigBuildMachineSelection     `json:"buildMachineSelection,omitempty"`
+	BuildMachineElasticLastUpdated *float64                                                     `json:"buildMachineElasticLastUpdated,omitempty"`
+	IsNSNBDisabled                 *bool                                                        `json:"isNSNBDisabled,omitempty"`
+	BuildQueue                     *CreateProjectDefaultResourceConfigBuildQueue                `json:"buildQueue,omitempty"`
 }
 
 func (o *CreateProjectDefaultResourceConfig) GetElasticConcurrencyEnabled() *bool {
@@ -5884,6 +6002,20 @@ func (o *CreateProjectDefaultResourceConfig) GetBuildMachineType() *CreateProjec
 		return nil
 	}
 	return o.BuildMachineType
+}
+
+func (o *CreateProjectDefaultResourceConfig) GetBuildMachineSelection() *CreateProjectDefaultResourceConfigBuildMachineSelection {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachineSelection
+}
+
+func (o *CreateProjectDefaultResourceConfig) GetBuildMachineElasticLastUpdated() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachineElasticLastUpdated
 }
 
 func (o *CreateProjectDefaultResourceConfig) GetIsNSNBDisabled() *bool {

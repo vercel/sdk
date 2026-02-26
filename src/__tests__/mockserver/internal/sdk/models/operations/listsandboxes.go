@@ -3,7 +3,10 @@
 package operations
 
 import (
+	"errors"
+	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/utils"
 )
 
 type ListSandboxesRequest struct {
@@ -73,6 +76,17 @@ type ListSandboxesPagination struct {
 	Prev *float64 `json:"prev"`
 }
 
+func (l ListSandboxesPagination) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListSandboxesPagination) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"total", "count", "next", "prev"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *ListSandboxesPagination) GetTotal() float64 {
 	if o == nil {
 		return 0.0
@@ -101,30 +115,118 @@ func (o *ListSandboxesPagination) GetPrev() *float64 {
 	return o.Prev
 }
 
-// ListSandboxesResponseBody - The list of sandboxes matching the request filters.
-type ListSandboxesResponseBody struct {
+type ListSandboxesResponseBody2 struct {
 	Sandboxes  []components.Sandbox    `json:"sandboxes"`
 	Pagination ListSandboxesPagination `json:"pagination"`
 }
 
-func (o *ListSandboxesResponseBody) GetSandboxes() []components.Sandbox {
+func (l ListSandboxesResponseBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListSandboxesResponseBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"sandboxes", "pagination"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ListSandboxesResponseBody2) GetSandboxes() []components.Sandbox {
 	if o == nil {
 		return []components.Sandbox{}
 	}
 	return o.Sandboxes
 }
 
-func (o *ListSandboxesResponseBody) GetPagination() ListSandboxesPagination {
+func (o *ListSandboxesResponseBody2) GetPagination() ListSandboxesPagination {
 	if o == nil {
 		return ListSandboxesPagination{}
 	}
 	return o.Pagination
 }
 
+type ListSandboxesResponseBody1 struct {
+}
+
+func (l ListSandboxesResponseBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListSandboxesResponseBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+type ListSandboxesResponseBodyType string
+
+const (
+	ListSandboxesResponseBodyTypeListSandboxesResponseBody1 ListSandboxesResponseBodyType = "listSandboxes_ResponseBody_1"
+	ListSandboxesResponseBodyTypeListSandboxesResponseBody2 ListSandboxesResponseBodyType = "listSandboxes_ResponseBody_2"
+)
+
+// ListSandboxesResponseBody - The list of sandboxes matching the request filters.
+type ListSandboxesResponseBody struct {
+	ListSandboxesResponseBody1 *ListSandboxesResponseBody1 `queryParam:"inline"`
+	ListSandboxesResponseBody2 *ListSandboxesResponseBody2 `queryParam:"inline"`
+
+	Type ListSandboxesResponseBodyType
+}
+
+func CreateListSandboxesResponseBodyListSandboxesResponseBody1(listSandboxesResponseBody1 ListSandboxesResponseBody1) ListSandboxesResponseBody {
+	typ := ListSandboxesResponseBodyTypeListSandboxesResponseBody1
+
+	return ListSandboxesResponseBody{
+		ListSandboxesResponseBody1: &listSandboxesResponseBody1,
+		Type:                       typ,
+	}
+}
+
+func CreateListSandboxesResponseBodyListSandboxesResponseBody2(listSandboxesResponseBody2 ListSandboxesResponseBody2) ListSandboxesResponseBody {
+	typ := ListSandboxesResponseBodyTypeListSandboxesResponseBody2
+
+	return ListSandboxesResponseBody{
+		ListSandboxesResponseBody2: &listSandboxesResponseBody2,
+		Type:                       typ,
+	}
+}
+
+func (u *ListSandboxesResponseBody) UnmarshalJSON(data []byte) error {
+
+	var listSandboxesResponseBody2 ListSandboxesResponseBody2 = ListSandboxesResponseBody2{}
+	if err := utils.UnmarshalJSON(data, &listSandboxesResponseBody2, "", true, nil); err == nil {
+		u.ListSandboxesResponseBody2 = &listSandboxesResponseBody2
+		u.Type = ListSandboxesResponseBodyTypeListSandboxesResponseBody2
+		return nil
+	}
+
+	var listSandboxesResponseBody1 ListSandboxesResponseBody1 = ListSandboxesResponseBody1{}
+	if err := utils.UnmarshalJSON(data, &listSandboxesResponseBody1, "", true, nil); err == nil {
+		u.ListSandboxesResponseBody1 = &listSandboxesResponseBody1
+		u.Type = ListSandboxesResponseBodyTypeListSandboxesResponseBody1
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ListSandboxesResponseBody", string(data))
+}
+
+func (u ListSandboxesResponseBody) MarshalJSON() ([]byte, error) {
+	if u.ListSandboxesResponseBody1 != nil {
+		return utils.MarshalJSON(u.ListSandboxesResponseBody1, "", true)
+	}
+
+	if u.ListSandboxesResponseBody2 != nil {
+		return utils.MarshalJSON(u.ListSandboxesResponseBody2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type ListSandboxesResponseBody: all fields are null")
+}
+
 type ListSandboxesResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// The list of sandboxes matching the request filters.
-	Object *ListSandboxesResponseBody
+	OneOf *ListSandboxesResponseBody
 }
 
 func (o *ListSandboxesResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -134,9 +236,9 @@ func (o *ListSandboxesResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *ListSandboxesResponse) GetObject() *ListSandboxesResponseBody {
+func (o *ListSandboxesResponse) GetOneOf() *ListSandboxesResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.Object
+	return o.OneOf
 }

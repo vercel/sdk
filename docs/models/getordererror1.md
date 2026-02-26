@@ -64,7 +64,7 @@ const value: models.GetOrder16 = {
 
 ```typescript
 const value: models.GetOrder17 = {
-  code: "price-change",
+  code: "account-transfer-required",
 };
 ```
 
@@ -72,7 +72,24 @@ const value: models.GetOrder17 = {
 
 ```typescript
 const value: models.GetOrder18 = {
+  code: "price-change",
+};
+```
+
+### `models.GetOrder19`
+
+```typescript
+const value: models.GetOrder19 = {
   code: "unavailable-legal",
+};
+```
+
+### `models.GetOrder110`
+
+```typescript
+const value: models.GetOrder110 = {
+  code: "invalid-contact",
+  details: {},
 };
 ```
 

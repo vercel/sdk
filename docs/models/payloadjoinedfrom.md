@@ -6,7 +6,7 @@
 import { PayloadJoinedFrom } from "@vercel/sdk/models/userevent.js";
 
 let value: PayloadJoinedFrom = {
-  origin: "nsnb-invite",
+  origin: "nsnb-redeploy",
 };
 ```
 

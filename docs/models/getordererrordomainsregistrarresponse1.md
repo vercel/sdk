@@ -64,7 +64,7 @@ const value: models.GetOrder1DomainsRegistrarResponse6 = {
 
 ```typescript
 const value: models.One7 = {
-  code: "price-change",
+  code: "account-transfer-required",
 };
 ```
 
@@ -72,7 +72,24 @@ const value: models.One7 = {
 
 ```typescript
 const value: models.One8 = {
+  code: "price-change",
+};
+```
+
+### `models.One9`
+
+```typescript
+const value: models.One9 = {
   code: "unavailable-legal",
+};
+```
+
+### `models.One10`
+
+```typescript
+const value: models.One10 = {
+  code: "invalid-contact",
+  details: {},
 };
 ```
 

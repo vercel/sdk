@@ -8029,7 +8029,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"data":[]}
+              {"data":[],"pagination":{"next":"<value>"}}
             type: simple
     x-speakeasy-test-group: feature-flags
     x-speakeasy-test-rebuild: true

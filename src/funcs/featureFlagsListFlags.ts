@@ -30,10 +30,10 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * List all flags
+ * List flags
  *
  * @remarks
- * Retrieve all feature flags for a project. The list can be filtered by state.
+ * Retrieve feature flags for a project. The list can be filtered by state and supports pagination.
  */
 export function featureFlagsListFlags(
   client: VercelCore,
@@ -102,6 +102,9 @@ async function $do(
   );
 
   const query = encodeFormQuery({
+    "cursor": payload.cursor,
+    "limit": payload.limit,
+    "search": payload.search,
     "slug": payload.slug,
     "state": payload.state,
     "teamId": payload.teamId,

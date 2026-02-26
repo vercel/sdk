@@ -624,6 +624,7 @@ export const GetProjectsResponseBodyProjectsFramework = {
   Fastapi: "fastapi",
   Flask: "flask",
   Fasthtml: "fasthtml",
+  Django: "django",
   SanityV3: "sanity-v3",
   Sanity: "sanity",
   Storybook: "storybook",
@@ -957,6 +958,14 @@ export type GetProjectsResponseBodyBuildMachineType = ClosedEnum<
   typeof GetProjectsResponseBodyBuildMachineType
 >;
 
+export const GetProjectsResponseBodyBuildMachineSelection = {
+  Fixed: "fixed",
+  Elastic: "elastic",
+} as const;
+export type GetProjectsResponseBodyBuildMachineSelection = ClosedEnum<
+  typeof GetProjectsResponseBodyBuildMachineSelection
+>;
+
 export const GetProjectsResponseBodyProjectsConfiguration = {
   SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
   WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
@@ -979,6 +988,10 @@ export type GetProjectsResponseBodyProjectsResourceConfig = {
     | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   buildMachineType?: GetProjectsResponseBodyBuildMachineType | undefined;
+  buildMachineSelection?:
+    | GetProjectsResponseBodyBuildMachineSelection
+    | undefined;
+  buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: GetProjectsResponseBodyProjectsBuildQueue | undefined;
 };
@@ -1062,6 +1075,14 @@ export type GetProjectsResponseBodyProjectsBuildMachineType = ClosedEnum<
   typeof GetProjectsResponseBodyProjectsBuildMachineType
 >;
 
+export const GetProjectsResponseBodyProjectsBuildMachineSelection = {
+  Fixed: "fixed",
+  Elastic: "elastic",
+} as const;
+export type GetProjectsResponseBodyProjectsBuildMachineSelection = ClosedEnum<
+  typeof GetProjectsResponseBodyProjectsBuildMachineSelection
+>;
+
 export const GetProjectsResponseBodyProjectsResponseConfiguration = {
   SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
   WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
@@ -1088,6 +1109,10 @@ export type ResponseBodyDefaultResourceConfig = {
   buildMachineType?:
     | GetProjectsResponseBodyProjectsBuildMachineType
     | undefined;
+  buildMachineSelection?:
+    | GetProjectsResponseBodyProjectsBuildMachineSelection
+    | undefined;
+  buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: GetProjectsResponseBodyProjectsResponseBuildQueue | undefined;
 };
@@ -2535,6 +2560,7 @@ export const GetProjectsResponseBodyFramework = {
   Fastapi: "fastapi",
   Flask: "flask",
   Fasthtml: "fasthtml",
+  Django: "django",
   SanityV3: "sanity-v3",
   Sanity: "sanity",
   Storybook: "storybook",
@@ -2781,6 +2807,15 @@ export const GetProjectsResponseBodyProjectsResponseBuildMachineType = {
 export type GetProjectsResponseBodyProjectsResponseBuildMachineType =
   ClosedEnum<typeof GetProjectsResponseBodyProjectsResponseBuildMachineType>;
 
+export const GetProjectsResponseBodyProjectsResponseBuildMachineSelection = {
+  Fixed: "fixed",
+  Elastic: "elastic",
+} as const;
+export type GetProjectsResponseBodyProjectsResponseBuildMachineSelection =
+  ClosedEnum<
+    typeof GetProjectsResponseBodyProjectsResponseBuildMachineSelection
+  >;
+
 export const GetProjectsResponseBodyConfiguration = {
   SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
   WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
@@ -2805,6 +2840,10 @@ export type GetProjectsResponseBodyResourceConfig = {
   buildMachineType?:
     | GetProjectsResponseBodyProjectsResponseBuildMachineType
     | undefined;
+  buildMachineSelection?:
+    | GetProjectsResponseBodyProjectsResponseBuildMachineSelection
+    | undefined;
+  buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: GetProjectsResponseBodyBuildQueue | undefined;
 };
@@ -3127,7 +3166,9 @@ export const GetProjectsLogHeaders2 = {
 } as const;
 export type GetProjectsLogHeaders2 = ClosedEnum<typeof GetProjectsLogHeaders2>;
 
-export type ResponseBodyLogHeaders = Array<string> | GetProjectsLogHeaders2;
+export type GetProjectsResponseBodyLogHeaders =
+  | Array<string>
+  | GetProjectsLogHeaders2;
 
 export type GetProjectsResponseBodyMitigate = {
   action:
@@ -4036,6 +4077,7 @@ export const ResponseBodyFramework = {
   Fastapi: "fastapi",
   Flask: "flask",
   Fasthtml: "fasthtml",
+  Django: "django",
   SanityV3: "sanity-v3",
   Sanity: "sanity",
   Storybook: "storybook",
@@ -4266,6 +4308,14 @@ export type ResponseBodyBuildMachineType = ClosedEnum<
   typeof ResponseBodyBuildMachineType
 >;
 
+export const ResponseBodyBuildMachineSelection = {
+  Fixed: "fixed",
+  Elastic: "elastic",
+} as const;
+export type ResponseBodyBuildMachineSelection = ClosedEnum<
+  typeof ResponseBodyBuildMachineSelection
+>;
+
 export const ResponseBodyConfiguration = {
   SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
   WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
@@ -4286,6 +4336,8 @@ export type ResponseBodyResourceConfig = {
   functionDefaultMemoryType?: ResponseBodyFunctionDefaultMemoryType | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   buildMachineType?: ResponseBodyBuildMachineType | undefined;
+  buildMachineSelection?: ResponseBodyBuildMachineSelection | undefined;
+  buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: ResponseBodyBuildQueue | undefined;
 };
@@ -4591,7 +4643,7 @@ export const LogHeaders2 = {
 } as const;
 export type LogHeaders2 = ClosedEnum<typeof LogHeaders2>;
 
-export type LogHeaders = Array<string> | LogHeaders2;
+export type ResponseBodyLogHeaders = Array<string> | LogHeaders2;
 
 export type ResponseBodyMitigate = {
   action: GetProjectsResponseBodyProjectsResponse200ApplicationJSONAction;
@@ -8512,6 +8564,15 @@ export const GetProjectsResponseBodyBuildMachineType$outboundSchema:
     GetProjectsResponseBodyBuildMachineType$inboundSchema;
 
 /** @internal */
+export const GetProjectsResponseBodyBuildMachineSelection$inboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsResponseBodyBuildMachineSelection> = z
+    .nativeEnum(GetProjectsResponseBodyBuildMachineSelection);
+/** @internal */
+export const GetProjectsResponseBodyBuildMachineSelection$outboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsResponseBodyBuildMachineSelection> =
+    GetProjectsResponseBodyBuildMachineSelection$inboundSchema;
+
+/** @internal */
 export const GetProjectsResponseBodyProjectsConfiguration$inboundSchema:
   z.ZodNativeEnum<typeof GetProjectsResponseBodyProjectsConfiguration> = z
     .nativeEnum(GetProjectsResponseBodyProjectsConfiguration);
@@ -8590,6 +8651,10 @@ export const GetProjectsResponseBodyProjectsResourceConfig$inboundSchema:
     buildMachineType: types.optional(
       GetProjectsResponseBodyBuildMachineType$inboundSchema,
     ),
+    buildMachineSelection: types.optional(
+      GetProjectsResponseBodyBuildMachineSelection$inboundSchema,
+    ),
+    buildMachineElasticLastUpdated: types.optional(types.number()),
     isNSNBDisabled: types.optional(types.boolean()),
     buildQueue: types.optional(
       z.lazy(() => GetProjectsResponseBodyProjectsBuildQueue$inboundSchema),
@@ -8604,6 +8669,8 @@ export type GetProjectsResponseBodyProjectsResourceConfig$Outbound = {
   functionDefaultMemoryType?: string | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   buildMachineType?: string | undefined;
+  buildMachineSelection?: string | undefined;
+  buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: GetProjectsResponseBodyProjectsBuildQueue$Outbound | undefined;
 };
@@ -8625,6 +8692,9 @@ export const GetProjectsResponseBodyProjectsResourceConfig$outboundSchema:
     functionZeroConfigFailover: z.boolean().optional(),
     buildMachineType: GetProjectsResponseBodyBuildMachineType$outboundSchema
       .optional(),
+    buildMachineSelection:
+      GetProjectsResponseBodyBuildMachineSelection$outboundSchema.optional(),
+    buildMachineElasticLastUpdated: z.number().optional(),
     isNSNBDisabled: z.boolean().optional(),
     buildQueue: z.lazy(() =>
       GetProjectsResponseBodyProjectsBuildQueue$outboundSchema
@@ -8830,6 +8900,15 @@ export const GetProjectsResponseBodyProjectsBuildMachineType$outboundSchema:
     GetProjectsResponseBodyProjectsBuildMachineType$inboundSchema;
 
 /** @internal */
+export const GetProjectsResponseBodyProjectsBuildMachineSelection$inboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsResponseBodyProjectsBuildMachineSelection> =
+    z.nativeEnum(GetProjectsResponseBodyProjectsBuildMachineSelection);
+/** @internal */
+export const GetProjectsResponseBodyProjectsBuildMachineSelection$outboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsResponseBodyProjectsBuildMachineSelection> =
+    GetProjectsResponseBodyProjectsBuildMachineSelection$inboundSchema;
+
+/** @internal */
 export const GetProjectsResponseBodyProjectsResponseConfiguration$inboundSchema:
   z.ZodNativeEnum<typeof GetProjectsResponseBodyProjectsResponseConfiguration> =
     z.nativeEnum(GetProjectsResponseBodyProjectsResponseConfiguration);
@@ -8909,6 +8988,10 @@ export const ResponseBodyDefaultResourceConfig$inboundSchema: z.ZodType<
   buildMachineType: types.optional(
     GetProjectsResponseBodyProjectsBuildMachineType$inboundSchema,
   ),
+  buildMachineSelection: types.optional(
+    GetProjectsResponseBodyProjectsBuildMachineSelection$inboundSchema,
+  ),
+  buildMachineElasticLastUpdated: types.optional(types.number()),
   isNSNBDisabled: types.optional(types.boolean()),
   buildQueue: types.optional(
     z.lazy(() =>
@@ -8925,6 +9008,8 @@ export type ResponseBodyDefaultResourceConfig$Outbound = {
   functionDefaultMemoryType?: string | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   buildMachineType?: string | undefined;
+  buildMachineSelection?: string | undefined;
+  buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   buildQueue?:
     | GetProjectsResponseBodyProjectsResponseBuildQueue$Outbound
@@ -8947,6 +9032,10 @@ export const ResponseBodyDefaultResourceConfig$outboundSchema: z.ZodType<
   functionZeroConfigFailover: z.boolean().optional(),
   buildMachineType:
     GetProjectsResponseBodyProjectsBuildMachineType$outboundSchema.optional(),
+  buildMachineSelection:
+    GetProjectsResponseBodyProjectsBuildMachineSelection$outboundSchema
+      .optional(),
+  buildMachineElasticLastUpdated: z.number().optional(),
   isNSNBDisabled: z.boolean().optional(),
   buildQueue: z.lazy(() =>
     GetProjectsResponseBodyProjectsResponseBuildQueue$outboundSchema
@@ -17195,6 +17284,20 @@ export const GetProjectsResponseBodyProjectsResponseBuildMachineType$outboundSch
   > = GetProjectsResponseBodyProjectsResponseBuildMachineType$inboundSchema;
 
 /** @internal */
+export const GetProjectsResponseBodyProjectsResponseBuildMachineSelection$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetProjectsResponseBodyProjectsResponseBuildMachineSelection
+  > = z.nativeEnum(
+    GetProjectsResponseBodyProjectsResponseBuildMachineSelection,
+  );
+/** @internal */
+export const GetProjectsResponseBodyProjectsResponseBuildMachineSelection$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetProjectsResponseBodyProjectsResponseBuildMachineSelection
+  > =
+    GetProjectsResponseBodyProjectsResponseBuildMachineSelection$inboundSchema;
+
+/** @internal */
 export const GetProjectsResponseBodyConfiguration$inboundSchema:
   z.ZodNativeEnum<typeof GetProjectsResponseBodyConfiguration> = z.nativeEnum(
     GetProjectsResponseBodyConfiguration,
@@ -17264,6 +17367,10 @@ export const GetProjectsResponseBodyResourceConfig$inboundSchema: z.ZodType<
   buildMachineType: types.optional(
     GetProjectsResponseBodyProjectsResponseBuildMachineType$inboundSchema,
   ),
+  buildMachineSelection: types.optional(
+    GetProjectsResponseBodyProjectsResponseBuildMachineSelection$inboundSchema,
+  ),
+  buildMachineElasticLastUpdated: types.optional(types.number()),
   isNSNBDisabled: types.optional(types.boolean()),
   buildQueue: types.optional(
     z.lazy(() => GetProjectsResponseBodyBuildQueue$inboundSchema),
@@ -17278,6 +17385,8 @@ export type GetProjectsResponseBodyResourceConfig$Outbound = {
   functionDefaultMemoryType?: string | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   buildMachineType?: string | undefined;
+  buildMachineSelection?: string | undefined;
+  buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: GetProjectsResponseBodyBuildQueue$Outbound | undefined;
 };
@@ -17299,6 +17408,10 @@ export const GetProjectsResponseBodyResourceConfig$outboundSchema: z.ZodType<
   buildMachineType:
     GetProjectsResponseBodyProjectsResponseBuildMachineType$outboundSchema
       .optional(),
+  buildMachineSelection:
+    GetProjectsResponseBodyProjectsResponseBuildMachineSelection$outboundSchema
+      .optional(),
+  buildMachineElasticLastUpdated: z.number().optional(),
   isNSNBDisabled: z.boolean().optional(),
   buildQueue: z.lazy(() => GetProjectsResponseBodyBuildQueue$outboundSchema)
     .optional(),
@@ -18590,35 +18703,37 @@ export const GetProjectsLogHeaders2$outboundSchema: z.ZodNativeEnum<
 > = GetProjectsLogHeaders2$inboundSchema;
 
 /** @internal */
-export const ResponseBodyLogHeaders$inboundSchema: z.ZodType<
-  ResponseBodyLogHeaders,
+export const GetProjectsResponseBodyLogHeaders$inboundSchema: z.ZodType<
+  GetProjectsResponseBodyLogHeaders,
   z.ZodTypeDef,
   unknown
 > = smartUnion([z.array(types.string()), GetProjectsLogHeaders2$inboundSchema]);
 /** @internal */
-export type ResponseBodyLogHeaders$Outbound = Array<string> | string;
+export type GetProjectsResponseBodyLogHeaders$Outbound = Array<string> | string;
 
 /** @internal */
-export const ResponseBodyLogHeaders$outboundSchema: z.ZodType<
-  ResponseBodyLogHeaders$Outbound,
+export const GetProjectsResponseBodyLogHeaders$outboundSchema: z.ZodType<
+  GetProjectsResponseBodyLogHeaders$Outbound,
   z.ZodTypeDef,
-  ResponseBodyLogHeaders
+  GetProjectsResponseBodyLogHeaders
 > = smartUnion([z.array(z.string()), GetProjectsLogHeaders2$outboundSchema]);
 
-export function responseBodyLogHeadersToJSON(
-  responseBodyLogHeaders: ResponseBodyLogHeaders,
+export function getProjectsResponseBodyLogHeadersToJSON(
+  getProjectsResponseBodyLogHeaders: GetProjectsResponseBodyLogHeaders,
 ): string {
   return JSON.stringify(
-    ResponseBodyLogHeaders$outboundSchema.parse(responseBodyLogHeaders),
+    GetProjectsResponseBodyLogHeaders$outboundSchema.parse(
+      getProjectsResponseBodyLogHeaders,
+    ),
   );
 }
-export function responseBodyLogHeadersFromJSON(
+export function getProjectsResponseBodyLogHeadersFromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBodyLogHeaders, SDKValidationError> {
+): SafeParseResult<GetProjectsResponseBodyLogHeaders, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ResponseBodyLogHeaders$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyLogHeaders' from JSON`,
+    (x) => GetProjectsResponseBodyLogHeaders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsResponseBodyLogHeaders' from JSON`,
   );
 }
 
@@ -24386,6 +24501,15 @@ export const ResponseBodyBuildMachineType$outboundSchema: z.ZodNativeEnum<
 > = ResponseBodyBuildMachineType$inboundSchema;
 
 /** @internal */
+export const ResponseBodyBuildMachineSelection$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyBuildMachineSelection
+> = z.nativeEnum(ResponseBodyBuildMachineSelection);
+/** @internal */
+export const ResponseBodyBuildMachineSelection$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyBuildMachineSelection
+> = ResponseBodyBuildMachineSelection$inboundSchema;
+
+/** @internal */
 export const ResponseBodyConfiguration$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyConfiguration
 > = z.nativeEnum(ResponseBodyConfiguration);
@@ -24448,6 +24572,10 @@ export const ResponseBodyResourceConfig$inboundSchema: z.ZodType<
   ),
   functionZeroConfigFailover: types.optional(types.boolean()),
   buildMachineType: types.optional(ResponseBodyBuildMachineType$inboundSchema),
+  buildMachineSelection: types.optional(
+    ResponseBodyBuildMachineSelection$inboundSchema,
+  ),
+  buildMachineElasticLastUpdated: types.optional(types.number()),
   isNSNBDisabled: types.optional(types.boolean()),
   buildQueue: types.optional(
     z.lazy(() => ResponseBodyBuildQueue$inboundSchema),
@@ -24462,6 +24590,8 @@ export type ResponseBodyResourceConfig$Outbound = {
   functionDefaultMemoryType?: string | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   buildMachineType?: string | undefined;
+  buildMachineSelection?: string | undefined;
+  buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: ResponseBodyBuildQueue$Outbound | undefined;
 };
@@ -24480,6 +24610,9 @@ export const ResponseBodyResourceConfig$outboundSchema: z.ZodType<
     ResponseBodyFunctionDefaultMemoryType$outboundSchema.optional(),
   functionZeroConfigFailover: z.boolean().optional(),
   buildMachineType: ResponseBodyBuildMachineType$outboundSchema.optional(),
+  buildMachineSelection: ResponseBodyBuildMachineSelection$outboundSchema
+    .optional(),
+  buildMachineElasticLastUpdated: z.number().optional(),
   isNSNBDisabled: z.boolean().optional(),
   buildQueue: z.lazy(() => ResponseBodyBuildQueue$outboundSchema).optional(),
 });
@@ -25619,31 +25752,35 @@ export const LogHeaders2$outboundSchema: z.ZodNativeEnum<typeof LogHeaders2> =
   LogHeaders2$inboundSchema;
 
 /** @internal */
-export const LogHeaders$inboundSchema: z.ZodType<
-  LogHeaders,
+export const ResponseBodyLogHeaders$inboundSchema: z.ZodType<
+  ResponseBodyLogHeaders,
   z.ZodTypeDef,
   unknown
 > = smartUnion([z.array(types.string()), LogHeaders2$inboundSchema]);
 /** @internal */
-export type LogHeaders$Outbound = Array<string> | string;
+export type ResponseBodyLogHeaders$Outbound = Array<string> | string;
 
 /** @internal */
-export const LogHeaders$outboundSchema: z.ZodType<
-  LogHeaders$Outbound,
+export const ResponseBodyLogHeaders$outboundSchema: z.ZodType<
+  ResponseBodyLogHeaders$Outbound,
   z.ZodTypeDef,
-  LogHeaders
+  ResponseBodyLogHeaders
 > = smartUnion([z.array(z.string()), LogHeaders2$outboundSchema]);
 
-export function logHeadersToJSON(logHeaders: LogHeaders): string {
-  return JSON.stringify(LogHeaders$outboundSchema.parse(logHeaders));
+export function responseBodyLogHeadersToJSON(
+  responseBodyLogHeaders: ResponseBodyLogHeaders,
+): string {
+  return JSON.stringify(
+    ResponseBodyLogHeaders$outboundSchema.parse(responseBodyLogHeaders),
+  );
 }
-export function logHeadersFromJSON(
+export function responseBodyLogHeadersFromJSON(
   jsonString: string,
-): SafeParseResult<LogHeaders, SDKValidationError> {
+): SafeParseResult<ResponseBodyLogHeaders, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => LogHeaders$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LogHeaders' from JSON`,
+    (x) => ResponseBodyLogHeaders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyLogHeaders' from JSON`,
   );
 }
 

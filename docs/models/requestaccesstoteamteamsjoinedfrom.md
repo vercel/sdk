@@ -6,7 +6,7 @@
 import { RequestAccessToTeamTeamsJoinedFrom } from "@vercel/sdk/models/requestaccesstoteamop.js";
 
 let value: RequestAccessToTeamTeamsJoinedFrom = {
-  origin: "github",
+  origin: "gitlab",
 };
 ```
 

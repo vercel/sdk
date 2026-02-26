@@ -2,12 +2,27 @@
 
 package components
 
+import (
+	"mockserver/internal/sdk/utils"
+)
+
 // SandboxInjectionRule - HTTP header injection rules for outgoing requests matching specific domains.
 type SandboxInjectionRule struct {
 	// The domain (or pattern) that this injection rule applies to. Supports wildcards like *.vercel.com.
 	Domain string `json:"domain"`
 	// The names of HTTP headers that have value that will be injected for requests to this domain.
 	HeaderNames []string `json:"headerNames,omitempty"`
+}
+
+func (s SandboxInjectionRule) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SandboxInjectionRule) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"domain"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *SandboxInjectionRule) GetDomain() string {

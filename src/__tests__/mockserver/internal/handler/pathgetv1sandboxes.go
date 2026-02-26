@@ -47,15 +47,17 @@ func testListSandboxesListSandboxes0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody *operations.ListSandboxesResponseBody = &operations.ListSandboxesResponseBody{
-		Sandboxes: []components.Sandbox{},
-		Pagination: operations.ListSandboxesPagination{
-			Total: 3903.28,
-			Count: 20,
-			Next:  types.Float64(1540095775951),
-			Prev:  types.Float64(1540095775951),
+	var respBody *operations.ListSandboxesResponseBody = types.Pointer(operations.CreateListSandboxesResponseBodyListSandboxesResponseBody2(
+		operations.ListSandboxesResponseBody2{
+			Sandboxes: []components.Sandbox{},
+			Pagination: operations.ListSandboxesPagination{
+				Total: 3903.28,
+				Count: 20,
+				Next:  types.Float64(1540095775951),
+				Prev:  types.Float64(1540095775951),
+			},
 		},
-	}
+	))
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

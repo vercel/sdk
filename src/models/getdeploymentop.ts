@@ -972,6 +972,7 @@ export const GetDeploymentResponseBodyFramework = {
   Fastapi: "fastapi",
   Flask: "flask",
   Fasthtml: "fasthtml",
+  Django: "django",
   SanityV3: "sanity-v3",
   Sanity: "sanity",
   Storybook: "storybook",
@@ -1801,6 +1802,80 @@ export const ResponseBodyPlan = {
 } as const;
 export type ResponseBodyPlan = ClosedEnum<typeof ResponseBodyPlan>;
 
+/**
+ * The external platform that created the deployment (e.g. its display name).
+ */
+export type GetDeploymentResponseBodyDeploymentsSource = {
+  /**
+   * Display name of the platform.
+   */
+  name: string;
+};
+
+/**
+ * Whether the value is an opaque identifier or a URL.
+ */
+export const GetDeploymentResponseBodyDeploymentsResponseType = {
+  Id: "id",
+  Url: "url",
+} as const;
+/**
+ * Whether the value is an opaque identifier or a URL.
+ */
+export type GetDeploymentResponseBodyDeploymentsResponseType = ClosedEnum<
+  typeof GetDeploymentResponseBodyDeploymentsResponseType
+>;
+
+/**
+ * Reference back to the entity on the platform that initiated the deployment.
+ */
+export type ResponseBodyOrigin = {
+  /**
+   * Whether the value is an opaque identifier or a URL.
+   */
+  type: GetDeploymentResponseBodyDeploymentsResponseType;
+  /**
+   * The identifier or URL pointing to the originating entity.
+   */
+  value: string;
+};
+
+/**
+ * The user on the external platform who triggered the deployment.
+ */
+export type GetDeploymentResponseBodyDeploymentsCreator = {
+  /**
+   * Display name of the platform user.
+   */
+  name: string;
+  /**
+   * URL of the platform user's avatar image.
+   */
+  avatar?: string | undefined;
+};
+
+/**
+ * Metadata about the source platform that triggered the deployment. Allows us to map a deployment back to a platform (e.g. the chat that created it)
+ */
+export type ResponseBodyPlatform = {
+  /**
+   * The external platform that created the deployment (e.g. its display name).
+   */
+  source: GetDeploymentResponseBodyDeploymentsSource;
+  /**
+   * Reference back to the entity on the platform that initiated the deployment.
+   */
+  origin: ResponseBodyOrigin;
+  /**
+   * The user on the external platform who triggered the deployment.
+   */
+  creator: GetDeploymentResponseBodyDeploymentsCreator;
+  /**
+   * Arbitrary key-value metadata provided by the platform.
+   */
+  meta?: { [k: string]: string } | undefined;
+};
+
 export type ResponseBodyCrons = {
   schedule: string;
   path: string;
@@ -2454,6 +2529,32 @@ export type ResponseBodyChecks = {
 };
 
 /**
+ * The NSNB decision code for the seat block. TODO: We should consolidate block types.
+ */
+export const ResponseBodyBlockCode = {
+  TeamAccessRequired: "TEAM_ACCESS_REQUIRED",
+  CommitAuthorRequired: "COMMIT_AUTHOR_REQUIRED",
+} as const;
+/**
+ * The NSNB decision code for the seat block. TODO: We should consolidate block types.
+ */
+export type ResponseBodyBlockCode = ClosedEnum<typeof ResponseBodyBlockCode>;
+
+/**
+ * NSNB Blocked metadata
+ */
+export type ResponseBodySeatBlock = {
+  /**
+   * The NSNB decision code for the seat block. TODO: We should consolidate block types.
+   */
+  blockCode: ResponseBodyBlockCode;
+  /**
+   * The blocked vercel user ID.
+   */
+  userId?: string | undefined;
+};
+
+/**
  * The deployment including both public and private information
  */
 export type GetDeploymentResponseBody1 = {
@@ -2635,6 +2736,10 @@ export type GetDeploymentResponseBody1 = {
   oidcTokenClaims?: GetDeploymentResponseBodyOidcTokenClaims | undefined;
   projectId: string;
   plan: ResponseBodyPlan;
+  /**
+   * Metadata about the source platform that triggered the deployment. Allows us to map a deployment back to a platform (e.g. the chat that created it)
+   */
+  platform?: ResponseBodyPlatform | undefined;
   connectBuildsEnabled?: boolean | undefined;
   connectConfigurationId?: string | undefined;
   createdIn: string;
@@ -2665,6 +2770,10 @@ export type GetDeploymentResponseBody1 = {
    */
   config?: ResponseBodyConfig | undefined;
   checks?: ResponseBodyChecks | undefined;
+  /**
+   * NSNB Blocked metadata
+   */
+  seatBlock?: ResponseBodySeatBlock | undefined;
 };
 
 /**
@@ -8127,6 +8236,213 @@ export const ResponseBodyPlan$outboundSchema: z.ZodNativeEnum<
 > = ResponseBodyPlan$inboundSchema;
 
 /** @internal */
+export const GetDeploymentResponseBodyDeploymentsSource$inboundSchema:
+  z.ZodType<GetDeploymentResponseBodyDeploymentsSource, z.ZodTypeDef, unknown> =
+    z.object({
+      name: types.string(),
+    });
+/** @internal */
+export type GetDeploymentResponseBodyDeploymentsSource$Outbound = {
+  name: string;
+};
+
+/** @internal */
+export const GetDeploymentResponseBodyDeploymentsSource$outboundSchema:
+  z.ZodType<
+    GetDeploymentResponseBodyDeploymentsSource$Outbound,
+    z.ZodTypeDef,
+    GetDeploymentResponseBodyDeploymentsSource
+  > = z.object({
+    name: z.string(),
+  });
+
+export function getDeploymentResponseBodyDeploymentsSourceToJSON(
+  getDeploymentResponseBodyDeploymentsSource:
+    GetDeploymentResponseBodyDeploymentsSource,
+): string {
+  return JSON.stringify(
+    GetDeploymentResponseBodyDeploymentsSource$outboundSchema.parse(
+      getDeploymentResponseBodyDeploymentsSource,
+    ),
+  );
+}
+export function getDeploymentResponseBodyDeploymentsSourceFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentResponseBodyDeploymentsSource,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentResponseBodyDeploymentsSource$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentResponseBodyDeploymentsSource' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentResponseBodyDeploymentsResponseType$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsResponseType> = z
+    .nativeEnum(GetDeploymentResponseBodyDeploymentsResponseType);
+/** @internal */
+export const GetDeploymentResponseBodyDeploymentsResponseType$outboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsResponseType> =
+    GetDeploymentResponseBodyDeploymentsResponseType$inboundSchema;
+
+/** @internal */
+export const ResponseBodyOrigin$inboundSchema: z.ZodType<
+  ResponseBodyOrigin,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: GetDeploymentResponseBodyDeploymentsResponseType$inboundSchema,
+  value: types.string(),
+});
+/** @internal */
+export type ResponseBodyOrigin$Outbound = {
+  type: string;
+  value: string;
+};
+
+/** @internal */
+export const ResponseBodyOrigin$outboundSchema: z.ZodType<
+  ResponseBodyOrigin$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyOrigin
+> = z.object({
+  type: GetDeploymentResponseBodyDeploymentsResponseType$outboundSchema,
+  value: z.string(),
+});
+
+export function responseBodyOriginToJSON(
+  responseBodyOrigin: ResponseBodyOrigin,
+): string {
+  return JSON.stringify(
+    ResponseBodyOrigin$outboundSchema.parse(responseBodyOrigin),
+  );
+}
+export function responseBodyOriginFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyOrigin, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyOrigin$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyOrigin' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentResponseBodyDeploymentsCreator$inboundSchema:
+  z.ZodType<
+    GetDeploymentResponseBodyDeploymentsCreator,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    name: types.string(),
+    avatar: types.optional(types.string()),
+  });
+/** @internal */
+export type GetDeploymentResponseBodyDeploymentsCreator$Outbound = {
+  name: string;
+  avatar?: string | undefined;
+};
+
+/** @internal */
+export const GetDeploymentResponseBodyDeploymentsCreator$outboundSchema:
+  z.ZodType<
+    GetDeploymentResponseBodyDeploymentsCreator$Outbound,
+    z.ZodTypeDef,
+    GetDeploymentResponseBodyDeploymentsCreator
+  > = z.object({
+    name: z.string(),
+    avatar: z.string().optional(),
+  });
+
+export function getDeploymentResponseBodyDeploymentsCreatorToJSON(
+  getDeploymentResponseBodyDeploymentsCreator:
+    GetDeploymentResponseBodyDeploymentsCreator,
+): string {
+  return JSON.stringify(
+    GetDeploymentResponseBodyDeploymentsCreator$outboundSchema.parse(
+      getDeploymentResponseBodyDeploymentsCreator,
+    ),
+  );
+}
+export function getDeploymentResponseBodyDeploymentsCreatorFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentResponseBodyDeploymentsCreator,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentResponseBodyDeploymentsCreator$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentResponseBodyDeploymentsCreator' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyPlatform$inboundSchema: z.ZodType<
+  ResponseBodyPlatform,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  source: z.lazy(() =>
+    GetDeploymentResponseBodyDeploymentsSource$inboundSchema
+  ),
+  origin: z.lazy(() => ResponseBodyOrigin$inboundSchema),
+  creator: z.lazy(() =>
+    GetDeploymentResponseBodyDeploymentsCreator$inboundSchema
+  ),
+  meta: types.optional(z.record(types.string())),
+});
+/** @internal */
+export type ResponseBodyPlatform$Outbound = {
+  source: GetDeploymentResponseBodyDeploymentsSource$Outbound;
+  origin: ResponseBodyOrigin$Outbound;
+  creator: GetDeploymentResponseBodyDeploymentsCreator$Outbound;
+  meta?: { [k: string]: string } | undefined;
+};
+
+/** @internal */
+export const ResponseBodyPlatform$outboundSchema: z.ZodType<
+  ResponseBodyPlatform$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyPlatform
+> = z.object({
+  source: z.lazy(() =>
+    GetDeploymentResponseBodyDeploymentsSource$outboundSchema
+  ),
+  origin: z.lazy(() => ResponseBodyOrigin$outboundSchema),
+  creator: z.lazy(() =>
+    GetDeploymentResponseBodyDeploymentsCreator$outboundSchema
+  ),
+  meta: z.record(z.string()).optional(),
+});
+
+export function responseBodyPlatformToJSON(
+  responseBodyPlatform: ResponseBodyPlatform,
+): string {
+  return JSON.stringify(
+    ResponseBodyPlatform$outboundSchema.parse(responseBodyPlatform),
+  );
+}
+export function responseBodyPlatformFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyPlatform, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyPlatform$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyPlatform' from JSON`,
+  );
+}
+
+/** @internal */
 export const ResponseBodyCrons$inboundSchema: z.ZodType<
   ResponseBodyCrons,
   z.ZodTypeDef,
@@ -11046,6 +11362,57 @@ export function responseBodyChecksFromJSON(
 }
 
 /** @internal */
+export const ResponseBodyBlockCode$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyBlockCode
+> = z.nativeEnum(ResponseBodyBlockCode);
+/** @internal */
+export const ResponseBodyBlockCode$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyBlockCode
+> = ResponseBodyBlockCode$inboundSchema;
+
+/** @internal */
+export const ResponseBodySeatBlock$inboundSchema: z.ZodType<
+  ResponseBodySeatBlock,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  blockCode: ResponseBodyBlockCode$inboundSchema,
+  userId: types.optional(types.string()),
+});
+/** @internal */
+export type ResponseBodySeatBlock$Outbound = {
+  blockCode: string;
+  userId?: string | undefined;
+};
+
+/** @internal */
+export const ResponseBodySeatBlock$outboundSchema: z.ZodType<
+  ResponseBodySeatBlock$Outbound,
+  z.ZodTypeDef,
+  ResponseBodySeatBlock
+> = z.object({
+  blockCode: ResponseBodyBlockCode$outboundSchema,
+  userId: z.string().optional(),
+});
+
+export function responseBodySeatBlockToJSON(
+  responseBodySeatBlock: ResponseBodySeatBlock,
+): string {
+  return JSON.stringify(
+    ResponseBodySeatBlock$outboundSchema.parse(responseBodySeatBlock),
+  );
+}
+export function responseBodySeatBlockFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodySeatBlock, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodySeatBlock$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodySeatBlock' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
   GetDeploymentResponseBody1,
   z.ZodTypeDef,
@@ -11171,6 +11538,7 @@ export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
   ),
   projectId: types.string(),
   plan: ResponseBodyPlan$inboundSchema,
+  platform: types.optional(z.lazy(() => ResponseBodyPlatform$inboundSchema)),
   connectBuildsEnabled: types.optional(types.boolean()),
   connectConfigurationId: types.optional(types.string()),
   createdIn: types.string(),
@@ -11211,6 +11579,7 @@ export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
   ),
   config: types.optional(z.lazy(() => ResponseBodyConfig$inboundSchema)),
   checks: types.optional(z.lazy(() => ResponseBodyChecks$inboundSchema)),
+  seatBlock: types.optional(z.lazy(() => ResponseBodySeatBlock$inboundSchema)),
 });
 /** @internal */
 export type GetDeploymentResponseBody1$Outbound = {
@@ -11312,6 +11681,7 @@ export type GetDeploymentResponseBody1$Outbound = {
     | undefined;
   projectId: string;
   plan: string;
+  platform?: ResponseBodyPlatform$Outbound | undefined;
   connectBuildsEnabled?: boolean | undefined;
   connectConfigurationId?: string | undefined;
   createdIn: string;
@@ -11346,6 +11716,7 @@ export type GetDeploymentResponseBody1$Outbound = {
     | undefined;
   config?: ResponseBodyConfig$Outbound | undefined;
   checks?: ResponseBodyChecks$Outbound | undefined;
+  seatBlock?: ResponseBodySeatBlock$Outbound | undefined;
 };
 
 /** @internal */
@@ -11458,6 +11829,7 @@ export const GetDeploymentResponseBody1$outboundSchema: z.ZodType<
   ).optional(),
   projectId: z.string(),
   plan: ResponseBodyPlan$outboundSchema,
+  platform: z.lazy(() => ResponseBodyPlatform$outboundSchema).optional(),
   connectBuildsEnabled: z.boolean().optional(),
   connectConfigurationId: z.string().optional(),
   createdIn: z.string(),
@@ -11494,6 +11866,7 @@ export const GetDeploymentResponseBody1$outboundSchema: z.ZodType<
   ]).optional(),
   config: z.lazy(() => ResponseBodyConfig$outboundSchema).optional(),
   checks: z.lazy(() => ResponseBodyChecks$outboundSchema).optional(),
+  seatBlock: z.lazy(() => ResponseBodySeatBlock$outboundSchema).optional(),
 });
 
 export function getDeploymentResponseBody1ToJSON(

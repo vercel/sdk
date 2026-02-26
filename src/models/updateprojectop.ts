@@ -67,6 +67,7 @@ export const UpdateProjectFramework = {
   Fastapi: "fastapi",
   Flask: "flask",
   Fasthtml: "fasthtml",
+  Django: "django",
   SanityV3: "sanity-v3",
   Sanity: "sanity",
   Storybook: "storybook",
@@ -108,6 +109,7 @@ export const UpdateProjectBuildMachineType = {
   Enhanced: "enhanced",
   Turbo: "turbo",
   Standard: "standard",
+  Elastic: "elastic",
 } as const;
 export type UpdateProjectBuildMachineType = ClosedEnum<
   typeof UpdateProjectBuildMachineType
@@ -134,6 +136,14 @@ export type UpdateProjectFunctionDefaultMemoryType = ClosedEnum<
   typeof UpdateProjectFunctionDefaultMemoryType
 >;
 
+export const UpdateProjectBuildMachineSelection = {
+  Elastic: "elastic",
+  Fixed: "fixed",
+} as const;
+export type UpdateProjectBuildMachineSelection = ClosedEnum<
+  typeof UpdateProjectBuildMachineSelection
+>;
+
 /**
  * Specifies resource override configuration for the project
  */
@@ -154,6 +164,8 @@ export type UpdateProjectResourceConfig = {
    */
   functionZeroConfigFailover?: boolean | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
+  buildMachineSelection?: UpdateProjectBuildMachineSelection | undefined;
+  buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
 };
 
@@ -995,6 +1007,7 @@ export const UpdateProjectProjectsFramework = {
   Fastapi: "fastapi",
   Flask: "flask",
   Fasthtml: "fasthtml",
+  Django: "django",
   SanityV3: "sanity-v3",
   Sanity: "sanity",
   Storybook: "storybook",
@@ -1308,6 +1321,14 @@ export type UpdateProjectProjectsBuildMachineType = ClosedEnum<
   typeof UpdateProjectProjectsBuildMachineType
 >;
 
+export const UpdateProjectProjectsBuildMachineSelection = {
+  Fixed: "fixed",
+  Elastic: "elastic",
+} as const;
+export type UpdateProjectProjectsBuildMachineSelection = ClosedEnum<
+  typeof UpdateProjectProjectsBuildMachineSelection
+>;
+
 export const UpdateProjectProjectsConfiguration = {
   SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
   WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
@@ -1330,6 +1351,10 @@ export type UpdateProjectProjectsResourceConfig = {
     | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   buildMachineType?: UpdateProjectProjectsBuildMachineType | undefined;
+  buildMachineSelection?:
+    | UpdateProjectProjectsBuildMachineSelection
+    | undefined;
+  buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: UpdateProjectProjectsBuildQueue | undefined;
 };
@@ -1414,6 +1439,14 @@ export type UpdateProjectProjectsResponseBuildMachineType = ClosedEnum<
   typeof UpdateProjectProjectsResponseBuildMachineType
 >;
 
+export const UpdateProjectProjectsResponseBuildMachineSelection = {
+  Fixed: "fixed",
+  Elastic: "elastic",
+} as const;
+export type UpdateProjectProjectsResponseBuildMachineSelection = ClosedEnum<
+  typeof UpdateProjectProjectsResponseBuildMachineSelection
+>;
+
 export const UpdateProjectProjectsResponseConfiguration = {
   SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
   WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
@@ -1436,6 +1469,10 @@ export type UpdateProjectDefaultResourceConfig = {
     | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   buildMachineType?: UpdateProjectProjectsResponseBuildMachineType | undefined;
+  buildMachineSelection?:
+    | UpdateProjectProjectsResponseBuildMachineSelection
+    | undefined;
+  buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: UpdateProjectProjectsResponseBuildQueue | undefined;
 };
@@ -2522,6 +2559,15 @@ export const UpdateProjectFunctionDefaultMemoryType$outboundSchema:
     UpdateProjectFunctionDefaultMemoryType$inboundSchema;
 
 /** @internal */
+export const UpdateProjectBuildMachineSelection$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectBuildMachineSelection
+> = z.nativeEnum(UpdateProjectBuildMachineSelection);
+/** @internal */
+export const UpdateProjectBuildMachineSelection$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectBuildMachineSelection
+> = UpdateProjectBuildMachineSelection$inboundSchema;
+
+/** @internal */
 export const UpdateProjectResourceConfig$inboundSchema: z.ZodType<
   UpdateProjectResourceConfig,
   z.ZodTypeDef,
@@ -2539,6 +2585,10 @@ export const UpdateProjectResourceConfig$inboundSchema: z.ZodType<
   ),
   functionZeroConfigFailover: types.optional(types.boolean()),
   elasticConcurrencyEnabled: types.optional(types.boolean()),
+  buildMachineSelection: types.optional(
+    UpdateProjectBuildMachineSelection$inboundSchema,
+  ),
+  buildMachineElasticLastUpdated: types.optional(types.number()),
   isNSNBDisabled: types.optional(types.boolean()),
 });
 /** @internal */
@@ -2551,6 +2601,8 @@ export type UpdateProjectResourceConfig$Outbound = {
   functionDefaultMemoryType?: string | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
+  buildMachineSelection?: string | undefined;
+  buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
 };
 
@@ -2569,6 +2621,9 @@ export const UpdateProjectResourceConfig$outboundSchema: z.ZodType<
     UpdateProjectFunctionDefaultMemoryType$outboundSchema.optional(),
   functionZeroConfigFailover: z.boolean().optional(),
   elasticConcurrencyEnabled: z.boolean().optional(),
+  buildMachineSelection: UpdateProjectBuildMachineSelection$outboundSchema
+    .optional(),
+  buildMachineElasticLastUpdated: z.number().optional(),
   isNSNBDisabled: z.boolean().optional(),
 });
 
@@ -6515,6 +6570,15 @@ export const UpdateProjectProjectsBuildMachineType$outboundSchema:
     UpdateProjectProjectsBuildMachineType$inboundSchema;
 
 /** @internal */
+export const UpdateProjectProjectsBuildMachineSelection$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectProjectsBuildMachineSelection> = z
+    .nativeEnum(UpdateProjectProjectsBuildMachineSelection);
+/** @internal */
+export const UpdateProjectProjectsBuildMachineSelection$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectProjectsBuildMachineSelection> =
+    UpdateProjectProjectsBuildMachineSelection$inboundSchema;
+
+/** @internal */
 export const UpdateProjectProjectsConfiguration$inboundSchema: z.ZodNativeEnum<
   typeof UpdateProjectProjectsConfiguration
 > = z.nativeEnum(UpdateProjectProjectsConfiguration);
@@ -6583,6 +6647,10 @@ export const UpdateProjectProjectsResourceConfig$inboundSchema: z.ZodType<
   buildMachineType: types.optional(
     UpdateProjectProjectsBuildMachineType$inboundSchema,
   ),
+  buildMachineSelection: types.optional(
+    UpdateProjectProjectsBuildMachineSelection$inboundSchema,
+  ),
+  buildMachineElasticLastUpdated: types.optional(types.number()),
   isNSNBDisabled: types.optional(types.boolean()),
   buildQueue: types.optional(
     z.lazy(() => UpdateProjectProjectsBuildQueue$inboundSchema),
@@ -6597,6 +6665,8 @@ export type UpdateProjectProjectsResourceConfig$Outbound = {
   functionDefaultMemoryType?: string | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   buildMachineType?: string | undefined;
+  buildMachineSelection?: string | undefined;
+  buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: UpdateProjectProjectsBuildQueue$Outbound | undefined;
 };
@@ -6616,6 +6686,9 @@ export const UpdateProjectProjectsResourceConfig$outboundSchema: z.ZodType<
   functionZeroConfigFailover: z.boolean().optional(),
   buildMachineType: UpdateProjectProjectsBuildMachineType$outboundSchema
     .optional(),
+  buildMachineSelection:
+    UpdateProjectProjectsBuildMachineSelection$outboundSchema.optional(),
+  buildMachineElasticLastUpdated: z.number().optional(),
   isNSNBDisabled: z.boolean().optional(),
   buildQueue: z.lazy(() => UpdateProjectProjectsBuildQueue$outboundSchema)
     .optional(),
@@ -6809,6 +6882,15 @@ export const UpdateProjectProjectsResponseBuildMachineType$outboundSchema:
     UpdateProjectProjectsResponseBuildMachineType$inboundSchema;
 
 /** @internal */
+export const UpdateProjectProjectsResponseBuildMachineSelection$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectProjectsResponseBuildMachineSelection> = z
+    .nativeEnum(UpdateProjectProjectsResponseBuildMachineSelection);
+/** @internal */
+export const UpdateProjectProjectsResponseBuildMachineSelection$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectProjectsResponseBuildMachineSelection> =
+    UpdateProjectProjectsResponseBuildMachineSelection$inboundSchema;
+
+/** @internal */
 export const UpdateProjectProjectsResponseConfiguration$inboundSchema:
   z.ZodNativeEnum<typeof UpdateProjectProjectsResponseConfiguration> = z
     .nativeEnum(UpdateProjectProjectsResponseConfiguration);
@@ -6885,6 +6967,10 @@ export const UpdateProjectDefaultResourceConfig$inboundSchema: z.ZodType<
   buildMachineType: types.optional(
     UpdateProjectProjectsResponseBuildMachineType$inboundSchema,
   ),
+  buildMachineSelection: types.optional(
+    UpdateProjectProjectsResponseBuildMachineSelection$inboundSchema,
+  ),
+  buildMachineElasticLastUpdated: types.optional(types.number()),
   isNSNBDisabled: types.optional(types.boolean()),
   buildQueue: types.optional(
     z.lazy(() => UpdateProjectProjectsResponseBuildQueue$inboundSchema),
@@ -6899,6 +6985,8 @@ export type UpdateProjectDefaultResourceConfig$Outbound = {
   functionDefaultMemoryType?: string | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   buildMachineType?: string | undefined;
+  buildMachineSelection?: string | undefined;
+  buildMachineElasticLastUpdated?: number | undefined;
   isNSNBDisabled?: boolean | undefined;
   buildQueue?: UpdateProjectProjectsResponseBuildQueue$Outbound | undefined;
 };
@@ -6919,6 +7007,10 @@ export const UpdateProjectDefaultResourceConfig$outboundSchema: z.ZodType<
   functionZeroConfigFailover: z.boolean().optional(),
   buildMachineType: UpdateProjectProjectsResponseBuildMachineType$outboundSchema
     .optional(),
+  buildMachineSelection:
+    UpdateProjectProjectsResponseBuildMachineSelection$outboundSchema
+      .optional(),
+  buildMachineElasticLastUpdated: z.number().optional(),
   isNSNBDisabled: z.boolean().optional(),
   buildQueue: z.lazy(() =>
     UpdateProjectProjectsResponseBuildQueue$outboundSchema

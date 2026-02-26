@@ -1976,6 +1976,7 @@ export const UserEventPayloadPermissions = {
   ReadWriteDomain: "read-write:domain",
   ReadTeam: "read:team",
   ReadBilling: "read:billing",
+  ReadWriteBilling: "read-write:billing",
   ReadWriteAiGatewayApiKey: "read-write:ai-gateway-api-key",
   ReadProject: "read:project",
   ReadWriteProject: "read-write:project",
@@ -2024,6 +2025,7 @@ export const UserEventPayload236Permissions = {
   ReadWriteDomain: "read-write:domain",
   ReadTeam: "read:team",
   ReadBilling: "read:billing",
+  ReadWriteBilling: "read-write:billing",
   ReadWriteAiGatewayApiKey: "read-write:ai-gateway-api-key",
   ReadProject: "read:project",
   ReadWriteProject: "read-write:project",
@@ -2083,6 +2085,7 @@ export const PayloadPermissions = {
   ReadWriteDomain: "read-write:domain",
   ReadTeam: "read:team",
   ReadBilling: "read:billing",
+  ReadWriteBilling: "read-write:billing",
   ReadWriteAiGatewayApiKey: "read-write:ai-gateway-api-key",
   ReadProject: "read:project",
   ReadWriteProject: "read-write:project",
@@ -2133,6 +2136,7 @@ export const NextPermissions = {
   ReadWriteDomain: "read-write:domain",
   ReadTeam: "read:team",
   ReadBilling: "read:billing",
+  ReadWriteBilling: "read-write:billing",
   ReadWriteAiGatewayApiKey: "read-write:ai-gateway-api-key",
   ReadProject: "read:project",
   ReadWriteProject: "read-write:project",
@@ -2166,6 +2170,7 @@ export const Permissions = {
   ReadWriteDomain: "read-write:domain",
   ReadTeam: "read:team",
   ReadBilling: "read:billing",
+  ReadWriteBilling: "read-write:billing",
   ReadWriteAiGatewayApiKey: "read-write:ai-gateway-api-key",
   ReadProject: "read:project",
   ReadWriteProject: "read-write:project",
@@ -4727,6 +4732,7 @@ export const PayloadOrigin = {
   NsnbRequestAccess: "nsnb-request-access",
   NsnbViewerUpgrade: "nsnb-viewer-upgrade",
   NsnbInvite: "nsnb-invite",
+  NsnbRedeploy: "nsnb-redeploy",
 } as const;
 export type PayloadOrigin = ClosedEnum<typeof PayloadOrigin>;
 
@@ -5548,6 +5554,7 @@ export const UserEventPayloadOrigin = {
   NsnbRequestAccess: "nsnb-request-access",
   NsnbViewerUpgrade: "nsnb-viewer-upgrade",
   NsnbInvite: "nsnb-invite",
+  NsnbRedeploy: "nsnb-redeploy",
 } as const;
 export type UserEventPayloadOrigin = ClosedEnum<typeof UserEventPayloadOrigin>;
 

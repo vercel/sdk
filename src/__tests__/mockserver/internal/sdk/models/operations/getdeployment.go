@@ -2976,24 +2976,24 @@ func (e *GetDeploymentReadySubstate2) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// GetDeploymentSource2 - Where was the deployment created from
-type GetDeploymentSource2 string
+// GetDeploymentSourceEnum2 - Where was the deployment created from
+type GetDeploymentSourceEnum2 string
 
 const (
-	GetDeploymentSource2APITriggerGitDeploy GetDeploymentSource2 = "api-trigger-git-deploy"
-	GetDeploymentSource2Cli                 GetDeploymentSource2 = "cli"
-	GetDeploymentSource2CloneRepo           GetDeploymentSource2 = "clone/repo"
-	GetDeploymentSource2Git                 GetDeploymentSource2 = "git"
-	GetDeploymentSource2Import              GetDeploymentSource2 = "import"
-	GetDeploymentSource2ImportRepo          GetDeploymentSource2 = "import/repo"
-	GetDeploymentSource2Redeploy            GetDeploymentSource2 = "redeploy"
-	GetDeploymentSource2V0Web               GetDeploymentSource2 = "v0-web"
+	GetDeploymentSourceEnum2APITriggerGitDeploy GetDeploymentSourceEnum2 = "api-trigger-git-deploy"
+	GetDeploymentSourceEnum2Cli                 GetDeploymentSourceEnum2 = "cli"
+	GetDeploymentSourceEnum2CloneRepo           GetDeploymentSourceEnum2 = "clone/repo"
+	GetDeploymentSourceEnum2Git                 GetDeploymentSourceEnum2 = "git"
+	GetDeploymentSourceEnum2Import              GetDeploymentSourceEnum2 = "import"
+	GetDeploymentSourceEnum2ImportRepo          GetDeploymentSourceEnum2 = "import/repo"
+	GetDeploymentSourceEnum2Redeploy            GetDeploymentSourceEnum2 = "redeploy"
+	GetDeploymentSourceEnum2V0Web               GetDeploymentSourceEnum2 = "v0-web"
 )
 
-func (e GetDeploymentSource2) ToPointer() *GetDeploymentSource2 {
+func (e GetDeploymentSourceEnum2) ToPointer() *GetDeploymentSourceEnum2 {
 	return &e
 }
-func (e *GetDeploymentSource2) UnmarshalJSON(data []byte) error {
+func (e *GetDeploymentSourceEnum2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -3014,10 +3014,10 @@ func (e *GetDeploymentSource2) UnmarshalJSON(data []byte) error {
 	case "redeploy":
 		fallthrough
 	case "v0-web":
-		*e = GetDeploymentSource2(v)
+		*e = GetDeploymentSourceEnum2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetDeploymentSource2: %v", v)
+		return fmt.Errorf("invalid value for GetDeploymentSourceEnum2: %v", v)
 	}
 }
 
@@ -3218,7 +3218,7 @@ type Lambdas2 struct {
 	// flag to indicate if the deployment was deleted by retention policy
 	SoftDeletedByRetention *bool `json:"softDeletedByRetention,omitempty"`
 	// Where was the deployment created from
-	Source *GetDeploymentSource2 `json:"source,omitempty"`
+	Source *GetDeploymentSourceEnum2 `json:"source,omitempty"`
 	// If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
 	Target *GetDeploymentTargetEnum2 `json:"target,omitempty"`
 	// A number containing the date when the deployment was undeleted at milliseconds
@@ -3593,7 +3593,7 @@ func (o *Lambdas2) GetSoftDeletedByRetention() *bool {
 	return o.SoftDeletedByRetention
 }
 
-func (o *Lambdas2) GetSource() *GetDeploymentSource2 {
+func (o *Lambdas2) GetSource() *GetDeploymentSourceEnum2 {
 	if o == nil {
 		return nil
 	}
@@ -3861,6 +3861,7 @@ const (
 	GetDeploymentFrameworkFastapi        GetDeploymentFramework = "fastapi"
 	GetDeploymentFrameworkFlask          GetDeploymentFramework = "flask"
 	GetDeploymentFrameworkFasthtml       GetDeploymentFramework = "fasthtml"
+	GetDeploymentFrameworkDjango         GetDeploymentFramework = "django"
 	GetDeploymentFrameworkSanityV3       GetDeploymentFramework = "sanity-v3"
 	GetDeploymentFrameworkSanity         GetDeploymentFramework = "sanity"
 	GetDeploymentFrameworkStorybook      GetDeploymentFramework = "storybook"
@@ -3981,6 +3982,8 @@ func (e *GetDeploymentFramework) UnmarshalJSON(data []byte) error {
 	case "flask":
 		fallthrough
 	case "fasthtml":
+		fallthrough
+	case "django":
 		fallthrough
 	case "sanity-v3":
 		fallthrough
@@ -7506,24 +7509,24 @@ func (e *GetDeploymentReadySubstate1) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// GetDeploymentSource1 - Where was the deployment created from
-type GetDeploymentSource1 string
+// GetDeploymentSourceEnum1 - Where was the deployment created from
+type GetDeploymentSourceEnum1 string
 
 const (
-	GetDeploymentSource1APITriggerGitDeploy GetDeploymentSource1 = "api-trigger-git-deploy"
-	GetDeploymentSource1Cli                 GetDeploymentSource1 = "cli"
-	GetDeploymentSource1CloneRepo           GetDeploymentSource1 = "clone/repo"
-	GetDeploymentSource1Git                 GetDeploymentSource1 = "git"
-	GetDeploymentSource1Import              GetDeploymentSource1 = "import"
-	GetDeploymentSource1ImportRepo          GetDeploymentSource1 = "import/repo"
-	GetDeploymentSource1Redeploy            GetDeploymentSource1 = "redeploy"
-	GetDeploymentSource1V0Web               GetDeploymentSource1 = "v0-web"
+	GetDeploymentSourceEnum1APITriggerGitDeploy GetDeploymentSourceEnum1 = "api-trigger-git-deploy"
+	GetDeploymentSourceEnum1Cli                 GetDeploymentSourceEnum1 = "cli"
+	GetDeploymentSourceEnum1CloneRepo           GetDeploymentSourceEnum1 = "clone/repo"
+	GetDeploymentSourceEnum1Git                 GetDeploymentSourceEnum1 = "git"
+	GetDeploymentSourceEnum1Import              GetDeploymentSourceEnum1 = "import"
+	GetDeploymentSourceEnum1ImportRepo          GetDeploymentSourceEnum1 = "import/repo"
+	GetDeploymentSourceEnum1Redeploy            GetDeploymentSourceEnum1 = "redeploy"
+	GetDeploymentSourceEnum1V0Web               GetDeploymentSourceEnum1 = "v0-web"
 )
 
-func (e GetDeploymentSource1) ToPointer() *GetDeploymentSource1 {
+func (e GetDeploymentSourceEnum1) ToPointer() *GetDeploymentSourceEnum1 {
 	return &e
 }
-func (e *GetDeploymentSource1) UnmarshalJSON(data []byte) error {
+func (e *GetDeploymentSourceEnum1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -7544,10 +7547,10 @@ func (e *GetDeploymentSource1) UnmarshalJSON(data []byte) error {
 	case "redeploy":
 		fallthrough
 	case "v0-web":
-		*e = GetDeploymentSource1(v)
+		*e = GetDeploymentSourceEnum1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetDeploymentSource1: %v", v)
+		return fmt.Errorf("invalid value for GetDeploymentSourceEnum1: %v", v)
 	}
 }
 
@@ -7699,6 +7702,174 @@ func (e *GetDeploymentPlan) UnmarshalJSON(data []byte) error {
 	default:
 		return fmt.Errorf("invalid value for GetDeploymentPlan: %v", v)
 	}
+}
+
+// GetDeploymentPlatformSource - The external platform that created the deployment (e.g. its display name).
+type GetDeploymentPlatformSource struct {
+	// Display name of the platform.
+	Name string `json:"name"`
+}
+
+func (g GetDeploymentPlatformSource) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentPlatformSource) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"name"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetDeploymentPlatformSource) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+// GetDeploymentOriginType - Whether the value is an opaque identifier or a URL.
+type GetDeploymentOriginType string
+
+const (
+	GetDeploymentOriginTypeID  GetDeploymentOriginType = "id"
+	GetDeploymentOriginTypeURL GetDeploymentOriginType = "url"
+)
+
+func (e GetDeploymentOriginType) ToPointer() *GetDeploymentOriginType {
+	return &e
+}
+func (e *GetDeploymentOriginType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "id":
+		fallthrough
+	case "url":
+		*e = GetDeploymentOriginType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentOriginType: %v", v)
+	}
+}
+
+// GetDeploymentOrigin - Reference back to the entity on the platform that initiated the deployment.
+type GetDeploymentOrigin struct {
+	// Whether the value is an opaque identifier or a URL.
+	Type GetDeploymentOriginType `json:"type"`
+	// The identifier or URL pointing to the originating entity.
+	Value string `json:"value"`
+}
+
+func (g GetDeploymentOrigin) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentOrigin) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetDeploymentOrigin) GetType() GetDeploymentOriginType {
+	if o == nil {
+		return GetDeploymentOriginType("")
+	}
+	return o.Type
+}
+
+func (o *GetDeploymentOrigin) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
+}
+
+// GetDeploymentPlatformCreator - The user on the external platform who triggered the deployment.
+type GetDeploymentPlatformCreator struct {
+	// Display name of the platform user.
+	Name string `json:"name"`
+	// URL of the platform user's avatar image.
+	Avatar *string `json:"avatar,omitempty"`
+}
+
+func (g GetDeploymentPlatformCreator) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentPlatformCreator) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"name"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetDeploymentPlatformCreator) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *GetDeploymentPlatformCreator) GetAvatar() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Avatar
+}
+
+// GetDeploymentPlatform - Metadata about the source platform that triggered the deployment. Allows us to map a deployment back to a platform (e.g. the chat that created it)
+type GetDeploymentPlatform struct {
+	// The external platform that created the deployment (e.g. its display name).
+	Source GetDeploymentPlatformSource `json:"source"`
+	// Reference back to the entity on the platform that initiated the deployment.
+	Origin GetDeploymentOrigin `json:"origin"`
+	// The user on the external platform who triggered the deployment.
+	Creator GetDeploymentPlatformCreator `json:"creator"`
+	// Arbitrary key-value metadata provided by the platform.
+	Meta map[string]string `json:"meta,omitempty"`
+}
+
+func (g GetDeploymentPlatform) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentPlatform) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"source", "origin", "creator"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetDeploymentPlatform) GetSource() GetDeploymentPlatformSource {
+	if o == nil {
+		return GetDeploymentPlatformSource{}
+	}
+	return o.Source
+}
+
+func (o *GetDeploymentPlatform) GetOrigin() GetDeploymentOrigin {
+	if o == nil {
+		return GetDeploymentOrigin{}
+	}
+	return o.Origin
+}
+
+func (o *GetDeploymentPlatform) GetCreator() GetDeploymentPlatformCreator {
+	if o == nil {
+		return GetDeploymentPlatformCreator{}
+	}
+	return o.Creator
+}
+
+func (o *GetDeploymentPlatform) GetMeta() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Meta
 }
 
 type GetDeploymentCron struct {
@@ -11723,6 +11894,66 @@ func (o *GetDeploymentChecks) GetDeploymentAlias() GetDeploymentDeploymentAlias 
 	return o.DeploymentAlias
 }
 
+// GetDeploymentBlockCode - The NSNB decision code for the seat block. TODO: We should consolidate block types.
+type GetDeploymentBlockCode string
+
+const (
+	GetDeploymentBlockCodeTeamAccessRequired   GetDeploymentBlockCode = "TEAM_ACCESS_REQUIRED"
+	GetDeploymentBlockCodeCommitAuthorRequired GetDeploymentBlockCode = "COMMIT_AUTHOR_REQUIRED"
+)
+
+func (e GetDeploymentBlockCode) ToPointer() *GetDeploymentBlockCode {
+	return &e
+}
+func (e *GetDeploymentBlockCode) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "TEAM_ACCESS_REQUIRED":
+		fallthrough
+	case "COMMIT_AUTHOR_REQUIRED":
+		*e = GetDeploymentBlockCode(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentBlockCode: %v", v)
+	}
+}
+
+// GetDeploymentSeatBlock - NSNB Blocked metadata
+type GetDeploymentSeatBlock struct {
+	// The NSNB decision code for the seat block. TODO: We should consolidate block types.
+	BlockCode GetDeploymentBlockCode `json:"blockCode"`
+	// The blocked vercel user ID.
+	UserID *string `json:"userId,omitempty"`
+}
+
+func (g GetDeploymentSeatBlock) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentSeatBlock) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"blockCode"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetDeploymentSeatBlock) GetBlockCode() GetDeploymentBlockCode {
+	if o == nil {
+		return GetDeploymentBlockCode("")
+	}
+	return o.BlockCode
+}
+
+func (o *GetDeploymentSeatBlock) GetUserID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UserID
+}
+
 // Lambdas1 - The deployment including both public and private information
 type Lambdas1 struct {
 	AliasAssignedAt           *GetDeploymentAliasAssignedAt `json:"aliasAssignedAt,omitempty"`
@@ -11812,7 +12043,7 @@ type Lambdas1 struct {
 	// flag to indicate if the deployment was deleted by retention policy
 	SoftDeletedByRetention *bool `json:"softDeletedByRetention,omitempty"`
 	// Where was the deployment created from
-	Source *GetDeploymentSource1 `json:"source,omitempty"`
+	Source *GetDeploymentSourceEnum1 `json:"source,omitempty"`
 	// If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
 	Target *GetDeploymentTargetEnum1 `json:"target,omitempty"`
 	// A number containing the date when the deployment was undeleted at milliseconds
@@ -11822,10 +12053,12 @@ type Lambdas1 struct {
 	// Since January 2025 User-configured deployment ID for skew protection with pre-built deployments. This is set when users configure a custom deploymentId in their next.config.js file. This allows Next.js to use skew protection even when deployments are pre-built outside of Vercel's build system.
 	UserConfiguredDeploymentID *string `json:"userConfiguredDeploymentId,omitempty"`
 	// The platform version that was used to create the deployment.
-	Version                float64                           `json:"version"`
-	OidcTokenClaims        *GetDeploymentOidcTokenClaims1    `json:"oidcTokenClaims,omitempty"`
-	ProjectID              string                            `json:"projectId"`
-	Plan                   GetDeploymentPlan                 `json:"plan"`
+	Version         float64                        `json:"version"`
+	OidcTokenClaims *GetDeploymentOidcTokenClaims1 `json:"oidcTokenClaims,omitempty"`
+	ProjectID       string                         `json:"projectId"`
+	Plan            GetDeploymentPlan              `json:"plan"`
+	// Metadata about the source platform that triggered the deployment. Allows us to map a deployment back to a platform (e.g. the chat that created it)
+	Platform               *GetDeploymentPlatform            `json:"platform,omitempty"`
 	ConnectBuildsEnabled   *bool                             `json:"connectBuildsEnabled,omitempty"`
 	ConnectConfigurationID *string                           `json:"connectConfigurationId,omitempty"`
 	CreatedIn              string                            `json:"createdIn"`
@@ -11842,6 +12075,8 @@ type Lambdas1 struct {
 	// Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
 	Config *GetDeploymentConfig `json:"config,omitempty"`
 	Checks *GetDeploymentChecks `json:"checks,omitempty"`
+	// NSNB Blocked metadata
+	SeatBlock *GetDeploymentSeatBlock `json:"seatBlock,omitempty"`
 }
 
 func (l Lambdas1) MarshalJSON() ([]byte, error) {
@@ -12296,7 +12531,7 @@ func (o *Lambdas1) GetSoftDeletedByRetention() *bool {
 	return o.SoftDeletedByRetention
 }
 
-func (o *Lambdas1) GetSource() *GetDeploymentSource1 {
+func (o *Lambdas1) GetSource() *GetDeploymentSourceEnum1 {
 	if o == nil {
 		return nil
 	}
@@ -12357,6 +12592,13 @@ func (o *Lambdas1) GetPlan() GetDeploymentPlan {
 		return GetDeploymentPlan("")
 	}
 	return o.Plan
+}
+
+func (o *Lambdas1) GetPlatform() *GetDeploymentPlatform {
+	if o == nil {
+		return nil
+	}
+	return o.Platform
 }
 
 func (o *Lambdas1) GetConnectBuildsEnabled() *bool {
@@ -12476,6 +12718,13 @@ func (o *Lambdas1) GetChecks() *GetDeploymentChecks {
 		return nil
 	}
 	return o.Checks
+}
+
+func (o *Lambdas1) GetSeatBlock() *GetDeploymentSeatBlock {
+	if o == nil {
+		return nil
+	}
+	return o.SeatBlock
 }
 
 type GetDeploymentResponseBodyType string

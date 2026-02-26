@@ -68,6 +68,7 @@ export const GetConfigurableLogDrainFramework = {
   Fastapi: "fastapi",
   Flask: "flask",
   Fasthtml: "fasthtml",
+  Django: "django",
   SanityV3: "sanity-v3",
   Sanity: "sanity",
   Storybook: "storybook",

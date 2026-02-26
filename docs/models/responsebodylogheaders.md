@@ -12,9 +12,9 @@ const value: string[] = [
 ];
 ```
 
-### `models.GetProjectsLogHeaders2`
+### `models.LogHeaders2`
 
 ```typescript
-const value: models.GetProjectsLogHeaders2 = "*";
+const value: models.LogHeaders2 = "*";
 ```
 

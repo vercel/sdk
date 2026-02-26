@@ -478,7 +478,7 @@ run();
 
 ### [FeatureFlags](docs/sdks/featureflags/README.md)
 
-* [listFlags](docs/sdks/featureflags/README.md#listflags) - List all flags
+* [listFlags](docs/sdks/featureflags/README.md#listflags) - List flags
 * [createFlag](docs/sdks/featureflags/README.md#createflag) - Create a flag
 * [getFlag](docs/sdks/featureflags/README.md#getflag) - Get a flag
 * [updateFlag](docs/sdks/featureflags/README.md#updateflag) - Update a flag
@@ -830,7 +830,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`featureFlagsGetFlagSegment`](docs/sdks/featureflags/README.md#getflagsegment) - Get a segment
 - [`featureFlagsGetFlagSettings`](docs/sdks/featureflags/README.md#getflagsettings) - Get project flag settings
 - [`featureFlagsGetSDKKeys`](docs/sdks/featureflags/README.md#getsdkkeys) - Get all SDK keys
-- [`featureFlagsListFlags`](docs/sdks/featureflags/README.md#listflags) - List all flags
+- [`featureFlagsListFlags`](docs/sdks/featureflags/README.md#listflags) - List flags
 - [`featureFlagsListFlagSegments`](docs/sdks/featureflags/README.md#listflagsegments) - List segments
 - [`featureFlagsListFlagVersions`](docs/sdks/featureflags/README.md#listflagversions) - List flag versions
 - [`featureFlagsListTeamFlags`](docs/sdks/featureflags/README.md#listteamflags) - List all flags for a team

@@ -42,6 +42,12 @@ type ListFlagsRequest struct {
 	State *ListFlagsState `queryParam:"style=form,explode=true,name=state"`
 	// Whether to include metadata in the response
 	WithMetadata *bool `queryParam:"style=form,explode=true,name=withMetadata"`
+	// Maximum number of flags to return. When not set, all flags are returned.
+	Limit *int64 `queryParam:"style=form,explode=true,name=limit"`
+	// Pagination cursor to continue from.
+	Cursor *string `queryParam:"style=form,explode=true,name=cursor"`
+	// Search flags by their slug or description. Case-insensitive.
+	Search *string `queryParam:"style=form,explode=true,name=search"`
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
@@ -69,6 +75,27 @@ func (o *ListFlagsRequest) GetWithMetadata() *bool {
 	return o.WithMetadata
 }
 
+func (o *ListFlagsRequest) GetLimit() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Limit
+}
+
+func (o *ListFlagsRequest) GetCursor() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Cursor
+}
+
+func (o *ListFlagsRequest) GetSearch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Search
+}
+
 func (o *ListFlagsRequest) GetTeamID() *string {
 	if o == nil {
 		return nil
@@ -83,8 +110,20 @@ func (o *ListFlagsRequest) GetSlug() *string {
 	return o.Slug
 }
 
+type ListFlagsPagination struct {
+	Next *string `json:"next"`
+}
+
+func (o *ListFlagsPagination) GetNext() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Next
+}
+
 type ListFlagsResponseBody struct {
-	Data []components.Flag `json:"data"`
+	Data       []components.Flag   `json:"data"`
+	Pagination ListFlagsPagination `json:"pagination"`
 }
 
 func (o *ListFlagsResponseBody) GetData() []components.Flag {
@@ -92,6 +131,13 @@ func (o *ListFlagsResponseBody) GetData() []components.Flag {
 		return []components.Flag{}
 	}
 	return o.Data
+}
+
+func (o *ListFlagsResponseBody) GetPagination() ListFlagsPagination {
+	if o == nil {
+		return ListFlagsPagination{}
+	}
+	return o.Pagination
 }
 
 type ListFlagsResponse struct {

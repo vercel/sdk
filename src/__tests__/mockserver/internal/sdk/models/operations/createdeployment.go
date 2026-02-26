@@ -1269,6 +1269,7 @@ const (
 	CreateDeploymentFrameworkRequestFastapi        CreateDeploymentFrameworkRequest = "fastapi"
 	CreateDeploymentFrameworkRequestFlask          CreateDeploymentFrameworkRequest = "flask"
 	CreateDeploymentFrameworkRequestFasthtml       CreateDeploymentFrameworkRequest = "fasthtml"
+	CreateDeploymentFrameworkRequestDjango         CreateDeploymentFrameworkRequest = "django"
 	CreateDeploymentFrameworkRequestSanityV3       CreateDeploymentFrameworkRequest = "sanity-v3"
 	CreateDeploymentFrameworkRequestSanity         CreateDeploymentFrameworkRequest = "sanity"
 	CreateDeploymentFrameworkRequestStorybook      CreateDeploymentFrameworkRequest = "storybook"
@@ -1389,6 +1390,8 @@ func (e *CreateDeploymentFrameworkRequest) UnmarshalJSON(data []byte) error {
 	case "flask":
 		fallthrough
 	case "fasthtml":
+		fallthrough
+	case "django":
 		fallthrough
 	case "sanity-v3":
 		fallthrough
@@ -1939,6 +1942,7 @@ const (
 	CreateDeploymentFrameworkLambdasFastapi        CreateDeploymentFrameworkLambdas = "fastapi"
 	CreateDeploymentFrameworkLambdasFlask          CreateDeploymentFrameworkLambdas = "flask"
 	CreateDeploymentFrameworkLambdasFasthtml       CreateDeploymentFrameworkLambdas = "fasthtml"
+	CreateDeploymentFrameworkLambdasDjango         CreateDeploymentFrameworkLambdas = "django"
 	CreateDeploymentFrameworkLambdasSanityV3       CreateDeploymentFrameworkLambdas = "sanity-v3"
 	CreateDeploymentFrameworkLambdasSanity         CreateDeploymentFrameworkLambdas = "sanity"
 	CreateDeploymentFrameworkLambdasStorybook      CreateDeploymentFrameworkLambdas = "storybook"
@@ -2059,6 +2063,8 @@ func (e *CreateDeploymentFrameworkLambdas) UnmarshalJSON(data []byte) error {
 	case "flask":
 		fallthrough
 	case "fasthtml":
+		fallthrough
+	case "django":
 		fallthrough
 	case "sanity-v3":
 		fallthrough
@@ -5419,24 +5425,24 @@ func (e *CreateDeploymentReadySubstate) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// CreateDeploymentSource - Where was the deployment created from
-type CreateDeploymentSource string
+// CreateDeploymentSourceEnum - Where was the deployment created from
+type CreateDeploymentSourceEnum string
 
 const (
-	CreateDeploymentSourceAPITriggerGitDeploy CreateDeploymentSource = "api-trigger-git-deploy"
-	CreateDeploymentSourceCli                 CreateDeploymentSource = "cli"
-	CreateDeploymentSourceCloneRepo           CreateDeploymentSource = "clone/repo"
-	CreateDeploymentSourceGit                 CreateDeploymentSource = "git"
-	CreateDeploymentSourceImport              CreateDeploymentSource = "import"
-	CreateDeploymentSourceImportRepo          CreateDeploymentSource = "import/repo"
-	CreateDeploymentSourceRedeploy            CreateDeploymentSource = "redeploy"
-	CreateDeploymentSourceV0Web               CreateDeploymentSource = "v0-web"
+	CreateDeploymentSourceEnumAPITriggerGitDeploy CreateDeploymentSourceEnum = "api-trigger-git-deploy"
+	CreateDeploymentSourceEnumCli                 CreateDeploymentSourceEnum = "cli"
+	CreateDeploymentSourceEnumCloneRepo           CreateDeploymentSourceEnum = "clone/repo"
+	CreateDeploymentSourceEnumGit                 CreateDeploymentSourceEnum = "git"
+	CreateDeploymentSourceEnumImport              CreateDeploymentSourceEnum = "import"
+	CreateDeploymentSourceEnumImportRepo          CreateDeploymentSourceEnum = "import/repo"
+	CreateDeploymentSourceEnumRedeploy            CreateDeploymentSourceEnum = "redeploy"
+	CreateDeploymentSourceEnumV0Web               CreateDeploymentSourceEnum = "v0-web"
 )
 
-func (e CreateDeploymentSource) ToPointer() *CreateDeploymentSource {
+func (e CreateDeploymentSourceEnum) ToPointer() *CreateDeploymentSourceEnum {
 	return &e
 }
-func (e *CreateDeploymentSource) UnmarshalJSON(data []byte) error {
+func (e *CreateDeploymentSourceEnum) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -5457,10 +5463,10 @@ func (e *CreateDeploymentSource) UnmarshalJSON(data []byte) error {
 	case "redeploy":
 		fallthrough
 	case "v0-web":
-		*e = CreateDeploymentSource(v)
+		*e = CreateDeploymentSourceEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateDeploymentSource: %v", v)
+		return fmt.Errorf("invalid value for CreateDeploymentSourceEnum: %v", v)
 	}
 }
 
@@ -5601,6 +5607,130 @@ func (e *CreateDeploymentPlan) UnmarshalJSON(data []byte) error {
 	default:
 		return fmt.Errorf("invalid value for CreateDeploymentPlan: %v", v)
 	}
+}
+
+// CreateDeploymentPlatformSource - The external platform that created the deployment (e.g. its display name).
+type CreateDeploymentPlatformSource struct {
+	// Display name of the platform.
+	Name string `json:"name"`
+}
+
+func (o *CreateDeploymentPlatformSource) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+// CreateDeploymentOriginType - Whether the value is an opaque identifier or a URL.
+type CreateDeploymentOriginType string
+
+const (
+	CreateDeploymentOriginTypeID  CreateDeploymentOriginType = "id"
+	CreateDeploymentOriginTypeURL CreateDeploymentOriginType = "url"
+)
+
+func (e CreateDeploymentOriginType) ToPointer() *CreateDeploymentOriginType {
+	return &e
+}
+func (e *CreateDeploymentOriginType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "id":
+		fallthrough
+	case "url":
+		*e = CreateDeploymentOriginType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateDeploymentOriginType: %v", v)
+	}
+}
+
+// CreateDeploymentOrigin - Reference back to the entity on the platform that initiated the deployment.
+type CreateDeploymentOrigin struct {
+	// Whether the value is an opaque identifier or a URL.
+	Type CreateDeploymentOriginType `json:"type"`
+	// The identifier or URL pointing to the originating entity.
+	Value string `json:"value"`
+}
+
+func (o *CreateDeploymentOrigin) GetType() CreateDeploymentOriginType {
+	if o == nil {
+		return CreateDeploymentOriginType("")
+	}
+	return o.Type
+}
+
+func (o *CreateDeploymentOrigin) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
+}
+
+// CreateDeploymentPlatformCreator - The user on the external platform who triggered the deployment.
+type CreateDeploymentPlatformCreator struct {
+	// Display name of the platform user.
+	Name string `json:"name"`
+	// URL of the platform user's avatar image.
+	Avatar *string `json:"avatar,omitempty"`
+}
+
+func (o *CreateDeploymentPlatformCreator) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *CreateDeploymentPlatformCreator) GetAvatar() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Avatar
+}
+
+// CreateDeploymentPlatform - Metadata about the source platform that triggered the deployment. Allows us to map a deployment back to a platform (e.g. the chat that created it)
+type CreateDeploymentPlatform struct {
+	// The external platform that created the deployment (e.g. its display name).
+	Source CreateDeploymentPlatformSource `json:"source"`
+	// Reference back to the entity on the platform that initiated the deployment.
+	Origin CreateDeploymentOrigin `json:"origin"`
+	// The user on the external platform who triggered the deployment.
+	Creator CreateDeploymentPlatformCreator `json:"creator"`
+	// Arbitrary key-value metadata provided by the platform.
+	Meta map[string]string `json:"meta,omitempty"`
+}
+
+func (o *CreateDeploymentPlatform) GetSource() CreateDeploymentPlatformSource {
+	if o == nil {
+		return CreateDeploymentPlatformSource{}
+	}
+	return o.Source
+}
+
+func (o *CreateDeploymentPlatform) GetOrigin() CreateDeploymentOrigin {
+	if o == nil {
+		return CreateDeploymentOrigin{}
+	}
+	return o.Origin
+}
+
+func (o *CreateDeploymentPlatform) GetCreator() CreateDeploymentPlatformCreator {
+	if o == nil {
+		return CreateDeploymentPlatformCreator{}
+	}
+	return o.Creator
+}
+
+func (o *CreateDeploymentPlatform) GetMeta() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Meta
 }
 
 type CreateDeploymentCron struct {
@@ -9537,6 +9667,55 @@ func (o *CreateDeploymentChecks) GetDeploymentAlias() CreateDeploymentDeployment
 	return o.DeploymentAlias
 }
 
+// CreateDeploymentBlockCode - The NSNB decision code for the seat block. TODO: We should consolidate block types.
+type CreateDeploymentBlockCode string
+
+const (
+	CreateDeploymentBlockCodeTeamAccessRequired   CreateDeploymentBlockCode = "TEAM_ACCESS_REQUIRED"
+	CreateDeploymentBlockCodeCommitAuthorRequired CreateDeploymentBlockCode = "COMMIT_AUTHOR_REQUIRED"
+)
+
+func (e CreateDeploymentBlockCode) ToPointer() *CreateDeploymentBlockCode {
+	return &e
+}
+func (e *CreateDeploymentBlockCode) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "TEAM_ACCESS_REQUIRED":
+		fallthrough
+	case "COMMIT_AUTHOR_REQUIRED":
+		*e = CreateDeploymentBlockCode(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateDeploymentBlockCode: %v", v)
+	}
+}
+
+// CreateDeploymentSeatBlock - NSNB Blocked metadata
+type CreateDeploymentSeatBlock struct {
+	// The NSNB decision code for the seat block. TODO: We should consolidate block types.
+	BlockCode CreateDeploymentBlockCode `json:"blockCode"`
+	// The blocked vercel user ID.
+	UserID *string `json:"userId,omitempty"`
+}
+
+func (o *CreateDeploymentSeatBlock) GetBlockCode() CreateDeploymentBlockCode {
+	if o == nil {
+		return CreateDeploymentBlockCode("")
+	}
+	return o.BlockCode
+}
+
+func (o *CreateDeploymentSeatBlock) GetUserID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UserID
+}
+
 // CreateDeploymentResponseBody - The successfully created deployment
 type CreateDeploymentResponseBody struct {
 	AliasAssignedAt           *CreateDeploymentAliasAssignedAt       `json:"aliasAssignedAt,omitempty"`
@@ -9626,7 +9805,7 @@ type CreateDeploymentResponseBody struct {
 	// flag to indicate if the deployment was deleted by retention policy
 	SoftDeletedByRetention *bool `json:"softDeletedByRetention,omitempty"`
 	// Where was the deployment created from
-	Source *CreateDeploymentSource `json:"source,omitempty"`
+	Source *CreateDeploymentSourceEnum `json:"source,omitempty"`
 	// If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
 	Target *CreateDeploymentTargetEnum `json:"target,omitempty"`
 	// A number containing the date when the deployment was undeleted at milliseconds
@@ -9636,10 +9815,12 @@ type CreateDeploymentResponseBody struct {
 	// Since January 2025 User-configured deployment ID for skew protection with pre-built deployments. This is set when users configure a custom deploymentId in their next.config.js file. This allows Next.js to use skew protection even when deployments are pre-built outside of Vercel's build system.
 	UserConfiguredDeploymentID *string `json:"userConfiguredDeploymentId,omitempty"`
 	// The platform version that was used to create the deployment.
-	Version                float64                              `json:"version"`
-	OidcTokenClaims        *CreateDeploymentOidcTokenClaims     `json:"oidcTokenClaims,omitempty"`
-	ProjectID              string                               `json:"projectId"`
-	Plan                   CreateDeploymentPlan                 `json:"plan"`
+	Version         float64                          `json:"version"`
+	OidcTokenClaims *CreateDeploymentOidcTokenClaims `json:"oidcTokenClaims,omitempty"`
+	ProjectID       string                           `json:"projectId"`
+	Plan            CreateDeploymentPlan             `json:"plan"`
+	// Metadata about the source platform that triggered the deployment. Allows us to map a deployment back to a platform (e.g. the chat that created it)
+	Platform               *CreateDeploymentPlatform            `json:"platform,omitempty"`
 	ConnectBuildsEnabled   *bool                                `json:"connectBuildsEnabled,omitempty"`
 	ConnectConfigurationID *string                              `json:"connectConfigurationId,omitempty"`
 	CreatedIn              string                               `json:"createdIn"`
@@ -9656,6 +9837,8 @@ type CreateDeploymentResponseBody struct {
 	// Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
 	Config *CreateDeploymentConfig `json:"config,omitempty"`
 	Checks *CreateDeploymentChecks `json:"checks,omitempty"`
+	// NSNB Blocked metadata
+	SeatBlock *CreateDeploymentSeatBlock `json:"seatBlock,omitempty"`
 }
 
 func (o *CreateDeploymentResponseBody) GetAliasAssignedAt() *CreateDeploymentAliasAssignedAt {
@@ -10099,7 +10282,7 @@ func (o *CreateDeploymentResponseBody) GetSoftDeletedByRetention() *bool {
 	return o.SoftDeletedByRetention
 }
 
-func (o *CreateDeploymentResponseBody) GetSource() *CreateDeploymentSource {
+func (o *CreateDeploymentResponseBody) GetSource() *CreateDeploymentSourceEnum {
 	if o == nil {
 		return nil
 	}
@@ -10160,6 +10343,13 @@ func (o *CreateDeploymentResponseBody) GetPlan() CreateDeploymentPlan {
 		return CreateDeploymentPlan("")
 	}
 	return o.Plan
+}
+
+func (o *CreateDeploymentResponseBody) GetPlatform() *CreateDeploymentPlatform {
+	if o == nil {
+		return nil
+	}
+	return o.Platform
 }
 
 func (o *CreateDeploymentResponseBody) GetConnectBuildsEnabled() *bool {
@@ -10279,6 +10469,13 @@ func (o *CreateDeploymentResponseBody) GetChecks() *CreateDeploymentChecks {
 		return nil
 	}
 	return o.Checks
+}
+
+func (o *CreateDeploymentResponseBody) GetSeatBlock() *CreateDeploymentSeatBlock {
+	if o == nil {
+		return nil
+	}
+	return o.SeatBlock
 }
 
 type CreateDeploymentResponse struct {

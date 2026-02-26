@@ -157,24 +157,24 @@ func (o *GetDeploymentsRequest) GetSlug() *string {
 	return o.Slug
 }
 
-// GetDeploymentsSource - The source of the deployment.
-type GetDeploymentsSource string
+// GetDeploymentsSourceEnum - The source of the deployment.
+type GetDeploymentsSourceEnum string
 
 const (
-	GetDeploymentsSourceAPITriggerGitDeploy GetDeploymentsSource = "api-trigger-git-deploy"
-	GetDeploymentsSourceCli                 GetDeploymentsSource = "cli"
-	GetDeploymentsSourceCloneRepo           GetDeploymentsSource = "clone/repo"
-	GetDeploymentsSourceGit                 GetDeploymentsSource = "git"
-	GetDeploymentsSourceImport              GetDeploymentsSource = "import"
-	GetDeploymentsSourceImportRepo          GetDeploymentsSource = "import/repo"
-	GetDeploymentsSourceRedeploy            GetDeploymentsSource = "redeploy"
-	GetDeploymentsSourceV0Web               GetDeploymentsSource = "v0-web"
+	GetDeploymentsSourceEnumAPITriggerGitDeploy GetDeploymentsSourceEnum = "api-trigger-git-deploy"
+	GetDeploymentsSourceEnumCli                 GetDeploymentsSourceEnum = "cli"
+	GetDeploymentsSourceEnumCloneRepo           GetDeploymentsSourceEnum = "clone/repo"
+	GetDeploymentsSourceEnumGit                 GetDeploymentsSourceEnum = "git"
+	GetDeploymentsSourceEnumImport              GetDeploymentsSourceEnum = "import"
+	GetDeploymentsSourceEnumImportRepo          GetDeploymentsSourceEnum = "import/repo"
+	GetDeploymentsSourceEnumRedeploy            GetDeploymentsSourceEnum = "redeploy"
+	GetDeploymentsSourceEnumV0Web               GetDeploymentsSourceEnum = "v0-web"
 )
 
-func (e GetDeploymentsSource) ToPointer() *GetDeploymentsSource {
+func (e GetDeploymentsSourceEnum) ToPointer() *GetDeploymentsSourceEnum {
 	return &e
 }
-func (e *GetDeploymentsSource) UnmarshalJSON(data []byte) error {
+func (e *GetDeploymentsSourceEnum) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -195,10 +195,10 @@ func (e *GetDeploymentsSource) UnmarshalJSON(data []byte) error {
 	case "redeploy":
 		fallthrough
 	case "v0-web":
-		*e = GetDeploymentsSource(v)
+		*e = GetDeploymentsSourceEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetDeploymentsSource: %v", v)
+		return fmt.Errorf("invalid value for GetDeploymentsSourceEnum: %v", v)
 	}
 }
 
@@ -705,6 +705,7 @@ const (
 	GetDeploymentsFrameworkFastapi        GetDeploymentsFramework = "fastapi"
 	GetDeploymentsFrameworkFlask          GetDeploymentsFramework = "flask"
 	GetDeploymentsFrameworkFasthtml       GetDeploymentsFramework = "fasthtml"
+	GetDeploymentsFrameworkDjango         GetDeploymentsFramework = "django"
 	GetDeploymentsFrameworkSanityV3       GetDeploymentsFramework = "sanity-v3"
 	GetDeploymentsFrameworkSanity         GetDeploymentsFramework = "sanity"
 	GetDeploymentsFrameworkStorybook      GetDeploymentsFramework = "storybook"
@@ -825,6 +826,8 @@ func (e *GetDeploymentsFramework) UnmarshalJSON(data []byte) error {
 	case "flask":
 		fallthrough
 	case "fasthtml":
+		fallthrough
+	case "django":
 		fallthrough
 	case "sanity-v3":
 		fallthrough
@@ -1180,6 +1183,130 @@ func (o *GetDeploymentsProjectSettings) GetGitComments() *GetDeploymentsGitComme
 	return o.GitComments
 }
 
+// GetDeploymentsPlatformSource - The external platform that created the deployment (e.g. its display name).
+type GetDeploymentsPlatformSource struct {
+	// Display name of the platform.
+	Name string `json:"name"`
+}
+
+func (o *GetDeploymentsPlatformSource) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+// GetDeploymentsOriginType - Whether the value is an opaque identifier or a URL.
+type GetDeploymentsOriginType string
+
+const (
+	GetDeploymentsOriginTypeURL GetDeploymentsOriginType = "url"
+	GetDeploymentsOriginTypeID  GetDeploymentsOriginType = "id"
+)
+
+func (e GetDeploymentsOriginType) ToPointer() *GetDeploymentsOriginType {
+	return &e
+}
+func (e *GetDeploymentsOriginType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "url":
+		fallthrough
+	case "id":
+		*e = GetDeploymentsOriginType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentsOriginType: %v", v)
+	}
+}
+
+// GetDeploymentsOrigin - Reference back to the entity on the platform that initiated the deployment.
+type GetDeploymentsOrigin struct {
+	// Whether the value is an opaque identifier or a URL.
+	Type GetDeploymentsOriginType `json:"type"`
+	// The identifier or URL pointing to the originating entity.
+	Value string `json:"value"`
+}
+
+func (o *GetDeploymentsOrigin) GetType() GetDeploymentsOriginType {
+	if o == nil {
+		return GetDeploymentsOriginType("")
+	}
+	return o.Type
+}
+
+func (o *GetDeploymentsOrigin) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
+}
+
+// GetDeploymentsPlatformCreator - The user on the external platform who triggered the deployment.
+type GetDeploymentsPlatformCreator struct {
+	// Display name of the platform user.
+	Name string `json:"name"`
+	// URL of the platform user's avatar image.
+	Avatar *string `json:"avatar,omitempty"`
+}
+
+func (o *GetDeploymentsPlatformCreator) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *GetDeploymentsPlatformCreator) GetAvatar() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Avatar
+}
+
+// GetDeploymentsPlatform - Metadata about the source platform that triggered the deployment.
+type GetDeploymentsPlatform struct {
+	// The external platform that created the deployment (e.g. its display name).
+	Source GetDeploymentsPlatformSource `json:"source"`
+	// Reference back to the entity on the platform that initiated the deployment.
+	Origin GetDeploymentsOrigin `json:"origin"`
+	// The user on the external platform who triggered the deployment.
+	Creator GetDeploymentsPlatformCreator `json:"creator"`
+	// Arbitrary key-value metadata provided by the platform.
+	Meta map[string]string `json:"meta,omitempty"`
+}
+
+func (o *GetDeploymentsPlatform) GetSource() GetDeploymentsPlatformSource {
+	if o == nil {
+		return GetDeploymentsPlatformSource{}
+	}
+	return o.Source
+}
+
+func (o *GetDeploymentsPlatform) GetOrigin() GetDeploymentsOrigin {
+	if o == nil {
+		return GetDeploymentsOrigin{}
+	}
+	return o.Origin
+}
+
+func (o *GetDeploymentsPlatform) GetCreator() GetDeploymentsPlatformCreator {
+	if o == nil {
+		return GetDeploymentsPlatformCreator{}
+	}
+	return o.Creator
+}
+
+func (o *GetDeploymentsPlatform) GetMeta() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Meta
+}
+
 // GetDeploymentsCustomEnvironment - The custom environment used for this deployment, if any
 type GetDeploymentsCustomEnvironment struct {
 	ID   string  `json:"id"`
@@ -1198,6 +1325,55 @@ func (o *GetDeploymentsCustomEnvironment) GetSlug() *string {
 		return nil
 	}
 	return o.Slug
+}
+
+// GetDeploymentsBlockCode - The NSNB decision code for the seat block. TODO: We should consolidate block types.
+type GetDeploymentsBlockCode string
+
+const (
+	GetDeploymentsBlockCodeTeamAccessRequired   GetDeploymentsBlockCode = "TEAM_ACCESS_REQUIRED"
+	GetDeploymentsBlockCodeCommitAuthorRequired GetDeploymentsBlockCode = "COMMIT_AUTHOR_REQUIRED"
+)
+
+func (e GetDeploymentsBlockCode) ToPointer() *GetDeploymentsBlockCode {
+	return &e
+}
+func (e *GetDeploymentsBlockCode) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "TEAM_ACCESS_REQUIRED":
+		fallthrough
+	case "COMMIT_AUTHOR_REQUIRED":
+		*e = GetDeploymentsBlockCode(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentsBlockCode: %v", v)
+	}
+}
+
+// GetDeploymentsSeatBlock - NSNB Blocked metadata
+type GetDeploymentsSeatBlock struct {
+	// The NSNB decision code for the seat block. TODO: We should consolidate block types.
+	BlockCode GetDeploymentsBlockCode `json:"blockCode"`
+	// The blocked vercel user ID.
+	UserID *string `json:"userId,omitempty"`
+}
+
+func (o *GetDeploymentsSeatBlock) GetBlockCode() GetDeploymentsBlockCode {
+	if o == nil {
+		return GetDeploymentsBlockCode("")
+	}
+	return o.BlockCode
+}
+
+func (o *GetDeploymentsSeatBlock) GetUserID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UserID
 }
 
 type GetDeploymentsDeployment struct {
@@ -1220,7 +1396,7 @@ type GetDeploymentsDeployment struct {
 	// Optional flag to indicate if the deployment was soft deleted by retention policy.
 	SoftDeletedByRetention *bool `json:"softDeletedByRetention,omitempty"`
 	// The source of the deployment.
-	Source *GetDeploymentsSource `json:"source,omitempty"`
+	Source *GetDeploymentsSourceEnum `json:"source,omitempty"`
 	// In which state is the deployment.
 	State *GetDeploymentsState `json:"state,omitempty"`
 	// In which state is the deployment.
@@ -1273,8 +1449,12 @@ type GetDeploymentsDeployment struct {
 	Expiration *float64 `json:"expiration,omitempty"`
 	// The expiration proposed to replace the existing expiration
 	ProposedExpiration *float64 `json:"proposedExpiration,omitempty"`
+	// Metadata about the source platform that triggered the deployment.
+	Platform *GetDeploymentsPlatform `json:"platform,omitempty"`
 	// The custom environment used for this deployment, if any
 	CustomEnvironment *GetDeploymentsCustomEnvironment `json:"customEnvironment,omitempty"`
+	// NSNB Blocked metadata
+	SeatBlock *GetDeploymentsSeatBlock `json:"seatBlock,omitempty"`
 }
 
 func (o *GetDeploymentsDeployment) GetUID() string {
@@ -1340,7 +1520,7 @@ func (o *GetDeploymentsDeployment) GetSoftDeletedByRetention() *bool {
 	return o.SoftDeletedByRetention
 }
 
-func (o *GetDeploymentsDeployment) GetSource() *GetDeploymentsSource {
+func (o *GetDeploymentsDeployment) GetSource() *GetDeploymentsSourceEnum {
 	if o == nil {
 		return nil
 	}
@@ -1536,11 +1716,25 @@ func (o *GetDeploymentsDeployment) GetProposedExpiration() *float64 {
 	return o.ProposedExpiration
 }
 
+func (o *GetDeploymentsDeployment) GetPlatform() *GetDeploymentsPlatform {
+	if o == nil {
+		return nil
+	}
+	return o.Platform
+}
+
 func (o *GetDeploymentsDeployment) GetCustomEnvironment() *GetDeploymentsCustomEnvironment {
 	if o == nil {
 		return nil
 	}
 	return o.CustomEnvironment
+}
+
+func (o *GetDeploymentsDeployment) GetSeatBlock() *GetDeploymentsSeatBlock {
+	if o == nil {
+		return nil
+	}
+	return o.SeatBlock
 }
 
 type GetDeploymentsResponseBody struct {

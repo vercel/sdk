@@ -23,6 +23,9 @@ test("Feature Flags List Flags", async () => {
   expect(result).toBeDefined();
   expect(result).toEqual({
     data: [],
+    pagination: {
+      next: "<value>",
+    },
   });
 });
 

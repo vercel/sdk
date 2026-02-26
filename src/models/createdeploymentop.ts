@@ -312,6 +312,7 @@ export const Framework = {
   Fastapi: "fastapi",
   Flask: "flask",
   Fasthtml: "fasthtml",
+  Django: "django",
   SanityV3: "sanity-v3",
   Sanity: "sanity",
   Storybook: "storybook",
@@ -557,6 +558,7 @@ export const CreateDeploymentFramework = {
   Fastapi: "fastapi",
   Flask: "flask",
   Fasthtml: "fasthtml",
+  Django: "django",
   SanityV3: "sanity-v3",
   Sanity: "sanity",
   Storybook: "storybook",
@@ -1372,6 +1374,80 @@ export const CreateDeploymentPlan = {
 } as const;
 export type CreateDeploymentPlan = ClosedEnum<typeof CreateDeploymentPlan>;
 
+/**
+ * The external platform that created the deployment (e.g. its display name).
+ */
+export type CreateDeploymentDeploymentsSource = {
+  /**
+   * Display name of the platform.
+   */
+  name: string;
+};
+
+/**
+ * Whether the value is an opaque identifier or a URL.
+ */
+export const CreateDeploymentDeploymentsType = {
+  Id: "id",
+  Url: "url",
+} as const;
+/**
+ * Whether the value is an opaque identifier or a URL.
+ */
+export type CreateDeploymentDeploymentsType = ClosedEnum<
+  typeof CreateDeploymentDeploymentsType
+>;
+
+/**
+ * Reference back to the entity on the platform that initiated the deployment.
+ */
+export type CreateDeploymentOrigin = {
+  /**
+   * Whether the value is an opaque identifier or a URL.
+   */
+  type: CreateDeploymentDeploymentsType;
+  /**
+   * The identifier or URL pointing to the originating entity.
+   */
+  value: string;
+};
+
+/**
+ * The user on the external platform who triggered the deployment.
+ */
+export type CreateDeploymentDeploymentsCreator = {
+  /**
+   * Display name of the platform user.
+   */
+  name: string;
+  /**
+   * URL of the platform user's avatar image.
+   */
+  avatar?: string | undefined;
+};
+
+/**
+ * Metadata about the source platform that triggered the deployment. Allows us to map a deployment back to a platform (e.g. the chat that created it)
+ */
+export type Platform = {
+  /**
+   * The external platform that created the deployment (e.g. its display name).
+   */
+  source: CreateDeploymentDeploymentsSource;
+  /**
+   * Reference back to the entity on the platform that initiated the deployment.
+   */
+  origin: CreateDeploymentOrigin;
+  /**
+   * The user on the external platform who triggered the deployment.
+   */
+  creator: CreateDeploymentDeploymentsCreator;
+  /**
+   * Arbitrary key-value metadata provided by the platform.
+   */
+  meta?: { [k: string]: string } | undefined;
+};
+
 export type Crons = {
   schedule: string;
   path: string;
@@ -1995,6 +2071,32 @@ export type CreateDeploymentChecks = {
 };
 
 /**
+ * The NSNB decision code for the seat block. TODO: We should consolidate block types.
+ */
+export const BlockCode = {
+  TeamAccessRequired: "TEAM_ACCESS_REQUIRED",
+  CommitAuthorRequired: "COMMIT_AUTHOR_REQUIRED",
+} as const;
+/**
+ * The NSNB decision code for the seat block. TODO: We should consolidate block types.
+ */
+export type BlockCode = ClosedEnum<typeof BlockCode>;
+
+/**
+ * NSNB Blocked metadata
+ */
+export type SeatBlock = {
+  /**
+   * The NSNB decision code for the seat block. TODO: We should consolidate block types.
+   */
+  blockCode: BlockCode;
+  /**
+   * The blocked vercel user ID.
+   */
+  userId?: string | undefined;
+};
+
+/**
  * The successfully created deployment
  */
 export type CreateDeploymentResponseBody = {
@@ -2173,6 +2275,10 @@ export type CreateDeploymentResponseBody = {
   oidcTokenClaims?: OidcTokenClaims | undefined;
   projectId: string;
   plan: CreateDeploymentPlan;
+  /**
+   * Metadata about the source platform that triggered the deployment. Allows us to map a deployment back to a platform (e.g. the chat that created it)
+   */
+  platform?: Platform | undefined;
   connectBuildsEnabled?: boolean | undefined;
   connectConfigurationId?: string | undefined;
   createdIn: string;
@@ -2196,6 +2302,10 @@ export type CreateDeploymentResponseBody = {
    */
   config?: Config | undefined;
   checks?: CreateDeploymentChecks | undefined;
+  /**
+   * NSNB Blocked metadata
+   */
+  seatBlock?: SeatBlock | undefined;
 };
 
 /** @internal */
@@ -5904,6 +6014,187 @@ export const CreateDeploymentPlan$outboundSchema: z.ZodNativeEnum<
 > = CreateDeploymentPlan$inboundSchema;
 
 /** @internal */
+export const CreateDeploymentDeploymentsSource$inboundSchema: z.ZodType<
+  CreateDeploymentDeploymentsSource,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  name: types.string(),
+});
+/** @internal */
+export type CreateDeploymentDeploymentsSource$Outbound = {
+  name: string;
+};
+
+/** @internal */
+export const CreateDeploymentDeploymentsSource$outboundSchema: z.ZodType<
+  CreateDeploymentDeploymentsSource$Outbound,
+  z.ZodTypeDef,
+  CreateDeploymentDeploymentsSource
+> = z.object({
+  name: z.string(),
+});
+
+export function createDeploymentDeploymentsSourceToJSON(
+  createDeploymentDeploymentsSource: CreateDeploymentDeploymentsSource,
+): string {
+  return JSON.stringify(
+    CreateDeploymentDeploymentsSource$outboundSchema.parse(
+      createDeploymentDeploymentsSource,
+    ),
+  );
+}
+export function createDeploymentDeploymentsSourceFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDeploymentDeploymentsSource, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateDeploymentDeploymentsSource$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentDeploymentsSource' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentDeploymentsType$inboundSchema: z.ZodNativeEnum<
+  typeof CreateDeploymentDeploymentsType
+> = z.nativeEnum(CreateDeploymentDeploymentsType);
+/** @internal */
+export const CreateDeploymentDeploymentsType$outboundSchema: z.ZodNativeEnum<
+  typeof CreateDeploymentDeploymentsType
+> = CreateDeploymentDeploymentsType$inboundSchema;
+
+/** @internal */
+export const CreateDeploymentOrigin$inboundSchema: z.ZodType<
+  CreateDeploymentOrigin,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: CreateDeploymentDeploymentsType$inboundSchema,
+  value: types.string(),
+});
+/** @internal */
+export type CreateDeploymentOrigin$Outbound = {
+  type: string;
+  value: string;
+};
+
+/** @internal */
+export const CreateDeploymentOrigin$outboundSchema: z.ZodType<
+  CreateDeploymentOrigin$Outbound,
+  z.ZodTypeDef,
+  CreateDeploymentOrigin
+> = z.object({
+  type: CreateDeploymentDeploymentsType$outboundSchema,
+  value: z.string(),
+});
+
+export function createDeploymentOriginToJSON(
+  createDeploymentOrigin: CreateDeploymentOrigin,
+): string {
+  return JSON.stringify(
+    CreateDeploymentOrigin$outboundSchema.parse(createDeploymentOrigin),
+  );
+}
+export function createDeploymentOriginFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDeploymentOrigin, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateDeploymentOrigin$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentOrigin' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDeploymentDeploymentsCreator$inboundSchema: z.ZodType<
+  CreateDeploymentDeploymentsCreator,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  name: types.string(),
+  avatar: types.optional(types.string()),
+});
+/** @internal */
+export type CreateDeploymentDeploymentsCreator$Outbound = {
+  name: string;
+  avatar?: string | undefined;
+};
+
+/** @internal */
+export const CreateDeploymentDeploymentsCreator$outboundSchema: z.ZodType<
+  CreateDeploymentDeploymentsCreator$Outbound,
+  z.ZodTypeDef,
+  CreateDeploymentDeploymentsCreator
+> = z.object({
+  name: z.string(),
+  avatar: z.string().optional(),
+});
+
+export function createDeploymentDeploymentsCreatorToJSON(
+  createDeploymentDeploymentsCreator: CreateDeploymentDeploymentsCreator,
+): string {
+  return JSON.stringify(
+    CreateDeploymentDeploymentsCreator$outboundSchema.parse(
+      createDeploymentDeploymentsCreator,
+    ),
+  );
+}
+export function createDeploymentDeploymentsCreatorFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDeploymentDeploymentsCreator, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentDeploymentsCreator$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentDeploymentsCreator' from JSON`,
+  );
+}
+
+/** @internal */
+export const Platform$inboundSchema: z.ZodType<
+  Platform,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  source: z.lazy(() => CreateDeploymentDeploymentsSource$inboundSchema),
+  origin: z.lazy(() => CreateDeploymentOrigin$inboundSchema),
+  creator: z.lazy(() => CreateDeploymentDeploymentsCreator$inboundSchema),
+  meta: types.optional(z.record(types.string())),
+});
+/** @internal */
+export type Platform$Outbound = {
+  source: CreateDeploymentDeploymentsSource$Outbound;
+  origin: CreateDeploymentOrigin$Outbound;
+  creator: CreateDeploymentDeploymentsCreator$Outbound;
+  meta?: { [k: string]: string } | undefined;
+};
+
+/** @internal */
+export const Platform$outboundSchema: z.ZodType<
+  Platform$Outbound,
+  z.ZodTypeDef,
+  Platform
+> = z.object({
+  source: z.lazy(() => CreateDeploymentDeploymentsSource$outboundSchema),
+  origin: z.lazy(() => CreateDeploymentOrigin$outboundSchema),
+  creator: z.lazy(() => CreateDeploymentDeploymentsCreator$outboundSchema),
+  meta: z.record(z.string()).optional(),
+});
+
+export function platformToJSON(platform: Platform): string {
+  return JSON.stringify(Platform$outboundSchema.parse(platform));
+}
+export function platformFromJSON(
+  jsonString: string,
+): SafeParseResult<Platform, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Platform$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Platform' from JSON`,
+  );
+}
+
+/** @internal */
 export const Crons$inboundSchema: z.ZodType<Crons, z.ZodTypeDef, unknown> = z
   .object({
     schedule: types.string(),
@@ -8553,6 +8844,51 @@ export function createDeploymentChecksFromJSON(
 }
 
 /** @internal */
+export const BlockCode$inboundSchema: z.ZodNativeEnum<typeof BlockCode> = z
+  .nativeEnum(BlockCode);
+/** @internal */
+export const BlockCode$outboundSchema: z.ZodNativeEnum<typeof BlockCode> =
+  BlockCode$inboundSchema;
+
+/** @internal */
+export const SeatBlock$inboundSchema: z.ZodType<
+  SeatBlock,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  blockCode: BlockCode$inboundSchema,
+  userId: types.optional(types.string()),
+});
+/** @internal */
+export type SeatBlock$Outbound = {
+  blockCode: string;
+  userId?: string | undefined;
+};
+
+/** @internal */
+export const SeatBlock$outboundSchema: z.ZodType<
+  SeatBlock$Outbound,
+  z.ZodTypeDef,
+  SeatBlock
+> = z.object({
+  blockCode: BlockCode$outboundSchema,
+  userId: z.string().optional(),
+});
+
+export function seatBlockToJSON(seatBlock: SeatBlock): string {
+  return JSON.stringify(SeatBlock$outboundSchema.parse(seatBlock));
+}
+export function seatBlockFromJSON(
+  jsonString: string,
+): SafeParseResult<SeatBlock, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SeatBlock$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SeatBlock' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateDeploymentResponseBody$inboundSchema: z.ZodType<
   CreateDeploymentResponseBody,
   z.ZodTypeDef,
@@ -8656,6 +8992,7 @@ export const CreateDeploymentResponseBody$inboundSchema: z.ZodType<
   oidcTokenClaims: types.optional(z.lazy(() => OidcTokenClaims$inboundSchema)),
   projectId: types.string(),
   plan: CreateDeploymentPlan$inboundSchema,
+  platform: types.optional(z.lazy(() => Platform$inboundSchema)),
   connectBuildsEnabled: types.optional(types.boolean()),
   connectConfigurationId: types.optional(types.string()),
   createdIn: types.string(),
@@ -8695,6 +9032,7 @@ export const CreateDeploymentResponseBody$inboundSchema: z.ZodType<
   ),
   config: types.optional(z.lazy(() => Config$inboundSchema)),
   checks: types.optional(z.lazy(() => CreateDeploymentChecks$inboundSchema)),
+  seatBlock: types.optional(z.lazy(() => SeatBlock$inboundSchema)),
 });
 /** @internal */
 export type CreateDeploymentResponseBody$Outbound = {
@@ -8789,6 +9127,7 @@ export type CreateDeploymentResponseBody$Outbound = {
   oidcTokenClaims?: OidcTokenClaims$Outbound | undefined;
   projectId: string;
   plan: string;
+  platform?: Platform$Outbound | undefined;
   connectBuildsEnabled?: boolean | undefined;
   connectConfigurationId?: string | undefined;
   createdIn: string;
@@ -8811,6 +9150,7 @@ export type CreateDeploymentResponseBody$Outbound = {
     | undefined;
   config?: Config$Outbound | undefined;
   checks?: CreateDeploymentChecks$Outbound | undefined;
+  seatBlock?: SeatBlock$Outbound | undefined;
 };
 
 /** @internal */
@@ -8912,6 +9252,7 @@ export const CreateDeploymentResponseBody$outboundSchema: z.ZodType<
   oidcTokenClaims: z.lazy(() => OidcTokenClaims$outboundSchema).optional(),
   projectId: z.string(),
   plan: CreateDeploymentPlan$outboundSchema,
+  platform: z.lazy(() => Platform$outboundSchema).optional(),
   connectBuildsEnabled: z.boolean().optional(),
   connectConfigurationId: z.string().optional(),
   createdIn: z.string(),
@@ -8947,6 +9288,7 @@ export const CreateDeploymentResponseBody$outboundSchema: z.ZodType<
   ]).optional(),
   config: z.lazy(() => Config$outboundSchema).optional(),
   checks: z.lazy(() => CreateDeploymentChecks$outboundSchema).optional(),
+  seatBlock: z.lazy(() => SeatBlock$outboundSchema).optional(),
 });
 
 export function createDeploymentResponseBodyToJSON(

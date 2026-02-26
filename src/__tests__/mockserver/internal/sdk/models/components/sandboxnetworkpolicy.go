@@ -5,6 +5,7 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"mockserver/internal/sdk/utils"
 )
 
 // Mode - The network policy mode. - 'allow-all': All traffic is allowed. - 'deny-all': All traffic is blocked. - 'custom': Traffic is controlled by explicit allow/deny rules.
@@ -49,6 +50,17 @@ type SandboxNetworkPolicy struct {
 	DeniedCIDRs []string `json:"deniedCIDRs,omitempty"`
 	// HTTP header injection rules for outgoing requests matching specific domains.
 	InjectionRules []SandboxInjectionRule `json:"injectionRules,omitempty"`
+}
+
+func (s SandboxNetworkPolicy) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SandboxNetworkPolicy) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"mode"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *SandboxNetworkPolicy) GetMode() Mode {

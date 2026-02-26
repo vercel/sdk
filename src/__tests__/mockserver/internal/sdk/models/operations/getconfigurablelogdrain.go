@@ -86,6 +86,7 @@ const (
 	GetConfigurableLogDrainFrameworkFastapi        GetConfigurableLogDrainFramework = "fastapi"
 	GetConfigurableLogDrainFrameworkFlask          GetConfigurableLogDrainFramework = "flask"
 	GetConfigurableLogDrainFrameworkFasthtml       GetConfigurableLogDrainFramework = "fasthtml"
+	GetConfigurableLogDrainFrameworkDjango         GetConfigurableLogDrainFramework = "django"
 	GetConfigurableLogDrainFrameworkSanityV3       GetConfigurableLogDrainFramework = "sanity-v3"
 	GetConfigurableLogDrainFrameworkSanity         GetConfigurableLogDrainFramework = "sanity"
 	GetConfigurableLogDrainFrameworkStorybook      GetConfigurableLogDrainFramework = "storybook"
@@ -206,6 +207,8 @@ func (e *GetConfigurableLogDrainFramework) UnmarshalJSON(data []byte) error {
 	case "flask":
 		fallthrough
 	case "fasthtml":
+		fallthrough
+	case "django":
 		fallthrough
 	case "sanity-v3":
 		fallthrough

@@ -4337,6 +4337,7 @@ const (
 	GetAllLogDrainsFrameworkFastapi        GetAllLogDrainsFramework = "fastapi"
 	GetAllLogDrainsFrameworkFlask          GetAllLogDrainsFramework = "flask"
 	GetAllLogDrainsFrameworkFasthtml       GetAllLogDrainsFramework = "fasthtml"
+	GetAllLogDrainsFrameworkDjango         GetAllLogDrainsFramework = "django"
 	GetAllLogDrainsFrameworkSanityV3       GetAllLogDrainsFramework = "sanity-v3"
 	GetAllLogDrainsFrameworkSanity         GetAllLogDrainsFramework = "sanity"
 	GetAllLogDrainsFrameworkStorybook      GetAllLogDrainsFramework = "storybook"
@@ -4457,6 +4458,8 @@ func (e *GetAllLogDrainsFramework) UnmarshalJSON(data []byte) error {
 	case "flask":
 		fallthrough
 	case "fasthtml":
+		fallthrough
+	case "django":
 		fallthrough
 	case "sanity-v3":
 		fallthrough

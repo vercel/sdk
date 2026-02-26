@@ -6,12 +6,12 @@
 import { GetOrder1DomainsRegistrarResponse200ApplicationJSONDetails } from "@vercel/sdk/models/getorderop.js";
 
 let value: GetOrder1DomainsRegistrarResponse200ApplicationJSONDetails = {
-  detectedLanguageCode: "<value>",
+  numDaysUntilTransferrable: 5401.39,
 };
 ```
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `detectedLanguageCode` | *string*               | :heavy_check_mark:     | N/A                    |
+| Field                       | Type                        | Required                    | Description                 |
+| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
+| `numDaysUntilTransferrable` | *number*                    | :heavy_check_mark:          | N/A                         |

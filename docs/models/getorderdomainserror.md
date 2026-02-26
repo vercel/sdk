@@ -7,10 +7,7 @@
 
 ```typescript
 const value: models.GetOrderError1 = {
-  code: "cannot-transfer-in-until",
-  details: {
-    numDaysUntilTransferrable: 520.02,
-  },
+  code: "price-change",
 };
 ```
 

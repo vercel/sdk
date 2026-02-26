@@ -47,6 +47,7 @@ const (
 	GetTeamAccessRequestOriginNsnbRequestAccess GetTeamAccessRequestOrigin = "nsnb-request-access"
 	GetTeamAccessRequestOriginNsnbViewerUpgrade GetTeamAccessRequestOrigin = "nsnb-viewer-upgrade"
 	GetTeamAccessRequestOriginNsnbInvite        GetTeamAccessRequestOrigin = "nsnb-invite"
+	GetTeamAccessRequestOriginNsnbRedeploy      GetTeamAccessRequestOrigin = "nsnb-redeploy"
 )
 
 func (e GetTeamAccessRequestOrigin) ToPointer() *GetTeamAccessRequestOrigin {
@@ -87,6 +88,8 @@ func (e *GetTeamAccessRequestOrigin) UnmarshalJSON(data []byte) error {
 	case "nsnb-viewer-upgrade":
 		fallthrough
 	case "nsnb-invite":
+		fallthrough
+	case "nsnb-redeploy":
 		*e = GetTeamAccessRequestOrigin(v)
 		return nil
 	default:

@@ -183,6 +183,7 @@ export const TeamLimitedOrigin = {
   NsnbRequestAccess: "nsnb-request-access",
   NsnbViewerUpgrade: "nsnb-viewer-upgrade",
   NsnbInvite: "nsnb-invite",
+  NsnbRedeploy: "nsnb-redeploy",
 } as const;
 export type TeamLimitedOrigin = ClosedEnum<typeof TeamLimitedOrigin>;
 

@@ -33,10 +33,10 @@ test("Projects Get Projects", async () => {
       {
         accountId: "<id>",
         crons: {
-          enabledAt: 5448.83,
-          disabledAt: 6458.94,
-          updatedAt: 4375.87,
-          deploymentId: "<id>",
+          enabledAt: 5680.45,
+          disabledAt: 710.36,
+          updatedAt: 871.29,
+          deploymentId: null,
           definitions: [
             {
               host: "vercel.com",
@@ -46,7 +46,7 @@ test("Projects Get Projects", async () => {
           ],
         },
         deploymentExpiration: {},
-        directoryListing: true,
+        directoryListing: false,
         id: "<id>",
         name: "<value>",
         nodeVersion: "10.x",
@@ -54,6 +54,7 @@ test("Projects Get Projects", async () => {
           functionDefaultRegions: [
             "<value 1>",
             "<value 2>",
+            "<value 3>",
           ],
         },
         rollingRelease: {
@@ -69,7 +70,11 @@ test("Projects Get Projects", async () => {
           canaryResponseHeader: false,
         },
         defaultResourceConfig: {
-          functionDefaultRegions: [],
+          functionDefaultRegions: [
+            "<value 1>",
+            "<value 2>",
+            "<value 3>",
+          ],
         },
       },
     ],

@@ -5,6 +5,7 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"mockserver/internal/sdk/utils"
 )
 
 // SnapshotStatus - The status of the snapshot.
@@ -55,6 +56,17 @@ type Snapshot struct {
 	CreatedAt float64 `json:"createdAt"`
 	// The last time the snapshot was updated, in milliseconds since the epoch.
 	UpdatedAt float64 `json:"updatedAt"`
+}
+
+func (s Snapshot) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *Snapshot) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"id", "sourceSandboxId", "region", "status", "sizeBytes", "createdAt", "updatedAt"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Snapshot) GetID() string {

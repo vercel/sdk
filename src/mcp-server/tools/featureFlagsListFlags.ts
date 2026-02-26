@@ -12,9 +12,9 @@ const args = {
 
 export const tool$featureFlagsListFlags: ToolDefinition<typeof args> = {
   name: "feature-flags-list-flags",
-  description: `List all flags
+  description: `List flags
 
-Retrieve all feature flags for a project. The list can be filtered by state.`,
+Retrieve feature flags for a project. The list can be filtered by state and supports pagination.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await featureFlagsListFlags(

@@ -1750,12 +1750,76 @@ func (u UpdateFirewallConfigRedirectUnion2) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type UpdateFirewallConfigRedirectUnion2: all fields are null")
 }
 
+type UpdateFirewallConfigLogHeaders2Type string
+
+const (
+	UpdateFirewallConfigLogHeaders2TypeStr        UpdateFirewallConfigLogHeaders2Type = "str"
+	UpdateFirewallConfigLogHeaders2TypeArrayOfStr UpdateFirewallConfigLogHeaders2Type = "arrayOfStr"
+)
+
+type UpdateFirewallConfigLogHeaders2 struct {
+	Str        *string  `queryParam:"inline"`
+	ArrayOfStr []string `queryParam:"inline"`
+
+	Type UpdateFirewallConfigLogHeaders2Type
+}
+
+func CreateUpdateFirewallConfigLogHeaders2Str(str string) UpdateFirewallConfigLogHeaders2 {
+	typ := UpdateFirewallConfigLogHeaders2TypeStr
+
+	return UpdateFirewallConfigLogHeaders2{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateUpdateFirewallConfigLogHeaders2ArrayOfStr(arrayOfStr []string) UpdateFirewallConfigLogHeaders2 {
+	typ := UpdateFirewallConfigLogHeaders2TypeArrayOfStr
+
+	return UpdateFirewallConfigLogHeaders2{
+		ArrayOfStr: arrayOfStr,
+		Type:       typ,
+	}
+}
+
+func (u *UpdateFirewallConfigLogHeaders2) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = UpdateFirewallConfigLogHeaders2TypeStr
+		return nil
+	}
+
+	var arrayOfStr []string = []string{}
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
+		u.ArrayOfStr = arrayOfStr
+		u.Type = UpdateFirewallConfigLogHeaders2TypeArrayOfStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFirewallConfigLogHeaders2", string(data))
+}
+
+func (u UpdateFirewallConfigLogHeaders2) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.ArrayOfStr != nil {
+		return utils.MarshalJSON(u.ArrayOfStr, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type UpdateFirewallConfigLogHeaders2: all fields are null")
+}
+
 type UpdateFirewallConfigMitigate2 struct {
 	Action         ValueMitigateActionEnum2             `json:"action"`
 	RateLimit      *UpdateFirewallConfigRateLimitUnion2 `json:"rateLimit,omitempty"`
 	Redirect       *UpdateFirewallConfigRedirectUnion2  `json:"redirect,omitempty"`
 	ActionDuration *string                              `json:"actionDuration,omitempty"`
 	BypassSystem   *bool                                `json:"bypassSystem,omitempty"`
+	LogHeaders     *UpdateFirewallConfigLogHeaders2     `json:"logHeaders,omitempty"`
 }
 
 func (u UpdateFirewallConfigMitigate2) MarshalJSON() ([]byte, error) {
@@ -1802,6 +1866,13 @@ func (o *UpdateFirewallConfigMitigate2) GetBypassSystem() *bool {
 		return nil
 	}
 	return o.BypassSystem
+}
+
+func (o *UpdateFirewallConfigMitigate2) GetLogHeaders() *UpdateFirewallConfigLogHeaders2 {
+	if o == nil {
+		return nil
+	}
+	return o.LogHeaders
 }
 
 type ValueAction2 struct {
@@ -2711,12 +2782,76 @@ func (u UpdateFirewallConfigRedirectUnion1) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type UpdateFirewallConfigRedirectUnion1: all fields are null")
 }
 
+type UpdateFirewallConfigLogHeaders1Type string
+
+const (
+	UpdateFirewallConfigLogHeaders1TypeStr        UpdateFirewallConfigLogHeaders1Type = "str"
+	UpdateFirewallConfigLogHeaders1TypeArrayOfStr UpdateFirewallConfigLogHeaders1Type = "arrayOfStr"
+)
+
+type UpdateFirewallConfigLogHeaders1 struct {
+	Str        *string  `queryParam:"inline"`
+	ArrayOfStr []string `queryParam:"inline"`
+
+	Type UpdateFirewallConfigLogHeaders1Type
+}
+
+func CreateUpdateFirewallConfigLogHeaders1Str(str string) UpdateFirewallConfigLogHeaders1 {
+	typ := UpdateFirewallConfigLogHeaders1TypeStr
+
+	return UpdateFirewallConfigLogHeaders1{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateUpdateFirewallConfigLogHeaders1ArrayOfStr(arrayOfStr []string) UpdateFirewallConfigLogHeaders1 {
+	typ := UpdateFirewallConfigLogHeaders1TypeArrayOfStr
+
+	return UpdateFirewallConfigLogHeaders1{
+		ArrayOfStr: arrayOfStr,
+		Type:       typ,
+	}
+}
+
+func (u *UpdateFirewallConfigLogHeaders1) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = UpdateFirewallConfigLogHeaders1TypeStr
+		return nil
+	}
+
+	var arrayOfStr []string = []string{}
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
+		u.ArrayOfStr = arrayOfStr
+		u.Type = UpdateFirewallConfigLogHeaders1TypeArrayOfStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFirewallConfigLogHeaders1", string(data))
+}
+
+func (u UpdateFirewallConfigLogHeaders1) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.ArrayOfStr != nil {
+		return utils.MarshalJSON(u.ArrayOfStr, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type UpdateFirewallConfigLogHeaders1: all fields are null")
+}
+
 type UpdateFirewallConfigMitigate1 struct {
 	Action         ValueMitigateActionEnum1             `json:"action"`
 	RateLimit      *UpdateFirewallConfigRateLimitUnion1 `json:"rateLimit,omitempty"`
 	Redirect       *UpdateFirewallConfigRedirectUnion1  `json:"redirect,omitempty"`
 	ActionDuration *string                              `json:"actionDuration,omitempty"`
 	BypassSystem   *bool                                `json:"bypassSystem,omitempty"`
+	LogHeaders     *UpdateFirewallConfigLogHeaders1     `json:"logHeaders,omitempty"`
 }
 
 func (u UpdateFirewallConfigMitigate1) MarshalJSON() ([]byte, error) {
@@ -2763,6 +2898,13 @@ func (o *UpdateFirewallConfigMitigate1) GetBypassSystem() *bool {
 		return nil
 	}
 	return o.BypassSystem
+}
+
+func (o *UpdateFirewallConfigMitigate1) GetLogHeaders() *UpdateFirewallConfigLogHeaders1 {
+	if o == nil {
+		return nil
+	}
+	return o.LogHeaders
 }
 
 type ValueAction1 struct {

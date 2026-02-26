@@ -465,6 +465,7 @@ const (
 	GetWebhooksFrameworkFastapi        GetWebhooksFramework = "fastapi"
 	GetWebhooksFrameworkFlask          GetWebhooksFramework = "flask"
 	GetWebhooksFrameworkFasthtml       GetWebhooksFramework = "fasthtml"
+	GetWebhooksFrameworkDjango         GetWebhooksFramework = "django"
 	GetWebhooksFrameworkSanityV3       GetWebhooksFramework = "sanity-v3"
 	GetWebhooksFrameworkSanity         GetWebhooksFramework = "sanity"
 	GetWebhooksFrameworkStorybook      GetWebhooksFramework = "storybook"
@@ -585,6 +586,8 @@ func (e *GetWebhooksFramework) UnmarshalJSON(data []byte) error {
 	case "flask":
 		fallthrough
 	case "fasthtml":
+		fallthrough
+	case "django":
 		fallthrough
 	case "sanity-v3":
 		fallthrough

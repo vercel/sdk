@@ -8375,6 +8375,7 @@ const (
 	BeforePermissionReadWriteDomain          BeforePermission = "read-write:domain"
 	BeforePermissionReadTeam                 BeforePermission = "read:team"
 	BeforePermissionReadBilling              BeforePermission = "read:billing"
+	BeforePermissionReadWriteBilling         BeforePermission = "read-write:billing"
 	BeforePermissionReadWriteAiGatewayAPIKey BeforePermission = "read-write:ai-gateway-api-key"
 	BeforePermissionReadProject              BeforePermission = "read:project"
 	BeforePermissionReadWriteProject         BeforePermission = "read-write:project"
@@ -8398,6 +8399,8 @@ func (e *BeforePermission) UnmarshalJSON(data []byte) error {
 	case "read:team":
 		fallthrough
 	case "read:billing":
+		fallthrough
+	case "read-write:billing":
 		fallthrough
 	case "read-write:ai-gateway-api-key":
 		fallthrough
@@ -8580,6 +8583,7 @@ const (
 	AfterPermissionReadWriteDomain          AfterPermission = "read-write:domain"
 	AfterPermissionReadTeam                 AfterPermission = "read:team"
 	AfterPermissionReadBilling              AfterPermission = "read:billing"
+	AfterPermissionReadWriteBilling         AfterPermission = "read-write:billing"
 	AfterPermissionReadWriteAiGatewayAPIKey AfterPermission = "read-write:ai-gateway-api-key"
 	AfterPermissionReadProject              AfterPermission = "read:project"
 	AfterPermissionReadWriteProject         AfterPermission = "read-write:project"
@@ -8603,6 +8607,8 @@ func (e *AfterPermission) UnmarshalJSON(data []byte) error {
 	case "read:team":
 		fallthrough
 	case "read:billing":
+		fallthrough
+	case "read-write:billing":
 		fallthrough
 	case "read-write:ai-gateway-api-key":
 		fallthrough
@@ -8840,6 +8846,7 @@ const (
 	Permission2ReadWriteDomain          Permission2 = "read-write:domain"
 	Permission2ReadTeam                 Permission2 = "read:team"
 	Permission2ReadBilling              Permission2 = "read:billing"
+	Permission2ReadWriteBilling         Permission2 = "read-write:billing"
 	Permission2ReadWriteAiGatewayAPIKey Permission2 = "read-write:ai-gateway-api-key"
 	Permission2ReadProject              Permission2 = "read:project"
 	Permission2ReadWriteProject         Permission2 = "read-write:project"
@@ -8863,6 +8870,8 @@ func (e *Permission2) UnmarshalJSON(data []byte) error {
 	case "read:team":
 		fallthrough
 	case "read:billing":
+		fallthrough
+	case "read-write:billing":
 		fallthrough
 	case "read-write:ai-gateway-api-key":
 		fallthrough
@@ -9038,6 +9047,7 @@ const (
 	NextPermissionReadWriteDomain          NextPermission = "read-write:domain"
 	NextPermissionReadTeam                 NextPermission = "read:team"
 	NextPermissionReadBilling              NextPermission = "read:billing"
+	NextPermissionReadWriteBilling         NextPermission = "read-write:billing"
 	NextPermissionReadWriteAiGatewayAPIKey NextPermission = "read-write:ai-gateway-api-key"
 	NextPermissionReadProject              NextPermission = "read:project"
 	NextPermissionReadWriteProject         NextPermission = "read-write:project"
@@ -9065,6 +9075,8 @@ func (e *NextPermission) UnmarshalJSON(data []byte) error {
 	case "read:team":
 		fallthrough
 	case "read:billing":
+		fallthrough
+	case "read-write:billing":
 		fallthrough
 	case "read-write:ai-gateway-api-key":
 		fallthrough
@@ -9170,6 +9182,7 @@ const (
 	Permission1ReadWriteDomain          Permission1 = "read-write:domain"
 	Permission1ReadTeam                 Permission1 = "read:team"
 	Permission1ReadBilling              Permission1 = "read:billing"
+	Permission1ReadWriteBilling         Permission1 = "read-write:billing"
 	Permission1ReadWriteAiGatewayAPIKey Permission1 = "read-write:ai-gateway-api-key"
 	Permission1ReadProject              Permission1 = "read:project"
 	Permission1ReadWriteProject         Permission1 = "read-write:project"
@@ -9197,6 +9210,8 @@ func (e *Permission1) UnmarshalJSON(data []byte) error {
 	case "read:team":
 		fallthrough
 	case "read:billing":
+		fallthrough
+	case "read-write:billing":
 		fallthrough
 	case "read-write:ai-gateway-api-key":
 		fallthrough
@@ -20393,6 +20408,7 @@ const (
 	RemovedUsersOriginNsnbRequestAccess RemovedUsersOrigin = "nsnb-request-access"
 	RemovedUsersOriginNsnbViewerUpgrade RemovedUsersOrigin = "nsnb-viewer-upgrade"
 	RemovedUsersOriginNsnbInvite        RemovedUsersOrigin = "nsnb-invite"
+	RemovedUsersOriginNsnbRedeploy      RemovedUsersOrigin = "nsnb-redeploy"
 )
 
 func (e RemovedUsersOrigin) ToPointer() *RemovedUsersOrigin {
@@ -20433,6 +20449,8 @@ func (e *RemovedUsersOrigin) UnmarshalJSON(data []byte) error {
 	case "nsnb-viewer-upgrade":
 		fallthrough
 	case "nsnb-invite":
+		fallthrough
+	case "nsnb-redeploy":
 		*e = RemovedUsersOrigin(v)
 		return nil
 	default:
@@ -25068,6 +25086,7 @@ const (
 	TeamOrigin1NsnbRequestAccess TeamOrigin1 = "nsnb-request-access"
 	TeamOrigin1NsnbViewerUpgrade TeamOrigin1 = "nsnb-viewer-upgrade"
 	TeamOrigin1NsnbInvite        TeamOrigin1 = "nsnb-invite"
+	TeamOrigin1NsnbRedeploy      TeamOrigin1 = "nsnb-redeploy"
 )
 
 func (e TeamOrigin1) ToPointer() *TeamOrigin1 {
@@ -25108,6 +25127,8 @@ func (e *TeamOrigin1) UnmarshalJSON(data []byte) error {
 	case "nsnb-viewer-upgrade":
 		fallthrough
 	case "nsnb-invite":
+		fallthrough
+	case "nsnb-redeploy":
 		*e = TeamOrigin1(v)
 		return nil
 	default:

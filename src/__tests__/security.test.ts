@@ -107,37 +107,23 @@ test("Security Put Firewall Config", async () => {
           id: "<id>",
           name: "<value>",
           active: false,
-          conditionGroup: [
-            {
-              conditions: [
-                {
-                  type: "bot_category",
-                  op: "nex",
-                },
-              ],
-            },
-          ],
+          conditionGroup: [],
           action: {},
-          valid: true,
-          validationErrors: "<value>",
+          valid: false,
+          validationErrors: [
+            "<value 1>",
+          ],
         },
         {
           id: "<id>",
           name: "<value>",
           active: false,
-          conditionGroup: [
-            {
-              conditions: [
-                {
-                  type: "bot_category",
-                  op: "nex",
-                },
-              ],
-            },
-          ],
+          conditionGroup: [],
           action: {},
-          valid: true,
-          validationErrors: "<value>",
+          valid: false,
+          validationErrors: [
+            "<value 1>",
+          ],
         },
       ],
       ips: [],
@@ -248,17 +234,15 @@ test("Security Get Firewall Config", async () => {
           {
             conditions: [
               {
-                type: "protocol",
-                op: "ex",
+                type: "user_agent",
+                op: "ninc",
               },
             ],
           },
         ],
         action: {},
-        valid: false,
-        validationErrors: [
-          "<value 1>",
-        ],
+        valid: true,
+        validationErrors: [],
       },
     ],
     ips: [
@@ -306,17 +290,7 @@ test("Security Get Bypass Ip", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
-    result: [
-      {
-        ownerId: "<id>",
-        id: "<id>",
-        domain: "agitated-ocelot.name",
-        ip: "ef79:f1ee:4268:c9f2:43e5:a532:e348:c2c2",
-        createdAt: "1734947224713",
-        updatedAt: "1735643690995",
-        updatedAtHour: "<value>",
-      },
-    ],
+    result: [],
   });
 });
 

@@ -9,6 +9,7 @@ import (
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/models/operations"
+	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
@@ -48,6 +49,9 @@ func testListFlagsListFlags0(w http.ResponseWriter, req *http.Request) {
 	}
 	var respBody *operations.ListFlagsResponseBody = &operations.ListFlagsResponseBody{
 		Data: []components.Flag{},
+		Pagination: operations.ListFlagsPagination{
+			Next: types.String("<value>"),
+		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

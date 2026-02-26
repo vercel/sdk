@@ -142,6 +142,7 @@ export const CreateIntegrationStoreDirectFramework = {
   Fastapi: "fastapi",
   Flask: "flask",
   Fasthtml: "fasthtml",
+  Django: "django",
   SanityV3: "sanity-v3",
   Sanity: "sanity",
   Storybook: "storybook",
@@ -2159,6 +2160,10 @@ export type Product = {
    * Custom resource title to display during installation and configuration. If not provided, defaults to protocol-based defaults.
    */
   resourceTitle?: string | undefined;
+  /**
+   * URL to a skill/guide for how AI agents should use this product. Providers can specify this to help agents understand how to interact with their integration.
+   */
+  agentSkillUrl?: string | undefined;
   repl?: Repl | undefined;
   guides?: Array<Guides> | undefined;
   integration: CreateIntegrationStoreDirectIntegration;
@@ -13567,6 +13572,7 @@ export const Product$inboundSchema: z.ZodType<Product, z.ZodTypeDef, unknown> =
     showSSOLinkOnProjectConnection: types.optional(types.boolean()),
     disableResourceRenaming: types.optional(types.boolean()),
     resourceTitle: types.optional(types.string()),
+    agentSkillUrl: types.optional(types.string()),
     repl: types.optional(z.lazy(() => Repl$inboundSchema)),
     guides: types.optional(z.array(z.lazy(() => Guides$inboundSchema))),
     integration: z.lazy(() =>
@@ -13596,6 +13602,7 @@ export type Product$Outbound = {
   showSSOLinkOnProjectConnection?: boolean | undefined;
   disableResourceRenaming?: boolean | undefined;
   resourceTitle?: string | undefined;
+  agentSkillUrl?: string | undefined;
   repl?: Repl$Outbound | undefined;
   guides?: Array<Guides$Outbound> | undefined;
   integration: CreateIntegrationStoreDirectIntegration$Outbound;
@@ -13629,6 +13636,7 @@ export const Product$outboundSchema: z.ZodType<
   showSSOLinkOnProjectConnection: z.boolean().optional(),
   disableResourceRenaming: z.boolean().optional(),
   resourceTitle: z.string().optional(),
+  agentSkillUrl: z.string().optional(),
   repl: z.lazy(() => Repl$outboundSchema).optional(),
   guides: z.array(z.lazy(() => Guides$outboundSchema)).optional(),
   integration: z.lazy(() =>

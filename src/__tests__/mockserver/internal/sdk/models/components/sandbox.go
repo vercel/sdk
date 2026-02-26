@@ -5,6 +5,7 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"mockserver/internal/sdk/utils"
 )
 
 // SandboxStatus - The status of the sandbox.
@@ -89,6 +90,17 @@ type Sandbox struct {
 	UpdatedAt float64 `json:"updatedAt"`
 	// The network policy applied to this sandbox, if any.
 	NetworkPolicy *SandboxNetworkPolicy `json:"networkPolicy,omitempty"`
+}
+
+func (s Sandbox) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *Sandbox) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"id", "memory", "vcpus", "region", "runtime", "timeout", "status", "requestedAt", "cwd", "createdAt", "updatedAt"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Sandbox) GetID() string {

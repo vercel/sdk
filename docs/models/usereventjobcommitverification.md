@@ -13,5 +13,5 @@ let value: UserEventJobCommitVerification = "unverified";
 ## Values
 
 ```typescript
-"unknown" | "verified" | "unverified"
+"verified" | "unknown" | "unverified"
 ```

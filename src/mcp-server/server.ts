@@ -305,7 +305,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.19.7",
+    version: "1.19.8",
   });
 
   const client = new VercelCore({

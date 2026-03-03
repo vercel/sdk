@@ -11,7 +11,7 @@ let value: OneHundredAndFortyEight = {
   projectId: "<id>",
   projectName: "<value>",
   next: {
-    skewProtectionMaxAge: 2270.45,
+    skewProtectionBoundaryAt: 2270.45,
   },
   previous: {},
 };

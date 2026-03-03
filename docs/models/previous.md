@@ -9,7 +9,7 @@ import { Previous } from "@vercel/sdk/models/userevent.js";
 
 let value: Previous = {
   enabled: false,
-  scope: "all",
+  scope: "private",
   includeDrafts: false,
 };
 ```

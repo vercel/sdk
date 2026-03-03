@@ -33,6 +33,7 @@ const (
 	CreateWebhookEventRequestDeploymentReady                                    CreateWebhookEventRequest = "deployment.ready"
 	CreateWebhookEventRequestDeploymentCheckRerequested                         CreateWebhookEventRequest = "deployment.check-rerequested"
 	CreateWebhookEventRequestDeploymentPromoted                                 CreateWebhookEventRequest = "deployment.promoted"
+	CreateWebhookEventRequestDeploymentRollback                                 CreateWebhookEventRequest = "deployment.rollback"
 	CreateWebhookEventRequestDeploymentIntegrationActionStart                   CreateWebhookEventRequest = "deployment.integration.action.start"
 	CreateWebhookEventRequestDeploymentIntegrationActionCancel                  CreateWebhookEventRequest = "deployment.integration.action.cancel"
 	CreateWebhookEventRequestDeploymentIntegrationActionCleanup                 CreateWebhookEventRequest = "deployment.integration.action.cleanup"
@@ -96,14 +97,14 @@ const (
 	CreateWebhookEventRequestObservabilityErrorAnomaly                          CreateWebhookEventRequest = "observability.error-anomaly"
 	CreateWebhookEventRequestBotidAnomaly                                       CreateWebhookEventRequest = "botid.anomaly"
 	CreateWebhookEventRequestTestWebhook                                        CreateWebhookEventRequest = "test-webhook"
-	CreateWebhookEventRequestCommentCreated                                     CreateWebhookEventRequest = "comment.created"
-	CreateWebhookEventRequestCommentUpdated                                     CreateWebhookEventRequest = "comment.updated"
-	CreateWebhookEventRequestCommentDeleted                                     CreateWebhookEventRequest = "comment.deleted"
-	CreateWebhookEventRequestCommentResolved                                    CreateWebhookEventRequest = "comment.resolved"
-	CreateWebhookEventRequestCommentUnresolved                                  CreateWebhookEventRequest = "comment.unresolved"
-	CreateWebhookEventRequestCommentReactionAdded                               CreateWebhookEventRequest = "comment.reaction-added"
-	CreateWebhookEventRequestCommentReactionRemoved                             CreateWebhookEventRequest = "comment.reaction-removed"
-	CreateWebhookEventRequestCommentMentioned                                   CreateWebhookEventRequest = "comment.mentioned"
+	CreateWebhookEventRequestMessageCreated                                     CreateWebhookEventRequest = "message.created"
+	CreateWebhookEventRequestMessageUpdated                                     CreateWebhookEventRequest = "message.updated"
+	CreateWebhookEventRequestMessageDeleted                                     CreateWebhookEventRequest = "message.deleted"
+	CreateWebhookEventRequestThreadResolved                                     CreateWebhookEventRequest = "thread.resolved"
+	CreateWebhookEventRequestThreadUnresolved                                   CreateWebhookEventRequest = "thread.unresolved"
+	CreateWebhookEventRequestMessageReactionAdded                               CreateWebhookEventRequest = "message.reaction-added"
+	CreateWebhookEventRequestMessageReactionRemoved                             CreateWebhookEventRequest = "message.reaction-removed"
+	CreateWebhookEventRequestMessageMentioned                                   CreateWebhookEventRequest = "message.mentioned"
 )
 
 func (e CreateWebhookEventRequest) ToPointer() *CreateWebhookEventRequest {
@@ -158,6 +159,8 @@ func (e *CreateWebhookEventRequest) UnmarshalJSON(data []byte) error {
 	case "deployment.check-rerequested":
 		fallthrough
 	case "deployment.promoted":
+		fallthrough
+	case "deployment.rollback":
 		fallthrough
 	case "deployment.integration.action.start":
 		fallthrough
@@ -285,21 +288,21 @@ func (e *CreateWebhookEventRequest) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "test-webhook":
 		fallthrough
-	case "comment.created":
+	case "message.created":
 		fallthrough
-	case "comment.updated":
+	case "message.updated":
 		fallthrough
-	case "comment.deleted":
+	case "message.deleted":
 		fallthrough
-	case "comment.resolved":
+	case "thread.resolved":
 		fallthrough
-	case "comment.unresolved":
+	case "thread.unresolved":
 		fallthrough
-	case "comment.reaction-added":
+	case "message.reaction-added":
 		fallthrough
-	case "comment.reaction-removed":
+	case "message.reaction-removed":
 		fallthrough
-	case "comment.mentioned":
+	case "message.mentioned":
 		*e = CreateWebhookEventRequest(v)
 		return nil
 	default:
@@ -389,6 +392,7 @@ const (
 	CreateWebhookEventResponseDeploymentReady                                    CreateWebhookEventResponse = "deployment.ready"
 	CreateWebhookEventResponseDeploymentCheckRerequested                         CreateWebhookEventResponse = "deployment.check-rerequested"
 	CreateWebhookEventResponseDeploymentPromoted                                 CreateWebhookEventResponse = "deployment.promoted"
+	CreateWebhookEventResponseDeploymentRollback                                 CreateWebhookEventResponse = "deployment.rollback"
 	CreateWebhookEventResponseDeploymentIntegrationActionStart                   CreateWebhookEventResponse = "deployment.integration.action.start"
 	CreateWebhookEventResponseDeploymentIntegrationActionCancel                  CreateWebhookEventResponse = "deployment.integration.action.cancel"
 	CreateWebhookEventResponseDeploymentIntegrationActionCleanup                 CreateWebhookEventResponse = "deployment.integration.action.cleanup"
@@ -452,14 +456,14 @@ const (
 	CreateWebhookEventResponseObservabilityErrorAnomaly                          CreateWebhookEventResponse = "observability.error-anomaly"
 	CreateWebhookEventResponseBotidAnomaly                                       CreateWebhookEventResponse = "botid.anomaly"
 	CreateWebhookEventResponseTestWebhook                                        CreateWebhookEventResponse = "test-webhook"
-	CreateWebhookEventResponseCommentCreated                                     CreateWebhookEventResponse = "comment.created"
-	CreateWebhookEventResponseCommentUpdated                                     CreateWebhookEventResponse = "comment.updated"
-	CreateWebhookEventResponseCommentDeleted                                     CreateWebhookEventResponse = "comment.deleted"
-	CreateWebhookEventResponseCommentResolved                                    CreateWebhookEventResponse = "comment.resolved"
-	CreateWebhookEventResponseCommentUnresolved                                  CreateWebhookEventResponse = "comment.unresolved"
-	CreateWebhookEventResponseCommentReactionAdded                               CreateWebhookEventResponse = "comment.reaction-added"
-	CreateWebhookEventResponseCommentReactionRemoved                             CreateWebhookEventResponse = "comment.reaction-removed"
-	CreateWebhookEventResponseCommentMentioned                                   CreateWebhookEventResponse = "comment.mentioned"
+	CreateWebhookEventResponseMessageCreated                                     CreateWebhookEventResponse = "message.created"
+	CreateWebhookEventResponseMessageUpdated                                     CreateWebhookEventResponse = "message.updated"
+	CreateWebhookEventResponseMessageDeleted                                     CreateWebhookEventResponse = "message.deleted"
+	CreateWebhookEventResponseThreadResolved                                     CreateWebhookEventResponse = "thread.resolved"
+	CreateWebhookEventResponseThreadUnresolved                                   CreateWebhookEventResponse = "thread.unresolved"
+	CreateWebhookEventResponseMessageReactionAdded                               CreateWebhookEventResponse = "message.reaction-added"
+	CreateWebhookEventResponseMessageReactionRemoved                             CreateWebhookEventResponse = "message.reaction-removed"
+	CreateWebhookEventResponseMessageMentioned                                   CreateWebhookEventResponse = "message.mentioned"
 )
 
 func (e CreateWebhookEventResponse) ToPointer() *CreateWebhookEventResponse {
@@ -514,6 +518,8 @@ func (e *CreateWebhookEventResponse) UnmarshalJSON(data []byte) error {
 	case "deployment.check-rerequested":
 		fallthrough
 	case "deployment.promoted":
+		fallthrough
+	case "deployment.rollback":
 		fallthrough
 	case "deployment.integration.action.start":
 		fallthrough
@@ -641,21 +647,21 @@ func (e *CreateWebhookEventResponse) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "test-webhook":
 		fallthrough
-	case "comment.created":
+	case "message.created":
 		fallthrough
-	case "comment.updated":
+	case "message.updated":
 		fallthrough
-	case "comment.deleted":
+	case "message.deleted":
 		fallthrough
-	case "comment.resolved":
+	case "thread.resolved":
 		fallthrough
-	case "comment.unresolved":
+	case "thread.unresolved":
 		fallthrough
-	case "comment.reaction-added":
+	case "message.reaction-added":
 		fallthrough
-	case "comment.reaction-removed":
+	case "message.reaction-removed":
 		fallthrough
-	case "comment.mentioned":
+	case "message.mentioned":
 		*e = CreateWebhookEventResponse(v)
 		return nil
 	default:

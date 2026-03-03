@@ -63,6 +63,7 @@ const (
 	GetWebhookEventDeploymentReady                                    GetWebhookEvent = "deployment.ready"
 	GetWebhookEventDeploymentCheckRerequested                         GetWebhookEvent = "deployment.check-rerequested"
 	GetWebhookEventDeploymentPromoted                                 GetWebhookEvent = "deployment.promoted"
+	GetWebhookEventDeploymentRollback                                 GetWebhookEvent = "deployment.rollback"
 	GetWebhookEventDeploymentIntegrationActionStart                   GetWebhookEvent = "deployment.integration.action.start"
 	GetWebhookEventDeploymentIntegrationActionCancel                  GetWebhookEvent = "deployment.integration.action.cancel"
 	GetWebhookEventDeploymentIntegrationActionCleanup                 GetWebhookEvent = "deployment.integration.action.cleanup"
@@ -126,14 +127,14 @@ const (
 	GetWebhookEventObservabilityErrorAnomaly                          GetWebhookEvent = "observability.error-anomaly"
 	GetWebhookEventBotidAnomaly                                       GetWebhookEvent = "botid.anomaly"
 	GetWebhookEventTestWebhook                                        GetWebhookEvent = "test-webhook"
-	GetWebhookEventCommentCreated                                     GetWebhookEvent = "comment.created"
-	GetWebhookEventCommentUpdated                                     GetWebhookEvent = "comment.updated"
-	GetWebhookEventCommentDeleted                                     GetWebhookEvent = "comment.deleted"
-	GetWebhookEventCommentResolved                                    GetWebhookEvent = "comment.resolved"
-	GetWebhookEventCommentUnresolved                                  GetWebhookEvent = "comment.unresolved"
-	GetWebhookEventCommentReactionAdded                               GetWebhookEvent = "comment.reaction-added"
-	GetWebhookEventCommentReactionRemoved                             GetWebhookEvent = "comment.reaction-removed"
-	GetWebhookEventCommentMentioned                                   GetWebhookEvent = "comment.mentioned"
+	GetWebhookEventMessageCreated                                     GetWebhookEvent = "message.created"
+	GetWebhookEventMessageUpdated                                     GetWebhookEvent = "message.updated"
+	GetWebhookEventMessageDeleted                                     GetWebhookEvent = "message.deleted"
+	GetWebhookEventThreadResolved                                     GetWebhookEvent = "thread.resolved"
+	GetWebhookEventThreadUnresolved                                   GetWebhookEvent = "thread.unresolved"
+	GetWebhookEventMessageReactionAdded                               GetWebhookEvent = "message.reaction-added"
+	GetWebhookEventMessageReactionRemoved                             GetWebhookEvent = "message.reaction-removed"
+	GetWebhookEventMessageMentioned                                   GetWebhookEvent = "message.mentioned"
 )
 
 func (e GetWebhookEvent) ToPointer() *GetWebhookEvent {
@@ -188,6 +189,8 @@ func (e *GetWebhookEvent) UnmarshalJSON(data []byte) error {
 	case "deployment.check-rerequested":
 		fallthrough
 	case "deployment.promoted":
+		fallthrough
+	case "deployment.rollback":
 		fallthrough
 	case "deployment.integration.action.start":
 		fallthrough
@@ -315,21 +318,21 @@ func (e *GetWebhookEvent) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "test-webhook":
 		fallthrough
-	case "comment.created":
+	case "message.created":
 		fallthrough
-	case "comment.updated":
+	case "message.updated":
 		fallthrough
-	case "comment.deleted":
+	case "message.deleted":
 		fallthrough
-	case "comment.resolved":
+	case "thread.resolved":
 		fallthrough
-	case "comment.unresolved":
+	case "thread.unresolved":
 		fallthrough
-	case "comment.reaction-added":
+	case "message.reaction-added":
 		fallthrough
-	case "comment.reaction-removed":
+	case "message.reaction-removed":
 		fallthrough
-	case "comment.mentioned":
+	case "message.mentioned":
 		*e = GetWebhookEvent(v)
 		return nil
 	default:

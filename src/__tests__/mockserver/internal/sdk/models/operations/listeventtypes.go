@@ -32,7 +32,12 @@ func (o *ListEventTypesRequest) GetSlug() *string {
 type Name string
 
 const (
+	NameTeam                                            Name = "team"
+	NameAvatar                                          Name = "avatar"
+	NameAlias                                           Name = "alias"
+	NamePlan                                            Name = "plan"
 	NameFlag                                            Name = "flag"
+	NameDeployment                                      Name = "deployment"
 	NameFlagsSegment                                    Name = "flags-segment"
 	NameFlagsSettings                                   Name = "flags-settings"
 	NameProjectRollingReleaseEnabled                    Name = "project-rolling-release-enabled"
@@ -76,7 +81,6 @@ const (
 	NameStorageResourceReplCommand                      Name = "storage-resource-repl-command"
 	NameStorageDisconnectProjects                       Name = "storage-disconnect-projects"
 	NameStorageAccessTokenSet                           Name = "storage-access-token-set"
-	NameTeam                                            Name = "team"
 	NameTeamAvatarUpdate                                Name = "team-avatar-update"
 	NameTeamDelete                                      Name = "team-delete"
 	NameTeamInviteBulkDelete                            Name = "team-invite-bulk-delete"
@@ -214,12 +218,12 @@ const (
 	NameWorkflowDeploymentKeyAccessed                   Name = "workflow-deployment-key-accessed"
 	NameAccessGroupCreated                              Name = "access-group-created"
 	NameAccessGroupDeleted                              Name = "access-group-deleted"
+	NameAccessGroupUpdated                              Name = "access-group-updated"
 	NameAccessGroupUserAdded                            Name = "access-group-user-added"
 	NameAccessGroupUserRemoved                          Name = "access-group-user-removed"
 	NameAccessGroupProjectUpdated                       Name = "access-group-project-updated"
 	NameAiCodeReview                                    Name = "ai-code-review"
 	NameAiAlertInvestigation                            Name = "ai-alert-investigation"
-	NameAlias                                           Name = "alias"
 	NameAliasProtectionBypassCreated                    Name = "alias-protection-bypass-created"
 	NameAliasProtectionBypassRegenerated                Name = "alias-protection-bypass-regenerated"
 	NameAliasProtectionBypassRevoked                    Name = "alias-protection-bypass-revoked"
@@ -235,7 +239,6 @@ const (
 	NameAliasDelete                                     Name = "alias-delete"
 	NameAliasSystem                                     Name = "alias-system"
 	NameAutoExposeSystemEnvs                            Name = "auto-expose-system-envs"
-	NameAvatar                                          Name = "avatar"
 	NameBulkRedirectsSettingsUpdated                    Name = "bulk-redirects-settings-updated"
 	NameBulkRedirectsVersionPromoted                    Name = "bulk-redirects-version-promoted"
 	NameBulkRedirectsVersionRestored                    Name = "bulk-redirects-version-restored"
@@ -280,7 +283,6 @@ const (
 	NameDeployHookDeleted                               Name = "deploy-hook-deleted"
 	NameDeployHookDeduped                               Name = "deploy-hook-deduped"
 	NameDeployHookProcessed                             Name = "deploy-hook-processed"
-	NameDeployment                                      Name = "deployment"
 	NameDeploymentChown                                 Name = "deployment-chown"
 	NameDeploymentDelete                                Name = "deployment-delete"
 	NameDNSAdd                                          Name = "dns-add"
@@ -358,7 +360,6 @@ const (
 	NameObservabilityEnabled                            Name = "observability-enabled"
 	NameObservabilityPlusProjectEnabled                 Name = "observability-plus-project-enabled"
 	NameObservabilityPlusProjectDisabled                Name = "observability-plus-project-disabled"
-	NamePlan                                            Name = "plan"
 	NameProductionBranchUpdated                         Name = "production-branch-updated"
 	NameProjectAnalyticsDisabled                        Name = "project-analytics-disabled"
 	NameProjectAnalyticsEnabled                         Name = "project-analytics-enabled"
@@ -434,7 +435,17 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "team":
+		fallthrough
+	case "avatar":
+		fallthrough
+	case "alias":
+		fallthrough
+	case "plan":
+		fallthrough
 	case "flag":
+		fallthrough
+	case "deployment":
 		fallthrough
 	case "flags-segment":
 		fallthrough
@@ -521,8 +532,6 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 	case "storage-disconnect-projects":
 		fallthrough
 	case "storage-access-token-set":
-		fallthrough
-	case "team":
 		fallthrough
 	case "team-avatar-update":
 		fallthrough
@@ -798,6 +807,8 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "access-group-deleted":
 		fallthrough
+	case "access-group-updated":
+		fallthrough
 	case "access-group-user-added":
 		fallthrough
 	case "access-group-user-removed":
@@ -807,8 +818,6 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 	case "ai-code-review":
 		fallthrough
 	case "ai-alert-investigation":
-		fallthrough
-	case "alias":
 		fallthrough
 	case "alias-protection-bypass-created":
 		fallthrough
@@ -839,8 +848,6 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 	case "alias-system":
 		fallthrough
 	case "auto-expose-system-envs":
-		fallthrough
-	case "avatar":
 		fallthrough
 	case "bulk-redirects-settings-updated":
 		fallthrough
@@ -929,8 +936,6 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 	case "deploy-hook-deduped":
 		fallthrough
 	case "deploy-hook-processed":
-		fallthrough
-	case "deployment":
 		fallthrough
 	case "deployment-chown":
 		fallthrough
@@ -1085,8 +1090,6 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 	case "observability-plus-project-enabled":
 		fallthrough
 	case "observability-plus-project-disabled":
-		fallthrough
-	case "plan":
 		fallthrough
 	case "production-branch-updated":
 		fallthrough

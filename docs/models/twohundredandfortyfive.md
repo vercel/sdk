@@ -7,17 +7,12 @@ The payload of the event, if requested.
 ```typescript
 import { TwoHundredAndFortyFive } from "@vercel/sdk/models/userevent.js";
 
-let value: TwoHundredAndFortyFive = {
-  domain: "sour-compromise.org",
-  ips: [
-    "<value 1>",
-  ],
-};
+let value: TwoHundredAndFortyFive = {};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `ips`              | *string*[]         | :heavy_check_mark: | N/A                |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `previous`                                           | Record<string, *models.UserEventPayload245Previous*> | :heavy_minus_sign:                                   | N/A                                                  |
+| `next`                                               | Record<string, *models.UserEventPayload245Next*>     | :heavy_minus_sign:                                   | N/A                                                  |

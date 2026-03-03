@@ -9,12 +9,15 @@ import { OneHundredAndTwentySeven } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndTwentySeven = {
   projectId: "<id>",
+  projectName: "<value>",
+  previewDeploymentSuffix: null,
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `projectId`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `reasonCode`                                               | [models.PayloadReasonCode](../models/payloadreasoncode.md) | :heavy_minus_sign:                                         | N/A                                                        |
+| Field                     | Type                      | Required                  | Description               |
+| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
+| `projectId`               | *string*                  | :heavy_check_mark:        | N/A                       |
+| `projectName`             | *string*                  | :heavy_check_mark:        | N/A                       |
+| `previewDeploymentSuffix` | *string*                  | :heavy_check_mark:        | N/A                       |

@@ -1,23 +1,33 @@
 # Postgres
 
-## Example Usage
+
+## Supported Types
+
+### `models.Postgres1`
 
 ```typescript
-import { Postgres } from "@vercel/sdk/models/userevent.js";
-
-let value: Postgres = {
-  updatedAt: 9995.65,
-  blockReason: "admin_override",
-  overageReason: "fluidDuration",
+const value: models.Postgres1 = {
+  updatedAt: 1277.44,
+  blockReason: "limits_exceeded",
+  overageReason: "edgeConfigWrite",
 };
 ```
 
-## Fields
+### `models.Postgres2`
 
-| Field                                                                                                                                        | Type                                                                                                                                         | Required                                                                                                                                     | Description                                                                                                                                  |
-| -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `updatedAt`                                                                                                                                  | *number*                                                                                                                                     | :heavy_check_mark:                                                                                                                           | N/A                                                                                                                                          |
-| `blockedFrom`                                                                                                                                | *number*                                                                                                                                     | :heavy_minus_sign:                                                                                                                           | N/A                                                                                                                                          |
-| `blockedUntil`                                                                                                                               | *number*                                                                                                                                     | :heavy_minus_sign:                                                                                                                           | N/A                                                                                                                                          |
-| `blockReason`                                                                                                                                | [models.UserEventPayload85NewOwnerFeatureBlocksPostgresBlockReason](../models/usereventpayload85newownerfeatureblockspostgresblockreason.md) | :heavy_check_mark:                                                                                                                           | N/A                                                                                                                                          |
-| `overageReason`                                                                                                                              | [models.PayloadOverageReason](../models/payloadoveragereason.md)                                                                             | :heavy_check_mark:                                                                                                                           | N/A                                                                                                                                          |
+```typescript
+const value: models.Postgres2 = {
+  updatedAt: 7203.88,
+  blockReason: "admin_override",
+};
+```
+
+### `models.Postgres2`
+
+```typescript
+const value: models.Postgres2 = {
+  updatedAt: 7203.88,
+  blockReason: "admin_override",
+};
+```
+

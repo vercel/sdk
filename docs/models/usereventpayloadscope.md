@@ -13,5 +13,5 @@ let value: UserEventPayloadScope = "public";
 ## Values
 
 ```typescript
-"public" | "all" | "private" | "selected_repos"
+"public" | "private" | "all" | "selected_repos"
 ```

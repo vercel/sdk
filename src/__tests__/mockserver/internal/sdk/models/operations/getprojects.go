@@ -6117,6 +6117,7 @@ type GetProjectsPermissions struct {
 	IntegrationResourceReplCommand           []components.ACLAction `json:"integrationResourceReplCommand,omitempty"`
 	IntegrationResourceSecrets               []components.ACLAction `json:"integrationResourceSecrets,omitempty"`
 	IntegrationSSOSession                    []components.ACLAction `json:"integrationSSOSession,omitempty"`
+	IntegrationStrict                        []components.ACLAction `json:"integrationStrict,omitempty"`
 	IntegrationStoreTokenSet                 []components.ACLAction `json:"integrationStoreTokenSet,omitempty"`
 	IntegrationVercelConfigurationOverride   []components.ACLAction `json:"integrationVercelConfigurationOverride,omitempty"`
 	IntegrationPullRequest                   []components.ACLAction `json:"integrationPullRequest,omitempty"`
@@ -6160,6 +6161,7 @@ type GetProjectsPermissions struct {
 	Postgres                                 []components.ACLAction `json:"postgres,omitempty"`
 	PostgresStoreTokenSet                    []components.ACLAction `json:"postgresStoreTokenSet,omitempty"`
 	PreviewDeploymentSuffix                  []components.ACLAction `json:"previewDeploymentSuffix,omitempty"`
+	PrivateCloudAccount                      []components.ACLAction `json:"privateCloudAccount,omitempty"`
 	ProjectTransferIn                        []components.ACLAction `json:"projectTransferIn,omitempty"`
 	ProTrialOnboarding                       []components.ACLAction `json:"proTrialOnboarding,omitempty"`
 	RateLimit                                []components.ACLAction `json:"rateLimit,omitempty"`
@@ -6239,6 +6241,7 @@ type GetProjectsPermissions struct {
 	ProjectDomain                            []components.ACLAction `json:"projectDomain,omitempty"`
 	ProjectDomainCheckConfig                 []components.ACLAction `json:"projectDomainCheckConfig,omitempty"`
 	ProjectDomainMove                        []components.ACLAction `json:"projectDomainMove,omitempty"`
+	ProjectEvent                             []components.ACLAction `json:"projectEvent,omitempty"`
 	ProjectEnvVars                           []components.ACLAction `json:"projectEnvVars,omitempty"`
 	ProjectEnvVarsProduction                 []components.ACLAction `json:"projectEnvVarsProduction,omitempty"`
 	ProjectEnvVarsUnownedByIntegration       []components.ACLAction `json:"projectEnvVarsUnownedByIntegration,omitempty"`
@@ -6793,6 +6796,13 @@ func (o *GetProjectsPermissions) GetIntegrationSSOSession() []components.ACLActi
 	return o.IntegrationSSOSession
 }
 
+func (o *GetProjectsPermissions) GetIntegrationStrict() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.IntegrationStrict
+}
+
 func (o *GetProjectsPermissions) GetIntegrationStoreTokenSet() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -7092,6 +7102,13 @@ func (o *GetProjectsPermissions) GetPreviewDeploymentSuffix() []components.ACLAc
 		return nil
 	}
 	return o.PreviewDeploymentSuffix
+}
+
+func (o *GetProjectsPermissions) GetPrivateCloudAccount() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.PrivateCloudAccount
 }
 
 func (o *GetProjectsPermissions) GetProjectTransferIn() []components.ACLAction {
@@ -7645,6 +7662,13 @@ func (o *GetProjectsPermissions) GetProjectDomainMove() []components.ACLAction {
 		return nil
 	}
 	return o.ProjectDomainMove
+}
+
+func (o *GetProjectsPermissions) GetProjectEvent() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectEvent
 }
 
 func (o *GetProjectsPermissions) GetProjectEnvVars() []components.ACLAction {
@@ -9117,6 +9141,71 @@ func (e *ProjectTier2) UnmarshalJSON(data []byte) error {
 	default:
 		return fmt.Errorf("invalid value for ProjectTier2: %v", v)
 	}
+}
+
+// GetProjectsKind - Billing mode. Always 'flat' for flat-rate projects.
+type GetProjectsKind string
+
+const (
+	GetProjectsKindFlat GetProjectsKind = "flat"
+)
+
+func (e GetProjectsKind) ToPointer() *GetProjectsKind {
+	return &e
+}
+func (e *GetProjectsKind) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "flat":
+		*e = GetProjectsKind(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetProjectsKind: %v", v)
+	}
+}
+
+type GetProjectsUsageStatus struct {
+	// Billing mode. Always 'flat' for flat-rate projects.
+	Kind GetProjectsKind `json:"kind"`
+	// Timestamp until which the project has exceeded its CDN allowance.
+	ExceededAllowanceUntil *float64 `json:"exceededAllowanceUntil,omitempty"`
+	// Timestamp until which throttling is bypassed (project pays list rates for overage).
+	BypassThrottleUntil *float64 `json:"bypassThrottleUntil,omitempty"`
+}
+
+func (g GetProjectsUsageStatus) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectsUsageStatus) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"kind"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetProjectsUsageStatus) GetKind() GetProjectsKind {
+	if o == nil {
+		return GetProjectsKind("")
+	}
+	return o.Kind
+}
+
+func (o *GetProjectsUsageStatus) GetExceededAllowanceUntil() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.ExceededAllowanceUntil
+}
+
+func (o *GetProjectsUsageStatus) GetBypassThrottleUntil() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BypassThrottleUntil
 }
 
 type GetProjectsFeatures struct {
@@ -11712,6 +11801,7 @@ type GetProjectsProject2 struct {
 	Security                             *ProjectSecurity2                           `json:"security,omitempty"`
 	OidcTokenConfig                      *ProjectOidcTokenConfig2                    `json:"oidcTokenConfig,omitempty"`
 	Tier                                 *ProjectTier2                               `json:"tier,omitempty"`
+	UsageStatus                          *GetProjectsUsageStatus                     `json:"usageStatus,omitempty"`
 	Features                             *GetProjectsFeatures                        `json:"features,omitempty"`
 	V0                                   *bool                                       `json:"v0,omitempty"`
 	Abuse                                *ProjectAbuse2                              `json:"abuse,omitempty"`
@@ -12290,6 +12380,13 @@ func (o *GetProjectsProject2) GetTier() *ProjectTier2 {
 		return nil
 	}
 	return o.Tier
+}
+
+func (o *GetProjectsProject2) GetUsageStatus() *GetProjectsUsageStatus {
+	if o == nil {
+		return nil
+	}
+	return o.UsageStatus
 }
 
 func (o *GetProjectsProject2) GetFeatures() *GetProjectsFeatures {
@@ -18910,6 +19007,7 @@ type ProjectSecurity1 struct {
 	FirewallBypassIps      []string               `json:"firewallBypassIps,omitempty"`
 	ManagedRules           *ProjectManagedRules1  `json:"managedRules,omitempty"`
 	BotIDEnabled           *bool                  `json:"botIdEnabled,omitempty"`
+	RequestLogsKey         []string               `json:"requestLogsKey,omitempty"`
 }
 
 func (p ProjectSecurity1) MarshalJSON() ([]byte, error) {
@@ -19012,6 +19110,13 @@ func (o *ProjectSecurity1) GetBotIDEnabled() *bool {
 		return nil
 	}
 	return o.BotIDEnabled
+}
+
+func (o *ProjectSecurity1) GetRequestLogsKey() []string {
+	if o == nil {
+		return nil
+	}
+	return o.RequestLogsKey
 }
 
 // ProjectIssuerMode1 - - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
@@ -28256,6 +28361,7 @@ type GetProjectsSecurity struct {
 	FirewallBypassIps      []string                 `json:"firewallBypassIps,omitempty"`
 	ManagedRules           *GetProjectsManagedRules `json:"managedRules,omitempty"`
 	BotIDEnabled           *bool                    `json:"botIdEnabled,omitempty"`
+	RequestLogsKey         []string                 `json:"requestLogsKey,omitempty"`
 }
 
 func (g GetProjectsSecurity) MarshalJSON() ([]byte, error) {
@@ -28358,6 +28464,13 @@ func (o *GetProjectsSecurity) GetBotIDEnabled() *bool {
 		return nil
 	}
 	return o.BotIDEnabled
+}
+
+func (o *GetProjectsSecurity) GetRequestLogsKey() []string {
+	if o == nil {
+		return nil
+	}
+	return o.RequestLogsKey
 }
 
 // GetProjectsIssuerMode - - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`

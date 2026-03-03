@@ -36,6 +36,7 @@ export type UpdateProjectCheckRequestBody = {
   targets?: Array<string> | undefined;
   blocks?: UpdateProjectCheckBlocks | undefined;
   timeout?: number | undefined;
+  disabledAt?: number | null | undefined;
 };
 
 export type UpdateProjectCheckRequest = {
@@ -60,6 +61,10 @@ export const UpdateProjectCheckChecksV2Requires = {
 export type UpdateProjectCheckChecksV2Requires = ClosedEnum<
   typeof UpdateProjectCheckChecksV2Requires
 >;
+
+export type UpdateProjectCheckSource4 = {
+  kind: "vercel";
+};
 
 export const UpdateProjectCheckSourceProvider = {
   Github: "github",
@@ -92,7 +97,8 @@ export type UpdateProjectCheckSource1 = {
 export type UpdateProjectCheckSource =
   | UpdateProjectCheckSource1
   | UpdateProjectCheckSource2
-  | UpdateProjectCheckSource3;
+  | UpdateProjectCheckSource3
+  | UpdateProjectCheckSource4;
 
 export const UpdateProjectCheckChecksV2Blocks = {
   None: "none",
@@ -109,6 +115,7 @@ export const UpdateProjectCheckSourceKind = {
   Integration: "integration",
   Webhook: "webhook",
   GitProvider: "git-provider",
+  Vercel: "vercel",
 } as const;
 export type UpdateProjectCheckSourceKind = ClosedEnum<
   typeof UpdateProjectCheckSourceKind
@@ -124,7 +131,8 @@ export type UpdateProjectCheckResponseBody = {
   source:
     | UpdateProjectCheckSource1
     | UpdateProjectCheckSource2
-    | UpdateProjectCheckSource3;
+    | UpdateProjectCheckSource3
+    | UpdateProjectCheckSource4;
   blocks: UpdateProjectCheckChecksV2Blocks;
   targets: Array<string>;
   sourceKind: UpdateProjectCheckSourceKind;
@@ -132,6 +140,7 @@ export type UpdateProjectCheckResponseBody = {
   timeout: number;
   createdAt: number;
   updatedAt: number;
+  disabledAt?: number | undefined;
   deletedAt?: number | undefined;
 };
 
@@ -165,6 +174,7 @@ export const UpdateProjectCheckRequestBody$inboundSchema: z.ZodType<
   targets: types.optional(z.array(types.string())),
   blocks: UpdateProjectCheckBlocks$inboundSchema.default("deployment-alias"),
   timeout: types.number().default(300),
+  disabledAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type UpdateProjectCheckRequestBody$Outbound = {
@@ -174,6 +184,7 @@ export type UpdateProjectCheckRequestBody$Outbound = {
   targets?: Array<string> | undefined;
   blocks: string;
   timeout: number;
+  disabledAt?: number | null | undefined;
 };
 
 /** @internal */
@@ -188,6 +199,7 @@ export const UpdateProjectCheckRequestBody$outboundSchema: z.ZodType<
   targets: z.array(z.string()).optional(),
   blocks: UpdateProjectCheckBlocks$outboundSchema.default("deployment-alias"),
   timeout: z.number().default(300),
+  disabledAt: z.nullable(z.number()).optional(),
 });
 
 export function updateProjectCheckRequestBodyToJSON(
@@ -279,6 +291,45 @@ export const UpdateProjectCheckChecksV2Requires$inboundSchema: z.ZodNativeEnum<
 export const UpdateProjectCheckChecksV2Requires$outboundSchema: z.ZodNativeEnum<
   typeof UpdateProjectCheckChecksV2Requires
 > = UpdateProjectCheckChecksV2Requires$inboundSchema;
+
+/** @internal */
+export const UpdateProjectCheckSource4$inboundSchema: z.ZodType<
+  UpdateProjectCheckSource4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  kind: types.literal("vercel"),
+});
+/** @internal */
+export type UpdateProjectCheckSource4$Outbound = {
+  kind: "vercel";
+};
+
+/** @internal */
+export const UpdateProjectCheckSource4$outboundSchema: z.ZodType<
+  UpdateProjectCheckSource4$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectCheckSource4
+> = z.object({
+  kind: z.literal("vercel"),
+});
+
+export function updateProjectCheckSource4ToJSON(
+  updateProjectCheckSource4: UpdateProjectCheckSource4,
+): string {
+  return JSON.stringify(
+    UpdateProjectCheckSource4$outboundSchema.parse(updateProjectCheckSource4),
+  );
+}
+export function updateProjectCheckSource4FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectCheckSource4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectCheckSource4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectCheckSource4' from JSON`,
+  );
+}
 
 /** @internal */
 export const UpdateProjectCheckSourceProvider$inboundSchema: z.ZodNativeEnum<
@@ -436,12 +487,14 @@ export const UpdateProjectCheckSource$inboundSchema: z.ZodType<
   z.lazy(() => UpdateProjectCheckSource1$inboundSchema),
   z.lazy(() => UpdateProjectCheckSource2$inboundSchema),
   z.lazy(() => UpdateProjectCheckSource3$inboundSchema),
+  z.lazy(() => UpdateProjectCheckSource4$inboundSchema),
 ]);
 /** @internal */
 export type UpdateProjectCheckSource$Outbound =
   | UpdateProjectCheckSource1$Outbound
   | UpdateProjectCheckSource2$Outbound
-  | UpdateProjectCheckSource3$Outbound;
+  | UpdateProjectCheckSource3$Outbound
+  | UpdateProjectCheckSource4$Outbound;
 
 /** @internal */
 export const UpdateProjectCheckSource$outboundSchema: z.ZodType<
@@ -452,6 +505,7 @@ export const UpdateProjectCheckSource$outboundSchema: z.ZodType<
   z.lazy(() => UpdateProjectCheckSource1$outboundSchema),
   z.lazy(() => UpdateProjectCheckSource2$outboundSchema),
   z.lazy(() => UpdateProjectCheckSource3$outboundSchema),
+  z.lazy(() => UpdateProjectCheckSource4$outboundSchema),
 ]);
 
 export function updateProjectCheckSourceToJSON(
@@ -505,6 +559,7 @@ export const UpdateProjectCheckResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => UpdateProjectCheckSource1$inboundSchema),
     z.lazy(() => UpdateProjectCheckSource2$inboundSchema),
     z.lazy(() => UpdateProjectCheckSource3$inboundSchema),
+    z.lazy(() => UpdateProjectCheckSource4$inboundSchema),
   ]),
   blocks: UpdateProjectCheckChecksV2Blocks$inboundSchema,
   targets: z.array(types.string()),
@@ -513,6 +568,7 @@ export const UpdateProjectCheckResponseBody$inboundSchema: z.ZodType<
   timeout: types.number(),
   createdAt: types.number(),
   updatedAt: types.number(),
+  disabledAt: types.optional(types.number()),
   deletedAt: types.optional(types.number()),
 });
 /** @internal */
@@ -526,7 +582,8 @@ export type UpdateProjectCheckResponseBody$Outbound = {
   source:
     | UpdateProjectCheckSource1$Outbound
     | UpdateProjectCheckSource2$Outbound
-    | UpdateProjectCheckSource3$Outbound;
+    | UpdateProjectCheckSource3$Outbound
+    | UpdateProjectCheckSource4$Outbound;
   blocks: string;
   targets: Array<string>;
   sourceKind: string;
@@ -534,6 +591,7 @@ export type UpdateProjectCheckResponseBody$Outbound = {
   timeout: number;
   createdAt: number;
   updatedAt: number;
+  disabledAt?: number | undefined;
   deletedAt?: number | undefined;
 };
 
@@ -553,6 +611,7 @@ export const UpdateProjectCheckResponseBody$outboundSchema: z.ZodType<
     z.lazy(() => UpdateProjectCheckSource1$outboundSchema),
     z.lazy(() => UpdateProjectCheckSource2$outboundSchema),
     z.lazy(() => UpdateProjectCheckSource3$outboundSchema),
+    z.lazy(() => UpdateProjectCheckSource4$outboundSchema),
   ]),
   blocks: UpdateProjectCheckChecksV2Blocks$outboundSchema,
   targets: z.array(z.string()),
@@ -561,6 +620,7 @@ export const UpdateProjectCheckResponseBody$outboundSchema: z.ZodType<
   timeout: z.number(),
   createdAt: z.number(),
   updatedAt: z.number(),
+  disabledAt: z.number().optional(),
   deletedAt: z.number().optional(),
 });
 

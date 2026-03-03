@@ -524,7 +524,7 @@ export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
     typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody24Type
   >;
 
-export type GetDeploymentGitSourceDeployments4 = {
+export type GetDeploymentGitSource4 = {
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody24Type;
   host: string;
@@ -598,7 +598,7 @@ export type GetDeploymentGitSource1 = {
 export type ResponseBodyGitSource =
   | GetDeploymentGitSourceDeployments12
   | GetDeploymentGitSourceDeployments15
-  | GetDeploymentGitSourceDeployments4
+  | GetDeploymentGitSource4
   | GetDeploymentGitSourceDeployments10
   | GetDeploymentGitSourceDeployments11
   | GetDeploymentGitSourceDeployments13
@@ -830,7 +830,7 @@ export type GetDeploymentResponseBody2 = {
   gitSource?:
     | GetDeploymentGitSourceDeployments12
     | GetDeploymentGitSourceDeployments15
-    | GetDeploymentGitSourceDeployments4
+    | GetDeploymentGitSource4
     | GetDeploymentGitSourceDeployments10
     | GetDeploymentGitSourceDeployments11
     | GetDeploymentGitSourceDeployments13
@@ -1591,7 +1591,7 @@ export type GetDeploymentGitSourceDeploymentsResponseType = ClosedEnum<
   typeof GetDeploymentGitSourceDeploymentsResponseType
 >;
 
-export type GetDeploymentGitSource4 = {
+export type GetDeploymentGitSourceDeployments4 = {
   type: GetDeploymentGitSourceDeploymentsResponseType;
   host: string;
   org: string;
@@ -1662,7 +1662,7 @@ export type GetDeploymentGitSourceDeployments1 = {
 export type GetDeploymentResponseBodyGitSource =
   | GetDeploymentGitSource12
   | GetDeploymentGitSource15
-  | GetDeploymentGitSource4
+  | GetDeploymentGitSourceDeployments4
   | GetDeploymentGitSource10
   | GetDeploymentGitSource11
   | GetDeploymentGitSource13
@@ -2552,6 +2552,10 @@ export type ResponseBodySeatBlock = {
    * The blocked vercel user ID.
    */
   userId?: string | undefined;
+  /**
+   * Determines if the user was verified during the block. In the git integration case, the commit sender was the author.
+   */
+  isVerified?: boolean | undefined;
 };
 
 /**
@@ -2668,7 +2672,7 @@ export type GetDeploymentResponseBody1 = {
   gitSource?:
     | GetDeploymentGitSource12
     | GetDeploymentGitSource15
-    | GetDeploymentGitSource4
+    | GetDeploymentGitSourceDeployments4
     | GetDeploymentGitSource10
     | GetDeploymentGitSource11
     | GetDeploymentGitSource13
@@ -4467,8 +4471,8 @@ export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponse
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody24Type$inboundSchema;
 
 /** @internal */
-export const GetDeploymentGitSourceDeployments4$inboundSchema: z.ZodType<
-  GetDeploymentGitSourceDeployments4,
+export const GetDeploymentGitSource4$inboundSchema: z.ZodType<
+  GetDeploymentGitSource4,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -4482,7 +4486,7 @@ export const GetDeploymentGitSourceDeployments4$inboundSchema: z.ZodType<
   prId: z.nullable(types.number()).optional(),
 });
 /** @internal */
-export type GetDeploymentGitSourceDeployments4$Outbound = {
+export type GetDeploymentGitSource4$Outbound = {
   type: string;
   host: string;
   org: string;
@@ -4493,10 +4497,10 @@ export type GetDeploymentGitSourceDeployments4$Outbound = {
 };
 
 /** @internal */
-export const GetDeploymentGitSourceDeployments4$outboundSchema: z.ZodType<
-  GetDeploymentGitSourceDeployments4$Outbound,
+export const GetDeploymentGitSource4$outboundSchema: z.ZodType<
+  GetDeploymentGitSource4$Outbound,
   z.ZodTypeDef,
-  GetDeploymentGitSourceDeployments4
+  GetDeploymentGitSource4
 > = z.object({
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody24Type$outboundSchema,
@@ -4508,23 +4512,20 @@ export const GetDeploymentGitSourceDeployments4$outboundSchema: z.ZodType<
   prId: z.nullable(z.number()).optional(),
 });
 
-export function getDeploymentGitSourceDeployments4ToJSON(
-  getDeploymentGitSourceDeployments4: GetDeploymentGitSourceDeployments4,
+export function getDeploymentGitSource4ToJSON(
+  getDeploymentGitSource4: GetDeploymentGitSource4,
 ): string {
   return JSON.stringify(
-    GetDeploymentGitSourceDeployments4$outboundSchema.parse(
-      getDeploymentGitSourceDeployments4,
-    ),
+    GetDeploymentGitSource4$outboundSchema.parse(getDeploymentGitSource4),
   );
 }
-export function getDeploymentGitSourceDeployments4FromJSON(
+export function getDeploymentGitSource4FromJSON(
   jsonString: string,
-): SafeParseResult<GetDeploymentGitSourceDeployments4, SDKValidationError> {
+): SafeParseResult<GetDeploymentGitSource4, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      GetDeploymentGitSourceDeployments4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentGitSourceDeployments4' from JSON`,
+    (x) => GetDeploymentGitSource4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentGitSource4' from JSON`,
   );
 }
 
@@ -4831,7 +4832,7 @@ export const ResponseBodyGitSource$inboundSchema: z.ZodType<
 > = smartUnion([
   z.lazy(() => GetDeploymentGitSourceDeployments12$inboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments15$inboundSchema),
-  z.lazy(() => GetDeploymentGitSourceDeployments4$inboundSchema),
+  z.lazy(() => GetDeploymentGitSource4$inboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments10$inboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments11$inboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments13$inboundSchema),
@@ -4849,7 +4850,7 @@ export const ResponseBodyGitSource$inboundSchema: z.ZodType<
 export type ResponseBodyGitSource$Outbound =
   | GetDeploymentGitSourceDeployments12$Outbound
   | GetDeploymentGitSourceDeployments15$Outbound
-  | GetDeploymentGitSourceDeployments4$Outbound
+  | GetDeploymentGitSource4$Outbound
   | GetDeploymentGitSourceDeployments10$Outbound
   | GetDeploymentGitSourceDeployments11$Outbound
   | GetDeploymentGitSourceDeployments13$Outbound
@@ -4871,7 +4872,7 @@ export const ResponseBodyGitSource$outboundSchema: z.ZodType<
 > = smartUnion([
   z.lazy(() => GetDeploymentGitSourceDeployments12$outboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments15$outboundSchema),
-  z.lazy(() => GetDeploymentGitSourceDeployments4$outboundSchema),
+  z.lazy(() => GetDeploymentGitSource4$outboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments10$outboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments11$outboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments13$outboundSchema),
@@ -5176,7 +5177,7 @@ export const GetDeploymentResponseBody2$inboundSchema: z.ZodType<
     smartUnion([
       z.lazy(() => GetDeploymentGitSourceDeployments12$inboundSchema),
       z.lazy(() => GetDeploymentGitSourceDeployments15$inboundSchema),
-      z.lazy(() => GetDeploymentGitSourceDeployments4$inboundSchema),
+      z.lazy(() => GetDeploymentGitSource4$inboundSchema),
       z.lazy(() => GetDeploymentGitSourceDeployments10$inboundSchema),
       z.lazy(() => GetDeploymentGitSourceDeployments11$inboundSchema),
       z.lazy(() => GetDeploymentGitSourceDeployments13$inboundSchema),
@@ -5262,7 +5263,7 @@ export type GetDeploymentResponseBody2$Outbound = {
   gitSource?:
     | GetDeploymentGitSourceDeployments12$Outbound
     | GetDeploymentGitSourceDeployments15$Outbound
-    | GetDeploymentGitSourceDeployments4$Outbound
+    | GetDeploymentGitSource4$Outbound
     | GetDeploymentGitSourceDeployments10$Outbound
     | GetDeploymentGitSourceDeployments11$Outbound
     | GetDeploymentGitSourceDeployments13$Outbound
@@ -5349,7 +5350,7 @@ export const GetDeploymentResponseBody2$outboundSchema: z.ZodType<
   gitSource: smartUnion([
     z.lazy(() => GetDeploymentGitSourceDeployments12$outboundSchema),
     z.lazy(() => GetDeploymentGitSourceDeployments15$outboundSchema),
-    z.lazy(() => GetDeploymentGitSourceDeployments4$outboundSchema),
+    z.lazy(() => GetDeploymentGitSource4$outboundSchema),
     z.lazy(() => GetDeploymentGitSourceDeployments10$outboundSchema),
     z.lazy(() => GetDeploymentGitSourceDeployments11$outboundSchema),
     z.lazy(() => GetDeploymentGitSourceDeployments13$outboundSchema),
@@ -7564,8 +7565,8 @@ export const GetDeploymentGitSourceDeploymentsResponseType$outboundSchema:
     GetDeploymentGitSourceDeploymentsResponseType$inboundSchema;
 
 /** @internal */
-export const GetDeploymentGitSource4$inboundSchema: z.ZodType<
-  GetDeploymentGitSource4,
+export const GetDeploymentGitSourceDeployments4$inboundSchema: z.ZodType<
+  GetDeploymentGitSourceDeployments4,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -7578,7 +7579,7 @@ export const GetDeploymentGitSource4$inboundSchema: z.ZodType<
   prId: z.nullable(types.number()).optional(),
 });
 /** @internal */
-export type GetDeploymentGitSource4$Outbound = {
+export type GetDeploymentGitSourceDeployments4$Outbound = {
   type: string;
   host: string;
   org: string;
@@ -7589,10 +7590,10 @@ export type GetDeploymentGitSource4$Outbound = {
 };
 
 /** @internal */
-export const GetDeploymentGitSource4$outboundSchema: z.ZodType<
-  GetDeploymentGitSource4$Outbound,
+export const GetDeploymentGitSourceDeployments4$outboundSchema: z.ZodType<
+  GetDeploymentGitSourceDeployments4$Outbound,
   z.ZodTypeDef,
-  GetDeploymentGitSource4
+  GetDeploymentGitSourceDeployments4
 > = z.object({
   type: GetDeploymentGitSourceDeploymentsResponseType$outboundSchema,
   host: z.string(),
@@ -7603,20 +7604,23 @@ export const GetDeploymentGitSource4$outboundSchema: z.ZodType<
   prId: z.nullable(z.number()).optional(),
 });
 
-export function getDeploymentGitSource4ToJSON(
-  getDeploymentGitSource4: GetDeploymentGitSource4,
+export function getDeploymentGitSourceDeployments4ToJSON(
+  getDeploymentGitSourceDeployments4: GetDeploymentGitSourceDeployments4,
 ): string {
   return JSON.stringify(
-    GetDeploymentGitSource4$outboundSchema.parse(getDeploymentGitSource4),
+    GetDeploymentGitSourceDeployments4$outboundSchema.parse(
+      getDeploymentGitSourceDeployments4,
+    ),
   );
 }
-export function getDeploymentGitSource4FromJSON(
+export function getDeploymentGitSourceDeployments4FromJSON(
   jsonString: string,
-): SafeParseResult<GetDeploymentGitSource4, SDKValidationError> {
+): SafeParseResult<GetDeploymentGitSourceDeployments4, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetDeploymentGitSource4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentGitSource4' from JSON`,
+    (x) =>
+      GetDeploymentGitSourceDeployments4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentGitSourceDeployments4' from JSON`,
   );
 }
 
@@ -7921,7 +7925,7 @@ export const GetDeploymentResponseBodyGitSource$inboundSchema: z.ZodType<
 > = smartUnion([
   z.lazy(() => GetDeploymentGitSource12$inboundSchema),
   z.lazy(() => GetDeploymentGitSource15$inboundSchema),
-  z.lazy(() => GetDeploymentGitSource4$inboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments4$inboundSchema),
   z.lazy(() => GetDeploymentGitSource10$inboundSchema),
   z.lazy(() => GetDeploymentGitSource11$inboundSchema),
   z.lazy(() => GetDeploymentGitSource13$inboundSchema),
@@ -7939,7 +7943,7 @@ export const GetDeploymentResponseBodyGitSource$inboundSchema: z.ZodType<
 export type GetDeploymentResponseBodyGitSource$Outbound =
   | GetDeploymentGitSource12$Outbound
   | GetDeploymentGitSource15$Outbound
-  | GetDeploymentGitSource4$Outbound
+  | GetDeploymentGitSourceDeployments4$Outbound
   | GetDeploymentGitSource10$Outbound
   | GetDeploymentGitSource11$Outbound
   | GetDeploymentGitSource13$Outbound
@@ -7961,7 +7965,7 @@ export const GetDeploymentResponseBodyGitSource$outboundSchema: z.ZodType<
 > = smartUnion([
   z.lazy(() => GetDeploymentGitSource12$outboundSchema),
   z.lazy(() => GetDeploymentGitSource15$outboundSchema),
-  z.lazy(() => GetDeploymentGitSource4$outboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments4$outboundSchema),
   z.lazy(() => GetDeploymentGitSource10$outboundSchema),
   z.lazy(() => GetDeploymentGitSource11$outboundSchema),
   z.lazy(() => GetDeploymentGitSource13$outboundSchema),
@@ -11378,11 +11382,13 @@ export const ResponseBodySeatBlock$inboundSchema: z.ZodType<
 > = z.object({
   blockCode: ResponseBodyBlockCode$inboundSchema,
   userId: types.optional(types.string()),
+  isVerified: types.optional(types.boolean()),
 });
 /** @internal */
 export type ResponseBodySeatBlock$Outbound = {
   blockCode: string;
   userId?: string | undefined;
+  isVerified?: boolean | undefined;
 };
 
 /** @internal */
@@ -11393,6 +11399,7 @@ export const ResponseBodySeatBlock$outboundSchema: z.ZodType<
 > = z.object({
   blockCode: ResponseBodyBlockCode$outboundSchema,
   userId: z.string().optional(),
+  isVerified: z.boolean().optional(),
 });
 
 export function responseBodySeatBlockToJSON(
@@ -11497,7 +11504,7 @@ export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
     smartUnion([
       z.lazy(() => GetDeploymentGitSource12$inboundSchema),
       z.lazy(() => GetDeploymentGitSource15$inboundSchema),
-      z.lazy(() => GetDeploymentGitSource4$inboundSchema),
+      z.lazy(() => GetDeploymentGitSourceDeployments4$inboundSchema),
       z.lazy(() => GetDeploymentGitSource10$inboundSchema),
       z.lazy(() => GetDeploymentGitSource11$inboundSchema),
       z.lazy(() => GetDeploymentGitSource13$inboundSchema),
@@ -11645,7 +11652,7 @@ export type GetDeploymentResponseBody1$Outbound = {
   gitSource?:
     | GetDeploymentGitSource12$Outbound
     | GetDeploymentGitSource15$Outbound
-    | GetDeploymentGitSource4$Outbound
+    | GetDeploymentGitSourceDeployments4$Outbound
     | GetDeploymentGitSource10$Outbound
     | GetDeploymentGitSource11$Outbound
     | GetDeploymentGitSource13$Outbound
@@ -11792,7 +11799,7 @@ export const GetDeploymentResponseBody1$outboundSchema: z.ZodType<
   gitSource: smartUnion([
     z.lazy(() => GetDeploymentGitSource12$outboundSchema),
     z.lazy(() => GetDeploymentGitSource15$outboundSchema),
-    z.lazy(() => GetDeploymentGitSource4$outboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments4$outboundSchema),
     z.lazy(() => GetDeploymentGitSource10$outboundSchema),
     z.lazy(() => GetDeploymentGitSource11$outboundSchema),
     z.lazy(() => GetDeploymentGitSource13$outboundSchema),

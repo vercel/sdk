@@ -13,16 +13,16 @@ let value: CreateProjectCheckResponseBody = {
   isRerequestable: true,
   requires: "build-ready",
   source: {
-    kind: "webhook",
+    kind: "git-provider",
+    provider: "bitbucket",
+    externalCheckName: "<value>",
   },
-  blocks: "deployment-alias",
-  targets: [
-    "<value 1>",
-  ],
-  sourceKind: "integration",
-  timeout: 4049.49,
-  createdAt: 1008.16,
-  updatedAt: 6105.04,
+  blocks: "deployment-start",
+  targets: [],
+  sourceKind: "webhook",
+  timeout: 1008.16,
+  createdAt: 6105.04,
+  updatedAt: 9487.23,
 };
 ```
 
@@ -44,4 +44,5 @@ let value: CreateProjectCheckResponseBody = {
 | `timeout`                                                                    | *number*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
 | `createdAt`                                                                  | *number*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
 | `updatedAt`                                                                  | *number*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `disabledAt`                                                                 | *number*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
 | `deletedAt`                                                                  | *number*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |

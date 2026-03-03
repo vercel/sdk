@@ -12,7 +12,7 @@ let value: ListEventTypesResponseBody = {
         "<value 1>",
       ],
       deprecated: true,
-      name: "ai-code-review",
+      name: "access-group-updated",
       description: "charlatan stunning obedient help meanwhile throughout",
     },
   ],

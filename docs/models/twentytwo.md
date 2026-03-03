@@ -8,14 +8,14 @@ The payload of the event, if requested.
 import { TwentyTwo } from "@vercel/sdk/models/userevent.js";
 
 let value: TwentyTwo = {
-  projectName: "<value>",
-  autoExposeSystemEnvs: false,
+  alias: "<value>",
+  deploymentUrl: "https://hateful-amnesty.name",
 };
 ```
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `projectName`          | *string*               | :heavy_check_mark:     | N/A                    |
-| `autoExposeSystemEnvs` | *boolean*              | :heavy_check_mark:     | N/A                    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `alias`            | *string*           | :heavy_check_mark: | N/A                |
+| `deploymentUrl`    | *string*           | :heavy_check_mark: | N/A                |

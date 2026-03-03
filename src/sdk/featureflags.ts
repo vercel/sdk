@@ -75,7 +75,7 @@ import { UpdateFlagRequest } from "../models/updateflagop.js";
 import { UpdateFlagSegmentRequest } from "../models/updateflagsegmentop.js";
 import {
   UpdateFlagSettingsRequest,
-  UpdateFlagSettingsResponseBody,
+  UpdateFlagSettingsResponse,
 } from "../models/updateflagsettingsop.js";
 import { unwrapAsync } from "../types/fp.js";
 
@@ -208,7 +208,7 @@ export class FeatureFlags extends ClientSDK {
   async updateFlagSettings(
     request: UpdateFlagSettingsRequest,
     options?: RequestOptions,
-  ): Promise<UpdateFlagSettingsResponseBody> {
+  ): Promise<UpdateFlagSettingsResponse> {
     return unwrapAsync(featureFlagsUpdateFlagSettings(
       this,
       request,

@@ -9,16 +9,19 @@ import { SeventyNine } from "@vercel/sdk/models/userevent.js";
 
 let value: SeventyNine = {
   projectId: "<id>",
-  scope: "<value>",
-  source: "<value>",
+  restore: true,
+  configVersion: 3187.48,
+  configChangeCount: 1293.92,
+  configChanges: [],
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `scope`            | *string*           | :heavy_check_mark: | N/A                |
-| `source`           | *string*           | :heavy_check_mark: | N/A                |
-| `expiresAt`        | *number*           | :heavy_minus_sign: | N/A                |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `projectId`                                          | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
+| `restore`                                            | *boolean*                                            | :heavy_check_mark:                                   | N/A                                                  |
+| `configVersion`                                      | *number*                                             | :heavy_check_mark:                                   | N/A                                                  |
+| `configChangeCount`                                  | *number*                                             | :heavy_check_mark:                                   | N/A                                                  |
+| `configChanges`                                      | [models.ConfigChanges](../models/configchanges.md)[] | :heavy_check_mark:                                   | N/A                                                  |

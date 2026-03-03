@@ -6,9 +6,9 @@
 import { Teams } from "@vercel/sdk/models/userevent.js";
 
 let value: Teams = {
-  created: 3009.16,
-  createdAt: 4453.66,
+  createdAt: 3009.16,
   teamId: "<id>",
+  created: 4453.66,
   role: "CONTRIBUTOR",
   confirmed: false,
   confirmedAt: 8273.52,
@@ -19,10 +19,10 @@ let value: Teams = {
 
 | Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `created`                                                                    | *number*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
 | `createdAt`                                                                  | *number*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
 | `teamId`                                                                     | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `role`                                                                       | [models.UserEventPayload85Role](../models/usereventpayload85role.md)         | :heavy_check_mark:                                                           | N/A                                                                          |
+| `created`                                                                    | *number*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `role`                                                                       | [models.UserEventPayload86Role](../models/usereventpayload86role.md)         | :heavy_check_mark:                                                           | N/A                                                                          |
 | `confirmed`                                                                  | *boolean*                                                                    | :heavy_check_mark:                                                           | N/A                                                                          |
 | `confirmedAt`                                                                | *number*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
 | `accessRequestedAt`                                                          | *number*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |

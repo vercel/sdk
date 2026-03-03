@@ -31,3 +31,11 @@ const value: models.CreateDeploymentCheckRunSource3 = {
 };
 ```
 
+### `models.CreateDeploymentCheckRunSource4`
+
+```typescript
+const value: models.CreateDeploymentCheckRunSource4 = {
+  kind: "vercel",
+};
+```
+

@@ -32,55 +32,53 @@ test("Projects Get Projects", async () => {
     projects: [
       {
         accountId: "<id>",
-        crons: {
-          enabledAt: 5680.45,
-          disabledAt: 710.36,
-          updatedAt: 871.29,
-          deploymentId: null,
-          definitions: [
-            {
-              host: "vercel.com",
-              path: "/api/crons/sync-something?hello=world",
-              schedule: "0 0 * * *",
+        alias: [
+          {
+            deployment: {
+              createdAt: 4236.55,
+              createdIn: "<value>",
+              creator: {
+                email: "Sim56@yahoo.com",
+                uid: "<id>",
+                username: "Antonetta77",
+              },
+              deploymentHostname: "<value>",
+              name: "<value>",
+              id: "<id>",
+              plan: "<value>",
+              private: false,
+              readyState: "<value>",
+              type: "<value>",
+              url: "https://leading-scaffold.com",
+              userId: "<id>",
             },
-          ],
-        },
+            domain: "productive-charm.org",
+            environment: "preview",
+            target: "STAGING",
+          },
+        ],
+        directoryListing: true,
         deploymentExpiration: {},
-        directoryListing: false,
         id: "<id>",
         name: "<value>",
-        nodeVersion: "10.x",
+        nodeVersion: "12.x",
         resourceConfig: {
           functionDefaultRegions: [
             "<value 1>",
-            "<value 2>",
-            "<value 3>",
           ],
         },
         rollingRelease: {
           target: "production",
-          stages: [
-            {
-              targetPercentage: 25,
-              requireApproval: false,
-              duration: 600,
-              linearShift: false,
-            },
-          ],
+          stages: null,
           canaryResponseHeader: false,
         },
-        defaultResourceConfig: {
-          functionDefaultRegions: [
-            "<value 1>",
-            "<value 2>",
-            "<value 3>",
-          ],
-        },
+        serverlessFunctionRegion: "<value>",
       },
     ],
     pagination: {
       count: 20,
-      next: "JBSWY3DPEHPK3PXP",
+      next: 1540095775951,
+      prev: 1540095775951,
     },
   });
 });

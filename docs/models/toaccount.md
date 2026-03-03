@@ -7,7 +7,7 @@ import { ToAccount } from "@vercel/sdk/models/userevent.js";
 
 let value: ToAccount = {
   id: "<id>",
-  type: "team",
+  type: "user",
 };
 ```
 
@@ -16,6 +16,6 @@ let value: ToAccount = {
 | Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
 | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
 | `id`                                                                                     | *string*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `type`                                                                                   | [models.UserEventPayload256ToAccountType](../models/usereventpayload256toaccounttype.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `type`                                                                                   | [models.UserEventPayload257ToAccountType](../models/usereventpayload257toaccounttype.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
 | `slug`                                                                                   | *string*                                                                                 | :heavy_minus_sign:                                                                       | N/A                                                                                      |
 | `username`                                                                               | *string*                                                                                 | :heavy_minus_sign:                                                                       | N/A                                                                                      |

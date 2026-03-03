@@ -8,12 +8,14 @@ The payload of the event, if requested.
 import { TwoHundredAndFortyTwo } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndFortyTwo = {
-  enabled: "default",
+  id: "<id>",
+  url: "https://troubled-honesty.info/",
 };
 ```
 
 ## Fields
 
-| Field                                                | Type                                                 | Required                                             | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `enabled`                                            | [models.PayloadEnabled](../models/payloadenabled.md) | :heavy_check_mark:                                   | N/A                                                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `url`              | *string*           | :heavy_check_mark: | N/A                |

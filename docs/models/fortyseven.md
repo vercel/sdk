@@ -9,7 +9,7 @@ import { FortySeven } from "@vercel/sdk/models/userevent.js";
 
 let value: FortySeven = {
   gitlabLogin: "<value>",
-  gitlabUserId: 1316.08,
+  gitlabEmail: "<value>",
 };
 ```
 
@@ -18,4 +18,7 @@ let value: FortySeven = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `gitlabLogin`      | *string*           | :heavy_check_mark: | N/A                |
-| `gitlabUserId`     | *number*           | :heavy_check_mark: | N/A                |
+| `gitlabEmail`      | *string*           | :heavy_check_mark: | N/A                |
+| `gitlabName`       | *string*           | :heavy_minus_sign: | N/A                |
+| `zeitAccount`      | *string*           | :heavy_minus_sign: | N/A                |
+| `zeitAccountType`  | *string*           | :heavy_minus_sign: | N/A                |

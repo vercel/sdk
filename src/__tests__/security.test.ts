@@ -107,23 +107,37 @@ test("Security Put Firewall Config", async () => {
           id: "<id>",
           name: "<value>",
           active: false,
-          conditionGroup: [],
-          action: {},
-          valid: false,
-          validationErrors: [
-            "<value 1>",
+          conditionGroup: [
+            {
+              conditions: [
+                {
+                  type: "bot_name",
+                  op: "lte",
+                },
+              ],
+            },
           ],
+          action: {},
+          valid: true,
+          validationErrors: "<value>",
         },
         {
           id: "<id>",
           name: "<value>",
           active: false,
-          conditionGroup: [],
-          action: {},
-          valid: false,
-          validationErrors: [
-            "<value 1>",
+          conditionGroup: [
+            {
+              conditions: [
+                {
+                  type: "bot_name",
+                  op: "lte",
+                },
+              ],
+            },
           ],
+          action: {},
+          valid: true,
+          validationErrors: "<value>",
         },
       ],
       ips: [],
@@ -230,19 +244,10 @@ test("Security Get Firewall Config", async () => {
         id: "<id>",
         name: "<value>",
         active: true,
-        conditionGroup: [
-          {
-            conditions: [
-              {
-                type: "user_agent",
-                op: "ninc",
-              },
-            ],
-          },
-        ],
+        conditionGroup: [],
         action: {},
-        valid: true,
-        validationErrors: [],
+        valid: false,
+        validationErrors: "<value>",
       },
     ],
     ips: [

@@ -8,16 +8,29 @@ The payload of the event, if requested.
 import { TwoHundredAndSixtyNine } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndSixtyNine = {
-  deploymentId: "<id>",
-  projectId: "<id>",
-  runId: "<id>",
+  job: {
+    headInfo: {
+      org: "<value>",
+      ref: "<value>",
+      repo: "<value>",
+      repoId: 1102.65,
+      sha: "<value>",
+    },
+    installationId: 9734.17,
+    isPrivate: true,
+    org: "<value>",
+    prId: 4318.76,
+    projectId: "<id>",
+    repo: "<value>",
+    repoId: 4675.19,
+    type: "now-comment",
+    provider: "github-limited",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `deploymentId`     | *string*           | :heavy_check_mark: | N/A                |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `runId`            | *string*           | :heavy_check_mark: | N/A                |
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `job`               | *models.PayloadJob* | :heavy_check_mark:  | N/A                 |

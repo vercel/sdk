@@ -6520,6 +6520,7 @@ type CreateProjectPermissions struct {
 	IntegrationResourceReplCommand           []components.ACLAction `json:"integrationResourceReplCommand,omitempty"`
 	IntegrationResourceSecrets               []components.ACLAction `json:"integrationResourceSecrets,omitempty"`
 	IntegrationSSOSession                    []components.ACLAction `json:"integrationSSOSession,omitempty"`
+	IntegrationStrict                        []components.ACLAction `json:"integrationStrict,omitempty"`
 	IntegrationStoreTokenSet                 []components.ACLAction `json:"integrationStoreTokenSet,omitempty"`
 	IntegrationVercelConfigurationOverride   []components.ACLAction `json:"integrationVercelConfigurationOverride,omitempty"`
 	IntegrationPullRequest                   []components.ACLAction `json:"integrationPullRequest,omitempty"`
@@ -6563,6 +6564,7 @@ type CreateProjectPermissions struct {
 	Postgres                                 []components.ACLAction `json:"postgres,omitempty"`
 	PostgresStoreTokenSet                    []components.ACLAction `json:"postgresStoreTokenSet,omitempty"`
 	PreviewDeploymentSuffix                  []components.ACLAction `json:"previewDeploymentSuffix,omitempty"`
+	PrivateCloudAccount                      []components.ACLAction `json:"privateCloudAccount,omitempty"`
 	ProjectTransferIn                        []components.ACLAction `json:"projectTransferIn,omitempty"`
 	ProTrialOnboarding                       []components.ACLAction `json:"proTrialOnboarding,omitempty"`
 	RateLimit                                []components.ACLAction `json:"rateLimit,omitempty"`
@@ -6642,6 +6644,7 @@ type CreateProjectPermissions struct {
 	ProjectDomain                            []components.ACLAction `json:"projectDomain,omitempty"`
 	ProjectDomainCheckConfig                 []components.ACLAction `json:"projectDomainCheckConfig,omitempty"`
 	ProjectDomainMove                        []components.ACLAction `json:"projectDomainMove,omitempty"`
+	ProjectEvent                             []components.ACLAction `json:"projectEvent,omitempty"`
 	ProjectEnvVars                           []components.ACLAction `json:"projectEnvVars,omitempty"`
 	ProjectEnvVarsProduction                 []components.ACLAction `json:"projectEnvVarsProduction,omitempty"`
 	ProjectEnvVarsUnownedByIntegration       []components.ACLAction `json:"projectEnvVarsUnownedByIntegration,omitempty"`
@@ -7185,6 +7188,13 @@ func (o *CreateProjectPermissions) GetIntegrationSSOSession() []components.ACLAc
 	return o.IntegrationSSOSession
 }
 
+func (o *CreateProjectPermissions) GetIntegrationStrict() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.IntegrationStrict
+}
+
 func (o *CreateProjectPermissions) GetIntegrationStoreTokenSet() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -7484,6 +7494,13 @@ func (o *CreateProjectPermissions) GetPreviewDeploymentSuffix() []components.ACL
 		return nil
 	}
 	return o.PreviewDeploymentSuffix
+}
+
+func (o *CreateProjectPermissions) GetPrivateCloudAccount() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.PrivateCloudAccount
 }
 
 func (o *CreateProjectPermissions) GetProjectTransferIn() []components.ACLAction {
@@ -8037,6 +8054,13 @@ func (o *CreateProjectPermissions) GetProjectDomainMove() []components.ACLAction
 		return nil
 	}
 	return o.ProjectDomainMove
+}
+
+func (o *CreateProjectPermissions) GetProjectEvent() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectEvent
 }
 
 func (o *CreateProjectPermissions) GetProjectEnvVars() []components.ACLAction {
@@ -9377,6 +9401,60 @@ func (e *CreateProjectTier) UnmarshalJSON(data []byte) error {
 	default:
 		return fmt.Errorf("invalid value for CreateProjectTier: %v", v)
 	}
+}
+
+// CreateProjectKind - Billing mode. Always 'flat' for flat-rate projects.
+type CreateProjectKind string
+
+const (
+	CreateProjectKindFlat CreateProjectKind = "flat"
+)
+
+func (e CreateProjectKind) ToPointer() *CreateProjectKind {
+	return &e
+}
+func (e *CreateProjectKind) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "flat":
+		*e = CreateProjectKind(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectKind: %v", v)
+	}
+}
+
+type CreateProjectUsageStatus struct {
+	// Billing mode. Always 'flat' for flat-rate projects.
+	Kind CreateProjectKind `json:"kind"`
+	// Timestamp until which the project has exceeded its CDN allowance.
+	ExceededAllowanceUntil *float64 `json:"exceededAllowanceUntil,omitempty"`
+	// Timestamp until which throttling is bypassed (project pays list rates for overage).
+	BypassThrottleUntil *float64 `json:"bypassThrottleUntil,omitempty"`
+}
+
+func (o *CreateProjectUsageStatus) GetKind() CreateProjectKind {
+	if o == nil {
+		return CreateProjectKind("")
+	}
+	return o.Kind
+}
+
+func (o *CreateProjectUsageStatus) GetExceededAllowanceUntil() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.ExceededAllowanceUntil
+}
+
+func (o *CreateProjectUsageStatus) GetBypassThrottleUntil() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BypassThrottleUntil
 }
 
 type CreateProjectFeatures struct {
@@ -11918,6 +11996,7 @@ type CreateProjectResponseBody struct {
 	Security                             *CreateProjectSecurity                        `json:"security,omitempty"`
 	OidcTokenConfig                      *CreateProjectOidcTokenConfigResponse         `json:"oidcTokenConfig,omitempty"`
 	Tier                                 *CreateProjectTier                            `json:"tier,omitempty"`
+	UsageStatus                          *CreateProjectUsageStatus                     `json:"usageStatus,omitempty"`
 	Features                             *CreateProjectFeatures                        `json:"features,omitempty"`
 	V0                                   *bool                                         `json:"v0,omitempty"`
 	Abuse                                *CreateProjectAbuse                           `json:"abuse,omitempty"`
@@ -12485,6 +12564,13 @@ func (o *CreateProjectResponseBody) GetTier() *CreateProjectTier {
 		return nil
 	}
 	return o.Tier
+}
+
+func (o *CreateProjectResponseBody) GetUsageStatus() *CreateProjectUsageStatus {
+	if o == nil {
+		return nil
+	}
+	return o.UsageStatus
 }
 
 func (o *CreateProjectResponseBody) GetFeatures() *CreateProjectFeatures {

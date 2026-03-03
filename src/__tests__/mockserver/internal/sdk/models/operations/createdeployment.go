@@ -9700,6 +9700,8 @@ type CreateDeploymentSeatBlock struct {
 	BlockCode CreateDeploymentBlockCode `json:"blockCode"`
 	// The blocked vercel user ID.
 	UserID *string `json:"userId,omitempty"`
+	// Determines if the user was verified during the block. In the git integration case, the commit sender was the author.
+	IsVerified *bool `json:"isVerified,omitempty"`
 }
 
 func (o *CreateDeploymentSeatBlock) GetBlockCode() CreateDeploymentBlockCode {
@@ -9714,6 +9716,13 @@ func (o *CreateDeploymentSeatBlock) GetUserID() *string {
 		return nil
 	}
 	return o.UserID
+}
+
+func (o *CreateDeploymentSeatBlock) GetIsVerified() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsVerified
 }
 
 // CreateDeploymentResponseBody - The successfully created deployment

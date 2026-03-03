@@ -12,6 +12,6 @@ const value: string = "<value>";
 ### `models.EnvId2`
 
 ```typescript
-const value: models.EnvId2 = "preview";
+const value: models.EnvId2 = "production";
 ```
 

@@ -7,7 +7,7 @@ import { FromAccount } from "@vercel/sdk/models/userevent.js";
 
 let value: FromAccount = {
   id: "<id>",
-  type: "user",
+  type: "team",
 };
 ```
 
@@ -16,6 +16,6 @@ let value: FromAccount = {
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | `id`                                                                   | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `type`                                                                 | [models.UserEventPayload256Type](../models/usereventpayload256type.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `type`                                                                 | [models.UserEventPayload257Type](../models/usereventpayload257type.md) | :heavy_check_mark:                                                     | N/A                                                                    |
 | `slug`                                                                 | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
 | `username`                                                             | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |

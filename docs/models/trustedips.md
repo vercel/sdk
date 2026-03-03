@@ -5,11 +5,11 @@
 ```typescript
 import { TrustedIps } from "@vercel/sdk/models/userevent.js";
 
-let value: TrustedIps = "all";
+let value: TrustedIps = "production";
 ```
 
 ## Values
 
 ```typescript
-"all" | "preview" | "prod_deployment_urls_and_all_previews" | "all_except_custom_domains" | "production"
+"production" | "all" | "preview" | "prod_deployment_urls_and_all_previews" | "all_except_custom_domains"
 ```

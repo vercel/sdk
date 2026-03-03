@@ -48,6 +48,51 @@ func (o *ListCheckRunsRequest) GetSlug() *string {
 	return o.Slug
 }
 
+type ListCheckRunsKindVercel string
+
+const (
+	ListCheckRunsKindVercelVercel ListCheckRunsKindVercel = "vercel"
+)
+
+func (e ListCheckRunsKindVercel) ToPointer() *ListCheckRunsKindVercel {
+	return &e
+}
+func (e *ListCheckRunsKindVercel) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vercel":
+		*e = ListCheckRunsKindVercel(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ListCheckRunsKindVercel: %v", v)
+	}
+}
+
+type ListCheckRunsSourceVercel struct {
+	Kind ListCheckRunsKindVercel `json:"kind"`
+}
+
+func (l ListCheckRunsSourceVercel) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListCheckRunsSourceVercel) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"kind"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ListCheckRunsSourceVercel) GetKind() ListCheckRunsKindVercel {
+	if o == nil {
+		return ListCheckRunsKindVercel("")
+	}
+	return o.Kind
+}
+
 type ListCheckRunsKindGitProvider string
 
 const (
@@ -274,12 +319,14 @@ const (
 	ListCheckRunsSourceUnionTypeIntegration ListCheckRunsSourceUnionType = "integration"
 	ListCheckRunsSourceUnionTypeWebhook     ListCheckRunsSourceUnionType = "webhook"
 	ListCheckRunsSourceUnionTypeGitProvider ListCheckRunsSourceUnionType = "git-provider"
+	ListCheckRunsSourceUnionTypeVercel      ListCheckRunsSourceUnionType = "vercel"
 )
 
 type ListCheckRunsSourceUnion struct {
 	ListCheckRunsSourceIntegration *ListCheckRunsSourceIntegration `queryParam:"inline"`
 	ListCheckRunsSourceWebhook     *ListCheckRunsSourceWebhook     `queryParam:"inline"`
 	ListCheckRunsSourceGitProvider *ListCheckRunsSourceGitProvider `queryParam:"inline"`
+	ListCheckRunsSourceVercel      *ListCheckRunsSourceVercel      `queryParam:"inline"`
 
 	Type ListCheckRunsSourceUnionType
 }
@@ -317,6 +364,18 @@ func CreateListCheckRunsSourceUnionGitProvider(gitProvider ListCheckRunsSourceGi
 	return ListCheckRunsSourceUnion{
 		ListCheckRunsSourceGitProvider: &gitProvider,
 		Type:                           typ,
+	}
+}
+
+func CreateListCheckRunsSourceUnionVercel(vercel ListCheckRunsSourceVercel) ListCheckRunsSourceUnion {
+	typ := ListCheckRunsSourceUnionTypeVercel
+
+	typStr := ListCheckRunsKindVercel(typ)
+	vercel.Kind = typStr
+
+	return ListCheckRunsSourceUnion{
+		ListCheckRunsSourceVercel: &vercel,
+		Type:                      typ,
 	}
 }
 
@@ -359,6 +418,15 @@ func (u *ListCheckRunsSourceUnion) UnmarshalJSON(data []byte) error {
 		u.ListCheckRunsSourceGitProvider = listCheckRunsSourceGitProvider
 		u.Type = ListCheckRunsSourceUnionTypeGitProvider
 		return nil
+	case "vercel":
+		listCheckRunsSourceVercel := new(ListCheckRunsSourceVercel)
+		if err := utils.UnmarshalJSON(data, &listCheckRunsSourceVercel, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Kind == vercel) type ListCheckRunsSourceVercel within ListCheckRunsSourceUnion: %w", string(data), err)
+		}
+
+		u.ListCheckRunsSourceVercel = listCheckRunsSourceVercel
+		u.Type = ListCheckRunsSourceUnionTypeVercel
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ListCheckRunsSourceUnion", string(data))
@@ -375,6 +443,10 @@ func (u ListCheckRunsSourceUnion) MarshalJSON() ([]byte, error) {
 
 	if u.ListCheckRunsSourceGitProvider != nil {
 		return utils.MarshalJSON(u.ListCheckRunsSourceGitProvider, "", true)
+	}
+
+	if u.ListCheckRunsSourceVercel != nil {
+		return utils.MarshalJSON(u.ListCheckRunsSourceVercel, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type ListCheckRunsSourceUnion: all fields are null")
@@ -593,6 +665,10 @@ func (o *ListCheckRunsRun) GetSourceWebhook() *ListCheckRunsSourceWebhook {
 
 func (o *ListCheckRunsRun) GetSourceGitProvider() *ListCheckRunsSourceGitProvider {
 	return o.GetSource().ListCheckRunsSourceGitProvider
+}
+
+func (o *ListCheckRunsRun) GetSourceVercel() *ListCheckRunsSourceVercel {
+	return o.GetSource().ListCheckRunsSourceVercel
 }
 
 func (o *ListCheckRunsRun) GetRequires() *ListCheckRunsRequires {

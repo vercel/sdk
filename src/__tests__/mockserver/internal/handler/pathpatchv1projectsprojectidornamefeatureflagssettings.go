@@ -50,8 +50,8 @@ func testUpdateFlagSettingsUpdateFlagSettings0(w http.ResponseWriter, req *http.
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody *operations.UpdateFlagSettingsResponseBody = &operations.UpdateFlagSettingsResponseBody{
-		TypeName:  operations.UpdateFlagSettingsTypeNameSettings,
+	var respBody *operations.UpdateFlagSettingsResponseBody1 = &operations.UpdateFlagSettingsResponseBody1{
+		TypeName:  operations.UpdateFlagSettingsTypeName1Settings,
 		ProjectID: "<id>",
 		Enabled:   false,
 		Environments: []string{
@@ -59,19 +59,19 @@ func testUpdateFlagSettingsUpdateFlagSettings0(w http.ResponseWriter, req *http.
 			"<value 2>",
 			"<value 3>",
 		},
-		Entities: []operations.UpdateFlagSettingsEntityResponse{
-			operations.UpdateFlagSettingsEntityResponse{
+		Entities: []operations.UpdateFlagSettingsEntityResponse1{
+			operations.UpdateFlagSettingsEntityResponse1{
 				Kind:  "<value>",
 				Label: "<value>",
-				Attributes: []operations.UpdateFlagSettingsAttributeResponse{
-					operations.UpdateFlagSettingsAttributeResponse{
+				Attributes: []operations.UpdateFlagSettingsAttributeResponse1{
+					operations.UpdateFlagSettingsAttributeResponse1{
 						Key:  "<key>",
 						Type: "<value>",
 					},
 				},
 			},
 		},
-		Metadata: operations.UpdateFlagSettingsMetadata{
+		Metadata: operations.UpdateFlagSettingsMetadata1{
 			ActiveFlagCount:   9382.74,
 			ArchivedFlagCount: 1968.58,
 			SegmentCount:      1175.12,
@@ -89,6 +89,6 @@ func testUpdateFlagSettingsUpdateFlagSettings0(w http.ResponseWriter, req *http.
 		return
 	}
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusCreated)
+	w.WriteHeader(http.StatusOK)
 	_, _ = w.Write(respBodyBytes)
 }

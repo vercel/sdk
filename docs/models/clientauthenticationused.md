@@ -6,7 +6,7 @@
 import { ClientAuthenticationUsed } from "@vercel/sdk/models/userevent.js";
 
 let value: ClientAuthenticationUsed = {
-  method: "client_secret_jwt",
+  method: "private_key_jwt",
 };
 ```
 

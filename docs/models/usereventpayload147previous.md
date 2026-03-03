@@ -10,6 +10,6 @@ let value: UserEventPayload147Previous = {};
 
 ## Fields
 
-| Field                      | Type                       | Required                   | Description                |
-| -------------------------- | -------------------------- | -------------------------- | -------------------------- |
-| `skewProtectionBoundaryAt` | *number*                   | :heavy_minus_sign:         | N/A                        |
+| Field                         | Type                          | Required                      | Description                   |
+| ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
+| `commandForIgnoringBuildStep` | *string*                      | :heavy_minus_sign:            | N/A                           |

@@ -14,4 +14,4 @@ let value: TwoHundredAndSixtySix = {};
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `inviteCode`       | *string*           | :heavy_minus_sign: | N/A                |
+| `emailDomain`      | *string*           | :heavy_minus_sign: | N/A                |

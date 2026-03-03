@@ -10,14 +10,14 @@ import { OneHundredAndThirtyEight } from "@vercel/sdk/models/userevent.js";
 let value: OneHundredAndThirtyEight = {
   projectId: "<id>",
   projectName: "<value>",
-  productionDeploymentsFastLane: true,
+  newProjectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                           | Type                            | Required                        | Description                     |
-| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
-| `projectId`                     | *string*                        | :heavy_check_mark:              | N/A                             |
-| `projectName`                   | *string*                        | :heavy_check_mark:              | N/A                             |
-| `productionDeploymentsFastLane` | *boolean*                       | :heavy_check_mark:              | N/A                             |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `newProjectName`   | *string*           | :heavy_check_mark: | N/A                |

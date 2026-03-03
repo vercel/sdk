@@ -147,122 +147,122 @@ func (o *UpdateFlagSettingsRequest) GetBody() *UpdateFlagSettingsRequestBody {
 	return o.Body
 }
 
-type UpdateFlagSettingsTypeName string
+type UpdateFlagSettingsTypeName2 string
 
 const (
-	UpdateFlagSettingsTypeNameSettings UpdateFlagSettingsTypeName = "settings"
+	UpdateFlagSettingsTypeName2Settings UpdateFlagSettingsTypeName2 = "settings"
 )
 
-func (e UpdateFlagSettingsTypeName) ToPointer() *UpdateFlagSettingsTypeName {
+func (e UpdateFlagSettingsTypeName2) ToPointer() *UpdateFlagSettingsTypeName2 {
 	return &e
 }
-func (e *UpdateFlagSettingsTypeName) UnmarshalJSON(data []byte) error {
+func (e *UpdateFlagSettingsTypeName2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "settings":
-		*e = UpdateFlagSettingsTypeName(v)
+		*e = UpdateFlagSettingsTypeName2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateFlagSettingsTypeName: %v", v)
+		return fmt.Errorf("invalid value for UpdateFlagSettingsTypeName2: %v", v)
 	}
 }
 
-type UpdateFlagSettingsConnection struct {
+type UpdateFlagSettingsConnection2 struct {
 	EdgeConfigID      string `json:"edgeConfigId"`
 	EdgeConfigItemKey string `json:"edgeConfigItemKey"`
 }
 
-func (o *UpdateFlagSettingsConnection) GetEdgeConfigID() string {
+func (o *UpdateFlagSettingsConnection2) GetEdgeConfigID() string {
 	if o == nil {
 		return ""
 	}
 	return o.EdgeConfigID
 }
 
-func (o *UpdateFlagSettingsConnection) GetEdgeConfigItemKey() string {
+func (o *UpdateFlagSettingsConnection2) GetEdgeConfigItemKey() string {
 	if o == nil {
 		return ""
 	}
 	return o.EdgeConfigItemKey
 }
 
-type UpdateFlagSettingsLabelResponse struct {
+type UpdateFlagSettingsLabelResponse2 struct {
 	Label string `json:"label"`
 	Value string `json:"value"`
 }
 
-func (o *UpdateFlagSettingsLabelResponse) GetLabel() string {
+func (o *UpdateFlagSettingsLabelResponse2) GetLabel() string {
 	if o == nil {
 		return ""
 	}
 	return o.Label
 }
 
-func (o *UpdateFlagSettingsLabelResponse) GetValue() string {
+func (o *UpdateFlagSettingsLabelResponse2) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-type UpdateFlagSettingsAttributeResponse struct {
-	Key    string                            `json:"key"`
-	Type   string                            `json:"type"`
-	Labels []UpdateFlagSettingsLabelResponse `json:"labels,omitempty"`
+type UpdateFlagSettingsAttributeResponse2 struct {
+	Key    string                             `json:"key"`
+	Type   string                             `json:"type"`
+	Labels []UpdateFlagSettingsLabelResponse2 `json:"labels,omitempty"`
 }
 
-func (o *UpdateFlagSettingsAttributeResponse) GetKey() string {
+func (o *UpdateFlagSettingsAttributeResponse2) GetKey() string {
 	if o == nil {
 		return ""
 	}
 	return o.Key
 }
 
-func (o *UpdateFlagSettingsAttributeResponse) GetType() string {
+func (o *UpdateFlagSettingsAttributeResponse2) GetType() string {
 	if o == nil {
 		return ""
 	}
 	return o.Type
 }
 
-func (o *UpdateFlagSettingsAttributeResponse) GetLabels() []UpdateFlagSettingsLabelResponse {
+func (o *UpdateFlagSettingsAttributeResponse2) GetLabels() []UpdateFlagSettingsLabelResponse2 {
 	if o == nil {
 		return nil
 	}
 	return o.Labels
 }
 
-type UpdateFlagSettingsEntityResponse struct {
-	Kind       string                                `json:"kind"`
-	Label      string                                `json:"label"`
-	Attributes []UpdateFlagSettingsAttributeResponse `json:"attributes"`
+type UpdateFlagSettingsEntityResponse2 struct {
+	Kind       string                                 `json:"kind"`
+	Label      string                                 `json:"label"`
+	Attributes []UpdateFlagSettingsAttributeResponse2 `json:"attributes"`
 }
 
-func (o *UpdateFlagSettingsEntityResponse) GetKind() string {
+func (o *UpdateFlagSettingsEntityResponse2) GetKind() string {
 	if o == nil {
 		return ""
 	}
 	return o.Kind
 }
 
-func (o *UpdateFlagSettingsEntityResponse) GetLabel() string {
+func (o *UpdateFlagSettingsEntityResponse2) GetLabel() string {
 	if o == nil {
 		return ""
 	}
 	return o.Label
 }
 
-func (o *UpdateFlagSettingsEntityResponse) GetAttributes() []UpdateFlagSettingsAttributeResponse {
+func (o *UpdateFlagSettingsEntityResponse2) GetAttributes() []UpdateFlagSettingsAttributeResponse2 {
 	if o == nil {
-		return []UpdateFlagSettingsAttributeResponse{}
+		return []UpdateFlagSettingsAttributeResponse2{}
 	}
 	return o.Attributes
 }
 
-type UpdateFlagSettingsMetadata struct {
+type UpdateFlagSettingsMetadata2 struct {
 	ActiveFlagCount   float64  `json:"activeFlagCount"`
 	ArchivedFlagCount float64  `json:"archivedFlagCount"`
 	SegmentCount      float64  `json:"segmentCount"`
@@ -271,135 +271,386 @@ type UpdateFlagSettingsMetadata struct {
 	ConfigUpdatedAt   *float64 `json:"configUpdatedAt,omitempty"`
 }
 
-func (o *UpdateFlagSettingsMetadata) GetActiveFlagCount() float64 {
+func (o *UpdateFlagSettingsMetadata2) GetActiveFlagCount() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.ActiveFlagCount
 }
 
-func (o *UpdateFlagSettingsMetadata) GetArchivedFlagCount() float64 {
+func (o *UpdateFlagSettingsMetadata2) GetArchivedFlagCount() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.ArchivedFlagCount
 }
 
-func (o *UpdateFlagSettingsMetadata) GetSegmentCount() float64 {
+func (o *UpdateFlagSettingsMetadata2) GetSegmentCount() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.SegmentCount
 }
 
-func (o *UpdateFlagSettingsMetadata) GetPackSizeInBytes() float64 {
+func (o *UpdateFlagSettingsMetadata2) GetPackSizeInBytes() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PackSizeInBytes
 }
 
-func (o *UpdateFlagSettingsMetadata) GetPackRevision() *float64 {
+func (o *UpdateFlagSettingsMetadata2) GetPackRevision() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.PackRevision
 }
 
-func (o *UpdateFlagSettingsMetadata) GetConfigUpdatedAt() *float64 {
+func (o *UpdateFlagSettingsMetadata2) GetConfigUpdatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.ConfigUpdatedAt
 }
 
-// UpdateFlagSettingsResponseBody - Syncs direct the synchronization of Flags to Edge Configs
-type UpdateFlagSettingsResponseBody struct {
-	TypeName     UpdateFlagSettingsTypeName         `json:"typeName"`
-	ProjectID    string                             `json:"projectId"`
-	OwnerID      *string                            `json:"ownerId,omitempty"`
-	Enabled      bool                               `json:"enabled"`
-	Environments []string                           `json:"environments"`
-	Connections  []UpdateFlagSettingsConnection     `json:"connections,omitempty"`
-	Entities     []UpdateFlagSettingsEntityResponse `json:"entities"`
-	CreatedAt    *float64                           `json:"createdAt,omitempty"`
-	UpdatedAt    *float64                           `json:"updatedAt,omitempty"`
-	Metadata     UpdateFlagSettingsMetadata         `json:"metadata"`
+// UpdateFlagSettingsResponseBody2 - Syncs direct the synchronization of Flags to Edge Configs
+type UpdateFlagSettingsResponseBody2 struct {
+	TypeName     UpdateFlagSettingsTypeName2         `json:"typeName"`
+	ProjectID    string                              `json:"projectId"`
+	OwnerID      *string                             `json:"ownerId,omitempty"`
+	Enabled      bool                                `json:"enabled"`
+	Environments []string                            `json:"environments"`
+	Connections  []UpdateFlagSettingsConnection2     `json:"connections,omitempty"`
+	Entities     []UpdateFlagSettingsEntityResponse2 `json:"entities"`
+	CreatedAt    *float64                            `json:"createdAt,omitempty"`
+	UpdatedAt    *float64                            `json:"updatedAt,omitempty"`
+	Metadata     UpdateFlagSettingsMetadata2         `json:"metadata"`
 }
 
-func (o *UpdateFlagSettingsResponseBody) GetTypeName() UpdateFlagSettingsTypeName {
+func (o *UpdateFlagSettingsResponseBody2) GetTypeName() UpdateFlagSettingsTypeName2 {
 	if o == nil {
-		return UpdateFlagSettingsTypeName("")
+		return UpdateFlagSettingsTypeName2("")
 	}
 	return o.TypeName
 }
 
-func (o *UpdateFlagSettingsResponseBody) GetProjectID() string {
+func (o *UpdateFlagSettingsResponseBody2) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProjectID
 }
 
-func (o *UpdateFlagSettingsResponseBody) GetOwnerID() *string {
+func (o *UpdateFlagSettingsResponseBody2) GetOwnerID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.OwnerID
 }
 
-func (o *UpdateFlagSettingsResponseBody) GetEnabled() bool {
+func (o *UpdateFlagSettingsResponseBody2) GetEnabled() bool {
 	if o == nil {
 		return false
 	}
 	return o.Enabled
 }
 
-func (o *UpdateFlagSettingsResponseBody) GetEnvironments() []string {
+func (o *UpdateFlagSettingsResponseBody2) GetEnvironments() []string {
 	if o == nil {
 		return []string{}
 	}
 	return o.Environments
 }
 
-func (o *UpdateFlagSettingsResponseBody) GetConnections() []UpdateFlagSettingsConnection {
+func (o *UpdateFlagSettingsResponseBody2) GetConnections() []UpdateFlagSettingsConnection2 {
 	if o == nil {
 		return nil
 	}
 	return o.Connections
 }
 
-func (o *UpdateFlagSettingsResponseBody) GetEntities() []UpdateFlagSettingsEntityResponse {
+func (o *UpdateFlagSettingsResponseBody2) GetEntities() []UpdateFlagSettingsEntityResponse2 {
 	if o == nil {
-		return []UpdateFlagSettingsEntityResponse{}
+		return []UpdateFlagSettingsEntityResponse2{}
 	}
 	return o.Entities
 }
 
-func (o *UpdateFlagSettingsResponseBody) GetCreatedAt() *float64 {
+func (o *UpdateFlagSettingsResponseBody2) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedAt
 }
 
-func (o *UpdateFlagSettingsResponseBody) GetUpdatedAt() *float64 {
+func (o *UpdateFlagSettingsResponseBody2) GetUpdatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.UpdatedAt
 }
 
-func (o *UpdateFlagSettingsResponseBody) GetMetadata() UpdateFlagSettingsMetadata {
+func (o *UpdateFlagSettingsResponseBody2) GetMetadata() UpdateFlagSettingsMetadata2 {
 	if o == nil {
-		return UpdateFlagSettingsMetadata{}
+		return UpdateFlagSettingsMetadata2{}
+	}
+	return o.Metadata
+}
+
+type UpdateFlagSettingsTypeName1 string
+
+const (
+	UpdateFlagSettingsTypeName1Settings UpdateFlagSettingsTypeName1 = "settings"
+)
+
+func (e UpdateFlagSettingsTypeName1) ToPointer() *UpdateFlagSettingsTypeName1 {
+	return &e
+}
+func (e *UpdateFlagSettingsTypeName1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "settings":
+		*e = UpdateFlagSettingsTypeName1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateFlagSettingsTypeName1: %v", v)
+	}
+}
+
+type UpdateFlagSettingsConnection1 struct {
+	EdgeConfigID      string `json:"edgeConfigId"`
+	EdgeConfigItemKey string `json:"edgeConfigItemKey"`
+}
+
+func (o *UpdateFlagSettingsConnection1) GetEdgeConfigID() string {
+	if o == nil {
+		return ""
+	}
+	return o.EdgeConfigID
+}
+
+func (o *UpdateFlagSettingsConnection1) GetEdgeConfigItemKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.EdgeConfigItemKey
+}
+
+type UpdateFlagSettingsLabelResponse1 struct {
+	Label string `json:"label"`
+	Value string `json:"value"`
+}
+
+func (o *UpdateFlagSettingsLabelResponse1) GetLabel() string {
+	if o == nil {
+		return ""
+	}
+	return o.Label
+}
+
+func (o *UpdateFlagSettingsLabelResponse1) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
+}
+
+type UpdateFlagSettingsAttributeResponse1 struct {
+	Key    string                             `json:"key"`
+	Type   string                             `json:"type"`
+	Labels []UpdateFlagSettingsLabelResponse1 `json:"labels,omitempty"`
+}
+
+func (o *UpdateFlagSettingsAttributeResponse1) GetKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.Key
+}
+
+func (o *UpdateFlagSettingsAttributeResponse1) GetType() string {
+	if o == nil {
+		return ""
+	}
+	return o.Type
+}
+
+func (o *UpdateFlagSettingsAttributeResponse1) GetLabels() []UpdateFlagSettingsLabelResponse1 {
+	if o == nil {
+		return nil
+	}
+	return o.Labels
+}
+
+type UpdateFlagSettingsEntityResponse1 struct {
+	Kind       string                                 `json:"kind"`
+	Label      string                                 `json:"label"`
+	Attributes []UpdateFlagSettingsAttributeResponse1 `json:"attributes"`
+}
+
+func (o *UpdateFlagSettingsEntityResponse1) GetKind() string {
+	if o == nil {
+		return ""
+	}
+	return o.Kind
+}
+
+func (o *UpdateFlagSettingsEntityResponse1) GetLabel() string {
+	if o == nil {
+		return ""
+	}
+	return o.Label
+}
+
+func (o *UpdateFlagSettingsEntityResponse1) GetAttributes() []UpdateFlagSettingsAttributeResponse1 {
+	if o == nil {
+		return []UpdateFlagSettingsAttributeResponse1{}
+	}
+	return o.Attributes
+}
+
+type UpdateFlagSettingsMetadata1 struct {
+	ActiveFlagCount   float64  `json:"activeFlagCount"`
+	ArchivedFlagCount float64  `json:"archivedFlagCount"`
+	SegmentCount      float64  `json:"segmentCount"`
+	PackSizeInBytes   float64  `json:"packSizeInBytes"`
+	PackRevision      *float64 `json:"packRevision,omitempty"`
+	ConfigUpdatedAt   *float64 `json:"configUpdatedAt,omitempty"`
+}
+
+func (o *UpdateFlagSettingsMetadata1) GetActiveFlagCount() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.ActiveFlagCount
+}
+
+func (o *UpdateFlagSettingsMetadata1) GetArchivedFlagCount() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.ArchivedFlagCount
+}
+
+func (o *UpdateFlagSettingsMetadata1) GetSegmentCount() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.SegmentCount
+}
+
+func (o *UpdateFlagSettingsMetadata1) GetPackSizeInBytes() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.PackSizeInBytes
+}
+
+func (o *UpdateFlagSettingsMetadata1) GetPackRevision() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.PackRevision
+}
+
+func (o *UpdateFlagSettingsMetadata1) GetConfigUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.ConfigUpdatedAt
+}
+
+// UpdateFlagSettingsResponseBody1 - Syncs direct the synchronization of Flags to Edge Configs
+type UpdateFlagSettingsResponseBody1 struct {
+	TypeName     UpdateFlagSettingsTypeName1         `json:"typeName"`
+	ProjectID    string                              `json:"projectId"`
+	OwnerID      *string                             `json:"ownerId,omitempty"`
+	Enabled      bool                                `json:"enabled"`
+	Environments []string                            `json:"environments"`
+	Connections  []UpdateFlagSettingsConnection1     `json:"connections,omitempty"`
+	Entities     []UpdateFlagSettingsEntityResponse1 `json:"entities"`
+	CreatedAt    *float64                            `json:"createdAt,omitempty"`
+	UpdatedAt    *float64                            `json:"updatedAt,omitempty"`
+	Metadata     UpdateFlagSettingsMetadata1         `json:"metadata"`
+}
+
+func (o *UpdateFlagSettingsResponseBody1) GetTypeName() UpdateFlagSettingsTypeName1 {
+	if o == nil {
+		return UpdateFlagSettingsTypeName1("")
+	}
+	return o.TypeName
+}
+
+func (o *UpdateFlagSettingsResponseBody1) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+func (o *UpdateFlagSettingsResponseBody1) GetOwnerID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.OwnerID
+}
+
+func (o *UpdateFlagSettingsResponseBody1) GetEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.Enabled
+}
+
+func (o *UpdateFlagSettingsResponseBody1) GetEnvironments() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.Environments
+}
+
+func (o *UpdateFlagSettingsResponseBody1) GetConnections() []UpdateFlagSettingsConnection1 {
+	if o == nil {
+		return nil
+	}
+	return o.Connections
+}
+
+func (o *UpdateFlagSettingsResponseBody1) GetEntities() []UpdateFlagSettingsEntityResponse1 {
+	if o == nil {
+		return []UpdateFlagSettingsEntityResponse1{}
+	}
+	return o.Entities
+}
+
+func (o *UpdateFlagSettingsResponseBody1) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *UpdateFlagSettingsResponseBody1) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *UpdateFlagSettingsResponseBody1) GetMetadata() UpdateFlagSettingsMetadata1 {
+	if o == nil {
+		return UpdateFlagSettingsMetadata1{}
 	}
 	return o.Metadata
 }
 
 type UpdateFlagSettingsResponse struct {
-	HTTPMeta components.HTTPMetadata `json:"-"`
-	Object   *UpdateFlagSettingsResponseBody
+	HTTPMeta                              components.HTTPMetadata `json:"-"`
+	TwoHundredApplicationJSONObject       *UpdateFlagSettingsResponseBody1
+	TwoHundredAndOneApplicationJSONObject *UpdateFlagSettingsResponseBody2
 }
 
 func (o *UpdateFlagSettingsResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -409,9 +660,16 @@ func (o *UpdateFlagSettingsResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *UpdateFlagSettingsResponse) GetObject() *UpdateFlagSettingsResponseBody {
+func (o *UpdateFlagSettingsResponse) GetTwoHundredApplicationJSONObject() *UpdateFlagSettingsResponseBody1 {
 	if o == nil {
 		return nil
 	}
-	return o.Object
+	return o.TwoHundredApplicationJSONObject
+}
+
+func (o *UpdateFlagSettingsResponse) GetTwoHundredAndOneApplicationJSONObject() *UpdateFlagSettingsResponseBody2 {
+	if o == nil {
+		return nil
+	}
+	return o.TwoHundredAndOneApplicationJSONObject
 }

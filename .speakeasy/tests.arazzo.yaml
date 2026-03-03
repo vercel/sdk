@@ -8178,7 +8178,7 @@ workflows:
             in: query
             value: my-team-url-slug
         successCriteria:
-          - condition: $statusCode == 201
+          - condition: $statusCode == 200
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |

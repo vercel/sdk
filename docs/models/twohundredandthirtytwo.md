@@ -9,7 +9,7 @@ import { TwoHundredAndThirtyTwo } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndThirtyTwo = {
   appName: "<value>",
-  nextScopes: [
+  scopes: [
     "profile",
   ],
 };
@@ -17,9 +17,9 @@ let value: TwoHundredAndThirtyTwo = {
 
 ## Fields
 
-| Field                                                    | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `appName`                                                | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `appId`                                                  | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      |
-| `nextScopes`                                             | [models.NextScopes](../models/nextscopes.md)[]           | :heavy_check_mark:                                       | N/A                                                      |
-| `nextPermissions`                                        | [models.NextPermissions](../models/nextpermissions.md)[] | :heavy_minus_sign:                                       | N/A                                                      |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `appName`                                            | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
+| `appId`                                              | *string*                                             | :heavy_minus_sign:                                   | N/A                                                  |
+| `scopes`                                             | [models.PayloadScopes](../models/payloadscopes.md)[] | :heavy_check_mark:                                   | N/A                                                  |
+| `permissions`                                        | [models.Permissions](../models/permissions.md)[]     | :heavy_minus_sign:                                   | N/A                                                  |

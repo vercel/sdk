@@ -9,7 +9,8 @@ import { TwentyOne } from "@vercel/sdk/models/userevent.js";
 
 let value: TwentyOne = {
   alias: "<value>",
-  deploymentUrl: "https://glorious-embossing.com",
+  aliasId: "<id>",
+  deploymentId: "<id>",
 };
 ```
 
@@ -17,5 +18,7 @@ let value: TwentyOne = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `name`             | *string*           | :heavy_minus_sign: | N/A                |
 | `alias`            | *string*           | :heavy_check_mark: | N/A                |
-| `deploymentUrl`    | *string*           | :heavy_check_mark: | N/A                |
+| `aliasId`          | *string*           | :heavy_check_mark: | N/A                |
+| `deploymentId`     | *string*           | :heavy_check_mark: | N/A                |

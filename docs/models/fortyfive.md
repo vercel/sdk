@@ -9,7 +9,6 @@ import { FortyFive } from "@vercel/sdk/models/userevent.js";
 
 let value: FortyFive = {
   githubLogin: "<value>",
-  host: "gentle-mallard.org",
 };
 ```
 
@@ -18,4 +17,3 @@ let value: FortyFive = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `githubLogin`      | *string*           | :heavy_check_mark: | N/A                |
-| `host`             | *string*           | :heavy_check_mark: | N/A                |

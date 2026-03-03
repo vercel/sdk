@@ -8,27 +8,18 @@ The payload of the event, if requested.
 import { TwoHundredAndSixtyEight } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndSixtyEight = {
-  job: {
-    type: "gitlab-push",
-    headInfo: {
-      project: {
-        id: "<id>",
-      },
-      ref: "<value>",
-      sha: "<value>",
-    },
-    project: {
-      id: "<id>",
-    },
-    ref: "<value>",
-    sha: "<value>",
-    provider: "gitlab",
-  },
+  trialCreditsIssuedAt: 8466.39,
+  expiresAt: "1741969629236",
+  amount: "501.90",
+  currency: "Belarusian Ruble",
 };
 ```
 
 ## Fields
 
-| Field               | Type                | Required            | Description         |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `job`               | *models.PayloadJob* | :heavy_check_mark:  | N/A                 |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `trialCreditsIssuedAt` | *number*               | :heavy_check_mark:     | N/A                    |
+| `expiresAt`            | *string*               | :heavy_check_mark:     | N/A                    |
+| `amount`               | *string*               | :heavy_check_mark:     | N/A                    |
+| `currency`             | *string*               | :heavy_check_mark:     | N/A                    |

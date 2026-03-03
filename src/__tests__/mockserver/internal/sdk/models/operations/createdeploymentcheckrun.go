@@ -58,6 +58,51 @@ func (o *CreateDeploymentCheckRunRequest) GetBody() *CreateDeploymentCheckRunReq
 	return o.Body
 }
 
+type CreateDeploymentCheckRunKindVercel string
+
+const (
+	CreateDeploymentCheckRunKindVercelVercel CreateDeploymentCheckRunKindVercel = "vercel"
+)
+
+func (e CreateDeploymentCheckRunKindVercel) ToPointer() *CreateDeploymentCheckRunKindVercel {
+	return &e
+}
+func (e *CreateDeploymentCheckRunKindVercel) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vercel":
+		*e = CreateDeploymentCheckRunKindVercel(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateDeploymentCheckRunKindVercel: %v", v)
+	}
+}
+
+type CreateDeploymentCheckRunSourceVercel struct {
+	Kind CreateDeploymentCheckRunKindVercel `json:"kind"`
+}
+
+func (c CreateDeploymentCheckRunSourceVercel) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateDeploymentCheckRunSourceVercel) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"kind"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateDeploymentCheckRunSourceVercel) GetKind() CreateDeploymentCheckRunKindVercel {
+	if o == nil {
+		return CreateDeploymentCheckRunKindVercel("")
+	}
+	return o.Kind
+}
+
 type CreateDeploymentCheckRunKindGitProvider string
 
 const (
@@ -284,12 +329,14 @@ const (
 	CreateDeploymentCheckRunSourceUnionTypeIntegration CreateDeploymentCheckRunSourceUnionType = "integration"
 	CreateDeploymentCheckRunSourceUnionTypeWebhook     CreateDeploymentCheckRunSourceUnionType = "webhook"
 	CreateDeploymentCheckRunSourceUnionTypeGitProvider CreateDeploymentCheckRunSourceUnionType = "git-provider"
+	CreateDeploymentCheckRunSourceUnionTypeVercel      CreateDeploymentCheckRunSourceUnionType = "vercel"
 )
 
 type CreateDeploymentCheckRunSourceUnion struct {
 	CreateDeploymentCheckRunSourceIntegration *CreateDeploymentCheckRunSourceIntegration `queryParam:"inline"`
 	CreateDeploymentCheckRunSourceWebhook     *CreateDeploymentCheckRunSourceWebhook     `queryParam:"inline"`
 	CreateDeploymentCheckRunSourceGitProvider *CreateDeploymentCheckRunSourceGitProvider `queryParam:"inline"`
+	CreateDeploymentCheckRunSourceVercel      *CreateDeploymentCheckRunSourceVercel      `queryParam:"inline"`
 
 	Type CreateDeploymentCheckRunSourceUnionType
 }
@@ -327,6 +374,18 @@ func CreateCreateDeploymentCheckRunSourceUnionGitProvider(gitProvider CreateDepl
 	return CreateDeploymentCheckRunSourceUnion{
 		CreateDeploymentCheckRunSourceGitProvider: &gitProvider,
 		Type: typ,
+	}
+}
+
+func CreateCreateDeploymentCheckRunSourceUnionVercel(vercel CreateDeploymentCheckRunSourceVercel) CreateDeploymentCheckRunSourceUnion {
+	typ := CreateDeploymentCheckRunSourceUnionTypeVercel
+
+	typStr := CreateDeploymentCheckRunKindVercel(typ)
+	vercel.Kind = typStr
+
+	return CreateDeploymentCheckRunSourceUnion{
+		CreateDeploymentCheckRunSourceVercel: &vercel,
+		Type:                                 typ,
 	}
 }
 
@@ -369,6 +428,15 @@ func (u *CreateDeploymentCheckRunSourceUnion) UnmarshalJSON(data []byte) error {
 		u.CreateDeploymentCheckRunSourceGitProvider = createDeploymentCheckRunSourceGitProvider
 		u.Type = CreateDeploymentCheckRunSourceUnionTypeGitProvider
 		return nil
+	case "vercel":
+		createDeploymentCheckRunSourceVercel := new(CreateDeploymentCheckRunSourceVercel)
+		if err := utils.UnmarshalJSON(data, &createDeploymentCheckRunSourceVercel, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Kind == vercel) type CreateDeploymentCheckRunSourceVercel within CreateDeploymentCheckRunSourceUnion: %w", string(data), err)
+		}
+
+		u.CreateDeploymentCheckRunSourceVercel = createDeploymentCheckRunSourceVercel
+		u.Type = CreateDeploymentCheckRunSourceUnionTypeVercel
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateDeploymentCheckRunSourceUnion", string(data))
@@ -385,6 +453,10 @@ func (u CreateDeploymentCheckRunSourceUnion) MarshalJSON() ([]byte, error) {
 
 	if u.CreateDeploymentCheckRunSourceGitProvider != nil {
 		return utils.MarshalJSON(u.CreateDeploymentCheckRunSourceGitProvider, "", true)
+	}
+
+	if u.CreateDeploymentCheckRunSourceVercel != nil {
+		return utils.MarshalJSON(u.CreateDeploymentCheckRunSourceVercel, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type CreateDeploymentCheckRunSourceUnion: all fields are null")
@@ -603,6 +675,10 @@ func (o *CreateDeploymentCheckRunResponseBody) GetSourceWebhook() *CreateDeploym
 
 func (o *CreateDeploymentCheckRunResponseBody) GetSourceGitProvider() *CreateDeploymentCheckRunSourceGitProvider {
 	return o.GetSource().CreateDeploymentCheckRunSourceGitProvider
+}
+
+func (o *CreateDeploymentCheckRunResponseBody) GetSourceVercel() *CreateDeploymentCheckRunSourceVercel {
+	return o.GetSource().CreateDeploymentCheckRunSourceVercel
 }
 
 func (o *CreateDeploymentCheckRunResponseBody) GetRequires() *CreateDeploymentCheckRunRequires {

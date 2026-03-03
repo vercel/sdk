@@ -8,7 +8,8 @@ The payload of the event, if requested.
 import { OneHundredAndNinety } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndNinety = {
-  mfaEnabled: false,
+  enabled: false,
+  totpVerified: true,
 };
 ```
 
@@ -16,4 +17,5 @@ let value: OneHundredAndNinety = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `mfaEnabled`       | *boolean*          | :heavy_check_mark: | N/A                |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
+| `totpVerified`     | *boolean*          | :heavy_check_mark: | N/A                |

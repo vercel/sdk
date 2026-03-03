@@ -9,27 +9,26 @@ import { OneHundredAndSixtyNine } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndSixtyNine = {
   budget: {
-    type: "fixed",
-    fixedBudget: 5943.41,
-    previousSpend: [
-      6707.47,
-      1499.39,
-    ],
-    notifiedAt: [
-      9835.77,
-      9985.59,
-      6854.65,
-    ],
-    createdAt: 1394.57,
-    isActive: false,
-    teamId: "<id>",
-    id: "<id>",
+    budgetItem: {
+      type: "fixed",
+      fixedBudget: 268.4,
+      previousSpend: [
+        2211.33,
+        3066.93,
+        9049.6,
+      ],
+      notifiedAt: [],
+      createdAt: 2535.69,
+      isActive: true,
+      teamId: "<id>",
+      id: "<id>",
+    },
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `budget`                                                                | [models.PayloadBudget](../models/payloadbudget.md)                      | :heavy_check_mark:                                                      | Represents a budget for tracking and notifying teams on their spending. |
+| Field                                | Type                                 | Required                             | Description                          |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `budget`                             | [models.Budget](../models/budget.md) | :heavy_check_mark:                   | N/A                                  |

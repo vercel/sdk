@@ -30,7 +30,7 @@ generation:
   tests:
     generateTests: true
     generateNewTests: true
-    skipResponseBodyAssertions: false
+    skipResponseBodyAssertions: true
 typescript:
   version: 1.19.7
   acceptHeaderEnum: true

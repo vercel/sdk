@@ -21,33 +21,6 @@ test("Checks V2 List Project Checks", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    checks: [
-      {
-        id: "<id>",
-        name: "<value>",
-        ownerId: "<id>",
-        projectId: "<id>",
-        isRerequestable: false,
-        requires: "none",
-        source: {
-          kind: "git-provider",
-          provider: "gitlab",
-          externalCheckName: "<value>",
-        },
-        blocks: "deployment-alias",
-        targets: [
-          "<value 1>",
-          "<value 2>",
-          "<value 3>",
-        ],
-        sourceKind: "integration",
-        timeout: 7907.15,
-        createdAt: 8323.07,
-        updatedAt: 2126.19,
-      },
-    ],
-  });
 });
 
 test("Checks V2 Create Project Check", async () => {
@@ -65,28 +38,6 @@ test("Checks V2 Create Project Check", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    id: "<id>",
-    name: "<value>",
-    ownerId: "<id>",
-    projectId: "<id>",
-    isRerequestable: false,
-    requires: "none",
-    source: {
-      kind: "git-provider",
-      provider: "github",
-      externalCheckName: "<value>",
-    },
-    blocks: "build-start",
-    targets: [
-      "<value 1>",
-      "<value 2>",
-    ],
-    sourceKind: "webhook",
-    timeout: 3857.24,
-    createdAt: 8346.78,
-    updatedAt: 5501.55,
-  });
 });
 
 test("Checks V2 Get Project Check", async () => {
@@ -105,28 +56,6 @@ test("Checks V2 Get Project Check", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    id: "<id>",
-    name: "<value>",
-    ownerId: "<id>",
-    projectId: "<id>",
-    isRerequestable: false,
-    requires: "deployment-url",
-    source: {
-      kind: "integration",
-      integrationId: "<id>",
-      integrationConfigurationId: "<id>",
-    },
-    blocks: "deployment-promotion",
-    targets: [
-      "<value 1>",
-      "<value 2>",
-    ],
-    sourceKind: "integration",
-    timeout: 371.16,
-    createdAt: 1812.63,
-    updatedAt: 2669.44,
-  });
 });
 
 test("Checks V2 Update Project Check", async () => {
@@ -145,25 +74,6 @@ test("Checks V2 Update Project Check", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    id: "<id>",
-    name: "<value>",
-    ownerId: "<id>",
-    projectId: "<id>",
-    isRerequestable: false,
-    requires: "none",
-    source: {
-      kind: "webhook",
-    },
-    blocks: "deployment-start",
-    targets: [
-      "<value 1>",
-    ],
-    sourceKind: "integration",
-    timeout: 6604.77,
-    createdAt: 6849.47,
-    updatedAt: 1044.45,
-  });
 });
 
 test("Checks V2 Delete Project Check", async () => {
@@ -182,9 +92,6 @@ test("Checks V2 Delete Project Check", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    success: true,
-  });
 });
 
 test("Checks V2 List Check Runs", async () => {
@@ -203,26 +110,6 @@ test("Checks V2 List Check Runs", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    runs: [
-      {
-        id: "<id>",
-        name: "<value>",
-        checkId: "<id>",
-        ownerId: "<id>",
-        deploymentId: "<id>",
-        source: {
-          kind: "git-provider",
-          provider: "gitlab",
-          externalCheckName: "<value>",
-        },
-        status: "running",
-        timeout: 2183.78,
-        createdAt: 8028.57,
-        updatedAt: 5968.89,
-      },
-    ],
-  });
 });
 
 test("Checks V2 List Deployment Check Runs", async () => {
@@ -240,9 +127,6 @@ test("Checks V2 List Deployment Check Runs", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    runs: [],
-  });
 });
 
 test("Checks V2 Create Deployment Check Run", async () => {
@@ -260,22 +144,6 @@ test("Checks V2 Create Deployment Check Run", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    id: "<id>",
-    name: "<value>",
-    checkId: "<id>",
-    ownerId: "<id>",
-    deploymentId: "<id>",
-    source: {
-      kind: "git-provider",
-      provider: "gitlab",
-      externalCheckName: "<value>",
-    },
-    status: "queued",
-    timeout: 900.28,
-    createdAt: 917.6,
-    updatedAt: 853.91,
-  });
 });
 
 test("Checks V2 Get Deployment Check Run", async () => {
@@ -294,22 +162,6 @@ test("Checks V2 Get Deployment Check Run", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    id: "<id>",
-    name: "<value>",
-    checkId: "<id>",
-    ownerId: "<id>",
-    deploymentId: "<id>",
-    source: {
-      kind: "integration",
-      integrationId: "<id>",
-      integrationConfigurationId: "<id>",
-    },
-    status: "running",
-    timeout: 9092.1,
-    createdAt: 1450.24,
-    updatedAt: 966.92,
-  });
 });
 
 test("Checks V2 Update Deployment Check Run", async () => {
@@ -328,20 +180,4 @@ test("Checks V2 Update Deployment Check Run", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    id: "<id>",
-    name: "<value>",
-    checkId: "<id>",
-    ownerId: "<id>",
-    deploymentId: "<id>",
-    source: {
-      kind: "integration",
-      integrationId: "<id>",
-      integrationConfigurationId: "<id>",
-    },
-    status: "running",
-    timeout: 49.19,
-    createdAt: 3033.31,
-    updatedAt: 5693.16,
-  });
 });

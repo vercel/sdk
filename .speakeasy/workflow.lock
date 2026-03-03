@@ -6,7 +6,7 @@ sources:
         sourceBlobDigest: sha256:fedb6139a55c46ddf6f800668ac6b19ff7641926b3b51a27d41f2b1e23773036
         tags:
             - latest
-            - speakeasy-sdk-regen-1772151225
+            - speakeasy-sdk-regen-1772568655
             - 0.0.1
 targets:
     vercel:
@@ -15,7 +15,7 @@ targets:
         sourceRevisionDigest: sha256:7316c003c260858d17588925c99c777f75752658bd9cffab6d75f784f1fbd518
         sourceBlobDigest: sha256:fedb6139a55c46ddf6f800668ac6b19ff7641926b3b51a27d41f2b1e23773036
         codeSamplesNamespace: vercel-oas-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:3e426f1132a380d101c779b3d836affb6919e905e46412143f6f76d9fef4844c
+        codeSamplesRevisionDigest: sha256:a62af7cda5d7d0086cc8eac53a799d09ca46e0cf4efb2cbc8e644e837e0bf441
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

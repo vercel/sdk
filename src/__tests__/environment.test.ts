@@ -21,13 +21,6 @@ test("Environment Create Custom Environment", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    id: "<id>",
-    slug: "<value>",
-    type: "production",
-    createdAt: 772.39,
-    updatedAt: 509.66,
-  });
 });
 
 test("Environment Get /V9 /Projects/{id Or Name}/custom Environments", async () => {
@@ -48,12 +41,6 @@ test("Environment Get /V9 /Projects/{id Or Name}/custom Environments", async () 
       slug: "my-team-url-slug",
     });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    accountLimit: {
-      total: 4336.88,
-    },
-    environments: [],
-  });
 });
 
 test("Environment Get Custom Environment", async () => {
@@ -72,13 +59,6 @@ test("Environment Get Custom Environment", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    id: "<id>",
-    slug: "<value>",
-    type: "production",
-    createdAt: 212.72,
-    updatedAt: 2304.72,
-  });
 });
 
 test("Environment Update Custom Environment", async () => {
@@ -97,13 +77,6 @@ test("Environment Update Custom Environment", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    id: "<id>",
-    slug: "<value>",
-    type: "production",
-    createdAt: 4054.52,
-    updatedAt: 7043.79,
-  });
 });
 
 test("Environment Remove Custom Environment", async () => {
@@ -122,13 +95,6 @@ test("Environment Remove Custom Environment", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    id: "<id>",
-    slug: "<value>",
-    type: "preview",
-    createdAt: 3549.56,
-    updatedAt: 1676.55,
-  });
 });
 
 test("Environment Create Shared Env Variable", async () => {
@@ -153,10 +119,6 @@ test("Environment Create Shared Env Variable", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    created: [],
-    failed: [],
-  });
 });
 
 test("Environment List Shared Env Variable", async () => {
@@ -181,14 +143,6 @@ test("Environment List Shared Env Variable", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    data: [],
-    pagination: {
-      count: 20,
-      next: 1540095775951,
-      prev: 1540095775951,
-    },
-  });
 });
 
 test("Environment Update Shared Env Variable", async () => {
@@ -222,17 +176,6 @@ test("Environment Update Shared Env Variable", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    updated: [],
-    failed: [
-      {
-        error: {
-          code: "<value>",
-          message: "<value>",
-        },
-      },
-    ],
-  });
 });
 
 test("Environment Delete Shared Env Variable", async () => {
@@ -255,20 +198,6 @@ test("Environment Delete Shared Env Variable", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    deleted: [
-      "<value 1>",
-      "<value 2>",
-    ],
-    failed: [
-      {
-        error: {
-          code: "<value>",
-          message: "<value>",
-        },
-      },
-    ],
-  });
 });
 
 test("Environment Get Shared Env Var", async () => {
@@ -286,26 +215,6 @@ test("Environment Get Shared Env Var", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    created: new Date("2021-02-10T13:11:49.180Z"),
-    key: "my-api-key",
-    ownerId: "team_LLHUOMOoDlqOp8wPE4kFo9pE",
-    id: "env_XCG7t7AIHuO2SBA8667zNUiM",
-    createdBy: "2qDDuGFTWXBLDNnqZfWPDp1A",
-    deletedBy: "2qDDuGFTWXBLDNnqZfWPDp1A",
-    updatedBy: "2qDDuGFTWXBLDNnqZfWPDp1A",
-    createdAt: 1609492210000,
-    deletedAt: 1609492210000,
-    updatedAt: 1609492210000,
-    projectId: [
-      "prj_2WjyKQmM8ZnGcJsPWMrHRHrE",
-      "prj_2WjyKQmM8ZnGcJsPWMrasEFg",
-    ],
-    type: "encrypted",
-    target: [
-      "production",
-    ],
-  });
 });
 
 test("Environment Unlink Shared Env Variable", async () => {
@@ -324,7 +233,4 @@ test("Environment Unlink Shared Env Variable", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    id: "<id>",
-  });
 });

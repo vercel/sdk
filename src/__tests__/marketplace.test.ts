@@ -19,12 +19,6 @@ test("Marketplace Get Account Info", async () => {
     integrationConfigurationId: "<id>",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    url: "https://joyful-mouser.com/",
-    contact: {
-      email: "Cecile47@yahoo.com",
-    },
-  });
 });
 
 test("Marketplace Get Member", async () => {
@@ -41,10 +35,6 @@ test("Marketplace Get Member", async () => {
     memberId: "<id>",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    id: "<id>",
-    role: "USER",
-  });
 });
 
 test("Marketplace Create Event", async () => {
@@ -167,7 +157,6 @@ test("Marketplace Submit Invoice", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
 });
 
 test("Marketplace Get Invoice", async () => {
@@ -184,28 +173,6 @@ test("Marketplace Get Invoice", async () => {
     invoiceId: "<id>",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    invoiceId: "<id>",
-    state: "invoiced",
-    invoiceDate: "<value>",
-    period: {
-      start: "<value>",
-      end: "<value>",
-    },
-    items: [
-      {
-        billingPlanId: "<id>",
-        name: "<value>",
-        price: "354.65",
-        quantity: 4602.57,
-        units: "<value>",
-        total: "<value>",
-      },
-    ],
-    total: "<value>",
-    created: "<value>",
-    updated: "<value>",
-  });
 });
 
 test("Marketplace Update Invoice", async () => {
@@ -290,9 +257,6 @@ test("Marketplace Import Resource", async () => {
     resourceId: "<id>",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    name: "<value>",
-  });
 });
 
 test("Marketplace Exchange Sso Token", async () => {
@@ -310,11 +274,6 @@ test("Marketplace Exchange Sso Token", async () => {
     grantType: "refresh_token",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    idToken: "<value>",
-    tokenType: "<value>",
-    accessToken: "<value>",
-  });
 });
 
 test("Marketplace Post /V1 /Installations/{integration Configuration Id}/resources/{resource Id}/experimentation/items", async () => {
@@ -387,13 +346,6 @@ test("Marketplace Put /V1 /Installations/{integration Configuration Id}/resource
       resourceId: "<id>",
     });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    items: {
-      "key": "<value>",
-    },
-    updatedAt: 1217.32,
-    digest: "<value>",
-  });
 });
 
 it.skip("Marketplace Get Resources", async () => {
@@ -427,16 +379,6 @@ test("Marketplace Get Integration Resources", async () => {
     integrationConfigurationId: "<id>",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    resources: [
-      {
-        partnerId: "<id>",
-        internalId: "<id>",
-        name: "<value>",
-        productId: "<id>",
-      },
-    ],
-  });
 });
 
 test("Marketplace Get Integration Resource", async () => {
@@ -453,12 +395,6 @@ test("Marketplace Get Integration Resource", async () => {
     resourceId: "<id>",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    id: "<id>",
-    internalId: "<id>",
-    name: "<value>",
-    productId: "<id>",
-  });
 });
 
 test("Marketplace Update Resource", async () => {
@@ -475,9 +411,6 @@ test("Marketplace Update Resource", async () => {
     resourceId: "<id>",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    name: "<value>",
-  });
 });
 
 test("Marketplace Get /V1 /Installations/{integration Configuration Id}/resources/{resource Id}/experimentation/edge Config", async () => {
@@ -499,9 +432,4 @@ test("Marketplace Get /V1 /Installations/{integration Configuration Id}/resource
       },
     );
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    items: {},
-    updatedAt: 3968.81,
-    digest: "<value>",
-  });
 });

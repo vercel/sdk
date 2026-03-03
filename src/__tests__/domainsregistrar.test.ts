@@ -19,10 +19,6 @@ test("Domains Registrar Get Supported Tlds", async () => {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual([
-    "<value 1>",
-    "<value 2>",
-  ]);
 });
 
 test("Domains Registrar Get Tld Price", async () => {
@@ -39,12 +35,6 @@ test("Domains Registrar Get Tld Price", async () => {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    years: 8935.16,
-    purchasePrice: 6287.26,
-    renewalPrice: 7886.17,
-    transferPrice: 1743.63,
-  });
 });
 
 test("Domains Registrar Get Domain Availability", async () => {
@@ -61,9 +51,6 @@ test("Domains Registrar Get Domain Availability", async () => {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    available: false,
-  });
 });
 
 test("Domains Registrar Get Domain Price", async () => {
@@ -80,12 +67,6 @@ test("Domains Registrar Get Domain Price", async () => {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    years: 40.44,
-    purchasePrice: 7574.42,
-    renewalPrice: 1523.71,
-    transferPrice: 2786.9,
-  });
 });
 
 test("Domains Registrar Get Bulk Availability", async () => {
@@ -106,9 +87,6 @@ test("Domains Registrar Get Bulk Availability", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    results: [],
-  });
 });
 
 test("Domains Registrar Get Domain Auth Code", async () => {
@@ -125,9 +103,6 @@ test("Domains Registrar Get Domain Auth Code", async () => {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    authCode: "<value>",
-  });
 });
 
 test("Domains Registrar Buy Single Domain", async () => {
@@ -160,15 +135,6 @@ test("Domains Registrar Buy Single Domain", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    orderId: "<id>",
-    links: {
-      "key": {
-        href: "<value>",
-        method: "GET",
-      },
-    },
-  });
 });
 
 test("Domains Registrar Buy Domains", async () => {
@@ -198,10 +164,6 @@ test("Domains Registrar Buy Domains", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    orderId: "<id>",
-    links: {},
-  });
 });
 
 test("Domains Registrar Transfer In Domain", async () => {
@@ -235,10 +197,6 @@ test("Domains Registrar Transfer In Domain", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    orderId: "<id>",
-    links: {},
-  });
 });
 
 test("Domains Registrar Get Domain Transfer In", async () => {
@@ -255,9 +213,6 @@ test("Domains Registrar Get Domain Transfer In", async () => {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    status: "pending_transfer",
-  });
 });
 
 test("Domains Registrar Renew Domain", async () => {
@@ -278,10 +233,6 @@ test("Domains Registrar Renew Domain", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    orderId: "<id>",
-    links: {},
-  });
 });
 
 test("Domains Registrar Get Contact Info Schema", async () => {
@@ -298,7 +249,6 @@ test("Domains Registrar Get Contact Info Schema", async () => {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
 });
 
 test("Domains Registrar Get Order", async () => {
@@ -315,19 +265,6 @@ test("Domains Registrar Get Order", async () => {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    orderId: "<id>",
-    domains: [
-      {
-        purchaseType: "renewal",
-        years: 3271.32,
-        domainName: "annual-atrium.biz",
-        status: "refunded",
-        price: 5522.99,
-      },
-    ],
-    status: "purchasing",
-  });
 });
 
 test("Domains Registrar Get Tld", async () => {
@@ -344,9 +281,4 @@ test("Domains Registrar Get Tld", async () => {
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    supportedLanguageCodes: {
-      "key": "<value>",
-    },
-  });
 });

@@ -11927,6 +11927,8 @@ type GetDeploymentSeatBlock struct {
 	BlockCode GetDeploymentBlockCode `json:"blockCode"`
 	// The blocked vercel user ID.
 	UserID *string `json:"userId,omitempty"`
+	// Determines if the user was verified during the block. In the git integration case, the commit sender was the author.
+	IsVerified *bool `json:"isVerified,omitempty"`
 }
 
 func (g GetDeploymentSeatBlock) MarshalJSON() ([]byte, error) {
@@ -11952,6 +11954,13 @@ func (o *GetDeploymentSeatBlock) GetUserID() *string {
 		return nil
 	}
 	return o.UserID
+}
+
+func (o *GetDeploymentSeatBlock) GetIsVerified() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsVerified
 }
 
 // Lambdas1 - The deployment including both public and private information

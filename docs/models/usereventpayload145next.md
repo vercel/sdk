@@ -6,12 +6,16 @@
 import { UserEventPayload145Next } from "@vercel/sdk/models/userevent.js";
 
 let value: UserEventPayload145Next = {
-  functionZeroConfigFailover: false,
+  functionDefaultRegions: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                        | Type                         | Required                     | Description                  |
-| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `functionZeroConfigFailover` | *boolean*                    | :heavy_check_mark:           | N/A                          |
+| Field                    | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `functionDefaultRegions` | *string*[]               | :heavy_check_mark:       | N/A                      |

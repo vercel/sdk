@@ -8,24 +8,14 @@ The payload of the event, if requested.
 import { FiftyFive } from "@vercel/sdk/models/userevent.js";
 
 let value: FiftyFive = {
-  deployment: {
-    id: "<id>",
-    name: "<value>",
-    url: "https://afraid-whack.com/",
-    meta: {
-      "key": "<value>",
-      "key1": "<value>",
-    },
-  },
-  deploymentId: "<id>",
-  url: "https://sad-innovation.biz/",
+  url: "https://afraid-whack.com/",
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `deployment`                                                                 | [models.UserEventPayloadDeployment](../models/usereventpayloaddeployment.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `deploymentId`                                                               | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `url`                                                                        | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `url`                                                                  | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `oldTeam`                                                              | [models.UserEventPayloadOldTeam](../models/usereventpayloadoldteam.md) | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `newTeam`                                                              | [models.UserEventPayloadNewTeam](../models/usereventpayloadnewteam.md) | :heavy_minus_sign:                                                     | N/A                                                                    |

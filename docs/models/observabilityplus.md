@@ -7,7 +7,7 @@ import { ObservabilityPlus } from "@vercel/sdk/models/userevent.js";
 
 let value: ObservabilityPlus = {
   updatedAt: 6532.64,
-  blockReason: "admin_override",
+  blockReason: "limits_exceeded",
   blockType: "hard",
 };
 ```

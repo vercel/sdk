@@ -31,3 +31,11 @@ const value: models.ListProjectChecksSource3 = {
 };
 ```
 
+### `models.ListProjectChecksSource4`
+
+```typescript
+const value: models.ListProjectChecksSource4 = {
+  kind: "vercel",
+};
+```
+

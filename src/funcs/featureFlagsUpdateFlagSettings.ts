@@ -22,8 +22,8 @@ import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import {
   UpdateFlagSettingsRequest,
   UpdateFlagSettingsRequest$outboundSchema,
-  UpdateFlagSettingsResponseBody,
-  UpdateFlagSettingsResponseBody$inboundSchema,
+  UpdateFlagSettingsResponse,
+  UpdateFlagSettingsResponse$inboundSchema,
 } from "../models/updateflagsettingsop.js";
 import { VercelError } from "../models/vercelerror.js";
 import { APICall, APIPromise } from "../types/async.js";
@@ -41,7 +41,7 @@ export function featureFlagsUpdateFlagSettings(
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    UpdateFlagSettingsResponseBody,
+    UpdateFlagSettingsResponse,
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -66,7 +66,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      UpdateFlagSettingsResponseBody,
+      UpdateFlagSettingsResponse,
       | VercelError
       | ResponseValidationError
       | ConnectionError
@@ -158,7 +158,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    UpdateFlagSettingsResponseBody,
+    UpdateFlagSettingsResponse,
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -168,7 +168,8 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(201, UpdateFlagSettingsResponseBody$inboundSchema),
+    M.json(200, UpdateFlagSettingsResponse$inboundSchema),
+    M.json(201, UpdateFlagSettingsResponse$inboundSchema),
     M.fail([400, 401, 402, 403, 404, 409, 412, "4XX"]),
     M.fail("5XX"),
   )(response, req);

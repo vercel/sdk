@@ -7,19 +7,11 @@ The payload of the event, if requested.
 ```typescript
 import { TwoHundredAndSixtySeven } from "@vercel/sdk/models/userevent.js";
 
-let value: TwoHundredAndSixtySeven = {
-  trialCreditsIssuedAt: 8665.69,
-  expiresAt: "1742455329184",
-  amount: "395.09",
-  currency: "Iceland Krona",
-};
+let value: TwoHundredAndSixtySeven = {};
 ```
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `trialCreditsIssuedAt` | *number*               | :heavy_check_mark:     | N/A                    |
-| `expiresAt`            | *string*               | :heavy_check_mark:     | N/A                    |
-| `amount`               | *string*               | :heavy_check_mark:     | N/A                    |
-| `currency`             | *string*               | :heavy_check_mark:     | N/A                    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `inviteCode`       | *string*           | :heavy_minus_sign: | N/A                |

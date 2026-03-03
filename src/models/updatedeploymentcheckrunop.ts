@@ -55,6 +55,10 @@ export type UpdateDeploymentCheckRunRequest = {
   requestBody?: UpdateDeploymentCheckRunRequestBody | undefined;
 };
 
+export type UpdateDeploymentCheckRunSource4 = {
+  kind: "vercel";
+};
+
 export const UpdateDeploymentCheckRunSourceProvider = {
   Github: "github",
   Gitlab: "gitlab",
@@ -86,7 +90,8 @@ export type UpdateDeploymentCheckRunSource1 = {
 export type UpdateDeploymentCheckRunSource =
   | UpdateDeploymentCheckRunSource1
   | UpdateDeploymentCheckRunSource2
-  | UpdateDeploymentCheckRunSource3;
+  | UpdateDeploymentCheckRunSource3
+  | UpdateDeploymentCheckRunSource4;
 
 export const UpdateDeploymentCheckRunRequires = {
   BuildReady: "build-ready",
@@ -139,7 +144,8 @@ export type UpdateDeploymentCheckRunResponseBody = {
   source:
     | UpdateDeploymentCheckRunSource1
     | UpdateDeploymentCheckRunSource2
-    | UpdateDeploymentCheckRunSource3;
+    | UpdateDeploymentCheckRunSource3
+    | UpdateDeploymentCheckRunSource4;
   requires?: UpdateDeploymentCheckRunRequires | undefined;
   blocks?: UpdateDeploymentCheckRunBlocks | undefined;
   targets?: Array<string> | undefined;
@@ -322,6 +328,47 @@ export function updateDeploymentCheckRunRequestFromJSON(
 }
 
 /** @internal */
+export const UpdateDeploymentCheckRunSource4$inboundSchema: z.ZodType<
+  UpdateDeploymentCheckRunSource4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  kind: types.literal("vercel"),
+});
+/** @internal */
+export type UpdateDeploymentCheckRunSource4$Outbound = {
+  kind: "vercel";
+};
+
+/** @internal */
+export const UpdateDeploymentCheckRunSource4$outboundSchema: z.ZodType<
+  UpdateDeploymentCheckRunSource4$Outbound,
+  z.ZodTypeDef,
+  UpdateDeploymentCheckRunSource4
+> = z.object({
+  kind: z.literal("vercel"),
+});
+
+export function updateDeploymentCheckRunSource4ToJSON(
+  updateDeploymentCheckRunSource4: UpdateDeploymentCheckRunSource4,
+): string {
+  return JSON.stringify(
+    UpdateDeploymentCheckRunSource4$outboundSchema.parse(
+      updateDeploymentCheckRunSource4,
+    ),
+  );
+}
+export function updateDeploymentCheckRunSource4FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateDeploymentCheckRunSource4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateDeploymentCheckRunSource4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateDeploymentCheckRunSource4' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateDeploymentCheckRunSourceProvider$inboundSchema:
   z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceProvider> = z.nativeEnum(
     UpdateDeploymentCheckRunSourceProvider,
@@ -484,12 +531,14 @@ export const UpdateDeploymentCheckRunSource$inboundSchema: z.ZodType<
   z.lazy(() => UpdateDeploymentCheckRunSource1$inboundSchema),
   z.lazy(() => UpdateDeploymentCheckRunSource2$inboundSchema),
   z.lazy(() => UpdateDeploymentCheckRunSource3$inboundSchema),
+  z.lazy(() => UpdateDeploymentCheckRunSource4$inboundSchema),
 ]);
 /** @internal */
 export type UpdateDeploymentCheckRunSource$Outbound =
   | UpdateDeploymentCheckRunSource1$Outbound
   | UpdateDeploymentCheckRunSource2$Outbound
-  | UpdateDeploymentCheckRunSource3$Outbound;
+  | UpdateDeploymentCheckRunSource3$Outbound
+  | UpdateDeploymentCheckRunSource4$Outbound;
 
 /** @internal */
 export const UpdateDeploymentCheckRunSource$outboundSchema: z.ZodType<
@@ -500,6 +549,7 @@ export const UpdateDeploymentCheckRunSource$outboundSchema: z.ZodType<
   z.lazy(() => UpdateDeploymentCheckRunSource1$outboundSchema),
   z.lazy(() => UpdateDeploymentCheckRunSource2$outboundSchema),
   z.lazy(() => UpdateDeploymentCheckRunSource3$outboundSchema),
+  z.lazy(() => UpdateDeploymentCheckRunSource4$outboundSchema),
 ]);
 
 export function updateDeploymentCheckRunSourceToJSON(
@@ -574,6 +624,7 @@ export const UpdateDeploymentCheckRunResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => UpdateDeploymentCheckRunSource1$inboundSchema),
     z.lazy(() => UpdateDeploymentCheckRunSource2$inboundSchema),
     z.lazy(() => UpdateDeploymentCheckRunSource3$inboundSchema),
+    z.lazy(() => UpdateDeploymentCheckRunSource4$inboundSchema),
   ]),
   requires: types.optional(UpdateDeploymentCheckRunRequires$inboundSchema),
   blocks: types.optional(UpdateDeploymentCheckRunBlocks$inboundSchema),
@@ -600,7 +651,8 @@ export type UpdateDeploymentCheckRunResponseBody$Outbound = {
   source:
     | UpdateDeploymentCheckRunSource1$Outbound
     | UpdateDeploymentCheckRunSource2$Outbound
-    | UpdateDeploymentCheckRunSource3$Outbound;
+    | UpdateDeploymentCheckRunSource3$Outbound
+    | UpdateDeploymentCheckRunSource4$Outbound;
   requires?: string | undefined;
   blocks?: string | undefined;
   targets?: Array<string> | undefined;
@@ -632,6 +684,7 @@ export const UpdateDeploymentCheckRunResponseBody$outboundSchema: z.ZodType<
     z.lazy(() => UpdateDeploymentCheckRunSource1$outboundSchema),
     z.lazy(() => UpdateDeploymentCheckRunSource2$outboundSchema),
     z.lazy(() => UpdateDeploymentCheckRunSource3$outboundSchema),
+    z.lazy(() => UpdateDeploymentCheckRunSource4$outboundSchema),
   ]),
   requires: UpdateDeploymentCheckRunRequires$outboundSchema.optional(),
   blocks: UpdateDeploymentCheckRunBlocks$outboundSchema.optional(),

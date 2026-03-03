@@ -9,15 +9,12 @@ import { OneHundredAndSeven } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndSeven = {
   projectId: "<id>",
-  projectName: "<value>",
-  action: "enabled",
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `projectId`                                                                | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `projectName`                                                              | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `action`                                                                   | [models.UserEventPayload107Action](../models/usereventpayload107action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectName`      | *string*           | :heavy_minus_sign: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |

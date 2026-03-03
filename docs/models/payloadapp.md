@@ -11,7 +11,7 @@ let value: PayloadApp = {
   clientId: "<id>",
   name: "<value>",
   clientAuthenticationUsed: {
-    method: "client_secret_basic",
+    method: "client_secret_post",
   },
 };
 ```

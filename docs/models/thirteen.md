@@ -14,4 +14,6 @@ let value: Thirteen = {};
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `aliasId`          | *string*           | :heavy_minus_sign: | N/A                |
 | `alias`            | *string*           | :heavy_minus_sign: | N/A                |
+| `projectName`      | *string*           | :heavy_minus_sign: | N/A                |

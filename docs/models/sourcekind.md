@@ -11,5 +11,5 @@ let value: SourceKind = "integration";
 ## Values
 
 ```typescript
-"integration" | "webhook" | "git-provider"
+"integration" | "webhook" | "git-provider" | "vercel"
 ```

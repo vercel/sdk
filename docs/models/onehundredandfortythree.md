@@ -11,10 +11,10 @@ let value: OneHundredAndFortyThree = {
   projectId: "<id>",
   projectName: "<value>",
   previous: {
-    functionDefaultMemoryType: "<value>",
+    functionDefaultTimeout: 4892.08,
   },
   next: {
-    functionDefaultMemoryType: "<value>",
+    functionDefaultTimeout: 597.51,
   },
 };
 ```

@@ -8,30 +8,14 @@ The payload of the event, if requested.
 import { OneHundredAndTwentyTwo } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndTwentyTwo = {
-  team: {
-    id: "<id>",
-    name: "<value>",
-  },
-  project: {
-    id: "<id>",
-    oldConnectConfigurations: [],
-    newConnectConfigurations: [
-      {
-        envId: "<id>",
-        connectConfigurationId: "<id>",
-        passive: true,
-        buildsEnabled: false,
-        createdAt: 5463.76,
-        updatedAt: 2696.76,
-      },
-    ],
-  },
+  name: "<value>",
+  ownerId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `team`                                                                       | [models.UserEventPayload122Team](../models/usereventpayload122team.md)       | :heavy_check_mark:                                                           | N/A                                                                          |
-| `project`                                                                    | [models.UserEventPayload122Project](../models/usereventpayload122project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |

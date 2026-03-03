@@ -8,10 +8,9 @@ The payload of the event, if requested.
 import { TwoHundredAndFour } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndFour = {
-  action: "mutate",
+  action: "resume_plan",
   data: {
-    "key": "<value>",
-    "key1": "<value>",
+    planSlug: "v0_business",
   },
 };
 ```
@@ -22,4 +21,4 @@ let value: TwoHundredAndFour = {
 | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
 | `subscriptionId`                                                           | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
 | `action`                                                                   | [models.UserEventPayload204Action](../models/usereventpayload204action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `data`                                                                     | Record<string, *any*>                                                      | :heavy_check_mark:                                                         | N/A                                                                        |
+| `data`                                                                     | [models.PayloadData](../models/payloaddata.md)                             | :heavy_check_mark:                                                         | N/A                                                                        |

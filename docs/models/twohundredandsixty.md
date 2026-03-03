@@ -8,18 +8,20 @@ The payload of the event, if requested.
 import { TwoHundredAndSixty } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndSixty = {
-  projectId: "<id>",
-  projectName: "<value>",
+  oldProjectId: "<id>",
+  oldProjectName: "<value>",
+  newProjectId: "<id>",
+  newProjectName: "<value>",
   domain: "serpentine-godfather.name",
 };
 ```
 
 ## Fields
 
-| Field                | Type                 | Required             | Description          |
-| -------------------- | -------------------- | -------------------- | -------------------- |
-| `projectId`          | *string*             | :heavy_check_mark:   | N/A                  |
-| `projectName`        | *string*             | :heavy_check_mark:   | N/A                  |
-| `domain`             | *string*             | :heavy_check_mark:   | N/A                  |
-| `redirect`           | *string*             | :heavy_minus_sign:   | N/A                  |
-| `redirectStatusCode` | *number*             | :heavy_minus_sign:   | N/A                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `oldProjectId`     | *string*           | :heavy_check_mark: | N/A                |
+| `oldProjectName`   | *string*           | :heavy_check_mark: | N/A                |
+| `newProjectId`     | *string*           | :heavy_check_mark: | N/A                |
+| `newProjectName`   | *string*           | :heavy_check_mark: | N/A                |
+| `domain`           | *string*           | :heavy_check_mark: | N/A                |

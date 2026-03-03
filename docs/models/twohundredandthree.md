@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { TwoHundredAndThree } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndThree = {
-  action: "resume_plan",
+  action: "cancel_plan",
   data: {
     planSlug: "v0_business",
   },
@@ -21,4 +21,4 @@ let value: TwoHundredAndThree = {
 | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
 | `subscriptionId`                                                           | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
 | `action`                                                                   | [models.UserEventPayload203Action](../models/usereventpayload203action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `data`                                                                     | [models.PayloadData](../models/payloaddata.md)                             | :heavy_check_mark:                                                         | N/A                                                                        |
+| `data`                                                                     | [models.UserEventPayloadData](../models/usereventpayloaddata.md)           | :heavy_check_mark:                                                         | N/A                                                                        |

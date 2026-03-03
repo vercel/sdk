@@ -111,6 +111,51 @@ func (e *ListProjectChecksRequires) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type ListProjectChecksKindVercel string
+
+const (
+	ListProjectChecksKindVercelVercel ListProjectChecksKindVercel = "vercel"
+)
+
+func (e ListProjectChecksKindVercel) ToPointer() *ListProjectChecksKindVercel {
+	return &e
+}
+func (e *ListProjectChecksKindVercel) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vercel":
+		*e = ListProjectChecksKindVercel(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ListProjectChecksKindVercel: %v", v)
+	}
+}
+
+type ListProjectChecksSourceVercel struct {
+	Kind ListProjectChecksKindVercel `json:"kind"`
+}
+
+func (l ListProjectChecksSourceVercel) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListProjectChecksSourceVercel) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"kind"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ListProjectChecksSourceVercel) GetKind() ListProjectChecksKindVercel {
+	if o == nil {
+		return ListProjectChecksKindVercel("")
+	}
+	return o.Kind
+}
+
 type ListProjectChecksKindGitProvider string
 
 const (
@@ -337,12 +382,14 @@ const (
 	ListProjectChecksSourceUnionTypeIntegration ListProjectChecksSourceUnionType = "integration"
 	ListProjectChecksSourceUnionTypeWebhook     ListProjectChecksSourceUnionType = "webhook"
 	ListProjectChecksSourceUnionTypeGitProvider ListProjectChecksSourceUnionType = "git-provider"
+	ListProjectChecksSourceUnionTypeVercel      ListProjectChecksSourceUnionType = "vercel"
 )
 
 type ListProjectChecksSourceUnion struct {
 	ListProjectChecksSourceIntegration *ListProjectChecksSourceIntegration `queryParam:"inline"`
 	ListProjectChecksSourceWebhook     *ListProjectChecksSourceWebhook     `queryParam:"inline"`
 	ListProjectChecksSourceGitProvider *ListProjectChecksSourceGitProvider `queryParam:"inline"`
+	ListProjectChecksSourceVercel      *ListProjectChecksSourceVercel      `queryParam:"inline"`
 
 	Type ListProjectChecksSourceUnionType
 }
@@ -380,6 +427,18 @@ func CreateListProjectChecksSourceUnionGitProvider(gitProvider ListProjectChecks
 	return ListProjectChecksSourceUnion{
 		ListProjectChecksSourceGitProvider: &gitProvider,
 		Type:                               typ,
+	}
+}
+
+func CreateListProjectChecksSourceUnionVercel(vercel ListProjectChecksSourceVercel) ListProjectChecksSourceUnion {
+	typ := ListProjectChecksSourceUnionTypeVercel
+
+	typStr := ListProjectChecksKindVercel(typ)
+	vercel.Kind = typStr
+
+	return ListProjectChecksSourceUnion{
+		ListProjectChecksSourceVercel: &vercel,
+		Type:                          typ,
 	}
 }
 
@@ -422,6 +481,15 @@ func (u *ListProjectChecksSourceUnion) UnmarshalJSON(data []byte) error {
 		u.ListProjectChecksSourceGitProvider = listProjectChecksSourceGitProvider
 		u.Type = ListProjectChecksSourceUnionTypeGitProvider
 		return nil
+	case "vercel":
+		listProjectChecksSourceVercel := new(ListProjectChecksSourceVercel)
+		if err := utils.UnmarshalJSON(data, &listProjectChecksSourceVercel, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Kind == vercel) type ListProjectChecksSourceVercel within ListProjectChecksSourceUnion: %w", string(data), err)
+		}
+
+		u.ListProjectChecksSourceVercel = listProjectChecksSourceVercel
+		u.Type = ListProjectChecksSourceUnionTypeVercel
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ListProjectChecksSourceUnion", string(data))
@@ -438,6 +506,10 @@ func (u ListProjectChecksSourceUnion) MarshalJSON() ([]byte, error) {
 
 	if u.ListProjectChecksSourceGitProvider != nil {
 		return utils.MarshalJSON(u.ListProjectChecksSourceGitProvider, "", true)
+	}
+
+	if u.ListProjectChecksSourceVercel != nil {
+		return utils.MarshalJSON(u.ListProjectChecksSourceVercel, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type ListProjectChecksSourceUnion: all fields are null")
@@ -484,6 +556,7 @@ const (
 	ListProjectChecksSourceKindIntegration ListProjectChecksSourceKind = "integration"
 	ListProjectChecksSourceKindWebhook     ListProjectChecksSourceKind = "webhook"
 	ListProjectChecksSourceKindGitProvider ListProjectChecksSourceKind = "git-provider"
+	ListProjectChecksSourceKindVercel      ListProjectChecksSourceKind = "vercel"
 )
 
 func (e ListProjectChecksSourceKind) ToPointer() *ListProjectChecksSourceKind {
@@ -500,6 +573,8 @@ func (e *ListProjectChecksSourceKind) UnmarshalJSON(data []byte) error {
 	case "webhook":
 		fallthrough
 	case "git-provider":
+		fallthrough
+	case "vercel":
 		*e = ListProjectChecksSourceKind(v)
 		return nil
 	default:
@@ -522,6 +597,7 @@ type ListProjectChecksCheck struct {
 	Timeout                          float64                      `json:"timeout"`
 	CreatedAt                        float64                      `json:"createdAt"`
 	UpdatedAt                        float64                      `json:"updatedAt"`
+	DisabledAt                       *float64                     `json:"disabledAt,omitempty"`
 	DeletedAt                        *float64                     `json:"deletedAt,omitempty"`
 }
 
@@ -586,6 +662,10 @@ func (o *ListProjectChecksCheck) GetSourceGitProvider() *ListProjectChecksSource
 	return o.GetSource().ListProjectChecksSourceGitProvider
 }
 
+func (o *ListProjectChecksCheck) GetSourceVercel() *ListProjectChecksSourceVercel {
+	return o.GetSource().ListProjectChecksSourceVercel
+}
+
 func (o *ListProjectChecksCheck) GetBlocks() CheckBlocks {
 	if o == nil {
 		return CheckBlocks("")
@@ -633,6 +713,13 @@ func (o *ListProjectChecksCheck) GetUpdatedAt() float64 {
 		return 0.0
 	}
 	return o.UpdatedAt
+}
+
+func (o *ListProjectChecksCheck) GetDisabledAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DisabledAt
 }
 
 func (o *ListProjectChecksCheck) GetDeletedAt() *float64 {

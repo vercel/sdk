@@ -4,6 +4,7 @@
 
 import { expect, test } from "vitest";
 import { Vercel } from "../index.js";
+import { UpdateFlagSettingsResponseBody } from "../models/updateflagsettingsop.js";
 import { createTestHTTPClient } from "./testclient.js";
 
 test("Feature Flags List Flags", async () => {
@@ -257,7 +258,7 @@ test("Feature Flags Update Flag Settings", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
+  expect(result as UpdateFlagSettingsResponseBody).toEqual({
     typeName: "settings",
     projectId: "<id>",
     enabled: false,

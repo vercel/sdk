@@ -9,7 +9,7 @@ import { Sixty } from "@vercel/sdk/models/userevent.js";
 
 let value: Sixty = {
   name: "<value>",
-  cdnEnabled: true,
+  price: 3104.01,
 };
 ```
 
@@ -18,4 +18,5 @@ let value: Sixty = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `cdnEnabled`       | *boolean*          | :heavy_check_mark: | N/A                |
+| `price`            | *number*           | :heavy_check_mark: | N/A                |
+| `currency`         | *string*           | :heavy_minus_sign: | N/A                |

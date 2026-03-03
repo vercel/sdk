@@ -8,22 +8,14 @@ The payload of the event, if requested.
 import { SixtyNine } from "@vercel/sdk/models/userevent.js";
 
 let value: SixtyNine = {
-  previousServiceType: "<value>",
-  serviceType: "<value>",
-  id: "<id>",
   name: "<value>",
-  nameservers: [
-    "<value 1>",
-  ],
 };
 ```
 
 ## Fields
 
-| Field                 | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `previousServiceType` | *string*              | :heavy_check_mark:    | N/A                   |
-| `serviceType`         | *string*              | :heavy_check_mark:    | N/A                   |
-| `id`                  | *string*              | :heavy_check_mark:    | N/A                   |
-| `name`                | *string*              | :heavy_check_mark:    | N/A                   |
-| `nameservers`         | *string*[]            | :heavy_check_mark:    | N/A                   |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `price`            | *number*           | :heavy_minus_sign: | N/A                |
+| `currency`         | *string*           | :heavy_minus_sign: | N/A                |

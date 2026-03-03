@@ -1625,6 +1625,7 @@ export type UpdateProjectPermissions = {
   integrationResourceReplCommand?: Array<ACLAction> | undefined;
   integrationResourceSecrets?: Array<ACLAction> | undefined;
   integrationSSOSession?: Array<ACLAction> | undefined;
+  integrationStrict?: Array<ACLAction> | undefined;
   integrationStoreTokenSet?: Array<ACLAction> | undefined;
   integrationVercelConfigurationOverride?: Array<ACLAction> | undefined;
   integrationPullRequest?: Array<ACLAction> | undefined;
@@ -1668,6 +1669,7 @@ export type UpdateProjectPermissions = {
   postgres?: Array<ACLAction> | undefined;
   postgresStoreTokenSet?: Array<ACLAction> | undefined;
   previewDeploymentSuffix?: Array<ACLAction> | undefined;
+  privateCloudAccount?: Array<ACLAction> | undefined;
   projectTransferIn?: Array<ACLAction> | undefined;
   proTrialOnboarding?: Array<ACLAction> | undefined;
   rateLimit?: Array<ACLAction> | undefined;
@@ -1747,6 +1749,7 @@ export type UpdateProjectPermissions = {
   projectDomain?: Array<ACLAction> | undefined;
   projectDomainCheckConfig?: Array<ACLAction> | undefined;
   projectDomainMove?: Array<ACLAction> | undefined;
+  projectEvent?: Array<ACLAction> | undefined;
   projectEnvVars?: Array<ACLAction> | undefined;
   projectEnvVarsProduction?: Array<ACLAction> | undefined;
   projectEnvVarsUnownedByIntegration?: Array<ACLAction> | undefined;
@@ -2050,6 +2053,32 @@ export const UpdateProjectTier = {
   Critical: "critical",
 } as const;
 export type UpdateProjectTier = ClosedEnum<typeof UpdateProjectTier>;
+
+/**
+ * Billing mode. Always 'flat' for flat-rate projects.
+ */
+export const UpdateProjectKind = {
+  Flat: "flat",
+} as const;
+/**
+ * Billing mode. Always 'flat' for flat-rate projects.
+ */
+export type UpdateProjectKind = ClosedEnum<typeof UpdateProjectKind>;
+
+export type UpdateProjectUsageStatus = {
+  /**
+   * Billing mode. Always 'flat' for flat-rate projects.
+   */
+  kind: UpdateProjectKind;
+  /**
+   * Timestamp until which the project has exceeded its CDN allowance.
+   */
+  exceededAllowanceUntil?: number | undefined;
+  /**
+   * Timestamp until which throttling is bypassed (project pays list rates for overage).
+   */
+  bypassThrottleUntil?: number | undefined;
+};
 
 export type UpdateProjectFeatures = {
   webAnalytics?: boolean | undefined;
@@ -2462,6 +2491,7 @@ export type UpdateProjectResponseBody = {
   security?: UpdateProjectSecurity | undefined;
   oidcTokenConfig?: UpdateProjectProjectsOidcTokenConfig | undefined;
   tier?: UpdateProjectTier | undefined;
+  usageStatus?: UpdateProjectUsageStatus | undefined;
   features?: UpdateProjectFeatures | undefined;
   v0?: boolean | undefined;
   abuse?: UpdateProjectAbuse | undefined;
@@ -7485,6 +7515,7 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   ),
   integrationResourceSecrets: types.optional(z.array(ACLAction$inboundSchema)),
   integrationSSOSession: types.optional(z.array(ACLAction$inboundSchema)),
+  integrationStrict: types.optional(z.array(ACLAction$inboundSchema)),
   integrationStoreTokenSet: types.optional(z.array(ACLAction$inboundSchema)),
   integrationVercelConfigurationOverride: types.optional(
     z.array(ACLAction$inboundSchema),
@@ -7546,6 +7577,7 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   postgres: types.optional(z.array(ACLAction$inboundSchema)),
   postgresStoreTokenSet: types.optional(z.array(ACLAction$inboundSchema)),
   previewDeploymentSuffix: types.optional(z.array(ACLAction$inboundSchema)),
+  privateCloudAccount: types.optional(z.array(ACLAction$inboundSchema)),
   projectTransferIn: types.optional(z.array(ACLAction$inboundSchema)),
   proTrialOnboarding: types.optional(z.array(ACLAction$inboundSchema)),
   rateLimit: types.optional(z.array(ACLAction$inboundSchema)),
@@ -7635,6 +7667,7 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   projectDomain: types.optional(z.array(ACLAction$inboundSchema)),
   projectDomainCheckConfig: types.optional(z.array(ACLAction$inboundSchema)),
   projectDomainMove: types.optional(z.array(ACLAction$inboundSchema)),
+  projectEvent: types.optional(z.array(ACLAction$inboundSchema)),
   projectEnvVars: types.optional(z.array(ACLAction$inboundSchema)),
   projectEnvVarsProduction: types.optional(z.array(ACLAction$inboundSchema)),
   projectEnvVarsUnownedByIntegration: types.optional(
@@ -7751,6 +7784,7 @@ export type UpdateProjectPermissions$Outbound = {
   integrationResourceReplCommand?: Array<string> | undefined;
   integrationResourceSecrets?: Array<string> | undefined;
   integrationSSOSession?: Array<string> | undefined;
+  integrationStrict?: Array<string> | undefined;
   integrationStoreTokenSet?: Array<string> | undefined;
   integrationVercelConfigurationOverride?: Array<string> | undefined;
   integrationPullRequest?: Array<string> | undefined;
@@ -7794,6 +7828,7 @@ export type UpdateProjectPermissions$Outbound = {
   postgres?: Array<string> | undefined;
   postgresStoreTokenSet?: Array<string> | undefined;
   previewDeploymentSuffix?: Array<string> | undefined;
+  privateCloudAccount?: Array<string> | undefined;
   projectTransferIn?: Array<string> | undefined;
   proTrialOnboarding?: Array<string> | undefined;
   rateLimit?: Array<string> | undefined;
@@ -7873,6 +7908,7 @@ export type UpdateProjectPermissions$Outbound = {
   projectDomain?: Array<string> | undefined;
   projectDomainCheckConfig?: Array<string> | undefined;
   projectDomainMove?: Array<string> | undefined;
+  projectEvent?: Array<string> | undefined;
   projectEnvVars?: Array<string> | undefined;
   projectEnvVarsProduction?: Array<string> | undefined;
   projectEnvVarsUnownedByIntegration?: Array<string> | undefined;
@@ -7986,6 +8022,7 @@ export const UpdateProjectPermissions$outboundSchema: z.ZodType<
   integrationResourceReplCommand: z.array(ACLAction$outboundSchema).optional(),
   integrationResourceSecrets: z.array(ACLAction$outboundSchema).optional(),
   integrationSSOSession: z.array(ACLAction$outboundSchema).optional(),
+  integrationStrict: z.array(ACLAction$outboundSchema).optional(),
   integrationStoreTokenSet: z.array(ACLAction$outboundSchema).optional(),
   integrationVercelConfigurationOverride: z.array(ACLAction$outboundSchema)
     .optional(),
@@ -8031,6 +8068,7 @@ export const UpdateProjectPermissions$outboundSchema: z.ZodType<
   postgres: z.array(ACLAction$outboundSchema).optional(),
   postgresStoreTokenSet: z.array(ACLAction$outboundSchema).optional(),
   previewDeploymentSuffix: z.array(ACLAction$outboundSchema).optional(),
+  privateCloudAccount: z.array(ACLAction$outboundSchema).optional(),
   projectTransferIn: z.array(ACLAction$outboundSchema).optional(),
   proTrialOnboarding: z.array(ACLAction$outboundSchema).optional(),
   rateLimit: z.array(ACLAction$outboundSchema).optional(),
@@ -8113,6 +8151,7 @@ export const UpdateProjectPermissions$outboundSchema: z.ZodType<
   projectDomain: z.array(ACLAction$outboundSchema).optional(),
   projectDomainCheckConfig: z.array(ACLAction$outboundSchema).optional(),
   projectDomainMove: z.array(ACLAction$outboundSchema).optional(),
+  projectEvent: z.array(ACLAction$outboundSchema).optional(),
   projectEnvVars: z.array(ACLAction$outboundSchema).optional(),
   projectEnvVarsProduction: z.array(ACLAction$outboundSchema).optional(),
   projectEnvVarsUnownedByIntegration: z.array(ACLAction$outboundSchema)
@@ -9206,6 +9245,60 @@ export const UpdateProjectTier$inboundSchema: z.ZodNativeEnum<
 export const UpdateProjectTier$outboundSchema: z.ZodNativeEnum<
   typeof UpdateProjectTier
 > = UpdateProjectTier$inboundSchema;
+
+/** @internal */
+export const UpdateProjectKind$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectKind
+> = z.nativeEnum(UpdateProjectKind);
+/** @internal */
+export const UpdateProjectKind$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectKind
+> = UpdateProjectKind$inboundSchema;
+
+/** @internal */
+export const UpdateProjectUsageStatus$inboundSchema: z.ZodType<
+  UpdateProjectUsageStatus,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  kind: UpdateProjectKind$inboundSchema,
+  exceededAllowanceUntil: types.optional(types.number()),
+  bypassThrottleUntil: types.optional(types.number()),
+});
+/** @internal */
+export type UpdateProjectUsageStatus$Outbound = {
+  kind: string;
+  exceededAllowanceUntil?: number | undefined;
+  bypassThrottleUntil?: number | undefined;
+};
+
+/** @internal */
+export const UpdateProjectUsageStatus$outboundSchema: z.ZodType<
+  UpdateProjectUsageStatus$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectUsageStatus
+> = z.object({
+  kind: UpdateProjectKind$outboundSchema,
+  exceededAllowanceUntil: z.number().optional(),
+  bypassThrottleUntil: z.number().optional(),
+});
+
+export function updateProjectUsageStatusToJSON(
+  updateProjectUsageStatus: UpdateProjectUsageStatus,
+): string {
+  return JSON.stringify(
+    UpdateProjectUsageStatus$outboundSchema.parse(updateProjectUsageStatus),
+  );
+}
+export function updateProjectUsageStatusFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectUsageStatus, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectUsageStatus$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectUsageStatus' from JSON`,
+  );
+}
 
 /** @internal */
 export const UpdateProjectFeatures$inboundSchema: z.ZodType<
@@ -11423,6 +11516,9 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => UpdateProjectProjectsOidcTokenConfig$inboundSchema),
   ),
   tier: types.optional(UpdateProjectTier$inboundSchema),
+  usageStatus: types.optional(
+    z.lazy(() => UpdateProjectUsageStatus$inboundSchema),
+  ),
   features: types.optional(z.lazy(() => UpdateProjectFeatures$inboundSchema)),
   v0: types.optional(types.boolean()),
   abuse: types.optional(z.lazy(() => UpdateProjectAbuse$inboundSchema)),
@@ -11554,6 +11650,7 @@ export type UpdateProjectResponseBody$Outbound = {
   security?: UpdateProjectSecurity$Outbound | undefined;
   oidcTokenConfig?: UpdateProjectProjectsOidcTokenConfig$Outbound | undefined;
   tier?: string | undefined;
+  usageStatus?: UpdateProjectUsageStatus$Outbound | undefined;
   features?: UpdateProjectFeatures$Outbound | undefined;
   v0?: boolean | undefined;
   abuse?: UpdateProjectAbuse$Outbound | undefined;
@@ -11708,6 +11805,7 @@ export const UpdateProjectResponseBody$outboundSchema: z.ZodType<
     UpdateProjectProjectsOidcTokenConfig$outboundSchema
   ).optional(),
   tier: UpdateProjectTier$outboundSchema.optional(),
+  usageStatus: z.lazy(() => UpdateProjectUsageStatus$outboundSchema).optional(),
   features: z.lazy(() => UpdateProjectFeatures$outboundSchema).optional(),
   v0: z.boolean().optional(),
   abuse: z.lazy(() => UpdateProjectAbuse$outboundSchema).optional(),

@@ -6,12 +6,12 @@
 import { UserEventPayload143Next } from "@vercel/sdk/models/userevent.js";
 
 let value: UserEventPayload143Next = {
-  functionDefaultMemoryType: "<value>",
+  functionDefaultTimeout: 4691.48,
 };
 ```
 
 ## Fields
 
-| Field                       | Type                        | Required                    | Description                 |
-| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
-| `functionDefaultMemoryType` | *string*                    | :heavy_check_mark:          | N/A                         |
+| Field                    | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `functionDefaultTimeout` | *number*                 | :heavy_check_mark:       | N/A                      |

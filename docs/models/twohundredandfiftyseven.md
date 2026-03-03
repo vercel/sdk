@@ -8,25 +8,25 @@ The payload of the event, if requested.
 import { TwoHundredAndFiftySeven } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndFiftySeven = {
-  projectId: "<id>",
-  projectName: "<value>",
-  domain: "creative-cd.com",
-  target: "<value>",
-  redirect: "<value>",
-  redirectStatusCode: 3396.75,
-  gitBranch: "<value>",
+  edgeConfig: {
+    id: "<id>",
+    slug: "<value>",
+  },
+  fromAccount: {
+    id: "<id>",
+    type: "user",
+  },
+  toAccount: {
+    id: "<id>",
+    type: "user",
+  },
 };
 ```
 
 ## Fields
 
-| Field                | Type                 | Required             | Description          |
-| -------------------- | -------------------- | -------------------- | -------------------- |
-| `projectId`          | *string*             | :heavy_check_mark:   | N/A                  |
-| `projectName`        | *string*             | :heavy_check_mark:   | N/A                  |
-| `domain`             | *string*             | :heavy_check_mark:   | N/A                  |
-| `target`             | *string*             | :heavy_check_mark:   | N/A                  |
-| `redirect`           | *string*             | :heavy_check_mark:   | N/A                  |
-| `redirectStatusCode` | *number*             | :heavy_check_mark:   | N/A                  |
-| `gitBranch`          | *string*             | :heavy_check_mark:   | N/A                  |
-| `configuredBy`       | *string*             | :heavy_minus_sign:   | N/A                  |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `edgeConfig`                                   | [models.EdgeConfig](../models/edgeconfig.md)   | :heavy_check_mark:                             | N/A                                            |
+| `fromAccount`                                  | [models.FromAccount](../models/fromaccount.md) | :heavy_check_mark:                             | N/A                                            |
+| `toAccount`                                    | [models.ToAccount](../models/toaccount.md)     | :heavy_check_mark:                             | N/A                                            |

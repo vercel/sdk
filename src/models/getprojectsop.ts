@@ -1276,6 +1276,7 @@ export type ResponseBodyPermissions = {
   integrationResourceReplCommand?: Array<ACLAction> | undefined;
   integrationResourceSecrets?: Array<ACLAction> | undefined;
   integrationSSOSession?: Array<ACLAction> | undefined;
+  integrationStrict?: Array<ACLAction> | undefined;
   integrationStoreTokenSet?: Array<ACLAction> | undefined;
   integrationVercelConfigurationOverride?: Array<ACLAction> | undefined;
   integrationPullRequest?: Array<ACLAction> | undefined;
@@ -1319,6 +1320,7 @@ export type ResponseBodyPermissions = {
   postgres?: Array<ACLAction> | undefined;
   postgresStoreTokenSet?: Array<ACLAction> | undefined;
   previewDeploymentSuffix?: Array<ACLAction> | undefined;
+  privateCloudAccount?: Array<ACLAction> | undefined;
   projectTransferIn?: Array<ACLAction> | undefined;
   proTrialOnboarding?: Array<ACLAction> | undefined;
   rateLimit?: Array<ACLAction> | undefined;
@@ -1398,6 +1400,7 @@ export type ResponseBodyPermissions = {
   projectDomain?: Array<ACLAction> | undefined;
   projectDomainCheckConfig?: Array<ACLAction> | undefined;
   projectDomainMove?: Array<ACLAction> | undefined;
+  projectEvent?: Array<ACLAction> | undefined;
   projectEnvVars?: Array<ACLAction> | undefined;
   projectEnvVarsProduction?: Array<ACLAction> | undefined;
   projectEnvVarsUnownedByIntegration?: Array<ACLAction> | undefined;
@@ -1712,6 +1715,32 @@ export const GetProjectsResponseBodyProjectsTier = {
 export type GetProjectsResponseBodyProjectsTier = ClosedEnum<
   typeof GetProjectsResponseBodyProjectsTier
 >;
+
+/**
+ * Billing mode. Always 'flat' for flat-rate projects.
+ */
+export const ResponseBodyKind = {
+  Flat: "flat",
+} as const;
+/**
+ * Billing mode. Always 'flat' for flat-rate projects.
+ */
+export type ResponseBodyKind = ClosedEnum<typeof ResponseBodyKind>;
+
+export type ResponseBodyUsageStatus = {
+  /**
+   * Billing mode. Always 'flat' for flat-rate projects.
+   */
+  kind: ResponseBodyKind;
+  /**
+   * Timestamp until which the project has exceeded its CDN allowance.
+   */
+  exceededAllowanceUntil?: number | undefined;
+  /**
+   * Timestamp until which throttling is bypassed (project pays list rates for overage).
+   */
+  bypassThrottleUntil?: number | undefined;
+};
 
 export type ResponseBodyFeatures = {
   webAnalytics?: boolean | undefined;
@@ -2145,6 +2174,7 @@ export type GetProjectsResponseBodyProjects = {
   security?: GetProjectsResponseBodyProjectsSecurity | undefined;
   oidcTokenConfig?: GetProjectsResponseBodyOidcTokenConfig | undefined;
   tier?: GetProjectsResponseBodyProjectsTier | undefined;
+  usageStatus?: ResponseBodyUsageStatus | undefined;
   features?: ResponseBodyFeatures | undefined;
   v0?: boolean | undefined;
   abuse?: GetProjectsResponseBodyProjectsAbuse | undefined;
@@ -3282,6 +3312,7 @@ export type GetProjectsResponseBodySecurity = {
   firewallBypassIps?: Array<string> | undefined;
   managedRules?: GetProjectsResponseBodyProjectsManagedRules | null | undefined;
   botIdEnabled?: boolean | undefined;
+  requestLogsKey?: Array<string> | undefined;
 };
 
 /**
@@ -4748,6 +4779,7 @@ export type ResponseBodySecurity = {
   firewallBypassIps?: Array<string> | undefined;
   managedRules?: ResponseBodyManagedRules | null | undefined;
   botIdEnabled?: boolean | undefined;
+  requestLogsKey?: Array<string> | undefined;
 };
 
 /**
@@ -9567,6 +9599,7 @@ export const ResponseBodyPermissions$inboundSchema: z.ZodType<
   ),
   integrationResourceSecrets: types.optional(z.array(ACLAction$inboundSchema)),
   integrationSSOSession: types.optional(z.array(ACLAction$inboundSchema)),
+  integrationStrict: types.optional(z.array(ACLAction$inboundSchema)),
   integrationStoreTokenSet: types.optional(z.array(ACLAction$inboundSchema)),
   integrationVercelConfigurationOverride: types.optional(
     z.array(ACLAction$inboundSchema),
@@ -9628,6 +9661,7 @@ export const ResponseBodyPermissions$inboundSchema: z.ZodType<
   postgres: types.optional(z.array(ACLAction$inboundSchema)),
   postgresStoreTokenSet: types.optional(z.array(ACLAction$inboundSchema)),
   previewDeploymentSuffix: types.optional(z.array(ACLAction$inboundSchema)),
+  privateCloudAccount: types.optional(z.array(ACLAction$inboundSchema)),
   projectTransferIn: types.optional(z.array(ACLAction$inboundSchema)),
   proTrialOnboarding: types.optional(z.array(ACLAction$inboundSchema)),
   rateLimit: types.optional(z.array(ACLAction$inboundSchema)),
@@ -9717,6 +9751,7 @@ export const ResponseBodyPermissions$inboundSchema: z.ZodType<
   projectDomain: types.optional(z.array(ACLAction$inboundSchema)),
   projectDomainCheckConfig: types.optional(z.array(ACLAction$inboundSchema)),
   projectDomainMove: types.optional(z.array(ACLAction$inboundSchema)),
+  projectEvent: types.optional(z.array(ACLAction$inboundSchema)),
   projectEnvVars: types.optional(z.array(ACLAction$inboundSchema)),
   projectEnvVarsProduction: types.optional(z.array(ACLAction$inboundSchema)),
   projectEnvVarsUnownedByIntegration: types.optional(
@@ -9833,6 +9868,7 @@ export type ResponseBodyPermissions$Outbound = {
   integrationResourceReplCommand?: Array<string> | undefined;
   integrationResourceSecrets?: Array<string> | undefined;
   integrationSSOSession?: Array<string> | undefined;
+  integrationStrict?: Array<string> | undefined;
   integrationStoreTokenSet?: Array<string> | undefined;
   integrationVercelConfigurationOverride?: Array<string> | undefined;
   integrationPullRequest?: Array<string> | undefined;
@@ -9876,6 +9912,7 @@ export type ResponseBodyPermissions$Outbound = {
   postgres?: Array<string> | undefined;
   postgresStoreTokenSet?: Array<string> | undefined;
   previewDeploymentSuffix?: Array<string> | undefined;
+  privateCloudAccount?: Array<string> | undefined;
   projectTransferIn?: Array<string> | undefined;
   proTrialOnboarding?: Array<string> | undefined;
   rateLimit?: Array<string> | undefined;
@@ -9955,6 +9992,7 @@ export type ResponseBodyPermissions$Outbound = {
   projectDomain?: Array<string> | undefined;
   projectDomainCheckConfig?: Array<string> | undefined;
   projectDomainMove?: Array<string> | undefined;
+  projectEvent?: Array<string> | undefined;
   projectEnvVars?: Array<string> | undefined;
   projectEnvVarsProduction?: Array<string> | undefined;
   projectEnvVarsUnownedByIntegration?: Array<string> | undefined;
@@ -10068,6 +10106,7 @@ export const ResponseBodyPermissions$outboundSchema: z.ZodType<
   integrationResourceReplCommand: z.array(ACLAction$outboundSchema).optional(),
   integrationResourceSecrets: z.array(ACLAction$outboundSchema).optional(),
   integrationSSOSession: z.array(ACLAction$outboundSchema).optional(),
+  integrationStrict: z.array(ACLAction$outboundSchema).optional(),
   integrationStoreTokenSet: z.array(ACLAction$outboundSchema).optional(),
   integrationVercelConfigurationOverride: z.array(ACLAction$outboundSchema)
     .optional(),
@@ -10113,6 +10152,7 @@ export const ResponseBodyPermissions$outboundSchema: z.ZodType<
   postgres: z.array(ACLAction$outboundSchema).optional(),
   postgresStoreTokenSet: z.array(ACLAction$outboundSchema).optional(),
   previewDeploymentSuffix: z.array(ACLAction$outboundSchema).optional(),
+  privateCloudAccount: z.array(ACLAction$outboundSchema).optional(),
   projectTransferIn: z.array(ACLAction$outboundSchema).optional(),
   proTrialOnboarding: z.array(ACLAction$outboundSchema).optional(),
   rateLimit: z.array(ACLAction$outboundSchema).optional(),
@@ -10195,6 +10235,7 @@ export const ResponseBodyPermissions$outboundSchema: z.ZodType<
   projectDomain: z.array(ACLAction$outboundSchema).optional(),
   projectDomainCheckConfig: z.array(ACLAction$outboundSchema).optional(),
   projectDomainMove: z.array(ACLAction$outboundSchema).optional(),
+  projectEvent: z.array(ACLAction$outboundSchema).optional(),
   projectEnvVars: z.array(ACLAction$outboundSchema).optional(),
   projectEnvVarsProduction: z.array(ACLAction$outboundSchema).optional(),
   projectEnvVarsUnownedByIntegration: z.array(ACLAction$outboundSchema)
@@ -11364,6 +11405,60 @@ export const GetProjectsResponseBodyProjectsTier$inboundSchema: z.ZodNativeEnum<
 export const GetProjectsResponseBodyProjectsTier$outboundSchema:
   z.ZodNativeEnum<typeof GetProjectsResponseBodyProjectsTier> =
     GetProjectsResponseBodyProjectsTier$inboundSchema;
+
+/** @internal */
+export const ResponseBodyKind$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyKind
+> = z.nativeEnum(ResponseBodyKind);
+/** @internal */
+export const ResponseBodyKind$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyKind
+> = ResponseBodyKind$inboundSchema;
+
+/** @internal */
+export const ResponseBodyUsageStatus$inboundSchema: z.ZodType<
+  ResponseBodyUsageStatus,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  kind: ResponseBodyKind$inboundSchema,
+  exceededAllowanceUntil: types.optional(types.number()),
+  bypassThrottleUntil: types.optional(types.number()),
+});
+/** @internal */
+export type ResponseBodyUsageStatus$Outbound = {
+  kind: string;
+  exceededAllowanceUntil?: number | undefined;
+  bypassThrottleUntil?: number | undefined;
+};
+
+/** @internal */
+export const ResponseBodyUsageStatus$outboundSchema: z.ZodType<
+  ResponseBodyUsageStatus$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyUsageStatus
+> = z.object({
+  kind: ResponseBodyKind$outboundSchema,
+  exceededAllowanceUntil: z.number().optional(),
+  bypassThrottleUntil: z.number().optional(),
+});
+
+export function responseBodyUsageStatusToJSON(
+  responseBodyUsageStatus: ResponseBodyUsageStatus,
+): string {
+  return JSON.stringify(
+    ResponseBodyUsageStatus$outboundSchema.parse(responseBodyUsageStatus),
+  );
+}
+export function responseBodyUsageStatusFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyUsageStatus, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyUsageStatus$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyUsageStatus' from JSON`,
+  );
+}
 
 /** @internal */
 export const ResponseBodyFeatures$inboundSchema: z.ZodType<
@@ -13894,6 +13989,9 @@ export const GetProjectsResponseBodyProjects$inboundSchema: z.ZodType<
     z.lazy(() => GetProjectsResponseBodyOidcTokenConfig$inboundSchema),
   ),
   tier: types.optional(GetProjectsResponseBodyProjectsTier$inboundSchema),
+  usageStatus: types.optional(
+    z.lazy(() => ResponseBodyUsageStatus$inboundSchema),
+  ),
   features: types.optional(z.lazy(() => ResponseBodyFeatures$inboundSchema)),
   v0: types.optional(types.boolean()),
   abuse: types.optional(
@@ -14035,6 +14133,7 @@ export type GetProjectsResponseBodyProjects$Outbound = {
   security?: GetProjectsResponseBodyProjectsSecurity$Outbound | undefined;
   oidcTokenConfig?: GetProjectsResponseBodyOidcTokenConfig$Outbound | undefined;
   tier?: string | undefined;
+  usageStatus?: ResponseBodyUsageStatus$Outbound | undefined;
   features?: ResponseBodyFeatures$Outbound | undefined;
   v0?: boolean | undefined;
   abuse?: GetProjectsResponseBodyProjectsAbuse$Outbound | undefined;
@@ -14200,6 +14299,7 @@ export const GetProjectsResponseBodyProjects$outboundSchema: z.ZodType<
     GetProjectsResponseBodyOidcTokenConfig$outboundSchema
   ).optional(),
   tier: GetProjectsResponseBodyProjectsTier$outboundSchema.optional(),
+  usageStatus: z.lazy(() => ResponseBodyUsageStatus$outboundSchema).optional(),
   features: z.lazy(() => ResponseBodyFeatures$outboundSchema).optional(),
   v0: z.boolean().optional(),
   abuse: z.lazy(() => GetProjectsResponseBodyProjectsAbuse$outboundSchema)
@@ -19244,6 +19344,7 @@ export const GetProjectsResponseBodySecurity$inboundSchema: z.ZodType<
     z.lazy(() => GetProjectsResponseBodyProjectsManagedRules$inboundSchema),
   ).optional(),
   botIdEnabled: types.optional(types.boolean()),
+  requestLogsKey: types.optional(z.array(types.string())),
 });
 /** @internal */
 export type GetProjectsResponseBodySecurity$Outbound = {
@@ -19263,6 +19364,7 @@ export type GetProjectsResponseBodySecurity$Outbound = {
     | null
     | undefined;
   botIdEnabled?: boolean | undefined;
+  requestLogsKey?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -19288,6 +19390,7 @@ export const GetProjectsResponseBodySecurity$outboundSchema: z.ZodType<
     z.lazy(() => GetProjectsResponseBodyProjectsManagedRules$outboundSchema),
   ).optional(),
   botIdEnabled: z.boolean().optional(),
+  requestLogsKey: z.array(z.string()).optional(),
 });
 
 export function getProjectsResponseBodySecurityToJSON(
@@ -26217,6 +26320,7 @@ export const ResponseBodySecurity$inboundSchema: z.ZodType<
   managedRules: z.nullable(z.lazy(() => ResponseBodyManagedRules$inboundSchema))
     .optional(),
   botIdEnabled: types.optional(types.boolean()),
+  requestLogsKey: types.optional(z.array(types.string())),
 });
 /** @internal */
 export type ResponseBodySecurity$Outbound = {
@@ -26233,6 +26337,7 @@ export type ResponseBodySecurity$Outbound = {
   firewallBypassIps?: Array<string> | undefined;
   managedRules?: ResponseBodyManagedRules$Outbound | null | undefined;
   botIdEnabled?: boolean | undefined;
+  requestLogsKey?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -26257,6 +26362,7 @@ export const ResponseBodySecurity$outboundSchema: z.ZodType<
     z.lazy(() => ResponseBodyManagedRules$outboundSchema),
   ).optional(),
   botIdEnabled: z.boolean().optional(),
+  requestLogsKey: z.array(z.string()).optional(),
 });
 
 export function responseBodySecurityToJSON(

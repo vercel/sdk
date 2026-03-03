@@ -640,7 +640,7 @@ run();
 
 ### Response
 
-**Promise\<[models.UpdateFlagSettingsResponseBody](../../models/updateflagsettingsresponsebody.md)\>**
+**Promise\<[models.UpdateFlagSettingsResponse](../../models/updateflagsettingsresponse.md)\>**
 
 ### Errors
 

@@ -103,15 +103,10 @@ func testGetFirewallConfigGetFirewallConfig0(w http.ResponseWriter, req *http.Re
 				operations.GetFirewallConfigRule2{
 					ID:     "<id>",
 					Name:   "<value>",
-					Active: false,
+					Active: true,
 					ConditionGroup: []operations.GetFirewallConfigConditionGroup2{
 						operations.GetFirewallConfigConditionGroup2{
-							Conditions: []operations.GetFirewallConfigCondition2{
-								operations.GetFirewallConfigCondition2{
-									Type: operations.GetFirewallConfigType2IPAddress,
-									Op:   operations.GetFirewallConfigOp2Suf,
-								},
-							},
+							Conditions: []operations.GetFirewallConfigCondition2{},
 						},
 					},
 					Action:           operations.GetFirewallConfigRuleAction2{},

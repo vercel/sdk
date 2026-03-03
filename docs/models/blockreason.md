@@ -11,5 +11,5 @@ let value: BlockReason = "admin_override";
 ## Values
 
 ```typescript
-"admin_override" | "limits_exceeded"
+"admin_override" | "limits_exceeded" | "hard_blocked"
 ```

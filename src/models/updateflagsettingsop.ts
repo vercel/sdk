@@ -8,6 +8,7 @@ import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type Labels = {
@@ -50,6 +51,60 @@ export type UpdateFlagSettingsRequest = {
    */
   slug?: string | undefined;
   requestBody?: UpdateFlagSettingsRequestBody | undefined;
+};
+
+export const UpdateFlagSettingsFeatureFlagsTypeName = {
+  Settings: "settings",
+} as const;
+export type UpdateFlagSettingsFeatureFlagsTypeName = ClosedEnum<
+  typeof UpdateFlagSettingsFeatureFlagsTypeName
+>;
+
+export type UpdateFlagSettingsFeatureFlagsConnections = {
+  edgeConfigId: string;
+  edgeConfigItemKey: string;
+};
+
+export type UpdateFlagSettingsFeatureFlagsLabels = {
+  label: string;
+  value: string;
+};
+
+export type UpdateFlagSettingsFeatureFlagsAttributes = {
+  key: string;
+  type: string;
+  labels?: Array<UpdateFlagSettingsFeatureFlagsLabels> | undefined;
+};
+
+export type UpdateFlagSettingsFeatureFlagsResponseEntities = {
+  kind: string;
+  label: string;
+  attributes: Array<UpdateFlagSettingsFeatureFlagsAttributes>;
+};
+
+export type UpdateFlagSettingsFeatureFlagsMetadata = {
+  activeFlagCount: number;
+  archivedFlagCount: number;
+  segmentCount: number;
+  packSizeInBytes: number;
+  packRevision?: number | undefined;
+  configUpdatedAt?: number | undefined;
+};
+
+/**
+ * Syncs direct the synchronization of Flags to Edge Configs
+ */
+export type UpdateFlagSettingsFeatureFlagsResponseBody = {
+  typeName: UpdateFlagSettingsFeatureFlagsTypeName;
+  projectId: string;
+  ownerId?: string | undefined;
+  enabled: boolean;
+  environments: Array<string>;
+  connections?: Array<UpdateFlagSettingsFeatureFlagsConnections> | undefined;
+  entities: Array<UpdateFlagSettingsFeatureFlagsResponseEntities>;
+  createdAt?: number | undefined;
+  updatedAt?: number | undefined;
+  metadata: UpdateFlagSettingsFeatureFlagsMetadata;
 };
 
 export const UpdateFlagSettingsTypeName = {
@@ -105,6 +160,10 @@ export type UpdateFlagSettingsResponseBody = {
   updatedAt?: number | undefined;
   metadata: UpdateFlagSettingsMetadata;
 };
+
+export type UpdateFlagSettingsResponse =
+  | UpdateFlagSettingsResponseBody
+  | UpdateFlagSettingsFeatureFlagsResponseBody;
 
 /** @internal */
 export const Labels$inboundSchema: z.ZodType<Labels, z.ZodTypeDef, unknown> = z
@@ -333,6 +392,383 @@ export function updateFlagSettingsRequestFromJSON(
     jsonString,
     (x) => UpdateFlagSettingsRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'UpdateFlagSettingsRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagSettingsFeatureFlagsTypeName$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateFlagSettingsFeatureFlagsTypeName> = z.nativeEnum(
+    UpdateFlagSettingsFeatureFlagsTypeName,
+  );
+/** @internal */
+export const UpdateFlagSettingsFeatureFlagsTypeName$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateFlagSettingsFeatureFlagsTypeName> =
+    UpdateFlagSettingsFeatureFlagsTypeName$inboundSchema;
+
+/** @internal */
+export const UpdateFlagSettingsFeatureFlagsConnections$inboundSchema: z.ZodType<
+  UpdateFlagSettingsFeatureFlagsConnections,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  edgeConfigId: types.string(),
+  edgeConfigItemKey: types.string(),
+});
+/** @internal */
+export type UpdateFlagSettingsFeatureFlagsConnections$Outbound = {
+  edgeConfigId: string;
+  edgeConfigItemKey: string;
+};
+
+/** @internal */
+export const UpdateFlagSettingsFeatureFlagsConnections$outboundSchema:
+  z.ZodType<
+    UpdateFlagSettingsFeatureFlagsConnections$Outbound,
+    z.ZodTypeDef,
+    UpdateFlagSettingsFeatureFlagsConnections
+  > = z.object({
+    edgeConfigId: z.string(),
+    edgeConfigItemKey: z.string(),
+  });
+
+export function updateFlagSettingsFeatureFlagsConnectionsToJSON(
+  updateFlagSettingsFeatureFlagsConnections:
+    UpdateFlagSettingsFeatureFlagsConnections,
+): string {
+  return JSON.stringify(
+    UpdateFlagSettingsFeatureFlagsConnections$outboundSchema.parse(
+      updateFlagSettingsFeatureFlagsConnections,
+    ),
+  );
+}
+export function updateFlagSettingsFeatureFlagsConnectionsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateFlagSettingsFeatureFlagsConnections,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateFlagSettingsFeatureFlagsConnections$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateFlagSettingsFeatureFlagsConnections' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagSettingsFeatureFlagsLabels$inboundSchema: z.ZodType<
+  UpdateFlagSettingsFeatureFlagsLabels,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  label: types.string(),
+  value: types.string(),
+});
+/** @internal */
+export type UpdateFlagSettingsFeatureFlagsLabels$Outbound = {
+  label: string;
+  value: string;
+};
+
+/** @internal */
+export const UpdateFlagSettingsFeatureFlagsLabels$outboundSchema: z.ZodType<
+  UpdateFlagSettingsFeatureFlagsLabels$Outbound,
+  z.ZodTypeDef,
+  UpdateFlagSettingsFeatureFlagsLabels
+> = z.object({
+  label: z.string(),
+  value: z.string(),
+});
+
+export function updateFlagSettingsFeatureFlagsLabelsToJSON(
+  updateFlagSettingsFeatureFlagsLabels: UpdateFlagSettingsFeatureFlagsLabels,
+): string {
+  return JSON.stringify(
+    UpdateFlagSettingsFeatureFlagsLabels$outboundSchema.parse(
+      updateFlagSettingsFeatureFlagsLabels,
+    ),
+  );
+}
+export function updateFlagSettingsFeatureFlagsLabelsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFlagSettingsFeatureFlagsLabels, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateFlagSettingsFeatureFlagsLabels$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFlagSettingsFeatureFlagsLabels' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagSettingsFeatureFlagsAttributes$inboundSchema: z.ZodType<
+  UpdateFlagSettingsFeatureFlagsAttributes,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  key: types.string(),
+  type: types.string(),
+  labels: types.optional(
+    z.array(z.lazy(() => UpdateFlagSettingsFeatureFlagsLabels$inboundSchema)),
+  ),
+});
+/** @internal */
+export type UpdateFlagSettingsFeatureFlagsAttributes$Outbound = {
+  key: string;
+  type: string;
+  labels?: Array<UpdateFlagSettingsFeatureFlagsLabels$Outbound> | undefined;
+};
+
+/** @internal */
+export const UpdateFlagSettingsFeatureFlagsAttributes$outboundSchema: z.ZodType<
+  UpdateFlagSettingsFeatureFlagsAttributes$Outbound,
+  z.ZodTypeDef,
+  UpdateFlagSettingsFeatureFlagsAttributes
+> = z.object({
+  key: z.string(),
+  type: z.string(),
+  labels: z.array(
+    z.lazy(() => UpdateFlagSettingsFeatureFlagsLabels$outboundSchema),
+  ).optional(),
+});
+
+export function updateFlagSettingsFeatureFlagsAttributesToJSON(
+  updateFlagSettingsFeatureFlagsAttributes:
+    UpdateFlagSettingsFeatureFlagsAttributes,
+): string {
+  return JSON.stringify(
+    UpdateFlagSettingsFeatureFlagsAttributes$outboundSchema.parse(
+      updateFlagSettingsFeatureFlagsAttributes,
+    ),
+  );
+}
+export function updateFlagSettingsFeatureFlagsAttributesFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateFlagSettingsFeatureFlagsAttributes,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateFlagSettingsFeatureFlagsAttributes$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateFlagSettingsFeatureFlagsAttributes' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagSettingsFeatureFlagsResponseEntities$inboundSchema:
+  z.ZodType<
+    UpdateFlagSettingsFeatureFlagsResponseEntities,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    kind: types.string(),
+    label: types.string(),
+    attributes: z.array(
+      z.lazy(() => UpdateFlagSettingsFeatureFlagsAttributes$inboundSchema),
+    ),
+  });
+/** @internal */
+export type UpdateFlagSettingsFeatureFlagsResponseEntities$Outbound = {
+  kind: string;
+  label: string;
+  attributes: Array<UpdateFlagSettingsFeatureFlagsAttributes$Outbound>;
+};
+
+/** @internal */
+export const UpdateFlagSettingsFeatureFlagsResponseEntities$outboundSchema:
+  z.ZodType<
+    UpdateFlagSettingsFeatureFlagsResponseEntities$Outbound,
+    z.ZodTypeDef,
+    UpdateFlagSettingsFeatureFlagsResponseEntities
+  > = z.object({
+    kind: z.string(),
+    label: z.string(),
+    attributes: z.array(
+      z.lazy(() => UpdateFlagSettingsFeatureFlagsAttributes$outboundSchema),
+    ),
+  });
+
+export function updateFlagSettingsFeatureFlagsResponseEntitiesToJSON(
+  updateFlagSettingsFeatureFlagsResponseEntities:
+    UpdateFlagSettingsFeatureFlagsResponseEntities,
+): string {
+  return JSON.stringify(
+    UpdateFlagSettingsFeatureFlagsResponseEntities$outboundSchema.parse(
+      updateFlagSettingsFeatureFlagsResponseEntities,
+    ),
+  );
+}
+export function updateFlagSettingsFeatureFlagsResponseEntitiesFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateFlagSettingsFeatureFlagsResponseEntities,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateFlagSettingsFeatureFlagsResponseEntities$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateFlagSettingsFeatureFlagsResponseEntities' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagSettingsFeatureFlagsMetadata$inboundSchema: z.ZodType<
+  UpdateFlagSettingsFeatureFlagsMetadata,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  activeFlagCount: types.number(),
+  archivedFlagCount: types.number(),
+  segmentCount: types.number(),
+  packSizeInBytes: types.number(),
+  packRevision: types.optional(types.number()),
+  configUpdatedAt: types.optional(types.number()),
+});
+/** @internal */
+export type UpdateFlagSettingsFeatureFlagsMetadata$Outbound = {
+  activeFlagCount: number;
+  archivedFlagCount: number;
+  segmentCount: number;
+  packSizeInBytes: number;
+  packRevision?: number | undefined;
+  configUpdatedAt?: number | undefined;
+};
+
+/** @internal */
+export const UpdateFlagSettingsFeatureFlagsMetadata$outboundSchema: z.ZodType<
+  UpdateFlagSettingsFeatureFlagsMetadata$Outbound,
+  z.ZodTypeDef,
+  UpdateFlagSettingsFeatureFlagsMetadata
+> = z.object({
+  activeFlagCount: z.number(),
+  archivedFlagCount: z.number(),
+  segmentCount: z.number(),
+  packSizeInBytes: z.number(),
+  packRevision: z.number().optional(),
+  configUpdatedAt: z.number().optional(),
+});
+
+export function updateFlagSettingsFeatureFlagsMetadataToJSON(
+  updateFlagSettingsFeatureFlagsMetadata:
+    UpdateFlagSettingsFeatureFlagsMetadata,
+): string {
+  return JSON.stringify(
+    UpdateFlagSettingsFeatureFlagsMetadata$outboundSchema.parse(
+      updateFlagSettingsFeatureFlagsMetadata,
+    ),
+  );
+}
+export function updateFlagSettingsFeatureFlagsMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFlagSettingsFeatureFlagsMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateFlagSettingsFeatureFlagsMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFlagSettingsFeatureFlagsMetadata' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagSettingsFeatureFlagsResponseBody$inboundSchema:
+  z.ZodType<UpdateFlagSettingsFeatureFlagsResponseBody, z.ZodTypeDef, unknown> =
+    z.object({
+      typeName: UpdateFlagSettingsFeatureFlagsTypeName$inboundSchema,
+      projectId: types.string(),
+      ownerId: types.optional(types.string()),
+      enabled: types.boolean(),
+      environments: z.array(types.string()),
+      connections: types.optional(
+        z.array(z.lazy(() =>
+          UpdateFlagSettingsFeatureFlagsConnections$inboundSchema
+        )),
+      ),
+      entities: z.array(
+        z.lazy(() =>
+          UpdateFlagSettingsFeatureFlagsResponseEntities$inboundSchema
+        ),
+      ),
+      createdAt: types.optional(types.number()),
+      updatedAt: types.optional(types.number()),
+      metadata: z.lazy(() =>
+        UpdateFlagSettingsFeatureFlagsMetadata$inboundSchema
+      ),
+    });
+/** @internal */
+export type UpdateFlagSettingsFeatureFlagsResponseBody$Outbound = {
+  typeName: string;
+  projectId: string;
+  ownerId?: string | undefined;
+  enabled: boolean;
+  environments: Array<string>;
+  connections?:
+    | Array<UpdateFlagSettingsFeatureFlagsConnections$Outbound>
+    | undefined;
+  entities: Array<UpdateFlagSettingsFeatureFlagsResponseEntities$Outbound>;
+  createdAt?: number | undefined;
+  updatedAt?: number | undefined;
+  metadata: UpdateFlagSettingsFeatureFlagsMetadata$Outbound;
+};
+
+/** @internal */
+export const UpdateFlagSettingsFeatureFlagsResponseBody$outboundSchema:
+  z.ZodType<
+    UpdateFlagSettingsFeatureFlagsResponseBody$Outbound,
+    z.ZodTypeDef,
+    UpdateFlagSettingsFeatureFlagsResponseBody
+  > = z.object({
+    typeName: UpdateFlagSettingsFeatureFlagsTypeName$outboundSchema,
+    projectId: z.string(),
+    ownerId: z.string().optional(),
+    enabled: z.boolean(),
+    environments: z.array(z.string()),
+    connections: z.array(
+      z.lazy(() => UpdateFlagSettingsFeatureFlagsConnections$outboundSchema),
+    ).optional(),
+    entities: z.array(
+      z.lazy(() =>
+        UpdateFlagSettingsFeatureFlagsResponseEntities$outboundSchema
+      ),
+    ),
+    createdAt: z.number().optional(),
+    updatedAt: z.number().optional(),
+    metadata: z.lazy(() =>
+      UpdateFlagSettingsFeatureFlagsMetadata$outboundSchema
+    ),
+  });
+
+export function updateFlagSettingsFeatureFlagsResponseBodyToJSON(
+  updateFlagSettingsFeatureFlagsResponseBody:
+    UpdateFlagSettingsFeatureFlagsResponseBody,
+): string {
+  return JSON.stringify(
+    UpdateFlagSettingsFeatureFlagsResponseBody$outboundSchema.parse(
+      updateFlagSettingsFeatureFlagsResponseBody,
+    ),
+  );
+}
+export function updateFlagSettingsFeatureFlagsResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateFlagSettingsFeatureFlagsResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateFlagSettingsFeatureFlagsResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateFlagSettingsFeatureFlagsResponseBody' from JSON`,
   );
 }
 
@@ -659,5 +1095,46 @@ export function updateFlagSettingsResponseBodyFromJSON(
     jsonString,
     (x) => UpdateFlagSettingsResponseBody$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'UpdateFlagSettingsResponseBody' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagSettingsResponse$inboundSchema: z.ZodType<
+  UpdateFlagSettingsResponse,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => UpdateFlagSettingsResponseBody$inboundSchema),
+  z.lazy(() => UpdateFlagSettingsFeatureFlagsResponseBody$inboundSchema),
+]);
+/** @internal */
+export type UpdateFlagSettingsResponse$Outbound =
+  | UpdateFlagSettingsResponseBody$Outbound
+  | UpdateFlagSettingsFeatureFlagsResponseBody$Outbound;
+
+/** @internal */
+export const UpdateFlagSettingsResponse$outboundSchema: z.ZodType<
+  UpdateFlagSettingsResponse$Outbound,
+  z.ZodTypeDef,
+  UpdateFlagSettingsResponse
+> = smartUnion([
+  z.lazy(() => UpdateFlagSettingsResponseBody$outboundSchema),
+  z.lazy(() => UpdateFlagSettingsFeatureFlagsResponseBody$outboundSchema),
+]);
+
+export function updateFlagSettingsResponseToJSON(
+  updateFlagSettingsResponse: UpdateFlagSettingsResponse,
+): string {
+  return JSON.stringify(
+    UpdateFlagSettingsResponse$outboundSchema.parse(updateFlagSettingsResponse),
+  );
+}
+export function updateFlagSettingsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFlagSettingsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateFlagSettingsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFlagSettingsResponse' from JSON`,
   );
 }

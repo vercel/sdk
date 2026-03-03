@@ -10,18 +10,19 @@ import { OneHundredAndNine } from "@vercel/sdk/models/userevent.js";
 let value: OneHundredAndNine = {
   projectId: "<id>",
   projectName: "<value>",
-  gitProvider: "gitlab",
-  gitRepoId: "<id>",
-  gitRepositoryName: "<value>",
+  next: {
+    gitProvider: "gitlab",
+    gitRepoId: "<id>",
+    gitRepositoryName: "<value>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `projectId`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `projectName`                                  | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `gitProvider`                                  | [models.GitProvider](../models/gitprovider.md) | :heavy_check_mark:                             | N/A                                            |
-| `gitRepoId`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `gitRepositoryName`                            | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| Field                                                  | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `projectId`                                            | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| `projectName`                                          | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| `previous`                                             | [models.PayloadPrevious](../models/payloadprevious.md) | :heavy_minus_sign:                                     | N/A                                                    |
+| `next`                                                 | [models.PayloadNext](../models/payloadnext.md)         | :heavy_check_mark:                                     | N/A                                                    |

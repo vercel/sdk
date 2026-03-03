@@ -10,14 +10,14 @@ import { OneHundredAndFiftyFour } from "@vercel/sdk/models/userevent.js";
 let value: OneHundredAndFiftyFour = {
   projectId: "<id>",
   projectName: "<value>",
-  publicSource: false,
+  protectedSourcemaps: false,
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `publicSource`     | *boolean*          | :heavy_check_mark: | N/A                |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `projectId`           | *string*              | :heavy_check_mark:    | N/A                   |
+| `projectName`         | *string*              | :heavy_check_mark:    | N/A                   |
+| `protectedSourcemaps` | *boolean*             | :heavy_check_mark:    | N/A                   |

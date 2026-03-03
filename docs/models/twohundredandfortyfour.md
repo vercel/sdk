@@ -7,12 +7,15 @@ The payload of the event, if requested.
 ```typescript
 import { TwoHundredAndFortyFour } from "@vercel/sdk/models/userevent.js";
 
-let value: TwoHundredAndFortyFour = {};
+let value: TwoHundredAndFortyFour = {
+  enabled: true,
+  scope: "dashboard",
+};
 ```
 
 ## Fields
 
-| Field                                                | Type                                                 | Required                                             | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `previous`                                           | Record<string, *models.UserEventPayload244Previous*> | :heavy_minus_sign:                                   | N/A                                                  |
-| `next`                                               | Record<string, *models.UserEventPayload244Next*>     | :heavy_minus_sign:                                   | N/A                                                  |
+| Field                              | Type                               | Required                           | Description                        |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| `enabled`                          | *boolean*                          | :heavy_check_mark:                 | N/A                                |
+| `scope`                            | [models.Scope](../models/scope.md) | :heavy_check_mark:                 | N/A                                |

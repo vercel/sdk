@@ -12,9 +12,7 @@ let value: Runs = {
   ownerId: "<id>",
   deploymentId: "<id>",
   source: {
-    kind: "integration",
-    integrationId: "<id>",
-    integrationConfigurationId: "<id>",
+    kind: "webhook",
   },
   status: "running",
   timeout: 7074.27,

@@ -1,23 +1,33 @@
 # BlobT
 
-## Example Usage
+
+## Supported Types
+
+### `models.Blob1`
 
 ```typescript
-import { BlobT } from "@vercel/sdk/models/userevent.js";
-
-let value: BlobT = {
-  updatedAt: 3811.93,
+const value: models.Blob1 = {
+  updatedAt: 5128.29,
   blockReason: "limits_exceeded",
   overageReason: "imageOptimizationCacheRead",
 };
 ```
 
-## Fields
+### `models.Blob2`
 
-| Field                                                                                                                                | Type                                                                                                                                 | Required                                                                                                                             | Description                                                                                                                          |
-| ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `updatedAt`                                                                                                                          | *number*                                                                                                                             | :heavy_check_mark:                                                                                                                   | N/A                                                                                                                                  |
-| `blockedFrom`                                                                                                                        | *number*                                                                                                                             | :heavy_minus_sign:                                                                                                                   | N/A                                                                                                                                  |
-| `blockedUntil`                                                                                                                       | *number*                                                                                                                             | :heavy_minus_sign:                                                                                                                   | N/A                                                                                                                                  |
-| `blockReason`                                                                                                                        | [models.UserEventPayload85NewOwnerFeatureBlocksBlobBlockReason](../models/usereventpayload85newownerfeatureblocksblobblockreason.md) | :heavy_check_mark:                                                                                                                   | N/A                                                                                                                                  |
-| `overageReason`                                                                                                                      | [models.OverageReason](../models/overagereason.md)                                                                                   | :heavy_check_mark:                                                                                                                   | N/A                                                                                                                                  |
+```typescript
+const value: models.Blob2 = {
+  updatedAt: 6885.52,
+  blockReason: "hard_blocked",
+};
+```
+
+### `models.Blob2`
+
+```typescript
+const value: models.Blob2 = {
+  updatedAt: 6885.52,
+  blockReason: "hard_blocked",
+};
+```
+

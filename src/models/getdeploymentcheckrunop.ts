@@ -25,6 +25,10 @@ export type GetDeploymentCheckRunRequest = {
   slug?: string | undefined;
 };
 
+export type GetDeploymentCheckRunSource4 = {
+  kind: "vercel";
+};
+
 export const GetDeploymentCheckRunSourceProvider = {
   Github: "github",
   Gitlab: "gitlab",
@@ -56,7 +60,8 @@ export type GetDeploymentCheckRunSource1 = {
 export type GetDeploymentCheckRunSource =
   | GetDeploymentCheckRunSource1
   | GetDeploymentCheckRunSource2
-  | GetDeploymentCheckRunSource3;
+  | GetDeploymentCheckRunSource3
+  | GetDeploymentCheckRunSource4;
 
 export const GetDeploymentCheckRunRequires = {
   BuildReady: "build-ready",
@@ -109,7 +114,8 @@ export type GetDeploymentCheckRunResponseBody = {
   source:
     | GetDeploymentCheckRunSource1
     | GetDeploymentCheckRunSource2
-    | GetDeploymentCheckRunSource3;
+    | GetDeploymentCheckRunSource3
+    | GetDeploymentCheckRunSource4;
   requires?: GetDeploymentCheckRunRequires | undefined;
   blocks?: GetDeploymentCheckRunBlocks | undefined;
   targets?: Array<string> | undefined;
@@ -172,6 +178,47 @@ export function getDeploymentCheckRunRequestFromJSON(
     jsonString,
     (x) => GetDeploymentCheckRunRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetDeploymentCheckRunRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentCheckRunSource4$inboundSchema: z.ZodType<
+  GetDeploymentCheckRunSource4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  kind: types.literal("vercel"),
+});
+/** @internal */
+export type GetDeploymentCheckRunSource4$Outbound = {
+  kind: "vercel";
+};
+
+/** @internal */
+export const GetDeploymentCheckRunSource4$outboundSchema: z.ZodType<
+  GetDeploymentCheckRunSource4$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentCheckRunSource4
+> = z.object({
+  kind: z.literal("vercel"),
+});
+
+export function getDeploymentCheckRunSource4ToJSON(
+  getDeploymentCheckRunSource4: GetDeploymentCheckRunSource4,
+): string {
+  return JSON.stringify(
+    GetDeploymentCheckRunSource4$outboundSchema.parse(
+      getDeploymentCheckRunSource4,
+    ),
+  );
+}
+export function getDeploymentCheckRunSource4FromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentCheckRunSource4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentCheckRunSource4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentCheckRunSource4' from JSON`,
   );
 }
 
@@ -337,12 +384,14 @@ export const GetDeploymentCheckRunSource$inboundSchema: z.ZodType<
   z.lazy(() => GetDeploymentCheckRunSource1$inboundSchema),
   z.lazy(() => GetDeploymentCheckRunSource2$inboundSchema),
   z.lazy(() => GetDeploymentCheckRunSource3$inboundSchema),
+  z.lazy(() => GetDeploymentCheckRunSource4$inboundSchema),
 ]);
 /** @internal */
 export type GetDeploymentCheckRunSource$Outbound =
   | GetDeploymentCheckRunSource1$Outbound
   | GetDeploymentCheckRunSource2$Outbound
-  | GetDeploymentCheckRunSource3$Outbound;
+  | GetDeploymentCheckRunSource3$Outbound
+  | GetDeploymentCheckRunSource4$Outbound;
 
 /** @internal */
 export const GetDeploymentCheckRunSource$outboundSchema: z.ZodType<
@@ -353,6 +402,7 @@ export const GetDeploymentCheckRunSource$outboundSchema: z.ZodType<
   z.lazy(() => GetDeploymentCheckRunSource1$outboundSchema),
   z.lazy(() => GetDeploymentCheckRunSource2$outboundSchema),
   z.lazy(() => GetDeploymentCheckRunSource3$outboundSchema),
+  z.lazy(() => GetDeploymentCheckRunSource4$outboundSchema),
 ]);
 
 export function getDeploymentCheckRunSourceToJSON(
@@ -426,6 +476,7 @@ export const GetDeploymentCheckRunResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => GetDeploymentCheckRunSource1$inboundSchema),
     z.lazy(() => GetDeploymentCheckRunSource2$inboundSchema),
     z.lazy(() => GetDeploymentCheckRunSource3$inboundSchema),
+    z.lazy(() => GetDeploymentCheckRunSource4$inboundSchema),
   ]),
   requires: types.optional(GetDeploymentCheckRunRequires$inboundSchema),
   blocks: types.optional(GetDeploymentCheckRunBlocks$inboundSchema),
@@ -452,7 +503,8 @@ export type GetDeploymentCheckRunResponseBody$Outbound = {
   source:
     | GetDeploymentCheckRunSource1$Outbound
     | GetDeploymentCheckRunSource2$Outbound
-    | GetDeploymentCheckRunSource3$Outbound;
+    | GetDeploymentCheckRunSource3$Outbound
+    | GetDeploymentCheckRunSource4$Outbound;
   requires?: string | undefined;
   blocks?: string | undefined;
   targets?: Array<string> | undefined;
@@ -484,6 +536,7 @@ export const GetDeploymentCheckRunResponseBody$outboundSchema: z.ZodType<
     z.lazy(() => GetDeploymentCheckRunSource1$outboundSchema),
     z.lazy(() => GetDeploymentCheckRunSource2$outboundSchema),
     z.lazy(() => GetDeploymentCheckRunSource3$outboundSchema),
+    z.lazy(() => GetDeploymentCheckRunSource4$outboundSchema),
   ]),
   requires: GetDeploymentCheckRunRequires$outboundSchema.optional(),
   blocks: GetDeploymentCheckRunBlocks$outboundSchema.optional(),

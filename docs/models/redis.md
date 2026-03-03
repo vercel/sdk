@@ -1,23 +1,33 @@
 # Redis
 
-## Example Usage
+
+## Supported Types
+
+### `models.Redis1`
 
 ```typescript
-import { Redis } from "@vercel/sdk/models/userevent.js";
-
-let value: Redis = {
-  updatedAt: 7235.89,
-  blockReason: "admin_override",
-  overageReason: "functionInvocation",
+const value: models.Redis1 = {
+  updatedAt: 8275.72,
+  blockReason: "limits_exceeded",
+  overageReason: "artifacts",
 };
 ```
 
-## Fields
+### `models.Redis2`
 
-| Field                                                                                                                                  | Type                                                                                                                                   | Required                                                                                                                               | Description                                                                                                                            |
-| -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| `updatedAt`                                                                                                                            | *number*                                                                                                                               | :heavy_check_mark:                                                                                                                     | N/A                                                                                                                                    |
-| `blockedFrom`                                                                                                                          | *number*                                                                                                                               | :heavy_minus_sign:                                                                                                                     | N/A                                                                                                                                    |
-| `blockedUntil`                                                                                                                         | *number*                                                                                                                               | :heavy_minus_sign:                                                                                                                     | N/A                                                                                                                                    |
-| `blockReason`                                                                                                                          | [models.UserEventPayload85NewOwnerFeatureBlocksRedisBlockReason](../models/usereventpayload85newownerfeatureblocksredisblockreason.md) | :heavy_check_mark:                                                                                                                     | N/A                                                                                                                                    |
-| `overageReason`                                                                                                                        | [models.UserEventPayloadOverageReason](../models/usereventpayloadoveragereason.md)                                                     | :heavy_check_mark:                                                                                                                     | N/A                                                                                                                                    |
+```typescript
+const value: models.Redis2 = {
+  updatedAt: 1522.96,
+  blockReason: "hard_blocked",
+};
+```
+
+### `models.Redis2`
+
+```typescript
+const value: models.Redis2 = {
+  updatedAt: 1522.96,
+  blockReason: "hard_blocked",
+};
+```
+

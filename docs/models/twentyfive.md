@@ -12,13 +12,15 @@ let value: TwentyFive = {
     id: "<id>",
     name: "<value>",
   },
-  versionId: "<id>",
+  bulkRedirectsLimit: 4187.62,
+  prevBulkRedirectsLimit: 6238.03,
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `project`                                                              | [models.UserEventPayloadProject](../models/usereventpayloadproject.md) | :heavy_check_mark:                                                     | N/A                                                                    |
-| `versionId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `project`                                            | [models.PayloadProject](../models/payloadproject.md) | :heavy_check_mark:                                   | N/A                                                  |
+| `bulkRedirectsLimit`                                 | *number*                                             | :heavy_check_mark:                                   | N/A                                                  |
+| `prevBulkRedirectsLimit`                             | *number*                                             | :heavy_check_mark:                                   | N/A                                                  |

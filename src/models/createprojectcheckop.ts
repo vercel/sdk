@@ -27,6 +27,10 @@ export const Blocks = {
 } as const;
 export type Blocks = ClosedEnum<typeof Blocks>;
 
+export type Source4 = {
+  kind: string;
+};
+
 export const SourceProvider = {
   Github: "github",
 } as const;
@@ -51,6 +55,7 @@ export type CreateProjectCheckSource1 = {
 export type CreateProjectCheckSource =
   | Source3
   | CreateProjectCheckSource2
+  | Source4
   | CreateProjectCheckSource1;
 
 export type CreateProjectCheckRequestBody = {
@@ -62,6 +67,7 @@ export type CreateProjectCheckRequestBody = {
   source?:
     | Source3
     | CreateProjectCheckSource2
+    | Source4
     | CreateProjectCheckSource1
     | undefined;
   timeout?: number | undefined;
@@ -88,6 +94,10 @@ export const CreateProjectCheckRequires = {
 export type CreateProjectCheckRequires = ClosedEnum<
   typeof CreateProjectCheckRequires
 >;
+
+export type CreateProjectCheckSource4 = {
+  kind: "vercel";
+};
 
 export const CreateProjectCheckSourceProvider = {
   Github: "github",
@@ -120,7 +130,8 @@ export type CreateProjectCheckSourceChecksV21 = {
 export type CreateProjectCheckChecksV2Source =
   | CreateProjectCheckSourceChecksV21
   | CreateProjectCheckSourceChecksV22
-  | CreateProjectCheckSource3;
+  | CreateProjectCheckSource3
+  | CreateProjectCheckSource4;
 
 export const CreateProjectCheckBlocks = {
   None: "none",
@@ -137,6 +148,7 @@ export const SourceKind = {
   Integration: "integration",
   Webhook: "webhook",
   GitProvider: "git-provider",
+  Vercel: "vercel",
 } as const;
 export type SourceKind = ClosedEnum<typeof SourceKind>;
 
@@ -150,7 +162,8 @@ export type CreateProjectCheckResponseBody = {
   source:
     | CreateProjectCheckSourceChecksV21
     | CreateProjectCheckSourceChecksV22
-    | CreateProjectCheckSource3;
+    | CreateProjectCheckSource3
+    | CreateProjectCheckSource4;
   blocks: CreateProjectCheckBlocks;
   targets: Array<string>;
   sourceKind: SourceKind;
@@ -158,6 +171,7 @@ export type CreateProjectCheckResponseBody = {
   timeout: number;
   createdAt: number;
   updatedAt: number;
+  disabledAt?: number | undefined;
   deletedAt?: number | undefined;
 };
 
@@ -174,6 +188,38 @@ export const Blocks$inboundSchema: z.ZodNativeEnum<typeof Blocks> = z
 /** @internal */
 export const Blocks$outboundSchema: z.ZodNativeEnum<typeof Blocks> =
   Blocks$inboundSchema;
+
+/** @internal */
+export const Source4$inboundSchema: z.ZodType<Source4, z.ZodTypeDef, unknown> =
+  z.object({
+    kind: types.string(),
+  });
+/** @internal */
+export type Source4$Outbound = {
+  kind: string;
+};
+
+/** @internal */
+export const Source4$outboundSchema: z.ZodType<
+  Source4$Outbound,
+  z.ZodTypeDef,
+  Source4
+> = z.object({
+  kind: z.string(),
+});
+
+export function source4ToJSON(source4: Source4): string {
+  return JSON.stringify(Source4$outboundSchema.parse(source4));
+}
+export function source4FromJSON(
+  jsonString: string,
+): SafeParseResult<Source4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Source4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Source4' from JSON`,
+  );
+}
 
 /** @internal */
 export const SourceProvider$inboundSchema: z.ZodNativeEnum<
@@ -314,12 +360,14 @@ export const CreateProjectCheckSource$inboundSchema: z.ZodType<
 > = smartUnion([
   z.lazy(() => Source3$inboundSchema),
   z.lazy(() => CreateProjectCheckSource2$inboundSchema),
+  z.lazy(() => Source4$inboundSchema),
   z.lazy(() => CreateProjectCheckSource1$inboundSchema),
 ]);
 /** @internal */
 export type CreateProjectCheckSource$Outbound =
   | Source3$Outbound
   | CreateProjectCheckSource2$Outbound
+  | Source4$Outbound
   | CreateProjectCheckSource1$Outbound;
 
 /** @internal */
@@ -330,6 +378,7 @@ export const CreateProjectCheckSource$outboundSchema: z.ZodType<
 > = smartUnion([
   z.lazy(() => Source3$outboundSchema),
   z.lazy(() => CreateProjectCheckSource2$outboundSchema),
+  z.lazy(() => Source4$outboundSchema),
   z.lazy(() => CreateProjectCheckSource1$outboundSchema),
 ]);
 
@@ -365,6 +414,7 @@ export const CreateProjectCheckRequestBody$inboundSchema: z.ZodType<
     smartUnion([
       z.lazy(() => Source3$inboundSchema),
       z.lazy(() => CreateProjectCheckSource2$inboundSchema),
+      z.lazy(() => Source4$inboundSchema),
       z.lazy(() => CreateProjectCheckSource1$inboundSchema),
     ]),
   ),
@@ -380,6 +430,7 @@ export type CreateProjectCheckRequestBody$Outbound = {
   source?:
     | Source3$Outbound
     | CreateProjectCheckSource2$Outbound
+    | Source4$Outbound
     | CreateProjectCheckSource1$Outbound
     | undefined;
   timeout: number;
@@ -399,6 +450,7 @@ export const CreateProjectCheckRequestBody$outboundSchema: z.ZodType<
   source: smartUnion([
     z.lazy(() => Source3$outboundSchema),
     z.lazy(() => CreateProjectCheckSource2$outboundSchema),
+    z.lazy(() => Source4$outboundSchema),
     z.lazy(() => CreateProjectCheckSource1$outboundSchema),
   ]).optional(),
   timeout: z.number().default(300),
@@ -490,6 +542,45 @@ export const CreateProjectCheckRequires$inboundSchema: z.ZodNativeEnum<
 export const CreateProjectCheckRequires$outboundSchema: z.ZodNativeEnum<
   typeof CreateProjectCheckRequires
 > = CreateProjectCheckRequires$inboundSchema;
+
+/** @internal */
+export const CreateProjectCheckSource4$inboundSchema: z.ZodType<
+  CreateProjectCheckSource4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  kind: types.literal("vercel"),
+});
+/** @internal */
+export type CreateProjectCheckSource4$Outbound = {
+  kind: "vercel";
+};
+
+/** @internal */
+export const CreateProjectCheckSource4$outboundSchema: z.ZodType<
+  CreateProjectCheckSource4$Outbound,
+  z.ZodTypeDef,
+  CreateProjectCheckSource4
+> = z.object({
+  kind: z.literal("vercel"),
+});
+
+export function createProjectCheckSource4ToJSON(
+  createProjectCheckSource4: CreateProjectCheckSource4,
+): string {
+  return JSON.stringify(
+    CreateProjectCheckSource4$outboundSchema.parse(createProjectCheckSource4),
+  );
+}
+export function createProjectCheckSource4FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectCheckSource4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectCheckSource4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectCheckSource4' from JSON`,
+  );
+}
 
 /** @internal */
 export const CreateProjectCheckSourceProvider$inboundSchema: z.ZodNativeEnum<
@@ -651,12 +742,14 @@ export const CreateProjectCheckChecksV2Source$inboundSchema: z.ZodType<
   z.lazy(() => CreateProjectCheckSourceChecksV21$inboundSchema),
   z.lazy(() => CreateProjectCheckSourceChecksV22$inboundSchema),
   z.lazy(() => CreateProjectCheckSource3$inboundSchema),
+  z.lazy(() => CreateProjectCheckSource4$inboundSchema),
 ]);
 /** @internal */
 export type CreateProjectCheckChecksV2Source$Outbound =
   | CreateProjectCheckSourceChecksV21$Outbound
   | CreateProjectCheckSourceChecksV22$Outbound
-  | CreateProjectCheckSource3$Outbound;
+  | CreateProjectCheckSource3$Outbound
+  | CreateProjectCheckSource4$Outbound;
 
 /** @internal */
 export const CreateProjectCheckChecksV2Source$outboundSchema: z.ZodType<
@@ -667,6 +760,7 @@ export const CreateProjectCheckChecksV2Source$outboundSchema: z.ZodType<
   z.lazy(() => CreateProjectCheckSourceChecksV21$outboundSchema),
   z.lazy(() => CreateProjectCheckSourceChecksV22$outboundSchema),
   z.lazy(() => CreateProjectCheckSource3$outboundSchema),
+  z.lazy(() => CreateProjectCheckSource4$outboundSchema),
 ]);
 
 export function createProjectCheckChecksV2SourceToJSON(
@@ -720,6 +814,7 @@ export const CreateProjectCheckResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => CreateProjectCheckSourceChecksV21$inboundSchema),
     z.lazy(() => CreateProjectCheckSourceChecksV22$inboundSchema),
     z.lazy(() => CreateProjectCheckSource3$inboundSchema),
+    z.lazy(() => CreateProjectCheckSource4$inboundSchema),
   ]),
   blocks: CreateProjectCheckBlocks$inboundSchema,
   targets: z.array(types.string()),
@@ -728,6 +823,7 @@ export const CreateProjectCheckResponseBody$inboundSchema: z.ZodType<
   timeout: types.number(),
   createdAt: types.number(),
   updatedAt: types.number(),
+  disabledAt: types.optional(types.number()),
   deletedAt: types.optional(types.number()),
 });
 /** @internal */
@@ -741,7 +837,8 @@ export type CreateProjectCheckResponseBody$Outbound = {
   source:
     | CreateProjectCheckSourceChecksV21$Outbound
     | CreateProjectCheckSourceChecksV22$Outbound
-    | CreateProjectCheckSource3$Outbound;
+    | CreateProjectCheckSource3$Outbound
+    | CreateProjectCheckSource4$Outbound;
   blocks: string;
   targets: Array<string>;
   sourceKind: string;
@@ -749,6 +846,7 @@ export type CreateProjectCheckResponseBody$Outbound = {
   timeout: number;
   createdAt: number;
   updatedAt: number;
+  disabledAt?: number | undefined;
   deletedAt?: number | undefined;
 };
 
@@ -768,6 +866,7 @@ export const CreateProjectCheckResponseBody$outboundSchema: z.ZodType<
     z.lazy(() => CreateProjectCheckSourceChecksV21$outboundSchema),
     z.lazy(() => CreateProjectCheckSourceChecksV22$outboundSchema),
     z.lazy(() => CreateProjectCheckSource3$outboundSchema),
+    z.lazy(() => CreateProjectCheckSource4$outboundSchema),
   ]),
   blocks: CreateProjectCheckBlocks$outboundSchema,
   targets: z.array(z.string()),
@@ -776,6 +875,7 @@ export const CreateProjectCheckResponseBody$outboundSchema: z.ZodType<
   timeout: z.number(),
   createdAt: z.number(),
   updatedAt: z.number(),
+  disabledAt: z.number().optional(),
   deletedAt: z.number().optional(),
 });
 

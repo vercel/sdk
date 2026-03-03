@@ -8,17 +8,13 @@ The payload of the event, if requested.
 import { TwoHundredAndTwo } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndTwo = {
-  action: "cancel_plan",
-  data: {
-    planSlug: "v0_teams",
-  },
+  planSlug: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `subscriptionId`                                                           | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `action`                                                                   | [models.UserEventPayload202Action](../models/usereventpayload202action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `data`                                                                     | [models.UserEventPayloadData](../models/usereventpayloaddata.md)           | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `subscriptionId`   | *string*           | :heavy_minus_sign: | N/A                |
+| `planSlug`         | *string*           | :heavy_check_mark: | N/A                |

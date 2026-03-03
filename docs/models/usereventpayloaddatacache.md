@@ -7,7 +7,7 @@ import { UserEventPayloadDataCache } from "@vercel/sdk/models/userevent.js";
 
 let value: UserEventPayloadDataCache = {
   updatedAt: 2335.94,
-  blockReason: "admin_override",
+  blockReason: "limits_exceeded",
 };
 ```
 
@@ -18,4 +18,4 @@ let value: UserEventPayloadDataCache = {
 | `updatedAt`                                                                        | *number*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `blockedFrom`                                                                      | *number*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
 | `blockedUntil`                                                                     | *number*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `blockReason`                                                                      | [models.UserEventPayload85BlockReason](../models/usereventpayload85blockreason.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `blockReason`                                                                      | [models.UserEventPayload86BlockReason](../models/usereventpayload86blockreason.md) | :heavy_check_mark:                                                                 | N/A                                                                                |

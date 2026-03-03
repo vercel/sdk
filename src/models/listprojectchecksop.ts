@@ -40,6 +40,10 @@ export type ListProjectChecksRequires = ClosedEnum<
   typeof ListProjectChecksRequires
 >;
 
+export type ListProjectChecksSource4 = {
+  kind: "vercel";
+};
+
 export const ListProjectChecksSourceProvider = {
   Github: "github",
   Gitlab: "gitlab",
@@ -71,7 +75,8 @@ export type ListProjectChecksSource1 = {
 export type ListProjectChecksSource =
   | ListProjectChecksSource1
   | ListProjectChecksSource2
-  | ListProjectChecksSource3;
+  | ListProjectChecksSource3
+  | ListProjectChecksSource4;
 
 export const ListProjectChecksBlocks = {
   None: "none",
@@ -88,6 +93,7 @@ export const ListProjectChecksSourceKind = {
   Integration: "integration",
   Webhook: "webhook",
   GitProvider: "git-provider",
+  Vercel: "vercel",
 } as const;
 export type ListProjectChecksSourceKind = ClosedEnum<
   typeof ListProjectChecksSourceKind
@@ -103,7 +109,8 @@ export type Checks = {
   source:
     | ListProjectChecksSource1
     | ListProjectChecksSource2
-    | ListProjectChecksSource3;
+    | ListProjectChecksSource3
+    | ListProjectChecksSource4;
   blocks: ListProjectChecksBlocks;
   targets: Array<string>;
   sourceKind: ListProjectChecksSourceKind;
@@ -111,6 +118,7 @@ export type Checks = {
   timeout: number;
   createdAt: number;
   updatedAt: number;
+  disabledAt?: number | undefined;
   deletedAt?: number | undefined;
 };
 
@@ -183,6 +191,45 @@ export const ListProjectChecksRequires$inboundSchema: z.ZodNativeEnum<
 export const ListProjectChecksRequires$outboundSchema: z.ZodNativeEnum<
   typeof ListProjectChecksRequires
 > = ListProjectChecksRequires$inboundSchema;
+
+/** @internal */
+export const ListProjectChecksSource4$inboundSchema: z.ZodType<
+  ListProjectChecksSource4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  kind: types.literal("vercel"),
+});
+/** @internal */
+export type ListProjectChecksSource4$Outbound = {
+  kind: "vercel";
+};
+
+/** @internal */
+export const ListProjectChecksSource4$outboundSchema: z.ZodType<
+  ListProjectChecksSource4$Outbound,
+  z.ZodTypeDef,
+  ListProjectChecksSource4
+> = z.object({
+  kind: z.literal("vercel"),
+});
+
+export function listProjectChecksSource4ToJSON(
+  listProjectChecksSource4: ListProjectChecksSource4,
+): string {
+  return JSON.stringify(
+    ListProjectChecksSource4$outboundSchema.parse(listProjectChecksSource4),
+  );
+}
+export function listProjectChecksSource4FromJSON(
+  jsonString: string,
+): SafeParseResult<ListProjectChecksSource4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListProjectChecksSource4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListProjectChecksSource4' from JSON`,
+  );
+}
 
 /** @internal */
 export const ListProjectChecksSourceProvider$inboundSchema: z.ZodNativeEnum<
@@ -340,12 +387,14 @@ export const ListProjectChecksSource$inboundSchema: z.ZodType<
   z.lazy(() => ListProjectChecksSource1$inboundSchema),
   z.lazy(() => ListProjectChecksSource2$inboundSchema),
   z.lazy(() => ListProjectChecksSource3$inboundSchema),
+  z.lazy(() => ListProjectChecksSource4$inboundSchema),
 ]);
 /** @internal */
 export type ListProjectChecksSource$Outbound =
   | ListProjectChecksSource1$Outbound
   | ListProjectChecksSource2$Outbound
-  | ListProjectChecksSource3$Outbound;
+  | ListProjectChecksSource3$Outbound
+  | ListProjectChecksSource4$Outbound;
 
 /** @internal */
 export const ListProjectChecksSource$outboundSchema: z.ZodType<
@@ -356,6 +405,7 @@ export const ListProjectChecksSource$outboundSchema: z.ZodType<
   z.lazy(() => ListProjectChecksSource1$outboundSchema),
   z.lazy(() => ListProjectChecksSource2$outboundSchema),
   z.lazy(() => ListProjectChecksSource3$outboundSchema),
+  z.lazy(() => ListProjectChecksSource4$outboundSchema),
 ]);
 
 export function listProjectChecksSourceToJSON(
@@ -406,6 +456,7 @@ export const Checks$inboundSchema: z.ZodType<Checks, z.ZodTypeDef, unknown> = z
       z.lazy(() => ListProjectChecksSource1$inboundSchema),
       z.lazy(() => ListProjectChecksSource2$inboundSchema),
       z.lazy(() => ListProjectChecksSource3$inboundSchema),
+      z.lazy(() => ListProjectChecksSource4$inboundSchema),
     ]),
     blocks: ListProjectChecksBlocks$inboundSchema,
     targets: z.array(types.string()),
@@ -414,6 +465,7 @@ export const Checks$inboundSchema: z.ZodType<Checks, z.ZodTypeDef, unknown> = z
     timeout: types.number(),
     createdAt: types.number(),
     updatedAt: types.number(),
+    disabledAt: types.optional(types.number()),
     deletedAt: types.optional(types.number()),
   });
 /** @internal */
@@ -427,7 +479,8 @@ export type Checks$Outbound = {
   source:
     | ListProjectChecksSource1$Outbound
     | ListProjectChecksSource2$Outbound
-    | ListProjectChecksSource3$Outbound;
+    | ListProjectChecksSource3$Outbound
+    | ListProjectChecksSource4$Outbound;
   blocks: string;
   targets: Array<string>;
   sourceKind: string;
@@ -435,6 +488,7 @@ export type Checks$Outbound = {
   timeout: number;
   createdAt: number;
   updatedAt: number;
+  disabledAt?: number | undefined;
   deletedAt?: number | undefined;
 };
 
@@ -454,6 +508,7 @@ export const Checks$outboundSchema: z.ZodType<
     z.lazy(() => ListProjectChecksSource1$outboundSchema),
     z.lazy(() => ListProjectChecksSource2$outboundSchema),
     z.lazy(() => ListProjectChecksSource3$outboundSchema),
+    z.lazy(() => ListProjectChecksSource4$outboundSchema),
   ]),
   blocks: ListProjectChecksBlocks$outboundSchema,
   targets: z.array(z.string()),
@@ -462,6 +517,7 @@ export const Checks$outboundSchema: z.ZodType<
   timeout: z.number(),
   createdAt: z.number(),
   updatedAt: z.number(),
+  disabledAt: z.number().optional(),
   deletedAt: z.number().optional(),
 });
 

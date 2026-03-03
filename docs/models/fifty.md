@@ -8,14 +8,14 @@ The payload of the event, if requested.
 import { Fifty } from "@vercel/sdk/models/userevent.js";
 
 let value: Fifty = {
-  provider: "github-custom-host",
-  login: "Lavinia.Gibson",
+  bitbucketLogin: "<value>",
+  bitbucketAccountId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `provider`                               | [models.Provider](../models/provider.md) | :heavy_check_mark:                       | N/A                                      |
-| `login`                                  | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| Field                | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `bitbucketLogin`     | *string*             | :heavy_check_mark:   | N/A                  |
+| `bitbucketAccountId` | *string*             | :heavy_check_mark:   | N/A                  |

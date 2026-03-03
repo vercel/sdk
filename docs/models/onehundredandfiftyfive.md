@@ -8,16 +8,16 @@ The payload of the event, if requested.
 import { OneHundredAndFiftyFive } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndFiftyFive = {
-  previous: {},
-  next: {},
+  projectId: "<id>",
+  projectName: "<value>",
+  publicSource: true,
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `projectId`                                                                    | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `projectName`                                                                  | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload155Previous](../models/usereventpayload155previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `next`                                                                         | [models.UserEventPayload155Next](../models/usereventpayload155next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `publicSource`     | *boolean*          | :heavy_check_mark: | N/A                |

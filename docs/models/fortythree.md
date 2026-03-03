@@ -15,7 +15,9 @@ let value: FortyThree = {
   configuration: {
     id: "<id>",
   },
-  newName: "<value>",
+  project: {
+    id: "<id>",
+  },
 };
 ```
 
@@ -23,6 +25,6 @@ let value: FortyThree = {
 
 | Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
 | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `team`                                                                                 | [models.UserEventPayload43Team](../models/usereventpayload43team.md)                   | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `team`                                                                                 | [models.UserEventPayloadTeam](../models/usereventpayloadteam.md)                       | :heavy_check_mark:                                                                     | N/A                                                                                    |
 | `configuration`                                                                        | [models.UserEventPayload43Configuration](../models/usereventpayload43configuration.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |
-| `newName`                                                                              | *string*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `project`                                                                              | [models.UserEventPayload43Project](../models/usereventpayload43project.md)             | :heavy_check_mark:                                                                     | N/A                                                                                    |

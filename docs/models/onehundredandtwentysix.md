@@ -8,16 +8,14 @@ The payload of the event, if requested.
 import { OneHundredAndTwentySix } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndTwentySix = {
-  projectId: "<id>",
-  projectName: "<value>",
-  previewDeploymentSuffix: "<value>",
+  environment: "production",
+  enabled: "on",
 };
 ```
 
 ## Fields
 
-| Field                     | Type                      | Required                  | Description               |
-| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
-| `projectId`               | *string*                  | :heavy_check_mark:        | N/A                       |
-| `projectName`             | *string*                  | :heavy_check_mark:        | N/A                       |
-| `previewDeploymentSuffix` | *string*                  | :heavy_check_mark:        | N/A                       |
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `environment`                                                | [models.PayloadEnvironment](../models/payloadenvironment.md) | :heavy_check_mark:                                           | N/A                                                          |
+| `enabled`                                                    | [models.Enabled](../models/enabled.md)                       | :heavy_check_mark:                                           | N/A                                                          |

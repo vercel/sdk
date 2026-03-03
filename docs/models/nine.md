@@ -8,17 +8,21 @@ The payload of the event, if requested.
 import { Nine } from "@vercel/sdk/models/userevent.js";
 
 let value: Nine = {
-  next: {
-    enabled: true,
-    scope: "all",
-    includeDrafts: true,
+  accessGroup: {
+    id: "<id>",
+    name: "<value>",
+  },
+  project: {
+    id: "<id>",
   },
 };
 ```
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `previous`                               | [models.Previous](../models/previous.md) | :heavy_minus_sign:                       | Automatic code review settings           |
-| `next`                                   | [models.Next](../models/next.md)         | :heavy_check_mark:                       | Automatic code review settings           |
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `accessGroup`                                                                    | [models.UserEventPayload9AccessGroup](../models/usereventpayload9accessgroup.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| `project`                                                                        | [models.Project](../models/project.md)                                           | :heavy_check_mark:                                                               | N/A                                                                              |
+| `nextRole`                                                                       | [models.NextRole](../models/nextrole.md)                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `previousRole`                                                                   | [models.PreviousRole](../models/previousrole.md)                                 | :heavy_minus_sign:                                                               | N/A                                                                              |

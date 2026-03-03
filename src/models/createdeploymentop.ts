@@ -2094,6 +2094,10 @@ export type SeatBlock = {
    * The blocked vercel user ID.
    */
   userId?: string | undefined;
+  /**
+   * Determines if the user was verified during the block. In the git integration case, the commit sender was the author.
+   */
+  isVerified?: boolean | undefined;
 };
 
 /**
@@ -8858,11 +8862,13 @@ export const SeatBlock$inboundSchema: z.ZodType<
 > = z.object({
   blockCode: BlockCode$inboundSchema,
   userId: types.optional(types.string()),
+  isVerified: types.optional(types.boolean()),
 });
 /** @internal */
 export type SeatBlock$Outbound = {
   blockCode: string;
   userId?: string | undefined;
+  isVerified?: boolean | undefined;
 };
 
 /** @internal */
@@ -8873,6 +8879,7 @@ export const SeatBlock$outboundSchema: z.ZodType<
 > = z.object({
   blockCode: BlockCode$outboundSchema,
   userId: z.string().optional(),
+  isVerified: z.boolean().optional(),
 });
 
 export function seatBlockToJSON(seatBlock: SeatBlock): string {

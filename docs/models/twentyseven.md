@@ -7,7 +7,9 @@ The payload of the event, if requested.
 ```typescript
 import { TwentySeven } from "@vercel/sdk/models/userevent.js";
 
-let value: TwentySeven = {};
+let value: TwentySeven = {
+  custom: true,
+};
 ```
 
 ## Fields
@@ -16,4 +18,5 @@ let value: TwentySeven = {};
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `cn`               | *string*           | :heavy_minus_sign: | N/A                |
 | `cns`              | *string*[]         | :heavy_minus_sign: | N/A                |
+| `custom`           | *boolean*          | :heavy_check_mark: | N/A                |
 | `id`               | *string*           | :heavy_minus_sign: | N/A                |

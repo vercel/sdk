@@ -1360,6 +1360,8 @@ type GetDeploymentsSeatBlock struct {
 	BlockCode GetDeploymentsBlockCode `json:"blockCode"`
 	// The blocked vercel user ID.
 	UserID *string `json:"userId,omitempty"`
+	// Determines if the user was verified during the block. In the git integration case, the commit sender was the author.
+	IsVerified *bool `json:"isVerified,omitempty"`
 }
 
 func (o *GetDeploymentsSeatBlock) GetBlockCode() GetDeploymentsBlockCode {
@@ -1374,6 +1376,13 @@ func (o *GetDeploymentsSeatBlock) GetUserID() *string {
 		return nil
 	}
 	return o.UserID
+}
+
+func (o *GetDeploymentsSeatBlock) GetIsVerified() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsVerified
 }
 
 type GetDeploymentsDeployment struct {

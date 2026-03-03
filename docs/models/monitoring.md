@@ -9,7 +9,7 @@ import { Monitoring } from "@vercel/sdk/models/userevent.js";
 
 let value: Monitoring = {
   updatedAt: 4865.72,
-  blockReason: "admin_override",
+  blockReason: "limits_exceeded",
   blockType: "hard",
 };
 ```

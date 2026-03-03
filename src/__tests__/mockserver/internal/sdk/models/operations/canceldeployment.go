@@ -7995,6 +7995,8 @@ type CancelDeploymentSeatBlock struct {
 	BlockCode CancelDeploymentBlockCode `json:"blockCode"`
 	// The blocked vercel user ID.
 	UserID *string `json:"userId,omitempty"`
+	// Determines if the user was verified during the block. In the git integration case, the commit sender was the author.
+	IsVerified *bool `json:"isVerified,omitempty"`
 }
 
 func (o *CancelDeploymentSeatBlock) GetBlockCode() CancelDeploymentBlockCode {
@@ -8009,6 +8011,13 @@ func (o *CancelDeploymentSeatBlock) GetUserID() *string {
 		return nil
 	}
 	return o.UserID
+}
+
+func (o *CancelDeploymentSeatBlock) GetIsVerified() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsVerified
 }
 
 // CancelDeploymentResponseBody - The private deployment representation of a Deployment.

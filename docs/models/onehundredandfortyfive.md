@@ -11,10 +11,16 @@ let value: OneHundredAndFortyFive = {
   projectId: "<id>",
   projectName: "<value>",
   previous: {
-    functionZeroConfigFailover: false,
+    functionDefaultRegions: [
+      "<value 1>",
+      "<value 2>",
+    ],
   },
   next: {
-    functionZeroConfigFailover: false,
+    functionDefaultRegions: [
+      "<value 1>",
+      "<value 2>",
+    ],
   },
 };
 ```

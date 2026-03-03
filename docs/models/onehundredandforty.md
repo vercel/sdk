@@ -7,14 +7,17 @@ The payload of the event, if requested.
 ```typescript
 import { OneHundredAndForty } from "@vercel/sdk/models/userevent.js";
 
-let value: OneHundredAndForty = {};
+let value: OneHundredAndForty = {
+  projectId: "<id>",
+  projectName: "<value>",
+  sourceFilesOutsideRootDirectory: false,
+};
 ```
 
 ## Fields
 
-| Field                 | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `projectId`           | *string*              | :heavy_minus_sign:    | N/A                   |
-| `projectName`         | *string*              | :heavy_minus_sign:    | N/A                   |
-| `buildMachineType`    | *string*              | :heavy_minus_sign:    | N/A                   |
-| `oldBuildMachineType` | *string*              | :heavy_minus_sign:    | N/A                   |
+| Field                             | Type                              | Required                          | Description                       |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `projectId`                       | *string*                          | :heavy_check_mark:                | N/A                               |
+| `projectName`                     | *string*                          | :heavy_check_mark:                | N/A                               |
+| `sourceFilesOutsideRootDirectory` | *boolean*                         | :heavy_check_mark:                | N/A                               |

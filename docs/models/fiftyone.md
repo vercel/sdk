@@ -8,18 +8,14 @@ The payload of the event, if requested.
 import { FiftyOne } from "@vercel/sdk/models/userevent.js";
 
 let value: FiftyOne = {
-  projectId: "<id>",
-  projectName: "<value>",
-  hookName: "<value>",
-  ref: "<value>",
+  provider: "google",
+  login: "Elijah_OConner",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `hookName`         | *string*           | :heavy_check_mark: | N/A                |
-| `ref`              | *string*           | :heavy_check_mark: | N/A                |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `provider`                               | [models.Provider](../models/provider.md) | :heavy_check_mark:                       | N/A                                      |
+| `login`                                  | *string*                                 | :heavy_check_mark:                       | N/A                                      |

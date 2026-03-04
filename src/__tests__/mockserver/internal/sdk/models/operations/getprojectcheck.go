@@ -100,8 +100,35 @@ func (e *GetProjectCheckKindVercel) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type GetProjectCheckJobName string
+
+const (
+	GetProjectCheckJobNameLint      GetProjectCheckJobName = "lint"
+	GetProjectCheckJobNameTypecheck GetProjectCheckJobName = "typecheck"
+)
+
+func (e GetProjectCheckJobName) ToPointer() *GetProjectCheckJobName {
+	return &e
+}
+func (e *GetProjectCheckJobName) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "lint":
+		fallthrough
+	case "typecheck":
+		*e = GetProjectCheckJobName(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetProjectCheckJobName: %v", v)
+	}
+}
+
 type GetProjectCheckSourceVercel struct {
-	Kind GetProjectCheckKindVercel `json:"kind"`
+	Kind    GetProjectCheckKindVercel `json:"kind"`
+	JobName *GetProjectCheckJobName   `json:"jobName,omitempty"`
 }
 
 func (g GetProjectCheckSourceVercel) MarshalJSON() ([]byte, error) {
@@ -120,6 +147,13 @@ func (o *GetProjectCheckSourceVercel) GetKind() GetProjectCheckKindVercel {
 		return GetProjectCheckKindVercel("")
 	}
 	return o.Kind
+}
+
+func (o *GetProjectCheckSourceVercel) GetJobName() *GetProjectCheckJobName {
+	if o == nil {
+		return nil
+	}
+	return o.JobName
 }
 
 type GetProjectCheckKindGitProvider string
@@ -563,7 +597,6 @@ type GetProjectCheckResponseBody struct {
 	Timeout                          float64                    `json:"timeout"`
 	CreatedAt                        float64                    `json:"createdAt"`
 	UpdatedAt                        float64                    `json:"updatedAt"`
-	DisabledAt                       *float64                   `json:"disabledAt,omitempty"`
 	DeletedAt                        *float64                   `json:"deletedAt,omitempty"`
 }
 
@@ -679,13 +712,6 @@ func (o *GetProjectCheckResponseBody) GetUpdatedAt() float64 {
 		return 0.0
 	}
 	return o.UpdatedAt
-}
-
-func (o *GetProjectCheckResponseBody) GetDisabledAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.DisabledAt
 }
 
 func (o *GetProjectCheckResponseBody) GetDeletedAt() *float64 {

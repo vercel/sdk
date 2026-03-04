@@ -8,16 +8,16 @@ The payload of the event, if requested.
 import { OneHundredAndSixtyThree } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndSixtyThree = {
-  team: {
-    id: "<id>",
-  },
+  projectId: "<id>",
+  projectName: "<value>",
+  onCommit: true,
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `team`                                                                 | [models.UserEventPayload163Team](../models/usereventpayload163team.md) | :heavy_check_mark:                                                     | N/A                                                                    |
-| `previousRule`                                                         | [models.PreviousRule](../models/previousrule.md)                       | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `nextRule`                                                             | [models.NextRule](../models/nextrule.md)                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `onCommit`         | *boolean*          | :heavy_check_mark: | N/A                |

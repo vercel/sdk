@@ -207,8 +207,35 @@ func (e *UpdateDeploymentCheckRunKindVercel) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type UpdateDeploymentCheckRunJobName string
+
+const (
+	UpdateDeploymentCheckRunJobNameLint      UpdateDeploymentCheckRunJobName = "lint"
+	UpdateDeploymentCheckRunJobNameTypecheck UpdateDeploymentCheckRunJobName = "typecheck"
+)
+
+func (e UpdateDeploymentCheckRunJobName) ToPointer() *UpdateDeploymentCheckRunJobName {
+	return &e
+}
+func (e *UpdateDeploymentCheckRunJobName) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "lint":
+		fallthrough
+	case "typecheck":
+		*e = UpdateDeploymentCheckRunJobName(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateDeploymentCheckRunJobName: %v", v)
+	}
+}
+
 type UpdateDeploymentCheckRunSourceVercel struct {
-	Kind UpdateDeploymentCheckRunKindVercel `json:"kind"`
+	Kind    UpdateDeploymentCheckRunKindVercel `json:"kind"`
+	JobName *UpdateDeploymentCheckRunJobName   `json:"jobName,omitempty"`
 }
 
 func (u UpdateDeploymentCheckRunSourceVercel) MarshalJSON() ([]byte, error) {
@@ -227,6 +254,13 @@ func (o *UpdateDeploymentCheckRunSourceVercel) GetKind() UpdateDeploymentCheckRu
 		return UpdateDeploymentCheckRunKindVercel("")
 	}
 	return o.Kind
+}
+
+func (o *UpdateDeploymentCheckRunSourceVercel) GetJobName() *UpdateDeploymentCheckRunJobName {
+	if o == nil {
+		return nil
+	}
+	return o.JobName
 }
 
 type UpdateDeploymentCheckRunKindGitProvider string

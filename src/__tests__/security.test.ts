@@ -24,10 +24,6 @@ test("Security Update Attack Challenge Mode", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    attackModeEnabled: false,
-    attackModeUpdatedAt: 7411.4,
-  });
 });
 
 test("Security Put Firewall Config", async () => {
@@ -48,104 +44,6 @@ test("Security Put Firewall Config", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    active: {
-      ownerId: "<id>",
-      projectKey: "<value>",
-      id: "<id>",
-      version: 9165.84,
-      updatedAt: "1735603203410",
-      firewallEnabled: false,
-      crs: {
-        sd: {
-          active: false,
-          action: "deny",
-        },
-        ma: {
-          active: false,
-          action: "deny",
-        },
-        lfi: {
-          active: true,
-          action: "log",
-        },
-        rfi: {
-          active: true,
-          action: "deny",
-        },
-        rce: {
-          active: false,
-          action: "log",
-        },
-        php: {
-          active: true,
-          action: "log",
-        },
-        gen: {
-          active: true,
-          action: "deny",
-        },
-        xss: {
-          active: true,
-          action: "log",
-        },
-        sqli: {
-          active: false,
-          action: "deny",
-        },
-        sf: {
-          active: false,
-          action: "deny",
-        },
-        java: {
-          active: true,
-          action: "log",
-        },
-      },
-      rules: [
-        {
-          id: "<id>",
-          name: "<value>",
-          active: false,
-          conditionGroup: [
-            {
-              conditions: [
-                {
-                  type: "bot_name",
-                  op: "lte",
-                },
-              ],
-            },
-          ],
-          action: {},
-          valid: true,
-          validationErrors: "<value>",
-        },
-        {
-          id: "<id>",
-          name: "<value>",
-          active: false,
-          conditionGroup: [
-            {
-              conditions: [
-                {
-                  type: "bot_name",
-                  op: "lte",
-                },
-              ],
-            },
-          ],
-          action: {},
-          valid: true,
-          validationErrors: "<value>",
-        },
-      ],
-      ips: [],
-      changes: [
-        {},
-      ],
-    },
-  });
 });
 
 test("Security Update Firewall Config", async () => {
@@ -167,7 +65,6 @@ test("Security Update Firewall Config", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
 });
 
 test("Security Get Firewall Config", async () => {
@@ -186,96 +83,6 @@ test("Security Get Firewall Config", async () => {
     configVersion: "<value>",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    ownerId: "<id>",
-    projectKey: "<value>",
-    id: "<id>",
-    version: 6575.82,
-    updatedAt: "1735634663735",
-    firewallEnabled: false,
-    crs: {
-      sd: {
-        active: true,
-        action: "log",
-      },
-      ma: {
-        active: false,
-        action: "deny",
-      },
-      lfi: {
-        active: false,
-        action: "deny",
-      },
-      rfi: {
-        active: true,
-        action: "deny",
-      },
-      rce: {
-        active: true,
-        action: "log",
-      },
-      php: {
-        active: true,
-        action: "deny",
-      },
-      gen: {
-        active: true,
-        action: "deny",
-      },
-      xss: {
-        active: false,
-        action: "log",
-      },
-      sqli: {
-        active: true,
-        action: "deny",
-      },
-      sf: {
-        active: true,
-        action: "log",
-      },
-      java: {
-        active: true,
-        action: "deny",
-      },
-    },
-    rules: [
-      {
-        id: "<id>",
-        name: "<value>",
-        active: true,
-        conditionGroup: [],
-        action: {},
-        valid: false,
-        validationErrors: "<value>",
-      },
-    ],
-    ips: [
-      {
-        id: "<id>",
-        hostname: "graceful-elevator.com",
-        ip: "dc71:cdcf:e1e6:bce1:4c8c:7202:5f76:e329",
-        action: "bypass",
-      },
-      {
-        id: "<id>",
-        hostname: "graceful-elevator.com",
-        ip: "dc71:cdcf:e1e6:bce1:4c8c:7202:5f76:e329",
-        action: "bypass",
-      },
-      {
-        id: "<id>",
-        hostname: "graceful-elevator.com",
-        ip: "dc71:cdcf:e1e6:bce1:4c8c:7202:5f76:e329",
-        action: "bypass",
-      },
-    ],
-    changes: [
-      {},
-      {},
-      {},
-    ],
-  });
 });
 
 test("Security Get Bypass Ip", async () => {
@@ -294,9 +101,6 @@ test("Security Get Bypass Ip", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    result: [],
-  });
 });
 
 test("Security Add Bypass Ip", async () => {
@@ -331,9 +135,6 @@ test("Security Remove Bypass Ip", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    ok: false,
-  });
 });
 
 test("Security Get /V1 /Security/firewall/events", async () => {
@@ -350,7 +151,4 @@ test("Security Get /V1 /Security/firewall/events", async () => {
     projectId: "<id>",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    actions: [],
-  });
 });

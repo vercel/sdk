@@ -8,17 +8,16 @@ The payload of the event, if requested.
 import { TwoHundredAndThree } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndThree = {
-  action: "cancel_plan",
-  data: {
-    planSlug: "v0_business",
-  },
+  gitProvider: "<value>",
+  gitProviderGroupDescriptor: "<value>",
+  gitScope: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `subscriptionId`                                                           | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `action`                                                                   | [models.UserEventPayload203Action](../models/usereventpayload203action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `data`                                                                     | [models.UserEventPayloadData](../models/usereventpayloaddata.md)           | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field                        | Type                         | Required                     | Description                  |
+| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
+| `gitProvider`                | *string*                     | :heavy_check_mark:           | N/A                          |
+| `gitProviderGroupDescriptor` | *string*                     | :heavy_check_mark:           | N/A                          |
+| `gitScope`                   | *string*                     | :heavy_check_mark:           | N/A                          |

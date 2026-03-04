@@ -16,7 +16,7 @@ let value: UserEvent = {
   userId: "zTuNVUXEAvvnNN3IaqinkyMw",
   principalId: "<id>",
   payload: {
-    appName: "<value>",
+    teamName: "<value>",
   },
 };
 ```

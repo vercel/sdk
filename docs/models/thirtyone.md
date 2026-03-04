@@ -7,15 +7,11 @@ The payload of the event, if requested.
 ```typescript
 import { ThirtyOne } from "@vercel/sdk/models/userevent.js";
 
-let value: ThirtyOne = {
-  src: "<value>",
-  dst: "<value>",
-};
+let value: ThirtyOne = {};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `src`              | *string*           | :heavy_check_mark: | N/A                |
-| `dst`              | *string*           | :heavy_check_mark: | N/A                |
+| `avatar`           | *string*           | :heavy_minus_sign: | N/A                |

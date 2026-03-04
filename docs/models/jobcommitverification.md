@@ -7,11 +7,11 @@ Since 6 Nov 2025 The verification status of the commit. - 'verified' if the comm
 ```typescript
 import { JobCommitVerification } from "@vercel/sdk/models/userevent.js";
 
-let value: JobCommitVerification = "unknown";
+let value: JobCommitVerification = "unverified";
 ```
 
 ## Values
 
 ```typescript
-"verified" | "unknown" | "unverified"
+"verified" | "unverified" | "unknown"
 ```

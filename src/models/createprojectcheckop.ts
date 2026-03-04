@@ -27,8 +27,15 @@ export const Blocks = {
 } as const;
 export type Blocks = ClosedEnum<typeof Blocks>;
 
+export const JobName = {
+  Lint: "lint",
+  Typecheck: "typecheck",
+} as const;
+export type JobName = ClosedEnum<typeof JobName>;
+
 export type Source4 = {
   kind: string;
+  jobName?: JobName | undefined;
 };
 
 export const SourceProvider = {
@@ -95,8 +102,15 @@ export type CreateProjectCheckRequires = ClosedEnum<
   typeof CreateProjectCheckRequires
 >;
 
+export const SourceJobName = {
+  Lint: "lint",
+  Typecheck: "typecheck",
+} as const;
+export type SourceJobName = ClosedEnum<typeof SourceJobName>;
+
 export type CreateProjectCheckSource4 = {
   kind: "vercel";
+  jobName?: SourceJobName | undefined;
 };
 
 export const CreateProjectCheckSourceProvider = {
@@ -171,7 +185,6 @@ export type CreateProjectCheckResponseBody = {
   timeout: number;
   createdAt: number;
   updatedAt: number;
-  disabledAt?: number | undefined;
   deletedAt?: number | undefined;
 };
 
@@ -190,13 +203,22 @@ export const Blocks$outboundSchema: z.ZodNativeEnum<typeof Blocks> =
   Blocks$inboundSchema;
 
 /** @internal */
+export const JobName$inboundSchema: z.ZodNativeEnum<typeof JobName> = z
+  .nativeEnum(JobName);
+/** @internal */
+export const JobName$outboundSchema: z.ZodNativeEnum<typeof JobName> =
+  JobName$inboundSchema;
+
+/** @internal */
 export const Source4$inboundSchema: z.ZodType<Source4, z.ZodTypeDef, unknown> =
   z.object({
     kind: types.string(),
+    jobName: types.optional(JobName$inboundSchema),
   });
 /** @internal */
 export type Source4$Outbound = {
   kind: string;
+  jobName?: string | undefined;
 };
 
 /** @internal */
@@ -206,6 +228,7 @@ export const Source4$outboundSchema: z.ZodType<
   Source4
 > = z.object({
   kind: z.string(),
+  jobName: JobName$outboundSchema.optional(),
 });
 
 export function source4ToJSON(source4: Source4): string {
@@ -544,16 +567,27 @@ export const CreateProjectCheckRequires$outboundSchema: z.ZodNativeEnum<
 > = CreateProjectCheckRequires$inboundSchema;
 
 /** @internal */
+export const SourceJobName$inboundSchema: z.ZodNativeEnum<
+  typeof SourceJobName
+> = z.nativeEnum(SourceJobName);
+/** @internal */
+export const SourceJobName$outboundSchema: z.ZodNativeEnum<
+  typeof SourceJobName
+> = SourceJobName$inboundSchema;
+
+/** @internal */
 export const CreateProjectCheckSource4$inboundSchema: z.ZodType<
   CreateProjectCheckSource4,
   z.ZodTypeDef,
   unknown
 > = z.object({
   kind: types.literal("vercel"),
+  jobName: types.optional(SourceJobName$inboundSchema),
 });
 /** @internal */
 export type CreateProjectCheckSource4$Outbound = {
   kind: "vercel";
+  jobName?: string | undefined;
 };
 
 /** @internal */
@@ -563,6 +597,7 @@ export const CreateProjectCheckSource4$outboundSchema: z.ZodType<
   CreateProjectCheckSource4
 > = z.object({
   kind: z.literal("vercel"),
+  jobName: SourceJobName$outboundSchema.optional(),
 });
 
 export function createProjectCheckSource4ToJSON(
@@ -823,7 +858,6 @@ export const CreateProjectCheckResponseBody$inboundSchema: z.ZodType<
   timeout: types.number(),
   createdAt: types.number(),
   updatedAt: types.number(),
-  disabledAt: types.optional(types.number()),
   deletedAt: types.optional(types.number()),
 });
 /** @internal */
@@ -846,7 +880,6 @@ export type CreateProjectCheckResponseBody$Outbound = {
   timeout: number;
   createdAt: number;
   updatedAt: number;
-  disabledAt?: number | undefined;
   deletedAt?: number | undefined;
 };
 
@@ -875,7 +908,6 @@ export const CreateProjectCheckResponseBody$outboundSchema: z.ZodType<
   timeout: z.number(),
   createdAt: z.number(),
   updatedAt: z.number(),
-  disabledAt: z.number().optional(),
   deletedAt: z.number().optional(),
 });
 

@@ -7,13 +7,21 @@ The payload of the event, if requested.
 ```typescript
 import { OneHundredAndNinetySix } from "@vercel/sdk/models/userevent.js";
 
-let value: OneHundredAndNinetySix = {};
+let value: OneHundredAndNinetySix = {
+  projectId: "<id>",
+  projectName: "<value>",
+  next: {
+    skewProtectionMaxAge: 7368.03,
+  },
+  previous: {},
+};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `price`            | *number*           | :heavy_minus_sign: | N/A                |
-| `currency`         | *string*           | :heavy_minus_sign: | N/A                |
-| `enabled`          | *boolean*          | :heavy_minus_sign: | N/A                |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `next`                                                                         | [models.UserEventPayload196Next](../models/usereventpayload196next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload196Previous](../models/usereventpayload196previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |

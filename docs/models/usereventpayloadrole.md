@@ -5,11 +5,11 @@
 ```typescript
 import { UserEventPayloadRole } from "@vercel/sdk/models/userevent.js";
 
-let value: UserEventPayloadRole = "OWNER";
+let value: UserEventPayloadRole = "ADMIN";
 ```
 
 ## Values
 
 ```typescript
-"OWNER" | "MEMBER" | "DEVELOPER" | "SECURITY" | "BILLING" | "VIEWER" | "VIEWER_FOR_PLUS" | "CONTRIBUTOR"
+"ADMIN" | "PROJECT_DEVELOPER" | "PROJECT_VIEWER" | "PROJECT_GUEST"
 ```

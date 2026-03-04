@@ -8,16 +8,28 @@ The payload of the event, if requested.
 import { SixtySix } from "@vercel/sdk/models/userevent.js";
 
 let value: SixtySix = {
-  name: "<value>",
-  destinationId: "<id>",
-  destinationName: "<value>",
+  job: {
+    prId: 1679.11,
+    type: "pr",
+    headInfo: {
+      org: "<value>",
+      ref: "<value>",
+      repo: "<value>",
+      repoId: 7689.26,
+      sha: "<value>",
+    },
+    installationId: 3027.85,
+    isPrivate: false,
+    org: "<value>",
+    repo: "<value>",
+    repoId: 2803.04,
+    provider: "github-limited",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `destinationId`    | *string*           | :heavy_check_mark: | N/A                |
-| `destinationName`  | *string*           | :heavy_check_mark: | N/A                |
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `job`               | *models.PayloadJob* | :heavy_check_mark:  | N/A                 |

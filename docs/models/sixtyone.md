@@ -8,8 +8,8 @@ The payload of the event, if requested.
 import { SixtyOne } from "@vercel/sdk/models/userevent.js";
 
 let value: SixtyOne = {
-  name: "<value>",
-  cdnEnabled: true,
+  status: "<value>",
+  suffix: "<value>",
 };
 ```
 
@@ -17,5 +17,5 @@ let value: SixtyOne = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `cdnEnabled`       | *boolean*          | :heavy_check_mark: | N/A                |
+| `status`           | *string*           | :heavy_check_mark: | N/A                |
+| `suffix`           | *string*           | :heavy_check_mark: | N/A                |

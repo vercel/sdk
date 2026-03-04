@@ -8,20 +8,21 @@ The payload of the event, if requested.
 import { SeventyOne } from "@vercel/sdk/models/userevent.js";
 
 let value: SeventyOne = {
+  id: "<id>",
+  value: "<value>",
+  name: "<value>",
   domain: "our-charlatan.net",
-  customNameservers: [],
-  prevCustomNameservers: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
+  type: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                   | Type                    | Required                | Description             |
-| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `domain`                | *string*                | :heavy_check_mark:      | N/A                     |
-| `customNameservers`     | *string*[]              | :heavy_check_mark:      | N/A                     |
-| `prevCustomNameservers` | *string*[]              | :heavy_check_mark:      | N/A                     |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `value`            | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `domain`           | *string*           | :heavy_check_mark: | N/A                |
+| `type`             | *string*           | :heavy_check_mark: | N/A                |
+| `mxPriority`       | *number*           | :heavy_minus_sign: | N/A                |

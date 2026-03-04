@@ -8,27 +8,20 @@ The payload of the event, if requested.
 import { OneHundredAndSeventy } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndSeventy = {
-  budget: {
-    type: "fixed",
-    fixedBudget: 4888.49,
-    previousSpend: [
-      1722.11,
-      2468.87,
-      4280.1,
-    ],
-    notifiedAt: [
-      9830.04,
-    ],
-    createdAt: 9116.39,
-    isActive: true,
-    teamId: "<id>",
-    id: "<id>",
-  },
+  projectId: "<id>",
+  projectName: "<value>",
+  domain: "lumbering-sightseeing.biz",
+  target: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `budget`                                                                | [models.PayloadBudget](../models/payloadbudget.md)                      | :heavy_check_mark:                                                      | Represents a budget for tracking and notifying teams on their spending. |
+| Field                | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `projectId`          | *string*             | :heavy_check_mark:   | N/A                  |
+| `projectName`        | *string*             | :heavy_check_mark:   | N/A                  |
+| `domain`             | *string*             | :heavy_check_mark:   | N/A                  |
+| `target`             | *string*             | :heavy_check_mark:   | N/A                  |
+| `redirect`           | *string*             | :heavy_minus_sign:   | N/A                  |
+| `redirectStatusCode` | *number*             | :heavy_minus_sign:   | N/A                  |

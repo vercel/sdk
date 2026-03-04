@@ -8,15 +8,14 @@ The payload of the event, if requested.
 import { TwoHundredAndFiftySix } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndFiftySix = {
-  edgeConfigId: "<id>",
-  edgeConfigSlug: "<value>",
+  provider: "bitbucket",
+  login: "Alysha_Kuhlman",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `edgeConfigId`     | *string*           | :heavy_check_mark: | N/A                |
-| `edgeConfigSlug`   | *string*           | :heavy_check_mark: | N/A                |
-| `edgeConfigDigest` | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `provider`                               | [models.Provider](../models/provider.md) | :heavy_check_mark:                       | N/A                                      |
+| `login`                                  | *string*                                 | :heavy_check_mark:                       | N/A                                      |

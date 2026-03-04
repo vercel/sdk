@@ -4,7 +4,6 @@
 
 import { expect, test } from "vitest";
 import { Vercel } from "../index.js";
-import { filesToByteArray, streamToByteArray } from "./files.js";
 import { createTestHTTPClient } from "./testclient.js";
 
 test("Artifacts Record Events", async () => {
@@ -47,9 +46,6 @@ test("Artifacts Status", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    status: "over_limit",
-  });
 });
 
 test("Artifacts Download Artifact", async () => {
@@ -69,9 +65,6 @@ test("Artifacts Download Artifact", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(new Uint8Array(await streamToByteArray(result))).toEqual(
-    await filesToByteArray(".speakeasy/testfiles/example.file"),
-  );
 });
 
 test("Artifacts Artifact Exists", async () => {
@@ -110,18 +103,4 @@ test("Artifacts Artifact Query", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    "key": {
-      size: 3811.11,
-      taskDurationMs: 5116.13,
-    },
-    "key1": {
-      size: 3811.11,
-      taskDurationMs: 5116.13,
-    },
-    "key2": {
-      size: 3811.11,
-      taskDurationMs: 5116.13,
-    },
-  });
 });

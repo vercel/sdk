@@ -8,9 +8,7 @@ The payload of the event, if requested.
 import { EightyFive } from "@vercel/sdk/models/userevent.js";
 
 let value: EightyFive = {
-  integrationId: "<id>",
-  integrationSlug: "<value>",
-  integrationName: "<value>",
+  domain: "motionless-designation.name",
 };
 ```
 
@@ -18,6 +16,5 @@ let value: EightyFive = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
-| `integrationSlug`  | *string*           | :heavy_check_mark: | N/A                |
-| `integrationName`  | *string*           | :heavy_check_mark: | N/A                |
+| `renew`            | *boolean*          | :heavy_minus_sign: | N/A                |
+| `domain`           | *string*           | :heavy_check_mark: | N/A                |

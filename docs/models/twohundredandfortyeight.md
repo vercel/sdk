@@ -7,13 +7,11 @@ The payload of the event, if requested.
 ```typescript
 import { TwoHundredAndFortyEight } from "@vercel/sdk/models/userevent.js";
 
-let value: TwoHundredAndFortyEight = {
-  fileId: "<id>",
-};
+let value: TwoHundredAndFortyEight = {};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `fileId`           | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `remoteCaching`                                                  | [models.PayloadRemoteCaching](../models/payloadremotecaching.md) | :heavy_minus_sign:                                               | Represents configuration for remote caching                      |

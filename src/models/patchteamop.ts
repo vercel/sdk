@@ -255,15 +255,16 @@ export type NsnbConfig1 = {
 export type PatchTeamNsnbConfig = NsnbConfig1 | string;
 
 /**
- * Default build machine type for new builds: standard, enhanced, or turbo.
+ * Default build machine type for new builds: standard, enhanced, turbo, or elastic.
  */
 export const PatchTeamDefault = {
-  Standard: "standard",
   Enhanced: "enhanced",
   Turbo: "turbo",
+  Standard: "standard",
+  Elastic: "elastic",
 } as const;
 /**
- * Default build machine type for new builds: standard, enhanced, or turbo.
+ * Default build machine type for new builds: standard, enhanced, turbo, or elastic.
  */
 export type PatchTeamDefault = ClosedEnum<typeof PatchTeamDefault>;
 
@@ -272,7 +273,7 @@ export type PatchTeamDefault = ClosedEnum<typeof PatchTeamDefault>;
  */
 export type PatchTeamBuildMachine = {
   /**
-   * Default build machine type for new builds: standard, enhanced, or turbo.
+   * Default build machine type for new builds: standard, enhanced, turbo, or elastic.
    */
   default?: PatchTeamDefault | undefined;
 };

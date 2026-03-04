@@ -71,8 +71,35 @@ func (e *ListCheckRunsKindVercel) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type ListCheckRunsJobName string
+
+const (
+	ListCheckRunsJobNameLint      ListCheckRunsJobName = "lint"
+	ListCheckRunsJobNameTypecheck ListCheckRunsJobName = "typecheck"
+)
+
+func (e ListCheckRunsJobName) ToPointer() *ListCheckRunsJobName {
+	return &e
+}
+func (e *ListCheckRunsJobName) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "lint":
+		fallthrough
+	case "typecheck":
+		*e = ListCheckRunsJobName(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ListCheckRunsJobName: %v", v)
+	}
+}
+
 type ListCheckRunsSourceVercel struct {
-	Kind ListCheckRunsKindVercel `json:"kind"`
+	Kind    ListCheckRunsKindVercel `json:"kind"`
+	JobName *ListCheckRunsJobName   `json:"jobName,omitempty"`
 }
 
 func (l ListCheckRunsSourceVercel) MarshalJSON() ([]byte, error) {
@@ -91,6 +118,13 @@ func (o *ListCheckRunsSourceVercel) GetKind() ListCheckRunsKindVercel {
 		return ListCheckRunsKindVercel("")
 	}
 	return o.Kind
+}
+
+func (o *ListCheckRunsSourceVercel) GetJobName() *ListCheckRunsJobName {
+	if o == nil {
+		return nil
+	}
+	return o.JobName
 }
 
 type ListCheckRunsKindGitProvider string

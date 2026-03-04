@@ -5,11 +5,11 @@
 ```typescript
 import { Permissions } from "@vercel/sdk/models/userevent.js";
 
-let value: Permissions = "read-write:project";
+let value: Permissions = "read:project";
 ```
 
 ## Values
 
 ```typescript
-"*" | "read:user" | "read:domain" | "read-write:domain" | "read:team" | "read:billing" | "read-write:billing" | "read-write:ai-gateway-api-key" | "read:project" | "read-write:project" | "read:deployment" | "read-write:deployment"
+"*" | "read:user" | "read:domain" | "read-write:domain" | "read:team" | "read:billing" | "read-write:billing" | "read-write:ai-gateway-api-key" | "read-write:project-env-vars" | "read:project" | "read-write:project" | "read:deployment" | "read-write:deployment"
 ```

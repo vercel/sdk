@@ -78,7 +78,6 @@ type UpdateProjectCheckRequestBody struct {
 	Targets         []string                           `json:"targets,omitempty"`
 	Blocks          *UpdateProjectCheckBlocksRequest   `default:"deployment-alias" json:"blocks"`
 	Timeout         *float64                           `default:"300" json:"timeout"`
-	DisabledAt      *float64                           `json:"disabledAt,omitempty"`
 }
 
 func (u UpdateProjectCheckRequestBody) MarshalJSON() ([]byte, error) {
@@ -132,13 +131,6 @@ func (o *UpdateProjectCheckRequestBody) GetTimeout() *float64 {
 		return nil
 	}
 	return o.Timeout
-}
-
-func (o *UpdateProjectCheckRequestBody) GetDisabledAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.DisabledAt
 }
 
 type UpdateProjectCheckRequest struct {
@@ -238,8 +230,35 @@ func (e *UpdateProjectCheckKindVercel) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type UpdateProjectCheckJobName string
+
+const (
+	UpdateProjectCheckJobNameLint      UpdateProjectCheckJobName = "lint"
+	UpdateProjectCheckJobNameTypecheck UpdateProjectCheckJobName = "typecheck"
+)
+
+func (e UpdateProjectCheckJobName) ToPointer() *UpdateProjectCheckJobName {
+	return &e
+}
+func (e *UpdateProjectCheckJobName) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "lint":
+		fallthrough
+	case "typecheck":
+		*e = UpdateProjectCheckJobName(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectCheckJobName: %v", v)
+	}
+}
+
 type UpdateProjectCheckSourceVercel struct {
-	Kind UpdateProjectCheckKindVercel `json:"kind"`
+	Kind    UpdateProjectCheckKindVercel `json:"kind"`
+	JobName *UpdateProjectCheckJobName   `json:"jobName,omitempty"`
 }
 
 func (u UpdateProjectCheckSourceVercel) MarshalJSON() ([]byte, error) {
@@ -258,6 +277,13 @@ func (o *UpdateProjectCheckSourceVercel) GetKind() UpdateProjectCheckKindVercel 
 		return UpdateProjectCheckKindVercel("")
 	}
 	return o.Kind
+}
+
+func (o *UpdateProjectCheckSourceVercel) GetJobName() *UpdateProjectCheckJobName {
+	if o == nil {
+		return nil
+	}
+	return o.JobName
 }
 
 type UpdateProjectCheckKindGitProvider string
@@ -701,7 +727,6 @@ type UpdateProjectCheckResponseBody struct {
 	Timeout                          float64                            `json:"timeout"`
 	CreatedAt                        float64                            `json:"createdAt"`
 	UpdatedAt                        float64                            `json:"updatedAt"`
-	DisabledAt                       *float64                           `json:"disabledAt,omitempty"`
 	DeletedAt                        *float64                           `json:"deletedAt,omitempty"`
 }
 
@@ -817,13 +842,6 @@ func (o *UpdateProjectCheckResponseBody) GetUpdatedAt() float64 {
 		return 0.0
 	}
 	return o.UpdatedAt
-}
-
-func (o *UpdateProjectCheckResponseBody) GetDisabledAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.DisabledAt
 }
 
 func (o *UpdateProjectCheckResponseBody) GetDeletedAt() *float64 {

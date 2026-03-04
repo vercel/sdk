@@ -8,17 +8,16 @@ The payload of the event, if requested.
 import { EightyTwo } from "@vercel/sdk/models/userevent.js";
 
 let value: EightyTwo = {
-  projectId: "<id>",
-  rulesetName: "<value>",
-  active: true,
+  name: "<value>",
+  fromId: "<id>",
+  fromName: null,
 };
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `projectId`                                                              | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
-| `rulesetName`                                                            | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
-| `active`                                                                 | *boolean*                                                                | :heavy_check_mark:                                                       | N/A                                                                      |
-| `action`                                                                 | [models.UserEventPayload82Action](../models/usereventpayload82action.md) | :heavy_minus_sign:                                                       | N/A                                                                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `fromId`           | *string*           | :heavy_check_mark: | N/A                |
+| `fromName`         | *string*           | :heavy_check_mark: | N/A                |

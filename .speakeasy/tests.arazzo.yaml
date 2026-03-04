@@ -8518,43 +8518,6 @@ workflows:
             type: simple
     x-speakeasy-test-group: sandboxes
     x-speakeasy-test-rebuild: true
-  - workflowId: runCommand
-    steps:
-      - stepId: test
-        operationId: runCommand
-        parameters:
-          - name: sandboxId
-            in: path
-            value: sbx_abc123
-          - name: teamId
-            in: query
-            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
-          - name: slug
-            in: query
-            value: my-team-url-slug
-        requestBody:
-          contentType: application/json
-          payload:
-            args:
-              - install
-              - --save
-              - lodash
-            command: npm
-            cwd: /home/vercel-sandbox
-            env:
-              DEBUG: "true"
-              NODE_ENV: production
-            sudo: false
-            wait: false
-        successCriteria:
-          - condition: $statusCode == 200
-          - condition: $response.header.Content-Type == application/json
-          - context: $response.body
-            condition: |
-              {"command":{"id":"cmd_123a6c5209bc3778245d011443644c8d27dc2c50","name":"npm","args":["run","build"],"cwd":"/vercel/sandbox","sandboxId":"sbx_123a6c5209bc3778245d011443644c8d27dc2c50","exitCode":0,"startedAt":1673123456789}}
-            type: simple
-    x-speakeasy-test-group: sandboxes
-    x-speakeasy-test-rebuild: true
   - workflowId: killCommand
     steps:
       - stepId: test

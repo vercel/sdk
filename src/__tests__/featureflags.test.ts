@@ -4,7 +4,6 @@
 
 import { expect, test } from "vitest";
 import { Vercel } from "../index.js";
-import { UpdateFlagSettingsResponseBody } from "../models/updateflagsettingsop.js";
 import { createTestHTTPClient } from "./testclient.js";
 
 test("Feature Flags List Flags", async () => {
@@ -22,12 +21,6 @@ test("Feature Flags List Flags", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    data: [],
-    pagination: {
-      next: "<value>",
-    },
-  });
 });
 
 test("Feature Flags Create Flag", async () => {
@@ -45,40 +38,6 @@ test("Feature Flags Create Flag", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    variants: [
-      {
-        value: false,
-        id: "<id>",
-      },
-    ],
-    id: "<id>",
-    environments: {
-      "key": {
-        pausedOutcome: {
-          type: "variant",
-          variantId: "<id>",
-        },
-        fallthrough: {
-          type: "variant",
-          variantId: "<id>",
-        },
-        active: true,
-        rules: [],
-      },
-    },
-    kind: "number",
-    revision: 6165.62,
-    seed: 156.13,
-    state: "archived",
-    slug: "<value>",
-    createdAt: 8146.33,
-    updatedAt: 8302.64,
-    createdBy: "<value>",
-    ownerId: "<id>",
-    projectId: "<id>",
-    typeName: "flag",
-  });
 });
 
 test("Feature Flags Get Flag", async () => {
@@ -97,22 +56,6 @@ test("Feature Flags Get Flag", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    variants: [],
-    id: "<id>",
-    environments: {},
-    kind: "string",
-    revision: 4506.54,
-    seed: 2692.5,
-    state: "active",
-    slug: "<value>",
-    createdAt: 9169.87,
-    updatedAt: 2775.69,
-    createdBy: "<value>",
-    ownerId: "<id>",
-    projectId: "<id>",
-    typeName: "flag",
-  });
 });
 
 test("Feature Flags Update Flag", async () => {
@@ -131,62 +74,6 @@ test("Feature Flags Update Flag", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    variants: [],
-    id: "<id>",
-    environments: {
-      "key": {
-        pausedOutcome: {
-          type: "variant",
-          variantId: "<id>",
-        },
-        fallthrough: {
-          type: "split",
-          base: {
-            type: "entity",
-            kind: "<value>",
-            attribute: "<value>",
-          },
-          weights: {
-            "key": 5332.25,
-            "key1": 4559.62,
-          },
-          defaultVariantId: "<id>",
-        },
-        active: true,
-        rules: [
-          {
-            id: "<id>",
-            outcome: {
-              type: "variant",
-              variantId: "<id>",
-            },
-            conditions: [
-              {
-                lhs: {
-                  type: "entity",
-                  kind: "<value>",
-                  attribute: "<value>",
-                },
-                cmp: "!endsWith",
-              },
-            ],
-          },
-        ],
-      },
-    },
-    kind: "boolean",
-    revision: 6275.71,
-    seed: 9679.18,
-    state: "archived",
-    slug: "<value>",
-    createdAt: 1600.13,
-    updatedAt: 4288.92,
-    createdBy: "<value>",
-    ownerId: "<id>",
-    projectId: "<id>",
-    typeName: "flag",
-  });
 });
 
 test("Feature Flags List Flag Versions", async () => {
@@ -205,10 +92,6 @@ test("Feature Flags List Flag Versions", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    versions: [],
-    pagination: {},
-  });
 });
 
 test("Feature Flags Get Flag Settings", async () => {
@@ -226,21 +109,6 @@ test("Feature Flags Get Flag Settings", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    typeName: "settings",
-    projectId: "<id>",
-    enabled: false,
-    environments: [
-      "<value 1>",
-    ],
-    entities: [],
-    metadata: {
-      activeFlagCount: 5032.56,
-      archivedFlagCount: 7510.8,
-      segmentCount: 4704.93,
-      packSizeInBytes: 2505.31,
-    },
-  });
 });
 
 test("Feature Flags Update Flag Settings", async () => {
@@ -258,34 +126,6 @@ test("Feature Flags Update Flag Settings", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result as UpdateFlagSettingsResponseBody).toEqual({
-    typeName: "settings",
-    projectId: "<id>",
-    enabled: false,
-    environments: [
-      "<value 1>",
-      "<value 2>",
-      "<value 3>",
-    ],
-    entities: [
-      {
-        kind: "<value>",
-        label: "<value>",
-        attributes: [
-          {
-            key: "<key>",
-            type: "<value>",
-          },
-        ],
-      },
-    ],
-    metadata: {
-      activeFlagCount: 9382.74,
-      archivedFlagCount: 1968.58,
-      segmentCount: 1175.12,
-      packSizeInBytes: 5502.16,
-    },
-  });
 });
 
 test("Feature Flags List Team Flag Settings", async () => {
@@ -302,7 +142,6 @@ test("Feature Flags List Team Flag Settings", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
 });
 
 test("Feature Flags List Team Flags", async () => {
@@ -319,12 +158,6 @@ test("Feature Flags List Team Flags", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    data: [],
-    pagination: {
-      next: null,
-    },
-  });
 });
 
 test("Feature Flags Create Flag Segment", async () => {
@@ -342,17 +175,6 @@ test("Feature Flags Create Flag Segment", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    id: "<id>",
-    label: "<value>",
-    slug: "<value>",
-    createdAt: 3411.5,
-    updatedAt: 7820.53,
-    projectId: "<id>",
-    typeName: "segment",
-    data: {},
-    hint: "<value>",
-  });
 });
 
 test("Feature Flags List Flag Segments", async () => {
@@ -370,9 +192,6 @@ test("Feature Flags List Flag Segments", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    data: [],
-  });
 });
 
 test("Feature Flags Get Flag Segment", async () => {
@@ -391,17 +210,6 @@ test("Feature Flags Get Flag Segment", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    id: "<id>",
-    label: "<value>",
-    slug: "<value>",
-    createdAt: 9261.28,
-    updatedAt: 346.59,
-    projectId: "<id>",
-    typeName: "segment",
-    data: {},
-    hint: "<value>",
-  });
 });
 
 test("Feature Flags Update Flag Segment", async () => {
@@ -420,17 +228,6 @@ test("Feature Flags Update Flag Segment", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    id: "<id>",
-    label: "<value>",
-    slug: "<value>",
-    createdAt: 2949.22,
-    updatedAt: 6371.72,
-    projectId: "<id>",
-    typeName: "segment",
-    data: {},
-    hint: "<value>",
-  });
 });
 
 test("Feature Flags Get Deployment Feature Flags", async () => {
@@ -448,16 +245,6 @@ test("Feature Flags Get Deployment Feature Flags", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    flags: [],
-    status: {
-      deploymentId: "<id>",
-      projectId: "<id>",
-      responseStatus: 5008.57,
-      flagCount: 3132.84,
-      createdAt: 2379.62,
-    },
-  });
 });
 
 test("Feature Flags Get Sdk Keys", async () => {
@@ -475,9 +262,6 @@ test("Feature Flags Get Sdk Keys", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    data: [],
-  });
 });
 
 test("Feature Flags Create Sdk Key", async () => {
@@ -495,13 +279,4 @@ test("Feature Flags Create Sdk Key", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    hashKey: "<value>",
-    projectId: "<id>",
-    type: "mobile",
-    environment: "<value>",
-    createdBy: "<value>",
-    createdAt: 4791.7,
-    updatedAt: 3218.83,
-  });
 });

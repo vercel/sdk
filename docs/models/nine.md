@@ -10,9 +10,8 @@ import { Nine } from "@vercel/sdk/models/userevent.js";
 let value: Nine = {
   accessGroup: {
     id: "<id>",
-    name: "<value>",
   },
-  project: {
+  user: {
     id: "<id>",
   },
 };
@@ -23,6 +22,5 @@ let value: Nine = {
 | Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
 | `accessGroup`                                                                    | [models.UserEventPayload9AccessGroup](../models/usereventpayload9accessgroup.md) | :heavy_check_mark:                                                               | N/A                                                                              |
-| `project`                                                                        | [models.Project](../models/project.md)                                           | :heavy_check_mark:                                                               | N/A                                                                              |
-| `nextRole`                                                                       | [models.NextRole](../models/nextrole.md)                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `previousRole`                                                                   | [models.PreviousRole](../models/previousrole.md)                                 | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `user`                                                                           | [models.PayloadUser](../models/payloaduser.md)                                   | :heavy_check_mark:                                                               | N/A                                                                              |
+| `directoryType`                                                                  | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |

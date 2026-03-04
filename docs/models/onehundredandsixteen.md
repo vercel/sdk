@@ -8,9 +8,7 @@ The payload of the event, if requested.
 import { OneHundredAndSixteen } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndSixteen = {
-  projectId: "<id>",
-  projectName: "<value>",
-  gitLFS: true,
+  logDrainUrl: "https://mixed-stir-fry.com",
 };
 ```
 
@@ -18,6 +16,5 @@ let value: OneHundredAndSixteen = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `gitLFS`           | *boolean*          | :heavy_check_mark: | N/A                |
+| `logDrainUrl`      | *string*           | :heavy_check_mark: | N/A                |
+| `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |

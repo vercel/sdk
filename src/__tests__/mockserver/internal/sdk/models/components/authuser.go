@@ -317,9 +317,10 @@ func (o *AuthUserBuildQueue) GetConfiguration() *AuthUserConfiguration {
 type AuthUserDefault string
 
 const (
-	AuthUserDefaultStandard AuthUserDefault = "standard"
 	AuthUserDefaultEnhanced AuthUserDefault = "enhanced"
 	AuthUserDefaultTurbo    AuthUserDefault = "turbo"
+	AuthUserDefaultStandard AuthUserDefault = "standard"
+	AuthUserDefaultElastic  AuthUserDefault = "elastic"
 )
 
 func (e AuthUserDefault) ToPointer() *AuthUserDefault {
@@ -331,11 +332,13 @@ func (e *AuthUserDefault) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "standard":
-		fallthrough
 	case "enhanced":
 		fallthrough
 	case "turbo":
+		fallthrough
+	case "standard":
+		fallthrough
+	case "elastic":
 		*e = AuthUserDefault(v)
 		return nil
 	default:
@@ -347,9 +350,9 @@ func (e *AuthUserDefault) UnmarshalJSON(data []byte) error {
 type AuthUserPurchaseType string
 
 const (
-	AuthUserPurchaseTypeStandard AuthUserPurchaseType = "standard"
 	AuthUserPurchaseTypeEnhanced AuthUserPurchaseType = "enhanced"
 	AuthUserPurchaseTypeTurbo    AuthUserPurchaseType = "turbo"
+	AuthUserPurchaseTypeStandard AuthUserPurchaseType = "standard"
 )
 
 func (e AuthUserPurchaseType) ToPointer() *AuthUserPurchaseType {
@@ -361,11 +364,11 @@ func (e *AuthUserPurchaseType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "standard":
-		fallthrough
 	case "enhanced":
 		fallthrough
 	case "turbo":
+		fallthrough
+	case "standard":
 		*e = AuthUserPurchaseType(v)
 		return nil
 	default:
@@ -377,9 +380,9 @@ func (e *AuthUserPurchaseType) UnmarshalJSON(data []byte) error {
 type AuthUserDefaultPurchaseType string
 
 const (
-	AuthUserDefaultPurchaseTypeStandard AuthUserDefaultPurchaseType = "standard"
 	AuthUserDefaultPurchaseTypeEnhanced AuthUserDefaultPurchaseType = "enhanced"
 	AuthUserDefaultPurchaseTypeTurbo    AuthUserDefaultPurchaseType = "turbo"
+	AuthUserDefaultPurchaseTypeStandard AuthUserDefaultPurchaseType = "standard"
 )
 
 func (e AuthUserDefaultPurchaseType) ToPointer() *AuthUserDefaultPurchaseType {
@@ -391,11 +394,11 @@ func (e *AuthUserDefaultPurchaseType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "standard":
-		fallthrough
 	case "enhanced":
 		fallthrough
 	case "turbo":
+		fallthrough
+	case "standard":
 		*e = AuthUserDefaultPurchaseType(v)
 		return nil
 	default:

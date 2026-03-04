@@ -8,17 +8,16 @@ The payload of the event, if requested.
 import { OneHundredAndNinetyTwo } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndNinetyTwo = {
-  totp: false,
-  recoveryCodes: 9155.64,
+  projectId: "<id>",
+  projectName: "<value>",
+  protectedSourcemaps: false,
 };
 ```
 
 ## Fields
 
-| Field                                      | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `totp`                                     | *boolean*                                  | :heavy_check_mark:                         | N/A                                        |
-| `recoveryCodes`                            | *number*                                   | :heavy_check_mark:                         | N/A                                        |
-| `actorId`                                  | *string*                                   | :heavy_minus_sign:                         | N/A                                        |
-| `actorType`                                | [models.ActorType](../models/actortype.md) | :heavy_minus_sign:                         | N/A                                        |
-| `reason`                                   | *string*                                   | :heavy_minus_sign:                         | N/A                                        |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `projectId`           | *string*              | :heavy_check_mark:    | N/A                   |
+| `projectName`         | *string*              | :heavy_check_mark:    | N/A                   |
+| `protectedSourcemaps` | *boolean*             | :heavy_check_mark:    | N/A                   |

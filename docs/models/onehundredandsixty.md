@@ -8,14 +8,21 @@ The payload of the event, if requested.
 import { OneHundredAndSixty } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndSixty = {
-  instances: 8008.02,
-  url: "https://perfumed-swordfish.net/",
+  projectId: "<id>",
+  projectName: "<value>",
+  next: {
+    gitProvider: "bitbucket",
+    gitRepoId: "<id>",
+    gitRepositoryName: "<value>",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `instances`        | *number*           | :heavy_check_mark: | N/A                |
-| `url`              | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload160Previous](../models/usereventpayload160previous.md) | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `next`                                                                         | [models.UserEventPayload160Next](../models/usereventpayload160next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |

@@ -5,11 +5,11 @@
 ```typescript
 import { UserEventJobProvider } from "@vercel/sdk/models/userevent.js";
 
-let value: UserEventJobProvider = "bitbucket";
+let value: UserEventJobProvider = "github";
 ```
 
 ## Values
 
 ```typescript
-"bitbucket"
+"github" | "github-limited" | "github-custom-host"
 ```

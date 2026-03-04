@@ -8,17 +8,14 @@ The payload of the event, if requested.
 import { TwoHundredAndFive } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndFive = {
-  action: "mutate",
-  data: {
-    "key": "<value>",
-  },
+  email: "Domingo_Denesik@gmail.com",
+  verified: false,
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `subscriptionId`                                                           | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `action`                                                                   | [models.UserEventPayload205Action](../models/usereventpayload205action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `data`                                                                     | Record<string, *any*>                                                      | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `email`            | *string*           | :heavy_check_mark: | N/A                |
+| `verified`         | *boolean*          | :heavy_check_mark: | N/A                |

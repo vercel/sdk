@@ -74,8 +74,35 @@ func (e *CreateProjectCheckBlocksRequest) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type JobNameRequest string
+
+const (
+	JobNameRequestLint      JobNameRequest = "lint"
+	JobNameRequestTypecheck JobNameRequest = "typecheck"
+)
+
+func (e JobNameRequest) ToPointer() *JobNameRequest {
+	return &e
+}
+func (e *JobNameRequest) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "lint":
+		fallthrough
+	case "typecheck":
+		*e = JobNameRequest(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for JobNameRequest: %v", v)
+	}
+}
+
 type CreateProjectCheckSourceRequest3 struct {
-	Kind string `json:"kind"`
+	Kind    string          `json:"kind"`
+	JobName *JobNameRequest `json:"jobName,omitempty"`
 }
 
 func (c CreateProjectCheckSourceRequest3) MarshalJSON() ([]byte, error) {
@@ -94,6 +121,13 @@ func (o *CreateProjectCheckSourceRequest3) GetKind() string {
 		return ""
 	}
 	return o.Kind
+}
+
+func (o *CreateProjectCheckSourceRequest3) GetJobName() *JobNameRequest {
+	if o == nil {
+		return nil
+	}
+	return o.JobName
 }
 
 type ProviderRequest string
@@ -483,8 +517,35 @@ func (e *CreateProjectCheckKindVercel) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type CreateProjectCheckJobNameResponse string
+
+const (
+	CreateProjectCheckJobNameResponseLint      CreateProjectCheckJobNameResponse = "lint"
+	CreateProjectCheckJobNameResponseTypecheck CreateProjectCheckJobNameResponse = "typecheck"
+)
+
+func (e CreateProjectCheckJobNameResponse) ToPointer() *CreateProjectCheckJobNameResponse {
+	return &e
+}
+func (e *CreateProjectCheckJobNameResponse) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "lint":
+		fallthrough
+	case "typecheck":
+		*e = CreateProjectCheckJobNameResponse(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectCheckJobNameResponse: %v", v)
+	}
+}
+
 type CreateProjectCheckSourceVercel struct {
-	Kind CreateProjectCheckKindVercel `json:"kind"`
+	Kind    CreateProjectCheckKindVercel       `json:"kind"`
+	JobName *CreateProjectCheckJobNameResponse `json:"jobName,omitempty"`
 }
 
 func (c CreateProjectCheckSourceVercel) MarshalJSON() ([]byte, error) {
@@ -503,6 +564,13 @@ func (o *CreateProjectCheckSourceVercel) GetKind() CreateProjectCheckKindVercel 
 		return CreateProjectCheckKindVercel("")
 	}
 	return o.Kind
+}
+
+func (o *CreateProjectCheckSourceVercel) GetJobName() *CreateProjectCheckJobNameResponse {
+	if o == nil {
+		return nil
+	}
+	return o.JobName
 }
 
 type CreateProjectCheckKindGitProvider string
@@ -946,7 +1014,6 @@ type CreateProjectCheckResponseBody struct {
 	Timeout                          float64                                   `json:"timeout"`
 	CreatedAt                        float64                                   `json:"createdAt"`
 	UpdatedAt                        float64                                   `json:"updatedAt"`
-	DisabledAt                       *float64                                  `json:"disabledAt,omitempty"`
 	DeletedAt                        *float64                                  `json:"deletedAt,omitempty"`
 }
 
@@ -1062,13 +1129,6 @@ func (o *CreateProjectCheckResponseBody) GetUpdatedAt() float64 {
 		return 0.0
 	}
 	return o.UpdatedAt
-}
-
-func (o *CreateProjectCheckResponseBody) GetDisabledAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.DisabledAt
 }
 
 func (o *CreateProjectCheckResponseBody) GetDeletedAt() *float64 {

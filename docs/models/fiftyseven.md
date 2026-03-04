@@ -8,11 +8,8 @@ The payload of the event, if requested.
 import { FiftySeven } from "@vercel/sdk/models/userevent.js";
 
 let value: FiftySeven = {
-  id: "<id>",
-  value: "<value>",
-  name: "<value>",
-  domain: "incomplete-goat.info",
-  type: "<value>",
+  gitlabLogin: "<value>",
+  gitlabUserId: 4103.29,
 };
 ```
 
@@ -20,9 +17,5 @@ let value: FiftySeven = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
-| `value`            | *string*           | :heavy_check_mark: | N/A                |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `type`             | *string*           | :heavy_check_mark: | N/A                |
-| `mxPriority`       | *number*           | :heavy_minus_sign: | N/A                |
+| `gitlabLogin`      | *string*           | :heavy_check_mark: | N/A                |
+| `gitlabUserId`     | *number*           | :heavy_check_mark: | N/A                |

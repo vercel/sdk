@@ -8,12 +8,20 @@ The payload of the event, if requested.
 import { OneHundredAndEightyFive } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndEightyFive = {
-  enforced: false,
+  passwordProtection: {
+    deploymentType: "all_except_custom_domains",
+  },
+  oldPasswordProtection: {
+    deploymentType: "all_except_custom_domains",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `enforced`         | *boolean*          | :heavy_check_mark: | N/A                |
+| Field                              | Type                               | Required                           | Description                        |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| `projectId`                        | *string*                           | :heavy_minus_sign:                 | N/A                                |
+| `projectName`                      | *string*                           | :heavy_minus_sign:                 | N/A                                |
+| `passwordProtection`               | *models.PayloadPasswordProtection* | :heavy_check_mark:                 | N/A                                |
+| `oldPasswordProtection`            | *models.OldPasswordProtection*     | :heavy_check_mark:                 | N/A                                |

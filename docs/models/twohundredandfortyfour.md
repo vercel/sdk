@@ -8,8 +8,7 @@ The payload of the event, if requested.
 import { TwoHundredAndFortyFour } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndFortyFour = {
-  enabled: true,
-  scope: "dashboard",
+  plan: "enterprise",
 };
 ```
 
@@ -17,5 +16,5 @@ let value: TwoHundredAndFortyFour = {
 
 | Field                              | Type                               | Required                           | Description                        |
 | ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| `enabled`                          | *boolean*                          | :heavy_check_mark:                 | N/A                                |
-| `scope`                            | [models.Scope](../models/scope.md) | :heavy_check_mark:                 | N/A                                |
+| `plan`                             | [models.Plan](../models/plan.md)   | :heavy_check_mark:                 | N/A                                |
+| `trial`                            | [models.Trial](../models/trial.md) | :heavy_minus_sign:                 | N/A                                |

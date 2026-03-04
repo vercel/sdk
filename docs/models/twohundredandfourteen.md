@@ -8,20 +8,18 @@ The payload of the event, if requested.
 import { TwoHundredAndFourteen } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndFourteen = {
-  project: {
-    name: "<value>",
-  },
-  projectMembership: {
-    role: "PROJECT_VIEWER",
-    uid: "<id>",
-    createdAt: 2619.07,
-  },
+  email: "Katlyn_Aufderhar90@yahoo.com",
+  githubLogin: "<value>",
+  zeitAccount: "<value>",
+  zeitAccountType: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `project`                                                                    | [models.UserEventPayload214Project](../models/usereventpayload214project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `projectMembership`                                                          | [models.ProjectMembership](../models/projectmembership.md)                   | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `email`            | *string*           | :heavy_check_mark: | N/A                |
+| `githubLogin`      | *string*           | :heavy_check_mark: | N/A                |
+| `zeitAccount`      | *string*           | :heavy_check_mark: | N/A                |
+| `zeitAccountType`  | *string*           | :heavy_check_mark: | N/A                |

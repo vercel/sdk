@@ -2049,10 +2049,26 @@ export type UpdateProjectProjectsOidcTokenConfig = {
 
 export const UpdateProjectTier = {
   Standard: "standard",
+  Base: "base",
   Advanced: "advanced",
   Critical: "critical",
 } as const;
 export type UpdateProjectTier = ClosedEnum<typeof UpdateProjectTier>;
+
+export const UpdateProjectProjectsTier = {
+  Standard: "standard",
+  Base: "base",
+  Advanced: "advanced",
+  Critical: "critical",
+} as const;
+export type UpdateProjectProjectsTier = ClosedEnum<
+  typeof UpdateProjectProjectsTier
+>;
+
+export type UpdateProjectScheduledTierChange = {
+  tier: UpdateProjectProjectsTier;
+  effectiveAt: number;
+};
 
 /**
  * Billing mode. Always 'flat' for flat-rate projects.
@@ -2491,6 +2507,7 @@ export type UpdateProjectResponseBody = {
   security?: UpdateProjectSecurity | undefined;
   oidcTokenConfig?: UpdateProjectProjectsOidcTokenConfig | undefined;
   tier?: UpdateProjectTier | undefined;
+  scheduledTierChange?: UpdateProjectScheduledTierChange | undefined;
   usageStatus?: UpdateProjectUsageStatus | undefined;
   features?: UpdateProjectFeatures | undefined;
   v0?: boolean | undefined;
@@ -9247,6 +9264,59 @@ export const UpdateProjectTier$outboundSchema: z.ZodNativeEnum<
 > = UpdateProjectTier$inboundSchema;
 
 /** @internal */
+export const UpdateProjectProjectsTier$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectProjectsTier
+> = z.nativeEnum(UpdateProjectProjectsTier);
+/** @internal */
+export const UpdateProjectProjectsTier$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectProjectsTier
+> = UpdateProjectProjectsTier$inboundSchema;
+
+/** @internal */
+export const UpdateProjectScheduledTierChange$inboundSchema: z.ZodType<
+  UpdateProjectScheduledTierChange,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  tier: UpdateProjectProjectsTier$inboundSchema,
+  effectiveAt: types.number(),
+});
+/** @internal */
+export type UpdateProjectScheduledTierChange$Outbound = {
+  tier: string;
+  effectiveAt: number;
+};
+
+/** @internal */
+export const UpdateProjectScheduledTierChange$outboundSchema: z.ZodType<
+  UpdateProjectScheduledTierChange$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectScheduledTierChange
+> = z.object({
+  tier: UpdateProjectProjectsTier$outboundSchema,
+  effectiveAt: z.number(),
+});
+
+export function updateProjectScheduledTierChangeToJSON(
+  updateProjectScheduledTierChange: UpdateProjectScheduledTierChange,
+): string {
+  return JSON.stringify(
+    UpdateProjectScheduledTierChange$outboundSchema.parse(
+      updateProjectScheduledTierChange,
+    ),
+  );
+}
+export function updateProjectScheduledTierChangeFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectScheduledTierChange, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectScheduledTierChange$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectScheduledTierChange' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateProjectKind$inboundSchema: z.ZodNativeEnum<
   typeof UpdateProjectKind
 > = z.nativeEnum(UpdateProjectKind);
@@ -11516,6 +11586,9 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => UpdateProjectProjectsOidcTokenConfig$inboundSchema),
   ),
   tier: types.optional(UpdateProjectTier$inboundSchema),
+  scheduledTierChange: types.optional(
+    z.lazy(() => UpdateProjectScheduledTierChange$inboundSchema),
+  ),
   usageStatus: types.optional(
     z.lazy(() => UpdateProjectUsageStatus$inboundSchema),
   ),
@@ -11650,6 +11723,7 @@ export type UpdateProjectResponseBody$Outbound = {
   security?: UpdateProjectSecurity$Outbound | undefined;
   oidcTokenConfig?: UpdateProjectProjectsOidcTokenConfig$Outbound | undefined;
   tier?: string | undefined;
+  scheduledTierChange?: UpdateProjectScheduledTierChange$Outbound | undefined;
   usageStatus?: UpdateProjectUsageStatus$Outbound | undefined;
   features?: UpdateProjectFeatures$Outbound | undefined;
   v0?: boolean | undefined;
@@ -11805,6 +11879,9 @@ export const UpdateProjectResponseBody$outboundSchema: z.ZodType<
     UpdateProjectProjectsOidcTokenConfig$outboundSchema
   ).optional(),
   tier: UpdateProjectTier$outboundSchema.optional(),
+  scheduledTierChange: z.lazy(() =>
+    UpdateProjectScheduledTierChange$outboundSchema
+  ).optional(),
   usageStatus: z.lazy(() => UpdateProjectUsageStatus$outboundSchema).optional(),
   features: z.lazy(() => UpdateProjectFeatures$outboundSchema).optional(),
   v0: z.boolean().optional(),

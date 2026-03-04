@@ -8185,6 +8185,10 @@ type CreateDeploymentRoute1 struct {
 	Transforms    []CreateDeploymentTransform    `json:"transforms,omitempty"`
 	Env           []string                       `json:"env,omitempty"`
 	Locale        *CreateDeploymentLocale        `json:"locale,omitempty"`
+	// Aliases for `src`, `dest`, and `status`. These provide consistency with the `rewrites`, `redirects`, and `headers` fields which use `source`, `destination`, and `statusCode`. During normalization, these are converted to their canonical forms (`src`, `dest`, `status`) and stripped from the route object.
+	Source      *string  `json:"source,omitempty"`
+	Destination *string  `json:"destination,omitempty"`
+	StatusCode  *float64 `json:"statusCode,omitempty"`
 	// A middleware key within the `output` key under the build result. Overrides a `middleware` definition.
 	MiddlewarePath *string `json:"middlewarePath,omitempty"`
 	// The original middleware matchers.
@@ -8315,6 +8319,27 @@ func (o *CreateDeploymentRoute1) GetLocale() *CreateDeploymentLocale {
 		return nil
 	}
 	return o.Locale
+}
+
+func (o *CreateDeploymentRoute1) GetSource() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Source
+}
+
+func (o *CreateDeploymentRoute1) GetDestination() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Destination
+}
+
+func (o *CreateDeploymentRoute1) GetStatusCode() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.StatusCode
 }
 
 func (o *CreateDeploymentRoute1) GetMiddlewarePath() *string {
@@ -9461,9 +9486,9 @@ func (e *CreateDeploymentElasticConcurrency) UnmarshalJSON(data []byte) error {
 type CreateDeploymentPurchaseType string
 
 const (
-	CreateDeploymentPurchaseTypeStandard CreateDeploymentPurchaseType = "standard"
 	CreateDeploymentPurchaseTypeEnhanced CreateDeploymentPurchaseType = "enhanced"
 	CreateDeploymentPurchaseTypeTurbo    CreateDeploymentPurchaseType = "turbo"
+	CreateDeploymentPurchaseTypeStandard CreateDeploymentPurchaseType = "standard"
 )
 
 func (e CreateDeploymentPurchaseType) ToPointer() *CreateDeploymentPurchaseType {
@@ -9475,11 +9500,11 @@ func (e *CreateDeploymentPurchaseType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "standard":
-		fallthrough
 	case "enhanced":
 		fallthrough
 	case "turbo":
+		fallthrough
+	case "standard":
 		*e = CreateDeploymentPurchaseType(v)
 		return nil
 	default:

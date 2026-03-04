@@ -7,11 +7,11 @@ An object containing infomation related to the amount of platform resources may 
 ```typescript
 import { AuthUserDefault } from "@vercel/sdk/models/authuser.js";
 
-let value: AuthUserDefault = "standard";
+let value: AuthUserDefault = "enhanced";
 ```
 
 ## Values
 
 ```typescript
-"standard" | "enhanced" | "turbo"
+"enhanced" | "turbo" | "standard" | "elastic"
 ```

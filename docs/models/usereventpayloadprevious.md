@@ -5,11 +5,13 @@
 ```typescript
 import { UserEventPayloadPrevious } from "@vercel/sdk/models/userevent.js";
 
-let value: UserEventPayloadPrevious = {};
+let value: UserEventPayloadPrevious = {
+  functionDefaultTimeout: 8923.9,
+};
 ```
 
 ## Fields
 
-| Field                                        | Type                                         | Required                                     | Description                                  |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| `issuerMode`                                 | [models.IssuerMode](../models/issuermode.md) | :heavy_minus_sign:                           | N/A                                          |
+| Field                    | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `functionDefaultTimeout` | *number*                 | :heavy_check_mark:       | N/A                      |

@@ -600,9 +600,10 @@ func (o *TeamBuildEntitlements) GetEnhancedBuilds() *bool {
 type TeamDefault string
 
 const (
-	TeamDefaultStandard TeamDefault = "standard"
 	TeamDefaultEnhanced TeamDefault = "enhanced"
 	TeamDefaultTurbo    TeamDefault = "turbo"
+	TeamDefaultStandard TeamDefault = "standard"
+	TeamDefaultElastic  TeamDefault = "elastic"
 )
 
 func (e TeamDefault) ToPointer() *TeamDefault {
@@ -614,11 +615,13 @@ func (e *TeamDefault) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "standard":
-		fallthrough
 	case "enhanced":
 		fallthrough
 	case "turbo":
+		fallthrough
+	case "standard":
+		fallthrough
+	case "elastic":
 		*e = TeamDefault(v)
 		return nil
 	default:

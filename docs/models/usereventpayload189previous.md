@@ -5,15 +5,11 @@
 ```typescript
 import { UserEventPayload189Previous } from "@vercel/sdk/models/userevent.js";
 
-let value: UserEventPayload189Previous = {
-  enabled: false,
-  totpVerified: false,
-};
+let value: UserEventPayload189Previous = {};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
-| `totpVerified`     | *boolean*          | :heavy_check_mark: | N/A                |
+| Field                                        | Type                                         | Required                                     | Description                                  |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| `issuerMode`                                 | [models.IssuerMode](../models/issuermode.md) | :heavy_minus_sign:                           | N/A                                          |

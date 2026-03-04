@@ -8,37 +8,14 @@ The payload of the event, if requested.
 import { EightySix } from "@vercel/sdk/models/userevent.js";
 
 let value: EightySix = {
-  userId: "<id>",
-  integrationId: "<id>",
-  configurationId: "<id>",
-  integrationSlug: "<value>",
-  newOwner: {
-    billing: {
-      plan: "enterprise",
-    },
-    blocked: 3421.27,
-    createdAt: 139.61,
-    deploymentSecret: "<value>",
-    email: "Lottie91@yahoo.com",
-    id: "<id>",
-    platformVersion: null,
-    stagingPrefix: "<value>",
-    sysToken: "<value>",
-    type: "user",
-    username: "Eugenia_Legros9",
-    updatedAt: 4140.97,
-    version: "northstar",
-  },
+  name: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `userId`                                 | *string*                                 | :heavy_check_mark:                       | N/A                                      |
-| `integrationId`                          | *string*                                 | :heavy_check_mark:                       | N/A                                      |
-| `configurationId`                        | *string*                                 | :heavy_check_mark:                       | N/A                                      |
-| `integrationSlug`                        | *string*                                 | :heavy_check_mark:                       | N/A                                      |
-| `integrationName`                        | *string*                                 | :heavy_minus_sign:                       | N/A                                      |
-| `newOwner`                               | [models.NewOwner](../models/newowner.md) | :heavy_check_mark:                       | N/A                                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `price`            | *number*           | :heavy_minus_sign: | N/A                |
+| `currency`         | *string*           | :heavy_minus_sign: | N/A                |

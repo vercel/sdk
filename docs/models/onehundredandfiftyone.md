@@ -10,14 +10,14 @@ import { OneHundredAndFiftyOne } from "@vercel/sdk/models/userevent.js";
 let value: OneHundredAndFiftyOne = {
   projectId: "<id>",
   projectName: "<value>",
-  customerSupportCodeVisibility: false,
+  previewDeploymentsEnabled: false,
 };
 ```
 
 ## Fields
 
-| Field                           | Type                            | Required                        | Description                     |
-| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
-| `projectId`                     | *string*                        | :heavy_check_mark:              | N/A                             |
-| `projectName`                   | *string*                        | :heavy_check_mark:              | N/A                             |
-| `customerSupportCodeVisibility` | *boolean*                       | :heavy_check_mark:              | N/A                             |
+| Field                       | Type                        | Required                    | Description                 |
+| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
+| `projectId`                 | *string*                    | :heavy_check_mark:          | N/A                         |
+| `projectName`               | *string*                    | :heavy_check_mark:          | N/A                         |
+| `previewDeploymentsEnabled` | *boolean*                   | :heavy_check_mark:          | N/A                         |

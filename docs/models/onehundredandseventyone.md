@@ -8,27 +8,20 @@ The payload of the event, if requested.
 import { OneHundredAndSeventyOne } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndSeventyOne = {
-  budget: {
-    type: "fixed",
-    fixedBudget: 1423.01,
-    previousSpend: [
-      5351.59,
-      6647.66,
-    ],
-    notifiedAt: [
-      4624.11,
-    ],
-    createdAt: 3893.93,
-    isActive: false,
-    teamId: "<id>",
-    id: "<id>",
-  },
+  oldProjectId: "<id>",
+  oldProjectName: "<value>",
+  newProjectId: "<id>",
+  newProjectName: "<value>",
+  domain: "corny-order.name",
 };
 ```
 
 ## Fields
 
-| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `budget`                                                                | [models.UserEventPayloadBudget](../models/usereventpayloadbudget.md)    | :heavy_check_mark:                                                      | Represents a budget for tracking and notifying teams on their spending. |
-| `webhookUrl`                                                            | *string*                                                                | :heavy_minus_sign:                                                      | N/A                                                                     |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `oldProjectId`     | *string*           | :heavy_check_mark: | N/A                |
+| `oldProjectName`   | *string*           | :heavy_check_mark: | N/A                |
+| `newProjectId`     | *string*           | :heavy_check_mark: | N/A                |
+| `newProjectName`   | *string*           | :heavy_check_mark: | N/A                |
+| `domain`           | *string*           | :heavy_check_mark: | N/A                |

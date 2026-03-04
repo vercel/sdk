@@ -7,13 +7,18 @@ The payload of the event, if requested.
 ```typescript
 import { Thirteen } from "@vercel/sdk/models/userevent.js";
 
-let value: Thirteen = {};
+let value: Thirteen = {
+  alias: "<value>",
+  aliasId: "<id>",
+  deploymentId: "<id>",
+};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `aliasId`          | *string*           | :heavy_minus_sign: | N/A                |
-| `alias`            | *string*           | :heavy_minus_sign: | N/A                |
-| `projectName`      | *string*           | :heavy_minus_sign: | N/A                |
+| `name`             | *string*           | :heavy_minus_sign: | N/A                |
+| `alias`            | *string*           | :heavy_check_mark: | N/A                |
+| `aliasId`          | *string*           | :heavy_check_mark: | N/A                |
+| `deploymentId`     | *string*           | :heavy_check_mark: | N/A                |

@@ -38,79 +38,46 @@ const (
 	NamePlan                                            Name = "plan"
 	NameFlag                                            Name = "flag"
 	NameDeployment                                      Name = "deployment"
-	NameFlagsSegment                                    Name = "flags-segment"
-	NameFlagsSettings                                   Name = "flags-settings"
-	NameProjectRollingReleaseEnabled                    Name = "project-rolling-release-enabled"
-	NameProjectRollingReleaseDisabled                   Name = "project-rolling-release-disabled"
-	NameProjectRollingReleaseConfigured                 Name = "project-rolling-release-configured"
-	NameProjectRollingReleaseStarted                    Name = "project-rolling-release-started"
-	NameProjectRollingReleaseCompleted                  Name = "project-rolling-release-completed"
-	NameProjectRollingReleaseAborted                    Name = "project-rolling-release-aborted"
-	NameProjectRollingReleaseApproved                   Name = "project-rolling-release-approved"
-	NameProjectRollingReleaseTimer                      Name = "project-rolling-release-timer"
-	NameProtectedGitScopeAdded                          Name = "protected-git-scope-added"
-	NameProtectedGitScopeRemoved                        Name = "protected-git-scope-removed"
-	NameScale                                           Name = "scale"
-	NameScaleAuto                                       Name = "scale-auto"
-	NameSecondaryEmailAdded                             Name = "secondary-email-added"
-	NameSecondaryEmailRemoved                           Name = "secondary-email-removed"
-	NameSecondaryEmailVerified                          Name = "secondary-email-verified"
-	NameEmailNotificationRuleUpdated                    Name = "email-notification-rule-updated"
-	NameEmailNotificationRuleRemoved                    Name = "email-notification-rule-removed"
-	NameSecretAdd                                       Name = "secret-add"
-	NameSecretDelete                                    Name = "secret-delete"
-	NameSecretRename                                    Name = "secret-rename"
-	NameSetBio                                          Name = "set-bio"
-	NameSetName                                         Name = "set-name"
-	NameSetProfiles                                     Name = "set-profiles"
-	NameSetScale                                        Name = "set-scale"
-	NameSpendCreated                                    Name = "spend-created"
-	NameSpendDeleted                                    Name = "spend-deleted"
-	NameSpendUpdated                                    Name = "spend-updated"
-	NameStorageCreate                                   Name = "storage-create"
-	NameStorageResetCredentials                         Name = "storage-reset-credentials"
-	NameStorageUpdate                                   Name = "storage-update"
-	NameStorageConnectProject                           Name = "storage-connect-project"
-	NameStorageDisconnectProject                        Name = "storage-disconnect-project"
-	NameStorageUpdateProjectConnection                  Name = "storage-update-project-connection"
-	NameStorageDelete                                   Name = "storage-delete"
-	NameStorageAccessedDataBrowser                      Name = "storage-accessed-data-browser"
-	NameStorageViewSecret                               Name = "storage-view-secret"
-	NameStorageAcceptTos                                Name = "storage-accept-tos"
-	NameStorageInactiveStoreDeleted                     Name = "storage-inactive-store-deleted"
-	NameStorageResourceReplCommand                      Name = "storage-resource-repl-command"
-	NameStorageDisconnectProjects                       Name = "storage-disconnect-projects"
-	NameStorageAccessTokenSet                           Name = "storage-access-token-set"
-	NameTeamAvatarUpdate                                Name = "team-avatar-update"
-	NameTeamDelete                                      Name = "team-delete"
-	NameTeamInviteBulkDelete                            Name = "team-invite-bulk-delete"
-	NameTeamMemberAdd                                   Name = "team-member-add"
-	NameTeamMemberDelete                                Name = "team-member-delete"
-	NameTeamMemberLeave                                 Name = "team-member-leave"
-	NameTeamMemberJoin                                  Name = "team-member-join"
-	NameTeamMemberRoleUpdate                            Name = "team-member-role-update"
-	NameTeamMemberEntitlementAdded                      Name = "team-member-entitlement-added"
-	NameTeamMemberEntitlementRemoved                    Name = "team-member-entitlement-removed"
-	NameTeamMemberEntitlementCanceled                   Name = "team-member-entitlement-canceled"
-	NameTeamMemberEntitlementReactivated                Name = "team-member-entitlement-reactivated"
-	NameTeamMfaEnforcementUpdated                       Name = "team-mfa-enforcement-updated"
-	NameTeamNameUpdate                                  Name = "team-name-update"
-	NameTeamSlugUpdate                                  Name = "team-slug-update"
-	NameTeamRemoteCachingUpdate                         Name = "team-remote-caching-update"
-	NameUserMfaChallengeVerified                        Name = "user-mfa-challenge-verified"
-	NameUserMfaConfigurationUpdated                     Name = "user-mfa-configuration-updated"
-	NameUserMfaTotpVerificationStarted                  Name = "user-mfa-totp-verification-started"
-	NameUserMfaTotpVerified                             Name = "user-mfa-totp-verified"
-	NameUserMfaRecoveryCodesRegenerated                 Name = "user-mfa-recovery-codes-regenerated"
-	NameUserMfaRemoved                                  Name = "user-mfa-removed"
-	NameUserPrimaryEmailUpdated                         Name = "user-primary-email-updated"
-	NameUserDelete                                      Name = "user-delete"
-	NameUsername                                        Name = "username"
-	NamePreviewDeploymentSuffixEnabled                  Name = "preview-deployment-suffix-enabled"
-	NamePreviewDeploymentSuffixDisabled                 Name = "preview-deployment-suffix-disabled"
-	NamePreviewDeploymentSuffixUpdate                   Name = "preview-deployment-suffix-update"
-	NamePasswordProtectionEnabled                       Name = "password-protection-enabled"
+	NameAccessGroupCreated                              Name = "access-group-created"
+	NameAccessGroupDeleted                              Name = "access-group-deleted"
+	NameAccessGroupProjectUpdated                       Name = "access-group-project-updated"
+	NameAccessGroupUpdated                              Name = "access-group-updated"
+	NameAccessGroupUserAdded                            Name = "access-group-user-added"
+	NameAccessGroupUserRemoved                          Name = "access-group-user-removed"
 	NamePasswordProtectionDisabled                      Name = "password-protection-disabled"
+	NamePasswordProtectionEnabled                       Name = "password-protection-enabled"
+	NameAliasChown                                      Name = "alias-chown"
+	NameAliasDelete                                     Name = "alias-delete"
+	NameAliasInviteCreated                              Name = "alias-invite-created"
+	NameAliasInviteJoined                               Name = "alias-invite-joined"
+	NameAliasInviteRevoked                              Name = "alias-invite-revoked"
+	NameAliasProtectionBypassCreated                    Name = "alias-protection-bypass-created"
+	NameAliasProtectionBypassException                  Name = "alias-protection-bypass-exception"
+	NameAliasProtectionBypassRegenerated                Name = "alias-protection-bypass-regenerated"
+	NameAliasProtectionBypassRevoked                    Name = "alias-protection-bypass-revoked"
+	NameAliasSystem                                     Name = "alias-system"
+	NameAliasUserScopedAccessDenied                     Name = "alias-user-scoped-access-denied"
+	NameAliasUserScopedAccessGranted                    Name = "alias-user-scoped-access-granted"
+	NameAliasUserScopedAccessRequested                  Name = "alias-user-scoped-access-requested"
+	NameAliasUserScopedAccessRevoked                    Name = "alias-user-scoped-access-revoked"
+	NameOauthAppConnectionCreated                       Name = "oauth-app-connection-created"
+	NameOauthAppConnectionRemoved                       Name = "oauth-app-connection-removed"
+	NameOauthAppConnectionUpdated                       Name = "oauth-app-connection-updated"
+	NameOauthAppCreated                                 Name = "oauth-app-created"
+	NameOauthAppDeleted                                 Name = "oauth-app-deleted"
+	NameVercelAppInstallationRequestDismissed           Name = "vercel-app-installation-request-dismissed"
+	NameVercelAppInstallationRequested                  Name = "vercel-app-installation-requested"
+	NameVercelAppInstallationUpdated                    Name = "vercel-app-installation-updated"
+	NameVercelAppInstalled                              Name = "vercel-app-installed"
+	NameOauthAppSecretDeleted                           Name = "oauth-app-secret-deleted"
+	NameOauthAppSecretGenerated                         Name = "oauth-app-secret-generated"
+	NameOauthAppTokenCreated                            Name = "oauth-app-token-created"
+	NameVercelAppTokensRevoked                          Name = "vercel-app-tokens-revoked"
+	NameVercelAppUninstalled                            Name = "vercel-app-uninstalled"
+	NameOauthAppUpdated                                 Name = "oauth-app-updated"
+	NameAttackModeDisabled                              Name = "attack-mode-disabled"
+	NameAttackModeEnabled                               Name = "attack-mode-enabled"
+	NameAutoExposeSystemEnvs                            Name = "auto-expose-system-envs"
 	NameInvoiceRefunded                                 Name = "invoice-refunded"
 	NameInvoiceModified                                 Name = "invoice-modified"
 	NamePaymentMethodAdded                              Name = "payment-method-added"
@@ -120,146 +87,17 @@ const (
 	NameSubscriptionUpdated                             Name = "subscription-updated"
 	NameSubscriptionProductAdded                        Name = "subscription-product-added"
 	NameSubscriptionProductRemoved                      Name = "subscription-product-removed"
-	NameTeamMemberConfirmRequest                        Name = "team-member-confirm-request"
-	NameTeamMemberDeclineRequest                        Name = "team-member-decline-request"
-	NameTeamMemberRequestAccess                         Name = "team-member-request-access"
-	NameProjectMoveOutStarted                           Name = "project-move-out-started"
-	NameProjectMoveOutFailed                            Name = "project-move-out-failed"
-	NameProjectMoveOutSuccess                           Name = "project-move-out-success"
-	NameProjectMoveInSuccess                            Name = "project-move-in-success"
-	NameProjectMemberAdded                              Name = "project-member-added"
-	NameProjectMemberRemoved                            Name = "project-member-removed"
-	NameProjectMemberUpdated                            Name = "project-member-updated"
-	NameProjectMemberInvited                            Name = "project-member-invited"
-	NameEdgeCachePurgeAll                               Name = "edge-cache-purge-all"
-	NameEdgeCacheInvalidateByTags                       Name = "edge-cache-invalidate-by-tags"
-	NameEdgeCacheDangerouslyDeleteByTags                Name = "edge-cache-dangerously-delete-by-tags"
-	NameEdgeCacheInvalidateBySrcImages                  Name = "edge-cache-invalidate-by-src-images"
-	NameEdgeCacheDangerouslyDeleteBySrcImages           Name = "edge-cache-dangerously-delete-by-src-images"
-	NameEdgeCacheRollbackPurge                          Name = "edge-cache-rollback-purge"
-	NameRuntimeCachePurgeAll                            Name = "runtime-cache-purge-all"
-	NameEdgeConfigCreated                               Name = "edge-config-created"
-	NameEdgeConfigDeleted                               Name = "edge-config-deleted"
-	NameEdgeConfigItemsUpdated                          Name = "edge-config-items-updated"
-	NameEdgeConfigTokenCreated                          Name = "edge-config-token-created"
-	NameEdgeConfigTokenDeleted                          Name = "edge-config-token-deleted"
-	NameEdgeConfigUpdated                               Name = "edge-config-updated"
-	NameFlagsExplorerSubscription                       Name = "flags-explorer-subscription"
-	NameMonitoringEnabled                               Name = "monitoring-enabled"
-	NameMonitoringDisabled                              Name = "monitoring-disabled"
-	NameMicrofrontendGroupAdded                         Name = "microfrontend-group-added"
-	NameMicrofrontendGroupDeleted                       Name = "microfrontend-group-deleted"
-	NameMicrofrontendGroupUpdated                       Name = "microfrontend-group-updated"
-	NameMicrofrontendProjectAddedToGroup                Name = "microfrontend-project-added-to-group"
-	NameMicrofrontendProjectRemovedFromGroup            Name = "microfrontend-project-removed-from-group"
-	NameMicrofrontendProjectUpdated                     Name = "microfrontend-project-updated"
-	NameProjectWebAnalyticsDisabled                     Name = "project-web-analytics-disabled"
-	NameProjectWebAnalyticsEnabled                      Name = "project-web-analytics-enabled"
-	NameWebAnalyticsTierUpdated                         Name = "web-analytics-tier-updated"
-	NamePasskeyCreated                                  Name = "passkey-created"
-	NamePasskeyUpdated                                  Name = "passkey-updated"
-	NamePasskeyDeleted                                  Name = "passkey-deleted"
-	NameOauthAppConnectionCreated                       Name = "oauth-app-connection-created"
-	NameOauthAppConnectionUpdated                       Name = "oauth-app-connection-updated"
-	NameOauthAppConnectionRemoved                       Name = "oauth-app-connection-removed"
-	NameOauthAppCreated                                 Name = "oauth-app-created"
-	NameOauthAppDeleted                                 Name = "oauth-app-deleted"
-	NameOauthAppUpdated                                 Name = "oauth-app-updated"
-	NameOauthAppSecretGenerated                         Name = "oauth-app-secret-generated"
-	NameOauthAppSecretDeleted                           Name = "oauth-app-secret-deleted"
-	NameOauthAppTokenCreated                            Name = "oauth-app-token-created"
-	NameVercelAppInstallationRequested                  Name = "vercel-app-installation-requested"
-	NameVercelAppInstallationRequestDismissed           Name = "vercel-app-installation-request-dismissed"
-	NameVercelAppInstalled                              Name = "vercel-app-installed"
-	NameVercelAppUninstalled                            Name = "vercel-app-uninstalled"
-	NameVercelAppInstallationUpdated                    Name = "vercel-app-installation-updated"
-	NameVercelAppTokensRevoked                          Name = "vercel-app-tokens-revoked"
-	NameVpcPeeringConnectionAccepted                    Name = "vpc-peering-connection-accepted"
-	NameVpcPeeringConnectionDeleted                     Name = "vpc-peering-connection-deleted"
-	NameVpcPeeringConnectionRejected                    Name = "vpc-peering-connection-rejected"
-	NameVpcPeeringConnectionUpdated                     Name = "vpc-peering-connection-updated"
-	NameWebhookCreated                                  Name = "webhook-created"
-	NameWebhookDeleted                                  Name = "webhook-deleted"
-	NameWebhookUpdated                                  Name = "webhook-updated"
-	NameEnforceSensitiveEnvironmentVariables            Name = "enforce-sensitive-environment-variables"
-	NameShowIPAddresses                                 Name = "show-ip-addresses"
-	NameTeamSamlEnforced                                Name = "team-saml-enforced"
-	NameTeamSamlRoles                                   Name = "team-saml-roles"
-	NameTeamIPBlockingRulesCreated                      Name = "team-ip-blocking-rules-created"
-	NameTeamIPBlockingRulesRemoved                      Name = "team-ip-blocking-rules-removed"
-	NameAuditLogExportRequested                         Name = "audit-log-export-requested"
-	NameAuditLogExportDownloaded                        Name = "audit-log-export-downloaded"
-	NameStrictDeploymentProtectionSettings              Name = "strict-deployment-protection-settings"
-	NameAlertRuleCreated                                Name = "alert-rule-created"
-	NameAlertRuleUpdated                                Name = "alert-rule-updated"
-	NameAlertRuleDeleted                                Name = "alert-rule-deleted"
-	NameSpeedInsightsSettingsUpdated                    Name = "speed-insights-settings-updated"
-	NameOwnerBlocked                                    Name = "owner-blocked"
-	NameOwnerUnblocked                                  Name = "owner-unblocked"
-	NameOwnerSoftBlocked                                Name = "owner-soft-blocked"
-	NameOwnerSoftUnblocked                              Name = "owner-soft-unblocked"
-	NameEdgeConfigSchemaDeleted                         Name = "edge-config-schema-deleted"
-	NameEdgeConfigSchemaUpdated                         Name = "edge-config-schema-updated"
-	NameEdgeConfigTransferIn                            Name = "edge-config-transfer-in"
-	NameEdgeConfigTransferOut                           Name = "edge-config-transfer-out"
-	NameProjectAddAlias                                 Name = "project-add-alias"
-	NameProjectAddRedirect                              Name = "project-add-redirect"
-	NameProjectDomainDeleted                            Name = "project-domain-deleted"
-	NameProjectDomainMoved                              Name = "project-domain-moved"
-	NameProjectDomainUpdated                            Name = "project-domain-updated"
-	NameProjectMemberRemovedBatch                       Name = "project-member-removed-batch"
-	NameProjectAliasConfiguredChange                    Name = "project-alias-configured-change"
-	NameTeamEndedTrial                                  Name = "team-ended-trial"
-	NameTeamPaidInvoice                                 Name = "team-paid-invoice"
-	NameTeamEmailDomainUpdate                           Name = "team-email-domain-update"
-	NameTeamInviteCodeReset                             Name = "team-invite-code-reset"
-	NameVercelAgentTeamTrialCreditsApplied              Name = "vercel-agent-team-trial-credits-applied"
-	NameAuthorizeGitDeployment                          Name = "authorize-git-deployment"
-	NameWorkflowDeploymentKeyAccessed                   Name = "workflow-deployment-key-accessed"
-	NameAccessGroupCreated                              Name = "access-group-created"
-	NameAccessGroupDeleted                              Name = "access-group-deleted"
-	NameAccessGroupUpdated                              Name = "access-group-updated"
-	NameAccessGroupUserAdded                            Name = "access-group-user-added"
-	NameAccessGroupUserRemoved                          Name = "access-group-user-removed"
-	NameAccessGroupProjectUpdated                       Name = "access-group-project-updated"
-	NameAiCodeReview                                    Name = "ai-code-review"
-	NameAiAlertInvestigation                            Name = "ai-alert-investigation"
-	NameAliasProtectionBypassCreated                    Name = "alias-protection-bypass-created"
-	NameAliasProtectionBypassRegenerated                Name = "alias-protection-bypass-regenerated"
-	NameAliasProtectionBypassRevoked                    Name = "alias-protection-bypass-revoked"
-	NameAliasUserScopedAccessRequested                  Name = "alias-user-scoped-access-requested"
-	NameAliasUserScopedAccessGranted                    Name = "alias-user-scoped-access-granted"
-	NameAliasUserScopedAccessDenied                     Name = "alias-user-scoped-access-denied"
-	NameAliasUserScopedAccessRevoked                    Name = "alias-user-scoped-access-revoked"
-	NameAliasProtectionBypassException                  Name = "alias-protection-bypass-exception"
-	NameAliasInviteCreated                              Name = "alias-invite-created"
-	NameAliasInviteRevoked                              Name = "alias-invite-revoked"
-	NameAliasInviteJoined                               Name = "alias-invite-joined"
-	NameAliasChown                                      Name = "alias-chown"
-	NameAliasDelete                                     Name = "alias-delete"
-	NameAliasSystem                                     Name = "alias-system"
-	NameAutoExposeSystemEnvs                            Name = "auto-expose-system-envs"
 	NameBulkRedirectsSettingsUpdated                    Name = "bulk-redirects-settings-updated"
 	NameBulkRedirectsVersionPromoted                    Name = "bulk-redirects-version-promoted"
 	NameBulkRedirectsVersionRestored                    Name = "bulk-redirects-version-restored"
-	NameProjectRoutesVersionPromoted                    Name = "project-routes-version-promoted"
-	NameProjectRoutesVersionRestored                    Name = "project-routes-version-restored"
 	NameCert                                            Name = "cert"
-	NameCertAutorenew                                   Name = "cert-autorenew"
 	NameCertSystemCreate                                Name = "cert-system-create"
+	NameCertAutorenew                                   Name = "cert-autorenew"
 	NameCertChown                                       Name = "cert-chown"
 	NameCertClone                                       Name = "cert-clone"
 	NameCertDelete                                      Name = "cert-delete"
 	NameCertRenew                                       Name = "cert-renew"
 	NameCertReplace                                     Name = "cert-replace"
-	NameProjectClientCertUpload                         Name = "project-client-cert-upload"
-	NameProjectClientCertDelete                         Name = "project-client-cert-delete"
-	NameCustomSuffixClear                               Name = "custom-suffix-clear"
-	NameCustomSuffixDisable                             Name = "custom-suffix-disable"
-	NameCustomSuffixEnable                              Name = "custom-suffix-enable"
-	NameCustomSuffixPending                             Name = "custom-suffix-pending"
-	NameCustomSuffixReady                               Name = "custom-suffix-ready"
-	NameConcurrentBuildsUpdate                          Name = "concurrent-builds-update"
 	NameConnectConfigurationCreated                     Name = "connect-configuration-created"
 	NameConnectConfigurationDeleted                     Name = "connect-configuration-deleted"
 	NameConnectConfigurationLinkUpdated                 Name = "connect-configuration-link-updated"
@@ -278,22 +116,34 @@ const (
 	NameConnectBitbucket                                Name = "connect-bitbucket"
 	NameConnectBitbucketApp                             Name = "connect-bitbucket-app"
 	NameDisconnectBitbucketApp                          Name = "disconnect-bitbucket-app"
-	NameUnlinkLoginConnection                           Name = "unlink-login-connection"
+	NameCustomSuffixClear                               Name = "custom-suffix-clear"
+	NameCustomSuffixDisable                             Name = "custom-suffix-disable"
+	NamePreviewDeploymentSuffixDisabled                 Name = "preview-deployment-suffix-disabled"
+	NameCustomSuffixEnable                              Name = "custom-suffix-enable"
+	NamePreviewDeploymentSuffixEnabled                  Name = "preview-deployment-suffix-enabled"
+	NameCustomSuffixPending                             Name = "custom-suffix-pending"
+	NameCustomSuffixReady                               Name = "custom-suffix-ready"
 	NameDeployHookCreated                               Name = "deploy-hook-created"
 	NameDeployHookDeleted                               Name = "deploy-hook-deleted"
 	NameDeployHookDeduped                               Name = "deploy-hook-deduped"
 	NameDeployHookProcessed                             Name = "deploy-hook-processed"
+	NameAuthorizeGitDeployment                          Name = "authorize-git-deployment"
 	NameDeploymentChown                                 Name = "deployment-chown"
+	NameDeploymentCreationBlocked                       Name = "deployment-creation-blocked"
 	NameDeploymentDelete                                Name = "deployment-delete"
+	NameDisabledIntegrationInstallationRemoved          Name = "disabled-integration-installation-removed"
 	NameDNSAdd                                          Name = "dns-add"
 	NameDNSDelete                                       Name = "dns-delete"
 	NameDNSUpdate                                       Name = "dns-update"
 	NameDomain                                          Name = "domain"
 	NameDomainBuy                                       Name = "domain-buy"
 	NameDomainCdn                                       Name = "domain-cdn"
-	NameDomainDelegated                                 Name = "domain-delegated"
 	NameDomainChown                                     Name = "domain-chown"
+	NameDomainDelegated                                 Name = "domain-delegated"
 	NameDomainDelete                                    Name = "domain-delete"
+	NameDomainServiceTypeUpdated                        Name = "domain-service-type-updated"
+	NameDomainCustomNsChange                            Name = "domain-custom-ns-change"
+	NameDNSZonefileImport                               Name = "dns-zonefile-import"
 	NameDomainMoveIn                                    Name = "domain-move-in"
 	NameDomainMoveOut                                   Name = "domain-move-out"
 	NameDomainMoveOutRequestSent                        Name = "domain-move-out-request-sent"
@@ -301,73 +151,129 @@ const (
 	NameDomainTransferIn                                Name = "domain-transfer-in"
 	NameDomainTransferInCanceled                        Name = "domain-transfer-in-canceled"
 	NameDomainTransferInCompleted                       Name = "domain-transfer-in-completed"
-	NameDomainServiceTypeUpdated                        Name = "domain-service-type-updated"
-	NameDomainCustomNsChange                            Name = "domain-custom-ns-change"
-	NameDNSZonefileImport                               Name = "dns-zonefile-import"
-	NameDeploymentCreationBlocked                       Name = "deployment-creation-blocked"
-	NameEmail                                           Name = "email"
-	NameEnvVariableAdd                                  Name = "env-variable-add"
-	NameEnvVariableDelete                               Name = "env-variable-delete"
-	NameEnvVariableEdit                                 Name = "env-variable-edit"
-	NameEnvVariableRead                                 Name = "env-variable-read"
-	NameEnvVariableReadCliPull                          Name = "env-variable-read:cli:pull"
-	NameEnvVariableReadCliDev                           Name = "env-variable-read:cli:dev"
-	NameEnvVariableReadCliEnvRm                         Name = "env-variable-read:cli:env:rm"
-	NameEnvVariableReadCliEnvAdd                        Name = "env-variable-read:cli:env:add"
-	NameEnvVariableReadCliEnvLs                         Name = "env-variable-read:cli:env:ls"
-	NameEnvVariableReadCliEnvPull                       Name = "env-variable-read:cli:env:pull"
-	NameEnvVariableReadV0EnvPull                        Name = "env-variable-read:v0:env:pull"
-	NameEnvVariableReadUnknownSource                    Name = "env-variable-read:unknown-source"
-	NameSharedEnvVariableCreate                         Name = "shared-env-variable-create"
-	NameSharedEnvVariableDelete                         Name = "shared-env-variable-delete"
-	NameSharedEnvVariableUpdate                         Name = "shared-env-variable-update"
-	NameSharedEnvVariableRead                           Name = "shared-env-variable-read"
-	NameSecurityPlusUpdated                             Name = "security-plus-updated"
-	NameFirewallConfigPromoted                          Name = "firewall-config-promoted"
-	NameFirewallBypassCreated                           Name = "firewall-bypass-created"
-	NameFirewallBypassDeleted                           Name = "firewall-bypass-deleted"
-	NameFirewallManagedRulesetUpdated                   Name = "firewall-managed-ruleset-updated"
-	NameFirewallManagedRulegroupUpdated                 Name = "firewall-managed-rulegroup-updated"
-	NameAttackModeEnabled                               Name = "attack-mode-enabled"
-	NameAttackModeDisabled                              Name = "attack-mode-disabled"
-	NameFlagsSDKKey                                     Name = "flags-sdk-key"
-	NameIntegrationScopeChanged                         Name = "integration-scope-changed"
-	NameIntegrationConfigurationOwnerChanged            Name = "integration-configuration-owner-changed"
-	NameIntegrationConfigurationsDisabled               Name = "integration-configurations-disabled"
-	NameIntegrationInstallationBillingPlanUpdated       Name = "integration-installation-billing-plan-updated"
-	NameIntegrationInstallationCompleted                Name = "integration-installation-completed"
-	NameIntegrationInstallationRemoved                  Name = "integration-installation-removed"
-	NameIntegrationInstallationPermissionUpdated        Name = "integration-installation-permission-updated"
-	NameInstantRollbackCreated                          Name = "instant-rollback-created"
-	NameDisabledIntegrationInstallationRemoved          Name = "disabled-integration-installation-removed"
-	NameIntegrationConfigurationScopeChangeConfirmed    Name = "integration-configuration-scope-change-confirmed"
-	NameLogDrainCreated                                 Name = "log-drain-created"
-	NameLogDrainDeleted                                 Name = "log-drain-deleted"
-	NameLogDrainEnabled                                 Name = "log-drain-enabled"
-	NameLogDrainDisabled                                Name = "log-drain-disabled"
-	NameLogin                                           Name = "login"
-	NameSignup                                          Name = "signup"
-	NameSignupViaBitbucket                              Name = "signup-via-bitbucket"
-	NameSignupViaGithub                                 Name = "signup-via-github"
-	NameSignupViaGitlab                                 Name = "signup-via-gitlab"
 	NameDrainCreated                                    Name = "drain-created"
 	NameDrainDeleted                                    Name = "drain-deleted"
 	NameDrainDisabled                                   Name = "drain-disabled"
 	NameDrainEnabled                                    Name = "drain-enabled"
 	NameDrainUpdated                                    Name = "drain-updated"
+	NameEdgeCacheDangerouslyDeleteBySrcImages           Name = "edge-cache-dangerously-delete-by-src-images"
+	NameEdgeCacheDangerouslyDeleteByTags                Name = "edge-cache-dangerously-delete-by-tags"
+	NameEdgeCacheInvalidateBySrcImages                  Name = "edge-cache-invalidate-by-src-images"
+	NameEdgeCacheInvalidateByTags                       Name = "edge-cache-invalidate-by-tags"
+	NameEdgeCachePurgeAll                               Name = "edge-cache-purge-all"
+	NameEdgeCacheRollbackPurge                          Name = "edge-cache-rollback-purge"
+	NameEdgeConfigCreated                               Name = "edge-config-created"
+	NameEdgeConfigDeleted                               Name = "edge-config-deleted"
+	NameEdgeConfigItemsUpdated                          Name = "edge-config-items-updated"
+	NameEdgeConfigSchemaDeleted                         Name = "edge-config-schema-deleted"
+	NameEdgeConfigSchemaUpdated                         Name = "edge-config-schema-updated"
+	NameEdgeConfigTransferIn                            Name = "edge-config-transfer-in"
+	NameEdgeConfigTransferOut                           Name = "edge-config-transfer-out"
+	NameEdgeConfigTokenCreated                          Name = "edge-config-token-created"
+	NameEdgeConfigTokenDeleted                          Name = "edge-config-token-deleted"
+	NameEdgeConfigUpdated                               Name = "edge-config-updated"
+	NameEmail                                           Name = "email"
+	NameEmailNotificationRuleRemoved                    Name = "email-notification-rule-removed"
+	NameEmailNotificationRuleUpdated                    Name = "email-notification-rule-updated"
+	NameEnvVariableAdd                                  Name = "env-variable-add"
+	NameEnvVariableDelete                               Name = "env-variable-delete"
+	NameEnvVariableEdit                                 Name = "env-variable-edit"
+	NameEnvVariableRead                                 Name = "env-variable-read"
+	NameEnvVariableReadCliDev                           Name = "env-variable-read:cli:dev"
+	NameEnvVariableReadCliEnvAdd                        Name = "env-variable-read:cli:env:add"
+	NameEnvVariableReadCliEnvLs                         Name = "env-variable-read:cli:env:ls"
+	NameEnvVariableReadCliEnvPull                       Name = "env-variable-read:cli:env:pull"
+	NameEnvVariableReadCliEnvRm                         Name = "env-variable-read:cli:env:rm"
+	NameEnvVariableReadCliPull                          Name = "env-variable-read:cli:pull"
+	NameEnvVariableReadUnknownSource                    Name = "env-variable-read:unknown-source"
+	NameEnvVariableReadV0EnvPull                        Name = "env-variable-read:v0:env:pull"
+	NameSharedEnvVariableCreate                         Name = "shared-env-variable-create"
+	NameSharedEnvVariableDelete                         Name = "shared-env-variable-delete"
+	NameSharedEnvVariableRead                           Name = "shared-env-variable-read"
+	NameSharedEnvVariableUpdate                         Name = "shared-env-variable-update"
+	NameFirewallBypassCreated                           Name = "firewall-bypass-created"
+	NameFirewallBypassDeleted                           Name = "firewall-bypass-deleted"
+	NameFirewallConfigPromoted                          Name = "firewall-config-promoted"
+	NameFirewallManagedRulegroupUpdated                 Name = "firewall-managed-rulegroup-updated"
+	NameFirewallManagedRulesetUpdated                   Name = "firewall-managed-ruleset-updated"
+	NameFlagsSegment                                    Name = "flags-segment"
+	NameFlagsSettings                                   Name = "flags-settings"
+	NameFlagsExplorerSubscription                       Name = "flags-explorer-subscription"
+	NameFlagsSDKKey                                     Name = "flags-sdk-key"
+	NameInstantRollbackCreated                          Name = "instant-rollback-created"
+	NameIntegrationConfigurationOwnerChanged            Name = "integration-configuration-owner-changed"
+	NameIntegrationConfigurationScopeChangeConfirmed    Name = "integration-configuration-scope-change-confirmed"
+	NameIntegrationConfigurationsDisabled               Name = "integration-configurations-disabled"
+	NameIntegrationInstallationBillingPlanUpdated       Name = "integration-installation-billing-plan-updated"
+	NameIntegrationInstallationCompleted                Name = "integration-installation-completed"
+	NameIntegrationInstallationPermissionUpdated        Name = "integration-installation-permission-updated"
+	NameIntegrationInstallationRemoved                  Name = "integration-installation-removed"
+	NameIntegrationScopeChanged                         Name = "integration-scope-changed"
+	NameLogDrainCreated                                 Name = "log-drain-created"
+	NameLogDrainDeleted                                 Name = "log-drain-deleted"
+	NameLogDrainDisabled                                Name = "log-drain-disabled"
+	NameLogDrainEnabled                                 Name = "log-drain-enabled"
+	NameLogin                                           Name = "login"
 	NameManualDeploymentPromotionCreated                Name = "manual-deployment-promotion-created"
+	NameMicrofrontendGroupAdded                         Name = "microfrontend-group-added"
+	NameMicrofrontendGroupDeleted                       Name = "microfrontend-group-deleted"
+	NameMicrofrontendGroupUpdated                       Name = "microfrontend-group-updated"
+	NameMicrofrontendProjectAddedToGroup                Name = "microfrontend-project-added-to-group"
+	NameMicrofrontendProjectRemovedFromGroup            Name = "microfrontend-project-removed-from-group"
+	NameMicrofrontendProjectUpdated                     Name = "microfrontend-project-updated"
+	NameMonitoringDisabled                              Name = "monitoring-disabled"
+	NameMonitoringEnabled                               Name = "monitoring-enabled"
 	NameObservabilityDisabled                           Name = "observability-disabled"
 	NameObservabilityEnabled                            Name = "observability-enabled"
-	NameObservabilityPlusProjectEnabled                 Name = "observability-plus-project-enabled"
 	NameObservabilityPlusProjectDisabled                Name = "observability-plus-project-disabled"
+	NameObservabilityPlusProjectEnabled                 Name = "observability-plus-project-enabled"
+	NameOwnerBlocked                                    Name = "owner-blocked"
+	NameOwnerUnblocked                                  Name = "owner-unblocked"
+	NameOwnerSoftBlocked                                Name = "owner-soft-blocked"
+	NameOwnerSoftUnblocked                              Name = "owner-soft-unblocked"
+	NamePasskeyCreated                                  Name = "passkey-created"
+	NamePasskeyDeleted                                  Name = "passkey-deleted"
+	NamePasskeyUpdated                                  Name = "passkey-updated"
+	NamePreviewDeploymentSuffixUpdate                   Name = "preview-deployment-suffix-update"
 	NameProductionBranchUpdated                         Name = "production-branch-updated"
+	NameProjectDirectoryListing                         Name = "project-directory-listing"
 	NameProjectAnalyticsDisabled                        Name = "project-analytics-disabled"
-	NameProjectAnalyticsEnabled                         Name = "project-analytics-enabled"
 	NameProjectSpeedInsightsDisabled                    Name = "project-speed-insights-disabled"
+	NameProjectAnalyticsEnabled                         Name = "project-analytics-enabled"
 	NameProjectSpeedInsightsEnabled                     Name = "project-speed-insights-enabled"
-	NameProjectDelete                                   Name = "project-delete"
+	NameProjectAutomationBypass                         Name = "project-automation-bypass"
+	NameProjectAffectedProjectsDeploymentsUpdated       Name = "project-affected-projects-deployments-updated"
+	NameProjectBuildCommandUpdated                      Name = "project-build-command-updated"
+	NameProjectFrameworkUpdated                         Name = "project-framework-updated"
+	NameProjectInstallCommandUpdated                    Name = "project-install-command-updated"
+	NameProjectNodeVersionUpdated                       Name = "project-node-version-updated"
+	NameProjectOutputDirectoryUpdated                   Name = "project-output-directory-updated"
+	NameProjectPrioritizeProductionBuildsUpdated        Name = "project-prioritize-production-builds-updated"
+	NameProjectRootDirectoryUpdated                     Name = "project-root-directory-updated"
+	NameProjectSourceFilesOutsideRootDirectoryUpdated   Name = "project-source-files-outside-root-directory-updated"
+	NameProjectBuildMachineUpdated                      Name = "project-build-machine-updated"
+	NameProjectClientCertDelete                         Name = "project-client-cert-delete"
+	NameProjectClientCertUpload                         Name = "project-client-cert-upload"
+	NameProjectConnectConfigurations                    Name = "project-connect-configurations"
 	NameProjectCreated                                  Name = "project-created"
 	NameProjectCronJobsToggled                          Name = "project-cron-jobs-toggled"
+	NameProjectDelete                                   Name = "project-delete"
+	NameProjectDomainUnverified                         Name = "project-domain-unverified"
+	NameProjectDomainVerified                           Name = "project-domain-verified"
+	NameProjectElasticConcurrencyUpdated                Name = "project-elastic-concurrency-updated"
+	NameProjectAutoAssignCustomProductionDomainsUpdated Name = "project-auto-assign-custom-production-domains-updated"
+	NameProjectPreviewEnvironmentBranchTrackingUpdated  Name = "project-preview-environment-branch-tracking-updated"
+	NameProjectCustomEnvironmentUpdated                 Name = "project-custom-environment-updated"
+	NameProjectCustomEnvironmentCreated                 Name = "project-custom-environment-created"
+	NameProjectCustomEnvironmentDeleted                 Name = "project-custom-environment-deleted"
+	NameProjectFunctionsFluidDisabled                   Name = "project-functions-fluid-disabled"
+	NameProjectFunctionsFluidEnabled                    Name = "project-functions-fluid-enabled"
+	NameProjectFunctionMaxDuration                      Name = "project-function-max-duration"
+	NameProjectFunctionCPUMemory                        Name = "project-function-cpu-memory"
+	NameProjectFunctionRegions                          Name = "project-function-regions"
+	NameProjectFunctionFailover                         Name = "project-function-failover"
+	NameProjectPreviewDeploymentSuffix                  Name = "project-preview-deployment-suffix"
+	NameProjectName                                     Name = "project-name"
 	NameProjectGitRepositoryConnected                   Name = "project-git-repository-connected"
 	NameProjectGitRepositoryDisconnected                Name = "project-git-repository-disconnected"
 	NameProjectGitPrCommentsToggled                     Name = "project-git-pr-comments-toggled"
@@ -376,54 +282,148 @@ const (
 	NameProjectGitCreateDeploymentsToggled              Name = "project-git-create-deployments-toggled"
 	NameProjectGitRequireVerifiedCommitsToggled         Name = "project-git-require-verified-commits-toggled"
 	NameProjectGitLfsToggled                            Name = "project-git-lfs-toggled"
-	NameProjectSsoProtection                            Name = "project-sso-protection"
-	NameProjectPasswordProtection                       Name = "project-password-protection"
-	NameProjectTrustedIps                               Name = "project-trusted-ips"
-	NameProjectOptionsAllowlist                         Name = "project-options-allowlist"
-	NameProjectAutomationBypass                         Name = "project-automation-bypass"
-	NameProjectDomainUnverified                         Name = "project-domain-unverified"
-	NameProjectDomainVerified                           Name = "project-domain-verified"
-	NameProjectConnectConfigurations                    Name = "project-connect-configurations"
-	NameProjectPaused                                   Name = "project-paused"
-	NameVercelToolbar                                   Name = "vercel-toolbar"
-	NameProjectPreviewDeploymentSuffix                  Name = "project-preview-deployment-suffix"
-	NameProjectUnpaused                                 Name = "project-unpaused"
-	NameProjectOidcTokenCreated                         Name = "project-oidc-token-created"
-	NameProjectOidcIssuerModeUpdated                    Name = "project-oidc-issuer-mode-updated"
-	NameProjectStaticIpsUpdated                         Name = "project-static-ips-updated"
-	NameProjectAffectedProjectsDeploymentsUpdated       Name = "project-affected-projects-deployments-updated"
-	NameProjectAutoAssignCustomProductionDomainsUpdated Name = "project-auto-assign-custom-production-domains-updated"
-	NameProjectBuildCommandUpdated                      Name = "project-build-command-updated"
-	NameProjectPreviewEnvironmentBranchTrackingUpdated  Name = "project-preview-environment-branch-tracking-updated"
-	NameProjectCustomEnvironmentUpdated                 Name = "project-custom-environment-updated"
-	NameProjectCustomEnvironmentCreated                 Name = "project-custom-environment-created"
-	NameProjectCustomEnvironmentDeleted                 Name = "project-custom-environment-deleted"
-	NameProjectFrameworkUpdated                         Name = "project-framework-updated"
-	NameProjectInstallCommandUpdated                    Name = "project-install-command-updated"
-	NameProjectNodeVersionUpdated                       Name = "project-node-version-updated"
-	NameProjectName                                     Name = "project-name"
-	NameProjectOutputDirectoryUpdated                   Name = "project-output-directory-updated"
-	NameProjectPrioritizeProductionBuildsUpdated        Name = "project-prioritize-production-builds-updated"
-	NameProjectRootDirectoryUpdated                     Name = "project-root-directory-updated"
-	NameProjectSourceFilesOutsideRootDirectoryUpdated   Name = "project-source-files-outside-root-directory-updated"
-	NameProjectBuildMachineUpdated                      Name = "project-build-machine-updated"
-	NameProjectElasticConcurrencyUpdated                Name = "project-elastic-concurrency-updated"
-	NameProjectFunctionsFluidDisabled                   Name = "project-functions-fluid-disabled"
-	NameProjectFunctionsFluidEnabled                    Name = "project-functions-fluid-enabled"
-	NameProjectFunctionMaxDuration                      Name = "project-function-max-duration"
-	NameProjectFunctionCPUMemory                        Name = "project-function-cpu-memory"
-	NameProjectFunctionRegions                          Name = "project-function-regions"
-	NameProjectFunctionFailover                         Name = "project-function-failover"
 	NameProjectIgnoredBuildStepUpdated                  Name = "project-ignored-build-step-updated"
-	NameProjectSkewProtectionThresholdUpdated           Name = "project-skew-protection-threshold-updated"
-	NameProjectSkewProtectionMaxAgeUpdated              Name = "project-skew-protection-max-age-updated"
-	NameProjectSkewProtectionAllowedDomainsUpdated      Name = "project-skew-protection-allowed-domains-updated"
+	NameProjectAddAlias                                 Name = "project-add-alias"
+	NameProjectAddRedirect                              Name = "project-add-redirect"
+	NameProjectDomainDeleted                            Name = "project-domain-deleted"
+	NameProjectDomainMoved                              Name = "project-domain-moved"
+	NameProjectDomainUpdated                            Name = "project-domain-updated"
+	NameProjectMemberRemovedBatch                       Name = "project-member-removed-batch"
+	NameProjectAliasConfiguredChange                    Name = "project-alias-configured-change"
+	NameProjectMemberAdded                              Name = "project-member-added"
+	NameProjectMemberInvited                            Name = "project-member-invited"
+	NameProjectMemberRemoved                            Name = "project-member-removed"
+	NameProjectMemberUpdated                            Name = "project-member-updated"
+	NameProjectMoveInSuccess                            Name = "project-move-in-success"
+	NameProjectMoveOutFailed                            Name = "project-move-out-failed"
+	NameProjectMoveOutStarted                           Name = "project-move-out-started"
+	NameProjectMoveOutSuccess                           Name = "project-move-out-success"
+	NameProjectOidcTokenCreated                         Name = "project-oidc-token-created"
+	NameProjectOptionsAllowlist                         Name = "project-options-allowlist"
+	NameProjectPasswordProtection                       Name = "project-password-protection"
+	NameProjectPaused                                   Name = "project-paused"
+	NameProjectRollingReleaseEnabled                    Name = "project-rolling-release-enabled"
+	NameProjectRollingReleaseDisabled                   Name = "project-rolling-release-disabled"
+	NameProjectRollingReleaseConfigured                 Name = "project-rolling-release-configured"
+	NameProjectRollingReleaseStarted                    Name = "project-rolling-release-started"
+	NameProjectRollingReleaseCompleted                  Name = "project-rolling-release-completed"
+	NameProjectRollingReleaseAborted                    Name = "project-rolling-release-aborted"
+	NameProjectRollingReleaseApproved                   Name = "project-rolling-release-approved"
+	NameProjectRollingReleaseTimer                      Name = "project-rolling-release-timer"
+	NameProjectRoutesVersionPromoted                    Name = "project-routes-version-promoted"
+	NameProjectRoutesVersionRestored                    Name = "project-routes-version-restored"
+	NameProjectOidcIssuerModeUpdated                    Name = "project-oidc-issuer-mode-updated"
 	NameProjectCustomerSuccessCodeVisibilityUpdated     Name = "project-customer-success-code-visibility-updated"
-	NameProjectDirectoryListing                         Name = "project-directory-listing"
 	NameProjectGitForkProtectionUpdated                 Name = "project-git-fork-protection-updated"
 	NameProjectProtectedSourcemapsUpdated               Name = "project-protected-sourcemaps-updated"
 	NameProjectBuildLogsAndSourceProtectionUpdated      Name = "project-build-logs-and-source-protection-updated"
 	NameProjectDeploymentRetentionUpdated               Name = "project-deployment-retention-updated"
+	NameProjectSkewProtectionThresholdUpdated           Name = "project-skew-protection-threshold-updated"
+	NameProjectSkewProtectionMaxAgeUpdated              Name = "project-skew-protection-max-age-updated"
+	NameProjectSkewProtectionAllowedDomainsUpdated      Name = "project-skew-protection-allowed-domains-updated"
+	NameProjectSsoProtection                            Name = "project-sso-protection"
+	NameProjectStaticIpsUpdated                         Name = "project-static-ips-updated"
+	NameProjectTrustedIps                               Name = "project-trusted-ips"
+	NameProjectUnpaused                                 Name = "project-unpaused"
+	NameProjectWebAnalyticsDisabled                     Name = "project-web-analytics-disabled"
+	NameProjectWebAnalyticsEnabled                      Name = "project-web-analytics-enabled"
+	NameProtectedGitScopeAdded                          Name = "protected-git-scope-added"
+	NameProtectedGitScopeRemoved                        Name = "protected-git-scope-removed"
+	NameRuntimeCachePurgeAll                            Name = "runtime-cache-purge-all"
+	NameScale                                           Name = "scale"
+	NameScaleAuto                                       Name = "scale-auto"
+	NameSecondaryEmailAdded                             Name = "secondary-email-added"
+	NameSecondaryEmailRemoved                           Name = "secondary-email-removed"
+	NameSecondaryEmailVerified                          Name = "secondary-email-verified"
+	NameSecretAdd                                       Name = "secret-add"
+	NameSecretDelete                                    Name = "secret-delete"
+	NameSecretRename                                    Name = "secret-rename"
+	NameSecurityPlusUpdated                             Name = "security-plus-updated"
+	NameSetBio                                          Name = "set-bio"
+	NameSetName                                         Name = "set-name"
+	NameSetProfiles                                     Name = "set-profiles"
+	NameSetScale                                        Name = "set-scale"
+	NameSignup                                          Name = "signup"
+	NameSignupViaBitbucket                              Name = "signup-via-bitbucket"
+	NameSignupViaGithub                                 Name = "signup-via-github"
+	NameSignupViaGitlab                                 Name = "signup-via-gitlab"
+	NameSpeedInsightsSettingsUpdated                    Name = "speed-insights-settings-updated"
+	NameSpendCreated                                    Name = "spend-created"
+	NameSpendDeleted                                    Name = "spend-deleted"
+	NameSpendUpdated                                    Name = "spend-updated"
+	NameStorageAcceptTos                                Name = "storage-accept-tos"
+	NameStorageCreate                                   Name = "storage-create"
+	NameStorageResetCredentials                         Name = "storage-reset-credentials"
+	NameStorageUpdate                                   Name = "storage-update"
+	NameStorageConnectProject                           Name = "storage-connect-project"
+	NameStorageDisconnectProject                        Name = "storage-disconnect-project"
+	NameStorageUpdateProjectConnection                  Name = "storage-update-project-connection"
+	NameStorageDelete                                   Name = "storage-delete"
+	NameStorageAccessedDataBrowser                      Name = "storage-accessed-data-browser"
+	NameStorageViewSecret                               Name = "storage-view-secret"
+	NameStorageInactiveStoreDeleted                     Name = "storage-inactive-store-deleted"
+	NameStorageResourceReplCommand                      Name = "storage-resource-repl-command"
+	NameStorageDisconnectProjects                       Name = "storage-disconnect-projects"
+	NameStorageAccessTokenSet                           Name = "storage-access-token-set"
+	NameAiCodeReview                                    Name = "ai-code-review"
+	NameAiAlertInvestigation                            Name = "ai-alert-investigation"
+	NameVercelAgentTeamTrialCreditsApplied              Name = "vercel-agent-team-trial-credits-applied"
+	NameTeamAvatarUpdate                                Name = "team-avatar-update"
+	NameTeamDelete                                      Name = "team-delete"
+	NameStrictDeploymentProtectionSettings              Name = "strict-deployment-protection-settings"
+	NameVercelToolbar                                   Name = "vercel-toolbar"
+	NameTeamEmailDomainUpdate                           Name = "team-email-domain-update"
+	NameTeamInviteBulkDelete                            Name = "team-invite-bulk-delete"
+	NameTeamMemberAdd                                   Name = "team-member-add"
+	NameTeamMemberConfirmRequest                        Name = "team-member-confirm-request"
+	NameTeamMemberDeclineRequest                        Name = "team-member-decline-request"
+	NameTeamMemberDelete                                Name = "team-member-delete"
+	NameTeamMemberEntitlementAdded                      Name = "team-member-entitlement-added"
+	NameTeamMemberEntitlementCanceled                   Name = "team-member-entitlement-canceled"
+	NameTeamMemberEntitlementReactivated                Name = "team-member-entitlement-reactivated"
+	NameTeamMemberEntitlementRemoved                    Name = "team-member-entitlement-removed"
+	NameTeamMemberJoin                                  Name = "team-member-join"
+	NameTeamMemberLeave                                 Name = "team-member-leave"
+	NameTeamMemberRequestAccess                         Name = "team-member-request-access"
+	NameTeamMemberRoleUpdate                            Name = "team-member-role-update"
+	NameTeamMfaEnforcementUpdated                       Name = "team-mfa-enforcement-updated"
+	NameConcurrentBuildsUpdate                          Name = "concurrent-builds-update"
+	NameTeamEndedTrial                                  Name = "team-ended-trial"
+	NameTeamPaidInvoice                                 Name = "team-paid-invoice"
+	NameTeamInviteCodeReset                             Name = "team-invite-code-reset"
+	NameTeamNameUpdate                                  Name = "team-name-update"
+	NameTeamRemoteCachingUpdate                         Name = "team-remote-caching-update"
+	NameEnforceSensitiveEnvironmentVariables            Name = "enforce-sensitive-environment-variables"
+	NameShowIPAddresses                                 Name = "show-ip-addresses"
+	NameTeamSamlEnforced                                Name = "team-saml-enforced"
+	NameTeamSamlRoles                                   Name = "team-saml-roles"
+	NameTeamIPBlockingRulesCreated                      Name = "team-ip-blocking-rules-created"
+	NameTeamIPBlockingRulesRemoved                      Name = "team-ip-blocking-rules-removed"
+	NameAuditLogExportRequested                         Name = "audit-log-export-requested"
+	NameAuditLogExportDownloaded                        Name = "audit-log-export-downloaded"
+	NameTeamSlugUpdate                                  Name = "team-slug-update"
+	NameUnlinkLoginConnection                           Name = "unlink-login-connection"
+	NameUserMfaRemoved                                  Name = "user-mfa-removed"
+	NameUserDelete                                      Name = "user-delete"
+	NameUserMfaChallengeVerified                        Name = "user-mfa-challenge-verified"
+	NameUserMfaConfigurationUpdated                     Name = "user-mfa-configuration-updated"
+	NameUserMfaRecoveryCodesRegenerated                 Name = "user-mfa-recovery-codes-regenerated"
+	NameUserMfaTotpVerificationStarted                  Name = "user-mfa-totp-verification-started"
+	NameUserMfaTotpVerified                             Name = "user-mfa-totp-verified"
+	NameUserPrimaryEmailUpdated                         Name = "user-primary-email-updated"
+	NameUsername                                        Name = "username"
+	NameAlertRuleCreated                                Name = "alert-rule-created"
+	NameAlertRuleUpdated                                Name = "alert-rule-updated"
+	NameAlertRuleDeleted                                Name = "alert-rule-deleted"
+	NameVpcPeeringConnectionAccepted                    Name = "vpc-peering-connection-accepted"
+	NameVpcPeeringConnectionDeleted                     Name = "vpc-peering-connection-deleted"
+	NameVpcPeeringConnectionRejected                    Name = "vpc-peering-connection-rejected"
+	NameVpcPeeringConnectionUpdated                     Name = "vpc-peering-connection-updated"
+	NameWebAnalyticsTierUpdated                         Name = "web-analytics-tier-updated"
+	NameWebhookCreated                                  Name = "webhook-created"
+	NameWebhookDeleted                                  Name = "webhook-deleted"
+	NameWebhookUpdated                                  Name = "webhook-updated"
+	NameWorkflowDeploymentKeyAccessed                   Name = "workflow-deployment-key-accessed"
 )
 
 func (e Name) ToPointer() *Name {
@@ -447,151 +447,85 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "deployment":
 		fallthrough
-	case "flags-segment":
+	case "access-group-created":
 		fallthrough
-	case "flags-settings":
+	case "access-group-deleted":
 		fallthrough
-	case "project-rolling-release-enabled":
+	case "access-group-project-updated":
 		fallthrough
-	case "project-rolling-release-disabled":
+	case "access-group-updated":
 		fallthrough
-	case "project-rolling-release-configured":
+	case "access-group-user-added":
 		fallthrough
-	case "project-rolling-release-started":
+	case "access-group-user-removed":
 		fallthrough
-	case "project-rolling-release-completed":
-		fallthrough
-	case "project-rolling-release-aborted":
-		fallthrough
-	case "project-rolling-release-approved":
-		fallthrough
-	case "project-rolling-release-timer":
-		fallthrough
-	case "protected-git-scope-added":
-		fallthrough
-	case "protected-git-scope-removed":
-		fallthrough
-	case "scale":
-		fallthrough
-	case "scale-auto":
-		fallthrough
-	case "secondary-email-added":
-		fallthrough
-	case "secondary-email-removed":
-		fallthrough
-	case "secondary-email-verified":
-		fallthrough
-	case "email-notification-rule-updated":
-		fallthrough
-	case "email-notification-rule-removed":
-		fallthrough
-	case "secret-add":
-		fallthrough
-	case "secret-delete":
-		fallthrough
-	case "secret-rename":
-		fallthrough
-	case "set-bio":
-		fallthrough
-	case "set-name":
-		fallthrough
-	case "set-profiles":
-		fallthrough
-	case "set-scale":
-		fallthrough
-	case "spend-created":
-		fallthrough
-	case "spend-deleted":
-		fallthrough
-	case "spend-updated":
-		fallthrough
-	case "storage-create":
-		fallthrough
-	case "storage-reset-credentials":
-		fallthrough
-	case "storage-update":
-		fallthrough
-	case "storage-connect-project":
-		fallthrough
-	case "storage-disconnect-project":
-		fallthrough
-	case "storage-update-project-connection":
-		fallthrough
-	case "storage-delete":
-		fallthrough
-	case "storage-accessed-data-browser":
-		fallthrough
-	case "storage-view-secret":
-		fallthrough
-	case "storage-accept-tos":
-		fallthrough
-	case "storage-inactive-store-deleted":
-		fallthrough
-	case "storage-resource-repl-command":
-		fallthrough
-	case "storage-disconnect-projects":
-		fallthrough
-	case "storage-access-token-set":
-		fallthrough
-	case "team-avatar-update":
-		fallthrough
-	case "team-delete":
-		fallthrough
-	case "team-invite-bulk-delete":
-		fallthrough
-	case "team-member-add":
-		fallthrough
-	case "team-member-delete":
-		fallthrough
-	case "team-member-leave":
-		fallthrough
-	case "team-member-join":
-		fallthrough
-	case "team-member-role-update":
-		fallthrough
-	case "team-member-entitlement-added":
-		fallthrough
-	case "team-member-entitlement-removed":
-		fallthrough
-	case "team-member-entitlement-canceled":
-		fallthrough
-	case "team-member-entitlement-reactivated":
-		fallthrough
-	case "team-mfa-enforcement-updated":
-		fallthrough
-	case "team-name-update":
-		fallthrough
-	case "team-slug-update":
-		fallthrough
-	case "team-remote-caching-update":
-		fallthrough
-	case "user-mfa-challenge-verified":
-		fallthrough
-	case "user-mfa-configuration-updated":
-		fallthrough
-	case "user-mfa-totp-verification-started":
-		fallthrough
-	case "user-mfa-totp-verified":
-		fallthrough
-	case "user-mfa-recovery-codes-regenerated":
-		fallthrough
-	case "user-mfa-removed":
-		fallthrough
-	case "user-primary-email-updated":
-		fallthrough
-	case "user-delete":
-		fallthrough
-	case "username":
-		fallthrough
-	case "preview-deployment-suffix-enabled":
-		fallthrough
-	case "preview-deployment-suffix-disabled":
-		fallthrough
-	case "preview-deployment-suffix-update":
+	case "password-protection-disabled":
 		fallthrough
 	case "password-protection-enabled":
 		fallthrough
-	case "password-protection-disabled":
+	case "alias-chown":
+		fallthrough
+	case "alias-delete":
+		fallthrough
+	case "alias-invite-created":
+		fallthrough
+	case "alias-invite-joined":
+		fallthrough
+	case "alias-invite-revoked":
+		fallthrough
+	case "alias-protection-bypass-created":
+		fallthrough
+	case "alias-protection-bypass-exception":
+		fallthrough
+	case "alias-protection-bypass-regenerated":
+		fallthrough
+	case "alias-protection-bypass-revoked":
+		fallthrough
+	case "alias-system":
+		fallthrough
+	case "alias-user-scoped-access-denied":
+		fallthrough
+	case "alias-user-scoped-access-granted":
+		fallthrough
+	case "alias-user-scoped-access-requested":
+		fallthrough
+	case "alias-user-scoped-access-revoked":
+		fallthrough
+	case "oauth-app-connection-created":
+		fallthrough
+	case "oauth-app-connection-removed":
+		fallthrough
+	case "oauth-app-connection-updated":
+		fallthrough
+	case "oauth-app-created":
+		fallthrough
+	case "oauth-app-deleted":
+		fallthrough
+	case "vercel-app-installation-request-dismissed":
+		fallthrough
+	case "vercel-app-installation-requested":
+		fallthrough
+	case "vercel-app-installation-updated":
+		fallthrough
+	case "vercel-app-installed":
+		fallthrough
+	case "oauth-app-secret-deleted":
+		fallthrough
+	case "oauth-app-secret-generated":
+		fallthrough
+	case "oauth-app-token-created":
+		fallthrough
+	case "vercel-app-tokens-revoked":
+		fallthrough
+	case "vercel-app-uninstalled":
+		fallthrough
+	case "oauth-app-updated":
+		fallthrough
+	case "attack-mode-disabled":
+		fallthrough
+	case "attack-mode-enabled":
+		fallthrough
+	case "auto-expose-system-envs":
 		fallthrough
 	case "invoice-refunded":
 		fallthrough
@@ -611,259 +545,17 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "subscription-product-removed":
 		fallthrough
-	case "team-member-confirm-request":
-		fallthrough
-	case "team-member-decline-request":
-		fallthrough
-	case "team-member-request-access":
-		fallthrough
-	case "project-move-out-started":
-		fallthrough
-	case "project-move-out-failed":
-		fallthrough
-	case "project-move-out-success":
-		fallthrough
-	case "project-move-in-success":
-		fallthrough
-	case "project-member-added":
-		fallthrough
-	case "project-member-removed":
-		fallthrough
-	case "project-member-updated":
-		fallthrough
-	case "project-member-invited":
-		fallthrough
-	case "edge-cache-purge-all":
-		fallthrough
-	case "edge-cache-invalidate-by-tags":
-		fallthrough
-	case "edge-cache-dangerously-delete-by-tags":
-		fallthrough
-	case "edge-cache-invalidate-by-src-images":
-		fallthrough
-	case "edge-cache-dangerously-delete-by-src-images":
-		fallthrough
-	case "edge-cache-rollback-purge":
-		fallthrough
-	case "runtime-cache-purge-all":
-		fallthrough
-	case "edge-config-created":
-		fallthrough
-	case "edge-config-deleted":
-		fallthrough
-	case "edge-config-items-updated":
-		fallthrough
-	case "edge-config-token-created":
-		fallthrough
-	case "edge-config-token-deleted":
-		fallthrough
-	case "edge-config-updated":
-		fallthrough
-	case "flags-explorer-subscription":
-		fallthrough
-	case "monitoring-enabled":
-		fallthrough
-	case "monitoring-disabled":
-		fallthrough
-	case "microfrontend-group-added":
-		fallthrough
-	case "microfrontend-group-deleted":
-		fallthrough
-	case "microfrontend-group-updated":
-		fallthrough
-	case "microfrontend-project-added-to-group":
-		fallthrough
-	case "microfrontend-project-removed-from-group":
-		fallthrough
-	case "microfrontend-project-updated":
-		fallthrough
-	case "project-web-analytics-disabled":
-		fallthrough
-	case "project-web-analytics-enabled":
-		fallthrough
-	case "web-analytics-tier-updated":
-		fallthrough
-	case "passkey-created":
-		fallthrough
-	case "passkey-updated":
-		fallthrough
-	case "passkey-deleted":
-		fallthrough
-	case "oauth-app-connection-created":
-		fallthrough
-	case "oauth-app-connection-updated":
-		fallthrough
-	case "oauth-app-connection-removed":
-		fallthrough
-	case "oauth-app-created":
-		fallthrough
-	case "oauth-app-deleted":
-		fallthrough
-	case "oauth-app-updated":
-		fallthrough
-	case "oauth-app-secret-generated":
-		fallthrough
-	case "oauth-app-secret-deleted":
-		fallthrough
-	case "oauth-app-token-created":
-		fallthrough
-	case "vercel-app-installation-requested":
-		fallthrough
-	case "vercel-app-installation-request-dismissed":
-		fallthrough
-	case "vercel-app-installed":
-		fallthrough
-	case "vercel-app-uninstalled":
-		fallthrough
-	case "vercel-app-installation-updated":
-		fallthrough
-	case "vercel-app-tokens-revoked":
-		fallthrough
-	case "vpc-peering-connection-accepted":
-		fallthrough
-	case "vpc-peering-connection-deleted":
-		fallthrough
-	case "vpc-peering-connection-rejected":
-		fallthrough
-	case "vpc-peering-connection-updated":
-		fallthrough
-	case "webhook-created":
-		fallthrough
-	case "webhook-deleted":
-		fallthrough
-	case "webhook-updated":
-		fallthrough
-	case "enforce-sensitive-environment-variables":
-		fallthrough
-	case "show-ip-addresses":
-		fallthrough
-	case "team-saml-enforced":
-		fallthrough
-	case "team-saml-roles":
-		fallthrough
-	case "team-ip-blocking-rules-created":
-		fallthrough
-	case "team-ip-blocking-rules-removed":
-		fallthrough
-	case "audit-log-export-requested":
-		fallthrough
-	case "audit-log-export-downloaded":
-		fallthrough
-	case "strict-deployment-protection-settings":
-		fallthrough
-	case "alert-rule-created":
-		fallthrough
-	case "alert-rule-updated":
-		fallthrough
-	case "alert-rule-deleted":
-		fallthrough
-	case "speed-insights-settings-updated":
-		fallthrough
-	case "owner-blocked":
-		fallthrough
-	case "owner-unblocked":
-		fallthrough
-	case "owner-soft-blocked":
-		fallthrough
-	case "owner-soft-unblocked":
-		fallthrough
-	case "edge-config-schema-deleted":
-		fallthrough
-	case "edge-config-schema-updated":
-		fallthrough
-	case "edge-config-transfer-in":
-		fallthrough
-	case "edge-config-transfer-out":
-		fallthrough
-	case "project-add-alias":
-		fallthrough
-	case "project-add-redirect":
-		fallthrough
-	case "project-domain-deleted":
-		fallthrough
-	case "project-domain-moved":
-		fallthrough
-	case "project-domain-updated":
-		fallthrough
-	case "project-member-removed-batch":
-		fallthrough
-	case "project-alias-configured-change":
-		fallthrough
-	case "team-ended-trial":
-		fallthrough
-	case "team-paid-invoice":
-		fallthrough
-	case "team-email-domain-update":
-		fallthrough
-	case "team-invite-code-reset":
-		fallthrough
-	case "vercel-agent-team-trial-credits-applied":
-		fallthrough
-	case "authorize-git-deployment":
-		fallthrough
-	case "workflow-deployment-key-accessed":
-		fallthrough
-	case "access-group-created":
-		fallthrough
-	case "access-group-deleted":
-		fallthrough
-	case "access-group-updated":
-		fallthrough
-	case "access-group-user-added":
-		fallthrough
-	case "access-group-user-removed":
-		fallthrough
-	case "access-group-project-updated":
-		fallthrough
-	case "ai-code-review":
-		fallthrough
-	case "ai-alert-investigation":
-		fallthrough
-	case "alias-protection-bypass-created":
-		fallthrough
-	case "alias-protection-bypass-regenerated":
-		fallthrough
-	case "alias-protection-bypass-revoked":
-		fallthrough
-	case "alias-user-scoped-access-requested":
-		fallthrough
-	case "alias-user-scoped-access-granted":
-		fallthrough
-	case "alias-user-scoped-access-denied":
-		fallthrough
-	case "alias-user-scoped-access-revoked":
-		fallthrough
-	case "alias-protection-bypass-exception":
-		fallthrough
-	case "alias-invite-created":
-		fallthrough
-	case "alias-invite-revoked":
-		fallthrough
-	case "alias-invite-joined":
-		fallthrough
-	case "alias-chown":
-		fallthrough
-	case "alias-delete":
-		fallthrough
-	case "alias-system":
-		fallthrough
-	case "auto-expose-system-envs":
-		fallthrough
 	case "bulk-redirects-settings-updated":
 		fallthrough
 	case "bulk-redirects-version-promoted":
 		fallthrough
 	case "bulk-redirects-version-restored":
 		fallthrough
-	case "project-routes-version-promoted":
-		fallthrough
-	case "project-routes-version-restored":
-		fallthrough
 	case "cert":
 		fallthrough
-	case "cert-autorenew":
-		fallthrough
 	case "cert-system-create":
+		fallthrough
+	case "cert-autorenew":
 		fallthrough
 	case "cert-chown":
 		fallthrough
@@ -874,22 +566,6 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 	case "cert-renew":
 		fallthrough
 	case "cert-replace":
-		fallthrough
-	case "project-client-cert-upload":
-		fallthrough
-	case "project-client-cert-delete":
-		fallthrough
-	case "custom-suffix-clear":
-		fallthrough
-	case "custom-suffix-disable":
-		fallthrough
-	case "custom-suffix-enable":
-		fallthrough
-	case "custom-suffix-pending":
-		fallthrough
-	case "custom-suffix-ready":
-		fallthrough
-	case "concurrent-builds-update":
 		fallthrough
 	case "connect-configuration-created":
 		fallthrough
@@ -927,7 +603,19 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "disconnect-bitbucket-app":
 		fallthrough
-	case "unlink-login-connection":
+	case "custom-suffix-clear":
+		fallthrough
+	case "custom-suffix-disable":
+		fallthrough
+	case "preview-deployment-suffix-disabled":
+		fallthrough
+	case "custom-suffix-enable":
+		fallthrough
+	case "preview-deployment-suffix-enabled":
+		fallthrough
+	case "custom-suffix-pending":
+		fallthrough
+	case "custom-suffix-ready":
 		fallthrough
 	case "deploy-hook-created":
 		fallthrough
@@ -937,9 +625,15 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "deploy-hook-processed":
 		fallthrough
+	case "authorize-git-deployment":
+		fallthrough
 	case "deployment-chown":
 		fallthrough
+	case "deployment-creation-blocked":
+		fallthrough
 	case "deployment-delete":
+		fallthrough
+	case "disabled-integration-installation-removed":
 		fallthrough
 	case "dns-add":
 		fallthrough
@@ -953,11 +647,17 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "domain-cdn":
 		fallthrough
-	case "domain-delegated":
-		fallthrough
 	case "domain-chown":
 		fallthrough
+	case "domain-delegated":
+		fallthrough
 	case "domain-delete":
+		fallthrough
+	case "domain-service-type-updated":
+		fallthrough
+	case "domain-custom-ns-change":
+		fallthrough
+	case "dns-zonefile-import":
 		fallthrough
 	case "domain-move-in":
 		fallthrough
@@ -973,104 +673,6 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "domain-transfer-in-completed":
 		fallthrough
-	case "domain-service-type-updated":
-		fallthrough
-	case "domain-custom-ns-change":
-		fallthrough
-	case "dns-zonefile-import":
-		fallthrough
-	case "deployment-creation-blocked":
-		fallthrough
-	case "email":
-		fallthrough
-	case "env-variable-add":
-		fallthrough
-	case "env-variable-delete":
-		fallthrough
-	case "env-variable-edit":
-		fallthrough
-	case "env-variable-read":
-		fallthrough
-	case "env-variable-read:cli:pull":
-		fallthrough
-	case "env-variable-read:cli:dev":
-		fallthrough
-	case "env-variable-read:cli:env:rm":
-		fallthrough
-	case "env-variable-read:cli:env:add":
-		fallthrough
-	case "env-variable-read:cli:env:ls":
-		fallthrough
-	case "env-variable-read:cli:env:pull":
-		fallthrough
-	case "env-variable-read:v0:env:pull":
-		fallthrough
-	case "env-variable-read:unknown-source":
-		fallthrough
-	case "shared-env-variable-create":
-		fallthrough
-	case "shared-env-variable-delete":
-		fallthrough
-	case "shared-env-variable-update":
-		fallthrough
-	case "shared-env-variable-read":
-		fallthrough
-	case "security-plus-updated":
-		fallthrough
-	case "firewall-config-promoted":
-		fallthrough
-	case "firewall-bypass-created":
-		fallthrough
-	case "firewall-bypass-deleted":
-		fallthrough
-	case "firewall-managed-ruleset-updated":
-		fallthrough
-	case "firewall-managed-rulegroup-updated":
-		fallthrough
-	case "attack-mode-enabled":
-		fallthrough
-	case "attack-mode-disabled":
-		fallthrough
-	case "flags-sdk-key":
-		fallthrough
-	case "integration-scope-changed":
-		fallthrough
-	case "integration-configuration-owner-changed":
-		fallthrough
-	case "integration-configurations-disabled":
-		fallthrough
-	case "integration-installation-billing-plan-updated":
-		fallthrough
-	case "integration-installation-completed":
-		fallthrough
-	case "integration-installation-removed":
-		fallthrough
-	case "integration-installation-permission-updated":
-		fallthrough
-	case "instant-rollback-created":
-		fallthrough
-	case "disabled-integration-installation-removed":
-		fallthrough
-	case "integration-configuration-scope-change-confirmed":
-		fallthrough
-	case "log-drain-created":
-		fallthrough
-	case "log-drain-deleted":
-		fallthrough
-	case "log-drain-enabled":
-		fallthrough
-	case "log-drain-disabled":
-		fallthrough
-	case "login":
-		fallthrough
-	case "signup":
-		fallthrough
-	case "signup-via-bitbucket":
-		fallthrough
-	case "signup-via-github":
-		fallthrough
-	case "signup-via-gitlab":
-		fallthrough
 	case "drain-created":
 		fallthrough
 	case "drain-deleted":
@@ -1081,31 +683,241 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "drain-updated":
 		fallthrough
+	case "edge-cache-dangerously-delete-by-src-images":
+		fallthrough
+	case "edge-cache-dangerously-delete-by-tags":
+		fallthrough
+	case "edge-cache-invalidate-by-src-images":
+		fallthrough
+	case "edge-cache-invalidate-by-tags":
+		fallthrough
+	case "edge-cache-purge-all":
+		fallthrough
+	case "edge-cache-rollback-purge":
+		fallthrough
+	case "edge-config-created":
+		fallthrough
+	case "edge-config-deleted":
+		fallthrough
+	case "edge-config-items-updated":
+		fallthrough
+	case "edge-config-schema-deleted":
+		fallthrough
+	case "edge-config-schema-updated":
+		fallthrough
+	case "edge-config-transfer-in":
+		fallthrough
+	case "edge-config-transfer-out":
+		fallthrough
+	case "edge-config-token-created":
+		fallthrough
+	case "edge-config-token-deleted":
+		fallthrough
+	case "edge-config-updated":
+		fallthrough
+	case "email":
+		fallthrough
+	case "email-notification-rule-removed":
+		fallthrough
+	case "email-notification-rule-updated":
+		fallthrough
+	case "env-variable-add":
+		fallthrough
+	case "env-variable-delete":
+		fallthrough
+	case "env-variable-edit":
+		fallthrough
+	case "env-variable-read":
+		fallthrough
+	case "env-variable-read:cli:dev":
+		fallthrough
+	case "env-variable-read:cli:env:add":
+		fallthrough
+	case "env-variable-read:cli:env:ls":
+		fallthrough
+	case "env-variable-read:cli:env:pull":
+		fallthrough
+	case "env-variable-read:cli:env:rm":
+		fallthrough
+	case "env-variable-read:cli:pull":
+		fallthrough
+	case "env-variable-read:unknown-source":
+		fallthrough
+	case "env-variable-read:v0:env:pull":
+		fallthrough
+	case "shared-env-variable-create":
+		fallthrough
+	case "shared-env-variable-delete":
+		fallthrough
+	case "shared-env-variable-read":
+		fallthrough
+	case "shared-env-variable-update":
+		fallthrough
+	case "firewall-bypass-created":
+		fallthrough
+	case "firewall-bypass-deleted":
+		fallthrough
+	case "firewall-config-promoted":
+		fallthrough
+	case "firewall-managed-rulegroup-updated":
+		fallthrough
+	case "firewall-managed-ruleset-updated":
+		fallthrough
+	case "flags-segment":
+		fallthrough
+	case "flags-settings":
+		fallthrough
+	case "flags-explorer-subscription":
+		fallthrough
+	case "flags-sdk-key":
+		fallthrough
+	case "instant-rollback-created":
+		fallthrough
+	case "integration-configuration-owner-changed":
+		fallthrough
+	case "integration-configuration-scope-change-confirmed":
+		fallthrough
+	case "integration-configurations-disabled":
+		fallthrough
+	case "integration-installation-billing-plan-updated":
+		fallthrough
+	case "integration-installation-completed":
+		fallthrough
+	case "integration-installation-permission-updated":
+		fallthrough
+	case "integration-installation-removed":
+		fallthrough
+	case "integration-scope-changed":
+		fallthrough
+	case "log-drain-created":
+		fallthrough
+	case "log-drain-deleted":
+		fallthrough
+	case "log-drain-disabled":
+		fallthrough
+	case "log-drain-enabled":
+		fallthrough
+	case "login":
+		fallthrough
 	case "manual-deployment-promotion-created":
+		fallthrough
+	case "microfrontend-group-added":
+		fallthrough
+	case "microfrontend-group-deleted":
+		fallthrough
+	case "microfrontend-group-updated":
+		fallthrough
+	case "microfrontend-project-added-to-group":
+		fallthrough
+	case "microfrontend-project-removed-from-group":
+		fallthrough
+	case "microfrontend-project-updated":
+		fallthrough
+	case "monitoring-disabled":
+		fallthrough
+	case "monitoring-enabled":
 		fallthrough
 	case "observability-disabled":
 		fallthrough
 	case "observability-enabled":
 		fallthrough
+	case "observability-plus-project-disabled":
+		fallthrough
 	case "observability-plus-project-enabled":
 		fallthrough
-	case "observability-plus-project-disabled":
+	case "owner-blocked":
+		fallthrough
+	case "owner-unblocked":
+		fallthrough
+	case "owner-soft-blocked":
+		fallthrough
+	case "owner-soft-unblocked":
+		fallthrough
+	case "passkey-created":
+		fallthrough
+	case "passkey-deleted":
+		fallthrough
+	case "passkey-updated":
+		fallthrough
+	case "preview-deployment-suffix-update":
 		fallthrough
 	case "production-branch-updated":
 		fallthrough
-	case "project-analytics-disabled":
+	case "project-directory-listing":
 		fallthrough
-	case "project-analytics-enabled":
+	case "project-analytics-disabled":
 		fallthrough
 	case "project-speed-insights-disabled":
 		fallthrough
+	case "project-analytics-enabled":
+		fallthrough
 	case "project-speed-insights-enabled":
 		fallthrough
-	case "project-delete":
+	case "project-automation-bypass":
+		fallthrough
+	case "project-affected-projects-deployments-updated":
+		fallthrough
+	case "project-build-command-updated":
+		fallthrough
+	case "project-framework-updated":
+		fallthrough
+	case "project-install-command-updated":
+		fallthrough
+	case "project-node-version-updated":
+		fallthrough
+	case "project-output-directory-updated":
+		fallthrough
+	case "project-prioritize-production-builds-updated":
+		fallthrough
+	case "project-root-directory-updated":
+		fallthrough
+	case "project-source-files-outside-root-directory-updated":
+		fallthrough
+	case "project-build-machine-updated":
+		fallthrough
+	case "project-client-cert-delete":
+		fallthrough
+	case "project-client-cert-upload":
+		fallthrough
+	case "project-connect-configurations":
 		fallthrough
 	case "project-created":
 		fallthrough
 	case "project-cron-jobs-toggled":
+		fallthrough
+	case "project-delete":
+		fallthrough
+	case "project-domain-unverified":
+		fallthrough
+	case "project-domain-verified":
+		fallthrough
+	case "project-elastic-concurrency-updated":
+		fallthrough
+	case "project-auto-assign-custom-production-domains-updated":
+		fallthrough
+	case "project-preview-environment-branch-tracking-updated":
+		fallthrough
+	case "project-custom-environment-updated":
+		fallthrough
+	case "project-custom-environment-created":
+		fallthrough
+	case "project-custom-environment-deleted":
+		fallthrough
+	case "project-functions-fluid-disabled":
+		fallthrough
+	case "project-functions-fluid-enabled":
+		fallthrough
+	case "project-function-max-duration":
+		fallthrough
+	case "project-function-cpu-memory":
+		fallthrough
+	case "project-function-regions":
+		fallthrough
+	case "project-function-failover":
+		fallthrough
+	case "project-preview-deployment-suffix":
+		fallthrough
+	case "project-name":
 		fallthrough
 	case "project-git-repository-connected":
 		fallthrough
@@ -1123,93 +935,69 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "project-git-lfs-toggled":
 		fallthrough
-	case "project-sso-protection":
+	case "project-ignored-build-step-updated":
 		fallthrough
-	case "project-password-protection":
+	case "project-add-alias":
 		fallthrough
-	case "project-trusted-ips":
+	case "project-add-redirect":
 		fallthrough
-	case "project-options-allowlist":
+	case "project-domain-deleted":
 		fallthrough
-	case "project-automation-bypass":
+	case "project-domain-moved":
 		fallthrough
-	case "project-domain-unverified":
+	case "project-domain-updated":
 		fallthrough
-	case "project-domain-verified":
+	case "project-member-removed-batch":
 		fallthrough
-	case "project-connect-configurations":
+	case "project-alias-configured-change":
 		fallthrough
-	case "project-paused":
+	case "project-member-added":
 		fallthrough
-	case "vercel-toolbar":
+	case "project-member-invited":
 		fallthrough
-	case "project-preview-deployment-suffix":
+	case "project-member-removed":
 		fallthrough
-	case "project-unpaused":
+	case "project-member-updated":
+		fallthrough
+	case "project-move-in-success":
+		fallthrough
+	case "project-move-out-failed":
+		fallthrough
+	case "project-move-out-started":
+		fallthrough
+	case "project-move-out-success":
 		fallthrough
 	case "project-oidc-token-created":
 		fallthrough
+	case "project-options-allowlist":
+		fallthrough
+	case "project-password-protection":
+		fallthrough
+	case "project-paused":
+		fallthrough
+	case "project-rolling-release-enabled":
+		fallthrough
+	case "project-rolling-release-disabled":
+		fallthrough
+	case "project-rolling-release-configured":
+		fallthrough
+	case "project-rolling-release-started":
+		fallthrough
+	case "project-rolling-release-completed":
+		fallthrough
+	case "project-rolling-release-aborted":
+		fallthrough
+	case "project-rolling-release-approved":
+		fallthrough
+	case "project-rolling-release-timer":
+		fallthrough
+	case "project-routes-version-promoted":
+		fallthrough
+	case "project-routes-version-restored":
+		fallthrough
 	case "project-oidc-issuer-mode-updated":
 		fallthrough
-	case "project-static-ips-updated":
-		fallthrough
-	case "project-affected-projects-deployments-updated":
-		fallthrough
-	case "project-auto-assign-custom-production-domains-updated":
-		fallthrough
-	case "project-build-command-updated":
-		fallthrough
-	case "project-preview-environment-branch-tracking-updated":
-		fallthrough
-	case "project-custom-environment-updated":
-		fallthrough
-	case "project-custom-environment-created":
-		fallthrough
-	case "project-custom-environment-deleted":
-		fallthrough
-	case "project-framework-updated":
-		fallthrough
-	case "project-install-command-updated":
-		fallthrough
-	case "project-node-version-updated":
-		fallthrough
-	case "project-name":
-		fallthrough
-	case "project-output-directory-updated":
-		fallthrough
-	case "project-prioritize-production-builds-updated":
-		fallthrough
-	case "project-root-directory-updated":
-		fallthrough
-	case "project-source-files-outside-root-directory-updated":
-		fallthrough
-	case "project-build-machine-updated":
-		fallthrough
-	case "project-elastic-concurrency-updated":
-		fallthrough
-	case "project-functions-fluid-disabled":
-		fallthrough
-	case "project-functions-fluid-enabled":
-		fallthrough
-	case "project-function-max-duration":
-		fallthrough
-	case "project-function-cpu-memory":
-		fallthrough
-	case "project-function-regions":
-		fallthrough
-	case "project-function-failover":
-		fallthrough
-	case "project-ignored-build-step-updated":
-		fallthrough
-	case "project-skew-protection-threshold-updated":
-		fallthrough
-	case "project-skew-protection-max-age-updated":
-		fallthrough
-	case "project-skew-protection-allowed-domains-updated":
-		fallthrough
 	case "project-customer-success-code-visibility-updated":
-		fallthrough
-	case "project-directory-listing":
 		fallthrough
 	case "project-git-fork-protection-updated":
 		fallthrough
@@ -1218,6 +1006,218 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 	case "project-build-logs-and-source-protection-updated":
 		fallthrough
 	case "project-deployment-retention-updated":
+		fallthrough
+	case "project-skew-protection-threshold-updated":
+		fallthrough
+	case "project-skew-protection-max-age-updated":
+		fallthrough
+	case "project-skew-protection-allowed-domains-updated":
+		fallthrough
+	case "project-sso-protection":
+		fallthrough
+	case "project-static-ips-updated":
+		fallthrough
+	case "project-trusted-ips":
+		fallthrough
+	case "project-unpaused":
+		fallthrough
+	case "project-web-analytics-disabled":
+		fallthrough
+	case "project-web-analytics-enabled":
+		fallthrough
+	case "protected-git-scope-added":
+		fallthrough
+	case "protected-git-scope-removed":
+		fallthrough
+	case "runtime-cache-purge-all":
+		fallthrough
+	case "scale":
+		fallthrough
+	case "scale-auto":
+		fallthrough
+	case "secondary-email-added":
+		fallthrough
+	case "secondary-email-removed":
+		fallthrough
+	case "secondary-email-verified":
+		fallthrough
+	case "secret-add":
+		fallthrough
+	case "secret-delete":
+		fallthrough
+	case "secret-rename":
+		fallthrough
+	case "security-plus-updated":
+		fallthrough
+	case "set-bio":
+		fallthrough
+	case "set-name":
+		fallthrough
+	case "set-profiles":
+		fallthrough
+	case "set-scale":
+		fallthrough
+	case "signup":
+		fallthrough
+	case "signup-via-bitbucket":
+		fallthrough
+	case "signup-via-github":
+		fallthrough
+	case "signup-via-gitlab":
+		fallthrough
+	case "speed-insights-settings-updated":
+		fallthrough
+	case "spend-created":
+		fallthrough
+	case "spend-deleted":
+		fallthrough
+	case "spend-updated":
+		fallthrough
+	case "storage-accept-tos":
+		fallthrough
+	case "storage-create":
+		fallthrough
+	case "storage-reset-credentials":
+		fallthrough
+	case "storage-update":
+		fallthrough
+	case "storage-connect-project":
+		fallthrough
+	case "storage-disconnect-project":
+		fallthrough
+	case "storage-update-project-connection":
+		fallthrough
+	case "storage-delete":
+		fallthrough
+	case "storage-accessed-data-browser":
+		fallthrough
+	case "storage-view-secret":
+		fallthrough
+	case "storage-inactive-store-deleted":
+		fallthrough
+	case "storage-resource-repl-command":
+		fallthrough
+	case "storage-disconnect-projects":
+		fallthrough
+	case "storage-access-token-set":
+		fallthrough
+	case "ai-code-review":
+		fallthrough
+	case "ai-alert-investigation":
+		fallthrough
+	case "vercel-agent-team-trial-credits-applied":
+		fallthrough
+	case "team-avatar-update":
+		fallthrough
+	case "team-delete":
+		fallthrough
+	case "strict-deployment-protection-settings":
+		fallthrough
+	case "vercel-toolbar":
+		fallthrough
+	case "team-email-domain-update":
+		fallthrough
+	case "team-invite-bulk-delete":
+		fallthrough
+	case "team-member-add":
+		fallthrough
+	case "team-member-confirm-request":
+		fallthrough
+	case "team-member-decline-request":
+		fallthrough
+	case "team-member-delete":
+		fallthrough
+	case "team-member-entitlement-added":
+		fallthrough
+	case "team-member-entitlement-canceled":
+		fallthrough
+	case "team-member-entitlement-reactivated":
+		fallthrough
+	case "team-member-entitlement-removed":
+		fallthrough
+	case "team-member-join":
+		fallthrough
+	case "team-member-leave":
+		fallthrough
+	case "team-member-request-access":
+		fallthrough
+	case "team-member-role-update":
+		fallthrough
+	case "team-mfa-enforcement-updated":
+		fallthrough
+	case "concurrent-builds-update":
+		fallthrough
+	case "team-ended-trial":
+		fallthrough
+	case "team-paid-invoice":
+		fallthrough
+	case "team-invite-code-reset":
+		fallthrough
+	case "team-name-update":
+		fallthrough
+	case "team-remote-caching-update":
+		fallthrough
+	case "enforce-sensitive-environment-variables":
+		fallthrough
+	case "show-ip-addresses":
+		fallthrough
+	case "team-saml-enforced":
+		fallthrough
+	case "team-saml-roles":
+		fallthrough
+	case "team-ip-blocking-rules-created":
+		fallthrough
+	case "team-ip-blocking-rules-removed":
+		fallthrough
+	case "audit-log-export-requested":
+		fallthrough
+	case "audit-log-export-downloaded":
+		fallthrough
+	case "team-slug-update":
+		fallthrough
+	case "unlink-login-connection":
+		fallthrough
+	case "user-mfa-removed":
+		fallthrough
+	case "user-delete":
+		fallthrough
+	case "user-mfa-challenge-verified":
+		fallthrough
+	case "user-mfa-configuration-updated":
+		fallthrough
+	case "user-mfa-recovery-codes-regenerated":
+		fallthrough
+	case "user-mfa-totp-verification-started":
+		fallthrough
+	case "user-mfa-totp-verified":
+		fallthrough
+	case "user-primary-email-updated":
+		fallthrough
+	case "username":
+		fallthrough
+	case "alert-rule-created":
+		fallthrough
+	case "alert-rule-updated":
+		fallthrough
+	case "alert-rule-deleted":
+		fallthrough
+	case "vpc-peering-connection-accepted":
+		fallthrough
+	case "vpc-peering-connection-deleted":
+		fallthrough
+	case "vpc-peering-connection-rejected":
+		fallthrough
+	case "vpc-peering-connection-updated":
+		fallthrough
+	case "web-analytics-tier-updated":
+		fallthrough
+	case "webhook-created":
+		fallthrough
+	case "webhook-deleted":
+		fallthrough
+	case "webhook-updated":
+		fallthrough
+	case "workflow-deployment-key-accessed":
 		*e = Name(v)
 		return nil
 	default:

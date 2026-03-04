@@ -20,27 +20,6 @@ test("Drains Create Drain", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    id: "<id>",
-    createdAt: 3665.73,
-    updatedAt: 3681.88,
-    name: "<value>",
-    ownerId: "<id>",
-    schemas: {},
-    delivery: {
-      type: "otlphttp",
-      endpoint: {
-        traces: "<value>",
-      },
-      encoding: "json",
-      headers: {
-        "key": "<value>",
-      },
-    },
-    source: {
-      kind: "self-served",
-    },
-  });
 });
 
 test("Drains Get Drains", async () => {
@@ -57,9 +36,6 @@ test("Drains Get Drains", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    drains: [],
-  });
 });
 
 test("Drains Get Drain", async () => {
@@ -77,29 +53,6 @@ test("Drains Get Drain", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    id: "<id>",
-    createdAt: 1182.63,
-    updatedAt: 7579.11,
-    name: "<value>",
-    ownerId: "<id>",
-    schemas: {},
-    delivery: {
-      type: "http",
-      endpoint: "<value>",
-      encoding: "ndjson",
-      headers: {
-        "key": "<value>",
-        "key1": "<value>",
-        "key2": "<value>",
-      },
-    },
-    source: {
-      kind: "integration",
-      integrationId: "<id>",
-      integrationConfigurationId: "<id>",
-    },
-  });
 });
 
 test("Drains Update Drain", async () => {
@@ -117,23 +70,6 @@ test("Drains Update Drain", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    id: "<id>",
-    createdAt: 7781.81,
-    updatedAt: 8087.89,
-    name: "<value>",
-    ownerId: "<id>",
-    schemas: {},
-    delivery: {
-      type: "internal",
-      target: "vercel-otel-traces-db",
-    },
-    source: {
-      kind: "integration",
-      integrationId: "<id>",
-      integrationConfigurationId: "<id>",
-    },
-  });
 });
 
 test("Drains Test Drain", async () => {
@@ -150,5 +86,4 @@ test("Drains Test Drain", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
 });

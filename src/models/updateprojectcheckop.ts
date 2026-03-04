@@ -36,7 +36,6 @@ export type UpdateProjectCheckRequestBody = {
   targets?: Array<string> | undefined;
   blocks?: UpdateProjectCheckBlocks | undefined;
   timeout?: number | undefined;
-  disabledAt?: number | null | undefined;
 };
 
 export type UpdateProjectCheckRequest = {
@@ -62,8 +61,17 @@ export type UpdateProjectCheckChecksV2Requires = ClosedEnum<
   typeof UpdateProjectCheckChecksV2Requires
 >;
 
+export const UpdateProjectCheckSourceJobName = {
+  Lint: "lint",
+  Typecheck: "typecheck",
+} as const;
+export type UpdateProjectCheckSourceJobName = ClosedEnum<
+  typeof UpdateProjectCheckSourceJobName
+>;
+
 export type UpdateProjectCheckSource4 = {
   kind: "vercel";
+  jobName?: UpdateProjectCheckSourceJobName | undefined;
 };
 
 export const UpdateProjectCheckSourceProvider = {
@@ -140,7 +148,6 @@ export type UpdateProjectCheckResponseBody = {
   timeout: number;
   createdAt: number;
   updatedAt: number;
-  disabledAt?: number | undefined;
   deletedAt?: number | undefined;
 };
 
@@ -174,7 +181,6 @@ export const UpdateProjectCheckRequestBody$inboundSchema: z.ZodType<
   targets: types.optional(z.array(types.string())),
   blocks: UpdateProjectCheckBlocks$inboundSchema.default("deployment-alias"),
   timeout: types.number().default(300),
-  disabledAt: z.nullable(types.number()).optional(),
 });
 /** @internal */
 export type UpdateProjectCheckRequestBody$Outbound = {
@@ -184,7 +190,6 @@ export type UpdateProjectCheckRequestBody$Outbound = {
   targets?: Array<string> | undefined;
   blocks: string;
   timeout: number;
-  disabledAt?: number | null | undefined;
 };
 
 /** @internal */
@@ -199,7 +204,6 @@ export const UpdateProjectCheckRequestBody$outboundSchema: z.ZodType<
   targets: z.array(z.string()).optional(),
   blocks: UpdateProjectCheckBlocks$outboundSchema.default("deployment-alias"),
   timeout: z.number().default(300),
-  disabledAt: z.nullable(z.number()).optional(),
 });
 
 export function updateProjectCheckRequestBodyToJSON(
@@ -293,16 +297,27 @@ export const UpdateProjectCheckChecksV2Requires$outboundSchema: z.ZodNativeEnum<
 > = UpdateProjectCheckChecksV2Requires$inboundSchema;
 
 /** @internal */
+export const UpdateProjectCheckSourceJobName$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectCheckSourceJobName
+> = z.nativeEnum(UpdateProjectCheckSourceJobName);
+/** @internal */
+export const UpdateProjectCheckSourceJobName$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectCheckSourceJobName
+> = UpdateProjectCheckSourceJobName$inboundSchema;
+
+/** @internal */
 export const UpdateProjectCheckSource4$inboundSchema: z.ZodType<
   UpdateProjectCheckSource4,
   z.ZodTypeDef,
   unknown
 > = z.object({
   kind: types.literal("vercel"),
+  jobName: types.optional(UpdateProjectCheckSourceJobName$inboundSchema),
 });
 /** @internal */
 export type UpdateProjectCheckSource4$Outbound = {
   kind: "vercel";
+  jobName?: string | undefined;
 };
 
 /** @internal */
@@ -312,6 +327,7 @@ export const UpdateProjectCheckSource4$outboundSchema: z.ZodType<
   UpdateProjectCheckSource4
 > = z.object({
   kind: z.literal("vercel"),
+  jobName: UpdateProjectCheckSourceJobName$outboundSchema.optional(),
 });
 
 export function updateProjectCheckSource4ToJSON(
@@ -568,7 +584,6 @@ export const UpdateProjectCheckResponseBody$inboundSchema: z.ZodType<
   timeout: types.number(),
   createdAt: types.number(),
   updatedAt: types.number(),
-  disabledAt: types.optional(types.number()),
   deletedAt: types.optional(types.number()),
 });
 /** @internal */
@@ -591,7 +606,6 @@ export type UpdateProjectCheckResponseBody$Outbound = {
   timeout: number;
   createdAt: number;
   updatedAt: number;
-  disabledAt?: number | undefined;
   deletedAt?: number | undefined;
 };
 
@@ -620,7 +634,6 @@ export const UpdateProjectCheckResponseBody$outboundSchema: z.ZodType<
   timeout: z.number(),
   createdAt: z.number(),
   updatedAt: z.number(),
-  disabledAt: z.number().optional(),
   deletedAt: z.number().optional(),
 });
 

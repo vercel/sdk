@@ -8,23 +8,21 @@ The payload of the event, if requested.
 import { Seventy } from "@vercel/sdk/models/userevent.js";
 
 let value: Seventy = {
-  previousServiceType: "<value>",
-  serviceType: "<value>",
-  id: "<id>",
-  name: "<value>",
-  nameservers: [
-    "<value 1>",
-    "<value 2>",
-  ],
+  integrationId: "<id>",
+  configurationId: "<id>",
+  integrationSlug: "<value>",
+  integrationName: "<value>",
+  ownerId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                 | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `previousServiceType` | *string*              | :heavy_check_mark:    | N/A                   |
-| `serviceType`         | *string*              | :heavy_check_mark:    | N/A                   |
-| `id`                  | *string*              | :heavy_check_mark:    | N/A                   |
-| `name`                | *string*              | :heavy_check_mark:    | N/A                   |
-| `nameservers`         | *string*[]            | :heavy_check_mark:    | N/A                   |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
+| `configurationId`  | *string*           | :heavy_check_mark: | N/A                |
+| `integrationSlug`  | *string*           | :heavy_check_mark: | N/A                |
+| `integrationName`  | *string*           | :heavy_check_mark: | N/A                |
+| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
+| `projectIds`       | *string*[]         | :heavy_minus_sign: | N/A                |

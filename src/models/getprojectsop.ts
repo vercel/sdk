@@ -1709,12 +1709,28 @@ export type GetProjectsResponseBodyOidcTokenConfig = {
 
 export const GetProjectsResponseBodyProjectsTier = {
   Standard: "standard",
+  Base: "base",
   Advanced: "advanced",
   Critical: "critical",
 } as const;
 export type GetProjectsResponseBodyProjectsTier = ClosedEnum<
   typeof GetProjectsResponseBodyProjectsTier
 >;
+
+export const GetProjectsResponseBodyProjectsResponseTier = {
+  Standard: "standard",
+  Base: "base",
+  Advanced: "advanced",
+  Critical: "critical",
+} as const;
+export type GetProjectsResponseBodyProjectsResponseTier = ClosedEnum<
+  typeof GetProjectsResponseBodyProjectsResponseTier
+>;
+
+export type ResponseBodyScheduledTierChange = {
+  tier: GetProjectsResponseBodyProjectsResponseTier;
+  effectiveAt: number;
+};
 
 /**
  * Billing mode. Always 'flat' for flat-rate projects.
@@ -2174,6 +2190,7 @@ export type GetProjectsResponseBodyProjects = {
   security?: GetProjectsResponseBodyProjectsSecurity | undefined;
   oidcTokenConfig?: GetProjectsResponseBodyOidcTokenConfig | undefined;
   tier?: GetProjectsResponseBodyProjectsTier | undefined;
+  scheduledTierChange?: ResponseBodyScheduledTierChange | undefined;
   usageStatus?: ResponseBodyUsageStatus | undefined;
   features?: ResponseBodyFeatures | undefined;
   v0?: boolean | undefined;
@@ -3342,6 +3359,7 @@ export type GetProjectsResponseBodyProjectsOidcTokenConfig = {
 
 export const GetProjectsResponseBodyTier = {
   Standard: "standard",
+  Base: "base",
   Advanced: "advanced",
   Critical: "critical",
 } as const;
@@ -4807,6 +4825,7 @@ export type ResponseBodyOidcTokenConfig = {
 
 export const ResponseBodyTier = {
   Standard: "standard",
+  Base: "base",
   Advanced: "advanced",
   Critical: "critical",
 } as const;
@@ -11407,6 +11426,59 @@ export const GetProjectsResponseBodyProjectsTier$outboundSchema:
     GetProjectsResponseBodyProjectsTier$inboundSchema;
 
 /** @internal */
+export const GetProjectsResponseBodyProjectsResponseTier$inboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsResponseBodyProjectsResponseTier> = z
+    .nativeEnum(GetProjectsResponseBodyProjectsResponseTier);
+/** @internal */
+export const GetProjectsResponseBodyProjectsResponseTier$outboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsResponseBodyProjectsResponseTier> =
+    GetProjectsResponseBodyProjectsResponseTier$inboundSchema;
+
+/** @internal */
+export const ResponseBodyScheduledTierChange$inboundSchema: z.ZodType<
+  ResponseBodyScheduledTierChange,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  tier: GetProjectsResponseBodyProjectsResponseTier$inboundSchema,
+  effectiveAt: types.number(),
+});
+/** @internal */
+export type ResponseBodyScheduledTierChange$Outbound = {
+  tier: string;
+  effectiveAt: number;
+};
+
+/** @internal */
+export const ResponseBodyScheduledTierChange$outboundSchema: z.ZodType<
+  ResponseBodyScheduledTierChange$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyScheduledTierChange
+> = z.object({
+  tier: GetProjectsResponseBodyProjectsResponseTier$outboundSchema,
+  effectiveAt: z.number(),
+});
+
+export function responseBodyScheduledTierChangeToJSON(
+  responseBodyScheduledTierChange: ResponseBodyScheduledTierChange,
+): string {
+  return JSON.stringify(
+    ResponseBodyScheduledTierChange$outboundSchema.parse(
+      responseBodyScheduledTierChange,
+    ),
+  );
+}
+export function responseBodyScheduledTierChangeFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyScheduledTierChange, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyScheduledTierChange$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyScheduledTierChange' from JSON`,
+  );
+}
+
+/** @internal */
 export const ResponseBodyKind$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyKind
 > = z.nativeEnum(ResponseBodyKind);
@@ -13989,6 +14061,9 @@ export const GetProjectsResponseBodyProjects$inboundSchema: z.ZodType<
     z.lazy(() => GetProjectsResponseBodyOidcTokenConfig$inboundSchema),
   ),
   tier: types.optional(GetProjectsResponseBodyProjectsTier$inboundSchema),
+  scheduledTierChange: types.optional(
+    z.lazy(() => ResponseBodyScheduledTierChange$inboundSchema),
+  ),
   usageStatus: types.optional(
     z.lazy(() => ResponseBodyUsageStatus$inboundSchema),
   ),
@@ -14133,6 +14208,7 @@ export type GetProjectsResponseBodyProjects$Outbound = {
   security?: GetProjectsResponseBodyProjectsSecurity$Outbound | undefined;
   oidcTokenConfig?: GetProjectsResponseBodyOidcTokenConfig$Outbound | undefined;
   tier?: string | undefined;
+  scheduledTierChange?: ResponseBodyScheduledTierChange$Outbound | undefined;
   usageStatus?: ResponseBodyUsageStatus$Outbound | undefined;
   features?: ResponseBodyFeatures$Outbound | undefined;
   v0?: boolean | undefined;
@@ -14299,6 +14375,9 @@ export const GetProjectsResponseBodyProjects$outboundSchema: z.ZodType<
     GetProjectsResponseBodyOidcTokenConfig$outboundSchema
   ).optional(),
   tier: GetProjectsResponseBodyProjectsTier$outboundSchema.optional(),
+  scheduledTierChange: z.lazy(() =>
+    ResponseBodyScheduledTierChange$outboundSchema
+  ).optional(),
   usageStatus: z.lazy(() => ResponseBodyUsageStatus$outboundSchema).optional(),
   features: z.lazy(() => ResponseBodyFeatures$outboundSchema).optional(),
   v0: z.boolean().optional(),

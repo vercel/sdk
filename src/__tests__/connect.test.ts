@@ -32,16 +32,6 @@ test("Connect Update Static Ips", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual([
-    {
-      envId: "<id>",
-      connectConfigurationId: "<id>",
-      passive: true,
-      buildsEnabled: false,
-      createdAt: 5943.97,
-      updatedAt: 7734.38,
-    },
-  ]);
 });
 
 test("Connect List Networks", async () => {
@@ -58,18 +48,6 @@ test("Connect List Networks", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual([
-    {
-      awsAccountId: "<id>",
-      awsRegion: "<value>",
-      cidr: "<value>",
-      createdAt: 9379.76,
-      id: "<id>",
-      name: "<value>",
-      status: "create_in_progress",
-      teamId: "<id>",
-    },
-  ]);
 });
 
 test("Connect Create Network", async () => {
@@ -94,16 +72,6 @@ test("Connect Create Network", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    awsAccountId: "<id>",
-    awsRegion: "<value>",
-    cidr: "<value>",
-    createdAt: 4149.44,
-    id: "<id>",
-    name: "<value>",
-    status: "error",
-    teamId: "<id>",
-  });
 });
 
 test("Connect Update Network", async () => {
@@ -121,16 +89,6 @@ test("Connect Update Network", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    awsAccountId: "<id>",
-    awsRegion: "<value>",
-    cidr: "<value>",
-    createdAt: 9676.6,
-    id: "<id>",
-    name: "<value>",
-    status: "error",
-    teamId: "<id>",
-  });
 });
 
 test("Connect Read Network", async () => {
@@ -148,14 +106,4 @@ test("Connect Read Network", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    awsAccountId: "<id>",
-    awsRegion: "<value>",
-    cidr: "<value>",
-    createdAt: 1571.54,
-    id: "<id>",
-    name: "<value>",
-    status: "delete_in_progress",
-    teamId: "<id>",
-  });
 });

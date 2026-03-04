@@ -8,8 +8,7 @@ The payload of the event, if requested.
 import { TwoHundredAndFortyTwo } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndFortyTwo = {
-  id: "<id>",
-  url: "https://troubled-honesty.info/",
+  enforced: true,
 };
 ```
 
@@ -17,5 +16,4 @@ let value: TwoHundredAndFortyTwo = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
-| `url`              | *string*           | :heavy_check_mark: | N/A                |
+| `enforced`         | *boolean*          | :heavy_check_mark: | N/A                |

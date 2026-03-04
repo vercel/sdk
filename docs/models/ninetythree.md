@@ -8,7 +8,8 @@ The payload of the event, if requested.
 import { NinetyThree } from "@vercel/sdk/models/userevent.js";
 
 let value: NinetyThree = {
-  logDrainUrl: "https://monumental-soup.com",
+  edgeConfigId: "<id>",
+  edgeConfigSlug: "<value>",
 };
 ```
 
@@ -16,5 +17,6 @@ let value: NinetyThree = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `logDrainUrl`      | *string*           | :heavy_check_mark: | N/A                |
-| `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |
+| `edgeConfigId`     | *string*           | :heavy_check_mark: | N/A                |
+| `edgeConfigSlug`   | *string*           | :heavy_check_mark: | N/A                |
+| `edgeConfigDigest` | *string*           | :heavy_minus_sign: | N/A                |

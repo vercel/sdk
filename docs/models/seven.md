@@ -12,6 +12,9 @@ let value: Seven = {
     id: "<id>",
     name: "<value>",
   },
+  project: {
+    id: "<id>",
+  },
 };
 ```
 
@@ -20,11 +23,6 @@ let value: Seven = {
 | Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
 | `accessGroup`                                                                  | [models.UserEventPayloadAccessGroup](../models/usereventpayloadaccessgroup.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `name`                                                                         | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `previousName`                                                                 | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `teamRoles`                                                                    | *string*[]                                                                     | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `previousTeamRoles`                                                            | *string*[]                                                                     | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `teamPermissions`                                                              | *string*[]                                                                     | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `previousTeamPermissions`                                                      | *string*[]                                                                     | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `entitlementsAdded`                                                            | *string*[]                                                                     | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `entitlementsRemoved`                                                          | *string*[]                                                                     | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `project`                                                                      | [models.Project](../models/project.md)                                         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `nextRole`                                                                     | [models.NextRole](../models/nextrole.md)                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `previousRole`                                                                 | [models.PreviousRole](../models/previousrole.md)                               | :heavy_minus_sign:                                                             | N/A                                                                            |

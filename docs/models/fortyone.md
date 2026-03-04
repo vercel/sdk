@@ -8,24 +8,17 @@ The payload of the event, if requested.
 import { FortyOne } from "@vercel/sdk/models/userevent.js";
 
 let value: FortyOne = {
-  team: {
+  project: {
     id: "<id>",
     name: "<value>",
   },
-  configuration: {
-    id: "<id>",
-  },
-  project: {
-    id: "<id>",
-  },
+  versionId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `team`                                                                     | [models.UserEventPayload41Team](../models/usereventpayload41team.md)       | :heavy_check_mark:                                                         | N/A                                                                        |
-| `configuration`                                                            | [models.PayloadConfiguration](../models/payloadconfiguration.md)           | :heavy_check_mark:                                                         | N/A                                                                        |
-| `project`                                                                  | [models.UserEventPayload41Project](../models/usereventpayload41project.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `buildsEnabled`                                                            | *boolean*                                                                  | :heavy_minus_sign:                                                         | N/A                                                                        |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `project`                                                              | [models.UserEventPayloadProject](../models/usereventpayloadproject.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `versionId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |

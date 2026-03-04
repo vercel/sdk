@@ -12,6 +12,7 @@ let value: Source4 = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `kind`             | *string*           | :heavy_check_mark: | N/A                |
+| Field                                  | Type                                   | Required                               | Description                            |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `kind`                                 | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `jobName`                              | [models.JobName](../models/jobname.md) | :heavy_minus_sign:                     | N/A                                    |

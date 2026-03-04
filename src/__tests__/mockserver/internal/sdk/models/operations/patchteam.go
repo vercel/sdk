@@ -680,13 +680,14 @@ func (u NsnbConfigUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type NsnbConfigUnion: all fields are null")
 }
 
-// Default build machine type for new builds: standard, enhanced, or turbo.
+// Default build machine type for new builds: standard, enhanced, turbo, or elastic.
 type Default string
 
 const (
-	DefaultStandard Default = "standard"
 	DefaultEnhanced Default = "enhanced"
 	DefaultTurbo    Default = "turbo"
+	DefaultStandard Default = "standard"
+	DefaultElastic  Default = "elastic"
 )
 
 func (e Default) ToPointer() *Default {
@@ -698,11 +699,13 @@ func (e *Default) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "standard":
-		fallthrough
 	case "enhanced":
 		fallthrough
 	case "turbo":
+		fallthrough
+	case "standard":
+		fallthrough
+	case "elastic":
 		*e = Default(v)
 		return nil
 	default:
@@ -712,7 +715,7 @@ func (e *Default) UnmarshalJSON(data []byte) error {
 
 // PatchTeamBuildMachine - Build machine configuration.
 type PatchTeamBuildMachine struct {
-	// Default build machine type for new builds: standard, enhanced, or turbo.
+	// Default build machine type for new builds: standard, enhanced, turbo, or elastic.
 	Default *Default `json:"default,omitempty"`
 }
 

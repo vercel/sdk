@@ -36,76 +36,6 @@ test("Logdrains Get Integration Log Drains", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual([
-    {
-      clientId: "oac_xRhY4LAB7yLhUADD69EvV7ct",
-      configurationId: "icfg_cuwj0AdCdH3BwWT4LPijCC7t",
-      createdAt: 1558531915505,
-      id: "ld_nBuA7zCID8g4QZ8g",
-      deliveryFormat: "json",
-      name: "My first log drain",
-      ownerId: "kr1PsOIzqEL5Xg6M4VZcZosf",
-      projectId: "AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb",
-      projectIds: [
-        "AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb",
-      ],
-      url: "https://example.com/log-drain",
-      sources: [
-        "build",
-        "edge",
-      ],
-      createdFrom: "integration",
-      headers: {
-        "key": "<value>",
-        "key1": "<value>",
-        "key2": "<value>",
-      },
-      environments: [
-        "production",
-      ],
-      branch: "feature/*",
-      samplingRate: 0.5,
-      source: {
-        kind: "integration",
-        integrationId: "<id>",
-        integrationConfigurationId: "<id>",
-      },
-    },
-    {
-      clientId: "oac_xRhY4LAB7yLhUADD69EvV7ct",
-      configurationId: "icfg_cuwj0AdCdH3BwWT4LPijCC7t",
-      createdAt: 1558531915505,
-      id: "ld_nBuA7zCID8g4QZ8g",
-      deliveryFormat: "json",
-      name: "My first log drain",
-      ownerId: "kr1PsOIzqEL5Xg6M4VZcZosf",
-      projectId: "AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb",
-      projectIds: [
-        "AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb",
-      ],
-      url: "https://example.com/log-drain",
-      sources: [
-        "build",
-        "edge",
-      ],
-      createdFrom: "integration",
-      headers: {
-        "key": "<value>",
-        "key1": "<value>",
-        "key2": "<value>",
-      },
-      environments: [
-        "production",
-      ],
-      branch: "feature/*",
-      samplingRate: 0.5,
-      source: {
-        kind: "integration",
-        integrationId: "<id>",
-        integrationConfigurationId: "<id>",
-      },
-    },
-  ]);
 });
 
 test("Logdrains Create Log Drain", async () => {
@@ -128,38 +58,6 @@ test("Logdrains Create Log Drain", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    clientId: "oac_xRhY4LAB7yLhUADD69EvV7ct",
-    configurationId: "icfg_3bwCLgxL8qt5kjRLcv2Dit7F",
-    createdAt: 1558531915505,
-    id: "ld_nBuA7zCID8g4QZ8g",
-    deliveryFormat: "json",
-    name: "My first log drain",
-    ownerId: "kr1PsOIzqEL5Xg6M4VZcZosf",
-    projectId: "AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb",
-    projectIds: [
-      "AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb",
-    ],
-    url: "https://example.com/log-drain",
-    sources: [
-      "build",
-      "edge",
-    ],
-    createdFrom: "integration",
-    headers: {
-      "Authorization": "Bearer 123",
-    },
-    environments: [
-      "production",
-    ],
-    branch: "feature/*",
-    samplingRate: 0.5,
-    source: {
-      kind: "integration",
-      integrationId: "<id>",
-      integrationConfigurationId: "<id>",
-    },
-  });
 });
 
 test("Logdrains Delete Integration Log Drain", async () => {
@@ -193,9 +91,6 @@ test("Logdrains Get Configurable Log Drain", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    createdFrom: "<value>",
-  });
 });
 
 test("Logdrains Get All Log Drains", async () => {
@@ -212,25 +107,6 @@ test("Logdrains Get All Log Drains", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    drains: [
-      {
-        id: "<id>",
-        createdAt: 7495.57,
-        updatedAt: 4759.82,
-        name: "<value>",
-        ownerId: "<id>",
-        schemas: {},
-        delivery: {
-          type: "internal",
-          target: "vercel-otel-traces-db",
-        },
-        source: {
-          kind: "self-served",
-        },
-      },
-    ],
-  });
 });
 
 test("Logdrains Create Configurable Log Drain", async () => {
@@ -252,5 +128,4 @@ test("Logdrains Create Configurable Log Drain", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
 });

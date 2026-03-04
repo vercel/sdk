@@ -80,36 +80,6 @@ test("Sandboxes List Commands", async () => {
   expect(result).toBeDefined();
 });
 
-test("Sandboxes Run Command", async () => {
-  const testHttpClient = createTestHTTPClient("runCommand");
-
-  const vercel = new Vercel({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  const result = await vercel.sandboxes.runCommand({
-    sandboxId: "sbx_abc123",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-    requestBody: {
-      command: "npm",
-      args: [
-        "install",
-        "--save",
-        "lodash",
-      ],
-      cwd: "/home/vercel-sandbox",
-      env: {
-        "DEBUG": "true",
-        "NODE_ENV": "production",
-      },
-    },
-  });
-  expect(result).toBeDefined();
-});
-
 test("Sandboxes Kill Command", async () => {
   const testHttpClient = createTestHTTPClient("killCommand");
 

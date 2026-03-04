@@ -2,7 +2,7 @@ name: Auto-merge Speakeasy PRs
 
 on:
   pull_request:
-    types: [opened]
+    types: [opened, reopened]
 
 jobs:
   auto-merge:

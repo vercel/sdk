@@ -28,9 +28,6 @@ test("User List User Events", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    events: [],
-  });
 });
 
 test("User Request Delete", async () => {
@@ -44,11 +41,6 @@ test("User Request Delete", async () => {
 
   const result = await vercel.user.requestDelete({});
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    id: "<id>",
-    email: "Gilda_Murphy@yahoo.com",
-    message: "Verification email sent",
-  });
 });
 
 test("User List Event Types", async () => {
@@ -65,17 +57,4 @@ test("User List Event Types", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    types: [
-      {
-        replacedBy: [
-          "<value 1>",
-          "<value 2>",
-        ],
-        deprecated: false,
-        name: "domain-transfer-in",
-        description: "woot baritone lasting ah foot when worth whether bleakly",
-      },
-    ],
-  });
 });

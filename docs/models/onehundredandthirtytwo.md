@@ -7,17 +7,12 @@ The payload of the event, if requested.
 ```typescript
 import { OneHundredAndThirtyTwo } from "@vercel/sdk/models/userevent.js";
 
-let value: OneHundredAndThirtyTwo = {
-  projectId: "<id>",
-  projectName: "<value>",
-  enableAffectedProjectsDeployments: true,
-};
+let value: OneHundredAndThirtyTwo = {};
 ```
 
 ## Fields
 
-| Field                               | Type                                | Required                            | Description                         |
-| ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| `projectId`                         | *string*                            | :heavy_check_mark:                  | N/A                                 |
-| `projectName`                       | *string*                            | :heavy_check_mark:                  | N/A                                 |
-| `enableAffectedProjectsDeployments` | *boolean*                           | :heavy_check_mark:                  | N/A                                 |
+| Field                             | Type                              | Required                          | Description                       |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `previewDeploymentSuffix`         | *string*                          | :heavy_minus_sign:                | N/A                               |
+| `previousPreviewDeploymentSuffix` | *string*                          | :heavy_minus_sign:                | N/A                               |

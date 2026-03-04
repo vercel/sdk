@@ -14,7 +14,7 @@ export const tool$sandboxesListCommands: ToolDefinition<typeof args> = {
   name: "sandboxes-list-commands",
   description: `List commands
 
-Retrieves a list of all commands that have been executed in a sandbox, including their current status, exit codes, and execution times.`,
+Retrieves a list of all commands that have been executed in a sandbox, including their current status, exit codes, and execution times, ordered from the most recent to the oldest.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await sandboxesListCommands(

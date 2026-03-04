@@ -40,8 +40,17 @@ export type ListProjectChecksRequires = ClosedEnum<
   typeof ListProjectChecksRequires
 >;
 
+export const ListProjectChecksSourceJobName = {
+  Lint: "lint",
+  Typecheck: "typecheck",
+} as const;
+export type ListProjectChecksSourceJobName = ClosedEnum<
+  typeof ListProjectChecksSourceJobName
+>;
+
 export type ListProjectChecksSource4 = {
   kind: "vercel";
+  jobName?: ListProjectChecksSourceJobName | undefined;
 };
 
 export const ListProjectChecksSourceProvider = {
@@ -118,7 +127,6 @@ export type Checks = {
   timeout: number;
   createdAt: number;
   updatedAt: number;
-  disabledAt?: number | undefined;
   deletedAt?: number | undefined;
 };
 
@@ -193,16 +201,27 @@ export const ListProjectChecksRequires$outboundSchema: z.ZodNativeEnum<
 > = ListProjectChecksRequires$inboundSchema;
 
 /** @internal */
+export const ListProjectChecksSourceJobName$inboundSchema: z.ZodNativeEnum<
+  typeof ListProjectChecksSourceJobName
+> = z.nativeEnum(ListProjectChecksSourceJobName);
+/** @internal */
+export const ListProjectChecksSourceJobName$outboundSchema: z.ZodNativeEnum<
+  typeof ListProjectChecksSourceJobName
+> = ListProjectChecksSourceJobName$inboundSchema;
+
+/** @internal */
 export const ListProjectChecksSource4$inboundSchema: z.ZodType<
   ListProjectChecksSource4,
   z.ZodTypeDef,
   unknown
 > = z.object({
   kind: types.literal("vercel"),
+  jobName: types.optional(ListProjectChecksSourceJobName$inboundSchema),
 });
 /** @internal */
 export type ListProjectChecksSource4$Outbound = {
   kind: "vercel";
+  jobName?: string | undefined;
 };
 
 /** @internal */
@@ -212,6 +231,7 @@ export const ListProjectChecksSource4$outboundSchema: z.ZodType<
   ListProjectChecksSource4
 > = z.object({
   kind: z.literal("vercel"),
+  jobName: ListProjectChecksSourceJobName$outboundSchema.optional(),
 });
 
 export function listProjectChecksSource4ToJSON(
@@ -465,7 +485,6 @@ export const Checks$inboundSchema: z.ZodType<Checks, z.ZodTypeDef, unknown> = z
     timeout: types.number(),
     createdAt: types.number(),
     updatedAt: types.number(),
-    disabledAt: types.optional(types.number()),
     deletedAt: types.optional(types.number()),
   });
 /** @internal */
@@ -488,7 +507,6 @@ export type Checks$Outbound = {
   timeout: number;
   createdAt: number;
   updatedAt: number;
-  disabledAt?: number | undefined;
   deletedAt?: number | undefined;
 };
 
@@ -517,7 +535,6 @@ export const Checks$outboundSchema: z.ZodType<
   timeout: z.number(),
   createdAt: z.number(),
   updatedAt: z.number(),
-  disabledAt: z.number().optional(),
   deletedAt: z.number().optional(),
 });
 

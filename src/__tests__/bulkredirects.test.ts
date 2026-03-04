@@ -20,15 +20,6 @@ test("Bulk Redirects Stage Redirects", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    alias: "<value>",
-    version: {
-      id: "<id>",
-      key: "<key>",
-      lastModified: 1324.19,
-      createdBy: "<value>",
-    },
-  });
 });
 
 test("Bulk Redirects Get Redirects", async () => {
@@ -46,11 +37,6 @@ test("Bulk Redirects Get Redirects", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    "key": "<value>",
-    "key1": "<value>",
-    "key2": "<value>",
-  });
 });
 
 test("Bulk Redirects Delete Redirects", async () => {
@@ -68,15 +54,6 @@ test("Bulk Redirects Delete Redirects", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    alias: "<value>",
-    version: {
-      id: "<id>",
-      key: "<key>",
-      lastModified: 7020.06,
-      createdBy: "<value>",
-    },
-  });
 });
 
 test("Bulk Redirects Edit Redirect", async () => {
@@ -94,15 +71,6 @@ test("Bulk Redirects Edit Redirect", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    alias: "<value>",
-    version: {
-      id: "<id>",
-      key: "<key>",
-      lastModified: 5280.13,
-      createdBy: "<value>",
-    },
-  });
 });
 
 test("Bulk Redirects Restore Redirects", async () => {
@@ -120,23 +88,6 @@ test("Bulk Redirects Restore Redirects", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    version: {
-      id: "<id>",
-      key: "<key>",
-      lastModified: 4904.99,
-      createdBy: "<value>",
-    },
-    restored: [
-      "<value 1>",
-      "<value 2>",
-      "<value 3>",
-    ],
-    failedToRestore: [
-      "<value 1>",
-      "<value 2>",
-    ],
-  });
 });
 
 test("Bulk Redirects Get Versions", async () => {
@@ -154,16 +105,6 @@ test("Bulk Redirects Get Versions", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    versions: [
-      {
-        id: "<id>",
-        key: "<key>",
-        lastModified: 209.01,
-        createdBy: "<value>",
-      },
-    ],
-  });
 });
 
 test("Bulk Redirects Update Version", async () => {
@@ -181,12 +122,4 @@ test("Bulk Redirects Update Version", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    version: {
-      id: "<id>",
-      key: "<key>",
-      lastModified: 7506.95,
-      createdBy: "<value>",
-    },
-  });
 });

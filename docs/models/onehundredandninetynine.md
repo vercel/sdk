@@ -8,18 +8,30 @@ The payload of the event, if requested.
 import { OneHundredAndNinetyNine } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndNinetyNine = {
-  invoiceId: "<id>",
-  amount: 50.97,
-  refundReason: "<value>",
-  lineItemCount: 2768.73,
+  projectId: "<id>",
+  projectName: "<value>",
+  next: {
+    project: {
+      staticIps: {
+        enabled: false,
+      },
+    },
+  },
+  previous: {
+    project: {
+      staticIps: {
+        enabled: false,
+      },
+    },
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `invoiceId`        | *string*           | :heavy_check_mark: | N/A                |
-| `amount`           | *number*           | :heavy_check_mark: | N/A                |
-| `refundReason`     | *string*           | :heavy_check_mark: | N/A                |
-| `lineItemCount`    | *number*           | :heavy_check_mark: | N/A                |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `next`                                                                         | [models.UserEventPayload199Next](../models/usereventpayload199next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload199Previous](../models/usereventpayload199previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |

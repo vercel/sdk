@@ -8,16 +8,14 @@ The payload of the event, if requested.
 import { OneHundredAndThirtyThree } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndThirtyThree = {
-  projectId: "<id>",
   projectName: "<value>",
-  autoAssignCustomDomains: false,
+  branch: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                     | Type                      | Required                  | Description               |
-| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
-| `projectId`               | *string*                  | :heavy_check_mark:        | N/A                       |
-| `projectName`             | *string*                  | :heavy_check_mark:        | N/A                       |
-| `autoAssignCustomDomains` | *boolean*                 | :heavy_check_mark:        | N/A                       |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `branch`           | *string*           | :heavy_check_mark: | N/A                |

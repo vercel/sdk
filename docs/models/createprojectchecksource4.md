@@ -12,6 +12,7 @@ let value: CreateProjectCheckSource4 = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `kind`             | *"vercel"*         | :heavy_check_mark: | N/A                |
+| Field                                              | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `kind`                                             | *"vercel"*                                         | :heavy_check_mark:                                 | N/A                                                |
+| `jobName`                                          | [models.SourceJobName](../models/sourcejobname.md) | :heavy_minus_sign:                                 | N/A                                                |

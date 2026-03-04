@@ -8,19 +8,17 @@ The payload of the event, if requested.
 import { TwentyNine } from "@vercel/sdk/models/userevent.js";
 
 let value: TwentyNine = {
-  id: "<id>",
-  cns: [
-    "<value 1>",
-    "<value 2>",
-  ],
-  custom: true,
+  projectId: "<id>",
+  attackModeEnabled: false,
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
-| `cns`              | *string*[]         | :heavy_check_mark: | N/A                |
-| `custom`           | *boolean*          | :heavy_check_mark: | N/A                |
+| Field                       | Type                        | Required                    | Description                 |
+| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
+| `projectId`                 | *string*                    | :heavy_check_mark:          | N/A                         |
+| `prevAttackModeEnabled`     | *boolean*                   | :heavy_minus_sign:          | N/A                         |
+| `prevAttackModeActiveUntil` | *number*                    | :heavy_minus_sign:          | N/A                         |
+| `attackModeEnabled`         | *boolean*                   | :heavy_check_mark:          | N/A                         |
+| `attackModeActiveUntil`     | *number*                    | :heavy_minus_sign:          | N/A                         |

@@ -9,6 +9,7 @@ import (
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/models/operations"
+	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
@@ -46,9 +47,11 @@ func testListUserEventsListUserEvents0(w http.ResponseWriter, req *http.Request)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody *operations.ListUserEventsResponseBody = &operations.ListUserEventsResponseBody{
-		Events: []components.UserEvent{},
-	}
+	var respBody *operations.ListUserEventsResponseBody = types.Pointer(operations.CreateListUserEventsResponseBodyListUserEventsResponseBody2(
+		operations.ListUserEventsResponseBody2{
+			Events: []components.UserEvent{},
+		},
+	))
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

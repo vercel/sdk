@@ -8,17 +8,22 @@ The payload of the event, if requested.
 import { Eighty } from "@vercel/sdk/models/userevent.js";
 
 let value: Eighty = {
-  projectId: "<id>",
-  scope: "<value>",
-  source: "<value>",
+  domain: "thrifty-reboot.biz",
+  customNameservers: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
+  prevCustomNameservers: [
+    "<value 1>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `scope`            | *string*           | :heavy_check_mark: | N/A                |
-| `source`           | *string*           | :heavy_check_mark: | N/A                |
-| `expiresAt`        | *number*           | :heavy_minus_sign: | N/A                |
+| Field                   | Type                    | Required                | Description             |
+| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
+| `domain`                | *string*                | :heavy_check_mark:      | N/A                     |
+| `customNameservers`     | *string*[]              | :heavy_check_mark:      | N/A                     |
+| `prevCustomNameservers` | *string*[]              | :heavy_check_mark:      | N/A                     |

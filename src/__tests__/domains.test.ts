@@ -45,27 +45,6 @@ test("Domains Get Domain Config", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    configuredBy: "CNAME",
-    acceptedChallenges: [
-      "dns-01",
-    ],
-    recommendedIPv4: [
-      {
-        rank: 9636.63,
-        value: [
-          "<value 1>",
-        ],
-      },
-    ],
-    recommendedCNAME: [
-      {
-        rank: 5288.95,
-        value: "<value>",
-      },
-    ],
-    misconfigured: false,
-  });
 });
 
 test("Domains Get Domain", async () => {
@@ -83,40 +62,6 @@ test("Domains Get Domain", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    domain: {
-      suffix: true,
-      verified: true,
-      nameservers: [
-        "ns1.nameserver.net",
-        "ns2.nameserver.net",
-      ],
-      intendedNameservers: [
-        "ns1.vercel-dns.com",
-        "ns2.vercel-dns.com",
-      ],
-      customNameservers: [
-        "ns1.nameserver.net",
-        "ns2.nameserver.net",
-      ],
-      creator: {
-        username: "vercel_user",
-        email: "demo@example.com",
-        id: "ZspSRT4ljIEEmMHgoDwKWDei",
-      },
-      name: "example.com",
-      teamId: "<id>",
-      boughtAt: 1613602938882,
-      createdAt: 1613602938882,
-      expiresAt: 1613602938882,
-      id: "EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1",
-      renew: true,
-      serviceType: "zeit.world",
-      transferredAt: 1613602938882,
-      transferStartedAt: 1613602938882,
-      userId: "<id>",
-    },
-  });
 });
 
 test("Domains Get Domains", async () => {
@@ -136,46 +81,6 @@ test("Domains Get Domains", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    domains: [
-      {
-        verified: true,
-        nameservers: [
-          "ns1.nameserver.net",
-          "ns2.nameserver.net",
-        ],
-        intendedNameservers: [
-          "ns1.vercel-dns.com",
-          "ns2.vercel-dns.com",
-        ],
-        customNameservers: [
-          "ns1.nameserver.net",
-          "ns2.nameserver.net",
-        ],
-        creator: {
-          username: "vercel_user",
-          email: "demo@example.com",
-          id: "ZspSRT4ljIEEmMHgoDwKWDei",
-        },
-        name: "example.com",
-        teamId: "<id>",
-        boughtAt: 1613602938882,
-        createdAt: 1613602938882,
-        expiresAt: 1613602938882,
-        id: "EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1",
-        renew: true,
-        serviceType: "zeit.world",
-        transferredAt: 1613602938882,
-        transferStartedAt: 1613602938882,
-        userId: "<id>",
-      },
-    ],
-    pagination: {
-      count: 20,
-      next: 1540095775951,
-      prev: 1540095775951,
-    },
-  });
 });
 
 test("Domains Delete Domain", async () => {
@@ -193,7 +98,4 @@ test("Domains Delete Domain", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    uid: "<id>",
-  });
 });

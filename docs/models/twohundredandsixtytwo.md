@@ -8,14 +8,14 @@ The payload of the event, if requested.
 import { TwoHundredAndSixtyTwo } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndSixtyTwo = {
-  projects: [],
-  uid: "<id>",
+  email: "Lula_Berge@gmail.com",
+  prevEmail: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                    | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `projects`                                               | [models.PayloadProjects](../models/payloadprojects.md)[] | :heavy_check_mark:                                       | N/A                                                      |
-| `uid`                                                    | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `email`            | *string*           | :heavy_check_mark: | N/A                |
+| `prevEmail`        | *string*           | :heavy_check_mark: | N/A                |

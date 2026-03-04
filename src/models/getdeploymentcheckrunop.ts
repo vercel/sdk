@@ -25,8 +25,17 @@ export type GetDeploymentCheckRunRequest = {
   slug?: string | undefined;
 };
 
+export const GetDeploymentCheckRunSourceJobName = {
+  Lint: "lint",
+  Typecheck: "typecheck",
+} as const;
+export type GetDeploymentCheckRunSourceJobName = ClosedEnum<
+  typeof GetDeploymentCheckRunSourceJobName
+>;
+
 export type GetDeploymentCheckRunSource4 = {
   kind: "vercel";
+  jobName?: GetDeploymentCheckRunSourceJobName | undefined;
 };
 
 export const GetDeploymentCheckRunSourceProvider = {
@@ -182,16 +191,27 @@ export function getDeploymentCheckRunRequestFromJSON(
 }
 
 /** @internal */
+export const GetDeploymentCheckRunSourceJobName$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentCheckRunSourceJobName
+> = z.nativeEnum(GetDeploymentCheckRunSourceJobName);
+/** @internal */
+export const GetDeploymentCheckRunSourceJobName$outboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentCheckRunSourceJobName
+> = GetDeploymentCheckRunSourceJobName$inboundSchema;
+
+/** @internal */
 export const GetDeploymentCheckRunSource4$inboundSchema: z.ZodType<
   GetDeploymentCheckRunSource4,
   z.ZodTypeDef,
   unknown
 > = z.object({
   kind: types.literal("vercel"),
+  jobName: types.optional(GetDeploymentCheckRunSourceJobName$inboundSchema),
 });
 /** @internal */
 export type GetDeploymentCheckRunSource4$Outbound = {
   kind: "vercel";
+  jobName?: string | undefined;
 };
 
 /** @internal */
@@ -201,6 +221,7 @@ export const GetDeploymentCheckRunSource4$outboundSchema: z.ZodType<
   GetDeploymentCheckRunSource4
 > = z.object({
   kind: z.literal("vercel"),
+  jobName: GetDeploymentCheckRunSourceJobName$outboundSchema.optional(),
 });
 
 export function getDeploymentCheckRunSource4ToJSON(

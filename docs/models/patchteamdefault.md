@@ -1,6 +1,6 @@
 # PatchTeamDefault
 
-Default build machine type for new builds: standard, enhanced, or turbo.
+Default build machine type for new builds: standard, enhanced, turbo, or elastic.
 
 ## Example Usage
 
@@ -13,5 +13,5 @@ let value: PatchTeamDefault = "standard";
 ## Values
 
 ```typescript
-"standard" | "enhanced" | "turbo"
+"enhanced" | "turbo" | "standard" | "elastic"
 ```

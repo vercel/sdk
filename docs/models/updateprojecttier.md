@@ -11,5 +11,5 @@ let value: UpdateProjectTier = "critical";
 ## Values
 
 ```typescript
-"standard" | "advanced" | "critical"
+"standard" | "base" | "advanced" | "critical"
 ```

@@ -7,11 +7,11 @@ Method used for the state change - 'totp': User set up TOTP authenticator - 'pas
 ```typescript
 import { PayloadMethod } from "@vercel/sdk/models/userevent.js";
 
-let value: PayloadMethod = "unknown";
+let value: PayloadMethod = "admin_removal";
 ```
 
 ## Values
 
 ```typescript
-"totp" | "passkey" | "user_disabled" | "admin_removal" | "unknown"
+"totp" | "passkey" | "unknown" | "user_disabled" | "admin_removal"
 ```

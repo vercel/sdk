@@ -4,8 +4,6 @@
 
 import { expect, test } from "vitest";
 import { Vercel } from "../index.js";
-import { RunCommandResponseBody } from "../models/runcommandop.js";
-import { filesToByteArray, streamToByteArray } from "./files.js";
 import { createTestHTTPClient } from "./testclient.js";
 
 test("Sandboxes List Sandboxes", async () => {
@@ -26,15 +24,6 @@ test("Sandboxes List Sandboxes", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    sandboxes: [],
-    pagination: {
-      total: 3903.28,
-      count: 20,
-      next: 1540095775951,
-      prev: 1540095775951,
-    },
-  });
 });
 
 test("Sandboxes List Snapshots", async () => {
@@ -55,26 +44,6 @@ test("Sandboxes List Snapshots", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    snapshots: [
-      {
-        id: "snap_123a6c5209bc3778245d011443644c8d27dc2c50",
-        sourceSandboxId: "sbx_123a6c5209bc3778245d011443644c8d27dc2c50",
-        region: "iad1",
-        status: "created",
-        sizeBytes: 104857600,
-        expiresAt: 1750344501629,
-        createdAt: 1750344501629,
-        updatedAt: 1750344501629,
-      },
-    ],
-    pagination: {
-      total: 9335.55,
-      count: 20,
-      next: 1540095775951,
-      prev: 1540095775951,
-    },
-  });
 });
 
 test("Sandboxes Get Sandbox", async () => {
@@ -92,51 +61,6 @@ test("Sandboxes Get Sandbox", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    sandbox: {
-      id: "sbx_123a6c5209bc3778245d011443644c8d27dc2c50",
-      memory: 2048,
-      vcpus: 2,
-      region: "iad1",
-      runtime: "node22",
-      timeout: 3600000,
-      status: "running",
-      requestedAt: 1750344501629,
-      startedAt: 1750344501629,
-      cwd: "/vercel/sandbox",
-      requestedStopAt: 1750344501629,
-      stoppedAt: 1750344501629,
-      abortedAt: 1750344501629,
-      duration: 3600000,
-      sourceSnapshotId: "snap_123a6c5209bc3778245d011443644c8d27dc2c50",
-      snapshottedAt: 1750344501629,
-      createdAt: 1750344501629,
-      updatedAt: 1750344501629,
-      networkPolicy: {
-        mode: "custom",
-        allowedDomains: [
-          "api.vercel.com",
-          "*.example.com",
-        ],
-        allowedCIDRs: [
-          "10.0.0.0/8",
-        ],
-        deniedCIDRs: [
-          "10.0.0.0/8",
-        ],
-        injectionRules: [
-          {
-            domain: "api.vercel.com",
-            headerNames: [
-              "Authorization",
-              "X-API-Key",
-            ],
-          },
-        ],
-      },
-    },
-    routes: [],
-  });
 });
 
 test("Sandboxes List Commands", async () => {
@@ -154,22 +78,6 @@ test("Sandboxes List Commands", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    commands: [
-      {
-        id: "cmd_123a6c5209bc3778245d011443644c8d27dc2c50",
-        name: "npm",
-        args: [
-          "run",
-          "build",
-        ],
-        cwd: "/vercel/sandbox",
-        sandboxId: "sbx_123a6c5209bc3778245d011443644c8d27dc2c50",
-        exitCode: 0,
-        startedAt: 1673123456789,
-      },
-    ],
-  });
 });
 
 test("Sandboxes Run Command", async () => {
@@ -200,20 +108,6 @@ test("Sandboxes Run Command", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result as RunCommandResponseBody).toEqual({
-    command: {
-      id: "cmd_123a6c5209bc3778245d011443644c8d27dc2c50",
-      name: "npm",
-      args: [
-        "run",
-        "build",
-      ],
-      cwd: "/vercel/sandbox",
-      sandboxId: "sbx_123a6c5209bc3778245d011443644c8d27dc2c50",
-      exitCode: 0,
-      startedAt: 1673123456789,
-    },
-  });
 });
 
 test("Sandboxes Kill Command", async () => {
@@ -235,20 +129,6 @@ test("Sandboxes Kill Command", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    command: {
-      id: "cmd_123a6c5209bc3778245d011443644c8d27dc2c50",
-      name: "npm",
-      args: [
-        "run",
-        "build",
-      ],
-      cwd: "/vercel/sandbox",
-      sandboxId: "sbx_123a6c5209bc3778245d011443644c8d27dc2c50",
-      exitCode: 0,
-      startedAt: 1673123456789,
-    },
-  });
 });
 
 test("Sandboxes Stop Sandbox", async () => {
@@ -266,50 +146,6 @@ test("Sandboxes Stop Sandbox", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    sandbox: {
-      id: "sbx_123a6c5209bc3778245d011443644c8d27dc2c50",
-      memory: 2048,
-      vcpus: 2,
-      region: "iad1",
-      runtime: "node22",
-      timeout: 3600000,
-      status: "running",
-      requestedAt: 1750344501629,
-      startedAt: 1750344501629,
-      cwd: "/vercel/sandbox",
-      requestedStopAt: 1750344501629,
-      stoppedAt: 1750344501629,
-      abortedAt: 1750344501629,
-      duration: 3600000,
-      sourceSnapshotId: "snap_123a6c5209bc3778245d011443644c8d27dc2c50",
-      snapshottedAt: 1750344501629,
-      createdAt: 1750344501629,
-      updatedAt: 1750344501629,
-      networkPolicy: {
-        mode: "custom",
-        allowedDomains: [
-          "api.vercel.com",
-          "*.example.com",
-        ],
-        allowedCIDRs: [
-          "10.0.0.0/8",
-        ],
-        deniedCIDRs: [
-          "10.0.0.0/8",
-        ],
-        injectionRules: [
-          {
-            domain: "api.vercel.com",
-            headerNames: [
-              "Authorization",
-              "X-API-Key",
-            ],
-          },
-        ],
-      },
-    },
-  });
 });
 
 test("Sandboxes Extend Sandbox Timeout", async () => {
@@ -330,50 +166,6 @@ test("Sandboxes Extend Sandbox Timeout", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    sandbox: {
-      id: "sbx_123a6c5209bc3778245d011443644c8d27dc2c50",
-      memory: 2048,
-      vcpus: 2,
-      region: "iad1",
-      runtime: "node22",
-      timeout: 3600000,
-      status: "running",
-      requestedAt: 1750344501629,
-      startedAt: 1750344501629,
-      cwd: "/vercel/sandbox",
-      requestedStopAt: 1750344501629,
-      stoppedAt: 1750344501629,
-      abortedAt: 1750344501629,
-      duration: 3600000,
-      sourceSnapshotId: "snap_123a6c5209bc3778245d011443644c8d27dc2c50",
-      snapshottedAt: 1750344501629,
-      createdAt: 1750344501629,
-      updatedAt: 1750344501629,
-      networkPolicy: {
-        mode: "custom",
-        allowedDomains: [
-          "api.vercel.com",
-          "*.example.com",
-        ],
-        allowedCIDRs: [
-          "10.0.0.0/8",
-        ],
-        deniedCIDRs: [
-          "10.0.0.0/8",
-        ],
-        injectionRules: [
-          {
-            domain: "api.vercel.com",
-            headerNames: [
-              "Authorization",
-              "X-API-Key",
-            ],
-          },
-        ],
-      },
-    },
-  });
 });
 
 test("Sandboxes Update Network Policy", async () => {
@@ -405,50 +197,6 @@ test("Sandboxes Update Network Policy", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    sandbox: {
-      id: "sbx_123a6c5209bc3778245d011443644c8d27dc2c50",
-      memory: 2048,
-      vcpus: 2,
-      region: "iad1",
-      runtime: "node22",
-      timeout: 3600000,
-      status: "running",
-      requestedAt: 1750344501629,
-      startedAt: 1750344501629,
-      cwd: "/vercel/sandbox",
-      requestedStopAt: 1750344501629,
-      stoppedAt: 1750344501629,
-      abortedAt: 1750344501629,
-      duration: 3600000,
-      sourceSnapshotId: "snap_123a6c5209bc3778245d011443644c8d27dc2c50",
-      snapshottedAt: 1750344501629,
-      createdAt: 1750344501629,
-      updatedAt: 1750344501629,
-      networkPolicy: {
-        mode: "custom",
-        allowedDomains: [
-          "api.vercel.com",
-          "*.example.com",
-        ],
-        allowedCIDRs: [
-          "10.0.0.0/8",
-        ],
-        deniedCIDRs: [
-          "10.0.0.0/8",
-        ],
-        injectionRules: [
-          {
-            domain: "api.vercel.com",
-            headerNames: [
-              "Authorization",
-              "X-API-Key",
-            ],
-          },
-        ],
-      },
-    },
-  });
 });
 
 test("Sandboxes Get Command", async () => {
@@ -467,20 +215,6 @@ test("Sandboxes Get Command", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    command: {
-      id: "cmd_123a6c5209bc3778245d011443644c8d27dc2c50",
-      name: "npm",
-      args: [
-        "run",
-        "build",
-      ],
-      cwd: "/vercel/sandbox",
-      sandboxId: "sbx_123a6c5209bc3778245d011443644c8d27dc2c50",
-      exitCode: 0,
-      startedAt: 1673123456789,
-    },
-  });
 });
 
 test("Sandboxes Read File", async () => {
@@ -502,9 +236,6 @@ test("Sandboxes Read File", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(new Uint8Array(await streamToByteArray(result))).toEqual(
-    await filesToByteArray(".speakeasy/testfiles/example.file"),
-  );
 });
 
 test("Sandboxes Create Directory", async () => {
@@ -526,7 +257,6 @@ test("Sandboxes Create Directory", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
 });
 
 test("Sandboxes Write Files", async () => {
@@ -545,7 +275,6 @@ test("Sandboxes Write Files", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
 });
 
 test("Sandboxes Get Snapshot", async () => {
@@ -563,18 +292,6 @@ test("Sandboxes Get Snapshot", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    snapshot: {
-      id: "snap_123a6c5209bc3778245d011443644c8d27dc2c50",
-      sourceSandboxId: "sbx_123a6c5209bc3778245d011443644c8d27dc2c50",
-      region: "iad1",
-      status: "created",
-      sizeBytes: 104857600,
-      expiresAt: 1750344501629,
-      createdAt: 1750344501629,
-      updatedAt: 1750344501629,
-    },
-  });
 });
 
 test("Sandboxes Delete Snapshot", async () => {
@@ -592,18 +309,6 @@ test("Sandboxes Delete Snapshot", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    snapshot: {
-      id: "snap_123a6c5209bc3778245d011443644c8d27dc2c50",
-      sourceSandboxId: "sbx_123a6c5209bc3778245d011443644c8d27dc2c50",
-      region: "iad1",
-      status: "created",
-      sizeBytes: 104857600,
-      expiresAt: 1750344501629,
-      createdAt: 1750344501629,
-      updatedAt: 1750344501629,
-    },
-  });
 });
 
 test("Sandboxes Create Snapshot", async () => {
@@ -621,58 +326,4 @@ test("Sandboxes Create Snapshot", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    snapshot: {
-      id: "snap_123a6c5209bc3778245d011443644c8d27dc2c50",
-      sourceSandboxId: "sbx_123a6c5209bc3778245d011443644c8d27dc2c50",
-      region: "iad1",
-      status: "created",
-      sizeBytes: 104857600,
-      expiresAt: 1750344501629,
-      createdAt: 1750344501629,
-      updatedAt: 1750344501629,
-    },
-    sandbox: {
-      id: "sbx_123a6c5209bc3778245d011443644c8d27dc2c50",
-      memory: 2048,
-      vcpus: 2,
-      region: "iad1",
-      runtime: "node22",
-      timeout: 3600000,
-      status: "running",
-      requestedAt: 1750344501629,
-      startedAt: 1750344501629,
-      cwd: "/vercel/sandbox",
-      requestedStopAt: 1750344501629,
-      stoppedAt: 1750344501629,
-      abortedAt: 1750344501629,
-      duration: 3600000,
-      sourceSnapshotId: "snap_123a6c5209bc3778245d011443644c8d27dc2c50",
-      snapshottedAt: 1750344501629,
-      createdAt: 1750344501629,
-      updatedAt: 1750344501629,
-      networkPolicy: {
-        mode: "custom",
-        allowedDomains: [
-          "api.vercel.com",
-          "*.example.com",
-        ],
-        allowedCIDRs: [
-          "10.0.0.0/8",
-        ],
-        deniedCIDRs: [
-          "10.0.0.0/8",
-        ],
-        injectionRules: [
-          {
-            domain: "api.vercel.com",
-            headerNames: [
-              "Authorization",
-              "X-API-Key",
-            ],
-          },
-        ],
-      },
-    },
-  });
 });

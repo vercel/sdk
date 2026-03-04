@@ -30,15 +30,6 @@ test("Dns Update Record", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    id: "<id>",
-    name: "<value>",
-    type: "record",
-    value: "<value>",
-    creator: "<value>",
-    domain: "raw-scorpion.net",
-    recordType: "AAAA",
-  });
 });
 
 test("Dns Remove Record", async () => {
@@ -57,5 +48,4 @@ test("Dns Remove Record", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
 });

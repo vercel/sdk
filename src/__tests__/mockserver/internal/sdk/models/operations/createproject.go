@@ -9378,6 +9378,7 @@ type CreateProjectTier string
 
 const (
 	CreateProjectTierStandard CreateProjectTier = "standard"
+	CreateProjectTierBase     CreateProjectTier = "base"
 	CreateProjectTierAdvanced CreateProjectTier = "advanced"
 	CreateProjectTierCritical CreateProjectTier = "critical"
 )
@@ -9393,6 +9394,8 @@ func (e *CreateProjectTier) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "standard":
 		fallthrough
+	case "base":
+		fallthrough
 	case "advanced":
 		fallthrough
 	case "critical":
@@ -9401,6 +9404,57 @@ func (e *CreateProjectTier) UnmarshalJSON(data []byte) error {
 	default:
 		return fmt.Errorf("invalid value for CreateProjectTier: %v", v)
 	}
+}
+
+type CreateProjectScheduledTierChangeTier string
+
+const (
+	CreateProjectScheduledTierChangeTierStandard CreateProjectScheduledTierChangeTier = "standard"
+	CreateProjectScheduledTierChangeTierBase     CreateProjectScheduledTierChangeTier = "base"
+	CreateProjectScheduledTierChangeTierAdvanced CreateProjectScheduledTierChangeTier = "advanced"
+	CreateProjectScheduledTierChangeTierCritical CreateProjectScheduledTierChangeTier = "critical"
+)
+
+func (e CreateProjectScheduledTierChangeTier) ToPointer() *CreateProjectScheduledTierChangeTier {
+	return &e
+}
+func (e *CreateProjectScheduledTierChangeTier) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "standard":
+		fallthrough
+	case "base":
+		fallthrough
+	case "advanced":
+		fallthrough
+	case "critical":
+		*e = CreateProjectScheduledTierChangeTier(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectScheduledTierChangeTier: %v", v)
+	}
+}
+
+type CreateProjectScheduledTierChange struct {
+	Tier        CreateProjectScheduledTierChangeTier `json:"tier"`
+	EffectiveAt float64                              `json:"effectiveAt"`
+}
+
+func (o *CreateProjectScheduledTierChange) GetTier() CreateProjectScheduledTierChangeTier {
+	if o == nil {
+		return CreateProjectScheduledTierChangeTier("")
+	}
+	return o.Tier
+}
+
+func (o *CreateProjectScheduledTierChange) GetEffectiveAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.EffectiveAt
 }
 
 // CreateProjectKind - Billing mode. Always 'flat' for flat-rate projects.
@@ -11996,6 +12050,7 @@ type CreateProjectResponseBody struct {
 	Security                             *CreateProjectSecurity                        `json:"security,omitempty"`
 	OidcTokenConfig                      *CreateProjectOidcTokenConfigResponse         `json:"oidcTokenConfig,omitempty"`
 	Tier                                 *CreateProjectTier                            `json:"tier,omitempty"`
+	ScheduledTierChange                  *CreateProjectScheduledTierChange             `json:"scheduledTierChange,omitempty"`
 	UsageStatus                          *CreateProjectUsageStatus                     `json:"usageStatus,omitempty"`
 	Features                             *CreateProjectFeatures                        `json:"features,omitempty"`
 	V0                                   *bool                                         `json:"v0,omitempty"`
@@ -12564,6 +12619,13 @@ func (o *CreateProjectResponseBody) GetTier() *CreateProjectTier {
 		return nil
 	}
 	return o.Tier
+}
+
+func (o *CreateProjectResponseBody) GetScheduledTierChange() *CreateProjectScheduledTierChange {
+	if o == nil {
+		return nil
+	}
+	return o.ScheduledTierChange
 }
 
 func (o *CreateProjectResponseBody) GetUsageStatus() *CreateProjectUsageStatus {

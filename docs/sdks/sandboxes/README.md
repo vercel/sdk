@@ -267,7 +267,7 @@ run();
 
 ## listCommands
 
-Retrieves a list of all commands that have been executed in a sandbox, including their current status, exit codes, and execution times.
+Retrieves a list of all commands that have been executed in a sandbox, including their current status, exit codes, and execution times, ordered from the most recent to the oldest.
 
 ### Example Usage
 

@@ -8,9 +8,7 @@ The payload of the event, if requested.
 import { OneHundredAndEight } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndEight = {
-  projectId: "<id>",
-  projectName: "<value>",
-  action: "enabled",
+  action: "enable",
 };
 ```
 
@@ -18,6 +16,4 @@ let value: OneHundredAndEight = {
 
 | Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
 | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `projectId`                                                                | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `projectName`                                                              | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
 | `action`                                                                   | [models.UserEventPayload108Action](../models/usereventpayload108action.md) | :heavy_check_mark:                                                         | N/A                                                                        |

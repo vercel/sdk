@@ -5,11 +5,11 @@
 ```typescript
 import { GetProjectsResponseBodyTier } from "@vercel/sdk/models/getprojectsop.js";
 
-let value: GetProjectsResponseBodyTier = "advanced";
+let value: GetProjectsResponseBodyTier = "base";
 ```
 
 ## Values
 
 ```typescript
-"standard" | "advanced" | "critical"
+"standard" | "base" | "advanced" | "critical"
 ```

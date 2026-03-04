@@ -54,17 +54,6 @@ test("Integrations Get Configuration Products", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    products: [],
-    integration: {
-      id: "<id>",
-      slug: "<value>",
-      name: "<value>",
-    },
-    configuration: {
-      id: "<id>",
-    },
-  });
 });
 
 test("Integrations Create Integration Store Direct", async () => {
@@ -103,38 +92,6 @@ test("Integrations Create Integration Store Direct", async () => {
     },
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    store: {
-      projectsMetadata: [
-        {
-          id: "<id>",
-          projectId: "<id>",
-          name: "<value>",
-          environments: [],
-          envVarPrefix: "<value>",
-          environmentVariables: [
-            "<value 1>",
-            "<value 2>",
-          ],
-        },
-      ],
-      usageQuotaExceeded: true,
-      status: "available",
-      externalResourceId: "<id>",
-      product: {
-        resourceTitle: "Instance",
-        integration: {
-          id: "<id>",
-          name: "<value>",
-          slug: "<value>",
-          icon: "<value>",
-        },
-        integrationConfigurationId: "<id>",
-        supportedProtocols: [],
-      },
-      secrets: [],
-    },
-  });
 });
 
 test("Integrations Get Billing Plans", async () => {
@@ -153,19 +110,6 @@ test("Integrations Get Billing Plans", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    plans: [
-      {
-        type: "prepayment",
-        description:
-          "outside fatally ultimate limply upon especially hm jellyfish expostulate",
-        id: "<id>",
-        name: "<value>",
-        scope: "installation",
-        paymentMethodRequired: false,
-      },
-    ],
-  });
 });
 
 test("Integrations Git Namespaces", async () => {
@@ -181,14 +125,6 @@ test("Integrations Git Namespaces", async () => {
     host: "ghes-test.now.systems",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual([
-    {
-      provider: "<value>",
-      slug: "<value>",
-      id: 4172.87,
-      ownerType: "<value>",
-    },
-  ]);
 });
 
 test("Integrations Search Repo", async () => {
@@ -206,28 +142,4 @@ test("Integrations Search Repo", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({
-    gitAccount: {
-      provider: "bitbucket",
-      namespaceId: "<id>",
-    },
-    repos: [
-      {
-        id: 6849.08,
-        provider: "github-custom-host",
-        url: "https://striking-amnesty.com/",
-        name: "<value>",
-        slug: "<value>",
-        namespace: "<value>",
-        owner: {
-          id: 2912.2,
-          name: "<value>",
-        },
-        ownerType: "user",
-        private: true,
-        defaultBranch: "<value>",
-        updatedAt: 4535.98,
-      },
-    ],
-  });
 });

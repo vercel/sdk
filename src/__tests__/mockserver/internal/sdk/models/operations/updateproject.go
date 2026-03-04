@@ -9870,6 +9870,7 @@ type UpdateProjectTier string
 
 const (
 	UpdateProjectTierStandard UpdateProjectTier = "standard"
+	UpdateProjectTierBase     UpdateProjectTier = "base"
 	UpdateProjectTierAdvanced UpdateProjectTier = "advanced"
 	UpdateProjectTierCritical UpdateProjectTier = "critical"
 )
@@ -9885,6 +9886,8 @@ func (e *UpdateProjectTier) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "standard":
 		fallthrough
+	case "base":
+		fallthrough
 	case "advanced":
 		fallthrough
 	case "critical":
@@ -9893,6 +9896,57 @@ func (e *UpdateProjectTier) UnmarshalJSON(data []byte) error {
 	default:
 		return fmt.Errorf("invalid value for UpdateProjectTier: %v", v)
 	}
+}
+
+type UpdateProjectScheduledTierChangeTier string
+
+const (
+	UpdateProjectScheduledTierChangeTierStandard UpdateProjectScheduledTierChangeTier = "standard"
+	UpdateProjectScheduledTierChangeTierBase     UpdateProjectScheduledTierChangeTier = "base"
+	UpdateProjectScheduledTierChangeTierAdvanced UpdateProjectScheduledTierChangeTier = "advanced"
+	UpdateProjectScheduledTierChangeTierCritical UpdateProjectScheduledTierChangeTier = "critical"
+)
+
+func (e UpdateProjectScheduledTierChangeTier) ToPointer() *UpdateProjectScheduledTierChangeTier {
+	return &e
+}
+func (e *UpdateProjectScheduledTierChangeTier) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "standard":
+		fallthrough
+	case "base":
+		fallthrough
+	case "advanced":
+		fallthrough
+	case "critical":
+		*e = UpdateProjectScheduledTierChangeTier(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectScheduledTierChangeTier: %v", v)
+	}
+}
+
+type UpdateProjectScheduledTierChange struct {
+	Tier        UpdateProjectScheduledTierChangeTier `json:"tier"`
+	EffectiveAt float64                              `json:"effectiveAt"`
+}
+
+func (o *UpdateProjectScheduledTierChange) GetTier() UpdateProjectScheduledTierChangeTier {
+	if o == nil {
+		return UpdateProjectScheduledTierChangeTier("")
+	}
+	return o.Tier
+}
+
+func (o *UpdateProjectScheduledTierChange) GetEffectiveAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.EffectiveAt
 }
 
 // UpdateProjectKind - Billing mode. Always 'flat' for flat-rate projects.
@@ -12488,6 +12542,7 @@ type UpdateProjectResponseBody struct {
 	Security                             *UpdateProjectSecurity                        `json:"security,omitempty"`
 	OidcTokenConfig                      *UpdateProjectOidcTokenConfigResponse         `json:"oidcTokenConfig,omitempty"`
 	Tier                                 *UpdateProjectTier                            `json:"tier,omitempty"`
+	ScheduledTierChange                  *UpdateProjectScheduledTierChange             `json:"scheduledTierChange,omitempty"`
 	UsageStatus                          *UpdateProjectUsageStatus                     `json:"usageStatus,omitempty"`
 	Features                             *UpdateProjectFeatures                        `json:"features,omitempty"`
 	V0                                   *bool                                         `json:"v0,omitempty"`
@@ -13056,6 +13111,13 @@ func (o *UpdateProjectResponseBody) GetTier() *UpdateProjectTier {
 		return nil
 	}
 	return o.Tier
+}
+
+func (o *UpdateProjectResponseBody) GetScheduledTierChange() *UpdateProjectScheduledTierChange {
+	if o == nil {
+		return nil
+	}
+	return o.ScheduledTierChange
 }
 
 func (o *UpdateProjectResponseBody) GetUsageStatus() *UpdateProjectUsageStatus {

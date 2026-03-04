@@ -1878,10 +1878,26 @@ export type CreateProjectOidcTokenConfig = {
 
 export const CreateProjectTier = {
   Standard: "standard",
+  Base: "base",
   Advanced: "advanced",
   Critical: "critical",
 } as const;
 export type CreateProjectTier = ClosedEnum<typeof CreateProjectTier>;
+
+export const CreateProjectProjectsTier = {
+  Standard: "standard",
+  Base: "base",
+  Advanced: "advanced",
+  Critical: "critical",
+} as const;
+export type CreateProjectProjectsTier = ClosedEnum<
+  typeof CreateProjectProjectsTier
+>;
+
+export type ScheduledTierChange = {
+  tier: CreateProjectProjectsTier;
+  effectiveAt: number;
+};
 
 /**
  * Billing mode. Always 'flat' for flat-rate projects.
@@ -2280,6 +2296,7 @@ export type CreateProjectResponseBody = {
   security?: CreateProjectSecurity | undefined;
   oidcTokenConfig?: CreateProjectOidcTokenConfig | undefined;
   tier?: CreateProjectTier | undefined;
+  scheduledTierChange?: ScheduledTierChange | undefined;
   usageStatus?: UsageStatus | undefined;
   features?: Features | undefined;
   v0?: boolean | undefined;
@@ -8424,6 +8441,57 @@ export const CreateProjectTier$outboundSchema: z.ZodNativeEnum<
 > = CreateProjectTier$inboundSchema;
 
 /** @internal */
+export const CreateProjectProjectsTier$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectProjectsTier
+> = z.nativeEnum(CreateProjectProjectsTier);
+/** @internal */
+export const CreateProjectProjectsTier$outboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectProjectsTier
+> = CreateProjectProjectsTier$inboundSchema;
+
+/** @internal */
+export const ScheduledTierChange$inboundSchema: z.ZodType<
+  ScheduledTierChange,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  tier: CreateProjectProjectsTier$inboundSchema,
+  effectiveAt: types.number(),
+});
+/** @internal */
+export type ScheduledTierChange$Outbound = {
+  tier: string;
+  effectiveAt: number;
+};
+
+/** @internal */
+export const ScheduledTierChange$outboundSchema: z.ZodType<
+  ScheduledTierChange$Outbound,
+  z.ZodTypeDef,
+  ScheduledTierChange
+> = z.object({
+  tier: CreateProjectProjectsTier$outboundSchema,
+  effectiveAt: z.number(),
+});
+
+export function scheduledTierChangeToJSON(
+  scheduledTierChange: ScheduledTierChange,
+): string {
+  return JSON.stringify(
+    ScheduledTierChange$outboundSchema.parse(scheduledTierChange),
+  );
+}
+export function scheduledTierChangeFromJSON(
+  jsonString: string,
+): SafeParseResult<ScheduledTierChange, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ScheduledTierChange$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ScheduledTierChange' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateProjectKind$inboundSchema: z.ZodNativeEnum<
   typeof CreateProjectKind
 > = z.nativeEnum(CreateProjectKind);
@@ -10569,6 +10637,9 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => CreateProjectOidcTokenConfig$inboundSchema),
   ),
   tier: types.optional(CreateProjectTier$inboundSchema),
+  scheduledTierChange: types.optional(
+    z.lazy(() => ScheduledTierChange$inboundSchema),
+  ),
   usageStatus: types.optional(z.lazy(() => UsageStatus$inboundSchema)),
   features: types.optional(z.lazy(() => Features$inboundSchema)),
   v0: types.optional(types.boolean()),
@@ -10685,6 +10756,7 @@ export type CreateProjectResponseBody$Outbound = {
   security?: CreateProjectSecurity$Outbound | undefined;
   oidcTokenConfig?: CreateProjectOidcTokenConfig$Outbound | undefined;
   tier?: string | undefined;
+  scheduledTierChange?: ScheduledTierChange$Outbound | undefined;
   usageStatus?: UsageStatus$Outbound | undefined;
   features?: Features$Outbound | undefined;
   v0?: boolean | undefined;
@@ -10822,6 +10894,8 @@ export const CreateProjectResponseBody$outboundSchema: z.ZodType<
   oidcTokenConfig: z.lazy(() => CreateProjectOidcTokenConfig$outboundSchema)
     .optional(),
   tier: CreateProjectTier$outboundSchema.optional(),
+  scheduledTierChange: z.lazy(() => ScheduledTierChange$outboundSchema)
+    .optional(),
   usageStatus: z.lazy(() => UsageStatus$outboundSchema).optional(),
   features: z.lazy(() => Features$outboundSchema).optional(),
   v0: z.boolean().optional(),

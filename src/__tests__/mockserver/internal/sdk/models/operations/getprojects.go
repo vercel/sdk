@@ -9118,6 +9118,7 @@ type ProjectTier2 string
 
 const (
 	ProjectTier2Standard ProjectTier2 = "standard"
+	ProjectTier2Base     ProjectTier2 = "base"
 	ProjectTier2Advanced ProjectTier2 = "advanced"
 	ProjectTier2Critical ProjectTier2 = "critical"
 )
@@ -9133,6 +9134,8 @@ func (e *ProjectTier2) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "standard":
 		fallthrough
+	case "base":
+		fallthrough
 	case "advanced":
 		fallthrough
 	case "critical":
@@ -9141,6 +9144,68 @@ func (e *ProjectTier2) UnmarshalJSON(data []byte) error {
 	default:
 		return fmt.Errorf("invalid value for ProjectTier2: %v", v)
 	}
+}
+
+type ProjectScheduledTierChangeTier string
+
+const (
+	ProjectScheduledTierChangeTierStandard ProjectScheduledTierChangeTier = "standard"
+	ProjectScheduledTierChangeTierBase     ProjectScheduledTierChangeTier = "base"
+	ProjectScheduledTierChangeTierAdvanced ProjectScheduledTierChangeTier = "advanced"
+	ProjectScheduledTierChangeTierCritical ProjectScheduledTierChangeTier = "critical"
+)
+
+func (e ProjectScheduledTierChangeTier) ToPointer() *ProjectScheduledTierChangeTier {
+	return &e
+}
+func (e *ProjectScheduledTierChangeTier) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "standard":
+		fallthrough
+	case "base":
+		fallthrough
+	case "advanced":
+		fallthrough
+	case "critical":
+		*e = ProjectScheduledTierChangeTier(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ProjectScheduledTierChangeTier: %v", v)
+	}
+}
+
+type GetProjectsScheduledTierChange struct {
+	Tier        ProjectScheduledTierChangeTier `json:"tier"`
+	EffectiveAt float64                        `json:"effectiveAt"`
+}
+
+func (g GetProjectsScheduledTierChange) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectsScheduledTierChange) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"tier", "effectiveAt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetProjectsScheduledTierChange) GetTier() ProjectScheduledTierChangeTier {
+	if o == nil {
+		return ProjectScheduledTierChangeTier("")
+	}
+	return o.Tier
+}
+
+func (o *GetProjectsScheduledTierChange) GetEffectiveAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.EffectiveAt
 }
 
 // GetProjectsKind - Billing mode. Always 'flat' for flat-rate projects.
@@ -11801,6 +11866,7 @@ type GetProjectsProject2 struct {
 	Security                             *ProjectSecurity2                           `json:"security,omitempty"`
 	OidcTokenConfig                      *ProjectOidcTokenConfig2                    `json:"oidcTokenConfig,omitempty"`
 	Tier                                 *ProjectTier2                               `json:"tier,omitempty"`
+	ScheduledTierChange                  *GetProjectsScheduledTierChange             `json:"scheduledTierChange,omitempty"`
 	UsageStatus                          *GetProjectsUsageStatus                     `json:"usageStatus,omitempty"`
 	Features                             *GetProjectsFeatures                        `json:"features,omitempty"`
 	V0                                   *bool                                       `json:"v0,omitempty"`
@@ -12380,6 +12446,13 @@ func (o *GetProjectsProject2) GetTier() *ProjectTier2 {
 		return nil
 	}
 	return o.Tier
+}
+
+func (o *GetProjectsProject2) GetScheduledTierChange() *GetProjectsScheduledTierChange {
+	if o == nil {
+		return nil
+	}
+	return o.ScheduledTierChange
 }
 
 func (o *GetProjectsProject2) GetUsageStatus() *GetProjectsUsageStatus {
@@ -19182,6 +19255,7 @@ type ProjectTier1 string
 
 const (
 	ProjectTier1Standard ProjectTier1 = "standard"
+	ProjectTier1Base     ProjectTier1 = "base"
 	ProjectTier1Advanced ProjectTier1 = "advanced"
 	ProjectTier1Critical ProjectTier1 = "critical"
 )
@@ -19196,6 +19270,8 @@ func (e *ProjectTier1) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "standard":
+		fallthrough
+	case "base":
 		fallthrough
 	case "advanced":
 		fallthrough
@@ -28536,6 +28612,7 @@ type GetProjectsTier string
 
 const (
 	GetProjectsTierStandard GetProjectsTier = "standard"
+	GetProjectsTierBase     GetProjectsTier = "base"
 	GetProjectsTierAdvanced GetProjectsTier = "advanced"
 	GetProjectsTierCritical GetProjectsTier = "critical"
 )
@@ -28550,6 +28627,8 @@ func (e *GetProjectsTier) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "standard":
+		fallthrough
+	case "base":
 		fallthrough
 	case "advanced":
 		fallthrough

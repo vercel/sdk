@@ -8,9 +8,7 @@ The payload of the event, if requested.
 import { TwoHundredAndSix } from "@vercel/sdk/models/userevent.js";
 
 let value: TwoHundredAndSix = {
-  productAliases: [
-    "<value 1>",
-  ],
+  email: "Drake.Kulas99@gmail.com",
 };
 ```
 
@@ -18,5 +16,4 @@ let value: TwoHundredAndSix = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `subscriptionId`   | *string*           | :heavy_minus_sign: | N/A                |
-| `productAliases`   | *string*[]         | :heavy_check_mark: | N/A                |
+| `email`            | *string*           | :heavy_check_mark: | N/A                |

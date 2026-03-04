@@ -7,15 +7,11 @@ The payload of the event, if requested.
 ```typescript
 import { TwoHundredAndThirtyOne } from "@vercel/sdk/models/userevent.js";
 
-let value: TwoHundredAndThirtyOne = {
-  oldName: "<value>",
-  newName: "<value>",
-};
+let value: TwoHundredAndThirtyOne = {};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `oldName`          | *string*           | :heavy_check_mark: | N/A                |
-| `newName`          | *string*           | :heavy_check_mark: | N/A                |
+| `emailDomain`      | *string*           | :heavy_minus_sign: | N/A                |

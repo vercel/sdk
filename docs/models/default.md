@@ -7,11 +7,11 @@ Default build machine type for new builds
 ```typescript
 import { Default } from "@vercel/sdk/models/team.js";
 
-let value: Default = "turbo";
+let value: Default = "standard";
 ```
 
 ## Values
 
 ```typescript
-"standard" | "enhanced" | "turbo"
+"enhanced" | "turbo" | "standard" | "elastic"
 ```

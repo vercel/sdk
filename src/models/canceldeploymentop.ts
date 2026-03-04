@@ -1356,6 +1356,12 @@ export type CancelDeploymentRoutes1 = {
   env?: Array<string> | undefined;
   locale?: RoutesLocale | undefined;
   /**
+   * Aliases for `src`, `dest`, and `status`. These provide consistency with the `rewrites`, `redirects`, and `headers` fields which use `source`, `destination`, and `statusCode`. During normalization, these are converted to their canonical forms (`src`, `dest`, `status`) and stripped from the route object.
+   */
+  source?: string | undefined;
+  destination?: string | undefined;
+  statusCode?: number | undefined;
+  /**
    * A middleware key within the `output` key under the build result. Overrides a `middleware` definition.
    */
   middlewarePath?: string | undefined;
@@ -1584,9 +1590,9 @@ export type CancelDeploymentElasticConcurrency = ClosedEnum<
  * Machine type that was used for the build.
  */
 export const CancelDeploymentPurchaseType = {
-  Standard: "standard",
   Enhanced: "enhanced",
   Turbo: "turbo",
+  Standard: "standard",
 } as const;
 /**
  * Machine type that was used for the build.
@@ -6631,6 +6637,9 @@ export const CancelDeploymentRoutes1$inboundSchema: z.ZodType<
   ),
   env: types.optional(z.array(types.string())),
   locale: types.optional(z.lazy(() => RoutesLocale$inboundSchema)),
+  source: types.optional(types.string()),
+  destination: types.optional(types.string()),
+  statusCode: types.optional(types.number()),
   middlewarePath: types.optional(types.string()),
   middlewareRawSrc: types.optional(z.array(types.string())),
   middleware: types.optional(types.number()),
@@ -6668,6 +6677,9 @@ export type CancelDeploymentRoutes1$Outbound = {
   transforms?: Array<RoutesTransforms$Outbound> | undefined;
   env?: Array<string> | undefined;
   locale?: RoutesLocale$Outbound | undefined;
+  source?: string | undefined;
+  destination?: string | undefined;
+  statusCode?: number | undefined;
   middlewarePath?: string | undefined;
   middlewareRawSrc?: Array<string> | undefined;
   middleware?: number | undefined;
@@ -6722,6 +6734,9 @@ export const CancelDeploymentRoutes1$outboundSchema: z.ZodType<
   transforms: z.array(z.lazy(() => RoutesTransforms$outboundSchema)).optional(),
   env: z.array(z.string()).optional(),
   locale: z.lazy(() => RoutesLocale$outboundSchema).optional(),
+  source: z.string().optional(),
+  destination: z.string().optional(),
+  statusCode: z.number().optional(),
   middlewarePath: z.string().optional(),
   middlewareRawSrc: z.array(z.string()).optional(),
   middleware: z.number().optional(),

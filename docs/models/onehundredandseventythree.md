@@ -8,19 +8,20 @@ The payload of the event, if requested.
 import { OneHundredAndSeventyThree } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndSeventyThree = {
-  id: "<id>",
-  type: "postgres",
+  projects: [
+    {
+      projectId: "<id>",
+      role: "PROJECT_DEVELOPER",
+      membershipCreatedAt: 4767.34,
+    },
+  ],
+  uid: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `id`                                                             | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `name`                                                           | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
-| `computeUnitsMax`                                                | *number*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
-| `computeUnitsMin`                                                | *number*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
-| `suspendTimeoutSeconds`                                          | *number*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
-| `type`                                                           | [models.UserEventPayloadType](../models/usereventpayloadtype.md) | :heavy_check_mark:                                               | N/A                                                              |
-| `access`                                                         | [models.Access](../models/access.md)                             | :heavy_minus_sign:                                               | N/A                                                              |
+| Field                                                    | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `projects`                                               | [models.PayloadProjects](../models/payloadprojects.md)[] | :heavy_check_mark:                                       | N/A                                                      |
+| `uid`                                                    | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |

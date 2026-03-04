@@ -25,8 +25,17 @@ export type ListCheckRunsRequest = {
   slug?: string | undefined;
 };
 
+export const ListCheckRunsSourceJobName = {
+  Lint: "lint",
+  Typecheck: "typecheck",
+} as const;
+export type ListCheckRunsSourceJobName = ClosedEnum<
+  typeof ListCheckRunsSourceJobName
+>;
+
 export type ListCheckRunsSource4 = {
   kind: "vercel";
+  jobName?: ListCheckRunsSourceJobName | undefined;
 };
 
 export const ListCheckRunsSourceProvider = {
@@ -178,16 +187,27 @@ export function listCheckRunsRequestFromJSON(
 }
 
 /** @internal */
+export const ListCheckRunsSourceJobName$inboundSchema: z.ZodNativeEnum<
+  typeof ListCheckRunsSourceJobName
+> = z.nativeEnum(ListCheckRunsSourceJobName);
+/** @internal */
+export const ListCheckRunsSourceJobName$outboundSchema: z.ZodNativeEnum<
+  typeof ListCheckRunsSourceJobName
+> = ListCheckRunsSourceJobName$inboundSchema;
+
+/** @internal */
 export const ListCheckRunsSource4$inboundSchema: z.ZodType<
   ListCheckRunsSource4,
   z.ZodTypeDef,
   unknown
 > = z.object({
   kind: types.literal("vercel"),
+  jobName: types.optional(ListCheckRunsSourceJobName$inboundSchema),
 });
 /** @internal */
 export type ListCheckRunsSource4$Outbound = {
   kind: "vercel";
+  jobName?: string | undefined;
 };
 
 /** @internal */
@@ -197,6 +217,7 @@ export const ListCheckRunsSource4$outboundSchema: z.ZodType<
   ListCheckRunsSource4
 > = z.object({
   kind: z.literal("vercel"),
+  jobName: ListCheckRunsSourceJobName$outboundSchema.optional(),
 });
 
 export function listCheckRunsSource4ToJSON(

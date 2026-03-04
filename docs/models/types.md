@@ -10,7 +10,7 @@ let value: Types = {
     "<value 1>",
   ],
   deprecated: true,
-  name: "access-group-updated",
+  name: "microfrontend-project-added-to-group",
   description: "charlatan stunning obedient help meanwhile throughout",
 };
 ```

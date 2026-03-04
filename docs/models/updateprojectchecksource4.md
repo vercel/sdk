@@ -12,6 +12,7 @@ let value: UpdateProjectCheckSource4 = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `kind`             | *"vercel"*         | :heavy_check_mark: | N/A                |
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `kind`                                                                                 | *"vercel"*                                                                             | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `jobName`                                                                              | [models.UpdateProjectCheckSourceJobName](../models/updateprojectchecksourcejobname.md) | :heavy_minus_sign:                                                                     | N/A                                                                                    |

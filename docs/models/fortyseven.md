@@ -8,8 +8,7 @@ The payload of the event, if requested.
 import { FortySeven } from "@vercel/sdk/models/userevent.js";
 
 let value: FortySeven = {
-  gitlabLogin: "<value>",
-  gitlabEmail: "<value>",
+  id: "<id>",
 };
 ```
 
@@ -17,8 +16,6 @@ let value: FortySeven = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `gitlabLogin`      | *string*           | :heavy_check_mark: | N/A                |
-| `gitlabEmail`      | *string*           | :heavy_check_mark: | N/A                |
-| `gitlabName`       | *string*           | :heavy_minus_sign: | N/A                |
-| `zeitAccount`      | *string*           | :heavy_minus_sign: | N/A                |
-| `zeitAccountType`  | *string*           | :heavy_minus_sign: | N/A                |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `cn`               | *string*           | :heavy_minus_sign: | N/A                |
+| `cns`              | *string*[]         | :heavy_minus_sign: | N/A                |

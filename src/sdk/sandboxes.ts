@@ -149,7 +149,7 @@ export class Sandboxes extends ClientSDK {
    * List commands
    *
    * @remarks
-   * Retrieves a list of all commands that have been executed in a sandbox, including their current status, exit codes, and execution times.
+   * Retrieves a list of all commands that have been executed in a sandbox, including their current status, exit codes, and execution times, ordered from the most recent to the oldest.
    */
   async listCommands(
     request: ListCommandsRequest,

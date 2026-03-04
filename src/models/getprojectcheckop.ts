@@ -34,8 +34,17 @@ export type GetProjectCheckRequires = ClosedEnum<
   typeof GetProjectCheckRequires
 >;
 
+export const GetProjectCheckSourceJobName = {
+  Lint: "lint",
+  Typecheck: "typecheck",
+} as const;
+export type GetProjectCheckSourceJobName = ClosedEnum<
+  typeof GetProjectCheckSourceJobName
+>;
+
 export type GetProjectCheckSource4 = {
   kind: "vercel";
+  jobName?: GetProjectCheckSourceJobName | undefined;
 };
 
 export const GetProjectCheckSourceProvider = {
@@ -110,7 +119,6 @@ export type GetProjectCheckResponseBody = {
   timeout: number;
   createdAt: number;
   updatedAt: number;
-  disabledAt?: number | undefined;
   deletedAt?: number | undefined;
 };
 
@@ -172,16 +180,27 @@ export const GetProjectCheckRequires$outboundSchema: z.ZodNativeEnum<
 > = GetProjectCheckRequires$inboundSchema;
 
 /** @internal */
+export const GetProjectCheckSourceJobName$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectCheckSourceJobName
+> = z.nativeEnum(GetProjectCheckSourceJobName);
+/** @internal */
+export const GetProjectCheckSourceJobName$outboundSchema: z.ZodNativeEnum<
+  typeof GetProjectCheckSourceJobName
+> = GetProjectCheckSourceJobName$inboundSchema;
+
+/** @internal */
 export const GetProjectCheckSource4$inboundSchema: z.ZodType<
   GetProjectCheckSource4,
   z.ZodTypeDef,
   unknown
 > = z.object({
   kind: types.literal("vercel"),
+  jobName: types.optional(GetProjectCheckSourceJobName$inboundSchema),
 });
 /** @internal */
 export type GetProjectCheckSource4$Outbound = {
   kind: "vercel";
+  jobName?: string | undefined;
 };
 
 /** @internal */
@@ -191,6 +210,7 @@ export const GetProjectCheckSource4$outboundSchema: z.ZodType<
   GetProjectCheckSource4
 > = z.object({
   kind: z.literal("vercel"),
+  jobName: GetProjectCheckSourceJobName$outboundSchema.optional(),
 });
 
 export function getProjectCheckSource4ToJSON(
@@ -447,7 +467,6 @@ export const GetProjectCheckResponseBody$inboundSchema: z.ZodType<
   timeout: types.number(),
   createdAt: types.number(),
   updatedAt: types.number(),
-  disabledAt: types.optional(types.number()),
   deletedAt: types.optional(types.number()),
 });
 /** @internal */
@@ -470,7 +489,6 @@ export type GetProjectCheckResponseBody$Outbound = {
   timeout: number;
   createdAt: number;
   updatedAt: number;
-  disabledAt?: number | undefined;
   deletedAt?: number | undefined;
 };
 
@@ -499,7 +517,6 @@ export const GetProjectCheckResponseBody$outboundSchema: z.ZodType<
   timeout: z.number(),
   createdAt: z.number(),
   updatedAt: z.number(),
-  disabledAt: z.number().optional(),
   deletedAt: z.number().optional(),
 });
 

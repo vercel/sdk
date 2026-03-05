@@ -13,7 +13,11 @@ actions:
   - target: $.paths['/v1/sandboxes/{sandboxId}/cmd'].post
     update:
       x-speakeasy-test: false
-  # Disable test for updateFlagSegment — mock server codegen name collision
-  - target: $.paths['/v1/projects/{projectIdOrName}/feature-flags/segments/{segmentIdOrSlug}'].patch
+  # Fix updateFlagSegment mock server codegen name collision: the response
+  # oneOf has an inline Segment definition AND a $ref to components/Segment,
+  # producing duplicate Go types. Replace redundant oneOf with direct $ref.
+  - target: $.paths['/v1/projects/{projectIdOrName}/feature-flags/segments/{segmentIdOrSlug}'].patch.responses['200'].content['application/json'].schema.oneOf
+    remove: true
+  - target: $.paths['/v1/projects/{projectIdOrName}/feature-flags/segments/{segmentIdOrSlug}'].patch.responses['200'].content['application/json'].schema
     update:
-      x-speakeasy-test: false
+      $ref: '#/components/schemas/Segment'

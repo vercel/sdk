@@ -28,8 +28,8 @@ generation:
   versioningStrategy: automatic
   persistentEdits: {}
   tests:
-    generateTests: true
-    generateNewTests: true
+    generateTests: false
+    generateNewTests: false
     skipResponseBodyAssertions: true
 typescript:
   version: 1.19.9

@@ -270,7 +270,7 @@ export const PutFirewallConfigType = {
  */
 export type PutFirewallConfigType = ClosedEnum<typeof PutFirewallConfigType>;
 
-export const Op = {
+export const PutFirewallConfigOp = {
   Re: "re",
   Eq: "eq",
   Neq: "neq",
@@ -286,7 +286,7 @@ export const Op = {
   Lt: "lt",
   Lte: "lte",
 } as const;
-export type Op = ClosedEnum<typeof Op>;
+export type PutFirewallConfigOp = ClosedEnum<typeof PutFirewallConfigOp>;
 
 export type PutFirewallConfigValue = string | Array<string> | number;
 
@@ -295,7 +295,7 @@ export type PutFirewallConfigConditions = {
    * [Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic.
    */
   type: PutFirewallConfigType;
-  op: Op;
+  op: PutFirewallConfigOp;
   neg?: boolean | undefined;
   key?: string | undefined;
   value?: string | Array<string> | number | undefined;
@@ -1677,9 +1677,13 @@ export const PutFirewallConfigType$outboundSchema: z.ZodNativeEnum<
 > = PutFirewallConfigType$inboundSchema;
 
 /** @internal */
-export const Op$inboundSchema: z.ZodNativeEnum<typeof Op> = z.nativeEnum(Op);
+export const PutFirewallConfigOp$inboundSchema: z.ZodNativeEnum<
+  typeof PutFirewallConfigOp
+> = z.nativeEnum(PutFirewallConfigOp);
 /** @internal */
-export const Op$outboundSchema: z.ZodNativeEnum<typeof Op> = Op$inboundSchema;
+export const PutFirewallConfigOp$outboundSchema: z.ZodNativeEnum<
+  typeof PutFirewallConfigOp
+> = PutFirewallConfigOp$inboundSchema;
 
 /** @internal */
 export const PutFirewallConfigValue$inboundSchema: z.ZodType<
@@ -1721,7 +1725,7 @@ export const PutFirewallConfigConditions$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type: PutFirewallConfigType$inboundSchema,
-  op: Op$inboundSchema,
+  op: PutFirewallConfigOp$inboundSchema,
   neg: types.optional(types.boolean()),
   key: types.optional(types.string()),
   value: types.optional(
@@ -1744,7 +1748,7 @@ export const PutFirewallConfigConditions$outboundSchema: z.ZodType<
   PutFirewallConfigConditions
 > = z.object({
   type: PutFirewallConfigType$outboundSchema,
-  op: Op$outboundSchema,
+  op: PutFirewallConfigOp$outboundSchema,
   neg: z.boolean().optional(),
   key: z.string().optional(),
   value: smartUnion([z.string(), z.array(z.string()), z.number()]).optional(),

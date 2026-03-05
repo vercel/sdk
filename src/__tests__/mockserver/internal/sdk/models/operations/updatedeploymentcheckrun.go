@@ -184,85 +184,6 @@ func (o *UpdateDeploymentCheckRunRequest) GetBody() *UpdateDeploymentCheckRunReq
 	return o.Body
 }
 
-type UpdateDeploymentCheckRunKindVercel string
-
-const (
-	UpdateDeploymentCheckRunKindVercelVercel UpdateDeploymentCheckRunKindVercel = "vercel"
-)
-
-func (e UpdateDeploymentCheckRunKindVercel) ToPointer() *UpdateDeploymentCheckRunKindVercel {
-	return &e
-}
-func (e *UpdateDeploymentCheckRunKindVercel) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "vercel":
-		*e = UpdateDeploymentCheckRunKindVercel(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateDeploymentCheckRunKindVercel: %v", v)
-	}
-}
-
-type UpdateDeploymentCheckRunJobName string
-
-const (
-	UpdateDeploymentCheckRunJobNameLint      UpdateDeploymentCheckRunJobName = "lint"
-	UpdateDeploymentCheckRunJobNameTypecheck UpdateDeploymentCheckRunJobName = "typecheck"
-)
-
-func (e UpdateDeploymentCheckRunJobName) ToPointer() *UpdateDeploymentCheckRunJobName {
-	return &e
-}
-func (e *UpdateDeploymentCheckRunJobName) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "lint":
-		fallthrough
-	case "typecheck":
-		*e = UpdateDeploymentCheckRunJobName(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateDeploymentCheckRunJobName: %v", v)
-	}
-}
-
-type UpdateDeploymentCheckRunSourceVercel struct {
-	Kind    UpdateDeploymentCheckRunKindVercel `json:"kind"`
-	JobName *UpdateDeploymentCheckRunJobName   `json:"jobName,omitempty"`
-}
-
-func (u UpdateDeploymentCheckRunSourceVercel) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateDeploymentCheckRunSourceVercel) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"kind"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *UpdateDeploymentCheckRunSourceVercel) GetKind() UpdateDeploymentCheckRunKindVercel {
-	if o == nil {
-		return UpdateDeploymentCheckRunKindVercel("")
-	}
-	return o.Kind
-}
-
-func (o *UpdateDeploymentCheckRunSourceVercel) GetJobName() *UpdateDeploymentCheckRunJobName {
-	if o == nil {
-		return nil
-	}
-	return o.JobName
-}
-
 type UpdateDeploymentCheckRunKindGitProvider string
 
 const (
@@ -489,14 +410,12 @@ const (
 	UpdateDeploymentCheckRunSourceUnionTypeIntegration UpdateDeploymentCheckRunSourceUnionType = "integration"
 	UpdateDeploymentCheckRunSourceUnionTypeWebhook     UpdateDeploymentCheckRunSourceUnionType = "webhook"
 	UpdateDeploymentCheckRunSourceUnionTypeGitProvider UpdateDeploymentCheckRunSourceUnionType = "git-provider"
-	UpdateDeploymentCheckRunSourceUnionTypeVercel      UpdateDeploymentCheckRunSourceUnionType = "vercel"
 )
 
 type UpdateDeploymentCheckRunSourceUnion struct {
 	UpdateDeploymentCheckRunSourceIntegration *UpdateDeploymentCheckRunSourceIntegration `queryParam:"inline"`
 	UpdateDeploymentCheckRunSourceWebhook     *UpdateDeploymentCheckRunSourceWebhook     `queryParam:"inline"`
 	UpdateDeploymentCheckRunSourceGitProvider *UpdateDeploymentCheckRunSourceGitProvider `queryParam:"inline"`
-	UpdateDeploymentCheckRunSourceVercel      *UpdateDeploymentCheckRunSourceVercel      `queryParam:"inline"`
 
 	Type UpdateDeploymentCheckRunSourceUnionType
 }
@@ -534,18 +453,6 @@ func CreateUpdateDeploymentCheckRunSourceUnionGitProvider(gitProvider UpdateDepl
 	return UpdateDeploymentCheckRunSourceUnion{
 		UpdateDeploymentCheckRunSourceGitProvider: &gitProvider,
 		Type: typ,
-	}
-}
-
-func CreateUpdateDeploymentCheckRunSourceUnionVercel(vercel UpdateDeploymentCheckRunSourceVercel) UpdateDeploymentCheckRunSourceUnion {
-	typ := UpdateDeploymentCheckRunSourceUnionTypeVercel
-
-	typStr := UpdateDeploymentCheckRunKindVercel(typ)
-	vercel.Kind = typStr
-
-	return UpdateDeploymentCheckRunSourceUnion{
-		UpdateDeploymentCheckRunSourceVercel: &vercel,
-		Type:                                 typ,
 	}
 }
 
@@ -588,15 +495,6 @@ func (u *UpdateDeploymentCheckRunSourceUnion) UnmarshalJSON(data []byte) error {
 		u.UpdateDeploymentCheckRunSourceGitProvider = updateDeploymentCheckRunSourceGitProvider
 		u.Type = UpdateDeploymentCheckRunSourceUnionTypeGitProvider
 		return nil
-	case "vercel":
-		updateDeploymentCheckRunSourceVercel := new(UpdateDeploymentCheckRunSourceVercel)
-		if err := utils.UnmarshalJSON(data, &updateDeploymentCheckRunSourceVercel, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Kind == vercel) type UpdateDeploymentCheckRunSourceVercel within UpdateDeploymentCheckRunSourceUnion: %w", string(data), err)
-		}
-
-		u.UpdateDeploymentCheckRunSourceVercel = updateDeploymentCheckRunSourceVercel
-		u.Type = UpdateDeploymentCheckRunSourceUnionTypeVercel
-		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateDeploymentCheckRunSourceUnion", string(data))
@@ -613,10 +511,6 @@ func (u UpdateDeploymentCheckRunSourceUnion) MarshalJSON() ([]byte, error) {
 
 	if u.UpdateDeploymentCheckRunSourceGitProvider != nil {
 		return utils.MarshalJSON(u.UpdateDeploymentCheckRunSourceGitProvider, "", true)
-	}
-
-	if u.UpdateDeploymentCheckRunSourceVercel != nil {
-		return utils.MarshalJSON(u.UpdateDeploymentCheckRunSourceVercel, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type UpdateDeploymentCheckRunSourceUnion: all fields are null")
@@ -835,10 +729,6 @@ func (o *UpdateDeploymentCheckRunResponseBody) GetSourceWebhook() *UpdateDeploym
 
 func (o *UpdateDeploymentCheckRunResponseBody) GetSourceGitProvider() *UpdateDeploymentCheckRunSourceGitProvider {
 	return o.GetSource().UpdateDeploymentCheckRunSourceGitProvider
-}
-
-func (o *UpdateDeploymentCheckRunResponseBody) GetSourceVercel() *UpdateDeploymentCheckRunSourceVercel {
-	return o.GetSource().UpdateDeploymentCheckRunSourceVercel
 }
 
 func (o *UpdateDeploymentCheckRunResponseBody) GetRequires() *UpdateDeploymentCheckRunRequires {

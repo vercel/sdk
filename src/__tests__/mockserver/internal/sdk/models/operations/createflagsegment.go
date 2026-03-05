@@ -1633,38 +1633,38 @@ func (e *CreateFlagSegmentLHSTypeEntity) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type LHSSegmentEntity struct {
+type CreateFlagSegmentLHSEntity struct {
 	Type      CreateFlagSegmentLHSTypeEntity `json:"type"`
 	Kind      string                         `json:"kind"`
 	Attribute string                         `json:"attribute"`
 }
 
-func (l LHSSegmentEntity) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(l, "", false)
+func (c CreateFlagSegmentLHSEntity) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
 }
 
-func (l *LHSSegmentEntity) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"type", "kind", "attribute"}); err != nil {
+func (c *CreateFlagSegmentLHSEntity) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "kind", "attribute"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *LHSSegmentEntity) GetType() CreateFlagSegmentLHSTypeEntity {
+func (o *CreateFlagSegmentLHSEntity) GetType() CreateFlagSegmentLHSTypeEntity {
 	if o == nil {
 		return CreateFlagSegmentLHSTypeEntity("")
 	}
 	return o.Type
 }
 
-func (o *LHSSegmentEntity) GetKind() string {
+func (o *CreateFlagSegmentLHSEntity) GetKind() string {
 	if o == nil {
 		return ""
 	}
 	return o.Kind
 }
 
-func (o *LHSSegmentEntity) GetAttribute() string {
+func (o *CreateFlagSegmentLHSEntity) GetAttribute() string {
 	if o == nil {
 		return ""
 	}
@@ -1725,7 +1725,7 @@ const (
 
 type LHSSegmentUnion struct {
 	CreateFlagSegmentLHSSegment *CreateFlagSegmentLHSSegment `queryParam:"inline"`
-	LHSSegmentEntity            *LHSSegmentEntity            `queryParam:"inline"`
+	CreateFlagSegmentLHSEntity  *CreateFlagSegmentLHSEntity  `queryParam:"inline"`
 
 	Type LHSSegmentUnionType
 }
@@ -1742,15 +1742,15 @@ func CreateLHSSegmentUnionSegment(segment CreateFlagSegmentLHSSegment) LHSSegmen
 	}
 }
 
-func CreateLHSSegmentUnionEntity(entity LHSSegmentEntity) LHSSegmentUnion {
+func CreateLHSSegmentUnionEntity(entity CreateFlagSegmentLHSEntity) LHSSegmentUnion {
 	typ := LHSSegmentUnionTypeEntity
 
 	typStr := CreateFlagSegmentLHSTypeEntity(typ)
 	entity.Type = typStr
 
 	return LHSSegmentUnion{
-		LHSSegmentEntity: &entity,
-		Type:             typ,
+		CreateFlagSegmentLHSEntity: &entity,
+		Type:                       typ,
 	}
 }
 
@@ -1776,12 +1776,12 @@ func (u *LHSSegmentUnion) UnmarshalJSON(data []byte) error {
 		u.Type = LHSSegmentUnionTypeSegment
 		return nil
 	case "entity":
-		lhsSegmentEntity := new(LHSSegmentEntity)
-		if err := utils.UnmarshalJSON(data, &lhsSegmentEntity, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Type == entity) type LHSSegmentEntity within LHSSegmentUnion: %w", string(data), err)
+		createFlagSegmentLHSEntity := new(CreateFlagSegmentLHSEntity)
+		if err := utils.UnmarshalJSON(data, &createFlagSegmentLHSEntity, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == entity) type CreateFlagSegmentLHSEntity within LHSSegmentUnion: %w", string(data), err)
 		}
 
-		u.LHSSegmentEntity = lhsSegmentEntity
+		u.CreateFlagSegmentLHSEntity = createFlagSegmentLHSEntity
 		u.Type = LHSSegmentUnionTypeEntity
 		return nil
 	}
@@ -1794,8 +1794,8 @@ func (u LHSSegmentUnion) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.CreateFlagSegmentLHSSegment, "", true)
 	}
 
-	if u.LHSSegmentEntity != nil {
-		return utils.MarshalJSON(u.LHSSegmentEntity, "", true)
+	if u.CreateFlagSegmentLHSEntity != nil {
+		return utils.MarshalJSON(u.CreateFlagSegmentLHSEntity, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type LHSSegmentUnion: all fields are null")
@@ -1908,8 +1908,8 @@ func (o *ConditionSegment) GetLHSSegment() *CreateFlagSegmentLHSSegment {
 	return o.GetLHS().CreateFlagSegmentLHSSegment
 }
 
-func (o *ConditionSegment) GetLHSEntity() *LHSSegmentEntity {
-	return o.GetLHS().LHSSegmentEntity
+func (o *ConditionSegment) GetLHSEntity() *CreateFlagSegmentLHSEntity {
+	return o.GetLHS().CreateFlagSegmentLHSEntity
 }
 
 func (o *ConditionSegment) GetCmp() CmpSegment {

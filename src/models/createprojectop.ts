@@ -2008,7 +2008,9 @@ export type CreateProjectRoute1 = {
   status: number;
 };
 
-export type BlockHistoryRoute = CreateProjectRoute1 | CreateProjectRoute2;
+export type CreateProjectBlockHistoryRoute =
+  | CreateProjectRoute1
+  | CreateProjectRoute2;
 
 export type BlockHistory4 = {
   action: "route-unblocked";
@@ -2073,7 +2075,7 @@ export type Route1 = {
   status: number;
 };
 
-export type Route = Route1 | Route2;
+export type BlockHistoryRoute = Route1 | Route2;
 
 export type BlockHistory3 = {
   action: "route-blocked";
@@ -9067,8 +9069,8 @@ export function createProjectRoute1FromJSON(
 }
 
 /** @internal */
-export const BlockHistoryRoute$inboundSchema: z.ZodType<
-  BlockHistoryRoute,
+export const CreateProjectBlockHistoryRoute$inboundSchema: z.ZodType<
+  CreateProjectBlockHistoryRoute,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
@@ -9076,34 +9078,36 @@ export const BlockHistoryRoute$inboundSchema: z.ZodType<
   z.lazy(() => CreateProjectRoute2$inboundSchema),
 ]);
 /** @internal */
-export type BlockHistoryRoute$Outbound =
+export type CreateProjectBlockHistoryRoute$Outbound =
   | CreateProjectRoute1$Outbound
   | CreateProjectRoute2$Outbound;
 
 /** @internal */
-export const BlockHistoryRoute$outboundSchema: z.ZodType<
-  BlockHistoryRoute$Outbound,
+export const CreateProjectBlockHistoryRoute$outboundSchema: z.ZodType<
+  CreateProjectBlockHistoryRoute$Outbound,
   z.ZodTypeDef,
-  BlockHistoryRoute
+  CreateProjectBlockHistoryRoute
 > = smartUnion([
   z.lazy(() => CreateProjectRoute1$outboundSchema),
   z.lazy(() => CreateProjectRoute2$outboundSchema),
 ]);
 
-export function blockHistoryRouteToJSON(
-  blockHistoryRoute: BlockHistoryRoute,
+export function createProjectBlockHistoryRouteToJSON(
+  createProjectBlockHistoryRoute: CreateProjectBlockHistoryRoute,
 ): string {
   return JSON.stringify(
-    BlockHistoryRoute$outboundSchema.parse(blockHistoryRoute),
+    CreateProjectBlockHistoryRoute$outboundSchema.parse(
+      createProjectBlockHistoryRoute,
+    ),
   );
 }
-export function blockHistoryRouteFromJSON(
+export function createProjectBlockHistoryRouteFromJSON(
   jsonString: string,
-): SafeParseResult<BlockHistoryRoute, SDKValidationError> {
+): SafeParseResult<CreateProjectBlockHistoryRoute, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => BlockHistoryRoute$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BlockHistoryRoute' from JSON`,
+    (x) => CreateProjectBlockHistoryRoute$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectBlockHistoryRoute' from JSON`,
   );
 }
 
@@ -9546,34 +9550,41 @@ export function route1FromJSON(
 }
 
 /** @internal */
-export const Route$inboundSchema: z.ZodType<Route, z.ZodTypeDef, unknown> =
-  smartUnion([
-    z.lazy(() => Route1$inboundSchema),
-    z.lazy(() => Route2$inboundSchema),
-  ]);
+export const BlockHistoryRoute$inboundSchema: z.ZodType<
+  BlockHistoryRoute,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => Route1$inboundSchema),
+  z.lazy(() => Route2$inboundSchema),
+]);
 /** @internal */
-export type Route$Outbound = Route1$Outbound | Route2$Outbound;
+export type BlockHistoryRoute$Outbound = Route1$Outbound | Route2$Outbound;
 
 /** @internal */
-export const Route$outboundSchema: z.ZodType<
-  Route$Outbound,
+export const BlockHistoryRoute$outboundSchema: z.ZodType<
+  BlockHistoryRoute$Outbound,
   z.ZodTypeDef,
-  Route
+  BlockHistoryRoute
 > = smartUnion([
   z.lazy(() => Route1$outboundSchema),
   z.lazy(() => Route2$outboundSchema),
 ]);
 
-export function routeToJSON(route: Route): string {
-  return JSON.stringify(Route$outboundSchema.parse(route));
+export function blockHistoryRouteToJSON(
+  blockHistoryRoute: BlockHistoryRoute,
+): string {
+  return JSON.stringify(
+    BlockHistoryRoute$outboundSchema.parse(blockHistoryRoute),
+  );
 }
-export function routeFromJSON(
+export function blockHistoryRouteFromJSON(
   jsonString: string,
-): SafeParseResult<Route, SDKValidationError> {
+): SafeParseResult<BlockHistoryRoute, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Route$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Route' from JSON`,
+    (x) => BlockHistoryRoute$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BlockHistoryRoute' from JSON`,
   );
 }
 

@@ -34,19 +34,6 @@ export type GetProjectCheckRequires = ClosedEnum<
   typeof GetProjectCheckRequires
 >;
 
-export const GetProjectCheckSourceJobName = {
-  Lint: "lint",
-  Typecheck: "typecheck",
-} as const;
-export type GetProjectCheckSourceJobName = ClosedEnum<
-  typeof GetProjectCheckSourceJobName
->;
-
-export type GetProjectCheckSource4 = {
-  kind: "vercel";
-  jobName?: GetProjectCheckSourceJobName | undefined;
-};
-
 export const GetProjectCheckSourceProvider = {
   Github: "github",
   Gitlab: "gitlab",
@@ -78,8 +65,7 @@ export type GetProjectCheckSource1 = {
 export type GetProjectCheckSource =
   | GetProjectCheckSource1
   | GetProjectCheckSource2
-  | GetProjectCheckSource3
-  | GetProjectCheckSource4;
+  | GetProjectCheckSource3;
 
 export const GetProjectCheckBlocks = {
   None: "none",
@@ -110,8 +96,7 @@ export type GetProjectCheckResponseBody = {
   source:
     | GetProjectCheckSource1
     | GetProjectCheckSource2
-    | GetProjectCheckSource3
-    | GetProjectCheckSource4;
+    | GetProjectCheckSource3;
   blocks: GetProjectCheckBlocks;
   targets: Array<string>;
   sourceKind: GetProjectCheckSourceKind;
@@ -178,57 +163,6 @@ export const GetProjectCheckRequires$inboundSchema: z.ZodNativeEnum<
 export const GetProjectCheckRequires$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectCheckRequires
 > = GetProjectCheckRequires$inboundSchema;
-
-/** @internal */
-export const GetProjectCheckSourceJobName$inboundSchema: z.ZodNativeEnum<
-  typeof GetProjectCheckSourceJobName
-> = z.nativeEnum(GetProjectCheckSourceJobName);
-/** @internal */
-export const GetProjectCheckSourceJobName$outboundSchema: z.ZodNativeEnum<
-  typeof GetProjectCheckSourceJobName
-> = GetProjectCheckSourceJobName$inboundSchema;
-
-/** @internal */
-export const GetProjectCheckSource4$inboundSchema: z.ZodType<
-  GetProjectCheckSource4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  kind: types.literal("vercel"),
-  jobName: types.optional(GetProjectCheckSourceJobName$inboundSchema),
-});
-/** @internal */
-export type GetProjectCheckSource4$Outbound = {
-  kind: "vercel";
-  jobName?: string | undefined;
-};
-
-/** @internal */
-export const GetProjectCheckSource4$outboundSchema: z.ZodType<
-  GetProjectCheckSource4$Outbound,
-  z.ZodTypeDef,
-  GetProjectCheckSource4
-> = z.object({
-  kind: z.literal("vercel"),
-  jobName: GetProjectCheckSourceJobName$outboundSchema.optional(),
-});
-
-export function getProjectCheckSource4ToJSON(
-  getProjectCheckSource4: GetProjectCheckSource4,
-): string {
-  return JSON.stringify(
-    GetProjectCheckSource4$outboundSchema.parse(getProjectCheckSource4),
-  );
-}
-export function getProjectCheckSource4FromJSON(
-  jsonString: string,
-): SafeParseResult<GetProjectCheckSource4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetProjectCheckSource4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectCheckSource4' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetProjectCheckSourceProvider$inboundSchema: z.ZodNativeEnum<
@@ -386,14 +320,12 @@ export const GetProjectCheckSource$inboundSchema: z.ZodType<
   z.lazy(() => GetProjectCheckSource1$inboundSchema),
   z.lazy(() => GetProjectCheckSource2$inboundSchema),
   z.lazy(() => GetProjectCheckSource3$inboundSchema),
-  z.lazy(() => GetProjectCheckSource4$inboundSchema),
 ]);
 /** @internal */
 export type GetProjectCheckSource$Outbound =
   | GetProjectCheckSource1$Outbound
   | GetProjectCheckSource2$Outbound
-  | GetProjectCheckSource3$Outbound
-  | GetProjectCheckSource4$Outbound;
+  | GetProjectCheckSource3$Outbound;
 
 /** @internal */
 export const GetProjectCheckSource$outboundSchema: z.ZodType<
@@ -404,7 +336,6 @@ export const GetProjectCheckSource$outboundSchema: z.ZodType<
   z.lazy(() => GetProjectCheckSource1$outboundSchema),
   z.lazy(() => GetProjectCheckSource2$outboundSchema),
   z.lazy(() => GetProjectCheckSource3$outboundSchema),
-  z.lazy(() => GetProjectCheckSource4$outboundSchema),
 ]);
 
 export function getProjectCheckSourceToJSON(
@@ -458,7 +389,6 @@ export const GetProjectCheckResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => GetProjectCheckSource1$inboundSchema),
     z.lazy(() => GetProjectCheckSource2$inboundSchema),
     z.lazy(() => GetProjectCheckSource3$inboundSchema),
-    z.lazy(() => GetProjectCheckSource4$inboundSchema),
   ]),
   blocks: GetProjectCheckBlocks$inboundSchema,
   targets: z.array(types.string()),
@@ -480,8 +410,7 @@ export type GetProjectCheckResponseBody$Outbound = {
   source:
     | GetProjectCheckSource1$Outbound
     | GetProjectCheckSource2$Outbound
-    | GetProjectCheckSource3$Outbound
-    | GetProjectCheckSource4$Outbound;
+    | GetProjectCheckSource3$Outbound;
   blocks: string;
   targets: Array<string>;
   sourceKind: string;
@@ -508,7 +437,6 @@ export const GetProjectCheckResponseBody$outboundSchema: z.ZodType<
     z.lazy(() => GetProjectCheckSource1$outboundSchema),
     z.lazy(() => GetProjectCheckSource2$outboundSchema),
     z.lazy(() => GetProjectCheckSource3$outboundSchema),
-    z.lazy(() => GetProjectCheckSource4$outboundSchema),
   ]),
   blocks: GetProjectCheckBlocks$outboundSchema,
   targets: z.array(z.string()),

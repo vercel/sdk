@@ -10,90 +10,90 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type DiffEnum string
+type GetRedirectsDiffEnum string
 
 const (
-	DiffEnumOnly DiffEnum = "only"
+	GetRedirectsDiffEnumOnly GetRedirectsDiffEnum = "only"
 )
 
-func (e DiffEnum) ToPointer() *DiffEnum {
+func (e GetRedirectsDiffEnum) ToPointer() *GetRedirectsDiffEnum {
 	return &e
 }
-func (e *DiffEnum) UnmarshalJSON(data []byte) error {
+func (e *GetRedirectsDiffEnum) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "only":
-		*e = DiffEnum(v)
+		*e = GetRedirectsDiffEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for DiffEnum: %v", v)
+		return fmt.Errorf("invalid value for GetRedirectsDiffEnum: %v", v)
 	}
 }
 
-type DiffType string
+type GetRedirectsDiffUnionType string
 
 const (
-	DiffTypeBoolean  DiffType = "boolean"
-	DiffTypeDiffEnum DiffType = "diff_enum"
+	GetRedirectsDiffUnionTypeBoolean              GetRedirectsDiffUnionType = "boolean"
+	GetRedirectsDiffUnionTypeGetRedirectsDiffEnum GetRedirectsDiffUnionType = "getRedirects_diff_enum"
 )
 
-type Diff struct {
-	Boolean  *bool     `queryParam:"inline"`
-	DiffEnum *DiffEnum `queryParam:"inline"`
+type GetRedirectsDiffUnion struct {
+	Boolean              *bool                 `queryParam:"inline"`
+	GetRedirectsDiffEnum *GetRedirectsDiffEnum `queryParam:"inline"`
 
-	Type DiffType
+	Type GetRedirectsDiffUnionType
 }
 
-func CreateDiffBoolean(boolean bool) Diff {
-	typ := DiffTypeBoolean
+func CreateGetRedirectsDiffUnionBoolean(boolean bool) GetRedirectsDiffUnion {
+	typ := GetRedirectsDiffUnionTypeBoolean
 
-	return Diff{
+	return GetRedirectsDiffUnion{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateDiffDiffEnum(diffEnum DiffEnum) Diff {
-	typ := DiffTypeDiffEnum
+func CreateGetRedirectsDiffUnionGetRedirectsDiffEnum(getRedirectsDiffEnum GetRedirectsDiffEnum) GetRedirectsDiffUnion {
+	typ := GetRedirectsDiffUnionTypeGetRedirectsDiffEnum
 
-	return Diff{
-		DiffEnum: &diffEnum,
-		Type:     typ,
+	return GetRedirectsDiffUnion{
+		GetRedirectsDiffEnum: &getRedirectsDiffEnum,
+		Type:                 typ,
 	}
 }
 
-func (u *Diff) UnmarshalJSON(data []byte) error {
+func (u *GetRedirectsDiffUnion) UnmarshalJSON(data []byte) error {
 
 	var boolean bool = false
 	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = DiffTypeBoolean
+		u.Type = GetRedirectsDiffUnionTypeBoolean
 		return nil
 	}
 
-	var diffEnum DiffEnum = DiffEnum("")
-	if err := utils.UnmarshalJSON(data, &diffEnum, "", true, nil); err == nil {
-		u.DiffEnum = &diffEnum
-		u.Type = DiffTypeDiffEnum
+	var getRedirectsDiffEnum GetRedirectsDiffEnum = GetRedirectsDiffEnum("")
+	if err := utils.UnmarshalJSON(data, &getRedirectsDiffEnum, "", true, nil); err == nil {
+		u.GetRedirectsDiffEnum = &getRedirectsDiffEnum
+		u.Type = GetRedirectsDiffUnionTypeGetRedirectsDiffEnum
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Diff", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetRedirectsDiffUnion", string(data))
 }
 
-func (u Diff) MarshalJSON() ([]byte, error) {
+func (u GetRedirectsDiffUnion) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.DiffEnum != nil {
-		return utils.MarshalJSON(u.DiffEnum, "", true)
+	if u.GetRedirectsDiffEnum != nil {
+		return utils.MarshalJSON(u.GetRedirectsDiffEnum, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type Diff: all fields are null")
+	return nil, errors.New("could not marshal union type GetRedirectsDiffUnion: all fields are null")
 }
 
 type SortBy string
@@ -152,14 +152,14 @@ func (e *SortOrder) UnmarshalJSON(data []byte) error {
 }
 
 type GetRedirectsRequest struct {
-	ProjectID string     `queryParam:"style=form,explode=true,name=projectId"`
-	VersionID *string    `queryParam:"style=form,explode=true,name=versionId"`
-	Q         *string    `queryParam:"style=form,explode=true,name=q"`
-	Diff      *Diff      `queryParam:"style=form,explode=true,name=diff"`
-	Page      *int64     `queryParam:"style=form,explode=true,name=page"`
-	PerPage   *int64     `queryParam:"style=form,explode=true,name=per_page"`
-	SortBy    *SortBy    `queryParam:"style=form,explode=true,name=sort_by"`
-	SortOrder *SortOrder `queryParam:"style=form,explode=true,name=sort_order"`
+	ProjectID string                 `queryParam:"style=form,explode=true,name=projectId"`
+	VersionID *string                `queryParam:"style=form,explode=true,name=versionId"`
+	Q         *string                `queryParam:"style=form,explode=true,name=q"`
+	Diff      *GetRedirectsDiffUnion `queryParam:"style=form,explode=true,name=diff"`
+	Page      *int64                 `queryParam:"style=form,explode=true,name=page"`
+	PerPage   *int64                 `queryParam:"style=form,explode=true,name=per_page"`
+	SortBy    *SortBy                `queryParam:"style=form,explode=true,name=sort_by"`
+	SortOrder *SortOrder             `queryParam:"style=form,explode=true,name=sort_order"`
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
@@ -187,7 +187,7 @@ func (o *GetRedirectsRequest) GetQ() *string {
 	return o.Q
 }
 
-func (o *GetRedirectsRequest) GetDiff() *Diff {
+func (o *GetRedirectsRequest) GetDiff() *GetRedirectsDiffUnion {
 	if o == nil {
 		return nil
 	}

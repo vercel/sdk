@@ -46,7 +46,7 @@ func testGetDeploymentFeatureFlagsGetDeploymentFeatureFlags0(w http.ResponseWrit
 		return
 	}
 	var respBody *operations.GetDeploymentFeatureFlagsResponseBody = &operations.GetDeploymentFeatureFlagsResponseBody{
-		Flags: []operations.Flag{},
+		Flags: []operations.GetDeploymentFeatureFlagsFlag{},
 		Status: &operations.GetDeploymentFeatureFlagsStatus{
 			DeploymentID:   "<id>",
 			ProjectID:      "<id>",

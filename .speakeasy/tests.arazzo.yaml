@@ -8814,3 +8814,190 @@ workflows:
             type: simple
     x-speakeasy-test-group: sandboxes
     x-speakeasy-test-rebuild: true
+  - workflowId: getRoutes
+    steps:
+      - stepId: test
+        operationId: getRoutes
+        parameters:
+          - name: projectId
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"routes":[{"id":"<id>","name":"<value>","route":{"src":"<value>"}}],"version":{"id":"<id>","s3Key":"<value>","lastModified":6994.88,"createdBy":"<value>"},"limit":{"maxRoutes":4766.62,"currentRoutes":5440.42}}
+            type: simple
+    x-speakeasy-test-group: project-routes
+    x-speakeasy-test-rebuild: true
+  - workflowId: stageRoutes
+    steps:
+      - stepId: test
+        operationId: stageRoutes
+        parameters:
+          - name: projectId
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"version":{"id":"<id>","s3Key":"<value>","lastModified":1728.13,"createdBy":"<value>"}}
+            type: simple
+    x-speakeasy-test-group: project-routes
+    x-speakeasy-test-rebuild: true
+  - workflowId: addRoute
+    steps:
+      - stepId: test
+        operationId: addRoute
+        parameters:
+          - name: projectId
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"route":{"id":"<id>","name":"<value>","route":{"src":"<value>"}},"version":{"id":"<id>","s3Key":"<value>","lastModified":121.25,"createdBy":"<value>"}}
+            type: simple
+    x-speakeasy-test-group: project-routes
+    x-speakeasy-test-rebuild: true
+  - workflowId: deleteRoutes
+    steps:
+      - stepId: test
+        operationId: deleteRoutes
+        parameters:
+          - name: projectId
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"deletedCount":9584.63,"version":{"id":"<id>","s3Key":"<value>","lastModified":3781.77,"createdBy":"<value>"}}
+            type: simple
+    x-speakeasy-test-group: project-routes
+    x-speakeasy-test-rebuild: true
+  - workflowId: editRoute
+    steps:
+      - stepId: test
+        operationId: editRoute
+        parameters:
+          - name: projectId
+            in: path
+            value: <id>
+          - name: routeId
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"version":{"id":"<id>","s3Key":"<value>","lastModified":9940.75,"createdBy":"<value>"}}
+            type: simple
+    x-speakeasy-test-group: project-routes
+    x-speakeasy-test-rebuild: true
+  - workflowId: generateRoute
+    steps:
+      - stepId: test
+        operationId: generateRoute
+        parameters:
+          - name: projectId
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {}
+            type: simple
+    x-speakeasy-test-group: project-routes
+    x-speakeasy-test-rebuild: true
+  - workflowId: getRouteVersions
+    steps:
+      - stepId: test
+        operationId: getRouteVersions
+        parameters:
+          - name: projectId
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"versions":[{"id":"<id>","s3Key":"<value>","lastModified":4930.64,"createdBy":"<value>"}]}
+            type: simple
+    x-speakeasy-test-group: project-routes
+    x-speakeasy-test-rebuild: true
+  - workflowId: updateRouteVersions
+    steps:
+      - stepId: test
+        operationId: updateRouteVersions
+        parameters:
+          - name: projectId
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"version":{"id":"<id>","s3Key":"<value>","lastModified":3896.09,"createdBy":"<value>"}}
+            type: simple
+    x-speakeasy-test-group: project-routes
+    x-speakeasy-test-rebuild: true

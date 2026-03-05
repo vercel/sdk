@@ -207,85 +207,6 @@ func (e *UpdateProjectCheckRequiresResponse) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type UpdateProjectCheckKindVercel string
-
-const (
-	UpdateProjectCheckKindVercelVercel UpdateProjectCheckKindVercel = "vercel"
-)
-
-func (e UpdateProjectCheckKindVercel) ToPointer() *UpdateProjectCheckKindVercel {
-	return &e
-}
-func (e *UpdateProjectCheckKindVercel) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "vercel":
-		*e = UpdateProjectCheckKindVercel(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateProjectCheckKindVercel: %v", v)
-	}
-}
-
-type UpdateProjectCheckJobName string
-
-const (
-	UpdateProjectCheckJobNameLint      UpdateProjectCheckJobName = "lint"
-	UpdateProjectCheckJobNameTypecheck UpdateProjectCheckJobName = "typecheck"
-)
-
-func (e UpdateProjectCheckJobName) ToPointer() *UpdateProjectCheckJobName {
-	return &e
-}
-func (e *UpdateProjectCheckJobName) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "lint":
-		fallthrough
-	case "typecheck":
-		*e = UpdateProjectCheckJobName(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateProjectCheckJobName: %v", v)
-	}
-}
-
-type UpdateProjectCheckSourceVercel struct {
-	Kind    UpdateProjectCheckKindVercel `json:"kind"`
-	JobName *UpdateProjectCheckJobName   `json:"jobName,omitempty"`
-}
-
-func (u UpdateProjectCheckSourceVercel) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateProjectCheckSourceVercel) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"kind"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *UpdateProjectCheckSourceVercel) GetKind() UpdateProjectCheckKindVercel {
-	if o == nil {
-		return UpdateProjectCheckKindVercel("")
-	}
-	return o.Kind
-}
-
-func (o *UpdateProjectCheckSourceVercel) GetJobName() *UpdateProjectCheckJobName {
-	if o == nil {
-		return nil
-	}
-	return o.JobName
-}
-
 type UpdateProjectCheckKindGitProvider string
 
 const (
@@ -512,14 +433,12 @@ const (
 	UpdateProjectCheckSourceUnionTypeIntegration UpdateProjectCheckSourceUnionType = "integration"
 	UpdateProjectCheckSourceUnionTypeWebhook     UpdateProjectCheckSourceUnionType = "webhook"
 	UpdateProjectCheckSourceUnionTypeGitProvider UpdateProjectCheckSourceUnionType = "git-provider"
-	UpdateProjectCheckSourceUnionTypeVercel      UpdateProjectCheckSourceUnionType = "vercel"
 )
 
 type UpdateProjectCheckSourceUnion struct {
 	UpdateProjectCheckSourceIntegration *UpdateProjectCheckSourceIntegration `queryParam:"inline"`
 	UpdateProjectCheckSourceWebhook     *UpdateProjectCheckSourceWebhook     `queryParam:"inline"`
 	UpdateProjectCheckSourceGitProvider *UpdateProjectCheckSourceGitProvider `queryParam:"inline"`
-	UpdateProjectCheckSourceVercel      *UpdateProjectCheckSourceVercel      `queryParam:"inline"`
 
 	Type UpdateProjectCheckSourceUnionType
 }
@@ -557,18 +476,6 @@ func CreateUpdateProjectCheckSourceUnionGitProvider(gitProvider UpdateProjectChe
 	return UpdateProjectCheckSourceUnion{
 		UpdateProjectCheckSourceGitProvider: &gitProvider,
 		Type:                                typ,
-	}
-}
-
-func CreateUpdateProjectCheckSourceUnionVercel(vercel UpdateProjectCheckSourceVercel) UpdateProjectCheckSourceUnion {
-	typ := UpdateProjectCheckSourceUnionTypeVercel
-
-	typStr := UpdateProjectCheckKindVercel(typ)
-	vercel.Kind = typStr
-
-	return UpdateProjectCheckSourceUnion{
-		UpdateProjectCheckSourceVercel: &vercel,
-		Type:                           typ,
 	}
 }
 
@@ -611,15 +518,6 @@ func (u *UpdateProjectCheckSourceUnion) UnmarshalJSON(data []byte) error {
 		u.UpdateProjectCheckSourceGitProvider = updateProjectCheckSourceGitProvider
 		u.Type = UpdateProjectCheckSourceUnionTypeGitProvider
 		return nil
-	case "vercel":
-		updateProjectCheckSourceVercel := new(UpdateProjectCheckSourceVercel)
-		if err := utils.UnmarshalJSON(data, &updateProjectCheckSourceVercel, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Kind == vercel) type UpdateProjectCheckSourceVercel within UpdateProjectCheckSourceUnion: %w", string(data), err)
-		}
-
-		u.UpdateProjectCheckSourceVercel = updateProjectCheckSourceVercel
-		u.Type = UpdateProjectCheckSourceUnionTypeVercel
-		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateProjectCheckSourceUnion", string(data))
@@ -636,10 +534,6 @@ func (u UpdateProjectCheckSourceUnion) MarshalJSON() ([]byte, error) {
 
 	if u.UpdateProjectCheckSourceGitProvider != nil {
 		return utils.MarshalJSON(u.UpdateProjectCheckSourceGitProvider, "", true)
-	}
-
-	if u.UpdateProjectCheckSourceVercel != nil {
-		return utils.MarshalJSON(u.UpdateProjectCheckSourceVercel, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type UpdateProjectCheckSourceUnion: all fields are null")
@@ -789,10 +683,6 @@ func (o *UpdateProjectCheckResponseBody) GetSourceWebhook() *UpdateProjectCheckS
 
 func (o *UpdateProjectCheckResponseBody) GetSourceGitProvider() *UpdateProjectCheckSourceGitProvider {
 	return o.GetSource().UpdateProjectCheckSourceGitProvider
-}
-
-func (o *UpdateProjectCheckResponseBody) GetSourceVercel() *UpdateProjectCheckSourceVercel {
-	return o.GetSource().UpdateProjectCheckSourceVercel
 }
 
 func (o *UpdateProjectCheckResponseBody) GetBlocks() UpdateProjectCheckBlocksResponse {

@@ -10,7 +10,6 @@ import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
-import { Flag, Flag$inboundSchema } from "../models/flag.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -23,6 +22,8 @@ import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import {
   UpdateFlagRequest,
   UpdateFlagRequest$outboundSchema,
+  UpdateFlagResponseBody,
+  UpdateFlagResponseBody$inboundSchema,
 } from "../models/updateflagop.js";
 import { VercelError } from "../models/vercelerror.js";
 import { APICall, APIPromise } from "../types/async.js";
@@ -41,7 +42,7 @@ export function featureFlagsUpdateFlag(
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    Flag | undefined,
+    UpdateFlagResponseBody | undefined,
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -66,7 +67,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      Flag | undefined,
+      UpdateFlagResponseBody | undefined,
       | VercelError
       | ResponseValidationError
       | ConnectionError
@@ -164,7 +165,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    Flag | undefined,
+    UpdateFlagResponseBody | undefined,
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -174,8 +175,8 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, types$.optional(Flag$inboundSchema)),
-    M.nil(304, types$.optional(Flag$inboundSchema)),
+    M.json(200, types$.optional(UpdateFlagResponseBody$inboundSchema)),
+    M.nil(304, types$.optional(UpdateFlagResponseBody$inboundSchema)),
     M.fail([400, 401, 402, 403, 404, 409, 412, "4XX"]),
     M.fail("5XX"),
   )(response, req);

@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyTypeName } from "@vercel/sdk/models/listteamflagsettingsop.js";
+import { ResponseBodyTypeName } from "@vercel/sdk/models/updateflagop.js";
 
-let value: ResponseBodyTypeName = "settings";
+let value: ResponseBodyTypeName = "flag";
 ```
 
 ## Values
 
 ```typescript
-"settings"
+"flag"
 ```

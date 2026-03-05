@@ -37,11 +37,11 @@ const value: models.GetRollingReleaseBillingStatusResponseBody3 = {
 };
 ```
 
-### `models.ResponseBody4`
+### `models.GetRollingReleaseBillingStatusResponseBody4`
 
 ```typescript
-const value: models.ResponseBody4 = {
-  availableSlots: 1850.51,
+const value: models.GetRollingReleaseBillingStatusResponseBody4 = {
+  availableSlots: 9612.38,
   reason: "available_slots",
   message: "<value>",
 };

@@ -119,6 +119,7 @@ export const GetTeamMembersOrigin = {
   Feedback: "feedback",
   OrganizationTeams: "organization-teams",
   NsnbAutoApprove: "nsnb-auto-approve",
+  NsnbHobbyUpgrade: "nsnb-hobby-upgrade",
   NsnbRequestAccess: "nsnb-request-access",
   NsnbViewerUpgrade: "nsnb-viewer-upgrade",
   NsnbInvite: "nsnb-invite",

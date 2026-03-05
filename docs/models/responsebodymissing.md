@@ -1,19 +1,41 @@
 # ResponseBodyMissing
 
-## Example Usage
+
+## Supported Types
+
+### `models.GetRoutesMissing1`
 
 ```typescript
-import { ResponseBodyMissing } from "@vercel/sdk/models/getprojectsop.js";
-
-let value: ResponseBodyMissing = {
-  type: "protocol",
+const value: models.GetRoutesMissing1 = {
+  type: "host",
+  value: "<value>",
 };
 ```
 
-## Fields
+### `models.GetRoutesMissing2`
 
-| Field                                                                                                                                                | Type                                                                                                                                                 | Required                                                                                                                                             | Description                                                                                                                                          |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                                                               | [models.GetProjectsResponseBodyProjectsResponse200ApplicationJson1Type](../models/getprojectsresponsebodyprojectsresponse200applicationjson1type.md) | :heavy_check_mark:                                                                                                                                   | N/A                                                                                                                                                  |
-| `key`                                                                                                                                                | *string*                                                                                                                                             | :heavy_minus_sign:                                                                                                                                   | N/A                                                                                                                                                  |
-| `value`                                                                                                                                              | *models.GetProjectsResponseBodyValue*                                                                                                                | :heavy_minus_sign:                                                                                                                                   | N/A                                                                                                                                                  |
+```typescript
+const value: models.GetRoutesMissing2 = {
+  type: "header",
+  key: "<key>",
+};
+```
+
+### `models.GetRoutesMissing2`
+
+```typescript
+const value: models.GetRoutesMissing2 = {
+  type: "header",
+  key: "<key>",
+};
+```
+
+### `models.GetRoutesMissing2`
+
+```typescript
+const value: models.GetRoutesMissing2 = {
+  type: "header",
+  key: "<key>",
+};
+```
+

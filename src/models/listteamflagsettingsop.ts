@@ -29,10 +29,12 @@ export type ListTeamFlagSettingsRequest = {
   slug?: string | undefined;
 };
 
-export const ResponseBodyTypeName = {
+export const ListTeamFlagSettingsResponseBodyTypeName = {
   Settings: "settings",
 } as const;
-export type ResponseBodyTypeName = ClosedEnum<typeof ResponseBodyTypeName>;
+export type ListTeamFlagSettingsResponseBodyTypeName = ClosedEnum<
+  typeof ListTeamFlagSettingsResponseBodyTypeName
+>;
 
 export type ResponseBodyConnections = {
   edgeConfigId: string;
@@ -69,7 +71,7 @@ export type ListTeamFlagSettingsResponseBodyMetadata = {
  * Syncs direct the synchronization of Flags to Edge Configs
  */
 export type ResponseBodyData = {
-  typeName: ResponseBodyTypeName;
+  typeName: ListTeamFlagSettingsResponseBodyTypeName;
   projectId: string;
   ownerId?: string | undefined;
   enabled: boolean;
@@ -147,13 +149,13 @@ export function listTeamFlagSettingsRequestFromJSON(
 }
 
 /** @internal */
-export const ResponseBodyTypeName$inboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyTypeName
-> = z.nativeEnum(ResponseBodyTypeName);
+export const ListTeamFlagSettingsResponseBodyTypeName$inboundSchema:
+  z.ZodNativeEnum<typeof ListTeamFlagSettingsResponseBodyTypeName> = z
+    .nativeEnum(ListTeamFlagSettingsResponseBodyTypeName);
 /** @internal */
-export const ResponseBodyTypeName$outboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyTypeName
-> = ResponseBodyTypeName$inboundSchema;
+export const ListTeamFlagSettingsResponseBodyTypeName$outboundSchema:
+  z.ZodNativeEnum<typeof ListTeamFlagSettingsResponseBodyTypeName> =
+    ListTeamFlagSettingsResponseBodyTypeName$inboundSchema;
 
 /** @internal */
 export const ResponseBodyConnections$inboundSchema: z.ZodType<
@@ -400,7 +402,7 @@ export const ResponseBodyData$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  typeName: ResponseBodyTypeName$inboundSchema,
+  typeName: ListTeamFlagSettingsResponseBodyTypeName$inboundSchema,
   projectId: types.string(),
   ownerId: types.optional(types.string()),
   enabled: types.boolean(),
@@ -435,7 +437,7 @@ export const ResponseBodyData$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ResponseBodyData
 > = z.object({
-  typeName: ResponseBodyTypeName$outboundSchema,
+  typeName: ListTeamFlagSettingsResponseBodyTypeName$outboundSchema,
   projectId: z.string(),
   ownerId: z.string().optional(),
   enabled: z.boolean(),

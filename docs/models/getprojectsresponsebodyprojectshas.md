@@ -1,0 +1,19 @@
+# GetProjectsResponseBodyProjectsHas
+
+## Example Usage
+
+```typescript
+import { GetProjectsResponseBodyProjectsHas } from "@vercel/sdk/models/getprojectsop.js";
+
+let value: GetProjectsResponseBodyProjectsHas = {
+  type: "host",
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                                | Type                                                                                                                                                                 | Required                                                                                                                                                             | Description                                                                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `type`                                                                                                                                                               | [models.GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsType](../models/getprojectsresponsebodyprojectsresponse200applicationjson2projectstype.md) | :heavy_check_mark:                                                                                                                                                   | N/A                                                                                                                                                                  |
+| `key`                                                                                                                                                                | *string*                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                   | N/A                                                                                                                                                                  |
+| `value`                                                                                                                                                              | *models.GetProjectsResponseBodyProjectsResponse200ApplicationJSONValue*                                                                                              | :heavy_minus_sign:                                                                                                                                                   | N/A                                                                                                                                                                  |

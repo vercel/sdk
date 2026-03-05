@@ -1,17 +1,15 @@
 # ResponseBodyKind
 
-Billing mode. Always 'flat' for flat-rate projects.
-
 ## Example Usage
 
 ```typescript
-import { ResponseBodyKind } from "@vercel/sdk/models/getprojectsop.js";
+import { ResponseBodyKind } from "@vercel/sdk/models/updateflagop.js";
 
-let value: ResponseBodyKind = "flat";
+let value: ResponseBodyKind = "string";
 ```
 
 ## Values
 
 ```typescript
-"flat"
+"string" | "number" | "boolean"
 ```

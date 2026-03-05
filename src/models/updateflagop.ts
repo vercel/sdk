@@ -9,6 +9,12 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
+import {
+  Flag,
+  Flag$inboundSchema,
+  Flag$Outbound,
+  Flag$outboundSchema,
+} from "./flag.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type UpdateFlagValue = string | number | boolean;
@@ -276,6 +282,249 @@ export type UpdateFlagRequest = {
   slug?: string | undefined;
   requestBody?: UpdateFlagRequestBody | undefined;
 };
+
+export type ResponseBodyValue = string | number | boolean;
+
+export type ResponseBodyVariants = {
+  description?: string | undefined;
+  label?: string | undefined;
+  value: string | number | boolean;
+  id: string;
+};
+
+export type ResponseBodyReuse = {
+  active: boolean;
+  environment: string;
+};
+
+export type UpdateFlagResponseBodyTargets = {
+  note?: string | undefined;
+  value: string;
+};
+
+export const UpdateFlagResponseBodyType = {
+  Variant: "variant",
+} as const;
+export type UpdateFlagResponseBodyType = ClosedEnum<
+  typeof UpdateFlagResponseBodyType
+>;
+
+export type ResponseBodyPausedOutcome = {
+  type: UpdateFlagResponseBodyType;
+  variantId: string;
+};
+
+export const UpdateFlagFallthroughFeatureFlagsResponseType = {
+  Entity: "entity",
+} as const;
+export type UpdateFlagFallthroughFeatureFlagsResponseType = ClosedEnum<
+  typeof UpdateFlagFallthroughFeatureFlagsResponseType
+>;
+
+export type UpdateFlagFallthroughFeatureFlagsBase = {
+  type: UpdateFlagFallthroughFeatureFlagsResponseType;
+  kind: string;
+  attribute: string;
+};
+
+export type UpdateFlagFallthroughFeatureFlags2 = {
+  type: "split";
+  base: UpdateFlagFallthroughFeatureFlagsBase;
+  weights: { [k: string]: number };
+  defaultVariantId: string;
+};
+
+export type UpdateFlagFallthroughFeatureFlags1 = {
+  type: "variant";
+  variantId: string;
+};
+
+export type ResponseBodyFallthrough =
+  | UpdateFlagFallthroughFeatureFlags1
+  | UpdateFlagFallthroughFeatureFlags2;
+
+export const UpdateFlagOutcomeFeatureFlagsResponseType = {
+  Entity: "entity",
+} as const;
+export type UpdateFlagOutcomeFeatureFlagsResponseType = ClosedEnum<
+  typeof UpdateFlagOutcomeFeatureFlagsResponseType
+>;
+
+export type UpdateFlagOutcomeFeatureFlagsBase = {
+  type: UpdateFlagOutcomeFeatureFlagsResponseType;
+  kind: string;
+  attribute: string;
+};
+
+export type UpdateFlagOutcomeFeatureFlags2 = {
+  type: "split";
+  base: UpdateFlagOutcomeFeatureFlagsBase;
+  weights: { [k: string]: number };
+  defaultVariantId: string;
+};
+
+export type UpdateFlagOutcomeFeatureFlags1 = {
+  type: "variant";
+  variantId: string;
+};
+
+export type ResponseBodyOutcome =
+  | UpdateFlagOutcomeFeatureFlags1
+  | UpdateFlagOutcomeFeatureFlags2;
+
+export const UpdateFlagRhsFeatureFlagsResponseType = {
+  Regex: "regex",
+} as const;
+export type UpdateFlagRhsFeatureFlagsResponseType = ClosedEnum<
+  typeof UpdateFlagRhsFeatureFlagsResponseType
+>;
+
+export type UpdateFlagRhs4 = {
+  type: UpdateFlagRhsFeatureFlagsResponseType;
+  pattern: string;
+  flags: string;
+};
+
+export const UpdateFlagRhsFeatureFlagsType = {
+  ListInline: "list/inline",
+  List: "list",
+} as const;
+export type UpdateFlagRhsFeatureFlagsType = ClosedEnum<
+  typeof UpdateFlagRhsFeatureFlagsType
+>;
+
+export type UpdateFlagItemsFeatureFlags2 = {
+  label?: string | undefined;
+  note?: string | undefined;
+  value: string;
+};
+
+export type UpdateFlagItemsFeatureFlags1 = {
+  label?: string | undefined;
+  note?: string | undefined;
+  value: number;
+};
+
+export type UpdateFlagRhsFeatureFlagsItems =
+  | UpdateFlagItemsFeatureFlags1
+  | UpdateFlagItemsFeatureFlags2;
+
+export type UpdateFlagRhs3 = {
+  type: UpdateFlagRhsFeatureFlagsType;
+  items: Array<UpdateFlagItemsFeatureFlags1 | UpdateFlagItemsFeatureFlags2>;
+};
+
+export type ResponseBodyRhs =
+  | UpdateFlagRhs4
+  | UpdateFlagRhs3
+  | string
+  | number
+  | boolean;
+
+export type UpdateFlagLhsFeatureFlags2 = {
+  type: "entity";
+  kind: string;
+  attribute: string;
+};
+
+export type UpdateFlagLhsFeatureFlags1 = {
+  type: "segment";
+};
+
+export type ResponseBodyLhs =
+  | UpdateFlagLhsFeatureFlags1
+  | UpdateFlagLhsFeatureFlags2;
+
+export const ResponseBodyCmp = {
+  Eq: "eq",
+  NotEq: "!eq",
+  OneOf: "oneOf",
+  NotOneOf: "!oneOf",
+  ContainsAllOf: "containsAllOf",
+  ContainsAnyOf: "containsAnyOf",
+  ContainsNoneOf: "containsNoneOf",
+  StartsWith: "startsWith",
+  NotStartsWith: "!startsWith",
+  EndsWith: "endsWith",
+  NotEndsWith: "!endsWith",
+  Ex: "ex",
+  NotEx: "!ex",
+  Gt: "gt",
+  Gte: "gte",
+  Lt: "lt",
+  Lte: "lte",
+  Regex: "regex",
+  NotRegex: "!regex",
+  Before: "before",
+  After: "after",
+} as const;
+export type ResponseBodyCmp = ClosedEnum<typeof ResponseBodyCmp>;
+
+export type ResponseBodyConditions = {
+  rhs?: UpdateFlagRhs4 | UpdateFlagRhs3 | string | number | boolean | undefined;
+  lhs: UpdateFlagLhsFeatureFlags1 | UpdateFlagLhsFeatureFlags2;
+  cmp: ResponseBodyCmp;
+};
+
+export type ResponseBodyRules = {
+  id: string;
+  outcome: UpdateFlagOutcomeFeatureFlags1 | UpdateFlagOutcomeFeatureFlags2;
+  conditions: Array<ResponseBodyConditions>;
+};
+
+export type ResponseBodyEnvironments = {
+  reuse?: ResponseBodyReuse | undefined;
+  targets?: {
+    [k: string]: {
+      [k: string]: { [k: string]: Array<UpdateFlagResponseBodyTargets> };
+    };
+  } | undefined;
+  revision?: number | undefined;
+  pausedOutcome: ResponseBodyPausedOutcome;
+  fallthrough:
+    | UpdateFlagFallthroughFeatureFlags1
+    | UpdateFlagFallthroughFeatureFlags2;
+  active: boolean;
+  rules: Array<ResponseBodyRules>;
+};
+
+export const ResponseBodyKind = {
+  String: "string",
+  Number: "number",
+  Boolean: "boolean",
+} as const;
+export type ResponseBodyKind = ClosedEnum<typeof ResponseBodyKind>;
+
+export const ResponseBodyState = {
+  Active: "active",
+  Archived: "archived",
+} as const;
+export type ResponseBodyState = ClosedEnum<typeof ResponseBodyState>;
+
+export const ResponseBodyTypeName = {
+  Flag: "flag",
+} as const;
+export type ResponseBodyTypeName = ClosedEnum<typeof ResponseBodyTypeName>;
+
+export type UpdateFlagResponseBody1 = {
+  description?: string | undefined;
+  variants: Array<ResponseBodyVariants>;
+  id: string;
+  environments: { [k: string]: ResponseBodyEnvironments };
+  kind: ResponseBodyKind;
+  revision: number;
+  seed: number;
+  state: ResponseBodyState;
+  slug: string;
+  createdAt: number;
+  updatedAt: number;
+  createdBy: string;
+  ownerId: string;
+  projectId: string;
+  typeName: ResponseBodyTypeName;
+};
+
+export type UpdateFlagResponseBody = UpdateFlagResponseBody1 | Flag;
 
 /** @internal */
 export const UpdateFlagValue$inboundSchema: z.ZodType<
@@ -1559,5 +1808,1390 @@ export function updateFlagRequestFromJSON(
     jsonString,
     (x) => UpdateFlagRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'UpdateFlagRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyValue$inboundSchema: z.ZodType<
+  ResponseBodyValue,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), types.number(), types.boolean()]);
+/** @internal */
+export type ResponseBodyValue$Outbound = string | number | boolean;
+
+/** @internal */
+export const ResponseBodyValue$outboundSchema: z.ZodType<
+  ResponseBodyValue$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyValue
+> = smartUnion([z.string(), z.number(), z.boolean()]);
+
+export function responseBodyValueToJSON(
+  responseBodyValue: ResponseBodyValue,
+): string {
+  return JSON.stringify(
+    ResponseBodyValue$outboundSchema.parse(responseBodyValue),
+  );
+}
+export function responseBodyValueFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyVariants$inboundSchema: z.ZodType<
+  ResponseBodyVariants,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  description: types.optional(types.string()),
+  label: types.optional(types.string()),
+  value: smartUnion([types.string(), types.number(), types.boolean()]),
+  id: types.string(),
+});
+/** @internal */
+export type ResponseBodyVariants$Outbound = {
+  description?: string | undefined;
+  label?: string | undefined;
+  value: string | number | boolean;
+  id: string;
+};
+
+/** @internal */
+export const ResponseBodyVariants$outboundSchema: z.ZodType<
+  ResponseBodyVariants$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyVariants
+> = z.object({
+  description: z.string().optional(),
+  label: z.string().optional(),
+  value: smartUnion([z.string(), z.number(), z.boolean()]),
+  id: z.string(),
+});
+
+export function responseBodyVariantsToJSON(
+  responseBodyVariants: ResponseBodyVariants,
+): string {
+  return JSON.stringify(
+    ResponseBodyVariants$outboundSchema.parse(responseBodyVariants),
+  );
+}
+export function responseBodyVariantsFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyVariants, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyVariants$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyVariants' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyReuse$inboundSchema: z.ZodType<
+  ResponseBodyReuse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  active: types.boolean(),
+  environment: types.string(),
+});
+/** @internal */
+export type ResponseBodyReuse$Outbound = {
+  active: boolean;
+  environment: string;
+};
+
+/** @internal */
+export const ResponseBodyReuse$outboundSchema: z.ZodType<
+  ResponseBodyReuse$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyReuse
+> = z.object({
+  active: z.boolean(),
+  environment: z.string(),
+});
+
+export function responseBodyReuseToJSON(
+  responseBodyReuse: ResponseBodyReuse,
+): string {
+  return JSON.stringify(
+    ResponseBodyReuse$outboundSchema.parse(responseBodyReuse),
+  );
+}
+export function responseBodyReuseFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyReuse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyReuse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyReuse' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagResponseBodyTargets$inboundSchema: z.ZodType<
+  UpdateFlagResponseBodyTargets,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  note: types.optional(types.string()),
+  value: types.string(),
+});
+/** @internal */
+export type UpdateFlagResponseBodyTargets$Outbound = {
+  note?: string | undefined;
+  value: string;
+};
+
+/** @internal */
+export const UpdateFlagResponseBodyTargets$outboundSchema: z.ZodType<
+  UpdateFlagResponseBodyTargets$Outbound,
+  z.ZodTypeDef,
+  UpdateFlagResponseBodyTargets
+> = z.object({
+  note: z.string().optional(),
+  value: z.string(),
+});
+
+export function updateFlagResponseBodyTargetsToJSON(
+  updateFlagResponseBodyTargets: UpdateFlagResponseBodyTargets,
+): string {
+  return JSON.stringify(
+    UpdateFlagResponseBodyTargets$outboundSchema.parse(
+      updateFlagResponseBodyTargets,
+    ),
+  );
+}
+export function updateFlagResponseBodyTargetsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFlagResponseBodyTargets, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateFlagResponseBodyTargets$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFlagResponseBodyTargets' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagResponseBodyType$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateFlagResponseBodyType
+> = z.nativeEnum(UpdateFlagResponseBodyType);
+/** @internal */
+export const UpdateFlagResponseBodyType$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateFlagResponseBodyType
+> = UpdateFlagResponseBodyType$inboundSchema;
+
+/** @internal */
+export const ResponseBodyPausedOutcome$inboundSchema: z.ZodType<
+  ResponseBodyPausedOutcome,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: UpdateFlagResponseBodyType$inboundSchema,
+  variantId: types.string(),
+});
+/** @internal */
+export type ResponseBodyPausedOutcome$Outbound = {
+  type: string;
+  variantId: string;
+};
+
+/** @internal */
+export const ResponseBodyPausedOutcome$outboundSchema: z.ZodType<
+  ResponseBodyPausedOutcome$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyPausedOutcome
+> = z.object({
+  type: UpdateFlagResponseBodyType$outboundSchema,
+  variantId: z.string(),
+});
+
+export function responseBodyPausedOutcomeToJSON(
+  responseBodyPausedOutcome: ResponseBodyPausedOutcome,
+): string {
+  return JSON.stringify(
+    ResponseBodyPausedOutcome$outboundSchema.parse(responseBodyPausedOutcome),
+  );
+}
+export function responseBodyPausedOutcomeFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyPausedOutcome, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyPausedOutcome$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyPausedOutcome' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagFallthroughFeatureFlagsResponseType$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateFlagFallthroughFeatureFlagsResponseType> = z
+    .nativeEnum(UpdateFlagFallthroughFeatureFlagsResponseType);
+/** @internal */
+export const UpdateFlagFallthroughFeatureFlagsResponseType$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateFlagFallthroughFeatureFlagsResponseType> =
+    UpdateFlagFallthroughFeatureFlagsResponseType$inboundSchema;
+
+/** @internal */
+export const UpdateFlagFallthroughFeatureFlagsBase$inboundSchema: z.ZodType<
+  UpdateFlagFallthroughFeatureFlagsBase,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: UpdateFlagFallthroughFeatureFlagsResponseType$inboundSchema,
+  kind: types.string(),
+  attribute: types.string(),
+});
+/** @internal */
+export type UpdateFlagFallthroughFeatureFlagsBase$Outbound = {
+  type: string;
+  kind: string;
+  attribute: string;
+};
+
+/** @internal */
+export const UpdateFlagFallthroughFeatureFlagsBase$outboundSchema: z.ZodType<
+  UpdateFlagFallthroughFeatureFlagsBase$Outbound,
+  z.ZodTypeDef,
+  UpdateFlagFallthroughFeatureFlagsBase
+> = z.object({
+  type: UpdateFlagFallthroughFeatureFlagsResponseType$outboundSchema,
+  kind: z.string(),
+  attribute: z.string(),
+});
+
+export function updateFlagFallthroughFeatureFlagsBaseToJSON(
+  updateFlagFallthroughFeatureFlagsBase: UpdateFlagFallthroughFeatureFlagsBase,
+): string {
+  return JSON.stringify(
+    UpdateFlagFallthroughFeatureFlagsBase$outboundSchema.parse(
+      updateFlagFallthroughFeatureFlagsBase,
+    ),
+  );
+}
+export function updateFlagFallthroughFeatureFlagsBaseFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFlagFallthroughFeatureFlagsBase, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateFlagFallthroughFeatureFlagsBase$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFlagFallthroughFeatureFlagsBase' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagFallthroughFeatureFlags2$inboundSchema: z.ZodType<
+  UpdateFlagFallthroughFeatureFlags2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("split"),
+  base: z.lazy(() => UpdateFlagFallthroughFeatureFlagsBase$inboundSchema),
+  weights: z.record(types.number()),
+  defaultVariantId: types.string(),
+});
+/** @internal */
+export type UpdateFlagFallthroughFeatureFlags2$Outbound = {
+  type: "split";
+  base: UpdateFlagFallthroughFeatureFlagsBase$Outbound;
+  weights: { [k: string]: number };
+  defaultVariantId: string;
+};
+
+/** @internal */
+export const UpdateFlagFallthroughFeatureFlags2$outboundSchema: z.ZodType<
+  UpdateFlagFallthroughFeatureFlags2$Outbound,
+  z.ZodTypeDef,
+  UpdateFlagFallthroughFeatureFlags2
+> = z.object({
+  type: z.literal("split"),
+  base: z.lazy(() => UpdateFlagFallthroughFeatureFlagsBase$outboundSchema),
+  weights: z.record(z.number()),
+  defaultVariantId: z.string(),
+});
+
+export function updateFlagFallthroughFeatureFlags2ToJSON(
+  updateFlagFallthroughFeatureFlags2: UpdateFlagFallthroughFeatureFlags2,
+): string {
+  return JSON.stringify(
+    UpdateFlagFallthroughFeatureFlags2$outboundSchema.parse(
+      updateFlagFallthroughFeatureFlags2,
+    ),
+  );
+}
+export function updateFlagFallthroughFeatureFlags2FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFlagFallthroughFeatureFlags2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateFlagFallthroughFeatureFlags2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFlagFallthroughFeatureFlags2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagFallthroughFeatureFlags1$inboundSchema: z.ZodType<
+  UpdateFlagFallthroughFeatureFlags1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("variant"),
+  variantId: types.string(),
+});
+/** @internal */
+export type UpdateFlagFallthroughFeatureFlags1$Outbound = {
+  type: "variant";
+  variantId: string;
+};
+
+/** @internal */
+export const UpdateFlagFallthroughFeatureFlags1$outboundSchema: z.ZodType<
+  UpdateFlagFallthroughFeatureFlags1$Outbound,
+  z.ZodTypeDef,
+  UpdateFlagFallthroughFeatureFlags1
+> = z.object({
+  type: z.literal("variant"),
+  variantId: z.string(),
+});
+
+export function updateFlagFallthroughFeatureFlags1ToJSON(
+  updateFlagFallthroughFeatureFlags1: UpdateFlagFallthroughFeatureFlags1,
+): string {
+  return JSON.stringify(
+    UpdateFlagFallthroughFeatureFlags1$outboundSchema.parse(
+      updateFlagFallthroughFeatureFlags1,
+    ),
+  );
+}
+export function updateFlagFallthroughFeatureFlags1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFlagFallthroughFeatureFlags1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateFlagFallthroughFeatureFlags1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFlagFallthroughFeatureFlags1' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyFallthrough$inboundSchema: z.ZodType<
+  ResponseBodyFallthrough,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => UpdateFlagFallthroughFeatureFlags1$inboundSchema),
+  z.lazy(() => UpdateFlagFallthroughFeatureFlags2$inboundSchema),
+]);
+/** @internal */
+export type ResponseBodyFallthrough$Outbound =
+  | UpdateFlagFallthroughFeatureFlags1$Outbound
+  | UpdateFlagFallthroughFeatureFlags2$Outbound;
+
+/** @internal */
+export const ResponseBodyFallthrough$outboundSchema: z.ZodType<
+  ResponseBodyFallthrough$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyFallthrough
+> = z.union([
+  z.lazy(() => UpdateFlagFallthroughFeatureFlags1$outboundSchema),
+  z.lazy(() => UpdateFlagFallthroughFeatureFlags2$outboundSchema),
+]);
+
+export function responseBodyFallthroughToJSON(
+  responseBodyFallthrough: ResponseBodyFallthrough,
+): string {
+  return JSON.stringify(
+    ResponseBodyFallthrough$outboundSchema.parse(responseBodyFallthrough),
+  );
+}
+export function responseBodyFallthroughFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyFallthrough, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyFallthrough$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyFallthrough' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagOutcomeFeatureFlagsResponseType$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateFlagOutcomeFeatureFlagsResponseType> = z
+    .nativeEnum(UpdateFlagOutcomeFeatureFlagsResponseType);
+/** @internal */
+export const UpdateFlagOutcomeFeatureFlagsResponseType$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateFlagOutcomeFeatureFlagsResponseType> =
+    UpdateFlagOutcomeFeatureFlagsResponseType$inboundSchema;
+
+/** @internal */
+export const UpdateFlagOutcomeFeatureFlagsBase$inboundSchema: z.ZodType<
+  UpdateFlagOutcomeFeatureFlagsBase,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: UpdateFlagOutcomeFeatureFlagsResponseType$inboundSchema,
+  kind: types.string(),
+  attribute: types.string(),
+});
+/** @internal */
+export type UpdateFlagOutcomeFeatureFlagsBase$Outbound = {
+  type: string;
+  kind: string;
+  attribute: string;
+};
+
+/** @internal */
+export const UpdateFlagOutcomeFeatureFlagsBase$outboundSchema: z.ZodType<
+  UpdateFlagOutcomeFeatureFlagsBase$Outbound,
+  z.ZodTypeDef,
+  UpdateFlagOutcomeFeatureFlagsBase
+> = z.object({
+  type: UpdateFlagOutcomeFeatureFlagsResponseType$outboundSchema,
+  kind: z.string(),
+  attribute: z.string(),
+});
+
+export function updateFlagOutcomeFeatureFlagsBaseToJSON(
+  updateFlagOutcomeFeatureFlagsBase: UpdateFlagOutcomeFeatureFlagsBase,
+): string {
+  return JSON.stringify(
+    UpdateFlagOutcomeFeatureFlagsBase$outboundSchema.parse(
+      updateFlagOutcomeFeatureFlagsBase,
+    ),
+  );
+}
+export function updateFlagOutcomeFeatureFlagsBaseFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFlagOutcomeFeatureFlagsBase, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateFlagOutcomeFeatureFlagsBase$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFlagOutcomeFeatureFlagsBase' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagOutcomeFeatureFlags2$inboundSchema: z.ZodType<
+  UpdateFlagOutcomeFeatureFlags2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("split"),
+  base: z.lazy(() => UpdateFlagOutcomeFeatureFlagsBase$inboundSchema),
+  weights: z.record(types.number()),
+  defaultVariantId: types.string(),
+});
+/** @internal */
+export type UpdateFlagOutcomeFeatureFlags2$Outbound = {
+  type: "split";
+  base: UpdateFlagOutcomeFeatureFlagsBase$Outbound;
+  weights: { [k: string]: number };
+  defaultVariantId: string;
+};
+
+/** @internal */
+export const UpdateFlagOutcomeFeatureFlags2$outboundSchema: z.ZodType<
+  UpdateFlagOutcomeFeatureFlags2$Outbound,
+  z.ZodTypeDef,
+  UpdateFlagOutcomeFeatureFlags2
+> = z.object({
+  type: z.literal("split"),
+  base: z.lazy(() => UpdateFlagOutcomeFeatureFlagsBase$outboundSchema),
+  weights: z.record(z.number()),
+  defaultVariantId: z.string(),
+});
+
+export function updateFlagOutcomeFeatureFlags2ToJSON(
+  updateFlagOutcomeFeatureFlags2: UpdateFlagOutcomeFeatureFlags2,
+): string {
+  return JSON.stringify(
+    UpdateFlagOutcomeFeatureFlags2$outboundSchema.parse(
+      updateFlagOutcomeFeatureFlags2,
+    ),
+  );
+}
+export function updateFlagOutcomeFeatureFlags2FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFlagOutcomeFeatureFlags2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateFlagOutcomeFeatureFlags2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFlagOutcomeFeatureFlags2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagOutcomeFeatureFlags1$inboundSchema: z.ZodType<
+  UpdateFlagOutcomeFeatureFlags1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("variant"),
+  variantId: types.string(),
+});
+/** @internal */
+export type UpdateFlagOutcomeFeatureFlags1$Outbound = {
+  type: "variant";
+  variantId: string;
+};
+
+/** @internal */
+export const UpdateFlagOutcomeFeatureFlags1$outboundSchema: z.ZodType<
+  UpdateFlagOutcomeFeatureFlags1$Outbound,
+  z.ZodTypeDef,
+  UpdateFlagOutcomeFeatureFlags1
+> = z.object({
+  type: z.literal("variant"),
+  variantId: z.string(),
+});
+
+export function updateFlagOutcomeFeatureFlags1ToJSON(
+  updateFlagOutcomeFeatureFlags1: UpdateFlagOutcomeFeatureFlags1,
+): string {
+  return JSON.stringify(
+    UpdateFlagOutcomeFeatureFlags1$outboundSchema.parse(
+      updateFlagOutcomeFeatureFlags1,
+    ),
+  );
+}
+export function updateFlagOutcomeFeatureFlags1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFlagOutcomeFeatureFlags1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateFlagOutcomeFeatureFlags1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFlagOutcomeFeatureFlags1' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyOutcome$inboundSchema: z.ZodType<
+  ResponseBodyOutcome,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => UpdateFlagOutcomeFeatureFlags1$inboundSchema),
+  z.lazy(() => UpdateFlagOutcomeFeatureFlags2$inboundSchema),
+]);
+/** @internal */
+export type ResponseBodyOutcome$Outbound =
+  | UpdateFlagOutcomeFeatureFlags1$Outbound
+  | UpdateFlagOutcomeFeatureFlags2$Outbound;
+
+/** @internal */
+export const ResponseBodyOutcome$outboundSchema: z.ZodType<
+  ResponseBodyOutcome$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyOutcome
+> = z.union([
+  z.lazy(() => UpdateFlagOutcomeFeatureFlags1$outboundSchema),
+  z.lazy(() => UpdateFlagOutcomeFeatureFlags2$outboundSchema),
+]);
+
+export function responseBodyOutcomeToJSON(
+  responseBodyOutcome: ResponseBodyOutcome,
+): string {
+  return JSON.stringify(
+    ResponseBodyOutcome$outboundSchema.parse(responseBodyOutcome),
+  );
+}
+export function responseBodyOutcomeFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyOutcome, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyOutcome$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyOutcome' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagRhsFeatureFlagsResponseType$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateFlagRhsFeatureFlagsResponseType> = z.nativeEnum(
+    UpdateFlagRhsFeatureFlagsResponseType,
+  );
+/** @internal */
+export const UpdateFlagRhsFeatureFlagsResponseType$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateFlagRhsFeatureFlagsResponseType> =
+    UpdateFlagRhsFeatureFlagsResponseType$inboundSchema;
+
+/** @internal */
+export const UpdateFlagRhs4$inboundSchema: z.ZodType<
+  UpdateFlagRhs4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: UpdateFlagRhsFeatureFlagsResponseType$inboundSchema,
+  pattern: types.string(),
+  flags: types.string(),
+});
+/** @internal */
+export type UpdateFlagRhs4$Outbound = {
+  type: string;
+  pattern: string;
+  flags: string;
+};
+
+/** @internal */
+export const UpdateFlagRhs4$outboundSchema: z.ZodType<
+  UpdateFlagRhs4$Outbound,
+  z.ZodTypeDef,
+  UpdateFlagRhs4
+> = z.object({
+  type: UpdateFlagRhsFeatureFlagsResponseType$outboundSchema,
+  pattern: z.string(),
+  flags: z.string(),
+});
+
+export function updateFlagRhs4ToJSON(updateFlagRhs4: UpdateFlagRhs4): string {
+  return JSON.stringify(UpdateFlagRhs4$outboundSchema.parse(updateFlagRhs4));
+}
+export function updateFlagRhs4FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFlagRhs4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateFlagRhs4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFlagRhs4' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagRhsFeatureFlagsType$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateFlagRhsFeatureFlagsType
+> = z.nativeEnum(UpdateFlagRhsFeatureFlagsType);
+/** @internal */
+export const UpdateFlagRhsFeatureFlagsType$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateFlagRhsFeatureFlagsType
+> = UpdateFlagRhsFeatureFlagsType$inboundSchema;
+
+/** @internal */
+export const UpdateFlagItemsFeatureFlags2$inboundSchema: z.ZodType<
+  UpdateFlagItemsFeatureFlags2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  label: types.optional(types.string()),
+  note: types.optional(types.string()),
+  value: types.string(),
+});
+/** @internal */
+export type UpdateFlagItemsFeatureFlags2$Outbound = {
+  label?: string | undefined;
+  note?: string | undefined;
+  value: string;
+};
+
+/** @internal */
+export const UpdateFlagItemsFeatureFlags2$outboundSchema: z.ZodType<
+  UpdateFlagItemsFeatureFlags2$Outbound,
+  z.ZodTypeDef,
+  UpdateFlagItemsFeatureFlags2
+> = z.object({
+  label: z.string().optional(),
+  note: z.string().optional(),
+  value: z.string(),
+});
+
+export function updateFlagItemsFeatureFlags2ToJSON(
+  updateFlagItemsFeatureFlags2: UpdateFlagItemsFeatureFlags2,
+): string {
+  return JSON.stringify(
+    UpdateFlagItemsFeatureFlags2$outboundSchema.parse(
+      updateFlagItemsFeatureFlags2,
+    ),
+  );
+}
+export function updateFlagItemsFeatureFlags2FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFlagItemsFeatureFlags2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateFlagItemsFeatureFlags2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFlagItemsFeatureFlags2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagItemsFeatureFlags1$inboundSchema: z.ZodType<
+  UpdateFlagItemsFeatureFlags1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  label: types.optional(types.string()),
+  note: types.optional(types.string()),
+  value: types.number(),
+});
+/** @internal */
+export type UpdateFlagItemsFeatureFlags1$Outbound = {
+  label?: string | undefined;
+  note?: string | undefined;
+  value: number;
+};
+
+/** @internal */
+export const UpdateFlagItemsFeatureFlags1$outboundSchema: z.ZodType<
+  UpdateFlagItemsFeatureFlags1$Outbound,
+  z.ZodTypeDef,
+  UpdateFlagItemsFeatureFlags1
+> = z.object({
+  label: z.string().optional(),
+  note: z.string().optional(),
+  value: z.number(),
+});
+
+export function updateFlagItemsFeatureFlags1ToJSON(
+  updateFlagItemsFeatureFlags1: UpdateFlagItemsFeatureFlags1,
+): string {
+  return JSON.stringify(
+    UpdateFlagItemsFeatureFlags1$outboundSchema.parse(
+      updateFlagItemsFeatureFlags1,
+    ),
+  );
+}
+export function updateFlagItemsFeatureFlags1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFlagItemsFeatureFlags1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateFlagItemsFeatureFlags1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFlagItemsFeatureFlags1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagRhsFeatureFlagsItems$inboundSchema: z.ZodType<
+  UpdateFlagRhsFeatureFlagsItems,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => UpdateFlagItemsFeatureFlags1$inboundSchema),
+  z.lazy(() => UpdateFlagItemsFeatureFlags2$inboundSchema),
+]);
+/** @internal */
+export type UpdateFlagRhsFeatureFlagsItems$Outbound =
+  | UpdateFlagItemsFeatureFlags1$Outbound
+  | UpdateFlagItemsFeatureFlags2$Outbound;
+
+/** @internal */
+export const UpdateFlagRhsFeatureFlagsItems$outboundSchema: z.ZodType<
+  UpdateFlagRhsFeatureFlagsItems$Outbound,
+  z.ZodTypeDef,
+  UpdateFlagRhsFeatureFlagsItems
+> = smartUnion([
+  z.lazy(() => UpdateFlagItemsFeatureFlags1$outboundSchema),
+  z.lazy(() => UpdateFlagItemsFeatureFlags2$outboundSchema),
+]);
+
+export function updateFlagRhsFeatureFlagsItemsToJSON(
+  updateFlagRhsFeatureFlagsItems: UpdateFlagRhsFeatureFlagsItems,
+): string {
+  return JSON.stringify(
+    UpdateFlagRhsFeatureFlagsItems$outboundSchema.parse(
+      updateFlagRhsFeatureFlagsItems,
+    ),
+  );
+}
+export function updateFlagRhsFeatureFlagsItemsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFlagRhsFeatureFlagsItems, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateFlagRhsFeatureFlagsItems$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFlagRhsFeatureFlagsItems' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagRhs3$inboundSchema: z.ZodType<
+  UpdateFlagRhs3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: UpdateFlagRhsFeatureFlagsType$inboundSchema,
+  items: z.array(
+    smartUnion([
+      z.lazy(() => UpdateFlagItemsFeatureFlags1$inboundSchema),
+      z.lazy(() => UpdateFlagItemsFeatureFlags2$inboundSchema),
+    ]),
+  ),
+});
+/** @internal */
+export type UpdateFlagRhs3$Outbound = {
+  type: string;
+  items: Array<
+    | UpdateFlagItemsFeatureFlags1$Outbound
+    | UpdateFlagItemsFeatureFlags2$Outbound
+  >;
+};
+
+/** @internal */
+export const UpdateFlagRhs3$outboundSchema: z.ZodType<
+  UpdateFlagRhs3$Outbound,
+  z.ZodTypeDef,
+  UpdateFlagRhs3
+> = z.object({
+  type: UpdateFlagRhsFeatureFlagsType$outboundSchema,
+  items: z.array(
+    smartUnion([
+      z.lazy(() => UpdateFlagItemsFeatureFlags1$outboundSchema),
+      z.lazy(() => UpdateFlagItemsFeatureFlags2$outboundSchema),
+    ]),
+  ),
+});
+
+export function updateFlagRhs3ToJSON(updateFlagRhs3: UpdateFlagRhs3): string {
+  return JSON.stringify(UpdateFlagRhs3$outboundSchema.parse(updateFlagRhs3));
+}
+export function updateFlagRhs3FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFlagRhs3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateFlagRhs3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFlagRhs3' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyRhs$inboundSchema: z.ZodType<
+  ResponseBodyRhs,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => UpdateFlagRhs4$inboundSchema),
+  z.lazy(() => UpdateFlagRhs3$inboundSchema),
+  types.string(),
+  types.number(),
+  types.boolean(),
+]);
+/** @internal */
+export type ResponseBodyRhs$Outbound =
+  | UpdateFlagRhs4$Outbound
+  | UpdateFlagRhs3$Outbound
+  | string
+  | number
+  | boolean;
+
+/** @internal */
+export const ResponseBodyRhs$outboundSchema: z.ZodType<
+  ResponseBodyRhs$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyRhs
+> = smartUnion([
+  z.lazy(() => UpdateFlagRhs4$outboundSchema),
+  z.lazy(() => UpdateFlagRhs3$outboundSchema),
+  z.string(),
+  z.number(),
+  z.boolean(),
+]);
+
+export function responseBodyRhsToJSON(
+  responseBodyRhs: ResponseBodyRhs,
+): string {
+  return JSON.stringify(ResponseBodyRhs$outboundSchema.parse(responseBodyRhs));
+}
+export function responseBodyRhsFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyRhs, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyRhs$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyRhs' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagLhsFeatureFlags2$inboundSchema: z.ZodType<
+  UpdateFlagLhsFeatureFlags2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("entity"),
+  kind: types.string(),
+  attribute: types.string(),
+});
+/** @internal */
+export type UpdateFlagLhsFeatureFlags2$Outbound = {
+  type: "entity";
+  kind: string;
+  attribute: string;
+};
+
+/** @internal */
+export const UpdateFlagLhsFeatureFlags2$outboundSchema: z.ZodType<
+  UpdateFlagLhsFeatureFlags2$Outbound,
+  z.ZodTypeDef,
+  UpdateFlagLhsFeatureFlags2
+> = z.object({
+  type: z.literal("entity"),
+  kind: z.string(),
+  attribute: z.string(),
+});
+
+export function updateFlagLhsFeatureFlags2ToJSON(
+  updateFlagLhsFeatureFlags2: UpdateFlagLhsFeatureFlags2,
+): string {
+  return JSON.stringify(
+    UpdateFlagLhsFeatureFlags2$outboundSchema.parse(updateFlagLhsFeatureFlags2),
+  );
+}
+export function updateFlagLhsFeatureFlags2FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFlagLhsFeatureFlags2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateFlagLhsFeatureFlags2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFlagLhsFeatureFlags2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagLhsFeatureFlags1$inboundSchema: z.ZodType<
+  UpdateFlagLhsFeatureFlags1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: types.literal("segment"),
+});
+/** @internal */
+export type UpdateFlagLhsFeatureFlags1$Outbound = {
+  type: "segment";
+};
+
+/** @internal */
+export const UpdateFlagLhsFeatureFlags1$outboundSchema: z.ZodType<
+  UpdateFlagLhsFeatureFlags1$Outbound,
+  z.ZodTypeDef,
+  UpdateFlagLhsFeatureFlags1
+> = z.object({
+  type: z.literal("segment"),
+});
+
+export function updateFlagLhsFeatureFlags1ToJSON(
+  updateFlagLhsFeatureFlags1: UpdateFlagLhsFeatureFlags1,
+): string {
+  return JSON.stringify(
+    UpdateFlagLhsFeatureFlags1$outboundSchema.parse(updateFlagLhsFeatureFlags1),
+  );
+}
+export function updateFlagLhsFeatureFlags1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFlagLhsFeatureFlags1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateFlagLhsFeatureFlags1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFlagLhsFeatureFlags1' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyLhs$inboundSchema: z.ZodType<
+  ResponseBodyLhs,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => UpdateFlagLhsFeatureFlags1$inboundSchema),
+  z.lazy(() => UpdateFlagLhsFeatureFlags2$inboundSchema),
+]);
+/** @internal */
+export type ResponseBodyLhs$Outbound =
+  | UpdateFlagLhsFeatureFlags1$Outbound
+  | UpdateFlagLhsFeatureFlags2$Outbound;
+
+/** @internal */
+export const ResponseBodyLhs$outboundSchema: z.ZodType<
+  ResponseBodyLhs$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyLhs
+> = z.union([
+  z.lazy(() => UpdateFlagLhsFeatureFlags1$outboundSchema),
+  z.lazy(() => UpdateFlagLhsFeatureFlags2$outboundSchema),
+]);
+
+export function responseBodyLhsToJSON(
+  responseBodyLhs: ResponseBodyLhs,
+): string {
+  return JSON.stringify(ResponseBodyLhs$outboundSchema.parse(responseBodyLhs));
+}
+export function responseBodyLhsFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyLhs, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyLhs$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyLhs' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyCmp$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyCmp
+> = z.nativeEnum(ResponseBodyCmp);
+/** @internal */
+export const ResponseBodyCmp$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyCmp
+> = ResponseBodyCmp$inboundSchema;
+
+/** @internal */
+export const ResponseBodyConditions$inboundSchema: z.ZodType<
+  ResponseBodyConditions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  rhs: types.optional(
+    smartUnion([
+      z.lazy(() => UpdateFlagRhs4$inboundSchema),
+      z.lazy(() => UpdateFlagRhs3$inboundSchema),
+      types.string(),
+      types.number(),
+      types.boolean(),
+    ]),
+  ),
+  lhs: z.union([
+    z.lazy(() => UpdateFlagLhsFeatureFlags1$inboundSchema),
+    z.lazy(() => UpdateFlagLhsFeatureFlags2$inboundSchema),
+  ]),
+  cmp: ResponseBodyCmp$inboundSchema,
+});
+/** @internal */
+export type ResponseBodyConditions$Outbound = {
+  rhs?:
+    | UpdateFlagRhs4$Outbound
+    | UpdateFlagRhs3$Outbound
+    | string
+    | number
+    | boolean
+    | undefined;
+  lhs:
+    | UpdateFlagLhsFeatureFlags1$Outbound
+    | UpdateFlagLhsFeatureFlags2$Outbound;
+  cmp: string;
+};
+
+/** @internal */
+export const ResponseBodyConditions$outboundSchema: z.ZodType<
+  ResponseBodyConditions$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyConditions
+> = z.object({
+  rhs: smartUnion([
+    z.lazy(() => UpdateFlagRhs4$outboundSchema),
+    z.lazy(() => UpdateFlagRhs3$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+  ]).optional(),
+  lhs: z.union([
+    z.lazy(() => UpdateFlagLhsFeatureFlags1$outboundSchema),
+    z.lazy(() => UpdateFlagLhsFeatureFlags2$outboundSchema),
+  ]),
+  cmp: ResponseBodyCmp$outboundSchema,
+});
+
+export function responseBodyConditionsToJSON(
+  responseBodyConditions: ResponseBodyConditions,
+): string {
+  return JSON.stringify(
+    ResponseBodyConditions$outboundSchema.parse(responseBodyConditions),
+  );
+}
+export function responseBodyConditionsFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyConditions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyConditions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyConditions' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyRules$inboundSchema: z.ZodType<
+  ResponseBodyRules,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: types.string(),
+  outcome: z.union([
+    z.lazy(() => UpdateFlagOutcomeFeatureFlags1$inboundSchema),
+    z.lazy(() => UpdateFlagOutcomeFeatureFlags2$inboundSchema),
+  ]),
+  conditions: z.array(z.lazy(() => ResponseBodyConditions$inboundSchema)),
+});
+/** @internal */
+export type ResponseBodyRules$Outbound = {
+  id: string;
+  outcome:
+    | UpdateFlagOutcomeFeatureFlags1$Outbound
+    | UpdateFlagOutcomeFeatureFlags2$Outbound;
+  conditions: Array<ResponseBodyConditions$Outbound>;
+};
+
+/** @internal */
+export const ResponseBodyRules$outboundSchema: z.ZodType<
+  ResponseBodyRules$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyRules
+> = z.object({
+  id: z.string(),
+  outcome: z.union([
+    z.lazy(() => UpdateFlagOutcomeFeatureFlags1$outboundSchema),
+    z.lazy(() => UpdateFlagOutcomeFeatureFlags2$outboundSchema),
+  ]),
+  conditions: z.array(z.lazy(() => ResponseBodyConditions$outboundSchema)),
+});
+
+export function responseBodyRulesToJSON(
+  responseBodyRules: ResponseBodyRules,
+): string {
+  return JSON.stringify(
+    ResponseBodyRules$outboundSchema.parse(responseBodyRules),
+  );
+}
+export function responseBodyRulesFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyRules, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyRules$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyRules' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyEnvironments$inboundSchema: z.ZodType<
+  ResponseBodyEnvironments,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  reuse: types.optional(z.lazy(() => ResponseBodyReuse$inboundSchema)),
+  targets: types.optional(
+    z.record(z.record(z.record(z.array(z.lazy(() =>
+      UpdateFlagResponseBodyTargets$inboundSchema
+    ))))),
+  ),
+  revision: types.optional(types.number()),
+  pausedOutcome: z.lazy(() => ResponseBodyPausedOutcome$inboundSchema),
+  fallthrough: z.union([
+    z.lazy(() => UpdateFlagFallthroughFeatureFlags1$inboundSchema),
+    z.lazy(() => UpdateFlagFallthroughFeatureFlags2$inboundSchema),
+  ]),
+  active: types.boolean(),
+  rules: z.array(z.lazy(() => ResponseBodyRules$inboundSchema)),
+});
+/** @internal */
+export type ResponseBodyEnvironments$Outbound = {
+  reuse?: ResponseBodyReuse$Outbound | undefined;
+  targets?: {
+    [k: string]: {
+      [k: string]: {
+        [k: string]: Array<UpdateFlagResponseBodyTargets$Outbound>;
+      };
+    };
+  } | undefined;
+  revision?: number | undefined;
+  pausedOutcome: ResponseBodyPausedOutcome$Outbound;
+  fallthrough:
+    | UpdateFlagFallthroughFeatureFlags1$Outbound
+    | UpdateFlagFallthroughFeatureFlags2$Outbound;
+  active: boolean;
+  rules: Array<ResponseBodyRules$Outbound>;
+};
+
+/** @internal */
+export const ResponseBodyEnvironments$outboundSchema: z.ZodType<
+  ResponseBodyEnvironments$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyEnvironments
+> = z.object({
+  reuse: z.lazy(() => ResponseBodyReuse$outboundSchema).optional(),
+  targets: z.record(
+    z.record(z.record(z.array(z.lazy(() =>
+      UpdateFlagResponseBodyTargets$outboundSchema
+    )))),
+  ).optional(),
+  revision: z.number().optional(),
+  pausedOutcome: z.lazy(() => ResponseBodyPausedOutcome$outboundSchema),
+  fallthrough: z.union([
+    z.lazy(() => UpdateFlagFallthroughFeatureFlags1$outboundSchema),
+    z.lazy(() => UpdateFlagFallthroughFeatureFlags2$outboundSchema),
+  ]),
+  active: z.boolean(),
+  rules: z.array(z.lazy(() => ResponseBodyRules$outboundSchema)),
+});
+
+export function responseBodyEnvironmentsToJSON(
+  responseBodyEnvironments: ResponseBodyEnvironments,
+): string {
+  return JSON.stringify(
+    ResponseBodyEnvironments$outboundSchema.parse(responseBodyEnvironments),
+  );
+}
+export function responseBodyEnvironmentsFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyEnvironments, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyEnvironments$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyEnvironments' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyKind$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyKind
+> = z.nativeEnum(ResponseBodyKind);
+/** @internal */
+export const ResponseBodyKind$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyKind
+> = ResponseBodyKind$inboundSchema;
+
+/** @internal */
+export const ResponseBodyState$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyState
+> = z.nativeEnum(ResponseBodyState);
+/** @internal */
+export const ResponseBodyState$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyState
+> = ResponseBodyState$inboundSchema;
+
+/** @internal */
+export const ResponseBodyTypeName$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyTypeName
+> = z.nativeEnum(ResponseBodyTypeName);
+/** @internal */
+export const ResponseBodyTypeName$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyTypeName
+> = ResponseBodyTypeName$inboundSchema;
+
+/** @internal */
+export const UpdateFlagResponseBody1$inboundSchema: z.ZodType<
+  UpdateFlagResponseBody1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  description: types.optional(types.string()),
+  variants: z.array(z.lazy(() => ResponseBodyVariants$inboundSchema)),
+  id: types.string(),
+  environments: z.record(z.lazy(() => ResponseBodyEnvironments$inboundSchema)),
+  kind: ResponseBodyKind$inboundSchema,
+  revision: types.number(),
+  seed: types.number(),
+  state: ResponseBodyState$inboundSchema,
+  slug: types.string(),
+  createdAt: types.number(),
+  updatedAt: types.number(),
+  createdBy: types.string(),
+  ownerId: types.string(),
+  projectId: types.string(),
+  typeName: ResponseBodyTypeName$inboundSchema,
+});
+/** @internal */
+export type UpdateFlagResponseBody1$Outbound = {
+  description?: string | undefined;
+  variants: Array<ResponseBodyVariants$Outbound>;
+  id: string;
+  environments: { [k: string]: ResponseBodyEnvironments$Outbound };
+  kind: string;
+  revision: number;
+  seed: number;
+  state: string;
+  slug: string;
+  createdAt: number;
+  updatedAt: number;
+  createdBy: string;
+  ownerId: string;
+  projectId: string;
+  typeName: string;
+};
+
+/** @internal */
+export const UpdateFlagResponseBody1$outboundSchema: z.ZodType<
+  UpdateFlagResponseBody1$Outbound,
+  z.ZodTypeDef,
+  UpdateFlagResponseBody1
+> = z.object({
+  description: z.string().optional(),
+  variants: z.array(z.lazy(() => ResponseBodyVariants$outboundSchema)),
+  id: z.string(),
+  environments: z.record(z.lazy(() => ResponseBodyEnvironments$outboundSchema)),
+  kind: ResponseBodyKind$outboundSchema,
+  revision: z.number(),
+  seed: z.number(),
+  state: ResponseBodyState$outboundSchema,
+  slug: z.string(),
+  createdAt: z.number(),
+  updatedAt: z.number(),
+  createdBy: z.string(),
+  ownerId: z.string(),
+  projectId: z.string(),
+  typeName: ResponseBodyTypeName$outboundSchema,
+});
+
+export function updateFlagResponseBody1ToJSON(
+  updateFlagResponseBody1: UpdateFlagResponseBody1,
+): string {
+  return JSON.stringify(
+    UpdateFlagResponseBody1$outboundSchema.parse(updateFlagResponseBody1),
+  );
+}
+export function updateFlagResponseBody1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFlagResponseBody1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateFlagResponseBody1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFlagResponseBody1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateFlagResponseBody$inboundSchema: z.ZodType<
+  UpdateFlagResponseBody,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => UpdateFlagResponseBody1$inboundSchema),
+  Flag$inboundSchema,
+]);
+/** @internal */
+export type UpdateFlagResponseBody$Outbound =
+  | UpdateFlagResponseBody1$Outbound
+  | Flag$Outbound;
+
+/** @internal */
+export const UpdateFlagResponseBody$outboundSchema: z.ZodType<
+  UpdateFlagResponseBody$Outbound,
+  z.ZodTypeDef,
+  UpdateFlagResponseBody
+> = smartUnion([
+  z.lazy(() => UpdateFlagResponseBody1$outboundSchema),
+  Flag$outboundSchema,
+]);
+
+export function updateFlagResponseBodyToJSON(
+  updateFlagResponseBody: UpdateFlagResponseBody,
+): string {
+  return JSON.stringify(
+    UpdateFlagResponseBody$outboundSchema.parse(updateFlagResponseBody),
+  );
+}
+export function updateFlagResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateFlagResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateFlagResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateFlagResponseBody' from JSON`,
   );
 }

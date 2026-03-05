@@ -328,7 +328,7 @@ run();
 
 ### Response
 
-**Promise\<[models.Flag](../../models/flag.md)\>**
+**Promise\<[models.UpdateFlagResponseBody](../../models/updateflagresponsebody.md)\>**
 
 ### Errors
 

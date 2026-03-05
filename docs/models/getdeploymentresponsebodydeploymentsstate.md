@@ -1,15 +1,17 @@
 # GetDeploymentResponseBodyDeploymentsState
 
+Current provisioning state
+
 ## Example Usage
 
 ```typescript
 import { GetDeploymentResponseBodyDeploymentsState } from "@vercel/sdk/models/getdeploymentop.js";
 
-let value: GetDeploymentResponseBodyDeploymentsState = "failed";
+let value: GetDeploymentResponseBodyDeploymentsState = "COMPLETE";
 ```
 
 ## Values
 
 ```typescript
-"succeeded" | "failed" | "pending"
+"PENDING" | "COMPLETE" | "TIMEOUT"
 ```

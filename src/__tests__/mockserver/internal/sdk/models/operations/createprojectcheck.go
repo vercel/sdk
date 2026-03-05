@@ -74,62 +74,6 @@ func (e *CreateProjectCheckBlocksRequest) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type JobNameRequest string
-
-const (
-	JobNameRequestLint      JobNameRequest = "lint"
-	JobNameRequestTypecheck JobNameRequest = "typecheck"
-)
-
-func (e JobNameRequest) ToPointer() *JobNameRequest {
-	return &e
-}
-func (e *JobNameRequest) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "lint":
-		fallthrough
-	case "typecheck":
-		*e = JobNameRequest(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for JobNameRequest: %v", v)
-	}
-}
-
-type CreateProjectCheckSourceRequest3 struct {
-	Kind    string          `json:"kind"`
-	JobName *JobNameRequest `json:"jobName,omitempty"`
-}
-
-func (c CreateProjectCheckSourceRequest3) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateProjectCheckSourceRequest3) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"kind"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *CreateProjectCheckSourceRequest3) GetKind() string {
-	if o == nil {
-		return ""
-	}
-	return o.Kind
-}
-
-func (o *CreateProjectCheckSourceRequest3) GetJobName() *JobNameRequest {
-	if o == nil {
-		return nil
-	}
-	return o.JobName
-}
-
 type ProviderRequest string
 
 const (
@@ -257,14 +201,12 @@ const (
 	CreateProjectCheckSourceRequestUnionTypeCreateProjectCheckSourceRequest1 CreateProjectCheckSourceRequestUnionType = "createProjectCheck_source_request_1"
 	CreateProjectCheckSourceRequestUnionTypeCreateProjectCheckSourceRequest2 CreateProjectCheckSourceRequestUnionType = "createProjectCheck_source_request_2"
 	CreateProjectCheckSourceRequestUnionTypeSourceGithub                     CreateProjectCheckSourceRequestUnionType = "source_Github"
-	CreateProjectCheckSourceRequestUnionTypeCreateProjectCheckSourceRequest3 CreateProjectCheckSourceRequestUnionType = "createProjectCheck_source_request_3"
 )
 
 type CreateProjectCheckSourceRequestUnion struct {
 	CreateProjectCheckSourceRequest1 *CreateProjectCheckSourceRequest1 `queryParam:"inline"`
 	CreateProjectCheckSourceRequest2 *CreateProjectCheckSourceRequest2 `queryParam:"inline"`
 	SourceGithub                     *SourceGithub                     `queryParam:"inline"`
-	CreateProjectCheckSourceRequest3 *CreateProjectCheckSourceRequest3 `queryParam:"inline"`
 
 	Type CreateProjectCheckSourceRequestUnionType
 }
@@ -296,15 +238,6 @@ func CreateCreateProjectCheckSourceRequestUnionSourceGithub(sourceGithub SourceG
 	}
 }
 
-func CreateCreateProjectCheckSourceRequestUnionCreateProjectCheckSourceRequest3(createProjectCheckSourceRequest3 CreateProjectCheckSourceRequest3) CreateProjectCheckSourceRequestUnion {
-	typ := CreateProjectCheckSourceRequestUnionTypeCreateProjectCheckSourceRequest3
-
-	return CreateProjectCheckSourceRequestUnion{
-		CreateProjectCheckSourceRequest3: &createProjectCheckSourceRequest3,
-		Type:                             typ,
-	}
-}
-
 func (u *CreateProjectCheckSourceRequestUnion) UnmarshalJSON(data []byte) error {
 
 	var sourceGithub SourceGithub = SourceGithub{}
@@ -318,13 +251,6 @@ func (u *CreateProjectCheckSourceRequestUnion) UnmarshalJSON(data []byte) error 
 	if err := utils.UnmarshalJSON(data, &createProjectCheckSourceRequest2, "", true, nil); err == nil {
 		u.CreateProjectCheckSourceRequest2 = &createProjectCheckSourceRequest2
 		u.Type = CreateProjectCheckSourceRequestUnionTypeCreateProjectCheckSourceRequest2
-		return nil
-	}
-
-	var createProjectCheckSourceRequest3 CreateProjectCheckSourceRequest3 = CreateProjectCheckSourceRequest3{}
-	if err := utils.UnmarshalJSON(data, &createProjectCheckSourceRequest3, "", true, nil); err == nil {
-		u.CreateProjectCheckSourceRequest3 = &createProjectCheckSourceRequest3
-		u.Type = CreateProjectCheckSourceRequestUnionTypeCreateProjectCheckSourceRequest3
 		return nil
 	}
 
@@ -349,10 +275,6 @@ func (u CreateProjectCheckSourceRequestUnion) MarshalJSON() ([]byte, error) {
 
 	if u.SourceGithub != nil {
 		return utils.MarshalJSON(u.SourceGithub, "", true)
-	}
-
-	if u.CreateProjectCheckSourceRequest3 != nil {
-		return utils.MarshalJSON(u.CreateProjectCheckSourceRequest3, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type CreateProjectCheckSourceRequestUnion: all fields are null")
@@ -492,85 +414,6 @@ func (e *CreateProjectCheckRequiresResponse) UnmarshalJSON(data []byte) error {
 	default:
 		return fmt.Errorf("invalid value for CreateProjectCheckRequiresResponse: %v", v)
 	}
-}
-
-type CreateProjectCheckKindVercel string
-
-const (
-	CreateProjectCheckKindVercelVercel CreateProjectCheckKindVercel = "vercel"
-)
-
-func (e CreateProjectCheckKindVercel) ToPointer() *CreateProjectCheckKindVercel {
-	return &e
-}
-func (e *CreateProjectCheckKindVercel) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "vercel":
-		*e = CreateProjectCheckKindVercel(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CreateProjectCheckKindVercel: %v", v)
-	}
-}
-
-type CreateProjectCheckJobNameResponse string
-
-const (
-	CreateProjectCheckJobNameResponseLint      CreateProjectCheckJobNameResponse = "lint"
-	CreateProjectCheckJobNameResponseTypecheck CreateProjectCheckJobNameResponse = "typecheck"
-)
-
-func (e CreateProjectCheckJobNameResponse) ToPointer() *CreateProjectCheckJobNameResponse {
-	return &e
-}
-func (e *CreateProjectCheckJobNameResponse) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "lint":
-		fallthrough
-	case "typecheck":
-		*e = CreateProjectCheckJobNameResponse(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CreateProjectCheckJobNameResponse: %v", v)
-	}
-}
-
-type CreateProjectCheckSourceVercel struct {
-	Kind    CreateProjectCheckKindVercel       `json:"kind"`
-	JobName *CreateProjectCheckJobNameResponse `json:"jobName,omitempty"`
-}
-
-func (c CreateProjectCheckSourceVercel) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateProjectCheckSourceVercel) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"kind"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *CreateProjectCheckSourceVercel) GetKind() CreateProjectCheckKindVercel {
-	if o == nil {
-		return CreateProjectCheckKindVercel("")
-	}
-	return o.Kind
-}
-
-func (o *CreateProjectCheckSourceVercel) GetJobName() *CreateProjectCheckJobNameResponse {
-	if o == nil {
-		return nil
-	}
-	return o.JobName
 }
 
 type CreateProjectCheckKindGitProvider string
@@ -799,14 +642,12 @@ const (
 	CreateProjectCheckSourceResponseBodyUnionTypeIntegration CreateProjectCheckSourceResponseBodyUnionType = "integration"
 	CreateProjectCheckSourceResponseBodyUnionTypeWebhook     CreateProjectCheckSourceResponseBodyUnionType = "webhook"
 	CreateProjectCheckSourceResponseBodyUnionTypeGitProvider CreateProjectCheckSourceResponseBodyUnionType = "git-provider"
-	CreateProjectCheckSourceResponseBodyUnionTypeVercel      CreateProjectCheckSourceResponseBodyUnionType = "vercel"
 )
 
 type CreateProjectCheckSourceResponseBodyUnion struct {
 	CreateProjectCheckSourceIntegration *CreateProjectCheckSourceIntegration `queryParam:"inline"`
 	CreateProjectCheckSourceWebhook     *CreateProjectCheckSourceWebhook     `queryParam:"inline"`
 	CreateProjectCheckSourceGitProvider *CreateProjectCheckSourceGitProvider `queryParam:"inline"`
-	CreateProjectCheckSourceVercel      *CreateProjectCheckSourceVercel      `queryParam:"inline"`
 
 	Type CreateProjectCheckSourceResponseBodyUnionType
 }
@@ -844,18 +685,6 @@ func CreateCreateProjectCheckSourceResponseBodyUnionGitProvider(gitProvider Crea
 	return CreateProjectCheckSourceResponseBodyUnion{
 		CreateProjectCheckSourceGitProvider: &gitProvider,
 		Type:                                typ,
-	}
-}
-
-func CreateCreateProjectCheckSourceResponseBodyUnionVercel(vercel CreateProjectCheckSourceVercel) CreateProjectCheckSourceResponseBodyUnion {
-	typ := CreateProjectCheckSourceResponseBodyUnionTypeVercel
-
-	typStr := CreateProjectCheckKindVercel(typ)
-	vercel.Kind = typStr
-
-	return CreateProjectCheckSourceResponseBodyUnion{
-		CreateProjectCheckSourceVercel: &vercel,
-		Type:                           typ,
 	}
 }
 
@@ -898,15 +727,6 @@ func (u *CreateProjectCheckSourceResponseBodyUnion) UnmarshalJSON(data []byte) e
 		u.CreateProjectCheckSourceGitProvider = createProjectCheckSourceGitProvider
 		u.Type = CreateProjectCheckSourceResponseBodyUnionTypeGitProvider
 		return nil
-	case "vercel":
-		createProjectCheckSourceVercel := new(CreateProjectCheckSourceVercel)
-		if err := utils.UnmarshalJSON(data, &createProjectCheckSourceVercel, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Kind == vercel) type CreateProjectCheckSourceVercel within CreateProjectCheckSourceResponseBodyUnion: %w", string(data), err)
-		}
-
-		u.CreateProjectCheckSourceVercel = createProjectCheckSourceVercel
-		u.Type = CreateProjectCheckSourceResponseBodyUnionTypeVercel
-		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateProjectCheckSourceResponseBodyUnion", string(data))
@@ -923,10 +743,6 @@ func (u CreateProjectCheckSourceResponseBodyUnion) MarshalJSON() ([]byte, error)
 
 	if u.CreateProjectCheckSourceGitProvider != nil {
 		return utils.MarshalJSON(u.CreateProjectCheckSourceGitProvider, "", true)
-	}
-
-	if u.CreateProjectCheckSourceVercel != nil {
-		return utils.MarshalJSON(u.CreateProjectCheckSourceVercel, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type CreateProjectCheckSourceResponseBodyUnion: all fields are null")
@@ -1076,10 +892,6 @@ func (o *CreateProjectCheckResponseBody) GetSourceWebhook() *CreateProjectCheckS
 
 func (o *CreateProjectCheckResponseBody) GetSourceGitProvider() *CreateProjectCheckSourceGitProvider {
 	return o.GetSource().CreateProjectCheckSourceGitProvider
-}
-
-func (o *CreateProjectCheckResponseBody) GetSourceVercel() *CreateProjectCheckSourceVercel {
-	return o.GetSource().CreateProjectCheckSourceVercel
 }
 
 func (o *CreateProjectCheckResponseBody) GetBlocks() CreateProjectCheckBlocksResponse {

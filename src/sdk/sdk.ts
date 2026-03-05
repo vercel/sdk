@@ -27,6 +27,7 @@ import { LogDrains } from "./logdrains.js";
 import { Logs } from "./logs.js";
 import { Marketplace } from "./marketplace.js";
 import { ProjectMembers } from "./projectmembers.js";
+import { ProjectRoutes } from "./projectroutes.js";
 import { Projects } from "./projects.js";
 import { RollingRelease } from "./rollingrelease.js";
 import { Sandboxes } from "./sandboxes.js";
@@ -150,6 +151,11 @@ export class Vercel extends ClientSDK {
   private _projectMembers?: ProjectMembers;
   get projectMembers(): ProjectMembers {
     return (this._projectMembers ??= new ProjectMembers(this._options));
+  }
+
+  private _projectRoutes?: ProjectRoutes;
+  get projectRoutes(): ProjectRoutes {
+    return (this._projectRoutes ??= new ProjectRoutes(this._options));
   }
 
   private _projects?: Projects;

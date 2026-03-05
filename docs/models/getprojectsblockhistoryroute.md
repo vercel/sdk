@@ -3,19 +3,19 @@
 
 ## Supported Types
 
-### `models.GetProjectsRouteProjects1`
+### `models.GetProjectsRoute1`
 
 ```typescript
-const value: models.GetProjectsRouteProjects1 = {
+const value: models.GetProjectsRoute1 = {
   src: "<value>",
-  status: 6056.33,
+  status: 5428.07,
 };
 ```
 
-### `models.GetProjectsRouteProjects2`
+### `models.GetProjectsRoute2`
 
 ```typescript
-const value: models.GetProjectsRouteProjects2 = {
+const value: models.GetProjectsRoute2 = {
   has: [
     {
       type: "host",

@@ -11195,18 +11195,18 @@ func (o *CreateIntegrationStoreDirectRepl) GetWelcomeMessage() *string {
 	return o.WelcomeMessage
 }
 
-type ActionType string
+type StepType string
 
 const (
-	ActionTypeConnectToProject            ActionType = "connect_to_project"
-	ActionTypeConfigureProjectConnections ActionType = "configure_project_connections"
-	ActionTypeAddDrain                    ActionType = "add_drain"
+	StepTypeConnectToProject            StepType = "connect_to_project"
+	StepTypeConfigureProjectConnections StepType = "configure_project_connections"
+	StepTypeAddDrain                    StepType = "add_drain"
 )
 
-func (e ActionType) ToPointer() *ActionType {
+func (e StepType) ToPointer() *StepType {
 	return &e
 }
-func (e *ActionType) UnmarshalJSON(data []byte) error {
+func (e *StepType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -11217,20 +11217,20 @@ func (e *ActionType) UnmarshalJSON(data []byte) error {
 	case "configure_project_connections":
 		fallthrough
 	case "add_drain":
-		*e = ActionType(v)
+		*e = StepType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ActionType: %v", v)
+		return fmt.Errorf("invalid value for StepType: %v", v)
 	}
 }
 
 type StepAction struct {
-	Type ActionType `json:"type"`
+	Type StepType `json:"type"`
 }
 
-func (o *StepAction) GetType() ActionType {
+func (o *StepAction) GetType() StepType {
 	if o == nil {
-		return ActionType("")
+		return StepType("")
 	}
 	return o.Type
 }

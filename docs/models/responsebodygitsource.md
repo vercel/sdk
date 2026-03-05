@@ -32,12 +32,12 @@ const value: models.GetDeploymentGitSource3 = {
 };
 ```
 
-### `models.GetDeploymentGitSource4`
+### `models.GetDeploymentGitSourceDeployments4`
 
 ```typescript
-const value: models.GetDeploymentGitSource4 = {
+const value: models.GetDeploymentGitSourceDeployments4 = {
   type: "github-custom-host",
-  host: "outstanding-shoulder.org",
+  host: "short-bid.net",
   org: "<value>",
   repo: "<value>",
 };

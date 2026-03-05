@@ -31,11 +31,3 @@ const value: models.UpdateProjectCheckSource3 = {
 };
 ```
 
-### `models.UpdateProjectCheckSource4`
-
-```typescript
-const value: models.UpdateProjectCheckSource4 = {
-  kind: "vercel",
-};
-```
-

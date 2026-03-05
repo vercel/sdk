@@ -218,6 +218,7 @@ const (
 	RequestAccessToTeamOriginResponseBodyFeedback          RequestAccessToTeamOriginResponseBody = "feedback"
 	RequestAccessToTeamOriginResponseBodyOrganizationTeams RequestAccessToTeamOriginResponseBody = "organization-teams"
 	RequestAccessToTeamOriginResponseBodyNsnbAutoApprove   RequestAccessToTeamOriginResponseBody = "nsnb-auto-approve"
+	RequestAccessToTeamOriginResponseBodyNsnbHobbyUpgrade  RequestAccessToTeamOriginResponseBody = "nsnb-hobby-upgrade"
 	RequestAccessToTeamOriginResponseBodyNsnbRequestAccess RequestAccessToTeamOriginResponseBody = "nsnb-request-access"
 	RequestAccessToTeamOriginResponseBodyNsnbViewerUpgrade RequestAccessToTeamOriginResponseBody = "nsnb-viewer-upgrade"
 	RequestAccessToTeamOriginResponseBodyNsnbInvite        RequestAccessToTeamOriginResponseBody = "nsnb-invite"
@@ -256,6 +257,8 @@ func (e *RequestAccessToTeamOriginResponseBody) UnmarshalJSON(data []byte) error
 	case "organization-teams":
 		fallthrough
 	case "nsnb-auto-approve":
+		fallthrough
+	case "nsnb-hobby-upgrade":
 		fallthrough
 	case "nsnb-request-access":
 		fallthrough

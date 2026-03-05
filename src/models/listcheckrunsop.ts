@@ -25,19 +25,6 @@ export type ListCheckRunsRequest = {
   slug?: string | undefined;
 };
 
-export const ListCheckRunsSourceJobName = {
-  Lint: "lint",
-  Typecheck: "typecheck",
-} as const;
-export type ListCheckRunsSourceJobName = ClosedEnum<
-  typeof ListCheckRunsSourceJobName
->;
-
-export type ListCheckRunsSource4 = {
-  kind: "vercel";
-  jobName?: ListCheckRunsSourceJobName | undefined;
-};
-
 export const ListCheckRunsSourceProvider = {
   Github: "github",
   Gitlab: "gitlab",
@@ -69,8 +56,7 @@ export type ListCheckRunsSource1 = {
 export type ListCheckRunsSource =
   | ListCheckRunsSource1
   | ListCheckRunsSource2
-  | ListCheckRunsSource3
-  | ListCheckRunsSource4;
+  | ListCheckRunsSource3;
 
 export const ListCheckRunsRequires = {
   BuildReady: "build-ready",
@@ -114,11 +100,7 @@ export type Runs = {
   ownerId: string;
   deploymentId: string;
   projectId?: string | undefined;
-  source:
-    | ListCheckRunsSource1
-    | ListCheckRunsSource2
-    | ListCheckRunsSource3
-    | ListCheckRunsSource4;
+  source: ListCheckRunsSource1 | ListCheckRunsSource2 | ListCheckRunsSource3;
   requires?: ListCheckRunsRequires | undefined;
   blocks?: ListCheckRunsBlocks | undefined;
   targets?: Array<string> | undefined;
@@ -183,57 +165,6 @@ export function listCheckRunsRequestFromJSON(
     jsonString,
     (x) => ListCheckRunsRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'ListCheckRunsRequest' from JSON`,
-  );
-}
-
-/** @internal */
-export const ListCheckRunsSourceJobName$inboundSchema: z.ZodNativeEnum<
-  typeof ListCheckRunsSourceJobName
-> = z.nativeEnum(ListCheckRunsSourceJobName);
-/** @internal */
-export const ListCheckRunsSourceJobName$outboundSchema: z.ZodNativeEnum<
-  typeof ListCheckRunsSourceJobName
-> = ListCheckRunsSourceJobName$inboundSchema;
-
-/** @internal */
-export const ListCheckRunsSource4$inboundSchema: z.ZodType<
-  ListCheckRunsSource4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  kind: types.literal("vercel"),
-  jobName: types.optional(ListCheckRunsSourceJobName$inboundSchema),
-});
-/** @internal */
-export type ListCheckRunsSource4$Outbound = {
-  kind: "vercel";
-  jobName?: string | undefined;
-};
-
-/** @internal */
-export const ListCheckRunsSource4$outboundSchema: z.ZodType<
-  ListCheckRunsSource4$Outbound,
-  z.ZodTypeDef,
-  ListCheckRunsSource4
-> = z.object({
-  kind: z.literal("vercel"),
-  jobName: ListCheckRunsSourceJobName$outboundSchema.optional(),
-});
-
-export function listCheckRunsSource4ToJSON(
-  listCheckRunsSource4: ListCheckRunsSource4,
-): string {
-  return JSON.stringify(
-    ListCheckRunsSource4$outboundSchema.parse(listCheckRunsSource4),
-  );
-}
-export function listCheckRunsSource4FromJSON(
-  jsonString: string,
-): SafeParseResult<ListCheckRunsSource4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListCheckRunsSource4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListCheckRunsSource4' from JSON`,
   );
 }
 
@@ -393,14 +324,12 @@ export const ListCheckRunsSource$inboundSchema: z.ZodType<
   z.lazy(() => ListCheckRunsSource1$inboundSchema),
   z.lazy(() => ListCheckRunsSource2$inboundSchema),
   z.lazy(() => ListCheckRunsSource3$inboundSchema),
-  z.lazy(() => ListCheckRunsSource4$inboundSchema),
 ]);
 /** @internal */
 export type ListCheckRunsSource$Outbound =
   | ListCheckRunsSource1$Outbound
   | ListCheckRunsSource2$Outbound
-  | ListCheckRunsSource3$Outbound
-  | ListCheckRunsSource4$Outbound;
+  | ListCheckRunsSource3$Outbound;
 
 /** @internal */
 export const ListCheckRunsSource$outboundSchema: z.ZodType<
@@ -411,7 +340,6 @@ export const ListCheckRunsSource$outboundSchema: z.ZodType<
   z.lazy(() => ListCheckRunsSource1$outboundSchema),
   z.lazy(() => ListCheckRunsSource2$outboundSchema),
   z.lazy(() => ListCheckRunsSource3$outboundSchema),
-  z.lazy(() => ListCheckRunsSource4$outboundSchema),
 ]);
 
 export function listCheckRunsSourceToJSON(
@@ -480,7 +408,6 @@ export const Runs$inboundSchema: z.ZodType<Runs, z.ZodTypeDef, unknown> = z
       z.lazy(() => ListCheckRunsSource1$inboundSchema),
       z.lazy(() => ListCheckRunsSource2$inboundSchema),
       z.lazy(() => ListCheckRunsSource3$inboundSchema),
-      z.lazy(() => ListCheckRunsSource4$inboundSchema),
     ]),
     requires: types.optional(ListCheckRunsRequires$inboundSchema),
     blocks: types.optional(ListCheckRunsBlocks$inboundSchema),
@@ -507,8 +434,7 @@ export type Runs$Outbound = {
   source:
     | ListCheckRunsSource1$Outbound
     | ListCheckRunsSource2$Outbound
-    | ListCheckRunsSource3$Outbound
-    | ListCheckRunsSource4$Outbound;
+    | ListCheckRunsSource3$Outbound;
   requires?: string | undefined;
   blocks?: string | undefined;
   targets?: Array<string> | undefined;
@@ -537,7 +463,6 @@ export const Runs$outboundSchema: z.ZodType<Runs$Outbound, z.ZodTypeDef, Runs> =
       z.lazy(() => ListCheckRunsSource1$outboundSchema),
       z.lazy(() => ListCheckRunsSource2$outboundSchema),
       z.lazy(() => ListCheckRunsSource3$outboundSchema),
-      z.lazy(() => ListCheckRunsSource4$outboundSchema),
     ]),
     requires: ListCheckRunsRequires$outboundSchema.optional(),
     blocks: ListCheckRunsBlocks$outboundSchema.optional(),

@@ -7,7 +7,8 @@ import (
 	"log"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
-	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/models/operations"
+	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
@@ -50,68 +51,70 @@ func testUpdateFlagUpdateFlag0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody *components.Flag = &components.Flag{
-		Variants: []components.Variant{},
-		ID:       "<id>",
-		Environments: map[string]components.Environments{
-			"key": components.Environments{
-				PausedOutcome: components.PausedOutcome{
-					Type:      components.TypeVariantVariant,
-					VariantID: "<id>",
-				},
-				Fallthrough: components.CreateFallthroughSplit(
-					components.FallthroughSplit{
-						Type: components.FallthroughTypeSplitSplit,
-						Base: components.FallthroughBase{
-							Type:      components.FallthroughTypeEntityEntity,
-							Kind:      "<value>",
-							Attribute: "<value>",
-						},
-						Weights: map[string]float64{
-							"key":  5332.25,
-							"key1": 4559.62,
-						},
-						DefaultVariantID: "<id>",
+	var respBody *operations.UpdateFlagResponseBody = types.Pointer(operations.CreateUpdateFlagResponseBodyUpdateFlagFlag(
+		operations.UpdateFlagFlag{
+			Variants: []operations.UpdateFlagResponseBodyVariant{},
+			ID:       "<id>",
+			Environments: map[string]operations.UpdateFlagResponseBodyEnvironments{
+				"key": operations.UpdateFlagResponseBodyEnvironments{
+					PausedOutcome: operations.UpdateFlagResponseBodyPausedOutcome{
+						Type:      operations.UpdateFlagTypeVariantVariant,
+						VariantID: "<id>",
 					},
-				),
-				Active: true,
-				Rules: []components.FlagRule{
-					components.FlagRule{
-						ID: "<id>",
-						Outcome: components.CreateFlagOutcomeUnionVariant(
-							components.OutcomeVariant{
-								Type:      components.OutcomeTypeVariantVariant,
-								VariantID: "<id>",
+					Fallthrough: operations.CreateUpdateFlagResponseBodyFallthroughUnionSplit(
+						operations.UpdateFlagFallthroughSplit{
+							Type: operations.UpdateFlagFallthroughTypeSplitSplit,
+							Base: operations.UpdateFlagResponseBodyFallthroughBase{
+								Type:      operations.UpdateFlagFallthroughTypeEntityEntity,
+								Kind:      "<value>",
+								Attribute: "<value>",
 							},
-						),
-						Conditions: []components.FlagCondition{
-							components.FlagCondition{
-								LHS: components.CreateFlagLHSUnionEntity(
-									components.FlagLHSEntity{
-										Type:      components.FlagLHSTypeEntityEntity,
-										Kind:      "<value>",
-										Attribute: "<value>",
-									},
-								),
-								Cmp: components.FlagCmpNotEndsWith,
+							Weights: map[string]float64{
+								"key":  5332.25,
+								"key1": 4559.62,
+							},
+							DefaultVariantID: "<id>",
+						},
+					),
+					Active: true,
+					Rules: []operations.UpdateFlagResponseBodyRule{
+						operations.UpdateFlagResponseBodyRule{
+							ID: "<id>",
+							Outcome: operations.CreateUpdateFlagResponseBodyOutcomeUnionVariant(
+								operations.UpdateFlagOutcomeVariant{
+									Type:      operations.UpdateFlagOutcomeTypeVariantVariant,
+									VariantID: "<id>",
+								},
+							),
+							Conditions: []operations.UpdateFlagResponseBodyCondition{
+								operations.UpdateFlagResponseBodyCondition{
+									LHS: operations.CreateUpdateFlagResponseBodyLHSUnionEntity(
+										operations.UpdateFlagLHSEntity{
+											Type:      operations.UpdateFlagLHSTypeEntityEntity,
+											Kind:      "<value>",
+											Attribute: "<value>",
+										},
+									),
+									Cmp: operations.UpdateFlagResponseBodyCmpNotEndsWith,
+								},
 							},
 						},
 					},
 				},
 			},
+			Kind:      operations.UpdateFlagKindBoolean,
+			Revision:  6275.71,
+			Seed:      9679.18,
+			State:     operations.UpdateFlagResponseBodyStateArchived,
+			Slug:      "<value>",
+			CreatedAt: 1600.13,
+			UpdatedAt: 4288.92,
+			CreatedBy: "<value>",
+			OwnerID:   "<id>",
+			ProjectID: "<id>",
+			TypeName:  operations.UpdateFlagTypeNameFlag,
 		},
-		Kind:      components.KindBoolean,
-		Revision:  6275.71,
-		Seed:      9679.18,
-		State:     components.StateArchived,
-		Slug:      "<value>",
-		CreatedAt: 1600.13,
-		UpdatedAt: 4288.92,
-		CreatedBy: "<value>",
-		OwnerID:   "<id>",
-		ProjectID: "<id>",
-		TypeName:  components.FlagTypeNameFlag,
-	}
+	))
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

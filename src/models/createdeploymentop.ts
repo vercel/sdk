@@ -1623,7 +1623,7 @@ export type Has1 = {
   value: string | CreateDeploymentValueDeploymentsResponse2002;
 };
 
-export type Has =
+export type CreateDeploymentRoutesHas =
   | Has1
   | (Has2 & { type: "header" })
   | (Has2 & { type: "cookie" })
@@ -1687,7 +1687,7 @@ export type Missing1 = {
   value: string | CreateDeploymentValueDeployments2;
 };
 
-export type Missing =
+export type CreateDeploymentRoutesMissing =
   | Missing1
   | (Missing2 & { type: "header" })
   | (Missing2 & { type: "cookie" })
@@ -1807,7 +1807,7 @@ export type Routes1 = {
   respectOriginCacheControl?: boolean | undefined;
 };
 
-export type Routes = Routes3 | Routes1 | Routes2;
+export type CreateDeploymentRoutes = Routes3 | Routes1 | Routes2;
 
 export const CreateDeploymentGitRepoOwnerType = {
   Team: "team",
@@ -6925,52 +6925,53 @@ export function has1FromJSON(
 }
 
 /** @internal */
-export const Has$inboundSchema: z.ZodType<Has, z.ZodTypeDef, unknown> = z.union(
-  [
-    z.lazy(() => Has1$inboundSchema),
-    z.lazy(() =>
-      Has2$inboundSchema
-    ).and(z.object({ type: z.literal("header") })),
-    z.lazy(() =>
-      Has2$inboundSchema
-    ).and(z.object({ type: z.literal("cookie") })),
-    z.lazy(() =>
-      Has2$inboundSchema
-    ).and(z.object({ type: z.literal("query") })),
-  ],
-);
+export const CreateDeploymentRoutesHas$inboundSchema: z.ZodType<
+  CreateDeploymentRoutesHas,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => Has1$inboundSchema),
+  z.lazy(() => Has2$inboundSchema).and(z.object({ type: z.literal("header") })),
+  z.lazy(() => Has2$inboundSchema).and(z.object({ type: z.literal("cookie") })),
+  z.lazy(() => Has2$inboundSchema).and(z.object({ type: z.literal("query") })),
+]);
 /** @internal */
-export type Has$Outbound =
+export type CreateDeploymentRoutesHas$Outbound =
   | Has1$Outbound
   | (Has2$Outbound & { type: "header" })
   | (Has2$Outbound & { type: "cookie" })
   | (Has2$Outbound & { type: "query" });
 
 /** @internal */
-export const Has$outboundSchema: z.ZodType<Has$Outbound, z.ZodTypeDef, Has> = z
-  .union([
-    z.lazy(() => Has1$outboundSchema),
-    z.lazy(() => Has2$outboundSchema).and(
-      z.object({ type: z.literal("header") }),
-    ),
-    z.lazy(() => Has2$outboundSchema).and(
-      z.object({ type: z.literal("cookie") }),
-    ),
-    z.lazy(() => Has2$outboundSchema).and(
-      z.object({ type: z.literal("query") }),
-    ),
-  ]);
+export const CreateDeploymentRoutesHas$outboundSchema: z.ZodType<
+  CreateDeploymentRoutesHas$Outbound,
+  z.ZodTypeDef,
+  CreateDeploymentRoutesHas
+> = z.union([
+  z.lazy(() => Has1$outboundSchema),
+  z.lazy(() => Has2$outboundSchema).and(
+    z.object({ type: z.literal("header") }),
+  ),
+  z.lazy(() => Has2$outboundSchema).and(
+    z.object({ type: z.literal("cookie") }),
+  ),
+  z.lazy(() => Has2$outboundSchema).and(z.object({ type: z.literal("query") })),
+]);
 
-export function hasToJSON(has: Has): string {
-  return JSON.stringify(Has$outboundSchema.parse(has));
+export function createDeploymentRoutesHasToJSON(
+  createDeploymentRoutesHas: CreateDeploymentRoutesHas,
+): string {
+  return JSON.stringify(
+    CreateDeploymentRoutesHas$outboundSchema.parse(createDeploymentRoutesHas),
+  );
 }
-export function hasFromJSON(
+export function createDeploymentRoutesHasFromJSON(
   jsonString: string,
-): SafeParseResult<Has, SDKValidationError> {
+): SafeParseResult<CreateDeploymentRoutesHas, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Has$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Has' from JSON`,
+    (x) => CreateDeploymentRoutesHas$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentRoutesHas' from JSON`,
   );
 }
 
@@ -7379,31 +7380,34 @@ export function missing1FromJSON(
 }
 
 /** @internal */
-export const Missing$inboundSchema: z.ZodType<Missing, z.ZodTypeDef, unknown> =
-  z.union([
-    z.lazy(() => Missing1$inboundSchema),
-    z.lazy(() => Missing2$inboundSchema).and(
-      z.object({ type: z.literal("header") }),
-    ),
-    z.lazy(() => Missing2$inboundSchema).and(
-      z.object({ type: z.literal("cookie") }),
-    ),
-    z.lazy(() => Missing2$inboundSchema).and(
-      z.object({ type: z.literal("query") }),
-    ),
-  ]);
+export const CreateDeploymentRoutesMissing$inboundSchema: z.ZodType<
+  CreateDeploymentRoutesMissing,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => Missing1$inboundSchema),
+  z.lazy(() => Missing2$inboundSchema).and(
+    z.object({ type: z.literal("header") }),
+  ),
+  z.lazy(() => Missing2$inboundSchema).and(
+    z.object({ type: z.literal("cookie") }),
+  ),
+  z.lazy(() => Missing2$inboundSchema).and(
+    z.object({ type: z.literal("query") }),
+  ),
+]);
 /** @internal */
-export type Missing$Outbound =
+export type CreateDeploymentRoutesMissing$Outbound =
   | Missing1$Outbound
   | (Missing2$Outbound & { type: "header" })
   | (Missing2$Outbound & { type: "cookie" })
   | (Missing2$Outbound & { type: "query" });
 
 /** @internal */
-export const Missing$outboundSchema: z.ZodType<
-  Missing$Outbound,
+export const CreateDeploymentRoutesMissing$outboundSchema: z.ZodType<
+  CreateDeploymentRoutesMissing$Outbound,
   z.ZodTypeDef,
-  Missing
+  CreateDeploymentRoutesMissing
 > = z.union([
   z.lazy(() => Missing1$outboundSchema),
   z.lazy(() => Missing2$outboundSchema).and(
@@ -7417,16 +7421,22 @@ export const Missing$outboundSchema: z.ZodType<
   ),
 ]);
 
-export function missingToJSON(missing: Missing): string {
-  return JSON.stringify(Missing$outboundSchema.parse(missing));
+export function createDeploymentRoutesMissingToJSON(
+  createDeploymentRoutesMissing: CreateDeploymentRoutesMissing,
+): string {
+  return JSON.stringify(
+    CreateDeploymentRoutesMissing$outboundSchema.parse(
+      createDeploymentRoutesMissing,
+    ),
+  );
 }
-export function missingFromJSON(
+export function createDeploymentRoutesMissingFromJSON(
   jsonString: string,
-): SafeParseResult<Missing, SDKValidationError> {
+): SafeParseResult<CreateDeploymentRoutesMissing, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Missing$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Missing' from JSON`,
+    (x) => CreateDeploymentRoutesMissing$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentRoutesMissing' from JSON`,
   );
 }
 
@@ -7917,39 +7927,46 @@ export function routes1FromJSON(
 }
 
 /** @internal */
-export const Routes$inboundSchema: z.ZodType<Routes, z.ZodTypeDef, unknown> =
-  smartUnion([
-    z.lazy(() => Routes3$inboundSchema),
-    z.lazy(() => Routes1$inboundSchema),
-    z.lazy(() => Routes2$inboundSchema),
-  ]);
+export const CreateDeploymentRoutes$inboundSchema: z.ZodType<
+  CreateDeploymentRoutes,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => Routes3$inboundSchema),
+  z.lazy(() => Routes1$inboundSchema),
+  z.lazy(() => Routes2$inboundSchema),
+]);
 /** @internal */
-export type Routes$Outbound =
+export type CreateDeploymentRoutes$Outbound =
   | Routes3$Outbound
   | Routes1$Outbound
   | Routes2$Outbound;
 
 /** @internal */
-export const Routes$outboundSchema: z.ZodType<
-  Routes$Outbound,
+export const CreateDeploymentRoutes$outboundSchema: z.ZodType<
+  CreateDeploymentRoutes$Outbound,
   z.ZodTypeDef,
-  Routes
+  CreateDeploymentRoutes
 > = smartUnion([
   z.lazy(() => Routes3$outboundSchema),
   z.lazy(() => Routes1$outboundSchema),
   z.lazy(() => Routes2$outboundSchema),
 ]);
 
-export function routesToJSON(routes: Routes): string {
-  return JSON.stringify(Routes$outboundSchema.parse(routes));
+export function createDeploymentRoutesToJSON(
+  createDeploymentRoutes: CreateDeploymentRoutes,
+): string {
+  return JSON.stringify(
+    CreateDeploymentRoutes$outboundSchema.parse(createDeploymentRoutes),
+  );
 }
-export function routesFromJSON(
+export function createDeploymentRoutesFromJSON(
   jsonString: string,
-): SafeParseResult<Routes, SDKValidationError> {
+): SafeParseResult<CreateDeploymentRoutes, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Routes$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Routes' from JSON`,
+    (x) => CreateDeploymentRoutes$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentRoutes' from JSON`,
   );
 }
 

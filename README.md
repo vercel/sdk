@@ -348,13 +348,13 @@ run();
 * [issueCert](docs/sdks/certs/README.md#issuecert) - Issue a new cert
 * [uploadCert](docs/sdks/certs/README.md#uploadcert) - Upload a cert
 
-### [Checks](docs/sdks/checks/README.md)
+### [~~Checks~~](docs/sdks/checks/README.md)
 
-* [createCheck](docs/sdks/checks/README.md#createcheck) - Creates a new Check
-* [getAllChecks](docs/sdks/checks/README.md#getallchecks) - Retrieve a list of all checks
-* [getCheck](docs/sdks/checks/README.md#getcheck) - Get a single check
-* [updateCheck](docs/sdks/checks/README.md#updatecheck) - Update a check
-* [rerequestCheck](docs/sdks/checks/README.md#rerequestcheck) - Rerequest a check
+* [~~createCheck~~](docs/sdks/checks/README.md#createcheck) - Creates a new Check :warning: **Deprecated**
+* [~~getAllChecks~~](docs/sdks/checks/README.md#getallchecks) - Retrieve a list of all checks :warning: **Deprecated**
+* [~~getCheck~~](docs/sdks/checks/README.md#getcheck) - Get a single check :warning: **Deprecated**
+* [~~updateCheck~~](docs/sdks/checks/README.md#updatecheck) - Update a check :warning: **Deprecated**
+* [~~rerequestCheck~~](docs/sdks/checks/README.md#rerequestcheck) - Rerequest a check :warning: **Deprecated**
 
 ### [ChecksV2](docs/sdks/checksv2/README.md)
 
@@ -542,7 +542,7 @@ run();
 * [getInvoice](docs/sdks/marketplace/README.md#getinvoice) - Get Invoice
 * [updateInvoice](docs/sdks/marketplace/README.md#updateinvoice) - Invoice Actions
 * [submitPrepaymentBalances](docs/sdks/marketplace/README.md#submitprepaymentbalances) - Submit Prepayment Balances
-* [updateResourceSecrets](docs/sdks/marketplace/README.md#updateresourcesecrets) - Update Resource Secrets (Deprecated)
+* [~~updateResourceSecrets~~](docs/sdks/marketplace/README.md#updateresourcesecrets) - Deprecated: true. Update Resource Secrets (Deprecated) :warning: **Deprecated**
 * [updateResourceSecretsById](docs/sdks/marketplace/README.md#updateresourcesecretsbyid) - Update Resource Secrets
 * [exchangeSsoToken](docs/sdks/marketplace/README.md#exchangessotoken) - SSO Token Exchange
 * [createInstallationIntegrationConfiguration](docs/sdks/marketplace/README.md#createinstallationintegrationconfiguration) - Create one or multiple experimentation items
@@ -551,6 +551,17 @@ run();
 * [createInstallationIntegrationEdgeConfig](docs/sdks/marketplace/README.md#createinstallationintegrationedgeconfig) - Get the data of a user-provided Edge Config
 * [getV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig](docs/sdks/marketplace/README.md#getv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfig) - Get the data of a user-provided Edge Config
 * [updateInstallationIntegrationEdgeConfig](docs/sdks/marketplace/README.md#updateinstallationintegrationedgeconfig) - Push data into a user-provided Edge Config
+
+### [ProjectRoutes](docs/sdks/projectroutes/README.md)
+
+* [getRoutes](docs/sdks/projectroutes/README.md#getroutes) - Get project routing rules
+* [stageRoutes](docs/sdks/projectroutes/README.md#stageroutes) - Stage routing rules
+* [addRoute](docs/sdks/projectroutes/README.md#addroute) - Add a routing rule
+* [deleteRoutes](docs/sdks/projectroutes/README.md#deleteroutes) - Delete routing rules
+* [editRoute](docs/sdks/projectroutes/README.md#editroute) - Edit a routing rule
+* [generateRoute](docs/sdks/projectroutes/README.md#generateroute) - Generate a routing rule from natural language
+* [getRouteVersions](docs/sdks/projectroutes/README.md#getrouteversions) - Get routing rule version history
+* [updateRouteVersions](docs/sdks/projectroutes/README.md#updaterouteversions) - Promote, restore, or discard a routing rule version
 
 ### [ProjectMembers](docs/sdks/projectmembers/README.md)
 
@@ -722,11 +733,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`certsIssueCert`](docs/sdks/certs/README.md#issuecert) - Issue a new cert
 - [`certsRemoveCert`](docs/sdks/certs/README.md#removecert) - Remove cert
 - [`certsUploadCert`](docs/sdks/certs/README.md#uploadcert) - Upload a cert
-- [`checksCreateCheck`](docs/sdks/checks/README.md#createcheck) - Creates a new Check
-- [`checksGetAllChecks`](docs/sdks/checks/README.md#getallchecks) - Retrieve a list of all checks
-- [`checksGetCheck`](docs/sdks/checks/README.md#getcheck) - Get a single check
-- [`checksRerequestCheck`](docs/sdks/checks/README.md#rerequestcheck) - Rerequest a check
-- [`checksUpdateCheck`](docs/sdks/checks/README.md#updatecheck) - Update a check
 - [`checksV2CreateDeploymentCheckRun`](docs/sdks/checksv2/README.md#createdeploymentcheckrun) - Create a check run
 - [`checksV2CreateProjectCheck`](docs/sdks/checksv2/README.md#createprojectcheck) - Create a check
 - [`checksV2DeleteProjectCheck`](docs/sdks/checksv2/README.md#deleteprojectcheck) - Delete a check
@@ -878,11 +884,18 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`marketplaceUpdateInstallationIntegrationEdgeConfig`](docs/sdks/marketplace/README.md#updateinstallationintegrationedgeconfig) - Push data into a user-provided Edge Config
 - [`marketplaceUpdateInvoice`](docs/sdks/marketplace/README.md#updateinvoice) - Invoice Actions
 - [`marketplaceUpdateResource`](docs/sdks/marketplace/README.md#updateresource) - Update Resource
-- [`marketplaceUpdateResourceSecrets`](docs/sdks/marketplace/README.md#updateresourcesecrets) - Update Resource Secrets (Deprecated)
 - [`marketplaceUpdateResourceSecretsById`](docs/sdks/marketplace/README.md#updateresourcesecretsbyid) - Update Resource Secrets
 - [`projectMembersAddProjectMember`](docs/sdks/projectmembers/README.md#addprojectmember) - Adds a new member to a project.
 - [`projectMembersGetProjectMembers`](docs/sdks/projectmembers/README.md#getprojectmembers) - List project members
 - [`projectMembersRemoveProjectMember`](docs/sdks/projectmembers/README.md#removeprojectmember) - Remove a Project Member
+- [`projectRoutesAddRoute`](docs/sdks/projectroutes/README.md#addroute) - Add a routing rule
+- [`projectRoutesDeleteRoutes`](docs/sdks/projectroutes/README.md#deleteroutes) - Delete routing rules
+- [`projectRoutesEditRoute`](docs/sdks/projectroutes/README.md#editroute) - Edit a routing rule
+- [`projectRoutesGenerateRoute`](docs/sdks/projectroutes/README.md#generateroute) - Generate a routing rule from natural language
+- [`projectRoutesGetRoutes`](docs/sdks/projectroutes/README.md#getroutes) - Get project routing rules
+- [`projectRoutesGetRouteVersions`](docs/sdks/projectroutes/README.md#getrouteversions) - Get routing rule version history
+- [`projectRoutesStageRoutes`](docs/sdks/projectroutes/README.md#stageroutes) - Stage routing rules
+- [`projectRoutesUpdateRouteVersions`](docs/sdks/projectroutes/README.md#updaterouteversions) - Promote, restore, or discard a routing rule version
 - [`projectsAcceptProjectTransferRequest`](docs/sdks/projects/README.md#acceptprojecttransferrequest) - Accept project transfer request
 - [`projectsAddProjectDomain`](docs/sdks/projects/README.md#addprojectdomain) - Add a domain to a project
 - [`projectsBatchRemoveProjectEnv`](docs/sdks/projects/README.md#batchremoveprojectenv) - Batch remove environment variables
@@ -964,6 +977,12 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`webhooksDeleteWebhook`](docs/sdks/webhooks/README.md#deletewebhook) - Deletes a webhook
 - [`webhooksGetWebhook`](docs/sdks/webhooks/README.md#getwebhook) - Get a webhook
 - [`webhooksGetWebhooks`](docs/sdks/webhooks/README.md#getwebhooks) - Get a list of webhooks
+- ~~[`checksCreateCheck`](docs/sdks/checks/README.md#createcheck)~~ - Creates a new Check :warning: **Deprecated**
+- ~~[`checksGetAllChecks`](docs/sdks/checks/README.md#getallchecks)~~ - Retrieve a list of all checks :warning: **Deprecated**
+- ~~[`checksGetCheck`](docs/sdks/checks/README.md#getcheck)~~ - Get a single check :warning: **Deprecated**
+- ~~[`checksRerequestCheck`](docs/sdks/checks/README.md#rerequestcheck)~~ - Rerequest a check :warning: **Deprecated**
+- ~~[`checksUpdateCheck`](docs/sdks/checks/README.md#updatecheck)~~ - Update a check :warning: **Deprecated**
+- ~~[`marketplaceUpdateResourceSecrets`](docs/sdks/marketplace/README.md#updateresourcesecrets)~~ - Deprecated: true. Update Resource Secrets (Deprecated) :warning: **Deprecated**
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->
@@ -1188,31 +1207,31 @@ run();
 
 
 **Inherit from [`VercelError`](./src/models/vercelerror.ts)**:
-* [`HttpApiDecodeError`](./src/models/httpapidecodeerror.ts): The request did not match the expected schema. Status code `400`. Applicable to 16 of 282 methods.*
-* [`Unauthorized`](./src/models/unauthorized.ts): Unauthorized. Status code `401`. Applicable to 16 of 282 methods.*
-* [`NotAuthorizedForScope`](./src/models/notauthorizedforscope.ts): NotAuthorizedForScope. Status code `403`. Applicable to 16 of 282 methods.*
-* [`TooManyRequests`](./src/models/toomanyrequests.ts): TooManyRequests. Status code `429`. Applicable to 16 of 282 methods.*
-* [`InternalServerError`](./src/models/internalservererror.ts): InternalServerError. Status code `500`. Applicable to 16 of 282 methods.*
-* [`Forbidden`](./src/models/forbidden.ts): NotAuthorizedForScope. Status code `403`. Applicable to 9 of 282 methods.*
-* [`TldNotSupported`](./src/models/tldnotsupported.ts): The TLD is not currently supported. Status code `400`. Applicable to 7 of 282 methods.*
-* [`DomainTooShort`](./src/models/domaintooshort.ts): The domain name (excluding the TLD) is too short. Status code `400`. Applicable to 5 of 282 methods.*
-* [`BadRequest`](./src/models/badrequest.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 282 methods.*
-* [`DomainNotRegistered`](./src/models/domainnotregistered.ts): The domain is not registered with Vercel. Status code `400`. Applicable to 4 of 282 methods.*
-* [`ExpectedPriceMismatch`](./src/models/expectedpricemismatch.ts): The expected price passed does not match the actual price. Status code `400`. Applicable to 4 of 282 methods.*
-* [`DomainNotAvailable`](./src/models/domainnotavailable.ts): The domain is not available. Status code `400`. Applicable to 4 of 282 methods.*
-* [`DomainNotFound`](./src/models/domainnotfound.ts): The domain was not found in our system. Status code `404`. Applicable to 4 of 282 methods.*
-* [`NotFound`](./src/models/notfound.ts): NotFound. Status code `404`. Applicable to 3 of 282 methods.*
-* [`OrderTooExpensive`](./src/models/ordertooexpensive.ts): The total price of the order is too high. Status code `400`. Applicable to 2 of 282 methods.*
-* [`InvalidAdditionalContactInfo`](./src/models/invalidadditionalcontactinfo.ts): Additional contact information provided for the TLD is invalid. Status code `400`. Applicable to 2 of 282 methods.*
-* [`AdditionalContactInfoRequired`](./src/models/additionalcontactinforequired.ts): Additional contact information is required for the TLD. Status code `400`. Applicable to 2 of 282 methods.*
-* [`LanguageCodeRequired`](./src/models/languagecoderequired.ts): A language code is required for punycode domains. Status code `400`. Applicable to 2 of 282 methods.*
-* [`TooManyDomains`](./src/models/toomanydomains.ts): The number of domains in the order is too high. Status code `400`. Applicable to 1 of 282 methods.*
-* [`DuplicateDomains`](./src/models/duplicatedomains.ts): Duplicate domains were provided. Status code `400`. Applicable to 1 of 282 methods.*
-* [`DomainAlreadyOwned`](./src/models/domainalreadyowned.ts): The domain is already owned by another team or user. Status code `400`. Applicable to 1 of 282 methods.*
-* [`DNSSECEnabled`](./src/models/dnssecenabled.ts): The operation cannot be completed because DNSSEC is enabled for the domain. Status code `400`. Applicable to 1 of 282 methods.*
-* [`DomainAlreadyRenewing`](./src/models/domainalreadyrenewing.ts): The domain is already renewing. Status code `400`. Applicable to 1 of 282 methods.*
-* [`DomainNotRenewable`](./src/models/domainnotrenewable.ts): The domain is not renewable. Status code `400`. Applicable to 1 of 282 methods.*
-* [`DomainCannotBeTransferedOutUntil`](./src/models/domaincannotbetransferedoutuntil.ts): The domain cannot be transfered out until the specified date. Status code `409`. Applicable to 1 of 282 methods.*
+* [`HttpApiDecodeError`](./src/models/httpapidecodeerror.ts): The request did not match the expected schema. Status code `400`. Applicable to 16 of 290 methods.*
+* [`Unauthorized`](./src/models/unauthorized.ts): Unauthorized. Status code `401`. Applicable to 16 of 290 methods.*
+* [`NotAuthorizedForScope`](./src/models/notauthorizedforscope.ts): NotAuthorizedForScope. Status code `403`. Applicable to 16 of 290 methods.*
+* [`TooManyRequests`](./src/models/toomanyrequests.ts): TooManyRequests. Status code `429`. Applicable to 16 of 290 methods.*
+* [`InternalServerError`](./src/models/internalservererror.ts): InternalServerError. Status code `500`. Applicable to 16 of 290 methods.*
+* [`Forbidden`](./src/models/forbidden.ts): NotAuthorizedForScope. Status code `403`. Applicable to 9 of 290 methods.*
+* [`TldNotSupported`](./src/models/tldnotsupported.ts): The TLD is not currently supported. Status code `400`. Applicable to 7 of 290 methods.*
+* [`DomainTooShort`](./src/models/domaintooshort.ts): The domain name (excluding the TLD) is too short. Status code `400`. Applicable to 5 of 290 methods.*
+* [`BadRequest`](./src/models/badrequest.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 290 methods.*
+* [`DomainNotRegistered`](./src/models/domainnotregistered.ts): The domain is not registered with Vercel. Status code `400`. Applicable to 4 of 290 methods.*
+* [`ExpectedPriceMismatch`](./src/models/expectedpricemismatch.ts): The expected price passed does not match the actual price. Status code `400`. Applicable to 4 of 290 methods.*
+* [`DomainNotAvailable`](./src/models/domainnotavailable.ts): The domain is not available. Status code `400`. Applicable to 4 of 290 methods.*
+* [`DomainNotFound`](./src/models/domainnotfound.ts): The domain was not found in our system. Status code `404`. Applicable to 4 of 290 methods.*
+* [`NotFound`](./src/models/notfound.ts): NotFound. Status code `404`. Applicable to 3 of 290 methods.*
+* [`OrderTooExpensive`](./src/models/ordertooexpensive.ts): The total price of the order is too high. Status code `400`. Applicable to 2 of 290 methods.*
+* [`InvalidAdditionalContactInfo`](./src/models/invalidadditionalcontactinfo.ts): Additional contact information provided for the TLD is invalid. Status code `400`. Applicable to 2 of 290 methods.*
+* [`AdditionalContactInfoRequired`](./src/models/additionalcontactinforequired.ts): Additional contact information is required for the TLD. Status code `400`. Applicable to 2 of 290 methods.*
+* [`LanguageCodeRequired`](./src/models/languagecoderequired.ts): A language code is required for punycode domains. Status code `400`. Applicable to 2 of 290 methods.*
+* [`TooManyDomains`](./src/models/toomanydomains.ts): The number of domains in the order is too high. Status code `400`. Applicable to 1 of 290 methods.*
+* [`DuplicateDomains`](./src/models/duplicatedomains.ts): Duplicate domains were provided. Status code `400`. Applicable to 1 of 290 methods.*
+* [`DomainAlreadyOwned`](./src/models/domainalreadyowned.ts): The domain is already owned by another team or user. Status code `400`. Applicable to 1 of 290 methods.*
+* [`DNSSECEnabled`](./src/models/dnssecenabled.ts): The operation cannot be completed because DNSSEC is enabled for the domain. Status code `400`. Applicable to 1 of 290 methods.*
+* [`DomainAlreadyRenewing`](./src/models/domainalreadyrenewing.ts): The domain is already renewing. Status code `400`. Applicable to 1 of 290 methods.*
+* [`DomainNotRenewable`](./src/models/domainnotrenewable.ts): The domain is not renewable. Status code `400`. Applicable to 1 of 290 methods.*
+* [`DomainCannotBeTransferedOutUntil`](./src/models/domaincannotbetransferedoutuntil.ts): The domain cannot be transfered out until the specified date. Status code `409`. Applicable to 1 of 290 methods.*
 * [`ResponseValidationError`](./src/models/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>

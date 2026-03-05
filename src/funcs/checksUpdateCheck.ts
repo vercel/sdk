@@ -34,6 +34,8 @@ import { Result } from "../types/fp.js";
  *
  * @remarks
  * Update an existing check. This endpoint must be called with an OAuth2 or it will produce a 400 error.
+ *
+ * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export function checksUpdateCheck(
   client: VercelCore,

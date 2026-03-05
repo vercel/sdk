@@ -6,7 +6,7 @@
 import { UserEventPayloadJoinedFrom } from "@vercel/sdk/models/userevent.js";
 
 let value: UserEventPayloadJoinedFrom = {
-  origin: "saml",
+  origin: "github",
 };
 ```
 

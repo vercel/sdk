@@ -3,30 +3,25 @@
 
 ## Supported Types
 
-### `models.GetProjectsRouteProjectsResponse1`
+### `models.GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody1`
 
 ```typescript
-const value: models.GetProjectsRouteProjectsResponse1 = {
-  src: "<value>",
-  status: 5901.53,
-};
+const value:
+  models.GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody1 = {
+    src: "<value>",
+    status: 2989.17,
+  };
 ```
 
-### `models.GetProjectsRouteProjectsResponse2`
+### `models.GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody2`
 
 ```typescript
-const value: models.GetProjectsRouteProjectsResponse2 = {
-  has: [
-    {
-      type: "host",
-      value: {
-        eq: "<value>",
-      },
+const value:
+  models.GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody2 = {
+    has: [],
+    mitigate: {
+      action: "block_legal_cwc",
     },
-  ],
-  mitigate: {
-    action: "block_legal_cwc",
-  },
-};
+  };
 ```
 

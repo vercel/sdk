@@ -14050,6 +14050,7 @@ const (
 	RemovedUsersOriginFeedback          RemovedUsersOrigin = "feedback"
 	RemovedUsersOriginOrganizationTeams RemovedUsersOrigin = "organization-teams"
 	RemovedUsersOriginNsnbAutoApprove   RemovedUsersOrigin = "nsnb-auto-approve"
+	RemovedUsersOriginNsnbHobbyUpgrade  RemovedUsersOrigin = "nsnb-hobby-upgrade"
 	RemovedUsersOriginNsnbRequestAccess RemovedUsersOrigin = "nsnb-request-access"
 	RemovedUsersOriginNsnbViewerUpgrade RemovedUsersOrigin = "nsnb-viewer-upgrade"
 	RemovedUsersOriginNsnbInvite        RemovedUsersOrigin = "nsnb-invite"
@@ -14088,6 +14089,8 @@ func (e *RemovedUsersOrigin) UnmarshalJSON(data []byte) error {
 	case "organization-teams":
 		fallthrough
 	case "nsnb-auto-approve":
+		fallthrough
+	case "nsnb-hobby-upgrade":
 		fallthrough
 	case "nsnb-request-access":
 		fallthrough
@@ -19195,6 +19198,7 @@ const (
 	TeamOrigin1Feedback          TeamOrigin1 = "feedback"
 	TeamOrigin1OrganizationTeams TeamOrigin1 = "organization-teams"
 	TeamOrigin1NsnbAutoApprove   TeamOrigin1 = "nsnb-auto-approve"
+	TeamOrigin1NsnbHobbyUpgrade  TeamOrigin1 = "nsnb-hobby-upgrade"
 	TeamOrigin1NsnbRequestAccess TeamOrigin1 = "nsnb-request-access"
 	TeamOrigin1NsnbViewerUpgrade TeamOrigin1 = "nsnb-viewer-upgrade"
 	TeamOrigin1NsnbInvite        TeamOrigin1 = "nsnb-invite"
@@ -19233,6 +19237,8 @@ func (e *TeamOrigin1) UnmarshalJSON(data []byte) error {
 	case "organization-teams":
 		fallthrough
 	case "nsnb-auto-approve":
+		fallthrough
+	case "nsnb-hobby-upgrade":
 		fallthrough
 	case "nsnb-request-access":
 		fallthrough
@@ -34267,6 +34273,9 @@ const (
 	Permission2ReadWriteBilling         Permission2 = "read-write:billing"
 	Permission2ReadWriteAiGatewayAPIKey Permission2 = "read-write:ai-gateway-api-key"
 	Permission2ReadWriteProjectEnvVars  Permission2 = "read-write:project-env-vars"
+	Permission2ReadWriteDrains          Permission2 = "read-write:drains"
+	Permission2ReadWriteEdgeConfig      Permission2 = "read-write:edge-config"
+	Permission2ReadMonitoring           Permission2 = "read:monitoring"
 	Permission2ReadProject              Permission2 = "read:project"
 	Permission2ReadWriteProject         Permission2 = "read-write:project"
 	Permission2ReadDeployment           Permission2 = "read:deployment"
@@ -34295,6 +34304,12 @@ func (e *Permission2) UnmarshalJSON(data []byte) error {
 	case "read-write:ai-gateway-api-key":
 		fallthrough
 	case "read-write:project-env-vars":
+		fallthrough
+	case "read-write:drains":
+		fallthrough
+	case "read-write:edge-config":
+		fallthrough
+	case "read:monitoring":
 		fallthrough
 	case "read:project":
 		fallthrough
@@ -34495,6 +34510,9 @@ const (
 	BeforePermissionReadWriteBilling         BeforePermission = "read-write:billing"
 	BeforePermissionReadWriteAiGatewayAPIKey BeforePermission = "read-write:ai-gateway-api-key"
 	BeforePermissionReadWriteProjectEnvVars  BeforePermission = "read-write:project-env-vars"
+	BeforePermissionReadWriteDrains          BeforePermission = "read-write:drains"
+	BeforePermissionReadWriteEdgeConfig      BeforePermission = "read-write:edge-config"
+	BeforePermissionReadMonitoring           BeforePermission = "read:monitoring"
 	BeforePermissionReadProject              BeforePermission = "read:project"
 	BeforePermissionReadWriteProject         BeforePermission = "read-write:project"
 	BeforePermissionReadDeployment           BeforePermission = "read:deployment"
@@ -34523,6 +34541,12 @@ func (e *BeforePermission) UnmarshalJSON(data []byte) error {
 	case "read-write:ai-gateway-api-key":
 		fallthrough
 	case "read-write:project-env-vars":
+		fallthrough
+	case "read-write:drains":
+		fallthrough
+	case "read-write:edge-config":
+		fallthrough
+	case "read:monitoring":
 		fallthrough
 	case "read:project":
 		fallthrough
@@ -34706,6 +34730,9 @@ const (
 	AfterPermissionReadWriteBilling         AfterPermission = "read-write:billing"
 	AfterPermissionReadWriteAiGatewayAPIKey AfterPermission = "read-write:ai-gateway-api-key"
 	AfterPermissionReadWriteProjectEnvVars  AfterPermission = "read-write:project-env-vars"
+	AfterPermissionReadWriteDrains          AfterPermission = "read-write:drains"
+	AfterPermissionReadWriteEdgeConfig      AfterPermission = "read-write:edge-config"
+	AfterPermissionReadMonitoring           AfterPermission = "read:monitoring"
 	AfterPermissionReadProject              AfterPermission = "read:project"
 	AfterPermissionReadWriteProject         AfterPermission = "read-write:project"
 	AfterPermissionReadDeployment           AfterPermission = "read:deployment"
@@ -34734,6 +34761,12 @@ func (e *AfterPermission) UnmarshalJSON(data []byte) error {
 	case "read-write:ai-gateway-api-key":
 		fallthrough
 	case "read-write:project-env-vars":
+		fallthrough
+	case "read-write:drains":
+		fallthrough
+	case "read-write:edge-config":
+		fallthrough
+	case "read:monitoring":
 		fallthrough
 	case "read:project":
 		fallthrough
@@ -34878,6 +34911,9 @@ const (
 	NextPermissionReadWriteBilling         NextPermission = "read-write:billing"
 	NextPermissionReadWriteAiGatewayAPIKey NextPermission = "read-write:ai-gateway-api-key"
 	NextPermissionReadWriteProjectEnvVars  NextPermission = "read-write:project-env-vars"
+	NextPermissionReadWriteDrains          NextPermission = "read-write:drains"
+	NextPermissionReadWriteEdgeConfig      NextPermission = "read-write:edge-config"
+	NextPermissionReadMonitoring           NextPermission = "read:monitoring"
 	NextPermissionReadProject              NextPermission = "read:project"
 	NextPermissionReadWriteProject         NextPermission = "read-write:project"
 	NextPermissionReadDeployment           NextPermission = "read:deployment"
@@ -34910,6 +34946,12 @@ func (e *NextPermission) UnmarshalJSON(data []byte) error {
 	case "read-write:ai-gateway-api-key":
 		fallthrough
 	case "read-write:project-env-vars":
+		fallthrough
+	case "read-write:drains":
+		fallthrough
+	case "read-write:edge-config":
+		fallthrough
+	case "read:monitoring":
 		fallthrough
 	case "read:project":
 		fallthrough
@@ -35047,6 +35089,9 @@ const (
 	Permission1ReadWriteBilling         Permission1 = "read-write:billing"
 	Permission1ReadWriteAiGatewayAPIKey Permission1 = "read-write:ai-gateway-api-key"
 	Permission1ReadWriteProjectEnvVars  Permission1 = "read-write:project-env-vars"
+	Permission1ReadWriteDrains          Permission1 = "read-write:drains"
+	Permission1ReadWriteEdgeConfig      Permission1 = "read-write:edge-config"
+	Permission1ReadMonitoring           Permission1 = "read:monitoring"
 	Permission1ReadProject              Permission1 = "read:project"
 	Permission1ReadWriteProject         Permission1 = "read-write:project"
 	Permission1ReadDeployment           Permission1 = "read:deployment"
@@ -35079,6 +35124,12 @@ func (e *Permission1) UnmarshalJSON(data []byte) error {
 	case "read-write:ai-gateway-api-key":
 		fallthrough
 	case "read-write:project-env-vars":
+		fallthrough
+	case "read-write:drains":
+		fallthrough
+	case "read-write:edge-config":
+		fallthrough
+	case "read:monitoring":
 		fallthrough
 	case "read:project":
 		fallthrough

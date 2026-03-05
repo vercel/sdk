@@ -101,6 +101,17 @@ type Variant struct {
 	ID          string  `json:"id"`
 }
 
+func (v Variant) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(v, "", false)
+}
+
+func (v *Variant) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &v, "", false, []string{"value", "id"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Variant) GetDescription() *string {
 	if o == nil {
 		return nil
@@ -134,6 +145,17 @@ type Reuse struct {
 	Environment string `json:"environment"`
 }
 
+func (r Reuse) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *Reuse) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"active", "environment"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Reuse) GetActive() bool {
 	if o == nil {
 		return false
@@ -151,6 +173,17 @@ func (o *Reuse) GetEnvironment() string {
 type FlagTarget struct {
 	Note  *string `json:"note,omitempty"`
 	Value string  `json:"value"`
+}
+
+func (f FlagTarget) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FlagTarget) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"value"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FlagTarget) GetNote() *string {
@@ -193,6 +226,17 @@ func (e *TypeVariant) UnmarshalJSON(data []byte) error {
 type PausedOutcome struct {
 	Type      TypeVariant `json:"type"`
 	VariantID string      `json:"variantId"`
+}
+
+func (p PausedOutcome) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PausedOutcome) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"type", "variantId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PausedOutcome) GetType() TypeVariant {
@@ -1410,6 +1454,17 @@ type FlagCondition struct {
 	Cmp FlagCmp       `json:"cmp"`
 }
 
+func (f FlagCondition) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FlagCondition) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"lhs", "cmp"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FlagCondition) GetRHS() *FlagRHSUnion {
 	if o == nil {
 		return nil
@@ -1443,6 +1498,17 @@ type FlagRule struct {
 	ID         string           `json:"id"`
 	Outcome    FlagOutcomeUnion `json:"outcome"`
 	Conditions []FlagCondition  `json:"conditions"`
+}
+
+func (f FlagRule) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FlagRule) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"id", "outcome", "conditions"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FlagRule) GetID() string {
@@ -1482,6 +1548,17 @@ type Environments struct {
 	Fallthrough   Fallthrough                                   `json:"fallthrough"`
 	Active        bool                                          `json:"active"`
 	Rules         []FlagRule                                    `json:"rules"`
+}
+
+func (e Environments) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *Environments) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"pausedOutcome", "fallthrough", "active", "rules"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Environments) GetReuse() *Reuse {
@@ -1624,6 +1701,17 @@ type FlagCreator struct {
 	Name string `json:"name"`
 }
 
+func (f FlagCreator) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FlagCreator) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"id", "name"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FlagCreator) GetID() string {
 	if o == nil {
 		return ""
@@ -1640,6 +1728,17 @@ func (o *FlagCreator) GetName() string {
 
 type FlagMetadata struct {
 	Creator *FlagCreator `json:"creator,omitempty"`
+}
+
+func (f FlagMetadata) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FlagMetadata) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FlagMetadata) GetCreator() *FlagCreator {
@@ -1666,6 +1765,17 @@ type Flag struct {
 	ProjectID    string                  `json:"projectId"`
 	TypeName     FlagTypeName            `json:"typeName"`
 	Metadata     *FlagMetadata           `json:"metadata,omitempty"`
+}
+
+func (f Flag) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *Flag) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"variants", "id", "environments", "kind", "revision", "seed", "state", "slug", "createdAt", "updatedAt", "createdBy", "ownerId", "projectId", "typeName"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Flag) GetDescription() *string {

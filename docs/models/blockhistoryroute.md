@@ -3,27 +3,20 @@
 
 ## Supported Types
 
-### `models.CreateProjectRoute1`
+### `models.Route1`
 
 ```typescript
-const value: models.CreateProjectRoute1 = {
+const value: models.Route1 = {
   src: "<value>",
-  status: 7292.26,
+  status: 429.07,
 };
 ```
 
-### `models.CreateProjectRoute2`
+### `models.Route2`
 
 ```typescript
-const value: models.CreateProjectRoute2 = {
-  has: [
-    {
-      type: "host",
-      value: {
-        eq: "<value>",
-      },
-    },
-  ],
+const value: models.Route2 = {
+  has: [],
   mitigate: {
     action: "block_legal_cwc",
   },

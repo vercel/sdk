@@ -3,19 +3,19 @@
 
 ## Supported Types
 
-### `models.GetProjectsRouteProjectsResponse200ApplicationJson1`
+### `models.GetProjectsRouteProjectsResponse2001`
 
 ```typescript
-const value: models.GetProjectsRouteProjectsResponse200ApplicationJson1 = {
+const value: models.GetProjectsRouteProjectsResponse2001 = {
   src: "<value>",
-  status: 6123.65,
+  status: 3027.55,
 };
 ```
 
-### `models.GetProjectsRouteProjectsResponse200ApplicationJson2`
+### `models.GetProjectsRouteProjectsResponse2002`
 
 ```typescript
-const value: models.GetProjectsRouteProjectsResponse200ApplicationJson2 = {
+const value: models.GetProjectsRouteProjectsResponse2002 = {
   has: [],
   mitigate: {
     action: "block_legal_cwc",

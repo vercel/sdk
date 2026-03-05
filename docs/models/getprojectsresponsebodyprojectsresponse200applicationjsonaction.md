@@ -6,11 +6,11 @@
 import { GetProjectsResponseBodyProjectsResponse200ApplicationJSONAction } from "@vercel/sdk/models/getprojectsop.js";
 
 let value: GetProjectsResponseBodyProjectsResponse200ApplicationJSONAction =
-  "deny";
+  "log";
 ```
 
 ## Values
 
 ```typescript
-"log" | "deny" | "challenge" | "bypass" | "rate_limit" | "redirect"
+"log" | "deny" | "challenge"
 ```

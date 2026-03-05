@@ -354,10 +354,12 @@ export class Marketplace extends ClientSDK {
   }
 
   /**
-   * Update Resource Secrets (Deprecated)
+   * Deprecated: true. Update Resource Secrets (Deprecated)
    *
    * @remarks
    * This endpoint is deprecated and replaced with the endpoint [Update Resource Secrets](#update-resource-secrets). <br/> This endpoint updates the secrets of a resource. If a resource has projects connected, the connected secrets are updated with the new secrets. The old secrets may still be used by existing connected projects because they are not automatically redeployed. Redeployment is a manual action and must be completed by the user. All new project connections will use the new secrets.<br/> <br/> Use cases for this endpoint:<br/> <br/> - Resetting the credentials of a database in the partner. If the user requests the credentials to be updated in the partner’s application, the partner post the new set of secrets to Vercel, the user should redeploy their application and the expire the old credentials.<br/>
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async updateResourceSecrets(
     request: UpdateResourceSecretsRequest,

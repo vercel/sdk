@@ -24,7 +24,7 @@ export type GetRollingReleaseBillingStatusRequest = {
   slug?: string | undefined;
 };
 
-export type ResponseBody4 = {
+export type GetRollingReleaseBillingStatusResponseBody4 = {
   availableSlots: number;
   reason: "available_slots";
   message: string;
@@ -58,7 +58,7 @@ export type GetRollingReleaseBillingStatusResponseBody =
   | GetRollingReleaseBillingStatusResponseBody1
   | GetRollingReleaseBillingStatusResponseBody2
   | GetRollingReleaseBillingStatusResponseBody3
-  | ResponseBody4;
+  | GetRollingReleaseBillingStatusResponseBody4;
 
 /** @internal */
 export const GetRollingReleaseBillingStatusRequest$inboundSchema: z.ZodType<
@@ -109,43 +109,58 @@ export function getRollingReleaseBillingStatusRequestFromJSON(
 }
 
 /** @internal */
-export const ResponseBody4$inboundSchema: z.ZodType<
-  ResponseBody4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  availableSlots: types.number(),
-  reason: types.literal("available_slots"),
-  message: types.string(),
-});
+export const GetRollingReleaseBillingStatusResponseBody4$inboundSchema:
+  z.ZodType<
+    GetRollingReleaseBillingStatusResponseBody4,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    availableSlots: types.number(),
+    reason: types.literal("available_slots"),
+    message: types.string(),
+  });
 /** @internal */
-export type ResponseBody4$Outbound = {
+export type GetRollingReleaseBillingStatusResponseBody4$Outbound = {
   availableSlots: number;
   reason: "available_slots";
   message: string;
 };
 
 /** @internal */
-export const ResponseBody4$outboundSchema: z.ZodType<
-  ResponseBody4$Outbound,
-  z.ZodTypeDef,
-  ResponseBody4
-> = z.object({
-  availableSlots: z.number(),
-  reason: z.literal("available_slots"),
-  message: z.string(),
-});
+export const GetRollingReleaseBillingStatusResponseBody4$outboundSchema:
+  z.ZodType<
+    GetRollingReleaseBillingStatusResponseBody4$Outbound,
+    z.ZodTypeDef,
+    GetRollingReleaseBillingStatusResponseBody4
+  > = z.object({
+    availableSlots: z.number(),
+    reason: z.literal("available_slots"),
+    message: z.string(),
+  });
 
-export function responseBody4ToJSON(responseBody4: ResponseBody4): string {
-  return JSON.stringify(ResponseBody4$outboundSchema.parse(responseBody4));
+export function getRollingReleaseBillingStatusResponseBody4ToJSON(
+  getRollingReleaseBillingStatusResponseBody4:
+    GetRollingReleaseBillingStatusResponseBody4,
+): string {
+  return JSON.stringify(
+    GetRollingReleaseBillingStatusResponseBody4$outboundSchema.parse(
+      getRollingReleaseBillingStatusResponseBody4,
+    ),
+  );
 }
-export function responseBody4FromJSON(
+export function getRollingReleaseBillingStatusResponseBody4FromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBody4, SDKValidationError> {
+): SafeParseResult<
+  GetRollingReleaseBillingStatusResponseBody4,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => ResponseBody4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBody4' from JSON`,
+    (x) =>
+      GetRollingReleaseBillingStatusResponseBody4$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetRollingReleaseBillingStatusResponseBody4' from JSON`,
   );
 }
 
@@ -336,14 +351,14 @@ export const GetRollingReleaseBillingStatusResponseBody$inboundSchema:
       z.lazy(() => GetRollingReleaseBillingStatusResponseBody1$inboundSchema),
       z.lazy(() => GetRollingReleaseBillingStatusResponseBody2$inboundSchema),
       z.lazy(() => GetRollingReleaseBillingStatusResponseBody3$inboundSchema),
-      z.lazy(() => ResponseBody4$inboundSchema),
+      z.lazy(() => GetRollingReleaseBillingStatusResponseBody4$inboundSchema),
     ]);
 /** @internal */
 export type GetRollingReleaseBillingStatusResponseBody$Outbound =
   | GetRollingReleaseBillingStatusResponseBody1$Outbound
   | GetRollingReleaseBillingStatusResponseBody2$Outbound
   | GetRollingReleaseBillingStatusResponseBody3$Outbound
-  | ResponseBody4$Outbound;
+  | GetRollingReleaseBillingStatusResponseBody4$Outbound;
 
 /** @internal */
 export const GetRollingReleaseBillingStatusResponseBody$outboundSchema:
@@ -355,7 +370,7 @@ export const GetRollingReleaseBillingStatusResponseBody$outboundSchema:
     z.lazy(() => GetRollingReleaseBillingStatusResponseBody1$outboundSchema),
     z.lazy(() => GetRollingReleaseBillingStatusResponseBody2$outboundSchema),
     z.lazy(() => GetRollingReleaseBillingStatusResponseBody3$outboundSchema),
-    z.lazy(() => ResponseBody4$outboundSchema),
+    z.lazy(() => GetRollingReleaseBillingStatusResponseBody4$outboundSchema),
   ]);
 
 export function getRollingReleaseBillingStatusResponseBodyToJSON(

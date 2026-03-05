@@ -16,7 +16,7 @@ export type GetV1SecurityFirewallEventsRequest = {
   hosts?: string | undefined;
 };
 
-export type Actions = {
+export type GetV1SecurityFirewallEventsActions = {
   startTime: string;
   endTime: string;
   isActive: boolean;
@@ -27,7 +27,7 @@ export type Actions = {
 };
 
 export type GetV1SecurityFirewallEventsResponseBody = {
-  actions: Array<Actions>;
+  actions: Array<GetV1SecurityFirewallEventsActions>;
 };
 
 /** @internal */
@@ -82,23 +82,26 @@ export function getV1SecurityFirewallEventsRequestFromJSON(
 }
 
 /** @internal */
-export const Actions$inboundSchema: z.ZodType<Actions, z.ZodTypeDef, unknown> =
-  z.object({
-    startTime: types.string(),
-    endTime: types.string(),
-    isActive: types.boolean(),
-    action_type: types.string(),
-    host: types.string(),
-    public_ip: types.string(),
-    count: types.number(),
-  }).transform((v) => {
-    return remap$(v, {
-      "action_type": "actionType",
-      "public_ip": "publicIp",
-    });
+export const GetV1SecurityFirewallEventsActions$inboundSchema: z.ZodType<
+  GetV1SecurityFirewallEventsActions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  startTime: types.string(),
+  endTime: types.string(),
+  isActive: types.boolean(),
+  action_type: types.string(),
+  host: types.string(),
+  public_ip: types.string(),
+  count: types.number(),
+}).transform((v) => {
+  return remap$(v, {
+    "action_type": "actionType",
+    "public_ip": "publicIp",
   });
+});
 /** @internal */
-export type Actions$Outbound = {
+export type GetV1SecurityFirewallEventsActions$Outbound = {
   startTime: string;
   endTime: string;
   isActive: boolean;
@@ -109,10 +112,10 @@ export type Actions$Outbound = {
 };
 
 /** @internal */
-export const Actions$outboundSchema: z.ZodType<
-  Actions$Outbound,
+export const GetV1SecurityFirewallEventsActions$outboundSchema: z.ZodType<
+  GetV1SecurityFirewallEventsActions$Outbound,
   z.ZodTypeDef,
-  Actions
+  GetV1SecurityFirewallEventsActions
 > = z.object({
   startTime: z.string(),
   endTime: z.string(),
@@ -128,16 +131,23 @@ export const Actions$outboundSchema: z.ZodType<
   });
 });
 
-export function actionsToJSON(actions: Actions): string {
-  return JSON.stringify(Actions$outboundSchema.parse(actions));
+export function getV1SecurityFirewallEventsActionsToJSON(
+  getV1SecurityFirewallEventsActions: GetV1SecurityFirewallEventsActions,
+): string {
+  return JSON.stringify(
+    GetV1SecurityFirewallEventsActions$outboundSchema.parse(
+      getV1SecurityFirewallEventsActions,
+    ),
+  );
 }
-export function actionsFromJSON(
+export function getV1SecurityFirewallEventsActionsFromJSON(
   jsonString: string,
-): SafeParseResult<Actions, SDKValidationError> {
+): SafeParseResult<GetV1SecurityFirewallEventsActions, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Actions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Actions' from JSON`,
+    (x) =>
+      GetV1SecurityFirewallEventsActions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetV1SecurityFirewallEventsActions' from JSON`,
   );
 }
 
@@ -147,11 +157,13 @@ export const GetV1SecurityFirewallEventsResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  actions: z.array(z.lazy(() => Actions$inboundSchema)),
+  actions: z.array(
+    z.lazy(() => GetV1SecurityFirewallEventsActions$inboundSchema),
+  ),
 });
 /** @internal */
 export type GetV1SecurityFirewallEventsResponseBody$Outbound = {
-  actions: Array<Actions$Outbound>;
+  actions: Array<GetV1SecurityFirewallEventsActions$Outbound>;
 };
 
 /** @internal */
@@ -160,7 +172,9 @@ export const GetV1SecurityFirewallEventsResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetV1SecurityFirewallEventsResponseBody
 > = z.object({
-  actions: z.array(z.lazy(() => Actions$outboundSchema)),
+  actions: z.array(
+    z.lazy(() => GetV1SecurityFirewallEventsActions$outboundSchema),
+  ),
 });
 
 export function getV1SecurityFirewallEventsResponseBodyToJSON(

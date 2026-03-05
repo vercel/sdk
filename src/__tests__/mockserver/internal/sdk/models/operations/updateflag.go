@@ -10,76 +10,76 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type UpdateFlagValueType string
+type UpdateFlagValueRequestType string
 
 const (
-	UpdateFlagValueTypeStr     UpdateFlagValueType = "str"
-	UpdateFlagValueTypeNumber  UpdateFlagValueType = "number"
-	UpdateFlagValueTypeBoolean UpdateFlagValueType = "boolean"
+	UpdateFlagValueRequestTypeStr     UpdateFlagValueRequestType = "str"
+	UpdateFlagValueRequestTypeNumber  UpdateFlagValueRequestType = "number"
+	UpdateFlagValueRequestTypeBoolean UpdateFlagValueRequestType = "boolean"
 )
 
-type UpdateFlagValue struct {
+type UpdateFlagValueRequest struct {
 	Str     *string  `queryParam:"inline"`
 	Number  *float64 `queryParam:"inline"`
 	Boolean *bool    `queryParam:"inline"`
 
-	Type UpdateFlagValueType
+	Type UpdateFlagValueRequestType
 }
 
-func CreateUpdateFlagValueStr(str string) UpdateFlagValue {
-	typ := UpdateFlagValueTypeStr
+func CreateUpdateFlagValueRequestStr(str string) UpdateFlagValueRequest {
+	typ := UpdateFlagValueRequestTypeStr
 
-	return UpdateFlagValue{
+	return UpdateFlagValueRequest{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateUpdateFlagValueNumber(number float64) UpdateFlagValue {
-	typ := UpdateFlagValueTypeNumber
+func CreateUpdateFlagValueRequestNumber(number float64) UpdateFlagValueRequest {
+	typ := UpdateFlagValueRequestTypeNumber
 
-	return UpdateFlagValue{
+	return UpdateFlagValueRequest{
 		Number: &number,
 		Type:   typ,
 	}
 }
 
-func CreateUpdateFlagValueBoolean(boolean bool) UpdateFlagValue {
-	typ := UpdateFlagValueTypeBoolean
+func CreateUpdateFlagValueRequestBoolean(boolean bool) UpdateFlagValueRequest {
+	typ := UpdateFlagValueRequestTypeBoolean
 
-	return UpdateFlagValue{
+	return UpdateFlagValueRequest{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func (u *UpdateFlagValue) UnmarshalJSON(data []byte) error {
+func (u *UpdateFlagValueRequest) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
-		u.Type = UpdateFlagValueTypeStr
+		u.Type = UpdateFlagValueRequestTypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
 	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
-		u.Type = UpdateFlagValueTypeNumber
+		u.Type = UpdateFlagValueRequestTypeNumber
 		return nil
 	}
 
 	var boolean bool = false
 	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UpdateFlagValueTypeBoolean
+		u.Type = UpdateFlagValueRequestTypeBoolean
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFlagValue", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFlagValueRequest", string(data))
 }
 
-func (u UpdateFlagValue) MarshalJSON() ([]byte, error) {
+func (u UpdateFlagValueRequest) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
@@ -92,260 +92,260 @@ func (u UpdateFlagValue) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UpdateFlagValue: all fields are null")
+	return nil, errors.New("could not marshal union type UpdateFlagValueRequest: all fields are null")
 }
 
-type UpdateFlagVariant struct {
+type UpdateFlagVariantRequest struct {
 	// The id of the variant
 	ID string `json:"id"`
 	// A label for the variant
 	Label *string `json:"label,omitempty"`
 	// A description of the variant
-	Description *string         `json:"description,omitempty"`
-	Value       UpdateFlagValue `json:"value"`
+	Description *string                `json:"description,omitempty"`
+	Value       UpdateFlagValueRequest `json:"value"`
 }
 
-func (o *UpdateFlagVariant) GetID() string {
+func (o *UpdateFlagVariantRequest) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *UpdateFlagVariant) GetLabel() *string {
+func (o *UpdateFlagVariantRequest) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *UpdateFlagVariant) GetDescription() *string {
+func (o *UpdateFlagVariantRequest) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *UpdateFlagVariant) GetValue() UpdateFlagValue {
+func (o *UpdateFlagVariantRequest) GetValue() UpdateFlagValueRequest {
 	if o == nil {
-		return UpdateFlagValue{}
+		return UpdateFlagValueRequest{}
 	}
 	return o.Value
 }
 
-// UpdateFlagReuse - Allows linking this environment to another environment so this flag will be evaluated with the other flag's configuration
-type UpdateFlagReuse struct {
+// UpdateFlagReuseRequest - Allows linking this environment to another environment so this flag will be evaluated with the other flag's configuration
+type UpdateFlagReuseRequest struct {
 	// Whether the reuse is active or not
 	Active bool `json:"active"`
 	// The environment to link to
 	Environment string `json:"environment"`
 }
 
-func (o *UpdateFlagReuse) GetActive() bool {
+func (o *UpdateFlagReuseRequest) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *UpdateFlagReuse) GetEnvironment() string {
+func (o *UpdateFlagReuseRequest) GetEnvironment() string {
 	if o == nil {
 		return ""
 	}
 	return o.Environment
 }
 
-type UpdateFlagTarget struct {
+type UpdateFlagTargetRequest struct {
 	Note  *string `json:"note,omitempty"`
 	Value string  `json:"value"`
 }
 
-func (o *UpdateFlagTarget) GetNote() *string {
+func (o *UpdateFlagTargetRequest) GetNote() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Note
 }
 
-func (o *UpdateFlagTarget) GetValue() string {
+func (o *UpdateFlagTargetRequest) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-type UpdateFlagPausedOutcome struct {
+type UpdateFlagPausedOutcomeRequest struct {
 	Type      any    `json:"type"`
 	VariantID string `json:"variantId"`
 }
 
-func (o *UpdateFlagPausedOutcome) GetType() any {
+func (o *UpdateFlagPausedOutcomeRequest) GetType() any {
 	if o == nil {
 		return nil
 	}
 	return o.Type
 }
 
-func (o *UpdateFlagPausedOutcome) GetVariantID() string {
+func (o *UpdateFlagPausedOutcomeRequest) GetVariantID() string {
 	if o == nil {
 		return ""
 	}
 	return o.VariantID
 }
 
-type UpdateFlagLHS2 struct {
+type UpdateFlagLHSRequest2 struct {
 	Type      any    `json:"type"`
 	Kind      string `json:"kind"`
 	Attribute string `json:"attribute"`
 }
 
-func (u UpdateFlagLHS2) MarshalJSON() ([]byte, error) {
+func (u UpdateFlagLHSRequest2) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(u, "", false)
 }
 
-func (u *UpdateFlagLHS2) UnmarshalJSON(data []byte) error {
+func (u *UpdateFlagLHSRequest2) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "kind", "attribute"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *UpdateFlagLHS2) GetType() any {
+func (o *UpdateFlagLHSRequest2) GetType() any {
 	if o == nil {
 		return nil
 	}
 	return o.Type
 }
 
-func (o *UpdateFlagLHS2) GetKind() string {
+func (o *UpdateFlagLHSRequest2) GetKind() string {
 	if o == nil {
 		return ""
 	}
 	return o.Kind
 }
 
-func (o *UpdateFlagLHS2) GetAttribute() string {
+func (o *UpdateFlagLHSRequest2) GetAttribute() string {
 	if o == nil {
 		return ""
 	}
 	return o.Attribute
 }
 
-type UpdateFlagLHS1 struct {
+type UpdateFlagLHSRequest1 struct {
 	Type any `json:"type"`
 }
 
-func (u UpdateFlagLHS1) MarshalJSON() ([]byte, error) {
+func (u UpdateFlagLHSRequest1) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(u, "", false)
 }
 
-func (u *UpdateFlagLHS1) UnmarshalJSON(data []byte) error {
+func (u *UpdateFlagLHSRequest1) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *UpdateFlagLHS1) GetType() any {
+func (o *UpdateFlagLHSRequest1) GetType() any {
 	if o == nil {
 		return nil
 	}
 	return o.Type
 }
 
-type UpdateFlagLHSUnionType string
+type UpdateFlagLHSRequestUnionType string
 
 const (
-	UpdateFlagLHSUnionTypeUpdateFlagLHS1 UpdateFlagLHSUnionType = "updateFlag_lhs_1"
-	UpdateFlagLHSUnionTypeUpdateFlagLHS2 UpdateFlagLHSUnionType = "updateFlag_lhs_2"
+	UpdateFlagLHSRequestUnionTypeUpdateFlagLHSRequest1 UpdateFlagLHSRequestUnionType = "updateFlag_lhs_request_1"
+	UpdateFlagLHSRequestUnionTypeUpdateFlagLHSRequest2 UpdateFlagLHSRequestUnionType = "updateFlag_lhs_request_2"
 )
 
-type UpdateFlagLHSUnion struct {
-	UpdateFlagLHS1 *UpdateFlagLHS1 `queryParam:"inline"`
-	UpdateFlagLHS2 *UpdateFlagLHS2 `queryParam:"inline"`
+type UpdateFlagLHSRequestUnion struct {
+	UpdateFlagLHSRequest1 *UpdateFlagLHSRequest1 `queryParam:"inline"`
+	UpdateFlagLHSRequest2 *UpdateFlagLHSRequest2 `queryParam:"inline"`
 
-	Type UpdateFlagLHSUnionType
+	Type UpdateFlagLHSRequestUnionType
 }
 
-func CreateUpdateFlagLHSUnionUpdateFlagLHS1(updateFlagLHS1 UpdateFlagLHS1) UpdateFlagLHSUnion {
-	typ := UpdateFlagLHSUnionTypeUpdateFlagLHS1
+func CreateUpdateFlagLHSRequestUnionUpdateFlagLHSRequest1(updateFlagLHSRequest1 UpdateFlagLHSRequest1) UpdateFlagLHSRequestUnion {
+	typ := UpdateFlagLHSRequestUnionTypeUpdateFlagLHSRequest1
 
-	return UpdateFlagLHSUnion{
-		UpdateFlagLHS1: &updateFlagLHS1,
-		Type:           typ,
+	return UpdateFlagLHSRequestUnion{
+		UpdateFlagLHSRequest1: &updateFlagLHSRequest1,
+		Type:                  typ,
 	}
 }
 
-func CreateUpdateFlagLHSUnionUpdateFlagLHS2(updateFlagLHS2 UpdateFlagLHS2) UpdateFlagLHSUnion {
-	typ := UpdateFlagLHSUnionTypeUpdateFlagLHS2
+func CreateUpdateFlagLHSRequestUnionUpdateFlagLHSRequest2(updateFlagLHSRequest2 UpdateFlagLHSRequest2) UpdateFlagLHSRequestUnion {
+	typ := UpdateFlagLHSRequestUnionTypeUpdateFlagLHSRequest2
 
-	return UpdateFlagLHSUnion{
-		UpdateFlagLHS2: &updateFlagLHS2,
-		Type:           typ,
+	return UpdateFlagLHSRequestUnion{
+		UpdateFlagLHSRequest2: &updateFlagLHSRequest2,
+		Type:                  typ,
 	}
 }
 
-func (u *UpdateFlagLHSUnion) UnmarshalJSON(data []byte) error {
+func (u *UpdateFlagLHSRequestUnion) UnmarshalJSON(data []byte) error {
 
-	var updateFlagLHS2 UpdateFlagLHS2 = UpdateFlagLHS2{}
-	if err := utils.UnmarshalJSON(data, &updateFlagLHS2, "", true, nil); err == nil {
-		u.UpdateFlagLHS2 = &updateFlagLHS2
-		u.Type = UpdateFlagLHSUnionTypeUpdateFlagLHS2
+	var updateFlagLHSRequest2 UpdateFlagLHSRequest2 = UpdateFlagLHSRequest2{}
+	if err := utils.UnmarshalJSON(data, &updateFlagLHSRequest2, "", true, nil); err == nil {
+		u.UpdateFlagLHSRequest2 = &updateFlagLHSRequest2
+		u.Type = UpdateFlagLHSRequestUnionTypeUpdateFlagLHSRequest2
 		return nil
 	}
 
-	var updateFlagLHS1 UpdateFlagLHS1 = UpdateFlagLHS1{}
-	if err := utils.UnmarshalJSON(data, &updateFlagLHS1, "", true, nil); err == nil {
-		u.UpdateFlagLHS1 = &updateFlagLHS1
-		u.Type = UpdateFlagLHSUnionTypeUpdateFlagLHS1
+	var updateFlagLHSRequest1 UpdateFlagLHSRequest1 = UpdateFlagLHSRequest1{}
+	if err := utils.UnmarshalJSON(data, &updateFlagLHSRequest1, "", true, nil); err == nil {
+		u.UpdateFlagLHSRequest1 = &updateFlagLHSRequest1
+		u.Type = UpdateFlagLHSRequestUnionTypeUpdateFlagLHSRequest1
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFlagLHSUnion", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFlagLHSRequestUnion", string(data))
 }
 
-func (u UpdateFlagLHSUnion) MarshalJSON() ([]byte, error) {
-	if u.UpdateFlagLHS1 != nil {
-		return utils.MarshalJSON(u.UpdateFlagLHS1, "", true)
+func (u UpdateFlagLHSRequestUnion) MarshalJSON() ([]byte, error) {
+	if u.UpdateFlagLHSRequest1 != nil {
+		return utils.MarshalJSON(u.UpdateFlagLHSRequest1, "", true)
 	}
 
-	if u.UpdateFlagLHS2 != nil {
-		return utils.MarshalJSON(u.UpdateFlagLHS2, "", true)
+	if u.UpdateFlagLHSRequest2 != nil {
+		return utils.MarshalJSON(u.UpdateFlagLHSRequest2, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UpdateFlagLHSUnion: all fields are null")
+	return nil, errors.New("could not marshal union type UpdateFlagLHSRequestUnion: all fields are null")
 }
 
-type UpdateFlagCmp string
+type UpdateFlagCmpRequest string
 
 const (
-	UpdateFlagCmpEq             UpdateFlagCmp = "eq"
-	UpdateFlagCmpNotEq          UpdateFlagCmp = "!eq"
-	UpdateFlagCmpOneOf          UpdateFlagCmp = "oneOf"
-	UpdateFlagCmpNotOneOf       UpdateFlagCmp = "!oneOf"
-	UpdateFlagCmpContainsAllOf  UpdateFlagCmp = "containsAllOf"
-	UpdateFlagCmpContainsAnyOf  UpdateFlagCmp = "containsAnyOf"
-	UpdateFlagCmpContainsNoneOf UpdateFlagCmp = "containsNoneOf"
-	UpdateFlagCmpStartsWith     UpdateFlagCmp = "startsWith"
-	UpdateFlagCmpNotStartsWith  UpdateFlagCmp = "!startsWith"
-	UpdateFlagCmpEndsWith       UpdateFlagCmp = "endsWith"
-	UpdateFlagCmpNotEndsWith    UpdateFlagCmp = "!endsWith"
-	UpdateFlagCmpEx             UpdateFlagCmp = "ex"
-	UpdateFlagCmpNotEx          UpdateFlagCmp = "!ex"
-	UpdateFlagCmpGt             UpdateFlagCmp = "gt"
-	UpdateFlagCmpGte            UpdateFlagCmp = "gte"
-	UpdateFlagCmpLt             UpdateFlagCmp = "lt"
-	UpdateFlagCmpLte            UpdateFlagCmp = "lte"
-	UpdateFlagCmpRegex          UpdateFlagCmp = "regex"
-	UpdateFlagCmpNotRegex       UpdateFlagCmp = "!regex"
-	UpdateFlagCmpBefore         UpdateFlagCmp = "before"
-	UpdateFlagCmpAfter          UpdateFlagCmp = "after"
+	UpdateFlagCmpRequestEq             UpdateFlagCmpRequest = "eq"
+	UpdateFlagCmpRequestNotEq          UpdateFlagCmpRequest = "!eq"
+	UpdateFlagCmpRequestOneOf          UpdateFlagCmpRequest = "oneOf"
+	UpdateFlagCmpRequestNotOneOf       UpdateFlagCmpRequest = "!oneOf"
+	UpdateFlagCmpRequestContainsAllOf  UpdateFlagCmpRequest = "containsAllOf"
+	UpdateFlagCmpRequestContainsAnyOf  UpdateFlagCmpRequest = "containsAnyOf"
+	UpdateFlagCmpRequestContainsNoneOf UpdateFlagCmpRequest = "containsNoneOf"
+	UpdateFlagCmpRequestStartsWith     UpdateFlagCmpRequest = "startsWith"
+	UpdateFlagCmpRequestNotStartsWith  UpdateFlagCmpRequest = "!startsWith"
+	UpdateFlagCmpRequestEndsWith       UpdateFlagCmpRequest = "endsWith"
+	UpdateFlagCmpRequestNotEndsWith    UpdateFlagCmpRequest = "!endsWith"
+	UpdateFlagCmpRequestEx             UpdateFlagCmpRequest = "ex"
+	UpdateFlagCmpRequestNotEx          UpdateFlagCmpRequest = "!ex"
+	UpdateFlagCmpRequestGt             UpdateFlagCmpRequest = "gt"
+	UpdateFlagCmpRequestGte            UpdateFlagCmpRequest = "gte"
+	UpdateFlagCmpRequestLt             UpdateFlagCmpRequest = "lt"
+	UpdateFlagCmpRequestLte            UpdateFlagCmpRequest = "lte"
+	UpdateFlagCmpRequestRegex          UpdateFlagCmpRequest = "regex"
+	UpdateFlagCmpRequestNotRegex       UpdateFlagCmpRequest = "!regex"
+	UpdateFlagCmpRequestBefore         UpdateFlagCmpRequest = "before"
+	UpdateFlagCmpRequestAfter          UpdateFlagCmpRequest = "after"
 )
 
-func (e UpdateFlagCmp) ToPointer() *UpdateFlagCmp {
+func (e UpdateFlagCmpRequest) ToPointer() *UpdateFlagCmpRequest {
 	return &e
 }
-func (e *UpdateFlagCmp) UnmarshalJSON(data []byte) error {
+func (e *UpdateFlagCmpRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -392,62 +392,62 @@ func (e *UpdateFlagCmp) UnmarshalJSON(data []byte) error {
 	case "before":
 		fallthrough
 	case "after":
-		*e = UpdateFlagCmp(v)
+		*e = UpdateFlagCmpRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateFlagCmp: %v", v)
+		return fmt.Errorf("invalid value for UpdateFlagCmpRequest: %v", v)
 	}
 }
 
-type UpdateFlagRHS2 struct {
+type UpdateFlagRHSRequest2 struct {
 	Type    any    `json:"type"`
 	Pattern string `json:"pattern"`
 	Flags   string `json:"flags"`
 }
 
-func (u UpdateFlagRHS2) MarshalJSON() ([]byte, error) {
+func (u UpdateFlagRHSRequest2) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(u, "", false)
 }
 
-func (u *UpdateFlagRHS2) UnmarshalJSON(data []byte) error {
+func (u *UpdateFlagRHSRequest2) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "pattern", "flags"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *UpdateFlagRHS2) GetType() any {
+func (o *UpdateFlagRHSRequest2) GetType() any {
 	if o == nil {
 		return nil
 	}
 	return o.Type
 }
 
-func (o *UpdateFlagRHS2) GetPattern() string {
+func (o *UpdateFlagRHSRequest2) GetPattern() string {
 	if o == nil {
 		return ""
 	}
 	return o.Pattern
 }
 
-func (o *UpdateFlagRHS2) GetFlags() string {
+func (o *UpdateFlagRHSRequest2) GetFlags() string {
 	if o == nil {
 		return ""
 	}
 	return o.Flags
 }
 
-type UpdateFlagType string
+type UpdateFlagTypeRequest string
 
 const (
-	UpdateFlagTypeListInline UpdateFlagType = "list/inline"
-	UpdateFlagTypeList       UpdateFlagType = "list"
+	UpdateFlagTypeRequestListInline UpdateFlagTypeRequest = "list/inline"
+	UpdateFlagTypeRequestList       UpdateFlagTypeRequest = "list"
 )
 
-func (e UpdateFlagType) ToPointer() *UpdateFlagType {
+func (e UpdateFlagTypeRequest) ToPointer() *UpdateFlagTypeRequest {
 	return &e
 }
-func (e *UpdateFlagType) UnmarshalJSON(data []byte) error {
+func (e *UpdateFlagTypeRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -456,294 +456,294 @@ func (e *UpdateFlagType) UnmarshalJSON(data []byte) error {
 	case "list/inline":
 		fallthrough
 	case "list":
-		*e = UpdateFlagType(v)
+		*e = UpdateFlagTypeRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateFlagType: %v", v)
+		return fmt.Errorf("invalid value for UpdateFlagTypeRequest: %v", v)
 	}
 }
 
-type UpdateFlagItem2 struct {
+type UpdateFlagItemRequest2 struct {
 	Label *string `json:"label,omitempty"`
 	Note  *string `json:"note,omitempty"`
 	Value string  `json:"value"`
 }
 
-func (u UpdateFlagItem2) MarshalJSON() ([]byte, error) {
+func (u UpdateFlagItemRequest2) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(u, "", false)
 }
 
-func (u *UpdateFlagItem2) UnmarshalJSON(data []byte) error {
+func (u *UpdateFlagItemRequest2) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"value"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *UpdateFlagItem2) GetLabel() *string {
+func (o *UpdateFlagItemRequest2) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *UpdateFlagItem2) GetNote() *string {
+func (o *UpdateFlagItemRequest2) GetNote() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Note
 }
 
-func (o *UpdateFlagItem2) GetValue() string {
+func (o *UpdateFlagItemRequest2) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-type UpdateFlagItem1 struct {
+type UpdateFlagItemRequest1 struct {
 	Label *string `json:"label,omitempty"`
 	Note  *string `json:"note,omitempty"`
 	Value float64 `json:"value"`
 }
 
-func (u UpdateFlagItem1) MarshalJSON() ([]byte, error) {
+func (u UpdateFlagItemRequest1) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(u, "", false)
 }
 
-func (u *UpdateFlagItem1) UnmarshalJSON(data []byte) error {
+func (u *UpdateFlagItemRequest1) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"value"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *UpdateFlagItem1) GetLabel() *string {
+func (o *UpdateFlagItemRequest1) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *UpdateFlagItem1) GetNote() *string {
+func (o *UpdateFlagItemRequest1) GetNote() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Note
 }
 
-func (o *UpdateFlagItem1) GetValue() float64 {
+func (o *UpdateFlagItemRequest1) GetValue() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Value
 }
 
-type UpdateFlagItemUnionType string
+type UpdateFlagItemRequestUnionType string
 
 const (
-	UpdateFlagItemUnionTypeUpdateFlagItem1 UpdateFlagItemUnionType = "updateFlag_item_1"
-	UpdateFlagItemUnionTypeUpdateFlagItem2 UpdateFlagItemUnionType = "updateFlag_item_2"
+	UpdateFlagItemRequestUnionTypeUpdateFlagItemRequest1 UpdateFlagItemRequestUnionType = "updateFlag_item_request_1"
+	UpdateFlagItemRequestUnionTypeUpdateFlagItemRequest2 UpdateFlagItemRequestUnionType = "updateFlag_item_request_2"
 )
 
-type UpdateFlagItemUnion struct {
-	UpdateFlagItem1 *UpdateFlagItem1 `queryParam:"inline"`
-	UpdateFlagItem2 *UpdateFlagItem2 `queryParam:"inline"`
+type UpdateFlagItemRequestUnion struct {
+	UpdateFlagItemRequest1 *UpdateFlagItemRequest1 `queryParam:"inline"`
+	UpdateFlagItemRequest2 *UpdateFlagItemRequest2 `queryParam:"inline"`
 
-	Type UpdateFlagItemUnionType
+	Type UpdateFlagItemRequestUnionType
 }
 
-func CreateUpdateFlagItemUnionUpdateFlagItem1(updateFlagItem1 UpdateFlagItem1) UpdateFlagItemUnion {
-	typ := UpdateFlagItemUnionTypeUpdateFlagItem1
+func CreateUpdateFlagItemRequestUnionUpdateFlagItemRequest1(updateFlagItemRequest1 UpdateFlagItemRequest1) UpdateFlagItemRequestUnion {
+	typ := UpdateFlagItemRequestUnionTypeUpdateFlagItemRequest1
 
-	return UpdateFlagItemUnion{
-		UpdateFlagItem1: &updateFlagItem1,
-		Type:            typ,
+	return UpdateFlagItemRequestUnion{
+		UpdateFlagItemRequest1: &updateFlagItemRequest1,
+		Type:                   typ,
 	}
 }
 
-func CreateUpdateFlagItemUnionUpdateFlagItem2(updateFlagItem2 UpdateFlagItem2) UpdateFlagItemUnion {
-	typ := UpdateFlagItemUnionTypeUpdateFlagItem2
+func CreateUpdateFlagItemRequestUnionUpdateFlagItemRequest2(updateFlagItemRequest2 UpdateFlagItemRequest2) UpdateFlagItemRequestUnion {
+	typ := UpdateFlagItemRequestUnionTypeUpdateFlagItemRequest2
 
-	return UpdateFlagItemUnion{
-		UpdateFlagItem2: &updateFlagItem2,
-		Type:            typ,
+	return UpdateFlagItemRequestUnion{
+		UpdateFlagItemRequest2: &updateFlagItemRequest2,
+		Type:                   typ,
 	}
 }
 
-func (u *UpdateFlagItemUnion) UnmarshalJSON(data []byte) error {
+func (u *UpdateFlagItemRequestUnion) UnmarshalJSON(data []byte) error {
 
-	var updateFlagItem1 UpdateFlagItem1 = UpdateFlagItem1{}
-	if err := utils.UnmarshalJSON(data, &updateFlagItem1, "", true, nil); err == nil {
-		u.UpdateFlagItem1 = &updateFlagItem1
-		u.Type = UpdateFlagItemUnionTypeUpdateFlagItem1
+	var updateFlagItemRequest1 UpdateFlagItemRequest1 = UpdateFlagItemRequest1{}
+	if err := utils.UnmarshalJSON(data, &updateFlagItemRequest1, "", true, nil); err == nil {
+		u.UpdateFlagItemRequest1 = &updateFlagItemRequest1
+		u.Type = UpdateFlagItemRequestUnionTypeUpdateFlagItemRequest1
 		return nil
 	}
 
-	var updateFlagItem2 UpdateFlagItem2 = UpdateFlagItem2{}
-	if err := utils.UnmarshalJSON(data, &updateFlagItem2, "", true, nil); err == nil {
-		u.UpdateFlagItem2 = &updateFlagItem2
-		u.Type = UpdateFlagItemUnionTypeUpdateFlagItem2
+	var updateFlagItemRequest2 UpdateFlagItemRequest2 = UpdateFlagItemRequest2{}
+	if err := utils.UnmarshalJSON(data, &updateFlagItemRequest2, "", true, nil); err == nil {
+		u.UpdateFlagItemRequest2 = &updateFlagItemRequest2
+		u.Type = UpdateFlagItemRequestUnionTypeUpdateFlagItemRequest2
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFlagItemUnion", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFlagItemRequestUnion", string(data))
 }
 
-func (u UpdateFlagItemUnion) MarshalJSON() ([]byte, error) {
-	if u.UpdateFlagItem1 != nil {
-		return utils.MarshalJSON(u.UpdateFlagItem1, "", true)
+func (u UpdateFlagItemRequestUnion) MarshalJSON() ([]byte, error) {
+	if u.UpdateFlagItemRequest1 != nil {
+		return utils.MarshalJSON(u.UpdateFlagItemRequest1, "", true)
 	}
 
-	if u.UpdateFlagItem2 != nil {
-		return utils.MarshalJSON(u.UpdateFlagItem2, "", true)
+	if u.UpdateFlagItemRequest2 != nil {
+		return utils.MarshalJSON(u.UpdateFlagItemRequest2, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UpdateFlagItemUnion: all fields are null")
+	return nil, errors.New("could not marshal union type UpdateFlagItemRequestUnion: all fields are null")
 }
 
-type UpdateFlagRHS1 struct {
-	Type  UpdateFlagType        `json:"type"`
-	Items []UpdateFlagItemUnion `json:"items"`
+type UpdateFlagRHSRequest1 struct {
+	Type  UpdateFlagTypeRequest        `json:"type"`
+	Items []UpdateFlagItemRequestUnion `json:"items"`
 }
 
-func (u UpdateFlagRHS1) MarshalJSON() ([]byte, error) {
+func (u UpdateFlagRHSRequest1) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(u, "", false)
 }
 
-func (u *UpdateFlagRHS1) UnmarshalJSON(data []byte) error {
+func (u *UpdateFlagRHSRequest1) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "items"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *UpdateFlagRHS1) GetType() UpdateFlagType {
+func (o *UpdateFlagRHSRequest1) GetType() UpdateFlagTypeRequest {
 	if o == nil {
-		return UpdateFlagType("")
+		return UpdateFlagTypeRequest("")
 	}
 	return o.Type
 }
 
-func (o *UpdateFlagRHS1) GetItems() []UpdateFlagItemUnion {
+func (o *UpdateFlagRHSRequest1) GetItems() []UpdateFlagItemRequestUnion {
 	if o == nil {
-		return []UpdateFlagItemUnion{}
+		return []UpdateFlagItemRequestUnion{}
 	}
 	return o.Items
 }
 
-type UpdateFlagRHSUnionType string
+type UpdateFlagRHSRequestUnionType string
 
 const (
-	UpdateFlagRHSUnionTypeUpdateFlagRHS1 UpdateFlagRHSUnionType = "updateFlag_rhs_1"
-	UpdateFlagRHSUnionTypeUpdateFlagRHS2 UpdateFlagRHSUnionType = "updateFlag_rhs_2"
-	UpdateFlagRHSUnionTypeStr            UpdateFlagRHSUnionType = "str"
-	UpdateFlagRHSUnionTypeNumber         UpdateFlagRHSUnionType = "number"
-	UpdateFlagRHSUnionTypeBoolean        UpdateFlagRHSUnionType = "boolean"
+	UpdateFlagRHSRequestUnionTypeUpdateFlagRHSRequest1 UpdateFlagRHSRequestUnionType = "updateFlag_rhs_request_1"
+	UpdateFlagRHSRequestUnionTypeUpdateFlagRHSRequest2 UpdateFlagRHSRequestUnionType = "updateFlag_rhs_request_2"
+	UpdateFlagRHSRequestUnionTypeStr                   UpdateFlagRHSRequestUnionType = "str"
+	UpdateFlagRHSRequestUnionTypeNumber                UpdateFlagRHSRequestUnionType = "number"
+	UpdateFlagRHSRequestUnionTypeBoolean               UpdateFlagRHSRequestUnionType = "boolean"
 )
 
-type UpdateFlagRHSUnion struct {
-	UpdateFlagRHS1 *UpdateFlagRHS1 `queryParam:"inline"`
-	UpdateFlagRHS2 *UpdateFlagRHS2 `queryParam:"inline"`
-	Str            *string         `queryParam:"inline"`
-	Number         *float64        `queryParam:"inline"`
-	Boolean        *bool           `queryParam:"inline"`
+type UpdateFlagRHSRequestUnion struct {
+	UpdateFlagRHSRequest1 *UpdateFlagRHSRequest1 `queryParam:"inline"`
+	UpdateFlagRHSRequest2 *UpdateFlagRHSRequest2 `queryParam:"inline"`
+	Str                   *string                `queryParam:"inline"`
+	Number                *float64               `queryParam:"inline"`
+	Boolean               *bool                  `queryParam:"inline"`
 
-	Type UpdateFlagRHSUnionType
+	Type UpdateFlagRHSRequestUnionType
 }
 
-func CreateUpdateFlagRHSUnionUpdateFlagRHS1(updateFlagRHS1 UpdateFlagRHS1) UpdateFlagRHSUnion {
-	typ := UpdateFlagRHSUnionTypeUpdateFlagRHS1
+func CreateUpdateFlagRHSRequestUnionUpdateFlagRHSRequest1(updateFlagRHSRequest1 UpdateFlagRHSRequest1) UpdateFlagRHSRequestUnion {
+	typ := UpdateFlagRHSRequestUnionTypeUpdateFlagRHSRequest1
 
-	return UpdateFlagRHSUnion{
-		UpdateFlagRHS1: &updateFlagRHS1,
-		Type:           typ,
+	return UpdateFlagRHSRequestUnion{
+		UpdateFlagRHSRequest1: &updateFlagRHSRequest1,
+		Type:                  typ,
 	}
 }
 
-func CreateUpdateFlagRHSUnionUpdateFlagRHS2(updateFlagRHS2 UpdateFlagRHS2) UpdateFlagRHSUnion {
-	typ := UpdateFlagRHSUnionTypeUpdateFlagRHS2
+func CreateUpdateFlagRHSRequestUnionUpdateFlagRHSRequest2(updateFlagRHSRequest2 UpdateFlagRHSRequest2) UpdateFlagRHSRequestUnion {
+	typ := UpdateFlagRHSRequestUnionTypeUpdateFlagRHSRequest2
 
-	return UpdateFlagRHSUnion{
-		UpdateFlagRHS2: &updateFlagRHS2,
-		Type:           typ,
+	return UpdateFlagRHSRequestUnion{
+		UpdateFlagRHSRequest2: &updateFlagRHSRequest2,
+		Type:                  typ,
 	}
 }
 
-func CreateUpdateFlagRHSUnionStr(str string) UpdateFlagRHSUnion {
-	typ := UpdateFlagRHSUnionTypeStr
+func CreateUpdateFlagRHSRequestUnionStr(str string) UpdateFlagRHSRequestUnion {
+	typ := UpdateFlagRHSRequestUnionTypeStr
 
-	return UpdateFlagRHSUnion{
+	return UpdateFlagRHSRequestUnion{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateUpdateFlagRHSUnionNumber(number float64) UpdateFlagRHSUnion {
-	typ := UpdateFlagRHSUnionTypeNumber
+func CreateUpdateFlagRHSRequestUnionNumber(number float64) UpdateFlagRHSRequestUnion {
+	typ := UpdateFlagRHSRequestUnionTypeNumber
 
-	return UpdateFlagRHSUnion{
+	return UpdateFlagRHSRequestUnion{
 		Number: &number,
 		Type:   typ,
 	}
 }
 
-func CreateUpdateFlagRHSUnionBoolean(boolean bool) UpdateFlagRHSUnion {
-	typ := UpdateFlagRHSUnionTypeBoolean
+func CreateUpdateFlagRHSRequestUnionBoolean(boolean bool) UpdateFlagRHSRequestUnion {
+	typ := UpdateFlagRHSRequestUnionTypeBoolean
 
-	return UpdateFlagRHSUnion{
+	return UpdateFlagRHSRequestUnion{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func (u *UpdateFlagRHSUnion) UnmarshalJSON(data []byte) error {
+func (u *UpdateFlagRHSRequestUnion) UnmarshalJSON(data []byte) error {
 
-	var updateFlagRHS2 UpdateFlagRHS2 = UpdateFlagRHS2{}
-	if err := utils.UnmarshalJSON(data, &updateFlagRHS2, "", true, nil); err == nil {
-		u.UpdateFlagRHS2 = &updateFlagRHS2
-		u.Type = UpdateFlagRHSUnionTypeUpdateFlagRHS2
+	var updateFlagRHSRequest2 UpdateFlagRHSRequest2 = UpdateFlagRHSRequest2{}
+	if err := utils.UnmarshalJSON(data, &updateFlagRHSRequest2, "", true, nil); err == nil {
+		u.UpdateFlagRHSRequest2 = &updateFlagRHSRequest2
+		u.Type = UpdateFlagRHSRequestUnionTypeUpdateFlagRHSRequest2
 		return nil
 	}
 
-	var updateFlagRHS1 UpdateFlagRHS1 = UpdateFlagRHS1{}
-	if err := utils.UnmarshalJSON(data, &updateFlagRHS1, "", true, nil); err == nil {
-		u.UpdateFlagRHS1 = &updateFlagRHS1
-		u.Type = UpdateFlagRHSUnionTypeUpdateFlagRHS1
+	var updateFlagRHSRequest1 UpdateFlagRHSRequest1 = UpdateFlagRHSRequest1{}
+	if err := utils.UnmarshalJSON(data, &updateFlagRHSRequest1, "", true, nil); err == nil {
+		u.UpdateFlagRHSRequest1 = &updateFlagRHSRequest1
+		u.Type = UpdateFlagRHSRequestUnionTypeUpdateFlagRHSRequest1
 		return nil
 	}
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
-		u.Type = UpdateFlagRHSUnionTypeStr
+		u.Type = UpdateFlagRHSRequestUnionTypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
 	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
-		u.Type = UpdateFlagRHSUnionTypeNumber
+		u.Type = UpdateFlagRHSRequestUnionTypeNumber
 		return nil
 	}
 
 	var boolean bool = false
 	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UpdateFlagRHSUnionTypeBoolean
+		u.Type = UpdateFlagRHSRequestUnionTypeBoolean
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFlagRHSUnion", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFlagRHSRequestUnion", string(data))
 }
 
-func (u UpdateFlagRHSUnion) MarshalJSON() ([]byte, error) {
-	if u.UpdateFlagRHS1 != nil {
-		return utils.MarshalJSON(u.UpdateFlagRHS1, "", true)
+func (u UpdateFlagRHSRequestUnion) MarshalJSON() ([]byte, error) {
+	if u.UpdateFlagRHSRequest1 != nil {
+		return utils.MarshalJSON(u.UpdateFlagRHSRequest1, "", true)
 	}
 
-	if u.UpdateFlagRHS2 != nil {
-		return utils.MarshalJSON(u.UpdateFlagRHS2, "", true)
+	if u.UpdateFlagRHSRequest2 != nil {
+		return utils.MarshalJSON(u.UpdateFlagRHSRequest2, "", true)
 	}
 
 	if u.Str != nil {
@@ -758,494 +758,494 @@ func (u UpdateFlagRHSUnion) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UpdateFlagRHSUnion: all fields are null")
+	return nil, errors.New("could not marshal union type UpdateFlagRHSRequestUnion: all fields are null")
 }
 
-type UpdateFlagCondition struct {
-	LHS UpdateFlagLHSUnion  `json:"lhs"`
-	Cmp UpdateFlagCmp       `json:"cmp"`
-	RHS *UpdateFlagRHSUnion `json:"rhs,omitempty"`
+type UpdateFlagConditionRequest struct {
+	LHS UpdateFlagLHSRequestUnion  `json:"lhs"`
+	Cmp UpdateFlagCmpRequest       `json:"cmp"`
+	RHS *UpdateFlagRHSRequestUnion `json:"rhs,omitempty"`
 }
 
-func (o *UpdateFlagCondition) GetLHS() UpdateFlagLHSUnion {
+func (o *UpdateFlagConditionRequest) GetLHS() UpdateFlagLHSRequestUnion {
 	if o == nil {
-		return UpdateFlagLHSUnion{}
+		return UpdateFlagLHSRequestUnion{}
 	}
 	return o.LHS
 }
 
-func (o *UpdateFlagCondition) GetCmp() UpdateFlagCmp {
+func (o *UpdateFlagConditionRequest) GetCmp() UpdateFlagCmpRequest {
 	if o == nil {
-		return UpdateFlagCmp("")
+		return UpdateFlagCmpRequest("")
 	}
 	return o.Cmp
 }
 
-func (o *UpdateFlagCondition) GetRHS() *UpdateFlagRHSUnion {
+func (o *UpdateFlagConditionRequest) GetRHS() *UpdateFlagRHSRequestUnion {
 	if o == nil {
 		return nil
 	}
 	return o.RHS
 }
 
-type UpdateFlagOutcomeBase struct {
+type UpdateFlagOutcomeBaseRequest struct {
 	Type      any    `json:"type"`
 	Kind      string `json:"kind"`
 	Attribute string `json:"attribute"`
 }
 
-func (u UpdateFlagOutcomeBase) MarshalJSON() ([]byte, error) {
+func (u UpdateFlagOutcomeBaseRequest) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(u, "", false)
 }
 
-func (u *UpdateFlagOutcomeBase) UnmarshalJSON(data []byte) error {
+func (u *UpdateFlagOutcomeBaseRequest) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "kind", "attribute"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *UpdateFlagOutcomeBase) GetType() any {
+func (o *UpdateFlagOutcomeBaseRequest) GetType() any {
 	if o == nil {
 		return nil
 	}
 	return o.Type
 }
 
-func (o *UpdateFlagOutcomeBase) GetKind() string {
+func (o *UpdateFlagOutcomeBaseRequest) GetKind() string {
 	if o == nil {
 		return ""
 	}
 	return o.Kind
 }
 
-func (o *UpdateFlagOutcomeBase) GetAttribute() string {
+func (o *UpdateFlagOutcomeBaseRequest) GetAttribute() string {
 	if o == nil {
 		return ""
 	}
 	return o.Attribute
 }
 
-type UpdateFlagOutcome2 struct {
-	Type any                   `json:"type"`
-	Base UpdateFlagOutcomeBase `json:"base"`
+type UpdateFlagOutcomeRequest2 struct {
+	Type any                          `json:"type"`
+	Base UpdateFlagOutcomeBaseRequest `json:"base"`
 	// The distribution for each variant
 	Weights map[string]float64 `json:"weights"`
 	// This variant will be used when the base attribute does not exist
 	DefaultVariantID string `json:"defaultVariantId"`
 }
 
-func (u UpdateFlagOutcome2) MarshalJSON() ([]byte, error) {
+func (u UpdateFlagOutcomeRequest2) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(u, "", false)
 }
 
-func (u *UpdateFlagOutcome2) UnmarshalJSON(data []byte) error {
+func (u *UpdateFlagOutcomeRequest2) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "base", "weights", "defaultVariantId"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *UpdateFlagOutcome2) GetType() any {
+func (o *UpdateFlagOutcomeRequest2) GetType() any {
 	if o == nil {
 		return nil
 	}
 	return o.Type
 }
 
-func (o *UpdateFlagOutcome2) GetBase() UpdateFlagOutcomeBase {
+func (o *UpdateFlagOutcomeRequest2) GetBase() UpdateFlagOutcomeBaseRequest {
 	if o == nil {
-		return UpdateFlagOutcomeBase{}
+		return UpdateFlagOutcomeBaseRequest{}
 	}
 	return o.Base
 }
 
-func (o *UpdateFlagOutcome2) GetWeights() map[string]float64 {
+func (o *UpdateFlagOutcomeRequest2) GetWeights() map[string]float64 {
 	if o == nil {
 		return map[string]float64{}
 	}
 	return o.Weights
 }
 
-func (o *UpdateFlagOutcome2) GetDefaultVariantID() string {
+func (o *UpdateFlagOutcomeRequest2) GetDefaultVariantID() string {
 	if o == nil {
 		return ""
 	}
 	return o.DefaultVariantID
 }
 
-type UpdateFlagOutcome1 struct {
+type UpdateFlagOutcomeRequest1 struct {
 	Type      any    `json:"type"`
 	VariantID string `json:"variantId"`
 }
 
-func (u UpdateFlagOutcome1) MarshalJSON() ([]byte, error) {
+func (u UpdateFlagOutcomeRequest1) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(u, "", false)
 }
 
-func (u *UpdateFlagOutcome1) UnmarshalJSON(data []byte) error {
+func (u *UpdateFlagOutcomeRequest1) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "variantId"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *UpdateFlagOutcome1) GetType() any {
+func (o *UpdateFlagOutcomeRequest1) GetType() any {
 	if o == nil {
 		return nil
 	}
 	return o.Type
 }
 
-func (o *UpdateFlagOutcome1) GetVariantID() string {
+func (o *UpdateFlagOutcomeRequest1) GetVariantID() string {
 	if o == nil {
 		return ""
 	}
 	return o.VariantID
 }
 
-type UpdateFlagOutcomeUnionType string
+type UpdateFlagOutcomeRequestUnionType string
 
 const (
-	UpdateFlagOutcomeUnionTypeUpdateFlagOutcome1 UpdateFlagOutcomeUnionType = "updateFlag_outcome_1"
-	UpdateFlagOutcomeUnionTypeUpdateFlagOutcome2 UpdateFlagOutcomeUnionType = "updateFlag_outcome_2"
+	UpdateFlagOutcomeRequestUnionTypeUpdateFlagOutcomeRequest1 UpdateFlagOutcomeRequestUnionType = "updateFlag_outcome_request_1"
+	UpdateFlagOutcomeRequestUnionTypeUpdateFlagOutcomeRequest2 UpdateFlagOutcomeRequestUnionType = "updateFlag_outcome_request_2"
 )
 
-type UpdateFlagOutcomeUnion struct {
-	UpdateFlagOutcome1 *UpdateFlagOutcome1 `queryParam:"inline"`
-	UpdateFlagOutcome2 *UpdateFlagOutcome2 `queryParam:"inline"`
+type UpdateFlagOutcomeRequestUnion struct {
+	UpdateFlagOutcomeRequest1 *UpdateFlagOutcomeRequest1 `queryParam:"inline"`
+	UpdateFlagOutcomeRequest2 *UpdateFlagOutcomeRequest2 `queryParam:"inline"`
 
-	Type UpdateFlagOutcomeUnionType
+	Type UpdateFlagOutcomeRequestUnionType
 }
 
-func CreateUpdateFlagOutcomeUnionUpdateFlagOutcome1(updateFlagOutcome1 UpdateFlagOutcome1) UpdateFlagOutcomeUnion {
-	typ := UpdateFlagOutcomeUnionTypeUpdateFlagOutcome1
+func CreateUpdateFlagOutcomeRequestUnionUpdateFlagOutcomeRequest1(updateFlagOutcomeRequest1 UpdateFlagOutcomeRequest1) UpdateFlagOutcomeRequestUnion {
+	typ := UpdateFlagOutcomeRequestUnionTypeUpdateFlagOutcomeRequest1
 
-	return UpdateFlagOutcomeUnion{
-		UpdateFlagOutcome1: &updateFlagOutcome1,
-		Type:               typ,
+	return UpdateFlagOutcomeRequestUnion{
+		UpdateFlagOutcomeRequest1: &updateFlagOutcomeRequest1,
+		Type:                      typ,
 	}
 }
 
-func CreateUpdateFlagOutcomeUnionUpdateFlagOutcome2(updateFlagOutcome2 UpdateFlagOutcome2) UpdateFlagOutcomeUnion {
-	typ := UpdateFlagOutcomeUnionTypeUpdateFlagOutcome2
+func CreateUpdateFlagOutcomeRequestUnionUpdateFlagOutcomeRequest2(updateFlagOutcomeRequest2 UpdateFlagOutcomeRequest2) UpdateFlagOutcomeRequestUnion {
+	typ := UpdateFlagOutcomeRequestUnionTypeUpdateFlagOutcomeRequest2
 
-	return UpdateFlagOutcomeUnion{
-		UpdateFlagOutcome2: &updateFlagOutcome2,
-		Type:               typ,
+	return UpdateFlagOutcomeRequestUnion{
+		UpdateFlagOutcomeRequest2: &updateFlagOutcomeRequest2,
+		Type:                      typ,
 	}
 }
 
-func (u *UpdateFlagOutcomeUnion) UnmarshalJSON(data []byte) error {
+func (u *UpdateFlagOutcomeRequestUnion) UnmarshalJSON(data []byte) error {
 
-	var updateFlagOutcome2 UpdateFlagOutcome2 = UpdateFlagOutcome2{}
-	if err := utils.UnmarshalJSON(data, &updateFlagOutcome2, "", true, nil); err == nil {
-		u.UpdateFlagOutcome2 = &updateFlagOutcome2
-		u.Type = UpdateFlagOutcomeUnionTypeUpdateFlagOutcome2
+	var updateFlagOutcomeRequest2 UpdateFlagOutcomeRequest2 = UpdateFlagOutcomeRequest2{}
+	if err := utils.UnmarshalJSON(data, &updateFlagOutcomeRequest2, "", true, nil); err == nil {
+		u.UpdateFlagOutcomeRequest2 = &updateFlagOutcomeRequest2
+		u.Type = UpdateFlagOutcomeRequestUnionTypeUpdateFlagOutcomeRequest2
 		return nil
 	}
 
-	var updateFlagOutcome1 UpdateFlagOutcome1 = UpdateFlagOutcome1{}
-	if err := utils.UnmarshalJSON(data, &updateFlagOutcome1, "", true, nil); err == nil {
-		u.UpdateFlagOutcome1 = &updateFlagOutcome1
-		u.Type = UpdateFlagOutcomeUnionTypeUpdateFlagOutcome1
+	var updateFlagOutcomeRequest1 UpdateFlagOutcomeRequest1 = UpdateFlagOutcomeRequest1{}
+	if err := utils.UnmarshalJSON(data, &updateFlagOutcomeRequest1, "", true, nil); err == nil {
+		u.UpdateFlagOutcomeRequest1 = &updateFlagOutcomeRequest1
+		u.Type = UpdateFlagOutcomeRequestUnionTypeUpdateFlagOutcomeRequest1
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFlagOutcomeUnion", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFlagOutcomeRequestUnion", string(data))
 }
 
-func (u UpdateFlagOutcomeUnion) MarshalJSON() ([]byte, error) {
-	if u.UpdateFlagOutcome1 != nil {
-		return utils.MarshalJSON(u.UpdateFlagOutcome1, "", true)
+func (u UpdateFlagOutcomeRequestUnion) MarshalJSON() ([]byte, error) {
+	if u.UpdateFlagOutcomeRequest1 != nil {
+		return utils.MarshalJSON(u.UpdateFlagOutcomeRequest1, "", true)
 	}
 
-	if u.UpdateFlagOutcome2 != nil {
-		return utils.MarshalJSON(u.UpdateFlagOutcome2, "", true)
+	if u.UpdateFlagOutcomeRequest2 != nil {
+		return utils.MarshalJSON(u.UpdateFlagOutcomeRequest2, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UpdateFlagOutcomeUnion: all fields are null")
+	return nil, errors.New("could not marshal union type UpdateFlagOutcomeRequestUnion: all fields are null")
 }
 
-type UpdateFlagRule struct {
-	ID         string                 `json:"id"`
-	Conditions []UpdateFlagCondition  `json:"conditions"`
-	Outcome    UpdateFlagOutcomeUnion `json:"outcome"`
+type UpdateFlagRuleRequest struct {
+	ID         string                        `json:"id"`
+	Conditions []UpdateFlagConditionRequest  `json:"conditions"`
+	Outcome    UpdateFlagOutcomeRequestUnion `json:"outcome"`
 }
 
-func (o *UpdateFlagRule) GetID() string {
+func (o *UpdateFlagRuleRequest) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *UpdateFlagRule) GetConditions() []UpdateFlagCondition {
+func (o *UpdateFlagRuleRequest) GetConditions() []UpdateFlagConditionRequest {
 	if o == nil {
-		return []UpdateFlagCondition{}
+		return []UpdateFlagConditionRequest{}
 	}
 	return o.Conditions
 }
 
-func (o *UpdateFlagRule) GetOutcome() UpdateFlagOutcomeUnion {
+func (o *UpdateFlagRuleRequest) GetOutcome() UpdateFlagOutcomeRequestUnion {
 	if o == nil {
-		return UpdateFlagOutcomeUnion{}
+		return UpdateFlagOutcomeRequestUnion{}
 	}
 	return o.Outcome
 }
 
-type UpdateFlagFallthroughBase struct {
+type UpdateFlagFallthroughBaseRequest struct {
 	Type      any    `json:"type"`
 	Kind      string `json:"kind"`
 	Attribute string `json:"attribute"`
 }
 
-func (u UpdateFlagFallthroughBase) MarshalJSON() ([]byte, error) {
+func (u UpdateFlagFallthroughBaseRequest) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(u, "", false)
 }
 
-func (u *UpdateFlagFallthroughBase) UnmarshalJSON(data []byte) error {
+func (u *UpdateFlagFallthroughBaseRequest) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "kind", "attribute"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *UpdateFlagFallthroughBase) GetType() any {
+func (o *UpdateFlagFallthroughBaseRequest) GetType() any {
 	if o == nil {
 		return nil
 	}
 	return o.Type
 }
 
-func (o *UpdateFlagFallthroughBase) GetKind() string {
+func (o *UpdateFlagFallthroughBaseRequest) GetKind() string {
 	if o == nil {
 		return ""
 	}
 	return o.Kind
 }
 
-func (o *UpdateFlagFallthroughBase) GetAttribute() string {
+func (o *UpdateFlagFallthroughBaseRequest) GetAttribute() string {
 	if o == nil {
 		return ""
 	}
 	return o.Attribute
 }
 
-type UpdateFlagFallthrough2 struct {
-	Type any                       `json:"type"`
-	Base UpdateFlagFallthroughBase `json:"base"`
+type UpdateFlagFallthroughRequest2 struct {
+	Type any                              `json:"type"`
+	Base UpdateFlagFallthroughBaseRequest `json:"base"`
 	// The distribution for each variant
 	Weights map[string]float64 `json:"weights"`
 	// This variant will be used when the base attribute does not exist
 	DefaultVariantID string `json:"defaultVariantId"`
 }
 
-func (u UpdateFlagFallthrough2) MarshalJSON() ([]byte, error) {
+func (u UpdateFlagFallthroughRequest2) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(u, "", false)
 }
 
-func (u *UpdateFlagFallthrough2) UnmarshalJSON(data []byte) error {
+func (u *UpdateFlagFallthroughRequest2) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "base", "weights", "defaultVariantId"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *UpdateFlagFallthrough2) GetType() any {
+func (o *UpdateFlagFallthroughRequest2) GetType() any {
 	if o == nil {
 		return nil
 	}
 	return o.Type
 }
 
-func (o *UpdateFlagFallthrough2) GetBase() UpdateFlagFallthroughBase {
+func (o *UpdateFlagFallthroughRequest2) GetBase() UpdateFlagFallthroughBaseRequest {
 	if o == nil {
-		return UpdateFlagFallthroughBase{}
+		return UpdateFlagFallthroughBaseRequest{}
 	}
 	return o.Base
 }
 
-func (o *UpdateFlagFallthrough2) GetWeights() map[string]float64 {
+func (o *UpdateFlagFallthroughRequest2) GetWeights() map[string]float64 {
 	if o == nil {
 		return map[string]float64{}
 	}
 	return o.Weights
 }
 
-func (o *UpdateFlagFallthrough2) GetDefaultVariantID() string {
+func (o *UpdateFlagFallthroughRequest2) GetDefaultVariantID() string {
 	if o == nil {
 		return ""
 	}
 	return o.DefaultVariantID
 }
 
-type UpdateFlagFallthrough1 struct {
+type UpdateFlagFallthroughRequest1 struct {
 	Type      any    `json:"type"`
 	VariantID string `json:"variantId"`
 }
 
-func (u UpdateFlagFallthrough1) MarshalJSON() ([]byte, error) {
+func (u UpdateFlagFallthroughRequest1) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(u, "", false)
 }
 
-func (u *UpdateFlagFallthrough1) UnmarshalJSON(data []byte) error {
+func (u *UpdateFlagFallthroughRequest1) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "variantId"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *UpdateFlagFallthrough1) GetType() any {
+func (o *UpdateFlagFallthroughRequest1) GetType() any {
 	if o == nil {
 		return nil
 	}
 	return o.Type
 }
 
-func (o *UpdateFlagFallthrough1) GetVariantID() string {
+func (o *UpdateFlagFallthroughRequest1) GetVariantID() string {
 	if o == nil {
 		return ""
 	}
 	return o.VariantID
 }
 
-type UpdateFlagFallthroughUnionType string
+type UpdateFlagFallthroughRequestUnionType string
 
 const (
-	UpdateFlagFallthroughUnionTypeUpdateFlagFallthrough1 UpdateFlagFallthroughUnionType = "updateFlag_fallthrough_1"
-	UpdateFlagFallthroughUnionTypeUpdateFlagFallthrough2 UpdateFlagFallthroughUnionType = "updateFlag_fallthrough_2"
+	UpdateFlagFallthroughRequestUnionTypeUpdateFlagFallthroughRequest1 UpdateFlagFallthroughRequestUnionType = "updateFlag_fallthrough_request_1"
+	UpdateFlagFallthroughRequestUnionTypeUpdateFlagFallthroughRequest2 UpdateFlagFallthroughRequestUnionType = "updateFlag_fallthrough_request_2"
 )
 
-type UpdateFlagFallthroughUnion struct {
-	UpdateFlagFallthrough1 *UpdateFlagFallthrough1 `queryParam:"inline"`
-	UpdateFlagFallthrough2 *UpdateFlagFallthrough2 `queryParam:"inline"`
+type UpdateFlagFallthroughRequestUnion struct {
+	UpdateFlagFallthroughRequest1 *UpdateFlagFallthroughRequest1 `queryParam:"inline"`
+	UpdateFlagFallthroughRequest2 *UpdateFlagFallthroughRequest2 `queryParam:"inline"`
 
-	Type UpdateFlagFallthroughUnionType
+	Type UpdateFlagFallthroughRequestUnionType
 }
 
-func CreateUpdateFlagFallthroughUnionUpdateFlagFallthrough1(updateFlagFallthrough1 UpdateFlagFallthrough1) UpdateFlagFallthroughUnion {
-	typ := UpdateFlagFallthroughUnionTypeUpdateFlagFallthrough1
+func CreateUpdateFlagFallthroughRequestUnionUpdateFlagFallthroughRequest1(updateFlagFallthroughRequest1 UpdateFlagFallthroughRequest1) UpdateFlagFallthroughRequestUnion {
+	typ := UpdateFlagFallthroughRequestUnionTypeUpdateFlagFallthroughRequest1
 
-	return UpdateFlagFallthroughUnion{
-		UpdateFlagFallthrough1: &updateFlagFallthrough1,
-		Type:                   typ,
+	return UpdateFlagFallthroughRequestUnion{
+		UpdateFlagFallthroughRequest1: &updateFlagFallthroughRequest1,
+		Type:                          typ,
 	}
 }
 
-func CreateUpdateFlagFallthroughUnionUpdateFlagFallthrough2(updateFlagFallthrough2 UpdateFlagFallthrough2) UpdateFlagFallthroughUnion {
-	typ := UpdateFlagFallthroughUnionTypeUpdateFlagFallthrough2
+func CreateUpdateFlagFallthroughRequestUnionUpdateFlagFallthroughRequest2(updateFlagFallthroughRequest2 UpdateFlagFallthroughRequest2) UpdateFlagFallthroughRequestUnion {
+	typ := UpdateFlagFallthroughRequestUnionTypeUpdateFlagFallthroughRequest2
 
-	return UpdateFlagFallthroughUnion{
-		UpdateFlagFallthrough2: &updateFlagFallthrough2,
-		Type:                   typ,
+	return UpdateFlagFallthroughRequestUnion{
+		UpdateFlagFallthroughRequest2: &updateFlagFallthroughRequest2,
+		Type:                          typ,
 	}
 }
 
-func (u *UpdateFlagFallthroughUnion) UnmarshalJSON(data []byte) error {
+func (u *UpdateFlagFallthroughRequestUnion) UnmarshalJSON(data []byte) error {
 
-	var updateFlagFallthrough2 UpdateFlagFallthrough2 = UpdateFlagFallthrough2{}
-	if err := utils.UnmarshalJSON(data, &updateFlagFallthrough2, "", true, nil); err == nil {
-		u.UpdateFlagFallthrough2 = &updateFlagFallthrough2
-		u.Type = UpdateFlagFallthroughUnionTypeUpdateFlagFallthrough2
+	var updateFlagFallthroughRequest2 UpdateFlagFallthroughRequest2 = UpdateFlagFallthroughRequest2{}
+	if err := utils.UnmarshalJSON(data, &updateFlagFallthroughRequest2, "", true, nil); err == nil {
+		u.UpdateFlagFallthroughRequest2 = &updateFlagFallthroughRequest2
+		u.Type = UpdateFlagFallthroughRequestUnionTypeUpdateFlagFallthroughRequest2
 		return nil
 	}
 
-	var updateFlagFallthrough1 UpdateFlagFallthrough1 = UpdateFlagFallthrough1{}
-	if err := utils.UnmarshalJSON(data, &updateFlagFallthrough1, "", true, nil); err == nil {
-		u.UpdateFlagFallthrough1 = &updateFlagFallthrough1
-		u.Type = UpdateFlagFallthroughUnionTypeUpdateFlagFallthrough1
+	var updateFlagFallthroughRequest1 UpdateFlagFallthroughRequest1 = UpdateFlagFallthroughRequest1{}
+	if err := utils.UnmarshalJSON(data, &updateFlagFallthroughRequest1, "", true, nil); err == nil {
+		u.UpdateFlagFallthroughRequest1 = &updateFlagFallthroughRequest1
+		u.Type = UpdateFlagFallthroughRequestUnionTypeUpdateFlagFallthroughRequest1
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFlagFallthroughUnion", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFlagFallthroughRequestUnion", string(data))
 }
 
-func (u UpdateFlagFallthroughUnion) MarshalJSON() ([]byte, error) {
-	if u.UpdateFlagFallthrough1 != nil {
-		return utils.MarshalJSON(u.UpdateFlagFallthrough1, "", true)
+func (u UpdateFlagFallthroughRequestUnion) MarshalJSON() ([]byte, error) {
+	if u.UpdateFlagFallthroughRequest1 != nil {
+		return utils.MarshalJSON(u.UpdateFlagFallthroughRequest1, "", true)
 	}
 
-	if u.UpdateFlagFallthrough2 != nil {
-		return utils.MarshalJSON(u.UpdateFlagFallthrough2, "", true)
+	if u.UpdateFlagFallthroughRequest2 != nil {
+		return utils.MarshalJSON(u.UpdateFlagFallthroughRequest2, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UpdateFlagFallthroughUnion: all fields are null")
+	return nil, errors.New("could not marshal union type UpdateFlagFallthroughRequestUnion: all fields are null")
 }
 
-type UpdateFlagEnvironments struct {
+type UpdateFlagEnvironmentsRequest struct {
 	Active bool `json:"active"`
 	// Allows linking this environment to another environment so this flag will be evaluated with the other flag's configuration
-	Reuse *UpdateFlagReuse `json:"reuse,omitempty"`
+	Reuse *UpdateFlagReuseRequest `json:"reuse,omitempty"`
 	// Allows assigning targets to variants while bypassing the flag's rules
-	Targets       map[string]map[string]map[string][]UpdateFlagTarget `json:"targets,omitempty"`
-	PausedOutcome UpdateFlagPausedOutcome                             `json:"pausedOutcome"`
-	Rules         []UpdateFlagRule                                    `json:"rules"`
-	Fallthrough   UpdateFlagFallthroughUnion                          `json:"fallthrough"`
+	Targets       map[string]map[string]map[string][]UpdateFlagTargetRequest `json:"targets,omitempty"`
+	PausedOutcome UpdateFlagPausedOutcomeRequest                             `json:"pausedOutcome"`
+	Rules         []UpdateFlagRuleRequest                                    `json:"rules"`
+	Fallthrough   UpdateFlagFallthroughRequestUnion                          `json:"fallthrough"`
 	// The revision of the environment config
 	Revision *float64 `json:"revision,omitempty"`
 }
 
-func (o *UpdateFlagEnvironments) GetActive() bool {
+func (o *UpdateFlagEnvironmentsRequest) GetActive() bool {
 	if o == nil {
 		return false
 	}
 	return o.Active
 }
 
-func (o *UpdateFlagEnvironments) GetReuse() *UpdateFlagReuse {
+func (o *UpdateFlagEnvironmentsRequest) GetReuse() *UpdateFlagReuseRequest {
 	if o == nil {
 		return nil
 	}
 	return o.Reuse
 }
 
-func (o *UpdateFlagEnvironments) GetTargets() map[string]map[string]map[string][]UpdateFlagTarget {
+func (o *UpdateFlagEnvironmentsRequest) GetTargets() map[string]map[string]map[string][]UpdateFlagTargetRequest {
 	if o == nil {
 		return nil
 	}
 	return o.Targets
 }
 
-func (o *UpdateFlagEnvironments) GetPausedOutcome() UpdateFlagPausedOutcome {
+func (o *UpdateFlagEnvironmentsRequest) GetPausedOutcome() UpdateFlagPausedOutcomeRequest {
 	if o == nil {
-		return UpdateFlagPausedOutcome{}
+		return UpdateFlagPausedOutcomeRequest{}
 	}
 	return o.PausedOutcome
 }
 
-func (o *UpdateFlagEnvironments) GetRules() []UpdateFlagRule {
+func (o *UpdateFlagEnvironmentsRequest) GetRules() []UpdateFlagRuleRequest {
 	if o == nil {
-		return []UpdateFlagRule{}
+		return []UpdateFlagRuleRequest{}
 	}
 	return o.Rules
 }
 
-func (o *UpdateFlagEnvironments) GetFallthrough() UpdateFlagFallthroughUnion {
+func (o *UpdateFlagEnvironmentsRequest) GetFallthrough() UpdateFlagFallthroughRequestUnion {
 	if o == nil {
-		return UpdateFlagFallthroughUnion{}
+		return UpdateFlagFallthroughRequestUnion{}
 	}
 	return o.Fallthrough
 }
 
-func (o *UpdateFlagEnvironments) GetRevision() *float64 {
+func (o *UpdateFlagEnvironmentsRequest) GetRevision() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Revision
 }
 
-type UpdateFlagState string
+type UpdateFlagStateRequest string
 
 const (
-	UpdateFlagStateActive   UpdateFlagState = "active"
-	UpdateFlagStateArchived UpdateFlagState = "archived"
+	UpdateFlagStateRequestActive   UpdateFlagStateRequest = "active"
+	UpdateFlagStateRequestArchived UpdateFlagStateRequest = "archived"
 )
 
-func (e UpdateFlagState) ToPointer() *UpdateFlagState {
+func (e UpdateFlagStateRequest) ToPointer() *UpdateFlagStateRequest {
 	return &e
 }
-func (e *UpdateFlagState) UnmarshalJSON(data []byte) error {
+func (e *UpdateFlagStateRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1254,10 +1254,10 @@ func (e *UpdateFlagState) UnmarshalJSON(data []byte) error {
 	case "active":
 		fallthrough
 	case "archived":
-		*e = UpdateFlagState(v)
+		*e = UpdateFlagStateRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateFlagState: %v", v)
+		return fmt.Errorf("invalid value for UpdateFlagStateRequest: %v", v)
 	}
 }
 
@@ -1267,14 +1267,14 @@ type UpdateFlagRequestBody struct {
 	// Additional message for this version
 	Message *string `json:"message,omitempty"`
 	// The variants of the flag
-	Variants []UpdateFlagVariant `json:"variants,omitempty"`
+	Variants []UpdateFlagVariantRequest `json:"variants,omitempty"`
 	// The configuration for the flag in different environments
-	Environments map[string]UpdateFlagEnvironments `json:"environments,omitempty"`
+	Environments map[string]UpdateFlagEnvironmentsRequest `json:"environments,omitempty"`
 	// A random seed to prevent split points in different flags from having the same targets
 	Seed *float64 `json:"seed,omitempty"`
 	// A description of the flag
-	Description *string          `json:"description,omitempty"`
-	State       *UpdateFlagState `json:"state,omitempty"`
+	Description *string                 `json:"description,omitempty"`
+	State       *UpdateFlagStateRequest `json:"state,omitempty"`
 }
 
 func (o *UpdateFlagRequestBody) GetCreatedBy() *string {
@@ -1291,14 +1291,14 @@ func (o *UpdateFlagRequestBody) GetMessage() *string {
 	return o.Message
 }
 
-func (o *UpdateFlagRequestBody) GetVariants() []UpdateFlagVariant {
+func (o *UpdateFlagRequestBody) GetVariants() []UpdateFlagVariantRequest {
 	if o == nil {
 		return nil
 	}
 	return o.Variants
 }
 
-func (o *UpdateFlagRequestBody) GetEnvironments() map[string]UpdateFlagEnvironments {
+func (o *UpdateFlagRequestBody) GetEnvironments() map[string]UpdateFlagEnvironmentsRequest {
 	if o == nil {
 		return nil
 	}
@@ -1319,7 +1319,7 @@ func (o *UpdateFlagRequestBody) GetDescription() *string {
 	return o.Description
 }
 
-func (o *UpdateFlagRequestBody) GetState() *UpdateFlagState {
+func (o *UpdateFlagRequestBody) GetState() *UpdateFlagStateRequest {
 	if o == nil {
 		return nil
 	}
@@ -1391,9 +1391,1893 @@ func (o *UpdateFlagRequest) GetBody() *UpdateFlagRequestBody {
 	return o.Body
 }
 
+type UpdateFlagResponseBodyValueType string
+
+const (
+	UpdateFlagResponseBodyValueTypeStr     UpdateFlagResponseBodyValueType = "str"
+	UpdateFlagResponseBodyValueTypeNumber  UpdateFlagResponseBodyValueType = "number"
+	UpdateFlagResponseBodyValueTypeBoolean UpdateFlagResponseBodyValueType = "boolean"
+)
+
+type UpdateFlagResponseBodyValue struct {
+	Str     *string  `queryParam:"inline"`
+	Number  *float64 `queryParam:"inline"`
+	Boolean *bool    `queryParam:"inline"`
+
+	Type UpdateFlagResponseBodyValueType
+}
+
+func CreateUpdateFlagResponseBodyValueStr(str string) UpdateFlagResponseBodyValue {
+	typ := UpdateFlagResponseBodyValueTypeStr
+
+	return UpdateFlagResponseBodyValue{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateUpdateFlagResponseBodyValueNumber(number float64) UpdateFlagResponseBodyValue {
+	typ := UpdateFlagResponseBodyValueTypeNumber
+
+	return UpdateFlagResponseBodyValue{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func CreateUpdateFlagResponseBodyValueBoolean(boolean bool) UpdateFlagResponseBodyValue {
+	typ := UpdateFlagResponseBodyValueTypeBoolean
+
+	return UpdateFlagResponseBodyValue{
+		Boolean: &boolean,
+		Type:    typ,
+	}
+}
+
+func (u *UpdateFlagResponseBodyValue) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = UpdateFlagResponseBodyValueTypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
+		u.Number = &number
+		u.Type = UpdateFlagResponseBodyValueTypeNumber
+		return nil
+	}
+
+	var boolean bool = false
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
+		u.Boolean = &boolean
+		u.Type = UpdateFlagResponseBodyValueTypeBoolean
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFlagResponseBodyValue", string(data))
+}
+
+func (u UpdateFlagResponseBodyValue) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type UpdateFlagResponseBodyValue: all fields are null")
+}
+
+type UpdateFlagResponseBodyVariant struct {
+	Description *string                     `json:"description,omitempty"`
+	Label       *string                     `json:"label,omitempty"`
+	Value       UpdateFlagResponseBodyValue `json:"value"`
+	ID          string                      `json:"id"`
+}
+
+func (u UpdateFlagResponseBodyVariant) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagResponseBodyVariant) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"value", "id"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagResponseBodyVariant) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *UpdateFlagResponseBodyVariant) GetLabel() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Label
+}
+
+func (o *UpdateFlagResponseBodyVariant) GetValue() UpdateFlagResponseBodyValue {
+	if o == nil {
+		return UpdateFlagResponseBodyValue{}
+	}
+	return o.Value
+}
+
+func (o *UpdateFlagResponseBodyVariant) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+type UpdateFlagResponseBodyReuse struct {
+	Active      bool   `json:"active"`
+	Environment string `json:"environment"`
+}
+
+func (u UpdateFlagResponseBodyReuse) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagResponseBodyReuse) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"active", "environment"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagResponseBodyReuse) GetActive() bool {
+	if o == nil {
+		return false
+	}
+	return o.Active
+}
+
+func (o *UpdateFlagResponseBodyReuse) GetEnvironment() string {
+	if o == nil {
+		return ""
+	}
+	return o.Environment
+}
+
+type UpdateFlagResponseBodyTarget struct {
+	Note  *string `json:"note,omitempty"`
+	Value string  `json:"value"`
+}
+
+func (u UpdateFlagResponseBodyTarget) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagResponseBodyTarget) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagResponseBodyTarget) GetNote() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Note
+}
+
+func (o *UpdateFlagResponseBodyTarget) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
+}
+
+type UpdateFlagTypeVariant string
+
+const (
+	UpdateFlagTypeVariantVariant UpdateFlagTypeVariant = "variant"
+)
+
+func (e UpdateFlagTypeVariant) ToPointer() *UpdateFlagTypeVariant {
+	return &e
+}
+func (e *UpdateFlagTypeVariant) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "variant":
+		*e = UpdateFlagTypeVariant(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateFlagTypeVariant: %v", v)
+	}
+}
+
+type UpdateFlagResponseBodyPausedOutcome struct {
+	Type      UpdateFlagTypeVariant `json:"type"`
+	VariantID string                `json:"variantId"`
+}
+
+func (u UpdateFlagResponseBodyPausedOutcome) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagResponseBodyPausedOutcome) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "variantId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagResponseBodyPausedOutcome) GetType() UpdateFlagTypeVariant {
+	if o == nil {
+		return UpdateFlagTypeVariant("")
+	}
+	return o.Type
+}
+
+func (o *UpdateFlagResponseBodyPausedOutcome) GetVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.VariantID
+}
+
+type UpdateFlagFallthroughTypeSplit string
+
+const (
+	UpdateFlagFallthroughTypeSplitSplit UpdateFlagFallthroughTypeSplit = "split"
+)
+
+func (e UpdateFlagFallthroughTypeSplit) ToPointer() *UpdateFlagFallthroughTypeSplit {
+	return &e
+}
+func (e *UpdateFlagFallthroughTypeSplit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "split":
+		*e = UpdateFlagFallthroughTypeSplit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateFlagFallthroughTypeSplit: %v", v)
+	}
+}
+
+type UpdateFlagFallthroughTypeEntity string
+
+const (
+	UpdateFlagFallthroughTypeEntityEntity UpdateFlagFallthroughTypeEntity = "entity"
+)
+
+func (e UpdateFlagFallthroughTypeEntity) ToPointer() *UpdateFlagFallthroughTypeEntity {
+	return &e
+}
+func (e *UpdateFlagFallthroughTypeEntity) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "entity":
+		*e = UpdateFlagFallthroughTypeEntity(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateFlagFallthroughTypeEntity: %v", v)
+	}
+}
+
+type UpdateFlagResponseBodyFallthroughBase struct {
+	Type      UpdateFlagFallthroughTypeEntity `json:"type"`
+	Kind      string                          `json:"kind"`
+	Attribute string                          `json:"attribute"`
+}
+
+func (u UpdateFlagResponseBodyFallthroughBase) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagResponseBodyFallthroughBase) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "kind", "attribute"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagResponseBodyFallthroughBase) GetType() UpdateFlagFallthroughTypeEntity {
+	if o == nil {
+		return UpdateFlagFallthroughTypeEntity("")
+	}
+	return o.Type
+}
+
+func (o *UpdateFlagResponseBodyFallthroughBase) GetKind() string {
+	if o == nil {
+		return ""
+	}
+	return o.Kind
+}
+
+func (o *UpdateFlagResponseBodyFallthroughBase) GetAttribute() string {
+	if o == nil {
+		return ""
+	}
+	return o.Attribute
+}
+
+type UpdateFlagFallthroughSplit struct {
+	Type             UpdateFlagFallthroughTypeSplit        `json:"type"`
+	Base             UpdateFlagResponseBodyFallthroughBase `json:"base"`
+	Weights          map[string]float64                    `json:"weights"`
+	DefaultVariantID string                                `json:"defaultVariantId"`
+}
+
+func (u UpdateFlagFallthroughSplit) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagFallthroughSplit) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "base", "weights", "defaultVariantId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagFallthroughSplit) GetType() UpdateFlagFallthroughTypeSplit {
+	if o == nil {
+		return UpdateFlagFallthroughTypeSplit("")
+	}
+	return o.Type
+}
+
+func (o *UpdateFlagFallthroughSplit) GetBase() UpdateFlagResponseBodyFallthroughBase {
+	if o == nil {
+		return UpdateFlagResponseBodyFallthroughBase{}
+	}
+	return o.Base
+}
+
+func (o *UpdateFlagFallthroughSplit) GetWeights() map[string]float64 {
+	if o == nil {
+		return map[string]float64{}
+	}
+	return o.Weights
+}
+
+func (o *UpdateFlagFallthroughSplit) GetDefaultVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.DefaultVariantID
+}
+
+type UpdateFlagFallthroughTypeVariant string
+
+const (
+	UpdateFlagFallthroughTypeVariantVariant UpdateFlagFallthroughTypeVariant = "variant"
+)
+
+func (e UpdateFlagFallthroughTypeVariant) ToPointer() *UpdateFlagFallthroughTypeVariant {
+	return &e
+}
+func (e *UpdateFlagFallthroughTypeVariant) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "variant":
+		*e = UpdateFlagFallthroughTypeVariant(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateFlagFallthroughTypeVariant: %v", v)
+	}
+}
+
+type UpdateFlagFallthroughVariant struct {
+	Type      UpdateFlagFallthroughTypeVariant `json:"type"`
+	VariantID string                           `json:"variantId"`
+}
+
+func (u UpdateFlagFallthroughVariant) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagFallthroughVariant) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "variantId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagFallthroughVariant) GetType() UpdateFlagFallthroughTypeVariant {
+	if o == nil {
+		return UpdateFlagFallthroughTypeVariant("")
+	}
+	return o.Type
+}
+
+func (o *UpdateFlagFallthroughVariant) GetVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.VariantID
+}
+
+type UpdateFlagResponseBodyFallthroughUnionType string
+
+const (
+	UpdateFlagResponseBodyFallthroughUnionTypeVariant UpdateFlagResponseBodyFallthroughUnionType = "variant"
+	UpdateFlagResponseBodyFallthroughUnionTypeSplit   UpdateFlagResponseBodyFallthroughUnionType = "split"
+)
+
+type UpdateFlagResponseBodyFallthroughUnion struct {
+	UpdateFlagFallthroughVariant *UpdateFlagFallthroughVariant `queryParam:"inline"`
+	UpdateFlagFallthroughSplit   *UpdateFlagFallthroughSplit   `queryParam:"inline"`
+
+	Type UpdateFlagResponseBodyFallthroughUnionType
+}
+
+func CreateUpdateFlagResponseBodyFallthroughUnionVariant(variant UpdateFlagFallthroughVariant) UpdateFlagResponseBodyFallthroughUnion {
+	typ := UpdateFlagResponseBodyFallthroughUnionTypeVariant
+
+	typStr := UpdateFlagFallthroughTypeVariant(typ)
+	variant.Type = typStr
+
+	return UpdateFlagResponseBodyFallthroughUnion{
+		UpdateFlagFallthroughVariant: &variant,
+		Type:                         typ,
+	}
+}
+
+func CreateUpdateFlagResponseBodyFallthroughUnionSplit(split UpdateFlagFallthroughSplit) UpdateFlagResponseBodyFallthroughUnion {
+	typ := UpdateFlagResponseBodyFallthroughUnionTypeSplit
+
+	typStr := UpdateFlagFallthroughTypeSplit(typ)
+	split.Type = typStr
+
+	return UpdateFlagResponseBodyFallthroughUnion{
+		UpdateFlagFallthroughSplit: &split,
+		Type:                       typ,
+	}
+}
+
+func (u *UpdateFlagResponseBodyFallthroughUnion) UnmarshalJSON(data []byte) error {
+
+	type discriminator struct {
+		Type string `json:"type"`
+	}
+
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Type {
+	case "variant":
+		updateFlagFallthroughVariant := new(UpdateFlagFallthroughVariant)
+		if err := utils.UnmarshalJSON(data, &updateFlagFallthroughVariant, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == variant) type UpdateFlagFallthroughVariant within UpdateFlagResponseBodyFallthroughUnion: %w", string(data), err)
+		}
+
+		u.UpdateFlagFallthroughVariant = updateFlagFallthroughVariant
+		u.Type = UpdateFlagResponseBodyFallthroughUnionTypeVariant
+		return nil
+	case "split":
+		updateFlagFallthroughSplit := new(UpdateFlagFallthroughSplit)
+		if err := utils.UnmarshalJSON(data, &updateFlagFallthroughSplit, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == split) type UpdateFlagFallthroughSplit within UpdateFlagResponseBodyFallthroughUnion: %w", string(data), err)
+		}
+
+		u.UpdateFlagFallthroughSplit = updateFlagFallthroughSplit
+		u.Type = UpdateFlagResponseBodyFallthroughUnionTypeSplit
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFlagResponseBodyFallthroughUnion", string(data))
+}
+
+func (u UpdateFlagResponseBodyFallthroughUnion) MarshalJSON() ([]byte, error) {
+	if u.UpdateFlagFallthroughVariant != nil {
+		return utils.MarshalJSON(u.UpdateFlagFallthroughVariant, "", true)
+	}
+
+	if u.UpdateFlagFallthroughSplit != nil {
+		return utils.MarshalJSON(u.UpdateFlagFallthroughSplit, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type UpdateFlagResponseBodyFallthroughUnion: all fields are null")
+}
+
+type UpdateFlagOutcomeTypeSplit string
+
+const (
+	UpdateFlagOutcomeTypeSplitSplit UpdateFlagOutcomeTypeSplit = "split"
+)
+
+func (e UpdateFlagOutcomeTypeSplit) ToPointer() *UpdateFlagOutcomeTypeSplit {
+	return &e
+}
+func (e *UpdateFlagOutcomeTypeSplit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "split":
+		*e = UpdateFlagOutcomeTypeSplit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateFlagOutcomeTypeSplit: %v", v)
+	}
+}
+
+type UpdateFlagOutcomeTypeEntity string
+
+const (
+	UpdateFlagOutcomeTypeEntityEntity UpdateFlagOutcomeTypeEntity = "entity"
+)
+
+func (e UpdateFlagOutcomeTypeEntity) ToPointer() *UpdateFlagOutcomeTypeEntity {
+	return &e
+}
+func (e *UpdateFlagOutcomeTypeEntity) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "entity":
+		*e = UpdateFlagOutcomeTypeEntity(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateFlagOutcomeTypeEntity: %v", v)
+	}
+}
+
+type UpdateFlagResponseBodyOutcomeBase struct {
+	Type      UpdateFlagOutcomeTypeEntity `json:"type"`
+	Kind      string                      `json:"kind"`
+	Attribute string                      `json:"attribute"`
+}
+
+func (u UpdateFlagResponseBodyOutcomeBase) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagResponseBodyOutcomeBase) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "kind", "attribute"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagResponseBodyOutcomeBase) GetType() UpdateFlagOutcomeTypeEntity {
+	if o == nil {
+		return UpdateFlagOutcomeTypeEntity("")
+	}
+	return o.Type
+}
+
+func (o *UpdateFlagResponseBodyOutcomeBase) GetKind() string {
+	if o == nil {
+		return ""
+	}
+	return o.Kind
+}
+
+func (o *UpdateFlagResponseBodyOutcomeBase) GetAttribute() string {
+	if o == nil {
+		return ""
+	}
+	return o.Attribute
+}
+
+type UpdateFlagOutcomeSplit struct {
+	Type             UpdateFlagOutcomeTypeSplit        `json:"type"`
+	Base             UpdateFlagResponseBodyOutcomeBase `json:"base"`
+	Weights          map[string]float64                `json:"weights"`
+	DefaultVariantID string                            `json:"defaultVariantId"`
+}
+
+func (u UpdateFlagOutcomeSplit) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagOutcomeSplit) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "base", "weights", "defaultVariantId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagOutcomeSplit) GetType() UpdateFlagOutcomeTypeSplit {
+	if o == nil {
+		return UpdateFlagOutcomeTypeSplit("")
+	}
+	return o.Type
+}
+
+func (o *UpdateFlagOutcomeSplit) GetBase() UpdateFlagResponseBodyOutcomeBase {
+	if o == nil {
+		return UpdateFlagResponseBodyOutcomeBase{}
+	}
+	return o.Base
+}
+
+func (o *UpdateFlagOutcomeSplit) GetWeights() map[string]float64 {
+	if o == nil {
+		return map[string]float64{}
+	}
+	return o.Weights
+}
+
+func (o *UpdateFlagOutcomeSplit) GetDefaultVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.DefaultVariantID
+}
+
+type UpdateFlagOutcomeTypeVariant string
+
+const (
+	UpdateFlagOutcomeTypeVariantVariant UpdateFlagOutcomeTypeVariant = "variant"
+)
+
+func (e UpdateFlagOutcomeTypeVariant) ToPointer() *UpdateFlagOutcomeTypeVariant {
+	return &e
+}
+func (e *UpdateFlagOutcomeTypeVariant) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "variant":
+		*e = UpdateFlagOutcomeTypeVariant(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateFlagOutcomeTypeVariant: %v", v)
+	}
+}
+
+type UpdateFlagOutcomeVariant struct {
+	Type      UpdateFlagOutcomeTypeVariant `json:"type"`
+	VariantID string                       `json:"variantId"`
+}
+
+func (u UpdateFlagOutcomeVariant) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagOutcomeVariant) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "variantId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagOutcomeVariant) GetType() UpdateFlagOutcomeTypeVariant {
+	if o == nil {
+		return UpdateFlagOutcomeTypeVariant("")
+	}
+	return o.Type
+}
+
+func (o *UpdateFlagOutcomeVariant) GetVariantID() string {
+	if o == nil {
+		return ""
+	}
+	return o.VariantID
+}
+
+type UpdateFlagResponseBodyOutcomeUnionType string
+
+const (
+	UpdateFlagResponseBodyOutcomeUnionTypeVariant UpdateFlagResponseBodyOutcomeUnionType = "variant"
+	UpdateFlagResponseBodyOutcomeUnionTypeSplit   UpdateFlagResponseBodyOutcomeUnionType = "split"
+)
+
+type UpdateFlagResponseBodyOutcomeUnion struct {
+	UpdateFlagOutcomeVariant *UpdateFlagOutcomeVariant `queryParam:"inline"`
+	UpdateFlagOutcomeSplit   *UpdateFlagOutcomeSplit   `queryParam:"inline"`
+
+	Type UpdateFlagResponseBodyOutcomeUnionType
+}
+
+func CreateUpdateFlagResponseBodyOutcomeUnionVariant(variant UpdateFlagOutcomeVariant) UpdateFlagResponseBodyOutcomeUnion {
+	typ := UpdateFlagResponseBodyOutcomeUnionTypeVariant
+
+	typStr := UpdateFlagOutcomeTypeVariant(typ)
+	variant.Type = typStr
+
+	return UpdateFlagResponseBodyOutcomeUnion{
+		UpdateFlagOutcomeVariant: &variant,
+		Type:                     typ,
+	}
+}
+
+func CreateUpdateFlagResponseBodyOutcomeUnionSplit(split UpdateFlagOutcomeSplit) UpdateFlagResponseBodyOutcomeUnion {
+	typ := UpdateFlagResponseBodyOutcomeUnionTypeSplit
+
+	typStr := UpdateFlagOutcomeTypeSplit(typ)
+	split.Type = typStr
+
+	return UpdateFlagResponseBodyOutcomeUnion{
+		UpdateFlagOutcomeSplit: &split,
+		Type:                   typ,
+	}
+}
+
+func (u *UpdateFlagResponseBodyOutcomeUnion) UnmarshalJSON(data []byte) error {
+
+	type discriminator struct {
+		Type string `json:"type"`
+	}
+
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Type {
+	case "variant":
+		updateFlagOutcomeVariant := new(UpdateFlagOutcomeVariant)
+		if err := utils.UnmarshalJSON(data, &updateFlagOutcomeVariant, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == variant) type UpdateFlagOutcomeVariant within UpdateFlagResponseBodyOutcomeUnion: %w", string(data), err)
+		}
+
+		u.UpdateFlagOutcomeVariant = updateFlagOutcomeVariant
+		u.Type = UpdateFlagResponseBodyOutcomeUnionTypeVariant
+		return nil
+	case "split":
+		updateFlagOutcomeSplit := new(UpdateFlagOutcomeSplit)
+		if err := utils.UnmarshalJSON(data, &updateFlagOutcomeSplit, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == split) type UpdateFlagOutcomeSplit within UpdateFlagResponseBodyOutcomeUnion: %w", string(data), err)
+		}
+
+		u.UpdateFlagOutcomeSplit = updateFlagOutcomeSplit
+		u.Type = UpdateFlagResponseBodyOutcomeUnionTypeSplit
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFlagResponseBodyOutcomeUnion", string(data))
+}
+
+func (u UpdateFlagResponseBodyOutcomeUnion) MarshalJSON() ([]byte, error) {
+	if u.UpdateFlagOutcomeVariant != nil {
+		return utils.MarshalJSON(u.UpdateFlagOutcomeVariant, "", true)
+	}
+
+	if u.UpdateFlagOutcomeSplit != nil {
+		return utils.MarshalJSON(u.UpdateFlagOutcomeSplit, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type UpdateFlagResponseBodyOutcomeUnion: all fields are null")
+}
+
+type UpdateFlagTypeRegex string
+
+const (
+	UpdateFlagTypeRegexRegex UpdateFlagTypeRegex = "regex"
+)
+
+func (e UpdateFlagTypeRegex) ToPointer() *UpdateFlagTypeRegex {
+	return &e
+}
+func (e *UpdateFlagTypeRegex) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "regex":
+		*e = UpdateFlagTypeRegex(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateFlagTypeRegex: %v", v)
+	}
+}
+
+type UpdateFlagRHSRegex struct {
+	Type    UpdateFlagTypeRegex `json:"type"`
+	Pattern string              `json:"pattern"`
+	Flags   string              `json:"flags"`
+}
+
+func (u UpdateFlagRHSRegex) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagRHSRegex) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "pattern", "flags"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagRHSRegex) GetType() UpdateFlagTypeRegex {
+	if o == nil {
+		return UpdateFlagTypeRegex("")
+	}
+	return o.Type
+}
+
+func (o *UpdateFlagRHSRegex) GetPattern() string {
+	if o == nil {
+		return ""
+	}
+	return o.Pattern
+}
+
+func (o *UpdateFlagRHSRegex) GetFlags() string {
+	if o == nil {
+		return ""
+	}
+	return o.Flags
+}
+
+type UpdateFlagResponseBodyRHSType string
+
+const (
+	UpdateFlagResponseBodyRHSTypeListInline UpdateFlagResponseBodyRHSType = "list/inline"
+	UpdateFlagResponseBodyRHSTypeList       UpdateFlagResponseBodyRHSType = "list"
+)
+
+func (e UpdateFlagResponseBodyRHSType) ToPointer() *UpdateFlagResponseBodyRHSType {
+	return &e
+}
+func (e *UpdateFlagResponseBodyRHSType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "list/inline":
+		fallthrough
+	case "list":
+		*e = UpdateFlagResponseBodyRHSType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateFlagResponseBodyRHSType: %v", v)
+	}
+}
+
+type UpdateFlagResponseBodyItem2 struct {
+	Label *string `json:"label,omitempty"`
+	Note  *string `json:"note,omitempty"`
+	Value string  `json:"value"`
+}
+
+func (u UpdateFlagResponseBodyItem2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagResponseBodyItem2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagResponseBodyItem2) GetLabel() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Label
+}
+
+func (o *UpdateFlagResponseBodyItem2) GetNote() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Note
+}
+
+func (o *UpdateFlagResponseBodyItem2) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
+}
+
+type UpdateFlagResponseBodyItem1 struct {
+	Label *string `json:"label,omitempty"`
+	Note  *string `json:"note,omitempty"`
+	Value float64 `json:"value"`
+}
+
+func (u UpdateFlagResponseBodyItem1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagResponseBodyItem1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagResponseBodyItem1) GetLabel() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Label
+}
+
+func (o *UpdateFlagResponseBodyItem1) GetNote() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Note
+}
+
+func (o *UpdateFlagResponseBodyItem1) GetValue() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Value
+}
+
+type UpdateFlagResponseBodyItemUnionType string
+
+const (
+	UpdateFlagResponseBodyItemUnionTypeUpdateFlagResponseBodyItem1 UpdateFlagResponseBodyItemUnionType = "updateFlag_ResponseBody_item_1"
+	UpdateFlagResponseBodyItemUnionTypeUpdateFlagResponseBodyItem2 UpdateFlagResponseBodyItemUnionType = "updateFlag_ResponseBody_item_2"
+)
+
+type UpdateFlagResponseBodyItemUnion struct {
+	UpdateFlagResponseBodyItem1 *UpdateFlagResponseBodyItem1 `queryParam:"inline"`
+	UpdateFlagResponseBodyItem2 *UpdateFlagResponseBodyItem2 `queryParam:"inline"`
+
+	Type UpdateFlagResponseBodyItemUnionType
+}
+
+func CreateUpdateFlagResponseBodyItemUnionUpdateFlagResponseBodyItem1(updateFlagResponseBodyItem1 UpdateFlagResponseBodyItem1) UpdateFlagResponseBodyItemUnion {
+	typ := UpdateFlagResponseBodyItemUnionTypeUpdateFlagResponseBodyItem1
+
+	return UpdateFlagResponseBodyItemUnion{
+		UpdateFlagResponseBodyItem1: &updateFlagResponseBodyItem1,
+		Type:                        typ,
+	}
+}
+
+func CreateUpdateFlagResponseBodyItemUnionUpdateFlagResponseBodyItem2(updateFlagResponseBodyItem2 UpdateFlagResponseBodyItem2) UpdateFlagResponseBodyItemUnion {
+	typ := UpdateFlagResponseBodyItemUnionTypeUpdateFlagResponseBodyItem2
+
+	return UpdateFlagResponseBodyItemUnion{
+		UpdateFlagResponseBodyItem2: &updateFlagResponseBodyItem2,
+		Type:                        typ,
+	}
+}
+
+func (u *UpdateFlagResponseBodyItemUnion) UnmarshalJSON(data []byte) error {
+
+	var updateFlagResponseBodyItem1 UpdateFlagResponseBodyItem1 = UpdateFlagResponseBodyItem1{}
+	if err := utils.UnmarshalJSON(data, &updateFlagResponseBodyItem1, "", true, nil); err == nil {
+		u.UpdateFlagResponseBodyItem1 = &updateFlagResponseBodyItem1
+		u.Type = UpdateFlagResponseBodyItemUnionTypeUpdateFlagResponseBodyItem1
+		return nil
+	}
+
+	var updateFlagResponseBodyItem2 UpdateFlagResponseBodyItem2 = UpdateFlagResponseBodyItem2{}
+	if err := utils.UnmarshalJSON(data, &updateFlagResponseBodyItem2, "", true, nil); err == nil {
+		u.UpdateFlagResponseBodyItem2 = &updateFlagResponseBodyItem2
+		u.Type = UpdateFlagResponseBodyItemUnionTypeUpdateFlagResponseBodyItem2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFlagResponseBodyItemUnion", string(data))
+}
+
+func (u UpdateFlagResponseBodyItemUnion) MarshalJSON() ([]byte, error) {
+	if u.UpdateFlagResponseBodyItem1 != nil {
+		return utils.MarshalJSON(u.UpdateFlagResponseBodyItem1, "", true)
+	}
+
+	if u.UpdateFlagResponseBodyItem2 != nil {
+		return utils.MarshalJSON(u.UpdateFlagResponseBodyItem2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type UpdateFlagResponseBodyItemUnion: all fields are null")
+}
+
+type UpdateFlagResponseBodyRHS struct {
+	Type  UpdateFlagResponseBodyRHSType     `json:"type"`
+	Items []UpdateFlagResponseBodyItemUnion `json:"items"`
+}
+
+func (u UpdateFlagResponseBodyRHS) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagResponseBodyRHS) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "items"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagResponseBodyRHS) GetType() UpdateFlagResponseBodyRHSType {
+	if o == nil {
+		return UpdateFlagResponseBodyRHSType("")
+	}
+	return o.Type
+}
+
+func (o *UpdateFlagResponseBodyRHS) GetItems() []UpdateFlagResponseBodyItemUnion {
+	if o == nil {
+		return []UpdateFlagResponseBodyItemUnion{}
+	}
+	return o.Items
+}
+
+type UpdateFlagResponseBodyRHSUnionType string
+
+const (
+	UpdateFlagResponseBodyRHSUnionTypeStr                       UpdateFlagResponseBodyRHSUnionType = "str"
+	UpdateFlagResponseBodyRHSUnionTypeNumber                    UpdateFlagResponseBodyRHSUnionType = "number"
+	UpdateFlagResponseBodyRHSUnionTypeUpdateFlagResponseBodyRHS UpdateFlagResponseBodyRHSUnionType = "updateFlag_ResponseBody_rhs"
+	UpdateFlagResponseBodyRHSUnionTypeUpdateFlagRHSRegex        UpdateFlagResponseBodyRHSUnionType = "updateFlag_rhs_Regex"
+	UpdateFlagResponseBodyRHSUnionTypeBoolean                   UpdateFlagResponseBodyRHSUnionType = "boolean"
+)
+
+type UpdateFlagResponseBodyRHSUnion struct {
+	Str                       *string                    `queryParam:"inline"`
+	Number                    *float64                   `queryParam:"inline"`
+	UpdateFlagResponseBodyRHS *UpdateFlagResponseBodyRHS `queryParam:"inline"`
+	UpdateFlagRHSRegex        *UpdateFlagRHSRegex        `queryParam:"inline"`
+	Boolean                   *bool                      `queryParam:"inline"`
+
+	Type UpdateFlagResponseBodyRHSUnionType
+}
+
+func CreateUpdateFlagResponseBodyRHSUnionStr(str string) UpdateFlagResponseBodyRHSUnion {
+	typ := UpdateFlagResponseBodyRHSUnionTypeStr
+
+	return UpdateFlagResponseBodyRHSUnion{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateUpdateFlagResponseBodyRHSUnionNumber(number float64) UpdateFlagResponseBodyRHSUnion {
+	typ := UpdateFlagResponseBodyRHSUnionTypeNumber
+
+	return UpdateFlagResponseBodyRHSUnion{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func CreateUpdateFlagResponseBodyRHSUnionUpdateFlagResponseBodyRHS(updateFlagResponseBodyRHS UpdateFlagResponseBodyRHS) UpdateFlagResponseBodyRHSUnion {
+	typ := UpdateFlagResponseBodyRHSUnionTypeUpdateFlagResponseBodyRHS
+
+	return UpdateFlagResponseBodyRHSUnion{
+		UpdateFlagResponseBodyRHS: &updateFlagResponseBodyRHS,
+		Type:                      typ,
+	}
+}
+
+func CreateUpdateFlagResponseBodyRHSUnionUpdateFlagRHSRegex(updateFlagRHSRegex UpdateFlagRHSRegex) UpdateFlagResponseBodyRHSUnion {
+	typ := UpdateFlagResponseBodyRHSUnionTypeUpdateFlagRHSRegex
+
+	return UpdateFlagResponseBodyRHSUnion{
+		UpdateFlagRHSRegex: &updateFlagRHSRegex,
+		Type:               typ,
+	}
+}
+
+func CreateUpdateFlagResponseBodyRHSUnionBoolean(boolean bool) UpdateFlagResponseBodyRHSUnion {
+	typ := UpdateFlagResponseBodyRHSUnionTypeBoolean
+
+	return UpdateFlagResponseBodyRHSUnion{
+		Boolean: &boolean,
+		Type:    typ,
+	}
+}
+
+func (u *UpdateFlagResponseBodyRHSUnion) UnmarshalJSON(data []byte) error {
+
+	var updateFlagRHSRegex UpdateFlagRHSRegex = UpdateFlagRHSRegex{}
+	if err := utils.UnmarshalJSON(data, &updateFlagRHSRegex, "", true, nil); err == nil {
+		u.UpdateFlagRHSRegex = &updateFlagRHSRegex
+		u.Type = UpdateFlagResponseBodyRHSUnionTypeUpdateFlagRHSRegex
+		return nil
+	}
+
+	var updateFlagResponseBodyRHS UpdateFlagResponseBodyRHS = UpdateFlagResponseBodyRHS{}
+	if err := utils.UnmarshalJSON(data, &updateFlagResponseBodyRHS, "", true, nil); err == nil {
+		u.UpdateFlagResponseBodyRHS = &updateFlagResponseBodyRHS
+		u.Type = UpdateFlagResponseBodyRHSUnionTypeUpdateFlagResponseBodyRHS
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = UpdateFlagResponseBodyRHSUnionTypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
+		u.Number = &number
+		u.Type = UpdateFlagResponseBodyRHSUnionTypeNumber
+		return nil
+	}
+
+	var boolean bool = false
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
+		u.Boolean = &boolean
+		u.Type = UpdateFlagResponseBodyRHSUnionTypeBoolean
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFlagResponseBodyRHSUnion", string(data))
+}
+
+func (u UpdateFlagResponseBodyRHSUnion) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	if u.UpdateFlagResponseBodyRHS != nil {
+		return utils.MarshalJSON(u.UpdateFlagResponseBodyRHS, "", true)
+	}
+
+	if u.UpdateFlagRHSRegex != nil {
+		return utils.MarshalJSON(u.UpdateFlagRHSRegex, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type UpdateFlagResponseBodyRHSUnion: all fields are null")
+}
+
+type UpdateFlagLHSTypeEntity string
+
+const (
+	UpdateFlagLHSTypeEntityEntity UpdateFlagLHSTypeEntity = "entity"
+)
+
+func (e UpdateFlagLHSTypeEntity) ToPointer() *UpdateFlagLHSTypeEntity {
+	return &e
+}
+func (e *UpdateFlagLHSTypeEntity) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "entity":
+		*e = UpdateFlagLHSTypeEntity(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateFlagLHSTypeEntity: %v", v)
+	}
+}
+
+type UpdateFlagLHSEntity struct {
+	Type      UpdateFlagLHSTypeEntity `json:"type"`
+	Kind      string                  `json:"kind"`
+	Attribute string                  `json:"attribute"`
+}
+
+func (u UpdateFlagLHSEntity) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagLHSEntity) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "kind", "attribute"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagLHSEntity) GetType() UpdateFlagLHSTypeEntity {
+	if o == nil {
+		return UpdateFlagLHSTypeEntity("")
+	}
+	return o.Type
+}
+
+func (o *UpdateFlagLHSEntity) GetKind() string {
+	if o == nil {
+		return ""
+	}
+	return o.Kind
+}
+
+func (o *UpdateFlagLHSEntity) GetAttribute() string {
+	if o == nil {
+		return ""
+	}
+	return o.Attribute
+}
+
+type UpdateFlagTypeSegment string
+
+const (
+	UpdateFlagTypeSegmentSegment UpdateFlagTypeSegment = "segment"
+)
+
+func (e UpdateFlagTypeSegment) ToPointer() *UpdateFlagTypeSegment {
+	return &e
+}
+func (e *UpdateFlagTypeSegment) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "segment":
+		*e = UpdateFlagTypeSegment(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateFlagTypeSegment: %v", v)
+	}
+}
+
+type UpdateFlagLHSSegment struct {
+	Type UpdateFlagTypeSegment `json:"type"`
+}
+
+func (u UpdateFlagLHSSegment) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagLHSSegment) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagLHSSegment) GetType() UpdateFlagTypeSegment {
+	if o == nil {
+		return UpdateFlagTypeSegment("")
+	}
+	return o.Type
+}
+
+type UpdateFlagResponseBodyLHSUnionType string
+
+const (
+	UpdateFlagResponseBodyLHSUnionTypeSegment UpdateFlagResponseBodyLHSUnionType = "segment"
+	UpdateFlagResponseBodyLHSUnionTypeEntity  UpdateFlagResponseBodyLHSUnionType = "entity"
+)
+
+type UpdateFlagResponseBodyLHSUnion struct {
+	UpdateFlagLHSSegment *UpdateFlagLHSSegment `queryParam:"inline"`
+	UpdateFlagLHSEntity  *UpdateFlagLHSEntity  `queryParam:"inline"`
+
+	Type UpdateFlagResponseBodyLHSUnionType
+}
+
+func CreateUpdateFlagResponseBodyLHSUnionSegment(segment UpdateFlagLHSSegment) UpdateFlagResponseBodyLHSUnion {
+	typ := UpdateFlagResponseBodyLHSUnionTypeSegment
+
+	typStr := UpdateFlagTypeSegment(typ)
+	segment.Type = typStr
+
+	return UpdateFlagResponseBodyLHSUnion{
+		UpdateFlagLHSSegment: &segment,
+		Type:                 typ,
+	}
+}
+
+func CreateUpdateFlagResponseBodyLHSUnionEntity(entity UpdateFlagLHSEntity) UpdateFlagResponseBodyLHSUnion {
+	typ := UpdateFlagResponseBodyLHSUnionTypeEntity
+
+	typStr := UpdateFlagLHSTypeEntity(typ)
+	entity.Type = typStr
+
+	return UpdateFlagResponseBodyLHSUnion{
+		UpdateFlagLHSEntity: &entity,
+		Type:                typ,
+	}
+}
+
+func (u *UpdateFlagResponseBodyLHSUnion) UnmarshalJSON(data []byte) error {
+
+	type discriminator struct {
+		Type string `json:"type"`
+	}
+
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Type {
+	case "segment":
+		updateFlagLHSSegment := new(UpdateFlagLHSSegment)
+		if err := utils.UnmarshalJSON(data, &updateFlagLHSSegment, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == segment) type UpdateFlagLHSSegment within UpdateFlagResponseBodyLHSUnion: %w", string(data), err)
+		}
+
+		u.UpdateFlagLHSSegment = updateFlagLHSSegment
+		u.Type = UpdateFlagResponseBodyLHSUnionTypeSegment
+		return nil
+	case "entity":
+		updateFlagLHSEntity := new(UpdateFlagLHSEntity)
+		if err := utils.UnmarshalJSON(data, &updateFlagLHSEntity, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == entity) type UpdateFlagLHSEntity within UpdateFlagResponseBodyLHSUnion: %w", string(data), err)
+		}
+
+		u.UpdateFlagLHSEntity = updateFlagLHSEntity
+		u.Type = UpdateFlagResponseBodyLHSUnionTypeEntity
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFlagResponseBodyLHSUnion", string(data))
+}
+
+func (u UpdateFlagResponseBodyLHSUnion) MarshalJSON() ([]byte, error) {
+	if u.UpdateFlagLHSSegment != nil {
+		return utils.MarshalJSON(u.UpdateFlagLHSSegment, "", true)
+	}
+
+	if u.UpdateFlagLHSEntity != nil {
+		return utils.MarshalJSON(u.UpdateFlagLHSEntity, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type UpdateFlagResponseBodyLHSUnion: all fields are null")
+}
+
+type UpdateFlagResponseBodyCmp string
+
+const (
+	UpdateFlagResponseBodyCmpEq             UpdateFlagResponseBodyCmp = "eq"
+	UpdateFlagResponseBodyCmpNotEq          UpdateFlagResponseBodyCmp = "!eq"
+	UpdateFlagResponseBodyCmpOneOf          UpdateFlagResponseBodyCmp = "oneOf"
+	UpdateFlagResponseBodyCmpNotOneOf       UpdateFlagResponseBodyCmp = "!oneOf"
+	UpdateFlagResponseBodyCmpContainsAllOf  UpdateFlagResponseBodyCmp = "containsAllOf"
+	UpdateFlagResponseBodyCmpContainsAnyOf  UpdateFlagResponseBodyCmp = "containsAnyOf"
+	UpdateFlagResponseBodyCmpContainsNoneOf UpdateFlagResponseBodyCmp = "containsNoneOf"
+	UpdateFlagResponseBodyCmpStartsWith     UpdateFlagResponseBodyCmp = "startsWith"
+	UpdateFlagResponseBodyCmpNotStartsWith  UpdateFlagResponseBodyCmp = "!startsWith"
+	UpdateFlagResponseBodyCmpEndsWith       UpdateFlagResponseBodyCmp = "endsWith"
+	UpdateFlagResponseBodyCmpNotEndsWith    UpdateFlagResponseBodyCmp = "!endsWith"
+	UpdateFlagResponseBodyCmpEx             UpdateFlagResponseBodyCmp = "ex"
+	UpdateFlagResponseBodyCmpNotEx          UpdateFlagResponseBodyCmp = "!ex"
+	UpdateFlagResponseBodyCmpGt             UpdateFlagResponseBodyCmp = "gt"
+	UpdateFlagResponseBodyCmpGte            UpdateFlagResponseBodyCmp = "gte"
+	UpdateFlagResponseBodyCmpLt             UpdateFlagResponseBodyCmp = "lt"
+	UpdateFlagResponseBodyCmpLte            UpdateFlagResponseBodyCmp = "lte"
+	UpdateFlagResponseBodyCmpRegex          UpdateFlagResponseBodyCmp = "regex"
+	UpdateFlagResponseBodyCmpNotRegex       UpdateFlagResponseBodyCmp = "!regex"
+	UpdateFlagResponseBodyCmpBefore         UpdateFlagResponseBodyCmp = "before"
+	UpdateFlagResponseBodyCmpAfter          UpdateFlagResponseBodyCmp = "after"
+)
+
+func (e UpdateFlagResponseBodyCmp) ToPointer() *UpdateFlagResponseBodyCmp {
+	return &e
+}
+func (e *UpdateFlagResponseBodyCmp) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "eq":
+		fallthrough
+	case "!eq":
+		fallthrough
+	case "oneOf":
+		fallthrough
+	case "!oneOf":
+		fallthrough
+	case "containsAllOf":
+		fallthrough
+	case "containsAnyOf":
+		fallthrough
+	case "containsNoneOf":
+		fallthrough
+	case "startsWith":
+		fallthrough
+	case "!startsWith":
+		fallthrough
+	case "endsWith":
+		fallthrough
+	case "!endsWith":
+		fallthrough
+	case "ex":
+		fallthrough
+	case "!ex":
+		fallthrough
+	case "gt":
+		fallthrough
+	case "gte":
+		fallthrough
+	case "lt":
+		fallthrough
+	case "lte":
+		fallthrough
+	case "regex":
+		fallthrough
+	case "!regex":
+		fallthrough
+	case "before":
+		fallthrough
+	case "after":
+		*e = UpdateFlagResponseBodyCmp(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateFlagResponseBodyCmp: %v", v)
+	}
+}
+
+type UpdateFlagResponseBodyCondition struct {
+	RHS *UpdateFlagResponseBodyRHSUnion `json:"rhs,omitempty"`
+	LHS UpdateFlagResponseBodyLHSUnion  `json:"lhs"`
+	Cmp UpdateFlagResponseBodyCmp       `json:"cmp"`
+}
+
+func (u UpdateFlagResponseBodyCondition) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagResponseBodyCondition) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"lhs", "cmp"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagResponseBodyCondition) GetRHS() *UpdateFlagResponseBodyRHSUnion {
+	if o == nil {
+		return nil
+	}
+	return o.RHS
+}
+
+func (o *UpdateFlagResponseBodyCondition) GetLHS() UpdateFlagResponseBodyLHSUnion {
+	if o == nil {
+		return UpdateFlagResponseBodyLHSUnion{}
+	}
+	return o.LHS
+}
+
+func (o *UpdateFlagResponseBodyCondition) GetLHSSegment() *UpdateFlagLHSSegment {
+	return o.GetLHS().UpdateFlagLHSSegment
+}
+
+func (o *UpdateFlagResponseBodyCondition) GetLHSEntity() *UpdateFlagLHSEntity {
+	return o.GetLHS().UpdateFlagLHSEntity
+}
+
+func (o *UpdateFlagResponseBodyCondition) GetCmp() UpdateFlagResponseBodyCmp {
+	if o == nil {
+		return UpdateFlagResponseBodyCmp("")
+	}
+	return o.Cmp
+}
+
+type UpdateFlagResponseBodyRule struct {
+	ID         string                             `json:"id"`
+	Outcome    UpdateFlagResponseBodyOutcomeUnion `json:"outcome"`
+	Conditions []UpdateFlagResponseBodyCondition  `json:"conditions"`
+}
+
+func (u UpdateFlagResponseBodyRule) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagResponseBodyRule) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id", "outcome", "conditions"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagResponseBodyRule) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UpdateFlagResponseBodyRule) GetOutcome() UpdateFlagResponseBodyOutcomeUnion {
+	if o == nil {
+		return UpdateFlagResponseBodyOutcomeUnion{}
+	}
+	return o.Outcome
+}
+
+func (o *UpdateFlagResponseBodyRule) GetOutcomeVariant() *UpdateFlagOutcomeVariant {
+	return o.GetOutcome().UpdateFlagOutcomeVariant
+}
+
+func (o *UpdateFlagResponseBodyRule) GetOutcomeSplit() *UpdateFlagOutcomeSplit {
+	return o.GetOutcome().UpdateFlagOutcomeSplit
+}
+
+func (o *UpdateFlagResponseBodyRule) GetConditions() []UpdateFlagResponseBodyCondition {
+	if o == nil {
+		return []UpdateFlagResponseBodyCondition{}
+	}
+	return o.Conditions
+}
+
+type UpdateFlagResponseBodyEnvironments struct {
+	Reuse         *UpdateFlagResponseBodyReuse                                    `json:"reuse,omitempty"`
+	Targets       map[string]map[string]map[string][]UpdateFlagResponseBodyTarget `json:"targets,omitempty"`
+	Revision      *float64                                                        `json:"revision,omitempty"`
+	PausedOutcome UpdateFlagResponseBodyPausedOutcome                             `json:"pausedOutcome"`
+	Fallthrough   UpdateFlagResponseBodyFallthroughUnion                          `json:"fallthrough"`
+	Active        bool                                                            `json:"active"`
+	Rules         []UpdateFlagResponseBodyRule                                    `json:"rules"`
+}
+
+func (u UpdateFlagResponseBodyEnvironments) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagResponseBodyEnvironments) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"pausedOutcome", "fallthrough", "active", "rules"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagResponseBodyEnvironments) GetReuse() *UpdateFlagResponseBodyReuse {
+	if o == nil {
+		return nil
+	}
+	return o.Reuse
+}
+
+func (o *UpdateFlagResponseBodyEnvironments) GetTargets() map[string]map[string]map[string][]UpdateFlagResponseBodyTarget {
+	if o == nil {
+		return nil
+	}
+	return o.Targets
+}
+
+func (o *UpdateFlagResponseBodyEnvironments) GetRevision() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Revision
+}
+
+func (o *UpdateFlagResponseBodyEnvironments) GetPausedOutcome() UpdateFlagResponseBodyPausedOutcome {
+	if o == nil {
+		return UpdateFlagResponseBodyPausedOutcome{}
+	}
+	return o.PausedOutcome
+}
+
+func (o *UpdateFlagResponseBodyEnvironments) GetFallthrough() UpdateFlagResponseBodyFallthroughUnion {
+	if o == nil {
+		return UpdateFlagResponseBodyFallthroughUnion{}
+	}
+	return o.Fallthrough
+}
+
+func (o *UpdateFlagResponseBodyEnvironments) GetFallthroughVariant() *UpdateFlagFallthroughVariant {
+	return o.GetFallthrough().UpdateFlagFallthroughVariant
+}
+
+func (o *UpdateFlagResponseBodyEnvironments) GetFallthroughSplit() *UpdateFlagFallthroughSplit {
+	return o.GetFallthrough().UpdateFlagFallthroughSplit
+}
+
+func (o *UpdateFlagResponseBodyEnvironments) GetActive() bool {
+	if o == nil {
+		return false
+	}
+	return o.Active
+}
+
+func (o *UpdateFlagResponseBodyEnvironments) GetRules() []UpdateFlagResponseBodyRule {
+	if o == nil {
+		return []UpdateFlagResponseBodyRule{}
+	}
+	return o.Rules
+}
+
+type UpdateFlagKind string
+
+const (
+	UpdateFlagKindString  UpdateFlagKind = "string"
+	UpdateFlagKindNumber  UpdateFlagKind = "number"
+	UpdateFlagKindBoolean UpdateFlagKind = "boolean"
+)
+
+func (e UpdateFlagKind) ToPointer() *UpdateFlagKind {
+	return &e
+}
+func (e *UpdateFlagKind) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "string":
+		fallthrough
+	case "number":
+		fallthrough
+	case "boolean":
+		*e = UpdateFlagKind(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateFlagKind: %v", v)
+	}
+}
+
+type UpdateFlagResponseBodyState string
+
+const (
+	UpdateFlagResponseBodyStateActive   UpdateFlagResponseBodyState = "active"
+	UpdateFlagResponseBodyStateArchived UpdateFlagResponseBodyState = "archived"
+)
+
+func (e UpdateFlagResponseBodyState) ToPointer() *UpdateFlagResponseBodyState {
+	return &e
+}
+func (e *UpdateFlagResponseBodyState) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "active":
+		fallthrough
+	case "archived":
+		*e = UpdateFlagResponseBodyState(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateFlagResponseBodyState: %v", v)
+	}
+}
+
+type UpdateFlagTypeName string
+
+const (
+	UpdateFlagTypeNameFlag UpdateFlagTypeName = "flag"
+)
+
+func (e UpdateFlagTypeName) ToPointer() *UpdateFlagTypeName {
+	return &e
+}
+func (e *UpdateFlagTypeName) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "flag":
+		*e = UpdateFlagTypeName(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateFlagTypeName: %v", v)
+	}
+}
+
+type UpdateFlagFlag struct {
+	Description  *string                                       `json:"description,omitempty"`
+	Variants     []UpdateFlagResponseBodyVariant               `json:"variants"`
+	ID           string                                        `json:"id"`
+	Environments map[string]UpdateFlagResponseBodyEnvironments `json:"environments"`
+	Kind         UpdateFlagKind                                `json:"kind"`
+	Revision     float64                                       `json:"revision"`
+	Seed         float64                                       `json:"seed"`
+	State        UpdateFlagResponseBodyState                   `json:"state"`
+	Slug         string                                        `json:"slug"`
+	CreatedAt    float64                                       `json:"createdAt"`
+	UpdatedAt    float64                                       `json:"updatedAt"`
+	CreatedBy    string                                        `json:"createdBy"`
+	OwnerID      string                                        `json:"ownerId"`
+	ProjectID    string                                        `json:"projectId"`
+	TypeName     UpdateFlagTypeName                            `json:"typeName"`
+}
+
+func (u UpdateFlagFlag) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFlagFlag) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"variants", "id", "environments", "kind", "revision", "seed", "state", "slug", "createdAt", "updatedAt", "createdBy", "ownerId", "projectId", "typeName"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFlagFlag) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *UpdateFlagFlag) GetVariants() []UpdateFlagResponseBodyVariant {
+	if o == nil {
+		return []UpdateFlagResponseBodyVariant{}
+	}
+	return o.Variants
+}
+
+func (o *UpdateFlagFlag) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UpdateFlagFlag) GetEnvironments() map[string]UpdateFlagResponseBodyEnvironments {
+	if o == nil {
+		return map[string]UpdateFlagResponseBodyEnvironments{}
+	}
+	return o.Environments
+}
+
+func (o *UpdateFlagFlag) GetKind() UpdateFlagKind {
+	if o == nil {
+		return UpdateFlagKind("")
+	}
+	return o.Kind
+}
+
+func (o *UpdateFlagFlag) GetRevision() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Revision
+}
+
+func (o *UpdateFlagFlag) GetSeed() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Seed
+}
+
+func (o *UpdateFlagFlag) GetState() UpdateFlagResponseBodyState {
+	if o == nil {
+		return UpdateFlagResponseBodyState("")
+	}
+	return o.State
+}
+
+func (o *UpdateFlagFlag) GetSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.Slug
+}
+
+func (o *UpdateFlagFlag) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *UpdateFlagFlag) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+func (o *UpdateFlagFlag) GetCreatedBy() string {
+	if o == nil {
+		return ""
+	}
+	return o.CreatedBy
+}
+
+func (o *UpdateFlagFlag) GetOwnerID() string {
+	if o == nil {
+		return ""
+	}
+	return o.OwnerID
+}
+
+func (o *UpdateFlagFlag) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+func (o *UpdateFlagFlag) GetTypeName() UpdateFlagTypeName {
+	if o == nil {
+		return UpdateFlagTypeName("")
+	}
+	return o.TypeName
+}
+
+type UpdateFlagResponseBodyType string
+
+const (
+	UpdateFlagResponseBodyTypeUpdateFlagFlag UpdateFlagResponseBodyType = "updateFlag_Flag"
+	UpdateFlagResponseBodyTypeFlag           UpdateFlagResponseBodyType = "Flag"
+)
+
+type UpdateFlagResponseBody struct {
+	UpdateFlagFlag *UpdateFlagFlag  `queryParam:"inline"`
+	Flag           *components.Flag `queryParam:"inline"`
+
+	Type UpdateFlagResponseBodyType
+}
+
+func CreateUpdateFlagResponseBodyUpdateFlagFlag(updateFlagFlag UpdateFlagFlag) UpdateFlagResponseBody {
+	typ := UpdateFlagResponseBodyTypeUpdateFlagFlag
+
+	return UpdateFlagResponseBody{
+		UpdateFlagFlag: &updateFlagFlag,
+		Type:           typ,
+	}
+}
+
+func CreateUpdateFlagResponseBodyFlag(flag components.Flag) UpdateFlagResponseBody {
+	typ := UpdateFlagResponseBodyTypeFlag
+
+	return UpdateFlagResponseBody{
+		Flag: &flag,
+		Type: typ,
+	}
+}
+
+func (u *UpdateFlagResponseBody) UnmarshalJSON(data []byte) error {
+
+	var updateFlagFlag UpdateFlagFlag = UpdateFlagFlag{}
+	if err := utils.UnmarshalJSON(data, &updateFlagFlag, "", true, nil); err == nil {
+		u.UpdateFlagFlag = &updateFlagFlag
+		u.Type = UpdateFlagResponseBodyTypeUpdateFlagFlag
+		return nil
+	}
+
+	var flag components.Flag = components.Flag{}
+	if err := utils.UnmarshalJSON(data, &flag, "", true, nil); err == nil {
+		u.Flag = &flag
+		u.Type = UpdateFlagResponseBodyTypeFlag
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateFlagResponseBody", string(data))
+}
+
+func (u UpdateFlagResponseBody) MarshalJSON() ([]byte, error) {
+	if u.UpdateFlagFlag != nil {
+		return utils.MarshalJSON(u.UpdateFlagFlag, "", true)
+	}
+
+	if u.Flag != nil {
+		return utils.MarshalJSON(u.Flag, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type UpdateFlagResponseBody: all fields are null")
+}
+
 type UpdateFlagResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
-	Flag     *components.Flag
+	OneOf    *UpdateFlagResponseBody
 }
 
 func (o *UpdateFlagResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -1403,9 +3287,9 @@ func (o *UpdateFlagResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *UpdateFlagResponse) GetFlag() *components.Flag {
+func (o *UpdateFlagResponse) GetOneOf() *UpdateFlagResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.Flag
+	return o.OneOf
 }

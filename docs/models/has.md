@@ -1,41 +1,17 @@
 # Has
 
-
-## Supported Types
-
-### `models.Has1`
+## Example Usage
 
 ```typescript
-const value: models.Has1 = {
-  type: "host",
-  value: {},
-};
+import { Has } from "@vercel/sdk/models/stageroutesop.js";
+
+let value: Has = {};
 ```
 
-### `models.Has2`
+## Fields
 
-```typescript
-const value: models.Has2 = {
-  type: "header",
-  key: "<key>",
-};
-```
-
-### `models.Has2`
-
-```typescript
-const value: models.Has2 = {
-  type: "header",
-  key: "<key>",
-};
-```
-
-### `models.Has2`
-
-```typescript
-const value: models.Has2 = {
-  type: "header",
-  key: "<key>",
-};
-```
-
+| Field                                                  | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `type`                                                 | [models.StageRoutesType](../models/stageroutestype.md) | :heavy_minus_sign:                                     | N/A                                                    |
+| `key`                                                  | *string*                                               | :heavy_minus_sign:                                     | N/A                                                    |
+| `value`                                                | *string*                                               | :heavy_minus_sign:                                     | N/A                                                    |

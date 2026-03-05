@@ -27,11 +27,3 @@ const value: models.Source3 = {
 };
 ```
 
-### `models.Source4`
-
-```typescript
-const value: models.Source4 = {
-  kind: "<value>",
-};
-```
-

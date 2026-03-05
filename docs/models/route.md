@@ -1,25 +1,25 @@
 # Route
 
-
-## Supported Types
-
-### `models.Route1`
+## Example Usage
 
 ```typescript
-const value: models.Route1 = {
+import { Route } from "@vercel/sdk/models/stageroutesop.js";
+
+let value: Route = {
   src: "<value>",
-  status: 429.07,
 };
 ```
 
-### `models.Route2`
+## Fields
 
-```typescript
-const value: models.Route2 = {
-  has: [],
-  mitigate: {
-    action: "block_legal_cwc",
-  },
-};
-```
-
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `src`                                                                | *string*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
+| `dest`                                                               | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `headers`                                                            | [models.Headers](../models/headers.md)                               | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `caseSensitive`                                                      | *boolean*                                                            | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `status`                                                             | *number*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `has`                                                                | [models.Has](../models/has.md)[]                                     | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `missing`                                                            | [models.Missing](../models/missing.md)[]                             | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `transforms`                                                         | [models.StageRoutesTransforms](../models/stageroutestransforms.md)[] | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `respectOriginCacheControl`                                          | *boolean*                                                            | :heavy_minus_sign:                                                   | N/A                                                                  |

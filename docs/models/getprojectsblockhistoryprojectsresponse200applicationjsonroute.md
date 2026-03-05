@@ -3,25 +3,23 @@
 
 ## Supported Types
 
-### `models.GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody1`
+### `models.GetProjectsRouteProjectsResponse200ApplicationJson1`
 
 ```typescript
-const value:
-  models.GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody1 = {
-    src: "<value>",
-    status: 2989.17,
-  };
+const value: models.GetProjectsRouteProjectsResponse200ApplicationJson1 = {
+  src: "<value>",
+  status: 6123.65,
+};
 ```
 
-### `models.GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody2`
+### `models.GetProjectsRouteProjectsResponse200ApplicationJson2`
 
 ```typescript
-const value:
-  models.GetProjectsRouteProjectsResponse200ApplicationJSONResponseBody2 = {
-    has: [],
-    mitigate: {
-      action: "block_legal_cwc",
-    },
-  };
+const value: models.GetProjectsRouteProjectsResponse200ApplicationJson2 = {
+  has: [],
+  mitigate: {
+    action: "block_legal_cwc",
+  },
+};
 ```
 

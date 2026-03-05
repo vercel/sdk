@@ -35,7 +35,7 @@ func (o *GetDeploymentFeatureFlagsRequest) GetSlug() *string {
 	return o.Slug
 }
 
-type Flag struct {
+type GetDeploymentFeatureFlagsFlag struct {
 }
 
 type GetDeploymentFeatureFlagsStatus struct {
@@ -84,13 +84,13 @@ func (o *GetDeploymentFeatureFlagsStatus) GetCreatedAt() float64 {
 }
 
 type GetDeploymentFeatureFlagsResponseBody struct {
-	Flags  []Flag                           `json:"flags"`
+	Flags  []GetDeploymentFeatureFlagsFlag  `json:"flags"`
 	Status *GetDeploymentFeatureFlagsStatus `json:"status"`
 }
 
-func (o *GetDeploymentFeatureFlagsResponseBody) GetFlags() []Flag {
+func (o *GetDeploymentFeatureFlagsResponseBody) GetFlags() []GetDeploymentFeatureFlagsFlag {
 	if o == nil {
-		return []Flag{}
+		return []GetDeploymentFeatureFlagsFlag{}
 	}
 	return o.Flags
 }

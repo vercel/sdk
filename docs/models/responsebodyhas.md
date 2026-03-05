@@ -1,19 +1,41 @@
 # ResponseBodyHas
 
-## Example Usage
+
+## Supported Types
+
+### `models.GetRoutesHas1`
 
 ```typescript
-import { ResponseBodyHas } from "@vercel/sdk/models/getprojectsop.js";
-
-let value: ResponseBodyHas = {
-  type: "ip_address",
+const value: models.GetRoutesHas1 = {
+  type: "host",
+  value: "<value>",
 };
 ```
 
-## Fields
+### `models.GetRoutesHas2`
 
-| Field                                                                                                                                                                | Type                                                                                                                                                                 | Required                                                                                                                                                             | Description                                                                                                                                                          |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                                                                               | [models.GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityType](../models/getprojectsresponsebodyprojectsresponse200applicationjson1securitytype.md) | :heavy_check_mark:                                                                                                                                                   | N/A                                                                                                                                                                  |
-| `key`                                                                                                                                                                | *string*                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                   | N/A                                                                                                                                                                  |
-| `value`                                                                                                                                                              | *models.GetProjectsResponseBodyProjectsValue*                                                                                                                        | :heavy_minus_sign:                                                                                                                                                   | N/A                                                                                                                                                                  |
+```typescript
+const value: models.GetRoutesHas2 = {
+  type: "query",
+  key: "<key>",
+};
+```
+
+### `models.GetRoutesHas2`
+
+```typescript
+const value: models.GetRoutesHas2 = {
+  type: "query",
+  key: "<key>",
+};
+```
+
+### `models.GetRoutesHas2`
+
+```typescript
+const value: models.GetRoutesHas2 = {
+  type: "query",
+  key: "<key>",
+};
+```
+

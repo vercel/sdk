@@ -13,16 +13,16 @@ let value: CreateProjectCheckResponseBody = {
   isRerequestable: true,
   requires: "build-ready",
   source: {
-    kind: "git-provider",
-    provider: "bitbucket",
-    externalCheckName: "<value>",
+    kind: "webhook",
   },
-  blocks: "deployment-start",
-  targets: [],
-  sourceKind: "webhook",
-  timeout: 1008.16,
-  createdAt: 6105.04,
-  updatedAt: 9487.23,
+  blocks: "deployment-alias",
+  targets: [
+    "<value 1>",
+  ],
+  sourceKind: "integration",
+  timeout: 4049.49,
+  createdAt: 1008.16,
+  updatedAt: 6105.04,
 };
 ```
 

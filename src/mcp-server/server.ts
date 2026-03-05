@@ -213,6 +213,14 @@ import { tool$marketplaceUpdateResourceSecretsById } from "./tools/marketplaceUp
 import { tool$projectMembersAddProjectMember } from "./tools/projectMembersAddProjectMember.js";
 import { tool$projectMembersGetProjectMembers } from "./tools/projectMembersGetProjectMembers.js";
 import { tool$projectMembersRemoveProjectMember } from "./tools/projectMembersRemoveProjectMember.js";
+import { tool$projectRoutesAddRoute } from "./tools/projectRoutesAddRoute.js";
+import { tool$projectRoutesDeleteRoutes } from "./tools/projectRoutesDeleteRoutes.js";
+import { tool$projectRoutesEditRoute } from "./tools/projectRoutesEditRoute.js";
+import { tool$projectRoutesGenerateRoute } from "./tools/projectRoutesGenerateRoute.js";
+import { tool$projectRoutesGetRoutes } from "./tools/projectRoutesGetRoutes.js";
+import { tool$projectRoutesGetRouteVersions } from "./tools/projectRoutesGetRouteVersions.js";
+import { tool$projectRoutesStageRoutes } from "./tools/projectRoutesStageRoutes.js";
+import { tool$projectRoutesUpdateRouteVersions } from "./tools/projectRoutesUpdateRouteVersions.js";
 import { tool$projectsAcceptProjectTransferRequest } from "./tools/projectsAcceptProjectTransferRequest.js";
 import { tool$projectsAddProjectDomain } from "./tools/projectsAddProjectDomain.js";
 import { tool$projectsBatchRemoveProjectEnv } from "./tools/projectsBatchRemoveProjectEnv.js";
@@ -305,7 +313,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.19.9",
+    version: "1.19.10",
   });
 
   const client = new VercelCore({
@@ -529,6 +537,14 @@ export function createMCPServer(deps: {
   tool(tool$projectMembersGetProjectMembers);
   tool(tool$projectMembersAddProjectMember);
   tool(tool$projectMembersRemoveProjectMember);
+  tool(tool$projectRoutesGetRoutes);
+  tool(tool$projectRoutesStageRoutes);
+  tool(tool$projectRoutesAddRoute);
+  tool(tool$projectRoutesDeleteRoutes);
+  tool(tool$projectRoutesEditRoute);
+  tool(tool$projectRoutesGenerateRoute);
+  tool(tool$projectRoutesGetRouteVersions);
+  tool(tool$projectRoutesUpdateRouteVersions);
   tool(tool$projectsGetProjects);
   tool(tool$projectsCreateProject);
   tool(tool$projectsUpdateProject);

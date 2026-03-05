@@ -1,31 +1,25 @@
 # Routes
 
-
-## Supported Types
-
-### `models.Routes1`
+## Example Usage
 
 ```typescript
-const value: models.Routes1 = {
-  src: "<value>",
+import { Routes } from "@vercel/sdk/models/stageroutesop.js";
+
+let value: Routes = {
+  id: "<id>",
+  name: "<value>",
+  route: {
+    src: "<value>",
+  },
 };
 ```
 
-### `models.Routes2`
+## Fields
 
-```typescript
-const value: models.Routes2 = {
-  handle: "resource",
-};
-```
-
-### `models.Routes3`
-
-```typescript
-const value: models.Routes3 = {
-  src: "<value>",
-  continue: false,
-  middleware: 1714.6,
-};
-```
-
+| Field                              | Type                               | Required                           | Description                        |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| `id`                               | *string*                           | :heavy_check_mark:                 | N/A                                |
+| `name`                             | *string*                           | :heavy_check_mark:                 | N/A                                |
+| `description`                      | *string*                           | :heavy_minus_sign:                 | N/A                                |
+| `enabled`                          | *boolean*                          | :heavy_minus_sign:                 | N/A                                |
+| `route`                            | [models.Route](../models/route.md) | :heavy_check_mark:                 | N/A                                |

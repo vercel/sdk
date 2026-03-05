@@ -36,17 +36,17 @@ func (e *UpdateFlagSegmentAction) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type Field string
+type UpdateFlagSegmentField string
 
 const (
-	FieldInclude Field = "include"
-	FieldExclude Field = "exclude"
+	UpdateFlagSegmentFieldInclude UpdateFlagSegmentField = "include"
+	UpdateFlagSegmentFieldExclude UpdateFlagSegmentField = "exclude"
 )
 
-func (e Field) ToPointer() *Field {
+func (e UpdateFlagSegmentField) ToPointer() *UpdateFlagSegmentField {
 	return &e
 }
-func (e *Field) UnmarshalJSON(data []byte) error {
+func (e *UpdateFlagSegmentField) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -55,10 +55,10 @@ func (e *Field) UnmarshalJSON(data []byte) error {
 	case "include":
 		fallthrough
 	case "exclude":
-		*e = Field(v)
+		*e = UpdateFlagSegmentField(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Field: %v", v)
+		return fmt.Errorf("invalid value for UpdateFlagSegmentField: %v", v)
 	}
 }
 
@@ -83,7 +83,7 @@ func (o *UpdateFlagSegmentValue) GetValue() string {
 
 type UpdateFlagSegmentOperation struct {
 	Action    UpdateFlagSegmentAction `json:"action"`
-	Field     Field                   `json:"field"`
+	Field     UpdateFlagSegmentField  `json:"field"`
 	Entity    string                  `json:"entity"`
 	Attribute string                  `json:"attribute"`
 	Value     UpdateFlagSegmentValue  `json:"value"`
@@ -96,9 +96,9 @@ func (o *UpdateFlagSegmentOperation) GetAction() UpdateFlagSegmentAction {
 	return o.Action
 }
 
-func (o *UpdateFlagSegmentOperation) GetField() Field {
+func (o *UpdateFlagSegmentOperation) GetField() UpdateFlagSegmentField {
 	if o == nil {
-		return Field("")
+		return UpdateFlagSegmentField("")
 	}
 	return o.Field
 }

@@ -235,6 +235,7 @@ const (
 	GetTeamMembersOriginFeedback          GetTeamMembersOrigin = "feedback"
 	GetTeamMembersOriginOrganizationTeams GetTeamMembersOrigin = "organization-teams"
 	GetTeamMembersOriginNsnbAutoApprove   GetTeamMembersOrigin = "nsnb-auto-approve"
+	GetTeamMembersOriginNsnbHobbyUpgrade  GetTeamMembersOrigin = "nsnb-hobby-upgrade"
 	GetTeamMembersOriginNsnbRequestAccess GetTeamMembersOrigin = "nsnb-request-access"
 	GetTeamMembersOriginNsnbViewerUpgrade GetTeamMembersOrigin = "nsnb-viewer-upgrade"
 	GetTeamMembersOriginNsnbInvite        GetTeamMembersOrigin = "nsnb-invite"
@@ -273,6 +274,8 @@ func (e *GetTeamMembersOrigin) UnmarshalJSON(data []byte) error {
 	case "organization-teams":
 		fallthrough
 	case "nsnb-auto-approve":
+		fallthrough
+	case "nsnb-hobby-upgrade":
 		fallthrough
 	case "nsnb-request-access":
 		fallthrough

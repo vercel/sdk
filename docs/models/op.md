@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { Op } from "@vercel/sdk/models/putfirewallconfigop.js";
+import { Op } from "@vercel/sdk/models/stageroutesop.js";
 
-let value: Op = "lt";
+let value: Op = "delete";
 ```
 
 ## Values
 
 ```typescript
-"re" | "eq" | "neq" | "ex" | "nex" | "inc" | "ninc" | "pre" | "suf" | "sub" | "gt" | "gte" | "lt" | "lte"
+"append" | "set" | "delete"
 ```

@@ -1,41 +1,17 @@
 # Missing
 
-
-## Supported Types
-
-### `models.Missing1`
+## Example Usage
 
 ```typescript
-const value: models.Missing1 = {
-  type: "host",
-  value: {},
-};
+import { Missing } from "@vercel/sdk/models/stageroutesop.js";
+
+let value: Missing = {};
 ```
 
-### `models.Missing2`
+## Fields
 
-```typescript
-const value: models.Missing2 = {
-  type: "header",
-  key: "<key>",
-};
-```
-
-### `models.Missing2`
-
-```typescript
-const value: models.Missing2 = {
-  type: "header",
-  key: "<key>",
-};
-```
-
-### `models.Missing2`
-
-```typescript
-const value: models.Missing2 = {
-  type: "header",
-  key: "<key>",
-};
-```
-
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `type`                                                                           | [models.StageRoutesProjectRoutesType](../models/stageroutesprojectroutestype.md) | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `key`                                                                            | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `value`                                                                          | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |

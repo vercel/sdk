@@ -1,18 +1,23 @@
-# Checks
+# ~~Checks~~
+
+> [!WARNING]
+> This SDK is **DEPRECATED**
 
 ## Overview
 
 ### Available Operations
 
-* [createCheck](#createcheck) - Creates a new Check
-* [getAllChecks](#getallchecks) - Retrieve a list of all checks
-* [getCheck](#getcheck) - Get a single check
-* [updateCheck](#updatecheck) - Update a check
-* [rerequestCheck](#rerequestcheck) - Rerequest a check
+* [~~createCheck~~](#createcheck) - Creates a new Check :warning: **Deprecated**
+* [~~getAllChecks~~](#getallchecks) - Retrieve a list of all checks :warning: **Deprecated**
+* [~~getCheck~~](#getcheck) - Get a single check :warning: **Deprecated**
+* [~~updateCheck~~](#updatecheck) - Update a check :warning: **Deprecated**
+* [~~rerequestCheck~~](#rerequestcheck) - Rerequest a check :warning: **Deprecated**
 
-## createCheck
+## ~~createCheck~~
 
 Creates a new check. This endpoint must be called with an OAuth2 or it will produce a 400 error.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -103,9 +108,11 @@ run();
 | --------------- | --------------- | --------------- |
 | models.SDKError | 4XX, 5XX        | \*/\*           |
 
-## getAllChecks
+## ~~getAllChecks~~
 
 List all of the checks created for a deployment.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -180,9 +187,11 @@ run();
 | --------------- | --------------- | --------------- |
 | models.SDKError | 4XX, 5XX        | \*/\*           |
 
-## getCheck
+## ~~getCheck~~
 
 Return a detailed response for a single check.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -259,9 +268,11 @@ run();
 | --------------- | --------------- | --------------- |
 | models.SDKError | 4XX, 5XX        | \*/\*           |
 
-## updateCheck
+## ~~updateCheck~~
 
 Update an existing check. This endpoint must be called with an OAuth2 or it will produce a 400 error.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -408,9 +419,11 @@ run();
 | --------------- | --------------- | --------------- |
 | models.SDKError | 4XX, 5XX        | \*/\*           |
 
-## rerequestCheck
+## ~~rerequestCheck~~
 
 Rerequest a selected check that has failed.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 

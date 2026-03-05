@@ -12,12 +12,14 @@ let value: UpdateDeploymentCheckRunResponseBody = {
   ownerId: "<id>",
   deploymentId: "<id>",
   source: {
-    kind: "vercel",
+    kind: "git-provider",
+    provider: "gitlab",
+    externalCheckName: "<value>",
   },
-  status: "running",
-  timeout: 1424.6,
-  createdAt: 4541.95,
-  updatedAt: 942.81,
+  status: "queued",
+  timeout: 4541.95,
+  createdAt: 942.81,
+  updatedAt: 7273.82,
 };
 ```
 

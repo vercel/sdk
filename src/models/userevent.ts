@@ -476,6 +476,8 @@ export const Type = {
   WebhookCreated: "webhook-created",
   WebhookDeleted: "webhook-deleted",
   WebhookUpdated: "webhook-updated",
+  V0ChatCreated: "v0-chat-created",
+  V0ChatMessageSent: "v0-chat-message-sent",
   WorkflowDeploymentKeyAccessed: "workflow-deployment-key-accessed",
 } as const;
 /**
@@ -615,7 +617,7 @@ export type PayloadApp = {
 /**
  * The payload of the event, if requested.
  */
-export type TwoHundredAndSeventyOne = {
+export type TwoHundredAndSeventyThree = {
   grantType: GrantType;
   /**
    * the app's name at the time the event was published (it could have changed since then)
@@ -652,10 +654,27 @@ export type TwoHundredAndSeventyOne = {
 /**
  * The payload of the event, if requested.
  */
-export type TwoHundredAndSeventy = {
+export type TwoHundredAndSeventyTwo = {
   deploymentId: string;
   projectId: string;
   runId: string;
+};
+
+/**
+ * The payload of the event, if requested.
+ */
+export type TwoHundredAndSeventyOne = {
+  chatId: string;
+  chatTitle?: string | undefined;
+  messageId: string;
+};
+
+/**
+ * The payload of the event, if requested.
+ */
+export type TwoHundredAndSeventy = {
+  chatId: string;
+  chatTitle?: string | undefined;
 };
 
 /**
@@ -5855,6 +5874,7 @@ export type OneHundred = {
   projectId?: string | undefined;
   projectName?: string | undefined;
   target?: string | Array<string> | undefined;
+  customEnvironmentSlugs?: Array<string> | undefined;
   id?: string | undefined;
   gitBranch?: string | undefined;
   edgeConfigId?: string | null | undefined;
@@ -7605,10 +7625,12 @@ export const PayloadPermissions = {
   ReadBilling: "read:billing",
   ReadWriteBilling: "read-write:billing",
   ReadWriteAiGatewayApiKey: "read-write:ai-gateway-api-key",
+  UseAiGateway: "use:ai-gateway",
   ReadWriteProjectEnvVars: "read-write:project-env-vars",
   ReadWriteDrains: "read-write:drains",
   ReadWriteEdgeConfig: "read-write:edge-config",
   ReadMonitoring: "read:monitoring",
+  ReadAccessGroup: "read:access-group",
   ReadProject: "read:project",
   ReadWriteProject: "read-write:project",
   ReadDeployment: "read:deployment",
@@ -7659,10 +7681,12 @@ export const UserEventPayload25Permissions = {
   ReadBilling: "read:billing",
   ReadWriteBilling: "read-write:billing",
   ReadWriteAiGatewayApiKey: "read-write:ai-gateway-api-key",
+  UseAiGateway: "use:ai-gateway",
   ReadWriteProjectEnvVars: "read-write:project-env-vars",
   ReadWriteDrains: "read-write:drains",
   ReadWriteEdgeConfig: "read-write:edge-config",
   ReadMonitoring: "read:monitoring",
+  ReadAccessGroup: "read:access-group",
   ReadProject: "read:project",
   ReadWriteProject: "read-write:project",
   ReadDeployment: "read:deployment",
@@ -7712,10 +7736,12 @@ export const UserEventPayloadPermissions = {
   ReadBilling: "read:billing",
   ReadWriteBilling: "read-write:billing",
   ReadWriteAiGatewayApiKey: "read-write:ai-gateway-api-key",
+  UseAiGateway: "use:ai-gateway",
   ReadWriteProjectEnvVars: "read-write:project-env-vars",
   ReadWriteDrains: "read-write:drains",
   ReadWriteEdgeConfig: "read-write:edge-config",
   ReadMonitoring: "read:monitoring",
+  ReadAccessGroup: "read:access-group",
   ReadProject: "read:project",
   ReadWriteProject: "read-write:project",
   ReadDeployment: "read:deployment",
@@ -7758,10 +7784,12 @@ export const NextPermissions = {
   ReadBilling: "read:billing",
   ReadWriteBilling: "read-write:billing",
   ReadWriteAiGatewayApiKey: "read-write:ai-gateway-api-key",
+  UseAiGateway: "use:ai-gateway",
   ReadWriteProjectEnvVars: "read-write:project-env-vars",
   ReadWriteDrains: "read-write:drains",
   ReadWriteEdgeConfig: "read-write:edge-config",
   ReadMonitoring: "read:monitoring",
+  ReadAccessGroup: "read:access-group",
   ReadProject: "read:project",
   ReadWriteProject: "read-write:project",
   ReadDeployment: "read:deployment",
@@ -7804,10 +7832,12 @@ export const Permissions = {
   ReadBilling: "read:billing",
   ReadWriteBilling: "read-write:billing",
   ReadWriteAiGatewayApiKey: "read-write:ai-gateway-api-key",
+  UseAiGateway: "use:ai-gateway",
   ReadWriteProjectEnvVars: "read-write:project-env-vars",
   ReadWriteDrains: "read-write:drains",
   ReadWriteEdgeConfig: "read-write:edge-config",
   ReadMonitoring: "read:monitoring",
+  ReadAccessGroup: "read:access-group",
   ReadProject: "read:project",
   ReadWriteProject: "read-write:project",
   ReadDeployment: "read:deployment",
@@ -8142,7 +8172,7 @@ export type Payload =
   | OneHundredAndSixtyOne
   | OneHundredAndSeventyOne
   | OneHundredAndEightyOne
-  | TwoHundredAndSeventyOne
+  | TwoHundredAndSeventyThree
   | Payload2
   | ThirtyTwo
   | ThirtyThree
@@ -8233,7 +8263,7 @@ export type Payload =
   | TwoHundredAndSixtyFive
   | TwoHundredAndSixtySix
   | TwoHundredAndSixtySeven
-  | TwoHundredAndSeventy
+  | TwoHundredAndSeventyTwo
   | Three
   | Four
   | Six
@@ -8303,6 +8333,7 @@ export type Payload =
   | TwoHundredAndSixtyOne
   | TwoHundredAndSixtyTwo
   | TwoHundredAndSixtyNine
+  | TwoHundredAndSeventyOne
   | Five
   | Eight
   | Twelve
@@ -8365,6 +8396,7 @@ export type Payload =
   | TwoHundredAndSixtyThree
   | TwoHundredAndSixtyFour
   | TwoHundredAndSixtyEight
+  | TwoHundredAndSeventy
   | Payload1
   | Ten
   | Eleven
@@ -8460,7 +8492,7 @@ export type UserEvent = {
     | OneHundredAndSixtyOne
     | OneHundredAndSeventyOne
     | OneHundredAndEightyOne
-    | TwoHundredAndSeventyOne
+    | TwoHundredAndSeventyThree
     | Payload2
     | ThirtyTwo
     | ThirtyThree
@@ -8551,7 +8583,7 @@ export type UserEvent = {
     | TwoHundredAndSixtyFive
     | TwoHundredAndSixtySix
     | TwoHundredAndSixtySeven
-    | TwoHundredAndSeventy
+    | TwoHundredAndSeventyTwo
     | Three
     | Four
     | Six
@@ -8621,6 +8653,7 @@ export type UserEvent = {
     | TwoHundredAndSixtyOne
     | TwoHundredAndSixtyTwo
     | TwoHundredAndSixtyNine
+    | TwoHundredAndSeventyOne
     | Five
     | Eight
     | Twelve
@@ -8683,6 +8716,7 @@ export type UserEvent = {
     | TwoHundredAndSixtyThree
     | TwoHundredAndSixtyFour
     | TwoHundredAndSixtyEight
+    | TwoHundredAndSeventy
     | Payload1
     | Ten
     | Eleven
@@ -9181,8 +9215,8 @@ export function payloadAppFromJSON(
 }
 
 /** @internal */
-export const TwoHundredAndSeventyOne$inboundSchema: z.ZodType<
-  TwoHundredAndSeventyOne,
+export const TwoHundredAndSeventyThree$inboundSchema: z.ZodType<
+  TwoHundredAndSeventyThree,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -9198,7 +9232,7 @@ export const TwoHundredAndSeventyOne$inboundSchema: z.ZodType<
   sessionId: types.optional(types.string()),
 });
 /** @internal */
-export type TwoHundredAndSeventyOne$Outbound = {
+export type TwoHundredAndSeventyThree$Outbound = {
   grantType: string;
   appName: string;
   atTTL: number;
@@ -9212,10 +9246,10 @@ export type TwoHundredAndSeventyOne$Outbound = {
 };
 
 /** @internal */
-export const TwoHundredAndSeventyOne$outboundSchema: z.ZodType<
-  TwoHundredAndSeventyOne$Outbound,
+export const TwoHundredAndSeventyThree$outboundSchema: z.ZodType<
+  TwoHundredAndSeventyThree$Outbound,
   z.ZodTypeDef,
-  TwoHundredAndSeventyOne
+  TwoHundredAndSeventyThree
 > = z.object({
   grantType: GrantType$outboundSchema,
   appName: z.string(),
@@ -9227,6 +9261,96 @@ export const TwoHundredAndSeventyOne$outboundSchema: z.ZodType<
   includesRefreshToken: z.boolean().optional(),
   publicId: z.string().optional(),
   sessionId: z.string().optional(),
+});
+
+export function twoHundredAndSeventyThreeToJSON(
+  twoHundredAndSeventyThree: TwoHundredAndSeventyThree,
+): string {
+  return JSON.stringify(
+    TwoHundredAndSeventyThree$outboundSchema.parse(twoHundredAndSeventyThree),
+  );
+}
+export function twoHundredAndSeventyThreeFromJSON(
+  jsonString: string,
+): SafeParseResult<TwoHundredAndSeventyThree, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TwoHundredAndSeventyThree$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TwoHundredAndSeventyThree' from JSON`,
+  );
+}
+
+/** @internal */
+export const TwoHundredAndSeventyTwo$inboundSchema: z.ZodType<
+  TwoHundredAndSeventyTwo,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  deploymentId: types.string(),
+  projectId: types.string(),
+  runId: types.string(),
+});
+/** @internal */
+export type TwoHundredAndSeventyTwo$Outbound = {
+  deploymentId: string;
+  projectId: string;
+  runId: string;
+};
+
+/** @internal */
+export const TwoHundredAndSeventyTwo$outboundSchema: z.ZodType<
+  TwoHundredAndSeventyTwo$Outbound,
+  z.ZodTypeDef,
+  TwoHundredAndSeventyTwo
+> = z.object({
+  deploymentId: z.string(),
+  projectId: z.string(),
+  runId: z.string(),
+});
+
+export function twoHundredAndSeventyTwoToJSON(
+  twoHundredAndSeventyTwo: TwoHundredAndSeventyTwo,
+): string {
+  return JSON.stringify(
+    TwoHundredAndSeventyTwo$outboundSchema.parse(twoHundredAndSeventyTwo),
+  );
+}
+export function twoHundredAndSeventyTwoFromJSON(
+  jsonString: string,
+): SafeParseResult<TwoHundredAndSeventyTwo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TwoHundredAndSeventyTwo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TwoHundredAndSeventyTwo' from JSON`,
+  );
+}
+
+/** @internal */
+export const TwoHundredAndSeventyOne$inboundSchema: z.ZodType<
+  TwoHundredAndSeventyOne,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  chatId: types.string(),
+  chatTitle: types.optional(types.string()),
+  messageId: types.string(),
+});
+/** @internal */
+export type TwoHundredAndSeventyOne$Outbound = {
+  chatId: string;
+  chatTitle?: string | undefined;
+  messageId: string;
+};
+
+/** @internal */
+export const TwoHundredAndSeventyOne$outboundSchema: z.ZodType<
+  TwoHundredAndSeventyOne$Outbound,
+  z.ZodTypeDef,
+  TwoHundredAndSeventyOne
+> = z.object({
+  chatId: z.string(),
+  chatTitle: z.string().optional(),
+  messageId: z.string(),
 });
 
 export function twoHundredAndSeventyOneToJSON(
@@ -9252,15 +9376,13 @@ export const TwoHundredAndSeventy$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  deploymentId: types.string(),
-  projectId: types.string(),
-  runId: types.string(),
+  chatId: types.string(),
+  chatTitle: types.optional(types.string()),
 });
 /** @internal */
 export type TwoHundredAndSeventy$Outbound = {
-  deploymentId: string;
-  projectId: string;
-  runId: string;
+  chatId: string;
+  chatTitle?: string | undefined;
 };
 
 /** @internal */
@@ -9269,9 +9391,8 @@ export const TwoHundredAndSeventy$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TwoHundredAndSeventy
 > = z.object({
-  deploymentId: z.string(),
-  projectId: z.string(),
-  runId: z.string(),
+  chatId: z.string(),
+  chatTitle: z.string().optional(),
 });
 
 export function twoHundredAndSeventyToJSON(
@@ -30033,6 +30154,7 @@ export const OneHundred$inboundSchema: z.ZodType<
   projectId: types.optional(types.string()),
   projectName: types.optional(types.string()),
   target: types.optional(smartUnion([types.string(), z.array(types.string())])),
+  customEnvironmentSlugs: types.optional(z.array(types.string())),
   id: types.optional(types.string()),
   gitBranch: types.optional(types.string()),
   edgeConfigId: z.nullable(types.string()).optional(),
@@ -30045,6 +30167,7 @@ export type OneHundred$Outbound = {
   projectId?: string | undefined;
   projectName?: string | undefined;
   target?: string | Array<string> | undefined;
+  customEnvironmentSlugs?: Array<string> | undefined;
   id?: string | undefined;
   gitBranch?: string | undefined;
   edgeConfigId?: string | null | undefined;
@@ -30062,6 +30185,7 @@ export const OneHundred$outboundSchema: z.ZodType<
   projectId: z.string().optional(),
   projectName: z.string().optional(),
   target: smartUnion([z.string(), z.array(z.string())]).optional(),
+  customEnvironmentSlugs: z.array(z.string()).optional(),
   id: z.string().optional(),
   gitBranch: z.string().optional(),
   edgeConfigId: z.nullable(z.string()).optional(),
@@ -38848,7 +38972,7 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     z.lazy(() => OneHundredAndSixtyOne$inboundSchema),
     z.lazy(() => OneHundredAndSeventyOne$inboundSchema),
     z.lazy(() => OneHundredAndEightyOne$inboundSchema),
-    z.lazy(() => TwoHundredAndSeventyOne$inboundSchema),
+    z.lazy(() => TwoHundredAndSeventyThree$inboundSchema),
     z.lazy(() => Payload2$inboundSchema),
     z.lazy(() => ThirtyTwo$inboundSchema),
     z.lazy(() => ThirtyThree$inboundSchema),
@@ -38939,7 +39063,7 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     z.lazy(() => TwoHundredAndSixtyFive$inboundSchema),
     z.lazy(() => TwoHundredAndSixtySix$inboundSchema),
     z.lazy(() => TwoHundredAndSixtySeven$inboundSchema),
-    z.lazy(() => TwoHundredAndSeventy$inboundSchema),
+    z.lazy(() => TwoHundredAndSeventyTwo$inboundSchema),
     z.lazy(() => Three$inboundSchema),
     z.lazy(() => Four$inboundSchema),
     z.lazy(() => Six$inboundSchema),
@@ -39009,6 +39133,7 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     z.lazy(() => TwoHundredAndSixtyOne$inboundSchema),
     z.lazy(() => TwoHundredAndSixtyTwo$inboundSchema),
     z.lazy(() => TwoHundredAndSixtyNine$inboundSchema),
+    z.lazy(() => TwoHundredAndSeventyOne$inboundSchema),
     z.lazy(() => Five$inboundSchema),
     z.lazy(() => Eight$inboundSchema),
     z.lazy(() => Twelve$inboundSchema),
@@ -39071,6 +39196,7 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     z.lazy(() => TwoHundredAndSixtyThree$inboundSchema),
     z.lazy(() => TwoHundredAndSixtyFour$inboundSchema),
     z.lazy(() => TwoHundredAndSixtyEight$inboundSchema),
+    z.lazy(() => TwoHundredAndSeventy$inboundSchema),
     z.lazy(() => Payload1$inboundSchema),
     z.lazy(() => Ten$inboundSchema),
     z.lazy(() => Eleven$inboundSchema),
@@ -39122,7 +39248,7 @@ export type Payload$Outbound =
   | OneHundredAndSixtyOne$Outbound
   | OneHundredAndSeventyOne$Outbound
   | OneHundredAndEightyOne$Outbound
-  | TwoHundredAndSeventyOne$Outbound
+  | TwoHundredAndSeventyThree$Outbound
   | Payload2$Outbound
   | ThirtyTwo$Outbound
   | ThirtyThree$Outbound
@@ -39213,7 +39339,7 @@ export type Payload$Outbound =
   | TwoHundredAndSixtyFive$Outbound
   | TwoHundredAndSixtySix$Outbound
   | TwoHundredAndSixtySeven$Outbound
-  | TwoHundredAndSeventy$Outbound
+  | TwoHundredAndSeventyTwo$Outbound
   | Three$Outbound
   | Four$Outbound
   | Six$Outbound
@@ -39283,6 +39409,7 @@ export type Payload$Outbound =
   | TwoHundredAndSixtyOne$Outbound
   | TwoHundredAndSixtyTwo$Outbound
   | TwoHundredAndSixtyNine$Outbound
+  | TwoHundredAndSeventyOne$Outbound
   | Five$Outbound
   | Eight$Outbound
   | Twelve$Outbound
@@ -39345,6 +39472,7 @@ export type Payload$Outbound =
   | TwoHundredAndSixtyThree$Outbound
   | TwoHundredAndSixtyFour$Outbound
   | TwoHundredAndSixtyEight$Outbound
+  | TwoHundredAndSeventy$Outbound
   | Payload1$Outbound
   | Ten$Outbound
   | Eleven$Outbound
@@ -39400,7 +39528,7 @@ export const Payload$outboundSchema: z.ZodType<
   z.lazy(() => OneHundredAndSixtyOne$outboundSchema),
   z.lazy(() => OneHundredAndSeventyOne$outboundSchema),
   z.lazy(() => OneHundredAndEightyOne$outboundSchema),
-  z.lazy(() => TwoHundredAndSeventyOne$outboundSchema),
+  z.lazy(() => TwoHundredAndSeventyThree$outboundSchema),
   z.lazy(() => Payload2$outboundSchema),
   z.lazy(() => ThirtyTwo$outboundSchema),
   z.lazy(() => ThirtyThree$outboundSchema),
@@ -39491,7 +39619,7 @@ export const Payload$outboundSchema: z.ZodType<
   z.lazy(() => TwoHundredAndSixtyFive$outboundSchema),
   z.lazy(() => TwoHundredAndSixtySix$outboundSchema),
   z.lazy(() => TwoHundredAndSixtySeven$outboundSchema),
-  z.lazy(() => TwoHundredAndSeventy$outboundSchema),
+  z.lazy(() => TwoHundredAndSeventyTwo$outboundSchema),
   z.lazy(() => Three$outboundSchema),
   z.lazy(() => Four$outboundSchema),
   z.lazy(() => Six$outboundSchema),
@@ -39561,6 +39689,7 @@ export const Payload$outboundSchema: z.ZodType<
   z.lazy(() => TwoHundredAndSixtyOne$outboundSchema),
   z.lazy(() => TwoHundredAndSixtyTwo$outboundSchema),
   z.lazy(() => TwoHundredAndSixtyNine$outboundSchema),
+  z.lazy(() => TwoHundredAndSeventyOne$outboundSchema),
   z.lazy(() => Five$outboundSchema),
   z.lazy(() => Eight$outboundSchema),
   z.lazy(() => Twelve$outboundSchema),
@@ -39623,6 +39752,7 @@ export const Payload$outboundSchema: z.ZodType<
   z.lazy(() => TwoHundredAndSixtyThree$outboundSchema),
   z.lazy(() => TwoHundredAndSixtyFour$outboundSchema),
   z.lazy(() => TwoHundredAndSixtyEight$outboundSchema),
+  z.lazy(() => TwoHundredAndSeventy$outboundSchema),
   z.lazy(() => Payload1$outboundSchema),
   z.lazy(() => Ten$outboundSchema),
   z.lazy(() => Eleven$outboundSchema),
@@ -39717,7 +39847,7 @@ export const UserEvent$inboundSchema: z.ZodType<
       z.lazy(() => OneHundredAndSixtyOne$inboundSchema),
       z.lazy(() => OneHundredAndSeventyOne$inboundSchema),
       z.lazy(() => OneHundredAndEightyOne$inboundSchema),
-      z.lazy(() => TwoHundredAndSeventyOne$inboundSchema),
+      z.lazy(() => TwoHundredAndSeventyThree$inboundSchema),
       z.lazy(() => Payload2$inboundSchema),
       z.lazy(() => ThirtyTwo$inboundSchema),
       z.lazy(() => ThirtyThree$inboundSchema),
@@ -39808,7 +39938,7 @@ export const UserEvent$inboundSchema: z.ZodType<
       z.lazy(() => TwoHundredAndSixtyFive$inboundSchema),
       z.lazy(() => TwoHundredAndSixtySix$inboundSchema),
       z.lazy(() => TwoHundredAndSixtySeven$inboundSchema),
-      z.lazy(() => TwoHundredAndSeventy$inboundSchema),
+      z.lazy(() => TwoHundredAndSeventyTwo$inboundSchema),
       z.lazy(() => Three$inboundSchema),
       z.lazy(() => Four$inboundSchema),
       z.lazy(() => Six$inboundSchema),
@@ -39878,6 +40008,7 @@ export const UserEvent$inboundSchema: z.ZodType<
       z.lazy(() => TwoHundredAndSixtyOne$inboundSchema),
       z.lazy(() => TwoHundredAndSixtyTwo$inboundSchema),
       z.lazy(() => TwoHundredAndSixtyNine$inboundSchema),
+      z.lazy(() => TwoHundredAndSeventyOne$inboundSchema),
       z.lazy(() => Five$inboundSchema),
       z.lazy(() => Eight$inboundSchema),
       z.lazy(() => Twelve$inboundSchema),
@@ -39940,6 +40071,7 @@ export const UserEvent$inboundSchema: z.ZodType<
       z.lazy(() => TwoHundredAndSixtyThree$inboundSchema),
       z.lazy(() => TwoHundredAndSixtyFour$inboundSchema),
       z.lazy(() => TwoHundredAndSixtyEight$inboundSchema),
+      z.lazy(() => TwoHundredAndSeventy$inboundSchema),
       z.lazy(() => Payload1$inboundSchema),
       z.lazy(() => Ten$inboundSchema),
       z.lazy(() => Eleven$inboundSchema),
@@ -40005,7 +40137,7 @@ export type UserEvent$Outbound = {
     | OneHundredAndSixtyOne$Outbound
     | OneHundredAndSeventyOne$Outbound
     | OneHundredAndEightyOne$Outbound
-    | TwoHundredAndSeventyOne$Outbound
+    | TwoHundredAndSeventyThree$Outbound
     | Payload2$Outbound
     | ThirtyTwo$Outbound
     | ThirtyThree$Outbound
@@ -40096,7 +40228,7 @@ export type UserEvent$Outbound = {
     | TwoHundredAndSixtyFive$Outbound
     | TwoHundredAndSixtySix$Outbound
     | TwoHundredAndSixtySeven$Outbound
-    | TwoHundredAndSeventy$Outbound
+    | TwoHundredAndSeventyTwo$Outbound
     | Three$Outbound
     | Four$Outbound
     | Six$Outbound
@@ -40166,6 +40298,7 @@ export type UserEvent$Outbound = {
     | TwoHundredAndSixtyOne$Outbound
     | TwoHundredAndSixtyTwo$Outbound
     | TwoHundredAndSixtyNine$Outbound
+    | TwoHundredAndSeventyOne$Outbound
     | Five$Outbound
     | Eight$Outbound
     | Twelve$Outbound
@@ -40228,6 +40361,7 @@ export type UserEvent$Outbound = {
     | TwoHundredAndSixtyThree$Outbound
     | TwoHundredAndSixtyFour$Outbound
     | TwoHundredAndSixtyEight$Outbound
+    | TwoHundredAndSeventy$Outbound
     | Payload1$Outbound
     | Ten$Outbound
     | Eleven$Outbound
@@ -40305,7 +40439,7 @@ export const UserEvent$outboundSchema: z.ZodType<
     z.lazy(() => OneHundredAndSixtyOne$outboundSchema),
     z.lazy(() => OneHundredAndSeventyOne$outboundSchema),
     z.lazy(() => OneHundredAndEightyOne$outboundSchema),
-    z.lazy(() => TwoHundredAndSeventyOne$outboundSchema),
+    z.lazy(() => TwoHundredAndSeventyThree$outboundSchema),
     z.lazy(() => Payload2$outboundSchema),
     z.lazy(() => ThirtyTwo$outboundSchema),
     z.lazy(() => ThirtyThree$outboundSchema),
@@ -40396,7 +40530,7 @@ export const UserEvent$outboundSchema: z.ZodType<
     z.lazy(() => TwoHundredAndSixtyFive$outboundSchema),
     z.lazy(() => TwoHundredAndSixtySix$outboundSchema),
     z.lazy(() => TwoHundredAndSixtySeven$outboundSchema),
-    z.lazy(() => TwoHundredAndSeventy$outboundSchema),
+    z.lazy(() => TwoHundredAndSeventyTwo$outboundSchema),
     z.lazy(() => Three$outboundSchema),
     z.lazy(() => Four$outboundSchema),
     z.lazy(() => Six$outboundSchema),
@@ -40466,6 +40600,7 @@ export const UserEvent$outboundSchema: z.ZodType<
     z.lazy(() => TwoHundredAndSixtyOne$outboundSchema),
     z.lazy(() => TwoHundredAndSixtyTwo$outboundSchema),
     z.lazy(() => TwoHundredAndSixtyNine$outboundSchema),
+    z.lazy(() => TwoHundredAndSeventyOne$outboundSchema),
     z.lazy(() => Five$outboundSchema),
     z.lazy(() => Eight$outboundSchema),
     z.lazy(() => Twelve$outboundSchema),
@@ -40528,6 +40663,7 @@ export const UserEvent$outboundSchema: z.ZodType<
     z.lazy(() => TwoHundredAndSixtyThree$outboundSchema),
     z.lazy(() => TwoHundredAndSixtyFour$outboundSchema),
     z.lazy(() => TwoHundredAndSixtyEight$outboundSchema),
+    z.lazy(() => TwoHundredAndSeventy$outboundSchema),
     z.lazy(() => Payload1$outboundSchema),
     z.lazy(() => Ten$outboundSchema),
     z.lazy(() => Eleven$outboundSchema),

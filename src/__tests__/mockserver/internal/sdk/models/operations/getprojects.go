@@ -6051,6 +6051,7 @@ type GetProjectsPermissions struct {
 	WebAuthn                                 []components.ACLAction `json:"webAuthn,omitempty"`
 	AccessGroup                              []components.ACLAction `json:"accessGroup,omitempty"`
 	Agent                                    []components.ACLAction `json:"agent,omitempty"`
+	AiGatewayUsage                           []components.ACLAction `json:"aiGatewayUsage,omitempty"`
 	Alerts                                   []components.ACLAction `json:"alerts,omitempty"`
 	AlertRules                               []components.ACLAction `json:"alertRules,omitempty"`
 	AliasGlobal                              []components.ACLAction `json:"aliasGlobal,omitempty"`
@@ -6332,6 +6333,13 @@ func (o *GetProjectsPermissions) GetAgent() []components.ACLAction {
 		return nil
 	}
 	return o.Agent
+}
+
+func (o *GetProjectsPermissions) GetAiGatewayUsage() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.AiGatewayUsage
 }
 
 func (o *GetProjectsPermissions) GetAlerts() []components.ACLAction {

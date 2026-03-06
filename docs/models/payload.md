@@ -2881,9 +2881,7 @@ const value: models.TwoHundredAndSixtyNine = {
 
 ```typescript
 const value: models.TwoHundredAndSeventy = {
-  deploymentId: "<id>",
-  projectId: "<id>",
-  runId: "<id>",
+  chatId: "<id>",
 };
 ```
 
@@ -2891,11 +2889,30 @@ const value: models.TwoHundredAndSeventy = {
 
 ```typescript
 const value: models.TwoHundredAndSeventyOne = {
-  grantType: "urn:ietf:params:oauth:grant-type:device_code",
+  chatId: "<id>",
+  messageId: "<id>",
+};
+```
+
+### `models.TwoHundredAndSeventyTwo`
+
+```typescript
+const value: models.TwoHundredAndSeventyTwo = {
+  deploymentId: "<id>",
+  projectId: "<id>",
+  runId: "<id>",
+};
+```
+
+### `models.TwoHundredAndSeventyThree`
+
+```typescript
+const value: models.TwoHundredAndSeventyThree = {
+  grantType: "authorization_code",
   appName: "<value>",
-  atTTL: 905.99,
+  atTTL: 3422.39,
   scope: "<value>",
-  authMethod: "sms",
+  authMethod: "saml",
 };
 ```
 

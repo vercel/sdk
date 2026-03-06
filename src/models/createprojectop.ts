@@ -1396,6 +1396,7 @@ export type CreateProjectPermissions = {
   webAuthn?: Array<ACLAction> | undefined;
   accessGroup?: Array<ACLAction> | undefined;
   agent?: Array<ACLAction> | undefined;
+  aiGatewayUsage?: Array<ACLAction> | undefined;
   alerts?: Array<ACLAction> | undefined;
   alertRules?: Array<ACLAction> | undefined;
   aliasGlobal?: Array<ACLAction> | undefined;
@@ -6678,6 +6679,7 @@ export const CreateProjectPermissions$inboundSchema: z.ZodType<
   webAuthn: types.optional(z.array(ACLAction$inboundSchema)),
   accessGroup: types.optional(z.array(ACLAction$inboundSchema)),
   agent: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayUsage: types.optional(z.array(ACLAction$inboundSchema)),
   alerts: types.optional(z.array(ACLAction$inboundSchema)),
   alertRules: types.optional(z.array(ACLAction$inboundSchema)),
   aliasGlobal: types.optional(z.array(ACLAction$inboundSchema)),
@@ -6959,6 +6961,7 @@ export type CreateProjectPermissions$Outbound = {
   webAuthn?: Array<string> | undefined;
   accessGroup?: Array<string> | undefined;
   agent?: Array<string> | undefined;
+  aiGatewayUsage?: Array<string> | undefined;
   alerts?: Array<string> | undefined;
   alertRules?: Array<string> | undefined;
   aliasGlobal?: Array<string> | undefined;
@@ -7195,6 +7198,7 @@ export const CreateProjectPermissions$outboundSchema: z.ZodType<
   webAuthn: z.array(ACLAction$outboundSchema).optional(),
   accessGroup: z.array(ACLAction$outboundSchema).optional(),
   agent: z.array(ACLAction$outboundSchema).optional(),
+  aiGatewayUsage: z.array(ACLAction$outboundSchema).optional(),
   alerts: z.array(ACLAction$outboundSchema).optional(),
   alertRules: z.array(ACLAction$outboundSchema).optional(),
   aliasGlobal: z.array(ACLAction$outboundSchema).optional(),

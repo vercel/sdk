@@ -534,6 +534,8 @@ const (
 	UserEventTypeWebhookCreated                                  UserEventType = "webhook-created"
 	UserEventTypeWebhookDeleted                                  UserEventType = "webhook-deleted"
 	UserEventTypeWebhookUpdated                                  UserEventType = "webhook-updated"
+	UserEventTypeV0ChatCreated                                   UserEventType = "v0-chat-created"
+	UserEventTypeV0ChatMessageSent                               UserEventType = "v0-chat-message-sent"
 	UserEventTypeWorkflowDeploymentKeyAccessed                   UserEventType = "workflow-deployment-key-accessed"
 )
 
@@ -1328,6 +1330,10 @@ func (e *UserEventType) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "webhook-updated":
 		fallthrough
+	case "v0-chat-created":
+		fallthrough
+	case "v0-chat-message-sent":
+		fallthrough
 	case "workflow-deployment-key-accessed":
 		*e = UserEventType(v)
 		return nil
@@ -2009,8 +2015,8 @@ func (o *App2) GetClientAuthenticationUsed() ClientAuthenticationUsed {
 	return o.ClientAuthenticationUsed
 }
 
-// Payload267 - The payload of the event, if requested.
-type Payload267 struct {
+// Payload269 - The payload of the event, if requested.
+type Payload269 struct {
 	GrantType GrantType `json:"grantType"`
 	// the app's name at the time the event was published (it could have changed since then)
 	AppName string `json:"appName"`
@@ -2030,92 +2036,169 @@ type Payload267 struct {
 	SessionID *string `json:"sessionId,omitempty"`
 }
 
-func (p Payload267) MarshalJSON() ([]byte, error) {
+func (p Payload269) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(p, "", false)
 }
 
-func (p *Payload267) UnmarshalJSON(data []byte) error {
+func (p *Payload269) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"grantType", "appName", "atTTL", "scope", "authMethod"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Payload267) GetGrantType() GrantType {
+func (o *Payload269) GetGrantType() GrantType {
 	if o == nil {
 		return GrantType("")
 	}
 	return o.GrantType
 }
 
-func (o *Payload267) GetAppName() string {
+func (o *Payload269) GetAppName() string {
 	if o == nil {
 		return ""
 	}
 	return o.AppName
 }
 
-func (o *Payload267) GetAtTTL() float64 {
+func (o *Payload269) GetAtTTL() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.AtTTL
 }
 
-func (o *Payload267) GetRtTTL() *float64 {
+func (o *Payload269) GetRtTTL() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.RtTTL
 }
 
-func (o *Payload267) GetScope() string {
+func (o *Payload269) GetScope() string {
 	if o == nil {
 		return ""
 	}
 	return o.Scope
 }
 
-func (o *Payload267) GetAuthMethod() AuthMethod {
+func (o *Payload269) GetAuthMethod() AuthMethod {
 	if o == nil {
 		return AuthMethod("")
 	}
 	return o.AuthMethod
 }
 
-func (o *Payload267) GetApp() *App2 {
+func (o *Payload269) GetApp() *App2 {
 	if o == nil {
 		return nil
 	}
 	return o.App
 }
 
-func (o *Payload267) GetIncludesRefreshToken() *bool {
+func (o *Payload269) GetIncludesRefreshToken() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.IncludesRefreshToken
 }
 
-func (o *Payload267) GetPublicID() *string {
+func (o *Payload269) GetPublicID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.PublicID
 }
 
-func (o *Payload267) GetSessionID() *string {
+func (o *Payload269) GetSessionID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.SessionID
 }
 
-// Payload266 - The payload of the event, if requested.
-type Payload266 struct {
+// Payload268 - The payload of the event, if requested.
+type Payload268 struct {
 	DeploymentID string `json:"deploymentId"`
 	ProjectID    string `json:"projectId"`
 	RunID        string `json:"runId"`
+}
+
+func (p Payload268) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload268) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"deploymentId", "projectId", "runId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Payload268) GetDeploymentID() string {
+	if o == nil {
+		return ""
+	}
+	return o.DeploymentID
+}
+
+func (o *Payload268) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+func (o *Payload268) GetRunID() string {
+	if o == nil {
+		return ""
+	}
+	return o.RunID
+}
+
+// Payload267 - The payload of the event, if requested.
+type Payload267 struct {
+	ChatID    string  `json:"chatId"`
+	ChatTitle *string `json:"chatTitle,omitempty"`
+	MessageID string  `json:"messageId"`
+}
+
+func (p Payload267) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload267) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"chatId", "messageId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Payload267) GetChatID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ChatID
+}
+
+func (o *Payload267) GetChatTitle() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ChatTitle
+}
+
+func (o *Payload267) GetMessageID() string {
+	if o == nil {
+		return ""
+	}
+	return o.MessageID
+}
+
+// Payload266 - The payload of the event, if requested.
+type Payload266 struct {
+	ChatID    string  `json:"chatId"`
+	ChatTitle *string `json:"chatTitle,omitempty"`
 }
 
 func (p Payload266) MarshalJSON() ([]byte, error) {
@@ -2123,31 +2206,24 @@ func (p Payload266) MarshalJSON() ([]byte, error) {
 }
 
 func (p *Payload266) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"deploymentId", "projectId", "runId"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"chatId"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Payload266) GetDeploymentID() string {
+func (o *Payload266) GetChatID() string {
 	if o == nil {
 		return ""
 	}
-	return o.DeploymentID
+	return o.ChatID
 }
 
-func (o *Payload266) GetProjectID() string {
+func (o *Payload266) GetChatTitle() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
-	return o.ProjectID
-}
-
-func (o *Payload266) GetRunID() string {
-	if o == nil {
-		return ""
-	}
-	return o.RunID
+	return o.ChatTitle
 }
 
 // Payload265 - The payload of the event, if requested.
@@ -26094,15 +26170,16 @@ func (u Target) MarshalJSON() ([]byte, error) {
 
 // Payload96 - The payload of the event, if requested.
 type Payload96 struct {
-	Key               *string `json:"key,omitempty"`
-	ProjectID         *string `json:"projectId,omitempty"`
-	ProjectName       *string `json:"projectName,omitempty"`
-	Target            *Target `json:"target,omitempty"`
-	ID                *string `json:"id,omitempty"`
-	GitBranch         *string `json:"gitBranch,omitempty"`
-	EdgeConfigID      *string `json:"edgeConfigId,omitempty"`
-	EdgeConfigTokenID *string `json:"edgeConfigTokenId,omitempty"`
-	Source            *string `json:"source,omitempty"`
+	Key                    *string  `json:"key,omitempty"`
+	ProjectID              *string  `json:"projectId,omitempty"`
+	ProjectName            *string  `json:"projectName,omitempty"`
+	Target                 *Target  `json:"target,omitempty"`
+	CustomEnvironmentSlugs []string `json:"customEnvironmentSlugs,omitempty"`
+	ID                     *string  `json:"id,omitempty"`
+	GitBranch              *string  `json:"gitBranch,omitempty"`
+	EdgeConfigID           *string  `json:"edgeConfigId,omitempty"`
+	EdgeConfigTokenID      *string  `json:"edgeConfigTokenId,omitempty"`
+	Source                 *string  `json:"source,omitempty"`
 }
 
 func (p Payload96) MarshalJSON() ([]byte, error) {
@@ -26142,6 +26219,13 @@ func (o *Payload96) GetTarget() *Target {
 		return nil
 	}
 	return o.Target
+}
+
+func (o *Payload96) GetCustomEnvironmentSlugs() []string {
+	if o == nil {
+		return nil
+	}
+	return o.CustomEnvironmentSlugs
 }
 
 func (o *Payload96) GetID() *string {
@@ -34272,10 +34356,12 @@ const (
 	Permission2ReadBilling              Permission2 = "read:billing"
 	Permission2ReadWriteBilling         Permission2 = "read-write:billing"
 	Permission2ReadWriteAiGatewayAPIKey Permission2 = "read-write:ai-gateway-api-key"
+	Permission2UseAiGateway             Permission2 = "use:ai-gateway"
 	Permission2ReadWriteProjectEnvVars  Permission2 = "read-write:project-env-vars"
 	Permission2ReadWriteDrains          Permission2 = "read-write:drains"
 	Permission2ReadWriteEdgeConfig      Permission2 = "read-write:edge-config"
 	Permission2ReadMonitoring           Permission2 = "read:monitoring"
+	Permission2ReadAccessGroup          Permission2 = "read:access-group"
 	Permission2ReadProject              Permission2 = "read:project"
 	Permission2ReadWriteProject         Permission2 = "read-write:project"
 	Permission2ReadDeployment           Permission2 = "read:deployment"
@@ -34303,6 +34389,8 @@ func (e *Permission2) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "read-write:ai-gateway-api-key":
 		fallthrough
+	case "use:ai-gateway":
+		fallthrough
 	case "read-write:project-env-vars":
 		fallthrough
 	case "read-write:drains":
@@ -34310,6 +34398,8 @@ func (e *Permission2) UnmarshalJSON(data []byte) error {
 	case "read-write:edge-config":
 		fallthrough
 	case "read:monitoring":
+		fallthrough
+	case "read:access-group":
 		fallthrough
 	case "read:project":
 		fallthrough
@@ -34509,10 +34599,12 @@ const (
 	BeforePermissionReadBilling              BeforePermission = "read:billing"
 	BeforePermissionReadWriteBilling         BeforePermission = "read-write:billing"
 	BeforePermissionReadWriteAiGatewayAPIKey BeforePermission = "read-write:ai-gateway-api-key"
+	BeforePermissionUseAiGateway             BeforePermission = "use:ai-gateway"
 	BeforePermissionReadWriteProjectEnvVars  BeforePermission = "read-write:project-env-vars"
 	BeforePermissionReadWriteDrains          BeforePermission = "read-write:drains"
 	BeforePermissionReadWriteEdgeConfig      BeforePermission = "read-write:edge-config"
 	BeforePermissionReadMonitoring           BeforePermission = "read:monitoring"
+	BeforePermissionReadAccessGroup          BeforePermission = "read:access-group"
 	BeforePermissionReadProject              BeforePermission = "read:project"
 	BeforePermissionReadWriteProject         BeforePermission = "read-write:project"
 	BeforePermissionReadDeployment           BeforePermission = "read:deployment"
@@ -34540,6 +34632,8 @@ func (e *BeforePermission) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "read-write:ai-gateway-api-key":
 		fallthrough
+	case "use:ai-gateway":
+		fallthrough
 	case "read-write:project-env-vars":
 		fallthrough
 	case "read-write:drains":
@@ -34547,6 +34641,8 @@ func (e *BeforePermission) UnmarshalJSON(data []byte) error {
 	case "read-write:edge-config":
 		fallthrough
 	case "read:monitoring":
+		fallthrough
+	case "read:access-group":
 		fallthrough
 	case "read:project":
 		fallthrough
@@ -34729,10 +34825,12 @@ const (
 	AfterPermissionReadBilling              AfterPermission = "read:billing"
 	AfterPermissionReadWriteBilling         AfterPermission = "read-write:billing"
 	AfterPermissionReadWriteAiGatewayAPIKey AfterPermission = "read-write:ai-gateway-api-key"
+	AfterPermissionUseAiGateway             AfterPermission = "use:ai-gateway"
 	AfterPermissionReadWriteProjectEnvVars  AfterPermission = "read-write:project-env-vars"
 	AfterPermissionReadWriteDrains          AfterPermission = "read-write:drains"
 	AfterPermissionReadWriteEdgeConfig      AfterPermission = "read-write:edge-config"
 	AfterPermissionReadMonitoring           AfterPermission = "read:monitoring"
+	AfterPermissionReadAccessGroup          AfterPermission = "read:access-group"
 	AfterPermissionReadProject              AfterPermission = "read:project"
 	AfterPermissionReadWriteProject         AfterPermission = "read-write:project"
 	AfterPermissionReadDeployment           AfterPermission = "read:deployment"
@@ -34760,6 +34858,8 @@ func (e *AfterPermission) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "read-write:ai-gateway-api-key":
 		fallthrough
+	case "use:ai-gateway":
+		fallthrough
 	case "read-write:project-env-vars":
 		fallthrough
 	case "read-write:drains":
@@ -34767,6 +34867,8 @@ func (e *AfterPermission) UnmarshalJSON(data []byte) error {
 	case "read-write:edge-config":
 		fallthrough
 	case "read:monitoring":
+		fallthrough
+	case "read:access-group":
 		fallthrough
 	case "read:project":
 		fallthrough
@@ -34910,10 +35012,12 @@ const (
 	NextPermissionReadBilling              NextPermission = "read:billing"
 	NextPermissionReadWriteBilling         NextPermission = "read-write:billing"
 	NextPermissionReadWriteAiGatewayAPIKey NextPermission = "read-write:ai-gateway-api-key"
+	NextPermissionUseAiGateway             NextPermission = "use:ai-gateway"
 	NextPermissionReadWriteProjectEnvVars  NextPermission = "read-write:project-env-vars"
 	NextPermissionReadWriteDrains          NextPermission = "read-write:drains"
 	NextPermissionReadWriteEdgeConfig      NextPermission = "read-write:edge-config"
 	NextPermissionReadMonitoring           NextPermission = "read:monitoring"
+	NextPermissionReadAccessGroup          NextPermission = "read:access-group"
 	NextPermissionReadProject              NextPermission = "read:project"
 	NextPermissionReadWriteProject         NextPermission = "read-write:project"
 	NextPermissionReadDeployment           NextPermission = "read:deployment"
@@ -34945,6 +35049,8 @@ func (e *NextPermission) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "read-write:ai-gateway-api-key":
 		fallthrough
+	case "use:ai-gateway":
+		fallthrough
 	case "read-write:project-env-vars":
 		fallthrough
 	case "read-write:drains":
@@ -34952,6 +35058,8 @@ func (e *NextPermission) UnmarshalJSON(data []byte) error {
 	case "read-write:edge-config":
 		fallthrough
 	case "read:monitoring":
+		fallthrough
+	case "read:access-group":
 		fallthrough
 	case "read:project":
 		fallthrough
@@ -35088,10 +35196,12 @@ const (
 	Permission1ReadBilling              Permission1 = "read:billing"
 	Permission1ReadWriteBilling         Permission1 = "read-write:billing"
 	Permission1ReadWriteAiGatewayAPIKey Permission1 = "read-write:ai-gateway-api-key"
+	Permission1UseAiGateway             Permission1 = "use:ai-gateway"
 	Permission1ReadWriteProjectEnvVars  Permission1 = "read-write:project-env-vars"
 	Permission1ReadWriteDrains          Permission1 = "read-write:drains"
 	Permission1ReadWriteEdgeConfig      Permission1 = "read-write:edge-config"
 	Permission1ReadMonitoring           Permission1 = "read:monitoring"
+	Permission1ReadAccessGroup          Permission1 = "read:access-group"
 	Permission1ReadProject              Permission1 = "read:project"
 	Permission1ReadWriteProject         Permission1 = "read-write:project"
 	Permission1ReadDeployment           Permission1 = "read:deployment"
@@ -35123,6 +35233,8 @@ func (e *Permission1) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "read-write:ai-gateway-api-key":
 		fallthrough
+	case "use:ai-gateway":
+		fallthrough
 	case "read-write:project-env-vars":
 		fallthrough
 	case "read-write:drains":
@@ -35130,6 +35242,8 @@ func (e *Permission1) UnmarshalJSON(data []byte) error {
 	case "read-write:edge-config":
 		fallthrough
 	case "read:monitoring":
+		fallthrough
+	case "read:access-group":
 		fallthrough
 	case "read:project":
 		fallthrough
@@ -36890,6 +37004,8 @@ const (
 	PayloadUnionTypePayload265        PayloadUnionType = "payload_265"
 	PayloadUnionTypePayload266        PayloadUnionType = "payload_266"
 	PayloadUnionTypePayload267        PayloadUnionType = "payload_267"
+	PayloadUnionTypePayload268        PayloadUnionType = "payload_268"
+	PayloadUnionTypePayload269        PayloadUnionType = "payload_269"
 )
 
 type PayloadUnion struct {
@@ -37164,6 +37280,8 @@ type PayloadUnion struct {
 	Payload265        *Payload265        `queryParam:"inline"`
 	Payload266        *Payload266        `queryParam:"inline"`
 	Payload267        *Payload267        `queryParam:"inline"`
+	Payload268        *Payload268        `queryParam:"inline"`
+	Payload269        *Payload269        `queryParam:"inline"`
 
 	Type PayloadUnionType
 }
@@ -39607,6 +39725,24 @@ func CreatePayloadUnionPayload267(payload267 Payload267) PayloadUnion {
 	}
 }
 
+func CreatePayloadUnionPayload268(payload268 Payload268) PayloadUnion {
+	typ := PayloadUnionTypePayload268
+
+	return PayloadUnion{
+		Payload268: &payload268,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadUnionPayload269(payload269 Payload269) PayloadUnion {
+	typ := PayloadUnionTypePayload269
+
+	return PayloadUnion{
+		Payload269: &payload269,
+		Type:       typ,
+	}
+}
+
 func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 
 	var payload165 Payload165 = Payload165{}
@@ -39728,10 +39864,10 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload267 Payload267 = Payload267{}
-	if err := utils.UnmarshalJSON(data, &payload267, "", true, nil); err == nil {
-		u.Payload267 = &payload267
-		u.Type = PayloadUnionTypePayload267
+	var payload269 Payload269 = Payload269{}
+	if err := utils.UnmarshalJSON(data, &payload269, "", true, nil); err == nil {
+		u.Payload269 = &payload269
+		u.Type = PayloadUnionTypePayload269
 		return nil
 	}
 
@@ -40365,10 +40501,10 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var payload266 Payload266 = Payload266{}
-	if err := utils.UnmarshalJSON(data, &payload266, "", true, nil); err == nil {
-		u.Payload266 = &payload266
-		u.Type = PayloadUnionTypePayload266
+	var payload268 Payload268 = Payload268{}
+	if err := utils.UnmarshalJSON(data, &payload268, "", true, nil); err == nil {
+		u.Payload268 = &payload268
+		u.Type = PayloadUnionTypePayload268
 		return nil
 	}
 
@@ -40855,6 +40991,13 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var payload267 Payload267 = Payload267{}
+	if err := utils.UnmarshalJSON(data, &payload267, "", true, nil); err == nil {
+		u.Payload267 = &payload267
+		u.Type = PayloadUnionTypePayload267
+		return nil
+	}
+
 	var payload4 Payload4 = Payload4{}
 	if err := utils.UnmarshalJSON(data, &payload4, "", true, nil); err == nil {
 		u.Payload4 = &payload4
@@ -41286,6 +41429,13 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &payload264, "", true, nil); err == nil {
 		u.Payload264 = &payload264
 		u.Type = PayloadUnionTypePayload264
+		return nil
+	}
+
+	var payload266 Payload266 = Payload266{}
+	if err := utils.UnmarshalJSON(data, &payload266, "", true, nil); err == nil {
+		u.Payload266 = &payload266
+		u.Type = PayloadUnionTypePayload266
 		return nil
 	}
 
@@ -42592,6 +42742,14 @@ func (u PayloadUnion) MarshalJSON() ([]byte, error) {
 
 	if u.Payload267 != nil {
 		return utils.MarshalJSON(u.Payload267, "", true)
+	}
+
+	if u.Payload268 != nil {
+		return utils.MarshalJSON(u.Payload268, "", true)
+	}
+
+	if u.Payload269 != nil {
+		return utils.MarshalJSON(u.Payload269, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type PayloadUnion: all fields are null")

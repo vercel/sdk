@@ -432,6 +432,8 @@ export const ListEventTypesName = {
   WebhookCreated: "webhook-created",
   WebhookDeleted: "webhook-deleted",
   WebhookUpdated: "webhook-updated",
+  V0ChatCreated: "v0-chat-created",
+  V0ChatMessageSent: "v0-chat-message-sent",
   WorkflowDeploymentKeyAccessed: "workflow-deployment-key-accessed",
 } as const;
 export type ListEventTypesName = ClosedEnum<typeof ListEventTypesName>;

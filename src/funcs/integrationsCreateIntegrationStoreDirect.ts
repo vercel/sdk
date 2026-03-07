@@ -13,9 +13,11 @@ import { pathToFunc } from "../lib/url.js";
 import {
   CreateIntegrationStoreDirectRequest,
   CreateIntegrationStoreDirectRequest$outboundSchema,
+} from "../models/createintegrationstoredirecthidden1.js";
+import {
   CreateIntegrationStoreDirectResponseBody,
   CreateIntegrationStoreDirectResponseBody$inboundSchema,
-} from "../models/createintegrationstoredirectop.js";
+} from "../models/createintegrationstoredirectresponsebody.js";
 import {
   ConnectionError,
   InvalidRequestError,

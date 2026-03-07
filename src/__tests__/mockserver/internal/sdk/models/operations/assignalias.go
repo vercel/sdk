@@ -4,6 +4,7 @@ package operations
 
 import (
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 	"time"
 )
@@ -12,7 +13,7 @@ type AssignAliasRequestBody struct {
 	// The alias we want to assign to the deployment defined in the URL
 	Alias *string `json:"alias,omitempty"`
 	// The redirect property will take precedence over the deployment id from the URL and consists of a hostname (like test.com) to which the alias should redirect using status code 307
-	Redirect *string `json:"redirect,omitempty"`
+	Redirect optionalnullable.OptionalNullable[string] `json:"redirect,omitempty"`
 }
 
 func (o *AssignAliasRequestBody) GetAlias() *string {
@@ -22,7 +23,7 @@ func (o *AssignAliasRequestBody) GetAlias() *string {
 	return o.Alias
 }
 
-func (o *AssignAliasRequestBody) GetRedirect() *string {
+func (o *AssignAliasRequestBody) GetRedirect() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -76,7 +77,7 @@ type AssignAliasResponseBody struct {
 	// The date when the alias was created
 	Created time.Time `json:"created"`
 	// The unique identifier of the previously aliased deployment, only received when the alias was used before
-	OldDeploymentID *string `json:"oldDeploymentId,omitempty"`
+	OldDeploymentID optionalnullable.OptionalNullable[string] `json:"oldDeploymentId,omitempty"`
 }
 
 func (a AssignAliasResponseBody) MarshalJSON() ([]byte, error) {
@@ -111,7 +112,7 @@ func (o *AssignAliasResponseBody) GetCreated() time.Time {
 	return o.Created
 }
 
-func (o *AssignAliasResponseBody) GetOldDeploymentID() *string {
+func (o *AssignAliasResponseBody) GetOldDeploymentID() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}

@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 )
 
@@ -879,8 +880,8 @@ func (o *TeamSsoProtection) GetDeploymentType() string {
 
 // DefaultDeploymentProtection - Default deployment protection for this team null indicates protection is disabled
 type DefaultDeploymentProtection struct {
-	PasswordProtection *TeamPasswordProtection `json:"passwordProtection,omitempty"`
-	SsoProtection      *TeamSsoProtection      `json:"ssoProtection,omitempty"`
+	PasswordProtection optionalnullable.OptionalNullable[TeamPasswordProtection] `json:"passwordProtection,omitempty"`
+	SsoProtection      optionalnullable.OptionalNullable[TeamSsoProtection]      `json:"ssoProtection,omitempty"`
 }
 
 func (d DefaultDeploymentProtection) MarshalJSON() ([]byte, error) {
@@ -894,14 +895,14 @@ func (d *DefaultDeploymentProtection) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *DefaultDeploymentProtection) GetPasswordProtection() *TeamPasswordProtection {
+func (o *DefaultDeploymentProtection) GetPasswordProtection() optionalnullable.OptionalNullable[TeamPasswordProtection] {
 	if o == nil {
 		return nil
 	}
 	return o.PasswordProtection
 }
 
-func (o *DefaultDeploymentProtection) GetSsoProtection() *TeamSsoProtection {
+func (o *DefaultDeploymentProtection) GetSsoProtection() optionalnullable.OptionalNullable[TeamSsoProtection] {
 	if o == nil {
 		return nil
 	}
@@ -1693,7 +1694,7 @@ type Team struct {
 	// Timestamp (in milliseconds) of when the Team was last updated.
 	UpdatedAt float64 `json:"updatedAt"`
 	// Hostname that'll be matched with emails on sign-up to automatically join the Team.
-	EmailDomain *string `json:"emailDomain,omitempty"`
+	EmailDomain optionalnullable.OptionalNullable[string] `json:"emailDomain,omitempty"`
 	// When "Single Sign-On (SAML)" is configured, this object contains information regarding the configuration of the Identity Provider (IdP).
 	Saml *TeamSaml `json:"saml,omitempty"`
 	// Code that can be used to join this Team. Only visible to Team owners.
@@ -1706,7 +1707,7 @@ type Team struct {
 	StagingPrefix  string              `json:"stagingPrefix"`
 	ResourceConfig *TeamResourceConfig `json:"resourceConfig,omitempty"`
 	// The hostname that is current set as preview deployment suffix.
-	PreviewDeploymentSuffix *string `json:"previewDeploymentSuffix,omitempty"`
+	PreviewDeploymentSuffix optionalnullable.OptionalNullable[string] `json:"previewDeploymentSuffix,omitempty"`
 	// Whether the team is a platform team.
 	Platform              *bool                  `json:"platform,omitempty"`
 	DisableHardAutoBlocks *DisableHardAutoBlocks `json:"disableHardAutoBlocks,omitempty"`
@@ -1717,16 +1718,16 @@ type Team struct {
 	// Default deployment expiration settings for this team
 	DefaultExpirationSettings *DefaultExpirationSettings `json:"defaultExpirationSettings,omitempty"`
 	// Whether toolbar is enabled on preview deployments
-	EnablePreviewFeedback *TeamEnablePreviewFeedback `json:"enablePreviewFeedback,omitempty"`
+	EnablePreviewFeedback optionalnullable.OptionalNullable[TeamEnablePreviewFeedback] `json:"enablePreviewFeedback,omitempty"`
 	// Whether toolbar is enabled on production deployments
-	EnableProductionFeedback *EnableProductionFeedback `json:"enableProductionFeedback,omitempty"`
+	EnableProductionFeedback optionalnullable.OptionalNullable[EnableProductionFeedback] `json:"enableProductionFeedback,omitempty"`
 	// Sensitive environment variable policy for this team
-	SensitiveEnvironmentVariablePolicy *SensitiveEnvironmentVariablePolicy `json:"sensitiveEnvironmentVariablePolicy,omitempty"`
+	SensitiveEnvironmentVariablePolicy optionalnullable.OptionalNullable[SensitiveEnvironmentVariablePolicy] `json:"sensitiveEnvironmentVariablePolicy,omitempty"`
 	// Indicates if IP addresses should be accessible in observability (o11y) tooling
-	HideIPAddresses *bool `json:"hideIpAddresses,omitempty"`
+	HideIPAddresses optionalnullable.OptionalNullable[bool] `json:"hideIpAddresses,omitempty"`
 	// Indicates if IP addresses should be accessible in log drains
-	HideIPAddressesInLogDrains *bool      `json:"hideIpAddressesInLogDrains,omitempty"`
-	IPBuckets                  []IPBucket `json:"ipBuckets,omitempty"`
+	HideIPAddressesInLogDrains optionalnullable.OptionalNullable[bool] `json:"hideIpAddressesInLogDrains,omitempty"`
+	IPBuckets                  []IPBucket                              `json:"ipBuckets,omitempty"`
 	// When enabled, deployment protection settings require stricter permissions (owner-only).
 	StrictDeploymentProtectionSettings *StrictDeploymentProtectionSettings `json:"strictDeploymentProtectionSettings,omitempty"`
 	// NSNB configuration for the team.
@@ -1778,7 +1779,7 @@ func (o *Team) GetUpdatedAt() float64 {
 	return o.UpdatedAt
 }
 
-func (o *Team) GetEmailDomain() *string {
+func (o *Team) GetEmailDomain() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -1827,7 +1828,7 @@ func (o *Team) GetResourceConfig() *TeamResourceConfig {
 	return o.ResourceConfig
 }
 
-func (o *Team) GetPreviewDeploymentSuffix() *string {
+func (o *Team) GetPreviewDeploymentSuffix() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -1869,35 +1870,35 @@ func (o *Team) GetDefaultExpirationSettings() *DefaultExpirationSettings {
 	return o.DefaultExpirationSettings
 }
 
-func (o *Team) GetEnablePreviewFeedback() *TeamEnablePreviewFeedback {
+func (o *Team) GetEnablePreviewFeedback() optionalnullable.OptionalNullable[TeamEnablePreviewFeedback] {
 	if o == nil {
 		return nil
 	}
 	return o.EnablePreviewFeedback
 }
 
-func (o *Team) GetEnableProductionFeedback() *EnableProductionFeedback {
+func (o *Team) GetEnableProductionFeedback() optionalnullable.OptionalNullable[EnableProductionFeedback] {
 	if o == nil {
 		return nil
 	}
 	return o.EnableProductionFeedback
 }
 
-func (o *Team) GetSensitiveEnvironmentVariablePolicy() *SensitiveEnvironmentVariablePolicy {
+func (o *Team) GetSensitiveEnvironmentVariablePolicy() optionalnullable.OptionalNullable[SensitiveEnvironmentVariablePolicy] {
 	if o == nil {
 		return nil
 	}
 	return o.SensitiveEnvironmentVariablePolicy
 }
 
-func (o *Team) GetHideIPAddresses() *bool {
+func (o *Team) GetHideIPAddresses() optionalnullable.OptionalNullable[bool] {
 	if o == nil {
 		return nil
 	}
 	return o.HideIPAddresses
 }
 
-func (o *Team) GetHideIPAddressesInLogDrains() *bool {
+func (o *Team) GetHideIPAddressesInLogDrains() optionalnullable.OptionalNullable[bool] {
 	if o == nil {
 		return nil
 	}

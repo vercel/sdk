@@ -8,6 +8,7 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/operations"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
@@ -61,7 +62,7 @@ func testApproveRollingReleaseStageApproveRollingReleaseStage0(w http.ResponseWr
 				ReadyState:   operations.ApproveRollingReleaseStageCurrentDeploymentReadyStateReady,
 				ReadyStateAt: types.Float64(1716206800000),
 				Source:       operations.ApproveRollingReleaseStageCurrentDeploymentSourceGit.ToPointer(),
-				Target:       operations.ApproveRollingReleaseStageCurrentDeploymentTargetProduction.ToPointer(),
+				Target:       optionalnullable.From(operations.ApproveRollingReleaseStageCurrentDeploymentTargetProduction.ToPointer()),
 				URL:          "my-shop.vercel.app",
 			},
 			CanaryDeployment: &operations.ApproveRollingReleaseStageCanaryDeployment{
@@ -71,7 +72,7 @@ func testApproveRollingReleaseStageApproveRollingReleaseStage0(w http.ResponseWr
 				ReadyState:   operations.ApproveRollingReleaseStageCanaryDeploymentReadyStateReady,
 				ReadyStateAt: types.Float64(1716210400000),
 				Source:       operations.ApproveRollingReleaseStageCanaryDeploymentSourceGit.ToPointer(),
-				Target:       operations.ApproveRollingReleaseStageCanaryDeploymentTargetProduction.ToPointer(),
+				Target:       optionalnullable.From(operations.ApproveRollingReleaseStageCanaryDeploymentTargetProduction.ToPointer()),
 				URL:          "9c7e2f4-my-shop.vercel.app",
 			},
 			QueuedDeploymentID: types.String("dpl_ghi789"),

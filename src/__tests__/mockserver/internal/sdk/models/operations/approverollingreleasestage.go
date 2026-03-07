@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 )
 
 type ApproveRollingReleaseStageRequestBody struct {
@@ -222,7 +223,7 @@ type ApproveRollingReleaseStageCurrentDeployment struct {
 	// Where was the deployment created from
 	Source *ApproveRollingReleaseStageCurrentDeploymentSource `json:"source,omitempty"`
 	// If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
-	Target *ApproveRollingReleaseStageCurrentDeploymentTarget `json:"target,omitempty"`
+	Target optionalnullable.OptionalNullable[ApproveRollingReleaseStageCurrentDeploymentTarget] `json:"target,omitempty"`
 	// A string with the unique URL of the deployment
 	URL string `json:"url"`
 }
@@ -269,7 +270,7 @@ func (o *ApproveRollingReleaseStageCurrentDeployment) GetSource() *ApproveRollin
 	return o.Source
 }
 
-func (o *ApproveRollingReleaseStageCurrentDeployment) GetTarget() *ApproveRollingReleaseStageCurrentDeploymentTarget {
+func (o *ApproveRollingReleaseStageCurrentDeployment) GetTarget() optionalnullable.OptionalNullable[ApproveRollingReleaseStageCurrentDeploymentTarget] {
 	if o == nil {
 		return nil
 	}
@@ -408,7 +409,7 @@ type ApproveRollingReleaseStageCanaryDeployment struct {
 	// Where was the deployment created from
 	Source *ApproveRollingReleaseStageCanaryDeploymentSource `json:"source,omitempty"`
 	// If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
-	Target *ApproveRollingReleaseStageCanaryDeploymentTarget `json:"target,omitempty"`
+	Target optionalnullable.OptionalNullable[ApproveRollingReleaseStageCanaryDeploymentTarget] `json:"target,omitempty"`
 	// A string with the unique URL of the deployment
 	URL string `json:"url"`
 }
@@ -455,7 +456,7 @@ func (o *ApproveRollingReleaseStageCanaryDeployment) GetSource() *ApproveRolling
 	return o.Source
 }
 
-func (o *ApproveRollingReleaseStageCanaryDeployment) GetTarget() *ApproveRollingReleaseStageCanaryDeploymentTarget {
+func (o *ApproveRollingReleaseStageCanaryDeployment) GetTarget() optionalnullable.OptionalNullable[ApproveRollingReleaseStageCanaryDeploymentTarget] {
 	if o == nil {
 		return nil
 	}

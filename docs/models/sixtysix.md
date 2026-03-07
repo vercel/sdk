@@ -5,31 +5,26 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SixtySix } from "@vercel/sdk/models/userevent.js";
+import { SixtySix } from "@vercel/sdk/models/payloaditems.js";
 
 let value: SixtySix = {
-  job: {
-    prId: 1679.11,
-    type: "pr",
-    headInfo: {
-      org: "<value>",
-      ref: "<value>",
-      repo: "<value>",
-      repoId: 7689.26,
-      sha: "<value>",
-    },
-    installationId: 3027.85,
-    isPrivate: false,
-    org: "<value>",
-    repo: "<value>",
-    repoId: 2803.04,
-    provider: "github-limited",
-  },
+  url: "https://dead-euphonium.org/",
 };
 ```
 
 ## Fields
 
-| Field               | Type                | Required            | Description         |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `job`               | *models.PayloadJob* | :heavy_check_mark:  | N/A                 |
+| Field                                                      | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `name`                                                     | *string*                                                   | :heavy_minus_sign:                                         | N/A                                                        |
+| `alias`                                                    | *string*[]                                                 | :heavy_minus_sign:                                         | N/A                                                        |
+| `target`                                                   | *string*                                                   | :heavy_minus_sign:                                         | N/A                                                        |
+| `deployment`                                               | [models.PayloadDeployment](../models/payloaddeployment.md) | :heavy_minus_sign:                                         | N/A                                                        |
+| `url`                                                      | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| `forced`                                                   | *boolean*                                                  | :heavy_minus_sign:                                         | N/A                                                        |
+| `deploymentId`                                             | *string*                                                   | :heavy_minus_sign:                                         | N/A                                                        |
+| `plan`                                                     | *string*                                                   | :heavy_minus_sign:                                         | N/A                                                        |
+| `project`                                                  | *string*                                                   | :heavy_minus_sign:                                         | N/A                                                        |
+| `projectId`                                                | *string*                                                   | :heavy_minus_sign:                                         | N/A                                                        |
+| `regions`                                                  | *string*[]                                                 | :heavy_minus_sign:                                         | N/A                                                        |
+| `type`                                                     | *string*                                                   | :heavy_minus_sign:                                         | N/A                                                        |

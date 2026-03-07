@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 )
 
@@ -498,15 +499,15 @@ func (o *CancelDeploymentWebAnalytics) GetHasData() *bool {
 }
 
 type CancelDeploymentProjectSettings struct {
-	NodeVersion                 *CancelDeploymentProjectSettingsNodeVersion `json:"nodeVersion,omitempty"`
-	BuildCommand                *string                                     `json:"buildCommand,omitempty"`
-	DevCommand                  *string                                     `json:"devCommand,omitempty"`
-	Framework                   *CancelDeploymentFramework                  `json:"framework,omitempty"`
-	CommandForIgnoringBuildStep *string                                     `json:"commandForIgnoringBuildStep,omitempty"`
-	InstallCommand              *string                                     `json:"installCommand,omitempty"`
-	OutputDirectory             *string                                     `json:"outputDirectory,omitempty"`
-	SpeedInsights               *CancelDeploymentSpeedInsights              `json:"speedInsights,omitempty"`
-	WebAnalytics                *CancelDeploymentWebAnalytics               `json:"webAnalytics,omitempty"`
+	NodeVersion                 *CancelDeploymentProjectSettingsNodeVersion                  `json:"nodeVersion,omitempty"`
+	BuildCommand                optionalnullable.OptionalNullable[string]                    `json:"buildCommand,omitempty"`
+	DevCommand                  optionalnullable.OptionalNullable[string]                    `json:"devCommand,omitempty"`
+	Framework                   optionalnullable.OptionalNullable[CancelDeploymentFramework] `json:"framework,omitempty"`
+	CommandForIgnoringBuildStep optionalnullable.OptionalNullable[string]                    `json:"commandForIgnoringBuildStep,omitempty"`
+	InstallCommand              optionalnullable.OptionalNullable[string]                    `json:"installCommand,omitempty"`
+	OutputDirectory             optionalnullable.OptionalNullable[string]                    `json:"outputDirectory,omitempty"`
+	SpeedInsights               *CancelDeploymentSpeedInsights                               `json:"speedInsights,omitempty"`
+	WebAnalytics                *CancelDeploymentWebAnalytics                                `json:"webAnalytics,omitempty"`
 }
 
 func (o *CancelDeploymentProjectSettings) GetNodeVersion() *CancelDeploymentProjectSettingsNodeVersion {
@@ -516,42 +517,42 @@ func (o *CancelDeploymentProjectSettings) GetNodeVersion() *CancelDeploymentProj
 	return o.NodeVersion
 }
 
-func (o *CancelDeploymentProjectSettings) GetBuildCommand() *string {
+func (o *CancelDeploymentProjectSettings) GetBuildCommand() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.BuildCommand
 }
 
-func (o *CancelDeploymentProjectSettings) GetDevCommand() *string {
+func (o *CancelDeploymentProjectSettings) GetDevCommand() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.DevCommand
 }
 
-func (o *CancelDeploymentProjectSettings) GetFramework() *CancelDeploymentFramework {
+func (o *CancelDeploymentProjectSettings) GetFramework() optionalnullable.OptionalNullable[CancelDeploymentFramework] {
 	if o == nil {
 		return nil
 	}
 	return o.Framework
 }
 
-func (o *CancelDeploymentProjectSettings) GetCommandForIgnoringBuildStep() *string {
+func (o *CancelDeploymentProjectSettings) GetCommandForIgnoringBuildStep() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.CommandForIgnoringBuildStep
 }
 
-func (o *CancelDeploymentProjectSettings) GetInstallCommand() *string {
+func (o *CancelDeploymentProjectSettings) GetInstallCommand() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.InstallCommand
 }
 
-func (o *CancelDeploymentProjectSettings) GetOutputDirectory() *string {
+func (o *CancelDeploymentProjectSettings) GetOutputDirectory() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -965,12 +966,12 @@ func (o *CancelDeploymentOutput) GetFunctionName() string {
 
 // CancelDeploymentLambda - A partial representation of a Build used by the deployment endpoint.
 type CancelDeploymentLambda struct {
-	ID           string                            `json:"id"`
-	CreatedAt    *float64                          `json:"createdAt,omitempty"`
-	ReadyState   *CancelDeploymentLambdaReadyState `json:"readyState,omitempty"`
-	Entrypoint   *string                           `json:"entrypoint,omitempty"`
-	ReadyStateAt *float64                          `json:"readyStateAt,omitempty"`
-	Output       []CancelDeploymentOutput          `json:"output"`
+	ID           string                                    `json:"id"`
+	CreatedAt    *float64                                  `json:"createdAt,omitempty"`
+	ReadyState   *CancelDeploymentLambdaReadyState         `json:"readyState,omitempty"`
+	Entrypoint   optionalnullable.OptionalNullable[string] `json:"entrypoint,omitempty"`
+	ReadyStateAt *float64                                  `json:"readyStateAt,omitempty"`
+	Output       []CancelDeploymentOutput                  `json:"output"`
 }
 
 func (o *CancelDeploymentLambda) GetID() string {
@@ -994,7 +995,7 @@ func (o *CancelDeploymentLambda) GetReadyState() *CancelDeploymentLambdaReadySta
 	return o.ReadyState
 }
 
-func (o *CancelDeploymentLambda) GetEntrypoint() *string {
+func (o *CancelDeploymentLambda) GetEntrypoint() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -1254,15 +1255,15 @@ func (o *CancelDeploymentVerification) GetReason() string {
 
 // CancelDeploymentDomain - List of domains associated with this environment
 type CancelDeploymentDomain struct {
-	Name                string   `json:"name"`
-	ApexName            string   `json:"apexName"`
-	ProjectID           string   `json:"projectId"`
-	Redirect            *string  `json:"redirect,omitempty"`
-	RedirectStatusCode  *float64 `json:"redirectStatusCode,omitempty"`
-	GitBranch           *string  `json:"gitBranch,omitempty"`
-	CustomEnvironmentID *string  `json:"customEnvironmentId,omitempty"`
-	UpdatedAt           *float64 `json:"updatedAt,omitempty"`
-	CreatedAt           *float64 `json:"createdAt,omitempty"`
+	Name                string                                     `json:"name"`
+	ApexName            string                                     `json:"apexName"`
+	ProjectID           string                                     `json:"projectId"`
+	Redirect            optionalnullable.OptionalNullable[string]  `json:"redirect,omitempty"`
+	RedirectStatusCode  optionalnullable.OptionalNullable[float64] `json:"redirectStatusCode,omitempty"`
+	GitBranch           optionalnullable.OptionalNullable[string]  `json:"gitBranch,omitempty"`
+	CustomEnvironmentID optionalnullable.OptionalNullable[string]  `json:"customEnvironmentId,omitempty"`
+	UpdatedAt           *float64                                   `json:"updatedAt,omitempty"`
+	CreatedAt           *float64                                   `json:"createdAt,omitempty"`
 	// `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed.
 	Verified bool `json:"verified"`
 	// A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
@@ -1301,28 +1302,28 @@ func (o *CancelDeploymentDomain) GetProjectID() string {
 	return o.ProjectID
 }
 
-func (o *CancelDeploymentDomain) GetRedirect() *string {
+func (o *CancelDeploymentDomain) GetRedirect() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.Redirect
 }
 
-func (o *CancelDeploymentDomain) GetRedirectStatusCode() *float64 {
+func (o *CancelDeploymentDomain) GetRedirectStatusCode() optionalnullable.OptionalNullable[float64] {
 	if o == nil {
 		return nil
 	}
 	return o.RedirectStatusCode
 }
 
-func (o *CancelDeploymentDomain) GetGitBranch() *string {
+func (o *CancelDeploymentDomain) GetGitBranch() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.GitBranch
 }
 
-func (o *CancelDeploymentDomain) GetCustomEnvironmentID() *string {
+func (o *CancelDeploymentDomain) GetCustomEnvironmentID() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -2236,12 +2237,12 @@ func (e *CancelDeploymentGitSourceTypeBitbucket2) UnmarshalJSON(data []byte) err
 }
 
 type CancelDeploymentGitSourceBitbucket2 struct {
-	Type  CancelDeploymentGitSourceTypeBitbucket2 `json:"type"`
-	Owner string                                  `json:"owner"`
-	Slug  string                                  `json:"slug"`
-	Ref   *string                                 `json:"ref,omitempty"`
-	Sha   *string                                 `json:"sha,omitempty"`
-	PrID  *float64                                `json:"prId,omitempty"`
+	Type  CancelDeploymentGitSourceTypeBitbucket2    `json:"type"`
+	Owner string                                     `json:"owner"`
+	Slug  string                                     `json:"slug"`
+	Ref   optionalnullable.OptionalNullable[string]  `json:"ref,omitempty"`
+	Sha   *string                                    `json:"sha,omitempty"`
+	PrID  optionalnullable.OptionalNullable[float64] `json:"prId,omitempty"`
 }
 
 func (c CancelDeploymentGitSourceBitbucket2) MarshalJSON() ([]byte, error) {
@@ -2276,7 +2277,7 @@ func (o *CancelDeploymentGitSourceBitbucket2) GetSlug() string {
 	return o.Slug
 }
 
-func (o *CancelDeploymentGitSourceBitbucket2) GetRef() *string {
+func (o *CancelDeploymentGitSourceBitbucket2) GetRef() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -2290,7 +2291,7 @@ func (o *CancelDeploymentGitSourceBitbucket2) GetSha() *string {
 	return o.Sha
 }
 
-func (o *CancelDeploymentGitSourceBitbucket2) GetPrID() *float64 {
+func (o *CancelDeploymentGitSourceBitbucket2) GetPrID() optionalnullable.OptionalNullable[float64] {
 	if o == nil {
 		return nil
 	}
@@ -2321,12 +2322,12 @@ func (e *CancelDeploymentGitSourceTypeBitbucket1) UnmarshalJSON(data []byte) err
 }
 
 type CancelDeploymentGitSourceBitbucket1 struct {
-	Type          CancelDeploymentGitSourceTypeBitbucket1 `json:"type"`
-	WorkspaceUUID *string                                 `json:"workspaceUuid,omitempty"`
-	RepoUUID      string                                  `json:"repoUuid"`
-	Ref           *string                                 `json:"ref,omitempty"`
-	Sha           *string                                 `json:"sha,omitempty"`
-	PrID          *float64                                `json:"prId,omitempty"`
+	Type          CancelDeploymentGitSourceTypeBitbucket1    `json:"type"`
+	WorkspaceUUID *string                                    `json:"workspaceUuid,omitempty"`
+	RepoUUID      string                                     `json:"repoUuid"`
+	Ref           optionalnullable.OptionalNullable[string]  `json:"ref,omitempty"`
+	Sha           *string                                    `json:"sha,omitempty"`
+	PrID          optionalnullable.OptionalNullable[float64] `json:"prId,omitempty"`
 }
 
 func (c CancelDeploymentGitSourceBitbucket1) MarshalJSON() ([]byte, error) {
@@ -2361,7 +2362,7 @@ func (o *CancelDeploymentGitSourceBitbucket1) GetRepoUUID() string {
 	return o.RepoUUID
 }
 
-func (o *CancelDeploymentGitSourceBitbucket1) GetRef() *string {
+func (o *CancelDeploymentGitSourceBitbucket1) GetRef() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -2375,7 +2376,7 @@ func (o *CancelDeploymentGitSourceBitbucket1) GetSha() *string {
 	return o.Sha
 }
 
-func (o *CancelDeploymentGitSourceBitbucket1) GetPrID() *float64 {
+func (o *CancelDeploymentGitSourceBitbucket1) GetPrID() optionalnullable.OptionalNullable[float64] {
 	if o == nil {
 		return nil
 	}
@@ -2469,11 +2470,11 @@ func (u CancelDeploymentProjectID) MarshalJSON() ([]byte, error) {
 }
 
 type CancelDeploymentGitSourceGitlab1 struct {
-	Type      CancelDeploymentGitSourceTypeGitlab1 `json:"type"`
-	ProjectID CancelDeploymentProjectID            `json:"projectId"`
-	Ref       *string                              `json:"ref,omitempty"`
-	Sha       *string                              `json:"sha,omitempty"`
-	PrID      *float64                             `json:"prId,omitempty"`
+	Type      CancelDeploymentGitSourceTypeGitlab1       `json:"type"`
+	ProjectID CancelDeploymentProjectID                  `json:"projectId"`
+	Ref       optionalnullable.OptionalNullable[string]  `json:"ref,omitempty"`
+	Sha       *string                                    `json:"sha,omitempty"`
+	PrID      optionalnullable.OptionalNullable[float64] `json:"prId,omitempty"`
 }
 
 func (c CancelDeploymentGitSourceGitlab1) MarshalJSON() ([]byte, error) {
@@ -2501,7 +2502,7 @@ func (o *CancelDeploymentGitSourceGitlab1) GetProjectID() CancelDeploymentProjec
 	return o.ProjectID
 }
 
-func (o *CancelDeploymentGitSourceGitlab1) GetRef() *string {
+func (o *CancelDeploymentGitSourceGitlab1) GetRef() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -2515,7 +2516,7 @@ func (o *CancelDeploymentGitSourceGitlab1) GetSha() *string {
 	return o.Sha
 }
 
-func (o *CancelDeploymentGitSourceGitlab1) GetPrID() *float64 {
+func (o *CancelDeploymentGitSourceGitlab1) GetPrID() optionalnullable.OptionalNullable[float64] {
 	if o == nil {
 		return nil
 	}
@@ -2546,12 +2547,12 @@ func (e *CancelDeploymentTypeGithubLimited2) UnmarshalJSON(data []byte) error {
 }
 
 type CancelDeploymentGitSourceGithubLimited2 struct {
-	Type CancelDeploymentTypeGithubLimited2 `json:"type"`
-	Org  string                             `json:"org"`
-	Repo string                             `json:"repo"`
-	Ref  *string                            `json:"ref,omitempty"`
-	Sha  *string                            `json:"sha,omitempty"`
-	PrID *float64                           `json:"prId,omitempty"`
+	Type CancelDeploymentTypeGithubLimited2         `json:"type"`
+	Org  string                                     `json:"org"`
+	Repo string                                     `json:"repo"`
+	Ref  optionalnullable.OptionalNullable[string]  `json:"ref,omitempty"`
+	Sha  *string                                    `json:"sha,omitempty"`
+	PrID optionalnullable.OptionalNullable[float64] `json:"prId,omitempty"`
 }
 
 func (c CancelDeploymentGitSourceGithubLimited2) MarshalJSON() ([]byte, error) {
@@ -2586,7 +2587,7 @@ func (o *CancelDeploymentGitSourceGithubLimited2) GetRepo() string {
 	return o.Repo
 }
 
-func (o *CancelDeploymentGitSourceGithubLimited2) GetRef() *string {
+func (o *CancelDeploymentGitSourceGithubLimited2) GetRef() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -2600,7 +2601,7 @@ func (o *CancelDeploymentGitSourceGithubLimited2) GetSha() *string {
 	return o.Sha
 }
 
-func (o *CancelDeploymentGitSourceGithubLimited2) GetPrID() *float64 {
+func (o *CancelDeploymentGitSourceGithubLimited2) GetPrID() optionalnullable.OptionalNullable[float64] {
 	if o == nil {
 		return nil
 	}
@@ -2694,11 +2695,11 @@ func (u CancelDeploymentRepoID3) MarshalJSON() ([]byte, error) {
 }
 
 type CancelDeploymentGitSourceGithubLimited1 struct {
-	Type   CancelDeploymentTypeGithubLimited1 `json:"type"`
-	RepoID CancelDeploymentRepoID3            `json:"repoId"`
-	Ref    *string                            `json:"ref,omitempty"`
-	Sha    *string                            `json:"sha,omitempty"`
-	PrID   *float64                           `json:"prId,omitempty"`
+	Type   CancelDeploymentTypeGithubLimited1         `json:"type"`
+	RepoID CancelDeploymentRepoID3                    `json:"repoId"`
+	Ref    optionalnullable.OptionalNullable[string]  `json:"ref,omitempty"`
+	Sha    *string                                    `json:"sha,omitempty"`
+	PrID   optionalnullable.OptionalNullable[float64] `json:"prId,omitempty"`
 }
 
 func (c CancelDeploymentGitSourceGithubLimited1) MarshalJSON() ([]byte, error) {
@@ -2726,7 +2727,7 @@ func (o *CancelDeploymentGitSourceGithubLimited1) GetRepoID() CancelDeploymentRe
 	return o.RepoID
 }
 
-func (o *CancelDeploymentGitSourceGithubLimited1) GetRef() *string {
+func (o *CancelDeploymentGitSourceGithubLimited1) GetRef() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -2740,7 +2741,7 @@ func (o *CancelDeploymentGitSourceGithubLimited1) GetSha() *string {
 	return o.Sha
 }
 
-func (o *CancelDeploymentGitSourceGithubLimited1) GetPrID() *float64 {
+func (o *CancelDeploymentGitSourceGithubLimited1) GetPrID() optionalnullable.OptionalNullable[float64] {
 	if o == nil {
 		return nil
 	}
@@ -2771,13 +2772,13 @@ func (e *CancelDeploymentTypeGithubCustomHost2) UnmarshalJSON(data []byte) error
 }
 
 type CancelDeploymentGitSourceGithubCustomHost2 struct {
-	Type CancelDeploymentTypeGithubCustomHost2 `json:"type"`
-	Host string                                `json:"host"`
-	Org  string                                `json:"org"`
-	Repo string                                `json:"repo"`
-	Ref  *string                               `json:"ref,omitempty"`
-	Sha  *string                               `json:"sha,omitempty"`
-	PrID *float64                              `json:"prId,omitempty"`
+	Type CancelDeploymentTypeGithubCustomHost2      `json:"type"`
+	Host string                                     `json:"host"`
+	Org  string                                     `json:"org"`
+	Repo string                                     `json:"repo"`
+	Ref  optionalnullable.OptionalNullable[string]  `json:"ref,omitempty"`
+	Sha  *string                                    `json:"sha,omitempty"`
+	PrID optionalnullable.OptionalNullable[float64] `json:"prId,omitempty"`
 }
 
 func (c CancelDeploymentGitSourceGithubCustomHost2) MarshalJSON() ([]byte, error) {
@@ -2819,7 +2820,7 @@ func (o *CancelDeploymentGitSourceGithubCustomHost2) GetRepo() string {
 	return o.Repo
 }
 
-func (o *CancelDeploymentGitSourceGithubCustomHost2) GetRef() *string {
+func (o *CancelDeploymentGitSourceGithubCustomHost2) GetRef() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -2833,7 +2834,7 @@ func (o *CancelDeploymentGitSourceGithubCustomHost2) GetSha() *string {
 	return o.Sha
 }
 
-func (o *CancelDeploymentGitSourceGithubCustomHost2) GetPrID() *float64 {
+func (o *CancelDeploymentGitSourceGithubCustomHost2) GetPrID() optionalnullable.OptionalNullable[float64] {
 	if o == nil {
 		return nil
 	}
@@ -2927,12 +2928,12 @@ func (u CancelDeploymentRepoID2) MarshalJSON() ([]byte, error) {
 }
 
 type CancelDeploymentGitSourceGithubCustomHost1 struct {
-	Type   CancelDeploymentTypeGithubCustomHost1 `json:"type"`
-	Host   string                                `json:"host"`
-	RepoID CancelDeploymentRepoID2               `json:"repoId"`
-	Ref    *string                               `json:"ref,omitempty"`
-	Sha    *string                               `json:"sha,omitempty"`
-	PrID   *float64                              `json:"prId,omitempty"`
+	Type   CancelDeploymentTypeGithubCustomHost1      `json:"type"`
+	Host   string                                     `json:"host"`
+	RepoID CancelDeploymentRepoID2                    `json:"repoId"`
+	Ref    optionalnullable.OptionalNullable[string]  `json:"ref,omitempty"`
+	Sha    *string                                    `json:"sha,omitempty"`
+	PrID   optionalnullable.OptionalNullable[float64] `json:"prId,omitempty"`
 }
 
 func (c CancelDeploymentGitSourceGithubCustomHost1) MarshalJSON() ([]byte, error) {
@@ -2967,7 +2968,7 @@ func (o *CancelDeploymentGitSourceGithubCustomHost1) GetRepoID() CancelDeploymen
 	return o.RepoID
 }
 
-func (o *CancelDeploymentGitSourceGithubCustomHost1) GetRef() *string {
+func (o *CancelDeploymentGitSourceGithubCustomHost1) GetRef() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -2981,7 +2982,7 @@ func (o *CancelDeploymentGitSourceGithubCustomHost1) GetSha() *string {
 	return o.Sha
 }
 
-func (o *CancelDeploymentGitSourceGithubCustomHost1) GetPrID() *float64 {
+func (o *CancelDeploymentGitSourceGithubCustomHost1) GetPrID() optionalnullable.OptionalNullable[float64] {
 	if o == nil {
 		return nil
 	}
@@ -3012,12 +3013,12 @@ func (e *CancelDeploymentGitSourceTypeGithub2) UnmarshalJSON(data []byte) error 
 }
 
 type CancelDeploymentGitSourceGithub2 struct {
-	Type CancelDeploymentGitSourceTypeGithub2 `json:"type"`
-	Org  string                               `json:"org"`
-	Repo string                               `json:"repo"`
-	Ref  *string                              `json:"ref,omitempty"`
-	Sha  *string                              `json:"sha,omitempty"`
-	PrID *float64                             `json:"prId,omitempty"`
+	Type CancelDeploymentGitSourceTypeGithub2       `json:"type"`
+	Org  string                                     `json:"org"`
+	Repo string                                     `json:"repo"`
+	Ref  optionalnullable.OptionalNullable[string]  `json:"ref,omitempty"`
+	Sha  *string                                    `json:"sha,omitempty"`
+	PrID optionalnullable.OptionalNullable[float64] `json:"prId,omitempty"`
 }
 
 func (c CancelDeploymentGitSourceGithub2) MarshalJSON() ([]byte, error) {
@@ -3052,7 +3053,7 @@ func (o *CancelDeploymentGitSourceGithub2) GetRepo() string {
 	return o.Repo
 }
 
-func (o *CancelDeploymentGitSourceGithub2) GetRef() *string {
+func (o *CancelDeploymentGitSourceGithub2) GetRef() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -3066,7 +3067,7 @@ func (o *CancelDeploymentGitSourceGithub2) GetSha() *string {
 	return o.Sha
 }
 
-func (o *CancelDeploymentGitSourceGithub2) GetPrID() *float64 {
+func (o *CancelDeploymentGitSourceGithub2) GetPrID() optionalnullable.OptionalNullable[float64] {
 	if o == nil {
 		return nil
 	}
@@ -3160,11 +3161,11 @@ func (u CancelDeploymentRepoID1) MarshalJSON() ([]byte, error) {
 }
 
 type CancelDeploymentGitSourceGithub1 struct {
-	Type   CancelDeploymentGitSourceTypeGithub1 `json:"type"`
-	RepoID CancelDeploymentRepoID1              `json:"repoId"`
-	Ref    *string                              `json:"ref,omitempty"`
-	Sha    *string                              `json:"sha,omitempty"`
-	PrID   *float64                             `json:"prId,omitempty"`
+	Type   CancelDeploymentGitSourceTypeGithub1       `json:"type"`
+	RepoID CancelDeploymentRepoID1                    `json:"repoId"`
+	Ref    optionalnullable.OptionalNullable[string]  `json:"ref,omitempty"`
+	Sha    *string                                    `json:"sha,omitempty"`
+	PrID   optionalnullable.OptionalNullable[float64] `json:"prId,omitempty"`
 }
 
 func (c CancelDeploymentGitSourceGithub1) MarshalJSON() ([]byte, error) {
@@ -3192,7 +3193,7 @@ func (o *CancelDeploymentGitSourceGithub1) GetRepoID() CancelDeploymentRepoID1 {
 	return o.RepoID
 }
 
-func (o *CancelDeploymentGitSourceGithub1) GetRef() *string {
+func (o *CancelDeploymentGitSourceGithub1) GetRef() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -3206,7 +3207,7 @@ func (o *CancelDeploymentGitSourceGithub1) GetSha() *string {
 	return o.Sha
 }
 
-func (o *CancelDeploymentGitSourceGithub1) GetPrID() *float64 {
+func (o *CancelDeploymentGitSourceGithub1) GetPrID() optionalnullable.OptionalNullable[float64] {
 	if o == nil {
 		return nil
 	}
@@ -3664,9 +3665,9 @@ func (e *CancelDeploymentNodeVersion) UnmarshalJSON(data []byte) error {
 
 // CancelDeploymentProject - The public project information associated with the deployment.
 type CancelDeploymentProject struct {
-	ID        string  `json:"id"`
-	Name      string  `json:"name"`
-	Framework *string `json:"framework,omitempty"`
+	ID        string                                    `json:"id"`
+	Name      string                                    `json:"name"`
+	Framework optionalnullable.OptionalNullable[string] `json:"framework,omitempty"`
 }
 
 func (o *CancelDeploymentProject) GetID() string {
@@ -3683,7 +3684,7 @@ func (o *CancelDeploymentProject) GetName() string {
 	return o.Name
 }
 
-func (o *CancelDeploymentProject) GetFramework() *string {
+func (o *CancelDeploymentProject) GetFramework() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -7809,10 +7810,10 @@ func (e *CancelDeploymentPurchaseType) UnmarshalJSON(data []byte) error {
 
 type CancelDeploymentBuildMachine struct {
 	// Machine type that was used for the build.
-	PurchaseType *CancelDeploymentPurchaseType `json:"purchaseType,omitempty"`
+	PurchaseType optionalnullable.OptionalNullable[CancelDeploymentPurchaseType] `json:"purchaseType,omitempty"`
 }
 
-func (o *CancelDeploymentBuildMachine) GetPurchaseType() *CancelDeploymentPurchaseType {
+func (o *CancelDeploymentBuildMachine) GetPurchaseType() optionalnullable.OptionalNullable[CancelDeploymentPurchaseType] {
 	if o == nil {
 		return nil
 	}
@@ -8047,19 +8048,19 @@ func (o *CancelDeploymentSeatBlock) GetIsVerified() *bool {
 
 // CancelDeploymentResponseBody - The private deployment representation of a Deployment.
 type CancelDeploymentResponseBody struct {
-	AliasAssignedAt           *CancelDeploymentAliasAssignedAt `json:"aliasAssignedAt,omitempty"`
-	AlwaysRefuseToBuild       *bool                            `json:"alwaysRefuseToBuild,omitempty"`
-	Build                     CancelDeploymentBuild1           `json:"build"`
-	BuildArtifactUrls         []string                         `json:"buildArtifactUrls,omitempty"`
-	Builds                    []CancelDeploymentBuild2         `json:"builds,omitempty"`
-	Env                       []string                         `json:"env"`
-	InspectorURL              *string                          `json:"inspectorUrl"`
-	IsInConcurrentBuildsQueue bool                             `json:"isInConcurrentBuildsQueue"`
-	IsInSystemBuildsQueue     bool                             `json:"isInSystemBuildsQueue"`
-	ProjectSettings           CancelDeploymentProjectSettings  `json:"projectSettings"`
-	ReadyStateReason          *string                          `json:"readyStateReason,omitempty"`
-	Integrations              *CancelDeploymentIntegrations    `json:"integrations,omitempty"`
-	Images                    *CancelDeploymentImages          `json:"images,omitempty"`
+	AliasAssignedAt           optionalnullable.OptionalNullable[CancelDeploymentAliasAssignedAt] `json:"aliasAssignedAt,omitempty"`
+	AlwaysRefuseToBuild       *bool                                                              `json:"alwaysRefuseToBuild,omitempty"`
+	Build                     CancelDeploymentBuild1                                             `json:"build"`
+	BuildArtifactUrls         []string                                                           `json:"buildArtifactUrls,omitempty"`
+	Builds                    []CancelDeploymentBuild2                                           `json:"builds,omitempty"`
+	Env                       []string                                                           `json:"env"`
+	InspectorURL              *string                                                            `json:"inspectorUrl"`
+	IsInConcurrentBuildsQueue bool                                                               `json:"isInConcurrentBuildsQueue"`
+	IsInSystemBuildsQueue     bool                                                               `json:"isInSystemBuildsQueue"`
+	ProjectSettings           CancelDeploymentProjectSettings                                    `json:"projectSettings"`
+	ReadyStateReason          *string                                                            `json:"readyStateReason,omitempty"`
+	Integrations              *CancelDeploymentIntegrations                                      `json:"integrations,omitempty"`
+	Images                    *CancelDeploymentImages                                            `json:"images,omitempty"`
 	// A list of all the aliases (default aliases, staging aliases and production aliases) that were assigned upon deployment creation
 	Alias []string `json:"alias,omitempty"`
 	// A boolean that will be true when the aliases from the alias property were assigned successfully
@@ -8083,11 +8084,11 @@ type CancelDeploymentResponseBody struct {
 	// An array of domains that were provided by the user when creating the Deployment.
 	UserAliases []string `json:"userAliases,omitempty"`
 	// Whether or not preview comments are enabled for the deployment
-	PreviewCommentsEnabled *bool                                   `json:"previewCommentsEnabled,omitempty"`
-	TtyBuildLogs           *bool                                   `json:"ttyBuildLogs,omitempty"`
-	CustomEnvironment      *CancelDeploymentCustomEnvironmentUnion `json:"customEnvironment,omitempty"`
-	OomReport              *CancelDeploymentOomReport              `json:"oomReport,omitempty"`
-	AliasWarning           *CancelDeploymentAliasWarning           `json:"aliasWarning,omitempty"`
+	PreviewCommentsEnabled *bool                                                           `json:"previewCommentsEnabled,omitempty"`
+	TtyBuildLogs           *bool                                                           `json:"ttyBuildLogs,omitempty"`
+	CustomEnvironment      *CancelDeploymentCustomEnvironmentUnion                         `json:"customEnvironment,omitempty"`
+	OomReport              *CancelDeploymentOomReport                                      `json:"oomReport,omitempty"`
+	AliasWarning           optionalnullable.OptionalNullable[CancelDeploymentAliasWarning] `json:"aliasWarning,omitempty"`
 	// A string holding the unique ID of the deployment
 	ID string `json:"id"`
 	// A number containing the date when the deployment was created in milliseconds
@@ -8098,8 +8099,8 @@ type CancelDeploymentResponseBody struct {
 	Name string               `json:"name"`
 	Type CancelDeploymentType `json:"type"`
 	// An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
-	AliasError *CancelDeploymentAliasError `json:"aliasError,omitempty"`
-	AliasFinal *string                     `json:"aliasFinal,omitempty"`
+	AliasError optionalnullable.OptionalNullable[CancelDeploymentAliasError] `json:"aliasError,omitempty"`
+	AliasFinal optionalnullable.OptionalNullable[string]                     `json:"aliasFinal,omitempty"`
 	// applies to custom domains only, defaults to `true`
 	AutoAssignCustomDomains *bool                             `json:"autoAssignCustomDomains,omitempty"`
 	AutomaticAliases        []string                          `json:"automaticAliases,omitempty"`
@@ -8107,14 +8108,14 @@ type CancelDeploymentResponseBody struct {
 	ChecksState             *CancelDeploymentChecksState      `json:"checksState,omitempty"`
 	ChecksConclusion        *CancelDeploymentChecksConclusion `json:"checksConclusion,omitempty"`
 	// A number containing the date when the deployment was deleted at milliseconds
-	DeletedAt *float64 `json:"deletedAt,omitempty"`
+	DeletedAt optionalnullable.OptionalNullable[float64] `json:"deletedAt,omitempty"`
 	// Computed field that is only available for deployments with a microfrontend configuration.
-	DefaultRoute *string  `json:"defaultRoute,omitempty"`
-	CanceledAt   *float64 `json:"canceledAt,omitempty"`
-	ErrorCode    *string  `json:"errorCode,omitempty"`
-	ErrorLink    *string  `json:"errorLink,omitempty"`
-	ErrorMessage *string  `json:"errorMessage,omitempty"`
-	ErrorStep    *string  `json:"errorStep,omitempty"`
+	DefaultRoute *string                                   `json:"defaultRoute,omitempty"`
+	CanceledAt   *float64                                  `json:"canceledAt,omitempty"`
+	ErrorCode    *string                                   `json:"errorCode,omitempty"`
+	ErrorLink    *string                                   `json:"errorLink,omitempty"`
+	ErrorMessage optionalnullable.OptionalNullable[string] `json:"errorMessage,omitempty"`
+	ErrorStep    *string                                   `json:"errorStep,omitempty"`
 	// Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service
 	PassiveRegions []string                        `json:"passiveRegions,omitempty"`
 	GitSource      *CancelDeploymentGitSourceUnion `json:"gitSource,omitempty"`
@@ -8136,7 +8137,7 @@ type CancelDeploymentResponseBody struct {
 	// Where was the deployment created from
 	Source *CancelDeploymentSourceEnum `json:"source,omitempty"`
 	// If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
-	Target *CancelDeploymentTargetEnum `json:"target,omitempty"`
+	Target optionalnullable.OptionalNullable[CancelDeploymentTargetEnum] `json:"target,omitempty"`
 	// A number containing the date when the deployment was undeleted at milliseconds
 	UndeletedAt *float64 `json:"undeletedAt,omitempty"`
 	// A string with the unique URL of the deployment
@@ -8149,20 +8150,20 @@ type CancelDeploymentResponseBody struct {
 	ProjectID       string                           `json:"projectId"`
 	Plan            CancelDeploymentPlan             `json:"plan"`
 	// Metadata about the source platform that triggered the deployment. Allows us to map a deployment back to a platform (e.g. the chat that created it)
-	Platform               *CancelDeploymentPlatform            `json:"platform,omitempty"`
-	ConnectBuildsEnabled   *bool                                `json:"connectBuildsEnabled,omitempty"`
-	ConnectConfigurationID *string                              `json:"connectConfigurationId,omitempty"`
-	CreatedIn              string                               `json:"createdIn"`
-	Crons                  []CancelDeploymentCron               `json:"crons,omitempty"`
-	Functions              map[string]CancelDeploymentFunctions `json:"functions,omitempty"`
-	MonorepoManager        *string                              `json:"monorepoManager,omitempty"`
-	OwnerID                string                               `json:"ownerId"`
+	Platform               *CancelDeploymentPlatform                                               `json:"platform,omitempty"`
+	ConnectBuildsEnabled   *bool                                                                   `json:"connectBuildsEnabled,omitempty"`
+	ConnectConfigurationID *string                                                                 `json:"connectConfigurationId,omitempty"`
+	CreatedIn              string                                                                  `json:"createdIn"`
+	Crons                  []CancelDeploymentCron                                                  `json:"crons,omitempty"`
+	Functions              optionalnullable.OptionalNullable[map[string]CancelDeploymentFunctions] `json:"functions,omitempty"`
+	MonorepoManager        optionalnullable.OptionalNullable[string]                               `json:"monorepoManager,omitempty"`
+	OwnerID                string                                                                  `json:"ownerId"`
 	// Since November 2023 this field defines a Secure Compute network that will only be used to deploy passive lambdas to (as in passiveRegions)
-	PassiveConnectConfigurationID *string                              `json:"passiveConnectConfigurationId,omitempty"`
-	Routes                        []CancelDeploymentRouteUnion         `json:"routes"`
-	GitRepo                       *CancelDeploymentGitRepoUnion        `json:"gitRepo,omitempty"`
-	Flags                         *CancelDeploymentFlagsUnion          `json:"flags,omitempty"`
-	Microfrontends                *CancelDeploymentMicrofrontendsUnion `json:"microfrontends,omitempty"`
+	PassiveConnectConfigurationID *string                                                         `json:"passiveConnectConfigurationId,omitempty"`
+	Routes                        []CancelDeploymentRouteUnion                                    `json:"routes"`
+	GitRepo                       optionalnullable.OptionalNullable[CancelDeploymentGitRepoUnion] `json:"gitRepo,omitempty"`
+	Flags                         *CancelDeploymentFlagsUnion                                     `json:"flags,omitempty"`
+	Microfrontends                *CancelDeploymentMicrofrontendsUnion                            `json:"microfrontends,omitempty"`
 	// Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
 	Config *CancelDeploymentConfig `json:"config,omitempty"`
 	Checks *CancelDeploymentChecks `json:"checks,omitempty"`
@@ -8170,7 +8171,7 @@ type CancelDeploymentResponseBody struct {
 	SeatBlock *CancelDeploymentSeatBlock `json:"seatBlock,omitempty"`
 }
 
-func (o *CancelDeploymentResponseBody) GetAliasAssignedAt() *CancelDeploymentAliasAssignedAt {
+func (o *CancelDeploymentResponseBody) GetAliasAssignedAt() optionalnullable.OptionalNullable[CancelDeploymentAliasAssignedAt] {
 	if o == nil {
 		return nil
 	}
@@ -8394,7 +8395,7 @@ func (o *CancelDeploymentResponseBody) GetOomReport() *CancelDeploymentOomReport
 	return o.OomReport
 }
 
-func (o *CancelDeploymentResponseBody) GetAliasWarning() *CancelDeploymentAliasWarning {
+func (o *CancelDeploymentResponseBody) GetAliasWarning() optionalnullable.OptionalNullable[CancelDeploymentAliasWarning] {
 	if o == nil {
 		return nil
 	}
@@ -8436,14 +8437,14 @@ func (o *CancelDeploymentResponseBody) GetType() CancelDeploymentType {
 	return o.Type
 }
 
-func (o *CancelDeploymentResponseBody) GetAliasError() *CancelDeploymentAliasError {
+func (o *CancelDeploymentResponseBody) GetAliasError() optionalnullable.OptionalNullable[CancelDeploymentAliasError] {
 	if o == nil {
 		return nil
 	}
 	return o.AliasError
 }
 
-func (o *CancelDeploymentResponseBody) GetAliasFinal() *string {
+func (o *CancelDeploymentResponseBody) GetAliasFinal() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -8485,7 +8486,7 @@ func (o *CancelDeploymentResponseBody) GetChecksConclusion() *CancelDeploymentCh
 	return o.ChecksConclusion
 }
 
-func (o *CancelDeploymentResponseBody) GetDeletedAt() *float64 {
+func (o *CancelDeploymentResponseBody) GetDeletedAt() optionalnullable.OptionalNullable[float64] {
 	if o == nil {
 		return nil
 	}
@@ -8520,7 +8521,7 @@ func (o *CancelDeploymentResponseBody) GetErrorLink() *string {
 	return o.ErrorLink
 }
 
-func (o *CancelDeploymentResponseBody) GetErrorMessage() *string {
+func (o *CancelDeploymentResponseBody) GetErrorMessage() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -8618,7 +8619,7 @@ func (o *CancelDeploymentResponseBody) GetSource() *CancelDeploymentSourceEnum {
 	return o.Source
 }
 
-func (o *CancelDeploymentResponseBody) GetTarget() *CancelDeploymentTargetEnum {
+func (o *CancelDeploymentResponseBody) GetTarget() optionalnullable.OptionalNullable[CancelDeploymentTargetEnum] {
 	if o == nil {
 		return nil
 	}
@@ -8709,14 +8710,14 @@ func (o *CancelDeploymentResponseBody) GetCrons() []CancelDeploymentCron {
 	return o.Crons
 }
 
-func (o *CancelDeploymentResponseBody) GetFunctions() map[string]CancelDeploymentFunctions {
+func (o *CancelDeploymentResponseBody) GetFunctions() optionalnullable.OptionalNullable[map[string]CancelDeploymentFunctions] {
 	if o == nil {
 		return nil
 	}
 	return o.Functions
 }
 
-func (o *CancelDeploymentResponseBody) GetMonorepoManager() *string {
+func (o *CancelDeploymentResponseBody) GetMonorepoManager() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -8744,7 +8745,7 @@ func (o *CancelDeploymentResponseBody) GetRoutes() []CancelDeploymentRouteUnion 
 	return o.Routes
 }
 
-func (o *CancelDeploymentResponseBody) GetGitRepo() *CancelDeploymentGitRepoUnion {
+func (o *CancelDeploymentResponseBody) GetGitRepo() optionalnullable.OptionalNullable[CancelDeploymentGitRepoUnion] {
 	if o == nil {
 		return nil
 	}
@@ -8753,21 +8754,30 @@ func (o *CancelDeploymentResponseBody) GetGitRepo() *CancelDeploymentGitRepoUnio
 
 func (o *CancelDeploymentResponseBody) GetGitRepoGitlab() *CancelDeploymentGitRepoGitlab {
 	if v := o.GetGitRepo(); v != nil {
-		return v.CancelDeploymentGitRepoGitlab
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.CancelDeploymentGitRepoGitlab
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *CancelDeploymentResponseBody) GetGitRepoGithub() *CancelDeploymentGitRepoGithub {
 	if v := o.GetGitRepo(); v != nil {
-		return v.CancelDeploymentGitRepoGithub
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.CancelDeploymentGitRepoGithub
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *CancelDeploymentResponseBody) GetGitRepoBitbucket() *CancelDeploymentGitRepoBitbucket {
 	if v := o.GetGitRepo(); v != nil {
-		return v.CancelDeploymentGitRepoBitbucket
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.CancelDeploymentGitRepoBitbucket
+		}
+		return nil
 	}
 	return nil
 }

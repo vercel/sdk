@@ -1460,6 +1460,7 @@ export type CreateProjectPermissions = {
   integrationEvent?: Array<ACLAction> | undefined;
   integrationLog?: Array<ACLAction> | undefined;
   integrationResource?: Array<ACLAction> | undefined;
+  integrationResourceData?: Array<ACLAction> | undefined;
   integrationResourceReplCommand?: Array<ACLAction> | undefined;
   integrationResourceSecrets?: Array<ACLAction> | undefined;
   integrationSSOSession?: Array<ACLAction> | undefined;
@@ -6753,6 +6754,7 @@ export const CreateProjectPermissions$inboundSchema: z.ZodType<
   integrationEvent: types.optional(z.array(ACLAction$inboundSchema)),
   integrationLog: types.optional(z.array(ACLAction$inboundSchema)),
   integrationResource: types.optional(z.array(ACLAction$inboundSchema)),
+  integrationResourceData: types.optional(z.array(ACLAction$inboundSchema)),
   integrationResourceReplCommand: types.optional(
     z.array(ACLAction$inboundSchema),
   ),
@@ -7025,6 +7027,7 @@ export type CreateProjectPermissions$Outbound = {
   integrationEvent?: Array<string> | undefined;
   integrationLog?: Array<string> | undefined;
   integrationResource?: Array<string> | undefined;
+  integrationResourceData?: Array<string> | undefined;
   integrationResourceReplCommand?: Array<string> | undefined;
   integrationResourceSecrets?: Array<string> | undefined;
   integrationSSOSession?: Array<string> | undefined;
@@ -7264,6 +7267,7 @@ export const CreateProjectPermissions$outboundSchema: z.ZodType<
   integrationEvent: z.array(ACLAction$outboundSchema).optional(),
   integrationLog: z.array(ACLAction$outboundSchema).optional(),
   integrationResource: z.array(ACLAction$outboundSchema).optional(),
+  integrationResourceData: z.array(ACLAction$outboundSchema).optional(),
   integrationResourceReplCommand: z.array(ACLAction$outboundSchema).optional(),
   integrationResourceSecrets: z.array(ACLAction$outboundSchema).optional(),
   integrationSSOSession: z.array(ACLAction$outboundSchema).optional(),

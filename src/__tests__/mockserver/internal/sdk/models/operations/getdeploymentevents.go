@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 )
 
@@ -1787,8 +1788,8 @@ func (u GetDeploymentEventsResponseBodyUnion) MarshalJSON() ([]byte, error) {
 
 type GetDeploymentEventsResponse struct {
 	HTTPMeta       components.HTTPMetadata `json:"-"`
-	ResponseBodies []*GetDeploymentEventsResponseBodyUnion
-	OneOf          *GetDeploymentEventsResponseBody
+	ResponseBodies optionalnullable.OptionalNullable[[]*GetDeploymentEventsResponseBodyUnion]
+	OneOf          optionalnullable.OptionalNullable[GetDeploymentEventsResponseBody]
 }
 
 func (o *GetDeploymentEventsResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -1798,14 +1799,14 @@ func (o *GetDeploymentEventsResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *GetDeploymentEventsResponse) GetResponseBodies() []*GetDeploymentEventsResponseBodyUnion {
+func (o *GetDeploymentEventsResponse) GetResponseBodies() optionalnullable.OptionalNullable[[]*GetDeploymentEventsResponseBodyUnion] {
 	if o == nil {
 		return nil
 	}
 	return o.ResponseBodies
 }
 
-func (o *GetDeploymentEventsResponse) GetOneOf() *GetDeploymentEventsResponseBody {
+func (o *GetDeploymentEventsResponse) GetOneOf() optionalnullable.OptionalNullable[GetDeploymentEventsResponseBody] {
 	if o == nil {
 		return nil
 	}

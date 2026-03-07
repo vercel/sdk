@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 )
 
@@ -1075,11 +1076,11 @@ func (e *GetFirewallConfigRateLimitAction2) UnmarshalJSON(data []byte) error {
 }
 
 type GetFirewallConfigRateLimit2 struct {
-	Algo   GetFirewallConfigAlgo2             `json:"algo"`
-	Window float64                            `json:"window"`
-	Limit  float64                            `json:"limit"`
-	Keys   []string                           `json:"keys"`
-	Action *GetFirewallConfigRateLimitAction2 `json:"action,omitempty"`
+	Algo   GetFirewallConfigAlgo2                                               `json:"algo"`
+	Window float64                                                              `json:"window"`
+	Limit  float64                                                              `json:"limit"`
+	Keys   []string                                                             `json:"keys"`
+	Action optionalnullable.OptionalNullable[GetFirewallConfigRateLimitAction2] `json:"action,omitempty"`
 }
 
 func (g GetFirewallConfigRateLimit2) MarshalJSON() ([]byte, error) {
@@ -1121,7 +1122,7 @@ func (o *GetFirewallConfigRateLimit2) GetKeys() []string {
 	return o.Keys
 }
 
-func (o *GetFirewallConfigRateLimit2) GetAction() *GetFirewallConfigRateLimitAction2 {
+func (o *GetFirewallConfigRateLimit2) GetAction() optionalnullable.OptionalNullable[GetFirewallConfigRateLimitAction2] {
 	if o == nil {
 		return nil
 	}
@@ -1245,12 +1246,12 @@ func (u GetFirewallConfigLogHeadersUnion2) MarshalJSON() ([]byte, error) {
 }
 
 type GetFirewallConfigMitigate2 struct {
-	Action         GetFirewallConfigMitigateAction2   `json:"action"`
-	RateLimit      *GetFirewallConfigRateLimit2       `json:"rateLimit,omitempty"`
-	Redirect       *GetFirewallConfigRedirect2        `json:"redirect,omitempty"`
-	ActionDuration *string                            `json:"actionDuration,omitempty"`
-	BypassSystem   *bool                              `json:"bypassSystem,omitempty"`
-	LogHeaders     *GetFirewallConfigLogHeadersUnion2 `json:"logHeaders,omitempty"`
+	Action         GetFirewallConfigMitigateAction2                               `json:"action"`
+	RateLimit      optionalnullable.OptionalNullable[GetFirewallConfigRateLimit2] `json:"rateLimit,omitempty"`
+	Redirect       optionalnullable.OptionalNullable[GetFirewallConfigRedirect2]  `json:"redirect,omitempty"`
+	ActionDuration optionalnullable.OptionalNullable[string]                      `json:"actionDuration,omitempty"`
+	BypassSystem   optionalnullable.OptionalNullable[bool]                        `json:"bypassSystem,omitempty"`
+	LogHeaders     *GetFirewallConfigLogHeadersUnion2                             `json:"logHeaders,omitempty"`
 }
 
 func (g GetFirewallConfigMitigate2) MarshalJSON() ([]byte, error) {
@@ -1271,28 +1272,28 @@ func (o *GetFirewallConfigMitigate2) GetAction() GetFirewallConfigMitigateAction
 	return o.Action
 }
 
-func (o *GetFirewallConfigMitigate2) GetRateLimit() *GetFirewallConfigRateLimit2 {
+func (o *GetFirewallConfigMitigate2) GetRateLimit() optionalnullable.OptionalNullable[GetFirewallConfigRateLimit2] {
 	if o == nil {
 		return nil
 	}
 	return o.RateLimit
 }
 
-func (o *GetFirewallConfigMitigate2) GetRedirect() *GetFirewallConfigRedirect2 {
+func (o *GetFirewallConfigMitigate2) GetRedirect() optionalnullable.OptionalNullable[GetFirewallConfigRedirect2] {
 	if o == nil {
 		return nil
 	}
 	return o.Redirect
 }
 
-func (o *GetFirewallConfigMitigate2) GetActionDuration() *string {
+func (o *GetFirewallConfigMitigate2) GetActionDuration() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.ActionDuration
 }
 
-func (o *GetFirewallConfigMitigate2) GetBypassSystem() *bool {
+func (o *GetFirewallConfigMitigate2) GetBypassSystem() optionalnullable.OptionalNullable[bool] {
 	if o == nil {
 		return nil
 	}
@@ -1824,11 +1825,11 @@ func (e *GetFirewallConfigRateLimitAction1) UnmarshalJSON(data []byte) error {
 }
 
 type GetFirewallConfigRateLimit1 struct {
-	Algo   GetFirewallConfigAlgo1             `json:"algo"`
-	Window float64                            `json:"window"`
-	Limit  float64                            `json:"limit"`
-	Keys   []string                           `json:"keys"`
-	Action *GetFirewallConfigRateLimitAction1 `json:"action,omitempty"`
+	Algo   GetFirewallConfigAlgo1                                               `json:"algo"`
+	Window float64                                                              `json:"window"`
+	Limit  float64                                                              `json:"limit"`
+	Keys   []string                                                             `json:"keys"`
+	Action optionalnullable.OptionalNullable[GetFirewallConfigRateLimitAction1] `json:"action,omitempty"`
 }
 
 func (g GetFirewallConfigRateLimit1) MarshalJSON() ([]byte, error) {
@@ -1870,7 +1871,7 @@ func (o *GetFirewallConfigRateLimit1) GetKeys() []string {
 	return o.Keys
 }
 
-func (o *GetFirewallConfigRateLimit1) GetAction() *GetFirewallConfigRateLimitAction1 {
+func (o *GetFirewallConfigRateLimit1) GetAction() optionalnullable.OptionalNullable[GetFirewallConfigRateLimitAction1] {
 	if o == nil {
 		return nil
 	}
@@ -1994,12 +1995,12 @@ func (u GetFirewallConfigLogHeadersUnion1) MarshalJSON() ([]byte, error) {
 }
 
 type GetFirewallConfigMitigate1 struct {
-	Action         GetFirewallConfigMitigateAction1   `json:"action"`
-	RateLimit      *GetFirewallConfigRateLimit1       `json:"rateLimit,omitempty"`
-	Redirect       *GetFirewallConfigRedirect1        `json:"redirect,omitempty"`
-	ActionDuration *string                            `json:"actionDuration,omitempty"`
-	BypassSystem   *bool                              `json:"bypassSystem,omitempty"`
-	LogHeaders     *GetFirewallConfigLogHeadersUnion1 `json:"logHeaders,omitempty"`
+	Action         GetFirewallConfigMitigateAction1                               `json:"action"`
+	RateLimit      optionalnullable.OptionalNullable[GetFirewallConfigRateLimit1] `json:"rateLimit,omitempty"`
+	Redirect       optionalnullable.OptionalNullable[GetFirewallConfigRedirect1]  `json:"redirect,omitempty"`
+	ActionDuration optionalnullable.OptionalNullable[string]                      `json:"actionDuration,omitempty"`
+	BypassSystem   optionalnullable.OptionalNullable[bool]                        `json:"bypassSystem,omitempty"`
+	LogHeaders     *GetFirewallConfigLogHeadersUnion1                             `json:"logHeaders,omitempty"`
 }
 
 func (g GetFirewallConfigMitigate1) MarshalJSON() ([]byte, error) {
@@ -2020,28 +2021,28 @@ func (o *GetFirewallConfigMitigate1) GetAction() GetFirewallConfigMitigateAction
 	return o.Action
 }
 
-func (o *GetFirewallConfigMitigate1) GetRateLimit() *GetFirewallConfigRateLimit1 {
+func (o *GetFirewallConfigMitigate1) GetRateLimit() optionalnullable.OptionalNullable[GetFirewallConfigRateLimit1] {
 	if o == nil {
 		return nil
 	}
 	return o.RateLimit
 }
 
-func (o *GetFirewallConfigMitigate1) GetRedirect() *GetFirewallConfigRedirect1 {
+func (o *GetFirewallConfigMitigate1) GetRedirect() optionalnullable.OptionalNullable[GetFirewallConfigRedirect1] {
 	if o == nil {
 		return nil
 	}
 	return o.Redirect
 }
 
-func (o *GetFirewallConfigMitigate1) GetActionDuration() *string {
+func (o *GetFirewallConfigMitigate1) GetActionDuration() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.ActionDuration
 }
 
-func (o *GetFirewallConfigMitigate1) GetBypassSystem() *bool {
+func (o *GetFirewallConfigMitigate1) GetBypassSystem() optionalnullable.OptionalNullable[bool] {
 	if o == nil {
 		return nil
 	}

@@ -8,6 +8,7 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/operations"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
@@ -49,11 +50,11 @@ func testGetSharedEnvVarGetSharedEnvVar0(w http.ResponseWriter, req *http.Reques
 	var respBody *operations.GetSharedEnvVarResponseBody = &operations.GetSharedEnvVarResponseBody{
 		Created:   types.MustNewTimeFromString("2021-02-10T13:11:49.180Z"),
 		Key:       types.String("my-api-key"),
-		OwnerID:   types.String("team_LLHUOMOoDlqOp8wPE4kFo9pE"),
+		OwnerID:   optionalnullable.From(types.String("team_LLHUOMOoDlqOp8wPE4kFo9pE")),
 		ID:        types.String("env_XCG7t7AIHuO2SBA8667zNUiM"),
-		CreatedBy: types.String("2qDDuGFTWXBLDNnqZfWPDp1A"),
-		DeletedBy: types.String("2qDDuGFTWXBLDNnqZfWPDp1A"),
-		UpdatedBy: types.String("2qDDuGFTWXBLDNnqZfWPDp1A"),
+		CreatedBy: optionalnullable.From(types.String("2qDDuGFTWXBLDNnqZfWPDp1A")),
+		DeletedBy: optionalnullable.From(types.String("2qDDuGFTWXBLDNnqZfWPDp1A")),
+		UpdatedBy: optionalnullable.From(types.String("2qDDuGFTWXBLDNnqZfWPDp1A")),
 		CreatedAt: types.Float64(1609492210000),
 		DeletedAt: types.Float64(1609492210000),
 		UpdatedAt: types.Float64(1609492210000),

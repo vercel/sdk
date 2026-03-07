@@ -12,7 +12,7 @@ let value: ListEventTypesResponseBody = {
         "<value 1>",
       ],
       deprecated: true,
-      name: "microfrontend-project-added-to-group",
+      name: "microfrontend-group-deleted",
       description: "charlatan stunning obedient help meanwhile throughout",
     },
   ],

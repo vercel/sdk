@@ -5,7 +5,7 @@ Present when deployment was created with VERCEL_MANUAL_PROVISIONING=true. The de
 ## Example Usage
 
 ```typescript
-import { GetDeploymentResponseBodyManualProvisioning } from "@vercel/sdk/models/getdeploymentop.js";
+import { GetDeploymentResponseBodyManualProvisioning } from "@vercel/sdk/models/responsebodyorigin.js";
 
 let value: GetDeploymentResponseBodyManualProvisioning = {
   state: "COMPLETE",

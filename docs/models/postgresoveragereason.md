@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PostgresOverageReason } from "@vercel/sdk/models/userevent.js";
+import { PostgresOverageReason } from "@vercel/sdk/models/seventyeight.js";
 
 let value: PostgresOverageReason = "bandwidth";
 ```

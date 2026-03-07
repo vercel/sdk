@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 )
 
 type GetDomainRequest struct {
@@ -40,11 +41,11 @@ func (o *GetDomainRequest) GetSlug() *string {
 
 // GetDomainCreator - An object containing information of the domain creator, including the user's id, username, and email.
 type GetDomainCreator struct {
-	Username         string  `json:"username"`
-	Email            string  `json:"email"`
-	CustomerID       *string `json:"customerId,omitempty"`
-	IsDomainReseller *bool   `json:"isDomainReseller,omitempty"`
-	ID               string  `json:"id"`
+	Username         string                                    `json:"username"`
+	Email            string                                    `json:"email"`
+	CustomerID       optionalnullable.OptionalNullable[string] `json:"customerId,omitempty"`
+	IsDomainReseller *bool                                     `json:"isDomainReseller,omitempty"`
+	ID               string                                    `json:"id"`
 }
 
 func (o *GetDomainCreator) GetUsername() string {
@@ -61,7 +62,7 @@ func (o *GetDomainCreator) GetEmail() string {
 	return o.Email
 }
 
-func (o *GetDomainCreator) GetCustomerID() *string {
+func (o *GetDomainCreator) GetCustomerID() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -166,7 +167,7 @@ type GetDomainDomain struct {
 	// The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available.
 	ServiceType GetDomainServiceType `json:"serviceType"`
 	// Timestamp in milliseconds at which the domain was successfully transferred into Vercel. `null` if the transfer is still processing or was never transferred in.
-	TransferredAt *float64 `json:"transferredAt,omitempty"`
+	TransferredAt optionalnullable.OptionalNullable[float64] `json:"transferredAt,omitempty"`
 	// If transferred into Vercel, timestamp in milliseconds when the domain transfer was initiated.
 	TransferStartedAt *float64 `json:"transferStartedAt,omitempty"`
 	UserID            string   `json:"userId"`
@@ -277,7 +278,7 @@ func (o *GetDomainDomain) GetServiceType() GetDomainServiceType {
 	return o.ServiceType
 }
 
-func (o *GetDomainDomain) GetTransferredAt() *float64 {
+func (o *GetDomainDomain) GetTransferredAt() optionalnullable.OptionalNullable[float64] {
 	if o == nil {
 		return nil
 	}

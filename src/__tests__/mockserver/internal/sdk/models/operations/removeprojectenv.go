@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 )
 
@@ -1525,29 +1526,29 @@ func (o *RemoveProjectEnvInternalContentHint3) GetEncryptedValue() string {
 }
 
 type RemoveProjectEnvResponseBody3 struct {
-	Type              RemoveProjectEnvType3         `json:"type"`
-	Value             string                        `json:"value"`
-	EdgeConfigID      *string                       `json:"edgeConfigId,omitempty"`
-	EdgeConfigTokenID *string                       `json:"edgeConfigTokenId,omitempty"`
-	CreatedAt         *float64                      `json:"createdAt,omitempty"`
-	UpdatedAt         *float64                      `json:"updatedAt,omitempty"`
-	ID                *string                       `json:"id,omitempty"`
-	CreatedBy         *string                       `json:"createdBy,omitempty"`
-	Target            *RemoveProjectEnvTargetUnion3 `json:"target,omitempty"`
-	Key               string                        `json:"key"`
-	GitBranch         *string                       `json:"gitBranch,omitempty"`
-	UpdatedBy         *string                       `json:"updatedBy,omitempty"`
+	Type              RemoveProjectEnvType3                     `json:"type"`
+	Value             string                                    `json:"value"`
+	EdgeConfigID      optionalnullable.OptionalNullable[string] `json:"edgeConfigId,omitempty"`
+	EdgeConfigTokenID optionalnullable.OptionalNullable[string] `json:"edgeConfigTokenId,omitempty"`
+	CreatedAt         *float64                                  `json:"createdAt,omitempty"`
+	UpdatedAt         *float64                                  `json:"updatedAt,omitempty"`
+	ID                *string                                   `json:"id,omitempty"`
+	CreatedBy         optionalnullable.OptionalNullable[string] `json:"createdBy,omitempty"`
+	Target            *RemoveProjectEnvTargetUnion3             `json:"target,omitempty"`
+	Key               string                                    `json:"key"`
+	GitBranch         *string                                   `json:"gitBranch,omitempty"`
+	UpdatedBy         optionalnullable.OptionalNullable[string] `json:"updatedBy,omitempty"`
 	// This is used to identify variables that have been migrated from type secret to sensitive.
 	SunsetSecretID *string `json:"sunsetSecretId,omitempty"`
 	// Legacy now-encryption ciphertext, present after migration swaps value/vsmValue
-	LegacyValue     *string                            `json:"legacyValue,omitempty"`
-	Decrypted       *bool                              `json:"decrypted,omitempty"`
-	ConfigurationID *string                            `json:"configurationId,omitempty"`
-	ContentHint     *RemoveProjectEnvContentHintUnion3 `json:"contentHint,omitempty"`
+	LegacyValue     *string                                                              `json:"legacyValue,omitempty"`
+	Decrypted       *bool                                                                `json:"decrypted,omitempty"`
+	ConfigurationID optionalnullable.OptionalNullable[string]                            `json:"configurationId,omitempty"`
+	ContentHint     optionalnullable.OptionalNullable[RemoveProjectEnvContentHintUnion3] `json:"contentHint,omitempty"`
 	// Similar to `contentHints`, but should not be exposed to the user.
-	InternalContentHint  *RemoveProjectEnvInternalContentHint3 `json:"internalContentHint,omitempty"`
-	Comment              *string                               `json:"comment,omitempty"`
-	CustomEnvironmentIds []string                              `json:"customEnvironmentIds,omitempty"`
+	InternalContentHint  optionalnullable.OptionalNullable[RemoveProjectEnvInternalContentHint3] `json:"internalContentHint,omitempty"`
+	Comment              *string                                                                 `json:"comment,omitempty"`
+	CustomEnvironmentIds []string                                                                `json:"customEnvironmentIds,omitempty"`
 }
 
 func (r RemoveProjectEnvResponseBody3) MarshalJSON() ([]byte, error) {
@@ -1575,14 +1576,14 @@ func (o *RemoveProjectEnvResponseBody3) GetValue() string {
 	return o.Value
 }
 
-func (o *RemoveProjectEnvResponseBody3) GetEdgeConfigID() *string {
+func (o *RemoveProjectEnvResponseBody3) GetEdgeConfigID() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.EdgeConfigID
 }
 
-func (o *RemoveProjectEnvResponseBody3) GetEdgeConfigTokenID() *string {
+func (o *RemoveProjectEnvResponseBody3) GetEdgeConfigTokenID() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -1610,7 +1611,7 @@ func (o *RemoveProjectEnvResponseBody3) GetID() *string {
 	return o.ID
 }
 
-func (o *RemoveProjectEnvResponseBody3) GetCreatedBy() *string {
+func (o *RemoveProjectEnvResponseBody3) GetCreatedBy() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -1638,7 +1639,7 @@ func (o *RemoveProjectEnvResponseBody3) GetGitBranch() *string {
 	return o.GitBranch
 }
 
-func (o *RemoveProjectEnvResponseBody3) GetUpdatedBy() *string {
+func (o *RemoveProjectEnvResponseBody3) GetUpdatedBy() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -1666,14 +1667,14 @@ func (o *RemoveProjectEnvResponseBody3) GetDecrypted() *bool {
 	return o.Decrypted
 }
 
-func (o *RemoveProjectEnvResponseBody3) GetConfigurationID() *string {
+func (o *RemoveProjectEnvResponseBody3) GetConfigurationID() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.ConfigurationID
 }
 
-func (o *RemoveProjectEnvResponseBody3) GetContentHint() *RemoveProjectEnvContentHintUnion3 {
+func (o *RemoveProjectEnvResponseBody3) GetContentHint() optionalnullable.OptionalNullable[RemoveProjectEnvContentHintUnion3] {
 	if o == nil {
 		return nil
 	}
@@ -1682,110 +1683,155 @@ func (o *RemoveProjectEnvResponseBody3) GetContentHint() *RemoveProjectEnvConten
 
 func (o *RemoveProjectEnvResponseBody3) GetContentHintRedisURL() *RemoveProjectEnvContentHintRedisURL3 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintRedisURL3
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintRedisURL3
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody3) GetContentHintRedisRestAPIURL() *RemoveProjectEnvContentHintRedisRestAPIURL3 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintRedisRestAPIURL3
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintRedisRestAPIURL3
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody3) GetContentHintRedisRestAPIToken() *RemoveProjectEnvContentHintRedisRestAPIToken3 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintRedisRestAPIToken3
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintRedisRestAPIToken3
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody3) GetContentHintRedisRestAPIReadOnlyToken() *RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken3 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken3
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken3
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody3) GetContentHintBlobReadWriteToken() *RemoveProjectEnvContentHintBlobReadWriteToken3 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintBlobReadWriteToken3
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintBlobReadWriteToken3
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody3) GetContentHintPostgresURL() *RemoveProjectEnvContentHintPostgresURL3 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintPostgresURL3
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintPostgresURL3
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody3) GetContentHintPostgresURLNonPooling() *RemoveProjectEnvContentHintPostgresURLNonPooling3 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintPostgresURLNonPooling3
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintPostgresURLNonPooling3
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody3) GetContentHintPostgresPrismaURL() *RemoveProjectEnvContentHintPostgresPrismaURL3 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintPostgresPrismaURL3
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintPostgresPrismaURL3
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody3) GetContentHintPostgresUser() *RemoveProjectEnvContentHintPostgresUser3 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintPostgresUser3
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintPostgresUser3
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody3) GetContentHintPostgresHost() *RemoveProjectEnvContentHintPostgresHost3 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintPostgresHost3
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintPostgresHost3
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody3) GetContentHintPostgresPassword() *RemoveProjectEnvContentHintPostgresPassword3 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintPostgresPassword3
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintPostgresPassword3
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody3) GetContentHintPostgresDatabase() *RemoveProjectEnvContentHintPostgresDatabase3 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintPostgresDatabase3
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintPostgresDatabase3
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody3) GetContentHintPostgresURLNoSsl() *RemoveProjectEnvContentHintPostgresURLNoSsl3 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintPostgresURLNoSsl3
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintPostgresURLNoSsl3
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody3) GetContentHintIntegrationStoreSecret() *RemoveProjectEnvContentHintIntegrationStoreSecret3 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintIntegrationStoreSecret3
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintIntegrationStoreSecret3
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody3) GetContentHintFlagsConnectionString() *RemoveProjectEnvContentHintFlagsConnectionString3 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintFlagsConnectionString3
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintFlagsConnectionString3
+		}
+		return nil
 	}
 	return nil
 }
 
-func (o *RemoveProjectEnvResponseBody3) GetInternalContentHint() *RemoveProjectEnvInternalContentHint3 {
+func (o *RemoveProjectEnvResponseBody3) GetInternalContentHint() optionalnullable.OptionalNullable[RemoveProjectEnvInternalContentHint3] {
 	if o == nil {
 		return nil
 	}
@@ -3273,30 +3319,30 @@ func (o *RemoveProjectEnvInternalContentHint2) GetEncryptedValue() string {
 }
 
 type RemoveProjectEnvResponseBody2 struct {
-	System            *bool                         `json:"system,omitempty"`
-	Type              RemoveProjectEnvType2         `json:"type"`
-	Value             string                        `json:"value"`
-	EdgeConfigID      *string                       `json:"edgeConfigId,omitempty"`
-	EdgeConfigTokenID *string                       `json:"edgeConfigTokenId,omitempty"`
-	CreatedAt         *float64                      `json:"createdAt,omitempty"`
-	UpdatedAt         *float64                      `json:"updatedAt,omitempty"`
-	ID                *string                       `json:"id,omitempty"`
-	CreatedBy         *string                       `json:"createdBy,omitempty"`
-	Target            *RemoveProjectEnvTargetUnion2 `json:"target,omitempty"`
-	Key               string                        `json:"key"`
-	GitBranch         *string                       `json:"gitBranch,omitempty"`
-	UpdatedBy         *string                       `json:"updatedBy,omitempty"`
+	System            *bool                                     `json:"system,omitempty"`
+	Type              RemoveProjectEnvType2                     `json:"type"`
+	Value             string                                    `json:"value"`
+	EdgeConfigID      optionalnullable.OptionalNullable[string] `json:"edgeConfigId,omitempty"`
+	EdgeConfigTokenID optionalnullable.OptionalNullable[string] `json:"edgeConfigTokenId,omitempty"`
+	CreatedAt         *float64                                  `json:"createdAt,omitempty"`
+	UpdatedAt         *float64                                  `json:"updatedAt,omitempty"`
+	ID                *string                                   `json:"id,omitempty"`
+	CreatedBy         optionalnullable.OptionalNullable[string] `json:"createdBy,omitempty"`
+	Target            *RemoveProjectEnvTargetUnion2             `json:"target,omitempty"`
+	Key               string                                    `json:"key"`
+	GitBranch         *string                                   `json:"gitBranch,omitempty"`
+	UpdatedBy         optionalnullable.OptionalNullable[string] `json:"updatedBy,omitempty"`
 	// This is used to identify variables that have been migrated from type secret to sensitive.
 	SunsetSecretID *string `json:"sunsetSecretId,omitempty"`
 	// Legacy now-encryption ciphertext, present after migration swaps value/vsmValue
-	LegacyValue     *string                            `json:"legacyValue,omitempty"`
-	Decrypted       *bool                              `json:"decrypted,omitempty"`
-	ConfigurationID *string                            `json:"configurationId,omitempty"`
-	ContentHint     *RemoveProjectEnvContentHintUnion2 `json:"contentHint,omitempty"`
+	LegacyValue     *string                                                              `json:"legacyValue,omitempty"`
+	Decrypted       *bool                                                                `json:"decrypted,omitempty"`
+	ConfigurationID optionalnullable.OptionalNullable[string]                            `json:"configurationId,omitempty"`
+	ContentHint     optionalnullable.OptionalNullable[RemoveProjectEnvContentHintUnion2] `json:"contentHint,omitempty"`
 	// Similar to `contentHints`, but should not be exposed to the user.
-	InternalContentHint  *RemoveProjectEnvInternalContentHint2 `json:"internalContentHint,omitempty"`
-	Comment              *string                               `json:"comment,omitempty"`
-	CustomEnvironmentIds []string                              `json:"customEnvironmentIds,omitempty"`
+	InternalContentHint  optionalnullable.OptionalNullable[RemoveProjectEnvInternalContentHint2] `json:"internalContentHint,omitempty"`
+	Comment              *string                                                                 `json:"comment,omitempty"`
+	CustomEnvironmentIds []string                                                                `json:"customEnvironmentIds,omitempty"`
 }
 
 func (r RemoveProjectEnvResponseBody2) MarshalJSON() ([]byte, error) {
@@ -3331,14 +3377,14 @@ func (o *RemoveProjectEnvResponseBody2) GetValue() string {
 	return o.Value
 }
 
-func (o *RemoveProjectEnvResponseBody2) GetEdgeConfigID() *string {
+func (o *RemoveProjectEnvResponseBody2) GetEdgeConfigID() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.EdgeConfigID
 }
 
-func (o *RemoveProjectEnvResponseBody2) GetEdgeConfigTokenID() *string {
+func (o *RemoveProjectEnvResponseBody2) GetEdgeConfigTokenID() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -3366,7 +3412,7 @@ func (o *RemoveProjectEnvResponseBody2) GetID() *string {
 	return o.ID
 }
 
-func (o *RemoveProjectEnvResponseBody2) GetCreatedBy() *string {
+func (o *RemoveProjectEnvResponseBody2) GetCreatedBy() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -3394,7 +3440,7 @@ func (o *RemoveProjectEnvResponseBody2) GetGitBranch() *string {
 	return o.GitBranch
 }
 
-func (o *RemoveProjectEnvResponseBody2) GetUpdatedBy() *string {
+func (o *RemoveProjectEnvResponseBody2) GetUpdatedBy() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -3422,14 +3468,14 @@ func (o *RemoveProjectEnvResponseBody2) GetDecrypted() *bool {
 	return o.Decrypted
 }
 
-func (o *RemoveProjectEnvResponseBody2) GetConfigurationID() *string {
+func (o *RemoveProjectEnvResponseBody2) GetConfigurationID() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.ConfigurationID
 }
 
-func (o *RemoveProjectEnvResponseBody2) GetContentHint() *RemoveProjectEnvContentHintUnion2 {
+func (o *RemoveProjectEnvResponseBody2) GetContentHint() optionalnullable.OptionalNullable[RemoveProjectEnvContentHintUnion2] {
 	if o == nil {
 		return nil
 	}
@@ -3438,110 +3484,155 @@ func (o *RemoveProjectEnvResponseBody2) GetContentHint() *RemoveProjectEnvConten
 
 func (o *RemoveProjectEnvResponseBody2) GetContentHintRedisURL() *RemoveProjectEnvContentHintRedisURL2 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintRedisURL2
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintRedisURL2
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody2) GetContentHintRedisRestAPIURL() *RemoveProjectEnvContentHintRedisRestAPIURL2 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintRedisRestAPIURL2
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintRedisRestAPIURL2
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody2) GetContentHintRedisRestAPIToken() *RemoveProjectEnvContentHintRedisRestAPIToken2 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintRedisRestAPIToken2
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintRedisRestAPIToken2
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody2) GetContentHintRedisRestAPIReadOnlyToken() *RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken2 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken2
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken2
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody2) GetContentHintBlobReadWriteToken() *RemoveProjectEnvContentHintBlobReadWriteToken2 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintBlobReadWriteToken2
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintBlobReadWriteToken2
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody2) GetContentHintPostgresURL() *RemoveProjectEnvContentHintPostgresURL2 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintPostgresURL2
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintPostgresURL2
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody2) GetContentHintPostgresURLNonPooling() *RemoveProjectEnvContentHintPostgresURLNonPooling2 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintPostgresURLNonPooling2
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintPostgresURLNonPooling2
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody2) GetContentHintPostgresPrismaURL() *RemoveProjectEnvContentHintPostgresPrismaURL2 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintPostgresPrismaURL2
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintPostgresPrismaURL2
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody2) GetContentHintPostgresUser() *RemoveProjectEnvContentHintPostgresUser2 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintPostgresUser2
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintPostgresUser2
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody2) GetContentHintPostgresHost() *RemoveProjectEnvContentHintPostgresHost2 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintPostgresHost2
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintPostgresHost2
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody2) GetContentHintPostgresPassword() *RemoveProjectEnvContentHintPostgresPassword2 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintPostgresPassword2
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintPostgresPassword2
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody2) GetContentHintPostgresDatabase() *RemoveProjectEnvContentHintPostgresDatabase2 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintPostgresDatabase2
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintPostgresDatabase2
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody2) GetContentHintPostgresURLNoSsl() *RemoveProjectEnvContentHintPostgresURLNoSsl2 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintPostgresURLNoSsl2
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintPostgresURLNoSsl2
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody2) GetContentHintIntegrationStoreSecret() *RemoveProjectEnvContentHintIntegrationStoreSecret2 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintIntegrationStoreSecret2
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintIntegrationStoreSecret2
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody2) GetContentHintFlagsConnectionString() *RemoveProjectEnvContentHintFlagsConnectionString2 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintFlagsConnectionString2
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintFlagsConnectionString2
+		}
+		return nil
 	}
 	return nil
 }
 
-func (o *RemoveProjectEnvResponseBody2) GetInternalContentHint() *RemoveProjectEnvInternalContentHint2 {
+func (o *RemoveProjectEnvResponseBody2) GetInternalContentHint() optionalnullable.OptionalNullable[RemoveProjectEnvInternalContentHint2] {
 	if o == nil {
 		return nil
 	}
@@ -5029,29 +5120,29 @@ func (o *RemoveProjectEnvInternalContentHint1) GetEncryptedValue() string {
 }
 
 type RemoveProjectEnvResponseBody1 struct {
-	Type              RemoveProjectEnvType1         `json:"type"`
-	Value             string                        `json:"value"`
-	EdgeConfigID      *string                       `json:"edgeConfigId,omitempty"`
-	EdgeConfigTokenID *string                       `json:"edgeConfigTokenId,omitempty"`
-	CreatedAt         *float64                      `json:"createdAt,omitempty"`
-	UpdatedAt         *float64                      `json:"updatedAt,omitempty"`
-	ID                *string                       `json:"id,omitempty"`
-	CreatedBy         *string                       `json:"createdBy,omitempty"`
-	Target            *RemoveProjectEnvTargetUnion1 `json:"target,omitempty"`
-	Key               string                        `json:"key"`
-	GitBranch         *string                       `json:"gitBranch,omitempty"`
-	UpdatedBy         *string                       `json:"updatedBy,omitempty"`
+	Type              RemoveProjectEnvType1                     `json:"type"`
+	Value             string                                    `json:"value"`
+	EdgeConfigID      optionalnullable.OptionalNullable[string] `json:"edgeConfigId,omitempty"`
+	EdgeConfigTokenID optionalnullable.OptionalNullable[string] `json:"edgeConfigTokenId,omitempty"`
+	CreatedAt         *float64                                  `json:"createdAt,omitempty"`
+	UpdatedAt         *float64                                  `json:"updatedAt,omitempty"`
+	ID                *string                                   `json:"id,omitempty"`
+	CreatedBy         optionalnullable.OptionalNullable[string] `json:"createdBy,omitempty"`
+	Target            *RemoveProjectEnvTargetUnion1             `json:"target,omitempty"`
+	Key               string                                    `json:"key"`
+	GitBranch         *string                                   `json:"gitBranch,omitempty"`
+	UpdatedBy         optionalnullable.OptionalNullable[string] `json:"updatedBy,omitempty"`
 	// This is used to identify variables that have been migrated from type secret to sensitive.
 	SunsetSecretID *string `json:"sunsetSecretId,omitempty"`
 	// Legacy now-encryption ciphertext, present after migration swaps value/vsmValue
-	LegacyValue     *string                            `json:"legacyValue,omitempty"`
-	Decrypted       *bool                              `json:"decrypted,omitempty"`
-	ConfigurationID *string                            `json:"configurationId,omitempty"`
-	ContentHint     *RemoveProjectEnvContentHintUnion1 `json:"contentHint,omitempty"`
+	LegacyValue     *string                                                              `json:"legacyValue,omitempty"`
+	Decrypted       *bool                                                                `json:"decrypted,omitempty"`
+	ConfigurationID optionalnullable.OptionalNullable[string]                            `json:"configurationId,omitempty"`
+	ContentHint     optionalnullable.OptionalNullable[RemoveProjectEnvContentHintUnion1] `json:"contentHint,omitempty"`
 	// Similar to `contentHints`, but should not be exposed to the user.
-	InternalContentHint  *RemoveProjectEnvInternalContentHint1 `json:"internalContentHint,omitempty"`
-	Comment              *string                               `json:"comment,omitempty"`
-	CustomEnvironmentIds []string                              `json:"customEnvironmentIds,omitempty"`
+	InternalContentHint  optionalnullable.OptionalNullable[RemoveProjectEnvInternalContentHint1] `json:"internalContentHint,omitempty"`
+	Comment              *string                                                                 `json:"comment,omitempty"`
+	CustomEnvironmentIds []string                                                                `json:"customEnvironmentIds,omitempty"`
 }
 
 func (r RemoveProjectEnvResponseBody1) MarshalJSON() ([]byte, error) {
@@ -5079,14 +5170,14 @@ func (o *RemoveProjectEnvResponseBody1) GetValue() string {
 	return o.Value
 }
 
-func (o *RemoveProjectEnvResponseBody1) GetEdgeConfigID() *string {
+func (o *RemoveProjectEnvResponseBody1) GetEdgeConfigID() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.EdgeConfigID
 }
 
-func (o *RemoveProjectEnvResponseBody1) GetEdgeConfigTokenID() *string {
+func (o *RemoveProjectEnvResponseBody1) GetEdgeConfigTokenID() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -5114,7 +5205,7 @@ func (o *RemoveProjectEnvResponseBody1) GetID() *string {
 	return o.ID
 }
 
-func (o *RemoveProjectEnvResponseBody1) GetCreatedBy() *string {
+func (o *RemoveProjectEnvResponseBody1) GetCreatedBy() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -5142,7 +5233,7 @@ func (o *RemoveProjectEnvResponseBody1) GetGitBranch() *string {
 	return o.GitBranch
 }
 
-func (o *RemoveProjectEnvResponseBody1) GetUpdatedBy() *string {
+func (o *RemoveProjectEnvResponseBody1) GetUpdatedBy() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -5170,14 +5261,14 @@ func (o *RemoveProjectEnvResponseBody1) GetDecrypted() *bool {
 	return o.Decrypted
 }
 
-func (o *RemoveProjectEnvResponseBody1) GetConfigurationID() *string {
+func (o *RemoveProjectEnvResponseBody1) GetConfigurationID() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.ConfigurationID
 }
 
-func (o *RemoveProjectEnvResponseBody1) GetContentHint() *RemoveProjectEnvContentHintUnion1 {
+func (o *RemoveProjectEnvResponseBody1) GetContentHint() optionalnullable.OptionalNullable[RemoveProjectEnvContentHintUnion1] {
 	if o == nil {
 		return nil
 	}
@@ -5186,110 +5277,155 @@ func (o *RemoveProjectEnvResponseBody1) GetContentHint() *RemoveProjectEnvConten
 
 func (o *RemoveProjectEnvResponseBody1) GetContentHintRedisURL() *RemoveProjectEnvContentHintRedisURL1 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintRedisURL1
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintRedisURL1
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody1) GetContentHintRedisRestAPIURL() *RemoveProjectEnvContentHintRedisRestAPIURL1 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintRedisRestAPIURL1
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintRedisRestAPIURL1
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody1) GetContentHintRedisRestAPIToken() *RemoveProjectEnvContentHintRedisRestAPIToken1 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintRedisRestAPIToken1
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintRedisRestAPIToken1
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody1) GetContentHintRedisRestAPIReadOnlyToken() *RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken1 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken1
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken1
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody1) GetContentHintBlobReadWriteToken() *RemoveProjectEnvContentHintBlobReadWriteToken1 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintBlobReadWriteToken1
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintBlobReadWriteToken1
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody1) GetContentHintPostgresURL() *RemoveProjectEnvContentHintPostgresURL1 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintPostgresURL1
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintPostgresURL1
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody1) GetContentHintPostgresURLNonPooling() *RemoveProjectEnvContentHintPostgresURLNonPooling1 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintPostgresURLNonPooling1
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintPostgresURLNonPooling1
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody1) GetContentHintPostgresPrismaURL() *RemoveProjectEnvContentHintPostgresPrismaURL1 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintPostgresPrismaURL1
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintPostgresPrismaURL1
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody1) GetContentHintPostgresUser() *RemoveProjectEnvContentHintPostgresUser1 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintPostgresUser1
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintPostgresUser1
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody1) GetContentHintPostgresHost() *RemoveProjectEnvContentHintPostgresHost1 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintPostgresHost1
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintPostgresHost1
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody1) GetContentHintPostgresPassword() *RemoveProjectEnvContentHintPostgresPassword1 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintPostgresPassword1
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintPostgresPassword1
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody1) GetContentHintPostgresDatabase() *RemoveProjectEnvContentHintPostgresDatabase1 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintPostgresDatabase1
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintPostgresDatabase1
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody1) GetContentHintPostgresURLNoSsl() *RemoveProjectEnvContentHintPostgresURLNoSsl1 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintPostgresURLNoSsl1
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintPostgresURLNoSsl1
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody1) GetContentHintIntegrationStoreSecret() *RemoveProjectEnvContentHintIntegrationStoreSecret1 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintIntegrationStoreSecret1
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintIntegrationStoreSecret1
+		}
+		return nil
 	}
 	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody1) GetContentHintFlagsConnectionString() *RemoveProjectEnvContentHintFlagsConnectionString1 {
 	if v := o.GetContentHint(); v != nil {
-		return v.RemoveProjectEnvContentHintFlagsConnectionString1
+		if actualValue, ok := v.Get(); ok && actualValue != nil {
+			return actualValue.RemoveProjectEnvContentHintFlagsConnectionString1
+		}
+		return nil
 	}
 	return nil
 }
 
-func (o *RemoveProjectEnvResponseBody1) GetInternalContentHint() *RemoveProjectEnvInternalContentHint1 {
+func (o *RemoveProjectEnvResponseBody1) GetInternalContentHint() optionalnullable.OptionalNullable[RemoveProjectEnvInternalContentHint1] {
 	if o == nil {
 		return nil
 	}
@@ -5399,7 +5535,7 @@ func (u RemoveProjectEnvResponseBody) MarshalJSON() ([]byte, error) {
 type RemoveProjectEnvResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// The environment variable was successfully removed
-	OneOf *RemoveProjectEnvResponseBody
+	OneOf optionalnullable.OptionalNullable[RemoveProjectEnvResponseBody]
 }
 
 func (o *RemoveProjectEnvResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -5409,7 +5545,7 @@ func (o *RemoveProjectEnvResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *RemoveProjectEnvResponse) GetOneOf() *RemoveProjectEnvResponseBody {
+func (o *RemoveProjectEnvResponse) GetOneOf() optionalnullable.OptionalNullable[RemoveProjectEnvResponseBody] {
 	if o == nil {
 		return nil
 	}

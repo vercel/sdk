@@ -57,6 +57,15 @@ const value: models.Credentials1 = {
 };
 ```
 
+### `models.Credentials1`
+
+```typescript
+const value: models.Credentials1 = {
+  type: "apple",
+  id: "<id>",
+};
+```
+
 ### `models.Credentials2`
 
 ```typescript

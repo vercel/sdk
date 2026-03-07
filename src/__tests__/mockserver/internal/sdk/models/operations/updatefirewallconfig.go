@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 )
 
@@ -363,9 +364,9 @@ func (e *ActionIPRemove) UnmarshalJSON(data []byte) error {
 
 // IPRemove - Remove an IP Blocking rule
 type IPRemove struct {
-	Action ActionIPRemove `json:"action"`
-	ID     string         `json:"id"`
-	Value  any            `json:"value,omitempty"`
+	Action ActionIPRemove                         `json:"action"`
+	ID     string                                 `json:"id"`
+	Value  optionalnullable.OptionalNullable[any] `json:"value,omitempty"`
 }
 
 func (i IPRemove) MarshalJSON() ([]byte, error) {
@@ -393,7 +394,7 @@ func (o *IPRemove) GetID() string {
 	return o.ID
 }
 
-func (o *IPRemove) GetValue() any {
+func (o *IPRemove) GetValue() optionalnullable.OptionalNullable[any] {
 	if o == nil {
 		return nil
 	}
@@ -643,9 +644,9 @@ func (o *UpdateFirewallConfigValue4) GetAction() ValueActionEnum2 {
 
 // IPInsert - Add an IP Blocking rule
 type IPInsert struct {
-	Action ActionIPInsert             `json:"action"`
-	ID     any                        `json:"id,omitempty"`
-	Value  UpdateFirewallConfigValue4 `json:"value"`
+	Action ActionIPInsert                         `json:"action"`
+	ID     optionalnullable.OptionalNullable[any] `json:"id,omitempty"`
+	Value  UpdateFirewallConfigValue4             `json:"value"`
 }
 
 func (i IPInsert) MarshalJSON() ([]byte, error) {
@@ -666,7 +667,7 @@ func (o *IPInsert) GetAction() ActionIPInsert {
 	return o.Action
 }
 
-func (o *IPInsert) GetID() any {
+func (o *IPInsert) GetID() optionalnullable.OptionalNullable[any] {
 	if o == nil {
 		return nil
 	}
@@ -705,9 +706,9 @@ func (e *ActionCrsDisable) UnmarshalJSON(data []byte) error {
 
 // CrsDisable - Disable a managed rule
 type CrsDisable struct {
-	Action ActionCrsDisable `json:"action"`
-	ID     any              `json:"id,omitempty"`
-	Value  any              `json:"value,omitempty"`
+	Action ActionCrsDisable                       `json:"action"`
+	ID     optionalnullable.OptionalNullable[any] `json:"id,omitempty"`
+	Value  optionalnullable.OptionalNullable[any] `json:"value,omitempty"`
 }
 
 func (c CrsDisable) MarshalJSON() ([]byte, error) {
@@ -728,14 +729,14 @@ func (o *CrsDisable) GetAction() ActionCrsDisable {
 	return o.Action
 }
 
-func (o *CrsDisable) GetID() any {
+func (o *CrsDisable) GetID() optionalnullable.OptionalNullable[any] {
 	if o == nil {
 		return nil
 	}
 	return o.ID
 }
 
-func (o *CrsDisable) GetValue() any {
+func (o *CrsDisable) GetValue() optionalnullable.OptionalNullable[any] {
 	if o == nil {
 		return nil
 	}
@@ -1000,9 +1001,9 @@ func (e *ActionRulesRemove) UnmarshalJSON(data []byte) error {
 
 // RulesRemove - Remove a custom rule
 type RulesRemove struct {
-	Action ActionRulesRemove `json:"action"`
-	ID     string            `json:"id"`
-	Value  any               `json:"value,omitempty"`
+	Action ActionRulesRemove                      `json:"action"`
+	ID     string                                 `json:"id"`
+	Value  optionalnullable.OptionalNullable[any] `json:"value,omitempty"`
 }
 
 func (r RulesRemove) MarshalJSON() ([]byte, error) {
@@ -1030,7 +1031,7 @@ func (o *RulesRemove) GetID() string {
 	return o.ID
 }
 
-func (o *RulesRemove) GetValue() any {
+func (o *RulesRemove) GetValue() optionalnullable.OptionalNullable[any] {
 	if o == nil {
 		return nil
 	}
@@ -1541,11 +1542,11 @@ func (u ValueActionUnion2) MarshalJSON() ([]byte, error) {
 }
 
 type UpdateFirewallConfigRateLimit2 struct {
-	Algo   UpdateFirewallConfigAlgo2 `json:"algo"`
-	Window float64                   `json:"window"`
-	Limit  float64                   `json:"limit"`
-	Keys   []string                  `json:"keys"`
-	Action *ValueActionUnion2        `json:"action,omitempty"`
+	Algo   UpdateFirewallConfigAlgo2                            `json:"algo"`
+	Window float64                                              `json:"window"`
+	Limit  float64                                              `json:"limit"`
+	Keys   []string                                             `json:"keys"`
+	Action optionalnullable.OptionalNullable[ValueActionUnion2] `json:"action,omitempty"`
 }
 
 func (u UpdateFirewallConfigRateLimit2) MarshalJSON() ([]byte, error) {
@@ -1587,7 +1588,7 @@ func (o *UpdateFirewallConfigRateLimit2) GetKeys() []string {
 	return o.Keys
 }
 
-func (o *UpdateFirewallConfigRateLimit2) GetAction() *ValueActionUnion2 {
+func (o *UpdateFirewallConfigRateLimit2) GetAction() optionalnullable.OptionalNullable[ValueActionUnion2] {
 	if o == nil {
 		return nil
 	}
@@ -1814,12 +1815,12 @@ func (u UpdateFirewallConfigLogHeaders2) MarshalJSON() ([]byte, error) {
 }
 
 type UpdateFirewallConfigMitigate2 struct {
-	Action         ValueMitigateActionEnum2             `json:"action"`
-	RateLimit      *UpdateFirewallConfigRateLimitUnion2 `json:"rateLimit,omitempty"`
-	Redirect       *UpdateFirewallConfigRedirectUnion2  `json:"redirect,omitempty"`
-	ActionDuration *string                              `json:"actionDuration,omitempty"`
-	BypassSystem   *bool                                `json:"bypassSystem,omitempty"`
-	LogHeaders     *UpdateFirewallConfigLogHeaders2     `json:"logHeaders,omitempty"`
+	Action         ValueMitigateActionEnum2                                               `json:"action"`
+	RateLimit      optionalnullable.OptionalNullable[UpdateFirewallConfigRateLimitUnion2] `json:"rateLimit,omitempty"`
+	Redirect       optionalnullable.OptionalNullable[UpdateFirewallConfigRedirectUnion2]  `json:"redirect,omitempty"`
+	ActionDuration optionalnullable.OptionalNullable[string]                              `json:"actionDuration,omitempty"`
+	BypassSystem   optionalnullable.OptionalNullable[bool]                                `json:"bypassSystem,omitempty"`
+	LogHeaders     *UpdateFirewallConfigLogHeaders2                                       `json:"logHeaders,omitempty"`
 }
 
 func (u UpdateFirewallConfigMitigate2) MarshalJSON() ([]byte, error) {
@@ -1840,28 +1841,28 @@ func (o *UpdateFirewallConfigMitigate2) GetAction() ValueMitigateActionEnum2 {
 	return o.Action
 }
 
-func (o *UpdateFirewallConfigMitigate2) GetRateLimit() *UpdateFirewallConfigRateLimitUnion2 {
+func (o *UpdateFirewallConfigMitigate2) GetRateLimit() optionalnullable.OptionalNullable[UpdateFirewallConfigRateLimitUnion2] {
 	if o == nil {
 		return nil
 	}
 	return o.RateLimit
 }
 
-func (o *UpdateFirewallConfigMitigate2) GetRedirect() *UpdateFirewallConfigRedirectUnion2 {
+func (o *UpdateFirewallConfigMitigate2) GetRedirect() optionalnullable.OptionalNullable[UpdateFirewallConfigRedirectUnion2] {
 	if o == nil {
 		return nil
 	}
 	return o.Redirect
 }
 
-func (o *UpdateFirewallConfigMitigate2) GetActionDuration() *string {
+func (o *UpdateFirewallConfigMitigate2) GetActionDuration() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.ActionDuration
 }
 
-func (o *UpdateFirewallConfigMitigate2) GetBypassSystem() *bool {
+func (o *UpdateFirewallConfigMitigate2) GetBypassSystem() optionalnullable.OptionalNullable[bool] {
 	if o == nil {
 		return nil
 	}
@@ -2573,11 +2574,11 @@ func (u ValueActionUnion1) MarshalJSON() ([]byte, error) {
 }
 
 type UpdateFirewallConfigRateLimit1 struct {
-	Algo   UpdateFirewallConfigAlgo1 `json:"algo"`
-	Window float64                   `json:"window"`
-	Limit  float64                   `json:"limit"`
-	Keys   []string                  `json:"keys"`
-	Action *ValueActionUnion1        `json:"action,omitempty"`
+	Algo   UpdateFirewallConfigAlgo1                            `json:"algo"`
+	Window float64                                              `json:"window"`
+	Limit  float64                                              `json:"limit"`
+	Keys   []string                                             `json:"keys"`
+	Action optionalnullable.OptionalNullable[ValueActionUnion1] `json:"action,omitempty"`
 }
 
 func (u UpdateFirewallConfigRateLimit1) MarshalJSON() ([]byte, error) {
@@ -2619,7 +2620,7 @@ func (o *UpdateFirewallConfigRateLimit1) GetKeys() []string {
 	return o.Keys
 }
 
-func (o *UpdateFirewallConfigRateLimit1) GetAction() *ValueActionUnion1 {
+func (o *UpdateFirewallConfigRateLimit1) GetAction() optionalnullable.OptionalNullable[ValueActionUnion1] {
 	if o == nil {
 		return nil
 	}
@@ -2846,12 +2847,12 @@ func (u UpdateFirewallConfigLogHeaders1) MarshalJSON() ([]byte, error) {
 }
 
 type UpdateFirewallConfigMitigate1 struct {
-	Action         ValueMitigateActionEnum1             `json:"action"`
-	RateLimit      *UpdateFirewallConfigRateLimitUnion1 `json:"rateLimit,omitempty"`
-	Redirect       *UpdateFirewallConfigRedirectUnion1  `json:"redirect,omitempty"`
-	ActionDuration *string                              `json:"actionDuration,omitempty"`
-	BypassSystem   *bool                                `json:"bypassSystem,omitempty"`
-	LogHeaders     *UpdateFirewallConfigLogHeaders1     `json:"logHeaders,omitempty"`
+	Action         ValueMitigateActionEnum1                                               `json:"action"`
+	RateLimit      optionalnullable.OptionalNullable[UpdateFirewallConfigRateLimitUnion1] `json:"rateLimit,omitempty"`
+	Redirect       optionalnullable.OptionalNullable[UpdateFirewallConfigRedirectUnion1]  `json:"redirect,omitempty"`
+	ActionDuration optionalnullable.OptionalNullable[string]                              `json:"actionDuration,omitempty"`
+	BypassSystem   optionalnullable.OptionalNullable[bool]                                `json:"bypassSystem,omitempty"`
+	LogHeaders     *UpdateFirewallConfigLogHeaders1                                       `json:"logHeaders,omitempty"`
 }
 
 func (u UpdateFirewallConfigMitigate1) MarshalJSON() ([]byte, error) {
@@ -2872,28 +2873,28 @@ func (o *UpdateFirewallConfigMitigate1) GetAction() ValueMitigateActionEnum1 {
 	return o.Action
 }
 
-func (o *UpdateFirewallConfigMitigate1) GetRateLimit() *UpdateFirewallConfigRateLimitUnion1 {
+func (o *UpdateFirewallConfigMitigate1) GetRateLimit() optionalnullable.OptionalNullable[UpdateFirewallConfigRateLimitUnion1] {
 	if o == nil {
 		return nil
 	}
 	return o.RateLimit
 }
 
-func (o *UpdateFirewallConfigMitigate1) GetRedirect() *UpdateFirewallConfigRedirectUnion1 {
+func (o *UpdateFirewallConfigMitigate1) GetRedirect() optionalnullable.OptionalNullable[UpdateFirewallConfigRedirectUnion1] {
 	if o == nil {
 		return nil
 	}
 	return o.Redirect
 }
 
-func (o *UpdateFirewallConfigMitigate1) GetActionDuration() *string {
+func (o *UpdateFirewallConfigMitigate1) GetActionDuration() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.ActionDuration
 }
 
-func (o *UpdateFirewallConfigMitigate1) GetBypassSystem() *bool {
+func (o *UpdateFirewallConfigMitigate1) GetBypassSystem() optionalnullable.OptionalNullable[bool] {
 	if o == nil {
 		return nil
 	}
@@ -3064,9 +3065,9 @@ func (o *UpdateFirewallConfigValue1) GetValidationErrors() *UpdateFirewallConfig
 
 // RulesInsert - Add a custom rule
 type RulesInsert struct {
-	Action ActionRulesInsert          `json:"action"`
-	ID     any                        `json:"id,omitempty"`
-	Value  UpdateFirewallConfigValue1 `json:"value"`
+	Action ActionRulesInsert                      `json:"action"`
+	ID     optionalnullable.OptionalNullable[any] `json:"id,omitempty"`
+	Value  UpdateFirewallConfigValue1             `json:"value"`
 }
 
 func (r RulesInsert) MarshalJSON() ([]byte, error) {
@@ -3087,7 +3088,7 @@ func (o *RulesInsert) GetAction() ActionRulesInsert {
 	return o.Action
 }
 
-func (o *RulesInsert) GetID() any {
+func (o *RulesInsert) GetID() optionalnullable.OptionalNullable[any] {
 	if o == nil {
 		return nil
 	}
@@ -3126,9 +3127,9 @@ func (e *ActionFirewallEnabled) UnmarshalJSON(data []byte) error {
 
 // FirewallEnabled - Enable Firewall
 type FirewallEnabled struct {
-	Action ActionFirewallEnabled `json:"action"`
-	ID     any                   `json:"id,omitempty"`
-	Value  bool                  `json:"value"`
+	Action ActionFirewallEnabled                  `json:"action"`
+	ID     optionalnullable.OptionalNullable[any] `json:"id,omitempty"`
+	Value  bool                                   `json:"value"`
 }
 
 func (f FirewallEnabled) MarshalJSON() ([]byte, error) {
@@ -3149,7 +3150,7 @@ func (o *FirewallEnabled) GetAction() ActionFirewallEnabled {
 	return o.Action
 }
 
-func (o *FirewallEnabled) GetID() any {
+func (o *FirewallEnabled) GetID() optionalnullable.OptionalNullable[any] {
 	if o == nil {
 		return nil
 	}

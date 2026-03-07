@@ -5,22 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundred } from "@vercel/sdk/models/userevent.js";
+import { OneHundred } from "@vercel/sdk/models/seventyeight.js";
 
-let value: OneHundred = {};
+let value: OneHundred = {
+  team: {
+    id: "<id>",
+  },
+  previousRule: {
+    email: "Melba_Bode@hotmail.com",
+  },
+};
 ```
 
 ## Fields
 
-| Field                    | Type                     | Required                 | Description              |
-| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-| `key`                    | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `projectId`              | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `projectName`            | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `target`                 | *models.Target*          | :heavy_minus_sign:       | N/A                      |
-| `customEnvironmentSlugs` | *string*[]               | :heavy_minus_sign:       | N/A                      |
-| `id`                     | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `gitBranch`              | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `edgeConfigId`           | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `edgeConfigTokenId`      | *string*                 | :heavy_minus_sign:       | N/A                      |
-| `source`                 | *string*                 | :heavy_minus_sign:       | N/A                      |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `team`                                                                 | [models.UserEventPayload100Team](../models/usereventpayload100team.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `previousRule`                                                         | [models.PreviousRule](../models/previousrule.md)                       | :heavy_check_mark:                                                     | N/A                                                                    |

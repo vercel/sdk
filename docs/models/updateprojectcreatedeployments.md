@@ -5,7 +5,7 @@ Whether the Vercel bot should automatically create GitHub deployments https://do
 ## Example Usage
 
 ```typescript
-import { UpdateProjectCreateDeployments } from "@vercel/sdk/models/updateprojectop.js";
+import { UpdateProjectCreateDeployments } from "@vercel/sdk/models/updateprojectscheduledtierchange.js";
 
 let value: UpdateProjectCreateDeployments = "enabled";
 ```

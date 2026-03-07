@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 )
 
@@ -106,10 +107,10 @@ func (u Description3) MarshalJSON() ([]byte, error) {
 }
 
 type PatchEdgeConfigItemsItem3 struct {
-	Operation   PatchEdgeConfigItemsOperation3 `json:"operation"`
-	Key         string                         `json:"key"`
-	Value       any                            `json:"value,omitempty"`
-	Description *Description3                  `json:"description"`
+	Operation   PatchEdgeConfigItemsOperation3         `json:"operation"`
+	Key         string                                 `json:"key"`
+	Value       optionalnullable.OptionalNullable[any] `json:"value,omitempty"`
+	Description *Description3                          `json:"description"`
 }
 
 func (p PatchEdgeConfigItemsItem3) MarshalJSON() ([]byte, error) {
@@ -137,7 +138,7 @@ func (o *PatchEdgeConfigItemsItem3) GetKey() string {
 	return o.Key
 }
 
-func (o *PatchEdgeConfigItemsItem3) GetValue() any {
+func (o *PatchEdgeConfigItemsItem3) GetValue() optionalnullable.OptionalNullable[any] {
 	if o == nil {
 		return nil
 	}
@@ -247,10 +248,10 @@ func (u Description2) MarshalJSON() ([]byte, error) {
 }
 
 type PatchEdgeConfigItemsItem2 struct {
-	Operation   PatchEdgeConfigItemsOperation2 `json:"operation"`
-	Key         string                         `json:"key"`
-	Value       any                            `json:"value"`
-	Description *Description2                  `json:"description,omitempty"`
+	Operation   PatchEdgeConfigItemsOperation2                  `json:"operation"`
+	Key         string                                          `json:"key"`
+	Value       any                                             `json:"value"`
+	Description optionalnullable.OptionalNullable[Description2] `json:"description,omitempty"`
 }
 
 func (p PatchEdgeConfigItemsItem2) MarshalJSON() ([]byte, error) {
@@ -285,7 +286,7 @@ func (o *PatchEdgeConfigItemsItem2) GetValue() any {
 	return o.Value
 }
 
-func (o *PatchEdgeConfigItemsItem2) GetDescription() *Description2 {
+func (o *PatchEdgeConfigItemsItem2) GetDescription() optionalnullable.OptionalNullable[Description2] {
 	if o == nil {
 		return nil
 	}
@@ -388,10 +389,10 @@ func (u Description1) MarshalJSON() ([]byte, error) {
 }
 
 type PatchEdgeConfigItemsItem1 struct {
-	Operation   PatchEdgeConfigItemsOperation1 `json:"operation"`
-	Key         string                         `json:"key"`
-	Value       any                            `json:"value"`
-	Description *Description1                  `json:"description,omitempty"`
+	Operation   PatchEdgeConfigItemsOperation1                  `json:"operation"`
+	Key         string                                          `json:"key"`
+	Value       any                                             `json:"value"`
+	Description optionalnullable.OptionalNullable[Description1] `json:"description,omitempty"`
 }
 
 func (p PatchEdgeConfigItemsItem1) MarshalJSON() ([]byte, error) {
@@ -426,7 +427,7 @@ func (o *PatchEdgeConfigItemsItem1) GetValue() any {
 	return o.Value
 }
 
-func (o *PatchEdgeConfigItemsItem1) GetDescription() *Description1 {
+func (o *PatchEdgeConfigItemsItem1) GetDescription() optionalnullable.OptionalNullable[Description1] {
 	if o == nil {
 		return nil
 	}

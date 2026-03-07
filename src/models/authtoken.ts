@@ -22,6 +22,7 @@ export const AuthTokenScopesOrigin = {
   Invite: "invite",
   Google: "google",
   Apple: "apple",
+  Chatgpt: "chatgpt",
   App: "app",
   Emu: "emu",
 } as const;
@@ -72,6 +73,7 @@ export const ScopesOrigin = {
   Invite: "invite",
   Google: "google",
   Apple: "apple",
+  Chatgpt: "chatgpt",
   App: "app",
   Emu: "emu",
 } as const;

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { FactorsOrigin } from "@vercel/sdk/models/userevent.js";
+import { FactorsOrigin } from "@vercel/sdk/models/twohundredandfourteen.js";
 
 let value: FactorsOrigin = "otp";
 ```
@@ -11,5 +11,5 @@ let value: FactorsOrigin = "otp";
 ## Values
 
 ```typescript
-"email" | "saml" | "github" | "gitlab" | "bitbucket" | "google" | "apple" | "otp"
+"email" | "saml" | "github" | "gitlab" | "bitbucket" | "google" | "apple" | "chatgpt" | "otp"
 ```

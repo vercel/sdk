@@ -6,6 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 )
 
@@ -91,7 +92,7 @@ func (o *UpdateRollingReleaseConfigStage) GetLinearShift() *bool {
 }
 
 type UpdateRollingReleaseConfigRollingRelease struct {
-	Stages []UpdateRollingReleaseConfigStage `json:"stages,omitempty"`
+	Stages optionalnullable.OptionalNullable[[]UpdateRollingReleaseConfigStage] `json:"stages,omitempty"`
 }
 
 func (u UpdateRollingReleaseConfigRollingRelease) MarshalJSON() ([]byte, error) {
@@ -105,7 +106,7 @@ func (u *UpdateRollingReleaseConfigRollingRelease) UnmarshalJSON(data []byte) er
 	return nil
 }
 
-func (o *UpdateRollingReleaseConfigRollingRelease) GetStages() []UpdateRollingReleaseConfigStage {
+func (o *UpdateRollingReleaseConfigRollingRelease) GetStages() optionalnullable.OptionalNullable[[]UpdateRollingReleaseConfigStage] {
 	if o == nil {
 		return nil
 	}

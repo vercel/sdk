@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 )
 
@@ -3106,28 +3107,28 @@ func (u CreateDrainProjectAccessUnion) MarshalJSON() ([]byte, error) {
 }
 
 type CreateDrainResponseBody2 struct {
-	ID                          string                              `json:"id"`
-	CreatedAt                   float64                             `json:"createdAt"`
-	UpdatedAt                   float64                             `json:"updatedAt"`
-	ProjectIds                  []string                            `json:"projectIds,omitempty"`
-	Name                        string                              `json:"name"`
-	TeamID                      *string                             `json:"teamId,omitempty"`
-	OwnerID                     string                              `json:"ownerId"`
-	Status                      *CreateDrainStatus2                 `json:"status,omitempty"`
-	FirstErrorTimestamp         *float64                            `json:"firstErrorTimestamp,omitempty"`
-	DisabledAt                  *float64                            `json:"disabledAt,omitempty"`
-	DisabledBy                  *string                             `json:"disabledBy,omitempty"`
-	DisabledReason              *CreateDrainDisabledReason2         `json:"disabledReason,omitempty"`
-	Schemas                     CreateDrainSchemasResponse2         `json:"schemas"`
-	Delivery                    CreateDrainDeliveryResponseUnion2   `json:"delivery"`
-	Sampling                    []CreateDrainSamplingResponse2      `json:"sampling,omitempty"`
-	Source                      CreateDrainResponseBodySourceUnion2 `json:"source"`
-	Filter                      *string                             `json:"filter,omitempty"`
-	FilterV2                    *CreateDrainFilterV2Union2          `json:"filterV2,omitempty"`
-	IntegrationIcon             *string                             `json:"integrationIcon,omitempty"`
-	IntegrationConfigurationURI *string                             `json:"integrationConfigurationUri,omitempty"`
-	IntegrationWebsite          *string                             `json:"integrationWebsite,omitempty"`
-	ProjectAccess               *CreateDrainProjectAccessUnion      `json:"projectAccess,omitempty"`
+	ID                          string                                    `json:"id"`
+	CreatedAt                   float64                                   `json:"createdAt"`
+	UpdatedAt                   float64                                   `json:"updatedAt"`
+	ProjectIds                  []string                                  `json:"projectIds,omitempty"`
+	Name                        string                                    `json:"name"`
+	TeamID                      optionalnullable.OptionalNullable[string] `json:"teamId,omitempty"`
+	OwnerID                     string                                    `json:"ownerId"`
+	Status                      *CreateDrainStatus2                       `json:"status,omitempty"`
+	FirstErrorTimestamp         *float64                                  `json:"firstErrorTimestamp,omitempty"`
+	DisabledAt                  *float64                                  `json:"disabledAt,omitempty"`
+	DisabledBy                  *string                                   `json:"disabledBy,omitempty"`
+	DisabledReason              *CreateDrainDisabledReason2               `json:"disabledReason,omitempty"`
+	Schemas                     CreateDrainSchemasResponse2               `json:"schemas"`
+	Delivery                    CreateDrainDeliveryResponseUnion2         `json:"delivery"`
+	Sampling                    []CreateDrainSamplingResponse2            `json:"sampling,omitempty"`
+	Source                      CreateDrainResponseBodySourceUnion2       `json:"source"`
+	Filter                      *string                                   `json:"filter,omitempty"`
+	FilterV2                    *CreateDrainFilterV2Union2                `json:"filterV2,omitempty"`
+	IntegrationIcon             *string                                   `json:"integrationIcon,omitempty"`
+	IntegrationConfigurationURI *string                                   `json:"integrationConfigurationUri,omitempty"`
+	IntegrationWebsite          *string                                   `json:"integrationWebsite,omitempty"`
+	ProjectAccess               *CreateDrainProjectAccessUnion            `json:"projectAccess,omitempty"`
 }
 
 func (c CreateDrainResponseBody2) MarshalJSON() ([]byte, error) {
@@ -3176,7 +3177,7 @@ func (o *CreateDrainResponseBody2) GetName() string {
 	return o.Name
 }
 
-func (o *CreateDrainResponseBody2) GetTeamID() *string {
+func (o *CreateDrainResponseBody2) GetTeamID() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -5106,24 +5107,24 @@ func (u CreateDrainFilterV2Union1) MarshalJSON() ([]byte, error) {
 }
 
 type CreateDrainResponseBody1 struct {
-	ID                  string                              `json:"id"`
-	CreatedAt           float64                             `json:"createdAt"`
-	UpdatedAt           float64                             `json:"updatedAt"`
-	ProjectIds          []string                            `json:"projectIds,omitempty"`
-	Name                string                              `json:"name"`
-	TeamID              *string                             `json:"teamId,omitempty"`
-	OwnerID             string                              `json:"ownerId"`
-	Status              *CreateDrainStatus1                 `json:"status,omitempty"`
-	FirstErrorTimestamp *float64                            `json:"firstErrorTimestamp,omitempty"`
-	DisabledAt          *float64                            `json:"disabledAt,omitempty"`
-	DisabledBy          *string                             `json:"disabledBy,omitempty"`
-	DisabledReason      *CreateDrainDisabledReason1         `json:"disabledReason,omitempty"`
-	Schemas             CreateDrainSchemasResponse1         `json:"schemas"`
-	Delivery            CreateDrainDeliveryResponseUnion1   `json:"delivery"`
-	Sampling            []CreateDrainSamplingResponse1      `json:"sampling,omitempty"`
-	Source              CreateDrainResponseBodySourceUnion1 `json:"source"`
-	Filter              *string                             `json:"filter,omitempty"`
-	FilterV2            *CreateDrainFilterV2Union1          `json:"filterV2,omitempty"`
+	ID                  string                                    `json:"id"`
+	CreatedAt           float64                                   `json:"createdAt"`
+	UpdatedAt           float64                                   `json:"updatedAt"`
+	ProjectIds          []string                                  `json:"projectIds,omitempty"`
+	Name                string                                    `json:"name"`
+	TeamID              optionalnullable.OptionalNullable[string] `json:"teamId,omitempty"`
+	OwnerID             string                                    `json:"ownerId"`
+	Status              *CreateDrainStatus1                       `json:"status,omitempty"`
+	FirstErrorTimestamp *float64                                  `json:"firstErrorTimestamp,omitempty"`
+	DisabledAt          *float64                                  `json:"disabledAt,omitempty"`
+	DisabledBy          *string                                   `json:"disabledBy,omitempty"`
+	DisabledReason      *CreateDrainDisabledReason1               `json:"disabledReason,omitempty"`
+	Schemas             CreateDrainSchemasResponse1               `json:"schemas"`
+	Delivery            CreateDrainDeliveryResponseUnion1         `json:"delivery"`
+	Sampling            []CreateDrainSamplingResponse1            `json:"sampling,omitempty"`
+	Source              CreateDrainResponseBodySourceUnion1       `json:"source"`
+	Filter              *string                                   `json:"filter,omitempty"`
+	FilterV2            *CreateDrainFilterV2Union1                `json:"filterV2,omitempty"`
 }
 
 func (c CreateDrainResponseBody1) MarshalJSON() ([]byte, error) {
@@ -5172,7 +5173,7 @@ func (o *CreateDrainResponseBody1) GetName() string {
 	return o.Name
 }
 
-func (o *CreateDrainResponseBody1) GetTeamID() *string {
+func (o *CreateDrainResponseBody1) GetTeamID() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}

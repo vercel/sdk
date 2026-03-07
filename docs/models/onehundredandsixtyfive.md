@@ -5,19 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSixtyFive } from "@vercel/sdk/models/userevent.js";
+import { OneHundredAndSixtyFive } from "@vercel/sdk/models/onehundredandfiftyone.js";
 
 let value: OneHundredAndSixtyFive = {
   projectId: "<id>",
   projectName: "<value>",
-  createDeployments: "enabled",
+  onCommit: true,
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `projectId`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `projectName`                                              | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `createDeployments`                                        | [models.CreateDeployments](../models/createdeployments.md) | :heavy_check_mark:                                         | N/A                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `onCommit`         | *boolean*          | :heavy_check_mark: | N/A                |

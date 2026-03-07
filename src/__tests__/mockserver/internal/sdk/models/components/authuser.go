@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 )
 
@@ -855,10 +856,10 @@ func (e *AuthUserRecentsViewPreference) UnmarshalJSON(data []byte) error {
 
 // AuthUserActiveDashboardView - set of dashboard view preferences (cards or list) per scopeId
 type AuthUserActiveDashboardView struct {
-	ScopeID                 string                           `json:"scopeId"`
-	ViewPreference          *AuthUserViewPreference          `json:"viewPreference,omitempty"`
-	FavoritesViewPreference *AuthUserFavoritesViewPreference `json:"favoritesViewPreference,omitempty"`
-	RecentsViewPreference   *AuthUserRecentsViewPreference   `json:"recentsViewPreference,omitempty"`
+	ScopeID                 string                                                             `json:"scopeId"`
+	ViewPreference          optionalnullable.OptionalNullable[AuthUserViewPreference]          `json:"viewPreference,omitempty"`
+	FavoritesViewPreference optionalnullable.OptionalNullable[AuthUserFavoritesViewPreference] `json:"favoritesViewPreference,omitempty"`
+	RecentsViewPreference   optionalnullable.OptionalNullable[AuthUserRecentsViewPreference]   `json:"recentsViewPreference,omitempty"`
 }
 
 func (a AuthUserActiveDashboardView) MarshalJSON() ([]byte, error) {
@@ -879,21 +880,21 @@ func (o *AuthUserActiveDashboardView) GetScopeID() string {
 	return o.ScopeID
 }
 
-func (o *AuthUserActiveDashboardView) GetViewPreference() *AuthUserViewPreference {
+func (o *AuthUserActiveDashboardView) GetViewPreference() optionalnullable.OptionalNullable[AuthUserViewPreference] {
 	if o == nil {
 		return nil
 	}
 	return o.ViewPreference
 }
 
-func (o *AuthUserActiveDashboardView) GetFavoritesViewPreference() *AuthUserFavoritesViewPreference {
+func (o *AuthUserActiveDashboardView) GetFavoritesViewPreference() optionalnullable.OptionalNullable[AuthUserFavoritesViewPreference] {
 	if o == nil {
 		return nil
 	}
 	return o.FavoritesViewPreference
 }
 
-func (o *AuthUserActiveDashboardView) GetRecentsViewPreference() *AuthUserRecentsViewPreference {
+func (o *AuthUserActiveDashboardView) GetRecentsViewPreference() optionalnullable.OptionalNullable[AuthUserRecentsViewPreference] {
 	if o == nil {
 		return nil
 	}
@@ -1366,11 +1367,11 @@ type AuthUser struct {
 	// Prefix that will be used in the URL of "Preview" deployments created by the User account.
 	StagingPrefix string `json:"stagingPrefix"`
 	// set of dashboard view preferences (cards or list) per scopeId
-	ActiveDashboardViews            []AuthUserActiveDashboardView            `json:"activeDashboardViews,omitempty"`
-	ImportFlowGitNamespace          *AuthUserImportFlowGitNamespace          `json:"importFlowGitNamespace,omitempty"`
-	ImportFlowGitNamespaceID        *AuthUserImportFlowGitNamespaceID        `json:"importFlowGitNamespaceId,omitempty"`
-	ImportFlowGitProvider           *AuthUserImportFlowGitProvider           `json:"importFlowGitProvider,omitempty"`
-	PreferredScopesAndGitNamespaces []AuthUserPreferredScopesAndGitNamespace `json:"preferredScopesAndGitNamespaces,omitempty"`
+	ActiveDashboardViews            []AuthUserActiveDashboardView                                       `json:"activeDashboardViews,omitempty"`
+	ImportFlowGitNamespace          optionalnullable.OptionalNullable[AuthUserImportFlowGitNamespace]   `json:"importFlowGitNamespace,omitempty"`
+	ImportFlowGitNamespaceID        optionalnullable.OptionalNullable[AuthUserImportFlowGitNamespaceID] `json:"importFlowGitNamespaceId,omitempty"`
+	ImportFlowGitProvider           optionalnullable.OptionalNullable[AuthUserImportFlowGitProvider]    `json:"importFlowGitProvider,omitempty"`
+	PreferredScopesAndGitNamespaces []AuthUserPreferredScopesAndGitNamespace                            `json:"preferredScopesAndGitNamespaces,omitempty"`
 	// A record of when, under a certain scopeId, a toast was dismissed
 	DismissedToasts []AuthUserDismissedToast `json:"dismissedToasts,omitempty"`
 	// A list of projects and spaces across teams that a user has marked as a favorite.
@@ -1452,21 +1453,21 @@ func (o *AuthUser) GetActiveDashboardViews() []AuthUserActiveDashboardView {
 	return o.ActiveDashboardViews
 }
 
-func (o *AuthUser) GetImportFlowGitNamespace() *AuthUserImportFlowGitNamespace {
+func (o *AuthUser) GetImportFlowGitNamespace() optionalnullable.OptionalNullable[AuthUserImportFlowGitNamespace] {
 	if o == nil {
 		return nil
 	}
 	return o.ImportFlowGitNamespace
 }
 
-func (o *AuthUser) GetImportFlowGitNamespaceID() *AuthUserImportFlowGitNamespaceID {
+func (o *AuthUser) GetImportFlowGitNamespaceID() optionalnullable.OptionalNullable[AuthUserImportFlowGitNamespaceID] {
 	if o == nil {
 		return nil
 	}
 	return o.ImportFlowGitNamespaceID
 }
 
-func (o *AuthUser) GetImportFlowGitProvider() *AuthUserImportFlowGitProvider {
+func (o *AuthUser) GetImportFlowGitProvider() optionalnullable.OptionalNullable[AuthUserImportFlowGitProvider] {
 	if o == nil {
 		return nil
 	}

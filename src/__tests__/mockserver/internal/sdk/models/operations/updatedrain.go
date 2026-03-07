@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 )
 
@@ -1087,16 +1088,16 @@ func (u UpdateDrainSourceRequestUnion1) MarshalJSON() ([]byte, error) {
 }
 
 type UpdateDrainRequestBody struct {
-	Name       *string                              `json:"name,omitempty"`
-	Projects   *UpdateDrainProjects                 `json:"projects,omitempty"`
-	ProjectIds []string                             `json:"projectIds,omitempty"`
-	Filter     *UpdateDrainFilterRequestUnion1      `json:"filter,omitempty"`
-	Schemas    map[string]UpdateDrainSchemasRequest `json:"schemas,omitempty"`
-	Delivery   *UpdateDrainDeliveryRequestUnion     `json:"delivery,omitempty"`
-	Sampling   []UpdateDrainSamplingRequest         `json:"sampling,omitempty"`
-	Transforms []UpdateDrainTransform               `json:"transforms,omitempty"`
-	Status     *UpdateDrainStatusRequest            `json:"status,omitempty"`
-	Source     *UpdateDrainSourceRequestUnion1      `json:"source,omitempty"`
+	Name       *string                                                           `json:"name,omitempty"`
+	Projects   *UpdateDrainProjects                                              `json:"projects,omitempty"`
+	ProjectIds optionalnullable.OptionalNullable[[]string]                       `json:"projectIds,omitempty"`
+	Filter     optionalnullable.OptionalNullable[UpdateDrainFilterRequestUnion1] `json:"filter,omitempty"`
+	Schemas    map[string]UpdateDrainSchemasRequest                              `json:"schemas,omitempty"`
+	Delivery   *UpdateDrainDeliveryRequestUnion                                  `json:"delivery,omitempty"`
+	Sampling   optionalnullable.OptionalNullable[[]UpdateDrainSamplingRequest]   `json:"sampling,omitempty"`
+	Transforms optionalnullable.OptionalNullable[[]UpdateDrainTransform]         `json:"transforms,omitempty"`
+	Status     *UpdateDrainStatusRequest                                         `json:"status,omitempty"`
+	Source     *UpdateDrainSourceRequestUnion1                                   `json:"source,omitempty"`
 }
 
 func (o *UpdateDrainRequestBody) GetName() *string {
@@ -1113,14 +1114,14 @@ func (o *UpdateDrainRequestBody) GetProjects() *UpdateDrainProjects {
 	return o.Projects
 }
 
-func (o *UpdateDrainRequestBody) GetProjectIds() []string {
+func (o *UpdateDrainRequestBody) GetProjectIds() optionalnullable.OptionalNullable[[]string] {
 	if o == nil {
 		return nil
 	}
 	return o.ProjectIds
 }
 
-func (o *UpdateDrainRequestBody) GetFilter() *UpdateDrainFilterRequestUnion1 {
+func (o *UpdateDrainRequestBody) GetFilter() optionalnullable.OptionalNullable[UpdateDrainFilterRequestUnion1] {
 	if o == nil {
 		return nil
 	}
@@ -1141,14 +1142,14 @@ func (o *UpdateDrainRequestBody) GetDelivery() *UpdateDrainDeliveryRequestUnion 
 	return o.Delivery
 }
 
-func (o *UpdateDrainRequestBody) GetSampling() []UpdateDrainSamplingRequest {
+func (o *UpdateDrainRequestBody) GetSampling() optionalnullable.OptionalNullable[[]UpdateDrainSamplingRequest] {
 	if o == nil {
 		return nil
 	}
 	return o.Sampling
 }
 
-func (o *UpdateDrainRequestBody) GetTransforms() []UpdateDrainTransform {
+func (o *UpdateDrainRequestBody) GetTransforms() optionalnullable.OptionalNullable[[]UpdateDrainTransform] {
 	if o == nil {
 		return nil
 	}
@@ -3148,28 +3149,28 @@ func (u UpdateDrainProjectAccessUnion) MarshalJSON() ([]byte, error) {
 }
 
 type UpdateDrainResponseBody2 struct {
-	ID                          string                              `json:"id"`
-	CreatedAt                   float64                             `json:"createdAt"`
-	UpdatedAt                   float64                             `json:"updatedAt"`
-	ProjectIds                  []string                            `json:"projectIds,omitempty"`
-	Name                        string                              `json:"name"`
-	TeamID                      *string                             `json:"teamId,omitempty"`
-	OwnerID                     string                              `json:"ownerId"`
-	Status                      *UpdateDrainResponseBodyStatus2     `json:"status,omitempty"`
-	FirstErrorTimestamp         *float64                            `json:"firstErrorTimestamp,omitempty"`
-	DisabledAt                  *float64                            `json:"disabledAt,omitempty"`
-	DisabledBy                  *string                             `json:"disabledBy,omitempty"`
-	DisabledReason              *UpdateDrainDisabledReason2         `json:"disabledReason,omitempty"`
-	Schemas                     UpdateDrainSchemasResponse2         `json:"schemas"`
-	Delivery                    UpdateDrainDeliveryResponseUnion2   `json:"delivery"`
-	Sampling                    []UpdateDrainSamplingResponse2      `json:"sampling,omitempty"`
-	Source                      UpdateDrainResponseBodySourceUnion2 `json:"source"`
-	Filter                      *string                             `json:"filter,omitempty"`
-	FilterV2                    *UpdateDrainFilterV2Union2          `json:"filterV2,omitempty"`
-	IntegrationIcon             *string                             `json:"integrationIcon,omitempty"`
-	IntegrationConfigurationURI *string                             `json:"integrationConfigurationUri,omitempty"`
-	IntegrationWebsite          *string                             `json:"integrationWebsite,omitempty"`
-	ProjectAccess               *UpdateDrainProjectAccessUnion      `json:"projectAccess,omitempty"`
+	ID                          string                                    `json:"id"`
+	CreatedAt                   float64                                   `json:"createdAt"`
+	UpdatedAt                   float64                                   `json:"updatedAt"`
+	ProjectIds                  []string                                  `json:"projectIds,omitempty"`
+	Name                        string                                    `json:"name"`
+	TeamID                      optionalnullable.OptionalNullable[string] `json:"teamId,omitempty"`
+	OwnerID                     string                                    `json:"ownerId"`
+	Status                      *UpdateDrainResponseBodyStatus2           `json:"status,omitempty"`
+	FirstErrorTimestamp         *float64                                  `json:"firstErrorTimestamp,omitempty"`
+	DisabledAt                  *float64                                  `json:"disabledAt,omitempty"`
+	DisabledBy                  *string                                   `json:"disabledBy,omitempty"`
+	DisabledReason              *UpdateDrainDisabledReason2               `json:"disabledReason,omitempty"`
+	Schemas                     UpdateDrainSchemasResponse2               `json:"schemas"`
+	Delivery                    UpdateDrainDeliveryResponseUnion2         `json:"delivery"`
+	Sampling                    []UpdateDrainSamplingResponse2            `json:"sampling,omitempty"`
+	Source                      UpdateDrainResponseBodySourceUnion2       `json:"source"`
+	Filter                      *string                                   `json:"filter,omitempty"`
+	FilterV2                    *UpdateDrainFilterV2Union2                `json:"filterV2,omitempty"`
+	IntegrationIcon             *string                                   `json:"integrationIcon,omitempty"`
+	IntegrationConfigurationURI *string                                   `json:"integrationConfigurationUri,omitempty"`
+	IntegrationWebsite          *string                                   `json:"integrationWebsite,omitempty"`
+	ProjectAccess               *UpdateDrainProjectAccessUnion            `json:"projectAccess,omitempty"`
 }
 
 func (u UpdateDrainResponseBody2) MarshalJSON() ([]byte, error) {
@@ -3218,7 +3219,7 @@ func (o *UpdateDrainResponseBody2) GetName() string {
 	return o.Name
 }
 
-func (o *UpdateDrainResponseBody2) GetTeamID() *string {
+func (o *UpdateDrainResponseBody2) GetTeamID() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -5148,24 +5149,24 @@ func (u UpdateDrainFilterV2Union1) MarshalJSON() ([]byte, error) {
 }
 
 type UpdateDrainResponseBody1 struct {
-	ID                  string                              `json:"id"`
-	CreatedAt           float64                             `json:"createdAt"`
-	UpdatedAt           float64                             `json:"updatedAt"`
-	ProjectIds          []string                            `json:"projectIds,omitempty"`
-	Name                string                              `json:"name"`
-	TeamID              *string                             `json:"teamId,omitempty"`
-	OwnerID             string                              `json:"ownerId"`
-	Status              *UpdateDrainResponseBodyStatus1     `json:"status,omitempty"`
-	FirstErrorTimestamp *float64                            `json:"firstErrorTimestamp,omitempty"`
-	DisabledAt          *float64                            `json:"disabledAt,omitempty"`
-	DisabledBy          *string                             `json:"disabledBy,omitempty"`
-	DisabledReason      *UpdateDrainDisabledReason1         `json:"disabledReason,omitempty"`
-	Schemas             UpdateDrainSchemasResponse1         `json:"schemas"`
-	Delivery            UpdateDrainDeliveryResponseUnion1   `json:"delivery"`
-	Sampling            []UpdateDrainSamplingResponse1      `json:"sampling,omitempty"`
-	Source              UpdateDrainResponseBodySourceUnion1 `json:"source"`
-	Filter              *string                             `json:"filter,omitempty"`
-	FilterV2            *UpdateDrainFilterV2Union1          `json:"filterV2,omitempty"`
+	ID                  string                                    `json:"id"`
+	CreatedAt           float64                                   `json:"createdAt"`
+	UpdatedAt           float64                                   `json:"updatedAt"`
+	ProjectIds          []string                                  `json:"projectIds,omitempty"`
+	Name                string                                    `json:"name"`
+	TeamID              optionalnullable.OptionalNullable[string] `json:"teamId,omitempty"`
+	OwnerID             string                                    `json:"ownerId"`
+	Status              *UpdateDrainResponseBodyStatus1           `json:"status,omitempty"`
+	FirstErrorTimestamp *float64                                  `json:"firstErrorTimestamp,omitempty"`
+	DisabledAt          *float64                                  `json:"disabledAt,omitempty"`
+	DisabledBy          *string                                   `json:"disabledBy,omitempty"`
+	DisabledReason      *UpdateDrainDisabledReason1               `json:"disabledReason,omitempty"`
+	Schemas             UpdateDrainSchemasResponse1               `json:"schemas"`
+	Delivery            UpdateDrainDeliveryResponseUnion1         `json:"delivery"`
+	Sampling            []UpdateDrainSamplingResponse1            `json:"sampling,omitempty"`
+	Source              UpdateDrainResponseBodySourceUnion1       `json:"source"`
+	Filter              *string                                   `json:"filter,omitempty"`
+	FilterV2            *UpdateDrainFilterV2Union1                `json:"filterV2,omitempty"`
 }
 
 func (u UpdateDrainResponseBody1) MarshalJSON() ([]byte, error) {
@@ -5214,7 +5215,7 @@ func (o *UpdateDrainResponseBody1) GetName() string {
 	return o.Name
 }
 
-func (o *UpdateDrainResponseBody1) GetTeamID() *string {
+func (o *UpdateDrainResponseBody1) GetTeamID() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}

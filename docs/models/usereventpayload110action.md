@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload110Action } from "@vercel/sdk/models/userevent.js";
+import { UserEventPayload110Action } from "@vercel/sdk/models/seventyeight.js";
 
-let value: UserEventPayload110Action = "soft-blocked";
+let value: UserEventPayload110Action = "disable";
 ```
 
 ## Values
 
 ```typescript
-"blocked" | "hard-blocked" | "soft-blocked" | "unblocked"
+"enable" | "disable"
 ```

@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 )
 
@@ -61,10 +62,10 @@ func (o *UpdateTeamMemberProject) GetRole() *UpdateTeamMemberRole {
 }
 
 type UpdateTeamMemberJoinedFrom struct {
-	SsoUserID any `json:"ssoUserId,omitempty"`
+	SsoUserID optionalnullable.OptionalNullable[any] `json:"ssoUserId,omitempty"`
 }
 
-func (o *UpdateTeamMemberJoinedFrom) GetSsoUserID() any {
+func (o *UpdateTeamMemberJoinedFrom) GetSsoUserID() optionalnullable.OptionalNullable[any] {
 	if o == nil {
 		return nil
 	}

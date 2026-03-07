@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 )
 
@@ -333,15 +334,15 @@ func (o *GetProjectDomainsVerification2) GetReason() string {
 }
 
 type GetProjectDomainsDomain2 struct {
-	Name                string   `json:"name"`
-	ApexName            string   `json:"apexName"`
-	ProjectID           string   `json:"projectId"`
-	Redirect            *string  `json:"redirect,omitempty"`
-	RedirectStatusCode  *float64 `json:"redirectStatusCode,omitempty"`
-	GitBranch           *string  `json:"gitBranch,omitempty"`
-	CustomEnvironmentID *string  `json:"customEnvironmentId,omitempty"`
-	UpdatedAt           *float64 `json:"updatedAt,omitempty"`
-	CreatedAt           *float64 `json:"createdAt,omitempty"`
+	Name                string                                     `json:"name"`
+	ApexName            string                                     `json:"apexName"`
+	ProjectID           string                                     `json:"projectId"`
+	Redirect            optionalnullable.OptionalNullable[string]  `json:"redirect,omitempty"`
+	RedirectStatusCode  optionalnullable.OptionalNullable[float64] `json:"redirectStatusCode,omitempty"`
+	GitBranch           optionalnullable.OptionalNullable[string]  `json:"gitBranch,omitempty"`
+	CustomEnvironmentID optionalnullable.OptionalNullable[string]  `json:"customEnvironmentId,omitempty"`
+	UpdatedAt           *float64                                   `json:"updatedAt,omitempty"`
+	CreatedAt           *float64                                   `json:"createdAt,omitempty"`
 	// `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed.
 	Verified bool `json:"verified"`
 	// A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
@@ -380,28 +381,28 @@ func (o *GetProjectDomainsDomain2) GetProjectID() string {
 	return o.ProjectID
 }
 
-func (o *GetProjectDomainsDomain2) GetRedirect() *string {
+func (o *GetProjectDomainsDomain2) GetRedirect() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.Redirect
 }
 
-func (o *GetProjectDomainsDomain2) GetRedirectStatusCode() *float64 {
+func (o *GetProjectDomainsDomain2) GetRedirectStatusCode() optionalnullable.OptionalNullable[float64] {
 	if o == nil {
 		return nil
 	}
 	return o.RedirectStatusCode
 }
 
-func (o *GetProjectDomainsDomain2) GetGitBranch() *string {
+func (o *GetProjectDomainsDomain2) GetGitBranch() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.GitBranch
 }
 
-func (o *GetProjectDomainsDomain2) GetCustomEnvironmentID() *string {
+func (o *GetProjectDomainsDomain2) GetCustomEnvironmentID() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -515,15 +516,15 @@ func (o *GetProjectDomainsVerification1) GetReason() string {
 }
 
 type GetProjectDomainsDomain1 struct {
-	Name                string   `json:"name"`
-	ApexName            string   `json:"apexName"`
-	ProjectID           string   `json:"projectId"`
-	Redirect            *string  `json:"redirect,omitempty"`
-	RedirectStatusCode  *float64 `json:"redirectStatusCode,omitempty"`
-	GitBranch           *string  `json:"gitBranch,omitempty"`
-	CustomEnvironmentID *string  `json:"customEnvironmentId,omitempty"`
-	UpdatedAt           *float64 `json:"updatedAt,omitempty"`
-	CreatedAt           *float64 `json:"createdAt,omitempty"`
+	Name                string                                     `json:"name"`
+	ApexName            string                                     `json:"apexName"`
+	ProjectID           string                                     `json:"projectId"`
+	Redirect            optionalnullable.OptionalNullable[string]  `json:"redirect,omitempty"`
+	RedirectStatusCode  optionalnullable.OptionalNullable[float64] `json:"redirectStatusCode,omitempty"`
+	GitBranch           optionalnullable.OptionalNullable[string]  `json:"gitBranch,omitempty"`
+	CustomEnvironmentID optionalnullable.OptionalNullable[string]  `json:"customEnvironmentId,omitempty"`
+	UpdatedAt           *float64                                   `json:"updatedAt,omitempty"`
+	CreatedAt           *float64                                   `json:"createdAt,omitempty"`
 	// `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed.
 	Verified bool `json:"verified"`
 	// A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
@@ -562,28 +563,28 @@ func (o *GetProjectDomainsDomain1) GetProjectID() string {
 	return o.ProjectID
 }
 
-func (o *GetProjectDomainsDomain1) GetRedirect() *string {
+func (o *GetProjectDomainsDomain1) GetRedirect() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.Redirect
 }
 
-func (o *GetProjectDomainsDomain1) GetRedirectStatusCode() *float64 {
+func (o *GetProjectDomainsDomain1) GetRedirectStatusCode() optionalnullable.OptionalNullable[float64] {
 	if o == nil {
 		return nil
 	}
 	return o.RedirectStatusCode
 }
 
-func (o *GetProjectDomainsDomain1) GetGitBranch() *string {
+func (o *GetProjectDomainsDomain1) GetGitBranch() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.GitBranch
 }
 
-func (o *GetProjectDomainsDomain1) GetCustomEnvironmentID() *string {
+func (o *GetProjectDomainsDomain1) GetCustomEnvironmentID() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}

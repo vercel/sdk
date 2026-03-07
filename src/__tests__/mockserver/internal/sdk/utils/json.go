@@ -58,14 +58,14 @@ func MarshalJSON(v interface{}, tag reflect.StructTag, topLevel bool) ([]byte, e
 				for _, tag := range strings.Split(jsonTag, ",") {
 					if tag == "omitempty" {
 						omitEmpty = true
-					} else {
+					} else if tag != "omitzero" {
 						fieldName = tag
 					}
 				}
 			}
 
-			if (isNil(field.Type, fieldVal) || isEmpty(field.Type, fieldVal)) && field.Tag.Get("const") == "" {
-				if omitEmpty {
+			if omitEmpty && field.Tag.Get("const") == "" {
+				if isNil(field.Type, fieldVal) || isEmpty(field.Type, fieldVal) {
 					continue
 				}
 			}
@@ -168,7 +168,7 @@ func UnmarshalJSON(b []byte, v interface{}, tag reflect.StructTag, topLevel bool
 			jsonTag := field.Tag.Get("json")
 			if jsonTag != "" {
 				for _, tag := range strings.Split(jsonTag, ",") {
-					if tag != "omitempty" {
+					if tag != "omitempty" && tag != "omitzero" {
 						fieldName = tag
 					}
 				}
@@ -297,6 +297,10 @@ func marshalValue(v interface{}, tag reflect.StructTag) (json.RawMessage, error)
 	case reflect.Map:
 		if isNil(typ, val) {
 			return []byte("null"), nil
+		}
+
+		if implementsJSONMarshaler(v) {
+			return json.Marshal(v)
 		}
 
 		out := map[string]json.RawMessage{}

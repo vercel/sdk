@@ -5,7 +5,7 @@ Description of why a project was rolled back, and by whom. Note that lastAliasRe
 ## Example Usage
 
 ```typescript
-import { ResponseBodyRollbackDescription } from "@vercel/sdk/models/getprojectsop.js";
+import { ResponseBodyRollbackDescription } from "@vercel/sdk/models/getprojectsrouteprojectsresponse200has.js";
 
 let value: ResponseBodyRollbackDescription = {
   userId: "<id>",

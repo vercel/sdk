@@ -7,8 +7,8 @@ import (
 	"log"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
-	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/models/operations"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
@@ -47,7 +47,7 @@ func testGetProjectsGetProjects0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody *operations.GetProjectsResponseBody = types.Pointer(operations.CreateGetProjectsResponseBodyGetProjectsResponseBody2(
+	var respBody optionalnullable.OptionalNullable[operations.GetProjectsResponseBody] = optionalnullable.From(types.Pointer(operations.CreateGetProjectsResponseBodyGetProjectsResponseBody2(
 		operations.GetProjectsResponseBody2{
 			Projects: []operations.GetProjectsProject1{
 				operations.GetProjectsProject1{
@@ -55,55 +55,63 @@ func testGetProjectsGetProjects0(w http.ResponseWriter, req *http.Request) {
 					Alias: []operations.ProjectAlias{
 						operations.ProjectAlias{
 							Deployment: &operations.ProjectDeployment{
-								CreatedAt: 4236.55,
+								CreatedAt: 7917.25,
 								CreatedIn: "<value>",
 								Creator: &operations.ProjectDeploymentCreator{
-									Email:    "Sim56@yahoo.com",
+									Email:    "Tianna83@yahoo.com",
 									UID:      "<id>",
-									Username: "Antonetta77",
+									Username: "Sarah_Schmidt-Koepp",
 								},
 								DeploymentHostname: "<value>",
 								Name:               "<value>",
 								ID:                 "<id>",
 								Plan:               "<value>",
-								Private:            false,
+								Private:            true,
 								ReadyState:         "<value>",
 								Type:               "<value>",
-								URL:                "https://leading-scaffold.com",
+								URL:                "https://misguided-hawk.biz",
 								UserID:             "<id>",
 							},
-							Domain:      "productive-charm.org",
-							Environment: operations.ProjectEnvironmentPreview,
+							Domain:      "sorrowful-import.name",
+							Environment: operations.ProjectEnvironmentProduction,
 							Target:      operations.ProjectAliasTargetStaging,
 						},
 					},
-					DirectoryListing:     true,
+					DirectoryListing:     false,
 					DeploymentExpiration: operations.ProjectDeploymentExpiration1{},
 					ID:                   "<id>",
 					Name:                 "<value>",
-					NodeVersion:          operations.ProjectNodeVersion1TwelveDotX,
+					NodeVersion:          operations.ProjectNodeVersion1FourteenDotX,
 					ResourceConfig: operations.ProjectResourceConfig1{
 						FunctionDefaultRegions: []string{
 							"<value 1>",
+							"<value 2>",
+							"<value 3>",
 						},
 					},
-					RollingRelease: &operations.ProjectRollingRelease1{
-						Target:               "production",
-						Stages:               nil,
+					RollingRelease: optionalnullable.From(&operations.ProjectRollingRelease1{
+						Target: "production",
+						Stages: optionalnullable.From(types.Pointer([]operations.ProjectStage1{
+							operations.ProjectStage1{
+								TargetPercentage: 25,
+								RequireApproval:  types.Bool(false),
+								Duration:         types.Float64(600),
+								LinearShift:      types.Bool(false),
+							},
+						})),
 						CanaryResponseHeader: types.Bool(false),
-					},
+					}),
 					ServerlessFunctionRegion: "<value>",
 				},
 			},
-			Pagination: operations.CreatePaginationUnion1Pagination(
-				components.Pagination{
+			Pagination: operations.CreatePaginationUnion1GetProjectsPagination1(
+				operations.GetProjectsPagination1{
 					Count: 20,
-					Next:  types.Float64(1540095775951),
-					Prev:  types.Float64(1540095775951),
+					Next:  types.String("JBSWY3DPEHPK3PXP"),
 				},
 			),
 		},
-	))
+	)))
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

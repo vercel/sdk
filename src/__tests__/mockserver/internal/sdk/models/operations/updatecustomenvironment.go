@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 )
 
 // UpdateCustomEnvironmentTypeRequest - Type of matcher. One of \"equals\", \"startsWith\", or \"endsWith\".
@@ -66,7 +67,7 @@ type UpdateCustomEnvironmentRequestBody struct {
 	// Description of the custom environment. This is optional.
 	Description *string `json:"description,omitempty"`
 	// How we want to determine a matching branch. This is optional.
-	BranchMatcher *UpdateCustomEnvironmentBranchMatcherRequest `json:"branchMatcher,omitempty"`
+	BranchMatcher optionalnullable.OptionalNullable[UpdateCustomEnvironmentBranchMatcherRequest] `json:"branchMatcher,omitempty"`
 }
 
 func (o *UpdateCustomEnvironmentRequestBody) GetSlug() *string {
@@ -83,7 +84,7 @@ func (o *UpdateCustomEnvironmentRequestBody) GetDescription() *string {
 	return o.Description
 }
 
-func (o *UpdateCustomEnvironmentRequestBody) GetBranchMatcher() *UpdateCustomEnvironmentBranchMatcherRequest {
+func (o *UpdateCustomEnvironmentRequestBody) GetBranchMatcher() optionalnullable.OptionalNullable[UpdateCustomEnvironmentBranchMatcherRequest] {
 	if o == nil {
 		return nil
 	}
@@ -257,15 +258,15 @@ func (o *UpdateCustomEnvironmentVerification) GetReason() string {
 
 // UpdateCustomEnvironmentDomain - List of domains associated with this environment
 type UpdateCustomEnvironmentDomain struct {
-	Name                string   `json:"name"`
-	ApexName            string   `json:"apexName"`
-	ProjectID           string   `json:"projectId"`
-	Redirect            *string  `json:"redirect,omitempty"`
-	RedirectStatusCode  *float64 `json:"redirectStatusCode,omitempty"`
-	GitBranch           *string  `json:"gitBranch,omitempty"`
-	CustomEnvironmentID *string  `json:"customEnvironmentId,omitempty"`
-	UpdatedAt           *float64 `json:"updatedAt,omitempty"`
-	CreatedAt           *float64 `json:"createdAt,omitempty"`
+	Name                string                                     `json:"name"`
+	ApexName            string                                     `json:"apexName"`
+	ProjectID           string                                     `json:"projectId"`
+	Redirect            optionalnullable.OptionalNullable[string]  `json:"redirect,omitempty"`
+	RedirectStatusCode  optionalnullable.OptionalNullable[float64] `json:"redirectStatusCode,omitempty"`
+	GitBranch           optionalnullable.OptionalNullable[string]  `json:"gitBranch,omitempty"`
+	CustomEnvironmentID optionalnullable.OptionalNullable[string]  `json:"customEnvironmentId,omitempty"`
+	UpdatedAt           *float64                                   `json:"updatedAt,omitempty"`
+	CreatedAt           *float64                                   `json:"createdAt,omitempty"`
 	// `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed.
 	Verified bool `json:"verified"`
 	// A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
@@ -293,28 +294,28 @@ func (o *UpdateCustomEnvironmentDomain) GetProjectID() string {
 	return o.ProjectID
 }
 
-func (o *UpdateCustomEnvironmentDomain) GetRedirect() *string {
+func (o *UpdateCustomEnvironmentDomain) GetRedirect() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.Redirect
 }
 
-func (o *UpdateCustomEnvironmentDomain) GetRedirectStatusCode() *float64 {
+func (o *UpdateCustomEnvironmentDomain) GetRedirectStatusCode() optionalnullable.OptionalNullable[float64] {
 	if o == nil {
 		return nil
 	}
 	return o.RedirectStatusCode
 }
 
-func (o *UpdateCustomEnvironmentDomain) GetGitBranch() *string {
+func (o *UpdateCustomEnvironmentDomain) GetGitBranch() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.GitBranch
 }
 
-func (o *UpdateCustomEnvironmentDomain) GetCustomEnvironmentID() *string {
+func (o *UpdateCustomEnvironmentDomain) GetCustomEnvironmentID() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}

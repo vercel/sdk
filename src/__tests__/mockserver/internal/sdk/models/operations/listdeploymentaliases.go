@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 	"time"
 )
@@ -495,7 +496,7 @@ type ListDeploymentAliasesAlias struct {
 	// The date when the alias was created
 	Created time.Time `json:"created"`
 	// Target destination domain for redirect when the alias is a redirect
-	Redirect *string `json:"redirect,omitempty"`
+	Redirect optionalnullable.OptionalNullable[string] `json:"redirect,omitempty"`
 	// The protection bypass for the alias
 	ProtectionBypass map[string]ListDeploymentAliasesProtectionBypassUnion `json:"protectionBypass,omitempty"`
 }
@@ -532,7 +533,7 @@ func (o *ListDeploymentAliasesAlias) GetCreated() time.Time {
 	return o.Created
 }
 
-func (o *ListDeploymentAliasesAlias) GetRedirect() *string {
+func (o *ListDeploymentAliasesAlias) GetRedirect() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}

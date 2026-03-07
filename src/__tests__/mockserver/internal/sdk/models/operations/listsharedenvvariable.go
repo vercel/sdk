@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 	"time"
 )
@@ -162,15 +163,15 @@ type ListSharedEnvVariableData struct {
 	// The name of the Shared Env Var.
 	Key *string `json:"key,omitempty"`
 	// The unique identifier of the owner (team) the Shared Env Var was created for.
-	OwnerID *string `json:"ownerId,omitempty"`
+	OwnerID optionalnullable.OptionalNullable[string] `json:"ownerId,omitempty"`
 	// The unique identifier of the Shared Env Var.
 	ID *string `json:"id,omitempty"`
 	// The unique identifier of the user who created the Shared Env Var.
-	CreatedBy *string `json:"createdBy,omitempty"`
+	CreatedBy optionalnullable.OptionalNullable[string] `json:"createdBy,omitempty"`
 	// The unique identifier of the user who deleted the Shared Env Var.
-	DeletedBy *string `json:"deletedBy,omitempty"`
+	DeletedBy optionalnullable.OptionalNullable[string] `json:"deletedBy,omitempty"`
 	// The unique identifier of the user who last updated the Shared Env Var.
-	UpdatedBy *string `json:"updatedBy,omitempty"`
+	UpdatedBy optionalnullable.OptionalNullable[string] `json:"updatedBy,omitempty"`
 	// Timestamp for when the Shared Env Var was created.
 	CreatedAt *float64 `json:"createdAt,omitempty"`
 	// Timestamp for when the Shared Env Var was (soft) deleted.
@@ -220,7 +221,7 @@ func (o *ListSharedEnvVariableData) GetKey() *string {
 	return o.Key
 }
 
-func (o *ListSharedEnvVariableData) GetOwnerID() *string {
+func (o *ListSharedEnvVariableData) GetOwnerID() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -234,21 +235,21 @@ func (o *ListSharedEnvVariableData) GetID() *string {
 	return o.ID
 }
 
-func (o *ListSharedEnvVariableData) GetCreatedBy() *string {
+func (o *ListSharedEnvVariableData) GetCreatedBy() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedBy
 }
 
-func (o *ListSharedEnvVariableData) GetDeletedBy() *string {
+func (o *ListSharedEnvVariableData) GetDeletedBy() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.DeletedBy
 }
 
-func (o *ListSharedEnvVariableData) GetUpdatedBy() *string {
+func (o *ListSharedEnvVariableData) GetUpdatedBy() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}

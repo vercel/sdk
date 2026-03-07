@@ -8,6 +8,7 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/operations"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
@@ -70,10 +71,10 @@ func testGetConfigurationGetConfiguration0(w http.ResponseWriter, req *http.Requ
 			},
 			Type:      operations.GetConfigurationTypeIntegrationConfiguration1IntegrationConfiguration,
 			CreatedAt: 1558531915505,
-			DeletedAt: types.Float64(1558531915505),
+			DeletedAt: optionalnullable.From(types.Float64(1558531915505)),
 			ID:        "icfg_3bwCLgxL8qt5kjRLcv2Dit7F",
 			Slug:      "slack",
-			TeamID:    types.String("team_nLlpyC6RE1qxydlFKbrxDlud"),
+			TeamID:    optionalnullable.From(types.String("team_nLlpyC6RE1qxydlFKbrxDlud")),
 			UpdatedAt: 1558531915505,
 			UserID:    "kr1PsOIzqEL5Xg6M4VZcZosf",
 			Scopes: []string{
@@ -85,7 +86,7 @@ func testGetConfigurationGetConfiguration0(w http.ResponseWriter, req *http.Requ
 			OwnerID:           "kr1PsOIzqEL5Xg6M4VZcZosf",
 			CompletedAt:       types.Float64(1558531915505),
 			DisabledAt:        types.Float64(1558531915505),
-			DeleteRequestedAt: types.Float64(1558531915505),
+			DeleteRequestedAt: optionalnullable.From(types.Float64(1558531915505)),
 		},
 	))
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

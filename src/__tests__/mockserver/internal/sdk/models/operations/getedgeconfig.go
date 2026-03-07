@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 )
 
@@ -271,12 +272,12 @@ type GetEdgeConfigResponseBody struct {
 	CreatedBy *string `json:"createdBy,omitempty"`
 	OwnerID   string  `json:"ownerId"`
 	// Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
-	Slug      string                     `json:"slug"`
-	UpdatedAt float64                    `json:"updatedAt"`
-	Digest    string                     `json:"digest"`
-	Purpose   *GetEdgeConfigPurposeUnion `json:"purpose,omitempty"`
-	DeletedAt *float64                   `json:"deletedAt,omitempty"`
-	Schema    *GetEdgeConfigSchema       `json:"schema,omitempty"`
+	Slug      string                                     `json:"slug"`
+	UpdatedAt float64                                    `json:"updatedAt"`
+	Digest    string                                     `json:"digest"`
+	Purpose   *GetEdgeConfigPurposeUnion                 `json:"purpose,omitempty"`
+	DeletedAt optionalnullable.OptionalNullable[float64] `json:"deletedAt,omitempty"`
+	Schema    *GetEdgeConfigSchema                       `json:"schema,omitempty"`
 	// Timestamp of when the Edge Config was synced to DynamoDB initially. It is only set when syncing the entire Edge Config, not when updating.
 	SyncedToDynamoAt *float64 `json:"syncedToDynamoAt,omitempty"`
 	SizeInBytes      float64  `json:"sizeInBytes"`
@@ -360,7 +361,7 @@ func (o *GetEdgeConfigResponseBody) GetPurposeExperimentation() *GetEdgeConfigPu
 	return nil
 }
 
-func (o *GetEdgeConfigResponseBody) GetDeletedAt() *float64 {
+func (o *GetEdgeConfigResponseBody) GetDeletedAt() optionalnullable.OptionalNullable[float64] {
 	if o == nil {
 		return nil
 	}

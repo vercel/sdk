@@ -4,6 +4,7 @@ package operations
 
 import (
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 )
 
 type GetRollingReleaseConfigRequest struct {
@@ -81,7 +82,7 @@ type GetRollingReleaseConfigRollingRelease struct {
 	// The environment that the release targets, currently only supports production. Adding in case we want to configure with alias groups or custom environments.
 	Target string `json:"target"`
 	// An array of all the stages required during a deployment release. Each stage defines a target percentage and advancement rules. The final stage must always have targetPercentage: 100.
-	Stages []GetRollingReleaseConfigStage `json:"stages,omitempty"`
+	Stages optionalnullable.OptionalNullable[[]GetRollingReleaseConfigStage] `json:"stages,omitempty"`
 	// Whether the request served by a canary deployment should return a header indicating a canary was served. Defaults to `false` when omitted.
 	CanaryResponseHeader *bool `json:"canaryResponseHeader,omitempty"`
 }
@@ -93,7 +94,7 @@ func (o *GetRollingReleaseConfigRollingRelease) GetTarget() string {
 	return o.Target
 }
 
-func (o *GetRollingReleaseConfigRollingRelease) GetStages() []GetRollingReleaseConfigStage {
+func (o *GetRollingReleaseConfigRollingRelease) GetStages() optionalnullable.OptionalNullable[[]GetRollingReleaseConfigStage] {
 	if o == nil {
 		return nil
 	}

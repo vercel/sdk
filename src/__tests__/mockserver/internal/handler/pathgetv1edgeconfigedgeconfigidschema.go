@@ -8,6 +8,7 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/operations"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
@@ -45,7 +46,7 @@ func testGetEdgeConfigSchemaGetEdgeConfigSchema0(w http.ResponseWriter, req *htt
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody *operations.GetEdgeConfigSchemaResponseBody = &operations.GetEdgeConfigSchemaResponseBody{}
+	var respBody optionalnullable.OptionalNullable[operations.GetEdgeConfigSchemaResponseBody] = optionalnullable.From(&operations.GetEdgeConfigSchemaResponseBody{})
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

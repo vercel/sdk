@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 )
 
 // UpdateRecordTypeRequest - The type of the DNS record
@@ -95,9 +96,9 @@ func (o *UpdateRecordSrv) GetPriority() *int64 {
 }
 
 type UpdateRecordHTTPS struct {
-	Priority *int64  `json:"priority"`
-	Target   *string `json:"target"`
-	Params   *string `json:"params,omitempty"`
+	Priority *int64                                    `json:"priority"`
+	Target   *string                                   `json:"target"`
+	Params   optionalnullable.OptionalNullable[string] `json:"params,omitempty"`
 }
 
 func (o *UpdateRecordHTTPS) GetPriority() *int64 {
@@ -114,7 +115,7 @@ func (o *UpdateRecordHTTPS) GetTarget() *string {
 	return o.Target
 }
 
-func (o *UpdateRecordHTTPS) GetParams() *string {
+func (o *UpdateRecordHTTPS) GetParams() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -123,64 +124,64 @@ func (o *UpdateRecordHTTPS) GetParams() *string {
 
 type UpdateRecordRequestBody struct {
 	// The name of the DNS record
-	Name *string `json:"name,omitempty"`
+	Name optionalnullable.OptionalNullable[string] `json:"name,omitempty"`
 	// The value of the DNS record
-	Value *string `json:"value,omitempty"`
+	Value optionalnullable.OptionalNullable[string] `json:"value,omitempty"`
 	// The type of the DNS record
-	Type *UpdateRecordTypeRequest `json:"type,omitempty"`
+	Type optionalnullable.OptionalNullable[UpdateRecordTypeRequest] `json:"type,omitempty"`
 	// The Time to live (TTL) value of the DNS record
-	TTL *int64 `json:"ttl,omitempty"`
+	TTL optionalnullable.OptionalNullable[int64] `json:"ttl,omitempty"`
 	// The MX priority value of the DNS record
-	MxPriority *int64             `json:"mxPriority,omitempty"`
-	Srv        *UpdateRecordSrv   `json:"srv,omitempty"`
-	HTTPS      *UpdateRecordHTTPS `json:"https,omitempty"`
+	MxPriority optionalnullable.OptionalNullable[int64]             `json:"mxPriority,omitempty"`
+	Srv        optionalnullable.OptionalNullable[UpdateRecordSrv]   `json:"srv,omitempty"`
+	HTTPS      optionalnullable.OptionalNullable[UpdateRecordHTTPS] `json:"https,omitempty"`
 	// A comment to add context on what this DNS record is for
 	Comment *string `json:"comment,omitempty"`
 }
 
-func (o *UpdateRecordRequestBody) GetName() *string {
+func (o *UpdateRecordRequestBody) GetName() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.Name
 }
 
-func (o *UpdateRecordRequestBody) GetValue() *string {
+func (o *UpdateRecordRequestBody) GetValue() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.Value
 }
 
-func (o *UpdateRecordRequestBody) GetType() *UpdateRecordTypeRequest {
+func (o *UpdateRecordRequestBody) GetType() optionalnullable.OptionalNullable[UpdateRecordTypeRequest] {
 	if o == nil {
 		return nil
 	}
 	return o.Type
 }
 
-func (o *UpdateRecordRequestBody) GetTTL() *int64 {
+func (o *UpdateRecordRequestBody) GetTTL() optionalnullable.OptionalNullable[int64] {
 	if o == nil {
 		return nil
 	}
 	return o.TTL
 }
 
-func (o *UpdateRecordRequestBody) GetMxPriority() *int64 {
+func (o *UpdateRecordRequestBody) GetMxPriority() optionalnullable.OptionalNullable[int64] {
 	if o == nil {
 		return nil
 	}
 	return o.MxPriority
 }
 
-func (o *UpdateRecordRequestBody) GetSrv() *UpdateRecordSrv {
+func (o *UpdateRecordRequestBody) GetSrv() optionalnullable.OptionalNullable[UpdateRecordSrv] {
 	if o == nil {
 		return nil
 	}
 	return o.Srv
 }
 
-func (o *UpdateRecordRequestBody) GetHTTPS() *UpdateRecordHTTPS {
+func (o *UpdateRecordRequestBody) GetHTTPS() optionalnullable.OptionalNullable[UpdateRecordHTTPS] {
 	if o == nil {
 		return nil
 	}
@@ -309,16 +310,16 @@ func (e *RecordType) UnmarshalJSON(data []byte) error {
 }
 
 type UpdateRecordResponseBody struct {
-	ID         string                       `json:"id"`
-	Name       string                       `json:"name"`
-	Type       UpdateRecordTypeResponseBody `json:"type"`
-	Value      string                       `json:"value"`
-	Creator    string                       `json:"creator"`
-	Domain     string                       `json:"domain"`
-	TTL        *float64                     `json:"ttl,omitempty"`
-	Comment    *string                      `json:"comment,omitempty"`
-	RecordType RecordType                   `json:"recordType"`
-	CreatedAt  *float64                     `json:"createdAt,omitempty"`
+	ID         string                                     `json:"id"`
+	Name       string                                     `json:"name"`
+	Type       UpdateRecordTypeResponseBody               `json:"type"`
+	Value      string                                     `json:"value"`
+	Creator    string                                     `json:"creator"`
+	Domain     string                                     `json:"domain"`
+	TTL        *float64                                   `json:"ttl,omitempty"`
+	Comment    *string                                    `json:"comment,omitempty"`
+	RecordType RecordType                                 `json:"recordType"`
+	CreatedAt  optionalnullable.OptionalNullable[float64] `json:"createdAt,omitempty"`
 }
 
 func (o *UpdateRecordResponseBody) GetID() string {
@@ -384,7 +385,7 @@ func (o *UpdateRecordResponseBody) GetRecordType() RecordType {
 	return o.RecordType
 }
 
-func (o *UpdateRecordResponseBody) GetCreatedAt() *float64 {
+func (o *UpdateRecordResponseBody) GetCreatedAt() optionalnullable.OptionalNullable[float64] {
 	if o == nil {
 		return nil
 	}

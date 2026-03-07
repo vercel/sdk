@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyFunctionMemoryType } from "@vercel/sdk/models/getdeploymentop.js";
+import { ResponseBodyFunctionMemoryType } from "@vercel/sdk/models/getdeploymentresponsebody.js";
 
 let value: ResponseBodyFunctionMemoryType = "standard_legacy";
 ```

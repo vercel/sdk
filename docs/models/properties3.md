@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Properties3 } from "@vercel/sdk/models/getconfigurationproductsop.js";
+import { Properties3 } from "@vercel/sdk/models/getconfigurationproductsresponsebody.js";
 
 let value: Properties3 = {
   type: "boolean",

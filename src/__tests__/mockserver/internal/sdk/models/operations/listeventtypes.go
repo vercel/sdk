@@ -127,6 +127,9 @@ const (
 	NameDeployHookDeleted                               Name = "deploy-hook-deleted"
 	NameDeployHookDeduped                               Name = "deploy-hook-deduped"
 	NameDeployHookProcessed                             Name = "deploy-hook-processed"
+	NameDeploymentCheckCreated                          Name = "deployment-check-created"
+	NameDeploymentCheckUpdated                          Name = "deployment-check-updated"
+	NameDeploymentCheckDeleted                          Name = "deployment-check-deleted"
 	NameAuthorizeGitDeployment                          Name = "authorize-git-deployment"
 	NameDeploymentChown                                 Name = "deployment-chown"
 	NameDeploymentCreationBlocked                       Name = "deployment-creation-blocked"
@@ -144,6 +147,7 @@ const (
 	NameDomainServiceTypeUpdated                        Name = "domain-service-type-updated"
 	NameDomainCustomNsChange                            Name = "domain-custom-ns-change"
 	NameDNSZonefileImport                               Name = "dns-zonefile-import"
+	NameDomainZoneChange                                Name = "domain-zone-change"
 	NameDomainMoveIn                                    Name = "domain-move-in"
 	NameDomainMoveOut                                   Name = "domain-move-out"
 	NameDomainMoveOutRequestSent                        Name = "domain-move-out-request-sent"
@@ -627,6 +631,12 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "deploy-hook-processed":
 		fallthrough
+	case "deployment-check-created":
+		fallthrough
+	case "deployment-check-updated":
+		fallthrough
+	case "deployment-check-deleted":
+		fallthrough
 	case "authorize-git-deployment":
 		fallthrough
 	case "deployment-chown":
@@ -660,6 +670,8 @@ func (e *Name) UnmarshalJSON(data []byte) error {
 	case "domain-custom-ns-change":
 		fallthrough
 	case "dns-zonefile-import":
+		fallthrough
+	case "domain-zone-change":
 		fallthrough
 	case "domain-move-in":
 		fallthrough

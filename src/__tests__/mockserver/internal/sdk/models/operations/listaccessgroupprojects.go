@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 )
 
 type ListAccessGroupProjectsRequest struct {
@@ -89,9 +90,9 @@ func (e *ListAccessGroupProjectsRole) UnmarshalJSON(data []byte) error {
 }
 
 type ListAccessGroupProjectsProjectProject struct {
-	Name               *string `json:"name,omitempty"`
-	Framework          *string `json:"framework,omitempty"`
-	LatestDeploymentID *string `json:"latestDeploymentId,omitempty"`
+	Name               *string                                   `json:"name,omitempty"`
+	Framework          optionalnullable.OptionalNullable[string] `json:"framework,omitempty"`
+	LatestDeploymentID *string                                   `json:"latestDeploymentId,omitempty"`
 }
 
 func (o *ListAccessGroupProjectsProjectProject) GetName() *string {
@@ -101,7 +102,7 @@ func (o *ListAccessGroupProjectsProjectProject) GetName() *string {
 	return o.Name
 }
 
-func (o *ListAccessGroupProjectsProjectProject) GetFramework() *string {
+func (o *ListAccessGroupProjectsProjectProject) GetFramework() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}

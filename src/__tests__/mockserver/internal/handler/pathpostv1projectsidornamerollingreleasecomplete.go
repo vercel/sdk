@@ -8,6 +8,7 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/operations"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
@@ -61,7 +62,7 @@ func testCompleteRollingReleaseCompleteRollingRelease0(w http.ResponseWriter, re
 				ReadyState:   operations.CompleteRollingReleaseCurrentDeploymentReadyStateReady,
 				ReadyStateAt: types.Float64(1716206800000),
 				Source:       operations.CompleteRollingReleaseCurrentDeploymentSourceGit.ToPointer(),
-				Target:       operations.CompleteRollingReleaseCurrentDeploymentTargetProduction.ToPointer(),
+				Target:       optionalnullable.From(operations.CompleteRollingReleaseCurrentDeploymentTargetProduction.ToPointer()),
 				URL:          "my-shop.vercel.app",
 			},
 			CanaryDeployment: &operations.CompleteRollingReleaseCanaryDeployment{
@@ -71,7 +72,7 @@ func testCompleteRollingReleaseCompleteRollingRelease0(w http.ResponseWriter, re
 				ReadyState:   operations.CompleteRollingReleaseCanaryDeploymentReadyStateReady,
 				ReadyStateAt: types.Float64(1716210400000),
 				Source:       operations.CompleteRollingReleaseCanaryDeploymentSourceGit.ToPointer(),
-				Target:       operations.CompleteRollingReleaseCanaryDeploymentTargetProduction.ToPointer(),
+				Target:       optionalnullable.From(operations.CompleteRollingReleaseCanaryDeploymentTargetProduction.ToPointer()),
 				URL:          "9c7e2f4-my-shop.vercel.app",
 			},
 			QueuedDeploymentID: types.String("dpl_ghi789"),

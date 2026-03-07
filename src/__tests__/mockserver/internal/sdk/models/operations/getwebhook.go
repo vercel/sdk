@@ -126,6 +126,12 @@ const (
 	GetWebhookEventObservabilityUsageAnomaly                          GetWebhookEvent = "observability.usage-anomaly"
 	GetWebhookEventObservabilityErrorAnomaly                          GetWebhookEvent = "observability.error-anomaly"
 	GetWebhookEventBotidAnomaly                                       GetWebhookEvent = "botid.anomaly"
+	GetWebhookEventFlagCreated                                        GetWebhookEvent = "flag.created"
+	GetWebhookEventFlagUpdated                                        GetWebhookEvent = "flag.updated"
+	GetWebhookEventFlagDeleted                                        GetWebhookEvent = "flag.deleted"
+	GetWebhookEventSegmentCreated                                     GetWebhookEvent = "segment.created"
+	GetWebhookEventSegmentUpdated                                     GetWebhookEvent = "segment.updated"
+	GetWebhookEventSegmentDeleted                                     GetWebhookEvent = "segment.deleted"
 	GetWebhookEventTestWebhook                                        GetWebhookEvent = "test-webhook"
 	GetWebhookEventMessageCreated                                     GetWebhookEvent = "message.created"
 	GetWebhookEventMessageUpdated                                     GetWebhookEvent = "message.updated"
@@ -315,6 +321,18 @@ func (e *GetWebhookEvent) UnmarshalJSON(data []byte) error {
 	case "observability.error-anomaly":
 		fallthrough
 	case "botid.anomaly":
+		fallthrough
+	case "flag.created":
+		fallthrough
+	case "flag.updated":
+		fallthrough
+	case "flag.deleted":
+		fallthrough
+	case "segment.created":
+		fallthrough
+	case "segment.updated":
+		fallthrough
+	case "segment.deleted":
 		fallthrough
 	case "test-webhook":
 		fallthrough

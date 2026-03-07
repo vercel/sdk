@@ -4,6 +4,7 @@ package operations
 
 import (
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 )
 
 type VerifyProjectDomainRequest struct {
@@ -48,15 +49,15 @@ func (o *VerifyProjectDomainRequest) GetSlug() *string {
 // VerifyProjectDomainResponseBody - The project domain was verified successfully
 // Domain is already verified
 type VerifyProjectDomainResponseBody struct {
-	Name                string   `json:"name"`
-	ApexName            string   `json:"apexName"`
-	ProjectID           string   `json:"projectId"`
-	Redirect            *string  `json:"redirect,omitempty"`
-	RedirectStatusCode  *float64 `json:"redirectStatusCode,omitempty"`
-	GitBranch           *string  `json:"gitBranch,omitempty"`
-	CustomEnvironmentID *string  `json:"customEnvironmentId,omitempty"`
-	UpdatedAt           *float64 `json:"updatedAt,omitempty"`
-	CreatedAt           *float64 `json:"createdAt,omitempty"`
+	Name                string                                     `json:"name"`
+	ApexName            string                                     `json:"apexName"`
+	ProjectID           string                                     `json:"projectId"`
+	Redirect            optionalnullable.OptionalNullable[string]  `json:"redirect,omitempty"`
+	RedirectStatusCode  optionalnullable.OptionalNullable[float64] `json:"redirectStatusCode,omitempty"`
+	GitBranch           optionalnullable.OptionalNullable[string]  `json:"gitBranch,omitempty"`
+	CustomEnvironmentID optionalnullable.OptionalNullable[string]  `json:"customEnvironmentId,omitempty"`
+	UpdatedAt           *float64                                   `json:"updatedAt,omitempty"`
+	CreatedAt           *float64                                   `json:"createdAt,omitempty"`
 	// `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed.
 	Verified bool `json:"verified"`
 }
@@ -82,28 +83,28 @@ func (o *VerifyProjectDomainResponseBody) GetProjectID() string {
 	return o.ProjectID
 }
 
-func (o *VerifyProjectDomainResponseBody) GetRedirect() *string {
+func (o *VerifyProjectDomainResponseBody) GetRedirect() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.Redirect
 }
 
-func (o *VerifyProjectDomainResponseBody) GetRedirectStatusCode() *float64 {
+func (o *VerifyProjectDomainResponseBody) GetRedirectStatusCode() optionalnullable.OptionalNullable[float64] {
 	if o == nil {
 		return nil
 	}
 	return o.RedirectStatusCode
 }
 
-func (o *VerifyProjectDomainResponseBody) GetGitBranch() *string {
+func (o *VerifyProjectDomainResponseBody) GetGitBranch() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.GitBranch
 }
 
-func (o *VerifyProjectDomainResponseBody) GetCustomEnvironmentID() *string {
+func (o *VerifyProjectDomainResponseBody) GetCustomEnvironmentID() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}

@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 )
 
@@ -238,7 +239,7 @@ type GetConfigurationIntegrationConfiguration3 struct {
 	// The slug of the integration the configuration is created for.
 	Slug *string `json:"slug,omitempty"`
 	// When the configuration was created for a team, this will show the ID of the team.
-	TeamID *string                                        `json:"teamId,omitempty"`
+	TeamID optionalnullable.OptionalNullable[string]      `json:"teamId,omitempty"`
 	Type   *GetConfigurationTypeIntegrationConfiguration3 `json:"type,omitempty"`
 	// A timestamp that tells you when the configuration was updated.
 	UpdatedAt *float64 `json:"updatedAt,omitempty"`
@@ -249,10 +250,10 @@ type GetConfigurationIntegrationConfiguration3 struct {
 	// A timestamp that tells you when the configuration was disabled. Note: Configurations can be disabled when the associated user loses access to a team. They do not function during this time until the configuration is 'transferred', meaning the associated user is changed to one with access to the team.
 	DisabledAt *float64 `json:"disabledAt,omitempty"`
 	// A timestamp that tells you when the configuration was deleted.
-	DeletedAt *float64 `json:"deletedAt,omitempty"`
+	DeletedAt optionalnullable.OptionalNullable[float64] `json:"deletedAt,omitempty"`
 	// A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.
-	DeleteRequestedAt *float64                         `json:"deleteRequestedAt,omitempty"`
-	DisabledReason    *GetConfigurationDisabledReason3 `json:"disabledReason,omitempty"`
+	DeleteRequestedAt optionalnullable.OptionalNullable[float64] `json:"deleteRequestedAt,omitempty"`
+	DisabledReason    *GetConfigurationDisabledReason3           `json:"disabledReason,omitempty"`
 	// Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
 	InstallationType *GetConfigurationInstallationType3 `json:"installationType,omitempty"`
 }
@@ -338,7 +339,7 @@ func (o *GetConfigurationIntegrationConfiguration3) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *GetConfigurationIntegrationConfiguration3) GetTeamID() *string {
+func (o *GetConfigurationIntegrationConfiguration3) GetTeamID() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -380,14 +381,14 @@ func (o *GetConfigurationIntegrationConfiguration3) GetDisabledAt() *float64 {
 	return o.DisabledAt
 }
 
-func (o *GetConfigurationIntegrationConfiguration3) GetDeletedAt() *float64 {
+func (o *GetConfigurationIntegrationConfiguration3) GetDeletedAt() optionalnullable.OptionalNullable[float64] {
 	if o == nil {
 		return nil
 	}
 	return o.DeletedAt
 }
 
-func (o *GetConfigurationIntegrationConfiguration3) GetDeleteRequestedAt() *float64 {
+func (o *GetConfigurationIntegrationConfiguration3) GetDeleteRequestedAt() optionalnullable.OptionalNullable[float64] {
 	if o == nil {
 		return nil
 	}
@@ -606,7 +607,7 @@ type GetConfigurationIntegrationConfiguration2 struct {
 	// The slug of the integration the configuration is created for.
 	Slug string `json:"slug"`
 	// When the configuration was created for a team, this will show the ID of the team.
-	TeamID *string                                       `json:"teamId,omitempty"`
+	TeamID optionalnullable.OptionalNullable[string]     `json:"teamId,omitempty"`
 	Type   GetConfigurationTypeIntegrationConfiguration2 `json:"type"`
 	// A timestamp that tells you when the configuration was updated.
 	UpdatedAt float64 `json:"updatedAt"`
@@ -617,10 +618,10 @@ type GetConfigurationIntegrationConfiguration2 struct {
 	// A timestamp that tells you when the configuration was disabled. Note: Configurations can be disabled when the associated user loses access to a team. They do not function during this time until the configuration is 'transferred', meaning the associated user is changed to one with access to the team.
 	DisabledAt *float64 `json:"disabledAt,omitempty"`
 	// A timestamp that tells you when the configuration was deleted.
-	DeletedAt *float64 `json:"deletedAt,omitempty"`
+	DeletedAt optionalnullable.OptionalNullable[float64] `json:"deletedAt,omitempty"`
 	// A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.
-	DeleteRequestedAt *float64                         `json:"deleteRequestedAt,omitempty"`
-	DisabledReason    *GetConfigurationDisabledReason2 `json:"disabledReason,omitempty"`
+	DeleteRequestedAt optionalnullable.OptionalNullable[float64] `json:"deleteRequestedAt,omitempty"`
+	DisabledReason    *GetConfigurationDisabledReason2           `json:"disabledReason,omitempty"`
 	// Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
 	InstallationType *GetConfigurationInstallationType2 `json:"installationType,omitempty"`
 }
@@ -706,7 +707,7 @@ func (o *GetConfigurationIntegrationConfiguration2) GetSlug() string {
 	return o.Slug
 }
 
-func (o *GetConfigurationIntegrationConfiguration2) GetTeamID() *string {
+func (o *GetConfigurationIntegrationConfiguration2) GetTeamID() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -748,14 +749,14 @@ func (o *GetConfigurationIntegrationConfiguration2) GetDisabledAt() *float64 {
 	return o.DisabledAt
 }
 
-func (o *GetConfigurationIntegrationConfiguration2) GetDeletedAt() *float64 {
+func (o *GetConfigurationIntegrationConfiguration2) GetDeletedAt() optionalnullable.OptionalNullable[float64] {
 	if o == nil {
 		return nil
 	}
 	return o.DeletedAt
 }
 
-func (o *GetConfigurationIntegrationConfiguration2) GetDeleteRequestedAt() *float64 {
+func (o *GetConfigurationIntegrationConfiguration2) GetDeleteRequestedAt() optionalnullable.OptionalNullable[float64] {
 	if o == nil {
 		return nil
 	}
@@ -1599,13 +1600,13 @@ type GetConfigurationIntegrationConfiguration1 struct {
 	// A timestamp that tells you when the configuration was created
 	CreatedAt float64 `json:"createdAt"`
 	// A timestamp that tells you when the configuration was deleted.
-	DeletedAt *float64 `json:"deletedAt,omitempty"`
+	DeletedAt optionalnullable.OptionalNullable[float64] `json:"deletedAt,omitempty"`
 	// The unique identifier of the configuration
 	ID string `json:"id"`
 	// The slug of the integration the configuration is created for.
 	Slug string `json:"slug"`
 	// When the configuration was created for a team, this will show the ID of the team.
-	TeamID *string `json:"teamId,omitempty"`
+	TeamID optionalnullable.OptionalNullable[string] `json:"teamId,omitempty"`
 	// A timestamp that tells you when the configuration was updated.
 	UpdatedAt float64 `json:"updatedAt"`
 	// The ID of the user that created the configuration.
@@ -1626,8 +1627,8 @@ type GetConfigurationIntegrationConfiguration1 struct {
 	// A timestamp that tells you when the configuration was disabled. Note: Configurations can be disabled when the associated user loses access to a team. They do not function during this time until the configuration is 'transferred', meaning the associated user is changed to one with access to the team.
 	DisabledAt *float64 `json:"disabledAt,omitempty"`
 	// A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.
-	DeleteRequestedAt *float64                         `json:"deleteRequestedAt,omitempty"`
-	DisabledReason    *GetConfigurationDisabledReason1 `json:"disabledReason,omitempty"`
+	DeleteRequestedAt optionalnullable.OptionalNullable[float64] `json:"deleteRequestedAt,omitempty"`
+	DisabledReason    *GetConfigurationDisabledReason1           `json:"disabledReason,omitempty"`
 	// Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
 	InstallationType *GetConfigurationInstallationType1 `json:"installationType,omitempty"`
 }
@@ -1700,7 +1701,7 @@ func (o *GetConfigurationIntegrationConfiguration1) GetCreatedAt() float64 {
 	return o.CreatedAt
 }
 
-func (o *GetConfigurationIntegrationConfiguration1) GetDeletedAt() *float64 {
+func (o *GetConfigurationIntegrationConfiguration1) GetDeletedAt() optionalnullable.OptionalNullable[float64] {
 	if o == nil {
 		return nil
 	}
@@ -1721,7 +1722,7 @@ func (o *GetConfigurationIntegrationConfiguration1) GetSlug() string {
 	return o.Slug
 }
 
-func (o *GetConfigurationIntegrationConfiguration1) GetTeamID() *string {
+func (o *GetConfigurationIntegrationConfiguration1) GetTeamID() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -1798,7 +1799,7 @@ func (o *GetConfigurationIntegrationConfiguration1) GetDisabledAt() *float64 {
 	return o.DisabledAt
 }
 
-func (o *GetConfigurationIntegrationConfiguration1) GetDeleteRequestedAt() *float64 {
+func (o *GetConfigurationIntegrationConfiguration1) GetDeleteRequestedAt() optionalnullable.OptionalNullable[float64] {
 	if o == nil {
 		return nil
 	}

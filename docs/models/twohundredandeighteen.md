@@ -5,31 +5,25 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEighteen } from "@vercel/sdk/models/userevent.js";
+import { TwoHundredAndEighteen } from "@vercel/sdk/models/twohundredandfourteen.js";
 
 let value: TwoHundredAndEighteen = {
-  budget: {
-    type: "fixed",
-    fixedBudget: 2164.06,
-    previousSpend: [
-      534.69,
-      1342.21,
-    ],
-    notifiedAt: [
-      8339.53,
-      0.21,
-      5094.45,
-    ],
-    createdAt: 696.95,
-    isActive: false,
-    teamId: "<id>",
-    id: "<id>",
+  sampleRatePercent: 6783.61,
+  spendLimitInDollars: null,
+  previous: {
+    sampleRatePercent: 9990.01,
+    spendLimitInDollars: 0.21,
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `budget`                                                                | [models.PayloadBudget](../models/payloadbudget.md)                      | :heavy_check_mark:                                                      | Represents a budget for tracking and notifying teams on their spending. |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `projectId`                                                                    | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `analyticsId`                                                                  | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `sampleRatePercent`                                                            | *number*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `spendLimitInDollars`                                                          | *number*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload218Previous](../models/usereventpayload218previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |

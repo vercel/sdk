@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 )
 
@@ -550,8 +551,8 @@ type CreateLogDrainResponseBody struct {
 	// The name of the log drain
 	Name string `json:"name"`
 	// The identifier of the team or user whose events will trigger the log drain
-	OwnerID   string  `json:"ownerId"`
-	ProjectID *string `json:"projectId,omitempty"`
+	OwnerID   string                                    `json:"ownerId"`
+	ProjectID optionalnullable.OptionalNullable[string] `json:"projectId,omitempty"`
 	// The identifier of the projects this log drain is associated with
 	ProjectIds []string `json:"projectIds,omitempty"`
 	// The URL to call when logs are generated
@@ -620,7 +621,7 @@ func (o *CreateLogDrainResponseBody) GetOwnerID() string {
 	return o.OwnerID
 }
 
-func (o *CreateLogDrainResponseBody) GetProjectID() *string {
+func (o *CreateLogDrainResponseBody) GetProjectID() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}

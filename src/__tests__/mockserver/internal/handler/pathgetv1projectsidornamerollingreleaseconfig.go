@@ -8,6 +8,7 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/operations"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
@@ -49,13 +50,13 @@ func testGetRollingReleaseConfigGetRollingReleaseConfig0(w http.ResponseWriter, 
 	var respBody *operations.GetRollingReleaseConfigResponseBody = &operations.GetRollingReleaseConfigResponseBody{
 		RollingRelease: &operations.GetRollingReleaseConfigRollingRelease{
 			Target: "production",
-			Stages: []operations.GetRollingReleaseConfigStage{
+			Stages: optionalnullable.From(types.Pointer([]operations.GetRollingReleaseConfigStage{
 				operations.GetRollingReleaseConfigStage{
 					TargetPercentage: 25,
 					RequireApproval:  types.Bool(false),
 					Duration:         types.Float64(600),
 				},
-			},
+			})),
 			CanaryResponseHeader: types.Bool(false),
 		},
 	}

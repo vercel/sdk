@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ClientAuthenticationUsed } from "@vercel/sdk/models/userevent.js";
+import { ClientAuthenticationUsed } from "@vercel/sdk/models/twohundredandfourteen.js";
 
 let value: ClientAuthenticationUsed = {
   method: "private_key_jwt",

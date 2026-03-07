@@ -8,6 +8,7 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/operations"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
@@ -55,7 +56,7 @@ func testGetIntegrationLogDrainsGetIntegrationLogDrains0(w http.ResponseWriter, 
 			DeliveryFormat:  operations.GetIntegrationLogDrainsDeliveryFormatJSON.ToPointer(),
 			Name:            "My first log drain",
 			OwnerID:         "kr1PsOIzqEL5Xg6M4VZcZosf",
-			ProjectID:       types.String("AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb"),
+			ProjectID:       optionalnullable.From(types.String("AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb")),
 			ProjectIds: []string{
 				"AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb",
 			},
@@ -75,11 +76,9 @@ func testGetIntegrationLogDrainsGetIntegrationLogDrains0(w http.ResponseWriter, 
 			},
 			Branch:       types.String("feature/*"),
 			SamplingRate: types.Float64(0.5),
-			Source: operations.CreateGetIntegrationLogDrainsSourceUnionIntegration(
-				operations.GetIntegrationLogDrainsSourceIntegration{
-					Kind:                       operations.GetIntegrationLogDrainsKindIntegrationIntegration,
-					IntegrationID:              "<id>",
-					IntegrationConfigurationID: "<id>",
+			Source: operations.CreateGetIntegrationLogDrainsSourceUnionSelfServed(
+				operations.GetIntegrationLogDrainsSourceSelfServed{
+					Kind: operations.GetIntegrationLogDrainsKindSelfServedSelfServed,
 				},
 			),
 		},
@@ -91,7 +90,7 @@ func testGetIntegrationLogDrainsGetIntegrationLogDrains0(w http.ResponseWriter, 
 			DeliveryFormat:  operations.GetIntegrationLogDrainsDeliveryFormatJSON.ToPointer(),
 			Name:            "My first log drain",
 			OwnerID:         "kr1PsOIzqEL5Xg6M4VZcZosf",
-			ProjectID:       types.String("AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb"),
+			ProjectID:       optionalnullable.From(types.String("AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb")),
 			ProjectIds: []string{
 				"AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb",
 			},

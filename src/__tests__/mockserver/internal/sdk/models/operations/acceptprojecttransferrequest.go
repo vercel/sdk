@@ -7,31 +7,32 @@ import (
 	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 	"time"
 )
 
 type PaidFeatures struct {
-	ConcurrentBuilds        *int64 `json:"concurrentBuilds,omitempty"`
-	PasswordProtection      *bool  `json:"passwordProtection,omitempty"`
-	PreviewDeploymentSuffix *bool  `json:"previewDeploymentSuffix,omitempty"`
+	ConcurrentBuilds        optionalnullable.OptionalNullable[int64] `json:"concurrentBuilds,omitempty"`
+	PasswordProtection      optionalnullable.OptionalNullable[bool]  `json:"passwordProtection,omitempty"`
+	PreviewDeploymentSuffix optionalnullable.OptionalNullable[bool]  `json:"previewDeploymentSuffix,omitempty"`
 }
 
-func (o *PaidFeatures) GetConcurrentBuilds() *int64 {
+func (o *PaidFeatures) GetConcurrentBuilds() optionalnullable.OptionalNullable[int64] {
 	if o == nil {
 		return nil
 	}
 	return o.ConcurrentBuilds
 }
 
-func (o *PaidFeatures) GetPasswordProtection() *bool {
+func (o *PaidFeatures) GetPasswordProtection() optionalnullable.OptionalNullable[bool] {
 	if o == nil {
 		return nil
 	}
 	return o.PasswordProtection
 }
 
-func (o *PaidFeatures) GetPreviewDeploymentSuffix() *bool {
+func (o *PaidFeatures) GetPreviewDeploymentSuffix() optionalnullable.OptionalNullable[bool] {
 	if o == nil {
 		return nil
 	}

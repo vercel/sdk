@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 )
 
 type CompleteRollingReleaseRequestBody struct {
@@ -213,7 +214,7 @@ type CompleteRollingReleaseCurrentDeployment struct {
 	// Where was the deployment created from
 	Source *CompleteRollingReleaseCurrentDeploymentSource `json:"source,omitempty"`
 	// If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
-	Target *CompleteRollingReleaseCurrentDeploymentTarget `json:"target,omitempty"`
+	Target optionalnullable.OptionalNullable[CompleteRollingReleaseCurrentDeploymentTarget] `json:"target,omitempty"`
 	// A string with the unique URL of the deployment
 	URL string `json:"url"`
 }
@@ -260,7 +261,7 @@ func (o *CompleteRollingReleaseCurrentDeployment) GetSource() *CompleteRollingRe
 	return o.Source
 }
 
-func (o *CompleteRollingReleaseCurrentDeployment) GetTarget() *CompleteRollingReleaseCurrentDeploymentTarget {
+func (o *CompleteRollingReleaseCurrentDeployment) GetTarget() optionalnullable.OptionalNullable[CompleteRollingReleaseCurrentDeploymentTarget] {
 	if o == nil {
 		return nil
 	}
@@ -399,7 +400,7 @@ type CompleteRollingReleaseCanaryDeployment struct {
 	// Where was the deployment created from
 	Source *CompleteRollingReleaseCanaryDeploymentSource `json:"source,omitempty"`
 	// If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
-	Target *CompleteRollingReleaseCanaryDeploymentTarget `json:"target,omitempty"`
+	Target optionalnullable.OptionalNullable[CompleteRollingReleaseCanaryDeploymentTarget] `json:"target,omitempty"`
 	// A string with the unique URL of the deployment
 	URL string `json:"url"`
 }
@@ -446,7 +447,7 @@ func (o *CompleteRollingReleaseCanaryDeployment) GetSource() *CompleteRollingRel
 	return o.Source
 }
 
-func (o *CompleteRollingReleaseCanaryDeployment) GetTarget() *CompleteRollingReleaseCanaryDeploymentTarget {
+func (o *CompleteRollingReleaseCanaryDeployment) GetTarget() optionalnullable.OptionalNullable[CompleteRollingReleaseCanaryDeploymentTarget] {
 	if o == nil {
 		return nil
 	}

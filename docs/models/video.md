@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Video } from "@vercel/sdk/models/getconfigurationproductsop.js";
+import { Video } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponseuicontrol.js";
 
 let value: Video = {
   status: "enabled",

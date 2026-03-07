@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 )
 
@@ -1036,28 +1037,28 @@ func (o *GetDeploymentsGitComments) GetOnCommit() bool {
 
 // GetDeploymentsProjectSettings - The project settings which was used for this deployment
 type GetDeploymentsProjectSettings struct {
-	Framework                       *GetDeploymentsFramework     `json:"framework,omitempty"`
-	GitForkProtection               *bool                        `json:"gitForkProtection,omitempty"`
-	CustomerSupportCodeVisibility   *bool                        `json:"customerSupportCodeVisibility,omitempty"`
-	GitLFS                          *bool                        `json:"gitLFS,omitempty"`
-	DevCommand                      *string                      `json:"devCommand,omitempty"`
-	InstallCommand                  *string                      `json:"installCommand,omitempty"`
-	BuildCommand                    *string                      `json:"buildCommand,omitempty"`
-	NodeVersion                     *GetDeploymentsNodeVersion   `json:"nodeVersion,omitempty"`
-	OutputDirectory                 *string                      `json:"outputDirectory,omitempty"`
-	PublicSource                    *bool                        `json:"publicSource,omitempty"`
-	RootDirectory                   *string                      `json:"rootDirectory,omitempty"`
-	SourceFilesOutsideRootDirectory *bool                        `json:"sourceFilesOutsideRootDirectory,omitempty"`
-	CommandForIgnoringBuildStep     *string                      `json:"commandForIgnoringBuildStep,omitempty"`
-	CreatedAt                       *float64                     `json:"createdAt,omitempty"`
-	SpeedInsights                   *GetDeploymentsSpeedInsights `json:"speedInsights,omitempty"`
-	WebAnalytics                    *GetDeploymentsWebAnalytics  `json:"webAnalytics,omitempty"`
-	SkipGitConnectDuringLink        *bool                        `json:"skipGitConnectDuringLink,omitempty"`
+	Framework                       optionalnullable.OptionalNullable[GetDeploymentsFramework] `json:"framework,omitempty"`
+	GitForkProtection               *bool                                                      `json:"gitForkProtection,omitempty"`
+	CustomerSupportCodeVisibility   *bool                                                      `json:"customerSupportCodeVisibility,omitempty"`
+	GitLFS                          *bool                                                      `json:"gitLFS,omitempty"`
+	DevCommand                      optionalnullable.OptionalNullable[string]                  `json:"devCommand,omitempty"`
+	InstallCommand                  optionalnullable.OptionalNullable[string]                  `json:"installCommand,omitempty"`
+	BuildCommand                    optionalnullable.OptionalNullable[string]                  `json:"buildCommand,omitempty"`
+	NodeVersion                     *GetDeploymentsNodeVersion                                 `json:"nodeVersion,omitempty"`
+	OutputDirectory                 optionalnullable.OptionalNullable[string]                  `json:"outputDirectory,omitempty"`
+	PublicSource                    optionalnullable.OptionalNullable[bool]                    `json:"publicSource,omitempty"`
+	RootDirectory                   optionalnullable.OptionalNullable[string]                  `json:"rootDirectory,omitempty"`
+	SourceFilesOutsideRootDirectory *bool                                                      `json:"sourceFilesOutsideRootDirectory,omitempty"`
+	CommandForIgnoringBuildStep     optionalnullable.OptionalNullable[string]                  `json:"commandForIgnoringBuildStep,omitempty"`
+	CreatedAt                       *float64                                                   `json:"createdAt,omitempty"`
+	SpeedInsights                   *GetDeploymentsSpeedInsights                               `json:"speedInsights,omitempty"`
+	WebAnalytics                    *GetDeploymentsWebAnalytics                                `json:"webAnalytics,omitempty"`
+	SkipGitConnectDuringLink        *bool                                                      `json:"skipGitConnectDuringLink,omitempty"`
 	// Since June '23
 	GitComments *GetDeploymentsGitComments `json:"gitComments,omitempty"`
 }
 
-func (o *GetDeploymentsProjectSettings) GetFramework() *GetDeploymentsFramework {
+func (o *GetDeploymentsProjectSettings) GetFramework() optionalnullable.OptionalNullable[GetDeploymentsFramework] {
 	if o == nil {
 		return nil
 	}
@@ -1085,21 +1086,21 @@ func (o *GetDeploymentsProjectSettings) GetGitLFS() *bool {
 	return o.GitLFS
 }
 
-func (o *GetDeploymentsProjectSettings) GetDevCommand() *string {
+func (o *GetDeploymentsProjectSettings) GetDevCommand() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.DevCommand
 }
 
-func (o *GetDeploymentsProjectSettings) GetInstallCommand() *string {
+func (o *GetDeploymentsProjectSettings) GetInstallCommand() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.InstallCommand
 }
 
-func (o *GetDeploymentsProjectSettings) GetBuildCommand() *string {
+func (o *GetDeploymentsProjectSettings) GetBuildCommand() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -1113,21 +1114,21 @@ func (o *GetDeploymentsProjectSettings) GetNodeVersion() *GetDeploymentsNodeVers
 	return o.NodeVersion
 }
 
-func (o *GetDeploymentsProjectSettings) GetOutputDirectory() *string {
+func (o *GetDeploymentsProjectSettings) GetOutputDirectory() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.OutputDirectory
 }
 
-func (o *GetDeploymentsProjectSettings) GetPublicSource() *bool {
+func (o *GetDeploymentsProjectSettings) GetPublicSource() optionalnullable.OptionalNullable[bool] {
 	if o == nil {
 		return nil
 	}
 	return o.PublicSource
 }
 
-func (o *GetDeploymentsProjectSettings) GetRootDirectory() *string {
+func (o *GetDeploymentsProjectSettings) GetRootDirectory() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -1141,7 +1142,7 @@ func (o *GetDeploymentsProjectSettings) GetSourceFilesOutsideRootDirectory() *bo
 	return o.SourceFilesOutsideRootDirectory
 }
 
-func (o *GetDeploymentsProjectSettings) GetCommandForIgnoringBuildStep() *string {
+func (o *GetDeploymentsProjectSettings) GetCommandForIgnoringBuildStep() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -1417,10 +1418,10 @@ type GetDeploymentsDeployment struct {
 	// Metadata information from the Git provider.
 	Meta map[string]string `json:"meta,omitempty"`
 	// On which environment has the deployment been deployed to.
-	Target *GetDeploymentsTarget `json:"target,omitempty"`
+	Target optionalnullable.OptionalNullable[GetDeploymentsTarget] `json:"target,omitempty"`
 	// An error object in case aliasing of the deployment failed.
-	AliasError    *GetDeploymentsAliasError    `json:"aliasError,omitempty"`
-	AliasAssigned *GetDeploymentsAliasAssigned `json:"aliasAssigned,omitempty"`
+	AliasError    optionalnullable.OptionalNullable[GetDeploymentsAliasError]    `json:"aliasError,omitempty"`
+	AliasAssigned optionalnullable.OptionalNullable[GetDeploymentsAliasAssigned] `json:"aliasAssigned,omitempty"`
 	// Timestamp of when the deployment got created.
 	CreatedAt *float64 `json:"createdAt,omitempty"`
 	// Timestamp of when the deployment started building at.
@@ -1440,12 +1441,12 @@ type GetDeploymentsDeployment struct {
 	// Error code when the deployment is in an error state.
 	ErrorCode *string `json:"errorCode,omitempty"`
 	// Error message when the deployment is in an canceled or error state.
-	ErrorMessage *string `json:"errorMessage,omitempty"`
+	ErrorMessage optionalnullable.OptionalNullable[string] `json:"errorMessage,omitempty"`
 	// Indicates if the deployment encountered an out-of-memory error.
 	OomReport *GetDeploymentsOomReport `json:"oomReport,omitempty"`
 	// Deployment can be used for instant rollback
-	IsRollbackCandidate *bool `json:"isRollbackCandidate,omitempty"`
-	Prebuilt            *bool `json:"prebuilt,omitempty"`
+	IsRollbackCandidate optionalnullable.OptionalNullable[bool] `json:"isRollbackCandidate,omitempty"`
+	Prebuilt            *bool                                   `json:"prebuilt,omitempty"`
 	// The project settings which was used for this deployment
 	ProjectSettings *GetDeploymentsProjectSettings `json:"projectSettings,omitempty"`
 	// The flag saying if Secure Compute network is used for builds
@@ -1571,21 +1572,21 @@ func (o *GetDeploymentsDeployment) GetMeta() map[string]string {
 	return o.Meta
 }
 
-func (o *GetDeploymentsDeployment) GetTarget() *GetDeploymentsTarget {
+func (o *GetDeploymentsDeployment) GetTarget() optionalnullable.OptionalNullable[GetDeploymentsTarget] {
 	if o == nil {
 		return nil
 	}
 	return o.Target
 }
 
-func (o *GetDeploymentsDeployment) GetAliasError() *GetDeploymentsAliasError {
+func (o *GetDeploymentsDeployment) GetAliasError() optionalnullable.OptionalNullable[GetDeploymentsAliasError] {
 	if o == nil {
 		return nil
 	}
 	return o.AliasError
 }
 
-func (o *GetDeploymentsDeployment) GetAliasAssigned() *GetDeploymentsAliasAssigned {
+func (o *GetDeploymentsDeployment) GetAliasAssigned() optionalnullable.OptionalNullable[GetDeploymentsAliasAssigned] {
 	if o == nil {
 		return nil
 	}
@@ -1655,7 +1656,7 @@ func (o *GetDeploymentsDeployment) GetErrorCode() *string {
 	return o.ErrorCode
 }
 
-func (o *GetDeploymentsDeployment) GetErrorMessage() *string {
+func (o *GetDeploymentsDeployment) GetErrorMessage() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -1669,7 +1670,7 @@ func (o *GetDeploymentsDeployment) GetOomReport() *GetDeploymentsOomReport {
 	return o.OomReport
 }
 
-func (o *GetDeploymentsDeployment) GetIsRollbackCandidate() *bool {
+func (o *GetDeploymentsDeployment) GetIsRollbackCandidate() optionalnullable.OptionalNullable[bool] {
 	if o == nil {
 		return nil
 	}

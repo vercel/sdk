@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 	"time"
 )
@@ -265,15 +266,15 @@ type Updated struct {
 	// The name of the Shared Env Var.
 	Key *string `json:"key,omitempty"`
 	// The unique identifier of the owner (team) the Shared Env Var was created for.
-	OwnerID *string `json:"ownerId,omitempty"`
+	OwnerID optionalnullable.OptionalNullable[string] `json:"ownerId,omitempty"`
 	// The unique identifier of the Shared Env Var.
 	ID *string `json:"id,omitempty"`
 	// The unique identifier of the user who created the Shared Env Var.
-	CreatedBy *string `json:"createdBy,omitempty"`
+	CreatedBy optionalnullable.OptionalNullable[string] `json:"createdBy,omitempty"`
 	// The unique identifier of the user who deleted the Shared Env Var.
-	DeletedBy *string `json:"deletedBy,omitempty"`
+	DeletedBy optionalnullable.OptionalNullable[string] `json:"deletedBy,omitempty"`
 	// The unique identifier of the user who last updated the Shared Env Var.
-	UpdatedBy *string `json:"updatedBy,omitempty"`
+	UpdatedBy optionalnullable.OptionalNullable[string] `json:"updatedBy,omitempty"`
 	// Timestamp for when the Shared Env Var was created.
 	CreatedAt *float64 `json:"createdAt,omitempty"`
 	// Timestamp for when the Shared Env Var was (soft) deleted.
@@ -323,7 +324,7 @@ func (o *Updated) GetKey() *string {
 	return o.Key
 }
 
-func (o *Updated) GetOwnerID() *string {
+func (o *Updated) GetOwnerID() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -337,21 +338,21 @@ func (o *Updated) GetID() *string {
 	return o.ID
 }
 
-func (o *Updated) GetCreatedBy() *string {
+func (o *Updated) GetCreatedBy() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedBy
 }
 
-func (o *Updated) GetDeletedBy() *string {
+func (o *Updated) GetDeletedBy() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.DeletedBy
 }
 
-func (o *Updated) GetUpdatedBy() *string {
+func (o *Updated) GetUpdatedBy() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}

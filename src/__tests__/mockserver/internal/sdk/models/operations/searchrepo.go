@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 )
 
@@ -109,10 +110,10 @@ func (e *SearchRepoQueryParamProvider) UnmarshalJSON(data []byte) error {
 }
 
 type SearchRepoRequest struct {
-	Query          *string                       `queryParam:"style=form,explode=true,name=query"`
-	NamespaceID    *QueryParamNamespaceID        `queryParam:"style=form,explode=true,name=namespaceId"`
-	Provider       *SearchRepoQueryParamProvider `queryParam:"style=form,explode=true,name=provider"`
-	InstallationID *string                       `queryParam:"style=form,explode=true,name=installationId"`
+	Query          *string                                                  `queryParam:"style=form,explode=true,name=query"`
+	NamespaceID    optionalnullable.OptionalNullable[QueryParamNamespaceID] `queryParam:"style=form,explode=true,name=namespaceId"`
+	Provider       *SearchRepoQueryParamProvider                            `queryParam:"style=form,explode=true,name=provider"`
+	InstallationID *string                                                  `queryParam:"style=form,explode=true,name=installationId"`
 	// The custom Git host if using a custom Git provider, like GitHub Enterprise Server
 	Host *string `queryParam:"style=form,explode=true,name=host"`
 	// The Team identifier to perform the request on behalf of.
@@ -128,7 +129,7 @@ func (o *SearchRepoRequest) GetQuery() *string {
 	return o.Query
 }
 
-func (o *SearchRepoRequest) GetNamespaceID() *QueryParamNamespaceID {
+func (o *SearchRepoRequest) GetNamespaceID() optionalnullable.OptionalNullable[QueryParamNamespaceID] {
 	if o == nil {
 		return nil
 	}

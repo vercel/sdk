@@ -8,6 +8,7 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/operations"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
@@ -59,7 +60,7 @@ func testCreateLogDrainCreateLogDrain0(w http.ResponseWriter, req *http.Request)
 		DeliveryFormat:  operations.CreateLogDrainDeliveryFormatResponseJSON.ToPointer(),
 		Name:            "My first log drain",
 		OwnerID:         "kr1PsOIzqEL5Xg6M4VZcZosf",
-		ProjectID:       types.String("AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb"),
+		ProjectID:       optionalnullable.From(types.String("AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb")),
 		ProjectIds: []string{
 			"AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb",
 		},

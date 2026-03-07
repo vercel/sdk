@@ -109,12 +109,13 @@ func testPutFirewallConfigPutFirewallConfig0(w http.ResponseWriter, req *http.Re
 					operations.RuleActive2{
 						ID:             "<id>",
 						Name:           "<value>",
-						Active:         true,
+						Active:         false,
 						ConditionGroup: []operations.ActiveConditionGroup2{},
 						Action:         operations.RuleActiveAction2{},
-						Valid:          true,
+						Valid:          false,
 						ValidationErrors: []string{
 							"<value 1>",
+							"<value 2>",
 						},
 					},
 				),
@@ -122,12 +123,13 @@ func testPutFirewallConfigPutFirewallConfig0(w http.ResponseWriter, req *http.Re
 					operations.RuleActive2{
 						ID:             "<id>",
 						Name:           "<value>",
-						Active:         true,
+						Active:         false,
 						ConditionGroup: []operations.ActiveConditionGroup2{},
 						Action:         operations.RuleActiveAction2{},
-						Valid:          true,
+						Valid:          false,
 						ValidationErrors: []string{
 							"<value 1>",
+							"<value 2>",
 						},
 					},
 				),

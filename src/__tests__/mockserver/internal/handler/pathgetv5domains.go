@@ -9,6 +9,7 @@ import (
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/models/operations"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
@@ -76,7 +77,7 @@ func testGetDomainsGetDomains0(w http.ResponseWriter, req *http.Request) {
 				ID:                "EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1",
 				Renew:             types.Bool(true),
 				ServiceType:       operations.GetDomainsServiceTypeZeitWorld,
-				TransferredAt:     types.Float64(1613602938882),
+				TransferredAt:     optionalnullable.From(types.Float64(1613602938882)),
 				TransferStartedAt: types.Float64(1613602938882),
 				UserID:            "<id>",
 			},

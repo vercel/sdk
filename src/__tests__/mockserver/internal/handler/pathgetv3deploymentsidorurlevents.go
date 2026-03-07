@@ -8,6 +8,7 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/operations"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
@@ -46,7 +47,7 @@ func testGetDeploymentEventsGetDeploymentEvents0(w http.ResponseWriter, req *htt
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody []*operations.GetDeploymentEventsResponseBodyUnion = []*operations.GetDeploymentEventsResponseBodyUnion{
+	var respBody optionalnullable.OptionalNullable[[]*operations.GetDeploymentEventsResponseBodyUnion] = optionalnullable.From(types.Pointer([]*operations.GetDeploymentEventsResponseBodyUnion{
 		types.Pointer(operations.CreateGetDeploymentEventsResponseBodyUnionGetDeploymentEventsResponseBody2(
 			operations.GetDeploymentEventsResponseBody2{
 				Created:      9364.53,
@@ -85,7 +86,7 @@ func testGetDeploymentEventsGetDeploymentEvents0(w http.ResponseWriter, req *htt
 				},
 			},
 		)),
-	}
+	}))
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

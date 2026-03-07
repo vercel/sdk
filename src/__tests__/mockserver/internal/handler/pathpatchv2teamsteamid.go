@@ -8,6 +8,7 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
@@ -54,7 +55,7 @@ func testPatchTeamPatchTeam0(w http.ResponseWriter, req *http.Request) {
 	var respBody *components.Team = &components.Team{
 		CreatorID:   "R6efeCJQ2HKXywuasPDc0fOWB",
 		UpdatedAt:   1611796915677,
-		EmailDomain: types.String("example.com"),
+		EmailDomain: optionalnullable.From(types.String("example.com")),
 		Saml: &components.TeamSaml{
 			Connection: &components.TeamConnection{
 				Type:                     "OktaSAML",
@@ -74,7 +75,7 @@ func testPatchTeamPatchTeam0(w http.ResponseWriter, req *http.Request) {
 		InviteCode:              types.String("hasihf9e89"),
 		Description:             types.String("Our mission is to make cloud computing accessible to everyone."),
 		StagingPrefix:           "<value>",
-		PreviewDeploymentSuffix: types.String("example.dev"),
+		PreviewDeploymentSuffix: optionalnullable.From(types.String("example.dev")),
 		ID:                      "team_nllPyCtREAqxxdyFKbbMDlxd",
 		Slug:                    "my-team",
 		Name:                    types.String("My Team"),

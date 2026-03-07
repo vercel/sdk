@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 )
 
 type GetConfigurableLogDrainRequest struct {
@@ -253,10 +254,10 @@ func (e *GetConfigurableLogDrainFramework) UnmarshalJSON(data []byte) error {
 }
 
 type GetConfigurableLogDrainProjectsMetadatum struct {
-	ID               string                            `json:"id"`
-	Name             string                            `json:"name"`
-	Framework        *GetConfigurableLogDrainFramework `json:"framework,omitempty"`
-	LatestDeployment *string                           `json:"latestDeployment,omitempty"`
+	ID               string                                                              `json:"id"`
+	Name             string                                                              `json:"name"`
+	Framework        optionalnullable.OptionalNullable[GetConfigurableLogDrainFramework] `json:"framework,omitempty"`
+	LatestDeployment *string                                                             `json:"latestDeployment,omitempty"`
 }
 
 func (o *GetConfigurableLogDrainProjectsMetadatum) GetID() string {
@@ -273,7 +274,7 @@ func (o *GetConfigurableLogDrainProjectsMetadatum) GetName() string {
 	return o.Name
 }
 
-func (o *GetConfigurableLogDrainProjectsMetadatum) GetFramework() *GetConfigurableLogDrainFramework {
+func (o *GetConfigurableLogDrainProjectsMetadatum) GetFramework() optionalnullable.OptionalNullable[GetConfigurableLogDrainFramework] {
 	if o == nil {
 		return nil
 	}
@@ -288,13 +289,13 @@ func (o *GetConfigurableLogDrainProjectsMetadatum) GetLatestDeployment() *string
 }
 
 type GetConfigurableLogDrainResponseBody struct {
-	CreatedFrom                 string                                     `json:"createdFrom"`
-	ClientID                    *string                                    `json:"clientId,omitempty"`
-	ConfigurationID             *string                                    `json:"configurationId,omitempty"`
-	ProjectsMetadata            []GetConfigurableLogDrainProjectsMetadatum `json:"projectsMetadata,omitempty"`
-	IntegrationIcon             *string                                    `json:"integrationIcon,omitempty"`
-	IntegrationConfigurationURI *string                                    `json:"integrationConfigurationUri,omitempty"`
-	IntegrationWebsite          *string                                    `json:"integrationWebsite,omitempty"`
+	CreatedFrom                 string                                                                        `json:"createdFrom"`
+	ClientID                    *string                                                                       `json:"clientId,omitempty"`
+	ConfigurationID             *string                                                                       `json:"configurationId,omitempty"`
+	ProjectsMetadata            optionalnullable.OptionalNullable[[]GetConfigurableLogDrainProjectsMetadatum] `json:"projectsMetadata,omitempty"`
+	IntegrationIcon             *string                                                                       `json:"integrationIcon,omitempty"`
+	IntegrationConfigurationURI *string                                                                       `json:"integrationConfigurationUri,omitempty"`
+	IntegrationWebsite          *string                                                                       `json:"integrationWebsite,omitempty"`
 }
 
 func (o *GetConfigurableLogDrainResponseBody) GetCreatedFrom() string {
@@ -318,7 +319,7 @@ func (o *GetConfigurableLogDrainResponseBody) GetConfigurationID() *string {
 	return o.ConfigurationID
 }
 
-func (o *GetConfigurableLogDrainResponseBody) GetProjectsMetadata() []GetConfigurableLogDrainProjectsMetadatum {
+func (o *GetConfigurableLogDrainResponseBody) GetProjectsMetadata() optionalnullable.OptionalNullable[[]GetConfigurableLogDrainProjectsMetadatum] {
 	if o == nil {
 		return nil
 	}

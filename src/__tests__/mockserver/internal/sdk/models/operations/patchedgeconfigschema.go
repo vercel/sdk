@@ -4,6 +4,7 @@ package operations
 
 import (
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 )
 
 type PatchEdgeConfigSchemaRequestBody struct {
@@ -68,7 +69,7 @@ type PatchEdgeConfigSchemaResponseBody struct {
 
 type PatchEdgeConfigSchemaResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
-	Object   *PatchEdgeConfigSchemaResponseBody
+	Object   optionalnullable.OptionalNullable[PatchEdgeConfigSchemaResponseBody]
 }
 
 func (o *PatchEdgeConfigSchemaResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -78,7 +79,7 @@ func (o *PatchEdgeConfigSchemaResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *PatchEdgeConfigSchemaResponse) GetObject() *PatchEdgeConfigSchemaResponseBody {
+func (o *PatchEdgeConfigSchemaResponse) GetObject() optionalnullable.OptionalNullable[PatchEdgeConfigSchemaResponseBody] {
 	if o == nil {
 		return nil
 	}

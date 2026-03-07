@@ -28,8 +28,10 @@ func isEmpty(typ reflect.Type, val reflect.Value) bool {
 	}
 
 	switch typ.Kind() {
-	case reflect.Array, reflect.Map, reflect.Slice, reflect.String:
+	case reflect.Array, reflect.Slice, reflect.String:
 		return val.Len() == 0
+		// Maps are only "empty" when nil; a non-nil empty map is preserved so that
+		// optional map[string]any{} fields are serialized as {} rather than omitted.
 	}
 
 	return false

@@ -74,10 +74,8 @@ import {
   GetProjectEnvRequest,
   GetProjectEnvResponseBody,
 } from "../models/getprojectenvop.js";
-import {
-  GetProjectsRequest,
-  GetProjectsResponseBody,
-} from "../models/getprojectsop.js";
+import { GetProjectsResponseBody } from "../models/getprojectsresponsebody.js";
+import { GetProjectsRequest } from "../models/getprojectsrouteprojectsresponse200has.js";
 import {
   ListPromoteAliasesRequest,
   ListPromoteAliasesResponseBody,
@@ -104,13 +102,11 @@ import {
   UpdateProjectDomainResponseBody,
 } from "../models/updateprojectdomainop.js";
 import {
-  UpdateProjectRequest,
-  UpdateProjectResponseBody,
-} from "../models/updateprojectop.js";
-import {
   UpdateProjectProtectionBypassRequest,
   UpdateProjectProtectionBypassResponseBody,
 } from "../models/updateprojectprotectionbypassop.js";
+import { UpdateProjectResponseBody } from "../models/updateprojectresponsebody.js";
+import { UpdateProjectRequest } from "../models/updateprojectscheduledtierchange.js";
 import {
   VerifyProjectDomainRequest,
   VerifyProjectDomainResponseBody,

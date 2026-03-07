@@ -9,6 +9,7 @@ import (
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/models/operations"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
@@ -58,7 +59,7 @@ func testListAliasesListAliases0(w http.ResponseWriter, req *http.Request) {
 					Email:    "john-doe@gmail.com",
 					Username: "john-doe",
 				},
-				DeletedAt: types.Float64(1540095775941),
+				DeletedAt: optionalnullable.From(types.Float64(1540095775941)),
 				Deployment: &operations.ListAliasesDeployment{
 					ID:   "dpl_5m8CQaRBm3FnWRW1od3wKTpaECPx",
 					URL:  "my-instant-deployment-3ij3cxz9qr.now.sh",

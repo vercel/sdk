@@ -8,6 +8,7 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/operations"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
@@ -50,7 +51,7 @@ func testPatchEdgeConfigSchemaPatchEdgeConfigSchema0(w http.ResponseWriter, req 
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody *operations.PatchEdgeConfigSchemaResponseBody = &operations.PatchEdgeConfigSchemaResponseBody{}
+	var respBody optionalnullable.OptionalNullable[operations.PatchEdgeConfigSchemaResponseBody] = optionalnullable.From(&operations.PatchEdgeConfigSchemaResponseBody{})
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

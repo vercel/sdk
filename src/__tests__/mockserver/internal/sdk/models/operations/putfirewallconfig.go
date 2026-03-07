@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 )
 
@@ -1083,11 +1084,11 @@ func (u RuleActionUnion) MarshalJSON() ([]byte, error) {
 }
 
 type PutFirewallConfigRateLimitRequest struct {
-	Algo   PutFirewallConfigAlgoRequest `json:"algo"`
-	Window float64                      `json:"window"`
-	Limit  float64                      `json:"limit"`
-	Keys   []string                     `json:"keys"`
-	Action *RuleActionUnion             `json:"action,omitempty"`
+	Algo   PutFirewallConfigAlgoRequest                       `json:"algo"`
+	Window float64                                            `json:"window"`
+	Limit  float64                                            `json:"limit"`
+	Keys   []string                                           `json:"keys"`
+	Action optionalnullable.OptionalNullable[RuleActionUnion] `json:"action,omitempty"`
 }
 
 func (p PutFirewallConfigRateLimitRequest) MarshalJSON() ([]byte, error) {
@@ -1129,7 +1130,7 @@ func (o *PutFirewallConfigRateLimitRequest) GetKeys() []string {
 	return o.Keys
 }
 
-func (o *PutFirewallConfigRateLimitRequest) GetAction() *RuleActionUnion {
+func (o *PutFirewallConfigRateLimitRequest) GetAction() optionalnullable.OptionalNullable[RuleActionUnion] {
 	if o == nil {
 		return nil
 	}
@@ -1293,11 +1294,11 @@ func (u PutFirewallConfigRedirectUnion) MarshalJSON() ([]byte, error) {
 }
 
 type PutFirewallConfigMitigateRequest struct {
-	Action         RuleActionRequestEnum            `json:"action"`
-	RateLimit      *PutFirewallConfigRateLimitUnion `json:"rateLimit,omitempty"`
-	Redirect       *PutFirewallConfigRedirectUnion  `json:"redirect,omitempty"`
-	ActionDuration *string                          `json:"actionDuration,omitempty"`
-	BypassSystem   *bool                            `json:"bypassSystem,omitempty"`
+	Action         RuleActionRequestEnum                                              `json:"action"`
+	RateLimit      optionalnullable.OptionalNullable[PutFirewallConfigRateLimitUnion] `json:"rateLimit,omitempty"`
+	Redirect       optionalnullable.OptionalNullable[PutFirewallConfigRedirectUnion]  `json:"redirect,omitempty"`
+	ActionDuration optionalnullable.OptionalNullable[string]                          `json:"actionDuration,omitempty"`
+	BypassSystem   optionalnullable.OptionalNullable[bool]                            `json:"bypassSystem,omitempty"`
 }
 
 func (o *PutFirewallConfigMitigateRequest) GetAction() RuleActionRequestEnum {
@@ -1307,28 +1308,28 @@ func (o *PutFirewallConfigMitigateRequest) GetAction() RuleActionRequestEnum {
 	return o.Action
 }
 
-func (o *PutFirewallConfigMitigateRequest) GetRateLimit() *PutFirewallConfigRateLimitUnion {
+func (o *PutFirewallConfigMitigateRequest) GetRateLimit() optionalnullable.OptionalNullable[PutFirewallConfigRateLimitUnion] {
 	if o == nil {
 		return nil
 	}
 	return o.RateLimit
 }
 
-func (o *PutFirewallConfigMitigateRequest) GetRedirect() *PutFirewallConfigRedirectUnion {
+func (o *PutFirewallConfigMitigateRequest) GetRedirect() optionalnullable.OptionalNullable[PutFirewallConfigRedirectUnion] {
 	if o == nil {
 		return nil
 	}
 	return o.Redirect
 }
 
-func (o *PutFirewallConfigMitigateRequest) GetActionDuration() *string {
+func (o *PutFirewallConfigMitigateRequest) GetActionDuration() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.ActionDuration
 }
 
-func (o *PutFirewallConfigMitigateRequest) GetBypassSystem() *bool {
+func (o *PutFirewallConfigMitigateRequest) GetBypassSystem() optionalnullable.OptionalNullable[bool] {
 	if o == nil {
 		return nil
 	}
@@ -2667,11 +2668,11 @@ func (e *ActiveRateLimitAction2) UnmarshalJSON(data []byte) error {
 }
 
 type ActiveRateLimit2 struct {
-	Algo   ActiveAlgo2             `json:"algo"`
-	Window float64                 `json:"window"`
-	Limit  float64                 `json:"limit"`
-	Keys   []string                `json:"keys"`
-	Action *ActiveRateLimitAction2 `json:"action,omitempty"`
+	Algo   ActiveAlgo2                                               `json:"algo"`
+	Window float64                                                   `json:"window"`
+	Limit  float64                                                   `json:"limit"`
+	Keys   []string                                                  `json:"keys"`
+	Action optionalnullable.OptionalNullable[ActiveRateLimitAction2] `json:"action,omitempty"`
 }
 
 func (a ActiveRateLimit2) MarshalJSON() ([]byte, error) {
@@ -2713,7 +2714,7 @@ func (o *ActiveRateLimit2) GetKeys() []string {
 	return o.Keys
 }
 
-func (o *ActiveRateLimit2) GetAction() *ActiveRateLimitAction2 {
+func (o *ActiveRateLimit2) GetAction() optionalnullable.OptionalNullable[ActiveRateLimitAction2] {
 	if o == nil {
 		return nil
 	}
@@ -2837,12 +2838,12 @@ func (u PutFirewallConfigLogHeadersUnion2) MarshalJSON() ([]byte, error) {
 }
 
 type ActiveMitigate2 struct {
-	Action         ActiveMitigateAction2              `json:"action"`
-	RateLimit      *ActiveRateLimit2                  `json:"rateLimit,omitempty"`
-	Redirect       *ActiveRedirect2                   `json:"redirect,omitempty"`
-	ActionDuration *string                            `json:"actionDuration,omitempty"`
-	BypassSystem   *bool                              `json:"bypassSystem,omitempty"`
-	LogHeaders     *PutFirewallConfigLogHeadersUnion2 `json:"logHeaders,omitempty"`
+	Action         ActiveMitigateAction2                               `json:"action"`
+	RateLimit      optionalnullable.OptionalNullable[ActiveRateLimit2] `json:"rateLimit,omitempty"`
+	Redirect       optionalnullable.OptionalNullable[ActiveRedirect2]  `json:"redirect,omitempty"`
+	ActionDuration optionalnullable.OptionalNullable[string]           `json:"actionDuration,omitempty"`
+	BypassSystem   optionalnullable.OptionalNullable[bool]             `json:"bypassSystem,omitempty"`
+	LogHeaders     *PutFirewallConfigLogHeadersUnion2                  `json:"logHeaders,omitempty"`
 }
 
 func (a ActiveMitigate2) MarshalJSON() ([]byte, error) {
@@ -2863,28 +2864,28 @@ func (o *ActiveMitigate2) GetAction() ActiveMitigateAction2 {
 	return o.Action
 }
 
-func (o *ActiveMitigate2) GetRateLimit() *ActiveRateLimit2 {
+func (o *ActiveMitigate2) GetRateLimit() optionalnullable.OptionalNullable[ActiveRateLimit2] {
 	if o == nil {
 		return nil
 	}
 	return o.RateLimit
 }
 
-func (o *ActiveMitigate2) GetRedirect() *ActiveRedirect2 {
+func (o *ActiveMitigate2) GetRedirect() optionalnullable.OptionalNullable[ActiveRedirect2] {
 	if o == nil {
 		return nil
 	}
 	return o.Redirect
 }
 
-func (o *ActiveMitigate2) GetActionDuration() *string {
+func (o *ActiveMitigate2) GetActionDuration() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.ActionDuration
 }
 
-func (o *ActiveMitigate2) GetBypassSystem() *bool {
+func (o *ActiveMitigate2) GetBypassSystem() optionalnullable.OptionalNullable[bool] {
 	if o == nil {
 		return nil
 	}
@@ -3416,11 +3417,11 @@ func (e *ActiveRateLimitAction1) UnmarshalJSON(data []byte) error {
 }
 
 type ActiveRateLimit1 struct {
-	Algo   ActiveAlgo1             `json:"algo"`
-	Window float64                 `json:"window"`
-	Limit  float64                 `json:"limit"`
-	Keys   []string                `json:"keys"`
-	Action *ActiveRateLimitAction1 `json:"action,omitempty"`
+	Algo   ActiveAlgo1                                               `json:"algo"`
+	Window float64                                                   `json:"window"`
+	Limit  float64                                                   `json:"limit"`
+	Keys   []string                                                  `json:"keys"`
+	Action optionalnullable.OptionalNullable[ActiveRateLimitAction1] `json:"action,omitempty"`
 }
 
 func (a ActiveRateLimit1) MarshalJSON() ([]byte, error) {
@@ -3462,7 +3463,7 @@ func (o *ActiveRateLimit1) GetKeys() []string {
 	return o.Keys
 }
 
-func (o *ActiveRateLimit1) GetAction() *ActiveRateLimitAction1 {
+func (o *ActiveRateLimit1) GetAction() optionalnullable.OptionalNullable[ActiveRateLimitAction1] {
 	if o == nil {
 		return nil
 	}
@@ -3586,12 +3587,12 @@ func (u PutFirewallConfigLogHeadersUnion1) MarshalJSON() ([]byte, error) {
 }
 
 type ActiveMitigate1 struct {
-	Action         ActiveMitigateAction1              `json:"action"`
-	RateLimit      *ActiveRateLimit1                  `json:"rateLimit,omitempty"`
-	Redirect       *ActiveRedirect1                   `json:"redirect,omitempty"`
-	ActionDuration *string                            `json:"actionDuration,omitempty"`
-	BypassSystem   *bool                              `json:"bypassSystem,omitempty"`
-	LogHeaders     *PutFirewallConfigLogHeadersUnion1 `json:"logHeaders,omitempty"`
+	Action         ActiveMitigateAction1                               `json:"action"`
+	RateLimit      optionalnullable.OptionalNullable[ActiveRateLimit1] `json:"rateLimit,omitempty"`
+	Redirect       optionalnullable.OptionalNullable[ActiveRedirect1]  `json:"redirect,omitempty"`
+	ActionDuration optionalnullable.OptionalNullable[string]           `json:"actionDuration,omitempty"`
+	BypassSystem   optionalnullable.OptionalNullable[bool]             `json:"bypassSystem,omitempty"`
+	LogHeaders     *PutFirewallConfigLogHeadersUnion1                  `json:"logHeaders,omitempty"`
 }
 
 func (a ActiveMitigate1) MarshalJSON() ([]byte, error) {
@@ -3612,28 +3613,28 @@ func (o *ActiveMitigate1) GetAction() ActiveMitigateAction1 {
 	return o.Action
 }
 
-func (o *ActiveMitigate1) GetRateLimit() *ActiveRateLimit1 {
+func (o *ActiveMitigate1) GetRateLimit() optionalnullable.OptionalNullable[ActiveRateLimit1] {
 	if o == nil {
 		return nil
 	}
 	return o.RateLimit
 }
 
-func (o *ActiveMitigate1) GetRedirect() *ActiveRedirect1 {
+func (o *ActiveMitigate1) GetRedirect() optionalnullable.OptionalNullable[ActiveRedirect1] {
 	if o == nil {
 		return nil
 	}
 	return o.Redirect
 }
 
-func (o *ActiveMitigate1) GetActionDuration() *string {
+func (o *ActiveMitigate1) GetActionDuration() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.ActionDuration
 }
 
-func (o *ActiveMitigate1) GetBypassSystem() *bool {
+func (o *ActiveMitigate1) GetBypassSystem() optionalnullable.OptionalNullable[bool] {
 	if o == nil {
 		return nil
 	}

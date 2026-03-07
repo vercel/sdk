@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResourceLinks } from "@vercel/sdk/models/createintegrationstoredirectop.js";
+import { ResourceLinks } from "@vercel/sdk/models/createintegrationstoredirectresponsebody.js";
 
 let value: ResourceLinks = {
   href: "<value>",

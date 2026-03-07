@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyChecksConclusion } from "@vercel/sdk/models/getdeploymentop.js";
+import { ResponseBodyChecksConclusion } from "@vercel/sdk/models/responsebodyorigin.js";
 
 let value: ResponseBodyChecksConclusion = "skipped";
 ```

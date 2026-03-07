@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 	"time"
 )
@@ -850,11 +851,11 @@ type GetAliasResponseBody struct {
 	// The date when the alias was created
 	Created time.Time `json:"created"`
 	// The date when the alias was created in milliseconds since the UNIX epoch
-	CreatedAt *float64 `json:"createdAt,omitempty"`
+	CreatedAt optionalnullable.OptionalNullable[float64] `json:"createdAt,omitempty"`
 	// Information of the user who created the alias
 	Creator *GetAliasCreator `json:"creator,omitempty"`
 	// The date when the alias was deleted in milliseconds since the UNIX epoch
-	DeletedAt *float64 `json:"deletedAt,omitempty"`
+	DeletedAt optionalnullable.OptionalNullable[float64] `json:"deletedAt,omitempty"`
 	// A map with the deployment ID, URL and metadata
 	Deployment *GetAliasDeployment `json:"deployment,omitempty"`
 	// The deployment ID
@@ -862,13 +863,13 @@ type GetAliasResponseBody struct {
 	// The unique identifier of the project
 	ProjectID *string `json:"projectId"`
 	// Target destination domain for redirect when the alias is a redirect
-	Redirect *string `json:"redirect,omitempty"`
+	Redirect optionalnullable.OptionalNullable[string] `json:"redirect,omitempty"`
 	// Status code to be used on redirect
-	RedirectStatusCode *float64 `json:"redirectStatusCode,omitempty"`
+	RedirectStatusCode optionalnullable.OptionalNullable[float64] `json:"redirectStatusCode,omitempty"`
 	// The unique identifier of the alias
 	UID string `json:"uid"`
 	// The date when the alias was updated in milliseconds since the UNIX epoch
-	UpdatedAt *float64 `json:"updatedAt,omitempty"`
+	UpdatedAt optionalnullable.OptionalNullable[float64] `json:"updatedAt,omitempty"`
 	// The protection bypass for the alias
 	ProtectionBypass map[string]GetAliasProtectionBypassUnion `json:"protectionBypass,omitempty"`
 	// The microfrontends for the alias including the routing configuration
@@ -900,7 +901,7 @@ func (o *GetAliasResponseBody) GetCreated() time.Time {
 	return o.Created
 }
 
-func (o *GetAliasResponseBody) GetCreatedAt() *float64 {
+func (o *GetAliasResponseBody) GetCreatedAt() optionalnullable.OptionalNullable[float64] {
 	if o == nil {
 		return nil
 	}
@@ -914,7 +915,7 @@ func (o *GetAliasResponseBody) GetCreator() *GetAliasCreator {
 	return o.Creator
 }
 
-func (o *GetAliasResponseBody) GetDeletedAt() *float64 {
+func (o *GetAliasResponseBody) GetDeletedAt() optionalnullable.OptionalNullable[float64] {
 	if o == nil {
 		return nil
 	}
@@ -942,14 +943,14 @@ func (o *GetAliasResponseBody) GetProjectID() *string {
 	return o.ProjectID
 }
 
-func (o *GetAliasResponseBody) GetRedirect() *string {
+func (o *GetAliasResponseBody) GetRedirect() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.Redirect
 }
 
-func (o *GetAliasResponseBody) GetRedirectStatusCode() *float64 {
+func (o *GetAliasResponseBody) GetRedirectStatusCode() optionalnullable.OptionalNullable[float64] {
 	if o == nil {
 		return nil
 	}
@@ -963,7 +964,7 @@ func (o *GetAliasResponseBody) GetUID() string {
 	return o.UID
 }
 
-func (o *GetAliasResponseBody) GetUpdatedAt() *float64 {
+func (o *GetAliasResponseBody) GetUpdatedAt() optionalnullable.OptionalNullable[float64] {
 	if o == nil {
 		return nil
 	}

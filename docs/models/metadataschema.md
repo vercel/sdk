@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { MetadataSchema } from "@vercel/sdk/models/getconfigurationproductsop.js";
+import { MetadataSchema } from "@vercel/sdk/models/getconfigurationproductsresponsebody.js";
 
 let value: MetadataSchema = {
   type: "object",

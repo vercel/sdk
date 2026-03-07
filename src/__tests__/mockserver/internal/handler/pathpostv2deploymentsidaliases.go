@@ -8,6 +8,7 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/operations"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
@@ -55,7 +56,7 @@ func testAssignAliasAssignAlias0(w http.ResponseWriter, req *http.Request) {
 		UID:             "2WjyKQmM8ZnGcJsPWMrHRHrE",
 		Alias:           "my-alias.vercel.app",
 		Created:         types.MustTimeFromString("2017-04-26T23:00:34.232Z"),
-		OldDeploymentID: types.String("dpl_FjvFJncQHQcZMznrUm9EoB8sFuPa"),
+		OldDeploymentID: optionalnullable.From(types.String("dpl_FjvFJncQHQcZMznrUm9EoB8sFuPa")),
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

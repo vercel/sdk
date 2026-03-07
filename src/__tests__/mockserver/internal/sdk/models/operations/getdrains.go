@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 )
 
@@ -2000,28 +2001,28 @@ func (u GetDrainsProjectAccessUnion) MarshalJSON() ([]byte, error) {
 }
 
 type DrainsGetDrains2 struct {
-	ID                          string                       `json:"id"`
-	CreatedAt                   float64                      `json:"createdAt"`
-	UpdatedAt                   float64                      `json:"updatedAt"`
-	ProjectIds                  []string                     `json:"projectIds,omitempty"`
-	Name                        string                       `json:"name"`
-	TeamID                      *string                      `json:"teamId,omitempty"`
-	OwnerID                     string                       `json:"ownerId"`
-	Status                      *GetDrainsStatus2            `json:"status,omitempty"`
-	FirstErrorTimestamp         *float64                     `json:"firstErrorTimestamp,omitempty"`
-	DisabledAt                  *float64                     `json:"disabledAt,omitempty"`
-	DisabledBy                  *string                      `json:"disabledBy,omitempty"`
-	DisabledReason              *GetDrainsDisabledReason2    `json:"disabledReason,omitempty"`
-	Schemas                     GetDrainsSchemas2            `json:"schemas"`
-	Delivery                    GetDrainsDeliveryUnion2      `json:"delivery"`
-	Sampling                    []GetDrainsSampling2         `json:"sampling,omitempty"`
-	Source                      GetDrainsSourceUnion2        `json:"source"`
-	Filter                      *string                      `json:"filter,omitempty"`
-	FilterV2                    *GetDrainsFilterV2Union2     `json:"filterV2,omitempty"`
-	IntegrationIcon             *string                      `json:"integrationIcon,omitempty"`
-	IntegrationConfigurationURI *string                      `json:"integrationConfigurationUri,omitempty"`
-	IntegrationWebsite          *string                      `json:"integrationWebsite,omitempty"`
-	ProjectAccess               *GetDrainsProjectAccessUnion `json:"projectAccess,omitempty"`
+	ID                          string                                    `json:"id"`
+	CreatedAt                   float64                                   `json:"createdAt"`
+	UpdatedAt                   float64                                   `json:"updatedAt"`
+	ProjectIds                  []string                                  `json:"projectIds,omitempty"`
+	Name                        string                                    `json:"name"`
+	TeamID                      optionalnullable.OptionalNullable[string] `json:"teamId,omitempty"`
+	OwnerID                     string                                    `json:"ownerId"`
+	Status                      *GetDrainsStatus2                         `json:"status,omitempty"`
+	FirstErrorTimestamp         *float64                                  `json:"firstErrorTimestamp,omitempty"`
+	DisabledAt                  *float64                                  `json:"disabledAt,omitempty"`
+	DisabledBy                  *string                                   `json:"disabledBy,omitempty"`
+	DisabledReason              *GetDrainsDisabledReason2                 `json:"disabledReason,omitempty"`
+	Schemas                     GetDrainsSchemas2                         `json:"schemas"`
+	Delivery                    GetDrainsDeliveryUnion2                   `json:"delivery"`
+	Sampling                    []GetDrainsSampling2                      `json:"sampling,omitempty"`
+	Source                      GetDrainsSourceUnion2                     `json:"source"`
+	Filter                      *string                                   `json:"filter,omitempty"`
+	FilterV2                    *GetDrainsFilterV2Union2                  `json:"filterV2,omitempty"`
+	IntegrationIcon             *string                                   `json:"integrationIcon,omitempty"`
+	IntegrationConfigurationURI *string                                   `json:"integrationConfigurationUri,omitempty"`
+	IntegrationWebsite          *string                                   `json:"integrationWebsite,omitempty"`
+	ProjectAccess               *GetDrainsProjectAccessUnion              `json:"projectAccess,omitempty"`
 }
 
 func (d DrainsGetDrains2) MarshalJSON() ([]byte, error) {
@@ -2070,7 +2071,7 @@ func (o *DrainsGetDrains2) GetName() string {
 	return o.Name
 }
 
-func (o *DrainsGetDrains2) GetTeamID() *string {
+func (o *DrainsGetDrains2) GetTeamID() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -4000,24 +4001,24 @@ func (u GetDrainsFilterV2Union1) MarshalJSON() ([]byte, error) {
 }
 
 type DrainsGetDrains1 struct {
-	ID                  string                    `json:"id"`
-	CreatedAt           float64                   `json:"createdAt"`
-	UpdatedAt           float64                   `json:"updatedAt"`
-	ProjectIds          []string                  `json:"projectIds,omitempty"`
-	Name                string                    `json:"name"`
-	TeamID              *string                   `json:"teamId,omitempty"`
-	OwnerID             string                    `json:"ownerId"`
-	Status              *GetDrainsStatus1         `json:"status,omitempty"`
-	FirstErrorTimestamp *float64                  `json:"firstErrorTimestamp,omitempty"`
-	DisabledAt          *float64                  `json:"disabledAt,omitempty"`
-	DisabledBy          *string                   `json:"disabledBy,omitempty"`
-	DisabledReason      *GetDrainsDisabledReason1 `json:"disabledReason,omitempty"`
-	Schemas             GetDrainsSchemas1         `json:"schemas"`
-	Delivery            GetDrainsDeliveryUnion1   `json:"delivery"`
-	Sampling            []GetDrainsSampling1      `json:"sampling,omitempty"`
-	Source              GetDrainsSourceUnion1     `json:"source"`
-	Filter              *string                   `json:"filter,omitempty"`
-	FilterV2            *GetDrainsFilterV2Union1  `json:"filterV2,omitempty"`
+	ID                  string                                    `json:"id"`
+	CreatedAt           float64                                   `json:"createdAt"`
+	UpdatedAt           float64                                   `json:"updatedAt"`
+	ProjectIds          []string                                  `json:"projectIds,omitempty"`
+	Name                string                                    `json:"name"`
+	TeamID              optionalnullable.OptionalNullable[string] `json:"teamId,omitempty"`
+	OwnerID             string                                    `json:"ownerId"`
+	Status              *GetDrainsStatus1                         `json:"status,omitempty"`
+	FirstErrorTimestamp *float64                                  `json:"firstErrorTimestamp,omitempty"`
+	DisabledAt          *float64                                  `json:"disabledAt,omitempty"`
+	DisabledBy          *string                                   `json:"disabledBy,omitempty"`
+	DisabledReason      *GetDrainsDisabledReason1                 `json:"disabledReason,omitempty"`
+	Schemas             GetDrainsSchemas1                         `json:"schemas"`
+	Delivery            GetDrainsDeliveryUnion1                   `json:"delivery"`
+	Sampling            []GetDrainsSampling1                      `json:"sampling,omitempty"`
+	Source              GetDrainsSourceUnion1                     `json:"source"`
+	Filter              *string                                   `json:"filter,omitempty"`
+	FilterV2            *GetDrainsFilterV2Union1                  `json:"filterV2,omitempty"`
 }
 
 func (d DrainsGetDrains1) MarshalJSON() ([]byte, error) {
@@ -4066,7 +4067,7 @@ func (o *DrainsGetDrains1) GetName() string {
 	return o.Name
 }
 
-func (o *DrainsGetDrains1) GetTeamID() *string {
+func (o *DrainsGetDrains1) GetTeamID() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}

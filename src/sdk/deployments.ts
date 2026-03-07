@@ -34,15 +34,13 @@ import {
   GetDeploymentEventsResponse,
 } from "../models/getdeploymenteventsop.js";
 import { GetDeploymentFileContentsRequest } from "../models/getdeploymentfilecontentsop.js";
-import {
-  GetDeploymentRequest,
-  GetDeploymentResponseBody,
-} from "../models/getdeploymentop.js";
+import { GetDeploymentResponseBody } from "../models/getdeploymentresponsebody.js";
 import {
   GetDeploymentsRequest,
   GetDeploymentsResponseBody,
 } from "../models/getdeploymentsop.js";
 import { ListDeploymentFilesRequest } from "../models/listdeploymentfilesop.js";
+import { GetDeploymentRequest } from "../models/responsebodyorigin.js";
 import { UpdateIntegrationDeploymentActionRequest } from "../models/updateintegrationdeploymentactionop.js";
 import {
   UploadFileRequest,

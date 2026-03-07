@@ -3,7 +3,7 @@
  */
 
 import { deploymentsGetDeployment } from "../../funcs/deploymentsGetDeployment.js";
-import { GetDeploymentRequest$inboundSchema } from "../../models/getdeploymentop.js";
+import { GetDeploymentRequest$inboundSchema } from "../../models/responsebodyorigin.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
 const args = {

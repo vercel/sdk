@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 	"time"
 )
@@ -935,7 +936,7 @@ type ListAliasesAlias struct {
 	// Information of the user who created the alias
 	Creator *ListAliasesCreator `json:"creator,omitempty"`
 	// The date when the alias was deleted in milliseconds since the UNIX epoch
-	DeletedAt *float64 `json:"deletedAt,omitempty"`
+	DeletedAt optionalnullable.OptionalNullable[float64] `json:"deletedAt,omitempty"`
 	// A map with the deployment ID, URL and metadata
 	Deployment *ListAliasesDeployment `json:"deployment,omitempty"`
 	// The deployment ID
@@ -943,9 +944,9 @@ type ListAliasesAlias struct {
 	// The unique identifier of the project
 	ProjectID *string `json:"projectId"`
 	// Target destination domain for redirect when the alias is a redirect
-	Redirect *string `json:"redirect,omitempty"`
+	Redirect optionalnullable.OptionalNullable[string] `json:"redirect,omitempty"`
 	// Status code to be used on redirect
-	RedirectStatusCode *float64 `json:"redirectStatusCode,omitempty"`
+	RedirectStatusCode optionalnullable.OptionalNullable[float64] `json:"redirectStatusCode,omitempty"`
 	// The unique identifier of the alias
 	UID string `json:"uid"`
 	// The date when the alias was updated in milliseconds since the UNIX epoch
@@ -995,7 +996,7 @@ func (o *ListAliasesAlias) GetCreator() *ListAliasesCreator {
 	return o.Creator
 }
 
-func (o *ListAliasesAlias) GetDeletedAt() *float64 {
+func (o *ListAliasesAlias) GetDeletedAt() optionalnullable.OptionalNullable[float64] {
 	if o == nil {
 		return nil
 	}
@@ -1023,14 +1024,14 @@ func (o *ListAliasesAlias) GetProjectID() *string {
 	return o.ProjectID
 }
 
-func (o *ListAliasesAlias) GetRedirect() *string {
+func (o *ListAliasesAlias) GetRedirect() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.Redirect
 }
 
-func (o *ListAliasesAlias) GetRedirectStatusCode() *float64 {
+func (o *ListAliasesAlias) GetRedirectStatusCode() optionalnullable.OptionalNullable[float64] {
 	if o == nil {
 		return nil
 	}

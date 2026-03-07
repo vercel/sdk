@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 )
 
@@ -211,7 +212,7 @@ type PatchTeamPasswordProtection struct {
 	// Specify if the password will apply to every Deployment Target or just Preview
 	DeploymentType PatchTeamPasswordProtectionDeploymentType `json:"deploymentType"`
 	// The password that will be used to protect Project Deployments
-	Password *string `json:"password,omitempty"`
+	Password optionalnullable.OptionalNullable[string] `json:"password,omitempty"`
 }
 
 func (o *PatchTeamPasswordProtection) GetDeploymentType() PatchTeamPasswordProtectionDeploymentType {
@@ -221,7 +222,7 @@ func (o *PatchTeamPasswordProtection) GetDeploymentType() PatchTeamPasswordProte
 	return o.DeploymentType
 }
 
-func (o *PatchTeamPasswordProtection) GetPassword() *string {
+func (o *PatchTeamPasswordProtection) GetPassword() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -288,19 +289,19 @@ func (o *PatchTeamSsoProtection) GetDeploymentType() *PatchTeamSsoProtectionDepl
 // DefaultDeploymentProtection - Default deployment protection settings for new projects.
 type DefaultDeploymentProtection struct {
 	// Allows to protect project deployments with a password
-	PasswordProtection *PatchTeamPasswordProtection `json:"passwordProtection,omitempty"`
+	PasswordProtection optionalnullable.OptionalNullable[PatchTeamPasswordProtection] `json:"passwordProtection,omitempty"`
 	// Ensures visitors to your Preview Deployments are logged into Vercel and have a minimum of Viewer access on your team
-	SsoProtection *PatchTeamSsoProtection `json:"ssoProtection,omitempty"`
+	SsoProtection optionalnullable.OptionalNullable[PatchTeamSsoProtection] `json:"ssoProtection,omitempty"`
 }
 
-func (o *DefaultDeploymentProtection) GetPasswordProtection() *PatchTeamPasswordProtection {
+func (o *DefaultDeploymentProtection) GetPasswordProtection() optionalnullable.OptionalNullable[PatchTeamPasswordProtection] {
 	if o == nil {
 		return nil
 	}
 	return o.PasswordProtection
 }
 
-func (o *DefaultDeploymentProtection) GetSsoProtection() *PatchTeamSsoProtection {
+func (o *DefaultDeploymentProtection) GetSsoProtection() optionalnullable.OptionalNullable[PatchTeamSsoProtection] {
 	if o == nil {
 		return nil
 	}
@@ -743,12 +744,12 @@ type PatchTeamRequestBody struct {
 	// The hash value of an uploaded image.
 	Avatar *string `json:"avatar,omitempty"`
 	// A short text that describes the team.
-	Description *string `json:"description,omitempty"`
-	EmailDomain *string `json:"emailDomain,omitempty"`
+	Description *string                                   `json:"description,omitempty"`
+	EmailDomain optionalnullable.OptionalNullable[string] `json:"emailDomain,omitempty"`
 	// The name of the team.
 	Name *string `json:"name,omitempty"`
 	// Suffix that will be used for all preview deployments.
-	PreviewDeploymentSuffix *string `json:"previewDeploymentSuffix,omitempty"`
+	PreviewDeploymentSuffix optionalnullable.OptionalNullable[string] `json:"previewDeploymentSuffix,omitempty"`
 	// Create a new invite code and replace the current one.
 	RegenerateInviteCode *bool `json:"regenerateInviteCode,omitempty"`
 	Saml                 *Saml `json:"saml,omitempty"`
@@ -790,7 +791,7 @@ func (o *PatchTeamRequestBody) GetDescription() *string {
 	return o.Description
 }
 
-func (o *PatchTeamRequestBody) GetEmailDomain() *string {
+func (o *PatchTeamRequestBody) GetEmailDomain() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
@@ -804,7 +805,7 @@ func (o *PatchTeamRequestBody) GetName() *string {
 	return o.Name
 }
 
-func (o *PatchTeamRequestBody) GetPreviewDeploymentSuffix() *string {
+func (o *PatchTeamRequestBody) GetPreviewDeploymentSuffix() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}

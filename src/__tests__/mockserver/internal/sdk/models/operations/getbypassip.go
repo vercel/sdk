@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/optionalnullable"
 )
 
 type GetBypassIPRequest struct {
@@ -108,20 +109,20 @@ func (e *GetBypassIPAction) UnmarshalJSON(data []byte) error {
 }
 
 type GetBypassIPResult struct {
-	OwnerID       string             `json:"OwnerId"`
-	ID            string             `json:"Id"`
-	Domain        string             `json:"Domain"`
-	IP            string             `json:"Ip"`
-	Action        *GetBypassIPAction `json:"Action,omitempty"`
-	ProjectID     *string            `json:"ProjectId,omitempty"`
-	IsProjectRule *bool              `json:"IsProjectRule,omitempty"`
-	Note          *string            `json:"Note,omitempty"`
-	CreatedAt     string             `json:"CreatedAt"`
-	ActorID       *string            `json:"ActorId,omitempty"`
-	UpdatedAt     string             `json:"UpdatedAt"`
-	UpdatedAtHour string             `json:"UpdatedAtHour"`
-	DeletedAt     *string            `json:"DeletedAt,omitempty"`
-	ExpiresAt     *float64           `json:"ExpiresAt,omitempty"`
+	OwnerID       string                                     `json:"OwnerId"`
+	ID            string                                     `json:"Id"`
+	Domain        string                                     `json:"Domain"`
+	IP            string                                     `json:"Ip"`
+	Action        *GetBypassIPAction                         `json:"Action,omitempty"`
+	ProjectID     *string                                    `json:"ProjectId,omitempty"`
+	IsProjectRule *bool                                      `json:"IsProjectRule,omitempty"`
+	Note          *string                                    `json:"Note,omitempty"`
+	CreatedAt     string                                     `json:"CreatedAt"`
+	ActorID       *string                                    `json:"ActorId,omitempty"`
+	UpdatedAt     string                                     `json:"UpdatedAt"`
+	UpdatedAtHour string                                     `json:"UpdatedAtHour"`
+	DeletedAt     *string                                    `json:"DeletedAt,omitempty"`
+	ExpiresAt     optionalnullable.OptionalNullable[float64] `json:"ExpiresAt,omitempty"`
 }
 
 func (o *GetBypassIPResult) GetOwnerID() string {
@@ -215,7 +216,7 @@ func (o *GetBypassIPResult) GetDeletedAt() *string {
 	return o.DeletedAt
 }
 
-func (o *GetBypassIPResult) GetExpiresAt() *float64 {
+func (o *GetBypassIPResult) GetExpiresAt() optionalnullable.OptionalNullable[float64] {
 	if o == nil {
 		return nil
 	}

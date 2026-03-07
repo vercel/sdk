@@ -8,6 +8,7 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/operations"
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
@@ -46,7 +47,7 @@ func testRemoveProjectEnvRemoveProjectEnv0(w http.ResponseWriter, req *http.Requ
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody *operations.RemoveProjectEnvResponseBody = types.Pointer(operations.CreateRemoveProjectEnvResponseBodyArrayOfRemoveProjectEnvResponseBody1(
+	var respBody optionalnullable.OptionalNullable[operations.RemoveProjectEnvResponseBody] = optionalnullable.From(types.Pointer(operations.CreateRemoveProjectEnvResponseBodyArrayOfRemoveProjectEnvResponseBody1(
 		[]operations.RemoveProjectEnvResponseBody1{
 			operations.RemoveProjectEnvResponseBody1{
 				Type:  operations.RemoveProjectEnvType1System,
@@ -59,7 +60,7 @@ func testRemoveProjectEnvRemoveProjectEnv0(w http.ResponseWriter, req *http.Requ
 				Key:   "<key>",
 			},
 		},
-	))
+	)))
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

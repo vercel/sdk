@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyScheduledTierChange } from "@vercel/sdk/models/getprojectsop.js";
+import { ResponseBodyScheduledTierChange } from "@vercel/sdk/models/getprojectsrouteprojectsresponse200has.js";
 
 let value: ResponseBodyScheduledTierChange = {
   tier: "standard",

@@ -3,7 +3,7 @@
  */
 
 import { integrationsCreateIntegrationStoreDirect } from "../../funcs/integrationsCreateIntegrationStoreDirect.js";
-import { CreateIntegrationStoreDirectRequest$inboundSchema } from "../../models/createintegrationstoredirecthidden1.js";
+import { CreateIntegrationStoreDirectRequest$inboundSchema } from "../../models/createintegrationstoredirecthiddenintegrations1.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
 const args = {

@@ -3,14 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { GetConfigurationProductsPropertiesIntegrationsResponse200UiControl } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponseuicontrol.js";
+import { GetConfigurationProductsPropertiesIntegrationsResponse200UiControl } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponse200uicontrol.js";
 
 let value: GetConfigurationProductsPropertiesIntegrationsResponse200UiControl =
-  "multi-select";
+  "radio-button";
 ```
 
 ## Values
 
 ```typescript
-"multi-select"
+"radio-button"
 ```

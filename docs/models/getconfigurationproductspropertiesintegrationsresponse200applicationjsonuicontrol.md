@@ -5,15 +5,15 @@
 ```typescript
 import {
   GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiControl,
-} from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponseuicontrol.js";
+} from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponse200uicontrol.js";
 
 let value:
   GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONUiControl =
-    "vercel-region";
+    "multi-select";
 ```
 
 ## Values
 
 ```typescript
-"vercel-region"
+"multi-select"
 ```

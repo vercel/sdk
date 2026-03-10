@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Other } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponseuicontrol.js";
+import { Other } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponse200uicontrol.js";
 
 let value: Other = {
   status: "disabled",

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Ai } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponseuicontrol.js";
+import { Ai } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponse200uicontrol.js";
 
 let value: Ai = {
   status: "enabled",

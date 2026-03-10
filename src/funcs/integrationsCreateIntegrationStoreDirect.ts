@@ -13,7 +13,7 @@ import { pathToFunc } from "../lib/url.js";
 import {
   CreateIntegrationStoreDirectRequest,
   CreateIntegrationStoreDirectRequest$outboundSchema,
-} from "../models/createintegrationstoredirecthidden1.js";
+} from "../models/createintegrationstoredirecthiddenintegrations1.js";
 import {
   CreateIntegrationStoreDirectResponseBody,
   CreateIntegrationStoreDirectResponseBody$inboundSchema,

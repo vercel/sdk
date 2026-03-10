@@ -115,7 +115,6 @@ func testPutFirewallConfigPutFirewallConfig0(w http.ResponseWriter, req *http.Re
 						Valid:          false,
 						ValidationErrors: []string{
 							"<value 1>",
-							"<value 2>",
 						},
 					},
 				),
@@ -129,7 +128,6 @@ func testPutFirewallConfigPutFirewallConfig0(w http.ResponseWriter, req *http.Re
 						Valid:          false,
 						ValidationErrors: []string{
 							"<value 1>",
-							"<value 2>",
 						},
 					},
 				),

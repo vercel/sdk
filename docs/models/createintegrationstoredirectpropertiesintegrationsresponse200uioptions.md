@@ -3,10 +3,10 @@
 
 ## Supported Types
 
-### `models.CreateIntegrationStoreDirectUiOptionsIntegrations1`
+### `models.CreateIntegrationStoreDirectUiOptions1`
 
 ```typescript
-const value: models.CreateIntegrationStoreDirectUiOptionsIntegrations1 = {
+const value: models.CreateIntegrationStoreDirectUiOptions1 = {
   value: "<value>",
   label: "<value>",
 };
@@ -18,10 +18,10 @@ const value: models.CreateIntegrationStoreDirectUiOptionsIntegrations1 = {
 const value: string = "<value>";
 ```
 
-### `models.CreateIntegrationStoreDirectUiOptionsIntegrations3`
+### `models.CreateIntegrationStoreDirectUiOptions3`
 
 ```typescript
-const value: models.CreateIntegrationStoreDirectUiOptionsIntegrations3 = {
+const value: models.CreateIntegrationStoreDirectUiOptions3 = {
   value: "<value>",
 };
 ```

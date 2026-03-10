@@ -1,28 +1,22 @@
 # CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiOptions
 
-
-## Supported Types
-
-### `models.CreateIntegrationStoreDirectUiOptions1`
+## Example Usage
 
 ```typescript
-const value: models.CreateIntegrationStoreDirectUiOptions1 = {
-  value: "<value>",
-  label: "<value>",
-};
+import { CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiOptions } from "@vercel/sdk/models/createintegrationstoredirecthiddenintegrations1.js";
+
+let value: CreateIntegrationStoreDirectPropertiesIntegrationsResponseUiOptions =
+  {
+    value: "<value>",
+    label: "<value>",
+  };
 ```
 
-### `string`
+## Fields
 
-```typescript
-const value: string = "<value>";
-```
-
-### `models.CreateIntegrationStoreDirectUiOptions3`
-
-```typescript
-const value: models.CreateIntegrationStoreDirectUiOptions3 = {
-  value: "<value>",
-};
-```
-
+| Field                                                                       | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `value`                                                                     | *string*                                                                    | :heavy_check_mark:                                                          | N/A                                                                         |
+| `label`                                                                     | *string*                                                                    | :heavy_check_mark:                                                          | N/A                                                                         |
+| `disabled`                                                                  | *models.CreateIntegrationStoreDirectPropertiesIntegrationsResponseDisabled* | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `hidden`                                                                    | *models.CreateIntegrationStoreDirectPropertiesIntegrationsResponseHidden*   | :heavy_minus_sign:                                                          | N/A                                                                         |

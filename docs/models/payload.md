@@ -1502,7 +1502,11 @@ const value: models.OneHundredAndFortyThree = {
 ### `models.OneHundredAndFortyFour`
 
 ```typescript
-const value: models.OneHundredAndFortyFour = {};
+const value: models.OneHundredAndFortyFour = {
+  nextBuildMachineType: "<value>",
+  previousBuildMachineSelection: "<value>",
+  nextBuildMachineSelection: "<value>",
+};
 ```
 
 ### `models.OneHundredAndFortyFive`

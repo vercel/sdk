@@ -10,12 +10,12 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  GetConfigurationProductsPropertiesIntegrationsResponse200Type,
-  GetConfigurationProductsPropertiesIntegrationsResponse200Type$inboundSchema,
-  GetConfigurationProductsPropertiesIntegrationsResponse200Type$outboundSchema,
-  GetConfigurationProductsPropertiesIntegrationsResponseUiControl,
-  GetConfigurationProductsPropertiesIntegrationsResponseUiControl$inboundSchema,
-  GetConfigurationProductsPropertiesIntegrationsResponseUiControl$outboundSchema,
+  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONType,
+  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONType$inboundSchema,
+  GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONType$outboundSchema,
+  GetConfigurationProductsPropertiesIntegrationsResponse200UiControl,
+  GetConfigurationProductsPropertiesIntegrationsResponse200UiControl$inboundSchema,
+  GetConfigurationProductsPropertiesIntegrationsResponse200UiControl$outboundSchema,
   GetConfigurationProductsType,
   GetConfigurationProductsType$inboundSchema,
   GetConfigurationProductsType$outboundSchema,
@@ -26,10 +26,10 @@ import {
   Properties10$inboundSchema,
   Properties10$Outbound,
   Properties10$outboundSchema,
-  Properties6,
-  Properties6$inboundSchema,
-  Properties6$Outbound,
-  Properties6$outboundSchema,
+  Properties11,
+  Properties11$inboundSchema,
+  Properties11$Outbound,
+  Properties11$outboundSchema,
   Properties7,
   Properties7$inboundSchema,
   Properties7$Outbound,
@@ -46,8 +46,184 @@ import {
   Protocols$inboundSchema,
   Protocols$Outbound,
   Protocols$outboundSchema,
-} from "./getconfigurationproductspropertiesintegrationsresponseuicontrol.js";
+} from "./getconfigurationproductspropertiesintegrationsresponse200uicontrol.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const GetConfigurationProductsDisabled3 = {
+  Update: "update",
+  Create: "create",
+} as const;
+export type GetConfigurationProductsDisabled3 = ClosedEnum<
+  typeof GetConfigurationProductsDisabled3
+>;
+
+export type GetConfigurationProductsDisabled1 = {
+  expr: string;
+};
+
+export type PropertiesDisabled =
+  | GetConfigurationProductsDisabled1
+  | boolean
+  | GetConfigurationProductsDisabled3;
+
+export const GetConfigurationProductsHidden3 = {
+  Update: "update",
+  Create: "create",
+} as const;
+export type GetConfigurationProductsHidden3 = ClosedEnum<
+  typeof GetConfigurationProductsHidden3
+>;
+
+export type GetConfigurationProductsHidden1 = {
+  expr: string;
+};
+
+export type PropertiesHidden =
+  | GetConfigurationProductsHidden1
+  | boolean
+  | GetConfigurationProductsHidden3;
+
+export type PropertiesUiOptions = {
+  value: string;
+  label: string;
+  disabled?:
+    | GetConfigurationProductsDisabled1
+    | boolean
+    | GetConfigurationProductsDisabled3
+    | undefined;
+  hidden?:
+    | GetConfigurationProductsHidden1
+    | boolean
+    | GetConfigurationProductsHidden3
+    | undefined;
+};
+
+export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson3 =
+  {
+    Update: "update",
+    Create: "create",
+  } as const;
+export type GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson3 =
+  ClosedEnum<
+    typeof GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson3
+  >;
+
+export type GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson1 =
+  {
+    expr: string;
+  };
+
+export type GetConfigurationProductsPropertiesIntegrationsResponse200UiReadOnly =
+  | GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson1
+  | boolean
+  | GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson3;
+
+export const GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson3 =
+  {
+    Update: "update",
+    Create: "create",
+  } as const;
+export type GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson3 =
+  ClosedEnum<
+    typeof GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson3
+  >;
+
+export type GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson1 =
+  {
+    expr: string;
+  };
+
+export type GetConfigurationProductsPropertiesIntegrationsResponse200UiHidden =
+  | GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson1
+  | boolean
+  | GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson3;
+
+export const GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson3 =
+  {
+    Update: "update",
+    Create: "create",
+  } as const;
+export type GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson3 =
+  ClosedEnum<
+    typeof GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson3
+  >;
+
+export type GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson1 =
+  {
+    expr: string;
+  };
+
+export type GetConfigurationProductsPropertiesIntegrationsResponse200UiDisabled =
+  | GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson1
+  | boolean
+  | GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson3;
+
+export type GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2 =
+  {
+    expr: string;
+  };
+
+export type GetConfigurationProductsPropertiesIntegrationsResponse200UiDescription =
+  | GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2
+  | string;
+
+export type GetConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValue =
+  {
+    expr: string;
+  };
+
+export type Properties6 = {
+  type:
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONType;
+  uiControl: GetConfigurationProductsPropertiesIntegrationsResponse200UiControl;
+  uiOptions: Array<PropertiesUiOptions>;
+  description?: string | undefined;
+  enum?: Array<string> | undefined;
+  maxLength?: number | undefined;
+  minLength?: number | undefined;
+  pattern?: string | undefined;
+  default?: string | undefined;
+  uiLabel?: string | undefined;
+  uiReadOnly?:
+    | GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson1
+    | boolean
+    | GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson3
+    | undefined;
+  uiHidden?:
+    | GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson1
+    | boolean
+    | GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson3
+    | undefined;
+  uiDisabled?:
+    | GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson1
+    | boolean
+    | GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson3
+    | undefined;
+  uiDescription?:
+    | GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2
+    | string
+    | undefined;
+  uiFormattedValue?:
+    | GetConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValue
+    | undefined;
+  uiPlaceholder?: string | undefined;
+};
+
+export const GetConfigurationProductsPropertiesIntegrationsResponse200Type = {
+  String: "string",
+} as const;
+export type GetConfigurationProductsPropertiesIntegrationsResponse200Type =
+  ClosedEnum<
+    typeof GetConfigurationProductsPropertiesIntegrationsResponse200Type
+  >;
+
+export const GetConfigurationProductsPropertiesIntegrationsResponseUiControl = {
+  Select: "select",
+} as const;
+export type GetConfigurationProductsPropertiesIntegrationsResponseUiControl =
+  ClosedEnum<
+    typeof GetConfigurationProductsPropertiesIntegrationsResponseUiControl
+  >;
 
 export const Disabled3 = {
   Update: "update",
@@ -592,30 +768,32 @@ export type Properties1 = {
 
 export type Properties =
   | Properties4
+  | Properties7
+  | Properties9
+  | Properties5
   | Properties6
   | Properties8
-  | Properties5
-  | Properties7
   | Properties1
   | Properties2
   | Properties3
-  | Properties9
-  | Properties10;
+  | Properties10
+  | Properties11;
 
 export type MetadataSchema = {
   type: GetConfigurationProductsType;
   properties: {
     [k: string]:
       | Properties4
+      | Properties7
+      | Properties9
+      | Properties5
       | Properties6
       | Properties8
-      | Properties5
-      | Properties7
       | Properties1
       | Properties2
       | Properties3
-      | Properties9
-      | Properties10;
+      | Properties10
+      | Properties11;
   };
   required?: Array<string> | undefined;
 };
@@ -647,6 +825,1011 @@ export type GetConfigurationProductsResponseBody = {
   integration: Integration;
   configuration: GetConfigurationProductsConfiguration;
 };
+
+/** @internal */
+export const GetConfigurationProductsDisabled3$inboundSchema: z.ZodNativeEnum<
+  typeof GetConfigurationProductsDisabled3
+> = z.nativeEnum(GetConfigurationProductsDisabled3);
+/** @internal */
+export const GetConfigurationProductsDisabled3$outboundSchema: z.ZodNativeEnum<
+  typeof GetConfigurationProductsDisabled3
+> = GetConfigurationProductsDisabled3$inboundSchema;
+
+/** @internal */
+export const GetConfigurationProductsDisabled1$inboundSchema: z.ZodType<
+  GetConfigurationProductsDisabled1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  expr: types.string(),
+});
+/** @internal */
+export type GetConfigurationProductsDisabled1$Outbound = {
+  expr: string;
+};
+
+/** @internal */
+export const GetConfigurationProductsDisabled1$outboundSchema: z.ZodType<
+  GetConfigurationProductsDisabled1$Outbound,
+  z.ZodTypeDef,
+  GetConfigurationProductsDisabled1
+> = z.object({
+  expr: z.string(),
+});
+
+export function getConfigurationProductsDisabled1ToJSON(
+  getConfigurationProductsDisabled1: GetConfigurationProductsDisabled1,
+): string {
+  return JSON.stringify(
+    GetConfigurationProductsDisabled1$outboundSchema.parse(
+      getConfigurationProductsDisabled1,
+    ),
+  );
+}
+export function getConfigurationProductsDisabled1FromJSON(
+  jsonString: string,
+): SafeParseResult<GetConfigurationProductsDisabled1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetConfigurationProductsDisabled1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetConfigurationProductsDisabled1' from JSON`,
+  );
+}
+
+/** @internal */
+export const PropertiesDisabled$inboundSchema: z.ZodType<
+  PropertiesDisabled,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => GetConfigurationProductsDisabled1$inboundSchema),
+  types.boolean(),
+  GetConfigurationProductsDisabled3$inboundSchema,
+]);
+/** @internal */
+export type PropertiesDisabled$Outbound =
+  | GetConfigurationProductsDisabled1$Outbound
+  | boolean
+  | string;
+
+/** @internal */
+export const PropertiesDisabled$outboundSchema: z.ZodType<
+  PropertiesDisabled$Outbound,
+  z.ZodTypeDef,
+  PropertiesDisabled
+> = smartUnion([
+  z.lazy(() => GetConfigurationProductsDisabled1$outboundSchema),
+  z.boolean(),
+  GetConfigurationProductsDisabled3$outboundSchema,
+]);
+
+export function propertiesDisabledToJSON(
+  propertiesDisabled: PropertiesDisabled,
+): string {
+  return JSON.stringify(
+    PropertiesDisabled$outboundSchema.parse(propertiesDisabled),
+  );
+}
+export function propertiesDisabledFromJSON(
+  jsonString: string,
+): SafeParseResult<PropertiesDisabled, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PropertiesDisabled$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PropertiesDisabled' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetConfigurationProductsHidden3$inboundSchema: z.ZodNativeEnum<
+  typeof GetConfigurationProductsHidden3
+> = z.nativeEnum(GetConfigurationProductsHidden3);
+/** @internal */
+export const GetConfigurationProductsHidden3$outboundSchema: z.ZodNativeEnum<
+  typeof GetConfigurationProductsHidden3
+> = GetConfigurationProductsHidden3$inboundSchema;
+
+/** @internal */
+export const GetConfigurationProductsHidden1$inboundSchema: z.ZodType<
+  GetConfigurationProductsHidden1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  expr: types.string(),
+});
+/** @internal */
+export type GetConfigurationProductsHidden1$Outbound = {
+  expr: string;
+};
+
+/** @internal */
+export const GetConfigurationProductsHidden1$outboundSchema: z.ZodType<
+  GetConfigurationProductsHidden1$Outbound,
+  z.ZodTypeDef,
+  GetConfigurationProductsHidden1
+> = z.object({
+  expr: z.string(),
+});
+
+export function getConfigurationProductsHidden1ToJSON(
+  getConfigurationProductsHidden1: GetConfigurationProductsHidden1,
+): string {
+  return JSON.stringify(
+    GetConfigurationProductsHidden1$outboundSchema.parse(
+      getConfigurationProductsHidden1,
+    ),
+  );
+}
+export function getConfigurationProductsHidden1FromJSON(
+  jsonString: string,
+): SafeParseResult<GetConfigurationProductsHidden1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetConfigurationProductsHidden1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetConfigurationProductsHidden1' from JSON`,
+  );
+}
+
+/** @internal */
+export const PropertiesHidden$inboundSchema: z.ZodType<
+  PropertiesHidden,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => GetConfigurationProductsHidden1$inboundSchema),
+  types.boolean(),
+  GetConfigurationProductsHidden3$inboundSchema,
+]);
+/** @internal */
+export type PropertiesHidden$Outbound =
+  | GetConfigurationProductsHidden1$Outbound
+  | boolean
+  | string;
+
+/** @internal */
+export const PropertiesHidden$outboundSchema: z.ZodType<
+  PropertiesHidden$Outbound,
+  z.ZodTypeDef,
+  PropertiesHidden
+> = smartUnion([
+  z.lazy(() => GetConfigurationProductsHidden1$outboundSchema),
+  z.boolean(),
+  GetConfigurationProductsHidden3$outboundSchema,
+]);
+
+export function propertiesHiddenToJSON(
+  propertiesHidden: PropertiesHidden,
+): string {
+  return JSON.stringify(
+    PropertiesHidden$outboundSchema.parse(propertiesHidden),
+  );
+}
+export function propertiesHiddenFromJSON(
+  jsonString: string,
+): SafeParseResult<PropertiesHidden, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PropertiesHidden$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PropertiesHidden' from JSON`,
+  );
+}
+
+/** @internal */
+export const PropertiesUiOptions$inboundSchema: z.ZodType<
+  PropertiesUiOptions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  value: types.string(),
+  label: types.string(),
+  disabled: types.optional(
+    smartUnion([
+      z.lazy(() => GetConfigurationProductsDisabled1$inboundSchema),
+      types.boolean(),
+      GetConfigurationProductsDisabled3$inboundSchema,
+    ]),
+  ),
+  hidden: types.optional(
+    smartUnion([
+      z.lazy(() => GetConfigurationProductsHidden1$inboundSchema),
+      types.boolean(),
+      GetConfigurationProductsHidden3$inboundSchema,
+    ]),
+  ),
+});
+/** @internal */
+export type PropertiesUiOptions$Outbound = {
+  value: string;
+  label: string;
+  disabled?:
+    | GetConfigurationProductsDisabled1$Outbound
+    | boolean
+    | string
+    | undefined;
+  hidden?:
+    | GetConfigurationProductsHidden1$Outbound
+    | boolean
+    | string
+    | undefined;
+};
+
+/** @internal */
+export const PropertiesUiOptions$outboundSchema: z.ZodType<
+  PropertiesUiOptions$Outbound,
+  z.ZodTypeDef,
+  PropertiesUiOptions
+> = z.object({
+  value: z.string(),
+  label: z.string(),
+  disabled: smartUnion([
+    z.lazy(() => GetConfigurationProductsDisabled1$outboundSchema),
+    z.boolean(),
+    GetConfigurationProductsDisabled3$outboundSchema,
+  ]).optional(),
+  hidden: smartUnion([
+    z.lazy(() => GetConfigurationProductsHidden1$outboundSchema),
+    z.boolean(),
+    GetConfigurationProductsHidden3$outboundSchema,
+  ]).optional(),
+});
+
+export function propertiesUiOptionsToJSON(
+  propertiesUiOptions: PropertiesUiOptions,
+): string {
+  return JSON.stringify(
+    PropertiesUiOptions$outboundSchema.parse(propertiesUiOptions),
+  );
+}
+export function propertiesUiOptionsFromJSON(
+  jsonString: string,
+): SafeParseResult<PropertiesUiOptions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PropertiesUiOptions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PropertiesUiOptions' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson3$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson3
+  > = z.nativeEnum(
+    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson3,
+  );
+/** @internal */
+export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson3$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson3
+  > =
+    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson3$inboundSchema;
+
+/** @internal */
+export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson1$inboundSchema:
+  z.ZodType<
+    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson1,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    expr: types.string(),
+  });
+/** @internal */
+export type GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson1$Outbound =
+  {
+    expr: string;
+  };
+
+/** @internal */
+export const GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson1$outboundSchema:
+  z.ZodType<
+    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson1$Outbound,
+    z.ZodTypeDef,
+    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson1
+  > = z.object({
+    expr: z.string(),
+  });
+
+export function getConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSON1ToJSON(
+  getConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson1:
+    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson1,
+): string {
+  return JSON.stringify(
+    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson1$outboundSchema
+      .parse(
+        getConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson1,
+      ),
+  );
+}
+export function getConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJSON1FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson1,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson1$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson1' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetConfigurationProductsPropertiesIntegrationsResponse200UiReadOnly$inboundSchema:
+  z.ZodType<
+    GetConfigurationProductsPropertiesIntegrationsResponse200UiReadOnly,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    z.lazy(() =>
+      GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson1$inboundSchema
+    ),
+    types.boolean(),
+    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson3$inboundSchema,
+  ]);
+/** @internal */
+export type GetConfigurationProductsPropertiesIntegrationsResponse200UiReadOnly$Outbound =
+  | GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson1$Outbound
+  | boolean
+  | string;
+
+/** @internal */
+export const GetConfigurationProductsPropertiesIntegrationsResponse200UiReadOnly$outboundSchema:
+  z.ZodType<
+    GetConfigurationProductsPropertiesIntegrationsResponse200UiReadOnly$Outbound,
+    z.ZodTypeDef,
+    GetConfigurationProductsPropertiesIntegrationsResponse200UiReadOnly
+  > = smartUnion([
+    z.lazy(() =>
+      GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson1$outboundSchema
+    ),
+    z.boolean(),
+    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson3$outboundSchema,
+  ]);
+
+export function getConfigurationProductsPropertiesIntegrationsResponse200UiReadOnlyToJSON(
+  getConfigurationProductsPropertiesIntegrationsResponse200UiReadOnly:
+    GetConfigurationProductsPropertiesIntegrationsResponse200UiReadOnly,
+): string {
+  return JSON.stringify(
+    GetConfigurationProductsPropertiesIntegrationsResponse200UiReadOnly$outboundSchema
+      .parse(
+        getConfigurationProductsPropertiesIntegrationsResponse200UiReadOnly,
+      ),
+  );
+}
+export function getConfigurationProductsPropertiesIntegrationsResponse200UiReadOnlyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetConfigurationProductsPropertiesIntegrationsResponse200UiReadOnly,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetConfigurationProductsPropertiesIntegrationsResponse200UiReadOnly$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200UiReadOnly' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson3$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson3
+  > = z.nativeEnum(
+    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson3,
+  );
+/** @internal */
+export const GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson3$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson3
+  > =
+    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson3$inboundSchema;
+
+/** @internal */
+export const GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson1$inboundSchema:
+  z.ZodType<
+    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson1,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    expr: types.string(),
+  });
+/** @internal */
+export type GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson1$Outbound =
+  {
+    expr: string;
+  };
+
+/** @internal */
+export const GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson1$outboundSchema:
+  z.ZodType<
+    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson1$Outbound,
+    z.ZodTypeDef,
+    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson1
+  > = z.object({
+    expr: z.string(),
+  });
+
+export function getConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSON1ToJSON(
+  getConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson1:
+    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson1,
+): string {
+  return JSON.stringify(
+    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson1$outboundSchema
+      .parse(
+        getConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson1,
+      ),
+  );
+}
+export function getConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJSON1FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson1,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson1$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson1' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetConfigurationProductsPropertiesIntegrationsResponse200UiHidden$inboundSchema:
+  z.ZodType<
+    GetConfigurationProductsPropertiesIntegrationsResponse200UiHidden,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    z.lazy(() =>
+      GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson1$inboundSchema
+    ),
+    types.boolean(),
+    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson3$inboundSchema,
+  ]);
+/** @internal */
+export type GetConfigurationProductsPropertiesIntegrationsResponse200UiHidden$Outbound =
+  | GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson1$Outbound
+  | boolean
+  | string;
+
+/** @internal */
+export const GetConfigurationProductsPropertiesIntegrationsResponse200UiHidden$outboundSchema:
+  z.ZodType<
+    GetConfigurationProductsPropertiesIntegrationsResponse200UiHidden$Outbound,
+    z.ZodTypeDef,
+    GetConfigurationProductsPropertiesIntegrationsResponse200UiHidden
+  > = smartUnion([
+    z.lazy(() =>
+      GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson1$outboundSchema
+    ),
+    z.boolean(),
+    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson3$outboundSchema,
+  ]);
+
+export function getConfigurationProductsPropertiesIntegrationsResponse200UiHiddenToJSON(
+  getConfigurationProductsPropertiesIntegrationsResponse200UiHidden:
+    GetConfigurationProductsPropertiesIntegrationsResponse200UiHidden,
+): string {
+  return JSON.stringify(
+    GetConfigurationProductsPropertiesIntegrationsResponse200UiHidden$outboundSchema
+      .parse(getConfigurationProductsPropertiesIntegrationsResponse200UiHidden),
+  );
+}
+export function getConfigurationProductsPropertiesIntegrationsResponse200UiHiddenFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetConfigurationProductsPropertiesIntegrationsResponse200UiHidden,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetConfigurationProductsPropertiesIntegrationsResponse200UiHidden$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200UiHidden' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson3$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson3
+  > = z.nativeEnum(
+    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson3,
+  );
+/** @internal */
+export const GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson3$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson3
+  > =
+    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson3$inboundSchema;
+
+/** @internal */
+export const GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson1$inboundSchema:
+  z.ZodType<
+    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson1,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    expr: types.string(),
+  });
+/** @internal */
+export type GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson1$Outbound =
+  {
+    expr: string;
+  };
+
+/** @internal */
+export const GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson1$outboundSchema:
+  z.ZodType<
+    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson1$Outbound,
+    z.ZodTypeDef,
+    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson1
+  > = z.object({
+    expr: z.string(),
+  });
+
+export function getConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSON1ToJSON(
+  getConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson1:
+    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson1,
+): string {
+  return JSON.stringify(
+    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson1$outboundSchema
+      .parse(
+        getConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson1,
+      ),
+  );
+}
+export function getConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJSON1FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson1,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson1$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson1' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetConfigurationProductsPropertiesIntegrationsResponse200UiDisabled$inboundSchema:
+  z.ZodType<
+    GetConfigurationProductsPropertiesIntegrationsResponse200UiDisabled,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    z.lazy(() =>
+      GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson1$inboundSchema
+    ),
+    types.boolean(),
+    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson3$inboundSchema,
+  ]);
+/** @internal */
+export type GetConfigurationProductsPropertiesIntegrationsResponse200UiDisabled$Outbound =
+  | GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson1$Outbound
+  | boolean
+  | string;
+
+/** @internal */
+export const GetConfigurationProductsPropertiesIntegrationsResponse200UiDisabled$outboundSchema:
+  z.ZodType<
+    GetConfigurationProductsPropertiesIntegrationsResponse200UiDisabled$Outbound,
+    z.ZodTypeDef,
+    GetConfigurationProductsPropertiesIntegrationsResponse200UiDisabled
+  > = smartUnion([
+    z.lazy(() =>
+      GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson1$outboundSchema
+    ),
+    z.boolean(),
+    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson3$outboundSchema,
+  ]);
+
+export function getConfigurationProductsPropertiesIntegrationsResponse200UiDisabledToJSON(
+  getConfigurationProductsPropertiesIntegrationsResponse200UiDisabled:
+    GetConfigurationProductsPropertiesIntegrationsResponse200UiDisabled,
+): string {
+  return JSON.stringify(
+    GetConfigurationProductsPropertiesIntegrationsResponse200UiDisabled$outboundSchema
+      .parse(
+        getConfigurationProductsPropertiesIntegrationsResponse200UiDisabled,
+      ),
+  );
+}
+export function getConfigurationProductsPropertiesIntegrationsResponse200UiDisabledFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetConfigurationProductsPropertiesIntegrationsResponse200UiDisabled,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetConfigurationProductsPropertiesIntegrationsResponse200UiDisabled$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200UiDisabled' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2$inboundSchema:
+  z.ZodType<
+    GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    expr: types.string(),
+  });
+/** @internal */
+export type GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2$Outbound =
+  {
+    expr: string;
+  };
+
+/** @internal */
+export const GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2$outboundSchema:
+  z.ZodType<
+    GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2$Outbound,
+    z.ZodTypeDef,
+    GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2
+  > = z.object({
+    expr: z.string(),
+  });
+
+export function getConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSON2ToJSON(
+  getConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2:
+    GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2,
+): string {
+  return JSON.stringify(
+    GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2$outboundSchema
+      .parse(
+        getConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2,
+      ),
+  );
+}
+export function getConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJSON2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetConfigurationProductsPropertiesIntegrationsResponse200UiDescription$inboundSchema:
+  z.ZodType<
+    GetConfigurationProductsPropertiesIntegrationsResponse200UiDescription,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    z.lazy(() =>
+      GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2$inboundSchema
+    ),
+    types.string(),
+  ]);
+/** @internal */
+export type GetConfigurationProductsPropertiesIntegrationsResponse200UiDescription$Outbound =
+  | GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2$Outbound
+  | string;
+
+/** @internal */
+export const GetConfigurationProductsPropertiesIntegrationsResponse200UiDescription$outboundSchema:
+  z.ZodType<
+    GetConfigurationProductsPropertiesIntegrationsResponse200UiDescription$Outbound,
+    z.ZodTypeDef,
+    GetConfigurationProductsPropertiesIntegrationsResponse200UiDescription
+  > = smartUnion([
+    z.lazy(() =>
+      GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2$outboundSchema
+    ),
+    z.string(),
+  ]);
+
+export function getConfigurationProductsPropertiesIntegrationsResponse200UiDescriptionToJSON(
+  getConfigurationProductsPropertiesIntegrationsResponse200UiDescription:
+    GetConfigurationProductsPropertiesIntegrationsResponse200UiDescription,
+): string {
+  return JSON.stringify(
+    GetConfigurationProductsPropertiesIntegrationsResponse200UiDescription$outboundSchema
+      .parse(
+        getConfigurationProductsPropertiesIntegrationsResponse200UiDescription,
+      ),
+  );
+}
+export function getConfigurationProductsPropertiesIntegrationsResponse200UiDescriptionFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetConfigurationProductsPropertiesIntegrationsResponse200UiDescription,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetConfigurationProductsPropertiesIntegrationsResponse200UiDescription$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200UiDescription' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValue$inboundSchema:
+  z.ZodType<
+    GetConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValue,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    expr: types.string(),
+  });
+/** @internal */
+export type GetConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValue$Outbound =
+  {
+    expr: string;
+  };
+
+/** @internal */
+export const GetConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValue$outboundSchema:
+  z.ZodType<
+    GetConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValue$Outbound,
+    z.ZodTypeDef,
+    GetConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValue
+  > = z.object({
+    expr: z.string(),
+  });
+
+export function getConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValueToJSON(
+  getConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValue:
+    GetConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValue,
+): string {
+  return JSON.stringify(
+    GetConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValue$outboundSchema
+      .parse(
+        getConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValue,
+      ),
+  );
+}
+export function getConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValue$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const Properties6$inboundSchema: z.ZodType<
+  Properties6,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type:
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONType$inboundSchema,
+  "ui:control":
+    GetConfigurationProductsPropertiesIntegrationsResponse200UiControl$inboundSchema,
+  "ui:options": z.array(z.lazy(() => PropertiesUiOptions$inboundSchema)),
+  description: types.optional(types.string()),
+  enum: types.optional(z.array(types.string())),
+  maxLength: types.optional(types.number()),
+  minLength: types.optional(types.number()),
+  pattern: types.optional(types.string()),
+  default: types.optional(types.string()),
+  "ui:label": types.optional(types.string()),
+  "ui:read-only": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson1$inboundSchema
+      ),
+      types.boolean(),
+      GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson3$inboundSchema,
+    ]),
+  ),
+  "ui:hidden": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson1$inboundSchema
+      ),
+      types.boolean(),
+      GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson3$inboundSchema,
+    ]),
+  ),
+  "ui:disabled": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson1$inboundSchema
+      ),
+      types.boolean(),
+      GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson3$inboundSchema,
+    ]),
+  ),
+  "ui:description": types.optional(
+    smartUnion([
+      z.lazy(() =>
+        GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2$inboundSchema
+      ),
+      types.string(),
+    ]),
+  ),
+  "ui:formatted-value": types.optional(
+    z.lazy(() =>
+      GetConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValue$inboundSchema
+    ),
+  ),
+  "ui:placeholder": types.optional(types.string()),
+}).transform((v) => {
+  return remap$(v, {
+    "ui:control": "uiControl",
+    "ui:options": "uiOptions",
+    "ui:label": "uiLabel",
+    "ui:read-only": "uiReadOnly",
+    "ui:hidden": "uiHidden",
+    "ui:disabled": "uiDisabled",
+    "ui:description": "uiDescription",
+    "ui:formatted-value": "uiFormattedValue",
+    "ui:placeholder": "uiPlaceholder",
+  });
+});
+/** @internal */
+export type Properties6$Outbound = {
+  type: string;
+  "ui:control": string;
+  "ui:options": Array<PropertiesUiOptions$Outbound>;
+  description?: string | undefined;
+  enum?: Array<string> | undefined;
+  maxLength?: number | undefined;
+  minLength?: number | undefined;
+  pattern?: string | undefined;
+  default?: string | undefined;
+  "ui:label"?: string | undefined;
+  "ui:read-only"?:
+    | GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson1$Outbound
+    | boolean
+    | string
+    | undefined;
+  "ui:hidden"?:
+    | GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson1$Outbound
+    | boolean
+    | string
+    | undefined;
+  "ui:disabled"?:
+    | GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson1$Outbound
+    | boolean
+    | string
+    | undefined;
+  "ui:description"?:
+    | GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2$Outbound
+    | string
+    | undefined;
+  "ui:formatted-value"?:
+    | GetConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValue$Outbound
+    | undefined;
+  "ui:placeholder"?: string | undefined;
+};
+
+/** @internal */
+export const Properties6$outboundSchema: z.ZodType<
+  Properties6$Outbound,
+  z.ZodTypeDef,
+  Properties6
+> = z.object({
+  type:
+    GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONType$outboundSchema,
+  uiControl:
+    GetConfigurationProductsPropertiesIntegrationsResponse200UiControl$outboundSchema,
+  uiOptions: z.array(z.lazy(() => PropertiesUiOptions$outboundSchema)),
+  description: z.string().optional(),
+  enum: z.array(z.string()).optional(),
+  maxLength: z.number().optional(),
+  minLength: z.number().optional(),
+  pattern: z.string().optional(),
+  default: z.string().optional(),
+  uiLabel: z.string().optional(),
+  uiReadOnly: smartUnion([
+    z.lazy(() =>
+      GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson1$outboundSchema
+    ),
+    z.boolean(),
+    GetConfigurationProductsUiReadOnlyIntegrationsResponse200ApplicationJson3$outboundSchema,
+  ]).optional(),
+  uiHidden: smartUnion([
+    z.lazy(() =>
+      GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson1$outboundSchema
+    ),
+    z.boolean(),
+    GetConfigurationProductsUiHiddenIntegrationsResponse200ApplicationJson3$outboundSchema,
+  ]).optional(),
+  uiDisabled: smartUnion([
+    z.lazy(() =>
+      GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson1$outboundSchema
+    ),
+    z.boolean(),
+    GetConfigurationProductsUiDisabledIntegrationsResponse200ApplicationJson3$outboundSchema,
+  ]).optional(),
+  uiDescription: smartUnion([
+    z.lazy(() =>
+      GetConfigurationProductsUiDescriptionIntegrationsResponse200ApplicationJson2$outboundSchema
+    ),
+    z.string(),
+  ]).optional(),
+  uiFormattedValue: z.lazy(() =>
+    GetConfigurationProductsPropertiesIntegrationsResponse200UiFormattedValue$outboundSchema
+  ).optional(),
+  uiPlaceholder: z.string().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    uiControl: "ui:control",
+    uiOptions: "ui:options",
+    uiLabel: "ui:label",
+    uiReadOnly: "ui:read-only",
+    uiHidden: "ui:hidden",
+    uiDisabled: "ui:disabled",
+    uiDescription: "ui:description",
+    uiFormattedValue: "ui:formatted-value",
+    uiPlaceholder: "ui:placeholder",
+  });
+});
+
+export function properties6ToJSON(properties6: Properties6): string {
+  return JSON.stringify(Properties6$outboundSchema.parse(properties6));
+}
+export function properties6FromJSON(
+  jsonString: string,
+): SafeParseResult<Properties6, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Properties6$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Properties6' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetConfigurationProductsPropertiesIntegrationsResponse200Type$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetConfigurationProductsPropertiesIntegrationsResponse200Type
+  > = z.nativeEnum(
+    GetConfigurationProductsPropertiesIntegrationsResponse200Type,
+  );
+/** @internal */
+export const GetConfigurationProductsPropertiesIntegrationsResponse200Type$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetConfigurationProductsPropertiesIntegrationsResponse200Type
+  > =
+    GetConfigurationProductsPropertiesIntegrationsResponse200Type$inboundSchema;
+
+/** @internal */
+export const GetConfigurationProductsPropertiesIntegrationsResponseUiControl$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetConfigurationProductsPropertiesIntegrationsResponseUiControl
+  > = z.nativeEnum(
+    GetConfigurationProductsPropertiesIntegrationsResponseUiControl,
+  );
+/** @internal */
+export const GetConfigurationProductsPropertiesIntegrationsResponseUiControl$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetConfigurationProductsPropertiesIntegrationsResponseUiControl
+  > =
+    GetConfigurationProductsPropertiesIntegrationsResponseUiControl$inboundSchema;
 
 /** @internal */
 export const Disabled3$inboundSchema: z.ZodNativeEnum<typeof Disabled3> = z
@@ -4081,28 +5264,30 @@ export const Properties$inboundSchema: z.ZodType<
   unknown
 > = smartUnion([
   z.lazy(() => Properties4$inboundSchema),
-  Properties6$inboundSchema,
-  Properties8$inboundSchema,
-  z.lazy(() => Properties5$inboundSchema),
   Properties7$inboundSchema,
+  Properties9$inboundSchema,
+  z.lazy(() => Properties5$inboundSchema),
+  z.lazy(() => Properties6$inboundSchema),
+  Properties8$inboundSchema,
   z.lazy(() => Properties1$inboundSchema),
   z.lazy(() => Properties2$inboundSchema),
   z.lazy(() => Properties3$inboundSchema),
-  Properties9$inboundSchema,
   Properties10$inboundSchema,
+  Properties11$inboundSchema,
 ]);
 /** @internal */
 export type Properties$Outbound =
   | Properties4$Outbound
+  | Properties7$Outbound
+  | Properties9$Outbound
+  | Properties5$Outbound
   | Properties6$Outbound
   | Properties8$Outbound
-  | Properties5$Outbound
-  | Properties7$Outbound
   | Properties1$Outbound
   | Properties2$Outbound
   | Properties3$Outbound
-  | Properties9$Outbound
-  | Properties10$Outbound;
+  | Properties10$Outbound
+  | Properties11$Outbound;
 
 /** @internal */
 export const Properties$outboundSchema: z.ZodType<
@@ -4111,15 +5296,16 @@ export const Properties$outboundSchema: z.ZodType<
   Properties
 > = smartUnion([
   z.lazy(() => Properties4$outboundSchema),
-  Properties6$outboundSchema,
-  Properties8$outboundSchema,
-  z.lazy(() => Properties5$outboundSchema),
   Properties7$outboundSchema,
+  Properties9$outboundSchema,
+  z.lazy(() => Properties5$outboundSchema),
+  z.lazy(() => Properties6$outboundSchema),
+  Properties8$outboundSchema,
   z.lazy(() => Properties1$outboundSchema),
   z.lazy(() => Properties2$outboundSchema),
   z.lazy(() => Properties3$outboundSchema),
-  Properties9$outboundSchema,
   Properties10$outboundSchema,
+  Properties11$outboundSchema,
 ]);
 
 export function propertiesToJSON(properties: Properties): string {
@@ -4145,15 +5331,16 @@ export const MetadataSchema$inboundSchema: z.ZodType<
   properties: z.record(
     smartUnion([
       z.lazy(() => Properties4$inboundSchema),
-      Properties6$inboundSchema,
-      Properties8$inboundSchema,
-      z.lazy(() => Properties5$inboundSchema),
       Properties7$inboundSchema,
+      Properties9$inboundSchema,
+      z.lazy(() => Properties5$inboundSchema),
+      z.lazy(() => Properties6$inboundSchema),
+      Properties8$inboundSchema,
       z.lazy(() => Properties1$inboundSchema),
       z.lazy(() => Properties2$inboundSchema),
       z.lazy(() => Properties3$inboundSchema),
-      Properties9$inboundSchema,
       Properties10$inboundSchema,
+      Properties11$inboundSchema,
     ]),
   ),
   required: types.optional(z.array(types.string())),
@@ -4164,15 +5351,16 @@ export type MetadataSchema$Outbound = {
   properties: {
     [k: string]:
       | Properties4$Outbound
+      | Properties7$Outbound
+      | Properties9$Outbound
+      | Properties5$Outbound
       | Properties6$Outbound
       | Properties8$Outbound
-      | Properties5$Outbound
-      | Properties7$Outbound
       | Properties1$Outbound
       | Properties2$Outbound
       | Properties3$Outbound
-      | Properties9$Outbound
-      | Properties10$Outbound;
+      | Properties10$Outbound
+      | Properties11$Outbound;
   };
   required?: Array<string> | undefined;
 };
@@ -4187,15 +5375,16 @@ export const MetadataSchema$outboundSchema: z.ZodType<
   properties: z.record(
     smartUnion([
       z.lazy(() => Properties4$outboundSchema),
-      Properties6$outboundSchema,
-      Properties8$outboundSchema,
-      z.lazy(() => Properties5$outboundSchema),
       Properties7$outboundSchema,
+      Properties9$outboundSchema,
+      z.lazy(() => Properties5$outboundSchema),
+      z.lazy(() => Properties6$outboundSchema),
+      Properties8$outboundSchema,
       z.lazy(() => Properties1$outboundSchema),
       z.lazy(() => Properties2$outboundSchema),
       z.lazy(() => Properties3$outboundSchema),
-      Properties9$outboundSchema,
       Properties10$outboundSchema,
+      Properties11$outboundSchema,
     ]),
   ),
   required: z.array(z.string()).optional(),

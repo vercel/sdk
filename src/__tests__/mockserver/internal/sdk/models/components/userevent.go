@@ -5936,6 +5936,13 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var payload140 Payload140 = Payload140{}
+	if err := utils.UnmarshalJSON(data, &payload140, "", true, nil); err == nil {
+		u.Payload140 = &payload140
+		u.Type = PayloadUnionTypePayload140
+		return nil
+	}
+
 	var payload145 Payload145 = Payload145{}
 	if err := utils.UnmarshalJSON(data, &payload145, "", true, nil); err == nil {
 		u.Payload145 = &payload145
@@ -7193,13 +7200,6 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &payload130, "", true, nil); err == nil {
 		u.Payload130 = &payload130
 		u.Type = PayloadUnionTypePayload130
-		return nil
-	}
-
-	var payload140 Payload140 = Payload140{}
-	if err := utils.UnmarshalJSON(data, &payload140, "", true, nil); err == nil {
-		u.Payload140 = &payload140
-		u.Type = PayloadUnionTypePayload140
 		return nil
 	}
 

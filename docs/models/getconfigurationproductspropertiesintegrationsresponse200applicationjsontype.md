@@ -3,15 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONType } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponseuicontrol.js";
+import { GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONType } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponse200uicontrol.js";
 
 let value:
   GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONType =
-    "array";
+    "string";
 ```
 
 ## Values
 
 ```typescript
-"array"
+"string"
 ```

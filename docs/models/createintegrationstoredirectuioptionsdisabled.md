@@ -3,11 +3,11 @@
 
 ## Supported Types
 
-### `models.CreateIntegrationStoreDirectDisabledIntegrationsResponse1`
+### `models.CreateIntegrationStoreDirectDisabledIntegrationsResponse2001`
 
 ```typescript
-const value: models.CreateIntegrationStoreDirectDisabledIntegrationsResponse1 =
-  {
+const value:
+  models.CreateIntegrationStoreDirectDisabledIntegrationsResponse2001 = {
     expr: "<value>",
   };
 ```
@@ -18,10 +18,11 @@ const value: models.CreateIntegrationStoreDirectDisabledIntegrationsResponse1 =
 const value: boolean = true;
 ```
 
-### `models.CreateIntegrationStoreDirectDisabledIntegrationsResponse3`
+### `models.CreateIntegrationStoreDirectDisabledIntegrationsResponse2003`
 
 ```typescript
-const value: models.CreateIntegrationStoreDirectDisabledIntegrationsResponse3 =
-  "create";
+const value:
+  models.CreateIntegrationStoreDirectDisabledIntegrationsResponse2003 =
+    "create";
 ```
 

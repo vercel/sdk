@@ -105,7 +105,7 @@ export type SubmitInvoiceRequestBody = {
   items: Array<SubmitInvoiceItems>;
   discounts?: Array<SubmitInvoiceDiscounts> | undefined;
   /**
-   * Set this to `true` if this is the final invoice for the installation.
+   * Set this to `true` if this is the final invoice for the installation. Can only be set when the installation is pending deletion.
    */
   final?: boolean | undefined;
   /**

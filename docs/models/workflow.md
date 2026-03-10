@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Workflow } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponseuicontrol.js";
+import { Workflow } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponse200uicontrol.js";
 
 let value: Workflow = {
   status: "disabled",

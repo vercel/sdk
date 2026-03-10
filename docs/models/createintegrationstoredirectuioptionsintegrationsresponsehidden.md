@@ -3,11 +3,11 @@
 
 ## Supported Types
 
-### `models.CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson1`
+### `models.CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody1`
 
 ```typescript
 const value:
-  models.CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson1 =
+  models.CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody1 =
     {
       expr: "<value>",
     };
@@ -19,11 +19,11 @@ const value:
 const value: boolean = true;
 ```
 
-### `models.CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3`
+### `models.CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody3`
 
 ```typescript
 const value:
-  models.CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3 =
-    "create";
+  models.CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJSONResponseBody3 =
+    "update";
 ```
 

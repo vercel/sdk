@@ -3,10 +3,10 @@
 
 ## Supported Types
 
-### `models.GetConfigurationProductsUiOptions1`
+### `models.UiOptions1`
 
 ```typescript
-const value: models.GetConfigurationProductsUiOptions1 = {
+const value: models.UiOptions1 = {
   value: "<value>",
   label: "<value>",
 };
@@ -18,10 +18,10 @@ const value: models.GetConfigurationProductsUiOptions1 = {
 const value: string = "<value>";
 ```
 
-### `models.GetConfigurationProductsUiOptions3`
+### `models.UiOptions3`
 
 ```typescript
-const value: models.GetConfigurationProductsUiOptions3 = {
+const value: models.UiOptions3 = {
   value: "<value>",
 };
 ```

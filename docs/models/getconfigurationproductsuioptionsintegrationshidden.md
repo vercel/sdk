@@ -3,12 +3,14 @@
 
 ## Supported Types
 
-### `models.GetConfigurationProductsHiddenIntegrationsResponse2001`
+### `models.GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson1`
 
 ```typescript
-const value: models.GetConfigurationProductsHiddenIntegrationsResponse2001 = {
-  expr: "<value>",
-};
+const value:
+  models.GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson1 =
+    {
+      expr: "<value>",
+    };
 ```
 
 ### `boolean`
@@ -17,10 +19,11 @@ const value: models.GetConfigurationProductsHiddenIntegrationsResponse2001 = {
 const value: boolean = true;
 ```
 
-### `models.GetConfigurationProductsHiddenIntegrationsResponse2003`
+### `models.GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson3`
 
 ```typescript
-const value: models.GetConfigurationProductsHiddenIntegrationsResponse2003 =
-  "update";
+const value:
+  models.GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson3 =
+    "create";
 ```
 

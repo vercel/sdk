@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson3 } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponseuicontrol.js";
+import { GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson3 } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponse200uicontrol.js";
 
 let value:
   GetConfigurationProductsHiddenIntegrationsResponse200ApplicationJson3 =

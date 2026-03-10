@@ -1,28 +1,21 @@
 # GetConfigurationProductsPropertiesUiOptions
 
-
-## Supported Types
-
-### `models.UiOptions1`
+## Example Usage
 
 ```typescript
-const value: models.UiOptions1 = {
+import { GetConfigurationProductsPropertiesUiOptions } from "@vercel/sdk/models/getconfigurationproductspropertiesintegrationsresponse200uicontrol.js";
+
+let value: GetConfigurationProductsPropertiesUiOptions = {
   value: "<value>",
   label: "<value>",
 };
 ```
 
-### `string`
+## Fields
 
-```typescript
-const value: string = "<value>";
-```
-
-### `models.UiOptions3`
-
-```typescript
-const value: models.UiOptions3 = {
-  value: "<value>",
-};
-```
-
+| Field                                               | Type                                                | Required                                            | Description                                         |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| `value`                                             | *string*                                            | :heavy_check_mark:                                  | N/A                                                 |
+| `label`                                             | *string*                                            | :heavy_check_mark:                                  | N/A                                                 |
+| `disabled`                                          | *models.GetConfigurationProductsPropertiesDisabled* | :heavy_minus_sign:                                  | N/A                                                 |
+| `hidden`                                            | *models.GetConfigurationProductsPropertiesHidden*   | :heavy_minus_sign:                                  | N/A                                                 |

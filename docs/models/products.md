@@ -14,8 +14,12 @@ let value: Products = {
     type: "object",
     properties: {
       "key": {
-        type: "boolean",
-        uiControl: "toggle",
+        type: "array",
+        items: {
+          type: "number",
+        },
+        uiControl: "slider",
+        uiSteps: [],
       },
     },
   },

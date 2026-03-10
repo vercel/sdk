@@ -5,15 +5,15 @@
 ```typescript
 import {
   CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreUiControl,
-} from "@vercel/sdk/models/createintegrationstoredirecthidden1.js";
+} from "@vercel/sdk/models/createintegrationstoredirecthiddenintegrations1.js";
 
 let value:
   CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreUiControl =
-    "vercel-region";
+    "multi-select";
 ```
 
 ## Values
 
 ```typescript
-"vercel-region"
+"multi-select"
 ```

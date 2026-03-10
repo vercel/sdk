@@ -138,8 +138,11 @@ export type OneHundredAndFortyFive = {
 export type OneHundredAndFortyFour = {
   projectId?: string | undefined;
   projectName?: string | undefined;
-  buildMachineType?: string | undefined;
-  oldBuildMachineType?: string | undefined;
+  previousBuildMachineType?: string | undefined;
+  nextBuildMachineType: string;
+  previousBuildMachineSelection: string;
+  nextBuildMachineSelection: string;
+  isSystemInitiated?: boolean | undefined;
 };
 
 /**
@@ -1988,15 +1991,21 @@ export const OneHundredAndFortyFour$inboundSchema: z.ZodType<
 > = z.object({
   projectId: types.optional(types.string()),
   projectName: types.optional(types.string()),
-  buildMachineType: types.optional(types.string()),
-  oldBuildMachineType: types.optional(types.string()),
+  previousBuildMachineType: types.optional(types.string()),
+  nextBuildMachineType: types.string(),
+  previousBuildMachineSelection: types.string(),
+  nextBuildMachineSelection: types.string(),
+  isSystemInitiated: types.optional(types.boolean()),
 });
 /** @internal */
 export type OneHundredAndFortyFour$Outbound = {
   projectId?: string | undefined;
   projectName?: string | undefined;
-  buildMachineType?: string | undefined;
-  oldBuildMachineType?: string | undefined;
+  previousBuildMachineType?: string | undefined;
+  nextBuildMachineType: string;
+  previousBuildMachineSelection: string;
+  nextBuildMachineSelection: string;
+  isSystemInitiated?: boolean | undefined;
 };
 
 /** @internal */
@@ -2007,8 +2016,11 @@ export const OneHundredAndFortyFour$outboundSchema: z.ZodType<
 > = z.object({
   projectId: z.string().optional(),
   projectName: z.string().optional(),
-  buildMachineType: z.string().optional(),
-  oldBuildMachineType: z.string().optional(),
+  previousBuildMachineType: z.string().optional(),
+  nextBuildMachineType: z.string(),
+  previousBuildMachineSelection: z.string(),
+  nextBuildMachineSelection: z.string(),
+  isSystemInitiated: z.boolean().optional(),
 });
 
 export function oneHundredAndFortyFourToJSON(

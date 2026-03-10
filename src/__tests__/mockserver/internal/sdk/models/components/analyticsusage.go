@@ -734,10 +734,13 @@ func (o *Payload141) GetOrigin() *string {
 
 // Payload140 - The payload of the event, if requested.
 type Payload140 struct {
-	ProjectID           *string `json:"projectId,omitempty"`
-	ProjectName         *string `json:"projectName,omitempty"`
-	BuildMachineType    *string `json:"buildMachineType,omitempty"`
-	OldBuildMachineType *string `json:"oldBuildMachineType,omitempty"`
+	ProjectID                     *string `json:"projectId,omitempty"`
+	ProjectName                   *string `json:"projectName,omitempty"`
+	PreviousBuildMachineType      *string `json:"previousBuildMachineType,omitempty"`
+	NextBuildMachineType          string  `json:"nextBuildMachineType"`
+	PreviousBuildMachineSelection string  `json:"previousBuildMachineSelection"`
+	NextBuildMachineSelection     string  `json:"nextBuildMachineSelection"`
+	IsSystemInitiated             *bool   `json:"isSystemInitiated,omitempty"`
 }
 
 func (p Payload140) MarshalJSON() ([]byte, error) {
@@ -745,7 +748,7 @@ func (p Payload140) MarshalJSON() ([]byte, error) {
 }
 
 func (p *Payload140) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"nextBuildMachineType", "previousBuildMachineSelection", "nextBuildMachineSelection"}); err != nil {
 		return err
 	}
 	return nil
@@ -765,18 +768,39 @@ func (o *Payload140) GetProjectName() *string {
 	return o.ProjectName
 }
 
-func (o *Payload140) GetBuildMachineType() *string {
+func (o *Payload140) GetPreviousBuildMachineType() *string {
 	if o == nil {
 		return nil
 	}
-	return o.BuildMachineType
+	return o.PreviousBuildMachineType
 }
 
-func (o *Payload140) GetOldBuildMachineType() *string {
+func (o *Payload140) GetNextBuildMachineType() string {
+	if o == nil {
+		return ""
+	}
+	return o.NextBuildMachineType
+}
+
+func (o *Payload140) GetPreviousBuildMachineSelection() string {
+	if o == nil {
+		return ""
+	}
+	return o.PreviousBuildMachineSelection
+}
+
+func (o *Payload140) GetNextBuildMachineSelection() string {
+	if o == nil {
+		return ""
+	}
+	return o.NextBuildMachineSelection
+}
+
+func (o *Payload140) GetIsSystemInitiated() *bool {
 	if o == nil {
 		return nil
 	}
-	return o.OldBuildMachineType
+	return o.IsSystemInitiated
 }
 
 // Payload139 - The payload of the event, if requested.

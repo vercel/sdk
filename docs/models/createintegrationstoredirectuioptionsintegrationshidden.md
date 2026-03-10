@@ -3,13 +3,14 @@
 
 ## Supported Types
 
-### `models.CreateIntegrationStoreDirectHiddenIntegrationsResponse2001`
+### `models.CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson1`
 
 ```typescript
-const value: models.CreateIntegrationStoreDirectHiddenIntegrationsResponse2001 =
-  {
-    expr: "<value>",
-  };
+const value:
+  models.CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson1 =
+    {
+      expr: "<value>",
+    };
 ```
 
 ### `boolean`
@@ -18,10 +19,11 @@ const value: models.CreateIntegrationStoreDirectHiddenIntegrationsResponse2001 =
 const value: boolean = true;
 ```
 
-### `models.CreateIntegrationStoreDirectHiddenIntegrationsResponse2003`
+### `models.CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3`
 
 ```typescript
-const value: models.CreateIntegrationStoreDirectHiddenIntegrationsResponse2003 =
-  "create";
+const value:
+  models.CreateIntegrationStoreDirectHiddenIntegrationsResponse200ApplicationJson3 =
+    "create";
 ```
 

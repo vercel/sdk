@@ -7,6 +7,7 @@ import (
 	"log"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
+	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/models/operations"
 	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/types"
@@ -47,67 +48,14 @@ func testGetProjectsGetProjects0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody optionalnullable.OptionalNullable[operations.GetProjectsResponseBody] = optionalnullable.From(types.Pointer(operations.CreateGetProjectsResponseBodyGetProjectsResponseBody2(
-		operations.GetProjectsResponseBody2{
-			Projects: []operations.GetProjectsProject1{
-				operations.GetProjectsProject1{
-					AccountID: "<id>",
-					Alias: []operations.ProjectAlias{
-						operations.ProjectAlias{
-							Deployment: &operations.ProjectDeployment{
-								CreatedAt: 7917.25,
-								CreatedIn: "<value>",
-								Creator: &operations.ProjectDeploymentCreator{
-									Email:    "Tianna83@yahoo.com",
-									UID:      "<id>",
-									Username: "Sarah_Schmidt-Koepp",
-								},
-								DeploymentHostname: "<value>",
-								Name:               "<value>",
-								ID:                 "<id>",
-								Plan:               "<value>",
-								Private:            true,
-								ReadyState:         "<value>",
-								Type:               "<value>",
-								URL:                "https://misguided-hawk.biz",
-								UserID:             "<id>",
-							},
-							Domain:      "sorrowful-import.name",
-							Environment: operations.ProjectEnvironmentProduction,
-							Target:      operations.ProjectAliasTargetStaging,
-						},
-					},
-					DirectoryListing:     false,
-					DeploymentExpiration: operations.ProjectDeploymentExpiration1{},
-					ID:                   "<id>",
-					Name:                 "<value>",
-					NodeVersion:          operations.ProjectNodeVersion1FourteenDotX,
-					ResourceConfig: operations.ProjectResourceConfig1{
-						FunctionDefaultRegions: []string{
-							"<value 1>",
-							"<value 2>",
-							"<value 3>",
-						},
-					},
-					RollingRelease: optionalnullable.From(&operations.ProjectRollingRelease1{
-						Target: "production",
-						Stages: optionalnullable.From(types.Pointer([]operations.ProjectStage1{
-							operations.ProjectStage1{
-								TargetPercentage: 25,
-								RequireApproval:  types.Bool(false),
-								Duration:         types.Float64(600),
-								LinearShift:      types.Bool(false),
-							},
-						})),
-						CanaryResponseHeader: types.Bool(false),
-					}),
-					ServerlessFunctionRegion: "<value>",
-				},
-			},
-			Pagination: operations.CreatePaginationUnion1GetProjectsPagination1(
-				operations.GetProjectsPagination1{
+	var respBody optionalnullable.OptionalNullable[operations.GetProjectsResponseBody] = optionalnullable.From(types.Pointer(operations.CreateGetProjectsResponseBodyGetProjectsResponseBody3(
+		operations.GetProjectsResponseBody3{
+			Projects: []operations.GetProjectsProject2{},
+			Pagination: operations.CreatePaginationUnion2Pagination(
+				components.Pagination{
 					Count: 20,
-					Next:  types.String("JBSWY3DPEHPK3PXP"),
+					Next:  types.Float64(1540095775951),
+					Prev:  types.Float64(1540095775951),
 				},
 			),
 		},

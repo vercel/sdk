@@ -3,10 +3,10 @@
 
 ## Supported Types
 
-### `models.GetConfigurationProductsHiddenIntegrationsResponse1`
+### `models.GetConfigurationProductsHiddenIntegrationsResponse2001`
 
 ```typescript
-const value: models.GetConfigurationProductsHiddenIntegrationsResponse1 = {
+const value: models.GetConfigurationProductsHiddenIntegrationsResponse2001 = {
   expr: "<value>",
 };
 ```
@@ -17,10 +17,10 @@ const value: models.GetConfigurationProductsHiddenIntegrationsResponse1 = {
 const value: boolean = true;
 ```
 
-### `models.GetConfigurationProductsHiddenIntegrationsResponse3`
+### `models.GetConfigurationProductsHiddenIntegrationsResponse2003`
 
 ```typescript
-const value: models.GetConfigurationProductsHiddenIntegrationsResponse3 =
+const value: models.GetConfigurationProductsHiddenIntegrationsResponse2003 =
   "update";
 ```
 

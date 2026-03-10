@@ -66,6 +66,16 @@ const value: models.CreateIntegrationStoreDirectProperties5 = {
 
 ```typescript
 const value: models.CreateIntegrationStoreDirectProperties6 = {
+  type: "string",
+  uiControl: "radio-button",
+  uiOptions: [],
+};
+```
+
+### `models.CreateIntegrationStoreDirectProperties7`
+
+```typescript
+const value: models.CreateIntegrationStoreDirectProperties7 = {
   type: "array",
   items: {
     type: "string",
@@ -75,25 +85,12 @@ const value: models.CreateIntegrationStoreDirectProperties6 = {
 };
 ```
 
-### `models.CreateIntegrationStoreDirectProperties7`
-
-```typescript
-const value: models.CreateIntegrationStoreDirectProperties7 = {
-  type: "string",
-  uiControl: "vercel-region",
-  uiOptions: [],
-};
-```
-
 ### `models.CreateIntegrationStoreDirectProperties8`
 
 ```typescript
 const value: models.CreateIntegrationStoreDirectProperties8 = {
-  type: "array",
-  items: {
-    type: "string",
-  },
-  uiControl: "multi-vercel-region",
+  type: "string",
+  uiControl: "vercel-region",
   uiOptions: [
     {
       value: "<value>",
@@ -106,8 +103,12 @@ const value: models.CreateIntegrationStoreDirectProperties8 = {
 
 ```typescript
 const value: models.CreateIntegrationStoreDirectProperties9 = {
-  type: "string",
-  uiControl: "domain",
+  type: "array",
+  items: {
+    type: "string",
+  },
+  uiControl: "multi-vercel-region",
+  uiOptions: [],
 };
 ```
 
@@ -115,6 +116,15 @@ const value: models.CreateIntegrationStoreDirectProperties9 = {
 
 ```typescript
 const value: models.CreateIntegrationStoreDirectProperties10 = {
+  type: "string",
+  uiControl: "domain",
+};
+```
+
+### `models.CreateIntegrationStoreDirectProperties11`
+
+```typescript
+const value: models.CreateIntegrationStoreDirectProperties11 = {
   type: "string",
   uiControl: "git-namespace",
 };

@@ -66,6 +66,16 @@ const value: models.Properties5 = {
 
 ```typescript
 const value: models.Properties6 = {
+  type: "string",
+  uiControl: "radio-button",
+  uiOptions: [],
+};
+```
+
+### `models.Properties7`
+
+```typescript
+const value: models.Properties7 = {
   type: "array",
   items: {
     type: "string",
@@ -75,20 +85,20 @@ const value: models.Properties6 = {
 };
 ```
 
-### `models.Properties7`
+### `models.Properties8`
 
 ```typescript
-const value: models.Properties7 = {
+const value: models.Properties8 = {
   type: "string",
   uiControl: "vercel-region",
   uiOptions: [],
 };
 ```
 
-### `models.Properties8`
+### `models.Properties9`
 
 ```typescript
-const value: models.Properties8 = {
+const value: models.Properties9 = {
   type: "array",
   items: {
     type: "string",
@@ -98,19 +108,19 @@ const value: models.Properties8 = {
 };
 ```
 
-### `models.Properties9`
+### `models.Properties10`
 
 ```typescript
-const value: models.Properties9 = {
+const value: models.Properties10 = {
   type: "string",
   uiControl: "domain",
 };
 ```
 
-### `models.Properties10`
+### `models.Properties11`
 
 ```typescript
-const value: models.Properties10 = {
+const value: models.Properties11 = {
   type: "string",
   uiControl: "git-namespace",
 };

@@ -272,7 +272,7 @@ type SubmitInvoiceRequestBody struct {
 	Period    SubmitInvoicePeriod     `json:"period"`
 	Items     []SubmitInvoiceItem     `json:"items"`
 	Discounts []SubmitInvoiceDiscount `json:"discounts,omitempty"`
-	// Set this to `true` if this is the final invoice for the installation.
+	// Set this to `true` if this is the final invoice for the installation. Can only be set when the installation is pending deletion.
 	Final *bool `json:"final,omitempty"`
 	// Test mode
 	Test *Test `json:"test,omitempty"`

@@ -176,11 +176,26 @@ func (g *GetDrainsSpeedInsights2) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+type GetDrainsAiGateway2 struct {
+}
+
+func (g GetDrainsAiGateway2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDrainsAiGateway2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 type GetDrainsSchemas2 struct {
 	Log           *GetDrainsSchemasLog2    `json:"log,omitempty"`
 	Trace         *GetDrainsTrace2         `json:"trace,omitempty"`
 	Analytics     *GetDrainsAnalytics2     `json:"analytics,omitempty"`
 	SpeedInsights *GetDrainsSpeedInsights2 `json:"speed_insights,omitempty"`
+	AiGateway     *GetDrainsAiGateway2     `json:"ai_gateway,omitempty"`
 }
 
 func (g GetDrainsSchemas2) MarshalJSON() ([]byte, error) {
@@ -220,6 +235,13 @@ func (o *GetDrainsSchemas2) GetSpeedInsights() *GetDrainsSpeedInsights2 {
 		return nil
 	}
 	return o.SpeedInsights
+}
+
+func (o *GetDrainsSchemas2) GetAiGateway() *GetDrainsAiGateway2 {
+	if o == nil {
+		return nil
+	}
+	return o.AiGateway
 }
 
 type GetDrainsTypeInternal2 string
@@ -2359,11 +2381,26 @@ func (g *GetDrainsSpeedInsights1) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+type GetDrainsAiGateway1 struct {
+}
+
+func (g GetDrainsAiGateway1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDrainsAiGateway1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 type GetDrainsSchemas1 struct {
 	Log           *GetDrainsSchemasLog1    `json:"log,omitempty"`
 	Trace         *GetDrainsTrace1         `json:"trace,omitempty"`
 	Analytics     *GetDrainsAnalytics1     `json:"analytics,omitempty"`
 	SpeedInsights *GetDrainsSpeedInsights1 `json:"speed_insights,omitempty"`
+	AiGateway     *GetDrainsAiGateway1     `json:"ai_gateway,omitempty"`
 }
 
 func (g GetDrainsSchemas1) MarshalJSON() ([]byte, error) {
@@ -2403,6 +2440,13 @@ func (o *GetDrainsSchemas1) GetSpeedInsights() *GetDrainsSpeedInsights1 {
 		return nil
 	}
 	return o.SpeedInsights
+}
+
+func (o *GetDrainsSchemas1) GetAiGateway() *GetDrainsAiGateway1 {
+	if o == nil {
+		return nil
+	}
+	return o.AiGateway
 }
 
 type GetDrainsTypeInternal1 string

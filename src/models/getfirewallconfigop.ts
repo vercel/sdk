@@ -669,6 +669,13 @@ export type GetFirewallConfigManagedRules = {
   vercelRuleset?: VercelRuleset | undefined;
 };
 
+export const LogHeaders2 = {
+  Wildcard: "*",
+} as const;
+export type LogHeaders2 = ClosedEnum<typeof LogHeaders2>;
+
+export type GetFirewallConfigLogHeaders = Array<string> | LogHeaders2;
+
 /**
  * If the firewall configuration includes a [custom managed ruleset](https://vercel.com/docs/security/vercel-waf/managed-rulesets), it will include a `crs` item that has the following values: sd: Scanner Detection ma: Multipart Attack lfi: Local File Inclusion Attack rfi: Remote File Inclusion Attack rce: Remote Execution Attack php: PHP Attack gen: Generic Attack xss: XSS Attack sqli: SQL Injection Attack sf: Session Fixation Attack java: Java Attack
  */
@@ -688,6 +695,7 @@ export type GetFirewallConfigResponseBody = {
   changes: Array<Changes>;
   managedRules?: GetFirewallConfigManagedRules | undefined;
   botIdEnabled?: boolean | undefined;
+  logHeaders?: Array<string> | LogHeaders2 | undefined;
 };
 
 /** @internal */
@@ -2817,6 +2825,48 @@ export function getFirewallConfigManagedRulesFromJSON(
 }
 
 /** @internal */
+export const LogHeaders2$inboundSchema: z.ZodNativeEnum<typeof LogHeaders2> = z
+  .nativeEnum(LogHeaders2);
+/** @internal */
+export const LogHeaders2$outboundSchema: z.ZodNativeEnum<typeof LogHeaders2> =
+  LogHeaders2$inboundSchema;
+
+/** @internal */
+export const GetFirewallConfigLogHeaders$inboundSchema: z.ZodType<
+  GetFirewallConfigLogHeaders,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([z.array(types.string()), LogHeaders2$inboundSchema]);
+/** @internal */
+export type GetFirewallConfigLogHeaders$Outbound = Array<string> | string;
+
+/** @internal */
+export const GetFirewallConfigLogHeaders$outboundSchema: z.ZodType<
+  GetFirewallConfigLogHeaders$Outbound,
+  z.ZodTypeDef,
+  GetFirewallConfigLogHeaders
+> = smartUnion([z.array(z.string()), LogHeaders2$outboundSchema]);
+
+export function getFirewallConfigLogHeadersToJSON(
+  getFirewallConfigLogHeaders: GetFirewallConfigLogHeaders,
+): string {
+  return JSON.stringify(
+    GetFirewallConfigLogHeaders$outboundSchema.parse(
+      getFirewallConfigLogHeaders,
+    ),
+  );
+}
+export function getFirewallConfigLogHeadersFromJSON(
+  jsonString: string,
+): SafeParseResult<GetFirewallConfigLogHeaders, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetFirewallConfigLogHeaders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetFirewallConfigLogHeaders' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetFirewallConfigResponseBody$inboundSchema: z.ZodType<
   GetFirewallConfigResponseBody,
   z.ZodTypeDef,
@@ -2841,6 +2891,9 @@ export const GetFirewallConfigResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => GetFirewallConfigManagedRules$inboundSchema),
   ),
   botIdEnabled: types.optional(types.boolean()),
+  logHeaders: types.optional(
+    smartUnion([z.array(types.string()), LogHeaders2$inboundSchema]),
+  ),
 });
 /** @internal */
 export type GetFirewallConfigResponseBody$Outbound = {
@@ -2856,6 +2909,7 @@ export type GetFirewallConfigResponseBody$Outbound = {
   changes: Array<Changes$Outbound>;
   managedRules?: GetFirewallConfigManagedRules$Outbound | undefined;
   botIdEnabled?: boolean | undefined;
+  logHeaders?: Array<string> | string | undefined;
 };
 
 /** @internal */
@@ -2882,6 +2936,8 @@ export const GetFirewallConfigResponseBody$outboundSchema: z.ZodType<
   managedRules: z.lazy(() => GetFirewallConfigManagedRules$outboundSchema)
     .optional(),
   botIdEnabled: z.boolean().optional(),
+  logHeaders: smartUnion([z.array(z.string()), LogHeaders2$outboundSchema])
+    .optional(),
 });
 
 export function getFirewallConfigResponseBodyToJSON(

@@ -141,8 +141,8 @@ import { tool$environmentCreateCustomEnvironment } from "./tools/environmentCrea
 import { tool$environmentCreateSharedEnvVariable } from "./tools/environmentCreateSharedEnvVariable.js";
 import { tool$environmentDeleteSharedEnvVariable } from "./tools/environmentDeleteSharedEnvVariable.js";
 import { tool$environmentGetCustomEnvironment } from "./tools/environmentGetCustomEnvironment.js";
+import { tool$environmentGetProjectsByIdOrNameCustomEnvironments } from "./tools/environmentGetProjectsByIdOrNameCustomEnvironments.js";
 import { tool$environmentGetSharedEnvVar } from "./tools/environmentGetSharedEnvVar.js";
-import { tool$environmentGetV9ProjectsIdOrNameCustomEnvironments } from "./tools/environmentGetV9ProjectsIdOrNameCustomEnvironments.js";
 import { tool$environmentListSharedEnvVariable } from "./tools/environmentListSharedEnvVariable.js";
 import { tool$environmentRemoveCustomEnvironment } from "./tools/environmentRemoveCustomEnvironment.js";
 import { tool$environmentUnlinkSharedEnvVariable } from "./tools/environmentUnlinkSharedEnvVariable.js";
@@ -192,13 +192,13 @@ import { tool$marketplaceDeleteIntegrationResource } from "./tools/marketplaceDe
 import { tool$marketplaceExchangeSsoToken } from "./tools/marketplaceExchangeSsoToken.js";
 import { tool$marketplaceFinalizeInstallation } from "./tools/marketplaceFinalizeInstallation.js";
 import { tool$marketplaceGetAccountInfo } from "./tools/marketplaceGetAccountInfo.js";
+import {
+  tool$marketplaceGetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig,
+} from "./tools/marketplaceGetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig.js";
 import { tool$marketplaceGetIntegrationResource } from "./tools/marketplaceGetIntegrationResource.js";
 import { tool$marketplaceGetIntegrationResources } from "./tools/marketplaceGetIntegrationResources.js";
 import { tool$marketplaceGetInvoice } from "./tools/marketplaceGetInvoice.js";
 import { tool$marketplaceGetMember } from "./tools/marketplaceGetMember.js";
-import {
-  tool$marketplaceGetV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig,
-} from "./tools/marketplaceGetV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig.js";
 import { tool$marketplaceImportResource } from "./tools/marketplaceImportResource.js";
 import { tool$marketplaceSubmitBillingData } from "./tools/marketplaceSubmitBillingData.js";
 import { tool$marketplaceSubmitInvoice } from "./tools/marketplaceSubmitInvoice.js";
@@ -236,7 +236,6 @@ import { tool$projectsGetProjectEnv } from "./tools/projectsGetProjectEnv.js";
 import { tool$projectsGetProjects } from "./tools/projectsGetProjects.js";
 import { tool$projectsListPromoteAliases } from "./tools/projectsListPromoteAliases.js";
 import { tool$projectsMoveProjectDomain } from "./tools/projectsMoveProjectDomain.js";
-import { tool$projectsPatchV1ProjectsProjectIdRollbackDeploymentIdUpdateDescription } from "./tools/projectsPatchV1ProjectsProjectIdRollbackDeploymentIdUpdateDescription.js";
 import { tool$projectsPauseProject } from "./tools/projectsPauseProject.js";
 import { tool$projectsRemoveProjectDomain } from "./tools/projectsRemoveProjectDomain.js";
 import { tool$projectsRemoveProjectEnv } from "./tools/projectsRemoveProjectEnv.js";
@@ -246,6 +245,7 @@ import { tool$projectsUnpauseProject } from "./tools/projectsUnpauseProject.js";
 import { tool$projectsUpdateProject } from "./tools/projectsUpdateProject.js";
 import { tool$projectsUpdateProjectDomain } from "./tools/projectsUpdateProjectDomain.js";
 import { tool$projectsUpdateProjectProtectionBypass } from "./tools/projectsUpdateProjectProtectionBypass.js";
+import { tool$projectsUpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescription } from "./tools/projectsUpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescription.js";
 import { tool$projectsVerifyProjectDomain } from "./tools/projectsVerifyProjectDomain.js";
 import { tool$rollingReleaseApproveRollingReleaseStage } from "./tools/rollingReleaseApproveRollingReleaseStage.js";
 import { tool$rollingReleaseCompleteRollingRelease } from "./tools/rollingReleaseCompleteRollingRelease.js";
@@ -275,7 +275,7 @@ import { tool$securityAddBypassIp } from "./tools/securityAddBypassIp.js";
 import { tool$securityGetActiveAttackStatus } from "./tools/securityGetActiveAttackStatus.js";
 import { tool$securityGetBypassIp } from "./tools/securityGetBypassIp.js";
 import { tool$securityGetFirewallConfig } from "./tools/securityGetFirewallConfig.js";
-import { tool$securityGetV1SecurityFirewallEvents } from "./tools/securityGetV1SecurityFirewallEvents.js";
+import { tool$securityGetSecurityFirewallEvents } from "./tools/securityGetSecurityFirewallEvents.js";
 import { tool$securityPutFirewallConfig } from "./tools/securityPutFirewallConfig.js";
 import { tool$securityRemoveBypassIp } from "./tools/securityRemoveBypassIp.js";
 import { tool$securityUpdateAttackChallengeMode } from "./tools/securityUpdateAttackChallengeMode.js";
@@ -313,7 +313,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.19.13",
+    version: "1.19.14",
   });
 
   const client = new VercelCore({
@@ -476,7 +476,7 @@ export function createMCPServer(deps: {
   tool(tool$environmentGetSharedEnvVar);
   tool(tool$environmentUnlinkSharedEnvVariable);
   tool(tool$environmentCreateCustomEnvironment);
-  tool(tool$environmentGetV9ProjectsIdOrNameCustomEnvironments);
+  tool(tool$environmentGetProjectsByIdOrNameCustomEnvironments);
   tool(tool$environmentGetCustomEnvironment);
   tool(tool$environmentUpdateCustomEnvironment);
   tool(tool$environmentRemoveCustomEnvironment);
@@ -526,7 +526,7 @@ export function createMCPServer(deps: {
   tool(tool$marketplaceDeleteInstallationIntegrationConfiguration);
   tool(tool$marketplaceCreateInstallationIntegrationEdgeConfig);
   tool(
-    tool$marketplaceGetV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig,
+    tool$marketplaceGetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig,
   );
   tool(tool$marketplaceUpdateInstallationIntegrationEdgeConfig);
   tool(tool$authenticationListAuthTokens);
@@ -567,7 +567,7 @@ export function createMCPServer(deps: {
   tool(tool$projectsUpdateProjectProtectionBypass);
   tool(tool$projectsRequestRollback);
   tool(
-    tool$projectsPatchV1ProjectsProjectIdRollbackDeploymentIdUpdateDescription,
+    tool$projectsUpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescription,
   );
   tool(tool$projectsRequestPromote);
   tool(tool$projectsListPromoteAliases);
@@ -605,7 +605,7 @@ export function createMCPServer(deps: {
   tool(tool$securityGetBypassIp);
   tool(tool$securityAddBypassIp);
   tool(tool$securityRemoveBypassIp);
-  tool(tool$securityGetV1SecurityFirewallEvents);
+  tool(tool$securityGetSecurityFirewallEvents);
   tool(tool$teamsGetTeamMembers);
   tool(tool$teamsInviteUserToTeam);
   tool(tool$teamsRequestAccessToTeam);

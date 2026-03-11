@@ -12,9 +12,9 @@ const value: string[] = [
 ];
 ```
 
-### `models.PutFirewallConfigLogHeaders2`
+### `models.PutFirewallConfigLogHeadersSecurityResponse2`
 
 ```typescript
-const value: models.PutFirewallConfigLogHeaders2 = "*";
+const value: models.PutFirewallConfigLogHeadersSecurityResponse2 = "*";
 ```
 

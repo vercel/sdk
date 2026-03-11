@@ -10,13 +10,13 @@ import { marketplaceDeleteIntegrationResource } from "../funcs/marketplaceDelete
 import { marketplaceExchangeSsoToken } from "../funcs/marketplaceExchangeSsoToken.js";
 import { marketplaceFinalizeInstallation } from "../funcs/marketplaceFinalizeInstallation.js";
 import { marketplaceGetAccountInfo } from "../funcs/marketplaceGetAccountInfo.js";
+import {
+  marketplaceGetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig,
+} from "../funcs/marketplaceGetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig.js";
 import { marketplaceGetIntegrationResource } from "../funcs/marketplaceGetIntegrationResource.js";
 import { marketplaceGetIntegrationResources } from "../funcs/marketplaceGetIntegrationResources.js";
 import { marketplaceGetInvoice } from "../funcs/marketplaceGetInvoice.js";
 import { marketplaceGetMember } from "../funcs/marketplaceGetMember.js";
-import {
-  marketplaceGetV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig,
-} from "../funcs/marketplaceGetV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig.js";
 import { marketplaceImportResource } from "../funcs/marketplaceImportResource.js";
 import { marketplaceSubmitBillingData } from "../funcs/marketplaceSubmitBillingData.js";
 import { marketplaceSubmitInvoice } from "../funcs/marketplaceSubmitInvoice.js";
@@ -30,10 +30,13 @@ import { marketplaceUpdateResourceSecrets } from "../funcs/marketplaceUpdateReso
 import { marketplaceUpdateResourceSecretsById } from "../funcs/marketplaceUpdateResourceSecretsById.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import { CreateEventRequest } from "../models/createeventop.js";
-import { DeleteIntegrationResourceRequest } from "../models/deleteintegrationresourceop.js";
 import {
-  DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest,
-} from "../models/deletev1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidop.js";
+  CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequest,
+} from "../models/createinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationitemsop.js";
+import {
+  DeleteInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest,
+} from "../models/deleteinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationitemsbyitemidop.js";
+import { DeleteIntegrationResourceRequest } from "../models/deleteintegrationresourceop.js";
 import {
   ExchangeSsoTokenRequestBody,
   ExchangeSsoTokenResponseBody,
@@ -43,6 +46,10 @@ import {
   GetAccountInfoRequest,
   GetAccountInfoResponseBody,
 } from "../models/getaccountinfoop.js";
+import {
+  GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequest,
+  GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody,
+} from "../models/getinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationedgeconfigop.js";
 import {
   GetIntegrationResourceRequest,
   GetIntegrationResourceResponseBody,
@@ -60,27 +67,17 @@ import {
   GetMemberResponseBody,
 } from "../models/getmemberop.js";
 import {
-  GetV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest,
-  GetV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody,
-} from "../models/getv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigop.js";
-import {
-  HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest,
-  HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody,
-} from "../models/headv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigop.js";
+  HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequest,
+  HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody,
+} from "../models/headinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationedgeconfigop.js";
 import {
   ImportResourceRequest,
   ImportResourceResponseBody,
 } from "../models/importresourceop.js";
 import {
-  PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest,
-} from "../models/patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidop.js";
-import {
-  PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequest,
-} from "../models/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsop.js";
-import {
-  PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest,
-  PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody,
-} from "../models/putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigop.js";
+  ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequest,
+  ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody,
+} from "../models/replaceinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationedgeconfigop.js";
 import { SubmitBillingDataRequest } from "../models/submitbillingdataop.js";
 import {
   SubmitInvoiceRequest,
@@ -88,6 +85,9 @@ import {
 } from "../models/submitinvoiceop.js";
 import { SubmitPrepaymentBalancesRequest } from "../models/submitprepaymentbalancesop.js";
 import { UpdateInstallationRequest } from "../models/updateinstallationop.js";
+import {
+  UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest,
+} from "../models/updateinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationitemsbyitemidop.js";
 import { UpdateInvoiceRequest } from "../models/updateinvoiceop.js";
 import {
   UpdateResourceRequest,
@@ -414,7 +414,7 @@ export class Marketplace extends ClientSDK {
    */
   async createInstallationIntegrationConfiguration(
     request:
-      PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequest,
+      CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequest,
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(marketplaceCreateInstallationIntegrationConfiguration(
@@ -432,7 +432,7 @@ export class Marketplace extends ClientSDK {
    */
   async updateInstallationIntegrationConfiguration(
     request:
-      PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest,
+      UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest,
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(marketplaceUpdateInstallationIntegrationConfiguration(
@@ -450,7 +450,7 @@ export class Marketplace extends ClientSDK {
    */
   async deleteInstallationIntegrationConfiguration(
     request:
-      DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest,
+      DeleteInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest,
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(marketplaceDeleteInstallationIntegrationConfiguration(
@@ -468,10 +468,10 @@ export class Marketplace extends ClientSDK {
    */
   async createInstallationIntegrationEdgeConfig(
     request:
-      HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest,
+      HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequest,
     options?: RequestOptions,
   ): Promise<
-    | HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody
+    | HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody
     | undefined
   > {
     return unwrapAsync(marketplaceCreateInstallationIntegrationEdgeConfig(
@@ -487,16 +487,16 @@ export class Marketplace extends ClientSDK {
    * @remarks
    * When the user enabled Edge Config syncing, then this endpoint can be used by the partner to fetch the contents of the Edge Config.
    */
-  async getV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig(
+  async getInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig(
     request:
-      GetV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest,
+      GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequest,
     options?: RequestOptions,
   ): Promise<
-    | GetV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody
+    | GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody
     | undefined
   > {
     return unwrapAsync(
-      marketplaceGetV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig(
+      marketplaceGetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig(
         this,
         request,
         options,
@@ -512,10 +512,10 @@ export class Marketplace extends ClientSDK {
    */
   async updateInstallationIntegrationEdgeConfig(
     request:
-      PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest,
+      ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequest,
     options?: RequestOptions,
   ): Promise<
-    PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody
+    ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody
   > {
     return unwrapAsync(marketplaceUpdateInstallationIntegrationEdgeConfig(
       this,

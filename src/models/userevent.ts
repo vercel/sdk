@@ -417,227 +417,6 @@ import {
   TwoHundredAndTwo$Outbound,
   TwoHundredAndTwo$outboundSchema,
 } from "./onehundredandfiftyone.js";
-import {
-  Before,
-  Before$inboundSchema,
-  Before$Outbound,
-  Before$outboundSchema,
-  Fifty,
-  Fifty$inboundSchema,
-  Fifty$Outbound,
-  Fifty$outboundSchema,
-  FiftyEight,
-  FiftyEight$inboundSchema,
-  FiftyEight$Outbound,
-  FiftyEight$outboundSchema,
-  FiftyFive,
-  FiftyFive$inboundSchema,
-  FiftyFive$Outbound,
-  FiftyFive$outboundSchema,
-  FiftyFour,
-  FiftyFour$inboundSchema,
-  FiftyFour$Outbound,
-  FiftyFour$outboundSchema,
-  FiftyNine,
-  FiftyNine$inboundSchema,
-  FiftyNine$Outbound,
-  FiftyNine$outboundSchema,
-  FiftyOne,
-  FiftyOne$inboundSchema,
-  FiftyOne$Outbound,
-  FiftyOne$outboundSchema,
-  FiftySeven,
-  FiftySeven$inboundSchema,
-  FiftySeven$Outbound,
-  FiftySeven$outboundSchema,
-  FiftySix,
-  FiftySix$inboundSchema,
-  FiftySix$Outbound,
-  FiftySix$outboundSchema,
-  FiftyThree,
-  FiftyThree$inboundSchema,
-  FiftyThree$Outbound,
-  FiftyThree$outboundSchema,
-  FiftyTwo,
-  FiftyTwo$inboundSchema,
-  FiftyTwo$Outbound,
-  FiftyTwo$outboundSchema,
-  Forty,
-  Forty$inboundSchema,
-  Forty$Outbound,
-  Forty$outboundSchema,
-  FortyEight,
-  FortyEight$inboundSchema,
-  FortyEight$Outbound,
-  FortyEight$outboundSchema,
-  FortyFive,
-  FortyFive$inboundSchema,
-  FortyFive$Outbound,
-  FortyFive$outboundSchema,
-  FortyFour,
-  FortyFour$inboundSchema,
-  FortyFour$Outbound,
-  FortyFour$outboundSchema,
-  FortyNine,
-  FortyNine$inboundSchema,
-  FortyNine$Outbound,
-  FortyNine$outboundSchema,
-  FortyOne,
-  FortyOne$inboundSchema,
-  FortyOne$Outbound,
-  FortyOne$outboundSchema,
-  FortySeven,
-  FortySeven$inboundSchema,
-  FortySeven$Outbound,
-  FortySeven$outboundSchema,
-  FortySix,
-  FortySix$inboundSchema,
-  FortySix$Outbound,
-  FortySix$outboundSchema,
-  FortyThree,
-  FortyThree$inboundSchema,
-  FortyThree$Outbound,
-  FortyThree$outboundSchema,
-  FortyTwo,
-  FortyTwo$inboundSchema,
-  FortyTwo$Outbound,
-  FortyTwo$outboundSchema,
-  PayloadItems,
-  PayloadItems$inboundSchema,
-  PayloadItems$Outbound,
-  PayloadItems$outboundSchema,
-  Seventy,
-  Seventy$inboundSchema,
-  Seventy$Outbound,
-  Seventy$outboundSchema,
-  SeventyFive,
-  SeventyFive$inboundSchema,
-  SeventyFive$Outbound,
-  SeventyFive$outboundSchema,
-  SeventyFour,
-  SeventyFour$inboundSchema,
-  SeventyFour$Outbound,
-  SeventyFour$outboundSchema,
-  SeventyOne,
-  SeventyOne$inboundSchema,
-  SeventyOne$Outbound,
-  SeventyOne$outboundSchema,
-  SeventySeven,
-  SeventySeven$inboundSchema,
-  SeventySeven$Outbound,
-  SeventySeven$outboundSchema,
-  SeventySix,
-  SeventySix$inboundSchema,
-  SeventySix$Outbound,
-  SeventySix$outboundSchema,
-  SeventyThree,
-  SeventyThree$inboundSchema,
-  SeventyThree$Outbound,
-  SeventyThree$outboundSchema,
-  SeventyTwo,
-  SeventyTwo$inboundSchema,
-  SeventyTwo$Outbound,
-  SeventyTwo$outboundSchema,
-  Sixty,
-  Sixty$inboundSchema,
-  Sixty$Outbound,
-  Sixty$outboundSchema,
-  SixtyEight,
-  SixtyEight$inboundSchema,
-  SixtyEight$Outbound,
-  SixtyEight$outboundSchema,
-  SixtyFive,
-  SixtyFive$inboundSchema,
-  SixtyFive$Outbound,
-  SixtyFive$outboundSchema,
-  SixtyFour,
-  SixtyFour$inboundSchema,
-  SixtyFour$Outbound,
-  SixtyFour$outboundSchema,
-  SixtyNine,
-  SixtyNine$inboundSchema,
-  SixtyNine$Outbound,
-  SixtyNine$outboundSchema,
-  SixtyOne,
-  SixtyOne$inboundSchema,
-  SixtyOne$Outbound,
-  SixtyOne$outboundSchema,
-  SixtySeven,
-  SixtySeven$inboundSchema,
-  SixtySeven$Outbound,
-  SixtySeven$outboundSchema,
-  SixtySix,
-  SixtySix$inboundSchema,
-  SixtySix$Outbound,
-  SixtySix$outboundSchema,
-  SixtyThree,
-  SixtyThree$inboundSchema,
-  SixtyThree$Outbound,
-  SixtyThree$outboundSchema,
-  SixtyTwo,
-  SixtyTwo$inboundSchema,
-  SixtyTwo$Outbound,
-  SixtyTwo$outboundSchema,
-  Thirty,
-  Thirty$inboundSchema,
-  Thirty$Outbound,
-  Thirty$outboundSchema,
-  ThirtyEight,
-  ThirtyEight$inboundSchema,
-  ThirtyEight$Outbound,
-  ThirtyEight$outboundSchema,
-  ThirtyFive,
-  ThirtyFive$inboundSchema,
-  ThirtyFive$Outbound,
-  ThirtyFive$outboundSchema,
-  ThirtyFour,
-  ThirtyFour$inboundSchema,
-  ThirtyFour$Outbound,
-  ThirtyFour$outboundSchema,
-  ThirtyNine,
-  ThirtyNine$inboundSchema,
-  ThirtyNine$Outbound,
-  ThirtyNine$outboundSchema,
-  ThirtyOne,
-  ThirtyOne$inboundSchema,
-  ThirtyOne$Outbound,
-  ThirtyOne$outboundSchema,
-  ThirtySeven,
-  ThirtySeven$inboundSchema,
-  ThirtySeven$Outbound,
-  ThirtySeven$outboundSchema,
-  ThirtySix,
-  ThirtySix$inboundSchema,
-  ThirtySix$Outbound,
-  ThirtySix$outboundSchema,
-  ThirtyThree,
-  ThirtyThree$inboundSchema,
-  ThirtyThree$Outbound,
-  ThirtyThree$outboundSchema,
-  ThirtyTwo,
-  ThirtyTwo$inboundSchema,
-  ThirtyTwo$Outbound,
-  ThirtyTwo$outboundSchema,
-  TwentyEight,
-  TwentyEight$inboundSchema,
-  TwentyEight$Outbound,
-  TwentyEight$outboundSchema,
-  TwentyNine,
-  TwentyNine$inboundSchema,
-  TwentyNine$Outbound,
-  TwentyNine$outboundSchema,
-  TwentySeven,
-  TwentySeven$inboundSchema,
-  TwentySeven$Outbound,
-  TwentySeven$outboundSchema,
-  TwentySix,
-  TwentySix$inboundSchema,
-  TwentySix$Outbound,
-  TwentySix$outboundSchema,
-  UserEventPayload25AfterType,
-  UserEventPayload25AfterType$inboundSchema,
-  UserEventPayload25AfterType$outboundSchema,
-} from "./payloaditems.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   Eighty,
@@ -1050,6 +829,282 @@ import {
   Via$Outbound,
   Via$outboundSchema,
 } from "./twohundredandfourteen.js";
+import {
+  Fifty,
+  Fifty$inboundSchema,
+  Fifty$Outbound,
+  Fifty$outboundSchema,
+  FiftyEight,
+  FiftyEight$inboundSchema,
+  FiftyEight$Outbound,
+  FiftyEight$outboundSchema,
+  FiftyFive,
+  FiftyFive$inboundSchema,
+  FiftyFive$Outbound,
+  FiftyFive$outboundSchema,
+  FiftyFour,
+  FiftyFour$inboundSchema,
+  FiftyFour$Outbound,
+  FiftyFour$outboundSchema,
+  FiftyNine,
+  FiftyNine$inboundSchema,
+  FiftyNine$Outbound,
+  FiftyNine$outboundSchema,
+  FiftyOne,
+  FiftyOne$inboundSchema,
+  FiftyOne$Outbound,
+  FiftyOne$outboundSchema,
+  FiftySeven,
+  FiftySeven$inboundSchema,
+  FiftySeven$Outbound,
+  FiftySeven$outboundSchema,
+  FiftySix,
+  FiftySix$inboundSchema,
+  FiftySix$Outbound,
+  FiftySix$outboundSchema,
+  FiftyThree,
+  FiftyThree$inboundSchema,
+  FiftyThree$Outbound,
+  FiftyThree$outboundSchema,
+  FiftyTwo,
+  FiftyTwo$inboundSchema,
+  FiftyTwo$Outbound,
+  FiftyTwo$outboundSchema,
+  Forty,
+  Forty$inboundSchema,
+  Forty$Outbound,
+  Forty$outboundSchema,
+  FortyEight,
+  FortyEight$inboundSchema,
+  FortyEight$Outbound,
+  FortyEight$outboundSchema,
+  FortyFive,
+  FortyFive$inboundSchema,
+  FortyFive$Outbound,
+  FortyFive$outboundSchema,
+  FortyFour,
+  FortyFour$inboundSchema,
+  FortyFour$Outbound,
+  FortyFour$outboundSchema,
+  FortyNine,
+  FortyNine$inboundSchema,
+  FortyNine$Outbound,
+  FortyNine$outboundSchema,
+  FortyOne,
+  FortyOne$inboundSchema,
+  FortyOne$Outbound,
+  FortyOne$outboundSchema,
+  FortySeven,
+  FortySeven$inboundSchema,
+  FortySeven$Outbound,
+  FortySeven$outboundSchema,
+  FortySix,
+  FortySix$inboundSchema,
+  FortySix$Outbound,
+  FortySix$outboundSchema,
+  FortyThree,
+  FortyThree$inboundSchema,
+  FortyThree$Outbound,
+  FortyThree$outboundSchema,
+  FortyTwo,
+  FortyTwo$inboundSchema,
+  FortyTwo$Outbound,
+  FortyTwo$outboundSchema,
+  Seventy,
+  Seventy$inboundSchema,
+  Seventy$Outbound,
+  Seventy$outboundSchema,
+  SeventyFive,
+  SeventyFive$inboundSchema,
+  SeventyFive$Outbound,
+  SeventyFive$outboundSchema,
+  SeventyFour,
+  SeventyFour$inboundSchema,
+  SeventyFour$Outbound,
+  SeventyFour$outboundSchema,
+  SeventyOne,
+  SeventyOne$inboundSchema,
+  SeventyOne$Outbound,
+  SeventyOne$outboundSchema,
+  SeventySeven,
+  SeventySeven$inboundSchema,
+  SeventySeven$Outbound,
+  SeventySeven$outboundSchema,
+  SeventySix,
+  SeventySix$inboundSchema,
+  SeventySix$Outbound,
+  SeventySix$outboundSchema,
+  SeventyThree,
+  SeventyThree$inboundSchema,
+  SeventyThree$Outbound,
+  SeventyThree$outboundSchema,
+  SeventyTwo,
+  SeventyTwo$inboundSchema,
+  SeventyTwo$Outbound,
+  SeventyTwo$outboundSchema,
+  Sixty,
+  Sixty$inboundSchema,
+  Sixty$Outbound,
+  Sixty$outboundSchema,
+  SixtyEight,
+  SixtyEight$inboundSchema,
+  SixtyEight$Outbound,
+  SixtyEight$outboundSchema,
+  SixtyFive,
+  SixtyFive$inboundSchema,
+  SixtyFive$Outbound,
+  SixtyFive$outboundSchema,
+  SixtyFour,
+  SixtyFour$inboundSchema,
+  SixtyFour$Outbound,
+  SixtyFour$outboundSchema,
+  SixtyNine,
+  SixtyNine$inboundSchema,
+  SixtyNine$Outbound,
+  SixtyNine$outboundSchema,
+  SixtyOne,
+  SixtyOne$inboundSchema,
+  SixtyOne$Outbound,
+  SixtyOne$outboundSchema,
+  SixtySeven,
+  SixtySeven$inboundSchema,
+  SixtySeven$Outbound,
+  SixtySeven$outboundSchema,
+  SixtySix,
+  SixtySix$inboundSchema,
+  SixtySix$Outbound,
+  SixtySix$outboundSchema,
+  SixtyThree,
+  SixtyThree$inboundSchema,
+  SixtyThree$Outbound,
+  SixtyThree$outboundSchema,
+  SixtyTwo,
+  SixtyTwo$inboundSchema,
+  SixtyTwo$Outbound,
+  SixtyTwo$outboundSchema,
+  Thirty,
+  Thirty$inboundSchema,
+  Thirty$Outbound,
+  Thirty$outboundSchema,
+  ThirtyEight,
+  ThirtyEight$inboundSchema,
+  ThirtyEight$Outbound,
+  ThirtyEight$outboundSchema,
+  ThirtyFive,
+  ThirtyFive$inboundSchema,
+  ThirtyFive$Outbound,
+  ThirtyFive$outboundSchema,
+  ThirtyFour,
+  ThirtyFour$inboundSchema,
+  ThirtyFour$Outbound,
+  ThirtyFour$outboundSchema,
+  ThirtyNine,
+  ThirtyNine$inboundSchema,
+  ThirtyNine$Outbound,
+  ThirtyNine$outboundSchema,
+  ThirtyOne,
+  ThirtyOne$inboundSchema,
+  ThirtyOne$Outbound,
+  ThirtyOne$outboundSchema,
+  ThirtySeven,
+  ThirtySeven$inboundSchema,
+  ThirtySeven$Outbound,
+  ThirtySeven$outboundSchema,
+  ThirtySix,
+  ThirtySix$inboundSchema,
+  ThirtySix$Outbound,
+  ThirtySix$outboundSchema,
+  ThirtyThree,
+  ThirtyThree$inboundSchema,
+  ThirtyThree$Outbound,
+  ThirtyThree$outboundSchema,
+  ThirtyTwo,
+  ThirtyTwo$inboundSchema,
+  ThirtyTwo$Outbound,
+  ThirtyTwo$outboundSchema,
+  TwentyEight,
+  TwentyEight$inboundSchema,
+  TwentyEight$Outbound,
+  TwentyEight$outboundSchema,
+  TwentyNine,
+  TwentyNine$inboundSchema,
+  TwentyNine$Outbound,
+  TwentyNine$outboundSchema,
+  TwentySeven,
+  TwentySeven$inboundSchema,
+  TwentySeven$Outbound,
+  TwentySeven$outboundSchema,
+  TwentySix,
+  TwentySix$inboundSchema,
+  TwentySix$Outbound,
+  TwentySix$outboundSchema,
+  UserEventPayload25BeforeType,
+  UserEventPayload25BeforeType$inboundSchema,
+  UserEventPayload25BeforeType$outboundSchema,
+  UserEventPayload25Type,
+  UserEventPayload25Type$inboundSchema,
+  UserEventPayload25Type$outboundSchema,
+} from "./usereventpayload25beforetype.js";
+
+export type UserEventPayloadItems = {
+  type: UserEventPayload25BeforeType;
+};
+
+export type UserEventPayloadProjectIds = {
+  type: UserEventPayload25Type;
+  required: boolean;
+  items: UserEventPayloadItems;
+};
+
+export type UserEventPayloadResources = {
+  projectIds: UserEventPayloadProjectIds;
+};
+
+export const UserEventPayload25Permissions = {
+  ReadDomain: "read:domain",
+  ReadWriteDomain: "read-write:domain",
+  ReadTeam: "read:team",
+  ReadBilling: "read:billing",
+  ReadWriteBilling: "read-write:billing",
+  ReadWriteAiGatewayApiKey: "read-write:ai-gateway-api-key",
+  UseAiGateway: "use:ai-gateway",
+  ReadWriteProjectEnvVars: "read-write:project-env-vars",
+  ReadWriteDrains: "read-write:drains",
+  ReadWriteEdgeConfig: "read-write:edge-config",
+  ReadMonitoring: "read:monitoring",
+  ReadAccessGroup: "read:access-group",
+  ReadProject: "read:project",
+  ReadWriteProject: "read-write:project",
+  ReadDeployment: "read:deployment",
+  ReadWriteDeployment: "read-write:deployment",
+  ReadWriteEdgeCache: "read-write:edge-cache",
+} as const;
+export type UserEventPayload25Permissions = ClosedEnum<
+  typeof UserEventPayload25Permissions
+>;
+
+export type Before = {
+  resources?: UserEventPayloadResources | undefined;
+  permissions?: Array<UserEventPayload25Permissions> | undefined;
+};
+
+export const UserEventPayload25AfterType = {
+  List: "list",
+} as const;
+export type UserEventPayload25AfterType = ClosedEnum<
+  typeof UserEventPayload25AfterType
+>;
+
+export const UserEventPayload25AfterResourcesType = {
+  String: "string",
+} as const;
+export type UserEventPayload25AfterResourcesType = ClosedEnum<
+  typeof UserEventPayload25AfterResourcesType
+>;
+
+export type PayloadItems = {
+  type: UserEventPayload25AfterResourcesType;
+};
 
 export type UserEventPayload25ProjectIds = {
   type: UserEventPayload25AfterType;
@@ -1078,6 +1133,7 @@ export const UserEventPayloadPermissions = {
   ReadWriteProject: "read-write:project",
   ReadDeployment: "read:deployment",
   ReadWriteDeployment: "read-write:deployment",
+  ReadWriteEdgeCache: "read-write:edge-cache",
 } as const;
 export type UserEventPayloadPermissions = ClosedEnum<
   typeof UserEventPayloadPermissions
@@ -1126,6 +1182,7 @@ export const NextPermissions = {
   ReadWriteProject: "read-write:project",
   ReadDeployment: "read:deployment",
   ReadWriteDeployment: "read-write:deployment",
+  ReadWriteEdgeCache: "read-write:edge-cache",
 } as const;
 export type NextPermissions = ClosedEnum<typeof NextPermissions>;
 
@@ -1174,6 +1231,7 @@ export const Permissions = {
   ReadWriteProject: "read-write:project",
   ReadDeployment: "read:deployment",
   ReadWriteDeployment: "read-write:deployment",
+  ReadWriteEdgeCache: "read-write:edge-cache",
 } as const;
 export type Permissions = ClosedEnum<typeof Permissions>;
 
@@ -2088,6 +2146,231 @@ export type UserEvent = {
 };
 
 /** @internal */
+export const UserEventPayloadItems$inboundSchema: z.ZodType<
+  UserEventPayloadItems,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: UserEventPayload25BeforeType$inboundSchema,
+});
+/** @internal */
+export type UserEventPayloadItems$Outbound = {
+  type: string;
+};
+
+/** @internal */
+export const UserEventPayloadItems$outboundSchema: z.ZodType<
+  UserEventPayloadItems$Outbound,
+  z.ZodTypeDef,
+  UserEventPayloadItems
+> = z.object({
+  type: UserEventPayload25BeforeType$outboundSchema,
+});
+
+export function userEventPayloadItemsToJSON(
+  userEventPayloadItems: UserEventPayloadItems,
+): string {
+  return JSON.stringify(
+    UserEventPayloadItems$outboundSchema.parse(userEventPayloadItems),
+  );
+}
+export function userEventPayloadItemsFromJSON(
+  jsonString: string,
+): SafeParseResult<UserEventPayloadItems, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UserEventPayloadItems$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayloadItems' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventPayloadProjectIds$inboundSchema: z.ZodType<
+  UserEventPayloadProjectIds,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: UserEventPayload25Type$inboundSchema,
+  required: types.boolean(),
+  items: z.lazy(() => UserEventPayloadItems$inboundSchema),
+});
+/** @internal */
+export type UserEventPayloadProjectIds$Outbound = {
+  type: string;
+  required: boolean;
+  items: UserEventPayloadItems$Outbound;
+};
+
+/** @internal */
+export const UserEventPayloadProjectIds$outboundSchema: z.ZodType<
+  UserEventPayloadProjectIds$Outbound,
+  z.ZodTypeDef,
+  UserEventPayloadProjectIds
+> = z.object({
+  type: UserEventPayload25Type$outboundSchema,
+  required: z.boolean(),
+  items: z.lazy(() => UserEventPayloadItems$outboundSchema),
+});
+
+export function userEventPayloadProjectIdsToJSON(
+  userEventPayloadProjectIds: UserEventPayloadProjectIds,
+): string {
+  return JSON.stringify(
+    UserEventPayloadProjectIds$outboundSchema.parse(userEventPayloadProjectIds),
+  );
+}
+export function userEventPayloadProjectIdsFromJSON(
+  jsonString: string,
+): SafeParseResult<UserEventPayloadProjectIds, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UserEventPayloadProjectIds$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayloadProjectIds' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventPayloadResources$inboundSchema: z.ZodType<
+  UserEventPayloadResources,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  projectIds: z.lazy(() => UserEventPayloadProjectIds$inboundSchema),
+});
+/** @internal */
+export type UserEventPayloadResources$Outbound = {
+  projectIds: UserEventPayloadProjectIds$Outbound;
+};
+
+/** @internal */
+export const UserEventPayloadResources$outboundSchema: z.ZodType<
+  UserEventPayloadResources$Outbound,
+  z.ZodTypeDef,
+  UserEventPayloadResources
+> = z.object({
+  projectIds: z.lazy(() => UserEventPayloadProjectIds$outboundSchema),
+});
+
+export function userEventPayloadResourcesToJSON(
+  userEventPayloadResources: UserEventPayloadResources,
+): string {
+  return JSON.stringify(
+    UserEventPayloadResources$outboundSchema.parse(userEventPayloadResources),
+  );
+}
+export function userEventPayloadResourcesFromJSON(
+  jsonString: string,
+): SafeParseResult<UserEventPayloadResources, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UserEventPayloadResources$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayloadResources' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventPayload25Permissions$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload25Permissions
+> = z.nativeEnum(UserEventPayload25Permissions);
+/** @internal */
+export const UserEventPayload25Permissions$outboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload25Permissions
+> = UserEventPayload25Permissions$inboundSchema;
+
+/** @internal */
+export const Before$inboundSchema: z.ZodType<Before, z.ZodTypeDef, unknown> = z
+  .object({
+    resources: types.optional(
+      z.lazy(() => UserEventPayloadResources$inboundSchema),
+    ),
+    permissions: types.optional(
+      z.array(UserEventPayload25Permissions$inboundSchema),
+    ),
+  });
+/** @internal */
+export type Before$Outbound = {
+  resources?: UserEventPayloadResources$Outbound | undefined;
+  permissions?: Array<string> | undefined;
+};
+
+/** @internal */
+export const Before$outboundSchema: z.ZodType<
+  Before$Outbound,
+  z.ZodTypeDef,
+  Before
+> = z.object({
+  resources: z.lazy(() => UserEventPayloadResources$outboundSchema).optional(),
+  permissions: z.array(UserEventPayload25Permissions$outboundSchema).optional(),
+});
+
+export function beforeToJSON(before: Before): string {
+  return JSON.stringify(Before$outboundSchema.parse(before));
+}
+export function beforeFromJSON(
+  jsonString: string,
+): SafeParseResult<Before, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Before$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Before' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventPayload25AfterType$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload25AfterType
+> = z.nativeEnum(UserEventPayload25AfterType);
+/** @internal */
+export const UserEventPayload25AfterType$outboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload25AfterType
+> = UserEventPayload25AfterType$inboundSchema;
+
+/** @internal */
+export const UserEventPayload25AfterResourcesType$inboundSchema:
+  z.ZodNativeEnum<typeof UserEventPayload25AfterResourcesType> = z.nativeEnum(
+    UserEventPayload25AfterResourcesType,
+  );
+/** @internal */
+export const UserEventPayload25AfterResourcesType$outboundSchema:
+  z.ZodNativeEnum<typeof UserEventPayload25AfterResourcesType> =
+    UserEventPayload25AfterResourcesType$inboundSchema;
+
+/** @internal */
+export const PayloadItems$inboundSchema: z.ZodType<
+  PayloadItems,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: UserEventPayload25AfterResourcesType$inboundSchema,
+});
+/** @internal */
+export type PayloadItems$Outbound = {
+  type: string;
+};
+
+/** @internal */
+export const PayloadItems$outboundSchema: z.ZodType<
+  PayloadItems$Outbound,
+  z.ZodTypeDef,
+  PayloadItems
+> = z.object({
+  type: UserEventPayload25AfterResourcesType$outboundSchema,
+});
+
+export function payloadItemsToJSON(payloadItems: PayloadItems): string {
+  return JSON.stringify(PayloadItems$outboundSchema.parse(payloadItems));
+}
+export function payloadItemsFromJSON(
+  jsonString: string,
+): SafeParseResult<PayloadItems, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PayloadItems$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PayloadItems' from JSON`,
+  );
+}
+
+/** @internal */
 export const UserEventPayload25ProjectIds$inboundSchema: z.ZodType<
   UserEventPayload25ProjectIds,
   z.ZodTypeDef,
@@ -2095,7 +2378,7 @@ export const UserEventPayload25ProjectIds$inboundSchema: z.ZodType<
 > = z.object({
   type: UserEventPayload25AfterType$inboundSchema,
   required: types.boolean(),
-  items: PayloadItems$inboundSchema,
+  items: z.lazy(() => PayloadItems$inboundSchema),
 });
 /** @internal */
 export type UserEventPayload25ProjectIds$Outbound = {
@@ -2112,7 +2395,7 @@ export const UserEventPayload25ProjectIds$outboundSchema: z.ZodType<
 > = z.object({
   type: UserEventPayload25AfterType$outboundSchema,
   required: z.boolean(),
-  items: PayloadItems$outboundSchema,
+  items: z.lazy(() => PayloadItems$outboundSchema),
 });
 
 export function userEventPayload25ProjectIdsToJSON(
@@ -2228,7 +2511,7 @@ export const TwentyFive$inboundSchema: z.ZodType<
   appName: types.string(),
   appId: types.optional(types.string()),
   installationId: types.optional(types.string()),
-  before: types.optional(Before$inboundSchema),
+  before: types.optional(z.lazy(() => Before$inboundSchema)),
   after: types.optional(z.lazy(() => After$inboundSchema)),
 });
 /** @internal */
@@ -2249,7 +2532,7 @@ export const TwentyFive$outboundSchema: z.ZodType<
   appName: z.string(),
   appId: z.string().optional(),
   installationId: z.string().optional(),
-  before: Before$outboundSchema.optional(),
+  before: z.lazy(() => Before$outboundSchema).optional(),
   after: z.lazy(() => After$outboundSchema).optional(),
 });
 

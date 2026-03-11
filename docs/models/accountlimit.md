@@ -5,7 +5,7 @@ The maximum number of custom environments allowed either by the team's plan type
 ## Example Usage
 
 ```typescript
-import { AccountLimit } from "@vercel/sdk/models/getv9projectsidornamecustomenvironmentsop.js";
+import { AccountLimit } from "@vercel/sdk/models/getprojectsbyidornamecustomenvironmentsop.js";
 
 let value: AccountLimit = {
   total: 6883.38,

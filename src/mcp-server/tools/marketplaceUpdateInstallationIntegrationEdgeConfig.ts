@@ -4,13 +4,13 @@
 
 import { marketplaceUpdateInstallationIntegrationEdgeConfig } from "../../funcs/marketplaceUpdateInstallationIntegrationEdgeConfig.js";
 import {
-  PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest$inboundSchema,
-} from "../../models/putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigop.js";
+  ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequest$inboundSchema,
+} from "../../models/replaceinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationedgeconfigop.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
 const args = {
   request:
-    PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest$inboundSchema,
+    ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequest$inboundSchema,
 };
 
 export const tool$marketplaceUpdateInstallationIntegrationEdgeConfig:

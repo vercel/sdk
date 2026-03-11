@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsSecurity } from "@vercel/sdk/models/getprojectsrouteprojectsresponse200has.js";
+import { GetProjectsResponseBodyProjectsSecurity } from "@vercel/sdk/models/getprojectshasprojectsresponse200applicationjsonresponsebodykey.js";
 
 let value: GetProjectsResponseBodyProjectsSecurity = {};
 ```
@@ -24,3 +24,4 @@ let value: GetProjectsResponseBodyProjectsSecurity = {};
 | `firewallBypassIps`                                                                            | *string*[]                                                                                     | :heavy_minus_sign:                                                                             | N/A                                                                                            |
 | `managedRules`                                                                                 | [models.GetProjectsResponseBodyManagedRules](../models/getprojectsresponsebodymanagedrules.md) | :heavy_minus_sign:                                                                             | N/A                                                                                            |
 | `botIdEnabled`                                                                                 | *boolean*                                                                                      | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `logHeaders`                                                                                   | *models.GetProjectsResponseBodyLogHeaders*                                                     | :heavy_minus_sign:                                                                             | N/A                                                                                            |

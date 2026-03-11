@@ -6,8 +6,8 @@ import { environmentCreateCustomEnvironment } from "../funcs/environmentCreateCu
 import { environmentCreateSharedEnvVariable } from "../funcs/environmentCreateSharedEnvVariable.js";
 import { environmentDeleteSharedEnvVariable } from "../funcs/environmentDeleteSharedEnvVariable.js";
 import { environmentGetCustomEnvironment } from "../funcs/environmentGetCustomEnvironment.js";
+import { environmentGetProjectsByIdOrNameCustomEnvironments } from "../funcs/environmentGetProjectsByIdOrNameCustomEnvironments.js";
 import { environmentGetSharedEnvVar } from "../funcs/environmentGetSharedEnvVar.js";
-import { environmentGetV9ProjectsIdOrNameCustomEnvironments } from "../funcs/environmentGetV9ProjectsIdOrNameCustomEnvironments.js";
 import { environmentListSharedEnvVariable } from "../funcs/environmentListSharedEnvVariable.js";
 import { environmentRemoveCustomEnvironment } from "../funcs/environmentRemoveCustomEnvironment.js";
 import { environmentUnlinkSharedEnvVariable } from "../funcs/environmentUnlinkSharedEnvVariable.js";
@@ -31,13 +31,13 @@ import {
   GetCustomEnvironmentResponseBody,
 } from "../models/getcustomenvironmentop.js";
 import {
+  GetProjectsByIdOrNameCustomEnvironmentsRequest,
+  GetProjectsByIdOrNameCustomEnvironmentsResponseBody,
+} from "../models/getprojectsbyidornamecustomenvironmentsop.js";
+import {
   GetSharedEnvVarRequest,
   GetSharedEnvVarResponseBody,
 } from "../models/getsharedenvvarop.js";
-import {
-  GetV9ProjectsIdOrNameCustomEnvironmentsRequest,
-  GetV9ProjectsIdOrNameCustomEnvironmentsResponseBody,
-} from "../models/getv9projectsidornamecustomenvironmentsop.js";
 import {
   ListSharedEnvVariableRequest,
   ListSharedEnvVariableResponseBody,
@@ -186,11 +186,11 @@ export class Environment extends ClientSDK {
    * @remarks
    * Retrieve custom environments for the project. Must not be named 'Production' or 'Preview'.
    */
-  async getV9ProjectsIdOrNameCustomEnvironments(
-    request: GetV9ProjectsIdOrNameCustomEnvironmentsRequest,
+  async getProjectsByIdOrNameCustomEnvironments(
+    request: GetProjectsByIdOrNameCustomEnvironmentsRequest,
     options?: RequestOptions,
-  ): Promise<GetV9ProjectsIdOrNameCustomEnvironmentsResponseBody> {
-    return unwrapAsync(environmentGetV9ProjectsIdOrNameCustomEnvironments(
+  ): Promise<GetProjectsByIdOrNameCustomEnvironmentsResponseBody> {
+    return unwrapAsync(environmentGetProjectsByIdOrNameCustomEnvironments(
       this,
       request,
       options,

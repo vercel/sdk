@@ -118,9 +118,9 @@ export const GetWebhookEvents = {
   FlagCreated: "flag.created",
   FlagUpdated: "flag.updated",
   FlagDeleted: "flag.deleted",
-  SegmentCreated: "segment.created",
-  SegmentUpdated: "segment.updated",
-  SegmentDeleted: "segment.deleted",
+  FlagSegmentCreated: "flag.segment.created",
+  FlagSegmentUpdated: "flag.segment.updated",
+  FlagSegmentDeleted: "flag.segment.deleted",
   TestWebhook: "test-webhook",
   MessageCreated: "message.created",
   MessageUpdated: "message.updated",
@@ -130,6 +130,14 @@ export const GetWebhookEvents = {
   MessageReactionAdded: "message.reaction-added",
   MessageReactionRemoved: "message.reaction-removed",
   MessageMentioned: "message.mentioned",
+  CommentCreated: "comment.created",
+  CommentUpdated: "comment.updated",
+  CommentDeleted: "comment.deleted",
+  CommentResolved: "comment.resolved",
+  CommentUnresolved: "comment.unresolved",
+  CommentReactionAdded: "comment.reaction-added",
+  CommentReactionRemoved: "comment.reaction-removed",
+  CommentMentioned: "comment.mentioned",
 } as const;
 /**
  * The webhooks events

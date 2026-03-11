@@ -221,11 +221,14 @@ export type CreateDrainResponseBodyDrainsAnalytics = {};
 
 export type CreateDrainResponseBodyDrainsSpeedInsights = {};
 
+export type ResponseBodyAiGateway = {};
+
 export type CreateDrainResponseBodySchemas = {
   log?: CreateDrainResponseBodyLog | undefined;
   trace?: ResponseBodyTrace | undefined;
   analytics?: CreateDrainResponseBodyDrainsAnalytics | undefined;
   speedInsights?: CreateDrainResponseBodyDrainsSpeedInsights | undefined;
+  aiGateway?: ResponseBodyAiGateway | undefined;
 };
 
 export const CreateDrainDeliveryTarget = {
@@ -490,11 +493,14 @@ export type CreateDrainResponseBodyAnalytics = {};
 
 export type CreateDrainResponseBodySpeedInsights = {};
 
+export type AiGateway = {};
+
 export type ResponseBodySchemas = {
   log?: ResponseBodyLog | undefined;
   trace?: Trace | undefined;
   analytics?: CreateDrainResponseBodyAnalytics | undefined;
   speedInsights?: CreateDrainResponseBodySpeedInsights | undefined;
+  aiGateway?: AiGateway | undefined;
 };
 
 export const DeliveryTarget = {
@@ -1906,6 +1912,39 @@ export function createDrainResponseBodyDrainsSpeedInsightsFromJSON(
 }
 
 /** @internal */
+export const ResponseBodyAiGateway$inboundSchema: z.ZodType<
+  ResponseBodyAiGateway,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+/** @internal */
+export type ResponseBodyAiGateway$Outbound = {};
+
+/** @internal */
+export const ResponseBodyAiGateway$outboundSchema: z.ZodType<
+  ResponseBodyAiGateway$Outbound,
+  z.ZodTypeDef,
+  ResponseBodyAiGateway
+> = z.object({});
+
+export function responseBodyAiGatewayToJSON(
+  responseBodyAiGateway: ResponseBodyAiGateway,
+): string {
+  return JSON.stringify(
+    ResponseBodyAiGateway$outboundSchema.parse(responseBodyAiGateway),
+  );
+}
+export function responseBodyAiGatewayFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyAiGateway, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyAiGateway$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyAiGateway' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateDrainResponseBodySchemas$inboundSchema: z.ZodType<
   CreateDrainResponseBodySchemas,
   z.ZodTypeDef,
@@ -1919,9 +1958,11 @@ export const CreateDrainResponseBodySchemas$inboundSchema: z.ZodType<
   speed_insights: types.optional(
     z.lazy(() => CreateDrainResponseBodyDrainsSpeedInsights$inboundSchema),
   ),
+  ai_gateway: types.optional(z.lazy(() => ResponseBodyAiGateway$inboundSchema)),
 }).transform((v) => {
   return remap$(v, {
     "speed_insights": "speedInsights",
+    "ai_gateway": "aiGateway",
   });
 });
 /** @internal */
@@ -1932,6 +1973,7 @@ export type CreateDrainResponseBodySchemas$Outbound = {
   speed_insights?:
     | CreateDrainResponseBodyDrainsSpeedInsights$Outbound
     | undefined;
+  ai_gateway?: ResponseBodyAiGateway$Outbound | undefined;
 };
 
 /** @internal */
@@ -1947,9 +1989,11 @@ export const CreateDrainResponseBodySchemas$outboundSchema: z.ZodType<
   speedInsights: z.lazy(() =>
     CreateDrainResponseBodyDrainsSpeedInsights$outboundSchema
   ).optional(),
+  aiGateway: z.lazy(() => ResponseBodyAiGateway$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     speedInsights: "speed_insights",
+    aiGateway: "ai_gateway",
   });
 });
 
@@ -3531,6 +3575,35 @@ export function createDrainResponseBodySpeedInsightsFromJSON(
 }
 
 /** @internal */
+export const AiGateway$inboundSchema: z.ZodType<
+  AiGateway,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+/** @internal */
+export type AiGateway$Outbound = {};
+
+/** @internal */
+export const AiGateway$outboundSchema: z.ZodType<
+  AiGateway$Outbound,
+  z.ZodTypeDef,
+  AiGateway
+> = z.object({});
+
+export function aiGatewayToJSON(aiGateway: AiGateway): string {
+  return JSON.stringify(AiGateway$outboundSchema.parse(aiGateway));
+}
+export function aiGatewayFromJSON(
+  jsonString: string,
+): SafeParseResult<AiGateway, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AiGateway$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AiGateway' from JSON`,
+  );
+}
+
+/** @internal */
 export const ResponseBodySchemas$inboundSchema: z.ZodType<
   ResponseBodySchemas,
   z.ZodTypeDef,
@@ -3544,9 +3617,11 @@ export const ResponseBodySchemas$inboundSchema: z.ZodType<
   speed_insights: types.optional(
     z.lazy(() => CreateDrainResponseBodySpeedInsights$inboundSchema),
   ),
+  ai_gateway: types.optional(z.lazy(() => AiGateway$inboundSchema)),
 }).transform((v) => {
   return remap$(v, {
     "speed_insights": "speedInsights",
+    "ai_gateway": "aiGateway",
   });
 });
 /** @internal */
@@ -3555,6 +3630,7 @@ export type ResponseBodySchemas$Outbound = {
   trace?: Trace$Outbound | undefined;
   analytics?: CreateDrainResponseBodyAnalytics$Outbound | undefined;
   speed_insights?: CreateDrainResponseBodySpeedInsights$Outbound | undefined;
+  ai_gateway?: AiGateway$Outbound | undefined;
 };
 
 /** @internal */
@@ -3570,9 +3646,11 @@ export const ResponseBodySchemas$outboundSchema: z.ZodType<
   speedInsights: z.lazy(() =>
     CreateDrainResponseBodySpeedInsights$outboundSchema
   ).optional(),
+  aiGateway: z.lazy(() => AiGateway$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     speedInsights: "speed_insights",
+    aiGateway: "ai_gateway",
   });
 });
 

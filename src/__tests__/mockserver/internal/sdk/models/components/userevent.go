@@ -10,6 +10,295 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+// Payload27 - The payload of the event, if requested.
+type Payload27 struct {
+	// The App's name at the moment this even was published (it may have changed since then).
+	AppName string `json:"appName"`
+	// The App's ID. Note that not all historical events have this field.
+	AppID *string `json:"appId,omitempty"`
+	// Note that not all historical events have this field.
+	App *App1 `json:"app,omitempty"`
+	// UNIX timestamp in seconds. Tokens issued before this timestamp will be revoked. Note that not all historical events have this field.
+	IssuedBefore *float64 `json:"issuedBefore,omitempty"`
+}
+
+func (p Payload27) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload27) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"appName"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Payload27) GetAppName() string {
+	if o == nil {
+		return ""
+	}
+	return o.AppName
+}
+
+func (o *Payload27) GetAppID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AppID
+}
+
+func (o *Payload27) GetApp() *App1 {
+	if o == nil {
+		return nil
+	}
+	return o.App
+}
+
+func (o *Payload27) GetIssuedBefore() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.IssuedBefore
+}
+
+// Payload26 - The payload of the event, if requested.
+type Payload26 struct {
+	AppName             string  `json:"appName"`
+	AppID               *string `json:"appId,omitempty"`
+	SecretLastFourChars *string `json:"secretLastFourChars,omitempty"`
+}
+
+func (p Payload26) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload26) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"appName"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Payload26) GetAppName() string {
+	if o == nil {
+		return ""
+	}
+	return o.AppName
+}
+
+func (o *Payload26) GetAppID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AppID
+}
+
+func (o *Payload26) GetSecretLastFourChars() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SecretLastFourChars
+}
+
+type ResourcesType string
+
+const (
+	ResourcesTypeList ResourcesType = "list"
+)
+
+func (e ResourcesType) ToPointer() *ResourcesType {
+	return &e
+}
+func (e *ResourcesType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "list":
+		*e = ResourcesType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ResourcesType: %v", v)
+	}
+}
+
+type TypeString string
+
+const (
+	TypeStringString TypeString = "string"
+)
+
+func (e TypeString) ToPointer() *TypeString {
+	return &e
+}
+func (e *TypeString) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "string":
+		*e = TypeString(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TypeString: %v", v)
+	}
+}
+
+type Items struct {
+	Type TypeString `json:"type"`
+}
+
+func (i Items) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *Items) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Items) GetType() TypeString {
+	if o == nil {
+		return TypeString("")
+	}
+	return o.Type
+}
+
+type ResourcesProjectIds struct {
+	Type     ResourcesType `json:"type"`
+	Required bool          `json:"required"`
+	Items    Items         `json:"items"`
+}
+
+func (r ResourcesProjectIds) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *ResourcesProjectIds) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "required", "items"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ResourcesProjectIds) GetType() ResourcesType {
+	if o == nil {
+		return ResourcesType("")
+	}
+	return o.Type
+}
+
+func (o *ResourcesProjectIds) GetRequired() bool {
+	if o == nil {
+		return false
+	}
+	return o.Required
+}
+
+func (o *ResourcesProjectIds) GetItems() Items {
+	if o == nil {
+		return Items{}
+	}
+	return o.Items
+}
+
+type Resources struct {
+	ProjectIds ResourcesProjectIds `json:"projectIds"`
+}
+
+func (r Resources) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *Resources) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"projectIds"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Resources) GetProjectIds() ResourcesProjectIds {
+	if o == nil {
+		return ResourcesProjectIds{}
+	}
+	return o.ProjectIds
+}
+
+type Permission2 string
+
+const (
+	Permission2ReadDomain               Permission2 = "read:domain"
+	Permission2ReadWriteDomain          Permission2 = "read-write:domain"
+	Permission2ReadTeam                 Permission2 = "read:team"
+	Permission2ReadBilling              Permission2 = "read:billing"
+	Permission2ReadWriteBilling         Permission2 = "read-write:billing"
+	Permission2ReadWriteAiGatewayAPIKey Permission2 = "read-write:ai-gateway-api-key"
+	Permission2UseAiGateway             Permission2 = "use:ai-gateway"
+	Permission2ReadWriteProjectEnvVars  Permission2 = "read-write:project-env-vars"
+	Permission2ReadWriteDrains          Permission2 = "read-write:drains"
+	Permission2ReadWriteEdgeConfig      Permission2 = "read-write:edge-config"
+	Permission2ReadMonitoring           Permission2 = "read:monitoring"
+	Permission2ReadAccessGroup          Permission2 = "read:access-group"
+	Permission2ReadProject              Permission2 = "read:project"
+	Permission2ReadWriteProject         Permission2 = "read-write:project"
+	Permission2ReadDeployment           Permission2 = "read:deployment"
+	Permission2ReadWriteDeployment      Permission2 = "read-write:deployment"
+	Permission2ReadWriteEdgeCache       Permission2 = "read-write:edge-cache"
+)
+
+func (e Permission2) ToPointer() *Permission2 {
+	return &e
+}
+func (e *Permission2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "read:domain":
+		fallthrough
+	case "read-write:domain":
+		fallthrough
+	case "read:team":
+		fallthrough
+	case "read:billing":
+		fallthrough
+	case "read-write:billing":
+		fallthrough
+	case "read-write:ai-gateway-api-key":
+		fallthrough
+	case "use:ai-gateway":
+		fallthrough
+	case "read-write:project-env-vars":
+		fallthrough
+	case "read-write:drains":
+		fallthrough
+	case "read-write:edge-config":
+		fallthrough
+	case "read:monitoring":
+		fallthrough
+	case "read:access-group":
+		fallthrough
+	case "read:project":
+		fallthrough
+	case "read-write:project":
+		fallthrough
+	case "read:deployment":
+		fallthrough
+	case "read-write:deployment":
+		fallthrough
+	case "read-write:edge-cache":
+		*e = Permission2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for Permission2: %v", v)
+	}
+}
+
 // Payload25 - The payload of the event, if requested.
 type Payload25 struct {
 	AppName     string        `json:"appName"`
@@ -204,6 +493,7 @@ const (
 	BeforePermissionReadWriteProject         BeforePermission = "read-write:project"
 	BeforePermissionReadDeployment           BeforePermission = "read:deployment"
 	BeforePermissionReadWriteDeployment      BeforePermission = "read-write:deployment"
+	BeforePermissionReadWriteEdgeCache       BeforePermission = "read-write:edge-cache"
 )
 
 func (e BeforePermission) ToPointer() *BeforePermission {
@@ -246,6 +536,8 @@ func (e *BeforePermission) UnmarshalJSON(data []byte) error {
 	case "read:deployment":
 		fallthrough
 	case "read-write:deployment":
+		fallthrough
+	case "read-write:edge-cache":
 		*e = BeforePermission(v)
 		return nil
 	default:
@@ -430,6 +722,7 @@ const (
 	AfterPermissionReadWriteProject         AfterPermission = "read-write:project"
 	AfterPermissionReadDeployment           AfterPermission = "read:deployment"
 	AfterPermissionReadWriteDeployment      AfterPermission = "read-write:deployment"
+	AfterPermissionReadWriteEdgeCache       AfterPermission = "read-write:edge-cache"
 )
 
 func (e AfterPermission) ToPointer() *AfterPermission {
@@ -472,6 +765,8 @@ func (e *AfterPermission) UnmarshalJSON(data []byte) error {
 	case "read:deployment":
 		fallthrough
 	case "read-write:deployment":
+		fallthrough
+	case "read-write:edge-cache":
 		*e = AfterPermission(v)
 		return nil
 	default:
@@ -617,6 +912,7 @@ const (
 	NextPermissionReadWriteProject         NextPermission = "read-write:project"
 	NextPermissionReadDeployment           NextPermission = "read:deployment"
 	NextPermissionReadWriteDeployment      NextPermission = "read-write:deployment"
+	NextPermissionReadWriteEdgeCache       NextPermission = "read-write:edge-cache"
 )
 
 func (e NextPermission) ToPointer() *NextPermission {
@@ -663,6 +959,8 @@ func (e *NextPermission) UnmarshalJSON(data []byte) error {
 	case "read:deployment":
 		fallthrough
 	case "read-write:deployment":
+		fallthrough
+	case "read-write:edge-cache":
 		*e = NextPermission(v)
 		return nil
 	default:
@@ -801,6 +1099,7 @@ const (
 	Permission1ReadWriteProject         Permission1 = "read-write:project"
 	Permission1ReadDeployment           Permission1 = "read:deployment"
 	Permission1ReadWriteDeployment      Permission1 = "read-write:deployment"
+	Permission1ReadWriteEdgeCache       Permission1 = "read-write:edge-cache"
 )
 
 func (e Permission1) ToPointer() *Permission1 {
@@ -847,6 +1146,8 @@ func (e *Permission1) UnmarshalJSON(data []byte) error {
 	case "read:deployment":
 		fallthrough
 	case "read-write:deployment":
+		fallthrough
+	case "read-write:edge-cache":
 		*e = Permission1(v)
 		return nil
 	default:

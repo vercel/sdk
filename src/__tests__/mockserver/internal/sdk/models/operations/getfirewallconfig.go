@@ -1159,90 +1159,90 @@ func (o *GetFirewallConfigRedirect2) GetPermanent() bool {
 	return o.Permanent
 }
 
-type GetFirewallConfigLogHeadersEnum2 string
+type GetFirewallConfigRuleLogHeadersEnum2 string
 
 const (
-	GetFirewallConfigLogHeadersEnum2Wildcard GetFirewallConfigLogHeadersEnum2 = "*"
+	GetFirewallConfigRuleLogHeadersEnum2Wildcard GetFirewallConfigRuleLogHeadersEnum2 = "*"
 )
 
-func (e GetFirewallConfigLogHeadersEnum2) ToPointer() *GetFirewallConfigLogHeadersEnum2 {
+func (e GetFirewallConfigRuleLogHeadersEnum2) ToPointer() *GetFirewallConfigRuleLogHeadersEnum2 {
 	return &e
 }
-func (e *GetFirewallConfigLogHeadersEnum2) UnmarshalJSON(data []byte) error {
+func (e *GetFirewallConfigRuleLogHeadersEnum2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "*":
-		*e = GetFirewallConfigLogHeadersEnum2(v)
+		*e = GetFirewallConfigRuleLogHeadersEnum2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetFirewallConfigLogHeadersEnum2: %v", v)
+		return fmt.Errorf("invalid value for GetFirewallConfigRuleLogHeadersEnum2: %v", v)
 	}
 }
 
-type GetFirewallConfigLogHeadersUnion2Type string
+type GetFirewallConfigRuleLogHeadersUnion2Type string
 
 const (
-	GetFirewallConfigLogHeadersUnion2TypeArrayOfStr                       GetFirewallConfigLogHeadersUnion2Type = "arrayOfStr"
-	GetFirewallConfigLogHeadersUnion2TypeGetFirewallConfigLogHeadersEnum2 GetFirewallConfigLogHeadersUnion2Type = "getFirewallConfig_logHeaders_enum_2"
+	GetFirewallConfigRuleLogHeadersUnion2TypeArrayOfStr                           GetFirewallConfigRuleLogHeadersUnion2Type = "arrayOfStr"
+	GetFirewallConfigRuleLogHeadersUnion2TypeGetFirewallConfigRuleLogHeadersEnum2 GetFirewallConfigRuleLogHeadersUnion2Type = "getFirewallConfig_rule_logHeaders_enum_2"
 )
 
-type GetFirewallConfigLogHeadersUnion2 struct {
-	ArrayOfStr                       []string                          `queryParam:"inline"`
-	GetFirewallConfigLogHeadersEnum2 *GetFirewallConfigLogHeadersEnum2 `queryParam:"inline"`
+type GetFirewallConfigRuleLogHeadersUnion2 struct {
+	ArrayOfStr                           []string                              `queryParam:"inline"`
+	GetFirewallConfigRuleLogHeadersEnum2 *GetFirewallConfigRuleLogHeadersEnum2 `queryParam:"inline"`
 
-	Type GetFirewallConfigLogHeadersUnion2Type
+	Type GetFirewallConfigRuleLogHeadersUnion2Type
 }
 
-func CreateGetFirewallConfigLogHeadersUnion2ArrayOfStr(arrayOfStr []string) GetFirewallConfigLogHeadersUnion2 {
-	typ := GetFirewallConfigLogHeadersUnion2TypeArrayOfStr
+func CreateGetFirewallConfigRuleLogHeadersUnion2ArrayOfStr(arrayOfStr []string) GetFirewallConfigRuleLogHeadersUnion2 {
+	typ := GetFirewallConfigRuleLogHeadersUnion2TypeArrayOfStr
 
-	return GetFirewallConfigLogHeadersUnion2{
+	return GetFirewallConfigRuleLogHeadersUnion2{
 		ArrayOfStr: arrayOfStr,
 		Type:       typ,
 	}
 }
 
-func CreateGetFirewallConfigLogHeadersUnion2GetFirewallConfigLogHeadersEnum2(getFirewallConfigLogHeadersEnum2 GetFirewallConfigLogHeadersEnum2) GetFirewallConfigLogHeadersUnion2 {
-	typ := GetFirewallConfigLogHeadersUnion2TypeGetFirewallConfigLogHeadersEnum2
+func CreateGetFirewallConfigRuleLogHeadersUnion2GetFirewallConfigRuleLogHeadersEnum2(getFirewallConfigRuleLogHeadersEnum2 GetFirewallConfigRuleLogHeadersEnum2) GetFirewallConfigRuleLogHeadersUnion2 {
+	typ := GetFirewallConfigRuleLogHeadersUnion2TypeGetFirewallConfigRuleLogHeadersEnum2
 
-	return GetFirewallConfigLogHeadersUnion2{
-		GetFirewallConfigLogHeadersEnum2: &getFirewallConfigLogHeadersEnum2,
-		Type:                             typ,
+	return GetFirewallConfigRuleLogHeadersUnion2{
+		GetFirewallConfigRuleLogHeadersEnum2: &getFirewallConfigRuleLogHeadersEnum2,
+		Type:                                 typ,
 	}
 }
 
-func (u *GetFirewallConfigLogHeadersUnion2) UnmarshalJSON(data []byte) error {
+func (u *GetFirewallConfigRuleLogHeadersUnion2) UnmarshalJSON(data []byte) error {
 
 	var arrayOfStr []string = []string{}
 	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
 		u.ArrayOfStr = arrayOfStr
-		u.Type = GetFirewallConfigLogHeadersUnion2TypeArrayOfStr
+		u.Type = GetFirewallConfigRuleLogHeadersUnion2TypeArrayOfStr
 		return nil
 	}
 
-	var getFirewallConfigLogHeadersEnum2 GetFirewallConfigLogHeadersEnum2 = GetFirewallConfigLogHeadersEnum2("")
-	if err := utils.UnmarshalJSON(data, &getFirewallConfigLogHeadersEnum2, "", true, nil); err == nil {
-		u.GetFirewallConfigLogHeadersEnum2 = &getFirewallConfigLogHeadersEnum2
-		u.Type = GetFirewallConfigLogHeadersUnion2TypeGetFirewallConfigLogHeadersEnum2
+	var getFirewallConfigRuleLogHeadersEnum2 GetFirewallConfigRuleLogHeadersEnum2 = GetFirewallConfigRuleLogHeadersEnum2("")
+	if err := utils.UnmarshalJSON(data, &getFirewallConfigRuleLogHeadersEnum2, "", true, nil); err == nil {
+		u.GetFirewallConfigRuleLogHeadersEnum2 = &getFirewallConfigRuleLogHeadersEnum2
+		u.Type = GetFirewallConfigRuleLogHeadersUnion2TypeGetFirewallConfigRuleLogHeadersEnum2
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetFirewallConfigLogHeadersUnion2", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetFirewallConfigRuleLogHeadersUnion2", string(data))
 }
 
-func (u GetFirewallConfigLogHeadersUnion2) MarshalJSON() ([]byte, error) {
+func (u GetFirewallConfigRuleLogHeadersUnion2) MarshalJSON() ([]byte, error) {
 	if u.ArrayOfStr != nil {
 		return utils.MarshalJSON(u.ArrayOfStr, "", true)
 	}
 
-	if u.GetFirewallConfigLogHeadersEnum2 != nil {
-		return utils.MarshalJSON(u.GetFirewallConfigLogHeadersEnum2, "", true)
+	if u.GetFirewallConfigRuleLogHeadersEnum2 != nil {
+		return utils.MarshalJSON(u.GetFirewallConfigRuleLogHeadersEnum2, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type GetFirewallConfigLogHeadersUnion2: all fields are null")
+	return nil, errors.New("could not marshal union type GetFirewallConfigRuleLogHeadersUnion2: all fields are null")
 }
 
 type GetFirewallConfigMitigate2 struct {
@@ -1251,7 +1251,7 @@ type GetFirewallConfigMitigate2 struct {
 	Redirect       optionalnullable.OptionalNullable[GetFirewallConfigRedirect2]  `json:"redirect,omitempty"`
 	ActionDuration optionalnullable.OptionalNullable[string]                      `json:"actionDuration,omitempty"`
 	BypassSystem   optionalnullable.OptionalNullable[bool]                        `json:"bypassSystem,omitempty"`
-	LogHeaders     *GetFirewallConfigLogHeadersUnion2                             `json:"logHeaders,omitempty"`
+	LogHeaders     *GetFirewallConfigRuleLogHeadersUnion2                         `json:"logHeaders,omitempty"`
 }
 
 func (g GetFirewallConfigMitigate2) MarshalJSON() ([]byte, error) {
@@ -1300,7 +1300,7 @@ func (o *GetFirewallConfigMitigate2) GetBypassSystem() optionalnullable.Optional
 	return o.BypassSystem
 }
 
-func (o *GetFirewallConfigMitigate2) GetLogHeaders() *GetFirewallConfigLogHeadersUnion2 {
+func (o *GetFirewallConfigMitigate2) GetLogHeaders() *GetFirewallConfigRuleLogHeadersUnion2 {
 	if o == nil {
 		return nil
 	}
@@ -1908,90 +1908,90 @@ func (o *GetFirewallConfigRedirect1) GetPermanent() bool {
 	return o.Permanent
 }
 
-type GetFirewallConfigLogHeadersEnum1 string
+type GetFirewallConfigRuleLogHeadersEnum1 string
 
 const (
-	GetFirewallConfigLogHeadersEnum1Wildcard GetFirewallConfigLogHeadersEnum1 = "*"
+	GetFirewallConfigRuleLogHeadersEnum1Wildcard GetFirewallConfigRuleLogHeadersEnum1 = "*"
 )
 
-func (e GetFirewallConfigLogHeadersEnum1) ToPointer() *GetFirewallConfigLogHeadersEnum1 {
+func (e GetFirewallConfigRuleLogHeadersEnum1) ToPointer() *GetFirewallConfigRuleLogHeadersEnum1 {
 	return &e
 }
-func (e *GetFirewallConfigLogHeadersEnum1) UnmarshalJSON(data []byte) error {
+func (e *GetFirewallConfigRuleLogHeadersEnum1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "*":
-		*e = GetFirewallConfigLogHeadersEnum1(v)
+		*e = GetFirewallConfigRuleLogHeadersEnum1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetFirewallConfigLogHeadersEnum1: %v", v)
+		return fmt.Errorf("invalid value for GetFirewallConfigRuleLogHeadersEnum1: %v", v)
 	}
 }
 
-type GetFirewallConfigLogHeadersUnion1Type string
+type GetFirewallConfigRuleLogHeadersUnion1Type string
 
 const (
-	GetFirewallConfigLogHeadersUnion1TypeArrayOfStr                       GetFirewallConfigLogHeadersUnion1Type = "arrayOfStr"
-	GetFirewallConfigLogHeadersUnion1TypeGetFirewallConfigLogHeadersEnum1 GetFirewallConfigLogHeadersUnion1Type = "getFirewallConfig_logHeaders_enum_1"
+	GetFirewallConfigRuleLogHeadersUnion1TypeArrayOfStr                           GetFirewallConfigRuleLogHeadersUnion1Type = "arrayOfStr"
+	GetFirewallConfigRuleLogHeadersUnion1TypeGetFirewallConfigRuleLogHeadersEnum1 GetFirewallConfigRuleLogHeadersUnion1Type = "getFirewallConfig_rule_logHeaders_enum_1"
 )
 
-type GetFirewallConfigLogHeadersUnion1 struct {
-	ArrayOfStr                       []string                          `queryParam:"inline"`
-	GetFirewallConfigLogHeadersEnum1 *GetFirewallConfigLogHeadersEnum1 `queryParam:"inline"`
+type GetFirewallConfigRuleLogHeadersUnion1 struct {
+	ArrayOfStr                           []string                              `queryParam:"inline"`
+	GetFirewallConfigRuleLogHeadersEnum1 *GetFirewallConfigRuleLogHeadersEnum1 `queryParam:"inline"`
 
-	Type GetFirewallConfigLogHeadersUnion1Type
+	Type GetFirewallConfigRuleLogHeadersUnion1Type
 }
 
-func CreateGetFirewallConfigLogHeadersUnion1ArrayOfStr(arrayOfStr []string) GetFirewallConfigLogHeadersUnion1 {
-	typ := GetFirewallConfigLogHeadersUnion1TypeArrayOfStr
+func CreateGetFirewallConfigRuleLogHeadersUnion1ArrayOfStr(arrayOfStr []string) GetFirewallConfigRuleLogHeadersUnion1 {
+	typ := GetFirewallConfigRuleLogHeadersUnion1TypeArrayOfStr
 
-	return GetFirewallConfigLogHeadersUnion1{
+	return GetFirewallConfigRuleLogHeadersUnion1{
 		ArrayOfStr: arrayOfStr,
 		Type:       typ,
 	}
 }
 
-func CreateGetFirewallConfigLogHeadersUnion1GetFirewallConfigLogHeadersEnum1(getFirewallConfigLogHeadersEnum1 GetFirewallConfigLogHeadersEnum1) GetFirewallConfigLogHeadersUnion1 {
-	typ := GetFirewallConfigLogHeadersUnion1TypeGetFirewallConfigLogHeadersEnum1
+func CreateGetFirewallConfigRuleLogHeadersUnion1GetFirewallConfigRuleLogHeadersEnum1(getFirewallConfigRuleLogHeadersEnum1 GetFirewallConfigRuleLogHeadersEnum1) GetFirewallConfigRuleLogHeadersUnion1 {
+	typ := GetFirewallConfigRuleLogHeadersUnion1TypeGetFirewallConfigRuleLogHeadersEnum1
 
-	return GetFirewallConfigLogHeadersUnion1{
-		GetFirewallConfigLogHeadersEnum1: &getFirewallConfigLogHeadersEnum1,
-		Type:                             typ,
+	return GetFirewallConfigRuleLogHeadersUnion1{
+		GetFirewallConfigRuleLogHeadersEnum1: &getFirewallConfigRuleLogHeadersEnum1,
+		Type:                                 typ,
 	}
 }
 
-func (u *GetFirewallConfigLogHeadersUnion1) UnmarshalJSON(data []byte) error {
+func (u *GetFirewallConfigRuleLogHeadersUnion1) UnmarshalJSON(data []byte) error {
 
 	var arrayOfStr []string = []string{}
 	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
 		u.ArrayOfStr = arrayOfStr
-		u.Type = GetFirewallConfigLogHeadersUnion1TypeArrayOfStr
+		u.Type = GetFirewallConfigRuleLogHeadersUnion1TypeArrayOfStr
 		return nil
 	}
 
-	var getFirewallConfigLogHeadersEnum1 GetFirewallConfigLogHeadersEnum1 = GetFirewallConfigLogHeadersEnum1("")
-	if err := utils.UnmarshalJSON(data, &getFirewallConfigLogHeadersEnum1, "", true, nil); err == nil {
-		u.GetFirewallConfigLogHeadersEnum1 = &getFirewallConfigLogHeadersEnum1
-		u.Type = GetFirewallConfigLogHeadersUnion1TypeGetFirewallConfigLogHeadersEnum1
+	var getFirewallConfigRuleLogHeadersEnum1 GetFirewallConfigRuleLogHeadersEnum1 = GetFirewallConfigRuleLogHeadersEnum1("")
+	if err := utils.UnmarshalJSON(data, &getFirewallConfigRuleLogHeadersEnum1, "", true, nil); err == nil {
+		u.GetFirewallConfigRuleLogHeadersEnum1 = &getFirewallConfigRuleLogHeadersEnum1
+		u.Type = GetFirewallConfigRuleLogHeadersUnion1TypeGetFirewallConfigRuleLogHeadersEnum1
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetFirewallConfigLogHeadersUnion1", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetFirewallConfigRuleLogHeadersUnion1", string(data))
 }
 
-func (u GetFirewallConfigLogHeadersUnion1) MarshalJSON() ([]byte, error) {
+func (u GetFirewallConfigRuleLogHeadersUnion1) MarshalJSON() ([]byte, error) {
 	if u.ArrayOfStr != nil {
 		return utils.MarshalJSON(u.ArrayOfStr, "", true)
 	}
 
-	if u.GetFirewallConfigLogHeadersEnum1 != nil {
-		return utils.MarshalJSON(u.GetFirewallConfigLogHeadersEnum1, "", true)
+	if u.GetFirewallConfigRuleLogHeadersEnum1 != nil {
+		return utils.MarshalJSON(u.GetFirewallConfigRuleLogHeadersEnum1, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type GetFirewallConfigLogHeadersUnion1: all fields are null")
+	return nil, errors.New("could not marshal union type GetFirewallConfigRuleLogHeadersUnion1: all fields are null")
 }
 
 type GetFirewallConfigMitigate1 struct {
@@ -2000,7 +2000,7 @@ type GetFirewallConfigMitigate1 struct {
 	Redirect       optionalnullable.OptionalNullable[GetFirewallConfigRedirect1]  `json:"redirect,omitempty"`
 	ActionDuration optionalnullable.OptionalNullable[string]                      `json:"actionDuration,omitempty"`
 	BypassSystem   optionalnullable.OptionalNullable[bool]                        `json:"bypassSystem,omitempty"`
-	LogHeaders     *GetFirewallConfigLogHeadersUnion1                             `json:"logHeaders,omitempty"`
+	LogHeaders     *GetFirewallConfigRuleLogHeadersUnion1                         `json:"logHeaders,omitempty"`
 }
 
 func (g GetFirewallConfigMitigate1) MarshalJSON() ([]byte, error) {
@@ -2049,7 +2049,7 @@ func (o *GetFirewallConfigMitigate1) GetBypassSystem() optionalnullable.Optional
 	return o.BypassSystem
 }
 
-func (o *GetFirewallConfigMitigate1) GetLogHeaders() *GetFirewallConfigLogHeadersUnion1 {
+func (o *GetFirewallConfigMitigate1) GetLogHeaders() *GetFirewallConfigRuleLogHeadersUnion1 {
 	if o == nil {
 		return nil
 	}
@@ -2620,6 +2620,92 @@ func (o *GetFirewallConfigManagedRules) GetVercelRuleset() *GetFirewallConfigVer
 	return o.VercelRuleset
 }
 
+type GetFirewallConfigLogHeadersEnum string
+
+const (
+	GetFirewallConfigLogHeadersEnumWildcard GetFirewallConfigLogHeadersEnum = "*"
+)
+
+func (e GetFirewallConfigLogHeadersEnum) ToPointer() *GetFirewallConfigLogHeadersEnum {
+	return &e
+}
+func (e *GetFirewallConfigLogHeadersEnum) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "*":
+		*e = GetFirewallConfigLogHeadersEnum(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetFirewallConfigLogHeadersEnum: %v", v)
+	}
+}
+
+type GetFirewallConfigLogHeadersUnionType string
+
+const (
+	GetFirewallConfigLogHeadersUnionTypeArrayOfStr                      GetFirewallConfigLogHeadersUnionType = "arrayOfStr"
+	GetFirewallConfigLogHeadersUnionTypeGetFirewallConfigLogHeadersEnum GetFirewallConfigLogHeadersUnionType = "getFirewallConfig_logHeaders_enum"
+)
+
+type GetFirewallConfigLogHeadersUnion struct {
+	ArrayOfStr                      []string                         `queryParam:"inline"`
+	GetFirewallConfigLogHeadersEnum *GetFirewallConfigLogHeadersEnum `queryParam:"inline"`
+
+	Type GetFirewallConfigLogHeadersUnionType
+}
+
+func CreateGetFirewallConfigLogHeadersUnionArrayOfStr(arrayOfStr []string) GetFirewallConfigLogHeadersUnion {
+	typ := GetFirewallConfigLogHeadersUnionTypeArrayOfStr
+
+	return GetFirewallConfigLogHeadersUnion{
+		ArrayOfStr: arrayOfStr,
+		Type:       typ,
+	}
+}
+
+func CreateGetFirewallConfigLogHeadersUnionGetFirewallConfigLogHeadersEnum(getFirewallConfigLogHeadersEnum GetFirewallConfigLogHeadersEnum) GetFirewallConfigLogHeadersUnion {
+	typ := GetFirewallConfigLogHeadersUnionTypeGetFirewallConfigLogHeadersEnum
+
+	return GetFirewallConfigLogHeadersUnion{
+		GetFirewallConfigLogHeadersEnum: &getFirewallConfigLogHeadersEnum,
+		Type:                            typ,
+	}
+}
+
+func (u *GetFirewallConfigLogHeadersUnion) UnmarshalJSON(data []byte) error {
+
+	var arrayOfStr []string = []string{}
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
+		u.ArrayOfStr = arrayOfStr
+		u.Type = GetFirewallConfigLogHeadersUnionTypeArrayOfStr
+		return nil
+	}
+
+	var getFirewallConfigLogHeadersEnum GetFirewallConfigLogHeadersEnum = GetFirewallConfigLogHeadersEnum("")
+	if err := utils.UnmarshalJSON(data, &getFirewallConfigLogHeadersEnum, "", true, nil); err == nil {
+		u.GetFirewallConfigLogHeadersEnum = &getFirewallConfigLogHeadersEnum
+		u.Type = GetFirewallConfigLogHeadersUnionTypeGetFirewallConfigLogHeadersEnum
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetFirewallConfigLogHeadersUnion", string(data))
+}
+
+func (u GetFirewallConfigLogHeadersUnion) MarshalJSON() ([]byte, error) {
+	if u.ArrayOfStr != nil {
+		return utils.MarshalJSON(u.ArrayOfStr, "", true)
+	}
+
+	if u.GetFirewallConfigLogHeadersEnum != nil {
+		return utils.MarshalJSON(u.GetFirewallConfigLogHeadersEnum, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetFirewallConfigLogHeadersUnion: all fields are null")
+}
+
 // GetFirewallConfigResponseBody - If the firewall configuration includes a [custom managed ruleset](https://vercel.com/docs/security/vercel-waf/managed-rulesets), it will include a `crs` item that has the following values: sd: Scanner Detection ma: Multipart Attack lfi: Local File Inclusion Attack rfi: Remote File Inclusion Attack rce: Remote Execution Attack php: PHP Attack gen: Generic Attack xss: XSS Attack sqli: SQL Injection Attack sf: Session Fixation Attack java: Java Attack
 type GetFirewallConfigResponseBody struct {
 	OwnerID         string  `json:"ownerId"`
@@ -2629,12 +2715,13 @@ type GetFirewallConfigResponseBody struct {
 	UpdatedAt       string  `json:"updatedAt"`
 	FirewallEnabled bool    `json:"firewallEnabled"`
 	// Custom Ruleset
-	Crs          GetFirewallConfigCrs           `json:"crs"`
-	Rules        []GetFirewallConfigRuleUnion   `json:"rules"`
-	Ips          []GetFirewallConfigIP          `json:"ips"`
-	Changes      []GetFirewallConfigChange      `json:"changes"`
-	ManagedRules *GetFirewallConfigManagedRules `json:"managedRules,omitempty"`
-	BotIDEnabled *bool                          `json:"botIdEnabled,omitempty"`
+	Crs          GetFirewallConfigCrs              `json:"crs"`
+	Rules        []GetFirewallConfigRuleUnion      `json:"rules"`
+	Ips          []GetFirewallConfigIP             `json:"ips"`
+	Changes      []GetFirewallConfigChange         `json:"changes"`
+	ManagedRules *GetFirewallConfigManagedRules    `json:"managedRules,omitempty"`
+	BotIDEnabled *bool                             `json:"botIdEnabled,omitempty"`
+	LogHeaders   *GetFirewallConfigLogHeadersUnion `json:"logHeaders,omitempty"`
 }
 
 func (o *GetFirewallConfigResponseBody) GetOwnerID() string {
@@ -2719,6 +2806,13 @@ func (o *GetFirewallConfigResponseBody) GetBotIDEnabled() *bool {
 		return nil
 	}
 	return o.BotIDEnabled
+}
+
+func (o *GetFirewallConfigResponseBody) GetLogHeaders() *GetFirewallConfigLogHeadersUnion {
+	if o == nil {
+		return nil
+	}
+	return o.LogHeaders
 }
 
 type GetFirewallConfigResponse struct {

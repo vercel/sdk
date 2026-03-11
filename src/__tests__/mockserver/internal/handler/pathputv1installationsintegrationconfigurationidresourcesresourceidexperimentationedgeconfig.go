@@ -9,7 +9,6 @@ import (
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/models/operations"
-	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
@@ -23,15 +22,15 @@ func pathPutV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperime
 		count := rt.GetRequestCount(test, instanceID)
 
 		switch fmt.Sprintf("%s[%d]", test, count) {
-		case "put_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config[0]":
-			dir.HandlerFunc("put_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config", testPutV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationEdgeConfigPutV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationEdgeConfig0)(w, req)
+		case "replaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig[0]":
+			dir.HandlerFunc("replaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig", testReplaceInstallationsByIntegrationConfigurationIDResourcesByResourceIDExperimentationEdgeConfigReplaceInstallationsByIntegrationConfigurationIDResourcesByResourceIDExperimentationEdgeConfig0)(w, req)
 		default:
 			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
 
-func testPutV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationEdgeConfigPutV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationEdgeConfig0(w http.ResponseWriter, req *http.Request) {
+func testReplaceInstallationsByIntegrationConfigurationIDResourcesByResourceIDExperimentationEdgeConfigReplaceInstallationsByIntegrationConfigurationIDResourcesByResourceIDExperimentationEdgeConfig0(w http.ResponseWriter, req *http.Request) {
 	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusUnauthorized)
@@ -52,13 +51,9 @@ func testPutV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperime
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody *operations.PutV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationEdgeConfigResponseBody = &operations.PutV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationEdgeConfigResponseBody{
-		Items: map[string]*components.EdgeConfigItemValue{
-			"key": types.Pointer(components.CreateEdgeConfigItemValueStr(
-				"<value>",
-			)),
-		},
-		UpdatedAt: 1217.32,
+	var respBody *operations.ReplaceInstallationsByIntegrationConfigurationIDResourcesByResourceIDExperimentationEdgeConfigResponseBody = &operations.ReplaceInstallationsByIntegrationConfigurationIDResourcesByResourceIDExperimentationEdgeConfigResponseBody{
+		Items:     map[string]*components.EdgeConfigItemValue{},
+		UpdatedAt: 8481.18,
 		Digest:    "<value>",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

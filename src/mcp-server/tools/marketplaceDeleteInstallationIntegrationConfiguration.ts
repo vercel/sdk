@@ -4,13 +4,13 @@
 
 import { marketplaceDeleteInstallationIntegrationConfiguration } from "../../funcs/marketplaceDeleteInstallationIntegrationConfiguration.js";
 import {
-  DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest$inboundSchema,
-} from "../../models/deletev1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidop.js";
+  DeleteInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest$inboundSchema,
+} from "../../models/deleteinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationitemsbyitemidop.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
 const args = {
   request:
-    DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest$inboundSchema,
+    DeleteInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest$inboundSchema,
 };
 
 export const tool$marketplaceDeleteInstallationIntegrationConfiguration:

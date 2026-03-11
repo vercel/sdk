@@ -1860,21 +1860,22 @@ func (e *GrantType) UnmarshalJSON(data []byte) error {
 type AuthMethod string
 
 const (
-	AuthMethodEmail     AuthMethod = "email"
-	AuthMethodSaml      AuthMethod = "saml"
-	AuthMethodApp       AuthMethod = "app"
-	AuthMethodGithub    AuthMethod = "github"
-	AuthMethodGitlab    AuthMethod = "gitlab"
-	AuthMethodBitbucket AuthMethod = "bitbucket"
-	AuthMethodGoogle    AuthMethod = "google"
-	AuthMethodApple     AuthMethod = "apple"
-	AuthMethodChatgpt   AuthMethod = "chatgpt"
-	AuthMethodManual    AuthMethod = "manual"
-	AuthMethodPasskey   AuthMethod = "passkey"
-	AuthMethodOtp       AuthMethod = "otp"
-	AuthMethodSms       AuthMethod = "sms"
-	AuthMethodInvite    AuthMethod = "invite"
-	AuthMethodEmu       AuthMethod = "emu"
+	AuthMethodEmail         AuthMethod = "email"
+	AuthMethodSaml          AuthMethod = "saml"
+	AuthMethodApp           AuthMethod = "app"
+	AuthMethodGithub        AuthMethod = "github"
+	AuthMethodGitlab        AuthMethod = "gitlab"
+	AuthMethodBitbucket     AuthMethod = "bitbucket"
+	AuthMethodGoogle        AuthMethod = "google"
+	AuthMethodApple         AuthMethod = "apple"
+	AuthMethodChatgpt       AuthMethod = "chatgpt"
+	AuthMethodGithubWebhook AuthMethod = "github-webhook"
+	AuthMethodManual        AuthMethod = "manual"
+	AuthMethodPasskey       AuthMethod = "passkey"
+	AuthMethodOtp           AuthMethod = "otp"
+	AuthMethodSms           AuthMethod = "sms"
+	AuthMethodInvite        AuthMethod = "invite"
+	AuthMethodEmu           AuthMethod = "emu"
 )
 
 func (e AuthMethod) ToPointer() *AuthMethod {
@@ -1903,6 +1904,8 @@ func (e *AuthMethod) UnmarshalJSON(data []byte) error {
 	case "apple":
 		fallthrough
 	case "chatgpt":
+		fallthrough
+	case "github-webhook":
 		fallthrough
 	case "manual":
 		fallthrough

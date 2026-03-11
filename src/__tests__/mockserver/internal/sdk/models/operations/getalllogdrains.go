@@ -184,11 +184,26 @@ func (g *GetAllLogDrainsSpeedInsights2) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+type GetAllLogDrainsAiGateway2 struct {
+}
+
+func (g GetAllLogDrainsAiGateway2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetAllLogDrainsAiGateway2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 type GetAllLogDrainsSchemas2 struct {
 	Log           *GetAllLogDrainsSchemasLog2    `json:"log,omitempty"`
 	Trace         *GetAllLogDrainsTrace2         `json:"trace,omitempty"`
 	Analytics     *GetAllLogDrainsAnalytics2     `json:"analytics,omitempty"`
 	SpeedInsights *GetAllLogDrainsSpeedInsights2 `json:"speed_insights,omitempty"`
+	AiGateway     *GetAllLogDrainsAiGateway2     `json:"ai_gateway,omitempty"`
 }
 
 func (g GetAllLogDrainsSchemas2) MarshalJSON() ([]byte, error) {
@@ -228,6 +243,13 @@ func (o *GetAllLogDrainsSchemas2) GetSpeedInsights() *GetAllLogDrainsSpeedInsigh
 		return nil
 	}
 	return o.SpeedInsights
+}
+
+func (o *GetAllLogDrainsSchemas2) GetAiGateway() *GetAllLogDrainsAiGateway2 {
+	if o == nil {
+		return nil
+	}
+	return o.AiGateway
 }
 
 type GetAllLogDrainsTypeInternal2 string
@@ -2367,11 +2389,26 @@ func (g *GetAllLogDrainsSpeedInsights1) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+type GetAllLogDrainsAiGateway1 struct {
+}
+
+func (g GetAllLogDrainsAiGateway1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetAllLogDrainsAiGateway1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 type GetAllLogDrainsSchemas1 struct {
 	Log           *GetAllLogDrainsSchemasLog1    `json:"log,omitempty"`
 	Trace         *GetAllLogDrainsTrace1         `json:"trace,omitempty"`
 	Analytics     *GetAllLogDrainsAnalytics1     `json:"analytics,omitempty"`
 	SpeedInsights *GetAllLogDrainsSpeedInsights1 `json:"speed_insights,omitempty"`
+	AiGateway     *GetAllLogDrainsAiGateway1     `json:"ai_gateway,omitempty"`
 }
 
 func (g GetAllLogDrainsSchemas1) MarshalJSON() ([]byte, error) {
@@ -2411,6 +2448,13 @@ func (o *GetAllLogDrainsSchemas1) GetSpeedInsights() *GetAllLogDrainsSpeedInsigh
 		return nil
 	}
 	return o.SpeedInsights
+}
+
+func (o *GetAllLogDrainsSchemas1) GetAiGateway() *GetAllLogDrainsAiGateway1 {
+	if o == nil {
+		return nil
+	}
+	return o.AiGateway
 }
 
 type GetAllLogDrainsTypeInternal1 string

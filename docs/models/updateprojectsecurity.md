@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectSecurity } from "@vercel/sdk/models/updateprojectscheduledtierchange.js";
+import { UpdateProjectSecurity } from "@vercel/sdk/models/updateprojectprojectsoidctokenconfig.js";
 
 let value: UpdateProjectSecurity = {};
 ```
@@ -24,3 +24,4 @@ let value: UpdateProjectSecurity = {};
 | `firewallBypassIps`                                                        | *string*[]                                                                 | :heavy_minus_sign:                                                         | N/A                                                                        |
 | `managedRules`                                                             | [models.UpdateProjectManagedRules](../models/updateprojectmanagedrules.md) | :heavy_minus_sign:                                                         | N/A                                                                        |
 | `botIdEnabled`                                                             | *boolean*                                                                  | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `logHeaders`                                                               | *models.UpdateProjectLogHeaders*                                           | :heavy_minus_sign:                                                         | N/A                                                                        |

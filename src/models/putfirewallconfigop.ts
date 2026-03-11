@@ -351,12 +351,15 @@ export type Redirect1 = {
 
 export type PutFirewallConfigRedirect = Redirect1 | any;
 
+export type LogHeaders = string | Array<string>;
+
 export type Mitigate = {
   action: PutFirewallConfigSecurityRequestRequestBodyRulesActionAction;
   rateLimit?: RateLimit1 | any | null | undefined;
   redirect?: Redirect1 | any | null | undefined;
   actionDuration?: string | null | undefined;
   bypassSystem?: boolean | null | undefined;
+  logHeaders?: string | Array<string> | undefined;
 };
 
 export type PutFirewallConfigSecurityRequestRequestBodyRulesAction = {
@@ -394,6 +397,8 @@ export type Ips = {
   action: PutFirewallConfigSecurityRequestRequestBodyIpsAction;
 };
 
+export type PutFirewallConfigLogHeaders = string | Array<string>;
+
 export type PutFirewallConfigRequestBody = {
   firewallEnabled: boolean;
   managedRules?: ManagedRules | undefined;
@@ -404,6 +409,7 @@ export type PutFirewallConfigRequestBody = {
   rules?: Array<PutFirewallConfigRules> | undefined;
   ips?: Array<Ips> | undefined;
   botIdEnabled?: boolean | undefined;
+  logHeaders?: string | Array<string> | undefined;
 };
 
 export type PutFirewallConfigRequest = {
@@ -935,16 +941,16 @@ export type PutFirewallConfigRulesSecurityRedirect = {
   permanent: boolean;
 };
 
-export const PutFirewallConfigLogHeaders2 = {
+export const PutFirewallConfigLogHeadersSecurityResponse2 = {
   Wildcard: "*",
 } as const;
-export type PutFirewallConfigLogHeaders2 = ClosedEnum<
-  typeof PutFirewallConfigLogHeaders2
+export type PutFirewallConfigLogHeadersSecurityResponse2 = ClosedEnum<
+  typeof PutFirewallConfigLogHeadersSecurityResponse2
 >;
 
 export type PutFirewallConfigRulesSecurityLogHeaders =
   | Array<string>
-  | PutFirewallConfigLogHeaders2;
+  | PutFirewallConfigLogHeadersSecurityResponse2;
 
 export type PutFirewallConfigRulesSecurityMitigate = {
   action: PutFirewallConfigRulesSecurityResponseAction;
@@ -952,7 +958,10 @@ export type PutFirewallConfigRulesSecurityMitigate = {
   redirect?: PutFirewallConfigRulesSecurityRedirect | null | undefined;
   actionDuration?: string | null | undefined;
   bypassSystem?: boolean | null | undefined;
-  logHeaders?: Array<string> | PutFirewallConfigLogHeaders2 | undefined;
+  logHeaders?:
+    | Array<string>
+    | PutFirewallConfigLogHeadersSecurityResponse2
+    | undefined;
 };
 
 export type PutFirewallConfigRulesSecurityAction = {
@@ -1085,6 +1094,17 @@ export type PutFirewallConfigManagedRules = {
   vercelRuleset?: PutFirewallConfigVercelRuleset | undefined;
 };
 
+export const PutFirewallConfigLogHeaders2 = {
+  Wildcard: "*",
+} as const;
+export type PutFirewallConfigLogHeaders2 = ClosedEnum<
+  typeof PutFirewallConfigLogHeaders2
+>;
+
+export type PutFirewallConfigSecurityLogHeaders =
+  | Array<string>
+  | PutFirewallConfigLogHeaders2;
+
 export type Active = {
   ownerId: string;
   projectKey: string;
@@ -1101,6 +1121,7 @@ export type Active = {
   changes: Array<PutFirewallConfigChanges>;
   managedRules?: PutFirewallConfigManagedRules | undefined;
   botIdEnabled?: boolean | undefined;
+  logHeaders?: Array<string> | PutFirewallConfigLogHeaders2 | undefined;
 };
 
 export type PutFirewallConfigResponseBody = {
@@ -2016,6 +2037,35 @@ export function putFirewallConfigRedirectFromJSON(
 }
 
 /** @internal */
+export const LogHeaders$inboundSchema: z.ZodType<
+  LogHeaders,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), z.array(types.string())]);
+/** @internal */
+export type LogHeaders$Outbound = string | Array<string>;
+
+/** @internal */
+export const LogHeaders$outboundSchema: z.ZodType<
+  LogHeaders$Outbound,
+  z.ZodTypeDef,
+  LogHeaders
+> = smartUnion([z.string(), z.array(z.string())]);
+
+export function logHeadersToJSON(logHeaders: LogHeaders): string {
+  return JSON.stringify(LogHeaders$outboundSchema.parse(logHeaders));
+}
+export function logHeadersFromJSON(
+  jsonString: string,
+): SafeParseResult<LogHeaders, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LogHeaders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LogHeaders' from JSON`,
+  );
+}
+
+/** @internal */
 export const Mitigate$inboundSchema: z.ZodType<
   Mitigate,
   z.ZodTypeDef,
@@ -2031,6 +2081,9 @@ export const Mitigate$inboundSchema: z.ZodType<
   ).optional(),
   actionDuration: z.nullable(types.string()).optional(),
   bypassSystem: z.nullable(types.boolean()).optional(),
+  logHeaders: types.optional(
+    smartUnion([types.string(), z.array(types.string())]),
+  ),
 });
 /** @internal */
 export type Mitigate$Outbound = {
@@ -2039,6 +2092,7 @@ export type Mitigate$Outbound = {
   redirect?: Redirect1$Outbound | any | null | undefined;
   actionDuration?: string | null | undefined;
   bypassSystem?: boolean | null | undefined;
+  logHeaders?: string | Array<string> | undefined;
 };
 
 /** @internal */
@@ -2057,6 +2111,7 @@ export const Mitigate$outboundSchema: z.ZodType<
   ).optional(),
   actionDuration: z.nullable(z.string()).optional(),
   bypassSystem: z.nullable(z.boolean()).optional(),
+  logHeaders: smartUnion([z.string(), z.array(z.string())]).optional(),
 });
 
 export function mitigateToJSON(mitigate: Mitigate): string {
@@ -2271,6 +2326,41 @@ export function ipsFromJSON(
 }
 
 /** @internal */
+export const PutFirewallConfigLogHeaders$inboundSchema: z.ZodType<
+  PutFirewallConfigLogHeaders,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), z.array(types.string())]);
+/** @internal */
+export type PutFirewallConfigLogHeaders$Outbound = string | Array<string>;
+
+/** @internal */
+export const PutFirewallConfigLogHeaders$outboundSchema: z.ZodType<
+  PutFirewallConfigLogHeaders$Outbound,
+  z.ZodTypeDef,
+  PutFirewallConfigLogHeaders
+> = smartUnion([z.string(), z.array(z.string())]);
+
+export function putFirewallConfigLogHeadersToJSON(
+  putFirewallConfigLogHeaders: PutFirewallConfigLogHeaders,
+): string {
+  return JSON.stringify(
+    PutFirewallConfigLogHeaders$outboundSchema.parse(
+      putFirewallConfigLogHeaders,
+    ),
+  );
+}
+export function putFirewallConfigLogHeadersFromJSON(
+  jsonString: string,
+): SafeParseResult<PutFirewallConfigLogHeaders, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PutFirewallConfigLogHeaders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PutFirewallConfigLogHeaders' from JSON`,
+  );
+}
+
+/** @internal */
 export const PutFirewallConfigRequestBody$inboundSchema: z.ZodType<
   PutFirewallConfigRequestBody,
   z.ZodTypeDef,
@@ -2284,6 +2374,9 @@ export const PutFirewallConfigRequestBody$inboundSchema: z.ZodType<
   ),
   ips: types.optional(z.array(z.lazy(() => Ips$inboundSchema))),
   botIdEnabled: types.optional(types.boolean()),
+  logHeaders: types.optional(
+    smartUnion([types.string(), z.array(types.string())]),
+  ),
 });
 /** @internal */
 export type PutFirewallConfigRequestBody$Outbound = {
@@ -2293,6 +2386,7 @@ export type PutFirewallConfigRequestBody$Outbound = {
   rules?: Array<PutFirewallConfigRules$Outbound> | undefined;
   ips?: Array<Ips$Outbound> | undefined;
   botIdEnabled?: boolean | undefined;
+  logHeaders?: string | Array<string> | undefined;
 };
 
 /** @internal */
@@ -2308,6 +2402,7 @@ export const PutFirewallConfigRequestBody$outboundSchema: z.ZodType<
     .optional(),
   ips: z.array(z.lazy(() => Ips$outboundSchema)).optional(),
   botIdEnabled: z.boolean().optional(),
+  logHeaders: smartUnion([z.string(), z.array(z.string())]).optional(),
 });
 
 export function putFirewallConfigRequestBodyToJSON(
@@ -3919,13 +4014,13 @@ export function putFirewallConfigRulesSecurityRedirectFromJSON(
 }
 
 /** @internal */
-export const PutFirewallConfigLogHeaders2$inboundSchema: z.ZodNativeEnum<
-  typeof PutFirewallConfigLogHeaders2
-> = z.nativeEnum(PutFirewallConfigLogHeaders2);
+export const PutFirewallConfigLogHeadersSecurityResponse2$inboundSchema:
+  z.ZodNativeEnum<typeof PutFirewallConfigLogHeadersSecurityResponse2> = z
+    .nativeEnum(PutFirewallConfigLogHeadersSecurityResponse2);
 /** @internal */
-export const PutFirewallConfigLogHeaders2$outboundSchema: z.ZodNativeEnum<
-  typeof PutFirewallConfigLogHeaders2
-> = PutFirewallConfigLogHeaders2$inboundSchema;
+export const PutFirewallConfigLogHeadersSecurityResponse2$outboundSchema:
+  z.ZodNativeEnum<typeof PutFirewallConfigLogHeadersSecurityResponse2> =
+    PutFirewallConfigLogHeadersSecurityResponse2$inboundSchema;
 
 /** @internal */
 export const PutFirewallConfigRulesSecurityLogHeaders$inboundSchema: z.ZodType<
@@ -3934,7 +4029,7 @@ export const PutFirewallConfigRulesSecurityLogHeaders$inboundSchema: z.ZodType<
   unknown
 > = smartUnion([
   z.array(types.string()),
-  PutFirewallConfigLogHeaders2$inboundSchema,
+  PutFirewallConfigLogHeadersSecurityResponse2$inboundSchema,
 ]);
 /** @internal */
 export type PutFirewallConfigRulesSecurityLogHeaders$Outbound =
@@ -3948,7 +4043,7 @@ export const PutFirewallConfigRulesSecurityLogHeaders$outboundSchema: z.ZodType<
   PutFirewallConfigRulesSecurityLogHeaders
 > = smartUnion([
   z.array(z.string()),
-  PutFirewallConfigLogHeaders2$outboundSchema,
+  PutFirewallConfigLogHeadersSecurityResponse2$outboundSchema,
 ]);
 
 export function putFirewallConfigRulesSecurityLogHeadersToJSON(
@@ -3995,7 +4090,7 @@ export const PutFirewallConfigRulesSecurityMitigate$inboundSchema: z.ZodType<
   logHeaders: types.optional(
     smartUnion([
       z.array(types.string()),
-      PutFirewallConfigLogHeaders2$inboundSchema,
+      PutFirewallConfigLogHeadersSecurityResponse2$inboundSchema,
     ]),
   ),
 });
@@ -4029,7 +4124,7 @@ export const PutFirewallConfigRulesSecurityMitigate$outboundSchema: z.ZodType<
   bypassSystem: z.nullable(z.boolean()).optional(),
   logHeaders: smartUnion([
     z.array(z.string()),
-    PutFirewallConfigLogHeaders2$outboundSchema,
+    PutFirewallConfigLogHeadersSecurityResponse2$outboundSchema,
   ]).optional(),
 });
 
@@ -4648,6 +4743,59 @@ export function putFirewallConfigManagedRulesFromJSON(
 }
 
 /** @internal */
+export const PutFirewallConfigLogHeaders2$inboundSchema: z.ZodNativeEnum<
+  typeof PutFirewallConfigLogHeaders2
+> = z.nativeEnum(PutFirewallConfigLogHeaders2);
+/** @internal */
+export const PutFirewallConfigLogHeaders2$outboundSchema: z.ZodNativeEnum<
+  typeof PutFirewallConfigLogHeaders2
+> = PutFirewallConfigLogHeaders2$inboundSchema;
+
+/** @internal */
+export const PutFirewallConfigSecurityLogHeaders$inboundSchema: z.ZodType<
+  PutFirewallConfigSecurityLogHeaders,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.array(types.string()),
+  PutFirewallConfigLogHeaders2$inboundSchema,
+]);
+/** @internal */
+export type PutFirewallConfigSecurityLogHeaders$Outbound =
+  | Array<string>
+  | string;
+
+/** @internal */
+export const PutFirewallConfigSecurityLogHeaders$outboundSchema: z.ZodType<
+  PutFirewallConfigSecurityLogHeaders$Outbound,
+  z.ZodTypeDef,
+  PutFirewallConfigSecurityLogHeaders
+> = smartUnion([
+  z.array(z.string()),
+  PutFirewallConfigLogHeaders2$outboundSchema,
+]);
+
+export function putFirewallConfigSecurityLogHeadersToJSON(
+  putFirewallConfigSecurityLogHeaders: PutFirewallConfigSecurityLogHeaders,
+): string {
+  return JSON.stringify(
+    PutFirewallConfigSecurityLogHeaders$outboundSchema.parse(
+      putFirewallConfigSecurityLogHeaders,
+    ),
+  );
+}
+export function putFirewallConfigSecurityLogHeadersFromJSON(
+  jsonString: string,
+): SafeParseResult<PutFirewallConfigSecurityLogHeaders, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PutFirewallConfigSecurityLogHeaders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PutFirewallConfigSecurityLogHeaders' from JSON`,
+  );
+}
+
+/** @internal */
 export const Active$inboundSchema: z.ZodType<Active, z.ZodTypeDef, unknown> = z
   .object({
     ownerId: types.string(),
@@ -4669,6 +4817,12 @@ export const Active$inboundSchema: z.ZodType<Active, z.ZodTypeDef, unknown> = z
       z.lazy(() => PutFirewallConfigManagedRules$inboundSchema),
     ),
     botIdEnabled: types.optional(types.boolean()),
+    logHeaders: types.optional(
+      smartUnion([
+        z.array(types.string()),
+        PutFirewallConfigLogHeaders2$inboundSchema,
+      ]),
+    ),
   });
 /** @internal */
 export type Active$Outbound = {
@@ -4686,6 +4840,7 @@ export type Active$Outbound = {
   changes: Array<PutFirewallConfigChanges$Outbound>;
   managedRules?: PutFirewallConfigManagedRules$Outbound | undefined;
   botIdEnabled?: boolean | undefined;
+  logHeaders?: Array<string> | string | undefined;
 };
 
 /** @internal */
@@ -4712,6 +4867,10 @@ export const Active$outboundSchema: z.ZodType<
   managedRules: z.lazy(() => PutFirewallConfigManagedRules$outboundSchema)
     .optional(),
   botIdEnabled: z.boolean().optional(),
+  logHeaders: smartUnion([
+    z.array(z.string()),
+    PutFirewallConfigLogHeaders2$outboundSchema,
+  ]).optional(),
 });
 
 export function activeToJSON(active: Active): string {

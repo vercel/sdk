@@ -11,13 +11,13 @@ import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
+  GetProjectsRequest,
+  GetProjectsRequest$outboundSchema,
+} from "../models/getprojectshasprojectsresponse200applicationjsonresponsebodykey.js";
+import {
   GetProjectsResponseBody,
   GetProjectsResponseBody$inboundSchema,
 } from "../models/getprojectsresponsebody.js";
-import {
-  GetProjectsRequest,
-  GetProjectsRequest$outboundSchema,
-} from "../models/getprojectsrouteprojectsresponse200has.js";
 import {
   ConnectionError,
   InvalidRequestError,

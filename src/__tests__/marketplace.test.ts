@@ -276,76 +276,28 @@ test("Marketplace Exchange Sso Token", async () => {
   expect(result).toBeDefined();
 });
 
-test("Marketplace Post /V1 /Installations/{integration Configuration Id}/resources/{resource Id}/experimentation/items", async () => {
-  const testHttpClient = createTestHTTPClient(
-    "post_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items",
+it.skip("Marketplace Post /V1 /Installations/{integration Configuration Id}/resources/{resource Id}/experimentation/items", async () => {
+  assert.fail(
+    "incomplete test found please make sure to address the following errors: [`workflow step post_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items.test referencing operation post_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items not found in document`]",
   );
-
-  const vercel = new Vercel({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  await vercel.marketplace.createInstallationIntegrationConfiguration({
-    integrationConfigurationId: "<id>",
-    resourceId: "<id>",
-  });
 });
 
-test("Marketplace Patch /V1 /Installations/{integration Configuration Id}/resources/{resource Id}/experimentation/items/{item Id}", async () => {
-  const testHttpClient = createTestHTTPClient(
-    "patch_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}",
+it.skip("Marketplace Patch /V1 /Installations/{integration Configuration Id}/resources/{resource Id}/experimentation/items/{item Id}", async () => {
+  assert.fail(
+    "incomplete test found please make sure to address the following errors: [`workflow step patch_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}.test referencing operation patch_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId} not found in document`]",
   );
-
-  const vercel = new Vercel({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  await vercel.marketplace.updateInstallationIntegrationConfiguration({
-    integrationConfigurationId: "<id>",
-    resourceId: "<id>",
-    itemId: "<id>",
-  });
 });
 
-test("Marketplace Delete /V1 /Installations/{integration Configuration Id}/resources/{resource Id}/experimentation/items/{item Id}", async () => {
-  const testHttpClient = createTestHTTPClient(
-    "delete_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}",
+it.skip("Marketplace Delete /V1 /Installations/{integration Configuration Id}/resources/{resource Id}/experimentation/items/{item Id}", async () => {
+  assert.fail(
+    "incomplete test found please make sure to address the following errors: [`workflow step delete_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}.test referencing operation delete_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId} not found in document`]",
   );
-
-  const vercel = new Vercel({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  await vercel.marketplace.deleteInstallationIntegrationConfiguration({
-    integrationConfigurationId: "<id>",
-    resourceId: "<id>",
-    itemId: "<id>",
-  });
 });
 
-test("Marketplace Put /V1 /Installations/{integration Configuration Id}/resources/{resource Id}/experimentation/edge Config", async () => {
-  const testHttpClient = createTestHTTPClient(
-    "put_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config",
+it.skip("Marketplace Put /V1 /Installations/{integration Configuration Id}/resources/{resource Id}/experimentation/edge Config", async () => {
+  assert.fail(
+    "incomplete test found please make sure to address the following errors: [`workflow step put_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config.test referencing operation put_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config not found in document`]",
   );
-
-  const vercel = new Vercel({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-  });
-
-  const result = await vercel.marketplace
-    .updateInstallationIntegrationEdgeConfig({
-      integrationConfigurationId: "<id>",
-      resourceId: "<id>",
-    });
-  expect(result).toBeDefined();
 });
 
 it.skip("Marketplace Get Resources", async () => {
@@ -413,9 +365,15 @@ test("Marketplace Update Resource", async () => {
   expect(result).toBeDefined();
 });
 
-test("Marketplace Get /V1 /Installations/{integration Configuration Id}/resources/{resource Id}/experimentation/edge Config", async () => {
+it.skip("Marketplace Get /V1 /Installations/{integration Configuration Id}/resources/{resource Id}/experimentation/edge Config", async () => {
+  assert.fail(
+    "incomplete test found please make sure to address the following errors: [`workflow step get_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config.test referencing operation get_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config not found in document`]",
+  );
+});
+
+test("Marketplace Get Installations By Integration Configuration Id Resources By Resource Id Experimentation Edge Config", async () => {
   const testHttpClient = createTestHTTPClient(
-    "get_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config",
+    "getInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig",
   );
 
   const vercel = new Vercel({
@@ -425,11 +383,30 @@ test("Marketplace Get /V1 /Installations/{integration Configuration Id}/resource
   });
 
   const result = await vercel.marketplace
-    .getV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig(
+    .getInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig(
       {
         integrationConfigurationId: "<id>",
         resourceId: "<id>",
       },
     );
+  expect(result).toBeDefined();
+});
+
+test("Marketplace Replace Installations By Integration Configuration Id Resources By Resource Id Experimentation Edge Config", async () => {
+  const testHttpClient = createTestHTTPClient(
+    "replaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig",
+  );
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.marketplace
+    .updateInstallationIntegrationEdgeConfig({
+      integrationConfigurationId: "<id>",
+      resourceId: "<id>",
+    });
   expect(result).toBeDefined();
 });

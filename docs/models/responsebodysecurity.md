@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodySecurity } from "@vercel/sdk/models/getprojectshasprojectsresponse200applicationjson2.js";
+import { ResponseBodySecurity } from "@vercel/sdk/models/getprojectsrouteaction.js";
 
 let value: ResponseBodySecurity = {};
 ```
@@ -26,3 +26,4 @@ let value: ResponseBodySecurity = {};
 | `managedRules`                                                           | [models.ResponseBodyManagedRules](../models/responsebodymanagedrules.md) | :heavy_minus_sign:                                                       | N/A                                                                      |
 | `botIdEnabled`                                                           | *boolean*                                                                | :heavy_minus_sign:                                                       | N/A                                                                      |
 | `requestLogsKey`                                                         | *string*[]                                                               | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `logHeaders`                                                             | *models.ResponseBodyLogHeaders*                                          | :heavy_minus_sign:                                                       | N/A                                                                      |

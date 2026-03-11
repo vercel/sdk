@@ -1324,11 +1324,26 @@ func (u *UpdateDrainSpeedInsights2) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+type UpdateDrainAiGateway2 struct {
+}
+
+func (u UpdateDrainAiGateway2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateDrainAiGateway2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 type UpdateDrainSchemasResponse2 struct {
 	Log           *UpdateDrainSchemasLog2    `json:"log,omitempty"`
 	Trace         *UpdateDrainTrace2         `json:"trace,omitempty"`
 	Analytics     *UpdateDrainAnalytics2     `json:"analytics,omitempty"`
 	SpeedInsights *UpdateDrainSpeedInsights2 `json:"speed_insights,omitempty"`
+	AiGateway     *UpdateDrainAiGateway2     `json:"ai_gateway,omitempty"`
 }
 
 func (u UpdateDrainSchemasResponse2) MarshalJSON() ([]byte, error) {
@@ -1368,6 +1383,13 @@ func (o *UpdateDrainSchemasResponse2) GetSpeedInsights() *UpdateDrainSpeedInsigh
 		return nil
 	}
 	return o.SpeedInsights
+}
+
+func (o *UpdateDrainSchemasResponse2) GetAiGateway() *UpdateDrainAiGateway2 {
+	if o == nil {
+		return nil
+	}
+	return o.AiGateway
 }
 
 type UpdateDrainTypeInternal2 string
@@ -3507,11 +3529,26 @@ func (u *UpdateDrainSpeedInsights1) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+type UpdateDrainAiGateway1 struct {
+}
+
+func (u UpdateDrainAiGateway1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateDrainAiGateway1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 type UpdateDrainSchemasResponse1 struct {
 	Log           *UpdateDrainSchemasLog1    `json:"log,omitempty"`
 	Trace         *UpdateDrainTrace1         `json:"trace,omitempty"`
 	Analytics     *UpdateDrainAnalytics1     `json:"analytics,omitempty"`
 	SpeedInsights *UpdateDrainSpeedInsights1 `json:"speed_insights,omitempty"`
+	AiGateway     *UpdateDrainAiGateway1     `json:"ai_gateway,omitempty"`
 }
 
 func (u UpdateDrainSchemasResponse1) MarshalJSON() ([]byte, error) {
@@ -3551,6 +3588,13 @@ func (o *UpdateDrainSchemasResponse1) GetSpeedInsights() *UpdateDrainSpeedInsigh
 		return nil
 	}
 	return o.SpeedInsights
+}
+
+func (o *UpdateDrainSchemasResponse1) GetAiGateway() *UpdateDrainAiGateway1 {
+	if o == nil {
+		return nil
+	}
+	return o.AiGateway
 }
 
 type UpdateDrainTypeInternal1 string

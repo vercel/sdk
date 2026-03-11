@@ -21,15 +21,15 @@ func pathGetV9ProjectsIDOrNameCustomEnvironments(dir *logging.HTTPFileDirectory,
 		count := rt.GetRequestCount(test, instanceID)
 
 		switch fmt.Sprintf("%s[%d]", test, count) {
-		case "get_/v9/projects/{idOrName}/custom-environments[0]":
-			dir.HandlerFunc("get_/v9/projects/{idOrName}/custom-environments", testGetV9ProjectsIDOrNameCustomEnvironmentsGetV9ProjectsIDOrNameCustomEnvironments0)(w, req)
+		case "getProjectsByIdOrNameCustomEnvironments[0]":
+			dir.HandlerFunc("getProjectsByIdOrNameCustomEnvironments", testGetProjectsByIDOrNameCustomEnvironmentsGetProjectsByIDOrNameCustomEnvironments0)(w, req)
 		default:
 			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
 
-func testGetV9ProjectsIDOrNameCustomEnvironmentsGetV9ProjectsIDOrNameCustomEnvironments0(w http.ResponseWriter, req *http.Request) {
+func testGetProjectsByIDOrNameCustomEnvironmentsGetProjectsByIDOrNameCustomEnvironments0(w http.ResponseWriter, req *http.Request) {
 	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusUnauthorized)
@@ -45,11 +45,19 @@ func testGetV9ProjectsIDOrNameCustomEnvironmentsGetV9ProjectsIDOrNameCustomEnvir
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody *operations.GetV9ProjectsIDOrNameCustomEnvironmentsResponseBody = &operations.GetV9ProjectsIDOrNameCustomEnvironmentsResponseBody{
+	var respBody *operations.GetProjectsByIDOrNameCustomEnvironmentsResponseBody = &operations.GetProjectsByIDOrNameCustomEnvironmentsResponseBody{
 		AccountLimit: operations.AccountLimit{
-			Total: 4336.88,
+			Total: 9047.58,
 		},
-		Environments: []operations.GetV9ProjectsIDOrNameCustomEnvironmentsEnvironment{},
+		Environments: []operations.GetProjectsByIDOrNameCustomEnvironmentsEnvironment{
+			operations.GetProjectsByIDOrNameCustomEnvironmentsEnvironment{
+				Type:      operations.GetProjectsByIDOrNameCustomEnvironmentsTypeProduction,
+				CreatedAt: 2957.56,
+				UpdatedAt: 4025.44,
+				ID:        "<id>",
+				Slug:      "<value>",
+			},
+		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

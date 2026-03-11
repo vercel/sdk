@@ -11,6 +11,36 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+type UpdateProjectAddressResponse struct {
+	Value string  `json:"value"`
+	Note  *string `json:"note,omitempty"`
+}
+
+func (u UpdateProjectAddressResponse) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectAddressResponse) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateProjectAddressResponse) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
+}
+
+func (o *UpdateProjectAddressResponse) GetNote() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Note
+}
+
 type UpdateProjectProtectionModeResponse string
 
 const (
@@ -486,6 +516,92 @@ func (o *UpdateProjectManagedRules) GetOwasp() UpdateProjectOwasp {
 	return o.Owasp
 }
 
+type UpdateProjectLogHeadersEnum string
+
+const (
+	UpdateProjectLogHeadersEnumWildcard UpdateProjectLogHeadersEnum = "*"
+)
+
+func (e UpdateProjectLogHeadersEnum) ToPointer() *UpdateProjectLogHeadersEnum {
+	return &e
+}
+func (e *UpdateProjectLogHeadersEnum) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "*":
+		*e = UpdateProjectLogHeadersEnum(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectLogHeadersEnum: %v", v)
+	}
+}
+
+type UpdateProjectLogHeadersUnionType string
+
+const (
+	UpdateProjectLogHeadersUnionTypeArrayOfStr                  UpdateProjectLogHeadersUnionType = "arrayOfStr"
+	UpdateProjectLogHeadersUnionTypeUpdateProjectLogHeadersEnum UpdateProjectLogHeadersUnionType = "updateProject_log_headers_enum"
+)
+
+type UpdateProjectLogHeadersUnion struct {
+	ArrayOfStr                  []string                     `queryParam:"inline"`
+	UpdateProjectLogHeadersEnum *UpdateProjectLogHeadersEnum `queryParam:"inline"`
+
+	Type UpdateProjectLogHeadersUnionType
+}
+
+func CreateUpdateProjectLogHeadersUnionArrayOfStr(arrayOfStr []string) UpdateProjectLogHeadersUnion {
+	typ := UpdateProjectLogHeadersUnionTypeArrayOfStr
+
+	return UpdateProjectLogHeadersUnion{
+		ArrayOfStr: arrayOfStr,
+		Type:       typ,
+	}
+}
+
+func CreateUpdateProjectLogHeadersUnionUpdateProjectLogHeadersEnum(updateProjectLogHeadersEnum UpdateProjectLogHeadersEnum) UpdateProjectLogHeadersUnion {
+	typ := UpdateProjectLogHeadersUnionTypeUpdateProjectLogHeadersEnum
+
+	return UpdateProjectLogHeadersUnion{
+		UpdateProjectLogHeadersEnum: &updateProjectLogHeadersEnum,
+		Type:                        typ,
+	}
+}
+
+func (u *UpdateProjectLogHeadersUnion) UnmarshalJSON(data []byte) error {
+
+	var arrayOfStr []string = []string{}
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
+		u.ArrayOfStr = arrayOfStr
+		u.Type = UpdateProjectLogHeadersUnionTypeArrayOfStr
+		return nil
+	}
+
+	var updateProjectLogHeadersEnum UpdateProjectLogHeadersEnum = UpdateProjectLogHeadersEnum("")
+	if err := utils.UnmarshalJSON(data, &updateProjectLogHeadersEnum, "", true, nil); err == nil {
+		u.UpdateProjectLogHeadersEnum = &updateProjectLogHeadersEnum
+		u.Type = UpdateProjectLogHeadersUnionTypeUpdateProjectLogHeadersEnum
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateProjectLogHeadersUnion", string(data))
+}
+
+func (u UpdateProjectLogHeadersUnion) MarshalJSON() ([]byte, error) {
+	if u.ArrayOfStr != nil {
+		return utils.MarshalJSON(u.ArrayOfStr, "", true)
+	}
+
+	if u.UpdateProjectLogHeadersEnum != nil {
+		return utils.MarshalJSON(u.UpdateProjectLogHeadersEnum, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type UpdateProjectLogHeadersUnion: all fields are null")
+}
+
 type UpdateProjectSecurity struct {
 	AttackModeEnabled      *bool                                                        `json:"attackModeEnabled,omitempty"`
 	AttackModeUpdatedAt    *float64                                                     `json:"attackModeUpdatedAt,omitempty"`
@@ -499,6 +615,7 @@ type UpdateProjectSecurity struct {
 	FirewallBypassIps      []string                                                     `json:"firewallBypassIps,omitempty"`
 	ManagedRules           optionalnullable.OptionalNullable[UpdateProjectManagedRules] `json:"managedRules,omitempty"`
 	BotIDEnabled           *bool                                                        `json:"botIdEnabled,omitempty"`
+	LogHeaders             *UpdateProjectLogHeadersUnion                                `json:"log_headers,omitempty"`
 }
 
 func (o *UpdateProjectSecurity) GetAttackModeEnabled() *bool {
@@ -583,6 +700,13 @@ func (o *UpdateProjectSecurity) GetBotIDEnabled() *bool {
 		return nil
 	}
 	return o.BotIDEnabled
+}
+
+func (o *UpdateProjectSecurity) GetLogHeaders() *UpdateProjectLogHeadersUnion {
+	if o == nil {
+		return nil
+	}
+	return o.LogHeaders
 }
 
 // UpdateProjectIssuerModeResponse - - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
@@ -3260,6 +3384,7 @@ type UpdateProjectResponseBody struct {
 	GitLFS                        *bool                                                                      `json:"gitLFS,omitempty"`
 	ID                            string                                                                     `json:"id"`
 	IPBuckets                     []UpdateProjectIPBucket                                                    `json:"ipBuckets,omitempty"`
+	Jobs                          *UpdateProjectJobs                                                         `json:"jobs,omitempty"`
 	LatestDeployments             []UpdateProjectLatestDeployment                                            `json:"latestDeployments,omitempty"`
 	Link                          *UpdateProjectLinkUnion                                                    `json:"link,omitempty"`
 	Microfrontends                *UpdateProjectMicrofrontendsUnion                                          `json:"microfrontends,omitempty"`
@@ -3514,6 +3639,13 @@ func (o *UpdateProjectResponseBody) GetIPBuckets() []UpdateProjectIPBucket {
 		return nil
 	}
 	return o.IPBuckets
+}
+
+func (o *UpdateProjectResponseBody) GetJobs() *UpdateProjectJobs {
+	if o == nil {
+		return nil
+	}
+	return o.Jobs
 }
 
 func (o *UpdateProjectResponseBody) GetLatestDeployments() []UpdateProjectLatestDeployment {

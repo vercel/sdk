@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsLinkProjectsResponse3 } from "@vercel/sdk/models/getprojectshasprojectsresponse200applicationjsonresponsebody2projectsvalue.js";
+import { GetProjectsLinkProjectsResponse3 } from "@vercel/sdk/models/getprojectsrouteprojectsresponsemitigate.js";
 
 let value: GetProjectsLinkProjectsResponse3 = {
   org: "<value>",

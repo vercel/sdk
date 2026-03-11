@@ -157,11 +157,26 @@ func (g *GetDrainSpeedInsights2) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+type GetDrainAiGateway2 struct {
+}
+
+func (g GetDrainAiGateway2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDrainAiGateway2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 type GetDrainSchemas2 struct {
 	Log           *GetDrainSchemasLog2    `json:"log,omitempty"`
 	Trace         *GetDrainTrace2         `json:"trace,omitempty"`
 	Analytics     *GetDrainAnalytics2     `json:"analytics,omitempty"`
 	SpeedInsights *GetDrainSpeedInsights2 `json:"speed_insights,omitempty"`
+	AiGateway     *GetDrainAiGateway2     `json:"ai_gateway,omitempty"`
 }
 
 func (g GetDrainSchemas2) MarshalJSON() ([]byte, error) {
@@ -201,6 +216,13 @@ func (o *GetDrainSchemas2) GetSpeedInsights() *GetDrainSpeedInsights2 {
 		return nil
 	}
 	return o.SpeedInsights
+}
+
+func (o *GetDrainSchemas2) GetAiGateway() *GetDrainAiGateway2 {
+	if o == nil {
+		return nil
+	}
+	return o.AiGateway
 }
 
 type GetDrainTypeInternal2 string
@@ -2340,11 +2362,26 @@ func (g *GetDrainSpeedInsights1) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+type GetDrainAiGateway1 struct {
+}
+
+func (g GetDrainAiGateway1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDrainAiGateway1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 type GetDrainSchemas1 struct {
 	Log           *GetDrainSchemasLog1    `json:"log,omitempty"`
 	Trace         *GetDrainTrace1         `json:"trace,omitempty"`
 	Analytics     *GetDrainAnalytics1     `json:"analytics,omitempty"`
 	SpeedInsights *GetDrainSpeedInsights1 `json:"speed_insights,omitempty"`
+	AiGateway     *GetDrainAiGateway1     `json:"ai_gateway,omitempty"`
 }
 
 func (g GetDrainSchemas1) MarshalJSON() ([]byte, error) {
@@ -2384,6 +2421,13 @@ func (o *GetDrainSchemas1) GetSpeedInsights() *GetDrainSpeedInsights1 {
 		return nil
 	}
 	return o.SpeedInsights
+}
+
+func (o *GetDrainSchemas1) GetAiGateway() *GetDrainAiGateway1 {
+	if o == nil {
+		return nil
+	}
+	return o.AiGateway
 }
 
 type GetDrainTypeInternal1 string

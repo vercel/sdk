@@ -35,21 +35,22 @@ func (e *TypeTeam) UnmarshalJSON(data []byte) error {
 type AuthTokenOrigin2 string
 
 const (
-	AuthTokenOrigin2Saml      AuthTokenOrigin2 = "saml"
-	AuthTokenOrigin2Github    AuthTokenOrigin2 = "github"
-	AuthTokenOrigin2Gitlab    AuthTokenOrigin2 = "gitlab"
-	AuthTokenOrigin2Bitbucket AuthTokenOrigin2 = "bitbucket"
-	AuthTokenOrigin2Email     AuthTokenOrigin2 = "email"
-	AuthTokenOrigin2Manual    AuthTokenOrigin2 = "manual"
-	AuthTokenOrigin2Passkey   AuthTokenOrigin2 = "passkey"
-	AuthTokenOrigin2Otp       AuthTokenOrigin2 = "otp"
-	AuthTokenOrigin2Sms       AuthTokenOrigin2 = "sms"
-	AuthTokenOrigin2Invite    AuthTokenOrigin2 = "invite"
-	AuthTokenOrigin2Google    AuthTokenOrigin2 = "google"
-	AuthTokenOrigin2Apple     AuthTokenOrigin2 = "apple"
-	AuthTokenOrigin2Chatgpt   AuthTokenOrigin2 = "chatgpt"
-	AuthTokenOrigin2App       AuthTokenOrigin2 = "app"
-	AuthTokenOrigin2Emu       AuthTokenOrigin2 = "emu"
+	AuthTokenOrigin2Saml          AuthTokenOrigin2 = "saml"
+	AuthTokenOrigin2Github        AuthTokenOrigin2 = "github"
+	AuthTokenOrigin2GithubWebhook AuthTokenOrigin2 = "github-webhook"
+	AuthTokenOrigin2Gitlab        AuthTokenOrigin2 = "gitlab"
+	AuthTokenOrigin2Bitbucket     AuthTokenOrigin2 = "bitbucket"
+	AuthTokenOrigin2Email         AuthTokenOrigin2 = "email"
+	AuthTokenOrigin2Manual        AuthTokenOrigin2 = "manual"
+	AuthTokenOrigin2Passkey       AuthTokenOrigin2 = "passkey"
+	AuthTokenOrigin2Otp           AuthTokenOrigin2 = "otp"
+	AuthTokenOrigin2Sms           AuthTokenOrigin2 = "sms"
+	AuthTokenOrigin2Invite        AuthTokenOrigin2 = "invite"
+	AuthTokenOrigin2Google        AuthTokenOrigin2 = "google"
+	AuthTokenOrigin2Apple         AuthTokenOrigin2 = "apple"
+	AuthTokenOrigin2Chatgpt       AuthTokenOrigin2 = "chatgpt"
+	AuthTokenOrigin2App           AuthTokenOrigin2 = "app"
+	AuthTokenOrigin2Emu           AuthTokenOrigin2 = "emu"
 )
 
 func (e AuthTokenOrigin2) ToPointer() *AuthTokenOrigin2 {
@@ -64,6 +65,8 @@ func (e *AuthTokenOrigin2) UnmarshalJSON(data []byte) error {
 	case "saml":
 		fallthrough
 	case "github":
+		fallthrough
+	case "github-webhook":
 		fallthrough
 	case "gitlab":
 		fallthrough
@@ -239,21 +242,22 @@ func (o *Sudo) GetExpiresAt() float64 {
 type AuthTokenOrigin1 string
 
 const (
-	AuthTokenOrigin1Saml      AuthTokenOrigin1 = "saml"
-	AuthTokenOrigin1Github    AuthTokenOrigin1 = "github"
-	AuthTokenOrigin1Gitlab    AuthTokenOrigin1 = "gitlab"
-	AuthTokenOrigin1Bitbucket AuthTokenOrigin1 = "bitbucket"
-	AuthTokenOrigin1Email     AuthTokenOrigin1 = "email"
-	AuthTokenOrigin1Manual    AuthTokenOrigin1 = "manual"
-	AuthTokenOrigin1Passkey   AuthTokenOrigin1 = "passkey"
-	AuthTokenOrigin1Otp       AuthTokenOrigin1 = "otp"
-	AuthTokenOrigin1Sms       AuthTokenOrigin1 = "sms"
-	AuthTokenOrigin1Invite    AuthTokenOrigin1 = "invite"
-	AuthTokenOrigin1Google    AuthTokenOrigin1 = "google"
-	AuthTokenOrigin1Apple     AuthTokenOrigin1 = "apple"
-	AuthTokenOrigin1Chatgpt   AuthTokenOrigin1 = "chatgpt"
-	AuthTokenOrigin1App       AuthTokenOrigin1 = "app"
-	AuthTokenOrigin1Emu       AuthTokenOrigin1 = "emu"
+	AuthTokenOrigin1Saml          AuthTokenOrigin1 = "saml"
+	AuthTokenOrigin1Github        AuthTokenOrigin1 = "github"
+	AuthTokenOrigin1GithubWebhook AuthTokenOrigin1 = "github-webhook"
+	AuthTokenOrigin1Gitlab        AuthTokenOrigin1 = "gitlab"
+	AuthTokenOrigin1Bitbucket     AuthTokenOrigin1 = "bitbucket"
+	AuthTokenOrigin1Email         AuthTokenOrigin1 = "email"
+	AuthTokenOrigin1Manual        AuthTokenOrigin1 = "manual"
+	AuthTokenOrigin1Passkey       AuthTokenOrigin1 = "passkey"
+	AuthTokenOrigin1Otp           AuthTokenOrigin1 = "otp"
+	AuthTokenOrigin1Sms           AuthTokenOrigin1 = "sms"
+	AuthTokenOrigin1Invite        AuthTokenOrigin1 = "invite"
+	AuthTokenOrigin1Google        AuthTokenOrigin1 = "google"
+	AuthTokenOrigin1Apple         AuthTokenOrigin1 = "apple"
+	AuthTokenOrigin1Chatgpt       AuthTokenOrigin1 = "chatgpt"
+	AuthTokenOrigin1App           AuthTokenOrigin1 = "app"
+	AuthTokenOrigin1Emu           AuthTokenOrigin1 = "emu"
 )
 
 func (e AuthTokenOrigin1) ToPointer() *AuthTokenOrigin1 {
@@ -268,6 +272,8 @@ func (e *AuthTokenOrigin1) UnmarshalJSON(data []byte) error {
 	case "saml":
 		fallthrough
 	case "github":
+		fallthrough
+	case "github-webhook":
 		fallthrough
 	case "gitlab":
 		fallthrough

@@ -9001,3 +9001,83 @@ workflows:
             type: simple
     x-speakeasy-test-group: project-routes
     x-speakeasy-test-rebuild: true
+  - workflowId: getProjectsByIdOrNameCustomEnvironments
+    steps:
+      - stepId: test
+        operationId: getProjectsByIdOrNameCustomEnvironments
+        parameters:
+          - name: idOrName
+            in: path
+            value: <value>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"accountLimit":{"total":9047.58},"environments":[{"type":"production","createdAt":2957.56,"updatedAt":4025.44,"id":"<id>","slug":"<value>"}]}
+            type: simple
+    x-speakeasy-test-group: environment
+    x-speakeasy-test-rebuild: true
+  - workflowId: getInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig
+    steps:
+      - stepId: test
+        operationId: getInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig
+        parameters:
+          - name: integrationConfigurationId
+            in: path
+            value: <id>
+          - name: resourceId
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"items":{"key":3324.14},"updatedAt":5305.02,"digest":"<value>"}
+            type: simple
+    x-speakeasy-test-group: marketplace
+    x-speakeasy-test-rebuild: true
+  - workflowId: replaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig
+    steps:
+      - stepId: test
+        operationId: replaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig
+        parameters:
+          - name: integrationConfigurationId
+            in: path
+            value: <id>
+          - name: resourceId
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"items":{},"updatedAt":8481.18,"digest":"<value>"}
+            type: simple
+    x-speakeasy-test-group: marketplace
+    x-speakeasy-test-rebuild: true
+  - workflowId: getSecurityFirewallEvents
+    steps:
+      - stepId: test
+        operationId: getSecurityFirewallEvents
+        parameters:
+          - name: projectId
+            in: query
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {"actions":[{"startTime":"<value>","endTime":"<value>","isActive":false,"action_type":"<value>","host":"ethical-smog.biz","public_ip":"<value>","count":6350.11}]}
+            type: simple
+    x-speakeasy-test-group: security
+    x-speakeasy-test-rebuild: true

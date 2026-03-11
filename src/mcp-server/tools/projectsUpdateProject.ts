@@ -3,7 +3,7 @@
  */
 
 import { projectsUpdateProject } from "../../funcs/projectsUpdateProject.js";
-import { UpdateProjectRequest$inboundSchema } from "../../models/updateprojectscheduledtierchange.js";
+import { UpdateProjectRequest$inboundSchema } from "../../models/updateprojectprojectsoidctokenconfig.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
 const args = {

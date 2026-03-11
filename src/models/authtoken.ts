@@ -12,6 +12,7 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 export const AuthTokenScopesOrigin = {
   Saml: "saml",
   Github: "github",
+  GithubWebhook: "github-webhook",
   Gitlab: "gitlab",
   Bitbucket: "bitbucket",
   Email: "email",
@@ -63,6 +64,7 @@ export type Sudo = {
 export const ScopesOrigin = {
   Saml: "saml",
   Github: "github",
+  GithubWebhook: "github-webhook",
   Gitlab: "gitlab",
   Bitbucket: "bitbucket",
   Email: "email",

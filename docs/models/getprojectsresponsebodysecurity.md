@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodySecurity } from "@vercel/sdk/models/getprojectshasprojectsresponse200applicationjsonresponsebody2projectsvalue.js";
+import { GetProjectsResponseBodySecurity } from "@vercel/sdk/models/getprojectsrouteprojectsresponsemitigate.js";
 
 let value: GetProjectsResponseBodySecurity = {};
 ```
@@ -26,3 +26,4 @@ let value: GetProjectsResponseBodySecurity = {};
 | `managedRules`                                                                                                 | [models.GetProjectsResponseBodyProjectsManagedRules](../models/getprojectsresponsebodyprojectsmanagedrules.md) | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |
 | `botIdEnabled`                                                                                                 | *boolean*                                                                                                      | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |
 | `requestLogsKey`                                                                                               | *string*[]                                                                                                     | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |
+| `logHeaders`                                                                                                   | *models.GetProjectsResponseBodyProjectsLogHeaders*                                                             | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |

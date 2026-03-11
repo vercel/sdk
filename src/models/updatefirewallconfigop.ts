@@ -12,6 +12,15 @@ import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
+ * Update log headers configuration
+ */
+export type RequestBody14 = {
+  action: string;
+  id?: string | undefined;
+  value?: any | undefined;
+};
+
+/**
  * Toggle bot ID
  */
 export type RequestBody13 = {
@@ -397,7 +406,7 @@ export type UpdateFirewallConfigRequestBodyRedirect =
   | UpdateFirewallConfigRedirectSecurity1
   | any;
 
-export type RequestBodyLogHeaders = string | Array<string>;
+export type UpdateFirewallConfigRequestBodyLogHeaders = string | Array<string>;
 
 export type UpdateFirewallConfigRequestBodyMitigate = {
   action: UpdateFirewallConfigRequestBodySecurityRequest3ValueAction;
@@ -557,7 +566,7 @@ export type UpdateFirewallConfigRedirect1 = {
 
 export type RequestBodyRedirect = UpdateFirewallConfigRedirect1 | any;
 
-export type LogHeaders = string | Array<string>;
+export type RequestBodyLogHeaders = string | Array<string>;
 
 export type RequestBodyMitigate = {
   action: UpdateFirewallConfigRequestBodySecurityRequest2ValueAction;
@@ -622,6 +631,7 @@ export type UpdateFirewallConfigRequestBody =
   | UpdateFirewallConfigRequestBody8
   | UpdateFirewallConfigRequestBody10
   | RequestBody13
+  | RequestBody14
   | UpdateFirewallConfigRequestBody7;
 
 export type UpdateFirewallConfigRequest = {
@@ -647,10 +657,52 @@ export type UpdateFirewallConfigRequest = {
     | UpdateFirewallConfigRequestBody8
     | UpdateFirewallConfigRequestBody10
     | RequestBody13
+    | RequestBody14
     | UpdateFirewallConfigRequestBody7;
 };
 
 export type UpdateFirewallConfigResponseBody = {};
+
+/** @internal */
+export const RequestBody14$inboundSchema: z.ZodType<
+  RequestBody14,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: types.string(),
+  id: types.optional(types.string()),
+  value: types.optional(z.any()),
+});
+/** @internal */
+export type RequestBody14$Outbound = {
+  action: string;
+  id?: string | undefined;
+  value?: any | undefined;
+};
+
+/** @internal */
+export const RequestBody14$outboundSchema: z.ZodType<
+  RequestBody14$Outbound,
+  z.ZodTypeDef,
+  RequestBody14
+> = z.object({
+  action: z.string(),
+  id: z.string().optional(),
+  value: z.any().optional(),
+});
+
+export function requestBody14ToJSON(requestBody14: RequestBody14): string {
+  return JSON.stringify(RequestBody14$outboundSchema.parse(requestBody14));
+}
+export function requestBody14FromJSON(
+  jsonString: string,
+): SafeParseResult<RequestBody14, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RequestBody14$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RequestBody14' from JSON`,
+  );
+}
 
 /** @internal */
 export const RequestBody13$inboundSchema: z.ZodType<
@@ -2056,35 +2108,47 @@ export function updateFirewallConfigRequestBodyRedirectFromJSON(
 }
 
 /** @internal */
-export const RequestBodyLogHeaders$inboundSchema: z.ZodType<
-  RequestBodyLogHeaders,
+export const UpdateFirewallConfigRequestBodyLogHeaders$inboundSchema: z.ZodType<
+  UpdateFirewallConfigRequestBodyLogHeaders,
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), z.array(types.string())]);
 /** @internal */
-export type RequestBodyLogHeaders$Outbound = string | Array<string>;
+export type UpdateFirewallConfigRequestBodyLogHeaders$Outbound =
+  | string
+  | Array<string>;
 
 /** @internal */
-export const RequestBodyLogHeaders$outboundSchema: z.ZodType<
-  RequestBodyLogHeaders$Outbound,
-  z.ZodTypeDef,
-  RequestBodyLogHeaders
-> = smartUnion([z.string(), z.array(z.string())]);
+export const UpdateFirewallConfigRequestBodyLogHeaders$outboundSchema:
+  z.ZodType<
+    UpdateFirewallConfigRequestBodyLogHeaders$Outbound,
+    z.ZodTypeDef,
+    UpdateFirewallConfigRequestBodyLogHeaders
+  > = smartUnion([z.string(), z.array(z.string())]);
 
-export function requestBodyLogHeadersToJSON(
-  requestBodyLogHeaders: RequestBodyLogHeaders,
+export function updateFirewallConfigRequestBodyLogHeadersToJSON(
+  updateFirewallConfigRequestBodyLogHeaders:
+    UpdateFirewallConfigRequestBodyLogHeaders,
 ): string {
   return JSON.stringify(
-    RequestBodyLogHeaders$outboundSchema.parse(requestBodyLogHeaders),
+    UpdateFirewallConfigRequestBodyLogHeaders$outboundSchema.parse(
+      updateFirewallConfigRequestBodyLogHeaders,
+    ),
   );
 }
-export function requestBodyLogHeadersFromJSON(
+export function updateFirewallConfigRequestBodyLogHeadersFromJSON(
   jsonString: string,
-): SafeParseResult<RequestBodyLogHeaders, SDKValidationError> {
+): SafeParseResult<
+  UpdateFirewallConfigRequestBodyLogHeaders,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => RequestBodyLogHeaders$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestBodyLogHeaders' from JSON`,
+    (x) =>
+      UpdateFirewallConfigRequestBodyLogHeaders$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateFirewallConfigRequestBodyLogHeaders' from JSON`,
   );
 }
 
@@ -2815,31 +2879,35 @@ export function requestBodyRedirectFromJSON(
 }
 
 /** @internal */
-export const LogHeaders$inboundSchema: z.ZodType<
-  LogHeaders,
+export const RequestBodyLogHeaders$inboundSchema: z.ZodType<
+  RequestBodyLogHeaders,
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.string(), z.array(types.string())]);
 /** @internal */
-export type LogHeaders$Outbound = string | Array<string>;
+export type RequestBodyLogHeaders$Outbound = string | Array<string>;
 
 /** @internal */
-export const LogHeaders$outboundSchema: z.ZodType<
-  LogHeaders$Outbound,
+export const RequestBodyLogHeaders$outboundSchema: z.ZodType<
+  RequestBodyLogHeaders$Outbound,
   z.ZodTypeDef,
-  LogHeaders
+  RequestBodyLogHeaders
 > = smartUnion([z.string(), z.array(z.string())]);
 
-export function logHeadersToJSON(logHeaders: LogHeaders): string {
-  return JSON.stringify(LogHeaders$outboundSchema.parse(logHeaders));
+export function requestBodyLogHeadersToJSON(
+  requestBodyLogHeaders: RequestBodyLogHeaders,
+): string {
+  return JSON.stringify(
+    RequestBodyLogHeaders$outboundSchema.parse(requestBodyLogHeaders),
+  );
 }
-export function logHeadersFromJSON(
+export function requestBodyLogHeadersFromJSON(
   jsonString: string,
-): SafeParseResult<LogHeaders, SDKValidationError> {
+): SafeParseResult<RequestBodyLogHeaders, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => LogHeaders$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LogHeaders' from JSON`,
+    (x) => RequestBodyLogHeaders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RequestBodyLogHeaders' from JSON`,
   );
 }
 
@@ -3195,6 +3263,7 @@ export const UpdateFirewallConfigRequestBody$inboundSchema: z.ZodType<
   z.lazy(() => UpdateFirewallConfigRequestBody8$inboundSchema),
   z.lazy(() => UpdateFirewallConfigRequestBody10$inboundSchema),
   z.lazy(() => RequestBody13$inboundSchema),
+  z.lazy(() => RequestBody14$inboundSchema),
   z.lazy(() => UpdateFirewallConfigRequestBody7$inboundSchema),
 ]);
 /** @internal */
@@ -3211,6 +3280,7 @@ export type UpdateFirewallConfigRequestBody$Outbound =
   | UpdateFirewallConfigRequestBody8$Outbound
   | UpdateFirewallConfigRequestBody10$Outbound
   | RequestBody13$Outbound
+  | RequestBody14$Outbound
   | UpdateFirewallConfigRequestBody7$Outbound;
 
 /** @internal */
@@ -3231,6 +3301,7 @@ export const UpdateFirewallConfigRequestBody$outboundSchema: z.ZodType<
   z.lazy(() => UpdateFirewallConfigRequestBody8$outboundSchema),
   z.lazy(() => UpdateFirewallConfigRequestBody10$outboundSchema),
   z.lazy(() => RequestBody13$outboundSchema),
+  z.lazy(() => RequestBody14$outboundSchema),
   z.lazy(() => UpdateFirewallConfigRequestBody7$outboundSchema),
 ]);
 
@@ -3275,6 +3346,7 @@ export const UpdateFirewallConfigRequest$inboundSchema: z.ZodType<
     z.lazy(() => UpdateFirewallConfigRequestBody8$inboundSchema),
     z.lazy(() => UpdateFirewallConfigRequestBody10$inboundSchema),
     z.lazy(() => RequestBody13$inboundSchema),
+    z.lazy(() => RequestBody14$inboundSchema),
     z.lazy(() => UpdateFirewallConfigRequestBody7$inboundSchema),
   ]),
 }).transform((v) => {
@@ -3300,6 +3372,7 @@ export type UpdateFirewallConfigRequest$Outbound = {
     | UpdateFirewallConfigRequestBody8$Outbound
     | UpdateFirewallConfigRequestBody10$Outbound
     | RequestBody13$Outbound
+    | RequestBody14$Outbound
     | UpdateFirewallConfigRequestBody7$Outbound;
 };
 
@@ -3325,6 +3398,7 @@ export const UpdateFirewallConfigRequest$outboundSchema: z.ZodType<
     z.lazy(() => UpdateFirewallConfigRequestBody8$outboundSchema),
     z.lazy(() => UpdateFirewallConfigRequestBody10$outboundSchema),
     z.lazy(() => RequestBody13$outboundSchema),
+    z.lazy(() => RequestBody14$outboundSchema),
     z.lazy(() => UpdateFirewallConfigRequestBody7$outboundSchema),
   ]),
 }).transform((v) => {

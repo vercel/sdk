@@ -18,11 +18,11 @@ import {
   UnexpectedClientError,
 } from "../models/httpclienterrors.js";
 import {
-  PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest,
-  PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest$outboundSchema,
-  PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody,
-  PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody$inboundSchema,
-} from "../models/putv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigop.js";
+  ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequest,
+  ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequest$outboundSchema,
+  ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody,
+  ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody$inboundSchema,
+} from "../models/replaceinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationedgeconfigop.js";
 import { ResponseValidationError } from "../models/responsevalidationerror.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import { VercelError } from "../models/vercelerror.js";
@@ -38,11 +38,11 @@ import { Result } from "../types/fp.js";
 export function marketplaceUpdateInstallationIntegrationEdgeConfig(
   client: VercelCore,
   request:
-    PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest,
+    ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody,
+    ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody,
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -63,12 +63,12 @@ export function marketplaceUpdateInstallationIntegrationEdgeConfig(
 async function $do(
   client: VercelCore,
   request:
-    PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest,
+    ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody,
+      ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody,
       | VercelError
       | ResponseValidationError
       | ConnectionError
@@ -84,7 +84,7 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest$outboundSchema
+      ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequest$outboundSchema
         .parse(value),
     "Input validation failed",
   );
@@ -123,7 +123,7 @@ async function $do(
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID:
-      "put_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config",
+      "replaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -162,7 +162,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody,
+    ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody,
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -174,7 +174,7 @@ async function $do(
   >(
     M.json(
       200,
-      PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody$inboundSchema,
+      ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody$inboundSchema,
     ),
     M.fail([400, 401, 403, 404, 409, 412, "4XX"]),
     M.fail("5XX"),

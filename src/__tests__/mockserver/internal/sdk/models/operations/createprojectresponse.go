@@ -11,6 +11,25 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+type CreateProjectVercelRuleset struct {
+	Active bool                              `json:"active"`
+	Action *CreateProjectVercelRulesetAction `json:"action,omitempty"`
+}
+
+func (o *CreateProjectVercelRuleset) GetActive() bool {
+	if o == nil {
+		return false
+	}
+	return o.Active
+}
+
+func (o *CreateProjectVercelRuleset) GetAction() *CreateProjectVercelRulesetAction {
+	if o == nil {
+		return nil
+	}
+	return o.Action
+}
+
 type CreateProjectBotFilterAction string
 
 const (
@@ -190,6 +209,92 @@ func (o *CreateProjectManagedRules) GetOwasp() CreateProjectOwasp {
 	return o.Owasp
 }
 
+type CreateProjectLogHeadersEnum string
+
+const (
+	CreateProjectLogHeadersEnumWildcard CreateProjectLogHeadersEnum = "*"
+)
+
+func (e CreateProjectLogHeadersEnum) ToPointer() *CreateProjectLogHeadersEnum {
+	return &e
+}
+func (e *CreateProjectLogHeadersEnum) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "*":
+		*e = CreateProjectLogHeadersEnum(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectLogHeadersEnum: %v", v)
+	}
+}
+
+type CreateProjectLogHeadersUnionType string
+
+const (
+	CreateProjectLogHeadersUnionTypeArrayOfStr                  CreateProjectLogHeadersUnionType = "arrayOfStr"
+	CreateProjectLogHeadersUnionTypeCreateProjectLogHeadersEnum CreateProjectLogHeadersUnionType = "createProject_log_headers_enum"
+)
+
+type CreateProjectLogHeadersUnion struct {
+	ArrayOfStr                  []string                     `queryParam:"inline"`
+	CreateProjectLogHeadersEnum *CreateProjectLogHeadersEnum `queryParam:"inline"`
+
+	Type CreateProjectLogHeadersUnionType
+}
+
+func CreateCreateProjectLogHeadersUnionArrayOfStr(arrayOfStr []string) CreateProjectLogHeadersUnion {
+	typ := CreateProjectLogHeadersUnionTypeArrayOfStr
+
+	return CreateProjectLogHeadersUnion{
+		ArrayOfStr: arrayOfStr,
+		Type:       typ,
+	}
+}
+
+func CreateCreateProjectLogHeadersUnionCreateProjectLogHeadersEnum(createProjectLogHeadersEnum CreateProjectLogHeadersEnum) CreateProjectLogHeadersUnion {
+	typ := CreateProjectLogHeadersUnionTypeCreateProjectLogHeadersEnum
+
+	return CreateProjectLogHeadersUnion{
+		CreateProjectLogHeadersEnum: &createProjectLogHeadersEnum,
+		Type:                        typ,
+	}
+}
+
+func (u *CreateProjectLogHeadersUnion) UnmarshalJSON(data []byte) error {
+
+	var arrayOfStr []string = []string{}
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
+		u.ArrayOfStr = arrayOfStr
+		u.Type = CreateProjectLogHeadersUnionTypeArrayOfStr
+		return nil
+	}
+
+	var createProjectLogHeadersEnum CreateProjectLogHeadersEnum = CreateProjectLogHeadersEnum("")
+	if err := utils.UnmarshalJSON(data, &createProjectLogHeadersEnum, "", true, nil); err == nil {
+		u.CreateProjectLogHeadersEnum = &createProjectLogHeadersEnum
+		u.Type = CreateProjectLogHeadersUnionTypeCreateProjectLogHeadersEnum
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateProjectLogHeadersUnion", string(data))
+}
+
+func (u CreateProjectLogHeadersUnion) MarshalJSON() ([]byte, error) {
+	if u.ArrayOfStr != nil {
+		return utils.MarshalJSON(u.ArrayOfStr, "", true)
+	}
+
+	if u.CreateProjectLogHeadersEnum != nil {
+		return utils.MarshalJSON(u.CreateProjectLogHeadersEnum, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateProjectLogHeadersUnion: all fields are null")
+}
+
 type CreateProjectSecurity struct {
 	AttackModeEnabled      *bool                                                        `json:"attackModeEnabled,omitempty"`
 	AttackModeUpdatedAt    *float64                                                     `json:"attackModeUpdatedAt,omitempty"`
@@ -203,6 +308,7 @@ type CreateProjectSecurity struct {
 	FirewallBypassIps      []string                                                     `json:"firewallBypassIps,omitempty"`
 	ManagedRules           optionalnullable.OptionalNullable[CreateProjectManagedRules] `json:"managedRules,omitempty"`
 	BotIDEnabled           *bool                                                        `json:"botIdEnabled,omitempty"`
+	LogHeaders             *CreateProjectLogHeadersUnion                                `json:"log_headers,omitempty"`
 }
 
 func (o *CreateProjectSecurity) GetAttackModeEnabled() *bool {
@@ -287,6 +393,13 @@ func (o *CreateProjectSecurity) GetBotIDEnabled() *bool {
 		return nil
 	}
 	return o.BotIDEnabled
+}
+
+func (o *CreateProjectSecurity) GetLogHeaders() *CreateProjectLogHeadersUnion {
+	if o == nil {
+		return nil
+	}
+	return o.LogHeaders
 }
 
 // CreateProjectIssuerModeResponse - - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`
@@ -2964,6 +3077,7 @@ type CreateProjectResponseBody struct {
 	GitLFS                        *bool                                                                 `json:"gitLFS,omitempty"`
 	ID                            string                                                                `json:"id"`
 	IPBuckets                     []CreateProjectIPBucket                                               `json:"ipBuckets,omitempty"`
+	Jobs                          *CreateProjectJobs                                                    `json:"jobs,omitempty"`
 	LatestDeployments             []CreateProjectLatestDeployment                                       `json:"latestDeployments,omitempty"`
 	Link                          *CreateProjectLinkUnion                                               `json:"link,omitempty"`
 	Microfrontends                *CreateProjectMicrofrontendsUnion                                     `json:"microfrontends,omitempty"`
@@ -3218,6 +3332,13 @@ func (o *CreateProjectResponseBody) GetIPBuckets() []CreateProjectIPBucket {
 		return nil
 	}
 	return o.IPBuckets
+}
+
+func (o *CreateProjectResponseBody) GetJobs() *CreateProjectJobs {
+	if o == nil {
+		return nil
+	}
+	return o.Jobs
 }
 
 func (o *CreateProjectResponseBody) GetLatestDeployments() []CreateProjectLatestDeployment {

@@ -881,6 +881,11 @@ export type CreateProjectIpBuckets = {
   supportUntil?: number | undefined;
 };
 
+export type Jobs = {
+  lint?: Array<string> | undefined;
+  typecheck?: Array<string> | undefined;
+};
+
 export type AliasAssigned = number | boolean;
 
 export type CreateProjectBuilds = {
@@ -1838,6 +1843,15 @@ export type CreateProjectManagedRules = {
   owasp: CreateProjectOwasp;
 };
 
+export const CreateProjectLogHeaders2 = {
+  Wildcard: "*",
+} as const;
+export type CreateProjectLogHeaders2 = ClosedEnum<
+  typeof CreateProjectLogHeaders2
+>;
+
+export type CreateProjectLogHeaders = Array<string> | CreateProjectLogHeaders2;
+
 export type CreateProjectSecurity = {
   attackModeEnabled?: boolean | undefined;
   attackModeUpdatedAt?: number | undefined;
@@ -1851,6 +1865,7 @@ export type CreateProjectSecurity = {
   firewallBypassIps?: Array<string> | undefined;
   managedRules?: CreateProjectManagedRules | null | undefined;
   botIdEnabled?: boolean | undefined;
+  logHeaders?: Array<string> | CreateProjectLogHeaders2 | undefined;
 };
 
 /**
@@ -2241,6 +2256,7 @@ export type CreateProjectResponseBody = {
   gitLFS?: boolean | undefined;
   id: string;
   ipBuckets?: Array<CreateProjectIpBuckets> | undefined;
+  jobs?: Jobs | undefined;
   latestDeployments?: Array<LatestDeployments> | undefined;
   link?: Link1 | Link2 | Link3 | Link4 | Link5 | undefined;
   microfrontends?:
@@ -4647,6 +4663,38 @@ export function createProjectIpBucketsFromJSON(
     jsonString,
     (x) => CreateProjectIpBuckets$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'CreateProjectIpBuckets' from JSON`,
+  );
+}
+
+/** @internal */
+export const Jobs$inboundSchema: z.ZodType<Jobs, z.ZodTypeDef, unknown> = z
+  .object({
+    lint: types.optional(z.array(types.string())),
+    typecheck: types.optional(z.array(types.string())),
+  });
+/** @internal */
+export type Jobs$Outbound = {
+  lint?: Array<string> | undefined;
+  typecheck?: Array<string> | undefined;
+};
+
+/** @internal */
+export const Jobs$outboundSchema: z.ZodType<Jobs$Outbound, z.ZodTypeDef, Jobs> =
+  z.object({
+    lint: z.array(z.string()).optional(),
+    typecheck: z.array(z.string()).optional(),
+  });
+
+export function jobsToJSON(jobs: Jobs): string {
+  return JSON.stringify(Jobs$outboundSchema.parse(jobs));
+}
+export function jobsFromJSON(
+  jsonString: string,
+): SafeParseResult<Jobs, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Jobs$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Jobs' from JSON`,
   );
 }
 
@@ -8313,6 +8361,51 @@ export function createProjectManagedRulesFromJSON(
 }
 
 /** @internal */
+export const CreateProjectLogHeaders2$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectLogHeaders2
+> = z.nativeEnum(CreateProjectLogHeaders2);
+/** @internal */
+export const CreateProjectLogHeaders2$outboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectLogHeaders2
+> = CreateProjectLogHeaders2$inboundSchema;
+
+/** @internal */
+export const CreateProjectLogHeaders$inboundSchema: z.ZodType<
+  CreateProjectLogHeaders,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.array(types.string()),
+  CreateProjectLogHeaders2$inboundSchema,
+]);
+/** @internal */
+export type CreateProjectLogHeaders$Outbound = Array<string> | string;
+
+/** @internal */
+export const CreateProjectLogHeaders$outboundSchema: z.ZodType<
+  CreateProjectLogHeaders$Outbound,
+  z.ZodTypeDef,
+  CreateProjectLogHeaders
+> = smartUnion([z.array(z.string()), CreateProjectLogHeaders2$outboundSchema]);
+
+export function createProjectLogHeadersToJSON(
+  createProjectLogHeaders: CreateProjectLogHeaders,
+): string {
+  return JSON.stringify(
+    CreateProjectLogHeaders$outboundSchema.parse(createProjectLogHeaders),
+  );
+}
+export function createProjectLogHeadersFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectLogHeaders, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectLogHeaders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectLogHeaders' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateProjectSecurity$inboundSchema: z.ZodType<
   CreateProjectSecurity,
   z.ZodTypeDef,
@@ -8332,6 +8425,16 @@ export const CreateProjectSecurity$inboundSchema: z.ZodType<
     z.lazy(() => CreateProjectManagedRules$inboundSchema),
   ).optional(),
   botIdEnabled: types.optional(types.boolean()),
+  log_headers: types.optional(
+    smartUnion([
+      z.array(types.string()),
+      CreateProjectLogHeaders2$inboundSchema,
+    ]),
+  ),
+}).transform((v) => {
+  return remap$(v, {
+    "log_headers": "logHeaders",
+  });
 });
 /** @internal */
 export type CreateProjectSecurity$Outbound = {
@@ -8347,6 +8450,7 @@ export type CreateProjectSecurity$Outbound = {
   firewallBypassIps?: Array<string> | undefined;
   managedRules?: CreateProjectManagedRules$Outbound | null | undefined;
   botIdEnabled?: boolean | undefined;
+  log_headers?: Array<string> | string | undefined;
 };
 
 /** @internal */
@@ -8369,6 +8473,14 @@ export const CreateProjectSecurity$outboundSchema: z.ZodType<
     z.lazy(() => CreateProjectManagedRules$outboundSchema),
   ).optional(),
   botIdEnabled: z.boolean().optional(),
+  logHeaders: smartUnion([
+    z.array(z.string()),
+    CreateProjectLogHeaders2$outboundSchema,
+  ]).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    logHeaders: "log_headers",
+  });
 });
 
 export function createProjectSecurityToJSON(
@@ -10556,6 +10668,7 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
   ipBuckets: types.optional(
     z.array(z.lazy(() => CreateProjectIpBuckets$inboundSchema)),
   ),
+  jobs: types.optional(z.lazy(() => Jobs$inboundSchema)),
   latestDeployments: types.optional(
     z.array(z.lazy(() => LatestDeployments$inboundSchema)),
   ),
@@ -10710,6 +10823,7 @@ export type CreateProjectResponseBody$Outbound = {
   gitLFS?: boolean | undefined;
   id: string;
   ipBuckets?: Array<CreateProjectIpBuckets$Outbound> | undefined;
+  jobs?: Jobs$Outbound | undefined;
   latestDeployments?: Array<LatestDeployments$Outbound> | undefined;
   link?:
     | Link1$Outbound
@@ -10827,6 +10941,7 @@ export const CreateProjectResponseBody$outboundSchema: z.ZodType<
   id: z.string(),
   ipBuckets: z.array(z.lazy(() => CreateProjectIpBuckets$outboundSchema))
     .optional(),
+  jobs: z.lazy(() => Jobs$outboundSchema).optional(),
   latestDeployments: z.array(z.lazy(() => LatestDeployments$outboundSchema))
     .optional(),
   link: z.union([

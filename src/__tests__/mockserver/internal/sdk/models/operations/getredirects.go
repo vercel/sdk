@@ -236,7 +236,7 @@ func (o *GetRedirectsRequest) GetSlug() *string {
 	return o.Slug
 }
 
-type GetRedirectsRedirect2 struct {
+type GetRedirectsRedirect struct {
 	StatusCode          *float64 `json:"statusCode,omitempty"`
 	Permanent           *bool    `json:"permanent,omitempty"`
 	Sensitive           *bool    `json:"sensitive,omitempty"`
@@ -247,74 +247,74 @@ type GetRedirectsRedirect2 struct {
 	Destination         string   `json:"destination"`
 }
 
-func (g GetRedirectsRedirect2) MarshalJSON() ([]byte, error) {
+func (g GetRedirectsRedirect) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(g, "", false)
 }
 
-func (g *GetRedirectsRedirect2) UnmarshalJSON(data []byte) error {
+func (g *GetRedirectsRedirect) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"source", "destination"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *GetRedirectsRedirect2) GetStatusCode() *float64 {
+func (o *GetRedirectsRedirect) GetStatusCode() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.StatusCode
 }
 
-func (o *GetRedirectsRedirect2) GetPermanent() *bool {
+func (o *GetRedirectsRedirect) GetPermanent() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Permanent
 }
 
-func (o *GetRedirectsRedirect2) GetSensitive() *bool {
+func (o *GetRedirectsRedirect) GetSensitive() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Sensitive
 }
 
-func (o *GetRedirectsRedirect2) GetCaseSensitive() *bool {
+func (o *GetRedirectsRedirect) GetCaseSensitive() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.CaseSensitive
 }
 
-func (o *GetRedirectsRedirect2) GetQuery() *bool {
+func (o *GetRedirectsRedirect) GetQuery() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Query
 }
 
-func (o *GetRedirectsRedirect2) GetPreserveQueryParams() *bool {
+func (o *GetRedirectsRedirect) GetPreserveQueryParams() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.PreserveQueryParams
 }
 
-func (o *GetRedirectsRedirect2) GetSource() string {
+func (o *GetRedirectsRedirect) GetSource() string {
 	if o == nil {
 		return ""
 	}
 	return o.Source
 }
 
-func (o *GetRedirectsRedirect2) GetDestination() string {
+func (o *GetRedirectsRedirect) GetDestination() string {
 	if o == nil {
 		return ""
 	}
 	return o.Destination
 }
 
-type GetRedirectsVersion2 struct {
+type GetRedirectsVersion struct {
 	// The unique identifier for the version.
 	ID string `json:"id"`
 	// The key of the version. The key may be duplicated across versions if the contents are the same as a different version.
@@ -333,491 +333,222 @@ type GetRedirectsVersion2 struct {
 	Alias *string `json:"alias,omitempty"`
 }
 
-func (g GetRedirectsVersion2) MarshalJSON() ([]byte, error) {
+func (g GetRedirectsVersion) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(g, "", false)
 }
 
-func (g *GetRedirectsVersion2) UnmarshalJSON(data []byte) error {
+func (g *GetRedirectsVersion) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "key", "lastModified", "createdBy"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *GetRedirectsVersion2) GetID() string {
+func (o *GetRedirectsVersion) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *GetRedirectsVersion2) GetKey() string {
+func (o *GetRedirectsVersion) GetKey() string {
 	if o == nil {
 		return ""
 	}
 	return o.Key
 }
 
-func (o *GetRedirectsVersion2) GetLastModified() float64 {
+func (o *GetRedirectsVersion) GetLastModified() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.LastModified
 }
 
-func (o *GetRedirectsVersion2) GetCreatedBy() string {
+func (o *GetRedirectsVersion) GetCreatedBy() string {
 	if o == nil {
 		return ""
 	}
 	return o.CreatedBy
 }
 
-func (o *GetRedirectsVersion2) GetName() *string {
+func (o *GetRedirectsVersion) GetName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Name
 }
 
-func (o *GetRedirectsVersion2) GetIsStaging() *bool {
+func (o *GetRedirectsVersion) GetIsStaging() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.IsStaging
 }
 
-func (o *GetRedirectsVersion2) GetIsLive() *bool {
+func (o *GetRedirectsVersion) GetIsLive() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.IsLive
 }
 
-func (o *GetRedirectsVersion2) GetRedirectCount() *float64 {
+func (o *GetRedirectsVersion) GetRedirectCount() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.RedirectCount
 }
 
-func (o *GetRedirectsVersion2) GetAlias() *string {
+func (o *GetRedirectsVersion) GetAlias() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Alias
 }
 
-type GetRedirectsPagination2 struct {
+type GetRedirectsPagination struct {
 	Page     float64 `json:"page"`
 	PerPage  float64 `json:"per_page"`
 	NumPages float64 `json:"numPages"`
 }
 
-func (g GetRedirectsPagination2) MarshalJSON() ([]byte, error) {
+func (g GetRedirectsPagination) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(g, "", false)
 }
 
-func (g *GetRedirectsPagination2) UnmarshalJSON(data []byte) error {
+func (g *GetRedirectsPagination) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"page", "per_page", "numPages"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *GetRedirectsPagination2) GetPage() float64 {
+func (o *GetRedirectsPagination) GetPage() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Page
 }
 
-func (o *GetRedirectsPagination2) GetPerPage() float64 {
+func (o *GetRedirectsPagination) GetPerPage() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PerPage
 }
 
-func (o *GetRedirectsPagination2) GetNumPages() float64 {
+func (o *GetRedirectsPagination) GetNumPages() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.NumPages
 }
 
-type GetRedirectsResponseBody2 struct {
-	Redirects  []GetRedirectsRedirect2 `json:"redirects"`
-	Version    *GetRedirectsVersion2   `json:"version,omitempty"`
-	Pagination GetRedirectsPagination2 `json:"pagination"`
+type GetRedirectsResponseBody struct {
+	Redirects  []GetRedirectsRedirect `json:"redirects"`
+	Version    *GetRedirectsVersion   `json:"version,omitempty"`
+	Pagination GetRedirectsPagination `json:"pagination"`
 }
 
-func (g GetRedirectsResponseBody2) MarshalJSON() ([]byte, error) {
+func (g GetRedirectsResponseBody) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(g, "", false)
 }
 
-func (g *GetRedirectsResponseBody2) UnmarshalJSON(data []byte) error {
+func (g *GetRedirectsResponseBody) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"redirects", "pagination"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *GetRedirectsResponseBody2) GetRedirects() []GetRedirectsRedirect2 {
+func (o *GetRedirectsResponseBody) GetRedirects() []GetRedirectsRedirect {
 	if o == nil {
-		return []GetRedirectsRedirect2{}
+		return []GetRedirectsRedirect{}
 	}
 	return o.Redirects
 }
 
-func (o *GetRedirectsResponseBody2) GetVersion() *GetRedirectsVersion2 {
+func (o *GetRedirectsResponseBody) GetVersion() *GetRedirectsVersion {
 	if o == nil {
 		return nil
 	}
 	return o.Version
 }
 
-func (o *GetRedirectsResponseBody2) GetPagination() GetRedirectsPagination2 {
+func (o *GetRedirectsResponseBody) GetPagination() GetRedirectsPagination {
 	if o == nil {
-		return GetRedirectsPagination2{}
+		return GetRedirectsPagination{}
 	}
 	return o.Pagination
 }
 
-type GetRedirectsVersion1 struct {
-	// The unique identifier for the version.
-	ID string `json:"id"`
-	// The key of the version. The key may be duplicated across versions if the contents are the same as a different version.
-	Key          string  `json:"key"`
-	LastModified float64 `json:"lastModified"`
-	CreatedBy    string  `json:"createdBy"`
-	// Optional name for the version. If not provided, defaults to an ISO timestamp string.
-	Name *string `json:"name,omitempty"`
-	// Whether this version has not been promoted to production yet and is not serving end users.
-	IsStaging *bool `json:"isStaging,omitempty"`
-	// Whether this version is currently live in production.
-	IsLive *bool `json:"isLive,omitempty"`
-	// The number of redirects in this version.
-	RedirectCount *float64 `json:"redirectCount,omitempty"`
-	// The staging link for previewing redirects in this version.
-	Alias *string `json:"alias,omitempty"`
-}
-
-func (g GetRedirectsVersion1) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(g, "", false)
-}
-
-func (g *GetRedirectsVersion1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "key", "lastModified", "createdBy"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *GetRedirectsVersion1) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *GetRedirectsVersion1) GetKey() string {
-	if o == nil {
-		return ""
-	}
-	return o.Key
-}
-
-func (o *GetRedirectsVersion1) GetLastModified() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.LastModified
-}
-
-func (o *GetRedirectsVersion1) GetCreatedBy() string {
-	if o == nil {
-		return ""
-	}
-	return o.CreatedBy
-}
-
-func (o *GetRedirectsVersion1) GetName() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Name
-}
-
-func (o *GetRedirectsVersion1) GetIsStaging() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.IsStaging
-}
-
-func (o *GetRedirectsVersion1) GetIsLive() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.IsLive
-}
-
-func (o *GetRedirectsVersion1) GetRedirectCount() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.RedirectCount
-}
-
-func (o *GetRedirectsVersion1) GetAlias() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Alias
-}
-
-type GetRedirectsRedirect1 struct {
-	StatusCode          *float64 `json:"statusCode,omitempty"`
-	Permanent           *bool    `json:"permanent,omitempty"`
-	Sensitive           *bool    `json:"sensitive,omitempty"`
-	CaseSensitive       *bool    `json:"caseSensitive,omitempty"`
-	Query               *bool    `json:"query,omitempty"`
-	PreserveQueryParams *bool    `json:"preserveQueryParams,omitempty"`
-	Source              string   `json:"source"`
-	Destination         string   `json:"destination"`
-}
-
-func (g GetRedirectsRedirect1) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(g, "", false)
-}
-
-func (g *GetRedirectsRedirect1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"source", "destination"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *GetRedirectsRedirect1) GetStatusCode() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.StatusCode
-}
-
-func (o *GetRedirectsRedirect1) GetPermanent() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Permanent
-}
-
-func (o *GetRedirectsRedirect1) GetSensitive() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Sensitive
-}
-
-func (o *GetRedirectsRedirect1) GetCaseSensitive() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.CaseSensitive
-}
-
-func (o *GetRedirectsRedirect1) GetQuery() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Query
-}
-
-func (o *GetRedirectsRedirect1) GetPreserveQueryParams() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.PreserveQueryParams
-}
-
-func (o *GetRedirectsRedirect1) GetSource() string {
-	if o == nil {
-		return ""
-	}
-	return o.Source
-}
-
-func (o *GetRedirectsRedirect1) GetDestination() string {
-	if o == nil {
-		return ""
-	}
-	return o.Destination
-}
-
-type GetRedirectsPagination1 struct {
-	Page     float64 `json:"page"`
-	PerPage  float64 `json:"per_page"`
-	NumPages float64 `json:"numPages"`
-}
-
-func (g GetRedirectsPagination1) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(g, "", false)
-}
-
-func (g *GetRedirectsPagination1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"page", "per_page", "numPages"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *GetRedirectsPagination1) GetPage() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.Page
-}
-
-func (o *GetRedirectsPagination1) GetPerPage() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.PerPage
-}
-
-func (o *GetRedirectsPagination1) GetNumPages() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.NumPages
-}
-
-type GetRedirectsResponseBody1 struct {
-	Version    GetRedirectsVersion1    `json:"version"`
-	Redirects  []GetRedirectsRedirect1 `json:"redirects"`
-	Pagination GetRedirectsPagination1 `json:"pagination"`
-}
-
-func (g GetRedirectsResponseBody1) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(g, "", false)
-}
-
-func (g *GetRedirectsResponseBody1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"version", "redirects", "pagination"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *GetRedirectsResponseBody1) GetVersion() GetRedirectsVersion1 {
-	if o == nil {
-		return GetRedirectsVersion1{}
-	}
-	return o.Version
-}
-
-func (o *GetRedirectsResponseBody1) GetRedirects() []GetRedirectsRedirect1 {
-	if o == nil {
-		return []GetRedirectsRedirect1{}
-	}
-	return o.Redirects
-}
-
-func (o *GetRedirectsResponseBody1) GetPagination() GetRedirectsPagination1 {
-	if o == nil {
-		return GetRedirectsPagination1{}
-	}
-	return o.Pagination
-}
-
-type GetRedirectsResponseBodyType string
+type GetRedirectsResponseBodyUnionType string
 
 const (
-	GetRedirectsResponseBodyTypeMapOfAny                  GetRedirectsResponseBodyType = "mapOfAny"
-	GetRedirectsResponseBodyTypeGetRedirectsResponseBody1 GetRedirectsResponseBodyType = "getRedirects_ResponseBody_1"
-	GetRedirectsResponseBodyTypeGetRedirectsResponseBody2 GetRedirectsResponseBodyType = "getRedirects_ResponseBody_2"
+	GetRedirectsResponseBodyUnionTypeMapOfAny                 GetRedirectsResponseBodyUnionType = "mapOfAny"
+	GetRedirectsResponseBodyUnionTypeGetRedirectsResponseBody GetRedirectsResponseBodyUnionType = "getRedirects_ResponseBody"
 )
 
-type GetRedirectsResponseBody struct {
-	MapOfAny                  map[string]any             `queryParam:"inline"`
-	GetRedirectsResponseBody1 *GetRedirectsResponseBody1 `queryParam:"inline"`
-	GetRedirectsResponseBody2 *GetRedirectsResponseBody2 `queryParam:"inline"`
+type GetRedirectsResponseBodyUnion struct {
+	MapOfAny                 map[string]any            `queryParam:"inline"`
+	GetRedirectsResponseBody *GetRedirectsResponseBody `queryParam:"inline"`
 
-	Type GetRedirectsResponseBodyType
+	Type GetRedirectsResponseBodyUnionType
 }
 
-func CreateGetRedirectsResponseBodyMapOfAny(mapOfAny map[string]any) GetRedirectsResponseBody {
-	typ := GetRedirectsResponseBodyTypeMapOfAny
+func CreateGetRedirectsResponseBodyUnionMapOfAny(mapOfAny map[string]any) GetRedirectsResponseBodyUnion {
+	typ := GetRedirectsResponseBodyUnionTypeMapOfAny
 
-	return GetRedirectsResponseBody{
+	return GetRedirectsResponseBodyUnion{
 		MapOfAny: mapOfAny,
 		Type:     typ,
 	}
 }
 
-func CreateGetRedirectsResponseBodyGetRedirectsResponseBody1(getRedirectsResponseBody1 GetRedirectsResponseBody1) GetRedirectsResponseBody {
-	typ := GetRedirectsResponseBodyTypeGetRedirectsResponseBody1
+func CreateGetRedirectsResponseBodyUnionGetRedirectsResponseBody(getRedirectsResponseBody GetRedirectsResponseBody) GetRedirectsResponseBodyUnion {
+	typ := GetRedirectsResponseBodyUnionTypeGetRedirectsResponseBody
 
-	return GetRedirectsResponseBody{
-		GetRedirectsResponseBody1: &getRedirectsResponseBody1,
-		Type:                      typ,
+	return GetRedirectsResponseBodyUnion{
+		GetRedirectsResponseBody: &getRedirectsResponseBody,
+		Type:                     typ,
 	}
 }
 
-func CreateGetRedirectsResponseBodyGetRedirectsResponseBody2(getRedirectsResponseBody2 GetRedirectsResponseBody2) GetRedirectsResponseBody {
-	typ := GetRedirectsResponseBodyTypeGetRedirectsResponseBody2
+func (u *GetRedirectsResponseBodyUnion) UnmarshalJSON(data []byte) error {
 
-	return GetRedirectsResponseBody{
-		GetRedirectsResponseBody2: &getRedirectsResponseBody2,
-		Type:                      typ,
-	}
-}
-
-func (u *GetRedirectsResponseBody) UnmarshalJSON(data []byte) error {
-
-	var getRedirectsResponseBody1 GetRedirectsResponseBody1 = GetRedirectsResponseBody1{}
-	if err := utils.UnmarshalJSON(data, &getRedirectsResponseBody1, "", true, nil); err == nil {
-		u.GetRedirectsResponseBody1 = &getRedirectsResponseBody1
-		u.Type = GetRedirectsResponseBodyTypeGetRedirectsResponseBody1
-		return nil
-	}
-
-	var getRedirectsResponseBody2 GetRedirectsResponseBody2 = GetRedirectsResponseBody2{}
-	if err := utils.UnmarshalJSON(data, &getRedirectsResponseBody2, "", true, nil); err == nil {
-		u.GetRedirectsResponseBody2 = &getRedirectsResponseBody2
-		u.Type = GetRedirectsResponseBodyTypeGetRedirectsResponseBody2
+	var getRedirectsResponseBody GetRedirectsResponseBody = GetRedirectsResponseBody{}
+	if err := utils.UnmarshalJSON(data, &getRedirectsResponseBody, "", true, nil); err == nil {
+		u.GetRedirectsResponseBody = &getRedirectsResponseBody
+		u.Type = GetRedirectsResponseBodyUnionTypeGetRedirectsResponseBody
 		return nil
 	}
 
 	var mapOfAny map[string]any = map[string]any{}
 	if err := utils.UnmarshalJSON(data, &mapOfAny, "", true, nil); err == nil {
 		u.MapOfAny = mapOfAny
-		u.Type = GetRedirectsResponseBodyTypeMapOfAny
+		u.Type = GetRedirectsResponseBodyUnionTypeMapOfAny
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetRedirectsResponseBody", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetRedirectsResponseBodyUnion", string(data))
 }
 
-func (u GetRedirectsResponseBody) MarshalJSON() ([]byte, error) {
+func (u GetRedirectsResponseBodyUnion) MarshalJSON() ([]byte, error) {
 	if u.MapOfAny != nil {
 		return utils.MarshalJSON(u.MapOfAny, "", true)
 	}
 
-	if u.GetRedirectsResponseBody1 != nil {
-		return utils.MarshalJSON(u.GetRedirectsResponseBody1, "", true)
+	if u.GetRedirectsResponseBody != nil {
+		return utils.MarshalJSON(u.GetRedirectsResponseBody, "", true)
 	}
 
-	if u.GetRedirectsResponseBody2 != nil {
-		return utils.MarshalJSON(u.GetRedirectsResponseBody2, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type GetRedirectsResponseBody: all fields are null")
+	return nil, errors.New("could not marshal union type GetRedirectsResponseBodyUnion: all fields are null")
 }
 
 type GetRedirectsResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
-	OneOf    *GetRedirectsResponseBody
+	OneOf    *GetRedirectsResponseBodyUnion
 }
 
 func (o *GetRedirectsResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -827,7 +558,7 @@ func (o *GetRedirectsResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *GetRedirectsResponse) GetOneOf() *GetRedirectsResponseBody {
+func (o *GetRedirectsResponse) GetOneOf() *GetRedirectsResponseBodyUnion {
 	if o == nil {
 		return nil
 	}

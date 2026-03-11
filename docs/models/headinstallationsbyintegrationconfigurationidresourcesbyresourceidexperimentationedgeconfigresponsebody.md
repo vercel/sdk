@@ -1,0 +1,30 @@
+# HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody
+
+The Edge Config data
+
+## Example Usage
+
+```typescript
+import {
+  HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody,
+} from "@vercel/sdk/models/headinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationedgeconfigop.js";
+
+let value:
+  HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody =
+    {
+      items: {
+        "key": false,
+      },
+      updatedAt: 5191.57,
+      digest: "<value>",
+    };
+```
+
+## Fields
+
+| Field                                                                                                                                                                                                                        | Type                                                                                                                                                                                                                         | Required                                                                                                                                                                                                                     | Description                                                                                                                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `items`                                                                                                                                                                                                                      | Record<string, *models.EdgeConfigItemValue*>                                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                                                                           | N/A                                                                                                                                                                                                                          |
+| `updatedAt`                                                                                                                                                                                                                  | *number*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | N/A                                                                                                                                                                                                                          |
+| `digest`                                                                                                                                                                                                                     | *string*                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                           | N/A                                                                                                                                                                                                                          |
+| `purpose`                                                                                                                                                                                                                    | [models.HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigPurpose](../models/headinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationedgeconfigpurpose.md) | :heavy_minus_sign:                                                                                                                                                                                                           | N/A                                                                                                                                                                                                                          |

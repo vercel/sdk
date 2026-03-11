@@ -18,12 +18,12 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/httpclienterrors.js";
-import {
-  PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest,
-  PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest$outboundSchema,
-} from "../models/patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidop.js";
 import { ResponseValidationError } from "../models/responsevalidationerror.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
+import {
+  UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest,
+  UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest$outboundSchema,
+} from "../models/updateinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationitemsbyitemidop.js";
 import { VercelError } from "../models/vercelerror.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
@@ -37,7 +37,7 @@ import { Result } from "../types/fp.js";
 export function marketplaceUpdateInstallationIntegrationConfiguration(
   client: VercelCore,
   request:
-    PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest,
+    UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -62,7 +62,7 @@ export function marketplaceUpdateInstallationIntegrationConfiguration(
 async function $do(
   client: VercelCore,
   request:
-    PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest,
+    UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -83,7 +83,7 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest$outboundSchema
+      UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest$outboundSchema
         .parse(value),
     "Input validation failed",
   );
@@ -126,7 +126,7 @@ async function $do(
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID:
-      "patch_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}",
+      "updateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemId",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,

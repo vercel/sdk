@@ -4,13 +4,13 @@
 
 import { marketplaceCreateInstallationIntegrationConfiguration } from "../../funcs/marketplaceCreateInstallationIntegrationConfiguration.js";
 import {
-  PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequest$inboundSchema,
-} from "../../models/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsop.js";
+  CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequest$inboundSchema,
+} from "../../models/createinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationitemsop.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
 const args = {
   request:
-    PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequest$inboundSchema,
+    CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequest$inboundSchema,
 };
 
 export const tool$marketplaceCreateInstallationIntegrationConfiguration:

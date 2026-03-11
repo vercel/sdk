@@ -1293,12 +1293,76 @@ func (u PutFirewallConfigRedirectUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type PutFirewallConfigRedirectUnion: all fields are null")
 }
 
+type RuleLogHeadersRequestType string
+
+const (
+	RuleLogHeadersRequestTypeStr        RuleLogHeadersRequestType = "str"
+	RuleLogHeadersRequestTypeArrayOfStr RuleLogHeadersRequestType = "arrayOfStr"
+)
+
+type RuleLogHeadersRequest struct {
+	Str        *string  `queryParam:"inline"`
+	ArrayOfStr []string `queryParam:"inline"`
+
+	Type RuleLogHeadersRequestType
+}
+
+func CreateRuleLogHeadersRequestStr(str string) RuleLogHeadersRequest {
+	typ := RuleLogHeadersRequestTypeStr
+
+	return RuleLogHeadersRequest{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateRuleLogHeadersRequestArrayOfStr(arrayOfStr []string) RuleLogHeadersRequest {
+	typ := RuleLogHeadersRequestTypeArrayOfStr
+
+	return RuleLogHeadersRequest{
+		ArrayOfStr: arrayOfStr,
+		Type:       typ,
+	}
+}
+
+func (u *RuleLogHeadersRequest) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = RuleLogHeadersRequestTypeStr
+		return nil
+	}
+
+	var arrayOfStr []string = []string{}
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
+		u.ArrayOfStr = arrayOfStr
+		u.Type = RuleLogHeadersRequestTypeArrayOfStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for RuleLogHeadersRequest", string(data))
+}
+
+func (u RuleLogHeadersRequest) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.ArrayOfStr != nil {
+		return utils.MarshalJSON(u.ArrayOfStr, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type RuleLogHeadersRequest: all fields are null")
+}
+
 type PutFirewallConfigMitigateRequest struct {
 	Action         RuleActionRequestEnum                                              `json:"action"`
 	RateLimit      optionalnullable.OptionalNullable[PutFirewallConfigRateLimitUnion] `json:"rateLimit,omitempty"`
 	Redirect       optionalnullable.OptionalNullable[PutFirewallConfigRedirectUnion]  `json:"redirect,omitempty"`
 	ActionDuration optionalnullable.OptionalNullable[string]                          `json:"actionDuration,omitempty"`
 	BypassSystem   optionalnullable.OptionalNullable[bool]                            `json:"bypassSystem,omitempty"`
+	LogHeaders     *RuleLogHeadersRequest                                             `json:"logHeaders,omitempty"`
 }
 
 func (o *PutFirewallConfigMitigateRequest) GetAction() RuleActionRequestEnum {
@@ -1334,6 +1398,13 @@ func (o *PutFirewallConfigMitigateRequest) GetBypassSystem() optionalnullable.Op
 		return nil
 	}
 	return o.BypassSystem
+}
+
+func (o *PutFirewallConfigMitigateRequest) GetLogHeaders() *RuleLogHeadersRequest {
+	if o == nil {
+		return nil
+	}
+	return o.LogHeaders
 }
 
 type RuleActionRequest struct {
@@ -1552,14 +1623,78 @@ func (o *IPRequest) GetAction() IPActionRequest {
 	return o.Action
 }
 
+type PutFirewallConfigLogHeadersRequestType string
+
+const (
+	PutFirewallConfigLogHeadersRequestTypeStr        PutFirewallConfigLogHeadersRequestType = "str"
+	PutFirewallConfigLogHeadersRequestTypeArrayOfStr PutFirewallConfigLogHeadersRequestType = "arrayOfStr"
+)
+
+type PutFirewallConfigLogHeadersRequest struct {
+	Str        *string  `queryParam:"inline"`
+	ArrayOfStr []string `queryParam:"inline"`
+
+	Type PutFirewallConfigLogHeadersRequestType
+}
+
+func CreatePutFirewallConfigLogHeadersRequestStr(str string) PutFirewallConfigLogHeadersRequest {
+	typ := PutFirewallConfigLogHeadersRequestTypeStr
+
+	return PutFirewallConfigLogHeadersRequest{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreatePutFirewallConfigLogHeadersRequestArrayOfStr(arrayOfStr []string) PutFirewallConfigLogHeadersRequest {
+	typ := PutFirewallConfigLogHeadersRequestTypeArrayOfStr
+
+	return PutFirewallConfigLogHeadersRequest{
+		ArrayOfStr: arrayOfStr,
+		Type:       typ,
+	}
+}
+
+func (u *PutFirewallConfigLogHeadersRequest) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = PutFirewallConfigLogHeadersRequestTypeStr
+		return nil
+	}
+
+	var arrayOfStr []string = []string{}
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
+		u.ArrayOfStr = arrayOfStr
+		u.Type = PutFirewallConfigLogHeadersRequestTypeArrayOfStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PutFirewallConfigLogHeadersRequest", string(data))
+}
+
+func (u PutFirewallConfigLogHeadersRequest) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.ArrayOfStr != nil {
+		return utils.MarshalJSON(u.ArrayOfStr, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type PutFirewallConfigLogHeadersRequest: all fields are null")
+}
+
 type PutFirewallConfigRequestBody struct {
 	FirewallEnabled bool                 `json:"firewallEnabled"`
 	ManagedRules    *ManagedRulesRequest `json:"managedRules,omitempty"`
 	// Custom Ruleset
-	Crs          *CrsRequest                    `json:"crs,omitempty"`
-	Rules        []PutFirewallConfigRuleRequest `json:"rules,omitempty"`
-	Ips          []IPRequest                    `json:"ips,omitempty"`
-	BotIDEnabled *bool                          `json:"botIdEnabled,omitempty"`
+	Crs          *CrsRequest                         `json:"crs,omitempty"`
+	Rules        []PutFirewallConfigRuleRequest      `json:"rules,omitempty"`
+	Ips          []IPRequest                         `json:"ips,omitempty"`
+	BotIDEnabled *bool                               `json:"botIdEnabled,omitempty"`
+	LogHeaders   *PutFirewallConfigLogHeadersRequest `json:"logHeaders,omitempty"`
 }
 
 func (o *PutFirewallConfigRequestBody) GetFirewallEnabled() bool {
@@ -1602,6 +1737,13 @@ func (o *PutFirewallConfigRequestBody) GetBotIDEnabled() *bool {
 		return nil
 	}
 	return o.BotIDEnabled
+}
+
+func (o *PutFirewallConfigRequestBody) GetLogHeaders() *PutFirewallConfigLogHeadersRequest {
+	if o == nil {
+		return nil
+	}
+	return o.LogHeaders
 }
 
 type PutFirewallConfigRequest struct {
@@ -2751,90 +2893,90 @@ func (o *ActiveRedirect2) GetPermanent() bool {
 	return o.Permanent
 }
 
-type PutFirewallConfigLogHeadersEnum2 string
+type RuleLogHeadersActiveEnum2 string
 
 const (
-	PutFirewallConfigLogHeadersEnum2Wildcard PutFirewallConfigLogHeadersEnum2 = "*"
+	RuleLogHeadersActiveEnum2Wildcard RuleLogHeadersActiveEnum2 = "*"
 )
 
-func (e PutFirewallConfigLogHeadersEnum2) ToPointer() *PutFirewallConfigLogHeadersEnum2 {
+func (e RuleLogHeadersActiveEnum2) ToPointer() *RuleLogHeadersActiveEnum2 {
 	return &e
 }
-func (e *PutFirewallConfigLogHeadersEnum2) UnmarshalJSON(data []byte) error {
+func (e *RuleLogHeadersActiveEnum2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "*":
-		*e = PutFirewallConfigLogHeadersEnum2(v)
+		*e = RuleLogHeadersActiveEnum2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigLogHeadersEnum2: %v", v)
+		return fmt.Errorf("invalid value for RuleLogHeadersActiveEnum2: %v", v)
 	}
 }
 
-type PutFirewallConfigLogHeadersUnion2Type string
+type RuleActiveLogHeadersUnion2Type string
 
 const (
-	PutFirewallConfigLogHeadersUnion2TypeArrayOfStr                       PutFirewallConfigLogHeadersUnion2Type = "arrayOfStr"
-	PutFirewallConfigLogHeadersUnion2TypePutFirewallConfigLogHeadersEnum2 PutFirewallConfigLogHeadersUnion2Type = "putFirewallConfig_logHeaders_enum_2"
+	RuleActiveLogHeadersUnion2TypeArrayOfStr                RuleActiveLogHeadersUnion2Type = "arrayOfStr"
+	RuleActiveLogHeadersUnion2TypeRuleLogHeadersActiveEnum2 RuleActiveLogHeadersUnion2Type = "rule_logHeaders_active_enum_2"
 )
 
-type PutFirewallConfigLogHeadersUnion2 struct {
-	ArrayOfStr                       []string                          `queryParam:"inline"`
-	PutFirewallConfigLogHeadersEnum2 *PutFirewallConfigLogHeadersEnum2 `queryParam:"inline"`
+type RuleActiveLogHeadersUnion2 struct {
+	ArrayOfStr                []string                   `queryParam:"inline"`
+	RuleLogHeadersActiveEnum2 *RuleLogHeadersActiveEnum2 `queryParam:"inline"`
 
-	Type PutFirewallConfigLogHeadersUnion2Type
+	Type RuleActiveLogHeadersUnion2Type
 }
 
-func CreatePutFirewallConfigLogHeadersUnion2ArrayOfStr(arrayOfStr []string) PutFirewallConfigLogHeadersUnion2 {
-	typ := PutFirewallConfigLogHeadersUnion2TypeArrayOfStr
+func CreateRuleActiveLogHeadersUnion2ArrayOfStr(arrayOfStr []string) RuleActiveLogHeadersUnion2 {
+	typ := RuleActiveLogHeadersUnion2TypeArrayOfStr
 
-	return PutFirewallConfigLogHeadersUnion2{
+	return RuleActiveLogHeadersUnion2{
 		ArrayOfStr: arrayOfStr,
 		Type:       typ,
 	}
 }
 
-func CreatePutFirewallConfigLogHeadersUnion2PutFirewallConfigLogHeadersEnum2(putFirewallConfigLogHeadersEnum2 PutFirewallConfigLogHeadersEnum2) PutFirewallConfigLogHeadersUnion2 {
-	typ := PutFirewallConfigLogHeadersUnion2TypePutFirewallConfigLogHeadersEnum2
+func CreateRuleActiveLogHeadersUnion2RuleLogHeadersActiveEnum2(ruleLogHeadersActiveEnum2 RuleLogHeadersActiveEnum2) RuleActiveLogHeadersUnion2 {
+	typ := RuleActiveLogHeadersUnion2TypeRuleLogHeadersActiveEnum2
 
-	return PutFirewallConfigLogHeadersUnion2{
-		PutFirewallConfigLogHeadersEnum2: &putFirewallConfigLogHeadersEnum2,
-		Type:                             typ,
+	return RuleActiveLogHeadersUnion2{
+		RuleLogHeadersActiveEnum2: &ruleLogHeadersActiveEnum2,
+		Type:                      typ,
 	}
 }
 
-func (u *PutFirewallConfigLogHeadersUnion2) UnmarshalJSON(data []byte) error {
+func (u *RuleActiveLogHeadersUnion2) UnmarshalJSON(data []byte) error {
 
 	var arrayOfStr []string = []string{}
 	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
 		u.ArrayOfStr = arrayOfStr
-		u.Type = PutFirewallConfigLogHeadersUnion2TypeArrayOfStr
+		u.Type = RuleActiveLogHeadersUnion2TypeArrayOfStr
 		return nil
 	}
 
-	var putFirewallConfigLogHeadersEnum2 PutFirewallConfigLogHeadersEnum2 = PutFirewallConfigLogHeadersEnum2("")
-	if err := utils.UnmarshalJSON(data, &putFirewallConfigLogHeadersEnum2, "", true, nil); err == nil {
-		u.PutFirewallConfigLogHeadersEnum2 = &putFirewallConfigLogHeadersEnum2
-		u.Type = PutFirewallConfigLogHeadersUnion2TypePutFirewallConfigLogHeadersEnum2
+	var ruleLogHeadersActiveEnum2 RuleLogHeadersActiveEnum2 = RuleLogHeadersActiveEnum2("")
+	if err := utils.UnmarshalJSON(data, &ruleLogHeadersActiveEnum2, "", true, nil); err == nil {
+		u.RuleLogHeadersActiveEnum2 = &ruleLogHeadersActiveEnum2
+		u.Type = RuleActiveLogHeadersUnion2TypeRuleLogHeadersActiveEnum2
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PutFirewallConfigLogHeadersUnion2", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for RuleActiveLogHeadersUnion2", string(data))
 }
 
-func (u PutFirewallConfigLogHeadersUnion2) MarshalJSON() ([]byte, error) {
+func (u RuleActiveLogHeadersUnion2) MarshalJSON() ([]byte, error) {
 	if u.ArrayOfStr != nil {
 		return utils.MarshalJSON(u.ArrayOfStr, "", true)
 	}
 
-	if u.PutFirewallConfigLogHeadersEnum2 != nil {
-		return utils.MarshalJSON(u.PutFirewallConfigLogHeadersEnum2, "", true)
+	if u.RuleLogHeadersActiveEnum2 != nil {
+		return utils.MarshalJSON(u.RuleLogHeadersActiveEnum2, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type PutFirewallConfigLogHeadersUnion2: all fields are null")
+	return nil, errors.New("could not marshal union type RuleActiveLogHeadersUnion2: all fields are null")
 }
 
 type ActiveMitigate2 struct {
@@ -2843,7 +2985,7 @@ type ActiveMitigate2 struct {
 	Redirect       optionalnullable.OptionalNullable[ActiveRedirect2]  `json:"redirect,omitempty"`
 	ActionDuration optionalnullable.OptionalNullable[string]           `json:"actionDuration,omitempty"`
 	BypassSystem   optionalnullable.OptionalNullable[bool]             `json:"bypassSystem,omitempty"`
-	LogHeaders     *PutFirewallConfigLogHeadersUnion2                  `json:"logHeaders,omitempty"`
+	LogHeaders     *RuleActiveLogHeadersUnion2                         `json:"logHeaders,omitempty"`
 }
 
 func (a ActiveMitigate2) MarshalJSON() ([]byte, error) {
@@ -2892,7 +3034,7 @@ func (o *ActiveMitigate2) GetBypassSystem() optionalnullable.OptionalNullable[bo
 	return o.BypassSystem
 }
 
-func (o *ActiveMitigate2) GetLogHeaders() *PutFirewallConfigLogHeadersUnion2 {
+func (o *ActiveMitigate2) GetLogHeaders() *RuleActiveLogHeadersUnion2 {
 	if o == nil {
 		return nil
 	}
@@ -3500,90 +3642,90 @@ func (o *ActiveRedirect1) GetPermanent() bool {
 	return o.Permanent
 }
 
-type PutFirewallConfigLogHeadersEnum1 string
+type RuleLogHeadersActiveEnum1 string
 
 const (
-	PutFirewallConfigLogHeadersEnum1Wildcard PutFirewallConfigLogHeadersEnum1 = "*"
+	RuleLogHeadersActiveEnum1Wildcard RuleLogHeadersActiveEnum1 = "*"
 )
 
-func (e PutFirewallConfigLogHeadersEnum1) ToPointer() *PutFirewallConfigLogHeadersEnum1 {
+func (e RuleLogHeadersActiveEnum1) ToPointer() *RuleLogHeadersActiveEnum1 {
 	return &e
 }
-func (e *PutFirewallConfigLogHeadersEnum1) UnmarshalJSON(data []byte) error {
+func (e *RuleLogHeadersActiveEnum1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "*":
-		*e = PutFirewallConfigLogHeadersEnum1(v)
+		*e = RuleLogHeadersActiveEnum1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PutFirewallConfigLogHeadersEnum1: %v", v)
+		return fmt.Errorf("invalid value for RuleLogHeadersActiveEnum1: %v", v)
 	}
 }
 
-type PutFirewallConfigLogHeadersUnion1Type string
+type RuleActiveLogHeadersUnion1Type string
 
 const (
-	PutFirewallConfigLogHeadersUnion1TypeArrayOfStr                       PutFirewallConfigLogHeadersUnion1Type = "arrayOfStr"
-	PutFirewallConfigLogHeadersUnion1TypePutFirewallConfigLogHeadersEnum1 PutFirewallConfigLogHeadersUnion1Type = "putFirewallConfig_logHeaders_enum_1"
+	RuleActiveLogHeadersUnion1TypeArrayOfStr                RuleActiveLogHeadersUnion1Type = "arrayOfStr"
+	RuleActiveLogHeadersUnion1TypeRuleLogHeadersActiveEnum1 RuleActiveLogHeadersUnion1Type = "rule_logHeaders_active_enum_1"
 )
 
-type PutFirewallConfigLogHeadersUnion1 struct {
-	ArrayOfStr                       []string                          `queryParam:"inline"`
-	PutFirewallConfigLogHeadersEnum1 *PutFirewallConfigLogHeadersEnum1 `queryParam:"inline"`
+type RuleActiveLogHeadersUnion1 struct {
+	ArrayOfStr                []string                   `queryParam:"inline"`
+	RuleLogHeadersActiveEnum1 *RuleLogHeadersActiveEnum1 `queryParam:"inline"`
 
-	Type PutFirewallConfigLogHeadersUnion1Type
+	Type RuleActiveLogHeadersUnion1Type
 }
 
-func CreatePutFirewallConfigLogHeadersUnion1ArrayOfStr(arrayOfStr []string) PutFirewallConfigLogHeadersUnion1 {
-	typ := PutFirewallConfigLogHeadersUnion1TypeArrayOfStr
+func CreateRuleActiveLogHeadersUnion1ArrayOfStr(arrayOfStr []string) RuleActiveLogHeadersUnion1 {
+	typ := RuleActiveLogHeadersUnion1TypeArrayOfStr
 
-	return PutFirewallConfigLogHeadersUnion1{
+	return RuleActiveLogHeadersUnion1{
 		ArrayOfStr: arrayOfStr,
 		Type:       typ,
 	}
 }
 
-func CreatePutFirewallConfigLogHeadersUnion1PutFirewallConfigLogHeadersEnum1(putFirewallConfigLogHeadersEnum1 PutFirewallConfigLogHeadersEnum1) PutFirewallConfigLogHeadersUnion1 {
-	typ := PutFirewallConfigLogHeadersUnion1TypePutFirewallConfigLogHeadersEnum1
+func CreateRuleActiveLogHeadersUnion1RuleLogHeadersActiveEnum1(ruleLogHeadersActiveEnum1 RuleLogHeadersActiveEnum1) RuleActiveLogHeadersUnion1 {
+	typ := RuleActiveLogHeadersUnion1TypeRuleLogHeadersActiveEnum1
 
-	return PutFirewallConfigLogHeadersUnion1{
-		PutFirewallConfigLogHeadersEnum1: &putFirewallConfigLogHeadersEnum1,
-		Type:                             typ,
+	return RuleActiveLogHeadersUnion1{
+		RuleLogHeadersActiveEnum1: &ruleLogHeadersActiveEnum1,
+		Type:                      typ,
 	}
 }
 
-func (u *PutFirewallConfigLogHeadersUnion1) UnmarshalJSON(data []byte) error {
+func (u *RuleActiveLogHeadersUnion1) UnmarshalJSON(data []byte) error {
 
 	var arrayOfStr []string = []string{}
 	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
 		u.ArrayOfStr = arrayOfStr
-		u.Type = PutFirewallConfigLogHeadersUnion1TypeArrayOfStr
+		u.Type = RuleActiveLogHeadersUnion1TypeArrayOfStr
 		return nil
 	}
 
-	var putFirewallConfigLogHeadersEnum1 PutFirewallConfigLogHeadersEnum1 = PutFirewallConfigLogHeadersEnum1("")
-	if err := utils.UnmarshalJSON(data, &putFirewallConfigLogHeadersEnum1, "", true, nil); err == nil {
-		u.PutFirewallConfigLogHeadersEnum1 = &putFirewallConfigLogHeadersEnum1
-		u.Type = PutFirewallConfigLogHeadersUnion1TypePutFirewallConfigLogHeadersEnum1
+	var ruleLogHeadersActiveEnum1 RuleLogHeadersActiveEnum1 = RuleLogHeadersActiveEnum1("")
+	if err := utils.UnmarshalJSON(data, &ruleLogHeadersActiveEnum1, "", true, nil); err == nil {
+		u.RuleLogHeadersActiveEnum1 = &ruleLogHeadersActiveEnum1
+		u.Type = RuleActiveLogHeadersUnion1TypeRuleLogHeadersActiveEnum1
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PutFirewallConfigLogHeadersUnion1", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for RuleActiveLogHeadersUnion1", string(data))
 }
 
-func (u PutFirewallConfigLogHeadersUnion1) MarshalJSON() ([]byte, error) {
+func (u RuleActiveLogHeadersUnion1) MarshalJSON() ([]byte, error) {
 	if u.ArrayOfStr != nil {
 		return utils.MarshalJSON(u.ArrayOfStr, "", true)
 	}
 
-	if u.PutFirewallConfigLogHeadersEnum1 != nil {
-		return utils.MarshalJSON(u.PutFirewallConfigLogHeadersEnum1, "", true)
+	if u.RuleLogHeadersActiveEnum1 != nil {
+		return utils.MarshalJSON(u.RuleLogHeadersActiveEnum1, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type PutFirewallConfigLogHeadersUnion1: all fields are null")
+	return nil, errors.New("could not marshal union type RuleActiveLogHeadersUnion1: all fields are null")
 }
 
 type ActiveMitigate1 struct {
@@ -3592,7 +3734,7 @@ type ActiveMitigate1 struct {
 	Redirect       optionalnullable.OptionalNullable[ActiveRedirect1]  `json:"redirect,omitempty"`
 	ActionDuration optionalnullable.OptionalNullable[string]           `json:"actionDuration,omitempty"`
 	BypassSystem   optionalnullable.OptionalNullable[bool]             `json:"bypassSystem,omitempty"`
-	LogHeaders     *PutFirewallConfigLogHeadersUnion1                  `json:"logHeaders,omitempty"`
+	LogHeaders     *RuleActiveLogHeadersUnion1                         `json:"logHeaders,omitempty"`
 }
 
 func (a ActiveMitigate1) MarshalJSON() ([]byte, error) {
@@ -3641,7 +3783,7 @@ func (o *ActiveMitigate1) GetBypassSystem() optionalnullable.OptionalNullable[bo
 	return o.BypassSystem
 }
 
-func (o *ActiveMitigate1) GetLogHeaders() *PutFirewallConfigLogHeadersUnion1 {
+func (o *ActiveMitigate1) GetLogHeaders() *RuleActiveLogHeadersUnion1 {
 	if o == nil {
 		return nil
 	}
@@ -4212,6 +4354,92 @@ func (o *ActiveManagedRules) GetVercelRuleset() *PutFirewallConfigVercelRuleset 
 	return o.VercelRuleset
 }
 
+type LogHeadersActiveEnum string
+
+const (
+	LogHeadersActiveEnumWildcard LogHeadersActiveEnum = "*"
+)
+
+func (e LogHeadersActiveEnum) ToPointer() *LogHeadersActiveEnum {
+	return &e
+}
+func (e *LogHeadersActiveEnum) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "*":
+		*e = LogHeadersActiveEnum(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for LogHeadersActiveEnum: %v", v)
+	}
+}
+
+type ActiveLogHeadersUnionType string
+
+const (
+	ActiveLogHeadersUnionTypeArrayOfStr           ActiveLogHeadersUnionType = "arrayOfStr"
+	ActiveLogHeadersUnionTypeLogHeadersActiveEnum ActiveLogHeadersUnionType = "logHeaders_active_enum"
+)
+
+type ActiveLogHeadersUnion struct {
+	ArrayOfStr           []string              `queryParam:"inline"`
+	LogHeadersActiveEnum *LogHeadersActiveEnum `queryParam:"inline"`
+
+	Type ActiveLogHeadersUnionType
+}
+
+func CreateActiveLogHeadersUnionArrayOfStr(arrayOfStr []string) ActiveLogHeadersUnion {
+	typ := ActiveLogHeadersUnionTypeArrayOfStr
+
+	return ActiveLogHeadersUnion{
+		ArrayOfStr: arrayOfStr,
+		Type:       typ,
+	}
+}
+
+func CreateActiveLogHeadersUnionLogHeadersActiveEnum(logHeadersActiveEnum LogHeadersActiveEnum) ActiveLogHeadersUnion {
+	typ := ActiveLogHeadersUnionTypeLogHeadersActiveEnum
+
+	return ActiveLogHeadersUnion{
+		LogHeadersActiveEnum: &logHeadersActiveEnum,
+		Type:                 typ,
+	}
+}
+
+func (u *ActiveLogHeadersUnion) UnmarshalJSON(data []byte) error {
+
+	var arrayOfStr []string = []string{}
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
+		u.ArrayOfStr = arrayOfStr
+		u.Type = ActiveLogHeadersUnionTypeArrayOfStr
+		return nil
+	}
+
+	var logHeadersActiveEnum LogHeadersActiveEnum = LogHeadersActiveEnum("")
+	if err := utils.UnmarshalJSON(data, &logHeadersActiveEnum, "", true, nil); err == nil {
+		u.LogHeadersActiveEnum = &logHeadersActiveEnum
+		u.Type = ActiveLogHeadersUnionTypeLogHeadersActiveEnum
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ActiveLogHeadersUnion", string(data))
+}
+
+func (u ActiveLogHeadersUnion) MarshalJSON() ([]byte, error) {
+	if u.ArrayOfStr != nil {
+		return utils.MarshalJSON(u.ArrayOfStr, "", true)
+	}
+
+	if u.LogHeadersActiveEnum != nil {
+		return utils.MarshalJSON(u.LogHeadersActiveEnum, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type ActiveLogHeadersUnion: all fields are null")
+}
+
 type Active struct {
 	OwnerID         string  `json:"ownerId"`
 	ProjectKey      string  `json:"projectKey"`
@@ -4226,6 +4454,7 @@ type Active struct {
 	Changes      []PutFirewallConfigChange `json:"changes"`
 	ManagedRules *ActiveManagedRules       `json:"managedRules,omitempty"`
 	BotIDEnabled *bool                     `json:"botIdEnabled,omitempty"`
+	LogHeaders   *ActiveLogHeadersUnion    `json:"logHeaders,omitempty"`
 }
 
 func (o *Active) GetOwnerID() string {
@@ -4310,6 +4539,13 @@ func (o *Active) GetBotIDEnabled() *bool {
 		return nil
 	}
 	return o.BotIDEnabled
+}
+
+func (o *Active) GetLogHeaders() *ActiveLogHeadersUnion {
+	if o == nil {
+		return nil
+	}
+	return o.LogHeaders
 }
 
 type PutFirewallConfigResponseBody struct {

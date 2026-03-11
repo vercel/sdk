@@ -21,15 +21,15 @@ func pathGetV1SecurityFirewallEvents(dir *logging.HTTPFileDirectory, rt *trackin
 		count := rt.GetRequestCount(test, instanceID)
 
 		switch fmt.Sprintf("%s[%d]", test, count) {
-		case "get_/v1/security/firewall/events[0]":
-			dir.HandlerFunc("get_/v1/security/firewall/events", testGetV1SecurityFirewallEventsGetV1SecurityFirewallEvents0)(w, req)
+		case "getSecurityFirewallEvents[0]":
+			dir.HandlerFunc("getSecurityFirewallEvents", testGetSecurityFirewallEventsGetSecurityFirewallEvents0)(w, req)
 		default:
 			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
 
-func testGetV1SecurityFirewallEventsGetV1SecurityFirewallEvents0(w http.ResponseWriter, req *http.Request) {
+func testGetSecurityFirewallEventsGetSecurityFirewallEvents0(w http.ResponseWriter, req *http.Request) {
 	if err := assert.AcceptHeader(req, []string{"application/json"}); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusBadRequest)
@@ -40,8 +40,18 @@ func testGetV1SecurityFirewallEventsGetV1SecurityFirewallEvents0(w http.Response
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody *operations.GetV1SecurityFirewallEventsResponseBody = &operations.GetV1SecurityFirewallEventsResponseBody{
-		Actions: []operations.GetV1SecurityFirewallEventsAction{},
+	var respBody *operations.GetSecurityFirewallEventsResponseBody = &operations.GetSecurityFirewallEventsResponseBody{
+		Actions: []operations.GetSecurityFirewallEventsAction{
+			operations.GetSecurityFirewallEventsAction{
+				StartTime:  "<value>",
+				EndTime:    "<value>",
+				IsActive:   false,
+				ActionType: "<value>",
+				Host:       "ethical-smog.biz",
+				PublicIP:   "<value>",
+				Count:      6350.11,
+			},
+		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

@@ -471,7 +471,7 @@ run();
 * [getSharedEnvVar](docs/sdks/environment/README.md#getsharedenvvar) - Retrieve the decrypted value of a Shared Environment Variable by id.
 * [unlinkSharedEnvVariable](docs/sdks/environment/README.md#unlinksharedenvvariable) - Disconnects a shared environment variable for a given project
 * [createCustomEnvironment](docs/sdks/environment/README.md#createcustomenvironment) - Create a custom environment for the current project.
-* [getV9ProjectsIdOrNameCustomEnvironments](docs/sdks/environment/README.md#getv9projectsidornamecustomenvironments) - Retrieve custom environments
+* [getProjectsByIdOrNameCustomEnvironments](docs/sdks/environment/README.md#getprojectsbyidornamecustomenvironments) - Retrieve custom environments
 * [getCustomEnvironment](docs/sdks/environment/README.md#getcustomenvironment) - Retrieve a custom environment
 * [updateCustomEnvironment](docs/sdks/environment/README.md#updatecustomenvironment) - Update a custom environment
 * [removeCustomEnvironment](docs/sdks/environment/README.md#removecustomenvironment) - Remove a custom environment
@@ -549,7 +549,7 @@ run();
 * [updateInstallationIntegrationConfiguration](docs/sdks/marketplace/README.md#updateinstallationintegrationconfiguration) - Patch an existing experimentation item
 * [deleteInstallationIntegrationConfiguration](docs/sdks/marketplace/README.md#deleteinstallationintegrationconfiguration) - Delete an existing experimentation item
 * [createInstallationIntegrationEdgeConfig](docs/sdks/marketplace/README.md#createinstallationintegrationedgeconfig) - Get the data of a user-provided Edge Config
-* [getV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig](docs/sdks/marketplace/README.md#getv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfig) - Get the data of a user-provided Edge Config
+* [getInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig](docs/sdks/marketplace/README.md#getinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationedgeconfig) - Get the data of a user-provided Edge Config
 * [updateInstallationIntegrationEdgeConfig](docs/sdks/marketplace/README.md#updateinstallationintegrationedgeconfig) - Push data into a user-provided Edge Config
 
 ### [ProjectRoutes](docs/sdks/projectroutes/README.md)
@@ -592,7 +592,7 @@ run();
 * [acceptProjectTransferRequest](docs/sdks/projects/README.md#acceptprojecttransferrequest) - Accept project transfer request
 * [updateProjectProtectionBypass](docs/sdks/projects/README.md#updateprojectprotectionbypass) - Update Protection Bypass for Automation
 * [requestRollback](docs/sdks/projects/README.md#requestrollback) - Points all production domains for a project to the given deploy
-* [patchV1ProjectsProjectIdRollbackDeploymentIdUpdateDescription](docs/sdks/projects/README.md#patchv1projectsprojectidrollbackdeploymentidupdatedescription) - Updates the description for a rollback
+* [updateProjectsByProjectIdRollbackByDeploymentIdUpdateDescription](docs/sdks/projects/README.md#updateprojectsbyprojectidrollbackbydeploymentidupdatedescription) - Updates the description for a rollback
 * [requestPromote](docs/sdks/projects/README.md#requestpromote) - Points all production domains for a project to the given deploy
 * [listPromoteAliases](docs/sdks/projects/README.md#listpromotealiases) - Gets a list of aliases with status for the current promote
 * [pauseProject](docs/sdks/projects/README.md#pauseproject) - Pause a project
@@ -638,7 +638,7 @@ run();
 * [getBypassIp](docs/sdks/security/README.md#getbypassip) - Read System Bypass
 * [addBypassIp](docs/sdks/security/README.md#addbypassip) - Create System Bypass Rule
 * [removeBypassIp](docs/sdks/security/README.md#removebypassip) - Remove System Bypass Rule
-* [getV1SecurityFirewallEvents](docs/sdks/security/README.md#getv1securityfirewallevents) - Read Firewall Actions by Project
+* [getSecurityFirewallEvents](docs/sdks/security/README.md#getsecurityfirewallevents) - Read Firewall Actions by Project
 
 ### [StaticIps](docs/sdks/staticips/README.md)
 
@@ -818,8 +818,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`environmentCreateSharedEnvVariable`](docs/sdks/environment/README.md#createsharedenvvariable) - Create one or more shared environment variables
 - [`environmentDeleteSharedEnvVariable`](docs/sdks/environment/README.md#deletesharedenvvariable) - Delete one or more Env Var
 - [`environmentGetCustomEnvironment`](docs/sdks/environment/README.md#getcustomenvironment) - Retrieve a custom environment
+- [`environmentGetProjectsByIdOrNameCustomEnvironments`](docs/sdks/environment/README.md#getprojectsbyidornamecustomenvironments) - Retrieve custom environments
 - [`environmentGetSharedEnvVar`](docs/sdks/environment/README.md#getsharedenvvar) - Retrieve the decrypted value of a Shared Environment Variable by id.
-- [`environmentGetV9ProjectsIdOrNameCustomEnvironments`](docs/sdks/environment/README.md#getv9projectsidornamecustomenvironments) - Retrieve custom environments
 - [`environmentListSharedEnvVariable`](docs/sdks/environment/README.md#listsharedenvvariable) - Lists all Shared Environment Variables for a team
 - [`environmentRemoveCustomEnvironment`](docs/sdks/environment/README.md#removecustomenvironment) - Remove a custom environment
 - [`environmentUnlinkSharedEnvVariable`](docs/sdks/environment/README.md#unlinksharedenvvariable) - Disconnects a shared environment variable for a given project
@@ -870,11 +870,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`marketplaceExchangeSsoToken`](docs/sdks/marketplace/README.md#exchangessotoken) - SSO Token Exchange
 - [`marketplaceFinalizeInstallation`](docs/sdks/marketplace/README.md#finalizeinstallation) - Finalize Installation
 - [`marketplaceGetAccountInfo`](docs/sdks/marketplace/README.md#getaccountinfo) - Get Account Information
+- [`marketplaceGetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig`](docs/sdks/marketplace/README.md#getinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationedgeconfig) - Get the data of a user-provided Edge Config
 - [`marketplaceGetIntegrationResource`](docs/sdks/marketplace/README.md#getintegrationresource) - Get Integration Resource
 - [`marketplaceGetIntegrationResources`](docs/sdks/marketplace/README.md#getintegrationresources) - Get Integration Resources
 - [`marketplaceGetInvoice`](docs/sdks/marketplace/README.md#getinvoice) - Get Invoice
 - [`marketplaceGetMember`](docs/sdks/marketplace/README.md#getmember) - Get Member Information
-- [`marketplaceGetV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfig`](docs/sdks/marketplace/README.md#getv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfig) - Get the data of a user-provided Edge Config
 - [`marketplaceImportResource`](docs/sdks/marketplace/README.md#importresource) - Import Resource
 - [`marketplaceSubmitBillingData`](docs/sdks/marketplace/README.md#submitbillingdata) - Submit Billing Data
 - [`marketplaceSubmitInvoice`](docs/sdks/marketplace/README.md#submitinvoice) - Submit Invoice
@@ -911,7 +911,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`projectsGetProjects`](docs/sdks/projects/README.md#getprojects) - Retrieve a list of projects
 - [`projectsListPromoteAliases`](docs/sdks/projects/README.md#listpromotealiases) - Gets a list of aliases with status for the current promote
 - [`projectsMoveProjectDomain`](docs/sdks/projects/README.md#moveprojectdomain) - Move a project domain
-- [`projectsPatchV1ProjectsProjectIdRollbackDeploymentIdUpdateDescription`](docs/sdks/projects/README.md#patchv1projectsprojectidrollbackdeploymentidupdatedescription) - Updates the description for a rollback
 - [`projectsPauseProject`](docs/sdks/projects/README.md#pauseproject) - Pause a project
 - [`projectsRemoveProjectDomain`](docs/sdks/projects/README.md#removeprojectdomain) - Remove a domain from a project
 - [`projectsRemoveProjectEnv`](docs/sdks/projects/README.md#removeprojectenv) - Remove an environment variable
@@ -921,6 +920,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`projectsUpdateProject`](docs/sdks/projects/README.md#updateproject) - Update an existing project
 - [`projectsUpdateProjectDomain`](docs/sdks/projects/README.md#updateprojectdomain) - Update a project domain
 - [`projectsUpdateProjectProtectionBypass`](docs/sdks/projects/README.md#updateprojectprotectionbypass) - Update Protection Bypass for Automation
+- [`projectsUpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescription`](docs/sdks/projects/README.md#updateprojectsbyprojectidrollbackbydeploymentidupdatedescription) - Updates the description for a rollback
 - [`projectsVerifyProjectDomain`](docs/sdks/projects/README.md#verifyprojectdomain) - Verify project domain
 - [`rollingReleaseApproveRollingReleaseStage`](docs/sdks/rollingrelease/README.md#approverollingreleasestage) - Update the active rolling release to the next stage for a project
 - [`rollingReleaseCompleteRollingRelease`](docs/sdks/rollingrelease/README.md#completerollingrelease) - Complete the rolling release for the project
@@ -950,7 +950,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`securityGetActiveAttackStatus`](docs/sdks/security/README.md#getactiveattackstatus) - Read active attack data
 - [`securityGetBypassIp`](docs/sdks/security/README.md#getbypassip) - Read System Bypass
 - [`securityGetFirewallConfig`](docs/sdks/security/README.md#getfirewallconfig) - Read Firewall Configuration
-- [`securityGetV1SecurityFirewallEvents`](docs/sdks/security/README.md#getv1securityfirewallevents) - Read Firewall Actions by Project
+- [`securityGetSecurityFirewallEvents`](docs/sdks/security/README.md#getsecurityfirewallevents) - Read Firewall Actions by Project
 - [`securityPutFirewallConfig`](docs/sdks/security/README.md#putfirewallconfig) - Put Firewall Configuration
 - [`securityRemoveBypassIp`](docs/sdks/security/README.md#removebypassip) - Remove System Bypass Rule
 - [`securityUpdateAttackChallengeMode`](docs/sdks/security/README.md#updateattackchallengemode) - Update Attack Challenge mode

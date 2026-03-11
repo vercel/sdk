@@ -4,13 +4,13 @@
 
 import { marketplaceUpdateInstallationIntegrationConfiguration } from "../../funcs/marketplaceUpdateInstallationIntegrationConfiguration.js";
 import {
-  PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest$inboundSchema,
-} from "../../models/patchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidop.js";
+  UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest$inboundSchema,
+} from "../../models/updateinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationitemsbyitemidop.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
 const args = {
   request:
-    PatchV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest$inboundSchema,
+    UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest$inboundSchema,
 };
 
 export const tool$marketplaceUpdateInstallationIntegrationConfiguration:

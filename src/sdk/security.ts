@@ -6,7 +6,7 @@ import { securityAddBypassIp } from "../funcs/securityAddBypassIp.js";
 import { securityGetActiveAttackStatus } from "../funcs/securityGetActiveAttackStatus.js";
 import { securityGetBypassIp } from "../funcs/securityGetBypassIp.js";
 import { securityGetFirewallConfig } from "../funcs/securityGetFirewallConfig.js";
-import { securityGetV1SecurityFirewallEvents } from "../funcs/securityGetV1SecurityFirewallEvents.js";
+import { securityGetSecurityFirewallEvents } from "../funcs/securityGetSecurityFirewallEvents.js";
 import { securityPutFirewallConfig } from "../funcs/securityPutFirewallConfig.js";
 import { securityRemoveBypassIp } from "../funcs/securityRemoveBypassIp.js";
 import { securityUpdateAttackChallengeMode } from "../funcs/securityUpdateAttackChallengeMode.js";
@@ -29,9 +29,9 @@ import {
   GetFirewallConfigResponseBody,
 } from "../models/getfirewallconfigop.js";
 import {
-  GetV1SecurityFirewallEventsRequest,
-  GetV1SecurityFirewallEventsResponseBody,
-} from "../models/getv1securityfirewalleventsop.js";
+  GetSecurityFirewallEventsRequest,
+  GetSecurityFirewallEventsResponseBody,
+} from "../models/getsecurityfirewalleventsop.js";
 import {
   PutFirewallConfigRequest,
   PutFirewallConfigResponseBody,
@@ -193,11 +193,11 @@ export class Security extends ClientSDK {
    * @remarks
    * Retrieve firewall actions for a project
    */
-  async getV1SecurityFirewallEvents(
-    request: GetV1SecurityFirewallEventsRequest,
+  async getSecurityFirewallEvents(
+    request: GetSecurityFirewallEventsRequest,
     options?: RequestOptions,
-  ): Promise<GetV1SecurityFirewallEventsResponseBody> {
-    return unwrapAsync(securityGetV1SecurityFirewallEvents(
+  ): Promise<GetSecurityFirewallEventsResponseBody> {
+    return unwrapAsync(securityGetSecurityFirewallEvents(
       this,
       request,
       options,

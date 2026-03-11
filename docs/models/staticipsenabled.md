@@ -5,7 +5,7 @@ Filter results by projects with Static IPs enabled
 ## Example Usage
 
 ```typescript
-import { StaticIpsEnabled } from "@vercel/sdk/models/getprojectsrouteprojectsresponse200has.js";
+import { StaticIpsEnabled } from "@vercel/sdk/models/getprojectshasprojectsresponse200applicationjsonresponsebodykey.js";
 
 let value: StaticIpsEnabled = "1";
 ```

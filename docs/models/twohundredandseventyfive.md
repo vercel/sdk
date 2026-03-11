@@ -12,7 +12,7 @@ let value: TwoHundredAndSeventyFive = {
   appName: "<value>",
   atTTL: 3966.57,
   scope: "<value>",
-  authMethod: "apple",
+  authMethod: "chatgpt",
 };
 ```
 

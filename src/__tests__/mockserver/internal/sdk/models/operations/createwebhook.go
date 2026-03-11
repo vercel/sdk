@@ -99,9 +99,9 @@ const (
 	CreateWebhookEventRequestFlagCreated                                        CreateWebhookEventRequest = "flag.created"
 	CreateWebhookEventRequestFlagUpdated                                        CreateWebhookEventRequest = "flag.updated"
 	CreateWebhookEventRequestFlagDeleted                                        CreateWebhookEventRequest = "flag.deleted"
-	CreateWebhookEventRequestSegmentCreated                                     CreateWebhookEventRequest = "segment.created"
-	CreateWebhookEventRequestSegmentUpdated                                     CreateWebhookEventRequest = "segment.updated"
-	CreateWebhookEventRequestSegmentDeleted                                     CreateWebhookEventRequest = "segment.deleted"
+	CreateWebhookEventRequestFlagSegmentCreated                                 CreateWebhookEventRequest = "flag.segment.created"
+	CreateWebhookEventRequestFlagSegmentUpdated                                 CreateWebhookEventRequest = "flag.segment.updated"
+	CreateWebhookEventRequestFlagSegmentDeleted                                 CreateWebhookEventRequest = "flag.segment.deleted"
 	CreateWebhookEventRequestTestWebhook                                        CreateWebhookEventRequest = "test-webhook"
 	CreateWebhookEventRequestMessageCreated                                     CreateWebhookEventRequest = "message.created"
 	CreateWebhookEventRequestMessageUpdated                                     CreateWebhookEventRequest = "message.updated"
@@ -111,6 +111,14 @@ const (
 	CreateWebhookEventRequestMessageReactionAdded                               CreateWebhookEventRequest = "message.reaction-added"
 	CreateWebhookEventRequestMessageReactionRemoved                             CreateWebhookEventRequest = "message.reaction-removed"
 	CreateWebhookEventRequestMessageMentioned                                   CreateWebhookEventRequest = "message.mentioned"
+	CreateWebhookEventRequestCommentCreated                                     CreateWebhookEventRequest = "comment.created"
+	CreateWebhookEventRequestCommentUpdated                                     CreateWebhookEventRequest = "comment.updated"
+	CreateWebhookEventRequestCommentDeleted                                     CreateWebhookEventRequest = "comment.deleted"
+	CreateWebhookEventRequestCommentResolved                                    CreateWebhookEventRequest = "comment.resolved"
+	CreateWebhookEventRequestCommentUnresolved                                  CreateWebhookEventRequest = "comment.unresolved"
+	CreateWebhookEventRequestCommentReactionAdded                               CreateWebhookEventRequest = "comment.reaction-added"
+	CreateWebhookEventRequestCommentReactionRemoved                             CreateWebhookEventRequest = "comment.reaction-removed"
+	CreateWebhookEventRequestCommentMentioned                                   CreateWebhookEventRequest = "comment.mentioned"
 )
 
 func (e CreateWebhookEventRequest) ToPointer() *CreateWebhookEventRequest {
@@ -298,11 +306,11 @@ func (e *CreateWebhookEventRequest) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "flag.deleted":
 		fallthrough
-	case "segment.created":
+	case "flag.segment.created":
 		fallthrough
-	case "segment.updated":
+	case "flag.segment.updated":
 		fallthrough
-	case "segment.deleted":
+	case "flag.segment.deleted":
 		fallthrough
 	case "test-webhook":
 		fallthrough
@@ -321,6 +329,22 @@ func (e *CreateWebhookEventRequest) UnmarshalJSON(data []byte) error {
 	case "message.reaction-removed":
 		fallthrough
 	case "message.mentioned":
+		fallthrough
+	case "comment.created":
+		fallthrough
+	case "comment.updated":
+		fallthrough
+	case "comment.deleted":
+		fallthrough
+	case "comment.resolved":
+		fallthrough
+	case "comment.unresolved":
+		fallthrough
+	case "comment.reaction-added":
+		fallthrough
+	case "comment.reaction-removed":
+		fallthrough
+	case "comment.mentioned":
 		*e = CreateWebhookEventRequest(v)
 		return nil
 	default:
@@ -476,9 +500,9 @@ const (
 	CreateWebhookEventResponseFlagCreated                                        CreateWebhookEventResponse = "flag.created"
 	CreateWebhookEventResponseFlagUpdated                                        CreateWebhookEventResponse = "flag.updated"
 	CreateWebhookEventResponseFlagDeleted                                        CreateWebhookEventResponse = "flag.deleted"
-	CreateWebhookEventResponseSegmentCreated                                     CreateWebhookEventResponse = "segment.created"
-	CreateWebhookEventResponseSegmentUpdated                                     CreateWebhookEventResponse = "segment.updated"
-	CreateWebhookEventResponseSegmentDeleted                                     CreateWebhookEventResponse = "segment.deleted"
+	CreateWebhookEventResponseFlagSegmentCreated                                 CreateWebhookEventResponse = "flag.segment.created"
+	CreateWebhookEventResponseFlagSegmentUpdated                                 CreateWebhookEventResponse = "flag.segment.updated"
+	CreateWebhookEventResponseFlagSegmentDeleted                                 CreateWebhookEventResponse = "flag.segment.deleted"
 	CreateWebhookEventResponseTestWebhook                                        CreateWebhookEventResponse = "test-webhook"
 	CreateWebhookEventResponseMessageCreated                                     CreateWebhookEventResponse = "message.created"
 	CreateWebhookEventResponseMessageUpdated                                     CreateWebhookEventResponse = "message.updated"
@@ -488,6 +512,14 @@ const (
 	CreateWebhookEventResponseMessageReactionAdded                               CreateWebhookEventResponse = "message.reaction-added"
 	CreateWebhookEventResponseMessageReactionRemoved                             CreateWebhookEventResponse = "message.reaction-removed"
 	CreateWebhookEventResponseMessageMentioned                                   CreateWebhookEventResponse = "message.mentioned"
+	CreateWebhookEventResponseCommentCreated                                     CreateWebhookEventResponse = "comment.created"
+	CreateWebhookEventResponseCommentUpdated                                     CreateWebhookEventResponse = "comment.updated"
+	CreateWebhookEventResponseCommentDeleted                                     CreateWebhookEventResponse = "comment.deleted"
+	CreateWebhookEventResponseCommentResolved                                    CreateWebhookEventResponse = "comment.resolved"
+	CreateWebhookEventResponseCommentUnresolved                                  CreateWebhookEventResponse = "comment.unresolved"
+	CreateWebhookEventResponseCommentReactionAdded                               CreateWebhookEventResponse = "comment.reaction-added"
+	CreateWebhookEventResponseCommentReactionRemoved                             CreateWebhookEventResponse = "comment.reaction-removed"
+	CreateWebhookEventResponseCommentMentioned                                   CreateWebhookEventResponse = "comment.mentioned"
 )
 
 func (e CreateWebhookEventResponse) ToPointer() *CreateWebhookEventResponse {
@@ -675,11 +707,11 @@ func (e *CreateWebhookEventResponse) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "flag.deleted":
 		fallthrough
-	case "segment.created":
+	case "flag.segment.created":
 		fallthrough
-	case "segment.updated":
+	case "flag.segment.updated":
 		fallthrough
-	case "segment.deleted":
+	case "flag.segment.deleted":
 		fallthrough
 	case "test-webhook":
 		fallthrough
@@ -698,6 +730,22 @@ func (e *CreateWebhookEventResponse) UnmarshalJSON(data []byte) error {
 	case "message.reaction-removed":
 		fallthrough
 	case "message.mentioned":
+		fallthrough
+	case "comment.created":
+		fallthrough
+	case "comment.updated":
+		fallthrough
+	case "comment.deleted":
+		fallthrough
+	case "comment.resolved":
+		fallthrough
+	case "comment.unresolved":
+		fallthrough
+	case "comment.reaction-added":
+		fallthrough
+	case "comment.reaction-removed":
+		fallthrough
+	case "comment.mentioned":
 		*e = CreateWebhookEventResponse(v)
 		return nil
 	default:

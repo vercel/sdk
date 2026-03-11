@@ -11,7 +11,7 @@
 * [getSharedEnvVar](#getsharedenvvar) - Retrieve the decrypted value of a Shared Environment Variable by id.
 * [unlinkSharedEnvVariable](#unlinksharedenvvariable) - Disconnects a shared environment variable for a given project
 * [createCustomEnvironment](#createcustomenvironment) - Create a custom environment for the current project.
-* [getV9ProjectsIdOrNameCustomEnvironments](#getv9projectsidornamecustomenvironments) - Retrieve custom environments
+* [getProjectsByIdOrNameCustomEnvironments](#getprojectsbyidornamecustomenvironments) - Retrieve custom environments
 * [getCustomEnvironment](#getcustomenvironment) - Retrieve a custom environment
 * [updateCustomEnvironment](#updatecustomenvironment) - Update a custom environment
 * [removeCustomEnvironment](#removecustomenvironment) - Remove a custom environment
@@ -623,13 +623,13 @@ run();
 | --------------- | --------------- | --------------- |
 | models.SDKError | 4XX, 5XX        | \*/\*           |
 
-## getV9ProjectsIdOrNameCustomEnvironments
+## getProjectsByIdOrNameCustomEnvironments
 
 Retrieve custom environments for the project. Must not be named 'Production' or 'Preview'.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="get_/v9/projects/{idOrName}/custom-environments" method="get" path="/v9/projects/{idOrName}/custom-environments" -->
+<!-- UsageSnippet language="typescript" operationID="getProjectsByIdOrNameCustomEnvironments" method="get" path="/v9/projects/{idOrName}/custom-environments" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -638,7 +638,7 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.environment.getV9ProjectsIdOrNameCustomEnvironments({
+  const result = await vercel.environment.getProjectsByIdOrNameCustomEnvironments({
     idOrName: "<value>",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
@@ -656,7 +656,7 @@ The standalone function version of this method:
 
 ```typescript
 import { VercelCore } from "@vercel/sdk/core.js";
-import { environmentGetV9ProjectsIdOrNameCustomEnvironments } from "@vercel/sdk/funcs/environmentGetV9ProjectsIdOrNameCustomEnvironments.js";
+import { environmentGetProjectsByIdOrNameCustomEnvironments } from "@vercel/sdk/funcs/environmentGetProjectsByIdOrNameCustomEnvironments.js";
 
 // Use `VercelCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -665,7 +665,7 @@ const vercel = new VercelCore({
 });
 
 async function run() {
-  const res = await environmentGetV9ProjectsIdOrNameCustomEnvironments(vercel, {
+  const res = await environmentGetProjectsByIdOrNameCustomEnvironments(vercel, {
     idOrName: "<value>",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
@@ -674,7 +674,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("environmentGetV9ProjectsIdOrNameCustomEnvironments failed:", res.error);
+    console.log("environmentGetProjectsByIdOrNameCustomEnvironments failed:", res.error);
   }
 }
 
@@ -685,14 +685,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.GetV9ProjectsIdOrNameCustomEnvironmentsRequest](../../models/getv9projectsidornamecustomenvironmentsrequest.md)                                                        | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [models.GetProjectsByIdOrNameCustomEnvironmentsRequest](../../models/getprojectsbyidornamecustomenvironmentsrequest.md)                                                        | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.GetV9ProjectsIdOrNameCustomEnvironmentsResponseBody](../../models/getv9projectsidornamecustomenvironmentsresponsebody.md)\>**
+**Promise\<[models.GetProjectsByIdOrNameCustomEnvironmentsResponseBody](../../models/getprojectsbyidornamecustomenvironmentsresponsebody.md)\>**
 
 ### Errors
 

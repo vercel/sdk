@@ -132,9 +132,9 @@ const (
 	GetWebhooksEvent2FlagCreated                                        GetWebhooksEvent2 = "flag.created"
 	GetWebhooksEvent2FlagUpdated                                        GetWebhooksEvent2 = "flag.updated"
 	GetWebhooksEvent2FlagDeleted                                        GetWebhooksEvent2 = "flag.deleted"
-	GetWebhooksEvent2SegmentCreated                                     GetWebhooksEvent2 = "segment.created"
-	GetWebhooksEvent2SegmentUpdated                                     GetWebhooksEvent2 = "segment.updated"
-	GetWebhooksEvent2SegmentDeleted                                     GetWebhooksEvent2 = "segment.deleted"
+	GetWebhooksEvent2FlagSegmentCreated                                 GetWebhooksEvent2 = "flag.segment.created"
+	GetWebhooksEvent2FlagSegmentUpdated                                 GetWebhooksEvent2 = "flag.segment.updated"
+	GetWebhooksEvent2FlagSegmentDeleted                                 GetWebhooksEvent2 = "flag.segment.deleted"
 	GetWebhooksEvent2TestWebhook                                        GetWebhooksEvent2 = "test-webhook"
 	GetWebhooksEvent2MessageCreated                                     GetWebhooksEvent2 = "message.created"
 	GetWebhooksEvent2MessageUpdated                                     GetWebhooksEvent2 = "message.updated"
@@ -144,6 +144,14 @@ const (
 	GetWebhooksEvent2MessageReactionAdded                               GetWebhooksEvent2 = "message.reaction-added"
 	GetWebhooksEvent2MessageReactionRemoved                             GetWebhooksEvent2 = "message.reaction-removed"
 	GetWebhooksEvent2MessageMentioned                                   GetWebhooksEvent2 = "message.mentioned"
+	GetWebhooksEvent2CommentCreated                                     GetWebhooksEvent2 = "comment.created"
+	GetWebhooksEvent2CommentUpdated                                     GetWebhooksEvent2 = "comment.updated"
+	GetWebhooksEvent2CommentDeleted                                     GetWebhooksEvent2 = "comment.deleted"
+	GetWebhooksEvent2CommentResolved                                    GetWebhooksEvent2 = "comment.resolved"
+	GetWebhooksEvent2CommentUnresolved                                  GetWebhooksEvent2 = "comment.unresolved"
+	GetWebhooksEvent2CommentReactionAdded                               GetWebhooksEvent2 = "comment.reaction-added"
+	GetWebhooksEvent2CommentReactionRemoved                             GetWebhooksEvent2 = "comment.reaction-removed"
+	GetWebhooksEvent2CommentMentioned                                   GetWebhooksEvent2 = "comment.mentioned"
 )
 
 func (e GetWebhooksEvent2) ToPointer() *GetWebhooksEvent2 {
@@ -331,11 +339,11 @@ func (e *GetWebhooksEvent2) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "flag.deleted":
 		fallthrough
-	case "segment.created":
+	case "flag.segment.created":
 		fallthrough
-	case "segment.updated":
+	case "flag.segment.updated":
 		fallthrough
-	case "segment.deleted":
+	case "flag.segment.deleted":
 		fallthrough
 	case "test-webhook":
 		fallthrough
@@ -354,6 +362,22 @@ func (e *GetWebhooksEvent2) UnmarshalJSON(data []byte) error {
 	case "message.reaction-removed":
 		fallthrough
 	case "message.mentioned":
+		fallthrough
+	case "comment.created":
+		fallthrough
+	case "comment.updated":
+		fallthrough
+	case "comment.deleted":
+		fallthrough
+	case "comment.resolved":
+		fallthrough
+	case "comment.unresolved":
+		fallthrough
+	case "comment.reaction-added":
+		fallthrough
+	case "comment.reaction-removed":
+		fallthrough
+	case "comment.mentioned":
 		*e = GetWebhooksEvent2(v)
 		return nil
 	default:
@@ -791,9 +815,9 @@ const (
 	GetWebhooksEvent1FlagCreated                                        GetWebhooksEvent1 = "flag.created"
 	GetWebhooksEvent1FlagUpdated                                        GetWebhooksEvent1 = "flag.updated"
 	GetWebhooksEvent1FlagDeleted                                        GetWebhooksEvent1 = "flag.deleted"
-	GetWebhooksEvent1SegmentCreated                                     GetWebhooksEvent1 = "segment.created"
-	GetWebhooksEvent1SegmentUpdated                                     GetWebhooksEvent1 = "segment.updated"
-	GetWebhooksEvent1SegmentDeleted                                     GetWebhooksEvent1 = "segment.deleted"
+	GetWebhooksEvent1FlagSegmentCreated                                 GetWebhooksEvent1 = "flag.segment.created"
+	GetWebhooksEvent1FlagSegmentUpdated                                 GetWebhooksEvent1 = "flag.segment.updated"
+	GetWebhooksEvent1FlagSegmentDeleted                                 GetWebhooksEvent1 = "flag.segment.deleted"
 	GetWebhooksEvent1TestWebhook                                        GetWebhooksEvent1 = "test-webhook"
 	GetWebhooksEvent1MessageCreated                                     GetWebhooksEvent1 = "message.created"
 	GetWebhooksEvent1MessageUpdated                                     GetWebhooksEvent1 = "message.updated"
@@ -803,6 +827,14 @@ const (
 	GetWebhooksEvent1MessageReactionAdded                               GetWebhooksEvent1 = "message.reaction-added"
 	GetWebhooksEvent1MessageReactionRemoved                             GetWebhooksEvent1 = "message.reaction-removed"
 	GetWebhooksEvent1MessageMentioned                                   GetWebhooksEvent1 = "message.mentioned"
+	GetWebhooksEvent1CommentCreated                                     GetWebhooksEvent1 = "comment.created"
+	GetWebhooksEvent1CommentUpdated                                     GetWebhooksEvent1 = "comment.updated"
+	GetWebhooksEvent1CommentDeleted                                     GetWebhooksEvent1 = "comment.deleted"
+	GetWebhooksEvent1CommentResolved                                    GetWebhooksEvent1 = "comment.resolved"
+	GetWebhooksEvent1CommentUnresolved                                  GetWebhooksEvent1 = "comment.unresolved"
+	GetWebhooksEvent1CommentReactionAdded                               GetWebhooksEvent1 = "comment.reaction-added"
+	GetWebhooksEvent1CommentReactionRemoved                             GetWebhooksEvent1 = "comment.reaction-removed"
+	GetWebhooksEvent1CommentMentioned                                   GetWebhooksEvent1 = "comment.mentioned"
 )
 
 func (e GetWebhooksEvent1) ToPointer() *GetWebhooksEvent1 {
@@ -990,11 +1022,11 @@ func (e *GetWebhooksEvent1) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "flag.deleted":
 		fallthrough
-	case "segment.created":
+	case "flag.segment.created":
 		fallthrough
-	case "segment.updated":
+	case "flag.segment.updated":
 		fallthrough
-	case "segment.deleted":
+	case "flag.segment.deleted":
 		fallthrough
 	case "test-webhook":
 		fallthrough
@@ -1013,6 +1045,22 @@ func (e *GetWebhooksEvent1) UnmarshalJSON(data []byte) error {
 	case "message.reaction-removed":
 		fallthrough
 	case "message.mentioned":
+		fallthrough
+	case "comment.created":
+		fallthrough
+	case "comment.updated":
+		fallthrough
+	case "comment.deleted":
+		fallthrough
+	case "comment.resolved":
+		fallthrough
+	case "comment.unresolved":
+		fallthrough
+	case "comment.reaction-added":
+		fallthrough
+	case "comment.reaction-removed":
+		fallthrough
+	case "comment.mentioned":
 		*e = GetWebhooksEvent1(v)
 		return nil
 	default:

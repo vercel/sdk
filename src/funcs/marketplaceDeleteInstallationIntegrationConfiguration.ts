@@ -12,9 +12,9 @@ import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
-  DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest,
-  DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest$outboundSchema,
-} from "../models/deletev1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidop.js";
+  DeleteInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest,
+  DeleteInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest$outboundSchema,
+} from "../models/deleteinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationitemsbyitemidop.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -37,7 +37,7 @@ import { Result } from "../types/fp.js";
 export function marketplaceDeleteInstallationIntegrationConfiguration(
   client: VercelCore,
   request:
-    DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest,
+    DeleteInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -62,7 +62,7 @@ export function marketplaceDeleteInstallationIntegrationConfiguration(
 async function $do(
   client: VercelCore,
   request:
-    DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest,
+    DeleteInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -83,7 +83,7 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      DeleteV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsItemIdRequest$outboundSchema
+      DeleteInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest$outboundSchema
         .parse(value),
     "Input validation failed",
   );
@@ -125,7 +125,7 @@ async function $do(
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID:
-      "delete_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}",
+      "deleteInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemId",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,

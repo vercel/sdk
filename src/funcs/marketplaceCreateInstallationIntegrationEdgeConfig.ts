@@ -11,11 +11,11 @@ import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
-  HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest,
-  HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest$outboundSchema,
-  HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody,
-  HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody$inboundSchema,
-} from "../models/headv1installationsintegrationconfigurationidresourcesresourceidexperimentationedgeconfigop.js";
+  HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequest,
+  HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequest$outboundSchema,
+  HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody,
+  HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody$inboundSchema,
+} from "../models/headinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationedgeconfigop.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -39,11 +39,11 @@ import * as types$ from "../types/primitives.js";
 export function marketplaceCreateInstallationIntegrationEdgeConfig(
   client: VercelCore,
   request:
-    HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest,
+    HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    | HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody
+    | HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody
     | undefined,
     | VercelError
     | ResponseValidationError
@@ -65,12 +65,12 @@ export function marketplaceCreateInstallationIntegrationEdgeConfig(
 async function $do(
   client: VercelCore,
   request:
-    HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest,
+    HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      | HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody
+      | HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody
       | undefined,
       | VercelError
       | ResponseValidationError
@@ -87,7 +87,7 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest$outboundSchema
+      HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigRequest$outboundSchema
         .parse(value),
     "Input validation failed",
   );
@@ -125,7 +125,7 @@ async function $do(
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID:
-      "head_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config",
+      "headInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfig",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -164,7 +164,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    | HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody
+    | HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody
     | undefined,
     | VercelError
     | ResponseValidationError
@@ -178,13 +178,13 @@ async function $do(
     M.json(
       200,
       types$.optional(
-        HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody$inboundSchema,
+        HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody$inboundSchema,
       ),
     ),
     M.nil(
       304,
       types$.optional(
-        HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody$inboundSchema,
+        HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationEdgeConfigResponseBody$inboundSchema,
       ),
     ),
     M.fail([400, 401, 403, 404, "4XX"]),

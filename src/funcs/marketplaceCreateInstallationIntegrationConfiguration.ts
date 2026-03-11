@@ -12,16 +12,16 @@ import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
+  CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequest,
+  CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequest$outboundSchema,
+} from "../models/createinstallationsbyintegrationconfigurationidresourcesbyresourceidexperimentationitemsop.js";
+import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/httpclienterrors.js";
-import {
-  PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequest,
-  PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequest$outboundSchema,
-} from "../models/postv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsop.js";
 import { ResponseValidationError } from "../models/responsevalidationerror.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import { VercelError } from "../models/vercelerror.js";
@@ -37,7 +37,7 @@ import { Result } from "../types/fp.js";
 export function marketplaceCreateInstallationIntegrationConfiguration(
   client: VercelCore,
   request:
-    PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequest,
+    CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -62,7 +62,7 @@ export function marketplaceCreateInstallationIntegrationConfiguration(
 async function $do(
   client: VercelCore,
   request:
-    PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequest,
+    CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -83,7 +83,7 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      PostV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationItemsRequest$outboundSchema
+      CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequest$outboundSchema
         .parse(value),
     "Input validation failed",
   );
@@ -122,7 +122,7 @@ async function $do(
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID:
-      "post_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items",
+      "createInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItems",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,

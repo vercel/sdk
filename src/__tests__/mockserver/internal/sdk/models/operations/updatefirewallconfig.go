@@ -11,6 +11,45 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+// UpdateFirewallConfigRequestBody3 - Update log headers configuration
+type UpdateFirewallConfigRequestBody3 struct {
+	Action string  `json:"action"`
+	ID     *string `json:"id,omitempty"`
+	Value  any     `json:"value"`
+}
+
+func (u UpdateFirewallConfigRequestBody3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFirewallConfigRequestBody3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"action", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateFirewallConfigRequestBody3) GetAction() string {
+	if o == nil {
+		return ""
+	}
+	return o.Action
+}
+
+func (o *UpdateFirewallConfigRequestBody3) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *UpdateFirewallConfigRequestBody3) GetValue() any {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}
+
 // UpdateFirewallConfigRequestBody2 - Toggle bot ID
 type UpdateFirewallConfigRequestBody2 struct {
 	Action string  `json:"action"`
@@ -3180,6 +3219,7 @@ const (
 	UpdateFirewallConfigRequestBodyTypeManagedRulesUpdate               UpdateFirewallConfigRequestBodyType = "ManagedRulesUpdate"
 	UpdateFirewallConfigRequestBodyTypeUpdateFirewallConfigRequestBody1 UpdateFirewallConfigRequestBodyType = "updateFirewallConfig_RequestBody_1"
 	UpdateFirewallConfigRequestBodyTypeUpdateFirewallConfigRequestBody2 UpdateFirewallConfigRequestBodyType = "updateFirewallConfig_RequestBody_2"
+	UpdateFirewallConfigRequestBodyTypeUpdateFirewallConfigRequestBody3 UpdateFirewallConfigRequestBodyType = "updateFirewallConfig_RequestBody_3"
 )
 
 type UpdateFirewallConfigRequestBody struct {
@@ -3196,6 +3236,7 @@ type UpdateFirewallConfigRequestBody struct {
 	ManagedRulesUpdate               *ManagedRulesUpdate               `queryParam:"inline"`
 	UpdateFirewallConfigRequestBody1 *UpdateFirewallConfigRequestBody1 `queryParam:"inline"`
 	UpdateFirewallConfigRequestBody2 *UpdateFirewallConfigRequestBody2 `queryParam:"inline"`
+	UpdateFirewallConfigRequestBody3 *UpdateFirewallConfigRequestBody3 `queryParam:"inline"`
 
 	Type UpdateFirewallConfigRequestBodyType
 }
@@ -3317,6 +3358,15 @@ func CreateUpdateFirewallConfigRequestBodyUpdateFirewallConfigRequestBody2(updat
 	}
 }
 
+func CreateUpdateFirewallConfigRequestBodyUpdateFirewallConfigRequestBody3(updateFirewallConfigRequestBody3 UpdateFirewallConfigRequestBody3) UpdateFirewallConfigRequestBody {
+	typ := UpdateFirewallConfigRequestBodyTypeUpdateFirewallConfigRequestBody3
+
+	return UpdateFirewallConfigRequestBody{
+		UpdateFirewallConfigRequestBody3: &updateFirewallConfigRequestBody3,
+		Type:                             typ,
+	}
+}
+
 func (u *UpdateFirewallConfigRequestBody) UnmarshalJSON(data []byte) error {
 
 	var rulesUpdate RulesUpdate = RulesUpdate{}
@@ -3403,6 +3453,13 @@ func (u *UpdateFirewallConfigRequestBody) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var updateFirewallConfigRequestBody3 UpdateFirewallConfigRequestBody3 = UpdateFirewallConfigRequestBody3{}
+	if err := utils.UnmarshalJSON(data, &updateFirewallConfigRequestBody3, "", true, nil); err == nil {
+		u.UpdateFirewallConfigRequestBody3 = &updateFirewallConfigRequestBody3
+		u.Type = UpdateFirewallConfigRequestBodyTypeUpdateFirewallConfigRequestBody3
+		return nil
+	}
+
 	var crsDisable CrsDisable = CrsDisable{}
 	if err := utils.UnmarshalJSON(data, &crsDisable, "", true, nil); err == nil {
 		u.CrsDisable = &crsDisable
@@ -3464,6 +3521,10 @@ func (u UpdateFirewallConfigRequestBody) MarshalJSON() ([]byte, error) {
 
 	if u.UpdateFirewallConfigRequestBody2 != nil {
 		return utils.MarshalJSON(u.UpdateFirewallConfigRequestBody2, "", true)
+	}
+
+	if u.UpdateFirewallConfigRequestBody3 != nil {
+		return utils.MarshalJSON(u.UpdateFirewallConfigRequestBody3, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type UpdateFirewallConfigRequestBody: all fields are null")

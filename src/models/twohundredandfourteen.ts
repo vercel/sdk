@@ -583,6 +583,7 @@ export const AuthMethod = {
   Google: "google",
   Apple: "apple",
   Chatgpt: "chatgpt",
+  GithubWebhook: "github-webhook",
   Manual: "manual",
   Passkey: "passkey",
   Otp: "otp",

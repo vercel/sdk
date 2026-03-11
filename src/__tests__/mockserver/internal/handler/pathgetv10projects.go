@@ -7,7 +7,6 @@ import (
 	"log"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
-	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/models/operations"
 	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/types"
@@ -50,12 +49,59 @@ func testGetProjectsGetProjects0(w http.ResponseWriter, req *http.Request) {
 	}
 	var respBody optionalnullable.OptionalNullable[operations.GetProjectsResponseBody] = optionalnullable.From(types.Pointer(operations.CreateGetProjectsResponseBodyGetProjectsResponseBody3(
 		operations.GetProjectsResponseBody3{
-			Projects: []operations.GetProjectsProject2{},
-			Pagination: operations.CreatePaginationUnion2Pagination(
-				components.Pagination{
+			Projects: []operations.GetProjectsProject2{
+				operations.GetProjectsProject2{
+					AccountID: "<id>",
+					Crons: &operations.GetProjectsCrons{
+						EnabledAt:    5680.45,
+						DisabledAt:   types.Float64(710.36),
+						UpdatedAt:    871.29,
+						DeploymentID: nil,
+						Definitions: []operations.GetProjectsDefinition{
+							operations.GetProjectsDefinition{
+								Host:     "vercel.com",
+								Path:     "/api/crons/sync-something?hello=world",
+								Schedule: "0 0 * * *",
+							},
+						},
+					},
+					DeploymentExpiration: operations.ProjectDeploymentExpiration2{},
+					DirectoryListing:     false,
+					ID:                   "<id>",
+					Name:                 "<value>",
+					NodeVersion:          operations.ProjectNodeVersion2TenDotX,
+					ResourceConfig: operations.ProjectResourceConfig2{
+						FunctionDefaultRegions: []string{
+							"<value 1>",
+							"<value 2>",
+							"<value 3>",
+						},
+					},
+					RollingRelease: optionalnullable.From(&operations.ProjectRollingRelease2{
+						Target: "production",
+						Stages: optionalnullable.From(types.Pointer([]operations.ProjectStage2{
+							operations.ProjectStage2{
+								TargetPercentage: 25,
+								RequireApproval:  types.Bool(false),
+								Duration:         types.Float64(600),
+								LinearShift:      types.Bool(false),
+							},
+						})),
+						CanaryResponseHeader: types.Bool(false),
+					}),
+					DefaultResourceConfig: operations.GetProjectsDefaultResourceConfig{
+						FunctionDefaultRegions: []string{
+							"<value 1>",
+							"<value 2>",
+							"<value 3>",
+						},
+					},
+				},
+			},
+			Pagination: operations.CreatePaginationUnion2GetProjectsPagination2(
+				operations.GetProjectsPagination2{
 					Count: 20,
-					Next:  types.Float64(1540095775951),
-					Prev:  types.Float64(1540095775951),
+					Next:  types.String("JBSWY3DPEHPK3PXP"),
 				},
 			),
 		},

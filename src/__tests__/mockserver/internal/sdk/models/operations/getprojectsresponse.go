@@ -11,6 +11,398 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+type GetProjectsLatestDeployment struct {
+	Alias              []string                                                                    `json:"alias,omitempty"`
+	AliasAssigned      optionalnullable.OptionalNullable[GetProjectsLatestDeploymentAliasAssigned] `json:"aliasAssigned,omitempty"`
+	Builds             []GetProjectsLatestDeploymentBuild                                          `json:"builds,omitempty"`
+	CreatedAt          float64                                                                     `json:"createdAt"`
+	CreatedIn          string                                                                      `json:"createdIn"`
+	Creator            *GetProjectsLatestDeploymentCreator                                         `json:"creator"`
+	DeploymentHostname string                                                                      `json:"deploymentHostname"`
+	Name               string                                                                      `json:"name"`
+	Forced             *bool                                                                       `json:"forced,omitempty"`
+	ID                 string                                                                      `json:"id"`
+	Meta               map[string]string                                                           `json:"meta,omitempty"`
+	Plan               string                                                                      `json:"plan"`
+	Private            bool                                                                        `json:"private"`
+	ReadyState         string                                                                      `json:"readyState"`
+	RequestedAt        *float64                                                                    `json:"requestedAt,omitempty"`
+	Target             optionalnullable.OptionalNullable[string]                                   `json:"target,omitempty"`
+	TeamID             optionalnullable.OptionalNullable[string]                                   `json:"teamId,omitempty"`
+	Type               string                                                                      `json:"type"`
+	URL                string                                                                      `json:"url"`
+	UserID             string                                                                      `json:"userId"`
+	WithCache          *bool                                                                       `json:"withCache,omitempty"`
+}
+
+func (g GetProjectsLatestDeployment) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectsLatestDeployment) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"createdAt", "createdIn", "creator", "deploymentHostname", "name", "id", "plan", "private", "readyState", "type", "url", "userId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetProjectsLatestDeployment) GetAlias() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Alias
+}
+
+func (o *GetProjectsLatestDeployment) GetAliasAssigned() optionalnullable.OptionalNullable[GetProjectsLatestDeploymentAliasAssigned] {
+	if o == nil {
+		return nil
+	}
+	return o.AliasAssigned
+}
+
+func (o *GetProjectsLatestDeployment) GetBuilds() []GetProjectsLatestDeploymentBuild {
+	if o == nil {
+		return nil
+	}
+	return o.Builds
+}
+
+func (o *GetProjectsLatestDeployment) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *GetProjectsLatestDeployment) GetCreatedIn() string {
+	if o == nil {
+		return ""
+	}
+	return o.CreatedIn
+}
+
+func (o *GetProjectsLatestDeployment) GetCreator() *GetProjectsLatestDeploymentCreator {
+	if o == nil {
+		return nil
+	}
+	return o.Creator
+}
+
+func (o *GetProjectsLatestDeployment) GetDeploymentHostname() string {
+	if o == nil {
+		return ""
+	}
+	return o.DeploymentHostname
+}
+
+func (o *GetProjectsLatestDeployment) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *GetProjectsLatestDeployment) GetForced() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Forced
+}
+
+func (o *GetProjectsLatestDeployment) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *GetProjectsLatestDeployment) GetMeta() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Meta
+}
+
+func (o *GetProjectsLatestDeployment) GetPlan() string {
+	if o == nil {
+		return ""
+	}
+	return o.Plan
+}
+
+func (o *GetProjectsLatestDeployment) GetPrivate() bool {
+	if o == nil {
+		return false
+	}
+	return o.Private
+}
+
+func (o *GetProjectsLatestDeployment) GetReadyState() string {
+	if o == nil {
+		return ""
+	}
+	return o.ReadyState
+}
+
+func (o *GetProjectsLatestDeployment) GetRequestedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RequestedAt
+}
+
+func (o *GetProjectsLatestDeployment) GetTarget() optionalnullable.OptionalNullable[string] {
+	if o == nil {
+		return nil
+	}
+	return o.Target
+}
+
+func (o *GetProjectsLatestDeployment) GetTeamID() optionalnullable.OptionalNullable[string] {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
+}
+
+func (o *GetProjectsLatestDeployment) GetType() string {
+	if o == nil {
+		return ""
+	}
+	return o.Type
+}
+
+func (o *GetProjectsLatestDeployment) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
+}
+
+func (o *GetProjectsLatestDeployment) GetUserID() string {
+	if o == nil {
+		return ""
+	}
+	return o.UserID
+}
+
+func (o *GetProjectsLatestDeployment) GetWithCache() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.WithCache
+}
+
+type GetProjectsTypeBitbucket string
+
+const (
+	GetProjectsTypeBitbucketBitbucket GetProjectsTypeBitbucket = "bitbucket"
+)
+
+func (e GetProjectsTypeBitbucket) ToPointer() *GetProjectsTypeBitbucket {
+	return &e
+}
+func (e *GetProjectsTypeBitbucket) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "bitbucket":
+		*e = GetProjectsTypeBitbucket(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetProjectsTypeBitbucket: %v", v)
+	}
+}
+
+type GetProjectsDeployHook5 struct {
+	CreatedAt *float64 `json:"createdAt,omitempty"`
+	ID        string   `json:"id"`
+	Name      string   `json:"name"`
+	Ref       string   `json:"ref"`
+	URL       string   `json:"url"`
+}
+
+func (g GetProjectsDeployHook5) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectsDeployHook5) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "name", "ref", "url"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetProjectsDeployHook5) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *GetProjectsDeployHook5) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *GetProjectsDeployHook5) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *GetProjectsDeployHook5) GetRef() string {
+	if o == nil {
+		return ""
+	}
+	return o.Ref
+}
+
+func (o *GetProjectsDeployHook5) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
+}
+
+type GetProjectsLinkBitbucket struct {
+	Name             string                   `json:"name"`
+	Slug             string                   `json:"slug"`
+	Owner            string                   `json:"owner"`
+	Type             GetProjectsTypeBitbucket `json:"type"`
+	UUID             string                   `json:"uuid"`
+	WorkspaceUUID    string                   `json:"workspaceUuid"`
+	CreatedAt        *float64                 `json:"createdAt,omitempty"`
+	DeployHooks      []GetProjectsDeployHook5 `json:"deployHooks"`
+	GitCredentialID  string                   `json:"gitCredentialId"`
+	UpdatedAt        *float64                 `json:"updatedAt,omitempty"`
+	Sourceless       *bool                    `json:"sourceless,omitempty"`
+	ProductionBranch string                   `json:"productionBranch"`
+}
+
+func (g GetProjectsLinkBitbucket) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectsLinkBitbucket) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"name", "slug", "owner", "type", "uuid", "workspaceUuid", "deployHooks", "gitCredentialId", "productionBranch"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetProjectsLinkBitbucket) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *GetProjectsLinkBitbucket) GetSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.Slug
+}
+
+func (o *GetProjectsLinkBitbucket) GetOwner() string {
+	if o == nil {
+		return ""
+	}
+	return o.Owner
+}
+
+func (o *GetProjectsLinkBitbucket) GetType() GetProjectsTypeBitbucket {
+	if o == nil {
+		return GetProjectsTypeBitbucket("")
+	}
+	return o.Type
+}
+
+func (o *GetProjectsLinkBitbucket) GetUUID() string {
+	if o == nil {
+		return ""
+	}
+	return o.UUID
+}
+
+func (o *GetProjectsLinkBitbucket) GetWorkspaceUUID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WorkspaceUUID
+}
+
+func (o *GetProjectsLinkBitbucket) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *GetProjectsLinkBitbucket) GetDeployHooks() []GetProjectsDeployHook5 {
+	if o == nil {
+		return []GetProjectsDeployHook5{}
+	}
+	return o.DeployHooks
+}
+
+func (o *GetProjectsLinkBitbucket) GetGitCredentialID() string {
+	if o == nil {
+		return ""
+	}
+	return o.GitCredentialID
+}
+
+func (o *GetProjectsLinkBitbucket) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *GetProjectsLinkBitbucket) GetSourceless() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Sourceless
+}
+
+func (o *GetProjectsLinkBitbucket) GetProductionBranch() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductionBranch
+}
+
+type GetProjectsTypeGitlab string
+
+const (
+	GetProjectsTypeGitlabGitlab GetProjectsTypeGitlab = "gitlab"
+)
+
+func (e GetProjectsTypeGitlab) ToPointer() *GetProjectsTypeGitlab {
+	return &e
+}
+func (e *GetProjectsTypeGitlab) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "gitlab":
+		*e = GetProjectsTypeGitlab(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetProjectsTypeGitlab: %v", v)
+	}
+}
+
 type GetProjectsDeployHook4 struct {
 	CreatedAt *float64 `json:"createdAt,omitempty"`
 	ID        string   `json:"id"`
@@ -2752,98 +3144,98 @@ func (o *Erl) GetKeys() []string {
 	return o.Keys
 }
 
-type GetProjectsLogHeadersEnum string
+type LogHeadersFirewallRouteEnum string
 
 const (
-	GetProjectsLogHeadersEnumWildcard GetProjectsLogHeadersEnum = "*"
+	LogHeadersFirewallRouteEnumWildcard LogHeadersFirewallRouteEnum = "*"
 )
 
-func (e GetProjectsLogHeadersEnum) ToPointer() *GetProjectsLogHeadersEnum {
+func (e LogHeadersFirewallRouteEnum) ToPointer() *LogHeadersFirewallRouteEnum {
 	return &e
 }
-func (e *GetProjectsLogHeadersEnum) UnmarshalJSON(data []byte) error {
+func (e *LogHeadersFirewallRouteEnum) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "*":
-		*e = GetProjectsLogHeadersEnum(v)
+		*e = LogHeadersFirewallRouteEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetProjectsLogHeadersEnum: %v", v)
+		return fmt.Errorf("invalid value for LogHeadersFirewallRouteEnum: %v", v)
 	}
 }
 
-type GetProjectsLogHeadersUnionType string
+type FirewallRouteLogHeadersUnionType string
 
 const (
-	GetProjectsLogHeadersUnionTypeArrayOfStr                GetProjectsLogHeadersUnionType = "arrayOfStr"
-	GetProjectsLogHeadersUnionTypeGetProjectsLogHeadersEnum GetProjectsLogHeadersUnionType = "getProjects_log_headers_enum"
+	FirewallRouteLogHeadersUnionTypeArrayOfStr                  FirewallRouteLogHeadersUnionType = "arrayOfStr"
+	FirewallRouteLogHeadersUnionTypeLogHeadersFirewallRouteEnum FirewallRouteLogHeadersUnionType = "log_headers_firewallRoute_enum"
 )
 
-type GetProjectsLogHeadersUnion struct {
-	ArrayOfStr                []string                   `queryParam:"inline"`
-	GetProjectsLogHeadersEnum *GetProjectsLogHeadersEnum `queryParam:"inline"`
+type FirewallRouteLogHeadersUnion struct {
+	ArrayOfStr                  []string                     `queryParam:"inline"`
+	LogHeadersFirewallRouteEnum *LogHeadersFirewallRouteEnum `queryParam:"inline"`
 
-	Type GetProjectsLogHeadersUnionType
+	Type FirewallRouteLogHeadersUnionType
 }
 
-func CreateGetProjectsLogHeadersUnionArrayOfStr(arrayOfStr []string) GetProjectsLogHeadersUnion {
-	typ := GetProjectsLogHeadersUnionTypeArrayOfStr
+func CreateFirewallRouteLogHeadersUnionArrayOfStr(arrayOfStr []string) FirewallRouteLogHeadersUnion {
+	typ := FirewallRouteLogHeadersUnionTypeArrayOfStr
 
-	return GetProjectsLogHeadersUnion{
+	return FirewallRouteLogHeadersUnion{
 		ArrayOfStr: arrayOfStr,
 		Type:       typ,
 	}
 }
 
-func CreateGetProjectsLogHeadersUnionGetProjectsLogHeadersEnum(getProjectsLogHeadersEnum GetProjectsLogHeadersEnum) GetProjectsLogHeadersUnion {
-	typ := GetProjectsLogHeadersUnionTypeGetProjectsLogHeadersEnum
+func CreateFirewallRouteLogHeadersUnionLogHeadersFirewallRouteEnum(logHeadersFirewallRouteEnum LogHeadersFirewallRouteEnum) FirewallRouteLogHeadersUnion {
+	typ := FirewallRouteLogHeadersUnionTypeLogHeadersFirewallRouteEnum
 
-	return GetProjectsLogHeadersUnion{
-		GetProjectsLogHeadersEnum: &getProjectsLogHeadersEnum,
-		Type:                      typ,
+	return FirewallRouteLogHeadersUnion{
+		LogHeadersFirewallRouteEnum: &logHeadersFirewallRouteEnum,
+		Type:                        typ,
 	}
 }
 
-func (u *GetProjectsLogHeadersUnion) UnmarshalJSON(data []byte) error {
+func (u *FirewallRouteLogHeadersUnion) UnmarshalJSON(data []byte) error {
 
 	var arrayOfStr []string = []string{}
 	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
 		u.ArrayOfStr = arrayOfStr
-		u.Type = GetProjectsLogHeadersUnionTypeArrayOfStr
+		u.Type = FirewallRouteLogHeadersUnionTypeArrayOfStr
 		return nil
 	}
 
-	var getProjectsLogHeadersEnum GetProjectsLogHeadersEnum = GetProjectsLogHeadersEnum("")
-	if err := utils.UnmarshalJSON(data, &getProjectsLogHeadersEnum, "", true, nil); err == nil {
-		u.GetProjectsLogHeadersEnum = &getProjectsLogHeadersEnum
-		u.Type = GetProjectsLogHeadersUnionTypeGetProjectsLogHeadersEnum
+	var logHeadersFirewallRouteEnum LogHeadersFirewallRouteEnum = LogHeadersFirewallRouteEnum("")
+	if err := utils.UnmarshalJSON(data, &logHeadersFirewallRouteEnum, "", true, nil); err == nil {
+		u.LogHeadersFirewallRouteEnum = &logHeadersFirewallRouteEnum
+		u.Type = FirewallRouteLogHeadersUnionTypeLogHeadersFirewallRouteEnum
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetProjectsLogHeadersUnion", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for FirewallRouteLogHeadersUnion", string(data))
 }
 
-func (u GetProjectsLogHeadersUnion) MarshalJSON() ([]byte, error) {
+func (u FirewallRouteLogHeadersUnion) MarshalJSON() ([]byte, error) {
 	if u.ArrayOfStr != nil {
 		return utils.MarshalJSON(u.ArrayOfStr, "", true)
 	}
 
-	if u.GetProjectsLogHeadersEnum != nil {
-		return utils.MarshalJSON(u.GetProjectsLogHeadersEnum, "", true)
+	if u.LogHeadersFirewallRouteEnum != nil {
+		return utils.MarshalJSON(u.LogHeadersFirewallRouteEnum, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type GetProjectsLogHeadersUnion: all fields are null")
+	return nil, errors.New("could not marshal union type FirewallRouteLogHeadersUnion: all fields are null")
 }
 
 type FirewallRouteMitigate struct {
-	Action     FirewallRouteAction         `json:"action"`
-	RuleID     string                      `json:"rule_id"`
-	TTL        *float64                    `json:"ttl,omitempty"`
-	Erl        *Erl                        `json:"erl,omitempty"`
-	LogHeaders *GetProjectsLogHeadersUnion `json:"log_headers,omitempty"`
+	Action     FirewallRouteAction           `json:"action"`
+	RuleID     string                        `json:"rule_id"`
+	TTL        *float64                      `json:"ttl,omitempty"`
+	Erl        *Erl                          `json:"erl,omitempty"`
+	LogHeaders *FirewallRouteLogHeadersUnion `json:"log_headers,omitempty"`
 }
 
 func (f FirewallRouteMitigate) MarshalJSON() ([]byte, error) {
@@ -2885,7 +3277,7 @@ func (o *FirewallRouteMitigate) GetErl() *Erl {
 	return o.Erl
 }
 
-func (o *FirewallRouteMitigate) GetLogHeaders() *GetProjectsLogHeadersUnion {
+func (o *FirewallRouteMitigate) GetLogHeaders() *FirewallRouteLogHeadersUnion {
 	if o == nil {
 		return nil
 	}
@@ -3244,6 +3636,92 @@ func (o *GetProjectsManagedRules) GetOwasp() GetProjectsOwasp {
 	return o.Owasp
 }
 
+type GetProjectsLogHeadersEnum string
+
+const (
+	GetProjectsLogHeadersEnumWildcard GetProjectsLogHeadersEnum = "*"
+)
+
+func (e GetProjectsLogHeadersEnum) ToPointer() *GetProjectsLogHeadersEnum {
+	return &e
+}
+func (e *GetProjectsLogHeadersEnum) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "*":
+		*e = GetProjectsLogHeadersEnum(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetProjectsLogHeadersEnum: %v", v)
+	}
+}
+
+type GetProjectsLogHeadersUnionType string
+
+const (
+	GetProjectsLogHeadersUnionTypeArrayOfStr                GetProjectsLogHeadersUnionType = "arrayOfStr"
+	GetProjectsLogHeadersUnionTypeGetProjectsLogHeadersEnum GetProjectsLogHeadersUnionType = "getProjects_log_headers_enum"
+)
+
+type GetProjectsLogHeadersUnion struct {
+	ArrayOfStr                []string                   `queryParam:"inline"`
+	GetProjectsLogHeadersEnum *GetProjectsLogHeadersEnum `queryParam:"inline"`
+
+	Type GetProjectsLogHeadersUnionType
+}
+
+func CreateGetProjectsLogHeadersUnionArrayOfStr(arrayOfStr []string) GetProjectsLogHeadersUnion {
+	typ := GetProjectsLogHeadersUnionTypeArrayOfStr
+
+	return GetProjectsLogHeadersUnion{
+		ArrayOfStr: arrayOfStr,
+		Type:       typ,
+	}
+}
+
+func CreateGetProjectsLogHeadersUnionGetProjectsLogHeadersEnum(getProjectsLogHeadersEnum GetProjectsLogHeadersEnum) GetProjectsLogHeadersUnion {
+	typ := GetProjectsLogHeadersUnionTypeGetProjectsLogHeadersEnum
+
+	return GetProjectsLogHeadersUnion{
+		GetProjectsLogHeadersEnum: &getProjectsLogHeadersEnum,
+		Type:                      typ,
+	}
+}
+
+func (u *GetProjectsLogHeadersUnion) UnmarshalJSON(data []byte) error {
+
+	var arrayOfStr []string = []string{}
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
+		u.ArrayOfStr = arrayOfStr
+		u.Type = GetProjectsLogHeadersUnionTypeArrayOfStr
+		return nil
+	}
+
+	var getProjectsLogHeadersEnum GetProjectsLogHeadersEnum = GetProjectsLogHeadersEnum("")
+	if err := utils.UnmarshalJSON(data, &getProjectsLogHeadersEnum, "", true, nil); err == nil {
+		u.GetProjectsLogHeadersEnum = &getProjectsLogHeadersEnum
+		u.Type = GetProjectsLogHeadersUnionTypeGetProjectsLogHeadersEnum
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetProjectsLogHeadersUnion", string(data))
+}
+
+func (u GetProjectsLogHeadersUnion) MarshalJSON() ([]byte, error) {
+	if u.ArrayOfStr != nil {
+		return utils.MarshalJSON(u.ArrayOfStr, "", true)
+	}
+
+	if u.GetProjectsLogHeadersEnum != nil {
+		return utils.MarshalJSON(u.GetProjectsLogHeadersEnum, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetProjectsLogHeadersUnion: all fields are null")
+}
+
 type GetProjectsSecurity struct {
 	AttackModeEnabled      *bool                                                      `json:"attackModeEnabled,omitempty"`
 	AttackModeUpdatedAt    *float64                                                   `json:"attackModeUpdatedAt,omitempty"`
@@ -3259,6 +3737,7 @@ type GetProjectsSecurity struct {
 	ManagedRules           optionalnullable.OptionalNullable[GetProjectsManagedRules] `json:"managedRules,omitempty"`
 	BotIDEnabled           *bool                                                      `json:"botIdEnabled,omitempty"`
 	RequestLogsKey         []string                                                   `json:"requestLogsKey,omitempty"`
+	LogHeaders             *GetProjectsLogHeadersUnion                                `json:"log_headers,omitempty"`
 }
 
 func (g GetProjectsSecurity) MarshalJSON() ([]byte, error) {
@@ -3368,6 +3847,13 @@ func (o *GetProjectsSecurity) GetRequestLogsKey() []string {
 		return nil
 	}
 	return o.RequestLogsKey
+}
+
+func (o *GetProjectsSecurity) GetLogHeaders() *GetProjectsLogHeadersUnion {
+	if o == nil {
+		return nil
+	}
+	return o.LogHeaders
 }
 
 // GetProjectsIssuerMode - - team: `https://oidc.vercel.com/[team_slug]` - global: `https://oidc.vercel.com`

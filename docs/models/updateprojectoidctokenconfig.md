@@ -5,7 +5,7 @@ OpenID Connect JSON Web Token generation configuration.
 ## Example Usage
 
 ```typescript
-import { UpdateProjectOidcTokenConfig } from "@vercel/sdk/models/updateprojectscheduledtierchange.js";
+import { UpdateProjectOidcTokenConfig } from "@vercel/sdk/models/updateprojectprojectsoidctokenconfig.js";
 
 let value: UpdateProjectOidcTokenConfig = {};
 ```

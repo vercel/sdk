@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/optionalnullable"
+	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 )
 
@@ -74,7 +75,7 @@ func (o *UpdateTeamMemberJoinedFrom) GetSsoUserID() optionalnullable.OptionalNul
 
 type UpdateTeamMemberRequestBody struct {
 	// Accept a user who requested access to the team.
-	Confirmed *bool `json:"confirmed,omitempty"`
+	confirmed *bool `const:"true" json:"confirmed,omitempty"`
 	// The role in the team of the member.
 	Role       *string                     `default:"MEMBER" json:"role"`
 	Projects   []UpdateTeamMemberProject   `json:"projects,omitempty"`
@@ -93,10 +94,7 @@ func (u *UpdateTeamMemberRequestBody) UnmarshalJSON(data []byte) error {
 }
 
 func (o *UpdateTeamMemberRequestBody) GetConfirmed() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Confirmed
+	return types.Bool(true)
 }
 
 func (o *UpdateTeamMemberRequestBody) GetRole() *string {

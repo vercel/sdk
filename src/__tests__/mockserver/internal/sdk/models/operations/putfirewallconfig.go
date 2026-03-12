@@ -3070,7 +3070,7 @@ type RuleActive2 struct {
 	Active           bool                    `json:"active"`
 	ConditionGroup   []ActiveConditionGroup2 `json:"conditionGroup"`
 	Action           RuleActiveAction2       `json:"action"`
-	Valid            bool                    `json:"valid"`
+	valid            bool                    `const:"false" json:"valid"`
 	ValidationErrors []string                `json:"validationErrors"`
 }
 
@@ -3128,10 +3128,7 @@ func (o *RuleActive2) GetAction() RuleActiveAction2 {
 }
 
 func (o *RuleActive2) GetValid() bool {
-	if o == nil {
-		return false
-	}
-	return o.Valid
+	return false
 }
 
 func (o *RuleActive2) GetValidationErrors() []string {
@@ -3819,7 +3816,7 @@ type RuleActive1 struct {
 	Active           bool                    `json:"active"`
 	ConditionGroup   []ActiveConditionGroup1 `json:"conditionGroup"`
 	Action           RuleActiveAction1       `json:"action"`
-	Valid            bool                    `json:"valid"`
+	valid            bool                    `const:"true" json:"valid"`
 	ValidationErrors any                     `json:"validationErrors"`
 }
 
@@ -3877,10 +3874,7 @@ func (o *RuleActive1) GetAction() RuleActiveAction1 {
 }
 
 func (o *RuleActive1) GetValid() bool {
-	if o == nil {
-		return false
-	}
-	return o.Valid
+	return true
 }
 
 func (o *RuleActive1) GetValidationErrors() any {

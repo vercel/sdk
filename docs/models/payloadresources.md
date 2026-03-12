@@ -8,7 +8,7 @@ import { PayloadResources } from "@vercel/sdk/models/userevent.js";
 let value: PayloadResources = {
   projectIds: {
     type: "list",
-    required: false,
+    required: true,
     items: {
       type: "string",
     },

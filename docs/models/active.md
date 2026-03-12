@@ -69,7 +69,7 @@ let value: Active = {
         },
       ],
       action: {},
-      valid: true,
+      valid: false,
       validationErrors: [
         "<value 1>",
       ],

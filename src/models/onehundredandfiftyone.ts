@@ -101,7 +101,7 @@ export type ProjectWebAnalytics = {
   disabledAt?: number | undefined;
   canceledAt?: number | undefined;
   enabledAt?: number | undefined;
-  hasData?: boolean | undefined;
+  hasData?: true | undefined;
 };
 
 export type PrevProjectWebAnalytics = {
@@ -109,7 +109,7 @@ export type PrevProjectWebAnalytics = {
   disabledAt?: number | undefined;
   canceledAt?: number | undefined;
   enabledAt?: number | undefined;
-  hasData?: boolean | undefined;
+  hasData?: true | undefined;
 };
 
 /**
@@ -1660,7 +1660,7 @@ export const ProjectWebAnalytics$inboundSchema: z.ZodType<
   disabledAt: types.optional(types.number()),
   canceledAt: types.optional(types.number()),
   enabledAt: types.optional(types.number()),
-  hasData: types.optional(types.boolean()),
+  hasData: types.optional(types.literal(true)),
 });
 /** @internal */
 export type ProjectWebAnalytics$Outbound = {
@@ -1668,7 +1668,7 @@ export type ProjectWebAnalytics$Outbound = {
   disabledAt?: number | undefined;
   canceledAt?: number | undefined;
   enabledAt?: number | undefined;
-  hasData?: boolean | undefined;
+  hasData?: true | undefined;
 };
 
 /** @internal */
@@ -1681,7 +1681,7 @@ export const ProjectWebAnalytics$outboundSchema: z.ZodType<
   disabledAt: z.number().optional(),
   canceledAt: z.number().optional(),
   enabledAt: z.number().optional(),
-  hasData: z.boolean().optional(),
+  hasData: z.literal(true).optional(),
 });
 
 export function projectWebAnalyticsToJSON(
@@ -1711,7 +1711,7 @@ export const PrevProjectWebAnalytics$inboundSchema: z.ZodType<
   disabledAt: types.optional(types.number()),
   canceledAt: types.optional(types.number()),
   enabledAt: types.optional(types.number()),
-  hasData: types.optional(types.boolean()),
+  hasData: types.optional(types.literal(true)),
 });
 /** @internal */
 export type PrevProjectWebAnalytics$Outbound = {
@@ -1719,7 +1719,7 @@ export type PrevProjectWebAnalytics$Outbound = {
   disabledAt?: number | undefined;
   canceledAt?: number | undefined;
   enabledAt?: number | undefined;
-  hasData?: boolean | undefined;
+  hasData?: true | undefined;
 };
 
 /** @internal */
@@ -1732,7 +1732,7 @@ export const PrevProjectWebAnalytics$outboundSchema: z.ZodType<
   disabledAt: z.number().optional(),
   canceledAt: z.number().optional(),
   enabledAt: z.number().optional(),
-  hasData: z.boolean().optional(),
+  hasData: z.literal(true).optional(),
 });
 
 export function prevProjectWebAnalyticsToJSON(

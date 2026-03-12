@@ -9,6 +9,16 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
+/**
+ * The payload of the event, if requested.
+ */
+export type SeventyEight = {
+  name: string;
+  userId: string;
+  teamId: string;
+  ownerName: string;
+};
+
 export type UserEventPayload77OldTeam = {
   name: string;
 };
@@ -1559,7 +1569,7 @@ export type Items = {
 
 export type PayloadProjectIds = {
   type: UserEventPayload26Type;
-  required: boolean;
+  required: true;
   items: Items;
 };
 
@@ -1585,6 +1595,12 @@ export const PayloadPermissions = {
   ReadDeployment: "read:deployment",
   ReadWriteDeployment: "read-write:deployment",
   ReadWriteEdgeCache: "read-write:edge-cache",
+  ReadWriteProjectProtectionBypass: "read-write:project-protection-bypass",
+  ReadProjectEnvVarsNonProduction: "read:project-env-vars-non-production",
+  ReadWriteProjectEnvVarsNonProduction:
+    "read-write:project-env-vars-non-production",
+  ReadProjectEnvVarsProduction: "read:project-env-vars-production",
+  ReadWriteProjectEnvVarsProduction: "read-write:project-env-vars-production",
 } as const;
 export type PayloadPermissions = ClosedEnum<typeof PayloadPermissions>;
 
@@ -1603,12 +1619,49 @@ export const UserEventPayload25Type = {
 } as const;
 export type UserEventPayload25Type = ClosedEnum<typeof UserEventPayload25Type>;
 
-export const UserEventPayload25BeforeType = {
-  String: "string",
-} as const;
-export type UserEventPayload25BeforeType = ClosedEnum<
-  typeof UserEventPayload25BeforeType
->;
+/** @internal */
+export const SeventyEight$inboundSchema: z.ZodType<
+  SeventyEight,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  name: types.string(),
+  userId: types.string(),
+  teamId: types.string(),
+  ownerName: types.string(),
+});
+/** @internal */
+export type SeventyEight$Outbound = {
+  name: string;
+  userId: string;
+  teamId: string;
+  ownerName: string;
+};
+
+/** @internal */
+export const SeventyEight$outboundSchema: z.ZodType<
+  SeventyEight$Outbound,
+  z.ZodTypeDef,
+  SeventyEight
+> = z.object({
+  name: z.string(),
+  userId: z.string(),
+  teamId: z.string(),
+  ownerName: z.string(),
+});
+
+export function seventyEightToJSON(seventyEight: SeventyEight): string {
+  return JSON.stringify(SeventyEight$outboundSchema.parse(seventyEight));
+}
+export function seventyEightFromJSON(
+  jsonString: string,
+): SafeParseResult<SeventyEight, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SeventyEight$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SeventyEight' from JSON`,
+  );
+}
 
 /** @internal */
 export const UserEventPayload77OldTeam$inboundSchema: z.ZodType<
@@ -7312,13 +7365,13 @@ export const PayloadProjectIds$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type: UserEventPayload26Type$inboundSchema,
-  required: types.boolean(),
+  required: types.literal(true),
   items: z.lazy(() => Items$inboundSchema),
 });
 /** @internal */
 export type PayloadProjectIds$Outbound = {
   type: string;
-  required: boolean;
+  required: true;
   items: Items$Outbound;
 };
 
@@ -7329,7 +7382,7 @@ export const PayloadProjectIds$outboundSchema: z.ZodType<
   PayloadProjectIds
 > = z.object({
   type: UserEventPayload26Type$outboundSchema,
-  required: z.boolean(),
+  required: z.literal(true),
   items: z.lazy(() => Items$outboundSchema),
 });
 
@@ -7446,12 +7499,3 @@ export const UserEventPayload25Type$inboundSchema: z.ZodNativeEnum<
 export const UserEventPayload25Type$outboundSchema: z.ZodNativeEnum<
   typeof UserEventPayload25Type
 > = UserEventPayload25Type$inboundSchema;
-
-/** @internal */
-export const UserEventPayload25BeforeType$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload25BeforeType
-> = z.nativeEnum(UserEventPayload25BeforeType);
-/** @internal */
-export const UserEventPayload25BeforeType$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload25BeforeType
-> = UserEventPayload25BeforeType$inboundSchema;

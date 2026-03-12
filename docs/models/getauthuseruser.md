@@ -29,7 +29,7 @@ const value: models.AuthUser = {
 
 ```typescript
 const value: models.AuthUserLimited = {
-  limited: false,
+  limited: true,
   id: "AEIIDYVk59zbFF2Sxfyxxmua",
   email: "me@example.com",
   name: "John Doe",

@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/optionalnullable"
+	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 )
 
@@ -5210,7 +5211,7 @@ func (u CreateProjectLinkUnion) MarshalJSON() ([]byte, error) {
 type CreateProjectMicrofrontends3 struct {
 	UpdatedAt                  float64 `json:"updatedAt"`
 	GroupIds                   []any   `json:"groupIds"`
-	Enabled                    bool    `json:"enabled"`
+	enabled                    bool    `const:"false" json:"enabled"`
 	FreeProjectForLegacyLimits *bool   `json:"freeProjectForLegacyLimits,omitempty"`
 }
 
@@ -5240,10 +5241,7 @@ func (o *CreateProjectMicrofrontends3) GetGroupIds() []any {
 }
 
 func (o *CreateProjectMicrofrontends3) GetEnabled() bool {
-	if o == nil {
-		return false
-	}
-	return o.Enabled
+	return false
 }
 
 func (o *CreateProjectMicrofrontends3) GetFreeProjectForLegacyLimits() *bool {
@@ -5254,7 +5252,7 @@ func (o *CreateProjectMicrofrontends3) GetFreeProjectForLegacyLimits() *bool {
 }
 
 type CreateProjectMicrofrontends2 struct {
-	IsDefaultApp *bool `json:"isDefaultApp,omitempty"`
+	isDefaultApp *bool `const:"false" json:"isDefaultApp,omitempty"`
 	// Whether observability data should be routed to this microfrontend project or a root project.
 	RouteObservabilityToThisProject *bool `json:"routeObservabilityToThisProject,omitempty"`
 	// Whether to add microfrontends routing to aliases. This means domains in this project will route as a microfrontend.
@@ -5264,7 +5262,7 @@ type CreateProjectMicrofrontends2 struct {
 	// The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
 	GroupIds []string `json:"groupIds"`
 	// Whether microfrontends are enabled for this project.
-	Enabled bool `json:"enabled"`
+	enabled bool `const:"true" json:"enabled"`
 	// A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
 	DefaultRoute *string `json:"defaultRoute,omitempty"`
 	// Whether the project was part of the legacy limits for hobby and pro-trial before billing was added. This field is only set when the team is upgraded to a paid plan and we are backfilling the subscription status. We cap the subscription to 2 projects and set this field for the 3rd project. When this field is set, the project is not charged for and we do not call any billing APIs for this project.
@@ -5283,10 +5281,7 @@ func (c *CreateProjectMicrofrontends2) UnmarshalJSON(data []byte) error {
 }
 
 func (o *CreateProjectMicrofrontends2) GetIsDefaultApp() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.IsDefaultApp
+	return types.Bool(false)
 }
 
 func (o *CreateProjectMicrofrontends2) GetRouteObservabilityToThisProject() *bool {
@@ -5318,10 +5313,7 @@ func (o *CreateProjectMicrofrontends2) GetGroupIds() []string {
 }
 
 func (o *CreateProjectMicrofrontends2) GetEnabled() bool {
-	if o == nil {
-		return false
-	}
-	return o.Enabled
+	return true
 }
 
 func (o *CreateProjectMicrofrontends2) GetDefaultRoute() *string {
@@ -5339,13 +5331,13 @@ func (o *CreateProjectMicrofrontends2) GetFreeProjectForLegacyLimits() *bool {
 }
 
 type CreateProjectMicrofrontends1 struct {
-	IsDefaultApp bool `json:"isDefaultApp"`
+	isDefaultApp bool `const:"true" json:"isDefaultApp"`
 	// Timestamp when the microfrontends settings were last updated.
 	UpdatedAt float64 `json:"updatedAt"`
 	// The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
 	GroupIds []string `json:"groupIds"`
 	// Whether microfrontends are enabled for this project.
-	Enabled bool `json:"enabled"`
+	enabled bool `const:"true" json:"enabled"`
 	// A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
 	DefaultRoute *string `json:"defaultRoute,omitempty"`
 	// Whether the project was part of the legacy limits for hobby and pro-trial before billing was added. This field is only set when the team is upgraded to a paid plan and we are backfilling the subscription status. We cap the subscription to 2 projects and set this field for the 3rd project. When this field is set, the project is not charged for and we do not call any billing APIs for this project.
@@ -5364,10 +5356,7 @@ func (c *CreateProjectMicrofrontends1) UnmarshalJSON(data []byte) error {
 }
 
 func (o *CreateProjectMicrofrontends1) GetIsDefaultApp() bool {
-	if o == nil {
-		return false
-	}
-	return o.IsDefaultApp
+	return true
 }
 
 func (o *CreateProjectMicrofrontends1) GetUpdatedAt() float64 {
@@ -5385,10 +5374,7 @@ func (o *CreateProjectMicrofrontends1) GetGroupIds() []string {
 }
 
 func (o *CreateProjectMicrofrontends1) GetEnabled() bool {
-	if o == nil {
-		return false
-	}
-	return o.Enabled
+	return true
 }
 
 func (o *CreateProjectMicrofrontends1) GetDefaultRoute() *string {
@@ -9043,7 +9029,18 @@ type CreateProjectWebAnalytics struct {
 	DisabledAt *float64 `json:"disabledAt,omitempty"`
 	CanceledAt *float64 `json:"canceledAt,omitempty"`
 	EnabledAt  *float64 `json:"enabledAt,omitempty"`
-	HasData    *bool    `json:"hasData,omitempty"`
+	hasData    *bool    `const:"true" json:"hasData,omitempty"`
+}
+
+func (c CreateProjectWebAnalytics) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectWebAnalytics) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateProjectWebAnalytics) GetID() string {
@@ -9075,10 +9072,7 @@ func (o *CreateProjectWebAnalytics) GetEnabledAt() *float64 {
 }
 
 func (o *CreateProjectWebAnalytics) GetHasData() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.HasData
+	return types.Bool(true)
 }
 
 type CreateProjectVercelRulesetAction string

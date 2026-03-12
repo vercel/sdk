@@ -11,6 +11,44 @@ import (
 	"time"
 )
 
+type AnalyticsUsage struct {
+	CurrentThreshold float64                                    `json:"currentThreshold"`
+	WarningAt        optionalnullable.OptionalNullable[float64] `json:"warningAt,omitempty"`
+	BlockedAt        optionalnullable.OptionalNullable[float64] `json:"blockedAt,omitempty"`
+}
+
+func (a AnalyticsUsage) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AnalyticsUsage) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *AnalyticsUsage) GetCurrentThreshold() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CurrentThreshold
+}
+
+func (o *AnalyticsUsage) GetWarningAt() optionalnullable.OptionalNullable[float64] {
+	if o == nil {
+		return nil
+	}
+	return o.WarningAt
+}
+
+func (o *AnalyticsUsage) GetBlockedAt() optionalnullable.OptionalNullable[float64] {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedAt
+}
+
 type Artifacts struct {
 	CurrentThreshold float64                                    `json:"currentThreshold"`
 	WarningAt        optionalnullable.OptionalNullable[float64] `json:"warningAt,omitempty"`
@@ -7615,27 +7653,4 @@ func (o *Payload79) GetZone() bool {
 		return false
 	}
 	return o.Zone
-}
-
-// Payload78 - The payload of the event, if requested.
-type Payload78 struct {
-	Domain string `json:"domain"`
-}
-
-func (p Payload78) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Payload78) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"domain"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *Payload78) GetDomain() string {
-	if o == nil {
-		return ""
-	}
-	return o.Domain
 }

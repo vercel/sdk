@@ -18,4 +18,4 @@ let value: CreateProjectWebAnalytics = {
 | `disabledAt`       | *number*           | :heavy_minus_sign: | N/A                |
 | `canceledAt`       | *number*           | :heavy_minus_sign: | N/A                |
 | `enabledAt`        | *number*           | :heavy_minus_sign: | N/A                |
-| `hasData`          | *boolean*          | :heavy_minus_sign: | N/A                |
+| `hasData`          | *true*             | :heavy_minus_sign: | N/A                |

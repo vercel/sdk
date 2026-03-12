@@ -8,13 +8,13 @@
 ```typescript
 const value: models.CreateProjectMicrofrontends1 = {
   isDefaultApp: true,
-  updatedAt: 8233.66,
+  updatedAt: 1263.63,
   groupIds: [
     "<value 1>",
     "<value 2>",
     "<value 3>",
   ],
-  enabled: false,
+  enabled: true,
 };
 ```
 
@@ -24,7 +24,7 @@ const value: models.CreateProjectMicrofrontends1 = {
 const value: models.CreateProjectMicrofrontends2 = {
   updatedAt: 8320.85,
   groupIds: [],
-  enabled: false,
+  enabled: true,
 };
 ```
 
@@ -38,7 +38,7 @@ const value: models.CreateProjectMicrofrontends3 = {
     "<value 2>",
     "<value 3>",
   ],
-  enabled: true,
+  enabled: false,
 };
 ```
 

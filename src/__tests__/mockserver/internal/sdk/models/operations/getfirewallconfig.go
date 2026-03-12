@@ -1336,7 +1336,7 @@ type GetFirewallConfigRule2 struct {
 	Active           bool                               `json:"active"`
 	ConditionGroup   []GetFirewallConfigConditionGroup2 `json:"conditionGroup"`
 	Action           GetFirewallConfigRuleAction2       `json:"action"`
-	Valid            bool                               `json:"valid"`
+	valid            bool                               `const:"false" json:"valid"`
 	ValidationErrors []string                           `json:"validationErrors"`
 }
 
@@ -1394,10 +1394,7 @@ func (o *GetFirewallConfigRule2) GetAction() GetFirewallConfigRuleAction2 {
 }
 
 func (o *GetFirewallConfigRule2) GetValid() bool {
-	if o == nil {
-		return false
-	}
-	return o.Valid
+	return false
 }
 
 func (o *GetFirewallConfigRule2) GetValidationErrors() []string {
@@ -2085,7 +2082,7 @@ type GetFirewallConfigRule1 struct {
 	Active           bool                               `json:"active"`
 	ConditionGroup   []GetFirewallConfigConditionGroup1 `json:"conditionGroup"`
 	Action           GetFirewallConfigRuleAction1       `json:"action"`
-	Valid            bool                               `json:"valid"`
+	valid            bool                               `const:"true" json:"valid"`
 	ValidationErrors any                                `json:"validationErrors"`
 }
 
@@ -2143,10 +2140,7 @@ func (o *GetFirewallConfigRule1) GetAction() GetFirewallConfigRuleAction1 {
 }
 
 func (o *GetFirewallConfigRule1) GetValid() bool {
-	if o == nil {
-		return false
-	}
-	return o.Valid
+	return true
 }
 
 func (o *GetFirewallConfigRule1) GetValidationErrors() any {

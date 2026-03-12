@@ -479,7 +479,7 @@ export type Membership = {
   uid?: string | undefined;
   entitlements?: Array<Entitlements> | undefined;
   teamId?: string | undefined;
-  confirmed: boolean;
+  confirmed: true;
   accessRequestedAt?: number | undefined;
   role: TeamRole;
   teamRoles?: Array<TeamMembershipTeamRoles> | undefined;
@@ -1646,7 +1646,7 @@ export const Membership$inboundSchema: z.ZodType<
     z.array(z.lazy(() => Entitlements$inboundSchema)),
   ),
   teamId: types.optional(types.string()),
-  confirmed: types.boolean(),
+  confirmed: types.literal(true),
   accessRequestedAt: types.optional(types.number()),
   role: TeamRole$inboundSchema,
   teamRoles: types.optional(z.array(TeamMembershipTeamRoles$inboundSchema)),
@@ -1662,7 +1662,7 @@ export type Membership$Outbound = {
   uid?: string | undefined;
   entitlements?: Array<Entitlements$Outbound> | undefined;
   teamId?: string | undefined;
-  confirmed: boolean;
+  confirmed: true;
   accessRequestedAt?: number | undefined;
   role: string;
   teamRoles?: Array<string> | undefined;
@@ -1681,7 +1681,7 @@ export const Membership$outboundSchema: z.ZodType<
   uid: z.string().optional(),
   entitlements: z.array(z.lazy(() => Entitlements$outboundSchema)).optional(),
   teamId: z.string().optional(),
-  confirmed: z.boolean(),
+  confirmed: z.literal(true),
   accessRequestedAt: z.number().optional(),
   role: TeamRole$outboundSchema,
   teamRoles: z.array(TeamMembershipTeamRoles$outboundSchema).optional(),

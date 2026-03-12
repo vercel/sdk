@@ -8,10 +8,10 @@ The membership of the authenticated User in relation to the Team.
 import { Membership } from "@vercel/sdk/models/team.js";
 
 let value: Membership = {
-  confirmed: false,
-  role: "OWNER",
-  createdAt: 2058.4,
-  created: 8507.09,
+  confirmed: true,
+  role: "BILLING",
+  createdAt: 149.12,
+  created: 2058.4,
 };
 ```
 
@@ -22,7 +22,7 @@ let value: Membership = {
 | `uid`                                                                                | *string*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
 | `entitlements`                                                                       | [models.Entitlements](../models/entitlements.md)[]                                   | :heavy_minus_sign:                                                                   | N/A                                                                                  |
 | `teamId`                                                                             | *string*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `confirmed`                                                                          | *boolean*                                                                            | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `confirmed`                                                                          | *true*                                                                               | :heavy_check_mark:                                                                   | N/A                                                                                  |
 | `accessRequestedAt`                                                                  | *number*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
 | `role`                                                                               | [models.TeamRole](../models/teamrole.md)                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
 | `teamRoles`                                                                          | [models.TeamMembershipTeamRoles](../models/teammembershipteamroles.md)[]             | :heavy_minus_sign:                                                                   | N/A                                                                                  |

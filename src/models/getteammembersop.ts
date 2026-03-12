@@ -290,7 +290,7 @@ export type EmailInviteCodes = {
   teamPermissions?: Array<GetTeamMembersTeamPermissions> | undefined;
   isDSyncUser: boolean;
   createdAt?: number | undefined;
-  expired?: boolean | undefined;
+  expired?: true | undefined;
   projects?: { [k: string]: GetTeamMembersTeamsProjects } | undefined;
   entitlements?: Array<string> | undefined;
 };
@@ -820,7 +820,7 @@ export const EmailInviteCodes$inboundSchema: z.ZodType<
   ),
   isDSyncUser: types.boolean(),
   createdAt: types.optional(types.number()),
-  expired: types.optional(types.boolean()),
+  expired: types.optional(types.literal(true)),
   projects: types.optional(z.record(GetTeamMembersTeamsProjects$inboundSchema)),
   entitlements: types.optional(z.array(types.string())),
 });
@@ -834,7 +834,7 @@ export type EmailInviteCodes$Outbound = {
   teamPermissions?: Array<string> | undefined;
   isDSyncUser: boolean;
   createdAt?: number | undefined;
-  expired?: boolean | undefined;
+  expired?: true | undefined;
   projects?: { [k: string]: string } | undefined;
   entitlements?: Array<string> | undefined;
 };
@@ -854,7 +854,7 @@ export const EmailInviteCodes$outboundSchema: z.ZodType<
     .optional(),
   isDSyncUser: z.boolean(),
   createdAt: z.number().optional(),
-  expired: z.boolean().optional(),
+  expired: z.literal(true).optional(),
   projects: z.record(GetTeamMembersTeamsProjects$outboundSchema).optional(),
   entitlements: z.array(z.string()).optional(),
 });

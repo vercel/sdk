@@ -8006,7 +8006,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {"types":[{"replacedBy":["<value 1>","<value 2>"],"deprecated":false,"name":"domain-transfer-in","description":"woot baritone lasting ah foot when worth whether bleakly"}]}
+              {"types":[{"replacedBy":["<value 1>","<value 2>"],"deprecated":true,"name":"domain-transfer-in","description":"woot baritone lasting ah foot when worth whether bleakly"}]}
             type: simple
     x-speakeasy-test-group: user
     x-speakeasy-test-rebuild: true

@@ -11,7 +11,7 @@ let value: UpdateProjectMicrofrontends3 = {
     "<value 1>",
     "<value 2>",
   ],
-  enabled: true,
+  enabled: false,
 };
 ```
 
@@ -21,5 +21,5 @@ let value: UpdateProjectMicrofrontends3 = {
 | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
 | `updatedAt`                  | *number*                     | :heavy_check_mark:           | N/A                          |
 | `groupIds`                   | *any*[]                      | :heavy_check_mark:           | N/A                          |
-| `enabled`                    | *boolean*                    | :heavy_check_mark:           | N/A                          |
+| `enabled`                    | *false*                      | :heavy_check_mark:           | N/A                          |
 | `freeProjectForLegacyLimits` | *boolean*                    | :heavy_minus_sign:           | N/A                          |

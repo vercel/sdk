@@ -1057,12 +1057,12 @@ export type Link = Link1 | Link2 | Link3 | Link4 | Link5;
 export type CreateProjectMicrofrontends3 = {
   updatedAt: number;
   groupIds: Array<any>;
-  enabled: boolean;
+  enabled: false;
   freeProjectForLegacyLimits?: boolean | undefined;
 };
 
 export type CreateProjectMicrofrontends2 = {
-  isDefaultApp?: boolean | undefined;
+  isDefaultApp?: false | undefined;
   /**
    * Whether observability data should be routed to this microfrontend project or a root project.
    */
@@ -1082,7 +1082,7 @@ export type CreateProjectMicrofrontends2 = {
   /**
    * Whether microfrontends are enabled for this project.
    */
-  enabled: boolean;
+  enabled: true;
   /**
    * A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
    */
@@ -1094,7 +1094,7 @@ export type CreateProjectMicrofrontends2 = {
 };
 
 export type CreateProjectMicrofrontends1 = {
-  isDefaultApp: boolean;
+  isDefaultApp: true;
   /**
    * Timestamp when the microfrontends settings were last updated.
    */
@@ -1106,7 +1106,7 @@ export type CreateProjectMicrofrontends1 = {
   /**
    * Whether microfrontends are enabled for this project.
    */
-  enabled: boolean;
+  enabled: true;
   /**
    * A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
    */
@@ -1773,7 +1773,7 @@ export type CreateProjectWebAnalytics = {
   disabledAt?: number | undefined;
   canceledAt?: number | undefined;
   enabledAt?: number | undefined;
-  hasData?: boolean | undefined;
+  hasData?: true | undefined;
 };
 
 export const CreateProjectProjectsResponse200ApplicationJSONAction = {
@@ -5572,14 +5572,14 @@ export const CreateProjectMicrofrontends3$inboundSchema: z.ZodType<
 > = z.object({
   updatedAt: types.number(),
   groupIds: z.array(z.any()),
-  enabled: types.boolean(),
+  enabled: types.literal(false),
   freeProjectForLegacyLimits: types.optional(types.boolean()),
 });
 /** @internal */
 export type CreateProjectMicrofrontends3$Outbound = {
   updatedAt: number;
   groupIds: Array<any>;
-  enabled: boolean;
+  enabled: false;
   freeProjectForLegacyLimits?: boolean | undefined;
 };
 
@@ -5591,7 +5591,7 @@ export const CreateProjectMicrofrontends3$outboundSchema: z.ZodType<
 > = z.object({
   updatedAt: z.number(),
   groupIds: z.array(z.any()),
-  enabled: z.boolean(),
+  enabled: z.literal(false),
   freeProjectForLegacyLimits: z.boolean().optional(),
 });
 
@@ -5620,23 +5620,23 @@ export const CreateProjectMicrofrontends2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  isDefaultApp: types.optional(types.boolean()),
+  isDefaultApp: types.optional(types.literal(false)),
   routeObservabilityToThisProject: types.optional(types.boolean()),
   doNotRouteWithMicrofrontendsRouting: types.optional(types.boolean()),
   updatedAt: types.number(),
   groupIds: z.array(types.string()),
-  enabled: types.boolean(),
+  enabled: types.literal(true),
   defaultRoute: types.optional(types.string()),
   freeProjectForLegacyLimits: types.optional(types.boolean()),
 });
 /** @internal */
 export type CreateProjectMicrofrontends2$Outbound = {
-  isDefaultApp?: boolean | undefined;
+  isDefaultApp?: false | undefined;
   routeObservabilityToThisProject?: boolean | undefined;
   doNotRouteWithMicrofrontendsRouting?: boolean | undefined;
   updatedAt: number;
   groupIds: Array<string>;
-  enabled: boolean;
+  enabled: true;
   defaultRoute?: string | undefined;
   freeProjectForLegacyLimits?: boolean | undefined;
 };
@@ -5647,12 +5647,12 @@ export const CreateProjectMicrofrontends2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectMicrofrontends2
 > = z.object({
-  isDefaultApp: z.boolean().optional(),
+  isDefaultApp: z.literal(false).optional(),
   routeObservabilityToThisProject: z.boolean().optional(),
   doNotRouteWithMicrofrontendsRouting: z.boolean().optional(),
   updatedAt: z.number(),
   groupIds: z.array(z.string()),
-  enabled: z.boolean(),
+  enabled: z.literal(true),
   defaultRoute: z.string().optional(),
   freeProjectForLegacyLimits: z.boolean().optional(),
 });
@@ -5682,19 +5682,19 @@ export const CreateProjectMicrofrontends1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  isDefaultApp: types.boolean(),
+  isDefaultApp: types.literal(true),
   updatedAt: types.number(),
   groupIds: z.array(types.string()),
-  enabled: types.boolean(),
+  enabled: types.literal(true),
   defaultRoute: types.optional(types.string()),
   freeProjectForLegacyLimits: types.optional(types.boolean()),
 });
 /** @internal */
 export type CreateProjectMicrofrontends1$Outbound = {
-  isDefaultApp: boolean;
+  isDefaultApp: true;
   updatedAt: number;
   groupIds: Array<string>;
-  enabled: boolean;
+  enabled: true;
   defaultRoute?: string | undefined;
   freeProjectForLegacyLimits?: boolean | undefined;
 };
@@ -5705,10 +5705,10 @@ export const CreateProjectMicrofrontends1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectMicrofrontends1
 > = z.object({
-  isDefaultApp: z.boolean(),
+  isDefaultApp: z.literal(true),
   updatedAt: z.number(),
   groupIds: z.array(z.string()),
-  enabled: z.boolean(),
+  enabled: z.literal(true),
   defaultRoute: z.string().optional(),
   freeProjectForLegacyLimits: z.boolean().optional(),
 });
@@ -8044,7 +8044,7 @@ export const CreateProjectWebAnalytics$inboundSchema: z.ZodType<
   disabledAt: types.optional(types.number()),
   canceledAt: types.optional(types.number()),
   enabledAt: types.optional(types.number()),
-  hasData: types.optional(types.boolean()),
+  hasData: types.optional(types.literal(true)),
 });
 /** @internal */
 export type CreateProjectWebAnalytics$Outbound = {
@@ -8052,7 +8052,7 @@ export type CreateProjectWebAnalytics$Outbound = {
   disabledAt?: number | undefined;
   canceledAt?: number | undefined;
   enabledAt?: number | undefined;
-  hasData?: boolean | undefined;
+  hasData?: true | undefined;
 };
 
 /** @internal */
@@ -8065,7 +8065,7 @@ export const CreateProjectWebAnalytics$outboundSchema: z.ZodType<
   disabledAt: z.number().optional(),
   canceledAt: z.number().optional(),
   enabledAt: z.number().optional(),
-  hasData: z.boolean().optional(),
+  hasData: z.literal(true).optional(),
 });
 
 export function createProjectWebAnalyticsToJSON(

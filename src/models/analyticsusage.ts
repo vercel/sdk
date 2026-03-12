@@ -425,12 +425,12 @@ export type OneHundredAndTwentySix = {
 export type Microfrontends3 = {
   updatedAt: number;
   groupIds: Array<any>;
-  enabled: boolean;
+  enabled: false;
   freeProjectForLegacyLimits?: boolean | undefined;
 };
 
 export type Microfrontends2 = {
-  isDefaultApp?: boolean | undefined;
+  isDefaultApp?: false | undefined;
   /**
    * Whether observability data should be routed to this microfrontend project or a root project.
    */
@@ -450,7 +450,7 @@ export type Microfrontends2 = {
   /**
    * Whether microfrontends are enabled for this project.
    */
-  enabled: boolean;
+  enabled: true;
   /**
    * A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
    */
@@ -462,7 +462,7 @@ export type Microfrontends2 = {
 };
 
 export type Microfrontends1 = {
-  isDefaultApp: boolean;
+  isDefaultApp: true;
   /**
    * Timestamp when the microfrontends settings were last updated.
    */
@@ -474,7 +474,7 @@ export type Microfrontends1 = {
   /**
    * Whether microfrontends are enabled for this project.
    */
-  enabled: boolean;
+  enabled: true;
   /**
    * A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
    */
@@ -503,12 +503,12 @@ export type UserEventPayload125Project = {
 export type UserEventMicrofrontends3 = {
   updatedAt: number;
   groupIds: Array<any>;
-  enabled: boolean;
+  enabled: false;
   freeProjectForLegacyLimits?: boolean | undefined;
 };
 
 export type UserEventMicrofrontends2 = {
-  isDefaultApp?: boolean | undefined;
+  isDefaultApp?: false | undefined;
   /**
    * Whether observability data should be routed to this microfrontend project or a root project.
    */
@@ -528,7 +528,7 @@ export type UserEventMicrofrontends2 = {
   /**
    * Whether microfrontends are enabled for this project.
    */
-  enabled: boolean;
+  enabled: true;
   /**
    * A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
    */
@@ -540,7 +540,7 @@ export type UserEventMicrofrontends2 = {
 };
 
 export type UserEventMicrofrontends1 = {
-  isDefaultApp: boolean;
+  isDefaultApp: true;
   /**
    * Timestamp when the microfrontends settings were last updated.
    */
@@ -552,7 +552,7 @@ export type UserEventMicrofrontends1 = {
   /**
    * Whether microfrontends are enabled for this project.
    */
-  enabled: boolean;
+  enabled: true;
   /**
    * A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
    */
@@ -1059,12 +1059,21 @@ export type PayloadDefaultPurchaseType = ClosedEnum<
   typeof PayloadDefaultPurchaseType
 >;
 
+export const PayloadMachineSelectionType = {
+  Fixed: "fixed",
+  Elastic: "elastic",
+} as const;
+export type PayloadMachineSelectionType = ClosedEnum<
+  typeof PayloadMachineSelectionType
+>;
+
 export type PayloadBuildMachine = {
   default?: PayloadDefault | undefined;
   purchaseType?: PayloadPurchaseType | undefined;
   defaultPurchaseType?: PayloadDefaultPurchaseType | undefined;
   cores?: number | undefined;
   memory?: number | undefined;
+  machineSelectionType?: PayloadMachineSelectionType | undefined;
 };
 
 export type PayloadSecurity = {
@@ -1313,7 +1322,7 @@ export type Teams = {
   teamId: string;
   created: number;
   role: UserEventPayload112Role;
-  confirmed: boolean;
+  confirmed: true;
   confirmedAt: number;
   accessRequestedAt?: number | undefined;
   teamRoles?: Array<PayloadTeamRoles> | undefined;
@@ -1337,12 +1346,6 @@ export type UsageAlerts = {
 };
 
 export type AnalyticsUsage = {
-  currentThreshold: number;
-  warningAt?: number | null | undefined;
-  blockedAt?: number | null | undefined;
-};
-
-export type Artifacts = {
   currentThreshold: number;
   warningAt?: number | null | undefined;
   blockedAt?: number | null | undefined;
@@ -3279,14 +3282,14 @@ export const Microfrontends3$inboundSchema: z.ZodType<
 > = z.object({
   updatedAt: types.number(),
   groupIds: z.array(z.any()),
-  enabled: types.boolean(),
+  enabled: types.literal(false),
   freeProjectForLegacyLimits: types.optional(types.boolean()),
 });
 /** @internal */
 export type Microfrontends3$Outbound = {
   updatedAt: number;
   groupIds: Array<any>;
-  enabled: boolean;
+  enabled: false;
   freeProjectForLegacyLimits?: boolean | undefined;
 };
 
@@ -3298,7 +3301,7 @@ export const Microfrontends3$outboundSchema: z.ZodType<
 > = z.object({
   updatedAt: z.number(),
   groupIds: z.array(z.any()),
-  enabled: z.boolean(),
+  enabled: z.literal(false),
   freeProjectForLegacyLimits: z.boolean().optional(),
 });
 
@@ -3323,23 +3326,23 @@ export const Microfrontends2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  isDefaultApp: types.optional(types.boolean()),
+  isDefaultApp: types.optional(types.literal(false)),
   routeObservabilityToThisProject: types.optional(types.boolean()),
   doNotRouteWithMicrofrontendsRouting: types.optional(types.boolean()),
   updatedAt: types.number(),
   groupIds: z.array(types.string()),
-  enabled: types.boolean(),
+  enabled: types.literal(true),
   defaultRoute: types.optional(types.string()),
   freeProjectForLegacyLimits: types.optional(types.boolean()),
 });
 /** @internal */
 export type Microfrontends2$Outbound = {
-  isDefaultApp?: boolean | undefined;
+  isDefaultApp?: false | undefined;
   routeObservabilityToThisProject?: boolean | undefined;
   doNotRouteWithMicrofrontendsRouting?: boolean | undefined;
   updatedAt: number;
   groupIds: Array<string>;
-  enabled: boolean;
+  enabled: true;
   defaultRoute?: string | undefined;
   freeProjectForLegacyLimits?: boolean | undefined;
 };
@@ -3350,12 +3353,12 @@ export const Microfrontends2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Microfrontends2
 > = z.object({
-  isDefaultApp: z.boolean().optional(),
+  isDefaultApp: z.literal(false).optional(),
   routeObservabilityToThisProject: z.boolean().optional(),
   doNotRouteWithMicrofrontendsRouting: z.boolean().optional(),
   updatedAt: z.number(),
   groupIds: z.array(z.string()),
-  enabled: z.boolean(),
+  enabled: z.literal(true),
   defaultRoute: z.string().optional(),
   freeProjectForLegacyLimits: z.boolean().optional(),
 });
@@ -3381,19 +3384,19 @@ export const Microfrontends1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  isDefaultApp: types.boolean(),
+  isDefaultApp: types.literal(true),
   updatedAt: types.number(),
   groupIds: z.array(types.string()),
-  enabled: types.boolean(),
+  enabled: types.literal(true),
   defaultRoute: types.optional(types.string()),
   freeProjectForLegacyLimits: types.optional(types.boolean()),
 });
 /** @internal */
 export type Microfrontends1$Outbound = {
-  isDefaultApp: boolean;
+  isDefaultApp: true;
   updatedAt: number;
   groupIds: Array<string>;
-  enabled: boolean;
+  enabled: true;
   defaultRoute?: string | undefined;
   freeProjectForLegacyLimits?: boolean | undefined;
 };
@@ -3404,10 +3407,10 @@ export const Microfrontends1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Microfrontends1
 > = z.object({
-  isDefaultApp: z.boolean(),
+  isDefaultApp: z.literal(true),
   updatedAt: z.number(),
   groupIds: z.array(z.string()),
-  enabled: z.boolean(),
+  enabled: z.literal(true),
   defaultRoute: z.string().optional(),
   freeProjectForLegacyLimits: z.boolean().optional(),
 });
@@ -3534,14 +3537,14 @@ export const UserEventMicrofrontends3$inboundSchema: z.ZodType<
 > = z.object({
   updatedAt: types.number(),
   groupIds: z.array(z.any()),
-  enabled: types.boolean(),
+  enabled: types.literal(false),
   freeProjectForLegacyLimits: types.optional(types.boolean()),
 });
 /** @internal */
 export type UserEventMicrofrontends3$Outbound = {
   updatedAt: number;
   groupIds: Array<any>;
-  enabled: boolean;
+  enabled: false;
   freeProjectForLegacyLimits?: boolean | undefined;
 };
 
@@ -3553,7 +3556,7 @@ export const UserEventMicrofrontends3$outboundSchema: z.ZodType<
 > = z.object({
   updatedAt: z.number(),
   groupIds: z.array(z.any()),
-  enabled: z.boolean(),
+  enabled: z.literal(false),
   freeProjectForLegacyLimits: z.boolean().optional(),
 });
 
@@ -3580,23 +3583,23 @@ export const UserEventMicrofrontends2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  isDefaultApp: types.optional(types.boolean()),
+  isDefaultApp: types.optional(types.literal(false)),
   routeObservabilityToThisProject: types.optional(types.boolean()),
   doNotRouteWithMicrofrontendsRouting: types.optional(types.boolean()),
   updatedAt: types.number(),
   groupIds: z.array(types.string()),
-  enabled: types.boolean(),
+  enabled: types.literal(true),
   defaultRoute: types.optional(types.string()),
   freeProjectForLegacyLimits: types.optional(types.boolean()),
 });
 /** @internal */
 export type UserEventMicrofrontends2$Outbound = {
-  isDefaultApp?: boolean | undefined;
+  isDefaultApp?: false | undefined;
   routeObservabilityToThisProject?: boolean | undefined;
   doNotRouteWithMicrofrontendsRouting?: boolean | undefined;
   updatedAt: number;
   groupIds: Array<string>;
-  enabled: boolean;
+  enabled: true;
   defaultRoute?: string | undefined;
   freeProjectForLegacyLimits?: boolean | undefined;
 };
@@ -3607,12 +3610,12 @@ export const UserEventMicrofrontends2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UserEventMicrofrontends2
 > = z.object({
-  isDefaultApp: z.boolean().optional(),
+  isDefaultApp: z.literal(false).optional(),
   routeObservabilityToThisProject: z.boolean().optional(),
   doNotRouteWithMicrofrontendsRouting: z.boolean().optional(),
   updatedAt: z.number(),
   groupIds: z.array(z.string()),
-  enabled: z.boolean(),
+  enabled: z.literal(true),
   defaultRoute: z.string().optional(),
   freeProjectForLegacyLimits: z.boolean().optional(),
 });
@@ -3640,19 +3643,19 @@ export const UserEventMicrofrontends1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  isDefaultApp: types.boolean(),
+  isDefaultApp: types.literal(true),
   updatedAt: types.number(),
   groupIds: z.array(types.string()),
-  enabled: types.boolean(),
+  enabled: types.literal(true),
   defaultRoute: types.optional(types.string()),
   freeProjectForLegacyLimits: types.optional(types.boolean()),
 });
 /** @internal */
 export type UserEventMicrofrontends1$Outbound = {
-  isDefaultApp: boolean;
+  isDefaultApp: true;
   updatedAt: number;
   groupIds: Array<string>;
-  enabled: boolean;
+  enabled: true;
   defaultRoute?: string | undefined;
   freeProjectForLegacyLimits?: boolean | undefined;
 };
@@ -3663,10 +3666,10 @@ export const UserEventMicrofrontends1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UserEventMicrofrontends1
 > = z.object({
-  isDefaultApp: z.boolean(),
+  isDefaultApp: z.literal(true),
   updatedAt: z.number(),
   groupIds: z.array(z.string()),
-  enabled: z.boolean(),
+  enabled: z.literal(true),
   defaultRoute: z.string().optional(),
   freeProjectForLegacyLimits: z.boolean().optional(),
 });
@@ -6127,6 +6130,15 @@ export const PayloadDefaultPurchaseType$outboundSchema: z.ZodNativeEnum<
 > = PayloadDefaultPurchaseType$inboundSchema;
 
 /** @internal */
+export const PayloadMachineSelectionType$inboundSchema: z.ZodNativeEnum<
+  typeof PayloadMachineSelectionType
+> = z.nativeEnum(PayloadMachineSelectionType);
+/** @internal */
+export const PayloadMachineSelectionType$outboundSchema: z.ZodNativeEnum<
+  typeof PayloadMachineSelectionType
+> = PayloadMachineSelectionType$inboundSchema;
+
+/** @internal */
 export const PayloadBuildMachine$inboundSchema: z.ZodType<
   PayloadBuildMachine,
   z.ZodTypeDef,
@@ -6137,6 +6149,9 @@ export const PayloadBuildMachine$inboundSchema: z.ZodType<
   defaultPurchaseType: types.optional(PayloadDefaultPurchaseType$inboundSchema),
   cores: types.optional(types.number()),
   memory: types.optional(types.number()),
+  machineSelectionType: types.optional(
+    PayloadMachineSelectionType$inboundSchema,
+  ),
 });
 /** @internal */
 export type PayloadBuildMachine$Outbound = {
@@ -6145,6 +6160,7 @@ export type PayloadBuildMachine$Outbound = {
   defaultPurchaseType?: string | undefined;
   cores?: number | undefined;
   memory?: number | undefined;
+  machineSelectionType?: string | undefined;
 };
 
 /** @internal */
@@ -6158,6 +6174,7 @@ export const PayloadBuildMachine$outboundSchema: z.ZodType<
   defaultPurchaseType: PayloadDefaultPurchaseType$outboundSchema.optional(),
   cores: z.number().optional(),
   memory: z.number().optional(),
+  machineSelectionType: PayloadMachineSelectionType$outboundSchema.optional(),
 });
 
 export function payloadBuildMachineToJSON(
@@ -6911,7 +6928,7 @@ export const Teams$inboundSchema: z.ZodType<Teams, z.ZodTypeDef, unknown> = z
     teamId: types.string(),
     created: types.number(),
     role: UserEventPayload112Role$inboundSchema,
-    confirmed: types.boolean(),
+    confirmed: types.literal(true),
     confirmedAt: types.number(),
     accessRequestedAt: types.optional(types.number()),
     teamRoles: types.optional(z.array(PayloadTeamRoles$inboundSchema)),
@@ -6928,7 +6945,7 @@ export type Teams$Outbound = {
   teamId: string;
   created: number;
   role: string;
-  confirmed: boolean;
+  confirmed: true;
   confirmedAt: number;
   accessRequestedAt?: number | undefined;
   teamRoles?: Array<string> | undefined;
@@ -6946,7 +6963,7 @@ export const Teams$outboundSchema: z.ZodType<
   teamId: z.string(),
   created: z.number(),
   role: UserEventPayload112Role$outboundSchema,
-  confirmed: z.boolean(),
+  confirmed: z.literal(true),
   confirmedAt: z.number(),
   accessRequestedAt: z.number().optional(),
   teamRoles: z.array(PayloadTeamRoles$outboundSchema).optional(),
@@ -7053,46 +7070,5 @@ export function analyticsUsageFromJSON(
     jsonString,
     (x) => AnalyticsUsage$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'AnalyticsUsage' from JSON`,
-  );
-}
-
-/** @internal */
-export const Artifacts$inboundSchema: z.ZodType<
-  Artifacts,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  currentThreshold: types.number(),
-  warningAt: z.nullable(types.number()).optional(),
-  blockedAt: z.nullable(types.number()).optional(),
-});
-/** @internal */
-export type Artifacts$Outbound = {
-  currentThreshold: number;
-  warningAt?: number | null | undefined;
-  blockedAt?: number | null | undefined;
-};
-
-/** @internal */
-export const Artifacts$outboundSchema: z.ZodType<
-  Artifacts$Outbound,
-  z.ZodTypeDef,
-  Artifacts
-> = z.object({
-  currentThreshold: z.number(),
-  warningAt: z.nullable(z.number()).optional(),
-  blockedAt: z.nullable(z.number()).optional(),
-});
-
-export function artifactsToJSON(artifacts: Artifacts): string {
-  return JSON.stringify(Artifacts$outboundSchema.parse(artifacts));
-}
-export function artifactsFromJSON(
-  jsonString: string,
-): SafeParseResult<Artifacts, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Artifacts$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Artifacts' from JSON`,
   );
 }

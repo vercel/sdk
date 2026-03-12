@@ -11,7 +11,7 @@ let value: Rules1 = {
   active: false,
   conditionGroup: [],
   action: {},
-  valid: false,
+  valid: true,
   validationErrors: "<value>",
 };
 ```
@@ -26,5 +26,5 @@ let value: Rules1 = {
 | `active`                                                         | *boolean*                                                        | :heavy_check_mark:                                               | N/A                                                              |
 | `conditionGroup`                                                 | [models.RulesConditionGroup](../models/rulesconditiongroup.md)[] | :heavy_check_mark:                                               | N/A                                                              |
 | `action`                                                         | [models.RulesAction](../models/rulesaction.md)                   | :heavy_check_mark:                                               | N/A                                                              |
-| `valid`                                                          | *boolean*                                                        | :heavy_check_mark:                                               | N/A                                                              |
+| `valid`                                                          | *true*                                                           | :heavy_check_mark:                                               | N/A                                                              |
 | `validationErrors`                                               | *any*                                                            | :heavy_check_mark:                                               | N/A                                                              |

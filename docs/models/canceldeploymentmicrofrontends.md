@@ -18,10 +18,12 @@ const value: models.CancelDeploymentMicrofrontends1 = {
 
 ```typescript
 const value: models.CancelDeploymentMicrofrontends2 = {
-  isDefaultApp: false,
+  isDefaultApp: true,
   defaultAppProjectName: "<value>",
   groupIds: [
     "<value 1>",
+    "<value 2>",
+    "<value 3>",
   ],
 };
 ```

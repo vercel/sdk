@@ -15,7 +15,7 @@ export type AuthUserLimited = {
   /**
    * Property indicating that this User data contains only limited information, due to the authentication token missing privileges to read the full User data. Re-login with email, GitHub, GitLab or Bitbucket in order to upgrade the authentication token with the necessary privileges.
    */
-  limited: boolean;
+  limited: true;
   /**
    * The User's unique identifier.
    */
@@ -52,7 +52,7 @@ export const AuthUserLimited$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  limited: types.boolean(),
+  limited: types.literal(true),
   id: types.string(),
   email: types.string(),
   name: types.nullable(types.string()),
@@ -63,7 +63,7 @@ export const AuthUserLimited$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type AuthUserLimited$Outbound = {
-  limited: boolean;
+  limited: true;
   id: string;
   email: string;
   name: string | null;
@@ -79,7 +79,7 @@ export const AuthUserLimited$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AuthUserLimited
 > = z.object({
-  limited: z.boolean(),
+  limited: z.literal(true),
   id: z.string(),
   email: z.string(),
   name: z.nullable(z.string()),

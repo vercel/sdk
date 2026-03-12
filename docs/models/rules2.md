@@ -16,7 +16,11 @@ let value: Rules2 = {
   ],
   action: {},
   valid: false,
-  validationErrors: [],
+  validationErrors: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
 };
 ```
 
@@ -30,5 +34,5 @@ let value: Rules2 = {
 | `active`                                                                                           | *boolean*                                                                                          | :heavy_check_mark:                                                                                 | N/A                                                                                                |
 | `conditionGroup`                                                                                   | [models.GetFirewallConfigRulesConditionGroup](../models/getfirewallconfigrulesconditiongroup.md)[] | :heavy_check_mark:                                                                                 | N/A                                                                                                |
 | `action`                                                                                           | [models.GetFirewallConfigRulesAction](../models/getfirewallconfigrulesaction.md)                   | :heavy_check_mark:                                                                                 | N/A                                                                                                |
-| `valid`                                                                                            | *boolean*                                                                                          | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `valid`                                                                                            | *false*                                                                                            | :heavy_check_mark:                                                                                 | N/A                                                                                                |
 | `validationErrors`                                                                                 | *string*[]                                                                                         | :heavy_check_mark:                                                                                 | N/A                                                                                                |

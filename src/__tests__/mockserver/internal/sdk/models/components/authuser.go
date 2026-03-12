@@ -407,6 +407,33 @@ func (e *AuthUserDefaultPurchaseType) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// AuthUserMachineSelectionType - An object containing infomation related to the amount of platform resources may be allocated to the User account.
+type AuthUserMachineSelectionType string
+
+const (
+	AuthUserMachineSelectionTypeFixed   AuthUserMachineSelectionType = "fixed"
+	AuthUserMachineSelectionTypeElastic AuthUserMachineSelectionType = "elastic"
+)
+
+func (e AuthUserMachineSelectionType) ToPointer() *AuthUserMachineSelectionType {
+	return &e
+}
+func (e *AuthUserMachineSelectionType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "fixed":
+		fallthrough
+	case "elastic":
+		*e = AuthUserMachineSelectionType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AuthUserMachineSelectionType: %v", v)
+	}
+}
+
 // AuthUserBuildMachine - An object containing infomation related to the amount of platform resources may be allocated to the User account.
 type AuthUserBuildMachine struct {
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
@@ -419,6 +446,8 @@ type AuthUserBuildMachine struct {
 	Cores *float64 `json:"cores,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	Memory *float64 `json:"memory,omitempty"`
+	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
+	MachineSelectionType *AuthUserMachineSelectionType `json:"machineSelectionType,omitempty"`
 }
 
 func (a AuthUserBuildMachine) MarshalJSON() ([]byte, error) {
@@ -465,6 +494,13 @@ func (o *AuthUserBuildMachine) GetMemory() *float64 {
 		return nil
 	}
 	return o.Memory
+}
+
+func (o *AuthUserBuildMachine) GetMachineSelectionType() *AuthUserMachineSelectionType {
+	if o == nil {
+		return nil
+	}
+	return o.MachineSelectionType
 }
 
 // AuthUserSecurity - An object containing infomation related to the amount of platform resources may be allocated to the User account.

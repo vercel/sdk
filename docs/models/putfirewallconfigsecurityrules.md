@@ -12,7 +12,7 @@ const value: models.PutFirewallConfigRules1 = {
   active: false,
   conditionGroup: [],
   action: {},
-  valid: false,
+  valid: true,
   validationErrors: "<value>",
 };
 ```

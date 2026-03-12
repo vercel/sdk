@@ -12,8 +12,8 @@ let value: ListEventTypesResponseBody = {
         "<value 1>",
       ],
       deprecated: true,
-      name: "microfrontend-group-deleted",
-      description: "charlatan stunning obedient help meanwhile throughout",
+      name: "disconnect-github-limited",
+      description: "apud oxidise substantiate amid shear familiar",
     },
   ],
 };

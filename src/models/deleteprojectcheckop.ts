@@ -22,7 +22,7 @@ export type DeleteProjectCheckRequest = {
 };
 
 export type DeleteProjectCheckResponseBody = {
-  success: boolean;
+  success: true;
 };
 
 /** @internal */
@@ -79,11 +79,11 @@ export const DeleteProjectCheckResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  success: types.boolean(),
+  success: types.literal(true),
 });
 /** @internal */
 export type DeleteProjectCheckResponseBody$Outbound = {
-  success: boolean;
+  success: true;
 };
 
 /** @internal */
@@ -92,7 +92,7 @@ export const DeleteProjectCheckResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DeleteProjectCheckResponseBody
 > = z.object({
-  success: z.boolean(),
+  success: z.literal(true),
 });
 
 export function deleteProjectCheckResponseBodyToJSON(

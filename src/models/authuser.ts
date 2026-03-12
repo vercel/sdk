@@ -155,6 +155,18 @@ export type DefaultPurchaseType = ClosedEnum<typeof DefaultPurchaseType>;
 /**
  * An object containing infomation related to the amount of platform resources may be allocated to the User account.
  */
+export const MachineSelectionType = {
+  Fixed: "fixed",
+  Elastic: "elastic",
+} as const;
+/**
+ * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+ */
+export type MachineSelectionType = ClosedEnum<typeof MachineSelectionType>;
+
+/**
+ * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+ */
 export type AuthUserBuildMachine = {
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
@@ -176,6 +188,10 @@ export type AuthUserBuildMachine = {
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
   memory?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  machineSelectionType?: MachineSelectionType | undefined;
 };
 
 /**
@@ -694,6 +710,15 @@ export const DefaultPurchaseType$outboundSchema: z.ZodNativeEnum<
 > = DefaultPurchaseType$inboundSchema;
 
 /** @internal */
+export const MachineSelectionType$inboundSchema: z.ZodNativeEnum<
+  typeof MachineSelectionType
+> = z.nativeEnum(MachineSelectionType);
+/** @internal */
+export const MachineSelectionType$outboundSchema: z.ZodNativeEnum<
+  typeof MachineSelectionType
+> = MachineSelectionType$inboundSchema;
+
+/** @internal */
 export const AuthUserBuildMachine$inboundSchema: z.ZodType<
   AuthUserBuildMachine,
   z.ZodTypeDef,
@@ -704,6 +729,7 @@ export const AuthUserBuildMachine$inboundSchema: z.ZodType<
   defaultPurchaseType: types.optional(DefaultPurchaseType$inboundSchema),
   cores: types.optional(types.number()),
   memory: types.optional(types.number()),
+  machineSelectionType: types.optional(MachineSelectionType$inboundSchema),
 });
 /** @internal */
 export type AuthUserBuildMachine$Outbound = {
@@ -712,6 +738,7 @@ export type AuthUserBuildMachine$Outbound = {
   defaultPurchaseType?: string | undefined;
   cores?: number | undefined;
   memory?: number | undefined;
+  machineSelectionType?: string | undefined;
 };
 
 /** @internal */
@@ -725,6 +752,7 @@ export const AuthUserBuildMachine$outboundSchema: z.ZodType<
   defaultPurchaseType: DefaultPurchaseType$outboundSchema.optional(),
   cores: z.number().optional(),
   memory: z.number().optional(),
+  machineSelectionType: MachineSelectionType$outboundSchema.optional(),
 });
 
 export function authUserBuildMachineToJSON(

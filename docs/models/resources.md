@@ -3,12 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { Resources } from "@vercel/sdk/models/usereventpayload25beforetype.js";
+import { Resources } from "@vercel/sdk/models/usereventpayload25type.js";
 
 let value: Resources = {
   projectIds: {
     type: "list",
-    required: false,
+    required: true,
     items: {
       type: "string",
     },
